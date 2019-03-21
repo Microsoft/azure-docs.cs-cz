@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 2858628874dc9955db5084ef5732d85acd6e7fc1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 985d41d3a00974e25c9abc4709c5bf5e662f7a50
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729780"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086033"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Zásady umístění služeb service fabric
 Zásady umístění jsou další pravidla, které lze použít k řízení umístění služby v některé konkrétní, méně běžné scénáře. Mezi příklady tyto scénáře patří:
@@ -44,6 +44,7 @@ Většina následující ovládací prvky může být konfigurováno prostředni
 **InvalidDomain** umístění zásad umožňuje zadat, že konkrétní doména selhání je neplatný pro konkrétní službu. Tato zásada zajistí, že konkrétní službu nikdy nespustí v konkrétní oblasti, například kvůli geopolitických nebo firemní zásady. Přes samostatné zásady je možné zadat více domén neplatný.
 
 <center>
+
 ![Příklad domény je neplatný][Image1]
 </center>
 
@@ -64,6 +65,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 Zásady umístění vyžaduje domény vyžaduje, že služba je k dispozici pouze v zadané doméně. Přes samostatné zásady je možné zadat několik požadovaných domén.
 
 <center>
+
 ![Příklad požadovanou doménu][Image2]
 </center>
 
@@ -85,6 +87,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 Primární doména upřednostňované určuje doména selhání umístit primární v. Primární skončilo v této doméně při všechno, co je v pořádku. Pokud domény nebo je primární replika selže nebo vypne, primární přesune do jiného umístění, v ideálním případě ve stejné doméně. Není-li tohoto nového umístění v doméně, upřednostňovanou, Cluster Resource Manager přesouvá ji zpět do upřednostňované doménu co nejdříve. Toto nastavení je přirozeně pouze dává smysl pro stavové služby. Tato zásada je nejužitečnější v clusterech, které jsou rozložené mezi oblastmi Azure nebo několik datových center, ale na nich služby, které dáváte přednost umístění na určité místo. Udržování Primárek blízko uživatelům nebo jiné služby, pomáhá zajistit nižší latenci, zejména pro čtení, které jsou zpracovány Primárek ve výchozím nastavení.
 
 <center>
+
 ![Upřednostňované primární domény a převzetí služeb při selhání][Image3]
 </center>
 

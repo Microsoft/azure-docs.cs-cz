@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 0a2027e3ae0fb40058b5bdbfd212687697877076
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 0553bd904cfaabaefce4e6ab3f7fbf5d356922d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875255"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100356"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv typu zařízení cloud Azure IoT s distribuované trasování (preview)
 
@@ -269,7 +269,7 @@ Různé typy protokolů najdete v tématu [diagnostické protokoly Azure IoT Hub
 Vizualizace toku zpráv IoT, nastavte ukázkovou aplikaci mapy aplikace. Ukázková aplikace odešle protokoly distribuované trasování, které mají [Mapa aplikace](../application-insights/app-insights-app-map.md) pomocí funkce Azure functions a centra událostí.
 
 > [!div class="button"]
-<a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Získat ukázky na Githubu</a>
+> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Získat ukázky na Githubu</a>
 
 Tento obrázek níže znázorňuje distribuované trasování v mapě aplikace pomocí tří směrování koncových bodů:
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: a81bcf26234f3b7840a75e7134596cb777071e8f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3676a1e4bf69f7d31bb347f99787c4e2f08721a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432767"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107589"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Řešení potíží s konfigurací serveru
 
@@ -25,9 +25,9 @@ Zdrojový počítač zaregistruje s konfiguračním serverem při instalaci agen
 1. Otevřete soubor C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log. (Že složka ProgramData může být skrytá složka. Pokud nevidíte složka ProgramData, v Průzkumníku souborů na **zobrazení** kartě **zobrazit/skrýt** vyberte **skryté položky** zaškrtávací políčko.) Selhání může být způsobeno více problémů.
 
 2. Vyhledejte řetězec **ne platnou IP adresu najít**. Pokud je nalezen řetězec:
-    1. Ověřte, že ID požadovaného hostitele je stejný jako ID hostitele zdrojového počítače.
-    2. Ověřte, zda zdrojový počítač má alespoň jednu IP adresu přiřadit fyzický síťový adaptér. Pro registraci agenta s konfiguračním serverem proběhla úspěšně zdrojový počítač musí mít aspoň jeden platný v4 přiřazenou IP adresu na fyzický síťový adaptér.
-    3. Na zdrojovém počítači zobrazíte všechny IP adresy zdrojového počítače spusťte jeden z následujících příkazů:
+   1. Ověřte, že ID požadovaného hostitele je stejný jako ID hostitele zdrojového počítače.
+   2. Ověřte, zda zdrojový počítač má alespoň jednu IP adresu přiřadit fyzický síťový adaptér. Pro registraci agenta s konfiguračním serverem proběhla úspěšně zdrojový počítač musí mít aspoň jeden platný v4 přiřazenou IP adresu na fyzický síťový adaptér.
+   3. Na zdrojovém počítači zobrazíte všechny IP adresy zdrojového počítače spusťte jeden z následujících příkazů:
       - Pro Windows: `> ipconfig /all`
       - Pro Linux: `# ifconfig -a`
 

@@ -1,18 +1,18 @@
 ---
 title: Aktivace Azure Disk Encryption pro virtuální počítače IaaS s Windows
 description: Tento článek obsahuje pokyny týkající se povolení Microsoft Azure Disk Encryption pro Windows virtuální počítače IaaS.
-author: mestew
+author: msmbaldwin
 ms.service: security
 ms.topic: article
-ms.author: mstewart
-ms.date: 03/05/2019
+ms.author: mbaldwin
+ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff0b8c3ec5cd259d96a0761e287e5ad95feb26b1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d4cf454a654124468fd31e6412530416da381acf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774740"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884893"
 ---
 # <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>Aktivace Azure Disk Encryption pro virtuální počítače IaaS s Windows
 
@@ -85,11 +85,11 @@ Použití [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-az
 ### <a name="bkmk_RunningWinVMCLI"></a>Povoluje šifrování na existující nebo spouštění virtuálních počítačů pomocí Azure CLI
 Použití [az vm encryption povolit](/cli/azure/vm/encryption#az-vm-encryption-enable) příkaz, který povoluje šifrování na spuštěný virtuální počítač IaaS v Azure.
 
--  **Šifrování spuštěného virtuálního počítače:**
+- **Šifrování spuštěného virtuálního počítače:**
 
-     ```azurecli-interactive
-     az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault "MySecureVault" --volume-type [All|OS|Data]
-     ```
+    ```azurecli-interactive
+    az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault "MySecureVault" --volume-type [All|OS|Data]
+    ```
 
 - **Šifrování pomocí KEK spuštěného virtuálního počítače:**
 
@@ -112,12 +112,13 @@ Použití [az vm encryption povolit](/cli/azure/vm/encryption#az-vm-encryption-e
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
  
- > [!NOTE]
- >Je nezbytně nutné k snímku a/nebo zálohování spravovaného disku na základě instance virtuálního počítače mimo a před povolením Azure Disk Encryption. Snímek spravovaného disku může být přijata z portálu, nebo [Azure Backup](../backup/backup-azure-vms-encryption.md) lze použít. Zálohy Ujistěte se, že možnost obnovení je možné v případě jakékoli došlo k neočekávané chybě při šifrování. Po provedení zálohy rutinu Set-AzVMDiskEncryptionExtension slouží k šifrování zadáním parametru - skipVmBackup spravované disky. Tento příkaz se nezdaří ve virtuálních počítačích spravovaných disků na základě, dokud byly provedeny zálohy a byl zadán tento parametr. 
->
->Šifrování nebo zakázáním šifrování může způsobit restartování virtuálního počítače. 
+  > [!NOTE]
+  >Je nezbytně nutné k snímku a/nebo zálohování spravovaného disku na základě instance virtuálního počítače mimo a před povolením Azure Disk Encryption. Snímek spravovaného disku může být přijata z portálu, nebo [Azure Backup](../backup/backup-azure-vms-encryption.md) lze použít. Zálohy Ujistěte se, že možnost obnovení je možné v případě jakékoli došlo k neočekávané chybě při šifrování. Po provedení zálohy rutinu Set-AzVMDiskEncryptionExtension slouží k šifrování zadáním parametru - skipVmBackup spravované disky. Tento příkaz se nezdaří ve virtuálních počítačích spravovaných disků na základě, dokud byly provedeny zálohy a byl zadán tento parametr. 
+  >
+  >Šifrování nebo zakázáním šifrování může způsobit restartování virtuálního počítače. 
 
 ### <a name="bkmk_RunningWinVMwRM"> </a>Pomocí šablony Resource Manageru
+
 Můžete povolit šifrování disku v existující nebo běžící virtuální počítače IaaS s Windows v Azure s použitím [šablony Resource Manageru k šifrování spuštěného virtuálního počítače Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad).
 
 
@@ -130,7 +131,7 @@ V následující tabulce jsou uvedeny parametry šablony Resource Manageru pro e
 | Parametr | Popis |
 | --- | --- |
 | vmName | Název virtuálního počítače ke spuštění operace šifrování. |
-| keyVaultName | Název, který klíč Bitlockeru, musí být nahrán do trezoru klíčů. Můžete ho získat pomocí rutiny `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` nebo příkazového řádku Azure "az keyvault seznamu--resource-group"MyKeyVaultResourceGroup" |ConvertFrom-JSON.|
+| keyVaultName | Název, který klíč Bitlockeru, musí být nahrán do trezoru klíčů. Můžete ho získat pomocí rutiny `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` nebo příkazového řádku Azure `az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
 | keyVaultResourceGroup | Název skupiny prostředků obsahující trezor klíčů|
 |  KeyEncryptionKeyURL | Adresa URL šifrovací klíč klíče, který se používá k šifrování vygenerovaný klíč Bitlockeru. Tento parametr je nepovinný, pokud vyberete **nokek** v rozevíracím seznamu UseExistingKek. Pokud vyberete **kek** v rozevíracím seznamu UseExistingKek, je nutné zadat _keyEncryptionKeyURL_ hodnotu. |
 | VolumeType | Typ svazku, který provádí operace šifrování na. Platné hodnoty jsou _OS_, _Data_, a _všechny_. 
@@ -141,22 +142,6 @@ V následující tabulce jsou uvedeny parametry šablony Resource Manageru pro e
 ## <a name="encrypt-virtual-machine-scale-sets"></a>Šifrování škálovací sady virtuálních počítačů
 
 [Škálovací sady virtuálních počítačů Azure](../virtual-machine-scale-sets/overview.md) umožňují vytvářet a spravovat skupiny identických, virtuálních počítačů s vyrovnáváním zatížení. Počet instancí virtuálních počítačů se může automaticky zvyšovat nebo snižovat s ohledem na požadavky nebo definovaný plán. K šifrování škálovací sady virtuálních počítačů pomocí Azure Powershellu nebo rozhraní příkazového řádku.
-
-
-### <a name="register-for-disk-encryption-preview-using-azure-powershell"></a>Zaregistrujte se ve verzi preview šifrování disku pomocí Azure Powershellu
-
-Azure disk encryption pro škálovací sady virtuálních počítačů ve verzi preview je potřeba registrovat předplatné s [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature). Stačí provést následující kroky při prvním použití funkce ve verzi preview šifrování disku:
-
-```azurepowershell-interactive
-Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
-```
-
-Může trvat až 10 minut žádost o registraci rozšíření. Vy můžete zkontrolovat stav registrace s [Get-AzProviderFeature](/powershell/module/az.Resources/Get-azProviderFeature). Když `RegistrationState` sestavy *registrované*, znovu zaregistrovat *Microsoft.Compute* zprostředkovatele s [Register-AzResourceProvider](/powershell/module/az.Resources/Register-azResourceProvider):
-
-```azurepowershell-interactive
-Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
 
 ### <a name="encrypt-virtual-machine-scale-sets-with-azure-powershell"></a>Šifrování virtuálního počítače škálovací sady pomocí Azure Powershellu
 
@@ -204,23 +189,7 @@ Použití [Set-AzVmssDiskEncryptionExtension](/powershell/module/az.compute/set-
     Disable-AzVmssDiskEncryption -ResourceGroupName "MyVMScaleSetResourceGroup" -VMScaleSetName "MySecureVmss"
     ```
 
-### <a name="register-for-disk-encryption-preview-using-azure-cli"></a>Zaregistrujte se ve verzi preview šifrování disku pomocí rozhraní příkazového řádku Azure
-
-Azure disk encryption pro škálovací sady virtuálních počítačů ve verzi preview je potřeba registrovat předplatné s [az funkce register](/cli/azure/feature#az-feature-register). Stačí provést následující kroky při prvním použití funkce ve verzi preview šifrování disku:
-
-```azurecli-interactive
-az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
-```
-
-Může trvat až 10 minut žádost o registraci rozšíření. Vy můžete zkontrolovat stav registrace s [az funkce Zobrazit](/cli/azure/feature#az-feature-show). Když `State` sestavy *registrované*, přeregistrovat *Microsoft.Compute* zprostředkovatele s [az provider register](/cli/azure/provider#az-provider-register):
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
-
-
-
-###  <a name="encrypt-virtual-machine-scale-sets-with-azure-cli"></a>Šifrování virtuálního počítače škálovací sady pomocí Azure CLI
+### <a name="encrypt-virtual-machine-scale-sets-with-azure-cli"></a>Šifrování virtuálního počítače škálovací sady pomocí Azure CLI
 
 Použití [povolit šifrování az vmss](/cli/azure/vmss/encryption#az-vmss-encryption-enable) chcete povolit šifrování na škálovací sadu virtuálních počítačů s Windows. Pokud nastavíte zásady upgradu pro škálovací sady na ruční, spusťte šifrování s [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances). Skupinu prostředků, virtuální počítač a trezor klíčů by již byly vytvořeny jako požadavky.
 

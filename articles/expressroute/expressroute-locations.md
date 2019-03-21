@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/11/2019
+ms.date: 03/15/2019
 ms.author: pareshmu
-ms.openlocfilehash: c89c5f2d463392106985b0d80bc45843a158fd50
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: d7baebc4236df926dbd8cbe6e17e59b0a3489abd
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875372"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188370"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -52,6 +52,7 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Jižní Korea** | 2 |Jižní Korea – střed, Jižní Korea – jih |Busan, Soul|
 | **Jižní Afrika** | 3 |Jihoafrická republika – Západ, Jihoafrická republika – sever |Kapské město, Johannesburg |
 | **Jižní Amerika** | 3 |Brazílie – jih |Sao Paulo |
+
 
 ### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Oblasti a geopolitické hranice pro národní cloudy
 Následující tabulka obsahuje informace o oblastech a geopolitických hranicích pro národní cloudy.
@@ -291,7 +292,7 @@ Povolení soukromého připojení podle vlastních potřeb může být náročn�
 | **[Ensyst](https://www.ensyst.com.au)** | Asie
 | **[Equinix Professional Services](https://www.equinix.com/services/consulting/)** | Severní Amerika |
 | **[FlexManage](https://www.flexmanage.com/cloud)** | Severní Amerika |
-| **[Lightstream](https://www.ltstream.com/expressroute)** | Severní Amerika |
+| **[Lightstream](https://www.lightstream.tech/partners/microsoft-azure/)** | Severní Amerika |
 | **[The IT Consultancy Group](https://itconsult.com.au/)** | Austrálie |
 | **[MOQdigital](https://www.moqdigital.com.au/insights/technical/network-connectivity-options-for-azure)** | Austrálie |
 | **[MSG Services](https://www.msg-services.de/it-services/managed-services/cloud-outsourcing/)** | Evropa (Německo) |

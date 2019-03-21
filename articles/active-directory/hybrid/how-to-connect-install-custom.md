@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 03/20/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b55a7016ec0068234dfc6110d9d4afc04119ccdd
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: bbfc325d1a33db45afecf30bfa21244e3336961d
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194057"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295483"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace služby Azure AD Connect
 **Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](how-to-connect-install-express.md) nevyhovuje nasazení nebo topologii.
@@ -221,7 +221,7 @@ Pro každou doménovou strukturu přidanou v nástroji AAD Connect musíte zadat
 >Pokud pro konkrétní doménovou strukturu nechcete použít jednotné přihlašování, můžete ji přeskočit.
 
 #### <a name="configure-the-intranet-zone-for-client-machines"></a>Konfigurace zóny intranetu pro klientské počítače
-Pokud chcete zajistit, aby se klient v zóně intranetu přihlásil automaticky, ujistěte se, že součástí zóny intranetu jsou dvě adresy URL. Tím se zajistí, že počítač připojený k doméně při připojení k podnikové síti automaticky odešle službě Azure AD lístek Kerberos.
+Chcete-li zajistit přihlášení klienta automaticky do zóny sítě intranet je potřeba zajistit, že adresa URL je součástí zóny intranetu. Tím se zajistí, že počítač připojený k doméně při připojení k podnikové síti automaticky odešle službě Azure AD lístek Kerberos.
 Na počítači, který obsahuje Nástroje pro správu zásad skupiny:
 
 1.  Spusťte Nástroje pro správu zásad skupiny.

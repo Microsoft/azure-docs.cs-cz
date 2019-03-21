@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: 976bb44ae81a6c002d2503407a4d74d513a76042
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: cf001d86356f4dd5fd3735803f0e329aa1e0940d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725265"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224018"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autorizace uživatelů pro zobrazení Apache Ambari
 
 [Enterprise Security Package (ESP) povolena clustery HDInsight](./domain-joined/apache-domain-joined-introduction.md) poskytuje funkce na podnikové úrovni, včetně ověřování pomocí Azure Active Directory. Je možné [synchronizovat noví uživatelé](hdinsight-sync-aad-users-to-cluster.md) přidán do skupiny Azure AD, které byly zadány přístup ke clusteru, tyto konkrétní uživatelé můžou k provedení určité akce. Práce s uživatele, skupiny a oprávnění v [Apache Ambari](https://ambari.apache.org/) se podporuje pro clustery HDInsight ESP i clusterů HDInsight standard.
 
-Uživatelé služby Active Directory může přihlásit k uzlům clusteru pomocí svých přihlašovacích údajů domény. Přihlašovacích údajů domény může také používat k ověření clusteru interakce s dalších schválených koncových bodech, jako je [Hue](https://gethue.com/), zobrazení Ambari, rozhraní ODBC, JDBC, PowerShell a rozhraní REST API.
+Uživatelé služby Active Directory můžete přihlásit k uzlům clusteru pomocí svých přihlašovacích údajů domény. Přihlašovacích údajů domény může také používat k ověření clusteru interakce s dalších schválených koncových bodech, jako je [Hue](https://gethue.com/), zobrazení Ambari, rozhraní ODBC, JDBC, PowerShell a rozhraní REST API.
 
 > [!WARNING]  
 > Neměňte heslo Ambari sledovacích (hdinsightwatchdog) ve vašem clusteru HDInsight se systémem Linux. Změna hesla dělí schopnost pomocí skriptových akcí nebo provádění operací škálování s vaším clusterem.
@@ -51,24 +51,24 @@ Ambari obsahuje zobrazení instance pro [Apache Hive](https://hive.apache.org/) 
 
 **Udělení oprávnění pro tyto skupiny** ![udělení oprávnění pro tyto skupiny](./media/hdinsight-authorize-users-to-ambari/add-group-to-view.png)
 
-4. Chcete-li přidat uživatele, **přidat uživatele** tlačítko.
+1. Chcete-li přidat uživatele, **přidat uživatele** tlačítko.
 
-    * Začněte psát uživatelské jméno a zobrazí rozevírací seznam dříve definované názvy.
+   * Začněte psát uživatelské jméno a zobrazí rozevírací seznam dříve definované názvy.
 
-    ![Automaticky dokončuje uživatele](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
+     ![Automaticky dokončuje uživatele](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
 
-    * Vyberte nebo dokončit zadáním uživatelského jména. Chcete-li přidat toto uživatelské jméno nového uživatele, vyberte **nový** tlačítko.
+   * Vyberte nebo dokončit zadáním uživatelského jména. Chcete-li přidat toto uživatelské jméno nového uživatele, vyberte **nový** tlačítko.
 
-    * Chcete-li uložit změny, vyberte **modré zaškrtávací políčko**.
+   * Chcete-li uložit změny, vyberte **modré zaškrtávací políčko**.
 
-    ![Zadaný uživatel](./media/hdinsight-authorize-users-to-ambari/user-entered.png)
+     ![Zadaný uživatel](./media/hdinsight-authorize-users-to-ambari/user-entered.png)
 
-5. Chcete-li přidat skupinu, vyberte **přidat skupinu** tlačítko.
+1. Chcete-li přidat skupinu, vyberte **přidat skupinu** tlačítko.
 
-    * Začněte psát název skupiny. Proces výběru stávající název skupiny nebo přidání nové skupiny, je stejná jako přidání uživatelů.
-    * Chcete-li uložit změny, vyberte **modré zaškrtávací políčko**.
+   * Začněte psát název skupiny. Proces výběru stávající název skupiny nebo přidání nové skupiny, je stejná jako přidání uživatelů.
+   * Chcete-li uložit změny, vyberte **modré zaškrtávací políčko**.
 
-    ![Zadané skupiny](./media/hdinsight-authorize-users-to-ambari/group-entered.png)
+     ![Zadané skupiny](./media/hdinsight-authorize-users-to-ambari/group-entered.png)
 
 Přidání uživatele přímo k zobrazení je užitečné, pokud chcete přiřadit oprávnění uživateli pomocí tohoto zobrazení, ale nechcete, aby mohly být členem skupiny, které obsahuje další oprávnění. Pro snížení správní režie, může být jednodušší přiřazení oprávnění skupinám.
 

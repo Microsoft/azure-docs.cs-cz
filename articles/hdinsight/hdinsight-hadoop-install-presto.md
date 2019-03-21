@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: fe3727c90819a96b7e1785362e557edd5cbbdf02
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: HT
+ms.openlocfilehash: 435c041bb5fb0a398f92914f943166108cc20080
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199320"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258339"
 ---
 # <a name="install-and-use-presto-on-hadoop-based-hdinsight-clusters"></a>Nainstalovat a používat Presto na clusterech HDInsight se systémem Hadoop
 
-Tento článek vysvětluje, jak nainstalovat Presto na systému Hadoop HDInsight Adobe clustery pomocí skriptových akcí. Také se dozvíte, jak nainstalovat Airpal do existujícího clusteru HDInsight Presto.
+Tento článek vysvětluje, jak nainstalovat Presto v clusterech Azure HDInsight na systému Hadoop pomocí skriptových akcí. Také se dozvíte, jak nainstalovat Airpal do existujícího clusteru HDInsight Presto.
 
 HDInsight také nabízí aplikace hvězdice Presto pro clustery systému Apache Hadoop. Další informace najdete v tématu [instalace aplikací třetích stran Apache Hadoop v Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-install-applications).
 

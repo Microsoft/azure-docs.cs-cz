@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
-ms.openlocfilehash: 506910ffa46cb3fbd4be9dcecf9df0f9fdd291e5
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901016"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897448"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Vysvětlení podmínek na faktuře Microsoft Azure
 
-Faktury poskytuje přehled poplatky a poskytuje pokyny pro platbu. Je k dispozici ke stažení v Portable Document Format (PDF) z [webu Azure portal](https://portal.azure.com/) nebo je lze odeslat e-mailem. Další informace najdete v tématu [jak získat Azure billing invoice a denní data o využití](billing-download-azure-invoice-daily-usage-date.md).
+Na faktuře najdete souhrn poplatků a pokyny k platbě. Je k dispozici ke stažení v Portable Document Format (PDF) z [webu Azure portal](https://portal.azure.com/) nebo je lze odeslat e-mailem. Další informace najdete v tématu [jak získat Azure billing invoice a denní data o využití](billing-download-azure-invoice-daily-usage-date.md).
 
 Mějte na paměti několik věcí:
 
@@ -31,7 +31,7 @@ Mějte na paměti několik věcí:
 
 -   Až 24 hodin využití na konci předchozího fakturačního období může zobrazit na aktuální faktuře.
 
--   Poplatky uvedené na výpisy pro mezinárodní zákazníky, kteří jsou odhadu pouze pro účely. Bank mohou mít různé náklady pro míry úspěšnosti.
+-   Poplatky uvedené na výpisu vyúčtování pro mezinárodní zákazníky slouží pouze jako odhad. Bank mohou mít různé náklady pro míry úspěšnosti.
 
 >[!VIDEO https://www.youtube.com/embed/jWG1lyJe3Mg]
 
@@ -100,7 +100,7 @@ Následující tabulka popisuje záhlaví sloupců poplatky za využití uveden�
 | Označení |Popis |
 | --- | --- |
 | Název |Identifikuje službu nejvyšší úrovně za využití |
-| Typ |Definuje typ služeb Azure, který může mít vliv na sazbu |
+| Type |Definuje typ služeb Azure, který může mít vliv na sazbu |
 | Prostředek |Určuje měrnou jednotku pro měření spotřebovávanou |
 | Oblast |Určuje polohu datacentra pro určité služby, které se počítají na základě umístění datového centra |
 | Spotřebované |Množství měřiče použít během fakturačního období |
@@ -116,4 +116,4 @@ Pokud na vaší faktuře, kterou byste uvítali další podrobnosti se účtuje 
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

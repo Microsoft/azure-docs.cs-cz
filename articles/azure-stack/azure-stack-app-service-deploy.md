@@ -16,12 +16,12 @@ ms.date: 02/27/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: e8028bc9a4a6f3245dca61d6dd30db22dc295a7f
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: d66254cdad596e3b10482b2c937326162e2e075d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992426"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886826"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Přidání poskytovatele prostředků App Service do služby Azure Stack
 
@@ -44,13 +44,13 @@ Může dát uživatelům možnost vytvářet webové aplikace a aplikace API. Um
 
 Instalace poskytovatele prostředků App Service má aspoň hodinu. Čas potřebný, závisí na tom, kolik role instance můžete nasadit. Během nasazování Instalační program spustí následující úlohy:
 
- - Vytvořte kontejner objektů blob v zadaném účtu úložiště Azure Stack.
- - Vytvořte záznamy a zóny DNS pro službu App Service.
- - Zaregistrujte poskytovatele prostředků App Service.
- - Registrace položek galerie služby App Service.
+- Vytvořte kontejner objektů blob v zadaném účtu úložiště Azure Stack.
+- Vytvořte záznamy a zóny DNS pro službu App Service.
+- Zaregistrujte poskytovatele prostředků App Service.
+- Registrace položek galerie služby App Service.
 
- > [!IMPORTANT]
- > Před nasazením poskytovatele prostředků, přečtěte si poznámky k verzi pro další informace o nové funkce, opravy a známých problémech, které můžou ovlivnit nasazení.
+  > [!IMPORTANT]
+  > Před nasazením poskytovatele prostředků, přečtěte si poznámky k verzi pro další informace o nové funkce, opravy a známých problémech, které můžou ovlivnit nasazení.
 
 Nasazení poskytovatele prostředků App Service, postupujte podle těchto kroků:
 
@@ -74,8 +74,8 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
     a. Vyberte **připojit** vedle **předplatná Azure Stack**.
 
-     - Pokud používáte Azure Active Directory (Azure AD), zadejte účet správce Azure AD a heslo, které jste zadali při nasazení Azure Stack. Vyberte **přihlášení**.
-     - Pokud používáte služby Active Directory Federation Services (AD FS), zadejte účet správce. Například, cloudadmin@azurestack.local. Zadejte své heslo a pak vyberte **Sign In**.
+   - Pokud používáte Azure Active Directory (Azure AD), zadejte účet správce Azure AD a heslo, které jste zadali při nasazení Azure Stack. Vyberte **přihlášení**.
+   - Pokud používáte služby Active Directory Federation Services (AD FS), zadejte účet správce. Například, cloudadmin@azurestack.local. Zadejte své heslo a pak vyberte **Sign In**.
 
    b. V **předplatná Azure Stack**, vyberte **výchozí předplatné poskytovatele**.
 
@@ -243,7 +243,7 @@ Pokud chcete vytvořit test webové aplikace, postupujte takto:
 
 1. Na portálu Azure Stack tenanta, vyberte **+**, přejděte na Azure Marketplace, nasazení webu Django a potom počkejte na dokončení nasazení. Webové platformě Django používá databázi založené na systému souborů. Nevyžaduje žádné další prostředků poskytovatele, jako je SQL nebo MySQL.
 
-2. Pokud jste nasadili také poskytovatele prostředků MySQL, můžete nasadit web ve Wordpressu z Tržiště. Po zobrazení výzvy pro parametry databáze, zadejte uživatelské jméno jako *User1@Server1*, uživatelské jméno a název serveru podle vašeho výběru.
+2. Pokud jste nasadili také poskytovatele prostředků MySQL, můžete nasadit web ve Wordpressu z Tržiště. Po zobrazení výzvy pro parametry databáze, zadejte uživatelské jméno jako *User1\@Server1*, uživatelské jméno a název serveru podle vašeho výběru.
 
 3. Pokud jste nasadili také poskytovatele prostředků SQL serveru, můžete nasadit DNN webu z Tržiště. Po zobrazení výzvy pro parametry databáze, zvolte databázi v počítači se systémem SQL Server, který je připojený ke zprostředkovateli prostředků.
 

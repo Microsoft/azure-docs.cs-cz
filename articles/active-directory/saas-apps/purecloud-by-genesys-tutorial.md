@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c97a24be4b8ee88f76b46af8136445740c2906de
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d1cc7735b8caa952a5ab7695d3e1f35b03fec1bb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781234"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890674"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purecloud-by-genesys"></a>Kurz: Integrace Azure Active Directory s PureCloud podle Genesys
 
@@ -105,6 +105,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s PureCloud podle Genesys, pr
     ![PureCloud Genesys domény a adresy URL jednotné přihlašování – informace](common/idp-intiated.png)
 
     a. V **identifikátor** textové pole, zadejte adresu URL podle vaší oblasti:
+
     | |
     |--|
     | `https://login.mypurecloud.com/saml` |
@@ -114,6 +115,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s PureCloud podle Genesys, pr
     | `https://login.mypurecloud.au/saml` |
 
     b. V **adresy URL odpovědi** textové pole, zadejte adresu URL podle vaší oblasti:
+
     | |
     |--|
     | `https://login.mypurecloud.com/saml` |
@@ -127,6 +129,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s PureCloud podle Genesys, pr
     ![PureCloud Genesys domény a adresy URL jednotné přihlašování – informace](common/metadata-upload-additional-signon.png)
 
     V **přihlašovací adresa URL** textové pole, zadejte adresu URL podle vaší oblasti:
+    
     | |
     |--|
     | `https://login.mypurecloud.com` |
@@ -220,7 +223,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -275,7 +278,7 @@ Umožňuje uživatelům Azure AD se přihlaste k PureCloud podle Genesys, musí 
 
     a. V **jméno a příjmení** textové pole, zadejte jméno uživatele, jako je **Brittasimon**.
 
-    b. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je **brittasimon@contoso.com**.
+    b. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je **brittasimon\@contoso.com**.
     
     c. Klikněte na možnost **Vytvořit**.
 

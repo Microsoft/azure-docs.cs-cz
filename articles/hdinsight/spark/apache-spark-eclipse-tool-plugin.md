@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: 4370cc5e39b7d1b9a50e8fc8af9f7bfc58f6356a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 05df154db27dcf1b07506c6bf9c2a681408de61e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602745"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091813"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Vytváření aplikací Apache Spark pro cluster služby HDInsight pomocí sady Azure Toolkit pro Eclipse
 
@@ -141,12 +141,12 @@ Normální cluster můžete propojit pomocí Ambari, spravovat uživatelské jm�
    a. V Průzkumníku balíčků klikněte pravým tlačítkem myši na název projektu a vyberte **odeslání aplikace Spark na HDInsight**.        
    b. V **Spark odeslání** dialogové okno, zadejte následující hodnoty a pak vyberte **odeslat**:
       
-      * Pro **název clusteru**, vyberte na kterém chcete spustit aplikaci v clusteru HDInsight Spark.
-      * Vyberte artefakt z projektu Eclipse nebo vyberte některou z pevného disku. Výchozí hodnota závisí na položce, kliknete pravým tlačítkem myši v Průzkumníku balíčků.
-      * V **hlavní název třídy** rozevíracího seznamu, odeslání Průvodce zobrazí všechny názvy objektů z projektu. Vyberte nebo zadejte takový, který chcete spustit. Pokud jste vybrali artefakt z pevného disku, můžete název hlavní třídy zadat ručně. 
-      * Protože kód aplikace v tomto příkladu nevyžaduje argumenty příkazového řádku nebo odkazovat na soubory nebo kromě souborů JAR, můžete nechat zbývající textová pole prázdné.
+   * Pro **název clusteru**, vyberte na kterém chcete spustit aplikaci v clusteru HDInsight Spark.
+   * Vyberte artefakt z projektu Eclipse nebo vyberte některou z pevného disku. Výchozí hodnota závisí na položce, kliknete pravým tlačítkem myši v Průzkumníku balíčků.
+   * V **hlavní název třídy** rozevíracího seznamu, odeslání Průvodce zobrazí všechny názvy objektů z projektu. Vyberte nebo zadejte takový, který chcete spustit. Pokud jste vybrali artefakt z pevného disku, můžete název hlavní třídy zadat ručně. 
+   * Protože kód aplikace v tomto příkladu nevyžaduje argumenty příkazového řádku nebo odkazovat na soubory nebo kromě souborů JAR, můžete nechat zbývající textová pole prázdné.
         
-      ![Dialogové okno odeslání Spark](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-3.png)
+     ![Dialogové okno odeslání Spark](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-3.png)
 1. **Spark odeslání** karta by měla začínat zobrazení průběhu. Aplikace můžete zastavit tak, že vyberete červené tlačítko v **Spark odeslání** okna. Můžete také zobrazit protokoly pro tuto konkrétní aplikaci spusťte výběrem ikony světě (udávají modrá pole na obrázku).
       
    ![Okno odeslání Spark](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-4.png)

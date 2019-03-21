@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 2aa5522b8200f87df633759ee136f744cd1b8099
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6588690629d2e266469a4b8ea533c5650f3fc0ea
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471228"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890878"
 ---
 # <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Úvod do virtuálního počítače geografickou umělou inteligencí datové vědy
 
@@ -44,7 +44,7 @@ Informace o zeměpisné oblasti a oblasti, integrace s vašimi daty přináší 
 
 [Dat virtuálního počítače VĚDY](overview.md) od Microsoftu je oblíbené služby experimentování ve službě a modelování prostředí v Azure, který poskytuje celou řadu nástrojů pro AI, Machine Learning a datové vědy. Tyto platformy a nástroje jsou všechny pohodlně nakonfigurovaná tak, aby vám pomohly okamžitě produktivitu práce. 
 
-Kombinací prediktivního možnosti virtuální počítač pro datové vědy se škálovatelností cloudu Azure a softwaru geoprostorové analýzy z [ESRI](http://www.esri.com), odborníci přes data a analytici geoprostorového teď mají produktivní platforma z které chcete získat nové informace ze svých dat a našly nové příležitosti. 
+Kombinací prediktivního možnosti virtuální počítač pro datové vědy se škálovatelností cloudu Azure a softwaru geoprostorové analýzy z [ESRI](https://www.esri.com), odborníci přes data a analytici geoprostorového teď mají produktivní platforma z které chcete získat nové informace ze svých dat a našly nové příležitosti. 
 
 
 ## <a name="next-steps"></a>Další postup

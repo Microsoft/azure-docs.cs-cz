@@ -3,8 +3,8 @@ title: Rychlý start pro webový server ASP.NET ve službě Azure AD v2.0 | Micr
 description: V tomto tématu zjistíte, jak můžete implementovat přihlašování přes účet Microsoft ve webové aplikaci ASP.NET pomocí OpenID Connectu.
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdc5200156533abf940ce8fc7ff2186ba3a961bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9ae388798716565c1fdeeb10b274c2a168ca86ea
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200475"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200255"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
 
@@ -29,7 +29,7 @@ ms.locfileid: "56200475"
 
 V tomto rychlém startu se dozvíte, jak může webová aplikace ASP.NET přihlašovat osobní účty (hotmail.com, outlook.com a další) i pracovní a školní účty z libovolné instance služby Azure Active Directory (Azure AD).
 
-![Jak funguje ukázková aplikace vygenerovaná v tomto rychlém startu](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.png)
+![Ukazuje, jak ukázková aplikace vygenerované v tomto rychlém startu funguje](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro-updated.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
@@ -147,7 +147,7 @@ public void Configuration(IAppBuilder app)
 > |Kde  |  |
 > |---------|---------|
 > | `ClientId`     | ID aplikace, kterou jste zaregistrovali na portálu Azure Portal |
-> | `Authority`    | Koncový bod služby tokenů zabezpečení pro uživatele k ověření, obvykle https://login.microsoftonline.com/{tenant}/v2.0 pro veřejný cloud, kde hodnota {tenant} představuje název tenanta, ID tenanta nebo hodnotu *common* odkazující na společný koncový bod (používaný u multitenantních aplikací) |
+> | `Authority`    | Koncový bod služby tokenů zabezpečení pro uživatele k ověření, obvykle <https://login.microsoftonline.com/{tenant}/v2.0> pro veřejný cloud, kde hodnota {tenant} představuje název tenanta, ID tenanta nebo hodnotu *common* odkazující na společný koncový bod (používaný u multitenantních aplikací) |
 > | `RedirectUri`  | Adresa URL, na kterou jsou uživatelé přesměrováni po ověření oproti koncovému bodu Azure AD v2.0 |
 > | `PostLogoutRedirectUri`     | Adresa URL, na kterou jsou uživatelé přesměrováni po odhlášení |
 > | `Scope`     | Seznam požadovaných oborů oddělených mezerami |

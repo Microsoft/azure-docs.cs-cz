@@ -8,18 +8,18 @@ ms.author: gwallace
 ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: f742f6923b7d9f40a8752d77c7702e9b2ea2a4cf
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7932d057a348957d369ba325044055ac8dfe3428
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185854"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170186"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>Monitorování sady runbook pomocí upozornění na metriku
 
 V tomto článku se dozvíte, jak vytvářet upozornění na základě stavu dokončení sad runbook.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k Azure na adrese https://portal.azure.com.
 
@@ -36,6 +36,9 @@ Na webu Azure Portal přejděte na svůj účet Automation. V části **monitoro
 2. **Konfigurovat logiku signálů** stránka je tady můžete definovat logiku, která aktivuje výstrahu. V části Historický graf budou vám nabídnuty dvě dimenze **název sady Runbook** a **stav**. Dimenze jsou různé vlastnosti pro metriku, která slouží k filtrování výsledků. Pro **název sady Runbook**, vyberte sadu runbook, který chcete upozornit na nebo nechte prázdné, upozornění na všechny sady runbook. Pro **stav**, vyberte z rozevíracího seznamu chcete monitorovat stav. Sada runbook název a stav hodnoty, které se zobrazí v rozevírací nabídce jsou určeny pouze pro úlohy, které jste spustili v minulém týdnu.
 
    Pokud chcete upozornění na stav nebo sadu runbook, který není uveden v rozevíracím seznamu, klikněte na tlačítko **\+** vedle dimenze. Tato akce otevře dialogové okno, které můžete zadat vlastní hodnoty, který nebyl vygenerován pro tuto dimenzi nedávno. Pokud zadáte hodnotu pro vlastnost neexistuje upozornění nebudou aktivovány.
+
+   > [!NOTE]
+   > Pokud nemůžete použít název **RunbookName** dimenze, pokud jsou všechny runbooky, které splňují kritéria stav, který obsahuje skrytou systémovou sady runbook, zobrazí se upozornění.
 
 3. V části **upozornění logiky**, definujte podmínku a prahovou hodnotu pro upozornění. Vaše podmínka definované ve verzi preview se zobrazí pod.
 

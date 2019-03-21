@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 4a8f4fb3605f254bb48005e944a49fe45395aaec
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d9001a10afdb92e2ebe469e3beb080c667e8559b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542518"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097333"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Rychlý start: Odeslat žádost o vyhledávání Bingu Entity Search REST API pomocí Javy
 
@@ -35,25 +35,25 @@ Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful 
 
 1. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java a naimportujte následující knihovny.
 
-  ```java
-  import java.io.*;
-  import java.net.*;
-  import java.util.*;
-  import javax.net.ssl.HttpsURLConnection;
-  import com.google.gson.Gson;
-  import com.google.gson.GsonBuilder;
-  import com.google.gson.JsonObject;
-  import com.google.gson.JsonParser;
-  import com.google.gson.Gson;
-  import com.google.gson.GsonBuilder;
-  import com.google.gson.JsonObject;
-  import com.google.gson.JsonParser;
-  ```
+   ```java
+   import java.io.*;
+   import java.net.*;
+   import java.util.*;
+   import javax.net.ssl.HttpsURLConnection;
+   import com.google.gson.Gson;
+   import com.google.gson.GsonBuilder;
+   import com.google.gson.JsonObject;
+   import com.google.gson.JsonParser;
+   import com.google.gson.Gson;
+   import com.google.gson.GsonBuilder;
+   import com.google.gson.JsonObject;
+   import com.google.gson.JsonParser;
+   ```
 
 2. Ve třídě nové vytvoření proměnné pro koncový bod rozhraní API, váš klíč předplatného a vyhledávací dotaz.
 
-  ```java
-  public class EntitySearch {
+   ```java
+   public class EntitySearch {
 
       static String subscriptionKey = "ENTER KEY HERE";
     
@@ -62,9 +62,9 @@ Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful 
     
         static String mkt = "en-US";
         static String query = "italian restaurant near me";
-  //...
+   //...
     
-  ```
+   ```
 
 ## <a name="construct-a-search-request-string"></a>Vytvořit žádost o hledaný řetězec
 
@@ -123,16 +123,16 @@ Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful 
 
 2. Použít knihovnu Gson k vytvoření nového `GsonBuilder()`a použijte `setPrettyPrinting().create()` do formátu json. Následně je vrátíte.    
   
-  ```java
-  //...
-  public static String prettify (String json_text) {
+   ```java
+   //...
+   public static String prettify (String json_text) {
     JsonParser parser = new JsonParser();
     JsonObject json = parser.parse(json_text).getAsJsonObject();
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     return gson.toJson(json);
-  }
-  //...
-  ```
+   }
+   //...
+   ```
 
 ## <a name="call-the-search-function"></a>Volání funkce vyhledávání
 

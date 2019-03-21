@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: b23b2c46098fb53a3a08ff86c46cc6b6c9b936bb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 17dd2a8cf58066fda7f82ba53b048df8e9b89da8
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228568"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285239"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Zabezpečení samostatného clusteru ve Windows pomocí certifikátů X.509
 Tento článek popisuje, jak zabezpečit komunikaci mezi různými uzly samostatného clusteru Windows. Také popisuje, jak k ověřování klientů, které se připojují k tomuto clusteru pomocí certifikátů X.509. Ověřování zajišťuje, že můžete jenom Autorizovaní uživatelé přístup ke clusteru a nasazených aplikací a provádění úloh správy. Certifikát zabezpečení musí být povolené na clusteru při vytvoření clusteru.  
@@ -175,7 +175,7 @@ Tady je příklad konfigurace clusteru ve kterém byly zadány cluster, server a
         "storeType": "FileShare",
         "IsEncrypted": "false",
         "connectionstring": "c:\\ProgramData\\SF\\DiagnosticsStore"
-        }
+        },
         "security": {
             "metadata": "The Credential type X509 indicates this cluster is secured by using X509 certificates. The thumbprint format is d5 ec 42 3b 79 cb e5 07 fd 83 59 3c 56 b9 d5 31 24 25 42 64.",
             "ClusterCredentialType": "X509",
@@ -261,7 +261,7 @@ Pro clustery, na kterých běží úlohy v produkčním prostředí, použijte [
 
 Pro clustery, které používáte pro účely testování můžete použít certifikát podepsaný svým držitelem.
 
-## <a name="optional-create-a-self-signed-certificate"></a>Volitelné: Vytvořit certifikát podepsaný svým držitelem
+## <a name="optional-create-a-self-signed-certificate"></a>Volitelné: Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 Chcete-li vytvořit certifikát podepsaný svým držitelem, který může být správně zabezpečená jedním ze způsobů je CertSetup.ps1 skript použít v Service Fabric SDK složku v adresáři C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure. Upravte tento soubor můžete změnit výchozí název certifikátu. (Hledejte hodnotu CN = ServiceFabricDevClusterCert.) Spusťte tento skript jako `.\CertSetup.ps1 -Install`.
 
 Nyní exportujte certifikát do souboru PFX chráněný heslem. Nejprve získejte kryptografický otisk certifikátu. 

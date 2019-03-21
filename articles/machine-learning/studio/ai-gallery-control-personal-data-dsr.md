@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: efdadd29c6fba4ed0a0f7f7df8d7956713d113ec
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 1b1583731f9b95bea7fe64efe628b05bb7b9a476
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245469"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118029"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Zobrazení a odstranit data uživatelů v rámci produktu z Galerie Azure AI
 

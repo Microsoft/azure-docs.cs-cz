@@ -7,12 +7,12 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: e4aabaf2673f6211523653f9d0a0ecf1769f83a3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 870910654101b4d6689b51464f8a29aef41bf9cb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548999"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103124"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Vytvoření a správě Azure Database for MySQL pravidla brány firewall pomocí Azure CLI
 Pravidla brány firewall na úrovni serveru umožňuje správcům spravovat přístup ke službě Azure Database for MySQL Server z konkrétní IP adresu nebo rozsah IP adres. Použití vhodné příkazy rozhraní příkazového řádku Azure, můžete vytvořit, aktualizovat, odstranit, seznam a zobrazit pravidla brány firewall pro správu serveru. Přehled služby Azure Database pro MySQL brány firewall, naleznete v tématu [– Azure Database for pravidla firewallu serveru MySQL](./concepts-firewall-rules.md)
@@ -25,11 +25,11 @@ Pravidla brány firewall na úrovni serveru umožňuje správcům spravovat př�
 **Az mysql server firewall-rule** je pomocí příkazu z příkazového řádku Azure vytvářet, odstraňovat, seznamu, zobrazit a aktualizovat pravidla brány firewall.
 
 Příkazy:
-- **vytvoření**: Vytvoření pravidla brány firewall serveru Azure MySQL.
+- **Vytvoření**: Vytvoření pravidla brány firewall serveru Azure MySQL.
 - **Odstranit**: Odstranění pravidla brány firewall na serveru Azure MySQL.
 - **Seznam**: Seznam pravidel brány firewall serveru Azure MySQL.
 - **Zobrazit**: Zobrazí podrobnosti o serveru Azure MySQL pravidlo brány firewall.
-- **Aktualizace**: Aktualizujte pravidlo brány firewall na serveru Azure MySQL.
+- **update**: Aktualizujte pravidlo brány firewall na serveru Azure MySQL.
 
 ## <a name="log-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Připojte se k Azure a seznam databáze Azure pro servery MySQL
 Bezpečně připojit pomocí rozhraní příkazového řádku Azure pomocí svého účtu Azure **az login** příkazu.
@@ -38,7 +38,7 @@ Bezpečně připojit pomocí rozhraní příkazového řádku Azure pomocí své
     ```azurecli
     az login
     ```
-Tento příkaz vypíše kód, který použijete v dalším kroku.
+   Tento příkaz vypíše kód, který použijete v dalším kroku.
 
 2. Použít webový prohlížeč a otevřete tak stránku [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin)a pak zadejte kód.
 

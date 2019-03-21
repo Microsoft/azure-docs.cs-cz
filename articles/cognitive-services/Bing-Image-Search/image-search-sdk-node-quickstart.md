@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 017f4a5b4382e2545cc59b8c9f24b00753641d6d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 641247a0ddc08f15fa70006e280426fda083241f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339636"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083024"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-nodejs"></a>Rychlý start: Hledání obrázků s SDK vyhledávání obrázků Bingu pro Node.js
 
@@ -68,7 +68,7 @@ Načtěte si pod **Search** (Hledání) [přístupový klíč služeb Cognitive 
         return await imageSearchApiClient.imagesOperations.search(searchTerm);
     };
     ```
-## <a name="send-a-query-and-handle-the-response"></a>Odeslání dotazu a zpracování odpovědi
+   ## <a name="send-a-query-and-handle-the-response"></a>Odeslání dotazu a zpracování odpovědi
 
 1. Zavolejte pomocnou funkci a zpracujte její `promise`, aby se parsovaly výsledky obrázků, které se vrátily v odpovědi.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37ffea61df1091cb7517014c4796537cdd40d62b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ed7d8d1a2c2f8c515fa520f6701068e4655cad35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765292"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898580"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Kurz: Integrace Azure Active Directory s Mimecast osobní portálu
 
@@ -208,7 +208,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -267,7 +267,7 @@ Budete muset zaregistrovat k doméně, než budete moct vytvořit uživatele.
    
     ![Uložit](./media/mimecast-personal-portal-tutorial/ic795006.png "uložit")
    
-    a. V **e-mailovou adresu** textové pole, typ **e-mailovou adresu** uživatele jako datový typ **BrittaSimon@contoso.com**.
+    a. V **e-mailovou adresu** textové pole, typ **e-mailovou adresu** uživatele jako datový typ **BrittaSimon\@contoso.com**.
     
     b. V **globální název** textové pole, typ **uživatelské jméno** jako **BrittaSimon**.
 

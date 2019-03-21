@@ -8,46 +8,39 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
 ms.author: pvrk
-ms.openlocfilehash: d430f6252157c5d34aa236ef88f8490b4ad6a184
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0a7a16a43b208bf2d14b86cd5cb23544ec03f9a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497940"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877526"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
 V tomto článku se dozvíte, jak pomocí prostředí PowerShell pro nastavení zálohování Azure ve Windows serveru nebo klienta Windows a Správa zálohování a obnovení.
 
 ## <a name="install-azure-powershell"></a>Instalace prostředí Azure PowerShell
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
-Tento článek se zaměřuje na Azure Resource Manageru (ARM) a rutiny Powershellu MS Online zálohování, která vám umožní použít trezor služby Recovery Services ve skupině prostředků.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Října 2015 byla vydána příkazového řádku Azure PowerShell 1.0. Tato verze byla úspěšná ve verzi 0.9.8 vydání a převést do režimu o významné změny, zejména v vzor pojmenování spočívající v rutinách. Rutiny verze 1.0 dodržují formát pojmenování {sloveso}-AzureRm {podstatné jméno}, kdežto názvy ve verzi 0.9.8 neobsahují označení **Rm** (třeba New-AzureRmResourceGroup místo New-AzureResourceGroup). Pokud používáte prostředí Azure PowerShell 0.9.8, musíte nejdřív spuštěním příkazu **Switch-AzureMode AzureResourceManager** spustit režim Resource Manager. Tento příkaz není nutné v 1.0 nebo novější.
-
-Pokud chcete použít skripty vytvořené pro verzi 0.9.8 prostředí v prostředí 1.0 nebo novější, měli pečlivě aktualizujete a testovat skripty v předprodukčním prostředí před jejich použitím v produkčním prostředí, aby se zabránilo neočekávaným dopad.
-
-[Stáhněte si nejnovější verzi prostředí PowerShell](https://github.com/Azure/azure-powershell/releases) (minimální požadovaná verze je: 1.0.0)
-
-[!INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
+Abyste mohli začít, [nainstalovat nejnovější verzi prostředí PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
 Následující kroky vás provedou vytvořením trezor služby Recovery Services. Trezor služby Recovery Services se liší od trezoru služby Backup.
 
-1. Pokud používáte Azure Backup poprvé, je nutné použít **Register-AzureRMResourceProvider** rutiny zaregistrujte zprostředkovatele služby Azure Recovery s vaším předplatným.
+1. Pokud používáte Azure Backup poprvé, je nutné použít **Register-AzResourceProvider** rutiny ve vašem předplatném zaregistrovat poskytovatele služby Azure Recovery.
 
     ```
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    PS C:\> Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 2. Trezor služby Recovery Services je prostředek ARM, proto musíte umístit do skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořte novou. Když vytváříte novou skupinu prostředků, zadejte název a umístění pro skupinu prostředků.  
 
     ```
-    PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "WestUS"
+    PS C:\> New-AzResourceGroup –Name "test-rg" –Location "WestUS"
     ```
-3. Použití **New-AzureRmRecoveryServicesVault** rutina pro vytvoření nového trezoru. Ujistěte se, k určení stejného umístění trezoru, protože byl použit pro skupinu prostředků.
+3. Použití **New-AzRecoveryServicesVault** rutina pro vytvoření nového trezoru. Ujistěte se, k určení stejného umístění trezoru, protože byl použit pro skupinu prostředků.
 
     ```
-    PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
+    PS C:\> New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 4. Zadejte typ redundance úložiště se použije. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantního úložiště (GRS)](../storage/common/storage-redundancy-grs.md). Následující příklad ukazuje, že možnost - BackupStorageRedundancy pro testVault nastavená na GeoRedundant.
 
@@ -57,17 +50,17 @@ Následující kroky vás provedou vytvořením trezor služby Recovery Services
    >
 
     ```
-    PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testVault"
-    PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
+    PS C:\> $vault1 = Get-AzRecoveryServicesVault –Name "testVault"
+    PS C:\> Set-AzRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
 ## <a name="view-the-vaults-in-a-subscription"></a>Zobrazit tyto trezory v rámci předplatného
-Použití **Get-AzureRmRecoveryServicesVault** zobrazíte seznam všech trezorů v rámci aktuálního předplatného. Tento příkaz můžete použít ke kontrole, zda byl vytvořen nový trezor a zjistit, jaké trezory služby jsou dostupné v rámci předplatného.
+Použití **Get-AzRecoveryServicesVault** zobrazíte seznam všech trezorů v rámci aktuálního předplatného. Tento příkaz můžete použít ke kontrole, zda byl vytvořen nový trezor a zjistit, jaké trezory služby jsou dostupné v rámci předplatného.
 
-Spustit příkaz, **Get-AzureRmRecoveryServicesVault**, a všech trezorů v předplatném jsou uvedeny.
+Spustit příkaz, **Get-AzRecoveryServicesVault**, a všech trezorů v předplatném jsou uvedeny.
 
 ```
-PS C:\> Get-AzureRmRecoveryServicesVault
+PS C:\> Get-AzRecoveryServicesVault
 Name              : Contoso-vault
 ID                : /subscriptions/1234
 Type              : Microsoft.RecoveryServices/vaults
@@ -131,7 +124,7 @@ Po vytvoření trezoru služby Recovery Services, stáhněte si nejnovější ve
 
 ```
 PS C:\> $credspath = "C:\downloads"
-PS C:\> $credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
+PS C:\> $credsfilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
 ```
 
 Ve Windows serveru nebo Windows klientského počítače, spusťte [Start OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) rutiny k registraci počítače v trezoru.

@@ -1,18 +1,18 @@
 ---
 title: Přehled – Azure Disk Encryption pro virtuální počítače IaaS | Dokumentace Microsoftu
 description: Tento článek obsahuje přehled služby Microsoft Azure Disk Encryption pro virtuální počítače IaaS.
-author: mestew
+author: msmbaldwin
 ms.service: security
 ms.topic: article
-ms.author: mstewart
-ms.date: 03/05/2019
+ms.author: mbaldwin
+ms.date: 03/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: e9b0653c8c42d207010b242d0d86985639560937
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 66d788aec83e3e57a49b063f2ca80484360f639d
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777367"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295279"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Azure Disk Encryption pro virtuální počítače IaaS
 
@@ -81,6 +81,7 @@ Toto řešení nepodporuje následující scénáře, funkce a technologie:
 * Úroveň Basic virtuální počítače IaaS.
 * Zakážete šifrování na disku s operačním systémem pro virtuální počítače IaaS s Linuxem.
 * Zakážete šifrování na datový disk, když je šifrované jednotky operačního systému pro virtuální počítače IaaS s Linuxem.
+* Nastaví šifrování jednotky operačního systému pro škálovací virtuálních počítačů Linux.
 * Virtuální počítače IaaS, které jsou vytvořeny pomocí klasické metody vytvoření virtuálního počítače.
 * Povolte šifrování zákazníka vlastních imagí na virtuální počítače IaaS s Linuxem.
 * Integrace s vaší místní systémem správy klíčů.

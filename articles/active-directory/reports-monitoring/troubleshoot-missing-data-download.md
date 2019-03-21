@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ba5f803f59263f9bfebfd4ec8635d5cdd6d90a0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cfb56ea81abeeba83bee73356c682b3e9fae866f
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171770"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58292906"
 ---
 # <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>Nemůžu najít všechna data v protokolech aktivit Azure Active Directory, které jsem si stáhli
 
@@ -34,11 +34,11 @@ Ve stažených protokolech aktivity (auditu nebo přihlášení) se nezobrazují
  
 ## <a name="cause"></a>Příčina
 
-Když si stáhnete protokoly aktivity na webu Azure Portal, Omezujeme rozsah na 5000 záznamů řazených od nejnovější je první. 
+Když si stáhnete protokoly aktivity na webu Azure Portal, Omezujeme rozsah na 250 000 záznamů řazených od nejnovější je první. 
 
 ## <a name="resolution"></a>Řešení
 
-Můžete využít [rozhraní API pro vytváření sestav Azure AD](concept-reporting-api.md), abyste načetli až milion záznamů v libovolném časovém okamžiku. Náš doporučený postup je [spuštění skriptu na základě plánu](tutorial-signin-logs-download-script.md) , která volá rozhraní API pro generování sestav k načtení záznamy přírůstkově v časovém intervalu času (například denně nebo týdně). 
+Můžete využít [rozhraní API pro vytváření sestav Azure AD](concept-reporting-api.md), abyste načetli až milion záznamů v libovolném časovém okamžiku.
 
 ## <a name="next-steps"></a>Další postup
 

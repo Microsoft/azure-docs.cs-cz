@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 58147f5c0c3c7203aa6978e284cf5bdc90fa6971
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a4431f1d2e9a63ee7797100cc1092244d9a8b880
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737770"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101512"
 ---
 # <a name="service-movement-cost"></a>Nákladech na přesun služeb
 Faktor, který Service Fabric Cluster Resource Manager bere v úvahu při pokusu určit, co se změní na clusteru udělat, je náklady na tyto změny. Pojem "cost" vyměněno vypnout kolik clusteru může zlepšit. Náklady se dostaneme při přesunu služby Vyrovnávání, Defragmentace a další požadavky. Cílem je pro splnění požadavků způsobem nejméně rušivé nebo nákladné. 
@@ -79,6 +79,7 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 MoveCost má čtyři úrovně: Nula, nízká, střední a vysokou. MoveCosts jsou relativní vzhledem k sobě navzájem, s výjimkou nula. Nula náklady na přesunutí znamená, že pohyb je zdarma a by neměl započítávat skóre řešení. Nastavení vašeho přechodu náklady na nejvyšší nemá *není* záruka, že replika zůstane na jednom místě.
 
 <center>
+
 ![Náklady na přesunutí jako faktor při výběru replik pro přesun][Image1]
 </center>
 

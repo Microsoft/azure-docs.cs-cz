@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: dc3e654e741fd1a326c83e51c72284f41ad74798
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6a7d79d8a9328eaf0808c79ed359299e1ec37d1a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55988047"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862711"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Kurz: Použití rozhraní API Video Indexeru
 
@@ -23,7 +23,7 @@ ms.locfileid: "55988047"
 
 Video Indexer slučuje různé technologie umělé inteligence (AI) pro zvuk a video nabízené Microsoftem do jedné integrované služby a tím usnadňuje vývoj. Rozhraní API umožňují vývojářům zaměřit se na používání technologií AI pro média, aniž by se museli starat o škálování, globální dosah, dostupnost a spolehlivost cloudové platformy. Rozhraní API můžete využívat k nahrávání souborů, získání podrobných přehledů z videí, získání adres URL widgetů přehledů a přehrávače k vložení do vaší aplikace i k dalším úlohám.
 
-Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. S placenou variantou vytvoříte účet Video Indexeru, který je [spojený s vaším předplatným Azure a účtem Azure Media Services](connect-to-azure.md). Platíte za indexované minuty a také poplatky související s účtem Azure Media Services. 
+Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. S placenou variantu, vytvoříte účet služby Video Indexer, který je [připojené k vašemu předplatnému Azure a účet Azure Media Services](connect-to-azure.md). Platíte za indexované minuty a také poplatky související s účtem Azure Media Services. 
 
 Tento článek popisuje, jak můžou vývojáři využít výhod rozhraní [API Video Indexeru](https://api-portal.videoindexer.ai/).
 
@@ -33,10 +33,10 @@ Tento článek popisuje, jak můžou vývojáři využít výhod rozhraní [API 
     
     ![Přihlášení](./media/video-indexer-use-apis/video-indexer-api01.png)
 
-    > [!Important]
-    > * Musíte použít stejného zprostředkovatele, jakého jste použili při registraci k Video Indexeru.
-    > * Osobní účty Google a Microsoft (Outlook nebo Live) jde použít jenom pro zkušební verze účtu. Účty připojené k Azure vyžadují Azure AD.
-    > * Pro každý e-mail může existovat jenom jeden aktivní účet. Pokud se uživatel pokusí přihlásit pomocí adresy user@gmail.com pro LinkedIn a pak pomocí adresy user@gmail.com pro Google, ve druhém případě se zobrazí chybová stránka s informací, že uživatel už existuje.
+   > [!Important]
+   > * Musíte použít stejného zprostředkovatele, jakého jste použili při registraci k Video Indexeru.
+   > * Osobní účty Google a Microsoft (Outlook nebo Live) jde použít jenom pro zkušební verze účtu. Účty připojené k Azure vyžadují Azure AD.
+   > * Pro každý e-mail může existovat jenom jeden aktivní účet. Pokud se uživatel pokusí přihlásit pomocí adresy user@gmail.com pro LinkedIn a pak pomocí adresy user@gmail.com pro Google, ve druhém případě se zobrazí chybová stránka s informací, že uživatel už existuje.
 
 2. Přihlaste se k odběru.
 
@@ -72,7 +72,7 @@ Kvůli usnadnění můžete pomocí **Autorization** API > **GetAccounts** získ
 
 Platnost přístupových tokenů vyprší za 1 hodinu. Před použitím API Operations se ujistěte, že je váš přístupový token platný. Pokud platnost vyprší, znovu volejte API Authorization, abyste získali nový přístupový token.
  
-Jste připraveni pustit se do integrace pomocí rozhraní API. Najděte si [podrobný popis každého REST API Video Indexeru](http://api-portal.videoindexer.ai/).
+Jste připraveni pustit se do integrace pomocí rozhraní API. Najděte si [podrobný popis každého REST API Video Indexeru](https://api-portal.videoindexer.ai/).
 
 ## <a name="location"></a>Umístění
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5ade3ac7587d4ac5c5a6d8e174e76e76088e4e57
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bc2e41fd5da4737ea1efe329b70964535daff54a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157937"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105960"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C jako ověření vstupu uživatele
 
@@ -249,10 +249,10 @@ Zprostředkovatel deklarací může mít více technické profily z různých d�
 Následující fragment kódu XML obsahuje uzel poskytovatele deklarací identity dva technické profily:
 
 * **TechnicalProfile Id="REST-API-SignUp"**: Definuje vaši službu RESTful.
-   * `Proprietary` je popsána jako protokol pro zprostředkovatele na základě RESTful.
-   * `InputClaims` definuje deklarace, které se odešlou do služby REST z Azure AD B2C.
+  * `Proprietary` je popsána jako protokol pro zprostředkovatele na základě RESTful.
+  * `InputClaims` definuje deklarace, které se odešlou do služby REST z Azure AD B2C.
 
-   V tomto příkladu obsah deklarace identity `givenName` odešle službě REST jako `firstName`, obsah se deklarace `surname` odešle službě REST jako `lastName`, a `email` odešle je. `OutputClaims` Element definuje deklarace identity, které jsou načteny z služba RESTful zpět do Azure AD B2C.
+    V tomto příkladu obsah deklarace identity `givenName` odešle službě REST jako `firstName`, obsah se deklarace `surname` odešle službě REST jako `lastName`, a `email` odešle je. `OutputClaims` Element definuje deklarace identity, které jsou načteny z služba RESTful zpět do Azure AD B2C.
 
 * **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**: Technický profil ověření přidá do stávající technický profil (definováno v základních zásadách). Technický profil ověření během registrace cesty, vyvolá předchozí technický profil. Pokud služba RESTful vrátí chybu HTTP 409 (konflikt chyba), zobrazí se chybová zpráva pro uživatele.
 

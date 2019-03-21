@@ -5,26 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 03/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 31ca6deef6d81ca7beb08f6df1a15d52ef381a46
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 9f2eae4160dbef164ec70e8fa4d7b3a83706ae96
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190387"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880122"
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Úroveň kompatibility pro tabulkové modely služby Analysis Services
 
-*Úroveň kompatibility* odkazuje na konkrétní verzi chování v modulu služby Analysis Services. Změny úrovně kompatibility se obvykle shoduje s hlavní verze systému SQL Server. Tyto změny jsou také implementováno ve službě Azure Analysis Services udržovat rozdíly mezi obě platformy. Úroveň kompatibility se změní také vliv funkcí dostupných ve vašich tabulkových modelů. DirectQuery a metadat pro tabulkový objektový mít například jedná o rozdílné implementace v závislosti na úrovni kompatibility. Úroveň kompatibility se zadává v projektu s tabelárním modelem v aplikaci Visual Studio (SSDT). Tabulkové modely vytvořené v a importovat z Power BI Desktopu jsou na úrovni kompatibility 1400 pouze.
+*Úroveň kompatibility* odkazuje na konkrétní verzi chování v modulu služby Analysis Services. Změny úrovně kompatibility se obvykle shoduje s hlavní verze systému SQL Server. Tyto změny jsou také implementováno ve službě Azure Analysis Services udržovat rozdíly mezi obě platformy. Úroveň kompatibility se změní také vliv funkcí dostupných ve vašich tabulkových modelů. DirectQuery a metadat pro tabulkový objektový mít například jedná o rozdílné implementace v závislosti na úrovni kompatibility. Úroveň kompatibility se zadává v projektu s tabelárním modelem v aplikaci Visual Studio (SSDT).
 
-Služba Azure Analysis Services podporuje tabulkové modely na úrovni kompatibility 1200 a 1400. 
-
-> [!NOTE]
-> Power BI Desktopu. září 2018 a novější verze mají úroveň kompatibility .pbix 1465. Tato úroveň kompatibility se podporuje ve službě Azure Analysis Services. Ale import souboru Power BI Desktopu se nedoporučuje pro produkční prostředí. Další informace najdete v tématu [Import souboru Power BI Desktopu](analysis-services-import-pbix.md).
-
-Je nejnovější úroveň kompatibility 1400. Tato úroveň se shoduje s SQL Server 2017 Analysis Services. Mezi hlavní funkce na úrovni kompatibility 1400 patří:
+Služba Azure Analysis Services podporuje tabulkové modely na úrovni kompatibility 1200 a 1400. Je nejnovější úroveň kompatibility 1400. Tato úroveň se shoduje s SQL Server 2017 Analysis Services. Mezi hlavní funkce na úrovni kompatibility 1400 patří:
 
 *  Nové funkce pro datové připojení a import s podporou pro vlastní rozhraní API a skriptování TMSL. 
 *  Transformace dat a možnosti dat hybridní webové aplikace pomocí získat Data a M výrazů.
@@ -55,5 +50,4 @@ Je nejnovější úroveň kompatibility 1400. Tato úroveň se shoduje s SQL Ser
 
 ## <a name="next-steps"></a>Další postup
 
-  [Vytvoření modelu na webu Azure portal](analysis-services-create-model-portal.md)   
   [Správa služby Analysis Services](analysis-services-manage.md)  

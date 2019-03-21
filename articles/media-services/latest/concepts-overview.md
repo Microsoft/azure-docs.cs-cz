@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/13/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: b346ac0ac456b7f6af078496e8dd1cb738caab67
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: d3cea9f3bc5645aeaefc5bb376557d365681df56
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530190"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994108"
 ---
 # <a name="media-services-concepts"></a>Koncepty služby Media Services
 
@@ -82,7 +82,7 @@ Služba Media Services můžete použít **dynamických manifestů** Streamovat 
 
 ## <a name="live-streaming"></a>Živé streamování
 
-Azure Media Services umožňuje doručovat živé události do vašich zákazníků v cloudu Azure. **Živé události** zodpovídají za příjem a zpracování živého videa informačních kanálů. Když vytvoříte **živá událost**, vstupní koncový bod se vytvoří, můžete použít k odesílání živě signál z vzdálený kodér. Jakmile máte datový proud plyne do **živá událost**, streamování událostí můžete začít tak, že vytvoříte **Asset**, **Live výstup**, a **Lokátor streamování** . **Live výstup** bude archivovat do datového proudu **Asset** a zpřístupní se divákům prostřednictvím **streamování Endpoid**. A **živá událost** může být jeden ze dvou typů: **předávací** a **živého kódování**.
+Azure Media Services umožňuje doručovat živé události do vašich zákazníků v cloudu Azure. **Živé události** zodpovídají za příjem a zpracování živého videa informačních kanálů. Když vytvoříte **živá událost**, vstupní koncový bod se vytvoří, můžete použít k odesílání živě signál z vzdálený kodér. Jakmile máte datový proud plyne do **živá událost**, streamování událostí můžete začít tak, že vytvoříte **Asset**, **Live výstup**, a **Lokátor streamování** . **Live výstup** bude archivovat do datového proudu **Asset** a zpřístupní se divákům prostřednictvím **koncový bod streamování**. A **živá událost** může být jeden ze dvou typů: **předávací** a **živého kódování**.
 
 Následující obrázek ukazuje pracovní postup předávací typu:
 

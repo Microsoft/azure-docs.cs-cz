@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi, vanto
 manager: craigg
-ms.date: 02/11/2019
-ms.openlocfilehash: 5cb1f04d5b7d6470fc5ab6920b2edd84c946fbf8
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: 6713182003a280c1d53e904209159b55b4ad01c6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309976"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855567"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell:  Vytvoření koncového bodu služby virtuální a pravidlo virtuální sítě pro SQL
 
@@ -37,6 +37,8 @@ Vaše podněty pro vytvoření pravidla jsou vysvětlené v: [Virtuální koncov
 > Pokud všechno, co potřebujete k vyhodnocení nebo přidat koncový bod služby virtuální *název typu* pro službu SQL Database pro vaši podsíť, můžete přeskočit přímo na naše více [přímé skript prostředí PowerShell](#a-verify-subnet-is-endpoint-ps-100).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 ## <a name="major-cmdlets"></a>Hlavní rutiny
 

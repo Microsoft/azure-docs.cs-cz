@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: juliako
-ms.openlocfilehash: 4dd0f697d16d7a2fbeec8f712d98e6a7c439cb4e
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 6de626323c82689d0ead4f5aaad2a2e43187ebd0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064674"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896989"
 ---
 # <a name="azure-media-player-overview"></a>Přehled služby Azure Media Player
 
@@ -24,13 +24,13 @@ Azure Media Player je web přehrávač videa navržená tak, aby přehrávání 
 
 Microsoft Azure Media Services umožňuje k přehrávání obsahu obsah tak, aby se poskytovat, než se HLS, DASH, Smooth Streaming formátů streamování. Azure Media Player bere v úvahu tyto různé formáty a automaticky hraje nejlepší odkaz založené na možnostech platformy a prohlížeče. Media Services také umožňuje dynamické šifrování prostředků pomocí šifrování PlayReady nebo 128bitového šifrování AES envelope šifrování. Azure Media Player umožňuje k dešifrování PlayReady a AES-128 bitů šifrovaný obsah, když správně nakonfigurovaný. 
 
-[Vyzkoušejte si bezplatnou verzi](http://azure.microsoft.com/en-us/pricing/free-trial/)
+[Vyzkoušejte si bezplatnou verzi](https://azure.microsoft.com/en-us/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>Na stránce ukázku Azure Media Playeru
 
 ### <a name="start-using"></a>Začněte používat
 
-Můžete použít [stránky ukázku Azure Media Player](http://aka.ms/amp) přehrávání Azure Media Services ukázky nebo vlastní datový proud.  
+Můžete použít [stránky ukázku Azure Media Player](https://aka.ms/amp) přehrávání Azure Media Services ukázky nebo vlastní datový proud.  
 
 Chcete-li přehrát nové video, vložte různé adresy URL a stiskněte klávesu **aktualizace**.
 
@@ -40,7 +40,7 @@ Chcete-li nakonfigurovat různé možnosti přehrávání (například Odborný,
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>Monitorování diagnostiky datový proud videa
 
-Můžete použít [stránky ukázku Azure Media Player](http://aka.ms/amp) monitorování diagnostiky datový proud videa. 
+Můžete použít [stránky ukázku Azure Media Player](https://aka.ms/amp) monitorování diagnostiky datový proud videa. 
 
 ![Diagnostika Azure Media Player](./media/azure-media-player/diagnostics.png)
 

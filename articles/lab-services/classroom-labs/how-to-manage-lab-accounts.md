@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: spelluru
-ms.openlocfilehash: 6cd06778ad54fa698c5bc2fe4ccf02f4be2ee2ec
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: f1194d8385d1e7ddcb906d0c8c3a2b56648e2547
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807034"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120818"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Správa účtů testovacího prostředí ve službě Azure Lab Services 
 Ve službě Azure Lab Services účet testovacího prostředí je kontejner pro testovací prostředí spravované typy, jako jsou testovací prostředí v učebnách. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytuje přístup k vlastníků testovacího prostředí, kteří můžou vytvářet testovací prostředí v rámci účtu. Tento článek popisuje, jak vytvořit účet testovacího prostředí, zobrazit všechny účty testovacího prostředí nebo odstranění účtu služby testovacího prostředí.
@@ -38,7 +38,9 @@ Následující kroky ukazují postup vytvoření účtu testovacího prostředí
     2. Vyberte **předplatné Azure**, ve kterém chcete účet testovacího prostředí vytvořit.
     3. V části **Skupina prostředků** vyberte **Vytvořit novou** a zadejte název skupiny prostředků.
     4. V části **Umístění** vyberte umístění nebo oblast, ve které chcete účet testovacího prostředí vytvořit. 
-    5. Vyberte **Vytvořit**. 
+    5. Pro **partnerská virtuální síť**, vyberte partnerská virtuální síť (VNet) pro síť testovacího prostředí. Testovací prostředí vytvořené v rámci tohoto účtu připojení k vybrané virtuální síti a mají přístup k prostředkům ve vybrané virtuální síti. 
+    7. Pro **Autor testovacího prostředí povolit vybrat umístění testovacího prostředí** pole, zda má být creators testovacího prostředí bude moci vybrat umístění testovacího prostředí. Ve výchozím nastavení bude možnost zakázána. Pokud je zakázáno, Tvůrce prostředí nelze zadat umístění pro testovací prostředí, které se vytváří. Tato cvičení se vytvoří v nejbližší geografické umístění účtu testovacího prostředí. Pokud je povolena, Autor testovacího prostředí můžete vybrat umístění v době vytvoření testovacího prostředí.      
+    8. Vyberte **Vytvořit**. 
 
         ![Okno Create a lab account (Vytvořit účet testovacího prostředí)](../media/tutorial-setup-lab-account/lab-account-settings.png)
 5. Vyberte **ikonu zvonku** na panelu nástrojů (**oznámení**), potvrďte, že nasazení proběhlo úspěšně a pak vyberte **přejít k prostředku**. 
@@ -86,6 +88,18 @@ Jako vlastník účtu testovacího prostředí můžete určit image z Marketpla
     1. V posledním sloupci vyberte **…** (tři tečky) a zvolte **Enable image** (Povolit image). 
     2. Zaškrtnutím políček před názvy imagí v seznamu můžete vybrat několik imagí. Potom zvolte **Enable selected images** (Povolit vybrané image). 
 
+## <a name="configure-the-lab-account"></a>Nakonfigurujte účet testovacího prostředí
+1. Na **účet testovacího prostředí** stránce **Labs konfigurace** v nabídce vlevo.
+
+    ![Stránka Konfigurace testovacích prostředí](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
+1. Pro **partnerská virtuální síť**vyberte **povoleno** nebo **zakázané**. Výchozí hodnota je **zakázané**. Pokud chcete povolit partnerská virtuální síť, proveďte následující kroky: 
+    1. Vyberte **povolené**.
+    2. Vyberte **VNet** z rozevíracího seznamu. 
+    3. Na panelu nástrojů vyberte **Uložit**. 
+    
+        Testovací prostředí vytvořené v rámci tohoto účtu jsou připojené k vybrané virtuální síti. Přístupem k prostředkům ve vybrané virtuální síti. 
+3. Pro **Autor testovacího prostředí povolit vybrat umístění testovacího prostředí**vyberte **povoleno** Pokud chcete, aby autor testovacího prostředí, abyste mohli vybrat umístění pro testovací prostředí. Pokud je zakázaná, tato praktická cvičení se automaticky vytvoří ve stejném umístění, ve které existuje účet testovacího prostředí. 
+
 ## <a name="view-lab-accounts"></a>Zobrazení účtů testovacího prostředí
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny prostředky** z nabídky. 
@@ -93,19 +107,6 @@ Jako vlastník účtu testovacího prostředí můžete určit image z Marketpla
     Můžete také filtrovat podle předplatného, skupinu prostředků, míst a značky. 
 
     ![Všechny prostředky -> účtů testovacího prostředí](../media/how-to-manage-lab-accounts/all-resources-lab-accounts.png)
-
-
-## <a name="delete-a-lab-account"></a>Odstranění účtu služby testovacího prostředí
-Postupujte podle pokynů v předchozí části, která se zobrazí v seznamu účtů testovacího prostředí. Odstranění účtu služby testovacího prostředí použijte následující pokyny: 
-
-1. Vyberte **účet testovacího prostředí** , kterou chcete odstranit. 
-2. Vyberte **odstranit** z panelu nástrojů. 
-
-    ![Účtů testovacího prostředí -> tlačítko Odstranit](../media/how-to-manage-lab-accounts/delete-button.png)
-1. Typ **Ano** pro potvrzení.
-1. Vyberte **Odstranit**. 
-
-    ![Odstranit účet testovacího prostředí – potvrzení](../media/how-to-manage-lab-accounts/delete-lab-account-confirmation.png)
 
 ## <a name="view-and-manage-labs-in-the-lab-account"></a>Zobrazení a správa testovacích prostředí v rámci účtu testovacího prostředí
 
@@ -119,6 +120,8 @@ Postupujte podle pokynů v předchozí části, která se zobrazí v seznamu ú�
     4. Maximální počet uživatelů povolených v testovacím prostředí. 
     5. Stav testovacího prostředí. 
 
+
+
 ## <a name="delete-a-lab-in-the-lab-account"></a>Odstranit testovací prostředí v účtu testovacího prostředí
 Postupujte podle pokynů v předchozí části zobrazíte seznam testovacích prostředí v rámci účtu testovacího prostředí.
 
@@ -128,6 +131,20 @@ Postupujte podle pokynů v předchozí části zobrazíte seznam testovacích pr
 2. Vyberte **Ano** na upozornění. 
 
     ![Potvrzení odstranění testovacího prostředí](../media/how-to-manage-lab-accounts/confirm-lab-delete.png)
+
+## <a name="delete-a-lab-account"></a>Odstranění účtu služby testovacího prostředí
+Postupujte podle pokynů v předchozí části, která se zobrazí v seznamu účtů testovacího prostředí. Odstranění účtu služby testovacího prostředí použijte následující pokyny: 
+
+1. Vyberte **účet testovacího prostředí** , kterou chcete odstranit. 
+2. Vyberte **odstranit** z panelu nástrojů. 
+
+    ![Účtů testovacího prostředí -> tlačítko Odstranit](../media/how-to-manage-lab-accounts/delete-button.png)
+1. Typ **Ano** pro potvrzení.
+1. Vyberte **Odstranit**. 
+
+    ![Odstranit účet testovacího prostředí – potvrzení](../media/how-to-manage-lab-accounts/delete-lab-account-confirmation.png)
+
+
 
 ## <a name="next-steps"></a>Další postup
 Viz následující články:

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: 5fb8f54f50d821e53ec260c67ad5cf56c7f5671b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 82910f7b29789fa777f6deb2c185c57e847e1c88
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816534"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109252"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Co zvážit při plánování kapacity clusteru Service Fabric
 Pro každého produkčního nasazení plánování kapacity je důležitý krok. Tady jsou některé položky, které musíte zvážit jako součást tohoto procesu.
@@ -82,16 +82,16 @@ V clusteru s více typy uzlů jeden primární typ uzlu a zbývající jsou jin�
 
 > [!WARNING]
 > Získat typy uzlů s bronzovou odolnosti _žádná oprávnění_. To znamená, že úlohy infrastruktury, které ovlivnit Bezstavová zatížení nebude mohly zastavit nebo zpoždění, které může mít vliv na vaše úlohy. Použijte bronzová pouze pro typy uzlů, na kterých běží pouze Bezstavová zatížení. Pro produkční úlohy Silver spuštěna nebo k výše se doporučuje. 
-
+> 
 > Bez ohledu na libovolné úrovni odolnosti [zrušení přidělení](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) operace na Škálovací sadu virtuálních počítačů se odstranit cluster
 
 **Mezi výhody používání stříbrné nebo zlaté úrovně odolnosti**
- 
+ 
 - Snižuje počet požadovaných kroků v rámci operace škálování na méně instancí (to znamená, že uzel deaktivovat a odebrat ServiceFabricNodeState je volána automaticky).
 - Snižuje riziko ztráty dat kvůli operaci změnit iniciovaných zákazníkem skladovou Položku virtuálního počítače na místě nebo operace infrastruktury Azure.
 
 **Nevýhody použití stříbrné nebo zlaté úrovně odolnosti**
- 
+ 
 - Nasazení do virtuálního počítače škálovací nastaveno a další související prostředky Azure můžou být zpožděné, můžete časový limit nebo může být blokovány zcela problémy ve vašem clusteru nebo na úrovni infrastruktury. 
 - Zvýší počet [události životního cyklu repliky](service-fabric-reliable-services-lifecycle.md) (například primární záměna) z důvodu automatizované deaktivací uzlu během operací infrastruktury Azure.
 - Přijímá uzly mimo službu po dobu při platformy Azure prostřednictvím aktualizací softwaru nebo hardwaru údržby, které se vyskytují aktivity. Může se zobrazit uzly se stavem zakázání/zakázáno během těchto činností. Dočasně zmenšuje kapacitu vašeho clusteru, ale by neměla mít vliv na dostupnost aplikace nebo clusteru.

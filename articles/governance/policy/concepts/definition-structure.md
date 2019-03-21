@@ -4,17 +4,17 @@ description: Popisuje, jak je používat prostředku definice zásady Azure Poli
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/19/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: e3f2b60af574bc1d4e6633ce47b6cdf51e8e6d3e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 35cb5c286b9c9657c37dcede7f51082b5c48ef99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308410"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894423"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -101,7 +101,7 @@ Parametr má následující vlastnosti, které se používají v definici zásad
   - `displayName`: Popisný název na portálu pro parametr nezobrazuje.
   - `strongType`: (Volitelné) Při přiřazení definice zásady na portálu. Obsahuje seznam vědět kontextu. Další informace najdete v tématu [strongType](#strongtype).
 - `defaultValue`: (Volitelné) Nastaví hodnotu parametru v přiřazení-li zadána žádná hodnota. Vyžadováno při aktualizaci existující definice zásad, který je přiřazen.
-- `allowedValues`: (Volitelné) Poskytuje seznam hodnot, které přijímá parametr během přiřazení.
+- `allowedValues`: (Volitelné) Poskytuje pole hodnot, které přijímá parametr během přiřazení.
 
 Například můžete definovat definici zásady možné omezit místa, kde můžete nasadit prostředky. Může být parametr pro tuto definici zásady **allowedLocations**. Tento parametr by jednotlivé přiřazení definice zásady používá k omezení přijatelných hodnot. Použití **strongType** poskytuje vylepšené prostředí při dokončení přiřazení prostřednictvím portálu:
 
@@ -289,6 +289,9 @@ V následujícím příkladu `concat` slouží k vytváření vyhledávacího po
 Podmínky lze vybrat také pomocí **hodnota**. **Hodnota** zkontroluje podmínky proti [parametry](#parameters), [podporované šablony funkce](#policy-functions), nebo literály.
 **Hodnota** je spárovaná s žádným nepodporuje [podmínku](#conditions).
 
+> [!WARNING]
+> Pokud výsledek _funkce šablony_ se o chybu, selže hodnocení zásad. Selhání vyhodnocení je implicitní **Odepřít**. Další informace najdete v tématu [vyhnout chybám šablony](#avoiding-template-failures).
+
 #### <a name="value-examples"></a>Příklady hodnot
 
 Používá tento příklad pravidla zásad **hodnotu** k porovnání výsledek `resourceGroup()` funkcí a vrácené **název** vlastnost **jako** podmínku `*netrg`. Pravidlo odepřít prostředek není `Microsoft.Network/*` **typ** v libovolné skupině prostředků, jejíž název končí v `*netrg`.
@@ -328,6 +331,44 @@ Tento příklad pravidla zásad používá **hodnotu** ke kontrole, pokud výsle
     }
 }
 ```
+
+#### <a name="avoiding-template-failures"></a>Zamezení selhání šablony
+
+Použití _šablony funkce_ v **hodnotu** umožňuje mnoho komplexních vnořených funkcí. Pokud výsledek _funkce šablony_ se o chybu, selže hodnocení zásad. Selhání vyhodnocení je implicitní **Odepřít**. Příklad **hodnota** , který selže v některých scénářích:
+
+```json
+{
+    "policyRule": {
+        "if": {
+            "value": "[substring(field('name'), 0, 3)]",
+            "equals": "abc"
+        },
+        "then": {
+            "effect": "audit"
+        }
+    }
+}
+```
+
+Příklad pravidla zásad výše používá [substring()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) k porovnání první tři znaky **název** k **abc**. Pokud **název** je kratší než tři znaky `substring()` funkce způsobí chybu. Tato chyba způsobí, že zásady tak, aby se **Odepřít** vliv.
+
+Místo toho použijte [if()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) funkce a zkontrolujte, zda prvních tří znaků **název** rovná **abc** bez povolení **název** kratší než tři znaky způsobí chybu:
+
+```json
+{
+    "policyRule": {
+        "if": {
+            "value": "[if(greaterOrEquals(length(field('name')), 3), substring(field('name'), 0, 3), 'not starting with abc')]",
+            "equals": "abc"
+        },
+        "then": {
+            "effect": "audit"
+        }
+    }
+}
+```
+
+S tímto pravidlem upravená zásada `if()` kontroluje délku **název** před pokusem o získání `substring()` na hodnotu s méně než tři znaky. Pokud **název** je příliš krátký, je hodnota "není od verze abc" namísto něj vrácen a ve srovnání s **abc**. Prostředek s krátký název, který nezačíná **abc** stále nedaří pravidlo zásad, ale již během hodnocení způsobí chybu.
 
 ### <a name="effect"></a>Efekt
 
@@ -443,70 +484,60 @@ Některé aliasy, které jsou k dispozici máte verzi, která se zobrazí jako '
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
-V prvním příkladu se používá k vyhodnocení celého pole, ve kterém **[\*]** alias vyhodnocuje každý prvek pole.
-
-Podívejme se na pravidlo zásad jako příklad. Tato zásada **Odepřít** účtu úložiště, která má nakonfigurované ipRules a pokud **žádný** ipRules má hodnotu "127.0.0.1".
+Alias 'normal' reprezentuje pole jako jedinou hodnotu. Toto pole je pro přesnou shodu porovnání scénáře při celou sadu hodnot musí být přesně tak, jak je definováno, častěji a méně. Pomocí **ipRules**, příklad by ověřování, včetně počtu pravidel a strukturu každé pravidlo existuje přesnou sadu pravidel. Toto pravidlo vzorku vyhledává, přesně jak **192.168.1.1** a **10.0.4.1** s _akce_ z **povolit** v **ipRules** použít **effectType**:
 
 ```json
 "policyRule": {
     "if": {
-        "allOf": [{
+        "allOf": [
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "exists": "true"
+            },
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "Equals": [
+                    {
+                        "action": "Allow",
+                        "value": "192.168.1.1"
+                    },
+                    {
+                        "action": "Allow",
+                        "value": "10.0.4.1"
+                    }
+                ]
+            }
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effectType')]"
+    }
+}
+```
+
+**[\*]** Alias umožňuje porovnání hodnotu každého prvku v poli a specifické vlastnosti jednotlivých prvků. Tento přístup umožňuje porovnat vlastností elementů pro 'Pokud žádná z","Pokud některý z", nebo" Pokud všechny z "scénáře. Pomocí **ipRules [\*]**, příklad by být ověřování, které každý _akce_ je _Odepřít_, ale ne byste se museli starat o tom, kolik pravidel neexistuje nebo jaké IP _hodnotu_ je. Toto pravidlo vzorku vyhledá všechny shody **ipRules [\*] .value** k **10.0.4.1** a použije **effectType** pouze v případě, že se nejméně jedna shoda nenajde:
+
+```json
+"policyRule": {
+    "if": {
+        "allOf": [
+            {
                 "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
                 "exists": "true"
             },
             {
                 "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value",
-                "notEquals": "127.0.0.1"
+                "notEquals": "10.0.4.1"
             }
         ]
     },
     "then": {
-        "effect": "deny",
+        "effect": "[parameters('effectType')]"
     }
 }
 ```
 
-**IpRules** pole je následující příklad:
-
-```json
-"ipRules": [{
-        "value": "127.0.0.1",
-        "action": "Allow"
-    },
-    {
-        "value": "192.168.1.1",
-        "action": "Allow"
-    }
-]
-```
-
-Zde je, jak se zpracovávají v tomto příkladu:
-
-- `networkAcls.ipRules` – Zkontrolujte, že pole je jiná než null. Je vyhodnocen jako true, takže vyhodnocování pokračuje.
-
-  ```json
-  {
-    "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-    "exists": "true"
-  }
-  ```
-
-- `networkAcls.ipRules[*].value` -Zkontroluje každý _hodnotu_ vlastnost **ipRules** pole.
-
-  ```json
-  {
-    "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value",
-    "notEquals": "127.0.0.1"
-  }
-  ```
-
-  - Jako pole, které se budou zpracovávat každý prvek.
-
-    - "127.0.0.1"! = "127.0.0.1" vyhodnotí jako false.
-    - "127.0.0.1"! = "192.168.1.1" vyhodnotí jako true.
-    - Alespoň jeden _hodnotu_ vlastnost **ipRules** pole vyhodnotí jako false, takže vyhodnocování se zastaví.
-
-Jako podmínka vyhodnocena jako false **Odepřít** efekt neaktivuje.
+Další informace najdete v tématu [vyhodnocení [\*] alias](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
 ## <a name="initiatives"></a>Iniciativy
 

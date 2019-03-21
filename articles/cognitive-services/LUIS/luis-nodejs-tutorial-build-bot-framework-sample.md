@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 62a3169257001f64e3103cc079e544449ac59663
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 27ebe827e97c8361c7f93a125f09aa9e339a6a14
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328380"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087104"
 ---
 # <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Služba LUIS robotů v Node.js s použitím rozhraní Bot Framework 3.x a použijete Azure Web app bot
 
@@ -45,16 +45,16 @@ Robot jsou reaguje na záměry od HomeAutomation domény, které jsou v aplikaci
     ![Vyberte web app bot zahájíte proces vytváření prostředků](./media/luis-tutorial-node-bot/bot-service-selection.png)
 
 3. V **Bot Service** okno, zadejte požadované informace a vyberte **vytvořit**. Tím se vytvoří a nasadí bot service a LUIS aplikace do Azure. Pokud chcete použít [řeči dočištění](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), zkontrolujte [požadavků oblasti](troubleshooting.md#what-luis-regions-support-bot-framework-speech-priming) před vytvořením svého robota. 
-    * Nastavte **název aplikace** na název svého robota. Název se používá jako subdoménu svého robota nasazené do cloudu (například mynotesbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
-    * Vyberte předplatné, [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), plán služby App service, a [umístění](https://azure.microsoft.com/regions/).
-    * Pro **Bot šablony**vyberte:
-        * **Sada SDK v3**
-        * **Node.js**
-        * **Rozpoznávání jazyka**
-    * Vyberte **umístění aplikace LUIS**. Toto je vytváření [oblasti] [ LUIS] vytvoření aplikace v.
-    * Zaškrtněte políčko potvrzení právních upozornění. Podmínky právních upozornění jsou níže na zaškrtávací políčko.
+   * Nastavte **název aplikace** na název svého robota. Název se používá jako subdoménu svého robota nasazené do cloudu (například mynotesbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
+   * Vyberte předplatné, [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), plán služby App service, a [umístění](https://azure.microsoft.com/regions/).
+   * Pro **Bot šablony**vyberte:
+       * **Sada SDK v3**
+       * **Node.js**
+       * **Rozpoznávání jazyka**
+   * Vyberte **umístění aplikace LUIS**. Toto je vytváření [oblasti] [ LUIS] vytvoření aplikace v.
+   * Zaškrtněte políčko potvrzení právních upozornění. Podmínky právních upozornění jsou níže na zaškrtávací políčko.
 
-    ![Okno bot Service](./media/luis-tutorial-node-bot/bot-service-setting-callout-template.png)
+     ![Okno bot Service](./media/luis-tutorial-node-bot/bot-service-setting-callout-template.png)
 
 
 4. Potvrďte, že byla nasazena bot service.
@@ -247,7 +247,8 @@ Další informace o [Bot Framework](https://dev.botframework.com/) a [3.x](https
 
 ## <a name="next-steps"></a>Další postup
 
-<!-- From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. Allowing and handling interruptions is a flexible design that accounts for what users really do. Learn more about the various actions you can associate with a recognized intent.--> Můžete zkusit přidat další záměrů, jako pomoc zrušit a pozdravu, na aplikaci LUIS. Potom přidejte dialogová okna pro novou záměry a otestovat je pomocí robota. 
+<!-- From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. Allowing and handling interruptions is a flexible design that accounts for what users really do. Learn more about the various actions you can associate with a recognized intent.-->
+Můžete zkusit přidat další záměrů, jako pomoc zrušit a pozdravu, na aplikaci LUIS. Potom přidejte dialogová okna pro novou záměry a otestovat je pomocí robota. 
 
 <!-- 
 > [!NOTE] 

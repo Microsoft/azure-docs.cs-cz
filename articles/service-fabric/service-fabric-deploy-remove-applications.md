@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: d38ec87fb634e1809959b85f0382935e8a78bf3b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: dbfbbd38a24d4f82ef7fd09ce57b87fb5e5327dc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697160"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880801"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Nasazení a odebírat aplikace pomocí Powershellu
 > [!div class="op_single_selector"]
@@ -303,7 +303,7 @@ Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\Se
 ImageStoreConnectionString se nachází v manifestu clusteru:
 
 ```xml
-<ClusterManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="Server-Default-SingleNode" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ClusterManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Name="Server-Default-SingleNode" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
 
     [...]
 
@@ -317,7 +317,7 @@ ImageStoreConnectionString se nachází v manifestu clusteru:
 Zobrazit [pochopit připojovací řetězec úložiště image](service-fabric-image-store-connection-string.md) doplňující informace o úložiště image store a image uložit připojovací řetězec.
 
 ### <a name="deploy-large-application-package"></a>Nasazení balíčku velké aplikace
-Problém: [kopírování ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) vyprší časový limit pro velké aplikace balíčku (pořadí GB).
+Problém: [Kopírování ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) vyprší časový limit pro velké aplikace balíčku (pořadí GB).
 Zkuste:
 - Zadejte většího časového limitu pro [kopírování ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) příkazů, `TimeoutSec` parametru. Ve výchozím nastavení je časový limit 30 minut.
 - Zkontrolujte síťové připojení mezi zdrojovým počítačem a clusteru. Pokud je pomalé připojení, zvažte použití na počítači s lepší síťové připojení.

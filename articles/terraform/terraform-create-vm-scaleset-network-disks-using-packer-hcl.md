@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/29/2017
-ms.openlocfilehash: b9c7c20b6b3bbad8731dc00e2c6e3d88f92936df
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765403"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001988"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Použití Terraformu k vytvoření škálovací sady virtuálních počítačů Azure z vlastní image Packeru
 
@@ -180,7 +180,7 @@ V tomto kroku vytvoříte v síti, kterou jste dříve nasadili, následující 
 - Backendový fond adres Azure, který přiřadíte k nástroji pro vyrovnávání zatížení. 
 - Port sondy stavu, který používá aplikace a konfiguruje se v nástroji pro vyrovnávání zatížení. 
 - Škálovací sada virtuálních počítačů, která se nachází za nástrojem pro vyrovnávání zatížení a běží na virtuální síti nasazené dříve v tomto článku.
-- Server [Nginx](http://nginx.org/) na uzlech škálovací sady virtuálních počítačů nainstalované z vlastní image
+- Server [Nginx](https://nginx.org/) na uzlech škálovací sady virtuálních počítačů nainstalované z vlastní image
 
 
 Na konec souboru `vmss.tf` přidejte následující kód.

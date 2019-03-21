@@ -15,18 +15,18 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef3a0143b2fd536332cdae8ea0bb50cc0a93e6e9
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 1d2faefd8443383e7afff8e3729bf6f1cf25c3a7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430419"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887016"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezeních a známých problémech použití skupin pro správu licencování v Azure Active Directory
 
 Použijte následující informace a příklady pro získání rozsáhlejšími znalostmi licencování na základě skupin Azure Active Directory (Azure AD).
 
-## <a name="usage-location"></a>Místo použití
+## <a name="usage-location"></a>Místo využívání
 
 Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, Správce musí mít **místo využívání** vlastnost na uživatele. V [na webu Azure portal](https://portal.azure.com), můžete zadat v **uživatele** &gt; **profilu** &gt; **nastavení**.
 
@@ -63,7 +63,7 @@ V tomto příkladu úpravě jednoho uživatele a nastavení jejich extensionAttr
 
 > [!WARNING]
 > Buďte opatrní při úpravě pravidla členství ve stávající skupině. Při změně pravidlo členství ve skupině se znovu zhodnotí a uživatelé, kteří už neodpovídá nové pravidlo budou odebrané (uživatelé, kteří stále neshoduje s nové pravidlo nebude mít vliv během tohoto procesu). Tito uživatelé budou mít svoje licence odebraných během procesu, který může mít za následek výpadek služby, nebo v některých případech ke ztrátě dat.
-
+> 
 > Pokud máte velké dynamické skupiny, které závisí na přiřazení licencí, vezměte v úvahu před použitím do hlavní skupiny ověřování žádnými většími změnami v menších testovací skupině.
 
 ## <a name="multiple-groups-and-multiple-licenses"></a>Více skupinami a více licencí
@@ -90,23 +90,23 @@ Přímo přiřazené licence je možné odebrat a nemají vliv na zděděné lic
 
 1. Na začátku uživatel dědí licenci pouze z *základní služby E3* skupinu, která umožňuje čtyř plánů služeb, jak je znázorněno:
 
-  ![Snímek obrazovky E3 skupiny povolené služby](./media/licensing-group-advanced/e3-group-enabled-services.png)
+   ![Snímek obrazovky E3 skupiny povolené služby](./media/licensing-group-advanced/e3-group-enabled-services.png)
 
 2. Můžete vybrat **přiřadit** přímo přiřadit uživateli licenci E3. V takovém případě se chystáte zakázat všechny plány služby s výjimkou Yammer Enterprise:
 
-  ![Snímek obrazovky přiřazení licence přímo na uživatele](./media/licensing-group-advanced/assign-license-to-user.png)
+   ![Snímek obrazovky přiřazení licence přímo na uživatele](./media/licensing-group-advanced/assign-license-to-user.png)
 
 3. V důsledku toho uživatel dál používá pouze jednu licenci na produkt E3. Ale umožňuje přímé přiřazení Yammer Enterprise service pouze pro tohoto uživatele. Můžete zobrazit, které služby jsou povoleny ve srovnání s přímého přiřazení členství ve skupině:
 
-  ![Snímek obrazovky zděděné oproti přímého přiřazení](./media/licensing-group-advanced/direct-vs-inherited-assignment.png)
+   ![Snímek obrazovky zděděné oproti přímého přiřazení](./media/licensing-group-advanced/direct-vs-inherited-assignment.png)
 
 4. Při použití přímého přiřazení jsou povoleny následující operace:
 
-  - Yammer Enterprise můžete vypnout v objektu user přímo. **Zapnuto/vypnuto** přepnout na obrázku byl povolen pro tuto službu, na rozdíl od jiných služeb přepínačů. Protože je služba zapnutá přímo na uživatele, může být upraveno.
-  - Další služby je možné povolit stejně, jako součást přímo přiřazenou licenci.
-  - **Odebrat** tlačítko slouží k odebrání přímých licencí od uživatele. Uvidíte, že teď má uživatel jenom zděděné skupinu licencí a zůstat zapnuté, jenom původní služby:
+   - Yammer Enterprise můžete vypnout v objektu user přímo. **Zapnuto/vypnuto** přepnout na obrázku byl povolen pro tuto službu, na rozdíl od jiných služeb přepínačů. Protože je služba zapnutá přímo na uživatele, může být upraveno.
+   - Další služby je možné povolit stejně, jako součást přímo přiřazenou licenci.
+   - **Odebrat** tlačítko slouží k odebrání přímých licencí od uživatele. Uvidíte, že teď má uživatel jenom zděděné skupinu licencí a zůstat zapnuté, jenom původní služby:
 
-    ![Snímek obrazovky ukazující, jak odebrat přímého přiřazení](./media/licensing-group-advanced/remove-direct-license.png)
+     ![Snímek obrazovky ukazující, jak odebrat přímého přiřazení](./media/licensing-group-advanced/remove-direct-license.png)
 
 ## <a name="managing-new-services-added-to-products"></a>Správa nové služby přidán do produktů
 Pokud Microsoft přidá novou službu do produktu, povolí se ve výchozím nastavení ve všech skupinách, do které jste přiřadili licenci na produkt. Uživatelé ve vašem tenantovi, kteří se přihlásili k odběru oznámení o změnách produktu budou dostávat e-maily předem oznámení o dodatcích připravovanou službu.
@@ -122,15 +122,15 @@ Tady je příklad tohoto procesu může vypadat:
 3. Přejděte [ **Azure Active Directory > licence > všechny produkty** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) okna a vyberte *Office 365 Enterprise E5*a pak vyberte **licencované skupiny** zobrazíte seznam všech skupin s tímto produktem.
 
 4. Klikněte na skupinu, kterou chcete zkontrolovat (v tomto případě *O365 E5 - Exchange pouze*). Tím se otevře **licence** kartu. Kliknutím na E5 licence, které se otevře okno výpis všech služeb povolených.
-> [!NOTE]
-> *Microsoft Stream* služby byl automaticky přidán a povoleno v této skupině, kromě *Exchange Online* služby:
+   > [!NOTE]
+   > *Microsoft Stream* služby byl automaticky přidán a povoleno v této skupině, kromě *Exchange Online* služby:
 
-  ![Snímek obrazovky s novou službu přidali do skupiny licencí](./media/licensing-group-advanced/manage-new-services.png)
+   ![Snímek obrazovky s novou službu přidali do skupiny licencí](./media/licensing-group-advanced/manage-new-services.png)
 
 5. Pokud chcete zakázat nová služba v této skupině, klikněte na tlačítko **zapnuto/vypnuto** přepnout vedle služby a klikněte na tlačítko **Uložit** potvrďte změny. Azure AD bude nyní zpracovat všechny uživatele ve skupině na použití změny; Každý nový uživatel přidán do skupiny nebude mít *Microsoft Stream* povolenou službu.
 
-  > [!NOTE]
-  > Uživatelé mohou mít i nadále službu pomocí některé jiné přiřazení licencí (jiné skupiny jsou členy nebo přiřazení přímých licencí) povolena.
+   > [!NOTE]
+   > Uživatelé mohou mít i nadále službu pomocí některé jiné přiřazení licencí (jiné skupiny jsou členy nebo přiřazení přímých licencí) povolena.
 
 6. V případě potřeby proveďte stejné kroky pro jiné skupiny s tímto produktem přiřazené.
 
@@ -141,7 +141,7 @@ Skript prostředí PowerShell můžete kontrolovat, jestli uživatelé mají lic
 
 2. `Get-MsolAccountSku` umožňuje zjistit všechny licence zřízené produktu v tenantovi.
 
-  ![Snímek obrazovky rutiny Get-Msolaccountsku](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
+   ![Snímek obrazovky rutiny Get-Msolaccountsku](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
 3. Použití *AccountSkuId* hodnotu licence, které máte zájem se [tento skript Powershellu](licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group). Vznikne seznam uživatelů, kteří mají tento licenční informace o přiřazování licencí.
 
@@ -159,8 +159,8 @@ Můžete použít [protokoly auditu Azure AD](../reports-monitoring/concept-audi
 
 1. Nastavte **aktivity** filtrovat *sadu skupiny licencí* a klikněte na tlačítko **použít**.
 2. Výsledky budou zahrnovat všechny případy se nastavit nebo změnit na skupiny licencí.
->[!TIP]
-> Můžete také zadat název skupiny v *cílové* filtr k určení rozsahu výsledky.
+   >[!TIP]
+   > Můžete také zadat název skupiny v *cílové* filtr k určení rozsahu výsledky.
 
 3. Klikněte na položku v zobrazení seznamu můžete zobrazit podrobnosti o co se změnilo. V části *upravit vlastnosti* staré a nové hodnoty pro přiřazení licence jsou uvedeny.
 
@@ -173,23 +173,23 @@ Tady je příklad nedávné změny skupiny licencí, s podrobnostmi:
 Pokud se na skupinu licencí, Azure AD se spustí aplikování změn pro všechny uživatele.
 
 1. Zobrazíte zahájení zpracování skupiny nastavit **aktivity** filtrovat *Start použití skupinové licence pro uživatele*. Všimněte si, že je objekt actor pro operaci *Microsoft Azure AD na základě skupinu Licensing* -systémový účet, který se používá k provedení všech změn skupiny licencí.
->[!TIP]
-> Klikněte na položku v seznamu zobrazíte *upravit vlastnosti* pole – zobrazuje změny licencí, které byly, vyberou se pro zpracování. To je užitečné, pokud jste provedli několik změn do skupiny a si nejste jisti, která byla zpracována.
+   >[!TIP]
+   > Klikněte na položku v seznamu zobrazíte *upravit vlastnosti* pole – zobrazuje změny licencí, které byly, vyberou se pro zpracování. To je užitečné, pokud jste provedli několik změn do skupiny a si nejste jisti, která byla zpracována.
 
 2. Podobně po dokončení zpracování skupin zobrazíte pomocí hodnota filtru *ukončení použití skupinové licence pro uživatele*.
->[!TIP]
-> V takovém případě *upravit vlastnosti* pole obsahuje souhrn výsledků – to je užitečné můžete rychle zjistit, pokud zpracování výsledkem nějaké chyby. Ukázkový výstup:
-> ```
-Modified Properties
-...
-Name : Result
-Old Value : []
-New Value : [Users successfully assigned licenses: 6, Users for whom license assignment failed: 0.];
-> ```
+   > [!TIP]
+   > V takovém případě *upravit vlastnosti* pole obsahuje souhrn výsledků – to je užitečné můžete rychle zjistit, pokud zpracování výsledkem nějaké chyby. Ukázkový výstup:
+   > ```
+   > Modified Properties
+   > ...
+   > Name : Result
+   > Old Value : []
+   > New Value : [Users successfully assigned licenses: 6, Users for whom license assignment failed: 0.];
+   > ```
 
 3. Pokud chcete zobrazit úplný protokol pro způsob zpracování skupiny, včetně změny všech uživatelů, nastavte následující filtry:
-  - **Iniciátor (Actor)**: "Microsoft Azure AD na základě skupin licencí."
-  - **Rozsah kalendářních dat** (volitelné): Pokud znáte konkrétní skupinu vlastní rozsah spuštění a dokončení zpracování
+   - **Iniciátor (Actor)**: "Microsoft Azure AD na základě skupin licencí."
+   - **Rozsah kalendářních dat** (volitelné): Pokud znáte konkrétní skupinu vlastní rozsah spuštění a dokončení zpracování
 
 Tento ukázkový výstup ukazuje začátek zpracování, všechny výsledné změny uživatelů a dokončení zpracování.
 
@@ -220,7 +220,7 @@ Pokud používáte licencování na základě skupin, je vhodné se seznámit s 
 
 - Když licence jsou přiřazeny nebo upraveny pro velkou skupinu (například 100 000 uživatelů), může ovlivnit výkon. Konkrétně objemu změn generovaných automatizace Azure AD může mít negativní vliv na výkon vaší synchronizace adresářů mezi službami Azure AD a místními systémy.
 
-- Pokud spravujete členství uživatelů pomocí dynamických skupin, zkontrolujte, jestli je daný uživatel součástí skupiny, což je k přiřazení licence nezbytné. V opačném případě [zkontrolujte stav zpracování pravidla členství](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule) dané dynamické skupiny. 
+- Pokud spravujete členství uživatelů pomocí dynamických skupin, zkontrolujte, jestli je daný uživatel součástí skupiny, což je k přiřazení licence nezbytné. V opačném případě [zkontrolujte stav zpracování pravidla členství](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule) dané dynamické skupiny. 
 
 - V některých situacích vysokého zatížení může trvat dlouhou dobu zpracování změny licence pro skupiny nebo změny členství ve skupinách se stávající licence. Pokud se zobrazí vaše změny trvat déle než 24 hodin pro zpracování skupiny velikost 60 tisíc uživatelů nebo méně, prosím [vytvořit lístek podpory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) umožňuje nám prozkoumat. 
 

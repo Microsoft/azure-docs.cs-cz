@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 77f18a80c094fbaf58cfb09df38e5fa1c924329a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 85b920767cbdc5ba60c2046563c32e87f6ad7ef8
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57856188"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259393"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -567,7 +567,7 @@ Update
 
 ## <a name="using-dynamic-groups"></a>Používat dynamické skupiny (preview)
 
-Správa aktualizací umožňuje cílit na dynamické skupiny virtuálních počítačů Azure pro nasazení aktualizací. Tyto skupiny jsou definované v dotazu po zahájení nasazení aktualizací, členové této skupiny jsou vyhodnocovány. Při definování vašeho dotazu, následující položky lze použít společně a naplnit dynamickou skupinu
+Správa aktualizací umožňuje cílit na dynamické skupiny virtuálních počítačů Azure pro nasazení aktualizací. Tyto skupiny jsou definované v dotazu po zahájení nasazení aktualizací, členové této skupiny jsou vyhodnocovány. Dynamické skupiny nefungují s klasické virtuální počítače. Při definování vašeho dotazu, následující položky lze použít společně a naplnit dynamickou skupinu
 
 * Předplatné
 * Skupiny prostředků

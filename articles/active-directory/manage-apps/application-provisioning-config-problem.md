@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61739d381d5c668b5f1a9467b10398d173601b33
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cf496e448cbc11b9e986ca3b58c956c4cd18a34e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178528"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113448"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Potíže s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD
 
@@ -62,13 +62,13 @@ V pořadí pro zřizování pro práci Azure AD vyžaduje platné přihlašovac�
 
 Když uživatel zobrazí jako "vynecháno" z protokolů auditu, je velmi důležité, abyste Rozšířené podrobnosti najdete ve zprávě protokolu a zjistěte jeho důvod. Níže jsou uvedeny běžné důvody a jejich řešení:
 
--   **Filtr oborů není nakonfigurovaná** **, který je odfiltrováním uživatele založené na hodnotě atributu**. Další informace o filtry oborů, naleznete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>.
+- **Filtr oborů není nakonfigurovaná** **, který je odfiltrováním uživatele založené na hodnotě atributu**. Další informace o filtry oborů, naleznete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>.
 
--   **Uživatel je "není oprávněn efektivně".** Pokud se zobrazí určité chybové zprávě, bude to, že dojde k nějakému problému s záznamu přiřazení uživatele uložených ve službě Azure AD. Chcete-li vyřešit tento problém, rušit přiřazení uživatele (nebo skupiny) z aplikace a znovu přiřadit. Další informace o přiřazení najdete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
+- **Uživatel je "není oprávněn efektivně".** Pokud se zobrazí určité chybové zprávě, bude to, že dojde k nějakému problému s záznamu přiřazení uživatele uložených ve službě Azure AD. Chcete-li vyřešit tento problém, rušit přiřazení uživatele (nebo skupiny) z aplikace a znovu přiřadit. Další informace o přiřazení najdete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
 
--   **Požadovaný atribut nebyl nalezen nebo není vyplněný pro uživatele.** Důležité vzít v úvahu při nastavování zřizování se ke kontrole a nakonfigurujte mapování atributů a pracovních postupů, které definují, které uživatel (nebo skupiny) vlastnosti toku ze služby Azure AD do aplikace. Jedná se o vlastnost "odpovídající", který použije k jednoznačné identifikaci a odpovídající uživatelům nebo skupinám mezi těmito dvěma systémy. Další informace o tomto procesu důležité, naleznete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>.
+- **Požadovaný atribut nebyl nalezen nebo není vyplněný pro uživatele.** Důležité vzít v úvahu při nastavování zřizování se ke kontrole a nakonfigurujte mapování atributů a pracovních postupů, které definují, které uživatel (nebo skupiny) vlastnosti toku ze služby Azure AD do aplikace. Jedná se o vlastnost "odpovídající", který použije k jednoznačné identifikaci a odpovídající uživatelům nebo skupinám mezi těmito dvěma systémy. Další informace o tomto procesu důležité, naleznete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>.
 
-   * **Mapování atributů pro skupiny:** Zřizování název skupiny a podrobnosti o skupině, kromě členů, pokud se podporuje u některých aplikací. Můžete povolit nebo zakázat tuto funkci povolením nebo zakázáním **mapování** pro objekty skupiny je znázorněno **zřizování** kartu. Pokud je zapnutá zřizování skupin, nezapomeňte zkontrolovat mapování atributů k zajištění, že se že příslušné pole se používá pro "Odpovídající ID". To může být zobrazovaný název nebo e-mailu alias), jak skupině a jejích členů nelze zřídit Pokud odpovídající vlastnost je prázdná nebo není vyplněný pro skupinu ve službě Azure AD.
+  * **Mapování atributů pro skupiny:** Zřizování název skupiny a podrobnosti o skupině, kromě členů, pokud se podporuje u některých aplikací. Můžete povolit nebo zakázat tuto funkci povolením nebo zakázáním **mapování** pro objekty skupiny je znázorněno **zřizování** kartu. Pokud je zapnutá zřizování skupin, nezapomeňte zkontrolovat mapování atributů k zajištění, že se že příslušné pole se používá pro "Odpovídající ID". To může být zobrazovaný název nebo e-mailu alias), jak skupině a jejích členů nelze zřídit Pokud odpovídající vlastnost je prázdná nebo není vyplněný pro skupinu ve službě Azure AD.
 
 ## <a name="next-steps"></a>Další postup
 [Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](user-provisioning.md)

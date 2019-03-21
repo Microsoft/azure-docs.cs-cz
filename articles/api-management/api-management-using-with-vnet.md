@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 6ace19339eb3f89c3b0cde6f5b9b0ecc783e2597
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: a8566e41934b5d78d8be60b385ea4148e1cb60c3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341607"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087036"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -53,26 +53,26 @@ Chcete-li provést postup popsaný v tomto článku, budete potřebovat:
     ![Virtuální síť nabídky služby API Management][api-management-using-vnet-menu]
 4. Vyberte typ požadovaného přístupu:
 
-    * **Externí**: brány a vývojářského portálu API Management, jsou přístupné z veřejného Internetu prostřednictvím externím vyrovnáváním zatížení. Brána lze přistupovat k prostředkům v rámci virtuální sítě.
+   * **Externí**: brány a vývojářského portálu API Management, jsou přístupné z veřejného Internetu prostřednictvím externím vyrovnáváním zatížení. Brána lze přistupovat k prostředkům v rámci virtuální sítě.
 
-    ![Veřejný partnerský vztah][api-management-vnet-public]
+     ![Veřejný partnerský vztah][api-management-vnet-public]
 
-    * **Interní**: brány a vývojářského portálu API Management je přístupný jenom v rámci virtuální sítě prostřednictvím interního nástroje load balancer. Brána lze přistupovat k prostředkům v rámci virtuální sítě.
+   * **Interní**: brány a vývojářského portálu API Management je přístupný jenom v rámci virtuální sítě prostřednictvím interního nástroje load balancer. Brána lze přistupovat k prostředkům v rámci virtuální sítě.
 
-    ![Soukromý partnerský vztah][api-management-vnet-private]`
+     ![Soukromý partnerský vztah][api-management-vnet-private]`
 
-    Nyní se zobrazí seznam všech oblastech, kde je zřízené služby API Management. Vyberte virtuální síť a podsíť pro každou oblast. V seznamu se vyplní classic i Resource Manager k dispozici ve vašem předplatném Azure, které jsou nastavené v oblasti, kterou konfigurujete virtuální sítě.
+     Nyní se zobrazí seznam všech oblastech, kde je zřízené služby API Management. Vyberte virtuální síť a podsíť pro každou oblast. V seznamu se vyplní classic i Resource Manager k dispozici ve vašem předplatném Azure, které jsou nastavené v oblasti, kterou konfigurujete virtuální sítě.
 
-    > [!NOTE]
-    > **Koncový bod služby** v diagramu výše zahrnuje brána nebo proxy serveru, na webu Azure portal, na portálu pro vývojáře, GIT a Direct koncový bod správy.
-    > **Koncový bod správy** v diagramu je koncový bod hostované na službě pro správu konfigurace pomocí webu Azure portal a Powershell.
-    > Mějte také na paměti, že i když diagram znázorňuje IP adresy pro své různé koncové body služby API Management **pouze** reaguje na jeho nakonfigurované názvy hostitelů.
+     > [!NOTE]
+     > **Koncový bod služby** v diagramu výše zahrnuje brána nebo proxy serveru, na webu Azure portal, na portálu pro vývojáře, GIT a Direct koncový bod správy.
+     > **Koncový bod správy** v diagramu je koncový bod hostované na službě pro správu konfigurace pomocí webu Azure portal a Powershell.
+     > Mějte také na paměti, že i když diagram znázorňuje IP adresy pro své různé koncové body služby API Management **pouze** reaguje na jeho nakonfigurované názvy hostitelů.
 
-    > [!IMPORTANT]
-    > Při nasazení instance služby Azure API Management k virtuální síti správce prostředků, služby musí být ve vyhrazené podsíti, která neobsahuje žádné prostředky s výjimkou instance Azure API Management. Pokud je proveden pokus o nasazení instance služby Azure API Management k podsíti virtuální sítě Resource Manageru, která obsahuje další prostředky, nasazení se nezdaří.
-    >
+     > [!IMPORTANT]
+     > Při nasazení instance služby Azure API Management k virtuální síti správce prostředků, služby musí být ve vyhrazené podsíti, která neobsahuje žádné prostředky s výjimkou instance Azure API Management. Pokud je proveden pokus o nasazení instance služby Azure API Management k podsíti virtuální sítě Resource Manageru, která obsahuje další prostředky, nasazení se nezdaří.
+     >
 
-    ![Vyberte sítě VPN][api-management-setup-vpn-select]
+     ![Vyberte sítě VPN][api-management-setup-vpn-select]
 
 5. Klikněte na tlačítko **Uložit** v horní části obrazovky.
 
@@ -148,17 +148,17 @@ Když jsou instance služby API Management je hostované ve virtuální síti, s
 
 + **Vynucené tunelování provozu do brány Firewall v místním prostředí pomocí Express Route nebo síťové virtuální zařízení**: Běžnou konfigurací zákazníků je definovat vlastní výchozí trasa (0.0.0.0/0), která vynutí pro veškeré přenosy ze služby API Management delegované podsítě ke službě flow prostřednictvím brány firewall na místní nebo síťové virtuální zařízení. Tento tok provozu vždy přeruší připojení k službě Azure API Management, protože odchozí provoz je blokované v místním nebo NAT by nerozpoznatelný sadu adresy, které přestane fungovat v různých koncových bodů Azure. Řešení je potřeba udělat několik věcí:
 
-    * Povolení koncových bodů služby v podsíti, ve které nasazení služby API Management. [Koncové body služby] [ ServiceEndpoints] musí být povolené pro Azure Sql, Azure Storage, Azure EventHub a služby Azure Service Bus. Povolují se koncové body přímo ze služby API Management umožňuje delegovanou podsítě na tyto služby je, aby používaly páteřní síti Microsoft Azure poskytují optimální směrování provozu služeb. Pokud použijete koncové body služby pomocí vynuceného tunelového propojení Api Management, tunelové propojení výše uvedených služeb Azure, který provoz se nebude nuceně. API Management, které provoz závislostí služby je nucen tunelovat a nesmí se ztratit nebo služba API Management nebude správně fungovat.
+  * Povolení koncových bodů služby v podsíti, ve které nasazení služby API Management. [Koncové body služby] [ ServiceEndpoints] musí být povolené pro Azure Sql, Azure Storage, Azure EventHub a služby Azure Service Bus. Povolují se koncové body přímo ze služby API Management umožňuje delegovanou podsítě na tyto služby je, aby používaly páteřní síti Microsoft Azure poskytují optimální směrování provozu služeb. Pokud použijete koncové body služby pomocí vynuceného tunelového propojení Api Management, tunelové propojení výše uvedených služeb Azure, který provoz se nebude nuceně. API Management, které provoz závislostí služby je nucen tunelovat a nesmí se ztratit nebo služba API Management nebude správně fungovat.
     
-    * Všechny ovládací prvek roviny provoz z Internetu na koncový bod správy ze služby API Management je směrován přes konkrétní sadu příchozí IP adresy hostované službou API Management. Když provoz procházejí vynuceným tunelovým propojením odpovědi nebude symetricky mapovat zpět do těchto příchozí zdrojové IP adresy. K překonání omezení, potřebujeme přidat následující trasy definované uživatelem ([trasy definované uživatelem][UDRs]) řídit provoz zpět do Azure tak, že nastavíte cíl tyto hostitele trasy, aby "Internet". Sada příchozí IP adresy pro řízení provozu roviny je následujícím způsobem:
+  * Všechny ovládací prvek roviny provoz z Internetu na koncový bod správy ze služby API Management je směrován přes konkrétní sadu příchozí IP adresy hostované službou API Management. Když provoz procházejí vynuceným tunelovým propojením odpovědi nebude symetricky mapovat zpět do těchto příchozí zdrojové IP adresy. K překonání omezení, potřebujeme přidat následující trasy definované uživatelem ([trasy definované uživatelem][UDRs]) řídit provoz zpět do Azure tak, že nastavíte cíl tyto hostitele trasy, aby "Internet". Sada příchozí IP adresy pro řízení provozu roviny je následujícím způsobem:
     
     > 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 13.64.39.16/32, 40.81.47.216/32, 51.145.179.78/32, 52.142.95.35/32, 40.90.185.46/32, 20.40.125.155/32
 
-    * Pro jiné služby API Management service závislosti, které procházejí vynuceným tunelovým propojením, jejich by měl být způsob, jak vyřešit název hostitele a kontaktovat ke koncovému bodu. Patří mezi ně
-        - Monitorování stavu a metriky
-        - Portál Azure Diagnostics
-        - Nastavením předávání SMTP
-        - Portál pro vývojáře test CAPTCHA.
+  * Pro jiné služby API Management service závislosti, které procházejí vynuceným tunelovým propojením, jejich by měl být způsob, jak vyřešit název hostitele a kontaktovat ke koncovému bodu. Patří mezi ně
+      - Monitorování stavu a metriky
+      - Portál Azure Diagnostics
+      - Nastavením předávání SMTP
+      - Portál pro vývojáře test CAPTCHA.
 
 ## <a name="troubleshooting"> </a>Řešení potíží
 * **Počáteční nastavení**: Po počátečním nasazení služby API Management do podsítě není úspěšné, se doporučuje pro virtuální počítač nasadit nejdřív do stejné podsítě. Další vzdálené plochy k virtuálnímu počítači a ověřit, že je spojení s jednou z každého prostředku pod ve vašem předplatném azure
@@ -166,8 +166,8 @@ Když jsou instance služby API Management je hostované ve virtuální síti, s
     * Azure SQL Database
     * Azure Storage Table
 
- > [!IMPORTANT]
- > Po ověření připojení nezapomeňte odebrat všechny prostředky nasazené v podsíti, před nasazením API Management do podsítě.
+  > [!IMPORTANT]
+  > Po ověření připojení nezapomeňte odebrat všechny prostředky nasazené v podsíti, před nasazením API Management do podsítě.
 
 * **Přírůstkové aktualizace**: Při provádění změn k síti, najdete [NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/networkstatus), chcete-li ověřit, že služba API Management ještě ztratili přístup k důležitým prostředkům, které závisí na. Stav připojení by měl být aktualizováno každých 15 minut.
 

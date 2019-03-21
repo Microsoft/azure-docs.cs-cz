@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: 725580a01c8dd60003cfc11910a3e5183624b1b1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 81646c979748b7a23762a25538ced447e382f72a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437531"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878427"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Deset věcí, které vám pomůžou na Windows virtuální počítač pro datové vědy
 
@@ -233,7 +233,7 @@ New-AzureRmStorageAccount -Name <mydatadisk> -ResourceGroupName <dsvmdatarg> -Lo
 # Set your current working storage account
 Set-AzureRmCurrentStorageAccount –ResourceGroupName "<dsvmdatarg>" –StorageAccountName <mydatadisk>
 
-# Create a Azure File Service Share
+# Create an Azure File Service Share
 $s = New-AzureStorageShare <<teamsharename>>
 # Create a directory under the FIle share. You can give it any name
 New-AzureStorageDirectory -Share $s -Path <directory name>
@@ -279,7 +279,7 @@ Objektů blob v Azure je spolehlivé, úsporné cloudové úložiště pro data 
 ![Snímek obrazovky se procesu vytvoření účtu úložiště na webu Azure Portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Potvrďte, že předinstalované nástroje příkazového řádku AzCopy se nachází v umístění ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. Adresář obsahující azcopy.exe už ve vaší proměnné prostředí PATH, abyste nemuseli zadávat cestu celý příkaz při spuštění tohoto nástroje. Další informace o nástroj AzCopy najdete [dokumentaci k AzCopy](../../storage/common/storage-use-azcopy.md)
-* Spusťte nástroj Průzkumník služby Azure Storage. Můžete ho stáhnout z [Microsoft Azure Storage Explorer](http://storageexplorer.com/). 
+* Spusťte nástroj Průzkumník služby Azure Storage. Můžete ho stáhnout z [Microsoft Azure Storage Explorer](https://storageexplorer.com/). 
 
 ![Snímek obrazovky Průzkumníka služby Azure Storage přístupu k účtu úložiště](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
@@ -296,7 +296,7 @@ Nahraďte **C:\myfolder** na cestu, kde je soubor uložen, **mystorageaccount** 
 Spuštěním příkazu AzCopy v Powershellu nebo z příkazového řádku. Tady je použití příkazu AzCopy:
 
 ```powershell
-# Copy *.sql from local machine to a Azure Blob
+# Copy *.sql from local machine to an Azure Blob
 "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:"c:\Aaqs\Data Science Scripts" /Dest:https://[ENTER STORAGE ACCOUNT].blob.core.windows.net/[ENTER CONTAINER] /DestKey:[ENTER STORAGE KEY] /S /Pattern:*.sql
 
 # Copy back all files from Azure Blob container to Local machine

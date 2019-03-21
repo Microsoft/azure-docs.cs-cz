@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 857672e8dee4dbe8d586db0cd80b206ec6ecb7df
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: f684a9d7bca77a8aa3aa60f5079dda0ce3b58a1c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244566"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121583"
 ---
 # <a name="azure-network-security"></a>Zabezpečení sítě Azure
 
@@ -90,7 +90,7 @@ Propojení virtuálních sítí mezi sebou, povolení prostředkům připojeným
 
 - **Vytvoření partnerského vztahu:** Umožňuje prostředkům připojeným k jiné virtuální sítě Azure ve stejném umístění Azure ke komunikaci mezi sebou. Na šířku pásma a latence ve virtuální síti je stejný jako v případě, že prostředky, které byly připojené ke stejné virtuální síti. Další informace o partnerských vztazích najdete v článku [partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 
- ![Partnerské vztahy](media/azure-network-security/azure-network-security-fig-3.png)
+  ![Partnerské vztahy](media/azure-network-security/azure-network-security-fig-3.png)
 
 - **Připojení VNet-to-VNet:** Umožňuje prostředkům připojeným k jiné virtuální síti Azure v rámci stejného nebo jiného umístění Azure. Na rozdíl od vytvoření partnerského vztahu, šířka pásma je omezená mezi virtuálními sítěmi, protože toku provozu prostřednictvím služby Azure VPN Gateway.
 
@@ -318,19 +318,19 @@ Vynucené tunelování v Azure se konfiguruje prostřednictvím virtuální sít
 
 V následující části jsou uvedené aktuální omezení směrovací tabulky a trasy pro služby Azure Virtual Network:
 
--   Každé podsíti virtuální sítě má integrované, směrovací tabulky systému. Systémovou tabulku směrování má následující tři skupiny tras:
+- Každé podsíti virtuální sítě má integrované, směrovací tabulky systému. Systémovou tabulku směrování má následující tři skupiny tras:
 
- -  **Místní virtuální sítě trasy:** Přímo do cílového umístění virtuálních počítačů ve stejné virtuální síti
+  -  **Místní virtuální sítě trasy:** Přímo do cílového umístění virtuálních počítačů ve stejné virtuální síti
 
- - **Pro místní trasy:** Ke službě Azure VPN gateway
+  - **Pro místní trasy:** Ke službě Azure VPN gateway
 
- -  **Výchozí trasy:** Přímo k Internetu. Pakety směřující na privátní IP adresy není pokrytá předchozí dvě trasy se zahodí.
+  -  **Výchozí trasy:** Přímo k Internetu. Pakety směřující na privátní IP adresy není pokrytá předchozí dvě trasy se zahodí.
 
--   S vydáním trasy definované uživatelem můžete vytvořit směrovací tabulku, která chcete přidat výchozí trasa a přidružte směrovací tabulky pro vaši virtuální síť podsíť povolit vynucené tunelování na těchto podsítí.
+- S vydáním trasy definované uživatelem můžete vytvořit směrovací tabulku, která chcete přidat výchozí trasa a přidružte směrovací tabulky pro vaši virtuální síť podsíť povolit vynucené tunelování na těchto podsítí.
 
--   Budete muset nastavit "výchozí web" mezi místy místní servery připojené k virtuální síti.
+- Budete muset nastavit "výchozí web" mezi místy místní servery připojené k virtuální síti.
 
--   Vynucené tunelování musí být přidružen virtuální síť, která má bránu dynamického směrování VPN (není statická brána).
+- Vynucené tunelování musí být přidružen virtuální síť, která má bránu dynamického směrování VPN (není statická brána).
 
 - ExpressRoute se vynucené tunelování přes tento mechanismus není nakonfigurovaná, ale místo toho zajišťuje inzeruje výchozí trasu prostřednictvím relací vytvoření partnerského vztahu protokolu BGP ExpressRoute.
 
@@ -507,7 +507,7 @@ Azure nabízí řadu nástrojů pro monitorování, hrozbami, detekci a reakce n
 
 -   Úroveň sledování síťových prostředků
 
--   Protokoly Azure monitoru
+-   Protokoly služby Azure Monitor
 
 ### <a name="network-watcher"></a>Sledovací proces sítě
 
@@ -603,7 +603,7 @@ Diagnostické protokoly jsou k dispozici pro [nástroje pro vyrovnávání zatí
 
 Network Watcher dává zobrazení protokolů diagnostiky. Toto zobrazení obsahuje všechny síťové prostředky, které podporují protokolování diagnostiky. Z tohoto hlediska můžete povolit nebo zakázat síťové prostředky, jednoduše a rychle.
 
-### <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
+### <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
 [Protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) je služba v Azure, která monitoruje cloudové a místní prostředí s cílem zachovat jejich dostupnost a výkon. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji.
 

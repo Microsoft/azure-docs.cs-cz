@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ed414d47da2d7ce243de7a1de09964904502bbe
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 73f6126d6bf172a35a284e92b65b1c3ef449949e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407491"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904129"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Kurz: Integrace Azure Active Directory s Asaně
 
@@ -159,7 +159,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -204,7 +204,7 @@ V této části vytvořte uživatele Britta Simon v Asaně.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/asana-tutorial/tutorial_asana_12.png)
 
-2. Zadejte e-mailu uživatele, jako je **britta.simon@contoso.com** v textovém poli a pak vyberte **pozvat**.
+2. Zadejte e-mailu uživatele, jako je **britta.simon\@contoso.com** v textovém poli a pak vyberte **pozvat**.
 
 3. Klikněte na tlačítko **odeslat pozvánku**. Nový uživatel obdrží e-mailu do svých e-mailový účet. uživatel bude muset vytvořit a ověřit účet.
 
@@ -222,4 +222,4 @@ Po kliknutí na dlaždici Asana na přístupovém panelu, můžete by měl být 
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-* [Konfigurace zřizování uživatelů](asana-provisioning-tutorial.md)
+- [Konfigurace zřizování uživatelů](asana-provisioning-tutorial.md)

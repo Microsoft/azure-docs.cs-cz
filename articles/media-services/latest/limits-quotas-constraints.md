@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 9f5cf0e8be0529ce59edc9aa4cd33d470415c8a6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 694c56cf52cb7a15230b9a2cdd34642c7820b407
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190955"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897552"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóty a omezení v Azure Media Services v3
 
@@ -37,10 +37,11 @@ Tento článek popisuje kvóty a omezení v Azure Media Services v3.
 | Účty Media Services v rámci jednoho předplatného | 25 (pevné) |
 | Live výstupy ve spuštěném stavu na Livestream |3|
 | Účty úložiště | 100<sup>(4)</sup> (fixní) |
-| Koncové body streamování (zastavení nebo spuštění) na účtu Azure Media Services|2|
+| Koncové body streamování (zastavení nebo spuštění) na účtu Azure Media Services|2 (fixní)|
 | Zásady streamování | 100 <sup>(3)</sup> |
 | Transformuje na účtu Azure Media Services | 100 (fixní)|
 | Jedinečné lokátory streamování přidružené k prostředku najednou | 100<sup>(5)</sup> (fixní) |
+| Obsahu klíče zásad |30 | 
 
 <sup>1</sup> maximální velikost podporovaná pro jeden objekt blob je aktuálně ve službě Azure Blob Storage až 5 TB. Další omezení platí ale, v závislosti na velikosti virtuálních počítačů, které používají službu Azure Media Services. Pokud zdrojový soubor je větší než 260 GB, vaše úloha se pravděpodobně nezdaří. Pokud máte 4 kB obsah, který je větší než limit 260 GB, kontaktujte nás na adrese amshelp@microsoft.com pro zmírnit na podporu vašeho scénáře.
 

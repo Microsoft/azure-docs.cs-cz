@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 2e68ad6d999a5ff003abe35a0cce75bc5f2cebef
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723922"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104450"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Přehled podpory více tenantů pro zotavení po havárii VMware do Azure s využitím CSP
 
@@ -75,17 +75,17 @@ Nakonfigurujte konfiguračního serveru pomocí účtu, který má zvláštní r
 1. Vytvoření nové role naklonováním předdefinovaného *jen pro čtení* role a pak poskytněte vhodný název (například Azure_Site_Recovery, jak je znázorněno v tomto příkladu).
 2. K této roli přiřadíte následující oprávnění:
 
-    * **Úložiště dat**: Přidělit prostor, procházet úložiště dat, operace se soubory nízké úrovně, odebrat soubor, soubory aktualizace virtuálního počítače
-    * **Síť**: Přiřazení sítě
-    * **Prostředek**: Přiřazení virtuálního počítače do fondu zdrojů, migrovat vypnutý virtuální počítač, migrovat zapnutý virtuální počítač
-    * **Úlohy**: Vytvořit úlohu, aktualizovat úlohu
-    * **Virtuálního počítače – konfigurace**: Vše
-    - **Virtuální počítač – interakce** > zodpovědět otázky, připojení zařízení, konfigurovat disk CD, konfigurovat disketu, vypnout, zapnout, instalace nástrojů VMware
-    - **Virtuální počítač – inventář** > Vytvoření z existujících, vytvořit, zaregistrovat, zrušit registraci
-    - **Virtuální počítač – zřizování** > Povolit stažení virtuálního počítače, povolit nahrávání souborů virtuálního počítače
-    - **Virtuální počítač – Správa snímku** > odebrat snímky
+   * **Úložiště dat**: Přidělit prostor, procházet úložiště dat, operace se soubory nízké úrovně, odebrat soubor, soubory aktualizace virtuálního počítače
+   * **Síť**: Přiřazení sítě
+   * **Prostředek**: Přiřazení virtuálního počítače do fondu zdrojů, migrovat vypnutý virtuální počítač, migrovat zapnutý virtuální počítač
+   * **Úlohy**: Vytvořit úlohu, aktualizovat úlohu
+   * **Virtuálního počítače – konfigurace**: Vše
+   * **Virtuální počítač – interakce** > zodpovědět otázky, připojení zařízení, konfigurovat disk CD, konfigurovat disketu, vypnout, zapnout, instalace nástrojů VMware
+   * **Virtuální počítač – inventář** > Vytvoření z existujících, vytvořit, zaregistrovat, zrušit registraci
+   * **Virtuální počítač – zřizování** > Povolit stažení virtuálního počítače, povolit nahrávání souborů virtuálního počítače
+   * **Virtuální počítač – Správa snímku** > odebrat snímky
 
-        ![Dialogové okno Upravit roli](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
+       ![Dialogové okno Upravit roli](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
 
 3. Přiřaďte úrovně přístupu na účet vCenter (používá se v tenantovi konfigurační server) pro různé objekty, následujícím způsobem:
 

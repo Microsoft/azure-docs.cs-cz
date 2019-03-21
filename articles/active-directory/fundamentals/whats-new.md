@@ -16,16 +16,16 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c34cd59a5f4636eeca395fde49e45beb1a49752
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: eda145f43c9268e5f6b291a767ed51249804f87d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408881"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286444"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
->Dostanete o tom, kdy revidovat tuto stránku aktualizace zkopírováním a vložením tuto adresu URL: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` do vaší ![ikona RSS](./media/whats-new/feed-icon-16x16.png) kanálů.
+>Dostanete o tom, kdy revidovat tuto stránku aktualizace zkopírováním a vložením tuto adresu URL: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` do vaší ![čtečky ikonu informačního kanálu RSS](./media/whats-new/feed-icon-16x16.png) kanálů.
 
 Azure AD obdrží vylepšení průběžně. Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek poskytuje informace o:
 
@@ -40,7 +40,7 @@ Tato stránka se aktualizuje každý měsíc, takže návštěvě pravidelně. P
 ---
 ## <a name="february-2019"></a>. Února 2019
 
-### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Konfigurovat Azure AD šifrování tokenu SAML (Public preview) 
+### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Konfigurovatelné šifrování tokenů SAML v Azure AD (public preview) 
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
@@ -52,7 +52,7 @@ Další informace o konfiguraci šifrování tokenu SAML, naleznete v tématu [�
 
 ---
 
-### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu pro skupiny nebo aplikace s využitím kontrol přístupu Azure AD
+### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu pro skupiny nebo aplikace pomocí Kontrol přístupu Azure AD
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Kontroly přístupu  
@@ -64,7 +64,7 @@ Další informace o vytvoření kontroly přístupu pomocí kontrol přístupu A
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Nové federované aplikace k dispozici v galerii aplikací Azure AD –. února 2019
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>V galerii aplikací Azure AD jsou k dispozici nové federované aplikace – únor 2019
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
@@ -78,7 +78,7 @@ Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomo
 
 ---
 
-### <a name="enhanced-combined-mfasspr-registration"></a>Vylepšené kombinovaná registrace MFA/samoobslužné resetování HESLA
+### <a name="enhanced-combined-mfasspr-registration"></a>Vylepšená kombinovaná registrace MFA a SSPR
 
 **Typ:** Změněná funkce  
 **Kategorie služby:** Samoobslužné resetování hesla  
@@ -106,7 +106,7 @@ Další informace o možnosti lepší registrace, najdete v článku [kombinaci 
 
 ---
 
-### <a name="updated-policy-management-experience-for-user-flows"></a>Prostředí pro správu aktualizované zásady pro toky uživatelů
+### <a name="updated-policy-management-experience-for-user-flows"></a>Aktualizované prostředí pro správu zásad pro toky uživatele
 
 **Typ:** Změněná funkce  
 **Kategorie služby:** B2C – Správa identit uživatelů  
@@ -120,7 +120,7 @@ Další informace o nové prostředí pro správu zásad, najdete v článku [Az
 
 ---
 
-### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>Vyberte konkrétní stránku element verze poskytuje Azure AD B2C
+### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>Volba konkrétních verzí elementů stránek poskytovaných službou Azure AD B2C
 
 **Typ:** Nová funkce  
 **Kategorie služby:** B2C – Správa identit uživatelů  
@@ -132,7 +132,7 @@ Další informace o volbě určité verze prvků na stránce, najdete v článku
 
 ---
 
-### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>Požadavky na heslo konfigurovatelné koncového uživatele pro B2C (GA)
+### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>Konfigurovatelné požadavky na heslo koncových uživatelů pro B2C (GA)
 
 **Typ:** Nová funkce  
 **Kategorie služby:** B2C – Správa identit uživatelů  
@@ -144,7 +144,7 @@ Další informace o konfiguraci požadavek na složitost hesla najdete v tématu
 
 ---
 
-### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>Nové výchozí šablony pro vlastní ověřování obchodní značku prostředí
+### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>Nové výchozí šablony pro prostředí pro ověřování pod vlastní značkou
 
 **Typ:** Nová funkce  
 **Kategorie služby:** B2C – Správa identit uživatelů  
@@ -158,7 +158,7 @@ Další informace o použití šablon najdete v tématu [Azure AD B2C teď má p
 
 ## <a name="january-2019"></a>2019. ledna
 
-### <a name="active-directory-b2b-collaboration-using-one-time-passcode-authentication-public-preview"></a>Active Directory s B2B spolupráce pomocí ověřování jednorázovým heslem (Public preview)
+### <a name="active-directory-b2b-collaboration-using-one-time-passcode-authentication-public-preview"></a>Spolupráce Active Directory B2B pomocí ověřování jednorázovým heslem (public preview)
 
 **Typ:** Nová funkce  
 **Kategorie služby:** B2B  
@@ -168,7 +168,7 @@ Zavedli jsme ověřování jednorázovým heslem (OTP) pro B2B uživatele typu H
 
 Další informace najdete v tématu [e-mailu ověřování jednorázovým heslem (preview)](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) a na blogu [Azure AD zajišťuje sdílení a spolupráce bezproblémovou pro libovolného uživatele pomocí libovolného účtu](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-makes-sharing-and-collaboration-seamless-for-any-user/ba-p/325949).
 
-### <a name="new-azure-ad-application-proxy-cookie-settings"></a>Nová nastavení souborů cookie Proxy aplikací Azure AD
+### <a name="new-azure-ad-application-proxy-cookie-settings"></a>Nové nastavení souborů cookie Proxy aplikací Azure AD
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Proxy aplikace  
@@ -390,7 +390,7 @@ Další informace najdete v tématu [přidat podmínky použití části Azure A
 
 ---
 
-### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-each-users-schedule"></a>Správci můžou konfigurovat podmínky použití vyprší na základě plánu každého uživatele
+### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-each-users-schedule"></a>Správci můžou nakonfigurovat vypršení platnosti podmínek použití podle plánu jednotlivých uživatelů
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podmínky použití  
@@ -516,11 +516,11 @@ Vyřešili jsme problém, konkrétní správce rolí teď můžete vytvářet a 
 
 Role jsou:
 
-- Globální správce nebo zapisovač společnosti
+- Globální správce
 
-- Správce služby Intune
+- Správce Intune
 
-- Správce uživatelských účtů
+- Správce uživatelů
 
 Další informace najdete v tématu [vytvoření dynamické skupiny a zkontrolovat stav](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)
 
@@ -577,7 +577,7 @@ Další informace najdete v tématu [novinky na portálu Moje aplikace?](https:/
 
 Nové **řešení potíží a podpora** kartě **přihlášení** stránky Azure portal, má pomoci správce a pracovníky technické podpory řešit problémy spojené s přihlášení Azure AD. Tato nová karta poskytuje kód chyby, chybová zpráva a doporučeními k nápravě (pokud existuje) vám pomohou při řešení problému. Pokud nemůžete vyřešit problém, jsme také získáte nový způsob, jak vytvořit lístek podpory pomocí **kopírování do schránky** prostředí, která naplní **ID žádosti** a **Datum(UTC)** pole pro soubor protokolu v vašeho lístku podpory.  
 
-![Protokoly Přihlaste se na nové kartě](media/whats-new/troubleshooting-and-support.png)
+![Protokoly přihlášení ukazující na nové kartě](media/whats-new/troubleshooting-and-support.png)
 
 ---
 

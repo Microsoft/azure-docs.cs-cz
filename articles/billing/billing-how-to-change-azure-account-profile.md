@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f399cf55123ad6bc8ccb011c5d7d59f615af652d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: ecf39623c70441e4b726221b4e92e2492370a9bc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904382"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57846748"
 ---
 # <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>Změnit informace z vašeho profilu účtu Azure například kontaktní e-mailovou adresu a telefonní číslo
 
@@ -38,15 +38,15 @@ E-mailovou adresu v profilu správce účtu Microsoft používá k upozornění 
 
 ### <a name="can-notifications-be-sent-to-a-different-email-address-other-than-the-account-administrator-email-address-associated-with-my-account"></a>Oznámení nelze odesílat na jinou e-mailovou adresu jiných než e-mailovou adresu účtu správce, přidružené k účtu?
 
-Ano. E-mailovou adresu účtu získá důležitá oznámení o všech předplatných v rámci účtu. Proto doporučujeme, že zadáte kontaktní e-mailovou adresu, která pravidelně kontroluje správce účtu.
+Ano. Na e-mailovou adresu uvedenou v účtu přicházejí důležitá oznámení týkající se všech předplatných v rámci daného účtu. Proto doporučujeme, že zadáte kontaktní e-mailovou adresu, která pravidelně kontroluje správce účtu.
 
 ### <a name="can-i-change-the-account-administrator-email-address-in-my-profile"></a>Můžete změnit e-mailovou adresu správce účtu v mém profilu?
 
-Ano. Správce účtu je osoba, který nastavení účtu Azure a kdo přijímá důležitých e-mailová oznámení o všech předplatných v rámci účtu. Doporučujeme vám, že zadáte kontaktní e-mailovou adresu, která pravidelně kontroluje správce účtu.
+Ano. Správce účtu je osoba, která nastavila účet Azure a která dostává důležitá e-mailová oznámení týkající se všech předplatných v rámci účtu. Doporučujeme zadat kontaktní e-mailovou adresu, kterou pravidelně kontroluje správce účtu.
 
 ### <a name="does-updating-my-profile-email-also-update-my-login-email-address"></a>Aktualizaci synchronizuji si e-maily z profilu také aktualizovat mé přihlašovací jméno e-mailovou adresu?
 
-Ne. Aktualizuje se profil e-mailovou adresu nelze aktualizovat vaše přihlašovací jméno e-mailovou adresu. Pokud chcete změnit vaše přihlašovací jméno e-mailovou adresu, budete muset převést vlastnictví účtu.
+Ne. Při aktualizaci profilové e-mailové adresy nedojde k aktualizaci přihlašovací e-mailové adresy. Pokud chcete změnit přihlašovací e-mailovou adresu, musíte přenést vlastnictví účtu.
 
 ### <a name="does-updating-my-profile-address-also-update-my-credit-card-billing-address"></a>Podporuje adresa Můj profil se aktualizuje také aktualizaci fakturační adresa platební karty?
 
@@ -54,9 +54,9 @@ Zjistěte, jak aktualizovat vaše fakturační údaje, najdete v článku [změn
 
 ### <a name="why-cant-i-update-the-country"></a>Proč nelze aktualizovat zemi?
 
-Z důvodu technická omezení nemůžeme změnit zemi pro existující účet. Můžete však vytvořit účet v požadovanou zemi a obraťte se na podporu Azure o migraci vašich služeb k tomuto účtu.
+Z důvodu technických omezení nemůžeme změnit zemi ve stávajícím účtu. Můžete však vytvořit účet v požadovanou zemi a obraťte se na podporu Azure o migraci vašich služeb k tomuto účtu.
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

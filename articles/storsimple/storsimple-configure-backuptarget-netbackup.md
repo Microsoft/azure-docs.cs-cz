@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
-ms.openlocfilehash: 913df079b56e131a3120971b635c49c2c04b2b1e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 17428405a0be45854a2eaaef831864f529ed145a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871566"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994464"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple jako cíl zálohování s NetBackup
 
@@ -94,6 +94,7 @@ Následující tabulky popisují základní pokyny k architektuře modelu zaří
 |------------------------|---------------|-----------------|
 | Kapacita místního úložiště | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
 | Kapacita cloudového úložiště | &gt; 200 TiB\* | &gt; 500 TiB\* |
+
 \* Velikost úložiště předpokládá bez odstranění duplicitních dat nebo kompresi.
 
 **StorSimple kapacity pro primární a sekundární zálohování**
@@ -207,16 +208,16 @@ Nastavení řešení podle pokynů v následujících částech.
 
 ### <a name="operating-system-best-practices"></a>Osvědčené postupy operačního systému
 
--   Zakážete šifrování Windows serveru a odstranění duplicitních dat pro systém souborů NTFS.
--   Zakážete defragmentace serveru systému Windows na svazky zařízení StorSimple.
--   Zakážete indexování serveru systému Windows na svazky zařízení StorSimple.
--   Spusťte antivirovou kontrolu na zdrojovém hostiteli (ne u svazků StorSimple).
--   Vypnout výchozí [údržby systému Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) ve Správci úloh. To lze proveďte v jednom z následujících způsobů:
-    - Vypněte configuratoru údržby v Plánovači úloh Windows.
-    - Stáhněte si [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) z webu Windows Sysinternals. Po stažení nástroje PsExec, spusťte prostředí Windows PowerShell jako správce a zadejte:
-      ```powershell
-      psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
-      ```
+- Zakážete šifrování Windows serveru a odstranění duplicitních dat pro systém souborů NTFS.
+- Zakážete defragmentace serveru systému Windows na svazky zařízení StorSimple.
+- Zakážete indexování serveru systému Windows na svazky zařízení StorSimple.
+- Spusťte antivirovou kontrolu na zdrojovém hostiteli (ne u svazků StorSimple).
+- Vypnout výchozí [údržby systému Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) ve Správci úloh. To lze proveďte v jednom z následujících způsobů:
+  - Vypněte configuratoru údržby v Plánovači úloh Windows.
+  - Stáhněte si [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) z webu Windows Sysinternals. Po stažení nástroje PsExec, spusťte prostředí Windows PowerShell jako správce a zadejte:
+    ```powershell
+    psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
+    ```
 
 ### <a name="storsimple-best-practices"></a>Osvědčené postupy pro StorSimple
 
@@ -257,6 +258,7 @@ Podle předchozí předpoklady, vytvořte 26-TiB StorSimple vrstveného svazku p
 | Ročně úplné | 1  | 10 | 10 |
 | Požadavek GFS |   | 38 |   |
 | Další kvótu  | 4  |   | 42 celkový požadavek GFS  |
+
 \* Násobitel GFS je počet kopií, které potřebujete k ochraně a uchovat pro splnění požadavků na zásady zálohování.
 
 ## <a name="set-up-netbackup-storage"></a>Nastavení úložiště NetBackup
@@ -301,8 +303,8 @@ Tady je příklad plánu otočení GFS čtyři týdny, měsíční nebo roční:
 | Typ frekvence/zálohování | Úplná | Přírůstkové (1-5 dní)  |   
 |---|---|---|
 | Každý týden (1 – 4 týdny) | Sobota | Pondělí – pátek |
-| Měsíční  | Sobota  |   |
-| Ročně | Sobota  |   |   |
+| měsíčně  | Sobota  |   |
+| Ročně | Sobota  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>Přiřadí úlohu zálohování NetBackup svazky zařízení StorSimple
 
@@ -310,69 +312,69 @@ K následujícímu pořadí předpokládá, že jsou v souladu s pokyny NetBacku
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-backup-job"></a>Přiřadit svazky zařízení StorSimple pro úlohu zálohování NetBackup
 
-1.  V konzole pro správu NetBackup vyberte **NetBackup správu**, klikněte pravým tlačítkem na **zásady**a pak vyberte **nové zásady**.
+1. V konzole pro správu NetBackup vyberte **NetBackup správu**, klikněte pravým tlačítkem na **zásady**a pak vyberte **nové zásady**.
 
-    ![NetBackup konzole pro správu, vytvořte novou zásadu](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
+   ![NetBackup konzole pro správu, vytvořte novou zásadu](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
 
-2.  V **přidat nové zásady** dialogové okno, zadejte název zásady a pak vyberte **použití Průvodce konfigurací zásad** zaškrtávací políčko. Vyberte **OK**.
+2. V **přidat nové zásady** dialogové okno, zadejte název zásady a pak vyberte **použití Průvodce konfigurací zásad** zaškrtávací políčko. Vyberte **OK**.
 
-    ![Konzola pro správu NetBackup, přidat – dialogové okno nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
+   ![Konzola pro správu NetBackup, přidat – dialogové okno nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
 
-3.  V Průvodci konfigurací zálohování zásad rozhodnout, jestli typ zálohování a pak vyberte **Další**.
+3. V Průvodci konfigurací zálohování zásad rozhodnout, jestli typ zálohování a pak vyberte **Další**.
 
-    ![NetBackup Administration Console, vyberte typ zálohy](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
+   ![NetBackup Administration Console, vyberte typ zálohy](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
 
-4.  Pokud chcete nastavit typ zásad, vyberte **standardní**a pak vyberte **Další**.
+4. Pokud chcete nastavit typ zásad, vyberte **standardní**a pak vyberte **Další**.
 
-    ![NetBackup Administration Console, vyberte zásadu typu](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
+   ![NetBackup Administration Console, vyberte zásadu typu](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5.  Vyberte hostitele, vyberte **detekovat klientský operační systém** zaškrtněte políčko a potom vyberte **přidat**. Vyberte **Další**.
+5. Vyberte hostitele, vyberte **detekovat klientský operační systém** zaškrtněte políčko a potom vyberte **přidat**. Vyberte **Další**.
 
-    ![Konzola pro správu NetBackup, seznam klienty v nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
+   ![Konzola pro správu NetBackup, seznam klienty v nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
-6.  Vyberte disky, které chcete zálohovat.
+6. Vyberte disky, které chcete zálohovat.
 
-    ![Konzola pro správu NetBackup, výběr zálohování pro novou zásadu](./media/storsimple-configure-backup-target-using-netbackup/nbimage11.png)
+   ![Konzola pro správu NetBackup, výběr zálohování pro novou zásadu](./media/storsimple-configure-backup-target-using-netbackup/nbimage11.png)
 
-7.  Vyberte četnost a uchování hodnoty, které splňují vaše požadavky rotace záloh.
+7. Vyberte četnost a uchování hodnoty, které splňují vaše požadavky rotace záloh.
 
-    ![Konzole pro správu NetBackup, frekvenci zálohování a otočení pro nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
+   ![Konzole pro správu NetBackup, frekvenci zálohování a otočení pro nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8.  Vyberte **Další** > **Další** > **Dokončit**.  Plán můžete změnit po vytvoření zásady.
+8. Vyberte **Další** > **Další** > **Dokončit**.  Plán můžete změnit po vytvoření zásady.
 
-9.  Vyberte rozbalte zásady, které jste právě vytvořili, a potom vyberte **plány**.
+9. Vyberte rozbalte zásady, které jste právě vytvořili, a potom vyberte **plány**.
 
-    ![Konzola pro správu NetBackup, plány pro nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
+   ![Konzola pro správu NetBackup, plány pro nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
 
-10.  Klikněte pravým tlačítkem na **rozdílové celkové**vyberte **zkopírujte do nové**a pak vyberte **OK**.
+10. Klikněte pravým tlačítkem na **rozdílové celkové**vyberte **zkopírujte do nové**a pak vyberte **OK**.
 
     ![Konzola pro správu NetBackup, plán kopie pro novou zásadu](./media/storsimple-configure-backup-target-using-netbackup/nbimage14.png)
 
-11.  Klikněte pravým tlačítkem na nově vytvořený plán a pak vyberte **změnu**.
+11. Klikněte pravým tlačítkem na nově vytvořený plán a pak vyberte **změnu**.
 
-12.  Na **atributy** kartu, vyberte **přepsat výběr úložiště zásad** zaškrtněte políčko a potom vyberte svazek, ve kterém pondělí přírůstkové zálohy přejít.
+12. Na **atributy** kartu, vyberte **přepsat výběr úložiště zásad** zaškrtněte políčko a potom vyberte svazek, ve kterém pondělí přírůstkové zálohy přejít.
 
     ![Konzola pro správu NetBackup, změnit plán](./media/storsimple-configure-backup-target-using-netbackup/nbimage15.png)
 
-13.  Na **spusťte okno** kartu, vyberte časový interval pro zálohování.
+13. Na **spusťte okno** kartu, vyberte časový interval pro zálohování.
 
     ![Konzola pro správu NetBackup, interval pro změnu start](./media/storsimple-configure-backup-target-using-netbackup/nbimage16.png)
 
-14.  Vyberte **OK**.
+14. Vyberte **OK**.
 
-15.  Opakujte kroky 10-14 pro každou přírůstkovou zálohu. Vyberte příslušný svazek a plán pro každou zálohu, kterou jste vytvořili.
+15. Opakujte kroky 10-14 pro každou přírůstkovou zálohu. Vyberte příslušný svazek a plán pro každou zálohu, kterou jste vytvořili.
 
-16.  Klikněte pravým tlačítkem **rozdílové celkové** naplánovat a poté jej odstraňte.
+16. Klikněte pravým tlačítkem **rozdílové celkové** naplánovat a poté jej odstraňte.
 
-17.  Úprava plánu úplné zálohování potřebám.
+17. Úprava plánu úplné zálohování potřebám.
 
     ![Konzola pro správu NetBackup, změna plánu úplných záloh](./media/storsimple-configure-backup-target-using-netbackup/nbimage17.png)
 
-18.  Změňte počáteční okno.
+18. Změňte počáteční okno.
 
     ![Konzola pro správu NetBackup, změnit v okně start](./media/storsimple-configure-backup-target-using-netbackup/nbimage18.png)
 
-19.  V posledním plánu vypadá takto:
+19. V posledním plánu vypadá takto:
 
     ![Konzola pro správu NetBackup, posledním plánu](./media/storsimple-configure-backup-target-using-netbackup/nbimage19.png)
 
@@ -400,6 +402,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro místní i StorSi
 | Měsíční úplné |StorSimple disku (dlouhodobé) | 1 | 12 | 12 |
 | Ročně úplné |StorSimple disku (dlouhodobé) | 1 | 1 | 1 |
 |Požadavek na velikost svazků GFS |  |  |  | 18*|
+
 \* Celková kapacita zahrnuje 17 TiB StorSimple disky a 1 TiB místní svazek RAID.
 
 
@@ -411,8 +414,8 @@ Následující tabulka ukazuje, jak nastavit zálohování pro místní i StorSi
 | Týdnu 2 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
 | Týdnu 3 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
 | Týdnu 4 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
-| Měsíční | Každý měsíc StorSimple |   |   |   |   |   |
-| Ročně | Každý rok StorSimple  |   |   |   |   |   |   |
+| měsíčně | Každý měsíc StorSimple |   |   |   |   |   |
+| Ročně | Každý rok StorSimple  |   |   |   |   |   |
 
 
 ## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Přiřadit svazky zařízení StorSimple na úlohu archivace a duplikování NetBackup
@@ -427,41 +430,41 @@ Po definování počáteční diskových fondech, je třeba definovat tři zása
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Přiřadit svazky zařízení StorSimple na úlohu archivace a duplikování NetBackup
 
-1.  V konzole pro správu NetBackup vyberte **úložiště** > **zásady životního cyklu úložiště** > **nové zásady životního cyklu úložiště**.
+1. V konzole pro správu NetBackup vyberte **úložiště** > **zásady životního cyklu úložiště** > **nové zásady životního cyklu úložiště**.
 
-    ![Konzola pro správu NetBackup, nové zásady životního cyklu úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
+   ![Konzola pro správu NetBackup, nové zásady životního cyklu úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
-2.  Zadejte název snímku a pak vyberte **přidat**.
+2. Zadejte název snímku a pak vyberte **přidat**.
 
-3.  V **novou operaci** dialogovém okně **vlastnosti** kartě pro **operace**vyberte **zálohování**. Vyberte hodnoty, které chcete pro **cílové úložiště**, **uchování typ**, a **dobu uchování**. Vyberte **OK**.
+3. V **novou operaci** dialogovém okně **vlastnosti** kartě pro **operace**vyberte **zálohování**. Vyberte hodnoty, které chcete pro **cílové úložiště**, **uchování typ**, a **dobu uchování**. Vyberte **OK**.
 
-    ![Konzola pro správu NetBackup, dialogové okno nové operace](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
+   ![Konzola pro správu NetBackup, dialogové okno nové operace](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
 
-    Definuje první operace zálohování a úložiště.
+   Definuje první operace zálohování a úložiště.
 
-4.  Vybrat, zda chcete zvýraznit předchozí operace a pak vyberte **přidat**. V **operace úložiště změny** dialogového okna, vyberte požadované hodnoty pro **cílové úložiště**, **uchování typ**, a **dobu uchování**.
+4. Vybrat, zda chcete zvýraznit předchozí operace a pak vyberte **přidat**. V **operace úložiště změny** dialogového okna, vyberte požadované hodnoty pro **cílové úložiště**, **uchování typ**, a **dobu uchování**.
 
-    ![Konzola pro správu NetBackup, dialogové okno Změnit operace úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
+   ![Konzola pro správu NetBackup, dialogové okno Změnit operace úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
 
-5.  Vybrat, zda chcete zvýraznit předchozí operace a pak vyberte **přidat**. V **nové zásady životního cyklu úložiště** dialogového okna přidejte měsíční zálohy po dobu jednoho roku.
+5. Vybrat, zda chcete zvýraznit předchozí operace a pak vyberte **přidat**. V **nové zásady životního cyklu úložiště** dialogového okna přidejte měsíční zálohy po dobu jednoho roku.
 
-    ![Konzola pro správu NetBackup, dialogové okno nové zásady životního cyklu úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage24.png)
+   ![Konzola pro správu NetBackup, dialogové okno nové zásady životního cyklu úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage24.png)
 
-6.  Opakujte kroky 4 až 5, dokud nevytvoříte komplexní zásady uchovávání informací SLP, které potřebujete.
+6. Opakujte kroky 4 až 5, dokud nevytvoříte komplexní zásady uchovávání informací SLP, které potřebujete.
 
-    ![Konzola pro správu NetBackup, přidat zásady v dialogovém okně Nová zásada životního cyklu úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage25.png)
+   ![Konzola pro správu NetBackup, přidat zásady v dialogovém okně Nová zásada životního cyklu úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage25.png)
 
-7.  Až budete hotovi, v části definování zásady uchovávání informací SLP, **zásady**, definovat zásady zálohování tak, že následující kroky podrobně popisuje [svazky přiřazení zařízení StorSimple pro úlohu zálohování NetBackup](#assigning-storsimple-volumes-to-a-netbackup-backup-job).
+7. Až budete hotovi, v části definování zásady uchovávání informací SLP, **zásady**, definovat zásady zálohování tak, že následující kroky podrobně popisuje [svazky přiřazení zařízení StorSimple pro úlohu zálohování NetBackup](#assigning-storsimple-volumes-to-a-netbackup-backup-job).
 
-8.  V části **plány**v **změnit plán** dialogové okno, klikněte pravým tlačítkem na **úplné**a pak vyberte **změnu**.
+8. V části **plány**v **změnit plán** dialogové okno, klikněte pravým tlačítkem na **úplné**a pak vyberte **změnu**.
 
-    ![Konzola pro správu NetBackup, dialogové okno Změnit plán](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
+   ![Konzola pro správu NetBackup, dialogové okno Změnit plán](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
 
-9.  Vyberte **přepsat výběr úložiště zásad** zaškrtněte políčko a potom vyberte zásady uchovávání informací SLP, který jste vytvořili v postupu 1 až 6.
+9. Vyberte **přepsat výběr úložiště zásad** zaškrtněte políčko a potom vyberte zásady uchovávání informací SLP, který jste vytvořili v postupu 1 až 6.
 
-    ![Konzola pro správu NetBackup, výběr úložiště přepsání zásad](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
+   ![Konzola pro správu NetBackup, výběr úložiště přepsání zásad](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
 
-10.  Vyberte **OK**a potom opakujte pro přírůstkové plán zálohování.
+10. Vyberte **OK**a potom opakujte pro přírůstkové plán zálohování.
 
     ![Konzola pro správu NetBackup, dialogové okno Změnit plán pro přírůstkové zálohování](./media/storsimple-configure-backup-target-using-netbackup/nbimage28.png)
 
@@ -474,6 +477,7 @@ Po definování počáteční diskových fondech, je třeba definovat tři zása
 | Ročně úplné | 1  | 10 | 10 |
 | Požadavek GFS  |     |     | 38 |
 | Další kvótu  | 4  |    | 42 celkový požadavek GFS |
+
 \* Násobitel GFS je počet kopií, které potřebujete k ochraně a uchovat pro splnění požadavků na zásady zálohování.
 
 ## <a name="storsimple-cloud-snapshots"></a>Cloudové snímky StorSimple
@@ -503,13 +507,13 @@ Následující část popisuje, jak vytvořit krátké skript ke spuštění a o
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Ke spuštění nebo odstranění snímek v cloudu
 
-1.  [Nainstalujte prostředí Azure PowerShell](/powershell/azure/overview).
+1. [Nainstalujte prostředí Azure PowerShell](/powershell/azure/overview).
 2. Stažení a instalace [spravovat CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) skript prostředí PowerShell.
 3. Na serveru, na kterém běží, spuštění skriptu prostředí PowerShell jako správce. Zkontrolujte, jestli jste spustili skript s `-WhatIf $true` chcete zobrazit, co se změní skript provede. Po dokončení ověření předat `-WhatIf $false`. Spustit následující příkaz:
-```powershell
-.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
-```
-4.  Přidejte skript pro vaši úlohu zálohování v NetBackup. K tomuto účelu upravte možnosti NetBackup úlohy předběžného zpracování a následné zpracování příkazů.
+   ```powershell
+   .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+   ```
+4. Přidejte skript pro vaši úlohu zálohování v NetBackup. K tomuto účelu upravte možnosti NetBackup úlohy předběžného zpracování a následné zpracování příkazů.
 
 > [!NOTE]
 > Doporučujeme, abyste spustili zásady zálohování StorSimple cloudových snímků jako následného zpracování skriptu na konci vaší každodenní úlohy zálohování. Další informace o tom, jak zálohovat a obnovovat vaše aplikace pro zálohování prostředí, které pomáhá splnit i ty RPO a RTO, obraťte se na zálohování architect.

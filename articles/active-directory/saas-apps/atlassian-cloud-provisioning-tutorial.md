@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2019
 ms.author: v-ant
-ms.openlocfilehash: ca9a569d28e42baafeabc15f49fb7f5206566730
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: ff6a111663df5d7e7f4f517446084ef75b009e59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57572162"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092697"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace cloudu od společnosti Atlassian pro automatické zřizování uživatelů
 
@@ -28,7 +28,7 @@ Cílem tohoto kurzu je předvést postup provést v cloudu od společnosti Atlas
 
 > [!NOTE]
 > Tento kurz popisuje konektor postavené na službě zřizování uživatelů služby Azure AD. Důležité podrobnosti o význam této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md).
-
+> 
 > Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných Microsoft Azure podmínky použití pro funkce ve verzi Preview, najdete v části [doplňkovými podmínkami použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -108,9 +108,9 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 5. V části **přihlašovacích údajů správce** části, zadejte **adresy URL Tenanta** a **tajný klíč tokenu** Cloud od společnosti Atlassian účtu. Mezi tyto hodnoty patří:
 
-    *   V **adresy URL Tenanta** pole, zadejte koncový bod konkrétního tenanta, dostanete od od společnosti Atlassian, jak je popsáno v kroku 6. Příklad: **https://api.atlassian.com/scim/directory/{directoryId}**
+   * V **adresy URL Tenanta** pole, zadejte koncový bod konkrétního tenanta, dostanete od od společnosti Atlassian, jak je popsáno v kroku 6. Příklad: **https://api.atlassian.com/scim/directory/{directoryId}**
 
-    *   V **tajný klíč tokenu** pole, vyplňte token tajného kódu, jak je popsáno v kroku 6.
+   * V **tajný klíč tokenu** pole, vyplňte token tajného kódu, jak je popsáno v kroku 6.
 
 6. Přejděte do [správce organizace od společnosti Atlassian](https://admin.atlassian.com) **> zřizování uživatelů** a klikněte na **vytvořit Token**. Kopírovat **základní adresa URL adresáře** a **nosného tokenu** k **adresy URL Tenanta** a **tajný klíč tokenu** polí v uvedeném pořadí.
 

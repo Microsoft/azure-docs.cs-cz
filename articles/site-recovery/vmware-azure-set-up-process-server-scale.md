@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: mayg
-ms.openlocfilehash: f2d8d070a8adbe7992795b06722427da2830cb50
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e3f6a160f57a4432f91c395a2e0dd664bc8f323d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253676"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106538"
 ---
 # <a name="scale-for-failback-with-additional-process-servers"></a>Škálování pro navrácení služeb po obnovení pomocí dalších procesových serverů
 
@@ -24,8 +24,8 @@ Ve výchozím nastavení se při replikaci virtuálních počítačů VMware neb
 
 Ujistěte se, že jste provedli [plánování kapacity](site-recovery-plan-capacity-vmware.md) pro replikaci VMware. To pomáhá zjistit, jak a kdy byste měli nasadit dalších procesových serverů.
 
->[!NOTE]
-Použití naklonované komponentu procesového serveru není podporováno. Postupujte podle kroků v tomto článku pro každý PS horizontální navýšení kapacity.
+> [!NOTE]
+> Použití naklonované komponentu procesového serveru není podporováno. Postupujte podle kroků v tomto článku pro každý PS horizontální navýšení kapacity.
 
 ### <a name="sizing-requirements"></a>Požadavky na velikost 
 
@@ -34,7 +34,7 @@ Zkontrolujte požadavky na velikost uvedené v tabulce. Obecně platí Pokud bud
 | **Další procesový server** | **Velikost mezipaměti disku** | **Frekvence změny dat** | **Chráněné počítače** |
 | --- | --- | --- | --- |
 |4 virtuální procesory (2 sockets * 2 jádra \@ 2,5 GHz), 8 GB paměti |300 GB |Aby se 250 GB nebo méně |Replikace počítačů 85 nebo méně. |
-|8 virtuálních procesorů (2 sockets * 4 jádra \@ 2,5 GHz), 12 GB paměti |600 GB |250 GB až 1 TB |Replikace mezi 85 150 počítačů. |
+|8 virtuálních procesorů (2 sockets * 4 jádra \@ 2,5 GHz), 12 GB paměti |600 GB |250 GB to 1 TB |Replikace mezi 85 150 počítačů. |
 |12 virtuálních procesorů (2 sockets * 6 jader \@ 2,5 GHz) 24 GB paměti |1 TB |1 TB na 2 TB |Replikace mezi 150 225 počítačů. |
 
 Kde každý chráněný zdrojový počítač je nakonfigurován se 3 disky o 100 GB.
@@ -56,11 +56,11 @@ Stáhněte instalační soubor pro procesový server následujícím způsobem:
 3. Vyberte konfigurační server přejdete na podrobnosti o serveru. Pak klikněte na tlačítko **+ procesový Server**.
 4. V **přidat procesový server** >  **zvolit, kam chcete procesový server nasadit**vyberte **nasazení Scale-out procesový Server v místním**.
 
-  ![Přidat stránku servery](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
+   ![Přidat stránku servery](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
 1. Klikněte na tlačítko **stáhněte si Microsoft Azure Site Recovery sjednocené instalace**. Tato akce stáhne nejnovější verzi instalačního souboru.
 
-  > [!WARNING]
-  Verze procesového serveru instalace by měla být stejná nebo nižší než, verze konfiguračního serveru máte spuštěné. Jednoduchý způsob, jak zajistit kompatibilitu verze je použijte stejnou instalační program, který jste naposledy použili k instalaci nebo aktualizaci konfiguračního serveru.
+   > [!WARNING]
+   > Verze procesového serveru instalace by měla být stejná nebo nižší než, verze konfiguračního serveru máte spuštěné. Jednoduchý způsob, jak zajistit kompatibilitu verze je použijte stejnou instalační program, který jste naposledy použili k instalaci nebo aktualizaci konfiguračního serveru.
 
 ## <a name="install-from-the-ui"></a>Instalace z uživatelského rozhraní
 

@@ -16,12 +16,12 @@ ms.date: 07/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbe9a10c85efa2f52a04f5c2fab87421a08f0a16
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a7b9c8827979ac4135bcaf4dfeef7cd5de02b2d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199795"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118438"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizace Azure Active Directory Connect: Nakonfigurovat upřednostňované umístění dat pro prostředky služeb Office 365
 Účelem tohoto tématu je pro vás provedou postupem konfigurace atribut upřednostňované umístění dat ve službě Azure Active Directory (Azure AD) Connect sync. Při použití možnosti geografickým oblastem v Office 365, můžete použít tento atribut k určení geografické umístění dat uživatele v Office 365. (Podmínky *oblasti* a *geograficky* zaměňují.)
@@ -192,8 +192,8 @@ Obecně platí úplná synchronizace cyklus je povinný. Toto je vzhledem k tomu
    3. V dialogovém okně vyberte **úplný Import**a vyberte **OK**.
    4. Počkejte na dokončení operace.
 
-    > [!NOTE]
-    > Pokud zdrojový atribut je již součástí seznam importovaných atributy, můžete přeskočit úplný import na místní konektoru služby Active Directory. Jinými slovy můžete není nutné provádět změny během kroku 2 výše v tomto článku.
+      > [!NOTE]
+      > Pokud zdrojový atribut je již součástí seznam importovaných atributy, můžete přeskočit úplný import na místní konektoru služby Active Directory. Jinými slovy můžete není nutné provádět změny během kroku 2 výše v tomto článku.
 
 2. Spustit **úplný import** v konektoru služby Azure AD:
 

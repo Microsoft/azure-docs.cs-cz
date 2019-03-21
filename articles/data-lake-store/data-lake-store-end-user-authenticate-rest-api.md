@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 1e952e32142672946fa987b763032dad66f564a9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d5603bb6bbb56d1aebb719902c60de631a4f14f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537877"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108184"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -45,38 +45,36 @@ Výsledek s přihlášení koncových uživatelů je, že vaše aplikace je zada
 V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace se provádějí v kontextu uživatele. Proveďte následující kroky:
 
 1. Prostřednictvím aplikace přesměrujte uživatele na tuto adresu URL:
-   
+
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
-   
+
    > [!NOTE]
    > \<REDIRECT-URI&gt; musí být zakódovaný, aby se dal použít jako adresa URL. Ano, pro https://localhost, použijte `https%3A%2F%2Flocalhost`)
-   > 
-   > 
-   
+
     Pro účely tohoto kurzu můžete ve výše zobrazené adrese URL nahradit zástupné hodnoty a vložit ji do adresního řádku webového prohlížeče. Budete přesměrováni na ověření pomocí přihlášení Azure. Po úspěšném přihlášení se zobrazí v adresním řádku prohlížeče odpověď. Odpověď bude mít tento formát:
-   
+
         http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
 
 2. Zaznamenejte autorizační kód z odpovědi. Pro účely tohoto kurzu můžete zkopírovat autorizační kód z adresního řádku webového prohlížeče a předejte ho v příspěvku požadavek na koncový bod tokenu, jak je znázorněno v následujícím fragmentu kódu:
-   
+
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
         -F redirect_uri=<REDIRECT-URI> \
         -F grant_type=authorization_code \
         -F resource=https://management.core.windows.net/ \
         -F client_id=<APPLICATION-ID> \
         -F code=<AUTHORIZATION-CODE>
-   
+
    > [!NOTE]
    > V takovém případě nemusí být identifikátor \<REDIRECT-URI> zakódovaný.
    > 
    > 
 
 3. Odpověď je objekt JSON, který obsahuje přístupový token (například `"access_token": "<ACCESS_TOKEN>"`) a obnovovací token (například `"refresh_token": "<REFRESH_TOKEN>"`). Vaše aplikace používá přístupový token při přístupu k Azure Data Lake Storage Gen1 a aktualizační token k získání dalšího přístupového tokenu, když vyprší platnost přístupového tokenu.
-   
+
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
 
 4. Když vyprší platnost přístupového tokenu, můžete požádat o nový přístupový token pomocí obnovovacího tokenu, jak je znázorněno v následujícím fragmentu kódu:
-   
+
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
              -F grant_type=refresh_token \
              -F resource=https://management.core.windows.net/ \
@@ -84,7 +82,7 @@ V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace
              -F refresh_token=<REFRESH-TOKEN>
 
 Další informace o interaktivním ověřování uživatelů najdete v tématu [Tok poskytování autorizačních kódů](https://msdn.microsoft.com/library/azure/dn645542.aspx).
-   
+
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak používat k ověření pomocí Azure Data Lake Storage Gen1 ověřování služba služba pomocí rozhraní REST API. Teď můžete prohlédnout v následujících článcích, které mluvit o tom, jak používat rozhraní REST API pro práci s Azure Data Lake Storage Gen1.
 

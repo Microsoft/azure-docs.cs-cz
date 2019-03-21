@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 36350f8f359c6ad5cc5637ce0ce38838698cd68b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7da57c01b6717b505ea09fa9e6197bab4d4976fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177440"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57873821"
 ---
 # <a name="media-services-development-with-net"></a>Vývoj pro Media Services s .NET 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -45,7 +45,7 @@ Alternativně můžete získat nejnovější součásti Media Services .NET SDK 
 2. Sestavte řešení.
 3. Použití **NuGet** nainstalujte a přidejte **rozšíření Azure Media Services .NET SDK** (**windowsazure.mediaservices.extensions**). Při instalaci tohoto balíčku se nainstaluje také **sada SDK služby Media Services pro .NET** a přidá všechny ostatní požadované závislosti.
    
-    Ujistěte se, že máte nejnovější verzi aplikace nainstalován nástroj NuGet. Další informace a pokyny k instalaci, naleznete v tématu [NuGet](http://nuget.codeplex.com/).
+    Ujistěte se, že máte nejnovější verzi aplikace nainstalován nástroj NuGet. Další informace a pokyny k instalaci, naleznete v tématu [NuGet](https://nuget.codeplex.com/).
 
     1. V Průzkumníku řešení klikněte pravým tlačítkem myši na název projektu a zvolte **spravovat balíčky NuGet**.
 
@@ -54,7 +54,7 @@ Alternativně můžete získat nejnovější součásti Media Services .NET SDK 
     3. V galerii Online hledání MediaServices rozšíření Azure, zvolte **rozšíření Azure Media Services .NET SDK** (**windowsazure.mediaservices.extensions**) a potom klikněte na tlačítko  **Nainstalujte** tlačítko.
    
     4. Upravit projekt a jsou přidány odkazy na rozšíření Media Services .NET SDK, Media Services .NET SDK a dalších závislých sestavení.
-4. Ke zvýšení úrovně čištění vývojového prostředí, zvažte povolení obnovení balíčků NuGet. Další informace najdete v tématu [obnovení balíčků NuGet "](http://docs.nuget.org/consume/package-restore).
+4. Ke zvýšení úrovně čištění vývojového prostředí, zvažte povolení obnovení balíčků NuGet. Další informace najdete v tématu [obnovení balíčků NuGet "](https://docs.nuget.org/consume/package-restore).
 5. Přidejte odkaz na **System.Configuration** sestavení. Toto sestavení obsahuje System.Configuration. **ConfigurationManager** třídu, která se používá pro přístup k konfigurační soubory (například App.config).
    
     1. Přidání odkazů pomocí dialogového okna Spravovat odkazy, klikněte pravým tlačítkem na název projektu v Průzkumníku řešení. Potom klikněte na **přidat**, pak klikněte na tlačítko **odkaz...** .

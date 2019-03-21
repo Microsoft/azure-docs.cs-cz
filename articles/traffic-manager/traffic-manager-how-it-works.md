@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 35abc43b60f31d94e8c4221137ad5437366b3489
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 52469cb2735b2270815191ec0815daee350882a4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547857"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108861"
 ---
 # <a name="how-traffic-manager-works"></a>Jak funguje Traffic Manager
 
@@ -39,8 +39,8 @@ Společnosti Contoso Corp vyvinuli nový portál pro partnery. Adresa URL pro te
 Získat tuto konfiguraci, proveďte následující kroky:
 
 1. Nasazení tři instance příslušnou službu. Názvy DNS tato nasazení jsou ".net us.cloudapp společnosti contoso", "contoso-eu.cloudapp .net" a "contoso-asia.cloudapp .net".
-2. Vytvořit profil služby Traffic Manager, s názvem "contoso.trafficmanager.net" a nakonfigurujte ho na použití metody směrování provozu "Výkonu" ve třech koncových bodech.
-* Konfigurace názvu domény individuální "partners.contoso.com" na "contoso.trafficmanager.net" pomocí záznamu DNS CNAME.
+1. Vytvořit profil služby Traffic Manager, s názvem "contoso.trafficmanager.net" a nakonfigurujte ho na použití metody směrování provozu "Výkonu" ve třech koncových bodech.
+1. Konfigurace názvu domény individuální "partners.contoso.com" na "contoso.trafficmanager.net" pomocí záznamu DNS CNAME.
 
 ![Konfigurace DNS Traffic Manageru][1]
 

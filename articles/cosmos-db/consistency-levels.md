@@ -5,25 +5,25 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/27/2018
-ms.openlocfilehash: cbe7b0e243f34d9b48e837c1211b5a186946f69f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.date: 03/18/2019
+ms.openlocfilehash: b43fe513b15d55ee595acaa6733d96cdb58f4e83
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903704"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294498"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Úrovně konzistence ve službě Azure Cosmos DB
 
-Distribuované databáze, které závisí na replikaci pro vysokou dostupnost, s nízkou latencí nebo obojí, ujistěte se, základní kompromis mezi konzistence čtení a dostupnosti, latence a propustnosti. Většina komerčně dostupný distribuovaných databází požádejte vývojáři zvolit mezi těmito dvěma modely extreme konzistence: silnou konzistenci a konečné konzistence.  [Linearizovatelnosti](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) nebo model pro zajištění konzistence je zlatým standardem programovatelnosti data. Ale přidá strmá cenu vyšší latence (v stabilního stavu) a nižší dostupnost (při selhání). Na druhé straně konečné konzistence nabízí vyšší dostupnost a lepší výkon, ale je obtížné, jak programovat aplikace. 
+Distribuované databáze, které závisí na replikaci pro vysokou dostupnost, s nízkou latencí nebo obojí, ujistěte se, základní kompromis mezi konzistence čtení a dostupnosti, latence a propustnosti. Většina komerčně dostupný distribuovaných databází požádejte vývojáři zvolit mezi těmito dvěma modely konzistence extreme: *silné* konzistence a *konečné* konzistence.  [Linearizovatelnosti](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) nebo model pro zajištění konzistence je zlatým standardem programovatelnosti data. Ale přidá cenu vyšší latence (v stabilního stavu) a nižší dostupnost (při selhání). Na druhé straně konečné konzistence nabízí vyšší dostupnost a lepší výkon, ale je obtížné pro aplikace programu. 
 
-Konzistence dat jako celé spektrum od volby místo dvěma extrémy přistupuje k Azure Cosmos DB. Silná konzistence a konečné konzistence jsou na obou koncích, ale existuje mnoho možností konzistence podél spektra. Mohou vývojáři tyto možnosti volby přesné a detailní kompromisy s ohledem na vysokou dostupnost nebo výkon. 
+Konzistence dat jako celé spektrum od volby místo dvěma extrémy přistupuje k Azure Cosmos DB. Silná konzistence a konečné konzistence se na konci spektra, ale existuje mnoho možností konzistence podél spektra. Mohou vývojáři tyto možnosti volby přesné a detailní kompromisy s ohledem na vysokou dostupnost a výkon. 
 
-Vývojáři můžou pomocí služby Azure Cosmos DB, zvolit z pěti jasně definované modely konzistence na spektra konzistence. Od nejsilnější do nejslabší, modely jsou silná, omezená neaktuálnost, relace, konzistentní Předpona a konečný výsledek. Tyto modely jsou dobře definovaný a intuitivní. Je možné použít u konkrétních scénářů reálného světa. Každý model poskytuje [dostupnost a výkon kompromisy](consistency-levels-tradeoffs.md) a je zajištěná komplexní smlouvy SLA. Následující obrázek ukazuje různé úrovním jako škála možností.
+Vývojáři můžou pomocí služby Azure Cosmos DB, zvolit z pěti jasně definované modely konzistence na spektra konzistence. Z nejsilnějších více mírnější modely zahrnují *silné*, *omezená neaktuálnost*, *relace*, *konzistentní předpona*a *konečné* konzistence. Modely jsou dobře definovaný a intuitivní a je možné u konkrétních scénářů reálného světa. Každý model poskytuje [dostupnost a výkon kompromisy](consistency-levels-tradeoffs.md) se vztahuje smlouva SLA. Následující obrázek ukazuje různé úrovním jako škála možností.
 
 ![Konzistence jako spektrum](./media/consistency-levels/five-consistency-levels.png)
 
-Úrovně konzistence jsou nezávislá na oblast. Úroveň konzistence vašeho účtu Azure Cosmos je zaručeno, že všechny operace bez ohledu na oblast, ze kterého operací čtení a zápisu jsou poskytovány, počet oblastí přidružených k účtu Azure Cosmos, čtení nebo na to, jestli váš účet je nakonfigurovaný s jeden nebo více oblastí zápisu.
+Úrovně konzistence jsou nezávislých na oblasti a je zaručeno, že pro všechny operace bez ohledu na oblast, ze kterého operací čtení a zápisu jsou poskytovány, počet oblastí přidružených k účtu Azure Cosmos, nebo jestli váš účet je nakonfigurovaný s jedním nebo více oblastí zápisu.
 
 ## <a name="scope-of-the-read-consistency"></a>Rozsah konzistence čtení
 

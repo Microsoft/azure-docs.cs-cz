@@ -9,14 +9,15 @@ ms.date: 10/29/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ee08e4dc2f6a4616c4b427ad7d33f56e135b27a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 860a059f57578965045ff8e7f404c3b072df03a1
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442491"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293817"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Spolupráce Azure Active Directory s B2B nejčastější dotazy
 
@@ -59,12 +60,12 @@ Pokud uživatel má přiřazenou roli globálního správce nebo správce s omez
 Ano! Když nakonfigurujete tuto zásadu, pečlivě nedošlo omylem blokují přístup k členům a správci.
 Blokovat přístup uživatelů typu Host [webu Azure portal](https://portal.azure.com), použijte zásady podmíněného přístupu v rozhraní API Windows Azure pro model nasazení classic:
 1. Upravit **všichni uživatelé** tak, aby obsahoval pouze členové skupiny.
-  ![Upravit skupiny – snímek obrazovky](media/faq/modify-all-users-group.png)
+   ![Snímek obrazovky zobrazující všichni uživatelé, kde UserType není rovno hosta ](media/faq/modify-all-users-group.png)
 2. Vytvoření dynamické skupiny obsahující uživatele typu Host.
-  ![Vytvoření skupiny – snímek obrazovky](media/faq/group-with-guest-users.png)
+   ![Snímek obrazovky zobrazující novou skupinu všichni uživatelé typu Host](media/faq/group-with-guest-users.png)
 3. Nastavení zásad podmíněného přístupu k blokování uživatelů typu Host z přístup k portálu, jak je znázorněno v následujícím videu:
   
-  > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
+   > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Spolupráce B2B ve službě Azure AD podporuje vícefaktorové ověřování a příjemce e-mailové účty?
 Ano. Vícefaktorové ověřování a příjemce e-mailové účty jsou podporované pro spolupráci B2B ve službě Azure AD.
@@ -94,7 +95,7 @@ Uživatel typu Host mohou využívat kteréhokoli zprostředkovatele identity k 
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>Kde najdu komunita B2B spolupráce a sdílení řešení Zanechte své nápady?
 Posloucháme vás neustále na vaši zpětnou vazbu, ke zlepšení spolupráce B2B ve službě. Podělte se prosím o vaše uživatelské scénáře, osvědčené postupy a co se vám líbí o spolupráci B2B ve službě Azure AD. Připojte se k diskusi v [technické komunitě Microsoftu](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).
- 
+ 
 Také neváhejte předkládat své nápady a Hlasujte pro budoucí funkce na [nápady spolupráce B2B](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas).
 
 ### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>Můžeme tak, aby uživatel je právě "připravená" odeslání pozvánky, který je automaticky uplatnit? Nebo se uživatel vždy lze procházet k adrese URL uplatnění?

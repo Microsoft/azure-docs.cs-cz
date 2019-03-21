@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: feb9d0a01cbba75fc9868f5a603d494c5c09ae2e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e41647140373fcf637cad55af62764bd87826a62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386293"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849342"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Spravovat aplikace a služby jako prostředky Azure Resource Manageru
 
@@ -69,9 +69,9 @@ Následující fragment kódu ukazuje různé druhy prostředků, které je mož
 3. Jakmile máte naplánujete jaké aplikace mají být nasazeny tímto způsobem, aplikace mít zabaleny, ZIP a umístěte do sdílené. Sdílené složky musí být přístupné přes koncový bod REST pro Azure Resource Manager využívat během nasazení.
 4. V šabloně Resource Manageru, následující deklarace vašeho clusteru popisují vlastnosti jednotlivých aplikací. Tyto vlastnosti zahrnují počet replik nebo instancí a všechny řetězy závislostí mezi prostředky (jinými aplikacemi nebo službami). Seznam komplexní vlastnosti najdete v tématu [specifikace Swagger rozhraní API REST](https://aka.ms/sfrpswaggerspec). Všimněte si, že tato metoda nenahrazuje aplikace nebo služba manifesty, ale místo toho obsahuje také popis některých co je v nich jako součást šablony Resource Manageru clusteru. Tady je ukázka šablony, která zahrnuje nasazení bezstavovou službu *Service1* a stavové služby *Service2* jako součást *Application1*:
 
-  ```json
-  {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+   ```json
+   {
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
       "clusterName": {
@@ -251,11 +251,11 @@ Následující fragment kódu ukazuje různé druhy prostředků, které je mož
         }
       }
     ]
-  }
-  ```
+   }
+   ```
 
-  > [!NOTE] 
-  > *ApiVersion* musí být nastaveno na `"2017-07-01-preview"`. Tuto šablonu můžete také nasadit nezávisle na clusteru, za předpokladu, cluster již byla nasazena.
+   > [!NOTE] 
+   > *ApiVersion* musí být nastaveno na `"2017-07-01-preview"`. Tuto šablonu můžete také nasadit nezávisle na clusteru, za předpokladu, cluster již byla nasazena.
 
 5. Nasaďte! 
 
@@ -264,7 +264,7 @@ Následující fragment kódu ukazuje různé druhy prostředků, které je mož
 Pokud váš cluster běží již a získat některé aplikace, že chcete spravovat jako Resource Manageru prostředky jsou už nasazené, místo aby odebrala aplikace a znovu je nasadit, můžete použít voláním PUT pomocí stejného rozhraní API pro aplikace potvrzení jako prostředky Resource Manageru. 
 
 > [!NOTE]
-> Chcete-li povolit upgradu clusteru ignorovat aplikace není v pořádku, zákazník zadat "maxPercentUnhealthyApplications: 100" v části "upgradeDescription/healthPolicy"; podrobný popis pro všechna nastavení jsou v [dokumentace ke službě Service Fabric REST API clusteru zásady upgradu](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
+> Chcete-li povolit upgradu clusteru ignorovat aplikace není v pořádku, zákazník zadat "maxPercentUnhealthyApplications: 100" v části" upgradeDescription/healthPolicy"; podrobný popis pro všechna nastavení jsou v [dokumentace ke službě Service Fabric REST API clusteru zásady upgradu](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
 
 ## <a name="next-steps"></a>Další postup
 

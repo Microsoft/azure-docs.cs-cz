@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 167c8b4dff2e6f392dd6608d20d8924d446f95aa
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c77981574ff2e507af7012f26f742dda62d952fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729929"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57991969"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Pomocí rozhraní příkazového řádku HDFS s Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 umožňuje spravovat a přistupovat k datům, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Ať už máte cluster HDInsight připojený nebo spuštění úlohy Apache Spark pomocí Azure Databricks provádět analýzu na datech uložených v účtu služby Azure Storage, můžete použít rozhraní příkazového řádku (CLI) pro načítání a manipulaci s načtená data.
+Azure Data Lake Storage Gen2 umožňuje spravovat a přistupovat k datům, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Ať už máte cluster HDInsight připojený nebo spuštění úlohy Apache Spark pomocí Azure Databricks provádět analýzu na datech uložených v účtu služby Azure Storage, můžete použít rozhraní příkazového řádku (CLI) pro načítání a manipulaci s načtená data.
 
 ## <a name="hdfs-cli-with-hdinsight"></a>HDFS rozhraní příkazového řádku s HDInsight
 

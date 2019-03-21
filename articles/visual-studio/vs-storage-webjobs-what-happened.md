@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 673143c2bfb23bda45c4e435c3048ae61fa16902
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fa152d8b88254a35d00b91537bf1001ea1130e57
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256897"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884638"
 ---
 # <a name="what-happened-to-my-webjob-project-visual-studio-azure-storage-connected-service"></a>Co se stalo s mým projektem webové úlohy (Visual Studio Azure Storage připojená služba)?
 ## <a name="references-added"></a>Přidanými referencemi

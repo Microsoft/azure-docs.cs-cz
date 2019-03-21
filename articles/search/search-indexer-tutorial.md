@@ -1,32 +1,31 @@
 ---
 title: Kurz indexování databází Azure SQL na webu Azure portal – Azure Search
-description: V tomto kurzu projdete databázi Azure SQL, extrahujete prohledávatelná data a naplníte jimi index služby Azure Search.
+description: V tomto kurzu se připojit k databázi Azure SQL, extrahujte prohledávatelná data a načíst do indexu Azure Search.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/10/2018
+ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e23c9e04d06e509cba32c728ae6f86e1328d88cc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 4e94f4c1b5de47e36dd9a5be6b9e7f43d264de82
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111068"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201394"
 ---
 # <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Kurz: Procházejte databázi Azure SQL pomocí indexerů Azure Search
 
-V tomto kurzu se dozvíte, jak nakonfigurovat indexer pro extrahování prohledávatelných dat z ukázkové databáze Azure SQL. [Indexery](search-indexer-overview.md) jsou součástí služby Azure Search, které procházejí externí zdroje dat a naplňují [index vyhledávání](search-what-is-an-index.md) obsahem. Ze všech indexerů je nejpoužívanější indexer pro databázi Azure SQL. 
+Zjistěte, jak nakonfigurovat indexer pro extrahování prohledávatelných dat z ukázkové databáze Azure SQL. [Indexery](search-indexer-overview.md) jsou součástí služby Azure Search, které procházejí externí zdroje dat a naplňují [index vyhledávání](search-what-is-an-index.md) obsahem. Ze všech indexerů je nejpoužívanější indexer pro Azure SQL Database. 
 
 Znalost konfigurace indexeru je užitečná, protože zjednodušuje množství kódu, který musíte psát a spravovat. Místo přípravy a nabízení datové sady JSON odpovídající schématu můžete ke zdroji dat připojit indexer a nechat ho extrahovat data a vložit je do indexu. Volitelně také můžete indexer spouštět podle plánu opakování, aby přebíral změny v základním zdroji.
 
-V tomto kurzu pomocí [klientských knihoven Azure Search pro .NET](https://aka.ms/search-sdk) a konzolové aplikace .NET Core provedete následující úlohy:
+V tomto kurzu, používá [klientských knihoven Azure Search pro .NET](https://aka.ms/search-sdk) a konzolovou aplikaci .NET Core pro provádět následující úlohy:
 
 > [!div class="checklist"]
-> * Stažení a konfigurace řešení
 > * Přidání informací o vyhledávací službě do nastavení aplikace
 > * Příprava externích datových sad v databázi Azure SQL 
 > * Kontrola definic indexu a indexeru ve vzorovém kódu
@@ -38,16 +37,16 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Služba Azure Search. Nápovědu k jejímu nastavení najdete v tématu [Vytvoření vyhledávací služby](search-create-service-portal.md).
+[Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službu pro účely tohoto kurzu.
 
-* Databáze Azure SQL, která poskytuje externí zdroj dat používaný indexerem. Ukázkové řešení obsahuje datový soubor SQL pro vytvoření tabulky.
+* [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) poskytuje externí zdroj dat používaný indexerem. Ukázkové řešení obsahuje datový soubor SQL pro vytvoření tabulky.
 
-* Sada Visual Studio 2017. Můžete použít bezplatnou sadu [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). 
+* + [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), všechny edice. Ukázky kódu a instrukce byly testovány v bezplatná edice Community.
 
 > [!Note]
 > Pokud používáte bezplatnou službu Azure Search, platí pro vás omezení na tři indexy, tři indexery a tři zdroje dat. V tomto kurzu se vytváří od každého jeden. Ujistěte se, že ve své službě máte místo pro příjem nových prostředků.
 
-## <a name="download-the-solution"></a>Stažení řešení
+### <a name="download-the-solution"></a>Stažení řešení
 
 Řešení indexeru použité v tomto kurzu pochází z kolekce ukázek služby Azure Search doručované v rámci jediného stažení hlavní větve. Řešení použité pro účely tohoto kurzu je *DotNetHowToIndexers*.
 
@@ -63,7 +62,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 6. V **Průzkumníku řešení** klikněte pravým tlačítkem na nejvyšší nadřazený uzel Řešení a vyberte **Obnovit balíčky NuGet**.
 
-## <a name="set-up-connections"></a>Nastavení připojení
+### <a name="set-up-connections"></a>Nastavení připojení
 Informace o připojení k požadovaným službám se zadává do souboru **appsettings.json** v řešení. 
 
 V Průzkumníku řešení otevřete soubor **appsettings.json**, abyste mohli vyplnit všechna nastavení pomocí pokynů v tomto kurzu.  
@@ -105,7 +104,7 @@ Koncový bod vyhledávací služby a klíč najdete na portálu. Klíč poskytuj
    }
    ```
 
-## <a name="prepare-an-external-data-source"></a>Příprava externího zdroje dat
+## <a name="prepare-sample-data"></a>Příprava ukázkových dat
 
 V tomto kroku vytvoříte externí zdroj dat, který může indexer procházet. Datový soubor pro tento kurz je *hotels.sql* ve složce řešení \DotNetHowToIndexers. 
 

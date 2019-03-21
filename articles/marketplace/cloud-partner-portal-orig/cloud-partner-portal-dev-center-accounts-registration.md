@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6482eea23707f451e59d21e70f7583a0cd6680cc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: adfe0af646fae79bc9a954cd5d654626880915d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168239"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894083"
 ---
 <a name="create-a-microsoft-developer-account"></a>Vytvoření účtu Microsoft Developer
 ====================================
@@ -77,7 +77,7 @@ Microsoft Developer Center, se použije k registraci informací o společnosti j
 >[!IMPORTANT]
 >Pokud chcete po absolvování různých fází nabídky vytváření a nasazování, je třeba provést následující součásti profil pro vývojáře.
 
-| Profil vývojáře     | Spuštění nástroje draft    | Fázování       | Publikování zdarma a šablony řešení   | Publikovat obchodní   |
+| Profil vývojáře     | Spuštění nástroje draft    | Staging       | Publikování zdarma a šablony řešení   | Publikovat obchodní   |
 |---------------------- |----------------   |-----------    |-------------------------------------  |---------------------  |
 | Registrace společnosti  | Musí mít         | Musí mít     | Musí mít                             | Musí mít             |
 | Daňové identifikační číslo profilu        | Nepovinné          | Nepovinné      | Nepovinné                              | Musí mít             |
@@ -90,7 +90,7 @@ Microsoft Developer Center, se použije k registraci informací o společnosti j
 
 1. Otevřete nový Internet Explorer InPrivate nebo Incognito Chrome relaci procházení k zajištění, že nejste přihlášení k osobního účtu.
 
-2. Přejděte [Windows Dev Center](http://dev.windows.com/registration?accountprogram=azure) sami zaregistrovat jako prodejce. Přečtěte si prosím následující důležitá Poznámka: než budete pokračovat.
+2. Přejděte [Windows Dev Center](https://dev.windows.com/registration?accountprogram=azure) sami zaregistrovat jako prodejce. Přečtěte si prosím následující důležitá Poznámka: než budete pokračovat.
 
    ![Ověření účtu Microsoft](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-verify.jpg)
 
@@ -157,7 +157,7 @@ Pokud chcete publikovat obchodní nabídky k nákupu, budete muset přidat plate
 
 **K poskytnutí informací bank**
 
-1.  Přihlaste se k [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure) s vaším účtem Microsoft.
+1.  Přihlaste se k [Microsoft Developer Center](https://dev.windows.com/registration?accountprogram=azure) s vaším účtem Microsoft.
 2.  Vyberte **výběr účtu** v nabídce vlevo v části **zvolte způsob platby**vyberte **bankovním účtu** nebo **PayPal**.
 
     >[!NOTE]
@@ -173,7 +173,7 @@ Pokud chcete publikovat obchodní nabídky k nákupu, budete muset přidat plate
 
 **K poskytnutí informací daně**
 
-1.  Přihlaste se k [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure) pomocí svého účtu Microsoft (v případě potřeby).
+1.  Přihlaste se k [Microsoft Developer Center](https://dev.windows.com/registration?accountprogram=azure) pomocí svého účtu Microsoft (v případě potřeby).
 2.  V nabídce vlevo vyberte **daňové profilu**.
 3.  Na **nastavit váš formulář** stránky:
     - Vyberte zemi nebo oblast, kde máte trvalý rezidence.

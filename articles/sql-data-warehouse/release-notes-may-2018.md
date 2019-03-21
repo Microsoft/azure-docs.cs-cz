@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 45a391f45d11d968818bafc97a705411a133b273
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c17cb13bff0ea9eb3b0bb2caf5bb527fa3958428
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57430845"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852606"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Květen 2018 
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v květnu 2018. 
@@ -44,7 +44,7 @@ Jako nejlepší praxe a pokyny, doporučujeme nastavit `AUTO_CREATE_STATISTICS` 
 Zobrazit [možnostem ALTER DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options) , kde najdete další podrobnosti.
 
 ## <a name="rejected-row-support"></a>Zamítnuto řádek podpory
-Zákazníci často používají [PolyBase (externí tabulky) pro načtení dat](design-elt-data-loading.md) do SQL Data Warehouse z důvodu vysoký výkon, paralelní povaze dat načítání. PolyBase je výchozí model načítání při načítání dat prostřednictvím [Azure Data Factory](http://azure.com/adf) také. 
+Zákazníci často používají [PolyBase (externí tabulky) pro načtení dat](design-elt-data-loading.md) do SQL Data Warehouse z důvodu vysoký výkon, paralelní povaze dat načítání. PolyBase je výchozí model načítání při načítání dat prostřednictvím [Azure Data Factory](https://azure.com/adf) také. 
 
 SQL Data Warehouse umožňuje definovat odmítnutý řádek umístění prostřednictvím `REJECTED_ROW_LOCATION` parametr [CREATE EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) příkazu. Po provedení příkazu [vytvořit TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) z externí tabulky, se uloží všechny řádky, které nebylo možné načíst do souboru blízko zdroj pro další šetření. 
 
@@ -144,7 +144,7 @@ Teď, když už víte o něco o SQL Data Warehouse, zjistěte, jak rychle [vytvo
 [Blogy zákaznického poradního týmu]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Úspěšné zákaznické implementace]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [Žádosti o funkce]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Fórum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Fórum Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videa]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: e574759ff8af172841db9fc94ee860a19dd14200
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 74639dee6fb548e1c9067cae6fc22f6e3cc872c3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415361"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096227"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generování a export certifikátů pro Point-to-Site pomocí Powershellu
 
@@ -30,12 +30,12 @@ Pomocí rutiny New-SelfSignedCertificate vytvořit certifikát podepsaný svým 
 1. Z počítače se systémem Windows 10 nebo Windows Server 2016 otevřete konzolu Windows Powershellu se zvýšenými oprávněními. Tyto příklady nebudou fungovat ve službě Azure Cloud Shell "Vyzkoušejte si to". Tyto příklady je nutné spustit místně.
 2. Abyste mohli vytvořit certifikát podepsaný svým držitelem, použijte následující příklad. Následující příklad vytvoří certifikát podepsaný svým držitelem s názvem "P2SRootCert", který je automaticky nainstalován v úložišti "Certificates-Current User\Personal\Certificates". Certifikát můžete zobrazit tak, že otevřete *certmgr.msc*, nebo *správu uživatelských certifikátů*.
 
-  ```powershell
-  $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
-  -Subject "CN=P2SRootCert" -KeyExportPolicy Exportable `
-  -HashAlgorithm sha256 -KeyLength 2048 `
-  -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
-  ```
+   ```powershell
+   $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
+   -Subject "CN=P2SRootCert" -KeyExportPolicy Exportable `
+   -HashAlgorithm sha256 -KeyLength 2048 `
+   -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
+   ```
 
 ## <a name="clientcert"></a>2. Vygenerování klientského certifikátu
 
@@ -65,37 +65,37 @@ Pokud vytváříte dalších klientských certifikátů, nebo nepoužívají ste
 
 1. Identifikujte kořenový certifikát podepsaný držitelem, který je nainstalován v počítači. Tato rutina vrátí seznam certifikátů, které jsou nainstalovány ve vašem počítači.
 
-  ```powershell
-  Get-ChildItem -Path “Cert:\CurrentUser\My”
-  ```
+   ```powershell
+   Get-ChildItem -Path “Cert:\CurrentUser\My”
+   ```
 2. Název subjektu z vráceném seznamu vyhledejte a pak zkopírujte kryptografický otisk, který se nachází vedle sebe do textového souboru. V následujícím příkladu jsou dva certifikáty. Je název CN název certifikátu podepsaného svým držitelem ze kterého chcete vygenerovat certifikát podřízené. V tomto případě "P2SRootCert".
 
-  ```
-  Thumbprint                                Subject
+   ```
+   Thumbprint                                Subject
   
-  AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
-  7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
-  ```
+   AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
+   7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
+   ```
 3. Deklarujte proměnnou pro kořenový certifikát pomocí kryptografického otisku z předchozího kroku. Nahraďte OTISK kryptografický otisk kořenového certifikátu, ze kterého chcete vygenerovat certifikát podřízené.
 
-  ```powershell
-  $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\THUMBPRINT"
-  ```
+   ```powershell
+   $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\THUMBPRINT"
+   ```
 
-  Například použitím kryptografického otisku pro P2SRootCert v předchozím kroku, proměnná vypadá takto:
+   Například použitím kryptografického otisku pro P2SRootCert v předchozím kroku, proměnná vypadá takto:
 
-  ```powershell
-  $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655"
-  ```
-4.  Upravit a spustit příklad pro vytvoření klientského certifikátu. Při spuštění v následujícím příkladu, aniž byste ho upravovali, výsledkem je klientský certifikát s názvem "P2SChildCert". Pokud chcete certifikát podřízené jiný název, hodnotu CN změníte. Neměňte TextExtension při spuštění v tomto příkladu. Klientský certifikát, který vygenerujete je automaticky nainstalován v "Certificates - Current User\Personal\Certificates" ve vašem počítači.
+   ```powershell
+   $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655"
+   ```
+4. Upravit a spustit příklad pro vytvoření klientského certifikátu. Při spuštění v následujícím příkladu, aniž byste ho upravovali, výsledkem je klientský certifikát s názvem "P2SChildCert". Pokud chcete certifikát podřízené jiný název, hodnotu CN změníte. Neměňte TextExtension při spuštění v tomto příkladu. Klientský certifikát, který vygenerujete je automaticky nainstalován v "Certificates - Current User\Personal\Certificates" ve vašem počítači.
 
-  ```powershell
-  New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
-  -Subject "CN=P2SChildCert" -KeyExportPolicy Exportable `
-  -HashAlgorithm sha256 -KeyLength 2048 `
-  -CertStoreLocation "Cert:\CurrentUser\My" `
-  -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
-  ```
+   ```powershell
+   New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
+   -Subject "CN=P2SChildCert" -KeyExportPolicy Exportable `
+   -HashAlgorithm sha256 -KeyLength 2048 `
+   -CertStoreLocation "Cert:\CurrentUser\My" `
+   -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
+   ```
 
 ## <a name="cer"></a>3. Export veřejného klíče kořenového certifikátu (.cer)
 

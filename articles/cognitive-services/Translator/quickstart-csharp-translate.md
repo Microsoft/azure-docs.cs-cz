@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: fce3a2f11aa168c669899d8ff7980a8288e10924
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fc52512f48050c46894996d5a79b26f36fc6ad6c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731221"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183828"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-c"></a>Rychlý start: Použití rozhraní Translator Text API pro převod řetězce pomocíC#
 
@@ -154,6 +154,8 @@ dotnet run
 ```
 
 ## <a name="sample-response"></a>Ukázková odpověď
+
+Najít – zkratka země v tomto [seznam jazyků](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
 
 ```json
 [

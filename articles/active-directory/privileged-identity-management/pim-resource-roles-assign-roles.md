@@ -15,12 +15,12 @@ ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87c92387c14cd0b82ec26acb411609c794c2601e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ee09526c2bf1ebf9821e1f84dc99bfc8635b9ee2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171260"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086186"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>Přiřazení role prostředků Azure v PIM
 
@@ -32,8 +32,8 @@ Azure AD PIM můžete spravovat role integrované prostředků Azure, jakož i v
 - Správce zabezpečení
 - Správce zabezpečení a další
 
->[!NOTE]
-Uživatele nebo členy skupiny přiřadit role vlastník nebo správce přístupu uživatelů a globální správci, který povolení správy předplatného ve službě Azure AD jsou správci prostředků. Tyto správce může přiřadit role, konfigurace nastavení role a kontrolovat přístup pomocí PIM pro prostředky Azure. Zobrazí se seznam [předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
+> [!NOTE]
+> Uživatele nebo členy skupiny přiřadit role vlastník nebo správce přístupu uživatelů a globální správci, který povolení správy předplatného ve službě Azure AD jsou správci prostředků. Tyto správce může přiřadit role, konfigurace nastavení role a kontrolovat přístup pomocí PIM pro prostředky Azure. Zobrazí se seznam [předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="assign-a-role"></a>Přiřazení role
 

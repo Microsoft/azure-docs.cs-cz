@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 1cf2276ca1995df19cc7068764a31916e4981100
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e3cd9d0036a55a3e6de49988dddcd6a91b81b078
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452690"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088651"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Import dat do služby soubory Azure pomocí služby Azure Import/Export
 
@@ -50,60 +50,60 @@ Proveďte následující kroky pro přípravu disků.
 2. Vytvořte jeden svazek NTFS na každou jednotku. Přiřazení písmene jednotky svazku. Nepoužívejte přípojné body.
 3. Upravit *dataset.csv* soubor v kořenové složce, ve kterém se nástroj nachází. V závislosti na tom, jestli chcete importovat soubor nebo složku nebo obojí, přidat položky *dataset.csv* souboru podobně jako v následujících příkladech.  
 
-    - **Import souboru**: V následujícím příkladu data ke kopírování se nachází na jednotce C:. Váš soubor *MyFile1.txt* zkopírován do kořenového adresáře *MyAzureFileshare1*. Pokud *MyAzureFileshare1* buď neexistuje, vytvoří se v účtu Azure Storage. Struktura složek je zachováno.
+   - **Import souboru**: V následujícím příkladu data ke kopírování se nachází na jednotce C:. Váš soubor *MyFile1.txt* zkopírován do kořenového adresáře *MyAzureFileshare1*. Pokud *MyAzureFileshare1* buď neexistuje, vytvoří se v účtu Azure Storage. Struktura složek je zachováno.
 
-        ```
-            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
-            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
+       ```
+           BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
+           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
     
-        ```
-    - **Chcete importovat složku**: Všechny soubory a složky v části *MyFolder2* jsou zkopírovány do sdílené složky rekurzivně. Struktura složek je zachováno.
+       ```
+   - **Chcete importovat složku**: Všechny soubory a složky v části *MyFolder2* jsou zkopírovány do sdílené složky rekurzivně. Struktura složek je zachováno.
 
-        ```
-            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-            
-        ```
-    Více položek, můžete provést ve stejném souboru odpovídající složky nebo soubory, které byly naimportovány. 
+       ```
+           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
+            
+       ```
+     Více položek, můžete provést ve stejném souboru odpovídající složky nebo soubory, které byly naimportovány. 
 
-        ```
-            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
-            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-                        
-        ```
-    Další informace o [připravuje se soubor CSV datovou sadu](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file).
+       ```
+           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
+           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
+                        
+       ```
+     Další informace o [připravuje se soubor CSV datovou sadu](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file).
     
 
 4. Upravit *driveset.csv* soubor v kořenové složce, ve kterém se nástroj nachází. Přidat položky *driveset.csv* souboru podobně jako v následujících příkladech. Soubor driveset má seznam disků a odpovídající písmena jednotek tak, aby nástroj správně vybrat seznamu disků, abyste byli připraveni.
 
     Tento příklad předpokládá, že jsou připojené dva disky a základní svazky systému souborů NTFS G:\ a H:\ jsou vytvořeny. H:\is nejsou šifrovaná, zatímco G: už zašifrovaná. Nástroj formátuje a zašifrování disku, který je hostitelem H:\ pouze (a ne G:\).
 
-    - **Pro disk, který není zašifrovaný**: Zadejte *šifrovat* povolíte šifrování nástrojem BitLocker na disku.
+   - **Pro disk, který není zašifrovaný**: Zadejte *šifrovat* povolíte šifrování nástrojem BitLocker na disku.
 
-        ```
-        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
-        H,Format,SilentMode,Encrypt,
-        ```
+       ```
+       DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
+       H,Format,SilentMode,Encrypt,
+       ```
     
-    - **Pro disk, který je už zašifrovali**: Zadejte *AlreadyEncrypted* a zadat klíč Bitlockeru.
+   - **Pro disk, který je už zašifrovali**: Zadejte *AlreadyEncrypted* a zadat klíč Bitlockeru.
 
-        ```
-        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
-        G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
-        ```
+       ```
+       DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
+       G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
+       ```
 
-    Více položek, můžete provést ve stejném souboru odpovídá několika jednotkách. Další informace o [připravuje se soubor CSV driveset](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file). 
+     Více položek, můžete provést ve stejném souboru odpovídá několika jednotkách. Další informace o [připravuje se soubor CSV driveset](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file). 
 
-5.  Použití `PrepImport` možnost Kopírovat a připravit data na disk. První relace kopírování pro kopírování adresářů a/nebo soubory s novou relací kopírování spusťte následující příkaz:
+5. Použití `PrepImport` možnost Kopírovat a připravit data na disk. První relace kopírování pro kopírování adresářů a/nebo soubory s novou relací kopírování spusťte následující příkaz:
 
-        ```
-        .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
-        ```
+       ```
+       .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
+       ```
 
-    Níže je uveden příklad importu.
+   Níže je uveden příklad importu.
   
-        ```
-        .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
-        ```
+       ```
+       .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
+       ```
  
 6. Soubor deníku s názvem, budete k dispozici `/j:` parametr, se vytvoří pro každé spuštění příkazového řádku. Každé jednotky, které připravíte má soubor deníku, který musí být odeslán při vytvoření úlohy importu. Jednotky bez deníku, které nejsou zpracovány soubory.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: d684493a3ede55c241c901bb0814630b1d204e0c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542875"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101206"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Zatřeste, zatřeste tweetu – načtení zprávy Twitteru s využitím Azure Functions
 
@@ -175,9 +175,9 @@ Pro účely testování, tento ukázkový projekt používá předem nakonfiguro
 
    ```csharp
    string authHeader = "Bearer " + "[your own token]";
-  ```
+   ```
   
-  ![twitter-token](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
+   ![twitter-token](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
 6. Uložte soubor a klikněte na tlačítko **spustit**.
 

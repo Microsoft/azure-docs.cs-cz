@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 39ab31cd06707dbd488914da248941ab6d174c29
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 632fa14bd96eaee2ca58b59dd855584c1fd961e8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388761"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010109"
 ---
 # <a name="app-service-environment-management-addresses"></a>Adresy pro správu aplikace app Service Environment
 
@@ -40,7 +40,7 @@ Níže uvedené adresy je možné nakonfigurovat ve směrovací tabulce. To je d
 
 ## <a name="configuring-a-network-security-group"></a>Konfiguruje se skupina zabezpečení sítě
 
-S použitím skupin zabezpečení sítě není potřeba starat o jednotlivé adresy nebo udržování vlastní konfigurace. Je značka služby IP adresy s názvem AppServiceManagement, který je udržován v aktuálním stavu díky všechny adresy. Pokud chcete použít tuto značku služby IP adresu pro nsg, přejděte na portál, otevřete uživatelské rozhraní skupin zabezpečení sítě a vyberte pravidla zabezpečení příchozích dat. Pokud máte existující pravidlo k řízení příchozích přenosů ho upravit. Pokud tato skupina zabezpečení sítě nebylo vytvořeno pomocí služby ASE nebo pokud se všechny nové, pak vyberte **přidat**. V části zdrojové rozevírací nabídce vyberte **značka služby**.  V části značka zdrojové služby, vyberte ** AppServiceManagement **. Nastavit zdroj rozsahů portů \*, cíl **jakékoli**, rozsahy cílových portů k **454 455**, protokol k **TCP**a akci **povolit** . Pokud provádíte pravidla můžete třeba nastavit prioritu. 
+S použitím skupin zabezpečení sítě není potřeba starat o jednotlivé adresy nebo udržování vlastní konfigurace. Je značka služby IP adresy s názvem AppServiceManagement, který je udržován v aktuálním stavu díky všechny adresy. Pokud chcete použít tuto značku služby IP adresu pro nsg, přejděte na portál, otevřete uživatelské rozhraní skupin zabezpečení sítě a vyberte pravidla zabezpečení příchozích dat. Pokud máte existující pravidlo k řízení příchozích přenosů ho upravit. Pokud tato skupina zabezpečení sítě nebylo vytvořeno pomocí služby ASE nebo pokud se všechny nové, pak vyberte **přidat**. V části zdrojové rozevírací nabídce vyberte **značka služby**.  V části značka zdrojové služby vyberte **AppServiceManagement**. Nastavit zdroj rozsahů portů \*, cíl **jakékoli**, rozsahy cílových portů k **454 455**, protokol k **TCP**a akci **povolit** . Pokud provádíte pravidla můžete třeba nastavit prioritu. 
 
 ![vytvořit skupinu zabezpečení sítě se značkou služby][1]
 

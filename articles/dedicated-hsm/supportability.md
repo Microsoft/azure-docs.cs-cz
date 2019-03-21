@@ -2,7 +2,7 @@
 title: Možnosti podpory – vyhrazené Azure HSM | Dokumentace Microsoftu
 description: Možnosti podpory a oblasti zodpovědnosti pro vyhrazené modulu hardwarového zabezpečení Azure v různých scénářích
 services: dedicated-hsm
-author: barclayn
+author: johndaw
 manager: barbkess
 ms.service: key-vault
 ms.workload: identity
@@ -10,24 +10,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seodec18
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.author: barclayn
-ms.openlocfilehash: 23c509f6f219b708fc259ee123d73948ebe50773
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8e4bbe3a5e2de8ba919cf0b641ee4e6776c5e8d4
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114480"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225548"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Možnosti podpory Azure vyhrazených HSM
 
 HSM služby Azure Dedicated fyzické zařízení pro použití výhradně zákazník poskytuje kompletní správu ovládacího prvku a správu odpovědnost. Je zařízení k dispozici [Gemalto SafeNet Luna 7 HSM modelu A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/). Microsoft bude mít přístup žádný správce jednou zřízené ze strany zákazníka, nad rámec fyzické sériového portu přílohy monitorování roli.  Bez přístupu Microsoft může mít žádné probíhající softwaru úrovně údržby nebo systém správy odpovědnosti. V důsledku toho zodpovědností zákazníků typické provozní činnosti.
 Zákazníci odpovídají plně pro aplikace, které využívají moduly hardwarového zabezpečení a by měla fungovat s Gemalto podpory nebo na základě consulting o pomoc. Z důvodu rozsahu zákazníka vlastnictví provozní kontrolu není možné pro společnost Microsoft nabízí jakýkoli druh se zárukou vysoké dostupnosti pro tuto službu. Je zodpovědností zákazníka k zajištění jejich aplikace jsou správně nakonfigurované k dosažení vysoké dostupnosti. Microsoft bude sledovat a udržovat zařízení stavu a připojení k síti.
 
+## <a name="getting-support"></a>Získání podpory
+
+Zákaznickou podporu pro vyhrazené HSM se podílí Gemalto a Microsoftu. Žádné problémy s hardwarem nebo problémů se sítí cesta vyřešíme společností Microsoft a cokoli, co dělat s skutečné hardwarového zabezpečení, jako je například konfigurace, softwaru, firmwaru a vývoj aplikací, bude ji adresovat podle Gemalto. Tento model podpory zajišťuje nejrychlejší cestu nejúčinnější podpory. Pokud máte pochybnosti s konkrétním problémem, žádost o podporu u Microsoftu a jsme se ujistěte se, že jsou správně směrované. Společnost Microsoft bude zůstat zahrnuta ve všech scénářích podpory a snažte se o nejlepší prostředí podpory pro naše zákazníky.
+
 ## <a name="gemalto-support"></a>Podpora Gemalto
 
-Zákazníci, kteří používají službu vyhrazené HSM musí mít podporu na místě s Gemalto smlouvy. Jako součást svých smlouvu o podpoře zákazníci získají pokyny, podporu a služby přímo z Gemalto. Mechanismus pro získání podpory od Gemalto je prostřednictvím jejich [zákaznického portálu služeb podpory](https://supportportal.gemalto.com/csm/).
-Gemalto bude poskytovat žádné softwarové součásti nutné použít modul hardwarového zabezpečení (třeba software pro klientský přístup a sad SDK). Také se bude podporovat konfiguraci a nabízejí konzultační služby pro návrh, vývoj a nasazení aplikací pomocí modulu hardwarového zabezpečení SafeNet Luna 7.
+Zákazníci, kteří používají službu HSM vyhrazené nárok na podporu – od Gemalto podle jejich Plus plán podpory. Tento postup vyžaduje právě proces registrace pomocí portálu pro podporu Gemalto. ID zákazníka a pokyny, poskytneme vám to jako součást počáteční zapojení s Microsoftem a získat přístup ke službě vyhrazené modulu hardwarového zabezpečení. Mechanismus pro získání podpory od Gemalto je prostřednictvím jejich [zákaznického portálu služeb podpory](https://supportportal.gemalto.com/csm/).
+Zásadním aspektem ze Poznámka je, že se veškerý software a dokumentace muset použít modul hardwarového zabezpečení (třeba software pro klientský přístup a sad SDK) poskytují Gemalto přes stahování na zákaznický portál podpory.
 
 ### <a name="software-components"></a>Softwarové komponenty
 
@@ -51,7 +55,7 @@ Pro všechny pomoc při navrhování, vývoj a nasazení vlastních aplikací, k
 
 ## <a name="microsoft-support"></a>Podpora Microsoftu
 
-Společnost Microsoft zodpovídá za to fyzického HSM zařízení jsou dostupné a provozní stav pro výhradní použití jediného zákazníka. Zákazníci odpovídají za správu zařízení a. Odpovědnosti Microsoftu patří:
+Microsoft se ujistěte se, že fyzické zařízení HSM se síť přístupný a provozní stav pro výhradní použití jediného zákazníka. Zákazníci odpovídají za konfiguraci, správu a správu zařízení. Odpovědnosti Microsoftu patří:
 
 * Zařízení musí napájení a chladicí
 * Údržba provozního stavu modulu hardwarového zabezpečení (například scénáře řešení potíží)
@@ -72,7 +76,7 @@ Poté, co zákazník má schválené registrace pro službu vyhrazené modulu ha
 
 ### <a name="hardware-issues"></a>Problémy s hardwarem
 
-Zařízení HSM má redundantní a nahraditelné napájení a ventilátor jednotek. Ventilátor odebrání jednotky by proti události odebrán po zapnutí zařízení. Pokud dojde k selhání součásti, Microsoft použije nejvhodnější k vyřešení problému úrovni komponenty způsobem, který způsobí, že nejnižší rizika na dostupnost služby našich zákazníků a minimálním přerušením.
+Zařízení HSM má redundantní a nahraditelné napájení a ventilátor jednotek.  Ale odebrání jednotky ventilátor způsobí stále proti události. Pokud dojde k selhání součásti, Microsoft použije nejvhodnější k vyřešení problému úrovni komponenty způsobem, který způsobí, že nejnižší rizika na dostupnost služby našich zákazníků a minimálním přerušením.
 Toto zařízení teď nahrazuje čerstvé jedním z volného fondu způsobí žádné závažnější selhání zařízení. Zákazník jednoduše obsahuje nové zařízení v existující pár HA pro ni k synchronizaci a vraťte se do plné provozní stav. Selhání zařízení bude mít svá data s zařízení odebrán a skartovány na webu v datovém centru. Pouze skříni se vrátí do Gemalto recyklace.
 
 

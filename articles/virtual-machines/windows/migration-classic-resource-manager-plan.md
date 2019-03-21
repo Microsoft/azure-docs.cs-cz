@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 76059c587a6378ccfe16c0a633bea0c6c7a8a57d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: b8bb3db58538263ea60520d4537a76c6ebb6abf7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340089"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112513"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z modelu classic na Azure Resource Manager
 Zatímco Azure Resource Manager nabízí spoustu skvělých funkcí, je velmi důležité naplánovat, aby to bylo jistě hladký chod průběhu migrace. Plánování zbavuje čas zajistí, že není narazíte na problémy při provádění aktivity migrace.
@@ -79,8 +79,8 @@ V závislosti na vaší velikosti technické požadavky, geografické oblasti a 
 
   Provádění testu lab vašemu konkrétnímu scénáři (výpočetní, síťové a úložiště) je nejlepší způsob, jak zajistit hladký průběh migrace. To vám pomůže zajistit:
 
-  - Zcela samostatné testovacího prostředí nebo existující neprodukčním prostředí pro testování. Doporučujeme, abyste zcela samostatné testovacího prostředí, které je možné migrovat opakovaně a lze destructively upravit.  Skripty pro shromažďování/hydrát metadata ze skutečných předplatná jsou uvedeny níže.
-  - Je vhodné vytvořit testovací prostředí v samostatné předplatné. Důvodem je, že testovací prostředí se deaktivuje opakovaně a mít samostatné, izolované předplatného se sníží pravděpodobnost, že něco reálné získat omylem odstraní.
+- Zcela samostatné testovacího prostředí nebo existující neprodukčním prostředí pro testování. Doporučujeme, abyste zcela samostatné testovacího prostředí, které je možné migrovat opakovaně a lze destructively upravit.  Skripty pro shromažďování/hydrát metadata ze skutečných předplatná jsou uvedeny níže.
+- Je vhodné vytvořit testovací prostředí v samostatné předplatné. Důvodem je, že testovací prostředí se deaktivuje opakovaně a mít samostatné, izolované předplatného se sníží pravděpodobnost, že něco reálné získat omylem odstraní.
 
   To lze provést pomocí nástroje AsmMetadataParser. [Další informace o tomto nástroji zde](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
 
@@ -122,13 +122,13 @@ Následující byly problémy zjištěné v mnoha větší migrace. Nejedná se 
     > Tato omezení musí být vyvolána ve stejné oblasti jako vaše aktuální prostředí k migraci.
     >
 
-    - Síťová rozhraní
-    - Nástroje pro vyrovnávání zatížení
-    - Veřejné IP adresy
-    - Statické veřejné IP adresy
-    - Jádra
-    - Network Security Groups (Skupiny zabezpečení sítě)
-    - Směrovací tabulky
+  - Síťová rozhraní
+  - Nástroje pro vyrovnávání zatížení
+  - Veřejné IP adresy
+  - Statické veřejné IP adresy
+  - Jádra
+  - Network Security Groups (Skupiny zabezpečení sítě)
+  - Směrovací tabulky
 
     Můžete zkontrolovat aktuální kvóty správce prostředků Azure pomocí následujících příkazů v nejnovější verzi Azure Powershellu.
     

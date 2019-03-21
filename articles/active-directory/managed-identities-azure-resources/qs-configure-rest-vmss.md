@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d208cab8b39b777fea7809be418613f17751b1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b35470daf8ef037a72516690c75980a6d07e8e29
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170282"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097162"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuální počítač škálovací sady s použitím volání rozhraní REST API
 
@@ -72,7 +72,7 @@ K vytvoření virtuálního počítače škálovací sady s povolen systém při
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  Načtěte přístupový token nosiče, který použijete v dalším kroku v hlavičce autorizace k vytvoření virtuálního počítače škálovací sady s systém přiřadil spravovanou identitu.
+3. Načtěte přístupový token nosiče, který použijete v dalším kroku v hlavičce autorizace k vytvoření virtuálního počítače škálovací sady s systém přiřadil spravovanou identitu.
 
    ```azurecli-interactive
    az account get-access-token
@@ -81,23 +81,23 @@ K vytvoření virtuálního počítače škálovací sady s povolen systém při
 4. Vytvoření virtuálního počítače škálovací sady pomocí příkazu CURL k volání koncového bodu REST Azure Resource Manageru. Následující příklad vytvoří škálovací sadu virtuálních počítačů *myVMSS* v *myResourceGroup* s systém přiřadil spravované identity, jako identifikované v textu požadavku hodnotu `"identity":{"type":"SystemAssigned"}`. Nahraďte `<ACCESS TOKEN>` s hodnotou jste získali v předchozím kroku při vyžádání nosný token a `<SUBSCRIPTION ID>` hodnotu podle požadavků vašeho prostředí.
 
    ```bash   
-  curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
-  ```
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
+   ```
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-  **Hlavičky žádosti**
+   **Hlavičky žádosti**
 
-  |Hlavička požadavku  |Popis  |
-  |---------|---------|
-  |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-  |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. | 
+   |Hlavička požadavku  |Popis  |
+   |---------|---------|
+   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token. | 
 
-  **Text žádosti**
+   **Text žádosti**
 
-  ```JSON
+   ```JSON
     {
        "sku":{
           "tier":"Standard",
@@ -158,7 +158,7 @@ K vytvoření virtuálního počítače škálovací sady s povolen systém při
           }
        }
     }  
-  ```  
+   ```  
 
 ### <a name="enable-system-assigned-managed-identity-on-a-existing-virtual-machine-scale-set"></a>Povolit systém přiřadil spravované identity v existující škálovací sady virtuálních počítačů
 
@@ -313,7 +313,7 @@ Zakázat systém přiřadil identitou v existující škálovací sady virtuáln
 
    Odebrat ze škálovací sady virtuálního počítače, který má uživatelsky přiřazené identity spravované systém přiřadil spravovanou identitu, odeberte `SystemAssigned` z `{"identity":{"type:" "}}` hodnotu při zachování `UserAssigned` hodnotu a `userAssignedIdentities` slovník hodnot, pokud jste používáte **rozhraní API verze 2018-06-01**. Pokud používáte **rozhraní API verze 2017-12-01** nebo starší, nechat `identityIds` pole.
 
-## <a name="user-assigned-managed-identity"></a>uživatel přiřazenou spravované identity
+## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživateli
 
 V této části se dozvíte, jak přidávat a odebírat uživatele přiřazeny spravovaná identita na virtuální počítač škálovací sadu pomocí příkazu CURL k volání koncového bodu REST Azure Resource Manageru.
 
@@ -331,7 +331,7 @@ V této části se dozvíte, jak přidávat a odebírat uživatele přiřazeny s
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  Načtěte přístupový token nosiče, který použijete v dalším kroku v hlavičce autorizace k vytvoření virtuálního počítače škálovací sady s systém přiřadil spravovanou identitu.
+3. Načtěte přístupový token nosiče, který použijete v dalším kroku v hlavičce autorizace k vytvoření virtuálního počítače škálovací sady s systém přiřadil spravovanou identitu.
 
    ```azurecli-interactive
    az account get-access-token

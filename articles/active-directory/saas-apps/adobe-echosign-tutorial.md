@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2977286fd76bd2e1f71c53aaede2fd07009d2f3
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 8942ebf3f006c2e1cc72b322dd243d46bf69f04d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409920"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888123"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Kurz: Integrace Azure Active Directory pomocí Adobe Sign
 
@@ -128,7 +128,7 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí Adobe Sign, proveďte
 
 ### <a name="configure-adobe-sign-single-sign-on"></a>Konfigurace Adobe Sign jednotného přihlašování
 
-7. Před konfigurací, obraťte se [tým podpory Adobe Sign klienta](https://helpx.adobe.com/in/contact/support.html) na seznam povolených vaši doménu v Adobe Sign. Tady je postup pro přidání domény:
+1. Před konfigurací, obraťte se [tým podpory Adobe Sign klienta](https://helpx.adobe.com/in/contact/support.html) na seznam povolených vaši doménu v Adobe Sign. Tady je postup pro přidání domény:
 
     a. [Tým podpory Adobe Sign klienta](https://helpx.adobe.com/in/contact/support.html) odešle náhodně vygenerovaný token. Pro vaši doménu token, který bude podobný tomuto: **adobe sign ověřovací = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
 
@@ -147,33 +147,33 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí Adobe Sign, proveďte
     * Přidejte záznam TXT úplné token hodnotou poskytnutou Adobe.
     * Uložte provedené změny.
 
-8. V okně jiné webové prohlížeče Přihlaste se k serveru vaší společnosti Adobe Sign jako správce.
+1. V okně jiné webové prohlížeče Přihlaste se k serveru vaší společnosti Adobe Sign jako správce.
 
-9. V nabídce SAML, vyberte **nastavení účtu** > **nastavení SAML**.
+1. V nabídce SAML, vyberte **nastavení účtu** > **nastavení SAML**.
    
     ![Stránka nastavení snímku obrazovky z Adobe Sign SAML](./media/adobe-echosign-tutorial/ic789520.png "účtu")
 
-10. V **nastavení SAML** části, proveďte následující kroky:
+1. V **nastavení SAML** části, proveďte následující kroky:
   
-    ![Snímek obrazovky nastavení SAML](./media/adobe-echosign-tutorial/ic789521.png "nastavení SAML")
+   ![Snímek obrazovky nastavení SAML](./media/adobe-echosign-tutorial/ic789521.png "nastavení SAML")
    
-    ![Snímek obrazovky nastavení SAML](./media/adobe-echosign-tutorial/ic789522.png "nastavení SAML")
+   ![Snímek obrazovky nastavení SAML](./media/adobe-echosign-tutorial/ic789522.png "nastavení SAML")
 
-    a. V části **SAML režimu**vyberte **SAML povinné**.
+   a. V části **SAML režimu**vyberte **SAML povinné**.
    
-    b. Vyberte **umožnit správci Echosign účtu přihlásit pomocí svých přihlašovacích údajů Echosign**.
+   b. Vyberte **umožnit správci Echosign účtu přihlásit pomocí svých přihlašovacích údajů Echosign**.
    
-    c. V části **vytvoření uživatele**vyberte **automaticky přidat uživatele ověřeni pomocí SAML**.
+   c. V části **vytvoření uživatele**vyberte **automaticky přidat uživatele ověřeni pomocí SAML**.
 
-    d. Vložit **Azure Ad identifikátor**, který jste zkopírovali z portálu Azure portal do **Idp Entity ID** textového pole.
+   d. Vložit **Azure Ad identifikátor**, který jste zkopírovali z portálu Azure portal do **Idp Entity ID** textového pole.
     
-    e. Vložit **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal do **přihlašovací adresa URL zprostředkovatele identity** textového pole.
+   e. Vložit **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal do **přihlašovací adresa URL zprostředkovatele identity** textového pole.
    
-    f. Vložit **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal do **odhlašovací adresa URL zprostředkovatele identity** textového pole.
+   f. Vložit **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal do **odhlašovací adresa URL zprostředkovatele identity** textového pole.
 
-    g. Otevřete váš stažené **Certificate(Base64)** soubor v poznámkovém bloku. Zkopírujte obsah ho do schránky a vložte ho do **IdP certifikát** textového pole.
+   g. Otevřete váš stažené **Certificate(Base64)** soubor v poznámkovém bloku. Zkopírujte obsah ho do schránky a vložte ho do **IdP certifikát** textového pole.
 
-    h. Vyberte **uložit změny**.
+   h. Vyberte **uložit změny**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
@@ -193,7 +193,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

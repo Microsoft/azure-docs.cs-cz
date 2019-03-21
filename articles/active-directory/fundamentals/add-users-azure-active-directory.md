@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3881026c1877059639b550f3d0342674b2f8b29
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8770648a3683c4f612536c9a04921682a01bcd0c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187198"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089807"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Přidání nebo odstranění uživatelů pomocí služby Azure Active Directory
 Přidání nových uživatelů nebo odstranit existující uživatele z vašeho tenanta Azure Active Directory (Azure AD).
@@ -37,17 +37,17 @@ Můžete vytvořit nového uživatele pomocí portálu Azure Active Directory.
 
     ![Přidání nového uživatele, uživatel stránka s informace o uživateli](media/add-users-azure-active-directory/new-user-user-blade.png)
 
-    - **Název (povinné).** První a poslední název nového uživatele. Například Mary Parker.
+   - **Název (povinné).** První a poslední název nového uživatele. Například Mary Parker.
 
-    - **Uživatelské jméno (povinné).** Uživatelské jméno nového uživatele. Například, mary@contoso.com. 
+   - **Uživatelské jméno (povinné).** Uživatelské jméno nového uživatele. Například, mary@contoso.com. 
     
-        Součást domény uživatelské jméno musí používat buď počáteční výchozí název domény, <_názevvašídomény_>. onmicrosoft.com, nebo vlastní název domény, třeba contoso.com. Další informace o tom, jak vytvořit vlastního názvu domény najdete v tématu [přidání vlastního názvu domény do Azure Active Directory](add-custom-domain.md).
+       Součást domény uživatelské jméno musí používat buď počáteční výchozí název domény, <_názevvašídomény_>. onmicrosoft.com, nebo vlastní název domény, třeba contoso.com. Další informace o tom, jak vytvořit vlastního názvu domény najdete v tématu [přidání vlastního názvu domény do Azure Active Directory](add-custom-domain.md).
 
-    - **Profil.** Volitelně můžete přidat další informace o uživateli. Později můžete také přidat informace o uživateli. Další informace o přidání informace o uživateli, naleznete v tématu [postup přidání nebo změně informací profilu uživatele](active-directory-users-profile-azure-portal.md).
+   - **Profil.** Volitelně můžete přidat další informace o uživateli. Později můžete také přidat informace o uživateli. Další informace o přidání informace o uživateli, naleznete v tématu [postup přidání nebo změně informací profilu uživatele](active-directory-users-profile-azure-portal.md).
 
-    - **Skupiny.** Volitelně můžete přidat uživatele do jednoho nebo více existujících skupin. Později můžete také přidat uživatele do skupin. Další informace o přidávání uživatelů do skupin najdete v tématu [vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md).
+   - **Skupiny.** Volitelně můžete přidat uživatele do jednoho nebo více existujících skupin. Později můžete také přidat uživatele do skupin. Další informace o přidávání uživatelů do skupin najdete v tématu [vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md).
 
-    - **Role adresáře.** Volitelně můžete přidat uživatele k roli adresáře. Můžete přiřadit uživatele jako globální správce, nebo do jedné nebo více jiných rolí správce ve službě Azure AD. Další informace o přiřazování rolí najdete v tématu [přiřazení rolí uživatelům](active-directory-users-assign-role-azure-portal.md).
+   - **Role adresáře.** Volitelně můžete přidat uživatele k roli adresáře. Můžete přiřadit uživatele jako globální správce, nebo do jedné nebo více jiných rolí správce ve službě Azure AD. Další informace o přiřazování rolí najdete v tématu [přiřazení rolí uživatelům](active-directory-users-assign-role-azure-portal.md).
 
 4. Zkopírujte automaticky vytvořené heslo součástí **heslo** pole. Bude potřeba předat uživateli toto heslo pro počáteční proces přihlašování.
 

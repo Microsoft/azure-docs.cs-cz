@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 231c6bbdb3ab1766cfccf19806e64c5dbe4d7b5d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 737c72e6225cdfc9fdeec59810ffd9100c48d1ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339926"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181754"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozbalte virtuální pevné disky na virtuální počítač s Linuxem pomocí Azure CLI
 
@@ -141,7 +141,7 @@ Pokud chcete použít rozšířené disk, rozbalte základní oddíl a systém s
     sudo mount /dev/sdc1 /datadrive
     ```
 
-1. Chcete-li ověřit, změně velikosti disku s operačním systémem, použijte `df -h`. Následující příklad výstupu ukazuje datovou jednotku */dev/sdc1* je nyní 200 GB:
+1. Pokud chcete ověřit, změně velikosti datového disku, použijte `df -h`. Následující příklad výstupu ukazuje datovou jednotku */dev/sdc1* je nyní 200 GB:
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on

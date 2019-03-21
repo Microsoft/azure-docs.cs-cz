@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: f20c62f574b22d55d2acd8f9c7b811067837adb7
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 390421c2805bf242b8f931200c8b8981cb7116c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985933"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57874996"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning pomocíC#
 
@@ -34,7 +34,7 @@ Přestože postup v tomto článku funguje na počítačích s Windows i Linuxem
 ## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte [Visual Studio 2017](https://www.visualstudio.com/vs/).
-* Nainstalujte sadu [SDK .Net Core](https://www.microsoft.com/net/download/windows).
+* Nainstalujte [.NET Core SDK](https://www.microsoft.com/net/download/windows).
 * Nainstalujte [Git](https://git-scm.com/download/).
 
 

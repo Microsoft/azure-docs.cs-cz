@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30627994a8fe8cfe73e7945dadf2153ea60860b8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: ef8f66cda7e80ffdafefbbac5de24d45f01401af
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175128"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286926"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>Konfigurace seznamu vlastních zakázaných hesel
-
-|     |
-| --- |
-| Ochrana hesel Azure AD je funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
 
 Mnoho organizací zjišťuje, že se že jejich uživatelé vytvářet hesla pomocí běžných místní slova, jako jsou školy, sportovní tým nebo slavných osoby, opuštění je snadno uhodnutelné. Seznam vlastních zakázaných hesel od Microsoftu umožňuje organizacím přidejte řetězce k vyhodnocení a blokovat, kromě globálních zakázané seznamu heslo, když uživatelé a správci pokus o změnu nebo resetování hesla.
 
@@ -31,7 +26,7 @@ Mnoho organizací zjišťuje, že se že jejich uživatelé vytvářet hesla pom
 
 Konfigurace seznamu zakázaných hesel vlastní vyžaduje licenci Azure Active Directory Premium P1 nebo P2. Podrobné informace o licencování Azure Active Directory, najdete v článku [Azure Active Directory, na stránce s cenami](https://azure.microsoft.com/pricing/details/active-directory/). |
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do **Azure Active Directory**, **metody ověřování**, pak **ochrana heslem (Preview)**.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do **Azure Active Directory**, **metody ověřování**, pak **ochrana heslem**.
 1. Nastavte možnost **vynutit vlastní seznam**do **Ano**.
 1. Přidejte do řetězce **vlastní zakázané seznam hesel**, jeden řetězec na řádek
    * Seznam vlastních zakázaných hesel může obsahovat až 1000 slova.

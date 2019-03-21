@@ -9,14 +9,15 @@ ms.date: 07/02/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb01ae6514dfb97cc8a923619513383ace0b09a5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: f4935cc15bf3edeccd6b6ce9da701904a32606db
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669971"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295024"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>Rychlý start: Přidat uživatele typu Host do adresáře na webu Azure Portal
 
@@ -39,15 +40,15 @@ K dokončení scénáře v tomto kurzu budete potřebovat:
 2. V levém podokně vyberte **Azure Active Directory**.
 3.  V části **Spravovat** vyberte **Uživatele**.
 
-    ![Vyberte Azure Active Directory.](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
+    ![Snímek obrazovky znázorňující, kde vyberte možnost uživatelé](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
 
 4.  Vyberte **Nový uživatel typu host**.
 
-    ![Vyberte Azure Active Directory.](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
+    ![Snímek obrazovky znázorňující, kde vyberte možnost Nový uživatel typu Host](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
 
 5.  V části **Uživatelské jméno** zadejte e-mailovou adresu externího uživatele. V části **Přiložit k pozvánce osobní zprávu** zadejte uvítací zprávu. 
 
-    ![Vyberte Azure Active Directory.](media/quickstart-add-users-portal/quickstart-users-portal-user-4.png)
+    ![Snímek obrazovky znázorňující, kde zadejte zprávu pozvání uživatele typu Host](media/quickstart-add-users-portal/quickstart-users-portal-user-4.png)
 
 6. Výběrem možnosti **Pozvat** automaticky odešlete uživateli typu host pozvánku. V pravém horním rohu se zobrazí oznámení se zprávou **Uživatel je úspěšně pozvaný**. 
 7.  Po odeslání e-mailové pozvánky se uživatelský účet automaticky přidá do adresáře jako uživatel typu host.
@@ -59,7 +60,7 @@ Přidejte do svého testovacího tenanta aplikaci Salesforce a přiřaďte k ní
 3.  Vyberte **Nová aplikace**.
 4. V části **Přidat z galerie** vyhledejte aplikaci **Salesforce** a vyberte ji.
 
-    ![Vyberte Azure Active Directory.](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
+    ![Snímek obrazovky zobrazující přidat z Galerie vyhledávacího pole](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
 5. Vyberte **Přidat**.
 6. V části **Spravovat** vyberte **Jednotné přihlašování** a v části **Režim jednotného přihlašování** vyberte **Přihlašování pomocí hesel** a klikněte na **Uložit**.
 7. V části **Spravovat** vyberte **Uživatelé a skupiny** > **Přidat uživatele** > **Uživatelé a skupiny**.
@@ -71,11 +72,11 @@ Teď se přihlásíte jako uživatel typu host, abyste viděli pozvánku.
 1.  Přihlaste se k e-mailovému účtu testovacího uživatele typu host.
 2.  V doručené poště vyhledejte e-mail „You're invited“ (Zveme vás).
 
-    ![E-mail B2B s pozváním](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
+    ![Snímek obrazovky s e-mailová pozvánka B2B](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
 
 3.  V těle e-mailu vyberte **Get Started** (Začínáme). V prohlížeči se otevře stránka **Zkontrolovat oprávnění**. 
 
-    ![Stránka přijmutí pozvání B2B](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
+    ![Snímek obrazovky zobrazující stránku zkontrolujte oprávnění](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
 
 4. Vyberte **Přijmout**. Otevře se Přístupový panel s aplikacemi, ke kterým má uživatel typu host přístup.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: a9f6dfb0de2cf09b27d08eb6b7dc425c8cd1f17d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 825a6035a997eb27a3e8e5833a792bdd985997c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549217"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084619"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Rozpoznávání řeči Devices SDK licenční smlouvy
 
@@ -83,9 +83,9 @@ f) software je nutné použít pouze v kombinaci s Microsoft Azure Cognitive Ser
 (c) Německo a Rakousko.
 
 > (i) záruky. Řádně licencovaný software provede podstatně, jak je popsáno v materiálech společnosti Microsoft dodávaných spolu se softwarem. Ale společnost Microsoft neposkytuje žádné smluvní záruky ve vztahu k licencovanému softwaru.
-
+> 
 > (ii) omezení odpovědnosti. V případě záměrného jednání, hrubé nedbalosti, nároků podle produkt zákona o odpovědnosti, jakož i, v případě úmrtí nebo zranění nese osobní nebo fyzické je Microsoft odpovědnost podle zákonné záruky práva.
-
+> 
 > Předchozí klauzule (ii) v souladu s pouze bude Microsoft odpovědnost za mírnou nedbalost Pokud Microsoft poruší takové závažné smluvní povinnosti, splnění z nich usnadnění provádění vypršení platnosti této smlouvy, porušení by ohrozilo účel této smlouvy a dodržování předpisů, které může strana trvale důvěryhodnosti v (tzv. "zásadní povinnosti"). V ostatních případech mírné nedbalosti nenese společnost Microsoft nebude odpovědnost za mírnou nedbalost.
 
 **15\. PRÁVNÍ OMEZENÍ ZÁRUKY. SOFTWARE JE LICENCOVÁN "TAK JAK JSOU." NESETE VEŠKERÁ RIZIKA S JEJICH POUŽITÍM. SPOLEČNOST MICROSOFT NEPOSKYTUJE ŽÁDNÉ VÝSLOVNÉ ZÁRUKY ČI PODMÍNKY. V ROZSAHU POVOLENÉM PŘÍSLUŠNÝMI ZÁKONY MICROSOFT VYLUČUJE VEŠKERÉ ODVOZENÉ ZÁRUKY VČETNĚ ZÁRUK PRODEJNOSTI, VHODNOSTI PRO URČITÝ ÚČEL A NEPORUŠENÍ SMLOUVY.**

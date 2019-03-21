@@ -1,5 +1,5 @@
 ---
-title: Kurz pro volání kognitivního vyhledávání rozhraní API – Azure Search
+title: Kurz pro volání rozhraní API služeb Cognitive Services v kanál indexování – Azure Search
 description: Tento kurz vás krok za krokem provede ukázkovou extrakcí dat a zpracováním přirozeného jazyka a obrázků pomocí umělé inteligence v indexování Azure Search s cílem extrahovat a transformovat data.
 manager: pablocas
 author: luiscabrer
@@ -7,19 +7,19 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 03/18/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 410e5d618e1deb1887329bea41e2cd3c6d795e58
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c888c134054f50bc8ab17d17524a4f89d5081dfc
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075846"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259614"
 ---
-# <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Kurz: Zjistěte, jak volat kognitivních hledání rozhraní API (Preview)
+# <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>Kurz: Volání rozhraní API služeb Cognitive Services v Azure Search indexování kanálu (Preview)
 
-V tomto kurzu se naučíte, jak v Azure Search naprogramovat rozšiřování dat pomocí *kognitivních dovedností*. Kognitivní dovednosti jsou operace zpracování přirozeného jazyka (NLP) a analýzy obrazu, které extrahují text a textové reprezentace z obrázku, zjišťují jazyk, entity, klíčové fráze apod. Výsledkem je rozsáhlý doprovodný obsah v indexu Azure Search, který se vytvořil pomocí kanálu indexování kognitivního hledání. 
+V tomto kurzu se naučíte, jak v Azure Search naprogramovat rozšiřování dat pomocí *kognitivních dovedností*. Dovednosti využívají možnosti analýzy image ve službě Cognitive Services a zpracování přirozeného jazyka (NLP). Prostřednictvím složení dovednosti a konfigurace můžete extrahovat text a textové reprezentace obrázek nebo soubor naskenovaného dokumentu. Můžete také zjistit jazyk, entity, klíčové fráze a další. Konečným výsledkem bude bohatý další obsah v indexu Azure Search, vytvořený kanál indexování založené na AI. 
 
 V tomto kurzu budete volat rozhraní REST API, aby provedlo tyto úlohy:
 
@@ -59,7 +59,7 @@ Nejdříve se do služby Azure Search přihlaste.
 
 1. V části Skupina prostředků vytvořte skupinu prostředků, která bude obsahovat všechny prostředky vytvořené během tohoto kurzu. To usnadní čištění prostředků, až kurz dokončíte.
 
-1. Pro umístění doporučujeme zvolíte oblast, která se nachází blízko vašich dat a další cloudové aplikace.
+1. Pro umístění zvolte oblast, která se nachází blízko vašich dat a další cloudové aplikace.
 
 1. V části Cenová úroveň můžete pro účely kurzů a rychlých startů vytvořit bezplatnou (**Free**) službu. Pokud chcete důkladněji zkoumat svá vlastní data, vytvořte si [placenou službu](https://azure.microsoft.com/pricing/details/search/), např. **Basic** nebo **Standard**. 
 

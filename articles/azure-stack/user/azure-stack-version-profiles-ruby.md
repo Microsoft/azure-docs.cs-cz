@@ -16,12 +16,12 @@ ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 73c770f45666ce76b770796ac9714d007c2870cb
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5c7031b0d0a08106473409233db0ad95ecb32525
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247183"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095360"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>Použití profilů verzí API pomocí Ruby ve službě Azure Stack
 
@@ -85,8 +85,8 @@ gem install 'azure_sdk'
 
 Chcete-li používat Azure SDK pro Ruby pomocí služby Azure Stack, musíte zadat následující hodnoty a pak nastavte tyto hodnoty proměnné prostředí. Postupujte podle pokynů pod tabulkou pro váš operační systém na nastavení proměnné prostředí.
 
-| Value | Proměnné prostředí | Popis |
-| --- | --- | --- | --- |
+| Hodnota | Proměnné prostředí | Popis |
+| --- | --- | --- |
 | ID tenanta | AZURE_TENANT_ID | Výhody služby Azure Stack [ID tenanta](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview). |
 | ID klienta | AZURE_CLIENT_ID | Služba ID instančního objektu aplikace neuloží, když se vytvoří nový instanční objekt služby v předchozí části tohoto dokumentu.  |
 | ID předplatného | AZURE_SUBSCRIPTION_ID | [ID předplatného](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) je, jak získat přístup k nabídky ve službě Azure Stack. |

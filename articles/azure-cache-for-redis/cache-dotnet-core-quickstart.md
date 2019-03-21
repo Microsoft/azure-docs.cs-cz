@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: ef3dcba51ffda83b4b6643b3490e8929e5d42b4d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: df615b940873cd59341424d0b40a9e399d710126
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236324"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896241"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Rychlý start: Použití mezipaměti Azure pro Redis s .NET Core aplikace
 
@@ -38,7 +38,7 @@ K dokončení kroků v tomto rychlém startu můžete použít jakýkoli editor 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [.Net SDK 2.0](https://www.microsoft.com/net/learn/get-started/windows) nebo novější.
+* [.NET SDK 2.0](https://www.microsoft.com/net/learn/get-started/windows) nebo novější.
 * Klient StackExchange.Redis vyžaduje rozhraní [.NET Framework 4 nebo vyšší](https://www.microsoft.com/net/download/dotnet-framework-runtime).
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti

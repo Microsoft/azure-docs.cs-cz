@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 89b18d71e864c198b7efafcff09777da21930b6c
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 8a2ea64d32194ff06378e3227b260c4f10d53175
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733633"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116669"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
 
@@ -38,7 +38,7 @@ Azure Migrate k automatickému zjišťování virtuálních počítačů pro ú�
 
 Pokud nasazujete v prostředí s tenanty, tady je jeden způsob, jak nastavit tuto možnost:
 
-1.  Vytvořit uživatele na klienta a pomocí [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), přiřaďte oprávnění jen pro čtení pro všechny virtuální počítače, které patří do konkrétního tenanta. Potom použijte své přihlašovací údaje pro zjišťování. RBAC se zajistí, že odpovídající vCenter uživatel bude mít přístup k virtuálním počítačům pouze specifickým pro tenanta.
+1. Vytvořit uživatele na klienta a pomocí [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), přiřaďte oprávnění jen pro čtení pro všechny virtuální počítače, které patří do konkrétního tenanta. Potom použijte své přihlašovací údaje pro zjišťování. RBAC se zajistí, že odpovídající vCenter uživatel bude mít přístup k virtuálním počítačům pouze specifickým pro tenanta.
 2. Můžete nastavit RBAC pro uživatele jiného tenanta, jak je popsáno v následujícím příkladu pro uživatele č. 1 a 2 uživatele:
 
     - V **uživatelské jméno** a **heslo**, určete pověření účtu jen pro čtení, který kolektor použije ke zjištění virtuálních počítačů v

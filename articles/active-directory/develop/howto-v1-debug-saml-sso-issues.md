@@ -16,12 +16,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, smalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b953d979fc5306372c1e751fbbb8942d19fed03f
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: f854c8b27065c2d2bf0c9964fe9dfce66aba423a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648910"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104501"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Ladění založené na SAML jednotného přihlašování k aplikacím v Azure Active Directory
 
@@ -97,9 +97,9 @@ Chcete-li chybu vyřešit, postupujte takto:
     - Pokud je nainstalovaná rozšíření Moje aplikace zabezpečené přihlašování, z **otestovat jednotné přihlašování** okna, klikněte na tlačítko **stáhnout odpověď SAML**.
     - Pokud není nainstalovaná rozšíření, použijte nástroj, jako [Fiddler](https://www.telerik.com/fiddler) načíst odpověď SAML. 
 1. Všimněte si, že tyto prvky v tokenu SAML odpovědi:
-    - Jedinečný identifikátor uživatele NameID hodnota a formátu
-    - Deklarací identity vystavených v tokenu
-    - Certifikát použitý k podpisu tokenu. 
+   - Jedinečný identifikátor uživatele NameID hodnota a formátu
+   - Deklarací identity vystavených v tokenu
+   - Certifikát použitý k podpisu tokenu. 
 
      Další informace o odpověď SAML, naleznete v tématu [protokol jednotné přihlašování SAML](single-sign-on-saml-protocol.md).
 

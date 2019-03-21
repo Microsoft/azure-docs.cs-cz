@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: c98328342eec7fa59a56fbcc70da8cdd7a8fabf1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 157cbd9b05f7f2af58df732a1ca0329926a200da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880882"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123211"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Řešení potíží s spřažením relace Azure Application Gateway
 
@@ -40,11 +40,11 @@ Spřažením relace může někdy dojít k "Na základě souboru Cookie spřaže
 
 3. Vyberte **nastavení HTTP** kartu **nastavení**.
 
-   ![řešení potíží s relace spřažení – problémy s-1](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-1.png)
+   ![řešení potíží s relace spřažení – problémy s-1](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-1.png)
 
 4. Klikněte na tlačítko **appGatewayBackendHttpSettings** na pravé straně, chcete-li zkontrolovat, zda jste vybrali **povoleno** pro spřažení na základě souboru Cookie.
 
-   ![řešení potíží s relace spřažení – problémy s-2](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-2.jpg)
+   ![řešení potíží s relace spřažení – problémy s-2](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-2.jpg)
 
 
 
@@ -81,9 +81,9 @@ Pokud chcete identifikovat problém, postupujte podle pokynů:
 2. Zkontrolovat a analyzovat protokoly relace, chcete-li zjistit, jestli mají soubory cookie, který klient poskytl ARRAffinity podrobnosti. Pokud nenajdete ARRAffinity podrobnosti, jako například "**ARRAffinity =** *ARRAffinityValue*" v rámci sady souborů cookie, která znamená, že klient není odpovědi s EŘADIT soubor cookie, který je poskytován Application Gateway.
     Příklad:
 
-    ![řešení potíží s relace spřažení – problémy – 3](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-3.png)
+    ![řešení potíží s relace spřažení – problémy – 3](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
-        ![troubleshoot-session-affinity-issues-4](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-4.png)
+        ![troubleshoot-session-affinity-issues-4](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-4.png)
 
 Aplikace i nadále pokusu o nastavení souborů cookie s každým požadavkem, dokud nedosáhnete odpověď.
 
@@ -111,25 +111,25 @@ Povolit protokolování prostřednictvím webu Azure Portal
 
 2. Spuštění sběru dat, klikněte na tlačítko **zapnout diagnostiku**.
 
-   ![řešení potíží s relace spřažení – problémy – 5](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-5.png)
+   ![řešení potíží s relace spřažení – problémy – 5](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-5.png)
 
 3. **Nastavení diagnostiky** okno obsahuje nastavení pro diagnostické protokoly. V tomto příkladu služba Log Analytics ukládá protokoly. Klikněte na tlačítko **konfigurovat** pod **Log Analytics** nastavit váš pracovní prostor. Diagnostické protokoly můžete ukládat také pomocí služby center událostí a účtu úložiště.
 
-   ![řešení potíží s relace spřažení – problémy – 6](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-6.png)
+   ![řešení potíží s relace spřažení – problémy – 6](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-6.png)
 
 4. Potvrďte nastavení a potom klikněte na tlačítko **Uložit**.
 
-   ![řešení potíží s relace spřažení – problémy – 7](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-7.png)
+   ![řešení potíží s relace spřažení – problémy – 7](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-7.png)
 
 #### <a name="view-and-analyze-the-application-gateway-access-logs"></a>Zobrazení a analýza protokolů Application Gateway přístup
 
 1. Na webu Azure portal v části zobrazení zdrojů službě Application Gateway, vyberte **diagnostické protokoly** v **monitorování** oddílu.
 
-   ![řešení potíží s relace spřažení – problémy-8](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-8.png)
+   ![řešení potíží s relace spřažení – problémy-8](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-8.png)
 
 2. Na pravé straně vyberte "**ApplicationGatewayAccessLog**" v rozevíracím seznamu v části **protokolu kategorií.**  
 
-   ![řešení potíží s relace spřažení – problémy-9](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-9.png)
+   ![řešení potíží s relace spřažení – problémy-9](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-9.png)
 
 3. V seznamu přístup protokol aplikační brány klikněte na protokol, který chcete analyzovat a exportovat a exportovat soubor JSON.
 
@@ -145,7 +145,7 @@ Povolit protokolování prostřednictvím webu Azure Portal
 
   - **STAV SERVERU**: Kód odpovědi HTTP, které služba Application Gateway přijaté z back-endu.
 
-  ![řešení potíží s relace spřažení – problémy – 11.](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-11.png)
+  ![řešení potíží s relace spřažení – problémy – 11.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-11.png)
 
 Pokud se zobrazí dvě položky přicházející ze stejné ClientIP a Port klienta a jsou odeslány do stejného back endového serveru, znamená to Aplikační brána správně nakonfigurovaná.
 
@@ -164,23 +164,23 @@ Pomocí ladicího programu webového podle vašeho výběru. V této ukázce pou
 
 2. Klikněte pravým tlačítkem na spustitelný soubor nastavení a spustit jako správce k instalaci.
 
-            ![troubleshoot-session-affinity-issues-12](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-12.png)
+            ![troubleshoot-session-affinity-issues-12](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-12.png)
 
 3. Když otevřete Fiddler, by měly automaticky spustit zachytávání provozu (Všimněte si, že zachytávání v levém dolním rohu). Stisknutím klávesy F12 spustit nebo zastavit zachytávání provozu.
 
-        ![troubleshoot-session-affinity-issues-13](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-13.png)
+        ![troubleshoot-session-affinity-issues-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
 4. Pravděpodobně vás bude zajímat dešifrovaný komunikaci přes protokol HTTPS a povolíte dešifrování HTTPS tak, že vyberete **nástroje** > **možnosti Fiddleru**a zaškrtněte políčko " **dešifrovat Přenosy HTTPS**".
 
-        ![troubleshoot-session-affinity-issues-14](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-14.png)
+        ![troubleshoot-session-affinity-issues-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
 5. Předchozí relace nesouvisejících před reprodukci problému kliknutím můžete odebrat **X** (ikona) > **odebrat všechny** jako postupujte snímku obrazovky: 
 
-        ![troubleshoot-session-affinity-issues-15](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-15.png)
+        ![troubleshoot-session-affinity-issues-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
 6. Po reprodukování problému uložit tak, že vyberete soubor ke kontrole **souboru** > **Uložit** > **všechny relace...** . 
 
-        ![troubleshoot-session-affinity-issues-16](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-16.png)
+        ![troubleshoot-session-affinity-issues-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 
 7. Zkontrolovat a analyzovat protokoly relace k určení, co je problém.
 
@@ -191,11 +191,11 @@ Pomocí ladicího programu webového podle vašeho výběru. V této ukázce pou
    > [!NOTE]
    > Tato hodnota ARRAffinity je soubor cookie-id, nastavující Application Gateway pro klienta k odeslání do konkrétní back endového serveru.
 
-    ![řešení potíží s relace spřažení – problémy-17.](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-17.png)
+    ![řešení potíží s relace spřažení – problémy-17.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
 
 - **Příklad B:** Další relace protokolu a předchozí jeden je klient zpět ke službě Application Gateway, která byla nastavena ARRAAFFINITY reagovat. Pokud odpovídá id souboru cookie ARRAffinity, odešlou se ke stejnému back-end serveru, který se použil dříve paketu. Zkontrolujte další několik řádků komunikaci protokolem http, pokud chcete zobrazit, jestli se soubor cookie klienta ARRAffinity mění.
 
-    ![řešení potíží s relace spřažení – problémy – 18.](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-18.png)
+    ![řešení potíží s relace spřažení – problémy – 18.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
 
 > [!NOTE]
 > Pro stejnou relaci komunikace by měl soubor cookie nebudou je moci měnit. Zaškrtnutím tohoto políčka nejvyšší na pravé straně, vyberte kartu soubory cookie."Pokud chcete zobrazit, zda je klienta pomocí souboru cookie a odesláním zpět ke službě Application Gateway. Pokud ne, není udržování a pomocí souboru cookie pro konverzací prohlížeče klienta. V některých případech může být od klienta.

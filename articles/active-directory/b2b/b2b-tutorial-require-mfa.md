@@ -9,14 +9,15 @@ ms.date: 06/25/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f6718c13534e7f43b183400a1ccf25c3f8d1e1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 94e5f4eaf32815dd0342ef73705efb2c575b71bc
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669000"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293988"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Kurz: Vynutit ověřování Multi-Factor Authentication pro uživatele typu Host B2B
 
@@ -24,7 +25,7 @@ Když spolupracujete s externími uživateli typu host B2B, je vhodné si své a
 
 Příklad:
 
-![Aplikace B2B vyžadující vícefaktorové ověřování](media/tutorial-mfa/aad-b2b-mfa-example.png)
+![Diagram znázorňující uživatele typu Host přihlášení do aplikace vaší společnosti](media/tutorial-mfa/aad-b2b-mfa-example.png)
 
 1.  Správce nebo zaměstnanec ve společnosti A pozve uživatele typu host, aby používal cloudovou nebo místní aplikaci, která je nakonfigurovaná tak, aby k přístupu vyžadovala vícefaktorové ověřování.
 2.  Uživatel typu host se přihlásí pomocí pracovní, školní nebo sociální identity. 
@@ -56,11 +57,11 @@ K dokončení scénáře v tomto kurzu budete potřebovat:
 3.  V části **Spravovat** vyberte **Uživatele**.
 4.  Vyberte **Nový uživatel typu host**.
 
-    ![Vyberte Azure Active Directory.](media/tutorial-mfa/tutorial-mfa-user-3.png)
+    ![Snímek obrazovky znázorňující, kde vyberte možnost Nový uživatel typu Host](media/tutorial-mfa/tutorial-mfa-user-3.png)
 
 5.  V části **Uživatelské jméno** zadejte e-mailovou adresu externího uživatele. Volitelně můžete zahrnout uvítací zprávu. 
 
-    ![Vyberte Azure Active Directory.](media/tutorial-mfa/tutorial-mfa-user-4.png)
+    ![Snímek obrazovky znázorňující, kde zadejte zprávu pozvání hosta](media/tutorial-mfa/tutorial-mfa-user-4.png)
 
 6.  Výběrem možnosti **Pozvat** automaticky odešlete uživateli typu host pozvánku. Zobrazí se zpráva **Uživatel je úspěšně pozvaný**. 
 7.  Po odeslání e-mailové pozvánky se uživatelský účet automaticky přidá do adresáře jako uživatel typu host.
@@ -79,26 +80,26 @@ K dokončení scénáře v tomto kurzu budete potřebovat:
 6.  V části **Přiřazení** vyberte **Uživatelé a skupiny**.
 7.  Na stránce **Uživatelé a skupiny** zvolte **Vyberte uživatele a skupiny** a potom vyberte **Všichni uživatelé typu host (Preview)**.
 
-    ![Vyberte Azure Active Directory.](media/tutorial-mfa/tutorial-mfa-policy-6.png)
+    ![Snímek obrazovky ukazující, že vyberete všechny uživatele typu Host](media/tutorial-mfa/tutorial-mfa-policy-6.png)
 9.  Vyberte **Done** (Hotovo).
 10. V části **Přiřazení** na stránce **Nový** vyberte **Cloudové aplikace**.
 11. Na stránce **Cloudové aplikace** zvolte **Vybrat aplikace** a pak zvolte **Vybrat**.
 
-    ![Vyberte Azure Active Directory.](media/tutorial-mfa/tutorial-mfa-policy-10.png)
+    ![Snímek obrazovky zobrazující stránku cloudové aplikace a vyberte možnost](media/tutorial-mfa/tutorial-mfa-policy-10.png)
 
 12. Na stránce **Vybrat** zvolte **Microsoft Azure Management** a potom zvolte **Vybrat**.
 
-    ![Vyberte Azure Active Directory.](media/tutorial-mfa/tutorial-mfa-policy-11.png)
+    ![Snímek obrazovky aplikace Microsoft Azure Management vybrali](media/tutorial-mfa/tutorial-mfa-policy-11.png)
 
 13. Na stránce **Cloudové aplikace** vyberte **Hotovo**.
 14. V části **Ovládací prvky přístupu** na stránce **Nový** vyberte **Udělení**.
 15. Na stránce **Udělení** zvolte **Udělit přístup**, vyberte zaškrtávací políčko **Vyžadovat vícefaktorové ověřování** a potom zvolte **Vybrat**.
 
-    ![Vyberte Azure Active Directory.](media/tutorial-mfa/tutorial-mfa-policy-13.png)
+    ![Snímek obrazovky zobrazující vyžadují možnost ověření službou Multi-Factor Authentication](media/tutorial-mfa/tutorial-mfa-policy-13.png)
 
 16. V části **Povolit zásadu** vyberte **Zapnuté**.
 
-    ![Vyberte Azure Active Directory.](media/tutorial-mfa/tutorial-mfa-policy-14.png)
+    ![Snímek obrazovky zobrazující možnost povolit zásadu nastavit na](media/tutorial-mfa/tutorial-mfa-policy-14.png)
 
 17. Vyberte **Vytvořit**.
 
@@ -106,27 +107,27 @@ K dokončení scénáře v tomto kurzu budete potřebovat:
 
 1.  Na stránce **Podmíněný přístup – Zásady** vyberte **What If**. 
 
-    ![Vyberte Azure Active Directory.](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
+    ![Snímek obrazovky znázorňující, kde co vyberte, pokud možnost](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
 
 2.  Vyberte **Uživatel**, zvolte svého testovacího uživatele typu host a potom zvolte **Vybrat**.
 
-    ![Vyberte Azure Active Directory.](media/tutorial-mfa/tutorial-mfa-whatif-2.png)
+    ![Snímek obrazovky zobrazující vybrané uživatele typu Host](media/tutorial-mfa/tutorial-mfa-whatif-2.png)
 
 3.  Vyberte **Cloudové aplikace**.
 4.  Na stránce **Cloudové aplikace** zvolte **Vybrat aplikace** a pak klikněte na **Vybrat**. V seznamu aplikací vyberte **Microsoft Azure Management** a pak klikněte na **Vybrat**. 
 
-    ![Vyberte Azure Active Directory.](media/tutorial-mfa/tutorial-mfa-whatif-3.png)
+    ![Snímek obrazovky aplikace Microsoft Azure Management vybrali](media/tutorial-mfa/tutorial-mfa-whatif-3.png)
 
 5.  Na stránce **Cloudové aplikace** vyberte **Hotovo**.
 6.  Vyberte **What If** a ověřte, že se vaše nová zásada zobrazí na kartě **Zásady, které se použijí** v části **Výsledek hodnocení**.
 
-    ![Vyberte Azure Active Directory.](media/tutorial-mfa/tutorial-mfa-whatif-4.png)
+    ![Snímek obrazovky znázorňující, kde co vyberte, pokud možnost](media/tutorial-mfa/tutorial-mfa-whatif-4.png)
 
 ## <a name="test-your-conditional-access-policy"></a>Otestování zásady podmíněného přístupu
 1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí jména a hesla testovacího uživatele.
 2.  Měli byste vidět žádost o další metody ověřování. Nezapomeňte, že než se zásady projeví, může to nějakou dobu trvat.
 
-    ![Vyberte Azure Active Directory.](media/tutorial-mfa/mfa-required.png)
+    ![Snímek obrazovky s další zprávou požadované informace](media/tutorial-mfa/mfa-required.png)
  
 3.  Odhlaste se.
 
@@ -139,5 +140,6 @@ Když už testovacího uživatele ani testovací zásady podmíněného přístu
 5.  V levém podokně vyberte **Azure Active Directory**.
 6.  V části **Zabezpečení** vyberte **Podmíněný přístup**.
 7.  Na seznamu **Název zásady** vyberte u testovací zásady místní nabídku (...) a pak vyberte **Odstranit**. Odstranění potvrďte výběrem **Ano**.
+
 ## <a name="next-steps"></a>Další postup
 V tomto kurzu jste vytvořili zásady podmíněného přístupu, které vyžadují, aby uživatelé typu host používali při přihlašování k jedné z vašich cloudových aplikací vícefaktorové ověřování. Další informace o přidávání uživatelů typu host ke spolupráci najdete v článku o [přidávání uživatelů pro spolupráci B2B služby Azure Active Directory na webu Azure Portal](add-users-administrator.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 1996befa78409e572798a9043f7e6ee3b6f647bc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: f07fc2f03ad72e7ee0fd408782b8fe845c88e780
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887896"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286563"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Vytváření vlastních zobrazení pomocí návrháře zobrazení ve službě Azure Monitor
 Pomocí návrháře zobrazení ve službě Azure Monitor můžete vytvořit řadu vlastních zobrazení na webu Azure Portal, který může pomoci vám vizualizovat data ve vašem pracovním prostoru Log Analytics. Tento článek obsahuje přehled nástroje Návrhář zobrazení a postupy pro vytváření a úpravu vlastní zobrazení.
@@ -43,6 +43,9 @@ Zobrazení, které vytvoříte pomocí návrháře zobrazení obsahovat prvky, k
 | Dlaždice | Jsou zobrazeny v Azure Monitor **přehled** stránky. Každé dlaždici se zobrazí vizuální přehled, který představuje vlastní zobrazení. Každý typ dlaždice obsahuje vizualizaci různých záznamů. Můžete vybrat příslušnou dlaždici a vlastní zobrazení. |
 | Vlastní zobrazení | Zobrazí, když vyberete dlaždici. Každé zobrazení obsahuje jednu nebo více částí vizualizace. |
 | Části vizualizace | K dispozici vizualizace dat v pracovním prostoru Log Analytics na základě jedné nebo více [protokolu dotazy](../log-query/log-query-overview.md). Většina části patří hlavičky, která poskytuje vizualizaci vysoké úrovně, a seznam, který zobrazí nejlepší výsledky. Každý typ části poskytuje různé vizualizace záznamů v pracovním prostoru Log Analytics. Vybrat elementy v části o provedení dotazu protokolu, která poskytuje podrobné záznamy. |
+
+## <a name="required-permissions"></a>Požadovaná oprávnění
+Budete potřebovat alespoň [oprávnění na úrovni Přispěvatel](manage-access.md#manage-accounts-and-users) v pracovním prostoru Log Analytics, vytvoření nebo úprava zobrazení. Pokud toto oprávnění nemáte, nebude možnost Návrhář zobrazení zobrazí v nabídce.
 
 
 ## <a name="work-with-an-existing-view"></a>Práce s existující zobrazení

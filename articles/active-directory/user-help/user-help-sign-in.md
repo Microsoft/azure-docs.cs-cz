@@ -13,20 +13,20 @@ ms.date: 07/30/2018
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c892d616609151b5ad6025b4d0b535c494e6af82
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 84c71430d05bf0755fd8a7c096a2afcb2f69d292
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454217"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116720"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Přihlaste se pomocí dvoustupňového ověření nebo bezpečnostních údajů
 Po nastavení dvoustupňového ověřování nebo bezpečnostní údaje budete moct přihlásit k vašemu účtu pomocí zadaný ověřovací metodu.
 
->[!Note]
->Pokud stále používáte prostředí dvoustupňové ověření, budete muset nastavit metody ověřování pomocí následujících pokynů [nastavit účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) článku.
-
->Pokud správce zapnul prostředí informace o zabezpečení, musíte nastavit tyto podrobné články pomocí metody ověřování:<ul><li>[Nastavení informací o zabezpečení pro použití ověřování aplikace](security-info-setup-auth-app.md)</li><li>[Nastavení bezpečnostních údajů pro používání zasílání textových zpráv](security-info-setup-text-msg.md)</li><li>[Upravit informace o zabezpečení tak, aby pomocí telefonního hovoru](security-info-setup-phone-number.md)</li></ul>
+> [!Note]
+> Pokud stále používáte prostředí dvoustupňové ověření, budete muset nastavit metody ověřování pomocí následujících pokynů [nastavit účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) článku.
+> 
+> Pokud správce zapnul prostředí informace o zabezpečení, musíte nastavit tyto podrobné články pomocí metody ověřování:<ul><li>[Nastavení informací o zabezpečení pro použití ověřování aplikace](security-info-setup-auth-app.md)</li><li>[Nastavení bezpečnostních údajů pro používání zasílání textových zpráv](security-info-setup-text-msg.md)</li><li>[Upravit informace o zabezpečení tak, aby pomocí telefonního hovoru](security-info-setup-phone-number.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Přihlaste se pomocí oznámení aplikaci authenticator na vašem mobilním zařízení
 

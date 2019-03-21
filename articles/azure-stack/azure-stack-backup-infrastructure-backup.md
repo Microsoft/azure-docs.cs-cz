@@ -13,26 +13,26 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 005a9e3903ffa16882f8d07529bf5c4924837db5
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.lastreviewed: 03/19/2019
+ms.openlocfilehash: 080129ca1520dc2b1b085c69f6389508f11c7ba2
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790844"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285917"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>Zálohování a obnovení dat pro Azure Stack pomocí infrastruktury služby Backup
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Zálohovat a obnovit konfiguraci a data service pomocí služby zálohování infrastruktury. Každá instalace služby Azure Stack obsahuje instanci služby. Zálohy vytvořené ve službě pro opětovné nasazení Azure Stack cloud můžete použít k obnovení identit, zabezpečení a data Azure Resource Manageru.
+Zálohovat a obnovit konfiguraci a data service pomocí služby zálohování infrastruktury. Každá instalace služby Azure Stack obsahuje instanci služby. Zálohy vytvořené ve službě pro opětovné nasazení Azure Stack cloud můžete použít k obnovení identit, zabezpečení a data Azure Resource Manageru. 
 
 Zálohování můžete povolit, pokud budete chtít umístit své cloudové do produkčního prostředí. Nepovolujte zálohování, pokud máte v plánu provést testování a ověřování pro dlouhou dobu.
 
 Před povolením služby backup, ujistěte se, že máte [požadavky splněné](#verify-requirements-for-the-infrastructure-backup-service).
 
 > [!Note]  
-> Služba Backup infrastruktury nezahrnuje aplikací a dat uživatele. <!-- See the following articles for instructions on backing up and restore [App Services](https://aka.ms/azure-stack-app-service), [SQL](https://aka.ms/azure-stack-ms-sql), and [MySQL](https://aka.ms/azure-stack-mysql) resource providers and associated user data. -->
+> Služba Backup infrastruktury nezahrnuje aplikací a dat uživatele. Odkazovat na [chránit virtuální počítače nasazené ve službě Azure Stack](user/azure-stack-manage-vm-protect.md) Další informace o ochraně virtuálních počítačů IaaS na základě aplikací. Komplexnější přehled o tom, jak chránit aplikace ve službě Azure Stack, najdete [onsiderations Azure Stack pro obchodní kontinuity podnikových procesů a po havárii obnovení dokument White Paper](http://aka.ms/azurestackbcdrconsiderationswp).
 
 ## <a name="the-infrastructure-backup-service"></a>Zálohovací služby infrastruktury
 

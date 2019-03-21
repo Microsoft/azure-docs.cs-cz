@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: ce4002ff37de3fcc96b86bcfb8ee9b0239212ef3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a5a364c2065a7f4b9607eb4b078456324f261ce8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760813"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121872"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Přírůstkové kopírování dat z Azure SQL Database do Azure Blob Storage s využitím informací sledování změn 
 V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načítá rozdílová data na základě **sledování změn** ve zdrojové databázi Azure SQL do úložiště objektů blob Azure.  
@@ -372,29 +372,29 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
     ![Aktivita vyhledávání – název](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
 6. V okně **Vlastnosti** přepněte na kartu **Nastavení** a proveďte následující kroky:
 
-    1. V poli **Zdrojová datová sada** vyberte **SourceDataset**.
-    2. Jako **Použít dotaz** vyberte **Dotaz**. 
-    3. Jako **Dotaz** zadejte následující příkaz jazyka SQL. 
+   1. V poli **Zdrojová datová sada** vyberte **SourceDataset**.
+   2. Jako **Použít dotaz** vyberte **Dotaz**. 
+   3. Jako **Dotaz** zadejte následující příkaz jazyka SQL. 
 
-        ```sql
-        SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
-        ```
+       ```sql
+       SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
+       ```
 
-    ![Aktivita vyhledávání – nastavení](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
+      ![Aktivita vyhledávání – nastavení](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
 7. Na panelu nástrojů **Aktivity** rozbalte **Tok dat** a přetáhněte aktivitu **Kopírování** na plochu návrháře kanálu. Nastavte název aktivity na **IncrementalCopyActivity**. Tato aktivita kopírujte data mezi poslední verzí sledování změn a aktuální verzí sledování změn pouze do cílového úložiště dat. 
 
     ![Aktivita kopírování – název](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png)
 8. V okně **Vlastnosti** přepněte na kartu **Zdroj** a proveďte následující kroky:
 
-    1. Jako **Zdrojová datová sada** vyberte **SourceDataset**. 
-    2. Jako **Použít dotaz** vyberte **Dotaz**. 
-    3. Jako **Dotaz** zadejte následující příkaz jazyka SQL. 
+   1. Jako **Zdrojová datová sada** vyberte **SourceDataset**. 
+   2. Jako **Použít dotaz** vyberte **Dotaz**. 
+   3. Jako **Dotaz** zadejte následující příkaz jazyka SQL. 
 
-        ```sql
-        select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}
-        ```
+       ```sql
+       select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}
+       ```
     
-    ![Aktivita kopírování – nastavení zdroje](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png)
+      ![Aktivita kopírování – nastavení zdroje](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png)
 9. Přepněte na kartu **Jímka** a v poli **Datová sada jímky** vyberte **SinkDataset**. 
 
     ![Aktivita jímky – nastavení jímky](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-sink-settings.png)
@@ -425,9 +425,9 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
 15. Klikněte na **Ověřit** na panelu nástrojů. Ověřte, že se nezobrazí žádné chyby ověření. Zavřete okno **Sestava ověření kanálu** kliknutím na **>>**. 
 
     ![Tlačítko Ověřit](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
-16.  Kliknutím na tlačítko **Publikovat vše** publikujte entity (propojené služby, datové sady a kanály) do služby Data Factory. Počkejte, dokud se nezobrazí zpráva **Publikování proběhlo úspěšně**. 
+16. Kliknutím na tlačítko **Publikovat vše** publikujte entity (propojené služby, datové sady a kanály) do služby Data Factory. Počkejte, dokud se nezobrazí zpráva **Publikování proběhlo úspěšně**. 
 
-        ![Tlačítko Publikovat](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
+       ![Tlačítko Publikovat](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>Spuštění kanálu přírůstkového kopírování
 1. Klikněte na **Aktivační událost** na panelu nástrojů pro kanál a pak klikněte na **Aktivovat**. 

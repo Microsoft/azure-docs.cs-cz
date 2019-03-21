@@ -6,7 +6,7 @@ keywords: ''
 author: curtand
 manager: mtillman
 ms.author: curtand
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a01bd205ad26169ab0a21345a2246eb12dca6645
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 81d09978c3333a5b76c09f8c7dac85998d342f03
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180887"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287226"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudové nasazení ve službě Azure AD
 
@@ -44,11 +44,12 @@ A cyber-attack, if successful, can shut down operations not just for a few hours
 does the article really start here?-->
 Pro většinu organizací závisí zabezpečení podnikových prostředků na integritě privilegovaných účtů, které spravují a řídí systémy IT. Internetoví útočníci se zaměřují na privilegovaný přístup k systémům infrastruktury (třeba Active Directory a Azure Active Directory) získat přístup k citlivým datům vaší organizace. 
 
-Tradiční přístupy, které se soustředí na zabezpečení body vstupu a výstupu sítě jako primárního obvodu zabezpečení jsou míň efektivní z důvodu zvýšení využívání aplikací SaaS a osobní zařízení na Internetu. Přirozenou náhradou obvodu zabezpečení sítě ve složitém moderním podniku se ovládací prvky ověřování a autorizace ve vrstvě identity organizace. 
+Tradiční přístupy, které se soustředí na zabezpečení body vstupu a výstupu sítě jako primárního obvodu zabezpečení jsou míň efektivní z důvodu zvýšení využívání aplikací SaaS a osobní zařízení na Internetu. Přirozenou náhradou obvodu zabezpečení sítě ve složitém moderním podniku se ovládací prvky ověřování a autorizace ve vrstvě identity organizace.
 
 Privilegované účty správců jsou efektivní kontrolu nad tento nový "zabezpečovací obvod." Je velmi důležité pro ochranu privilegovaného přístupu, bez ohledu na to, jestli je prostředí místní, Cloudová nebo hybridní místní a cloudové služby hostované. Ochrana přístupu správců před odhodlanými vyžaduje, abyste se úplný a pečlivý přístup k izolování systémy vaší organizace před riziky. 
 
 Zabezpečení privilegovaného přístupu vyžaduje změny
+
 * Procesy a postupy pro správu, správy znalostní báze
 * Technické komponenty jako obrana hostitelů, ochrana účtů a správu identit
 
@@ -75,7 +76,7 @@ Tento plán framework je navrženo tak, aby maximalizoval využití technologií
 
 ## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>Fáze 1: Kritické položky, které doporučujeme provést hned
 
-![Fáze 1](./media/directory-admin-roles-secure/stage-one.png)
+![Fáze 1 kritické položky, které chcete provést nejdříve](./media/directory-admin-roles-secure/stage-one.png)
 
 Fáze 1 plánu se zaměřuje na důležité úkoly, které jsou rychlé a snadno se implementuje. Doporučujeme, abyste provedli tyto několik položek hned během prvních 24 nebo 48 hodin k zajištění základní úroveň zabezpečení privilegovaného přístupu. Tato fáze se plánuje zabezpečené privilegovaného přístupu zahrnuje následující akce:
 
@@ -116,17 +117,17 @@ Odeberte všechny účty, které už nejsou potřeba v těchto rolích. Potom ka
 
 Ujistěte se, že vám do situace, kdy se může být neúmyslně zablokována správu vašeho tenanta Azure AD z důvodu nemožnost přihlášení nebo aktivace účtu existující konkrétního uživatele jako správce. Například pokud organizace je Federovaná ke zprostředkovateli identity v místním, tohoto zprostředkovatele identity možná není k dispozici, uživatelům se přihlásit s místními. Zmírnit dopad náhodného chybějící přístup pro správu uložením dva nebo více účtů pro nouzový přístup ve vašem tenantovi.
 
-Účty pro nouzový přístup pomáhají organizacím omezit privilegovaný přístup v rámci stávajícího prostředí Azure Active Directory. Tyto účty jsou vysoce privilegovaní a nejsou přiřazeny jednotlivým uživatelům. Účty pro nouzový přístup jsou omezené na nouzové "pohotovostní" scénářích, kdy nejde použít normální účty pro správu. Organizace musí zajistit za účelem řízení a snížení využití nouzový účtu jenom tento čas, pro které je nezbytné. 
+Účty pro nouzový přístup pomáhají organizacím omezit privilegovaný přístup v rámci stávajícího prostředí Azure Active Directory. Tyto účty jsou vysoce privilegovaní a nejsou přiřazeny jednotlivým uživatelům. Účty pro nouzový přístup jsou omezené na nouzové "pohotovostní" scénářích, kdy nejde použít normální účty pro správu. Organizace musí zajistit za účelem řízení a snížení využití nouzový účtu jenom tento čas, pro které je nezbytné.
 
 Posouzení účtů, které jsou přiřazené nebo oprávněné pro roli globálního správce. Pokud jste nenalezli žádný účtů pomocí cloudového *. onmicrosoft.com domény (určený pro nouzový přístup "pohotovostní"), vytvořte je. Další informace najdete v tématu [Správa účtů pro nouzový přístup pro správu ve službě Azure AD](directory-emergency-access.md).
 
-#### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Zapnout ověřování službou Multi-Factor Authentication a všechny ostatní účty správců jiné než federované jednoho uživatele s vysokou úrovní oprávnění registrace 
+#### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Zapnout ověřování službou Multi-Factor Authentication a všechny ostatní účty správců jiné než federované jednoho uživatele s vysokou úrovní oprávnění registrace
 
 Azure Multi-Factor Authentication (MFA) se vyžadují při přihlášení pro všechny jednotlivé uživatele, kteří jsou trvale přiřazené k jedné nebo více rolí správce Azure AD: Globální správce, správce privilegovaných rolí, správce Exchange Online a SharePoint Online správce. Použití v příručce k povolení [Multi-Factor Authentication (MFA) pro vaše účty správců](../authentication/howto-mfa-userstates.md) a ujistěte se, že tito uživatelé zaregistrovali na [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). Další informace najdete v části kroky 2 a 3 průvodce [chránit přístup k datům a službám Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
 ## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>Fáze 2: Zmírnění u nejčastěji používaných technik útoků
 
-![Fáze 2](./media/directory-admin-roles-secure/stage-two.png)
+![Fáze 2 často používané Mitigate útoky](./media/directory-admin-roles-secure/stage-two.png)
 
 Fáze 2 plánu se zaměřuje na snížení rizik souvisejících s nejvíce často používají technik útoku krádeží přihlašovacích údajů a zneužití a je možné implementovat přibližně během 2 – 4 týdnů. Tato fáze se plánuje zabezpečené privilegovaného přístupu zahrnuje následující akce.
 
@@ -144,7 +145,7 @@ S nárůstem přenést your-own-device (BYOD) a práci z domovské zásady a rů
 * Požádejte uživatele pro jejich obchodní odůvodnění přístup pro správu.
 * Odeberte přístup správce pro tyto osoby a služby, které ho nepotřebujete.
 
-#### <a name="identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts"></a>Identifikujte účty Microsoft v rolích pro správu, které je potřeba přepnout na pracovní nebo školní účty 
+#### <a name="identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts"></a>Identifikujte účty Microsoft v rolích pro správu, které je potřeba přepnout na pracovní nebo školní účty
 
 V některých případech počáteční globální správci pro organizaci použít své stávající přihlašovací údaje účtu Microsoft při začali používat Azure AD. Tyto účty Microsoft se nahrazuje samostatné účty založené na cloudu nebo synchronizovaná. 
 
@@ -200,18 +201,17 @@ Pokud váš tenant Azure Active Directory synchronizované s místní služby Ac
 
 #### <a name="complete-an-inventory-of-subscriptions"></a>Proveďte inventarizaci předplatná
 
-Zjistěte, jaká předplatná ve vaší organizaci, které jsou hostiteli aplikace v produkčním prostředí pomocí webu Enterprise portal a na webu Azure portal. 
+Zjistěte, jaká předplatná ve vaší organizaci, které jsou hostiteli aplikace v produkčním prostředí pomocí webu Enterprise portal a na webu Azure portal.
 
 #### <a name="remove-microsoft-accounts-from-admin-roles"></a>Odebrat z role správce účtů Microsoft
 
-Účty Microsoft z jiných aplikací, jako je Xbox Live a aplikace Outlook by neměl používat jako účty správce pro předplatná organizace. Odebrat správce stav ze všech účtů Microsoft a nahraďte služby Active Directory (například chris@contoso.com) pracovní nebo školní účty.
+Účty Microsoft z jiných aplikací, jako je Xbox Live a aplikace Outlook by neměl používat jako účty správce pro předplatná organizace. Odebrat správce stav ze všech účtů Microsoft a nahraďte v Azure Active Directory (například chris@contoso.com) pracovní nebo školní účty.
 
 #### <a name="monitor-azure-activity"></a>Monitorování aktivit v Azure
 
 Protokol aktivit Azure poskytuje historii událostí na úrovni předplatného v Azure. Nabízí informace o který vytvořili, aktualizovat a odstraňovat prostředky a kdy došlo k těmto událostem. Další informace najdete v tématu [Audit a přijímání oznámení o důležitých akcích ve vašem předplatném Azure](../../azure-monitor/platform/quick-audit-notify-action-subscription.md).
 
-
-### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Další kroky pro organizace, správě přístupu k jiným cloudovým aplikacím pomocí služby Azure AD 
+### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Další kroky pro organizace, správě přístupu k jiným cloudovým aplikacím pomocí služby Azure AD
 
 #### <a name="configure-conditional-access-policies"></a>Nakonfigurujte zásady podmíněného přístupu
 
@@ -220,7 +220,7 @@ Příprava zásad podmíněného přístupu pro místní a cloudové aplikace. P
 
 ## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>Fáze 3: Sestavení viditelnost a provést úplná kontrola aktivity správců
 
-![Fáze 3](./media/directory-admin-roles-secure/stage-three.png)
+![Fáze 3 provést kontrola aktivity správců](./media/directory-admin-roles-secure/stage-three.png)
 
 Fáze 3 navazuje na zmírnění rizik v fáze 2 a je určený má implementovat přibližně 1-3 měsíců. Tato fáze se plánuje zabezpečené privilegovaného přístupu zahrnuje následující součásti.
 
@@ -261,7 +261,7 @@ Pokud už používáte Azure AD Privileged Identity Management, upravte časové
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Určení vystavení založené na heslech přihlášení protokoly (Pokud se používá Exchange Online)
 
-V minulosti protokoly předpokládá, že byly vloženy kombinace uživatelského jména a hesla v zařízení, e-mailové účty, telefony a tak dále. Ale nyní s riziky pro kybernetických útoků v cloudu, doporučujeme vám identifikovat každý potenciální uživatele, který, jejichž ohrožení zabezpečení přihlašovacích údajů se může mít katastrofální v organizaci a vyloučit tomu nebudou moct přihlásit k e-mailu pomocí uživatelského jména / heslo implementací požadavky na silné ověřování a podmíněného přístupu. 
+V minulosti protokoly předpokládá, že byly vloženy kombinace uživatelského jména a hesla v zařízení, e-mailové účty, telefony a tak dále. Ale nyní s riziky pro kybernetických útoků v cloudu, doporučujeme vám identifikovat každý potenciální uživatele, který, jejichž ohrožení zabezpečení přihlašovacích údajů se může mít katastrofální v organizaci a vyloučit tomu nebudou moct přihlásit k e-mailu pomocí uživatelského jména / heslo implementací požadavky na silné ověřování a podmíněného přístupu. Můžete blokovat [starší verze ověřování pomocí podmíněného přístupu](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/block-legacy-authentication). Zkontrolujte prosím podrobnosti na [blokování základní ověřování](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) prostřednictvím Exchnage online. 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Proveďte posouzení revize rolí pro role služeb Office 365 (Pokud používáte Office 365)
 
@@ -322,8 +322,7 @@ Agent Cloud App Security SIEM integruje server SIEM umožňuje centralizované s
 
 ## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>Fáze 4: Pokračujte ve vytváření ochrany proaktivnějšího otázkách zabezpečení
 
-
-![Fáze 4](./media/directory-admin-roles-secure/stage-four.png)
+![Fáze 4 přijmout stavu proaktivní zabezpečení](./media/directory-admin-roles-secure/stage-four.png)
 
 Fáze 4 plánu navazuje na viditelnost v fázi 3 a slouží k implementaci za šest měsíců a nad rámec. Dokončení plánu pomůže při vývoji strong privileged access ochrany z potenciální útoky, které jsou aktuálně známé a dostupné ještě dnes. Ohrožení zabezpečení bohužel neustále vyvíjí a shift, proto doporučujeme, že je zabezpečení nahlíželi jako na nepřerušovaný proces, zaměřuje na zvyšování nákladů a snižování úspěšnosti na straně nežádoucích osob, které cílí na vaše prostředí.
 
@@ -368,7 +367,7 @@ Pokud je potřeba určit [přenos vlastnictví předplatného Azure na jiný ú�
 
 ## <a name="break-glass-what-to-do-in-an-emergency"></a>"Pohotovostní": co dělat v případě nouze
 
-![Nouzový](./media/directory-admin-roles-secure/emergency.jpeg)
+![Účty pro nouzový přerušení skla přístup](./media/directory-admin-roles-secure/emergency.jpeg)
 
 1. Oznámí správci klíčů a vedoucí pracovníci pověření ochranou zabezpečení s relevantní informace týkající se incidentu.
 
@@ -390,51 +389,41 @@ Další informace o tom, jak Microsoft Office 365 zpracovává bezpečnostní in
 
 ## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>NEJČASTĚJŠÍ DOTAZY: Běžné otázky, které se týkají zabezpečení privilegovaného přístupu  
 
-
 **Otázka:** Co mám dělat, když mám nebyly dosud implementován součásti žádné zabezpečený přístup?
 
 **Odpověď:** Definovat aspoň dva break pohotovostní účet, přiřaďte vícefaktorové ověřování pro správce privilegovaných účtů a samostatné uživatelské účty z globálního správce účtů.
-
 
 **Otázka:** Po porušení zabezpečení co je nejdůležitější problémy, které je potřeba se zpracovávají jako první?
 
 **Odpověď:** Ujistěte se, že jste vyžadování nejsilnější ověřování pro vysoce vystavený jednotlivce.
 
-
 **Otázka:** Co se stane, když byly deaktivovány naše privilegovaných správců?
 
 **Odpověď:** Vytvořte účet globálního správce, který je pořád aktuální.
-
 
 **Otázka:** Co se stane, pokud existuje jenom globální správce vlevo a že není dostupný? 
 
 **Odpověď:** Použijte jeden z vašich účtů skleněné získat okamžitý oprávnění k přístupu.
 
-
 **Otázka:** Jak můžete chránit admins v rámci mé organizaci?
 
 **Odpověď:** Mají správci vždy proveďte jejich každodenní firmy jako standardní uživatelé "bez oprávnění umožňovala zvlášť".
- 
 
 **Otázka:** Co jsou osvědčené postupy pro vytváření účtů správce ve službě Azure AD?
 
 **Odpověď:** Rezerva privilegovaný přístup pro konkrétní Správce úloh.
 
-
 **Otázka:** Jaké nástroje existovat pro snížení trvalý přístup?
 
 **Odpověď:** Privileged Identity Management (PIM) a Azure AD role správce.
 
-
 **Otázka:** Co je Microsoft pozice na synchronizaci účtů správce Azure AD?
 
-**Odpověď:** Úroveň 0 účtům pro správu (včetně účty, skupiny a další prostředky, které mají přímou nebo nepřímou správní kontrolu nad doménové struktuře Active Directory, doménami nebo řadiči domény a všechny prostředky) se používá pouze pro místní účty služby AD a jsou obvykle nejsou synchronizace pro Azure AD pro cloud. 
-
+**Odpověď:** Úroveň 0 účtům pro správu (včetně účty, skupiny a další prostředky, které mají přímou nebo nepřímou správní kontrolu nad doménové struktuře Active Directory, doménami nebo řadiči domény a všechny prostředky) se používá pouze pro místní účty služby AD a jsou obvykle nejsou synchronizace pro Azure AD pro cloud.
 
 **Otázka:** Jak jsme zachovat správci v přiřazení náhodné správu přístupu na portálu?
 
 **Odpověď:** Použijte neprivilegované účty pro všechny uživatele a většina správce. Začněte tím, že vývoj nároky organizace rozhodnout, který by měl být privilegovaného několik účtů správců. Sledování a pro nově vytvořený administrativní uživatelé.
-
 
 ## <a name="next-steps"></a>Další postup
 
@@ -444,10 +433,8 @@ Další informace o tom, jak Microsoft Office 365 zpracovává bezpečnostní in
 
 * [Pokyny o tom, jak provést vyhodnocení rizik](https://www.microsoft.com/trustcenter/guidance/risk-assessment) – Spravovat požadavky na zabezpečení a dodržování předpisů pro cloudové služby Microsoftu
 
-### <a name="other-ms-online-services"></a>Other MS Online Services 
+### <a name="other-microsoft-online-services"></a>Other Microsoft Online Services
 
 * [Microsoft Intune zabezpečení](https://www.microsoft.com/trustcenter/security/intune-security) – Intune poskytuje správu mobilních zařízení, správy mobilních aplikací a možnosti správy počítačů z cloudu.
 
 * [Zabezpečení Microsoft Dynamics 365](https://www.microsoft.com/trustcenter/security/dynamics365-security) – Dynamics 365 je cloudové řešení Microsoftu, který spojuje řízení vztahů se zákazníky (CRM) a podnikových zdrojů (ERP) možnosti plánování.
-
- 

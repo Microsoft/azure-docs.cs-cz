@@ -14,12 +14,12 @@ ms.topic: reference
 ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0a7dc5152bb1ede5f7311e74815a6d58782d32a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 27e5ae48a8194c05a19e5164ee2cc6be68967a62
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199319"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112751"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>Ochrana osobních údajů uživatelů a Azure AD Connect Health 
 
@@ -62,17 +62,17 @@ Zobrazit [odebrání serveru z Azure AD Connect Health](how-to-connect-health-op
 Také poskytuje možnost zastavit shromažďování dat z Azure AD Connect Health **všechny** registrované služby v tenantovi. Doporučujeme, abyste pečlivě promyslet a všichni globální správci úplné potvrzení před provedením akce. Po zahájení procesu služby Connect Health se zastavit příjem, zpracování a generování sestav žádná data všech služeb. Stávající data ve službě Connect Health se uchovají po dobu více než 30 dnů.
 Pokud chcete zastavit shromažďování dat z konkrétní server, postupujte podle kroků uvedených v odstranění konkrétních serverů. Chcete-li zastavit shromažďování dat tenant-wise, následujícím postupem zastavit shromažďování dat a odstranit všechny služby klienta.
 
-1.  Klikněte na **obecné nastavení** podle konfigurace v hlavním okně. 
-2.  Klikněte na **zastavit shromažďování dat** tlačítko v horní části okna. Další možnosti konfigurace nastavení tenanta se deaktivuje, jakmile se spustí proces.  
+1. Klikněte na **obecné nastavení** podle konfigurace v hlavním okně. 
+2. Klikněte na **zastavit shromažďování dat** tlačítko v horní části okna. Další možnosti konfigurace nastavení tenanta se deaktivuje, jakmile se spustí proces.  
  
- ![Zastavit shromažďování dat](./media/reference-connect-health-user-privacy/gdpr4.png)
+   ![Zastavit shromažďování dat](./media/reference-connect-health-user-privacy/gdpr4.png)
   
-3.  Zkontrolujte seznam připojení služby, které jsou ovlivněny kolekce dat se zastavuje. 
-4.  Zadejte název tenanta přesné povolit **odstranit** tlačítko akce
-5.  Klikněte na **odstranit** k aktivaci odstranění všech služeb. Connect Health se zastavit příjem, zpracování, všechna data odeslána z vašich připojení služeb reporting. Celý proces může trvat až 24 hodin. Všimněte si, že tento krok je nevratná operace. 
-6.  Po dokončení procesu se nezobrazí žádné registrované služby ve službě Connect Health více. 
+3. Zkontrolujte seznam připojení služby, které jsou ovlivněny kolekce dat se zastavuje. 
+4. Zadejte název tenanta přesné povolit **odstranit** tlačítko akce
+5. Klikněte na **odstranit** k aktivaci odstranění všech služeb. Connect Health se zastavit příjem, zpracování, všechna data odeslána z vašich připojení služeb reporting. Celý proces může trvat až 24 hodin. Všimněte si, že tento krok je nevratná operace. 
+6. Po dokončení procesu se nezobrazí žádné registrované služby ve službě Connect Health více. 
 
- ![Po zastavení shromažďování dat](./media/reference-connect-health-user-privacy/gdpr5.png)
+   ![Po zastavení shromažďování dat](./media/reference-connect-health-user-privacy/gdpr5.png)
 
 ## <a name="re-enable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Opětovné povolení shromažďování dat a monitorování v Azure AD Connect Health
 Opětovné povolení monitorování v Azure AD Connect Health pro dříve odstraněné monitorované služby, je nutné odinstalovat a [přeinstalujte agenta stavu](how-to-connect-health-agent-install.md) ve všech serverech.
@@ -85,14 +85,14 @@ Shromažďování dat tenant-Wise lze obnovit v Azure AD Connect Health. Doporu�
 > Po 24 hodinách zakázat akce, bude k dispozici následující kroky.
 > Po povolení shromažďování dat, nebudou zobrazovat žádná starší data shromážděná před prezentovaných přehledů a monitorování dat ve službě Connect Health. 
 
-1.  Klikněte na **obecné nastavení** podle konfigurace v hlavním okně. 
-2.  Klikněte na **Povolit shromažďování dat** tlačítko v horní části okna. 
+1. Klikněte na **obecné nastavení** podle konfigurace v hlavním okně. 
+2. Klikněte na **Povolit shromažďování dat** tlačítko v horní části okna. 
  
- ![Povolení shromažďování dat](./media/reference-connect-health-user-privacy/gdpr6.png)
+   ![Povolení shromažďování dat](./media/reference-connect-health-user-privacy/gdpr6.png)
  
-3.  Zadejte název přesné klienta k aktivaci **povolit** tlačítko.
-4.  Klikněte na **povolit** tlačítko k udělení oprávnění shromažďování dat služby Connect Health. Tato změna uplatní za chvíli. 
-5.  Postupujte podle [procesu instalace](how-to-connect-health-agent-install.md) a znovu nainstalujte agenta na serveru určeného k monitorování a služby, bude k dispozici na portálu.  
+3. Zadejte název přesné klienta k aktivaci **povolit** tlačítko.
+4. Klikněte na **povolit** tlačítko k udělení oprávnění shromažďování dat služby Connect Health. Tato změna uplatní za chvíli. 
+5. Postupujte podle [procesu instalace](how-to-connect-health-agent-install.md) a znovu nainstalujte agenta na serveru určeného k monitorování a služby, bude k dispozici na portálu.  
 
 
 ## <a name="next-steps"></a>Další postup

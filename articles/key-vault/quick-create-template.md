@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/04/2019
 ms.author: jgao
-ms.openlocfilehash: 2cb6e210aa0e232a4ebb60dc44777a55f2c4f7fc
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 4b774e5b0a5c64a9af9a5a54ba264c6226558a24
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57318547"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880017"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí šablony Resource Manageru
 
@@ -67,7 +67,7 @@ K dokončení tohoto článku potřebujete:
     * **ID tenanta:** Funkce šablony automaticky načte ID vašeho tenanta.  Výchozí hodnotu neměňte.
     * **Id uživatele AD**: Zadejte své ID objektu uživatele Azure AD, který jste získali z [požadavky](#prerequisites).
     * **Název tajného kódu**: Zadejte název, ve kterém je uložený ve službě key vault tajný klíč.  Například **adminpassword**
-    * **Tajná hodnota**: Zadejte hodnotu tajného kódu.  Pokud ukládáte heslo, doporučuje se použít vygenerované heslo, které jste vytvořili v [požadavků](#prerequisite).
+    * **Tajná hodnota**: Zadejte hodnotu tajného kódu.  Pokud ukládáte heslo, se doporučuje použít vygenerované heslo, které jste vytvořili v části požadavky.
     * **Souhlasím s podmínkami a ujednáními stavu výše**: Vybrat
 3. Vyberte **Koupit**.
 

@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10346ea0aa292be33f820bd4e92434e2c58a89ab
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1e7a3f80067adb3093bd27e34a45b3afd72b4993
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194304"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286852"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory
 Mnoho služeb Azure Active Directory (Azure AD) vyžadují aktivaci produktů Azure AD a licencování jednotlivých uživatelů nebo skupin (a související členy) pro tento produkt. Uživatelé s licencemi na aktivní budou moci přistupovat a používat licencovaný jenom služby Azure AD.
@@ -47,7 +47,7 @@ Můžete zobrazit vaši dostupný produkty Microsoftu, včetně jednotlivých li
 
     **Licence** se zobrazí stránka.
 
-    ![Licence stránce zobrazující počet zakoupených produktů a přiřazených licencí](media/license-users-groups/license-details-blade.png)
+    ![Stránka licencí, s počtem zakoupených produktů a přiřazených licencí](media/license-users-groups/license-details-blade.png)
     
 3. Vyberte **zakoupených produktů** odkaz zobrazíte **produkty** stránky a zobrazíte **přiřazeno**, **dostupné**, a  **Zanedlouho vyprší platnost** podrobnosti pro jednotlivé edice konkrétního produktu.
 
@@ -76,7 +76,7 @@ Ujistěte se, že kdokoli by bylo potřeba použít licencovanou služby Azure A
 
 4. Vyberte **možnosti přiřazení**, ujistěte se, že máte příslušné licence funkcí zapnutou a pak vyberte **OK**.
 
-    ![Licence možnost stránky zobrazující všechny možnosti, které jsou k dispozici v edici](media/license-users-groups/license-option-blade-assignments.png)
+    ![Stránce možnost s licencí se všemi možnostmi, které jsou k dispozici v edici](media/license-users-groups/license-option-blade-assignments.png)
 
     **Přiřadit licence** stránka se aktualizuje a zobrazí, že je vybraný uživatel a zda jsou nakonfigurovány na přiřazení.
 
@@ -102,7 +102,7 @@ Ujistěte se, že kdokoli by bylo potřeba použít licencovanou služby Azure A
 
 4. Vyberte **možnosti přiřazení**, ujistěte se, že máte příslušné licence funkcí zapnutou a pak vyberte **OK**.
 
-    ![Licence možnost stránky zobrazující všechny možnosti, které jsou k dispozici v edici](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![Stránce možnost s licencí se všemi možnostmi, které jsou k dispozici v edici](media/license-users-groups/license-option-blade-group-assignments.png)
 
     **Přiřadit licence** stránka se aktualizuje a zobrazí, že je vybraný uživatel a zda jsou nakonfigurovány na přiřazení.
 
@@ -112,7 +112,6 @@ Ujistěte se, že kdokoli by bylo potřeba použít licencovanou služby Azure A
 5. Vyberte **Přiřadit**.
 
     Skupinu se přidá do seznamu skupin licencí a všichni členové mají přístup k zahrnutou služby Azure AD.
-
 
 ## <a name="remove-a-license"></a>Odebrání licence
 Můžete odebrat licenci z uživatele nebo skupiny z **licence** stránky.

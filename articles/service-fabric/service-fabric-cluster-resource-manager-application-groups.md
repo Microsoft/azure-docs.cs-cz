@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e4f446ff67408ef390ba817de935c286c5b2a47e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 94ae233f8591c43afa1bb73c3e17964922967d36
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727600"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123024"
 ---
 # <a name="introduction-to-application-groups"></a>Úvod do skupiny aplikací
 Service Fabric Cluster Resource Manageru obvykle spravuje prostředky clusteru rozložení zátěže (reprezentované prostřednictvím [metriky](service-fabric-cluster-resource-manager-metrics.md)) rovnoměrně v celém clusteru. Service Fabric spravuje kapacity uzlů v clusteru a clusteru jako celek prostřednictvím [kapacity](service-fabric-cluster-resource-manager-cluster-description.md). Metriky a kapacitu fungují velmi vhodné pro mnoho úloh, ale vzorce, které se hojně používají různé instance aplikace Service Fabric v některých případech umožňuje přinést si další požadavky. Například můžete chtít:
@@ -36,6 +36,7 @@ Nejjednodušší případ použití pro kapacity aplikace při instance aplikace
 Instance aplikace a nemusíte maximální počet uzlů, které jsou definované na následujícím obrázku:
 
 <center>
+
 ![Instance aplikace definuje maximální počet uzlů][Image1]
 </center>
 
@@ -117,6 +118,7 @@ Kombinování **MinimumNodes** a **NodeReservationCapacity** zaručuje rezervace
 Podívejme se na příklad rezervaci kapacity:
 
 <center>
+
 ![Definování záložní kapacitu instancí aplikace][Image2]
 </center>
 

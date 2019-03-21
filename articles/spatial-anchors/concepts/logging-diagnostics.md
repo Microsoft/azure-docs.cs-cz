@@ -8,27 +8,27 @@ ms.author: ramonarguelles
 ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d9377e2b5b66a7d426373a8a85e4880dafeaeee6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 134023c0884ce3a402b99806f1bf19dcb59ecc32
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753001"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57882824"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Protokolování a Diagnostika v Azure prostorových kotvy
 
-Azure prostorových kotvy poskytuje mechanismus standardní protokolování užitečné pro vývoj aplikací. Kromě toho je režim protokolování diagnostiky užitečné, když jsou požadovány pro ladění i další informace. Protokolování diagnostiky zahrnuje ukládání imagí prostředí.
+Azure prostorových kotvy poskytuje mechanismus standardní protokolování, které jsou užitečné pro vývoj aplikací. Režim protokolování diagnostiky prostorových kotvy je užitečné, když budete potřebovat další informace pro ladění. Protokolování diagnostiky ukládá obrázky prostředí.
 
-## <a name="standard-logging-in-azure-spatial-anchors"></a>Standardní protokolování v Azure prostorových kotvy
-Rozhraní API Azure prostorových kotvy poskytuje mechanismus pro protokolování aplikací mohou přihlásit k odběru pro příjem protokolů užitečné pro vývoj aplikací a ladění. Standardní protokolování rozhraní API není zachována pořizovat snímky prostředí tak, aby disk zařízení. Sada SDK poskytuje tyto protokoly jako zpětná volání události. Je to na můžete integrovat tyto protokoly do mechanismu protokolování aplikace.
+## <a name="standard-logging"></a>Standardní protokolování
+V rozhraní API prostorových kotev vztahů k odběru mechanismus na protokolování získat užitečné protokoly pro vývoj aplikací a ladění. Standardní protokolování rozhraní API neukládejte pořizovat snímky prostředí na disk zařízení. Sada SDK poskytuje tyto protokoly jako zpětná volání události. Je to na můžete integrovat tyto protokoly do mechanismu protokolování aplikace.
 
-### <a name="how-to-configure-the-log-messages"></a>Jak nakonfigurovat zprávy protokolu
-Existují dvě zpětná volání zajímavé pro uživatele. V následující ukázce uvidíte postup konfigurace relace.
+### <a name="configuration-of-log-messages"></a>Konfigurace protokolu zpráv
+Existují dvě zpětná volání zajímavé pro uživatele. Následující příklad ukazuje postup při konfiguraci relace.
 
 ```csharp
     cloudSpatialAnchorSession = new CloudSpatialAnchorSession();
     . . .
-    // setup the log level for the runtime session
+    // set up the log level for the runtime session
     cloudSpatialAnchorSession.LogLevel = SessionLogLevel.Information;
 
     // configure the callback for the debug log
@@ -38,25 +38,27 @@ Existují dvě zpětná volání zajímavé pro uživatele. V následující uk�
     cloudSpatialAnchorSession.Error += CloudSpatialAnchorSession_Error;
 ```
 
-### <a name="events--properties"></a>Akce a vlastnosti
+### <a name="events-and-properties"></a>Vlastnosti a události
 
-Zpětná volání událostí ke zpracování chyby z relace a protokolování k dispozici.
+Tato zpětná volání události jsou k dispozici pro zpracování chyb z relace a protokolování:
 
 - [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): Určuje úroveň podrobností pro události, které mají přijímat z modulu runtime.
-- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): Tato událost zpětného volání obsahuje standardní ladění protokolu událostí.
-- [Chyba](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): Tato událost zpětného volání obsahuje události protokolu uznán chyby modulu runtime.
+- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): Poskytuje standardní ladění protokolu událostí.
+- [Chyba](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): Poskytuje události protokolu, které modul runtime bere v úvahu k dojít k chybám.
 
-## <a name="diagnostics-logging-in-azure-spatial-anchors"></a>Diagnostika protokolování v Azure prostorových kotvy
+## <a name="diagnostics-logging"></a>Protokolování diagnostiky
 
-Kromě standardní režim operaci pro protokolování, které bylo uvedeno výše prostorová kotvy Azure má také diagnostickém režimu, který vývojáři budou moct zvolit. Diagnostika zachytí Image prostředí a protokoly na disk. Tento režim je užitečný pro ladění určité druhy problémů, jako je, když nejste schopni předvídatelně vyhledejte ukotvení. Povolte pouze Diagnostika protokolování pro reprodukci konkrétního problému a poté ho zakážete. Nelze spustit vaše aplikace obvykle s povolenou diagnostikou.
+Kromě standardní režim operaci pro protokolování prostorových kotvy má také diagnostickém režimu. Režim Diagnostika zachytí Image prostředí a protokoly na disk. V tomto režimu můžete použít k ladění určité druhy problémů, jako je selhání předvídatelně najít ukotvení. Povolte diagnostiku protokolování pouze pro reprodukci konkrétního problému. Potom jej vypněte. Není povolte diagnostiku, obvykle pomocí vašich aplikací.
 
-V průběhu podporu interakce s Microsoftem zástupce společnosti Microsoft požádat, pokud jste ochotní odeslání diagnostiky sady Microsoftu o pomoc. V takovém případě můžete rozhodnout k povolení diagnostiky, reprodukujte problém a odesílání diagnostiky sady Microsoftu o pomoc. Diagnostické protokoly se odeslaly do společnosti Microsoft bez předchozího potvrzení zástupcem společnosti Microsoft, půjdou nezodpovězené.
+V průběhu podporu interakce s Microsoftem zástupce společnosti Microsoft požádat, pokud jste ochotní odeslání diagnostiky sady pro další zkoumání. V takovém případě můžete rozhodnout k povolení diagnostiky a reprodukujte problém, můžete odeslat diagnostické sady. 
 
-Následující fragmenty kódu ukazují, jak povolit režim Diagnostika a také jak můžete odeslat diagnostické protokoly do Microsoftu.
+Pokud odešlete diagnostický protokol společnosti Microsoft bez předchozího potvrzení od zástupce společnosti Microsoft, přejdete nezodpovězené odeslání.
 
-### <a name="enabling-diagnostics-logging"></a>Povolení diagnostického protokolování
+Následující části vysvětlují, jak povolit režim Diagnostika a také jak odeslat diagnostické protokoly do Microsoftu.
 
-Relaci je povolen pro protokolování diagnostiky, budou všechny operace v relaci mít odpovídající Diagnostika protokolování v místním systému souborů. Protokolování zahrnuje ukládání imagí prostředí na disk.
+### <a name="enable-diagnostics-logging"></a>Povolení diagnostického protokolování
+
+Když povolíte relace pro diagnostiku protokolování, všechny operace v relaci mít odpovídající Diagnostika protokolování v místním systému souborů. Během protokolování, bitové kopie prostředí se uloží na disk.
 
 ```csharp
 private void ConfigureSession()
@@ -64,15 +66,15 @@ private void ConfigureSession()
     cloudSpatialAnchorSession = new CloudSpatialAnchorSession();
     . . .
 
-    // setup the log level for the runtime session
+    // set up the log level for the runtime session
     cloudSpatialAnchorSession.LogLevel = SessionLogLevel.Information;
 
     // configure the callbacks for logging and errors
     cloudSpatialAnchorSession.OnLogDebug += CloudSpatialAnchorSession_OnLogDebug;
     cloudSpatialAnchorSession.Error += CloudSpatialAnchorSession_Error;
 
-    // Opt-in to diagnostics logging of environment images.
-    // If this is enabled, the diagnostics bundle will include images of the environment captured by the session
+    // opt in to diagnostics logging of environment images
+    // if this is enabled, the diagnostics bundle includes images of the environment captured by the session
     cloudSpatialAnchorSession.Diagnostics.ImagesEnabled = true;
 
     // set the level of detail to be collected in the diagnostics log by the session
@@ -84,15 +86,15 @@ private void ConfigureSession()
 }
 ```
 
-### <a name="submitting-the-diagnostic-bundle"></a>Odesílání diagnostiky sady prostředků
+### <a name="submit-the-diagnostics-bundle"></a>Odeslání sady diagnostiky
 
-Následující fragment kódu ukazuje, jak odeslat diagnostiky sady pro Microsoft. Poznámka: Tato obsahuje Image prostředí nezachytává relace po povolení diagnostiky. Diagnostika sady odeslána společnosti Microsoft bez předchozího potvrzení zástupcem společnosti Microsoft navíc půjdou nezodpovězené.
+Následující fragment kódu ukazuje, jak odeslat diagnostiky sady pro Microsoft. Tato sada bude obsahovat obrázky prostředí, které jsou zachyceny relace po povolení diagnostiky. 
 
 ```csharp
 // method to handle the diagnostics bundle submission
 private async Task CreateAndSubmitBundle()
 {
-    // create the diagnostics bundle manifest  to collect the session information
+    // create the diagnostics bundle manifest to collect the session information
     string path = await cloudSpatialAnchorSession
                               .Diagnostics
                               .CreateManifestAsync("Description of the issue");
@@ -102,9 +104,9 @@ private async Task CreateAndSubmitBundle()
 }
 ```
 
-### <a name="anatomy-of-the-diagnostics-bundle"></a>Anatomie balíčku diagnostiky
-Tyto informace mohou být přítomny v sadě diagnostiky:
+### <a name="parts-of-a-diagnostics-bundle"></a>Součástí sady diagnostiky
+Diagnostika sady prostředků může obsahovat následující informace:
 
-- Klíčový snímek Image - bitové kopie prostředí zaznamenána během relace, zatímco byla povolená Diagnostika.
-- Protokoly – protokol událostí zaznamenaných tímto modulem.
-- Metadata relace – metadata, která identifikuje relaci.
+- **Klíčový snímek imagí**: Bitové kopie prostředí zaznamenána během relace, zatímco byla povolená Diagnostika.
+- **Protokoly**: Protokol událostí zaznamenaných tímto modulem.
+- **Relace metadat**: Metadata, která identifikuje relaci.

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 099576b1a4c5c28aab7672aaeb9274bc0beb96bf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 037f0ff64b114ce9341702564147825099695aa0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842318"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105637"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Nastavit procesový server v Azure pro navrácení služeb po obnovení
 
@@ -33,7 +33,7 @@ Další informace o [opětovného nastavování ochrany](vmware-azure-reprotect.
 3. V **přidat procesový server** stránku a vybrat, zda chcete nasadit procesový server v Azure.
 4. Zadejte nastavení Azure, včetně předplatného, které použijete pro převzetí služeb při selhání, skupinu prostředků, oblast Azure používá pro převzetí služeb při selhání a virtuální síť, ve kterém jsou umístěné virtuální počítače Azure. Pokud jste použili více sítí Azure, je třeba procesový server v každé z nich.
 
-  ![Přidat položku Galerie procesového serveru](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
+   ![Přidat položku Galerie procesového serveru](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
 
 4. V **název serveru**, **uživatelské jméno**, a **heslo**, zadejte název k procesového serveru a přihlašovací údaje, které se dají přiřadit oprávnění správce na serveru.
 5. Zadejte účet úložiště pro disky virtuálních počítačů serveru, podsíť, ve kterém bude umístěn na procesovém serveru virtuálního počítače a IP adresu serveru, která bude přiřazena při spuštění virtuálního počítače.

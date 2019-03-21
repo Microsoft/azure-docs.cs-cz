@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření kanálu CI/CD pro jazyk Java pomocí projektů Azure DevOps'
+title: 'Rychlý start: Vytvoření kanálu CI/CD pro jazyk Java s projekty Azure DevOps'
 description: DevOps Projects umožňuje snadno začít používat Azure. Pomůže vám v několika rychlých krocích spustit aplikaci v libovolné službě Azure.
 ms.prod: devops
 ms.technology: devops-cicd
@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 4f3f82f329e3ac8774978f6116629a4928c142ad
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 38be92a006ae6dbb7a550d2d91d886df820fb883
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261322"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093561"
 ---
 # <a name="create-a-cicd-pipeline-for-java-with-azure-devops-projects"></a>Vytvoření kanálu CI/CD pro jazyk Java s projekty Azure DevOps
 
@@ -30,7 +30,7 @@ Projekty Azure DevOps představuje zjednodušené prostředí, která vytváří
 
 Pokud nemáte předplatné Azure, můžete jej získat zdarma prostřednictvím [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlásit se na Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
   Projekty DevOps vytvoří kanál CI/CD v kanálech Azure. Můžete vytvořit novou organizaci Azure DevOps nebo použít existující organizace. Prostředky Azure DevOps Projects také vytvoří v rámci předplatného Azure podle vašeho výběru.
 
@@ -65,7 +65,7 @@ Ukázka v Javě zahrnuje výběr několika architektur aplikace.
 
     ![Zobrazení řídicího panelu](_img/azure-devops-project-java/dashboardnopreview.png) 
     
- Projekty DevOps automaticky nakonfiguruje položky konfigurace sestavení a vydaná verze triggeru.  Teď jste připraveni při práci na aplikaci v Javě spolupracovat s týmem s využitím procesu CI/CD, který automaticky nasazuje nejnovější práci na web.
+   Projekty DevOps automaticky nakonfiguruje položky konfigurace sestavení a vydaná verze triggeru.  Teď jste připraveni při práci na aplikaci v Javě spolupracovat s týmem s využitím procesu CI/CD, který automaticky nasazuje nejnovější práci na web.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Potvrzení změn kódu a spuštění CI/CD
 

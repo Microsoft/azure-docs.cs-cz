@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
-ms.openlocfilehash: 599372bccc7465bfea0387dedd8dfd63b8a61060
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4755eeda6a254389f0e0fbceec602fef718a9c45
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554939"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100168"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurace aplikační brány s koncovým bodem interní služby load balancer (ILB)
 
@@ -42,14 +42,14 @@ U Azure ke komunikaci mezi prostředky, že vytvoříte potřebuje virtuální s
    - 10.0.0.0/16* - pro adresní prostor virtuální sítě.
    - *myBackendSubnet* – tuto hodnotu zadejte jako název podsítě.
    - *10.0.0.0/24* – tuto hodnotu zadejte jako adresní prostor podsítě.  
-   ![private-frontendip-1](.\media\configure-application-gateway-with-private-frontend-ip\private-frontendip-1.png)
+     ![private-frontendip-1](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-1.png)
 6. Kliknutím na **OK** vytvořte virtuální síť a podsíť.
 7. Vyberte konfigurace IP front-endu jako privátní a ve výchozím nastavení, je dynamické přiřazení IP adresy. První dostupnou adresu zvolený podsítě se přiřadí jako IP adresa front-endu.
 8. Pokud chcete vybrat privátní IP adresa z rozsahu adres podsítě (statického přidělování), klikněte na políčko **zvolte konkrétní privátní IP adresu** a zadejte IP adresu.
    > [!NOTE]
    > Po přidělení IP adres jako typu (statická nebo dynamická) není možné později změnit.
 9. Vyberte konfiguraci naslouchacího procesu pro protokol a port, konfiguraci WAF (v případě potřeby) a klikněte na tlačítko OK.
-    ![private-frontendip-2](.\media\configure-application-gateway-with-private-frontend-ip\private-frontendip-2.png)
+    ![private-frontendip-2](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-2.png)
 10. Zkontrolujte nastavení na stránce Souhrn a pak klikněte na tlačítko **OK** k vytvoření síťových prostředků a aplikační brány. Může trvat několik minut, než pro službu application gateway, chcete-li vytvořit, počkejte na úspěšné dokončení nasazení přejde k další části.
 
 ## <a name="add-backend-pool"></a>Přidat back-endový fond
@@ -78,7 +78,7 @@ Back-endového fondu se používá k směrovat požadavky do back-end serverů, 
 ### <a name="install-iis"></a>Instalace služby IIS
 
 1. Otevřete interaktivní prostředí a zkontrolujte, že je nastaveno na **PowerShell**.
-    ![private-frontendip-3](.\media\configure-application-gateway-with-private-frontend-ip\private-frontendip-3.png)
+    ![private-frontendip-3](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
 2. Spuštěním následujícího příkazu nainstalujte službu IIS na virtuální počítač:
 
    ```azurepowershell
@@ -107,13 +107,13 @@ Back-endového fondu se používá k směrovat požadavky do back-end serverů, 
 1. Click **All resources**, and then click **myAppGateway**.
 2. Click **Backend pools**. A default pool was automatically created with the application gateway. Click **appGatewayBackendPool**.
 3. Click **Add target** to add each virtual machine that you created to the backend pool.
-   ![private-frontendip-4](.\media\configure-application-gateway-with-private-frontend-ip\private-frontendip-4.png)
+   ![private-frontendip-4](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
 4. Click **Save.**
 
 ## Test the application gateway
 
 1. Check your frontend IP that got assigned by clicking the **Frontend IP Configurations** blade in the portal.
-    ![private-frontendip-5](.\media\configure-application-gateway-with-private-frontend-ip\private-frontendip-5.png)
+    ![private-frontendip-5](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
 2. Copy the private IP address, and then paste it into the address bar of your browser of a VM in the same VNet or on-premises which has connectivity to this VNet and try to access the Application Gateway.
 
 ## Next steps

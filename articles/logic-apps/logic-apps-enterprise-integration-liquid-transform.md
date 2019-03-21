@@ -5,23 +5,22 @@ services: logic-apps
 ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-manager: jeconnoc
 ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: d607c75bc451774e6bf269eb658236d93a85021f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 5472a8ce2670a34174d6d39f0d90faca8a7002ad
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854373"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58292882"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Proveďte pokročilé transformacích JSON pomocí Liquid šablon v Azure Logic Apps
 
-Základní transformacích JSON ve svých aplikacích logiky s nativní datové operace akce můžete provádět například **Compose** nebo **Parsovat JSON**. K provádění pokročilých transformací JSON, můžete vytvořit šablony nebo aplikace mapy s [Liquid](https://shopify.github.io/liquid/), což je jazyk open source šablony pro flexibilní webové aplikace. Liquid šablony umožňují definovat, jak transformovat výstup ve formátu JSON a podporuje složitější transformace, JSON, jako je počet iterací, řízení toků, proměnné a tak dále. 
+Základní transformacích JSON ve svých aplikacích logiky s nativní datové operace akce můžete provádět například **Compose** nebo **Parsovat JSON**. K provádění pokročilých transformací JSON, můžete vytvořit šablony nebo aplikace mapy s [Liquid](https://shopify.github.io/liquid/), což je jazyk open source šablony pro flexibilní webové aplikace. Liquid šablony definuje, jak transformovat výstup ve formátu JSON a podporuje složitější transformace JSON, jako je například iterací, ovládací prvek toků, proměnné a tak dále. 
 
-Tedy před provedením Liquid transformace ve vaší aplikaci logiky, nejprve definujete ve formátu JSON pro mapování JSON s Liquid šablony a úložiště, které se mapují v účtu integrace. V tomto článku se dozvíte, jak vytvořit a použít tuto šablonu Liquid nebo mapy. 
+Před provedením Liquid transformace ve vaší aplikaci logiky, je nutné definovat ve formátu JSON na JSON mapování Liquid šablony a úložiště, které se mapují v účtu integrace. V tomto článku se dozvíte, jak vytvořit a použít tuto šablonu Liquid nebo mapy. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,8 +34,10 @@ Tedy před provedením Liquid transformace ve vaší aplikaci logiky, nejprve de
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Vytvořit šablonu Liquid nebo mapu účtu integrace
 
-1. V tomto příkladu vytvořte Ukázková šablona Liquid popsané v tomto kroku.
-Pokud chcete použít v šabloně Liquid všechny filtry, ujistěte se, že se že tyto filtry začínat velká písmena. Další informace o [kapaliny filtruje](https://shopify.github.io/liquid/basics/introduction/#filters), kteří používají [DotLiquid](https://dotliquidmarkup.org/) a C# zásady vytváření názvů.
+1. V tomto příkladu vytvořte Ukázková šablona Liquid popsané v tomto kroku. V šabloně Liquid. můžete použít [kapaliny filtruje](https://shopify.github.io/liquid/basics/introduction/#filters), kteří používají [DotLiquid](https://dotliquidmarkup.org/) a C# zásady vytváření názvů. 
+
+   > [!NOTE]
+   > Ujistěte se, že filtr názvů použijte *malých a velkých písmen věty* ve vaší šabloně. V opačném případě nebude fungovat filtry.
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -82,7 +83,8 @@ Pokud chcete použít v šabloně Liquid všechny filtry, ujistěte se, že se �
 
 2. V návrháři aplikace logiky, přidejte [triggeru požadavku](../connectors/connectors-native-reqres.md#use-the-http-request-trigger) do aplikace logiky.
 
-3. Pod triggerem zvolte **nový krok**. Do vyhledávacího pole zadejte jako filtr "kapaliny" a vyberte tuto akci: **Převést JSON na JSON - kapaliny**
+3. Pod triggerem zvolte **nový krok**. 
+   Do vyhledávacího pole zadejte jako filtr "kapaliny" a vyberte tuto akci: **Převést JSON na JSON - kapaliny**
 
    ![Vyhledejte a vyberte akci Liquid.](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
@@ -101,7 +103,7 @@ Pokud chcete použít v šabloně Liquid všechny filtry, ujistěte se, že se �
 
    2. Z **vyberte účtu pro integraci** seznamu, vyberte svůj účet integrace a zvolte **Uložit**.
 
-     ![Odkaz na účet integrace aplikace logiky](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
+      ![Odkaz na účet integrace aplikace logiky](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
 
 ## <a name="test-your-logic-app"></a>Otestujte aplikaci logiky
 

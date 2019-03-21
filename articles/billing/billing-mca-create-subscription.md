@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 686543a322d1c87760060a1f4db1b26abca75cb8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 105b8481486c088a05e3acb95081d3ee55b55f52
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539407"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897095"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>Vytvořte další předplatné Azure pro smlouvy Microsoft zákazníka
 
@@ -82,7 +82,7 @@ Přidáte uživatele jako tvůrce předplatného Azure na oddíl faktury jim dá
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Další postup
 

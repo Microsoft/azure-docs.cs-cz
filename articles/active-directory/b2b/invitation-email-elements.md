@@ -12,18 +12,18 @@ manager: daveba
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43fa8148fff1389982d967b2e69f4a9425841c91
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7015abcfe3c53e2180d617bd2c78ecd44c42af7a
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014912"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295619"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Prvky B2B spolupráce e-mailová pozvánka – Azure Active Directory
 
 E-mailových pozvánek jsou zásadní pro partnery na palubě jako uživatele spolupráce B2B Azure AD. Můžete využít ke zvýšení důvěryhodnosti příjemce. můžete přidat legitimitu a vyhovuje výběr z reálného prostředí k e-mailu, abyste měli jistotu, příjemce, jako **Začínáme** tlačítko k přijetí pozvánky. Tento vztah důvěryhodnosti je, že klíč znamená, že omezíte třecí plochy sdílení. A budete chtít také zajistit e-mailu vypadají skvěle!
 
-![E-mailová pozvánka Azure AD s B2b](media/invitation-email-elements/invitation-email.png)
+![Snímek obrazovky s e-mailová pozvánka B2B](media/invitation-email-elements/invitation-email.png)
 
 ## <a name="explaining-the-email"></a>S vysvětlením, e-mailu
 Podívejme se na několik elementů e-mailu, abyste věděli, jak nejlépe používat jejich funkce.
@@ -51,12 +51,12 @@ Odesílatel pozvánky pro zobrazovaný název je součástí e-mailu. A kromě t
 
 Pokud ještě jste nenastavili profilový obrázek, zobrazí se ikona s iniciály odesílatel pozvánky místo na obrázku:
 
-  ![Zobrazení iniciály odesílatel pozvánky.](media/invitation-email-elements/inviters-initials.png)
+  ![Snímek obrazovky s e-mailové pozvánce s odesílatel pozvánky iniciály zobrazí](media/invitation-email-elements/inviters-initials.png)
 
 ### <a name="body"></a>Tělo
 Text obsahuje zprávu, že odesílatel pozvánky kontextovému při [pozvání uživatelů typu Host do adresáře, skupiny nebo aplikace](add-users-administrator.md) nebo [pomocí e-mailové pozvánce API](customize-invitation-api.md). Takže nezpracovává značky HTML z bezpečnostních důvodů je textová oblast.
 
-  ![Přehled o e-mailu](media/invitation-email-elements/invitation-email-body.png)
+  ![Snímek obrazovky zobrazující tělo e-mailová pozvánka](media/invitation-email-elements/invitation-email-body.png)
 
 ### <a name="footer-section"></a>Zápatí
 Zápatí obsahuje značky společnosti Microsoft a umožní příjemce vědět, pokud byla odeslána e-mailu byla odeslaná z nemonitorovaného aliasu. 
@@ -65,12 +65,12 @@ Zvláštní případy:
 
 - Odesílající uživatel nemá e-mailovou adresu ve zvoucí tenantů
 
-  ![Obrázek odesílatele pozvánky nemá e-mailovou adresu ve zvoucí tenantů](media/invitation-email-elements/inviter-no-email.png)
+  ![Snímek obrazovky, když odesílající uživatel nemá e-mailu ve zvoucí tenantů](media/invitation-email-elements/inviter-no-email.png)
 
 
 - Příjemce nemusí uplatnění pozvání
 
-  ![Když příjemce nemusí uplatnění pozvánky](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
+  ![Snímek obrazovky, když příjemce nemusí uplatnění pozvánky](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
 
 ## <a name="how-the-language-is-determined"></a>Jak se určuje jazyk
 Jazyk, budou zobrazovat uživateli guest v e-mailová pozvánka se určuje podle následující nastavení. Tato nastavení jsou uvedeny v pořadí podle priority. Pokud nastavení není nakonfigurované, určuje další nastavení v seznamu jazyk. 

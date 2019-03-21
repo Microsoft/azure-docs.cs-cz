@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
-ms.openlocfilehash: d75048cb53dd1a5ebaba6322228af6137d0f3b96
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3bb88f2f9546ec25433061a0704bd144730bd34c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456172"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894627"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak zvolit algoritmy pro Azure Machine Learning Studio
 
@@ -45,7 +45,7 @@ Tato doporučení jsou kompilované zpětnou vazbu a tipy od mnoha odborníci p�
 Žádná z nich jsou někdy dokonale vyhovovat. Jejich smyslem je bude pravidlo thumb doporučení, tak Nestarejte se o to je přesné.
 Několik odborníci přes data, kterou jsme už mluvili s uvedené, které pouze že způsob, jak najít ten nejlepší algoritmus je vyzkoušet všechno, co je.
 
-Tady je příklad z [galerii Azure AI](http://gallery.azure.ai/) experimentu, který se pokusí několik algoritmů na stejná data a porovnává výsledky: [Porovnejte roc třídění: Písmeno rozpoznávání](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92).
+Tady je příklad z [galerii Azure AI](https://gallery.azure.ai/) experimentu, který se pokusí několik algoritmů na stejná data a porovnává výsledky: [Porovnejte roc třídění: Písmeno rozpoznávání](https://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92).
 
 > [!TIP]
 > Stáhnout přehled snadno pochopitelné infografika o machine learning základní informace o další informace o Oblíbené algoritmy, které jsou použity jako odpovědi na běžné dotazy machine learning, najdete v článku [základy s příklady algoritmů služby Machine learning](basics-infographic-with-algorithm-examples.md).
@@ -180,7 +180,7 @@ Rozhodnutí doménovými strukturami ([regrese](/azure/machine-learning/studio-m
 
 Protože funkce místo dají rozdělit na libovolně malou oblasti, je snadné imagine dělení dostatečně jemně mít jeden datový bod v jedné oblasti. Toto je příkladem overfitting extreme. Pokud chcete předejít, jsou velké sady stromů zkonstruován pomocí speciální matematické péče zajistit, že nejsou korelační stromy. Průměr tento "rozhodovací les" je strom, který zabraňuje overfitting. Rozhodnutí doménové struktury mohou pomocí velké množství paměti. Rozhodovací Džungle jsou hodnotu typu variant, která využívá méně paměti za cenu mírně delší dobu školení.
 
-Posílený rozhodovací stromy vyhnout overfitting tím, že omezíte počet opakování můžete rozdělit a jak datové body jsou povolené v jednotlivých oblastech. Algoritmus vytvoří posloupnost stromové struktury, z nichž každý se učí kompenzovat chyby zanechaný stromové struktuře před. Výsledkem je velmi přesné student, který obvykle použít velké množství paměti. Pro plnou technickou popis, projděte si [původní dokument společnosti Friedman](http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf).
+Posílený rozhodovací stromy vyhnout overfitting tím, že omezíte počet opakování můžete rozdělit a jak datové body jsou povolené v jednotlivých oblastech. Algoritmus vytvoří posloupnost stromové struktury, z nichž každý se učí kompenzovat chyby zanechaný stromové struktuře před. Výsledkem je velmi přesné student, který obvykle použít velké množství paměti. Pro plnou technickou popis, projděte si [původní dokument společnosti Friedman](https://www-stat.stanford.edu/~jhf/ftp/trebst.pdf).
 
 [Rychlé doménové struktury quantile regrese](/azure/machine-learning/studio-module-reference/fast-forest-quantile-regression) varianta rozhodovacích stromů pro zvláštní případ, ve které chcete vědět, nejen typické (střední) hodnotu data v rámci oblasti, ale také ve formě quantiles jeho distribuci.
 
@@ -215,7 +215,7 @@ Pomocí dokonalá rozšíření nelineárních SVMs [jedna třída SVM](/azure/m
 Bayesova metody mají žádoucí, vysoce kvalitní: vyhnou overfitting. Je to tím, že některé předpoklady předem o pravděpodobně rozdělení odpovědi. Jiné byproduct tohoto přístupu je, že mají velmi malý počet parametrů. Azure Machine Learning Studio nabízí Bayesova algoritmy pro obě klasifikaci ([Two-class Bayes point machine](/azure/machine-learning/studio-module-reference/two-class-bayes-point-machine)) a regrese ([lineární regrese Bayesova](/azure/machine-learning/studio-module-reference/bayesian-linear-regression)).
 Všimněte si, že tyto předpokládat, že můžete data rozdělit nebo přizpůsobit přímou čárou.
 
-Na historické Poznámka Bayes' point počítače byly vyvinuty v Microsoft Research. Mají některé výjimečně krásné teoretické práce za nimi stojí. Zúčastněné student směřuje na [původní článek v JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) a [přehledné blogu podle Chris Bishop](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx).
+Na historické Poznámka Bayes' point počítače byly vyvinuty v Microsoft Research. Mají některé výjimečně krásné teoretické práce za nimi stojí. Zúčastněné student směřuje na [původní článek v JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) a [přehledné blogu podle Chris Bishop](https://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx).
 
 ### <a name="specialized-algorithms"></a>Specializované algoritmy
 Pokud máte velmi specifické cílem může být jednoduché. V rámci kolekce Azure Machine Learning Studio existují algoritmy, které se specializují na:

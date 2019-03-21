@@ -6,18 +6,21 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/4/2019
+ms.date: 03/19/2019
 ms.author: sogup
-ms.openlocfilehash: 0ab626bffa3520af0ea23314cbaed118d66e280f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0bc1ab0586d1a591464711fb0652f81fb082e6c3
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008262"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199240"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>Přesun trezoru služby Recovery Services napříč předplatnými Azure a skupiny prostředků (omezené veřejné verzi Preview)
 
 Tento článek vysvětluje, jak přesunout trezor služby Recovery Services, který je nakonfigurovaný pro službu Azure Backup napříč předplatnými Azure nebo do jiné skupiny prostředků ve stejném předplatném. Na webu Azure portal nebo prostředí PowerShell můžete použít pro přesun trezoru služby Recovery Services.
+
+> [!NOTE]
+> Pokud chcete přesunout do jiné skupiny prostředků trezoru služby Recovery Services a její přidružené prostředky, měli byste nejprve [zaregistrovat předplatné zdroj](#register-the-source-subscription-to-move-your-recovery-services-vault).
 
 ## <a name="prerequisites-for-moving-a-vault"></a>Předpoklady pro přesun trezoru
 
@@ -38,9 +41,7 @@ Tento článek vysvětluje, jak přesunout trezor služby Recovery Services, kte
 
 > [!NOTE]
 >
-Konfigurovány k použití s trezory služby Recovery Services **Azure Site Recovery** nelze přesunout ještě. Pokud jste nakonfigurovali všechny virtuální počítače (Azure IaaS, technologie Hyper-V, VMware) nebo fyzické počítače pro použití pro zotavení po havárii **Azure Site Recovery**, operace přesunu se zablokuje. Funkci přesunu prostředků pro službu Site Recovery není k dispozici.
->
->
+> Konfigurovány k použití s trezory služby Recovery Services **Azure Site Recovery** nelze přesunout ještě. Pokud jste nakonfigurovali všechny virtuální počítače (Azure IaaS, technologie Hyper-V, VMware) nebo fyzické počítače pro použití pro zotavení po havárii **Azure Site Recovery**, operace přesunu se zablokuje. Funkci přesunu prostředků pro službu Site Recovery není k dispozici.
 
 ## <a name="register-the-source-subscription-to-move-your-recovery-services-vault"></a>Zaregistrovat předplatné zdroje pro přesun trezoru služby Recovery Services
 
@@ -48,26 +49,26 @@ K registraci do zdrojového předplatného **přesunout** trezoru služby Recove
 
 1. Přihlášení k účtu Azure
 
-  ```
-  Connect-AzureRmAccount
-  ```
+   ```
+   Connect-AzureRmAccount
+   ```
 
-2.  Vyberte předplatné, pro kterou chcete zaregistrovat
+2. Vyberte předplatné, pro kterou chcete zaregistrovat
 
-    ```
-    Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-    ```
-3.  Zaregistrujte toto předplatné
+   ```
+   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+   ```
+3. Zaregistrujte toto předplatné
 
-  ```
-  Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
-  ```
+   ```
+   Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
+   ```
 
 4. Spusťte příkaz
 
-  ```
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-  ```
+   ```
+   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+   ```
 
 Počkejte 30 minut, než předplatného na seznam povolených předtím, než začnete s přesunutím pomocí webu Azure portal nebo Powershellu.
 
@@ -78,27 +79,27 @@ Chcete-li přesunout obnovení služby trezor a její přidružené prostředky 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Otevře se seznam **trezory služby Recovery Services** a vyberte trezor, které chcete přesunout. Po otevření řídicího panelu trezoru, zobrazí se jak je znázorněno na následujícím obrázku.
 
-  ![Trezor otevřete obnovení služby](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+   ![Trezor otevřete obnovení služby](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-  Pokud se nezobrazí **Essentials** informace o trezoru, klikněte na ikonu rozevíracího seznamu. Teď byste měli vidět Essentials informace pro svůj trezor.
+   Pokud se nezobrazí **Essentials** informace o trezoru, klikněte na ikonu rozevíracího seznamu. Teď byste měli vidět Essentials informace pro svůj trezor.
 
-  ![Na kartě informací](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
+   ![Na kartě informací](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
 3. V nabídce přehled trezoru, klikněte na tlačítko **změnit** vedle **skupiny prostředků**, otevřete **přesunutí prostředků** okno.
 
-  ![Změnit skupinu prostředků](./media/backup-azure-move-recovery-services/change-resource-group.png)
+   ![Změnit skupinu prostředků](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
 4. V **přesunutí prostředků** okně pro vybraný trezor se doporučuje se přesunout volitelné související prostředky zaškrtnutím políčka, jak je znázorněno na následujícím obrázku.
 
-  ![Přesunout předplatné](./media/backup-azure-move-recovery-services/move-resource.png)
+   ![Přesunout předplatné](./media/backup-azure-move-recovery-services/move-resource.png)
 
 5. Přidání cílová skupina prostředků v **skupiny prostředků** rozevíracího seznamu vyberte existující prostředek skupiny nebo klikněte na tlačítko **vytvořte novou skupinu** možnost.
 
-  ![Vytvořit prostředek](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
+   ![Vytvořit prostředek](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
 6. Po přidání skupiny prostředků, zkontrolujte **beru na vědomí, že nástroje a skripty přidružené k přesunutým prostředkům nebudou fungovat, dokud můžu aktualizovat je, aby používaly nové ID prostředků** možnost a potom klikněte na tlačítko **OK** k dokončení Přesun trezoru.
 
-  ![Zpráva potvrzení](./media/backup-azure-move-recovery-services/confirmation-message.png)
+   ![Zpráva potvrzení](./media/backup-azure-move-recovery-services/confirmation-message.png)
 
 
 ## <a name="use-azure-portal-to-move-a-recovery-services-vault-to-a-different-subscription"></a>Přesun trezoru služby Recovery Services do jiného předplatného pomocí webu Azure portal
@@ -116,16 +117,16 @@ Trezor služby Recovery Services a její přidružené prostředky můžete pře
 
 3. V nabídce přehled trezoru, klikněte na tlačítko **změnit** vedle **předplatné**, otevřete **přesunutí prostředků** okno.
 
-  ![Změnit předplatné](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
+   ![Změnit předplatné](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
 4. Vyberte prostředky k přesunutí, tady doporučujeme, abyste použili **Vybrat vše** možnost vybrat si uvedené volitelné materiály.
 
-  ![Přesunout prostředek](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
+   ![Přesunout prostředek](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
 5. Vyberte cílovou skupinu, ze **předplatné** rozevíracího seznamu, kam chcete přesunout na trezor.
 6. Přidání cílová skupina prostředků v **skupiny prostředků** rozevíracího seznamu vyberte existující prostředek skupiny nebo klikněte na tlačítko **vytvořte novou skupinu** možnost.
 
-  ![Přidat předplatné](./media/backup-azure-move-recovery-services/add-subscription.png)
+   ![Přidat předplatné](./media/backup-azure-move-recovery-services/add-subscription.png)
 
 7. Klikněte na tlačítko **beru na vědomí, že nástroje a skripty přidružené k přesunutým prostředkům nebudou fungovat, dokud můžu aktualizovat je, aby používaly nové ID prostředků** potvrzení, a potom klikněte na možnost **OK**.
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 877e42dc8d6e69834cf989122f855ada560b813c
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2ed4826eb47ab2fb13d312860475f9ec9b323bf7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201240"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884150"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>Příprava modul IoT Edge technické prostředky
 
@@ -45,7 +45,7 @@ Modul IoT Edge musí podporovat některý z následujících možností platform
 Podporují všechny vrstvy 1 platformách podporovaných službou IoT Edge (jak je uvedeno v [podpory Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/support)). Doporučujeme tuto možnost, protože poskytuje lepší uživatelské prostředí. Bude možné předvést mezinárodním moduly, které splňují tato kritéria. Pomocí této možnosti platformy modul musí:
 
 - Zadejte `latest` značku a označení verze (například `1.0.1`), které jsou vytvořené pomocí Githubu manifestu značky [nástroj manifest](https://github.com/estesp/manifest-tool).
-- Použití [kartě Marketplace](./cpp-marketplace-tab.md) přidáte odkaz na [kompatibilní IoT Edge certifikovaných zařízení](https://aka.ms/iot-edge-certified). Tento odkaz se překládá na `http://aka.ms/iot-edge-certified`, web, kde můžou zákazníci procházet nebo Hledat certifikovaných zařízení. Tento web se také označuje jako [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/) katalog zařízení.
+- Použití [kartě Marketplace](./cpp-marketplace-tab.md) přidáte odkaz na [kompatibilní IoT Edge certifikovaných zařízení](https://aka.ms/iot-edge-certified). Tento odkaz se překládá na `https://aka.ms/iot-edge-certified`, web, kde můžou zákazníci procházet nebo Hledat certifikovaných zařízení. Tento web se také označuje jako [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/) katalog zařízení.
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Podmnožinu vrstvy 1 platformách podporovaných službou IoT Edge
   
@@ -61,9 +61,9 @@ Dimenze modul IoT Edge (CPU/RAM/úložiště/GPU/atd.) na cílovém zařízení 
 - Modul musí **práce s alespoň jedním certified IoT Edge** zařízení do služby [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/) katalog zařízení.
 - **Minimální hardwarové požadavky** musí být zdokumentována jako poslední odstavce v popisu nabídky (v části [Marketplace kartu](./cpp-marketplace-tab.md)). Pokud se významně liší Volitelně můžete vytvořit seznam také doporučené požadavky na hardware. Na konci vaší popis nabídky přidáte například následující části:
 
- ```html
+  ```html
     <p><u>Minimum hardware requirements:</u> Linux x64 and arm32  OS, 1GB of RAM, 500 Mb of storage</p>
- ```
+  ```
 
 ### <a name="configuration"></a>Konfigurace
 
@@ -128,11 +128,12 @@ Sady SDK modulu IoT je požadováno pro získání telemetrických dat o počet 
 
 ## <a name="recertification-process"></a>Vydal procesu
 
-<!-- Add legal time windows--> Partneři dostanete oznámení pokaždé, když existuje k narušující změně ovlivňuje jejich modulů, jako například:
+<!-- Add legal time windows-->
+Partneři dostanete oznámení pokaždé, když existuje k narušující změně ovlivňuje jejich modulů, jako například:
 
 - Matice podpory úrovně 1 os/arch nepodporuje IoT Edge
 - Modul IoT SDK
-- Modul Runtime IoT Edge
+- IoT Edge Runtime
 - Pokyny pro certifikaci modul IoT Edge
 
 Partneři muset aktualizovat své moduly a znovu certifikovali je pomocí nástroje portál partnerů cloudu.

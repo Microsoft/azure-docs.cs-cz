@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/04/2019
-ms.openlocfilehash: 58eb7729dd0d2dda728d2008d5bb674f5222c08e
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/12/2019
+ms.openlocfilehash: f2ea9f784064a926a391ba0eadebd9fa5224a36d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337834"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875182"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database a SQL Data Warehouse IP pravidla brány firewall
 
@@ -150,6 +150,8 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 ## <a name="manage-server-level-ip-firewall-rules-using-azure-powershell"></a>Spravovat pravidla brány firewall na úrovni serveru IP pomocí Azure Powershellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 | Rutina | Úroveň | Popis |
 | --- | --- | --- |
@@ -176,7 +178,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 |[Vytvoření az sql server firewall-rule](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Server|Vytvoří pravidlo brány firewall serveru IP|
 |[AZ sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Server|Obsahuje pravidla firewallu protokolu IP na serveru|
 |[AZ sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Server|Zobrazí podrobnosti pravidla brány firewall protokolu IP|
-|[AZ sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Server|Aktualizuje pravidlo brány firewall protokolu IP|
+|[AZ sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Server|Aktualizuje pravidla brány firewall protokolu IP|
 |[AZ sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Server|Odstraní pravidlo brány firewall protokolu IP|
 
 Následující příklad nastaví pravidlo firewallu protokolu IP úrovni serveru pomocí Azure CLI:

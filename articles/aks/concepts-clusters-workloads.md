@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: d4293bf6a375f3e1a26c0c4fb50fcdc7bb5b8e8e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bf1ff4391e65fea68ac019be8fde8709fb4422b2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243852"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181346"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Můžete sestavit a spustit moderních přenosné mikroslužbových aplikací, k
 
 Jako otevřenou platformu Kubernetes umožňuje sestavovat aplikace s Upřednostňovaný programovací jazyk, operační systém, knihovny nebo zasílání zpráv Service bus. Existující průběžnou integraci a nástroje pro průběžné doručování (CI/CD) můžete integrovat s využitím Kubernetes k plánování a nasazení vydání.
 
-Azure Kubernetes Service (AKS) nabízí spravované služby Kubernetes, která snižuje složitost pro nasazení a základní úlohy správy, včetně koordinace upgrady. Hlavní servery clusteru AKS spravuje platformy Azure a budete platit jenom za uzlů AKS, na kterých běží vaše aplikace. AKS je postavený na modul open source Azure Kubernetes Service (aks-engine).
+Azure Kubernetes Service (AKS) nabízí spravované služby Kubernetes, která snižuje složitost pro nasazení a základní úlohy správy, včetně koordinace upgrady. Hlavní servery clusteru AKS spravuje platformy Azure a budete platit jenom za uzlů AKS, na kterých běží vaše aplikace. AKS je postavený na modul open source Azure Kubernetes Service ([aks-engine][aks-engine]).
 
 ## <a name="kubernetes-cluster-architecture"></a>Architektura clusteru Kubernetes
 

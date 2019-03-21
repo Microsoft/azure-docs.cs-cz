@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 01/31/2019
 ms.author: alkohli
-ms.openlocfilehash: d0b171f05bb2243da83509348b099bebcb44ebc7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 81407a298ccfe1b9884fc5d5b815ac8c18ffee6a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508704"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094673"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>Vývoj modulu jazyka C# IoT Edge pro přesun souborů na okraji pole dat (Preview)
 
@@ -71,14 +71,14 @@ Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete
 2. Vyberte **vytvořit prostředek > kontejnery > Container Registry**. Klikněte na možnost **Vytvořit**.
 3. Zadejte:
 
-    1. Jedinečné **název registru** v Azure, která obsahuje 5 až 50 alfanumerických znaků.
-    2. Zvolte **předplatné**.
-    3. Vytvořit novou nebo vybrat existující **skupiny prostředků**.
-    4. Vyberte **Umístění**. Doporučujeme vám, že toto umístění být stejná jako, který je přidružen okraj pole Data prostředků.
-    5. Přepněte přepínač **Uživatel s rolí správce** na **Povolit**.
-    6. Nastavte skladovou Položku **základní**.
+   1. Jedinečné **název registru** v Azure, která obsahuje 5 až 50 alfanumerických znaků.
+   2. Zvolte **předplatné**.
+   3. Vytvořit novou nebo vybrat existující **skupiny prostředků**.
+   4. Vyberte **Umístění**. Doporučujeme vám, že toto umístění být stejná jako, který je přidružen okraj pole Data prostředků.
+   5. Přepněte přepínač **Uživatel s rolí správce** na **Povolit**.
+   6. Nastavte skladovou Položku **základní**.
 
-    ![Vytvoření registru kontejneru](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
+      ![Vytvoření registru kontejneru](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
 4. Vyberte **Vytvořit**.
 5. Po vytvoření registru kontejneru do něj přejděte a vyberte **Přístupové klíče**.

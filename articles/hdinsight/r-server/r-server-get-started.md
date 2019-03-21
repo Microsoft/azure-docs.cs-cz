@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: dce345c39918e7471531710051797c848a3c7cde
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 474048bc9f31e4630110ea099f3e0b375ad74e51
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444068"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087580"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Začínáme se službou ML Services v Azure HDInsight
 
@@ -79,16 +79,16 @@ Pokud jste zvolili instalaci RStudio Serveru Community Edition jako součást sv
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
 * **Možnost 2** -pomocí webu Azure portal.
-Z portálu:
+  Z portálu:
   1. Vyberte **všechny služby** v levé nabídce.
   2. V části **ANALYTICS**vyberte **clustery HDInsight**.
   3. Vyberte název vašeho clusteru z **clustery HDInsight** stránky.
   4. Z **řídicích panelů služby ML**vyberte **R Studio server**. 
 
-    ![Nastavení účtu úložiště pro HDInsight](./media/r-server-get-started/r-studio-server-dashboard.png)
+     ![Nastavení účtu úložiště pro HDInsight](./media/r-server-get-started/r-studio-server-dashboard.png)
 
-   > [!IMPORTANT]  
-   > Bez ohledu na použitou metodu bude při prvním přihlášení potřeba dvojí ověření.  Po zobrazení první výzvy k ověření zadejte *ID uživatele* a *heslo* správce clusteru. Po zobrazení druhé výzvy k ověření zadejte *ID uživatele* a *heslo* SSH. Následující protokol – budete potřebovat jenom přihlašovací údaje SSH.
+     > [!IMPORTANT]  
+     > Bez ohledu na použitou metodu bude při prvním přihlášení potřeba dvojí ověření.  Po zobrazení první výzvy k ověření zadejte *ID uživatele* a *heslo* správce clusteru. Po zobrazení druhé výzvy k ověření zadejte *ID uživatele* a *heslo* SSH. Následující protokol – budete potřebovat jenom přihlašovací údaje SSH.
 
 Po připojení by vaše obrazovka měla vypadat podobně jako na následujícím snímku obrazovky:
 

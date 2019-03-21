@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 01db1de5c6b533c346ce35c8474d996213873d10
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: fd2614c258aff146397e24e688eae18d84d3cfa6
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002191"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201156"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Streamování ve velkém měřítku ve službě HDInsight
 
@@ -45,7 +45,7 @@ Další informace najdete v tématu [co je Apache Spark Streaming?](hdinsight-sp
 
 ## <a name="scaling-a-cluster"></a>Škálování clusteru
 
-I když můžete určit počet uzlů v clusteru během vytváření, může chtít zvětšit nebo zmenšit cluster tak, aby odpovídaly zatížení. Všechny clustery HDInsight umožňují [změnit počet uzlů v clusteru](hdinsight-administer-use-management-portal.md#scale-clusters). Clustery Spark můžete vyřadit bez ztráty dat, jako ukládána všechna data v Azure Storage nebo Azure Data Lake Storage.
+I když můžete určit počet uzlů v clusteru během vytváření, může chtít zvětšit nebo zmenšit cluster tak, aby odpovídaly zatížení. Všechny clustery HDInsight umožňují [změnit počet uzlů v clusteru](hdinsight-administer-use-portal-linux.md#scale-clusters). Clustery Spark můžete vyřadit bez ztráty dat, jako ukládána všechna data v Azure Storage nebo Azure Data Lake Storage.
 
 Existují výhody oddělovací technologie. Například Kafka je událost ukládání do vyrovnávací paměti technologie, takže je velmi vstupně-výstupní operace náročné na a nepotřebuje většinu výpočetní výkon. Procesorů streamu, jako je Spark Streaming v porovnání, jsou náročné na výpočetní, které vyžadují výkonnější virtuální počítače. Tím, že tyto technologie odděleném do různých clusterech, je možné škálovat je nezávisle na sobě při nejlíp využít virtuálních počítačů.
 

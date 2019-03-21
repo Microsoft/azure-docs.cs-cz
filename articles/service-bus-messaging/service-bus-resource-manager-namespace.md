@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: e925ea91518d8f093cd270e238b7ffd09674e726
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: a79565661ae11e70364d64503b3b11bdeabeabdb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844088"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899753"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů služby Service Bus pomocí šablony Azure Resource Manageru
 V tomto rychlém startu vytvoříte šablonu Azure Resource Manageru, která vytvoří obor názvů služby Service Bus typu **zasílání zpráv** s **standardní** SKU. Tento článek také definuje parametry, které jsou určené pro spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky. Další informace o vytváření šablon najdete v tématu [Tvorba šablon Azure Resource Manageru][Authoring Azure Resource Manager templates]. Úplnou šablonu najdete v článku [šablony obor názvů služby Service Bus] [ Service Bus namespace template] na Githubu.
@@ -53,7 +53,7 @@ Vytvořte soubor JSON s názvem **MyServiceBusNamespace.json** s následujícím
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "serviceBusNamespaceName": {
@@ -109,7 +109,7 @@ Vytvořte soubor JSON s názvem **MyServiceBusNamespace-Parameters.json** s nás
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "serviceBusNamespaceName": {
