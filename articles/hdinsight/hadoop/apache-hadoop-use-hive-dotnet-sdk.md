@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: d3c9c8eab0ce13aee5dbe7bdb732d45555e547fb
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 31e759baa4f5e7b220eabf2bb9ffcc5cc011a354
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407163"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200459"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Spouštějte dotazy Apache Hive pomocí sady HDInsight .NET SDK
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -139,7 +139,6 @@ V tomto článku jste se naučili několik způsobů, jak vytvořit HDInsight cl
 
 * [Začínáme s Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
 * [Vytvořte clustery systému Apache Hadoop v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
-* [Spravovat clustery systému Apache Hadoop v HDInsight pomocí webu Azure portal](../hdinsight-administer-use-management-portal.md)
 * [Referenční dokumentace sady HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [Použití Apache Pig s HDInsight](hdinsight-use-pig.md)
 * [Použití Apache Sqoop s HDInsight](apache-hadoop-use-sqoop-mac-linux.md)

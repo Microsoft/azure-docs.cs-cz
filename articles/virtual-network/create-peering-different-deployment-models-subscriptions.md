@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: cd0493d4fd126175acafce050394e65a47e9bda9
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: c9247b37e1e475892a1561c5667dc25275f67327
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650015"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104110"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí – různé modely nasazení a předplatná
 
@@ -60,7 +60,7 @@ Tento kurz používá různé účty pro každé předplatné. Pokud používát
 10. Odhlaste se z portálu jako UserA a přihlaste se jako UserB.
 11. Klikněte na tlačítko **+ nová**, typ *virtuální síť* v **Hledat na Marketplace** pole a potom klikněte na **virtuální síť** ve výsledcích hledání.
 12. V **virtuální sítě** okno, které se zobrazí, vyberte **Classic** v **vybrat model nasazení** pole a potom klikněte na **vytvořit**.
-13.   Do pole vytvořit virtuální síť (classic), který se zobrazí zadejte následující hodnoty:
+13. Do pole vytvořit virtuální síť (classic), který se zobrazí zadejte následující hodnoty:
 
     - **Název**: *myVnetB*
     - **Adresní prostor**: *10.1.0.0/16*

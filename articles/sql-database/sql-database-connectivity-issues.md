@@ -13,12 +13,12 @@ ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/14/2018
-ms.openlocfilehash: 0377f192ea9bc6502065fa037704ec8461ce1447
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7d07b0a098aad472b1b4f0b9810e5b63ac3c48a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311096"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007462"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Práce s problémy s připojením k databázi SQL a přechodných chyb
 
@@ -356,7 +356,7 @@ Tady je pár odkazů na informace o EntLib60:
 
 - Knihu zdarma ke stažení: [Příručka pro vývojáře k Microsoft Enterprise Library 2 edition](https://www.microsoft.com/download/details.aspx?id=41145).
 - Osvědčené postupy: [Obecné pokyny k opakovaným](../best-practices-retry-general.md) má skvělé diskuzi o logika opakovaných pokusů.
-- Stažení NuGet: [Enterprise Library - blok aplikací zpracování přechodných chyb 6.0](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
+- Stažení NuGet: [Enterprise Library - blok aplikací zpracování přechodných chyb 6.0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>
 

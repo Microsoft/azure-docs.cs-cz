@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: ef360fd56c3530a49c2f36846db34b29ca1cf444
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 3890283f70bfd922d0c436f76b38d7f81d7b8c6f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788014"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107014"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Hyper-V replikovat do sekundárního místního serveru
 
@@ -49,7 +49,7 @@ Můžete spustit pravidelné nebo plánované převzetí služeb při selhání 
 - Použijte regulární převzetí služeb při selhání pro nečekaných výpadků. Při spuštění tohoto převzetí služeb při selhání Site Recovery vytvoří virtuální počítač v sekundární lokalitě a zajišťuje nahoru. Může dojít ke ztrátě dat v závislosti na čekání dat, která nebyla synchronizována.
 - Plánované převzetí služeb při selhání je možné, údržbě nebo při očekávaný výpadek. Tato možnost poskytuje nulové ztráty. Při plánované převzetí služeb při selhání se aktivuje, jsou ukončení zdrojových virtuálních počítačů. Nesynchronizované synchronizaci dat a převzetí služeb při selhání se aktivuje. 
 - 
-Tento postup popisuje, jak regulární převzetí služeb při selhání.
+  Tento postup popisuje, jak regulární převzetí služeb při selhání.
 
 
 1. V části **Nastavení** > **Replikované položky** klikněte na virtuální počítač a pak na **Převzetí služeb při selhání**.

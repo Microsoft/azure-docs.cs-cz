@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c23f16f5d3c665cb74e9e0460d2e5658fa716d72
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e0ada3055a3347cb42179fddbba671f2f03f502d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452857"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885063"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Kurz: Integrace Azure Active Directory s nekonečnou Campus
 
@@ -40,7 +40,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 Konfigurace integrace Azure AD s nekonečnou Campus, potřebujete následující položky:
 
 - Předplatné Azure AD
-- Nekonečnou Campus jednotného přihlašování povolená předplatného
+- Nekonečné Campus jednotného přihlašování povolená předplatného
 
 > [!NOTE]
 > Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
@@ -90,7 +90,7 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s nekonečnou are
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele nekonečné Campus](#creating-a-infinite-campus-test-user)**  – Pokud chcete mít protějšek Britta Simon v nekonečné areálu, který je propojený s Azure AD reprezentace uživatele.
+3. **[Vytvoření testovacího uživatele nekonečné Campus](#creating-a-infinite-campus-test-user)**  – Pokud chcete mít protějšek Britta Simon v nekonečné areálu, který je propojený s Azure AD reprezentace uživatele.
 4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
 5. **[Testování jednotného přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
@@ -196,14 +196,14 @@ Cílem této části je vytvořit _jeden_ testovacího uživatele na webu Azure 
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
     d. Vyberte **Vytvořit**.
 
-### <a name="creating-a-infinite-campus-test-user"></a>Vytvoření zkušebního uživatele nekonečné Campus
+### <a name="creating-an-infinite-campus-test-user"></a>Vytváří se uživatel nekonečné Campus testu
 
 Nekonečné Campus má demografické údaje na architekturu. Obraťte se prosím na [tým podpory nekonečné Campus](mailto:sales@infinitecampus.com) přidat uživatele na platformě nekonečné Campus.
 

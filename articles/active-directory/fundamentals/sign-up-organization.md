@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937f53ecd60d6bbcc8fbd02f978974ac34f77c00
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bec4385b77ce44e87ed1f947a5a7a3e3d0d52fc6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442010"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101359"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Zaregistrujte vaší organizaci a používat službu Azure Active Directory
 Zaregistrovat do služby Azure Active Directory (Azure AD) nebo nové předplatné Microsoft Azure, buď pomocí:
@@ -27,8 +27,8 @@ Zaregistrovat do služby Azure Active Directory (Azure AD) nebo nové předplatn
 
 - **Pracovní nebo školní účet.** Chcete-li získat přístup k malým, středním nebo podnikových cloudových služeb od Microsoftu, jako je například Azure, Microsoft Intune nebo Office 365 pomocí pracovní nebo školní účet. Po registraci pro jednu z těchto služeb jako organizace, Azure AD automaticky zřídí cloudový adresář, který reprezentuje vaši organizaci. Další informace najdete v tématu [Správa adresáře služby Azure AD](active-directory-administer.md).
 
-    >[!Note]
-    Doporučujeme, abyste pomocí pracovního nebo školního účtu, pokud již máte přístup ke službě Azure AD. Ale by měl použít, jaký typ účtu je přidružený k vašemu předplatnému Azure.
+  > [!Note]
+  >   Doporučujeme, abyste pomocí pracovního nebo školního účtu, pokud již máte přístup ke službě Azure AD. Ale by měl použít, jaký typ účtu je přidružený k vašemu předplatnému Azure.
 
 ## <a name="next-steps"></a>Další postup
 
