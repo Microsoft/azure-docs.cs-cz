@@ -30,8 +30,6 @@ items:
     items:
     - name: Přístup k rozhraní API pro generování sestav s certifikáty
       href: tutorial-access-api-with-certificates.md
-    - name: Vygenerování skriptu pro stažení protokolů přihlašování
-      href: tutorial-signin-logs-download-script.md
   - name: Monitorování
     items:
     - name: Streamování protokolů do centra událostí
@@ -120,9 +118,9 @@ items:
     - name: Schéma protokolu přihlašování
       href: reference-azure-monitor-sign-ins-log-schema.md
   expanded: true
-ms.openlocfilehash: e14fac6ff115951ca46995d7973e919e6a774b8c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 746e3834189b9c0c478f7bbcd8b72e6760c288f6
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819373"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293766"

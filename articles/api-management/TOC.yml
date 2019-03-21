@@ -224,29 +224,27 @@ items:
   items:
   - name: Nejčastější dotazy
     href: api-management-faq.md
+  - name: Ceny
+    href: https://aka.ms/apimpricing
   - name: Regionální dostupnost
     href: https://azure.microsoft.com/regions/services/
-  - name: Pokyny k návrhu API
-    href: https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
-  - name: Pokyny k implementaci API
-    href: https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
+  - name: Plán
+    href: https://aka.ms/apimroadmap
+  - name: Žádosti o funkce
+    href: https://aka.ms/apimwish
+  - name: Videa
+    href: https://azure.microsoft.com/documentation/videos/index/?services=api-management
   - name: Fórum MSDN
     href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-api-management
-  - name: Videa
-    href: https://azure.microsoft.com/documentation/videos/index/?services=api-management
-  - name: Plán
-    href: https://aka.ms/apimroadmap
-  - name: Šablona řešení Power BI pro API Management
-    href: https://aka.ms/apimpbi
-  - name: Blog
-    href: https://aka.ms/apimblog
-  - name: Žádosti o funkce
-    href: https://aka.ms/apimwish
-ms.openlocfilehash: fd8cade676bb8966ad33637bad97d100c268f89d
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+  - name: Pokyny k návrhu API
+    href: https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
+  - name: Pokyny k implementaci API
+    href: https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
+ms.openlocfilehash: 637671ae4e85a7f3ed4f71af5caf580660c2b6ce
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246615"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260209"
