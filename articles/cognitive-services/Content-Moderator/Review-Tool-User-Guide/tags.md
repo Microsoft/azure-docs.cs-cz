@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 942b30ab9949a28c42949913d90e7448c22b658f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fa3b7be6ac7cc398685bf5ad7d21173bcb072b69
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206269"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118404"
 ---
 # <a name="create-and-use-moderation-tags"></a>Vytvoření a použití značek pro moderování
 
@@ -23,15 +23,15 @@ Kromě značek dvě výchozí **isadult** (****) a **isracy** (**r**), můžete 
 
 ## <a name="create-tags"></a>Vytvoření značek
 
-1.  Na kartě Nastavení vyberte značky.
+1. Na kartě Nastavení vyberte značky.
 
-  ![Moderování obsahu značky](images/tags-1.png)
+   ![Moderování obsahu značky](images/tags-1.png)
 
-2.  Zadejte krátký kód dvoupísmenné pro značku.
-3.  Zadejte název značky. Zachovejte krátký a popisný název. Například **isbullying**.
-4.  Zadejte popis.
-5.  Klikněte na Přidat.
-6.  Po dokončení vytváření značky, klikněte na Uložit.
+2. Zadejte krátký kód dvoupísmenné pro značku.
+3. Zadejte název značky. Zachovejte krátký a popisný název. Například **isbullying**.
+4. Zadejte popis.
+5. Klikněte na Přidat.
+6. Po dokončení vytváření značky, klikněte na Uložit.
 
 ![Definování značek moderování obsahu](images/tags-2-define.png)
 
