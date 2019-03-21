@@ -13,12 +13,12 @@ ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 7c903390af54d1771bce1b6aff96e9bb54397189
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: eabc47c2acb33d8c6ee03477b5e8c7783edebbb7
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045738"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258768"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Řešení potíží s nástrojů analýzy chování uživatelů ve službě Application Insights
 Máte otázky týkající [nástrojů analýzy chování uživatelů ve službě Application Insights](usage-overview.md): [Uživatelé, relace, události](usage-segmentation.md), [trychtýře](usage-funnels.md), [toky uživatelů](usage-flows.md), [uchování](usage-retention.md), nebo kohorty? Tady jsou odpovědi.
@@ -39,7 +39,7 @@ Nástroje analýzy chování uživatelů v současnosti nepodporujeme počítán
 ## <a name="naming-events"></a>Pojmenování události
 **Moje aplikace má tisíce zobrazení různé stránky a názvy vlastních událostí. Je těžké k rozlišení mezi nimi a analytické nástroje chování uživatele často přestat reagovat. Jak můžete tyto zásady problémy řešit?**
 
-Názvy vlastních událostí a zobrazení stránky se používají v nástroje analýzy chování uživatelů. Názvy událostí a je velmi důležité k získání hodnoty z těchto nástrojů. Cílem je rovnováhu mezi s názvy příliš málo, příliš obecného ("kliknutí na tlačítko") a s příliš mnoho, zbytečně konkrétní názvy ("na kliknutí na tlačítko Upravit http://www.contoso.com/index").
+Názvy vlastních událostí a zobrazení stránky se používají v nástroje analýzy chování uživatelů. Názvy událostí a je velmi důležité k získání hodnoty z těchto nástrojů. Cílem je rovnováhu mezi s názvy příliš málo, příliš obecného ("kliknutí na tlačítko") a s příliš mnoho, zbytečně konkrétní názvy ("kliknutí na tlačítko Upravit na protokolu http:\//www.contoso.com/index").
 
 Žádné změny k zobrazení stránky a názvy vlastních událostí, které vaše aplikace odesílá, budete muset změnit zdrojový kód a opětovné nasazení vaší aplikace. **Veškerá telemetrie data ve službě Application Insights je uložena po dobu 90 dnů a nelze ji odstranit**, takže změny provedené názvy událostí bude trvat plně manifest 90 dní. Za 90 dnů po provedení změny názvu názvy staré a nové události se zobrazí v telemetrii, tak upravte dotazy a komunikaci v rámci vašich týmů odpovídajícím způsobem.
 

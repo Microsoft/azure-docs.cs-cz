@@ -1,6 +1,6 @@
 ---
-title: Postup konfigurace systému a uživatelsky přiřazené identity spravované v VMSS Azure pomocí Azure CLI
-description: Projděte pokyny ke konfiguraci systému a uživatelsky přiřazené identity spravované v VMSS Azure pomocí Azure CLI.
+title: Nastavení konfigurace systému a uživatelsky přiřazené identity spravované v měřítku virtuálních počítačů Azure pomocí Azure CLI
+description: Krok za krokem pokyny ke konfiguraci systému a uživatelsky přiřazené identity spravované v měřítku virtuálních počítačů Azure nastavit pomocí rozhraní příkazového řádku Azure.
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/15/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34cd03ad6640ac809ce8ac2e8f4fc1070246df27
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 88bcd38890baea2d6bc0460937fe4b7882f7fd23
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886860"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226041"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuální počítač škálovací sady s použitím rozhraní příkazového řádku Azure
 
@@ -28,9 +28,9 @@ ms.locfileid: "57886860"
 
 Spravované identity pro prostředky Azure poskytuje služby Azure se automaticky spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
 
-V tomto článku se dozvíte, jak k provádění následujících spravovaných identit pro operace prostředků Azure na Azure virtuální počítač Škálovací nastavit (VMSS), pomocí rozhraní příkazového řádku Azure:
-- Povolení a zákaz systém přiřadil spravovaná identita na Azure VMSS
-- Přidání a odebrání uživatelsky přiřazené spravovanou identitu na Azure VMSS
+V tomto článku se dozvíte, jak k provádění následujících spravovaných identit pro operace se prostředky Azure na škálovací sadu virtuálních počítačů Azure pomocí Azure CLI:
+- Povolení a zákaz systém přiřadil spravovaná identita na škálovací sadu virtuálních počítačů Azure
+- Přidání a odebrání uživatelsky přiřazené spravovanou identitu na škálovací sadu virtuálních počítačů Azure
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -57,7 +57,7 @@ V tomto článku se dozvíte, jak k provádění následujících spravovaných 
 
 ## <a name="system-assigned-managed-identity"></a>Systém přiřadil spravované identity
 
-V této části se dozvíte, jak můžete povolit nebo zakázat systém přiřadil spravovanou identitu pro VMSS Azure pomocí Azure CLI.
+V této části se dozvíte, jak můžete povolit nebo zakázat systém přiřadil spravovanou identitu pro škálovací sady pomocí Azure CLI Azure virtuálních počítačů.
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>Povolit systém přiřadil spravovanou identitu při vytváření škálovací sady virtuálních počítačů Azure
 
@@ -114,11 +114,8 @@ Pokud máte virtuální počítač, který už je systém přiřadil spravovanou
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Chcete-li odebrat spravovaných identit pro rozšíření virtuálního počítače prostředky Azure (plánovaná k převedení na zastaralého v lednu 2019), použijte [az vmss identity odebrat](/cli/azure/vmss/identity/) příkazu odeberte systém přiřadil spravovaných identit VMSS:
-
-```azurecli-interactive
-az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
-```
+> [!NOTE]
+> Pokud jste zřídili spravovanou identitu pro prostředky Azure VM rozšíření (zastaralé), musíte ho odebrat pomocí [az vmss extension delete](https://docs.microsoft.com/cli/azure/vm/). Další informace najdete v tématu [migrovat z rozšíření virtuálního počítače Azure IMDS ověřování](howto-migrate-vm-extension.md).
 
 ## <a name="user-assigned-managed-identity"></a>Uživatel přiřazenou spravované identity
 
@@ -126,7 +123,7 @@ V této části se dozvíte, jak povolit a odeberte uživatelsky přiřazené sp
 
 ### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>Přiřadit uživateli přiřazena spravovanou identitu při vytváření škálovací sady virtuálních počítačů
 
-Tato část vás provede vytváření VMSS a přiřazení uživatelsky přiřazené identity spravované VMSS. Pokud už máte VMSS, kterou chcete použít, tuto část přeskočit a pokračovat na další.
+Tato část vás provede vytvořením škálovací sady virtuálních počítačů a přiřazení uživatelsky přiřazené identity spravované škálovací sadu virtuálních počítačů. Pokud již máte škálovací sadu virtuálních počítačů, které chcete použít, tuto část přeskočit a pokračovat na další.
 
 1. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit. Vytvoření [skupiny prostředků](~/articles/azure-resource-manager/resource-group-overview.md#terminology) pro nasazení vaší uživatelsky přiřazené spravovanou identitu a členství ve skupině pomocí [az skupiny vytvořit](/cli/azure/group/#az-group-create). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<LOCATION>` vlastními hodnotami. :
 
@@ -158,7 +155,7 @@ Tato část vás provede vytváření VMSS a přiřazení uživatelsky přiřaze
    }
    ```
 
-3. Vytvoření pomocí VMSS [az vmss vytvořit](/cli/azure/vmss/#az-vmss-create). Následující příklad vytvoří VMSS přidružené k nové uživatelsky přiřazené spravované identity, jak jsou určené `--assign-identity` parametru. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>` a `<USER ASSIGNED IDENTITY>` vlastními hodnotami. 
+3. Vytvoření virtuálního počítače škálovací sady s použitím [az vmss vytvořit](/cli/azure/vmss/#az-vmss-create). Následující příklad vytvoří škálovací sadu virtuálních počítačů přidružené k nové uživatelsky přiřazené spravované identity, jak jsou určené `--assign-identity` parametru. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>` a `<USER ASSIGNED IDENTITY>` vlastními hodnotami. 
 
    ```azurecli-interactive 
    az vmss create --resource-group <RESOURCE GROUP> --name <VMSS NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY>
@@ -188,18 +185,18 @@ Tato část vás provede vytváření VMSS a přiřazení uživatelsky přiřaze
    }
    ```
 
-2. Přiřadit uživateli přiřazena spravovaná identita na VMSS pomocí [az vmss identity přiřadit](/cli/azure/vmss/identity). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VMSS NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY>` Uživatelsky přiřazené identity prostředku je `name` vlastnost, protože vytvořili v předchozím kroku:
+2. Přiřadit uživateli přiřazena spravovanou identitu do virtuálního počítače škálovací nastavit pomocí [az vmss identity přiřadit](/cli/azure/vmss/identity). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VIRTUAL MACHINE SCALE SET NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY>` Uživatelsky přiřazené identity prostředku je `name` vlastnost, protože vytvořili v předchozím kroku:
 
     ```azurecli-interactive
-    az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>
+    az vmss identity assign -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>
     ```
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Odeberte uživatelsky přiřazené spravovanou identitu ze škálovací sady virtuálních počítačů Azure
 
-K odebrání spravovanou identitu uživatele přiřadit k využívání sady škálování virtuálního počítače [az vmss identity odebrat](/cli/azure/vmss/identity#az-vmss-identity-remove). Pokud je to jediná uživatelsky přiřazené identity přiřazené do škálovací sady virtuálních počítačů spravované `UserAssigned` se odebere z hodnoty typu identity.  Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VMSS NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY>` Bude uživatel přiřazenou spravované identity `name` vlastnosti, které najdete v části Identita škálovací sady virtuálních počítačů `az vmss identity show`:
+K odebrání spravovanou identitu uživatele přiřadit k využívání sady škálování virtuálního počítače [az vmss identity odebrat](/cli/azure/vmss/identity#az-vmss-identity-remove). Pokud je to jediná uživatelsky přiřazené identity přiřazené do škálovací sady virtuálních počítačů spravované `UserAssigned` se odebere z hodnoty typu identity.  Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VIRTUAL MACHINE SCALE SET NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY>` Bude uživatel přiřazenou spravované identity `name` vlastnosti, které najdete v části Identita škálovací sady virtuálních počítačů `az vmss identity show`:
 
 ```azurecli-interactive
-az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>
+az vmss identity remove -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>
 ```
 
 Pokud vaše škálovací sada virtuálních počítačů nemá systém přiřadil spravovat identity a chcete z něj odebrat všechny přiřazené uživatele spravované identity, použijte následující příkaz:

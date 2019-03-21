@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 1/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: abf1ed8e06bf9f78c7df07194567ffb5bfdc2709
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7aa0e11ed47219829830369d17b300270d3fbffb
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842715"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259410"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Nasazení modelu jako webové služby na FPGA s využitím služby Azure Machine Learning
 
@@ -45,10 +45,6 @@ Nasazení modelu jako webové služby na [pole programmable gate Array (FPGA)](c
     ```shell
     pip install "tensorflow==1.10"
     ```
-
-### <a name="get-the-notebook"></a>Získání poznámkového bloku
-
-Pro usnadnění práce je tento kurz k dispozici jako poznámkový blok Jupyter. Postupujte podle zde nebo spustit kód [Poznámkový blok rychlý Start](https://github.com/Azure/aml-real-time-ai/blob/master/notebooks/project-brainwave-quickstart.ipynb).
 
 ## <a name="create-and-deploy-your-model"></a>Vytvoření a nasazení modelu
 Vytvoření kanálu pro předzpracování vstupního obrázku, usnadňují funkce pomocí modelem ResNet 50 na FPGA a pak spusťte funkce prostřednictvím třídění školení na datové sadě ImageNet.

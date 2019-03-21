@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b958a8d7aa8566c62d5fdaf6b5b51064e4e5123
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 32720669ae9d8941abce4429471c13608a18cbc5
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183743"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294888"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -149,7 +149,7 @@ Pokud do svého zobrazení přihlášení přidáte další pole, tato pole se a
 
 ## <a name="download-sign-in-activities"></a>Stažení aktivit přihlašování
 
-Je možné [stáhnout data přihlášení](quickstart-download-sign-in-report.md) Pokud budete chtít pracovat s ním mimo na webu Azure portal. Kliknutím na **Stáhnout** nabízí možnost vytvořit soubor CSV nebo JSCON posledních 250 000 záznamů.  
+Je možné [stáhnout data přihlášení](quickstart-download-sign-in-report.md) Pokud budete chtít pracovat s ním mimo na webu Azure portal. Kliknutím na **Stáhnout** nabízí možnost vytvořit soubor CSV nebo JSON posledních 250 000 záznamů.  
 
 ![Stáhnout](./media/concept-sign-ins/71.png "Stáhnout")
 
@@ -214,7 +214,7 @@ Vaším vstupním bodem k těmto datům jsou 3 nejpoužívanější aplikace v o
 
 ![Aktivita přihlašování](./media/concept-sign-ins/10.png "Aktivita přihlašování")
 
-Graf využívání aplikací s týdenními agregacemi přihlašování pro 3 nejpoužívanější aplikace v daném časovém období. Výchozí časové období je 30 dnů.
+V aplikaci využití grafu s týdenními agregacemi přihlašování pro 3 nejpoužívanější aplikace v daném časovém období. Výchozí časové období je 30 dnů.
 
 ![Aktivita přihlašování](./media/concept-sign-ins/47.png "Aktivita přihlašování")
 

@@ -1,17 +1,17 @@
 ---
-title: Ovladače MySQL a kompatibilita nástroje správy
+title: Azure Database for MySQL ovladače a kompatibility nástroje pro správu
 description: Tento článek popisuje ovladače MySQL a nástroje pro správu, které jsou kompatibilní s využitím Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/21/2018
-ms.openlocfilehash: 46f2ac9114ac1191ea85b428711cb25d8557a61a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.date: 03/19/2019
+ms.openlocfilehash: 05f48145973777052590f8d10e1a2ce1fd22ec7a
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57837571"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258101"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Ovladače MySQL a nástroje pro správu kompatibilní s využitím Azure Database for MySQL
 Tento článek popisuje ovladačů a nástrojů pro správu, které jsou kompatibilní s využitím Azure Database for MySQL.
@@ -25,7 +25,7 @@ Azure Database for MySQL používá na světě nejoblíbenější community edit
 | .NET | [MySqlConnector on GitHub](https://github.com/mysql-net/MySqlConnector) <br> [Instalace balíčku od Nugetu](https://www.nuget.org/packages/MySqlConnector/) | 0.27 a po provedení | 0.26.5 a před | |
 | MySQL Connector/NET | [MySQL Connector/NET](https://github.com/mysql/mysql-connector-net) | 8.0, 7.0, 6.10 |  | Kódování chyb může způsobit selhání v některých systémech Windows UTF8 připojení. |
 | Nodejs |  [MySQLjs na Githubu](https://github.com/mysqljs/mysql/) <br> Instalační balíček z NPM:<br> Spustit `npm install mysql` z NPM | 2.15 | 2.14.1 a před | |
-| PŘEJÍT | https://github.com/go-sql-driver/mysql/releases | 1.3 | 1.2 a před | Použít allowNativePasswords = true v připojovacím řetězci |
+| PŘEJÍT | https://github.com/go-sql-driver/mysql/releases | 1.3, 1.4 | 1.2 a před | Použití `allowNativePasswords=true` v připojovacím řetězci pro verzi 1.3. Verze 1.4 obsahuje opravu a `allowNativePasswords=true` se už nevyžaduje. |
 | Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2.0, 2.1, 2.2 | 1.2.2 a před | |
 | Java | https://downloads.mariadb.org/connector-java/ | 2.1, 2.0, 1.6 | 1.5.5 a před | |
 
@@ -42,3 +42,7 @@ Výhodou kompatibility se rozšiřuje do nástrojů pro správu databází i. Sv
 | Zálohování a obnovení |  | X |  |
 | Zobrazit parametry serveru | X | X | X |
 | Zobrazení připojení klientů | X | X | X |
+
+## <a name="next-steps"></a>Další postup
+
+- [Řešení potíží s připojením ke službě Azure Database for MySQL](howto-troubleshoot-common-connection-issues.md)

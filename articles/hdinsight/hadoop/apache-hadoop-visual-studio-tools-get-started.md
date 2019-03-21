@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: aa9d03e40880dbc856045840499dba43b9d1aba9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: bb7c46548726b00c68c8e952a8e2956ad0511763
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105331"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201768"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Pomocí nástrojů Data Lake pro Visual Studio pro připojení k Azure HDInsight a spouštět dotazy Apache Hive
 
@@ -93,7 +93,7 @@ Připojení k webu Azure Portal ze sady Visual Studio:
 
 1. V Průzkumníku serveru přejděte na **Azure** > **HDInsight** a vyberte svůj cluster.
 
-2. Klikněte pravým tlačítkem na HDInsight cluster a vyberte **spravovat Cluster webu Azure Portal**.
+2. Klikněte pravým tlačítkem na HDInsight cluster a vyberte **spravovat Cluster webu Azure portal**.
 
 Můžete klást otázky nebo poskytnutí zpětné vazby ze sady Visual Studio:
 
@@ -275,5 +275,5 @@ V tomto článku jste zjistili, jak se pomocí balíčku nástrojů Data Lake pr
 * [Použití Hadoop Hive ve službě HDInsight](hdinsight-use-hive.md)
 * [Začněte používat Apache Hadoop v HDInsight](apache-hadoop-linux-tutorial-get-started.md)
 * [Odeslání úloh systému Apache Hadoop v HDInsight](submit-apache-hadoop-jobs-programmatically.md)
-* [Analýza dat Twitteru pomocí Apache Hadoop v HDInsight](../hdinsight-analyze-twitter-data.md)
+* [Analýza dat Twitteru pomocí Apache Hadoop v HDInsight](../hdinsight-analyze-twitter-data-linux.md)
 

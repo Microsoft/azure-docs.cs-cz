@@ -1,63 +1,94 @@
 ---
-title: Vytvořte index v kódu pomocí rozhraní REST API – Azure Search
+title: Vytvořte index v kódu pomocí prostředí PowerShell a rozhraní REST API – Azure Search
 description: Vytvoření textu v plném znění prohledávatelný index v kódu pomocí žádosti protokolu HTTP a rozhraní REST API Azure Search.
-ms.date: 03/01/2019
-author: mgottein
+ms.date: 03/15/2019
+author: heidisteen
 manager: cgronlun
-ms.author: magottei
+ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 98749e0900920d0d3541c78c79598123e4f987df
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 87da5cdd31abb41a774a46d3891006eb58ac5e4d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313956"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285121"
 ---
-# <a name="create-an-azure-search-index-using-the-rest-api"></a>Vytvoření indexu Azure Search pomocí rozhraní REST API
+# <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>Rychlý start: Vytvoření indexu Azure Search pomocí prostředí PowerShell a rozhraní REST API
 > [!div class="op_single_selector"]
->
-> * [Přehled](search-what-is-an-index.md)
+> * [PowerShell (REST)](search-create-index-rest-api.md)
+> * [C#](search-create-index-dotnet.md)
+> * [Postman (REST)](search-fiddler.md)
 > * [Azure Portal](search-create-index-portal.md)
-> * [.NET](search-create-index-dotnet.md)
-> * [REST](search-create-index-rest-api.md)
->
->
+> 
 
-Tento článek vás provede procesem vytvoření [indexu](https://docs.microsoft.com/rest/api/searchservice/Create-Index) Azure Search pomocí rozhraní REST API služby Azure Search.
+Tento článek vás provede procesem vytvoření, načtení a dotazování Azure Search [index](search-what-is-an-index.md) pomocí Powershellu a [rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Definice indexu a prohledávatelný obsah je k dispozici v textu žádosti jako obsah ve správném formátu JSON.
 
-Předtím, než podle těchto pokynů vytvoříte index, byste už měli mít [vytvořenou službu Azure Search](search-create-service-portal.md).
+## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete vytvořit index Azure Search pomocí rozhraní REST API, vydáte jednu žádost HTTP POST do koncového bodu adresy URL služby Azure Search. Definice indexu bude obsažená v textu žádosti jako obsah JSON ve správném formátu.
+[Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start. Další požadavky zahrnují následující položky.
 
-## <a name="identify-your-azure-search-services-admin-api-key"></a>Identifikace klíče rozhraní API správce služby Azure Search
-Teď, když máte zřízenou službu Azure Search, můžete vydávat žádosti HTTP na koncový bod adresy URL služby pomocí rozhraní REST API. *Všechny* žádosti rozhraní API musí obsahovat klíč rozhraní API (api-key) vygenerovaný pro službu Search, kterou jste zřídili. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
+[Prostředí PowerShell 5.1 nebo novější](https://github.com/PowerShell/PowerShell)s použitím [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) pro sekvenční a interaktivní kroky.
 
-1. Pokud chcete najít klíče api-key svojí služby, musíte se přihlásit k webu [Azure Portal](https://portal.azure.com/).
-2. Přejděte do okna služby Azure Search.
-3. Klikněte na ikonu klíčů.
+Koncový bod adresy URL a správce klíč rozhraní api služby search. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
 
-Vaše služba bude mít *klíče správce* a *klíče dotazů*.
+1. Na webu Azure Portal, ve vyhledávací službě **přehled** stránce, získat adresu URL. Příkladem koncového bodu může vypadat například https:\//my-service-name.search.windows.net.
 
-* Primární a sekundární *klíče správce* udělují úplná práva ke všem operacím, včetně možnosti spravovat službu, vytvářet a odstraňovat indexy, indexery a zdroje dat. Existují dva klíče, takže pokud se rozhodnete znovu vygenerovat primární klíč, můžete dál používat sekundární klíč, a naopak.
-* Vaše *klíče dotazů* udělují přístup jen pro čtení k indexům a dokumentům a obvykle se distribuují klientským aplikacím, které vydávají požadavky hledání.
+2. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. U požadavků můžete použít buď primární nebo sekundární klíč pro přidání, úpravy a odstraňování objektů.
 
-Pro účely vytvoření indexu můžete použít primární nebo sekundární klíč správce.
+   ![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-fiddler/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
 
-## <a name="define-your-azure-search-index-using-well-formed-json"></a>Definování indexu Azure Search pomocí správného formátu JSON
-Jedna žádost HTTP POST do služby vytvoří váš index. Text žádosti HTTP POST bude obsahovat jeden objekt JSON, který definuje index Azure Search.
+   Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslaného do vaší služby. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
-1. První vlastností tohoto objektu JSON je název indexu.
-2. Druhou vlastností tohoto objektu JSON je pole JSON s názvem `fields`, které obsahuje samostatný objekt JSON pro každé pole v indexu. Každý z těchto objektů JSON obsahuje více párů název/hodnota pro každý atribut pole, včetně „name“, „type“ atd.
+## <a name="connect-to-azure-search"></a>Připojení ke službě Azure Search
 
-Při navrhování indexu je důležité zohlednit uživatelskou práci při vyhledávání a potřeby podniku, protože každému poli se musí přiřadit [správné atributy](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Tyto atributy určují, které funkce vyhledávání (filtrování, používání faset, řazení fulltextového vyhledávání atd.) se použijí u kterých polí. Pokud kterýkoli atribut nezadáte, příslušná funkce hledání se ve výchozím nastavení povolí, ledaže ji výslovně zakážete.
+V prostředí PowerShell, vytvořte **$headers** objekt pro uložení typu obsahu a klíč rozhraní API. Budete muset nastavit toto záhlaví jednou po dobu trvání relace, ale které přidáte do každého požadavku. 
 
-V našem příkladu jsme nazvali index „hotels“ a pole jsme definovali takto:
+```powershell
+$headers = @{
+   'api-key' = '<your-admin-api-key>'
+   'Content-Type' = 'application/json' 
+   'Accept' = 'application/json' }
+```
 
-```JSON
+Vytvoření **$url** objekt, který určuje služby indexování kolekce. `mydemo` Název služby je určen jako zástupný symbol. Nahraďte ho platný vyhledávací službu v aktuálním předplatném v tomto příkladu.
+
+```powershell
+$url = "https://mydemo.search.windows.net/indexes?api-version=2017-11-11"
+```
+
+Spustit **Invoke-RestMethod** odeslat požadavek GET na službu a ověření připojení. Přidat **ConvertTo-Json** tak, abyste mohli zobrazit odpovědi odeslané ze služby.
+
+```powershell
+Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
+```
+
+Pokud služba je prázdný a nemá žádné indexy, výsledky jsou podobné následujícímu příkladu. V opačném případě uvidíte JSON s reprezentací provedených definic indexu.
+
+```
+{
+    "@odata.context":  "https://mydemo.search.windows.net/$metadata#indexes",
+    "value":  [
+
+              ]
+}
+```
+
+## <a name="1---create-an-index"></a>1. Vytvoření indexu
+
+Pokud používáte portál, index, musí existovat ve službě můžete načíst data. Tento krok definuje index a nasdílí změny do služby. [Vytvoření indexu (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) se používá pro tento krok.
+
+Požadované elementy indexu patří název a kolekci polí. Kolekce polí definuje strukturu *dokumentu*. Každé pole má název, typ a atributy, které určují, jak se používá (například, zda je fulltextově prohledávatelné, filtrovatelné nebo retrievable ve výsledcích hledání). V rámci indexu, jeden z pole typu `Edm.String` musí být určena jako *klíč* pro identitu dokumentu.
+
+Tento index je s názvem "hotels" a obsahuje definice pole, které vidíte níže. Určuje definici indexu [analyzátor jazyka](index-add-language-analyzers.md) pro `description_fr` pole, protože je určené k ukládání francouzského textu, které přidáme v pozdější příkladu.
+
+Vložte tento příklad do prostředí PowerShell k vytvoření **$body** objekt, který obsahuje schéma indexu.
+
+```powershell
+$body = @"
 {
     "name": "hotels",  
     "fields": [
@@ -75,32 +106,277 @@ V našem příkladu jsme nazvali index „hotels“ a pole jsme definovali takto
         {"name": "location", "type": "Edm.GeographyPoint"}
     ]
 }
+"@
 ```
 
-Atributy indexu jsme pro každé pole pečlivě zvolili podle toho, jak se pravděpodobně použijí v aplikaci. Například `hotelId` je jedinečný klíč, který lidé hledající hotely nejspíš neznají, a proto jsme u tohoto pole zakázali fulltextové vyhledávání tím, že jsme `searchable` nastavili na `false`, což šetří místo v indexu.
+Nastavte identifikátor URI kolekce indexů pro vaši službu a *hotels* indexu.
 
-Upozorňujeme, že právě jedno pole v indexu typu `Edm.String` musí být určené jako klíčové pole.
+```powershell
+$url = "https://mydemo.search.windows.net/indexes/hotels?api-version=2017-11-11"
+```
 
-Výše uvedená definice indexu používá pro pole `description_fr` analyzátor jazyka, protože je určené k ukládání francouzského textu. Další informace o analyzátorech jazyka najdete v [tématu jazykové podpory](https://docs.microsoft.com/rest/api/searchservice/Language-support) a příslušném [příspěvku na blogu](https://azure.microsoft.com/blog/language-support-in-azure-search/).
+Spuštění příkazu s **$url**, **$headers**, a **$body** pro vytvoření indexu ve službě. 
 
-## <a name="issue-the-http-request"></a>Vydání žádosti HTTP
-1. Použijte definici indexu jako text žádosti a vydejte žádost HTTP POST do adresy URL koncového bodu služby Azure Search. V adrese URL nezapomeňte použít název služby jako název hostitele a vložit správné `api-version` jako parametr řetězce dotazu (v době publikování tohoto dokumentu je aktuální verze rozhraní API `2017-11-11`).
-2. V hlavičkách žádostí zadejte `Content-Type` jako `application/json`. V hlavičce `api-key` budete taky muset zadat klíč správce služby, který jste identifikovali v kroku I.
+```powershell
+Invoke-RestMethod -Uri $url -Headers $headers -Method Put -Body $body | ConvertTo-Json
+```
+Výsledky by měly vypadat podobně jako tento (zkrácen na první dvě pole pro zkrácení):
 
-Abyste mohli vydat níže uvedenou žádost, budete muset zadat vlastní název služby a klíč rozhraní API:
+```
+{
+    "@odata.context":  "https://mydemo.search.windows.net/$metadata#indexes/$entity",
+    "@odata.etag":  "\"0x8D6A99E2DED96B0\"",
+    "name":  "hotels",
+    "defaultScoringProfile":  null,
+    "fields":  [
+                   {
+                       "name":  "hotelId",
+                       "type":  "Edm.String",
+                       "searchable":  false,
+                       "filterable":  true,
+                       "retrievable":  true,
+                       "sortable":  false,
+                       "facetable":  false,
+                       "key":  true,
+                       "indexAnalyzer":  null,
+                       "searchAnalyzer":  null,
+                       "analyzer":  null,
+                       "synonymMaps":  ""
+                   },
+                   {
+                       "name":  "baseRate",
+                       "type":  "Edm.Double",
+                       "searchable":  false,
+                       "filterable":  true,
+                       "retrievable":  true,
+                       "sortable":  true,
+                       "facetable":  true,
+                       "key":  false,
+                       "indexAnalyzer":  null,
+                       "searchAnalyzer":  null,
+                       "analyzer":  null,
+                       "synonymMaps":  ""
+                   },
+. . .
+```
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
-    Content-Type: application/json
-    api-key: [api-key]
+> [!Tip]
+> Pro ověření, můžete také zkontrolovat seznam indexů na portálu, nebo znovu spusťte příkaz používá k ověření připojení ke službě zobrazíte *hotels* indexu uvedené v kolekci indexů.
 
+<a name="load-documents"></a>
 
-V případě úspěšné žádosti by se měl zobrazit stavový kód 201 (vytvořeno). Další informace o vytvoření indexu prostřednictvím rozhraní REST API najdete v [referenčních informacích k rozhraní API](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Další informace o stavových kódech HTTP, které se mohou vrátit v případě selhání, naleznete v tématu [Stavové kódy HTTP (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
+## <a name="2---load-documents"></a>2 – nahrání dokumentů
 
-Pokud jste s indexem hotovi a chcete ho odstranit, stačí vydat žádost HTTP DELETE. Takto bychom například odstranili index „hotels“:
+Pro vkládání dokumentů, pomocí požadavku HTTP POST do koncového bodu adresy URL vašeho indexu. Rozhraní REST API pro tuto úlohu je [přidání, aktualizace nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
-    DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2017-11-11
-    api-key: [api-key]
+Vložte tento příklad do prostředí PowerShell k vytvoření **$body** objekt obsahující dokumenty, které chcete nahrát. 
 
+Tato žádost obsahuje dvě úplné a částečné jeden záznam. Částečné záznam ukazuje, že můžou nahrávat dokumenty, neúplné. `@search.action` Parametr určuje, jak se dělá indexování. Platné hodnoty jsou odeslání, sloučení, mergeOrUpload a delete. Chování mergeOrUpload buď vytvoří nový dokument pro hotelId = 3, nebo aktualizuje obsah, pokud již existuje.
+
+```powershell
+$body = @"
+{
+    "value": [
+        {
+            "@search.action": "upload",
+            "hotelId": "1",
+            "baseRate": 199.0,
+            "description": "Best hotel in town",
+            "hotelName": "Fancy Stay",
+            "category": "Luxury",
+            "tags": ["pool", "view", "wifi", "concierge"],
+            "parkingIncluded": false,
+            "smokingAllowed": false,
+            "lastRenovationDate": "2010-06-27T00:00:00Z",
+            "rating": 5,
+            "location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
+        },
+        {
+            "@search.action": "upload",
+            "hotelId": "2",
+            "baseRate": 79.99,
+            "description": "Cheapest hotel in town",
+            "hotelName": "Roach Motel",
+            "category": "Budget",
+            "tags": ["motel", "budget"],
+            "parkingIncluded": true,
+            "smokingAllowed": true,
+            "lastRenovationDate": "1982-04-28T00:00:00Z",
+            "rating": 1,
+            "location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
+        },
+        {
+            "@search.action": "mergeOrUpload",
+            "hotelId": "3",
+            "baseRate": 129.99,
+            "description": "Close to town hall and the river"
+        }
+    ]
+}
+"@
+```
+
+Nastavte na koncový bod *hotels* dokumentace kolekce a zahrnují operace s indexem (indexy/hotels/docs/index).
+
+```powershell
+$url = "https://mydemo.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11"
+```
+
+Spuštění příkazu s **$url**, **$headers**, a **$body** načtení dokumentů do indexu hotels.
+
+```powershell
+Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
+```
+Výsledky by měly vypadat podobně jako v následujícím příkladu. Měli byste vidět stavový kód 201. Popis všech stavových kódů, naleznete v tématu [stavové kódy HTTP (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
+
+```
+{
+    "@odata.context":  "https://mydemo.search.windows.net/indexes(\u0027hotels\u0027)/$metadata#Collection(Microsoft.Azure.Search.V2017_11_11.IndexResult)",
+    "value":  [
+                  {
+                      "key":  "1",
+                      "status":  true,
+                      "errorMessage":  null,
+                      "statusCode":  201
+                  },
+                  {
+                      "key":  "2",
+                      "status":  true,
+                      "errorMessage":  null,
+                      "statusCode":  201
+                  },
+                  {
+                      "key":  "3",
+                      "status":  true,
+                      "errorMessage":  null,
+                      "statusCode":  201
+                  }
+              ]
+}
+```
+
+## <a name="3---search-an-index"></a>3. Prohledání indexu
+
+Tento krok ukazuje, jak zadávat dotazy na index pomocí [rozhraní API pro vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+
+Nastavit koncový bod na *hotels* dokumentace kolekce a přidejte **hledání** parametr řetězce dotazu zahrnout. Tento řetězec znamená prázdné vyhledávání a vrátí unranked seznam všechny dokumenty.
+
+```powershell
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=*'
+```
+
+Spusťte příkaz k odeslání **$url** ke službě.
+
+```powershell
+Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
+```
+
+Výsledky by měly vypadat podobně jako následující výstup.
+
+```
+{
+    "@odata.context":  "https://mydemo.search.windows.net/indexes(\u0027hotels\u0027)/$metadata#docs(*)",
+    "value":  [
+                  {
+                      "@search.score":  1.0,
+                      "hotelId":  "1",
+                      "baseRate":  199.0,
+                      "description":  "Best hotel in town",
+                      "description_fr":  null,
+                      "hotelName":  "Fancy Stay",
+                      "category":  "Luxury",
+                      "tags":  "pool view wifi concierge",
+                      "parkingIncluded":  false,
+                      "smokingAllowed":  false,
+                      "lastRenovationDate":  "2010-06-27T00:00:00Z",
+                      "rating":  5,
+                      "location":  "@{type=Point; coordinates=System.Object[]; crs=}"
+                  },
+                  {
+                      "@search.score":  1.0,
+                      "hotelId":  "2",
+                      "baseRate":  79.99,
+                      "description":  "Cheapest hotel in town",
+                      "description_fr":  null,
+                      "hotelName":  "Roach Motel",
+                      "category":  "Budget",
+                      "tags":  "motel budget",
+                      "parkingIncluded":  true,
+                      "smokingAllowed":  true,
+                      "lastRenovationDate":  "1982-04-28T00:00:00Z",
+                      "rating":  1,
+                      "location":  "@{type=Point; coordinates=System.Object[]; crs=}"
+                  },
+                  {
+                      "@search.score":  1.0,
+                      "hotelId":  "3",
+                      "baseRate":  129.99,
+                      "description":  "Close to town hall and the river",
+                      "description_fr":  null,
+                      "hotelName":  null,
+                      "category":  null,
+                      "tags":  "",
+                      "parkingIncluded":  null,
+                      "smokingAllowed":  null,
+                      "lastRenovationDate":  null,
+                      "rating":  null,
+                      "location":  null
+                  }
+              ]
+}
+```
+
+Zkuste několik další příklady dotazů syntaxe získat představu. Můžete řetězec hledání, dotazy verbatim $filter, omezit sadu výsledků, obor hledání na konkrétní pole a další.
+
+```powershell
+# Query example 1
+# Search the entire index for the term 'budget'
+# Return only the `hotelName` field, "Roach hotel"
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=budget&$select=hotelName'
+
+# Query example 2 
+# Apply a filter to the index to find hotels cheaper than $150 per night
+# Returns the `hotelId` and `description`. Two documents match.
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=*&$filter=baseRate lt 150&$select=hotelId,description'
+
+# Query example 3
+# Search the entire index, order by a specific field (`lastRenovationDate`) in descending order
+# Take the top two results, and show only `hotelName` and `lastRenovationDate`
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate'
+```
+## <a name="clean-up"></a>Vyčištění 
+
+Index by měl odstranit, pokud ho už nepotřebují. Bezplatná služba je omezena na tři indexy. Můžete chtít odstranit všechny indexy, které nepoužíváte aktivně tak, že můžete pokračovat dalšími tématy.
+
+```powershell
+# Set the URI to the hotel index
+$url = 'https://mydemo.search.windows.net/indexes/hotels?api-version=2017-11-11'
+
+# Delete the index
+Invoke-RestMethod -Uri $url -Headers $headers -Method Delete
+```
 
 ## <a name="next-steps"></a>Další postup
-Po vytvoření indexu Azure Search budete připravení [nahrát do indexu obsah](search-what-is-data-import.md), abyste mohli začít prohledávat data.
+
+Zkuste přidat francouzské popisy do indexu. Následující příklad obsahuje francouzské řetězce a ukazuje další vyhledávací akce. Pomocí mergeOrUpload můžete vytvořit nebo přidat do existujících polí. Následující řetězce musí být UTF-8.
+
+```json
+{
+    "value": [
+        {
+            "@search.action": "mergeOrUpload",
+            "hotelId": "1",
+            "description_fr": "Meilleur hôtel en ville"
+        },
+        {
+            "@search.action": "merge",
+            "hotelId": "2",
+            "description_fr": "Hôtel le moins cher en ville",
+        },
+        {
+            "@search.action": "delete",
+            "hotelId": "6"
+        }
+    ]
+}
+```

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 608abd09227014513a0ad358d7a2c225b5ab2b97
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2412bd5b4b4f05cdeb1638aa3d9ef1676e7b8315
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863368"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293069"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Kódování prostředku pomocí kodéru Media Encoder Standard
 > [!div class="op_single_selector"]

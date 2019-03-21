@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62320d6523652d91f35e55196a84cc32ea7bc55d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 36e1c8d6cae79147c5cd4b5a46f5e1c330811ab8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440161"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Kurz: Integrace Azure Active Directory s Procore jednotného přihlašování
 
@@ -179,7 +179,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain.extension**  
        Například BrittaSimon@contoso.com.
 
     c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -204,7 +204,7 @@ Postupujte prosím podle následujících kroků vytvořte na straně Procore SS
 
     b. V **příjmení** textové pole, příjmení typ uživatele jako **Simon**.
 
-    c. V **e-mailovou adresu** , jako je textové pole, typ uživatele e-mailovou adresu **BrittaSimon@contoso.com**.
+    c. V **e-mailovou adresu** , jako je textové pole, typ uživatele e-mailovou adresu **BrittaSimon\@contoso.com**.
 
     d. Vyberte **šablona oprávnění** jako **později použít šablonu oprávnění**.
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 357cf832f8878364965c8d8a85d7af8c5a2bc21c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.openlocfilehash: 9b8ae86a5c13573fbe80c8f06d5ce97c72d8e341
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992074"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58257666"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Použití dynamického šifrování AES-128 a doručení klíče služby
 > [!div class="op_single_selector"]
@@ -140,7 +140,7 @@ Získejte testovací token na základě omezení s tokenem, které se používá
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 ```
 
-K testování datového proudu můžete použít [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+K testování datového proudu můžete použít [Azure Media Services Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 ## <a id="client_request"></a>Jak může váš klient požádat o klíč ze služby doručení klíče?
 V předchozím kroku sestavit adresu URL, která odkazuje na soubor manifestu. Váš klient je potřeba extrahovat nezbytné informace z datových proudů soubory manifestu tak, aby žádost o službu doručování klíčů.

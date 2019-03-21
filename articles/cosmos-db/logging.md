@@ -4,15 +4,15 @@ description: Další informace o různých způsobech protokolování a monitoro
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/15/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 2a08097b42f395bd0009353635cabbd264c3c421
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: d75eb87bff812589e4d3a3a14079ddaaf368a588
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992086"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259767"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Protokolování diagnostiky ve službě Azure Cosmos DB 
 
@@ -24,7 +24,7 @@ Jakmile začnete používat jednu nebo více databází Azure Cosmos DB, můžet
 
 Před mluvíme o tom, jak sledovat účtu služby Azure Cosmos DB, můžeme vysvětlit pár věcí o protokolování a monitorování. Existují různé typy protokolů na platformě Azure. Existují [protokolů aktivit Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [diagnostické protokoly Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [metriky Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), události, monitorování prezenčních signálů, provozních protokolů a tak dále. Existuje množství protokoly. Můžete zobrazit úplný seznam protokolů v [protokoly Azure monitoru](https://azure.microsoft.com/services/log-analytics/) na webu Azure Portal. 
 
-Následující obrázek ukazuje různé druhy protokoly Azure, které jsou k dispozici:
+Na následujícím obrázku je jiný druh protokoly Azure, které jsou k dispozici:
 
 ![Různé druhy protokoly Azure](./media/logging/azurelogging.png)
 
@@ -67,7 +67,7 @@ Diagnostické protokoly Azure jsou emitovány prostředek a poskytují bohaté a
 
 Pokud chcete povolit protokolování diagnostiky, musí mít následující prostředky:
 
-* Existující služby Azure Cosmos DB účet, databázi a kontejner. Pokyny k vytvoření těchto prostředků najdete v tématu [pomocí webu Azure portal vytvořit účet databáze](create-sql-api-dotnet.md#create-a-database-account), [ukázky v Azure CLI](cli-samples.md), nebo [ukázky Powershellu](powershell-samples.md).
+* Existující služby Azure Cosmos DB účet, databázi a kontejner. Pokyny k vytvoření těchto prostředků najdete v tématu [pomocí webu Azure portal vytvořit účet databáze](create-sql-api-dotnet.md#create-account), [ukázky v Azure CLI](cli-samples.md), nebo [ukázky Powershellu](powershell-samples.md).
 
 Pokud chcete povolit protokolování diagnostiky na portálu Azure portal, proveďte následující kroky:
 
@@ -99,27 +99,23 @@ Povolit protokolování diagnostiky a metriky pomocí Azure CLI, použijte násl
 - Pokud chcete povolit ukládání diagnostických protokolů v účtu úložiště, použijte tento příkaz:
 
    ```azurecli-interactive
-   azure insights diagnostic set --resourceId <resourceId> --storageId <storageAccountId> --enabled true
+   az monitor diagnostic-settings create --name DiagStorage --resource <resourceId> --storage-account <storageAccountName> --logs '[{"category": "QueryRuntimeStatistics", "enabled": true, "retentionPolicy": {"enabled": true, "days": 0}}]'
    ```
 
-   `resourceId` Je název účtu služby Azure Cosmos DB. `storageId` Je název účtu úložiště, do kterého chcete odeslat protokoly.
+   `resource` Je název účtu služby Azure Cosmos DB. Prostředek je ve formátu "/subscriptions/`<subscriptionId>`/resourceGroups/`<resource_group_name>`/providers/Microsoft.DocumentDB/databaseAccounts/ < Azure_Cosmos_account_name >" `storage-account` je název účtu úložiště, do které jste Chcete odeslat protokoly. Další protokoly se můžete přihlásit prostřednictvím aktualizace hodnoty parametru kategorie "MongoRequests" nebo "DataPlaneRequests". 
 
 - Pokud chcete povolit streamování diagnostických protokolů do centra událostí, použijte tento příkaz:
 
    ```azurecli-interactive
-   azure insights diagnostic set --resourceId <resourceId> --serviceBusRuleId <serviceBusRuleId> --enabled true
+   az monitor diagnostic-settings create --name cdbdiagsett --resourceId <resourceId> --event-hub-rule <eventHubRuleID> --logs '[{"category":"QueryRuntimeStatistics","enabled":true,"retentionPolicy":{"days":6,"enabled":true}}]'
    ```
 
-   `resourceId` Je název účtu služby Azure Cosmos DB. `serviceBusRuleId` Je řetězec v tomto formátu:
-
-   ```azurecli-interactive
-   {service bus resource ID}/authorizationrules/{key name}
-   ```
+   `resource` Je název účtu služby Azure Cosmos DB. `event-hub-rule` Je ID event hub pravidlo. 
 
 - Pokud chcete povolit odesílání diagnostických protokolů do pracovního prostoru Log Analytics, použijte tento příkaz:
 
    ```azurecli-interactive
-   azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
+   az monitor diagnostic-settings create --name cdbdiagsett --resourceId <resourceId> --workspace <resource id of the log analytics workspace> --logs '[{"category":"QueryRuntimeStatistics","enabled":true,"retentionPolicy":{"days":6,"enabled":true}}]'
    ```
 
 Tyto parametry pro povolení více možností výstupu můžete kombinovat.

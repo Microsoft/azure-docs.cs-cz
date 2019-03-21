@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/12/2019
+ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5152058643b97e11c7487d470d4f7d3fc9d96b6e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 63d4f8e2f1b88084b2bac5f1a29514b5e289cbd4
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878121"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286512"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek pro Azure Disk Encryption 
 
@@ -100,7 +100,7 @@ Než začnete, projděte si [požadavky](azure-security-disk-encryption-prerequi
 - **Seznam všech tajných kódů šifrování disku používaný k šifrování virtuálních počítačů ve službě key vault** 
 
      ```azurepowershell-interactive
-     Get-AzureKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
+     Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
      ```
 
 ### <a name="bkmk_prereq-script"></a> Pomocí skriptu Powershellu požadavky Azure Disk Encryption
@@ -546,7 +546,7 @@ Při šifrování pomocí aplikace Azure AD (předchozí verzi), musí být tajn
 ``` 
 
 ### <a name="bkmk_SecretnoKEK"></a> Tajný kód disk encryption není šifrován KEK
-Chcete-li nastavit tajný klíč v trezoru klíčů, použijte [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). Pokud máte virtuální počítače s Windows, je zakódován jako řetězec ve formátu base64 a pak nahrají do vašeho trezoru klíčů pomocí souboru klíče bek `Set-AzureKeyVaultSecret` rutiny. Heslo pro Linux, jsou zakódovány jako řetězec ve formátu base64 a pak nahrají do služby key vault. Kromě toho Ujistěte se, že následující značky jsou nastaveny při vytvoření tajného klíče v trezoru klíčů.
+Chcete-li nastavit tajný klíč v trezoru klíčů, použijte [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). Pokud máte virtuální počítače s Windows, je zakódován jako řetězec ve formátu base64 a pak nahrají do vašeho trezoru klíčů pomocí souboru klíče bek `Set-AzKeyVaultSecret` rutiny. Heslo pro Linux, jsou zakódovány jako řetězec ve formátu base64 a pak nahrají do služby key vault. Kromě toho Ujistěte se, že následující značky jsou nastaveny při vytvoření tajného klíče v trezoru klíčů.
 
 #### <a name="windows-bek-file"></a>Soubor klíče BEK Windows
 ```powershell
@@ -569,7 +569,7 @@ $FileContentEncoded = [System.convert]::ToBase64String((Get-Content -Path $BEKFi
 
 $SecretName = [guid]::NewGuid().ToString()
 $SecureSecretValue = ConvertTo-SecureString $FileContentEncoded -AsPlainText -Force
-$Secret = Set-AzureKeyVaultSecret -VaultName $VeyVaultName -Name $SecretName -SecretValue $SecureSecretValue -tags $tags
+$Secret = Set-AzKeyVaultSecret -VaultName $VeyVaultName -Name $SecretName -SecretValue $SecureSecretValue -tags $tags
 
 # Show the secret's URL and store it as a variable. This is used as -DiskEncryptionKeyUrl in Set-AzVMOSDisk when you attach your OS disk. 
 $SecretUrl=$secret.Id
@@ -587,7 +587,7 @@ $SecretUrl
  $secretValue = [Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($passphrase))
  $secureSecretValue = ConvertTo-SecureString $secretValue -AsPlainText -Force
 
- $secret = Set-AzureKeyVaultSecret -VaultName $KeyVaultName -Name $secretName -SecretValue $secureSecretValue -tags $tags
+ $secret = Set-AzKeyVaultSecret -VaultName $KeyVaultName -Name $secretName -SecretValue $secureSecretValue -tags $tags
  $secretUrl = $secret.Id
 ```
 
@@ -601,8 +601,8 @@ Před odesláním do služby key vault tajný klíč, které můžete volitelně
     # This is the passphrase that was provided for encryption during the distribution installation
     $passphrase = "contoso-password"
 
-    Add-AzureKeyVaultKey -VaultName $KeyVaultName -Name "keyencryptionkey" -Destination Software
-    $KeyEncryptionKey = Get-AzureKeyVaultKey -VaultName $KeyVault.OriginalVault.Name -Name "keyencryptionkey"
+    Add-AzKeyVaultKey -VaultName $KeyVaultName -Name "keyencryptionkey" -Destination Software
+    $KeyEncryptionKey = Get-AzKeyVaultKey -VaultName $KeyVault.OriginalVault.Name -Name "keyencryptionkey"
 
     $apiversion = "2015-06-01"
 

@@ -4,16 +4,16 @@ ms.service: azure
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
-ms.openlocfilehash: d8e7aa87deaa37f6a2e2eef572b6b7f6140e3fee
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: HT
+ms.openlocfilehash: 05d20a701b448f8986292400fa2844d20f928a70
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571974"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58261382"
 ---
 ## <a name="open-azure-cloud-shell"></a>Otevření služby Azure Cloud Shell
 
-Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Ve službě Cloud Shell jsou předinstalované obvyklé nástroje Azure a jsou nakonfigurované pro použití s vaším účtem. Stačí vybrat tlačítko **Kopírovat** a zkopírovat kód, vložit ho do služby Cloud Shell a pak ho spustit stisknutím klávesy Enter. Cloud Shell můžete otevřít několika způsoby:
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Ve službě Cloud Shell jsou předinstalované obvyklé nástroje Azure a jsou nakonfigurované pro použití s vaším účtem. Vyberte **kopírování** zkopírovat kód, vložte ho ve službě Cloud Shell a stiskněte klávesu Enter pro spuštění. Cloud Shell můžete otevřít několika způsoby:
 
 |  |   |
 |-----------------------------------------------|---|

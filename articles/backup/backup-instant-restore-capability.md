@@ -6,29 +6,27 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 03/20/2019
 ms.author: sogup
-ms.openlocfilehash: a618482b73e8e423bc00b7c9010c9282da69cd3d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 20f934ae418b0a5e37d3e619fabadc5cb6e23642
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57844703"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285543"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Získejte lepší zálohování a obnovení výkonu pomocí funkce Azure Backup rychlé obnovení
 
 > [!NOTE]
 > Na základě zpětné vazby od uživatelů jsme přejmenovali **zásobník záloh virtuálních počítačů V2** k **rychlé obnovení** abyste snížili nejasnosti s funkcemi Azure Stack.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Nový model pro rychlé obnovení obsahuje následující vylepšení funkcí:
 
 * Možnost používat snímkům pořízeným jako součást, která je k dispozici pro obnovení bez čekání na přenos dat do trezoru na dokončení úlohy zálohování. Snižuje dobu čekání pro snímky ke zkopírování do trezoru před aktivace operace obnovení.
 * Zkracuje dobu zálohování a obnovení tak, že zachová snímky místně, ve výchozím nastavení dva dny. Tento trezor výchozí je možné konfigurovat na libovolnou hodnotu mezi 1 až 5 dnů uvolní.
 * Podporuje disk o velikosti až 4 TB.
-* Podporuje disky SSD na úrovni Standard.
-*   Možnost používat nespravovaného virtuálního počítače na původní účty úložiště (na disk), při obnovování. Tato schopnost existuje i v případě, že virtuální počítač obsahuje disky, které jsou distribuovány mezi různými účty úložiště. Urychluje operace obnovení pro celou řadu konfigurací virtuálních počítačů
+* Podporuje disky SSD na úrovni Standard spolu s standardní HDD disky a disky Premium SSD.
+*   Možnost používat nespravovaného virtuálního počítače na původní účty úložiště (na disk), při obnovování. Tato schopnost existuje i v případě, že virtuální počítač obsahuje disky, které jsou distribuovány mezi různými účty úložiště. Urychluje operace obnovení pro celou řadu konfigurací virtuálních počítačů.
 
 
 ## <a name="whats-new-in-this-feature"></a>Co je nového v této funkci
@@ -42,7 +40,7 @@ Vytvoření bodu obnovení se považuje za pouze po dokončení fáze 1 a 2. Jak
 
 ![Úloha zálohování ve virtuálním počítači zásobník záloh modelu nasazení Resource Manager – úložiště a trezoru](./media/backup-azure-vms/instant-rp-flow.png)
 
-Ve výchozím nastavení snímky zůstanou zachovány dva dny. Tato funkce umožňuje operace obnovení z těchto snímků existuje řezem dolů časů obnovení. Snižuje čas, který se vyžaduje k transformaci a kopírování dat z trezoru zpět do uživatelského účtu úložiště pro scénáře nespravovaný disk a pro uživatele spravovaného disku a vytvoří spravovaných disků z dat služby Recovery Services.
+Ve výchozím nastavení snímky zůstanou zachovány dva dny. Tato funkce umožňuje operace obnovení z těchto snímků existuje řezem dolů časů obnovení. Snižuje čas potřebný k transformaci a kopírování dat z trezoru.
 
 ## <a name="feature-considerations"></a>Důležité informace o funkci
 
@@ -52,100 +50,23 @@ Ve výchozím nastavení snímky zůstanou zachovány dva dny. Tato funkce umož
 * Získáte možnost konfigurace uchovávání snímku na základě potřeb obnovení. V závislosti na požadavku můžete nastavit uchování snímků pro minimálně jeden den v okně zásady zálohování, jak je popsáno níže. To vám umožňují snížení nákladů pro uchovávání dat snímku, pokud nechcete provádět obnovení často.
 * Toto je jeden směrové upgradu po upgradu na rychlé obnovení, budete se moci vrátit.
 
-
 >[!NOTE]
 >Pomocí této rychlé obnovení upgradu, doba uchovávání snímek u všech zákazníků (**nové i stávající zahrnuté obě**) se nastaví na výchozí hodnotu dvou dnů. Však můžete nastavit dobu trvání podle vašich požadavků na libovolnou hodnotu mezi 1 až 5 dnů uvolní.
-
 
 ## <a name="cost-impact"></a>Cenově dopad
 
 Přírůstkovými snímky se ukládají v účtu úložiště Virtuálního počítače, které se používají pro rychlé obnovení. Přírůstkový snímek znamená, že místo obsazené snímku je rovna místo obsazené stránky, které jsou zapsány po vytvoření snímku. Fakturace je stále za GB je stejný, jak je uvedeno v využité místo obsazena snímek a cena za GB [stránce s cenami](https://azure.microsoft.com/pricing/details/managed-disks/).
 
+>[!NOTE]
+> Je pevně snímku uchování 5 dní pro týdenní zásady.
 
-## <a name="upgrading-to-instant-restore"></a>Upgrade na rychlé obnovení
+## <a name="configure-snapshot-retention-using-the-azure-portal"></a>Konfigurace uchovávání snímek pomocí webu Azure portal
 
-Pokud použijete Azure portal, zobrazí se oznámení na řídicím panelu trezoru. Toto oznámení se týká podporu velkých disků a zvýšení rychlosti zálohování a obnovení.
-Otevření obrazovky pro upgrade na rychlé obnovení, klikněte na banner.
+**Všichni uživatelé Azure backup nyní se upgradovaly na okamžitá obnova**.
 
-![Úloha zálohování v modelu nasazení Resource Manager zásobník záloh virtuálních počítačů – podpora oznámení](./media/backup-azure-vms/instant-rp-banner.png)
-
-Klikněte na **upgradovat** jak je znázorněno v následujícím snímku obrazovky:
-
-![Úloha zálohování v zásobníku zálohování virtuálních počítačů modelu nasazení Resource Manager – upgrade](./media/backup-azure-vms/instant-rp.png)
-
-Alternativně můžete přejít na **vlastnosti** stránce trezoru, chcete-li získat **upgradovat** v části **zásobník záloh virtuálních počítačů**.
-
-![Úloha zálohování v zásobníku zálohování virtuálních počítačů – stránka Vlastnosti](./media/backup-azure-vms/instant-restore-capability-properties.png)
-
-
-## <a name="configure-snapshot-retention-using-azure-portal"></a>Konfigurace uchovávání snímek pomocí webu Azure portal
-Všechny uživatele napříč všemi **veřejných zeměpisných oblastech** se upgradovaly na rychlé obnovení.
-
-Upgradovaný uživatelů na webu Azure Portal uvidíte pole přidá **zásady zálohování virtuálních počítačů** okně v části **rychlé obnovení** části. Doba uchování snímků z můžete změnit **zásady zálohování virtuálního počítače** okno pro všechny virtuální počítače přidružené k určité zásady zálohování.
+Na webu Azure Portal, zobrazí se pole přidá **zásady zálohování virtuálních počítačů** okně v části **rychlé obnovení** oddílu. Doba uchování snímků z můžete změnit **zásady zálohování virtuálního počítače** okno pro všechny virtuální počítače přidružené k určité zásady zálohování.
 
 ![Funkce Rychlé obnovení](./media/backup-azure-vms/instant-restore-capability.png)
-
-## <a name="upgrade-to-instant-restore-using-powershell"></a>Upgrade provést rychlé obnovení pomocí prostředí PowerShell
-
-Pokud chcete samoobslužné a upgradovat na rychlé obnovení, spusťte následující rutiny z Powershellu se zvýšenými oprávněními terminálu:
-
-1.  Přihlaste se ke svému účtu Azure:
-
-    ```
-    PS C:> Connect-AzAccount
-    ```
-
-2.  Vyberte předplatné, pro kterou chcete zaregistrovat:
-
-    ```
-    PS C:>  Get-AzSubscription –SubscriptionName "Subscription Name" | Select-AzSubscription
-    ```
-
-3.  Zaregistrujte toto předplatné:
-
-    ```
-    PS C:>  Register-AzProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-## <a name="upgrade-to-instant-restore-using-cli"></a>Upgrade provést rychlé obnovení pomocí rozhraní příkazového řádku
-
-Spusťte následující příkazy z prostředí:
-
-1.  Přihlaste se ke svému účtu Azure:
-
-    ```
-    az login
-    ```
-
-2.  Vyberte předplatné, pro kterou chcete zaregistrovat:
-
-    ```
-    az account set --subscription "Subscription Name"
-    ```
-
-3.  Zaregistrujte toto předplatné:
-
-    ```
-    az feature register --namespace Microsoft.RecoveryServices --name InstantBackupandRecovery
-    ```
-
-## <a name="verify-that-the-upgrade-is-successful"></a>Ověřte, že upgrade se úspěšně dokončila
-
-### <a name="powershell"></a>PowerShell
-Prostředí PowerShell terminálu se zvýšenými oprávněními spusťte následující rutinu:
-
-```
-Get-AzProviderFeature -FeatureName "InstantBackupandRecovery" -ProviderNamespace Microsoft.RecoveryServices
-```
-
-### <a name="cli"></a>Rozhraní příkazového řádku
-Z prostředí spusťte následující příkaz:
-
-```
-az feature show --namespace Microsoft.RecoveryServices --name InstantBackupandRecovery
-```
-
-Když je ve stavu "Registrováno", je vaše předplatné upgradovat na rychlé obnovení.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -156,7 +77,7 @@ Snímky se ukládají společně s disky zrychlit vytvoření bodu obnovení a o
 Ano, pro účty služby premium storage snímkům pořízeným okamžité obnovení bodu zabírat 10 TB místa přiděleného snímku.
 
 ### <a name="how-does-the-snapshot-retention-work-during-the-five-day-period"></a>Jak funguje uchování snímků během období 5 dní?
-Každý den nový snímek je převzata, a pak jednotlivým pět přírůstkových snímků. Velikost snímku závisí na četnosti změn dat, která je ve většině případů přibližně 2 – 7 %.
+Každý den nový snímek je převzata, a pak jednotlivým pět přírůstkových snímků. Velikost snímku závisí na četnosti změn dat, které jsou ve většině případů přibližně 2 – 7 %.
 
 ### <a name="is-an-instant-restore-snapshot-an-incremental-snapshot-or-full-snapshot"></a>Rychlé obnovení snímku je přírůstkový snímek nebo úplné snímku?
 Snímkům pořízeným jako součást funkce Rychlé obnovení jsou přírůstkových snímků.

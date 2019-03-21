@@ -7,12 +7,12 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 4b37b6cd35526d6a76625dd03d1325f1688e698e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4532962b6fd9f40fad625ab000116e5a617682e5
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044463"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258767"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Připojení ke službě Azure Cosmos DB Qlik Sense a vizualizace dat
 
@@ -42,9 +42,9 @@ Před postupujte podle pokynů v tomto článku, ujistěte se, že máte připra
 
 * Stáhněte si [videohru data](https://www.kaggle.com/gregorut/videogamesales), je tato ukázková data ve formátu CSV. Bude ukládání těchto dat v účtu služby Cosmos DB a vizualizovat v Qlik Sense.
 
-* Vytvoření účtu rozhraní SQL API služby Azure Cosmos DB pomocí kroků popsaných v [vytvořit účet](create-sql-api-dotnet.md#create-a-database-account) část tohoto článku rychlý start.
+* Vytvoření účtu rozhraní SQL API služby Azure Cosmos DB pomocí kroků popsaných v [vytvořit účet](create-sql-api-dotnet.md#create-account) část tohoto článku rychlý start.
 
-* [Vytvořit databázi a kolekci](create-sql-api-dotnet.md#add-a-collection) – můžete použít hodnotu lze nastavit kolekci propustnosti na 1000 RU/s. 
+* [Vytvořit databázi a kolekci](create-sql-api-dotnet.md#create-collection-database) – můžete použít hodnotu lze nastavit kolekci propustnosti na 1000 RU/s. 
 
 * Načtěte videohru ukázkových prodejních dat do účtu služby Cosmos DB. Můžete importovat data pomocí služby Azure Cosmos DB nástroj pro migraci dat, vám pomůžou [sekvenční](import-data.md#SQLSeqTarget) nebo [hromadný import](import-data.md#SQLBulkTarget) data. Trvá přibližně 3 až 5 minut, než se data určená k importu do účtu služby Cosmos DB.
 

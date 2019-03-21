@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 07e3552b58b702cb94c879dd34397010c07522db
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: be285b6a51ae5a0f4239b841ce64100f1875d785
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791932"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294344"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Správa dat protokolů a pracovním prostorům ve službě Azure Monitor
 Azure Monitor úložiště vytvářet protokoly dat v pracovním prostoru Log Analytics, která je v podstatě kontejner, který obsahuje data a informace o konfiguraci. Ke správě přístupu k protokolování dat, můžete provádět různé úlohy správy související s pracovními prostory. Vy nebo další členové vaší organizace můžete používat víc pracovních prostorů ke správě různých sad dat, která se shromažďují ze všech částí vaší infrastruktury IT.
@@ -104,7 +104,7 @@ _Přístupovém režimu_ odkazuje na přístup uživatele k pracovnímu prostoru
 > - Containers
 > - Vlastní protokoly vytvořené metodou rozhraní API kolekce dat HTTP
 >
-> Můžete otestovat, pokud protokoly jsou správně spojené s jejich prostředků spuštěním dotazu a kontrola záznamů vás zajímá. Pokud je ID správné prostředku v [_ResourceId](log-standard-properties.md#resourceid) vlastnost a potom dat je k dispozici pro dotazy zaměřené na prostředek.
+> Můžete otestovat, pokud protokoly jsou správně spojené s jejich prostředků spuštěním dotazu a kontrola záznamů vás zajímá. Pokud je ID správné prostředku v [_ResourceId](log-standard-properties.md#_resourceid) vlastnost a potom dat je k dispozici pro dotazy zaměřené na prostředek.
 
 ### <a name="comparing-access-modes"></a>Porovnává režimy přístupu
 
@@ -136,15 +136,6 @@ Toto je výchozí nastavení pro všechny pracovní prostory vytvořené po bře
 > [!NOTE]
 > Pokud má uživatel jenom oprávnění zdrojů do pracovního prostoru, pouze bude mít přístup k použití pracovního prostoru [zaměřené na prostředek režimu](#access-modes).
 
-
-### <a name="define-access-control-mode-in-azure-portal"></a>Definujte režim řízení přístupu na webu Azure portal
-Aktuální režim řízení přístupu pracovního prostoru můžete zobrazit na **přehled** stránky pro pracovní prostor v **pracovní prostor Log Analytics** nabídky.
-
-![Režim zobrazení pracovního prostoru přístup ovládacího prvku](media/manage-access/view-access-control-mode.png)
-
-Toto nastavení můžete změnit na **vlastnosti** stránky pro pracovní prostor. Změna nastavení bude zakázáno, pokud nemáte oprávnění ke konfiguraci pracovního prostoru.
-
-![Režim přístupu změnit pracovní prostor](media/manage-access/change-access-control-mode.png)
 
 ### <a name="define-access-control-mode-in-azure-portal"></a>Definujte režim řízení přístupu na webu Azure portal
 Aktuální režim řízení přístupu pracovního prostoru můžete zobrazit na **přehled** stránky pro pracovní prostor v **pracovní prostor Log Analytics** nabídky.

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: e3dc4a3128be7014af0454cf78f2c8c5c86f8d77
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 72d6ce58a986ddd0d0976d99de5ca3426d78f0b9
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409733"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287158"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Kurz: Vrátí zařízení Azure Data Box a ověřte nahrání dat do Azure
 
@@ -43,7 +43,13 @@ Než začnete, ujistěte se, že:
 
 1. Ujistěte se, že je zařízení vypnuté a nejsou k němu zapojené žádné kabely. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
 2. Ujistěte se, že se na displeji s elektronickým inkoustem zobrazuje expediční štítek, a naplánujte vyzvednutí přepravcem. Pokud popisek poškození nebo ztráty nebo se nezobrazuje na displeji E-ink, obraťte se na Microsoft Support. Pokud podpora navrhuje, pak můžete přejít na **přehled > stáhnout Expediční štítek** na webu Azure Portal. Stáhnout Expediční štítek a opatří na zařízení. 
-3. S UPS vyzvednutí naplánujte, pokud vrácení zařízení. Pokud chcete vyzvednutí naplánovat volání místní UPS (specifické pro zemi bezplatné číslo) nebo zanechání pole údaj na nejbližší umístění pro odložení.
+3. S UPS vyzvednutí naplánujte, pokud vrácení zařízení. Chcete-li vyzvednutí naplánovat:
+
+    - Volání místní UPS (specifické pro zemi bezplatné číslo).
+    - Ve volání nabídka zpětné dodávky sledovací číslo, jak je znázorněno v E-ink zobrazení nebo Tisk popisku.
+    - Pokud není uveden v uvozovkách sledovacího čísla, bude vyžadovat UPS vám umožní platit poplatek za další využití během vyzvednutí.
+
+    Namísto plánování vyzvednutí, můžete také odkládací pole údaj na nejbližší umístění pro odložení.
 4. Jakmile přepravce vyzvedne a naskenuje Data Box, stav objednávky na portálu se změní na **Vyzvednuto**. Zobrazí se také ID sledování.
 
 ## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
@@ -58,8 +64,8 @@ Ověřte, že vaše data před odstraněním ze zdroje nahraje do Azure. Vaše d
 
 - Vaše účty úložiště Azure. Když data zkopírujete do Data Boxu, v závislosti na jejich typu se nahrají do jedné z následujících cest v účtu služby Azure Storage.
 
-    - Objekty blob bloku a objekty blob stránky: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
-    - Soubory Azure: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
+  - Objekty blob bloku a objekty blob stránky: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
+  - Soubory Azure: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
     Alternativně můžete přejít na svůj účet Azure Storage na webu Azure Portal a dokončit navigaci tam.
 

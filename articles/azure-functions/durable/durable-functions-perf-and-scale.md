@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/25/2018
+ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5e185eea6fb1e96f17bf458dbfe2f06226933386
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3c9227a34c1b7208210b84b5b7d64ecdc8654a83
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341164"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286376"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Výkon a škálování v Durable Functions (Azure Functions)
 
@@ -49,9 +49,18 @@ Existuje více *řízení fronty* za úkol Centrum Durable Functions. A *řízen
 
 Ovládací prvek fronty obsahují celou řadu typů Orchestrace životní cyklus zpráv. Mezi příklady patří [zpráv s orchestrator ovládacího prvku](durable-functions-instance-management.md), funkce aktivitu *odpovědi* zprávy a zprávy časovače. Až 32 zpráv bude vyjmutou z fronty ovládací prvek v jedné cyklického dotazování. Tyto zprávy obsahují data datové části, jakož i metadata, která instance orchestration je určený pro včetně. Pokud více dequeued zpráv jsou určené pro jednu instanci Orchestrace, budou zpracovávat jako dávku.
 
+### <a name="queue-polling"></a>Dotazování fronty
+
+Rozšíření trvalý úlohy implementuje exponenciální regresní algoritmu náhodných aby se snížil dopad nečinné fronty dotazovat se na náklady za transakce úložiště. Když se najde zprávu, modul runtime okamžitě vyhledá další zprávy. Když je nalezena žádná zpráva, počká na určitou dobu, než to zkusíte znovu. Po následujících neúspěšných pokusech o získání zpráv fronty dobu čekání i nadále zvyšovat, dokud nedosáhne maximální doba čekání, výchozí nastavení je 30 sekund.
+
+Dotazování Maximální zpoždění se dají konfigurovat přes `maxQueuePollingInterval` vlastnost [host.json souboru](../functions-host-json.md#durabletask). Nastavíte tuto možnost na hodnotu vyšší může vést k vyšší latence zpracování zprávy. Vyšší latence se očekává až po období nečinnosti. Vyšší náklady na úložiště z důvodu transakce větší úložiště by mohlo způsobit nastavíte tuto možnost na nižší hodnotu.
+
+> [!NOTE]
+> Při spuštění v plány Azure Functions Consumption a Premium [kontroler škálování Azure Functions](../functions-scale.md#how-the-consumption-plan-works) bude dotazovat každých 10 sekund Každá fronta ovládacího prvku a pracovní položky. Tato další cyklického dotazování je potřeba určit, kdy chcete aktivovat instancí funkce aplikací a rozhodnutí o škálování. V době psaní tohoto intervalu 10 druhá je konstantní a nedá se konfigurovat.
+
 ## <a name="storage-account-selection"></a>Výběr účtu úložiště
 
-Fronty, tabulky a objekty BLOB využívané Durable Functions jsou vytvořené v nakonfigurovaném účtu Azure Storage. Účet, který chcete použít se dá nastavit pomocí `durableTask/azureStorageConnectionStringName` nastavení **host.json** souboru.
+Fronty, tabulky a objekty BLOB využívané odolná služba Functions se vytvoří v nakonfigurovaném účtu Azure Storage. Účet, který chcete použít se dá nastavit pomocí `durableTask/azureStorageConnectionStringName` nastavení **host.json** souboru.
 
 ### <a name="functions-1x"></a>Functions 1.x
 
@@ -235,4 +244,4 @@ Pokud nevidíte očekáváte, že čísla propustnost a procesoru a využití pa
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření první funkce trvalý vC#](durable-functions-create-first-csharp.md)
+> [Vytvoření první odolné funkce v jazyce C#](durable-functions-create-first-csharp.md)

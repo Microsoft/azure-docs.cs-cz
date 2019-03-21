@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: a6549c68ec248720c81531d137d45909a4de55e9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 3a88c29739faca33794ce10de895c0439f007532
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998395"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294225"
 ---
 # <a name="scaling-media-processing-overview"></a>Přehled škálování zpracování médií 
 Tato stránka poskytuje přehled toho, jak a proč ke škálování zpracování médií. 

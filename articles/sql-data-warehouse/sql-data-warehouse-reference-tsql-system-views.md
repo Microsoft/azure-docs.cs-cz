@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 06/13/2018
 ms.author: twounder
 ms.reviewer: igorstan
-ms.openlocfilehash: 2b1f2f31567cca82145cd3d71d49087e76954628
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: a172f469ef3ff1107179dcd7a8d501cfe6d70049
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901045"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259801"
 ---
 # <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Systémová zobrazení, které jsou podporované ve službě Azure SQL Data Warehouse
 Odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve službě Azure SQL Data Warehouse.
@@ -37,9 +37,9 @@ Odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve službě Azure 
 * [sys.pdw_replicated_table_cache_state](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql)
 * [sys.pdw_table_distribution_properties](https://msdn.microsoft.com/library/mt203896.aspx)
 * [sys.pdw_table_mappings](https://msdn.microsoft.com/library/mt203876.aspx)
+* [sys.resource_governor_workload_groups](/sql/relational-databases/system-catalog-views/sys-resource-governor-workload-groups-transact-sql)
 * [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql) (Preview)
 * [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql) (Preview)
-* [sys.workload_management_workload_groups](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-groups-transact-sql) (Preview)
 
 ## <a name="sql-data-warehouse-dynamic-management-views-dmvs"></a>Zobrazení dynamické správy SQL Data Warehouse (DMV)
 * [sys.dm_pdw_dms_cores](https://msdn.microsoft.com/library/mt203911.aspx)

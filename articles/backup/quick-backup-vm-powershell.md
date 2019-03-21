@@ -4,135 +4,170 @@ description: Zjistěte, jak zálohovat virtuální počítače pomocí Azure Pow
 services: backup
 author: rayne-wiselman
 manager: carmonm
-tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c62f6f41711308f1a7150c79ab71570190af825a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: aa637571ca11ea294b1f95df49855d7ee81b3001
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495543"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258866"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Zálohování virtuálního počítače v Azure pomocí PowerShellu
-Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Svá data můžete chránit prováděním záloh v pravidelných intervalech. Azure Backup vytváří body obnovení, které je možné uchovávat v geograficky redundantních trezorech obnovení. Tento článek podrobně popisuje, jak zálohovat virtuální počítač pomocí modulu Azure PowerShell. K provedení těchto kroků můžete také využít [Azure CLI](quick-backup-vm-cli.md) nebo [Azure Portal](quick-backup-vm-portal.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+[Prostředí Azure PowerShell AZ](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) modul se používá k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. 
+
+[Azure Backup](backup-overview.md) zálohuje místních počítačů a aplikací a virtuálních počítačů Azure. V tomto článku se dozvíte, jak zálohovat virtuální počítač Azure s modulem AZ. Alternativně můžete zálohovat virtuální počítač pomocí [rozhraní příkazového řádku Azure](quick-backup-vm-cli.md), nebo [webu Azure portal](quick-backup-vm-portal.md).
 
 V tomto rychlém startu se povolí zálohování na existujícím virtuálním počítači Azure. Pokud potřebujete vytvořit virtuální počítač, můžete [vytvořit virtuální počítač pomocí Azure PowerShellu](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json).
 
-Tento rychlý start vyžaduje modul Azure PowerShell verze 4.4 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+Tento rychlý start vyžaduje prostředí Azure PowerShell AZ modulu verze 1.0.0 nebo novějším. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` a postupujte podle pokynů na obrazovce.
+## <a name="log-in-and-register"></a>Přihlaste se a registrace
 
-```powershell
-Connect-AzureRmAccount
-```
+1. Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
 
-Při prvním použití služby Azure Backup musíte ve svém předplatném zaregistrovat poskytovatele služby Azure Recovery Services pomocí rutiny [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider).
+    ```powershell
+    Connect-AzAccount
+    ```
+2. Při prvním použití služby Azure Backup, zaregistrujte poskytovatele služeb zotavení Azure ve vašem předplatném pomocí [Register-AzResourceProvider](/powershell/module/az.Resources/Register-azResourceProvider), následujícím způsobem:
 
-```powershell
-Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-```
+    ```powershell
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    ```
 
 
-## <a name="create-a-recovery-services-vaults"></a>Vytvoření trezoru služby Recovery Services
-Trezor služby Recovery Services je logický kontejner, který uchovává zálohovaná data pro každý chráněný prostředek, například virtuální počítače Azure. Úloha zálohování pro chráněný prostředek při spuštění vytvoří uvnitř trezoru služby Recovery Services bod obnovení. Pomocí některého z těchto bodů obnovení pak můžete obnovit data k danému bodu v čase.
+## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
-Vytvořte trezor služby Recovery Services pomocí rutiny [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault). Zadejte stejnou skupinu prostředků a umístění, jako má virtuální počítač, který chcete chránit. Pokud jste k vytvoření virtuálního počítače použili [ukázkový skript](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json), skupina prostředků má název *myResourceGroup*, virtuální počítač má název *myVM* a prostředky jsou v umístění *WestEurope*.
+A [trezor služby Recovery Services](backup-azure-recovery-services-vault-overview.md) je logický kontejner, který zálohuje data na chráněný prostředek, jako jsou virtuální počítače Azure. Když se spouští úloha zálohování, vytvoří bod obnovení v trezoru služby Recovery Services. Pomocí některého z těchto bodů obnovení pak můžete obnovit data k danému bodu v čase.
 
-```powershell
-New-AzureRmRecoveryServicesVault `
-    -ResourceGroupName "myResourceGroup" `
-    -Name "myRecoveryServicesVault" `
+Při vytváření trezoru:
+
+- Pro skupinu prostředků a umístění zadejte skupinu prostředků a umístění virtuálního počítače, které chcete zálohovat.
+- Pokud jste použili toto [ukázkový skript](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) vytvořte virtuální počítač, skupina prostředků je **myResourceGroup**, je virtuální počítač ***myVM**, a jsou prostředky v **WestEurope**  oblasti.
+- Azure Backup automaticky zpracovává úložiště pro zálohovaná data. Ve výchozím nastavení používá trezor [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy-grs.md). Geografická redundance zajišťuje, že zálohovat data se replikují do sekundární oblasti Azure, stovky mil od primární oblasti.
+
+Teď vytvořte trezor.
+
+
+1. Použití [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault)vytvoření trezoru:
+
+    ```powershell
+    New-AzRecoveryServicesVault `
+        -ResourceGroupName "myResourceGroup" `
+        -Name "myRecoveryServicesVault" `
     -Location "WestEurope"
-```
+    ```
 
-Ve výchozím nastavení je trezor nastavený pro geograficky redundantní úložiště. Tato úroveň redundance úložiště vaše data chrání ještě více tím, že zajišťuje replikaci zálohovaných dat do sekundární oblasti Azure, která je od primární oblasti vzdálená stovky kilometrů.
+2. Nastavte kontext trezoru pomocí [Set-AzRecoveryServicesVaultContext](/powershell/module/az.RecoveryServices/Set-azRecoveryServicesVaultContext), následujícím způsobem:
 
-Abyste mohli tento trezor použít ve zbývajících krocích, nastavte kontext trezoru pomocí rutiny [Set-AzureRmRecoveryServicesVaultContext](/powershell/module/AzureRM.RecoveryServices/Set-AzureRmRecoveryServicesVaultContext).
-
-```powershell
-Get-AzureRmRecoveryServicesVault `
-    -Name "myRecoveryServicesVault" | Set-AzureRmRecoveryServicesVaultContext
-```
+    ```powershell
+    Get-AzRecoveryServicesVault `
+        -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesVaultContext
+    ```
 
 
 ## <a name="enable-backup-for-an-azure-vm"></a>Povolení zálohování pro virtuální počítač Azure
-K definování, kdy se spouští úloha zálohování a jak dlouho se uchovávají body obnovení, vytváříte a používáte zásady. Výchozí zásada ochrany spouští úlohu zálohování každý den a uchovává body obnovení po dobu 30 dnů. Tyto výchozí hodnoty zásady můžete použít k rychlému zajištění ochrany vašeho virtuálního počítače. Nejprve nastavte výchozí zásadu pomocí rutiny [Get-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/AzureRM.RecoveryServices.Backup/Get-AzureRmRecoveryServicesBackupProtectionPolicy):
 
-```powershell
-$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy"
-```
+Povolení zálohování pro virtuální počítač Azure a zadejte zásady zálohování.
 
-Pomocí rutiny [Enable-AzureRmRecoveryServicesBackupProtection](/powershell/module/AzureRM.RecoveryServices.Backup/Enable-AzureRmRecoveryServicesBackupProtection) povolte pro virtuální počítač ochranu zálohováním. Zadejte zásadu, která se má použít, pak skupinu prostředků a virtuální počítač, který chcete chránit:
+- Zásada se definuje při spuštění zálohování, a jak dlouho se uchovávají body obnovení vytvořené zálohy.
+- Výchozí zásada ochrany spouští jednou denně zálohování pro virtuální počítač a uchovává body obnovení vytvořené po dobu 30 dnů. Tento výchozí zásady můžete použít k rychlému zajištění ochrany vašeho virtuálního počítače. 
 
-```powershell
-Enable-AzureRmRecoveryServicesBackupProtection `
-    -ResourceGroupName "myResourceGroup" `
-    -Name "myVM" `
-    -Policy $policy
-```
+Povolte zálohování následujícím způsobem:
+
+1. Nejprve nastavte výchozí zásadu pomocí [Get-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy):
+
+    ```powershell
+    $policy = Get-AzRecoveryServicesBackupProtectionPolicy     -Name "DefaultPolicy"
+    ```
+
+2. Povolit zálohování virtuálních počítačů s [povolit AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection). Zadejte zásady, skupiny prostředků a název virtuálního počítače.
+
+    ```powershell
+    Enable-AzRecoveryServicesBackupProtection `
+        -ResourceGroupName "myResourceGroup" `
+        -Name "myVM" `
+        -Policy $policy
+    ```
 
 
 ## <a name="start-a-backup-job"></a>Spuštění úlohy zálohování
-Pokud chcete spustit zálohování ihned a nečekat na spuštění úlohy výchozí zásadou v naplánovaném čase, použijte rutinu [Backup-AzureRmRecoveryServicesBackupItem](/powershell/module/azurerm.recoveryservices.backup/backup-azurermrecoveryservicesbackupitem). Tato první úloha zálohování vytvoří úplný bod obnovení. Každá úloha zálohování po tomto prvotním zálohování vytváří přírůstkové body obnovení. Přírůstkové body obnovení jsou efektivní z hlediska úložiště a času, protože přenášejí pouze změny provedené od posledního zálohování.
 
-V následující sadě příkazů zadáte kontejner v trezoru služby Recovery Services, který uchovává vaše zálohovaná data, pomocí rutiny [Get-AzureRmRecoveryServicesBackupContainer](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer). Každý virtuální počítač určený k zálohování se považuje za položku. Pokud chcete spustit úlohu zálohování, získejte informace o položce vašeho virtuálního počítače pomocí rutiny [Get-AzureRmRecoveryServicesBackupItem](/powershell/module/AzureRM.RecoveryServices.Backup/Get-AzureRmRecoveryServicesBackupItem).
+Zálohování se spouštějí podle plánu, zadaný v zásadě zálohování. Můžete také spouštět ad hoc zálohování:
 
-```powershell
-$backupcontainer = Get-AzureRmRecoveryServicesBackupContainer `
-    -ContainerType "AzureVM" `
-    -FriendlyName "myVM"
+- První úlohy prvotního zálohování vytvoří úplný bod obnovení.
+- Po prvotní zálohy Každá úloha zálohování vytváří přírůstkové body obnovení.
+- Přírůstkové body obnovení jsou efektivní z hlediska úložiště a času, protože přenášejí pouze změny provedené od posledního zálohování.
 
-$item = Get-AzureRmRecoveryServicesBackupItem `
-    -Container $backupcontainer `
-    -WorkloadType "AzureVM"
+Chcete-li spustit zálohování ad hoc, použijte[zálohování AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem). 
+- Zadejte kontejner v trezoru, který uchovává vaše zálohovaná data s [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer).
+- Každý virtuální počítač určený k zálohování se považuje za položku. Spustit úlohu zálohování, získejte informace o virtuálním počítači s [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
 
-Backup-AzureRmRecoveryServicesBackupItem -Item $item
-```
+Spuštění úlohy zálohování ad hoc následujícím způsobem:
 
-Vzhledem k tomu, že první úloha zálohování vytváří úplný bod obnovení, může tento proces trvat až 20 minut.
+1. Zadejte kontejner, získat informace o virtuálním počítači a spusťte zálohování.
+
+    ```powershell
+    $backupcontainer = Get-AzRecoveryServicesBackupContainer `
+        -ContainerType "AzureVM" `
+        -FriendlyName "myVM"
+
+    $item = Get-AzRecoveryServicesBackupItem `
+        -Container $backupcontainer `
+        -WorkloadType "AzureVM"
+
+    Backup-AzRecoveryServicesBackupItem -Item $item
+    ```
+
+2. Můžete potřebovat čekat až 20 minut, protože první úloha zálohování vytváří úplný bod obnovení. Monitorování úlohy, jak je popsáno v následujícím postupu.
 
 
 ## <a name="monitor-the-backup-job"></a>Monitorování úlohy zálohování
-Pokud chcete monitorovat stav úloh zálohování, použijte rutinu [Get-AzureRmRecoveryservicesBackupJob](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupjob):
+
+1. Spustit [Get-AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) monitorovat stav úlohy.
+
+    ```powershell
+    Get-AzRecoveryservicesBackupJob
+    ```
+    Výstup je podobný následujícím příkladu, který ukazuje úlohy jako **InProgress**:
+
+    ```
+    WorkloadName   Operation         Status       StartTime              EndTime                JobID
+    ------------   ---------         ------       ---------              -------                -----
+    myvm           Backup            InProgress   9/18/2017 9:38:02 PM                          9f9e8f14
+    myvm           ConfigureBackup   Completed    9/18/2017 9:33:18 PM   9/18/2017 9:33:51 PM   fe79c739
+    ```
+
+2. Pokud je stav úlohy **dokončeno**, je chráněný virtuální počítač a uložil na úplný bod obnovení.
+
+
+## <a name="clean-up-the-deployment"></a>Vyčištění nasazení
+
+Pokud už nepotřebujete zálohování virtuálního počítače, můžete vyčistit ho.
+- Pokud chcete vyzkoušet obnovení virtuálního počítače, přejděte vyčištění nahoru.
+- Pokud jste použili existující virtuální počítač, můžete vynechat poslední [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) rutiny tak, aby se zachovala skupina prostředků a virtuální počítač.
+
+Zakažte ochranu, odebrat body obnovení a trezor. Pak můžete odstranit skupinu prostředků a související prostředky virtuálního počítače následujícím způsobem:
 
 ```powershell
-Get-AzureRmRecoveryservicesBackupJob
-```
-
-Výstup bude vypadat podobně jako v následujícím příkladu, který ukazuje, že je úloha zálohování ve stavu **InProgress** (Probíhající):
-
-```
-WorkloadName   Operation         Status       StartTime              EndTime                JobID
-------------   ---------         ------       ---------              -------                -----
-myvm           Backup            InProgress   9/18/2017 9:38:02 PM                          9f9e8f14
-myvm           ConfigureBackup   Completed    9/18/2017 9:33:18 PM   9/18/2017 9:33:51 PM   fe79c739
-```
-
-Když se *Status* (Stav) úlohy zálohovaní změní na *Completed* (Dokončeno), váš virtuální počítač je chráněný službou Recovery Services a má uložený úplný bod obnovení.
-
-
-## <a name="clean-up-deployment"></a>Vyčištění nasazení
-Pokud už ochrana virtuálního počítače není potřeba, můžete ji vypnout, odebrat body obnovení a trezor služby Recovery Services a pak odstranit skupinu prostředků a související prostředky virtuálního počítače. Pokud jste použili existující virtuální počítač, můžete vynechat poslední rutinu [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup), aby se zachovala skupina prostředků a virtuální počítač.
-
-Pokud se chystáte pokračovat ke kurzu služby Backup, který vysvětluje postup obnovení dat virtuálního počítače, přeskočte kroky v této části a přejděte na [Další kroky](#next-steps). 
-
-```powershell
-Disable-AzureRmRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints
-$vault = Get-AzureRmRecoveryServicesVault -Name "myRecoveryServicesVault"
-Remove-AzureRmRecoveryServicesVault -Vault $vault
-Remove-AzureRmResourceGroup -Name "myResourceGroup"
+Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints
+$vault = Get-AzRecoveryServicesVault -Name "myRecoveryServicesVault"
+Remove-AzRecoveryServicesVault -Vault $vault
+Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto rychlém startu jste vytvořili trezor služby Recovery Services, povolili ochranu virtuálního počítače a vytvořili prvotní bod obnovení. Pokud se chcete o službách Azure Backup a Recovery Services dozvědět více, pokračujte ke kurzům.
 
-> [!div class="nextstepaction"]
-> [Zálohování několika virtuálních počítačů Azure](./tutorial-backup-vm-at-scale.md)
+V tomto rychlém startu jste vytvořili trezor služby Recovery Services, povolili ochranu virtuálního počítače a vytvořili prvotní bod obnovení. 
+
+- [Zjistěte, jak](tutorial-backup-vm-at-scale.md) k zálohování virtuálních počítačů na webu Azure Portal.
+- [Zjistěte, jak](tutorial-restore-disk.md) rychle obnovit virtuální počítač

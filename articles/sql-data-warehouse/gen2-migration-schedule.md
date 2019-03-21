@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: dea0a38b1f543fbb17cb0cd98ee4f96144d07f4e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8f24bab531143cad1974663eb71b173a20b6f51a
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432894"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287175"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade služby data warehouse na Gen2
 
@@ -43,8 +43,8 @@ Následující tabulka shrnuje podle oblastí, při nižší Gen2 výpočetní v
 | Čína – sever |\* |\* |
 | Čína – sever 2 |\* |\* |
 | Východní Asie |K dispozici. |1. května 2019 |
-| USA – východ |K dispozici. |2. dubna 2019 |
-| Východní USA 2 |K dispozici. |2. dubna 2019 |
+| USA – východ |K dispozici. |1. května 2019 |
+| Východní USA 2 |K dispozici. |1. května. 2019 |
 | Francie – střed |\* |\* |
 | Německo – střed |\* |\* |
 | Německo – středozápad |1. září 2019|2. ledna 2020 |
@@ -55,15 +55,15 @@ Následující tabulka shrnuje podle oblastí, při nižší Gen2 výpočetní v
 | Korea – střed |2. dubna 2019 |1. května 2019 |
 | Jižní Korea – jih |2. dubna 2019 |1. června 2019 |
 | Středoseverní USA |2. dubna 2019 |1. června 2019 |
-| Severní Evropa |K dispozici. |2. dubna 2019 |
+| Severní Evropa |K dispozici. |1. května 2019 |
 | Středojižní USA |K dispozici. |1. května 2019 |
-| Jihovýchodní Asie |K dispozici. |2. dubna 2019 |
+| Jihovýchodní Asie |K dispozici. |1. května 2019 |
 | Velká Británie – jih |2. dubna 2019 |1. května 2019 |
 | Spojené království – západ |\*|\* |
 | Západní střed USA |2. září 2019 |2. ledna 2020|
-| Západní Evropa |K dispozici. |2. dubna 2019 |
+| Západní Evropa |K dispozici. |1. května 2019 |
 | Západní USA |2. dubna 2019 |1. června 2019 |
-| Západní USA 2 |K dispozici. |2. dubna 2019 |
+| Západní USA 2 |K dispozici. |1. května 2019 |
 
 ## <a name="automatic-upgrade-process"></a>Proces automatického upgradu
 

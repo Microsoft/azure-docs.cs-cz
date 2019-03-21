@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží ve službě Azure AD hesla protection ve verzi preview
-description: Principy Azure AD protection ve verzi preview běžné řešení potíží s heslem
+title: Řešení potíží ve službě Azure AD ochrana heslem
+description: Principy Azure AD ochrany běžné řešení potíží s heslem
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63fdd60c4c462626cc43a7a453bddc0b020b92cf
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: 7ac97d7bda56a871e0b8f6de6d5d7262f3f44667
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409886"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285696"
 ---
-# <a name="preview-azure-ad-password-protection-troubleshooting"></a>Verze Preview: Řešení potíží Azure AD ochrana heslem
-
-|     |
-| --- |
-| Ochrana hesel Azure AD je funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+# <a name="azure-ad-password-protection-troubleshooting"></a>Řešení potíží Azure AD ochrana heslem
 
 Po nasazení ochrany hesel služby Azure AD řešení potíží se může vyžadovat. Tento článek obsahuje podrobnosti vám pomohou pochopit některé běžné kroky při řešení potíží.
 
@@ -37,7 +32,7 @@ Obvyklou příčinou tohoto problému je, že proxy serveru ještě není zaregi
 
 Hlavním příznakem tento problém je 30018 události v protokolu událostí správce agenta řadiče domény. To může mít několik možných příčin:
 
-1. Agent řadiče domény se nachází v izolované část sítě, která neumožňuje připojení k síti na registrované proxy(s). Tento problém může proto být expected\benign tak dlouho, dokud jiní agenti pro řadič domény může komunikovat s proxy(s), aby mohl stáhnout zásady pro hesla z Azure, které budou získávat izolované řadič domény prostřednictvím replikace zásad souborů ve sdílené složce sysvol.
+1. Agenta pro řadič domény se nachází v izolované části sítě, síťové připojení k registrované proxy(s) nepovoluje. Tento problém může proto být expected\benign tak dlouho, dokud jiní agenti pro řadič domény může komunikovat s proxy(s), aby mohl stáhnout zásady pro hesla z Azure, které budou získávat izolované řadič domény prostřednictvím replikace zásad souborů ve sdílené složce sysvol.
 
 1. Počítači hostitele proxy serveru blokuje přístup ke koncovému bodu mapovač koncových bodů protokolu RPC (port 135)
 
@@ -63,13 +58,13 @@ Pokud je režim spuštění služby KDS není nakonfigurovaná na hodnotu zakáz
 
 Jednoduchý test pro tento problém je ohledně ručního spuštění služby KDS, buď přes konzolu MMC služby pro správu, nebo pomocí jiné nástroje pro správu služby (například spuštění, "net start kdssvc" z konzoly příkazového řádku). Služby KDS očekává se úspěšně spustit a zůstanou spuštěné.
 
-Nejběžnější příčina je, že objektu řadiče domény služby Active Directory se nachází mimo výchozí organizační jednotce řadiče domény. Tato konfigurace není podporována službou KDS a není omezení mezijazyka ochrana hesel Azure AD. Oprava této podmínky je přesunout do umístění ve výchozí organizační jednotce řadiče domény objektu řadiče domény.
+Nejběžnější příčina služby KDS se nepovedlo spustit je, že objektu řadiče domény služby Active Directory se nachází mimo výchozí organizační jednotce řadiče domény. Tato konfigurace není podporována službou KDS a není omezení mezijazyka ochrana hesel Azure AD. Oprava této podmínky je přesunout do umístění ve výchozí organizační jednotce řadiče domény objektu řadiče domény.
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Slabá hesla procházejí procesem přijímání. ale neměly by být
 
 Tento problém může mít několik příčin.
 
-1. Agenti vaše řadiče domény nelze stáhnout zásady nebo nelze dešifrovat existující zásady. Zkontrolujte možné příčiny v výše uvedených tématech.
+1. Vaši agenti řadič domény nemůže stáhnout zásady nebo nelze dešifrovat existující zásady. Zkontrolujte možné příčiny v výše uvedených tématech.
 
 1. Režim vynucení zásad hesel stále nastavena na Audit. Pokud tato konfigurace je v platnosti, můžete ji překonfigurujte k vynucení ochrany hesel služby Azure AD na portálu. Zobrazit [ochrana heslem povolit](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
 
@@ -101,7 +96,7 @@ Po degradování proběhla úspěšně, a po restartování řadiče domény a j
 
 ## <a name="removal"></a>Odebrání
 
-Pokud je se rozhodli odinstalovat software ve verzi public preview a vyčištění všech souvisejících stavu z domény a doménové struktury, můžete tento úkol provést pomocí následujících kroků:
+Pokud je se rozhodli odinstalovat software ochrany hesla Azure AD a vyčištění všech souvisejících stavu z domény a doménové struktury, můžete tento úkol provést pomocí následujících kroků:
 
 > [!IMPORTANT]
 > Je potřeba provést tyto kroky v pořadí. Pokud všechny instance služby serveru Proxy, zůstane spuštěn pravidelně znovu vytvoří jeho serviceConnectionPoint objekt. Pokud všechny instance služby agenta řadiče domény, zůstane spuštěn pravidelně znovu vytvoří jeho objekt serviceConnectionPoint a stav sysvol.
@@ -120,7 +115,7 @@ Pokud je se rozhodli odinstalovat software ve verzi public preview a vyčištěn
 
    Výsledné objekty vyhledat přes `Get-ADObject` příkazu, můžete pak rourou do `Remove-ADObject`, nebo odstranit ručně.
 
-4. Ručně odeberte všechny body připojení agenta řadiče domény v každé doméně názvový kontext. Může jich být tyto objekty na řadič domény v doménové struktuře, v závislosti na tom, jak často byl nasazen software ve verzi public preview. Umístění tohoto objektu může být nalezeny pomocí následujícího příkazu Powershellu pro Active Directory:
+4. Ručně odeberte všechny body připojení agenta řadiče domény v každé doméně názvový kontext. Může jich být tyto objekty na řadič domény v doménové struktuře, v závislosti na tom, jak často byl nasazen software. Umístění tohoto objektu může být nalezeny pomocí následujícího příkazu Powershellu pro Active Directory:
 
    ```PowerShell
    $scp = "serviceConnectionPoint"

@@ -8,12 +8,12 @@ ms.date: 03/01/2019
 ms.author: normesta
 ms.topic: article
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 0a658d47f850537f18c976ab0933105b57692673
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 1c0a04a074cfbd96423502ac92dd5821bade78e1
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344695"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258526"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Použití Azure Data Box pro migraci dat z úložiště místní HDFS do služby Azure Storage
 
@@ -59,7 +59,7 @@ Použijte následující postup kopírování dat prostřednictvím REST API z/o
 
 2. V účtu úložiště přístup a nahrávání dat dialogového okna, zkopírujte **koncový bod služby Blob service** a **klíč účtu úložiště**. Z koncového bodu služby objektů blob, vynechejte `https://` a do adresy koncové lomítko.
 
-    V takovém případě je koncový bod: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. Je část hostitele v identifikátoru URI, které budete používat: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`. Příklad najdete v tématu Jak [připojit k REST přes protokol http](/azure/databox/data-box-deploy-copy-data-via-rest.md). 
+    V takovém případě je koncový bod: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. Je část hostitele v identifikátoru URI, které budete používat: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`. Příklad najdete v tématu Jak [připojit k REST přes protokol http](/azure/databox/data-box-deploy-copy-data-via-rest). 
 
      ![Dialogové okno "Přístup k účtu úložiště a nahrávání dat"](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d1d515786fde06f4622402f2c1d0c3add7cd8843
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: f3d9a2447bdbc2a1a5ce930ffa161d5a9e30069b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913139"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225055"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Úvod do Apache Hadoop zabezpečení s balíčkem Enterprise Security Package
 

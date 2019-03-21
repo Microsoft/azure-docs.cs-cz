@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fb22594ba240f9e7b790dbef0bd1e091c30c82b9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: db0bebb49007059cfe3b8b9b416c4a148c3756fc
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456546"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287328"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
@@ -2242,7 +2242,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
-> | Akce | Microsoft.EventGrid/eventSubscriptions/delete | Odstranit eventSubscription |
+> | Akce | Microsoft.EventGrid/eventSubscriptions/delete | Odstranění eventSubscription |
 > | Akce | Microsoft.EventGrid/eventSubscriptions/getFullUrl/action | Získat úplnou adresu url pro odběr události |
 > | Akce | Microsoft.EventGrid/eventSubscriptions/providers/Microsoft.Insights/diagnosticSettings/read | Získá nastavení diagnostiky pro odběry událostí |
 > | Akce | Microsoft.EventGrid/eventSubscriptions/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky pro odběry událostí |
@@ -4153,15 +4153,15 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
-> | Akce | Microsoft.Portal/consoles/delete | Odebere instanci Cloud Shellu. |
-> | Akce | Microsoft.Portal/consoles/write | Vytvoří nebo aktualizuje instanci Cloud Shellu. |
+> | Akce | Microsoft.Portal/consoles/delete | Odebere instanci cloud shell. |
+> | Akce | Microsoft.Portal/consoles/write | Vytvořit nebo aktualizovat instance prostředí cloud. |
 > | Akce | Microsoft.Portal/dashboards/delete | Odebere z předplatného řídicí panel. |
 > | Akce | Microsoft.Portal/dashboards/read | Čte řídicí panely pro předplatné. |
 > | Akce | Microsoft.Portal/dashboards/write | Umožňuje přidat nebo upravit řídicí panely u předplatného. |
 > | Akce | Microsoft.Portal/register/action | Zaregistrovat na portál |
-> | Akce | Microsoft.Portal/usersettings/delete | Odebere uživatelská nastavení Cloud Shellu. |
-> | Akce | Microsoft.Portal/usersettings/read | Přečte uživatelská nastavení Cloud Shellu. |
-> | Akce | Microsoft.Portal/usersettings/write | Vytvoří nebo aktualizuje uživatelská nastavení Cloud Shellu. |
+> | Akce | Microsoft.Portal/usersettings/delete | Odebere uživatelská nastavení cloud shell. |
+> | Akce | Microsoft.Portal/usersettings/read | Přečte cloud shell uživatelská nastavení. |
+> | Akce | Microsoft.Portal/usersettings/write | Vytvořit nebo aktualizovat nastavení hlavního názvu uživatele cloud shell. |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
@@ -4739,7 +4739,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Sql/locations/instanceFailoverGroups/failover/action | Provede plánované převzetí služeb při selhání ve skupině převzetí služeb při selhání pro existující instance. |
 > | Akce | Microsoft.Sql/locations/instanceFailoverGroups/forceFailoverAllowDataLoss/action | Provede Vynucené převzetí služeb při selhání ve skupině převzetí služeb při selhání pro existující instance. |
 > | Akce | Microsoft.Sql/locations/instanceFailoverGroups/read | Vrátí seznam instancí převzetí služeb při selhání skupiny nebo načte vlastnosti pro skupinu převzetí služeb při selhání zadanou instanci. |
-> | Akce | Microsoft.Sql/locations/instanceFailoverGroups/write | Vytvoří instanci skupinu převzetí služeb při selhání se zadanými parametry nebo aktualizuje vlastnosti a značky pro skupinu převzetí služeb při selhání určené instance. |
+> | Akce | Microsoft.Sql/locations/instanceFailoverGroups/write | Vytvoří ve skupině převzetí služeb při selhání instancí se zadanými parametry nebo aktualizuje vlastnosti a značky pro skupinu převzetí služeb při selhání určené instance. |
 > | Akce | Microsoft.Sql/locations/instancePoolAzureAsyncOperation/read | Získá stav operace instancí fondu. |
 > | Akce | Microsoft.Sql/locations/instancePoolOperationResults/read | Získá výsledek operace fondu instance. |
 > | Akce | Microsoft.Sql/locations/interfaceEndpointProfileAzureAsyncOperation/read | Vrátí podrobnosti o konkrétní rozhraní koncového bodu Azure asynchronní operace |
@@ -5001,7 +5001,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Sql/servers/importExportOperationResults/read | Získá probíhá operace importu/exportu |
 > | Akce | Microsoft.Sql/servers/interfaceEndpointProfiles/delete | Odstraní zadané rozhraní profil koncového bodu |
 > | Akce | Microsoft.Sql/servers/interfaceEndpointProfiles/read | Vrací vlastnosti pro profil zadaný rozhraní koncového bodu |
-> | Akce | Microsoft.Sql/servers/interfaceEndpointProfiles/write | Vytvoří profil koncového bodu rozhraní se zadanými parametry nebo aktualizuje vlastnosti a značky pro koncový bod zadané rozhraní |
+> | Akce | Microsoft.Sql/servers/interfaceEndpointProfiles/write | Vytvoří profil rozhraní koncový bod se zadanými parametry nebo aktualizuje vlastnosti a značky pro koncový bod zadané rozhraní |
 > | Akce | Microsoft.Sql/servers/jobAgents/delete | Odstraní úlohu agenta služby Azure SQL DB |
 > | Akce | Microsoft.Sql/servers/jobAgents/read | Získá úloha agenta služby Azure SQL DB |
 > | Akce | Microsoft.Sql/servers/jobAgents/write | Vytvoří nebo aktualizuje úlohu agenta služby Azure SQL DB |

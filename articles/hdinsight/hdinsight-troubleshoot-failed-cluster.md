@@ -2,33 +2,33 @@
 title: Řešení potíží s pomalé nebo jeho selháním HDInsight clusteru – Azure HDInsight
 description: Diagnostika a řešení potíží pomalé nebo selhání clusteru HDInsight.
 services: hdinsight
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: 05c6f1cbf5f7f20745fa837accdaa95e6c186b8b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.date: 03/19/2019
+ms.openlocfilehash: 0129a09383b59aa5d213ef7ff1c78f23588472a7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226608"
+ms.locfileid: "58295466"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
 
-Pokud se HDInsight cluster pracuje pomalu nebo neúspěšné s kódem chyby, máte několik možností, jak řešení potíží. Pokud vaše úlohy trvá delší dobu, než se očekávalo, nebo pomalé odezvy se zobrazuje v obecných, může být selhání upstream z vašeho clusteru, jako jsou služby, na kterých běží clusteru. Nejčastější příčinou tomuto zpomalování je však nedostatečné škálování. Když vytvoříte nový cluster HDInsight, vyberte odpovídající [velikosti virtuálních počítačů](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)
+Pokud se HDInsight cluster pracuje pomalu nebo neúspěšné s kódem chyby, máte několik možností, jak řešení potíží. Pokud vaše úlohy trvá delší dobu, než se očekávalo, nebo pomalé odezvy se zobrazuje v obecných, může být selhání upstream z vašeho clusteru, jako jsou služby, na kterých běží clusteru. Nejčastější příčinou tomuto zpomalování je však nedostatečné škálování. Když vytvoříte nový cluster HDInsight, vyberte odpovídající [velikostí virtuálních počítačů](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters).
 
 K diagnostice pomalé nebo selhání clusteru, shromážděte informace o všech aspektech prostředí, jako jsou přidružené služby Azure, konfiguraci clusteru a informace o spuštění úlohy. Užitečné Diagnostika je pokusit se reprodukovat chyby stavu na jiném clusteru.
 
-* Krok 1: Shromažďování dat o problému
-* Krok 2: Ověření clusteru prostředí HDInsight 
-* Krok 3: Zobrazit stav vašeho clusteru
-* Krok 4: Projděte si prostředí zásobníku a verze
-* Krok 5: Zkontrolujte soubory protokolu clusteru
-* Krok 6: Zkontrolujte nastavení konfigurace
-* Krok 7: Reprodukujte chybu na jiném clusteru 
+* Krok 1: Shromažďování dat o problému.
+* Krok 2: Ověření clusteru prostředí HDInsight.
+* Krok 3: Zobrazte stav vašeho clusteru.
+* Krok 4: Projděte si prostředí zásobníku a verze.
+* Krok 5: Zkontrolujte soubory protokolu clusteru.
+* Krok 6: Zkontrolujte nastavení konfigurace.
+* Krok 7: Reprodukujte chybu na jiném clusteru.
 
 ## <a name="step-1-gather-data-about-the-issue"></a>Krok 1: Shromažďování dat o problému
 
@@ -57,13 +57,12 @@ Na webu Azure portal může poskytnout tyto informace:
 
 ![Portál HDInsight Azure informace](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
 
-Můžete také použít rozhraní příkazového řádku Azure Classic:
+Můžete také použít [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
 
+```azurecli
+az hdinsight list --resource-group <ResourceGroup>
+az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
-    azure hdinsight cluster list
-    azure hdinsight cluster show <ClusterName>
-```
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 Další možností je pomocí Powershellu. Další informace najdete v tématu [spravovat Apache Hadoop clusterů v HDInsight pomocí Azure Powershellu](hdinsight-administer-use-powershell.md).
 
@@ -73,10 +72,10 @@ Každý cluster HDInsight spoléhá na různé služby Azure a open source softw
 
 ### <a name="service-details"></a>Podrobnosti služby
 
-* Kontrola verze open source knihovny
-* Vyhledat [výpadek služeb Azure](https://azure.microsoft.com/status/) 
-* Kontrola omezení využití služeb Azure 
-* Zkontrolujte konfiguraci podsítě virtuální sítě Azure 
+* Kontrola verze knihovny open source.
+* Vyhledat [výpadek služeb Azure](https://azure.microsoft.com/status/).  
+* Kontrola omezení využití služeb Azure. 
+* Zkontrolujte konfiguraci podsítě virtuální sítě Azure.  
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Zobrazit nastavení konfigurace clusteru pomocí uživatelského rozhraní Ambari
 
@@ -124,7 +123,7 @@ Jeden běžný scénář pro úlohy Apache Hive, Apache Pig a Apache Sqoop služ
 Toto je obecná zpráva z uzlů brány a je nejběžnější chybový kód. Jednou z možných příčin této je služba WebHCat se dolů na aktivní hlavní uzel. Pokud chcete zkontrolovat pro tuto možnost, použijte následující příkaz CURL:
 
 ```bash
-$ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin
+curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin
 ```
 
 Ambari zobrazí výstrahu zobrazující hostitele, na kterých služba WebHCat je mimo provoz. Můžete zkusit zobrazíte službě WebHCat zpět restartováním služby svého hostitele.
@@ -153,7 +152,7 @@ Následující části popisují některé možné příčiny vypršení časov�
 Při zatížení s více než 10 otevřít sockets WebHCat trvá déle, k vytvoření nového připojení soketu, což může způsobit vypršení časového limitu. K zobrazení seznamu síťová připojení do a z WebHCat, použijte `netstat` na aktuální aktivní hlavní uzel:
 
 ```bash
-$ netstat | grep 30111
+netstat | grep 30111
 ```
 
 30111 je port, který naslouchá WebHCat. Počet otevřených soketů by měl být menší než 10.
@@ -161,7 +160,7 @@ $ netstat | grep 30111
 Pokud neexistují žádné otevřené sokety, výsledkem předchozího příkazu není výsledek. Zkontrolujte, jestli je Templeton nahoru a naslouchá na portu 30111, použijte:
 
 ```bash
-$ netstat -l | grep 30111
+netstat -l | grep 30111
 ```
 
 ##### <a name="yarn-level-timeout"></a>Časový limit úrovně YARN
@@ -190,9 +189,9 @@ Na úrovni YARN existují dva druhy vypršení časového limitu pro:
 
 Chcete-li diagnostikovat tyto problémy:
 
-    1. Určit rozsah času UTC řešení
-    2. Vyberte příslušné `webhcat.log` soubory
-    3. Vyhledejte zobrazit upozornění a chybové zprávy během této doby
+1. Určit rozsah času UTC řešení
+2. Vyberte příslušné `webhcat.log` soubory
+3. Vyhledejte zobrazit upozornění a chybové zprávy během této doby
 
 #### <a name="other-webhcat-failures"></a>Jiné chyby WebHCat
 
@@ -215,8 +214,6 @@ Uživatelské rozhraní Ambari **zásobníku a verze** stránka obsahuje informa
 ## <a name="step-5-examine-the-log-files"></a>Krok 5: Zkontrolujte soubory protokolu
 
 Existuje mnoho typů protokolů, které jsou generovány z mnoha služeb a komponent, které tvoří HDInsight cluster. [Soubory protokolu WebHCat](#check-your-webhcat-service) jsou popsány dříve. Existuje několik dalších užitečných souborů protokolů, které můžete zúžit problémy s vaším clusterem, můžete zjistit, jak je popsáno v následujících částech.
-
-![Příklad souboru protokolu HDInsight](./media/hdinsight-troubleshoot-failed-cluster/logs.png)
 
 * Clustery HDInsight se skládá z několika uzlů, ke spuštění odeslané úlohy jsou úkol většina z nich. Úlohy spustit současně, ale soubory protokolu lze zobrazit pouze výsledky lineárně. HDInsight spustí nové úkoly, ostatní, které se nepovede dokončit. nejdříve se ukončuje. Tato aktivita se protokoluje do `stderr` a `syslog` soubory.
 
@@ -259,7 +256,7 @@ Pro usnadnění diagnostiky příčiny chyby clusteru, spusťte nový cluster se
 1. Vytvoření nového clusteru testů se stejnou konfigurací jako selhání clusteru.
 2. První krok úlohy do clusteru testů odešlete.
 3. Po dokončení zpracování kroku zkontrolujte chyby v souborech protokolů kroku. Připojení k hlavnímu uzlu clusteru test a zobrazit soubory protokolů existuje. Soubory protokolu krok se zobrazí pouze po kroku spustí nějakou dobu, dokončí, nebo se nezdaří.
-4. Pokud prvním krokem bylo úspěšné, spusťte na další krok. Pokud došlo k chybám, prostudujte chybu v souborech protokolů. Pokud se jednalo o chybu v kódu, provést opravu a znovu spustit krok. 
+4. Pokud prvním krokem bylo úspěšné, spusťte na další krok. Pokud došlo k chybám, prostudujte chybu v souborech protokolů. Pokud se jednalo o chybu v kódu, provést opravu a znovu spustit krok.
 5. Pokračujte, dokud nebudou všechny kroky se spustí bez chyb.
 6. Po dokončení ladění testovacího clusteru, odstraňte ho.
 

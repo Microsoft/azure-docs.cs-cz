@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 03/20/2019
 ms.author: raynew
-ms.openlocfilehash: 086a3b4bf34f2ea7454bb018f9468dd21629a8ce
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 2fe2e972d16bdb27c5d2fbd2d552dac825235b6d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903092"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286461"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -244,7 +244,7 @@ Disk úrovně Premium P10 nebo P15 | 8 kB  | 2 MB/s | 168 GB na disk
 Disk úrovně Premium P10 nebo P15 | 16 kB | 4 MB/s |  336 GB na disk
 Disk úrovně Premium P10 nebo P15 | 32 kB nebo větší | 8 MB/s | 672 GB na disk
 Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 8 kB    | 5 MB/s | 421 GB na disk
-Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |10 MB/s | 842 GB na disk
+Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |20 MB/s | 1684 GB na disk
 
 **Četnost změn dat zdroje** | **Maximální omezení**
 ---|---

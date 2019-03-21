@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 969821c8b83b8ef554c67f99e3a16e827b53e647
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: ba6a352d965f3f90a122f5277ad23ec5f92907eb
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57845116"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258458"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Pomocí knihovny .NET prováděcí modul hromadného budou provádět hromadné operace ve službě Azure Cosmos DB
 
@@ -30,7 +30,7 @@ Hromadné prováděcí modul knihovny je v současné době nepodporuje rozhran�
 
 * [Službu Azure Cosmos DB můžete vyzkoušet zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků. Nebo můžete použít [emulátor služby Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) s `https://localhost:8081` koncového bodu. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticating-requests).
 
-* Vytvoření účtu rozhraní SQL API služby Azure Cosmos DB pomocí kroků popsaných v [vytvoření databázového účtu](create-sql-api-dotnet.md#create-a-database-account) část tohoto článku rychlý start .NET. 
+* Vytvoření účtu rozhraní SQL API služby Azure Cosmos DB pomocí kroků popsaných v [vytvoření databázového účtu](create-sql-api-dotnet.md#create-account) část tohoto článku rychlý start .NET. 
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
@@ -72,7 +72,7 @@ Aplikace "BulkImportSample" generuje náhodné dokumenty a hromadně naimportuje
    connectionPolicy)
    ```
 
-4. BulkExecutor objekt je inicializován s hodnotami vysoké opakování pro doba čekání a omezuje požadavky. A pak jsou nastaveny na hodnotu 0 pro předání řízení zahlcení BulkExecutor po dobu jeho existence.  
+4. BulkExecutor objekt je inicializován s hodnotou vysokou opakování pro doba čekání a omezuje požadavky. A pak jsou nastaveny na hodnotu 0 pro předání řízení zahlcení BulkExecutor po dobu jeho existence.  
 
    ```csharp
    // Set retry options high during initialization (default values).
@@ -102,7 +102,7 @@ Aplikace "BulkImportSample" generuje náhodné dokumenty a hromadně naimportuje
    
    |**Parametr**  |**Popis** |
    |---------|---------|
-   |enableUpsert    |   Příznak, který chcete povolit upsert dokumenty. Pokud dokument s daným id již existuje, se aktualizuje. Ve výchozím nastavení je nastavena na hodnotu false.      |
+   |enableUpsert    |   Příznak, který chcete povolit upsertuje dokumenty. Pokud dokument s daným ID již existuje, se aktualizuje. Ve výchozím nastavení je nastavena na hodnotu false.      |
    |disableAutomaticIdGeneration    |    Příznak, který chcete zakázat automatické generování ID. Ve výchozím nastavení, je nastavena na hodnotu true.     |
    |maxConcurrencyPerPartitionKeyRange    | Maximální stupeň souběžnosti na rozsah klíče oddílu, nastavení na hodnotu null způsobí, že knihovna použít výchozí hodnotu 20. |
    |maxInMemorySortingBatchSize     |  Maximální počet dokumentů získaných z dokumentu enumerátor, který je předán do rozhraní API volat v každé fázi.  V paměti předběžného zpracování řazení fázi před hromadný import nastavení na hodnotu null způsobí knihovny používat výchozí hodnota min (documents.count, 1000000).       |
@@ -173,7 +173,7 @@ Zvažte následující body pro zajištění lepšího výkonu při použití hr
 
 * Doporučuje se vytvořit instanci jednoho objektu BulkExecutor pro celou aplikaci v rámci jedné virtuální počítač odpovídající konkrétní kontejneru Cosmos DB.  
 
-* Protože spuštění operace rozhraní API jednou hromadnou spotřebovává velké blok klientského počítače procesoru a sítě vstupně-výstupních operací. To se stane, vytvořením více úkolů interně, vyhněte se vytváření podřízeného procesu více souběžných úloh v rámci procesu aplikace, které volá každé rozhraní API provádění hromadné operace. Pokud volání jednou hromadnou operaci rozhraní API běžící na jeden virtuální počítač nemůže využívat propustnosti celého kontejneru (Pokud se váš kontejner propustnost > 1 milion RU/s), je vhodnější k vytvoření samostatných virtuálních počítačů současně provést hromadné volání operace rozhraní API.  
+* Protože spuštění operace rozhraní API jednou hromadnou spotřebovává velké blok klientského počítače procesoru a sítě vstupně-výstupních operací. To se stane, vytvořením více úkolů interně, vyhněte se vytváření podřízeného procesu více souběžných úloh v rámci procesu aplikace, které volá každé rozhraní API provádění hromadné operace. Pokud je volání jednou hromadnou operaci rozhraní API, která běží na jeden virtuální počítač se nedá využívat propustnosti celého kontejneru (Pokud se váš kontejner propustnost > 1 milion RU/s), je vhodnější k vytvoření samostatných virtuálních počítačů současně provést hromadné operace rozhraní API volá.  
 
 * Zajistěte, aby že initializeasync() je volána po vytvoření instance objektu BulkExecutor načíst cílová mapa oddílu kontejneru Cosmos DB.  
 

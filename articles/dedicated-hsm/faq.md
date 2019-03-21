@@ -2,7 +2,7 @@
 title: Časté otázky – vyhrazené modulu hardwarového zabezpečení Azure | Dokumentace Microsoftu
 description: Nejčastější dotazy mezi probíraná témata různých na vyhrazené modulu hardwarového zabezpečení Azure
 services: dedicated-hsm
-author: barclayn
+author: johndaw
 manager: barbkess
 tags: azure-resource-manager
 ms.custom: mvc
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 3/19/2019
 ms.author: barclayn
-ms.openlocfilehash: 2c77f5abac69a1bade523d2a4b6793c2a9df8cf2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b28d9607bf35d37e252d7d0bc59d1ce808e38665
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447859"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259988"
 ---
 # <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
@@ -164,25 +164,25 @@ Ano. Odeslání protokolů z modulu hardwarového zabezpečení zařízení na s
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>OTÁZKA: Je možné ke konfiguraci vysoké dostupnosti ve stejné oblasti nebo v několika oblastech?
 
-Ano. Nastavení a konfigurace vysoké dostupnosti se provádějí v poskytované Gemalto HSM klientský software. Moduly hardwarového zabezpečení ze stejné virtuální síti nebo jiných virtuálních sítí ve stejné oblasti nebo napříč oblastmi nebo v místním prostředí moduly HSM připojené k virtuální síti pomocí site-to-site nebo VPN typu point-to-point lze přidat do stejné konfigurace vysoké dostupnosti.
+Ano. Nastavení a konfigurace vysoké dostupnosti se provádějí v poskytované Gemalto HSM klientský software. Moduly hardwarového zabezpečení ze stejné virtuální síti nebo jiných virtuálních sítí ve stejné oblasti nebo napříč oblastmi nebo v místním prostředí moduly HSM připojené k virtuální síti pomocí site-to-site nebo VPN typu point-to-point lze přidat do stejné konfigurace vysoké dostupnosti. Je třeba poznamenat, že to synchronizuje pouze materiál klíče a nejsou specifické položky, jako jsou role.
 
-### <a name="can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Mohu přidat moduly hardwarového zabezpečení z místní sítě pro skupinu vysokou dostupnost pomocí vyhrazené modulu hardwarového zabezpečení Azure?
+### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>OTÁZKA: Mohu přidat moduly hardwarového zabezpečení z místní sítě pro skupinu vysokou dostupnost pomocí vyhrazené modulu hardwarového zabezpečení Azure?
 
 Ano. Musí splňovat požadavky na vysokou dostupnost SafeNet Luna sítě HSM 7.
 
-### <a name="can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Je možné přidat moduly hardwarového zabezpečení Luna 5/6 z místních sítí pro skupinu vysokou dostupnost pomocí vyhrazené modulu hardwarového zabezpečení Azure?
+### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>OTÁZKA: Je možné přidat moduly hardwarového zabezpečení Luna 5/6 z místních sítí pro skupinu vysokou dostupnost pomocí vyhrazené modulu hardwarového zabezpečení Azure?
 
 Ne.
 
 ### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>OTÁZKA: Kolik modulů hardwarového zabezpečení je možné přidat do stejné konfigurace vysoké dostupnosti z jednoho jednu aplikaci?
 
-16.
+16 členů skupiny vysokou dostupnost má v části pryč, full throttle testování s vynikající výsledky.
 
 ## <a name="support"></a>Podpora
 
 ### <a name="q-what-is-the-sla-for-dedicated-hsm-service"></a>OTÁZKA: Co je smlouva SLA pro službu vyhrazené HSM?
 
-V současné době neexistuje žádná smlouva SLA k dispozici pro službu vyhrazené HSM. Microsoft zajistí sítě úroveň přístupu k zařízení, a proto použít standardní síťové smlouvy Azure SLA.
+Neexistuje žádná konkrétní dobu provozu guarentee poskytnutým službě vyhrazené modulu hardwarového zabezpečení. Microsoft zajistí sítě úroveň přístupu k zařízení, a proto použít standardní síťové smlouvy Azure SLA.
 
 ### <a name="q-how-are-the-hsms-used-in-azure-dedicated-hsm-protected"></a>OTÁZKA: Jak se používají moduly hardwarového zabezpečení v Azure vyhrazená chráněné HSM?
 
@@ -198,15 +198,19 @@ Důrazně doporučujeme použít zálohování zařízení v místním HSM prov�
 
 ### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>OTÁZKA: Jak získám podporu pro vyhrazené HSM?
 
-Stejným způsobem získejte podporu pro všechny ostatní služby Azure. Tým podpory Azure bude eskalovat Gemalto podpoře podle potřeby v závislosti na tento případ.
+Podporu poskytuje Microsoft a Gemalto.  Pokud máte problém s hardwarem nebo přístup k síti, žádost o podporu u Microsoftu a pokud máte potíže s vývojem pro konfiguraci, softwaru a aplikace HSM prosím rasie žádost o podporu s Gemalto. Pokud máte potíže neurčeném, vyvolat withg žádost o podporu společnosti Microsoft a pak může být zapojení Gemalto jako povinné. 
 
-### <a name="q-how-do-i-get-access-to-dedicated-hsm-client-software-documentation-firmware-images"></a>OTÁZKA: Jak získám přístup k modulu hardwarového zabezpečení vyhrazené klientský software, dokumentaci, imagích firmwaru?
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>OTÁZKA: Jak získám klienta, software, dokumentaci a přístup k doprovodným materiálům integrace pro SafeNet Luna 7 HSM?
 
-Zákazník musí spolupracovat přímo s Gemalto získat přístup k modulu hardwarového zabezpečení klientský software, dokumentaci, Image operačního systému a firmware.
+Po registraci pro službu, bude ID zákazníka Gemalto za předpokladu, který umožňuje registraci na portálu Gemalto Zákaznická podpora. To vám umožní přístup k všechny software a dokumentace i povolení žádostí o podporu přímo s Gemalto.
 
 ### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>OTÁZKA: Pokud není nalezena ohrožení zabezpečení a opravy vydání podle Gemalto, který je zodpovědný za upgradu nebo opravy operačního systému/firmwaru?
 
 Microsoft nemá schopnost připojení do modulů HSM přidělené pro zákazníky. Zákazníci musí upgradů a oprav jejich moduly hardwarového zabezpečení.
+
+### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>OTÁZKA: Co když budu potřebovat restartovat Můj HSM?
+
+ Modul hardwarového zabezpečení má možnost restartování příkazového řádku a je třeba poznamenat, že možnost "restart" musí být použita. Pokud to z nějakého důvodu selže, žádost o podporu u Microsoftu a máme zařízení fyzicky restartovat. 
 
 ## <a name="cryptography-and-standards"></a>Šifrování a norem
 
@@ -246,7 +250,7 @@ Ano. Vyhrazená služba HSM zřídí 7 HSM SafeNet síťových zařízení, že 
 
 Zařízení předpisy SafeNet Luna sítě HSM 7 Služba Dedicated modulu hardwarového zabezpečení. Použití těchto zařízení FIPS 140-2 úrovně 3 ověřených modulů Hsm. Nasadit výchozí konfiguraci, operační systém a firmware jsou také ověřené podle standardu FIPS. Není nutné provádět žádnou akci pro kompatibilita se standardem FIPS 140-2 Level 3.
 
-### <a name="how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>Jak zákazník zajišťují, že při zrušení modulu hardwarového zabezpečení všechny klíče dojde k vymazání?
+### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>OTÁZKA: Jak zákazník zajišťují, že při zrušení modulu hardwarového zabezpečení všechny klíče dojde k vymazání?
 
 Než požádáte o zrušení zřízení, musí mít zákazník zeroized modulu HSM pomocí modulu hardwarového zabezpečení klienta nástroje poskytuje Gemalto.
 
@@ -262,15 +266,13 @@ Vyhrazená zařízení ustanovení SafeNet sítě HSM 7 modulu hardwarového zab
 
 ### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>OTÁZKA: Počet oddílů je možné vytvořit v vyhrazené HSM?
 
-Podle konkrétní model HSM používá, existují 10 oddíly, které jsou k dispozici.
+SafeNet Luna HSM 7 model, který používá A790 zahrnuje licenci pro 10 oddíly poplatky za službu. Zařízení má limit 100 oddílů a přidání oddílů až toto omezení by se vám účtovat dodatečné licenční náklady a vyžadovat instalaci nového licenčního souboru na zařízení.
 
 ### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>OTÁZKA: Kolik klíčů se může v modulu hardwarového zabezpečení vyhrazené podporovaný?
 
-Maximální počet klíčů. Tato čísla platí také pro páry klíčů Pokud se používá asymetrické klíče.
+Maximální počet klíčů je funkce dostupné paměti. Model SafeNet Luna 7 A790 používá má 32MB paměti. Následující čísla platí také pro páry klíčů Pokud se používá asymetrické klíče.
 
 * RSA 2048 - 19,000
 * ECC-P256 - 91,000
-* AES-256 - 218,000
 
 Kapacitu se liší v závislosti na konkrétní klíčové atributy, nastavte v šabloně generování klíčů a počet oddílů.
-

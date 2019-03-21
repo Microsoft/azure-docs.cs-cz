@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58b0d2c12a4e2088964e397b1bc499fa4adfdff3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 172bc96857c6aa0ab19fd4f1a13870dd493100bf
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244551"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295704"
 ---
 # <a name="what-is-authentication"></a>Co je ověřování?
 
@@ -79,7 +79,7 @@ Azure AD zastupuje aplikace podle konkrétního modelu, který je navržený k p
 
 **Objekt aplikace** v Azure AD popisuje aplikaci jako abstraktní entitu. Vývojáři pracují s aplikacemi. Azure AD v době nasazení používá daný objekt aplikace jako podrobný plán k vytvoření **instančního objektu**, který představuje konkrétní instanci aplikace v rámci adresáře a tenanta. Právě instanční objekt definuje, co aplikace v konkrétním cílovém adresáři ve skutečnosti může dělat, kdo ji může používat, k jakým prostředkům má přístup a tak dále. Azure AD vytváří instanční objekt z objektu aplikace prostřednictvím **souhlasu**.
 
-Následující diagram znázorňuje zjednodušený tok zřizování v Azure AD s využitím souhlasu.
+Následující diagram znázorňuje zjednodušený tok zřizování v Azure AD s využitím souhlasu.  V něm existují dva tenanty (A a B), kde tenanta A vlastní aplikace a tenanta B je vytvoření instance pomocí instančního objektu.  
 
 ![Zjednodušený tok zřizování s využitím souhlasu](./media/authentication-scenarios/simplified-provisioning-flow-consent.png)
 
@@ -87,14 +87,14 @@ V tomto toku zřizování:
 
 |   |   |
 |---|---|
-| 1 | Uživatel z B se snaží přihlásit do aplikace. |
+| 1 | Uživatel z tenanta B se pokusí přihlásit aplikace |
 | 2 | Jsou získány a ověřeny přihlašovací údaje uživatele. |
 | 3 | Uživatel je vyzván k vyjádření souhlasu, aby aplikace získala přístup k tenantovi B. |
-| 4 | Azure AD použije objekt aplikace v A jako podrobný plán pro vytvoření instančního objektu v B. |
+| 4 | Azure AD používá objekt aplikace a jako podrobný plán pro vytvoření instančního objektu v tenantu B |
 | 5 | Uživatel obdrží požadovaný token. |
 |   |   |
 
-Tento proces můžete libovolně opakovat pro další klienty (C, D a tak dále). Adresář A zachová podrobný plán pro aplikaci (objekt aplikace). Uživatelé a správci všech ostatních tenantů, kde aplikace obdrží souhlas, si zachovají kontrolu nad tím, co aplikace může dělat, prostřednictvím odpovídajícího instančního objektu v každém tenantovi. Další informace najdete v článku o [aplikaci a instančních objektech v Azure AD](app-objects-and-service-principals.md).
+Tento proces můžete libovolně opakovat pro další klienty (C, D a tak dále). Tenanta A zachová podrobný plán pro aplikaci (objekt aplikace). Uživatelé a správci všech ostatních tenantů, kde aplikace obdrží souhlas, si zachovají kontrolu nad tím, co aplikace může dělat, prostřednictvím odpovídajícího instančního objektu v každém tenantovi. Další informace najdete v článku o [aplikaci a instančních objektech v Azure AD](app-objects-and-service-principals.md).
 
 ## <a name="claims-in-azure-ad-security-tokens"></a>Deklarace identity v tokenech zabezpečení Azure AD
 

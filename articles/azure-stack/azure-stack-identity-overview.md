@@ -16,12 +16,12 @@ ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 564c4b011b26f2bc6b034233d014542172a4a739
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 665f8ac9a8b0738ed23649673c548bc6b1774d2d
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885296"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259954"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Přehled identity pro službu Azure Stack
 
@@ -65,7 +65,7 @@ Ve službě Azure Stack, uživatelských účtů:
 - Jsou omezeny do adresáře, ve kterém se nejprve zaregistrovat, tedy adresáře své organizace.
 - Je možné importovat z místních adresářů. Další informace najdete v tématu [integrace místních adresářů se službou Azure Active Directory](/azure/active-directory/connect/active-directory-aadconnect).
 
-Při přihlášení k portálu tenanta vaší organizace, je použít *https://portal.local.azurestack.external* adresy URL. Při přihlašování k portálu Azure Stack z jiných domén, než jaký se používá k registraci Azure Stack, použili k registraci ve službě Azure Stack název domény musí být připojeno k portálu pro adresu url. Pokud Azure Stack je zaregistrován s fabrikam.onmicrosoft.com a uživatelský účet přihlášení je například admin@contoso.com, by měla adresa url pro použití k protokolování do portálu user portal: https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
+Při přihlášení k portálu tenanta vaší organizace, je použít *https:\//portal.local.azurestack.external* adresy URL. Při přihlašování k portálu Azure Stack z jiných domén, než jaký se používá k registraci Azure Stack, použili k registraci ve službě Azure Stack název domény musí být připojeno k portálu pro adresu url. Pokud Azure Stack je zaregistrován s fabrikam.onmicrosoft.com a uživatelský účet přihlášení je například admin@contoso.com, by měla adresa url pro použití k protokolování do portálu user portal: https:\//portal.local.azurestack.external/ Fabrikam.onmicrosoft.com.
 
 ### <a name="guest-users"></a>Uživatelé typu host
 
@@ -73,7 +73,7 @@ Uživatelé typu Host jsou uživatelské účty z jiných tenantů adresáře, k
 
 Pozvat uživatele typu Host, můžete použít operátoři cloudů a uživatelé [spolupráce B2B ve službě Azure AD](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Pozvaní uživatelé získat přístup k dokumentům, prostředky a aplikace z adresáře a zachovat kontrolu nad prostředky a data. 
 
-Jako uživatele typu Host můžete se přihlásit k adresáři tenanta jiné organizace. Uděláte to tak, připojte název adresáře vaší organizace na portálu pro adresu URL. Například pokud patří do organizace Contoso a chcete k přihlášení do adresáře společnosti Fabrikam, použijete https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
+Jako uživatele typu Host můžete se přihlásit k adresáři tenanta jiné organizace. Uděláte to tak, připojte název adresáře vaší organizace na portálu pro adresu URL. Například pokud patří do organizace Contoso a chcete k přihlášení do adresáře společnosti Fabrikam, pomocí protokolu https:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com.
 
 ### <a name="applications"></a>Aplikace
 
@@ -156,10 +156,10 @@ Pro aplikace a uživatele je popsán čtyři vrstvy architektury Azure Stack. In
 
 Ověřování pomocí zprostředkovatele identity a přijímat webového tokenu JSON, musíte mít následující informace:
 
-1. **Adresa URL pro systém identit (autorita)**: Adresa URL, na které se dá kontaktovat zprostředkovatele identity. Příklad: *https://login.windows.net*.
+1. **Adresa URL pro systém identit (autorita)**: Adresa URL, na které se dá kontaktovat zprostředkovatele identity. Například *https:\//login.windows.net*.
 2. **Identifikátor URI ID aplikace pro Azure Resource Manageru**: Jedinečný identifikátor pro Azure Resource Manageru, který je zaregistrovaný u vašeho zprostředkovatele identity. Je také jedinečná pro každou instalaci Azure Stack.
 3. **přihlašovací údaje**: Přihlašovací údaje, které použijete k ověřování pomocí zprostředkovatele identity.
-4. **Adresa URL pro Azure Resource Manageru**: Adresa URL je umístění služby Azure Resource Manageru. Například *https://management.azure.com* nebo *https://management.local.azurestack.external*.
+4. **Adresa URL pro Azure Resource Manageru**: Adresa URL je umístění služby Azure Resource Manageru. Například *https:\//management.azure.com* nebo *https:\//management.local.azurestack.external*.
 
 Pokud objekt zabezpečení (klienta, aplikace nebo uživatele) odešle požadavek na ověření pro přístup k prostředku, musí zahrnovat požadavek:
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/20/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: 1e8d21c39a428049594237900aa76f783a3ed0ad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 549554521570d1d2f27b2da2b36ca1dfde25562f
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57860343"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293608"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Přehled rozhraní REST API služby Media Services operace 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]

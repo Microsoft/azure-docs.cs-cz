@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f82e73518beeeb38be6cc10d7c340b28560a203
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: e30e65ba2efaf60a0e2d0a6df409c96db4d6285e
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570738"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295806"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Automatizované machine learningu k vytváření regresní model
 
@@ -35,7 +35,7 @@ V tomto kurzu přečtěte si následující úkoly:
 > * Model spouštět místně pomocí vlastních parametrů.
 > * Prozkoumejte výsledky.
 
-Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
+Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
 >[!NOTE]
 > Kód v tomto článku byl testován s využitím Azure Machine Learning SDK verze 1.0.0.
@@ -112,7 +112,7 @@ import os
 
 ### <a name="configure-workspace"></a>Konfigurace pracovního prostoru
 
-Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. A [pracovní prostor](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py) je třída, která přijímá údaje předplatného a prostředků Azure. Také vytvoří prostředek v cloudu pro monitorování a sledování vašich modelů spuštění.
+Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. A [pracovní prostor](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) je třída, která přijímá údaje předplatného a prostředků Azure. Také vytvoří prostředek v cloudu pro monitorování a sledování vašich modelů spuštění.
 
 `Workspace.from_config()` přečte soubor **aml_config/config.json** a načte podrobnosti do objektu s názvem `ws`.  `ws` se používá ve zbývající části kódu v tomto kurzu.
 

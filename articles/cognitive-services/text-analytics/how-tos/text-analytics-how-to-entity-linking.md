@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: bb315ff19aedd839c2b0638726be84343dcf4ec3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 78cc200a7bbaa2673cf6fea71d9be123fc96a75f
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545358"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258067"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Použití s názvem rozpoznávání entit v rozhraní Text Analytics (Náhled)
 
@@ -47,7 +47,7 @@ Použití rozhraní entity linking v různých jazycích vyžaduje použití odp
 | Umístění      | NENÍ K DISPOZICI\*         | "Redmond, Washington", "Paříž"  |
 | Organizace  | NENÍ K DISPOZICI\*         | "Microsoft".   |
 | Množství      | Číslo        | "6", "six"     | 
-| Množství      | Procentuální podíl    | "50 %", "50 %"| 
+| Množství      | Procento    | "50 %", "50 %"| 
 | Množství      | Pořadí       | "2", "druhé"     | 
 | Množství      | NumberRange   | "4 až 8"     | 
 | Množství      | Věk           | "90 den starý", "30 let"    | 
@@ -62,8 +62,9 @@ Použití rozhraní entity linking v různých jazycích vyžaduje použití odp
 | DateTime      | Doba trvání      | "1 minutu a 45 sekundách"   | 
 | DateTime      | Nastavit           | "čtvrtek"     | 
 | DateTime      | Časové pásmo      |    | 
-| zprostředkovatele identity           | NENÍ K DISPOZICI\*         | https://www.bing.com    |
+| zprostředkovatele identity           | NENÍ K DISPOZICI\*         | "https:\//www.bing.com"    |
 | Email         | NENÍ K DISPOZICI\*         | support@contoso.com |
+
 \* V závislosti na vstupním a extrahované entit, může vynechat některé entity `SubType`.
 
 

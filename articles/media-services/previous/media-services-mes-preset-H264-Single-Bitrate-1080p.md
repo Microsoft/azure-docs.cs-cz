@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 031718ce7c3e728de967d2e3502fc56baf3acde6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04333e54566d8535f3d5ba98f32650d30f5fbfc0
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849886"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58257931"
 ---
 # <a name="h264-single-bitrate-1080p"></a>Předvolby H264 S jednou přenosovou rychlostí 1080p
 `Media Encoder Standard` definuje sadu kódování přednastavení, která můžete použít při vytváření úloh kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo XML na základě předvoleb (pomocí kódování UTF-8 nebo UTF-16. By pak úspěšně prošel zpracováním vlastní přednastaveny tak, aby kodér. Seznam přednastavených názvy všech podporovaných touto `Media Encoder Standard` kodér, naleznete v tématu [předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  

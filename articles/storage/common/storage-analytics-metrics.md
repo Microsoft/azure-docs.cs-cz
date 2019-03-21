@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: b35d3d22ce154420c9099143894688389e8af420
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
-ms.translationtype: HT
+ms.openlocfilehash: 9b4bceba53658cb8ac3c73e75e0d19faf3fe3f0b
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58078036"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259750"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage analytics metriky (klasické)
 
@@ -23,10 +23,10 @@ Analýza úložiště může ukládat data, včetně transakce agregované stati
 
 > [!NOTE]
 > Metrikách Storage Analytics jsou k dispozici pro služby objektů Blob, fronty, tabulky a soubor.
-> Metrikách Storage Analytics jsou nyní klasické metriky. Společnost Microsoft doporučuje používat [metrik úložiště ve službě Azure Monitor](/azure/storage/common/storage-metrics-in-azure-monitor.md) místo metrik Storage Analytics.
+> Metrikách Storage Analytics jsou nyní klasické metriky. Společnost Microsoft doporučuje používat [metrik úložiště ve službě Azure Monitor](storage-metrics-in-azure-monitor.md) místo metrik Storage Analytics.
 
 ## <a name="transaction-metrics"></a>Metriku transakcí  
- Robustní sadu dat je zaznamenán v intervalech hodinových nebo minutu pro každou službu úložiště a požadovanou operaci rozhraní API, včetně příchozí a odchozí transakce, dostupnosti, chyby a zařazený do kategorie žádost o procenta. Můžete zobrazit úplný seznam všech podrobností transakcí v [tabulkovému schématu metrik Storage Analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema.md) tématu.  
+ Robustní sadu dat je zaznamenán v intervalech hodinových nebo minutu pro každou službu úložiště a požadovanou operaci rozhraní API, včetně příchozí a odchozí transakce, dostupnosti, chyby a zařazený do kategorie žádost o procenta. Můžete zobrazit úplný seznam všech podrobností transakcí v [tabulkovému schématu metrik Storage Analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema) tématu.  
 
  Transakce údaje jsou zaznamenány na dvou úrovních – úroveň služby a úroveň operace rozhraní API. Na úrovni služby statistiky sumarizace všech požadovaná operace rozhraní API se zapisují do tabulky entitu každou hodinu i v případě, že nebyly zadány žádné žádosti do služby. Na úrovni rozhraní API operace statistiky zapíšou jenom do entity Pokud za tuto hodinu se požadovaná operace.  
 
@@ -45,7 +45,7 @@ Analýza úložiště může ukládat data, včetně transakce agregované stati
 - **ContainerCount**: Počet kontejnerů objektů blob ve službě Blob service účtu úložiště.  
 - **ObjectCount**: Počet potvrzených a nepotvrzené bloku nebo stránky objekty BLOB ve službě Blob service účtu úložiště.  
 
-  Další informace o metriky kapacity najdete v tématu [tabulkovému schématu metrik Storage Analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema.md).  
+  Další informace o metriky kapacity najdete v tématu [tabulkovému schématu metrik Storage Analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema).  
 
 ## <a name="how-metrics-are-stored"></a>Jak jsou uloženy metriky  
 
@@ -123,7 +123,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
 Další informace o používání jazyka .NET konfigurace metrik úložiště, najdete v části [Klientská knihovna pro úložiště pro .NET](https://msdn.microsoft.com/library/azure/mt347887.aspx).  
 
-Obecné informace o konfiguraci metrik Storage pomocí rozhraní REST API najdete v tématu [povolení a konfigurace úložiště analýzy](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics.md).  
+Obecné informace o konfiguraci metrik Storage pomocí rozhraní REST API najdete v tématu [povolení a konfigurace úložiště analýzy](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics).  
 
 ##  <a name="viewing-storage-metrics"></a>Zobrazení metrik Storage  
 Po dokončení konfigurace metrik Storage Analytics k monitorování vašeho účtu úložiště, analytika úložiště zaznamenává metriky sadu známých tabulek ve vašem účtu úložiště. Můžete konfigurovat grafy pro zobrazení hodinové metriky [webu Azure portal](https://portal.azure.com):
@@ -144,7 +144,7 @@ Pokud chcete stáhnout metriky pro dlouhodobé uložení nebo jejich analýze m�
 |Minutové metriky|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Jde Povolit jenom pomocí Powershellu nebo prostřednictvím kódu programu.<br /><br /> Metriky pro službu souborů jsou k dispozici od verze 2015-04-05.|  
 |Kapacita|$MetricsCapacityBlob|Pouze služba objektů BLOB.|  
 
-Pro tyto tabulky na najdete úplné podrobnosti o schémata [tabulkovému schématu metrik Storage Analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema.md). Zobrazit pouze podmnožinu sloupců, které jsou k dispozici následující řádky vzorku, ale ukazují některé důležité funkce způsob, jakým metrik Storage ukládá tyto metriky:  
+Pro tyto tabulky na najdete úplné podrobnosti o schémata [tabulkovému schématu metrik Storage Analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema). Zobrazit pouze podmnožinu sloupců, které jsou k dispozici následující řádky vzorku, ale ukazují některé důležité funkce způsob, jakým metrik Storage ukládá tyto metriky:  
 
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
@@ -227,6 +227,6 @@ Kapacita použitá tabulky metrik je také fakturovatelný. K odhadu kapacity se
 
 ## <a name="next-steps"></a>Další postup
 * [Monitorování účtu úložiště](https://www.windowsazure.com/manage/services/storage/how-to-monitor-a-storage-account/)   
-* [Tabulkovému schématu metrik Storage Analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema.md)   
-* [Analýza úložiště protokoluje operace a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md)   
+* [Tabulkovému schématu metrik Storage Analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema)   
+* [Analýza úložiště protokoluje operace a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)   
 * [Protokolování Storage Analytics](storage-analytics-logging.md)

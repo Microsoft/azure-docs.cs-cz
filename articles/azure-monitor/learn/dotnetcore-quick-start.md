@@ -1,6 +1,6 @@
 ---
 title: Rychlý start pro Azure Application Insights | Dokumentace Microsoftu
-description: Pokyny pro rychlé nastavení webové aplikace ASP.NET Core pro monitorování s využitím Application Insights
+description: Pokyny pro rychlé nastavení webové aplikace ASP.NET Core pro monitorování pomocí Application Insights
 services: application-insights
 keywords: ''
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 14295bca12e64174d03cfd1c2bd8d214d801e8e5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fe986d24df8dce6a390d21a262056f7ab857070c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261056"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886724"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Zahájení monitorování webové aplikace ASP.NET Core
 
@@ -33,7 +33,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 - [Nainstalovat sadu .NET Core 2.0 SDK](https://www.microsoft.com/net/core)
 - Budete potřebovat předplatné Azure a webovou aplikaci v .NET Core.
 
-Pokud webovou aplikaci ASP.NET Core nemáte, můžete použít našeho podrobného průvodce k [vytvoření aplikace ASP.NET Core a přidání Application Insights](../../azure-monitor/app/asp-net-core.md).
+Pokud webová aplikace ASP.NET Core nemáte, můžete použít naši podrobného průvodce můžete [vytvoření aplikace ASP.NET Core a přidání služby Application Insights.](../../azure-monitor/app/asp-net-core.md)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 3f3c7523bfc800a74da56b1b3241ac5756c68d14
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
-ms.translationtype: MT
+ms.openlocfilehash: ae31aa19e5905ccafcd0161ea362cc68234f8295
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215502"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294740"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Attribution využití zákazníka partnerů Azure
 
@@ -127,6 +127,8 @@ Při použití rozhraní příkazového řádku Azure k připojení vašeho iden
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+Další informace najdete v tématu [Azure SDK for Go](https://docs.microsoft.com/go/azure/).
+
 ## <a name="use-terraform"></a>Použití Terraformu
 
 Podpora pro Terraform je dostupná prostřednictvím zprostředkovatele Azure 1.21.0 uvolnit: [ https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019 ](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019).  Tato podpora se vztahuje na všechny partnery, kteří si nasadí jejich řešení pomocí Terraformu a všechny prostředky nasazené a měří pomocí zprostředkovatele služby Azure (verze 1.21.0 nebo novější).
@@ -280,7 +282,7 @@ Pokud potřebujete pomoc pro Marketplace Onboarding a/nebo attribution využití
    - Přidružení problémy spotřeba energie, vyberte **jiných**.
    - Potíže s přístupem k s Azure Marketplace CPP, vyberte **potíže při přístupu k**.
    
-    ![Vyberte kategorii problému](media/marketplace-publishers-guide/lu-article-incident.png)
+     ![Vyberte kategorii problému](media/marketplace-publishers-guide/lu-article-incident.png)
 
 1. Vyberte **požadavek na spuštění**.
 
@@ -299,7 +301,7 @@ Můžete také získat technickou pomoc od Microsoft Partner technické konzulta
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>Jak odeslat žádost o technickou konzultace
 
-1. Navštivte [ http://aka.ms/TechnicalJourney ](http://aka.ms/TechnicalJourney).
+1. Navštivte [ https://aka.ms/TechnicalJourney ](https://aka.ms/TechnicalJourney).
 1. Vyberte cloudové infrastruktury a správy a nová stránka se otevře umožní zobrazit technické cesty.
 1. V rámci služby pro nasazení klikněte na Odeslat žádost tlačítka
 1. Přihlaste se pomocí MSA (účtu MPN) nebo AAD (účtu řídicího panelu partnera); založené na vaší přihlašovací pověření, otevře se formulář žádosti o online: 
@@ -308,7 +310,7 @@ Můžete také získat technickou pomoc od Microsoft Partner technické konzulta
     * Zadejte název a popis problému (zadejte co nejvíce podrobností nejvíce).
 1. Klikněte na tlačítko Odeslat
 
-Zobrazit podrobné pokyny včetně snímků obrazovky na [ http://aka.ms/TechConsultInstructions ](http://aka.ms/TechConsultInstructions).
+Zobrazit podrobné pokyny včetně snímků obrazovky na [ https://aka.ms/TechConsultInstructions ](https://aka.ms/TechConsultInstructions).
 
 ### <a name="whats-next"></a>Co se chystá
 

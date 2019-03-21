@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 7bc3ea054056ac67cf0a116fb1538bc1483ab4d4
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 61b3a9e066a3ee20effa97f1c6c7a0bd1ae90ac0
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223525"
+ms.locfileid: "58285834"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace služby Application Gateway
 
@@ -33,7 +33,9 @@ Služba Application gateway je vyhrazené nasazení ve virtuální síti. V rám
 
 #### <a name="size-of-the-subnet"></a>Velikost podsítě.
 
-V případě v1 SKU application Gateway využívá jednu privátní IP adresu na jednu instanci a jiné privátní IP adresu Pokud je nakonfigurovaný privátní front-endovou konfiguraci IP. Azure si vyhrazuje první čtyři a poslední IP adresu v každé podsíti pro interní použití. Například, pokud služby application gateway je nastavena na tři instance a žádné privátní front-endovou IP, pak je/29 nebo větší velikost podsítě je potřeba. V tomto případě application gateway používá tři IP adresy. Pokud máte tři instance a IP adresu pro privátní front-endovou konfiguraci protokolu IP, pak o velikosti/28 podsíť, velikost nebo vyšší je potřeba, protože čtyři IP adresy jsou povinné.
+Application Gateway využívá jednu privátní IP adresu na jednu instanci a jiné privátní IP adresu, pokud je nakonfigurovaný privátní front-endovou konfiguraci IP. Azure si vyhrazuje první čtyři a poslední IP adresu v každé podsíti pro interní použití. Například pokud služby application gateway je nastavena na tři instance a žádná privátní front-endovou IP adresa, pak alespoň osm IP adresy je třeba v podsíti - 5 IP adres pro interní použití a tři IP adresy pro tři instance služby application gateway. Proto se v tomto případě je/29 nebo větší velikost podsítě je potřeba. Pokud máte tři instance a IP adres pro privátní front-endovou konfiguraci protokolu IP, pak devět IP adres se bude vyžadovat - tři IP adresy pro tři instance služby application gateway jednu IP adresu pro privátní front-endovou IP Adresou a 5 IP adres pro interní použití. Proto se v tomto případě o velikosti/28 nebo větší velikost podsítě je potřeba.
+
+Jako nejlepší postup použijte aspoň o velikosti/28 velikost podsítě. To vám dává 11 použitelné adresy. Pokud zatížení aplikace vyžaduje víc než 10 instancí, měli byste zvážit možnost/27 nebo/26 velikost podsítě.
 
 #### <a name="network-security-groups-supported-on-the-application-gateway-subnet"></a>Skupiny zabezpečení sítě podporované na podsítě Application Gateway.
 
@@ -41,7 +43,7 @@ Skupiny zabezpečení sítě (Nsg) podporují na podsítě Application Gateway s
 
 - Výjimky musí být umístěno v pro příchozí provoz na portech 65503 65534 pro službu Application Gateway v1 SKU a porty 65200 – 65 535 pro v2 SKU. Tento rozsah portů je nutné pro komunikaci infrastruktury Azure. Jsou chráněny (uzamknuty) s použitím certifikátů Azure. Bez správných certifikátů nemohou externí entity, včetně zákazníků těchto bran, nebudou se moct k zahájení změny činnost těchto koncových bodů.
 
-- Odchozí připojení k Internetu, nejde blokovat.
+- Odchozí připojení k Internetu, nejde blokovat. Odchozí výchozí pravidla v této skupině již povolit připojení k Internetu. Doporučujeme, že není odebrat výchozí odchozí pravidla a nevytvoříte dalších odchozích pravidel, které odepřou odchozí připojení k Internetu.
 
 - Musí se povolit provoz z značka AzureLoadBalancer.
 
@@ -57,11 +59,12 @@ Tento scénář lze provést pomocí skupin Nsg na podsítě služby application
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>Trasy definované uživatelem, které jsou podporovány na podsítě Application Gateway.
 
-V případě SKU v1 jsou podporovány trasy definované uživatelem (udr) na podsítě služby application gateway, za předpokladu, nijak nemění komunikace začátku do konce žádostí a odpovědí.
-
-Například trasu UDR v podsítě služby application gateway můžete nastavit tak, aby odkazoval na zařízení brány firewall pro kontrolu paketů, ale musíte zajistit, aby paketu přístup jeho příspěvku kontrole požadovaného cíle. K tomu může dojít nesprávný stav testu nebo provoz směrování chování. To zahrnuje zjištěné trasy nebo výchozí trasy 0.0.0.0/0 šířeny přes ExpressRoute nebo bran VPN ve virtuální síti.
+V případě SKU v1 jsou podporovány trasy definované uživatelem (udr) na podsítě služby application gateway, za předpokladu, nijak nemění komunikace začátku do konce žádostí a odpovědí. Například trasu UDR v podsítě služby application gateway můžete nastavit tak, aby odkazoval na zařízení brány firewall pro kontrolu paketů, ale musíte zajistit, aby paketu přístup jeho příspěvku kontrole požadovaného cíle. K tomu může dojít nesprávný stav testu nebo provoz směrování chování. To zahrnuje zjištěné trasy nebo výchozí trasy 0.0.0.0/0 šířeny přes ExpressRoute nebo bran VPN ve virtuální síti.
 
 V případě v2 nejsou podporované skladové položky, trasy definované uživatelem na podsítě služby application gateway. Další informace najdete v tématu [automatické škálování a zónově redundantní služba Application Gateway (Public Preview)](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#known-issues-and-limitations).
+
+> [!NOTE]
+> Použití tras definovaných uživatelem na podsítě služby application gateway způsobí, že stav v [zobrazení stavu back-endu](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) zobrazený jako **neznámý** a také způsobí failue generování protokolů application gateway a metriky. Doporučuje se, že je velmi riskantní používat trasy definované uživatelem na podsítě služby application gateway bude moct zobrazit stav back-endu, protokoly a metriky.
 
 ## <a name="frontend-ip"></a>IP front-endu
 
@@ -87,10 +90,11 @@ Můžete si vybrat mezi [základní nebo multi-Site naslouchací proces](https:/
 
 - Pokud konfigurujete víc než jednu webovou aplikaci nebo více poddomény stejné nadřazené domény na stejné instance služby application gateway, zvolte Multi-Site naslouchací proces. Pro naslouchací proces více lokalit bude kromě toho musíte zadat název hostitele. Je to proto, že služba Application Gateway spoléhá na hlavičky hostitele HTTP 1.1 pro hostování více než jednoho webu na stejnou veřejnou IP adresu a port.
 
-> [!NOTE]
-> V případě SKU v1 naslouchacích procesů se zpracovávají v pořadí, ve kterém jsou zobrazeny. Z tohoto důvodu Pokud základní naslouchací proces odpovídá příchozí žádosti zpracovávat jej nejprve. Proto by měl být nakonfigurovaný naslouchací procesy pro více webů před základní naslouchací proces chcete zajistit, aby provoz se směruje do správného back endu.
->
-> V případě SKU v2 jsou zpracovány naslouchací procesy pro více webů před základní naslouchací procesy.
+#### <a name="order-of-processing-listeners"></a>Pořadí zpracování naslouchacích procesů
+
+V případě SKU v1 naslouchacích procesů se zpracovávají v pořadí, ve kterém jsou zobrazeny. Z tohoto důvodu Pokud základní naslouchací proces odpovídá příchozí žádosti zpracovávat jej nejprve. Proto by měl být nakonfigurovaný naslouchací procesy pro více webů před základní naslouchací proces chcete zajistit, aby provoz se směruje do správného back endu.
+
+V případě SKU v2 jsou zpracovány naslouchací procesy pro více webů před základní naslouchací procesy.
 
 ### <a name="frontend-ip"></a>IP front-endu
 
@@ -110,9 +114,9 @@ Musíte zvolit protokol HTTP a HTTPS.
 
   Pokud chcete nakonfigurovat ukončení vrstvy SSL (Secure Sockets) a koncového šifrování protokolu SSL, je vyžadován certifikát přidat k naslouchacímu procesu, aby byla zajištěna aplikační brány pro odvození symetrického klíče podle specifikace protokolu SSL. Symetrický klíč se pak používá k šifrování a dešifrování provoz odeslaný na bránu. Certifikát brány musí být ve formátu Personal Information Exchange (PFX). Tento formát souboru umožňuje exportovat soukromý klíč, který vyžaduje službu application gateway šifrování a dešifrování přenosů. 
 
-#### <a name="supported-certs"></a>Podporované certifikátů
+#### <a name="supported-certificates"></a>Podporované certifikáty
 
-Certifikáty podepsané svým držitelem, certifikáty CA certs, zástupný znak – certifikáty a certifikáty EV jsou podporovány.
+Zobrazit [certifikátů podporovaných pro ukončení protokolu SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview#certificates-supported-for-ssl-termination).
 
 ### <a name="additional-protocol-support"></a>Podpora dalších protokolů
 
@@ -160,11 +164,11 @@ Můžete si vybrat mezi [basic nebo na základě cest pravidlo](https://docs.mic
 - Zvolte cestu naslouchací proces založený na Pokud chcete směrovat požadavky s konkrétní cestu adresy URL ke konkrétní back-endové fondy. Vzor cesty platí pouze pro cestu adresy URL, aby jeho parametry dotazu.
 
 
-> [!NOTE]
->
-> V případě SKU v1 odpovídající vzorku příchozích požadavků, jsou zpracovávána v pořadí, ve kterém jsou uvedeny cesty v objektu map cestu adresy URL pravidla na základě cest. Z tohoto důvodu Pokud požadavek odpovídá vzoru v dvě nebo více cest v mapě cestu adresy URL, pak cestu, která je uvedená nejprve bude odpovídat a požadavek se předají do back-endu přidružené k této cestě.
->
-> V případě SKU v2 obsahuje přesnou shodu vyšší prioritu v pořadí, ve kterém jsou uvedeny cesty v objektu map cestu adresy URL. Pro tento důvod, pokud požadavek odpovídá vzoru ve dvou nebo více cest, pak žádost se předají do back-endu přidružené této cesty, který přesně odpovídá požadavku. Pokud cestu v příchozím požadavku přesně neodpovídá žádné cesty v objektu map cestu adresy URL, pak odpovídající vzorku příchozích požadavků jsou zpracovávány v pořadí, ve kterém jsou uvedené cesty v objektu map cestu adresy URL pravidla na základě cest.
+#### <a name="order-of-processing-rules"></a>Pořadí zpracování pravidla
+
+V případě SKU v1 odpovídající vzorku příchozích požadavků, jsou zpracovávána v pořadí, ve kterém jsou uvedeny cesty v objektu map cestu adresy URL pravidla na základě cest. Z tohoto důvodu Pokud požadavek odpovídá vzoru v dvě nebo více cest v mapě cestu adresy URL, pak cestu, která je uvedená nejprve bude odpovídat a požadavek se předají do back-endu přidružené k této cestě.
+
+V případě SKU v2 obsahuje přesnou shodu vyšší prioritu v pořadí, ve kterém jsou uvedeny cesty v objektu map cestu adresy URL. Pro tento důvod, pokud požadavek odpovídá vzoru ve dvou nebo více cest, pak žádost se předají do back-endu přidružené této cesty, který přesně odpovídá požadavku. Pokud cestu v příchozím požadavku přesně neodpovídá žádné cesty v objektu map cestu adresy URL, pak odpovídající vzorku příchozích požadavků jsou zpracovávány v pořadí, ve kterém jsou uvedené cesty v objektu map cestu adresy URL pravidla na základě cest.
 
 ### <a name="associated-listener"></a>Přidružený naslouchací proces
 
@@ -176,7 +180,7 @@ Přidružte back-endový fond obsahující cíle back-end, které budou obsluhov
 
 ### <a name="associated-backend-http-setting"></a>Přidružené back-endového nastavení HTTP
 
-Přidáte nastavení HTTP back-endu pro každé pravidlo. Požadavky se budou směrovat z aplikační brány pro back-endu cíle pomocí číslo portu, protokolu a další nastavení zadané v tomto nastavení. V případě základní pravidlo je pouze jedno nastavení HTTP back-endu povolená, protože všechny požadavky na přidružený naslouchací proces se předají do odpovídající cíle back-end pomocí tohoto nastavení protokolu HTTP. V případě pravidlo na základě cest přidání více nastavení HTTP back-endu odpovídající každé cesty adresy URL. Požadavky, které odpovídají zde zadaná cesta URL se předají do odpovídající cíle back-end pomocí protokolu HTTP nastavení odpovídající každé cesty adresy URL. Také přidáte výchozí nastavení protokolu HTTP, protože požadavky, které se neshodují s libovolnou cestu adresy URL zadané v tomto pravidle se předají do výchozí fond back-end pomocí výchozích nastavení protokolu HTTP.
+Přidáte nastavení HTTP back-endu pro každé pravidlo. Požadavky se budou směrovat z aplikační brány pro back-endu cíle pomocí číslo portu, protokolu a další nastavení zadané v tomto nastavení. V případě základní pravidlo je pouze jedno nastavení HTTP back-endu povolená, protože všechny požadavky na přidružený naslouchací proces se předají do odpovídající cíle back-end pomocí tohoto nastavení protokolu HTTP. V případě pravidlo na základě cest přidání více nastavení HTTP back-endu odpovídající každé cesty adresy URL. Požadavky, které odpovídají zde zadaná cesta URL se předají do odpovídající cíle back-end pomocí protokolu HTTP nastavení odpovídající každé cesty adresy URL. Také přidáte výchozí nastavení protokolu HTTP, protože požadavky, které se neshodují s libovolnou cestu adresy URL zadané v tomto pravidle se předají do výchozí fond back-end pomocí výchozího nastavení protokolu HTTP.
 
 ### <a name="redirection-setting"></a>Nastavení přesměrování
 
@@ -186,7 +190,7 @@ Informace o funkci přesměrování najdete v tématu [přehled přesměrování
 
 - #### <a name="redirection-type"></a>Typ přesměrování
 
-  Zvolte typ přesměrování vyžadované od: Trvalé, dočasný, najít nebo zobrazit jiné.
+  Zvolte typ přesměrování vyžadované od: Permanent(301), Temporary(307), Found(302) nebo si zobrazte other(303).
 
 - #### <a name="redirection-target"></a>Cíl přesměrování
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/20/2019
 ms.author: rli; juliako;
-ms.openlocfilehash: 70cd93e4f7984e938a67c799d632f653745a6c62
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3e4844c3174e41ca7f6f5667a2777aba11f70f11
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57870025"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58292984"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Zákona o svobodném přístupu tváře s názorným postupem Azure Media Analytics
 

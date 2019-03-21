@@ -8,12 +8,12 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
-ms.openlocfilehash: 1b5f05f3cddea986230327165399b0fe530e361b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: c5c69ded05e5ec6d1df6bd2befb4fe89417bae06
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588071"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226789"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Rychlý start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks
 
@@ -29,16 +29,16 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
   Vložte název účtu úložiště do textového souboru. Brzy je budete potřebovat.
 
-*  Vytvoření instančního objektu. Zobrazit [jak: Použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Vytvoření instančního objektu. Zobrazit [jak: Použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-   Existuje několik určité akce, které budete muset udělat při provádění kroků v tomto článku.
+  Existuje několik určité akce, které budete muset udělat při provádění kroků v tomto článku.
 
-   :heavy_check_mark: Při provádění kroků v [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) části tohoto článku, ujistěte se, že k přiřazení **Přispěvatel dat objektu Blob úložiště** roli instančnímu objektu služby.
+  :heavy_check_mark: Při provádění kroků v [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) části tohoto článku, ujistěte se, že k přiřazení **Přispěvatel dat objektu Blob úložiště** roli instančnímu objektu služby.
 
-   > [!IMPORTANT]
-   > Ujistěte se, že přiřazení role v rámci účtu úložiště Data Lake Storage Gen2. Roli můžete přiřadit do nadřazené skupiny prostředků nebo předplatného, ale se zobrazí chyby související s oprávněními, dokud tato přiřazení rolí se rozšíří do účtu úložiště.
+  > [!IMPORTANT]
+  > Ujistěte se, že přiřazení role v rámci účtu úložiště Data Lake Storage Gen2. Roli můžete přiřadit do nadřazené skupiny prostředků nebo předplatného, ale se zobrazí chyby související s oprávněními, dokud tato přiřazení rolí se rozšíří do účtu úložiště.
 
-   :heavy_check_mark: Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a hodnoty klíče ověřování do textového souboru. Brzy ty budete potřebovat.
+  :heavy_check_mark: Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a hodnoty klíče ověřování do textového souboru. Brzy ty budete potřebovat.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 

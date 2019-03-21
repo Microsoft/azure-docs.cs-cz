@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 01/18/2019
+ms.date: 03/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4d2e1ac749c2985ada04e0de050c97f027a205af
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 3c2567564e015ef19adf9f8c776e1f377a9cdf30
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791847"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58133055"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co je "kognitivního vyhledávání" ve službě Azure Search?
 
@@ -92,31 +92,9 @@ Indexy jsou generovány z schématu indexu, který definuje pole, atributy, a ji
 
 ## <a name="where-do-i-start"></a>Kde mám začít?
 
-**Krok 1: [Vytvoří prostředek služby Azure Search](search-create-service-portal.md) v oblasti poskytuje rozhraní API** 
+**Krok 1: [Vytvoří prostředek služby Azure Search](search-create-service-portal.md)** 
 
-+ Západní střed USA
-+ Středojižní USA
-+ Středoseverní USA
-+ USA – východ
-+ Východní USA 2
-+ Západní USA
-+ Západní USA 2
-+ USA – střed
-+ Kanada – střed
-+ Západní Evropa
-+ Severní Evropa
-+ Velká Británie – jih
-+ Francie – střed
-+ Brazílie – jih
-+ Východní Asie
-+ Jihovýchodní Asie
-+ Střed Indie
-+ Japonsko – západ
-+ Japonsko – východ
-+ Korea – střed
-+ Austrálie – východ
-
-**Krok 2: Praktické zkušenosti na hlavní server pracovního postupu**
+**Krok 2: Vyzkoušejte si některé šablon rychlý start a příklady pro praktické zkušenosti**
 
 + [Rychlý start (portál)](cognitive-search-quickstart-blob.md)
 + [Kurzu práce (požadavků HTTP)](cognitive-search-tutorial-blob.md)

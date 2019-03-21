@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 85dca677238070ded13b59faf9a13081c2409987
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4d090740b75acbe2629ae4f1e13cde8947f190bb
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890852"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286427"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: Potíže s agentů nebo rozšíření
 
@@ -102,19 +102,12 @@ Po registraci a naplánovat virtuálního počítače pro služby Azure Backup z
 **Příčina 5: Služba zálohování nemá oprávnění k odstranění staré body obnovení z důvodu zámku skupiny prostředků** <br>
 **Příčina 6: [Virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**
 
-## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize – aktuálně Azure Backup nepodporuje disky větší než 1023GB
+## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095gb"></a>UserErrorUnsupportedDiskSize – aktuálně Azure Backup nepodporuje disky větší než 4 095 GB
 
 **Kód chyby:**: UserErrorUnsupportedDiskSize <br>
-**Chybová zpráva**: Azure Backup momentálně nepodporuje disky větší než 1023 GB <br>
+**Chybová zpráva**: Azure Backup momentálně nepodporuje disky větší než 4 095 GB <br>
 
-Vaše operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 1023GB, protože trezoru není upgradována rychlé obnovení. Upgrade na rychlé obnovení bude poskytovat podporu až na 4TB, najdete v tomto [článku](backup-instant-restore-capability.md#upgrading-to-instant-restore). Po upgradu, bude trvat až dvě hodiny pro předplatné, které chcete použít tuto funkci. Poskytují dostatek vyrovnávací paměti, než zkusíte operaci zopakovat.  
-
-## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported – aktuálně Azure Backup nepodporuje disky SSD na úrovni Standard
-
-**Kód chyby:**: UserErrorStandardSSDNotSupported <br>
-**Chybová zpráva**: Azure Backup momentálně nepodporuje disky SSD na úrovni Standard <br>
-
-Azure Backup teď podporuje disky SSD na úrovni Standard pouze pro trezory služby, které jsou upgradovány na [rychlé obnovení](backup-instant-restore-capability.md).
+Vaše operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 4 095 GB. Podpora velkých disků je již brzy.  
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nepovedlo se inicializovat zálohování, protože právě probíhá jiná operace zálohování
 
@@ -200,7 +193,7 @@ Následující podmínky mohou způsobit selhání úlohy snímku:
 | Příčina | Řešení |
 | --- | --- |
 | Stav virtuálního počítače je uvedena nesprávně, protože virtuální počítač je vypnutý v protokolu RDP (Remote Desktop). | Pokud vypnete virtuální počítač v protokolu RDP, podívejte se na portál k určení, zda je stav virtuálního počítače správný. Pokud není správný, vypněte virtuální počítač na portálu pomocí **vypnutí** možnost na řídicím panelu virtuálních počítačů. |
-| Virtuální počítač nelze získat adresu hostitele nebo prostředků infrastruktury ze serveru DHCP. | DHCP musí být povolené uvnitř hosta pro zálohování virtuálních počítačů IaaS pro práci. Pokud virtuální počítač nemůže získat adresu hostitele nebo prostředků infrastruktury z odpovědi DHCP 245, se nedá stáhnout nebo ji spustit žádná rozšíření. Pokud potřebujete statickou privátní IP adresu, měli byste nakonfigurovat prostřednictvím **webu Azure Portal** nebo **Powershellu** a ujistěte se, že je povolená možnost DHCP ve virtuálním počítači. [Další informace](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) o nastavení statické IP adresy pomocí prostředí PowerShell.
+| Virtuální počítač nelze získat adresu hostitele nebo prostředků infrastruktury ze serveru DHCP. | DHCP musí být povolené uvnitř hosta pro zálohování virtuálních počítačů IaaS pro práci. Pokud virtuální počítač nemůže získat adresu hostitele nebo prostředků infrastruktury z odpovědi DHCP 245, se nedá stáhnout nebo ji spustit žádná rozšíření. Pokud potřebujete statickou privátní IP adresu, měli byste nakonfigurovat prostřednictvím **webu Azure portal** nebo **Powershellu** a ujistěte se, že je povolená možnost DHCP ve virtuálním počítači. [Další informace](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) o nastavení statické IP adresy pomocí prostředí PowerShell.
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>Rozšíření zálohování se nezdaří pro aktualizaci nebo načtení
 Pokud rozšíření nelze načíst, zálohování se nezdaří, protože nelze pořídí snímek.

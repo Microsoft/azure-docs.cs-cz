@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0e2980b48a5d9b1f2e9d75e59a27bfceb0d1180
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6221fb7575fc267030929b449cba48cff8563f27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195579"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122550"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v20-endpoint"></a>Rychlý start: Registrace aplikace s koncovým bodem v2.0 Azure Active Directory
 
@@ -61,4 +61,4 @@ Ne všechny funkce a scénáře služby Azure AD jsou podporovány koncovým bod
 
 Teď, když máte aplikaci Microsoft, můžete provést jeden rychlý start (quickstart2) verze 2.0. Zde je několik doporučení:
 
-[!INCLUDE [active-directory-v2-quickstart-table](../../../includes/active-directory-v2-quickstart-table.md)]
+[!INCLUDE [active-directory-v2-quickstart-table](~/includes/active-directory-v2-quickstart-table.md)]

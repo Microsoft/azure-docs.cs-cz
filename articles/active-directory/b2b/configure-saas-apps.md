@@ -9,14 +9,15 @@ ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03652329acaeb737cb7cb4010ef48938caa17acc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c7a652ab4283321c5934b32fdc5478bb5d79e4a7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096907"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293126"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurace aplikací SaaS pro spolupráci B2B
 
@@ -53,7 +54,7 @@ Pokud chcete povolit uživatelům umožní přihlásit se pomocí svého účtu 
 
 5. Přihlaste se k Dropboxu adresou URL přihlašování z **jednotného přihlašování** stránky.
 
-   ![Přihlašovací stránka Dropboxu](media/configure-saas-apps/sign-in-to-dropbox.png)
+   ![Snímek obrazovky zobrazující přihlašovací stránku Dropbox](media/configure-saas-apps/sign-in-to-dropbox.png)
 
 6. V nabídce vyberte **konzoly pro správu**.
 
@@ -78,7 +79,7 @@ Můžete povolit uživatele bude možné ověřit uživatele typu Host pole ke s
 
 2. Konfigurace jednotného přihlašování v následujícím pořadí:
 
-   ![Nakonfigurujte pole jednotného přihlašování](media/configure-saas-apps/configure-box-sso.png)
+   ![Snímek obrazovky zobrazující nastavení konfigurace jednotného přihlašování](media/configure-saas-apps/configure-box-sso.png)
 
    a. V **přihlašovací adresa URL** pole, ujistěte se, že přihlašovací adresa URL je nakonfigurovaná pro pole na webu Azure Portal. Tato adresa URL je adresa URL vašeho tenanta Box.com. Měla by odpovídat zásady vytváření názvů *https://.box.com*.  
    **Identifikátor** se nedá použít u této aplikace, ale stále zobrazuje jako povinné pole.

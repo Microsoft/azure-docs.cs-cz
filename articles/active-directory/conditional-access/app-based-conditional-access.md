@@ -18,12 +18,12 @@ ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f7765b775706d3bdf09176bc4bfbf18533d054
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 57b7f540ccf80c6d25a7dfcfcad1ba7ca6698167
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441300"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113227"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Jak: Vyžadovat klientem schválených aplikací pro přístup k aplikaci cloud s podmíněným přístupem 
 
@@ -292,13 +292,13 @@ Pro zásady podmíněného přístupu v tomto kroku budete muset nakonfigurovat 
 
 5. Jako **ovládací prvky přístupu**, musíte mít následující vybrané:
 
-    - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
+   - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
 
-    - **Vyžaduje se klientem schválená aplikace (preview)**
+   - **Vyžaduje se klientem schválená aplikace (preview)**
 
-    - **Vyžadovat jeden z vybraných ovládacích prvků**   
+   - **Vyžadovat jeden z vybraných ovládacích prvků**   
  
-    ![Podmíněný přístup](./media/app-based-conditional-access/11.png)
+     ![Podmíněný přístup](./media/app-based-conditional-access/11.png)
 
 
 
@@ -388,13 +388,13 @@ Pro zásady podmíněného přístupu v tomto kroku budete muset nakonfigurovat 
 
 5. Jako **ovládací prvky přístupu**, musíte mít následující vybrané:
 
-    - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
+   - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
 
-    - **Vyžaduje se klientem schválená aplikace (preview)**
+   - **Vyžaduje se klientem schválená aplikace (preview)**
 
-    - **Vyžadovat všechny vybrané ovládací prvky**   
+   - **Vyžadovat všechny vybrané ovládací prvky**   
  
-    ![Podmíněný přístup](./media/app-based-conditional-access/13.png)
+     ![Podmíněný přístup](./media/app-based-conditional-access/13.png)
 
 
 
@@ -420,13 +420,13 @@ Pro zásady podmíněného přístupu v tomto kroku budete muset nakonfigurovat 
 
 5. Jako **ovládací prvky přístupu**, musíte mít následující vybrané:
 
-    - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
+   - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
 
-    - **Vyžaduje se klientem schválená aplikace (preview)**
+   - **Vyžaduje se klientem schválená aplikace (preview)**
 
-    - **Vyžadovat všechny vybrané ovládací prvky**   
+   - **Vyžadovat všechny vybrané ovládací prvky**   
  
-    ![Podmíněný přístup](./media/app-based-conditional-access/64.png)
+     ![Podmíněný přístup](./media/app-based-conditional-access/64.png)
 
 
 

@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46fc0a49ebae86a715685e1073b4eb7cc10e6032
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 65e803ca373fb9853fc23d17f1a27ecadc6a209c
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533404"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295211"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Vyhledávání sestav aktivit na webu Azure Portal
 
@@ -86,7 +86,7 @@ Služby patří:
 - Pozvaní uživatelé
 - PIM
 - Samoobslužná správa skupin
-- Správa samoobslužných služeb Passord
+- Samoobslužná správa hesel
 - Podmínky použití
 
 ## <a name="sign-ins-report"></a>Sestava přihlášení 
@@ -153,11 +153,11 @@ Ve stažených protokolech aktivity (auditu nebo přihlášení) se nezobrazují
  
 #### <a name="cause"></a>Příčina
 
-Když si stáhnete protokoly aktivity na webu Azure Portal, Omezujeme rozsah na 5000 záznamů řazených od nejnovější je první. 
+Když si stáhnete protokoly aktivity na webu Azure Portal, Omezujeme rozsah na 250000 záznamů řazených od nejnovější je první. 
 
 #### <a name="resolution"></a>Řešení
 
-Můžete využít [rozhraní API pro vytváření sestav Azure AD](concept-reporting-api.md), abyste načetli až milion záznamů v libovolném časovém okamžiku. Náš doporučený postup je [spuštění skriptu na základě plánu](tutorial-signin-logs-download-script.md) , která volá rozhraní API pro generování sestav k načtení záznamy přírůstkově v časovém intervalu času (například denně nebo týdně). 
+Můžete využít [rozhraní API pro vytváření sestav Azure AD](concept-reporting-api.md), abyste načetli až milion záznamů v libovolném časovém okamžiku.
 
 ### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Chybějící data auditu pro poslední akce na webu Azure Portal
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 248167eca532beb957c723f5074fc1546982efc8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463302"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259291"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Pomocí akcí automatického škálování můžete poslat e-mail a webhook oznámení výstrah ve službě Azure Monitor
 Tento článek popisuje, jak nastavit aktivační události tak, aby je volání adresy URL konkrétních webů nebo odeslat e-mailů na základě akcí automatického škálování v Azure.  
@@ -59,6 +59,7 @@ Při použití rozhraní REST API nebo Resource Manageru šablony, zahrnují ele
       }
     ]
 ```
+
 | Pole | Povinné? | Popis |
 | --- | --- | --- |
 | operace |ano |Hodnota musí být "Škálovací" |
@@ -70,7 +71,7 @@ Při použití rozhraní REST API nebo Resource Manageru šablony, zahrnují ele
 | properties |ano |Hodnota musí být prázdná {} nebo může obsahovat páry klíč hodnota |
 
 ## <a name="authentication-in-webhooks"></a>Ověřování v webhooků
-Webhook můžete ověřit pomocí ověřování založeného na tokenech, kam jste uložili webhooku identifikátor URI s token ID jako parametr dotazu. Například https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue.
+Webhook můžete ověřit pomocí ověřování založeného na tokenech, kam jste uložili webhooku identifikátor URI s token ID jako parametr dotazu. Například https: \/ /mysamplealert/webcallback? tokenid = sometokenid & someparameter = nějaká_hodnota
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>Schéma datová část webhooku oznámení automatického škálování
 Při generování oznámení automatického škálování je datová část webhooku součástí následující metadata:

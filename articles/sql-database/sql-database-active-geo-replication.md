@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/27/2019
-ms.openlocfilehash: a243dbfa8b63d45f87fd16370fa8e120ff68711c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: cb83f0c38f6860340444c15b6c5eef0b990d0ad0
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309141"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295245"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Vytváření a používání aktivní geografické replikace
 
@@ -69,7 +69,7 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
 - **Automatická asynchronní replikace**
 
- Sekundární databázi lze vytvořit pouze tak, že přidáte do existující databáze. Sekundární lze vytvořit v libovolné serveru Azure SQL Database. Po vytvoření sekundární databáze se vyplní daty zkopírovanými z primární databáze. Tento proces se označuje jako synchronizace replik indexů. Jakmile sekundární databáze se vytvoří a nasadí, aktualizace na primární databázi se asynchronně replikují do sekundární databáze automaticky. Asynchronní replikace znamená, že transakce usilujeme o to u primární databáze předtím, než se replikují do sekundární databáze.
+  Sekundární databázi lze vytvořit pouze tak, že přidáte do existující databáze. Sekundární lze vytvořit v libovolné serveru Azure SQL Database. Po vytvoření sekundární databáze se vyplní daty zkopírovanými z primární databáze. Tento proces se označuje jako synchronizace replik indexů. Jakmile sekundární databáze se vytvoří a nasadí, aktualizace na primární databázi se asynchronně replikují do sekundární databáze automaticky. Asynchronní replikace znamená, že transakce usilujeme o to u primární databáze předtím, než se replikují do sekundární databáze.
 
 - **Sekundární databáze pro čtení**
 
@@ -116,6 +116,12 @@ Můžete upgradovat nebo downgradovat primární databáze do různých výpoče
 > [!NOTE]
 > Pokud jste vytvořili jako součást konfigurace skupiny převzetí služeb při selhání do sekundární databáze není doporučeno downgradovat sekundární databáze. Tím je zajištěno, že datová vrstva má dostatečnou kapacitu pro zpracování pravidelné zatížení po aktivaci převzetí služeb při selhání.
 
+> [!IMPORTANT]
+> Primární databáze ve skupině převzetí služeb při selhání nejde škálovat na vyšší úroveň, není-li sekundární databáze nejprve vertikálně kapacitu na vyšší úroveň. Pokud se pokusíte změnit velikost primární databáze před horizontálním sekundární databáze, může dojít k následující chybě:
+>
+> `Error message: The source database 'Primaryserver.DBName' cannot have higher edition than the target database 'Secondaryserver.DBName'. Upgrade the edition on the target before upgrading the source.`
+>
+
 ## <a name="preventing-the-loss-of-critical-data"></a>Zabránění ztrátě důležitých dat
 
 Z důvodu vysoké latenci sítě WAN průběžného kopírování používá mechanismu asynchronní replikace. Asynchronní replikace umožňuje ztrátu některých dat. nevyhnutelné Pokud dojde k chybě. Některé aplikace ale můžou vyžadovat bez ztráty. K ochraně těchto důležitých aktualizací, můžete volat vývojář aplikace [uložená procedura sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) systému postup ihned po potvrzení transakce. Volání **uložená procedura sp_wait_for_database_copy_sync** blokuje volající vlákno, dokud se poslední potvrzené transakce bylo přeneseno do sekundární databáze. Ale to nečeká přenášená transakcí, které chcete znovu přehrát a potvrzené na sekundární. **uložená procedura sp_wait_for_database_copy_sync** je vymezen na odkaz na konkrétní průběžného kopírování. Tento postup můžete volat každý uživatel s právy k připojení k primární databáze.
@@ -156,6 +162,8 @@ Jak je popsáno výše, aktivní geografickou replikaci můžete také spravovat
 ### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell: Správa převzetí služeb při selhání jednoho a ve fondu databází
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 | Rutina | Popis |
 | --- | --- |

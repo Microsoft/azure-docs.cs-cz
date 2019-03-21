@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 7d846f28e78959b6962add51070f04857f6463d7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 201fef6b3e773daa18ae252d1d5734d8d87419b5
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852803"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287124"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro ověřování a autorizace ve službě Azure Kubernetes Service (AKS)
 
@@ -67,7 +67,7 @@ rules:
 RoleBinding se pak vytvoří, která vytvoří vazbu uživatele Azure AD *developer1\@contoso.com* k RoleBinding, jak je znázorněno v následujícím YAML manifestu:
 
 ```yaml
-ind: RoleBinding
+kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: finance-app-full-access-role-binding
@@ -90,7 +90,7 @@ Když *developer1\@contoso.com* ověření pro cluster AKS, mají úplná opráv
 
 Pokud podů potřebují mít přístup k jiným službám Azure, jako je například Cosmos DB, služby Key Vault nebo úložiště objektů Blob, pod potřebuje přihlašovací údaje pro přístup. Tyto přihlašovací údaje pro přístup může být definované s image kontejneru nebo vložený jako tajného kódu Kubernetes, ale je potřeba ručně vytvořit a přiřadit. Často přihlašovací údaje se využívají opakovaně v podů a nejsou pravidelně otočen.
 
-Spravované identity pro prostředky Azure umožňují automaticky žádost o přístup ke službám prostřednictvím služby Azure AD. Nebudete ručně definovat údaje pro podů, místo toho se žádost o přístupový token v reálném čase a můžete použít pro přístup k jejich přiřazené služby. Ve službě AKS dvě součásti nasazené v clusteru operátor umožňující podů použití spravované identity:
+Spravované identity pro prostředky Azure (aktuálně implementováno jako přidružený projekt open source AKS) vám umožní automaticky žádost o přístup ke službám prostřednictvím služby Azure AD. Nebudete ručně definovat údaje pro podů, místo toho se žádost o přístupový token v reálném čase a můžete použít pro přístup k jejich přiřazené služby. Ve službě AKS dvě součásti nasazené v clusteru operátor umožňující podů použití spravované identity:
 
 * **Uzel správy identit (NMI) server** je pod, na kterém běží jako DaemonSet na každém uzlu v clusteru AKS. NMI server naslouchá požadavkům pod ke službám Azure.
 * **Kontroler spravované Identity (MIC)** je centrální pod s oprávnění k dotazování na serveru Kubernetes API a kontroluje Azure identity mapování, která odpovídá pod.
@@ -105,6 +105,8 @@ Vývojář v následujícím příkladu se vytvoří pod, který používá spra
 1. NMI server a povinná kontrola úrovně Důvěryhodnosti jsou nasazené předat libovolný pod žádosti o tokeny přístupu ke službě Azure AD.
 1. Vývojář nasadí pod s spravovanou identitu, která požaduje token přístupu přes NMI server.
 1. Token, který je vrácen pod a používá pro přístup k instanci serveru SQL Azure.
+
+Identity spravovaných pod je projekt open source AKS a nepodporuje technickou podporu Azure. Poskytuje shromažďovat zpětnou vazbu a chyb z naší komunitě. Projekt se nedoporučuje pro produkční použití.
 
 Používat pod identity, najdete v článku [identit Azure Active Directory pro Kubernetes aplikace][aad-pod-identity].
 

@@ -2,30 +2,32 @@
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: 09b4f94db3464943a8367bfb3ca89f9a88446193
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2936fd318f08c74675f7e8b382c861f4a28319fc
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553462"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58261417"
 ---
 Počet datových disků můžete připojit k virtuálnímu počítači Azure. Založené na škálovatelnost a výkonnostní cíle pro datové disky Virtuálního počítače, můžete určit počet a typ disku, který je potřeba splnit vaše požadavky na kapacitu a výkon.
 
 > [!IMPORTANT]
 > Pro optimální výkon omezte počet vysoce využívaných disků připojených k virtuálnímu počítači, abyste zabránili možnému omezení. Pokud všech připojených discích nejsou využívá vysoce ve stejnou dobu, virtuální počítač může podporovat větší počet disků.
 
-* **Azure managed disks:** 
+**Azure managed disks:**
 
-> | Prostředek | Výchozí omezení | Maximální omezení |
+Následující tabulka ukazuje výchozí a maximální počet prostředků na oblast a předplatné
+
+> | Prostředek | Výchozí omezení  | Maximální omezení |
 > | --- | --- | --- |
-> | Spravované disky úrovně Standard | 10 000 | 50,000 |
-> | Spravované disky SSD úrovně Standard | 10 000 | 50,000 |
-> | Spravované disky úrovně Premium | 10 000 | 50,000 |
-> | Standard_LRS snímky | 10 000 | 50,000 |
-> | Standard_ZRS snímky | 10 000 | 50,000 |
-> | Spravované image | 10 000 | 50,000 |
+> | Spravované disky úrovně Standard | 25,000 | 50,000 |
+> | Spravované disky SSD úrovně Standard | 25,000 | 50,000 |
+> | Spravované disky úrovně Premium | 25,000 | 50,000 |
+> | Standard_LRS snímky | 25,000 | 50,000 |
+> | Standard_ZRS snímky | 25,000 | 50,000 |
+> | Spravované image | 25,000 | 50,000 |
 
 * **Pro účty úložiště úrovně Standard:** Účet úložiště úrovně Standard se maximální celkovou frekvenci požadavků 20 000 IOPS. Celkový počet IOPS na všech disků virtuálního počítače v účtu úložiště úrovně Standard by neměl překročit toto omezení.
   

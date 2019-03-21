@@ -8,14 +8,23 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 02/21/2019
-ms.openlocfilehash: e87f9b4905abec2c00ed238445b3e36e41cfa2f6
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 1aaaba58b4af90891caf98708f7e280f7eea6e70
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674867"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285816"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze
+
+> [!div class="op_single_selector"]
+> * [Azure Portal](create-cluster-database-portal.md)
+> * [Rozhraní příkazového řádku](create-cluster-database-cli.md)
+> * [PowerShell](create-cluster-database-powershell.md)
+> * [C#](create-cluster-database-csharp.md)
+> * [Python](create-cluster-database-python.md)
+>  
+
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto rychlém startu vytvoříte cluster a databázi.
 

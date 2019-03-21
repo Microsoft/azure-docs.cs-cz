@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 03/21/2019
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2018
-ms.openlocfilehash: d2766416c84233281e55ff6f8be8519b7aadfb8c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d35ab3f477f327cb85cd8dfebd255542489debdc
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763550"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286138"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>Připojení k Azure pomocí VPN Azure Stack
 
@@ -92,8 +92,7 @@ Nejprve vytvořte síťovým prostředkům pro Azure. Následující pokyny ukaz
 5. Chcete-li zvolit virtuální síť, vyberte **virtuální síť**. Potom vyberte **AzureVnet** ze seznamu.
 6. Vyberte **Veřejná IP adresa**. Když **zvolte veřejnou IP adresu** části otevře, vyberte **vytvořit nový**.
 7. V **název**, typ **Azure-GW-PiP**a pak vyberte **OK**.
-8. Ve výchozím nastavení pro **typ sítě VPN**, **založené na trasách** zaškrtnuto. Zachovat **založené na trasách** typ sítě VPN.
-9. Ověřte, že nastavení **Předplatné** a **Umístění** jsou správná. Prostředek na řídicí panel můžete připnout. Vyberte **Vytvořit**.
+8. Ověřte, že nastavení **Předplatné** a **Umístění** jsou správná. Prostředek na řídicí panel můžete připnout. Vyberte **Vytvořit**.
 
 ### <a name="create-the-local-network-gateway-resource"></a>Vytváření prostředku brány místní sítě
 

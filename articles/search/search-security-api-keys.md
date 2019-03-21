@@ -8,15 +8,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 03/19/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 6ba63fa776e92dd2f8035cfbbdb8cea2860d106f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a59451c659effb55a2e16236b359b7601eb31cd4
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316912"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286597"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Vytvoření a správa klíče rozhraní api pro službu Azure Search
 
@@ -42,19 +41,35 @@ Dva typy klíče používané pro přístup k vaší vyhledávací služby: admi
 > [!NOTE]  
 >  Bude považován za špatné bezpečnostních předávat citlivá data `api-key` v identifikátoru URI požadavku. Z tohoto důvodu Azure Search přijímá pouze klíč dotazu jako `api-key` v dotazu řetězec který byste se vyhnout tím, pokud by měl být veřejně dostupný obsah vašeho indexu. Obecně platí, doporučujeme předávání vaše `api-key` jako hlavičku požadavku.  
 
-## <a name="find-api-keys-for-your-service"></a>Najít klíče api Key pro vaši službu
+## <a name="find-existing-keys"></a>Vyhledání existujícího klíče
 
 Můžete získat přístupové klíče na portálu nebo prostřednictvím [REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/). Další informace najdete v tématu [spravovat správce a dotaz klíče api Key](search-security-api-keys.md).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Seznam [vyhledávací služby](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pro vaše předplatné.
-3. Vyberte službu a na stránce služby najít **nastavení** >**klíče** zobrazíte klíče správce a dotazu.
+3. Vyberte službu a klikněte na stránce Přehled **nastavení** >**klíče** zobrazíte klíče správce a dotazu.
 
-![Stránka portálu, nastavení klíče oddílu](media/search-security-overview/settings-keys.png)
+   ![Stránka portálu, nastavení klíče oddílu](media/search-security-overview/settings-keys.png)
+
+## <a name="create-query-keys"></a>Vytvoření klíče dotazu
+
+Klíče dotazu se používají pro přístup jen pro čtení na dokumenty v indexu. Omezení přístupu a operací v klientské aplikace je nezbytné pro ochranu vyhledávání prostředků pro vaši službu. Vždy používejte klíč dotazů místo klíč správce pro jakýkoli dotaz pocházející z klientské aplikace.
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Seznam [vyhledávací služby](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pro vaše předplatné.
+3. Vyberte službu a klikněte na stránce Přehled **nastavení** >**klíče**.
+4. Klikněte na tlačítko **spravovat klíče dotazů**.
+5. Použijte dotaz už vygenerované pro vaši službu nebo vytvořit až 50 nové klíče dotazu. Výchozí klíč dotazu není s názvem, ale může mít název klíče dotazu další možnosti správy.
+
+   ![Vytvořit nebo použít klíč dotazu](media/search-security-overview/create-query-key.png) 
+
+
+> [!Note]
+> Příklad kódu znázorňující použití klíče dotazu lze nalézt v [dotazování indexu Azure Search v C# ](search-query-dotnet.md).
 
 ## <a name="regenerate-admin-keys"></a>Znovu vygenerovat klíče správce
 
-Dva klíče správce se vytvoří pro každou službu, abyste mohli výměny primární klíč, pomocí sekundárního klíče pro přístup.
+Dva klíče správce se vytvoří pro každou službu, takže můžete otočit primární klíč, pomocí sekundárního klíče pro přístup.
 
 Pokud byste znovu generovali primární a sekundární klíče ve stejnou dobu, bude všech aplikacích používajících ani jeden klíč pro přístup k operacím služby už mít přístup ke službě.
 

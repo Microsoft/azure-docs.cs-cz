@@ -1,6 +1,6 @@
 ---
-title: Kurz – sdílení mezi relacemi a zařízeními pomocí prostorových kotev vztahů Azure a back endem služby Azure Cosmos DB | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak sdílet identifikátory Azure prostorových ukotvení mezi zařízeními s Androidem a iOS v Unity s back-end služby a služby Azure Cosmos DB.
+title: Kurz – sdílení mezi relacemi a zařízeními pomocí prostorových kotev vztahů Azure a Azure Cosmos DB back-endu | Dokumentace Microsoftu
+description: V tomto kurzu se dozvíte, jak sdílet identifikátory prostorových kotvy Azure napříč zařízeními s Androidem a iOS v Unity s back-end služby a služby Azure Cosmos DB.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -8,36 +8,36 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b585b13f40be447a5c5a4b348efc28bf5171e210
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 0e7011b9778221869940b137a2b87239f2d8db9b
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863181"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286393"
 ---
-# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors-and-an-azure-cosmos-db-back-end"></a>Kurz: Sdílení mezi relacemi a zařízeními pomocí prostorových kotev vztahů Azure a back endem služby Azure Cosmos DB
+# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors-and-an-azure-cosmos-db-back-end"></a>Kurz: Sdílení mezi relacemi a zařízeními pomocí prostorových kotev vztahů Azure a Azure Cosmos DB back-endu
 
-Tomto kurzu se dozvíte, jak používat [prostorových kotvy Azure](../overview.md) na:
+V tomto kurzu se naučíte používat [prostorových kotvy Azure](../overview.md) na:
 
-1. Ukotvení vytvářet v jedné relaci a vyhledejte je v jiné relaci na stejném nebo jiném zařízení. Třeba na jiný den.
-2. Vytvoření kotev vztahů, které můžou být umístěné ve více zařízeních na stejném místě ve stejnou dobu.
+- Ukotvení vytvářet během jedné relace a najděte během jiná relace, na stejné zařízení nebo na jiný. Například může být druhý relace na jiný den.
+- Vytvoření kotev vztahů, které můžou být umístěné ve více zařízeních na stejném místě a ve stejnou dobu.
 
-![Trvalost](./media/persistence.gif)
+![Trvalost ilustrující objektu ve formátu GIF](./media/persistence.gif)
 
-[Azure prostorových kotvy](../overview.md) je služba napříč platformami pro vývojáře, která vám umožní vytvořit hybridní realita prostředí s využitím objektů, které se zachovávají jejich umístění na zařízeních v čase. Jakmile budete hotovi, budete mít aplikaci, která se dají nasadit pro dvě nebo více zařízení. Azure prostorových kotvy vytvořené jednu instanci podělí o jejich identifikátorů ostatním pomocí služby Cosmos DB.
+[Azure prostorových kotvy](../overview.md) je služba pro vývojáře pro různé platformy, můžete použít k vytvoření prostředí pro hybridní realitu se objekty, které se zachovávají jejich umístění na zařízeních v čase. Jakmile budete hotovi, budete mít aplikaci, která se dají nasadit pro dvě nebo více zařízení. Prostorové kotvy vytvořené jedna instance bude sdílet jejich identifikátorů s ostatními s využitím služby Azure Cosmos DB.
 
 Dozvíte se, jak provést tyto akce:
 
 > [!div class="checklist"]
-> * Nasazení webové aplikace ASP.NET Core v Azure, který slouží ke sdílení ukotvení, jejich ukládáním do služby Cosmos DB.
-> * Nakonfigurujte AzureSpatialAnchorsLocalSharedDemo scény v Unity ukázku z našich šablon rychlý start využívat webovou aplikaci pro sdílení obsahu ukotvení.
-> * Nasazení a spuštění jednoho nebo více zařízením.
+> * Nasazení webové aplikace ASP.NET Core v Azure, který slouží ke sdílení ukotvení, ukládání ve službě Azure Cosmos DB.
+> * Nakonfigurujte AzureSpatialAnchorsLocalSharedDemo scény v Unity ukázku z rychlí průvodci Azure využívat webovou aplikaci pro sdílení obsahu ukotvení.
+> * Nasazení aplikace do jedné nebo více zařízení a spustíme ji.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-Je vhodné vašeho povšimnutí, že i když je budete v tomto kurzu pomocí Unity a Azure Cosmos DB, je pouze k zobrazení příkladu o tom, jak sdílet identifikátory Azure prostorových ukotvení na jiných zařízeních. Ostatní jazyky a back endové technologie, můžete použít k dosažení stejného cíle. Webové aplikace ASP.NET Core v tomto kurzu používá také obsahuje závislost na rozhraní .NET Core 2.2 SDK. Běží bez problémů v pravidelných Azure Web Apps (pro Windows), ale nebudou fungovat aktuálně ve službě Azure Web Apps pro Linux.
+Je vhodné poznamenat, že i když je budete v tomto kurzu pomocí Unity a Azure Cosmos DB, je jenom abych vám příklad toho, jak sdílet identifikátory prostorových kotvy napříč zařízeními. Uživatele můžete ostatní jazyky a back endové technologie k dosažení stejného cíle. Webové aplikace ASP.NET Core v tomto kurzu používá také vyžaduje .NET Core 2.2 SDK. Poběží bez problémů webové aplikace pro Windows, ale nebude spuštěna aktuálně ve službě Web Apps pro Linux.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -45,25 +45,25 @@ Je vhodné vašeho povšimnutí, že i když je budete v tomto kurzu pomocí Uni
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../../includes/cosmos-db-create-dbaccount-table.md)]
 
-Poznamenejte si `Connection String` jak se bude dále používat.
+Kopírovat `Connection String` vzhledem k tomu, že ho budete potřebovat.
 
 ## <a name="open-the-sample-project-in-unity"></a>Otevřete ukázkový projekt v Unity
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-## <a name="deploy-your-sharing-anchors-service"></a>Nasazení služby Sdílení kotvy
+## <a name="deploy-the-sharing-anchors-service"></a>Nasazení ve sdílené službě kotvy
 
-Otevřít Visual Studio a otevřete projekt v `Sharing\SharingServiceSample` složky.
+Otevřete projekt v sadě Visual Studio a otevřít `Sharing\SharingServiceSample` složky.
 
-### <a name="configure-the-service-so-that-it-uses-your-cosmos-db"></a>Konfigurace služby tak, aby používala Cosmos DB
+### <a name="configure-the-service-to-use-your-azure-cosmos-db-database"></a>Konfigurace služby pro databázi Azure Cosmos DB
 
 V **Průzkumníka řešení**, otevřete `SharingService\Startup.cs`.
 
-Vyhledejte `#define INMEMORY_DEMO` řádku v horní části souboru a komentář navýšení kapacity. Uložte soubor.
+Vyhledejte `#define INMEMORY_DEMO` v horní části souboru a komentáře, které výstup. Uložte soubor.
 
 V **Průzkumníka řešení**, otevřete `SharingService\appsettings.json`.
 
-Vyhledejte `StorageConnectionString` vlastnost a nastavte hodnotu `Connection String` , že jste provedli v si [vytvoření databáze účtu krok](#create-a-database-account). Uložte soubor.
+Vyhledejte `StorageConnectionString` vlastnost a být stejný jako hodnotu nastavte `Connection String` hodnotu, která jste si zkopírovali v [vytvoření databáze účtu krok](#create-a-database-account). Uložte soubor.
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 

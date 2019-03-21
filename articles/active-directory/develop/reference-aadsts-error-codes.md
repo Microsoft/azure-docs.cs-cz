@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16f7dc81d8174e3d8da39d3af95b945f8034cecd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1ff37184cd8789c5408d02a427080db86de00b7d
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452008"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295449"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kódy chyb autorizace a ověřování
 
@@ -30,6 +30,8 @@ Hledáte informace o chybových kódech AADSTS, které jsou vráceny od služby 
 
 > [!NOTE]
 > Tyto informace jsou předběžné a můžou se změnit. Máte dotaz nebo nemůže najít, co hledáte? Vytvoření problému Githubu, nebo zobrazit [možnosti podporu a nápovědu pro vývojáře](active-directory-develop-help-support.md) Další informace o jiných způsobech, jakými můžete získat pomoc a podporu.
+>
+> Tato dokumentace je k dispozici pro vývojáře a správce, ale byste nikdy neměli používat přímo v klientovi. Kódy chyb jsou kdykoli změnit v souladu s cílem poskytnout podrobnější chybové zprávy, které umožní vývojářům při vytváření své aplikace. Aplikace, které zavést závislost na text nebo Chyba čísly kódů se přeruší v čase.  
 
 ## <a name="aadsts-error-codes"></a>Kódy chyb AADSTS
 

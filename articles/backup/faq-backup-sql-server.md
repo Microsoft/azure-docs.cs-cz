@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: f9020cd6d35c59e9293e6e8a96b09319f9f8bb00
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: HT
+ms.openlocfilehash: 48a0400a471e06f65c1d548b7c1c419a1cb198bd
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225671"
+ms.locfileid: "58284574"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se databáze SQL serveru, na kterých běží zálohování virtuálních počítačů Azure
 
@@ -66,7 +66,7 @@ Ne. Úspěšné úlohy zálohování není Generovat výstrahy. Oznámení se od
 **Úlohu zálohování** nabídky zobrazí pouze ad-hoc úlohy zálohování. Naplánované úlohy použijte [monitorováním s využitím Azure monitoru](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>Budoucí databáze automaticky přidávají pro zálohování?
-Ano, můžete dosáhnout tuto funkci s [automatickou ochranu](backup-azure-sql-database.md#enable-auto-protection).  
+Ano, můžete dosáhnout tuto funkci s [automatickou ochranu](backup-sql-server-database-azure-vms.md#enable-auto-protection).  
 
 ## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Když odstraním databázi z autoprotected instance, co se stane s zálohy?
 Ztracené databázi z autoprotected instance jsou stále pokusil zálohy databáze. Z toho vyplývá, že se zobrazí jako není v pořádku, v části začíná odstraněnou databázi **zálohování položek** a je pořád chráněný.
@@ -84,7 +84,7 @@ Znovu s názvem databáze je považován za novou databázi. Proto služba bude 
 Můžete vybrat databáze, které přejmenovává a konfigurace ochrany na něj. V případě, že na instanci je povolena automatická ochrana, přejmenováno databáze bude automaticky zjistil a chráněné.
 
 ##  <a name="why-cant-i-see-an-added-database-for-an-autoprotected-instance"></a>Proč nevidím přidané database pro instanci autoprotected?
-A databáze, kterou jste [přidat do autoprotected instance](backup-azure-sql-database.md#enable-auto-protection) nemusí zobrazit hned pod chráněných položek. Je to proto, že zjišťování spuštěno obvykle každých 8 hodin. Můžete však zjišťovat a okamžitě chránit nové databáze ručně při spuštění funkce zjišťování tak, že vyberete **obnovení databází**, jak je znázorněno na následujícím obrázku.
+A databáze, kterou jste [přidat do autoprotected instance](backup-sql-server-database-azure-vms.md#enable-auto-protection) nemusí zobrazit hned pod chráněných položek. Je to proto, že zjišťování spuštěno obvykle každých 8 hodin. Můžete však zjišťovat a okamžitě chránit nové databáze ručně při spuštění funkce zjišťování tak, že vyberete **obnovení databází**, jak je znázorněno na následujícím obrázku.
 
   ![Ručně zjistit nově přidaná databáze](./media/backup-azure-sql-database/view-newly-added-database.png)
 

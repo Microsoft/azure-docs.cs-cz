@@ -6,16 +6,17 @@ author: ajlam
 ms.author: andrela
 ms.custom: mvc
 ms.topic: conceptual
-ms.date: 11/14/2018
-ms.openlocfilehash: 99039c4d6abb8a839886e9d623e92c9fb2c41787
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 03/20/2019
+ms.openlocfilehash: 2852cab05fab8e15b7e60a22f54cc866d2f0f178
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353324"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295398"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Co je Azure Database for MySQL?
-Azure Database for MySQL je služba relačních databází v cloudu Microsoftu založená na [MySQL Community Edition](https://www.mysql.com/products/community/) databázový stroj, verze 5.6 a 5.7. Azure Database for MySQL nabízí:
+
+Azure Database for MySQL je služba relačních databází v cloudu Microsoftu založená na [MySQL Community Edition](https://www.mysql.com/products/community/) (k dispozici v rámci licence GPLv2) databázový stroj, verze 5.6 a 5.7. Azure Database for MySQL nabízí:
 
 - Integrovanou vysokou dostupnost bez dalších poplatků.
 - Předvídatelný výkon a všeobecné ceny při průběžných platbách.
@@ -29,10 +30,12 @@ Tyto možnosti nevyžadují téměř žádnou správu a jsou k dispozici bez dal
 ![Azure Database for MySQL koncepční diagram](media/overview/1-azure-db-for-mysql-conceptual-diagram.png)
 
 Tento článek je úvodem do databáze Azure pro MySQL základních konceptů a funkcí týkajících se výkonu, škálovatelnosti a možností správy s odkazy na podrobnější informace. Tyto rychlé starty vám pomůžou začít:
+
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 Řadu ukázek v Azure CLI najdete tady:
+
 - [Ukázky v Azure CLI pro službu Azure Database for MySQL](sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Úprava výkonu a škálování během několika sekund
@@ -55,12 +58,14 @@ Ve výchozím nastavení, služba Azure Database for MySQL je nakonfigurovaný t
 Pro jakékoli dotazy nebo návrhy, které byste mohli pracovat se službou Azure Database for MySQL, pošlete e-mail na databázi Azure pro MySQL týmu ([ @Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Poznámka: Tento alias neslouží k poskytování technické podpory.
 
 Můžete také využít tyto komunikační kanály:
+
 - Pro podporu Azure [vytvořte lístek podpory na webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Pokud řešíte problém s účtem, podejte prostřednictvím webu Azure Portal [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 - Pokud nám chcete sdělit svůj názor nebo požádat o nové funkce, využijte nástroj [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
 ## <a name="next-steps"></a>Další postup
 Teď, když jste přečtěte si úvod ke službě Azure Database for MySQL a znáte odpověď na otázku "Co je Azure databáze pro MySQL?", jste připraveni:
+
 - Na stránce s cenami najdete porovnání nákladů a kalkulačky. [Ceny](https://azure.microsoft.com/pricing/details/mysql/)
 - Začněte vytvářet první server. [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - Vytvořte svoji první aplikaci pomocí preferovaného jazyka: [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md)  |  [.NET (C#)](./connect-csharp.md) | [přejít](./connect-go.md)

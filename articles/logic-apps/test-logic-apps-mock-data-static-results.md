@@ -8,13 +8,13 @@ author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 23cce4d846cdf183f41b25663ba21d3bf1d27013
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 03/18/2019
+ms.openlocfilehash: 0fbe56ceeeba71bcbb5ef358cd66de15e36508fc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790996"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58165092"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testování aplikací logiky s využitím mock data nastavením statické výsledky
 
@@ -67,9 +67,7 @@ Pokud jste nastavili statickou výsledky pro Outlooku 365 odeslat akci e-mailu, 
 
    ![Ikona znázorňující povolené statické výsledky](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
 
-   Po spuštění aplikace logiky, historie spouštění vaší aplikace logiky **statické výsledky** sloupci se zobrazuje, zda konkrétního spuštění zahrnuje takové akce, které mají povolené, například statické výsledky:
-
-   ![Historie - spuštění statické výsledky sloupec](./media/test-logic-apps-mock-data-static-results/run-history.png)
+   Předchozí spuštění využívající mock dat najdete v tématu [najít spuštění, které používají statické výsledky](#find-runs-mock-data) dále v tomto tématu.
 
 <a name="reuse-sample-outputs"></a>
 
@@ -79,7 +77,7 @@ Pokud má vaše aplikace logiky předchozí spuštění s výstupy, které můž
 
 1. Pokud jste tak dosud neučinili, v [webu Azure portal](https://portal.azure.com), otevřete aplikaci logiky v návrháři pro Logic Apps.
 
-1. V hlavní nabídce aplikace logiky, vyberte **přehled**. 
+1. V hlavní nabídce aplikace logiky, vyberte **přehled**.
 
 1. V **historie běhů** části, vyberte aplikaci logiky běh, který chcete.
 
@@ -106,6 +104,26 @@ Pokud má vaše aplikace logiky předchozí spuštění s výstupy, které můž
    ![Režim JSON](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
 1. Jakmile budete hotovi, zvolte **Done** (Hotovo). Nebo se vraťte do návrháře, zvolte **přepnout Editor režimu** (![zvolit "Přepnout režim editoru"](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)).
+
+<a name="find-runs-mock-data"></a>
+
+## <a name="find-runs-that-use-static-results"></a>Spuštění, které používají statické výsledky hledání
+
+Historie spuštění aplikace logiky identifikuje spuštění, kde použít statické výsledky akce. K vyhledání těchto spuštění, postupujte podle těchto kroků:
+
+1. V hlavní nabídce aplikace logiky, vyberte **přehled**. 
+
+1. V pravém podokně v části **historie běhů**, Najít **statické výsledky** sloupce. 
+
+   Jakékoli spuštění obsahující akce s výsledky se **statické výsledky** sloupec nastaven na **povoleno**, například:
+
+   ![Historie - spuštění statické výsledky sloupec](./media/test-logic-apps-mock-data-static-results/run-history.png)
+
+1. Chcete-li zobrazit akce, které používají statické výsledky, vyberte spustit, kam chcete **statické výsledky** sloupec je nastaven na **povoleno**.
+
+   Akce, které používají statické výsledky zobrazit kádinky testu (![ikonu pro statické výsledky](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)) ikona, například:
+
+   ![Historie - spuštění akce, které používají statické výsledky](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
 
 ## <a name="disable-static-results"></a>Zakázat statické výsledky
 

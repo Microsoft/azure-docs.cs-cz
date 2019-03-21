@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 07/18/2017
+ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a53522a029129c097734a805c11c339135b4a81
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 46e70850ba9e5984e36643f1b9ecc9db29eec149
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895197"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294531"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
 Tým služby Azure Active Directory pravidelně aktualizuje s novými funkcemi a funkce Azure AD Connect Health. Tento článek uvádí verzích a funkcích, které byly vydány.  

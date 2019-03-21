@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e940d7593b6760a81a781fd72c0bb45347b00c2a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4494996ed54b25be71367dd3e3043023d0958074
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168139"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224035"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>Kurz: Integrace Azure Active Directory s stránka se stavem
 
@@ -114,23 +114,25 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Konfigurace jednotného přihlašování](./media/statuspage-tutorial/tutorial_statuspage_url.png)
 
     a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/` |
     | `https://<subdomain>.statuspage.io/` |
 
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: 
+    
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/sso/saml/consume` |
     | `https://<subdomain>.statuspage.io/sso/saml/consume` |
 
-    > [!NOTE]
-    > Obraťte se na tým podpory stránka se stavem v [ SupportTeam@statuspage.io ](mailto:SupportTeam@statuspage.io)žádat o metadata potřebná ke konfiguraci jednotného přihlašování. 
-    >
-    >a. Z metadat, zkopírujte hodnotu Issuer a vložte jej do **identifikátor** textového pole.
-    >
-    >b. Z metadat, zkopírujte adresu URL odpovědi a vložte jej do **adresy URL odpovědi** textového pole.
+   > [!NOTE]
+   > Obraťte se na tým podpory stránka se stavem v [ SupportTeam@statuspage.io ](mailto:SupportTeam@statuspage.io)žádat o metadata potřebná ke konfiguraci jednotného přihlašování. 
+   > 
+   > a. Z metadat, zkopírujte hodnotu Issuer a vložte jej do **identifikátor** textového pole.
+   > 
+   > b. Z metadat, zkopírujte adresu URL odpovědi a vložte jej do **adresy URL odpovědi** textového pole.
 
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
@@ -156,15 +158,15 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 1. Na stránce nastavení jednotného přihlašování proveďte následující kroky:
    
-    ![Konfigurace jednotného přihlašování](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
+      ![Konfigurace jednotného přihlašování](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
 
-    ![Konfigurace jednotného přihlašování](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
+      ![Konfigurace jednotného přihlašování](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
  
-    a. V **jednotného přihlašování k cílové adrese URL** textového pole vložte hodnotu **SAML jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal.
+      a. V **jednotného přihlašování k cílové adrese URL** textového pole vložte hodnotu **SAML jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal.
 
-    b. Otevřete stažený certifikát v poznámkovém bloku, zkopírujte jeho obsah a vložte jej do **certifikát** textového pole. 
+      b. Otevřete stažený certifikát v poznámkovém bloku, zkopírujte jeho obsah a vložte jej do **certifikát** textového pole. 
 
-    c. Klikněte na tlačítko **uložit konfiguraci**.
+      c. Klikněte na tlačítko **uložit konfiguraci**.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)

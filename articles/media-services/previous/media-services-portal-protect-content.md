@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: dc5439c98b5abc69b6cb1ba144e015426bb887ce
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c0571e202448951de0994d34f68e1649eabd5519
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996927"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259070"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurace zásad ochrany obsahu pomocí webu Azure portal
  Pomocí služby Azure Media Services můžete zabezpečení médií od okamžiku opuštění počítače přes úložiště, zpracování a dodání. Služba Media Services můžete použít k doručování dynamicky šifrovaných s na Standard AES (Advanced Encryption) s použitím 128bitové šifrování klíče obsahu. Také můžete ho s používat standard common encryption (CENC) pomocí technologie PlayReady nebo Widevine správy digitálních práv (DRM) a Apple FairPlay. 
@@ -71,7 +71,7 @@ Pokud konfigurujete licenci jako trvalé, se uloží do trvalého úložiště n
 ### <a name="basic"></a>Basic
 Když vyberete **základní**, vytvoření šablony s použitím všech výchozích hodnot.
 
-### <a name="advanced"></a>Rozšířený 
+### <a name="advanced"></a>Upřesňující
 Další informace o šablona práv Widevine, najdete v článku [Přehled šablon licencování Widevine](media-services-widevine-license-template-overview.md).
 
 ![Rozšířená ochrana obsahu](./media/media-services-portal-content-protection/media-services-content-protection005.png)

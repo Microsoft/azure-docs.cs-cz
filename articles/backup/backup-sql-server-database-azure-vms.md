@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 75e85ae15ded81faf372ba018829a185e8badd60
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 6709bb2beae6dd1964f475ce2ba07b569b9ad4ab
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224613"
+ms.locfileid: "58285067"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -31,9 +31,9 @@ V tomto článku se dozvíte, jak zálohovat databázi serveru SQL Server běž�
 
 Zálohujte databázi SQL serveru, zkontrolujte následující podmínky:
 
-1. Identifikovat nebo [vytvořit](backup-azure-sql-database.md#create-a-recovery-services-vault) trezor služby Recovery Services ve stejné oblasti nebo národní prostředí jako virtuální počítač, který je hostitelem instance serveru SQL Server.
-2. [Zkontrolujte oprávnění VM](#fix-sql-sysadmin-permissions) potřebné k zálohování databází SQL.
-3. Ověřte, zda má virtuální počítač [připojení k síti](backup-azure-sql-database.md#establish-network-connectivity).
+1. Identifikovat nebo [vytvořit](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) trezor služby Recovery Services ve stejné oblasti nebo národní prostředí jako virtuální počítač, který je hostitelem instance serveru SQL Server.
+2. [Zkontrolujte oprávnění VM](backup-azure-sql-database.md#fix-sql-sysadmin-permissions) potřebné k zálohování databází SQL.
+3. Ověřte, zda má virtuální počítač [připojení k síti](backup-sql-server-database-azure-vms.md#establish-network-connectivity).
 4. Zkontrolujte, zda databáze systému SQL Server jsou pojmenovány v souladu s maticí [pokyny pro pojmenování](#verify-database-naming-guidelines-for-azure-backup) pro službu Azure Backup.
 5. Ověřte, že není nutné záložní řešení pro databázi povoleno. Zakažte další zálohy systému SQL Server před instalací tohoto scénáře. Azure Backup pro virtuální počítač Azure společně s Azure Backup můžete povolit pro databázi serveru SQL Server spuštěnou na virtuálním počítači bez jakéhokoli konfliktu.
 
@@ -60,7 +60,7 @@ Azure Backup nemá řada věcí, při konfiguraci zálohování pro databázi se
 - Azure Backup se zjistit databáze na virtuálním počítači, vytvoří účet **NT SERVICE\AzureWLBackupPluginSvc**. Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL.
 - Využívá službu Azure Backup **NT AUTHORITY\SYSTEM** účet za databázi zjišťování nebo dotaz, aby tento účet musí být veřejné přihlášení na SQL.
 
-Pokud jste nevytvořili virtuální počítač SQL Server na Azure Marketplace, k chybě může dojít **UserErrorSQLNoSysadminMembership**. V tomto případě [postupujte podle těchto pokynů](#fix-sql-sysadmin-permissions).
+Pokud jste nevytvořili virtuální počítač SQL Server na Azure Marketplace, k chybě může dojít **UserErrorSQLNoSysadminMembership**. V tomto případě [postupujte podle těchto pokynů](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
 
 ### <a name="verify-database-naming-guidelines-for-azure-backup"></a>Zkontrolujte pokyny pro pojmenování databáze pro službu Azure Backup
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: e291072f7eb075adeff9efb37f1f7dffc72d714c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ab239d0546508d74874c6b6be03f6afc06b08fa7
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093520"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286291"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Zálohování a obnovení pro SQL Server v Azure Virtual Machines
 
@@ -59,7 +59,7 @@ Další informace o tom, jak nakonfigurovat automatizované zálohování pro vi
 - **SQL Server 2016/2017**: [Automatizované zálohování v2 pro Azure Virtual Machines](virtual-machines-windows-sql-automated-backup-v2.md)
 - **SQL Server 2014**: [Automatizovaná záloha pro SQL Server 2014 Virtual Machines](virtual-machines-windows-sql-automated-backup.md)
 
-## <a id="azbackup"></a> Azure Backup pro virtuální počítače s SQL (Public Preview)
+## <a id="azbackup"></a> Azure Backup pro virtuální počítače SQL
 
 [Azure Backup](/azure/backup/) poskytuje možnost zálohování podnikové třídy pro SQL Server běžící na virtuálních počítačích Azure. Všechny zálohy ukládání a správy v trezoru služby Recovery Services. Existuje několik výhod, které poskytuje toto řešení, hlavně pro velké podniky:
 
@@ -76,9 +76,9 @@ Další informace o tom, jak nakonfigurovat automatizované zálohování pro vi
 
 Rychlý přehled toho, jak to funguje, spolu s ukázkovou verzi z následujícího videa:
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2dNbw]
+> [!VIDEO https://www.youtube.com/embed/wmbANpHos_E]
 
-Toto řešení Azure Backup pro virtuální počítače s SQL je aktuálně ve verzi public preview. Další informace najdete v tématu [zálohovat databáze SQL serveru do Azure](../../../backup/backup-azure-sql-database.md).
+Toto řešení Azure Backup pro virtuální počítače s SQL je obecně dostupná. Další informace najdete v tématu [zálohovat databáze SQL serveru do Azure](../../../backup/backup-azure-sql-database.md).
 
 ## <a id="manual"></a> Ruční zálohy
 
