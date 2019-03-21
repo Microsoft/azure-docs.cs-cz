@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 5b80dcfa5cef116bb2558f154a54d343e467ae83
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546649"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57881125"
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
@@ -229,9 +229,9 @@ Data můžete zobrazit v různých způsobů, jak pomocí řešení pro správu.
 
 Monitorování řešení můžete nainstalovat z webu Azure marketplace výběrem **získat** odkaz na konci každé řešení.
 
-### <a name="add-a-azure-monitor-cdn-monitoring-solution"></a>Přidání řešení pro monitorování sítě CDN Azure Monitor
+### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>Přidejte řešení pro monitorování Azure Monitor CDN
 
-Postupujte podle těchto kroků přidejte řešení pro monitorování Azure monitoru:
+Postupujte podle těchto kroků pro přidání Azure Monitor, řešení pro monitorování:
 
 1.   Přihlaste se k webu Azure portal pomocí svého předplatného Azure a přejděte na řídicí panel.
     ![Řídicí panel Azure](./media/cdn-diagnostics-log/13_Azure-dashboard.png)

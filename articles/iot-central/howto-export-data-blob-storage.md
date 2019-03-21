@@ -8,18 +8,18 @@ ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: ae1e71170952a2f05e371de68b519eba522e3298
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: f6e44b21a2a2e174ffa49073fdeb8cc96910a69e
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318680"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295075"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Exportovat data do úložiště objektů Blob v Azure
 
 *Toto téma se vztahuje na správce.*
 
-Tento článek podrobně použití souvislá datová funkce exportu v Azure IoT Central pravidelně exportovat data do věnuje hlubší vaše **účtu úložiště objektů Blob v Azure**. Můžete to taky **měření**, **zařízení**, a **šablon** na soubory ve formátu Apache Avro. Exportovaná data je možné pro studené cesty analytics jako trénování modelů ve službě Azure Machine Learning nebo dlouhodobé analýzy trendů v Microsoft Power BI.
+Tento článek popisuje způsob použití souvislá datová funkce exportu v Azure IoT Central pravidelně exportovat data do vaší **účtu úložiště objektů Blob v Azure**. Můžete to taky **měření**, **zařízení**, a **šablon** na soubory ve formátu Apache Avro. Exportovaná data je možné pro studené cesty analytics jako trénování modelů ve službě Azure Machine Learning nebo dlouhodobé analýzy trendů v Microsoft Power BI.
 
 > [!Note]
 > Znovu až zapnete nepřetržitý export dat, zobrazí pouze data dále v tomto okamžiku. V současné době nelze načíst data po dobu, kdy byla nepřetržitý export dat vypnout. Pokud chcete zachovat dalších historických dat, zapněte nepřetržitý export dat již v rané fázi.
@@ -29,12 +29,75 @@ Tento článek podrobně použití souvislá datová funkce exportu v Azure IoT 
 
 - Musíte být správcem ve vaší aplikaci IoT Central
 
+
+## <a name="set-up-export-destination"></a>Nastavit cíl exportu
+
+Pokud nemáte existující úložiště pro export do, postupujte podle těchto kroků:
+
+## <a name="create-storage-account"></a>Vytvoření účtu úložiště
+
+1. Vytvoření [nový účet úložiště na webu Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Další informace v [dokumentace služby Azure Storage](https://aka.ms/blobdocscreatestorageaccount).
+2. Pro typ účtu, vyberte **Obecné** nebo **úložiště objektů Blob**.
+3. Zvolte předplatné. 
+
+    > [!Note] 
+    > Teď můžete exportovat data do jiných předplatných, které jsou **není stejný** jako pro aplikace s průběžnými platbami IoT Central. Připojíte se v tomto případě pomocí připojovacího řetězce.
+
+4. Vytvoření kontejneru v účtu úložiště. Přejděte do účtu úložiště. V části **služby Blob Service**vyberte **procházet objekty BLOB**. Vyberte **+ kontejner** v horní části stránky vytvořte nový kontejner
+
+
+## <a name="set-up-continuous-data-export"></a>Nastavit nepřetržitý export dat
+
+Teď, když máte exportovat data do cílového úložiště, nastavit nepřetržitý export dat pomocí těchto kroků. 
+
+1. Přihlaste se do vaší aplikace IoT Central.
+
+2. V nabídce vlevo vyberte **průběžný Export dat**.
+
+    > [!Note]
+    > Pokud nevidíte průběžný Export dat v nabídce vlevo, nejste správcem ve vaší aplikaci. Obraťte se na správce nastavit export dat.
+
+    ![Vytvořit nový cde centra událostí](media/howto-export-data/export_menu.PNG)
+
+3. Vyberte **+ nová** tlačítko v pravém horním rohu. Zvolte **Azure Blob Storage** jako cíl pro export. 
+
+    > [!NOTE] 
+    > Maximální počet exportů na aplikaci je pět. 
+
+    ![Vytvořit nový nepřetržitý export dat](media/howto-export-data/export_new.PNG)
+
+4. V rozevíracím seznamu vyberte vaše **obor názvů účtu úložiště**. V seznamu, který je můžete také vybrat jako poslední možnost **zadejte připojovací řetězec**. 
+
+    > [!NOTE] 
+    > Zobrazí se pouze účty úložiště obory názvů v **stejném předplatném jako aplikace IoT Central**. Pokud chcete exportovat do umístění mimo toto předplatné, zvolte **zadejte připojovací řetězec** a přejděte ke kroku 5.
+
+    > [!NOTE] 
+    > 7 dnů, zkušební verze aplikace, jediný způsob, jak nakonfigurovat průběžné data exportovat je do připojovacího řetězce. Je to proto 7denní zkušební verze aplikace nemusí k přidruženému předplatnému Azure.
+
+    ![Vytvořit nový cde centra událostí](media/howto-export-data/export-create-blob.png)
+
+5. (Volitelné) Pokud jste zvolili **zadejte připojovací řetězec**, můžete vložit připojovací řetězec se zobrazí nové pole. Chcete-li získat připojovací řetězec pro váš:
+    - Účet úložiště, přejděte na účet úložiště na webu Azure Portal.
+        - V části **nastavení**vyberte **přístupové klíče**
+        - Zkopírujte připojovací řetězec key1 a key2 připojovací řetězec
+ 
+6. V rozevíracím seznamu vyberte kontejner.
+
+7. V části **Data pro export**, určete každý typ hledaných dat exportovat na základě nastavení typu na **na**.
+
+6. Nepřetržitý export dat zapnout, ujistěte se, že **export dat** je **na**. Vyberte **Uložit**.
+
+  ![Nepřetržitý export dat konfigurace](media/howto-export-data/export-list-blob.png)
+
+7. Po několika minutách by se vaše data zobrazí v zvolený cíl.
+
+
 ## <a name="export-to-azure-blob-storage"></a>Exportovat do úložiště objektů Blob v Azure
 
 Měření, zařízení a zařízení šablony data se vyexportují do vašeho účtu úložiště jednou za minutu, se každý soubor, který obsahuje batch změny od poslední exportovaný soubor. Exportovaná data se v [Apache Avro](https://avro.apache.org/docs/current/index.html) formátování a se exportují do tři složky v. Výchozí cesty ve vašem účtu úložiště jsou:
-    - Zprávy: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-    - Zařízení: {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-    - Zařízení šablony: {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+- Zprávy: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+- Zařízení: {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+- Zařízení šablony: {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
 
 ### <a name="measurements"></a>Měření
 

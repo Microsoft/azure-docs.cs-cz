@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 4/05/2018
-ms.openlocfilehash: c1ff166431ed75ade1192cdefadb7928943ab2b2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 08e90a69791b0555a6497166f6008e8619f40704
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771289"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992228"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Použití Terraformu ke zřízení infrastruktury pomocí slotů nasazení Azure
 
@@ -26,11 +26,11 @@ Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplika
 
 - **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Účet GitHub**: Je nutné [Githubu](http://www.github.com) účet vytvořit fork a používání testů úložiště GitHub.
+- **Účet GitHub**: Je nutné [Githubu](https://www.github.com) účet vytvořit fork a používání testů úložiště GitHub.
 
 ## <a name="create-and-apply-the-terraform-plan"></a>Vytvoření a použití plánu Terraformu
 
-1. Přejděte na web [Azure Portal](http://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
 1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview). Pokud jste prostředí ještě nevybrali, vyberte prostředí **Bash**.
 

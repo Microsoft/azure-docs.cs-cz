@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: f3138a9d0fe201a9486c34c08b8cdb3cca47e1d7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0da6b6b0fef0f998e20789253b2a65c54121532c
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207543"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260005"
 ---
 # <a name="manage-content-moderator-service-credentials"></a>Správa přihlašovacích údajů služby Content Moderator
 
@@ -61,7 +61,7 @@ Následující oddíl se zabývá podrobněji na předchozím obrázku:
 
 V první části jsou uvedeny vaší **zkontrolujte koncový bod rozhraní API**, **ID tenanta**a **Ocp-Apim-Subscription-Key (Content Moderator zkušební klíč)** vygenerované v rámci vašeho týmu na revizi vytvoření. Je použijte k volání všechna rozhraní API Content Moderatoru, včetně rozhraní API pro kontrolu.
 
-Všimněte si také identifikátor vaší oblasti pro váš koncový bod rozhraní API. Například **westus** je oblast v "https://westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0"
+Všimněte si také identifikátor vaší oblasti pro váš koncový bod rozhraní API. Například **westus** je oblast v "https:\//westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0"
 
 ![Content Moderator klíče v nástroj pro recenze](images/credentials-trialkey.PNG)
 

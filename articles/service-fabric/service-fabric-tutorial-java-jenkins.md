@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a4b8d930a2176c16bb9d1cbcd3b67e6f919575ed
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0a0f7cc8e3810a28fdbec914a9f37808c33ab878
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162218"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880582"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Kurz: Konfigurace Jenkinse prostředí umožňující CI/CD pro aplikace v Javě v Service Fabric
 
@@ -72,15 +72,15 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
     * Jakmile se poprvé přihlásíte, můžete si vytvořit vlastní uživatelský účet nebo použít účet správce.
 
 1. Nastavte GitHub pro práci s Jenkinsem, a to pomocí kroků uvedených v tématu věnovaném [vygenerování nového klíče SSH a jeho přidání k agentovi SSH](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/). Vzhledem k tomu, že se příkazy spouští z kontejneru Dockeru, postupujte podle pokynů pro prostředí Linuxu.
-    * Podle pokynů uvedených na GitHubu vygenerujte klíč SSH. Pak přidejte klíč SSH do účtu GitHubu, který je hostitelem úložiště.
-    * Příkazy popsané u předchozího odkazu spusťte v prostředí Jenkins Dockeru (ne na hostiteli).
-    * Pokud se chcete k prostředí Jenkinse přihlásit z hostitele, použijte následující příkazy:
+   * Podle pokynů uvedených na GitHubu vygenerujte klíč SSH. Pak přidejte klíč SSH do účtu GitHubu, který je hostitelem úložiště.
+   * Příkazy popsané u předchozího odkazu spusťte v prostředí Jenkins Dockeru (ne na hostiteli).
+   * Pokud se chcete k prostředí Jenkinse přihlásit z hostitele, použijte následující příkazy:
 
-    ```sh
-    docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
-    ```
+     ```sh
+     docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
+     ```
 
-    Zkontrolujte, že cluster nebo počítač, ve kterém se hostuje image kontejneru Jenkinse, má veřejnou IP adresu. Veřejná IP adresa umožňuje, aby instance Jenkinse dostávala oznámení z GitHubu.
+     Zkontrolujte, že cluster nebo počítač, ve kterém se hostuje image kontejneru Jenkinse, má veřejnou IP adresu. Veřejná IP adresa umožňuje, aby instance Jenkinse dostávala oznámení z GitHubu.
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Vytvoření a konfigurace úlohy Jenkinse
 
@@ -146,7 +146,7 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
-    <ApplicationManifest xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingApplicationType" ApplicationTypeVersion="2.0.0">
+    <ApplicationManifest xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingApplicationType" ApplicationTypeVersion="2.0.0">
       <Description>Voting Application</Description>
       <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="VotingWebPkg" ServiceManifestVersion="2.0.0"/>

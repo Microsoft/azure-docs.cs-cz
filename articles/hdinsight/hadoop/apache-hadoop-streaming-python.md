@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: e8cf8de25a35909cb2a0fc94237bfa517c72e685
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4c1d7357dc78ca6c9387fc594f3d49f043008631
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410342"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120565"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Vývoj programů MapReduce se streamováním pro HDInsight v Pythonu
 
@@ -174,15 +174,15 @@ Pomocí následujícího skriptu prostředí PowerShell pro nahrávání soubor�
 
    * **– soubory**: Přidá zadané soubory do úlohy MapReduce.
 
-   * **-Mapovač**: Určuje soubor, který chcete použít jako mapovač Hadoop.
+   * **-mapper**: Určuje soubor, který chcete použít jako mapovač Hadoop.
 
-   * **-redukční funkci**: Určuje soubor, který chcete použít jako redukční funkci Hadoop.
+   * **-reducer**: Určuje soubor, který chcete použít jako redukční funkci Hadoop.
 
    * **-vstupní**: Vstupní soubor, který jsme měli počítat slova z.
 
    * **-výstupní**: Adresář, který je výstup zapsán.
 
-    Jak funguje úlohu MapReduce, proces se zobrazí jako procenta.
+     Jak funguje úlohu MapReduce, proces se zobrazí jako procenta.
 
         15/02/05 19:01:04 informace o mapreduce. Úloha: mapování 0 % snížení 0 % 15/02/05 19:01:16 informace o mapreduce. Úloha: mapování 100 % snížení 0 % 15/02/05 19:01:27. informace o mapreduce. Úloha: mapování 100 % snížení 100 %
 

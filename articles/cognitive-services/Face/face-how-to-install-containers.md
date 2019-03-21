@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 96040d6caeb1541eec78e57973dd9089b5a107ed
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: f3534f3001de1c3e58f0be3fb7bc9639b7dfcd03
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671841"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295416"
 ---
-# <a name="install-and-run-containers"></a>Instalace a spuštění kontejnerů
+# <a name="install-and-run-face-containers"></a>Instalace a spouštění kontejnerů pro rozpoznávání tváře
 
 Rozpoznávání tváře poskytuje standardizované kontejneru Linuxu pro Docker, s názvem pro rozpoznávání tváře, detekuje lidské tváře v obrázcích, který určuje atributy, včetně orientačních bodů pro rozpoznávání tváře (například ústa a oči), pohlaví, věk a další funkce rozpoznávání obličeje předpovědět počítače. Kromě zjišťování můžete pro rozpoznávání tváře zkontrolujte, jestli dvě tváře na stejnou bitovou kopii nebo jinou Image jsou stejné s použitím skóre spolehlivosti nebo porovnání proti databázi a zjistěte, jestli podobně vypadajících tváří, nebo identické pro rozpoznávání tváře již existuje. Můžete také uspořádat podobných tváří do skupin pomocí sdílené visual vlastností.
 
@@ -48,11 +48,12 @@ Před použitím kontejnerů API pro rozpoznávání tváře, musí splňovat n�
 
 Následující tabulka popisuje minimální a doporučené jader procesoru a paměti k přidělení pro každý kontejner API pro rozpoznávání tváře.
 
-| Kontejner | Minimální | Doporučené |
-|-----------|---------|-------------|
-|Tvář | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |
+| Kontejner | Minimální | Doporučené | TPS<br>(Minimum, Maximum)|
+|-----------|---------|-------------|--|
+|Tvář | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |10, 20|
 
-Každé jádro, musí být aspoň 2.6 gigahertz (GHz) nebo rychlejší.
+* Každé jádro, musí být aspoň 2.6 gigahertz (GHz) nebo rychlejší.
+* TPS – transakcí za sekundu
 
 Jader a paměti odpovídají `--cpus` a `--memory` nastavení, které se používají jako součást `docker run` příkazu.
 
@@ -117,7 +118,7 @@ Další [příklady](./face-resource-container-config.md#example-docker-run-comm
 
 Kontejner poskytuje koncový bod předpovědi dotazů založených na REST API. 
 
-Použít hostitele, https://localhost:5000, pro kontejner rozhraní API.
+Použít hostitele, `https://localhost:5000`, pro kontejner rozhraní API.
 
 ## <a name="stop-the-container"></a>Zastavit kontejner
 

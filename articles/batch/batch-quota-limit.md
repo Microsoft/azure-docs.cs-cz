@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 03/20/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f8941f84e85f330713cb4b263f2154acb80b520c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 51be74d0adbd5ce75234be2a5b7c99fcd36ca91c
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532391"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295262"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -65,6 +65,7 @@ Pokud jste nevytvořili účet Batch s režimem přidělování fondu nastavit n
 | [Souběžné úlohy](batch-parallel-node-tasks.md) na výpočetním uzlu | 4 x počet jader na uzel |
 | [Aplikace](batch-application-packages.md) jeden účet Batch | 20 |
 | Balíčky aplikací na jednu aplikaci | 40 |
+| Balíčky aplikací na fond | 10 |
 | Úloha maximální doba života | 180 dnů<sup>1</sup> |
 
 <sup>1</sup> maximální doba života úkolu, od jeho přidání do úlohy po dokončení je 180 dnů. Dokončené úkoly se zachovávají po dobu 7 dní; data pro úkoly, které se nedokončí v rámci maximální doby života není přístupný.

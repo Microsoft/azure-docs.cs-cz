@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: b72966ebc73953e6a89ca1bb2fd4f7ce15f70fee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 4cca65e2be44d2c846cd4034f0a9d7e8c7d9af28
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111374"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260039"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Nastavení profilu webové aplikace běžící na virtuálním počítači Azure nebo škálovací sadu virtuálních počítačů s použitím Application Insights Profiler
 
@@ -59,7 +59,7 @@ V tomto článku se dozvíte, jak získat Application Insights Profiler běží 
 
    Použití změny obvykle zahrnuje kompletní šablonu nasazení nebo cloudu založený na službách publikovat prostřednictvím rutin prostředí PowerShell nebo sady Visual Studio.  
 
-   Následující příkazy Powershellu jsou alternativní přístup pro stávající virtuální počítače, které se týkají pouze rozšíření Azure Diagnostics. Přidání výše uvedených ProfilerSink ke konfiguraci, která je vrácena pomocí příkazu Get-AzVMDiagnosticsExtension a předat do příkazu Set-AzVMDiagnosticsExtension aktualizované konfigurace.
+   Následující příkazy Powershellu jsou alternativním postupu pro stávající virtuální počítače, které přijdou do styku pouze rozšíření Azure Diagnostics. Přidání výše uvedených ProfilerSink ke konfiguraci, která je vrácena pomocí příkazu Get-AzVMDiagnosticsExtension. Předejte do příkazu Set-AzVMDiagnosticsExtension aktualizované konfigurace.
 
     ```powershell
     $ConfigFilePath = [IO.Path]::GetTempFileName()
@@ -85,6 +85,30 @@ V tomto článku se dozvíte, jak získat Application Insights Profiler běží 
 
 1. Při nasazování aplikace.
 
+## <a name="set-profiler-sink-using-azure-resource-explorer"></a>Nastavení jímky Profiler pomocí Průzkumníka prostředků Azure
+Zatím nemáme způsob, jak nastavit jímky Application Insights Profiler z portálu. Místo použití prostředí powershell, jako je popsáno výše, můžete použít Průzkumníka prostředků Azure k nastavení jímky. Ale Poznámka: Pokud nasadíte virtuální počítač znovu jímka budou ztraceny. Budete muset aktualizovat konfiguraci, kterou použijete při nasazování virtuálního počítače zachovat nastavení.
+
+1. Zkontrolujte, jestli je nainstalovaný rozšíření Windows Azure Diagnostics zobrazením rozšíření nainstalované pro virtuální počítač.  
+
+    ![Zkontrolujte, jestli je nainstalované rozšíření WAD][wadextension]
+
+1. Najdete rozšíření diagnostiku virtuálních počítačů pro váš virtuální počítač. Rozbalte vaše skupina prostředků Microsoft.Compute virtualMachines, název virtuálního počítače a rozšíření.  
+
+    ![Přejděte na konfigurace WAD v Průzkumníku prostředků Azure][azureresourceexplorer]
+
+1. Přidáte Application Insights Profiler jímky SinksConfig uzlu WadCfg. Pokud ještě nemáte SinksConfig oddílu, můžete ho přidat. Nezapomeňte zadat správné Instrumentační klíč Application Insights v nastaveních. Budete muset přepnutí průzkumníci režimu pro čtení a zápis v pravém horním rohu a stiskněte tlačítko "Upravit" modrá.
+
+    ![Add Application Insights Profiler Sink][resourceexplorersinksconfig]
+
+1. Po dokončení úprav config, stiskněte "Vložit". Pokud put je úspěšný, zobrazí se zelená značka zaškrtnutí uprostřed obrazovky.
+
+    ![Odeslat žádost, aby se změny][resourceexplorerput]
+
+
+
+
+
+
 ## <a name="can-profiler-run-on-on-premises-servers"></a>Můžete spustit Profiler na místní servery?
 Máme k dispozici žádný plán pro podporu Application Insights Profiler pro místní servery.
 
@@ -93,3 +117,8 @@ Máme k dispozici žádný plán pro podporu Application Insights Profiler pro m
 - Generovat provozu do vaší aplikace (Příklad: launch [test dostupnosti](monitor-web-app-availability.md)). Vyčkejte 10 až 15 minut, než se trasování pro odeslání do instance služby Application Insights.
 - Zobrazit [trasy Profiler](profiler-overview.md?toc=/azure/azure-monitor/toc.json) na webu Azure Portal.
 - Vám pomůžou při řešení potíží Profiler [Profiler řešení potíží s](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
+
+[azureresourceexplorer]: ./media/profiler-vm/azure-resource-explorer.png
+[resourceexplorerput]: ./media/profiler-vm/resource-explorer-put.png
+[resourceexplorersinksconfig]: ./media/profiler-vm/resource-explorer-sinks-config.png
+[wadextension]: ./media/profiler-vm/wad-extension.png

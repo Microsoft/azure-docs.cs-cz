@@ -1,6 +1,6 @@
 ---
-title: Pozvání externího uživatele a přiřadit role prostředků Azure v PIM | Dokumentace Microsoftu
-description: Zjistěte, jak pozvat externího uživatele a přiřadit role prostředků Azure v Azure AD Privileged Identity Management (PIM).
+title: Zvát hosty externí a přiřazení rolí správce Azure AD – Privileged Identity Management | Dokumentace Microsoftu
+description: Zjistěte, jak pozvat uživatele typu Host a přiřazení rolí správce Azure Active Directory v Azure AD Privileged Identity Management.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/29/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a90d0d3d3f484044a0ffbab7a3c24a76c40aa74c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 68e76a4513d94cceb8e856c94ad6eae2bdab9c46
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208271"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853252"
 ---
-# <a name="invite-external-users-and-assign-azure-resource-roles-in-pim"></a>Pozvání externího uživatele a přiřadit role prostředků Azure v PIM
+# <a name="invite-guest-users-and-assign-azure-resource-access-in-pim"></a>Pozvat uživatele typu Host a přiřazení přístupu k prostředkům Azure v PIM
 
-Azure Active Directory (Azure AD) business-to-business (B2B) je sada funkcí v rámci Azure AD, která umožňuje organizacím ke spolupráci s externími uživateli a pomocí libovolného účtu dodavateli. Když zkombinujete B2B se sadou Azure AD Privileged Identity Management (PIM), můžete nadále platí vaše požadavky na dodržování předpisů a zásad správného řízení pro externí uživatele. Například můžete použít tyto funkce PIM pro prostředky Azure s externími uživateli:
+Azure Active Directory (Azure AD) business-to-business (B2B) je sada funkcí v rámci Azure AD, která umožňuje organizacím spolupracovat s externím uživatelům typu Host (hostů) a pomocí libovolného účtu dodavateli. Když zkombinujete B2B s Azure AD Privileged Identity Management (PIM), můžete nadále platí vaše požadavky na dodržování předpisů a zásad správného řízení pro hosty. Například můžete použít tyto funkce PIM pro úlohy Azure identity s hostů:
 
 - Přiřazení přístupu ke konkrétním prostředkům Azure
 - Povolení přístupu just-in-time
@@ -33,25 +33,25 @@ Azure Active Directory (Azure AD) business-to-business (B2B) je sada funkcí v r
 - Provádění kontroly přístupu
 - Využívat výstrahy a protokolů auditu
 
-Tento článek popisuje, jak pozvat externího uživatele do adresáře a spravovat jejich přístup k prostředkům Azure pomocí PIM.
+Tento článek popisuje, jak pozvat hosta pro vaši organizaci a spravovat jejich přístup k prostředkům Azure pomocí Privileged Identity Management.
 
-## <a name="when-would-you-invite-external-users"></a>Pokud by pozvat externími uživateli?
+## <a name="when-would-you-invite-guests"></a>Pokud by zvát hosty?
 
-Tady je několik ukázkových scénářů při může pozvat externího uživatele do adresáře:
+Tady je několik ukázkových scénářů při můžou zvát hosty do vaší organizace:
 
 - Povolit externí nezávislém dodavatele, který má pouze e-mailový účet pro přístup k prostředkům Azure pro projekt.
 - Povolte externí partnera ve velké organizaci, který se používá pro přístup k aplikaci výdajů v místním Active Directory Federation Services.
 - Povolit techniky podpory není ve vaší organizaci (třeba podporu Microsoftu) dočasně přístup k prostředku Azure pro řešení potíží.
 
-## <a name="how-does-external-collaboration-using-b2b-work"></a>Jak funguje externí spolupráce B2B práce?
+## <a name="how-does-collaboration-using-b2b-guests-work"></a>Jak spolupráce pomocí B2B hosté práce?
 
-Při použití B2B můžete pozvat externího uživatele do adresáře. Externí uživatel se zobrazí ve vašem adresáři, ale uživatel nemá žádné přihlašovací údaje s ním spojená. Vždy, když má externího uživatele k ověření, musí být ověřena v jejich domovský adresář a není adresář. To znamená, že pokud externí uživatel už má přístup k jejich domovský adresář, aby automaticky nepřišla o přístup k adresáři. Například v případě externí uživatel společnost opustí organizaci, jsou automaticky ztratíte přístup ke všechny prostředky, které jste sdíleli s nimi ve vašem adresáři aniž byste je museli cokoli dělat. Další informace o B2B najdete v tématu [novinky přístupu uživatelů typu Host v Azure Active Directory s B2B?](../b2b/what-is-b2b.md).
+Při použití spolupráce B2B ve službě můžete pozvat externího uživatele pro vaši organizaci jako Host. Host se zdá být ve vaší organizaci, ale Host nemá žádné přihlašovací údaje s ním spojená. Vždy, když hosta má k ověření, musí být ověřena v jejich domovskou organizaci a ne ve vaší organizaci. To znamená, že pokud Host už má přístup k jejich domovskou organizaci, jsou také ztratit přístup k vaší organizaci. Například pokud Host opustí organizaci, jsou automaticky ztratíte přístup ke všechny prostředky, které jste sdíleli s nimi ve službě Azure AD aniž byste museli něco dělat. Další informace o B2B najdete v tématu [novinky přístupu uživatelů typu Host v Azure Active Directory s B2B?](../b2b/what-is-b2b.md).
 
-![B2B a externí uživatele](./media/pim-resource-roles-external-users/b2b-external-user.png)
+![B2B a hosta](./media/pim-resource-roles-external-users/b2b-external-user.png)
 
-## <a name="check-external-collaboration-settings"></a>Zkontrolujte nastavení externí spolupráce
+## <a name="check-guest-collaboration-settings"></a>Zkontrolujte nastavení spolupráci hosta
 
-Pokud chcete mít jistotu, že může pozvat externího uživatele do adresáře, měli byste zkontrolovat nastavení externí spolupráce.
+Pokud chcete mít jistotu, že můžou zvát hosty do vaší organizaci, měli byste zkontrolovat nastavení spolupráci hosta.
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
@@ -63,11 +63,11 @@ Pokud chcete mít jistotu, že může pozvat externího uživatele do adresáře
 
 1. Ujistěte se, že **správci a uživatelé v roli odesílatele pozvánky hostů můžou posílat pozvánky** přepínač nastavený na **Ano**.
 
-## <a name="invite-an-external-user-and-assign-a-role"></a>Pozvání externího uživatele a přiřazení role
+## <a name="invite-a-guest-and-assign-a-role"></a>Pozvat hosta a přiřazení role
 
-Použití PIM, můžete pozvání externího uživatele a převést je na oprávněné pro roli prostředků Azure stejně jako uživatel členem.
+Použití PIM, můžete pozvat hosta a převést je na oprávněné pro roli prostředků Azure stejně jako uživatel členem.
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako uživatel, který je členem skupiny [správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) nebo [správce uživatelských účtů](../users-groups-roles/directory-assign-admin-roles.md#user-account-administrator) role.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako uživatel, který je členem skupiny [správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) nebo [Správce uživatelů](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) role.
 
 1. Otevřít **Azure AD Privileged Identity Management**.
 
@@ -77,7 +77,7 @@ Použití PIM, můžete pozvání externího uživatele a převést je na opráv
 
 1. Klikněte na prostředek, který chcete spravovat, například prostředku, skupiny prostředků, předplatné nebo skupinu pro správu.
 
-    Obor byste měli nastavit na pouze to, co externí uživatel potřebuje.
+    Obor byste měli nastavit na stačí jaké hosta.
 
 1. V části Správa, klikněte na tlačítko **role** zobrazíte seznam rolí pro prostředky Azure.
 
@@ -93,31 +93,31 @@ Použití PIM, můžete pozvání externího uživatele a převést je na opráv
 
     ![Vyberte člena nebo skupinu.](./media/pim-resource-roles-external-users/select-member-group.png)
 
-1. Pozvání externího uživatele, klikněte na tlačítko **pozvat**.
+1. Pozvat hosta, klikněte na tlačítko **pozvat**.
 
     ![Pozvat hosta](./media/pim-resource-roles-external-users/invite-guest.png)
 
-1. Po zadání externího uživatele, klikněte na tlačítko **pozvat**.
+1. Po výběru hosta, klikněte na tlačítko **pozvat**.
 
-    Externí uživatel by měl přidán jako vybraného členu.
+    Host přidaly jako vybraného členu.
 
-1. V okně vyberte podokno člena nebo skupinu, klikněte na tlačítko **vyberte**.
+1. V **vyberte člena nebo skupiny** podokně klikněte na tlačítko **vyberte**.
 
-1. V podokně nastavení členství vyberte typ přiřazení a dobu trvání.
+1. V **nastavení členství** podokně, vyberte typ přiřazení a dobu trvání.
 
     ![Nastavení členství](./media/pim-resource-roles-external-users/membership-settings.png)
 
 1. K dokončení přiřazení, klikněte na tlačítko **provádí** a potom **přidat**.
 
-    Přiřazení externího uživatele role se zobrazí v seznamu rolí.
+    Přiřazení role hosta se zobrazí v seznamu rolí.
 
-    ![Přiřazení role pro externí uživatele](./media/pim-resource-roles-external-users/role-assignment.png)
+    ![Přiřazení role pro hosta](./media/pim-resource-roles-external-users/role-assignment.png)
 
-## <a name="activate-role-as-an-external-user"></a>Aktivace role jako externí uživatel
+## <a name="activate-role-as-a-guest"></a>Aktivace role v roli hosta
 
-Jako externího uživatele musíte nejprve přijměte toto pozvání do adresáře Azure AD a pravděpodobně aktivovat svou roli.
+Jako externí uživatel potřebujete nejdřív přijmout pozvánku pro vaši organizaci Azure AD a pravděpodobně aktivaci vaší role.
 
-1. Otevřete e-mailu s vaší pozvání do adresáře nebylo. E-mailu bude vypadat nějak takto.
+1. Otevřete e-mailu s vaši pozvánku. E-mailu bude vypadat nějak takto.
 
     ![E-mailová pozvánka](./media/pim-resource-roles-external-users/email-invite.png)
 
@@ -149,9 +149,9 @@ Jako externího uživatele musíte nejprve přijměte toto pozvání do adresá�
 
     Pokud správce musí schválit vaše žádost, byste měli mít přístup k uvedeným prostředkům.
 
-## <a name="view-activity-for-an-external-user"></a>Zobrazit aktivitu pro externí uživatele
+## <a name="view-activity-for-a-guest"></a>Zobrazit aktivitu pro hosta
 
-Stejně jako uživatel členem můžete zobrazit protokoly auditu ke sledování činnosti externích uživatelů.
+Stejně jako uživatel členem můžete zobrazit protokoly auditu ke sledování činnosti hosty.
 
 1. Jako správce otevřete PIM a vyberte prostředek, který se sdílí.
 
@@ -159,13 +159,13 @@ Stejně jako uživatel členem můžete zobrazit protokoly auditu ke sledování
 
     ![Audit prostředků](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. Chcete-li zobrazit aktivitu pro externí uživatele, klikněte na tlačítko **Azure Active Directory** > **uživatelé** > externího uživatele.
+1. Chcete-li zobrazit aktivity hosta, klikněte na tlačítko **Azure Active Directory** > **uživatelé** > název typu Host.
 
-1. Klikněte na tlačítko **protokoly auditu** zobrazíte její protokol auditu adresáře. V případě potřeby můžete zadat filtry.
+1. Klikněte na tlačítko **protokoly auditu** chcete zobrazit protokoly auditu pro organizaci. V případě potřeby můžete zadat filtry.
 
-    ![Audit adresáře](./media/pim-resource-roles-external-users/audit-directory.png)
+    ![organizace auditu](./media/pim-resource-roles-external-users/audit-directory.png)
 
 ## <a name="next-steps"></a>Další postup
 
-- [Přiřazení role adresáře Azure AD v PIM](pim-how-to-add-role-to-user.md)
+- [Přiřazení rolí správce Azure AD v PIM](pim-how-to-add-role-to-user.md)
 - [Co je přístupu uživatelů typu Host v Azure Active Directory s B2B?](../b2b/what-is-b2b.md)

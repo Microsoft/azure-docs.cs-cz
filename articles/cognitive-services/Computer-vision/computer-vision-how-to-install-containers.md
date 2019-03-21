@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 3/19/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1b26f0833dec95d886a56dde4526d02f697926ae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 665e6651db37cc04693d68bd2de2ede6e595eab4
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004418"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293387"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalace a spouštění kontejnerů rozpoznat Text
 
@@ -50,14 +50,14 @@ Před použitím rozpoznat textových polí, musí splňovat následující pož
 
 Následující tabulka popisuje minimální a doporučené jader procesoru a paměti k přidělení pro každý kontejner rozpoznat Text.
 
-| Kontejner | Minimální | Doporučené |
-|-----------|---------|-------------|
-|Rozpoznání textu|1 jádro, 8 GB paměti, 0,5 TPS|2 jádra, 8 GB paměti, 1 TPS|
+| Kontejner | Minimální | Doporučené |TPS<br>(Minimum, Maximum)|
+|-----------|---------|-------------|--|
+|Rozpoznání textu|1 jádro, 8 GB paměti, 0,5 TPS|2 jádra, 8 GB paměti, 1 TPS|0.5, 1|
 
-Každé jádro, musí být aspoň 2.6 gigahertz (GHz) nebo rychlejší.
+* Každé jádro, musí být aspoň 2.6 gigahertz (GHz) nebo rychlejší.
+* TPS – transakcí za sekundu
 
 Jader a paměti odpovídají `--cpus` a `--memory` nastavení, které se používají jako součást `docker run` příkazu.
-
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru s `docker pull`
 

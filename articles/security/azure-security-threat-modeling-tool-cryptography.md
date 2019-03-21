@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 947740ed28deea9682d10eecf9a66dab7540669e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 608792d8389a87bad3521d3a48947b20dd036d67
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880304"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887098"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Zabezpečení rámce: Kryptografie | Zmírnění rizik 
+
 | Produkt nebo službu | Článek |
 | --------------- | ------- |
 | **Webové aplikace** | <ul><li>[Používat pouze schválený symetrický blokové šifry a délky klíčů](#cipher-length)</li><li>[Použití schválené režimy šifrování bloku a inicializační vektory pro symetrické šifrování](#vector-ciphers)</li><li>[Použití schválené asymetrické algoritmy, délky klíčů a odsazení](#padding)</li><li>[Použití schválené generátorů náhodných čísel](#numgen)</li><li>[Nepoužívejte stream symetrického šifrování](#stream-ciphers)</li><li>[Použití schválené MAC/HMAC/označenými hashovacích algoritmů](#mac-hash)</li><li>[Používat pouze funkce schválené kryptografické hodnoty hash](#hash-functions)</li></ul> |
@@ -96,7 +97,7 @@ ms.locfileid: "56880304"
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | neuvedeno  |
-| **Kroky** | <p>Produkty musí používat jenom schválené ověřovací kód zprávy (MAC) nebo HMAC ověřování kódu (HMAC) algoritmy.</p><p>Ověřovací kód zprávy (MAC) je určitý údaj připojen ke zprávě, která umožňuje její příjemce k ověření pravosti odesílatel i integritu zprávy pomocí tajného klíče. Použijte buď základě algoritmu hash MAC ([HMAC](http://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) nebo [cipher založené na blocích MAC](http://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) je přípustné jako dlouho jako všechny základní hodnoty hash nebo symetrický šifrovací algoritmy také schválená k používání; aktuálně jedná se o Funkce HMAC SHA2 (HMAC SHA256 a HMAC SHA384 HMAC SHA512.) a CMAC/OMAC1 a OMAC2 blokovat na základě šifer počítače Mac (jsou založeny na standardu AES).</p><p>Může být použití HMAC SHA1 přípustné, aby kompatibilita platformy, ale nebudete muset souboru výjimky tohoto postupu a projít kryptografické kontroly vaší organizace. Zkrácení HMAC na míň než 128 bitů se nepovoluje. Pomocí metody pro hodnoty hash klíče a data není schválený a panel Crypto vaší organizace, musí projít si projít před použití zákazníka.</p>|
+| **Kroky** | <p>Produkty musí používat jenom schválené ověřovací kód zprávy (MAC) nebo HMAC ověřování kódu (HMAC) algoritmy.</p><p>Ověřovací kód zprávy (MAC) je určitý údaj připojen ke zprávě, která umožňuje její příjemce k ověření pravosti odesílatel i integritu zprávy pomocí tajného klíče. Použijte buď základě algoritmu hash MAC ([HMAC](https://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) nebo [cipher založené na blocích MAC](https://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) je přípustné jako dlouho jako všechny základní hodnoty hash nebo symetrický šifrovací algoritmy také schválená k používání; aktuálně jedná se o Funkce HMAC SHA2 (HMAC SHA256 a HMAC SHA384 HMAC SHA512.) a CMAC/OMAC1 a OMAC2 blokovat na základě šifer počítače Mac (jsou založeny na standardu AES).</p><p>Může být použití HMAC SHA1 přípustné, aby kompatibilita platformy, ale nebudete muset souboru výjimky tohoto postupu a projít kryptografické kontroly vaší organizace. Zkrácení HMAC na míň než 128 bitů se nepovoluje. Pomocí metody pro hodnoty hash klíče a data není schválený a panel Crypto vaší organizace, musí projít si projít před použití zákazníka.</p>|
 
 ## <a id="hash-functions"></a>Používat pouze funkce schválené kryptografické hodnoty hash
 

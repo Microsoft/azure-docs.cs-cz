@@ -8,14 +8,18 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: a693bf38ce4f7ca73589db780e44eec918e6f8bd
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 10acb353e282508c838bee89b131d94dcd3fa7ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543811"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877815"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Rychlý start: Vytvoření serveru Azure Database for MySQL pomocí Azure CLI
+
+> [!TIP]
+> Zvažte použití jednodušší [az mysql nahoru](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) rozhraní příkazového řádku Azure (aktuálně ve verzi preview). Vyzkoušejte si [rychlý Start](./quickstart-create-server-up-azure-cli.md).
+
 Tento rychlý start popisuje, jak za pět minut vytvořit pomocí Azure CLI server Azure Database for MySQL ve skupině prostředků Azure. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
@@ -45,7 +49,7 @@ Vytvořte server Azure Database for MySQL pomocí příkazu **[az mysql server c
 ---|---|---
 jméno | mydemoserver | Zvolte jedinečný název serveru, který identifikuje váš server Azure Database for MySQL. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat ze 3 až 63 znaků.
 resource-group | myresourcegroup | Zadejte název skupiny prostředků Azure.
-sku-name | GP_Gen5_2 | Název skladové jednotky. Dodržuje konvenci {cenová úroveň}_{výpočetní generace}_{virtuální jádra} ve zkráceném zápisu. Další informace o parametru sku-name najdete pod touto tabulkou.
+sku-name | GP_Gen5_2 | Název skladové jednotky. Dodržuje konvenci {cenová úroveň}\_{výpočetní generace}\_{virtuální jádra} ve zkráceném zápisu. Další informace o parametru sku-name najdete pod touto tabulkou.
 backup-retention | 7 | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny. Rozsah je 7 až 35. 
 geo-redundant-backup | Zakázáno | Určuje, jestli pro tento server mají nebo nemají být povolené geograficky redundantní zálohy. Povolené hodnoty: Povolený, zakázaný.
 location | westus | Lokace Azure pro server.
@@ -140,15 +144,15 @@ Připojte se k serveru pomocí nástroje příkazového řádku **mysql.exe**. M
 Zadejte další příkazy: 
 
 1. Připojení k serveru pomocí nástroje příkazového řádku **mysql**:
-```bash
- mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
-```
+   ```bash
+   mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
+   ```
 
 2. Zobrazení stavu serveru:
-```sql
- mysql> status
-```
-Pokud vše půjde dobře, měl by výstupem nástroje příkazového řádku být následující text:
+   ```sql
+   mysql> status
+   ```
+   Pokud vše půjde dobře, měl by výstupem nástroje příkazového řádku být následující text:
 
 ```dos
 C:\Users\>mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
@@ -194,9 +198,9 @@ mysql>
 > Další příkazy najdete v [Referenční příručce k MySQL 5.7 – v kapitole 4.5.1](https://dev.mysql.com/doc/refman/5.7/en/mysql.html).
 
 ## <a name="connect-to-the-server-using-the-mysql-workbench-gui-tool"></a>Připojení k serveru pomocí nástroje grafického uživatelského rozhraní MySQL Workbench
-1.  Na klientském počítači spusťte aplikaci MySQL Workbench. MySQL Workbench můžete stáhnout a nainstalovat [odtud](https://dev.mysql.com/downloads/workbench/).
+1. Na klientském počítači spusťte aplikaci MySQL Workbench. MySQL Workbench můžete stáhnout a nainstalovat [odtud](https://dev.mysql.com/downloads/workbench/).
 
-2.  V dialogovém okně pro **nastavení nového připojení** zadejte na kartě **Parametry** následující informace:
+2. V dialogovém okně pro **nastavení nového připojení** zadejte na kartě **Parametry** následující informace:
 
    ![nastavení nového připojení](./media/quickstart-create-mysql-server-database-using-azure-cli/setup-new-connection.png)
 

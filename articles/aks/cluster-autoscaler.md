@@ -7,21 +7,23 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 841c9ae933dfa6d94eaf265549c7e697caf3dc02
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: dd66ac6392c0afb88d43a8814cef07ec590f6a55
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782509"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990759"
 ---
-# <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatické škálování clusteru, které splňují požadavky aplikace ve službě Azure Kubernetes Service (AKS)
+# <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Ve verzi Preview – automatické škálování clusteru, které splňují požadavky aplikace ve službě Azure Kubernetes Service (AKS)
 
 Jak držet krok s požadavky na aplikace ve službě Azure Kubernetes Service (AKS), budete muset upravit počet uzlů, na kterých běží vaše úlohy. Součást automatického škálování clusteru můžete sledovat podů v clusteru, který se kvůli omezení prostředků se nedá naplánovat. Když se zjistí problémy, se zvýší počet uzlů pro splnění požadavků aplikace. Uzly jsou také pravidelně kontroluje nedostatku s podů, počet uzlů, pak sníží podle potřeby. Tato schopnost automaticky vertikálně navyšovat nebo snižovat počet uzlů v clusteru AKS vám umožní spustit cluster efektivní a cenově výhodný.
 
 V tomto článku se dozvíte, jak povolit a spravovat automatického škálování clusteru v clusteru AKS.
 
 > [!IMPORTANT]
-> Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Funkce AKS ve verzi preview jsou samoobslužných služeb a vyjádřit výslovný souhlas. Verze Preview jsou k dispozici pro shromažďování zpětné vazby a chyb z naší komunitě. Však nepodporují technickou podporu Azure. Pokud vytvoříte cluster, nebo přidejte tyto funkce do existujících clusterů, se tento cluster nepodporuje, dokud tato funkce už je ve verzi preview a přechází do všeobecné dostupnosti (GA).
+>
+> Pokud narazíte na problémy s funkcemi ve verzi preview, [otevřete problém v úložišti Githubu AKS] [ aks-github] s názvem funkce ve verzi preview v název chyby.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
@@ -36,7 +38,7 @@ az extension add --name aks-preview
 ```
 
 > [!NOTE]
-> Při instalaci *aks ve verzi preview* rozšíření, každý cluster AKS, vytvoříte používá model nasazení škálovací sady ve verzi preview. Chcete-li odhlásit se a vytvářet pravidelné a plně podporované clustery, odeberte pomocí rozšíření `az extension remove --name aks-preview`.
+> Pokud jste dříve nainstalovali *aks ve verzi preview* rozšíření, nainstalujte všechny dostupné aktualizace pomocí `az extension update --name aks-preview` příkazu.
 
 ### <a name="register-scale-set-feature-provider"></a>Registrace poskytovatele funkce škálovací sady
 
@@ -87,7 +89,7 @@ Dvě autoscalers vzájemně spolupracují a často nasazených v clusteru. V kom
 Pokud potřebujete k vytvoření clusteru AKS, použijte [az aks vytvořit] [ az-aks-create] příkazu. Zadejte *verze kubernetes –* , který splňuje nebo překračuje počet minimální verze vyžaduje, jak je uvedeno v předchozím [před zahájením](#before-you-begin) oddílu. Chcete-li povolit a konfigurovat automatického škálování clusteru, použijte *--enable clusteru-automatického škálování* parametr a určit uzel *– minimální počet* a *– maximální počet*.
 
 > [!IMPORTANT]
-> Automatického škálování clusteru je součástí Kubernetes. I když clusteru AKS používá virtuálního počítače škálovací sady uzlů, není ručně povolit nebo upravit nastavení pro automatické škálování škálovací sady na webu Azure portal nebo pomocí rozhraní příkazového řádku Azure. Umožní automatického škálování clusteru Kubernetes, spravovat škálování požadované nastavení. Další informace najdete v tématu [můžete upravit AKS prostředky ve skupině prostředků MC_?](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group)
+> Automatického škálování clusteru je součástí Kubernetes. I když clusteru AKS používá virtuálního počítače škálovací sady uzlů, není ručně povolit nebo upravit nastavení pro automatické škálování škálovací sady na webu Azure portal nebo pomocí rozhraní příkazového řádku Azure. Umožní automatického škálování clusteru Kubernetes, spravovat škálování požadované nastavení. Další informace najdete v tématu [můžete upravit AKS prostředky ve skupině prostředků MC_?](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc_-resource-group)
 
 Následující příklad vytvoří AKS cluster pomocí škálovací sady virtuálních počítačů a automatického škálování clusteru povolena a používá minimálně *1* a maximální počet *3* uzly:
 
@@ -174,6 +176,7 @@ Tento článek vám ukázali, jak automaticky škálovat počet uzlů AKS. Můž
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[aks-github]: https://github.com/azure/aks/issues]
 
 <!-- LINKS - external -->
 [az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview

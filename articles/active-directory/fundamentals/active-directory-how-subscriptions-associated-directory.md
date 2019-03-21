@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 262f46b3d0b61923352f3ff98b08cb5e4f6d5e75
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: f8c5cb04c17e508409e67f0441daee4bc44c29d5
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993903"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285002"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Přiřazení nebo přidání předplatného Azure do svého tenanta Azure Active Directory
 
@@ -62,11 +62,10 @@ Předtím, než můžete přiřadit nebo přidejte svoje předplatné, je třeba
 
     Adresář se změní pro předplatné a se zobrazí zpráva o úspěchu.
 
-    ![Zpráva o úspěchu](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)    
+    ![Zpráva o úspěchu, o změně pro adresář](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)    
+4. Použití **přepínače adresářů** přejdete do nového adresáře. Správné zobrazení všech komponent může trvat až 10 minut.
 
-4. Pomocí přepínače adresářů přejděte do nového adresáře. Správné zobrazení všech komponent může trvat až 10 minut.
-
-    ![Stránka přepínání adresáře](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+    ![Stránka přepínání adresáře, s ukázkovými informacemi o](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
 Změna adresáře předplatného je operace úroveň služby, takže to nijak neovlivní vlastnictví fakturace předplatného. Správce účtu může stále změnit správce služby z [centra pro účty](https://account.azure.com/subscriptions). Pokud chcete odstranit původní adresář, musíte přenést vlastnictví pro nového správce účtu. fakturace předplatného Další informace o tom, jak převést vlastnictví fakturace, najdete v tématu [Převod vlastnictví předplatného Azure na jiný účet](../../billing/billing-subscription-transfer.md). 
 

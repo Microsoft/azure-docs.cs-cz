@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/20/2019
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: dff6d07f4df1da3de083934e0d8240beb957292e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4b6bd97d7e87832f774f7a09f7e0deeb4047e695
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883589"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294461"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Ověřování pomocí služby Azure AD pro přístup k rozhraní API služby Media Services pomocí REST
 
@@ -60,7 +60,7 @@ Pro přístup k rozhraní API služby Media Services, budete muset shromažďov�
 
 |Nastavení|Příklad:|Popis|
 |---|-------|-----|
-|Doména tenanta Azure Active Directory|microsoft.onmicrosoft.com|Azure AD jako koncový bod zabezpečit službu tokenů (STS) se vytvoří v následujícím formátu: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>. Aby bylo možné přistupovat k prostředkům (přístupový token), Azure AD vydá token JWT.|
+|Doména tenanta služby Azure Active Directory|microsoft.onmicrosoft.com|Azure AD jako koncový bod zabezpečit službu tokenů (STS) se vytvoří v následujícím formátu: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>. Aby bylo možné přistupovat k prostředkům (přístupový token), Azure AD vydá token JWT.|
 |Koncový bod rozhraní REST API|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Toto je koncový bod, oproti které všechny REST API služby Media Services ve vaší aplikaci volání.|
 |ID klienta (ID aplikace)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Azure AD ID aplikace (klient). ID klienta je požadováno pro získání přístupového tokenu. |
 |Tajný kód klienta|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD klíče aplikace (tajný klíč klienta). Chcete-li získat přístupový token se vyžaduje tajný klíč klienta.|

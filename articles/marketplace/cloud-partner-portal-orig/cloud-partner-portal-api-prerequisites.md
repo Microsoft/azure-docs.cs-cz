@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e6e25424981118363070d42b2fb057b18fdb91a9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 0d743d89c344ce9cb6eec116ed9c3e0cbe56f86e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809657"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878643"
 ---
 <a name="api-prerequisites"></a>Požadavky na rozhraní API
 ================
@@ -55,7 +55,7 @@ Pomocí následujících kroků můžete přidat instanční objekt služby:
 
      ![Přidat spravované aplikace na portálu](./media/cloud-partner-portal-api-prerequisites/managedapp.png)
 
-4. Klikněte na tlačítko **přidat** přidat instanční objekt služby ke svému účtu.
+1. Klikněte na tlačítko **přidat** přidat instanční objekt služby ke svému účtu.
 
    ![Přidání instančního objektu](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
 
@@ -66,7 +66,7 @@ Pomocí následujících kroků můžete přidat instanční objekt služby:
 Rozhraní API portál partnerů cloudu použijte následující prostředky a protokoly během ověřování:
 
 - Nosný token JSON Web Token (JWT) požádat o přístup k prostředkům
-- [OpenID Connect](http://openid.net/connect/) protocol (OIDC) k ověření identity
+- [OpenID Connect](https://openid.net/connect/) protocol (OIDC) k ověření identity
 - [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) jako autoritu identity
 
 Existují dva hlavní přístupy k programově získání tokenu JWT:

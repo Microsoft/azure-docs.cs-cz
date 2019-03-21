@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85c2dcfb6ff1ba0bb122a0bf9aae5f01a4085f29
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 34e0e9b83dabfb5b389030248f1787e1e8ef9dd4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817044"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840660"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Kurz: Integrace Azure Active Directory s bránou Rewards
 
@@ -114,6 +114,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Konfigurace jednotného přihlašování](./media/reward-gateway-tutorial/tutorial_rewardgateway_url.png)
 
     a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+
     | |
     |--|
     | `https://<companyname>.rewardgateway.com` |
@@ -122,6 +123,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | `https://<companyname>.rewardgateway.com.au/` |
 
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    
     | |
     |--|
     |  `https://<companyname>.rewardgateway.com/Authentication/EndLogin?idp=<Unique Id>` |

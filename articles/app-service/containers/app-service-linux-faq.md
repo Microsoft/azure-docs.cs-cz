@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: a12d3708cdb547cc036b249bebf901d2ec5121c3
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 4c2ed5fa65528a690d618e45c118d2433820ddc6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729315"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57871489"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service v Linuxu – nejčastější dotazy
 
@@ -35,9 +35,17 @@ Pokud máte dotaz, přidejte komentář v tomto článku.
 
 Všechny soubory Docker můžete najít na [Githubu](https://github.com/azure-app-service). Všechny kontejnery Dockeru můžete najít na [Docker Hubu](https://hub.docker.com/u/appsvc/).
 
+<a id="#startup-file"></a>
+
 **Jaké jsou očekávané hodnoty pro oddíl spouštěcí soubor, pro které nakonfiguruji zásobník modulu runtime?**
 
-Pro Node.js zadáte konfiguračního souboru PM2 nebo souboru skriptu. .NET Core, zadejte název zkompilované knihovny DLL jako `dotnet <myapp>.dll`. Pro Ruby můžete zadat skript Ruby, který chcete inicializovat aplikace s využitím.
+| Zásobník     | Očekávaná hodnota                                                                |
+|-----------|-------------------------------------------------------------------------------|
+| Java SE   | příkaz ke spuštění vaší `.jar` aplikace                                    |
+| Tomcat    | umístění skriptu provádět žádné nezbytné configruations pro vaši aplikaci |
+| Node.js   | konfiguračního souboru PM2 nebo souboru skriptu                                |          
+| .Net Core | Název zkompilované knihovny DLL jako `dotnet <myapp>.dll`                                 |
+| Ruby      | skript Ruby, který chcete inicializovat aplikace s využitím                     
 
 ## <a name="management"></a>Správa
 
@@ -75,7 +83,7 @@ Ano, je nutné nastavit aplikaci názvem `WEBSITE_WEBDEPLOY_USE_SCM` k *false*.
 
 Pokud selže nasazení z Gitu do webové aplikace v Linuxu, zvolte jednu z následujících možností pro nasazení kódu aplikace:
 
-- Použijte funkci průběžné doručování (Preview): Zdrojový kód vaší aplikace můžete uložit v úložišti Git v Azure DevOps nebo úložiště GitHub do pomocí nepřetržitého doručování Azure. Další informace najdete v tématu [konfigurace průběžného doručování pro Linuxovou webovou aplikaci](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
+- Použijte funkci průběžné doručování (Preview): Zdrojový kód vaší aplikace můžete ukládat v úložišti Git v Azure DevOps nebo úložiště GitHub do pomocí nepřetržitého doručování Azure. Další informace najdete v tématu [konfigurace průběžného doručování pro Linuxovou webovou aplikaci](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
 - Použití [ZIP nasaďte API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Použití tohoto rozhraní API [SSH do své webové aplikace](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support) a přejděte do složky, kam chcete svůj kód můžete nasadit. Spusťte následující kód:
 
@@ -92,7 +100,7 @@ Pokud selže nasazení z Gitu do webové aplikace v Linuxu, zvolte jednu z násl
 Ano, zakažte `perMessageDeflate` ve vašem kódu Node.js na straně serveru. Pokud používáte socket.io, použijte následující kód:
 
 ```nodejs
-var io = require('socket.io')(server,{
+const io = require('socket.io')(server,{
   perMessageDeflate :false
 });
 ```

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/06/2019
-ms.openlocfilehash: 127e3385f1fd9cf0975ff19818d3112fe5a713d0
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.date: 03/19/2019
+ms.openlocfilehash: b1467550ac84c57eaad9178d32fdcfaf14d84ae8
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571010"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260226"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Založený na virtuálních jádrech zakoupení modelu omezení pro jednu databázi Azure SQL Database
 
@@ -54,7 +54,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Počet replik|1|1|1|1|1|1|
-|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Přečtěte si horizontální navýšení kapacity|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
@@ -84,7 +84,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>Obecné účely vrstvy služby: Výpočetní platforma běžící generace 5 (část 1)
 
 |Vypočítat velikost|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |Generování H/W|5|5|5|5|5|5|5|
 |Virtuální jádra|2|4|6|8|10|12|14|
 |Paměť (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
@@ -107,7 +107,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Obecné účely vrstvy služby: Výpočetní platforma běžící generace 5 (část 2)
 
 |Vypočítat velikost|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |Generování H/W|5|5|5|5|5|5|5|
 |Virtuální jádra|16|18|20|24|32|40|80|
 |Paměť (GB)|81.6|91.8|102|122.4|163.2|204|408|
@@ -149,7 +149,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Maximální počet souběžných přihlášení|200|400|600|800|1000|1200|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Počet replik|4|4|4|4|4|4|
-|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
 |Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
@@ -168,19 +168,19 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Velikost databáze TempDB (GB)|224|256|288|320|384|384|
 |Vstupně-výstupní latence (přibližné)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|35000|40000|45000|50000|80000|120000|
-|Omezení přenosové rychlosti protokolu (MB/s)|42|48|48|48|48|48|
+|Omezení přenosové rychlosti protokolu (MB/s)|42|48|54|60|64|64|
 |Maximální počet souběžných pracovních procesů (požadavků)|1400|1600|1800|2000|3200|4800|
 |Maximální počet souběžných přihlášení (požadavků)|1400|1600|1800|2000|3200|4800|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Počet replik|4|4|4|4|4|4|
-|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
 |Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Obchodní vrstvy služby: Výpočetní platforma běžící generace 5 (část 1)
 
 |Vypočítat velikost|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |Generování H/W|5|5|5|5|5|5|5|
 |Virtuální jádra|2|4|6|8|10|12|14|
 |Paměť (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
@@ -198,13 +198,13 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|
 |Počet replik|4|4|4|4|4|4|4|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Přečtěte si horizontální navýšení kapacity|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Obchodní vrstvy služby: Výpočetní platforma běžící generace 5 (část 2)
 
 |Vypočítat velikost|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |Generování H/W|5|5|5|5|5|5|5|
 |Virtuální jádra|16|18|20|24|32|40|80|
 |Paměť (GB)|81.6|91.8|102|122.4|163.2|204|408|
@@ -216,13 +216,13 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
 |Vstupně-výstupní latence (přibližné)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|40000|45000|50000|60000|80000|100000|200000|
-|Omezení přenosové rychlosti protokolu (MB/s)|48|48|48|48|48|48|48|
+|Omezení přenosové rychlosti protokolu (MB/s)|48|54|60|72|96|96|96|
 |Maximální počet souběžných pracovních procesů (požadavků)|1600|1800|2000|2400|3200|4000|8000|
 |Maximální počet souběžných přihlášení|1600|1800|2000|2400|3200|4000|8000|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|
 |Počet replik|4|4|4|4|4|4|4|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Přečtěte si horizontální navýšení kapacity|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
 ## <a name="hyperscale-service-tier-preview"></a>Úroveň služeb Hyperškálovatelného (preview)
@@ -230,7 +230,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 ### <a name="generation-4-compute-platform-storage-sizes-and-compute-sizes"></a>Výpočetní generace 4 platforma: Velikosti úložiště a výpočty velikostí
 
 |Úroveň výkonu|HS_Gen4_1|HS_Gen4_2|HS_Gen4_4|HS_Gen4_8|HS_Gen4_16|HS_Gen4_24|
-|:--- | --: |--: |--: |--: |--: |--: |--: |
+|:--- | --: |--: |--: |--: |--: |--: |
 |Generování H/W|4|4|4|4|4|4|
 |Virtuální jádra|1|2|4|8|16|24|
 |Paměť (GB)|7|14|28|56|112|168|
@@ -253,7 +253,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 ### <a name="generation-5-compute-platform"></a>Výpočetní platforma běžící generace 5
 
 |Úroveň výkonu|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
 |Generování H/W|5|5|5|5|5|5|5|5|
 |Virtuální jádra|2|4|8|16|24|32|40|80|
 |Paměť (GB)|10.2|20.4|40.8|81.6|122.4|163.2|204|408|

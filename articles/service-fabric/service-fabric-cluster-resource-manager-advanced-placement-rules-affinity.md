@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: b12328c8283c9a626a3dcfc45dfd682a5e628d07
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9c4af55a5ddb05335f8acfdd23711df2290e217b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728841"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085690"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurace a použití spřažení služeb v Service Fabric
 Spřažení je ovládací prvek, který je k dispozici hlavně k usnadnění přechodu větší monolitické aplikace do cloudu a mikroslužby světa. Používá se také jako optimalizace pro zlepšení výkonu služeb, i když to může mít vedlejší účinky.
@@ -59,6 +59,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 Spřažení je reprezentován některou z několika korelace schémata a má dva různé režimy. Nejběžnější režim spřažení je, čemu říkáme NonAlignedAffinity. V NonAlignedAffinity replik nebo instancí jiné služby jsou umístěny na stejné uzly. V režimu je AlignedAffinity. Zarovnané spřažení je užitečný jenom v případě stavové služby. Konfigurace dvě stavové služby, které mají zarovnané spřažení zajistí, že primárek tyto služby jsou umístěny na stejné uzly navzájem. Navíc způsobí, že každý pár sekundární databáze pro služby využívané umístit na stejné uzly. Také je možné (ale méně běžné) ke konfiguraci NonAlignedAffinity pro stavové služby. Pro NonAlignedAffinity různých replik dva stavové služby běžet na stejné uzly, ale jejich primárek můžou být nakonec na různých uzlech.
 
 <center>
+
 ![Režimy vztahů a jejich vliv][Image1]
 </center>
 
@@ -69,6 +70,7 @@ Vztah spřažení je nejlepší úsilí. Neposkytuje stejné záruky kolokaci ne
 Ještě dnes Cluster Resource Manager nemá přístup k modelu řetězů, spřažení relace. Co to znamená, že služba, která je podřízená položka v jednom vztahu spřažení nemůže být nadřazená jiné spřažení relace. Pokud chcete tento typ relace model, máte efektivně modelu jako hvězdičku, spíše než řetězce. Pokud chcete přesunout z řetězce na hvězdičku, nejnižší podřízený by být prvek první podřízený, nadřazené místo. V závislosti na uspořádání vašich služeb budete muset provést několikrát. Pokud není žádná služba přirozené nadřazené, budete muset vytvořit nového, který slouží jako zástupný symbol. V závislosti na požadavcích, můžete také chtít prozkoumat [skupin aplikací](service-fabric-cluster-resource-manager-application-groups.md).
 
 <center>
+
 ![Řetězy vs. Počet hvězdiček v kontextu spřažení relace][Image2]
 </center>
 

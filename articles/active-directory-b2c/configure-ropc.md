@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e464787919577b89b1cfec11e579cb17c18e2878
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 777aca4754d4d5dc893f930994ffe61db18362fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404212"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089331"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Nakonfigurujte tok přihlašovacího hesla vlastníka prostředku v Azure AD B2C
 
@@ -37,15 +37,15 @@ Nejsou podporovány v následujících tocích:
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Vytvořit tok uživatele vlastníka prostředku
 
-1.  Přihlaste se k webu Azure portal jako globální správce tenanta Azure AD B2C.
-2.  Pokud chcete přepnout na svého tenanta Azure AD B2C, vyberte adresář B2C v pravém horním rohu portálu.
-3.  Klikněte na tlačítko **toky uživatelů**a vyberte **nový tok uživatele**.
-4.  Klikněte na tlačítko **všechny** kartě a vyberte **Přihlaste se pomocí ROPC**.
-5.  Zadejte název pro tok uživatele, jako třeba *ROPC_Auth*.
-6.  V části **deklarace identit aplikace**, klikněte na tlačítko **zobrazit více**.
-7.  Vyberte deklarace identit aplikace, které potřebujete pro vaši aplikaci, jako je zobrazované jméno, e-mailovou adresu a zprostředkovatele Identity.
-8.  Vyberte **OK** a potom vyberte **Vytvořit**.
-9.  Klikněte na tlačítko **spustit tok uživatele**.
+1. Přihlaste se k webu Azure portal jako globální správce tenanta Azure AD B2C.
+2. Pokud chcete přepnout na svého tenanta Azure AD B2C, vyberte adresář B2C v pravém horním rohu portálu.
+3. Klikněte na tlačítko **toky uživatelů**a vyberte **nový tok uživatele**.
+4. Klikněte na tlačítko **všechny** kartě a vyberte **Přihlaste se pomocí ROPC**.
+5. Zadejte název pro tok uživatele, jako třeba *ROPC_Auth*.
+6. V části **deklarace identit aplikace**, klikněte na tlačítko **zobrazit více**.
+7. Vyberte deklarace identit aplikace, které potřebujete pro vaši aplikaci, jako je zobrazované jméno, e-mailovou adresu a zprostředkovatele Identity.
+8. Vyberte **OK** a potom vyberte **Vytvořit**.
+9. Klikněte na tlačítko **spustit tok uživatele**.
 
    Zobrazí koncový bod jako je například v tomto příkladu:
 

@@ -15,18 +15,18 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 32d00a1c0daf383d41d6bbc7c9fe105b3a2a6ab1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ab867af76821f90c6a87c08d42affdef8192e201
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774911"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258135"
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Představení iDNS pro Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-iDNS je síťové funkce služby Azure Stack, která umožňuje překládat externí názvy DNS (například https://www.bing.com.) také umožňuje registraci názvů interní virtuální síti. Díky tomu lze vyřešit virtuální počítače ve stejné virtuální síti name spíše než IP adresu. Tento přístup eliminuje nutnost poskytnout vlastní položky serveru DNS. Další informace o DNS, najdete v článku [přehled DNS Azure](https://docs.microsoft.com/azure/dns/dns-overview).
+iDNS je síťové funkce služby Azure Stack, která umožňuje překládat externí názvy DNS (například https:\//www.bing.com.) Také umožňuje registraci názvů interní virtuální síti. Díky tomu lze vyřešit virtuální počítače ve stejné virtuální síti name spíše než IP adresu. Tento přístup eliminuje nutnost poskytnout vlastní položky serveru DNS. Další informace o DNS, najdete v článku [přehled DNS Azure](https://docs.microsoft.com/azure/dns/dns-overview).
 
 ## <a name="what-does-idns-do"></a>Co dělá IDN?
 

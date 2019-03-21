@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: bdc479c6cc91c3ebba343a8423a73fb2e0404a73
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: db701a239aedb312c7671e403cdfde7135130c6d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992698"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089603"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí Azure Active Directory B2C ve službě Azure API Management
 
@@ -46,54 +46,54 @@ Azure Active Directory B2C je cloudové řešení správy identit pro zákaznick
 
 3. Kopírovat **přesměrování URL adresy**.
 
-  ![Adresa URL přesměrování zprostředkovatele identity AAD B2C][api-management-howto-copy-b2c-identity-provider-redirect-url]
+   ![Adresa URL přesměrování zprostředkovatele identity AAD B2C][api-management-howto-copy-b2c-identity-provider-redirect-url]
 
 4. Na nové kartě přístup k vašemu tenantovi Azure Active Directory B2C v webu Azure portal a otevřete **aplikací** okno.
 
-  ![Registrace nové aplikace 1][api-management-howto-aad-b2c-portal-menu]
+   ![Registrace nové aplikace 1][api-management-howto-aad-b2c-portal-menu]
 
 5. Klikněte na tlačítko **přidat** tlačítko Vytvořit novou aplikaci Azure Active Directory B2C.
 
-  ![Registrace nové aplikace 2][api-management-howto-aad-b2c-add-button]
+   ![Registrace nové aplikace 2][api-management-howto-aad-b2c-add-button]
 
 6. V **novou aplikaci** okně zadejte název aplikace. Zvolte **Ano** pod **webová aplikace/webové rozhraní API**a zvolte **Ano** pod **povolit implicitní tok**. Vložte **adresy URL pro přesměrování** zkopírovali v kroku 3 do **adresy URL odpovědi** textového pole.
 
-  ![Registrace nové aplikace 3][api-management-howto-aad-b2c-app-details]
+   ![Registrace nové aplikace 3][api-management-howto-aad-b2c-app-details]
 
 7. Klikněte na tlačítko **Vytvořit**. Když se aplikace, zobrazí se v **aplikací** okno. Klikněte na název aplikace zobrazíte její podrobnosti.
 
-  ![Registrace nové aplikace 4][api-management-howto-aad-b2c-app-created]
+   ![Registrace nové aplikace 4][api-management-howto-aad-b2c-app-created]
 
 8. Z **vlastnosti** okno, kopie **ID aplikace** do schránky.
 
-  ![ID aplikace 1][api-management-howto-aad-b2c-app-id]
+   ![ID aplikace 1][api-management-howto-aad-b2c-app-id]
 
 9. Přepněte zpět do API managementu **přidat zprostředkovatele identity** podokně a vložte ID do **Id klienta** textového pole.
 
-  ![ID aplikace 2][api-management-howto-aad-b2c-client-id]
+   ![ID aplikace 2][api-management-howto-aad-b2c-client-id]
 
 10. Vrátit zpět k registraci aplikace B2C, klikněte na tlačítko **klíče** tlačítko a pak klikněte na tlačítko **vygenerovat klíč**. Klikněte na tlačítko **Uložit** uložte konfiguraci a zobrazení **klíče aplikace**. Klíč zkopírujte do schránky.
 
-  ![Klíč aplikace 1][api-management-howto-aad-b2c-app-key]
+    ![Klíč aplikace 1][api-management-howto-aad-b2c-app-key]
 
 11. Přepněte zpět do API managementu **přidat zprostředkovatele identity** podokně a vložte klíč do **tajný kód klienta** textového pole.
 
-  ![Klíč aplikace 2][api-management-howto-aad-b2c-client-secret]
+    ![Klíč aplikace 2][api-management-howto-aad-b2c-client-secret]
 
 12. Zadejte název domény tenanta Azure Active Directory B2C v **povolený Tenant**.
 
-  ![Povoleného tenanta][api-management-howto-aad-b2c-allowed-tenant]
+    ![Povoleného tenanta][api-management-howto-aad-b2c-allowed-tenant]
 
 13. Zadejte **zásady registrace** a **Signin zásady** ze zásad Tenanta B2C. Volitelně můžete zadat taky **zásady úprav profilu** a **zásady resetování hesel**.
 
-  ![Zásady][api-management-howto-aad-b2c-policies]
+    ![Zásady][api-management-howto-aad-b2c-policies]
 
-  > [!NOTE]
-  > Další informace o zásadách najdete v tématu [Azure Active Directory B2C: Rozšiřitelná architektura zásad].
+    > [!NOTE]
+    > Další informace o zásadách najdete v tématu [Azure Active Directory B2C: Rozšiřitelná architektura zásad].
 
 14. Po zadání požadované konfigurace, klikněte na tlačítko **Uložit**.
 
-  Po uložení změn vývojáři budou moct vytvářet nové účty a přihlaste se k portálu pro vývojáře pomocí Azure Active Directory B2C.
+    Po uložení změn vývojáři budou moct vytvářet nové účty a přihlaste se k portálu pro vývojáře pomocí Azure Active Directory B2C.
 
 ## <a name="sign-up-for-a-developer-account-by-using-azure-active-directory-b2c"></a>Zaregistrujte si vývojářský účet pomocí Azure Active Directory B2C
 

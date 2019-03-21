@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 7ce50ed32f845fb21e8d95f4d2da1786e5f6f540
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 28ce4cfd0c62586510a6f7dfdeca8b552fe9638e
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772479"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258934"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Vzájemná funkční spolupráce v Azure připojení k back-end funkce: Analýza rovina řízení
 
@@ -102,7 +102,7 @@ Zobrazit [ExpressRoute – nejčastější dotazy] [ ExR-FAQ] na:
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface
-[Configuration]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-config
+[Configuration]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-configuration
 [ExpressRoute]: https://docs.microsoft.com/azure/expressroute/expressroute-introduction
 [VPN]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways
 [VNet]: https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal

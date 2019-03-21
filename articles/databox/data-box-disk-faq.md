@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 02/26/2019
 ms.author: alkohli
-ms.openlocfilehash: eeac05ec86161e60ed9f34b94802c24004de0d4e
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 97794675f3d489e1154d9c327c18d40708dd5b53
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407608"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877849"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co je Azure Data Box Disk?
 
@@ -51,7 +51,7 @@ A.  Disky Azure Data Box, přihlaste se do portálu Azure portal a vytvoření o
 A. Při 5 discích, kdy každý má velikost 8 TB (7 TB využitelné kapacity), je maximální využitelná kapacita 35 TB. V jedné instanci je tedy možné přenést 35 TB dat. Pro přenos většího objemu dat je nutné objednat další disky.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>Otázka: Jak zjistím, jestli jsou disky Data Box Disk dostupné v mojí oblasti? 
-A.  Chcete-li zjistit, kde jsou aktuálně k dispozici disků Data Box, přejděte [dostupnost v oblastech](data-box-disk-overview.md#).  
+A.  Chcete-li zjistit, kde jsou aktuálně k dispozici disků Data Box, přejděte [dostupnost v oblastech](data-box-disk-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Otázka: Ve kterých oblastech lze data ukládat pomocí disků Data Box Disk?
 A. Data Box Disk se podporuje pro všechny oblasti v USA, Kanadě, Austrálii a oblasti západní Evropa a Severní Evropa. Podporované jsou jenom oblasti veřejného cloudu Azure. Azure Government ani jiné suverénní cloudy nejsou podporované.
@@ -129,11 +129,11 @@ A. Sada nástrojů dostupná s datovým diskem pole obsahuje tři nástroje:
  - **Nástroj pro kopírování rozdělení disku pole data**: Tento nástroj použijte, pokud používáte několik disků a mají velkou datovou sadu, kterou je potřeba rozdělit a zkopírovali na všech discích. Tento nástroj je momentálně dostupná pro Windows. Tento nástroj není podporován se spravovanými disky. Tento nástroj také ověří jako zkopíruje data, proto můžete přeskočit krok ověření při používání tohoto nástroje.
 
 Sada nástrojů je k dispozici pro Windows i Linux. Si můžete stáhnout na sadu nástrojů:
- - [Stáhnout sadu nástrojů Data Box Disk pro Windows](https://aka.ms/databoxdisktoolswin) 
- - [Stáhnout sadu nástrojů Data Box Disk pro Linux](https://aka.ms/databoxdisktoolslinux)
+- [Stáhnout sadu nástrojů Data Box Disk pro Windows](https://aka.ms/databoxdisktoolswin) 
+- [Stáhnout sadu nástrojů Data Box Disk pro Linux](https://aka.ms/databoxdisktoolslinux)
  
- ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Otázka: Můžete použít Data Box Disk k přenosu dat do služby soubory Azure a pak používat data pomocí služby Azure File Sync? 
- A. Služba soubory Azure jsou podporovány s datovými diskem, pole, ale nebude fungovat s Azure File Sync. Metadata nezachovají, pokud se používají data souborů pomocí služby Azure File Sync.
+  ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Otázka: Můžete použít Data Box Disk k přenosu dat do služby soubory Azure a pak používat data pomocí služby Azure File Sync? 
+  A. Služba soubory Azure jsou podporovány s datovými diskem, pole, ale nebude fungovat s Azure File Sync. Metadata nezachovají, pokud se používají data souborů pomocí služby Azure File Sync.
 
 
 ## <a name="verify-and-upload"></a>Ověření a nahrání

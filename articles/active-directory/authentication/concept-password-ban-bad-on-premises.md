@@ -1,6 +1,6 @@
 ---
-title: Azure AD hesla protection ve verzi preview
-description: Zákaz Slabá hesla do místní služby Active Directory pomocí služby Azure AD hesla protection ve verzi preview
+title: Ochrana hesel Azure AD
+description: Zakázat Slabá hesla v místní službě Active Directory s použitím ochrany hesla Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,87 +11,85 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1beae186f6eb276b9aa302d3d51f0ba8688e591
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: MT
+ms.openlocfilehash: f1b3660d256e4beda948f723035aa75ca8a9ed2e
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415744"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284864"
 ---
-# <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Verze Preview: Vynucení ochrany hesla Azure AD pro Windows Server Active Directory
+# <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Vynucení ochrany hesla Azure AD pro Windows Server Active Directory
 
-|     |
-| --- |
-| Ochrana hesel Azure AD a v seznamu vlastních zakázaných hesel jsou funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
-
-Ochrana hesel Azure AD je nová funkce ve verzi public preview technologii Azure Active Directory (Azure AD) k vylepšení zásady hesel v organizaci. V místním nasazení ochrany hesla Azure AD používá obě globální a vlastní seznamy hesla uložená ve službě Azure AD je váš účet zakázaný a provede stejné kontroly místní změny cloudové služby Azure AD.
+Ochrana hesel Azure AD je funkce, která vylepšuje zásady hesel v organizaci. Ochrana heslem v místním nasazení se používá i globálních a vlastních zakázané heslo seznamy, které jsou uložené ve službě Azure AD. Provádí stejné kontroly místní jako Azure AD pro změny založené na cloudu.
 
 ## <a name="design-principles"></a>Principy návrhu
 
-Azure AD hesla ochranu pro službu Active Directory je navržen s těmito zásadami v úvahu:
+Ochrana hesel Azure AD je navržen s těmito zásadami v úvahu:
 
-* Řadiče domény se nikdy požadované k přímé komunikaci s Internetem
+* Řadiče domény se už nikdy nemusíte přímo komunikují po Internetu.
 * Nejsou žádné nové síťové porty otevřené v řadičích domény.
-* Nejsou potřeba žádné změny schématu služby Active Directory. Software používá existující kontejner služby Active Directory a objekty serviceConnectionPoint schématu.
-* Žádná minimální domény služby Active Directory nebo doménové struktuře funkční úroveň (DFL\FFL) není povinné.
-* Software nevytváří ani vyžadovat některé účty domén služby Active Directory, které chrání.
-* Hesla uživatelů nešifrovaný text nikdy neopustí řadičem domény (zda během operace ověřování hesla nebo kdykoliv).
-* Za cenu, že zásady pro hesla bude vynucováno tak, kde je nainstalovaný agent řadič domény je podporováno přírůstkové nasazení.
-* Doporučuje se pro instalaci agenta řadiče domény na všech řadičích domény zajistit vynucení zabezpečení ochrany všudypřítomná hesla.
+* Nejsou potřeba žádné změny schématu služby Active Directory. Software používá existující služby Active Directory **kontejneru** a **serviceConnectionPoint** objekty schématu.
+* Žádné minimální služby Active Directory domény nebo doménová struktura úroveň funkčnosti (funkčnosti domény/FFL) se vyžaduje.
+* Software nelze vytvořit nebo vyžadují účtů v doménách Active Directory, které chrání.
+* Hesla uživatelů nešifrovaný text nenechávejte řadič domény během operací ověření hesla nebo kdykoli.
+* Je podporováno přírůstkové nasazení. Ale zásady hesel se vynucují jenom, kde je nainstalovaný Agent řadič domény (DC agenta).
+* Doporučujeme nainstalovat agenta pro řadič domény na všechny řadiče domény, aby vynucení zabezpečení ochrany univerzální hesla.
 
 ## <a name="architectural-diagram"></a>Diagram architektury
 
-Je důležité porozumět základní návrhu a funkční koncepty před nasazením ochrany hesel služby Azure AD v prostředí místní služby Active Directory. Následující diagram znázorňuje, jak spolu součásti ochrany hesel služby Azure AD fungují:
+Je důležité pochopit základní návrhu a funkci koncepty před nasazením služby Azure AD ochrana heslem v prostředí místní služby Active Directory. Následující diagram znázorňuje, jak spolu součásti ochrany heslem fungují:
 
 ![Jak spolupracují součásti ochrany hesla Azure AD](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
 
-Výše uvedené diagram znázorňuje tři základní softwarové komponenty, které tvoří ochrana hesel Azure AD:
+* Spouští službu Proxy ochrana hesel Azure AD na jakýkoli počítač připojený k doméně v aktuální doménové struktuře služby Active Directory. Jeho hlavním účelem je přesměrování požadavků na stažení zásady hesla z řadiče domény do služby Azure AD. Vrátí pak odpovědi ze služby Azure AD k řadiči domény.
+* Knihovny DLL agenta DC filtru hesel přijímá žádosti o ověření hesla uživatele z operačního systému. Předává je do služby agenta řadiče domény, na kterém běží místně na řadiči domény.
+* Službu řadiče domény agenta ochrany pomocí hesla přijímá žádosti o ověření hesla z knihovny DLL agenta DC filtru hesel. Zpracuje pomocí aktuální zásady hesel (místně dostupné) a vrátí výsledek: *předat* nebo *selhání*.
 
-* Spouští službu Proxy ochrana hesel Azure AD na jakýkoli počítač připojený k doméně v aktuální doménové struktuře služby Active Directory. Jeho hlavním účelem je předat požadavků na stažení zásady hesla z řadiče domény do Azure AD a vrátí odpověď z Azure AD zpátky na řadič domény.
-* Dll filtru hesel služby Azure AD ochranu řadič domény agenta heslo přijímá žádostí o ověření hesla uživatelů z operačního systému a předává je službě hesel služby Azure AD ochranu řadič domény agenta místně spuštěná na řadiči domény.
-* Služba agenta ochrany DC hesel služby Azure AD obdrží žádostí o ověření hesla z knihovny dll filtru hesel agenta DC, zpracuje pomocí aktuální zásady hesel (místně dostupné) a vrátí výsledek (pass\fail).
+## <a name="how-password-protection-works"></a>Jak funguje ochrana heslem
 
-## <a name="theory-of-operations"></a>Teorie operací
+Každá instance služby Proxy ochrana hesel Azure AD inzeruje na řadiče domény v doménové struktuře tak, že vytvoříte **serviceConnectionPoint** objektu ve službě Active Directory.
 
-Takže uvedené výše diagramu a návrhu zásad, jak ochrana hesel Azure AD ve skutečnosti funguje?
+Každá služba řadiče domény agenta k ochraně heslem také vytvoří **serviceConnectionPoint** objektu ve službě Active Directory. Tento objekt se používá hlavně pro vytváření sestav a Diagnostika.
 
-Každá služba Proxy ochrana hesel Azure AD inzeruje na řadiče domény v doménové struktuře tak, že vytvoříte objekt serviceConnectionPoint ve službě Active Directory.
+Služba agenta řadiče domény zodpovídá za inicializaci stáhnout nové zásady hesla ze služby Azure AD. Prvním krokem je najít pomocí dotazu na doménovou strukturu pro proxy server služby Proxy ochrana hesel Azure AD **serviceConnectionPoint** objekty. Po nalezení službu proxy serveru k dispozici řadiče domény Agent odešle žádost o stažení zásady hesla ve službě proxy. Služba proxy pak odešle požadavek do služby Azure AD. Služba proxy vrátí odpověď služby agenta řadiče domény.
 
-Každá služba agenta ochrany DC hesel služby Azure AD také vytvoří objekt serviceConnectionPoint ve službě Active Directory. To se ale používá primárně pro generování sestav a Diagnostika.
+Až službu agenta pro řadič domény obdrží nové zásady hesla ze služby Azure AD, služba ukládá zásady vyhrazené složky v kořenovém adresáři domény *sysvol* složku sdílenou složku. Služba agenta DC také sleduje tuto složku, v případě, že novější zásady replikace v od jiných služeb agenta pro řadič domény v doméně.
 
-Služba agenta ochrany DC hesel služby Azure AD zodpovídá za inicializaci stáhnout nové zásady hesla ze služby Azure AD. Prvním krokem je najít službu Proxy ochrana hesel Azure AD pomocí dotazu na doménovou strukturu pro objekty serviceConnectionPoint proxy. Po nalezení služby k dispozici proxy žádost o stažení zásady hesla přijde z řadiče domény Služba agenta ve službě proxy, který pak odesílá do služby Azure AD a pak vrací odpověď služby agenta řadiče domény. Po přijetí nové zásady hesla ze služby Azure AD, ukládá služba agenta DC zásady vyhrazených složek v kořenovém adresáři sdílené složky jeho doméně adresáře sysvol. Služba agenta DC také sleduje tuto složku, v případě, že novější zásady replikace v jiných službách agenta řadiče domény v doméně.
+Služba agenta řadiče domény vždy požádá o novou zásadu na spuštění služby. Po spuštění služby agenta pro řadič domény zkontroluje aktuální místně dostupné zásady stáří po hodinách. Pokud tato zásada je starší než jednu hodinu, řadič domény Agent si vyžádá nové zásady ze služby Azure AD, jak je popsáno výše. Pokud aktuální zásady není starší než jednu hodinu, řadič domény agenta dál používat tuto zásadu.
 
-Služba agenta ochrany DC hesel služby Azure AD se vždy požádat o novou zásadu na spuštění služby. Po spuštění služby agenta řadiče domény se pravidelně (jednou za hodinu) zkontrolujte stáří aktuální místně dostupné zásady Pokud aktuální zásady je starší než jednu hodinu službu agent řadič domény bude požadovat nové zásady ze služby Azure AD jak je popsáno výše, jinak agenta pro řadič domény bude dál používat aktuální zásady.
+Pokaždé, když se zásady služby Azure AD protection heslo heslo se stáhne, tuto zásadu je specifická pro tenanta. Jinými slovy zásady pro hesla jsou vždy globální seznam zakázaných hesel Microsoft i vlastní seznam zakázaných hesel na tenanta.
 
-Služba agenta řadiče domény ochrana hesel Azure AD komunikuje se službou Proxy ochrana hesel Azure AD pomocí protokolu RPC (vzdálené volání procedur) přes protokol TCP. Službu Proxy naslouchá těchto volání na buď dynamickou nebo statickou RPC portu (protože je nakonfigurovaná).
+Řadič domény agenta komunikuje se službou proxy přes RPC přes protokol TCP. Proxy služby čeká na těchto volání na dynamické nebo statické RPC portu, v závislosti na konfiguraci.
 
-Agenta ochrany DC hesel služby Azure AD nikdy naslouchá na síti dostupný port a službu Proxy nikdy pokusí volat službu agenta řadiče domény.
+Řadič domény agenta nikdy naslouchá na síti dostupný port.
 
-Služba Proxy ochrana hesel Azure AD je Bezstavová; nikdy mezipaměti zásad nebo jakéhokoli jiného stavu stáhli z Azure.
+Služba proxy nikdy nevolá službu agenta řadiče domény.
 
-Služba agenta ochrany DC hesel služby Azure AD se vždy jen vyhodnotí jako heslo uživatele pomocí nejnovější zásady hesel místně dostupné. Pokud žádné zásady hesel je k dispozici na místní řadič domény, automaticky přijme heslo a zprávy do protokolu událostí se budou protokolovat do upozornit správce.
+Služba proxy jsou bezstavové. Nikdy mezipaměti zásad nebo jakéhokoli jiného stavu stáhli z Azure.
 
-Azure AD hesla ochrany není modul aplikace v reálném čase zásad. Může existovat zpoždění v době mezi změnu hesla zásad konfigurace se provádí v Azure AD a čas dosáhne a vynucování na všechny řadiče domény.
+Služba agenta řadiče domény vždy používá nejnovější zásady hesel místně dostupné k vyhodnocení hesla uživatele. Pokud žádné zásady hesel je k dispozici na místní řadič domény, je automaticky přijat heslo. Pokud k tomu dojde, zprávu o události je zaznamenána upozornit správce.
 
-## <a name="foresttenant-binding-for-azure-ad-password-protection"></a>Vazba Forest\tenant ochranu hesel služby Azure AD
+Ochrana hesel Azure AD není modul aplikace v reálném čase zásad. Může existovat zpoždění mezi při provedení změny konfigurace zásady hesla ve službě Azure AD a když se změní dosáhne a vynucování na všechny řadiče domény.
 
-Nasazení ochrany hesel služby Azure AD v doménové struktuře služby Active Directory vyžaduje registraci doménové struktury služby Active Directory a všech nasazených služeb Proxy ochrana hesel Azure AD, službou Azure AD. Obě tyto registrace (doménové struktury a proxy servery) jsou spojeny s konkrétním tenanta Azure AD, který je určený implicitně přes přihlašovací údaje použité během registrace. Kdykoli se stáhne heslo zásadu ochrany hesel služby Azure AD, je vždy specifický pro tohoto tenanta (to znamená, že zásady vždy být kombinací globální společnosti Microsoft zakázané heslo a seznamu vlastních zakázaných hesel na tenanta). Není možné konfigurovat různých doménách nebo proxy servery v doménové struktuře jako vázaný na různých služeb Azure AD tenantů.
+## <a name="foresttenant-binding-for-password-protection"></a>Vazba doménové struktury/tenanta k ochraně heslem
+
+Nasazení služby Azure AD ochrana heslem v doménové struktuře služby Active Directory vyžaduje registraci této doménové struktury s Azure AD. Azure AD musí být zaregistrovaný také každou službu proxy, která je nasazena. Tyto registrace doménové struktury a proxy serveru jsou spojeny s konkrétním tenanta Azure AD, který je identifikován implicitně pomocí přihlašovacích údajů, které se používají během registrace.
+
+Doménové struktury služby Active Directory a všechny nasazené proxy služby v rámci doménové struktury musí být zaregistrovaná pomocí stejného tenanta. Není možné mít doménové struktury služby Active Directory nebo všechny služby serveru proxy v tom, že klienti doménové struktury registruje na různých služeb Azure AD. Správně konfigurováno nasazení mezi příznaky patří nemožnost stáhnout zásady pro hesla.
 
 ## <a name="license-requirements"></a>Licenční požadavky
 
-Výhody seznamu zakázaných hesel globální platí pro všechny uživatele služby Azure Active Directory (Azure AD).
+Výhody seznamu zakázaných hesel globální platí pro všechny uživatele služby Azure AD.
 
-Seznam zakázaných hesel vlastní vyžaduje licence Azure AD Basic.
+Vlastní seznam zakázaných hesel vyžaduje licence Azure AD Basic.
 
-Azure AD hesla Protection pro Windows Server Active Directory vyžaduje licence Azure AD Premium.
+Ochrana hesel Azure AD pro Windows Server Active Directory vyžaduje licence Azure AD Premium.
 
-Další licenční informace, včetně nákladů, můžete najít na [cenami služby Azure Active Directory web](https://azure.microsoft.com/pricing/details/active-directory/).
+Další informace o licencích naleznete v tématu [cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="download"></a>Ke stažení
 
-Dva vyžadované pro ochranu hesel služby Azure AD, který si můžete stáhnout z instalace agenta [stažení softwaru společnosti Microsoft](https://www.microsoft.com/download/details.aspx?id=57071)
+Dva instalační programy požadovaných agenta pro ochranu hesel Azure AD jsou k dispozici [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57071).
 
 ## <a name="next-steps"></a>Další postup
-
 [Nasazení ochrany hesel Azure AD](howto-password-ban-bad-on-premises-deploy.md)

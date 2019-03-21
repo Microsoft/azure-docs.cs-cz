@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 07230b061f9b18e1efe6ce8c65abe0f7e7f73b34
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 62043128b6415a064e35adca6be4d60ccfcae308
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893489"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294310"
 ---
 # <a name="what-is-azure-dns"></a>Co je Azure DNS?
 
@@ -38,6 +38,8 @@ DNS domény v Azure DNS jsou hostované na globální síti názvových serverů
 
 Další informace najdete v tématu o [ochraně záznamů a zón DNS](dns-protect-zones-recordsets.md). 
 
+## <a name="dnssec"></a>DNSSEC
+Azure DNS v současné době nepodporuje DNSSEC. Ve většině případů můžete snížit nutnost DNSSEC konzistentně pomocí protokolu HTTPS/TLS ve vašich aplikacích. Pokud DNSSEC je důležité požadavky pro vaše zóny DNS, které můžete hostovat tyto zóny s poskytovateli hostingu DNS třetích stran.
 
 ## <a name="ease-of-use"></a>Snadné používání
 

@@ -2,19 +2,19 @@
 title: Správa protokolů pro cluster HDInsight – Azure HDInsight
 description: Určení typů, velikosti a zásady uchovávání informací pro soubory protokolů aktivit HDInsight.
 services: hdinsight
-author: ashishthaps
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.author: ashishth
-ms.openlocfilehash: 7b6f9ca914e9fed48463d2134eeba1cd4c103690
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.date: 03/19/2019
+ms.author: hrasheed
+ms.openlocfilehash: 0f0a22ea4a24a82cb4acf7a3b20a743ee7425c72
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225312"
+ms.locfileid: "58294905"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Správa protokolů pro cluster HDInsight
 
@@ -43,13 +43,12 @@ Následující podrobnosti o clusteru jsou užitečné při shromažďování in
 * Stav clusteru, včetně podrobností o poslední změny stavu
 * Typ a počet instancí HDInsight zadaný pro hlavní, core a úlohy uzly
 
-Můžete získat většinu těchto nejvyšší úrovně informací pomocí webu Azure portal.  Alternativně můžete použít rozhraní příkazového řádku Azure Classic k získání informací o vašich clusterů HDInsight:
+Můžete získat většinu těchto nejvyšší úrovně informací pomocí webu Azure portal.  Alternativně můžete použít [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) a získat informace o vašich clusterů HDInsight:
 
+```azurecli
+    az hdinsight list --resource-group <ResourceGroup>
+    az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
-    azure hdinsight cluster list
-    azure hdinsight cluster show <ClusterName>
-```
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 Chcete-li zobrazit tyto informace můžete také použít prostředí PowerShell.  Další informace najdete v tématu [clusterů systému Apache spravovat Hadoop v HDInsight pomocí Azure Powershellu](hdinsight-administer-use-powershell.md).
 
@@ -77,7 +76,7 @@ Typické clusteru HDInsight používá několik služeb a open source softwaru (
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Zobrazit nastavení konfigurace clusteru pomocí uživatelského rozhraní Ambari
 
-Apache Ambari ve skupinách usnadňuje správu, konfiguraci a monitorování HDInsight cluster poskytují webové uživatelské rozhraní a rozhraní REST API. Ambari je zahrnuta v clusterech HDInsight založených na Linuxu. Vyberte **řídicí panel clusteru** podokně na stránky portálu Azure HDInsight a otevřete**řídicí panely clusteru** stránka odkazu.  V dalším kroku vyberte **řídicí panel clusteru HDInsight** podokně otevřete uživatelské rozhraní Ambari.  Zobrazí se výzva pro přihlašovací údaje clusteru.
+Apache Ambari ve skupinách usnadňuje správu, konfiguraci a monitorování HDInsight cluster poskytují webové uživatelské rozhraní a rozhraní REST API. Ambari je zahrnuta v clusterech HDInsight založených na Linuxu. Vyberte **řídicí panel clusteru** podokně na stránky portálu Azure HDInsight a otevřete **řídicí panely clusteru** stránka odkazu.  V dalším kroku vyberte **řídicí panel clusteru HDInsight** podokně otevřete uživatelské rozhraní Ambari.  Zobrazí se výzva pro přihlašovací údaje clusteru.
 
 Pokud chcete otevřít seznam zobrazení, služby, vyberte **zobrazení Ambari** podokně na stránky portálu Azure pro HDInsight.  Tento seznam se liší, v závislosti na tom, které knihovny jste nainstalovali.  Může se zobrazit třeba správce fronty YARN, Hive zobrazení a zobrazení Tez.  Vyberte všechny služby odkaz zobrazíte konfiguraci a informace o službě.  Uživatelské rozhraní Ambari **zásobníku a verze** stránka obsahuje informace o konfiguraci Clusterové služby a historie verzí služby. Chcete-li přejít do této části uživatelského rozhraní Ambari, vyberte **správce** nabídky a pak **zásobníky a verze**.  Vyberte **verze** kartu pro zobrazení informací o verzi služby.
 
@@ -99,7 +98,7 @@ Dalším krokem je kontrola souborů protokolu spuštění úlohy pro různé sl
 
 ### <a name="access-the-hadoop-log-files"></a>Soubory protokolů Hadoop
 
-HDInsight ukládá soubory protokolu v systému souborů clusteru i ve službě Azure storage. Soubory protokolu v clusteru můžete zkontrolovat otevřením připojení SSH ke clusteru a procházení systému souborů nebo pomocí portálu Hadoop YARN stavu na serveru pro vzdálený hlavního uzlu. Můžete zkontrolovat soubory protokolů ve službě Azure storage pomocí některého nástroje, které můžete používat a stahovat data ze služby Azure storage. Příklady jsou AZCopy CloudXplorer a Průzkumníka serveru Visual Studia. Prostředí PowerShell a knihovny klienta úložiště Azure nebo Azure .NET SDK, můžete také použít pro přístup k datům ve službě Azure blob storage.
+HDInsight ukládá soubory protokolu v systému souborů clusteru i ve službě Azure storage. Soubory protokolu v clusteru můžete zkontrolovat tak, že otevřete [SSH](/hdinsight-hadoop-linux-use-ssh-unix.md) připojení clusteru, a procházení systému souborů nebo pomocí portálu Hadoop YARN stavu na serveru pro vzdálený hlavního uzlu. Můžete zkontrolovat soubory protokolů ve službě Azure storage pomocí některého nástroje, které můžete používat a stahovat data ze služby Azure storage. Mezi příklady patří [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer)a Průzkumníka serveru Visual Studia. Prostředí PowerShell a knihovny klienta úložiště Azure nebo Azure .NET SDK, můžete také použít pro přístup k datům ve službě Azure blob storage.
 
 Hadoop spustí pracovní úlohy jako *úkolů pokusy* na různých uzlech v clusteru. HDInsight, může iniciovat pokusy o spuštění úkolu spekulativního, ukončuje se žádné další pokusy o spuštění úkolu, které nejprve dokončí. Tím se vygeneruje významnou aktivitu, která je zaznamenána řadič, stderr a syslog protokolu souborů v běhu. Kromě toho více pokusy o spuštění úkolu jsou spuštěny současně, ale soubor protokolu lze zobrazit pouze výsledky lineárně.
 
@@ -168,9 +167,9 @@ K řízení velikosti a počtu souborů protokolů, které uchovávají, nastavt
 
 ### <a name="other-log-management-techniques"></a>Další postupy správy protokolu
 
-Aby se zabránilo spouštění volné místo na disku, můžete použít některé nástroje operačního systému, jako `logrotate` ke správě zpracování souborů protokolů. Můžete nakonfigurovat `logrotate` ke spuštění na každý den, komprese protokolu souborů a odstranění starých verzí. Váš přístup závisí na vaše požadavky, jako například jak dlouho pro zajištění, logfiles na místní uzly. 
+Aby se zabránilo spouštění volné místo na disku, můžete použít některé nástroje operačního systému, jako [logrotate](https://linux.die.net/man/8/logrotate) ke správě zpracování souborů protokolů. Můžete nakonfigurovat `logrotate` ke spuštění na každý den, komprese protokolu souborů a odstranění starých verzí. Váš přístup závisí na vaše požadavky, jako například jak dlouho pro zajištění, logfiles na místní uzly.  
 
-Můžete také zkontrolovat, zda ladění je povoleno protokolování pro jeden nebo víc služeb, které podstatně zvýší velikost protokolu výstupu. 
+Můžete také zkontrolovat, zda ladění je povoleno protokolování pro jeden nebo víc služeb, které podstatně zvýší velikost protokolu výstupu.  
 
 Shromažďovat protokoly ze všech uzlů na jednom centrálním místě, můžete vytvořit tok dat, jako jsou například ingestování všech položek protokolů do Solr.
 

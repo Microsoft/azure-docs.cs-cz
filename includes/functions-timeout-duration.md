@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/21/2018
 ms.author: nzthiago
 ms.custom: include file
-ms.openlocfilehash: 189683a9e98f161ce537284cc7b0349c94be2bf0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: ffb29fc76313e8870b52cb0a63936da7853ea6ce
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410906"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305283"
 ---
 ## <a name="timeout"></a>Dobu trvání časového limitu app – funkce 
 
-Dobu trvání časového limitu aplikace function App je definován vlastností functionTimeout v [host.json](../articles/azure-functions/functions-host-json.md#functiontimeout) souboru projektu. V následující tabulce jsou uvedeny výchozí a maximální hodnoty pro oba plány a na obě verze modulu runtime:
+Dobu trvání časového limitu aplikace function App je definován vlastností functionTimeout v [host.json](../articles/azure-functions/functions-host-json.md#functiontimeout) souboru projektu. V následující tabulce jsou uvedeny výchozí a maximální hodnoty během několika minut pro oba plány a obě verze modulu runtime:
 
 | Plánování | Verze modulu runtime | Výchozí | Maximum |
 |------|---------|---------|---------|

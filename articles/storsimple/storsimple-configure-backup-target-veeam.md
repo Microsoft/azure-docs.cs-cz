@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
-ms.openlocfilehash: f06b74493bad546997f82ed6eef0a89cffb7c75b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e7659cca9081834d41f64ef0fbd8ea3686044bfd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261974"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012007"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple s Veeam jako cíl zálohování
 
@@ -81,7 +81,7 @@ StorSimple nabízí tyto výhody:
 
 I když StorSimple v podstatě představuje dva scénáře nasazení hlavní (primární, záložní cíl a sekundární záložní cíl), je jednoduché, zařízení s blokovým úložištěm. StorSimple nemá všechny komprese a odstranění duplicit. Bez problémů odešle a načítá data mezi cloudem a aplikace a systém souborů.
 
-Další informace o StorSimple najdete v tématu [řady StorSimple 8000 series: řešení hybridního cloudového úložiště](storsimple-overview.md). Navíc můžete zkontrolovat [technických specifikací řady StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
+Další informace o StorSimple najdete v tématu [StorSimple řady 8000: Řešení hybridního cloudového úložiště](storsimple-overview.md). Navíc můžete zkontrolovat [technických specifikací řady StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
 > Použití StorSimple zařízení jako cíl zálohování je podporováno pouze pro StorSimple 8000 Update 3 a novějších verzích.
@@ -186,7 +186,7 @@ V této části ukážeme některé příklady konfigurace. Následující pří
 
 | Úlohy nasazení StorSimple  | Další komentáře |
 |---|---|
-| Nasazení místního zařízení StorSimple. | Podporované verze: 3 a novější verze aktualizace. |
+| Nasazení místního zařízení StorSimple. | Podporované verze: Aktualizací Update 3 a novějších verzích. |
 | Zapněte cíl zálohování. | Pomocí těchto příkazů zapnout nebo vypnout režim cíl zálohování a získat stav. Další informace najdete v tématu [připojit vzdáleně k zařízení StorSimple](storsimple-remote-connect.md).</br> Zapnout režim zálohování: `Set-HCSBackupApplianceMode -enable`. </br> Chcete-li vypnout režim zálohování: `Set-HCSBackupApplianceMode -disable`. </br> Chcete-li získat aktuální stav nastavení režim zálohování: `Get-HCSBackupApplianceMode`. |
 | Vytvořte kontejner svazků běžné svazku, který uchovává zálohovaná data. Všechna data v kontejneru svazku se odstraňují duplicity. | Kontejnery svazků StorSimple definování domén odstranění duplicit.  |
 | Vytvořte svazky zařízení StorSimple. | Vytvořte svazky s velikostí jako blízko očekávané využití nejdříve, protože velikost svazku ovlivňuje dobu trvání snímku v cloudu. Informace o tom, jak upravit velikost svazku, přečtěte si informace o [zásady uchovávání informací](#retention-policies).</br> </br> Použití StorSimple vrstvené svazky a vyberte **použít tento svazek pro archivní data s méně častým** zaškrtávací políčko. </br> Použití pouze místně připojené svazky se nepodporuje. |
@@ -209,16 +209,16 @@ Nastavení řešení podle pokynů v následujících částech.
 
 ### <a name="operating-system-best-practices"></a>Osvědčené postupy operačního systému
 
--   Zakážete šifrování Windows serveru a odstranění duplicitních dat pro systém souborů NTFS.
--   Zakážete defragmentace serveru systému Windows na svazky zařízení StorSimple.
--   Zakážete indexování serveru systému Windows na svazky zařízení StorSimple.
--   Spusťte antivirovou kontrolu na zdrojovém hostiteli (ne u svazků StorSimple).
--   Vypnout výchozí [údržby systému Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) ve Správci úloh. To lze proveďte v jednom z následujících způsobů:
-    - Vypněte configuratoru údržby v Plánovači úloh Windows.
-    - Stáhněte si [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) z webu Windows Sysinternals. Po stažení nástroje PsExec, spusťte prostředí Windows PowerShell jako správce a zadejte:
-      ```powershell
-      psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
-      ```
+- Zakážete šifrování Windows serveru a odstranění duplicitních dat pro systém souborů NTFS.
+- Zakážete defragmentace serveru systému Windows na svazky zařízení StorSimple.
+- Zakážete indexování serveru systému Windows na svazky zařízení StorSimple.
+- Spusťte antivirovou kontrolu na zdrojovém hostiteli (ne u svazků StorSimple).
+- Vypnout výchozí [údržby systému Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) ve Správci úloh. To lze proveďte v jednom z následujících způsobů:
+  - Vypněte configuratoru údržby v Plánovači úloh Windows.
+  - Stáhněte si [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) z webu Windows Sysinternals. Po stažení nástroje PsExec, spusťte prostředí Windows PowerShell jako správce a zadejte:
+    ```powershell
+    psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
+    ```
 
 ### <a name="storsimple-best-practices"></a>Osvědčené postupy pro StorSimple
 
@@ -265,6 +265,7 @@ Podle předchozí předpoklady, vytvořte 26-TiB StorSimple vrstveného svazku p
 | Ročně úplné | 1  | 10 | 10 |
 | Požadavek GFS |   | 38 |   |
 | Další kvótu  | 4  |   | 42 celkový požadavek GFS  |
+
 \* Násobitel GFS je počet kopií, které potřebujete k ochraně a uchovat pro splnění požadavků na zásady zálohování.
 
 ## <a name="set-up-veeam-storage"></a>Nastavení úložiště Veeam
@@ -318,8 +319,8 @@ Tady je příklad plánu otočení GFS čtyři týdny, měsíční nebo roční:
 | Typ frekvence/zálohování | Úplná | Přírůstkové (1-5 dní)  |   
 |---|---|---|
 | Každý týden (1 – 4 týdny) | Sobota | Pondělí – pátek |
-| Měsíční  | Sobota  |   |
-| Ročně | Sobota  |   |   |
+| měsíčně  | Sobota  |   |
+| Ročně | Sobota  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>Veeam úlohy zálohování přiřadit svazky zařízení StorSimple
@@ -384,6 +385,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro místní i StorSi
 | Měsíční úplné |StorSimple disku (dlouhodobé) | 1 | 12 | 12 |
 | Ročně úplné |StorSimple disku (dlouhodobé) | 1 | 1 | 1 |
 |Požadavek na velikost svazků GFS |  |  |  | 18*|
+
 \* Celková kapacita zahrnuje 17 TiB StorSimple disky a 1 TiB místní svazek RAID.
 
 
@@ -397,8 +399,8 @@ Otočení GFS týdenní, měsíční a roční plán
 | Týdnu 2 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
 | Týdnu 3 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
 | Týdnu 4 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
-| Měsíční | Každý měsíc StorSimple |   |   |   |   |   |
-| Ročně | Každý rok StorSimple  |   |   |   |   |   |   |
+| měsíčně | Každý měsíc StorSimple |   |   |   |   |   |
+| Ročně | Každý rok StorSimple  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>Úloha kopírování Veeam přiřadit svazky zařízení StorSimple
 
@@ -469,9 +471,9 @@ Následující část popisuje, jak vytvořit krátké skript ke spuštění a o
 1. [Nainstalujte prostředí Azure PowerShell](/powershell/azure/overview).
 2. Stažení a instalace [spravovat CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) skript prostředí PowerShell.
 3. Na serveru, na kterém běží, spuštění skriptu prostředí PowerShell jako správce. Zkontrolujte, jestli jste spustili skript s `-WhatIf $true` chcete zobrazit, co se změní skript provede. Po dokončení ověření předat `-WhatIf $false`. Spustit následující příkaz:
-```powershell
-.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
-```
+   ```powershell
+   .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+   ```
 4. Chcete-li přidat skript pro vaši úlohu zálohování, upravit úlohu Veeam pokročilé možnosti.
 
     ![Karta skripty Veeam zálohování upřesňující nastavení](./media/storsimple-configure-backup-target-using-veeam/veeamimage22.png)

@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45e9553a3af8a09a6630efa771294661702feef5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 791dcfadf1db6cae48bee5c926f75e454c88fc55
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670690"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294650"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Vlastnosti uživatele spolupráce Azure Active Directory s B2B
 
@@ -32,7 +33,7 @@ V závislosti na potřebách zvoucí organizaci uživatele spolupráce B2B ve sl
 
 - Stav 4: Uložená v organizaci hostitele Azure AD s UserType = hosta a přihlašovací údaje, které spravuje organizace hostitele.
 
-  ![Zobrazení iniciály odesílatel pozvánky.](media/user-properties/redemption-diagram.png)
+  ![Diagram znázorňující čtyři uživatele stavy](media/user-properties/redemption-diagram.png)
 
 
 Teď se podívejme se, jak uživatele spolupráce s B2B ve službě Azure AD funguje ve službě Azure AD.
@@ -41,7 +42,7 @@ Teď se podívejme se, jak uživatele spolupráce s B2B ve službě Azure AD fun
 
 Stav 1 a 2 stavu účty jsou výsledkem pozvání uživatelů typu Host pro spolupráci s použitím přihlašovacích údajů uživatelů vlastní hosta. Pokud na uživatele typu Host se nejdřív pošle e-mailové pozvánce, účet se vytvoří ve vašem adresáři. Tento účet nemá žádné přihlašovací údaje s ním spojená, protože ověřování provádí zprostředkovatel identity uživatele typu Host. **Zdroj** pro uživatelský účet guest ve vašem adresáři je nastavena na **Invited uživatele**. 
 
-![Před uplatnění nabídky](media/user-properties/before-redemption.png)
+![Snímek obrazovky ukazující vlastnosti uživatele před uplatnění nabídky](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>Po uplatnění pozvánky
 
@@ -87,7 +88,7 @@ Azure AD B2B uživatele a uživatele typu Host jsou obvykle shodný. Proto je u�
 
 ## <a name="filter-for-guest-users-in-the-directory"></a>Filtr pro uživatele typu Host do adresáře
 
-![Filtrovat uživatele typu Host](media/user-properties/filter-guest-users.png)
+![Snímek obrazovky zobrazující filtru pro uživatele typu Host](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>Převést UserType
 Je možné převést UserType od člena, u hosta (a naopak) pomocí prostředí PowerShell. Vlastnosti UserType však představuje relaci uživatele v organizaci. Proto byste měli změnit tuto vlastnost pouze tehdy, pokud relace uživatele na změny organizace. Pokud se změní vztah uživatel by měl změnit hlavní název uživatele (UPN)? Uživatel získat přístup ke stejným prostředkům? By mělo být přiřazeno poštovní schránky? Nedoporučujeme ale, změna UserType pomocí prostředí PowerShell jako aktivita atomické. Také v případě, že tato vlastnost se stane neměnné pomocí prostředí PowerShell, nedoporučujeme tak závislosti na této hodnotě.
@@ -97,7 +98,7 @@ Můžou nastat případy, ve které chcete dát uživatelům typu Host vyšší 
 
 Je možné vypnout výchozí omezení, tak, aby uživatel typu Host do adresáře společnosti má stejná oprávnění jako uživatel členem.
 
-![Odeberte omezení uživatele typu Host](media/user-properties/remove-guest-limitations.png)
+![Snímek obrazovky zobrazující možnost externí uživatele v nastavení uživatele](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Můžete mi zviditelnit uživatele typu Host do globálního seznamu adres Exchange?
 Ano. Ve výchozím nastavení objekty typu Host nejsou viditelné v seznamu globálního adresáře vaší organizace, ale můžete použít Azure Active Directory PowerShell je Pokud chcete zviditelnit. Podrobnosti najdete v tématu **můžete udělám hostů objekty viditelné v globálním?** v [spravovat přístup hosta v Office 365 Groups](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq). 

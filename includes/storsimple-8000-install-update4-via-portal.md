@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: a95b781d0d08cdca96cf4e98ac9dce43da535d13
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a3ccf76b2722c04a9353fcc7020ff1387bc454c6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888736"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125222"
 ---
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Instalace aktualizace z webu Azure Portal
 
@@ -35,7 +35,7 @@ ms.locfileid: "55888736"
    * **Kontroly stavu hardwarových komponent** pro ověření, že všechny hardwarové komponenty v zařízení StorSimple jsou v pořádku.
    * **Kontroly rozhraní DATA 0** pro ověření, že je na zařízení povolené rozhraní DATA 0. Pokud toto rozhraní není povolené, musíte jej povolit a poté to zkusit znovu.
 
-    Aktualizace se stáhnul a nainstaloval pouze v případě, že jsou všechny kontroly úspěšně dokončeny. Na probíhání kontrol budete upozorněni. Pokud neproběhne úspěšně, potom se bude zobrazovat příčiny chyby. Vyřešení těchto problémů a pak zkuste operaci zopakovat. Pokud si s těmito problémy neporadíte sami, bude muset kontaktovat podporu Microsoftu.
+     Aktualizace se stáhnul a nainstaloval pouze v případě, že jsou všechny kontroly úspěšně dokončeny. Na probíhání kontrol budete upozorněni. Pokud neproběhne úspěšně, potom se bude zobrazovat příčiny chyby. Vyřešení těchto problémů a pak zkuste operaci zopakovat. Pokud si s těmito problémy neporadíte sami, bude muset kontaktovat podporu Microsoftu.
 
 7. Po úspěšném dokončení prechecks se vytvoří úloha aktualizace. Po úspěšném vytvoření úlohy aktualizace se zobrazí upozornění.
    
@@ -53,5 +53,5 @@ ms.locfileid: "55888736"
 
 10. Po dokončení úlohy přejděte **nastavení zařízení > aktualizace zařízení**. Nyní je třeba aktualizovat verzi softwaru.
 
-    ![Vytvoření úlohy aktualizace](./media/storsimple-8000-install-update4-via-portal/update9.png)
+   ![Vytvoření úlohy aktualizace](./media/storsimple-8000-install-update4-via-portal/update9.png)
 

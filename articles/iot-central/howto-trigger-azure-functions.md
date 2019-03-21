@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 512956d2de0f9a838cc6378345a334e489d1d120
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: c80b007c3c9c1a35540e690554603a5ae8f16d62
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306863"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284625"
 ---
 # <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>Aktivace Azure Functions pomocí webhooků v Azure IoT Central
 
 *Toto téma platí pro tvůrce a správce.*
 
-Spustit kód bez serveru webhooku výstupu z IoT Central pravidla pomocí Azure Functions. Nemusíte zřizovat virtuální počítač nebo publikovat webovou aplikaci k používání Azure Functions, ale místo toho můžete spustit tento kód serverlessly. Pomocí služby Azure Functions k transformaci datová část webhooku před odesláním do konečného cíle jako je SQL database nebo služby Event Grid.
+Spustit kód bez serveru webhooku výstupu z IoT Central pravidla pomocí Azure Functions. Nemusíte zřizovat virtuální počítač nebo publikovat webovou aplikaci k používání Azure Functions, ale místo toho můžete spustit tento kód bez serveru. Pomocí služby Azure Functions k transformaci datová část webhooku před odesláním do konečného cíle jako je SQL database nebo služby Event Grid.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,11 +31,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
     ![Vytvořit novou aplikaci function app na webu Azure Portal](media/howto-trigger-azure-functions/createfunction.png)
 
-2. Rozbalte aplikaci function app a vyberte **tlačítko +** vedle funkce. Pokud jde o první funkci ve vaší aplikaci funkcí, vyberte možnost **Vlastní funkce**. Zobrazí se kompletní sada šablon funkcí.
+2. Rozbalte aplikaci function app a vyberte **tlačítko +** vedle funkce. Pokud tato funkce je první z nich ve své aplikaci function app, vyberte **portálu** jako vývojové prostředí a vyberte **pokračovat**.
 
     ![Zvolte vlastní funkci v aplikaci Function app](media/howto-trigger-azure-functions/customfunction.png)
 
-3. Do vyhledávacího pole zadejte **"generic"** a zvolte jazyk požadovaný pro šablonu funkce aktivované obecným webhookem. Toto téma používá funkci v jazyce C#. 
+3. Zvolte **Webhook + API** šablony a vyberte **vytvořit**. Toto téma používá funkci Azure na základě rozhraní .NET.
 
     ![Vyberte trigger obecným webhookem](media/howto-trigger-azure-functions/genericwebhooktrigger.png)
 

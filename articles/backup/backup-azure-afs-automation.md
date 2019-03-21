@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: pullabhk
-ms.openlocfilehash: 489de7b2fe87d1bb218e3fce39f269d866d66dd7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 83fe8d17699c19d442fd734d71d828eb9fd9d6ed
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845167"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258356"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Zálohovat a obnovovat soubory Azure pomocí Powershellu
 
@@ -240,9 +240,9 @@ testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 P
 
 Použití [zálohování AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) spustit zálohu na vyžádání pro chráněné sdílené složky Azure.
 
-1. Načíst účet úložiště a sdílených složek v kontejneru v trezoru, který uchovává vaše zálohovaná data s [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices.backup/get-Azrecoveryservicesbackupcontainer).
-2. Spustit úlohu zálohování, získejte informace o virtuálním počítači s [Get-AzRecoveryServicesBackupItem](/powershell/module/Az.RecoveryServices.Backup/Get-AzRecoveryServicesBackupItem).
-3. Spustit zálohu na vyžádání s[zálohování AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices.backup/backup-Azrecoveryservicesbackupitem).
+1. Načíst účet úložiště a sdílených složek v kontejneru v trezoru, který uchovává vaše zálohovaná data s [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
+2. Spustit úlohu zálohování, získejte informace o virtuálním počítači s [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).
+3. Spustit zálohu na vyžádání s[zálohování AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem).
 
 Následujícím způsobem spusťte zálohování na vyžádání:
     

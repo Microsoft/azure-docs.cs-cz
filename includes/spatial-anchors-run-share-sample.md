@@ -4,12 +4,12 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: bfeb8bddf5fe3b4a76e662aed6c5a07439d2f1cf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 563c2bd561328561d30acee6910b70d53ef64c6b
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57908620"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305278"
 ---
 ## <a name="set-up-your-device"></a>Nastavení zařízení
 
@@ -21,36 +21,36 @@ ms.locfileid: "57908620"
 
 [!INCLUDE [iOS Unity Build Settings](spatial-anchors-unity-ios-build-settings.md)]
 
-## <a name="configure-account-identifier-and-key"></a>Nakonfigurujte identifikátor účtu a klíč
+## <a name="configure-the-account-identifier-and-key"></a>Nakonfigurujte identifikátor účtu a klíč
 
 V **projektu** podokně přejděte do `Assets/AzureSpatialAnchorsPlugin/Examples` a otevřít `AzureSpatialAnchorsLocalSharedDemo.unity` souboru scény.
 
 [!INCLUDE [Configure Unity Scene](spatial-anchors-unity-configure-scene.md)]
 
-Také v **inspektoru** podokně, zadejte `Sharing Anchors Service url` (z webové aplikace ASP.NET nasazení v Azure) hodnotu `Base Sharing Url`a nahraďte `index.html` s `api/anchors`. Proto by měl vypadat: `https://<app_name>.azurewebsites.net/api/anchors`.
+V **inspektoru** podokně, zadejte `Sharing Anchors Service url` (z webové aplikace ASP.NET nasazení v Azure) hodnotu `Base Sharing Url`a nahraďte `index.html` s `api/anchors`. By měl vypadat takto: `https://<app_name>.azurewebsites.net/api/anchors`.
 
-Uložte výběrem scény **souboru** -> **Uložit**.
+Uložte výběrem scény **souboru** > **Uložit**.
 
-## <a name="to-deploy-to-an-android-device"></a>Nasazení do zařízení s Androidem
+## <a name="to-deploy-the-app-to-an-android-device"></a>K nasazení aplikace na zařízení s Androidem
 
-Přihlaste se na zařízení s Androidem a připojte ho k počítači pomocí kabelu USB.
+Přihlaste se na zařízení s Androidem a připojte k počítači pomocí kabelu USB.
 
-Otevřít **nastavení sestavení** tak, že vyberete **souboru** -> **nastavení sestavení**.
+Otevřít **nastavení sestavení** tak, že vyberete **souboru** > **nastavení sestavení**.
 
-V části **scény v sestavení**, zaškrtněte políčko vedle položky `AzureSpatialAnchorsPlugin/Examples/AzureSpatialAnchorsLocalSharedDemo` scény a zrušte zaškrtnutí zkontrolujte značky ze všech ostatních scény.
+V části **scény v sestavení**, zaškrtněte políčko vedle položky `AzureSpatialAnchorsPlugin/Examples/AzureSpatialAnchorsLocalSharedDemo` scény a zrušte zaškrtnutí z jiných scény.
 
-Zkontrolujte **Export projektů** zaškrtávacího políčka nemá značku zaškrtnutí. Klikněte na tlačítko **sestavíte a spustíte**. Zobrazí se dotaz, chcete-li uložit vaše `.apk` soubor, můžete vybrat libovolný název.
+Ujistěte se, že **Export projektů** nemá značku zaškrtnutí. Vyberte **sestavíte a spustíte**. Budete vyzváni k uložení vaší `.apk` souboru. Můžete vybrat libovolný název.
 
-Postupujte podle pokynů v aplikaci. Můžete také **vytvořit & sdílenou složku ukotvení**, nebo **vyhledejte sdílené ukotvení**. První možnost vám umožňuje vytvořit Anchor, který můžete později nacházet na stejné zařízení nebo na jiném. Druhou možnost, pokud jste dříve spustili na aplikaci, a to buď na stejné zařízení nebo na jiném, vám umožní vyhledejte dříve sdílené ukotvení.
+Postupujte podle pokynů v aplikaci. Můžete vybrat **vytvořit & sdílenou složku ukotvení** nebo **vyhledejte sdílené ukotvení**. První možnost vám umožňuje vytvářet anchor, který může být umístěn později na stejné zařízení nebo na jiný. Druhá možnost, pokud jste již spustili aplikaci, na stejné zařízení nebo na jiný, vám umožní vyhledejte dříve sdílené ukotvení.
 
-## <a name="to-deploy-to-an-ios-device"></a>Nasazení do zařízení se systémem iOS
+## <a name="to-deploy-the-app-to-an-ios-device"></a>K nasazení aplikace do zařízení s iOS
 
-Otevřít **nastavení sestavení** tak, že vyberete **souboru** -> **nastavení sestavení**.
+Otevřít **nastavení sestavení** tak, že vyberete **souboru** > **nastavení sestavení**.
 
-V části **scény v sestavení**, zaškrtněte políčko vedle položky `AzureSpatialAnchorsPlugin/Examples/AzureSpatialAnchorsLocalSharedDemo` scény a zrušte zaškrtnutí zkontrolujte značky ze všech ostatních scény.
+V části **scény v sestavení**, zaškrtněte políčko vedle položky `AzureSpatialAnchorsPlugin/Examples/AzureSpatialAnchorsLocalSharedDemo` scény a zrušte zaškrtnutí z jiných scény.
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 
-Postupujte podle pokynů v aplikaci. Můžete také **vytvořit & sdílenou složku ukotvení**, nebo **vyhledejte sdílené ukotvení**. První možnost vám umožňuje vytvořit Anchor, který můžete později nacházet na stejné zařízení nebo na jiném. Druhou možnost, pokud jste dříve spustili na aplikaci, a to buď na stejné zařízení nebo na jiném, vám umožní vyhledejte dříve sdílené ukotvení.
+Postupujte podle pokynů v aplikaci. Můžete vybrat **vytvořit & sdílenou složku ukotvení** nebo **vyhledejte sdílené ukotvení**. První možnost vám umožňuje vytvářet anchor, který může být umístěn později na stejné zařízení nebo na jiný. Druhá možnost, pokud jste již spustili aplikaci, na stejné zařízení nebo na jiný, vám umožní vyhledejte dříve sdílené ukotvení.
 
-V Xcode, zastavte aplikaci stisknutím klávesy **Zastavit**.
+V Xcode, zastavte aplikaci tak, že vyberete **Zastavit**.

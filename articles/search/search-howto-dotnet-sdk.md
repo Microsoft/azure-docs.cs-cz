@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 6f263511a7d1df4af82a690c1d6b04fecd2a8a91
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: afc60e933c9fcc154af74c47e382d8b8e7b0df8d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634537"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286308"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Jak používat Azure Search z aplikace .NET
 Tento článek je návod, který vám pomůžou začít pracovat s [Azure Search .NET SDK](https://aka.ms/search-sdk). Sady .NET SDK můžete použít k implementaci bohaté vyhledávací funkce do vaší aplikace pomocí Azure Search.
@@ -59,7 +59,7 @@ Existuje několik věcí, kterým je třeba provést v vaše vyhledávací aplik
 * Naplnění indexu s dokumenty
 * Hledají se dokumenty pomocí fulltextového vyhledávání a filtrů
 
-Ukázkový kód, který následuje ukazuje, každý z nich. Nebojte se využít fragmenty kódu ve své aplikaci.
+Následující ukázkový kód ukazuje, každý z nich. Nebojte se využít fragmenty kódu ve své aplikaci.
 
 ### <a name="overview"></a>Přehled
 Ukázkové aplikace společnost Microsoft bude konat vytvoří nový index s názvem "hotels", naplní ho s několika dokumenty a potom spustí některé vyhledávací dotazy. Tady je hlavní program zobrazující celkový tok:
@@ -202,7 +202,7 @@ Pokud spustíte tuto aplikaci s platný název služby a klíče rozhraní API, 
 V dalším kroku my podnikneme bližší pohled na každé z metod volá `Main`.
 
 ### <a name="creating-an-index"></a>Vytvoření indexu
-Po vytvoření `SearchServiceClient`, je dalším krokem `Main` nemá je odstranit index "hotels", pokud již existuje. Který provádí následující metodu:
+Po vytvoření `SearchServiceClient`, `Main` odstraní index "hotels", pokud již existuje. Který provádí následující metodu:
 
 ```csharp
 private static void DeleteHotelsIndexIfExists(SearchServiceClient serviceClient)
@@ -330,6 +330,8 @@ Třetí část této metody je blok catch, který zpracovává s případem důl
 
 Nakonec `UploadDocuments` metoda 2 sekundy odloží. Indexování ve službě Azure Search probíhá asynchronně, takže ukázková aplikace musí chvíli počkat a ujistit se, že jsou dokumenty dostupné pro vyhledávání. Tato odložení se obvykle používají pouze v ukázkových aplikacích a při testech.
 
+<a name="how-dotnet-handles-documents"></a>
+
 #### <a name="how-the-net-sdk-handles-documents"></a>Jak .NET SDK zpracovává dokumenty
 Možná vás zajímá, jak může .NET SDK služby Azure Search odesílat do indexu instance uživatelsky definované třídy, jako třeba `Hotel`. Chcete-li odpověď na tuto otázku, Podívejme se na `Hotel` třídy:
 
@@ -394,9 +396,9 @@ Všimněte si, že prvním krokem je, že každá veřejná vlastnost třídy `H
 > 
 > 
 
-Druhou věcí a Všimněte si, jako jsou atributy `IsFilterable`, `IsSearchable`, `Key`, a `Analyzer` , který uspořádání každé veřejné vlastnosti. Tyto atributy mapují přímo [odpovídající atributy indexu Azure Search](https://docs.microsoft.com/rest/api/searchservice/create-index#request). `FieldBuilder` Tato třída používá k vytvoření definice polí pro index.
+Všimněte si, že je druhý krokem je atributy, které uspořádání každé veřejné vlastnosti (například `IsFilterable`, `IsSearchable`, `Key`, a `Analyzer`). Tyto atributy mapují přímo [odpovídající atributy indexu Azure Search](https://docs.microsoft.com/rest/api/searchservice/create-index#request). `FieldBuilder` Tato třída používá k vytvoření definice polí pro index.
 
-Třetí důležité o `Hotel` třídy jsou datové typy veřejných vlastností. .NET typy těchto vlastností se mapují na odpovídající typy polí v definici indexu. Například řetězcová vlastnost `Category` se mapuje na pole `category`, které je typu `Edm.String`. Podobná mapování typu probíhají mezi `bool?` a `Edm.Boolean`, `DateTimeOffset?` a `Edm.DateTimeOffset` atd. Konkrétní pravidla pro mapování typu jsou popsaná u metody `Documents.Get` v tématu [Reference k sadě .NET SDK služby Azure Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get). `FieldBuilder` Třídy postará za vás toto mapování, ale stále může být užitečné k pochopení případ potřeby řešení potíží, serializace.
+Třetí důležité o `Hotel` třída je datové typy veřejných vlastností. .NET typy těchto vlastností se mapují na odpovídající typy polí v definici indexu. Například řetězcová vlastnost `Category` se mapuje na pole `category`, které je typu `Edm.String`. Podobná mapování typu probíhají mezi `bool?` a `Edm.Boolean`, `DateTimeOffset?` a `Edm.DateTimeOffset` atd. Konkrétní pravidla pro mapování typu jsou popsaná u metody `Documents.Get` v tématu [Reference k sadě .NET SDK služby Azure Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get). `FieldBuilder` Třídy postará za vás toto mapování, ale stále může být užitečné k pochopení případ potřeby řešení potíží, serializace.
 
 Tato možnost používat vaše vlastní třídy jako dokumenty funguje v obou směrech; Můžete také načíst výsledky hledání a uvidíme v další části jsou sady SDK automaticky deserializovala do požadovaného typu podle vašeho výběru.
 
@@ -585,7 +587,7 @@ A tady jsou výsledky, které zahrnují všechna pole, protože jsme nezadali `S
 
     ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Description (French): Hôtel le moins cher en ville      Name: Roach Motel       Category: Budget        Tags: [motel, budget]   Parking included: yes   Smoking allowed: yes    Last renovated on: 4/28/1982 12:00:00 AM +00:00 Rating: 1/5     Location: Latitude 49.678581, longitude -122.131577
 
-Tento krok dokončení tohoto kurzu, ale nepřestávejte tady. **Další kroky** poskytuje další zdroje dalších informací o Azure Search.
+Tento krok dokončení tohoto kurzu, ale nepřestávejte tady. ** Další kroky poskytují další prostředky pro získání informací o službě Azure Search.
 
 ## <a name="next-steps"></a>Další postup
 * Projděte si referenční materiály pro [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) a [REST API](https://docs.microsoft.com/rest/api/searchservice/).

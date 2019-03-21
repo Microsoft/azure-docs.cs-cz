@@ -9,14 +9,15 @@ ms.date: 05/08/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c51a0f1f8eb1999ced02bf3cf14ee81e4fca08e8
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 5ffebd117d1ea69a81395c1517b6f75505b83ac0
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675190"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294633"
 ---
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Udělit oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory
 
@@ -24,15 +25,15 @@ Uživatelé Azure Active Directory (Azure AD) B2B spolupráce se přidají jako 
 
 ## <a name="default-role"></a>Výchozí role
 
-![Výchozí role](./media/add-guest-to-role/default-role.png)
+![Snímek obrazovky zobrazující výchozí role adresáře](./media/add-guest-to-role/default-role.png)
 
 ## <a name="global-administrator-role"></a>Role Globální správce
 
-![roli Globální správce](./media/add-guest-to-role/global-admin-role.png)
+![Snímek obrazovky s rolí globálního správce](./media/add-guest-to-role/global-admin-role.png)
 
 ## <a name="limited-administrator-role"></a>Role správce s omezením
 
-![role správce s omezením](./media/add-guest-to-role/limited-admin-role.png)
+![Snímek obrazovky s rolí správce s omezením](./media/add-guest-to-role/limited-admin-role.png)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: d08fb915870355b49fafa91752cdd4264cbe6ad8
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: f0104bdc4b5ea5c5c6333e12b95defafb34665b3
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887535"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295500"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Co je Azure Stream Analytics?
 
@@ -79,7 +79,7 @@ Stream Analytics je cloudová služba, takže je optimalizovaná z hlediska nák
 ## <a name="mission-critical-ready"></a>Klíčové připravené
 Azure Stream Analytics je dostupná v několika oblastech po celém světě a je navržen pro spouštění klíčových úloh, které podporuje požadavky na spolehlivost, zabezpečení a dodržování předpisů.
 ### <a name="reliability"></a>Spolehlivost
-Azure Stream Analytics zaručuje právě-po zpracování událostí a na alespoň jedno doručení událostí, takže události se nikdy ztratí. Exacty – jedno zpracování je zaručeno, že se vybrané výstupem jak je popsáno v [záruky doručení událostí](https://docs.microsoft.com/en-us/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics). Azure Stream Analytics je vestavěným funkcím pro obnovení v případě se doručení události nezdaří. Stream Analytics také poskytuje integrované vytváření kontrolních bodů pro uchování stavu vašich úloh a poskytuje opakovatelné výsledky.
+Azure Stream Analytics zaručuje právě-po zpracování událostí a na alespoň jedno doručení událostí, takže události se nikdy ztratí. Přesně – jedno zpracování je zaručeno, že se vybrané výstupem jak je popsáno v [záruky doručení událostí](https://docs.microsoft.com/en-us/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics). Azure Stream Analytics je vestavěným funkcím pro obnovení v případě se doručení události nezdaří. Stream Analytics také poskytuje integrované vytváření kontrolních bodů pro uchování stavu vašich úloh a poskytuje opakovatelné výsledky.
 
 Stream Analytics je spravovaná služba, zaručuje zpracování událostí s 99,9 % dostupnost na úrovni minut. Další informace najdete v tématu [Stream Analytics SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/) stránky pro další podrobnosti. 
 

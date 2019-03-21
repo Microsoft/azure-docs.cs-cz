@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 6ad48bb6e7d9c2fd0365b26999b67ad8c62fc42c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f757218d29317f82339967a327f34438c62ab96
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000262"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294140"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spouštění kontejnerů pro analýzu textu
 
@@ -26,7 +26,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Aby bylo možné spustit jakýkoli Text Analytics, musíte mít následující:
+Aby bylo možné spustit jakýkoli Text Analytics, musí mít hostitelský počítač a kontejneru prostředí.
 
 ## <a name="preparation"></a>Příprava
 
@@ -46,11 +46,14 @@ Před použitím kontejnerů pro analýzu textu, musí splňovat následující 
 
 Následující tabulka popisuje minimální a doporučené Procesorových jader a aspoň 2.6 gigahertz (GHz) nebo rychlejší a paměti v gigabajtech (GB), přidělit pro každý kontejner pro analýzu textu.
 
-| Kontejner | Minimální | Doporučené |
-|-----------|---------|-------------|
-|Extrakce klíčových frází | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |
-|Rozpoznávání jazyka | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |
-|Analýza mínění | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |
+| Kontejner | Minimální | Doporučené | TPS<br>(Minimum, Maximum)|
+|-----------|---------|-------------|--|
+|Extrakce klíčových frází | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |15, 30|
+|Rozpoznávání jazyka | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |15, 30|
+|Analýza mínění | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |15, 30|
+
+* Každé jádro, musí být aspoň 2.6 gigahertz (GHz) nebo rychlejší.
+* TPS – transakcí za sekundu
 
 Jader a paměti odpovídají `--cpus` a `--memory` nastavení, které se používají jako součást `docker run` příkazu.
 
@@ -64,7 +67,7 @@ Ze služby Microsoft Container Registry jsou dostupné Image kontejneru pro anal
 |Rozpoznávání jazyka | `mcr.microsoft.com/azure-cognitive-services/language` |
 |Analýza mínění | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
-Použití [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) příkaz Stáhnout image kontejneru z registru kontejneru Microsoft...
+Použití [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) příkaz Stáhnout image kontejneru z registru kontejneru Microsoft.
 
 Úplný popis dostupných značek pro kontejnery pro analýzu textu naleznete v následujících kontejnerech na úložiště Docker Hub:
 
@@ -125,7 +128,7 @@ ApiKey={BILLING_KEY}
 Tento příkaz:
 
 * Spouští klíčových frází kontejner z image kontejneru
-* Přidělí jednu jader procesoru a paměti, 4 gigabajty (GB)
+* Přidělí jedno Procesorové jádro a 4 gigabajty (GB) paměti
 * Zpřístupňuje TCP port 5000 a přiděluje pseudo-TTY pro kontejner
 * Po ukončení automaticky odstraní kontejner. Image kontejneru je stále k dispozici na hostitelském počítači. 
 

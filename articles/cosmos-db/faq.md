@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 7e1c6d771e2452e99b47c256c99e25e281b9a3aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c344e8c2d0ad62b394792201ab52bb37413012f8
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849223"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259903"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy ohledně různých rozhraní API ve službě Azure Cosmos DB
 
@@ -159,7 +159,7 @@ Kontejnery jsou také entitami fakturace pro službu Azure Cosmos DB. Každý ko
 
 ### <a name="how-do-i-create-a-database"></a>Jak vytvořím databázi?
 
-Databáze můžete vytvořit pomocí [webu Azure portal](https://portal.azure.com), jak je popsáno v [přidat kolekci](create-sql-api-dotnet.md#create-collection), jeden z [sady SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md), nebo [rozhraní REST API](/rest/api/cosmos-db/).
+Databáze můžete vytvořit pomocí [webu Azure portal](https://portal.azure.com), jak je popsáno v [přidat kolekci](create-sql-api-dotnet.md#create-collection-database), jeden z [sady SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md), nebo [rozhraní REST API](/rest/api/cosmos-db/).
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>Jak nastavím uživatele a oprávnění?
 
@@ -257,7 +257,7 @@ Existují některé rozdíly v chování, které uživatele z Azure Table storag
 * CORS se momentálně nepodporuje.
 * Názvy tabulek ve službě Azure Table storage se velká a malá písmena, ale jsou v Azure Cosmos DB Table API
 * Některé služby Azure Cosmos DB interní formáty kódování informace, jako je například binární pole nejsou aktuálně tak efektivní jako jeden mohly líbit. Proto to může způsobit neočekávané omezení velikosti dat. Například právě jeden nelze použít úplné jeden Meg entitu tabulky k ukládání binárních dat, protože kódování zvyšuje velikost dat.
-* Název vlastnosti entity Id aktuálně není podporován
+* Název vlastnosti entity ID aktuálně není podporován
 * TableQuery TakeCount se neomezuje na 1000
 
 Z hlediska rozhraní REST API existuje několik možností dotazů koncové body, které nejsou podporovány službou Azure Cosmos DB Table API:

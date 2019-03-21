@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 03/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 2458dadb8a97deee67a6df9b00ca5390fccb2902
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: afe8d3971a51d57498e3e32b7e1cf5bf5a3263d6
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812272"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295194"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Požadavky ExpressRoute a kontrolní seznam
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, musíte ověřit, že jsou splněné požadavky uvedené v následujících oddílech.
@@ -30,7 +30,8 @@ Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby Exp
 * Pokud váš poskytovatel není partnerem připojení ExpressRoute, můžete se pořád připojit ke cloudu Microsoftu prostřednictvím [poskytovatele cloudové výměny](expressroute-locations.md#connectivity-through-exchange-providers).
 
 ## <a name="network-requirements"></a>Síťové požadavky
-* **Redundantní připojení:** Neexistuje požadavek na redundanci fyzického připojení mezi vámi a poskytovatelem. Microsoft nevyžaduje navázání redundantních relací protokolu BGP mezi směrovači Microsoftu a směrovači partnerského vztahu, ani když máte jen [jedno fyzické připojení ke cloudové výměně](expressroute-faqs.md#onep2plink).
+* **Redundance v každém umístění partnerského vztahu**: Microsoft vyžaduje od redundantních relací protokolu BGP mezi směrovači Microsoftu a směrovači partnerského vztahu v každém okruhu ExpressRoute (i když máte jen [jedno fyzické připojení ke cloudové výměně](expressroute-faqs.md#onep2plink)).
+* **Redundance pro zotavení po havárii**: Společnost Microsoft důrazně doporučuje že nastavit aspoň dva okruhy ExpressRoute v různých umístění partnerského vztahu, aby jediný bod selhání.
 * **Směrování**: v závislosti na tom, jak připojit ke cloudu Microsoftu, vy nebo váš poskytovatel je potřeba nastavit a spravovat relace protokolu BGP pro [domény směrování](expressroute-circuit-peerings.md). Některé poskytovatelé připojení Ethernet nebo cloudu poskytovatelé exchange můžou nabízet správu protokolu BGP jako službu s přidanou hodnotou.
 * **NAT**: Microsoft přijímá pouze veřejné IP adresy prostřednictvím partnerského vztahu Microsoftu. Pokud ve vaší místní síti používáte soukromé IP adresy, vy nebo váš poskytovatel musí přeložit privátní IP adresy na veřejné IP adresy [pomocí překladu síťových adres](expressroute-nat.md).
 * **QoS**: Skype pro firmy má různé služby (například hlasové, videa, text), které vyžadují zacházení podle QoS. Vy a váš poskytovatel byste měli postupovat podle [požadavků QoS](expressroute-qos.md).

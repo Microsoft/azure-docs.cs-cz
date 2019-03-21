@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 57290971185d1fd64b3b5ca6ac37535070ddab9e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6a2e022697ced90d968075b7a4abe4163be7a539
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496478"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082802"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Obnovení svazku StorSimple ze zálohovacího skladu
 
@@ -110,9 +110,9 @@ Můžete použít **katalog záloh** okno při obnovení svazku StorSimple ze ko
    3. V rozevíracím seznamu vyberte svazek nebo zálohování zásadu pro zálohu, kterou chcete vybrat.
    4. Klikněte na tlačítko **použít** ke spuštění tohoto dotazu.
 
-    Zálohy přidružené vybraný svazek nebo zásady zálohování by se měla zobrazit v seznamu sad záloh.
+      Zálohy přidružené vybraný svazek nebo zásady zálohování by se měla zobrazit v seznamu sad záloh.
    
-    ![Zálohovací sklad seznamu](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
+      ![Zálohovací sklad seznamu](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
      
 3. Rozbalte zálohovacího skladu zobrazíte přidružené svazky. Tyto svazky musí být převedeno do režimu offline v hostiteli a zařízení, než bude možné obnovit. Přístup ke svazkům na **svazky** okno vašeho zařízení a pak postupujte podle kroků v [svazek převést do režimu offline](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) jejich uvedení do režimu offline.
    
@@ -127,9 +127,9 @@ Můžete použít **katalog záloh** okno při obnovení svazku StorSimple ze ko
    
     ![Stránka potvrzení](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
-7.  Klikněte na tlačítko **obnovení**. Tím se spustí úlohy obnovení, které můžete zobrazit přechodem k **úlohy** stránky.
+7. Klikněte na tlačítko **obnovení**. Tím se spustí úlohy obnovení, které můžete zobrazit přechodem k **úlohy** stránky.
 
-    ![Stránka potvrzení](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![Stránka potvrzení](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. Po dokončení obnovení ověřte, že obsah svazky jsou nahrazené svazků ze zálohy.
 

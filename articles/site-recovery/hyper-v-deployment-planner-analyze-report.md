@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 3/20/2019
 ms.author: mayg
-ms.openlocfilehash: 6065d83cf74b6bb7c3d80d4e452df8377dc9823e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 7bfe382ac1a175aafb4944dffa8d12a372f4fb70
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732649"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286495"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analýza sestavy Azure Site Recovery Deployment Planner
 Tento článek popisuje listy v sestavě aplikace Excel vygenerované Plánovačem nasazení služby Azure Site Recovery pro scénář nasazení Hyper-V do Azure.
@@ -275,7 +275,7 @@ Následující tabulka obsahuje omezení Site Recovery. Tato omezení vycházej�
 ---|---|---|---
 Storage úrovně Standard | 8 kB | 2 MB/s na virtuální počítač | 168 GB na virtuální počítač
 Premium Storage | 8 kB  | 5 MB/s na virtuální počítač | 421 GB na virtuální počítač
-Premium Storage | 16 kB nebo větší| 10 MB/s na virtuální počítač | 842 GB na virtuální počítač
+Premium Storage | 16 kB nebo větší| 20 MB/s na virtuální počítač | 1684 GB na virtuální počítač
 
 Tato omezení jsou průměrné hodnoty za předpokladu, že se vstupně-výstupní operace z 30 % překrývají. Služba Site Recovery je schopna zpracovávat větší propustnost v závislosti na poměru překrývání, větší velikosti zápisů a skutečného chování vstupně-výstupních operací úloh. Předchozí čísla předpokládají typický backlog přibližně 5 minut. To znamená, že zpracování nahrávaných dat a vytvoření bodu obnovení proběhne do pěti minut od nahrání.
 

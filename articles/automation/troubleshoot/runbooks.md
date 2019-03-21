@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 77f6a48402aef5b493b115d2137ccb6a507050b7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b34a1716d077aeead572c60d0c6b9bcad60a5b1e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760201"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005433"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -133,7 +133,7 @@ Pomocí rutin modelu nasazení Azure classic pomocí certifikátu, najdete v té
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Běžné chyby při práci s runbooky
 
-###<a name="child-runbook-object"></a>Podřízený runbook vrátí chybu, pokud do výstupního datového proudu obsahuje objekty, spíše než jednoduché datové typy
+### <a name="child-runbook-object"></a>Podřízený runbook vrátí chybu, pokud do výstupního datového proudu obsahuje objekty, spíše než jednoduché datové typy
 
 #### <a name="issue"></a>Problém
 
@@ -303,7 +303,7 @@ K této chybě dochází kvůli jednomu z následujících problémů:
 
 3. Nekompatibilní modul. Této chybě může dojít, pokud modul závislosti nejsou správné, a pokud nejsou, vaše sada runbook obvykle vrací "Příkaz nebyl nalezen" nebo "Nelze vytvořit vazbu parametru" zprávy.
 
-4. Vaše sada runbook se pokusil zavolat spustitelný soubor nebo podproces v sadě runbook, která běží v Azure izolovaný prostor. Tento scénář není podporován v Azure karantény.
+4. Vaše sada runbook se pokusil o volání spustitelný soubor nebo subprocess v sadě runbook, která běží v Azure izolovaný prostor. Tento scénář není podporován v Azure karantény.
 
 #### <a name="resolution"></a>Řešení
 
@@ -463,7 +463,7 @@ Webhook, který se snažíte volat je zakázáno nebo vypršela platnost.
 
 Pokud je webhook zakázaný, můžete znovu povolit webhook prostřednictvím webu Azure portal. Když webhooku vypršela, musí se webhook odstranit a znovu vytvořit. Je možné pouze [obnovit webhooku](../automation-webhooks.md#renew-webhook) pokud ho ještě nevypršela.
 
-### <a name="429"></a>Scénář: 429: Rychlost požadavků je aktuálně příliš velká. Zkuste to prosím znovu.
+### <a name="429"></a>Scénář: 429: Frekvence požadavků je momentálně příliš vysoká. Zkuste to prosím znovu.
 
 #### <a name="issue"></a>Problém
 

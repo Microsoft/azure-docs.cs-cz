@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ddf40538fc3d6e39fe48ff49311f86314008b4ce
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3c078f7246140ee966f1d202d2248758dde49059
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994762"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888464"
 ---
-# <a name="security-frame-authorization--mitigations"></a>Zabezpečení Frame: Povolení | Zmírnění rizik 
+# <a name="security-frame-authorization--mitigations"></a>Zabezpečení rámce: Autorizace | Zmírnění rizik 
 | Produkt nebo službu | Článek |
 | --------------- | ------- |
 | **Hranice vztahů důvěryhodnosti počítače** | <ul><li>[Správné seznamy ACL jsou nakonfigurujte tak, aby omezení neoprávněnému přístupu k datům na zařízení](#acl-restricted-access)</li><li>[Ujistěte se, že obsahu citlivým aplikace specifické pro uživatele je uložená v adresáři profilu uživatele](#sensitive-directory)</li><li>[Ujistěte se, že nasazené aplikace pracují s nejnižšími oprávněními](#deployed-privileges)</li></ul> |
 | **Webové aplikace** | <ul><li>[Vynutit sekvenční krok pořadí při zpracování obchodní logických toků](#sequential-logic)</li><li>[Implementovat mechanismus, aby se zabránilo výčet tady](#rate-enumeration)</li><li>[Zajistěte, aby se ověření na správné místo a potom Princip nejnižších oprávnění](#principle-least-privilege)</li><li>[Obchodní logiky a prostředků přístupu autorizační rozhodnutí by se neměl zakládat na příchozí žádosti o parametrech](#logic-request-parameters)</li><li>[Zkontrolujte, že obsah a prostředky nejsou vyčíslitelné nebo zpřístupněno vynuceného procházení](#enumerable-browsing)</li></ul> |
 | **Database** | <ul><li>[Ujistěte se, že účty nejnižšími slouží k připojení k databázovému serveru](#privileged-server)</li><li>[Implementace řádek úroveň zabezpečení RLS zabránit klientům přístup k datům druhé strany](#rls-tenants)</li><li>[Sysadmin role by měl mít jenom nezbytné platní uživatelé](#sysadmin-users)</li></ul> |
-| **Brána IoT cloudu** | <ul><li>[Připojení k bráně cloudu pomocí tokenů nejnižší úrovní oprávnění](#cloud-least-privileged)</li></ul> |
-| **Centrum událostí Azure** | <ul><li>[Použít oprávnění jen pro odeslání klíč SAS pro generování tokenů zařízení](#sendonly-sas)</li><li>[Nepoužívejte přístupové tokeny, které poskytuje přímý přístup do centra událostí](#access-tokens-hub)</li><li>[Připojení k Centru událostí pomocí klíče SAS, které mají minimální sadu oprávnění potřebných](#sas-minimum-permissions)</li></ul> |
+| **IoT Cloud Gateway** | <ul><li>[Připojení k bráně cloudu pomocí tokenů nejnižší úrovní oprávnění](#cloud-least-privileged)</li></ul> |
+| **Azure Event Hub** | <ul><li>[Použít oprávnění jen pro odeslání klíč SAS pro generování tokenů zařízení](#sendonly-sas)</li><li>[Nepoužívejte přístupové tokeny, které poskytuje přímý přístup do centra událostí](#access-tokens-hub)</li><li>[Připojení k Centru událostí pomocí klíče SAS, které mají minimální sadu oprávnění potřebných](#sas-minimum-permissions)</li></ul> |
 | **Azure Documentdb** | <ul><li>[Použít tokeny prostředků pro připojení ke službě Azure Cosmos DB kdykoli je to možné](#resource-docdb)</li></ul> |
 | **Hranice vztahů důvěryhodnosti Azure** | <ul><li>[Povolení správy velice přesně kontrolovat přístup k předplatnému Azure pomocí RBAC](#grained-rbac)</li></ul> |
 | **Hranice vztahů důvěryhodnosti Service Fabric** | <ul><li>[Omezit přístup klienta k operace clusteru pomocí RBAC](#cluster-rbac)</li></ul> |
@@ -43,7 +43,7 @@ ms.locfileid: "52994762"
 
 ## <a id="acl-restricted-access"></a>Správné seznamy ACL jsou nakonfigurujte tak, aby omezení neoprávněnému přístupu k datům na zařízení
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti počítače | 
 | **SDL fáze**               | Nasazení |  
@@ -54,7 +54,7 @@ ms.locfileid: "52994762"
 
 ## <a id="sensitive-directory"></a>Ujistěte se, že obsahu citlivým aplikace specifické pro uživatele je uložená v adresáři profilu uživatele
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti počítače | 
 | **SDL fáze**               | Nasazení |  
@@ -65,7 +65,7 @@ ms.locfileid: "52994762"
 
 ## <a id="deployed-privileges"></a>Ujistěte se, že nasazené aplikace pracují s nejnižšími oprávněními
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti počítače | 
 | **SDL fáze**               | Nasazení |  
@@ -76,7 +76,7 @@ ms.locfileid: "52994762"
 
 ## <a id="sequential-logic"></a>Vynutit sekvenční krok pořadí při zpracování obchodní logických toků
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -87,7 +87,7 @@ ms.locfileid: "52994762"
 
 ## <a id="rate-enumeration"></a>Implementovat mechanismus, aby se zabránilo výčet tady
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -98,7 +98,7 @@ ms.locfileid: "52994762"
 
 ## <a id="principle-least-privilege"></a>Zajistěte, aby se ověření na správné místo a potom Princip nejnižších oprávnění
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -109,7 +109,7 @@ ms.locfileid: "52994762"
 
 ## <a id="logic-request-parameters"></a>Obchodní logiky a prostředků přístupu autorizační rozhodnutí by se neměl zakládat na příchozí žádosti o parametrech
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -128,7 +128,7 @@ Nyní možné útočník nelze manipulovat a změňte operace aplikace, protože
 
 ## <a id="enumerable-browsing"></a>Zkontrolujte, že obsah a prostředky nejsou vyčíslitelné nebo zpřístupněno vynuceného procházení
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -139,7 +139,7 @@ Nyní možné útočník nelze manipulovat a změňte operace aplikace, protože
 
 ## <a id="privileged-server"></a>Ujistěte se, že účty nejnižšími slouží k připojení k databázovému serveru
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -150,7 +150,7 @@ Nyní možné útočník nelze manipulovat a změňte operace aplikace, protože
 
 ## <a id="rls-tenants"></a>Implementace řádek úroveň zabezpečení RLS zabránit klientům přístup k datům druhé strany
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -163,7 +163,7 @@ Všimněte si že RLS jako funkce databáze out-of-the-box se vztahuje pouze na 
 
 ## <a id="sysadmin-users"></a>Sysadmin role by měl mít jenom nezbytné platní uživatelé
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -174,9 +174,9 @@ Všimněte si že RLS jako funkce databáze out-of-the-box se vztahuje pouze na 
 
 ## <a id="cloud-least-privileged"></a>Připojení k bráně cloudu pomocí tokenů nejnižší úrovní oprávnění
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Brána IoT cloudu | 
+| **Komponenta**               | IoT Cloud Gateway | 
 | **SDL fáze**               | Nasazení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | Výběr brány - Azure IoT Hub |
@@ -185,7 +185,7 @@ Všimněte si že RLS jako funkce databáze out-of-the-box se vztahuje pouze na 
 
 ## <a id="sendonly-sas"></a>Použít oprávnění jen pro odeslání klíč SAS pro generování tokenů zařízení
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Centrum událostí Azure | 
 | **SDL fáze**               | Sestavení |  
@@ -196,7 +196,7 @@ Všimněte si že RLS jako funkce databáze out-of-the-box se vztahuje pouze na 
 
 ## <a id="access-tokens-hub"></a>Nepoužívejte přístupové tokeny, které poskytuje přímý přístup do centra událostí
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Centrum událostí Azure | 
 | **SDL fáze**               | Sestavení |  
@@ -207,7 +207,7 @@ Všimněte si že RLS jako funkce databáze out-of-the-box se vztahuje pouze na 
 
 ## <a id="sas-minimum-permissions"></a>Připojení k Centru událostí pomocí klíče SAS, které mají minimální sadu oprávnění potřebných
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Centrum událostí Azure | 
 | **SDL fáze**               | Sestavení |  
@@ -218,7 +218,7 @@ Všimněte si že RLS jako funkce databáze out-of-the-box se vztahuje pouze na 
 
 ## <a id="resource-docdb"></a>Použít tokeny prostředků pro připojení ke službě Cosmos DB, kdykoli je to možné
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Documentdb | 
 | **SDL fáze**               | Sestavení |  
@@ -229,7 +229,7 @@ Všimněte si že RLS jako funkce databáze out-of-the-box se vztahuje pouze na 
 
 ## <a id="grained-rbac"></a>Povolení správy velice přesně kontrolovat přístup k předplatnému Azure pomocí RBAC
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti Azure | 
 | **SDL fáze**               | Sestavení |  
@@ -240,7 +240,7 @@ Všimněte si že RLS jako funkce databáze out-of-the-box se vztahuje pouze na 
 
 ## <a id="cluster-rbac"></a>Omezit přístup klienta k operace clusteru pomocí RBAC
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti Service Fabric | 
 | **SDL fáze**               | Nasazení |  
@@ -251,7 +251,7 @@ Všimněte si že RLS jako funkce databáze out-of-the-box se vztahuje pouze na 
 
 ## <a id="modeling-field"></a>Provádět modelování zabezpečení a použití zabezpečení na úrovni pole vyžadováno
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Dynamics CRM | 
 | **SDL fáze**               | Sestavení |  
@@ -262,7 +262,7 @@ Všimněte si že RLS jako funkce databáze out-of-the-box se vztahuje pouze na 
 
 ## <a id="portal-security"></a>Provádět modelování zabezpečení portálu účtů, dodržujte při tom, která se liší od zbývající části CRM model zabezpečení pro portál
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Portálu Dynamics CRM | 
 | **SDL fáze**               | Sestavení |  
@@ -273,7 +273,7 @@ Všimněte si že RLS jako funkce databáze out-of-the-box se vztahuje pouze na 
 
 ## <a id="permission-entities"></a>Jemně odstupňovaná oprávnění na mnoha různých entit ve službě Azure Table Storage
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Sestavení |  
@@ -284,7 +284,7 @@ Všimněte si že RLS jako funkce databáze out-of-the-box se vztahuje pouze na 
 
 ## <a id="rbac-azure-manager"></a>Povolit na základě rolí řízení přístupu (RBAC) do účtu Azure storage pomocí Azure Resource Manageru
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Sestavení |  
@@ -295,18 +295,18 @@ Všimněte si že RLS jako funkce databáze out-of-the-box se vztahuje pouze na 
 
 ## <a id="rooting-detection"></a>Implementace implicitní jailbreaků nebo kořenová detekce
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Mobilního klienta | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | neuvedeno  |
-| **Kroky** | <p>Aplikace by měla chránit svou vlastní konfiguraci a uživatelská data v případě, pokud telefonní root nebo jailbreak. Kořenová/jailbreak zásadní znamená neoprávněnému přístupu, které běžným uživatelům nebude provádět na jejich telefonech. Proto aplikace by měla mít implicitní detekční logiku při spuštění aplikace ke zjištění, jestli má root telefonu.</p><p>Logika zjišťování můžete jednoduše přistupovat k soubory, které obvykle jenom kořenový uživatel získat přístup, například:</p><ul><li>/system/app/Superuser.apk</li><li>/ sbin/su</li><li>/System/Bin/su</li><li>/System/xbin/su</li><li>/data/Local/xbin/su</li><li>/data/local/bin/su</li><li>/System/SD/xbin/su</li><li>/System/Bin/failsafe/su</li><li>/data/Local/su</li></ul><p>Pokud aplikace můžete použít žádnou z těchto souborů, označuje, že je aplikace spuštěna jako uživatel root.</p>|
+| **Kroky** | <p>Aplikace by měla chránit svou vlastní konfiguraci a uživatelská data v případě, pokud telefonní root nebo jailbreak. Kořenová/jailbreak zásadní znamená neoprávněnému přístupu, které běžným uživatelům nebude provádět na jejich telefonech. Proto aplikace by měla mít implicitní detekční logiku při spuštění aplikace ke zjištění, jestli má root telefonu.</p><p>Logika zjišťování můžete jednoduše přistupovat k soubory, které obvykle jenom kořenový uživatel získat přístup, například:</p><ul><li>/system/app/Superuser.apk</li><li>/ sbin/su</li><li>/System/Bin/su</li><li>/system/xbin/su</li><li>/data/Local/xbin/su</li><li>/data/local/bin/su</li><li>/system/sd/xbin/su</li><li>/System/Bin/failsafe/su</li><li>/data/Local/su</li></ul><p>Pokud aplikace můžete použít žádnou z těchto souborů, označuje, že je aplikace spuštěna jako uživatel root.</p>|
 
 ## <a id="weak-class-wcf"></a>Slabé tříd ve WCF
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -343,7 +343,7 @@ Pomocí plně kvalifikované názvy (silnou) jednoznačně identifikuje typ a je
 
 ## <a id="wcf-authz"></a>Ovládací prvek WCF implementovat autorizaci
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -391,13 +391,13 @@ return result;
 
 ## <a id="authz-aspnet"></a>Implementovat mechanismus správnou autorizaci v rozhraní ASP.NET Web API
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
-| **Použitelných technologiích** | Obecné, MVC5 |
+| **Použitelných technologiích** | Generic, MVC5 |
 | **Atributy**              | Není k dispozici, zprostředkovatele Identity poskytovatele – služby AD FS, Identity – Azure AD |
-| **Odkazy**              | [Ověřování a autorizace v rozhraní ASP.NET Web API](http://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) |
+| **Odkazy**              | [Ověřování a autorizace v rozhraní ASP.NET Web API](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) |
 | **Kroky** | <p>Informace o rolích pro uživatele aplikace může být odvozena ze služby Azure AD nebo AD FS deklarací identity, pokud aplikace spoléhá na ně jako zprostředkovatele Identity nebo může samotná aplikace za předpokladu, že. Ve všech těchto případech by měla implementace vlastní autorizace ověření informací o roli uživatele.</p><p>Informace o rolích pro uživatele aplikace může být odvozena ze služby Azure AD nebo AD FS deklarací identity, pokud aplikace spoléhá na ně jako zprostředkovatele Identity nebo může samotná aplikace za předpokladu, že. Ve všech těchto případech by měla implementace vlastní autorizace ověření informací o roli uživatele.</p>
 
 ### <a name="example"></a>Příklad:
@@ -442,7 +442,7 @@ public class CustomController : ApiController
 
 ## <a id="device-permission"></a>Pokud ji podporuje různé akce, které vyžadují různé úrovně oprávnění provádět kontroly autorizace v zařízení
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Zařízení IoT | 
 | **SDL fáze**               | Sestavení |  
@@ -453,7 +453,7 @@ public class CustomController : ApiController
 
 ## <a id="field-permission"></a>Pokud ji podporuje různé akce, které vyžadují různé úrovně oprávnění provádět kontroly autorizace v hraniční brána
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Brána IoT pole | 
 | **SDL fáze**               | Sestavení |  

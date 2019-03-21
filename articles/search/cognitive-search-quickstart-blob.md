@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 01/02/2019
+ms.date: 03/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 70ccee4c69ba04206e4a7fe74c3bf158ae11a7b4
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: f00df841f81ea5c7aa1fd53309b00487602e5143
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56989877"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200619"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rychlý start: Vytvoření kanálu kognitivního vyhledávání využitím dovedností a ukázkových dat
 
@@ -32,21 +32,7 @@ V tomto rychlém startu vytvořte svůj první kanál v rozšíření [webu Azur
 
 ## <a name="supported-regions"></a> Podporované oblasti
 
-Kognitivní hledání si můžete vyzkoušet ve službě Azure Search vytvořené v následujících oblastech:
-
-* Západní střed USA
-* Středojižní USA
-* USA – východ
-* Východní USA 2
-* Západní USA 2
-* Kanada – střed
-* Západní Evropa
-* Velká Británie – jih
-* Severní Evropa
-* Brazílie – jih
-* Jihovýchodní Asie
-* Střed Indie
-* Austrálie – východ
+AI obohacené indexování pomocí služeb Cognitive Services je dostupná v všech oblastech Azure Search.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -69,11 +55,11 @@ V tomto scénáři se používají výhradně služby Azure. Během přípravy s
 
 Nejdříve se do služby Azure Search přihlaste. 
 
-1. Přejděte na [Azure Portal](https://portal.azure.com) a přihlaste se pomocí svého účtu Azure.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí svého účtu Azure.
 
 1. Klikněte na **Vytvořit prostředek**, vyhledejte Azure Search a klikněte na **Vytvořit**. Pokud službu Search nastavujete poprvé a potřebujete ještě pomoc, přečtěte si informace v článku [Vytvoření služby Azure Search na portálu](search-create-service-portal.md).
 
-  ![Portál řídicího panelu](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Vytvoření služby Azure Search na portálu")
+   ![Portál řídicího panelu](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Vytvoření služby Azure Search na portálu")
 
 1. Pro skupinu prostředků vytvořte novou skupinu prostředků obsahující všechny prostředky, které vytvoříte v tomto rychlém startu. To usnadní čištění prostředků, až rychlý start dokončíte.
 
@@ -81,16 +67,16 @@ Nejdříve se do služby Azure Search přihlaste.
 
 1. V části Cenová úroveň můžete pro účely kurzů a rychlých startů vytvořit bezplatnou (**Free**) službu. Pokud chcete důkladněji zkoumat svá vlastní data, vytvořte si [placenou službu](https://azure.microsoft.com/pricing/details/search/), např. **Basic** nebo **Standard**. 
 
-  Bezplatná služba je omezená na 3 indexy, 16 MB maximální velikosti objektu blob a 2 minuty indexování, což pro úplné využití funkcí kognitivního hledání nestačí. Pokud se chcete podívat na limity pro jednotlivé úrovně, najdete je v článku o [limitech služeb](search-limits-quotas-capacity.md).
+   Bezplatná služba je omezená na 3 indexy, 16 MB maximální velikosti objektu blob a 2 minuty indexování, což pro úplné využití funkcí kognitivního hledání nestačí. Pokud se chcete podívat na limity pro jednotlivé úrovně, najdete je v článku o [limitech služeb](search-limits-quotas-capacity.md).
 
-  ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service2.png "Stránka definice služby na portálu")
+   ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service2.png "Stránka definice služby na portálu")
 
-  > [!NOTE]
-  > Cognitive Search je ve veřejné verzi Preview. Spouštění sad dovedností je v tuto chvíli k dispozici na všech úrovních, včetně bezplatné. Bude moct provádět omezené obohacení bez přiřazení placené prostředku služeb Cognitive Services. Další [informace](cognitive-search-attach-cognitive-services.md)
+   > [!NOTE]
+   > Cognitive Search je ve veřejné verzi Preview. Spouštění sad dovedností je v tuto chvíli k dispozici na všech úrovních, včetně bezplatné. Bude moct provádět omezené obohacení bez přiřazení placené prostředku služeb Cognitive Services. Další [informace](cognitive-search-attach-cognitive-services.md)
 
 1. Pokud chcete mít k informacím o službě rychlý přístup, připněte si službu na řídicí panel.
 
-  ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service3.png "Stránka definice služby na portálu")
+   ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service3.png "Stránka definice služby na portálu")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Nastavení služby Azure Blob a načtení ukázkových dat
 
@@ -104,7 +90,7 @@ Kanál pro rozšiřování načítá data ze zdrojů dat Azure podporovaných [i
 
 1. V kontejneru, který jste vytvořili, klikněte na tlačítko **nahrát** k nahrání ukázkových souborů, které jste si stáhli v předchozím kroku.
 
-  ![Zdrojové soubory ve službě Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
+   ![Zdrojové soubory ve službě Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
 
 ## <a name="create-the-enrichment-pipeline"></a>Vytvoření kanálu pro rozšiřování
 
@@ -128,17 +114,17 @@ Jako další krok přidáte do kanálu indexování kroky pro rozšiřování. P
 
 1. Rozbalte **připojení služeb Cognitive Services** zobrazení možností pro resourcing rozhraní API služeb Cognitive Services. Pro účely tohoto kurzu můžete použít **Free** prostředků.
 
-  ![Připojit Cognitive Services](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   ![Připojit Cognitive Services](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
 2. Rozbalte **přidat obohacení** a vyberte znalosti, které provádějí zpracování přirozeného jazyka. Pro tento rychlý start zvolte rozpoznávání entit pro lidi, organizace a lokality.
 
-  ![Připojit Cognitive Services](media/cognitive-search-quickstart-blob/skillset.png)
+   ![Připojit Cognitive Services](media/cognitive-search-quickstart-blob/skillset.png)
 
-  Tento portál nabízí integrované znalosti pro zpracování a text analysis optické rozpoznávání znaků. Na portálu sada dovedností pracuje s jedním polem zdroje. To může vypadat jako malý cíl, ale pro objekty blob služby Azure pole `content` obsahuje většinu dokumentu objektu blob (např. wordový dokument nebo powerpointovou sadu karet). Z toho důvodu je toto pole ideální vstup, protože je v něm veškerý obsah objektu blob.
+   Tento portál nabízí integrované znalosti pro zpracování a text analysis optické rozpoznávání znaků. Na portálu sada dovedností pracuje s jedním polem zdroje. To může vypadat jako malý cíl, ale pro objekty blob služby Azure pole `content` obsahuje většinu dokumentu objektu blob (např. wordový dokument nebo powerpointovou sadu karet). Z toho důvodu je toto pole ideální vstup, protože je v něm veškerý obsah objektu blob.
 
 3. Přejít na další stránku.
 
-  ![Další stránka přizpůsobení indexů](media/cognitive-search-quickstart-blob/next-button-customize-index.png)
+   ![Další stránka přizpůsobení indexů](media/cognitive-search-quickstart-blob/next-button-customize-index.png)
 
 > [!NOTE]
 > Dovednosti zpracování přirozeného jazyka pracují s textovým obsahem v ukázkové sadě dat. Protože jsme neměli možnost OCR, nezpracují JPEG a PNG souborů a složek nalezených v datové sadě ukázka v tomto rychlém startu. 

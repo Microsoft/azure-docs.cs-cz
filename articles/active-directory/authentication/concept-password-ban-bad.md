@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca079fa2ec41f85c365102fbd81ffde23e97e2c4
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: MT
+ms.openlocfilehash: b7dcac665dadef7f3f192e7f0e359b6b7c244bde
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990488"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287022"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminuje chybná hesla ve vaší organizaci
-
-|     |
-| --- |
-| Ochrana hesel Azure AD a v seznamu vlastních zakázaných hesel jsou funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
 
 Vedoucím postavením zjistíte to usnadňuje složité a ne se dají jednoduše jako/Password123 nepoužívejte stejné heslo na více místech. Jak může organizace zaručit, že sledujete jejich uživatelé doprovodné materiály? Jak se ujistit, že uživatelé nepoužívají společný hesel nebo hesel, která jsou známá, mají být zahrnuty v poslední úniky dat?
 
@@ -31,7 +26,7 @@ Vedoucím postavením zjistíte to usnadňuje složité a ne se dají jednoduše
 
 Microsoft se vždy snaží být o krok před kybernetickými zločinci. Proto tým služby Azure AD Identity Protection průběžně běžně používané a ohrožení zabezpečení hesla vyhledat. Potom tato hesla, které se považují za moc známé v co se nazývá seznam zakázaných hesel globální blokují. Kybernetičtí zločinci také používají podobné strategie jejich útocích, proto Microsoft nebude publikován obsah tohoto seznamu veřejně. Tyto citlivá hesla jsou blokovány, než se stanou skutečnou hrozbou zákazníkům společnosti Microsoft. Další informace o aktuální zabezpečení, a to, najdete v článku [Microsoft Security Intelligence Report](https://www.microsoft.com/security/operations/security-intelligence-report).
 
-## <a name="preview-custom-banned-password-list"></a>Verze Preview: Vlastní seznam zakázaných hesel
+## <a name="custom-banned-password-list"></a>Vlastní seznam zakázaných hesel
 
 Některé organizace mohou chtít využít zabezpečení jeden krok dál tak, že přidáte vlastní úpravy na seznamu zakázaných hesel globální v co Microsoft volá seznamu vlastních zakázaných hesel. Podnikoví zákazníci jako Contoso rozhodnout blokovat variant jejich názvy, podmínky specifické pro společnost nebo dalších položek.
 
@@ -41,7 +36,7 @@ Vlastní zakázané seznamu heslo a možnost povolit v místní službě Active 
 
 ## <a name="on-premises-hybrid-scenarios"></a>Místní hybridní scénáře
 
-Ochrana účty jenom cloudu je užitečné, ale mnoho organizací udržovat hybridních scénářů, včetně místní Windows Server Active Directory. Je možné nainstalovat ochrany hesla Azure AD pro Windows Server Active Directory (preview) agentů místní rozšířit seznamy zakázaných hesel vaší stávající infrastruktuře. Teď uživatelům a správcům, kteří změnit, nastavte ani resetovat hesla v místním se musí odpovídat zásadám stejné heslo jako uživatelů pouze cloudu.
+Ochrana účty jenom cloudu je užitečné, ale mnoho organizací udržovat hybridních scénářů, včetně místní Windows Server Active Directory. Je možné nainstalovat ochrany hesla Azure AD pro Windows Server Active Directory agentů místní rozšířit seznamy zakázaných hesel vaší stávající infrastruktuře. Teď uživatelům a správcům, kteří změnit, nastavte ani resetovat hesla v místním se musí odpovídat zásadám stejné heslo jako uživatelů pouze cloudu.
 
 ## <a name="how-are-passwords-evaluated"></a>Jak se vyhodnocují hesla
 
@@ -60,7 +55,7 @@ Normalizace má dvě části.  První, všechna písmena velká písmena se změ
 | '0'  | "jednoznakový |
 | '1'  | 'l' |
 | '$'  | společnosti. |
-| '@'  | "a" |
+| '\@'  | "a" |
 
 Příklad: Předpokládejme, že heslo "prázdný" je zakázané a uživatel se pokusí změnit své heslo k "Bl@nK". I když "Bl@nk" se konkrétně zkoumaly zakázané, převede procesu normalizace toto heslo "blank", což je zakázaných hesel.
 

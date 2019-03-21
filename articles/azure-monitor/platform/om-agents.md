@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/23/2018
 ms.author: magoedte
-ms.openlocfilehash: 722712d1e38efa3e1accc41abca5c9d88b3c1229
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 21294f61c77f0267601c5d0fc1fc9dcf213008e7
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095921"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258817"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Připojení nástroje Operations Manager ke službě Log Analytics
 Chcete-li zachovat stávající investice do [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) a použití rozšířené možnosti službou Log Analytics, můžete integrovat nástroje Operations Manager se službou pracovního prostoru Log Analytics. Díky tomu budete moct využívat to, co nabízí Log Analytics, a současně nadále používat nástroj Operations Manager pro tyto činnosti:
@@ -132,7 +132,7 @@ Pokud je interní proxy server mezi skupinou správy a služba Log Analytics, pr
 1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
 1. Rozbalte Operations Management Suite a pak klikněte na **Připojení**.
 1. V zobrazení Připojení OMS klikněte na **Konfigurovat proxy server**.
-1. Na **Průvodce Operations Management Suite: Proxy Server** stránce **použít proxy server pro přístup k Operations Management Suite**, a poté zadejte adresu URL s číslem portu, například <http://corpproxy:80> a potom klikněte na tlačítko **Dokončit** .
+1. Na **Průvodce Operations Management Suite: Proxy Server** stránce **použít proxy server pro přístup k Operations Management Suite**, a poté zadejte adresu URL s číslem portu, například http:\//corpproxy:80 a pak klikněte na tlačítko  **Dokončit**.
 
 Pokud váš proxy server vyžaduje ověření, proveďte následující kroky při konfiguraci přihlašovacích údajů a nastavení, které je nutné rozšířit i na spravované počítače, které se hlásí do Log Analytics ve skupině pro správu.
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: 6c5e0e47f006c6be170bdbf6fee431bfd3b6df0e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f6d6b2ae5fd3a0c08d37b93c73656ac6bb71d67
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105052"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295636"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS alias Přehled záznamů
 
@@ -59,6 +59,13 @@ Toto omezení představuje problém pro počet vlastníků aplikace, kteří maj
 Tento problém můžete vyřešit pomocí záznamů aliasů. Na rozdíl od záznamů CNAME alias záznamy se dají vytvářet ve vrcholu zóny a vlastníky aplikace. můžete ji použít k jejich záznamu vrcholu zóny přejděte na profil Traffic Manageru, který má externí koncové body. Počet vlastníků aplikace může odkazovat na stejný profil Traffic Manageru, který se používá u všech ostatních domén v rámci jejich zóny DNS.
 
 Například contoso.com a www\.contoso.com může odkazovat na stejný profil Traffic Manageru. Další informace o záznamů aliasů pomocí profilů Azure Traffic Manageru, najdete v části Další kroky.
+
+### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Přejděte na vrcholu zóny koncových bodů Azure CDN
+Stejně jako profil služby Traffic Manager můžete také použít záznamů aliasů tak, aby odkazoval vaše vrcholu zóny DNS na koncové body Azure CDN. To je užitečné při vytváření statických webů pomocí služby Azure storage a Azure CDN. Potom můžete přistupovat na webu bez předřazení "www" na název DNS.
+
+Například pokud váš statický web název www.contoso.com, vaši uživatelé mohou k webu pomocí contoso.com bez nutnosti předřaďte www jako název DNS.
+
+Jak je popsáno výše, záznamy CNAME nejsou podporovány ve vrcholu zóny. Proto nelze použít záznam CNAME tak, aby odkazovala na váš koncový bod CDN contoso.com. Místo toho můžete použít záznamu o aliasu tak, aby odkazoval na vrcholu zóny přímo do koncového bodu CDN.
 
 ## <a name="next-steps"></a>Další postup
 

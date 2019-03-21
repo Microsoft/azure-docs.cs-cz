@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da91e830f9220ce22228b3b7bedcc241101bd8ea
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: dfd3afea4a5f09f1e572030b28d3511b31d81b69
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775777"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904268"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Kurz: Integrace Azure Active Directory s Zoho
 
@@ -170,7 +170,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -228,7 +228,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do e-mailu Zoho, musí b�
 
     b. V **příjmení** , jako je textové pole, typ příjmení uživatele **Simon**.
 
-    c. V **ID e-mailu** , jako je textové pole, typ id e-mailu uživatele **brittasimon@contoso.com**.
+    c. V **ID e-mailu** , jako je textové pole, typ id e-mailu uživatele **brittasimon\@contoso.com**.
 
     d. V **heslo** textového pole zadejte heslo uživatele.
    

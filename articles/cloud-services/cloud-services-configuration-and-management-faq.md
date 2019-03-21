@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: dd7351d2948526905c91f2eac52e48b25cf063ac
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 85296b4549d7c9499b8d0b815ddf1cd2e85e2b1b
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191424"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259580"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurace a správy problémů pro Azure Cloud Services: Nejčastější dotazy (FAQ)
 
@@ -109,7 +109,7 @@ Můžete tento úkol automatizovat pomocí skriptu při spuštění (batch/cmd/P
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>Jaký je účel certifikátu "Microsoft Azure Service Management pro MachineKey"?
 
-Tento certifikát se používá k šifrování klíčů počítačů ve webových rolích Azure. Další informace, podívejte se na tento informační zpravodaj [https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731].
+Tento certifikát se používá k šifrování klíčů počítačů ve webových rolích Azure. Další informace, podívejte se na [tento informační zpravodaj](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731).
 
 Další informace najdete v následujících článcích:
 - [Jak nakonfigurovat a spustit úlohy po spuštění pro Cloudovou službu](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
@@ -143,7 +143,7 @@ Další informace najdete v tématu v následujících dokumentech:
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Jak povolit protokolování WAD pro cloudové služby?
 Můžete povolit protokolování Windows Azure Diagnostics (WAD), pomocí následujících možností:
 1. [Povolit ze sady Visual Studio](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [Povolit prostřednictvím kódu rozhraní .net](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
+2. [Povolit prostřednictvím kódu rozhraní .NET](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
 3. [Povolit pomocí Powershellu](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
 
 Pokud chcete získat aktuální nastavení WAD cloudové služby, můžete použít [Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps cmd, nebo můžete zobrazit přes portál v okně "Cloudové služby--> rozšíření".
@@ -226,7 +226,7 @@ Microsoft postupuje od vlastníka nebo jejich zmocněnce striktní proces, kter�
 
 ### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>Můžu nelze vzdálené plochy k virtuálnímu počítači cloudové služby s použitím souboru RDP. Můžu získat následující chybě: Došlo k chybě ověřování (kód: 0x80004005)
 
-K této chybě může dojít, pokud používáte soubor protokolu RDP z počítače, který je připojený ke službě Azure Active Directory. Chcete-li vyřešit tento problém, postupujte podle těchto kroků:
+K této chybě může dojít, pokud používáte soubor protokolu RDP z počítače, který je připojený ke službě Azure Active Directory. Pokud chcete tento problém vyřešit, postupujte následovně:
 
 1. Klikněte pravým tlačítkem na stažený soubor RDP a pak vyberte **upravit**.
 2. Přidat "&#92;" jako předponu před uživatelské jméno. Například použít **. \username** místo **uživatelské jméno**.

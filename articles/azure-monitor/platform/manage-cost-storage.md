@@ -11,15 +11,15 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 03/20/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: a1d8984b8c9d0859ff754e3d5bfb35bd98236b54
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5a8bd836322ae005b426707e0994bfdc19701fd8
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098555"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295670"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Správa nákladů a využití pro Log Analytics
 
@@ -112,13 +112,13 @@ Pokud váš pracovní prostor Log Analytics má přístup ke starší verzi ceno
 3. V části **cenová úroveň**, vyberte cenovou úroveň a potom klikněte na tlačítko **vyberte**.  
     ![Vybraná cenový plán](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
-Pokud chcete přesunout do aktuální cenová úroveň pracovního prostoru, budete muset [změnit cenový model ve službě Azure Monitor monitorování vašeho předplatného](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#moving-to-the-new-pricing-model) který změní cenovou úroveň všech pracovních prostorů v tomto předplatném.
+Pokud chcete přesunout do aktuální cenová úroveň pracovního prostoru, budete muset [změnit cenový model ve službě Azure Monitor monitorování vašeho předplatného](usage-estimated-costs.md#moving-to-the-new-pricing-model) který změní cenovou úroveň všech pracovních prostorů v tomto předplatném.
 
 > [!NOTE]
 > Pokud je váš pracovní prostor propojený s účtem Automation, musíte před tím, než budete moci vybrat cenovou úroveň *Standalone (za GB)*, odstranit všechna řešení **Automation and Control** a zrušit propojení s účtem Automation. V okně pracovního prostoru v části **Obecné** klikněte na **Řešení**. Zobrazí se řešení a můžete je odstranit. Propojení s účtem Automation zrušíte kliknutím na název účtu Automation v okně **Cenová úroveň**.
 
 > [!NOTE]
-> Další informace o [nastavení cenové úrovně přes ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#create-a-log-analytics-workspace) a jak zajistit, že vaše nasazení ARM bude úspěšné bez ohledu na to, zda předplatné je ve starší verzi nebo nový cenový model. 
+> Další informace o [nastavení cenové úrovně přes ARM](template-workspace-configuration.md#create-a-log-analytics-workspace) a jak zajistit, že vaše nasazení ARM bude úspěšné bez ohledu na to, zda předplatné je ve starší verzi nebo nový cenový model. 
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Řešení potíží způsobujících Log Analytics je už shromažďování dat
@@ -138,24 +138,12 @@ Která vás upozorní, když se zastaví shromažďování dat, použijte postup
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Řešení potíží způsobujících větší využití, než se čekalo
 Větší využití je způsobeno jedním nebo obojím z těchto aspektů:
-- Do Log Analytics se odesílá více dat, než se čekalo.
 - Do Log Analytics odesílá data více uzlů, než se čekalo.
+- Do Log Analytics se odesílá více dat, než se čekalo.
 
-### <a name="data-volume"></a>Objem dat 
-Na **využití a odhadované náklady** stránky, *příjem dat podle řešení* graf ukazuje celkový objem dat odesílaných a kolik je odesíláno každé řešení. Díky tomu můžete určit trendy, jako je například, jestli se rozrůstá celkové využití dat (nebo využití podle konkrétního řešení), zbývající konstantní nebo se snižuje. Query sloužící ke generování to je
+Další části explor
 
-`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
-
-Všimněte si, že v klauzuli "kde IsBillable = true" filtruje z určité řešení, pro které neplatí žádné poplatky ingestování datových typů. 
-
-Můžete přejít na trendy v datech najdete konkrétní datové typy, například pokud chcete zkoumat data z důvodu protokoly služby IIS:
-
-`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
-
-### <a name="nodes-sending-data"></a>Uzlů odesílajících data
+## <a name="understanding-nodes-sending-data"></a>Vysvětlení uzlů odesílajících data
 
 Chcete-li pochopit počet počítačů (uzlů), vytváření sestav dat každý den během posledního měsíce, použijte
 
@@ -171,9 +159,9 @@ Zobrazíte seznam počítačů odesílajících **účtuje datové typy** (někt
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
 
-Pomocí těchto `union withsource = tt *` střídmě dotazy jsou nákladné ke spuštění kontrol napříč datové typy. 
+Pomocí těchto `union withsource = tt *` střídmě dotazy jsou nákladné ke spuštění kontrol napříč datové typy. Tento dotaz nahrazuje starý způsob dotazování informace pro počítač s datovým typem využití.  
 
-To je možné rozšířit na vrátí počet počítačů za hodinu, které odesílají účtuje datové typy:
+To je možné rozšířit na vrátí počet počítačů za hodinu, které odesílají účtuje datové typy (což je způsob výpočtu Log Analytics fakturovatelné uzly pro starší verzi uzlu na cenovou úroveň):
 
 `union withsource = tt * 
 | where _IsBillable == true 
@@ -181,13 +169,30 @@ To je možné rozšířit na vrátí počet počítačů za hodinu, které odes�
 | where computerName != ""
 | summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
 
-Pokud chcete zobrazit **velikost** účtovaných událostí může ingestovat počítače, použijte `_BilledSize` vlastnost, která poskytuje velikost v bajtech:
+## <a name="understanding-ingested-data-volume"></a>Principy ingestuje datový svazek 
+
+Na **využití a odhadované náklady** stránky, *příjem dat podle řešení* graf ukazuje celkový objem dat odesílaných a kolik je odesíláno každé řešení. Díky tomu můžete určit trendy, jako je například, jestli se rozrůstá celkové využití dat (nebo využití podle konkrétního řešení), zbývající konstantní nebo se snižuje. Query sloužící ke generování to je
+
+`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+Všimněte si, že v klauzuli "kde IsBillable = true" filtruje z určité řešení, pro které neplatí žádné poplatky ingestování datových typů. 
+
+Můžete přejít na trendy v datech najdete konkrétní datové typy, například pokud chcete zkoumat data z důvodu protokoly služby IIS:
+
+`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| where DataType == "W3CIISLog"
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+### <a name="data-volume-by-computer"></a>Objem dat podle počítače
+
+Chcete-li zobrazit **velikost** účtovaných událostí může ingestovat počítače, použijte `_BilledSize` vlastnost ([vlastnosti protokolu standard #_billedsize.md](learn more)) poskytující velikost v bajtech:
 
 `union withsource = tt * 
 | where _IsBillable == true 
 | summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
 
-Tento dotaz nahrazuje starý způsob dotazování to s datovým typem využití. 
+`_IsBillable` Vlastnost určuje, zda přijatých dat budou účtovat poplatky ([protokolu. standard properties.md #_isbillable](Learn more).)
 
 Pokud chcete zobrazit **počet** událostí může ingestovat počítače, použijte
 
@@ -207,8 +212,29 @@ Pokud chcete vidět, že počet účtovaných datové typy jsou odesílání dat
 | where _IsBillable == true 
 | summarize count() by tt | sort by count_ nulls last `
 
+### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Objem dat podle prostředků Azure, skupinu prostředků nebo předplatného
+
+Pro data z uzlů hostovaných v Azure můžete získat **velikost** účtovaných událostí přijatých __na jeden počítač__, použijte `_ResourceId` vlastnost, která poskytuje úplnou cestu k prostředku ([ log – standardní – properties.md #_resourceid](learn more)):
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last `
+
+Pro data z uzlů hostovaných v Azure můžete získat **velikost** účtovaných událostí přijatých __jedno předplatné Azure__, analyzovat `_ResourceId` vlastnost jako:
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
+    resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
+| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last `
+
+Změna `subscriptionId` k `resourceGroup` zobrazí fakturovatelné ingestovaný datový svazek podle Azure resouurce skupiny. 
+
+
 > [!NOTE]
 > Některá pole datového typu využití, zatímco stále ve schématu, jsou zastaralé a bude, že jejich hodnoty jsou již nejsou naplněny. Jedná se o **počítače** a také související s příjmem pole (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** a **AverageProcessingTimeMs**.
+
+### <a name="querying-for-common-data-types"></a>Dotazování pro běžné typy dat
 
 Pokud chcete dostat hlouběji do zdroje dat pro konkrétní datový typ, tady jsou některé užitečné příklady dotazů:
 
@@ -241,7 +267,7 @@ Některé návrhy pro snížení objemu shromažďovaných protokolů zahrnují:
 | AzureDiagnostics           | Změňte shromažďování protokolů prostředků tak, aby se: <br> – Snížil počet prostředků, které odesílají protokoly do Log Analytics <br> – Shromažďovaly pouze požadované protokoly |
 | Data řešení z počítačů, které řešení nepotřebují | Použijte [cílení na řešení](../insights/solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů. |
 
-### <a name="getting-node-counts"></a>Získávání počty uzlu 
+### <a name="getting-security-and-automation-node-counts"></a>Získávání počty uzel zabezpečení a automatizace 
 
 Pokud jste na "Za uzel (OMS)," cenové úrovně, pak se účtují na základě počtu uzlů a řešení používáte, počtu přehledy a analýzy uzly, u kterých se vám účtují se nezobrazí v tabulce na **využití a odhadované náklady**stránky.  
 
@@ -282,6 +308,7 @@ Pokud chcete zobrazit počet různých uzlů, které služby Automation, použij
  | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc`
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Vytvoření upozornění při větším než očekávaném shromažďování dat
+
 Tato část popisuje postup vytvoření upozornění v těchto případech:
 - Objem dat překračuje zadanou velikost.
 - Očekává se, že objem dat překročí zadanou velikost.

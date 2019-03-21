@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 17c493568953265ac12ebccc680652ed5da6ae4d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: a57393918992019844e2ff4ccc13d671f0b90ed5
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312987"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260053"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Informační kanál Power BI ze služby Application Insights
 [Power BI](https://www.powerbi.com/) je sada nástrojů pro obchodní, která pomáhá analyzovat data a sdílet přehledy. Bohaté řídicí panely jsou k dispozici na všech zařízeních. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -96,7 +96,7 @@ To může nastat, pokud ještě není aktualizovaný obnovovací token. Proveďt
 1. Přihlaste se na webu Azure portal a ujistěte se, že umožňuje přístup k prostředku.
 2. Pokuste se aktualizovat přihlašovací údaje pro řídicí panel.
 
- Pokud máte přístup a aktualizovat přihlašovací údaje nelze použít, otevřete prosím lístek podpory.
+   Pokud máte přístup a aktualizovat přihlašovací údaje nelze použít, otevřete prosím lístek podpory.
 
 ### <a name="bad-gateway-502"></a>Bad Gateway (502)
 To je obvykle způsobeno dotazu Analytics, která vrací data příliš mnoho. Zkuste použít menší časový rozsah dotazu. 
@@ -105,8 +105,8 @@ Pokud snižování datové sady z dotazu Analytics nesplňuje vaše požadavky, 
 
 1. Vytvoření [klíč rozhraní API](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 2. Aktualizace Power BI M skript, který jste exportovali z Analytics tak, že nahradíte adresu URL Azure Resource Manageru pomocí rozhraní API pro Application Insights.
-   * Nahraďte  **https://management.azure.com/subscriptions/...**
-   * s  **https://api.applicationinsights.io/beta/apps/...**
+   * Nahraďte **https:\//management.azure.com/subscriptions/...**
+   * with, **https:\//api.applicationinsights.io/beta/apps/...**
 3. Nakonec aktualizujte přihlašovací údaje na základní a použijte svůj klíč rozhraní API.
 
 **Existujícího skriptu**

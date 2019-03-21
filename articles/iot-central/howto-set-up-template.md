@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ff73982b706fa2d353be818f5022de8fbfec42fb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 1306b97ce7fcf2cd429be31bc99d022de53805d6
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58167435"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259852"
 ---
 # <a name="set-up-a-device-template-new-ui-design"></a>Nastavit šablonu zařízení (návrh nové uživatelské rozhraní)
 
@@ -78,6 +78,8 @@ Například můžete přidat nové měření teploty telemetrická data:
 !["Vytvořit Telemetrie" formulář s podrobnostmi o měření teploty](./media/howto-set-up-template/measurementsform.png)
 
 Po výběru **Uložit**, **teploty** měření se zobrazí v seznamu měření. Nějakou dobu vidíte vizualizaci data o teplotě ze simulovaného zařízení.
+
+Při zobrazování telemetrických dat, můžete zvolit jednu z následujících možností agregace: Průměr, Minimum, Maximum, Sum a počet. **Průměrná** je zvolen jako výchozí agregace v grafu. 
 
 > [!NOTE]
 > Datový typ telemetrických dat měření je plovoucí číslo bodu.

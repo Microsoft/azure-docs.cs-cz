@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: b40a2bbfa7bbab7ffbdd4c47684eda7c954e7b77
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c5979fa7ff67c5acda9ab653bc4ee52d8b5129a5
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996925"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293800"
 ---
 # <a name="streaming-endpoints-overview"></a>Přehled koncových bodů streamování  
 
@@ -50,8 +50,8 @@ Od verze. ledna 2017 služby Media Services, budete mít dva typy datových prou
 
 Type|Popis
 ---|---
-**Standard**|Toto je výchozí možnost, která bude fungovat pro většinu scénářů.<br/>Pomocí této možnosti získáte/limited SLA, prvních 15 dnů po spuštění koncový bod streamování je zdarma.<br/>Pokud vytvoříte více než jeden datový proud koncové body, pouze první z nich je zdarma pro prvních 15 dnů, ostatní se účtují, jakmile je spuštění. <br/>Všimněte si, že bezplatné zkušební verze platí jenom pro účty služby nově vytvořené médium a výchozí koncový bod streamování. Stávající koncové body streamování a kromě vytvořených koncových bodů streamování není zahrnuje bezplatné zkušební období ještě jsou upgradovány na verzi 2.0 nebo jsou vytvořené jako verze 2.0.
-**Premium**|Tato možnost je vhodná pro profesionální scénáře, které vyžadují větší měřítko nebo ovládací prvek.<br/>Proměnné SLA, která je založena na premium streamování (SU) jednotky zakoupená kapacita služby vyhrazené koncové body streamování živě v izolovaném prostředí a nesoupeřily o prostředky.
+**Standard** |Toto je výchozí možnost, která bude fungovat pro většinu scénářů.<br/>Pomocí této možnosti získáte/limited SLA, prvních 15 dnů po spuštění koncový bod streamování je zdarma.<br/>Pokud vytvoříte více než jeden datový proud koncové body, pouze první z nich je zdarma pro prvních 15 dnů, ostatní se účtují, jakmile je spuštění. <br/>Všimněte si, že bezplatné zkušební verze platí jenom pro účty služby nově vytvořené médium a výchozí koncový bod streamování. Stávající koncové body streamování a kromě vytvořených koncových bodů streamování není zahrnuje bezplatné zkušební období ještě jsou upgradovány na verzi 2.0 nebo jsou vytvořené jako verze 2.0.
+**Premium** |Tato možnost je vhodná pro profesionální scénáře, které vyžadují větší měřítko nebo ovládací prvek.<br/>Proměnné SLA, která je založena na premium streamování (SU) jednotky zakoupená kapacita služby vyhrazené koncové body streamování živě v izolovaném prostředí a nesoupeřily o prostředky.
 
 Podrobnější informace najdete v článku **porovnání datových proudů typy** následující části.
 
