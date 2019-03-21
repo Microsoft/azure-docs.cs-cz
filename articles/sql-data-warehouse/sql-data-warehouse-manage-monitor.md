@@ -2,20 +2,20 @@
 title: Monitorování úloh pomocí zobrazení dynamické správy | Dokumentace Microsoftu
 description: Další informace o monitorování vaší úlohy pomocí zobrazení dynamické správy.
 services: sql-data-warehouse
-author: kevinvngo
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/17/2018
-ms.author: kevin
+ms.date: 03/18/2019
+ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: fdb51bf249990a10b8476a55be1103cb05c5821b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e2360b5587d204ec87fe82c029391c7252d27914
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466978"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189542"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitorování vaší úlohy pomocí DMV
 Tento článek popisuje, jak monitorování vaší úlohy pomocí zobrazení dynamické správy (DMV). To zahrnuje zkoumání provádění dotazů ve službě Azure SQL Data Warehouse.
@@ -68,9 +68,9 @@ WHERE   [label] = 'My Query';
 
 Z předchozích výsledků dotazu **si poznamenejte ID žádosti** dotazu, který chcete prozkoumat.
 
-Dotazy v **pozastaveno** stavu jsou právě ve frontě z důvodu omezení souběžnosti. Tyto dotazy se také zobrazí v dotazu čeká sys.dm_pdw_waits s typem UserConcurrencyResourceType. Informace o omezení souběžnosti, naleznete v tématu [úrovně výkonu](performance-tiers.md) nebo [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). Dotazy můžete také počkat z jiných důvodů, jako objekt zámků.  Pokud váš dotaz je čekání na prostředek, přečtěte si téma [zkoumání dotazů čekání na prostředky] [ Investigating queries waiting for resources] další dolů v tomto článku.
+Dotazy v **pozastaveno** stavu lze zařadit do fronty z důvodu velký počet aktivně spuštěných dotazů. Tyto dotazy se zobrazí také v [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) čeká dotazu s typem UserConcurrencyResourceType. Informace o omezení souběžnosti, naleznete v tématu [úrovně výkonu](performance-tiers.md) nebo [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). Dotazy můžete také počkat z jiných důvodů, jako objekt zámků.  Pokud váš dotaz je čekání na prostředek, přečtěte si téma [zkoumání dotazů čekání na prostředky] [ Investigating queries waiting for resources] další dolů v tomto článku.
 
-Pro zjednodušení vyhledávací dotaz v tabulce sys.dm_pdw_exec_requests pomocí [popisek] [ LABEL] přiřadit dotazu, který lze vyhledávat v zobrazení sys.dm_pdw_exec_requests komentář.
+Pro zjednodušení vyhledávací dotaz v [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) tabulky, použijte [popisek] [ LABEL] přiřadit komentář do dotazu, který lze vyhledávat v sys.dm_pdw_exec_ zobrazení žádostí.
 
 ```sql
 -- Query with Label
@@ -292,11 +292,11 @@ Další informace o zobrazení dynamické správy najdete v tématu [systémová
 [Investigating queries waiting for resources]: ./sql-data-warehouse-manage-monitor.md#waiting
 
 <!--MSDN references-->
-[sys.dm_pdw_dms_workers]: http://msdn.microsoft.com/library/mt203878.aspx
-[sys.dm_pdw_exec_requests]: http://msdn.microsoft.com/library/mt203887.aspx
-[sys.dm_pdw_exec_sessions]: http://msdn.microsoft.com/library/mt203883.aspx
-[sys.dm_pdw_request_steps]: http://msdn.microsoft.com/library/mt203913.aspx
-[sys.dm_pdw_sql_requests]: http://msdn.microsoft.com/library/mt203889.aspx
-[DBCC PDW_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/library/mt204017.aspx
-[DBCC PDW_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
+[sys.dm_pdw_dms_workers]: https://msdn.microsoft.com/library/mt203878.aspx
+[sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
+[sys.dm_pdw_exec_sessions]: https://msdn.microsoft.com/library/mt203883.aspx
+[sys.dm_pdw_request_steps]: https://msdn.microsoft.com/library/mt203913.aspx
+[sys.dm_pdw_sql_requests]: https://msdn.microsoft.com/library/mt203889.aspx
+[DBCC PDW_SHOWEXECUTIONPLAN]: https://msdn.microsoft.com/library/mt204017.aspx
+[DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
 [LABEL]: https://msdn.microsoft.com/library/ms190322.aspx

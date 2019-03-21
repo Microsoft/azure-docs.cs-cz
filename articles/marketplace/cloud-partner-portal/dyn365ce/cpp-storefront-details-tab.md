@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 66119ffab8c6117e223468834b59e6d6b19409a0
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f9cbf5033d0ffb84959de94db052626dd1d131c8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54445058"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997947"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 pro kartu Podrobnosti z prodejních míst zapojení zákazníků
 
@@ -56,7 +56,7 @@ Kde následující tabulka popisuje pole na této kartě:
 |  Typ aplikace             | Vyberte typ zkušební verzi, která je povolená aplikace na AppSource. **Bezplatné** označuje vaší aplikace se dá používat bez poplatků; **Zkušební** označuje, že můžou zákazníci vyzkouší vaši aplikaci na krátkou dobu bez poplatků; a **Kontaktujte mě** označuje, že zákazníci můžou požádat o zkušební verzi aplikaci na AppSource.  |
 | Odkaz na nápovědu pro vaši aplikaci | Adresa URL pro dokumentaci online nebo jiný prostředek nápovědy pro aplikaci.  |
 | Podporované země/oblasti | Místní nabídka dialogu Výběr zeměpisné oblasti, kde se nabízí aplikace.  Po celém světě distribuce je výchozí hodnota. |
-| Podporované jazyky   | Vyberte jazyky, které vaše aplikace podporuje. Aktuálně pouze několik jazyk možnosti jsou podporovány.  (Pokud vaše aplikace podporuje další jazyky, které nejsou v tomto seznamu, pokračovat v publikování vaší nabídky a tyto informace do e-mailu: appsource@microsoft.com.)  |
+| Podporované jazyky   | Vyberte jazyky, které vaše aplikace podporuje. Aktuálně pouze několik jazyk možnosti jsou podporovány.  (Pokud vaše aplikace podporuje další jazyky, které nejsou v tomto seznamu, pokračovat v publikování vaší nabídky a tyto informace do e-mailu: appsource\@microsoft.com.)  |
 | verze aplikace           | Číslo verze aplikace    |
 | Datum vydání verze aplikace      | Datum vydání verze a publikování aplikace |
 | Produkty, které vaše aplikace funguje s | Produkty nebo služby, které vaše aplikace mezi pracuje s. Můžete vytvořit seznam maximálně tři produkty. Pro zobrazení seznamu produktu, klikněte na **+ nová** a v zobrazené textového pole zadejte název produktu.  |

@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 937e261405634e88ab234d2fe43ee660a3acc417
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: b6c5df1ef0c93508595e27cbda315281aa3461b5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233655"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124282"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Jak vytvořit kanál CI/CD pro Azure Data Lake Analytics  
 
@@ -328,17 +328,17 @@ Kromě příkazového řádku můžete použít Visual Studio Build nebo úlohu 
    ![Úlohy MSBuild CI/CD pro projekt v U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
 
-1.  Přidat úlohu obnovení NuGet pro balíček NuGet odkazované řešení, která zahrnuje získáte `Azure.DataLake.USQL.SDK`tak, aby MSBuild najdete cíle jazyk U-SQL. Nastavte **Upřesnit** > **cílový adresář** k `$(Build.SourcesDirectory)/packages` Pokud budete chtít použít ukázkový argumenty nástroje MSBuild přímo v kroku 2.
+1. Přidat úlohu obnovení NuGet pro balíček NuGet odkazované řešení, která zahrnuje získáte `Azure.DataLake.USQL.SDK`tak, aby MSBuild najdete cíle jazyk U-SQL. Nastavte **Upřesnit** > **cílový adresář** k `$(Build.SourcesDirectory)/packages` Pokud budete chtít použít ukázkový argumenty nástroje MSBuild přímo v kroku 2.
 
-    ![Úloha NuGet CI/CD pro projekt v U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
+   ![Úloha NuGet CI/CD pro projekt v U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
-2.  Nastavte argumenty nástroje MSBuild v nástrojích pro sestavení sady Visual Studio nebo v úkolu MSBuild, jak je znázorněno v následujícím příkladu. Nebo můžete definovat proměnné pro tyto argumenty v kanálu Azure kanály sestavení.
+2. Nastavte argumenty nástroje MSBuild v nástrojích pro sestavení sady Visual Studio nebo v úkolu MSBuild, jak je znázorněno v následujícím příkladu. Nebo můžete definovat proměnné pro tyto argumenty v kanálu Azure kanály sestavení.
 
    ![Definujte proměnné, MSBuild CI/CD pro projekt databáze U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
 
-    ```
-    /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime
-    ```
+   ```
+   /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime
+   ```
  
 ### <a name="u-sql-database-project-build-output"></a>Výstupní sestavení projektu databáze U-SQL
 
@@ -459,7 +459,7 @@ Následujícím postupem nastavit úlohu nasazení databáze v kanálech Azure:
 |Balíček|Cesta k balíčku pro nasazení databáze U-SQL k nasazení.|null|true (pravda)|
 |Databáze|Název databáze a nasazené nebo vytvořen.|master|false (nepravda)|
 |LogFile|Cestu k souboru pro protokolování. Standardní navýšení kapacity (konzola) ve výchozím nastavení.|null|false (nepravda)|
-|LogLevel|Úroveň protokolu: Podrobné nastavení, Normální, upozornění nebo chyby.|LogLevel.Normal|false (nepravda)|
+|LogLevel|Úroveň protokolování: Podrobné nastavení, Normální, upozornění nebo chyby.|LogLevel.Normal|false (nepravda)|
 
 #### <a name="parameter-for-local-deployment"></a>{{Parametr pro místní nasazení
 

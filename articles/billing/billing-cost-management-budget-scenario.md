@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 7/25/2018
+ms.date: 03/13/2019
 ms.author: erikre
-ms.openlocfilehash: 0c67b100b0d44b539a37a8ea54954d58bba38cb5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c92789c12f4454f5d76590e5323b78223b49c97f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267194"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113057"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Správa nákladů s využitím služby Azure Budgets
 
@@ -29,7 +29,7 @@ ms.locfileid: "54267194"
 Rozpočty se běžně používají jako součást náklady pod kontrolou. Obor rozpočty lze nastavit v Azure. Například můžete zúžit zobrazení rozpočtu na základě předplatného, skupiny prostředků nebo kolekci prostředků. Kromě použití rozpočty rozhraní API pro upozornění prostřednictvím e-mailu je dosaženo prahové hodnoty rozpočtu, můžete použít [skupiny akcí Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) k aktivaci iniciovat organizovaně, což sadu akcí v důsledku události rozpočtu.
 
 Běžný scénář rozpočty pro zákazníka s méně náročné úlohy může dojít, když chtějí spravovat proti rozpočtu a také dostat k předvídatelné náklady při pohledu na měsíční faktuře. Tento scénář vyžaduje některé Orchestrace náklady podle prostředků, které jsou součástí prostředí Azure. V tomto scénáři je nastavit měsíční rozpočtu 1 000 USD pro předplatné. Prahové hodnoty upozornění jsou také nastavena aktivace několik Orchestrace. Tento scénář začíná prahovou hodnotu 80 % nákladů, které se zastaví všechny virtuální počítače ve skupině prostředků **volitelné**. Pak na náklady na 100 %, prahová hodnota, se zastaví všechny instance virtuálních počítačů.
-Konfigurace tohoto scénáře, dokončí následující akce podle postupu uvedeného v každé části tohoto kurzu. 
+Konfigurace tohoto scénáře, dokončí následující akce podle postupu uvedeného v každé části tohoto kurzu.
 
 Tyto akce zahrnuté v tomto kurzu vám umožní:
 
@@ -40,17 +40,17 @@ Tyto akce zahrnuté v tomto kurzu vám umožní:
 
 ## <a name="create-an-azure-automation-runbook"></a>Vytvoření Runbooku Azure Automation
 
-[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) je služba, která umožňuje skriptu většinu úkolů správy prostředků a spusťte tyto úlohy jako buď plánované, nebo na vyžádání. V rámci tohoto scénáře, se vytvoří [runbooku Azure Automation](https://docs.microsoft.com/azure/automation/automation-runbook-types) , který se použije k zastavování virtuálních počítačů. Budete používat [zastavení virtuálních počítačů V2 Azure](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) grafický runbook z [Galerie](https://docs.microsoft.com/azure/automation/automation-runbook-gallery) k vytvoření tohoto scénáře. Importováním této sady runbook ke svému účtu Azure a jeho publikování, bude moct zastavit virtuální počítače, když je dosaženo prahové hodnoty rozpočtu. 
+[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) je služba, která umožňuje skriptu většinu úkolů správy prostředků a spusťte tyto úlohy jako buď plánované, nebo na vyžádání. V rámci tohoto scénáře, se vytvoří [runbooku Azure Automation](https://docs.microsoft.com/azure/automation/automation-runbook-types) , který se použije k zastavování virtuálních počítačů. Budete používat [zastavení virtuálních počítačů V2 Azure](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) grafický runbook z [Galerie](https://docs.microsoft.com/azure/automation/automation-runbook-gallery) k vytvoření tohoto scénáře. Importováním této sady runbook ke svému účtu Azure a jeho publikování, bude moct zastavit virtuální počítače, když je dosaženo prahové hodnoty rozpočtu.
 
 ### <a name="create-an-azure-automation-account"></a>Vytvoření účtu Azure Automation
 
-1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí přihlašovacích údajů svého účtu Azure.
-2.  Klikněte na tlačítko **vytvořit prostředek** nalezeno tlačítko v levém horním rohu Azure.
-3.  Vyberte **nástroje pro správu** > **automatizace**.
-    > [!NOTE]
-    > Pokud nemáte účet Azure, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free/).
-4.  Zadejte informace o vašem účtu. Pro **vytvoření účtu Azure spustit jako**, zvolte **Ano** se automaticky povolit nastavení potřebné k zjednoduší ověřování do Azure.
-5.  Jakmile budete hotovi, klikněte na **Vytvořit** a spusťte nasazování účtu Automation.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí přihlašovacích údajů svého účtu Azure.
+2. Klikněte na tlačítko **vytvořit prostředek** nalezeno tlačítko v levém horním rohu Azure.
+3. Vyberte **nástroje pro správu** > **automatizace**.
+   > [!NOTE]
+   > Pokud nemáte účet Azure, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free/).
+4. Zadejte informace o vašem účtu. Pro **vytvoření účtu Azure spustit jako**, zvolte **Ano** se automaticky povolit nastavení potřebné k zjednoduší ověřování do Azure.
+5. Jakmile budete hotovi, klikněte na **Vytvořit** a spusťte nasazování účtu Automation.
 
 ### <a name="import-the-stop-azure-v2-vms-runbook"></a>Import runbooku zastavení virtuálních počítačů V2 Azure
 
@@ -63,9 +63,9 @@ Pomocí [runbooku Azure Automation](https://docs.microsoft.com/azure/automation/
 5.  Vyhledejte a vyberte [zastavení virtuálních počítačů V2 Azure](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) položky galerie na webu Azure portal.
 6.  Klikněte na tlačítko **Import** tlačítka pro zobrazení **Import** okna a vyberte **OK**. Zobrazí se okno přehledu sady runbook.
 7.  Po dokončení procesu importu runbooku vyberte **upravit** zobrazíte možnosti editoru a publikování grafický runbook.
-    
+
     ![Azure – upravit grafický runbook](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
-8.  Klikněte na tlačítko **publikovat** tlačítko Publikovat sadu runbook a potom vyberte **Ano** po zobrazení výzvy. Když runbook publikujete, přepíšete všechny existující publikované verze s koncept. V tomto případě žádný publikovanou verzi máte, protože jste vytvořili sadu runbook. 
+8.  Klikněte na tlačítko **publikovat** tlačítko Publikovat sadu runbook a potom vyberte **Ano** po zobrazení výzvy. Když runbook publikujete, přepíšete všechny existující publikované verze s koncept. V tomto případě žádný publikovanou verzi máte, protože jste vytvořili sadu runbook.
 
     Další informace o publikování sady runbook najdete v tématu [vytvoření grafického runbooku](https://docs.microsoft.com/azure/automation/automation-first-runbook-graphical).
 
@@ -73,24 +73,24 @@ Pomocí [runbooku Azure Automation](https://docs.microsoft.com/azure/automation/
 
 Použití [zastavení virtuálních počítačů V2 Azure](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) grafický runbook, musíte vytvořit dva Webhooky pro spuštění sady runbook ve službě Azure Automation prostřednictvím jednoho požadavku HTTP. První webhooku se vyvolání sady runbook v prahovou hodnotu 80 % rozpočtu s názvem skupiny prostředků jako parametr, povolení volitelné virtuálních počítačů má být zastaven. Pak se druhý webhooku vyvolání sady runbook bez parametrů (na 100 %), které se zastaví všechny zbývající instance virtuálních počítačů.
 
-1.  Z **sady Runbook** stránku [webu Azure portal](https://portal.azure.com/), klikněte na tlačítko **StopAzureV2Vm** sady runbook, která zobrazí okno přehledu sady runbook. 
-2.  Klikněte na tlačítko **Webhooku** v horní části stránky otevřete **přidat Webhook** okno.
-3.  Klikněte na tlačítko **vytvořit nový webhook** otevřít **vytvořit nový webhook** okno.
-4.  Nastavte **název** webhooku pro **volitelné**. **Povoleno** musí být vlastnost **Ano**. **Expires** není potřeba změnit hodnotu. Další informace o vlastnostech Webhooku, najdete v části [podrobnosti webhooku](https://docs.microsoft.com/azure/automation/automation-webhooks#details-of-a-webhook).
-5.  Vedle hodnoty adresy URL kliknutím na ikonu kopírování zkopírujte adresu URL webhooku. 
-    > [!IMPORTANT]
-    > Uložit adresu URL webhooku s názvem **volitelné** na bezpečném místě. Adresa URL použijete později v tomto kurzu. Z bezpečnostních důvodů se po vytvoření webhooku, nelze zobrazit ani znovu načíst adresu URL.
-6.  Klikněte na tlačítko **OK** vytvořit nový webhook.
-7.  Klikněte na tlačítko **nakonfigurovat parametry a nastavení spouštění** zobrazíte parametr hodnoty pro sadu runbook. 
-    > [!NOTE]
-    > Pokud má runbook povinné parametry, pak nemůžete vytvořit webhook, pokud jsou k dispozici hodnoty.
-8.  Klikněte na tlačítko **OK** tak, aby přijímal hodnoty parametrů webhooku.
-9.  Klikněte na tlačítko **vytvořit** k vytvoření webhooku.
-10. Potom postupujte podle pokynů výše vytvořte druhý webhooku s názvem **Complete**. 
+1. Z **sady Runbook** stránku [webu Azure portal](https://portal.azure.com/), klikněte na tlačítko **StopAzureV2Vm** sady runbook, která zobrazí okno přehledu sady runbook.
+2. Klikněte na tlačítko **Webhooku** v horní části stránky otevřete **přidat Webhook** okno.
+3. Klikněte na tlačítko **vytvořit nový webhook** otevřít **vytvořit nový webhook** okno.
+4. Nastavte **název** webhooku pro **volitelné**. **Povoleno** musí být vlastnost **Ano**. **Expires** není potřeba změnit hodnotu. Další informace o vlastnostech Webhooku, najdete v části [podrobnosti webhooku](https://docs.microsoft.com/azure/automation/automation-webhooks#details-of-a-webhook).
+5. Vedle hodnoty adresy URL kliknutím na ikonu kopírování zkopírujte adresu URL webhooku.
+   > [!IMPORTANT]
+   > Uložit adresu URL webhooku s názvem **volitelné** na bezpečném místě. Adresa URL použijete později v tomto kurzu. Z bezpečnostních důvodů se po vytvoření webhooku, nelze zobrazit ani znovu načíst adresu URL.
+6. Klikněte na tlačítko **OK** vytvořit nový webhook.
+7. Klikněte na tlačítko **nakonfigurovat parametry a nastavení spouštění** zobrazíte parametr hodnoty pro sadu runbook.
+   > [!NOTE]
+   > Pokud má runbook povinné parametry, pak nemůžete vytvořit webhook, pokud jsou k dispozici hodnoty.
+8. Klikněte na tlačítko **OK** tak, aby přijímal hodnoty parametrů webhooku.
+9. Klikněte na tlačítko **vytvořit** k vytvoření webhooku.
+10. Potom postupujte podle pokynů výše vytvořte druhý webhooku s názvem **Complete**.
     > [!IMPORTANT]
     > Nezapomeňte uložit obě adresy URL webhooku pro pozdější použití v tomto kurzu. Z bezpečnostních důvodů se po vytvoření webhooku, nelze zobrazit ani znovu načíst adresu URL.
 
-Teď byste měli mít dvě nakonfigurované webhooky, které jsou každý k dispozici prostřednictvím adresy URL, které jste si uložili. 
+Teď byste měli mít dvě nakonfigurované webhooky, které jsou každý k dispozici prostřednictvím adresy URL, které jste si uložili.
 
 ![Webhooky - nepovinné a dokončení](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-02.png)
 
@@ -98,7 +98,7 @@ Teď budete hotovi s nastavením služby Azure Automation. Webhooky můžete ote
 
 ## <a name="create-an-azure-logic-app-for-orchestration"></a>Vytvořit aplikaci logiky Azure pro Orchestrace
 
-Logic Apps umožňují vytvářet, plánovat a automatizovat procesy jako pracovní postupy, takže můžete integrovat aplikace, data, systémy a služby napříč podniky a organizacemi. V tomto scénáři [aplikace logiky](https://docs.microsoft.com/azure/logic-apps/) vytvoříte se provést trochu více než jen volání webhook služby automation, který jste vytvořili. 
+Logic Apps umožňují vytvářet, plánovat a automatizovat procesy jako pracovní postupy, takže můžete integrovat aplikace, data, systémy a služby napříč podniky a organizacemi. V tomto scénáři [aplikace logiky](https://docs.microsoft.com/azure/logic-apps/) vytvoříte se provést trochu více než jen volání webhook služby automation, který jste vytvořili.
 
 Rozpočty lze nastavit k aktivaci oznámení, když je splněna zadanou prahovou hodnotu. Můžete zadat více prahové hodnoty, která vás upozorní na a aplikace logiky ukazuje možnosti můžete provádět různé akce podle prahovou hodnotu splněny. V tomto příkladu nastavíte si scénář, kde můžete získat několika oznámení, je první oznámení pro při dosáhla 80 % rozpočtu a druhé oznámení je po 100 % rozpočtu bylo dosaženo. Aplikace logiky se použije k vypnutí všech virtuálních počítačů ve skupině prostředků. Nejprve je potřeba **volitelné** 80 % bude dosaženo prahové hodnoty a pak bude dosaženo druhý prahové hodnoty ve kterém se ukončí všechny virtuální počítače v rámci předplatného.
 
@@ -117,37 +117,37 @@ Aplikace logiky provede několik akcí. Následující seznam obsahuje základn�
 Následující kroky jsou potřeba k vytvoření aplikace logiky, která bude provádět výše uvedené kroky:
 
 1.  V [webu Azure portal](https://portal.azure.com/)vyberte **vytvořit prostředek** > **integrace** > **aplikace logiky**.
-    
+
     ![Azure – vyberte prostředek aplikace logiky](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-03.png)
-2.  V **vytvořit aplikaci logiky** okno, zadejte podrobnosti potřeba vytvořit aplikaci logiky, vyberte **připnout na řídicí panel**a klikněte na tlačítko **vytvořit**. 
-    
+2.  V **vytvořit aplikaci logiky** okno, zadejte podrobnosti potřeba vytvořit aplikaci logiky, vyberte **připnout na řídicí panel**a klikněte na tlačítko **vytvořit**.
+
     ![Azure – vytvoření aplikace logiky](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-03a.png)
 
-Jakmile Azure nasadí vaši aplikaci logiky **návrhář pro Logic Apps** otevře a zobrazí okno s úvodním videa a běžně používané aktivační události. 
+Jakmile Azure nasadí vaši aplikaci logiky **návrhář pro Logic Apps** otevře a zobrazí okno s úvodním videa a běžně používané aktivační události.
 
 ### <a name="add-a-trigger"></a>Přidat trigger
 
-Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při určité události nebo splnění určité podmínky. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky pro spuštění vašeho pracovního postupu. Akce jsou všechny kroky, ke kterým dochází po aktivaci triggeru. 
+Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při určité události nebo splnění určité podmínky. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky pro spuštění vašeho pracovního postupu. Akce jsou všechny kroky, ke kterým dochází po aktivaci triggeru.
 
 1.  V části **šablony** z **návrhář pro Logic Apps** okně zvolte **prázdná aplikace logiky**.
 2.  Přidat [aktivační událost](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) tak, že zadáte "požadavek http" **návrhář pro Logic Apps** vyhledávacího pole najděte a zvolte aktivační událost s názvem **žádosti – přijetí požadavku HTTP při**.
-    
-    ![Azure – aplikace logiky – triggeru Http](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png) 
-3.  Vyberte **nový krok** > **přidat akci**. 
-    
-    ![Azure – nový krok – přidání akce](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png) 
-4.  Vyhledejte "parsování formátu JSON" v **návrhář pro Logic Apps** vyhledávacího pole najděte a vyberte **operace s daty – Parsovat JSON** [akce](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts). 
-    
-    ![Přidat Azure – aplikace logiky – parsovat JSON akce](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png) 
+
+    ![Azure – aplikace logiky – triggeru Http](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png)
+3.  Vyberte **nový krok** > **přidat akci**.
+
+    ![Azure – nový krok – přidání akce](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
+4.  Vyhledejte "parsování formátu JSON" v **návrhář pro Logic Apps** vyhledávacího pole najděte a vyberte **operace s daty – Parsovat JSON** [akce](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts).
+
+    ![Přidat Azure – aplikace logiky – parsovat JSON akce](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
 5.  Zadejte "Datovou část" jako **obsah** názvu pro datovou část Parsovat JSON nebo pomocí značky "Body" z dynamického obsahu.
 6.  Vyberte **k vygenerování schématu použít ukázkovou datovou část** možnost **Parsovat JSON** pole.
-    
-    ![Azure – aplikace logiky – použití ukázkových dat JSON k vygenerování schématu](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-07.png) 
+
+    ![Azure – aplikace logiky – použití ukázkových dat JSON k vygenerování schématu](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-07.png)
 7.  Vložte do textového pole následující ukázkovou datovou část JSON: `{"schemaId":"AIP Budget Notification","data":{"SubscriptionName":"CCM - Microsoft Azure Enterprise - 1","SubscriptionId":"<GUID>","SpendingAmount":"100","BudgetStartDate":"6/1/2018","Budget":"50","Unit":"USD","BudgetCreator":"email@contoso.com","BudgetName":"BudgetName","BudgetType":"Cost","ResourceGroup":"","NotificationThresholdAmount":"0.8"}}`
-    
+
     Textové pole se zobrazí takto:
-        
-    ![Azure – aplikace logiky – ukázkovou datovou část JSON](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-08.png) 
+
+    ![Azure – aplikace logiky – ukázkovou datovou část JSON](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-08.png)
 8.  Klikněte na **Done** (Hotovo).
 
 ### <a name="add-the-first-conditional-action"></a>Přidat první podmíněné akce
@@ -155,123 +155,123 @@ Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při u
 Použití podmíněného příkazu ke kontrole, jestli je úroveň mezní dosáhla 80 % nebo více rozsahu rozpočet, ale ne větší než nebo rovna 100 %. Pokud se dosáhlo tato částka prahové hodnoty, odeslání požadavku HTTP POST, pomocí webhooku s názvem **volitelné**. Tato akce vypne virtuální počítače v **volitelné** skupiny.
 
 1.  Vyberte **nový krok** > **přidat podmínku**.
-    
-    ![Azure – aplikace logiky – přidání podmínky](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-09.png) 
+
+    ![Azure – aplikace logiky – přidání podmínky](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-09.png)
 2.  V **podmínku** klikněte na textové pole obsahující **zvolit hodnotu** zobrazíte seznam dostupných hodnot.
-    
-    ![Pole Azure – aplikace logiky – podmínky](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-10.png) 
-        
+
+    ![Pole Azure – aplikace logiky – podmínky](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-10.png)
+
 3.  Klikněte na tlačítko **výraz** v horní části seznamu a v editoru výrazů zadejte následující výraz: `float()`
-    
-    ![Výraz typu Float Azure – aplikace logiky –](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-11.png) 
-        
-4.  Vyberte **dynamický obsah**, umístěte kurzor mezi závorky () a vyberte **NotificationThresholdAmount** ze seznamu a naplnit celý výraz. 
-    
+
+    ![Výraz typu Float Azure – aplikace logiky –](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-11.png)
+
+4.  Vyberte **dynamický obsah**, umístěte kurzor mezi závorky () a vyberte **NotificationThresholdAmount** ze seznamu a naplnit celý výraz.
+
     Výraz bude následující:<br>
     `float(body('Parse_JSON')?['data']?['NotificationThresholdAmount'])`
-    
-5.  Vyberte **OK** nastavit výraz. 
+
+5.  Vyberte **OK** nastavit výraz.
 6.  Vyberte **je větší než nebo rovna hodnotě** v rozevíracím seznamu z **podmínku**.
 7.  V **zvolit hodnotu** zadejte podmínky `.8`.
-    
-    ![Výraz typu Float Azure – aplikace logiky – s hodnotou](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png) 
-        
+
+    ![Výraz typu Float Azure – aplikace logiky – s hodnotou](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
+
 8.  Klikněte na tlačítko **přidat** > **přidat řádek** v rámci pole podmínky přidat další část podmínku.
 9.  V **podmínku** klikněte na textové pole obsahující **zvolit hodnotu**.
 10. Klikněte na tlačítko **výraz** v horní části seznamu a v editoru výrazů zadejte následující výraz: `float()`
-11. Vyberte **dynamický obsah**, umístěte kurzor mezi závorky () a vyberte **NotificationThresholdAmount** ze seznamu a naplnit celý výraz. 
-12. Vyberte **OK** nastavit výraz. 
+11. Vyberte **dynamický obsah**, umístěte kurzor mezi závorky () a vyberte **NotificationThresholdAmount** ze seznamu a naplnit celý výraz.
+12. Vyberte **OK** nastavit výraz.
 13. Vyberte **je menší než** v rozevíracím seznamu z **podmínku**.
 14. V **zvolit hodnotu** zadejte podmínky `1`.
-    
-    ![Výraz typu Float Azure – aplikace logiky – s hodnotou](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png) 
-        
+
+    ![Výraz typu Float Azure – aplikace logiky – s hodnotou](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
+
 15. V **při hodnotě true** vyberte **přidat akci**. Přidejte akci HTTP POST, který vypne volitelné virtuálních počítačů.
-    
-    ![Azure – aplikace logiky – přidání akce](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png) 
-        
+
+    ![Azure – aplikace logiky – přidání akce](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
+
 16. Zadejte **HTTP** vyhledávat akce HTTP a vyberte **HTTP – HTTP** akce.
-    
-    ![Azure – aplikace logiky – akce HTTP přidat](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-15.png) 
-        
+
+    ![Azure – aplikace logiky – akce HTTP přidat](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-15.png)
+
 17. Vyberte **příspěvek** jako pro **metoda** hodnotu.
 18. Zadejte adresu URL webhooku s názvem **volitelné** , kterou jste vytvořili dříve v tomto kurzu jako **Uri** hodnotu.
-    
-    ![Identifikátor URI pro Azure – aplikace logiky – akce HTTP](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-16.png) 
-        
+
+    ![Identifikátor URI pro Azure – aplikace logiky – akce HTTP](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-16.png)
+
 19. Vyberte **přidat akci** v **při hodnotě true** pole. Přidejte akci e-mailu, který odešle e-mail s upozorněním příjemci, kterého vypnout volitelné virtuálních počítačů.
 20. Vyhledejte "Odeslat e-mail" a vyberte *odeslání e-mailu* akce podle e-mailové služby, které používáte.
-        
-    ![Azure – aplikace logiky – akce Odeslat e-mail](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-17.png) 
-    
+
+    ![Azure – aplikace logiky – akce Odeslat e-mail](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-17.png)
+
     U osobních účtů Microsoft, vyberte **Outlook.com**. U pracovních nebo školních účtů Azure vyberte **Office 365 Outlook**. Pokud ještě nemáte připojení, budete vyzváni k přihlášení ke svému e-mailovému účtu. Logic Apps vytvoří připojení k e-mailovému účtu.
-        
+
     Je potřeba povolit přístup k informacím vašeho e-mailové aplikace logiky.
-    
-    ![Všimněte si, že Azure – aplikace logiky – přístup](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-18.png) 
-        
+
+    ![Všimněte si, že Azure – aplikace logiky – přístup](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-18.png)
+
 21. Přidat **k**, **předmět**, a **tělo** text e-mailu, který upozorní příjemci, kterého vypnout volitelné virtuálních počítačů. Použití **BudgetName** a **NotificationThresholdAmount** dynamický obsah k vyplnění polí předmětu a textu.
-    
-    ![Podrobnosti o e-mailu Azure – aplikace logiky –](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-19.png) 
- 
+
+    ![Podrobnosti o e-mailu Azure – aplikace logiky –](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-19.png)
+
 ### <a name="add-the-second-conditional-action"></a>Přidejte druhý podmíněné akce
 
 Pomocí podmíněného příkazu ke kontrole, jestli má dosáhli nebo Přesáhli jste 100 % rozpočtu hodnoty Částka prahové hodnoty. Pokud bylo dosaženo mezní, odeslání požadavku HTTP POST, pomocí webhooku s názvem **Complete**. Tato akce vypne všechny zbývající virtuální počítače.
 
 1.  Vyberte **nový krok** > **přidat podmínku**.
-    
-    ![Azure – aplikace logiky – přidání akce](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png) 
-        
+
+    ![Azure – aplikace logiky – přidání akce](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
+
 2.  V **podmínku** klikněte na textové pole obsahující **zvolit hodnotu** zobrazíte seznam dostupných hodnot.
 3.  Klikněte na tlačítko **výraz** v horní části seznamu a v editoru výrazů zadejte následující výraz: `float()`
-4.  Vyberte **dynamický obsah**, umístěte kurzor mezi závorky () a vyberte **NotificationThresholdAmount** ze seznamu a naplnit celý výraz. 
-    
+4.  Vyberte **dynamický obsah**, umístěte kurzor mezi závorky () a vyberte **NotificationThresholdAmount** ze seznamu a naplnit celý výraz.
+
     Výraz bude následující:<br>
     `float(body('Parse_JSON')?['data']?['NotificationThresholdAmount'])`
-        
-5.  Vyberte **OK** nastavit výraz. 
+
+5.  Vyberte **OK** nastavit výraz.
 6.  Vyberte **je větší než nebo rovna hodnotě** v rozevíracím seznamu z **podmínku**.
 7.  V **zvolte hodnoty pole** podmínky zadejte `1`.
-    
-    ![Hodnota podmínky Azure – aplikace logiky – nastavení](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png) 
-        
+
+    ![Hodnota podmínky Azure – aplikace logiky – nastavení](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
+
 8.  V **při hodnotě true** vyberte **přidat akci**. Přidejte akci HTTP POST, který vypne všechny zbývající virtuální počítače.
-    
-    ![Azure – aplikace logiky – přidání akce](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png) 
-    
+
+    ![Azure – aplikace logiky – přidání akce](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
+
 9.  Zadejte **HTTP** vyhledávat akce HTTP a vyberte **HTTP – HTTP** akce.
 10. Vyberte **příspěvek** jako pro **metoda** hodnotu.
 11. Zadejte adresu URL webhooku s názvem **Complete** , kterou jste vytvořili dříve v tomto kurzu jako **Uri** hodnotu.
-    
-    ![Azure – aplikace logiky – přidání akce](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png) 
-        
+
+    ![Azure – aplikace logiky – přidání akce](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
+
 12. Vyberte **přidat akci** v **při hodnotě true** pole. Přidejte akci e-mailu, který odešle e-mail s upozorněním příjemci, kterého vyply zbývající virtuální počítače.
 13. Vyhledejte "Odeslat e-mail" a vyberte *odeslání e-mailu* akce podle e-mailové služby, které používáte.
 14. Přidat **k**, **předmět**, a **tělo** text e-mailu, který upozorní příjemci, kterého vypnout volitelné virtuálních počítačů. Použití **BudgetName** a **NotificationThresholdAmount** dynamický obsah k vyplnění polí předmětu a textu.
-    
-    ![Podrobnosti o Azure – aplikace logiky – odeslání e-mailu](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-24.png) 
-        
+
+    ![Podrobnosti o Azure – aplikace logiky – odeslání e-mailu](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-24.png)
+
 15. Klikněte na tlačítko **Uložit** v horní části **návrhář aplikace logiky** okno.
 
 ### <a name="logic-app-summary"></a>Přehled aplikace logiky
 
 Zde je, co vaše aplikace logiky bude vypadat jako až budete hotovi. V nejzákladnější scénářů, kdy není nutné žádné založené na prahových hodnotách Orchestrace, lze přímo volat automatizační skript z **monitorování** a Přejít **aplikace logiky** kroku.
 
-   ![Azure – aplikace logiky – úplné zobrazení](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-25.png) 
- 
-Při uložení aplikace logiky vytvořená adresa URL, že budou moct volat. V další části tohoto kurzu budete používat tuto adresu URL. 
+   ![Azure – aplikace logiky – úplné zobrazení](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-25.png)
+
+Při uložení aplikace logiky vytvořená adresa URL, že budou moct volat. V další části tohoto kurzu budete používat tuto adresu URL.
 
 ## <a name="create-an-azure-monitor-action-group"></a>Vytvoření skupiny akcí Azure Monitor
 
 Skupiny akcí je kolekce předvolby oznámení, které definujete. Když se aktivuje upozornění, můžou určité akce skupiny získat upozornění, když dostávat oznámení. Azure upozornění proaktivně vyvolá oznámení na základě určitých podmínek a představuje příležitost k akci. Výstrahu můžete použít data z víc zdrojů, včetně metrik a protokolů.
 
-Skupiny akcí jsou pouze koncový bod, které se integrují s rozpočtem. Můžete nastavit upozornění v počet kanálů, ale pro tento scénář, který se zaměřuje na aplikaci logiky, který jste vytvořili dříve v tomto kurzu. 
+Skupiny akcí jsou pouze koncový bod, které se integrují s rozpočtem. Můžete nastavit upozornění v počet kanálů, ale pro tento scénář, který se zaměřuje na aplikaci logiky, který jste vytvořili dříve v tomto kurzu.
 
 ### <a name="create-an-action-group-in-azure-monitor"></a>Vytvoření skupiny akcí ve službě Azure Monitor
 
-Když vytvoříte skupinu akcí, bude odkazovat na aplikaci logiky, kterou jste vytvořili dříve v tomto kurzu. 
+Když vytvoříte skupinu akcí, bude odkazovat na aplikaci logiky, kterou jste vytvořili dříve v tomto kurzu.
 
-1.  Pokud nejste ještě přihlášeni k [webu Azure portal](https://portal.azure.com/), přihlášení a výběr **všechny služby** > **monitorování**. 
+1.  Pokud nejste ještě přihlášeni k [webu Azure portal](https://portal.azure.com/), přihlášení a výběr **všechny služby** > **monitorování**.
 2.  Vyberte **skupiny akcí** z **nastavení** oddílu.
 3.  Vyberte **přidat skupinu akcí** z **skupiny akcí** okno.
 4.  Přidání a ověření následujících položek:
@@ -279,17 +279,17 @@ Když vytvoříte skupinu akcí, bude odkazovat na aplikaci logiky, kterou jste 
     - Krátký název
     - Předplatné
     - Skupina prostředků
-    
-    ![Azure – aplikace logiky – přidání skupiny akcí](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-26.png) 
-        
+
+    ![Azure – aplikace logiky – přidání skupiny akcí](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-26.png)
+
 5.  V rámci **přidat skupinu akcí** podokně Přidat aplikaci LogicApp akce. Název akce **rozpočtu BudgetLA**. V **aplikace logiky** podokně, vyberte **předplatné** a **skupiny prostředků**. Vyberte **aplikace logiky** , kterou jste vytvořili dříve v tomto kurzu.
 6.  Klikněte na tlačítko **OK** nastavit aplikaci logiky. Vyberte **OK** v **přidat skupinu akcí** podokno a vytvořit skupinu akcí.
-    
+
 Pak budete hotovi s pomocné součásti nezbytná k orchestraci efektivně vašemu rozpočtu. Nyní vše, co je třeba provést je vytvořit rozpočtu a nakonfigurujte ho na použití skupiny akcí, které jste vytvořili.
 
-## <a name="create-the-azure-budget"></a>Vytvořit Azure rozpočet 
+## <a name="create-the-azure-budget"></a>Vytvořit Azure rozpočet
 
-Rozpočty nyní nemají portálového prostředí v Azure. Ale budete moct volat buď REST API, rutin prostředí Powershell, nebo pomocí rozhraní příkazového řádku. Následující postup používá rozhraní REST API. Volání rozhraní REST API, musíte nejdřív autorizační token. Chcete-li vytvořit autorizační token, můžete použít [ARMClient](https://github.com/projectkudu/ARMClient) projektu. **ARMClient** umožňuje sami ověření na Azure Resource Manageru a získání tokenu pro volání rozhraní API. 
+V Azure pomocí portálu můžete vytvořit rozpočet [rozpočtu funkce](../cost-management/tutorial-acm-create-budgets.md) ve službě Cost Management. Nebo můžete vytvořit pomocí rozhraní REST API, rutin prostředí Powershell, rozpočet nebo pomocí rozhraní příkazového řádku. Následující postup používá rozhraní REST API. Volání rozhraní REST API, musíte nejdřív autorizační token. Chcete-li vytvořit autorizační token, můžete použít [ARMClient](https://github.com/projectkudu/ARMClient) projektu. **ARMClient** umožňuje sami ověření na Azure Resource Manageru a získání tokenu pro volání rozhraní API.
 
 ### <a name="create-an-authentication-token"></a>Vytvoření ověřovacího tokenu
 
@@ -303,7 +303,7 @@ Rozpočty nyní nemají portálového prostředí v Azure. Ale budete moct volat
 7.  Kopírovat **guid předplatného** z výstupu.
 8.  Pokud chcete zkopírovat autorizační token do schránky, zadejte následující příkaz příkazového řádku, ale je třeba použít ID předplatného zkopírovaný v předchozím kroku: <br>
     `ARMClient token <subscription GUID from previous step>`
-    
+
     Po dokončení kroku požadavků, zobrazí se následující:<br>
     **Token zkopírováno do schránky úspěšně.**
 9.  Uložte token, který má použít k provedení kroků v další části tohoto kurzu.
@@ -314,22 +314,22 @@ Dále je nutné nakonfigurovat **Postman** vytvořit rozpočtu voláním rozhran
 
 1.  Stáhnout a otevřít [klienta Postman REST](https://www.getpostman.com/) ke spuštění rozhraní REST API.
 2.  V nástroji Postman vytvořte novou žádost.
-    
-    ![Postman – vytvořte novou žádost](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-27.png) 
-        
+
+    ![Postman – vytvořte novou žádost](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-27.png)
+
 3.  Uložte novou žádost o jako kolekci, tak, aby se nová žádost nemá nic na něj.
-    
-    ![Postman – uložení nové žádosti](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-28.png) 
-        
+
+    ![Postman – uložení nové žádosti](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-28.png)
+
 4.  Změnit žádost od `Get` k `Put` akce.
 5.  Upravte následující adresu URL tak, že nahradíte `{subscriptionId}` s **ID předplatného** , který jste použili v předchozí části tohoto kurzu. Navíc upravit adresu URL jako hodnota zahrnout "SampleBudget" `{budgetName}`: `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2018-03-31`
 6.  Vyberte **záhlaví** kartu v rámci nástroje Postman.
 7.  Přidat nový **klíč** s názvem "Autorizace".
-8.  Nastavte **hodnotu** do tokenu, který byl vytvořen pomocí ArmClient na konci v poslední části. 
-9.  Vyberte **tělo** kartu v rámci nástroje Postman. 
+8.  Nastavte **hodnotu** do tokenu, který byl vytvořen pomocí ArmClient na konci v poslední části.
+9.  Vyberte **tělo** kartu v rámci nástroje Postman.
 10. Vyberte **nezpracovaná** tlačítko možnost.
-11. Vložením do textového pole, pod ukázková definice rozpočet, ale je třeba nahradit **subscriptionid**, **budgetname**, a **actiongroupname** parametry s vaší id předplatného, jedinečný název pro váš rozpočet a název skupiny akcí, kterou jste vytvořili v adresu URL a text žádosti:
-    
+11. Vložením do textového pole, pod ukázková definice rozpočet, ale je třeba nahradit **subscriptionid**, **budgetname**, a **actiongroupname** parametry s vaší ID předplatného, jedinečný název pro váš rozpočet a název skupiny akcí, kterou jste vytvořili v adresu URL a text žádosti:
+
     ```
         {
             "properties": {
@@ -354,7 +354,7 @@ Dále je nutné nakonfigurovat **Postman** vytvořit rozpočtu voláním rozhran
                     "contactGroups": [
                     "/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/microsoft.insights/actionGroups/{actiongroupname}
                     ]
-                }, 
+                },
             "Actual_EqualTo_100_Percent": {
                     "operator": "EqualTo",
                     "threshold": 100,
@@ -382,7 +382,7 @@ Podle tohoto kurzu jste se naučili:
 - Vytvoření skupiny akcí monitorování Azure, který bude nastavený tak, aby aktivace aplikace logiky Azure, pokud je dodržena prahová hodnota rozpočtu.
 - Jak vytvořit rozpočet Azure s požadované prahové hodnoty a propojit je do skupiny akcí.
 
-Teď máte plně funkční rozpočtu pro předplatné, které se vypnout seznam vašich virtuálních počítačů při dosažení vašeho nakonfigurované prahové hodnoty. 
+Teď máte plně funkční rozpočtu pro předplatné, které se vypnout seznam vašich virtuálních počítačů při dosažení vašeho nakonfigurované prahové hodnoty.
 
 ## <a name="next-steps"></a>Další postup
 

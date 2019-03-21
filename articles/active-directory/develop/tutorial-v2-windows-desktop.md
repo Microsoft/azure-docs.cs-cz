@@ -3,8 +3,8 @@ title: Začínáme s Azure Active Directory v2.0 Windows desktop | Dokumentace M
 description: Jak aplikace Windows Desktop .NET (XAML) můžete získat přístupový token a volat rozhraní API chráněné službou Azure Active Directory v2.0 koncový bod.
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/19/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7da416d824dbb36a6694255a0300d278f41ef414
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 93bb5e88c6784e2ff13ef84cf2a5463a3ec41fd7
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207343"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201479"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-windesktop-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-windesktop-setup.md)]

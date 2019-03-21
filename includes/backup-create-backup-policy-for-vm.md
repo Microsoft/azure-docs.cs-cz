@@ -4,12 +4,12 @@ ms.service: backup
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: raynew
-ms.openlocfilehash: b589c88e5b5c5991db43a9f3c10003e17094b2e1
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 3631d2e9beaa7c0d9ee018a32981a278381a7d86
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430868"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108494"
 ---
 ## <a name="defining-a-backup-policy"></a>Definování zásad zálohování
 Zásady zálohování definují postupy, podle kterých se pořizují snímky dat včetně doby uchovávání těchto snímků. Při definování zásad pro zálohování virtuálních počítačů můžete úlohu zálohování aktivovat *jednou denně*. Když vytvoříte nové zásady, budou použity na trezor. Rozhraní zásad zálohování vypadá následovně:
@@ -32,13 +32,11 @@ Vytvoření zásad:
     Měsíční a roční rozsahy uchovávání umožňují stanovit pořizování snímků na základě denního nebo týdenního přírůstku.
 
    > [!NOTE]
-   >
-  - Když chráníte virtuální počítač, úloha zálohování se spustí jednou denně. Čas spuštění zálohování je stejný pro všechny rozsahy uchování.
-  - Bod obnovení se vygeneruje na datum a čas snímku zálohy dokončení bez ohledu na to při plánování úlohy zálohování.
-    - Například Pokud je četnost záloh je naplánované v 11:30 odp. a z důvodu jakýkoli problém snímku dokončeno v 00:01:00, bude bod obnovení vytvořený s další data a 00:01:00.
-  - V případě měsíční zálohu Pokud zálohování je nastaven na spouštění v první den v měsíci a snímek dokončení následujícího dne z důvodu problému pak bod obnovení vytvořený pro měsíční zálohy budou označené dalšího dne (např.) druhý tohoto měsíce).
-   >
-   >
+   > 
+   > - Když chráníte virtuální počítač, úloha zálohování se spustí jednou denně. Čas spuštění zálohování je stejný pro všechny rozsahy uchování.
+   > - Bod obnovení se vygeneruje na datum a čas snímku zálohy dokončení bez ohledu na to při plánování úlohy zálohování.
+   >   - Například Pokud je četnost záloh je naplánované v 11:30 odp. a z důvodu jakýkoli problém snímku dokončeno v 00:01:00, bude bod obnovení vytvořený s další data a 00:01:00.
+   > - V případě měsíční zálohu Pokud zálohování je nastaven na spouštění v první den v měsíci a snímek dokončení následujícího dne z důvodu problému pak bod obnovení vytvořený pro měsíční zálohy budou označené dalšího dne (např.) druhý tohoto měsíce).
 
 
 4. Po nastavení všech možností zásad klikněte v horní části okna na **Uložit**.

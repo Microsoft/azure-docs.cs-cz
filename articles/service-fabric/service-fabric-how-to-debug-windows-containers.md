@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
 ms.author: aljo, mikhegn
-ms.openlocfilehash: 10a2c48023ff8377600a0fdcdf4990a453392e80
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 9fe66e40376d9098244a1268fe9884cd416a36c2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805913"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113567"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Postup: Ladění kontejnerů Windows v Azure Service Fabric pomocí sady Visual Studio 2017
 
@@ -35,19 +35,19 @@ S Visual Studio 2017 Update 7 (15.7) můžete ladit aplikace .NET v kontejnerech
 1. Ujistěte se, že než budete pokračovat dalším krokem je spuštění Dockeru pro služby systému Windows.
 
 1. Aby bylo možné podporovat překlad názvů DNS mezi kontejnery, budete muset nastavit místního vývojového clusteru použijete název počítače. Tyto kroky jsou také nezbytné, pokud chcete adresu služby přes reverzní proxy server.
-    1. Otevřete PowerShell jako správce
-    2. Přejděte do instalační složky sady SDK Cluster, obvykle `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`.
-    3. Spusťte skript `DevClusterSetup.ps1`
+   1. Otevřete PowerShell jako správce
+   2. Přejděte do instalační složky sady SDK Cluster, obvykle `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`.
+   3. Spusťte skript `DevClusterSetup.ps1`
 
-       ``` PowerShell
-         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
-       ```
+      ``` PowerShell
+        C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
+      ```
 
-    > [!NOTE]
-    > Můžete použít `-CreateOneNodeCluster` nastavení clusteru s jedním uzlem. Výchozí hodnota vytvoří místní cluster pěti uzly.
-    >
+      > [!NOTE]
+      > Můžete použít `-CreateOneNodeCluster` nastavení clusteru s jedním uzlem. Výchozí hodnota vytvoří místní cluster pěti uzly.
+      >
 
-    Další informace týkající se služby DNS v Service Fabric najdete v tématu [služba DNS v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice). Další informace o používání Service Fabric reverzní proxy server ze služby spuštěné v kontejneru najdete v tématu [zvláštní zacházení reverzní proxy server pro služby spuštěné v kontejnerech](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).
+      Další informace týkající se služby DNS v Service Fabric najdete v tématu [služba DNS v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice). Další informace o používání Service Fabric reverzní proxy server ze služby spuštěné v kontejneru najdete v tématu [zvláštní zacházení reverzní proxy server pro služby spuštěné v kontejnerech](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Známá omezení při ladění kontejnerů v Service Fabric
 

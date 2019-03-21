@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: a7b657d11e829d636063639e26a90d671a5d1473
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ad716e2ef5e597424c860378e7a63d5c2de53f54
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438349"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834553"
 ---
 # <a name="run-apache-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Spouštět úlohy Apache Sqoop se systémem Hadoop v HDInsight pomocí Curl
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -68,19 +68,19 @@ K dokončení kroků v tomto článku, budete potřebovat následující:
 
     Parametry použité v tomto příkazu jsou následující:
 
-    * **-d** – od `-G` se nepoužívá výchozí nastavení požadavku pro metodu POST. `-d` Určuje hodnoty dat, které se odesílají s požadavkem.
+   * **-d** – od `-G` se nepoužívá výchozí nastavení požadavku pro metodu POST. `-d` Určuje hodnoty dat, které se odesílají s požadavkem.
 
-        * **User.Name** – uživatel, který spouští příkaz.
+       * **User.Name** – uživatel, který spouští příkaz.
 
-        * **příkaz** – The Sqoop příkazu ke spuštění.
+       * **příkaz** – The Sqoop příkazu ke spuštění.
 
-        * **statusdir** – adresář, který stavu pro tuto úlohu se zapíšou do.
+       * **statusdir** – adresář, který stavu pro tuto úlohu se zapíšou do.
 
-    Tento příkaz vrátí ID úlohy, který slouží ke kontrole stavu úlohy.
+     Tento příkaz vrátí ID úlohy, který slouží ke kontrole stavu úlohy.
 
-        ```json
-        {"id":"job_1415651640909_0026"}
-        ```
+       ```json
+       {"id":"job_1415651640909_0026"}
+       ```
 
 3. Pokud chcete zkontrolovat stav úlohy, použijte následující příkaz. Nahraďte **JOBID** pomocí hodnoty vrácené v předchozím kroku. Například, pokud se návratová hodnota `{"id":"job_1415651640909_0026"}`, pak **JOBID** by `job_1415651640909_0026`.
 

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7b91f63057fa8b781fdfab17e0837a9f5547c1eb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d20fc0cee6bce1389649e6287170b1963e799ccf
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55988030"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58187723"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Pokročilé kódování pomocí Media Encoderu Premium Workflow
 > [!NOTE]
@@ -62,12 +62,12 @@ Jsou prováděny následovně:
     Ve většině případů je prázdný řetězec konfigurace pro úlohu (jako v následujícím příkladu). Existují některé pokročilé scénáře (které vyžadují dynamické nastavení vlastnosti modulu runtime) v takovém případě je zadat jako řetězec XML pro úlohu kódování. Mezi tyto scénáře patří: vytváření překrytí, paralelní a sekvenční médií spojování, titulkování.
 5. Přidáte dva vstupní datové zdroje do úlohy.
 
-    1. 1. dne – asset pracovního postupu.
-    2. 2 – asset videa.
+   1. 1. dne – asset pracovního postupu.
+   2. 2 – asset videa.
 
-    >[!NOTE]
-    >Asset pracovního postupu musí přidat do úlohy před asset média.
-   Konfigurační řetězec pro tuto úlohu by měla být prázdná.
+      >[!NOTE]
+      >Asset pracovního postupu musí přidat do úlohy před asset média.
+      Konfigurační řetězec pro tuto úlohu by měla být prázdná.
    
 6. Odešlete kódovací úlohu.
 

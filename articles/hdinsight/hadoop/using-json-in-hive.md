@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: b174b1279a2e93560932334c9ae1e926c1eeca3c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 31909d007727ca5b440343e3c5a035984399b77a
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990760"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201734"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Zpracování a analýza dokumentů JSON pomocí Apache Hive v Azure HDInsight
 
@@ -57,7 +57,7 @@ Zjistěte, jak zpracovávat a analyzovat soubory JavaScript Object Notation (JSO
 }
 ```
 
-Soubor můžete najít v **wasb://processjson@hditutorialdata.blob.core.windows.net/**. Další informace o tom, jak používat Azure Blob storage s HDInsight naleznete v tématu [použití HDFS kompatibilního Azure Blob storage s využitím Apache Hadoop v HDInsight](../hdinsight-hadoop-use-blob-storage.md). Zkopírujte soubor do kontejneru výchozí vašeho clusteru.
+Soubor můžete najít v **wasb://processjson\@hditutorialdata.blob.core.windows.net/**. Další informace o tom, jak používat Azure Blob storage s HDInsight naleznete v tématu [použití HDFS kompatibilního Azure Blob storage s využitím Apache Hadoop v HDInsight](../hdinsight-hadoop-use-blob-storage.md). Zkopírujte soubor do kontejneru výchozí vašeho clusteru.
 
 V tomto kurzu použijete konzolu Apache Hive. Pokyny o tom, jak používat konzolu Hive najdete v tématu [použití Apache Ambari Hive zobrazení s Apache Hadoop v HDInsight](apache-hadoop-use-hive-ambari-view.md).
 
@@ -83,7 +83,7 @@ SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
 SELECT * FROM StudentsOneLine
 ```
 
-Nezpracovaný soubor JSON se nachází v **wasb://processjson@hditutorialdata.blob.core.windows.net/**. **StudentsRaw** Hive body tabulku nezpracovaných dokumentu JSON, který se sloučí.
+Nezpracovaný soubor JSON se nachází v **wasb://processjson\@hditutorialdata.blob.core.windows.net/**. **StudentsRaw** Hive body tabulku nezpracovaných dokumentu JSON, který se sloučí.
 
 **StudentsOneLine** tabulky Hive v HDInsight výchozí systém souborů pod ukládá data **/json/studenty/** cestu.
 
@@ -153,8 +153,8 @@ Na závěr typ operátoru JSON v Hivu, který zvolíte, závisí na váš scén�
 Související články naleznete v tématu:
 
 * [Použití Apache Hive a HiveQL s Apache Hadoop v HDInsight k analýze ukázkového souboru Apache log4j](../hdinsight-use-hive.md)
-* [Analyzovat zpoždění letů pomocí Apache Hive v HDInsight](../hdinsight-analyze-flight-delay-data.md)
-* [Analýza dat Twitteru pomocí Apache Hive v HDInsight](../hdinsight-analyze-twitter-data.md)
+* [Analyzovat zpoždění letů pomocí Apache Hive v HDInsight](../hdinsight-analyze-flight-delay-data-linux.md)
+* [Analýza dat Twitteru pomocí Apache Hive v HDInsight](../hdinsight-analyze-twitter-data-linux.md)
 
 [hdinsight-python]:python-udf-hdinsight.md
 

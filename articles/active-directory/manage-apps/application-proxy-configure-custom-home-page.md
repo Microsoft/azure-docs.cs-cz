@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fc6b9ad5227bc5bffd1f44f664351843896aec
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e8017049218bed5a1b1bd86b68dc4342b4044723
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181605"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109776"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Nastavit vlastní domovskou stránku pro aplikace publikované pomocí Proxy aplikací Azure AD
 
@@ -30,10 +30,10 @@ Tento článek popisuje, jak nakonfigurovat aplikace k přesměrování uživate
 Při spuštění aplikace, že jste přesměruje ve výchozím nastavení domény kořenovou adresu URL pro publikovanou aplikaci. Cílová stránka je obvykle nastavena jako adresa URL domovské stránky. Pomocí modulu Azure AD Powershellu k definování adresy URL vlastní domovskou stránku, pokud chcete uživatelům aplikace přejít na určitou stránku v rámci aplikace. 
 
 Tady je jeden příklad, proč společnost nastaví vlastní domovskou stránku:
-- Uvnitř firemní sítě, uživatelé přejít na *https://ExpenseApp/login/login.aspx* přihlásit a získat přístup k vaší aplikaci.
-- Protože máte jiné prostředky, jako jsou obrázky, které Proxy aplikace potřebuje přístup k na nejvyšší úrovni struktury složek, můžete publikovat aplikaci s *https://ExpenseApp* jako interní adresa URL.
-- Výchozí externí adresa URL je *https://ExpenseApp-contoso.msappproxy.net*, který nepřijímá uživatelům přihlašovací stránku.  
-- Nastavte *https://ExpenseApp-contoso.msappproxy.net/login/login.aspx* jako adresa URL domovské stránky. 
+- Uvnitř firemní sítě, uživatelé přejít na `https://ExpenseApp/login/login.aspx` přihlásit a získat přístup k vaší aplikaci.
+- Protože máte jiné prostředky, jako jsou obrázky, které Proxy aplikace potřebuje přístup k na nejvyšší úrovni struktury složek, můžete publikovat aplikaci s `https://ExpenseApp` jako interní adresa URL.
+- Výchozí externí adresa URL je `https://ExpenseApp-contoso.msappproxy.net`, který nepřijímá uživatelům přihlašovací stránku.  
+- Nastavte `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` jako adresa URL domovské stránky. 
 
 >[!NOTE]
 >Když poskytnete uživatelům přístup k publikovaným aplikacím, aplikace se zobrazují v [přístupový Panel Azure AD](../user-help/active-directory-saas-access-panel-introduction.md) a [Spouštěči aplikací Office 365](https://blogs.office.com/2016/09/27/introducing-the-new-office-365-app-launcher).
@@ -113,7 +113,7 @@ Vytvořit adresu URL domovské stránky a aktualizovat vaše aplikace s touto ho
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4.
     ```
 
- Teď, když je ověření, že aplikace, budete připraveni k následujícím způsobem aktualizujte domovskou stránku.
+   Teď, když je ověření, že aplikace, budete připraveni k následujícím způsobem aktualizujte domovskou stránku.
 
 2. Vytvořte objekt prázdná aplikace pro uložení změn, které chcete provést. Tato proměnná obsahuje hodnoty, které chcete aktualizovat. Nic je vytvořen v tomto kroku.
 

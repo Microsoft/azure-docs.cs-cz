@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.openlocfilehash: 9d941c36499f851f20c41fa6dd01faf14e4192ba
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 808c2f38be875e70b4f52698b7a6278aa781a6ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992766"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124072"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Offline aktualizace služby Azure App Service ve službě Azure Stack
 
@@ -97,14 +97,14 @@ Chcete-li upgradovat službu App Service v odpojeném prostředí, musíte nejd�
 7. Na další stránce:
 
    1. Klikněte na tlačítko **připojit** vedle **předplatná Azure Stack** pole.
-        * Pokud používáte Azure Active Directory (Azure AD), zadejte účet správce Azure AD a heslo, které jste zadali při nasazení Azure Stack. Klikněte na tlačítko **přihlášení**.
-        * Pokud používáte služby Active Directory Federation Services (AD FS), zadejte účet správce. Příklad: _cloudadmin@azurestack.local_. Zadejte své heslo a klikněte na tlačítko **Sign In**.
+      * Pokud používáte Azure Active Directory (Azure AD), zadejte účet správce Azure AD a heslo, které jste zadali při nasazení Azure Stack. Klikněte na tlačítko **přihlášení**.
+      * Pokud používáte služby Active Directory Federation Services (AD FS), zadejte účet správce. Příklad: _cloudadmin@azurestack.local_. Zadejte své heslo a klikněte na tlačítko **Sign In**.
    2. V **předplatná Azure Stack** vyberte **výchozí předplatné poskytovatele**.
    3. V **lokality Azure Stack** , vyberte umístění, které odpovídá nasazujete do oblasti. Vyberte například **místní** Pokud vaše nasazení Azure Stack Development Kit.
    4. Pokud se detekuje existující nasazení služby App Service, klikněte prostředek skupiny a účet úložiště bude vyplní a šedě.
    5. Klikněte na tlačítko **Další** Zkontrolujte souhrn upgradu.
 
-    ![Nezjistila se instalace služby App Service][4]
+      ![Nezjistila se instalace služby App Service][4]
 
 8. Na stránce souhrnu:
    1. Zkontrolujte provedený výběr. Chcete-li provést změny, použijte **předchozí** tlačítka najdete předchozí stránky.

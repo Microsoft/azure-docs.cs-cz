@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9edd243c47c7c0eeeff3b875fccede01806862a7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d89886e7cc5fe47013902b281c490b79a07e7641
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452673"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888106"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Zprovoznění modelů strojového učení předdefinovaných Spark
 
@@ -190,9 +190,9 @@ Tato část ukazuje, jak index, kódování a škálovat zařazené do kategori�
 ### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>Funkce transformace: index a kódování zařazené do kategorií funkce pro vstup do modelů pro vyhodnocení
 Tato část ukazuje, jak data zařazená do kategorií pomocí indexu `StringIndexer` a kódování funkcí `OneHotEncoder` vstup do modelů.
 
-[StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) kóduje sloupec řetězcového typu popisky na sloupec indexů popisek. Indexy jsou řazeny podle frekvence popisek. 
+[StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) kóduje sloupec řetězcového typu popisky na sloupec indexů popisek. Indexy jsou řazeny podle frekvence popisek. 
 
-[OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) mapuje sloupec indexů popisek ke sloupci binárního vektorů s maximálně jeden – hodnotu single. Toto kódování umožňuje algoritmy, které očekávají průběžné Vážíme si toho funkce, jako je logistické regrese, použít zařazené do kategorií funkce.
+[OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) mapuje sloupec indexů popisek ke sloupci binárního vektorů s maximálně jeden – hodnotu single. Toto kódování umožňuje algoritmy, které očekávají průběžné Vážíme si toho funkce, jako je logistické regrese, použít zařazené do kategorií funkce.
 
     #INDEX AND ONE-HOT ENCODE CATEGORICAL FEATURES
 
@@ -257,7 +257,7 @@ Tato část ukazuje, jak data zařazená do kategorií pomocí indexu `StringInd
 Čas potřebný k provedení nad buňkou: 5.37 sekund
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>Vytváření objektů RDD s poli funkce pro vstup do modelů
-Tato část obsahuje kód, který ukazuje, jak indexovat zařazené do kategorií textová data jako objekt RDD a horkou jeden kódovat, je možné pro trénování a testování založený na stromové architektuře modely a MLlib logistické regrese. Indexovaná data uložená v [odolné Distributed Dataset (RDD)](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objekty. Jedná se o základní abstrakce ve Sparku. Objekt RDD představuje neměnné a dělené sadu prvků, které mohou být provozována paralelně se Sparkem.
+Tato část obsahuje kód, který ukazuje, jak indexovat zařazené do kategorií textová data jako objekt RDD a horkou jeden kódovat, je možné pro trénování a testování založený na stromové architektuře modely a MLlib logistické regrese. Indexovaná data uložená v [odolné Distributed Dataset (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objekty. Jedná se o základní abstrakce ve Sparku. Objekt RDD představuje neměnné a dělené sadu prvků, které mohou být provozována paralelně se Sparkem.
 
 Také obsahuje kód, který ukazuje, jak škálovat data `StandardScalar` poskytované MLlib pro použití v lineární regrese s pomocí Stochastického přechodu sestup (SGD), Oblíbené algoritmů pro trénování širokou škálu modelů strojového učení. [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) se používá funkce, které se odchylka jednotek škálování. Funkce škálování, označované také jako data normalizace, zajistí, že funkce se značně Celková uhrazená hodnotami jsou neudělil nadměrné naváží ve funkci cíle. 
 
@@ -397,9 +397,9 @@ Kód v této části ukazuje, jak načtení modelu lineární regrese z úloži�
 ## <a name="score-classification-and-regression-random-forest-models"></a>Skóre klasifikačních a regresních modelů doménové struktury náhodné
 Kód v této části ukazuje, jak načíst uložené klasifikace a regresních modelů náhodné doménové struktury uložit ve službě Azure blob storage, hodnocení výkonu pomocí standardní třídění a regresní opatření a uložte výsledky zpět do úložiště objektů blob.
 
-[Náhodné doménových struktur](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) jsou umožňující rozhodovacích stromů.  Jejich kombinací mnoha rozhodovacích stromů, aby se snížilo riziko overfitting. Náhodné doménových struktur může zpracovat zařazené do kategorií funkce rozšíření do nastavení klasifikace víc tříd, nevyžadují, aby funkce škálování a budou moct zachytit nelineárností a funkce interakce. Náhodné doménových struktur jsou jednou z nejvíce úspěšný strojového učení pro klasifikačních a regresních modelů.
+[Náhodné doménových struktur](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) jsou umožňující rozhodovacích stromů.  Jejich kombinací mnoha rozhodovacích stromů, aby se snížilo riziko overfitting. Náhodné doménových struktur může zpracovat zařazené do kategorií funkce rozšíření do nastavení klasifikace víc tříd, nevyžadují, aby funkce škálování a budou moct zachytit nelineárností a funkce interakce. Náhodné doménových struktur jsou jednou z nejvíce úspěšný strojového učení pro klasifikačních a regresních modelů.
 
-[Spark.mllib](http://spark.apache.org/mllib/) podporuje náhodné doménové struktury pro binární a víc tříd klasifikaci a regrese, pomocí funkce nepřetržitý a kategorií. 
+[Spark.mllib](https://spark.apache.org/mllib/) podporuje náhodné doménové struktury pro binární a víc tříd klasifikaci a regrese, pomocí funkce nepřetržitý a kategorií. 
 
     # SCORE RANDOM FOREST MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -445,7 +445,7 @@ Kód v této části ukazuje, jak načíst klasifikačních a regresních přech
 
 **Spark.mllib** podporuje GBTs pro binární klasifikaci a regrese, pomocí funkce nepřetržitý a kategorií. 
 
-[Přechodu zvýšení skóre stromů](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) jsou umožňující rozhodovacích stromů. GBTs trénování rozhodovacích stromů zavádět postupně, chcete-li minimalizovat ztrátu funkce. GBTs zvládne zařazené do kategorií funkcí, nevyžadují, aby funkce škálování a budou moct zachytit nelineárností a funkce interakce. Můžete také používají v nastavení multiclass klasifikace.
+[Přechodu zvýšení skóre stromů](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) jsou umožňující rozhodovacích stromů. GBTs trénování rozhodovacích stromů zavádět postupně, chcete-li minimalizovat ztrátu funkce. GBTs zvládne zařazené do kategorií funkcí, nevyžadují, aby funkce škálování a budou moct zachytit nelineárností a funkce interakce. Můžete také používají v nastavení multiclass klasifikace.
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 

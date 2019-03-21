@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 25fdce2381cc6dd65559a2450a42de5389589863
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7c4bd326c597b8e989dfc7aac5239ddb2d38376a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196700"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884760"
 ---
 # <a name="saas-application-storefront-details-tab"></a>Karta Podrobnosti z prodejních míst aplikace SaaS
 
@@ -37,7 +37,7 @@ Následující tabulka popisuje podrobnosti z prodejních míst, který zadáte 
 |  **Nabídka pole**   |  **Popis**  |
 |  ---------------   |  ---------------  |
 |      Souhrn nabídky              |        Souhrn hodnotové vaší nabídky. Zobrazí se na stránce hledání vaší nabídky. Měla by být delší než 100 znaků.           |
-|      Popis nabídky              |      Popis, který se zobrazí na stránce podrobností aplikace. Maximální povolený počet je 1300 znaků. Základní značky HTML můžete použít k formátování obsahu. Například &lt;p&gt;, &lt;h1&gt;, &lt;h2&gt;, a &lt;li&gt;. Pokud chcete zobrazit, jak bude vypadat formátovaný popis, pomocí nástroje online v reálném čase HTML jako http://htmledit.squarefree.com             |
+|      Popis nabídky              |      Popis, který se zobrazí na stránce podrobností aplikace. Maximální povolený počet je 1300 znaků. Základní značky HTML můžete použít k formátování obsahu. Například &lt;p&gt;, &lt;h1&gt;, &lt;h2&gt;, a &lt;li&gt;. Pokud chcete zobrazit, jak bude vypadat formátovaný popis, pomocí nástroje online v reálném čase HTML jako https://htmledit.squarefree.com             |
 |          Odvětví          |        Vyberte odvětví, že vaše nabídka je nejlepší zarovnán. Pokud vaše aplikace má vztah k více oborů, můžete vybrat maximálně dvě.           |
 |          Navrhované kategorie (maximálně 3)         |        Vyberte příslušné kategorie nabídky nejlépe zarovnán. Můžete vybrat nejvýše tři kategorie.           |
 |           verze aplikace         |        Zadejte číslo verze aplikace.           |
@@ -56,7 +56,7 @@ Následující tabulka popisuje pole pro marketingové artefakty.
 |                    |                   |
 |                    |                   |
 |                    |                   |
-|          Loga          |        Pokud zákazník v rámci Microsoft SaaS aplikaci, byste měli poskytnout všechny bitové kopie logo. Pokud je seznam, pouze 2 loga jsou povinné. Použijte následující pokyny pro loga nahrané v portál partnerů cloudu:<br><ul><li>Zachovat počet primární a sekundární barvy na vaše logo nízké. Design Azure má jednoduchou paletu barev. </li><li>Vyhněte se použití černé nebo bílé jako barva pozadí loga. Barvy motivu na webu Azure Portal je černobílý. Místo toho použijte některé barvy, které by vaše logo viditelného na webu Azure Portal. Doporučujeme použít jednoduché primární barvy. Pokud pracujete s průhledným pozadím, ujistěte se, že logem a text nejsou černou, bílá nebo modrou. </li><li>Nepoužívejte barevného přechodu pozadí na loga. </li><li>Předejde text, dokonce i vaše společnost nebo název značky, loga. Vzhled a chování vašeho loga musí být "ploché" a přechody se měli vyhnout.</li><li>Obrázek loga by neměl být roztažená.</li></ul>            |
+|          Logos          |        Pokud zákazník v rámci Microsoft SaaS aplikaci, byste měli poskytnout všechny bitové kopie logo. Pokud je seznam, pouze 2 loga jsou povinné. Použijte následující pokyny pro loga nahrané v portál partnerů cloudu:<br><ul><li>Zachovat počet primární a sekundární barvy na vaše logo nízké. Design Azure má jednoduchou paletu barev. </li><li>Vyhněte se použití černé nebo bílé jako barva pozadí loga. Barvy motivu na webu Azure Portal je černobílý. Místo toho použijte některé barvy, které by vaše logo viditelného na webu Azure Portal. Doporučujeme použít jednoduché primární barvy. Pokud pracujete s průhledným pozadím, ujistěte se, že logem a text nejsou černou, bílá nebo modrou. </li><li>Nepoužívejte barevného přechodu pozadí na loga. </li><li>Předejde text, dokonce i vaše společnost nebo název značky, loga. Vzhled a chování vašeho loga musí být "ploché" a přechody se měli vyhnout.</li><li>Obrázek loga by neměl být roztažená.</li></ul>            |
 |          Videa          |         Umožňuje přidat odkazy tohoto videa o vaší nabídce. Můžete použít odkazy na videa YouTube nebo Vimeo, které se zobrazují společně s vaší nabídky zákazníkům. Musíte také zadat obrázek miniatury videa, s obrázkem png 1280 × 720 pixelů. Může mít maximálně čtyři videí na nabídku.          |
 |          Dokumenty          |          Umožňuje přidat marketingové dokumenty pro vaši nabídku. Všechny dokumenty musí být ve formátu PDF a může mít maximálně tři dokumentů na nabídku.         |
 |        Snímky obrazovek            |         Umožňuje přidat snímky obrazovky vaší nabídky. Je maximálně pět snímky obrazovky, které mohou být přidány za nabídky. Maximální velikost je 1280 × 720 pixelů.          |
@@ -94,4 +94,4 @@ Zadejte tyto informace:
 
 ## <a name="next-steps"></a>Další postup
 
-[Kartu kontakty](./cpp-contacts-tab.md)
+[Karta Kontakty](./cpp-contacts-tab.md)

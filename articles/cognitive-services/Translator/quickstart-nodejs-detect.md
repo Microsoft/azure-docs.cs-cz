@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: ebeb5fb8863dbe31b525bd4058f54fb88d4ddf7b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 35b6a55a3f5cad27045694231fc5ce79ed7aeadf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736596"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58173936"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-with-nodejs"></a>Rychlý start: Použití rozhraní Translator Text API rozpoznat jazyk textu s využitím Node.js
 
@@ -118,6 +118,8 @@ node detect.js
 Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS).
 
 ## <a name="sample-response"></a>Ukázková odpověď
+
+Najít – zkratka země v tomto [seznam jazyků](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
 
 ```json
 [
