@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.date: 06/08/2017
-ms.openlocfilehash: 2604cdd6bf758858328c2d30fc4cde535f0a7148
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 3413b235d9202530eb1a3129637e3746bbe6585b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124658"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872553"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna zpráv AS2 pro podnikovou integraci B2B v Azure Logic Apps sadou Enterprise Integration Pack
 
@@ -35,7 +35,7 @@ Poté co [vytvořit integrační účet](../logic-apps/logic-apps-enterprise-int
 
 ## <a name="create-an-as2-agreement"></a>Vytvoření smlouvy AS2
 
-1.  Přihlaste se na web [Azure Portal](http://portal.azure.com "Azure Portal").  
+1.  Přihlaste se na web [Azure Portal](https://portal.azure.com "Azure Portal").  
 
 2. V hlavní nabídce Azure zvolte **všechny služby**. Do vyhledávacího pole zadejte "integrace" a pak vyberte **účty pro integraci**.
 

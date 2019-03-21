@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: c3cb9b7988269f394615b6498bbe7af5bb0ab1e1
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 1e55552e238e16f2221b138b6e12afa5635d2ab2
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743353"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202669"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Omezení přístupu k datům v HDInsight pomocí Azure Storage sdílených přístupových podpisů
 
@@ -163,7 +163,7 @@ Příklad vytvoření clusteru služby HDInsight, který používá sdíleného 
     Connect-AzureRmAccount
     ```
 
-    Po zobrazení výzvy, přihlaste se pomocí účtu pro vašeho předplatného Azure.
+    Po zobrazení výzvy se přihlaste pomocí účtu pro vašeho předplatného Azure.
 
     Pokud je váš účet přidružený k více předplatným Azure, budete možná muset použít `Select-AzureRmSubscription` vyberte předplatné, které chcete použít.
 
@@ -219,13 +219,7 @@ Pokud máte existující cluster založených na Linuxu, můžete přidat SAS **
 
 ## <a name="test-restricted-access"></a>Test s omezením pomocí specifikátoru přístupu
 
-Pokud chcete ověřit, že mají omezený přístup, pomocí následujících metod:
-
-* Pro **založené na Windows** clusterů HDInsight pomocí vzdálené plochy pro připojení ke clusteru. Další informace najdete v tématu [připojení k HDInsight pomocí protokolu RDP](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
-
-    Jakmile budete připojeni, použijte **příkazového řádku Hadoopu** ikony na ploše otevřete příkazový řádek.
-
-* Pro **založených na Linuxu** clusterů HDInsight pomocí SSH se připojte ke clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+Pokud chcete ověřit, že mají omezený přístup, připojte se ke clusteru pomocí SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Po připojení ke clusteru, postupujte následovně Chcete-li ověřit, že je možné pouze pro čtení a seznam položek v účtu úložiště SAS:
 
@@ -286,9 +280,9 @@ Po připojení ke clusteru, postupujte následovně Chcete-li ověřit, že je m
         + CategoryInfo          : NotSpecified: (:) [New-AzureRmHDInsightCluster], CloudException
         + FullyQualifiedErrorId : Hyak.Common.CloudException,Microsoft.Azure.Commands.HDInsight.NewAzureHDInsightClusterCommand
 
-**Příčina**: K této chybě může dojít, pokud uživatele SSH můžete použít heslo uživatele správce nebo HTTP pro cluster nebo (u clusterů se systémem Linux).
+**Příčina:** K této chybě může dojít, pokud uživatele SSH můžete použít heslo uživatele správce nebo HTTP pro cluster nebo (u clusterů se systémem Linux).
 
-**Rozlišení**: Použijte heslo, které splňuje následující kritéria:
+**Řešení:** Použijte heslo, které splňuje následující kritéria:
 
 * Musí být minimálně 10 znaků.
 * Musí obsahovat alespoň jednu číslici.

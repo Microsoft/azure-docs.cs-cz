@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 02/20/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 1a15600889a3c5a3c0ca587c78499f32be0ab8ed
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 9a7d83070caad86d7d66b62a9592dbb1e0017f97
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456703"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884235"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů Azure IoT Edge
 
@@ -154,7 +154,7 @@ Pokud chcete nastavit a spusťte simulátor, spusťte příkaz **Azure IoT Edge:
 
 1. Příprava prostředí pro ladění podle požadavků vývojovém jazyce, nastavte zarážku v modulu a vyberte konfiguraci ladění používat:
    - **C#**
-     - V integrovaném terminálu Visual Studio Code, změňte adresář na ***&lt;název modulu&gt;*** složku a potom spusťte následující příkaz k sestavení.Net Core aplikace.
+     - V integrovaném terminálu Visual Studio Code, změňte adresář na ***&lt;název modulu&gt;*** složku a potom spusťte následující příkaz k sestavení aplikace .NET Core.
 
        ```cmd
        dotnet build
@@ -165,7 +165,7 @@ Pokud chcete nastavit a spusťte simulátor, spusťte příkaz **Azure IoT Edge:
      - Přejděte do zobrazení ladění Visual Studio Code tak, že vyberete **zobrazení > ladění**. Vyberte konfiguraci ladění  ***&lt;název modulu&gt;* místní ladění (.NET Core)** z rozevíracího seznamu.
 
         > [!NOTE]
-        > Pokud vaše.Net Core `TargetFramework` není konzistentní s vaše cesta k programu v `launch.json`, budete muset ručně aktualizovat cestu program v `launch.json` tak, aby odpovídaly `TargetFramework` v souboru .csproj tak, že kód Visual Studio můžete úspěšně spustit to program.
+        > Pokud .NET Core `TargetFramework` není konzistentní s vaše cesta k programu v `launch.json`, budete muset ručně aktualizovat cestu program v `launch.json` tak, aby odpovídaly `TargetFramework` v souboru .csproj tak, že kód Visual Studio můžete úspěšně spustit to program.
 
    - **Node.js**
      - V integrovaném terminálu Visual Studio Code, změňte adresář na ***&lt;název modulu&gt;*** složku a potom spusťte následující příkaz k instalaci balíčků uzlu

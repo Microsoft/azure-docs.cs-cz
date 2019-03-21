@@ -15,12 +15,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2018
-ms.openlocfilehash: 4392dc0ab53304c172bbf4c29a50a64757ec9b77
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 34159d059b976043fac415470421970056320acc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760439"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996488"
 ---
 # <a name="provider-resource-usage-api"></a>Rozhraní API využití prostředků poskytovatele
 
@@ -39,6 +39,7 @@ Použití těchto rozhraní API je poskytovatel rozhraní API, aby volající mu
 | GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity} & subscriberId = {sub1.1} & verzi api-version = 2015-06-01-preview & continuationToken = {hodnota tokenu} |
 
 ### <a name="arguments"></a>Argumenty
+
 | **Argument** | **Popis** |
 | --- | --- |
 | *armendpoint* |Azure Resource Manageru koncový bod vašeho prostředí Azure Stack. Vytváření služby Azure Stack je, že název koncového bodu Azure Resource Manageru je ve formátu `https://adminmanagement.{domain-name}`. Například pro development kit, pokud je název domény *local.azurestack.external*, pak je koncový bod Resource Manageru `https://adminmanagement.local.azurestack.external`. |
@@ -80,6 +81,7 @@ meterID1",
 ```
 
 ### <a name="response-details"></a>Podrobnosti o odpovědi
+
 | **Argument** | **Popis** |
 | --- | --- |
 | *id* |Jedinečný Identifikátor využití agregace. |
@@ -102,9 +104,10 @@ Ke generování dat o využití, byste měli mít prostředky, které jsou spuš
 1. [Instalace Powershellu pro Azure Stack.](azure-stack-powershell-install.md)
 2. [Konfigurace uživatele služby Azure Stack](user/azure-stack-powershell-configure-user.md) nebo [operátory Azure stacku](azure-stack-powershell-configure-admin.md) prostředí PowerShell 
 3. Pro načtení dat o využití, použijte [Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates) rutinu Powershellu:
-```powershell
-Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
-```
+   ```powershell
+   Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
+   ```
+
 ### <a name="rest-api"></a>REST API
 
 Volání služby Microsoft.Commerce.Admin můžete shromažďovat informace o využití pro odstraněné předplatná. 

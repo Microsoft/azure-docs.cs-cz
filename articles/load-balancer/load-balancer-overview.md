@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 9ca8e6876b67167429dbc0b5e6c3f5b454878c2a
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: c2f6a614524f0dfb242db11618fda94ce57e6e6a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382686"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111527"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -94,8 +94,8 @@ Load Balancer poskytuje pro aplikace TCP a UDP následující základní funkce:
 
     Všechny odchozí toky z privátních IP adres v rámci vaší virtuální sítě na veřejné IP adresy na internetu je možné přeložit na front-endovou IP adresu Load Balanceru. Pokud je veřejný front-end svázaný s back-endovým virtuálním počítačem prostřednictvím pravidla vyrovnávání zatížení, Azure naprogramuje automatický překlad odchozích připojení na veřejnou front-endovou IP adresu.
 
-    * Umožněte snadný upgrade služeb a jejich zotavení po havárii díky možnosti dynamického mapování front-endu na jinou instanci služby.
-    * Usnadněte také správu seznamu řízení přístupu (ACL). Seznamy ACL vyjádřené s použitím front-endových IP adres se nemění při vertikálním navýšení nebo snížení kapacity služeb ani při jejich opětovném nasazení.  Překlad odchozích připojení na menší počet IP adres, než je počet počítačů, může snížit zátěž spojenou s přidáváním na seznam povolených.
+  * Umožněte snadný upgrade služeb a jejich zotavení po havárii díky možnosti dynamického mapování front-endu na jinou instanci služby.
+  * Usnadněte také správu seznamu řízení přístupu (ACL). Seznamy ACL vyjádřené s použitím front-endových IP adres se nemění při vertikálním navýšení nebo snížení kapacity služeb ani při jejich opětovném nasazení.  Překlad odchozích připojení na menší počet IP adres, než je počet počítačů, může snížit zátěž spojenou s přidáváním na seznam povolených.
 
     Další informace najdete v tématu věnovaném [odchozím připojením](load-balancer-outbound-connections.md).
 

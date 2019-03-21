@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 74274d6f901a2c02fb526a9bdce85771a9764f53
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6b82c0d2d4a5e22094bf0a408d6a42f17bb3bea4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248845"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839810"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Zobrazit a stáhnout fakturu Microsoft Azure
 
@@ -32,7 +32,7 @@ Pokud máte [smlouvy zákazníka se společností Microsoft](#Check-your-access-
 
 ## <a name="download-your-azure-invoices-pdf"></a>Stažení faktury Azure (PDF)
 
-Pro většinu předplatných si můžete stáhnout z webu Azure portal faktuře. Pokud máte smlouvu zákazníků společnosti Microsoft, přečtěte si téma [stahovat faktury pro fakturační profil](#download-invoices-for-a-billing-profile).
+Pro většinu předplatných si můžete stáhnout z webu Azure portal faktuře. Pokud máte smlouvu Microsoft zákazníka, naleznete v tématu ke stažení faktury pro fakturační profil.
 
 ### <a name="download-invoices-for-an-individual-subscription"></a>Stažení faktury pro samostatného předplatného
 
@@ -69,7 +69,7 @@ Pokud nevidíte fakturu za poslední fakturační období, přečtěte si téma 
 
 ## <a name="get-your-invoice-in-email-pdf"></a>Získání faktury v e-mailu (PDF)
 
-Můžete vyjádřit výslovný souhlas a nakonfigurovat další příjemce pro příjem Azure faktury e-mailem. Tato funkce nemusí být k dispozici pro určitá předplatná, jako jsou nabídky podpory, smlouvy Enterprise nebo Azure v programu Open. Pokud máte smlouvu Microsoft Customer, přečtěte si téma [získat vaše fakturační profil faktury e-mailem](#get-your-billing-profile-invoices-in-email).
+Můžete vyjádřit výslovný souhlas a nakonfigurovat další příjemce pro příjem Azure faktury e-mailem. Tato funkce nemusí být k dispozici pro určitá předplatná, jako jsou nabídky podpory, smlouvy Enterprise nebo Azure v programu Open. Pokud máte smlouvu Microsoft Customer, přečtěte si téma Get fakturační profil zasílání faktur e-mailem.
 
 ### <a name="get-your-subscriptions-invoices-in-email"></a>Zasílání faktur vašeho předplatného na e-mail
 
@@ -89,7 +89,7 @@ Pokud e-mail neobdržíte po provedení kroků, ujistěte se, že je správný v
 
 ### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>Vyjádřit výslovný nesouhlas získání faktury vaše předplatné v e-mailu
 
-Získání faktury e-mailem podle pokynů výše a kliknutím na tlačítko můžete zrušit **vyjádřit výslovný nesouhlas faktury e-mailem**. Tato možnost odebere všechny e-mailové adresy nastaveny na přijímání faktury e-mailem. Pokud se připojíte zpět můžete překonfigurovat příjemce.
+Získání faktury e-mailem podle pokynů výše a kliknutím na tlačítko můžete zrušit **vyjádřit výslovný nesouhlas faktury e-mailem**. Tato možnost odebere všechny e-mailové adresy, pro které je nastavené zasílání faktur e-mailem. Pokud se připojíte zpět můžete překonfigurovat příjemce.
 
  ![Snímek obrazovky zobrazující tok výslovného nesouhlasu s](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 
@@ -129,7 +129,7 @@ Faktura se nemusí zobrazovat z několika důvodů:
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Další postup
 

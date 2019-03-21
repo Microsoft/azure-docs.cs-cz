@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: e34856704b474ac1b7d25d589be5f98be2b113cc
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 02f973af71f0ee7e1fd1bcf712a08e001ec41667
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671552"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224953"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Kurz: Upgrade modulu runtime clusteru Service Fabric v Azure
 
-V tomto kurzu, který je třetí částí série, se dozvíte, jak upgradovat modul runtime Service Fabric v clusteru Azure Service Fabric. Tato část kurzu je určená pro clustery Service Fabric běžící v Azure, a nevztahuje se na samostatné clustery Service Fabric.
+Tento kurz je čtvrtou částí série a ukazuje, jak upgradovat modul runtime Service Fabric v clusteru Azure Service Fabric. Tato část kurzu je určená pro clustery Service Fabric běžící v Azure, a nevztahuje se na samostatné clustery Service Fabric.
 
 > [!WARNING]
 > Tato část kurzu vyžaduje PowerShell. Nástroje Azure CLI ještě upgradování modulu runtime clusteru nepodporují. Alternativně je možné cluster upgradovat na portálu. Další informace najdete v tématu [Upgrade clusteru Azure Service Fabric](service-fabric-cluster-upgrade.md).
@@ -40,6 +40,7 @@ V tomto kurzu se naučíte:
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
 > * Vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure pomocí šablony
+> * [Monitorování clusteru](service-fabric-tutorial-monitor-cluster.md)
 > * [Horizontální snížení nebo navýšení kapacity clusteru](service-fabric-tutorial-scale-cluster.md)
 > * Upgrade modulu runtime clusteru
 > * [Odstranění clusteru](service-fabric-tutorial-delete-cluster.md)

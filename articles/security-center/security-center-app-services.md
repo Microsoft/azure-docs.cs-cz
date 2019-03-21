@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
 ms.author: monhaber
-ms.openlocfilehash: f90ad2707e42c4b5b2c4188d7f0f18bb9c5ea31b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ea738535ae9326109a7c3fdd0b5d0c4f4691fdf0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105022"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878626"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>Ochrana služby App Service pomocí Azure Security Center
 Tento článek vám pomůže používat Azure Security Center k monitorování a chránit vaše aplikace běžící na App Service.
@@ -68,4 +68,4 @@ V tomto článku jste zjistili, jak ve službě Azure Security Center používat
 * [Služby App services](security-center-virtual-machine-protection.md#app-services):  Zobrazení seznamu vaší služby App service Environment se souhrny stavu.
 * [Monitorování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak monitorovat stav partnerských řešení.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md): Přečtěte si nejčastější dotazy o použití této služby.
-* [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
+* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

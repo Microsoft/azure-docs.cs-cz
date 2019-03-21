@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 045f2d12eb6836d14a09ea96c8eca3cad0e5246d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 551d0cd149c4d1555a40ccf0d7baeff97c6809c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458213"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863293"
 ---
 # <a name="collaborative-coding-with-git"></a>Kódování založené na spolupráci s využitím Gitu
 
@@ -36,7 +36,7 @@ Zadejte informace pro tuto novou větev, jako je například název větve, zák
 
 Dobrým postupem je vytvořit větev Git pro každé pracovní položky scénář. Pak pro každou pracovní položku úkolu, vytvoříte větev na základě větve scénáře. Uspořádání větví v hierarchické díky tomu, který odpovídá pro scénář úkolů vztahů je užitečný, pokud máte více lidem pracovat na různých scénářů stejného projektu nebo mít více lidem pracovat na různých úloh stejné scénáře. Konflikty můžete minimalizovat, když každý člen týmu pracuje na jinou větev a každý člen funguje na různých kódů nebo jiných artefaktů při sdílení větev. 
 
-Následující obrázek znázorňuje doporučené strategii větvení pro TDSP. Nemusí potřebovat jako řada větví, jako jsou zde uvedeny, zvláště když máte jen jeden nebo dva lidé začali pracovat na stejném projektu, nebo pouze jeden člověk funguje v jednotlivých úlohách tohoto scénáře. Ale oddělení vývoje větev z hlavní větve je vždy vhodné. To může pomoct zabránit větve vydané verze se přerušila vývojových aktivit. Podrobnější popis modelu větev Git najdete v [A úspěšné Git větvení modelu](http://nvie.com/posts/a-successful-git-branching-model/).
+Následující obrázek znázorňuje doporučené strategii větvení pro TDSP. Nemusí potřebovat jako řada větví, jako jsou zde uvedeny, zvláště když máte jen jeden nebo dva lidé začali pracovat na stejném projektu, nebo pouze jeden člověk funguje v jednotlivých úlohách tohoto scénáře. Ale oddělení vývoje větev z hlavní větve je vždy vhodné. To může pomoct zabránit větve vydané verze se přerušila vývojových aktivit. Podrobnější popis modelu větev Git najdete v [A úspěšné Git větvení modelu](https://nvie.com/posts/a-successful-git-branching-model/).
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 

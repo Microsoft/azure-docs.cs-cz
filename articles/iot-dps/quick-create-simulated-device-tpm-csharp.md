@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f574c85252614fd24734657affe3264d72130dd3
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 9ec8f8f1c6e1d1b806c5d965d3c2287027885c44
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997008"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901576"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení jazyka C# pro službu IoT Hub Device Provisioning
 
@@ -27,8 +27,8 @@ Vzorový kód používá simulátor Windows TPM jako [modul hardwarového zabezp
 Pokud neznáte proces automatického zřizování, měli byste se seznámit také s [koncepty automatického zřizování](concepts-auto-provisioning.md). Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
 Služba Azure IoT Device Provisioning podporuje dva typy registrací:
-- [Skupiny registrací:](concepts-service.md#enrollment-group) Slouží k registraci několika souvisejících zařízení.
-- [Jednotlivé registrace:](concepts-service.md#individual-enrollment) Slouží k registraci jednoho zařízení.
+- [Skupiny registrací:](concepts-service.md#enrollment-group) Použít k registraci více související zařízení.
+- [Jednotlivé registrace](concepts-service.md#individual-enrollment): Použitý k registraci jedno zařízení.
 
 V tomto článku si předvedeme jednotlivé registrace.
 
@@ -37,7 +37,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí 
 
-1. Ujistěte se, že máte [.Net Core 2.1 SDK nebo novější](https://www.microsoft.com/net/download/windows) na vašem počítači nainstalovaný. 
+1. Ujistěte se, že máte [sady SDK .NET Core 2.1 nebo novější](https://www.microsoft.com/net/download/windows) na vašem počítači nainstalovaný. 
 
 1. Ujistěte se, že je na vašem počítači nainstalovaný `git` a že je přidaný do proměnných prostředí, ke kterým má příkazové okno přístup. Na stránce [klientských nástrojů Git organizace Software Freedom Conservancy](https://git-scm.com/download/) najdete nejnovější verzi nástrojů `git` k instalaci. Jejich součástí je i **Git Bash**, aplikace příkazového řádku, pomocí které můžete pracovat se svým místním úložištěm Git. 
 
@@ -78,14 +78,14 @@ V tomto článku si předvedeme jednotlivé registrace.
 4. Na webu Azure Portal v okně s přehledem služby Device Provisioning vyberte **Správa registrací**. Vyberte kartu **Jednotlivé registrace** a v horní části klikněte na tlačítko **Přidat jednotlivou registraci**. 
 
 5. V části **Přidat registraci** zadejte následující informace:
-    - Jako *Mechanismus* ověření identity vyberte **TPM**.
-    - Zadejte *ID registrace* a *ověřovací klíč* pro vaše zařízení TPM, který jste si předtím poznamenali.
-    - Volitelně vyberte centrum IoT propojené s vaší službou zřizování.
-    - Zadejte jedinečné ID zařízení. Můžete zadat ID zařízení navrhované v ukázkovém výstupu nebo vlastní ID zařízení. Pokud použijete vlastní, při pojmenování zařízení se ujistěte, že nepoužíváte citlivá data. 
-    - Volitelně můžete aktualizovat **počáteční stav dvojčete zařízení** s použitím požadované počáteční konfigurace pro zařízení.
-    - Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
+   - Jako *Mechanismus* ověření identity vyberte **TPM**.
+   - Zadejte *ID registrace* a *ověřovací klíč* pro vaše zařízení TPM, který jste si předtím poznamenali.
+   - Volitelně vyberte centrum IoT propojené s vaší službou zřizování.
+   - Zadejte jedinečné ID zařízení. Můžete zadat ID zařízení navrhované v ukázkovém výstupu nebo vlastní ID zařízení. Pokud použijete vlastní, při pojmenování zařízení se ujistěte, že nepoužíváte citlivá data. 
+   - Volitelně můžete aktualizovat **počáteční stav dvojčete zařízení** s použitím požadované počáteční konfigurace pro zařízení.
+   - Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
 
-    ![Zadání informací o registraci zařízení v okně portálu](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
+     ![Zadání informací o registraci zařízení v okně portálu](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
 
    Po úspěšné registraci se *ID registrace* vašeho zařízení zobrazí v seznamu na kartě *Jednotlivé registrace*. 
 

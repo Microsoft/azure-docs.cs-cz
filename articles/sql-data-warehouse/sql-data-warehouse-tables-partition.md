@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
+ms.date: 03/18/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 60f475afd8e9d599d3771b875f15a29e8a082fb7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d3557be2fd8fdb459571d2c792302963e17e4471
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245884"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189389"
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>Dělení tabulek v SQL Data Warehouse
 Doporučení a příklady použití oddíly tabulky ve službě Azure SQL Data Warehouse.
@@ -109,27 +109,6 @@ GROUP BY    s.[name]
 ;
 ```
 
-## <a name="workload-management"></a>Správa úloh
-Je jedním z faktorů konečné zvážit vaše rozhodnutí oddíl tabulky [správu úloh](resource-classes-for-workload-management.md). Správa úloh ve službě SQL Data Warehouse je primárně správu paměti a souběžnosti. Ve službě SQL Data Warehouse je maximální paměť přidělená pro jednotlivé distribuce při provádění dotazu se řídí třídy prostředků. V ideálním případě jsou oddíly velikostí s ohledem na dalších faktorů, jako je vytváření Clusterované indexy columnstore potřebnou velikost paměti. Výhoda indexů columnstore clusteru výrazně při přidělování paměti. Proto budete chtít zajistit, že opětovné sestavení oddílu indexu není nedostatek paměti. Zvýšení množství paměti k dispozici pro dotaz můžete dosáhnout při přechodu z výchozí role smallrc, do jednoho z jiných rolí, jako je například largerc.
-
-Informace o přidělení paměti na distribuci je k dispozici pomocí dotazu na zobrazení dynamické správy Správce zdrojů. Ve skutečnosti vaše přidělení paměti je menší než výsledky následující dotaz. Tento dotaz však poskytuje úroveň pokyny, které můžete použít při nastavování velikosti oddílů pro operace správy data. Snažte se vyhnout třídění oddílů nad rámec přidělení paměti poskytovaný třídou velmi velké skupiny prostředků. Pokud oddíly nárůst na tomto obrázku, vystavujete se riziku tlaku na paměť, což zase vede k méně optimální komprese.
-
-```sql
-SELECT  rp.[name]                                AS [pool_name]
-,       rp.[max_memory_kb]                        AS [max_memory_kb]
-,       rp.[max_memory_kb]/1024                    AS [max_memory_mb]
-,       rp.[max_memory_kb]/1048576                AS [mex_memory_gb]
-,       rp.[max_memory_percent]                    AS [max_memory_percent]
-,       wg.[name]                                AS [group_name]
-,       wg.[importance]                            AS [group_importance]
-,       wg.[request_max_memory_grant_percent]    AS [request_max_memory_grant_percent]
-FROM    sys.dm_pdw_nodes_resource_governor_workload_groups    wg
-JOIN    sys.dm_pdw_nodes_resource_governor_resource_pools    rp ON wg.[pool_id] = rp.[pool_id]
-WHERE   wg.[name] like 'SloDWGroup%'
-AND     rp.[name]    = 'SloDWPool'
-;
-```
-
 ## <a name="partition-switching"></a>Přepínání oddílů
 SQL Data Warehouse podporuje rozdělení, sloučení a přepínání oddílů. Každá z těchto funkcí provádí pomocí [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) příkazu.
 
@@ -166,15 +145,7 @@ INSERT INTO dbo.FactInternetSales
 VALUES (1,19990101,1,1,1,1,1,1);
 INSERT INTO dbo.FactInternetSales
 VALUES (1,20000101,1,1,1,1,1,1);
-
-
-CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSales(OrderDateKey);
 ```
-
-> [!NOTE]
-> Vytvořením objektu statistiky metadat tabulky je přesnější. Pokud vynecháte statistiky, SQL Data Warehouse použije výchozí hodnoty. Podrobnosti o statistiky, najdete v tématu [statistiky](sql-data-warehouse-tables-statistics.md).
-> 
-> 
 
 Následující dotaz hledá počet řádků s použitím `sys.partitions` katalogu zobrazení:
 
@@ -252,6 +223,31 @@ Po dokončení přesunu dat, je vhodné aktualizace statistik v cílové tabulce
 
 ```sql
 UPDATE STATISTICS [dbo].[FactInternetSales];
+```
+
+### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Načtení nových dat do oddílů, které obsahují data v jednom kroku
+Načítání dat do oddílů pomocí partition přepínání je pohodlný způsob, jak připravit nová data v tabulce, která není viditelná uživatelům přepínač na nová data.  Může být náročné na zaneprázdněný systémy řešit spory uzamčení přidružené k přepínání oddílů.  Vymazání existujících dat v oddílu, `ALTER TABLE` používá jako povinné. Chcete-li přepnout data.  Pak další `ALTER TABLE` byla nutná přepnout v nových datech.  Ve službě SQL Data Warehouse `TRUNCATE_TARGET` možnost je podporovaná v `ALTER TABLE` příkazu.  S `TRUNCATE_TARGET` `ALTER TABLE` příkaz přepíše existující data v oddílu s novými daty.  Tady je příklad, který používá `CTAS` vytvořit novou tabulku s existujícími daty vloží nová data, pak přepne všechna data zpět do cílové tabulky přepíše existující data.
+
+```sql
+CREATE TABLE [dbo].[FactInternetSales_NewSales]
+    WITH    (   DISTRIBUTION = HASH([ProductKey])
+            ,   CLUSTERED COLUMNSTORE INDEX
+            ,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES
+                                (20000101,20010101
+                                )
+                            )
+            )
+AS
+SELECT  *
+FROM    [dbo].[FactInternetSales]
+WHERE   [OrderDateKey] >= 20000101
+AND     [OrderDateKey] <  20010101
+;
+
+INSERT INTO dbo.FactInternetSales_NewSales
+VALUES (1,20000101,2,2,2,2,2,2);
+
+ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInternetSales PARTITION 2 WITH (TRUNCATE_TARGET = ON);  
 ```
 
 ### <a name="table-partitioning-source-control"></a>Tabulka dělení správy zdrojového kódu

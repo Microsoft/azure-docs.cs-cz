@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/27/2017
-ms.openlocfilehash: bb5b6a4e9d50a692342f497d27138c51e0dc93e4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 641254be37ac0019ee6a256fc99f96fc3bfb75a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729420"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122769"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Průběžnou integraci a vývoj s použitím Stream Analytics tools
 Tento článek popisuje, jak můžete nastavit průběžnou integraci a nasazování procesu pomocí nástroje Azure Stream Analytics pro Visual Studio.
@@ -21,8 +21,8 @@ Tento článek popisuje, jak můžete nastavit průběžnou integraci a nasazov�
 Použijte verzi 2.3.0000.0 nebo novější z [nástroje Stream Analytics pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) jak získat podporu pro MSBuild.
 
 Balíček NuGet je k dispozici: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Poskytuje nástroj MSBuild, místní spuštění a nástroje pro nasazení, které podporují kontinuální integraci a proces nasazení projektů Stream Analytics v sadě Visual Studio. 
-> [!NOTE] 
-Balíček NuGet lze použít pouze 2.3.0000.0 nebo vyšší než verze nástrojů pro Stream Analytics pro Visual Studio. Pokud máte projekty vytvořené v předchozích verzích sady Visual Studio tools, stačí je otevřít 2.3.0000.0 nebo vyšší než verze a uložit. Nové funkce jsou povoleny. 
+> [!NOTE]
+> Balíček NuGet lze použít pouze 2.3.0000.0 nebo vyšší než verze nástrojů pro Stream Analytics pro Visual Studio. Pokud máte projekty vytvořené v předchozích verzích sady Visual Studio tools, stačí je otevřít 2.3.0000.0 nebo vyšší než verze a uložit. Nové funkce jsou povoleny. 
 
 Další informace najdete v tématu [nástroje Stream Analytics pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
@@ -45,8 +45,8 @@ Když projekt sady Visual Studio pro Stream Analytics sestavena úspěšně, gen
 
 Výchozí parametry v souboru parameters.JSON tímto se z nastavení projektu sady Visual Studio. Pokud chcete nasadit do jiného prostředí, nahraďte parametry odpovídajícím způsobem.
 
-> [!NOTE] 
-Pro všechny přihlašovací údaje, výchozí hodnoty jsou nastaveny na hodnotu null. Jste *požadované* nastavit hodnoty před nasazením do cloudu.
+> [!NOTE]
+> Pro všechny přihlašovací údaje, výchozí hodnoty jsou nastaveny na hodnotu null. Jste *požadované* nastavit hodnoty před nasazením do cloudu.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {

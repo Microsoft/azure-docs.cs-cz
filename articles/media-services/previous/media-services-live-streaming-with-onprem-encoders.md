@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: 7fa2dad124b5ef9e93402d6d4c03d956b00184af
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: da20e4601b75bcb22546d21f6ad218ac9ba2728b
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442364"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188352"
 ---
-# <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi
+# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Práce s kanály, které přijímají živé streamování s více přenosovými rychlostmi z místních kodérů
 
 > [!NOTE]
 > Od 12. května 2018, živé kanály budou nadále podporu přenosového streamu RTP/MPEG-2 protokol ingestování. Migrujte prosím z RTP/MPEG-2 na RTMP nebo MP4 s fragmentací (Smooth Streaming) ingestovací protokoly.
@@ -146,7 +146,7 @@ Kanály nabízejí koncový bod ve verzi preview (adresa URL náhledu), který p
 
 Když vytvoříte kanál, můžete získat adresu URL ve verzi preview. Abyste mohli získat adresu URL kanálu nemá v **systémem** stavu. Po spuštění kanál ingestovat data můžete zobrazit náhled datového proudu.
 
-V současné době se dodávají stream ve verzi preview jenom v fragmentovaného MP4 formátu (technologie Smooth Streaming), bez ohledu na zadaný typ vstupu. Můžete použít [technologie Smooth Streaming monitorování stavu](http://playready.directtaps.net/smoothstreaming/) přehrávače pro datový proud smooth testování. Můžete také použít přehrávač, který je hostovaný na webu Azure Portal k zobrazení vašeho datového proudu.
+V současné době se dodávají stream ve verzi preview jenom v fragmentovaného MP4 formátu (technologie Smooth Streaming), bez ohledu na zadaný typ vstupu. Můžete použít [technologie Smooth Streaming monitorování stavu](https://playready.directtaps.net/smoothstreaming/) přehrávače pro datový proud smooth testování. Můžete také použít přehrávač, který je hostovaný na webu Azure Portal k zobrazení vašeho datového proudu.
 
 #### <a name="allowed-ip-addresses"></a>Povolené IP adresy
 Můžete definovat IP adresy, které jsou povolené pro připojení ke koncovému bodu ve verzi preview. Pokud nejsou zadány žádné IP adresy, jakékoli IP adresy je povolené. Povolené IP adresy se dá nastavit jako jeden z následujících akcí:
@@ -185,7 +185,7 @@ Možné hodnoty pro aktuální stav kanálu:
 Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 
 | Stav kanálu | Indikátory v uživatelském rozhraní portálu | Fakturováno? |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **Spuštění** |**Spuštění** |Ne (přechodný stav) |
 | **Spuštění** |**Připraveno** (žádný běžící program)<p><p>nebo<p>**Streamování** (nejméně jeden běžící program) |Ano |
 | **Zastavení** |**Zastavení** |Ne (přechodný stav) |

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: c067b0e6a85e0b5c4bd4cbb582de13bb1bc87774
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f69b3f2c8de4cf137583ad7a33e8edfe31373096
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453609"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904503"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>Kurz 1: Předpovědět úvěrové riziko - Azure Machine Learning Studio
 
@@ -70,7 +70,7 @@ Po vytvoření pracovního prostoru, otevřete Machine Learning Studio ([https:/
 ## <a name="upload"></a>Nahrání existujících dat
 
 K vývoji prediktivního modelu pro úvěrové riziko, potřebujete data, která můžete použít k trénování a pak model otestujeme. Pro účely tohoto kurzu budete používat "UCI Statlog (německé daty o úvěrovém) Data Set" v úložišti UC Irvine Machine Learning. Najdete ho tady:  
-<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
+<a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
 Budete používat soubor s názvem **german.data**. Stáhněte si tento soubor na místní pevný disk.  
 
@@ -212,18 +212,18 @@ Chcete-li použít [upravit Metadata][edit-metadata], Nejdřív musíte určit s
 
 1. Zpátky **vlastnosti** podokně vyhledejte **nové názvy sloupců** parametru. V tomto poli zadejte seznam názvů 21 sloupců v datové sadě, oddělené čárkami a pořadí sloupců. Názvy sloupců můžete získat z datové sady dokumentace na webu UCI nebo pro usnadnění práce můžete zkopírovat a vložit následující seznam:  
 
-  ```   
-  Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
-  ```
+   ```   
+   Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
+   ```
 
-  V podokně vlastností vypadá takto:
+   V podokně vlastností vypadá takto:
 
-  ![Vlastnosti pro upravit Metadata](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
+   ![Vlastnosti pro upravit Metadata](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
-  > [!TIP]
-  > Pokud chcete ověřit záhlaví sloupců, spustit experiment (klikněte na tlačítko **spustit** pod plátnem experimentu). Po jeho dokončení spuštění (zelená značka zaškrtnutí se zobrazí na [upravit Metadata][edit-metadata]), klikněte na výstupní port modulu [upravit Metadata][edit-metadata] modulu a vyberte **vizualizovat**. Zobrazit výstup jakýkoli modul stejným způsobem, chcete-li zobrazit průběh dat prostřednictvím experimentu.
-  > 
-  > 
+   > [!TIP]
+   > Pokud chcete ověřit záhlaví sloupců, spustit experiment (klikněte na tlačítko **spustit** pod plátnem experimentu). Po jeho dokončení spuštění (zelená značka zaškrtnutí se zobrazí na [upravit Metadata][edit-metadata]), klikněte na výstupní port modulu [upravit Metadata][edit-metadata] modulu a vyberte **vizualizovat**. Zobrazit výstup jakýkoli modul stejným způsobem, chcete-li zobrazit průběh dat prostřednictvím experimentu.
+   > 
+   > 
 
 ### <a name="create-training-and-test-datasets"></a>Vytvoření trénovací a testovací datové sady
 

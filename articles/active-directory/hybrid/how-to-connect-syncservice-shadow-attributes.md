@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 564a0948d09e4726800d19858b4c23924fc56973
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187334"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839164"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect sync služby stínové atributy
 Většina atributy jsou reprezentovány stejným způsobem jako ve službě Azure AD se nacházejí v místní Active Directory. Ale některé atributy mají některé zvláštní zpracování a hodnota atributu ve službě Azure AD může být jiný než Azure AD Connect synchronizuje.
@@ -58,7 +58,7 @@ Uživatel poštovní schránky, ať už místní nebo v Exchangi Online se zobra
 | místní proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-V tomto případě **smtp:abbie.spencer@fabrikam.com** byl odebrat, protože nebyla ověřena tuto doménu. Výměna také přidá, ale **SIP:abbie.spencer@fabrikamonline.com**. Společnost Fabrikam nebyl použit, Lync nebo Skype místní, ale Azure AD a Exchange Online připravte se na to.
+V tomto případě **smtp:abbie.spencer\@fabrikam.com** byl odebrat, protože nebyla ověřena tuto doménu. Výměna také přidá, ale **SIP:abbie.spencer\@fabrikamonline.com**. Společnost Fabrikam nebyl použit, Lync nebo Skype místní, ale Azure AD a Exchange Online připravte se na to.
 
 Tuto logiku pro proxyAddresses se označuje jako **ProxyCalc**. ProxyCalc je vyvolána při každé změně na uživatele při:
 

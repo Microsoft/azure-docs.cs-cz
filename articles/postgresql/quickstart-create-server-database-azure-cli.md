@@ -6,16 +6,20 @@ ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 3/12/2019
 ms.custom: mvc
-ms.openlocfilehash: 091babea272a609a668ebfb676a55e0fa02b8c27
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 07e3f1f2dd672fcfd0b7a3a4d102c429ac123c08
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548741"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902014"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-using-the-azure-cli"></a>Rychlý start: Vytvoření Azure Database for PostgreSQL pomocí rozhraní CLI Azure
+
+> [!TIP]
+> Zvažte použití jednodušší [az postgres nahoru](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) rozhraní příkazového řádku Azure (aktuálně ve verzi preview). Vyzkoušejte si [rychlý Start](./quickstart-create-server-up-azure-cli.md).
+
 Azure Database for PostgreSQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze PostgreSQL v cloudu. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak vytvořit server Azure Database for PostgreSQL ve [skupině prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) pomocí rozhraní CLI Azure.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
@@ -50,7 +54,7 @@ Vytvořte [server Azure Database for PostgreSQL](overview.md) pomocí příkazu 
 ---|---|---
 jméno | mydemoserver | Zvolte jedinečný název serveru, který identifikuje váš server Azure Database for PostgreSQL. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat ze 3 až 63 znaků.
 resource-group | myresourcegroup | Zadejte název skupiny prostředků Azure.
-sku-name | GP_Gen5_2 | Název skladové jednotky. Dodržuje konvenci {cenová úroveň}_{výpočetní generace}_{virtuální jádra} ve zkráceném zápisu. Další informace o parametru sku-name najdete pod touto tabulkou.
+sku-name | GP_Gen5_2 | Název skladové jednotky. Dodržuje konvenci {cenová úroveň}\_{výpočetní generace}\_{virtuální jádra} ve zkráceném zápisu. Další informace o parametru sku-name najdete pod touto tabulkou.
 backup-retention | 7 | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny. Rozsah je 7 až 35. 
 geo-redundant-backup | Zakázáno | Určuje, jestli pro tento server mají nebo nemají být povolené geograficky redundantní zálohy. Povolené hodnoty: Povolený, zakázaný.
 location | westus | Lokace Azure pro server.
@@ -131,25 +135,25 @@ Výsledek je ve formátu JSON. Poznamenejte si položky **administratorLogin** a
 Pokud má klientský počítač nainstalovaný systém PostgreSQL, můžete se připojit k serveru Azure PostgreSQL pomocí místní instance nástroje [psql](https://www.postgresql.org/docs/current/static/app-psql.html). Teď se pomocí nástroje příkazového řádku psql připojíme k serveru Azure PostgreSQL.
 
 1. Spusťte následující příkaz psql pro připojení k serveru Azure Database for PostgreSQL:
-```bash
-psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
-```
+   ```bash
+   psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
+   ```
 
-  Třeba tento příkaz provádí pomocí přihlašovacích údajů pro přístup připojení k výchozí databázi s názvem **postgres** na serveru PostgreSQL **mydemoserver.postgres.database.azure.com**. Zadejte heslo `<server_admin_password>`, které jste zvolili při zobrazení výzvy k zadání hesla.
+   Třeba tento příkaz provádí pomocí přihlašovacích údajů pro přístup připojení k výchozí databázi s názvem **postgres** na serveru PostgreSQL **mydemoserver.postgres.database.azure.com**. Zadejte heslo `<server_admin_password>`, které jste zvolili při zobrazení výzvy k zadání hesla.
   
-  ```bash
-psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
-```
+   ```bash
+   psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
+   ```
 
-2.  Po připojení k serveru vytvořte na příkazovém řádku prázdnou databázi.
-```sql
-CREATE DATABASE mypgsqldb;
-```
+2. Po připojení k serveru vytvořte na příkazovém řádku prázdnou databázi.
+   ```sql
+   CREATE DATABASE mypgsqldb;
+   ```
 
-3.  Na příkazovém řádku spusťte následující příkaz, který přepne připojení na nově vytvořenou databázi **mypgsqldb**:
-```sql
-\c mypgsqldb
-```
+3. Na příkazovém řádku spusťte následující příkaz, který přepne připojení na nově vytvořenou databázi **mypgsqldb**:
+   ```sql
+   \c mypgsqldb
+   ```
 
 ## <a name="connect-to-the-postgresql-server-using-pgadmin"></a>Připojení k serveru PostgreSQL pomocí nástroje pgAdmin
 
@@ -172,7 +176,7 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
     Název nebo adresa hostitele | Název serveru | Hodnota názvu serveru, kterou jste použili dříve při vytváření serveru Azure Database for PostgreSQL. Ukázkový server v příkladu je **mydemoserver.postgres.database.azure.com**. Použijte plně kvalifikovaný název domény (**\*.postgres.database.azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. 
     Port | 5432 | Port, který se použije pro připojení k serveru Azure Database for PostgreSQL. 
     Databáze údržby | *postgres* | Výchozí systémem vygenerovaný název databáze.
-    Uživatelské jméno | Přihlašovací jméno správce serveru | Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *username@servername*.
+    Uživatelské jméno | Přihlašovací jméno správce serveru | Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *uživatelské jméno\@servername*.
     Heslo | Vaše heslo správce | Heslo, které jste si zvolili při vytváření serveru dříve v tomto rychlém startu.
     Role | Ponechte prázdné | V tuto chvíli není nutné zadávat název role. Ponechte toto pole prázdné.
     Režim SSL | *Vyžadovat* | Na kartě SSL nástroje pgAdmin můžete nastavit režim SSL. Ve výchozím nastavení jsou všechny servery Azure Database for PostgreSQL vytvořené se zapnutým vynucováním SSL. Pokud chcete vynucování SSL vypnout, přečtěte si téma popisující [vynucování SSL](./concepts-ssl-connection-security.md).
@@ -189,7 +193,7 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
 
 10. Ze seznamu vyberte **Vlastníka** databáze. Zvolte přihlašovací jméno správce serveru, jako je **myadmin** v příkladu.
 
-   ![Vytvoření databáze v nástroji pgAdmin](./media/quickstart-create-server-database-azure-cli/11-pgadmin-database.png)
+    ![Vytvoření databáze v nástroji pgAdmin](./media/quickstart-create-server-database-azure-cli/11-pgadmin-database.png)
 
 11. Vyberte **Uložit** a vytvořte novou prázdnou databázi.
 

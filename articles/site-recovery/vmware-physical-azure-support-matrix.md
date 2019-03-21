@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: raynew
-ms.openlocfilehash: 637a8e91ba03240cd4c2c530ae2c982d2115c81d
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
-ms.translationtype: MT
+ms.openlocfilehash: 086a3b4bf34f2ea7454bb018f9468dd21629a8ce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569820"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903092"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -48,7 +48,7 @@ Volné místo na disku | 600 GB místa potřebného pro mezipaměť procesového
 Volné místo na disku | 600 GB místa potřebného pro jednotka pro uchování.
 Operační systém  | Windows Server 2012 R2 nebo Windows Server 2016 |
 Národní prostředí operačního systému | Angličtina (en-us)
-PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") by měly být nainstalovány.
+PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") není vyžadován pro konfigurační server s verzemi z [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery).
 Role Windows Serveru | Nepovolí: <br/> – Active Directory Domain Services <br/>– Internet Information Service <br/> – Hyper-V |
 Zásady skupiny| Nepovolí: <br/> -Zabránit přístupu do příkazového řádku. <br/> -Zabránit přístupu k nástrojům pro úpravu registru. <br/> – Logika důvěryhodnosti pro přiložené soubory. <br/> -Zapnutí provádění skriptů. <br/> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Ujistěte se, že jste:<br/><br/> – Dříve existující výchozí web není nutné. <br/> -Aktivovat [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> -Aktivovat [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) nastavení  <br/> -Nemají dříve existující web nebo aplikace naslouchá na portu 443<br/>
@@ -185,7 +185,7 @@ Funkce multipath hosta/server (MPIO) | Ne
 
 > [!NOTE]
 > Rozhraní UEFI spouštění virtuálních počítačů VMware s Windows serverem 2012 nebo novějším se dají migrovat do Azure. Platí následující omezení:
-
+> 
 > - Je podporována pouze migrace do Azure. Navrácení služeb po obnovení do místní lokality VMware se nepodporuje.
 > - Server by neměl mít více než čtyři oddíly na disku s operačním systémem.
 > - Vyžaduje verzi služby Mobility 9.13 nebo vyšší.
@@ -265,7 +265,7 @@ Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami pr
 ## <a name="download-latest-azure-site-recovery-components"></a>Stáhněte si nejnovější komponenty Azure Site Recovery
 
 **Název** | **Popis** | **Pokyny ke stažení nejnovější verze**
---- | --- | --- | --- | ---
+--- | --- | --- 
 Konfigurační server | Koordinuje komunikaci mezi servery VMware v místním prostředím a Azure <br/><br/> Nainstalovat na místní servery VMware | Pro novou instalaci, klikněte na tlačítko [tady](vmware-azure-deploy-configuration-server.md). Pro upgrade existující komponentu na nejnovější verzi, klikněte na tlačítko [tady](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
 Procesový server|Obvykle se instaluje na konfigurační server. Přijímá data replikace; optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování. a odesílá je do služby Azure Storage. Jak vaše nasazení poroste, můžete přidat další, samostatné procesní servery pro zpracování větší objemy přenosů replikace.| Pro novou instalaci, klikněte na tlačítko [tady](vmware-azure-set-up-process-server-scale.md). Pro upgrade existující komponentu na nejnovější verzi, klikněte na tlačítko [tady](vmware-azure-manage-process-server.md#upgrade-a-process-server).
 Služba mobility | Koordinuje replikaci mezi servery pro/fyzické servery VMware v místním a Azure nebo sekundární lokality<br/><br/> Nainstalovat na virtuální počítač VMware nebo fyzické servery, které chcete replikovat | Pro novou instalaci, klikněte na tlačítko [tady](vmware-azure-install-mobility-service.md). Pro upgrade existující komponentu na nejnovější verzi, klikněte na tlačítko [tady](vmware-physical-mobility-service-overview.md##update-mobility-service-from-azure-portal).

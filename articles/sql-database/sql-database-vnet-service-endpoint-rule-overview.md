@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: 15ca464e8e44183b445bfdabe9abf5dd560a4f70
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: 4af27ad4fb5096f3ccac5de901c76e8d7464e1f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312252"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887115"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Použití koncové body služeb virtuální sítě a pravidel pro databázové servery
 
@@ -175,58 +175,60 @@ PolyBase se běžně používá k načtení dat do Azure SQL Data Warehouse z ú
 #### <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 1.  Instalace Azure Powershellu pomocí tohoto [průvodce](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2.  Pokud máte účet pro obecné účely v1 a blob storage, je nutné nejprve upgradovat na v2 pro obecné účely použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 3.  Musíte mít **Povolit důvěryhodné služby Microsoftu pro přístup k tomuto účtu úložiště** zapnuté pod účtem služby Azure Storage **brány firewall a virtuální sítě** nabídky nastavení. Projít tento [průvodce](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) Další informace.
  
 #### <a name="steps"></a>Kroky
-1.  V prostředí PowerShell **registraci serveru služby SQL Database** s Azure Active Directory (AAD):
+1. V prostředí PowerShell **registraci serveru služby SQL Database** s Azure Active Directory (AAD):
 
-    ```powershell
-    Connect-AzAccount
-    Select-AzSubscription -SubscriptionId your-subscriptionId
-    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
-    ```
+   ```powershell
+   Connect-AzAccount
+   Select-AzSubscription -SubscriptionId your-subscriptionId
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   ```
     
- 1. Vytvoření **pro obecné účely v2 účtu úložiště** použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+   1. Vytvoření **pro obecné účely v2 účtu úložiště** použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
 
-    > [!NOTE]
-    > - Pokud máte účet pro obecné účely v1 a blob storage, je nutné **nejprve upgradovat na v2** použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
-    > - Známé problémy s Azure Data Lake Storage Gen2 najdete to [průvodce](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
+   > [!NOTE]
+   > - Pokud máte účet pro obecné účely v1 a blob storage, je nutné **nejprve upgradovat na v2** použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+   > - Známé problémy s Azure Data Lake Storage Gen2 najdete to [průvodce](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1.  V rámci účtu úložiště, přejděte do **řízení přístupu (IAM)** a klikněte na tlačítko **přidat přiřazení role**. Přiřadit **Přispěvatel dat objektu Blob služby Storage (Preview)** role RBAC pro váš server SQL Database.
+1. V rámci účtu úložiště, přejděte do **řízení přístupu (IAM)** a klikněte na tlačítko **přidat přiřazení role**. Přiřadit **Přispěvatel dat objektu Blob služby Storage (Preview)** role RBAC pro váš server SQL Database.
 
-    > [!NOTE] 
-    > Tento krok lze provést pouze členové s oprávněními vlastníka. Různé předdefinované role pro prostředky Azure, najdete to [průvodce](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+   > [!NOTE] 
+   > Tento krok lze provést pouze členové s oprávněními vlastníka. Různé předdefinované role pro prostředky Azure, najdete to [průvodce](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
   
-1.  **Polybase připojením k účtu Azure Storage:**
+1. **Polybase připojením k účtu Azure Storage:**
 
-    1. Vytvoření databáze **[hlavní klíč](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql?view=sql-server-2017)** Pokud jste ještě nevytvořili dříve:
-        ```SQL
-        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
-        ```
+   1. Vytvoření databáze **[hlavní klíč](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** Pokud jste ještě nevytvořili dříve:
+       ```SQL
+       CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
+       ```
     
-    1. Vytvoření přihlašovacích údajů s rozsahem databáze s **IDENTITY = "Identita spravované služby"**:
+   1. Vytvoření přihlašovacích údajů s rozsahem databáze s **IDENTITY = "Identita spravované služby"**:
 
-        ```SQL
-        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
-        ```
-        > [!NOTE] 
-        > - Není nutné zadat tajný kód se přístupový klíč k úložišti Azure, protože tento mechanismus využívá [Identity spravované](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pod pokličkou.
-        > - Název IDENTITY by měl být **Managed Service Identity** PolyBase připojení k práci s účtem úložiště Azure pro zabezpečené virtuální síti.    
+       ```SQL
+       CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
+       ```
+       > [!NOTE] 
+       > - Není nutné zadat tajný kód se přístupový klíč k úložišti Azure, protože tento mechanismus využívá [Identity spravované](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pod pokličkou.
+       > - Název IDENTITY by měl být **Managed Service Identity** PolyBase připojení k práci s účtem úložiště Azure pro zabezpečené virtuální síti.    
     
-    1. Vytvoření externího zdroje dat s abfss: / / schéma pro připojení k účtu úložiště pro obecné účely v2 používáním funkce PolyBase:
+   1. Vytvoření externího zdroje dat s abfss: / / schéma pro připojení k účtu úložiště pro obecné účely v2 používáním funkce PolyBase:
 
-        ```SQL
-        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
-        ```
-        > [!NOTE] 
-        > - Pokud už máte externí tabulky přidružené k účtu pro obecné účely v1 nebo blob storage, by měly nejprve vyřadit tyto externí tabulky a pak vyřadit odpovídající externí zdroj dat. Pak vytvoříte externí zdroj dat se abfss: / / schéma připojení k účtu úložiště pro obecné účely v2, jak je uvedeno výše a znovu vytvořit všechny externí tabulky, které pomocí tohoto nového zdroje externí data. Můžete použít [generovat a Průvodce publikováním skripty](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard?view=sql-server-2017) vygenerovat vytvořit skript pro externí tabulky pro snadné.
-        > - Další informace o abfss: / / schéma, přečtěte si toto [průvodce](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
-        > - Další informace o CREATE EXTERNAL DATA SOURCE, najdete to [průvodce](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
+       ```SQL
+       CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
+       ```
+       > [!NOTE] 
+       > - Pokud už máte externí tabulky přidružené k účtu pro obecné účely v1 nebo blob storage, by měly nejprve vyřadit tyto externí tabulky a pak vyřadit odpovídající externí zdroj dat. Pak vytvoříte externí zdroj dat se abfss: / / schéma připojení k účtu úložiště pro obecné účely v2, jak je uvedeno výše a znovu vytvořit všechny externí tabulky, které pomocí tohoto nového zdroje externí data. Můžete použít [generovat a Průvodce publikováním skripty](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) vygenerovat vytvořit skript pro externí tabulky pro snadné.
+       > - Další informace o abfss: / / schéma, přečtěte si toto [průvodce](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
+       > - Další informace o CREATE EXTERNAL DATA SOURCE, najdete to [průvodce](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
         
-    1. Dotaz jako normální použití [externí tabulky](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
+   1. Dotaz jako normální použití [externí tabulky](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
 
 ### <a name="azure-sql-database-blob-auditing"></a>Azure SQL Database auditování objektů Blob
 
@@ -256,7 +258,7 @@ Chyba připojení 40914 má vztah k *pravidel virtuální sítě*, jak je určen
 
 *Text zprávy:* Nejde otevřít server "{0}' požadovaný v přihlášení. Klient s IP adresou{1}' nemá povolený přístup k serveru.
 
-*Popis chyby:* Klient se pokouší o připojení z IP adresy, která není autorizován pro připojení k serveru Azure SQL Database. Brána firewall serveru nemá žádné pravidlo adresy IP, která umožňuje klientům komunikovat z dané IP adresy do služby SQL Database.
+*Popis chyby:* Klient se pokouší o připojení z IP adresy, která není autorizován pro připojení k serveru Azure SQL Database. Brána firewall serveru neobsahuje žádné pravidlo IP adres, které by klientovi umožňovalo komunikovat se službou SQL Database z dané IP adresy.
 
 *Řešení chyb:* Zadejte IP adresu klienta jako pravidlo IP. To lze proveďte pomocí podokna brány Firewall na webu Azure Portal.
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 25a800302cff40ab35704ecee4525b7a92578828
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8ac17c00f635c4c14c0e4752847aff941f81804a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545952"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111612"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí sady Visual Studio
 > [!div class="op_single_selector"]
@@ -132,8 +132,8 @@ Zde raději použijte termín „tabulky“ než „datové sady“. Tabulka je 
 2. V dialogovém okně **Přidat novou položku** vyberte v seznamu možnost **Azure Blob** a klikněte na **Přidat**.   
 3. Nahraďte text JSON následujícím textem a uložte soubor **AzureBlobLocation1.json**. 
 
-  ```json   
-  {
+   ```json   
+   {
     "name": "InputDataset",
     "properties": {
       "structure": [
@@ -161,8 +161,8 @@ Zde raději použijte termín „tabulky“ než „datové sady“. Tabulka je 
         "interval": 1
       }
     }
-  }
-  ``` 
+   }
+   ``` 
     Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON:
 
     | Vlastnost | Popis |
@@ -185,7 +185,7 @@ V tomto kroku vytvoříte výstupní datovou sadu s názvem **OutputDataset**. T
 2. V dialogovém okně **Přidat novou položku** vyberte **Azure SQL** a klikněte na **Přidat**. 
 3. Nahraďte text JSON následujícím textem JSON a uložte soubor **AzureSqlTableLocation1.json**.
 
-  ```json
+   ```json
     {
      "name": "OutputDataset",
      "properties": {
@@ -233,7 +233,7 @@ Výstupní datové sady v současné době řídí plán. V tomto kurzu je vý
 2. V dialogovém okně **Přidat novou položku** vyberte **Copy Data Pipeline** (Kanál kopírování dat) a klikněte na **Přidat**. 
 3. Nahraďte text JSON následujícím textem JSON a uložte soubor **CopyActivity1.json**.
 
-  ```json   
+   ```json   
     {
      "name": "ADFTutorialPipeline",
      "properties": {
@@ -277,19 +277,19 @@ Výstupní datové sady v současné době řídí plán. V tomto kurzu je vý
      }
     }
     ```   
-    - V části aktivit je jenom jedna aktivita, jejíž vlastnost **type** je nastavená na **Copy**. Další informace o aktivitě kopírování najdete v tématu [Aktivity pohybu dat](data-factory-data-movement-activities.md). V řešeních služby Data Factory můžete také použít [aktivity transformace dat](data-factory-data-transformation-activities.md).
-    - Vstup aktivity je nastavený na **InputDataset** a výstup aktivity je nastavený na **OutputDataset**. 
-    - V části **typeProperties** je jako typ zdroje určen **BlobSource** a jako typ jímky **SqlSink**. Úplný seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky najdete v tématu [podporovaných úložištích dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Kliknutím na odkaz v tabulce se dozvíte, jak použít konkrétní podporovaná úložiště dat jako zdroj/jímku.  
+   - V části aktivit je jenom jedna aktivita, jejíž vlastnost **type** je nastavená na **Copy**. Další informace o aktivitě kopírování najdete v tématu [Aktivity pohybu dat](data-factory-data-movement-activities.md). V řešeních služby Data Factory můžete také použít [aktivity transformace dat](data-factory-data-transformation-activities.md).
+   - Vstup aktivity je nastavený na **InputDataset** a výstup aktivity je nastavený na **OutputDataset**. 
+   - V části **typeProperties** je jako typ zdroje určen **BlobSource** a jako typ jímky **SqlSink**. Úplný seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky najdete v tématu [podporovaných úložištích dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Kliknutím na odkaz v tabulce se dozvíte, jak použít konkrétní podporovaná úložiště dat jako zdroj/jímku.  
      
-    Nahraďte hodnotu vlastnosti **start** aktuálním dnem a **end** následujícím dnem. Můžete zadat jenom část data a přeskočit část času. Například „2016-02-03“ je ekvivalentní hodnotě „2016-02-03T00:00:00Z“.
+     Nahraďte hodnotu vlastnosti **start** aktuálním dnem a **end** následujícím dnem. Můžete zadat jenom část data a přeskočit část času. Například „2016-02-03“ je ekvivalentní hodnotě „2016-02-03T00:00:00Z“.
      
-    Počáteční a koncové hodnoty data a času musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Příklad: 2016-10-14T16:32:41Z. Čas hodnoty **end** je nepovinný, ale my ho v tomto kurzu použijeme. 
+     Počáteční a koncové hodnoty data a času musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Příklad: 2016-10-14T16:32:41Z. Čas hodnoty **end** je nepovinný, ale my ho v tomto kurzu použijeme. 
      
-    Pokud nezadáte hodnotu vlastnosti **end**, vypočítá se jako „**start + 48 hodin**“. Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**.
+     Pokud nezadáte hodnotu vlastnosti **end**, vypočítá se jako „**start + 48 hodin**“. Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**.
      
-    V předchozím příkladu je 24 datových řezů, protože se vytvářejí každou hodinu.
+     V předchozím příkladu je 24 datových řezů, protože se vytvářejí každou hodinu.
 
-    Popisy vlastností JSON použitých v definici kanálu najdete v článku [Vytvoření kanálů](data-factory-create-pipelines.md). Popisy vlastností JSON použitých v definici aktivity kopírování najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md). Popisy vlastností JSON podporovaných zdrojem BlobSource najdete v článku [Konektor Azure Blob](data-factory-azure-blob-connector.md). Popisy vlastností JSON podporovaných jímkou SqlSink najdete v článku [Konektor Azure SQL Database](data-factory-azure-sql-connector.md).
+     Popisy vlastností JSON použitých v definici kanálu najdete v článku [Vytvoření kanálů](data-factory-create-pipelines.md). Popisy vlastností JSON použitých v definici aktivity kopírování najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md). Popisy vlastností JSON podporovaných zdrojem BlobSource najdete v článku [Konektor Azure Blob](data-factory-azure-blob-connector.md). Popisy vlastností JSON podporovaných jímkou SqlSink najdete v článku [Konektor Azure SQL Database](data-factory-azure-sql-connector.md).
 
 ## <a name="publishdeploy-data-factory-entities"></a>Publikování/nasazení entit služby Data Factory
 V tomto kroku publikujete entity služby Data Factory (propojené služby, datové sady a kanál), které jste vytvořili dříve. Také zadáte název nově vytvořeného objektu pro vytváření dat, do kterého se tyto entity načtou.  

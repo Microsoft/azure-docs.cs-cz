@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: 748f4562e1efd613b87dd5ab44a83d3d50171f67
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3126be88e272ab3891caa94ee15b622b0dfbdbdf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539917"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860495"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL migrace a aplikace partnery vývoj
 
@@ -32,10 +32,10 @@ Pomocí migrace NoSQL vývoje aplikací můžete z celé řady partnerů integr�
 |![Vývoj Altoros LLC][3]    |  Migrace NoSQL <br/> Inovace aplikací (existující aplikace) <br/> Vývoj aplikace |   USA, Norsko, Finsko, Bělorusko, Argentina |  [Web](https://www.altoros.com/)     |
 |![Attunix Redapt][4]     |   Migrace NoSQL <br/> Inovace aplikací (existující aplikace) <br/> Vývoj aplikace      |    USA     |  [Web](https://www.attunix.com/)       |
 | ![Avanade][26] | Nový vývoj aplikací <br/> Inovace aplikací (existující aplikace) | Rakousko, Německo, Švýcarsko, Itálie, Norsko, Španělsko, Velká Británie | [Web](https://www.avanade.com/)
-|![Společnosti Bluemetal Architects][5]     |  Migrace NoSQL <br/> Inovace aplikací (existující aplikace) <br/> Vývoj aplikace       |    Severní Ameriky, Asie a Tichomoří     |  [Web](http://www.bluemetal.com/)       |
+|![Společnosti Bluemetal Architects][5]     |  Migrace NoSQL <br/> Inovace aplikací (existující aplikace) <br/> Vývoj aplikace       |    Severní Ameriky, Asie a Tichomoří     |  [Web](https://www.bluemetal.com/)       |
 |![Globální LLC Capax][6]     |  Migrace NoSQL <br/> Inovace aplikací (existující aplikace) <br/> Vývoj aplikace       |    USA     |  [Web](https://www.capaxglobal.com/)       |
 | ![Capgemini][14] | Migrace NoSQL; Inovace aplikací (existující aplikace); Vývoj aplikace | USA, Francie, Velká Británie, Nizozemsko, Finsko  | [Web](https://www.capgemini.com/) | 
-|![Coeo][7]     |   Inovace aplikací (existující aplikace) <br/> Vývoj aplikace |    Spojené království     |  [Web](http://www.coeo.com/)       |
+|![Coeo][7]     |   Inovace aplikací (existující aplikace) <br/> Vývoj aplikace |    Spojené království     |  [Web](https://www.coeo.com/)       |
 | ![Cognizant][15] | Migrace NoSQL |USA, Kanadě, Spojeném království, Dánsko, Nizozemsko, Švýcarsko, Austrálie, Japonsko | [Web](https://www.cognizant.com/)|
 |![Infosys][8]     |  Migrace NoSQL       |    Globální     |  [Web](https://www.infosys.com/)       |
 | ![Lagash][16] | Migrace NoSQL <br/> Vývoj aplikace | Argentina, Chile, Kolumbie, Mexiko| [Web](https://www.lagash.com/)|

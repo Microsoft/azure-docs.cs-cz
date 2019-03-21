@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a36f20011429ea45fb951e331c5cf3c2bb7209e2
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 55407ec1846a0fe2eb037756dc2e97d8b05e7330
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342526"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997299"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Zkoumání a analýzy náklady pomocí Cost analysis
 
@@ -51,9 +51,9 @@ Další informace o přiřazování přístupu k datům služby Cost Management 
 
 ## <a name="review-costs-in-cost-analysis"></a>Kontrola nákladů v analýze nákladů
 
-Chcete-li zkontrolovat náklady s využitím analýzu nákladů na webu Azure Portal, přejděte na **Správa nákladů a fakturace** &gt; **analýza nákladů**. Vyberte **oboru: _ScopeName_**, zvolte obor a pak klikněte na tlačítko **vyberte**.
+Ke kontrole nákladů v analýzy nákladů, otevřete v Azure portal a vyberte požadovaný obor **analýza nákladů** v nabídce. Například, přejděte na **předplatná**, vyberte předplatné, ze seznamu a pak vyberte **analýza nákladů** v nabídce. Použití **oboru** obranné přepnout do jiného oboru v analýzy nákladů. Další informace o oborech najdete v tématu [pochopení a práci s obory](understand-work-scopes.md).
 
-Vybraný obor se použije v celé službě Cost Management k poskytování konsolidace dat a k řízení přístupu k informacím o nákladech. Při použití oborů nevybíráte více oborů. Místo toho vybrat větší rozsah, který ostatní až vrátit a pak je filtr seznamu na co chcete. To je důležité pochopit, protože někteří uživatelé neměli mít přístup, který podřízené obory vrátit až nadřazený obor. Další informace o oborech najdete v tématu [pochopení a práci s obory](understand-work-scopes.md).
+Vybraný obor se použije v celé službě Cost Management k poskytování konsolidace dat a k řízení přístupu k informacím o nákladech. Při použití oborů nevybíráte více oborů. Místo toho vybrat větší rozsah, který ostatní až vrátit a pak je filtr seznamu na co chcete. To je důležité pochopit, protože někteří uživatelé neměli mít přístup, který podřízené obory vrátit až nadřazený obor.
 
 Klikněte na **Otevřít analýzu nákladů**.
 

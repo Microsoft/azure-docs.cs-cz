@@ -15,12 +15,12 @@ ums.workload: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 7e43af7d749719c2f69df9b53766c5452931884b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 244b2d1764f30f790c3e51e23cd2fa0af6375960
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542909"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894372"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Integrace protokolů Azure s protokolování diagnostiky Azure a předávání událostí Windows
 
@@ -113,37 +113,37 @@ Po dokončení základní nastavení jste připraveni k provedení kroků po ins
 1. Spusťte PowerShell jako správce. Přejděte do C:\Program Files\Microsoft Azure Log Integration.
 2. Importujte rutiny integrace protokolů Azure. Chcete-li importovat rutiny, spusťte skript `LoadAzlogModule.ps1`. Zadejte `.\LoadAzlogModule.ps1`, a potom stiskněte klávesu Enter (Všimněte si použití **.\\**  v tomto příkazu). By měl vypadat přibližně jako co se zobrazuje na následujícím obrázku:
 
-  ![Snímek obrazovky výstupu příkazu LoadAzlogModule.ps1](./media/security-azure-log-integration-get-started/loaded-modules.png)
+   ![Snímek obrazovky výstupu příkazu LoadAzlogModule.ps1](./media/security-azure-log-integration-get-started/loaded-modules.png)
 3. V dalším kroku nakonfigurujte integrace protokolů Azure použít konkrétní prostředí Azure. *Prostředí Azure* je typ datového centra v cloudu Azure, kterou chcete pracovat. I když existuje několik prostředí Azure, aktuálně, příslušné možnosti jsou buď **AzureCloud** nebo **AzureUSGovernment**. Spouštění prostředí PowerShell jako správce, ujistěte se, že jste v C:\Program Files\Microsoft Azure Log Integration\. Spusťte tento příkaz:
 
-  `Set-AzlogAzureEnvironment -Name AzureCloud` (for **AzureCloud**)
+   `Set-AzlogAzureEnvironment -Name AzureCloud` (for **AzureCloud**)
   
-  Pokud chcete použít cloud Azure státní správy USA, použijte **AzureUSGovernment** pro **– název** proměnné. Další cloudy Azure v současné době nejsou podporovány.  
+   Pokud chcete použít cloud Azure státní správy USA, použijte **AzureUSGovernment** pro **– název** proměnné. Další cloudy Azure v současné době nejsou podporovány.  
 
-  > [!NOTE]
-  > Po úspěšném provedení příkazu není přijímat zpětnou vazbu. 
+   > [!NOTE]
+   > Po úspěšném provedení příkazu není přijímat zpětnou vazbu. 
 
 4. Před systému můžete monitorovat, je třeba název účtu úložiště, který se používá Azure Diagnostics. Na webu Azure Portal, přejděte na **virtuálních počítačů**. Vyhledejte virtuální počítač Windows, který bude monitorovat. V **vlastnosti** vyberte **nastavení diagnostiky**.  Vyberte **agenta**. Poznamenejte si název účtu úložiště, který je zadán. Musíte tento název účtu pro později.
 
-  ![Snímek obrazovky podokna nastavení diagnostiky Azure](./media/security-azure-log-integration-get-started/storage-account-large.png) 
+   ![Snímek obrazovky podokna nastavení diagnostiky Azure](./media/security-azure-log-integration-get-started/storage-account-large.png) 
 
-  ![Snímek obrazovky povolit monitorování tlačítko úrovni hosta](./media/security-azure-log-integration-get-started/azure-monitoring-not-enabled-large.png)
+   ![Snímek obrazovky povolit monitorování tlačítko úrovni hosta](./media/security-azure-log-integration-get-started/azure-monitoring-not-enabled-large.png)
 
-  > [!NOTE]
-  > Pokud při vytváření virtuálního počítače není zapnuté monitorování, můžete ji povolit, jak je znázorněno na předchozím obrázku.
+   > [!NOTE]
+   > Pokud při vytváření virtuálního počítače není zapnuté monitorování, můžete ji povolit, jak je znázorněno na předchozím obrázku.
 
 5. Nyní přejděte zpět na počítač integrace protokolů Azure. Ověřte, že máte připojení k účtu úložiště v systému nainstalovaným integrace protokolů Azure. Počítači se službou Azure Log Integration potřebuje přístup k účtu úložiště k načtení informací, která je zaznamenána pomocí Azure Diagnostics na každém monitorovaném systému. Pokud chcete ověřit připojení: 
-  1. [Stáhněte si Průzkumníka služby Azure Storage](http://storageexplorer.com/).
-  2. Dokončete instalaci.
-  3. Po dokončení instalace, vybrat **Další**. Nechte **spusťte Průzkumníka služby Microsoft Azure Storage** zaškrtnuté políčko.  
-  4. Přihlaste se k Azure.
-  5. Ověřte, že vidíte účet úložiště, který jste nakonfigurovali Azure Diagnostics: 
+   1. [Stáhněte si Průzkumníka služby Azure Storage](https://storageexplorer.com/).
+   2. Dokončete instalaci.
+   3. Po dokončení instalace, vybrat **Další**. Nechte **spusťte Průzkumníka služby Microsoft Azure Storage** zaškrtnuté políčko.  
+   4. Přihlaste se k Azure.
+   5. Ověřte, že vidíte účet úložiště, který jste nakonfigurovali Azure Diagnostics: 
 
    ![Snímek obrazovky s účty úložiště v Průzkumníkovi služby Storage](./media/security-azure-log-integration-get-started/storage-explorer.png)
 
-  6. Tyto možnosti se zobrazí pod účty úložiště. V části **tabulky**, měli byste vidět tabulky nazvané **WADWindowsEventLogsTable**.
+   1. Tyto možnosti se zobrazí pod účty úložiště. V části **tabulky**, měli byste vidět tabulky nazvané **WADWindowsEventLogsTable**.
 
-  Pokud při vytváření virtuálního počítače není zapnuté monitorování, umožníte, jak je popsáno výše.
+   Pokud při vytváření virtuálního počítače není zapnuté monitorování, umožníte, jak je popsáno výše.
 
 
 ## <a name="integrate-windows-vm-logs"></a>Integrace protokolů virtuálních počítačů Windows
@@ -156,36 +156,36 @@ K provedení tohoto kroku potřebujete několik věcí:
 * **StorageKey**: Klíč úložiště pro účet úložiště, kde jsou uloženy informace diagnostiky Azure pro tento virtuální počítač.  
 
 Pokud chcete získat klíč úložiště, proveďte následující kroky:
-1. Přejděte na [Azure Portal](http://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. V navigačním podokně vyberte **všechny služby**.
 3. V **filtr** zadejte **úložiště**. Vyberte **účty úložiště**.
 
-  ![Snímek obrazovky s účty úložiště ve všech služeb](./media/security-azure-log-integration-get-started/filter.png)
+   ![Snímek obrazovky s účty úložiště ve všech služeb](./media/security-azure-log-integration-get-started/filter.png)
 
 4. Zobrazí se seznam účtů úložiště. Dvakrát klikněte na účet, který jste přiřadili k protokolování úložiště.
 
-  ![Snímek obrazovky zobrazující seznam účtů úložiště](./media/security-azure-log-integration-get-started/storage-accounts.png)
+   ![Snímek obrazovky zobrazující seznam účtů úložiště](./media/security-azure-log-integration-get-started/storage-accounts.png)
 
 5. V části **Nastavení** vyberte **Přístupové klíče**.
 
-  ![Snímek obrazovky zobrazující možnost přístup klíče v nabídce](./media/security-azure-log-integration-get-started/storage-account-access-keys.png)
+   ![Snímek obrazovky zobrazující možnost přístup klíče v nabídce](./media/security-azure-log-integration-get-started/storage-account-access-keys.png)
 
 6. Kopírování **key1**a pak ho uložte na bezpečné místo, které lze použít pro následující krok.
 7. Na serveru, kam jste nainstalovali Azure Log Integration otevřete okno příkazového řádku jako správce. (Nezapomeňte otevřete okno příkazového řádku jako správce a ne na prostředí PowerShell).
 8. Přejděte do C:\Program Files\Microsoft Azure Log Integration.
 9. Spusťte tento příkaz: `Azlog source add <FriendlyNameForTheSource> WAD <StorageAccountName> <StorageKey>`.
  
-  Příklad:
+   Příklad:
   
-  `Azlog source add Azlogtest WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
+   `Azlog source add Azlogtest WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
 
-  Pokud chcete zobrazit události XML ID předplatného, připojte ID předplatného na popisný název:
+   Pokud chcete zobrazit události XML ID předplatného, připojte ID předplatného na popisný název:
 
-  `Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>`
+   `Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>`
   
-  Příklad:
+   Příklad:
   
-  `Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
+   `Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
 
 > [!NOTE]
 > Počkejte, až 60 minut a pak zobrazit události, které se berou z účtu úložiště. Pokud chcete zobrazit události, v Azure Log Integration, vyberte **Prohlížeč událostí** > **protokoly Windows** > **předané události**.
@@ -200,11 +200,11 @@ Pokud data se nezobrazuje ve složce předané události po hodině, proveďte t
 
 1. Zkontrolujte počítač, na kterém běží služba pro integraci protokolů Azure. Potvrďte, že může přístup k Azure. Chcete-li otestovat připojení, v prohlížeči, zkuste přejít na [webu Azure portal](https://portal.azure.com).
 2. Ujistěte se, že uživatelský účet Azlog má oprávnění k zápisu pro složku users\Azlog.
-  1. Otevřete Průzkumníka souborů.
-  2. Přejdete na C:\users.
-  3. Right-click C:\users\Azlog.
-  4. Vyberte **zabezpečení**.
-  5. Vyberte **NT Service\Azlog**. Zkontrolujte oprávnění pro účet. Pokud účet není na této kartě, nebo pokud se zobrazí příslušná oprávnění, můžete udělit oprávnění účtu na této kartě.
+   1. Otevřete Průzkumníka souborů.
+   2. Přejdete na C:\users.
+   3. Right-click C:\users\Azlog.
+   4. Vyberte **zabezpečení**.
+   5. Vyberte **NT Service\Azlog**. Zkontrolujte oprávnění pro účet. Pokud účet není na této kartě, nebo pokud se zobrazí příslušná oprávnění, můžete udělit oprávnění účtu na této kartě.
 3. Při spuštění příkazu `Azlog source list`, ujistěte se, že účet úložiště, který byl přidán v příkazu `Azlog source add` je uvedená ve výstupu.
 4. Pokud chcete zobrazit, pokud se ohlásí chyby ze služby Azure Log Integration, přejděte na **Prohlížeč událostí** > **protokoly Windows** > **aplikace**.
 
@@ -224,15 +224,15 @@ Protokol aktivit Azure je předplatné protokol, který poskytuje podrobné info
 2. Spuštěním tohoto příkazu:  ```azlog createazureid```
 
     Tento příkaz vás vyzve k zadání přihlášení Azure. Příkaz vytvoří službu Azure Active Directory instančního objektu v tenantů Azure AD, které jsou hostiteli předplatná Azure, ve kterých přihlášený uživatel je správce, spolusprávce nebo vlastníka. Příkaz se nezdaří, pokud je uživatel přihlášený jenom uživatele typu Host do tenanta Azure AD. Ověřování do Azure se provádí prostřednictvím Azure AD. Při vytváření instančního objektu pro Azure Log Integration vytvoří identity Azure AD, který je přiřazen přístup ke čtení z předplatných Azure.
-3.  Spusťte následující příkaz k autorizaci instančního objektu služby Azure Log Integration vytvořili v předchozím kroku přístup k protokolu aktivit pro čtení pro předplatné. Musíte být vlastníkem předplatného pro spuštění příkazu.
+3. Spusťte následující příkaz k autorizaci instančního objektu služby Azure Log Integration vytvořili v předchozím kroku přístup k protokolu aktivit pro čtení pro předplatné. Musíte být vlastníkem předplatného pro spuštění příkazu.
 
-    ```Azlog.exe authorize subscriptionId``` Příklad:
+   ```Azlog.exe authorize subscriptionId``` Příklad:
 
    ```AZLOG.exe authorize ba2c2367-d24b-4a32-17b5-4443234859```
 
-4.  Zkontrolujte následující složky potvrďte, že jsou v nich vytvořili soubory JSON protokolů auditu Azure Active Directory:
-    - C:\Users\azlog\AzureResourceManagerJson
-    - C:\Users\azlog\AzureResourceManagerJsonLD
+4. Zkontrolujte následující složky potvrďte, že jsou v nich vytvořili soubory JSON protokolů auditu Azure Active Directory:
+   - C:\Users\azlog\AzureResourceManagerJson
+   - C:\Users\azlog\AzureResourceManagerJsonLD
 
 > [!NOTE]
 > Konkrétní pokyny k uvedení informace v souborech JSON do systému pro správu (SIEM) událostí a informací o zabezpečení obraťte se na dodavatele vašeho systému SIEM.

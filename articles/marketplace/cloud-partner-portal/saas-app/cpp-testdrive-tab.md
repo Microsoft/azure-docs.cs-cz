@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0fa3638ef47fb8cb1d0237a2ab9530ab76d316dc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e97e79ef3077431d8fc627cd634a67b0a01b6f8e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449264"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993098"
 ---
 # <a name="saas-application-test-drive-tab"></a>Karta testovací verzi aplikace SaaS
 
@@ -47,6 +47,7 @@ Tady jsou hlavní publikování kroky pro přidání testu jednotky:
 ## <a name="setting-up-a-test-drive"></a>Nastavení testovací verze
 
 K dispozici jsou čtyři různé druhy testů jednotek, každý podle typu produktu, scénář a marketplace, které používáte.
+
 |  **Typ**          |  **Popis**  |  **Pokyny k instalaci**  |
 |  ---------------   |  ---------------  |  ---------------  |
 |     Azure Resource Manager               |    Vyzkoušejte Azure Resource Manageru je šablonu nasazení, která obsahuje všechny prostředky Azure, které tvoří vytváří Vydavatel řešení. Produkty, které patří tento typ testovací verze jsou ty, které používají jenom prostředky Azure.               |       [Testovací verze Azure Resource Manageru](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)            |

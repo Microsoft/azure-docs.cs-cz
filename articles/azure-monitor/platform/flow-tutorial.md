@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: f38d9b40143391be34ce5f72627720e2f5119dc6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c3732dd2fa87b00eec38f88ab828605b33567235
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993771"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123143"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Automatizace procesů Azure Monitor protokolu pomocí konektoru pro Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) můžete vytvářet automatizované pracovní postupy pomocí stovek akce pro širokou škálu služeb. Výstup z jedné akce můžete použít jako vstup do druhé umožňuje vytvářet integrace mezi různými službami.  Azure Log Analytics connector pro Microsoft Flow umožňují vytvářet pracovní postupy, které obsahují data načíst pomocí dotazů na protokoly z pracovního prostoru Log Analytics ve službě Azure Monitor.
@@ -48,13 +48,13 @@ Kurz v tomto článku se dozvíte, jak vytvořit tok, který automaticky odesíl
 
 1. Zadejte podrobnosti pro váš pracovní prostor, včetně ID předplatného, skupinu prostředků a název pracovního prostoru.
 2. Přidejte následující dotaz protokolu, který **dotazu** okna.  Toto je ukázkový dotaz a můžete nahradit všechny jiné, které vrací data.
-```
+   ```
     Event
     | where EventLevelName == "Error" 
     | where TimeGenerated > ago(1day)
     | summarize count() by Computer
     | sort by Computer
-```
+   ```
 
 2. Vyberte **tabulku HTML** pro **typ grafu**.<br><br>![Log Analytics akce](media/flow-tutorial/flow03.png)
 

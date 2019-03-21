@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: a2536802eb1da47531301e4476f37f7ec649c900
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 366cce89e2ee5c446443c4dfc5ed12244bb4938d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762360"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123738"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Vytvoření virtuální sítě pomocí připojení VPN Site-to-Site s použitím prostředí PowerShell
 
@@ -105,16 +105,16 @@ Vytvořte virtuální síť.
 
 1. Nastavte proměnné.
 
-  ```azurepowershell-interactive
-  $subnet1 = New-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27
-  $subnet2 = New-AzVirtualNetworkSubnetConfig -Name 'Frontend' -AddressPrefix 10.1.0.0/24
-  ```
+   ```azurepowershell-interactive
+   $subnet1 = New-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27
+   $subnet2 = New-AzVirtualNetworkSubnetConfig -Name 'Frontend' -AddressPrefix 10.1.0.0/24
+   ```
 2. Vytvořte virtuální síť.
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1 `
-  -Location 'East US' -AddressPrefix 10.1.0.0/16 -Subnet $subnet1, $subnet2
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1 `
+   -Location 'East US' -AddressPrefix 10.1.0.0/16 -Subnet $subnet1, $subnet2
+   ```
 
 ### <a name="gatewaysubnet"></a>Chcete přidat podsíť brány k již vytvořené virtuální síti
 
@@ -122,19 +122,19 @@ Postup v této části použijte v případě, že už máte virtuální síť, 
 
 1. Nastavte proměnné.
 
-  ```azurepowershell-interactive
-  $vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name TestVet1
-  ```
+   ```azurepowershell-interactive
+   $vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name TestVet1
+   ```
 2. Vytvořte podsíť brány.
 
-  ```azurepowershell-interactive
-  Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
-  ```
+   ```azurepowershell-interactive
+   Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
+   ```
 3. Nastavte konfiguraci.
 
-  ```azurepowershell-interactive
-  Set-AzVirtualNetwork -VirtualNetwork $vnet
-  ```
+   ```azurepowershell-interactive
+   Set-AzVirtualNetwork -VirtualNetwork $vnet
+   ```
 
 ## 2. <a name="localnet"></a>Vytvoření brány místní sítě
 
@@ -222,17 +222,17 @@ Připojení Site-to-Site k místní síti vyžadují zařízení VPN. V tomto kr
 Dále vytvoříte připojení VPN typu Site-to-Site mezi bránou virtuální sítě a zařízením VPN. Nezapomeňte hodnoty nahradit vlastními. Sdílený klíč se musí shodovat s hodnotou, kterou jste použili pro konfiguraci zařízení VPN. Všimněte si, že hodnota -ConnectionType pro připojení typu Site-to-Site je **IPsec**.
 
 1. Nastavte proměnné.
-  ```azurepowershell-interactive
-  $gateway1 = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
-  $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
-  ```
+   ```azurepowershell-interactive
+   $gateway1 = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
+   $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
+   ```
 
 2. Vytvořte připojení.
-  ```azurepowershell-interactive
-  New-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1 `
-  -Location 'East US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
-  -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1 `
+   -Location 'East US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
+   -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
+   ```
 
 Za malou chvíli dojde k vytvoření připojení.
 

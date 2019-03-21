@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: ae42d8c0bec8c812d18e927dd450e5b5fc419ba3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: bb43a75b6a221c15c8724302797d04c22e04c8d2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774073"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113635"
 ---
 # <a name="create-a-netapp-account"></a>Vytvoření účtu NetApp
 Vytvoření účtu NetApp umožňuje nastavit fond kapacity a následně vytvořit svazek. K vytvoření nového účtu NetApp se používá okno Azure NetApp Files.
@@ -33,29 +33,29 @@ Musí mít zaregistrovaný předplatné poskytovatele prostředků NetApp a funk
 
 1. Přihlaste se k portálu Azure. 
 2. Přejděte do okna Azure NetApp Files pomocí jedné z následujících metod:  
-  * Vyhledejte **Azure NetApp Files** ve vyhledávacím poli webu Azure Portal.  
-  * Klikněte na **Všechny služby** v navigaci a potom filtrujte Azure NetApp Files.  
+   * Vyhledejte **Azure NetApp Files** ve vyhledávacím poli webu Azure Portal.  
+   * Klikněte na **Všechny služby** v navigaci a potom filtrujte Azure NetApp Files.  
 
-  Okno Azure NetApp Files můžete označit jako oblíbené kliknutím na ikonu hvězdičky vedle něj. 
+   Okno Azure NetApp Files můžete označit jako oblíbené kliknutím na ikonu hvězdičky vedle něj. 
 
 3. Kliknutím na **+ Přidat** vytvořte nový účet NetApp.  
-  Zobrazí se okno Nový účet NetApp.  
+   Zobrazí se okno Nový účet NetApp.  
 
 4. Zadejte pro účet NetApp následující informace: 
-  * **Název účtu**  
-    Zadejte jedinečný název pro předplatné.
-  *  **Předplatné**  
-    Vyberte předplatné z vašich stávajících předplatných.
-  * **Skupina prostředků**   
-    Použijte existující skupinu prostředků, nebo vytvořte novou.
-  * **Umístění**  
-    Vyberte oblast, kde má být umístěný účet a jeho podřízené prostředky.  
+   * **Název účtu**  
+     Zadejte jedinečný název pro předplatné.
+   * **Předplatné**  
+     Vyberte předplatné z vašich stávajících předplatných.
+   * **Skupina prostředků**   
+     Použijte existující skupinu prostředků, nebo vytvořte novou.
+   * **Umístění**  
+     Vyberte oblast, kde má být umístěný účet a jeho podřízené prostředky.  
 
-    ![Nový účet NetApp](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
+     ![Nový účet NetApp](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
 5. Klikněte na možnost **Vytvořit**.     
-  Vytvořený účet NetApp se teď zobrazí v okně Azure NetApp Files. 
+   Vytvořený účet NetApp se teď zobrazí v okně Azure NetApp Files. 
 
 ## <a name="next-steps"></a>Další postup  
 

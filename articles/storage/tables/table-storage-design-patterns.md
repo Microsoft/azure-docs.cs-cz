@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 40062cfb2e646fd6befef1e746f9493f3e4b20f9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f2f4fb04ac483f7716c0b7a0fb1f87843d8b817f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821353"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995307"
 ---
 # <a name="table-design-patterns"></a>Způsoby návrhu tabulek
 Tento článek popisuje některé vzory, které jsou vhodné pro použití s řešeními služby tabulky. Uvidíte také, jak se prakticky vyřešit některé problémy a kompromisy popsané v dalších článcích návrh tabulky úložiště. Následující diagram obsahuje souhrn vztahy mezi různé vzorce:  
@@ -588,7 +588,7 @@ var employees = query.Execute();
 
 Všimněte si, jak dotaz Určuje, jak **RowKey** a **PartitionKey** zajistit lepší výkon.  
 
-Následující příklad kódu ukazuje ekvivalentní funkce s použitím rozhraní fluent API (Další informace o rozhraní fluent API obecné naleznete v tématu [osvědčené postupy pro navrhování Fluent API](http://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)):  
+Následující příklad kódu ukazuje ekvivalentní funkce s použitím rozhraní fluent API (Další informace o rozhraní fluent API obecné naleznete v tématu [osvědčené postupy pro navrhování Fluent API](https://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)):  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(

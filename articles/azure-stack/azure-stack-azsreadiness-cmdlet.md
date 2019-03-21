@@ -16,12 +16,12 @@ ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 63de39fa97850c1df72bdcd964ed670e4e8b0608
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0b75085754a66fabf07076282c977acd7f10a556
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767188"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992319"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Reference k rutinám Start AzsReadinessChecker
 
@@ -299,6 +299,7 @@ V tomto příkladu nasazení a podporu týmu zpráva připravenost od zákazník
 > -RegionName
 
 Určuje název oblasti nasazení Azure stacku.
+
 |  |  |
 |----------------------------|--------------|
 |Zadejte:                       |String        |
@@ -310,6 +311,7 @@ Určuje název oblasti nasazení Azure stacku.
 > -FQDN
 
 Určuje nasazení Azure stacku externí plně kvalifikovaný název domény, také alias ExternalFQDN a ExternalDomainName.
+
 |  |  |
 |----------------------------|--------------|
 |Zadejte:                       |String        |
@@ -321,6 +323,7 @@ Určuje nasazení Azure stacku externí plně kvalifikovaný název domény, tak
 > -IdentitySystem
 
 Určuje nasazení Azure stacku systém identit platné hodnoty, AAD nebo AD FS, Azure Active Directory a Active Directory Federated Services v uvedeném pořadí.
+
 |  |  |
 |----------------------------|--------------|
 |Zadejte:                       |String        |
@@ -333,6 +336,7 @@ Určuje nasazení Azure stacku systém identit platné hodnoty, AAD nebo AD FS, 
 > -PfxPassword
 
 Určuje heslo přidružené soubory certifikátů PFX.
+
 |  |  |
 |----------------------------|---------|
 |Zadejte:                       |SecureString |
@@ -344,6 +348,7 @@ Určuje heslo přidružené soubory certifikátů PFX.
 > -PaaSCertificates
 
 Určuje zatřiďovací tabulku obsahující cesty a heslo pro certifikáty PaaS.
+
 |  |  |
 |----------------------------|---------|
 |Zadejte:                       |Zatřiďovací tabulka |
@@ -355,6 +360,7 @@ Určuje zatřiďovací tabulku obsahující cesty a heslo pro certifikáty PaaS.
 > -DeploymentDataJSONPath
 
 Určuje konfigurační soubor JSON nasazení dat. Azure Stack. Tento soubor je vygenerován pro nasazení.
+
 |  |  |
 |----------------------------|---------|
 |Zadejte:                       |String   |
@@ -366,6 +372,7 @@ Určuje konfigurační soubor JSON nasazení dat. Azure Stack. Tento soubor je v
 > -PfxPath
 
 Určuje cestu k problematické certifikát, který vyžaduje rutiny importu/exportu chcete vyřešit, jak je uvedeno v ověření certifikátu v tomto nástroji.
+
 |  |  |
 |----------------------------|---------|
 |Zadejte:                       |String   |
@@ -377,6 +384,7 @@ Určuje cestu k problematické certifikát, který vyžaduje rutiny importu/expo
 > -ExportPFXPath  
 
 Určuje cílovou cestu pro výsledný soubor PFX z rutiny importu/exportu.  
+
 |  |  |
 |----------------------------|---------|
 |Zadejte:                       |String   |
@@ -388,6 +396,7 @@ Určuje cílovou cestu pro výsledný soubor PFX z rutiny importu/exportu.
 > – Předmět
 
 Určuje seřazený slovník předmětu pro generování žádosti o certifikát.
+
 |  |  |
 |----------------------------|---------|
 |Zadejte:                       |Kolekce OrderedDictionary   |
@@ -415,6 +424,7 @@ Určuje typ SAN žádosti o certifikát. Valid values MultipleCSR, SingleCSR.
 > -OutputRequestPath
 
 Určuje cílovou cestu pro soubory žádosti o certifikát, musí directory již existuje.
+
 |  |  |
 |----------------------------|---------|
 |Zadejte:                       |String   |
@@ -426,6 +436,7 @@ Určuje cílovou cestu pro soubory žádosti o certifikát, musí directory již
 > -AADServiceAdministrator
 
 Určuje správce služby Azure Active Directory se použije pro nasazení Azure stacku.
+
 |  |  |
 |----------------------------|---------|
 |Zadejte:                       |PSCredential   |
@@ -437,6 +448,7 @@ Určuje správce služby Azure Active Directory se použije pro nasazení Azure 
 > -AADDirectoryTenantName
 
 Určuje název služby Azure Active Directory se použije pro nasazení Azure stacku.
+
 |  |  |
 |----------------------------|---------|
 |Zadejte:                       |String   |
@@ -448,6 +460,7 @@ Určuje název služby Azure Active Directory se použije pro nasazení Azure st
 > -AzureEnvironment
 
 Určuje instanci služby Azure obsahující účtů, adresářů a předplatných se použije pro nasazení Azure stacku a registraci.
+
 |  |  |
 |----------------------------|---------|
 |Zadejte:                       |String   |
@@ -460,6 +473,7 @@ Určuje instanci služby Azure obsahující účtů, adresářů a předplatnýc
 > -RegistrationAccount
 
 Určuje účet registrace pro registrace Azure Stack.
+
 |  |  |
 |----------------------------|---------|
 |Zadejte:                       |String   |
@@ -471,6 +485,7 @@ Určuje účet registrace pro registrace Azure Stack.
 > -RegistrationSubscriptionID
 
 Určuje ID předplatného registrace pro registrace Azure Stack.
+
 |  |  |
 |----------------------------|---------|
 |Zadejte:                       |Guid     |
@@ -482,6 +497,7 @@ Určuje ID předplatného registrace pro registrace Azure Stack.
 > -ReportPath
 
 Určuje cestu pro sestavu připravenosti, výchozí hodnota je aktuální adresář a výchozí název sestavy.
+
 |  |  |
 |----------------------------|---------|
 |Zadejte:                       |String   |
@@ -527,6 +543,7 @@ Určuje, pokud služby PaaS nebo názvy hostitelů měla být přidána do žád
 > -ReportSections
 
 Určuje, zda jenom zobrazit souhrn, sestavy vynechá podrobností.
+
 |  |  |
 |----------------------------|---------|
 |Zadejte:                       |String   |
@@ -539,6 +556,7 @@ Určuje, zda jenom zobrazit souhrn, sestavy vynechá podrobností.
 > -Summary
 
 Určuje, zda jenom zobrazit souhrn, sestavy vynechá podrobností.
+
 |  |  |
 |----------------------------|------------------|
 |Zadejte:                       |SwitchParameter   |
@@ -550,6 +568,7 @@ Určuje, zda jenom zobrazit souhrn, sestavy vynechá podrobností.
 > -CleanReport
 
 Odebere předchozí historie spuštění a ověřování a zapíše ověření do nové sestavy.
+
 |  |  |
 |----------------------------|------------------|
 |Zadejte:                       |SwitchParameter   |
@@ -574,6 +593,7 @@ Určuje vlastní cesta pro uložení sestavy připravenost JSON a podrobný soub
 > – Potvrzení
 
 Výzvy k potvrzení před spuštěním rutiny.
+
 |  |  |
 |----------------------------|------------------|
 |Zadejte:                       |SwitchParameter   |
@@ -586,6 +606,7 @@ Výzvy k potvrzení před spuštěním rutiny.
 > -WhatIf
 
 Ukazuje, co by se stalo při spuštění rutiny. Rutina není spuštěna.
+
 |  |  |
 |----------------------------|------------------|
 |Zadejte:                       |SwitchParameter   |
@@ -594,3 +615,4 @@ Ukazuje, co by se stalo při spuštění rutiny. Rutina není spuštěna.
 |Výchozí hodnota:              |False             |
 |Přijměte kanálový vstup:      |False             |
 |Přijměte zástupné znaky: |False             |
+

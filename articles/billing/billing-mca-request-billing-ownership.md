@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 01d34ef722034ef5b56c842bab97a3415a02b0bb
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: be8c7fcebca224196d9eac7d22387989b1bdfd46
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341863"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890929"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-users"></a>Získat fakturační vlastnictví předplatného Azure od jiných uživatelů
 
@@ -96,7 +96,8 @@ Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Za
    |Zrušeno|Uživatelé s přístupem k žádosti o přenos bylo zrušeno žádost|
    |Odmítnuto|Uživatel odmítl žádost o přenos|
 
-6. Vyberte žádost o přenos zobrazíte podrobnosti. Stránce s podrobnostmi o přenos zobrazí následující informace: <!-- Todo - Add a screenshot -->
+6. Vyberte žádost o přenos zobrazíte podrobnosti. Stránce s podrobnostmi o přenos zobrazí následující informace:
+   <!-- Todo - Add a screenshot -->
 
    |Sloupec  |Definice|
    |---------|---------|
@@ -149,7 +150,7 @@ Předplatné žádné typy nebo nabídky, s výjimkou nabízí CSP mohou být p�
 
 ### <a name="cancel-a-transfer-request"></a>Zrušit žádost o přenos
 
-Žádost o přenos můžete zrušit, dokud požadavku je schváleny nebo odmítnuty. Zrušit žádost o přenos [přejděte na stránku podrobností přenos](#check-status-of-your-transfer-request-in-the-Azure-portal) a vyberte zrušit v dolní části stránky.
+Žádost o přenos můžete zrušit, dokud požadavku je schváleny nebo odmítnuty. Zrušit žádost o přenos, přejděte na stránku s podrobnostmi o přenos a vyberte možnost zrušit v dolní části stránky.
 
 ### <a name="software-as-a-service-saas-transfer"></a>Software jako služba (SaaS) přenosu
 

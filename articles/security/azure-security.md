@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 934046ac4be6c0e85ee687cefb46b61ec8affca6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ed57d72d32ba82a37036c9af77590bd4e93db8d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543354"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904248"
 ---
 # <a name="introduction-to-azure-security"></a>Úvod do zabezpečení Azure
 ## <a name="overview"></a>Přehled
@@ -59,7 +59,7 @@ Funkce uvedené následující jsou funkce, které můžete zkontrolovat na posk
 | [Zabezpečená platforma](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [Ochrana osobních údajů a ovládací prvky](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[Dodržování předpisů](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [Transparentnost](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [Zabezpečení vývojový cyklus](https://www.microsoft.com/en-us/sdl/)interní auditování | [Umožňuje spravovat vaše data neustále](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [Centrum zabezpečení](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Jak společnost Microsoft chrání vaše zákaznická data ve službách Azure](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
-| [Povinné školení o zabezpečení, kontroly na pozadí](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Ovládací prvek na umístění dat](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Běžné ovládací prvky centra](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Jak Microsoft spravuje umístění dat ve službách Azure](http://azuredatacentermap.azurewebsites.net/)|
+| [Povinné školení o zabezpečení, kontroly na pozadí](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Ovládací prvek na umístění dat](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Běžné ovládací prvky centra](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Jak Microsoft spravuje umístění dat ve službách Azure](https://azuredatacentermap.azurewebsites.net/)|
 | [Testování průniku](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [zjišťování neoprávněných vniknutí, před útoky DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement), [auditování a protokolování](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [Poskytuje přístup k datům podle vašich představ](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [Cloud Services z důvodu co Nejopatrněji kontrolní seznam](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Kdo v Microsoftu přístup k vašim datům na jaké podmínky](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [Nejmodernější optimalizaci pspo datového centra](https://www.microsoft.com/en-us/cloud-platform/global-datacenters), fyzické zabezpečení, [zabezpečení sítě](https://docs.microsoft.com/azure/security/security-network-overview) | [Reagovat orgánům zajišťujícím vymáhání zákona](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Dodržování předpisů u služeb, umístění a průmysl](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Jak společnost Microsoft chrání vaše zákaznická data ve službách Azure](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
 |  [Reakce na incidenty zabezpečení](https://aka.ms/SecurityResponsepaper), [sdílených odpovědností](https://aka.ms/sharedresponsibility) |[Standardy přísné zásady ochrany osobních údajů](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Projděte si certifikaci pro služby Azure, Centrum transparentnosti](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
@@ -94,7 +94,7 @@ Pokud existují, chyb, chyby nebo problémy s výkonem, můžete prohledat data 
 ### <a name="azure-monitor"></a>Azure Monitor
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) nabízí vizualizace, dotazování, směrování, výstrahy, automatické škálování a automatizace na obou data z infrastruktury Azure ([protokolu aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)) a jednotlivé prostředky Azure ([diagnostiky Protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)). Azure Monitor můžete výstrahy na události související se zabezpečením, které jsou generovány v protokolů Azure.
 
-### <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
+### <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 [Protokoly Azure monitoru](https://azure.microsoft.com/documentation/services/log-analytics/) – poskytuje řešení pro správu IT pro místní a třetích stran cloudové infrastruktury (třeba AWS) kromě prostředků Azure. Data ze služby Azure Monitor je možné směrovat přímo do protokolů Azure Monitor, abyste si mohli zobrazit metriky a protokoly pro celé prostředí na jednom místě.
 
 Protokoly Azure monitoru může být užitečný nástroj v analýze forenzní a další bezpečnostní nástroj umožňuje rychle prohledávat velké množství souvisejících se zabezpečením položky s přístupem, flexibilní dotazování. Kromě toho místní [protokoly brány firewall a proxy serveru můžete exportovat do Azure a k dispozici k analýze protokolů Azure Monitor.](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)

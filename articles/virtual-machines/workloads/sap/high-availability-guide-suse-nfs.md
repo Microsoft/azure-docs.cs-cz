@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 799a40d759dc5614bd43234638982d5275d9d325
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: da465fb9fe51b2be5ec90df1ac75c50271db87a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429192"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992071"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -426,9 +426,9 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
    Při použití drbd k synchronizaci dat z jednoho hostitele do druhého, může dojít, proto volaná schizofrenní. Rozdělení brain je scénář, ve kterém obou uzlů clusteru povýšen primární zařízení drbd a přešel synchronizovaný. Je možné výjimečné situace, ale přesto chtějí zpracování a vyřešit schizofrenní co nejrychleji. Proto je důležité, která vás upozorní, když se stalo schizofrenní.
 
-   Čtení [drbd oficiální dokumentaci](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification) o tom, jak nastavit oznámení brain rozdělení.
+   Čtení [drbd oficiální dokumentaci](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification) o tom, jak nastavit oznámení brain rozdělení.
 
-   Je také možné automaticky zotavit po scénář brain rozdělení. Další informace najdete v článku [automatické rozdělení brain obnovení zásad](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)
+   Je také možné automaticky zotavit po scénář brain rozdělení. Další informace najdete v článku [automatické rozdělení brain obnovení zásad](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)
    
 ### <a name="configure-cluster-framework"></a>Konfigurace architektury clusteru
 

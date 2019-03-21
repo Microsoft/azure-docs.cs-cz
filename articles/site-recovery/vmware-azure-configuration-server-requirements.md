@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 26ea184055f1496babf4f98f5d103b9af9c77ac0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 92eef714f651ef0ce4e58fcfbb8fad75a38c55c8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973447"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121328"
 ---
 # <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>Požadavky na konfiguraci serveru pro zotavení po havárii VMware do Azure
 
@@ -58,7 +58,7 @@ IIS | -Žádné dříve existující výchozí web <br> -Žádné stávající w
 **Komponenta** | **Požadavek** 
 --- | --- 
 Typ IP adresy | Statická 
-Přístup k internetu | Server potřebuje přístup k těmto adresám URL (přímo nebo prostřednictvím proxy serveru): <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> -https:\//management.azure.com <br> -*. services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF potřebuje také přístup k následujícím adresám URL: <br> -https:\//login.microsoftonline.com <br> -https:\//secure.aadcdn.microsoftonline-p.com <br> -https:\//login.live.com  <br> -https:\//auth.gfx.ms <br> -https:\//graph.windows.net <br> -https:\//login.windows.net <br> -https:\//www.live.com <br> -https:\//www.microsoft.com <br> -https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
+Přístup k internetu | Server potřebuje přístup k těmto adresám URL (přímo nebo prostřednictvím proxy serveru): <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> - https:\//management.azure.com <br> - *.services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF potřebuje také přístup k následujícím adresám URL: <br> -https:\//login.microsoftonline.com <br> -https:\//secure.aadcdn.microsoftonline-p.com <br> -https:\//login.live.com  <br> - https:\//auth.gfx.ms <br> - https:\//graph.windows.net <br> - https:\//login.windows.net <br> - https:\//www.live.com <br> - https:\//www.microsoft.com <br> -https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
 Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat) 
 Typ NIC | VMXNET3 (pokud jde o virtuální počítač VMware)
 
@@ -66,7 +66,7 @@ Typ NIC | VMXNET3 (pokud jde o virtuální počítač VMware)
 
 **Komponenta** | **Požadavek** 
 --- | ---
-VMware vSphere PowerCLI. | [Nástroj PowerCLI verze 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) by měly být nainstalovány, pokud je konfigurační Server běží na virtuálním počítači VMware.
+VMware vSphere PowerCLI | [Nástroj PowerCLI verze 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) by měly být nainstalovány, pokud je konfigurační Server běží na virtuálním počítači VMware.
 MYSQL | Je třeba nainstalovat MySQL. Můžete nainstalovat ručně nebo ji můžete nainstalovat Site Recovery.
 
 ## <a name="sizing-and-capacity-requirements"></a>Dimenzování a požadavky na kapacitu
@@ -75,11 +75,12 @@ Následující tabulka shrnuje požadavky na kapacitu pro konfigurační server.
 
 **Komponenta** | **Požadavek** 
 --- | ---
-**CPU** | **Paměť** | **Disk mezipaměti** | **Frekvence změny dat** | **Replikované počítače**
---- | --- | --- | --- | ---
-8 virtuálních CPU<br/><br/> sokety 2 * 4 jádra \@ 2,5 GHz | 16 GB | 300 GB | 500 GB nebo méně | Les než 100 počítačů
-12 virtuálních procesorů<br/><br/> 2 socks * 6 jader \@ 2,5 GHz | 18 GB | 600 GB | 500 GB AŽ 1 TB | 100 až 150 počítačů
-16 virtuálních procesorů<br/><br/> 2 socks * 8 jader \@ 2,5 GHz | 32 GB | 1 TB | 1 – 2 TB | 150 až 200 počítačů
+
+| **CPU** | **Paměť** | **Disk mezipaměti** | **Frekvence změny dat** | **Replikované počítače** |
+| --- | --- | --- | --- | --- |
+| 8 virtuálních CPU<br/><br/> sokety 2 * 4 jádra \@ 2,5 GHz | 16 GB | 300 GB | 500 GB nebo méně | Les než 100 počítačů |
+| 12 virtuálních procesorů<br/><br/> 2 socks * 6 jader \@ 2,5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100 až 150 počítačů |
+| 16 virtuálních procesorů<br/><br/> 2 socks * 8 jader \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150 až 200 počítačů | 
 
 
 

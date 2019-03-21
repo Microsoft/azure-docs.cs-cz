@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: banders
-ms.openlocfilehash: b39c56e8dcae6cdac45160240a6b0f12a1ac0f2e
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: ff31b9be0e927cca7d272e5deaa5ecf48a52580d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902546"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845449"
 ---
 # <a name="understand-how-an-azure-reservation-discount-is-applied-to-sql-databases"></a>Vysvětlení, používání sleva za rezervaci Azure do databáze SQL
 
@@ -56,4 +56,4 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

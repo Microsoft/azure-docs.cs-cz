@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: af5a261ba57c406335fb75260d6af797af70a1b9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 73ac2072a087f0931b6c9c776d3ad0bfedb4320b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101444"
+ms.locfileid: "58199524"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Vytváření clusterů Apache HBase v HDInsight ve virtuální síti Azure
 Zjistěte, jak vytvářet clustery Azure HDInsight Apache HBase v [Azure Virtual Network][1].
@@ -50,7 +50,7 @@ V této části vytvoříte cluster Apache HBase se systémem Linux s závisléh
 >
 >
 
-1. Kliknutím na následující obrázek otevřete šablonu na portálu Azure Portal. Tato šablona je umístěná na [šablony pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/).
+1. Kliknutím na následující obrázek otevřete šablonu na portálu Azure Portal. Tato šablona je umístěná na [šablony rychlý start Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/).
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. Z **vlastní nasazení** okně zadejte následující vlastnosti:
@@ -64,7 +64,7 @@ V této části vytvoříte cluster Apache HBase se systémem Linux s závisléh
    * **Souhlasím s podmínkami a ujednáními uvedenými nahoře**: (Vybrat)
 3. Klikněte na **Koupit**. Vytvoření clusteru trvá přibližně 20 minut. Jakmile je cluster vytvořen, můžete kliknout na portálu a otevře se okno clusteru.
 
-Po dokončení tohoto kurzu můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. Postup odstranění clusteru naleznete v tématu [spravovat Apache Hadoop clusterů v HDInsight pomocí webu Azure portal](../hdinsight-administer-use-management-portal.md#delete-clusters).
+Po dokončení tohoto kurzu můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. Postup odstranění clusteru naleznete v tématu [spravovat Apache Hadoop clusterů v HDInsight pomocí webu Azure portal](../hdinsight-administer-use-portal-linux.md#delete-clusters).
 
 Pokud chcete začít pracovat s nového clusteru HBase pomocí postupů v [začněte používat Apache HBase s Apache Hadoop v HDInsight](./apache-hbase-tutorial-get-started-linux.md).
 

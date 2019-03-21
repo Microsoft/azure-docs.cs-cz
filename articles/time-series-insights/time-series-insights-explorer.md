@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.custom: seodec18
-ms.openlocfilehash: d65ce83465f54a30b96bc1ee6644319e1b4fb020
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 301326f4ba858c7aef6c8bdec8f2cae3ed926847
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556590"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121039"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Průzkumník služby Azure Time Series Insights
 Tento článek popisuje různé funkce a možnosti dostupné v rámci webové aplikace Průzkumníka Time Series Insights. Pomocí Průzkumníka časové řady Insights ve webovém prohlížeči vytvořit vizualizacemi vašich dat.
@@ -71,7 +71,7 @@ Během několika minut připojit váš zdroj událostí do prostředí Time Seri
          |<, >, <=, >=     |  Double, DateTime, časový interval       |         |
          |=, !=, <>     | Řetězec, logická hodnota, Double, DateTime, časový interval, s hodnotou NULL        |         |
          |IN     | Řetězec, logická hodnota, Double, DateTime, časový interval, s hodnotou NULL        |  Všechny operandy musí být stejného typu nebo konstanta NULL.        |
-         |MÁ     | Řetězec        |  Na pravé straně jsou povoleny pouze konstantní řetězcové literály. Prázdný řetězec a NULL nejsou povoleny.       |
+         |HAS     | String        |  Na pravé straně jsou povoleny pouze konstantní řetězcové literály. Prázdný řetězec a NULL nejsou povoleny.       |
 
       - **Příklady dotazů**
       
@@ -91,27 +91,27 @@ Během několika minut připojit váš zdroj událostí do prostředí Time Seri
 
 10. **Grafu** umožňuje vizuálně procházejte data. Nástroje grafu patří:
 
-   - Vyberte a klikněte na příkaz, která umožňuje výběr konkrétní časový rozsah nebo jedné datové řady.  
-   - Během doby span výběr, můžete přiblížit nebo prozkoumat události.  
-   - V rámci datové řady můžete řadu rozdělit podle jiného sloupce, přidat řadu jako nový termín, zobrazit jenom vybrané řady, vyloučit vybrané řady, odešlete zprávu ping onu nebo prozkoumat události z vybraného řady.
-   - V oblasti filtrů nalevo od grafu můžete zobrazit všechny řady zobrazených dat a změnit pořadí podle hodnoty nebo název, zobrazit všechny datové řady nebo konkrétně připnuté nebo nepřipnuté řady.  Můžete také vybrat jednu řadu dat a řadu rozdělit podle jiného sloupce, přidat řadu jako nový termín, zobrazit jenom vybrané řady, vyloučit vybrané řady, připnout onu nebo prozkoumat události z vybraného řady.
-   - Při prohlížení současně více sad podmínek, zásobník, zrušit seskupení, zobrazit další data o datové řady a použít stejné osy y napříč všemi podmínkami pomocí tlačítka v pravém horním rohu grafu.
+    - Vyberte a klikněte na příkaz, která umožňuje výběr konkrétní časový rozsah nebo jedné datové řady.  
+    - Během doby span výběr, můžete přiblížit nebo prozkoumat události.  
+    - V rámci datové řady můžete řadu rozdělit podle jiného sloupce, přidat řadu jako nový termín, zobrazit jenom vybrané řady, vyloučit vybrané řady, odešlete zprávu ping onu nebo prozkoumat události z vybraného řady.
+    - V oblasti filtrů nalevo od grafu můžete zobrazit všechny řady zobrazených dat a změnit pořadí podle hodnoty nebo název, zobrazit všechny datové řady nebo konkrétně připnuté nebo nepřipnuté řady.  Můžete také vybrat jednu řadu dat a řadu rozdělit podle jiného sloupce, přidat řadu jako nový termín, zobrazit jenom vybrané řady, vyloučit vybrané řady, připnout onu nebo prozkoumat události z vybraného řady.
+    - Při prohlížení současně více sad podmínek, zásobník, zrušit seskupení, zobrazit další data o datové řady a použít stejné osy y napříč všemi podmínkami pomocí tlačítka v pravém horním rohu grafu.
  
-   ![Nástroje grafu](media/time-series-insights-explorer/explorer5.png) 
+    ![Nástroje grafu](media/time-series-insights-explorer/explorer5.png) 
 
 11. **Heatmapu** umožňuje rychle odhalovat případné problémy jedinečný nebo neobvyklé datové řady v daný dotaz. Pouze jeden hledaný termín lze vizualizovat jako heatmapu.    
 
-   ![Heat mapa](media/time-series-insights-explorer/explorer6.png)
+    ![Heat mapa](media/time-series-insights-explorer/explorer6.png)
 
 12. **Události**:  Pokud zvolíte zkoumat události při výběru nebo pravým tlačítkem myši nad panel událostí je k dispozici.  Tady můžete zobrazit všechny nezpracovaných událostí a export událostí jako soubory JSON nebo CSV. Všimněte si, že Time Series Insights ukládá všechny nezpracovaná data.
 
-   ![Události](media/time-series-insights-explorer/explorer7.png)
+    ![Události](media/time-series-insights-explorer/explorer7.png)
 
 13. Klikněte na tlačítko **statistiky** kartu po zkoumání události k vystavení vzory a statistiky sloupce.  
 
-   - **Vzory**: Tato funkce proaktivně zobrazí nejvíce statisticky významná vzory ve vybrané datové oblasti. To vám přišla odpadne podívat se na tisíce událostí, abyste pochopili, jaké vzorce zaručujete nejvíce času i energie. Kromě toho Time Series Insights vám umožní přejít přímo do těchto statisticky významná vzory pokračovat provádění analýzy. Tato funkce je také užitečné pro následné vyšetřování historická data. 
+    - **Vzory**: Tato funkce proaktivně zobrazí nejvíce statisticky významná vzory ve vybrané datové oblasti. To vám přišla odpadne podívat se na tisíce událostí, abyste pochopili, jaké vzorce zaručujete nejvíce času i energie. Kromě toho Time Series Insights vám umožní přejít přímo do těchto statisticky významná vzory pokračovat provádění analýzy. Tato funkce je také užitečné pro následné vyšetřování historická data. 
 
-   - **Statistiky sloupce**:  Statistiky sloupce poskytují grafů a tabulek, které rozdělení dat každého sloupce vybrané datové řady za vybrané časové období.  
+    - **Statistiky sloupce**:  Statistiky sloupce poskytují grafů a tabulek, které rozdělení dat každého sloupce vybrané datové řady za vybrané časové období.  
  
       ![STATISTIKA](media/time-series-insights-explorer/explorer8.png) 
 

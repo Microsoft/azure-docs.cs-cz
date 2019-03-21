@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 2ebc0c90d62d1299c076f8d91ba9fed1998a20e5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2a425e607ea7dac394ab90a3fed4d4026056bbc1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450188"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118574"
 ---
 <a name="get-customer-leads"></a>Získání potenciálních zákazníků
 ==================
@@ -39,13 +39,13 @@ Potenciální zákazníci jsou zákazníci, kteří mají zájem o nebo své pro
 
 <!-- -->
 
-2.  Zákazník souhlasí s sdílení svých informací po výběru "Stáhnout". Je toto zájemce **počáteční zájmu** potenciálních zákazníků, kde můžeme sdílet informace o zákazníkovi, který vyjádřil zájmu o získání váš produkt. Zájemce je nejvyšší úrovni pořízení trychtýřového grafu.
+1. Zákazník souhlasí s sdílení svých informací po výběru "Stáhnout". Je toto zájemce **počáteční zájmu** potenciálních zákazníků, kde můžeme sdílet informace o zákazníkovi, který vyjádřil zájmu o získání váš produkt. Zájemce je nejvyšší úrovni pořízení trychtýřového grafu.
 
-    ![Získat nyní možnost](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
+   ![Získat nyní možnost](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
 
-3.  Zákazník vybere "Koupit" v [webu Azure Portal](https://portal.azure.com/) získat váš produkt. Je tento vedoucí **active** potenciálních zákazníků, kde můžeme sdílet informace o zákazníkovi, který začal nasadit váš produkt.
+1. Zákazník vybere "Koupit" v [webu Azure Portal](https://portal.azure.com/) získat váš produkt. Je tento vedoucí **active** potenciálních zákazníků, kde můžeme sdílet informace o zákazníkovi, který začal nasadit váš produkt.
 
-    ![Kupte si možnost](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
+   ![Kupte si možnost](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
 
 
 ### <a name="appsource"></a>AppSource

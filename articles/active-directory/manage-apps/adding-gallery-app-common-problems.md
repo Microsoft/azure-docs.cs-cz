@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe781802309ad0945eaee23c35dda1617e47ae06
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a898b5b235099109fcfeaaa4d647493e54caf57e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727345"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853167"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Potíže při přidávání aplikace Galerie Azure AD
 
@@ -73,41 +73,41 @@ Přečtěte si následující popisy pro další podrobnosti o oznámení.
 
 ### <a name="essential-notification-items"></a>Základní oznámení položky
 
--   **Název** – popisný název oznámení
+- **Název** – popisný název oznámení
 
   * Příklad – **nastavení proxy aplikace.**
 
--   **Popis** – popis, k čemu došlo v důsledku operace
+- **Popis** – popis, k čemu došlo v důsledku operace
 
-    -   Příklad – **zadanou vnitřní adresu url se už používá jiná aplikace**
+  -   Příklad – **zadanou vnitřní adresu url se už používá jiná aplikace**
 
--   **ID oznámení** – jedinečné ID oznámení
+- **ID oznámení** – jedinečné ID oznámení
 
-    -   Příklad – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
+  -   Příklad – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **ID žádosti klienta** – ID konkrétní žádosti od prohlížeče
+- **ID žádosti klienta** – ID konkrétní žádosti od prohlížeče
 
-    -   Příklad – **302fd775-3329-4670-a9f3-bea37004f0bc**
+  -   Příklad – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
--   **Časové razítko UTC** – časové razítko, během které oznámení došlo k chybě, ve standardu UTC
+- **Časové razítko UTC** – časové razítko, během které oznámení došlo k chybě, ve standardu UTC
 
-    -   Příklad – **2017-03-23T19:50:43.7583681Z**
+  -   Příklad – **2017-03-23T19:50:43.7583681Z**
 
--   **Interní ID transakce** – interní ID můžeme použít k vyhledání Chyba v našem systému
+- **Interní ID transakce** – interní ID můžeme použít k vyhledání Chyba v našem systému
 
-    -   Příklad – **71a2f329-ca29-402f-aa72-bc00a7aca603**
+  -   Příklad – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
--   **Hlavní název uživatele** – uživatel, který provedl operaci
+- **Hlavní název uživatele** – uživatel, který provedl operaci
 
-    -   Příklad: **tperkins@f128.info**
+  -   Příklad – **tperkins\@f128.info**
 
--   **ID tenanta** – jedinečné ID tenanta, který byl členem skupiny uživatele, který provedl operaci
+- **ID tenanta** – jedinečné ID tenanta, který byl členem skupiny uživatele, který provedl operaci
 
-    -   Příklad – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+  -   Příklad – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **ID objektu uživatele** – jedinečné ID uživatele, který provedl operaci
+- **ID objektu uživatele** – jedinečné ID uživatele, který provedl operaci
 
-    -   Příklad – **17f84be4-51f8-483a-b533-383791227a99**
+  -   Příklad – **17f84be4-51f8-483a-b533-383791227a99**
 
 ### <a name="detailed-notification-items"></a>Podrobný oznamovací položky
 
@@ -125,7 +125,7 @@ Přečtěte si následující popisy pro další podrobnosti o oznámení.
 
 -   **Podrobnosti o** – podrobný popis, k čemu došlo v důsledku operace
 
-    -   Příklad – **interní adresa url 'https://bing.com/"je neplatná, protože se už používá**
+    -   Příklad – **interní adresa url `https://bing.com/` je neplatná, protože se už používá**
 
 -   **Chyba při kopírování** – klikněte na tlačítko **ikonu kopírování** napravo od **Kopírovat chybu** textového pole zkopírujte všechny podrobnosti oznámení ke sdílení se skupinou pro podporu nebo produktu 
 -   engineer (technik)

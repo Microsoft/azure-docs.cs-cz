@@ -1,7 +1,7 @@
 ---
-title: Správa nastavení
+title: Správa účtu a klíčů
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Spravovat nastavení vašeho uživatelského účtu a vytváření klíč používaný ve všech svých aplikací pomocí webových stránek služby LUIS.
+description: Dvě důležité informace pro účet LUIS jsou uživatelský účet a pro tvorbu klíč. Přihlašovací údaje se spravuje na adrese account.microsoft.com. Klíč pro vytváření obsahu je spravován na stránce Nastavení portálu služby LUIS.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,36 +9,40 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: 9fc1882a56c0e1bccdfbb658dac83e4c231ef261
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d7d63ad642ab2d3b336e15dcca606077762ceb9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879084"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116618"
 ---
 # <a name="manage-account-and-authoring-key"></a>Správa účtu a klíč pro tvorbu
-Dvě důležité informace pro účet LUIS jsou uživatelský účet a pro tvorbu klíč. Přihlašovací údaje se spravuje na [account.microsoft.com](https://account.microsoft.com). Spravuje se z vašeho klíče pro vytváření obsahu [LUIS](luis-reference-regions.md) webu **nastavení** stránky. 
+
+Dvě důležité informace pro účet LUIS jsou uživatelský účet a pro tvorbu klíč. Přihlašovací údaje se spravuje na [account.microsoft.com](https://account.microsoft.com). Spravuje se z vašeho klíče pro vytváření obsahu [LUIS](luis-reference-regions.md) portál **nastavení** stránky.
 
 ## <a name="authoring-key"></a>Klíč pro tvorbu
 
-Tento jeden, oblast pro tvorbu klíče na **nastavení** stránce umožňuje vytvářet všechny aplikace [LUIS](luis-reference-regions.md) webu i na [rozhraní API pro vytváření](https://aka.ms/luis-authoring-api). Pro zjednodušení vytváření klíč má povoleno provést [omezené](luis-boundaries.md) počet koncových bodů dotazuje každý měsíc. 
+Tento jeden, oblast pro tvorbu klíče na **nastavení** stránce umožňuje vytvářet všechny aplikace [LUIS](luis-reference-regions.md) portálu stejně jako [rozhraní API pro vytváření](https://aka.ms/luis-authoring-api). Pro zjednodušení vytváření klíč má povoleno provést [omezené](luis-boundaries.md) počet koncových bodů dotazuje každý měsíc.
 
 [![Stránka nastavení služby LUIS](./media/luis-how-to-account-settings/account-settings.png)](./media/luis-how-to-account-settings/account-settings.png#lightbox)
 
 Vytváření klíč se používá pro všechny aplikace, které vlastníte, jakož i všechny aplikace, které jsou uvedené jako spolupracovníka.
 
 ## <a name="authoring-key-regions"></a>Vytváření klíčových oblastech
-Klíč pro vytváření obsahu je specifická pro [pro vytváření oblasti](luis-reference-regions.md#publishing-regions). Klíč nebude fungovat v různých oblastech. 
+
+Klíč pro vytváření obsahu je specifická pro [pro vytváření oblasti](luis-reference-regions.md#publishing-regions). Klíč nebude fungovat v různých oblastech.
 
 ## <a name="reset-authoring-key"></a>Obnovit klíč pro tvorbu
-Pokud pro tvorbu klíče je ohrožena obnovte klíč. Klíč se resetuje na všech aplikacích [LUIS](luis-reference-regions.md) webu. Pokud vytváříte aplikace pomocí rozhraní API pro vytváření, budete muset změnit hodnotu `Ocp-Apim-Subscription-Key` do nového klíče. 
+
+Pokud pro tvorbu klíče je ohrožena obnovte klíč. Klíč se resetuje na všech aplikacích [LUIS](luis-reference-regions.md) portálu. Pokud vytváříte aplikace pomocí rozhraní API pro vytváření, budete muset změnit hodnotu `Ocp-Apim-Subscription-Key` do nového klíče.
 
 ## <a name="delete-account"></a>Odstranit účet
-Zobrazit [úložiště dat a odebrání](luis-concept-data-storage.md#accounts) informace o tom, jaká data se odstraní při odstranění účtu. 
+
+Zobrazit [úložiště dat a odebrání](luis-concept-data-storage.md#accounts) informace o tom, jaká data se odstraní při odstranění účtu.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o vaší [vytváření klíč](luis-concept-keys.md#authoring-key). 
+Další informace o vaší [vytváření klíč](luis-concept-keys.md#authoring-key).
 

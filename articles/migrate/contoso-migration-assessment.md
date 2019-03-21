@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: df3ae6fbeceb85df6d6e5245a5bbad517179733c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 4739308d301291bf88e8ae547ba85f9648339c4e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991355"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118455"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migrace Contoso: Posouzení místních úloh pro migraci do Azure
 
@@ -159,15 +159,15 @@ Contoso teď můžete spustit posouzení, které analyzuje jeho místní databá
 
     ![Data Migration Assistant – výběr zdroje](./media/contoso-migration-assessment/dma-assessment-1.png)
 
-    > [!NOTE]
-      V současné době Data Migration Assistant nepodporuje posouzení pro migraci do Azure SQL Database Managed Instance. Jako alternativní řešení Contoso používá SQL Server na Virtuálním počítači Azure jako předpokládaný cíl pro posouzení.
+   > [!NOTE]
+   >    V současné době Data Migration Assistant nepodporuje posouzení pro migraci do Azure SQL Database Managed Instance. Jako alternativní řešení Contoso používá SQL Server na Virtuálním počítači Azure jako předpokládaný cíl pro posouzení.
 
 3. V **vyberte cílovou verzi**, Contoso vybere jako cílovou verzi SQL serveru 2017. Contoso je potřeba vybrat tuto verzi, protože je verze, která používá SQL Database Managed Instance.
 4. Contoso vybere sestavy, které pomáhají zjistit informace o kompatibilitě a nové funkce:
-    - **Problémy s kompatibilitou** Všimněte si změny, které můžou narušit migraci nebo které vyžadují menší úpravu před migrací. Tato sestava zachová Contoso informováni o všech funkcích aktuálně používán, které jsou zastaralé. Problémy jsou uspořádané podle úrovně kompatibility.
-    - **Nová doporučení funkcí** poznámky nové funkce v cílové platformě SQL serveru, který lze použít pro databázi po migraci. Nová doporučení funkcí jsou uspořádané pod záhlavím **výkonu**, **zabezpečení**, a **úložiště**.
+   - **Problémy s kompatibilitou** Všimněte si změny, které můžou narušit migraci nebo které vyžadují menší úpravu před migrací. Tato sestava zachová Contoso informováni o všech funkcích aktuálně používán, které jsou zastaralé. Problémy jsou uspořádané podle úrovně kompatibility.
+   - **Nová doporučení funkcí** poznámky nové funkce v cílové platformě SQL serveru, který lze použít pro databázi po migraci. Nová doporučení funkcí jsou uspořádané pod záhlavím **výkonu**, **zabezpečení**, a **úložiště**.
 
-    ![Data Migration Assistant – problémy s kompatibilitou a nové funkce](./media/contoso-migration-assessment/dma-assessment-2.png)
+     ![Data Migration Assistant – problémy s kompatibilitou a nové funkce](./media/contoso-migration-assessment/dma-assessment-2.png)
 
 2. V **připojit k serveru**, Contoso zadá název virtuálního počítače, na kterém běží databáze a přihlašovací údaje pro přístup k ní. Vybere contoso **důvěřovat certifikátu serveru** k Ujistěte se, že virtuální počítač má přístup k SQL serveru. Potom vybere Contoso **připojit**.
 
@@ -186,13 +186,13 @@ Výsledky se zobrazí, jakmile jsou k dispozici. Pokud Contoso řeší problémy
 
 1. V **problémy s kompatibilitou** sestavy Contoso vyhledá všechny problémy na jednotlivých úrovních kompatibility. Mapování úrovní kompatibility na verze SQL Serveru je následující:
 
-    - 100: SQL Server 2008 nebo Azure SQL Database
-    - 110: SQL Server 2012 nebo Azure SQL Database
-    - 120: SQL Server 2014 a Azure SQL Database
-    - 130: SQL Server 2016 a Azure SQL Database
-    - 140: SQL Server 2017/Azure SQL Database
+   - 100: SQL Server 2008 nebo Azure SQL Database
+   - 110: SQL Server 2012 nebo Azure SQL Database
+   - 120: SQL Server 2014 a Azure SQL Database
+   - 130: SQL Server 2016 a Azure SQL Database
+   - 140: SQL Server 2017/Azure SQL Database
 
-    ![Data Migration Assistant – sestava problémy s kompatibilitou](./media/contoso-migration-assessment/dma-assessment-5.png)
+     ![Data Migration Assistant – sestava problémy s kompatibilitou](./media/contoso-migration-assessment/dma-assessment-5.png)
 
 2. V **doporučení funkcí** sestavy Contoso zobrazení výkonu, zabezpečení a úložiště funkcí, které posouzení doporučuje po migraci. Doporučují se širokou škálu funkcí, včetně OLTP v paměti, indexy columnstore, Stretch Database, Always Encrypted, dynamického maskování dat a transparentní šifrování dat.
 
@@ -403,14 +403,14 @@ Contoso spustí instalaci na každém virtuálním počítači.
 
     `sudo -i`
 3. Nainstaluje agenta MMA Contoso:
-    - Společnosti Contoso přejde do ID pracovního prostoru a klíč v příkazu.
-    - Příkazy jsou pro 64bitovou verzi.
-    - ID pracovního prostoru a primární klíč jsou umístěny v pracovním prostoru Log Analytics na portálu Azure portal. Vyberte **nastavení**a pak vyberte **připojené zdroje** kartu.
-    - Spusťte následující příkazy ke stažení agenta Log Analytics, ověření kontrolního součtu a nainstalovat a začlenit agenta:
+   - Společnosti Contoso přejde do ID pracovního prostoru a klíč v příkazu.
+   - Příkazy jsou pro 64bitovou verzi.
+   - ID pracovního prostoru a primární klíč jsou umístěny v pracovním prostoru Log Analytics na portálu Azure portal. Vyberte **nastavení**a pak vyberte **připojené zdroje** kartu.
+   - Spusťte následující příkazy ke stažení agenta Log Analytics, ověření kontrolního součtu a nainstalovat a začlenit agenta:
 
-    ```
-    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==
-    ```
+     ```
+     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==
+     ```
 
 #### <a name="install-the-dependency-agent-on-linux-vms"></a>Instalace agenta závislostí na virtuální počítače s Linuxem
 

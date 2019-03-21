@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/27/2018
 ms.author: ryanwi
-ms.openlocfilehash: 42a6430162f3bafd3ec3ce2a3c523f6f5755914a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0e5cfa42eba5a2110ebf8879c771f2fef048ae03
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001374"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835709"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Přidání protokolování do aplikace Service Fabric
 
 Aplikace musí poskytnout dostatek informací k forensically ladění při vzniknou problémy. Protokolování je jedním z nejdůležitějších věcí, které přidáte do aplikace Service Fabric. Pokud dojde k selhání, dobré protokolování můžete poskytnout způsob, jak zjistit selhání. Díky analýze protokolu vzory, může se stát způsoby, jak vylepšit výkon nebo návrhu vaší aplikace. Tento dokument ukazuje několik různých protokolování.
 
-## <a name="eventflow"></a>Využitím EventFlow
+## <a name="eventflow"></a>EventFlow
 
 [Využitím EventFlow knihovny](https://github.com/Azure/diagnostics-eventflow) suite umožňuje aplikacím k definování jaká diagnostická data ke shromažďování a kde by měl obsahovat výstup do. Diagnostická data může být cokoli z čítačů výkonu do trasování aplikací. Poběží ve stejném procesu jako aplikace, takže minimalizaci režie komunikace. Další informace o využitím EventFlow a Service Fabric najdete v tématu [Azure Service Fabric události agregace s využitím EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md).
 
@@ -132,7 +132,7 @@ ASP.NET Core protokolování ([balíček Microsoft.Extensions.Logging NuGet](htt
 
 ### <a name="using-other-logging-providers"></a>Pomocí dalších poskytovatelů protokolování
 
-Použití externích poskytovatelů přístup je popsáno v předchozí části, včetně některých [Serilog](https://serilog.net/), [NLog](http://nlog-project.org/), a [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Můžete připojit každou z nich do ASP.NET Core protokolování nebo je můžete využít samostatně. Serilog obsahuje funkce, která vylepšuje všechny zprávy odeslané z protokolovací nástroj. Tato funkce může být užitečné pro výstup, název služby, typ a informace o oddílu. Pokud chcete tuto funkci použít v infrastruktuře ASP.NET Core, proveďte tyto kroky:
+Použití externích poskytovatelů přístup je popsáno v předchozí části, včetně některých [Serilog](https://serilog.net/), [NLog](https://nlog-project.org/), a [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Můžete připojit každou z nich do ASP.NET Core protokolování nebo je můžete využít samostatně. Serilog obsahuje funkce, která vylepšuje všechny zprávy odeslané z protokolovací nástroj. Tato funkce může být užitečné pro výstup, název služby, typ a informace o oddílu. Pokud chcete tuto funkci použít v infrastruktuře ASP.NET Core, proveďte tyto kroky:
 
 1. Přidat **Serilog**, **Serilog.Extensions.Logging**, **Serilog.Sinks.Literate**, a **Serilog.Sinks.Observable** balíčky NuGet do projektu. 
 2. Vytvoření `LoggerConfiguration` a instanci protokolovače.

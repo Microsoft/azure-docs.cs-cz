@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 1/29/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8e9208981dd54fef1f56ee552d34bab78210b96d
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 29db8c8b51082016d413c66c6abfdb1c518c9329
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316553"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117961"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
@@ -72,9 +72,9 @@ Po vytvoření skupiny akcí je viditelná ve **skupiny akcí** část **monitor
 **Aplikace Azure nabízené** – může mít omezený počet akcí Azure aplikace do skupiny akcí. V současné době podporuje pouze akce aplikace Azure ServiceHealth výstrahy. Další typ výstrahy se budou ignorovat. Zobrazit [konfigurace oznámení pokaždé, když se pošle oznámení o stavu služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 **E-mailu** – E-maily se budou odesílat z těchto e-mailových adres. Ujistěte se, že filtrování e-mailu je správně nakonfigurována
-   - azure-noreply@microsoft.com
-   - azureemail-noreply@microsoft.com
-   - alerts-noreply@mail.windowsazure.com
+- azure-noreply@microsoft.com
+- azureemail-noreply@microsoft.com
+- alerts-noreply@mail.windowsazure.com
 
 Může mít omezený počet e-mailových akcí do skupiny akcí. Zobrazit [tady informace](./../../azure-monitor/platform/alerts-rate-limiting.md) článku
 

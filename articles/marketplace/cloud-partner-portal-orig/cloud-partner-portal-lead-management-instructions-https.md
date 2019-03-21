@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8898149e6858c5a1cdb2d4510ad2764ffe25fda5
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 905ce1eca9996140da5f9d33aa7f9749a4ef7034
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964249"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894117"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurace správy potenciálních zákazníků pomocí koncového bodu HTTPS
 
@@ -88,7 +88,7 @@ Koncový bod HTTPS můžete použít ke zpracování Azure Marketplace a AppSour
    - **K** – zadejte alespoň jednu platnou e-mailovou adresu.
    - **Předmět** -Flow nabízí možnost Přidat dynamický obsah, jako je třeba **LeadSource** na následujícím snímku obrazovky.
 
-    ![Přidejte akci e-mailu s použitím dynamický obsah](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
+     ![Přidejte akci e-mailu s použitím dynamický obsah](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
 
    - **Tělo** – ze seznamu dynamického obsahu, přidejte informace, které mají v textu e-mailu. Například LastName, jméno, e-mailu, a společnosti.
 
@@ -117,7 +117,7 @@ Příklad testovací JSON používá následující schéma:
 
 ``` json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "https://json-schema.org/draft-04/schema#",
   "definitions": {},
   "id": "http://example.com/example.json",
   "properties": {

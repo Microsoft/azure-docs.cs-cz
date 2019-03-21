@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 0978db31f4aa8caa273c63c2f55d5146b19dea26
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cdde9f0ec69bec48ae0fb747db0cc49e81920817
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878009"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57872554"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Unity (beta verze)
 
@@ -63,12 +63,12 @@ K dokončení tohoto projektu budete potřebovat:
 Přidáme minimálního uživatelského rozhraní do našich scény skládající se z tlačítka pro aktivaci rozpoznávání řeči a textové pole k zobrazení výsledku.
 
 * V [okno hierarchie](https://docs.unity3d.com/Manual/Hierarchy.html) (ve výchozím nastavení na levé straně), se ukázková Scéna zobrazuje, že Unity vytvořené pomocí nového projektu.
-* Klikněte na tlačítko **vytvořit** tlačítko v horní části okna hierarchie a vybrat **uživatelského rozhraní** > **tlačítko**.
+* Klikněte na tlačítko **vytvořit** tlačítko v horní části okna hierarchii a vyberte **uživatelského rozhraní** > **tlačítko**.
 * Tím se vytvoří tři herním objektům, které se zobrazí v okně hierarchie: **tlačítko** vnořené objektu **plátna** objektu a **EventSystem** objektu.
-* [Přejděte scény](https://docs.unity3d.com/Manual/SceneViewNavigation.html) tak dobrého zobrazí na plátně a tlačítko v [scény](https://docs.unity3d.com/Manual/UsingTheSceneView.html).
+* [Přejděte scény](https://docs.unity3d.com/Manual/SceneViewNavigation.html) proto měly dobrý výhled na plátno a tlačítko v [scény](https://docs.unity3d.com/Manual/UsingTheSceneView.html).
 * Klikněte na tlačítko **tlačítko** objektu v okně hierarchie k jeho nastavení v zobrazení [okně Inspektor](https://docs.unity3d.com/Manual/UsingTheInspector.html) (ve výchozím nastavení na pravé straně).
 * Nastavte **Pos X** a **Pos Y** vlastností **0**, takže je zarovnaný na střed na tlačítko uprostřed na plátno.
-* Klikněte na tlačítko **vytvořit** tlačítko v horní části okna hierarchie znovu a vyberte **uživatelského rozhraní** > **Text** vytvoření textového pole.
+* Klikněte na tlačítko **vytvořit** tlačítko v horní části okna hierarchii znovu a vyberte **uživatelského rozhraní** > **Text** vytvoření textového pole.
 * Klikněte na tlačítko **Text** objektu v okně hierarchie k jeho nastavení v zobrazení [okně Inspektor](https://docs.unity3d.com/Manual/UsingTheInspector.html) (ve výchozím nastavení na pravé straně).
 * Nastavte **Pos X** a **Pos Y** vlastností **0** a **120**a nastavte **šířka** a **Výška** vlastností **240** a **120** zajistit, že do textového pole a tlačítko nepřekrývají.
 
@@ -82,14 +82,14 @@ Až skončíte, uživatelské rozhraní by měl vypadat zhruba takto:
 
 1. Upravte skript, že na něj kliknuli dvakrát.
 
-  > [!NOTE]
-  > Můžete nakonfigurovat, které editor kódu bude spuštěna v rámci **upravit** > **Předvolby**, najdete v článku [uživatelská příručka pro Unity](https://docs.unity3d.com/Manual/Preferences.html).
+   > [!NOTE]
+   > Můžete nakonfigurovat, které editor kódu bude spuštěna v rámci **upravit** > **Předvolby**, najdete v článku [uživatelská příručka pro Unity](https://docs.unity3d.com/Manual/Preferences.html).
 
 1. Veškerý kód nahraďte následujícím kódem:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-unity/Assets/Scripts/HelloWorld.cs#code)]
 
-1. Vyhledejte řetězec `YourSubscriptionKey` a nahraďte ho vaším klíčem předplatného služby Speech.
+1. Najít a nahradit řetězec `YourSubscriptionKey` s klíči předplatného hlasové služby.
 
 1. Vyhledejte řetězec `YourServiceRegion` a nahraďte ho [oblastí](regions.md) přidruženou k vašemu předplatnému. Pokud například používáte bezplatnou zkušební verzi, oblast je `westus`.
 
@@ -97,19 +97,19 @@ Až skončíte, uživatelské rozhraní by měl vypadat zhruba takto:
 
 1. Zpět v Unity editoru skriptu musí být přidán jako součást na jeden z vašich her objektů.
 
-  * Klikněte na **plátna** objektu v okně hierarchie. Otevře jeho nastavení v [okně Inspektor](https://docs.unity3d.com/Manual/UsingTheInspector.html) (ve výchozím nastavení na pravé straně).
-  * Klikněte na tlačítko **přidat součást** tlačítka v okně Inspektor a pak vyhledejte skript HelloWorld vytvoříme výše a přidejte ji.
-  * Všimněte si, že komponenta Hello World má dvě neinicializovaných vlastností **textový výstup** a **tlačítko Start obnovení**, které se shodují s veřejné vlastnosti `HelloWorld` třídy.
-    Je nastavit, klikněte na výběr objektů (ikona malý kruh napravo od vlastnost) a zvolte text a tlačítko objekty, které jste vytvořili dříve.
+   * Klikněte na **plátna** objektu v okně hierarchie. Otevře nastavení [okně Inspektor](https://docs.unity3d.com/Manual/UsingTheInspector.html) (ve výchozím nastavení na pravé straně).
+   * Klikněte na tlačítko **přidat součást** tlačítka v okně Inspektor a pak vyhledejte skript HelloWorld vytvoříme výše a přidejte ji.
+   * Všimněte si, že komponenta Hello World má dvě neinicializovaných vlastností **textový výstup** a **tlačítko Start obnovení**, které se shodují s veřejné vlastnosti `HelloWorld` třídy.
+     Je nastavit, klikněte na výběr objektů (ikona malý kruh napravo od vlastnost) a zvolte text a tlačítko objekty, které jste vytvořili dříve.
 
-    > [!NOTE]
-    > Tlačítko má také vnořeného textu objektu. Ujistěte se, že že není vyberete omylem ho pro textový výstup (nebo přejmenujte jednu textových objektů, aby nedošlo ke zmatkům pomocí pole názvu v okně Inspektor).
+     > [!NOTE]
+     > Tlačítko má také vnořeného textu objektu. Ujistěte se, že že není vyberete omylem ho pro textový výstup (nebo přejmenujte jednu textových objektů, aby nedošlo ke zmatkům pomocí pole názvu v okně Inspektor).
 
 ## <a name="run-the-application-in-the-unity-editor"></a>Spusťte aplikaci v Unity editoru
 
 * Stisknutím klávesy **Přehrát** tlačítko v panelu nástrojů editoru Unity (pod nabídek).
 
-* Po spuštění aplikace, klikněte na tlačítko a Mluvte anglickou fráze nebo větu do počítače mikrofon. Vaše řeč se přenese do služby Speech a přepíše na text, který se zobrazí v okně.
+* Po spuštění aplikace, klikněte na tlačítko a Mluvte anglickou fráze nebo větu do počítače mikrofon. Vaše řeči se přenášejí do služeb řeči a převede na text, který se zobrazí v okně.
 
   [![Snímek obrazovky spuštěné rychlý start v okně hry Unity](media/sdk/qs-csharp-unity-03-output-inline.png)](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
 

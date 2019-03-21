@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 85d8b531f19ac35f091f54c2627f7fe6d3a62a42
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c7288b112ce2fd062a67cb673a1efa6028ec7d57
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468134"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888515"
 ---
-# <a name="work-with-databases-containers-and-items"></a>Práce s databází, kontejnerů a položek
+# <a name="work-with-databases-containers-and-items"></a>Práce s databázemi, kontejnery a položkami
 
 Po vytvoření [účtu služby Azure Cosmos DB](account-overview.md) v rámci vašeho předplatného Azure můžete spravovat data ve vašem účtu tak, že vytvoříte databází, kontejnerů a položek. Tento článek popisuje, každá z těchto entit: databází, kontejnerů a položek. Následující obrázek ukazuje hierarchii různé entity v účtu služby Azure Cosmos:
 
@@ -92,7 +92,7 @@ Kontejner služby Azure Cosmos je sada vlastností definovaná systémem. V záv
 Kontejner služby Azure Cosmos podporuje následující operace pomocí kteréhokoli z rozhraní API služby Azure Cosmos.
 
 | **Operace** | **Azure CLI** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Gremlin API** | **Rozhraní Table API** |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | Zobrazení výčtu kontejnery v databázi | Ano* | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
 | Přečtěte si kontejneru | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
 | Vytvořit nový kontejner | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
@@ -125,7 +125,7 @@ Každá položka Azure Cosmos má následující vlastnosti definovaná systéme
 Azure Cosmos položka podporuje následující operace, které je možné provádět pomocí některé z rozhraní API služby Azure Cosmos.
 
 | **Operace** | **Azure CLI** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Gremlin API** | **Rozhraní Table API** |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | Vložit, nahradí, odstranit, Upsert, přečtěte si | Ne | Ano | Ano | Ano | Ano | Ano |
 
 ## <a name="next-steps"></a>Další postup
@@ -133,7 +133,7 @@ Azure Cosmos položka podporuje následující operace, které je možné prová
 Teď můžete přejít k zjistěte, jak zřídit propustnost v účtu Azure Cosmos nebo najdete další koncepty:
 
 * [Postup konfigurace zřízenou propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md)
-* [Jak nakonfigurovat zřízené propustnosti kontejneru Azure Cosmos](how-to-provision-container-throughput.md)
+* [Postup konfigurace zřízené propustnosti na kontejner služby Azure Cosmos](how-to-provision-container-throughput.md)
 * [Logické oddíly](partition-data.md)
 * [Postup konfigurace hodnoty TTL na kontejneru Azure Cosmos](how-to-time-to-live.md)
 * [Postup vytváření reaktivních aplikací pomocí Change Feed](change-feed.md)

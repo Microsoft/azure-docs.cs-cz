@@ -1,5 +1,5 @@
 ---
-title: Migrace uživatelů na licencování na základě skupin – Azure Active Directory | Dokumentace Microsoftu
+title: Migrace jednotlivě licencovaných uživatelů na licencování na základě skupiny – Azure Active Directory | Dokumentace Microsoftu
 description: Jak přepínat z jednotlivých uživatelských licencí pro licencování na základě skupiny pomocí služby Azure Active Directory
 services: active-directory
 keywords: Licencování Azure AD
@@ -11,21 +11,21 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fd800097ca5107f7df1e67c91ff4c96b9cfcd74
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: b6fd2eb51c7178421b0656e3b1d0e0ea36176c16
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107742"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199968"
 ---
-# <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Jak přidat uživatele s licencí pro skupinu pro licencování v Azure Active Directory
+# <a name="how-to-add-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Jak přidat uživatele s licencemi na jednotlivé migrovat do skupin pro licencování
 
-Máte stávající licence k nasazení uživatelům v organizacích prostřednictvím "přímého přiřazení"; To znamená pomocí skriptů Powershellu nebo jiných nástrojů k přiřazení licencí jednotlivým uživatelům. Pokud chcete začít používat licencování na základě skupiny pro správu licencí ve vaší organizaci, musíte si plán migrace do bez problému nahradit stávající řešení s licencováním na základě skupin.
+Máte stávající licence k nasazení uživatelům v organizacích prostřednictvím "přímého přiřazení"; To znamená pomocí skriptů Powershellu nebo jiných nástrojů k přiřazení licencí jednotlivým uživatelům. Než začnete používat licencování na základě skupiny pro správu licencí ve vaší organizaci, můžete tento plán migrace bez problému nahradit stávající řešení s licencováním na základě skupin.
 
 Nejdůležitějším principem brát v úvahu je, že byste se měli vyhnout situace, kdy migrace na licencování na základě skupiny způsobí uživatele dočasně ztráty aktuálně přiřazené licence. Chcete-li odebrat riziko ztráty přístupu ke službám a jejich data uživatelů, mělo by se vyhnout jakýkoli proces, který může mít za následek odebrání licencí.
 
@@ -69,18 +69,17 @@ Tady je proces migrace by mohla vypadat:
 
    - Tento stav byl očekáván typ user je během migrace:
 
-      ![byl očekáván typ user stavu](./media/licensing-groups-migrate-users/expected-user-state.png)
+      ![byl očekáván typ user stavu během migrace](./media/licensing-groups-migrate-users/expected-user-state.png)
 
    Tím potvrdíte, že uživatel má licence s přímým přístupem a zděděná. Vidíme, že oba **EMS** a **E3** jsou přiřazeny.
 
    - Vyberte každou licenci k zobrazení podrobností o povolené služby. To lze použít ke kontrole, pokud licence s přímým přístupem a skupinových povolit přesně stejné plánů služeb pro uživatele.
 
-      ![Zkontrolujte plány služeb](./media/licensing-groups-migrate-users/check-service-plans.png)
+      ![Zkontrolujte plány služeb pro uživatele](./media/licensing-groups-migrate-users/check-service-plans.png)
 
 4. Po potvrzení, zda jsou ekvivalentní s přímým přístupem a skupiny licencí, můžete začít odebrání přímé licencí od uživatelů. Můžete otestovat tak, že odeberete pro jednotlivé uživatele na portálu a potom spustit skripty pro automatizaci nechat na nich odebrat hromadně. Tady je příklad stejného uživatele s licencí s přímým přístupem odebrat na portálu. Všimněte si, že stav licence zůstane beze změny, ale už vidíme přímých přiřazení.
 
-   ![přímé licence byly odebrány](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
-
+   ![Potvrďte, že se odeberou přímé licence](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
 
 ## <a name="next-steps"></a>Další postup
 

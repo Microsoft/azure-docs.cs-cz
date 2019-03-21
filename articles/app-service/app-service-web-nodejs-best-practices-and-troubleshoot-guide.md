@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: 6a22600f7d6653da64256d7ec63ba26f272b2184
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 323de505bc1bfa9747f372033392a9fd6e08462c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888266"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898852"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace v Node.js v Azure App Service Windows
 
@@ -118,7 +118,7 @@ Výchozí hodnota je false. Při nastavenou na hodnotu true, modulu iisnode zobr
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (není doporučeno zapínat na živý provozní web)
 
-Toto nastavení řídí funkce ladění. Modul Iisnode je integrovaný nástroj node-inspector. Povolením tohoto nastavení můžete povolit ladění vaši aplikaci uzlu. Po povolení tohoto nastavení, vytvoří modul iisnode nástroj node-inspector soubory v adresáři "debuggerVirtualDir" na první žádost ladění vaší aplikace v Ruby. Nástroj node-inspector můžete načíst odesláním požadavku do http://yoursite/server.js/debug. Segment adresy URL ladění můžete řídit nastavení "debuggerPathSegment". Ve výchozím nastavení, debuggerPathSegment = "debug". Můžete nastavit `debuggerPathSegment` identifikátor GUID, například proto, že je obtížnější být zjištěny jinými uživateli.
+Toto nastavení řídí funkce ladění. Modul Iisnode je integrovaný nástroj node-inspector. Povolením tohoto nastavení můžete povolit ladění vaši aplikaci uzlu. Po povolení tohoto nastavení, vytvoří modul iisnode nástroj node-inspector soubory v adresáři "debuggerVirtualDir" na první žádost ladění vaší aplikace v Ruby. Nástroj node-inspector můžete načíst odesláním požadavku do `http://yoursite/server.js/debug`. Segment adresy URL ladění můžete řídit nastavení "debuggerPathSegment". Ve výchozím nastavení, debuggerPathSegment = "debug". Můžete nastavit `debuggerPathSegment` identifikátor GUID, například proto, že je obtížnější být zjištěny jinými uživateli.
 
 Čtení [ladění aplikací node.js na Windows](https://tomasz.janczuk.org/2011/11/debug-nodejs-applications-on-windows.html) podrobné informace o ladění.
 
@@ -133,7 +133,7 @@ Modul agentkeepalive zajistí, že sockets jsou opakovaně použít na vaší we
 Příklad [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) konfigurace:
 
 ```nodejs
-var keepaliveAgent = new Agent({
+let keepaliveAgent = new Agent({
     maxSockets: 40,
     maxFreeSockets: 10,
     timeout: 60000,
@@ -155,9 +155,9 @@ Pokud si myslíte, že vaše aplikace spotřebovává příliš mnoho CPU a nelz
 Řekněme například, že budete mít aplikaci hello world, kterou chcete Profilovat následujícím způsobem:
 
 ```nodejs
-var http = require('http');
+const http = require('http');
 function WriteConsoleLog() {
-    for(var i=0;i<99999;++i) {
+    for(let i=0;i<99999;++i) {
         console.log('hello world');
     }
 }
@@ -173,7 +173,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-Přejděte na web konzoly ladění https://yoursite.scm.azurewebsites.net/DebugConsole
+Přejděte na web konzoly ladění `https://yoursite.scm.azurewebsites.net/DebugConsole`
 
 Přejděte do adresáře site/wwwroot. Příkazový řádek uvidíte, jak je znázorněno v následujícím příkladu:
 
@@ -185,12 +185,12 @@ Tento příkaz nainstaluje profiler v8 pod uzlem\_moduly adresář a všechny je
 Nyní upravte vaše server.js k profilování aplikace.
 
 ```nodejs
-var http = require('http');
-var profiler = require('v8-profiler');
-var fs = require('fs');
+const http = require('http');
+const profiler = require('v8-profiler');
+const fs = require('fs');
 
 function WriteConsoleLog() {
-    for(var i=0;i<99999;++i) {
+    for(let i=0;i<99999;++i) {
         console.log('hello world');
     }
 }
