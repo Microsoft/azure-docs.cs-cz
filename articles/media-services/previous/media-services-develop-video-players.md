@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 6c57c8ad85ef83e8739bc2bf35b3bd0dc6d5a902
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ba8d9fd54b8b29a3e58f170402a64f5899fec002
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004838"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880683"
 ---
 # <a name="develop-video-player-applications"></a>Vývoj aplikací videopřehrávače
 ## <a name="overview"></a>Přehled
@@ -44,10 +44,10 @@ Další informace najdete tady:
 ## <a name="other-tools-for-creating-player-applications"></a>Další nástroje pro vytváření aplikací pro přehrávání
 Můžete také použít některý z následujících sad SDK:
 
-* [SDK klienta Smooth Streaming](http://www.iis.net/downloads/microsoft/smooth-streaming) 
+* [SDK klienta Smooth Streaming](https://www.iis.net/downloads/microsoft/smooth-streaming) 
 * [Technologie Smooth Streaming aplikace Windows Store](media-services-build-smooth-streaming-apps.md)
-* [Platforma Microsoft Media: Architekturu přehrávače](http://playerframework.codeplex.com/) 
-* [HTML5 Dokumentace k rozhraní Framework přehrávač](http://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
+* [Platforma Microsoft Media: Architekturu přehrávače](https://playerframework.codeplex.com/) 
+* [HTML5 Dokumentace k rozhraní Framework přehrávač](https://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
 * [Microsoft Smooth Streaming pro OSMF modulu plug-in](https://www.microsoft.com/download/details.aspx?id=36057) 
 * [Licencování Microsoft® technologie Smooth Streaming portování klienta](https://aka.ms/sspk) 
 * [Vývoj aplikací videa XBOX](https://xbox.create.msdn.com/) 

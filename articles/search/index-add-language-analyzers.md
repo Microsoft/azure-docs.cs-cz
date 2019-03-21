@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 20a8d9f5b575fca5471916af0183257f2a43d5cb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 9584f0ee4264724787c5913c0d6baa4c2769fa82
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328285"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085673"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Přidat do indexu Azure Search analyzátory jazyka
 
@@ -46,8 +46,8 @@ Výchozí Analyzátor je standardní Lucene, což funguje dobře pro angličtinu
 
 + Analyzátor anglické společnosti Microsoft provádí lemmatizátor místo slovního rozboru. To znamená, že dokáže zpracovat tvary slov tvary a nestandardní co mnohem lépe výsledkem relevantnější výsledky hledání 
 
- > [!Tip]
- > [Ukázka analyzátoru hledání](https://alice.unearth.ai/) poskytuje vedle sebe porovnání výsledků vytvářené standardní analyzátor Lucene, analyzátor Lucene pro angličtinu a procesor anglické přirozeného jazyka od Microsoftu. Pro každý vstupní hledání zadáte, výsledky z každé analyzátoru jsou zobrazeny v sousední podoken.
+  > [!Tip]
+  > [Ukázka analyzátoru hledání](https://alice.unearth.ai/) poskytuje vedle sebe porovnání výsledků vytvářené standardní analyzátor Lucene, analyzátor Lucene pro angličtinu a procesor anglické přirozeného jazyka od Microsoftu. Pro každý vstupní hledání zadáte, výsledky z každé analyzátoru jsou zobrazeny v sousední podoken.
 
 ## <a name="configuring-analyzers"></a>Konfigurace analyzátory
 

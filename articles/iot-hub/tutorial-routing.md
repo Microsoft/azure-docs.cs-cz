@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: df98be4dbb65088951968a16198b41d3d6d0bb67
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 87d0339de117330bf6d586cd653b0d4d16a8cbca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410209"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087699"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Kurz: Konfigurace směrování zpráv pomocí služby IoT Hub
 
@@ -144,7 +144,7 @@ echo "Service Bus namespace = " $sbNameSpace
 az servicebus namespace create --resource-group $resourceGroup \
     --name $sbNameSpace \
     --location $location
-    
+
 # The Service Bus queue name must be globally unique, so add a random number to the end.
 sbQueueName=ContosoSBQueue$RANDOM
 echo "Service Bus queue name = " $sbQueueName
@@ -301,10 +301,9 @@ Data se zapisují do úložiště objektů blob v formát Avro ve výchozím nas
    > 
    > Například při použití výchozího formátu názvu souboru objektu blob a za předpokladu, že název centra je ContosoTestHub a datum a čas je 30. října 2018 v 10:56, bude název objektu blob vypadat takto: `ContosoTestHub/0/2018/10/30/10/56`.
    > 
-   > Objekty BLOB jsou napsané ve formátu Avro ve výchozím nastavení. Je možné zapisovat soubory ve formátu JSON. Možnost kódování formátu JSON je ve verzi preview ve všech oblastech, které služby IoT Hub je k dispozici, s výjimkou východní USA, západní USA a západní Evropa. Najdete v článku [doprovodné materiály k směrování do úložiště objektů blob] (iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+   > Objekty BLOB jsou napsané ve formátu Avro ve výchozím nastavení. Je možné zapisovat soubory ve formátu JSON. Možnost kódování formátu JSON je ve verzi preview ve všech oblastech, které služby IoT Hub je k dispozici, s výjimkou východní USA, západní USA a západní Evropa. Zobrazit [doprovodné materiály k směrování do úložiště objektů blob](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
    > 
    > Při směrování do úložiště objektů blob, doporučujeme uvedení objektů BLOB a pak iterace je zajistit, že všechny kontejnery, které jsou pro čtení bez vytváření žádných předpokladů vyhodnocený oddílu. Rozsah oddílů může potenciálně změnit během [iniciované Microsoft převzetí služeb při selhání](iot-hub-ha-dr.md#microsoft-initiated-failover) nebo službu IoT Hub [ruční převzetí služeb při selhání](iot-hub-ha-dr.md#manual-failover-preview). Další informace o výčet seznamu objektů BLOB najdete v tématu [směrování do úložiště objektů blob](iot-hub-devguide-messages-d2c.md#azure-blob-storage)
-   >
 
 8. Kliknutím na **Vytvořit** vytvořte koncový bod úložiště a přidejte ho do trasy. Vrátíte se do podokna **Přidat trasu**.
 
@@ -313,15 +312,15 @@ Data se zapisují do úložiště objektů blob v formát Avro ve výchozím nas
    **Název**: Zadejte název pro směrování dotazů. Tento kurz používá **StorageRoute**.
 
    **Koncový bod**: To ukazuje na koncový bod, který jste právě nainstalovali. 
-   
+
    **Zdroj dat**: Vyberte **zařízení Telemetrických zpráv** z rozevíracího seznamu.
 
    **Povolit trasy**: Ujistěte se, že je tato možnost povolena.
-   
+
    **Směrování dotazů**: Zadejte `level="storage"` jako řetězec dotazu. 
 
    ![Snímek obrazovky ukazující vytváření dotazu směrování pro účet úložiště](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
-   
+
    Klikněte na **Uložit**. Po dokončení se vrátíte do podokna Směrování zpráv, kde se zobrazí váš nový dotaz směrování pro úložiště. Zavřete podokno Trasy a vraťte se na stránku Skupina prostředků.
 
 ### <a name="routing-to-a-service-bus-queue"></a>Směrování do fronty Service Bus 
@@ -339,14 +338,14 @@ Nyní nastavte směrování pro frontu Service Bus. Přejděte do podokna Směro
 4. Vyplňte jednotlivá pole:
 
    **Název koncového bodu**: Zadejte název koncového bodu. Tento kurz používá **CriticalQueue**.
-   
+
    **Služba Service Bus Namespace**: Klikněte na toto pole zobrazí v rozevíracím seznamu; Vyberte obor názvů služby Service bus, které jste vytvořili v postupu přípravy. Tento kurz používá **ContosoSBNamespace**.
 
    **Fronty služby Service Bus**: Klikněte na toto pole zobrazí v rozevíracím seznamu; z rozevíracího seznamu vyberte frontu služby Service Bus. Tento kurz používá **contososbqueue**.
 
 5. Kliknutím na **Vytvořit** přidejte koncový bod fronty služby Service Bus. Vrátíte se do podokna **Přidat trasu**. 
 
-6.  Teď vyplníte zbývající informace o dotazu směrování. Tento dotaz určuje kritéria pro odesílání zpráv do fronty služby Service Bus, kterou jste právě přidali jako koncový bod. Vyplňte pole na obrazovce. 
+6. Teď vyplníte zbývající informace o dotazu směrování. Tento dotaz určuje kritéria pro odesílání zpráv do fronty služby Service Bus, kterou jste právě přidali jako koncový bod. Vyplňte pole na obrazovce. 
 
    **Název**: Zadejte název pro směrování dotazů. Tento kurz používá **SBQueueRoute**. 
 
@@ -403,7 +402,7 @@ Fronta Service Bus se použije pro příjem zpráv označených jako kritické. 
    ![Snímek obrazovky vytváření připojení pro frontu Service Bus.](./media/tutorial-routing/logic-app-define-connection.png)
 
    Klikněte na obor názvů služby Service Bus. Tento kurz používá **ContosoSBNamespace**. Když vyberete obor názvů, portál se dotáže oboru názvů služby Service Bus a načte klíče. Vyberte **RootManageSharedAccessKey** a klikněte na **Vytvořit**. 
-   
+
    ![Snímek obrazovky zobrazující dokončení nastavení připojení.](./media/tutorial-routing/logic-app-finish-connection.png)
 
 6. Na další obrazovce vyberte z rozevíracího seznamu název fronty (tento kurz používá **contososbqueue**). Pro zbývající pole můžete použít výchozí hodnoty. 
@@ -444,9 +443,9 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
-4. V části **Topologie úlohy** klikněte na **Vstupy**.
+1. V části **Topologie úlohy** klikněte na **Vstupy**.
 
-5. V podokně **Vstupy** klikněte na **Přidat vstup streamu** a vyberte IoT Hub. Na další obrazovce vyplňte následující pole:
+1. V podokně **Vstupy** klikněte na **Přidat vstup streamu** a vyberte IoT Hub. Na další obrazovce vyplňte následující pole:
 
    **Vstupní alias**: Tento kurz používá **contosoinputs**.
 
@@ -459,12 +458,12 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
    **Název zásad sdíleného přístupu**: Vyberte **iothubowner**. Portál vyplní Klíč zásad sdíleného přístupu za vás.
 
    **Skupina uživatelů**: Vyberte skupinu příjemců, který jste vytvořili dříve. Tento kurz používá **contosoconsumers**.
-   
+
    Pro zbývající pole můžete použít výchozí hodnoty. 
 
    ![Snímek obrazovky předvádějící nastavení vstupů úlohy Stream Analytics.](./media/tutorial-routing/stream-analytics-job-inputs.png)
 
-6. Klikněte na **Uložit**.
+1. Klikněte na **Uložit**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
@@ -633,4 +632,4 @@ V tomto kurzu jste se naučili, jak používat směrování zpráv služby IoT H
 V dalším kurzu se dozvíte, jak spravovat stav zařízení IoT. 
 
 > [!div class="nextstepaction"]
-[Nastavení a Diagnostika a metriky pomocí služby IoT Hub](tutorial-use-metrics-and-diags.md)
+> [Nastavení a Diagnostika a metriky pomocí služby IoT Hub](tutorial-use-metrics-and-diags.md)

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 40d16076a3d995ecccd06591278b330652d960d8
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9ff134b0747e78773c95fac7ceab4cddd61c601d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189009"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58227010"
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Zřízení zařízení pro centrum IoT pomocí služby Azure IoT Hub Device Provisioning
 
@@ -43,7 +43,7 @@ Tento krok zahrnuje přidání jedinečných artefaktů zabezpečení zařízen�
       [![Informace o registraci TPM na portálu](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - Pro zařízení založená na X.509 potřebujete:
-    - [Certifikát vydaný pro simulaci nebo čip X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) ve formě souboru *.pem* nebo *.cer*. K jednotlivé registraci musíte použít *certifikát podpisovatele* daného zařízení pro váš systém X.509, zatímco pro skupiny registrací musíte použít *kořenový certifikát*. 
+    - [Certifikát vydaný pro simulaci nebo čip X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) ve formě souboru *.pem* nebo *.cer*. K jednotlivé registraci musíte použít zařízení *certifikátu podepsaného* pro váš systém X.509, zatímco pro skupiny registrací musíte použít *kořenový certifikát*. 
 
       [![Přidání jednotlivé registrace pro ověření X.509 na portálu](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/27/2018
-ms.openlocfilehash: 914933e4e0489d68640edb58ceb91dc73a963eb3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: MT
+ms.openlocfilehash: cbe7b0e243f34d9b48e837c1211b5a186946f69f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034960"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903704"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Úrovně konzistence ve službě Azure Cosmos DB
 
@@ -68,8 +68,8 @@ Kontejner služby Azure Cosmos DB obsahuje návštěvníci a domácí týmu spus
 | **Úrovně konzistence** | **Skóre** |
 | - | - |
 | **Silné** | 2 – 5 |
-| **Omezená neaktuálnost** | Skóre, které jsou maximálně jeden inning zastaralé: 2-3, 2 – 4, 2 – 5 |
-| **Relace** | <ul><li>Pro modul pro zápis: 2 – 5</li><li> Pro každého, než je modul pro zápis: 0-0, 0-1, 0-2, 0 3, 0-4, 0-5, 1-0, 1-1, 1-2, 1 – 3, 1 – 4, 1-5, 2-0, 2-1, 2-2, 2-3, 2 – 4, 2 – 5</li><li>Po přečtení 1-3: 1-3, 1 – 4, 1-5, 2-3, 2 – 4, 2 – 5</li> |
+| **Omezená neaktuálnost** | Skóre, které jsou maximálně jeden inning zastaralé: 2-3, 2-4, 2-5 |
+| **Relace** | <ul><li>Pro modul pro zápis: 2 – 5</li><li> Pro každého, než je modul pro zápis: 0-0, 0-1, 0-2, 0 3, 0-4, 0-5, 1-0, 1-1, 1-2, 1 – 3, 1 – 4, 1-5, 2-0, 2-1, 2-2, 2-3, 2 – 4, 2 – 5</li><li>Po přečtení 1-3: 1-3, 1-4, 1-5, 2-3, 2-4, 2-5</li> |
 | **Konzistentní předpona** | 0-0, 0-1, 1-1, 1 – 2, 1 – 3, 2-3, 2 – 4, 2 – 5 |
 | **Konečný výsledek** | 0-0, 0-1, 0-2, 0 3, 0-4, 0-5, 1-0, 1-1, 1-2, 1 – 3, 1 – 4, 1-5, 2-0, 2-1, 2-2, 2-3, 2 – 4, 2 – 5 |
 
@@ -81,7 +81,7 @@ Další informace o konceptech konzistence najdete v následujících článcíc
 - [Replikovaná Data konzistence je vysvětleno prostřednictvím baseballu (video) podle Doug Terry](https://www.youtube.com/watch?v=gluIh8zd26I)
 - [Replikovaná Data konzistence je vysvětleno prostřednictvím baseballu (dokument White Paper) podle Doug Terry](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
 - [Relace záruky pro replikovaná data slabě konzistentní vzhledem k aplikacím](https://dl.acm.org/citation.cfm?id=383631)
-- [Konzistence kompromisů v moderních distribuované systémy návrh databáze: LIMIT je pouze část textu](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
+- [Konzistence kompromisů v moderních distribuované systémy návrh databáze: LIMIT je pouze část textu](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [Omezená Neaktuálnost pravděpodobnostní (PBS) pro praktické částečné kvor](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 - [Nakonec konzistentní – kdykoli znovu spustit.](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
 

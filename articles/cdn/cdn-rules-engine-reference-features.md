@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: d6d898b93af6c03b313ec2340eb076de85877155
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 205a8dae55394a82a60f54ed32bad95324a59517
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530990"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996923"
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Funkce stroje pravidel Azure CDN
 Tento článek obsahuje podrobný popis funkcí dostupných pro Azure Content Delivery Network (CDN) [stroj pravidel](cdn-rules-engine.md).
@@ -76,7 +76,7 @@ Tato funkce je určena pro poskytnutí dalších informací v rámci pravidla.
 Název | Účel
 -----|--------
 [Komentář](#comment) | Umožňuje Poznámka k přidají v rámci pravidla.
- 
+ 
 ## <a name="header-features"></a>Hlavička funkce
 
 Tyto funkce slouží k přidání, úprava nebo odstranění hlaviček ze žádosti nebo odpovědi.
@@ -126,7 +126,7 @@ Enabled|Indicates that the request is eligible for Edge Optimizer processing.
 Disabled|Restores the default behavior. The default behavior is to deliver content over the ADN platform without any additional processing.
 
 **Default Behavior:** Disabled
- 
+ 
 
 ### Edge Optimizer - Instantiate Configuration
 **Purpose:** Instantiates or activates the Edge Optimizer configuration associated with a site.
@@ -164,7 +164,7 @@ Název | Účel
 [Velikost textu požadavku možné ukládat do mezipaměti](#cacheable-request-body-size) | Definuje prahovou hodnotu pro určení, jestli odpověď na příspěvek můžete uložit do mezipaměti.
 [Uživatelské proměnné](#user-variable) | Pouze pro interní použití.
 
- 
+ 
 ## <a name="url-features"></a>Adresa URL funkce
 
 Tyto funkce umožňují požadavek na přesměrování nebo vzniklá jinou adresu URL.
@@ -182,6 +182,7 @@ Název | Účel
 ---
 ### <a name="age-response-header"></a>Hlavička odpovědi věk
 **Účel**: Určuje, zda hlavičku odpovědi věk je součástí odpověď odesílanou žadateli.
+
 Hodnota|Výsledek
 --|--
 Povoleno | Hlavička odpovědi věk je zahrnutý v odpovědi odeslané žadateli.
@@ -191,7 +192,7 @@ Zakázáno | Hlavička odpovědi věk je vyloučen z odpověď odesílanou žada
 
 [Zpět na začátek](#azure-cdn-rules-engine-features)
 
-</br>
+<br>
 
 ---
 ### <a name="bandwidth-parameters"></a>Parametry šířky pásma
@@ -394,6 +395,7 @@ Možnost|Popis
 --|--
 Původní cestě| Definuje relativní cestu k typy požadavků, jejichž klíč mezipaměti je přepsán. Relativní cesta lze definovat výběrem základní původní cestu a pak definuje vzor regulárního výrazu.
 Nová cesta|Definuje relativní cestu pro nové klíče mezipaměti. Relativní cesta lze definovat výběrem základní původní cestu a pak definuje vzor regulárního výrazu. Tato cesta relativní můžete dynamicky vytvořený prostřednictvím [HTTP proměnné](cdn-http-variables.md).
+
 **Výchozí chování:** mezipaměti – klíč požadavku se určuje podle identifikátoru URI požadavku.
 
 [Zpět na začátek](#azure-cdn-rules-engine-features)
@@ -473,6 +475,7 @@ text/html| Soubory HTML
 text/css|Šablony stylů CSS
 Application/x-javascript|JavaScript
 aplikace/javascript|JavaScript
+
 Informace o klíči:
 
 - Neurčujte více typů médií Internetu podle omezující každé z nich mezerou. 
@@ -1024,6 +1027,7 @@ Hodnota|Výsledek
 --|--
 Povoleno|Způsobí, že POP, znovu načíst prostředek ze zdrojového serveru.
 Zakázáno|Obnoví výchozí chování. Výchozí chování je poskytovat platnou mezipaměti prostředky na vyžádání.
+
 Tato funkce není vyžadován pro správný ukládání do mezipaměti a doručování obsahu, ale může být užitečné jako alternativní řešení. Například generátory dynamického obsahu v původních serverů může způsobit neúmyslně odesílají do bodů POP odpovědi 0 bajtů. Tyto typy odpovědí jsou obvykle ukládají do mezipaměti podle bodů POP. Pokud víte, že je 0 bajtů odpověď nikdy platné odpovědi 
 
 pro takový obsah pak tuto funkci můžete zabránit tyto typy prostředků používané pro služby vašim klientům.
@@ -1279,6 +1283,7 @@ Možnost|Popis
 -|-
  Zdroje a vzoru | Tato nastavení definují vzor identifikátoru URI požadavku, který identifikuje typ požadavků, které mohou být přepsán. Bude přepsán pouze požadavky, jehož adresa URL splňují obě z následujících kritérií: <br/><br/>  - **Zdroj (nebo obsahu přístupový bod):** vyberte relativní cestu, která identifikuje zdrojový server. Tato cesta je _/XXXX/_ části a název koncového bodu. <br/><br/> - **Zdroj (modelu):** musí být definován vzor, který identifikuje požadavky pomocí relativní cesty. Tento vzor regulárního výrazu musí definovat cestu, která spustí přímo po dříve vybraného obsahu přístupového bodu (viz výše). <br/> Ověřte, že žádost o identifikátor URI (to znamená, zdroje a vzoru) dříve definovaná kritéria není v konfliktu s všechny podmínky shody, které jsou definované pro tuto funkci. Zadejte vzorek; Pokud nechcete použít prázdnou hodnotu jako vzor, všechny řetězce odpovídají. 
  Cíl  |Definujte relativní adresu URL, na který se přepsal výše uvedených požadavků: <br/>    1. Výběr bodu přístup k obsahu, který identifikuje zdrojový server. <br/>    2. Definování typu pomocí relativní cesty: <br/>        -Vzor regulárního výrazu <br/>        - [Proměnné protokolu HTTP](cdn-http-variables.md) <br/> <br/> Nahradit hodnoty zachycení ve vzoru zdroje do cílového modelu s použitím $_n_ kde _n_ identifikuje hodnotu podle pořadí, ve kterém byla zachycena. $1 například představuje první hodnota zachycené ve vzoru zdroje, zatímco druhá hodnota představuje 2 USD. 
+
  Tato funkce umožňuje bodů POP pro přepsání adresy URL bez provedení tradiční přesměrování. To znamená žadatel dostane stejným kódem odpovědi jakoby požadovaly přepsaný adresy URL.
 
 **Ukázkový scénář 1**

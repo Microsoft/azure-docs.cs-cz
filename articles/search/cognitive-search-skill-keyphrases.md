@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: f3c8fd3043f20ab34dda1f4e3762e3ebc4bb6ae1
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 422b97414142c36669ed449a21c6045fd774581a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749881"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902650"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Extrakce frází klíč kognitivních dovedností
 
@@ -38,12 +38,14 @@ Maximální velikost záznamu by měla být 50 000 znaků pohledu `String.Length
 ## <a name="skill-parameters"></a>Parametry dovedností
 
 Parametry rozlišují malá a velká písmena.
+
 | Vstupy                | Popis |
 |---------------------|-------------|
 | defaultLanguageCode | (Volitelné) Kód jazyka, který chcete použít pro dokumenty, které nejsou explicitně zadat jazyk.  Pokud výchozí kód jazyka není zadaný, angličtina (en) se použije jako výchozí kód jazyka. <br/> Zobrazit [úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
 | maxKeyPhraseCount   | (Volitelné) Maximální počet klíčových frází k vytvoření. |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
+
 | Vstupy     | Popis |
 |--------------------|-------------|
 | text | Text, který má být analyzován.|

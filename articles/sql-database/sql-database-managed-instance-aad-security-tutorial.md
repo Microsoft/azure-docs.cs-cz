@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 39877e01eb8b9690dc1ac7b1dbb79bab450814c4
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 7511b85384c2c64c823d93df4369b0fea3e64b51
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456924"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226211"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Kurz: Zabezpečení spravované instance Azure SQL Database pomocí Azure AD objekty serveru (přihlášení)
 
@@ -148,13 +148,13 @@ Jakmile se objekt zabezpečení serveru Azure AD (přihlášení) byla vytvořen
 
 1. Připojte se k spravované instanci na serveru instančního objektu Azure AD (přihlášení) pomocí aplikace SQL Server Management Studio. Zadejte název hostitele spravované instance. Ověřování v aplikaci SSMS existují tři možnosti, jak vybírat při přihlášení pomocí účtu Azure AD:
 
-    - Active Directory – univerzální podporující vícefaktorové ověřování
-    - Active Directory – heslo
-    - Active Directory – integrované </br>
+   - Active Directory – univerzální podporující vícefaktorové ověřování
+   - Active Directory – heslo
+   - Active Directory – integrované </br>
 
-    ![ssms-login-prompt.png](media/sql-database-managed-instance-security-tutorial/ssms-login-prompt.png)
+     ![ssms-login-prompt.png](media/sql-database-managed-instance-security-tutorial/ssms-login-prompt.png)
 
-    Další informace najdete v následujícím článku: [Univerzální ověřování s využitím služeb SQL Database a SQL Data Warehouse (podpora SSMS pro MFA)](sql-database-ssms-mfa-authentication.md)
+     Další informace najdete v následujícím článku: [Univerzální ověřování s využitím služeb SQL Database a SQL Data Warehouse (podpora SSMS pro MFA)](sql-database-ssms-mfa-authentication.md)
 
 1. Vyberte **univerzální podporující vícefaktorové ověřování služby Active Directory –**. Otevře se okno přihlášení Vícefaktorové ověřování (MFA). Přihlásit pomocí hesla Azure AD.
 
@@ -207,10 +207,10 @@ Jakmile se objekt zabezpečení serveru Azure AD (přihlášení) byla vytvořen
 1. V **Průzkumník objektů**, klikněte pravým tlačítkem na server a zvolte **nový dotaz** nového připojení.
 1. Zkontrolujte oprávnění serveru pro nově vytvořený server instanční objekt Azure AD (přihlášení) spuštěním následujícího příkazu:
 
-    ```sql
-    SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
-    GO
-    ```
+      ```sql
+      SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
+      GO
+      ```
 
 > [!NOTE]
 > Azure AD uživatele typu Host jsou podporovány pro spravovanou instanci přihlášení pouze v případě přidána jako součást skupiny Azure AD. Uživatel typu Host Azure AD je účet, který je pozvaný do služby Azure AD, které spravované instance patří, z jiné služby Azure AD. Například joe@contoso.com (účet Azure AD) nebo steve@outlook.com (účet MSA) můžete přidat do skupiny v Azure AD aadsqlmi. Jakmile se uživatelé přidají do skupiny, přihlašovací údaje mohou být vytvořeny v spravovanou instanci **hlavní** databáze pro skupinu pomocí **CREATE LOGIN** syntaxe. Uživatelé typu Host, kteří jsou členy této skupiny můžete připojit do spravované instance pomocí své aktuální přihlašovací údaje (například joe@contoso.com nebo steve@outlook.com).
@@ -360,7 +360,7 @@ Spravovaná instance podporuje zosobnění hlavních účtů na úrovni serveru 
     GO
     ```
 
-1. Pomocí následujícího příkazu zobrazíte, že uživatel je už zosobnění při spouštění uložené procedury je **bob@aadsqlmi.net**.
+1. Pomocí následujícího příkazu zobrazíte, že uživatel už zosobnění při provádění uložené procedury je **bob\@aadsqlmi.net**.
 
     ```sql
     Exec dbo.usp_Demo

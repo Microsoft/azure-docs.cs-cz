@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: cawa
-ms.openlocfilehash: 206804ede429e8a9ace75c16b8f0ac4a8d3f49f7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 79b1c740bca56982243ddc130d8747fdc955247f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443577"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124112"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpečně uložte nastavení tajných kódů aplikace pro webovou aplikaci
 
@@ -143,9 +143,9 @@ Pokud píšete rychlé prototypu a nechcete, aby ke zřízení prostředků Azur
 Postupujte podle pokynů v části ASP.NET core a nakonfigurovat služby Key Vault pro váš projekt.
 
 1. Nainstalujte si do projektu následující balíček NuGet
-```
-Microsoft.Configuration.ConfigurationBuilders.UserSecrets
-```
+   ```
+   Microsoft.Configuration.ConfigurationBuilders.UserSecrets
+   ```
 
 2. Tvůrce konfigurace služby Key Vault se definují v souboru Web.config. Vložit tuto část před syntaxí *appSettings* oddílu. Nahraďte *vaultName* být názvem služby Key Vault, pokud Key Vault ve veřejné Azure nebo úplný identifikátor URI, pokud používáte suverénních cloudů.
 
@@ -159,16 +159,16 @@ Microsoft.Configuration.ConfigurationBuilders.UserSecrets
         </builders>
     </configBuilders>
     ```
-3.  Zadejte sekci appSettings je pomocí Tvůrce konfigurace služby Key Vault. Ujistěte se, že není k dispozici žádné položky pro nastavení tajných kódů pomocí fiktivní hodnoty.
+3. Zadejte sekci appSettings je pomocí Tvůrce konfigurace služby Key Vault. Ujistěte se, že není k dispozici žádné položky pro nastavení tajných kódů pomocí fiktivní hodnoty.
 
-    ```xml
-    <appSettings configBuilders="AzureKeyVault">
-        <add key="webpages:Version" value="3.0.0.0" />
-        <add key="webpages:Enabled" value="false" />
-        <add key="ClientValidationEnabled" value="true" />
-        <add key="UnobtrusiveJavaScriptEnabled" value="true" />
-        <add key="secret" value="" />
-    </appSettings>
-    ```
+   ```xml
+   <appSettings configBuilders="AzureKeyVault">
+       <add key="webpages:Version" value="3.0.0.0" />
+       <add key="webpages:Enabled" value="false" />
+       <add key="ClientValidationEnabled" value="true" />
+       <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+       <add key="secret" value="" />
+   </appSettings>
+   ```
 
 4. Spusťte ladění projektu. By měl běžet úspěšně.

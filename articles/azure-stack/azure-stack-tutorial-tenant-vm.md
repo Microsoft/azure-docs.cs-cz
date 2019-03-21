@@ -17,12 +17,12 @@ ms.author: jeffgilb
 ms.reviewer: unknown
 ms.lastreviewed: 09/11/2018
 ms.custom: mvc
-ms.openlocfilehash: a24b7314775ea7667ab992742586e5b5c8bbb369
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 34ef200ff96b098969c74937934d6178cfaf81ea
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205152"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117128"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Kurz: zpřístupníte virtuálních počítačů pro vaše uživatele Azure stacku
 
@@ -129,8 +129,8 @@ Teď, když jste vytvořili v rámci nabídky, takže ji můžete otestovat. Se 
    Na portálu user portal můžete zřídit virtuální počítač pomocí tohoto nového předplatného.
 
    a. Přihlaste se k portálu user portal pomocí uživatelského účtu.
-      - Integrovaný systém, adresa URL se liší v závislosti na oblasti vaší operátor a název domény externího a bude mít tento formát https://portal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
-   - Pokud používáte Azure Stack Development Kit, adresy portálu je https://portal.local.azurestack.external.
+   - Integrovaný systém, adresa URL se liší v závislosti na oblasti vaší operátor a název domény externího a bude mít tento formát https://portal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
+     - Pokud používáte Azure Stack Development Kit, adresy portálu je https://portal.local.azurestack.external.
 
    b.  Na řídicím panelu vyberte **+ vytvořit prostředek** > **Compute** > **systému Windows Server 2016 Datacenter Eval**a pak vyberte **Vytvořit**.
 

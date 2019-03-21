@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb752a6b598c9fe7f146cd6ce96182405fc0dc6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 86148d428bc526e071f095233b0692a6f3775a7d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167673"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880636"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Kurz: Integrace Azure Active Directory s Jitbit helpdesku
 
@@ -114,6 +114,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Konfigurace jednotného přihlašování](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_url.png)
 
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: 
+    
     | |     
     | ----------------------------------------|
     | `https://<hostname>/helpdesk/User/Login`|
@@ -224,7 +225,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do Jitbit technickou podp
    
    a. V **uživatelské jméno** textové pole, typ **BrittaSimon**, uživatelské jméno jako na webu Azure portal.
 
-   b. V **e-mailu** , jako je textové pole, typ e-mailu uživatele **BrittaSimon@contoso.com**.
+   b. V **e-mailu** , jako je textové pole, typ e-mailu uživatele **BrittaSimon\@contoso.com**.
 
    c. V **křestní jméno** textového pole zadejte jméno uživatele, jako je **Britta**.
 

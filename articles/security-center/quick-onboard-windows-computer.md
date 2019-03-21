@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3cc6cdb84b2c77b15b79c7d6a04cc7c6ae0721e5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: bee4618ff08c89bbdab7413ca7f7f74a266d96dd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115855"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077900"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rychlý start: Připojení počítače Windows ke službě Azure Security Center
 Po připojení předplatných Azure můžete zřízením agenta Microsoft Monitoring Agent povolit službu Security Center pro prostředky spuštěné mimo Azure, například v místním prostředí nebo jiných cloudech.
@@ -37,7 +37,7 @@ Než začnete s tímto rychlým startem, musíte mít službu Security Center na
 1. Přihlaste se k webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 2. V nabídce **Microsoft Azure** vyberte **Security Center**. Otevře se obrazovka **Security Center – Přehled**.
 
- ![Přehled služby Security Center][2]
+   ![Přehled služby Security Center][2]
 
 3. V hlavní nabídce služby Security Center vyberte **Začínáme**.
 4. Vyberte kartu **Začínáme**.
@@ -48,13 +48,13 @@ Než začnete s tímto rychlým startem, musíte mít službu Security Center na
 
     ![Přidání počítače umístěného mimo Azure](./media/quick-onboard-windows-computer/non-azure.png)
 
-  Otevře se okno **Přímý agent** s odkazem na stažení agenta pro Windows a klíči pro ID vašeho pracovního prostoru, které použijete při konfiguraci agenta.
+   Otevře se okno **Přímý agent** s odkazem na stažení agenta pro Windows a klíči pro ID vašeho pracovního prostoru, které použijete při konfiguraci agenta.
 
-6.  Vyberte odkaz **Stáhnout agenta pro Windows** odpovídající typu procesoru vašeho počítače a stáhněte instalační soubor.
+6. Vyberte odkaz **Stáhnout agenta pro Windows** odpovídající typu procesoru vašeho počítače a stáhněte instalační soubor.
 
-7.  Napravo od **ID pracovního prostoru** vyberte ikonu kopírování a vložte ID do Poznámkového bloku.
+7. Napravo od **ID pracovního prostoru** vyberte ikonu kopírování a vložte ID do Poznámkového bloku.
 
-8.  Napravo od **Primárního klíče** vyberte ikonu kopírování a vložte klíč do Poznámkového bloku.
+8. Napravo od **Primárního klíče** vyberte ikonu kopírování a vložte klíč do Poznámkového bloku.
 
 ## <a name="install-the-agent"></a>Instalace agenta
 Teď je potřeba stažený soubor nainstalovat na cílový počítač.
@@ -68,7 +68,7 @@ Teď je potřeba stažený soubor nainstalovat na cílový počítač.
 7. Pokud se má počítač hlásit do pracovního prostoru Log Analytics v cloudu Azure Government, vyberte z rozevíracího seznamu **Cloud Azure** možnost **Azure US Government**.  Pokud počítač potřebuje komunikovat se službou Log Analytics přes proxy server, vyberte **Upřesnit** a zadejte adresu URL a číslo portu proxy serveru.
 8. Jakmile dokončíte zadávání nezbytných nastavení konfigurace, vyberte **Další**.
 
-  ![Instalace agenta][5]
+   ![Instalace agenta][5]
 
 9. Na stránce **Připraveno k instalaci** zkontrolujte zvolené volby a pak vyberte **Nainstalovat**.
 10. Na stránce **Konfigurace byla úspěšně dokončena** vyberte **Dokončit**.

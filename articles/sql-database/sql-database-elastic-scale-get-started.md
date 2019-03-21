@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 245cbafb42becc230f5e480cfc8e6fa41c352190
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7c2e3b2bea7ddef3dfbf69f85b499d9a60158689
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309379"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999123"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Začínáme s nástroji Elastic Database
 
@@ -28,7 +28,7 @@ Tento dokument vás seznámí se vývojářské prostředí pro [Klientská knih
 ### <a name="prerequisites"></a>Požadavky
 
 * Java Developer Kit (JDK), verze 1.8 nebo vyšší
-* [Maven](http://maven.apache.org/download.cgi)
+* [Maven](https://maven.apache.org/download.cgi)
 * Server služby SQL Database v Azure nebo místní instanci systému SQL Server
 
 ### <a name="download-and-run-the-sample-app"></a>Stažení a spuštění ukázkové aplikace
@@ -74,7 +74,7 @@ Knihovna klienta přidat do projektu Maven, přidejte do souboru POM následují
 ### <a name="prerequisites"></a>Požadavky
 
 * Visual Studio 2012 nebo novějším s jazykem C#. Stáhněte si bezplatnou verzi na [stahování sady Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
-* NuGet 2.7 nebo novější. Pokud chcete získat nejnovější verzi, najdete v článku [instalace balíčků NuGet](http://docs.nuget.org/docs/start-here/installing-nuget).
+* NuGet 2.7 nebo novější. Pokud chcete získat nejnovější verzi, najdete v článku [instalace balíčků NuGet](https://docs.nuget.org/docs/start-here/installing-nuget).
 
 ### <a name="download-and-run-the-sample-app"></a>Stažení a spuštění ukázkové aplikace
 
@@ -132,7 +132,7 @@ Další informace o nástroje pro elastické databáze najdete v následujícíc
   * [Nástroje elastic Database pro Azure SQL – integrace Entity Frameworku](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Elasticita horizontálních oddílů v Centru skriptů](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [Elastické škálování oznámení](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
-* Kanál 9: [Elastické škálování video s přehledem](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
+* Kanál 9: [Elastické škálování video s přehledem](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
 * Diskuzní fórum: [Fórum služby Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 * K měření výkonu: [Čítače výkonu pro správce mapování horizontálních oddílů](sql-database-elastic-database-client-library.md)
 

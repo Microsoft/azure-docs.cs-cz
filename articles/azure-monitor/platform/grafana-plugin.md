@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: f592cfdba940b95a9935c6b68f3294233d9fbf15
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 64a7a52d39fcac87bdc49b9d36e80d453557bc5b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888487"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002275"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorování služeb Azure v Grafana
 Teď můžete monitorovat služby a aplikace z Azure [Grafana](https://grafana.com/) pomocí [zdroje dat monitorování Azure plugin](https://grafana.com/plugins/grafana-azure-monitor-datasource). Modul plug-in shromažďuje data o výkonu aplikace shromážděná službou Azure Monitor, včetně různé protokoly a metriky. Tato data pak můžete zobrazit na řídicím panelu Grafana.
@@ -77,9 +77,9 @@ Po úspěšném přihlášení, měli byste vidět, že modul plug-in Azure Moni
 
         > [!NOTE]
         > Některá pole zdroje dat jsou pojmenované jinak než jejich korelační nastavení služby Azure:
-        >     * ID tenanta se ID adresáře Azure
-        >     * ID klienta je ID aplikace Azure Active Directory
-        >     * Tajný kód klienta je hodnota klíče aplikace Azure Active Directory
+        > * ID tenanta se ID adresáře Azure
+        > * ID klienta je ID aplikace Azure Active Directory
+        > * Tajný kód klienta je hodnota klíče aplikace Azure Active Directory
 
 5. Pokud používáte Application Insights, můžete použít také rozhraní API Application Insights a ID aplikace shromažďovat metriky na základě služby Application Insights. Další informace najdete v tématu [získání klíče rozhraní API a ID aplikace](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 
@@ -96,16 +96,16 @@ Po úspěšném přihlášení, měli byste vidět, že modul plug-in Azure Moni
     ![Nový graf Grafana](./media/grafana-plugin/grafana-new-graph-dark.png)
 
 4. Vyberte zdroj dat monitorování Azure, který jste nakonfigurovali.
-    * Shromažďování monitorování Azure vyberte metriky – **Azure Monitor** v rozevírací nabídce služby. Seznam zobrazuje selektory, kde můžete vybrat prostředky a metriku k monitorování v tomto grafu. Chcete-li shromažďovat metriky z virtuálního počítače, použijte obor názvů **Microsoft.Compute/VirtualMachines**. Jakmile vyberete virtuální počítače a metrik, můžete začít zobrazení jejich dat na řídicím panelu.
-    ![Grafana grafu konfigurace pro monitorování Azure](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-    * Shromažďování Azure Monitor můžete vytvářet protokoly dat – výběr **Azure Log Analytics** v rozevírací nabídce služby. Vyberte pracovní prostor, který chcete vyhledat a nastavit text dotazu. Můžete zkopírovat sem jakýkoli dotaz protokolu již mít nebo vytvořit nový. Při zadávání dotazu, technologie IntelliSense se zobrazí a navrhují možnosti automatického dokončování. Vyberte typ vizualizace **časové řady** **tabulky**, a spusťte dotaz.
+   * Shromažďování monitorování Azure vyberte metriky – **Azure Monitor** v rozevírací nabídce služby. Seznam zobrazuje selektory, kde můžete vybrat prostředky a metriku k monitorování v tomto grafu. Chcete-li shromažďovat metriky z virtuálního počítače, použijte obor názvů **Microsoft.Compute/VirtualMachines**. Jakmile vyberete virtuální počítače a metrik, můžete začít zobrazení jejich dat na řídicím panelu.
+     ![Grafana grafu konfigurace pro monitorování Azure](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
+   * Shromažďování Azure Monitor můžete vytvářet protokoly dat – výběr **Azure Log Analytics** v rozevírací nabídce služby. Vyberte pracovní prostor, který chcete vyhledat a nastavit text dotazu. Můžete zkopírovat sem jakýkoli dotaz protokolu již mít nebo vytvořit nový. Při zadávání dotazu, technologie IntelliSense se zobrazí a navrhují možnosti automatického dokončování. Vyberte typ vizualizace **časové řady** **tabulky**, a spusťte dotaz.
     
-    > [!NOTE]
-    >
-    > Výchozí dotaz, opatřeného modul plug-in používá dvě makra: "__interval $__timeFilter() a $. 
-    > Tato makra umožňují Grafana dynamicky vypočítat časový rozsah a časový interval, při přiblížení na část grafu. Můžete odebrat tato makra a použití filtru (běžný čas), jako například *TimeGenerated > ago(1h)*, ale je, že prostředky grafu by podporuje přiblížení ve funkci.
+     > [!NOTE]
+     >
+     > Výchozí dotaz, opatřeného modul plug-in používá dvě makra: "__interval $__timeFilter() a $. 
+     > Tato makra umožňují Grafana dynamicky vypočítat časový rozsah a časový interval, při přiblížení na část grafu. Můžete odebrat tato makra a použití filtru (běžný čas), jako například *TimeGenerated > ago(1h)*, ale je, že prostředky grafu by podporuje přiblížení ve funkci.
     
-    ![Grafana config grafů pro Azure Log Analytics](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
+     ![Grafana config grafů pro Azure Log Analytics](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
 
 5. Tady je jednoduchý řídicí panel se dva grafy. Na levé straně znázorňuje procentuální využití procesoru dva virtuální počítače. Graf na pravé straně zobrazuje transakce v účtu služby Azure Storage rozdělené podle typu transakcí API.
     ![Příklad Grafana dva grafy](media/grafana-plugin/grafana6.png)

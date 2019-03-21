@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 2/5/2019
-ms.openlocfilehash: c171962fd6177a01afdb8e9605b09574c99f485e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.date: 3/14/2019
+ms.openlocfilehash: 422813c1ddb77aa11195d3021484744839c4e3bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889218"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994337"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Kurz: Příjem dat v Průzkumníku dat Azure bez jeden řádek kódu
 
@@ -38,29 +38,44 @@ V tomto kurzu se naučíte:
 
 ## <a name="azure-monitor-data-provider-diagnostic-and-activity-logs"></a>Zprostředkovatel dat Azure Monitor: Diagnostika a protokolů aktivit
 
-Zobrazení a pochopení dat v protokolech diagnostiky a aktivit Azure Monitor k dispozici. Vytvoříme kanál ingestování založené na tato data schémata.
+Zobrazení a pochopení dat poskytované Azure Monitor diagnostiky a protokolů aktivit níže. Vytvoříme kanál ingestování založené na tato data schémata. Všimněte si, že každá událost v protokolu obsahuje celou řadu záznamů. Toto pole záznamů, které rozdělí později v tomto kurzu.
 
 ### <a name="diagnostic-logs-example"></a>Příklad diagnostických protokolů
 
-Diagnostické protokoly Azure jsou metriky, protože ho vygeneroval služby Azure, které poskytují informace o fungování dané služby. Data je agregovat s časovým intervalem 1 minuta. Každá událost v protokolu diagnostiky obsahuje jeden záznam. Tady je příklad schématu událostí metrika Průzkumník dat Azure na dobu trvání dotazu:
+Diagnostické protokoly Azure jsou metriky, protože ho vygeneroval služby Azure, které poskytují informace o fungování dané služby. Data je agregovat s časovým intervalem 1 minuta. Tady je příklad schématu událostí metrika Průzkumník dat Azure na dobu trvání dotazu:
 
 ```json
 {
-    "count": 14,
-    "total": 0,
-    "minimum": 0,
-    "maximum": 0,
-    "average": 0,
-    "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
-    "time": "2018-12-20T17:00:00.0000000Z",
-    "metricName": "QueryDuration",
-    "timeGrain": "PT1M"
+    "records": [
+    {
+        "count": 14,
+        "total": 0,
+        "minimum": 0,
+        "maximum": 0,
+        "average": 0,
+        "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
+        "time": "2018-12-20T17:00:00.0000000Z",
+        "metricName": "QueryDuration",
+        "timeGrain": "PT1M"
+    },
+    {
+        "count": 12,
+        "total": 0,
+        "minimum": 0,
+        "maximum": 0,
+        "average": 0,
+        "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
+        "time": "2018-12-21T17:00:00.0000000Z",
+        "metricName": "QueryDuration",
+        "timeGrain": "PT1M"
+    }
+    ]
 }
 ```
 
 ### <a name="activity-logs-example"></a>Příklad protokoly aktivit
 
-Protokoly aktivit v Azure jsou úroveň předplatného protokolů, které obsahují sadu záznamů. Protokoly poskytují přehled o tom, operace prováděné s prostředky ve vašem předplatném. Na rozdíl od diagnostické protokoly každá událost v protokolu aktivit obsahuje celou řadu záznamů. Potřebujeme k rozdělení toto pole záznamy v pozdější části kurzu. Tady je příklad události protokolu aktivit pro kontrolu přístupu:
+Protokoly aktivit v Azure jsou úroveň předplatného protokoly, které poskytují přehled o operace prováděné s prostředky ve vašem předplatném. Tady je příklad události protokolu aktivit pro kontrolu přístupu:
 
 ```json
 {
@@ -129,6 +144,8 @@ V Průzkumníku dat Azure *TestDatabase* databáze, vyberte **dotazu** otevřete
 
 ### <a name="create-the-target-tables"></a>Vytvoření cílové tabulky
 
+Tabulkové není struktura protokoly Azure monitoru. Budete pracuje s daty a rozšiřovat každá událost a jeden nebo více záznamů. Nezpracovaná data se ingestují do převodní tabulky s názvem *ActivityLogsRawRecords* protokoly aktivity a *DiagnosticLogsRawRecords* pro diagnostické protokoly. Data budou v té době manipulovat a rozšířit. Pomocí zásad pro aktualizaci, rozšířená data se potom možné ingestovat v *ActivityLogsRecords* tabulky protokoly aktivity a *DiagnosticLogsRecords* pro diagnostické protokoly. To znamená, že bude nutné k vytvoření dvou samostatných tabulek pro příjem protokolů aktivit a dvou samostatných tabulek pro příjem diagnostických protokolů.
+
 Vytvoření cílové tabulky v databázi Průzkumníka služby Azure Data pomocí Azure dat Explorer webového uživatelského rozhraní.
 
 #### <a name="the-diagnostic-logs-table"></a>Diagnostické protokoly tabulky
@@ -143,9 +160,13 @@ Vytvoření cílové tabulky v databázi Průzkumníka služby Azure Data pomoc�
 
     ![Spuštění dotazu](media/ingest-data-no-code/run-query.png)
 
-#### <a name="the-activity-logs-tables"></a>Tabulky protokoly aktivit.
+1. Vytváření dočasných dat tabulku s názvem *DiagnosticLogsRawRecords* v *TestDatabase* databáze pro manipulaci s daty pomocí následujícího dotazu. Vyberte **spustit** k vytvoření této tabulky.
 
-Vzhledem k tomu, že struktura protokoly aktivit se tabulkový, budete potřebovat k manipulaci s daty a rozšiřovat každá událost a jeden nebo více záznamů. Nezpracovaná data se ingestují do převodní tabulky s názvem *ActivityLogsRawRecords*. Data budou v té době manipulovat a rozšířit. Rozšířená data se potom být přijímána *ActivityLogsRecords* tabulky pomocí zásady aktualizace. To znamená, že bude nutné k vytvoření dvou samostatných tabulek pro příjem protokolů aktivit.
+    ```kusto
+    .create table DiagnosticLogsRawRecords (Records:dynamic)
+    ```
+
+#### <a name="the-activity-logs-tables"></a>Tabulky protokoly aktivit.
 
 1. Vytvořte tabulku s názvem *ActivityLogsRecords* v *TestDatabase* databáze pro příjem záznamů protokolu aktivit. K vytvoření této tabulky, spusťte následující dotaz Průzkumník dat Azure:
 
@@ -174,7 +195,7 @@ Vzhledem k tomu, že struktura protokoly aktivit se tabulkový, budete potřebov
 Pokud chcete namapovat diagnostické protokoly dat do tabulky, použijte tento dotaz:
 
 ```kusto
-.create table DiagnosticLogsRecords ingestion json mapping 'DiagnosticLogsRecordsMapping' '[{"column":"Timestamp","path":"$.time"},{"column":"ResourceId","path":"$.resourceId"},{"column":"MetricName","path":"$.metricName"},{"column":"Count","path":"$.count"},{"column":"Total","path":"$.total"},{"column":"Minimum","path":"$.minimum"},{"column":"Maximum","path":"$.maximum"},{"column":"Average","path":"$.average"},{"column":"TimeGrain","path":"$.timeGrain"}]'
+.create table DiagnosticLogsRawRecords ingestion json mapping 'DiagnosticLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
 #### <a name="table-mapping-for-activity-logs"></a>Mapování tabulek pro protokoly aktivit
@@ -185,9 +206,11 @@ K mapování dat protokolů aktivit do tabulky, použijte následující dotaz:
 .create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-### <a name="create-the-update-policy-for-activity-logs-data"></a>Vytvořit zásady aktualizace pro data protokolů aktivit
+### <a name="create-the-update-policy-for-log-data"></a>Vytvořit zásady aktualizace dat protokolu
 
-1. Vytvoření [funkce](/azure/kusto/management/functions) , který rozbalí kolekce záznamů tak, aby každá hodnota v kolekci obdrží samostatném řádku. Použití [ `mvexpand` ](/azure/kusto/query/mvexpandoperator) operátor:
+#### <a name="activity-log-data-update-policy"></a>Data protokolu aktivit aktualizace zásad
+
+1. Vytvoření [funkce](/azure/kusto/management/functions) tak, aby každá hodnota v kolekci obdrží samostatném řádku, který rozbalí kolekce záznamů protokolu aktivit. Použití [ `mvexpand` ](/azure/kusto/query/mvexpandoperator) operátor:
 
     ```kusto
     .create function ActivityLogRecordsExpand() {
@@ -212,6 +235,32 @@ K mapování dat protokolů aktivit do tabulky, použijte následující dotaz:
 
     ```kusto
     .alter table ActivityLogsRecords policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
+    ```
+
+#### <a name="diagnostic-log-data-update-policy"></a>Protokol diagnostiky dat aktualizovat zásady
+
+1. Vytvoření [funkce](/azure/kusto/management/functions) , který rozbalí jsou kolekce záznamů protokolu diagnostiky tak, aby každá hodnota v kolekci obdrží samostatném řádku. Použití [ `mvexpand` ](/azure/kusto/query/mvexpandoperator) operátor:
+     ```kusto
+    .create function DiagnosticLogRecordsExpand() {
+        DiagnosticLogsRawRecords
+        | mvexpand events = Records
+        | project
+            Timestamp = todatetime(events["time"]),
+            ResourceId = tostring(events["resourceId"]),
+            MetricName = tostring(events["metricName"]),
+            Count = toint(events["count"]),
+            Total = todouble(events["total"]),
+            Minimum = todouble(events["minimum"]),
+            Maximum = todouble(events["maximum"]),
+            Average = todouble(events["average"]),
+            TimeGrain = tostring(events["timeGrain"])
+    }
+    ```
+
+2. Přidat [aktualizovat zásady](/azure/kusto/concepts/updatepolicy) do cílové tabulky. Tato zásada se automaticky spustí dotaz na všechny nově přijatých dat v *DiagnosticLogsRawRecords* dočasných dat tabulky a ingestovat jeho výsledky do *DiagnosticLogsRecords* tabulky:
+
+    ```kusto
+    .alter table DiagnosticLogsRecords policy update @'[{"Source": "DiagnosticLogsRawRecords", "Query": "DiagnosticLogRecordsExpand()", "IsEnabled": "True"}]'
     ```
 
 ## <a name="create-an-azure-event-hubs-namespace"></a>Vytvoření oboru názvů Azure Event Hubs
@@ -252,12 +301,12 @@ Vyberte zdroj, ze kterého se má exportovat metriky. Několik typů prostředk�
     ![Nastavení diagnostiky](media/ingest-data-no-code/diagnostic-settings.png)
 
 1. **Nastavení diagnostiky** se otevře podokno. Proveďte následující kroky:
-    1. Poskytnout diagnostické údaje protokolu název *ADXExportedData*.
-    1. V části **METRIKA**, vyberte **AllMetrics** (volitelné) zaškrtněte políčko.
-    1. Vyberte **Stream do centra událostí** zaškrtávací políčko.
-    1. Vyberte **nakonfigurovat**.
+   1. Poskytnout diagnostické údaje protokolu název *ADXExportedData*.
+   1. V části **METRIKA**, vyberte **AllMetrics** (volitelné) zaškrtněte políčko.
+   1. Vyberte **Stream do centra událostí** zaškrtávací políčko.
+   1. Vyberte **nakonfigurovat**.
 
-    ![Podokno nastavení diagnostiky](media/ingest-data-no-code/diagnostic-settings-window.png)
+      ![Podokno nastavení diagnostiky](media/ingest-data-no-code/diagnostic-settings-window.png)
 
 1. V **centra událostí vyberte** podokně nakonfigurovat jak exportovat data z diagnostické protokoly do centra událostí, které jste vytvořili:
     1. V **vyberte obor názvů centra událostí** vyberte *AzureMonitoringData*.
@@ -330,7 +379,7 @@ Teď je potřeba vytvořit datová připojení pro diagnostické protokoly a pro
 
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | **Tabulka** | *DiagnosticLogsRecords* | V tabulce, kterou jste vytvořili v *TestDatabase* databáze. |
+    | **Tabulka** | *DiagnosticLogsRawRecords* | V tabulce, kterou jste vytvořili v *TestDatabase* databáze. |
     | **Formát dat** | *JSON* | Formát používaný v tabulce. |
     | **Mapování sloupců** | *DiagnosticLogsRecordsMapping* | Mapování, kterou jste vytvořili v *TestDatabase* databáze, který mapuje příchozí data JSON na typy sloupců názvy a datové sady *DiagnosticLogsRecords* tabulky.|
     | | |
@@ -400,6 +449,7 @@ ActivityLogsRecords
 ```
 
 Výsledky dotazu:
+
 |   |   |
 | --- | --- |
 |   |  AVG(DurationMs) |

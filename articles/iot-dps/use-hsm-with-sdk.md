@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.custom: mvc
-ms.openlocfilehash: 4ab558b680a0d00d1b9bdfbcb1529219f6c37b37
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: af59ccc6d14dce49d06e178aac3ecafc29bd982c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728705"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990760"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Použití různých mechanismů ověřování pomocí klientské sady SDK služby Device Provisioning pro C
 
-V tomto článku se dozvíte, jak používat různé [mechanismy ověřování](concepts-security.md#attestation-mechanism) pomocí klientské sady SDK služby Device Provisioning pro C. Můžete použít fyzické zařízení nebo simulátor. Zřizovací služba podporuje ověřování pro dva typy mechanismů ověřování: X **.** 509 a důvěryhodné platformě Module (TPM).
+V tomto článku se dozvíte, jak používat různé [mechanismy ověřování](concepts-security.md#attestation-mechanism) pomocí klientské sady SDK služby Device Provisioning pro C. Můžete použít fyzické zařízení nebo simulátor. Zřizovací služba podporuje ověřování pro dva typy mechanismů ověřování: X.509 a Trusted Platform Module (TPM).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -98,14 +98,14 @@ Před vytvořením registrace zařízení sestavte sadu SDK.
 
 ### <a name="windows"></a>Windows
 - Pokud chcete sestavit sadu SDK ve Windows, proveďte následující kroky a vygenerujte soubory projektu:
-    - Otevřete Developer Command Prompt for VS2015.
-    - Z kořenu úložiště spusťte následující příkazy CMake:
-      ```
-      cd azure-iot-sdk-c
-      mkdir cmake
-      cd cmake
-      cmake -G "Visual Studio 14 2015" ..
-      ```
+  - Otevřete Developer Command Prompt for VS2015.
+  - Z kořenu úložiště spusťte následující příkazy CMake:
+    ```
+    cd azure-iot-sdk-c
+    mkdir cmake
+    cd cmake
+    cmake -G "Visual Studio 14 2015" ..
+    ```
     Tento příkaz sestaví knihovny x86. Pokud chcete provést sestavení pro x64, upravte argument generátoru cmake: 
     ```
     cmake .. -G "Visual Studio 14 2015 Win64"

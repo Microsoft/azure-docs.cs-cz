@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d8cb0829698b13e2193850c29f98492df6c48d4f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 688ef059387dc4c312873051c7c9d1eae259b1ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468508"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57844779"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Přesun dat do nebo z Azure Blob Storage pomocí konektorů SSIS
 [SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) obsahuje součásti pro připojení k Azure, přenos dat mezi Azure a místních zdrojů dat a zpracování dat uložených v Azure.
@@ -55,7 +55,7 @@ Použít **konektorů SSIS**, je nutné stáhnout:
 Informace o tom, jak získat nahoru a spuštění pomocí SISS vytvářet jednoduchá extrakce, transformace a načítání (ETL) balíčky, viz [SSIS kurzu: Vytvoření balíčku jednoduché ETL](https://msdn.microsoft.com/library/ms169917.aspx).
 
 ## <a name="download-nyc-taxi-dataset"></a>Stáhnout NYC taxislužby datovou sadu
-V příkladu je popsáno zde použít veřejně dostupné datové sady – [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datové sady. Datová sada se skládá z přibližně 173 milionů taxislužby lyžovačku v NYC v roce 2013. Existují dva druhy dat: Podrobnosti dat a tarif dat o jízdách. Je soubor pro každý měsíc máme 24 soubory ve všech, z nichž každý je přibližně 2GB nekomprimované.
+V příkladu je popsáno zde použít veřejně dostupné datové sady – [cesty taxíkem NYC](https://www.andresmh.com/nyctaxitrips/) datové sady. Datová sada se skládá z přibližně 173 milionů taxislužby lyžovačku v NYC v roce 2013. Existují dva druhy dat: Podrobnosti dat a tarif dat o jízdách. Je soubor pro každý měsíc máme 24 soubory ve všech, z nichž každý je přibližně 2GB nekomprimované.
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Nahrání dat do úložiště objektů blob v Azure
 Pro přesun dat pomocí služby SSIS balíček z místního do Azure blob storage funkcí, můžeme použít instanci [ **úkol nahrát objekt Blob Azure**](https://msdn.microsoft.com/library/mt146776.aspx), je vidět tady:

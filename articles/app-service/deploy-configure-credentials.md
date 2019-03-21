@@ -10,18 +10,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/22/2018
-ms.author: cephalin
+ms.date: 03/10/2019
+ms.author: cephalin;byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d89197fad8354b0bae41ab67b9bb1dfac0a179eb
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: df874ab77c88f05b048b1f9d10873943b7bebf36
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820293"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884383"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurujte přihlašovací údaje nasazení pro službu Azure App Service
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) podporuje dva typy přihlašovacích údajů pro [místní nasazení přes Git](deploy-local-git.md) a [nasazení FTP/S](deploy-ftp.md). Se nejedná stejná jako přihlašovacích údajů Azure Active Directory.
+[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) podporuje dva typy přihlašovacích údajů pro [místní nasazení přes Git](deploy-local-git.md) a [nasazení FTP/S](deploy-ftp.md). Tyto přihlašovací údaje nejsou stejná jako přihlašovacích údajů Azure Active Directory.
 
 * **Přihlašovací údaje na úrovni uživatele**: jednu sadu přihlašovacích údajů pro celý účet Azure. Slouží k nasazení do služby App Service pro libovolnou aplikaci, v libovolné předplatné, který má oprávnění pro přístup k účtu Azure. Je výchozí skupinu, která se zobrazí v grafickém uživatelském rozhraní portálu (například **přehled** a **vlastnosti** z aplikace [stránka s materiály pro](../azure-resource-manager/manage-resources-portal.md#manage-resources)). Když uživateli je udělen přístup k aplikaci prostřednictvím řízení přístupu na základě Role (RBAC) nebo oprávnění coadmin, tohoto uživatele můžete používat své vlastní přihlašovací údaje na úrovni uživatele, dokud odvolat přístup. Nesdílejte tyto přihlašovací údaje s jinými uživateli Azure.
 
@@ -53,6 +53,12 @@ a *FTP* uživatelské jméno pro nasazení vaší aplikace **vlastnosti**.
 > Azure nezobrazuje heslo nasazení na úrovni uživatele. Pokud zapomenete heslo, můžete resetovat svoje přihlašovací údaje podle pokynů v této části.
 >
 >  
+
+## <a name="use-user-level-credentials-with-ftpftps"></a>Přihlašovací údaje na úrovni uživatele pomocí FTP/FTPS
+
+Ověřování FTP/FTPS koncový bod pomocí requirers přihlašovací údaje na úrovni uživatele s uživatelským jménem v následujícím formátu: `<app-name>\<user-name>`
+
+Protože přihlašovací údaje na úrovni uživatele jsou propojeny s uživateli a konkrétní prostředek, uživatelské jméno musí být v tomto formátu pro přesměrování akce přihlásit ke koncovému bodu té správné aplikace.
 
 ## <a name="appscope"></a>Získat a obnovit přihlašovací údaje na úrovni aplikace
 Pokud chcete získat přihlašovací údaje úrovni aplikace:

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 6254a32349a0f7c743c3fb4993080ca3437c8276
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 9112d50384aba288038343ff9a14ed55542fb722
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810266"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121345"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Pokyny pro osobní údaje uložené v Log Analytics a Application Insights
 
@@ -53,7 +53,7 @@ Log Analytics je flexibilní úložiště, které při systematická schématu k
     ```
     search "[username goes here]"
     ```
-Nezapomeňte se podívat nejen čitelné uživatelská jména, ale také identifikátory GUID, které lze přímo vysledovat zpět s určitým uživatelem!
+  Nezapomeňte se podívat nejen čitelné uživatelská jména, ale také identifikátory GUID, které lze přímo vysledovat zpět s určitým uživatelem!
 * *ID zařízení*: Jako ID uživatele ID zařízení jsou někdy považovány za "privátní". Použít stejným způsobem, jak je uvedeno výše pro ID uživatele identifikuje tabulky tam, kde to může být žádný problém. 
 * *Vlastní data*: Log Analytics umožňuje kolekci v různých metodách: vlastní protokoly a vlastních polí [rozhraní API kolekce dat HTTP](../../azure-monitor/platform/data-collector-api.md) , a shromažďovat protokoly událostí systému v rámci vlastní data. Všechny z nich může docházet k obsahující soukromá data a by měla být prozkoumána ověřit, zda existuje žádná takováto data.
 * *Řešení zachyceným datům*: Vzhledem k tomu, že mechanismus řešení je některý z otevřený, doporučujeme zkontrolujete všechny tabulky generovaných řešení, aby zařízení dodržovalo předpisy.

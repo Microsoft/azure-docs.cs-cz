@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: 58f448646efc4cac9298d5dc4ec7a99e0e39bddc
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 86be94404e7ab492beeebd6a467d23e68e7bce6b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309090"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080163"
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Vytvoření a konfigurace aplikační brány pro hostování více webů pomocí webu Azure portal
 
@@ -44,20 +44,20 @@ Virtuální sítě je potřeba ke komunikaci mezi prostředky, které vytvořít
 2. Vyberte **Sítě** a potom v seznamu Doporučené vyberte **Application Gateway**.
 3. Pro aplikační bránu zadejte tyto hodnoty:
 
-    - *myAppGateway* – tuto hodnotu zadejte jako název aplikační brány.
-    - *myResourceGroupAG* – tuto hodnotu zadejte jako skupinu prostředků.
+   - *myAppGateway* – tuto hodnotu zadejte jako název aplikační brány.
+   - *myResourceGroupAG* – tuto hodnotu zadejte jako skupinu prostředků.
 
-    ![Vytvoření nové aplikační brány](./media/create-multiple-sites-portal/application-gateway-create.png)
+     ![Vytvoření nové aplikační brány](./media/create-multiple-sites-portal/application-gateway-create.png)
 
 4. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
 5. Klikněte na tlačítko **zvolit virtuální síť**, klikněte na tlačítko **vytvořit nový**a potom zadejte tyto hodnoty pro virtuální síť:
 
-    - *myVNet* – tuto hodnotu zadejte jako název virtuální sítě.
-    - *10.0.0.0/16* – tuto hodnotu zadejte jako adresní prostor virtuální sítě.
-    - *myBackendSubnet* – tuto hodnotu zadejte jako název podsítě.
-    - *10.0.0.0/24* – tuto hodnotu zadejte jako adresní prostor podsítě.
+   - *myVNet* – tuto hodnotu zadejte jako název virtuální sítě.
+   - *10.0.0.0/16* – tuto hodnotu zadejte jako adresní prostor virtuální sítě.
+   - *myBackendSubnet* – tuto hodnotu zadejte jako název podsítě.
+   - *10.0.0.0/24* – tuto hodnotu zadejte jako adresní prostor podsítě.
 
-    ![Vytvoření virtuální sítě](./media/create-multiple-sites-portal/application-gateway-vnet.png)
+     ![Vytvoření virtuální sítě](./media/create-multiple-sites-portal/application-gateway-vnet.png)
 
 6. Kliknutím na **OK** vytvořte virtuální síť a podsíť.
 7. Klikněte na tlačítko **zvolte veřejnou IP adresu**, klikněte na tlačítko **vytvořit nový**a potom zadejte název veřejné IP adresy. V tomto příkladu se veřejná IP adresa nazývá *myAGPublicIPAddress*. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
@@ -134,8 +134,8 @@ V tomto příkladu vytvoříte dva virtuální počítače, které se použijí 
 1. Klikněte na tlačítko **naslouchacích procesů** a potom klikněte na tlačítko **Multi-Site**.
 2. Zadejte tyto hodnoty pro naslouchací proces:
     
-    - *contosoListener* – název naslouchacího procesu.
-    - *www.contoso.com* – v tomto příkladu název hostitele nahraďte název vaší domény.
+   - *contosoListener* – název naslouchacího procesu.
+   - *www.contoso.com* – v tomto příkladu název hostitele nahraďte název vaší domény.
 
 3. Klikněte na **OK**.
 4. Vytvoření druhého naslouchací proces, pomocí názvu *fabrikamListener* a používání názvů domén vaší druhé. V tomto příkladu *www.fabrikam.com* se používá.

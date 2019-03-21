@@ -1,6 +1,6 @@
 ---
-title: Vytvoření kanálu CI/CD pro Python pomocí služby Azure DevOps Project | Rychlý start
-description: DevOps Project usnadňuje začátek práce v Azure. Pomůže vám v několika rychlých krocích spustit aplikaci v libovolné službě Azure.
+title: 'Rychlý start: Vytvoření kanálu CI/CD pro Python s projekty Azure DevOps'
+description: DevOps Projects umožňuje snadno a rychle začít s Azure. Pomůže vám v několika rychlých krocích spustit aplikaci v libovolné službě Azure.
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -17,110 +17,135 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 46f65772ed4cb70b80674ae39629f52694be49e1
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.openlocfilehash: 695056be67294c6a0787bad61bf5ee00378275b0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405645"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111425"
 ---
-# <a name="create-a-cicd-pipeline-for-python-with-the-azure-devops-project"></a>Vytvoření kanálu CI/CD pro Python pomocí služby Azure DevOps Project
+# <a name="create-a-cicd-pipeline-for-python-with-azure-devops-projects"></a>Vytvoření kanálu CI/CD pro Python s projekty Azure DevOps
 
-Azure DevOps Project představuje zjednodušené prostředí, které pro vaši aplikaci v Python vytvoří prostředky Azure a nastaví kanál průběžné integrace (CI) a průběžného doručování (CD) v Azure DevOps Services.  
+Projekty Azure DevOps představuje zjednodušené prostředí, která vytváří prostředky Azure a nastavuje kontinuální integrace (CI) a kanál průběžného doručování (CD) pro vaši aplikaci Pythonu.  
 
-Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
+Pokud nemáte předplatné Azure, můžete jej získat zdarma prostřednictvím [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Azure DevOps Project vytvoří kanál CI/CD v Azure.  Můžete vytvořit zdarma novou organizaci **Azure DevOps Services** nebo použijte **existující organizaci**.  DevOps Project také vytvoří **prostředky Azure** v **předplatném Azure** podle vašeho výběru.
+ Projekty DevOps vytvoří kanál CI/CD v kanálech Azure.  Můžete vytvořit bezplatné novou organizaci Azure DevOps nebo použít existující organizace. Prostředky Azure DevOps Projects také vytvoří v rámci předplatného Azure podle vašeho výběru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Microsoft Azure Portal](https://portal.azure.com).
 
-1. V levém navigačním panelu zvolte ikonu **Vytvořit prostředek** a pak vyhledejte **Projekt DevOps**.  Zvolte **Vytvořit**.
+2. Vyberte **vytvořit prostředek** ikony v levém podokně a pak vyhledejte **DevOps Projects**.  
+
+3. Vyberte **Vytvořit**.
 
     ![Zahájení konfigurace průběžného doručování](_img/azure-devops-project-python/fullbrowser.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Výběr ukázkové aplikace a služby Azure
 
-1. Vyberte ukázkovou aplikaci v **Pythonu**.  Ukázka v Pythonu zahrnuje výběr několika architektur aplikace.
+1. Vyberte ukázkovou aplikaci Python. Ukázka v Pythonu zahrnuje výběr několika architektur aplikace.
 
-1. Výchozí architektura ukázky je **Django**. Ponechte výchozí nastavení a pak zvolte **Další**.  
+1. Výchozí ukázky rozhraní je Django. Ponechte výchozí nastavení a pak vyberte **Další**.    
+Webové aplikace pro kontejnery je výchozí cíl nasazení. Rozhraní framework aplikace, který jste zvolili dříve, určí typ cíle nasazení služby Azure k dispozici tady. 
 
-1. Výchozí cíl nasazení je **Web App for Containers**.  Architektura aplikace, kterou jste zvolili v předchozích krocích, určuje typ cíle nasazení služby Azure, který je zde k dispozici.  Ponechte nastavenou výchozí službu a pak zvolte **Další**.
+3. Ponechat výchozí služby a pak vyberte **Další**.
  
-## <a name="configure-azure-devops-services-and-an-azure-subscription"></a>Konfigurace Azure DevOps Services a předplatné Azure 
+## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurace Azure DevOps a předplatné Azure 
 
-1. Vytvořte novou organizaci **Azure DevOps Services** nebo zvolte **existující organizaci**.  Zvolte **název** pro váš projekt Azure DevOps.  Vyberte vaše **předplatné Azure**, **umístění** a zvolte **název** pro vaši aplikaci.  Jakmile budete hotovi, zvolte **Hotovo**.
+1. Vytvořte novou organizaci Azure DevOps nebo zvolte existující organizace. 
 
-1. Během několika minut se na webu Azure Portal načte **řídicí panel projektu**.  Ukázková aplikace se nastaví v úložišti ve vaší organizaci Azure DevOps Services, spustí se sestavení a vaše aplikace se nasadí do Azure.  Tento řídicí panel poskytuje vhled do vašeho **úložiště kódu**, **kanálů Azure CI/CD** a vaší **aplikace v Azure**.  Na pravé straně řídicího panelu vyberte **Procházet** a zobrazte vaši spuštěnou aplikaci.
+    a. Zadejte název pro váš projekt Azure DevOps.  
+
+    b. Vyberte předplatné Azure a umístění, zadejte název pro vaši aplikaci a pak vyberte **provádí**.  
+     Po několika minutách se zobrazí řídicí panel projekt na webu Azure Portal. Ukázková aplikace je nastavena v úložišti ve vaší organizaci Azure DevOps, sestavení je spuštěno a vaše aplikace bude nasazena do Azure. Tento řídicí panel poskytuje vhled do vašeho úložiště kódu, váš kanál CI/CD a vaši aplikaci v Azure.  
+    
+2. Vyberte **Procházet** k běžící aplikaci zobrazit.
 
     ![Zobrazení řídicího panelu](_img/azure-devops-project-python/dashboardnopreview.png) 
     
-Projekt Azure DevOps automaticky nakonfiguruje trigger CI pro sestavení a vydání.  Teď jste připraveni při práci na aplikaci v Pythonu spolupracovat s týmem s využitím procesu CI/CD, který automaticky nasazuje nejnovější práci na web.
+   Projekty DevOps automaticky nakonfiguruje položky konfigurace sestavení a vydaná verze triggeru. Teď jste připraveni spolupracovat s týmem ve službě aplikace v Pythonu pomocí procesu CI/CD, který automaticky nasadí nejnovější práci na váš web.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Potvrzení změn kódu a spuštění CI/CD
 
-Projekt Azure DevOps vytvořil úložiště Git ve vaší organizaci Azure DevOps Services nebo účtu GitHub.  Podle následujícího postupu zobrazte úložiště a proveďte změny kódu vaší aplikace.
+ Projekty DevOps vytvoří úložiště Git v úložišti Azure nebo z Githubu. K zobrazení úložiště a proveďte změny kódu aplikace, postupujte takto: 
 
-1. Na levé straně řídicího panelu projektu DevOps vyberte odkaz na vaši **hlavní** větev.  Tento odkaz otevře zobrazení nově vytvořeného úložiště Git.
+1. Na levé straně řídicího panelu DevOps Projects vyberte odkaz pro hlavní větev.  
+        Tento odkaz otevře zobrazení nově vytvořeného úložiště Git.
 
-1. Pokud chcete zobrazit adresu URL klonu úložiště, v pravé horní části prohlížeče vyberte **Clone** (Klonovat). Úložiště Git můžete naklonovat do svého oblíbeného integrovaného vývojového prostředí (IDE).  V dalších několika krocích můžete k provedení změn kódu a jejich potvrzení přímo do hlavní větve použít webový prohlížeč.
+1. Pokud chcete zobrazit adresu URL klonu úložiště, v pravé horní části prohlížeče vyberte **Clone** (Klonovat).   
+Úložiště Git můžete naklonovat do svého oblíbeného integrovaného vývojového prostředí (IDE).  V dalších několika krocích můžete k provedení změn kódu a jejich potvrzení přímo do hlavní větve použít webový prohlížeč.
 
-1. Na levé straně prohlížeče přejděte k souboru **app/templates/app/index.html**.
+1. Na levé straně, přejděte **app/templates/app/index.html** souboru.
 
-1. Vyberte **Upravit** a proveďte změnu nějakého textu.  Změňte například text v některé ze značek div.
+1. Vyberte **Upravit** a proveďte změnu nějakého textu. Změňte například text v některé ze značek div.
 
-1. Zvolte **Potvrdit** a pak uložte provedené změny.
+1. Vyberte **potvrzení**a pak uložte provedené změny.
 
-1. V prohlížeči přejděte na **řídicí panel projektu Azure DevOps**.  Teď by se mělo zobrazit probíhající sestavení.  Změny, které jste právě provedli, se automaticky sestaví a nasadí přes kanál CI/CD Azure.
+1. V prohlížeči přejdete na řídicí panel DevOps Projects.   
+    Teď byste měli vidět probíhající sestavení. Změny, které jste právě provedli jsou automaticky vytvořené a nasazené prostřednictvím kanálu CI/CD.
 
-## <a name="examine-the-azure-cicd-pipeline"></a>Prozkoumání kanálu CI/CD Azure
+## <a name="examine-the-cicd-pipeline"></a>Prozkoumejte kanálu CI/CD
 
-Projekt Azure DevOps ve vaší organizaci Azure DevOps Services automaticky nakonfiguroval úplný kanál CI/CD Azure.  Prozkoumejte kanál a podle potřeby ho upravte.  Postupujte podle následujících kroků a seznamte se s kanály buildu a verze Azure DevOps Services.
+Projekty DevOps v předchozím kroku, automaticky nakonfiguruje úplný kanál CI/CD. Prozkoumejte kanál a podle potřeby ho upravte. Seznamte se s kanály sestavení a vydaných verzí, postupujte takto:
 
-1. V **horní** části řídicího panelu projektu Azure DevOps vyberte **Kanály buildu**.  Tento odkaz na nové kartě prohlížeče otevře kanál buildu Azure DevOps Services pro váš nový projekt.
+1. V horní části řídicího panelu DevOps Projects, vyberte **vytvářet kanály**.  
+Na kartě prohlížeče zobrazí kanálu sestavení pro nový projekt.
 
-1. Přesuňte kurzor myši napravo od kanálu buildu vedle pole **Stav**. Vyberte **tři tečky**, které se zobrazí.  Tato akce otevře nabídku, ze které můžete spustit několik aktivit, jako je zařazení nového sestavení do fronty, pozastavení sestavení a úprava kanálu buildu.
+1. Přejděte **stav** pole a pak vyberte **tlačítko se třemi tečkami** (...).  
+        Nabídka obsahuje několik možností, jako je například přidávání nové sestavení, přerušení sestavení a úpravy kanálu sestavení do fronty.
 
 1. Vyberte **Upravit**.
 
-1. V tomto zobrazení můžete **prozkoumat různé úlohy** pro váš kanál buildu.  Sestavení provádí různé úlohy, jako je načtení zdrojů z úložiště Git, obnovení závislostí a publikování výstupů používaných pro nasazení.
+1. V tomto podokně můžete prozkoumat různé úlohy pro vašeho kanálu sestavení.  
+        Sestavení provádí různé úlohy, jako je například načítání zdrojů z úložiště Git, závislosti, obnovení a publikování výstupy pro nasazení.
 
-1. V horní části kanálu buildu, vyberte **název kanálu buildu**.
+1. V horní části kanálu sestavení vyberte název kanálu sestavení.
 
-1. Změňte **název** vašeho kanálu buildu na něco výstižnějšího.  Vyberte **Uložit a zařadit do fronty** a pak vyberte **Uložit**.
+1. Změnit na něco více popisné, vyberte název vašeho kanálu sestavení **Uložit & frontu**a pak vyberte **Uložit**.
 
-1. Pod názvem vašeho kanálu buildu vyberte **Historie**.  Zobrazí se protokol auditu nedávno provedených změn sestavení.  Azure DevOps Services uchovává informace o všech změnách kanálu buildu a umožňuje porovnání verzí.
+1. Pod názvem kanálu buildu vyberte **Historie**.  
+        Zobrazí se protokol auditu nedávno provedených změn sestavení.  Azure DevOps sleduje změny provedené do kanálu sestavení, a umožňuje porovnání verzí.
 
-1. Vyberte **Triggery**.  Projekt Azure DevOps automaticky vytvořil trigger CI a každé potvrzení v úložišti spustí nové sestavení.  Volitelně můžete zvolit, které větve se do procesu CI zahrnou nebo se z něj vyloučí.
+1. Vyberte **Triggery**.  
+         Projekty DevOps automaticky vytvoří aktivační událost CI, a každé potvrzení do úložiště spustí nové sestavení.  Volitelně můžete zvolit, které větve se do procesu CI zahrnou nebo se z něj vyloučí.
 
-1. Vyberte **Uchování**.  V závislosti na vašem scénáři můžete určit zásady pro zachování nebo odebrání určitého počtu sestavení.
+1. Vyberte **Uchování**.  
+        V závislosti na vašem scénáři můžete zadat zásady, které chcete zachovat nebo odebrat počet sestavení.
 
-1. Vyberte **Sestavení a vydání** a zvolte **Verze**.  Projekt Azure DevOps vytvořil kanál verze Azure DevOps Services pro správu nasazení do Azure.
+1. Vyberte **sestavení a vydání**a klikněte na tlačítko **vydání**.   
+ Projekty DevOps vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
 
-1. Na levé straně prohlížeče vyberte **tři tečky** vedle vašem kanálu verze a pak zvolte **Upravit**.
+1. Vyberte tři tečky vedle kanálu pro vydávání verzí a pak vyberte **upravit**.  
+Kanál pro vydávání verzí definuje procesu vydávání verzí.  
+        
+12. V části **Artefakty** vyberte **Zahodit**.   
+Kanál sestavení, kterou můžete prozkoumat v předchozích krocích vytvoří výstup, který se používá pro artefakt. 
 
-1. Kanál verze obsahuje **kanál**, který definuje proces vydání.  V části **Artefakty** vyberte **Zahodit**.  Kanál buildu, který jste prozkoumali v předchozích krocích, vytvoří výstup pro artefakt. 
+1. Vedle položky **vyřadit** ikonu, vyberte **trigger průběžného nasazování**.  
+        Kanál pro vydávání verzí má povoleno CD triggeru, který se spouští nasazení pokaždé, když je k dispozici nové artefakt sestavení. Volitelně můžete zakázat aktivační událost tak, aby vaše nasazení vyžaduje ruční spuštění. 
 
-1. Napravo od ikony **Zahodit** vyberte **Trigger průběžného nasazování**.  Tento kanál verze má povolený trigger CD, který spustí nasazení pokaždé, když bude k dispozici nový artefakt sestavení.  Volitelně můžete trigger zakázat, aby vaše nasazení vyžadovala ruční spuštění. 
+1. Na levé straně vyberte **úlohy**.   
+Úkoly jsou aktivity, které proces nasazení provede. V tomto příkladu byl úkol vytvořen k nasazení do služby Azure App Service.
 
-1. Na levé straně prohlížeče vyberte **Úlohy**.  Úlohy jsou aktivity, které se provádí ve vašem procesu nasazení.  V tomto příkladu se vytvořila úloha pro nasazení do služby **Azure App Service**.
+1. Na pravé straně vyberte **zobrazit verze** zobrazíte historii verzí.  
+        
+1. Vyberte tři tečky (...) u jedné vydávání verzí a pak vyberte **otevřít**.  
+        Existuje několik nabídek a prozkoumejte z tohoto zobrazení, jako je například souhrn, vydané verze přidružené pracovní položky a testy.
 
-1. Na pravé straně prohlížeče vyberte **Zobrazit verze**.  Toto zobrazení ukazuje historii vydaných verzí.
+1. Vyberte **Potvrzení**. 
+        Toto zobrazení ukazuje potvrzení změn kódu, které jsou spojeny s konkrétní nasazení. 
 
-1. Vyberte **tři tečky** vedle některé z vydaných verzí a zvolte **Otevřít**.  Toto zobrazení obsahuje několik nabídek, které můžete prozkoumat, například souhrn verze, související pracovní položky a testy.
-
-1. Vyberte **Potvrzení**.  Toto zobrazení ukazuje potvrzení kódu související s konkrétním nasazením. 
-
-1. Vyberte **Protokoly**.  Protokoly obsahují užitečné informace o procesu nasazení.  Můžete je zobrazit během nasazení i po nich.
+1. Vyberte **Protokoly**.   
+Protokoly obsahují užitečné informace o procesu nasazení. Můžete je zobrazit během a po nasazení.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete službu Azure App Service a související prostředky vytvořené v tomto rychlém startu odstranit pomocí funkce **Odstranit** na řídicím panelu Azure DevOps Project.
+Azure App Service a související prostředky můžete odstranit, pokud už nepotřebujete. Použití **odstranit** funkce na řídicím panelu projekty DevOps.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Když jste v tomto rychlém startu nakonfigurovali proces CI/CD, ve vašem projektu Azure DevOps se automaticky vytvořily kanál buildu a verze. Tyto kanály buildu a verze můžete upravit tak, aby splňovaly požadavky vašeho týmu. Další informace najdete v tomto kurzu:
+Pokud jste nakonfigurovali procesu CI/CD, sestavení a kanály pro vydávání se automaticky vytvořily. Tyto kanály buildu a verze můžete upravit tak, aby splňovaly požadavky vašeho týmu. Další informace o kanálu CI/CD, naleznete v tématu:
 
 > [!div class="nextstepaction"]
 > [Přizpůsobení procesu CD](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

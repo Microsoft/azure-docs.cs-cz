@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 478034d1c9f99f40a4827515433357c76235e9ee
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: MT
+ms.openlocfilehash: 7d846f28e78959b6962add51070f04857f6463d7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52428939"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852803"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro ověřování a autorizace ve službě Azure Kubernetes Service (AKS)
 
@@ -64,7 +64,7 @@ rules:
   verbs: ["*"]
 ```
 
-RoleBinding se pak vytvoří, která vytvoří vazbu uživatele Azure AD *developer1@contoso.com* k RoleBinding, jak je znázorněno v následujícím YAML manifestu:
+RoleBinding se pak vytvoří, která vytvoří vazbu uživatele Azure AD *developer1\@contoso.com* k RoleBinding, jak je znázorněno v následujícím YAML manifestu:
 
 ```yaml
 ind: RoleBinding
@@ -82,7 +82,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-Když *developer1@contoso.com* ověření pro cluster AKS, mají úplná oprávnění k prostředkům v *finanční aplikace* oboru názvů. V tomto, které logicky oddělená a ovládací prvek přístup k prostředkům. Kubernetes RBAC byste měli použít ve spojení s Azure AD – integrace, jak je popsáno v předchozí části.
+Když *developer1\@contoso.com* ověření pro cluster AKS, mají úplná oprávnění k prostředkům v *finanční aplikace* oboru názvů. V tomto, které logicky oddělená a ovládací prvek přístup k prostředkům. Kubernetes RBAC byste měli použít ve spojení s Azure AD – integrace, jak je popsáno v předchozí části.
 
 ## <a name="use-pod-identities"></a>Používat pod identity
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: 34f1b023b2ea2451f3308666d156278e92afb4aa
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d1cff1011e190e5fbb2874657cbdfbdc68bde0c0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565968"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084391"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Použití stavu aplikace rozšíření virtuálního počítače škálovací sad
 Monitorování stavu vaší aplikace je důležité signál pro správu a upgrade vašeho nasazení. Škálovací sady virtuálních počítačů Azure poskytují podporu pro [postupné upgrady](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) včetně [automatické upgrady operačního systému image](virtual-machine-scale-sets-automatic-upgrade.md), které využívají monitorování stavu jednotlivých instancí při upgradu nasazení .
@@ -64,19 +64,19 @@ Následující kód JSON ukazuje schéma pro rozšíření stavu aplikace. Rozš
 ### <a name="property-values"></a>Hodnoty vlastností
 
 | Název | Hodnota / příklad | Typ dat
-| ---- | ---- | ---- | ----
+| ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| vydavatele | `Microsoft.ManagedServices` | řetězec |
-| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | řetězec |
+| vydavatele | `Microsoft.ManagedServices` | string |
+| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Nastavení
 
 | Název | Hodnota / příklad | Typ dat
 | ---- | ---- | ----
-| Protokol | `http` nebo `tcp` | řetězec |
+| Protokol | `http` nebo `tcp` | string |
 | port | Nepovinné, pokud je protokol `http`, povinné, když je protokol `tcp` | int |
-| requestPath | Povinné, když je protokol `http`, není povolený, pokud je protokol `tcp` | řetězec |
+| requestPath | Povinné, když je protokol `http`, není povolený, pokud je protokol `tcp` | string |
 
 ## <a name="deploy-the-application-health-extension"></a>Nasazení rozšíření aplikace zdraví
 Nasazení aplikace stav rozšíření škálovací nastaví popsané v následujících příkladech několika způsoby.

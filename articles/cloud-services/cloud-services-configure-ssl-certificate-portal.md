@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeconnoc
-ms.openlocfilehash: cf2fe10d6a0ab81ff71c948ee2defe6bc7edfd70
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 2a9879ebc55a5f25c1a358e386697dce1c55ec90
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300184"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084340"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurace protokolu SSL pro aplikaci v Azure
 
@@ -33,14 +33,14 @@ Tato úloha používá produkčního nasazení. Informace o používání pracov
 
 Čtení [to](cloud-services-how-to-create-deploy-portal.md) první, pokud jste ještě nevytvořili cloudovou službu.
 
-## <a name="step-1-get-an-ssl-certificate"></a>Krok 1: Získání certifikátu SSL
+## <a name="step-1-get-an-ssl-certificate"></a>Krok 1: Získat certifikát SSL
 Konfigurace SSL pro aplikaci, musíte nejprve získat certifikát SSL, který byl podepsán pomocí certifikátu autority (CA), důvěryhodné jiného výrobce, který vystavuje certifikáty pro tento účel. Pokud není ještě nemáte, budete muset získat jeden ze společnosti, která se prodává certifikáty SSL.
 
 Certifikát musí splňovat následující požadavky na certifikáty protokolu SSL v Azure:
 
 * Certifikát musí obsahovat privátní klíč.
 * Certifikát musí být vytvořen pro výměnu klíčů, musí umožňovat export do souboru Personal Information Exchange (.pfx).
-* Název subjektu certifikátu musí odpovídat doménu, kterou používá pro přístup ke cloudové službě. Nelze získat certifikát SSL od certifikační autority (CA) pro doménu cloudapp.net. Musíte získat název vlastní domény při přístupu ke službě. Když požádáte o certifikát od certifikační Autority, název subjektu certifikátu musí odpovídat názvu vlastní domény pro přístup k aplikaci. Například, pokud je název vaší vlastní domény **contoso.com** by požádáte o certifikát z certifikační Autority pro ***. contoso.com** nebo ** **www.contoso.com**.
+* Název subjektu certifikátu musí odpovídat doménu, kterou používá pro přístup ke cloudové službě. Nelze získat certifikát SSL od certifikační autority (CA) pro doménu cloudapp.net. Musíte získat název vlastní domény při přístupu ke službě. Když požádáte o certifikát od certifikační Autority, název subjektu certifikátu musí odpovídat názvu vlastní domény pro přístup k aplikaci. Například, pokud je název vaší vlastní domény **contoso.com** by požádáte o certifikát z certifikační Autority pro ***. contoso.com** nebo **www\.contoso.com**.
 * Certifikát musí používat minimálně 2048bitové šifrování.
 
 Pro účely testování můžete [vytvořit](cloud-services-certs-create.md) a použít certifikát podepsaný svým držitelem. Certifikát podepsaný svým držitelem není ověřen pomocí certifikační Autority a cloudapp.net domény můžete použít jako adresu URL webu. Například následující úkol používá certifikát podepsaný svým držitelem, ve kterém je běžný název (CN) použitý v certifikátu **sslexample.cloudapp.net**.
@@ -49,7 +49,7 @@ V dalším kroku musí obsahovat informace o certifikátu v definici služby a s
 
 <a name="modify"> </a>
 
-## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>Krok 2: Upravte soubory definice a konfigurace služby
+## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>Krok 2: Upravit soubory definice a konfigurace služby
 Vaše aplikace musí být nakonfigurována pro použití certifikátu a musí být přidán koncový bod HTTPS. V důsledku toho definici služby a konfigurační soubory služby potřeba aktualizovat.
 
 1. Ve vašem vývojovém prostředí otevřete definiční soubor služby (CSDEF), přidejte **certifikáty** části v rámci **WebRole** části a uveďte následující informace o certifikátu (a zprostředkující certifikáty):
@@ -155,7 +155,7 @@ Připojte se k webu Azure portal a...
 
 4. Zadejte **souboru**, **heslo**, pak klikněte na tlačítko **nahrát** v dolní části oblasti vstupní data.
 
-## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>Krok 4: Připojení k instanci role pomocí protokolu HTTPS
+## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>Krok 4: Připojte se k instanci role pomocí protokolu HTTPS
 Teď, když vaše nasazení do provozu v Azure, můžete připojit pomocí protokolu HTTPS.
 
 1. Klikněte na tlačítko **adresa URL webu** otevřete webový prohlížeč.

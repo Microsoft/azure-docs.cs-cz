@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: fa51290623f68e94db9cb1b28cd69c88b5d5cf18
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 46e60583da79006c133c8d9fac63e27f28bd699f
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000059"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188182"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Zjištění tváří a Emocí pomocí Azure Media Analytics
 ## <a name="overview"></a>Přehled
@@ -60,7 +60,7 @@ Detektor tváří využívá i metody pro fragmentaci (metadata, můžete se roz
 
 ## <a name="face-detection-input-and-output-example"></a>Detekce vstup pro rozpoznávání tváře a příklad výstupu
 ### <a name="input-video"></a>Vstupního videa
-[Vstupního videa](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
+[Vstupního videa](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>Konfigurace úlohy (nastavení)
 Při vytváření úlohy s **Azure Media Face Detectoru**, je nutné zadat nastavení konfigurace. Následující nastavení konfigurace je jen pro rozpoznávání tváře.
@@ -132,7 +132,7 @@ Následující příklad výstupu JSON byl zkrácen.
 
 ## <a name="emotion-detection-input-and-output-example"></a>Rozpoznávání emocí z výrazu vstup a výstup příkladu
 ### <a name="input-video"></a>Vstupního videa
-[Vstupního videa](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
+[Vstupního videa](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>Konfigurace úlohy (nastavení)
 Při vytváření úlohy s **Azure Media Face Detectoru**, je nutné zadat nastavení konfigurace. Následující nastavení konfigurace určuje vytvoření JSON založené na rozpoznávání emocí z výrazu.
@@ -522,5 +522,5 @@ namespace FaceDetection
 ## <a name="related-links"></a>Související odkazy
 [Azure Media Services Analytics Overview](media-services-analytics-overview.md)
 
-[Azure Media Analytics demos](http://amslabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics demos](https://amslabs.azurewebsites.net/demos/Analytics.html)
 

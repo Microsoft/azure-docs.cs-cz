@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: fe1f08b7b597a2e521f2b13af1d0a4a4d7d4b7a2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 7e14b5f2c5f84c4f1f21454f733987df6933f0c7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213997"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886622"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portál OMS do Azure
 
@@ -26,7 +26,7 @@ ms.locfileid: "54213997"
 
 Na webu Azure portal je Centrum pro všechny služby Azure a nabízí bohaté možnosti správy prostředí s funkcemi, jako jsou řídicí panely pro Připnutí prostředků, inteligentní vyhledávání, vyhledání prostředků a označí pro správu prostředků. Ke konsolidaci a zjednodušte pracovní postupy monitorování a správu, bodu jsme začali přidávat možnosti portálu OMS na web Azure Portal. Všechny funkce na portálu OMS jsou teď součástí na webu Azure portal. Ve skutečnosti některé nové funkce, jako je například analýza provozu jsou k dispozici pouze na webu Azure Portal. Budete moct provádět vše, co jste dělali v portálu OMS pomocí webu Azure portal a dalších. Pokud jste tak již neučinili, měli byste začít pomocí webu Azure portal ještě dnes!
 
-**Na portálu OMS se oficiálně vyřadí z provozu 15. ledna 2019** komerčním cloudu Azure a Azure US Government cloud, na portálu OMS **oficiálně skončí 30. března 2019.** Jsme nadšeni, přejděte na webu Azure portal a očekávají, že přechod na snadno. Ale chápeme změny je složité a můžou působit rušivě. Odesílat dotazy, názory a připomínky k **LAUpgradeFeedback@microsoft.com**. Zbývající část tohoto článku prochází přes klíčové scénáře a plán pro tento přechod.
+**Na portálu OMS se oficiálně vyřadí z provozu 15. ledna 2019** komerčním cloudu Azure a Azure US Government cloud, na portálu OMS **oficiálně skončí 30. března 2019.** Jsme nadšeni, přejděte na webu Azure portal a očekávají, že přechod na snadno. Ale chápeme změny je složité a můžou působit rušivě. Odesílat dotazy, názory a připomínky k **LAUpgradeFeedback\@microsoft.com**. Zbývající část tohoto článku prochází přes klíčové scénáře a plán pro tento přechod.
 
 ## <a name="what-is-changing"></a>Co se mění? 
 Tyto změny jsou právě oznámili vyřazení podpory na portálu OMS. Každá z těchto změn je popsána podrobněji v následujících částech.
@@ -47,7 +47,7 @@ Zatímco většina funkcí budou nadále fungovat bez provádění jakékoli mig
 - Je potřeba [migrovat vaše uživatelská oprávnění](#user-access-and-role-migration) k webu Azure portal.
 - Zobrazit [proveďte migraci vašich nasazení aktualizace OMS do Azure](../../automation/migrate-oms-update-deployments.md) podrobnosti týkající se přechodu řešení Update Management.
 
-Odkazovat na [běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics](oms-portal-faq.md) informace o tom, jak přechod na webu Azure portal. Odeslat žádné zpětnou vazbu, otázky nebo připomínky k **LAUpgradeFeedback@microsoft.com**.
+Odkazovat na [běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics](oms-portal-faq.md) informace o tom, jak přechod na webu Azure portal. Odeslat žádné zpětnou vazbu, otázky nebo připomínky k **LAUpgradeFeedback\@microsoft.com**.
 
 ## <a name="user-access-and-role-migration"></a>Migrace přístup a role uživatele
 Správa přístupu na portálu Azure je bohatší a výkonnější než správu přístupu na portálu OMS. Zobrazit [Správa pracovních prostorů](manage-access.md#manage-accounts-and-users) podrobné řízení přístupu ve službě Log Analytics.

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 01e5ffc7cf00f7d0e0e97f521b6b6de2abd56567
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
-ms.translationtype: MT
+ms.openlocfilehash: b72966ebc73953e6a89ca1bb2fd4f7ce15f70fee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307679"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111374"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Nastavení profilu webové aplikace běžící na virtuálním počítači Azure nebo škálovací sadu virtuálních počítačů s použitím Application Insights Profiler
 
@@ -32,28 +32,28 @@ Můžete také nasadit Azure Application Insights Profiler za tyto služby:
 V tomto článku se dozvíte, jak získat Application Insights Profiler běží na vašich virtuálních počítačů (VM) Azure nebo škálovací sady virtuálních počítačů Azure. Profiler je nainstalován pomocí rozšíření Azure Diagnostics pro virtuální počítače. Nakonfigurujte toto rozšíření spustit Profiler a sestavení Application Insights SDK do vaší aplikace.
 
 1. Přidejte Application Insights SDK do vaší [aplikace ASP.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net) nebo běžné [aplikace .NET](windows-services.md?toc=/azure/azure-monitor/toc.json).  
-  Chcete-li zobrazit profily pro vaše požadavky, musíte poslat telemetrie žádostí Application Insights.
+   Chcete-li zobrazit profily pro vaše požadavky, musíte poslat telemetrie žádostí Application Insights.
 
 1. Nainstalujte rozšíření Azure Diagnostics na virtuálním počítači. Úplné příklady šablony Resource Manageru najdete v tématu:  
-    * [Virtuální počítač](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachine.json)
-    * [Škálovací sada virtuálních počítačů](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
+   * [Virtuální počítač](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachine.json)
+   * [Škálovací sada virtuálních počítačů](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
     
-    Klíčovým faktorem je ApplicationInsightsProfilerSink v WadCfg. Pokud chcete, aby Azure Diagnostics povolit Profiler k odesílání dat do svůj Instrumentační klíč, přidejte do této části jiného jímky.
+     Klíčovým faktorem je ApplicationInsightsProfilerSink v WadCfg. Pokud chcete, aby Azure Diagnostics povolit Profiler k odesílání dat do svůj Instrumentační klíč, přidejte do této části jiného jímky.
     
-    ```json
-      "SinksConfig": {
-        "Sink": [
-          {
-            "name": "ApplicationInsightsSink",
-            "ApplicationInsights": "85f73556-b1ba-46de-9534-606e08c6120f"
-          },
-          {
-            "name": "MyApplicationInsightsProfilerSink",
-            "ApplicationInsightsProfiler": "85f73556-b1ba-46de-9534-606e08c6120f"
-          }
-        ]
-      },
-    ```
+     ```json
+     "SinksConfig": {
+       "Sink": [
+         {
+           "name": "ApplicationInsightsSink",
+           "ApplicationInsights": "85f73556-b1ba-46de-9534-606e08c6120f"
+         },
+         {
+           "name": "MyApplicationInsightsProfilerSink",
+           "ApplicationInsightsProfiler": "85f73556-b1ba-46de-9534-606e08c6120f"
+         }
+       ]
+     },
+     ```
 
 1. Definice nasazení upravené prostředí nasazení.  
 

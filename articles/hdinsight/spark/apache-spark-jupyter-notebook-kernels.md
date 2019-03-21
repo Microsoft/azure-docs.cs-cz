@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 937f6ffb9865419611c35b95ac84832bb2f1f3fe
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 92ffa02959f020789d14b3bea71763f3f5b9bb47
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791806"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084094"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jádra pro poznámkový blok Jupyter v clusterech Apache Spark v Azure HDInsight 
 
@@ -59,15 +59,15 @@ Tady je několik výhod pomocí jádrech nový poznámkový blok Jupyter v clust
 
 - **Přednastavení kontexty**. S **PySpark**, **PySpark3**, nebo **Spark** jader, můžete nemusíte nastavovat kontexty Spark a Hive explicitně předtím, než se pustíte do práce s vašimi aplikacemi. Toto jsou k dispozici ve výchozím nastavení. Kontexty jsou:
    
-   * **sc** – pro kontext Spark
-   * **kontext sqlContext** – pro kontext Hive
+  * **sc** – pro kontext Spark
+  * **kontext sqlContext** – pro kontext Hive
    
-   Proto není nutné spouští příkazy následujícím postupem nastavit kontexty:
+    Proto není nutné spouští příkazy následujícím postupem nastavit kontexty:
    
-          sc = SparkContext('yarn-client')
-          sqlContext = HiveContext(sc)
+         sc = SparkContext('yarn-client')
+         sqlContext = HiveContext(sc)
    
-   Místo toho můžete přímo použít přednastavených kontextech ve vaší aplikaci.
+    Místo toho můžete přímo použít přednastavených kontextech ve vaší aplikaci.
 
 - **Buňky Magic**. Jádra PySpark poskytuje některé předdefinované "Magic", které jsou speciální příkazy, které lze volat s `%%` (například `%%MAGIC` <args>). Magický příkaz musí být první slovo do buňky kódu a umožňují více řádků obsahu. Magický slov by měla být první slovo v buňce. Přidání nic před magic, dokonce i komentáře, způsobí chybu.     Další informace o Magic, naleznete v tématu [tady](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
    
@@ -87,7 +87,7 @@ Tady je několik výhod pomocí jádrech nový poznámkový blok Jupyter v clust
    > [!NOTE]  
    > Kromě Magic přidal jádra PySpark, můžete také použít [integrované IPython Magic](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), včetně `%%sh`. Můžete použít `%%sh` magic spouštět skripty a blok kódu na hlavního uzlu clusteru.
 
-2. **Auto vizualizace**. **Pyspark** jádra automaticky vizualizuje výstup dotazy Hive a SQL. Můžete zvolit několik různých typů vizualizace včetně tabulky, výsečové, řádek, oblasti, panel.
+1. **Auto vizualizace**. **Pyspark** jádra automaticky vizualizuje výstup dotazy Hive a SQL. Můžete zvolit několik různých typů vizualizace včetně tabulky, výsečové, řádek, oblasti, panel.
 
 ## <a name="parameters-supported-with-the-sql-magic"></a>Podporované s parametry %% magický příkaz jazyka sql
 `%%sql` Magic podporuje různé parametry, které můžete použít k řízení druh výstupu, který se zobrazí při spuštění dotazů. V následující tabulce jsou uvedeny ve výstupu.

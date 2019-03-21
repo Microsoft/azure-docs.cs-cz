@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: ed2792c3bb599a0e5654be836d440b61fc803012
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9bcc74e395746ae82867d915ea37962bf8880a3e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780299"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857177"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Kurz: Integrace Azure Active Directory s aplikací Workday
 
@@ -104,7 +104,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s aplikací Workday, proveďt
 
     ![WORKDAY domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://impl.workday.com/<tenant>/login-saml2.flex`
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https:\//impl.workday.com/<tenant>/login-saml2.flex`
 
     b. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://www.workday.com`
 
@@ -112,11 +112,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s aplikací Workday, proveďt
 
     ![WORKDAY domény a adresy URL jednotného přihlašování – informace](./media/workday-tutorial/reply.png)
 
-    V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://impl.workday.com/<tenant>/login-saml.htmld`
+    V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https:\//impl.workday.com/<tenant>/login-saml.htmld`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty se skutečné přihlašovací adresu URL a adresy URL odpovědi. Vaše adresa URL odpovědi musí mít například subdomény: www wd2, wd3, wd3 impl, wd5, wd5 impl).
-    > Pomocí příkazu podobného tomuto "*http://www.myworkday.com*" funguje, ale "*http://myworkday.com*" nepodporuje. Kontakt [tým podpory klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Pomocí příkazu podobného tomuto `http://www.myworkday.com` funguje, ale `http://myworkday.com` tak není. Kontakt [tým podpory klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
 6. Vaše aplikace Workday očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. Pracovní aplikace očekává **nameidentifier** namapovat s **user.mail**, **UPN** atd, takže budete muset upravit mapování atributů kliknutím na **upravit**  ikonu a změnit mapování atributů.
 
@@ -159,10 +159,10 @@ Ke konfiguraci Azure AD jednotné přihlašování s aplikací Workday, proveďt
 
     d. V **používá pro prostředí** textové pole, vyberte název prostředí.  
 
-    >[!NOTE]
-    > Hodnota atributu prostředí se váže na hodnotu adresy URL tenanta:  
-    >-Pokud název domény adresy URL klienta Workday začíná impl například: *https://impl.workday.com/\<tenant\>/login-saml2.flex*), **prostředí** atribut musí být nastaven na implementaci.  
-    >– Pokud je název domény začíná znakem jiný, budete muset požádat [tým podpory klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) zobrazíte odpovídající **prostředí** hodnotu.
+   > [!NOTE]
+   > Hodnota atributu prostředí se váže na hodnotu adresy URL tenanta:  
+   > -Pokud název domény adresy URL klienta Workday začíná impl například: *https:\//impl.workday.com/\<tenanta\>/login-saml2.flex*), **prostředí**atribut musí být nastaven na implementaci.  
+   > – Pokud je název domény začíná znakem jiný, budete muset požádat [tým podpory klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) zobrazíte odpovídající **prostředí** hodnotu.
 
 4. V **nastavení SAML** části, proveďte následující kroky:
 
@@ -254,7 +254,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3ab98669e01c9cfb2d4f46b8ddd83ff69653337b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a5b4e0465e83dec5620954998db329e7902fb59c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434168"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106045"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Nasazení virtuálního počítače z virtuálních pevných disků
 
@@ -51,13 +51,13 @@ Vytvářet a nasazovat uživatelské image virtuálního počítače použijete 
 
 Po nasazení virtuálního počítače, jste připraveni [certifikaci vaší image virtuálního počítače](./cpp-certify-vm.md).
 
-2.  Klikněte na tlačítko **nový** a vyhledejte **nasazení šablony**a pak vyberte **vytvořit vlastní šablonu v editoru**.  <br/>
-  ![Vytvoření šablony nasazení virtuálního pevného disku na webu Azure portal](./media/publishvm_021.png)
+1. Klikněte na tlačítko **nový** a vyhledejte **nasazení šablony**a pak vyberte **vytvořit vlastní šablonu v editoru**.  <br/>
+   ![Vytvoření šablony nasazení virtuálního pevného disku na webu Azure portal](./media/publishvm_021.png)
 
-3. Zkopírovat a vložit [šablonu JSON](./cpp-deploy-json-template.md) do editoru a klikněte na tlačítko **Uložit**. <br/>
-  ![Uložit šablonu nasazení virtuálního pevného disku na webu Azure portal](./media/publishvm_022.png)
+1. Zkopírovat a vložit [šablonu JSON](./cpp-deploy-json-template.md) do editoru a klikněte na tlačítko **Uložit**. <br/>
+   ![Uložit šablonu nasazení virtuálního pevného disku na webu Azure portal](./media/publishvm_022.png)
 
-4. Zadejte hodnoty parametrů pro zobrazených **vlastní nasazení** stránky vlastností.
+1. Zadejte hodnoty parametrů pro zobrazených **vlastní nasazení** stránky vlastností.
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
@@ -79,7 +79,7 @@ Po nasazení virtuálního počítače, jste připraveni [certifikaci vaší ima
    | URL VIRTUÁLNÍHO PEVNÉHO DISKU                     | Dokončení URL virtuálního pevného disku pro Disk s operačním systémem                                                     |
    |  |  |
             
-5. Po zadání těchto hodnot, klikněte na tlačítko **nákupní**. 
+1. Po zadání těchto hodnot, klikněte na tlačítko **nákupní**. 
 
 Azure se začne nasazení: vytvoří nový virtuální počítač s zadaný nespravovaný virtuálního pevného disku, v cestě zadané úložiště účtu.  Průběh na webu Azure Portal můžete sledovat kliknutím na **virtuálních počítačů** na levé straně na portálu.  Po vytvoření virtuálního počítače, stav se změní z `Starting` k `Running`. 
 

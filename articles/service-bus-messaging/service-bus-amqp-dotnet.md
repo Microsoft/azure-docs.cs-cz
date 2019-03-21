@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: f5713fe3333f291d8d28a6ef3df48572507661be
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 96d84b2328ffb83d5c1ea7218b17314a537fa45b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853200"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904554"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Použití služby Service Bus z .NET pomocí protokolu AMQP 1.0
 
@@ -63,7 +63,7 @@ Pro usnadnění vzájemná funkční spolupráce s klienty než .NET, používaj
 
 | Typ objektu text .NET | Typ mapované AMQP | Typ oddílu textu AMQP |
 | --- | --- | --- |
-| BOOL |Boolean |Hodnota AMQP |
+| bool |Boolean |Hodnota AMQP |
 | byte |ubyte |Hodnota AMQP |
 | ushort |ushort |Hodnota AMQP |
 | uint |uint |Hodnota AMQP |
@@ -79,13 +79,13 @@ Pro usnadnění vzájemná funkční spolupráce s klienty než .NET, používaj
 | DateTime |časové razítko |Hodnota AMQP |
 | Guid |Uuid |Hodnota AMQP |
 | Byte |Binární |Hodnota AMQP |
-| řetězec |řetězec |Hodnota AMQP |
+| string |string |Hodnota AMQP |
 | System.Collections.IList |list |Hodnota AMQP: položky obsažené v kolekci lze pouze ty, které jsou definovány v této tabulce. |
 | System.Array |pole |Hodnota AMQP: položky obsažené v kolekci lze pouze ty, které jsou definovány v této tabulce. |
 | System.Collections.IDictionary |map |Hodnota AMQP: položky obsažené v kolekci lze pouze ty, které jsou definovány v této tabulce. Poznámka: jsou podporovány pouze řetězec klíče. |
 | URI |Popisuje řetězec (viz následující tabulka) |Hodnota AMQP |
 | DateTimeOffset |Popisuje dlouho (viz následující tabulka) |Hodnota AMQP |
-| Časový interval |Popisuje dlouho (viz následující) |Hodnota AMQP |
+| TimeSpan |Popisuje dlouho (viz následující) |Hodnota AMQP |
 | Datový proud |Binární |Data protokolu AMQP (může být více). Části Data obsahují nezpracované bajty přečtené z objektu Stream. |
 | Druhý objekt |Binární |Data protokolu AMQP (může být více). Obsahuje serializovaná binární soubor objektu, který používá objektu DataContractSerializer nebo serializátor poskytnuté aplikací. |
 
@@ -93,7 +93,7 @@ Pro usnadnění vzájemná funkční spolupráce s klienty než .NET, používaj
 | --- | --- | --- |
 | URI |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |Uri.AbsoluteUri |
 | DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
-| Časový interval |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
+| TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
 
 ## <a name="behavioral-differences"></a>Behaviorální rozdíly
 
@@ -124,7 +124,7 @@ Jste připraveni na další informace? Naleznete pod těmito odkazy:
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azureservicebus-4.0.0
 [Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
 [OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
-[NuGet]: http://nuget.org/packages/WindowsAzure.ServiceBus/
+[NuGet]: https://nuget.org/packages/WindowsAzure.ServiceBus/
 [Azure portal]: https://portal.azure.com
 [Přehled protokolu AMQP Service Bus]: service-bus-amqp-overview.md
 [Průvodce protokolem AMQP 1.0]: service-bus-amqp-protocol-guide.md

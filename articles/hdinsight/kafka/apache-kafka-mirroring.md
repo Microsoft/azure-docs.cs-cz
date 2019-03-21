@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 0df548d6b3639ce2ce3c7c72695bb96cc6d0dc3d
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 0c37ad6de867c4abe4ebf0e6c7a40b5cf27c4541
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581024"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079635"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Replikace témat Apache Kafka s využitím Kafka v HDInsight pomocí Mirrormakeru
 
@@ -254,11 +254,11 @@ I když můžete vytvořit virtuální síť Azure a ručně clustery Kafka, je 
 
     * **--producer.config**: Určuje soubor, který obsahuje vlastnosti výrobce. Tyto vlastnosti se používají k vytváření producenta, který zapisuje do *cílové* clusteru Kafka.
 
-    * **seznam povolených adres –**: Seznam témat, která replikuje nástroje MirrorMaker z clusteru zdroje do cíle.
+    * **--whitelist**: Seznam témat, která replikuje nástroje MirrorMaker z clusteru zdroje do cíle.
 
     * **--num.streams**: Počet vláken příjemce pro vytvoření.
 
- Při spuštění nástroje MirrorMaker vrátit informace podobné následujícímu textu:
+   Při spuštění nástroje MirrorMaker vrátit informace podobné následujícímu textu:
 
     ```json
     {metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-3, security.protocol=PLAINTEXT}{metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-0, security.protocol=PLAINTEXT}

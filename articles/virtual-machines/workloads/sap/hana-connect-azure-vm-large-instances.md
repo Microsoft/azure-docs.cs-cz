@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9116dd8a27b268b656f688083032a127177d2d51
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 2628cafada47b2602b195c44d4b6f2e6b16012ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754556"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092765"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Připojení virtuálních počítačů Azure pro velké instance HANA
 
@@ -85,7 +85,7 @@ Představili už některé rozsahy IP adres, které jsou nezbytné pro nasazení
 
 - **Adresní prostor virtuální sítě**: **Adresní prostor virtuální sítě** se rozsahy IP adres, které můžete přiřadit parametr místo adres ve virtuálních sítích Azure. Tyto sítě připojit k prostředí velkou instanci SAP HANA.
 
- Doporučujeme vám, že tento parametr místo adresy je Víceřádkový hodnotu. Měla by obsahovat rozsahu podsítě virtuálních počítačů Azure a rozsahy podsítě brány Azure. Rozsah této podsítě se zobrazilo v předchozí grafiky. Musíte nepřekrývá s vaší on-premises nebo server fond IP adres nebo rozsahy adres ER P2P. 
+  Doporučujeme vám, že tento parametr místo adresy je Víceřádkový hodnotu. Měla by obsahovat rozsahu podsítě virtuálních počítačů Azure a rozsahy podsítě brány Azure. Rozsah této podsítě se zobrazilo v předchozí grafiky. Musíte nepřekrývá s vaší on-premises nebo server fond IP adres nebo rozsahy adres ER P2P. 
  
 Jak získat tyto rozsahy IP adres? 
 
@@ -108,7 +108,7 @@ Vaší podnikové síti týmu nebo poskytovali služeb, by měla poskytnout rozs
   
 - **Rozsah adres fondu IP serveru:** Tento rozsah IP adres se používá k jednotlivým IP adresu přiřadit k serverům velká instance HANA. Velikost doporučená podsítě je/24 je blok CIDR. V případě potřeby může být menší, s pouhými 64 IP adresami. Z tohoto rozsahu prvních 30 IP adresy jsou vyhrazené pro použití společností Microsoft. Ujistěte se, že při výběru velikosti oblasti účtu pro tuto skutečnost. Tento rozsah musí nepřekrývá s místním nebo dalších IP adres Azure adresy. Jak získáte tento rozsah IP adres Vaší podnikové síti týmu nebo poskytovali služeb, by měla poskytnout rozsah IP adres, který není aktuálně používán ve vaší síti. 
 
- **Tento rozsah je rozsah IP adres, které potřebuje k odeslání společnosti Microsoft, když s výzvou k počátečnímu nasazení**.
+  **Tento rozsah je rozsah IP adres, které potřebuje k odeslání společnosti Microsoft, když s výzvou k počátečnímu nasazení**.
  
 Budete muset definovat a plánování rozsahů IP adres, které bylo popsáno dříve. Však není nutné přenášet všechny z nich společnosti Microsoft. Rozsahy IP adres, které je třeba název společnosti Microsoft jsou:
 

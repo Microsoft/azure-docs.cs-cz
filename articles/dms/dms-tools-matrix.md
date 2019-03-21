@@ -3,20 +3,20 @@ title: Data služby a nástroje matice migrace – Azure | Dokumentace Microsoft
 description: Další informace o služby a nástroje jsou k dispozici pro migraci databáze a pro podporu různých fázích procesu migrace.
 services: database-migration
 author: HJToland3
-ms.author: rajpo
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: f62c3105674f741702c35e50ce4afe436f67918d
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 3b3bbe45c4850d1bb37a4d991e323d5f6d9a8a0a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792085"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180768"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>Služby a nástroje, které jsou k dispozici pro scénáře migrace dat
 

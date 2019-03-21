@@ -8,18 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/23/2017
 ms.author: adigan
-ms.openlocfilehash: 5ef9d61e880d3252eae2d8ef924ff39a5d2f6acf
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 639ccb2a0680793b50af52dc16c6d06505d5079b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497906"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899532"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery DPM (Data Protection Manager) pomocí PowerShellu
 Tento článek popisuje, jak pomocí prostředí PowerShell k instalaci Azure Backup na serveru DPM a Správa zálohování a obnovení.
 
 ## <a name="setting-up-the-powershell-environment"></a>Nastavení prostředí PowerShell
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 Před použitím prostředí PowerShell pro správu z aplikace Data Protection Manager zálohování do Azure, budete muset mít správné prostředí v prostředí PowerShell. Při spuštění relace Powershellu Ujistěte se, že spustíte následující příkaz k importu správné moduly a bylo možné správně odkazují na rutiny aplikace DPM:
 
@@ -37,14 +36,10 @@ Sample DPM scripts: Get-DPMSampleScript
 ```
 
 ## <a name="setup-and-registration"></a>Instalace a registrace
-Chcete-li začít:
 
-1. [Stáhněte si nejnovější PowerShell](https://github.com/Azure/azure-powershell/releases) (minimální požadovaná verze je: 1.0.0)
-2. Povolení rutin Azure Backup přepnutím na *AzureResourceManager* režimu s použitím **Switch-AzureMode** rutinu:
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-```
-PS C:\> Switch-AzureMode AzureResourceManager
-```
+Pokud chcete začít, [stáhnout nejnovější Azure PowerShell](/powershell/azure/install-az-ps).
 
 Následující nastavení a registrace úlohy je možné automatizovat pomocí prostředí PowerShell:
 
@@ -57,20 +52,20 @@ Následující nastavení a registrace úlohy je možné automatizovat pomocí p
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
 Následující kroky vás provedou vytvořením trezor služby Recovery Services. Trezor služby Recovery Services se liší od trezoru služby Backup.
 
-1. Pokud používáte Azure Backup poprvé, je nutné použít **Register-AzureRMResourceProvider** rutiny zaregistrujte zprostředkovatele služby Azure Recovery s vaším předplatným.
+1. Pokud používáte Azure Backup poprvé, je nutné použít **Register-AzResourceProvider** rutiny ve vašem předplatném zaregistrovat poskytovatele služby Azure Recovery.
 
     ```
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    PS C:\> Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 2. Trezor služby Recovery Services je prostředek ARM, proto musíte umístit do skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořte novou. Když vytváříte novou skupinu prostředků, zadejte název a umístění pro skupinu prostředků.  
 
     ```
-    PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "West US"
+    PS C:\> New-AzResourceGroup –Name "test-rg" –Location "West US"
     ```
-3. Použití **New-AzureRmRecoveryServicesVault** rutina pro vytvoření nového trezoru. Ujistěte se, k určení stejného umístění trezoru, protože byl použit pro skupinu prostředků.
+3. Použití **New-AzRecoveryServicesVault** rutina pro vytvoření nového trezoru. Ujistěte se, k určení stejného umístění trezoru, protože byl použit pro skupinu prostředků.
 
     ```
-    PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
+    PS C:\> New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
 4. Zadejte typ redundance úložiště se použije. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantního úložiště (GRS)](../storage/common/storage-redundancy-grs.md). Následující příklad ukazuje, že možnost - BackupStorageRedundancy pro testVault nastavená na GeoRedundant.
 
@@ -80,17 +75,17 @@ Následující kroky vás provedou vytvořením trezor služby Recovery Services
    >
 
     ```
-    PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testVault"
-    PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
+    PS C:\> $vault1 = Get-AzRecoveryServicesVault –Name "testVault"
+    PS C:\> Set-AzRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
 ## <a name="view-the-vaults-in-a-subscription"></a>Zobrazit tyto trezory v rámci předplatného
-Použití **Get-AzureRmRecoveryServicesVault** zobrazíte seznam všech trezorů v rámci aktuálního předplatného. Tento příkaz můžete použít ke kontrole, zda byl vytvořen nový trezor a zjistit, jaké trezory služby jsou dostupné v rámci předplatného.
+Použití **Get-AzRecoveryServicesVault** zobrazíte seznam všech trezorů v rámci aktuálního předplatného. Tento příkaz můžete použít ke kontrole, zda byl vytvořen nový trezor a zjistit, jaké trezory služby jsou dostupné v rámci předplatného.
 
-Spuštěním příkazu Get-AzureRmRecoveryServicesVault, a všech trezorů v předplatném jsou uvedeny.
+Spuštěním příkazu Get-AzRecoveryServicesVault, a všech trezorů v předplatném jsou uvedeny.
 
 ```
-PS C:\> Get-AzureRmRecoveryServicesVault
+PS C:\> Get-AzRecoveryServicesVault
 Name              : Contoso-vault
 ID                : /subscriptions/1234
 Type              : Microsoft.RecoveryServices/vaults
@@ -143,7 +138,7 @@ Po vytvoření trezoru služby Recovery Services, stáhněte si nejnovější ve
 
 ```
 PS C:\> $credspath = "C:\downloads"
-PS C:\> $credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
+PS C:\> $credsfilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
 PS C:\> $credsfilename
 C:\downloads\testvault\_Sun Apr 10 2016.VaultCredentials
 ```
@@ -252,7 +247,7 @@ Seznam serverů, na kterých agenta aplikace DPM je nainstalovaná a je spravov�
 PS C:\> $server = Get-ProductionServer -DPMServerName "TestingServer" | where {($_.servername) –contains “productionserver01”}
 ```
 
-Teď načíst seznam zdrojů dat v ```$server``` pomocí [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) rutiny. V tomto příkladu jsme svazku filtrování * D:\* , který chcete konfigurovat pro zálohování. Tento zdroj dat se pak přidá do skupiny ochrany pomocí [přidat DPMChildDatasource](https://technet.microsoft.com/library/hh881732) rutiny. Nezapomeňte použít *upravitelná* objekt skupiny ochrany ```$MPG``` doplnit.
+Teď načíst seznam zdrojů dat v ```$server``` pomocí [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) rutiny. V tomto příkladu jsme svazku filtrování *D:\\*  , který chcete konfigurovat pro zálohování. Tento zdroj dat se pak přidá do skupiny ochrany pomocí [přidat DPMChildDatasource](https://technet.microsoft.com/library/hh881732) rutiny. Nezapomeňte použít *upravitelná* objekt skupiny ochrany ```$MPG``` doplnit.
 
 ```
 PS C:\> $DS = Get-Datasource -ProductionServer $server -Inquire | where { $_.Name -contains “D:\” }

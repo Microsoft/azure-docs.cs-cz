@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd5d724583dd4682fb6c0b01e8ec11196936289b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 53f8ec8a6833446663d7f142deefd595eed13136
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211899"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116261"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Služba služba volá tuto identitu uživatele použijte delegovaný v tok On-Behalf-Of
 
@@ -63,12 +63,12 @@ Registrace služby střední vrstvy a klientskou aplikaci v Azure AD.
     1. Adresa URL přihlašování nebo adresa URL pro přesměrování v závislosti na typu aplikace, nastavte základní adresu URL.
     1. Vyberte **vytvořit** k vytvoření aplikace.
 1. Tajný kód klienta generovat před ukončením na webu Azure portal.
-    1. Na webu Azure Portal, vyberte aplikaci a vyberte **nastavení**.
-    1. Vyberte **klíče** v nabídce nastavení a přidejte klíč s délkou klíče buď jeden nebo dva roky.
-    1. Při ukládání této stránky na webu Azure portal zobrazí hodnotu klíče. Zkopírujte a uložte hodnotu klíče na bezpečném místě.
+   1. Na webu Azure Portal, vyberte aplikaci a vyberte **nastavení**.
+   1. Vyberte **klíče** v nabídce nastavení a přidejte klíč s délkou klíče buď jeden nebo dva roky.
+   1. Při ukládání této stránky na webu Azure portal zobrazí hodnotu klíče. Zkopírujte a uložte hodnotu klíče na bezpečném místě.
 
-    > [!IMPORTANT]
-    > Budete potřebovat klíč, který chcete nakonfigurovat nastavení aplikace ve vaší implementaci. Hodnota tohoto klíče se nezobrazí a není retrievable jiným způsobem. Poznamenejte si ho hned, jak je viditelný na webu Azure Portal.
+      > [!IMPORTANT]
+      > Budete potřebovat klíč, který chcete nakonfigurovat nastavení aplikace ve vaší implementaci. Hodnota tohoto klíče se nezobrazí a není retrievable jiným způsobem. Poznamenejte si ho hned, jak je viditelný na webu Azure Portal.
 
 ### <a name="register-the-client-application"></a>Registrace aplikace klienta
 

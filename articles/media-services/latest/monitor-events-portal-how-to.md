@@ -15,16 +15,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 4e6527bf115f327635a0b0fe187094dafb320598
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: d4592c93cb7969c45a107d7365a1b9dabf11f412
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380965"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884031"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Vytvořit a monitorovat události služby Media Services pomocí služby Event Grid pomocí webu Azure portal
 
-Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku použijete pro přihlášení k odběru událostí účtu Azure Media Services na webu Azure portal. Pak spustí událostí, abyste viděli výsledek. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. V tomto článku budeme události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
+Azure Event Grid je služba zpracování událostí pro cloud. Tato služba využívá [odběry událostí](../../event-grid/concepts.md#event-subscriptions) pro směrování zpráv událostí pro předplatitele. Media Services události obsahují všechny informace, které je potřeba reagovat na změny ve vašich datech. Události služby Media Services můžete identifikovat, protože vlastnost Typ události začíná řetězcem "Microsoft.Media.". Další informace najdete v tématu [schémata událostí služby Media Services](media-services-event-schemas.md).
+
+V tomto článku použijete pro přihlášení k odběru událostí účtu Azure Media Services na webu Azure portal. Pak spustí událostí, abyste viděli výsledek. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. V článku budeme události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
 Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
 
@@ -39,7 +41,7 @@ Než se přihlásíte k odběru událostí účtu Media Services, vytvoříme ko
 
 1. Vyberte **Nasadit do Azure** a nasaďte řešení do svého předplatného. Na webu Azure Portal zadejte hodnoty pro parametry.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. Dokončení nasazení může trvat několik minut. Po úspěšném nasazení si webovou aplikaci prohlédněte, abyste se ujistili, že funguje. Ve webovém prohlížeči přejděte na: `https://<your-site-name>.azurewebsites.net`
 

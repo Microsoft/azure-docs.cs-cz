@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 60ff63a049f225886d69c1a89a2930671e533d78
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: MT
+ms.openlocfilehash: fe3727c90819a96b7e1785362e557edd5cbbdf02
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910909"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199320"
 ---
 # <a name="install-and-use-presto-on-hadoop-based-hdinsight-clusters"></a>Nainstalovat a používat Presto na clusterech HDInsight se systémem Hadoop
 
@@ -42,11 +42,11 @@ Tato část vysvětluje, jak pomocí vzorového skriptu při vytvoření nového
 
 1. Spustit ke zřízení clusteru provedením kroků [vytvoření linuxových clusterech v HDInsight pomocí webu Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md). Ujistěte se, že vytváření clusteru s použitím **vlastní** clusteru vytváření toku. Cluster musí splňovat následující požadavky:
 
-    * Musí být clusteru Hadoop s HDInsight verze 3.6.
+   * Musí být clusteru Hadoop s HDInsight verze 3.6.
 
-    * Jako úložiště dat musí používat Azure Storage. Pomocí Presto v clusteru, který používá Azure Data Lake Storage jako možnost úložiště není dosud.
+   * Jako úložiště dat musí používat Azure Storage. Pomocí Presto v clusteru, který používá Azure Data Lake Storage jako možnost úložiště není dosud.
 
-    ![HDInsight, vlastní (velikost, nastavení, aplikace)](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
+     ![HDInsight, vlastní (velikost, nastavení, aplikace)](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
 
 2. V **upřesňující nastavení** vyberte **akcí skriptů**. Zadejte následující informace. Můžete také **nainstalovat Presto** možnost pro typ skriptu:
    
@@ -163,7 +163,6 @@ K přizpůsobení instalace, proveďte následující kroky:
 
 5. Vyčkat, než novou instanci, až bude připravená. Poznamenejte si adresu Presto koordinátor:
 
-
     `sudo slider registry --name presto1 --getexp presto`
 
 ## <a name="generate-benchmark-data-for-hdinsight-clusters-that-run-presto"></a>Generovat data srovnávacích testů pro clustery HDInsight se spuštěnou technologií Presto
@@ -176,8 +175,6 @@ Oborový standard pro měření výkonu mnoho systémů, podpora rozhodování, 
 * [Nainstalovat a používat rozhraní Hue v clusterech HDInsight Hadoop](hdinsight-hadoop-hue-linux.md). Odstín, který je webové uživatelské rozhraní, které usnadňuje vytvoření, spuštění a uložit Apache Pig a úloh Hive.
 
 * [Nainstalovat Apache Giraph v clusterech HDInsight Hadoop a použití Giraphu ke zpracování rozsáhlých grafů](hdinsight-hadoop-giraph-install-linux.md). Clustery založené na systému Hadoop HDInsight nainstalovat Giraph pomocí přizpůsobení clusteru. Giraph umožňuje zpracování grafů s použitím Hadoopu. Taky jde použít s Azure HDInsight.
-
-* [Nainstalovat a používat Apache Solr na clusterech HDInsight Hadoop](hdinsight-hadoop-solr-install-linux.md). Clustery založené na systému Hadoop HDInsight nainstalovat Solr pomocí přizpůsobení clusteru. S použitím Solr, můžete provádět operace výkonné vyhledávání na uložená data.
 
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md

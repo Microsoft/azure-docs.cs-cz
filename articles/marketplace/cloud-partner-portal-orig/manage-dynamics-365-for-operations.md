@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 41f3fd55be02364b4028642db9db1d3f47043afa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 93c70e038589667ae97acb86663a6179dcc81637
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245082"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877322"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>Jak vytvořit Dynamics 365 pro operace nabízejí přes portál Cloud Partner
 
@@ -31,7 +31,7 @@ Před publikováním nabídky jménem vydavatel účtu, jeden z uživatelé, kte
 
 Jakmile jsou splněné všechny požadavky, jste připravení začít vytváření vaší Dynamics 365 pro operace nabídku.
 
-1. Přihlaste se k [portál partnerů cloudu](http://cloudpartner.azure.com/).
+1. Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
 2. V levém navigačním panelu klikněte na \"+ nová nabídka\" a vyberte \"Dynamics 365 pro operace\".
 3. Nová nabídka \"Editor\" zobrazení je teď otevřené pro vás a jsme připraveni začít vytvářením obsahu.
 4. \"Forms\" jsou viditelné na levé straně v rámci, které je potřeba doplnit \"Editor\" zobrazení. Každý \"formuláře\" sestává ze sady polí, která se mají doplnit. Vyžaduje se pole označená červenou hvězdičkou (\*).
@@ -51,7 +51,7 @@ Formulář pro nastavení nabídky je základní formulář a zadejte nastavení
 
 Toto je jedinečný identifikátor nabídky v rámci profilu vydavatele. Toto ID se nebude zobrazovat v adresách URL produktu. Může se skládat jenom z malých alfanumerických znaků nebo pomlček (-). ID nesmí končit spojovníkem a nesmí být delší než 50 znaků. Toto pole je uzamčen, jakmile uvedete nabídky.
 
-Například pokud vydavatele contoso vydavatele vytvoří nabídka s ID nabídky *dynamics365 vzorku pro operace*, se zobrazí v AppSource jako \"https://appsource.microsoft.com/marketplace/apps/**contoso**.*Ukázka dynamics 365 pro operace* ? tab = přehled\"
+Například pokud vydavatele contoso vydavatele vytvoří nabídka s ID nabídky *dynamics365 vzorku pro operace*, se zobrazí v AppSource jako `https://appsource.microsoft.com/marketplace/apps/**contoso**.*sample-dynamics365 for operations*?tab=Overview\`.
 
 ### <a name="publisher-id"></a>ID vydavatele
 

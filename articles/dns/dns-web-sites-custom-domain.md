@@ -7,16 +7,16 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 1066a4f602fb3af1f10fc82026870a5b0497896b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 43df80e060ff698537f7fd65075006e6dfffe6c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764775"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117145"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Kurz: Vytvoření záznamů DNS v vlastní domény pro webovou aplikaci 
 
-Azure DNS můžete nakonfigurovat na hostování vlastní domény pro vaše webové aplikace. Můžete třeba vytvořit webovou aplikaci Azure a umožnit uživatelům přístup k ní prostřednictvím plně kvalifikovaného názvu domény (FQDN) www.contoso.com nebo contoso.com.
+Azure DNS můžete nakonfigurovat na hostování vlastní domény pro vaše webové aplikace. Například můžete vytvořit webovou aplikaci Azure a mají uživatelé přístup pomocí obou www\.contoso.com nebo contoso.com jako použitím plně kvalifikovaného názvu domény (FQDN).
 
 > [!NOTE]
 > V tomto kurzu se jako příklad používá doména contoso.com. Doménu contoso.com nahraďte vlastním názvem domény.

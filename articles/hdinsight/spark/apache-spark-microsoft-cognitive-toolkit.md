@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 76fc2c9a0864417e380471f8de59d148e0fbf7b4
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 093685ff2fa48799f0a91ee25727f5124dec6292
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651823"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225786"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Použití sady Microsoft Cognitive Toolkit hloubkového učení modelu s clusterem Azure HDInsight Spark
 
@@ -56,9 +56,9 @@ Microsoft Cognitive Toolkit můžete nainstalovat na clusteru Sparku pomocí skr
 
 V tomto článku jsme pomocí portálu pro instalaci této sady nástrojů, po vytvoření clusteru. Další způsoby, jak spustit vlastní skript, naleznete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
-### <a name="using-the-azure-portal"></a>Použití Portálu Azure
+### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
-Pokyny o tom, jak pomocí portálu Azure ke spuštění akcí skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](../hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation). Ujistěte se, že zadáte následující vstupy k instalaci sady Microsoft Cognitive Toolkit.
+Pokyny o tom, jak pomocí webu Azure portal ke spuštění akcí skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](../hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation). Ujistěte se, že zadáte následující vstupy k instalaci sady Microsoft Cognitive Toolkit.
 
 * Zadejte hodnotu pro název akce skriptu.
 
@@ -74,7 +74,7 @@ Microsoft Cognitive Toolkit pomocí clusteru Azure HDInsight Spark, je nutné na
 
 1. Naklonujte úložiště GitHub [ https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration ](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration). Pokyny ke klonování najdete v tématu [klonování úložiště](https://help.github.com/articles/cloning-a-repository/).
 
-2. Na webu Azure Portal otevřete okna clusteru Spark, který jste již zřídit, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na tlačítko **Poznámkový blok Jupyter**.
+2. Na webu Azure Portal, otevřete okna clusteru Spark, který jste již zřídit, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na tlačítko **Poznámkový blok Jupyter**.
 
     Můžete také spustit Poznámkový blok Jupyter tak, že přejdete na adresu URL `https://<clustername>.azurehdinsight.net/jupyter/`. Nahraďte \<Název_clusteru > s názvem vašeho clusteru HDInsight.
 

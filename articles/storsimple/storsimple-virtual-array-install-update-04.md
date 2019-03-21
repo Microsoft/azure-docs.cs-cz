@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: cd3fdec0e50d64af28306034e6e1086e67526b7d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b67fcb82bdcc94d7faeceedb7420a869e6578cad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251049"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007324"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>Instalace aktualizace 0.4 na StorSimple Virtual Array
 
@@ -48,7 +48,7 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Chcete-li stáhnout aktualizace nebo opravy hotfix
 
-1. Spustit aplikaci Internet Explorer a přejděte do [ http://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
+1. Spustit aplikaci Internet Explorer a přejděte do [ https://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
 
 2. Pokud na tomto počítači používáte Katalog služby Microsoft Update poprvé, po zobrazení výzvy k instalaci doplňku Katalog služby Microsoft Update klikněte na **Nainstalovat**.
 

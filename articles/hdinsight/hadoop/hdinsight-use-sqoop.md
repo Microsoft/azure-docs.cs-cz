@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 0a03bfe61da6a1de073401fca9c61f3212b9d0bb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ffded5705e61538a8bec886483a49705bb2298c1
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440093"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203026"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Použití Apache Sqoop se systémem Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -56,7 +56,7 @@ HDInsight cluster se dodává s ukázkovými daty. Můžete použít následují
 V tomto kurzu použijete k testování Sqoop import a export těmito dvěma datovými sadami.
 
 ## <a name="create-cluster-and-sql-database"></a>Vytvoření clusteru a SQL database
-V této části se dozvíte, jak vytvořit cluster, SQL Database a SQL database schémata pro spouštění kurzu pomocí webu Azure portal a šablony Azure Resource Manageru. Šablony lze nalézt v [šablony pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Šablony Resource Manageru volá bacpac balíčku pro nasazení schémata tabulek do služby SQL database.  Balíček bacpac se nachází v kontejneru objektů blob veřejný, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Pokud chcete použít u souborů bacpac kontejner privátní, použijte následující hodnoty v šabloně:
+V této části se dozvíte, jak vytvořit cluster, SQL Database a SQL database schémata pro spouštění kurzu pomocí webu Azure portal a šablony Azure Resource Manageru. Šablony lze nalézt v [šablony rychlý start Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Šablony Resource Manageru volá bacpac balíčku pro nasazení schémata tabulek do služby SQL database.  Balíček bacpac se nachází v kontejneru objektů blob veřejný, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Pokud chcete použít u souborů bacpac kontejner privátní, použijte následující hodnoty v šabloně:
    
 ```json
 "storageKeyType": "Primary",
@@ -627,7 +627,6 @@ Get-AzureRmHDInsightJobOutput `
 [hdinsight-provision]: ../hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
 [hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
-[hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md

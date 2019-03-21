@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/12/2018
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 9bd5ec3471fc3447d1e29d875c154793daf8e9e5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ab4aa2f37d5a883c83b8ee09b5de6551ebf13d2e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474026"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995157"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Zobrazit oznámení o stavu služby pomocí webu Azure portal
 
@@ -60,24 +60,24 @@ Properties.communicationId | Komunikace, ke kterému tato událost je přidruže
 ### <a name="details-on-service-health-level-information"></a>Podrobné informace o stavu úrovni služby
 
 **Požaduje se akce** (properties.incidentType == je vyžadována akce)
-    - Informativní – akce správce vyžaduje, aby se zabránilo dopadu na stávající služby
+- Informativní – akce správce vyžaduje, aby se zabránilo dopadu na stávající služby
     
 **Údržba** (properties.incidentType == udržování)
-    - Upozornění: Nouzový údržby
-    - Informační - standard plánovaná údržba
+- Upozornění: Nouzový údržby
+- Informační - standard plánovaná údržba
 
 **Information** (properties.incidentType == Information)
-    - Informační – správce může být nutné zabránilo dopadu na stávající služby
+- Informační – správce může být nutné zabránilo dopadu na stávající služby
 
 **Security** (properties.incidentType == Security)
-    - Chyba – rozšířených problémy s přístupem k více služeb napříč několika oblastmi mají vliv na široké škále zákazníků.
-    - Upozornění: problémy s přístupem k určité služby a/nebo konkrétní oblasti mají vliv na podmnožinu zákazníků.
-    - Informativní – problémy vliv na operace správy nebo latence, bez dopadu na dostupnost služeb.
+- Chyba – rozšířených problémy s přístupem k více služeb napříč několika oblastmi mají vliv na široké škále zákazníků.
+- Upozornění: problémy s přístupem k určité služby a/nebo konkrétní oblasti mají vliv na podmnožinu zákazníků.
+- Informativní – problémy vliv na operace správy nebo latence, bez dopadu na dostupnost služeb.
 
 **Služba problémy** (properties.incidentType == Incident)
-    - Chyba – rozšířených problémy s přístupem k více služeb napříč několika oblastmi mají vliv na široké škále zákazníků.
-    - Upozornění: problémy s přístupem k určité služby a/nebo konkrétní oblasti mají vliv na podmnožinu zákazníků.
-    - Informativní – problémy vliv na operace správy nebo latence, bez dopadu na dostupnost služeb.
+- Chyba – rozšířených problémy s přístupem k více služeb napříč několika oblastmi mají vliv na široké škále zákazníků.
+- Upozornění: problémy s přístupem k určité služby a/nebo konkrétní oblasti mají vliv na podmnožinu zákazníků.
+- Informativní – problémy vliv na operace správy nebo latence, bez dopadu na dostupnost služeb.
 
 
 ## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>Zobrazit oznámení o stavu služby na webu Azure Portal

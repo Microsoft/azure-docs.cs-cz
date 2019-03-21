@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: e8e9991f20481deee85a6d582582335eb98e3c24
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e1b4bf1f9fa956da7a7b0ca1521439002d1ce76b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815213"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993424"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql-server"></a>Optimalizace autovacuum na serveru Azure Database for PostgreSQL 
 Tento článek popisuje, jak efektivně optimalizovat autovacuum na serveru Azure Database for PostgreSQL.
@@ -43,6 +43,7 @@ Parametry konfigurace, které řídí autovacuum jsou založeny na odpovědi na 
 - Kolik by ho vyčištění po jeho spuštění?
 
 Tady jsou některé autovacuum konfigurační parametry, které můžete aktualizovat v závislosti na předchozí dotazy, společně s pokyny.
+
 Parametr|Popis|Výchozí hodnota
 ---|---|---
 autovacuum_vacuum_threshold|Určuje minimální počet aktualizovaných nebo odstraněných řazených kolekcí členů potřebné k aktivaci vakuová operace v jedné tabulce. Výchozí hodnota je 50 řazené kolekce členů. Tento parametr nastavte pouze v souboru postgresql.conf nebo na příkazovém řádku serveru. Přepíše nastavení pro jednotlivé tabulky, změňte parametry tabulky úložiště.|50
@@ -51,6 +52,7 @@ autovacuum_vacuum_cost_limit|Určuje mezní hodnoty nákladů používaných pro
 autovacuum_vacuum_cost_delay|Určuje hodnotu náklady na zpoždění používaných pro automatické vakuová operace. Pokud není zadána hodnota -1, pravidelně vacuum_cost_delay hodnota se používá. Výchozí hodnota je 20 MS. Tento parametr nastavte pouze v souboru postgresql.conf nebo na příkazovém řádku serveru. Přepíše nastavení pro jednotlivé tabulky, změňte parametry tabulky úložiště.|20 ms
 autovacuum_nap_time|Určuje že minimální zpoždění mezi autovacuum běží na libovolné dané databázi. V každé funkce round proces démon zkontroluje databáze a problémy s příkazy a takový a analyzovat podle potřeby pro tabulky v této databázi. Zpoždění se měří v sekundách a výchozí hodnota je jedna minuta (1 min.). Tento parametr nastavte pouze v souboru postgresql.conf nebo na příkazovém řádku serveru.|15 s
 autovacuum_max_workers|Určuje maximální počet procesů autovacuum, než Spouštěč autovacuum, který můžete spustit v daný okamžik. Výchozí hodnota je 3. Tento parametr lze nastavte pouze při spuštění serveru.|3
+
 Přepsání nastavení pro jednotlivé tabulky, změňte parametry tabulky úložiště. 
 
 ## <a name="autovacuum-cost"></a>Autovacuum náklady

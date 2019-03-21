@@ -7,20 +7,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 1930ca7406b6ef1b9fd20e1651bc031150dd952e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: d1751c47ad4507260d9f8d6ea44fcb32ed0e7338
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729539"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864724"
 ---
-# <a name="azure-data-factory-mapping-data-flow-filter-transformation"></a>Azure Data Factory mapování transformace filtr toku dat
+# <a name="azure-data-factoryfilter-transformation"></a>FactoryFilter transformaci dat Azure
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Filtr transformace poskytuje filtrování řádků. Sestavte výraz, který definuje podmínky filtru. Klikněte do textového pole pro spuštění Tvůrce výrazů. Uvnitř výrazu Tvůrce sestavení výraz filtru řídit, které řádky z aktuální datový proud můžou předávání (filtr) k další transformaci.
+Filtr transformace poskytuje filtrování řádků. Sestavte výraz, který definuje podmínky filtru. Klikněte do textového pole pro spuštění Tvůrce výrazů. Uvnitř výrazu Tvůrce sestavení výraz filtru řídit, které řádky z aktuální datový proud můžou předávání (filtr) k další transformaci. Představte si filtr transformace jako klauzuli WHERE příkazu SQL.
 
-Například filtr na sloupec loan_status:
+## <a name="filter-on-loanstatus-column"></a>Vyfiltrujte sloupec loan_status:
 
 ```
 in([‘Default’, ‘Charged Off’, ‘Fully Paid’], loan_status).
@@ -31,3 +31,7 @@ Vyfiltrujte sloupec pro rok v ukázce filmy:
 ```
 year > 1980
 ```
+
+## <a name="next-steps"></a>Další postup
+
+Sloupec filtrování transformace, zkuste [vyberte transformace](data-flow-select.md)

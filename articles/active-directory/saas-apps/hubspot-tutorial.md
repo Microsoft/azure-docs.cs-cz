@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26fd70b80dd512b530d367d57cd9fc04ec28f27b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8bbb307654d4aaf753a4a3284875dee4f5707f2a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211695"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901714"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Kurz: Integrace Azure Active Directory s HubSpot
 
@@ -187,7 +187,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -215,7 +215,7 @@ V případě HubSpot zřizování se ruční úlohy.
 
     ![Konfigurace jednotného přihlašování](./media/hubspot-tutorial/user2.png)
 
-5. Zadejte e-mailovou adresu uživatele, jako je **brittasimon@contoso.com** v **přidat e-mailu addess(es)** textového pole a klikněte na tlačítko **Další**.
+5. Zadejte e-mailovou adresu uživatele, jako je **brittasimon\@contoso.com** v **přidat e-mailu addess(es)** textového pole a klikněte na tlačítko **Další**.
 
     ![Konfigurace jednotného přihlašování](./media/hubspot-tutorial/user3.png)
 

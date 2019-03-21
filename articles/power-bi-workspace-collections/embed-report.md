@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 7a83a56a63fbd8a74e6a7e6d6f5158e3b5a8c2a4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: ecf73b08755f548c5506888a8113ad53fd8987ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232725"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877968"
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>Vložení sestavy do kolekce pracovních prostorů Power BI
 
@@ -157,4 +157,4 @@ Sestava bude automaticky vložen v závislosti na velikosti svého kontejneru. P
 [PowerBI-CSharp Git Repo](https://github.com/Microsoft/PowerBI-CSharp)  
 [Power BI uzlu úložiště Git](https://github.com/Microsoft/PowerBI-Node)  
 
-Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](http://community.powerbi.com/)
+Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](https://community.powerbi.com/)

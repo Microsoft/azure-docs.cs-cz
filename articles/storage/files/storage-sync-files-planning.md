@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 97508c05ea26df1aaae7f41738835380767c81d2
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: c032961bf89ba470a38ebccfd846659b080f9fab
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312711"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013220"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -132,6 +132,7 @@ Chcete-li zobrazit výsledky ve sdíleném svazku clusteru:
 - Místně připojený svazek naformátovaný systémem souborů NTFS.
 
 ### <a name="file-system-features"></a>Funkce systému souborů
+
 | Funkce | Podpora stavu | Poznámky |
 |---------|----------------|-------|
 | Seznamy řízení přístupu (ACL) | Plně podporované. | Seznamy ACL Windows jsou zachovány Azure File Sync a jsou vynucována ve Windows serveru na koncové body serveru. Seznamy ACL Windows (dosud nejsou) nepodporuje soubory Azure, pokud soubory jsou přístupné přímo v cloudu. |
@@ -148,6 +149,7 @@ Chcete-li zobrazit výsledky ve sdíleném svazku clusteru:
 > Podporují se jenom svazky systému souborů NTFS. ReFS, FAT, FAT32 a jiné systémy souborů nejsou podporovány.
 
 ### <a name="files-skipped"></a>Soubory přeskočen
+
 | Soubor nebo složku | Poznámka |
 |-|-|
 | Desktop.ini | Specifické pro systém souborů |

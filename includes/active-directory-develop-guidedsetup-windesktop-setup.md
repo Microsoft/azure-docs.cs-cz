@@ -4,7 +4,7 @@ description: zahrnout soubor
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 4dbc296729f9dd6efaab39457fcedc6d5f60c785
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2a7734f729c4b1db7e8c0b4571e8792373ee11ae
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "58125013"
+ms.locfileid: "58203178"
 ---
 ## <a name="set-up-your-project"></a>Nastavení projektu
 

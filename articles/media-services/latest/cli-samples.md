@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: seodec18
-ms.date: 02/21/2019
+ms.date: 03/11/2019
 ms.author: juliako
-ms.openlocfilehash: bbd57933993e22dd32b84f1d44175bb3b3d749c9
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: dee7f831562dc1f4b2478d13b204aab1d8455e1e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672420"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840626"
 ---
 # <a name="azure-cli-examples-for-azure-media-services"></a>Příklady Azure CLI pro službu Azure Media Services
 
@@ -30,13 +30,14 @@ Následující tabulka obsahuje odkazy na příklady Azure CLI pro službu Azure
 |**Škálování**||
 | [Rezervované jednotky médií škálování](media-reserved-units-cli-how-to.md)|Pro analýzu zvuku a videa analytických úloh, které jsou aktivovány Media Services v3 nebo Video Indexer důrazně doporučujeme pro účet zřídit s 10 použité položky S3. <br/>Tento skript ukazuje, jak pomocí rozhraní příkazového řádku můžete škálovat rezervované jednotky médií (použité položky).|
 |**Účet**||
-| [Vytvoření účtu Media Services](create-account-cli-how-to.md) | Vytvoří účet Azure Media Services. Také vytvoří instančního objektu, který lze použít pro přístup k rozhraní API můžete programově spravovat účet služby. |
+| [Vytvoření účtu Media Services](create-account-cli-how-to.md) | Tento skript vytvoří účet Azure Media Services. |
 | [Resetovat přihlašovací údaje k účtu](./scripts/cli-reset-account-credentials.md)|Resetování přihlašovacích údajů k účtu a získá zpět nastavení souboru app.config.|
 |**Prostředky**||
 | [Vytvoření prostředků](./scripts/cli-create-asset.md)|Vytvoří k Media Services Assetu nahrát obsah do.|
 | [Nahrát soubor](./scripts/cli-upload-file-asset.md)|Nahraje místní soubor do kontejneru úložiště.|
 | **Transformuje** a **úlohy**||
-| [Vytvoření transformace](./scripts/cli-create-transform.md)|Ukazuje postup vytvoření transformace. Transformace popisují jednoduchý pracovní postup úloh pro zpracování videosouborů nebo zvukových souborů a často se označují jako předpisy.<br/> Vždy byste měli zkontrolovat, zda už neexistuje transformace s požadovaným názvem a předpisem. Pokud ano, znovu použít. |
+| [Vytvoření transformace](./scripts/cli-create-transform.md)|Ukazuje postup vytvoření transformace. Transformace popisují jednoduchý pracovní postup úloh pro zpracování videosouborů nebo zvukových souborů a často se označují jako předpisy.<br/> Vždy byste měli zkontrolovat Pokud transformace s požadovaným názvem a "předpisu" již existuje. Pokud ano, znovu použít. |
+| [Kódování pomocí vlastní transformace](custom-preset-cli-howto.md) | Ukazuje, jak vytvářet vlastní přednastavení cílit na konkrétní požadavky scénáře nebo zařízení.|
 | [Vytváření úloh](./scripts/cli-create-jobs.md)|Odešle úlohu, která jednoduché kódování transformace pomocí adresy URL HTTPs.|
 | [Vytvoření EventGrid](./scripts/cli-create-event-grid.md)|Vytvoří odběr Event gridu úroveň pro účet pro změny stavu úlohy.|
 | **Doručování**||

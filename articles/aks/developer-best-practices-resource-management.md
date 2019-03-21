@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 50f55ca3b05a6902841f1b1268cfbde742a9d589
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b45c5abb66d927f247f62692f12bd9207958a3e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52428281"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181278"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro vývojáře aplikací ke správě prostředků ve službě Azure Kubernetes Service (AKS)
 
@@ -84,9 +84,9 @@ Tento integrované vývojové a testovací proces s mezerami Dev snižuje potře
 
 ## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>Pravidelně zjišťovat problémy s aplikací s využitím kube advisoru
 
-**Osvědčené postupy pro moduly** – pravidelně používat nejnovější verzi `kube-advisor` a detekujte problémy ve vašem clusteru. Pokud použijete kvóty prostředků v existujícím clusteru AKS, spusťte `kube-advisor` nejprve k vyhledání podů, které nemají definovaná omezení a požadavky prostředků.
+**Osvědčené postupy pro moduly** – pravidelně používat nejnovější verzi `kube-advisor` open source nástroj a detekujte problémy ve vašem clusteru. Pokud použijete kvóty prostředků v existujícím clusteru AKS, spusťte `kube-advisor` nejprve k vyhledání podů, které nemají definovaná omezení a požadavky prostředků.
 
-[Kube advisor] [ kube-advisor] nástroj vyhledá Kubernetes cluster, informuje o problémech, které najde. Jeden užitečné se identifikovat podů, které nemají omezení a požadavky na zdroje v místě.
+[Kube advisor] [ kube-advisor] nástroj je přidružené AKS opensourcový projekt, který prohledá Kubernetes cluster a zprávy o problémech, které nalezne. Jeden užitečné se identifikovat podů, které nemají omezení a požadavky na zdroje v místě.
 
 V clusteru AKS, který je hostitelem mnoho vývojových týmů a aplikace může být obtížné sledovat podů bez těchto prostředků požadavky a omezení sady. Jako osvědčený postup, pravidelně spouštět `kube-advisor` v clusterech služby AKS.
 

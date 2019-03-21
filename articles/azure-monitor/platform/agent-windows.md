@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/05/2019
+ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: d4204d4937b8eca2dcb3f656659f185f30c8bddf
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: d433a480165424e47d4d84e67e7fd02648ebe2d1
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755016"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223423"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Připojení počítačů s Windows ke službě Log Analytics v Azure
 
@@ -32,6 +32,10 @@ Může být agent nainstalovaný pomocí jedné z následujících metod. Větš
 * Azure Automation Desired State Configuration (DSC). Používání DSC ve službě Azure Automation pomocí skriptu pro počítače Windows už nasazená ve vašem prostředí.  
 * Skript prostředí PowerShell.
 * Šablona Resource Manageru pro virtuální počítače s Windows v místním ve službě Azure Stack.  
+
+>[!NOTE]
+>Azure Security Center (ASC) závisí na Microsoft Monitoring Agent (také označované jako agenta Log Analytics Windows) a bude nainstalovat a nakonfigurovat, aby sestavy do pracovního prostoru Log Analytics jako součást nasazení. ASC zahrnuje možnost automatické zřizování, který umožňuje automatickou instalaci agenta Log Analytics Windows na všech virtuálních počítačů ve vašem předplatném a nakonfiguruje ho, aby zprávy do konkrétního pracovního prostoru. Další informace o této možnosti najdete v tématu [povolit automatické zřizování agenta Log Analytics](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-microsoft-monitoring-agent-).
+>
 
 Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Windows](log-analytics-agent.md#supported-windows-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-agent.md#network-firewall-requirements).
 

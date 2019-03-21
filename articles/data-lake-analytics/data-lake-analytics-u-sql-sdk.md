@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: 6a73ef058a76152678099eca3f1bd15590b0b03d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 14908225e78b79cb748e712ae23643ddde4a4242
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238790"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089960"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Spuštění a testování U-SQL s Azure Data Lake U-SQL SDK
 
@@ -32,11 +32,11 @@ Data Lake U-SQL SDK vyžaduje následující závislosti:
 - [Microsoft .NET Framework 4.6 nebo novější](https://www.microsoft.com/download/details.aspx?id=17851).
 - Microsoft Visual C++ 14 a sada Windows SDK 10.0.10240.0 nebo novější (která je volána CppSDK v tomto článku). Existují dva způsoby, jak získat CppSDK:
 
-    - Nainstalujte [Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou). Ve složce Program Files – například C:\Program Files (x86) \Windows Kits\10\ budete mít \Windows Kits\10 složku. Také zjistíte verzi Windows 10 SDK v \Windows Kits\10\Lib. Pokud nevidíte těchto složek, přeinstalujte Visual Studio a je nutné vybrat během instalace Windows 10 SDK. Pokud to instalace sady Visual Studio, kompilátor místní U-SQL najdete ji automaticky.
+  - Nainstalujte [Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou). Ve složce Program Files – například C:\Program Files (x86) \Windows Kits\10\ budete mít \Windows Kits\10 složku. Také zjistíte verzi Windows 10 SDK v \Windows Kits\10\Lib. Pokud nevidíte těchto složek, přeinstalujte Visual Studio a je nutné vybrat během instalace Windows 10 SDK. Pokud to instalace sady Visual Studio, kompilátor místní U-SQL najdete ji automaticky.
 
     ![Data Lake Tools pro Visual Studio Windows 10 SDK místního spuštění](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-    - Nainstalujte [nástroje Data Lake pro Visual Studio](https://aka.ms/adltoolsvs). Můžete najít předpřipravenou Visual C++ a Windows SDK soubory na C:\Program Files (x86) \Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK. Místní kompilátor U-SQL v tomto případě nelze najít závislosti automaticky. Je třeba zadat cestu CppSDK pro něj. Můžete buď zkopírujte soubory jinam nebo použít to tak je.
+  - Nainstalujte [nástroje Data Lake pro Visual Studio](https://aka.ms/adltoolsvs). Můžete najít předpřipravenou Visual C++ a Windows SDK soubory na C:\Program Files (x86) \Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK. Místní kompilátor U-SQL v tomto případě nelze najít závislosti automaticky. Je třeba zadat cestu CppSDK pro něj. Můžete buď zkopírujte soubory jinam nebo použít to tak je.
 
 ## <a name="understand-basic-concepts"></a>Základní koncepce
 
@@ -67,7 +67,7 @@ Při místním spuštění skriptu U-SQL, do pracovního adresáře se vytvoří
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Hodnota hash řetězce verze modulu runtime|Stínové kopie soubory modulu runtime potřebné pro místní spuštění|
 | |Script_66AE4909AA0ED06C| |Název skriptu a hodnoty hash řetězce cesta ke skriptu|Výstupy kompilace a spuštění krok protokolování|
-| | |\_skript\_.abr|Výstup kompilátoru|Algebraický soubor|
+| | |\_script\_.abr|Výstup kompilátoru|Algebraický soubor|
 | | |\_ScopeCodeGen\_. *|Výstup kompilátoru|Vygenerovat spravovaný kód|
 | | |\_ScopeCodeGenEngine\_. *|Výstup kompilátoru|Generovaný nativní kód|
 | | |Odkazovaná sestavení|Odkaz na sestavení|Soubory odkazovaná sestavení|
@@ -223,7 +223,7 @@ Tady je příklad použití:
 
 Programovací rozhraní jsou umístěny v LocalRunHelper.exe. Můžete je integrovat funkce SDK U-SQL a C# rozhraní pro testování škálování místní test skript U-SQL. V tomto článku použiji standard jazyka C# projektu testování částí věnovaných ukázce používání těchto rozhraní k testování skript U-SQL.
 
-### <a name="step-1-create-c-unit-test-project-and-configuration"></a>Krok 1: Vytvořte projekt testu jednotek C# a konfigurace
+### <a name="step-1-create-c-unit-test-project-and-configuration"></a>Krok 1: Vytvoření C# testování částí projektu a konfigurace
 
 - Vytvořit projekt testování částí jazyka C# pomocí souboru > Nový > Projekt > Visual C# > Test > Projekt testů jednotek.
 - Přidáte LocalRunHelper.exe jako reference pro projekt. LocalRunHelper.exe nachází ve \build\runtime\LocalRunHelper.exe v balíčku Nuget.
@@ -240,7 +240,7 @@ Programovací rozhraní jsou umístěny v LocalRunHelper.exe. Můžete je integr
 
 - Nezapomeňte si zkopírovat všechny soubory závislosti v rámci NugetPackage\build\runtime\ do pracovního adresáře, který je obvykle v rámci ProjectFolder\bin\x64\Debug projektu.
 
-### <a name="step-2-create-u-sql-script-test-case"></a>Krok 2: Vytvoření testovacích případů skript U-SQL
+### <a name="step-2-create-u-sql-script-test-case"></a>Krok 2: Vytvoření testovacího případu skript U-SQL
 
 Tady je ukázkový kód pro testování skriptů U-SQL. Pro účely testování, je nutné připravit skripty, soubory očekávaný výstup a vstupní soubory.
 
@@ -332,7 +332,7 @@ LocalRunHelper.exe poskytuje programovací rozhraní pro místní kompilace U-SQ
 
 veřejné LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 
-|Parametr|Typ|Popis|
+|Parametr|Type|Popis|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|pro výstupní zprávy nastavte na hodnotu null, pomocí konzoly|
 
@@ -340,33 +340,33 @@ veřejné LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 
 |Vlastnost|Typ|Popis|
 |--------|----|-----------|
-|AlgebraPath|řetězec|Cesta k souboru algebraický (algebraický soubor je jedním z výsledků kompilace)|
-|CodeBehindReferences|řetězec|Pokud tento skript má další kódu na pozadí odkazy, zadejte cesty odděleny ";"|
-|CppSdkDir|řetězec|CppSDK adresáře|
-|CurrentDir|řetězec|Aktuální adresář|
-|Kořenová datová složka|řetězec|Kořenová cesta dat|
-|DebuggerMailPath|řetězec|Cesta k zásuvky pošty ladicího programu|
-|GenerateUdoRedirect|BOOL|Pokud chcete generovat načítání přesměrování přepsání konfigurace sestavení|
-|HasCodeBehind|BOOL|Pokud tento skript má kódu na pozadí|
-|InputDir|řetězec|Adresář pro vstupní data|
-|MessagePath|řetězec|Cesta k souboru s výpisem paměti zprávy|
-|OutputDir|řetězec|Adresář pro výstupní data|
+|AlgebraPath|string|Cesta k souboru algebraický (algebraický soubor je jedním z výsledků kompilace)|
+|CodeBehindReferences|string|Pokud tento skript má další kódu na pozadí odkazy, zadejte cesty odděleny ";"|
+|CppSdkDir|string|CppSDK adresáře|
+|CurrentDir|string|Aktuální adresář|
+|Kořenová datová složka|string|Kořenová cesta dat|
+|DebuggerMailPath|string|Cesta k zásuvky pošty ladicího programu|
+|GenerateUdoRedirect|bool|Pokud chcete generovat načítání přesměrování přepsání konfigurace sestavení|
+|HasCodeBehind|bool|Pokud tento skript má kódu na pozadí|
+|InputDir|string|Adresář pro vstupní data|
+|MessagePath|string|Cesta k souboru s výpisem paměti zprávy|
+|OutputDir|string|Adresář pro výstupní data|
 |Paralelismus|int|Paralelismus pro spuštění algebraický|
 |ParentPid|int|Identifikátor PID nadřazeného objektu, na kterém služba monitoruje ukončíte, nastavena na hodnotu 0 nebo záporné ignorovat|
-|ResultPath|řetězec|Cesta k souboru s výpisem paměti výsledek|
-|RuntimeDir|řetězec|Adresáře modulu runtime|
-|ScriptPath|řetězec|Kde najít skript|
-|Bez podstruktury|BOOL|Nedávná kompilace nebo ne|
-|Dočasný adresář|řetězec|Dočasný adresář|
-|UseDataBase|řetězec|Zadejte databázi pro účely registrace dočasného sestavení, ve výchozím nastavení hlavní s kódem|
-|WorkDir|řetězec|Upřednostňované pracovní adresář|
+|ResultPath|string|Cesta k souboru s výpisem paměti výsledek|
+|RuntimeDir|string|Adresáře modulu runtime|
+|ScriptPath|string|Kde najít skript|
+|Bez podstruktury|bool|Nedávná kompilace nebo ne|
+|Dočasný adresář|string|Dočasný adresář|
+|UseDataBase|string|Zadejte databázi pro účely registrace dočasného sestavení, ve výchozím nastavení hlavní s kódem|
+|WorkDir|string|Upřednostňované pracovní adresář|
 
 
 **Metoda**
 
-|Metoda|Popis|Vrátí|Parametr|
+|Metoda|Popis|Návrat|Parametr|
 |------|-----------|------|---------|
-|veřejné bool DoCompile()|Kompilace skriptu U-SQL|Hodnota TRUE v případě úspěchu| |
+|public bool DoCompile()|Kompilace skriptu U-SQL|Hodnota TRUE v případě úspěchu| |
 |veřejné bool DoExec()|Spuštění zkompilovaného výsledku|Hodnota TRUE v případě úspěchu| |
 |veřejné bool DoRun()|Spusťte skript U-SQL (kompilace a spuštění)|Hodnota TRUE v případě úspěchu| |
 |veřejné bool IsValidRuntimeDir (řetězec cesty)|Zkontrolujte, jestli dané cesty je cesta platná modulu runtime|Hodnota true pro platné|Cesta adresáře modulu runtime|
@@ -379,7 +379,7 @@ E_CSC_SYSTEM_INTERNAL: Vnitřní chyba! Nepovedlo se načíst soubor nebo sestav
 
 Zkontrolujte prosím následující:
 
-- Ujistěte se, že máte x64 prostředí. Cílová platforma sestavení a testovací prostředí by měl být x64, přečtěte si **krok 1: vytvoření C# testování projektu a konfigurace** výše.
+- Ujistěte se, že máte x64 prostředí. Cílová platforma sestavení a testovací prostředí by měl být x64, přečtěte si **krok 1: Vytvoření C# testování částí projektu a konfigurace** výše.
 - Ujistěte se, že jste zkopírovali všechny soubory závislosti v rámci NugetPackage\build\runtime\ do projektu pracovního adresáře.
 
 

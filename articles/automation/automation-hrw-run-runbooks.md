@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 35367a9ebc9ff09f40defd444f6ceb8ff54efe07
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: fab886de55cc524390093f7e7913c79f7af3fe78
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430280"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858132"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění runbooků v procesu Hybrid Runbook Worker
 
@@ -307,12 +307,8 @@ Podepsané sady runbook bude mít název `<runbook name>.asc`.
 
 Podepsané sady runbook můžete teď odešle do služby Azure Automation a je možné provést jako regulární sady runbook.
 
-## <a name="troubleshoot"></a>Řešení potíží
-
-Pokud vaše sady runbook nejsou úspěšně dokončit, zkontrolujte na Průvodce odstraňováním potíží [selhání spuštění sady runbook](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
-
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o různých metodách, které můžete použít ke spuštění sady runbook najdete v tématu [spuštění Runbooku ve službě Azure Automation](automation-starting-a-runbook.md).
 * Vysvětlení různé způsoby, jak pracovat s Powershellovými runbooky ve službě Azure Automation pomocí textového editoru, najdete v tématu [úpravy sady Runbook ve službě Azure Automation](automation-edit-textual-runbook.md)
-
+* Pokud vaše sady runbook nejsou úspěšně dokončit, zkontrolujte na Průvodce odstraňováním potíží [selhání spuštění sady runbook](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).

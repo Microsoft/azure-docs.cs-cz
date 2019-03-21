@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bc04afead8742c9f384287ecb8d33c54770456b6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ae984cc2e0f43b81b8aa2f08b3944886733c9054
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447383"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994639"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Jak nasadit robota Learner konverzace
 
@@ -45,7 +45,7 @@ Tady je postup získání ID modelu:
     npm run ui
     ```
 
-2. Otevřít v prohlížeči na http://localhost:5050 
+2. Otevřít v prohlížeči na `http://localhost:5050` 
 
 3. Klikněte na modelu konverzace Learner budete chtít získat ID
 
@@ -109,20 +109,20 @@ Níže jsou uvedeny podrobné pokyny pro nasazení do Azure Bot Learner konverza
 
 3. Na webu Azure Portal upravte prostředek Web App Bot, kterou jste právě vytvořili.
 
-    1. Klikněte na "Nastavení aplikace" navigační prvek na levé straně
-    1. Posuňte se dolů do části "Nastavení aplikace"
-    2. Přidejte tato nastavení:
+   1. Klikněte na "Nastavení aplikace" navigační prvek na levé straně
+   1. Posuňte se dolů do části "Nastavení aplikace"
+   2. Přidejte tato nastavení:
 
-        Proměnná prostředí | hodnota
-        --- | --- 
-        CONVERSATION_LEARNER_SERVICE_URI | https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/
-        CONVERSATION_LEARNER_MODEL_ID      | Aplikace identifikátor GUID získaný v uživatelském rozhraní Learner konverzace v části "nastavení" pro model >
-        LUIS_AUTHORING_KEY               | Vytváření klíč pro tento model LUIS
-        LUIS_SUBSCRIPTION_KEY            | Není požadováno, ale doporučené pro publikované robotů, abyste se vyhnuli použití vaší kvóty pro vytváření obsahu.
+       Proměnná prostředí | hodnota
+       --- | --- 
+       CONVERSATION_LEARNER_SERVICE_URI | https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/
+       CONVERSATION_LEARNER_MODEL_ID      | Aplikace identifikátor GUID získaný v uživatelském rozhraní Learner konverzace v části "nastavení" pro model >
+       LUIS_AUTHORING_KEY               | Vytváření klíč pro tento model LUIS
+       LUIS_SUBSCRIPTION_KEY            | Není požadováno, ale doporučené pro publikované robotů, abyste se vyhnuli použití vaší kvóty pro vytváření obsahu.
     
-    4. V horní části stránky klikněte na "uložit.
-    5. Otevřít navigační prvek "Sestavení" na levé straně
-    6. Klikněte na "Konfigurace průběžného nasazování" 
-    7. Klikněte na ikonu "Nastavení" v části nasazení
-    8. Klikněte na "Required nastavení"
-    9. Vyberte zdroj, kde je k dispozici bot kódu a konfigurace zdroje.
+   4. V horní části stránky klikněte na "uložit.
+   5. Otevřít navigační prvek "Sestavení" na levé straně
+   6. Klikněte na "Konfigurace průběžného nasazování" 
+   7. Klikněte na ikonu "Nastavení" v části nasazení
+   8. Klikněte na "Required nastavení"
+   9. Vyberte zdroj, kde je k dispozici bot kódu a konfigurace zdroje.

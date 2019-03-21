@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: pullabhk
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 50d766eed5800c58d0b0258b2be6637f139c542a
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 8d3e3257f16fe4e0f846c2268bfefc2771387de6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730965"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112496"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
@@ -92,9 +92,9 @@ Pokud je nakonfigurovaná oznámení, zobrazí se úvodní nebo úvodní e-mailu
 Pokud frekvence je nastavená na hodinový přehled a výstraha se vyvolá a vyřeší během hodiny, nebude součástí budoucích hodinový přehled.
 
 > [!NOTE]
->
-* Pokud destruktivní operace, jako **zastavení ochrany a odstraňte data** je provést, je vyvolána výstraha a odešle e-mail na vlastníky těchto předplatných, správci a spolusprávci i v případě, že oznámení nakonfigurovaná není pro obnovení služby trezor.
-* Konfigurace oznámení pro úspěšné úlohy používají [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
+> 
+> * Pokud destruktivní operace, jako **zastavení ochrany a odstraňte data** je provést, je vyvolána výstraha a odešle e-mail na vlastníky těchto předplatných, správci a spolusprávci i v případě, že oznámení nakonfigurovaná není pro obnovení služby trezor.
+> * Konfigurace oznámení pro úspěšné úlohy používají [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
 
 ## <a name="next-steps"></a>Další postup
 

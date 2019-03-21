@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: shvija
-ms.openlocfilehash: 6d307111d8c19324cb6daf82a234ff9128103fd2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9108c52529319288fba48dbad3c6f8aa6cb5f725
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763421"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850747"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Povolit sběr událostí pomocí Azure Event Hubs
 
@@ -47,8 +47,12 @@ Pro zachytávání dat do služby Azure Data Lake Store vytvoříte účet Data 
 
 ### <a name="create-an-azure-data-lake-store-account-and-folders"></a>Vytvoření účtu Azure Data Lake Store a složek
 
-1. Vytvořte účet Data Lake Store podle pokynů v tématu [Začínáme s Azure Data Lake Store s použitím webu Azure Portal](../data-lake-store/data-lake-store-get-started-portal.md).
+> [!NOTE]
+> Funkce Event Hubs Capture v současné době podporuje pouze Gen 1 z Azure Data Lake Store, ne 2. generace. 
+
+1. Vytvoření účtu Data Lake Store 1. generace, postupujte podle pokynů v [Začínáme s Azure Data Lake Store pomocí webu Azure portal](../data-lake-store/data-lake-store-get-started-portal.md).
 2. Postupujte podle pokynů v části [Přiřazení oprávnění ke službě Event Hubs](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs) a v rámci účtu Data Lake Store vytvořte složku, do které chcete zachytávat data ze služby Event Hubs, a službě Event Hubs přiřaďte oprávnění k zápisu dat do vašeho účtu Data Lake Store.  
+
 
 ### <a name="create-an-event-hub"></a>Vytvoření centra událostí
 

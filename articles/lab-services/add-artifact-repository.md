@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 85763a895b61d184db033c09a413cc897ef6eaa3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 42b59c8da9e66b0f749d067e3df867911c7108e9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551598"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106827"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Přidání úložiště artefaktů do testovacího prostředí v DevTest Labs
 DevTest Labs umožňuje určit artefakt, který chcete přidat do virtuálního počítače během vytváření virtuálního počítače nebo po vytvoření virtuálního počítače. Tento artefakt může být nástroje nebo aplikace, kterou chcete nainstalovat do virtuálního počítače. Artefakty jsou definovány v souboru JSON načíst z úložiště GitHub nebo VSTS Git. 
@@ -74,11 +74,11 @@ Tato část obsahuje postup pro přidání úložiště artefaktů do testovací
 
     ![Tlačítko Přidat úložiště](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. Na **úložišť** stránky, zadejte následující informace:
-  1. **Název**. Zadejte název úložiště.
-  2. **Adresa Url klonu Git**. Zadejte adresu URL klonu Git HTTPS, který jste si zkopírovali z Githubu nebo služby Azure DevOps.
-  3. **Větev**. Chcete-li získat vaše definice, zadejte větev.
-  4. **Token pat**. Zadejte osobní přístupový token, který jste předtím získali z Githubu nebo služby Azure DevOps.
-  5. **Cesty ke složkám**. Zadejte alespoň jedna cesta ke složce relativní adresa URL klonu, který obsahuje vaše artefakt nebo definice šablon Resource Manageru. Při zadávání podadresář, nezapomeňte že zahrnout lomítko cesta ke složce.
+   1. **Název**. Zadejte název úložiště.
+   2. **Adresa Url klonu Git**. Zadejte adresu URL klonu Git HTTPS, který jste si zkopírovali z Githubu nebo služby Azure DevOps.
+   3. **Větev**. Chcete-li získat vaše definice, zadejte větev.
+   4. **Token pat**. Zadejte osobní přístupový token, který jste předtím získali z Githubu nebo služby Azure DevOps.
+   5. **Cesty ke složkám**. Zadejte alespoň jedna cesta ke složce relativní adresa URL klonu, který obsahuje vaše artefakt nebo definice šablon Resource Manageru. Při zadávání podadresář, nezapomeňte že zahrnout lomítko cesta ke složce.
 
         ![Oblast úložiště](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
 6. Vyberte **Uložit**.
