@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/23/2018
+ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 93e1904862af7eaad395bf14b0d09555d9d1d2ab
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: MT
+ms.openlocfilehash: 9b205dea0d6de6469847e8008010a3a2c9d19956
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990131"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113125"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Pokyny k návrhu pro použití replikované tabulky ve službě Azure SQL Data Warehouse
 Tento článek obsahuje doporučení pro navrhování replikované tabulky ve schématu SQL Data Warehouse. Ke zlepšení výkonu dotazů zmenšením složitost přesunu a dotazování dat pomocí těchto doporučení.
@@ -32,22 +32,23 @@ Jako součást návrh tabulky zjistěte, co nejvíc o vašich datech a jak dotaz
 - Musím tabulkami faktů a dimenzí v datovém skladu?   
 
 ## <a name="what-is-a-replicated-table"></a>Co je replikované tabulky?
-Replikované tabulky má úplnou kopii tabulky, které jsou dostupné na jednotlivých výpočetních uzlech. Replikuje tabulku eliminuje nutnost provádět přenos dat mezi výpočetní uzly před spojení nebo agregace. Protože tabulka má několik kopií, replikované tabulky fungují lépe, když velikost tabulky je menší než 2 GB komprimované.
+Replikované tabulky má úplnou kopii tabulky, které jsou dostupné na jednotlivých výpočetních uzlech. Replikuje tabulku eliminuje nutnost provádět přenos dat mezi výpočetní uzly před spojení nebo agregace. Protože tabulka má několik kopií, replikované tabulky fungují lépe, když velikost tabulky je menší než 2 GB komprimované.  2 GB není pevný limit.  Pokud data jsou statická a nezmění, můžete replikovat větší tabulky.
 
 Následující diagram znázorňuje replikované tabulky, které je dostupné na jednotlivých výpočetních uzlech. Ve službě SQL Data Warehouse replikované tabulce zkopírován plně distribuční databázi na jednotlivých výpočetních uzlech. 
 
 ![Replikované tabulky](media/guidance-for-using-replicated-tables/replicated-table.png "replikované tabulky")  
 
-Replikovaných tabulkách fungují dobře u malé tabulky dimenzí v hvězdicovém schématu. Tabulky dimenzí se obvykle velikosti, která je vhodná pro ukládání a správě více kopií. Dimenze ukládat popisný data, která se mění pomalu, jako je například jméno zákazníka a adresy a podrobnosti o produktu. Pomalu se měnící charakteru dat vede k méně znovu sestaví replikované tabulky. 
+Replikovaných tabulkách fungují dobře u tabulky dimenzí v hvězdicovém schématu. Tabulky dimenzí jsou běžně propojovány s tabulky faktů, které jsou distribuovány jinak než v tabulce dimenze.  Dimenze jsou obvykle velikosti, která je vhodná pro ukládání a správě více kopií. Dimenze ukládat popisný data, která se mění pomalu, jako je například jméno zákazníka a adresy a podrobnosti o produktu. Pomalu se měnící charakteru dat vede k méně údržby replikované tabulky. 
 
 Zvažte použití replikované tabulky, když:
 
 - Velikost tabulky na disku je menší než 2 GB, bez ohledu na počet řádků. Pokud chcete najít velikost tabulky, můžete použít [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) příkaz: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`. 
 - Ve spojení, které by jinak vyžadovaly přesun dat se používá v tabulce. Při spojování tabulek, které nejsou distribuovány ve stejném sloupci, jako je například tabulku hash distribuovat do kruhové dotazování tabulky, přesun dat je předpokladem pro dokončení dotazu.  Pokud některou z tabulek je malá, vezměte v úvahu replikované tabulky. Doporučujeme používat místo tabulek kruhového ve většině případů replikované tabulky. Pokud chcete zobrazit operace přesunu dat v plány dotazů, použijte [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql).  BroadcastMoveOperation je typické datové operace přesunu, který jde je eliminovat pomocí replikované tabulky.  
-  Replikované tabulky nemusí poskytovat nejlepší výkon dotazů při:
+ 
+Replikované tabulky nemusí poskytovat nejlepší výkon dotazů při:
 
 - Tabulka obsahuje často vložení, aktualizace a odstranění operace. Tyto operace manipulace s jazyk (DML) dat vyžadovat opětovné vytvoření replikované tabulky. Znovu sestavit často může způsobit snížení výkonu.
-- Často je škálovat datový sklad. Počet výpočetních uzlů, které s sebou nese náklady opětovné sestavení datového skladu škálování změní.
+- Často je škálovat datový sklad. Počet výpočetních uzlů, které s sebou nese náklady replikovanou tabulku znovu sestavit datový sklad škálování změní.
 - Tabulka obsahuje velký počet sloupců, ale operace s daty obvykle přístup pouze malý počet sloupců. V tomto scénáři, namísto replikace celou tabulku může být efektivnější distribuovat v tabulce a pak vytvořit index pro často používané sloupce. Když dotaz potřebuje přesun dat, SQL Data Warehouse pouze přesouvá data pro požadované sloupce. 
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>Pomocí jednoduchého dotazu predikáty replikované tabulky
@@ -102,7 +103,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 Replikované tabulky. nevyžaduje žádné přesunu dat pro spojení, protože celá tabulka je již k dispozici na jednotlivých výpočetních uzlech. Pokud tabulky dimenzí distribuované kruhové dotazování, spojení zkopíruje tabulky dimenzí v plné výši na každém výpočetním uzlu. Plán dotazu pro přesun dat, obsahuje operaci volat BroadcastMoveOperation. Tento typ operace přesunu dat zpomalí výkon dotazů a vyloučit pomocí replikované tabulky. Chcete-li zobrazit kroky plán dotazu, použijte [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) zobrazení katalogu systému. 
 
 Například v následující dotaz proti schématu AdventureWorks ` FactInternetSales` je tabulka hash distribuován. `DimDate` a `DimSalesTerritory` menší tabulky dimenze. Tento dotaz vrátí celkový prodej v Severní Americe fiskálního roku 2004:
- 
+ 
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)
 FROM dbo.FactInternetSales s
@@ -138,7 +139,7 @@ Sestavení se neodehrává ihned poté, co byla změněna data. Místo toho sest
 
 ### <a name="use-indexes-conservatively"></a>Konzervativní pomocí indexů
 Standardní indexování postupy platí pro replikované tabulky. SQL Data Warehouse znovu sestaví každou replikovanou tabulku indexu jako součást sestavení. Indexy používejte, pouze pokud výkonový zisk plynoucí větší váhu než náklady na opětovné sestavení indexů.  
- 
+ 
 ### <a name="batch-data-loads"></a>Načtení dat služby batch
 Při načítání dat do replikované tabulky, zkuste minimalizování znovu sestaví dávkování zatížení společně. Provádění dávkových zatížení před spuštěním příkazů select.
 
@@ -170,20 +171,20 @@ Tento dotaz používá [sys.pdw_replicated_table_cache_state](/sql/relational-da
 ```sql 
 SELECT [ReplicatedTable] = t.[name]
   FROM sys.tables t  
-  JOIN sys.pdw_replicated_table_cache_state c  
-    ON c.object_id = t.object_id 
-  JOIN sys.pdw_table_distribution_properties p 
-    ON p.object_id = t.object_id 
+  JOIN sys.pdw_replicated_table_cache_state c  
+    ON c.object_id = t.object_id 
+  JOIN sys.pdw_table_distribution_properties p 
+    ON p.object_id = t.object_id 
   WHERE c.[state] = 'NotReady'
     AND p.[distribution_policy_desc] = 'REPLICATE'
 ```
- 
+ 
 Spustit opětovné sestavení, že spustíte následující příkaz pro každou tabulku v předchozím výstupu. 
 
 ```sql
 SELECT TOP 1 * FROM [ReplicatedTable]
 ``` 
- 
+ 
 ## <a name="next-steps"></a>Další postup 
 K vytvoření replikované tabulky, použijte jednu z těchto příkazů:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 9992faa11585d49d3024e00338b4c1dc09da9195
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: c27244af6da01163fa9ab554b6b9c1d9c99bab23
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726664"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104569"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrovat data z StorSimple 5000 – 7000 series do Azure File Sync
 
@@ -57,7 +57,7 @@ Tady najdete požadavky migrace pro starší verze zařízení řady 5000 a 7000
 - Hostitel má dostatečnou místní úložiště pro uložení vašich dat místně uložených v mezipaměti.
 - Vlastník úroveň přístupu k předplatnému Azure, který použijete k nasazení služby Azure File Sync. Při vytváření koncového bodu cloudu pro vaši skupinu synchronizace, pokud máte vlastníka nebo oprávnění na úrovni správce, může docházet k problémům.
 - Přístup k [účet úložiště pro obecné účely v2](https://docs.microsoft.com/azure/storage/common/storage-account-overview) s sdílené složky Azure, který chcete synchronizovat. Další informace najdete v článku o [vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
- - Jak [vytvořit sdílenou složku Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
+  - Jak [vytvořit sdílenou složku Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 
 ## <a name="migration-process"></a>Proces migrace
 
