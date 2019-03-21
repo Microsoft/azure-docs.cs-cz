@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2018
 ms.author: rkarlin
-ms.openlocfilehash: 0a8680fbc8a3a051906f223d8b2476891c92d110
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: e3b4da1c1d835e9d630c000055af058aa7b45968
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888187"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109184"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Správa doporučení zabezpečení v Azure Security Center
 Tento dokument vás provede postupy použijte doporučení ve službě Azure Security Center k ochraně vašich prostředků Azure.
@@ -68,10 +68,10 @@ Můžete filtrovat doporučení. Chcete-li filtrovat doporučení, vyberte **fil
 
 > [!NOTE]
 > Chcete se dozvědět [klasické modely nasazení a modely nasazení Resource Manager](../azure-classic-rm.md) pro prostředky Azure.
->
->
-### <a name="apply-recommendations"></a>Použití doporučení
-Po kontrole všech doporučení, rozhodněte, které ten, který jste měli nejdřív použít. Doporučujeme používat hodnocení závažnosti, protože parametr hlavní k vyhodnocení, které doporučení bude použito první.
+> 
+> 
+> ### <a name="apply-recommendations"></a>Použití doporučení
+> Po kontrole všech doporučení, rozhodněte, které ten, který jste měli nejdřív použít. Doporučujeme používat hodnocení závažnosti, protože parametr hlavní k vyhodnocení, které doporučení bude použito první.
 
 
 

@@ -17,12 +17,12 @@ ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 0fb3e9cd193e570a965d6bbd3e16c86dc39de350
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e8d3653049b0160fac155ebc49329c17cb27224f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984269"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014384"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>Nasazení ASDK z příkazového řádku
 ASDK je vývoj a testování prostředí, které můžete nasadit k vyhodnocení a k předvedení funkcí služby Azure Stack a služeb. K jeho získání pracovat, musíte připravit prostředí hardwaru a spustit některé skripty (bude to trvat i několik hodin). Potom můžete přihlásit na portály správce a uživatele chcete začít používat Azure Stack.
@@ -138,6 +138,7 @@ Pokud vaše prostředí nemá server DHCP, je nutné zahrnout další parametry 
 ```
 
 ### <a name="asdk-installazurestackpocps1-optional-parameters"></a>Volitelné parametry ASDK InstallAzureStackPOC.ps1
+
 |Parametr|Požadované a volitelné|Popis|
 |-----|-----|-----|
 |AdminPassword|Požaduje se|Nastaví účet místního správce a všechny další uživatelské účty na všech virtuálních počítačích vytvořených jako součást nasazení vývojové sady. Toto heslo musí odpovídat aktuální heslo místního správce na hostiteli.|

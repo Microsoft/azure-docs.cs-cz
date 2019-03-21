@@ -9,19 +9,19 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 01aa3d45d3b168c67603861a0a947026d4f2e08c
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 0a3fd2cc66a066d2790d2e12822e3246dc3db382
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650882"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898869"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 Tento článek popisuje různé typy výstupy, které jsou k dispozici pro úlohy Azure Stream Analytics. Výstupy umožňují ukládat a uložit výsledky úlohy Stream Analytics. Pomocí výstupní data, můžete provést další obchodní analýzy a skladování dat vaše data.
 
 Při návrhu dotazu Stream Analytics, odkazovat na název výstupu pomocí [klauzule INTO](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics). Můžete použít jeden výstup na úlohu nebo více výstupů na úlohu streamování, pokud potřebujete tím, že poskytuje více klauzulí INTO v dotazu.
 
-K vytváření, úpravám a testovací úlohy Stream Analytics výstupy, můžete použít [webu Azure portal](stream-analytics-quick-create-portal.md#configure-job-output), [prostředí Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [rozhraní REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output), a [sady Visual Studio](stream-analytics-quick-create-vs.md).
+K vytváření, úpravám a testovací úlohy Stream Analytics výstupy, můžete použít [webu Azure portal](stream-analytics-quick-create-portal.md#configure-job-output), [prostředí Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [rozhraní .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [rozhraní REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output), a [sady Visual Studio](stream-analytics-quick-create-vs.md).
 
 Některé typy podporu výstupy [dělení](#partitioning), a [výstup velikosti dávky](#output-batch-size) umožňuje optimalizovat propustnost se liší.
 
@@ -169,7 +169,7 @@ Azure Stream Analytics aktualizuje datový model dynamicky za běhu, pokud se zm
 Tato tabulka popisuje převody typů dat z [Stream Analytics datové typy](https://msdn.microsoft.com/library/azure/dn835065.aspx) na napájení BIs [typy Entity Data Model (EDM)](https://powerbi.microsoft.com/documentation/powerbi-developer-walkthrough-push-data/) Pokud neexistuje datová sada POWER BI a tabulky.
 
 Ze služby Stream Analytics | Do Power BI
------|-----|------------
+-----|-----
 bigint | Int64
 nvarchar(max) | Řetězec
 datetime | Datum a čas
@@ -186,7 +186,7 @@ Předchozí nebo aktuální | Int64 | Řetězec | Datum a čas | Double
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | Řetězec | Řetězec | Double
 Double | Double | Řetězec | Řetězec | Double
-Řetězec | Řetězec | Řetězec | Řetězec |  | Řetězec |
+Řetězec | Řetězec | Řetězec | Řetězec | Řetězec 
 Datum a čas | Řetězec | Řetězec |  Datum a čas | Řetězec
 
 
@@ -261,6 +261,7 @@ Výstup Azure Cosmos DB ze Stream Analytics není aktuálně dostupná v oblaste
 > Další rozhraní API služby Azure Cosmos DB se zatím nepodporují. Pokud bod Azure Stream Analytics k účtům Azure Cosmos DB vytvořené pomocí jiných rozhraní API, nemusí být data uložená správně.
 
 Následující tabulka popisuje vlastnosti pro vytvoření výstup Azure Cosmos DB.
+
 | Název vlastnosti | description |
 | --- | --- |
 | Alias pro výstup | Alias pro najdete na tomto výstup v dotazu Stream Analytics. |
@@ -331,7 +332,7 @@ Následující tabulka popisuje některé důležité informace pro výstup do d
 
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
-
+> 
 > [Rychlé zprovoznění: Vytvoření úlohy Stream Analytics pomocí webu Azure portal](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->

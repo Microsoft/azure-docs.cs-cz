@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d574f62a51b8aed7acbd1ba7f8b427395add854a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1ee409bc9e4ad60602ddffd3d1896baf09df52da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454126"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854785"
 ---
 # <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Úvodní úlohy pro projekt vědeckého zpracování týmových dat
 
@@ -126,11 +126,11 @@ V tomto příkladu jsme provedli následující:
 
 Pokud používáte Azure DevOps jako platformu pro hosting kódu, obvykle *SSH adresu URL úložiště šablon projektu* je:
 
-***SSH: / /\<název služby Azure DevOps\>@\<název služby Azure DevOps\>.visualstudio.com:22/\<svůj název projektu > /_git/\<šablony projektu Název úložiště\>.*** 
+***SSH: / /\<název služby Azure DevOps\>\@\<název služby Azure DevOps\>.visualstudio.com:22/\<svůj název projektu > /_git/\<šablony projektu Název úložiště\>.*** 
 
 V tomto příkladu jsme provedli následující:
 
-***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/MyTeamProjectTemplate***. 
+***ssh://mysamplegroup\@mysamplegroup.visualstudio.com:22/MyTeam/_git/MyTeamProjectTemplate***. 
 
 ### <a name="clone-dsproject1-repository-r5-to-a-directory-d5-on-your-local-machine"></a>Naklonujte úložiště DSProject1 (R5) do adresáře (D5) na místním počítači
 
@@ -150,7 +150,7 @@ Pokud používáte Azure DevOps jako platformu pro hosting kódu, obvykle _adres
 
 ![10](./media/project-lead-tasks/project-leads-10-clone-project-repository-linux.png)
 
-Pokud používáte Azure DevOps jako platformu pro hosting kódu, obvykle _adresu URL SSH úložiště projektu_ je _ssh: / / < název služby Azure DevOps\>@< název služby Azure DevOps\>. VisualStudio.com:22/<Your Project Name>/\_git / < název vašeho projektu úložiště\>. V tomto příkladu máme ***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1***.
+Pokud používáte Azure DevOps jako platformu pro hosting kódu, obvykle _adresu URL SSH úložiště projektu_ je _ssh: / / < název služby Azure DevOps\>@< název služby Azure DevOps\>. VisualStudio.com:22/<Your Project Name>/\_git / < název vašeho projektu úložiště\>. V tomto příkladu máme ***ssh://mysamplegroup\@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1***.
 
 ### <a name="copy-contents-of-d3-to-d5"></a>Zkopírujte obsah D3 D5 
 

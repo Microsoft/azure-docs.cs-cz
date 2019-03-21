@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 86976263c54f40c370a2bc8cab426f3e413442f7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 48afb867a5455ffea10f8a74b1fff2c2b7f361ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546244"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849750"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(NEPOUŽÍVANÉ) Použití konceptu s Azure Container Service a Azure Container Registry k sestavení a nasazení aplikace do Kubernetes
 
@@ -31,7 +31,7 @@ Draft můžete používat s libovolným registrem imagí Dockeru a jakýmkoli cl
 ## <a name="create-an-azure-container-registry"></a>Vytvoření služby Azure Container Registry
 Můžete snadno [vytvořit novou službu Azure Container Registry](../../container-registry/container-registry-get-started-azure-cli.md), ale postup je následující:
 
-1. Vytvořte skupinu prostředků Azure pro správu registru Azure Container Registry a clusteru Kubernetes ve službě ACS.
+1. Vytvořte skupinu prostředků Azure ke správě vašeho registru ACR a cluster Kubernetes ve službě ACS.
       ```azurecli
       az group create --name draft --location eastus
       ```
@@ -106,11 +106,11 @@ Když teď máte cluster, můžete importovat přihlašovací údaje pomocí př
 1. Stáhněte si nástroje draft pro vaše prostředí na https://github.com/Azure/draft/releases a instalovat do vaší cesty tak, aby tento příkaz můžete použít.
 2. Stáhněte si helm pro vaše prostředí na https://github.com/kubernetes/helm/releases a [tak, že příkaz je možné ji nainstalovat do vaší cesty](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
 3. Nakonfigurujte Draft pro použití vašeho registru a vytvoření subdomény pro každý diagram Helmu, který vytvoří. Ke konfiguraci nástroje Draft potřebujete:
-  - Název služby Azure Container Registry (v tomto příkladu `draftacsdemo`).
-  - Klíč registru nebo heslo získané příkazem `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`.
+   - Název služby Azure Container Registry (v tomto příkladu `draftacsdemo`).
+   - Klíč registru nebo heslo získané příkazem `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`.
 
-  Volání `draft init` a proces konfigurace vás vyzve k zadání výše uvedených hodnot, Všimněte si, že formát adresy URL pro adresu URL registru je název registru (v tomto příkladu `draftacsdemo`) plus `.azurecr.io`. Vaše uživatelské jméno je název registru sama o sobě. Proces při prvním spuštění vypadá asi takto:
- ```bash
+   Volání `draft init` a proces konfigurace vás vyzve k zadání výše uvedených hodnot, Všimněte si, že formát adresy URL pro adresu URL registru je název registru (v tomto příkladu `draftacsdemo`) plus `.azurecr.io`. Vaše uživatelské jméno je název registru sama o sobě. Proces při prvním spuštění vypadá asi takto:
+   ```bash
     $ draft init
     Creating /home/ralph/.draft 
     Creating /home/ralph/.draft/plugins 
@@ -132,7 +132,7 @@ Když teď máte cluster, můžete importovat přihlašovací údaje pomocí př
     3. Enter your password: 
     Draft has been installed into your Kubernetes Cluster.
     Happy Sailing!
-```
+   ```
 
 Nyní jste připraveni nasadit aplikaci.
 
@@ -224,7 +224,7 @@ Váš poskytovatel domény má vlastní způsob přiřazování serverů DNS. Po
     ```
 
 2. Vytvořte zónu DNS pro vaši doménu.
-Pomocí příkazu [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) získejte názvové servery pro delegování řízení DNS do Azure DNS pro vaši doménu.
+   Pomocí příkazu [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) získejte názvové servery pro delegování řízení DNS do Azure DNS pro vaši doménu.
     ```azurecli
     az network dns zone create --resource-group squillace.io --name squillace.io
     {
@@ -247,12 +247,12 @@ Pomocí příkazu [az network dns zone create](/cli/azure/network/dns/zone#az-ne
     ```
 3. Přidejte získané servery DNS k poskytovateli vaší domény nasazení – to vám umožní použít Azure DNS ke směrování vaší domény, jak budete chtít. Způsob, jak to provést, se liší podle domény zadat; [delegovat názvové servery vaší domény do Azure DNS](../../dns/dns-delegate-domain-azure-dns.md) obsahuje některé podrobnosti, které byste měli vědět. 
 4. Jakmile se vaše doména byla přenesena do Azure DNS, vytvoří položku record-set A pro mapování domény nasazení na `ingress` IP z kroku 2 v předchozí části.
-  ```azurecli
-  az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*.draft' -g squillace.io -z squillace.io
-  ```
-Výstup by měl vypadat asi takto:
-  ```json
-  {
+   ```azurecli
+   az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*.draft' -g squillace.io -z squillace.io
+   ```
+   Výstup by měl vypadat asi takto:
+   ```json
+   {
     "arecords": [
       {
         "ipv4Address": "13.64.108.240"
@@ -265,23 +265,23 @@ Výstup by měl vypadat asi takto:
     "resourceGroup": "squillace.io",
     "ttl": 3600,
     "type": "Microsoft.Network/dnszones/A"
-  }
-  ```
+   }
+   ```
 5. Znovu nainstalujte **koncept**
 
    1. Odebrat **draftd** z clusteru tak, že zadáte `helm delete --purge draft`. 
    2. Přeinstalujte **koncept** pomocí stejného `draft-init` příkazu, ale s `--ingress-enabled` možnost:
-    ```bash
-    draft init --ingress-enabled
-    ```
-   Reagujte na výzvy, jako jste to udělali při prvním výše. Však máte jeden další dotaz reagovat, pomocí cesty úplná doména, kterou jste nakonfigurovali s využitím Azure DNS.
+      ```bash
+      draft init --ingress-enabled
+      ```
+      Reagujte na výzvy, jako jste to udělali při prvním výše. Však máte jeden další dotaz reagovat, pomocí cesty úplná doména, kterou jste nakonfigurovali s využitím Azure DNS.
 
 6. Zadejte doménu nejvyšší úrovně pro příchozí přenos dat (třeba draft.example.com): draft.squillace.io
 7. Při volání `draft up` této doby bude moci zobrazit vaše aplikace (nebo `curl` ji) na adrese URL ve formátu `<appname>.draft.<domain>.<top-level-domain>`. V tomto příkladu `http://handy-labradoodle.draft.squillace.io`. 
-```bash
-curl -s http://handy-labradoodle.draft.squillace.io
-Hello World, I'm Java!
-```
+   ```bash
+   curl -s http://handy-labradoodle.draft.squillace.io
+   Hello World, I'm Java!
+   ```
 
 
 ## <a name="next-steps"></a>Další postup

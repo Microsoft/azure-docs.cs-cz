@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/31/2018
-ms.openlocfilehash: df8260cc0d8ddd8521aa5bf683402c62bc2608f4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b1102649e48af8cb36a64f1142c078bf9ebc0d99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766729"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006187"
 ---
 # <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>Instalace a použití rozšíření Azure Terraform editoru Visual Studio Code
 
@@ -59,7 +59,7 @@ Abyste mohli Terraform používat ve službě Cloud Shell, musíte si [nainstalo
 
 ### <a name="install-graphviz"></a>Instalace služby GraphViz
 
-Pokud chcete v Terraformu používat funkci vizualizace, budete si muset [nainstalovat GraphViz](http://graphviz.org/).
+Pokud chcete v Terraformu používat funkci vizualizace, budete si muset [nainstalovat GraphViz](https://graphviz.org/).
 
 >[!NOTE]
 >Pokud si chcete ověřit, že je služba GraphViz správně nainstalovaná, otevřete okno terminálu a zadejte `dot -V`.
@@ -128,7 +128,7 @@ V tomto cvičení vytvoříte a spustíte základní konfigurační soubor Terra
     ![Uložení souboru main.tf](media/terraform-vscode-extension/tf-save-as-main.png)
 
 1. Vyberte **Uložit**.
-- Z řádku nabídek vyberte **File > Open Folder** (Soubor > Otevřít složku). Přejděte do adresáře s novou složkou, kterou jste vytvořili, a vyberte ji.
+1. Z řádku nabídek vyberte **File > Open Folder** (Soubor > Otevřít složku). Přejděte do adresáře s novou složkou, kterou jste vytvořili, a vyberte ji.
 
 ### <a name="run-terraform-init-command"></a>Spuštění příkazu terraform *init*
 

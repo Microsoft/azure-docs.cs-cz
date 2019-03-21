@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: 237294c1bc603402c349f7a56f20c34ed8d210fe
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 8a91614e7dfb804e6a902967ce60f898ed0e54ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054838"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999771"
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Začínáme s queue storage a Visual Studio připojené služby (ASP.NET Core)
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak začít používat Azure Queue storage v sadě Visu
 
 Azure queue storage je služba pro ukládání velkého počtu zpráv, které můžete přistupovat odkudkoli na světě prostřednictvím ověřených volání přes protokol HTTP nebo HTTPS. Zpráva jednou frontou může mít velikost až 64 kilobajtů (KB) a jedna fronta můžete obsahovat miliony zpráv až do vyčerpání celkové kapacity účtu úložiště. Viz také [Začínáme s úložištěm Azure Queue pomocí rozhraní .NET](../storage/queues/storage-dotnet-how-to-use-queues.md) podrobnosti o programově manipulace s fronty.
 
-Abyste mohli začít, vytvoření fronty služby Azure ve vašem účtu úložiště. Tento článek popisuje pak v tom, jak vytvořit frontu v jazyce C# a jak provádět základní fronty operace, jako jsou přidání, úprava, čtení a odstranění fronty zpráv.  Tento kód použije klientskou knihovnu pro úložiště Azure pro .NET. Další informace o ASP.NET najdete v tématu [ASP.NET](http://www.asp.net).
+Abyste mohli začít, vytvoření fronty služby Azure ve vašem účtu úložiště. Tento článek popisuje pak v tom, jak vytvořit frontu v jazyce C# a jak provádět základní fronty operace, jako jsou přidání, úprava, čtení a odstranění fronty zpráv.  Tento kód použije klientskou knihovnu pro úložiště Azure pro .NET. Další informace o ASP.NET najdete v tématu [ASP.NET](https://www.asp.net).
 
 Některé z rozhraní API služby Azure Storage jsou asynchronní a kódu v tomto článku se předpokládá, že se používají asynchronní metody. Zobrazit [asynchronní programování](https://docs.microsoft.com/dotnet/csharp/async) Další informace.
 
@@ -66,7 +66,7 @@ Pro přístup k frontám v projektech ASP.NET Core, zahrnují následující pol
 
 ### <a name="create-a-queue-in-code"></a>Vytvořit frontu v kódu
 
-Chcete-li vytvořit front Azure v kódu, zavolejte '' CreateIfNotExistsAsync ":
+Chcete-li vytvořit front Azure v kódu, zavolejte `CreateIfNotExistsAsync`:
 
 ```cs
 // Create the CloudQueue if it does not exist.

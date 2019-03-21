@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91a72a4244e3cae081fe9a962bbb80d3ce19822d
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 608965160f4abb57ccdfe8b8256fef971754b4d6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113218"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000303"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -39,7 +39,7 @@ ms.locfileid: "39113218"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [ha-guide]:sap-high-availability-guide.md
@@ -212,7 +212,7 @@ Nasazení interního nástroje load balancer ve skupině prostředků, který ob
 
 ![Obrázek 1: Windows failover clustering konfiguraci v Azure bez sdíleného disku][sap-ha-guide-figure-1001]
 
-_**Obrázek 1:** Windows serveru, převzetí služeb při selhání clustering konfiguraci v Azure bez sdíleného disku_
+_**Obrázek 1:** Windows Server, převzetí služeb při selhání clustering konfiguraci v Azure bez sdíleného disku_
 
 ### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>SAP ASCS/SCS HA se sdílenými disky
 Ve Windows obsahuje instanci SAP ASCS/SCS centrální služby SAP, server zpráv SAP, zařazování serverové procesy a SAP globální hostitelské soubory. SAP globální hostitelské soubory ukládat centrální soubory pro celý systém SAP.
@@ -221,19 +221,19 @@ Instance SAP ASCS/SCS má následující komponenty:
 
 * Centrální služby SAP:
     * Dva procesy, zprávu a zařadit do fronty serveru a < ASC/SCS virtuální hostitel název >, který se používá pro přístup k těmto dvěma procesy.
-    * Struktura souboru: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<instance číslo\>
+    * Struktura souborů: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<instance číslo\>
 
 
 * SAP globální hostitelské soubory:
-    * Struktura souboru: S:\usr\sap\\&lt;SID&gt;\SYS\....
-    * Sdílené složky, která umožňuje přístup k těmto globální S:\usr\sap sapmnt\\&lt;SID&gt;\SYS\... soubory pomocí následující cesty UNC:
+  * Struktura souborů: S:\usr\sap\\&lt;SID&gt;\SYS\....
+  * Sdílené složky, která umožňuje přístup k těmto globální S:\usr\sap sapmnt\\&lt;SID&gt;\SYS\... soubory pomocí následující cesty UNC:
 
-     \\\\< název virtuálního hostitele ASCS/SCS > \sapmnt\\&lt;SID&gt;\SYS\....
+    \\\\< název virtuálního hostitele ASCS/SCS > \sapmnt\\&lt;SID&gt;\SYS\....
 
 
-![Obrázek 2: Procesy strukturu souborů a sdílené globální hostitele sapmnt instance SAP ASCS/SCS][sap-ha-guide-figure-8001]
+![Obrázek 2: Procesy, strukturu souborů a sdílené globální hostitele sapmnt instance SAP ASCS/SCS][sap-ha-guide-figure-8001]
 
-_**Obrázek 2:** procesy, strukturu souborů a sdílené globální hostitele sapmnt instance SAP ASCS/SCS_
+_**Obrázek 2:** Procesy, strukturu souborů a sdílené globální hostitele sapmnt instance SAP ASCS/SCS_
 
 V nastavení vysoké dostupnosti, clusteru instancí SAP ASCS/SCS. Používáme *sdílené disky v clusteru* (jednotka S, v našem příkladu), umístěte SAP ASCS/SCS a SAP globální hostitelské soubory.
 
@@ -266,9 +266,9 @@ Vytvoření prostředku sdílený disk pro cluster:
 
 Získejte další informace o [SIOS DataKeeper](http://us.sios.com/products/datakeeper-cluster/).
 
-![Obrázek 5: Windows Server převzetí služeb při selhání clustering konfigurace v Azure se SIOS Datakeeperem][sap-ha-guide-figure-1002]
+![Obrázek 5: Windows Server, převzetí služeb při selhání clustering konfigurace v Azure se SIOS Datakeeperem][sap-ha-guide-figure-1002]
 
-_**Obrázek 5:** Windows failover clustering konfigurace v Azure se SIOS Datakeeperem_
+_**Obrázek 5:** Konfigurace v Azure se SIOS Datakeeperem clusteringu Windows v převzetí služeb při selhání_
 
 > [!NOTE]
 > Není nutné sdílené disky pro zajištění vysoké dostupnosti s některými DBMS produkty, jako je SQL Server. Technologie AlwaysOn systému SQL Server na místním disku jiný uzel clusteru replikuje DBMS dat a souborů protokolu z místního disku jednom uzlu clusteru. V takovém případě konfigurace clusteru Windows nemusí sdíleného disku.

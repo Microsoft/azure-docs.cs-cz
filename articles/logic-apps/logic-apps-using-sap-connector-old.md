@@ -2,7 +2,6 @@
 title: Připojení k systémům SAP – Azure Logic Apps | Dokumentace Microsoftu
 description: Jak zobrazit a spravovat prostředky SAP díky automatizaci pracovních postupů pomocí Azure Logic Apps
 author: ecfan
-manager: jeconnoc
 ms.author: estfan
 ms.date: 05/31/2018
 ms.topic: article
@@ -11,18 +10,17 @@ services: logic-apps
 ms.reviewer: klam, divswa, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 77d1e11c1400f9a3d6bb6bda8e935cd4d24a195e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d677c0eae9c92f90783ed4ebd95a528b34c872ec
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230892"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170832"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP v Azure Logic Apps
 
 > [!NOTE]
-> Tento konektor SAP bude brzy přestanou používat. Vydali jsme nové a rozšířené konektoru SAP a doporučujeme zvolit nebo přesunout [nový konektor SAP](./logic-apps-using-sap-connector.md).
->  
+> Tento konektor SAP je naplánováno na vyřazení. Použijte nebo migrovat na [novější a pokročilejší konektoru SAP](./logic-apps-using-sap-connector.md). 
 
 Tento článek popisuje, jak můžete přístup k prostředkům SAP z uvnitř aplikace logiky pomocí konektorů aplikační Server SAP a Server zpráv SAP. Tímto způsobem můžete automatizovat úlohy, procesy a pracovní postupy, které spravují vaše data systému SAP a prostředky tím, že vytvoříte aplikace logiky.
 
@@ -38,7 +36,7 @@ Pokud nemáte ještě předplatné Azure <a href="https://azure.microsoft.com/fr
 
 Chcete-li postupovat podle tohoto článku, budete potřebovat tyto položky:
 
-* Aplikace logiky, ze kterého má přístup k systému SAP a aktivační události, která spustí pracovní postup aplikace logiky. Konektory SAP aktuálně poskytuje pouze akce. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Aplikace logiky, ze kterého má přístup k systému SAP a aktivační události, která spustí pracovní postup aplikace logiky. Konektory SAP aktuálně poskytuje pouze akce. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * Vaše <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">aplikační Server SAP</a> nebo <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">Server zpráv SAP</a>
 
@@ -67,7 +65,7 @@ V tomto příkladu vytvoříte aplikaci logiky s koncovým bodem v Azure tak, ab
 
 1. Na webu Azure Portal vytvoření prázdné aplikace logiky, otevře se návrhář aplikace logiky. 
 
-2. Do vyhledávacího pole zadejte jako filtr "požadavek http". Ze seznamu triggerů vyberte tento trigger: **požadavek – přijetí požadavku HTTP je při**
+2. Do vyhledávacího pole zadejte jako filtr "požadavek http". Ze seznamu triggerů vyberte tento trigger: **Žádost o – při přijetí požadavku HTTP**
 
    ![Přidat aktivační událost požadavek HTTP](./media/logic-apps-using-sap-connector-old/add-trigger.png)
 
@@ -93,7 +91,7 @@ V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concept
    * **Aplikační Server SAP - odeslat SAP**
    * **Server zpráv SAP - odeslat SAP**
 
-   Tento příklad používá tuto akci: **aplikační Server SAP - odeslat SAP**
+   Tento příklad používá tuto akci: **Aplikační Server SAP - odeslat SAP**
 
    ![Vyberte "aplikační Server SAP" nebo "Server zpráv SAP"](media/logic-apps-using-sap-connector-old/select-sap-action.png)
 
@@ -154,7 +152,7 @@ Teď přidejte akci odpovědi do pracovního postupu aplikace logiky a zahrnutí
 
 1. V návrháři aplikace logiky podle akce SAP, zvolte **nový krok** > **přidat akci**.
 
-2. Do vyhledávacího pole zadejte jako filtr "odpověď". Ze seznamu akcí vyberte tuto akci: **požadavku - odpovědi**
+2. Do vyhledávacího pole zadejte jako filtr "odpověď". Ze seznamu akcí vyberte tuto akci: **Žádost - odpověď**
 
 3. Klikněte do **tělo** pole tak, aby zobrazil seznam dynamického obsahu. Z tohoto seznamu v části **poslat SAP**, vyberte **tělo** pole. 
 

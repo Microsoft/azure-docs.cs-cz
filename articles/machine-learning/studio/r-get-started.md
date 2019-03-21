@@ -1,21 +1,21 @@
 ---
-title: Začínáme s programovací jazyk R
+title: Začínáme s R
 titleSuffix: Azure Machine Learning Studio
 description: Pomocí tohoto kurzu programovacího jazyka R a začněte využívat jazyka R s Azure Machine Learning Studio k vytvoření řešení Prognózování.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: c18de2efff0f867213cad56b6012bb8ee6ed52bb
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 307636b019b53c8457c65261824adbf8e52ca0a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344733"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875511"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio"></a>Začínáme s R programovacím jazyku v nástroji Azure Machine Learning Studio
 
@@ -131,7 +131,7 @@ Pokud nevíte, poslední řádek tohoto kódu v okamžiku, přečtěte si o. Ve 
 
 RStudio je často používaný integrované vývojové prostředí pro jazyk R. Použiji RStudio pro úpravy, testování a ladění některý kód R použitá v tomto průvodci. Jakmile se kód R otestovaný a připravený, můžete jednoduše vyjmout a vložit do nástroje Machine Learning Studio z editoru RStudio [spustit skript jazyka R] [ execute-r-script] modulu.  
 
-Pokud nemáte programovací jazyk R nainstalovaný na desktopovém počítači, doporučujeme provést to nyní. Zdarma ke stažení z open-source jazyk R jsou k dispozici na komplexní R Archive sítě (CRAN) na [ http://www.r-project.org/ ](http://www.r-project.org/). K dispozici ke stažení pro Windows, Mac OS a Linux/UNIX. Zvolte nejbližší zrcadlení a postupujte podle pokynů ke stažení. Kromě toho CRAN obsahuje celou řadu užitečných analytics a data manipulaci s balíčky.
+Pokud nemáte programovací jazyk R nainstalovaný na desktopovém počítači, doporučujeme provést to nyní. Zdarma ke stažení z open-source jazyk R jsou k dispozici na komplexní R Archive sítě (CRAN) na [ https://www.r-project.org/ ](https://www.r-project.org/). K dispozici ke stažení pro Windows, Mac OS a Linux/UNIX. Zvolte nejbližší zrcadlení a postupujte podle pokynů ke stažení. Kromě toho CRAN obsahuje celou řadu užitečných analytics a data manipulaci s balíčky.
 
 Pokud jste ještě na přihlašovací stránce RStudio, by měl stáhněte a nainstalujte verzi pro stolní počítače. Můžete najít přihlašovací stránce RStudio, soubory ke stažení pro Windows, Mac OS a Linux/UNIX na http://www.rstudio.com/products/RStudio/. Postupujte podle pokynů k instalaci RStudio na desktopovém počítači k dispozici.  
 
@@ -1312,18 +1312,18 @@ RStudio poměrně dobře zdokumentovat. Tady je pár odkazů na klíčové čás
 
 V tomto kurzu programovacího jazyka R vysvětluje co je potřeba použít jazyka R s Azure Machine Learning Studio. Pokud nejste obeznámeni s jazykem R, jsou k dispozici na CRAN dvě úvodní informace:
 
-* [R pro začátečníky](http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) Emmanuel Paradis je dobrým začátkem.  
-* [Úvod do jazyka R](http://cran.r-project.org/doc/manuals/R-intro.html) W. n. Venables et. al. Přejde do větší hloubky.
+* [R pro začátečníky](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) Emmanuel Paradis je dobrým začátkem.  
+* [Úvod do jazyka R](https://cran.r-project.org/doc/manuals/R-intro.html) W. n. Venables et. al. Přejde do větší hloubky.
 
 Existuje mnoho knih v R, které může pomoci vám začít. Tady je několik, které se mi najít užitečné:
 
 * **Techniky programování v jazyce R: Prohlídka z statistické softwaru návrh** Norman Matloff je vynikající Úvod k programování v jazyce R.  
 * **Kuchařka R** díky Paul Teetor poskytuje řešení problému a přístupem k používání jazyka R.  
-* **R v akci** Robert Kabacoff je další užitečná úvodní knihy. Doprovodný [rychlé R webu](http://www.statmethods.net/) je užitečný prostředek.
+* **R v akci** Robert Kabacoff je další užitečná úvodní knihy. Doprovodný [rychlé R webu](https://www.statmethods.net/) je užitečný prostředek.
 * **R Inferno** Burnse Patrick je překvapivě sloupku knihy, které se zabývají počet témat složité a složité, které mohou nastat při programování v jazyce R. Kniha je k dispozici zdarma na [The R Inferno](http://www.burns-stat.com/documents/books/the-r-inferno/).
 * Pokud chcete podrobné informace o Pokročilá témata týkající se jazyka R, podíváme se na knihu **pokročilé R** podle Hadley Wickham. Je k dispozici zdarma na online verze této knihy [ http://adv-r.had.co.nz/ ](http://adv-r.had.co.nz/).
 
-Katalog R čas řady balíčků lze nalézt v [CRAN zobrazení úlohy: Time Series analýzy](http://cran.r-project.org/web/views/TimeSeries.html). Informace o určité časové řady objektu balíčky by měla odkazovat v dokumentaci pro tento balíček.
+Katalog R čas řady balíčků lze nalézt v [CRAN zobrazení úlohy: Time Series analýzy](https://cran.r-project.org/web/views/TimeSeries.html). Informace o určité časové řady objektu balíčky by měla odkazovat v dokumentaci pro tento balíček.
 
 Knihu **úvodní časové řady** s jazykem R Paul Cowpertwait a Andrew Metcalfe obsahuje úvod k využití R pro analýzu časových řad. Mnoho více teoretické texty najdete příklady R.
 
@@ -1331,8 +1331,8 @@ Tady jsou některé skvělé internetové prostředky:
 
 * R v pohodlí vašeho prohlížeče s video poznatky a kódování cvičení se dozvíte, jaké Datacampu. Existují interaktivní kurzy o nejnovější R techniky a balíčky. Využijte bezplatnou [Interaktivní kurz R](https://www.datacamp.com/courses/introduction-to-r).
 * [Učte se programovat v R, úplnou příručku](https://www.programiz.com/r-programming) z Programiz.
-* Stručná [R kurzu](http://www.cyclismo.org/tutorial/R/) podle Kelly černé z Clarkson University.
-* Existuje přes 60 R prostředky uvedené v [prostředků jazyka R horní ke zlepšení své dovednosti data](http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html).
+* Stručná [R kurzu](https://www.cyclismo.org/tutorial/R/) podle Kelly černé z Clarkson University.
+* Existuje přes 60 R prostředky uvedené v [prostředků jazyka R horní ke zlepšení své dovednosti data](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html).
 
 <!-- Module References -->
 [execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script

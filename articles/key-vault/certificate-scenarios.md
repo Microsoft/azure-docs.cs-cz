@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 73a09a99b1dd275b20bcd389e9cc391f638e8bdd
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 8b56151ae56de44cbab3003743ce6df33ec89612
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404259"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075625"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s certifikáty služby Key Vault
 Následující scénáře popisují některé z primární použití služby Key Vault certificate management včetně další kroky potřebné pro vytvoření vaší první certifikát do svého trezoru klíčů.
@@ -50,12 +50,12 @@ Certifikáty se skládají z tři vzájemně propojené prostředky dohromady ja
 
 **Krok 3** -správce společnosti Contoso A společně s zaměstnanec společnosti Contoso (Key Vault uživatele), který vlastní certifikáty, v závislosti na certifikační Autority, certifikát můžete získat od správce nebo přímo z účtu s certifikační Autoritou.  
 
--   Zahájit operaci přidat přihlašovací údaje k trezoru klíčů pomocí [nastavení vystavitele certifikátu](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) prostředků. Vystavitel certifikátu se entitě reprezentované v Azure Key Vault (KV) jako prostředek CertificateIssuer. Používá se k zadání informací o zdroji KV certifikátu; název vystavitele, poskytovatele, přihlašovací údaje a další podrobnosti o správě.
-    -   Například MyDigiCertIssuer  
-        -   Poskytovatel  
-        -   Přihlašovací údaje – přihlašovací údaje účtu certifikační Autority. Každou certifikační Autoritu se konkrétní data.  
+- Zahájit operaci přidat přihlašovací údaje k trezoru klíčů pomocí [nastavení vystavitele certifikátu](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) prostředků. Vystavitel certifikátu se entitě reprezentované v Azure Key Vault (KV) jako prostředek CertificateIssuer. Používá se k zadání informací o zdroji KV certifikátu; název vystavitele, poskytovatele, přihlašovací údaje a další podrobnosti o správě.
+  - Například MyDigiCertIssuer  
+    -   Poskytovatel  
+    -   Přihlašovací údaje – přihlašovací údaje účtu certifikační Autority. Každou certifikační Autoritu se konkrétní data.  
 
-     Další informace o vytváření účtů s poskytovateli certifikační Autoritu, najdete v příspěvku související [blog služby Key Vault](https://aka.ms/kvcertsblog).  
+    Další informace o vytváření účtů s poskytovateli certifikační Autoritu, najdete v příspěvku související [blog služby Key Vault](https://aka.ms/kvcertsblog).  
 
 **Krok 3.1** – nastavení [kontakty certifikátu](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) pro oznámení. Toto je kontakt pro uživatele služby Key Vault. Key Vault nevynucuje tento krok.  
 

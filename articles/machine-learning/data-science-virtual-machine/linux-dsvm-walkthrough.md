@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: b06ca287f03c62b3947e6c37712cf491396392e0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: MT
+ms.openlocfilehash: 0ca3cee0c818bf9d5dda4a7ea8a1f356ed017973
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245829"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891082"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Pro datovou vědu Data Science virtuálním počítačem s Linuxem v Azure
 Tento návod ukazuje, jak provádět několik běžných úloh vědeckého zpracování virtuálního počítače s Linuxem datové vědy. Systému Linux dat virtuálního počítače VĚDY je image virtuálního počítače k dispozici v Azure, který může být předinstalovaný s kolekcí nástrojů používaných pro analýzu dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače umožňuje snadno a rychle začít, datových věd v řádech minut, aniž byste museli instalovat a konfigurovat každý z nástrojů jednotlivě. Můžete snadno vertikálně navýšit kapacitu virtuálních počítačů, v případě potřeby a zastavte ji není při použití. Proto tento prostředek je elastická a nákladově efektivní.
@@ -36,7 +36,7 @@ Než budete moct použít virtuální počítač s Linuxem datové vědy, musít
 
 * **Předplatného Azure**. Pokud není ještě nemáte, přečtěte si téma [vytvořte si bezplatný účet Azure ještě dnes](https://azure.microsoft.com/free/).
 * A [ **pro datovou vědu VM pro Linux**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Informace o zřizování tohoto virtuálního počítače, naleznete v tématu [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md).
-* [X2Go](http://wiki.x2go.org/doku.php) v počítači nainstalovaný a otevřít relaci XFCE. Informace o instalaci a konfiguraci **X2Go klienta**, naleznete v tématu [instalace a konfigurace klienta X2Go](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
+* [X2Go](https://wiki.x2go.org/doku.php) v počítači nainstalovaný a otevřít relaci XFCE. Informace o instalaci a konfiguraci **X2Go klienta**, naleznete v tématu [instalace a konfigurace klienta X2Go](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
 * Pro posouvání plynulost přepnout příznak gfx.xrender.enabled v o: konfigurace v prohlížeči FireFox virtuálních počítačů. [Najdete v článku najdete tady. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Také vzít v úvahu při přepínání *mousewheel.enable_pixel_scrolling* na hodnotu False. [Pokyny v tomto poli.](https://support.mozilla.org/en-US/questions/981140)
 * **AzureML účet**. Pokud již nemáte, zaregistrujte si novou na [domovskou stránku Azure ml](https://studio.azureml.net/). Je bezplatné využití vrstvu vám pomůžou začít.
 
@@ -52,7 +52,7 @@ Pokud potřebujete další úložný prostor, můžete vytvořit další disky a
 
 Chcete-li stáhnout data, otevřete okno terminálu a spusťte tento příkaz:
 
-    wget http://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+    wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
 
 Stažený soubor nemá řádek záhlaví, Pojďme vytvořit jiný soubor, který mají záhlaví. Spusťte tento příkaz vytvoří soubor s odpovídající hlavičky:
 
@@ -263,7 +263,7 @@ XGBoost můžete také volat z pythonu nebo příkazového řádku.
 Pro vývoj pomocí Pythonu distribuce Anaconda Python 2.7 a 3.5 nainstalovaných v datové VĚDY.
 
 > [!NOTE]
-> Zahrnuje distribuční Anaconda [Conda](http://conda.pydata.org/docs/index.html), který slouží k vytvoření vlastního prostředí pro Python, které mají různé verze a/nebo v nich nainstalované balíčky.
+> Zahrnuje distribuční Anaconda [Conda](https://conda.pydata.org/docs/index.html), který slouží k vytvoření vlastního prostředí pro Python, které mají různé verze a/nebo v nich nainstalované balíčky.
 >
 >
 
@@ -318,21 +318,19 @@ Anaconda distribuce v datové VĚDY se dodává s poznámkového bloku Jupyter, 
 
 > [!NOTE]
 > Použití Správce balíčků Pythonu (prostřednictvím `pip` příkaz) z poznámkového bloku Jupyter v jádru aktuální příkaz lze použít v buňky kódu, například:
-  ```python
-   import sys
-   ! {sys.executable} -m pip install numpy -y
-  ```
->
->
-
+>   ```python
+>    import sys
+>    ! {sys.executable} -m pip install numpy -y
+>   ```
+> 
+> 
+> 
 > [!NOTE]
 > Použití Instalační služby systému Conda (prostřednictvím `conda` příkaz) z poznámkového bloku Jupyter v jádru aktuální příkaz lze použít v buňky kódu, například:
-  ```python
-   import sys
-   ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
-  ```
->
->
+>   ```python
+>    import sys
+>    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
+>   ```
 
 Několik ukázkové poznámkové bloky jsou již nainstalovány ve virtuálním počítači:
 
@@ -515,7 +513,7 @@ Nebo co jsou vlastnosti e-mailů, které často obsahují *3d*?
 
 Většina e-mailů, které mají vysokou výskyt *3d* jsou zdánlivě nevyžádané pošty, proto to může být užitečná funkce pro sestavení prediktivního modelu klasifikovat e-maily.
 
-Pokud byste chtěli provést strojového učení s daty uloženými v databázi PostgreSQL, zvažte použití [MADlib](http://madlib.incubator.apache.org/).
+Pokud byste chtěli provést strojového učení s daty uloženými v databázi PostgreSQL, zvažte použití [MADlib](https://madlib.incubator.apache.org/).
 
 ## <a name="sql-server-data-warehouse"></a>SQL Server Data Warehouse
 Azure SQL Data Warehouse je cloudová, škálovatelná databáze, která dokáže zpracovávat ohromné objemy dat, relačních i nerelačních. Další informace najdete v tématu [co je Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)

@@ -8,12 +8,12 @@ author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 7870aca696ec61e707c5c774fd43e6d64c0cab82
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7d7ebc7493ff8e272e35abafeedd8fbc52b986ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436752"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002151"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Vytvoření Azure Automation watcher úkolů ke sledování změn souborů na místním počítači
 
@@ -89,8 +89,8 @@ Runbook služby akce slouží k práci s daty do něho předaný ze sady runbook
 1. Vyberte **konfigurace akce** a vyberte sadu runbook "Proces NewFile".
 1. Zadejte následující hodnoty pro parametry:
 
-   ***EVENTDATA** – ponechte prázdné. Data je předáno ze sady runbook sledovacích procesů.  
-   ***Nastavení spuštění** – Azure, ponechte tato sada runbook běží ve službě Automation.
+   * **EVENTDATA** – ponechte prázdné. Data je předáno ze sady runbook sledovacích procesů.  
+   * **Nastavení spuštění** – Azure, ponechte tato sada runbook běží ve službě Automation.
 
 1. Klikněte na tlačítko **OK**a pak vyberte se vrátíte na stránku sledovacích procesů.
 1. Klikněte na tlačítko **OK** k vytvoření úlohy sledovacího procesu.

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 62d8236abb2b5f21bdb4111480d95376faa2e379
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 90d1d752481ada33c038ab563f6bd0d3bf5fad08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432596"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086798"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Vytvoření virtuálního počítače ze specializovaného VHD v účtu úložiště
 
@@ -212,10 +212,10 @@ Vytvořit virtuální síť a podsíť [virtuální sítě](../../virtual-networ
     $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
         -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
     ```    
-### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Vytvořte skupinu zabezpečení sítě a pravidlo protokolu RDP
-Abyste mohli pro přihlášení k virtuálnímu počítači pomocí protokolu RDP, budete muset mít pravidlo zabezpečení, které povoluje přístup protokolu RDP na portu 3389. Vzhledem k tomu, že byl virtuální pevný disk pro nový virtuální počítač vytvořen z existující specializovaného virtuálního počítače, po vytvoření virtuálního počítače je možné použít existující účet ze zdrojového virtuálního počítače, který má oprávnění k přihlášení pomocí protokolu RDP.
-To je potřeba dokončit před vytvořením síťového rozhraní, které budou přidruženy.  
-V tomto příkladu nastaví název skupiny NSG na **myNsg** a názvu pravidlo protokolu RDP **myRdpRule**.
+   ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Vytvořte skupinu zabezpečení sítě a pravidlo protokolu RDP
+   Abyste mohli pro přihlášení k virtuálnímu počítači pomocí protokolu RDP, budete muset mít pravidlo zabezpečení, které povoluje přístup protokolu RDP na portu 3389. Vzhledem k tomu, že byl virtuální pevný disk pro nový virtuální počítač vytvořen z existující specializovaného virtuálního počítače, po vytvoření virtuálního počítače je možné použít existující účet ze zdrojového virtuálního počítače, který má oprávnění k přihlášení pomocí protokolu RDP.
+   To je potřeba dokončit před vytvořením síťového rozhraní, které budou přidruženy.  
+   V tomto příkladu nastaví název skupiny NSG na **myNsg** a názvu pravidlo protokolu RDP **myRdpRule**.
 
 ```powershell
 $nsgName = "myNsg"

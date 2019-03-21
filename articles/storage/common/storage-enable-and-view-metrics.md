@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 8fc85f82e5b6290a0f7401581e57b77473a495ae
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 770a494e93a51fc018b2bfe803ac15ba543f35d4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454007"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011345"
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Zapnutí metrik Azure Storage a zobrazení dat metrik
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -113,7 +113,7 @@ Mnoho výrobců procházení úložiště nástroje víme z těchto tabulek a v�
 Zobrazit [klientské nástroje pro Azure Storage](storage-explorers.md) seznam dostupných nástrojů.
 
 > [!NOTE]
-> Počínaje verzí 0.8.0 [Microsoft Azure Storage Explorer](http://storageexplorer.com/), můžete zobrazit a stáhnout tabulky metrik analýzy.
+> Počínaje verzí 0.8.0 [Microsoft Azure Storage Explorer](https://storageexplorer.com/), můžete zobrazit a stáhnout tabulky metrik analýzy.
 >
 >
 

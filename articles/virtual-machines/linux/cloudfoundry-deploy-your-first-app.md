@@ -16,16 +16,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 6e2fa77273ef35fae6c3b232cb36fa913faf879d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9a0b12ec9d825fc665bd5beb89e911b80ed3889f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299045"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013874"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Nasazení první aplikace pro Cloud Foundry v Microsoft Azure
 
-[Cloud Foundry](http://cloudfoundry.org) oblíbených open source aplikační platformy je k dispozici na Microsoft Azure. V tomto článku vám ukážeme, jak nasadit a spravovat aplikace na Cloud Foundry v prostředí Azure.
+[Cloud Foundry](https://cloudfoundry.org) oblíbených open source aplikační platformy je k dispozici na Microsoft Azure. V tomto článku vám ukážeme, jak nasadit a spravovat aplikace na Cloud Foundry v prostředí Azure.
 
 ## <a name="create-a-cloud-foundry-environment"></a>Vytvoření prostředí Cloud Foundry
 
@@ -33,7 +33,7 @@ Existuje několik možností pro vytvoření prostředí Cloud Foundry v Azure:
 
 - Použití [Pivotal Cloud Foundry nabídka] [ pcf-azuremarketplace] na webu Azure Marketplace k vytvoření standardního prostředí, která zahrnuje PCF Ops Manageru a Azure Service Broker. Můžete najít [úplné pokyny] [ pcf-azuremarketplace-pivotaldocs] pro nasazení na webu marketplace nabízí v Pivotal dokumentaci.
 - Vytvořte přizpůsobené prostředí podle [ručního nasazení Pivotal Cloud Foundry][pcf-custom].
-- [Nasazení Cloud Foundry balíčků open source přímo] [ oss-cf-bosh] nastavením [BOSH](http://bosh.io) ředitel, virtuální počítač, který koordinuje nasazení prostředí Cloud Foundry.
+- [Nasazení Cloud Foundry balíčků open source přímo] [ oss-cf-bosh] nastavením [BOSH](https://bosh.io) ředitel, virtuální počítač, který koordinuje nasazení prostředí Cloud Foundry.
 
 > [!IMPORTANT] 
 > Pokud provádíte nasazení PCF z Azure Marketplace, poznamenejte si SYSTEMDOMAINURL a přihlašovací údaje správce vyžadovaných pro přístup k Pivotal Správce aplikací, které jsou popsané v příručce pro nasazení webu marketplace. Tyto jsou potřeba k dokončení tohoto kurzu. Pro nasazení webu marketplace, SYSTEMDOMAINURL je ve formě https://system. *IP adresa*. cf.pcfazure.com.
@@ -77,7 +77,7 @@ Nyní když nasadíte aplikaci, je automaticky vytvořen ve novou organizaci a m
 
 ## <a name="deploy-an-application"></a>Nasazení aplikace
 
-Použijeme ukázkovou aplikaci Cloud Foundry názvem Hello Spring cloudem, který je napsaný v jazyce Java a na základě [Spring Framework](http://spring.io) a [Spring Boot](http://projects.spring.io/spring-boot/).
+Použijeme ukázkovou aplikaci Cloud Foundry názvem Hello Spring cloudem, který je napsaný v jazyce Java a na základě [Spring Framework](https://spring.io) a [Spring Boot](https://projects.spring.io/spring-boot/).
 
 ### <a name="clone-the-hello-spring-cloud-repository"></a>Naklonujte úložiště Hello Spring cloudem
 
@@ -90,7 +90,7 @@ cd hello-spring-cloud
 
 ### <a name="build-the-application"></a>Sestavení aplikace
 
-Sestavení aplikace pomocí [Apache Maven](http://maven.apache.org).
+Sestavení aplikace pomocí [Apache Maven](https://maven.apache.org).
 
 ```bash
 mvn clean package
@@ -158,7 +158,7 @@ Spuštění `cf app` příkaz aplikace zobrazí, že Cloud Foundry je vytvořen�
 [cloudshell-docs]: https://docs.microsoft.com/azure/cloud-shell/overview
 [cf-orgs-spaces-docs]: https://docs.cloudfoundry.org/concepts/roles.html
 [spring-boot]: https://projects.spring.io/spring-boot/
-[spring-framework]: http://spring.io
+[spring-framework]: https://spring.io
 [cf-push-docs]: https://docs.cloudfoundry.org/concepts/how-applications-are-staged.html
 [cloudfoundry-docs]: https://docs.cloudfoundry.org
 [vsts-plugin]: https://github.com/Microsoft/vsts-cloudfoundry

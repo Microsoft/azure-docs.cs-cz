@@ -1,6 +1,6 @@
 ---
-title: Pokyny pro efektivní ukotvení prostředí v Azure prostorových kotvy | Dokumentace Microsoftu
-description: Pokyny a důležité informace pro vytváření prostředků a umístění ukotvení efektivně s Azure prostorových ukotvení.
+title: Pokyny pro efektivní ukotvení prostředí pro, které používají Azure prostorových kotvy | Dokumentace Microsoftu
+description: Pokyny a důležité informace o vytvoření a vyhledejte kotvy efektivně pomocí prostorových kotvy Azure.
 author: mattwojo
 manager: jken
 services: azure-spatial-anchors
@@ -8,113 +8,108 @@ ms.author: mattwoj
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 196958e4818251bd7f2ee78ca472e6f28292d908
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 4714ea7aa4bf55f7cbd4500977b09505788233dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752987"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895800"
 ---
-# <a name="guidelines-for-an-effective-anchor-experience-with-azure-spatial-anchors"></a>Pokyny pro efektivní ukotvení zkušeností s Azure prostorových kotvy
+# <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Vytvoření prostředí efektivní ukotvení pomocí prostorových kotev vztahů Azure
 
-Tento článek obsahuje pokyny a důležité informace pro vytváření prostředků a umístění ukotvení efektivně s Azure prostorových ukotvení.
+Tento článek obsahuje pokyny a aspekty, které vám pomůžou účinně vytvářet a vyhledejte ukotvení pomocí prostorových ukotvení.
 
-## <a name="creating-anchors"></a>Vytváření kotvy
+## <a name="good-anchors"></a>Dobré kotvy
 
-Vytvoření dobré kotvy je jedním z aspektů práce s Azure prostorových kotvy jejich činnost nejvíc ohrožují. Je potřeba investovat čas ve vzdělávání nebo vedení jak dobré ukotvení vytvářet uživatele vaše uživatelské prostředí. Investujete do ještě před zahájením vytváření ukotvení, povolit koncovým uživatelům spolehlivě vyhledejte kotev vztahů:
+Prostorové kotvy vám pomůže vytvořit dobré ukotvení. Je potřeba investovat čas ve vzdělávání nebo která bude obsahovat uživatele ve vaší uživatelské rozhraní (UX) k vytvoření dobré kotvy vztahů. Investujete do vytváření dobré kotvy ještě před zahájením, pomoct koncovým uživatelům se spolehlivě najít kotev vztahů:
 
-- V různých zařízeních
+- V různých zařízeních.
 - V různých časech.
-- Na různé podmínky
-- Z požadovaného perspektiv v prostoru
-- Atd.
-
-Níže jsou uvedeny důležité informace a pokyny můžete navrhnout vaše prostředí pro vytváření a umístění ukotvení.
+- V různé podmínky.
+- Z požadovaného perspektiv v prostoru.
 
 ## <a name="static-and-dynamic-locations"></a>Statické a dynamické umístění
 
-Součástí návrhu ukotvení prostředí bude vyberete umístění, které se účastní. Bude umístění statická a definovaná správcem prostoru? Nebo se být dynamická a uživatelem definovanými?
+Část návrhu prostředí ukotvení je volba umístění. Bude umístění statická a definovaná správcem prostoru? Nebo se být dynamická a uživatelem definovaných?
 
-Prodejní manažer úložiště může být vhodné statické prostředí ve storu k přesvědčit uživatelé navštívit. Zatímco vývojář desková hra pro hybridní realitu pravděpodobně chce umožňuje uživatelům zvolit umístění, kam chcete přehrát.
+Prodejní manažer úložiště může být vhodné statické prostředí ve storu k přesvědčit uživatelé navštívit. Ale pravděpodobně chtít umožnit uživatelům zvolit umístění, kam chcete přehrát developer desková hra realitu.
 
-Pro statické umístění můžete říct správci a ztrácet čas Správa prostor s dobrým ukotvení.
+Pro statické umístění naučíte správci a ztrácet čas Správa prostor s dobrým ukotvení.
 
-Pro dynamické umístění byste uvažovat o tom, jak říct nebo vedou uživatele vaše uživatelské prostředí na dobrý ukotvení vytvářet.
+Pro dynamické umístění byste uvažovat o jak, které učíte nebo vedou uživatele vaše uživatelské prostředí na dobrý ukotvení vytvářet.
 
 ## <a name="stable-visual-features"></a>Stabilní vizuální funkce
 
-Vizuální sledování systémy používané ve smíšené reality a rozšířené realitě závisí na vizuální funkce prostředí. Pokud chcete získat nejspolehlivější prostředí:  
+Používat vizuální sledování systémy v realitu a rozšířené reality zařízení využívají visual funkce prostředí. Pokud chcete získat nejspolehlivější prostředí:  
 
-- Ukotvení vytvořte v umístěních s stabilní vizuální funkce (to znamená, funkce, které se nemění často).
+- *Proveďte* ukotvení vytvářet v lokalitách, které nemají stabilní vizuální funkce (to znamená, funkce, které se nemění často).
 
-- Nevytvářejte kotvy na velkých prázdné plochy s vlastnostmi není jedinečný.
+- *Není* ukotvení vytvářet na velkých prázdné plochy, které mají žádné rozlišovací charakteristiky.
 
-- Nevytvářejte kotvy na vysoce odrazivý materiály.
+- *Není* ukotvení vytvářet vysoce odrazivý materiálů.
 
-- Nevytvářejte kotvy na površích, kde zopakujete pouze vzor, například carpet nebo tapetu.
+- *Není* ukotvení vytvářet na površích, kde vzor opakovat, jako je například carpet nebo tapetu.
 
-![Příklad obrázků představující dobré a špatné prostředí](./media/stable-visual.png)
+![Příklady dobré prostředí pro ukotvení a špatné prostředí ukotvení](./media/stable-visual.png)
 
-## <a name="consider-various-viewing-perspectives"></a>Vezměte v úvahu různá zobrazení perspektivy
+## <a name="various-viewing-perspectives"></a>Různá zobrazení perspektivy
 
-Při vytváření anchor, vezměte osoby, které budou navštivte později k vyhledání ukotvení.
+Při vytváření anchor, představte si, kdo se později pokusí vyhledat ukotvení.
 
-Zvažte například ukotvení uprostřed místnosti se dvěma. Pravděpodobně chcete povolit uživatele, kteří vstoupit do místnosti z obou dveře k vyhledání ukotvení. Při vytváření ukotvení, je potřeba zkontrolovat jeho pozice z obou dveří. To zaznamená data o prostředí kolem ukotvení z obou perspektivy, tak, aby uživatelé mohli najít ukotvení z obou dvířka knihovny.
+Zvažte například ukotvení uprostřed prostor, který má dvě možnosti, aby. Pravděpodobně chcete povolit uživatelům z obou dveře vstoupit do místnosti. Při vytváření ukotvení, budete muset zkontrolovat jeho pozice z obou dveří. Můžete změnit perspektivy k zaznamenání dat prostředí kolem ukotvení tak, aby uživatelé mohli najít ukotvení z obou dvířka knihovny.
 
-Obecně platí při vytváření anchor, to by se měl zkontrolovat z různých míst nebo perspektivy, že očekáváte, že uživatelům se, abyste se při pokusu o ho najít.  
-
-Při umísťování virtuální obsah na venkovní socha, má smysl procesem kolem sochy při prohlížení, jako je vytváření ukotvení.  
-
-Na druhé straně Pokud vaše ukotvení v horním rohu místnosti, je pouze jeden směr, abyste ho. Při vytváření ukotvení, jednoduše potřebuje ke kontrole z tohoto hlediska.
+Obecně platí při vytváření anchor, ho naskenujte z perspektivy uživatelů, kteří se pokusí najít. Proto při umísťování virtuální obsah na venkovní socha, má smysl procesem kolem socha, při hledání, jako je vytváření ukotvení. Pokud vaše ukotvení v horním rohu místnosti, je pouze jeden směr, abyste ho. Při vytváření tohoto ukotvení, můžete ho naskenovat právě z tohoto hlediska.
 
 ## <a name="multiple-anchors"></a>Více kotvy
 
-Osvětlení mohou přinést důležité ve vizuální funkce, které jsou zjištěny. Kotvy vytvořené v silné přirozené světlo může být obtížné najít po tmavé pod umělý osvětlení a naopak.  
+Osvětlení mohou přinést visual funkcí, které aplikace rozpozná. Kotvy vytvořené v silné přirozené světlo může být obtížné najít umělé světla a naopak.  
 
-Pokud se vyskytne tento problém, může pomoct vytvořit dvě kotvy vztahů – jednu v denního světla a další v rámci umělé osvětlení – na stejném místě. Aplikace pak vyhledávat obou ukotvení. Pokud se buď nachází, aplikace bude mít pozice pro ukotvení. 
+Pokud máte potíže, může pomoct vytvořit dvě kotvy vztahů. Na stejném místě vytvořte jeden ukotvení v denního světla a druhý v umělé světla. Aplikace pak vyhledávat obou ukotvení. Pokud se nachází buď ukotvení, aplikace bude mít pozice pro ukotvení. 
 
-Podobně v prostředích, kde vizuální funkce změnit, protože většina objektů přesunout, může pomoct více ukotvení. Jakmile ukotvení příliš obtížné vyhledat z důvodu významné změny v prostředí, můžete nahradit ho novým. Případech to může být například v maloobchodě, kde rozložení se aktualizují každých několik měsíců.
+Podobně v prostředích, kde vizuální funkce změnit, protože většina objektů přesunout, může pomoct více ukotvení. Jakmile ukotvení příliš obtížné vyhledat z důvodu významné změny v prostředí, můžete nahradit novou ukotvení. Může to provedete, například v maloobchodě, kde rozložení se aktualizují každých několik měsíců.
 
 ## <a name="targets-and-rooms"></a>Cíle a místnosti
 
-V mnoha případech umístění ukotvení představuje vstupní bod jedinečné prostředí vaší aplikace. Budete chtít získat prostřednictvím tohoto kroku rychle a spolehlivě tak uživatelům můžete zadat prostředí. Výdaje čas na způsobu, jakým se uživatelé hledají vaše kotev vztahů je důležité návrh krok. Je vhodné uvažovat o to z hlediska dva různé scénáře: **Cíle** a **místnosti**.
+V mnoha případech je ukotvení vstupní bod do prostředí vaší aplikace. Budete chtít získat prostřednictvím tohoto kroku rychle a spolehlivě tak uživatelům můžete zadat prostředí. Výdaje čas na způsobu, jakým se uživatelé hledají vaše kotev vztahů je důležité návrh krok. Je vhodné uvažovat o vyhledání kotvy z hlediska dva různé scénáře: *cíle* a *místnosti*.
 
 ### <a name="targets"></a>Cíle
 
-![Začněte tady úpravy](./media/start-here-edit.png)
+Ve scénáři cílové umístění ukotvení je dobře známá. Například v aplikaci pro fiktivní Malování smíšené realitě, umístí jeden uživatel virtuální plátna na zdi. Marcela nastaví ostatní uživatelé v místnosti tak, aby odkazoval na jednom místě na zeď vyhledejte ukotvení a začněte prostředí svoje zařízení.  
 
-Ve scénáři cílové umístění ukotvení je dobře známá. Například ve fiktivní aplikaci Malování MR umístí jeden uživatel virtuální plátna na zdi. Marcela nastaví ostatní uživatelé v místnosti tak, aby odkazoval na jednom místě na zeď vyhledejte ukotvení a začněte prostředí svoje zařízení.  
+Dalším příkladem scénáře cíl mohou být přihlášení kavárny, který čte, "Vyhledat obchody." Kavárny nebo byl umístěn zde ukotvení. Jak uživatelé kontrolovat znaménko, vyhledejte ukotvení a zadejte možnosti rozšířené reality Najít obchody na kávu.
 
-Dalším příkladem scénáře cíl mohou být přihlášení s oznámením "vyhledat obchody" při čekání na řádku v kavárně. Dříve ukotvení kavárny nebo umístil tady. Jak uživatelé kontrolovat znaménko, vyhledejte ukotvení a zadejte AR prostředí pro nabídky na kávu.
+Scénář, cíl může pomoct fotografie. Je-li zobrazit uživatele fotku na určené na svém zařízení, můžete rychle identifikovat co kontrolovat v reálném světě. Například může pomoct vaši uživatelé přicházejí v rámci obecné oblasti zamýšleným cílem pomocí GPS. Po přijetí uživateli, vaše aplikace zobrazuje fotografii cíle. Uživatel vypadá kolem prostor, vyhledá cíl a hledá ukotvení.
 
-Scénář, cíl může pomoct fotografie. Pokud uživatelé můžete zobrazit na svých zařízeních na určené fotografii, se můžete rychle identifikovat co kontrolovat v reálném světě. Například může pomoct vaši uživatelé přicházejí v rámci obecné okolí určené pomocí GPS. Jakmile uživatel doručení, vaše aplikace zobrazuje fotografii cíle. Uživatel vypadá kolem prostor, vyhledá cíl a pokračuje vyhledání ukotvení.
+![Obrázek anchor, zobrazení fotografií cíle mobilních zařízení uživatele](./media/start-here-edit.png)
 
 ### <a name="rooms"></a>místnosti
 
-![Kontrola místa](./media/scan-room.png)
-
 Uživatelé v místnosti scénář, zadejte mezeru jednoduše vědomím, že tady ukotvení je někde. Uživatelé zkontrolovat prostor pomocí jejich zařízení a rychle vyhledat ukotvení.
 
-Dosažení tohoto prostředí obvykle vyžaduje vytvoření dobře kurátorované ukotvení, jak je popsáno v [vezměte v úvahu různá zobrazení perspektivy](#consider-various-viewing-perspectives) dříve. Pokud místnosti byla provedena z mnoho pohledů na problematiku při vytváření ukotvení, pak uživatelé můžete naskenovat skoro kdekoli při pokusu o nalezení ho.
+Toto prostředí obvykle vyžaduje, abyste dobře kurátorované ukotvení vytvářet jak je popsáno v [různých perspektiv zobrazení](#consider-various-viewing-perspectives). Pokud jste místo z mnoho pohledů na problematiku při vytváření ukotvení, uživatelé můžete naskenovat skoro kdekoli, při pokusu o ho najít.
 
-V podstatě, kdo vytváří ukotvení stráví více času kontrolu místa, osoby, které se později mohli kontrolovat a vyhledejte ukotvení rychle. To je důležité kompromis, bude nutné vzít v úvahu pro vaše prostředí.
+![Obrázek jak uživatele můžete naskenovat místo najít ukotvení](./media/scan-room.png)
 
-Malování aplikace MR jsme probírali výše je příklad, který není vhodné scénář a místa. Tady chce uživatel umístění ukotvení ostatním uživatelům rychle připojit k prostředí. Uživatelé nechtějí čekat místnosti je dobře naskenované, aby bylo možné spustit prostředí. Vzhledem k tomu, že všichni uživatelé víte přesně, kde tak, aby odkazoval na jejich zařízení najít ukotvení, tento scénář je lépe považováno za cílové scénáře.
+V podstatě můžete věnovat víc času skenování prostor při vytváření ukotvení tak, aby novější uživatelů můžete prohledávat a rychle vyhledejte ukotvení. Při vytváření prostředí, musíte vzít v úvahu tato důležité kompromis.
 
-## <a name="effectively-locating-anchors"></a>Efektivní umístění ukotvení
+Příklad realitu vykreslovací aplikace, kterou jsme probírali dříve nefunguje dobře jako scénář místnosti. Tady chce uživatel zadávající ukotvení ostatním uživatelům rychle připojit k prostředí. Uživatelé nechtějí čekat na spuštění prostředí, dokud dobře kontrole místnosti. Vzhledem k tomu, že všichni uživatelé víte přesně, kde tak, aby odkazoval na jejich zařízení najít ukotvení, tento příklad funguje lépe jako cílové scénáře.
 
-Vizuální sledování systémy využívají vizuální funkce prostředí pro funkce. Víc vizuální funkce jsou součástí kontrolu, tím pravděpodobněji budou hledání ukotvení.
+## <a name="anchor-location"></a>Umístění ukotvení
 
-Existují některé obecné pokyny, které můžete použít k sestavení a činnost koncových uživatelů, která vývojářům umožňuje kontrolu užitečné prostředí.
+Vizuální sledování systémy využívají vizuální funkce v prostředí. Víc vizuální funkce, které zahrnuje kontrolu, tím pravděpodobněji budou hledání ukotvení.
 
-Nejprve Pokud uživatel není během pár sekund vyhledat anchor, aplikace by měly podporovat uživatelům přesunovat zařízení tak, aby další perspektivy jsou zachyceny.  Aplikace může také podporovat samotných uživatelů přesouvat prostředí při hledání ukotvení z další perspektivy. Další perspektivy, ze kterých se zařízení zobrazí stejné body tím lépe.
+Postupujte podle pokynů v této části k vytvoření uživatelského prostředí, která vývojářům umožňuje kontrolu užitečné prostředí na obecné.
 
-Pro cílové scénáře požádejte uživatele, aby pohyb cíl, všechny při zobrazení z různých perspektiv. Jinými slovy požádejte uživatele, který chcete přesunout svoje stopy zachycení cíle z nové perspektivy, dokud ukotvení se nachází.
+Nejprve Pokud uživatel není během pár sekund vyhledat anchor, aplikace by měly podporovat uživatelům přesunovat zařízení zachytit další perspektivy. Aplikace může také Vyzvěte uživatele, aby sami pohyb prostředí tak, aby kontrolovala ukotvení z další perspektivy. Další funkce perspektivy, které se zobrazí zařízení, tím lépe.
 
-Pro scénáře místnosti požádejte uživatele, aby pomalu kontrolovat místnosti. Třeba požádejte uživatele, aby otočit zachycení 180 nebo dokonce 360 stupňů místnosti. Nebo můžete požádat uživatele, přesunout do nové perspektivy v místnosti. Smysluplných způsob vyhledávání je kontrola v místnosti. To zachycuje další vizuální funkce prostředí než Řekněme, vyhledávání blízkých zdi. Vyhledávání blízkých wall nezachytává jako velmi užitečné funkce prostředí sady visual.
+Cílové scénáře požádejte uživatele přesouvat cíl, chcete-li zobrazit z různých perspektiv. Jinými slovy požádejte uživatele o zachycení cíle z nové perspektivy, dokud nebude nalezen ukotvení.
 
-Není vhodné přejít na straně na straně zařízení pořád dokola, když hledáte ukotvení. To by jednoduše zachytit stejné body z hlediska stejné.
+Pro scénáře místnosti požádejte uživatele, aby pomalu kontrolovat místnosti. Třeba požádejte uživatele, chcete-li k zaznamenání 180stupňový rozsah s orientací nebo dokonce 360 stupňů místnosti. Nebo můžete požádat uživatele, chcete-li zobrazit místnosti z nové perspektivy. 
 
-## <a name="testing-the-experience"></a>Testování prostředí
+Smysluplných metodou je kontrola v místnosti. Kontrola v místnosti zaznamená další vizuální funkce prostředí než prohledávání blízké wall, například. Kontrola blízké stěny nebude zachytávat jako mnoho užitečných funkcí visual prostředí.
 
-Výše jsou obecné pokyny. S Azure prostorových ukotvení vytváření aplikací, které pracují s reálného světa. V důsledku toho je potřeba věnovat čas testování vaší aplikace ukotvení scénáře ve skutečných prostředích. To platí zejména pro prostředí, které jsou reprezentativní kde očekáváte, že uživatelům k používání aplikace.
+Není vhodné opakovaně přesunout zařízení ze strany na stranu při hledání ukotvení. To zachycuje jednoduše stejné body z hlediska stejné.
+
+## <a name="experience-tests"></a>Prostředí pro testy
+
+V tomto článku jsme probrali obecné pokyny. S prostorových kotvy psaní aplikací, které umožňují interakci s reálným světem. Proto by měl čas věnovat v testování vaší aplikace ukotvení scénáře ve skutečných prostředích. To platí zejména pro prostředí, které představují kde očekáváte, že vaši uživatelé k používání aplikace.

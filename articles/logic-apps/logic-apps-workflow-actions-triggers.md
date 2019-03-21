@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: a7a34c703b9c6589679cf2035785c005f13f06cb
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 066c8bc3edfc2bf36b4d96f787d6db6f16daec9b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822812"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856820"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Aktivační událost a akce referenční typy pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
@@ -2594,7 +2594,7 @@ V tomto příkladu definice akce HTTP `authentication` část určuje `Basic` ov
    "type": "Http",
    "inputs": {
       "method": "GET",
-      "uri": "http://www.microsoft.com",
+      "uri": "https://www.microsoft.com",
       "authentication": {
          "type": "Basic",
          "username": "@parameters('userNameParam')",
@@ -2628,7 +2628,7 @@ V tomto příkladu definice akce HTTP `authentication` část určuje `ClientCer
    "type": "Http",
    "inputs": {
       "method": "GET",
-      "uri": "http://www.microsoft.com",
+      "uri": "https://www.microsoft.com",
       "authentication": {
          "type": "ClientCertificate",
          "pfx": "@parameters('pfxParam')",
@@ -2668,7 +2668,7 @@ V tomto příkladu definice akce HTTP `authentication` část určuje `ActiveDir
    "type": "Http",
    "inputs": {
       "method": "GET",
-      "uri": "http://www.microsoft.com",
+      "uri": "https://www.microsoft.com",
       "authentication": {
          "type": "ActiveDirectoryOAuth",
          "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",

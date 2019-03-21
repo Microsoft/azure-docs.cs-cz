@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: d25fcbce99017ff19adebd61275b395c980a3cf5
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: cc6c66ccb0bb08d709b2015d643544fb9dc30f52
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891687"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57846731"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -49,6 +49,10 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 * Nový model objektu, pomocí metod a nejvyšší úrovně CosmosClient rozdělit mezi relevantní CosmosDatabases, CosmosContainers a CosmosItems třídy.
 * Podpora pro datové proudy.
 * Aktualizované CosmosResponseMessage ze serveru vrátit stavový kód a pouze vyvolat výjimku, pokud není vrácena žádná odpověď.
+
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+
+* Vylepšení diagnostiky
 
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
 
@@ -233,6 +237,7 @@ Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOve
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.2.3](#2.2.3) |11. března 2019 |--- |
 | [2.2.2](#2.2.2) |06. února 2019 |--- |
 | [2.2.1](#2.2.1) |Prosinec 24. května 2018 |--- |
 | [2.2.0](#2.2.0) |07 prosince 2018 |--- |

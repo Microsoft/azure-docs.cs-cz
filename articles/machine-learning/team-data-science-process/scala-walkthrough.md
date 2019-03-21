@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3109c4e6190cd8e485ae9b28117c4688836dfc26
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cdc37ace4687fe978030f528dcd5cbc87da596f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470310"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855933"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Vědecké zkoumání dat pomocí Scala a Spark v Azure
 Tento článek ukazuje, jak pomocí Scala pro úkoly technik strojového učení pomocí Sparku škálovatelné MLlib a Spark ML balíčky v clusteru Azure HDInsight Spark. Provede vás provedou úlohami, které tvoří [vědecké zkoumání dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): příjem dat a zkoumání, vizualizaci, vytváření funkcí, modelování a modelu využití. Modely v článku zahrnují logistické a lineární regrese, náhodných doménové struktury a vylepšené přechodu stromů (GBTs), kromě dvě běžné úkoly technik strojového učení:
@@ -26,9 +26,9 @@ Tento článek ukazuje, jak pomocí Scala pro úkoly technik strojového učení
 
 Proces modelování vyžaduje trénování a hodnocení na testovací datové sady a relevantní přesnost metriky. V tomto článku se dozvíte, jak k uložení těchto modelů ve službě Azure Blob storage a jak stanovení skóre a vyhodnotit prediktivní výkonu. Tento článek se týká také pokročilejší témata o tom, jak pomocí křížového ověření a hyperparametrické sweeping optimalizaci modelů. Data používaná je ukázka 2013 NYC taxislužby cesty a tarif datové sady k dispozici na Githubu.
 
-[Scala](http://www.scala-lang.org/), objektově orientované a funkční jazykové koncepce integruje jazyk založený na virtuálním počítači Java. Je škálovatelné jazyk, který skvěle hodí pro distribuované zpracování v cloudu a spouští v clusterech Spark v Azure.
+[Scala](https://www.scala-lang.org/), objektově orientované a funkční jazykové koncepce integruje jazyk založený na virtuálním počítači Java. Je škálovatelné jazyk, který skvěle hodí pro distribuované zpracování v cloudu a spouští v clusterech Spark v Azure.
 
-[Spark](http://spark.apache.org/) je open-source platforma paralelní zpracování, která podporuje zpracování v paměti pro zvýšení výkonu velkých objemů dat analytických aplikací. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbu pro iterativní algoritmy ve výpočtech machine learning a grafů. [Spark.ml](http://spark.apache.org/docs/latest/ml-guide.html) balíček poskytuje jednotné sadu rozhraní API vysoké úrovně postavené na data snímků, které vám pomůžou vytvořit a vyladit praktické strojového učení kanály. [MLlib](http://spark.apache.org/mllib/) je knihovny Spark škálovatelné machine learning, která přináší možnosti modelování do této distribuované prostředí.
+[Spark](https://spark.apache.org/) je open-source platforma paralelní zpracování, která podporuje zpracování v paměti pro zvýšení výkonu velkých objemů dat analytických aplikací. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbu pro iterativní algoritmy ve výpočtech machine learning a grafů. [Spark.ml](https://spark.apache.org/docs/latest/ml-guide.html) balíček poskytuje jednotné sadu rozhraní API vysoké úrovně postavené na data snímků, které vám pomůžou vytvořit a vyladit praktické strojového učení kanály. [MLlib](https://spark.apache.org/mllib/) je knihovny Spark škálovatelné machine learning, která přináší možnosti modelování do této distribuované prostředí.
 
 [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) je nabídka hostovaných v Azure z open-source Spark. Také zahrnuje podporu pro poznámkové bloky Jupyter Scala v clusteru Spark a možné spouštění interaktivních dotazů Spark SQL transformace, filtrovat a vizualizovat data uložená v úložišti objektů Blob v Azure. Fragmenty kódu Scala v tomto článku, které poskytují řešení a zobrazit příslušné grafy k vizualizaci dat spouštět v poznámkových blocích Jupyter nainstalované v clusterech Spark. Kroky modelování v těchto tématech mít kód, který popisuje, jak pro trénování, vyhodnocení, uložit a používat každý typ modelu.
 
@@ -368,7 +368,7 @@ Tento kód ukazuje, jak vytvořit novou funkci binningu hodin do provozu časov�
 ### <a name="indexing-and-one-hot-encoding-of-categorical-features"></a>Indexování a horkou jeden kódování funkcí zařazené do kategorií
 Modelování a předpovědět, funkce s kategorií vstupní data indexované nebo se musí kódováním než použití funkce MLlib vyžadují. Tato část ukazuje, jak index nebo kódování zařazené do kategorií funkce pro vstup do funkce modelování.
 
-Potřebujete indexovat nebo kódování vašich modelů různými způsoby v závislosti na modelu. Lineární a logistické regresní modely například vyžadovat jeden horkou kódování. Například funkce s tři kategorie se rozšířit do tří sloupců funkce. Každý sloupec obsahuje 0 nebo 1 podle kategorie hodnotu. Poskytuje MLlib [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) funkce pro jeden horkou kódování. Tomto kodéru mapuje sloupec indexů popisek ke sloupci binárního vektorů s maximálně jeden – hodnotu single. S toto kódování algoritmy, které očekávají číselnými hodnotami funkce, jako je logistické regrese, lze použít k funkcím zařazené do kategorií.
+Potřebujete indexovat nebo kódování vašich modelů různými způsoby v závislosti na modelu. Lineární a logistické regresní modely například vyžadovat jeden horkou kódování. Například funkce s tři kategorie se rozšířit do tří sloupců funkce. Každý sloupec obsahuje 0 nebo 1 podle kategorie hodnotu. Poskytuje MLlib [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) funkce pro jeden horkou kódování. Tomto kodéru mapuje sloupec indexů popisek ke sloupci binárního vektorů s maximálně jeden – hodnotu single. S toto kódování algoritmy, které očekávají číselnými hodnotami funkce, jako je logistické regrese, lze použít k funkcím zařazené do kategorií.
 
 Tady můžete transformovat pouze čtyři proměnné zobrazíte příklady, které jsou řetězce znaků. Také můžete indexovat jiné proměnné, jako je například den v týdnu, reprezentovaný číselné hodnoty, jako proměnné zařazené do kategorií.
 
@@ -853,7 +853,7 @@ Vytvořte grafy pomocí Pythonu matplotlib.
 ### <a name="create-a-gbt-regression-model"></a>Vytvořte GBT regresní model
 Vytvoření GBT regresní model pomocí Spark ML `GBTRegressor()` funkci a pak vyhodnotit model na testovací data.
 
-[Vylepšené přechodu stromů](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) jsou umožňující rozhodovacích stromů. GBTs trénování rozhodovacích stromů zavádět postupně, chcete-li minimalizovat ztrátu funkce. Vám pomůže GBTs regrese a klasifikace. Jejich zvládne zařazené do kategorií funkcí, nevyžadují, aby funkce škálování a můžete zachytit nonlinearities a interakce funkce. Můžete také lze využít v nastavení multiclass klasifikace.
+[Vylepšené přechodu stromů](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) jsou umožňující rozhodovacích stromů. GBTs trénování rozhodovacích stromů zavádět postupně, chcete-li minimalizovat ztrátu funkce. Vám pomůže GBTs regrese a klasifikace. Jejich zvládne zařazené do kategorií funkcí, nevyžadují, aby funkce škálování a můžete zachytit nonlinearities a interakce funkce. Můžete také lze využít v nastavení multiclass klasifikace.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()

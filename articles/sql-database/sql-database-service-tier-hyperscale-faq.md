@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/06/2019
-ms.openlocfilehash: d94bc570f47d71a7e2b626041acd4bb6e84d0dc1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 36b2f3817c7e96a35c1e8f3aba22db201224ceba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876003"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075931"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy týkající se databáze Azure SQL Hyperškálováním
 
@@ -45,7 +45,7 @@ Založený na virtuálních jádrech služby, které úrovně se liší předev�
 - Úroveň pro důležité obchodní informace služby jsou vhodné pro firemní úlohy kde vstupně-výstupní latence je prioritou.
 
 | | Typ prostředku | Obecné použití |  Hyperškálování | Pro důležité obchodní informace |
-|:---|:---:|:---:|:---:|:---:|:---:|
+|:---|:---:|:---:|:---:|:---:|
 | **Nejlepší pro** |Vše|  Většinu obchodních úloh. Nabídky rozpočtu orientované vyvážené výpočetní a úložné možnosti. | Datové aplikace s požadavky na kapacitu velkých objemů dat a možnost automatického škálování úložiště a škálování výpočetní plynule. | OLTP aplikace s vysokou četností transakcí a nejnižší latenci vstupně-výstupních operací. Nabízí nejvyšší odolnost proti selhání s využitím několika, izolovaných replik.|
 |  **Typ prostředku** ||Izolované databáze nebo elastického fondu / spravované instance | Izolovaná databáze | Izolované databáze nebo elastického fondu / spravované instance |
 | **Vypočítat velikost**|Izolovanou databázi nebo elastický fond * | 1 až 80 virtuálních jader | 1 až 80 virtuálních jader * | 1 až 80 virtuálních jader |

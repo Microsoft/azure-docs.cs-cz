@@ -1,5 +1,5 @@
 ---
-title: Monitorování a protokolování v Azure AD hesla Protection ve verzi preview
+title: Monitorování a protokolování do ochrany hesel služby Azure AD
 description: Vysvětlení ochrana hesel Azure AD, monitorování a protokolování
 services: active-directory
 ms.service: active-directory
@@ -11,23 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1f946eceab68b0fe49ea67dc33a7094458cd14c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: b1e12addc15afe0c0745e0e8d5a9b6718483d477
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451482"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293715"
 ---
-# <a name="preview-azure-ad-password-protection-monitoring-and-logging"></a>Verze Preview: Ochrana hesel Azure AD monitorování a protokolování
-
-|     |
-| --- |
-| Ochrana hesel Azure AD je funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Ochrana hesel Azure AD monitorování a protokolování
 
 Po nasazení ochrany hesel služby Azure AD monitorování a vytváření sestav jsou základní úlohy. Tento článek obsahuje podrobnosti k pomoct pochopit různé postupy monitorování, včetně, kde každá služba protokoluje informace a hlášení týkající se použití ochrany hesel služby Azure AD.
 
-# <a name="dc-agent-event-logging"></a>Protokolování událostí agenta řadiče domény
+## <a name="dc-agent-event-logging"></a>Protokolování událostí agenta řadiče domény
 
 V každém řadiči domény k softwaru agenta služby řadiče domény zapíše výsledky operace ověření každé jednotlivé heslo (a další stav) do místního protokolu událostí:
 

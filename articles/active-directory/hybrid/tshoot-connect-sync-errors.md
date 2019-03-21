@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43e84e97499010f36e3cd39c13bf61d281b66c7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d2ba74961eb549afd2fcf7c10f2d8b981e389a2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193131"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845084"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Řešení chyb při synchronizaci
 Při synchronizaci dat identity z Windows Server Active Directory (AD DS) do Azure Active Directory (Azure AD), může dojít k chybám. Tento článek obsahuje přehled různých typů chyb synchronizace, některé z možných scénářů, které způsobují tyto chyby a potenciální způsoby, jak opravit chyby. Tento článek obsahuje běžné typy chyb a nemusí zahrnovat všechny možné chyby.
@@ -72,19 +72,19 @@ Schéma služby Active Directory Azure nepovoluje dva nebo více objektů mají 
 
 #### <a name="example-case"></a>Příklad případů:
 1. **Bob Smith** je synchronizované uživatele v Azure Active Directory z na místní služby Active Directory této *contoso.com*
-2. Bob Smith **UserPrincipalName** je nastaven jako **bobs@contoso.com**.
+2. Bob Smith **UserPrincipalName** je nastaven jako **honzuv\@contoso.com**.
 3. **"abcdefghijklmnopqrstuv =="** je **SourceAnchor** vypočte tak Azure AD Connect s použitím Bob Smith **objectGUID** z místní služby Active Directory, která je  **immutableId** Bob Smith v Azure Active Directory.
 4. Bob také obsahuje následující hodnoty **proxyAddresses** atribut:
    * smtp: bobs@contoso.com
    * smtp: bob.smith@contoso.com
-   * **smtp: bob@contoso.com**
+   * **smtp: bob\@contoso.com**
 5. Nový uživatel **Bob Taylora**, se přidá do místní služby Active Directory.
-6. Bob Taylora **UserPrincipalName** je nastaven jako **bobt@contoso.com**.
+6. Bob Taylora **UserPrincipalName** je nastaven jako **bobt\@contoso.com**.
 7. **"abcdefghijkl0123456789 ==" "** je **sourceAnchor** vypočte tak Azure AD Connect s použitím Bob Taylora **objectGUID** z na místní služby Active Directory. Bob Taylora objektu má není synchronizované do Azure Active Directory ještě.
 8. Bob Taylora má následující hodnoty atributu proxyAddresses
    * smtp: bobt@contoso.com
    * smtp: bob.taylor@contoso.com
-   * **smtp: bob@contoso.com**
+   * **smtp: bob\@contoso.com**
 9. Během synchronizace Azure AD Connect rozpozná přidání Roberta Taylora v místní službě Active Directory a pokládat službu Azure AD, chcete-li provést stejnou změnu.
 10. Azure AD se nejprve provést pevné shoda. To znamená, budou vyhledány Pokud libovolný objekt s immutableId se rovná "abcdefghijkl0123456789 ==". Pevné shoda se nezdaří, protože žádný jiný objekt ve službě Azure AD bude mít tento immutableId.
 11. Azure AD se pak pokusí konfigurace soft-match Bob Taylora. To znamená bude hledat, pokud je jakýkoli objekt s proxyAddresses rovna tří hodnot, včetně smtp: bob@contoso.com
@@ -116,8 +116,8 @@ Pokud Azure AD se pokusí obnovitelné porovnat dva objekty, je možné, že dva
 * Vytvoření skupiny zabezpečení pošty v Office 365. Správce přidá nový uživatel nebo kontakt v v místní instalaci AD (který se nesynchronizuje do Azure AD ještě) se stejnou hodnotou atributu ProxyAddresses jako příslušná skupina Office 365.
 
 #### <a name="example-case"></a>Příklad případ
-1. Správce vytvoří novou skupinu zabezpečení pošty v Office 365 pro oddělení daně a poskytuje e-mailovou adresu jako tax@contoso.com. Tato skupina je přiřazena hodnota atributu ProxyAddresses **smtp: tax@contoso.com**
-2. Nový uživatel připojí Contoso.com a vytvoření účtu pro uživatele v místním prostředí pomocí proxyAddress jako **smtp: tax@contoso.com**
+1. Správce vytvoří novou skupinu zabezpečení pošty v Office 365 pro oddělení daně a poskytuje e-mailovou adresu jako tax@contoso.com. Tato skupina je přiřazena hodnota atributu ProxyAddresses **smtp: daně\@contoso.com**
+2. Nový uživatel připojí Contoso.com a vytvoření účtu pro uživatele v místním prostředí pomocí proxyAddress jako **smtp: daně\@contoso.com**
 3. Pokud Azure AD Connect synchronizuje nový uživatelský účet, se zobrazí chybová zpráva "ObjectTypeMismatch".
 
 #### <a name="how-to-fix-objecttypemismatch-error"></a>K vyřešení chyby ObjectTypeMismatch
@@ -143,16 +143,16 @@ Pokud Azure AD Connect se pokusí o přidání nového objektu nebo aktualizovat
 
 #### <a name="example-case"></a>Příklad případů:
 1. **Bob Smith** je synchronizované uživatele v Azure Active Directory z na místní služby Active Directory contoso.com
-2. Bob Smith **UserPrincipalName** v místním prostředí je nastaven jako **bobs@contoso.com**.
+2. Bob Smith **UserPrincipalName** v místním prostředí je nastaven jako **honzuv\@contoso.com**.
 3. Bob také obsahuje následující hodnoty **proxyAddresses** atribut:
    * smtp: bobs@contoso.com
    * smtp: bob.smith@contoso.com
-   * **smtp: bob@contoso.com**
+   * **smtp: bob\@contoso.com**
 4. Nový uživatel **Bob Taylora**, se přidá do místní služby Active Directory.
-5. Bob Taylora **UserPrincipalName** je nastaven jako **bobt@contoso.com**.
+5. Bob Taylora **UserPrincipalName** je nastaven jako **bobt\@contoso.com**.
 6. **Bob Taylora** má následující hodnoty **ProxyAddresses** atribut i. smtp: bobt@contoso.com ii. smtp: bob.taylor@contoso.com
 7. Objekt Taylora Bob úspěšně synchronizována s Azure AD.
-8. Správce rozhodl aktualizaci Bob Taylora **ProxyAddresses** atribut s následující hodnotou: i. **smtp: bob@contoso.com**
+8. Správce rozhodl aktualizaci Bob Taylora **ProxyAddresses** atribut s následující hodnotou: i. **smtp: bob\@contoso.com**
 9. Azure AD se pokus o aktualizaci Bob Taylora objektu ve službě Azure AD s vyšší hodnotou, ale tato operace se nezdaří jako, že hodnota ProxyAddresses je už přiřazený k Bob Smith, výsledkem chyba "AttributeValueMustBeUnique".
 
 #### <a name="how-to-fix-attributevaluemustbeunique-error"></a>K vyřešení chyby AttributeValueMustBeUnique
@@ -186,7 +186,7 @@ a. Ujistěte se, že se znaky a požadovaný formát podporuje atribut userPrinc
 Tento případ vede **"FederatedDomainChangeError"** došlo k chybě synchronizace, pokud přípona UserPrincipalName uživatele se změní z jedné federované domény na jinou federovanou doménu.
 
 #### <a name="scenarios"></a>Scénáře
-Synchronizované uživatele byl změněn přípona UserPrincipalName z jedné federované domény na jinou federovanou doménu v místním prostředí. Například *UserPrincipalName = bob@contoso.com*  byl změněn na *UserPrincipalName = bob@fabrikam.com* .
+Synchronizované uživatele byl změněn přípona UserPrincipalName z jedné federované domény na jinou federovanou doménu v místním prostředí. Například *UserPrincipalName = bob\@contoso.com* byl změněn na *UserPrincipalName = bob\@fabrikam.com*.
 
 #### <a name="example"></a>Příklad:
 1. Bob Smith, účet pro Contoso.com, získá přidat jako nový uživatel ve službě Active Directory s UserPrincipalName bob@contoso.com
@@ -195,7 +195,7 @@ Synchronizované uživatele byl změněn přípona UserPrincipalName z jedné fe
 4. UserPrincipalName Boba neaktualizuje a má za následek chybu při synchronizaci "FederatedDomainChangeError".
 
 #### <a name="how-to-fix"></a>K vyřešení
-Pokud přípona UserPrincipalName uživatele byl aktualizován z bob @**contoso.com** Bob**fabrikam.com**, kde obě **contoso.com** a **fabrikam.com** jsou **federovaných domén**, proveďte následující postup k vyřešení chyby synchronizace
+Pokud přípona UserPrincipalName uživatele byl aktualizován z bob @**contoso.com** Bob\@**fabrikam.com**, kde obě **contoso.com** a  **Fabrikam.com** jsou **federovaných domén**, proveďte následující postup k vyřešení chyby synchronizace
 
 1. Aktualizovat atribut UserPrincipalName daného uživatele ve službě Azure AD z bob@contoso.com k bob@contoso.onmicrosoft.com. Pomocí modulu Azure AD PowerShell můžete použít následující příkaz Powershellu: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. Povolte další cyklus synchronizace pokusu o synchronizaci. Tato doba synchronizace bude úspěšné a bude se aktualizovat atribut UserPrincipalName Bob k bob@fabrikam.com podle očekávání.

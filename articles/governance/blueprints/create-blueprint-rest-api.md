@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 347ee8389677e507e299490d86ae9b51ba4f59a6
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 9dada3c6f0718db41a24368aca594bbd3215fec5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731577"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994869"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definování a přiřazení podrobného plánu Azure Blueprint pomocí REST API
 
@@ -70,6 +70,9 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
 
 - `{YourMG}` -Nahraďte ID skupiny pro správu
 - Proměnnou `{subscriptionId}` nahraďte ID předplatného.
+
+> [!NOTE]
+> Podrobné plány. mohou také vytvořit na úrovni předplatného. Příklad najdete v tématu [vytvořit podrobný plán na předplatné příklad](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
 
 1. Vytvořte počáteční objekt _blueprint_. **Text požadavku** obsahuje vlastnosti podrobného plánu, vytvářené skupiny prostředků a všechny parametry na úrovni podrobného plánu. Tyto parametry se nastaví při přiřazení a používají je artefakty přidané v dalších krocích.
 
@@ -438,6 +441,6 @@ K odebrání samotného podrobného plánu použijte následující operaci REST
 - Další informace o [životním cyklu podrobného plánu](./concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](./concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](./concepts/sequencing-order.md)
-- Zjistěte, jak používat [zamykání prostředků podrobného plánu](./concepts/resource-locking.md)
+- Použití [zamykání prostředků podrobného plánu](./concepts/resource-locking.md)
 - Další informace o [aktualizaci existujících přiřazení](./how-to/update-existing-assignments.md)
 - Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](./troubleshoot/general.md)

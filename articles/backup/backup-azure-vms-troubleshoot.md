@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: srinathv
-ms.openlocfilehash: f79a9048e50901424330224066cb84929d9126dc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 906c0ef3db530ecb4aeade449e41a866a4b09a74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530922"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005710"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Odstraňování potíží se zálohováním virtuálních počítačů Azure
 Řešení potíží s chybami při pomocí služby Azure Backup pomocí informací uvedených v následující tabulce došlo k chybě:
@@ -41,12 +41,13 @@ ms.locfileid: "57530922"
 | Služba Azure Backup nemá dostatečná oprávnění pro Azure Key Vault pro zálohování šifrovaných virtuálních počítačů. |Služba Backup tato oprávnění poskytli v Powershellu pomocí kroků v [vytvořit virtuální počítač z obnovených disků](backup-azure-vms-automation.md). |
 |Instalace rozšíření snímku selhalo s chybou **modelu COM + se nepovedlo komunikovat s Microsoft Distributed Transaction Coordinator**. | Z příkazového řádku se zvýšenými oprávněními spusťte službu Windows **systémová aplikace modelu COM +**. Příkladem je **net start COMSysApp**. Pokud se službu nepodaří spustit, proveďte následující kroky:<ol><li> Ujistěte se, že účet přihlášení služby **Distributed Transaction Coordinator** je **síťová služba**. Pokud není, změnit přihlašovací účet, který chcete **síťová služba** a restartujte službu. Potom se pokuste spustit **systémová aplikace modelu COM +**.<li>Pokud **systémová aplikace modelu COM +** nebude spustit, proveďte následující kroky odinstalovat a nainstalovat službu **Distributed Transaction Coordinator**: <ol><li>Zastavte službu MSDTC. <li>Otevřete příkazový řádek, **cmd**. <li>Spusťte příkaz ```msdtc -uninstall```. <li>Spusťte příkaz ```msdtc -install```. <li>Spuštění služby MSDTC. </ol> <li>Spustit službu Windows **systémová aplikace modelu COM +**. Po **systémová aplikace modelu COM +** zahájení aktivace úlohy zálohování z webu Azure portal.</ol> |
 |  Operace snímku nebyla úspěšná kvůli chybě modelu COM +. | Doporučujeme, abyste službu Windows **systémová aplikace modelu COM +** z příkazového řádku se zvýšenými oprávněními **net start COMSysApp**. Pokud se problém nevyřeší, restartujte virtuální počítač. Pokud vám nepomohly restartování virtuálního počítače, zkuste [odebrání rozšíření VMSnapshot](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout) a aktivovat zálohování ručně. |
-| Zálohování se nepovedlo zablokovat přípojné body virtuálního počítače na pořízení konzistentního snímku souboru systému a. | Proveďte následující krok: <ul><li>Zkontrolujte stav systému souborů všech připojených zařízení s použitím **"tune2fs"** příkazu. Příkladem je **tune2fs -l/dev/sdb1 \** .| GREP **stavu systému souborů**. <li>Odpojte zařízení, u kterých stav systému souborů není čistý pomocí **"umount"** příkazu. <li> Spusťte kontrolu konzistence systému souborů v těchto zařízeních pomocí **"fsck"** příkazu. <li> Znovu připojte zařízení a opakujte zálohování.</ol> |
+| Zálohování se nepovedlo zablokovat přípojné body virtuálního počítače na pořízení konzistentního snímku souboru systému a. | Proveďte následující krok: <ul><li>Zkontrolujte stav systému souborů všech připojených zařízení s použitím **"tune2fs"** příkazu. Příkladem je **tune2fs -l/dev/sdb1 \\** .\| grep **stavu systému souborů**. <li>Odpojte zařízení, u kterých stav systému souborů není čistý pomocí **"umount"** příkazu. <li> Spusťte kontrolu konzistence systému souborů v těchto zařízeních pomocí **"fsck"** příkazu. <li> Znovu připojte zařízení a opakujte zálohování.</ol> |
 | Operace snímku nebyla úspěšná kvůli chybě vytvořit zabezpečený komunikační kanál. | <ol><li> Otevřete Editor registru spuštěním **regedit.exe** v režimu se zvýšenými oprávněními. <li> Identifikujte všechny verze rozhraní .NET Framework, které jsou k dispozici ve vašem systému. Jsou k dispozici v nabídce hierarchie klíč registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft**. <li> Pro každé rozhraní .NET Framework v klíči registru přidejte následující klíč: <br> **SchUseStrongCrypto"=dword:00000001**. </ol>|
 | Operace snímku nebyla úspěšná kvůli chybě v instalaci distribuovatelné součásti Visual C++ pro Visual Studio 2012. | Přejděte na C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion a nainstalujte vcredist2012_x64. Ujistěte se, že hodnotu klíče registru, který umožňuje tato instalace služby je nastavena na správnou hodnotu. To znamená, hodnota klíče registru **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** je nastavena na **3** a ne **4**. <br><br>Pokud stále máte problémy s instalací, restartujte službu instalace spuštěním **MSIEXEC/UNREGISTER** následovaný **MSIEXEC /REGISTER** z příkazového řádku se zvýšenými oprávněními.  |
 
 
 ## <a name="jobs"></a>Úlohy
+
 | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- |
 | Zrušení se nepodporuje pro tento typ úlohy: <br>Počkejte, až úloha dokončí. |Žádný |

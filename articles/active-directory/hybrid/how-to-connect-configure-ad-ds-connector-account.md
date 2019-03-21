@@ -11,12 +11,12 @@ ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d39305b4a8fafbd2fe2f1ac101f92597d6a3e4a0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6510105af8c019b1aca5333f516a10667edaadb5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189039"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000869"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurace oprávnění účtu AD DS konektoru 
 
@@ -104,7 +104,7 @@ Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' -Obje
 ```
  
 ### <a name="view-ad-ds-permissions-of-an-object"></a>Zobrazit služby AD DS oprávnění objektu 
-Chcete-li zobrazit seznam aktuálně nastavená u objektu služby Active Directory zadáním jeho DistinguishedName oprávnění můžete použít následující rutinu: 
+Chcete-li zobrazit seznam aktuálně nastavená na objekt služby Active Directory zadáním jeho DistinguishedName oprávnění můžete použít následující rutinu: 
 
 ``` powershell
 Show-ADSyncADObjectPermissions -ADobjectDN '<DistinguishedName>' 
@@ -158,7 +158,7 @@ Tato rutina se nastavit následující oprávnění:
 
 |Type |Název |Access |Platí pro|
 |-----|-----|-----|-----| 
-|Povolit|Účet konektoru služby AD DS|Vlastnost pro čtení/zápis|MS-DS-konzistence – Guid|Následné uživatelské objekty|
+|Povolit|Účet konektoru služby AD DS|Vlastnost pro čtení/zápis|Následné uživatelské objekty|
 
 ### <a name="permissions-for-password-hash-synchronization"></a>Oprávnění pro synchronizaci hodnot Hash hesel 
 Pokud chcete nastavit oprávnění pro účet konektoru služby AD DS při použití synchronizace hodnot Hash hesel, spusťte: 
@@ -271,7 +271,7 @@ Tento skript Powershellu se zvýšit oprávnění pro účet AD Connector zadat 
 - Zakázat dědičnosti na zadaný objekt 
 - Odeberte všechny položky řízení přístupu pro daný objekt, s výjimkou ACE konkrétní na sebe sama tak, aby zachovat beze změny výchozích oprávnění, pokud jde o sama na sebe. 
  
- Parametr - ADConnectorAccountDN je účet AD, jehož oprávnění musí být zvýšit. Toto je obvykle MSOL_nnnnnnnnnnnn účtu domény, který je nakonfigurovaný v konektoru služby AD DS (určení účtu AD DS konektoru najdete v článku). -Credential parametr je nutné zadat účet správce, který má dostatečná oprávnění k omezení oprávnění služby Active Directory AD cílového objektu. To je obvykle Enterprise nebo správce domény.  
+  Parametr - ADConnectorAccountDN je účet AD, jehož oprávnění musí být zvýšit. Toto je obvykle MSOL_nnnnnnnnnnnn účtu domény, který je nakonfigurovaný v konektoru služby AD DS (určení účtu AD DS konektoru najdete v článku). -Credential parametr je nutné zadat účet správce, který má dostatečná oprávnění k omezení oprávnění služby Active Directory AD cílového objektu. To je obvykle Enterprise nebo správce domény.  
 
 ``` powershell
 Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 

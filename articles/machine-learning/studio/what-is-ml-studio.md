@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: 44f2c24f1fe53b6fadabf23f03a6feda75c87883
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 570f0a825f679ec5f0cc4c62b0608ec517148161
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738279"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893998"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Machine Learning Studio publikuje modely jako webové služby, které je možné snadno využívat ve vlastních aplikacích nebo nástrojích BI, například v Excelu.
@@ -40,7 +40,7 @@ Nevyžaduje se žádné programování – model prediktivní analýzy se konstr
 ## <a name="download-the-machine-learning-studio-overview-diagram"></a>Stažení diagramu s přehledem nástroje Machine Learning Studio
 Stáhněte si diagram s **přehledem možností nástroje Machine Learning Studio**, který na nejvyšší úrovni znázorňuje schéma funkcí nástroje Machine Learning Studio. Pokud ho chcete mít po ruce, můžete si ho vytisknout ve velikosti tabloid (11 × 17 palců).
 
-**Diagram tady si můžete stáhněte: [Microsoft Azure Machine Learning Studio přehled možností](http://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
+**Diagram tady si můžete stáhněte: [Microsoft Azure Machine Learning Studio přehled možností](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
 ![Microsoft Azure Machine Learning Studio přehled možností](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 ## <a name="get-started-with-machine-learning-studio"></a>Začínáme s nástrojem Machine Learning Studio
@@ -61,7 +61,7 @@ Kliknutím na **Studio** přejdete do nástroje **Azure Machine Learning Studio*
 * **NASTAVENÍ** – Kolekce nastavení, kterou můžete použít ke konfiguraci účtu a prostředků
 
 ### <a name="gallery"></a>Galerie
-Kliknutím na **Galerie** přejdete na ke **[galerii Azure AI](http://gallery.azure.ai/)**. Galerie je místo, kde komunita datových vědců a vývojářů sdílí řešení vytvořená pomocí komponent sady Cortana Intelligence Suite.
+Kliknutím na **Galerie** přejdete na ke **[galerii Azure AI](https://gallery.azure.ai/)**. Galerie je místo, kde komunita datových vědců a vývojářů sdílí řešení vytvořená pomocí komponent sady Cortana Intelligence Suite.
 
 Další informace o této galerii najdete v tématu věnovaném [sdílení a hledání řešení v galerii Azure AI](gallery-how-to-use-contribute-publish.md).
 

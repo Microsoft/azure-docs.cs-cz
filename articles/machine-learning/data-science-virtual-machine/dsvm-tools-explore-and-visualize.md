@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: a243ac45ce29ae824c8f38036d4387da3b1cff8f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 165df03ec06081fe9b2e1ab84ffe7579ac457758
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453208"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855482"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Data vizualizace nástroje pro zkoumání a na virtuální počítač pro datové vědy
 
@@ -43,7 +43,7 @@ Klíče krok pro datové vědy je rozumět datům. Vizualizace a nástroje na pr
 | Podporované DSVM edice     | Windows, Linux     |
 | Typické použití      | Obecné nástroje ML     |
 | Jak používat nebo ji spustit?      | Na Windows vyhledejte Weka v nabídce Start. V Linuxu, přihlaste se pomocí X2Go a pak přejděte do aplikace -> Vývoj -> Weka. |
-| Odkazy na ukázky      | [Ukázky weka](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
+| Odkazy na ukázky      | [Ukázky weka](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | Související nástroje na datové VĚDY      |Xgboost LightGBM Rattle,   |
 
 ## <a name="rattle"></a>Rattle

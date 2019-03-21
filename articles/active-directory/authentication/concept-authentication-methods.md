@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9d90407dab29f431f5a592e077c859aea997c4c
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
-ms.translationtype: MT
+ms.openlocfilehash: 09f61f60a3885fbc58cddc4b46df11014057f54e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214091"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999487"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -148,6 +148,8 @@ Aplikace Microsoft Authenticator nebo jiným aplikacím třetích stran může s
 > [!WARNING]
 > Pro samoobslužné resetování hesla při pouze pro resetování ověřovací kód je jedinou možností, které jsou dostupné pro uživatele se vyžaduje jedna metoda **k zajištění nejvyšší úrovně zabezpečení**.
 >
+
+Uživatelé mohou mít kombinaci až 5 hardwarové tokeny OATH nebo ověřovací aplikace, jako je nakonfigurován pro použití v každém okamžiku aplikaci Microsoft Authenticator.
 
 ## <a name="oath-hardware-tokens-public-preview"></a>Tokeny OATH hardwaru (public preview)
 

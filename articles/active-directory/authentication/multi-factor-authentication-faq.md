@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c94c564434df0e9c48facedba1d2232f9510662e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: cc7b935833a6b212bb008be86b26c613d8817133
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206464"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182604"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy k Azure Multi-Factor Authentication
 
@@ -87,7 +87,7 @@ Další informace o možnostech [jak získat Azure Multi-Factor Authentication](
 
 V některých případech Ano.
 
-Ověřování službou Multi-Factor Authentication pro správce Azure nabízí podmnožinu funkcí Azure MFA bez poplatků pro přístup k online službám Microsoftu, včetně portály správce Azure a Office 365. Tato nabídka platí jenom pro globální správci v instancích Azure Active Directory, které nemají plnou verzi Azure MFA prostřednictvím licenci MFA, sadu nebo samostatný založenou na skutečné spotřebě zprostředkovatele. Pokud vaši správci použít bezplatnou verzi, a poté zakoupit plnou verzi Azure MFA, pak všichni globální správci se převedou na placenou verzi automaticky.
+Ověřování službou Multi-Factor Authentication pro správce Azure nabízí podmnožinu funkcí Azure MFA bez poplatků pro přístup k online službám Microsoftu, včetně [webu Azure portal](https://portal.azure.com) a [centra pro správu služeb Microsoft 365](https://admin.microsoft.com). Tato nabídka platí jenom pro globální správci v instancích Azure Active Directory, které nemají plnou verzi Azure MFA prostřednictvím licenci MFA, sadu nebo samostatný založenou na skutečné spotřebě zprostředkovatele. Pokud vaši správci použít bezplatnou verzi, a poté zakoupit plnou verzi Azure MFA, pak všichni globální správci se převedou na placenou verzi automaticky.
 
 Multi-Factor Authentication pro uživatele Office 365 nabízí podmnožinu funkcí Azure MFA bez poplatků pro přístup ke službám Office 365, jako jsou Exchange Online a SharePoint Online. Tato nabídka platí pro uživatele, kteří mají přiřazen, když odpovídající instance služby Azure Active Directory nemá plnou verzi Azure MFA prostřednictvím licenci MFA, sadu nebo samostatný založenou na skutečné spotřebě poskytovatelem licence k Office 365.
 

@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8cf65f0ed3ecd5c9a86d6adcdd5defd930522f85
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: ef29dafe32c3c5988cd33f59c8436eeef4b45886
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301549"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849274"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Jak pracovat s hledání výsledků ve službě Azure Search
 Tento článek obsahuje pokyny pro implementaci standardní elementy na stránce výsledků hledání, jako je například celkového počtu, načtení dokumentu, řazení a navigaci. Možnosti stránky, které přispívají data nebo informace, které výsledky hledání jsou určeny pomocí [hledání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) požadavky odeslané do služby Azure Search. 
 
 V rozhraní REST API zahrnují požadavky GET command, cestu a parametry dotazu, které informují o co je požadované služby a jak formulovali odpovědi. V sadě .NET SDK je ekvivalentní rozhraní API [DocumentSearchResult třídy](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult?view=azure-dotnet).
 
-Několik vzorových kódů patří webového front-endové rozhraní, který najdete tady: [New York City úlohy ukázkovou aplikaci](http://azjobsdemo.azurewebsites.net/) a [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Několik vzorových kódů patří webového front-endové rozhraní, který najdete tady: [New York City úlohy ukázkovou aplikaci](https://azjobsdemo.azurewebsites.net/) a [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
 > Žádost platná zahrnuje celou řadu prvků, jako je například adresa URL služby a cestu, příkaz HTTP `api-version`, a tak dále. Pro zkrácení jsme oříznut tyto příklady zvýrazňovat syntaxi, která je relevantní pro stránkování. Další informace o žádosti o syntaxi naleznete v tématu [rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice). > 

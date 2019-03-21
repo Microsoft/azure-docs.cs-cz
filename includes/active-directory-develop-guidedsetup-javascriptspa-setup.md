@@ -4,7 +4,7 @@ description: zahrnout soubor
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: d7b78519f1e81fed1f74b6f3a2fd2720cd28cce4
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: a9aeb2f45ec8c882c47425879ab6ef726ca94060
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843387"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203298"
 ---
 ## <a name="setting-up-your-web-server-or-project"></a>Nastavení webového serveru nebo projektu
 
@@ -38,41 +38,41 @@ Pokyny v této příručce jsou založené na Node.js a sadě Visual Studio 2017
 
 ## <a name="create-your-project"></a>Vytvoření projektu
 
-> ### <a name="option-1-node-other-web-servers"></a>Možnost 1: Uzel nebo jiné webové servery
+> ### <a name="option-1-node-other-web-servers"></a>Option 1: Uzel nebo jiné webové servery
 > Ujistěte se, že jste si nainstalovali [Node.js](https://nodejs.org/en/download/), postupujte podle níže uvedených kroků:
 > - Vytvořte složku pro hostování vaší aplikace.
 
 <p/><!-- -->
 
-> ### <a name="option-2-visual-studio"></a>Možnost 2: Visual Studio
+> ### <a name="option-2-visual-studio"></a>Option 2: Visual Studio
 > Pokud používáte Visual Studio a vytvořit nový projekt, postupujte podle pokynů můžete vytvořit nové řešení sady Visual Studio:
-> 1.    V sadě Visual Studio: **soubor > Nový > Projekt**
+> 1.    V sadě Visual Studio:  **Soubor > Nový > Projekt**
 > 2.    V části **Visual C# \Web**vyberte **webová aplikace ASP.NET (.NET Framework)**
 > 3.    Zadejte název pro vaši aplikaci a vyberte **OK**
 > 4.    V části **nová webová aplikace ASP.NET**vyberte **prázdný**
 
 
 ## <a name="create-your-single-page-applications-ui"></a>Vytvoření uživatelského rozhraní jednostránkové aplikace
-1.  Vytvoření `index.html` soubor pro vaše aplikace SPA v JavaScriptu. Pokud používáte Visual Studio, vyberte projekt (Kořenová složka projektu), klikněte pravým tlačítkem myši a vyberte: **Přidat > Nová položka > stránka HTML** a pojmenujte ho index.html.
+1. Vytvoření `index.html` soubor pro vaše aplikace SPA v JavaScriptu. Pokud používáte Visual Studio, vyberte projekt (Kořenová složka projektu), klikněte pravým tlačítkem myši a vyberte: **Přidat > Nová položka > stránka HTML** a pojmenujte ho index.html.
 
-2.  Přidejte následující kód na stránku:
-```html
-<!DOCTYPE html>
-<html>
-<head>
-        <title>Quickstart for MSAL JS</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
-        <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.3/js/msal.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-</head>
-<body>
-        <h2>Welcome to MSAL.js Quickstart</h2><br/>
-        <h4 id="WelcomeMessage"></h4>
-        <button id="SignIn" onclick="signIn()">Sign In</button><br/><br/>
-        <pre id="json"></pre>
-        <script>
-            //JS code
-        </script>
-</body>
-</html>
-```
+2. Přidejte následující kód na stránku:
+   ```html
+   <!DOCTYPE html>
+   <html>
+   <head>
+       <title>Quickstart for MSAL JS</title>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
+       <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.3/js/msal.js"></script>
+       <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   </head>
+   <body>
+       <h2>Welcome to MSAL.js Quickstart</h2><br/>
+       <h4 id="WelcomeMessage"></h4>
+       <button id="SignIn" onclick="signIn()">Sign In</button><br/><br/>
+       <pre id="json"></pre>
+       <script>
+           //JS code
+       </script>
+   </body>
+   </html>
+   ```

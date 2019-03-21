@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99c6999e437abbef1920f6de771173e4e6e007f2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b78cb45d83cd9bc9bc973ec7a09cb75a8b111744
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116907"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224144"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro automatické zřizování uživatelů
 
@@ -149,13 +149,13 @@ Tato část vás provede procesu připojování k uživatelskému účtu API G S
 
 1. Nastavte **režim zřizování** k **automatické**. 
 
-      ![Zřizování](./media/google-apps-provisioning-tutorial/provisioning.png)
+       ![Provisioning](./media/google-apps-provisioning-tutorial/provisioning.png)
 
 1. V části **přihlašovacích údajů správce** vyberte **Authorize**. Otevře se dialogové okno ověřování Google v novém okně prohlížeče.
 
 1. Potvrďte, že chcete udělit oprávnění Azure Active Directory provádět změny do svého tenanta služby G Suite. Vyberte **Přijmout**.
     
-      ![Zkontrolujte oprávnění.][28]
+       ![Confirm permissions.][28]
 
 1. Na webu Azure Portal, vyberte **Test připojení** zajistit, že Azure AD může připojit k vaší aplikaci. Pokud se nepovede, ujistěte se, že váš účet G Suite má oprávnění správce týmu. Poté **Authorize** krok znovu.
 

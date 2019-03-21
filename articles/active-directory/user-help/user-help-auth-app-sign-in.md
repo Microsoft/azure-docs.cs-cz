@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80fd458356cf5b375e0b3d922d9bdca3f3a30503
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 0f5f190eee473d5eb483f901ada80cb67b4ffedd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961665"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110507"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Přihlaste se k účtům pomocí aplikace Microsoft Authenticator
 Aplikace Microsoft Authenticator přispívá k přihlášení k účtům používáte dvojúrovňového ověřování. Dvoufaktorové ověření vám umožní přístup k účtům bezpečněji, zejména při zobrazování citlivé informace. Protože hesla mohou být vymazány, někdo je ukradne nebo ohrožení zabezpečení, dvojúrovňového ověřování je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout.
@@ -28,8 +28,8 @@ Můžete použít aplikaci Microsoft Authenticator několika různými způsoby,
 
 - Zajištění přihlášení bez hesla, vaše uživatelské jméno a vašeho mobilního zařízení pomocí otisků prstů, rozpoznávání tváře nebo PIN kód.
 
- >[!Important]
- >Tento telefon přihlašovací metoda funguje jenom s vaší pracovní nebo školní a osobní účty Microsoft. Vaše účty jiných společností než Microsoft vyžadovat použití procesu standardní dvojúrovňového ověřování.
+  >[!Important]
+  >Tento telefon přihlašovací metoda funguje jenom s vaší pracovní nebo školní a osobní účty Microsoft. Vaše účty jiných společností než Microsoft vyžadovat použití procesu standardní dvojúrovňového ověřování.
 
 ## <a name="prerequisites"></a>Požadavky
 Než budete moct použít aplikaci Microsoft Authenticator, musíte mít:

@@ -3,23 +3,23 @@ title: Ve službě Azure Security Center monitorování Integrity souborů | Dok
 description: " Zjistěte, jak povolit monitorování Integrity souborů ve službě Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
-editor: ''
+editor: monhaber
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
-ms.author: rkarlin
-ms.openlocfilehash: bb987bcc38dee1f3d4ea2fce19e5e546ebfc8f7c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.date: 03/13/2019
+ms.author: monhaber
+ms.openlocfilehash: f8bc10edcdc31dd2ae3995dcb8321a5523e1e51c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240231"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901575"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Ve službě Azure Security Center monitorování Integrity souborů
 Zjistěte, jak nakonfigurovat monitorování Integrity souborů (FIM) ve službě Azure Security Center pomocí tohoto názorného postupu.
@@ -36,15 +36,12 @@ Monitorování Integrity souborů Security Center ověřuje integritu souborů W
 Security Center doporučuje pro monitorování, entit, které lze snadno povolit FIM. Můžete také definovat vlastní zásady FIM nebo entity k monitorování. Tento návod ukazuje, jak.
 
 > [!NOTE]
-> Funkce monitorování Integrity souborů (FIM) se dá použít pro virtuální počítače a počítače s Windows a Linuxem a je k dispozici na na úrovni Standard služby Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
-FIM nahrává data do pracovního prostoru Log Analytics. Poplatky za data použít, na základě objemu dat, které nahrajete. Zobrazit [ceny log analytics](https://azure.microsoft.com/pricing/details/log-analytics/) Další informace.
->
->
+> Funkce monitorování Integrity souborů (FIM) se dá použít pro virtuální počítače a počítače s Windows a Linuxem a je k dispozici na na úrovni Standard služby Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md). FIM nahrává data do pracovního prostoru Log Analytics. Poplatky za data použít, na základě objemu dat, které nahrajete. Zobrazit [přehledu cen Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) Další informace.
+
+FIM pomocí řešení Azure Change Tracking sleduje a identifikuje změny ve vašem prostředí. Pokud je zapnuto monitorování Integrity souborů, máte **řešení Change Tracking** prostředek typu **řešení**. Podrobnosti četnost shromažďování dat, naleznete v tématu [řešení Change Tracking podrobnosti kolekce dat](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details) pro řešení Azure Change Tracking.
 
 > [!NOTE]
-> FIM pomocí řešení Azure Change Tracking sleduje a identifikuje změny ve vašem prostředí. Pokud je zapnuto monitorování Integrity souborů, máte **řešení Change Tracking** prostředek typu řešení. Pokud odeberete **řešení Change Tracking** prostředků, zakažte monitorování funkcí ve službě Security Center Integrity souborů.
->
->
+> Pokud odeberete **řešení Change Tracking** prostředků, můžete se také zakázat monitorování funkcí ve službě Security Center Integrity souborů.
 
 ## <a name="which-files-should-i-monitor"></a>Sledování souborů
 Byste uvažovat o soubory, které jsou důležité pro váš systém a aplikace, při výběru souborů, které chcete monitorovat. Zvažte volbu soubory, které jste Neočekáváme, že chcete-li změnit bez plánování. Když zvolíte soubory, které jsou často změněny aplikace nebo operačního systému (například soubory protokolů a textové soubory) vytvořte spoustu šumu, které se obtížně identifikovat útok.
@@ -134,15 +131,15 @@ Výběr filtru v horní části řídicího panelu, vám umožní použít časo
 
 1. Vraťte se **řídicí panel monitorování Integrity souborů** a vyberte **nastavení**.
 
-  ![Nastavení][11]
+   ![Nastavení][11]
 
-  **Konfigurace pracovního prostoru** otevře, zobrazuje tři karty: **Registr Windows**, **soubory Windows**, a **soubory Linuxu**. Každá karta obsahuje entity, které můžete upravit v dané kategorii. Pro každou entitu uvedené, Security Center identifikuje FIM, je-li povolena (pravda) nebo nejsou povolené (false).  Úpravy entit umožňuje povolit nebo zakázat FIM.
+   **Konfigurace pracovního prostoru** otevře, zobrazuje tři karty: **Registr Windows**, **soubory Windows**, a **soubory Linuxu**. Každá karta obsahuje entity, které můžete upravit v dané kategorii. Pro každou entitu uvedené, Security Center identifikuje FIM, je-li povolena (pravda) nebo nejsou povolené (false).  Úpravy entit umožňuje povolit nebo zakázat FIM.
 
-  ![Konfigurace pracovního prostoru][12]
+   ![Konfigurace pracovního prostoru][12]
 
-2. Vyberte identityprotection. V tomto příkladu jsme vybrali položku v registru Windows. **Upravit pro řešení Change Tracking** otevře.
+2. Vyberte identity protection. V tomto příkladu jsme vybrali položku v registru Windows. **Upravit pro řešení Change Tracking** otevře.
 
-  ![Upravit nebo sledování změn][13]
+   ![Upravit nebo sledování změn][13]
 
 V části **upravit pro řešení Change Tracking** můžete:
 
@@ -155,11 +152,11 @@ V části **upravit pro řešení Change Tracking** můžete:
 1. Vraťte se **řídicí panel monitorování integrity souborů** a vyberte **nastavení** v horní části. **Konfigurace pracovního prostoru** otevře.
 2. V části **konfigurace pracovního prostoru**, vyberte na kartě pro typ entity, které chcete přidat: Registru Windows, Windows soubory nebo soubory Linuxu. V tomto příkladu jsme vybrali **soubory Linuxu**.
 
-  ![Přidat novou položku k monitorování][14]
+   ![Přidat novou položku k monitorování][14]
 
 3. Vyberte **Přidat**. **Přidat pro řešení Change Tracking** otevře.
 
-  ![Zadejte požadované informace][15]
+   ![Zadejte požadované informace][15]
 
 4. Na **přidat** stránky, zadejte požadované informace a vyberte **Uložit**.
 
@@ -167,19 +164,19 @@ V části **upravit pro řešení Change Tracking** můžete:
 1. Vraťte se **monitorování Integrity souborů** řídicího panelu.
 2. Vyberte pracovní prostor, ve kterém je aktuálně povoleno FIM. Pracovní prostor je povolený pro FIM, pokud chybí tlačítko Povolit nebo upgradujte plán.
 
-  ![Vyberte pracovní prostor, kde je povolena FIM][16]
+   ![Vyberte pracovní prostor, kde je povolena FIM][16]
 
 3. V části monitorování Integrity souborů vyberte **nastavení**.
 
-  ![Vyberte nastavení][17]
+   ![Vyberte nastavení][17]
 
 4. V části **konfigurace pracovního prostoru**, vyberte skupinu kde **povoleno** je nastavena na hodnotu true.
 
-  ![Konfigurace pracovního prostoru][18]
+   ![Konfigurace pracovního prostoru][18]
 
 5. V části **upravit pro řešení Change Tracking** okno sady **povoleno** na hodnotu False.
 
-  ![Sada povoleno na hodnotu false][19]
+   ![Sada povoleno na hodnotu false][19]
 
 6. Vyberte **Uložit**.
 
@@ -198,7 +195,7 @@ Můžete zakázat FIM. FIM pomocí řešení Azure Change Tracking sleduje a ide
 2. Vyberte pracovní prostor.
 3. V části **monitorování Integrity souborů**vyberte **zakázat**.
 
-  ![Zakázat FIM][20]
+   ![Zakázat FIM][20]
 
 4. Vyberte **odebrat** zakázat.
 

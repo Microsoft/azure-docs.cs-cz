@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 6c0207a68cea70951143c87f83f6b17bb0c7b1f3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 4fd96aedc658833493d6fddb704104a70c01df44
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098455"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010993"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Konzola sériového portu virtuálního počítače pro Linux
 
@@ -82,6 +82,7 @@ Vlastní Linuxové Image     | Pokud chcete povolit konzole sériového portu pr
 > Pokud se nezobrazují v konzole sériového portu nic, ujistěte se, že Diagnostika spouštění je povolená na virtuálním počítači.
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>Časté scénáře pro přístup ke konzole sériového portu
+
 Scénář          | Akce v konzole sériového portu
 :------------------|:-----------------------------------------
 Nefunkční *FSTAB* souboru | Stisknutím klávesy **Enter** klíč pomocí textového editoru opravit a pokračovat *FSTAB* souboru. Musíte může být v jednouživatelském režimu Uděláte to tak. Další informace najdete v tématu [k vyřešení potíží se souborem fstab](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) a [konzoly sériového portu používá pro přístup k GRUB a režimu jednoho uživatele](serial-console-grub-single-user-mode.md).
@@ -143,14 +144,14 @@ Přenosu se šifrují všechna data, která se odešle vpřed a zpět.
 ### <a name="audit-logs"></a>Protokoly auditu
 Veškerý přístup ke konzole sériového portu je aktuálně přihlášen [Diagnostika spouštění](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) protokoly virtuálního počítače. Přístup k tyto protokoly jsou vlastněné a řídí správce virtuálních počítačů Azure.
 
->[!CAUTION]
-Žádná hesla přístup pro konzolu jsou protokolovány. Nicméně pokud příkazy se spouští v rámci konzoly obsahovat nebo výstup hesla, tajné kódy, uživatelská jména nebo jakoukoli jinou formu identifikovatelné osobní údaje (PII), ty se zapíšou do protokolů diagnostiky spouštění virtuálního počítače. Se zapíšou spolu s všechny ostatní viditelného textu, jako součást provádění konzoly sériového portu přejděte zpět funkce. Tyto protokoly jsou cyklické a přístup k nim mají pouze uživatelé, kteří mají oprávnění ke čtení pro účet úložiště diagnostiky. Však doporučujeme osvědčený postup pomocí vzdálené plochy pro všechno, co, která může zahrnovat tajné kódy a/nebo identifikovatelné osobní údaje.
+> [!CAUTION]
+> Žádná hesla přístup pro konzolu jsou protokolovány. Nicméně pokud příkazy se spouští v rámci konzoly obsahovat nebo výstup hesla, tajné kódy, uživatelská jména nebo jakoukoli jinou formu identifikovatelné osobní údaje (PII), ty se zapíšou do protokolů diagnostiky spouštění virtuálního počítače. Se zapíšou spolu s všechny ostatní viditelného textu, jako součást provádění konzoly sériového portu přejděte zpět funkce. Tyto protokoly jsou cyklické a přístup k nim mají pouze uživatelé, kteří mají oprávnění ke čtení pro účet úložiště diagnostiky. Však doporučujeme osvědčený postup pomocí vzdálené plochy pro všechno, co, která může zahrnovat tajné kódy a/nebo identifikovatelné osobní údaje.
 
 ### <a name="concurrent-usage"></a>Souběžné používání
 Pokud je uživatel připojen ke konzole sériového portu a jiný uživatel úspěšně požaduje přístup k tomuto virtuálnímu počítači stejný, bude první uživatel odpojen a druhý uživatel se připojil do stejné relace.
 
->[!CAUTION]
-To znamená, že uživatel, který je odpojen nebude odhlášeni. Schopnost Vynutit odhlášení při odpojení (pomocí SIGHUP nebo mechanismus podobný) je stále v se plánuje. Pro Windows se automatické vypršení časového limitu povolené ve speciální správy konzoly (SAC); ale pro Linux můžete nakonfigurovat nastavení terminálu vypršení časového limitu. Chcete-li to provést, přidejte `export TMOUT=600` ve vaší *.bash_profile* nebo *.profile* souboru pro uživatele, který používáte k přihlášení do konzoly. Toto nastavení vyprší časový limit relace po 10 minutách.
+> [!CAUTION]
+> To znamená, že uživatel, který je odpojen nebude odhlášeni. Schopnost Vynutit odhlášení při odpojení (pomocí SIGHUP nebo mechanismus podobný) je stále v se plánuje. Pro Windows se automatické vypršení časového limitu povolené ve speciální správy konzoly (SAC); ale pro Linux můžete nakonfigurovat nastavení terminálu vypršení časového limitu. Chcete-li to provést, přidejte `export TMOUT=600` ve vaší *.bash_profile* nebo *.profile* souboru pro uživatele, který používáte k přihlášení do konzoly. Toto nastavení vyprší časový limit relace po 10 minutách.
 
 ## <a name="accessibility"></a>Přístupnost
 Klíče se pro Azure konzoly sériového portu se usnadnění přístupu. Za tímto účelem jsme zajistili, že je plně přístupné konzole sériového portu.
@@ -188,7 +189,7 @@ Konzola sériového portu nefunguje s bránou firewall účtu úložiště. | Ko
 
 **Q. Jak můžu poslat svůj názor?**
 
-A. Poskytnout zpětnou vazbu tak, že vytvoříte problém Githubu v https://aka.ms/serialconsolefeedback. Můžete také (méně upřednostňované), můžete odeslat zpětnou vazbu prostřednictvím azserialhelp@microsoft.com nebo v kategorii virtuální počítač http://feedback.azure.com.
+A. Poskytnout zpětnou vazbu tak, že vytvoříte problém Githubu v https://aka.ms/serialconsolefeedback. Můžete také (méně upřednostňované), můžete odeslat zpětnou vazbu prostřednictvím azserialhelp@microsoft.com nebo v kategorii virtuální počítač https://feedback.azure.com.
 
 **Q. Podporuje konzole sériového portu, kopírování a vkládání?**
 

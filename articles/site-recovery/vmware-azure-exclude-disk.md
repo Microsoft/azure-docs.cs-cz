@@ -8,12 +8,12 @@ ms.workload: storage-backup-recovery
 ms.date: 3/3/2019
 ms.author: mayg
 ms.topic: conceptual
-ms.openlocfilehash: cf5b994146d84d92cae4591c042ed1cfbb042dee
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 105074892cc6dfa4da1e7c8ddd0a0aad9f1b60a1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437611"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002881"
 ---
 # <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>Vyloučení disků z replikace virtuálních počítačů VMware do Azure
 
@@ -80,7 +80,7 @@ Na zdrojovém virtuálním počítači jsou následující disky:
 DB-Disk0-OS | DISK0 | C:\ | Disk operačním systému
 DB-Disk1| Disk1 | D:\ | Databáze systému SQL a uživatelská databáze 1
 DB-Disk2 (disk vyloučený z ochrany) | Disk2 | E:\ | Dočasné soubory
-DB-Disk3 (disk vyloučený z ochrany) | Disk3 | F:\ | Databáze SQL tempdb (cesta ke složce (F:\MSSQL\Data\) </br /> </br /> Poznamenejte si cestu ke složce před převzetím služeb při selhání.
+DB-Disk3 (disk vyloučený z ochrany) | Disk3 | F:\ | SQL databáze tempdb (cesta ke složce (F:\MSSQL\Data\) <br /> <br />Poznamenejte si cestu ke složce před převzetí služeb při selhání.
 DB Disk4 | Disk4 |G:\ |Uživatelská databáze 2
 
 Protože časté změny dat na dvou discích virtuálního počítače jsou dočasné, při ochraně virtuálního počítače SalesDB vylučte Disk2 a Disk3 z replikace. Azure Site Recovery nebude tyto disky replikovat. Po převzetí služeb při selhání tyto disky nebudou na cílovém virtuálním počítači v Azure připojené.
@@ -90,7 +90,7 @@ Ve virtuálním počítači Azure budou po převzetí služeb při selhání tyt
 **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | ---
 DISK0 | C:\ | Disk operačním systému
-Disk1 | E:\ | Dočasné úložiště</br /> </br />Azure tento disk přidá a přiřadí mu první dostupné písmeno jednotky.
+Disk1 | E:\ | Dočasné úložiště<br /> <br />Azure tento disk přidá a přiřadí první dostupné písmeno jednotky.
 Disk2 | D:\ | Databáze systému SQL a uživatelská databáze 1
 Disk3 | G:\ | Uživatelská databáze 2
 
@@ -154,7 +154,7 @@ V předchozím příkladu vypadá konfigurace disků virtuálního počítače A
 **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | ---
 DISK0 | C:\ | Disk operačním systému
-Disk1 | E:\ | Dočasné úložiště</br /> </br />Azure tento disk přidá a přiřadí mu první dostupné písmeno jednotky.
+Disk1 | E:\ | Dočasné úložiště<br /> <br />Azure tento disk přidá a přiřadí první dostupné písmeno jednotky.
 Disk2 | D:\ | Databáze systému SQL a uživatelská databáze 1
 Disk3 | G:\ | Uživatelská databáze 2
 
@@ -193,7 +193,7 @@ Po převzetí služeb virtuálního počítače při selhání z VMware do Azure
 **Název disku** | **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Disk operačním systému
-DB-Disk1 | Disk1 | D:\ | Dočasné úložiště</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | Dočasné úložiště<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Uživatelská data 1
 DB-Disk3 | Disk3 | F:\ | Uživatelská data 2
 
@@ -220,10 +220,10 @@ Tady je nastavení stránkovacího souboru na místním virtuálním počítači
 
 Po převzetí služeb virtuálního počítače při selhání z VMware do Azure budou disky na virtuálním počítači Azure následující:
 
-**Název disku**| **Označení disku v hostovaném operačním systému**| **Písmeno jednotky** | **Typ dat na disku**
+**Název disku** | **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0  |C:\ |Disk operačním systému
-DB-Disk1 | Disk1 | D:\ | Dočasné úložiště</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | Dočasné úložiště<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Uživatelská data 1
 DB-Disk3 | Disk3 | F:\ | Uživatelská data 2
 

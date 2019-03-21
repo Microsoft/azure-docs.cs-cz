@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: aabd0ab55c061c9d2cdc27b4ab5a241ad9e9793c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a5ebd50b3a5fe3b611bae28db98979eee40f9490
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811763"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899022"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metriky Azure Storage na platformě Azure Monitor
 
@@ -23,7 +23,7 @@ Azure Monitor nabízí jednotné uživatelské rozhraní pro monitorování nap�
 
 ## <a name="access-metrics"></a>Metriky přístup
 
-Azure Monitor poskytuje několik způsobů přístupu metriky. Dostanete z [webu Azure portal](https://portal.azure.com), rozhraní API služby Azure Monitor (REST a .net) a řešení pro analýzu jako jsou Event Hubs. Další informace najdete v tématu [metrik Azure monitoru](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Azure Monitor poskytuje několik způsobů přístupu metriky. Dostanete z [webu Azure portal](https://portal.azure.com), rozhraní API služby Azure Monitor (REST a .NET) a řešení pro analýzu jako jsou Event Hubs. Další informace najdete v tématu [metrik Azure monitoru](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 Ve výchozím nastavení jsou povolené metriky a můžou k poslední data 93 dnů. Pokud je potřeba data uchovávat po delší dobu, můžete archivovat data metrik do účtu služby Azure Storage. Toto je nakonfigurováno v [nastavení diagnostiky](../../azure-monitor/platform/diagnostic-logs-overview.md) ve službě Azure Monitor.
 
@@ -134,13 +134,13 @@ Následující odpověď obsahuje hodnoty metrik ve formátu JSON:
 
 ```
 
-### <a name="access-metrics-with-the-net-sdk"></a>Přístup metriky pomocí sady .net SDK
+### <a name="access-metrics-with-the-net-sdk"></a>Přístup metriky pomocí sady .NET SDK
 
-Platforma Azure Monitor poskytuje [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) číst definice metriky a hodnoty. [Ukázkový kód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) ukazuje, jak používat sadu SDK s různými parametry. Je třeba použít `0.18.0-preview` nebo novější verzi pro metrik úložiště. ID prostředku se používá v sadě .net SDK. Další informace přečtěte si vysvětlení ID prostředku pro služby ve službě Storage.
+Platforma Azure Monitor poskytuje [sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) číst definice metriky a hodnoty. [Ukázkový kód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) ukazuje, jak používat sadu SDK s různými parametry. Je třeba použít `0.18.0-preview` nebo novější verzi pro metrik úložiště. ID prostředku se používá v sadě .NET SDK. Další informace přečtěte si vysvětlení ID prostředku pro služby ve službě Storage.
 
-Následující příklad ukazuje, jak používat Azure Monitor .net SDK číst metriky pro úložiště.
+Následující příklad ukazuje, jak čtení metrik storage pomocí .NET SDK služby Azure Monitor.
 
-#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>Seznam účtů úrovně definice metriky pomocí sady .net SDK
+#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>Seznam účtů úrovně definice metriky pomocí sady .NET SDK
 
 Následující příklad ukazuje, jak zobrazit seznam definice metriky na úrovni účtu:
 
@@ -177,7 +177,7 @@ Následující příklad ukazuje, jak zobrazit seznam definice metriky na úrovn
 
 Pokud chcete vypsat definice metriky pro objekt blob, tabulka, soubor nebo fronty, je nutné zadat jiné ID prostředků pro každou službu s rozhraním API.
 
-#### <a name="read-metric-values-with-the-net-sdk"></a>Hodnoty metrik pro čtení pomocí sady .net SDK
+#### <a name="read-metric-values-with-the-net-sdk"></a>Hodnoty metrik pro čtení pomocí sady .NET SDK
 
 Následující příklad znázorňuje způsob čtení `UsedCapacity` data na úrovni účtu:
 
@@ -227,7 +227,7 @@ Následující příklad znázorňuje způsob čtení `UsedCapacity` data na úr
 
 Ve výše příklad, pokud si chcete přečíst hodnoty metrik pro objekt blob, tabulka, soubor nebo fronty, musíte zadat ID různých prostředků pro každou službu s rozhraním API.
 
-#### <a name="read-multi-dimensional-metric-values-with-the-net-sdk"></a>Čtení hodnot vícerozměrné metriky pomocí sady .net SDK
+#### <a name="read-multi-dimensional-metric-values-with-the-net-sdk"></a>Čtení hodnoty vícerozměrné metriky pomocí sady .NET SDK
 
 U vícerozměrných metrik budete muset definovat meta filtr dat, pokud si chcete přečíst data metriky na konkrétní hodnotu dimenze.
 
@@ -380,7 +380,7 @@ Azure Storage poskytuje následující metriku transakcí ve službě Azure Moni
 | Výchozí přenos | Množství výchozích dat. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat. <br/><br/> Jednotka: B <br/> Typ agregace: Celkem <br/> Příslušné dimenze: GeoType ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 1024 |
 | SuccessServerLatency | Průměrná doba zpracování úspěšného požadavku službou Azure Storage. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Celková latence při úspěchu. <br/><br/> Jednotka: Milisekund <br/> Typ agregace: Průměr <br/> Příslušné dimenze: GeoType ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 1024 |
 | SuccessE2ELatency | Průměrná celková latence úspěšných požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi. <br/><br/> Jednotka: Milisekund <br/> Typ agregace: Průměr <br/> Příslušné dimenze: GeoType ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 1024 |
-| Dostupnost | Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že hodnota pro celkový počet fakturovatelných požadavků vydělí počtem příslušných požadavků, včetně požadavků došlo k neočekávané chybě. Všechny neočekávané chyby za následek sníženou dostupnost pro službu úložiště nebo zadanou operaci rozhraní API. <br/><br/> Jednotka: Procento <br/> Typ agregace: Průměr <br/> Příslušné dimenze: GeoType ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 99.99 |
+| Dostupnost | Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že hodnota pro celkový počet fakturovatelných požadavků vydělí počtem příslušných požadavků, včetně požadavků došlo k neočekávané chybě. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost. <br/><br/> Jednotka: Procento <br/> Typ agregace: Průměr <br/> Příslušné dimenze: GeoType ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 99.99 |
 
 ## <a name="metrics-dimensions"></a>Dimenze metriky
 
@@ -389,10 +389,10 @@ Azure Storage podporuje následující dimenze pro metriky ve službě Azure Mon
 | Název dimenze | Popis |
 | ------------------- | ----------------- |
 | BlobType | Typ objektu blob pro pouze metriky objektů Blob. Podporované hodnoty jsou **BlockBlob** a **PageBlob**. Doplňovací objekt Blob je součástí BlockBlob. |
-| Hodnota ResponseType | Typ odpovědi transakce. Dostupné hodnoty: <br/><br/> <li>ServerOtherError: Všechny ostatní chyby na straně serveru s výjimkou těch popsaných </li> <li> ServerBusyError: Ověřeného požadavku, který vrátil kód stavu HTTP 503. </li> <li> ServerTimeoutError: Vypršel časový limit ověřeného požadavku, který vrátil kód stavu HTTP 500. Časový limit vypršel kvůli chybě serveru. </li> <li> AuthorizationError: Ověřeného požadavku se nezdařilo z důvodu neoprávněnému přístupu dat nebo chybě autorizace. </li> <li> NetworkError: Ověřeného požadavku se nezdařilo z důvodu chyby sítě. Nejčastěji dochází, když klient předčasně ukončí připojení před vypršením časového limitu. </li> <li>    ClientThrottlingError: Omezení došlo k chybě na straně klienta. </li> <li> ClientTimeoutError: Vypršel časový limit ověřeného požadavku, který vrátil kód stavu HTTP 500. Pokud časový limit sítě klienta nebo vypršení časového limitu požadavku je nastavena na hodnotu nižší, než se očekávalo se službou storage, je očekávané časový limit. V opačném případě se hlásí jako ServerTimeoutError. </li> <li> ClientOtherError: Všechny ostatní chyby na straně klienta s výjimkou těch popsaných. </li> <li> Úspěch: Úspěšná žádost|
+| Hodnota ResponseType | Typ odpovědi transakce. Dostupné hodnoty zahrnují: <br/><br/> <li>ServerOtherError: Všechny ostatní chyby na straně serveru kromě zde popsaných </li> <li> ServerBusyError: Ověřená žádost, která vrátila stavový kód HTTP 503. </li> <li> ServerTimeoutError: Ověřená žádost s vypršeným časovým limitem, který vrátil stavový kód HTTP 500. Časový limit vypršel kvůli chybě serveru. </li> <li> AuthorizationError: Ověřená žádost, která selhala kvůli neoprávněnému přístupu k datům nebo chybě autorizace. </li> <li> NetworkError: Ověřená žádost, která selhala kvůli chybě sítě. K tomu nejčastěji dochází, když klient předčasně ukončí spojení před vypršením časového limitu. </li> <li>    ClientThrottlingError: Chyba omezování využití sítě na straně klienta. </li> <li> ClientTimeoutError: Ověřená žádost s vypršeným časovým limitem, který vrátil stavový kód HTTP 500. Pokud je časový limit sítě klienta nebo časový limit žádosti nastavený na hodnotu nižší, než služba úložiště očekávala, jde o očekávané vypršení časového limitu. V opačném případě bude ohlášeno jako ServerTimeoutError. </li> <li> ClientOtherError: Všechny ostatní chyby na straně klienta kromě zde popsaných. </li> <li> Úspěch: Úspěšná žádost|
 | GeoType | Transakce z primární nebo sekundární clusteru. Dostupné hodnoty zahrnují primární a sekundární. To platí pro oprávnění ke čtení geograficky redundantní Storage(RA-GRS) při čtení objektů ze sekundární tenanta. |
 | ApiName | Název operace. Příklad: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Všechny názvy operace, najdete v části [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
-| Authentication | Typ ověřování používaný v transakcích. Dostupné hodnoty: <br/> <li>AccountKey: Transakce se ověřuje pomocí klíče účtu úložiště.</li> <li>SAS: Transakce se ověřuje pomocí signatur sdíleného přístupu.</li> <li>OAuth: Transakce se ověřuje pomocí přístupových tokenů OAuth.</li> <li>Anonymní: Transakce je požadováno anonymně. Neměl by zahrnovat předběžných požadavků.</li> <li>AnonymousPreflight: Transakce je předběžný požadavek.</li> |
+| Authentication | Typ ověřování používaný v transakcích. Dostupné hodnoty zahrnují: <br/> <li>AccountKey: Transakce se ověřuje pomocí klíče účtu úložiště.</li> <li>SAS: Transakce se ověřuje pomocí signatur sdíleného přístupu.</li> <li>OAuth: Transakce se ověřuje pomocí přístupových tokenů OAuth.</li> <li>Anonymní: Transakce je požadováno anonymně. Neměl by zahrnovat předběžných požadavků.</li> <li>AnonymousPreflight: Transakce je předběžný požadavek.</li> |
 
 Pro podpůrné dimenze metriky je třeba zadat hodnotu dimenze zobrazíte odpovídající hodnoty metriky. Například, pokud se podíváte na **transakce** hodnotu pro odpovědi – úspěch, je potřeba vyfiltrovat **hodnotu ResponseType** dimenze s **úspěch**. Nebo pokud se podíváte na **BlobCount** hodnotu pro objekt Blob bloku, budete potřebovat k filtrování **BlobType** dimenze s **BlockBlob**.
 

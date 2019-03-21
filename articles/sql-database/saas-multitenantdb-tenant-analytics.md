@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 5de707f3f2e6a82d880363eea91fb8ce644fb3aa
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 340c08841b7bedc9f2453617aeff111beb810961
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055033"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888174"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Pomocí analýzy napříč tenanty extrahovaná data – aplikace s více tenanty
  
@@ -94,7 +94,7 @@ V následujících krocích nasazení analýzy úložiště, která se nazývá 
     - Chcete-li používat SQL database prostřednictvím columnstore, nastavte **$DemoScenario** = **3**  
 3. Stisknutím klávesy **F5** spustit ukázkový skript (, která volá *nasadit TenantAnalytics<XX>.ps1* skript) vytváří úložišti analýzy tenanta. 
 
-Teď, když nasadíte aplikaci a naplní se zajímavá data tenanta, použijte [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) připojit **tenants1-mt –\<uživatele\>**  a **katalogu-mt –\<uživatele\>**  servery pomocí přihlášení = *developer*, heslo = *P@ssword1*.
+Teď, když nasadíte aplikaci a naplní se zajímavá data tenanta, použijte [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) připojit **tenants1-mt –\<uživatele\>**  a **katalogu-mt –\<uživatele\>**  servery pomocí přihlášení = *developer*, heslo = *P\@ssword1*.
 
 ![architectureOverView](media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
@@ -176,7 +176,7 @@ Následující kroky použijte pro připojení k Power BI a k importování zobr
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. Vyberte **databáze** v levém podokně, zadejte uživatelské jméno = *developer*a zadejte heslo = *P@ssword1*. Klikněte na **Připojit**.  
+5. Vyberte **databáze** v levém podokně, zadejte uživatelské jméno = *developer*a zadejte heslo = *P\@ssword1*. Klikněte na **Připojit**.  
 
     ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
@@ -239,7 +239,7 @@ V tomto kurzu jste se naučili:
 
 Blahopřejeme!
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 Další [kurzy, které vycházejí z aplikace SaaS aplikace Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials). 
 - [Elastické úlohy](sql-database-elastic-jobs-overview.md).

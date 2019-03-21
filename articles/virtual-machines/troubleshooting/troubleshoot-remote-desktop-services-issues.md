@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 3d747f3b8f54dfefe7e96c378eddbce320bcc8f7
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8dc3dcbe3a84a0c35c1e3fc6e367c63393bebb70
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215112"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003139"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Vzdálená plocha nespouští na Virtuálním počítači Azure
 
@@ -99,7 +99,8 @@ Pokud chcete tento problém vyřešit, použijte konzole sériového portu. Or e
 
     |  Chyba |  Návrh |
     |---|---|
-    |5 - PŘÍSTUP BYL ODEPŘEN |Zobrazit [inicializace je zastavena kvůli chybě přístup odepřen](#termService-service-is-stopped-because-of-an-access-denied-problem). |   |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |Zobrazit [inicializace služba je zakázána](#termService-service-is-disabled).  |  
+    |5 - PŘÍSTUP BYL ODEPŘEN |Zobrazit [inicializace je zastavena kvůli chybě přístup odepřen](#termService-service-is-stopped-because-of-an-access-denied-problem). |
+    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |Zobrazit [inicializace služba je zakázána](#termService-service-is-disabled).  |  
     |1058 - ERROR_SERVICE_DISABLED  |Zobrazit [inicializace služby k chybovým ukončením nebo přestane reagovat](#termService-service-crashes-or-hangs).  |
     |. 1059 - ERROR_CIRCULAR_DEPENDENCY |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.|
     |1067 - ERROR_PROCESS_ABORTED  |Zobrazit [inicializace služby k chybovým ukončením nebo přestane reagovat](#termService-service-crashes-or-hangs).  |
@@ -108,7 +109,7 @@ Pokud chcete tento problém vyřešit, použijte konzole sériového portu. Or e
     |1070 - ERROR_SERVICE_START_HANG   | Zobrazit [inicializace služby k chybovým ukončením nebo přestane reagovat](#termService-service-crashes-or-hangs). |
     |1077. - ERROR_SERVICE_NEVER_STARTED   | Zobrazit [inicializace služba je zakázána](#termService-service-is-disabled).  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému. |
-    |1753   |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.   |   |5 - PŘÍSTUP BYL ODEPŘEN |Zobrazit [inicializace je zastavena kvůli chybě přístup odepřen](#termService-service-is-stopped-because-of-an-access-denied-error). |
+    |1753   |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.   |
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>Inicializace je zastavena kvůli problému přístup odepřen
 
@@ -205,7 +206,7 @@ Pokud chcete tento problém vyřešit, použijte konzole sériového portu. Or e
 
 1. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
 2. Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení. Ujistěte se, že je připojený disk označený jako **Online** v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
-3.  Otevřete příkazový řádek se zvýšenými oprávněními instance (**spustit jako správce**). Potom spusťte následující skript. Předpokládáme, že je písmeno jednotky, která je přiřazena připojeném disku s operačním systémem **F**. Nahraďte ji odpovídající hodnotou ve virtuálním počítači. 
+3. Otevřete příkazový řádek se zvýšenými oprávněními instance (**spustit jako správce**). Potom spusťte následující skript. Předpokládáme, že je písmeno jednotky, která je přiřazena připojeném disku s operačním systémem **F**. Nahraďte ji odpovídající hodnotou ve virtuálním počítači. 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv

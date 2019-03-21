@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 34439268163b4da6ac45af09101f4f609de7e9ee
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fa53213e577028628d48db91704578e23888f2a8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248159"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013854"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>Instalace Update 1.0 na StorSimple Virtual Array
 
@@ -66,7 +66,7 @@ Pokud vaše virtuální pole běží aktualizace 0.6, postupujte následovně Ch
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Chcete-li stáhnout aktualizace nebo opravy hotfix
 
-1. Spustit aplikaci Internet Explorer a přejděte do [ http://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
+1. Spustit aplikaci Internet Explorer a přejděte do [ https://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
 
 2. Pokud používáte katalog služby Microsoft Update na tomto počítači poprvé, klikněte na tlačítko **nainstalovat** po zobrazení výzvy k instalaci doplňku katalog služby Microsoft Update.
 

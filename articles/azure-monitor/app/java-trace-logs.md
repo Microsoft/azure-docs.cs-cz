@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: d3f8e5ac1f85483d04da99744809f4bc72295024
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d8344177fc5895451cf876f5aa581baa1fed52e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266190"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001853"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování v Application Insights Java
 Pokud již používáte, Logback nebo Log4J (verze 1.2 nebo 2.0) pro trasování, může mít protokoly trasování automaticky odesílaných do Application Insights, kde můžete prozkoumat a hledat v nich.
@@ -158,7 +158,7 @@ Teď, když jste nakonfigurovali projekt k odesílání trasování do Applicati
 
 Výjimky veškerého protokolovacích nástrojů se zobrazí na portálu jako Telemetrie výjimek.
 
-![Na portálu Application Insights otevřete hledání](./media/java-trace-logs/10-diagnostics.png)
+![Na portálu Application Insights otevřete hledání](./media/java-trace-logs/01-diagnostics.png)
 
 ## <a name="next-steps"></a>Další postup
 [Diagnostické vyhledávání][diagnostic]

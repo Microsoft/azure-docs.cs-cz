@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 894fc42954182171588d81e2f7f1e37141af9add
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 70d9957ae5f0ec43269d371c96e3722e52edb26d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821247"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837758"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Začlenění řešení Update Management, Change Tracking a Inventory z virtuálního počítače Azure
 
@@ -26,7 +26,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="enable-the-solutions"></a>Povolení řešení
 
-Přejděte do existujícího virtuálního počítače. V části **operace**vyberte **Správa aktualizací**, **inventáře**, nebo **řešení Change tracking**.
+Přejděte do existujícího virtuálního počítače. V části **operace**vyberte **Správa aktualizací**, **inventáře**, nebo **řešení Change tracking**. Virtuální počítač může existovat v libovolné oblasti bez ohledu na umístění účtu Automation.
 
 Povolte řešení pro virtuální počítač pouze, ujistěte se, že **povolit pro tento virtuální počítač** zaškrtnuto. Chcete-li připojit více počítačů k řešení, vyberte **povolit pro virtuální počítače v tomto předplatném**a pak vyberte **kliknutím vyberte počítače, které chcete povolit**. Další informace, jak připojit více počítačů najednou, najdete v článku [připojení Update Management, Change Tracking a Inventory řešení](automation-onboard-solutions-from-automation-account.md).
 

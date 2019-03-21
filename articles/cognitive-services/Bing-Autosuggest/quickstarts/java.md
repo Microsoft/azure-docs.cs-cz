@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: a95bda18009f502700f41c63cc9f00cdf6c00534
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 64b6ed680ba0812322d5796debc5edada19bc926
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011037"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118829"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Rychlý start: Navrhnout vyhledávací dotazy pomocí REST API pro automatické návrhy Bingu a Javy.
 
@@ -73,51 +73,51 @@ public static String prettify(String json_text) {
 
 1. Vytvořit novou metodu s názvem `get_suggestions()` a proveďte následující kroky:
 
-    1. Díky spojení vašeho rozhraní API se vytvoří adresa URL pro váš požadavek hostitele, cestu a kódování vašemu vyhledávacímu dotazu. Nezapomeňte si adresu url – kódování dotaz před připojením. Parametry řetězce dotazu s vytvořením připojení trhu kód, který `mkt=` parametr a dotaz a `q=` parametru.
+   1. Díky spojení vašeho rozhraní API se vytvoří adresa URL pro váš požadavek hostitele, cestu a kódování vašemu vyhledávacímu dotazu. Nezapomeňte si adresu url – kódování dotaz před připojením. Parametry řetězce dotazu s vytvořením připojení trhu kód, který `mkt=` parametr a dotaz a `q=` parametru.
     
       ```java
   
       public static String get_suggestions () throws Exception {
-          String encoded_query = URLEncoder.encode (query, "UTF-8");
-          String params = "?mkt=" + mkt + "&q=" + encoded_query;
-          //...
+         String encoded_query = URLEncoder.encode (query, "UTF-8");
+         String params = "?mkt=" + mkt + "&q=" + encoded_query;
+         //...
       }
       ```
     
-    2. Vytvořte novou adresu URL pro požadavek s rozhraním API hostitele, cestu a parametry vytvořili výše. 
+   2. Vytvořte novou adresu URL pro požadavek s rozhraním API hostitele, cestu a parametry vytvořili výše. 
     
-        ```java
-        //...
-        URL url = new URL (host + path + params);
-        //...
-        ```
+       ```java
+       //...
+       URL url = new URL (host + path + params);
+       //...
+       ```
     
-    3. Vytvoření `HttpsURLConnection` objektu a použít `openConnection()` vytvořit připojení. Nastaví metodu požadavku `GET`a přidat váš klíč předplatného na `Ocp-Apim-Subscription-Key` záhlaví.
+   3. Vytvoření `HttpsURLConnection` objektu a použít `openConnection()` vytvořit připojení. Nastaví metodu požadavku `GET`a přidat váš klíč předplatného na `Ocp-Apim-Subscription-Key` záhlaví.
 
       ```java
-        //...
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        connection.setDoOutput(true);
-        //...
+       //...
+       HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+       connection.setRequestMethod("GET");
+       connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+       connection.setDoOutput(true);
+       //...
       ```
 
-    4. Přečtěte si v odpovědi rozhraní API `StringBuilder`. Po odpověď byla zachycena, zavřete `InputStreamReader` datového proudu a vrací odpověď.
+   4. Přečtěte si v odpovědi rozhraní API `StringBuilder`. Po odpověď byla zachycena, zavřete `InputStreamReader` datového proudu a vrací odpověď.
 
-        ```java
-        //...
-        StringBuilder response = new StringBuilder ();
-        BufferedReader in = new BufferedReader(
-        new InputStreamReader(connection.getInputStream()));
-        String line;
-        while ((line = in.readLine()) != null) {
-          response.append(line);
-        }
-        in.close();
+       ```java
+       //...
+       StringBuilder response = new StringBuilder ();
+       BufferedReader in = new BufferedReader(
+       new InputStreamReader(connection.getInputStream()));
+       String line;
+       while ((line = in.readLine()) != null) {
+         response.append(line);
+       }
+       in.close();
     
-        return response.toString();
-        ```
+       return response.toString();
+       ```
 
 2. V hlavní funkci vaší aplikace, zavolejte `get_suggestions()`a tisku na odpověď pomocí `prettify()`.
     

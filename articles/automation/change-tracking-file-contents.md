@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f974d446337b8c962d60be9aab964c6d2ebb535b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: dae0ea3e564a3dfafcd7f072f9b0d8854df17ed7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821061"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074739"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Zobrazit obsah souboru, který je sledován pomocí řešení Change Tracking
 
@@ -62,11 +62,11 @@ Následující postup vás provede povolením sledování změn pro soubor:
 
 1. Na **změnit podrobnosti** stránce se zobrazí standardní před a po souboru informace, v levé horní části, klikněte na tlačítko **zobrazit změny obsahu souboru** zobrazíte obsah souboru.
 
-  ![Podrobnosti o změně](./media/change-tracking-file-contents/change-details.png)
+   ![Podrobnosti o změně](./media/change-tracking-file-contents/change-details.png)
 
 1. Nová stránka zobrazuje obsah souboru v zobrazení vedle sebe. Můžete také vybrat **vložené** zobrazení vloženého změn.
 
-  ![zobrazení změn v souboru](./media/change-tracking-file-contents/view-file-changes.png)
+   ![zobrazení změn v souboru](./media/change-tracking-file-contents/view-file-changes.png)
 
 ## <a name="next-steps"></a>Další postup
 

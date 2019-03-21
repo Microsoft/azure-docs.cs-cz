@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
+ms.date: 03/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 39d0813eab49f526842eec171e3355326bd13c44
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 91325b7884eae4c6f4c85c142b1e81cf2121c039
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727798"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295330"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definovat pořadí pro nasazení prostředků do šablon Azure Resource Manageru
 Pro daný prostředek může být další prostředky, které musí existovat předtím, než se prostředek nasazuje. Například SQL server, musí existovat před pokusem o nasazení databáze SQL. Můžete definovat tuto relaci označením jeden prostředek jako závislé na jiný prostředek. Definování závislostí s **dependsOn** element, nebo pomocí **odkaz** funkce. 
@@ -65,7 +65,7 @@ Při definování závislostí, můžete použít obor názvů zprostředkovatel
 Když jste sklon nesmí být použití dependsOn mapovat vztahy mezi prostředky, je důležité pochopit, proč to děláte. Dokumentování způsob propojených prostředků, například dependsOn není správný přístup. Nemůže zadat dotaz, které prostředky byly definovány v elementu dependsOn po nasazení. Pomocí dependsOn vás to ovlivnit dobu nasazení protože Resource Manager nenasadí v paralelní dva prostředky, které jsou závislé. 
 
 ## <a name="child-resources"></a>Podřízené prostředky
-Vlastnost prostředky můžete zadat podřízené prostředky, které se vztahují k prostředku je definována. Podřízené prostředky lze pouze definované pěti úrovněmi. Je důležité si uvědomit, že není vytvořena implicitní závislost mezi prostředkem podřízený a nadřazený prostředek. Pokud potřebujete podřízený prostředek k nasazení po nadřazeném prostředku, musí explicitně stavu dané závislosti s vlastností dependsOn. 
+Vlastnost prostředky můžete zadat podřízené prostředky, které se vztahují k prostředku je definována. Podřízené prostředky lze pouze definované pěti úrovněmi. Je důležité si uvědomit, že není vytvořena implicitní nasazení závislost mezi prostředkem podřízený a nadřazený prostředek. Pokud potřebujete podřízený prostředek k nasazení po nadřazeném prostředku, musí explicitně stavu dané závislosti s vlastností dependsOn. 
 
 Každý nadřazený prostředek přijímá pouze určité typy prostředků jako podřízené prostředky. Typy přijaté prostředků jsou určené v [schéma šablony](https://github.com/Azure/azure-resource-manager-schemas) nadřazeného prostředku. Název typu podřízeného prostředku obsahuje název nadřazeného typu prostředku, jako například **Microsoft.Web/sites/config** a **Microsoft.Web/sites/extensions** jsou i podřízené prostředky **Microsoft.Web/sites**.
 

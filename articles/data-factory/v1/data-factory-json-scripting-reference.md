@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ee09f8defc7a10b153e910cb7208b0ddb21120b2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 7a3819eedc57e1e349814c9105a0880bf3d4d9ec
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543948"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891252"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON Scripting Reference
 > [!NOTE]
@@ -3325,6 +3325,7 @@ Systém souborů v místním můžete propojit s Azure data factory s **s místn
 | gatewayName |Určuje název brány, které služby Data Factory měla použít pro připojení k serveru v místním souboru. |Ano |
 
 #### <a name="sample-folder-path-definitions"></a>Ukázka složky cesta definice
+
 | Scénář | Hostování v definici propojené služby | folderPath v definici datové sady |
 | --- | --- | --- |
 | Místní složka na počítači brány pro správu dat: <br/><br/>Příklady: D:\\ \* nebo D:\folder\subfolder\\* |D:\\ \\ (pro Data Management Gateway 2.0 a novější) <br/><br/> místního hostitele (pro starší verze než Data Management Gateway 2.0) |. \\ \\ nebo složky\\\\podsložku (pro Data Management Gateway 2.0 a novější) <br/><br/>D:\\ \\ nebo D:\\\\složky\\\\podsložku (pro brány verze nižší než 2.0) |
@@ -3496,6 +3497,7 @@ Pokud data kopírujete do systému souborů, nastavte **jímky typu** aktivity k
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
 | copyBehavior |Definuje chování kopírování, pokud je zdroj BlobSource nebo systému souborů. |**PreserveHierarchy:** Zachová hierarchií souborů v cílové složce. To znamená relativní cestu ke zdrojové složce zdrojový soubor je stejný jako relativní cesta cílový soubor do cílové složky.<br/><br/>**FlattenHierarchy:** Všechny soubory ze zdrojové složky vytvořené v první úroveň cílové složky. Cílové soubory se vytvoří s automaticky generovaným názvem.<br/><br/>**MergeFiles:** Sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název nebo objekt blob název souboru, název sloučený soubor je zadaný název. V opačném případě je název automaticky generovaného souboru. |Ne |
+
 Auto-
 
 #### <a name="example"></a>Příklad:
@@ -3863,7 +3865,7 @@ Další informace najdete v článku konektor HDFS.
 K definování protokolu SFTP propojenou službu, nastavte **typ** propojené služby pro **Sftp**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | hostitel | Název nebo IP adresa serveru SFTP. |Ano |
 | port |Port, na kterém naslouchá SFTP server. Výchozí hodnota je: 21 |Ne |
 | authenticationType. |Zadejte typ ověřování. Povolené hodnoty: **Základní**, **SshPublicKey**. <br><br> Odkazovat na použití základního ověřování a [pomocí SSH ověření veřejného klíče](#using-ssh-public-key-authentication) oddíly na více vlastností a ukázky JSON v uvedeném pořadí. |Ano |
@@ -3877,7 +3879,7 @@ K definování protokolu SFTP propojenou službu, nastavte **typ** propojené sl
 Chcete-li použít základní ověřování, nastavte `authenticationType` jako `Basic`a zadejte následující požadované vlastnosti kromě konektoru SFTP obecných představíme v poslední části:
 
 | Vlastnost | Popis | Požaduje se |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | uživatelské jméno | Uživatel, který má přístup k serveru SFTP. |Ano |
 | heslo | Heslo pro uživatele (uživatelské jméno). | Ano |
 
@@ -3926,7 +3928,7 @@ Chcete-li použít základní ověřování, nastavte `authenticationType` jako 
 Chcete-li použít základní ověřování, nastavte `authenticationType` jako `SshPublicKey`a zadejte následující požadované vlastnosti kromě konektoru SFTP obecných představíme v poslední části:
 
 | Vlastnost | Popis | Požaduje se |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | uživatelské jméno |Uživatel, který má přístup k serveru SFTP |Ano |
 | privateKeyPath | Zadejte absolutní cestu k souboru privátního klíče můžete přístup k této brány. | Zadejte, jestli `privateKeyPath` nebo `privateKeyContent`. <br><br> Platí pouze při kopírování dat z místní server SFTP. |
 | privateKeyContent | Serializovaný řetězec soukromého klíče obsahu. Průvodce kopírováním může číst soubor privátního klíče a automaticky extrahovat obsah privátního klíče. Pokud používáte žádné další nástroj nebo sadu SDK, použijte vlastnost privateKeyPath. | Zadejte, jestli `privateKeyPath` nebo `privateKeyContent`. |
@@ -5398,7 +5400,7 @@ Je třeba počítat s následujícím:
 Další informace o aktivitě najdete v tématu [aktivitu Spark](data-factory-spark.md) článku.
 
 ## <a name="machine-learning-batch-execution-activity"></a>Aktivita Provedení dávky služby Machine Learning
-Zadejte následující vlastnosti v Azure Machine Learning studio zápis JSON aktivity spuštění dávky definition. Vlastnost typu aktivity musí být: **AzureMLBatchExecution**. Musíte vytvořit Azure Machine Learning nejprve propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená na AzureMLBatchExecution:
+V aplikaci Azure Machine Learning studio definici JSON aktivity spuštění služby Batch můžete zadat následující vlastnosti. Vlastnost typu aktivity musí být: **AzureMLBatchExecution**. Musíte vytvořit službě Azure Machine Learning nejprve propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená na AzureMLBatchExecution:
 
 Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
@@ -5454,7 +5456,7 @@ V tomto příkladu JSON v nasazované službě Azure Machine Learning Web použ�
 > Pouze vstupů a výstupů aktivity AzureMLBatchExecution lze předat jako parametry webové služby. Například ve výše uvedeném fragmentu JSON MLSqlInput je vstupní hodnota pro AzureMLBatchExecution aktivity, které je předáno jako vstup do webové služby prostřednictvím parametru webServiceInput.
 
 ## <a name="machine-learning-update-resource-activity"></a>Aktivita aktualizace prostředku služby Machine Learning
-Zadejte následující vlastnosti v Azure Machine Learning studio definici JSON aktivity aktualizace prostředku. Vlastnost typu aktivity musí být: **AzureMLUpdateResource**. Musíte vytvořit Azure Machine Learning nejprve propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** části Pokud nastavíte typ aktivity AzureMLUpdateResource:
+Můžete zadat následující vlastnosti v aplikaci Azure Machine Learning studio definici JSON aktivity aktualizace prostředku. Vlastnost typu aktivity musí být: **AzureMLUpdateResource**. Musíte vytvořit službě Azure Machine Learning nejprve propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** části Pokud nastavíte typ aktivity AzureMLUpdateResource:
 
 Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------

@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 03/06/2019
-ms.openlocfilehash: 02f5b98026699be4c71e0cecf94634c7a139d21e
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.date: 03/12/2019
+ms.openlocfilehash: 76c7519a166bfbfe5d2a7695a077b809aa971489
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727004"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904027"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
@@ -141,7 +141,7 @@ Můžete nastavit shromažďovat následující telemetrická data diagnostiky p
 
 | Prostředek | Monitorování telemetrických dat |
 | :------------------- | ------------------- |
-| **Spravovaná instance** | [ResourceUsageStats](#logs-for-managed-instances) obsahuje počet virtuálních jader, průměrné procento využití procesoru, vstupně-výstupní požadavky, bajtů načtených/zapsaných, vyhrazený úložný prostor a využitého prostoru úložiště. |
+| **Spravovaná instance** | ResourceUsageStats obsahuje počet virtuálních jader, průměrné procento využití procesoru, vstupně-výstupní požadavky, bajtů načtených/zapsaných, vyhrazený úložný prostor a využitého prostoru úložiště. |
 
 Pokud chcete povolit streamování telemetrická data diagnostiky pro prostředek spravované instance, postupujte podle těchto kroků:
 
@@ -189,6 +189,8 @@ Pokud chcete povolit streamování diagnostickou telemetrii pro instanci databá
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 Metriky a protokolování diagnostiky můžete povolit pomocí Powershellu.
 

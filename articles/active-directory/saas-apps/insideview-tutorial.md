@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a315933dcd438c68a1326d2b656c2353e4185f12
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 92cb4f1093d8450bb2c32d99f4ccedd0a5688253
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866789"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58165913"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Kurz: Integrace Azure Active Directory s InsideView
 
@@ -91,7 +91,7 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s InsideView, kte
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele InsideView](#creating-a-insideview-test-user)**  – Pokud chcete mít protějšek Britta Simon InsideView, který je propojený s Azure AD reprezentace uživatele.
+1. **[Vytváří se testovací uživatelské jméno InsideView](#creating-a-insideview-test-user)**  – Pokud chcete mít protějšek Britta Simon InsideView, který je propojený s Azure AD reprezentace uživatele.
 1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
 1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
@@ -191,7 +191,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="creating-a-insideview-test-user"></a>Vytvoření zkušebního uživatele InsideView
+### <a name="creating-an-insideview-test-user"></a>Vytvoření InsideView testovacího uživatele
 
 Umožňuje uživatelům Azure AD se přihlaste k InsideView, musí být poskytnuty v k InsideView. V případě InsideView zřizování se ruční úlohy.
 

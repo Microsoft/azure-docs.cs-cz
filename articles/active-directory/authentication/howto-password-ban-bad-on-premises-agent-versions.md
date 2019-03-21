@@ -11,19 +11,32 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8897651c963b0036bc2ac3d8cdb06a52d6f52ba1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: 6e09127f8ed2e8e949711631a20fa5a9cd855311
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188031"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284795"
 ---
-# <a name="preview--azure-ad-password-protection-agent-version-history"></a>Verze Preview:  Historie verze agenta Azure AD ochrana heslem
+# <a name="azure-ad-password-protection-agent-version-history"></a>Historie verze agenta Azure AD ochrana heslem
 
-|     |
-| --- |
-| Ochrana hesel Azure AD je funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+## <a name="121160"></a>1.2.116.0
+
+Datum vydání: 3/13/2019
+
+* Get-AzureADPasswordProtectionProxy a Get-AzureADPasswordProtectionDCAgent rutiny teď verze softwaru sestavy a aktuální Azure tenanta s těmito omezeními:
+  * Verze softwaru a data Azure tenanta se pouze k dispozici pro řadič domény agenty a servery proxy verzí 1.2.116.0 nebo novější.
+  * Data tenanta Azure nemusí být hlášena až do opětovné registraci (nebo prodloužení platnosti) proxy server nebo doménové struktury došlo k chybě.
+* Proxy služba teď vyžaduje, aby nainstalované rozhraní .NET 4.7.
+  * .NET 4.7 musí již nainstalován na serveru Windows Server kompletně aktualizovaný. Pokud to není tento případ, stáhněte a spusťte instalační program na [offline instalační program .NET Framework 4.7 pro Windows](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+  * V systémech jádra serveru může být potřeba předat příznakem /q do instalačního programu .NET 4.7 její úspěšné.
+* Služba proxy server nyní podporuje automatický upgrade. Automatický upgrade používá Microsoft Azure AD Connect agenta aktualizační služby, která je nainstalovaná – souběžně se službou Proxy. Ve výchozím nastavení zapnutý automatický upgrade.
+* Automatický upgrade může být povoleno nebo zakázáno, pomocí rutiny Set-AzureADPasswordProtectionProxyConfiguration. Aktuální nastavení může být dotázán pomocí rutiny Get-AzureADPasswordProtectionProxyConfiguration.
+* Binární služby pro službu agent řadič domény byl přejmenován na AzureADPasswordProtectionDCAgent.exe.
+* Binární služby pro službu Proxy byl přejmenován na AzureADPasswordProtectionProxy.exe. Pravidla brány firewall možná muset odpovídajícím způsobem upravit, pokud je brána firewall třetích stran používané.
+  * Poznámka: Pokud soubor konfigurace proxy serveru http se používal v předchozí proxy server nainstalovat, ji budou muset přejmenovat (z *proxyservice.exe.config* k *AzureADPasswordProtectionProxy.exe.config*) po této upgrade.
+* Všechny kontroly časově omezené funkce byly odebrány z agenta řadiče domény.
+* Protokolování vylepšení a oprav drobných chyb.
 
 ## <a name="12650"></a>1.2.65.0
 

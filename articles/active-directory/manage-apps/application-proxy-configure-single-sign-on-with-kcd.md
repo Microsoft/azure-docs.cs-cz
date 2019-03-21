@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: celested
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b82f32477efb2e45eb95651dd21ccd2ae3095e7c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5c7744ba4ca37a2a496c75a50f274be9bf431cc5
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431305"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286580"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Omezené delegování protokolu Kerberos pro jednotné přihlašování do aplikací pomocí Proxy aplikace
 
@@ -37,7 +37,7 @@ Tento diagram popisuje tok, když se uživatel pokusí získat přístup na mís
 1. Uživatel zadá adresu URL pro přístup na místní aplikace prostřednictvím Proxy aplikací.
 2. Proxy aplikace přesměruje požadavek preauthenticate ověřování služby Azure AD. V tuto chvíli Azure AD použije všechny příslušné ověřování a zásady autorizace, jako je například vícefaktorové ověřování. Pokud uživatel je ověřen, Azure AD vytvoří token a odešle se uživateli.
 3. Uživatel se předá token Proxy aplikací.
-4. Proxy aplikací ověří token a načte z něj hlavní název uživatele (UPN) a potom odešle požadavek, hlavní název uživatele a hlavní název služby (SPN) konektoru prostřednictvím obousměrně ověřeného zabezpečeného kanálu.
+4. Proxy aplikace ověří token a načte z něj hlavní název uživatele (UPN), a pak konektor si vyžádá hlavní název uživatele a hlavní název služby (SPN) prostřednictvím obousměrně ověřeného zabezpečeného kanálu.
 5. Konektor provede vyjednávání protokolu Kerberos omezené delegování (KCD) s místní AD zosobňování uživatele získá token protokolu Kerberos k aplikaci.
 6. Služby Active Directory odešle token protokolu Kerberos pro použití konektoru.
 7. Konektor odesílá původní požadavek na server aplikace pomocí token protokolu Kerberos, které získala ze služby AD.

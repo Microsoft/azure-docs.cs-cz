@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 3fa890b02c791f26f3f25bf2418b105d1116ca75
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: f66101d9847c57c5e078c3484a243e7b38823f53
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094422"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001783"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Přesunutí virtuálního počítače s Windows na virtuálním počítači Azure z Amazon Web Services (AWS)
 
@@ -46,7 +46,7 @@ Zobecněný a specializovaných virtuálních pevných disků můžete nahrát d
 
 ## <a name="export-and-download-the-vhd"></a>Export a stáhnout virtuální pevný disk 
 
-Exportujte EC2 instance virtuální pevný disk v kontejneru Amazon S3. Postupujte podle kroků v článku dokumentace Amazon [export Instance jako virtuální počítač pomocí virtuálního počítače Import/Export](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) a spustit [vytvořit instance-export úlohu](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) příkaz pro export EC2 instance do souboru virtuálního pevného disku. 
+Exportujte EC2 instance virtuální pevný disk v kontejneru Amazon S3. Postupujte podle kroků v článku dokumentace Amazon [export Instance jako virtuální počítač pomocí virtuálního počítače Import/Export](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) a spustit [vytvořit instance-export úlohu](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) příkaz pro export EC2 instance do souboru virtuálního pevného disku. 
 
 Exportovaný soubor virtuálního pevného disku je uložen v intervalu Amazon S3, kterou zadáte. Základní syntaxe pro export virtuálního pevného disku je pod, stačí nahradit zástupný text v <brackets> s informacemi o.
 
@@ -55,7 +55,7 @@ aws ec2 create-instance-export-task --instance-id <instanceID> --target-environm
   --export-to-s3-task DiskImageFormat=VHD,ContainerFormat=ova,S3Bucket=<bucket>,S3Prefix=<prefix>
 ```
 
-Jakmile byl exportován virtuálního pevného disku, postupujte podle pokynů v [jak stáhnout objekt ze sady S3?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) stahování souborů virtuálního pevného disku z sady S3. 
+Jakmile byl exportován virtuálního pevného disku, postupujte podle pokynů v [jak stáhnout objekt ze sady S3?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) stahování souborů virtuálního pevného disku z sady S3. 
 
 > [!IMPORTANT]
 > Poplatky za stažení virtuálního pevného disku za přenosy dat poplatky za AWS. Zobrazit [Amazon S3 ceny](https://aws.amazon.com/s3/pricing/) Další informace.

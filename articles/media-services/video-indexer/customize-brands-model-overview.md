@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 48255614291086fe85666bec407ea62f7a365410
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 15f4b8b6d4a27e721dfcaed8b9dd700e87e3a257
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237361"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872875"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Přizpůsobení modelu značky v Video Indexer
 
@@ -28,7 +28,7 @@ V [2. den Microsoft Build 2017](https://www.videoindexer.ai/media/ed6ede78ad/) p
 
 ![Přehled značek](./media/content-model-customization/brands-overview.png)
 
-Mluví o časových obdobích v kontextu konstrukce nerozpozná slovo "Windows" jako značek a stejné pole, Apple, Fox, atd., podle pokročilých algoritmů strojového učení, které už víte, jak k rozlišení z kontextu. Značka zjišťování funguje pro všechny naše podporované jazyky. Kliknutím sem získáte [úplná video s hlavním Vystoupením 2. den Microsoft Build 2017 a index](http://www.videoindexer.ai/media/ed6ede78ad/).
+Mluví o časových obdobích v kontextu konstrukce nerozpozná slovo "Windows" jako značek a stejné pole, Apple, Fox, atd., podle pokročilých algoritmů strojového učení, které už víte, jak k rozlišení z kontextu. Značka zjišťování funguje pro všechny naše podporované jazyky. Kliknutím sem získáte [úplná video s hlavním Vystoupením 2. den Microsoft Build 2017 a index](https://www.videoindexer.ai/media/ed6ede78ad/).
 
 Chcete-li přineste vlastní značky, přečtěte si další kroky.
 

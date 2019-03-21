@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: f81e7a0008c015c033d30045970fe1bd67597ff9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 26f25a0dcbeef0d5b7456d42caaca392c3ca6a1a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452183"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075608"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup serveru
 > [!div class="op_single_selector"]
@@ -231,16 +231,16 @@ Následující části popisují, jak aktualizovat agenty ochrany pro klientské
 
 2. V podokně zobrazení vyberte klientské počítače, pro které chcete aktualizovat agenty ochrany.
 
-  > [!NOTE]
-  > **Aktualizací agenta** sloupec znamená, když je k dispozici pro každý chráněný počítač aktualizace agenta ochrany. V **akce** podokně **aktualizace** akce je dostupná, jenom když je vybrán chráněný počítač a jsou k dispozici aktualizace.
-  >
-  >
+   > [!NOTE]
+   > **Aktualizací agenta** sloupec znamená, když je k dispozici pro každý chráněný počítač aktualizace agenta ochrany. V **akce** podokně **aktualizace** akce je dostupná, jenom když je vybrán chráněný počítač a jsou k dispozici aktualizace.
+   >
+   >
 
 3. Chcete-li nainstalovat aktualizované agenty ochrany na vybraných počítačích, **akce** vyberte **aktualizace**.
 
 4. Abyste klientskému počítači, který není připojen k síti, dokud je počítač připojen k síti **stav agenta** sloupci se zobrazuje stav **aktualizace čeká na vyřízení**.
 
-  Až klientský počítač je připojený k síti, **aktualizací agenta** sloupec pro klientský počítač zobrazuje stav **aktualizace**.
+   Až klientský počítač je připojený k síti, **aktualizací agenta** sloupec pro klientský počítač zobrazuje stav **aktualizace**.
 
 ## <a name="move-mabs-to-a-new-server"></a>Přesunout MABS na nový server
 
@@ -262,10 +262,11 @@ Pokud potřebujete přesunout MABS na nový server, a přitom zachovat úložiš
 9. Obnovení SQL databázi DPMDB
 10. Z příkazového řádku správce na nový disk cd serveru do služby Microsoft Azure Backup nainstalujte umístění a složky bin
 
-Příklad cesty: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
-do Azure zálohovat spusťte DPMSYNC-SYNC
+    Příklad cesty: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\" 
 
-10) Spusťte nástroj DPMSYNC-SYNC Poznámka: Pokud nové disky, které jste přidali do fondu úložiště DPM namísto přesouvání staré, pak spusťte DPMSYNC - Reallocatereplica
+11. Azure Backup, spusťte DPMSYNC-SYNC
+
+    Pokud jste přidali nové disky do fondu úložiště DPM namísto přesouvání staré, spusťte příkaz DPMSYNC - Reallocatereplica
 
 ## <a name="network-connectivity"></a>Připojení k síti
 Azure Backup Server vyžaduje připojení ke službě Azure Backup pro produkt nemusí fungovat správně. Chcete-li ověřit, zda je počítač připojen k Azure, použijte ```Get-DPMCloudConnection``` rutiny v konzole prostředí PowerShell pro Azure Backup Server. Pokud výstup této rutiny je hodnota TRUE, pak připojení existuje, jinak není žádné připojení.
@@ -306,33 +307,33 @@ Pomocí následujících postupů můžete upgradovat MABS.
 ### <a name="upgrade-from-mabs-v2-to-v3"></a>Upgrade z MABS V2 na V3
 
 > [!NOTE]
-
+> 
 > MABS V2 není předpoklady pro instalaci MABS V3. Ale můžete upgradovat na MABS V3 pouze z MABS V2.
 
 Pro upgrade MABS použijte následující kroky:
 
 1. Upgrade MABS V2 na MABS V3, upgradujte svůj operační systém na Windows Server 2016 nebo Windows Server 2019 v případě potřeby.
 
-2.  Upgrade serveru. Kroky jsou podobné [instalace](#install-and-upgrade-azure-backup-server). Pro nastavení SQL, pomocí možnosti pro upgrade na SQL 2017 vaší instanci SQL, nebo použít vlastní instanci systému SQL server 2017 získáte.
+2. Upgrade serveru. Kroky jsou podobné [instalace](#install-and-upgrade-azure-backup-server). Pro nastavení SQL, pomocí možnosti pro upgrade na SQL 2017 vaší instanci SQL, nebo použít vlastní instanci systému SQL server 2017 získáte.
 
-  > [!NOTE]
+   > [!NOTE]
+   > 
+   > Neukončovat se upgraduje vaše instance SQL, ukončí se odinstaluje instance generování sestav SQL a proto se nezdaří pokus o upgrade znovu MABS.
 
-  > Neukončovat se upgraduje vaše instance SQL, ukončí se odinstaluje instance generování sestav SQL a proto se nezdaří pokus o upgrade znovu MABS.
+   Co je důležité si uvědomit:
 
-  Co je důležité si uvědomit:
-
-  > [!IMPORTANT]
-
-  >  Jako součást upgradu SQL 2017 jsme zálohovat šifrovací klíče SQL a odinstalaci služby reporting services. Po upgradu SQL server reporting je nainstalován service(14.0.6827.4788) & obnoví šifrovací klíče.
-
- > Při konfiguraci SQL 2017 ručně, najdete *konfigurace služby SSRS 2017 SQL* části Postup instalace.
+   > [!IMPORTANT]
+   > 
+   >  Jako součást upgradu SQL 2017 jsme zálohovat šifrovací klíče SQL a odinstalaci služby reporting services. Po upgradu SQL server reporting je nainstalován service(14.0.6827.4788) & obnoví šifrovací klíče.
+   > 
+   > Při konfiguraci SQL 2017 ručně, najdete *konfigurace služby SSRS 2017 SQL* části Postup instalace.
 
 3. Aktualizujte agenty ochrany na chráněných serverech.
 4. Zálohování by měly pokračovat bez potřeby restartu provozních serverech.
 5. Můžete začít nyní chrání vaše data. Pokud provádíte upgrade na moderní úložiště záloh, při ochraně, můžete také svazky, které chcete ukládat zálohy v a vyhledejte v části zřízené místo. [Další informace](backup-mabs-add-storage.md).
 
 > [!NOTE]
-
+> 
 > Pokud upgradujete z MABS V1 na V2, ujistěte se, že váš operační systém Windows Server 2016 nebo Windows Server 2012 R2. Abyste mohli využívat nové funkce, jako je systém System Center 2016 Data Protection Manager moderní úložiště záloh, je nutné nainstalovat V2 zálohování serveru ve Windows serveru 2016. Před upgradováním na nebo instalace zálohování serveru V2, přečtěte si informace o [požadavky na instalaci](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites) pro MABS.
 
 ## <a name="troubleshooting"></a>Řešení potíží

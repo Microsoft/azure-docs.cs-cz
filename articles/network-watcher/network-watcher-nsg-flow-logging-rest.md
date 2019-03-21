@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 565b5bcce114ab5ebd2169ece11a958013cf2ee5
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: eadff8e2db6e5b8ea19b041614e0d1f3908da8a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338899"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876880"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurace skupiny zabezpečení sítě protokolů toku s využitím rozhraní REST API
 
@@ -209,7 +209,7 @@ Následuje příklad odpovědi vrácené:
 
 ## <a name="download-a-flow-log"></a>Stáhnout protokol toku
 
-Umístění úložiště protokolů toku je definován při vytvoření. Praktický nástroj pro přístup k těmto protokolů toku uložit do účtu úložiště je Microsoft Azure Storage Explorer, které je možné stáhnout tady:  http://storageexplorer.com/
+Umístění úložiště protokolů toku je definován při vytvoření. Praktický nástroj pro přístup k těmto protokolů toku uložit do účtu úložiště je Microsoft Azure Storage Explorer, které je možné stáhnout tady:  https://storageexplorer.com/
 
 Pokud je určen účet úložiště, jsou uloženy soubory zachytávání paketů do účtu úložiště v následujícím umístění:
 

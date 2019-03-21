@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08ad61070fd3bfb8472cffb51fd0b1bb4bcf169b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7ef499e49fc4d1a0dc79dfc4efb818f7330b57b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169373"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995195"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis-preview"></a>Rychlý start: Konfigurovat klientskou aplikaci pro přístup k webovým rozhraním API (Preview)
 
@@ -74,11 +74,11 @@ Přidání identifikátorů URI pro přesměrování do aplikace:
 
 1. Pokud chcete přidat vlastní identifikátor URI pro přesměrování pro webové a veřejné klientské aplikace, postupujte následovně:
 
-    1. Vyhledejte část **Identifikátor URI pro přesměrování**.
-    1. Vyberte typ aplikace, kterou vytváříte: **Web** nebo **Veřejný klient (mobilní a desktopová zařízení)**.
-    1. Zadejte URI pro přesměrování pro vaši aplikaci.
-        * V případě webových aplikací zadejte základní adresu URL vaší aplikace. Například http://localhost:31544 může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci.
-        * V případě veřejných aplikací zadejte identifikátor URI, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte konkrétní hodnotu pro vaši aplikaci, například https://MyFirstApp.
+   1. Vyhledejte část **Identifikátor URI pro přesměrování**.
+   1. Vyberte typ aplikace, kterou vytváříte: **Web** nebo **Veřejný klient (mobilní a desktopová zařízení)**.
+   1. Zadejte URI pro přesměrování pro vaši aplikaci.
+      * V případě webových aplikací zadejte základní adresu URL vaší aplikace. Například `http://localhost:31544` může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci.
+      * V případě veřejných aplikací zadejte identifikátor URI, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte konkrétní hodnotu pro vaši aplikaci, například https://MyFirstApp.
 
 1. Pokud si chcete vybrat z navrhovaných identifikátorů URI pro veřejné klienty (mobilní, desktopové), postupujte následovně:
 

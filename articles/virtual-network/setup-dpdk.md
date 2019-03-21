@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: b50f7c9b76e9309a1ee08257dd8b13ec289397a5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775913"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993870"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Nastavit DPDK ve virtuálním počítači s Linuxem
 
@@ -126,12 +126,12 @@ Po restartování počítače, spusťte jednou následující příkazy:
      /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
-   *  Vytvořte adresář pro připojení s `mkdir /mnt/huge`.
-   *  Připojení hugepages s `mount -t hugetlbfs nodev /mnt/huge`.
-   *  Zkontrolujte, že jsou obsloužit hugepages `grep Huge /proc/meminfo`.
+   * Vytvořte adresář pro připojení s `mkdir /mnt/huge`.
+   * Připojení hugepages s `mount -t hugetlbfs nodev /mnt/huge`.
+   * Zkontrolujte, že jsou obsloužit hugepages `grep Huge /proc/meminfo`.
 
      > [!NOTE]
-     > Existuje způsob, jak upravit soubor grub tak, aby hugepages jsou vyhrazené při spuštění následující [pokyny](http://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) pro DPDK. Pokyny se v dolní části stránky. Při použití virtuálního počítače s Linuxem v Azure, upravte soubory v rámci **/etc/config/grub.d** místo toho rezervovat hugepages mezi restartováními.
+     > Existuje způsob, jak upravit soubor grub tak, aby hugepages jsou vyhrazené při spuštění následující [pokyny](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) pro DPDK. Pokyny se v dolní části stránky. Při použití virtuálního počítače s Linuxem v Azure, upravte soubory v rámci **/etc/config/grub.d** místo toho rezervovat hugepages mezi restartováními.
 
 2. MAC a IP adresy: Použití `ifconfig –a` zobrazíte MAC a IP adresy síťových rozhraní. *VF* síťové rozhraní a *NETVSC* síťové rozhraní mají stejnou adresu MAC, ale jen *NETVSC* síťové rozhraní má IP adresu. Rozhraní VF fungují jako podřízené rozhraní NETVSC rozhraní.
 
@@ -146,7 +146,7 @@ Po restartování počítače, spusťte jednou následující příkazy:
 
 DPDK aplikací musí spouštět bezporuchový PMD, která je vystavena v Azure. Pokud aplikace běží přímo nad VF PMD, neobdrží **všechny** paketů, které jsou určeny k virtuálnímu počítači, protože některé pakety zobrazí syntetické rozhraní. 
 
-Spuštění aplikace DPDK přes bezporuchový PMD zaručuje, že aplikace obdrží všechny pakety, které jsou určeny k němu. Je také zajišťuje, že aplikace i nadále běží v režimu DPDK i v případě, VF je odebrán, když probíhá údržba hostitele. Další informace o bezporuchový PMD najdete v tématu [knihovny ovladačů režimu odolný proti selhání dotazování](http://doc.dpdk.org/guides/nics/fail_safe.html).
+Spuštění aplikace DPDK přes bezporuchový PMD zaručuje, že aplikace obdrží všechny pakety, které jsou určeny k němu. Je také zajišťuje, že aplikace i nadále běží v režimu DPDK i v případě, VF je odebrán, když probíhá údržba hostitele. Další informace o bezporuchový PMD najdete v tématu [knihovny ovladačů režimu odolný proti selhání dotazování](https://doc.dpdk.org/guides/nics/fail_safe.html).
 
 ## <a name="run-testpmd"></a>Spustit testpmd
 
@@ -244,7 +244,7 @@ Následující příkazy pravidelně tisk pakety Statistika za sekundu:
      -w <pci address NIC2> \
      --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>" \
      --vdev="net_vdev_netvsc<2nd id>,iface=<2nd iface to attach to>" (you need as many --vdev arguments as the number of devices used by testpmd, in this case) \
-     -- --nb-cores <number of cores to use for test pmd> \
+     -- --nb-cores <number of cores to use for test pmd> \
      --forward-mode=io \
      --eth-peer=<recv port id>,<sender peer MAC address> \
      --stats-period <display interval in seconds>

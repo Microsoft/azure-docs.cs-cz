@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.openlocfilehash: 6cd1d917be67d21e3e6dfe54ed5dec77b92509e9
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e4037e79812f0cf548ddfcc277c1b66332e0f1f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821451"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902871"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkce Azure Stream Analytics ve verzi preview
 
@@ -61,7 +61,7 @@ Můžete teď provozu v reálném čase kanály pomocí spravované identity pro
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>Visual Studio Code pro Azure Stream Analytics
 
-Úlohy Azure Stream Analytics se můžou vytvořit ve Visual Studio Code. Pro přístup k nástrojů funkce ve verzi private preview, obraťte se na *ASAToolsfeedback@microsoft.com*.
+Úlohy Azure Stream Analytics se můžou vytvořit ve Visual Studio Code. Pro přístup k nástrojů funkce ve verzi private preview, obraťte se na *ASAToolsfeedback\@microsoft.com*.
 
 ## <a name="next-steps"></a>Další postup
 

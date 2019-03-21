@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c33bf12dfaa4d9c9bd927cd8e7f8d61a09a962d1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 395d3887e35d6e9c043d4d947b605e71eb58bd6b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762632"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897329"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iprova"></a>Kurz: Integrace Azure Active Directory s iProva
 
@@ -221,7 +221,7 @@ V této části vytvoříte testovacího uživatele na webu Azure Portal s názv
 
     a. V **název** zadejte název, například **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte *yourname@yourcompanydomain.extension*. 
+    b. V **uživatelské jméno** zadejte *vaše_jméno\@yourcompanydomain.extension*. 
     Příklad: BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
@@ -266,14 +266,14 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 5. Vyberte **Přidat**.
 
-6. V **uživatelské jméno** zadejte *brittasimon@yourcompanydomain.extension*. 
+6. V **uživatelské jméno** zadejte *brittasimon\@yourcompanydomain.extension*. 
     Příklad: BrittaSimon@contoso.com.
 
 7. V **jméno a příjmení** zadejte úplný název, jako je **BrittaSimon**.
 
 8. Vyberte **žádné heslo (použití jednotného přihlašování)** možnost.
 
-9. V **e-mailová adresa** zadejte *yourname@yourcompanydomain.extension*. 
+9. V **e-mailová adresa** zadejte *vaše_jméno\@yourcompanydomain.extension*. 
    Příklad: BrittaSimon@contoso.com.
 
 10. Posuňte se dolů konec stránky a vyberte **Dokončit**.

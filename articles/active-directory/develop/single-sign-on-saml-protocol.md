@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a46bc954d137ad610310d83d3ad7f54370b9177b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d9cb9877015f2cfe61799a56be6490a3f4e2fb60
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184036"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012776"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Protokol pro jednotné přihlašování – SAML
 
@@ -170,7 +170,7 @@ Odpověď s elementem vystavitele může například vypadat jako v následujíc
 
 `Status` Element přenáší úspěch nebo neúspěch přihlašování. Její součástí `StatusCode` element, který bude obsahovat kód nebo sadu vnořených kódů, který představuje stav žádosti. Zahrnuje také `StatusMessage` element, který obsahuje vlastní chybové zprávy, které jsou generovány během procesu přihlašování.
 
-<!-- TODO: Add a authentication protocol error reference -->
+<!-- TODO: Add an authentication protocol error reference -->
 
 Následující příklad je odpověď SAML neúspěšný pokus o přihlášení.
 

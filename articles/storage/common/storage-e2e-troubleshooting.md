@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a160ef767909814e363dbb692e58c30783aaf6f
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: ac30888c9f54c5dc88cb72aeec0f3db81d5a99dc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746298"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004944"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Začátku do konce řešení problémů pomocí metrik Azure Storage a protokolování, AzCopy a analyzátoru zpráv
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -133,9 +133,9 @@ V protokolu na straně klienta obsahuje podrobné informace o jak klient připra
 Klientská knihovna pro úložiště ukládá data na straně klienta protokolu v umístění zadaném v konfiguračním souboru aplikace (web.config nebo app.config).
 
 ### <a name="collect-a-network-trace"></a>Shromažďovat trasování sítě
-Message Analyzer můžete použít ke shromažďování trasování v síti HTTP/HTTPS, když klientská aplikace běží. Message Analyzer používá [Fiddler](http://www.telerik.com/fiddler) na back-endu. Než budete shromažďovat trasování sítě, doporučujeme, abyste nakonfigurovali aplikaci Fiddler k zaznamenání nešifrovaný provoz protokolu HTTPS:
+Message Analyzer můžete použít ke shromažďování trasování v síti HTTP/HTTPS, když klientská aplikace běží. Message Analyzer používá [Fiddler](https://www.telerik.com/fiddler) na back-endu. Než budete shromažďovat trasování sítě, doporučujeme, abyste nakonfigurovali aplikaci Fiddler k zaznamenání nešifrovaný provoz protokolu HTTPS:
 
-1. Nainstalujte [Fiddler](http://www.telerik.com/download/fiddler).
+1. Nainstalujte [Fiddler](https://www.telerik.com/download/fiddler).
 2. Spuštění Fiddleru.
 3. Vyberte **nástroje | Možnosti fiddleru**.
 4. V dialogovém okně Možnosti, ujistěte se, že **zachycení umožňuje připojení HTTPS** a **dešifrování provozu HTTPS** jsou zaškrtnuta, jak je znázorněno níže.

@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
-ms.author: jeffgilb
+ms.date: 03/13/2019
+ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 2c726675d799a8bb5f9ed1d1dd595aa7f4700036
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.lastreviewed: 03/13/2019
+ms.openlocfilehash: 06bafbcf3e668ba17b1245b9352e942e02569997
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774588"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852361"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Plánování kapacity pro role serveru služby Azure App Service ve službě Azure Stack
 
@@ -93,9 +93,17 @@ Při rozhodování o počet sdílených webových rolí pracovního procesu k po
 
    Informace o přidání více instancí pracovního procesu najdete v tématu [přidávání dalších rolí pracovního procesu](azure-stack-app-service-add-worker-roles.md).
 
+### <a name="additional-considerations-for-dedicated-workers-during-upgrade-and-maintenance"></a>Další informace pro vyhrazené pracovní procesy během upgradu a údržby
+
+Během upgradu a údržby pracovních procesů, které služby Azure App Service ve službě Azure Stack se údržbě 20 % jednotlivé vrstvy pracovního procesu v daný okamžik.  Správci cloudu proto musíte mít vždy 20 % fond nepřiděleného pracovních procesů na vrstvu pracovního procesu k zajištění, že se že svým klientům nedochází ke ztrátě služeb během upgradu a údržby.  Například pokud máte 10 pracovních procesů v vrstvu pracovního procesu byste měli zajistit, že 2 jsou volné umožňující upgradu a údržby, pokud úplné 10 pracovní procesy budou přidělené můžete by se měly škálovat vrstvu pracovního procesu udržovat fond nepřiděleného pracovních procesů. Během upgradu a údržby služby Azure App Service se přesune, že úlohy nepřidělené zaměstnancům zajistit, že úlohy budou i nadále fungovat, ale pokud neexistují žádné volné pracovní procesy k dispozici během upgradu pak existuje bude potenciál pro úlohu tenanta výpadek.  S ohledem na sdílených pracovních procesů zákazníci není nutné zřídit další pracovní procesy, protože služba se přidělí tenanta aplikací v rámci dostupné pracovní procesy automaticky, pro zajištění vysoké dostupnosti, ale je minimální požadavek pro dva pracovní procesy v tomto úroveň.
+
+Správci cloudu můžete monitorovat jejich přidělení vrstvy pracovního procesu v oblasti správy služeb aplikace v portálu pro správu služby Azure Stack.  Přejděte do služby App Service a potom v levém podokně vyberte vrstvy pracovních procesů.  Vrstvy pracovních procesů uvádí název vrstvy pracovního procesu, velikost, bitová kopie používaná, počet dostupných pracovních procesů (volné), celkový počet pracovních procesů v jednotlivých vrstvách a celkový stav vrstvy pracovního procesu.
+
+![Správa služby App Service – vrstvy pracovních procesů][1]
+
 ## <a name="file-server-role"></a>Role souborového serveru
 
-Pro roli souborového serveru můžete použít samostatný souborový server pro vývoj a testování. například při nasazování služby Azure App Service v Azure Stack Development Kit (ASDK) můžete použít tuto šablonu: https://aka.ms/appsvconmasdkfstemplate. Pro produkční účely byste použít předem nakonfigurovaný souborový server Windows nebo předem nakonfigurovaný soubor bez Windows serveru.
+Pro roli souborového serveru můžete použít samostatný souborový server pro vývoj a testování. například při nasazování služby Azure App Service v Azure Stack Development Kit (ASDK) může být využit [šablony](https://aka.ms/appsvconmasdkfstemplate).  Pro produkční účely byste použít předem nakonfigurovaný souborový server Windows nebo předem nakonfigurovaný soubor bez Windows serveru.
 
 V produkčním prostředí roli souborového serveru narazí vstupně-výstupní operace náročné na disku. Protože to jsou uloženy všechny soubory obsahu a aplikace pro uživatelské web sites, musíte předem nakonfigurovat jednu z následujících prostředků pro tuto roli:
 
@@ -105,10 +113,13 @@ V produkčním prostředí roli souborového serveru narazí vstupně-výstupní
 - Cluster Windows bez souborových serverů
 - Zařízení NAS (Network Attached Storage)
 
-Další informace najdete v tématu [zřízení souborového serveru](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server).
+Zobrazit další informace najdete v následujícím článku [zřízení souborového serveru](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server).
 
 ## <a name="next-steps"></a>Další postup
 
 Naleznete v následujícím článku pro další informace:
 
 [Před zahájením práce s App Service ve službě Azure Stack](azure-stack-app-service-before-you-get-started.md)
+
+<!--Image references-->
+[1]: ./media/azure-stack-app-service-capacity-planning/worker-tier-allocation.png

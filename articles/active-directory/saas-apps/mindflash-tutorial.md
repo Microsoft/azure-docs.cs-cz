@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 592628cb036972cdae2ab14501fc09fa8ddcb7cc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5d802bbf9766e7b85a739d9a14e8c790fee1b9fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761715"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Kurz: Integrace Azure Active Directory s Mindflash
 
@@ -147,7 +147,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -202,7 +202,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do Mindflash, musí být 
 
     b. V **příjmení** textové pole, typ **příjmení** uživatele jako datový typ **Simon**.
     
-    c. V **e-mailu** textové pole, typ **e-mailovou adresu** uživatele jako datový typ **BrittaSimon@contoso.com**.
+    c. V **e-mailu** textové pole, typ **e-mailovou adresu** uživatele jako datový typ **BrittaSimon\@contoso.com**.
 
     b. Klikněte na tlačítko **Add** (Přidat).
 

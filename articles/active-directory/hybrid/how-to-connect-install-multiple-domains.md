@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00cde6f9d17eb44fefae10d8694a89abf51540a5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9e822906a072ec8244c7108e98289482adebb5a7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182049"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098674"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Podpora více domén pro federaci s Azure AD
 Následující dokumentace obsahuje pokyny týkající se použití více domén nejvyšší úrovně a subdomény, při federaci s Office 365 nebo k doménám Azure AD.
@@ -69,7 +69,7 @@ Další věc, která `-SupportMultipleDomain` nemá je, že zajišťuje, že sys
 
 Proto při ověřování do služby Azure AD nebo Office 365, IssuerUri element v tokenu uživatele se používá k vyhledání domény ve službě Azure AD.  Pokud je nalezena shoda, ověření se nezdaří.
 
-Například pokud uživatele (UPN) je bsimon@bmcontoso.com, IssuerUri element v tokenu služby AD FS problémy, bude nastavena na http://bmcontoso.com/adfs/services/trust. Tento prvek bude odpovídat konfiguraci Azure AD a ověřování bude úspěšné.
+Například pokud uživatele (UPN) je bsimon@bmcontoso.com, IssuerUri element v tokenu služby AD FS problémy, bude nastavena na <http://bmcontoso.com/adfs/services/trust>. Tento prvek bude odpovídat konfiguraci Azure AD a ověřování bude úspěšné.
 
 Pravidla vlastní deklarace identity, který implementuje tuto logiku je následující:
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 8137e59de7ad33ea806fcc2be36bb778448c9adc
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
-ms.translationtype: HT
+ms.openlocfilehash: ab235c67e3a0e60999a0348d03a6e938944f7030
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58077271"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260178"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage analytics protokolování
 
@@ -37,7 +37,7 @@ Analýza úložiště protokoluje podrobné informace o úspěšné i neúspěš
 - Požadavky pomocí sdíleného přístupového podpisu (SAS) nebo OAuth, včetně úspěšné a neúspěšné požadavky
 - Požadavky na analytických dat
 
-  Storage Analytics, jako je protokol vytvoření nebo odstranění, žádosti se neprotokolují. Úplný seznam dat protokolu jsou uvedené v [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) a [formát Log Analytics úložiště](/rest/api/storageservices/storage-analytics-log-format.md) témata.
+  Storage Analytics, jako je protokol vytvoření nebo odstranění, žádosti se neprotokolují. Úplný seznam dat protokolu jsou uvedené v [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a [formát Log Analytics úložiště](/rest/api/storageservices/storage-analytics-log-format) témata.
 
 ### <a name="logging-anonymous-requests"></a>Protokolování anonymních požadavků
 
@@ -48,7 +48,7 @@ Analýza úložiště protokoluje podrobné informace o úspěšné i neúspěš
 - Chyby časového limitu klienta a serveru
 - Neúspěšné požadavky GET s kódem chyby 304 (Neupraveno)
 
-  Všechny ostatní neúspěšné anonymní žádosti se neprotokolují. Úplný seznam dat protokolu jsou uvedené v [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) a [formát Log Analytics úložiště](/rest/api/storageservices/storage-analytics-log-format.md) témata.
+  Všechny ostatní neúspěšné anonymní žádosti se neprotokolují. Úplný seznam dat protokolu jsou uvedené v [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a [formát Log Analytics úložiště](/rest/api/storageservices/storage-analytics-log-format) témata.
 
 ## <a name="how-logs-are-stored"></a>Jak se ukládají protokoly
 
@@ -200,9 +200,9 @@ AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs
 
  Příklad toho, jak stáhnout data protokolů prostřednictvím kódu programu, najdete v příspěvku blogu [protokolování úložiště Windows Azure: Pomocí protokolů pro sledování požadavků na úložiště](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) a vyhledejte slovo "DumpLogs" na stránce.  
 
- Když jste si stáhli dat protokolů, zobrazí se položky protokolu v souborech. Tyto soubory protokolu použití formátu odděleného textu tolik protokolu čtení nástroje jsou rozboru, včetně Microsoft Message Analyzer (Další informace najdete v příručce [monitorování, diagnostikování a řešení potíží s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)). Jiné nástroje mají různé funkce pro formátování, filtrování, řazení, hledání obsah souborů protokolu ad. Další informace o protokolování úložiště formát souborů protokolu a obsahu najdete v tématu [formát Log Analytics úložiště](storage-analytics-logging.md) a [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md).
+ Když jste si stáhli dat protokolů, zobrazí se položky protokolu v souborech. Tyto soubory protokolu použití formátu odděleného textu tolik protokolu čtení nástroje jsou rozboru, včetně Microsoft Message Analyzer (Další informace najdete v příručce [monitorování, diagnostikování a řešení potíží s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)). Jiné nástroje mají různé funkce pro formátování, filtrování, řazení, hledání obsah souborů protokolu ad. Další informace o protokolování úložiště formát souborů protokolu a obsahu najdete v tématu [formát Log Analytics úložiště](/rest/api/storageservices/storage-analytics-log-format) a [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 
 ## <a name="next-steps"></a>Další postup
-* [Formát úložiště analýzy protokolů](/rest/api/storageservices/storage-analytics-log-format.md)
-* [Analýza úložiště protokoluje operace a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md)
+* [Formát úložiště analýzy protokolů](/rest/api/storageservices/storage-analytics-log-format)
+* [Analýza úložiště protokoluje operace a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
 * [Metrikách Storage Analytics (classic)](storage-analytics-metrics.md)

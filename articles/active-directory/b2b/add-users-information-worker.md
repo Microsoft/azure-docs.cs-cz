@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16caf8b6fd48b5dca676b1c8ee046ad01264ca03
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 561d7f5b28775e5f431d35d956cff6f800cc11b2
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211423"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294503"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Jak uživatelé ve vaší organizaci můžete pozvat uživatele typu Host do aplikace
 
@@ -36,15 +37,15 @@ Po dokončení konfigurace aplikace pro samoobslužné funkce, můžete počet v
 1. Otevřete tak, že přejdete na přístupovém panelu `https://myapps.microsoft.com`.
 2. Přejděte na aplikaci, vyberte symbol tří teček (**...** ) a pak vyberte **spravovat aplikaci**.
  
-   ![Správa přístupových panelech aplikace](media/add-users-iw/access-panel-manage-app.png)
+   ![Snímek obrazovky aplikace spravovat dílčí nabídky pro aplikaci Salesforce](media/add-users-iw/access-panel-manage-app.png)
  
 3. V horní části seznamu uživatelů vyberte **+**.
    
-   ![Přístupový Panel – Přidat uživatele](media/add-users-iw/access-panel-manage-app-add-user.png)
+   ![Snímek obrazovky ukazující na symbol plus pro přidávání členů do aplikace](media/add-users-iw/access-panel-manage-app-add-user.png)
    
 4. V **přidat členy** vyhledávací pole, zadejte e-mailovou adresu pro uživatele typu Host. Volitelně můžete zahrnout uvítací zprávu.
    
-   ![Přístup k panelu pozvánky](media/add-users-iw/access-panel-invitation.png)
+   ![Snímek obrazovky zobrazující přidat členy okno pro přidání hosta](media/add-users-iw/access-panel-invitation.png)
    
 5. Vyberte **přidat** odeslat pozvánku uživateli typu Host. Po odeslání e-mailové pozvánky se uživatelský účet automaticky přidá do adresáře jako uživatel typu host.
 
@@ -55,19 +56,19 @@ Po dokončení konfigurace aplikace pro samoobslužné funkce, počet vlastník�
 2. Otevřete tak, že přejdete na přístupovém panelu `https://myapps.microsoft.com`.
 3. Vyberte **skupiny** aplikace.
    
-   ![Přístup k aplikaci skupiny panelů](media/add-users-iw/access-panel-groups.png)
+   ![Snímek obrazovky zobrazující skupiny aplikace na přístupovém panelu](media/add-users-iw/access-panel-groups.png)
    
 4. V části **skupiny moje**, vyberte skupinu, která má přístup k aplikaci, kterou chcete sdílet.
    
-   ![Přístupový Panel – skupiny moje](media/add-users-iw/access-panel-groups-i-own.png)
+   ![Snímek obrazovky znázorňující, kde chcete vybrat skupinu v rámci skupiny moje](media/add-users-iw/access-panel-groups-i-own.png)
    
 5. V horní části seznamu členů skupiny, vyberte **+**.
    
-   ![Přístupový Panel – skupiny přidat člena](media/add-users-iw/access-panel-groups-add-member.png)
+   ![Snímek obrazovky ukazující na symbol plus pro přidávání členů do skupiny](media/add-users-iw/access-panel-groups-add-member.png)
    
 6. V **přidat členy** vyhledávací pole, zadejte e-mailovou adresu pro uživatele typu Host. Volitelně můžete zahrnout uvítací zprávu.
    
-   ![Přístup k panelu skupiny pozvánky](media/add-users-iw/access-panel-invitation.png)
+   ![Snímek obrazovky zobrazující přidat členy okno pro přidání hosta](media/add-users-iw/access-panel-invitation.png)
    
 7. Vyberte **přidat** automaticky odeslat pozvánku uživateli typu Host. Po odeslání e-mailové pozvánky se uživatelský účet automaticky přidá do adresáře jako uživatel typu host.
 

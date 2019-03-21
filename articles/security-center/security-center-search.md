@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: 7fae267b74677e93527b4e185c5b52d421ef149e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6cbf3d70bd835ce1b838b19c93507f7d9487a418
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244940"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074501"
 ---
 # <a name="azure-security-center-search"></a>Hledání v Centru zabezpečení Azure
 Azure Security Center používá [protokoly Azure monitoru hledání](../log-analytics/log-analytics-log-searches.md) načíst a analyzovat data zabezpečení. Protokoly Azure monitoru poskytuje dotazovací jazyk k rychlému načítání a slučování dat. Ze služby Security Center můžete využít vyhledávání protokoly Azure monitoru vytvářet dotazy a analyzovat shromážděná data.
@@ -35,19 +35,19 @@ Vyhledávání je dostupné úrovni Free a úroveň Standard služby Security Ce
 ## <a name="access-search"></a>Přístup k vyhledávání
 1. V hlavní nabídce služby Security Center, vyberte **hledání**.
 
-  ![Vyberte prohledávání protokolů][1]
+   ![Vyberte prohledávání protokolů][1]
 
 2. Security Center obsahuje seznam všech pracovních prostorů v rámci vašich předplatných Azure. Vyberte pracovní prostor. (Pokud máte jenom jeden pracovní prostor, tento selektor pracovního prostoru se nezobrazí.)
 
-  ![Vybrat pracovní prostor][2]
+   ![Vybrat pracovní prostor][2]
 
 3. **Prohledávání protokolů** otevře. K dotazování na další data v rámci vybraného pracovního prostoru, zadejte tento příklad dotazu:
 
-  SecurityEvent | kde EventID == 4625 | shrnutí count() by TargetAccount
+   SecurityEvent | kde EventID == 4625 | shrnutí count() by TargetAccount
 
-  Výsledek se zobrazí všechny účty, které se nezdařilo přihlášení (událost 4625).
+   Výsledek se zobrazí všechny účty, které se nezdařilo přihlášení (událost 4625).
 
-  ![Výsledky hledání][3]
+   ![Výsledky hledání][3]
 
 Zobrazit [Kusto dotazovací jazyk](../log-analytics/log-analytics-search-reference.md) Další informace o tom, jak dotaz na data ve vybraném pracovním prostoru.
 

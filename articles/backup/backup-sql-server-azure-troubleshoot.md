@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: b8fb6e2b23c275d198ac58fec874ad6627a7b43e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e5565e257e511203043c84e499712cc6a0a78c3f
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007178"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286008"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Řešení potíží s zálohování SQL serveru v Azure
 
@@ -21,7 +21,7 @@ Tento článek obsahuje informace o odstraňování potíží pro ochranu virtu�
 
 ## <a name="feature-consideration-and-limitations"></a>Funkce aspektů a omezení
 
-Zobrazit funkce zvážit, najdete v článku, [zálohování serveru SQL Server na virtuálních počítačích Azure](backup-sql-server-azure-vms.md#feature-consideration-and-limitations).
+Zobrazit funkce zvážit, najdete v článku, [zálohování serveru SQL Server na virtuálních počítačích Azure](backup-azure-sql-database.md#feature-consideration-and-limitations).
 
 ## <a name="sql-server-permissions"></a>Oprávnění SQL Serveru
 
@@ -80,7 +80,7 @@ V následujících tabulkách jsou uspořádané podle čísla chyby.
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
 | Zálohu nejde vytvořit, protože transakční protokol pro zdroj dat je plný. | Místa transakčního protokolu databáze je plná. | Chcete-li opravit tento problém, přečtěte si [dokumentace ke službě SQL](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error). |
-| Tato databáze SQL nepodporuje požadovaný typ zálohy. | Vždy v AG sekundárních replik nepodporují úplné a rozdílové zálohy. | <ul><li>Pokud spuštění ad hoc zálohování spustit zálohování na primárním uzlu.</li><li>Pokud zálohování byla naplánována pomocí zásad, ujistěte se, že je zaregistrovaný primárního uzlu. K registraci uzlu, [postupujte podle pokynů ke zjišťování do databáze SQL serveru](backup-azure-sql-database.md#discover-sql-server-databases).</li></ul> |
+| Tato databáze SQL nepodporuje požadovaný typ zálohy. | Vždy v AG sekundárních replik nepodporují úplné a rozdílové zálohy. | <ul><li>Pokud spuštění ad hoc zálohování spustit zálohování na primárním uzlu.</li><li>Pokud zálohování byla naplánována pomocí zásad, ujistěte se, že je zaregistrovaný primárního uzlu. K registraci uzlu, [postupujte podle pokynů ke zjišťování do databáze SQL serveru](backup-sql-server-database-azure-vms.md#discover-sql-server-databases).</li></ul> |
 
 ## <a name="restore-failures"></a>Selhání obnovení
 

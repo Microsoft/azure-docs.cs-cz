@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fad3d77d15d78ffdaf1afca3675a82242b844778
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 03174e6336589f8aa49a7fc7197da1301ff54400
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730382"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009779"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Aktualizace modulů Azure Powershellu ve službě Azure Automation
 
@@ -58,27 +58,27 @@ Tady jsou některé aspekty, vezměte v úvahu při použití tohoto procesu se 
 
 1. Na stránce modulů vašeho účtu Automation je možnost **aktualizace modulů Azure**. Je vždy povoleno.<br><br> ![Aktualizace modulů Azure možnost na stránce modulů](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
 
-  > [!NOTE]
-  > Před aktualizací moduly Azure, se doporučuje je aktualizovat v rámci testu účtu Automation a zkontrolujte, že vaše stávající skripty fungovat podle očekávání před aktualizací moduly Azure.
-  >
-  > **Aktualizace modulů Azure** tlačítko je k dispozici pouze ve veřejném cloudu. není k dispozici v [suverénních oblastech](https://azure.microsoft.com/global-infrastructure/). Použijte prosím **aktualizace AutomationAzureModulesForAccount** sady runbook, chcete-li aktualizovat moduly Azure. Můžete ji stáhnout [aktualizace Azure moduly sady runbook úložiště](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update). Další informace o použití opensourcových sad runbook najdete v tématu [aktualizace modulů Azure pomocí opensourcových sad runbook](#open-source).
+   > [!NOTE]
+   > Před aktualizací moduly Azure, se doporučuje je aktualizovat v rámci testu účtu Automation a zkontrolujte, že vaše stávající skripty fungovat podle očekávání před aktualizací moduly Azure.
+   >
+   > **Aktualizace modulů Azure** tlačítko je k dispozici pouze ve veřejném cloudu. není k dispozici v [suverénních oblastech](https://azure.microsoft.com/global-infrastructure/). Použijte prosím **aktualizace AutomationAzureModulesForAccount** sady runbook, chcete-li aktualizovat moduly Azure. Můžete ji stáhnout [aktualizace Azure moduly sady runbook úložiště](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update). Další informace o použití opensourcových sad runbook najdete v tématu [aktualizace modulů Azure pomocí opensourcových sad runbook](#open-source).
 
 2. Klikněte na tlačítko **aktualizace modulů Azure**, zobrazí potvrzení oznámení, která požádá, pokud chcete pokračovat.<br><br> ![Aktualizace modulů Azure oznámení](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
 
 3. Klikněte na tlačítko **Ano** a zahájí se proces aktualizace modulu. Proces aktualizace trvá asi 15 až 20 minut a aktualizujte následující moduly:
 
-  * Azure
-  * Azure.Storage
-  * AzureRm.Automation
-  * AzureRm.Compute
-  * AzureRm.Profile
-  * AzureRm.Resources
-  * AzureRm.Sql
-  * AzureRm.Storage
+   * Azure
+   * Azure.Storage
+   * AzureRm.Automation
+   * AzureRm.Compute
+   * AzureRm.Profile
+   * AzureRm.Resources
+   * AzureRm.Sql
+   * AzureRm.Storage
 
-    Pokud moduly jsou již aktuální, proces dokončí za pár sekund. Po dokončení procesu aktualizace, zobrazí se oznámení.<br><br> ![Aktualizovat stav aktualizace modulů Azure](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
+     Pokud moduly jsou již aktuální, proces dokončí za pár sekund. Po dokončení procesu aktualizace, zobrazí se oznámení.<br><br> ![Aktualizovat stav aktualizace modulů Azure](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
 
-    Moduly AzureRm .NET core (AzureRm.*. Core) nejsou podporované ve službě Azure Automation a nelze jej importovat.
+     Moduly AzureRm .NET core (AzureRm.*. Core) nejsou podporované ve službě Azure Automation a nelze jej importovat.
 
 > [!NOTE]
 > Při spuštění novou naplánovanou úlohu Azure Automation používá nejnovější moduly ve vašem účtu Automation.  

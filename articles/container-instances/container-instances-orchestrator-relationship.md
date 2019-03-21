@@ -2,18 +2,18 @@
 title: Služba Azure Container Instances a Orchestrace kontejnerů
 description: Seznamte se s Azure container instance interakci s orchestrátorů kontejnerů.
 services: container-instances
-author: seanmck
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 11/30/2018
-ms.author: seanmck
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 08bc344a20ade3d8bb0f7dd23a854fd03ddac006
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0a1e3c2facc10b68fe4b33d4cd0531f181b1e813
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845795"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838135"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Služba Azure Container Instances a orchestrátorů kontejnerů
 
@@ -25,16 +25,16 @@ Služba Azure Container Instances nabízí některé základní schopnosti plán
 
 Standardní definice Orchestrace zahrnuje následující úlohy:
 
-- **Plánování**: Zadaný image kontejneru a požadavkem na prostředky, najít vhodnou počítači, ve kterém pro spuštění kontejneru.
-- **Spřažení/proti-affinity**: určení, by měla sadu kontejnerů spuštěny okolních druhou (pro výkonu) nebo dostatečně daleko od sebe (dostupnosti).
-- **Monitorování stavu**: Podívejte se na selhání kontejneru a automaticky přeplánovat.
-- **Převzetí služeb při selhání**: sledovat, co běží na každém počítači a plánovanou zkoušku přeplánovat kontejnerů z neúspěšné počítače pro uzly v dobrém stavu.
+- **Plánování**: Vzhledem k imagi kontejneru a požadavkem na prostředky, najdete vhodnou počítači, ve kterém pro spuštění kontejneru.
+- **Spřažení/proti-affinity**: Určení, sadu kontejnerů by měl být spuštěny okolních druhou (pro výkonu) nebo dostatečně daleko od sebe (dostupnosti).
+- **Monitorování stavu**: Sledování selhání kontejneru a automaticky znovu naplánovat.
+- **Převzetí služeb při selhání**: Mějte přehled o co běží na každém počítači a plánovanou zkoušku přeplánovat kontejnerů z neúspěšné počítače pro uzly v dobrém stavu.
 - **Škálování**: Přidání nebo odebrání instance kontejneru tak, aby odpovídaly poptávky, ručně nebo automaticky.
-- **Sítě**: poskytují překryvné sítě pro koordinaci kontejnery pro komunikaci mezi více hostitelských počítačů.
-- **Zjišťování služby**: umožňují používání kontejnerů k sobě navzájem i při přesunu mezi hostitelské počítače a změnit IP adres automaticky, vyhledejte.
-- **Koordinovaných upgradů aplikací**: Správa kontejneru upgrady výpadky aplikací a povolit možnost vrácení zpět, pokud se něco nepovede.
+- **Sítě**: Zadejte překryvné sítě pro koordinační kontejnery pro komunikaci mezi více hostitelských počítačů.
+- **Zjišťování služby**: Umožňují používání kontejnerů k sobě navzájem i při přesunu mezi hostitelské počítače a změnit IP adres automaticky, vyhledejte.
+- **Koordinovaných upgradů aplikací**: Správa kontejnerů upgrady výpadky aplikací a povolit možnost vrácení zpět, pokud se něco nepovede.
 
-## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Orchestrace s Azure Container Instances: vrstveného přístupu
+## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Orchestrace s Azure Container Instances: Vrstveného přístupu
 
 Azure Container Instances umožňuje vrstveného přístupu k orchestraci, poskytuje všechny možnosti plánování a správu potřebné ke spuštění jednoho kontejneru, přičemž platformy orchestrator ke správě více kontejnerů úloh dojde k jeho zvýraznění.
 

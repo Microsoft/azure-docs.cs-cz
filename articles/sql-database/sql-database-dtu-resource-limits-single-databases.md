@@ -11,24 +11,19 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/06/2019
-ms.openlocfilehash: 25a76133bfecfb08c1e413efea93f1466926c533
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.date: 03/20/2019
+ms.openlocfilehash: 7c35c1f3568ab98bdd3c7fba8acd3aa958aa795b
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569208"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285124"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí nákupní model založený na DTU
 
 Tento článek obsahuje podrobné prostředků limity pro izolované databáze Azure SQL Database pomocí nákupní model založený na DTU.
 
-Založený na DTU nákupní model prostředků omezení pro elastické fondy najdete v tématu [omezení prostředků založený na DTU - elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md). Omezení prostředků založený na virtuálních jádrech najdete v tématu [omezení prostředků na základě virtuálních jader – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založený na virtuálních jádrech - elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md). Další informace týkající se různých tyto modely nákupu najdete v tématu [nákupu modely a úrovní služeb](sql-database-purchase-models.md).
-
-> [!IMPORTANT]
-> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Založený na DTU nákupní model prostředků omezení pro elastické fondy najdete v tématu [omezení prostředků založený na DTU - elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md). Omezení prostředků založený na virtuálních jádrech najdete v tématu [omezení prostředků na základě virtuálních jader – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založený na virtuálních jádrech - elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md). Další informace týkající se různých tyto modely nákupu najdete v tématu [nákupu modely a úrovní služeb](sql-database-purchase-models.md).
 
 ## <a name="single-database-storage-sizes-and-compute-sizes"></a>Izolované databáze: Velikosti úložiště a výpočty velikostí
 
@@ -78,15 +73,19 @@ Následující tabulky ukazují prostředky dostupné pro izolované databáze n
 | **Vypočítat velikost** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | Maximální počet DTU | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| Zahrnuté úložiště (GB) | 500 | 500 | 500 | 500 | 4 096 | 4 096 |
-| Maximální počet možností úložiště (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4 096 | 4 096 |
+| Zahrnuté úložiště (GB) | 500 | 500 | 500 | 500 | 4096* | 4096* |
+| Maximální počet možností úložiště (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096* | 4096* |
 | Maximální úložiště OLTP v paměti (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Maximální počet souběžných pracovních procesů (požadavků)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | Maximální počet souběžných relací | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
+\* Od 1 024 GB až 4096 GB v přírůstcích po 256 GB
+
 > [!IMPORTANT]
-> Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, střed USA – Západ, oblastí pro úlohy ministerstva obrany USA a US Government centrální. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu [aktuálních omezení pro P11 – P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, střed USA – Západ, oblastí pro úlohy ministerstva obrany USA a US Government centrální. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu aktuálních omezení pro P11 – P15.  
+> [!NOTE]
+> Pro `tempdb` omezení, najdete v článku [omezení databáze tempdb](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 
 ## <a name="next-steps"></a>Další postup
 

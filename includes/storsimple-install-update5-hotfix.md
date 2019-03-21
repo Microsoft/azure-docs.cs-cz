@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 8abc6129e1179378ac90278fd2032737b2b828b2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 19d2dedc2ccf7015696504a94f5ef7c43a90d3be
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889080"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125124"
 ---
 #### <a name="to-download-hotfixes"></a>Stažení oprav hotfix
 
@@ -100,12 +100,12 @@ Provedením následujících kroků nainstalujte a ověřte opravy hotfix běžn
     Měly by se zobrazit následující verze:
    
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 5.0`
-   *  `HcsSoftwareVersion: 6.3.9600.17845`
+   * `HcsSoftwareVersion: 6.3.9600.17845`
    
-    Pokud se číslo verze po instalaci aktualizace nezměnilo, znamená to, že se instalace opravy hotfix nezdařila. Pokud je to váš případ a potřebujete další pomoc, kontaktujte [podporu Microsoftu](../articles/storsimple/storsimple-8000-contact-microsoft-support.md).
+     Pokud se číslo verze po instalaci aktualizace nezměnilo, znamená to, že se instalace opravy hotfix nezdařila. Pokud je to váš případ a potřebujete další pomoc, kontaktujte [podporu Microsoftu](../articles/storsimple/storsimple-8000-contact-microsoft-support.md).
      
-    > [!IMPORTANT]
-    > Je nutné restartovat aktivní kontroler pomocí `Restart-HcsController` rutiny před použitím příští aktualizace.
+     > [!IMPORTANT]
+     > Je nutné restartovat aktivní kontroler pomocí `Restart-HcsController` rutiny před použitím příští aktualizace.
      
 8. Zopakujte kroky 3 až 6 pro instalaci _CisMDSAgentupdate.exe_ agent se stáhne do vašeho _FirstOrderUpdate_ složky.
 8. Opakujte kroky 3 až 6 pro instalaci aktualizace druhého řádu. 
