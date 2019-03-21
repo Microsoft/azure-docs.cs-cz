@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: d55c9db9af2eea9a56afe34c7a8689947a689bac
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 596ed857b39cf106ed2e37ad81c5fe9e939cca61
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462541"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001426"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse nejčastější dotazy
 
@@ -82,19 +82,19 @@ Otázka: Jaké ovladače klienta podporujete?
 
 A. Podpora ovladačů pro datový Sklad můžete najít na [připojovací řetězce] stránky
 
-DOTAZ: Které formáty souborů jsou podporovány službou SQL Data Warehouse polybase?
+OTÁZKA: Které formáty souborů jsou podporovány službou SQL Data Warehouse polybase?
 
 Odpověď: Orc, RC, Parquet nebo bez stromové struktury text s oddělovači
 
-DOTAZ: Co můžu připojit k z SQL data Warehouse pomocí PolyBase? 
+OTÁZKA: Co můžu připojit k z SQL data Warehouse pomocí PolyBase? 
 
 Odpověď: [Azure Data Lake Store] a [Azure Storage Blobs]
 
-DOTAZ: Při připojování ke službě Azure Storage Blobs nebo ADLS, je výpočet přenosu směrem dolů je to možné? 
+OTÁZKA: Při připojování ke službě Azure Storage Blobs nebo ADLS, je výpočet přenosu směrem dolů je to možné? 
 
 Odpověď: SQL data Warehouse PolyBase Ne, pracuje pouze komponenty úložiště. 
 
-DOTAZ: Můžu připojit ke službě Hdinsight?
+OTÁZKA: Můžu připojit ke službě Hdinsight?
 
 Odpověď: HDI můžete použít WASB nebo ADLS jako vrstva HDFS. Pokud máte jako vrstva HDFS, můžete načíst data do SQL data Warehouse. Však nelze generovat výpočtu přenosu směrem dolů k instanci HDI. 
 
@@ -105,7 +105,7 @@ Další informace o SQL Data Warehouse jako celek, najdete v našich [přehled] 
 <!-- Article references -->
 [UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Připojovací řetězce]: ./sql-data-warehouse-connection-strings.md
-[Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Lístky žádostí o podporu]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Zabezpečení]: ./sql-data-warehouse-overview-manage-security.md
 [Microsoft Compliance]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings

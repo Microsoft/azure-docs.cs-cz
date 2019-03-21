@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 28c2d65e1b1858b653775b4b298c9ab3e1d31e6e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d8256f96a79969103b17047c4ebb55fb140eb0bc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991408"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121107"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Vytvořit úložiště s využitím Azure Maps
 
 Tento kurz vás provede procesem vytvoření lokátoru jednoduché úložiště s využitím map Azure. Lokátory Store jsou běžné. Mnoho popsaných konceptů, které se používají v tomto typu aplikace platí pro mnoho typů aplikací. Lokátor úložiště nabízí zákazníkům je nezbytnost pro většinu firem, které prodej přímo pro uživatele. V tomto kurzu se naučíte:
     
 > [!div class="checklist"]
-* Vytvořte novou webovou stránku pomocí rozhraní API ovládacího prvku mapy služby Azure.
-* Načíst vlastní data ze souboru a zobrazit na mapě.
-* Pomocí služby Azure Search mapy najít adresu nebo zadejte dotaz.
-* Získejte podle umístění uživatele z prohlížeče a zobrazit na mapě.
-* Kombinovat různé úrovně a vytvářet vlastní symboly na mapě.  
-* Cluster datových bodů.  
-* Přidejte ovládací prvky Přiblížení mapy.
+> * Vytvořte novou webovou stránku pomocí rozhraní API ovládacího prvku mapy služby Azure.
+> * Načíst vlastní data ze souboru a zobrazit na mapě.
+> * Pomocí služby Azure Search mapy najít adresu nebo zadejte dotaz.
+> * Získejte podle umístění uživatele z prohlížeče a zobrazit na mapě.
+> * Kombinovat různé úrovně a vytvářet vlastní symboly na mapě.  
+> * Cluster datových bodů.  
+> * Přidejte ovládací prvky Přiblížení mapy.
 
 <a id="Intro"></a>
 
@@ -42,12 +42,16 @@ K dokončení kroků v tomto kurzu, musíte nejprve [vytvoření účtu Azure Ma
 Než přejdete do kódu, je vhodné začít s návrhem. Lokátor vašeho úložiště může být jednoduché nebo složité, jak chcete, aby se. V tomto kurzu vytvoříme jednoduchou obchodů. Můžeme zahrnout některé tipy na cestě k vám pomohla rozšířit některé funkce, pokud budete chtít. Můžeme vytvořit lokátor úložiště pro fiktivní společnosti nazývané Contoso kávu. Následující obrázek znázorňuje obrázek Obecné rozložení obchodů, co vytváříme v tomto kurzu:
 
 <br/>
-<center>![Drátový model lokátoru úložiště pro umístění kavárny kávy Contoso](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+<center>
+
+![Drátový model lokátoru úložiště pro umístění kavárny kávy Contoso](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 Pokud chcete maximalizovat užitečnost tento Lokátor úložiště, zahrnujeme přizpůsobivé rozložení, která se přizpůsobí při šířka obrazovky uživatele je menší než 700 pixelů na šířku. Přizpůsobivé rozložení usnadňuje použití obchodů na malé obrazovce, jako je třeba na mobilním zařízení. Tady je obrázek malou obrazovkou rozložení:  
 
 <br/>
-<center>![Drátový model Contoso kávy ukládání Lokátor na mobilním zařízení](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+<center>
+
+![Drátový model Contoso kávy ukládání Lokátor na mobilním zařízení](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
 Objekty wireframe zobrazit aplikace s poměrně jednoduché. Aplikace obsahuje vyhledávací pole, seznamu blízké úložišť, mapu, která má některé značky (symbolů) a automaticky otevírané okno, které se zobrazí další informace, když uživatel vybere značku. Podrobněji tady jsou funkce, které je neoddělitelnou tento Lokátor úložiště v tomto kurzu:
 
@@ -70,7 +74,9 @@ Objekty wireframe zobrazit aplikace s poměrně jednoduché. Aplikace obsahuje v
 Než vyvíjíme aplikace Lokátor úložiště, musíte vytvořit datové sady úložišť, které chceme zobrazit na mapě. V tomto kurzu používáme datovou sadu pro fiktivní kavárny volá kávy Contoso. Datovou sadu pro tento Lokátor jednoduché úložiště se spravuje v sešitu aplikace Excel. Datová sada obsahuje 10,213 Contoso kávy kavárny umístění rozloženy devíti zemích: USA, Kanadě, Spojeném království, Francie, Německo, Itálie, Nizozemsko, Dánsko a Španělsko. Zde je snímek dat vypadá jako:
 
 <br/>
-<center>![Snímek obrazovky dat zjišťování úložiště v sešitu aplikace Excel](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
+<center>
+
+![Snímek obrazovky dat zjišťování úložiště v sešitu aplikace Excel](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
 
 Je možné [stáhněte si Excelový sešit](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). 
 
@@ -90,12 +96,16 @@ Další možností je převést na ploché textový soubor, který prohlížeč 
 Převést na plochého souboru sešitu, uložte sešit jako soubor s oddělovači na kartě. Každý sloupec je oddělen složenými znak tabulátoru, které díky snadno analyzovat sloupce v našem kódu. Můžete použít formátu hodnot oddělených čárkami (CSV), ale tato možnost vyžaduje další analýzy logiku. Jakékoli pole, které obsahuje čárku kolem něj by být vnořen do uvozovek. Chcete-li tato data exportovat jako soubor odděleného tabulátory v aplikaci Excel, vyberte **uložit jako**. V **uložit jako typ** rozevíracího seznamu vyberte **Text (kartě delimited)(*.txt)**. Název souboru *ContosoCoffee.txt*. 
 
 <br/>
-<center>![Snímek obrazovky Uložit jako typ dialogového okna](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
+<center>
+
+![Snímek obrazovky Uložit jako typ dialogového okna](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
 
 Pokud otevřete textový soubor v poznámkovém bloku, vypadá podobně jako na následujícím obrázku:
 
 <br/>
-<center>![Snímek obrazovky, který zobrazuje sadu dat oddělený tabulátory soubor poznámkového bloku](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
+<center>
+
+![Snímek obrazovky, který zobrazuje sadu dat oddělený tabulátory soubor poznámkového bloku](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
 
 
 ## <a name="set-up-the-project"></a>Nastavení projektu
@@ -103,7 +113,9 @@ Pokud otevřete textový soubor v poznámkovém bloku, vypadá podobně jako na 
 Chcete-li vytvořit projekt, můžete použít [sady Visual Studio](https://visualstudio.microsoft.com) nebo editor kódu podle vašeho výběru. Ve složce vašeho projektu vytvořit tři soubory: *index.html*, *index.css*, a *index.js*. Tyto soubory definují rozložení, styl a logiku pro aplikace. Vytvořte složku s názvem *data* a přidejte *ContosoCoffee.txt* ke složce. Vytvořte jinou složku s názvem *image*. V této aplikaci používáme deset imagí ikony, tlačítka a značky na mapě. Je možné [stáhnout tyto image](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Složky vašeho projektu by měla vypadat jako na následujícím obrázku:
 
 <br/>
-<center>![Snímek obrazovky s jednoduchou Store Lokátor složky projektu](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
+<center>
+
+![Snímek obrazovky s jednoduchou Store Lokátor složky projektu](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
 
 ## <a name="create-the-user-interface"></a>Vytvoření uživatelského rozhraní
 
@@ -395,12 +407,12 @@ V tomto okamžiku je všechno nastavené v uživatelském rozhraní. Teď potře
 
 1. Přidejte kód, který *index.js*. Následující kód inicializuje na mapě, přidá [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , který čeká na stránce dokončení načítání, sváže události k monitorování načítání mapy a základem tlačítko hledání a tlačítko umístění. 
 
-  Když uživatel vybere tlačítko Hledat nebo když uživatel stiskne klávesu Enter po zadání umístění, do vyhledávacího pole, je zahájeno vyhledávání přibližných shod s dotazem uživatele. Předání v poli zemi ISO 2 hodnoty `countrySet` možnost omezit rozsah výsledků vyhledávání do těchto zemí. Omezení zemích, vyhledávání pomáhá zvýšit jeho přesnost výsledků, které jsou vráceny. 
+   Když uživatel vybere tlačítko Hledat nebo když uživatel stiskne klávesu Enter po zadání umístění, do vyhledávacího pole, je zahájeno vyhledávání přibližných shod s dotazem uživatele. Předání v poli zemi ISO 2 hodnoty `countrySet` možnost omezit rozsah výsledků vyhledávání do těchto zemí. Omezení zemích, vyhledávání pomáhá zvýšit jeho přesnost výsledků, které jsou vráceny. 
   
-  Po dokončení vyhledávání se provést první výsledek a nastavení fotoaparátu/kamery mapy přes tuto oblast. Když uživatel vybere tlačítko umístění, použijte rozhraní API zeměpisné polohy HTML5, která je integrována do prohlížeče k načtení podle umístění uživatele a středu mapy přes jejich umístění.  
+   Po dokončení vyhledávání se provést první výsledek a nastavení fotoaparátu/kamery mapy přes tuto oblast. Když uživatel vybere tlačítko umístění, použijte rozhraní API zeměpisné polohy HTML5, která je integrována do prohlížeče k načtení podle umístění uživatele a středu mapy přes jejich umístění.  
 
-  > [!Tip]
-  > Při použití automaticky otevíraných oken, je nejlepší vytvořit jeden `Popup` instance a znovu použít instanci, aktualizuje její obsah a pozici. Pro každý `Popup`instance je přidat do kódu, více elementů modelu DOM se přidají do stránky. Existuje více elementů modelu DOM se na stránku v prohlížeči se ke sledování více věcí. Pokud existuje příliš mnoho položek, může být pomalé v prohlížeči.
+   > [!Tip]
+   > Při použití automaticky otevíraných oken, je nejlepší vytvořit jeden `Popup` instance a znovu použít instanci, aktualizuje její obsah a pozici. Pro každý `Popup`instance je přidat do kódu, více elementů modelu DOM se přidají do stránky. Existuje více elementů modelu DOM se na stránku v prohlížeči se ke sledování více věcí. Pokud existuje příliš mnoho položek, může být pomalé v prohlížeči.
 
     ```Javascript
     function initialize() { 
@@ -542,7 +554,7 @@ V tomto okamžiku je všechno nastavené v uživatelském rozhraní. Teď potře
 
 1. Po načtení datové sady v objektu map `load` naslouchací proces událostí, definují sadu vrstvy vykreslit data. Vrstva bublinu slouží k vykreslení Clusterované datových bodů. Vrstva symbol se použije k vykreslení, kolik bodů v každém clusteru nad bublinu vrstvou. Druhá vrstva symbol vykreslí vlastní ikonu u jednotlivých lokalit na mapě. 
 
-  Přidat `mouseover` a `mouseout` události na bublinu a Ikona vrstvy k provedení změny kurzoru myši, když uživatel najede myší na ikonu na mapě nebo clusteru. Přidat `click` událostí na bublinu vrstvy clusteru. To `click` události Přiblížení mapy ve dvou úrovních a centra mapy v clusteru, když uživatel vybere jakéhokoli jiného clusteru. Přidat `click` událostí k vrstvě ikonu. To `click` události se zobrazí automaticky otevírané okno zobrazující podrobnosti kavárny, když uživatel vybere ikonu jednotlivých umístění. Přidejte událost do mapy ke sledování po dokončení přesunutí na mapě. Když se tato událost aktivuje, aktualizujte položky v panelu seznamu.  
+   Přidat `mouseover` a `mouseout` události na bublinu a Ikona vrstvy k provedení změny kurzoru myši, když uživatel najede myší na ikonu na mapě nebo clusteru. Přidat `click` událostí na bublinu vrstvy clusteru. To `click` události Přiblížení mapy ve dvou úrovních a centra mapy v clusteru, když uživatel vybere jakéhokoli jiného clusteru. Přidat `click` událostí k vrstvě ikonu. To `click` události se zobrazí automaticky otevírané okno zobrazující podrobnosti kavárny, když uživatel vybere ikonu jednotlivých umístění. Přidejte událost do mapy ke sledování po dokončení přesunutí na mapě. Když se tato událost aktivuje, aktualizujte položky v panelu seznamu.  
 
     ```Javascript
     //Create a bubble layer to render clustered data points. 
@@ -916,30 +928,36 @@ Teď máte plně funkční obchodů. Ve webovém prohlížeči otevřete *index.
 Při prvním uživatel vybere tlačítko umístění prohlížeč zobrazí upozornění zabezpečení, která požádá o oprávnění k přístupu k umístění uživatele. Pokud uživatel souhlasí sdílet svoje umístění, mapy přiblíží podle umístění uživatele a jsou uvedeny blízké v kavárnách. 
 
 <br/>
-<center>![Snímek obrazovky prohlížeče uživatele požádat o přístup k umístění uživatele](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
+<center>
+
+![Snímek obrazovky prohlížeče uživatele požádat o přístup k umístění uživatele](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
 Při přiblížení blízko v oblasti, která má kavárny umístění, oddělení clusterů do jednotlivých umístění. Vyberte jednu z ikon na mapě nebo vyberte položku v postranní panel zobrazíte automaticky otevírané okno s informacemi pro danou lokaci.
 
 <br/>
-<center>![Snímek obrazovky dokončené úložiště lokátoru](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
+<center>
+
+![Snímek obrazovky dokončené úložiště lokátoru](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
 
 Pokud změníte velikost okna prohlížeče na méně než 700 pixelů na šířku nebo na mobilním zařízení otevřete aplikaci, změnami rozložení lepší vhodné pro menší obrazovky. 
 
 <br/>
-<center>![Snímek obrazovky s malou obrazovkou verzi Lokátor úložiště](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
+<center>
+
+![Snímek obrazovky s malou obrazovkou verzi Lokátor úložiště](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu se dozvíte, jak chcete vytvořit lokátor základní úložiště s využitím map Azure. Lokátor úložiště, které vytvoříte v tomto kurzu může mít všechny funkce, které potřebujete. Můžete přidat funkce do vašeho úložiště Lokátor nebo používat další funkce zálohy pro další vlastní uživatelské prostředí: 
 
 > [!div class="checklist"]
-* Povolit [návrhy při psaní](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI) do vyhledávacího pole.  
-* Přidat [podporu více jazyků](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization). 
-* Povolí uživateli [filtrovat umístění trase](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
-* Přidat možnost [nastavit filtry](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property). 
-* Přidání podpory pro zadejte hodnotu počáteční vyhledávání pomocí řetězce dotazu. Pokud vaše úložiště Lokátor zahrnout tuto možnost, můžete uložit do oblíbených uživatelů a sdílet hledání. Také poskytuje snadný způsob předat hledání na tuto stránku z jiné stránky.  
-* Nasazení vaší Lokátor úložiště jako [webové aplikaci Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html). 
-* Store vašich dat v databázi a vyhledat nejbližší umístění. Další informace najdete v tématu [prostorovými daty formátu SQL Server typy přehled](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) a [prostorová data dotázat na nejbližší soused](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017).
+> * Povolit [návrhy při psaní](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI) do vyhledávacího pole.  
+> * Přidat [podporu více jazyků](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization). 
+> * Povolí uživateli [filtrovat umístění trase](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
+> * Přidat možnost [nastavit filtry](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property). 
+> * Přidání podpory pro zadejte hodnotu počáteční vyhledávání pomocí řetězce dotazu. Pokud vaše úložiště Lokátor zahrnout tuto možnost, můžete uložit do oblíbených uživatelů a sdílet hledání. Také poskytuje snadný způsob předat hledání na tuto stránku z jiné stránky.  
+> * Nasazení vaší Lokátor úložiště jako [webové aplikaci Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html). 
+> * Store vašich dat v databázi a vyhledat nejbližší umístění. Další informace najdete v tématu [prostorovými daty formátu SQL Server typy přehled](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) a [prostorová data dotázat na nejbližší soused](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017).
 
 Přístup k vzorovému kódu pro tento kurz můžete získat tady:
 
