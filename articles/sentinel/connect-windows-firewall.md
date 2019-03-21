@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: f1844073c36b1d996107e317ed32a8f0806a2b61
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 2356a7e5426037ffe9fc8b304ac113f4a3fe2a17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241778"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103345"
 ---
 # <a name="connect-windows-firewall"></a>Připojení brány Windows Firewall
 
@@ -31,7 +31,7 @@ Konektor Windows firewall umožňuje snadno připojit vaše protokoly brány fir
 
 
 > [!NOTE]
-
+> 
 > - Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
 
 ## <a name="enable-the-connector"></a>Povolení konektoru 

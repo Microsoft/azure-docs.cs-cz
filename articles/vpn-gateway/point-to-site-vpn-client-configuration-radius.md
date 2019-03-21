@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: cherylmc
-ms.openlocfilehash: f59a871297189cfd5082b55a3dbdfd3156a4e501
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 34d8eb976a2a1e173f234be214799832dae7e9ca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985700"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079601"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro ověřování P2S pomocí protokolu RADIUS
 
@@ -66,9 +66,9 @@ Generovat konfiguračních souborů klienta VPN pro použití s ověřováním. 
 ```azurepowershell-interactive
 New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapMSChapv2"
 ```
- 
+ 
 Spuštěním příkazu vrátí odkaz. Zkopírujte a vložte odkaz do webového prohlížeče a stáhněte **VpnClientConfiguration.zip**. Rozbalte soubor zobrazíte následující složky: 
- 
+ 
 * **WindowsAmd64** a **WindowsX86**: Tyto složky obsahují balíčky Instalační služby systému Windows 64-bit a 32-bit. 
 * **Obecný**: Tato složka obsahuje obecné informace, které použijete k vytvoření vlastní konfigurace klienta VPN. Nepotřebujete tuto složku pro konfiguraci ověřování uživatelského jména a hesla.
 * **Mac**: Pokud jste nakonfigurovali IKEv2, při vytváření brány virtuální sítě, zobrazí se složku s názvem **Mac** , která obsahuje **mobileconfig** souboru. Tento soubor použijete ke konfiguraci klienti se systémem Mac.
@@ -88,7 +88,7 @@ Můžete nakonfigurovat následující klienti VPN:
 * [Windows](#adwincli)
 * [Mac (OS X)](#admaccli)
 * [Linux pomocí strongSwan](#adlinuxcli)
- 
+ 
 #### <a name="adwincli"></a>Instalace klienta Windows VPN
 
 Na každém klientském počítači s Windows, můžete použít stejný konfigurační balíček klienta VPN, za předpokladu, že jeho verze odpovídá architektuře klienta. Seznam klientských operačních systémů, které jsou podporovány, naleznete v tématu [nejčastější dotazy k](vpn-gateway-vpn-faq.md#P2S).
@@ -109,7 +109,7 @@ Použijte následující postup ke konfiguraci nativního klienta VPN ve Windows
 
 3. Volitelný krok – Pokud chcete zadat vlastní DNS, přidejte následující řádky do **mobileconfig** souboru:
 
-  ```xml
+   ```xml
     <key>DNS</key>
     <dict>
       <key>ServerAddresses</key>
@@ -121,7 +121,7 @@ Použijte následující postup ke konfiguraci nativního klienta VPN ve Windows
             <string>TestDomain.com</string>
         </array>
     </dict> 
-  ```
+   ```
 4. Dvakrát klikněte na profil, který chcete nainstalovat a vyberte **pokračovat**. Název profilu je stejný jako název virtuální sítě.
 
    ![Zpráva instalace](./media/point-to-site-vpn-client-configuration-radius/adinstall.png)
@@ -142,10 +142,10 @@ Použijte následující postup ke konfiguraci nativního klienta VPN ve Windows
    ![Ikony v předvolbách systému](./media/point-to-site-vpn-client-configuration-radius/adnetwork.png)
 10. Připojení k síti VPN se zobrazí jako **IkeV2 VPN**. Název můžete změnit aktualizací **mobileconfig** souboru.
 
-   ![Podrobnosti o připojení k síti VPN](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
+    ![Podrobnosti o připojení k síti VPN](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
 11. Vyberte **nastavení ověřování**. Vyberte **uživatelské jméno** v seznamu a zadejte svoje přihlašovací údaje. Pokud jste zadali přihlašovací údaje dříve, pak **uživatelské jméno** je automaticky jsou předem vybranou v seznamu a uživatelské jméno a heslo. Vyberte **OK** uložte nastavení.
 
-   ![Nastavení ověřování](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
+    ![Nastavení ověřování](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
 12. Zpátky **sítě** dialogovém okně vyberte **použít** a uložte změny. Chcete-li iniciovat připojení, vyberte **připojit**.
 
 #### <a name="adlinuxcli"></a>Instalace klienta VPN systému Linux přes strongSwan
@@ -178,7 +178,7 @@ Prostřednictvím strongSwan 5.5.1 na Ubuntu 17.0.4 byly vytvořeny podle násle
    ![Připojení "VPN Radius" ve Správci sítě](./media/point-to-site-vpn-client-configuration-radius/ConnectRADIUS.png)
 
 ## <a name="certeap"></a>Ověřování pomocí certifikátu
- 
+ 
 Klient VPN můžete vytvořit konfigurační soubory pro ověřování pomocí protokolu RADIUS certifikát, který používá protokol EAP-TLS. Certifikát vydala organizace obvykle slouží k ověřování uživatele pro síť VPN. Ujistěte se, že všechny připojujících se uživatelů certifikát nainstalovaný na jejich zařízeních, a, že váš server protokolu RADIUS můžete ověřit certifikát.
 
 >[!NOTE]
@@ -194,7 +194,7 @@ Každé zařízení klient VPN vyžaduje nainstalovaný klientský certifikát. 
 ### <a name="certfiles"></a>1. Generovat konfiguračních souborů klienta VPN
 
 Generovat konfiguračních souborů klienta VPN pro použití s ověřováním pomocí certifikátu. Konfiguračních souborů klienta VPN můžete vygenerovat pomocí následujícího příkazu:
- 
+ 
 ```azurepowershell-interactive
 New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root> | fl
 ```
@@ -211,7 +211,7 @@ Pokud chcete načíst dříve generovaného klienta konfigurační soubory, pou�
 ```azurepowershell-interactive
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
- 
+ 
 ### <a name="setupusername"></a> 2. Konfigurace klientů VPN
 
 Můžete nakonfigurovat následující klienti VPN:
@@ -271,7 +271,7 @@ Použít jiný typ ověřování (například ověřování jednorázovým HESLE
 1. Použití `Get-AzVpnClientConfiguration` rutiny pro generování konfigurace klienta VPN pro EapMSChapv2.
 
 2. Rozbalte soubor VpnClientConfiguration.zip a hledejte **GenericDevice** složky. Ignorujte složky, které obsahují Windows instalačních programů pro 64bitové a 32bitové architektury.
- 
+ 
 3. **GenericDevice** složka obsahuje soubor XML s názvem **VpnSettings**. Tento soubor obsahuje všechny požadované informace:
 
    * **VpnServer**: Plně kvalifikovaný název domény služby Azure VPN gateway. Toto je adresa, která se klient připojuje k.

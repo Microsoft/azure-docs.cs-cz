@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5e749f68aba48ac258363a0a03e3474e1e28b064
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 03bafcdbf6890573d1d2855e2b47520d0111fe13
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876768"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996770"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikace ve službě Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
@@ -134,19 +134,19 @@ public ActionResult About()
 }
 ```
 
-4. [Nastavit zarážku](https://docs.microsoft.com/visualstudio/debugger/) na `ViewBag.Message` řádku.
+1. [Nastavit zarážku](https://docs.microsoft.com/visualstudio/debugger/) na `ViewBag.Message` řádku.
 
-5. V **Průzkumníka řešení**, klikněte pravým tlačítkem na projekt a klikněte na tlačítko **publikovat**.
+1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na projekt a klikněte na tlačítko **publikovat**.
 
-6. V **profilu** rozevíracího seznamu vyberte stejné, jako jste použili v profilu [vytvoření aplikace ASP.NET ve službě Azure App Service](app-service-web-get-started-dotnet-framework.md). Potom klikněte na nastavení.
+1. V **profilu** rozevíracího seznamu vyberte stejné, jako jste použili v profilu [vytvoření aplikace ASP.NET ve službě Azure App Service](app-service-web-get-started-dotnet-framework.md). Potom klikněte na nastavení.
 
-7. V **publikovat** dialogového okna, klikněte na tlačítko **nastavení** kartu a potom změňte **konfigurace** k **ladění**a potom klikněte na tlačítko  **Uložit**.
+1. V **publikovat** dialogového okna, klikněte na tlačítko **nastavení** kartu a potom změňte **konfigurace** k **ladění**a potom klikněte na tlačítko  **Uložit**.
 
     ![Publikování v režimu ladění](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
-8. Klikněte na **Publikovat**. Po nasazení dokončí a prohlížeči se otevře adresu URL Azure z vaší aplikace, ukončete prohlížeč.
+1. Klikněte na **Publikovat**. Po nasazení dokončí a prohlížeči se otevře adresu URL Azure z vaší aplikace, ukončete prohlížeč.
 
-9. V **Průzkumníka serveru**, klikněte pravým tlačítkem na aplikaci a pak klikněte na tlačítko **připojit ladicí program**.
+1. V **Průzkumníka serveru**, klikněte pravým tlačítkem na aplikaci a pak klikněte na tlačítko **připojit ladicí program**.
 
     ![Připojit ladicí program](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
 
@@ -156,19 +156,19 @@ public ActionResult About()
     > Pokud máte jakékoli potíže, spouští se ladicí program, zkuste provést pomocí **Průzkumníka cloudu** místo **Průzkumníka serveru**.
     >
 
-10. Klikněte na tlačítko **o** v nabídce.
+1. Klikněte na tlačítko **o** v nabídce.
 
-     Visual Studio zastaví na zarážce a kód běží v Azure, ne na místním počítači.
+    Visual Studio zastaví na zarážce a kód běží v Azure, ne na místním počítači.
 
-11. Najeďte myší `currentTime` proměnné a zobrazit tak hodnotu času.
+1. Najeďte myší `currentTime` proměnné a zobrazit tak hodnotu času.
 
-     ![Zobrazení proměnné v režimu ladění běžící v Azure](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
+    ![Zobrazení proměnné v režimu ladění běžící v Azure](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
 
-     Který se zobrazí čas je čas serveru Azure, který může být v jiném časovém pásmu než místního počítače.
+    Který se zobrazí čas je čas serveru Azure, který může být v jiném časovém pásmu než místního počítače.
 
-12. Zadejte novou hodnotu `currentTime` proměnných, například "Nyní běží v Azure".
+1. Zadejte novou hodnotu `currentTime` proměnných, například "Nyní běží v Azure".
 
-13. Stisknutím klávesy F5 pokračovat v běhu.
+1. Stisknutím klávesy F5 pokračovat v běhu.
 
      Na stránce o běžící v Azure se zobrazí nová hodnota, kterou jste zadali do proměnné aktualnicas.
 
@@ -311,7 +311,7 @@ public ActionResult Contact()
 }        
 ```
 
-2. Přidat `using System.Diagnostics;` příkaz do horní části souboru.
+1. Přidat `using System.Diagnostics;` příkaz do horní části souboru.
 
 ### <a name="view-the-tracing-output-locally"></a>Zobrazit výstup trasování místně
 1. Stisknutím klávesy F5 spusťte aplikaci v režimu ladění.
@@ -339,15 +339,15 @@ public ActionResult Contact()
 ```
 
 `WebPageTraceListener` Zobrazují tak, že přejdete do výstupu trasování `/trace.axd`.
-3. Přidat <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">trasování – element</a> pod `<system.web>` v souboru Web.config, jako v následujícím příkladu:
+1. Přidat <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">trasování – element</a> pod `<system.web>` v souboru Web.config, jako v následujícím příkladu:
 
 ``` xml
 <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
 ```       
 
-4. Stiskněte klávesy CTRL+F5 a spusťte aplikaci.
-5. V panelu Adresa v okně prohlížeče přidejte *trace.axd* adresy URL a potom stiskněte klávesu Enter (adresa URL je podobný http://localhost:53370/trace.axd).
-6. Na **trasování aplikace** klikněte na **zobrazit podrobnosti o** na prvním řádku (ne BrowserLink řádek).
+1. Stiskněte klávesy CTRL+F5 a spusťte aplikaci.
+1. V panelu Adresa v okně prohlížeče přidejte *trace.axd* adresy URL a potom stiskněte klávesu Enter (adresa URL je podobný `http://localhost:53370/trace.axd`).
+1. Na **trasování aplikace** klikněte na **zobrazit podrobnosti o** na prvním řádku (ne BrowserLink řádek).
 
     ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
 
@@ -477,7 +477,7 @@ Všechny protokoly, které můžete monitorovat v **výstup** okno lze také st�
    * Protokoly webového serveru jsou v *.log* soubory *LogFiles\http\RawLogs* složky. Můžete použít nástroj, jako [analyzátoru protokolů](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) k zobrazení a manipulaci s těchto souborů.
    * Podrobné chybové zprávy protokolů jsou v *.html* soubory *LogFiles\DetailedErrors* složky.
 
-    ( *Nasazení* složka je pro soubory vytvořené pomocí správy zdrojového kódu publikování; není třeba nic, co souvisí s publikováním sady Visual Studio. Tím *Git* složka je pro trasování týkající se správy zdrojových kódů publikování a protokol služby streamování souborů.)  
+     ( *Nasazení* složka je pro soubory vytvořené pomocí správy zdrojového kódu publikování; není třeba nic, co souvisí s publikováním sady Visual Studio. Tím *Git* složka je pro trasování týkající se správy zdrojových kódů publikování a protokol služby streamování souborů.)  
 
 <!-- ## <a name="storagelogs"></a>View storage logs
 Application tracing logs can also be sent to an Azure storage account, and you can view them in Visual Studio. To do that you'll create a storage account, enable storage logs in the Azure portal, and view them in the **Logs** tab of the **Azure Web App** window.

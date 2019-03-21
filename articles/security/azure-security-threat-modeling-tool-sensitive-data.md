@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 93beef5702df9b4cf0a51a01fb286a3f023f9839
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 27028903daeaf62a25584300944538341a861c80
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876615"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905218"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Zabezpečení rámce: Citlivá Data | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -141,7 +141,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [MSDN: atribut automatického dokončování](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [pomocí automatické dokončování ve formátu HTML](https://msdn.microsoft.com/library/ms533032.aspx), [ohrožení zabezpečení Sanitizace HTML](https://technet.microsoft.com/security/bulletin/MS10-071), [automatické dokončování., znovu?](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **Odkazy**              | [MSDN: atribut automatického dokončování](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [pomocí automatické dokončování ve formátu HTML](https://msdn.microsoft.com/library/ms533032.aspx), [ohrožení zabezpečení Sanitizace HTML](https://technet.microsoft.com/security/bulletin/MS10-071), [automatické dokončování., znovu?](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **Kroky** | Atribut automatického dokončování Určuje, zda formulář má mít automatické dokončování zapnutí nebo vypnutí. Po zapnutí automatického dokončování v prohlížeči automatického dokončení hodnoty na základě hodnot, které uživatel zadal před. Například když se odešle formulář je ve formě zadat nový název a heslo, prohlížeč požádá, pokud by měla uložit heslo. Po tomto datu když je formulář zobrazen, uživatelské jméno a heslo se vyplní automaticky, nebo jsou dokončit, protože název je zadán. Útočník s místním přístupem lze získat hesla v nešifrovaném textu z mezipaměti prohlížeče. Ve výchozím nastavení je povoleno automatické dokončování a musí explicitně zakázat. |
 
 ### <a name="example"></a>Příklad:
@@ -182,7 +182,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Heslo Hashing pomocí rozhraní Crypto API pro .NET](http://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
+| **Odkazy**              | [Heslo Hashing pomocí rozhraní Crypto API pro .NET](https://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
 | **Kroky** | Hesla by neměly být uloženy ve vlastní uživatelské databáze úložiště. Hodnoty hash hesel místo toho by měla být uložena s hodnoty řetězce salt. Ujistěte se, že je vždy jedinečná hodnota salt pro uživatele a použít b-crypt, s-crypt nebo PBKDF2 před níž byla hesla uložená, a minimální pracovní faktor iterace počet 150 000 smyčky pro eliminaci možnosti výskytu hrubou vynucení.| 
 
 ## <a id="db-encrypted"></a>Ujistěte se, že je zašifrovaný citlivá data v databázi sloupce
@@ -399,7 +399,7 @@ Pokud aplikace není podniková aplikace, pak použijte platformu poskytuje úlo
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Kryptografie obfuskace pro .net](http://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
+| **Odkazy**              | [Kryptografie obfuskace pro .net](https://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
 | **Kroky** | Generovaný binární soubory (sestavení v rámci apk) by měl být matoucí zastavit zpětné analýze sestavení. Nástroje, jako je `CryptoObfuscator` mohou být použity pro tento účel. |
 
 ## <a id="cert"></a>Typ clientCredentialType nastaven na certifikátu nebo Windows
@@ -429,7 +429,7 @@ Typ clientCredentialType nastaven na certifikátu nebo Windows.
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecná rozhraní .NET Framework 3 |
 | **Atributy**              | Zpráva o režim – přenosu, režimu zabezpečení – zabezpečení |
-| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [Magazine kódu Základy zabezpečení WCF](http://www.codemag.com/article/0611051) |
+| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [Magazine kódu Základy zabezpečení WCF](https://www.codemag.com/article/0611051) |
 | **Kroky** | Nebyla definována žádná zabezpečení transport nebo zprávy. Aplikace, které odesílání zpráv bez přenosu nebo zprávy, že zabezpečení zaručit integritu a důvěrnost zpráv. Pokud vazby zabezpečení WCF je nastaven na hodnotu None, přenosu a zprávu zabezpečení jsou zakázané. |
 
 ### <a name="example"></a>Příklad:
@@ -453,8 +453,8 @@ Režim zabezpečení přes všechny vazby služby jsou režimy pět možné zabe
 * Obojí. Umožňuje zadat nastavení přenosu a zabezpečení na úrovni zpráv (MSMQ pouze podporuje). 
 * TransportWithMessageCredential. Přihlašovací údaje jsou předány zprávou a ochrany zprávy a ověření serveru jsou k dispozici v přenosové vrstvě. 
 * TransportCredentialOnly. Přihlašovací údaje pro klienta se předávají pomocí přenosové vrstvy a použití ochrany žádné zprávy. Pomocí zabezpečení přenosu a zprávy můžete chránit integritu a důvěrnost zpráv. Konfigurace níže informuje službu service pro použití zabezpečení přenosu s přihlašovacími údaji zprávy.
-```
-<system.serviceModel>
+  ```
+  <system.serviceModel>
   <bindings>
     <wsHttpBinding>
     <binding name=""MyBinding""> 
@@ -462,5 +462,5 @@ Režim zabezpečení přes všechny vazby služby jsou režimy pět možné zabe
     <message clientCredentialType=""Windows""/> 
     </binding> 
   </bindings> 
-</system.serviceModel> 
-```
+  </system.serviceModel> 
+  ```

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0dac2bee3c7aff77e782cc167898534ae40cfd3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 27173c8beeecf2be43e80f59df8907952734c06b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772394"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900875"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Kurz: Integrace Azure Active Directory s síti na pracovišti ve službě Facebook.
 
@@ -162,9 +162,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s síti na pracovišti ve slu
 
     d. Otevřete váš **certifikáty s kódováním base-64** v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **certifikát SAML** textového pole.
 
-    e. Kopírovat **adresa URL cílové skupiny** pro vaši instanci a vložte ji **identifikátor (Entity ID)** textového pole v **základní konfiguraci SAML** části na webu Azure portal.
+    e. Kopírovat **adresa URL cílové skupiny** pro vaši instanci a vložte ji **identifikátor (Entity ID)** textového pole v **základní konfiguraci SAML** části na webu Azure portal.
 
-    f. Kopírovat **příjemce URL** pro vaši instanci a vložte ji **přihlašovací adresa URL** textového pole v **základní konfiguraci SAML** části na webu Azure portal.
+    f. Kopírovat **příjemce URL** pro vaši instanci a vložte ji **přihlašovací adresa URL** textového pole v **základní konfiguraci SAML** části na webu Azure portal.
 
     g. Přejděte do dolní části a klikněte na tlačítko **Test jednotného přihlašování** tlačítko. Zobrazí se tato výsledky v automaticky otevíraném okně zobrazovaných s přihlašovací stránku Azure AD. Zadejte svoje přihlašovací údaje v jako za normálních okolností k ověření.
 
@@ -205,7 +205,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

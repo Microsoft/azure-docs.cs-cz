@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fa9f613bfbb3028715629f1d27b90531bd1dac3a
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: e3320cd6131497d0b2c794646bae7fae578488cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959676"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995583"
 ---
 # <a name="quickstart-create-an-ios-unity-app-with-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace pro iOS Unity s Azure prostorových kotvy
 
@@ -36,6 +36,7 @@ Dozvíte se, jak provést tyto akce:
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
 - Počítače s macOS s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 +</a>, <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a>, a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> nainstalované.
+- Git instalovaných pomocí instalace HomeBrew. Jako jeden řádek, terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Potom spusťte `brew install git`.
 - Vývojář povolené <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit kompatibilní</a> zařízení s Iosem.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]

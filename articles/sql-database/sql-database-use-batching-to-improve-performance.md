@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 76b53132cca536f66aa2f739b27d74b08a3f16cf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e76b5ecd3d6401c317f6500ec376fc25d3fa55b8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781387"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997702"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Použití dávkování pro zvýšení výkonu aplikací SQL Database
 
@@ -298,7 +298,7 @@ Tento přístup může být mírně rychlejší pro listy, které jsou kratší 
 
 ### <a name="entity-framework"></a>Rozhraní Entity framework
 
-Entity Framework nepodporuje aktuálně dávkování. Různými vývojáři v komunitě jste se pokusili ukazují alternativní řešení, jako je například přepsání **SaveChanges** metody. Ale řešení jsou obvykle složitý a vlastní aplikace a data modelu. Entity Framework projektu codeplex aktuálně obsahuje stránku diskuze na žádost o tuto funkci. Tato diskuse, naleznete v tématu [poznámky ze schůzky návrhu - 2. srpna 2012](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
+Entity Framework nepodporuje aktuálně dávkování. Různými vývojáři v komunitě jste se pokusili ukazují alternativní řešení, jako je například přepsání **SaveChanges** metody. Ale řešení jsou obvykle složitý a vlastní aplikace a data modelu. Entity Framework projektu codeplex aktuálně obsahuje stránku diskuze na žádost o tuto funkci. Tato diskuse, naleznete v tématu [poznámky ze schůzky návrhu - 2. srpna 2012](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
 
 ### <a name="xml"></a>XML
 

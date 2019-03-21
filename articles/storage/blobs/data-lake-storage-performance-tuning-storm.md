@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 5d7b798c66ec6512c8badcccbf36d6f2f0d50e3b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2401c74b55df78014a2f642b5166b4cf0017d87d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882943"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076203"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Průvodce laděním výkonu pro Storm v HDInsight a Azure Data Lake Storage Gen2
 
@@ -78,7 +78,7 @@ Můžete upravit následující nastavení a vylaďte spout.
 
 - **Spout maximální počet čekajících: topology.max.spout.pending**. Toto nastavení určuje počet řazených kolekcí členů, které mohou být v letu (ještě nebyla potvrzena na všechny uzly v topologii) na vlákno spout kdykoli.
 
- Dobré výpočtu provedete je odhadovat velikost všech vašich řazené kolekce členů. Poté zjistěte, kolik paměti jeden spout vlákno má. Celková paměť přidělená pro vlákno, rozdělené podle této hodnoty by vám měl dát horní mez pro maximální spout čekající na parametr.
+  Dobré výpočtu provedete je odhadovat velikost všech vašich řazené kolekce členů. Poté zjistěte, kolik paměti jeden spout vlákno má. Celková paměť přidělená pro vlákno, rozdělené podle této hodnoty by vám měl dát horní mez pro maximální spout čekající na parametr.
 
 Data Lake Storage Gen2 Storm bolt výchozí má parametr zásad synchronizace velikost (fileBufferSize), který slouží k ladění tohoto parametru.
 

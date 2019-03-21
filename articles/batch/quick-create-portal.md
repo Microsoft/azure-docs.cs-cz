@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 4356ea57e73e063d18155611b8c11090aa11edb3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d478307ff4393d84a854fcd3b2ea0efd77de7135
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471211"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087835"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rychlý start: Spuštění první úlohy služby Batch na webu Azure Portal
 
@@ -34,7 +34,7 @@ Pomocí těchto kroků si vytvořte ukázkový účet Batch pro účely testová
 
 1. Vyberte **Vytvořit prostředek** > **Compute** > **Služba Batch**. 
 
-  ![Batch na webu Marketplace][marketplace_portal]
+   ![Batch na webu Marketplace][marketplace_portal]
 
 2. Zadejte hodnoty položek **Název účtu** a **Skupina prostředků**. Název účtu musí být jedinečný v rámci vybrané **lokality** Azure, smí obsahovat jenom malé znaky nebo číslice a musí mít délku 3–24 znaků. 
 
@@ -42,7 +42,7 @@ Pomocí těchto kroků si vytvořte ukázkový účet Batch pro účely testová
 
 4. U ostatních nastavení ponechte výchozí hodnoty a výběrem možnosti **Vytvořit** vytvořte účet.
 
-  ![Vytvoření účtu Batch][account_portal]  
+   ![Vytvoření účtu Batch][account_portal]  
 
 Po zobrazení zprávy **Nasazení bylo úspěšné** přejděte na portálu do účtu Batch.
 
@@ -57,23 +57,23 @@ Teď máte účet Batch a můžete pro testovací účely vytvořit ukázkový f
 
 3. V části **Operační systém** vyberte následující nastavení (můžete prozkoumat i jiné možnosti).
   
-  |Nastavení  |Hodnota  |
-  |---------|---------|
-  |**Typ image**|Marketplace (Linux/Windows)|
-  |**Publisher**     |MicrosoftWindowsServer|
-  |**Nabídka**     |WindowsServer|
-  |**Sku**     |2012-R2-Datacenter-smalldisk|
+   |Nastavení  |Hodnota  |
+   |---------|---------|
+   |**Typ image**|Marketplace (Linux/Windows)|
+   |**Publisher**     |MicrosoftWindowsServer|
+   |**Nabídka**     |WindowsServer|
+   |**Sku**     |2012-R2-Datacenter-smalldisk|
 
-  ![Výběr operačního systému fondu][pool_os] 
+   ![Výběr operačního systému fondu][pool_os] 
 
 4. Posuňte se dolů a zadejte nastavení **Velikost uzlu** a **Škálování**. Navržená velikost uzlu nabízí pro tento rychlý příklad dobrou rovnováhu mezi výkonem a náklady.
   
-  |Nastavení  |Hodnota  |
-  |---------|---------|
-  |**Cenová úroveň uzlu**     |Standard_A1|
-  |**Cílové vyhrazené uzly**     |2|
+   |Nastavení  |Hodnota  |
+   |---------|---------|
+   |**Cenová úroveň uzlu**     |Standard_A1|
+   |**Cílové vyhrazené uzly**     |2|
 
-  ![Výběr velikosti fondu][pool_size] 
+   ![Výběr velikosti fondu][pool_size] 
 
 5. U ostatních nastavení ponechte výchozí hodnoty a výběrem možnosti **OK** vytvořte fond.
 
@@ -91,7 +91,7 @@ Teď máte vytvořený fond a můžete vytvořit úlohu, která se v něm bude s
 
 2. Jako **ID úlohy** zadejte *myjob*. U položky **Fond** vyberte *mypool*. U ostatních nastavení ponechte výchozí hodnoty a vyberte **OK**.
 
-  ![Vytvoření úlohy][job_create]
+   ![Vytvoření úlohy][job_create]
 
 Po vytvoření úlohy se otevře stránka **Úkoly**.
 
@@ -109,7 +109,7 @@ Vytvoření prvního úkolu:
 
 3. V okně **Příkazový řádek** zadejte `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`. U ostatních nastavení ponechte výchozí hodnoty a vyberte **OK**.
 
-  ![Vytvoření úkolu][task_create]
+   ![Vytvoření úkolu][task_create]
 
 Služba Batch úkol po vytvoření zařadí do fronty pro spuštění ve fondu. Jakmile bude dostupný uzel, který ho bude moct spustit, úkol se spustí.
 

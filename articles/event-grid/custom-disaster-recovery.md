@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: babanisa
-ms.openlocfilehash: 80f3574fb19d1829ebeac124788c240263c66812
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: fa0ffa9ad913f0dc3afe8dc31aeaa0254fa2d241
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548417"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863164"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Vytvářejte vlastní zotavení po havárii pro vlastní témata ve službě Event Grid
 
@@ -54,10 +54,10 @@ Nejprve vytvořte dvě témata služby Event Grid. Tato témata bude fungovat ja
 
 1. V nabídce témata Event Grid vyberte **+ přidat** vytvořit primární tématu.
 
-    * Zadejte logický název tématu a přidejte "– primární" jako příponu k tomu, aby ke sledování.
-    * Toto téma oblast bude primární oblasti.
+   * Zadejte logický název tématu a přidejte "– primární" jako příponu k tomu, aby ke sledování.
+   * Toto téma oblast bude primární oblasti.
 
-    ![Dialog vytvořit primární téma Event gridu](./media/custom-disaster-recovery/create-primary-topic.png)
+     ![Dialog vytvořit primární téma Event gridu](./media/custom-disaster-recovery/create-primary-topic.png)
 
 1. Po vytvoření tématu, přejděte na ni a zkopírujte **koncový bod tématu**. identifikátor URI budete potřebovat později.
 
@@ -69,11 +69,11 @@ Nejprve vytvořte dvě témata služby Event Grid. Tato témata bude fungovat ja
 
 1. V okně tématu, klikněte na tlačítko **+ odběr události** odběr připojování vašeho odběru webu příjemce událostí jste provedli v požadavcích najdete v tomto kurzu vytvoříte.
 
-    * Logický název odběru událostí a přidejte "– primární" jako příponu k tomu, aby ke sledování.
-    * Vyberte koncový bod typu Webhooku.
-    * Nastavení koncového bodu adresy URL události příjemce událostí, které by měl vypadat přibližně jako: `https://<your-event-reciever>.azurewebsites.net/api/updates`
+   * Logický název odběru událostí a přidejte "– primární" jako příponu k tomu, aby ke sledování.
+   * Vyberte koncový bod typu Webhooku.
+   * Nastavení koncového bodu adresy URL události příjemce událostí, které by měl vypadat přibližně jako: `https://<your-event-reciever>.azurewebsites.net/api/updates`
 
-    ![Primární událost odběru Event gridu](./media/custom-disaster-recovery/create-primary-es.png)
+     ![Primární událost odběru Event gridu](./media/custom-disaster-recovery/create-primary-es.png)
 
 1. Opakujte stejný tok vytvořit sekundární téma a odběr. Nahraďte tento čas "-primární" přípony s "-sekundární" pro jednodušší sledování. Nakonec se ujistěte, že jste ji vložili do jiné oblasti Azure. Přestože můžete ji umístit kamkoli chcete, je doporučeno používat [spárované oblasti Azure](../best-practices-availability-paired-regions.md). Vložení sekundární téma a odběr v jiné oblasti zajistí, že budou směrovat nové události, i v případě, že primární oblast přestane fungovat.
 
@@ -91,7 +91,7 @@ Teď, když máte regionálně redundantní dvojici nastavení témat a odběrů
 
 ### <a name="basic-client-side-implementation"></a>Základní implementaci na straně klienta
 
-Následující ukázkový kód je jednoduchý publisher .net, která se vždy pokusí nejprve publikovat do primární tématu. Pokud neproběhne úspěšně, dojde poté převzetí služeb při selhání sekundární tématu. V obou případech se také kontroluje stav rozhraní api tématu tímto způsobem GET na `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health`. V pořádku tématu by měla vždy odpovídat s **200 OK** při provedení GET na **/api/stavu** koncového bodu.
+Následující ukázkový kód je jednoduchý publisher .NET, která se vždy pokusí nejprve publikovat do primární tématu. Pokud neproběhne úspěšně, dojde poté převzetí služeb při selhání sekundární tématu. V obou případech se také kontroluje stav rozhraní api tématu tímto způsobem GET na `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health`. V pořádku tématu by měla vždy odpovídat s **200 OK** při provedení GET na **/api/stavu** koncového bodu.
 
 ```csharp
 using System;

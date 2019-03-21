@@ -4,12 +4,12 @@ ms.service: cloud-shell
 ms.topic: persist-storage
 ms.date: 9/7/2018
 ms.author: juluk
-ms.openlocfilehash: e175f603e97ccf51e1e13d9c2fc42ba7ed1a475f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c28441b6fe25b3480a55b79682d5067b19e3023a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246788"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58051981"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Zachování souborů ve službě Azure Cloud Shell
 Cloud Shell využívá Azure File storage pro uchovávání souborů napříč relacemi. Při počátečním spuštění Cloud Shell zobrazí výzvu k přidružení nové nebo existující sdílenou složku uchovávání souborů napříč relacemi.
@@ -48,6 +48,7 @@ Po zobrazení výzvy se nastavení úložiště, vyberte **zobrazit pokročilé 
 Související služby Azure storage, účtů se musí nacházet ve stejné oblasti jako počítač Cloud Shell, že jste jim připojení. Najít vaše aktuální oblasti může spustit `env` v prostředí Bash a vyhledejte proměnnou `ACC_LOCATION`. Sdílené složky zobrazí 5 GB image vytvořené pro vás k uchování vašich `$Home` adresáře.
 
 Cloudové prostředí počítače existují v těchto oblastech:
+
 |Oblast|Oblast|
 |---|---|
 |Amerika|USA – východ, střed USA – Jih, USA – západ|

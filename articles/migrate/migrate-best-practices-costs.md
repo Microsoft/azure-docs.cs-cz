@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 974ea5803b6e31ad8f940265071f41440d5355da
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6f6440e12840538614b4092b173ab25ae37a68a6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700634"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110272"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Osvědčené postupy pro úlohy ocenění a změny velikosti migrovat do Azure
 
@@ -40,17 +40,18 @@ Pro předpověď svoje měsíční náklady pro přenášená zatížení jsou r
 
 - **Cenovou kalkulačku Azure**: Zvolíte produkty, které chcete odhadnout, například virtuální počítače a úložiště. Vstup náklady na cenové kalkulačky, sestavit odhad.
 
- ![Cenovou kalkulačku Azure](./media/migrate-best-practices-costs/pricing.png) *cenovou kalkulačku Azure*
+  ![Cenovou kalkulačku Azure](./media/migrate-best-practices-costs/pricing.png) *cenovou kalkulačku Azure*
 
 - **Azure Migrate**: Pokud chcete odhadnout náklady, budete muset zkontrolovat a účet pro všechny prostředky, které jsou potřeba ke spouštění úloh v Azure. K získání těchto dat, vytváření inventáře majetku, včetně serverů, virtuálních počítačů, databází a úložiště. Azure Migrate můžete použít ke shromažďování těchto informací.
 
- - Azure Migrate zjistí a vyhodnocuje vaše místní prostředí pro poskytnutí inventář.
- - Azure Migrate můžete namapovat a zobrazit závislosti mezi virtuálními počítači, abyste měli ucelený přehled.
- - Posouzení služby Azure Migrate obsahuje odhadované náklady.
+  - Azure Migrate zjistí a vyhodnocuje vaše místní prostředí pro poskytnutí inventář.
+  - Azure Migrate můžete namapovat a zobrazit závislosti mezi virtuálními počítači, abyste měli ucelený přehled.
+  - Posouzení služby Azure Migrate obsahuje odhadované náklady.
     - Náklady na výpočetní výkon: Pomocí velikost virtuálního počítače Azure, doporučuje se, když vytvoříte posouzení, Azure Migrate používá rozhraní API pro fakturaci pro výpočet odhadované měsíční náklady na virtuální počítač. Odhad bere v úvahu operační systém, program software assurance, rezervované instance, virtuálního počítače doby provozu, umístění a nastavení měny. Agreguje náklady ve všech virtuálních počítačích v posouzení a vypočítá celkové měsíční náklady výpočetní prostředky.
     - Náklady na úložiště: Azure Migrate vypočítá agregováním náklady na úložiště všechny virtuální počítače ve vyhodnocení celkové měsíční náklady na úložiště. Na základě agregace měsíční náklady pro všechny disky připojené k němu můžete vypočítat měsíční náklady na úložiště pro konkrétní počítač. 
 
-    ![Azure Migrate](./media/migrate-best-practices-costs/assess.png) *posouzení služby Azure Migrate*
+    ![Azure Migrate](./media/migrate-best-practices-costs/assess.png)
+    *posouzení služby Azure Migrate*
 
 **Víc se uč:**
 - [Použití](https://azure.microsoft.com/pricing/calculator/) cenovou kalkulačku Azure.
@@ -92,13 +93,13 @@ Ladění a udržování místního úložiště (sítě SAN nebo NAS) a sítě p
 
 Azure poskytuje různé typy dat úložiště.
 
-**Datový typ** | **Podrobnosti** | **Použití** 
---- | --- |  ---
-**Objekty blob** | Optimalizovaná pro ukládání velkých objemů nestrukturovaných objektů, jako jsou textová nebo binární data<br/><br/> | Přístup k datům odkudkoli přes protokol HTTP/HTTPS. | Používá se pro scénáře datových proudů a náhodný přístup. Například k předávání obrázků a dokumentů přímo do prohlížeče, streamování Vida a zvuku a ukládání dat pro obnovení zálohování a po havárii.
-**Soubory** | Spravované sdílené složky přístupné přes protokol SMB 3.0 | Použít při migraci místních sdílených složek a k poskytování více/připojení k datům souborů.
-**Disky** | Založené na objekty BLOB stránky.<br/><br/> Typ disku (rychlost): Standardní (pevný disk nebo SSD) nebo Premium (SSD).<br/><br/>Správa disků: Nespravované (můžete spravovat nastavení disku a úložiště) nebo spravované (vyberte typ disku a Azure spravuje za vás disk). | Použijte disky úrovně Premium pro virtuální počítače. Použití spravovaných disků pro jednoduchá správa a škálování.
-**fronty** | Store a načítání velkého počtu zpráv, které jsou přístupné prostřednictvím ověřených volání (HTTP nebo HTTPS) | Připojení aplikace součástí pomocí asynchronních zpráv zařazení do fronty.
-**Tabulky** | Store tabulky. | Nyní součástí rozhraní API tabulky Azure Cosmos DB.
+| **Datový typ** | **Podrobnosti** | **Použití** |
+|--- | --- |  --- |
+|**Objekty blob** | Optimalizovaná pro ukládání velkých objemů nestrukturovaných objektů, jako jsou textová nebo binární data<br/>Přístup k datům odkudkoli přes protokol HTTP/HTTPS. | Používá se pro scénáře datových proudů a náhodný přístup. Například k předávání obrázků a dokumentů přímo do prohlížeče, streamování Vida a zvuku a ukládání dat pro obnovení zálohování a po havárii.|
+|**Soubory** | Spravované sdílené složky přístupné přes protokol SMB 3.0 | Použít při migraci místních sdílených složek a k poskytování více/připojení k datům souborů.|
+|**Disky** | Založené na objekty BLOB stránky.<br/><br/> Typ disku (rychlost): Standardní (pevný disk nebo SSD) nebo Premium (SSD).<br/><br/>Správa disků: Nespravované (můžete spravovat nastavení disku a úložiště) nebo spravované (vyberte typ disku a Azure spravuje za vás disk). | Použijte disky úrovně Premium pro virtuální počítače. Použití spravovaných disků pro jednoduchá správa a škálování.|
+|**fronty** | Store a načítání velkého počtu zpráv, které jsou přístupné prostřednictvím ověřených volání (HTTP nebo HTTPS) | Připojení aplikace součástí pomocí asynchronních zpráv zařazení do fronty.|
+|**Tabulky** | Store tabulky. | Nyní součástí rozhraní API tabulky Azure Cosmos DB.|
 
 
 
@@ -211,19 +212,21 @@ Ve službě Cost Management můžete:
 
 
 - **Vytvořit rozpočet**: Vytvoření rozpočet pro finanční zodpovědnost.
-    - Můžete účet pro služby využívat nebo přihlášení k odběru pro konkrétní období (měsíčně, čtvrtletně, pořizují na rok) a oboru (předplatných nebo skupinách prostředků). Například můžete vytvořit rozpočtu předplatné Azure pro každý měsíc, čtvrtletí nebo roční období.
-    - Po vytvoření rozpočtu, se zobrazí v analýze nákladů. Zobrazení vašemu rozpočtu na aktuální útratu je jedním z prvních kroků při analýze nákladů a výdajů.
-    - E-mailová oznámení lze odesílat, když se dosáhne prahové hodnoty.
-    - Náklady na správu dat můžete exportovat do úložiště Azure pro účely analýzy.
+  - Můžete účet pro služby využívat nebo přihlášení k odběru pro konkrétní období (měsíčně, čtvrtletně, pořizují na rok) a oboru (předplatných nebo skupinách prostředků). Například můžete vytvořit rozpočtu předplatné Azure pro každý měsíc, čtvrtletí nebo roční období.
+  - Po vytvoření rozpočtu, se zobrazí v analýze nákladů. Zobrazení vašemu rozpočtu na aktuální útratu je jedním z prvních kroků při analýze nákladů a výdajů.
+  - E-mailová oznámení lze odesílat, když se dosáhne prahové hodnoty.
+  - Náklady na správu dat můžete exportovat do úložiště Azure pro účely analýzy.
 
-    ![Cost Management rozpočtu](./media/migrate-best-practices-costs/budget.png) *rozpočet Azure Cost Management*
+    ![Cost Management rozpočtu](./media/migrate-best-practices-costs/budget.png)
+    *rozpočet Azure Cost Management*
 
 - **Proveďte analýzu nákladů**: Získat analýzy nákladů můžete zkoumat a analyzovat organizační náklady, které vám pomohou pochopit, jak jsou náklady na operace a odhalovat trendy výdajů.
-    - Analýza nákladů je k dispozici uživatelům EA.
-    - Můžete zobrazit náklady na analýzu dat pro celou řadou oborů, třeba tak, že oddělení, účet, předplatné nebo skupinu prostředků.
-    - Můžete získat analýzy nákladů, který ukazuje celkové náklady pro aktuální měsíc a celkové denní náklady. 
+  - Analýza nákladů je k dispozici uživatelům EA.
+  - Můžete zobrazit náklady na analýzu dat pro celou řadou oborů, třeba tak, že oddělení, účet, předplatné nebo skupinu prostředků.
+  - Můžete získat analýzy nákladů, který ukazuje celkové náklady pro aktuální měsíc a celkové denní náklady. 
 
-    ![Analýza správy nákladů](./media/migrate-best-practices-costs/analysis.png) *analýzy Azure Cost Management*
+    ![Analýza správy nákladů](./media/migrate-best-practices-costs/analysis.png)
+    *analýzy Azure Cost Management*
 - **Získejte doporučení**: Získejte doporučení Advisoru, které ukazují, jak můžete optimalizovat a zvýšení efektivity.
 
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 4abec80df4aeeb4c20d56b43ba122ee7266905a6
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 6816c21d30ff5340441d58aff202c271eb1c836a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649579"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090317"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -69,9 +69,9 @@ Vlastník testovacího prostředí můžete přidat ostatním uživatelům **Aut
 
     ![Stránka Configure template (Konfigurace šablony) po dokončení konfigurace](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Na **konfigurovat šablony** stránce, proveďte následující kroky: Tyto kroky jsou **volitelné** pro tento kurz.
-    2. Vyberte **Connect** (Připojit) a připojte se k virtuálnímu počítači šablony. 
-    3. Nainstalujte a nakonfigurujte na virtuálním počítači šablony požadovaný software.     
-    5. Zadejte **popis** šablony.
+   1. Vyberte **Connect** (Připojit) a připojte se k virtuálnímu počítači šablony. 
+   1. Nainstalujte a nakonfigurujte na virtuálním počítači šablony požadovaný software.     
+   1. Zadejte **popis** šablony.
 9. Na stránce šablony vyberte **Next** (Další). 
 10. Na stránce **Publish the template** (Publikování šablony) proveďte následující akce. 
     1. Chcete-li publikovat šablony okamžitě a vyberte **publikovat**.  
@@ -89,10 +89,10 @@ Vlastník testovacího prostředí můžete přidat ostatním uživatelům **Aut
     ![Publikování šablony – úspěch](../media/tutorial-setup-classroom-lab/publish-success.png)
 1. Zobrazí se **řídicí panel** testovacího prostředí. 
     
-    ![Řídicí panel testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
+     ![Řídicí panel testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
 4. Přepněte **virtuálních počítačů** stránky tak, že vyberete virtuální počítače v nabídce vlevo nebo tak, že vyberete dlaždici virtuálních počítačů. Zkontrolujte, jestli se virtuální počítače, které jsou v **Nepřiřazeno** stavu. Tyto virtuální počítače ještě nejsou přiřazené ke studentům. Měly by být ve stavu **Stopped** (Zastaveno). Na této stránce můžete spustit studentský virtuální počítač, připojit se k němu, zastavit ho a odstranit ho. Virtuální počítače můžete spustit na této stránce nebo jejich spuštění můžete nechat na studentech. 
 
-    ![Virtuální počítače v zastaveném stavu](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
+     ![Virtuální počítače v zastaveném stavu](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
 ## <a name="add-users-to-the-lab"></a>Přidání uživatelů do testovacího prostředí
 

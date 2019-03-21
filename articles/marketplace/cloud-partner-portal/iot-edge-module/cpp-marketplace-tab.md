@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c119869c47547fd5d91f6ee91fcd772ea5941f46
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 30f44e0e8bae4071403b5c28cd4133970fc4d468
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430777"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010951"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Kartu Marketplace modul IoT Edge
 
 
-**Marketplace** karty **nová nabídka** stránky umožňuje, aby pomáhala potenciálním zákazníkům poskytnout marketing, prodej a právní informace a smluv a správu generují z potenciálních zákazníků Marketplace. Tato dlouhý tvar je rozdělen do čtyř oddílů: **přehled**, **marketingové artefakty**, **vést správu**, a **právní**.
+**Marketplace** karty **nová nabídka** stránky umožňuje, aby pomáhala potenciálním zákazníkům poskytnout marketing, prodej a právní informace a smluv a správu generují z potenciálních zákazníků Marketplace. Tento formulář dlouhý je rozdělen na čtyři části: **Přehled**, **marketingové artefakty**, **vést správu**, a **právní**.
 
 ## <a name="overview"></a>Přehled
 
@@ -78,7 +78,7 @@ Následující tabulka popisuje účel a obsah těchto polí.
 
 ## <a name="marketing-artifacts"></a>Artefakty marketing
 
-Tato část obsahuje následující pododdíly: **loga**, **snímek obrazovky**, a **videa**. 
+Tato část obsahuje následující témata: **Loga**, **snímek obrazovky**, a **videa**. 
 
 >[!Note]
 >Loga jsou pouze požadované marketingové artefakty, ale všechny důrazně doporučujeme pro nejlepší odvolání zákazníka.
@@ -104,7 +104,7 @@ Tato část obsahuje následující pododdíly: **loga**, **snímek obrazovky**,
 
 ### <a name="logo-guidelines"></a>Pokyny pro použití loga
 
-<!-- It seems like this section could be better located in some common area, maybe a AMP Marketing/Design section 
+<!-- It seems like this section could be better located in some common area, maybe an AMP Marketing/Design section 
 +1 this should all be in a common area and referenced from here to that location.-->
 
 Všechny loga nahráli na portál Cloud Partner postupujte podle pokynů:
@@ -160,7 +160,7 @@ Po úspěšném publikování vaší nabídky, ověření připojení potenciál
 
 ## <a name="legal"></a>Právní informace
 
-Tato část umožňuje poskytnout dvě právní dokumenty, které jsou požadovány pro každou nabídku: zásady ochrany osobních údajů a podmínky použití.
+Tato část umožňuje poskytnout dvě právní dokumenty, které jsou požadovány pro každou nabídku: Zásady ochrany osobních údajů a podmínky použití.
 
 |  **Pole**                |     **Popis**                                                          |
 |  ---------                |     ---------------                                                          |

@@ -1,0 +1,91 @@
+---
+title: Vytvoření přiřazení zásady pro nekompatibilní prostředky pomocí šablony Resource Manageru
+description: Tento článek vás provede kroky k vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí šablony Resource Manageru.
+services: azure-policy
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 03/13/2019
+ms.topic: quickstart
+ms.service: azure-policy
+manager: carmonm
+ms.openlocfilehash: 6ff76a66eba42fd87e88846f9ec2378bd63893f2
+ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/15/2019
+ms.locfileid: "58008611"
+---
+# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí šablony Resource Manageru
+
+Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků.
+Tento rychlý start vás provede procesem vytvoření přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky.
+
+Na konci tohoto procesu úspěšně identifikujete virtuální počítače, které nepoužívají spravované disky. *Neodpovídají* přiřazení zásad.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+
+## <a name="create-a-policy-assignment"></a>Vytvoření přiřazení zásady
+
+V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte předdefinovanou definici zásady *Audit virtuálních počítačů, které nepoužívají spravované disky*. Částečný seznam dostupných předdefinovaných zásad najdete v tématu [ukázky zásad](./samples/index.md).
+
+Existuje několik metod pro vytváření přiřazení zásad. V tomto rychlém startu použijete [šablonu pro rychlý Start](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
+Tady je kopie šablony:
+
+[!code-json[policy-assingment](~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json)]
+
+> [!NOTE]
+> Služba Azure zásad je zdarma.  Další informace najdete v tématu [přehled Azure Policy](./overview.md).
+
+1. Vyberte pro přihlášení k webu Azure portal a otevřete šablonu na následujícím obrázku:
+
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json"><img src="./media/assign-policy-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+
+1. Vyberte nebo zadejte následující hodnoty:
+
+   | Název | Hodnota |
+   |------|-------|
+   | Předplatné | Vyberte své předplatné Azure. |
+   | Skupina prostředků | Vyberte **vytvořit nový**, zadejte název a potom vyberte **OK**. Na snímku obrazovky je název skupiny prostředků *mypolicyquickstart<Date in MMDD>rg*. |
+   | Umístění | Vyberte oblast. Například **USA (střed)**. |
+   | Název přiřazení zásady | Zadejte název přiřazení zásady. Pokud chcete, můžete použít zobrazení definic zásad. Například **Audit virtuálních počítačů, které nepoužívají spravované disky**. |
+   | Název rg | Zadejte název skupiny prostředků, ve které chcete přiřadit zásadu. V tomto rychlém startu použijte výchozí hodnotu **[resourceGroup () .name]**. **[resourceGroup()](/azure/azure-resource-manager/resource-group-template-functions-resource#resourcegroup)**  je funkce šablony, která načte skupinu prostředků. |
+   | ID definice zásady | Zadejte **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**. |
+   | Souhlasím s podmínkami a ujednáními uvedenými nahoře | (Vybrat) |
+
+1. Vyberte **Koupit**.
+
+Některé další prostředky:
+
+- Další ukázky šablon najdete v tématu [šablona Azure Quickstart](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular).
+- Chcete-li zobrazit odkaz na šablonu, přejděte na [referenčními informacemi k šablonám Azure](/azure/templates/microsoft.authorization/allversions).
+- Zjistěte, jak vyvíjet šablony Resource Manageru, najdete v článku [dokumentace ke službě Azure Resource Manageru](/azure/azure-resource-manager/).
+- Další nasazení na úrovni předplatného najdete v tématu [vytvoření skupiny prostředků a prostředků na úrovni předplatného](../../azure-resource-manager/deploy-to-subscription.md).
+
+## <a name="identify-non-compliant-resources"></a>Identifikace prostředků, které nedodržují předpisy
+
+Vyberte **dodržování předpisů** v levé části stránky. Vyhledejte **Audit virtuálních počítačů, které nepoužívají spravované disky** přiřazení zásady, které jste vytvořili.
+
+![Dodržování zásad](./media/assign-policy-template/policy-compliance.png)
+
+Pokud existují nějaké stávající prostředky, které nedodržují předpisy tohoto nového přiřazení, zobrazí se pod **nekompatibilní prostředky**.
+
+Další informace najdete v tématu [jak funguje dodržování předpisů](./how-to/get-compliance-data.md#how-compliance-works).
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Odebrat přiřazení vytvořené, postupujte podle těchto kroků:
+
+1. Na levé straně stránky služby Azure Policy vyberte **Dodržování předpisů** (nebo **Přiřazení**) a vyhledejte přiřazení zásady **Audit virtuálních počítačů, které nepoužívají spravované disky**, které jste vytvořili.
+
+1. Klikněte pravým tlačítkem myši **Audit virtuálních počítačů, které nepoužívají spravované disky** přiřazení zásady a vyberte **odstranit přiřazení**.
+
+   ![Odstranění přiřazení](./media/assign-policy-template/delete-assignment.png)
+
+## <a name="next-steps"></a>Další postup
+
+V tomto rychlém startu přiřadit předdefinovanou definici zásady k oboru a vyhodnotit své sestavy dodržování předpisů. Definice zásad ověří, že všechny prostředky v příslušném oboru jsou kompatibilní a určuje ty, které nejsou.
+
+Další informace o přiřazování zásad pro ověření, že nové prostředky jsou kompatibilní, i nadále najdete v tomto kurzu:
+
+> [!div class="nextstepaction"]
+> [Vytváření a správa zásad](./tutorials/create-and-manage.md)

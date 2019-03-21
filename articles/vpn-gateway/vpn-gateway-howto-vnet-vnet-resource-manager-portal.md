@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: f2327d5a2d10653f73c17fbbd1bc9f61487bb21b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 94b32595cf2c884ccfd1362f6c8d03f542aabfc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778038"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090096"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí webu Azure portal
 
@@ -172,10 +172,10 @@ Po dokončení vytváření bran virtuálních sítí pro TestVNet1 a TestVNet4 
 
 1. Na webu Azure Portal, vyberte **všechny prostředky**, zadejte *brány virtuální sítě* do vyhledávacího pole a potom přejděte k bráně virtuální sítě pro vaši virtuální síť. Například **TestVNet1GW**. Vyberte ji a otevřete **Brána virtuální sítě** stránky.
 
-  ![Stránka Připojení](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/1to4connect2.png "Stránka Připojení")
+   ![Stránka Připojení](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/1to4connect2.png "Stránka Připojení")
 2. V části **nastavení**vyberte **připojení**a pak vyberte **přidat** otevřít **přidat připojení** stránky.
 
-  ![Přidání připojení](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add.png "Přidání připojení")
+   ![Přidání připojení](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add.png "Přidání připojení")
 3. Na **přidat připojení** stránky, zadejte hodnoty pro připojení:
 
    - **Název**: Zadejte název vašeho připojení. Například *TestVNet1toTestVNet4*.
@@ -186,11 +186,11 @@ Po dokončení vytváření bran virtuálních sítí pro TestVNet1 a TestVNet4 
 
    - **Druhá Brána virtuální sítě**: Toto pole je Brána virtuální sítě, kterou chcete vytvořit připojení k virtuální síti. Vyberte **vybrat jinou bránu virtuální sítě** otevřít **vybrat bránu virtuální sítě** stránky.
 
-    - Prohlédněte si brány virtuálních sítí uvedené na této stránce. Všimněte si, že jsou uvedené pouze brány virtuálních sítí v rámci vašeho předplatného. Pokud se chcete připojit k bráně virtuální sítě, který není ve vašem předplatném, použijte [Powershellu](vpn-gateway-vnet-vnet-rm-ps.md).
+     - Prohlédněte si brány virtuálních sítí uvedené na této stránce. Všimněte si, že jsou uvedené pouze brány virtuálních sítí v rámci vašeho předplatného. Pokud se chcete připojit k bráně virtuální sítě, který není ve vašem předplatném, použijte [Powershellu](vpn-gateway-vnet-vnet-rm-ps.md).
 
-    - Vyberte bránu virtuální sítě, ke kterému chcete připojit.
+     - Vyberte bránu virtuální sítě, ke kterému chcete připojit.
 
-    - **Sdílený klíč (PSK)**: V tomto poli zadejte sdílený klíč pro vaše připojení. Tento klíč si můžete vygenerovat nebo vytvořit sami. Klíč, který používáte v připojení site-to-site, je stejný pro místní zařízení i pro připojení brány virtuální sítě. Tady platí podobný, akorát se místo připojování k zařízení VPN, se připojujete k jiné bráně virtuální sítě.
+     - **Sdílený klíč (PSK)**: V tomto poli zadejte sdílený klíč pro vaše připojení. Tento klíč si můžete vygenerovat nebo vytvořit sami. Klíč, který používáte v připojení site-to-site, je stejný pro místní zařízení i pro připojení brány virtuální sítě. Tady platí podobný, akorát se místo připojování k zařízení VPN, se připojujete k jiné bráně virtuální sítě.
     
 4. Vyberte **OK** uložte provedené změny.
 

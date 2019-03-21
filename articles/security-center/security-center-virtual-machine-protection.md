@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/25/2019
 ms.author: monhaber
-ms.openlocfilehash: 73a88ec0280728b4a485bd095096e90bbc43ef40
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: dd7dad51f29b4b5034c72085cd789077747faa0b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990947"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106555"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrana vašich počítačů a aplikací ve službě Azure Security Center
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol. Doporučení platí pro typy prostředků Azure: virtuální počítače (VM) a počítačů, aplikací, sítí, SQL a identit a přístupů.
@@ -144,21 +144,21 @@ Existují tři typy ikon v tomto seznamu:
 
 1. Vyberte webovou aplikaci. Souhrnné zobrazení otevřete tři karty:
 
-  - **Doporučení**: založené na posouzení, které provádí služba Security Center, která selhala.
-  - **Předaný posouzení**: seznam posouzení, které provádí služba Security Center, který předává.
-  - **Nedostupná posouzení**: seznam vyhodnocení, které se nepovedlo spustit kvůli chybě nebo doporučení není relevantní pro konkrétní službu App service
+   - **Doporučení**: založené na posouzení, které provádí služba Security Center, která selhala.
+   - **Předaný posouzení**: seznam posouzení, které provádí služba Security Center, který předává.
+   - **Nedostupná posouzení**: seznam vyhodnocení, které se nepovedlo spustit kvůli chybě nebo doporučení není relevantní pro konkrétní službu App service
 
-  V části **doporučení** se seznam doporučení pro vybranou webovou aplikaci a závažnost jednotlivých doporučení.
+   V části **doporučení** se seznam doporučení pro vybranou webovou aplikaci a závažnost jednotlivých doporučení.
 
-  ![Doporučení App Services](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
+   ![Doporučení App Services](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
 
 2. Vyberte na doporučení zobrazit popis doporučení a seznam prostředků není v pořádku, v dobrém stavu prostředků a nezkontrolované prostředky.
 
- - V části **předaný posouzení** sloupec je seznam vyhovující posouzení.  Závažnost těchto hodnocení je vždy zelená.
+   - V části **předaný posouzení** sloupec je seznam vyhovující posouzení.  Závažnost těchto hodnocení je vždy zelená.
 
- -  Vyberte ze seznamu popis posouzení, seznam prostředků není v pořádku a v pořádku a seznam nezkontrolované prostředky předané posouzení. Je na kartě pro prostředky není v pořádku, ale tento seznam je prázdný, vždy od předaný posouzení.
+   - Vyberte ze seznamu popis posouzení, seznam prostředků není v pořádku a v pořádku a seznam nezkontrolované prostředky předané posouzení. Je na kartě pro prostředky není v pořádku, ale tento seznam je prázdný, vždy od předaný posouzení.
 
-    ![Náprava služby App Service](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
+     ![Náprava služby App Service](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
 
 ## <a name="virtual-machine-scale-sets"></a>Škálovací sady virtuálních počítačů
 Security Center automaticky zjišťuje, zda máte sad škálování a doporučí vám jeho instalaci agenta Microsoft Monitoring Agent v těchto škálovacích sadách. 
@@ -168,7 +168,7 @@ Chcete-li nainstalovat agenta Microsoft Monitoring Agent:
 1. Vyberte toto doporučení **nainstalovat agenta monitorování na škálovací sadu virtuálních počítačů**. Můžete získat seznam nemonitorované škálovací sady.
 2. Vyberte není v pořádku, škálovací sady. Postupujte podle pokynů k instalaci agenta monitorování pomocí existujícího mají údaj vyplněný pracovního prostoru nebo vytvořte novou. Ujistěte se, že nastavení pracovního prostoru [cenovou úroveň](security-center-pricing.md) Pokud není nastavená.
 
- ![Nainstalujte MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
+   ![Nainstalujte MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
 Pokud chcete nastavit nové škálovací sady můžete automaticky nainstalovat agenta Microsoft Monitoring Agent:
 1. Přejděte ke službě Azure Policy a klikněte na tlačítko **definice**.

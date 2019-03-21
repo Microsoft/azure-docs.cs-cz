@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 40a5c21c2411d0f1bfdf3254799d8abbd585c3ee
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 5d8b3b91771fda3a714112979b8bf9df39c4a9b3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217338"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088685"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Agent synchronizace dat pro synchronizaci dat Azure SQL
 
@@ -102,8 +102,8 @@ Pokud chcete spustit místní agent z jiného počítače, než je aktuálně v,
 
 - **Rozlišení**. Pokud chcete najít konkrétní příčinu selhání, generovat a podívejte se na protokoly Instalační služby systému Windows. Můžete zapnout protokolování na příkazovém řádku. Například, pokud je staženého instalačního souboru `SQLDataSyncAgent-2.0-x86-ENU.msi`, generovat a prozkoumejte soubory protokolu s použitím následujících příkazových řádků:
 
-    -   Pro instalace: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
-    -   Pro odinstaluje: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Pro instalace: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Pro odinstaluje: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     Můžete také zapnout protokolování pro všechna zařízení, které se provádí pomocí Instalační služby systému Windows. Článek znalostní báze Microsoft [jak povolit protokolování Instalační služby systému Windows](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) poskytuje řešení jedním kliknutím k zapnutí protokolování pro Instalační služby systému Windows. Poskytuje také umístění protokolů.
 

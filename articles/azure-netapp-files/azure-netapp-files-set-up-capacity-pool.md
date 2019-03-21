@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: 7cb9cc6cc5ce98eb88e9b9cdf76f000c33f5509e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8f50b2ad34c705c8d3831d8243f136c41d750dc0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780707"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074433"
 ---
 # <a name="set-up-a-capacity-pool"></a>Nastavení fondu kapacity
 
@@ -41,19 +41,19 @@ Musíte už mít vytvořený účet NetApp.
     Zobrazí se okno Nový fond kapacity.
 
 3. Zadejte pro nový fond kapacity následující informace:  
-  * **Název**  
-    Zadejte název pro fond kapacity.  
-    Název fondu kapacity musí být pro každý účet NetApp jedinečný.
+   * **Název**  
+     Zadejte název pro fond kapacity.  
+     Název fondu kapacity musí být pro každý účet NetApp jedinečný.
 
-  * **Úroveň služeb**   
-    Toto pole ukazuje cílový výkon fondu kapacity.  
-    Zadejte úroveň služby pro kapacitu fondu: [**Premium** ](azure-netapp-files-service-levels.md#Premium) nebo [ **standardní**](azure-netapp-files-service-levels.md#Standard).
+   * **Úroveň služeb**   
+     Toto pole ukazuje cílový výkon fondu kapacity.  
+     Zadejte úroveň služby pro kapacitu fondu: [**Premium** ](azure-netapp-files-service-levels.md#Premium) nebo [ **standardní**](azure-netapp-files-service-levels.md#Standard).
 
-  * **Velikost**     
-    Zadejte velikost fondu kapacity, kterou kupujete.        
-    Minimální velikost fondu kapacity je 4 TiB. Můžete vytvořit fond s velikostí, která je násobkem 4 TiB.   
+   * **Velikost**     
+     Zadejte velikost fondu kapacity, kterou kupujete.        
+     Minimální velikost fondu kapacity je 4 TiB. Můžete vytvořit fond s velikostí, která je násobkem 4 TiB.   
       
-    ![Nový fond kapacity](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
+     ![Nový fond kapacity](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
 4. Klikněte na **OK**.
 

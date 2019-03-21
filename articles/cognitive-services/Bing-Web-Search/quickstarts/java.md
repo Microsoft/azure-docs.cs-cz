@@ -8,21 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 0d20d147bc77698e97630ad3bd5e58348db45f5b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8282838f778516e31080960400e5b1435f0b5673
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187470"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57866322"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-java"></a>Rychlý start: Vyhledávání na webu pomocí API REST vyhledávání na webu Bingu a Java
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. Tato aplikace v Javě odešle požadavek hledání do rozhraní API a zobrazí odpovědi. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. Tato aplikace v Javě odešle požadavek hledání do rozhraní API a ukázka odezvy. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
+
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * [JDK 7 nebo 8](https://aka.ms/azure-jdks)
@@ -54,7 +55,7 @@ Pokud používáte Maven, deklarujte Gson v souboru `POM.xml`. Pokud jste knihov
 <dependency>
     <groupId>com.google.code.gson</groupId>
     <artifactId>gson</artifactId>
-    <version>2.8.1</version>
+    <version>2.8.5</version>
 </dependency>
 ```
 
@@ -72,7 +73,7 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>Definování proměnných
 
-Tento kód nastaví `subscriptionKey`, `host`, `path` a `searchTerm`. Ověřte správnost koncového bodu a nahraďte hodnotu `subscriptionKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `searchTerm` zadat jinou hodnotu.
+Tento kód nastaví `subscriptionKey`, `host`, `path` a `searchTerm`. Ověřte správnost koncového bodu a nahraďte hodnotu `subscriptionKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `searchTerm` zadat jinou hodnotu. Nezapomeňte přidat tento kód `BingWebSearch` třídy, jak bylo uvedeno výše.
 
 ```java
 // Enter a valid subscription key.
@@ -184,8 +185,8 @@ class SearchResults{
 Posledním krokem je kompilace kódu a jeho spuštění. Tady jsou příkazy:
 
 ```powershell
-javac BingWebSearch.java -classpath ./gson-2.8.1.jar -encoding UTF-8
-java -cp ./gson-2.8.1.jar BingWebSearch
+javac BingWebSearch.java -classpath ./gson-2.8.5.jar -encoding UTF-8
+java -cp ./gson-2.8.5.jar BingWebSearch
 ```
 
 Pokud chcete porovnat svůj kód s naším, najdete [ukázkový kód na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingWebSearchv7.java).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2019
 ms.author: v-ant-msft
-ms.openlocfilehash: caf306360d3a9f044ed7f786aea616d3f5e0bda6
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 3f7fcd59bafe5619a1ef411bf81a6b8c3431f22c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344688"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087410"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscalerem ZSCloud pro automatické zřizování uživatelů
 
@@ -27,7 +27,7 @@ Cílem tohoto kurzu je předvést postup provést v Zscalerem ZSCloud a Azure Ac
 
 > [!NOTE]
 > Tento kurz popisuje konektor postavené na službě zřizování uživatelů služby Azure AD. Důležité podrobnosti o význam této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../active-directory-saas-app-provisioning.md).
-
+> 
 > Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných Microsoft Azure podmínky použití pro funkce ve verzi Preview, najdete v části [doplňkovými podmínkami použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Požadavky

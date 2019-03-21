@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 35d5e5d76dbcb4f1d995a9da13a81ef8b184150c
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: f90e82fea9cbb3c3052738d15ff4a3838f1ad000
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337341"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863236"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Úvod k virtuálnímu počítači pro datové vědy pro Linux a Windows
 
@@ -66,7 +66,7 @@ Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů 
 | Relační databáze                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) (CentOS),<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition (Ubuntu) |
 | Databázové nástroje                                                       | * SQL Server Management Studio <br/>* SQL Server Integration Services<br/>* [bcp, sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br /> * Ovladače ODBC/JDBC| * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/) (nástroj pro dotazování), <br /> * bcp, sqlcmd <br /> * Ovladače ODBC/JDBC|
 | Škálovatelná analýza v databázi pomocí služeb SQL Server ML (R, Python) | Ano     |Ne              |
-| **[Jupyter Notebook Server](http://jupyter.org/) s následujícími jádry:**                                  | Ano     | Ano |
+| **[Jupyter Notebook Server](https://jupyter.org/) s následujícími jádry:**                                  | Ano     | Ano |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* R | Ano | Ano |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Python | Ano | Ano |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Julia | Ano | Ano |
@@ -76,13 +76,13 @@ Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů 
 | JupyterHub (server poznámkového bloku pro více uživatelů)| Ne | Ano |
 | JupyterLab (server poznámkového bloku pro více uživatelů) | Ne | Ano (pouze Ubuntu) |
 | **Vývojové nástroje, integrovaná vývojová prostředí a editory kódu**| | |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) s modulem plug-in Git, Azure HDInsight (Hadoop), Data Lake, nástroji SQL Server Data Tools, [Node.js](https://github.com/Microsoft/nodejstools), [Pythonem](https://aka.ms/ptvs) a [nástroji R pro Visual Studio (RTVS)](http://microsoft.github.io/RTVS-docs/) | Ano | Ne |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) s modulem plug-in Git, Azure HDInsight (Hadoop), Data Lake, nástroji SQL Server Data Tools, [Node.js](https://github.com/Microsoft/nodejstools), [Pythonem](https://aka.ms/ptvs) a [nástroji R pro Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/) | Ano | Ne |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio Code](https://code.visualstudio.com/) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) | Ne | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [PyCharm Community Edition](https://www.jetbrains.com/pycharm/) | Ne | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Atom](https://atom.io/) | Ne | Ano |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Juno (Julia IDE)](http://junolab.org/)| Ano | Ano |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Juno (Julia IDE)](https://junolab.org/)| Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Vim a Emacs | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Git a GitBash | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* OpenJDK | Ano | Ano |
@@ -99,12 +99,12 @@ Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů 
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Nástroj pro migraci dat DocDB](https://docs.microsoft.com/azure/documentdb/documentdb-import-data) | Ano | Ne |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Brána správy dat Microsoft](https://msdn.microsoft.com/library/dn879362.aspx): Přesun dat mezi místním úložištěm a cloudem | Ano | Ne |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Nástroje příkazového řádku Unixu/Linuxu | Ano | Ano |
-| [Apache Drill](http://drill.apache.org) pro průzkum dat | Ano | Ano |
+| [Apache Drill](https://drill.apache.org) pro průzkum dat | Ano | Ano |
 | **Nástroje pro strojové učení** |||
 | &nbsp;&nbsp;&nbsp;&nbsp;* Integrace s [Azure Machine Learningem](https://azure.microsoft.com/services/machine-learning/) (R, Python) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Xgboost](https://github.com/dmlc/xgboost) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) | Ano | Ano |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Weka](http://www.cs.waikato.ac.nz/ml/weka/) | Ano | Ano |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Weka](https://www.cs.waikato.ac.nz/ml/weka/) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Rattle](https://togaware.com/rattle/) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [LightGBM](https://github.com/Microsoft/LightGBM) | Ne | Ano (pouze Ubuntu) |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [CatBoost](https://tech.yandex.com/catboost/) | Ne | Ano (pouze Ubuntu) |
@@ -113,21 +113,21 @@ Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů 
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/) (Windows 2016) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow](https://www.tensorflow.org/) | Ano (Windows 2016) | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Horovod](https://github.com/uber/horovod) | Ne | Ano (Ubuntu) |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet](http://mxnet.io/) | Ano (Windows 2016) | Ano|
+| &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet](https://mxnet.io/) | Ano (Windows 2016) | Ano|
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Caffe & Caffe2](https://github.com/caffe2/caffe2) | Ne | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Chainer](https://chainer.org/) | Ne | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Torch](http://torch.ch/) | Ne | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Theano](https://github.com/Theano/Theano) | Ne | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Keras](https://keras.io/)| Ne | Ano |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [PyTorch](http://pytorch.org/)| Ne | Ano |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [PyTorch](https://pytorch.org/)| Ne | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [NVidia Digits](https://github.com/NVIDIA/DIGITS) | Ne | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet Model Server](https://github.com/awslabs/mxnet-model-server) | Ne | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow Serving](https://www.tensorflow.org/serving/) | Ne | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorRT](https://developer.nvidia.com/tensorrt) | Ne | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [CUDA, cuDNN, ovladač NVIDIA](https://developer.nvidia.com/cuda-toolkit) | Ano | Ano |
 | **Big Data Platform (pouze Devtest)**|||
-| &nbsp;&nbsp;&nbsp;&nbsp;* Místní samostatný [Spark](http://spark.apache.org/) | Ano | Ano |
-| &nbsp;&nbsp;&nbsp;&nbsp;* Místní [Hadoop](http://hadoop.apache.org/) (HDFS, YARN) | Ne | Ano |
+| &nbsp;&nbsp;&nbsp;&nbsp;* Místní samostatný [Spark](https://spark.apache.org/) | Ano | Ano |
+| &nbsp;&nbsp;&nbsp;&nbsp;* Místní [Hadoop](https://hadoop.apache.org/) (HDFS, YARN) | Ne | Ano |
 
 ## <a name="get-started"></a>Začínáme
 

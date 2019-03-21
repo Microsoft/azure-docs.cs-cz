@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe259b6a0f45828e100de33f533e370323128eef
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: MT
+ms.openlocfilehash: 8c1d6f541123a3f31c22352d646d701c37356e51
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821692"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088311"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Přidat služby Google jako zprostředkovatele identity pro uživatele typu Host B2B
 
@@ -62,8 +62,8 @@ Nejprve vytvořte nový projekt v konzole pro vývojáře Google získat klienta
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(kde `<directory id>` je vaše ID adresáře)
    
-    > [!NOTE]
-    > Pokud chcete najít ID vašeho adresáře, přejděte na https://portal.azure.coma v části **Azure Active Directory**, zvolte **vlastnosti** a zkopírujte **ID adresáře**.
+     > [!NOTE]
+     > Pokud chcete najít ID vašeho adresáře, přejděte na https://portal.azure.coma v části **Azure Active Directory**, zvolte **vlastnosti** a zkopírujte **ID adresáře**.
 
    ![Vytvoření ID klienta OAuth](media/google-federation/google-create-oauth-client-id.png)
 

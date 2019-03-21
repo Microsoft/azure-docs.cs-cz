@@ -1,7 +1,7 @@
 ---
 title: Získání sady Speech Devices SDK
 titleSuffix: Azure Cognitive Services
-description: Speech Service funguje se širokou škálu zařízení a zdrojů zvuku. Teď může trvat vašich aplikací rozpoznávání řeči na další úroveň díky odpovídající hardware a software. V tomto článku budete zjistěte, jak získat přístup k zařízení sadou SDK pro řeč a začít s vývojem.
+description: Hlasové služby pracovat s širokou škálu zařízení a zdrojů zvuku. Teď může trvat vašich aplikací rozpoznávání řeči na další úroveň díky odpovídající hardware a software. V tomto článku budete zjistěte, jak získat přístup k zařízení sadou SDK pro řeč a začít s vývojem.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 905f3dde7c9c728c2a57858578cef8cff2777d81
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3c5874625ee9d1932c401238c1586ad89d5d206d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872148"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856718"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Zařízení řeči služeb Cognitive Services SDK
 

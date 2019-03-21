@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6444d2ab5265fffd4e3c956a2eec29437911b0e2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 73f962cc8e0d4605c0c5f0bace79553033ebe082
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876704"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110898"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Verze můžete upravit a testování bez dopadu na pracovní nebo produkční aplikace
 
@@ -39,7 +39,7 @@ Seznam verzí zobrazit, jaké verze jsou publikovány, kde jsou publikovány, a 
      > [!NOTE]
      > Verze ID může obsahovat pouze znaky, číslice nebo '.' a nesmí být delší než 10 znaků.
  
- Nová verze se zadaným názvem je vytvořen a nastavit jako aktivní verze.
+   Nová verze se zadaným názvem je vytvořen a nastavit jako aktivní verze.
 
 ## <a name="set-active-version"></a>Nastavit aktivní verzi
 

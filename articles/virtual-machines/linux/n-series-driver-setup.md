@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: df78852e309054bb5c27a779b37bb2310d9f7a01
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: cb597edc676fbb7b63c6a07849551cc21f69b354
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201036"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58015011"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU na virtuálních počítačích řady N-series s Linuxem
 
@@ -38,7 +38,7 @@ Specifikace, kapacity úložiště a podrobných informací o discích virtuáln
 Tady jsou kroky pro instalaci ovladače CUDA z Toolkit NVIDIA CUDA na virtuálních počítačích řady N-series. 
 
 
-Vývojáře v C a C++ můžete volitelně nainstalovat úplnou sadu nástrojů k vytváření aplikací – hardwarově akcelerovanou. Další informace najdete v tématu [Průvodce instalací CUDA](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
+Vývojáře v C a C++ můžete volitelně nainstalovat úplnou sadu nástrojů k vytváření aplikací – hardwarově akcelerovanou. Další informace najdete v tématu [Průvodce instalací CUDA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
 Instalace ovladačů CUDA, vytvořte připojení SSH ke všem virtuálním počítačům. Pokud chcete ověřit, zda má systém podporující CUDA GPU, spusťte následující příkaz:
 
@@ -54,30 +54,30 @@ Potom spusťte instalaci příkazů specifických pro vaši distribuci.
 ### <a name="ubuntu"></a>Ubuntu 
 
 1. Stáhnout a nainstalovat z webu NVIDIA CUDA ovladače. Například pro Ubuntu 16.04 LTS:
-  ```bash
-  CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
+   ```bash
+   CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
-  wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
+   wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
-  sudo dpkg -i /tmp/${CUDA_REPO_PKG}
+   sudo dpkg -i /tmp/${CUDA_REPO_PKG}
 
-  sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub 
+   sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub 
 
-  rm -f /tmp/${CUDA_REPO_PKG}
+   rm -f /tmp/${CUDA_REPO_PKG}
 
-  sudo apt-get update
+   sudo apt-get update
 
-  sudo apt-get install cuda-drivers
+   sudo apt-get install cuda-drivers
 
-  ```
+   ```
 
-  Instalace může trvat několik minut.
+   Instalace může trvat několik minut.
 
 2. Pokud chcete volitelně nainstalovat úplnou sadu nástrojů CUDA, zadejte:
 
-  ```bash
-  sudo apt-get install cuda
-  ```
+   ```bash
+   sudo apt-get install cuda
+   ```
 
 3. Restartujte virtuální počítač a přejděte k ověření instalace.
 
@@ -101,50 +101,50 @@ sudo reboot
 
 1. Aktualizujte jádra (doporučeno). Pokud se rozhodnete neaktualizovat jádra, ujistěte se, že verze `kernel-devel` a `dkms` jsou vhodné pro vaše jádra.
 
-  ```
-  sudo yum install kernel kernel-tools kernel-headers kernel-devel
+   ```
+   sudo yum install kernel kernel-tools kernel-headers kernel-devel
   
-  sudo reboot
+   sudo reboot
 
 2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106).
 
-  ```bash
-  wget https://aka.ms/lis
+   ```bash
+   wget https://aka.ms/lis
  
-  tar xvzf lis
+   tar xvzf lis
  
-  cd LISISO
+   cd LISISO
  
-  sudo ./install.sh
+   sudo ./install.sh
  
-  sudo reboot
-  ```
+   sudo reboot
+   ```
  
 3. Znovu připojit k virtuálnímu počítači a pokračovat v instalaci pomocí následujících příkazů:
 
-  ```bash
-  sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   ```bash
+   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
-  sudo yum install dkms
+   sudo yum install dkms
 
-  CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
+   CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
 
-  wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
+   wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
-  sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
+   sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
 
-  rm -f /tmp/${CUDA_REPO_PKG}
+   rm -f /tmp/${CUDA_REPO_PKG}
 
-  sudo yum install cuda-drivers
-  ```
+   sudo yum install cuda-drivers
+   ```
 
-  Instalace může trvat několik minut. 
+   Instalace může trvat několik minut. 
 
 4. Pokud chcete volitelně nainstalovat úplnou sadu nástrojů CUDA, zadejte:
 
-  ```bash
-  sudo yum install cuda
-  ```
+   ```bash
+   sudo yum install cuda
+   ```
 
 5. Restartujte virtuální počítač a přejděte k ověření instalace.
 
@@ -180,53 +180,53 @@ Instalace ovladačů NVIDIA GRID na NV nebo virtuálních počítačích řady N
 
 2. Nainstalujte aktualizace.
 
-  ```bash
-  sudo apt-get update
+   ```bash
+   sudo apt-get update
 
-  sudo apt-get upgrade -y
+   sudo apt-get upgrade -y
 
-  sudo apt-get dist-upgrade -y
+   sudo apt-get dist-upgrade -y
 
-  sudo apt-get install build-essential ubuntu-desktop -y
-  ```
+   sudo apt-get install build-essential ubuntu-desktop -y
+   ```
 3. Zakážete Nouveau ovladač jádra, která není kompatibilní s ovladač NVIDIA. (Použijte pouze ovladač NVIDIA na NV nebo NVv2 virtuální počítače.) Chcete-li to provést, vytvořte soubor v `/etc/modprobe.d `s názvem `nouveau.conf` s následujícím obsahem:
 
-  ```
-  blacklist nouveau
+   ```
+   blacklist nouveau
 
-  blacklist lbm-nouveau
-  ```
+   blacklist lbm-nouveau
+   ```
 
 
 4. Restartujte virtuální počítač a znovu připojit. Konec X serveru:
 
-  ```bash
-  sudo systemctl stop lightdm.service
-  ```
+   ```bash
+   sudo systemctl stop lightdm.service
+   ```
 
 5. Stáhněte a nainstalujte ovladač mřížky:
 
-  ```bash
-  wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
+   ```bash
+   wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
 
-  chmod +x NVIDIA-Linux-x86_64-grid.run
+   chmod +x NVIDIA-Linux-x86_64-grid.run
 
-  sudo ./NVIDIA-Linux-x86_64-grid.run
-  ``` 
+   sudo ./NVIDIA-Linux-x86_64-grid.run
+   ``` 
 
 6. Pokud se dotaz, zda chcete spustit nástroj nvidia xconfig a aktualizovat vaše konfigurační soubor X, vyberte **Ano**.
 
 7. Po dokončení instalace, zkopírujte do nové gridd.conf souboru v umístění/etc/nvidia//etc/nvidia/gridd.conf.template
 
-  ```bash
-  sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
-  ```
+   ```bash
+   sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
+   ```
 
 8. Přidejte následující text do `/etc/nvidia/gridd.conf`:
  
-  ```
-  IgnoreSP=FALSE
-  ```
+   ```
+   IgnoreSP=FALSE
+   ```
 9. Restartujte virtuální počítač a přejděte k ověření instalace.
 
 
@@ -234,63 +234,63 @@ Instalace ovladačů NVIDIA GRID na NV nebo virtuálních počítačích řady N
 
 1. Aktualizace jádra a DKMS (doporučeno). Pokud se rozhodnete neaktualizovat jádra, ujistěte se, že verze `kernel-devel` a `dkms` jsou vhodné pro vaše jádra.
  
-  ```bash  
-  sudo yum update
+   ```bash  
+   sudo yum update
  
-  sudo yum install kernel-devel
+   sudo yum install kernel-devel
  
-  sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
  
-  sudo yum install dkms
-  ```
+   sudo yum install dkms
+   ```
 
 2. Zakážete Nouveau ovladač jádra, která není kompatibilní s ovladač NVIDIA. (Použijte pouze ovladač NVIDIA na NV nebo NV2 virtuální počítače.) Chcete-li to provést, vytvořte soubor v `/etc/modprobe.d `s názvem `nouveau.conf` s následujícím obsahem:
 
-  ```
-  blacklist nouveau
+   ```
+   blacklist nouveau
 
-  blacklist lbm-nouveau
-  ```
+   blacklist lbm-nouveau
+   ```
  
 3. Restartujte virtuální počítač, opětovné připojení a nainstalujte nejnovější [integrační služby Linuxu pro Hyper-V a Azure](https://www.microsoft.com/download/details.aspx?id=55106).
  
-  ```bash
-  wget https://aka.ms/lis
+   ```bash
+   wget https://aka.ms/lis
 
-  tar xvzf lis
+   tar xvzf lis
 
-  cd LISISO
+   cd LISISO
 
-  sudo ./install.sh
+   sudo ./install.sh
 
-  sudo reboot
+   sudo reboot
 
-  ```
+   ```
  
 4. Znovu připojit k virtuálnímu počítači a spusťte `lspci` příkazu. Ověřte, že karty NVIDIA M60 nebo karty se zobrazují jako PCI zařízení.
  
 5. Stáhněte a nainstalujte ovladač mřížky:
 
-  ```bash
-  wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
+   ```bash
+   wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
 
-  chmod +x NVIDIA-Linux-x86_64-grid.run
+   chmod +x NVIDIA-Linux-x86_64-grid.run
 
-  sudo ./NVIDIA-Linux-x86_64-grid.run
-  ``` 
+   sudo ./NVIDIA-Linux-x86_64-grid.run
+   ``` 
 6. Pokud se dotaz, zda chcete spustit nástroj nvidia xconfig a aktualizovat vaše konfigurační soubor X, vyberte **Ano**.
 
 7. Po dokončení instalace, zkopírujte do nové gridd.conf souboru v umístění/etc/nvidia//etc/nvidia/gridd.conf.template
   
-  ```bash
-  sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
-  ```
+   ```bash
+   sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
+   ```
   
 8. Přidejte následující text do `/etc/nvidia/gridd.conf`:
  
-  ```
-  IgnoreSP=FALSE
-  ```
+   ```
+   IgnoreSP=FALSE
+   ```
 9. Restartujte virtuální počítač a přejděte k ověření instalace.
 
 ### <a name="verify-driver-installation"></a>Ověření instalace ovladače

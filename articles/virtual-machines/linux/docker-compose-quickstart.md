@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 3aa3b29ef44d3efb21237dc0d82a1ee6e99e729b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 03501ea774cf58a4be88ed9155e5cfdfb99f0379
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328941"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007191"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Začínáme s prostředím Docker a Compose pro definování a spouštění vícekontejnerová aplikace v Azure
-S [Compose](http://github.com/docker/compose), definovat aplikaci skládající se z několika kontejnerů Dockeru pomocí souboru prostého textu. Potom zprovoznění aplikace stačí jediný příkaz, který obsahuje všechno k nasazení prostředí definované. Jako příklad Tento článek popisuje, jak rychle nastavit blog WordPress pomocí back-endu databáze MariaDB SQL na Virtuálním počítači se systémem Ubuntu. Také vám pomůže vytvořit nastavení složitějších aplikací.
+S [Compose](https://github.com/docker/compose), definovat aplikaci skládající se z několika kontejnerů Dockeru pomocí souboru prostého textu. Potom zprovoznění aplikace stačí jediný příkaz, který obsahuje všechno k nasazení prostředí definované. Jako příklad Tento článek popisuje, jak rychle nastavit blog WordPress pomocí back-endu databáze MariaDB SQL na Virtuálním počítači se systémem Ubuntu. Také vám pomůže vytvořit nastavení složitějších aplikací.
 
 Tento článek byl testován poslední o 2/14/2019 používání [Azure Cloud Shell](https://shell.azure.com/bash) a [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) verze 2.0.58.
 
@@ -132,7 +132,7 @@ Teď můžete připojit wordpressu přímo ve virtuálním počítači na portu 
 ![Úvodní obrazovku aplikace WordPress](./media/docker-compose-quickstart/wordpressstart.png)
 
 ## <a name="next-steps"></a>Další postup
-* Podívejte se [vytvořit odkaz na příkazový řádek](http://docs.docker.com/compose/reference/) a [uživatelská příručka](http://docs.docker.com/compose/) Další příklady vytváření a nasazení vícekontejnerových aplikací.
+* Podívejte se [vytvořit odkaz na příkazový řádek](https://docs.docker.com/compose/reference/) a [uživatelská příručka](https://docs.docker.com/compose/) Další příklady vytváření a nasazení vícekontejnerových aplikací.
 * Pomocí šablony Azure Resource Manageru, buď vaše vlastní nebo některý uživatel z [komunity](https://azure.microsoft.com/documentation/templates/), k nasazení virtuálního počítače Azure s využitím Dockeru a aplikace s Compose. Například [nasazení blog WordPress pomocí Dockeru](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) šablona používá k rychlému nasazení WordPress s MySQL back-endu na Virtuálním počítači se systémem Ubuntu Docker a Compose.
 * Zkuste integraci se službou cluster Docker Swarm Docker Compose. Zobrazit [pomocí Compose se Swarmem](https://docs.docker.com/compose/swarm/) pro scénáře.
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.openlocfilehash: 019232308ec5fa6d735e4499c3fb5f3ac2727e2d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 18660b41f4413d3ae1cd820cd645ddb540397906
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766390"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095891"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v Azure HDInsight
 
@@ -106,12 +106,12 @@ Clustery HDInsight Spark zahrnují [Apache Zeppelin](https://zeppelin.apache.org
 
 8. Vyberte **pruhový graf** ikonu ke změně zobrazení.  Potom vyberte **nastavení** a proveďte následující změny:
 
-    * **Skupiny:**  Přidat **targettemp**.  
-    * **Hodnoty:** 1. Odebrat **datum**.  2. Přidat **temp_diff**.  3.  Změnit agregátoru z **součet** k **AVG**.  
+   * **Skupiny:**  Přidat **targettemp**.  
+   * **Hodnoty:** 1. Odebrat **datum**.  2. Přidat **temp_diff**.  3.  Změnit agregátoru z **součet** k **AVG**.  
 
-    Následující snímek obrazovky ukazuje výstup.
+     Následující snímek obrazovky ukazuje výstup.
 
-    ![Spuštěním příkazu Spark SQL pomocí poznámkového bloku](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "spuštěním příkazu Spark SQL pomocí poznámkového bloku")
+     ![Spuštěním příkazu Spark SQL pomocí poznámkového bloku](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "spuštěním příkazu Spark SQL pomocí poznámkového bloku")
 
 9. Restartujte překladač Livy ukončíte aplikaci. Uděláte to tak, otevřete nastavení překladač výběrem přihlášeného uživatelského jména v pravém horním rohu a pak vyberte **překladač**.  
 

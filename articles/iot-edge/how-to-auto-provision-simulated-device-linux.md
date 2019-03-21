@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a1dba3b497807841f9b86d685f5bb560ebdd9316
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9a549221a9e1864e1b7565f35139cb4c2a6ca65e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532421"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093122"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Vytvoření a zřízení zařízení IoT Edge s virtuální čip TPM na virtuální počítač s Linuxem
 
@@ -234,17 +234,17 @@ Můžete poskytnout přístup TPM na modul runtime IoT Edge tak, že přepíšet
 
 11. Ověřte, že toto přepsání bylo úspěšné.
 
-   ```bash
-   sudo systemctl cat iotedge.service
-   ```
+    ```bash
+    sudo systemctl cat iotedge.service
+    ```
 
-   Úspěšný výstup zobrazuje **iotedge** výchozí služby proměnné a poté zobrazí proměnné prostředí, že jste nastavili **override.conf**. 
+    Úspěšný výstup zobrazuje **iotedge** výchozí služby proměnné a poté zobrazí proměnné prostředí, že jste nastavili **override.conf**. 
 
 12. Znovu načte nastavení.
 
-   ```bash
-   sudo systemctl daemon-reload
-   ```
+    ```bash
+    sudo systemctl daemon-reload
+    ```
 
 ## <a name="restart-the-iot-edge-runtime"></a>Restartujte modul runtime IoT Edge
 

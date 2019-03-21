@@ -1,5 +1,5 @@
 ---
-title: Nasměrování internetové domény společnosti na název domény Azure Traffic Manageru
+title: Nasměrování internetové domény společnosti na název domény služby Azure Traffic Manageru
 description: Tento článek vám pomůže nasměrovat název domény společnosti na název domény Traffic Manageru.
 services: traffic-manager
 author: kumudd
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
-ms.openlocfilehash: c11d8ddcd9a1c1f051ab779a66710ab3d968acab
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 77a5fbab6ecda910750ab2b8bae987e77607223a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200577"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903488"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Nasměrování internetové domény společnosti na doménu Azure Traffic Manageru
 
@@ -25,7 +25,7 @@ Pokud například chcete, aby název `www.contoso.com` odkazoval na název DNS T
 
     www.contoso.com IN CNAME contoso.trafficmanager.net
 
-Veškeré žádosti o přenos na *www.contoso.com* se budou směrovat na *contoso.trafficmanager.net*.
+Veškeré požadavky na provoz do *www\.contoso.com* se budou směrovat na *contoso.trafficmanager.net*.
 
 > [!IMPORTANT]
 > Doménu druhé úrovně, například *contoso.com*, nelze nasměrovat na doménu Traffic Manageru. Standardy protokolu DNS nepovolují záznamy CNAME pro názvy domén druhé úrovně.

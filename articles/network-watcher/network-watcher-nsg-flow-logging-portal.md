@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 124ac79971ca2ee1e7b5ad085a73aceb8f5d8841
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: bfe4abe4a83a6b22d05942f91f4152d5c0e62be9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191386"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124075"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Kurz: Protokolování síťového provozu do a z virtuálního počítače pomocí webu Azure portal
 
@@ -211,7 +211,7 @@ Hodnota **mac** v předchozím výstupu je adresa MAC síťového rozhraní, kte
 | 30 | Pakety odeslané - zdrojového do cílového umístění **pouze verze 2** | Celkový počet TCP nebo UDP odeslaných paketů za sekundu ze zdroje do cíle od poslední aktualizace. |
 | 16978 | Počet odeslaných bajtů - zdrojového do cílového umístění **pouze verze 2** | Celkový počet TCP nebo UDP paketů bajtů odeslaných ze zdroje do cíle od poslední aktualizace. Bajtů na paket zahrnout hlavičky paketů a datové části. | 
 | 24 | Pakety odeslané – cílový zdroj **pouze verze 2** | Celkový počet TCP nebo UDP pakety odeslané z cílového zdroje od poslední aktualizace. |
-| 14008| Počet odeslaných bajtů – cílový zdroj **pouze verze 2** | Celkový počet TCP a UDP paketů bajtů odeslaných z cílového zdroje od poslední aktualizace. Bajtů na paket zahrnout hlavičky paketů a datové části.| |
+| 14008| Počet odeslaných bajtů – cílový zdroj **pouze verze 2** | Celkový počet TCP a UDP paketů bajtů odeslaných z cílového zdroje od poslední aktualizace. Bajtů na paket zahrnout hlavičky paketů a datové části.|
 
 ## <a name="next-steps"></a>Další postup
 

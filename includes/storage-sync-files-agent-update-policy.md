@@ -4,18 +4,18 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: tamram
-ms.openlocfilehash: b099f5ff7e43f2deeb3b8c41adcb802cd431a65a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: fa0edaaa3ee785f89faceb51419d360752bb9825
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635999"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58051862"
 ---
 Aktualizace agenta Azure File Sync pravidelně přidávat nové funkce a řešit problémy. Doporučujeme, abyste že konfiguraci získat aktualizace pro agenta Azure File Sync, jako jsou k dispozici služby Microsoft Update.
 
 #### <a name="major-vs-minor-agent-versions"></a>Hlavní vs. verze menší agentů
-* Verze agentů hlavní často obsahují nové funkce a mají rostoucí počet jako první součást čísla verze. Příklad: *2.\*.\**
-* Verze menší agentů se také označují jako "opravy" a vydávají častěji než hlavní verze. Často obsahují opravy chyb a vylepšení menší, ale žádné nové funkce. Příklad:  *\*.3.\**
+* Verze agentů hlavní často obsahují nové funkce a mají rostoucí počet jako první součást čísla verze. Příklad: \*2.\*.\*\*
+* Verze menší agentů se také označují jako "opravy" a vydávají častěji než hlavní verze. Často obsahují opravy chyb a vylepšení menší, ale žádné nové funkce. Příklad: \* \*.3.\*\*
 
 #### <a name="upgrade-paths"></a>Možnosti upgradu
 Existují čtyři schválení a testovat způsobů, jak nainstalovat aktualizace agenta Azure File Sync. 

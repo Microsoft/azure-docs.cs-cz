@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 914dcd02f2d35d56b50169967ca1f5c251a6e6f3
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 420c81f6206c777efc303924d81763f5984aba4c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408611"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993393"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – nejčastější dotazy
 Tento článek obsahuje odpovědi na běžné dotazy týkající se služby Azure Backup.
@@ -93,7 +93,7 @@ Ano.
 ### <a name="what-operating-systems-are-supported-for-backup"></a>Jaké operační systémy jsou podporovány pro zálohování?
 Azure Backup podporuje tyto operační systémy pro zálohování souborů a složek a aplikace, které jsou chráněné službou Azure Backup serveru a aplikace DPM.
 
-**OS**| **SKU** |**Podrobnosti**
+**OS** | **SKU** | **Podrobnosti**
 --- | --- | ---
 Pracovní stanice | |
 Windows 10 64-bit | Enterprise, Pro, Home | Počítače by měly běžet nejnovější aktualizace Service Pack a aktualizace.
@@ -118,7 +118,7 @@ Zálohování virtuálních počítačů Azure s Linuxem, Azure Backup podporuje
 Omezení velikosti jsou následující:
 
 / Počítači s operačním systémem | Maximální velikost zdroje dat
---- | --- | ---
+--- | --- 
 Windows 8 nebo novější | 54 400 GB
 Windows 7 |1700 GB
 Windows Server 2012 nebo novější | 54 400 GB

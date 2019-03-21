@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 1133bdb3c5d708710a556f68e4ac5c57d2dc3dc9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a6ec4c7d239754fe3211b528dd0ac64ee150ad3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153242"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089365"
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: Shromažďování protokolů
 
@@ -44,31 +44,31 @@ Azure AD B2C podporuje funkce pro odesílání dat do služby Application Insigh
 1. Otevřete soubor RP (například SignUpOrSignin.xml).
 1. Přidání následujících atributů pro `<TrustFrameworkPolicy>` element:
 
-  ```XML
-  DeploymentMode="Development"
-  UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
-  ```
+   ```XML
+   DeploymentMode="Development"
+   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
+   ```
 
 1. Pokud již neexistuje, přidejte podřízený uzel `<UserJourneyBehaviors>` k `<RelyingParty>` uzlu. Musí být umístěné bezprostředně po `<DefaultUserJourney ReferenceId="UserJourney Id from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`
 2. Přidejte následující uzel jako podřízený objekt `<UserJourneyBehaviors>` elementu. Nezapomeňte nahradit `{Your Application Insights Key}` s **Instrumentační klíč** , který jste získali z Application Insights v předchozí části.
 
-  ```XML
-  <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
-  ```
+   ```XML
+   <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+   ```
 
-  * `DeveloperMode="true"` říká ApplicationInsights ohledně urychlení jejich zpracování telemetrická data prostřednictvím kanálu zpracování kvalitní pro vývoj, ale omezené na velké objemy.
-  * `ClientEnabled="true"` odešle skript na straně klienta ApplicationInsights pro sledování chyb zobrazení a na straně klienta stránky (nejsou potřeba).
-  * `ServerEnabled="true"` odešle existující UserJourneyRecorder JSON jako vlastní událost do Application Insights.
-Ukázka:
+   * `DeveloperMode="true"` říká ApplicationInsights ohledně urychlení jejich zpracování telemetrická data prostřednictvím kanálu zpracování kvalitní pro vývoj, ale omezené na velké objemy.
+   * `ClientEnabled="true"` odešle skript na straně klienta ApplicationInsights pro sledování chyb zobrazení a na straně klienta stránky (nejsou potřeba).
+   * `ServerEnabled="true"` odešle existující UserJourneyRecorder JSON jako vlastní událost do Application Insights.
+   Ukázka:
 
-  ```XML
-  <TrustFrameworkPolicy
+   ```XML
+   <TrustFrameworkPolicy
     ...
     TenantId="fabrikamb2c.onmicrosoft.com"
     PolicyId="SignUpOrSignInWithAAD"
     DeploymentMode="Development"
     UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
-  >
+   >
     ...
     <RelyingParty>
       <DefaultUserJourney ReferenceId="UserJourney ID from your extensions policy, or equivalent (for example: SignUpOrSigninWithAzureAD)" />
@@ -76,8 +76,8 @@ Ukázka:
         <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
       </UserJourneyBehaviors>
       ...
-  </TrustFrameworkPolicy>
-  ```
+   </TrustFrameworkPolicy>
+   ```
 
 3. Nahrajte zásady.
 

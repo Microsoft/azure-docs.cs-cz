@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d418715ab651721d03b67bd411eb90607391bf10
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 2a1785b9c749a8c413987974446190aafc08ed3a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237123"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105586"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Přehled služby Event Hubs Dedicated
 
@@ -29,7 +29,7 @@ ms.locfileid: "56237123"
 Následující tabulka porovnává dostupné úrovně služby Event Hubs. Nabídka Event hubs úrovně Dedicated je pevnou měsíční cenu ve srovnání s využití ceny pro většinu funkcí úrovně Standard. Vyhrazené úroveň nabízí všechny funkce plánu Standard, ale s enterprise škálování kapacity pro zákazníky s náročné úlohy. 
 
 | Funkce | Standard | Vyhrazený |
-| --- |:---:|:---:|:---:|
+| --- |:---:|:---:|
 | Události příchozího přenosu dat | Platba za milion událostí | Zahrnuje |
 | Jednotka propustnosti (1 MB/s příchozí, 2 MB/s odchozí) | Platba za hodinu | Zahrnuje |
 | Velikost zprávy | 1 MB | 1 MB |

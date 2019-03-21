@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 12056ebec0f0a23ed255532a8ba27b130ecb81d1
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: b2ab07e40ac2652d97e912f8c7bd3b8893bfc114
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750442"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094156"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Trigger služby Event Grid pro službu Azure Functions
 
@@ -321,7 +321,7 @@ Kompletní příklad naleznete v tématu C# příklad.
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru. Neexistují žádné parametry konstruktoru nebo vlastnosti nastavení `EventGridTrigger` atribut.
 
 |Vlastnost Function.JSON |Popis|
-|---------|---------|----------------------|
+|---------|---------|
 | **type** | Povinné – musí být nastavena na `eventGridTrigger`. |
 | **direction** | Povinné – musí být nastavena na `in`. |
 | **Jméno** | Požadovaná: název této proměnné v kódu funkce pro parametr, který přijímá data události. |
@@ -484,10 +484,10 @@ Alternativně můžete odeslat HTTP PUT se zadat hodnotu klíče sami.
 
 K otestování Event Grid trigger místně, musíte získat požadavků Event Grid HTTP doručovaný původ v cloudu do místního počítače. Jednou z možností, které se zachytáváním požadavky online a ručně opakovaným odesláním ji opravte je na místním počítači:
 
-2. [Vytvoření webové aplikace v prohlížeči](#create-a-viewer-web-app) , který zachycuje zprávy o událostech.
-3. [Vytvořit odběr Event gridu](#create-an-event-grid-subscription) , která zasílá události do aplikací prohlížeče.
-4. [Vytvořit žádost o](#generate-a-request) a zkopírujte text požadavku z aplikace prohlížeče.
-5. [Ručně odeslat požadavek](#manually-post-the-request) odeslané na adresu místního hostitele služby Event Grid aktivovat funkci.
+1. [Vytvoření webové aplikace v prohlížeči](#create-a-viewer-web-app) , který zachycuje zprávy o událostech.
+1. [Vytvořit odběr Event gridu](#create-an-event-grid-subscription) , která zasílá události do aplikací prohlížeče.
+1. [Vytvořit žádost o](#generate-a-request) a zkopírujte text požadavku z aplikace prohlížeče.
+1. [Ručně odeslat požadavek](#manually-post-the-request) odeslané na adresu místního hostitele služby Event Grid aktivovat funkci.
 
 Po dokončení testování, můžete použít stejné předplatné pro produkční prostředí aktualizuje se koncový bod. Použití [az eventgrid odběr události update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) rozhraní příkazového řádku Azure.
 
@@ -557,10 +557,10 @@ Funkce triggeru služby Event Grid spustí a zobrazí protokoly podobné násled
 
 Jiný způsob, jak otestovat místně aktivační událost služby Event Grid je k automatizaci připojení HTTP mezi Internetem a vývojového počítače. Můžete to udělat open source nástroj s názvem [ngrok](https://ngrok.com/):
 
-3. [Vytvoření koncového bodu ngrok](#create-an-ngrok-endpoint).
-4. [Spusťte funkci triggeru služby Event Grid](#run-the-event-grid-trigger-function).
-5. [Vytvořit odběr Event gridu](#create-a-subscription) , která zasílá události do koncového bodu ngrok.
-6. [Spustí událost](#trigger-an-event).
+1. [Vytvoření koncového bodu ngrok](#create-an-ngrok-endpoint).
+1. [Spusťte funkci triggeru služby Event Grid](#run-the-event-grid-trigger-function).
+1. [Vytvořit odběr Event gridu](#create-a-subscription) , která zasílá události do koncového bodu ngrok.
+1. [Spustí událost](#trigger-an-event).
 
 Po dokončení testování, můžete použít stejné předplatné pro produkční prostředí aktualizuje se koncový bod. Použití [az eventgrid odběr události update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) rozhraní příkazového řádku Azure.
 

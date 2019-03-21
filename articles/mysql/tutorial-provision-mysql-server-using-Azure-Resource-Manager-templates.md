@@ -8,12 +8,12 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: 8b443d0002b600860597710792054e9531b6cc41
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5d5398f4da7563c6f53c17d0305f54c4360f1c65
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532898"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076849"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Kurz: Zřízení serveru Azure Database for MySQL pomocí šablony Azure Resource Manageru
 
@@ -207,5 +207,5 @@ V tomto kurzu jste se naučili:
 > * Načtení ukázkových dat
 > * Dotazování dat
 > * Aktualizace dat
-
+> 
 > [Postup připojení aplikací k Azure Database for MySQL](./howto-connection-string.md)

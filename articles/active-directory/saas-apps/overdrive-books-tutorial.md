@@ -4,229 +4,202 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: e68cede7-1130-4813-bd55-22a9a6fc6bf5
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/28/2017
+ms.topic: tutorial
+ms.date: 03/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae73e55f4b6b49f9328bd2b22168eab9213f3821
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 210889b70b2aa563a3c02c47360ac98607c8ea61
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56161527"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188921"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>Kurz: Integrace Azure Active Directory s nových Výšin 
+# <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>Kurz: Integrace Azure Active Directory s nových Výšin
 
 V tomto kurzu se dozvíte, jak do nových Výšin integrovat s Azure Active Directory (Azure AD).
-
 Nových Výšin integraci se službou Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup do nových Výšin 
-- Můžete povolit uživatelům, aby automaticky získat přihlášeného do nových Výšin (Single Sign-On) s jejich účty Azure AD
-- Můžete spravovat své účty na jediném místě – na webu Azure portal
+* Můžete řídit ve službě Azure AD, který má přístup do nových Výšin.
+* Můžete povolit uživatelům, aby se automaticky přihlášeni do nových Výšin (Single Sign-On) s jejich účty Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s nových Výšin, potřebujete následující položky:
 
-- Předplatné Azure AD
-- Nových Výšin jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Nových výšin jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání nových Výšin z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+
+* Nových výšin podporuje **SP** jednotné přihlašování zahájené pomocí
+
+* Nových výšin podporuje **JIT** zřizování uživatelů
 
 ## <a name="adding-overdrive-from-the-gallery"></a>Přidání nových Výšin z Galerie
+
 Pokud chcete nakonfigurovat integraci nových Výšin do služby Azure AD, budete muset přidání nových Výšin z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Přidání nových Výšin z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![Aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-1. Do vyhledávacího pole zadejte **nových Výšin**.
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/overdrive-books-tutorial/tutorial_overdrivebooks_search.png)
+4. Do vyhledávacího pole zadejte **nových Výšin**vyberte **nových Výšin** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-1. Na panelu výsledků vyberte **nových Výšin**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+     ![Nových výšin v seznamu výsledků](common/search-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/overdrive-books-tutorial/tutorial_overdrivebooks_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí nových Výšin podle testovacího uživatele nazývá "Britta Simon".
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v nových Výšin je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské do nových Výšin musí být vytvořeno.
-
-V nových Výšin, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
+V této části, konfigurace a testování Azure AD jednotné přihlašování pomocí nových podle testovacího uživatele nazývá Výšin **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské do nových Výšin.
 
 Ke konfiguraci a testování Azure AD jednotné přihlašování pomocí nových Výšin, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytváří se testovací uživatelské jméno nových Výšin](#creating-an-overdrive-test-user)**  – Pokud chcete mít protějšek Britta Simon do nových Výšin, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace nových Výšin Single Sign-On](#configure-overdrive-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvoření nových Výšin testovacího uživatele](#create-overdrive-test-user)**  – Pokud chcete mít protějšek Britta Simon do nových Výšin, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci nových Výšin.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování pomocí nových Výšin, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování pomocí nových Výšin, proveďte následující kroky:
 
-1. Na webu Azure Portal na **nových Výšin** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **nových Výšin** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Konfigurace jednotného přihlašování][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Konfigurace jednotného přihlašování](./media/overdrive-books-tutorial/tutorial_overdrivebooks_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-1. Na **nových Výšin domény a adresy URL** části, proveďte následující kroky:
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Konfigurace jednotného přihlašování](./media/overdrive-books-tutorial/tutorial_overdrivebooks_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `http://<subdomain>.libraryreserve.com`
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    > [!NOTE] 
-    > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory nových Výšin klienta](https://help.overdrive.com/) má být získána hodnota. 
- 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/overdrive-books-tutorial/tutorial_overdrivebooks_certificate.png) 
+    ![Nových výšin domény a adresy URL jednotného přihlašování – informace](common/sp-signonurl.png)
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `http://<subdomain>.libraryreserve.com`
 
-    ![Konfigurace jednotného přihlašování](./media/overdrive-books-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory nových Výšin klienta](https://help.overdrive.com/) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-1. Ke konfiguraci jednotného přihlašování na **nových Výšin** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory nových Výšin](https://help.overdrive.com/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+6. Na **nastavení nových Výšin** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+
+    a. Přihlašovací adresa URL
+
+    b. Identifikátor Azure AD
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-overdrive-single-sign-on"></a>Konfigurace nových Výšin jednotného přihlašování
+
+Ke konfiguraci jednotného přihlašování na **nových Výšin** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory nových Výšin](https://help.overdrive.com/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvoření uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/overdrive-books-tutorial/create_aaduser_01.png) 
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
-    
-    ![Vytváří se testovací uživatele služby Azure AD](./media/overdrive-books-tutorial/create_aaduser_02.png) 
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/overdrive-books-tutorial/create_aaduser_03.png) 
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/overdrive-books-tutorial/create_aaduser_04.png) 
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    a. V **název** textové pole, typ **BrittaSimon**.
-
-    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
-
-    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="creating-an-overdrive-test-user"></a>Vytvoření nových Výšin testovacího uživatele
 
-Neexistuje žádná položka akce konfigurace zřizování uživatelů do nových Výšin.  
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-Přiřazený uživatel se pokusí přihlásit do nových Výšin, nových Výšin účet se automaticky vytvoří v případě potřeby.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že uděluje přístup do nových Výšin.
+
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **nových Výšin**.
+
+    ![Okno aplikace organizace](common/enterprise-applications.png)
+
+2. V seznamu aplikací vyberte **nových Výšin**.
+
+    ![Odkaz nových Výšin v seznamu aplikací](common/all-applications.png)
+
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+
+### <a name="create-overdrive-test-user"></a>Vytvoření nových Výšin testovacího uživatele
+
+V této části se vytvoří uživateli Britta Simon do nových Výšin. Nových výšin podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi nových Výšin, vytvoří se nový po ověření.
 
 >[!NOTE]
 >Můžete použít jakékoli jiné nových Výšin uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných nových Výšin uživatelským účtům, zřídit AAD.
 >
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že uděluje přístup do nových Výšin.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-![Přiřadit uživatele][200] 
+Po kliknutí na dlaždici nových Výšin na přístupovém panelu, vám by měl být automaticky přihlášeni do nových Výšin, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-**Pokud chcete přiřadit Britta Simon do nových Výšin, postupujte následovně:**
+## <a name="additional-resources"></a>Další prostředky
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-    ![Přiřadit uživatele][201] 
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-1. V seznamu aplikací vyberte **nových Výšin**.
-
-    ![Konfigurace jednotného přihlašování](./media/overdrive-books-tutorial/tutorial_overdrivebooks_app.png) 
-
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
-
-    ![Přiřadit uživatele][202] 
-
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
-
-    ![Přiřadit uživatele][203]
-
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
-
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
-
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
-
-Cílem této části je test vaší konfigurace Azure AD jednotné přihlašování pomocí přístupového panelu.
-
-Po kliknutí na dlaždici nových Výšin na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci nových Výšin.
-
-## <a name="additional-resources"></a>Další materiály
-
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-
-
-
-<!--Image references-->
-
-[1]: ./media/overdrive-books-tutorial/tutorial_general_01.png
-[2]: ./media/overdrive-books-tutorial/tutorial_general_02.png
-[3]: ./media/overdrive-books-tutorial/tutorial_general_03.png
-[4]: ./media/overdrive-books-tutorial/tutorial_general_04.png
-
-[100]: ./media/overdrive-books-tutorial/tutorial_general_100.png
-
-[200]: ./media/overdrive-books-tutorial/tutorial_general_200.png
-[201]: ./media/overdrive-books-tutorial/tutorial_general_201.png
-[202]: ./media/overdrive-books-tutorial/tutorial_general_202.png
-[203]: ./media/overdrive-books-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: f64000ed502ee817f907e6ac9c89c2f037725a39
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7132c2073223008cd82d0ffd54aaf266d0a630ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823786"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839013"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>Kurz 3: Nasadit model rizika kredit – Azure Machine Learning Studio
 
@@ -72,12 +72,11 @@ je třeba odstranit následující moduly:
 
 Vyberte každého modulu a stiskněte klávesu Delete nebo klikněte pravým tlačítkem na modul a vyberte **odstranit**. 
 
-![Odebrat SVM modelu](./media/tutorial-part3-credit-risk-deploy/publish3a.png)
-
+![Zvýrazní které moduly Chcete-li odstranit odebrat modelem Support Vector Machine](./media/tutorial-part3-credit-risk-deploy/publish3a.png)
 
 Náš model by teď měl vypadat přibližně takto:
 
-![Odebrat SVM modelu](./media/tutorial-part3-credit-risk-deploy/publish3.png)
+![Výsledný experiment při odstranění Support Vector Machine modelu](./media/tutorial-part3-credit-risk-deploy/publish3.png)
 
 Nyní jsme připraveni k nasazení pomocí modelu [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree].
 

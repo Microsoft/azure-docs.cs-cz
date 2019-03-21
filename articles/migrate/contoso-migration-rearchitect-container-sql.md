@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 243b19d19fbce11d77f60bc2eccc4d1c58c85b80
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: cb984bcbe79b69c0614579d66a3b853cd38a7e12
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892180"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099082"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Migrace Contoso: Úprava architektury místní aplikace do kontejneru Azure a Azure SQL Database
 
@@ -402,10 +402,10 @@ Správce společnosti Contoso se převést aplikaci do kontejneru pomocí sady V
 4. Opakujte proces pro SmartHotel.Registration.WCF aplikace.
 5. Teď, zkontrolujte, jak byl změněn řešení.
 
-    - Nová aplikace **SmartHotel.RegistrationApplication/**
-    - Obsahuje dvě služby: **SmartHotel.Registration.WCF** a **SmartHotel.Registration.Web**.
+   - Nová aplikace **SmartHotel.RegistrationApplication/**
+   - Obsahuje dvě služby: **SmartHotel.Registration.WCF** a **SmartHotel.Registration.Web**.
 
-    ![Kontejner](./media/contoso-migration-rearchitect-container-sql/container4.png)
+     ![Kontejner](./media/contoso-migration-rearchitect-container-sql/container4.png)
 
 6. Visual Studio vytvoří soubor Docker a dali dolů požadované Image místně do počítače pro vývojáře.
 
@@ -488,7 +488,7 @@ Správce společnosti Contoso teď nakonfigurovat služby Azure DevOps provést 
 
 16. Navíc si všimněte, že je povoleno trigger průběžného nasazování.
 
-   ![Průběžné nasazování povoleno](./media/contoso-migration-rearchitect-container-sql/pipeline14.png) 
+    ![Průběžné nasazování povoleno](./media/contoso-migration-rearchitect-container-sql/pipeline14.png) 
 
 17. Kliknutím na **Uložit** > **vytvořit vydanou verzi**.
 

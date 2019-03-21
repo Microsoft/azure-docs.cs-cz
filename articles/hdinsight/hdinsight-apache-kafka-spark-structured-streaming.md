@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4dcf482e02d38e18b7b86fc57565a47510627d44
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e470f9d6f33e8b534be22132881f4806bed85f5d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652860"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078359"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Kurz: Použití strukturovaného streamování Apache Sparku s využitím Apache Kafka v HDInsight
 
@@ -131,12 +131,12 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
     Tato šablona vytvoří následující prostředky:
 
-    * Cluster Kafka ve službě HDInsight 3.6.
-    * Cluster Spark 2.2.0 ve službě HDInsight 3.6.
-    * Virtuální síť Azure obsahující clustery HDInsight.
+   * Cluster Kafka ve službě HDInsight 3.6.
+   * Cluster Spark 2.2.0 ve službě HDInsight 3.6.
+   * Virtuální síť Azure obsahující clustery HDInsight.
 
-    > [!IMPORTANT]  
-    > Poznámkový blok strukturovaného streamování použitý v tomto kurzu vyžaduje Spark 2.2.0 ve službě HDInsight 3.6. Pokud používáte starší verzi Sparku ve službě HDInsight, při použití poznámkového bloku se zobrazí chyby.
+     > [!IMPORTANT]  
+     > Poznámkový blok strukturovaného streamování použitý v tomto kurzu vyžaduje Spark 2.2.0 ve službě HDInsight 3.6. Pokud používáte starší verzi Sparku ve službě HDInsight, při použití poznámkového bloku se zobrazí chyby.
 
 2. Pomocí následujících informací vyplňte položky v části **Přizpůsobená šablona**:
 

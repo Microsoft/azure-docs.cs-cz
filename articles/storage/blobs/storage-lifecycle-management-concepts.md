@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: c126516f6a792a4e778e4b0f75b6a31960139ba8
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 93c19bc39f64df21dfa9db2490ab2103aba8191d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570007"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086101"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Správa úložiště objektů Blob v Azure životního cyklu (Preview)
 
@@ -100,7 +100,7 @@ az storage account management-policy show --resource-group [resourceGroupName] -
 ```
 
 > [!NOTE]
-Pokud jsou povolená pravidla brány firewall pro váš účet úložiště může být zablokován požadavky správy životního cyklu. Tyto požadavky můžete odblokovat zadáním výjimky. Další informace najdete v části výjimky v [Konfigurace bran firewall a virtuální sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+> Pokud jsou povolená pravidla brány firewall pro váš účet úložiště může být zablokován požadavky správy životního cyklu. Tyto požadavky můžete odblokovat zadáním výjimky. Další informace najdete v části výjimky v [Konfigurace bran firewall a virtuální sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 ## <a name="policy"></a>Zásada
 
@@ -190,7 +190,7 @@ Ve verzi preview platné filtry zahrnují:
 | Název filtru | Typ filtru | Poznámky | Je požadováno |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Pole hodnot předdefinovaných výčtu. | Vydání verze preview podporuje pouze `blockBlob`. | Ano |
-| prefixMatch | Pole řetězců u předpony, jež mají být shodovat. Řetězec předpony musí začínat znakem název kontejneru. Například, pokud chcete najít všechny objekty BLOB v části "https://myaccount.blob.core.windows.net/container1/foo/..." pro pravidlo, je prefixMatch `container1/foo`. | Pokud nebudete definovat prefixMatch, pravidla se vztahují na všechny objekty BLOB v rámci účtu. | Ne |
+| prefixMatch | Pole řetězců u předpony, jež mají být shodovat. Řetězec předpony musí začínat znakem název kontejneru. Například, pokud chcete najít všechny objekty BLOB v části "<https://myaccount.blob.core.windows.net/container1/foo/>..." pro pravidlo, je prefixMatch `container1/foo`. | Pokud nebudete definovat prefixMatch, pravidla se vztahují na všechny objekty BLOB v rámci účtu. | Ne |
 
 ### <a name="rule-actions"></a>Akce pravidla
 
@@ -204,8 +204,8 @@ Ve verzi preview podporuje správu životního cyklu vrstvení a odstraňování
 | tierToArchive | Podpora objektů BLOB momentálně na horké nebo studené úrovni | Nepodporuje se |
 | delete        | Podporováno                                   | Podporováno     |
 
->[!NOTE] 
-Pokud definujete více než jednu akci na stejný objekt blob, správu životního cyklu použije nejlevnější akci do objektu blob. Například akce `delete` je levnější než akce `tierToArchive`. Akce `tierToArchive` je levnější než akce `tierToCool`.
+> [!NOTE]
+> Pokud definujete více než jednu akci na stejný objekt blob, správu životního cyklu použije nejlevnější akci do objektu blob. Například akce `delete` je levnější než akce `tierToArchive`. Akce `tierToArchive` je levnější než akce `tierToCool`.
 
 Ve verzi preview podmínky spuštění akce podle věku. Základní objekty BLOB pomocí čas poslední změny můžete sledovat stáří a objektů blob pomocí snímků čas vytvoření snímku ke sledování stáří.
 

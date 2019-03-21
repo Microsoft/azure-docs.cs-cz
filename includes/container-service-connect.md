@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 7dee92ffd183b852d48bcb150ba3c1ba8d5d0380
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 48deeec7a2c8767ab5dbb81b622e6d40483ed455
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569049"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093551"
 ---
 # <a name="make-a-remote-connection-to-a-kubernetes-dcos-or-docker-swarm-cluster"></a>Vzdálené připojení ke clusteru Kubernetes, DC/OS nebo Docker Swarm
 Po vytvoření clusteru Azure Container Service je nutné se ke clusteru připojit kvůli nasazení a správě úloh. Tento článek popisuje, jak se připojit k hlavnímu virtuálnímu počítači clusteru ze vzdáleného počítače. 
@@ -113,11 +113,11 @@ První věc, kterou je nutné udělat, když vytváříte tunel SSH v Linuxu neb
     ssh -fNL LOCAL_PORT:localhost:REMOTE_PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com
     ```
   
-  > [!NOTE]
-  > Port pro připojení SSH je 2200, nikoli standardní port 22. V clusteru s více hlavními virtuálními počítači je to port pro připojení k prvnímu hlavnímu virtuálnímu počítači.
-  > 
+   > [!NOTE]
+   > Port pro připojení SSH je 2200, nikoli standardní port 22. V clusteru s více hlavními virtuálními počítači je to port pro připojení k prvnímu hlavnímu virtuálnímu počítači.
+   > 
 
-  Příkaz nevrací žádný výstup.
+   Příkaz nevrací žádný výstup.
 
 Podívejte se na příklady pro DC/OS a Swarm v následujících částech.    
 
@@ -181,16 +181,16 @@ Tunely SSH je ve Windows možné vytvořit několika způsoby. Pokud používát
 
 5. Vyberte **SSH > Tunely** a nakonfigurujte následující přesměrované porty:
 
-    * **Zdrojový port:** Použijte 80 pro DC/OS nebo 2375 pro Swarm.
-    * **Cíl:** Použijte localhost:80 pro DC/OS nebo localhost:2375 pro Swarm.
+   * **Zdrojový Port:** Použijte 80 pro DC/OS nebo 2375 pro Swarm.
+   * **Cíl:** Použijte localhost: 80 pro DC/OS nebo localhost: 2375 pro Swarm.
 
-    Následující příklad je nakonfigurován pro DC/OS, ale pro Docker Swarm bude vypadat obdobně.
+     Následující příklad je nakonfigurován pro DC/OS, ale pro Docker Swarm bude vypadat obdobně.
 
-    > [!NOTE]
-    > Při vytváření tohoto tunelu se port 80 nesmí používat.
-    > 
+     > [!NOTE]
+     > Při vytváření tohoto tunelu se port 80 nesmí používat.
+     > 
 
-    ![Konfigurace PuTTY 3](./media/container-service-connect/putty3.png)
+     ![Konfigurace PuTTY 3](./media/container-service-connect/putty3.png)
 
 6. Po dokončení uložte konfiguraci připojení kliknutím na **Relace > Uložit**.
 

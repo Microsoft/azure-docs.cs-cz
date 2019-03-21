@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/02/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d43a8a316ff28d2cdb9e231057aea3de85d7d444
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f2739b5d2d944ea9a8b8cefdcc741abc8a2b632a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205575"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113397"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Přesunout aplikace ze služby AD FS do Azure AD 
 
@@ -99,7 +99,7 @@ Migrace začíná vyhodnocením konfigurace aplikace v místním prostředí a n
 |Element konfigurace aplikace|Popis|Umístění v konfiguraci AD FS|Odpovídající umístění v konfiguraci Azure AD|Element tokenu SAML|
 |-----|-----|-----|-----|-----|
 |Přihlašovací adresa URL aplikace|Adresa URL přihlašovací stránky této aplikace. Sem uživatel přejde za účelem přihlášení k aplikaci v rámci toku SAML iniciovaného zprostředkovatelem přihlašování.|neuvedeno|Ve službě Azure AD se přihlašovací adresa URL konfiguruje na webu Azure Portal ve vlastnostech **jednotného přihlašování** aplikace jako Přihlašovací adresa URL.</br></br>(Pro zobrazení přihlašovací adresy URL možná budete muset vybrat možnost **Zobrazit pokročilé nastavení URL**.)|neuvedeno|
-|Adresa URL odpovědi aplikace|Adresa URL aplikace z pohledu zprostředkovatele identity (IdP). Sem se odešle uživatel a token po přihlášení uživatele ke zprostředkovateli identity.</br></br> Tato adresa URL se někdy označuje jako Koncový bod příjemce kontrolního výrazu SAML.|Nachází se ve vztahu důvěryhodnosti přijímající strany AD FS aplikace. Klikněte pravým tlačítkem na přijímající stranu, vyberte **Vlastnosti** a pak vyberte kartu **Koncové body**.|Ve službě Azure AD se adresa URL odpovědi konfiguruje na webu Azure Portal ve vlastnostech **jednotného přihlašování** aplikace jako Adresa URL odpovědi.</br></br>(Pro zobrazení adresy URL odpovědi možná budete muset vybrat možnost **Zobrazit pokročilé nastavení URL**.)|Mapuje se na element **Destination** v tokenu SAML.</br></br> Příklad hodnoty: https://contoso.my.salesforce.com|
+|Adresa URL odpovědi aplikace|Adresa URL aplikace z pohledu zprostředkovatele identity (IdP). Sem se odešle uživatel a token po přihlášení uživatele ke zprostředkovateli identity.</br></br> Tato adresa URL se někdy označuje jako Koncový bod příjemce kontrolního výrazu SAML.|Nachází se ve vztahu důvěryhodnosti přijímající strany AD FS aplikace. Klikněte pravým tlačítkem na přijímající stranu, vyberte **Vlastnosti** a pak vyberte kartu **Koncové body**.|Ve službě Azure AD se adresa URL odpovědi konfiguruje na webu Azure Portal ve vlastnostech **jednotného přihlašování** aplikace jako Adresa URL odpovědi.</br></br>(Pro zobrazení adresy URL odpovědi možná budete muset vybrat možnost **Zobrazit pokročilé nastavení URL**.)|Mapuje se na element **Destination** v tokenu SAML.</br></br> Příklad hodnoty: `https://contoso.my.salesforce.com`|
 |Adresa URL pro odhlášení z aplikace|Adresa URL, na kterou se po odhlášení uživatele z aplikace odešlou požadavky na odhlášení a vyčištění, které zajistí odhlášení ze všech dalších aplikací, ke kterým zprostředkovatel identity uživatele přihlásil.|Nachází se ve správě služby AD FS v části **Vztahy důvěryhodnosti přijímající strany**. Klikněte pravým tlačítkem na přijímající stranu, vyberte **Vlastnosti** a pak vyberte kartu **Koncové body**.|Není k dispozici. Azure AD nepodporuje jednotné odhlašování, tedy odhlášení ze všech aplikací. Jednoduše odhlásí uživatele ze samotné služby Azure AD.|neuvedeno|
 |Identifikátor aplikace|Identifikátor aplikace z pohledu zprostředkovatele identity. Jako identifikátor se často používá přihlašovací adresa URL (ale ne vždy).</br></br> V některých případech se v aplikaci označuje jako ID entity.|Ve službě AD FS je to ID přijímající strany. Klikněte pravým tlačítkem na vztah důvěryhodnosti přijímající strany, vyberte **Vlastnosti** a pak vyberte kartu **Identifikátory**.|Ve službě Azure AD se identifikátor konfiguruje na webu Azure Portal ve vlastnostech **jednotného přihlašování** aplikace jako identifikátor v části **Domény a adresy URL**. (Možná budete muset zaškrtnout políčko **Zobrazit pokročilé nastavení URL**.)|Odpovídá elementu **Audience** v tokenu SAML.|
 |Federační metadata aplikace|Umístění federačních metadat aplikace. Zprostředkovatel identity je používá k automatické aktualizaci konkrétních nastavení konfigurace, jako jsou koncové body nebo šifrovací certifikáty.|Adresa URL federačních metadat aplikace se nachází ve vztahu důvěryhodnosti přijímající strany AD FS aplikace. Klikněte pravým tlačítkem na vztah důvěryhodnosti, vyberte **Vlastnosti** a pak vyberte kartu **Monitorování**.|Není k dispozici. Azure AD nepodporuje přímé používání federačních metadat aplikace.|neuvedeno|

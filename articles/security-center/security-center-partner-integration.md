@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/3/2019
 ms.author: rkarlin
-ms.openlocfilehash: 52b347aef240f2338aedff2c2a1a3cd53743dc27
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 5a25ba889ebde750937f88e447123263a82d5627
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114259"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896819"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
 Tento dokument vám pomůže se správou řešení zabezpečení již propojených s Azure Security Center a s přidáním nových řešení.
@@ -34,7 +34,7 @@ Security Center umožňuje snadné povolení integrovaných řešení zabezpeče
 Mezi integrovaná řešení zabezpečení v současné době patří:
 
 - Firewall webových aplikací ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall), [F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html), [Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF), [Fortinet](https://www.fortinet.com/products.html) a [Azure Application Gateway](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/))
-- Firewall nové generace ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/), [Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/), [Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2), [Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html) a [Palo Alto Networks](https://www.paloaltonetworks.com/products))
+- Firewall nové generace ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/), [Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/), [Fortinet](https://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2), [Cisco](https://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html) a [Palo Alto Networks](https://www.paloaltonetworks.com/products))
 - Posouzení ohrožení zabezpečení ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) a [Rapid7](https://www.rapid7.com/products/insightvm/))
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Mezi integrovaná řešení zabezpečení v současné době patří:
 
 3. V nabídce služby Security Center vyberte **Řešení zabezpečení**.
 
-  ![Přehled služby Security Center](./media/security-center-partner-integration/overview.png)
+   ![Přehled služby Security Center](./media/security-center-partner-integration/overview.png)
 
 V části **Řešení zabezpečení** můžete zobrazit informace o stavu integrovaných řešení zabezpečení Azure a provádět základní úlohy správy. Můžete také připojit další typy zdrojů dat zabezpečení, jako jsou upozornění služby Azure Active Directory Identity Protection a protokoly brány firewall ve formátu CEF (Common Event Format).
 
@@ -82,12 +82,12 @@ Stav partnerského řešení může být:
 >
 >
 
-2. Vyberte **zobrazení** pro další informace a možnosti, které obsahuje:
+1. Vyberte **zobrazení** pro další informace a možnosti, které obsahuje:
 
-  - **Konzola řešení**. Otevře prostředí pro správu pro toto řešení.
-  - **Propojení virtuálních počítačů**. Otevřete okno propojit aplikace. Tady můžete ke svému partnerskému řešení připojit prostředky.
-  - **Odstranit řešení**.
-  - **Konfigurace**.
+   - **Konzola řešení**. Otevře prostředí pro správu pro toto řešení.
+   - **Propojení virtuálních počítačů**. Otevřete okno propojit aplikace. Tady můžete ke svému partnerskému řešení připojit prostředky.
+   - **Odstranit řešení**.
+   - **Konfigurace**.
 
    ![Podrobné zobrazení partnerského řešení](./media/security-center-partner-solutions/partner-solutions-detail.png)
 

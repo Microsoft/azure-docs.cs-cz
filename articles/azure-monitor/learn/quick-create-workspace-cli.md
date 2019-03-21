@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 76ddbe34650e72b12344f78bc74280f114e5d26c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 4be33b809ee2e620a565c9907a5b77833a279567
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592430"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848809"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Vytvoření pracovního prostoru Log Analytics pomocí Azure CLI 2.0
 
@@ -43,6 +43,8 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 Vytvoření pracovního prostoru s [vytvořit nasazení skupiny pro az](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). Následující příklad vytvoří pracovní prostor s názvem *TestWorkspace* ve skupině prostředků *Lab* v *eastus* pomocí šablony Resource Manageru z vašeho místního umístění počítač. Šablona JSON je nakonfigurován pouze s výzvou k zadání názvu pracovního prostoru a určí výchozí hodnotu pro parametry, které se pravděpodobně použije jako standardní konfigurace ve vašem prostředí. Nebo můžete šablonu uložte v účtu úložiště Azure pro zajištění sdíleného přístupu ve vaší organizaci. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+
+Informace o oblasti, které podporuje, najdete v části [Log Analytics je dostupná v oblastech](https://azure.microsoft.com/regions/services/) a vyhledejte Azure monitoru a z **hledání produktu** pole. 
 
 Následující parametry nastavení výchozí hodnoty:
 
@@ -111,7 +113,7 @@ Následující parametry nastavení výchozí hodnoty:
     }
     ```
 
-2. Upravte šablonu podle svých požadavků.  Kontrola [Microsoft.OperationalInsights/workspaces šablony](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) referenční dokumentace se dozvíte, jaké vlastnosti a hodnoty jsou podporovány. 
+2. Upravte šablonu podle svých požadavků. Kontrola [Microsoft.OperationalInsights/workspaces šablony](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) referenční dokumentace se dozvíte, jaké vlastnosti a hodnoty jsou podporovány. 
 3. Uložte soubor jako **deploylaworkspacetemplate.json** do místní složky.   
 4. Jste připraveni k nasazení této šablony. Ze složky obsahující šablonu použijte následující příkazy:
 

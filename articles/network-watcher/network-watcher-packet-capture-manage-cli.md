@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 6288a976547cc405c804eaeca9b83e9dccc72240
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: cf03872607546f38d19a280f65f641abf627268b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092211"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857721"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Správa zachytávání paketů pomocí služby Azure Network Watcher pomocí Azure CLI
 
@@ -226,7 +226,7 @@ az network watcher packet-capture delete --name packetCaptureName --location wes
 
 ## <a name="download-a-packet-capture"></a>Stáhněte si zachytávání paketů
 
-Po dokončení relace zachycení paketů zachytávací soubor je možné uložit do úložiště objektů blob nebo do místního souboru na virtuálním počítači. Umístění úložiště pro zachytávání paketů je definován při vytvoření relace. Praktický nástroj pro přístup k těmto zachycení soubory uložené na účet úložiště je Microsoft Azure Storage Explorer, které je možné stáhnout tady:  http://storageexplorer.com/
+Po dokončení relace zachycení paketů zachytávací soubor je možné uložit do úložiště objektů blob nebo do místního souboru na virtuálním počítači. Umístění úložiště pro zachytávání paketů je definován při vytvoření relace. Praktický nástroj pro přístup k těmto zachycení soubory uložené na účet úložiště je Microsoft Azure Storage Explorer, které je možné stáhnout tady:  https://storageexplorer.com/
 
 Pokud je určen účet úložiště, jsou uloženy soubory zachytávání paketů do účtu úložiště v následujícím umístění:
 

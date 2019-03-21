@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 04712b1ba1eccd71dcfcc9012ebcbdfcbdcd2404
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d8cea95fbfb76f1dd1891045309a35aa1d0a8ab0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773664"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099480"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Pomocí služby Azure API Management k interní virtuální síti
 S virtuálními sítěmi Azure Azure API Management můžete spravovat rozhraní API není přístupný na Internetu. Řadu technologií VPN jsou k dispozici při připojování. API Management se dá nasadit v dva hlavní režimy uvnitř virtuální sítě:
@@ -108,11 +108,11 @@ Pokud používáte vlastní server DNS ve virtuální síti, můžete také vytv
 
 ### <a name="access-on-custom-domain-names"></a>Přístup k vlastním názvům domén
 
-   1. Pokud nechcete, aby pro přístup ke službě API Management s výchozími názvy hostitelů, můžete nastavit vlastní názvy domén pro všechny vaše koncové body služby jak je znázorněno na následujícím obrázku:
+1. Pokud nechcete, aby pro přístup ke službě API Management s výchozími názvy hostitelů, můžete nastavit vlastní názvy domén pro všechny vaše koncové body služby jak je znázorněno na následujícím obrázku:
 
    ![Nastavení vlastní domény pro službu API Management][api-management-custom-domain-name]
 
-   2. Potom můžete vytvořit záznamy v serveru DNS pro přístup ke koncovým bodům, které jsou přístupné z v rámci vaší virtuální sítě.
+2. Potom můžete vytvořit záznamy v serveru DNS pro přístup ke koncovým bodům, které jsou přístupné z v rámci vaší virtuální sítě.
 
 ## <a name="routing"> </a> Směrování
 + Skupinu s vyrovnáváním zatížení privátní virtuální IP adresu z rozsahu podsítě se měla vyhradit a používat pro přístup ke koncovým bodům služby API Management z virtuální sítě.

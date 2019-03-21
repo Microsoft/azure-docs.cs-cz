@@ -1,6 +1,6 @@
 ---
-title: Aktualizace existujícího přiřazení
-description: Další informace o mechanismus pro aktualizace existujícího přiřazení v Azure podrobné plány.
+title: Aktualizace existujícího přiřazení z portálu
+description: Další informace o mechanismus pro aktualizace existujícího přiřazení z portálu v Azure podrobné plány.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: edfc14e837c92cac5bab589e33069bb771a53cb7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 572a962e98332fc70c276346f497ed2e67e3c329
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818251"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999845"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak aktualizovat existující přiřazení podrobného plánu
 
@@ -72,5 +72,5 @@ Neexistuje žádné omezení na počet opakování, což je přiřazení je mož
 - Další informace o [životním cyklu podrobného plánu](../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](../concepts/sequencing-order.md)
-- Zjistěte, jak používat [zamykání prostředků podrobného plánu](../concepts/resource-locking.md)
+- Použití [zamykání prostředků podrobného plánu](../concepts/resource-locking.md)
 - Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)

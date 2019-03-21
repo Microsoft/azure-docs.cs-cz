@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 046d00eec9fd5a406a1e8bf78e48d4dd913b83fd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0785d0805027dd0bd621203ade7287e5a1840a9a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437564"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57870142"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Průvodce Azure AI pro řešení prediktivní údržby
 
@@ -401,13 +401,13 @@ Procesu výše je uvedeno v mnoho způsobech akademické a oborové dokumentace.
 
 Jak bylo uvedeno dříve, se liší od jeho partnerské uzly operacionalizace modelu pro PdM. Scénáře zahrnující detekce anomálií a detekce chyb obvykle implementují _online vyhodnocování_ (také nazývané _vyhodnocování v reálném čase_). Tady, model _skóre_ záznamech příchozí a vrací předpověď. Pro detekci anomálií do predikce. slouží jako ukazatel toho, že došlo k anomálií (Příklad: One-Class SVM). Pro zjištění selhání bude tento typ nebo třída selhání.
 
-Naproti tomu PdM zahrnuje _dávkové bodování_. Tak, aby odpovídal na podpis, modelu, musí být analyzovány funkce v nových datech stejným způsobem jako trénovací data. Pro velké datové sady, která je typická pro nová data funkce se agregují přes časová okna a zohlednit ve službě batch. Dávkové vyhodnocování se obvykle provádí v distribuovaných systémech, jako je [Spark](http://spark.apache.org/) nebo [Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics). Máte několik možností – obě neoptimální:
+Naproti tomu PdM zahrnuje _dávkové bodování_. Tak, aby odpovídal na podpis, modelu, musí být analyzovány funkce v nových datech stejným způsobem jako trénovací data. Pro velké datové sady, která je typická pro nová data funkce se agregují přes časová okna a zohlednit ve službě batch. Dávkové vyhodnocování se obvykle provádí v distribuovaných systémech, jako je [Spark](https://spark.apache.org/) nebo [Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics). Máte několik možností – obě neoptimální:
 - Streamování datových modulů podporuje agregaci přes okna v paměti. Proto může být uvedl, že podporují online vyhodnocování. Ale tyto systémy jsou vhodné pro kompaktní dat v úzkém windows čas nebo sadu zhuštěných elementů přes širší windows. Jejich nemusí škálování i pro kompaktní data přes širší časová okna, jak je vidět ve scénářích PdM.
 - Pokud dávkové vyhodnocování není k dispozici, řešení je přizpůsobit, online vyhodnocování pro zpracování nových dat. malých dávkách najednou.
 
 ## <a name="solution-templates-for-predictive-maintenance"></a>Šablony řešení prediktivní údržby
 
-Poslední části této příručky obsahuje seznam šablon řešení PdM, kurzy a experimenty, které jsou implementované v Azure. Tyto aplikace PdM je možné nasadit do předplatného Azure během několika minut v některých případech. Se může sloužit jako testování konceptu ukázky, sandboxy můžete experimentovat s alternativami nebo akcelerátory pro skutečné produkční implementace. Tyto šablony jsou umístěny [galerii Azure AI](http://gallery.azure.ai) nebo [Azure na Githubu](https://github.com/Azure). Tyto různé ukázky budou vráceny do Tato šablona řešení v čase.
+Poslední části této příručky obsahuje seznam šablon řešení PdM, kurzy a experimenty, které jsou implementované v Azure. Tyto aplikace PdM je možné nasadit do předplatného Azure během několika minut v některých případech. Se může sloužit jako testování konceptu ukázky, sandboxy můžete experimentovat s alternativami nebo akcelerátory pro skutečné produkční implementace. Tyto šablony jsou umístěny [galerii Azure AI](https://gallery.azure.ai) nebo [Azure na Githubu](https://github.com/Azure). Tyto různé ukázky budou vráceny do Tato šablona řešení v čase.
 
 | # | Titul | Popis |
 |--:|:------|-------------|
@@ -431,9 +431,9 @@ Microsoft Azure nabízí postupy výuky pro základní principy PdM techniky, kr
 | [Vývojář AI v Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Public |
 | [Školní Microsoft AI](https://aischool.microsoft.com/learning-paths) | Public |
 | [Azure AI učení z Githubu](https://github.com/Azure/connectthedots/blob/master/readme.md) | Public |
-| [LinkedIn Learning](http://www.linkedin.com/learning) | Public |
+| [LinkedIn Learning](https://www.linkedin.com/learning) | Public |
 | [Webináře Microsoft AI YouTube](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Public |
-| [Zobrazit Microsoft AI](http://channel9.msdn.com/Shows/AI-Show) | Public |
+| [Zobrazit Microsoft AI](https://channel9.msdn.com/Shows/AI-Show) | Public |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | Partneři |
 | [Microsoft Partner Network](https://learningportal.microsoft.com) | Partneři |
 

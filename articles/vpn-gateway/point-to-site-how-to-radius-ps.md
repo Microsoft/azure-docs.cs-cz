@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: cherylmc
-ms.openlocfilehash: 739d6adb493da2ab0e844f1e219ec422ebeec8d5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1096c120b4e7731fabd574c4096e70fe02b6272d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768672"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081079"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím ověřování pomocí protokolu RADIUS: PowerShell
 
@@ -46,7 +46,7 @@ Připojení typu Point-to-Site vyžadují:
 ## <a name="aboutad"></a>Informace o ověřování v doméně služby Active Directory (AD) pro P2S VPN
 
 Doménové ověřování AD umožňuje uživatelům přihlášení do Azure pomocí svých firemních přihlašovacích údajů domény. Vyžaduje server RADIUS, která se integruje se serverem AD. Organizace také můžete využít své stávající nasazení pomocí protokolu RADIUS.
- 
+ 
 RADIUS server může být místní, nebo ve vaší virtuální síti Azure. Během ověřování VPN gateway funguje jako předávací a předávání zpráv ověřování vpřed a zpět mezi serverem RADIUS a připojení zařízení. Je důležité pro VPN gateway bude moct připojit k serveru RADIUS. Pokud je server protokolu RADIUS v místním, vyžaduje se připojení VPN Site-to-Site z Azure do místní lokality.
 
 Kromě služby Active Directory server protokolu RADIUS můžete integrovat také s jinými systémy pro externí identity. Otevře spoustu možnosti ověřování pro připojení Point-to-Site VPN, včetně možnosti MFA. Kontrola protokolu RADIUS serveru dokumentace od příslušného dodavatele zobrazíte seznam systémů identit, které se integruje se službou.
@@ -118,33 +118,33 @@ Následující postup vytvořte skupinu prostředků a virtuální sítě ve sku
 
 1. Vytvořte skupinu prostředků.
 
-  ```azurepowershell-interactive
-  New-AzResourceGroup -Name "TestRG" -Location "East US"
-  ```
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name "TestRG" -Location "East US"
+   ```
 2. Vytvořte konfigurace podsítí pro virtuální síť, podsítě pojmenujte *FrontEnd*, *BackEnd* a *GatewaySubnet*. Tyto předpony musí být součástí adresního prostoru virtuální sítě deklarovaného výše.
 
-  ```azurepowershell-interactive
-  $fesub = New-AzVirtualNetworkSubnetConfig -Name "FrontEnd" -AddressPrefix "192.168.1.0/24"  
-  $besub = New-AzVirtualNetworkSubnetConfig -Name "Backend" -AddressPrefix "10.254.1.0/24"  
-  $gwsub = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix "192.168.200.0/24"
-  ```
+   ```azurepowershell-interactive
+   $fesub = New-AzVirtualNetworkSubnetConfig -Name "FrontEnd" -AddressPrefix "192.168.1.0/24"  
+   $besub = New-AzVirtualNetworkSubnetConfig -Name "Backend" -AddressPrefix "10.254.1.0/24"  
+   $gwsub = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix "192.168.200.0/24"
+   ```
 3. Vytvořte virtuální síť.
 
-  V tomto příkladu je parametr serveru -DnsServer volitelný. Zadání hodnoty nevytvoří nový server DNS. Server DNS, jehož IP adresu zadáte, by měl být server DNS, který dokáže přeložit názvy pro prostředky, ke kterým se ze své virtuální sítě připojujete. V tomto příkladu jsme použili privátní IP adresu, ale je pravděpodobné, že to není IP adresa vašeho serveru DNS. Je potřeba, abyste použili svoje vlastní hodnoty. Hodnota, kterou zadáte, používá prostředky, které nasadíte do virtuální sítě, ne pomocí připojení P2S.
+   V tomto příkladu je parametr serveru -DnsServer volitelný. Zadání hodnoty nevytvoří nový server DNS. Server DNS, jehož IP adresu zadáte, by měl být server DNS, který dokáže přeložit názvy pro prostředky, ke kterým se ze své virtuální sítě připojujete. V tomto příkladu jsme použili privátní IP adresu, ale je pravděpodobné, že to není IP adresa vašeho serveru DNS. Je potřeba, abyste použili svoje vlastní hodnoty. Hodnota, kterou zadáte, používá prostředky, které nasadíte do virtuální sítě, ne pomocí připojení P2S.
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG" -Location "East US" -AddressPrefix "192.168.0.0/16","10.254.0.0/16" -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG" -Location "East US" -AddressPrefix "192.168.0.0/16","10.254.0.0/16" -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
+   ```
 4. Brána VPN musí mít veřejnou IP adresu. Nejprve si vyžádáte prostředek IP adresy a pak na něj budete odkazovat při vytváření brány virtuální sítě. IP adresa se dynamicky přiřadí k prostředku po vytvoření brány VPN. Služba VPN Gateway aktuálně podporuje pouze *dynamické* přidělení veřejné IP adresy. Nemůžete si vyžádat statické přiřazení IP adresy. To ale neznamená, že se IP adresa po přiřazení k vaší bráně VPN bude měnit. Veřejná IP adresa se změní pouze v případě odstranění a nového vytvoření brány. V případě změny velikosti, resetování nebo jiné operace údržby/upgradu vaší brány VPN se nezmění.
 
-  Zadejte proměnné pro žádost o dynamicky přidělovanou veřejnou IP adresu.
+   Zadejte proměnné pro žádost o dynamicky přidělovanou veřejnou IP adresu.
 
-  ```azurepowershell-interactive
-  $vnet = Get-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG"  
-  $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet 
-  $pip = New-AzPublicIpAddress -Name "VNet1GWPIP" -ResourceGroupName "TestRG" -Location "East US" -AllocationMethod Dynamic 
-  $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
-  ```
+   ```azurepowershell-interactive
+   $vnet = Get-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG"  
+   $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet 
+   $pip = New-AzPublicIpAddress -Name "VNet1GWPIP" -ResourceGroupName "TestRG" -Location "East US" -AllocationMethod Dynamic 
+   $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
+   ```
 
 ## 2. <a name="radius"></a>Nastavení serveru protokolu RADIUS
 
@@ -170,25 +170,25 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 ```
 
 ## 4. <a name="addradius"></a>Přidání fondu adres serveru a klienta protokolu RADIUS
- 
+ 
 * RadiusServer – je možné zadat pomocí názvu nebo podle IP adresy. Pokud zadáte název a server se nachází v místním, nemusí být schopni vyřešit název brány sítě VPN. Pokud je to tento případ, je lepší zadejte IP adresu serveru. 
 * -RadiusSecret by měl odpovídat, co je nakonfigurováno na serveru RADIUS.
 * -VpnClientAddressPool je oblast, ze kterého dostanou připojovaní klienti VPN IP adresu. Použijte rozsah privátních IP adres, který se nepřekrývá s místním umístěním, ze kterého se budete připojovat, nebo s virtuální sítí, ke které se chcete připojit. Ujistěte se, že máte fond dostatečně velký adres, nakonfigurována.  
 
 1. Vytvořte zabezpečený řetězec poloměru tajného kódu.
 
-  ```azurepowershell-interactive
-  $Secure_Secret=Read-Host -AsSecureString -Prompt "RadiusSecret"
-  ```
+   ```azurepowershell-interactive
+   $Secure_Secret=Read-Host -AsSecureString -Prompt "RadiusSecret"
+   ```
 
 2. Zobrazí se výzva k zadání tajný klíč RADIUS. Znaky, které zadáte, se nezobrazí a místo toho bude nahrazen "*" znak.
 
-  ```azurepowershell-interactive
-  RadiusSecret:***
-  ```
+   ```azurepowershell-interactive
+   RadiusSecret:***
+   ```
 3. Přidejte fond adres klienta VPN a informace o serveru RADIUS.
 
-  Pro SSTP konfigurace:
+   Pro SSTP konfigurace:
 
     ```azurepowershell-interactive
     $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
@@ -197,7 +197,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-  Pro IKEv2 konfigurace:
+   Pro IKEv2 konfigurace:
 
     ```azurepowershell-interactive
     $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
@@ -206,7 +206,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-  Pro SSTP a IKEv2
+   Pro SSTP a IKEv2
 
     ```azurepowershell-interactive
     $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
@@ -225,10 +225,10 @@ Konfigurace klienta VPN umožňuje připojení k virtuální síti přes připoj
 
 1. Chcete-li se připojit ke své síti VNet, přejděte na klientském počítači na připojení VPN a vyhledejte připojení VPN, které jste vytvořili. Bude mít stejný název jako vaše virtuální síť. Zadejte svoje přihlašovací údaje domény a klikněte na tlačítko "Připojit". Zobrazí se místní zpráva požadující zvýšenými oprávněními. Přijmout a zadejte přihlašovací údaje.
 
-  ![Připojení klienta VPN k Azure](./media/point-to-site-how-to-radius-ps/client.png)
+   ![Připojení klienta VPN k Azure](./media/point-to-site-how-to-radius-ps/client.png)
 2. Vaše připojení bylo vytvořeno.
 
-  ![Vytvořené připojení](./media/point-to-site-how-to-radius-ps/connected.png)
+   ![Vytvořené připojení](./media/point-to-site-how-to-radius-ps/connected.png)
 
 ### <a name="connect-from-a-mac-vpn-client"></a>Připojení z klienta VPN pro Mac
 
@@ -241,8 +241,8 @@ V dialogovém okně Síť vyhledejte klientský profil, který chcete použít, 
 1. Chcete-li ověřit, zda je připojení VPN aktivní, v příkazovém řádku se zvýšenými oprávněními spusťte příkaz *ipconfig/all*.
 2. Zkontrolujte výsledky. Všimněte si, že IP adresa, kterou jste obdrželi, je jedna z adres z fondu adres klienta VPN připojení Point-to-Site, který jste určili během konfigurace. Výsledky jsou podobné tomuto příkladu:
 
-  ```
-  PPP adapter VNet1:
+   ```
+   PPP adapter VNet1:
       Connection-specific DNS Suffix .:
       Description.....................: VNet1
       Physical Address................:
@@ -252,7 +252,7 @@ V dialogovém okně Síť vyhledejte klientský profil, který chcete použít, 
       Subnet Mask.....................: 255.255.255.255
       Default Gateway.................:
       NetBIOS over Tcpip..............: Enabled
-  ```
+   ```
 
 Řešení potíží s připojení P2S, naleznete v tématu [připojení point-to-site řešení potíží s Azure](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
 

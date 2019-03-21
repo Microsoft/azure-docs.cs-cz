@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: f0f45e50fba4587e604add937ed45fc78228d44f
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 82f9d7090d7283e0b00b36e0928fffb3395ca4c0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960237"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102631"
 ---
 # <a name="classroom-labs-concepts"></a>Koncepce testovacích prostředí v učebnách
 Následující seznam obsahuje klíčové koncepty služby testovacího prostředí a definice:
@@ -26,7 +26,7 @@ Následující seznam obsahuje klíčové koncepty služby testovacího prostře
 ## <a name="quota"></a>Kvóta
 Kvóta je časový limit (v hodinách), můžete nastavit učitel pro studenty použít testovací virtuální počítač. Můžete nastavit na hodnotu 0, neomezený, nebo určitý počet hodin. Kvóty je nastaven na hodnotu 0, student použít virtuální počítač pouze při spuštění plánu nebo když učitel se ručně změní na virtuálním počítači pro studenta.
  
-##<a name="schedules"></a>Plány
+## <a name="schedules"></a>Plány
 Plány jsou časové úseky (jednorázově nebo opakovaně), které učitel můžete vytvořit pro třídu. Všechny virtuální počítače v testovacím prostředí se automaticky spustí na začátku plánu a se zastaví na konci plán. Hodiny kvóty nejsou použity při spuštění plánu.
 
 ## <a name="template-virtual-machine"></a>Šablona virtuálního počítače

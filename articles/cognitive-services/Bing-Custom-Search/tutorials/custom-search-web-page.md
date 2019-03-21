@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 48486153c805f4fe7bd21d3f63346f56522220f9
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 6f44d4e6e5a0ee940394e09ceff8a425700d34e1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337630"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100723"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Kurz: Vytvoření webové stránky pro vlastní vyhledávání
 
@@ -49,11 +49,11 @@ Vytvoření instance vlastního vyhledávání Bingu:
   
 4. Po přihlášení klikněte na **Nové vlastní vyhledávání**. V okně **Vytvořit novou instanci vlastního vyhledávání** zadejte smysluplný název popisující typ obsahu, který vyhledávání vrací. Název můžete kdykoli změnit.  
   
-  ![Snímek obrazovky s oknem Vytvořit novou instanci vlastního vyhledávání](../media/newCustomSrch.png)  
+   ![Snímek obrazovky s oknem Vytvořit novou instanci vlastního vyhledávání](../media/newCustomSrch.png)  
   
 5. Klikněte na OK, zadejte adresu URL a určete, jestli se mají zahrnout i podstránky této adresy URL.  
   
-  ![Snímek obrazovky se stránkou pro definici adresy URL](../media/newCustomSrch1-a.png)  
+   ![Snímek obrazovky se stránkou pro definici adresy URL](../media/newCustomSrch1-a.png)  
 
 
 ## <a name="add-active-entries"></a>Přidání aktivních položek
@@ -97,28 +97,28 @@ Vlastní vyhledávání poskytuje hostované uživatelské rozhraní pro vykresl
   
 2. Vyberte rozložení.  
   
-  ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Výběr rozložení](./media/custom-search-hosted-ui-select-layout.png)  
+   ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Výběr rozložení](./media/custom-search-hosted-ui-select-layout.png)  
   
 3. Vyberte barevný motiv.  
   
-  ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a výběrem barevného motivu](./media/custom-search-hosted-ui-select-color-theme.png)  
+   ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a výběrem barevného motivu](./media/custom-search-hosted-ui-select-color-theme.png)  
 
-  Pokud potřebujete barevný motiv doladit, aby se lépe integroval s vaší webovou aplikací, klikněte na **Přizpůsobit motiv**. Ne všechny konfigurace barev je možné použít ve všech motivech rozložení. Pokud chcete změnit barvu, zadejte do odpovídajícího textového pole šestnáctkovou hodnotu RGB barvy (například #366eb8). Případně můžete kliknout na tlačítko barvy a pak kliknout na odstín, který vám vyhovuje. Při výběru barev mějte vždy na paměti přístupnost.
+   Pokud potřebujete barevný motiv doladit, aby se lépe integroval s vaší webovou aplikací, klikněte na **Přizpůsobit motiv**. Ne všechny konfigurace barev je možné použít ve všech motivech rozložení. Pokud chcete změnit barvu, zadejte do odpovídajícího textového pole šestnáctkovou hodnotu RGB barvy (například #366eb8). Případně můžete kliknout na tlačítko barvy a pak kliknout na odstín, který vám vyhovuje. Při výběru barev mějte vždy na paměti přístupnost.
   
-  ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a přizpůsobením barevného motivu](./media/custom-search-hosted-ui-customize-color-theme.png)  
+   ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a přizpůsobením barevného motivu](./media/custom-search-hosted-ui-customize-color-theme.png)  
 
   
 4. Zadejte další možnosti konfigurace.  
   
-  ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Další konfigurace](./media/custom-search-hosted-ui-additional-configurations.png)  
+   ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Další konfigurace](./media/custom-search-hosted-ui-additional-configurations.png)  
   
-  Pokud chcete zobrazit pokročilou konfiguraci, klikněte na **Zobrazit pokročilou konfiguraci**. Tím se přidají například konfigurace *Cíl odkazu* mezi možnosti Vyhledávání na webu, *Povolit filtry* mezi možnosti Vyhledávání obrázků a videí a *Zástupný text ve vyhledávacím poli* mezi možnosti Různé.
+   Pokud chcete zobrazit pokročilou konfiguraci, klikněte na **Zobrazit pokročilou konfiguraci**. Tím se přidají například konfigurace *Cíl odkazu* mezi možnosti Vyhledávání na webu, *Povolit filtry* mezi možnosti Vyhledávání obrázků a videí a *Zástupný text ve vyhledávacím poli* mezi možnosti Různé.
 
-  ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Pokročilá konfigurace](./media/custom-search-hosted-ui-advanced-configurations.png)  
+   ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Pokročilá konfigurace](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
 5. V rozevíracím seznamu vyberte klíče svého předplatného. Případně můžete klíč předplatného zadat ručně. Informace o získání klíčů najdete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api).  
   
-  ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Další konfigurace](./media/custom-search-hosted-ui-subscription-key.png)
+   ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Další konfigurace](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -140,66 +140,66 @@ Zbývající část tohoto kurzu ukazuje **možnost 1: Fragment kódu jazyka Jav
   
 3. V okně **Nový projekt** vyberte **Visual C# > Web > Webová aplikace ASP.NET Core**, zadejte název projektu a pak klikněte na **OK**.  
   
-  ![Snímek obrazovky s oknem Nový projekt](./media/custom-search-new-project.png)  
+   ![Snímek obrazovky s oknem Nový projekt](./media/custom-search-new-project.png)  
   
 4. V okně **Nová webová aplikace ASP.NET Core** vyberte **Webová aplikace** a klikněte na **OK**.  
   
-  ![Snímek obrazovky s oknem Nový projekt](./media/custom-search-new-webapp.png)  
+   ![Snímek obrazovky s oknem Nový projekt](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>Úprava souboru index.cshtml
 
 1. V **Průzkumníku řešení** rozbalte **Stránky** a dvojím kliknutím na soubor **index.cshtml** ho otevřete.  
   
-  ![Snímek obrazovky Průzkumníka řešení s rozbalenou položkou Stránky a vybraným souborem index.cshtml](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
+   ![Snímek obrazovky Průzkumníka řešení s rozbalenou položkou Stránky a vybraným souborem index.cshtml](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
   
 2. V souboru index.cshtml odstraňte vše od řádku 7 dál.  
   
-  ```razor
-  @page
-  @model IndexModel
-  @{
+   ```razor
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }    
-  ```  
+   }    
+   ```  
   
 3. Přidejte element zalomení řádku a element div, který bude fungovat jako kontejner.  
   
-  ```html
-  @page
-  @model IndexModel
-  @{
+   ```html
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }
-  <br />
-  <div id="customSearch"></div>
-  ```  
+   }
+   <br />
+   <div id="customSearch"></div>
+   ```  
   
 4. Na stránce **Hostované uživatelské rozhraní** se posuňte dolů do části **Používání uživatelského rozhraní**. Kliknutím na *Koncové body* přejděte k fragmentu kódu JavaScriptu. K fragmentu kódu můžete přejít také kliknutím na **Produkce** a pak na kartu **Hostované uživatelské rozhraní**.
   
-  <!-- Get new screenshot after prod gets new bits
-  ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
-  -->
+   <!-- Get new screenshot after prod gets new bits
+   ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
+   -->
   
 5. Vložte element script do kontejneru, který jste přidali.  
   
-  ``` html
-  @page
-  @model IndexModel
-  @{
+   ``` html
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }
-  <br />
-  <div id="customSearch">
+   }
+   <br />
+   <div id="customSearch">
       <script type="text/javascript" 
           id="bcs_js_snippet"
           src="https://ui.customsearch.ai /api/ux/rendering-js?customConfig=<YOUR-CUSTOM-CONFIG-ID>&market=en-US&safeSearch=Moderate&version=latest&q=">
       </script>
-  </div>
-  ```  
+   </div>
+   ```  
   
 6. V **Průzkumníku řešení** klikněte pravým tlačítkem na **wwwroot** a pak na **Zobrazit v prohlížeči**.  
   
-  ![Snímek obrazovky Průzkumníka řešení s výběrem možnosti Zobrazit v prohlížeči v místní nabídce wwwroot](./media/custom-search-webapp-view-in-browser.png)  
+   ![Snímek obrazovky Průzkumníka řešení s výběrem možnosti Zobrazit v prohlížeči v místní nabídce wwwroot](./media/custom-search-webapp-view-in-browser.png)  
 
 Vaše nová webová stránka pro vlastní vyhledávání by měla vypadat nějak takto:
 

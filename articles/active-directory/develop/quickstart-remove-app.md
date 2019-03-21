@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d71489194422a785ee98ec70a07c765c3d686808
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 20d7218b9b1d53b3cfb72a12ee34a77956327ce2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182608"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093190"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>Rychlý start: Odebrat aplikaci registrovanou pomocí Microsoft identity platform (Preview)
 
@@ -52,8 +52,8 @@ Aplikace, které jste zaregistrovali vy nebo vaše organizace, jsou reprezentova
 4. Na stránce **Přehled** vyberte **Odstranit**.
 5. Vybráním **Ano** potvrďte, že chcete aplikaci odstranit.
 
-  > [!NOTE]
-  > Abyste mohli odstranit aplikaci, musíte být uvedeni jako vlastník aplikace nebo mít oprávnění správce.
+   > [!NOTE]
+   > Abyste mohli odstranit aplikaci, musíte být uvedeni jako vlastník aplikace nebo mít oprávnění správce.
 
 ## <a name="remove-an-application-authored-by-another-organization"></a>Odebrání aplikace vytvořené jinou organizací
 

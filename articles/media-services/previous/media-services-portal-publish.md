@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 884f9025f4152c391b4b59384bc94b2136daa916
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
-ms.translationtype: MT
+ms.openlocfilehash: 1f7e108b4410ba62060dd4411e4b28b896e93d58
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240741"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834417"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Publikovat obsah na webu Azure Portal  
 > [!div class="op_single_selector"]
@@ -89,7 +89,7 @@ Vyberte video a pak vyberte tlačítko **Přehrát**.
 Musí být splněny určité předpoklady:
 
 * Zkontrolujte, že bylo video publikováno.
-* Přehrávač médií na webu Azure Portal přehrává z výchozího koncového bodu streamování. Pokud chcete přehrávat z jiného než výchozího koncového bodu streamování, vyberte a zkopírujte adresu URL a vložte ji do jiného přehrávače. Video můžete otestovat například v [Přehrávači médií Azure](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+* Přehrávač médií na webu Azure Portal přehrává z výchozího koncového bodu streamování. Pokud chcete přehrávat z jiného než výchozího koncového bodu streamování, vyberte a zkopírujte adresu URL a vložte ji do jiného přehrávače. Video můžete otestovat například v [Přehrávači médií Azure](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
 * Koncový bod streamování, ze kterého jsou datové proudy musí být spuštěna.  
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby

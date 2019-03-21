@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 13ec97a8356bb24fbbc2098f1249ae8fa5b6e3ce
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d667dadeb2e7c9d0005ab8d1a565017973038aaa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877079"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905150"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Příručka ke specifikačnímu jazyku neuronových sítí Net # pro Azure Machine Learning Studio
 
@@ -216,17 +216,16 @@ Existují dvě sady vlastností, které řídí odsazení, vlastnosti, které se
 + **UpperPad** a **LowerPad**: (volitelné) zadejte větší kontrolu nad velikost odsazení používat. **Důležité:** Tyto atributy mohou být definované Pokud a pouze tehdy, pokud **odsazení** výše uvedené vlastnosti je ***není*** definované. Hodnoty by měl být celočíselný řazené kolekce členů s, které jsou Arita sady. Když jsou zadané tyto atributy, "fiktivní" uzly se přidají do horní a dolní konce každé dimenze vstupní vrstvy. Počet uzlů, které jsou přidány do horní a dolní zakončení v každém rozměru je určeno **LowerPad**[i] a **UpperPad**[i] v uvedeném pořadí.
 
     Pokud chcete mít jistotu, že odpovídají jádrech pouze pro uzly "text real" a "fiktivní" uzlů, musí být splněny následující podmínky:
-      - Jednotlivé komponenty **LowerPad** musí být striktně menší než `KernelShape[d]/2`.
-      - Jednotlivé komponenty **UpperPad** nesmí být větší než `KernelShape[d]/2`.
-      - Výchozí hodnota z těchto atributů je řazená kolekce členů se všemi součástmi rovnat 0.
+  - Jednotlivé komponenty **LowerPad** musí být striktně menší než `KernelShape[d]/2`.
+  - Jednotlivé komponenty **UpperPad** nesmí být větší než `KernelShape[d]/2`.
+  - Výchozí hodnota z těchto atributů je řazená kolekce členů se všemi součástmi rovnat 0.
 
     Nastavení **odsazení** = true umožňuje tolik odsazení, jako je třeba zachovat "střed" běžícího uvnitř "real" vstupu. Tím se změní matematické trochu pro výpočty výstupní velikost. Obecně platí, velikost výstupní *D* je vypočítán jako `D = (I - K) / S + 1`, kde `I` vstupní velikost, `K` velikost jádra, `S` je stride, a `/` je dělení celého čísla (zaokrouhluje se směrem k nule. ). Pokud nastavíte UpperPad = [1, 1], vstupní velikost `I` je v podstatě 29 a proto `D = (29 - 5) / 2 + 1 = 13`. Ale když **odsazení** = true, v podstatě `I` získá sadu podle `K - 1`; proto `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`. Zadáním hodnoty pro **UpperPad** a **LowerPad** získáte mnohem lepší kontrolu nad odsazení než pokud stačí nastavit **odsazení** = true.
 
 Další informace o konvoluční sítě a jejich aplikací najdete v těchto článcích:
 
 + [http://deeplearning.net/tutorial/lenet.html](http://deeplearning.net/tutorial/lenet.html)
-+ [http://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
-+ [http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf](http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf)
++ [https://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
 
 ## <a name="pooling-bundles"></a>Sdružování sady
 
@@ -252,13 +251,13 @@ hidden P1 [5, 12, 12]
 
 Další informace o sdružování vrstvy najdete v těchto článcích:
 
-+ [http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (Části 3.4)
-+ [http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
-+ [http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
++ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (Části 3.4)
++ [https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
++ [https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 
 ## <a name="response-normalization-bundles"></a>Odpověď normalizace sady
 
-**Odpověď normalizace** je místní normalizace schéma, které bylo poprvé dostupné ve Geoffrey Hinton nedostupným v knize [ImageNet klasifikace s využitím Konvolučních Neuronových sítí hloubkové](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
+**Odpověď normalizace** je místní normalizace schéma, které bylo poprvé dostupné ve Geoffrey Hinton nedostupným v knize [ImageNet klasifikace s využitím Konvolučních Neuronových sítí hloubkové](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
 
 Normalizace odpovědi se používá na podporu Generalizace v neuronových sítí. Když jeden neuron se spouští na aktivaci velmi vysoké úrovni, potlačí vrstvu normalizace místní odpovědi úroveň aktivace okolního neurons. To se provádí pomocí tří parametrů (`α`, `β`, a `k`) a využitím konvolučních strukturu (nebo detekovaná sousední obrazec). Každý neuron v cílové vrstvy **y** odpovídá neuron **x** ve vrstvě zdroje. Úroveň aktivace **y** je dán na následující vzorec, kde `f` je úroveň aktivace neuron, a `Nx` je jádro (nebo sadu, která obsahuje neurons v okolí z **x**), jak jsou definovány následující konvoluční konstrukcí:
 
@@ -463,4 +462,4 @@ output Digit [10] from Hid3 all;
 
 ## <a name="acknowledgements"></a>Potvrzení
 
-Jazyka Net # pro přizpůsobení architektura neuronové sítě byla vyvinuta v Microsoftu Shon Katzenberger (architekt, strojové učení) a Alexey Kamenev (softwarový inženýr, Microsoft Research). Se používá interně pro strojové učení, projekty a aplikace, od rozpoznávání obrazu pro analýzu textu. Další informace najdete v tématu [Neuronových sítí v Azure Machine Learning studio – Úvod do jazyka Net #](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)
+Jazyka Net # pro přizpůsobení architektura neuronové sítě byla vyvinuta v Microsoftu Shon Katzenberger (architekt, strojové učení) a Alexey Kamenev (softwarový inženýr, Microsoft Research). Se používá interně pro strojové učení, projekty a aplikace, od rozpoznávání obrazu pro analýzu textu. Další informace najdete v tématu [Neuronových sítí v Azure Machine Learning studio – Úvod do jazyka Net #](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)

@@ -15,12 +15,12 @@ ms.date: 01/08/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: ac4366a2e90ea239c650e611b7c4e8dddf5d5106
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 81f06e0f5d5201b902504d8275f356f9a1731065
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649658"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098895"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Vytvoření a publikování položky Marketplace
 
@@ -69,19 +69,19 @@ ms.locfileid: "56649658"
 
 10. Nahraďte **Moje položky Marketplace** seznam kategorie, ve kterém by se měla zobrazit vaše položky Marketplace:
 
-   ```json
-   "categories":[
-   "My Marketplace Items"
-   ],
-   ```
+    ```json
+    "categories":[
+    "My Marketplace Items"
+    ],
+    ```
 
 11. Veškeré další úpravy do souboru Manifest.json najdete [odkaz: Manifest.json položky Marketplace](#reference-marketplace-item-manifestjson).
 
 12. Do složky balíčku do souboru .azpkg, otevřete příkazový řádek a spusťte následující příkaz:
 
-   ```shell
-   AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
-   ```
+    ```shell
+    AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
+    ```
 
     > [!NOTE]
     > Úplná cesta k výstupní balíčku musí existovat. Například pokud výstupní cesta je C:\MarketPlaceItem\yourpackage.azpkg, složka C:\MarketPlaceItem musí existovat.

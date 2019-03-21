@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 288c11c54fd86b53314e2d7f32c788ff64831641
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: f560b82e5efab21ea335e74c97efd15e7c6e3702
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753010"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850730"
 ---
 # <a name="create-and-locate-anchors-using-azure-spatial-anchors-in-objective-c"></a>Vytvoření a vyhledejte ukotvení pomocí Azure prostorových ukotvení v Objective-C
 
@@ -25,9 +25,11 @@ ms.locfileid: "56753010"
 > * [C + +/ NDK](create-locate-anchors-cpp-ndk.md)
 > * [C + +/ WinRT](create-locate-anchors-cpp-winrt.md)
 
-Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými zařízeními. Má se vyladěných pro práci s vývojové prostředí podle vašeho výběru. V tomto článku začneme budete zabývat jak to udělat v Objective-C.
+Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými zařízeními. Podporuje několik vývojových prostředích. V tomto článku začneme budete zabývat jak to udělat v Objective-C.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
+
+Další informace o [ASACloudSpatialAnchorSession](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession) třídy.
 
 ```objc
     ASACloudSpatialAnchorSession *_cloudSession;
@@ -36,6 +38,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 ```
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
+
+Další informace o [ASASessionConfiguration](https://docs.microsoft.com/objectivec/api/spatial-anchors/asasessionconfiguration) třídy.
 
 ```objc
     _cloudSession.configuration.accountKey = @"MyAccountKey";
@@ -48,6 +52,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 ```
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
+
+Další informace o [tokenRequired](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#tokenrequired) protokol metody.
 
 ```objc
     - (void)tokenRequired:(ASACloudSpatialAnchorSession *)cloudSession :(ASATokenRequiredEventArgs *)args {
@@ -95,6 +101,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-ios.md)]
 
+Další informace o [start](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#start) metody.
+
 ```objc0
     _cloudSession.session = self.sceneView.session;
     _cloudSession.delegate = self;
@@ -103,11 +111,15 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
+Další informace o [processFrame](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#processframe) metody.
+
 ```objc
     [_cloudSession processFrame:_sceneView.session.currentFrame];
 ```
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
+
+Další informace o [sessionUpdated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#sessionupdated) protokol metody.
 
 ```objc
     - (void)sessionUpdated:(ASACloudSpatialAnchorSession *)cloudSession :(ASASessionUpdatedEventArgs *)args {
@@ -121,6 +133,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 ```
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
+
+Další informace o [ASACloudSpatialAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor) třídy.
 
 ```objc
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
@@ -147,6 +161,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
+Další informace o [getSessionStatusWithCompletionHandler](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getsessionstatus) metody.
+
 ```objc
     [_cloudSession getSessionStatusWithCompletionHandler:^(ASASessionStatus *value, NSError *error) {
         if (error) {
@@ -160,6 +176,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
+Další informace o [objekt appProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#appproperties) vlastnost.
+
 ```objc
     ASACloudSpatialAnchor *cloudAnchor = [[ASACloudSpatialAnchor alloc] init];
     cloudAnchor.localAnchor = localAnchor;
@@ -171,6 +189,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
+Další informace o [updateAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#updateanchorproperties) metody.
+
 ```objc
     ASACloudSpatialAnchor *anchor = /* locate your anchor */;
     [anchor.appProperties setValue:@"just now" forKey:@"last-user-access"];
@@ -180,6 +200,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 ```
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
+
+Další informace o [getAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getanchorproperties) metody.
 
 ```objc
     [_cloudSession getAnchorProperties:@"anchorId" withCompletionHandler:^(SCCCloudSpatialAnchor *anchor, NSError *error) {
@@ -198,6 +220,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
+Další informace o [vypršení platnosti](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#expiration) vlastnost.
+
 ```objc
     int secondsInAWeek = 60 * 60 * 24 * 7;
     NSDate *oneWeekFromNow = [[NSDate alloc] initWithTimeIntervalSinceNow: (NSTimeInterval) secondsInAWeek];
@@ -206,6 +230,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
+Další informace o [createWatcher](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#createwatcher) metody.
+
 ```objc
     ASAAnchorLocateCriteria *criteria = [ASAAnchorLocateCriteria new];
     criteria.identifiers = @[ @"id1", @"id2", @"id3" ];
@@ -213,6 +239,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 ```
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
+
+Další informace o [anchorLocated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#anchorlocated) protokol metody.
 
 ```objc
     - (void)anchorLocated:(ASACloudSpatialAnchorSession *)cloudSession :(ASAAnchorLocatedEventArgs *)args {
@@ -240,6 +268,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
+Další informace o [deleteAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#deleteanchor) metody.
+
 ```objc
     [_cloudSession deleteAnchor:cloudAnchor withCompletionHandler:^(NSError *error) {
         // Perform any processing you may want when delete finishes
@@ -248,11 +278,15 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
+Další informace o [Zastavit](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#stop) metody.
+
 ```objc
     [_cloudSession stop];
 ```
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
+
+Další informace o [resetování](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#reset) metody.
 
 ```objc
     [_cloudSession reset];
