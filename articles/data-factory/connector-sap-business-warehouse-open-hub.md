@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 474ebaad60328b011e91337c46040ae37c603e21
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: c64842dc89c9519c738701558f510940f4cc148d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731050"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103906"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z řešení SAP Business Warehouse prostřednictvím Open centra pomocí služby Azure Data Factory
 
@@ -55,7 +55,7 @@ Celkově extrakce z SAP InfoProviders do Azure Data Factory (ADF) zahrnuje 2 kro
 
 1. **Kopírování dat ADF** v tomto kroku je tabulka otevřete Centrum pro čtení konektorem ADF 
 
-![Rozdílová extrakce toku](media\connector-sap-business-warehouse-open-hub\delta-extraction-flow.png)
+![Rozdílová extrakce toku](media/connector-sap-business-warehouse-open-hub/delta-extraction-flow.png)
 
 V prvním kroku je proveden DTP. Každé spuštění vytvoří nové ID požadavku SAP. ID požadavku je uložena v tabulce otevřete Centrum a pak se používá konektorem ADF k identifikaci rozdílových. Dva kroky se spustí asynchronně: SAP se aktivuje DTP a kopírování dat ADF vyvolané prostřednictvím ADF. 
 

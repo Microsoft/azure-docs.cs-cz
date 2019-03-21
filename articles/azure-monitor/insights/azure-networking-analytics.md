@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
-ms.openlocfilehash: 5412fd2357a6848dae0cd5230546ff13cd1a6054
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b1bcaa3a6246a97f15cbd249040844602f03a7b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316740"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107555"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Sítě Azure monitoring řešení v Log Analytics
 
@@ -217,18 +217,18 @@ Používat aktualizované řešení:
 2. [Konfigurovat diagnostiku, která se pošle přímo ke službě Log Analytics ze skupin zabezpečení sítě Azure](#enable-azure-network-security-group-diagnostics-in-the-portal)
 2. Povolit *Azure Application Gateway Analytics* a *analýzy skupin zabezpečení sítě Azure* řešení pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../../azure-monitor/insights/solutions.md)
 3. Aktualizovat všechny uložené dotazy, řídicí panely nebo výstrahy k použití nového datového typu
-  + Typ je AzureDiagnostics. Elementu ResourceType můžete použít k filtrování síťových protokolů Azure.
+   + Typ je AzureDiagnostics. Elementu ResourceType můžete použít k filtrování síťových protokolů Azure.
 
-    | Namísto: | Použití: |
-    | --- | --- |
-    | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; kde element ResourceType = "APPLICATIONGATEWAYS" a OperationName == "ApplicationGatewayAccess" |
-    | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; kde element ResourceType == "APPLICATIONGATEWAYS" a OperationName = ApplicationGatewayPerformance |
-    | NetworkSecuritygroups | AzureDiagnostics &#124; kde element ResourceType == "NETWORKSECURITYGROUPS" |
+     | Namísto: | Použití: |
+     | --- | --- |
+     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; kde element ResourceType = "APPLICATIONGATEWAYS" a OperationName == "ApplicationGatewayAccess" |
+     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; kde element ResourceType == "APPLICATIONGATEWAYS" a OperationName = ApplicationGatewayPerformance |
+     | NetworkSecuritygroups | AzureDiagnostics &#124; kde element ResourceType == "NETWORKSECURITYGROUPS" |
 
    + Pro všechna pole, který má příponu \_s, \_d, nebo \_g v názvu, změňte první znak na malá písmena
    + Pro všechna pole, který má příponu \_o název, data se dělí do jednotlivých polí na základě názvů vnořeného pole.
 4. Odeberte *Azure Networking Analytics (zastaralé)* řešení.
-  + Pokud používáte PowerShell, použijte `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
+   + Pokud používáte PowerShell, použijte `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 
 Data shromážděná před změna není viditelný v novém řešení. Můžete pokračovat k dotazování na tato data pomocí starého typu a názvy polí.
 

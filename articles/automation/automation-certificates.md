@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 372df0bc6ea540b4b2c030ec71acc6889e7c7d19
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 3a1fd81f890e304c6bda75fad609cc8c98cd634d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874082"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880377"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Prostředků certifikátů ve službě Azure Automation
 
@@ -28,11 +28,12 @@ Pro AzureRM rutiny v následující tabulce se používají k vytváření a spr
 
 |Rutiny|Popis|
 |:---|:---|
-|[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate)|Načte informace o certifikátu pro použití v runbooku nebo konfigurace DSC. Vlastní certifikát lze načíst pouze z Get-AutomationCertificate aktivity.|
-|[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate)|Vytvoří nový certifikát do služby Azure Automation.|
-[Remove-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|Certifikát se odebere ze služby Azure Automation.|Vytvoří nový certifikát do služby Azure Automation.
+|[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate)|Načte informace o certifikátu pro použití v runbooku nebo konfigurace DSC. Vlastní certifikát lze načíst pouze z Get-AutomationCertificate aktivity.| 
+|[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate)|Vytvoří nový certifikát do služby Azure Automation.| 
+[Remove-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|Certifikát se odebere ze služby Azure Automation.|
 |[Set-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/set-azurermautomationcertificate)|Nastaví vlastnosti existujícího certifikátu včetně nahrání souboru certifikátu a nastavení hesla pro .pfx.|
 |[Add-AzureCertificate](https://msdn.microsoft.com/library/azure/dn495214.aspx)|Nahrání certifikátu služby pro zadaná Cloudová služba.|
+
 
 ## <a name="activities"></a>Aktivity
 Aktivity v následující tabulce se používají pro přístup k certifikáty v sadě runbook a konfiguracích DSC.
@@ -62,11 +63,11 @@ Když vytvoříte nový certifikát, můžete nahrát soubor .cer nebo .pfx do A
 ### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>Chcete-li vytvořit nový certifikát pomocí webu Azure portal
 
 1. Ve svém účtu Automation, klikněte na tlačítko **prostředky** otevřete dlaždici **prostředky** okno.
-1. Klikněte na tlačítko **certifikáty** otevřete dlaždici **certifikáty** okno.
-1. Klikněte na tlačítko **přidání certifikátu** v horní části okna.
-1. Zadejte název certifikátu v **název** pole.
-1. Procházením vyhledejte soubor .cer nebo .pfx, klikněte na tlačítko **vyberte soubor** pod **nahrát soubor certifikátu**. Pokud jste vybrali soubor .pfx, zadejte heslo a zda je povoleno export.
-1. Klikněte na tlačítko **vytvořit** uložit nový prostředek certifikátu.
+2. Klikněte na tlačítko **certifikáty** otevřete dlaždici **certifikáty** okno.
+3. Klikněte na tlačítko **přidání certifikátu** v horní části okna.
+4. Zadejte název certifikátu v **název** pole.
+5. Procházením vyhledejte soubor .cer nebo .pfx, klikněte na tlačítko **vyberte soubor** pod **nahrát soubor certifikátu**. Pokud jste vybrali soubor .pfx, zadejte heslo a zda je povoleno export.
+6. Klikněte na tlačítko **vytvořit** uložit nový prostředek certifikátu.
 
 ### <a name="to-create-a-new-certificate-with-windows-powershell"></a>Chcete-li vytvořit nový certifikát pomocí Windows Powershellu
 

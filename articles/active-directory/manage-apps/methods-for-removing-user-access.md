@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2275d1ef3534e6d8e984595a816315b7b74a760
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: db9ac671b616e2b5af59c033d08768c9e572876f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439838"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105365"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Postup odebrání přístupu uživatele k aplikaci
 
@@ -38,21 +38,21 @@ K zakázání všech přihlášení uživatelů k aplikaci, postupujte podle kro
 
 K **odstranit aplikaci**, postupujte podle těchto pokynů:
 
-1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
+1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
+4. Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
    * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete odstranit.
+6. Vyberte aplikaci, kterou chcete odstranit.
 
-7.  Po načtení aplikace, klikněte na tlačítko **odstranit** ikonu z hlavní aplikace **přehled** podokně.
+7. Po načtení aplikace, klikněte na tlačítko **odstranit** ikonu z hlavní aplikace **přehled** podokně.
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Chci zakázat všechny operace vyjádření souhlasu budoucí uživatele do žádné aplikace
 

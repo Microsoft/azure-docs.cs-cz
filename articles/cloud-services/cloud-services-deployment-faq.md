@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c961238d1fbce1ff590e0b0843ae1390aa7f1cd9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: adaed4c7af1d325f85d6fc349ac9a4faf73c1169
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534816"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078805"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy při nasazení pro Azure Cloud Services: Nejčastější dotazy (FAQ)
 
@@ -67,10 +67,11 @@ Další informace najdete v tématu [aktualizace cloudové služby](cloud-servic
 ## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Proč mi nejde nasadit cloudové služby Service Management API nebo Powershellu, při použití účtu úložiště Azure Resource Manageru? 
 
 Cloudové služby je klasický prostředek, který není přímo kompatibilní s modelem Azure Resource Manageru, nelze ho propojit s účty úložiště Azure Resource Manageru. Tady je několik možností: 
- 
+ 
 - Nasazení pomocí rozhraní REST API.
 
-    Při nasazení pomocí REST API pro správu služeb, může získat kolem omezení tak, že zadáte adresu URL SAS úložiště objektů blob, který bude fungovat s účtem Classic a Azure Resource Manager Storage. Další informace o vlastnosti "PackageUrl" [tady](https://msdn.microsoft.com/library/azure/ee460813.aspx).  
+    Při nasazení pomocí REST API pro správu služeb, může získat kolem omezení tak, že zadáte adresu URL SAS úložiště objektů blob, který bude fungovat s účtem Classic a Azure Resource Manager Storage. Další informace o vlastnosti "PackageUrl" [tady](https://msdn.microsoft.com/library/azure/ee460813.aspx).
+  
 - Nasazení pomocí [webu Azure portal](https://portal.azure.com).
 
     Bude to fungovat z [webu Azure portal](https://portal.azure.com) jako volání prochází proxy/překrytí, který umožňuje komunikaci mezi prostředky Azure Resource Manager a Classic. 

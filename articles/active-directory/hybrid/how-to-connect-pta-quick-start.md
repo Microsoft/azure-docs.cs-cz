@@ -16,12 +16,12 @@ ms.date: 02/19/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a282ef88a5112593d4d8b9e304ec6ad03f44787c
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 51fc93f9508bada40885e41b39e8a87cf4e0bf3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415863"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101002"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Předávací ověřování služby Azure Active Directory: Rychlý start
 
@@ -68,7 +68,7 @@ Ujistěte se, že jsou splněné následující požadavky.
      Pokud brána firewall vynucuje pravidla podle původního uživatele, otevřete tyto porty pro provoz služby Windows, na kterých běží jako síťové služby.
    - Pokud je vaše brána firewall nebo proxy server umožňuje DNS na seznam povolených, seznam povolených připojení k  **\*. msappproxy.net** a  **\*. servicebus.windows.net**. Pokud ne, povolit přístup k [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), který se každý týden aktualizuje.
    - Agentů ověřování potřebovat přístup k **login.windows.net** a **login.microsoftonline.com** pro počáteční registraci. Otevřete firewall pro tyto adresy URL také.
-   - Pro ověření certifikátu, odblokovat následující adresy URL: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**, a  **www.microsoft.com:80**. Protože tyto adresy URL se používají k ověření certifikátu s dalšími produkty Microsoftu, které už můžete mít tyto adresy URL odblokováno.
+   - Pro ověření certifikátu, odblokovat následující adresy URL: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**, a **www \.microsoft.com:80**. Protože tyto adresy URL se používají k ověření certifikátu s dalšími produkty Microsoftu, které už můžete mít tyto adresy URL odblokováno.
 
 ## <a name="step-2-enable-the-feature"></a>Krok 2: Povolení této funkce
 

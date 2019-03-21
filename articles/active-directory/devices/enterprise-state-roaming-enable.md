@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ce6dc4cf98f2886eb4eed7049048d67599ac42e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: adad43f337d4cf026ca8f48976a9fc713fd52200
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207479"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077407"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
 Enterprise State Roaming je k dispozici pro všechny organizace s Azure AD Premium nebo Enterprise Mobility + Security (EMS) licence. Další informace o tom, jak získat předplatné Azure AD, najdete v článku [stránce produktu Azure AD](https://azure.microsoft.com/services/active-directory).
@@ -37,7 +37,7 @@ Když povolíte Enterprise State Roaming, vaše organizace je automaticky uděle
 
 1. Vyberte **uživatelé můžou synchronizovat nastavení a data aplikací na zařízeních**. Další informace najdete v tématu [jak nakonfigurovat nastavení zařízení](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
   
-  ![Obrázek nastavení zařízení s názvem uživatelé můžou synchronizovat nastavení a data aplikací na zařízeních](./media/enterprise-state-roaming-enable/device-settings.png)
+   ![Obrázek nastavení zařízení s názvem uživatelé můžou synchronizovat nastavení a data aplikací na zařízeních](./media/enterprise-state-roaming-enable/device-settings.png)
   
 Pro zařízení s Windows 10 k používání služby Enterprise State Roaming zařízení musí ověřit pomocí identity Azure AD. Pro zařízení, která jsou připojená k Azure AD je primární přihlašovací identitu uživatele svoji identitu služby Azure AD, takže není nutná žádná další konfigurace. Zařízení, která používají místní služby Active Directory, musí správce IT [zařízení připojená k hybridní službě Azure Active Directory konfigurovat](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual-steps). 
 
@@ -64,11 +64,11 @@ Postupujte podle těchto kroků pro zobrazení zprávy o stavu synchronizace za�
 
 1. V části **zobrazit**vyberte **zařízení, která synchronizují nastavení a data aplikací** zobrazíte stav synchronizace.
   
-  ![Obrázek nastavení synchronizace dat zařízení](./media/enterprise-state-roaming-enable/sync-status.png)
+   ![Obrázek nastavení synchronizace dat zařízení](./media/enterprise-state-roaming-enable/sync-status.png)
   
 1. Pokud zařízení, která synchronizují pro tohoto uživatele se zobrazí zařízení, jak je znázorněno zde.
   
-  ![Obrázek zařízení synchronizace úložiště se sloupcovou strukturou dat](./media/enterprise-state-roaming-enable/device-status-row.png)
+   ![Obrázek zařízení synchronizace úložiště se sloupcovou strukturou dat](./media/enterprise-state-roaming-enable/device-status-row.png)
 
 ## <a name="data-retention"></a>Uchovávání dat
 Data synchronizují do cloudu Microsoftu pomocí Enterprise State Roaming se uchovávají, dokud je ručně neodstraníte nebo dokud dotyčný dat je určena jako zastaralé. 

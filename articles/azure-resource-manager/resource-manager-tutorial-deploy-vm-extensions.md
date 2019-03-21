@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a1df94c7157823a4d7dcdcf652b1c7c926f4dbba
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: a40619000998d7222781094db2829aabcc6a7fb2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406503"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100764"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Kurz: Nasazení rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru
 
@@ -68,13 +68,13 @@ Pokud vyberete možnost publikovat vlastní umístění souboru, je nutné aktua
 1. K otevření souboru, vyberte **otevřete**.  
     Šablona definuje pět zdrojů:
 
-    * **Microsoft.Storage/storageAccounts**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-    * **Microsoft.Network/publicIPAddresses**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-    * **Microsoft.Network/virtualNetworks**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-    * **Microsoft.Network/networkInterfaces**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-    * **Microsoft.Compute/virtualMachines**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * **Microsoft.Storage/storageAccounts**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+   * **Microsoft.Network/publicIPAddresses**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+   * **Microsoft.Network/virtualNetworks**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+   * **Microsoft.Network/networkInterfaces**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+   * **Microsoft.Compute/virtualMachines**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
-    Je vhodné získat seznámení se základními principy šablony dříve, než ji přizpůsobit.
+     Je vhodné získat seznámení se základními principy šablony dříve, než ji přizpůsobit.
 
 1. Uložit kopii souboru do místního počítače s názvem *azuredeploy.json* tak, že vyberete **souboru** > **uložit jako**.
 

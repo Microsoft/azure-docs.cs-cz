@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 6a5c2df6859a0020160ae0de9b6e498f63dc253b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a4e3d37b2eb32fa0384986e37781f21b906bed42
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871978"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077305"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Rychlý start: Hledání videí pomocí API REST pro vyhledávání videí Bingu a Node.js
 
@@ -61,19 +61,19 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
     };
     ```
     
-    2. Když `end` je signalizován, použijte `response.on()` k uložení Bingu související záhlaví (počínaje `bingapis` nebo `x-msedge-`). Potom parsovat JSON pomocí `JSON.parse()`, převeďte jej na řetězec s `JSON.stringify()`a vytisknout si ho.
+   1. Když `end` je signalizován, použijte `response.on()` k uložení Bingu související záhlaví (počínaje `bingapis` nebo `x-msedge-`). Potom parsovat JSON pomocí `JSON.parse()`, převeďte jej na řetězec s `JSON.stringify()`a vytisknout si ho.
 
-        ```javascript
-        response.on('end', function () {
-            for (var header in response.headers)
-                // header keys are lower-cased by Node.js
-                if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                     console.log(header + ": " + response.headers[header]);
-            body = JSON.stringify(JSON.parse(body), null, '  ');
-            //JSON Response body
-            console.log(body);
-        });
-        ```
+       ```javascript
+       response.on('end', function () {
+           for (var header in response.headers)
+               // header keys are lower-cased by Node.js
+               if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                    console.log(header + ": " + response.headers[header]);
+           body = JSON.stringify(JSON.parse(body), null, '  ');
+           //JSON Response body
+           console.log(body);
+       });
+       ```
 
 # <a name="create-and-send-the-search-request"></a>Vytvoření a odeslání požadavku hledání
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 6062c31d1ec87d7b958feafef5824a5814995541
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f9e0582a1338bcae7b330c7ece7c3d8cc8593cfa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431967"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004500"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>Jak nainstalovat MySQL v Azure
 V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat MySQL na virtuálním počítači Azure s Linuxem.
@@ -92,7 +92,7 @@ Virtuální počítač s Linuxem s CentOS nebo Oracle Linux použijeme tady.
   
     Stáhněte a nainstalujte balíček verze MySQL:
   
-            #[root@mysqlnode ~]# wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
+            #[root@mysqlnode ~]# wget https://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
             #[root@mysqlnode ~]# yum localinstall -y mysql-community-release-el6-5.noarch.rpm
 * Krok 2: Upravte následující soubor úložiště MySQL pro stahování balíčku MySQL5.6.
   

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 653d3e357e3a02659a225b4e26c386ca54b6288f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 52ad40a2521f21efee3b9f98b46c2e2e6343b656
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715422"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098300"
 ---
 # <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Spouštět úlohy Apache Pig s Apache Hadoop v HDInsight pomocí REST
 
@@ -58,8 +58,8 @@ Zjistěte, jak spouštět úlohy Apache Pig Latin tím, že požadavky REST do c
 
     Parametry použité v tomto příkazu jsou následující:
 
-    * **-u**: Uživatelské jméno a heslo použité pro ověření žádosti
-    * **-G**: Označuje, že tento požadavek je požadavek GET
+   * **-u**: Uživatelské jméno a heslo použité pro ověření žádosti
+   * **-G**: Označuje, že tento požadavek je požadavek GET
 
      Počáteční adresa URL, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, je stejný pro všechny požadavky. Cesta, **/status**, označuje, že žádost je vrátit stav WebHCat (také známé jako Templeton) pro server.
 
@@ -71,18 +71,18 @@ Zjistěte, jak spouštět úlohy Apache Pig Latin tím, že požadavky REST do c
 
     Parametry použité v tomto příkazu jsou následující:
 
-    * **-d**: Protože `-G` se nepoužívá výchozí nastavení požadavku pro metodu POST. `-d` Určuje hodnoty dat, které se odesílají s požadavkem.
+   * **-d**: Protože `-G` se nepoužívá výchozí nastavení požadavku pro metodu POST. `-d` Určuje hodnoty dat, které se odesílají s požadavkem.
 
-    * **User.Name**: Uživatel, který spouští příkaz
-    * **Spustit**: Pig Latin příkazy ke spuštění
-    * **statusdir**: Adresář, který stavu pro tuto úlohu je zapsán do
+   * **User.Name**: Uživatel, který spouští příkaz
+   * **Spustit**: Pig Latin příkazy ke spuštění
+   * **statusdir**: Adresář, který stavu pro tuto úlohu je zapsán do
 
-    > [!NOTE]  
-    > Všimněte si, že jsou nahrazené mezery v příkazech Pig Latin `+` znaků při použití s Curl.
+     > [!NOTE]  
+     > Všimněte si, že jsou nahrazené mezery v příkazech Pig Latin `+` znaků při použití s Curl.
 
-    Tento příkaz by měl vrátit, který slouží ke kontrole stavu úlohy, například ID úlohy:
+     Tento příkaz by měl vrátit, který slouží ke kontrole stavu úlohy, například ID úlohy:
 
-        {"id":"job_1415651640909_0026"}
+       {"id": "job_1415651640909_0026"}
 
 3. Pokud chcete zkontrolovat stav úlohy, použijte následující příkaz
 

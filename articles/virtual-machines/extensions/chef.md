@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
-ms.openlocfilehash: 159ce1b565068e2cfdb3cb1cb2e5b5f72ff6848f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451353"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089161"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef rozšíření virtuálního počítače pro systémy Linux a Windows
 
@@ -69,25 +69,25 @@ Následující kód JSON ukazuje schématu pro rozšíření virtuálního poč�
 ### <a name="core-property-values"></a>Hodnoty vlastností Core
 
 | Název | Hodnota / příklad | Typ dat
-| ---- | ---- | ---- | ----
+| ---- | ---- | ---- 
 | apiVersion | `2017-12-01` | řetězec (date) |
-| vydavatele | `Chef.Bootstrap.WindowsAzure` | řetězec |
-| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | řetězec |
+| vydavatele | `Chef.Bootstrap.WindowsAzure` | string |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.12` | řetězec (double) |
 
 ### <a name="settings"></a>Nastavení
 
 | Název | Hodnota / příklad | Typ dat | Povinné?
 | ---- | ---- | ---- | ----
-| nastavení/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | řetězec (url) | Ano |
-| nastavení/bootstrap_options/validation_client_name | `myorg-validator` | řetězec | Ano |
-| nastavení nebo poradci | `recipe[mycookbook::default]` | řetězec | Ano |
+| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | řetězec (url) | Ano |
+| nastavení/bootstrap_options/validation_client_name | `myorg-validator` | string | Ano |
+| nastavení nebo poradci | `recipe[mycookbook::default]` | string | Ano |
 
 ### <a name="protected-settings"></a>Chráněné nastavení
 
 | Název | Příklad: | Typ dat | Povinné?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | řetězec | Ano |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Ano |
 
 <!--
 ### Linux-specific settings
