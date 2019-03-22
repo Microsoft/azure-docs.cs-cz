@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 4f6076407ea4745556e59d44bd37ab85288e6bd2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 67378a5911e5bd83888342aa3773f7f5ed4ccf29
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772923"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102580"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Shromažďování dat v Log Analytics runbooku Azure Automation
 
@@ -131,13 +131,13 @@ Azure Automation obsahuje prostředí tak, aby [otestovat sadu runbook](../../au
 
 ![Test runbooku](media/runbook-datacollect/test-runbook.png)
 
-6. Klikněte na tlačítko **Uložit** pro sadu runbook uložte.
+1. Klikněte na tlačítko **Uložit** pro sadu runbook uložte.
 1. Klikněte na tlačítko **testovací podokno** otevřete sadu runbook v testovacím prostředí.
-3. Protože vaše sada runbook obsahuje parametry, budete vyzváni k zadání jejich hodnot. Zadejte název skupiny prostředků a účet služby automation, která budete shromažďovat informace o úlohách z.
-4. Klikněte na tlačítko **Start** pro spuštění sady runbook.
-3. Runbook se spustí se stavem **ve frontě** předtím, než se přejde na **systémem**.
-3. Sada runbook zobrazit podrobný výstup s úlohami, které jsou shromážděné ve formátu json. Pokud nejsou uvedeny žádné úlohy, pak může nebyly žádné úlohy vytvořené v účtu automation za poslední hodinu. Pokuste se spustit libovolné sady runbook v účtu automation a pak znovu proveďte test.
-4. Ujistěte se, že ve výstupu nezobrazí všechny chyby v příkazu post do služby Log Analytics. Měli byste mít zpráva podobná následující.
+1. Protože vaše sada runbook obsahuje parametry, budete vyzváni k zadání jejich hodnot. Zadejte název skupiny prostředků a účet služby automation, která budete shromažďovat informace o úlohách z.
+1. Klikněte na tlačítko **Start** pro spuštění sady runbook.
+1. Runbook se spustí se stavem **ve frontě** předtím, než se přejde na **systémem**.
+1. Sada runbook zobrazit podrobný výstup s úlohami, které jsou shromážděné ve formátu json. Pokud nejsou uvedeny žádné úlohy, pak může nebyly žádné úlohy vytvořené v účtu automation za poslední hodinu. Pokuste se spustit libovolné sady runbook v účtu automation a pak znovu proveďte test.
+1. Ujistěte se, že ve výstupu nezobrazí všechny chyby v příkazu post do služby Log Analytics. Měli byste mít zpráva podobná následující.
 
     ![Výstup příspěvku](media/runbook-datacollect/post-output.png)
 
@@ -189,9 +189,9 @@ Nejběžnější způsob spuštění sady runbook, která shromažďuje data mon
 
 Po vytvoření plánu je potřeba nastavit hodnoty parametrů, které se použijí pokaždé, když tento plán spuštění runbooku.
 
-6. Klikněte na tlačítko **nakonfigurovat parametry a nastavení spouštění**.
-7. Vyplňte hodnoty pro váš **ResourceGroupName** a **AutomationAccountName**.
-8. Klikněte na **OK**.
+1. Klikněte na tlačítko **nakonfigurovat parametry a nastavení spouštění**.
+1. Vyplňte hodnoty pro váš **ResourceGroupName** a **AutomationAccountName**.
+1. Klikněte na **OK**.
 
 ## <a name="9-verify-runbook-starts-on-schedule"></a>9. Ověřte spuštění sady runbook podle plánu
 Při každém spuštění sady runbook [se vytvoří úloha](../../automation/automation-runbook-execution.md) a jakéhokoli výstupu protokolována. Ve skutečnosti jedná se o stejné úlohy, které shromažďuje sadu runbook. Můžete ověřit, že je sada runbook spuštěna dle očekávání kontrolou úloh pro runbook po uplynutí čas zahájení pro plán.

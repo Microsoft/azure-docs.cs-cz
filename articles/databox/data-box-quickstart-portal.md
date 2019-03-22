@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 03/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 95e2a17407ad7d9e108b4ac38e8ff0ff62abf857
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: bd591ff30755fd68bb2dc673899d0ac993215e68
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529680"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834714"
 ---
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Rychlý start: Nasazení Azure Data Box pomocí webu Azure portal
 
@@ -74,7 +74,7 @@ Když obdržíte Data Box, zapojte kabely a zařízení připojte a zapněte pod
     
 4. K zařízení připojte kabely, jak vidíte níže.  
 
-    ![Zapojení kabelů Data Boxu](media/data-box-quickstart-portal/data-box-cabled-dhcp.png)  
+    ![Zapojená kabeláž propojovacího rozhraní zařízení Data Box](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)  
 
     1. K zařízení připojte napájecí kabel.
     2. Pomocí síťového kabelu RJ-45 kategorie 6 připojte hostitelský počítač k portu pro správu (MGMT) na zařízení. 

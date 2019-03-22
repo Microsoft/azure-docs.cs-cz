@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 59f4dffb64b0e72e8847f0b1baf947ad1d732063
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1e67c22a55068ce42cb1eb6d9c0c9bdf8215f44e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766565"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58167979"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application-new-ui-design"></a>Správa zařízení v aplikaci Azure IoT Central (návrh nové uživatelské rozhraní)
 
@@ -23,7 +23,6 @@ Tento článek popisuje, jak jako operátor ke správě zařízení v aplikaci A
 - Zachovat aktuální inventář zařízení.
 - Vaše metadata zařízení aktualizovat tak, že změníte hodnotám uloženým ve vlastnostech zařízení.
 - Řízení chování zařízení aktualizací nastavení do konkrétních zařízení **nastavení** stránky.
-
 
 ## <a name="view-your-devices"></a>Zobrazení zařízení
 
@@ -104,7 +103,7 @@ Když si zaregistrujete zařízení spuštěním importovat v části **zrušeno
 
 ## <a name="export-devices"></a>Export zařízení
 
-Chcete-li připojit skutečné zařízení k IoT Central, musíte svůj připojovací řetězec. Můžete to taky podrobnosti o zařízení hromadné získat připojovací řetězce a další vlastnosti. Proces exportu vytvoří soubor CSV s identitou zařízení, název zařízení a primární připojovací řetězec pro všechna vybraná zařízení.
+Chcete-li připojit skutečné zařízení k IoT Central, musíte svůj připojovací řetězec. Můžete to taky podrobnosti o zařízení hromadné zobrazíte informace, které potřebujete k vytvoření zařízení připojovací řetězce. Proces exportu vytvoří soubor CSV s identitou zařízení, název zařízení a klíče pro všechna vybraná zařízení.
 
 Chcete-li hromadně exportovat zařízení z vaší aplikace:
 
@@ -130,8 +129,10 @@ Chcete-li hromadně exportovat zařízení z vaší aplikace:
     * IOTC_DEVICENAME
     * IOTC_SASKEY_PRIMARY
     * IOTC_SASKEY_SECONDARY
-    * IOTC_X509THUMBPRINT_PRIMARY   
+    * IOTC_X509THUMBPRINT_PRIMARY
     * IOTC_X509THUMBPRINT_SECONDARY
+
+Zobrazit [připojení zařízení v Azure IoT Central](concepts-connectivity.md), další informace o připojovacích řetězcích a propojování skutečných zařízení, aplikace IoT Central.
 
 ## <a name="delete-a-device"></a>Odstranění zařízení
 

@@ -1,6 +1,6 @@
 ---
-title: Kurz pro integraci se službou identit spravovaných Azure | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak využívat Azure spravované identity k ověření prostřednictvím a získat přístup ke konfiguraci aplikací Azure
+title: Kurz pro integraci s Azure spravovaných identit | Dokumentace Microsoftu
+description: V tomto kurzu se dozvíte, jak používat Azure spravované identity k ověření prostřednictvím a získat přístup ke konfiguraci aplikací Azure
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -13,67 +13,69 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 874522b6b4ca3739e0736d4f70f76bb82cad25f9
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: be19d37900acb8201922fa61fda61cc884d4c933
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957347"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226007"
 ---
 # <a name="tutorial-integrate-with-azure-managed-identities"></a>Kurz: Integrace s Azure spravované identity
 
-Azure Active Directory [identit spravovaných](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pomáhá zjednodušit správu tajných kódů pro cloudové aplikace. Spravovanou identitu můžete nastavit váš kód používat instanční objekt, který se vytvořil pro službu Azure compute, na kterých se spouští, namísto samostatné přihlašovací údaje uložené v Azure Key Vault nebo místní připojovací řetězec. Konfigurace aplikace pro Azure a .NET Core, .NET a Java Spring klientské knihovny jsou dostupné je integrovanou podporu MSI. Přestože není nutné jeho použití, MSI se eliminuje potřeba přístupový token, který obsahuje tajných kódů. Váš kód obsahuje pouze znát koncový bod služby pro úložiště konfigurace aplikace k němu přistupovat a tuto adresu URL můžete vložit do kódu přímo bez obav vystavení jakékoli tajný klíč.
+Azure Active Directory [spravovaných identit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pomáhají zjednodušit správu tajných kódů pro cloudové aplikace. Spravovanou identitu můžete nastavit váš kód používat instanční objekt, který byl vytvořen pro službu Azure compute, na kterých se spouští. Použití spravované identity namísto samostatné přihlašovací údaje uložené v Azure Key Vault nebo řetězec připojení k místní. 
 
-Tento kurz ukazuje, jak můžete využít výhod MSI pro přístup k aplikaci konfigurace. Sestaví ve webové aplikaci zavedený rychlých startech. Kompletní [vytvoření aplikace ASP.NET Core s konfigurací aplikace](./quickstart-aspnet-core-app.md) první předtím, než budete pokračovat.
+Konfigurace aplikace pro Azure a jeho .NET Core, .NET a Java Spring klientské knihovny jsou dostupné podpory identita spravované služby je součástí. I když není nutné jeho použití, MSI se eliminuje potřeba přístupový token, který obsahuje tajných kódů. Váš kód obsahuje znát jenom koncový bod služby pro konfiguraci služby app ukládat, aby bylo možné k němu přístup. Vložte tuto adresu URL do kódu přímo bez obav vystavení jakékoli tajný klíč.
 
-K dokončení kroků v tomto kurzu můžete použít libovolný editor kódu. Skvělou volbou je však editor [Visual Studio Code](https://code.visualstudio.com/), který je dostupný pro platformy Windows, macOS a Linux.
+Tento kurz ukazuje, jak můžete využít výhod MSI pro přístup k aplikaci konfigurace. Sestaví ve webové aplikaci zavedený rychlých startech. Než budete pokračovat, dokončete [vytvoření aplikace ASP.NET Core s konfigurací aplikace](./quickstart-aspnet-core-app.md) první.
+
+Provést kroky v tomto kurzu můžete použít libovolný editor kódu. [Visual Studio Code](https://code.visualstudio.com/) skvělou možnost je k dispozici ve Windows, macOS a Linux platformy.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Udělení přístupu spravované identity pro konfiguraci aplikací
-> * Konfigurace aplikace pro použití spravované identity při připojování ke konfiguraci aplikací
+> * Udělení přístupu spravované identity pro konfiguraci aplikací.
+> * Konfigurace aplikace pro použití spravované identity při připojování k konfigurace aplikace.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete:
 
-* [Sada .NET Core SDK](https://www.microsoft.com/net/download/windows)
-* [Nakonfigurovaná služba Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
+* [.NET core SDK](https://www.microsoft.com/net/download/windows).
+* [Azure Cloud Shell nakonfigurované](https://docs.microsoft.com/azure/cloud-shell/quickstart).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="add-a-managed-identity"></a>Přidat spravované identity
 
-Nastavení spravovaných identit na portálu, nejprve vytvoříte aplikaci jako za normálních okolností a pak povolte funkci.
+Nastavení spravovaných identit na portálu, nejprve vytvořte aplikaci jako za normálních okolností a pak povolte funkci.
 
-1. Vytvořte aplikaci [webu Azure portal](https://aka.ms/azconfig/portal) běžným způsobem. Přejděte na ni na portálu.
+1. Vytvořte aplikaci [webu Azure portal](https://aka.ms/azconfig/portal) obvyklým způsobem. Na portálu přejděte do něj.
 
-2. Přejděte dolů k položce **nastavení** skupině v levém navigačním panelu a vyberte **Identity**.
+2. Přejděte dolů k položce **nastavení** skupině v levém podokně a vyberte **Identity**.
 
-3. V rámci **přiřazenou systémem** přepněte **stav** k **na** a klikněte na tlačítko **Uložit**.
+3. Na **přiřazenou systémem** přepněte **stav** k **na** a vyberte **Uložit**.
 
     ![Nastavte spravovanou identitu ve službě App Service](./media/set-managed-identity-app-service.png)
 
 ## <a name="grant-access-to-app-configuration"></a>Udělit přístup ke konfiguraci aplikací
 
-1. V [webu Azure portal](https://aka.ms/azconfig/portal), klikněte na tlačítko **všechny prostředky** a úložišti konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. V [webu Azure portal](https://aka.ms/azconfig/portal)vyberte **všechny prostředky** a vybrat úložiště konfigurace aplikace, kterou jste vytvořili v tomto rychlém startu.
 
 2. Vyberte **řízení přístupu (IAM)**.
 
-3. V rámci **zkontrolovat přístup** klikněte na tlačítko **přidat** v **přidat přiřazení role** karty uživatelského rozhraní.
+3. Na **zkontrolovat přístup** kartu, vyberte možnost **přidat** v **přidat přiřazení role** karty uživatelského rozhraní.
 
-4. Nastavte **Role** bude *Přispěvatel* a **přiřadit přístup k** bude *služby App Service* (v části *přiřazenou systémem spravované Identita*).
+4. V části **Role**vyberte **Přispěvatel**. V části **přiřadit přístup k**vyberte **služby App Service** pod **systém přiřadil spravovanou identitu**.
 
-5. Nastavte **předplatné** k vašemu předplatnému Azure a vyberte prostředek služby App Service pro aplikace.
+5. V části **předplatné**, vyberte své předplatné Azure. Vyberte prostředek služby App Service pro vaši aplikaci.
 
-6. Klikněte na **Uložit**.
+6. Vyberte **Uložit**.
 
     ![Přidat spravované identity](./media/add-managed-identity.png)
 
 ## <a name="use-a-managed-identity"></a>Použití spravované identity
 
-1. Otevřít *appsettings.json*, přidejte následující a nahraďte *< service_endpoint >* (včetně závorek) s adresou URL k úložišti konfigurace aplikace:
+1. Otevřít *appsettings.json*a přidejte následující skript. Nahraďte *< service_endpoint >*, včetně závorkách a s adresou URL k úložišti konfigurace aplikace:
 
     ```json
     "AppConfig": {
@@ -81,7 +83,7 @@ Nastavení spravovaných identit na portálu, nejprve vytvoříte aplikaci jako 
     }
     ```
 
-2. Otevřít *Program.cs* a aktualizovat `CreateWebHostBuilder` metodu nahrazením `config.AddAzureAppConfiguration()` metody.
+2. Otevřít *Program.cs*a aktualizovat `CreateWebHostBuilder` metodu nahrazením `config.AddAzureAppConfiguration()` metody.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -100,7 +102,7 @@ Nastavení spravovaných identit na portálu, nejprve vytvoříte aplikaci jako 
 
 ## <a name="deploy-from-local-git"></a>Nasazení z místního Gitu
 
-Nejjednodušší způsob, jak povolit místní nasazení Gitu pro svou aplikaci pomocí Kudu server sestavení je použití Cloud Shell.
+Nejjednodušší způsob, jak povolit místní nasazení Gitu pro svou aplikaci pomocí Kudu server sestavení je chcete použít Azure Cloud Shell.
 
 ### <a name="configure-a-deployment-user"></a>Konfigurace uživatele nasazení
 
@@ -120,7 +122,7 @@ Pokud chcete místo toho vytvořte aplikaci s podporou Git, spusťte [ `az webap
 az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
 ```
 
-`az webapp create` Příkazu by vám měl dát něco podobného následující výstup:
+`az webapp create` Příkaz nabízí podobný následující výstup:
 
 ```json
 Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
@@ -146,7 +148,7 @@ Zpět v _okně místního terminálu_ přidejte vzdálené úložiště Azure do
 git remote add azure <url>
 ```
 
-Nasaďte aplikaci do vzdáleného úložiště Azure pomocí následujícího příkazu. Po zobrazení výzvy k zadání hesla se ujistěte, že zadáváte heslo, které jste vytvořili v části [Konfigurace uživatele nasazení](#configure-a-deployment-user), ne heslo, se kterým se přihlašujete na web Azure Portal.
+Nasaďte aplikaci do vzdáleného úložiště Azure pomocí následujícího příkazu. Po zobrazení výzvy k zadání hesla, zadejte heslo, kterou jste vytvořili v [konfigurace uživatele nasazení](#configure-a-deployment-user). Nepoužívejte hesla, které používáte k přihlášení k webu Azure portal.
 
 ```bash
 git push azure master
@@ -156,7 +158,7 @@ Automatizace specifické pro modul runtime ve výstupu, jako je MSBuild pro tech
 
 ### <a name="browse-to-the-azure-web-app"></a>Přechod do webové aplikace Azure
 
-Přejděte do webové aplikace k ověření, že je nasazení obsahu pomocí prohlížeče.
+Přejděte do webové aplikace pomocí prohlížeče pro ověření, že obsah nasazení.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -166,9 +168,9 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>Použití spravované identity v jiných jazycích
 
-Poskytovatelé konfigurace aplikace pro rozhraní .NET Framework a jazyka Java Spring mají i integrovanou podporu pro spravovanou identitu. V těchto případech jednoduše použijete koncový bod adresy URL vašeho úložiště konfigurace aplikace namísto jeho úplný připojovací řetězec při konfiguraci poskytovatele. Například pro aplikace konzoly rozhraní .NET Framework v tomto rychlém startu vytvořili, zadejte následující nastavení *App.config* souboru:
+Poskytovatelé konfigurace aplikace pro rozhraní .NET Framework a jazyka Java Spring mají i integrovanou podporu pro spravovanou identitu. V těchto případech použijte koncový bod adresy URL vašeho úložiště konfigurace aplikace místo jeho úplný připojovací řetězec při konfiguraci poskytovatele. Například aplikace konzoly rozhraní .NET Framework v tomto rychlém startu vytvořili, zadejte následující nastavení ve *App.config* souboru:
 
-    ```xml
+```xml
     <configSections>
         <section name="configBuilders" type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" restartOnExternalChanges="false" requirePermission="false" />
     </configSections>
@@ -184,7 +186,7 @@ Poskytovatelé konfigurace aplikace pro rozhraní .NET Framework a jazyka Java S
         <add key="AppName" value="Console App Demo" />
         <add key="Endpoint" value ="Set via an environment variable - for example, dev, test, staging, or production endpoint." />
     </appSettings>
-    ```
+```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -192,7 +194,7 @@ Poskytovatelé konfigurace aplikace pro rozhraní .NET Framework a jazyka Java S
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste přidali do Azure se identita spravované služby pro přístup ke konfiguraci aplikací pro zjednodušení a zlepšení Správa přihlašovacích údajů pro vaši aplikaci. Další informace o použití konfigurací aplikací, i nadále ukázky Azure CLI.
+V tomto kurzu jste přidali do Azure se identita spravované služby pro přístup ke konfiguraci aplikací pro zjednodušení a zlepšení Správa přihlašovacích údajů pro vaši aplikaci. Další informace o tom, jak používat konfiguraci aplikací, i nadále ukázky Azure CLI.
 
 > [!div class="nextstepaction"]
 > [Ukázky rozhraní příkazového řádku](./cli-samples.md)

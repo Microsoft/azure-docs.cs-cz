@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 57279a4e92b1f42505003f12d41c8203aa5603d4
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 02977032c5975de4098600ddbebccfcbb9b0fafd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881865"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122888"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects-preview"></a>Vytvoření kanálu CI/CD pro IoT Edge s projekty Azure DevOps (Preview)
 
@@ -127,7 +127,7 @@ Projekty Azure DevOps v předchozích částech, automaticky nakonfiguruje úpln
 
 12. V nabídce pro kanál pro vydávání verzí, vyberte **úlohy** klikněte na tlačítko **dev** fáze z rozevíracího seznamu. Projekty DevOps vytvoří fázi vydání verze pro, který vytvoří Centrum IoT, vytvoří zařízení IoT Edge v daném rozbočovači, vzorový modul z kanálu sestavení nasazuje a zřizuje virtuální počítače ke spuštění jako zařízení IoT Edge. Další informace o úlohách Azure IoT Edge pro disk CD, najdete v článku [nakonfigurovat kanály Azure pro průběžné nasazování](how-to-ci-cd.md#configure-continuous-deployment).
 
-   ![Zobrazit úlohy průběžné nasazování](media/how-to-devops-project/dev-release.png)
+    ![Zobrazit úlohy průběžné nasazování](media/how-to-devops-project/dev-release.png)
 
 13. Na pravé straně vyberte **zobrazit verze**. Toto zobrazení ukazuje historii vydaných verzí.
 

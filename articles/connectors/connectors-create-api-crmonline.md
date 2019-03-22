@@ -10,12 +10,12 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: 1247f603b759364edcee2bff12f75bb0a217ecd6
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: MT
+ms.openlocfilehash: 9fe41cf2946525948897635a4e30213d161431ef
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231250"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295296"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Správa záznamů Dynamics 365 s Azure Logic Apps
 
@@ -42,7 +42,7 @@ Nejprve přidejte triggerem Dynamics 365, který se aktivuje, když se objeví n
 
 1. V [webu Azure portal](https://portal.azure.com), otevřete v návrháři aplikace logiky vaší prázdné aplikace logiky, není-li již otevřete.
 
-1. Do vyhledávacího pole zadejte jako filtr "Dynamics 365". V tomto příkladu v seznamu triggerů vyberte tento trigger: **při vytvoření záznamu**
+1. Do vyhledávacího pole zadejte jako filtr "Dynamics 365". V tomto příkladu v seznamu triggerů vyberte tento trigger: **Při vytvoření záznamu**
 
    ![Vybrat trigger](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
@@ -66,7 +66,7 @@ Teď přidejte akci Dynamics 365, který se vytvoří úkol záznam pro nový z�
 
 1. Pod triggerem zvolte **nový krok**.
 
-1. Do vyhledávacího pole zadejte jako filtr "Dynamics 365". Ze seznamu akcí vyberte tuto akci: **vytvoří nový záznam**
+1. Do vyhledávacího pole zadejte jako filtr "Dynamics 365". Ze seznamu akcí vyberte tuto akci: **Vytvoří nový záznam**
 
    ![Vyberte akci](./media/connectors-create-api-crmonline/select-action.png)
 
@@ -122,9 +122,9 @@ Tato tabulka popisuje některé typy polí a typů požadovaná data pro jejich 
 
 | Typ pole | Požadovaný typ dat | Popis | 
 |------------|--------------------|-------------|
-| Textová pole | Jeden řádek textu | Tato pole vyžadují jeden řádek textu nebo dynamický obsah, který má typ text. <p><p>*Příklad polí*: **popis** a **kategorie** | 
-| Pole typu Integer | Celé číslo | Některá pole vyžadují integer nebo dynamický obsah, který má typ celé číslo. <p><p>*Příklad polí*: **dokončeno** a **doba trvání** | 
-| Datová pole | Datum a čas | Některá pole vyžadují datum pomocí formátu mm/dd/rrrr nebo dynamický obsah, který má typ date. <p><p>*Příklad polí*: **vytvořeno**, **datum zahájení**, **skutečné zahájení**, **skutečný konec**, a **termín splnění** | 
+| Textová pole | Jeden řádek textu | Tato pole vyžadují jeden řádek textu nebo dynamický obsah, který má typ text. <p><p>*Příklad polí*: **Popis** a **kategorie** | 
+| Pole typu Integer | Celé číslo | Některá pole vyžadují integer nebo dynamický obsah, který má typ celé číslo. <p><p>*Příklad polí*: **Dokončeno %** a **doba trvání** | 
+| Datová pole | Datum a čas | Některá pole vyžadují datum pomocí formátu mm/dd/rrrr nebo dynamický obsah, který má typ date. <p><p>*Příklad polí*: **Vytvořit na**, **počáteční datum**, **skutečný začátek**, **skutečný konec**, a **termín splnění** | 
 | Zadejte pole, které vyžadují ID záznamu i vyhledávání | Primární klíč | Některá pole, které odkazují na jiný záznam entity vyžadují ID záznamu i typ vyhledávání. | 
 ||||
 
@@ -187,7 +187,7 @@ Další informace o řešení potíží s logic apps najdete v tématu [diagnost
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete v článku [konektoru referenční stránce](/connectors/crm/). 
+Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete v článku [konektoru referenční stránce](/connectors/dynamicscrmonline/). 
 
 ## <a name="get-support"></a>Získat podporu
 

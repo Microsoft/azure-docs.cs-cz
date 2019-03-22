@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7b6fcdb117033e69db82d8f9bb083891794ed72
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8706414b27969efd6aa26085370f8a0b1f891d69
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187079"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095190"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Kurz: Získání dat pomocí rozhraní API pro generování sestav Azure Active Directory s certifikáty
 
@@ -87,15 +87,15 @@ V tomto kurzu se dozvíte, jak používat testovací certifikát pro přístup k
   
 7. Teď je můžete získání přístupového tokenu pro rozhraní Graph API MS pomocí tohoto certifikátu. Použití **Get-MSCloudIdMSGraphAccessTokenFromCert** rutiny z modulu MSCloudIdUtils PowerShell předávání do ID aplikace a kryptografický otisk jste získali v předchozím kroku. 
 
- ![portál Azure](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
+   ![portál Azure](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
 8. Přístupový token ve skriptu prostředí Powershell použijte k dotazování rozhraní Graph API. Použití **Invoke-MSCloudIdMSGraphQuery** rutiny z MSCloudIDUtils výčet přehledu přihlášení a directoryAudits koncový bod. Tato rutina zpracuje vícestránkové výsledky a tyto výsledky odešle do kanálu Powershellu.
 
 9. Dotazování na koncový bod directoryAudits načíst protokoly auditu. 
- ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
+   ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
 10. Dotazování na koncový bod přehledu přihlášení k načtení protokolů přihlášení.
- ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
+    ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
 
 11. Teď můžete tato data exportovat do sdíleného svazku clusteru a uložit do systému SIEM. Můžete také zabalit váš skript do naplánované úlohy, abyste získávali data Azure AD z vašeho klienta pravidelně bez nutnosti ukládat klíče aplikace ve zdrojovém kódu. 
 

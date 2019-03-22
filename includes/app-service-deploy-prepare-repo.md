@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: c212bda3b59037f99139e02ee6adc63b0084cbe5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: df987d1e13cb5330842fbab41dae96b24b581ddb
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44305610"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58227265"
 ---
 ## <a name="prepare-your-repository"></a>Příprava úložiště
 
-Získat automatické sestavení ze sestavovacího serveru App Service Kudu, ujistěte se, že kořenového adresáře úložiště má správné soubory ve vašem projektu.
+Získat automatické sestavení ze sestavovacího serveru Azure App Service Kudu, ujistěte se, že kořenového adresáře úložiště má správné soubory ve vašem projektu.
 
 | Modul runtime | Kořenový adresář souborů |
 |-|-|
@@ -28,7 +28,7 @@ Získat automatické sestavení ze sestavovacího serveru App Service Kudu, ujis
 | Node.js | _Server.js_, _app.js_, nebo _package.json_ s spouštěcí skript |
 | Python (jenom Windows) | _\*.PY_, _souboru requirements.txt_, nebo _souboru runtime.txt_ |
 | HTML | _default.htm_, _default.html_, _default.asp_, _index.htm_, _index.html_, nebo  _iisstart.htm_ |
-| Webové úlohy | _\<hodnotu job_name > / run. \<rozšíření >_ pod _aplikace\_Data/úlohy/průběžné_ (pro průběžné WebJobs) nebo _aplikace\_Data/úlohy/triggered_ (pro aktivaci WebJobs). Další informace najdete v tématu [Kudu WebJobs – dokumentace](https://github.com/projectkudu/kudu/wiki/WebJobs) |
+| Webové úlohy | _\<hodnotu job_name > / run. \<rozšíření >_ pod _aplikace\_Data/úlohy/průběžné_ (pro průběžné WebJobs) nebo _aplikace\_Data/úlohy/triggered_ (pro aktivaci WebJobs). Další informace najdete v tématu [Kudu WebJobs – dokumentace](https://github.com/projectkudu/kudu/wiki/WebJobs). |
 | Functions | Zobrazit [průběžné nasazování pro službu Azure Functions](../articles/azure-functions/functions-continuous-deployment.md#continuous-deployment-requirements). |
 
 Chcete-li přizpůsobit nasazení, zahrňte _.deployment_ souboru v kořenovém adresáři úložiště. Další informace najdete v tématu [přizpůsobení nasazení](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) a [vlastní skript nasazení](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).

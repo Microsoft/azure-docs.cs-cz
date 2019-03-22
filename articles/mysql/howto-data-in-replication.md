@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/31/2018
-ms.openlocfilehash: 18ef70d64523bc4001fa7d9a35a7f803b8050613
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 7d56d7f8fcbd53d4f69863d260591ef80f3d7188
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539615"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102937"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace pro replikaci dat MySQL v Azure Database
 
@@ -82,7 +82,7 @@ Následující kroky připravte a nakonfigurujte MySQL server hostované místn�
    GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%';
    ```
 
-   **Aplikace MySQL Workbench**
+   **MySQL Workbench**
 
    Chcete-li vytvořit role replikace v aplikaci MySQL Workbench, otevřete **uživatelů a oprávnění** panelu z **správu** panelu. Potom klikněte na **přidat účet**. 
  
@@ -184,7 +184,7 @@ Následující kroky připravte a nakonfigurujte MySQL server hostované místn�
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
    ```
 
-2. Počáteční replikace
+1. Počáteční replikace
 
    Volání `mysql.az_replication_start` uložené procedury k zahájení replikace.
 
@@ -192,7 +192,7 @@ Následující kroky připravte a nakonfigurujte MySQL server hostované místn�
    CALL mysql.az_replication_start;
    ```
 
-3. Zkontrolovat stav replikace
+1. Zkontrolovat stav replikace
 
    Volání [ `show slave status` ](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) příkaz na serveru repliky, chcete-li zobrazit stav replikace.
     

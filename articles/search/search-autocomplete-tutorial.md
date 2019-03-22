@@ -1,32 +1,32 @@
 ---
-title: Kurz pro přidání automatické dokončování do vyhledávacího pole – Azure Search
+title: Příklad pro přidání automatické dokončování do vyhledávacího pole – Azure Search
 description: Příklady, jak ke zlepšení prostředí koncového uživatele datově orientovaných aplikací pomocí automatického dokončování Azure Search a návrhy rozhraní API.
 manager: pablocas
 author: mrcarter8
 services: search
 ms.service: search
 ms.devlang: NA
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: 4b66e5201de2c01aaf6a579d3b71b085dd14b1b3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b754f00e9bed34717734c4aec81e5489d2c12b63
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900892"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200272"
 ---
-# <a name="tutorial-add-autocomplete-to-your-search-box-using-azure-search"></a>Kurz: Přidání automatické dokončování vaší vyhledávací pole s použitím Azure Search
+# <a name="example-add-autocomplete-to-your-search-box-using-azure-search"></a>Příklad: Přidání automatické dokončování vaší vyhledávací pole s použitím Azure Search
 
-V tomto kurzu se naučíte používat [návrhy](https://docs.microsoft.com/rest/api/searchservice/suggestions), [automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) a [omezující vlastnosti](search-faceted-navigation.md) v [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/) a [Sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) vytvářet výkonné vyhledávací pole. 
+V tomto příkladu se dozvíte víc o použití [návrhy](https://docs.microsoft.com/rest/api/searchservice/suggestions), [automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) a [omezující vlastnosti](search-faceted-navigation.md) v [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/) a [Sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) vytvářet výkonné vyhledávací pole. 
 
 + *Návrhy* poskytují doporučení skutečných výsledků na základě toho, co uživatel zatím zadal. 
 + *Automatické dokončování*, [novou funkci ve verzi preview](search-api-preview.md) ve službě Azure Search poskytuje podmínky z indexu k dokončení, co je uživatel aktuálně psát. 
 
 Porovnáme několik technik pro zlepšení produktivity uživatelů přenesením bohatost hledání uživateli jako jejich typu.
 
-Tento kurz vás provede aplikací založenou na ASP.NET MVC, která pomocí jazyka C# volá [klientské knihovny služby Azure Search pro .NET](https://aka.ms/search-sdk) a pomocí JavaScriptu volá přímo rozhraní REST API služby Azure Search. Cílem aplikace pro tento kurz je index naplněný ukázkovými daty [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). Můžete použít už nakonfigurovaný index v ukázce NYC Jobs nebo naplnit vlastní index pomocí nástroje pro načítání dat v ukázkovém řešení NYCJobs. Ukázka používá [uživatelské rozhraní jQuery](https://jqueryui.com/autocomplete/) a [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) knihoven jazyka JavaScript pro vytváření vyhledávacího pole, která podporuje automatické dokončování. Pomocí těchto součástí spolu s Azure Search, zobrazí se vám několik příkladů poznámek o podporu automatického dokončování s automatickým dokončováním vyhledávacího pole.
+Tento příklad vás provede aplikace založené na ASP.NET MVC, která používá C# volat [klientských knihoven Azure Search pro .NET](https://aka.ms/search-sdk)a JavaScript přímo volat rozhraní REST API Azure Search. Aplikace pro účely tohoto příkladu, zaměřuje naplní index [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) ukázková data. Můžete použít už nakonfigurovaný index v ukázce NYC Jobs nebo naplnit vlastní index pomocí nástroje pro načítání dat v ukázkovém řešení NYCJobs. Ukázka používá [uživatelské rozhraní jQuery](https://jqueryui.com/autocomplete/) a [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) knihoven jazyka JavaScript pro vytváření vyhledávacího pole, která podporuje automatické dokončování. Pomocí těchto součástí spolu s Azure Search, zobrazí se vám několik příkladů poznámek o podporu automatického dokončování s automatickým dokončováním vyhledávacího pole.
 
 Provedete následující úlohy:
 
@@ -42,9 +42,9 @@ Provedete následující úlohy:
 
 * Sada Visual Studio 2017. Můžete použít bezplatnou sadu [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). 
 
-* Stáhněte si [zdrojový kód](https://github.com/azure-samples/search-dotnet-getting-started) ukázky pro tento kurz.
+* Stáhněte si ukázku [zdrojový kód](https://github.com/azure-samples/search-dotnet-getting-started) pro příklad.
 
-* (Volitelné) Aktivní účet Azure a služba Azure Search. Pokud účet Azure nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/). Nápovědu ke zřízení služby najdete v tématu [Vytvoření vyhledávací služby](search-create-service-portal.md). Účet a služba jsou volitelné, protože tento kurz můžete absolvovat s použitím hostovaného indexu NYCJobs, který už existuje pro jinou ukázku.
+* (Volitelné) Aktivní účet Azure a služba Azure Search. Pokud účet Azure nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/). Nápovědu ke zřízení služby najdete v tématu [Vytvoření vyhledávací služby](search-create-service-portal.md). Účtu a služby jsou volitelné, protože v tomto příkladu je možné provést pomocí prostředí index NYCJobs již na místě pro jinou ukázku.
 
 * (Volitelné) Stáhněte si vzorový kód [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs), který importuje data NYCJobs do indexu ve vaší službě Azure Search.
 
@@ -61,11 +61,11 @@ Postup v této části použijte v případě, že chcete importovat data pro uk
 
 1. Stisknutím klávesy F5 spusťte aplikaci.  Tím se vytvoří 2 indexy a naimportují se ukázková data NYCJobs.
 
-1. V sadě Visual Studio otevřete soubor řešení AutocompleteTutorial.sln ze složky se vzorovým kódem pro tento kurz.  Otevřete soubor Web.config v projektu AutocompleteTutorial a změňte hodnoty SearchServiceName a SearchServiceApiKey na stejné hodnoty jako v předchozím kroku.
+1. V příkladu ukázky kódu otevřete soubor řešení AutocompleteTutorial.sln v sadě Visual Studio.  Otevřete soubor Web.config v projektu AutocompleteTutorial a změňte hodnoty SearchServiceName a SearchServiceApiKey na stejné hodnoty jako v předchozím kroku.
 
 ### <a name="running-the-sample"></a>Spuštění ukázky
 
-Teď jste připraveni spustit ukázkovou aplikaci.  V sadě Visual Studio otevřete soubor řešení AutocompleteTutorial.sln a spusťte kurz.  Řešení obsahuje projekt ASP.NET MVC.  Stisknutím klávesy F5 projekt spusťte a načtěte stránku v libovolném prohlížeči.  V horní části se zobrazí možnost výběru jazyka C# nebo JavaScriptu.  C# Možnost zavolá HomeController z prohlížeče a používá Azure Search .NET SDK k načtení výsledků.  Možnost JavaScriptu volá přímo z prohlížeče rozhraní REST API služby Azure Search.  Tato možnost se obvykle mít výrazně vyšší výkon, protože trvá kontroleru mimo tento tok.  Můžete si vybrat možnost, která vyhovuje vašim potřebám a upřednostňovanému jazyku.  Na stránce s pokyny pro každou obsahují několik příkladů automatické dokončování.  U každého příkladu je uvedený doporučený ukázkový text, který můžete vyzkoušet.  Zkuste do každého vyhledávacího pole zadat několik písmen a sledujte, co se stane.
+Nyní jste připraveni ke spuštění příkladu ukázkovou aplikaci.  Otevřete soubor řešení AutocompleteTutorial.sln v sadě Visual Studio spustit v příkladu.  Řešení obsahuje projekt ASP.NET MVC.  Stisknutím klávesy F5 projekt spusťte a načtěte stránku v libovolném prohlížeči.  V horní části se zobrazí možnost výběru jazyka C# nebo JavaScriptu.  C# Možnost zavolá HomeController z prohlížeče a používá Azure Search .NET SDK k načtení výsledků.  Možnost JavaScriptu volá přímo z prohlížeče rozhraní REST API služby Azure Search.  Tato možnost se obvykle mít výrazně vyšší výkon, protože trvá kontroleru mimo tento tok.  Můžete si vybrat možnost, která vyhovuje vašim potřebám a upřednostňovanému jazyku.  Na stránce s pokyny pro každou obsahují několik příkladů automatické dokončování.  U každého příkladu je uvedený doporučený ukázkový text, který můžete vyzkoušet.  Zkuste do každého vyhledávacího pole zadat několik písmen a sledujte, co se stane.
 
 ## <a name="how-this-works-in-code"></a>Jak to funguje v kódu
 
@@ -79,7 +79,7 @@ Vyhledávací pole je pro obě volby jazyka naprosto stejné.  Otevřete soubor 
 <input class="searchBox" type="text" id="example1a" placeholder="search">
 ```
 
-Jedná se o jednoduché vstupní textové pole s třídou, která určuje jeho styl, identifikátorem id, na který odkazuje JavaScript, a zástupným textem.  To důležité se odehrává v JavaScriptu.
+Toto je jednoduchý vstupní textové pole s třídou pro používání stylů pro, ID, které má být odkazovány jazyka JavaScript a zástupný text.  To důležité se odehrává v JavaScriptu.
 
 ### <a name="javascript-code-c"></a>Kód JavaScriptu (C#)
 
@@ -132,7 +132,7 @@ Teď, když jsme si prošli kód JavaScriptu pro ukázku, se podíváme na kód 
 
 1. Otevřete soubor HomeController.cs v adresáři Controllers. 
 
-1. První, čeho si můžete všimnout, je metoda InitSearch na začátku třídy.  Tato metoda vytvoří ověřeného klienta indexu HTTP pro službu Azure Search.  Pokud chcete další informace o tom, jak to funguje, najdete v následujícím kurzu: [Jak používat Azure Search z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+1. První, čeho si můžete všimnout, je metoda InitSearch na začátku třídy.  Tato metoda vytvoří ověřeného klienta indexu HTTP pro službu Azure Search.  Pokud chcete další informace o tom, jak to funguje, najdete v následujícím příkladu: [Jak používat Azure Search z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 1. Přesuňte se k funkci Suggest.
 
@@ -209,11 +209,11 @@ $(function () {
 });
 ```
 
-Pokud tento kód porovnáte s předchozím příkladem, který volal kontroler Home, můžete si všimnout několika podobností.  Konfigurace automatického dokončování pro `minLength` a `position` jsou stejné.  Významná změna je ve zdroji.  Místo volání metody Suggest v kontroleru Home se ve funkci JavaScriptu vytvoří požadavek REST a ten se provede přes AJAX.  Odpověď se pak zpracuje ve funkci success (úspěch) a použije se jako zdroj.
+Pokud tento kód porovnáte s předchozím příkladem, který volal kontroler Home, můžete si všimnout několika podobností.  Konfigurace automatického dokončování pro `minLength` a `position` jsou stejné.  Významná změna je ve zdroji.  Namísto volání metody navrhnout v domácí kontroleru, požadavku REST se vytvářejí ve funkci jazyka JavaScript a pomocí rozhraní Ajax.  Odpověď se pak zpracuje ve funkci success (úspěch) a použije se jako zdroj.
 
 ## <a name="takeaways"></a>Shrnutí
 
-Tento kurz ukazuje základní kroky pro vytváření vyhledávacího pole, která podporuje automatické dokončování a návrhy.  Jste viděli, jak může vytvářet aplikace ASP.NET MVC a používat Azure Search .NET SDK nebo rozhraní REST API k načíst návrhy.
+Tento příklad ukazuje základní kroky pro vytváření vyhledávacího pole, která podporuje automatické dokončování a návrhy.  Jste viděli, jak může vytvářet aplikace ASP.NET MVC a používat Azure Search .NET SDK nebo rozhraní REST API k načíst návrhy.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: e14b0455ee3d48226a5334f5729d9721538df891
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 83d1c279552a75b959c19fb37e859806571f48eb
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855048"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259469"
 ---
 # <a name="h264-single-bitrate-1080p-audio-51"></a>Předvolby H264 S jednou přenosovou rychlostí 1080p zvuku 5.1
 

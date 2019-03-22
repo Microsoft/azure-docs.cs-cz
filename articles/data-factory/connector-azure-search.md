@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: aa6c6a35a66569d5db182e1871012b9697c2802c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1c8cbcd2e5f137b1e8381dcce164ae9a4b87e804
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023341"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852837"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopírování dat do indexu Azure Search pomocí Azure Data Factory
 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-azure-search-connector.md)
 > * [Aktuální verze](connector-azure-search.md)
 
@@ -49,7 +49,7 @@ Pro službu Azure Search propojené se podporují následující vlastnosti:
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 > [!IMPORTANT]
-> Při kopírování dat z cloudového úložiště dat do indexu Azure Search ve službě Azure Search propojenou službu, musíte odkazovat modul Runtime integrace Azure s explicitní oblasti v connactVia. Nastavte oblast jako ten, který se nachází Azure Search. Další informace z [prostředí Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime).
+> Při kopírování dat z cloudového úložiště dat do indexu Azure Search ve službě Azure Search propojenou službu, musíte odkazovat prostředí Azure Integration Runtime s explicitní oblastí v connactVia. Nastavte oblast jako ten, který se nachází Azure Search. Další informace z [prostředí Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime).
 
 **Příklad:**
 
@@ -169,8 +169,8 @@ Následující tabulka určuje, zda je nebo není podporováno typem dat Azure S
 
 | Azure Search datový typ | Podporované v Azure Search jímky |
 | ---------------------- | ------------------------------ |
-| Řetězec | Ano |
-| Datový typ Int32 | Ano |
+| String | Ano |
+| Int32 | Ano |
 | Int64 | Ano |
 | Double | Ano |
 | Logická hodnota | Ano |

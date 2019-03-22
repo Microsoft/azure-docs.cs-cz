@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e66c694d2bfb5497712bcf81c4d50a8e68fdcef9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: af106650f6e1d139ec7af2c8d243dc50f2e963fc
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122516"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293954"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s spolupráce Azure Active Directory s B2B
 
@@ -38,7 +38,7 @@ Tuto funkci můžete povolit pomocí nastavení "ShowPeoplePickerSuggestionsForG
 
 Pokud se zobrazí oznámení, že nemáte oprávnění pozvat uživatele, ujistěte se, že je váš uživatelský účet oprávnění k pozvání externího uživatele v části Nastavení uživatele:
 
-![Nastavení externího uživatele](media/troubleshoot/external-user-settings.png)
+![Snímek obrazovky zobrazující nastavení externí uživatele](media/troubleshoot/external-user-settings.png)
 
 Pokud jste naposledy upravili tato nastavení nebo uživateli přiřadit roli odesílatel pozvánky hostů, může existovat zpoždění 15 až 60 minut předtím, než se změny projevily.
 
@@ -50,7 +50,7 @@ Běžné chyby patří:
 
 Když pozvání uživatele, jejichž organizace používá Azure Active Directory, ale pokud neexistuje konkrétní uživatelský účet (například uživatel neexistuje v doméně contoso.com Azure AD). Správce contoso.com může mít zásadu na místě, aby bránil uživatelům ve vytváření. Uživatel musí obraťte se na svého správce určit, pokud jsou povoleny externí uživatele. Možná bude nutné správce externího uživatele umožňuje uživatelům ověřit e-mailu z vlastní domény (najdete v tomto [článku](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) na umožnit uživatelům ověřit e-mailu).
 
-![Chyba oznamující, že tento tenant neumožňuje e-mailová ověření přidat uživatele.](media/troubleshoot/allow-email-verified-users.png)
+![Chyba oznamující, že tenant neumožňuje e-mailu uživatele ověřené.](media/troubleshoot/allow-email-verified-users.png)
 
 ### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>Externí uživatel ještě neexistuje ve federované domény
 

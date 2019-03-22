@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 3b7aa932d24b7879ee3f46419afa2327ee48b403
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 100d33bbd888d00ed33a38680df5a777e12fd63e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000989"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120801"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Monitorování stavu replikace služby Active Directory prostřednictvím služby Azure Monitor
 
@@ -45,8 +45,8 @@ Pokud nechcete, aby všechny řadiče domény připojit přímo do Azure monitor
 
    > [!NOTE]
    > Tyto změny se projeví až do vaší restartování služby Microsoft Monitoring Agent (HealthService.exe).
-### <a name="install-solution"></a>Instalace řešení
-Postupujte podle procesu popsaného v [nainstalovat řešení pro monitorování](solutions.md#install-a-monitoring-solution) přidáte **stav replikace služby Active Directory** řešení do pracovního prostoru Log Analytics. Není nutná žádná další konfigurace.
+   > ### <a name="install-solution"></a>Instalace řešení
+   > Postupujte podle procesu popsaného v [nainstalovat řešení pro monitorování](solutions.md#install-a-monitoring-solution) přidáte **stav replikace služby Active Directory** řešení do pracovního prostoru Log Analytics. Není nutná žádná další konfigurace.
 
 
 ## <a name="ad-replication-status-data-collection-details"></a>Podrobnosti kolekce dat stavu replikace AD

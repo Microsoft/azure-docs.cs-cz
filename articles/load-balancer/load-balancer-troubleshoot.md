@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 26f60a6f1796b080df3294737ce93bfb43029bf1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c5f92d564a93823fd9c0f932fa95f20d4e827761
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439110"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108827"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
 
@@ -128,7 +128,7 @@ Interního nástroje Load Balancer je nakonfigurován v síti VNet a jeden z vir
 Pokud se rozhodnete otevírat případ podpory, shromážděte následující informace pro rychlejší řešení. Zvolte jeden back-endu. virtuální počítač k provádění následujících testů:
 - Pomocí Pspingu z jednoho z back-endový virtuální počítače v rámci virtuální sítě k otestování odpovědi portu sondy (Příklad: psping 10.0.0.4:3389) a zaznamenejte výsledky. 
 - Pokud není žádná odpověď v tyto testy, a současně spusťte PsPing pak Zastavit trasování Netsh spusťte souběžných Netsh trasování na back-endového virtuálního počítače a virtuální síť testovacího virtuálního počítače. 
-  
+  
 ## <a name="next-steps"></a>Další postup
 
 Pokud předchozí kroky není problém vyřešit, otevřete [lístek podpory](https://azure.microsoft.com/support/options/).

@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a0b4c41d347ba556e737d422af22fb5a47c7c4ff
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: a7aa5401cbba9fafda9f995a882934ef0edfa481
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108717"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881142"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Vědecké zpracování týmových dat v akci: Použití Azure HDInsight Hadoop clusterů
-V tomto názorném postupu používáme [vědecké zpracování týmových dat (TDSP)](overview.md) ve scénáři začátku do konce. Používáme [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k ukládání, prozkoumat a funkce analýzu dat z veřejně dostupných [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datovou sadu a na nižší data. Pro zpracování víc tříd a binární klasifikace a úlohy prediktivní regrese, jsme integrovali modely dat pomocí Azure Machine Learning. 
+V tomto názorném postupu používáme [vědecké zpracování týmových dat (TDSP)](overview.md) ve scénáři začátku do konce. Používáme [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k ukládání, prozkoumat a funkce analýzu dat z veřejně dostupných [cesty taxíkem NYC](https://www.andresmh.com/nyctaxitrips/) datovou sadu a na nižší data. Pro zpracování víc tříd a binární klasifikace a úlohy prediktivní regrese, jsme integrovali modely dat pomocí Azure Machine Learning. 
 
 Názorný postup ukazuje, jak zpracovávat větší datové sady, naleznete v tématu [vědecké zpracování týmových dat – pomocí Azure HDInsight Hadoop clusterů v datové sadě 1 TB](hive-criteo-walkthrough.md).
 
@@ -84,7 +84,7 @@ Můžete nastavit prostředí Azure pro pokročilé analýzy, která používá 
 > 
 > 
 
-Pro kopírování [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datovou sadu do počítače z veřejné umístění, použijte některou z metod popsaných v [přesun dat do a z úložiště objektů Blob v Azure](move-azure-blob.md).
+Pro kopírování [cesty taxíkem NYC](https://www.andresmh.com/nyctaxitrips/) datovou sadu do počítače z veřejné umístění, použijte některou z metod popsaných v [přesun dat do a z úložiště objektů Blob v Azure](move-azure-blob.md).
 
 Zde zjistíte, jak pomocí AzCopy můžete přenášet soubory obsahující data. Ke stažení a instalaci AzCopy, postupujte podle pokynů na adrese [Začínáme s nástrojem příkazového řádku azcopy](../../storage/common/storage-use-azcopy.md).
 
@@ -516,7 +516,7 @@ Spusťte následující příkaz z příkazového řádku konzoly Hadoop:
 
 Můžete chtít vědět, jestli je rozdíl mezi přímé vzdálenost mezi dvěma umístěními a vzdálenost skutečné cesty taxislužby. Osobní může být méně pravděpodobné, že tip, pokud se zjistit, že ovladač je záměrně provedenou je delší trasy.
 
-Chcete-li zobrazit srovnání vzdálenost skutečné cesty a [Haversine vzdálenost](http://en.wikipedia.org/wiki/Haversine_formula) mezi dvěma body zeměpisná délka a šířka (vzdálenost "velké kruh"), můžete použít k dispozici trigonometrické funkce v rámci Hive:
+Chcete-li zobrazit srovnání vzdálenost skutečné cesty a [Haversine vzdálenost](https://en.wikipedia.org/wiki/Haversine_formula) mezi dvěma body zeměpisná délka a šířka (vzdálenost "velké kruh"), můžete použít k dispozici trigonometrické funkce v rámci Hive:
 
     set R=3959;
     set pi=radians(180);
@@ -822,8 +822,8 @@ Teď můžete přejít k vytváření modelů a nasazení modelů v [Machine Lea
 Tento ukázkový názorný postup a související skripty sdílí Microsoft v rámci licence MIT. Další podrobnosti najdete v tématu **LICENSE.txt** soubor v adresáři ukázkového kódu na Githubu.
 
 ## <a name="references"></a>Odkazy
-• [Cesty taxíkem NYC Andrés Monroy stránce pro stažení](http://www.andresmh.com/nyctaxitrips/)  
-• [FOILing NYC Taxi Data o jízdách podle Chris Whong](http://chriswhong.com/open-data/foil_nyc_taxi/)   
+• [Cesty taxíkem NYC Andrés Monroy stránce pro stažení](https://www.andresmh.com/nyctaxitrips/)  
+• [FOILing NYC Taxi Data o jízdách podle Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • [NYC taxislužby a Limousine Komise výzkumu a statistiky](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [2]: ./media/hive-walkthrough/output-hive-results-3.png

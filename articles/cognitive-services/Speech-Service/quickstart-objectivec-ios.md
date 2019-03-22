@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 67acc7a074b26cb7614b5e08d25afd7b7c1caa74
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 2520f05c83cb5b727c8cdae1602b39320de4b99d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958503"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094918"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v Objective-C v iOS pomocí sady SDK pro řeč
 
@@ -75,7 +75,7 @@ Nahraďte automaticky generované XML s tímto kódem:
 ## <a name="add-the-sample-code"></a>Přidání vzorového kódu
 
 1. Stáhněte si [ukázkový soubor wav](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-speech-sdk/f9807b1079f3a85f07cbb6d762c6b5449d536027/samples/cpp/windows/console/samples/whatstheweatherlike.wav) tak, že na odkaz kliknete pravým tlačítkem a zvolíte **Uložit cíl jako...**. Přetažením souboru wav z okna Finderu do kořenové úrovně zobrazení projektu přidejte soubor wav do projektu jako prostředek.
-V následujícím dialogovém okně neměňte nastavení a klikněte na **Finish** (Dokončit).
+   V následujícím dialogovém okně neměňte nastavení a klikněte na **Finish** (Dokončit).
 1. Nahraďte obsah automaticky vygenerovaného souboru `ViewController.m` následujícím kódem:
 
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/ViewController.m#code)]
@@ -90,12 +90,12 @@ V následujícím dialogovém okně neměňte nastavení a klikněte na **Finish
 ## <a name="building-and-running-the-sample"></a>Sestavení a spuštění ukázky
 
 1. Zobrazte výstup ladění: vyberte **View** > **Debug Area** > **Activate Console** (Zobrazení > Oblast ladění > Aktivovat konzolu).
-1. V seznamu v nabídce **Product** -> **Destination** (Produkt > Cíl) zvolte jako cíl pro aplikaci simulátor iOS nebo zařízení iOS připojené k vašemu počítači pro vývoj.
+1. Zvolte simulátoru iOS nebo zařízení s Iosem, která jsou připojená do svého vývojového počítače jako cíl pro aplikaci v seznamu **produktu** -> **cílové** nabídky.
 1. Sestavte a spusťte ukázkový kód v simulátoru iOS výběrem možnosti **Product** -> **Run** (Produkt > Spustit) v nabídce nebo kliknutím na tlačítko **Play** (Přehrát).
-Sada Speech SDK v současné době podporuje pouze 64bitové platformy iOS.
+   Sada Speech SDK v současné době podporuje pouze 64bitové platformy iOS.
 1. Po kliknutí na tlačítko „Recognize (File)“ (Rozpoznat – soubor) v aplikaci by se ve spodní části obrazovky měl zobrazit obsah zvukového souboru „What's the weather like?“ (Jaké je počasí?).
 
- ![Simulovaná aplikace pro iOS](media/sdk/qs-objectivec-simulated-app.png)
+   ![Simulovaná aplikace pro iOS](media/sdk/qs-objectivec-simulated-app.png)
 
 1. Po kliknutí na tlačítko „Recognize (Microphone)“ (Rozpoznat – mikrofon) v aplikaci a vyslovení několika slov by se ve spodní části obrazovky měl zobrazit vyslovený text.
 

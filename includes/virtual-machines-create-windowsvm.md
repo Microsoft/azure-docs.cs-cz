@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d4075f644ed1ce42479e35544f0e1442488f78eb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b0b5e817d5e39dd7800a1482d40c56db5f2be6ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29958907"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109419"
 ---
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Spouštění v levém horním, klikněte na tlačítko **vytvořit prostředek** > **výpočetní** > **Windows Server 2016 Datacenter**.
+2. Začněte v levém horním rohu a klikněte na **vytvořit prostředek** > **Compute** > **systému Windows Server 2016 Datacenter**.
 
     ![Přechod k imagím virtuálních počítačů Azure na portálu](./media/virtual-machines-common-portal-create-fqdn/marketplace-new.png)
 
@@ -33,7 +33,7 @@ Okno Základy požaduje informace pro správu virtuálního počítače.
 
 2. Zadejte **uživatelské jméno** a silné **heslo**, které se použijí k vytvoření místního účtu ve virtuálním počítači. Místní účet slouží k přihlášení k virtuálnímu počítači a jeho správě. Uživatelské jméno v tomto příkladu je _azureuser_.
 
- Heslo musí mít 8 až 123 znaků a musí splňovat tři ze čtyř bezpečnostních požadavků: jedno malé písmeno, jedno velké písmeno, jedna číslice a jeden speciální znak. Přečtěte si další informace o [požadavcích na uživatelské jméno a heslo](../articles/virtual-machines/windows/faq.md).
+   Heslo musí mít 8 až 123 znaků a musí splňovat tři ze čtyř bezpečnostních požadavků: jedno malé písmeno, jedno velké písmeno, jedna číslice a jeden speciální znak. Přečtěte si další informace o [požadavcích na uživatelské jméno a heslo](../articles/virtual-machines/windows/faq.md).
 
 3. **Předplatné** je volitelné. Jedním z běžných nastavení jsou průběžné platby.
 
@@ -58,7 +58,7 @@ Zvolte velikost virtuálního počítače a poté pokračujte kliknutím na **Vy
 
 Okno Nastavení vyžaduje možnosti úložiště a sítě. Můžete přijmout výchozí nastavení. Azure v případě potřeby vytvoří odpovídající položky.
 
-Pokud jste vybrali velikost virtuálního počítače, která to podporuje, a jako typ disku vyberete Premium (SSD), můžete vyzkoušet službu Azure Storage úrovně Premium.
+Pokud jste vybrali velikost virtuálního počítače, která to podporuje, a jako typ disku vyberete Premium (SSD), můžete vyzkoušet službu Azure Premium Storage.
 
 Jakmile budete se změnami hotovi, klikněte na **OK**.
 

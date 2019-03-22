@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69b68e5e29d972f95742a28250e07ba69e6a681f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 617a01fdce71e76cf4783ee6a274ee428b0b3b57
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766474"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903554"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Kurz: Integrace Azure Active Directory s Snowflake
 
@@ -134,29 +134,29 @@ Ke konfiguraci Azure AD jednotné přihlašování s Snowflake, proveďte násle
 
 ### <a name="configure-snowflake-single-sign-on"></a>Konfigurace Snowflake jednotného přihlašování
 
-8. V jiné okno webového prohlížeče, přihlaste se ke Snowflake jako správce zabezpečení.
+1. V jiné okno webového prohlížeče, přihlaste se ke Snowflake jako správce zabezpečení.
 
-9. **Přepnout Role** k **ACCOUNTADMIN**, kliknutím na **profilu** v pravé horní části stránky.
+1. **Přepnout Role** k **ACCOUNTADMIN**, kliknutím na **profilu** v pravé horní části stránky.
 
     > [!NOTE]
     > Toto je oddělené od kontextu, ve kterém jste zvolili v pravém horním rohu pod názvem vašeho uživatele
     
     ![Správce Snowflake](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
-10. Otevřít **stáhnout certifikát Base 64** v poznámkovém bloku. Zkopírujte hodnotu mezi "---BEGIN CERTIFICATE---" a "-END CERTIFICATE---" a vložit do uvozovek vedle **certifikát** níže. V **ssoUrl**, vložte **přihlašovací adresa URL** hodnotu, která jste zkopírovali z portálu Azure portal. Vyberte **všechny dotazy** a klikněte na tlačítko **spustit**.
+1. Otevřít **stáhnout certifikát Base 64** v poznámkovém bloku. Zkopírujte hodnotu mezi "---BEGIN CERTIFICATE---" a "-END CERTIFICATE---" a vložit do uvozovek vedle **certifikát** níže. V **ssoUrl**, vložte **přihlašovací adresa URL** hodnotu, která jste zkopírovali z portálu Azure portal. Vyberte **všechny dotazy** a klikněte na tlačítko **spustit**.
 
-    ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
+   ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
 
-    ```
-    use role accountadmin;
-    alter account set saml_identity_provider = '{
-    "certificate": "<Paste the content of downloaded certificate from Azure portal>",
-    "ssoUrl":"<Login URL value which you have copied from the Azure portal>",
-    "type":"custom",
-    "label":"AzureAD"
-    }';
-    alter account set sso_login_page = TRUE;
-    ```
+   ```
+   use role accountadmin;
+   alter account set saml_identity_provider = '{
+   "certificate": "<Paste the content of downloaded certificate from Azure portal>",
+   "ssoUrl":"<Login URL value which you have copied from the Azure portal>",
+   "type":"custom",
+   "label":"AzureAD"
+   }';
+   alter account set sso_login_page = TRUE;
+   ```
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
@@ -176,7 +176,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

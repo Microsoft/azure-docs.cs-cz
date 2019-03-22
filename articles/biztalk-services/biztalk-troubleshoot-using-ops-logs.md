@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: f69035202a3358af38ebaf8e94abdd3b030e633f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e58a62761284e0671c0083d41f5dde4c13b32fe2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256064"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108252"
 ---
-# <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk Services: Řešení potíží pomocí protokolů operací
+# <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk Services: Odstraňování potíží pomocí protokolů operací
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
-
+> 
 > [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 ## <a name="what-are-the-operation-logs"></a>Co jsou protokoly operací
@@ -39,7 +39,7 @@ Protokoly operací je funkce, služby pro správu, která vám umožní zobrazit
 ## <a name="view-biztalk-services-operation-logs"></a>Zobrazit protokoly operací služby BizTalk Services
 1. Na portálu vyberte **Management Services**a pak vyberte **protokoly operací** kartu.
 2. Můžete filtrovat protokoly podle různých parametrů, jako je předplatné, rozsah kalendářních dat, typ služby (např. služby BizTalk), název služby nebo stav operace (úspěšné, neúspěšné).
-3. Vyberte značku zaškrtnutí zobrazíte filtrovaný seznam. Na následujícím obrázku zobrazuje aktivity související s testbiztalkservice: ![zobrazit protokoly operací][ViewLogs] 
+3. Vyberte značku zaškrtnutí zobrazíte filtrovaný seznam. Aktivity související s testbiztalkservice naleznete na následujícím obrázku: ![Zobrazení protokolů operací][ViewLogs] 
 4. Chcete-li zobrazit informace o konkrétní operaci, vyberte řádek a klikněte na tlačítko **podrobnosti** na hlavním panelu v dolní části.
 
 ## <a name="bizops"></a>Operace, které jsou sledovány v rámci služeb Azure pro správu
@@ -67,11 +67,11 @@ V následující tabulce jsou uvedeny operace, které jsou sledovány v rámci s
 * [Zálohování služby BizTalk](https://go.microsoft.com/fwlink/p/?LinkID=325584)
 * [Obnovení ze zálohy služby BizTalk](https://go.microsoft.com/fwlink/p/?LinkID=325582)
 * [BizTalk Services: Developer, Basic, Standard a Premium tabulka edic](https://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [BizTalk Services: zřízení](https://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk Services: Zřizování](https://go.microsoft.com/fwlink/p/?LinkID=302280)
 * [BizTalk Services: Tabulka stavů zřízení](https://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [BizTalk Services: Karty Řídicí panel, Sledování a Škálování](https://go.microsoft.com/fwlink/p/?LinkID=302281)
-* [BizTalk Services: Omezování](https://go.microsoft.com/fwlink/p/?LinkID=302282)
-* [BizTalk Services: Název a klíč vystavitele](https://go.microsoft.com/fwlink/p/?LinkID=303941)
+* [BizTalk Services: Karty řídicí panel, sledování a škálování](https://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [BizTalk Services: Omezení šířky pásma](https://go.microsoft.com/fwlink/p/?LinkID=302282)
+* [BizTalk Services: Název vystavitele a klíč vystavitele](https://go.microsoft.com/fwlink/p/?LinkID=303941)
 * [Jak začít používat sadu SDK Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png

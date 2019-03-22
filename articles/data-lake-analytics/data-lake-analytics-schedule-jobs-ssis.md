@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 7d5630c082c044ac936f555965aec5a2a00f3544
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 5393e202c7b5005552f164c9c6f55da92fc82572
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448716"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104433"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Plánování úloh U-SQL pomocí SQL Server Integration Services (SSIS)
 
@@ -93,16 +93,16 @@ V zobrazení návrhu balíčku služby SSIS, přidejte **úlohy Azure Data Lake 
     
     Chcete-li vytvořit toto připojení k souboru:
 
-    1. Zvolte **<New Connection...>** FileConnection nastavení.
-    2. Nastavte **typ použití** k **existující soubor**a nastavte **souboru** cestu všechny existující soubory.
+   1. Zvolte **<New Connection...>** FileConnection nastavení.
+   2. Nastavte **typ použití** k **existující soubor**a nastavte **souboru** cestu všechny existující soubory.
 
-        ![Konfigurace kontejneru smyčky Foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       ![Konfigurace kontejneru smyčky Foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
-    3. V **připojení správci** zobrazení, klikněte pravým tlačítkem na připojení souboru právě vytvořili a zvolte **vlastnosti**.
+   3. V **připojení správci** zobrazení, klikněte pravým tlačítkem na připojení souboru právě vytvořili a zvolte **vlastnosti**.
 
-    4. V **vlastnosti** okna rozbalte **výrazy**a nastavte **ConnectionString** proměnné definované v kontejneru smyčky Foreach, například `@[User::FileName]`.
+   4. V **vlastnosti** okna rozbalte **výrazy**a nastavte **ConnectionString** proměnné definované v kontejneru smyčky Foreach, například `@[User::FileName]`.
 
-        ![Konfigurace kontejneru smyčky Foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
+       ![Konfigurace kontejneru smyčky Foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
 3. Nastavte **AzureDataLakeAnalyticsConnection** k účtu Azure Data Lake Analytics, které chcete odesílat úlohy do. Další informace o [Správce připojení Azure Data Lake Analytics](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017).
 

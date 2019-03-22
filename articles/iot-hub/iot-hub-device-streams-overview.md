@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: b5e42585178505ee4c23ca4054e83f61ee1254b8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 024bb29f9d7276021888e949073f6d45aed0a249
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436132"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076271"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub zařízení datové proudy (preview)
 
@@ -123,7 +123,7 @@ Postupujte podle pokynů níže nakonfigurujte protokoly Azure monitoru pro akti
 
 1. Přejděte *nastavení diagnostiky* kartě ve službě IoT Hub a klikněte na *zapnout diagnostiku* odkaz.
 
-  ![Alternativní text](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings.PNG "povolení disgnostics protokoly")
+   ![Alternativní text](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings.PNG "povolení disgnostics protokoly")
 
 
 2. Zadejte název pro nastavení diagnostiky a zvolte *odesílat do Log Analytics* možnost. Průvodce zvolte existující prostředek pracovního prostoru Log Analytics nebo vytvořte novou. Dále zkontrolujte, *DeviceStreams* ze seznamu.

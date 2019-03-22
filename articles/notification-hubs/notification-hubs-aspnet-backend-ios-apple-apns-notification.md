@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: d69a2a26fb0b487a3efa4b5376ca6480569aa846
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9b6c0715cb85e245aba94adfb8b33d0d07ece9a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450885"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084408"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení odesílaná konkrétním uživatelům pomocí Azure Notification Hubs
 
@@ -64,7 +64,7 @@ Pokud chcete použít jako back-end službu Mobile Apps, najdete v článku [Mob
    * **APNS**: Popisek a přepnete se do umožnit odesílání oznámení do služby Apple Notification platformy.
    * **Příjemce Username:A** UITextField zástupným textem *značky uživatelského jména příjemců*, bezprostředně pod služby GCM označovat popisky a omezené na levý a pravý okraj a pod popisek služby GCM.
 
-    Byly přidány některé součásti [Začínáme se službou Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) kurzu.
+     Byly přidány některé součásti [Začínáme se službou Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) kurzu.
 
 3. **CTRL** přetáhnout z komponenty v zobrazení `ViewController.h` a přidejte tyto nové výstupy.
 

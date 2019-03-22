@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 03920bc3ed17eac9d76cea78877f1f008e83f4dd
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bcaf470fae34056fe932cf8b5fd3076899f895ae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196708"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880275"
 ---
 # <a name="create-a-new-saas-application-offer"></a>Vytvořit novou nabídku aplikace SaaS
 
@@ -34,6 +34,7 @@ Následující diagram znázorňuje proces vytvoření nabídku aplikace SaaS.
 ## <a name="offer-components"></a>Nabídka komponenty
 
 Nabídky SaaS aplikace se skládá z pěti oddílů, jsou popsané v následující tabulce:
+
 |  **Skupiny prostředků**   |  **Popis**  |
 |  ---------------   |  ---------------  |
 |    Nabídka nastavení  |  Slouží ke konfiguraci jedinečné identity pro aplikace SaaS.                 |
@@ -45,7 +46,7 @@ Nabídky SaaS aplikace se skládá z pěti oddílů, jsou popsané v následují
 
 ## <a name="new-offer-form"></a>Formulář nové nabídky
 
-Přihlaste se k [portál partnerů cloudu](http://cloudpartner.azure.com/)a pak vyberte **+ nová nabídka** na panelu nabídky vlevo. Na nové nabídky nabídku, vyberte **aplikace SaaS** nová nabídka formulář pro zobrazení a zahájit proces definice prostředků pro nové nabídky aplikace SaaS.
+Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/)a pak vyberte **+ nová nabídka** na panelu nabídky vlevo. Na nové nabídky nabídku, vyberte **aplikace SaaS** nová nabídka formulář pro zobrazení a zahájit proces definice prostředků pro nové nabídky aplikace SaaS.
 
 ![Nabídka Nová nabídka pro aplikace SaaS](./media/azure-new-saas-offer.png)
 
@@ -54,8 +55,8 @@ Přihlaste se k [portál partnerů cloudu](http://cloudpartner.azure.com/)a pak 
 Na stránce Nová nabídka pro typ nabídky SaaS poskytuje sadu karet a pole formuláře, které použijete k vytvoření nové nabídky. Každý z následujících článků vysvětluje, jak karta slouží k definování skupin prostředků a služeb podpory pro nové nabídky.
 
 - [Karta Nastavení nabídky](./cpp-offer-settings-tab.md)
-- [Technické informace o kartě](./cpp-technical-info-tab.md)
-- [Karta kanál](./cpp-channel-info-tab.md)
+- [Karta Technické informace](./cpp-technical-info-tab.md)
+- [Karta informací o kanálech](./cpp-channel-info-tab.md)
 - [Karta Testovací verze](./cpp-testdrive-tab.md)
-- [Prezentace kartu Podrobnosti](./cpp-storefront-tab.md)
-- [Kartu kontakty](./cpp-contacts-tab.md)
+- [Karta podrobností o prodejních místech](./cpp-storefront-tab.md)
+- [Karta Kontakty](./cpp-contacts-tab.md)

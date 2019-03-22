@@ -1,6 +1,6 @@
 ---
 title: Kurz – sdílení mezi relacemi a zařízeními pomocí prostorových kotvy Azure | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak sdílet identifikátory Azure prostorových ukotvení mezi zařízeními v Unity s back-end služby.
+description: V tomto kurzu se dozvíte, jak sdílet identifikátory Azure prostorových ukotvení mezi zařízeními s Androidem a iOS v Unity s back-end služby.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: df7f8aa5b49e3fe17be3b17a6e0f5d8861b26253
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 7d9fe58b7db60513eed81aae628ebd7ca754a53a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752134"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901300"
 ---
 # <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors"></a>Kurz: Sdílení mezi relacemi a zařízeními pomocí prostorových kotev vztahů Azure
 
@@ -37,9 +37,13 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-Je vhodné vašeho povšimnutí, že i když je budete v tomto kurzu pomocí Unity a webové aplikace ASP.NET Core, je pouze k zobrazení příkladu o tom, jak sdílet identifikátory Azure prostorových ukotvení na jiných zařízeních. Uživatele můžete ostatní jazyky a back endové technologie k dosažení stejného cíle. Webové aplikace ASP.NET Core v tomto kurzu používá také obsahuje závislost na rozhraní .NET Core 2.2 SDK. Běží bez problémů v pravidelných Azure Web Apps (pro Windows), ale nebudou fungovat aktuálně ve službě Azure Web Apps pro Linux.
+Je vhodné vašeho povšimnutí, že i když je budete v tomto kurzu pomocí Unity a webové aplikace ASP.NET Core, je pouze k zobrazení příkladu o tom, jak sdílet identifikátory Azure prostorových ukotvení na jiných zařízeních. Ostatní jazyky a back endové technologie, můžete použít k dosažení stejného cíle. Webové aplikace ASP.NET Core v tomto kurzu používá také obsahuje závislost na rozhraní .NET Core 2.2 SDK. Běží bez problémů v pravidelných Azure Web Apps (pro Windows), ale nebudou fungovat aktuálně ve službě Azure Web Apps pro Linux.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
+
+## <a name="open-the-sample-project-in-unity"></a>Otevřete ukázkový projekt v Unity
+
+[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
 ## <a name="deploy-your-sharing-anchors-service"></a>Nasazení služby Sdílení kotvy
 
@@ -47,13 +51,19 @@ Otevřít Visual Studio a otevřete projekt v `Sharing\SharingServiceSample` slo
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
+## <a name="open-the-sample-project-in-unity"></a>Otevřete ukázkový projekt v Unity
+
+[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste nasazené webové aplikace ASP.NET Core v Azure a potom konfiguraci a nasazení aplikace Unity. Jste vytvořili prostorových ukotvení s aplikací a pomocí webové aplikace ASP.NET Core je sdílet s jinými zařízeními. Další informace o tom, jak zlepšit vaše webové aplikace ASP.NET Core tak, aby používala Cosmos DB k ukládání vaše sdílené prostorových kotev vztahů, pokračujte k dalšímu kurzu.
+V tomto kurzu jste nasazené webové aplikace ASP.NET Core v Azure a potom konfiguraci a nasazení aplikace Unity. Jste vytvořili prostorových ukotvení s aplikací a pomocí webové aplikace ASP.NET Core je sdílet s jinými zařízeními.
+
+Další informace o tom, jak zlepšit vaše webové aplikace ASP.NET Core tak, aby používal službu Azure Cosmos DB k ukládání vaše sdílené prostorových kotev vztahů, pokračujte k dalšímu kurzu.
 
 > [!div class="nextstepaction"]
-> [Kurz: Pomocí služby Cosmos DB na Store ukotvení](./tutorial-use-cosmos-db-to-store-anchors.md)
+> [Kurz: Použití služby Azure Cosmos DB na Store ukotvení](./tutorial-use-cosmos-db-to-store-anchors.md)

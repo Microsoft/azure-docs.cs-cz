@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: service-health
 ms.workload: Supportability
 ms.date: 3/27/2018
-ms.openlocfilehash: 898f2eca0b6cc115f56bcae195c58c6eef190694
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 69b142cd46c006e562218c949fb450864589a661
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884864"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838064"
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>Konfigurace oznámení o stavu pro existující systémy pro správu problémů pomocí webhooku
 
@@ -59,7 +59,7 @@ Od nejnižší závažnost na nejvyšší závažnost `level` vlastnost v datov�
 
 ## <a name="parsing-the-impacted-services-to-understand-the-full-scope-of-the-incident"></a>Analýza kódu ovlivněné služby pochopit plný rozsah incidentu
 Upozornění na stav služby může informovat o problémech ve více oblastech a služeb. Pokud chcete získat všechny podrobnosti, potřebujete analyzovat hodnotu `impactedServices`.
-Obsah uvnitř je [JSON uvozeny řídicími znaky](http://json.org/) řetězec, když znaků bez řídících, obsahuje jiný objekt JSON, který může být analyzován pravidelně.
+Obsah uvnitř je [JSON uvozeny řídicími znaky](https://json.org/) řetězec, když znaků bez řídících, obsahuje jiný objekt JSON, který může být analyzován pravidelně.
 
 ```json
 {"data.context.activityLog.properties.impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"Australia East\"},{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"Alerts & Metrics\"},{\"ImpactedRegions\":[{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"App Service\"}]"}

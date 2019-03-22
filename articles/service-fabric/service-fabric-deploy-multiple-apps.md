@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: ea2f27069ca445a4d74ddc634f5c396ab13564a1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.openlocfilehash: 4d9dfbcfc1dd00209a90386bf75f0c2515a28060
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248992"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854462"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Nasazení několika hostujících spustitelných souborů
 Tento článek ukazuje, jak balení a nasazení několika hostujících spustitelných souborů do Azure Service Fabric. Vytváření a nasazování jednoho balíčku Service Fabric najdete v návodu k [nasazení spustitelný soubor typu Host do Service Fabric](service-fabric-deploy-existing-app.md).
 
 Zatímco tento návod ukazuje, jak nasadit aplikaci s front-endu na Node.js, která jako úložiště dat používá MongoDB, můžete provést kroky pro každou aplikaci, která obsahuje závislosti na jinou aplikaci.   
 
-Visual Studio můžete použít k vytvoření balíčku aplikace, která obsahuje několika hostujících spustitelných souborů. Zobrazit [pomocí sady Visual Studio zabalit existující aplikaci](service-fabric-deploy-existing-app.md). Po přidání první spustitelný soubor typu Host, klikněte pravým tlačítkem na projekt aplikace a vyberte **Přidat -> Nový Service Fabric service** přidáte druhý projekt spustitelný soubor typu Host do řešení. Poznámka: Pokud budete chtít propojit zdroje v projektu sady Visual Studio, vytvářet řešení sady Visual Studio, budete mít jistotu, že je aktuální změny ve zdroji balíčku aplikace. 
+Visual Studio můžete použít k vytvoření balíčku aplikace, která obsahuje několika hostujících spustitelných souborů. Zobrazit [pomocí sady Visual Studio zabalit existující aplikaci](service-fabric-deploy-existing-app.md). Po přidání první spustitelný soubor typu Host, klikněte pravým tlačítkem na projekt aplikace a vyberte **Přidat -> Nový Service Fabric service** přidáte druhý projekt spustitelný soubor typu Host do řešení. Poznámka: Pokud budete chtít propojit zdroje v projektu sady Visual Studio, vytváření řešení sady Visual Studio se ujistěte se, že je aktuální změny ve zdroji balíčku aplikace. 
 
 ## <a name="samples"></a>Ukázky
 * [Ukázka pro balení a nasazení hostujícího spustitelného souboru](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
@@ -167,7 +167,7 @@ Teď přejděte do adresáře a zkontrolujte, co nástroj vytvořil.
 Jak je vidět, nástroj Přidat novou složku, MongoDB, k adresáři, který obsahuje binární soubory MongoDB. Pokud otevřete `ApplicationManifest.xml` souboru, uvidíte, že balíček nyní obsahuje jak aplikací v Node.js a MongoDB. Následující kód zobrazí obsah manifestu aplikace.
 
 ```xml
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceManifestImport>
       <ServiceManifestRef ServiceManifestName="MongoDB" ServiceManifestVersion="1.0" />
    </ServiceManifestImport>

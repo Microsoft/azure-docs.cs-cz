@@ -6,16 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: larryfr
-ms.author: haining
-author: hning86
+ms.author: larryfr
+author: Blackmist
 ms.date: 02/11/2019
-ms.openlocfilehash: d91cb2a98c6861695ffdc231bd979abaf24b2c6e
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2b5ee1b5079f22985b03aaafac30c11a10a3c8f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669988"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850073"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace-by-using-a-template"></a>Vytvořit pracovní prostor služby Azure Machine Learning pomocí šablony
 
@@ -25,7 +24,7 @@ Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure R
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatného Azure**. Pokud nemáte, zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree).
+* **Předplatného Azure**. Pokud nemáte, zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Použití šablony z rozhraní příkazového řádku, je nutné buď [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -193,12 +192,12 @@ Další informace o šablonách najdete v následujících článcích:
 1. Postupujte podle kroků v [nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Při doručení na __úpravy šablony__ obrazovky, vložte do šablony z tohoto dokumentu.
 1. Vyberte __Uložit__ použít šablonu. Zadejte následující informace a souhlas s uvedené podmínky a ujednání:
 
-    * Předplatné: Vyberte předplatné Azure má použít pro tyto prostředky.
-    * Skupina zdrojů: Vyberte nebo vytvořte skupinu prostředků k obsáhnutí služeb.
-    * Název pracovního prostoru: Název, který se má použít pro pracovní prostor Azure Machine Learning, která bude vytvořena. Název pracovního prostoru musí být dlouhý 3 až 33 znaků. Může obsahovat jenom alfanumerické znaky a "-".
-    * Umístění: Vyberte umístění, kde se prostředky vytvoří.
+   * Předplatné: Vyberte předplatné Azure má použít pro tyto prostředky.
+   * Skupina zdrojů: Vyberte nebo vytvořte skupinu prostředků k obsáhnutí služeb.
+   * Název pracovního prostoru: Název, který se má použít pro pracovní prostor Azure Machine Learning, která bude vytvořena. Název pracovního prostoru musí být dlouhý 3 až 33 znaků. Může obsahovat jenom alfanumerické znaky a "-".
+   * Umístění: Vyberte umístění, kde se prostředky vytvoří.
 
-    ![Parametry šablony na webu Azure Portal](media/how-to-create-workspace-template/template-parameters.png)
+     ![Parametry šablony na webu Azure Portal](media/how-to-create-workspace-template/template-parameters.png)
 
 Další informace najdete v tématu [nasazení prostředků z vlastní šablony](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 

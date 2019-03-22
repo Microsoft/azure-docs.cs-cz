@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1927e9b4aeec6f424c69632d8811c49c97d3aad1
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 9634e2578ea256d1dec71389f676ee53627e6272
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961546"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077764"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Zálohování a obnovení přihlašovacích údajů účtu v aplikaci Microsoft Authenticator
 
@@ -27,9 +27,9 @@ ms.locfileid: "56961546"
 
 Aplikace Microsoft Authenticator zálohuje vaše přihlašovací údaje k účtu a související aplikace nastavení, například pořadí z vašich účtů do cloudu. Po dokončení zálohování, můžete také použít aplikace obnovte informace na novém zařízení, potenciálně zabránit získávání uzamčen na více instancí nebo nutnosti opětného vytváření účtů.
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Pro každé umístění úložiště pro zálohování budete potřebovat jeden osobní účet Microsoft a jeden účet serveru služby iCloud. Ale v tomto umístění úložiště, můžete zálohovat několik účtů. Například můžete mít osobní účet, školní účet a účet třetích stran, jako je Facebook, Google a tak dále.
-
+> 
 > Ukládají se jenom osobní a 3. stran přihlašovacích údajů svého účtu, což zahrnuje uživatelské jméno a ověřovací kód účtu, který je potřeba k prokázání své identity. Neukládáme nějakých jiných informací, které jsou přidružené k účtům, včetně e-mailů nebo souborů. Můžeme také není přidružení nebo sdílet vaše účty žádným způsobem nebo všem produktům a službám. A nakonec nebude váš správce IT získat všechny informace o všech těchto účtů.
 
 ## <a name="back-up-your-account-credentials"></a>Zálohování přihlašovacích údajů k účtu

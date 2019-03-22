@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: a5df9215aec0b6c774b37f17b699e91ef813754d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 619b9b68a5c4e897642e1f84c25c2822d8291400
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771069"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104484"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Zásady koncových bodů služby Virtual Network (Preview)
 
@@ -158,11 +158,11 @@ Zásady koncových bodů služeb nepodporují centrální přihlašování. Info
 - Účty uvedené v zásadách koncových bodů mají zakázaný přístup
   - Přístup mohou blokovat skupiny zabezpečení sítě nebo filtry brány firewall.
   - Pokud odebrání nebo opětovné použití zásady vede ke ztrátě připojení:
-   - Ověřte, jestli je služba Azure nakonfigurovaná tak, aby povolovala přístup z virtuální sítě přes koncové body, nebo že je výchozí zásada pro prostředek nastavená na *Povolit vše*.
+    - Ověřte, jestli je služba Azure nakonfigurovaná tak, aby povolovala přístup z virtuální sítě přes koncové body, nebo že je výchozí zásada pro prostředek nastavená na *Povolit vše*.
       > [!NOTE]      
       > Prostředky služeb nemusí být připojené k virtuálním sítím, aby byl možný přístup prostřednictvím zásad koncových bodů. Jako osvědčený bezpečný postup ale doporučujeme, aby prostředky služby byly připojené k důvěryhodným sítím, jako jsou virtuální sítě Azure, prostřednictvím koncových bodů služeb a v místním prostředí prostřednictvím IP firewallu.
   
-   - Ověřte, jestli diagnostika služby zobrazuje provoz v koncových bodech.
+    - Ověřte, jestli diagnostika služby zobrazuje provoz v koncových bodech.
     - Zkontrolujte, jestli se v protokolech toků skupin zabezpečení sítě zobrazuje očekávaný přístup nebo jestli se zobrazuje v protokolech úložišť (v koncových bodech služby).
     - Kontaktujte podporu Azure.
 - Přístup se zamítne účtům, které nejsou uvedené v zásadách koncového bodu služby

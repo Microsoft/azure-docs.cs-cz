@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: 9e36ac41fb42d7c0e00dca6dc82f2f5daee1278b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 00cdc8de45d2f0177cd1f097fb874cbe67f7e442
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435537"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120121"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integraci služby API Management v interní virtuální síti pomocí služby Application Gateway
 
@@ -356,7 +356,7 @@ Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ## <a name="summary"> </a> Souhrn
 Nakonfigurovaná ve virtuální síti Azure API Management poskytuje rozhraní jednu bránu pro všechny nakonfigurované rozhraní API, ať už jsou hostované v místním prostředí nebo v cloudu. Integrace Application Gateway pomocí služby API Management nabízí flexibilitu selektivně povolení konkrétní rozhraní API bude přístupný na Internetu, a také poskytuje firewallu webových aplikací jako front-endu k vaší instanci API Management.
 
-##<a name="next-steps"> </a> Další kroky
+## <a name="next-steps"> </a> Další kroky
 * Další informace o službě Azure Application Gateway
   * [Přehled služby Application Gateway](../application-gateway/application-gateway-introduction.md)
   * [Firewall webových aplikací pomocí Application Gateway](../application-gateway/application-gateway-webapplicationfirewall-overview.md)

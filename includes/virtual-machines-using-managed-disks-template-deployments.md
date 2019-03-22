@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: 0c21ba3df6805c053f3d318d1ca3734a89c2ab60
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 6085eb2b520217c4e678a75032e8a1cb4b9343ec
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400157"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58261553"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Použití spravovaných disků v šablonách Azure Resource Manageru
 
@@ -26,8 +26,8 @@ Pokud chcete začít, můžeme vzít podívat, jak nespravované disky jsou nasa
 ```json
 {
     "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2018-07-01",
     "name": "[variables('storageAccountName')]",
-    "apiVersion": "2016-01-01",
     "location": "[resourceGroup().location]",
     "sku": {
         "name": "Standard_LRS"
@@ -41,8 +41,8 @@ V rámci objektu VM přidáte závislost na účet úložiště a ověřte, že 
 
 ```json
 {
-    "apiVersion": "2015-06-15",
     "type": "Microsoft.Compute/virtualMachines",
+    "apiVersion": "2018-10-01",
     "name": "[variables('vmName')]",
     "location": "[resourceGroup().location]",
     "dependsOn": [
@@ -100,8 +100,8 @@ Vytvoření virtuálního počítače se spravovanými disky, je už nebude pot�
 
 ```json
 {
-    "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/virtualMachines",
+    "apiVersion": "2018-10-01",
     "name": "[variables('vmName')]",
     "location": "[resourceGroup().location]",
     "dependsOn": [
@@ -142,8 +142,8 @@ Jako alternativu k určení konfigurace disku v objektu virtuálního počítač
 ```json
 {
     "type": "Microsoft.Compute/disks",
+    "apiVersion": "2018-06-01",
     "name": "[concat(variables('vmName'),'-datadisk1')]",
-    "apiVersion": "2017-03-30",
     "location": "[resourceGroup().location]",
     "sku": {
         "name": "Standard_LRS"
@@ -161,8 +161,8 @@ V rámci objektu VM odkazujete na objekt disk, který chcete připojit. Určení
 
 ```json
 {
-    "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/virtualMachines",
+    "apiVersion": "2018-10-01",
     "name": "[variables('vmName')]",
     "location": "[resourceGroup().location]",
     "dependsOn": [
@@ -206,8 +206,8 @@ Vytvoření spravované skupiny dostupnosti s virtuálními počítači pomocí 
 
 ```json
 {
-    "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/availabilitySets",
+    "apiVersion": "2018-10-01",
     "location": "[resourceGroup().location]",
     "name": "[variables('avSetName')]",
     "properties": {

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 7e5cf79613bdbd62427e99a0d1f2aa29ed8f85be
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: becf48320b346feea82944ed2f7e752125795d40
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245187"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999506"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Požadavky systému virtuálních polí StorSimple
 ## <a name="overview"></a>Přehled
@@ -72,7 +72,7 @@ Následující softwarové požadavky jsou určené pro iniciátory iSCSI, kter�
 
 | **Podporované operační systémy** | **Požadovaná verze** | **Další požadavky a poznámky** |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1, 2012, 2012 R2 |StorSimple můžete vytvářet dynamicky zajištěné a zcela zřizované svazky. Ho nelze vytvářet částečně zřizované svazky. ISCSI svazky zařízení StorSimple jsou podporovaná jenom pro: <ul><li>Jednoduché svazky ve Windows běžné disky.</li><li>Windows: pro formátování svazku systému souborů NTFS.</li> |
+| Windows Server |2008R2 SP1, 2012, 2012R2 |StorSimple můžete vytvářet dynamicky zajištěné a zcela zřizované svazky. Ho nelze vytvářet částečně zřizované svazky. ISCSI svazky zařízení StorSimple jsou podporovaná jenom pro: <ul><li>Jednoduché svazky ve Windows běžné disky.</li><li>Windows: pro formátování svazku systému souborů NTFS.</li> |
 
 Následující softwarové požadavky jsou pro klienty SMB, které přistupují k StorSimple Virtual Array (nakonfigurovali jako souborový server).
 
@@ -94,13 +94,13 @@ Následující tabulka uvádí porty, které je potřeba otevřít v bráně fir
 
 | **Číslo portu<sup>1</sup>** | **Snížení nebo navýšení kapacity** | **Rozsah portů** | **Požadováno** | **Poznámky** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Výstup |WAN |Ne |Odchozí port se používá pro přístup k Internetu pro načtení aktualizací. <br></br>Odchozí webový proxy server je konfigurovatelná uživatelem. |
-| TCP 443 (HTTPS) |Výstup |WAN |Ano |Odchozí port se používá pro přístup k datům v cloudu. <br></br>Odchozí webový proxy server je konfigurovatelná uživatelem. |
-| UDP 53 (DNS) |Výstup |WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová DNS. <br></br> Všimněte si, že pokud nasazení souborového serveru, doporučujeme použít místní server DNS. |
-| UDP 123 (NTP) |Výstup |WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová NTP.<br></br> Všimněte si, že pokud nasazení souborového serveru, doporučujeme, abyste synchronizace času se řadiče domény služby Active Directory. |
+| TCP 80 (HTTP) |Výstup |Síť WAN |Ne |Odchozí port se používá pro přístup k Internetu pro načtení aktualizací. <br></br>Odchozí webový proxy server je konfigurovatelná uživatelem. |
+| TCP 443 (HTTPS) |Výstup |Síť WAN |Ano |Odchozí port se používá pro přístup k datům v cloudu. <br></br>Odchozí webový proxy server je konfigurovatelná uživatelem. |
+| UDP 53 (DNS) |Výstup |Síť WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová DNS. <br></br> Všimněte si, že pokud nasazení souborového serveru, doporučujeme použít místní server DNS. |
+| UDP 123 (NTP) |Výstup |Síť WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová NTP.<br></br> Všimněte si, že pokud nasazení souborového serveru, doporučujeme, abyste synchronizace času se řadiče domény služby Active Directory. |
 | TCP 80 (HTTP) |V |LAN |Ano |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. <br></br> Všimněte si, že přístup k místním uživatelského rozhraní pomocí protokolu HTTP bude automaticky přesměrovat na protokol HTTPS. |
 | TCP 443 (HTTPS) |V |LAN |Ano |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. |
-| 3260 TCP (iSCSI) |V |LAN |Ne |Tento port se používá pro přístup k datům přes iSCSI. |
+| TCP 3260 (iSCSI) |V |LAN |Ne |Tento port se používá pro přístup k datům přes iSCSI. |
 
 <sup>1</sup> žádné příchozí porty je potřeba otevřít na veřejném Internetu.
 
@@ -125,12 +125,12 @@ Doporučujeme nastavit pravidla brány firewall pro odchozí provoz, podle StorS
 | --- | --- |
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|Služba Správce zařízení StorSimple<br>Access Control Service<br>Azure Service Bus<br>Ověřovací služba|
 | `http://*.backup.windowsazure.com` |Registrace zařízení |
-| `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |Odvolání certifikátu |
+| `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Odvolání certifikátu |
 | `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Účty úložiště Azure a monitorování |
-| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com` |Servery Microsoft Update<br> |
+| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Servery Microsoft Update<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
 | `https://*.partners.extranet.microsoft.com/*` |Balíček pro podporu |
-| `http://*.data.microsoft.com ` |Telemetrické službě ve Windows, najdete v článku [aktualizace pro uživatelské prostředí a telemetrická data diagnostiky](https://support.microsoft.com/en-us/kb/3068708) |
+| `https://*.data.microsoft.com ` |Telemetrické službě ve Windows, najdete v článku [aktualizace pro uživatelské prostředí a telemetrická data diagnostiky](https://support.microsoft.com/en-us/kb/3068708) |
 
 ## <a name="next-steps"></a>Další postup
 * [Příprava portálu nasazení StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md)

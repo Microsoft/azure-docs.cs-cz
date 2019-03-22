@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: e2f0fb6333f3786b29c2a7516e46a4599d6e89ed
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 36b60b3784739a884b887a29f3dd53c61c44cd6f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961005"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57851342"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložit a konfigurace konfigurace služby API Management pomocí Gitu
 
@@ -53,9 +53,9 @@ Pokud chcete zobrazit a konfigurovat nastavení konfigurace Git, můžete klikno
 ![Povolit GIT][api-management-enable-git]
 
 > [!IMPORTANT]
-> Všechny tajné klíče, které nejsou definovány vlastnosti bude uložen v úložišti a zůstanou v historii do můžete zakázat a znovu povolit přístup Git. Vlastnosti poskytují zabezpečené místo, kde můžete spravovat konstantní hodnoty řetězce, včetně tajné kódy, přes všechny zásady a konfigurace rozhraní API, takže není nutné pro ukládání přímo v příkazech vaše zásady. Další informace najdete v tématu [jak používat vlastnosti v Azure API Management zásady](api-management-howto-properties.md).
-> 
-> 
+> Všechny tajné klíče, které nejsou definovány jako pojmenované hodnoty se uloží v úložišti a zůstane v historii, dokud zakázat a znovu povolit přístup Git. Pojmenované hodnoty poskytovat zabezpečené místo, kde můžete spravovat konstantní hodnoty řetězce, včetně tajné kódy, přes všechny zásady a konfigurace rozhraní API, takže není nutné pro ukládání přímo v příkazech vaše zásady. Další informace najdete v tématu [použití hodnoty s názvem v zásady služby Azure API Management](api-management-howto-properties.md).
+>
+>
 
 Informace o povolení nebo zakázání přístupu Git pomocí rozhraní REST API najdete v tématu [povolit nebo zakázat Git přístup pomocí rozhraní REST API](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit).
 
@@ -73,13 +73,13 @@ Informace o provedení této operace pomocí rozhraní REST API najdete v témat
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>Naklonujte úložiště do svého místního počítače
 
-Klonování úložiště, musíte adresu URL úložiště, uživatelské jméno a heslo. Pokud chcete získat uživatelské jméno a jiné přihlašovací údaje, klikněte na **přístup k přihlašovacím údajům** v horní části stránky.  
- 
+Klonování úložiště, musíte adresu URL úložiště, uživatelské jméno a heslo. Pokud chcete získat uživatelské jméno a jiné přihlašovací údaje, klikněte na **přístup k přihlašovacím údajům** v horní části stránky.
+
 Vytvořit heslo, nejprve zkontrolujte, zda **vypršení platnosti** je nastavena na vypršení platnosti požadované datum a čas a potom klikněte na **generovat**.
 
 > [!IMPORTANT]
 > Toto heslo si poznamenejte. Po opuštění této stránky heslo znovu nezobrazí.
-> 
+>
 
 Následující příklady používají nástroje Git Bash [Git pro Windows](https://www.git-scm.com/downloads) ale můžete použít libovolný nástroj Gitu, který jste obeznámeni s.
 
@@ -164,20 +164,20 @@ Všechny složky, může obsahovat jeden nebo více souborů a v některých př
 | Typ souboru | Účel |
 | --- | --- |
 | json |Informace o konfiguraci o příslušné entity |
-| HTML |Popis entity, často zobrazují na portálu pro vývojáře |
+| html |Popis entity, často zobrazují na portálu pro vývojáře |
 | xml |Příkazy zásad |
-| šablony stylů CSS |Šablony stylů pro přizpůsobení portálu pro vývojáře |
+| css |Šablony stylů pro přizpůsobení portálu pro vývojáře |
 
 Tyto soubory můžete vytvořit, odstranit, upravit a spravovat na místní systém souborů a změny, které jsou nasazené instance služby API Management.
 
 > [!NOTE]
 > Tyto entity nejsou obsaženy v úložišti Git a nedá se konfigurovat pomocí Gitu.
-> 
-> * Uživatelé
-> * Předplatná
-> * Vlastnosti
+>
+> * [Uživatelé](https://docs.microsoft.com/en-us/rest/api/apimanagement/user)
+> * [Předplatná](https://docs.microsoft.com/en-us/rest/api/apimanagement/subscription)
+> * [Pojmenované hodnoty](https://docs.microsoft.com/en-us/rest/api/apimanagement/property)
 > * Entity portálu pro vývojáře než styly
-> 
+>
 
 ### <a name="root-api-management-folder"></a>Kořenová složka api management
 Kořen `api-management` obsahuje složku `configuration.json` soubor, který obsahuje informace na nejvyšší úrovni o instanci služby v následujícím formátu.
@@ -223,7 +223,7 @@ Nastavení konečného `$ref-policy`, mapuje příkazy soubor globálních zása
 ### <a name="apis-folder"></a>rozhraní API složky
 `apis` Složka obsahuje složku pro každé rozhraní API v instanci služby, který obsahuje následující položky.
 
-* `apis\<api name>\configuration.json` – To je uvedena konfigurace pro rozhraní API a obsahuje informace o adresu URL back-endové služby a operace. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [konkrétní rozhraní API](https://docs.microsoft.com/rest/api/apimanagement/api/get) s `export=true` v `application/json` formátu.
+* `apis\<api name>\configuration.json` – To je uvedena konfigurace pro rozhraní API a obsahuje informace o adresu URL back-endové služby a operace. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [konkrétní rozhraní API](https://docs.microsoft.com/rest/api/apimanagement/apis/get) s `export=true` v `application/json` formátu.
 * `apis\<api name>\api.description.html` – Toto je popis rozhraní API a odpovídá `description` vlastnost [rozhraní API entity](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property).
 * `apis\<api name>\operations\` – Tato složka obsahuje `<operation name>.description.html` soubory, které se mapují na operace v rozhraní API. Každý soubor obsahuje popis jedné operace v rozhraní API, která se mapuje `description` vlastnost [entity operace](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) v rozhraní REST API.
 

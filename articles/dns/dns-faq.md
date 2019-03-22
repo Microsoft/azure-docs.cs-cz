@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: b8240f69649e9bcb9a705f2c9fcbb819cf119356
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.openlocfilehash: d0c5260fcc2e7ac2acbeec308c6a0cba7d6a81be
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761408"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098089"
 ---
 # <a name="azure-dns-faq"></a>Nejčastější dotazy k Azure DNS
 
@@ -42,7 +42,7 @@ Další informace najdete v tématu [stránku smlouvy SLA pro Azure DNS](https:/
 
 Doména je jedinečný název v domain name system. Příklad: contoso.com.
 
-K hostování záznamů DNS v určité doméně se používá zóna DNS. Například doména contoso.com může obsahovat několik záznamů DNS. Záznamy může obsahovat mail.contoso.com pro poštovní server a www.contoso.com pro web. Tyto záznamy jsou hostované v zóně DNS contoso.com.
+K hostování záznamů DNS v určité doméně se používá zóna DNS. Například doména contoso.com může obsahovat několik záznamů DNS. Záznamy můžou obsahovat mail.contoso.com pro poštovní server a www\.contoso.com pro web. Tyto záznamy jsou hostované v zóně DNS contoso.com.
 
 Název domény je *pouze název*. Zóny DNS je zdroj dat obsahující záznamy DNS pro název domény. Azure DNS můžete použít k hostování zóny DNS a správě záznamů DNS pro doménu v Azure. Taky poskytuje názvové servery DNS k odpovědi na dotazy DNS z Internetu.
 

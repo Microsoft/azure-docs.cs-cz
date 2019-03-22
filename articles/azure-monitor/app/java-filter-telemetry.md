@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 6bd8d0cee01853547efd028feef0a97f9398024e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 692113257e483f67eaaee038c07d8702d95a7b31
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015518"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116805"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrování telemetrických dat ve vaší webové aplikace v Javě
 
@@ -186,12 +186,12 @@ Trasování protokolů filtry (zaprotokolované pomocí [použitím metod TrackT
 ```
 
 * `FromSeverityLevel` Platné hodnoty jsou:
- *  VYPNOUT - odfiltrovat všechna trasování
- *  TRASOVÁNÍ – bez filtrování. se rovná úroveň trasování
- *  Informace o – filtrování úroveň trasování
- *  WARN – filtrování trasování a informace
- *  Chyba – filtrování UPOZORNIT, informace o trasování
- *  DŮLEŽITÉ – filtr všechny ale důležité
+  *  VYPNOUT - odfiltrovat všechna trasování
+  *  TRASOVÁNÍ – bez filtrování. se rovná úroveň trasování
+  *  Informace o – filtrování úroveň trasování
+  *  WARN – filtrování trasování a informace
+  *  Chyba – filtrování UPOZORNIT, informace o trasování
+  *  DŮLEŽITÉ – filtr všechny ale důležité
 
 
 ## <a name="custom-filters"></a>Vlastní filtry
@@ -237,7 +237,7 @@ Ve vašem kódu, vytvořte třídu, která implementuje `TelemetryProcessor`:
 
 ### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. Vyvolání filtr v konfiguračním souboru
 
-V ApplicationInsights.xml:
+In ApplicationInsights.xml:
 
 ```XML
 

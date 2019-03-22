@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: e0e25a9a1e70575d862374da0fb3097408b002e7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: MT
+ms.openlocfilehash: be6b50b5cb4ea7d32f47d6eb0e19ba43a3217cb6
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714623"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202686"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Nainstalovat a používat rozhraní Hue v clusterech HDInsight Hadoop
 
@@ -143,7 +143,6 @@ Tunelové připojení pomocí protokolu SSH je jediný způsob, jak přistupovat
 
 ## <a name="next-steps"></a>Další postup
 * [Clustery HDInsight nainstalovat Apache Giraph](hdinsight-hadoop-giraph-install-linux.md). Clustery HDInsight Hadoop nainstalovat Giraph pomocí přizpůsobení clusteru. Giraph umožňuje provádět zpracování grafů pomocí Hadoopu a jde použít s Azure HDInsight.
-* [Instalace Apache Solr na clusterech HDInsight](hdinsight-hadoop-solr-install-linux.md). Clusterů systému HDInsight Hadoop nainstalovat Solr pomocí přizpůsobení clusteru. Solr umožňuje provádět operace výkonné hledání na uložená data.
 * [Nainstalovat jazyk R na clusterech HDInsight](hdinsight-hadoop-r-scripts-linux.md). Přizpůsobení clusteru použijte k instalaci R na clusterech HDInsight Hadoop. R je open-source jazyk a prostředí pro statistické výpočty. Nabízí stovky integrovaných statistické funkce a vlastní programovací jazyk, který kombinuje aspektů funkční a objektově orientované programování. Také nabízí rozsáhlé možnosti pro grafický.
 
 [powershell-install-configure]: install-configure-powershell-linux.md

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: a999553d7ba26daba674534b1656e90ad0de4f5f
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 7211ffddf82b38ca27b776ecfd12bca25ebbb0f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243963"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121940"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>Nastavte si upozornění na metriky pro službu Azure Database for PostgreSQL pomocí webu Azure portal 
 
@@ -46,13 +46,13 @@ Můžete nakonfigurovat a získat informace o použití pravidel upozornění:
 
 6. Vyberte ze seznamu signálů, které se mají generovat výstrahy na metriku. V tomto příkladu vyberte "Procenta úložiště".
    
-   ![Vyberte metriku](./media/howto-alert-on-metric/6-configure-signal-logic.png)
+   ![Vybrat metriku](./media/howto-alert-on-metric/6-configure-signal-logic.png)
 
 7. Konfigurace, včetně logika upozornění **podmínku** (např.) "Větší než"), **prahová hodnota** (např.) 85 procent), **Časová agregace**, **období** času musí být splněny pravidlo metriky před výstrah aktivačních událostí (např.) "Za posledních 30 minut") a **frekvence**.
    
    Vyberte **provádí** po dokončení.
 
-   ![Vyberte metriku](./media/howto-alert-on-metric/7-set-threshold-time.png)
+   ![Vybrat metriku](./media/howto-alert-on-metric/7-set-threshold-time.png)
 
 8. V rámci **skupiny akcí** vyberte **vytvořit nový** k vytvoření nové skupiny pro příjem oznámení o výstraze.
 
@@ -60,21 +60,21 @@ Můžete nakonfigurovat a získat informace o použití pravidel upozornění:
 
 10. Konfigurace **e-mailu/SMS nebo nabízená/hlasové** typ akce.
     
-   Zvolte "E-mailu Azure Resource Manager roli" k výběru předplatného vlastníci, přispěvatelé a čtenáři dostávat oznámení.
+    Zvolte "E-mailu Azure Resource Manager roli" k výběru předplatného vlastníci, přispěvatelé a čtenáři dostávat oznámení.
    
-   Volitelně zadejte platný identifikátor URI, **Webhooku** pole, pokud chcete, volá se, když se aktivuje upozornění.
+    Volitelně zadejte platný identifikátor URI, **Webhooku** pole, pokud chcete, volá se, když se aktivuje upozornění.
 
-   Vyberte **OK** po dokončení.
+    Vyberte **OK** po dokončení.
 
-   ![Skupina akcí](./media/howto-alert-on-metric/10-action-group-type.png)
+    ![Skupina akcí](./media/howto-alert-on-metric/10-action-group-type.png)
 
 11. Zadejte název pravidla výstrahy, popis a závažnosti.
 
-   ![Skupina akcí](./media/howto-alert-on-metric/11-name-description-severity.png) 
+    ![Skupina akcí](./media/howto-alert-on-metric/11-name-description-severity.png) 
 
 12. Vyberte **vytvořit pravidlo upozornění** k vytvoření upozornění.
 
-   Během několika minut upozornění je aktivní a aktivuje jak bylo popsáno dříve.
+    Během několika minut upozornění je aktivní a aktivuje jak bylo popsáno dříve.
 
 ## <a name="manage-your-alerts"></a>Správa výstrah
 Po vytvoření výstrahy, můžete ho vyberte a proveďte následující akce:

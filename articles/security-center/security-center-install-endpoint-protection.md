@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: c2cb4c2f1154be56b7237a6cb12c87fcc3e00467
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6d9c5b080c491d3a6f35f591c69d4c39989b22a8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455866"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099793"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Spravovat problémy s endpoint protection pomocí Azure Security Center
 Azure Security Center monitoruje stav ochrany proti malwaru a oznámí to pod oknem problémy ochrany koncového bodu. Security Center zvýrazňuje problémy, jako je například zjištěných hrozeb a nedostatečná ochrana, které můžou ohrožovat zabezpečení vašeho počítače a virtuální počítače (VM) na ně antimalwaru. Podle informací uvedených v části **problémy s Endpoint protection**, můžete určit plán veškeré zjištěné potíže vyřešit.
@@ -30,15 +30,15 @@ Security Center sestavy následující problémy s endpoint protection:
 - Řešení Endpoint protection není nainstalovaná na počítačích mimo Azure – podporované antimalwarové není nainstalována na tyto počítače mimo Azure.
 - Stavu funkce Endpoint protection:
 
-   - Zastaralý podpis – antimalwarové řešení je nainstalován na těchto virtuálních počítačů a počítačů, ale řešení nemá nejnovější antimalwarových signatur.
-   - Žádná ochrana v reálném čase – antimalwarové řešení je nainstalován na těchto virtuálních počítačů a počítačů, ale není nakonfigurován pro ochranu v reálném čase.   Služba může být zakázán nebo může být Security Center se nepodařilo získat stav, protože řešení není podporován. Zobrazit [integrace partnerských](security-center-partner-integration.md) seznam podporovaných řešení.
-   - Negenerují se sestavy – nainstalována antimalwarové řešení, ale negenerují se sestavy data.
-   - Neznámé – antimalwarové řešení je nainstalovaná, ale jeho stav je neznámý nebo vytváření sestav k neznámé chybě.
+  - Zastaralý podpis – antimalwarové řešení je nainstalován na těchto virtuálních počítačů a počítačů, ale řešení nemá nejnovější antimalwarových signatur.
+  - Žádná ochrana v reálném čase – antimalwarové řešení je nainstalován na těchto virtuálních počítačů a počítačů, ale není nakonfigurován pro ochranu v reálném čase.   Služba může být zakázán nebo může být Security Center se nepodařilo získat stav, protože řešení není podporován. Zobrazit [integrace partnerských](security-center-partner-integration.md) seznam podporovaných řešení.
+  - Negenerují se sestavy – nainstalována antimalwarové řešení, ale negenerují se sestavy data.
+  - Neznámé – antimalwarové řešení je nainstalovaná, ale jeho stav je neznámý nebo vytváření sestav k neznámé chybě.
 
-   > [!NOTE]
-   > Zobrazit [integrace řešení zabezpečení](security-center-partner-integration.md#integrated-azure-security-solutions) seznam zabezpečení řešení ochrany koncových bodů, který je integrovaná se službou Security Center.
-   >
-   >
+    > [!NOTE]
+    > Zobrazit [integrace řešení zabezpečení](security-center-partner-integration.md#integrated-azure-security-solutions) seznam zabezpečení řešení ochrany koncových bodů, který je integrovaná se službou Security Center.
+    >
+    >
 
 ## <a name="implement-the-recommendation"></a>Implementace doporučení
 Zobrazí se problémy s Endpoint protection jako doporučení ve službě Security Center.  Pokud vaše prostředí je zranitelný vůči hrozbám antimalwaru, toto doporučení se zobrazí v části **doporučení** a v části **Compute**. Zobrazíte **vydá řídicí panel Endpoint protection**, budete muset postupovat podle výpočetní pracovního postupu.

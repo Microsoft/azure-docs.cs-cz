@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 360caaec0033136ffa250d636864fbed8359b8ef
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: cbdbf7dcd6269991d23c61d316dcee68e6678171
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244227"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175662"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ Tento článek představuje základní koncepty, které poskytují sítě pro va
 
 Pokud chcete povolit přístup pro vaše aplikace nebo součásti aplikace komunikovat mezi sebou, Kubernetes poskytuje abstraktní vrstvu do virtuálních sítí. Uzly Kubernetes jsou připojené k virtuální síti a může poskytnout příchozí a odchozí připojení pro tyto pody. *Kube proxy* komponenty běží na každém uzlu poskytnout tyto funkce v síti.
 
-V systému Kubernetes *služby* logicky seskupit podů umožňující přímý přístup přes IP adresu nebo název DNS a na určitém portu. Můžete také distribuovat provoz pomocí *nástroj pro vyrovnávání zatížení*. Složitější směrování provozu aplikace lze také nastavit pomocí *příchozího přenosu dat řadiče*. Zabezpečení a filtrování síťového provozu pro podů je možné s využitím Kubernetes *zásady sítě, které*.
+V systému Kubernetes *služby* logicky seskupit podů umožňující přímý přístup přes IP adresu nebo název DNS a na určitém portu. Můžete také distribuovat provoz pomocí *nástroj pro vyrovnávání zatížení*. Složitější směrování provozu aplikace lze také nastavit pomocí *příchozího přenosu dat řadiče*. Zabezpečení a filtrování síťového provozu pro podů je možné s využitím Kubernetes *zásady sítě, které* (ve verzi preview ve službě AKS).
 
 Platforma Azure také pomáhá zjednodušit virtuální sítě pro clustery AKS. Když vytvoříte nástroj pro vyrovnávání zatížení Kubernetes, základní prostředek nástroje pro vyrovnávání zatížení Azure je vytvoření a konfiguraci. Při otevření síťových portů podů, jsou nakonfigurovány odpovídající pravidla skupiny zabezpečení sítě Azure. Směrování aplikace HTTP, můžete taky nakonfigurovat Azure *externí DNS* jako nové příchozího přenosu dat jsou nakonfigurované trasy.
 
@@ -108,7 +108,7 @@ Skupina zabezpečení sítě pro virtuální počítače, filtruje provoz, jako 
 
 Ve výchozím nastavení můžete všechny podů v clusteru AKS odesílat a přijímat provoz bez omezení. Pro lepší zabezpečení můžete definovat pravidla, která řídí tok provozu. Back-endové aplikace jsou často dostupná jenom v případě do požadované front-endové služby nebo databáze součásti jsou pouze přístupné aplikačních vrstev, které k nim připojit.
 
-Zásady sítě je funkce, Kubernetes, která umožňuje řídit tok přenosů mezi pody. Můžete povolit nebo zakázat provoz na základě nastavení, jako jsou přiřazená popisky, obor názvů nebo provoz portu. Skupiny zabezpečení sítě se více uzlů AKS, není pody. Použití zásady sítě je vhodnější, nativní pro cloud způsob, jak řídit tok provozu. Při vytváření podů v clusteru AKS se dynamicky, požadovaná šířka zásady je automaticky použít.
+Zásady sítě je Kubernetes funkce aktuálně ve verzi preview ve službě AKS, který umožňuje řídit tok přenosů mezi pody. Můžete povolit nebo zakázat provoz na základě nastavení, jako jsou přiřazená popisky, obor názvů nebo provoz portu. Skupiny zabezpečení sítě se více uzlů AKS, není pody. Použití zásady sítě je vhodnější, nativní pro cloud způsob, jak řídit tok provozu. Při vytváření podů v clusteru AKS se dynamicky, požadovaná šířka zásady je automaticky použít.
 
 Další informace najdete v tématu [zabezpečení přenosu mezi pody pomocí zásady sítě ve službě Azure Kubernetes Service (AKS)][use-network-policies].
 

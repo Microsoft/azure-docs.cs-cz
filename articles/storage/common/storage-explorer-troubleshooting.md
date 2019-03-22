@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: bff1e8c111a8a50e15b6d316e422a641a778c73c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3e26365c4273611c81682a760695522575f3875d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775165"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225038"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro Azure Storage Exploreru
 
@@ -233,14 +233,46 @@ Pokud jste omylem připojen pomocí neplatné adresy URL SAS a nelze odpojit, po
 
 ## <a name="linux-dependencies"></a>Závislosti pro Linux
 
-Pro distribuce Linuxu než Ubuntu 16.04 budete muset ručně nainstalovat některé závislosti. Obecně platí vyžadují se následující balíčky:
+Obecně tyto balíčky jsou potřeba ke spouštění Průzkumníka služby Storage v Linuxu:
 
-* [.NET Core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
-* `libsecret`
+* [.NET Core 2.0 Runtime](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* `libgnome-keyring-common` a `libgnome-keyring-dev`
 * `libgconf-2-4`
-* Aktuální GCC
 
-V závislosti na vaší distribuci může být ostatní balíčky, které je potřeba nainstalovat. Storage Explorer [zpráva k vydání verze](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) obsahují konkrétní kroky pro některých distribucích.
+V závislosti na vaší distribuci, mohou používat různé nebo více balíčků, je potřeba nainstalovat.
+
+Na Ubuntu 18.04, 16.04 a 14.04 se oficiálně podporuje Průzkumník služby Storage. Postup instalace pro vyčištění počítače jsou následující:
+
+# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18.04](#tab/1804)
+
+1. Stáhněte si Průzkumníka služby Storage
+2. Nainstalovat modul Runtime .NET Core, je aktuální ověřené verze: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-2.0.8) (pokud už máte nainstalovanou novější verzi, budete muset opravit Průzkumníka služby Storage, najdete níže)
+3. Spusťte `sudo apt-get install libgconf-2-4`.
+4. Spusťte `sudo apt install libgnome-keyring-common libgnome-keyring-dev`.
+
+# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
+
+1. Stáhněte si Průzkumníka služby Storage
+2. Nainstalovat modul Runtime .NET Core, je aktuální ověřené verze: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-2.0.8) (pokud už máte nainstalovanou novější verzi, budete muset opravit Průzkumníka služby Storage, najdete níže)
+3. Spusťte `sudo apt install libgnome-keyring-dev`.
+
+# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
+
+1. Stáhněte si Průzkumníka služby Storage
+2. Nainstalovat modul Runtime .NET Core, je aktuální ověřené verze: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-2.0.8) (pokud už máte nainstalovanou novější verzi, budete muset opravit Průzkumníka služby Storage, najdete níže)
+3. Spusťte `sudo apt install libgnome-keyring-dev`.
+
+---
+
+### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>Opravy Průzkumníka služby Storage pro .NET Core novější verze 
+Pokud máte verzi .NET Core větší než 2.0 nainstalované a použití Průzkumníka služby Storage verze 1.7.0 nebo starší, budete pravděpodobně muset oprava Průzkumníka služby Storage podle následujících kroků:
+1. Stáhněte si verzi 1.5.43 StreamJsonRpc [z nugetu](https://www.nuget.org/packages/StreamJsonRpc/1.5.43). Vyhledejte "Stáhnout" odkaz na pravé straně stránky.
+2. Po stažení balíčku, změňte jeho příponu souboru z `.nupkg` do `.zip`
+3. Rozbalte balíček
+4. Přejděte na `streamjsonrpc.1.5.43/lib/netstandard1.1/`.
+5. Kopírování `StreamJsonRpc.dll` do následujícího umístění, ve složce Průzkumníka služby Storage:
+    1. `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
+    2. `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
 
 ## <a name="open-in-explorer-from-azure-portal-doesnt-work"></a>Otevřít v Průzkumníku z webu Azure portal nebude fungovat.
 

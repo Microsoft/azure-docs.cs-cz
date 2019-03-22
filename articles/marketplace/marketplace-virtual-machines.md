@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: b9403855949e87a287f543c2ac41738e92238303
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: eb49d0fe610a78b8d1a407644a206fddaba0a67a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217202"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116211"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Průvodce publikováním nabídky virtuálních počítačů
 
@@ -56,12 +56,12 @@ Zajištění asistovaného prostředí vašeho řešení zákazníkům s použit
 
 Když nasadíte virtuální zařízení na předplatné spojené s vaší zákaznickou, použijte typ nabídky virtuálního počítače. Virtuální počítače jsou plně commerce povolit pomocí s průběžnými platbami nebo přeneste svůj – používání vlastní licence (BYOL) licenční modely. Společnost Microsoft je hostitelem transakce obchodování a vaše zákazníkovi vaším jménem. Získáte výhody pomocí upřednostňované platby vztahu mezi zákazníkem a společnosti Microsoft, včetně žádné smlouvy Enterprise.
 
->[!NOTE]
->V tuto chvíli podporuje peněžní závazky spojené se smlouvou Enterprise budou moct použít proti využití Azure pro váš virtuální počítač, ale ne před vaší licenční poplatky za software.  
-
->[!NOTE]
->Budete moct omezit zjišťování a nasazení virtuálního počítače na konkrétní sadu odběratelů tak, že publikování image a ceny soukromé nabídky. Soukromé nabídky odemknout možnost pro vytvoření exkluzivní nabídky pro vaše zákazníky nejvíce a nabízí vlastní software a podmínky. Vlastní podmínky umožňují zvýrazněte širokou škálu scénářů, včetně vedené pole se zabývá speciální ceny a podmínky stejně jako dřívější přístup k softwaru omezené vydání. Soukromé nabídky Povolit vám umožní poskytovat konkrétní cenu nebo produkty na omezenou sadu zákazníků tím, že vytvoříte novou skladovou Položku s těmito podrobnostmi.  
-*   Další informace o soukromých nabídky, navštivte soukromé nabídky na webu Azure Marketplace stránky umístěného v [azure.microsoft.com/blog/private-offers-on-azure-marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
+> [!NOTE]
+> V tuto chvíli podporuje peněžní závazky spojené se smlouvou Enterprise budou moct použít proti využití Azure pro váš virtuální počítač, ale ne před vaší licenční poplatky za software.  
+> 
+> [!NOTE]
+> Budete moct omezit zjišťování a nasazení virtuálního počítače na konkrétní sadu odběratelů tak, že publikování image a ceny soukromé nabídky. Soukromé nabídky odemknout možnost pro vytvoření exkluzivní nabídky pro vaše zákazníky nejvíce a nabízí vlastní software a podmínky. Vlastní podmínky umožňují zvýrazněte širokou škálu scénářů, včetně vedené pole se zabývá speciální ceny a podmínky stejně jako dřívější přístup k softwaru omezené vydání. Soukromé nabídky Povolit vám umožní poskytovat konkrétní cenu nebo produkty na omezenou sadu zákazníků tím, že vytvoříte novou skladovou Položku s těmito podrobnostmi.  
+> *   Další informace o soukromých nabídky, navštivte soukromé nabídky na webu Azure Marketplace stránky umístěného v [azure.microsoft.com/blog/private-offers-on-azure-marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
 
 | Požadavek | Podrobnosti |  
 |:--- |:--- | 

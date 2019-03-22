@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.openlocfilehash: 15f280b16e362a4b39cb9fc0e4baaf67d0e31942
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ce9804a4ecad4cd0f2e797038dc10c71b50de9bf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661696"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122707"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Nastavení upozornění na metriky pro službu Azure Database pro MariaDB pomocí webu Azure portal
 
@@ -60,21 +60,21 @@ Můžete nakonfigurovat a získat informace o použití pravidel upozornění:
 
 10. Konfigurace **e-mailu/SMS nebo nabízená/hlasové** typ akce.
     
-   Zvolte "E-mailu Azure Resource Manager roli" k výběru předplatného vlastníci, přispěvatelé a čtenáři dostávat oznámení.
+    Zvolte "E-mailu Azure Resource Manager roli" k výběru předplatného vlastníci, přispěvatelé a čtenáři dostávat oznámení.
    
-   Volitelně zadejte platný identifikátor URI, **Webhooku** pole, pokud chcete, volá se, když se aktivuje upozornění.
+    Volitelně zadejte platný identifikátor URI, **Webhooku** pole, pokud chcete, volá se, když se aktivuje upozornění.
 
-   Vyberte **OK** po dokončení.
+    Vyberte **OK** po dokončení.
 
-   ![Skupina akcí](./media/howto-alert-metric/10-action-group-type.png)
+    ![Skupina akcí](./media/howto-alert-metric/10-action-group-type.png)
 
 11. Zadejte název pravidla výstrahy, popis a závažnosti.
 
-   ![Skupina akcí](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![Skupina akcí](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. Vyberte **vytvořit pravidlo upozornění** k vytvoření upozornění.
 
-   Během několika minut upozornění je aktivní a aktivuje jak bylo popsáno dříve.
+    Během několika minut upozornění je aktivní a aktivuje jak bylo popsáno dříve.
 
 ## <a name="manage-your-alerts"></a>Správa výstrah
 Po vytvoření výstrahy, můžete ho vyberte a proveďte následující akce:

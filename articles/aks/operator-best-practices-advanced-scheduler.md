@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 1534a3f010183cd91c444b577d26e3f21e296d27
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 27c9c872f4dfb82b4a1389189d62c4e1f06ee272
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57434315"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175977"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro Plánovač pokročilé funkce ve službě Azure Kubernetes Service (AKS)
 
@@ -39,10 +39,10 @@ Plánovač Kubernetes můžete použít poskvrnění a tolerations omezit, co m�
 Když nasadíte podu na AKS cluster, Kubernetes pouze naplánuje podů na uzlech, kde je v souladu toleration s barvu. Jako příklad předpokládejme, že máte nodepool ve vašem clusteru AKS pro uzly s GPU podporovat. Definovat název, jako například *gpu*, pak hodnota pro plánování. Pokud nastavíte tuto hodnotu na *NoSchedule*, Plánovač Kubernetes nelze naplánovat podů na uzlu, pokud chcete pod příslušnou toleration nedefinuje.
 
 ```console
-kubectl taint node aks-nodepool1 gpu:NoSchedule
+kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-Pomocí barvu na uzlech pak definovat toleration ve specifikaci pod, která umožňuje plánování na uzlech. Následující příklad definuje `key: gpu` a `effect: NoSchedule` tolerovat barvu použitý pro uzel v předchozím kroku:
+Pomocí barvu na uzlech pak definovat toleration ve specifikaci pod, která umožňuje plánování na uzlech. Následující příklad definuje `sku: gpu` a `effect: NoSchedule` tolerovat barvu použitý pro uzel v předchozím kroku:
 
 ```yaml
 kind: Pod
@@ -61,9 +61,9 @@ spec:
       cpu: 4.0
       memory: 16Gi
   tolerations:
-  - key: "gpu"
+  - key: "sku"
     operator: "Equal"
-    value: "value"
+    value: "gpu"
     effect: "NoSchedule"
 ```
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7b5bb0bf8ff5fac10c47cf5bdf9564903f4d6b94
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: MT
+ms.openlocfilehash: 58be8a222f649abe4be6de272a1ef2b686336262
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448479"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57847123"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Nastavení aplikace na portálu publikování
 
@@ -27,16 +27,16 @@ Nyní jste připraveni k nastavení aplikace na portálu publikování.
 
 ## <a name="login-and-create-a-new-offer"></a>Přihlášení a vytvořte novou nabídku
 
-1. Přihlaste se k [portál partnerů cloudu](http://cloudpartner.azure.com/).
+1. Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
 2. V levém navigačním panelu klikněte na "+ New nabízejí" a vyberte "Dynamics 365 for Customer Engagement."
 
 ![Vyberte novou nabídku](./media/CRMScreenShot14.png)
 
-3. Nová nabídka zobrazení "Editoru" teď pro vás otevřen a jsme připraveni začít vytvářením obsahu.
+1. Nová nabídka zobrazení "Editoru" teď pro vás otevřen a jsme připraveni začít vytvářením obsahu.
 
 ![Nová nabídka obrazovka](./media/CRMScreenShot15.png)
 
-4. "Formuláře", které je potřeba doplnit jsou viditelné na levé straně v rámci zobrazení "Editoru". Každý "formulář" obsahuje sadu polí, která se mají doplnit. Vyžaduje se pole označená červenou hvězdičkou (\*).
+1. "Formuláře", které je potřeba doplnit jsou viditelné na levé straně v rámci zobrazení "Editoru". Každý "formulář" obsahuje sadu polí, která se mají doplnit. Vyžaduje se pole označená červenou hvězdičkou (\*).
 
 Existují čtyři hlavní formuláře pro vytváření obsahu Dynamics 365 Customer Engagement nabídky.
 
@@ -88,7 +88,7 @@ Následuje vysvětlení těchto polí:
 
 ### <a name="crm-package-availability"></a>Dostupnost balíčku CRM
 
-V této části vyberte jaké oblasti vašeho balíčku bude k dispozici do CRM. Informace, na které oblasti slouží kterých zemí najdete v tématu odkazu: [http://o365datacentermap.azurewebsites.net/](http://o365datacentermap.azurewebsites.net/)
+V této části vyberte jaké oblasti vašeho balíčku bude k dispozici do CRM. Informace, na které oblasti slouží kterých zemí najdete v tématu odkazu: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
 Poznámka: Nasazení do Německo "Suverénních a Cloud pro státní správu USA" suverénních vyžaduje speciální oprávnění a ověření během certifikace
 

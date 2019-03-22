@@ -16,12 +16,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: d9855f107f9888fbfbcb10a3df849e78c87c0605
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7981df6aa1e08688bdbe3b18629450b996f7609e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246758"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123398"
 ---
 # <a name="optimize-sql-server-performance"></a>Optimalizace výkonu SQL serveru
 
@@ -104,20 +104,20 @@ Doporučujeme ukládat databázi TempDB na datový disk, protože každý datov�
 
 - **Prokládání disků:** Pro větší propustnost můžete přidat další datové disky a použijte prokládání disků. Pokud chcete zjistit počet datových disků, které potřebujete, analyzujte počet IOPS a šířka pásma vyžadovaná pro soubory protokolu a pro vaše data a soubory databáze TempDB. Všimněte si, že limity IOPS na disk data podle řady virtuálních počítačů řady a není založen na velikosti virtuálního počítače. Omezení šířky pásma sítě, ale jsou založeny na velikosti virtuálního počítače. Zobrazit tabulky na [velikosti virtuálních počítačů ve službě Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) další podrobnosti. Pomocí následujících pokynů:
 
-    - Systém Windows Server 2012 nebo novější, použijte [prostory úložiště](https://technet.microsoft.com/library/hh831739.aspx) přitom následující pokyny:
+  - Systém Windows Server 2012 nebo novější, použijte [prostory úložiště](https://technet.microsoft.com/library/hh831739.aspx) přitom následující pokyny:
 
-        1.  Nastavte prokládání (stripe velikost) na 64 KB (65 536 bajtů) pro online zpracování úlohy (OLTP) a 256 KB (262 144 bajtů) pro úloh datových skladů do negativní dopad na výkon kvůli chybné zarovnání oddílu transakcí. Musí být nastavena v prostředí PowerShell.
+    1. Nastavte prokládání (stripe velikost) na 64 KB (65 536 bajtů) pro online zpracování úlohy (OLTP) a 256 KB (262 144 bajtů) pro úloh datových skladů do negativní dopad na výkon kvůli chybné zarovnání oddílu transakcí. Musí být nastavena v prostředí PowerShell.
 
-        2.  Nastavte počet sloupců = počtem fyzických disků. Při konfiguraci více než osm disky (nikoli uživatelského rozhraní správce serveru), pomocí prostředí PowerShell.
+    2. Nastavte počet sloupců = počtem fyzických disků. Při konfiguraci více než osm disky (nikoli uživatelského rozhraní správce serveru), pomocí prostředí PowerShell.
 
-            Například následující příkaz Powershellu vytvoří nový fond úložiště s velikostí prokládání nastavena na 64 KB a počet sloupců na 2:
+       Například následující příkaz Powershellu vytvoří nový fond úložiště s velikostí prokládání nastavena na 64 KB a počet sloupců na 2:
 
-          ```PowerShell  
-          $PoolCount = Get-PhysicalDisk -CanPool $True
-          $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
+       ```PowerShell  
+       $PoolCount = Get-PhysicalDisk -CanPool $True
+       $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
 
-          New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false
-          ```
+       New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false
+       ```
 
 - Určete počet disků, které jsou přidružené k fondu úložiště podle vašich očekávání zatížení. Uvědomte si, že různých velikostí virtuálních počítačů povolit různý počet připojené datové disky. Další informace najdete v tématu [velikostí virtuálních počítačů, které jsou podporované ve službě Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes).
 - Aby bylo možné získat maximální možné vstupně-výstupních operací datové disky, doporučujeme přidat maximální počet datových disků, nepodporuje váš [velikost virtuálního počítače](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) a použijte prokládání disků.

@@ -1,6 +1,6 @@
 ---
-title: Příklady prostředí PowerShell a Graph pro licencování na základě skupiny – Azure Active Directory | Dokumentace Microsoftu
-description: Scénáře prostředí PowerShell pro licencování na základě skupin Azure Active Directory
+title: Příklady prostředí PowerShell a Graph pro licencování skupiny – Azure Active Directory | Dokumentace Microsoftu
+description: Prostředí PowerShell a Graph příklady a scénáře pro licencování na základě skupin Azure Active Directory
 services: active-directory
 keywords: Licencování Azure AD
 documentationcenter: ''
@@ -14,25 +14,27 @@ ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fccf025e222448bde7705c548dac33403be33247
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9da6f85f194d9aebab22584f8cba8b227ed38a72
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183862"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223304"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Příklady prostředí PowerShell pro licencování na základě skupiny ve službě Azure AD
 
 Všechny funkce pro licencování na základě skupin je k dispozici prostřednictvím [webu Azure portal](https://portal.azure.com), a aktuálně je omezená podpora prostředí PowerShell a Microsoft Graph. Existují však některé užitečné úlohy, které lze provést pomocí stávajícího [rutin prostředí MSOnline PowerShell](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) a Microsoft Graph. Tento dokument obsahuje příklady, jaké jsou možnosti.
 
 > [!NOTE]
-> Než začnete, spuštěním rutin, ujistěte se, že připojení k vašemu tenantovi nejprve spuštěním `Connect-MsolService`  rutiny.
+> Než začnete, spuštěním rutin, ujistěte se, že připojení k vaší organizaci poprvé, spuštěním `Connect-MsolService`  rutiny.
 
 > [!WARNING]
 > Tento kód slouží jako příklad pro demonstrační účely. Pokud máte v úmyslu používat ve vašem prostředí, zvažte nejprve testování v malém měřítku, nebo v samostatné testovacího tenanta. Bude pravděpodobně nutné upravit kód pro konkrétní potřeby vašeho prostředí.
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>Licence na produkty zobrazení přiřazen ke skupině
+
 [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) rutina slouží k načtení objektu skupiny a zkontrolujte *licence* vlastnost: Vypíše všechny licence produktů aktuálně přiřazené ke skupině.
+
 ```powershell
 (Get-MsolGroup -ObjectId 99c4216a-56de-42c4-a4ac-e411cd8c7c41).Licenses
 | Select SkuPartNumber
@@ -48,7 +50,7 @@ EMSPREMIUM
 > [!NOTE]
 > Data jsou omezená na informace o produktu (SKU). Není možné vypsat plánech zakázaná v licenci.
 
-Použijte následující příkaz pro získat stejná data z Microsoft Graphu
+Chcete-li získat stejná data z Microsoft Graphu, použijte následující ukázku.
 
 ```
 GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41$select=assignedLicenses

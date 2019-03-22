@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: e71999e9c5b118fbf31d0d735d03cddb321b0065
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 74940f3b89237233acd575aa5df441163e00d178
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773414"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000939"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurace připojení typu Point-to-Site s použitím ověření certifikátu (classic)
 
@@ -69,9 +69,9 @@ K vytvoření testovacího prostředí, nebo si přečtěte tyto hodnoty k lepš
    - **Skupina prostředků**: Zadejte *TestRG*. Vyberte **vytvořit nový**, pokud skupina prostředků neexistuje.
    - **Umístění**: Vyberte **USA – východ** ze seznamu.
 
- - **Nastavení připojení VPN**
-   - **Typ připojení**: Vyberte **Point-to-site**.
-   - **Klientský adresní prostor**: Zadejte *172.16.201.0/24*. Klienti VPN, které se připojují k virtuální síti pomocí tohoto připojení Point-to-Site obdrží IP adresu ze zadaného fondu.
+  - **Nastavení připojení VPN**
+    - **Typ připojení**: Vyberte **Point-to-site**.
+    - **Klientský adresní prostor**: Zadejte *172.16.201.0/24*. Klienti VPN, které se připojují k virtuální síti pomocí tohoto připojení Point-to-Site obdrží IP adresu ze zadaného fondu.
 
 - **Nastavení konfigurace podsítě brány**
    - **Název**: Autofilled s *GatewaySubnet*.
@@ -89,7 +89,7 @@ Než začnete, ověřte, že máte předplatné Azure. Pokud ještě nemáte př
 
 Pokud ještě nemáte virtuální síť (VNet), vytvořte si ho. Snímky obrazovek slouží jen jako příklady. Nezapomeňte hodnoty nahradit vlastními. Pokud chcete vytvořit virtuální síť přes Azure Portal, použijte následující postup:
 
-1. Přihlaste se k [webu Azure portal](http://portal.azure.com) a vyberte **vytvořit prostředek**. **Nový** otevře se stránka. 
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a vyberte **vytvořit prostředek**. **Nový** otevře se stránka. 
 
 2. V **Hledat na marketplace** zadejte *virtuální sítě* a vyberte **virtuální síť** z vráceném seznamu. **Virtuální síť** otevře se stránka.
 
@@ -121,26 +121,26 @@ V tomto kroku vytvoříte podsíť brány a bránu dynamického směrování. Na
 
 2. Na stránce vaší virtuální sítě, vyberte **přehled**a **připojení k síti VPN** vyberte **brány**.
 
-  ![Vytvořit bránu](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/beforegw125.png)
+   ![Vytvořit bránu](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/beforegw125.png)
 3. Na stránce **Nové připojení VPN** vyberte **Point-to-Site**.
 
-  ![Připojení typu Point-to-Site](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/newvpnconnect.png)
+   ![Připojení typu Point-to-Site](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/newvpnconnect.png)
 4. Pro **klientský adresní prostor**, přidat rozsah IP adres, ze kterého dostanou klienti VPN IP adresu při připojování. Použijte rozsah privátních IP adres, který se nepřekrývá s místním umístěním, ze kterého připojovat, nebo s virtuální sítí, se připojujete k. Rozsah autofilled můžete přepsat rozsah privátních IP adres, který chcete použít. Tento příklad ukazuje autofilled rozsahu. 
 
-  ![Klientský adresní prostor](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clientaddress.png)
+   ![Klientský adresní prostor](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clientaddress.png)
 5. Vyberte **vytvořit bránu hned**a pak vyberte **volitelná konfigurace brány** otevřít **konfigurace brány** stránky.
 
-  ![Vyberte volitelná konfigurace brány](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/optsubnet125.png)
+   ![Vyberte volitelná konfigurace brány](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/optsubnet125.png)
 
 6. Z **konfigurace brány** stránce **podsítě** přidáte podsíť brány. Je možné vytvořit podsíť brány s minimální velikostí/29. Ale doporučujeme vytvořit větší podsíť, která pojme více adres výběru velikosti alespoň/28 nebo/27. To vám umožní dostatek adres pro případné další konfigurace, které můžete chtít v budoucnu. Při práci s podsítěmi brány nepřidružujte skupinu zabezpečení sítě (NSG) k podsíti brány. Přidružení skupiny zabezpečení sítě s touto podsítí může způsobit, že vaše brána nebude fungovat podle očekávání. Vyberte **OK** uložit toto nastavení.
 
-  ![Přidání podsítě brány](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsubnet125.png)
+   ![Přidání podsítě brány](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsubnet125.png)
 7. Vyberte **velikost** brány. Velikost je skladová položka brány pro vaši bránu virtuální sítě. Na webu Azure Portal, výchozí SKU je **výchozí**. Další informace o SKU brány najdete v tématu [informace o službě VPN gateway nastavení](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
-  ![Velikost brány](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsize125.png)
+   ![Velikost brány](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsize125.png)
 8. Vyberte pro bránu **typ směrování**. Konfigurace P2S vyžadují **dynamický** typ směrování. Vyberte **OK** až dokončíte konfiguraci této stránky.
 
-  ![Konfigurace typu směrování](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/routingtype125.png)
+   ![Konfigurace typu směrování](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/routingtype125.png)
 
 9. Na **nové připojení VPN** stránce **OK** v dolní části stránky zahájíte vytváření brány virtuální sítě. Brány VPN může trvat až 45 minut v závislosti na vybrané skladové jednotce brány.
  
@@ -164,11 +164,11 @@ Po vytvoření brány, nahrání souboru .cer (obsahující informace o veřejn�
 
 1. Na **připojení k síti VPN** části na stránce pro vaši virtuální síť, vyberte obrázek klienti otevřete **Point-to-site VPN připojení** stránky.
 
-  ![Klienti](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clients125.png)
+   ![Klienti](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clients125.png)
 
 2. Na **Point-to-site VPN připojení** stránce **Správa certifikátu** otevřít **certifikáty** stránky.
 
-  ![Stránka certifikátů](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/ptsmanage.png)
+   ![Stránka certifikátů](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/ptsmanage.png)
 
 1. Na **certifikáty** stránce **nahrát** otevřít **nahrát certifikát** stránky.
 
@@ -176,7 +176,7 @@ Po vytvoření brány, nahrání souboru .cer (obsahující informace o veřejn�
 
 4. Vyberte obrázek složky a vyhledejte soubor .cer. Vyberte soubor a pak vyberte **OK**. Nahraný certifikát zobrazí na **certifikáty** stránky.
 
-  ![Nahrání certifikátu](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/upload.png)
+   ![Nahrání certifikátu](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/upload.png)
 
 
 ## <a name="configure-the-client"></a>Konfigurace klienta
@@ -191,10 +191,10 @@ V každém klientském počítači můžete použít stejný konfigurační bal�
 
 2. Z **Point-to-site VPN připojení** vyberte balíček ke stažení, který odpovídá operačnímu systému klienta, kde je nainstalovaný:
 
-  * U 64bitových klientů vyberte **Klient VPN (64bitový)**.
-  * U 32bitových klientů vyberte **Klient VPN (32bitový)**.
+   * U 64bitových klientů vyberte **Klient VPN (64bitový)**.
+   * U 32bitových klientů vyberte **Klient VPN (32bitový)**.
 
-  ![Stažení balíčku pro konfiguraci klienta VPN](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)
+   ![Stažení balíčku pro konfiguraci klienta VPN](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)
 
 3. Po vygeneruje balíček stáhněte ho a nainstalujte ho na klientském počítači. Pokud se zobrazí místní okno filtru SmartScreen, vyberte **informace**a pak vyberte **přesto spustit**. Můžete také balíček uložit k instalaci na další klientské počítače.
 
@@ -226,7 +226,7 @@ Chcete-li vytvořit připojení P2S z jiného klienta počítače, než jaký se
 1. Ověřte, že je aktivní připojení k síti VPN. Otevřete příkazový řádek se zvýšenými oprávněními v klientském počítači a spusťte **ipconfig/all**.
 2. Zkontrolujte výsledky. Všimněte si, že IP adresa, kterou jste obdrželi, je jedna z adres z rozsahu adres připojení typu Point-to-Site, který jste určili během vytváření vaší virtuální sítě. Výsledek by se měl podobat tomuto příkladu:
 
-  ```
+   ```
     PPP adapter VNet1:
         Connection-specific DNS Suffix .:
         Description.....................: VNet1
@@ -237,7 +237,7 @@ Chcete-li vytvořit připojení P2S z jiného klienta počítače, než jaký se
         Subnet Mask.....................: 255.255.255.255
         Default Gateway.................:
         NetBIOS over Tcpip..............: Enabled
-  ```
+   ```
 
 ## <a name="connect-to-a-virtual-machine"></a>Připojení k virtuálnímu počítači
 

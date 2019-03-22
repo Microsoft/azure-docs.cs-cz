@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/03/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d1eac8f79ea53643659f8780ee03f8ced13c7dcd
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 411b43ec631c77246da1ee55f2532486f8b55ffc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452222"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006625"
 ---
 # <a name="azure-storage-samples"></a>Ukázky Azure Storage
 
@@ -63,8 +63,8 @@ Chcete-li prozkoumat ukázky jazyka C++, stáhněte si [Klientská knihovna pro 
 |----------|---------------|-------------|
 | .NET | [Referenční dokumentace knihoven klienta .NET](https://msdn.microsoft.com/library/azure/mt347887.aspx) | [Zdrojový kód klientské knihovny úložiště .NET](https://github.com/Azure/azure-storage-net) |
 | Java | [Referenční dokumentace knihoven jazyka Java klienta](https://docs.microsoft.com/java/api/overview/azure/storage) | [Zdrojový kód klientské knihovny úložiště pro Javu](https://github.com/azure/azure-storage-java) |
-| Node.js | [Referenční dokumentace knihoven klienta Node.js](http://azure.github.io/azure-storage-node) | [Zdrojový kód klientské knihovny úložiště pro Node.js](https://github.com/Azure/azure-storage-node) |
-| C++ | [Referenční dokumentace knihoven klienta jazyka C++](http://azure.github.io/azure-storage-cpp/) | [Zdrojový kód klientské knihovny úložiště jazyka C++](https://github.com/Azure/azure-storage-cpp)|
+| Node.js | [Referenční dokumentace knihoven klienta Node.js](https://azure.github.io/azure-storage-node) | [Zdrojový kód klientské knihovny úložiště pro Node.js](https://github.com/Azure/azure-storage-node) |
+| C++ | [Referenční dokumentace knihoven klienta jazyka C++](https://azure.github.io/azure-storage-cpp/) | [Zdrojový kód klientské knihovny úložiště jazyka C++](https://github.com/Azure/azure-storage-cpp)|
 
 ## <a name="next-steps"></a>Další postup
 

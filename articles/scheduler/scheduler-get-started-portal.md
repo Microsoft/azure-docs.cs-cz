@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 7e5abf1100c09f8f28d268b3f2defe953c5f36f0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3b2cfc932c6322df8237ec7cdf820fc4242bfa72
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770131"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887217"
 ---
 # <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Vytvoření a naplánování první úlohy pomocí služby Azure Scheduler – Azure Portal
 
@@ -34,7 +34,7 @@ Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" ta
 
    ![Vytvoření prostředku služby Scheduler](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
-   Teď vytvořte úlohu, která odešle požadavek GET na tuto adresu URL: `http://www.microsoft.com/` 
+   Teď vytvořte úlohu, která odešle požadavek GET na tuto adresu URL: `https://www.microsoft.com/` 
 
 1. V části **Úloha Scheduleru** zadejte tyto informace:
 
@@ -51,7 +51,7 @@ Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" ta
    |----------|---------------|-------------| 
    | **Akce** | **Http** | Typ akce, která se má spustit | 
    | **Metoda** | **Get** | Metoda, která se má zavolat | 
-   | **Adresa URL** | **http://www.microsoft.com** | Cílová adresa URL | 
+   | **Adresa URL** | **https://www.microsoft.com** | Cílová adresa URL | 
    |||| 
    
    ![Definice úlohy](./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d6f857e926343c4c3c26d746134bbb9d94754c12
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a1ecc4de9475e735cd17286826c1d8cea05904ab
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866007"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089348"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migrace uživatelů se sociálními identitami
 Při plánování migrace vašeho zprostředkovatele identity do Azure AD B2C, budete také muset migrace uživatelů se sociálními identitami. Tento článek vysvětluje, jak provést migraci existujících účtů sociálních identit, jako například: Facebook, LinkedIn, Microsoft nebo Google účty Azure AD B2C. Tento článek se týká také federované identity, ale jsou méně běžné tyto migrace.
@@ -32,14 +32,14 @@ V tomto článku je pokračování článku migrace uživatelů a se zaměřuje 
 * **Místní účet v kombinaci s sociálních identit**. Jak už bylo zmíněno, místní účet přihlašovací jména a účtu na sociální síti identit jsou uloženy v jiné atributy. `signInNames` je použit pro místní účet, zatímco `userIdentities` pro účtu na sociální síti. Jeden účet Azure AD B2C, můžete použít pouze místní účet, pouze účtu na sociální síti nebo místní účet v kombinaci s sociálních identit v záznamu s jedním uživatelem. Toto chování můžete spravovat jeden účet, když uživatel se můžete přihlásit pomocí místního účtu credential(s) nebo se sociálními identitami.
 
 * `UserIdentity` Typ – obsahuje informace o identitě uživatele účtu na sociální síti tenanta služby Azure AD B2C:
-    * `issuer` Řetězcové vyjádření zprostředkovatele identity, která vydala identifikátor uživatele, jako je například facebook.com.
-    * `issuerUserId` Jedinečný uživatelský identifikátor používá zprostředkovatele sociální identity ve formátu base64.
+  * `issuer` Řetězcové vyjádření zprostředkovatele identity, která vydala identifikátor uživatele, jako je například facebook.com.
+  * `issuerUserId` Jedinečný uživatelský identifikátor používá zprostředkovatele sociální identity ve formátu base64.
 
     ```JSON
     "userIdentities": [{
-            "issuer": "Facebook.com",
-            "issuerUserId": "MTIzNDU2Nzg5MA=="
-        }
+          "issuer": "Facebook.com",
+          "issuerUserId": "MTIzNDU2Nzg5MA=="
+      }
     ]
     ```
 

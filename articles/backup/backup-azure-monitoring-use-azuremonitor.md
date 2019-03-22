@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 7daf76605d40495d6c9cb5076f0403a78819adfc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: aa97e60fe296190f3478d29bc80c70ea487e8955
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439159"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258577"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure monitoru
 
@@ -29,7 +29,7 @@ ms.locfileid: "57439159"
 ## <a name="using-log-analytics-workspace"></a>Použití pracovního prostoru Log Analytics
 
 > [!NOTE]
-> Do pracovního prostoru Log Analytics přes nastavení diagnostiky se právě přijímat data ze záloh virtuálních počítačů Azure, MAB Agent, System Center DPM (SC-DPM). Podpora pro zálohování SQL na virtuálních počítačích Azure, záloh sdílených složek Azure, Microsoft Azure Backup Server (MABS) je již brzy.
+> Do pracovního prostoru Log Analytics přes nastavení diagnostiky se právě přijímat data ze záloh virtuálních počítačů Azure, MAB Agent, System Center DPM (SC-DPM), zálohování SQL na virtuálních počítačích Azure. Podpora záloh sdílených složek Azure, Microsoft Azure Backup Server (MABS) je již brzy.
 
 Můžeme se využívá k tomu možnosti ze dvou služeb Azure – **nastavení diagnostiky** (k odesílání dat z několika prostředků Azure Resource Manageru k jinému zdroji) a **Log Analytics** (LA - ke generování vlastní upozornění, ve kterém můžete definovat další kanály oznámení pomocí skupiny akcí) pro monitorování ve velkém měřítku. Následující části podrobně popisují, jak používat LA pro monitorování Azure Backup ve velkém měřítku.
 

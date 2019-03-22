@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5895325aa929e44128c331db847252835f563796
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 32d218e057fa040eded07f0adc813485ddaa52fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437537"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080095"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Poradce při potížích s Proxy aplikací problémy a chybové zprávy
 Pokud dojde k chybám při přístupu k publikované aplikaci nebo publikování aplikace, zkontrolujte následující možnosti a zda správně funguje Proxy aplikací služby Microsoft Azure AD:
@@ -36,7 +36,7 @@ Další informace o nástroji pro poradce při potížích s Azure AD najdete v 
 ## <a name="the-page-is-not-rendered-correctly"></a>Na stránce není správně vykreslila
 Můžete mít problémy s vaší aplikací vykreslování nebo fungovat správně, aniž by mu musela specifické chybové zprávy. Tato situace může nastat, pokud jste publikovali cesta článku, ale aplikace vyžaduje obsah, který existuje mimo tuto cestu.
 
-Například, pokud publikujete cestu https://yourapp/app ale aplikace volání Image v https://yourapp/media, se nevykreslí. Ujistěte se, že publikujete aplikaci pomocí nejvyšší úrovni cesta je nutné zahrnout všechny relevantní obsah. V tomto příkladu, bylo by http://yourapp/.
+Například, pokud publikujete cestu `https://yourapp/app` ale aplikace volání Image v `https://yourapp/media`, se nevykreslí. Ujistěte se, že publikujete aplikaci pomocí nejvyšší úrovni cesta je nutné zahrnout všechny relevantní obsah. V tomto příkladu, bylo by `http://yourapp/`.
 
 Pokud změníte vaše cesta k zahrnují odkazovaného obsahu, ale potřebují uživatelé přejít na podrobnější odkaz v cestě, najdete v blogovém příspěvku [nastavení správné odkaz pro aplikace Proxy aplikací ve službě Azure AD k panelu a Spouštěči aplikací Office 365](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/).
 

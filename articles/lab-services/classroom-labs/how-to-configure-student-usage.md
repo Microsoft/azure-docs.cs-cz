@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 03/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 834674eb63af75088434db0f614b11c7a36e7adf
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: eadbaacd4bb860cd09997775b8d77cbcf0ff17f2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964810"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181618"
 ---
 # <a name="configure-usage-settings-and-policies"></a>Konfigurace nastavení použití a zásady
 Tento článek popisuje, jak přidat uživatele do testovacího prostředí, je registrován v testovacím, řídí počet hodin, můžete použít virtuální počítač a další. 
@@ -38,9 +38,22 @@ Pokud máte **omezit přístup** povolena, přidejte do seznamu uživatelé (e-m
 
     ![Seznam uživatelů](../media/how-to-configure-student-usage/users-list-new.png)
 
-## <a name="send-registration-link-to-students"></a>Odeslání odkazu pro registraci studentům
-Následující postup obsahuje kroky k odeslání odkazu registrace pro uživatele. Pokud **omezit přístup** je povolená pro testovací prostředí, pouze uživatelé ze seznamu uživatelů můžete použít odkaz na registraci k zaregistrování do testovacího prostředí. 
+## <a name="share-registration-link-with-students"></a>Sdílet odkaz na registraci se zúčastnili studenti
+Odeslat odkaz na registraci pro studenty, použijte jednu z následujících metod. První metoda ukazuje, jak odesílat e-maily studentům odkaz na registraci a volitelnou zprávu. Druhá metoda ukazuje, jak získat odkaz na registraci, které můžete sdílet s ostatními požadovaným způsobem. 
 
+Pokud **omezit přístup** je povolená pro testovací prostředí, pouze uživatelé ze seznamu uživatelů můžete použít odkaz na registraci k zaregistrování do testovacího prostředí. Tato možnost je povolená ve výchozím nastavení. 
+
+### <a name="send-email-to-users"></a>Odeslání e-mailu uživatelům
+1. Přepněte **uživatelé** zobrazit v případě, že již není na stránce. 
+2. V seznamu vyberte konkrétní nebo všechny uživatele. Pokud chcete vybrat konkrétní uživatele, vyberte zaškrtávací políčka v prvním sloupci v seznamu. Chcete-li vybrat všechny uživatele, zaškrtněte políčko před název prvního sloupce (**název**) nebo vyberte všechna zaškrtávací políčka pro všechny uživatele v seznamu.
+3. Vyberte **poslat pozvánku** na panelu nástrojů. Můžete také najeďte myší jméno studenta v seznamu a odeslat na ikonu e-mailu. 
+
+    ![Poslat odkaz registraci e-mailem](../media/tutorial-setup-classroom-lab/send-email.png)
+4. Na **registraci odeslat odkaz e-mailem** stránce, postupujte podle těchto kroků: 
+    1. Typ **volitelnou zprávu** , který chcete odeslat pro studenty. E-mailu automaticky zahrnuje odkaz na registraci. 
+    2. Na **registraci odeslat odkaz e-mailem** stránce **odeslat**. 
+
+## <a name="get-registration-link"></a>Získejte odkaz pro registraci
 1. Přepněte **uživatelé** zobrazení tak, že vyberete **uživatelé** v nabídce vlevo. 
 2. Vyberte **odkazu registrace** dlaždici.
 
@@ -49,11 +62,7 @@ Následující postup obsahuje kroky k odeslání odkazu registrace pro uživate
 
     ![Odkaz pro registraci studenta](../media/tutorial-setup-classroom-lab/registration-link.png)
 2. V dialogovém okně **User registration** (Registrace uživatelů) vyberte **Close** (Zavřít). 
-4. Sdílejte odkaz pro registraci se studentem, aby se mohl zaregistrovat do třídy. Pokud máte **omezit možnost** povoleno nastavení a v seznamu k dispozici seznam uživatelů, proveďte následující akce:
-    1. Vyberte **e-mailová adresa** uživatele v seznamu. 
-    2. Zobrazit okno ve svém programu výchozí e-mailu s **na** adresu vyplněna. 
-    3. Vložit **adresa URL pro registraci** jste si zkopírovali dříve. 
-    4. Odeslat **e-mailu**. 
+4. Sdílené složky **registrace odkaz** s student tak, aby student může zaregistrovat pro třídu. 
 
 ## <a name="view-users-registered-with-the-lab"></a>Zobrazení uživatelů zaregistrovaných do testovacího prostředí
 

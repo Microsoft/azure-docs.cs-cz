@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f33480c5dfefcb1c3e136149b31e829edfbcac54
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: d6b8edf2627ade23fc6d1125afbabc34a1d9d21b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409444"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860376"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Kurz: Integrace Azure Active Directory s AppDynamics
 
@@ -130,29 +130,29 @@ Ke konfiguraci Azure AD jednotné přihlašování s AppDynamics, proveďte nás
 
 ### <a name="configure-appdynamics-single-sign-on"></a>Konfigurace přihlašování jedním AppDynamics
 
-7. V okně jiné webové prohlížeče Přihlaste se k webu společnosti AppDynamics jako správce.
+1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti AppDynamics jako správce.
 
-8. Na panelu nástrojů v horní části klikněte na tlačítko **nastavení**a potom klikněte na tlačítko **správu**.
+1. Na panelu nástrojů v horní části klikněte na tlačítko **nastavení**a potom klikněte na tlačítko **správu**.
 
     ![Správa](./media/appdynamics-tutorial/ic790216.png "správy")
 
-9. Klikněte na tlačítko **zprostředkovatele ověřování** kartu.
+1. Klikněte na tlačítko **zprostředkovatele ověřování** kartu.
 
     ![Zprostředkovatel ověřování](./media/appdynamics-tutorial/ic790224.png "zprostředkovatele ověřování")
 
-10. V **zprostředkovatele ověřování** části, proveďte následující kroky:
+1. V **zprostředkovatele ověřování** části, proveďte následující kroky:
 
-    ![Konfigurace SAML](./media/appdynamics-tutorial/ic790225.png "konfigurace SAML")
+   ![Konfigurace SAML](./media/appdynamics-tutorial/ic790225.png "konfigurace SAML")
 
-    a. Jako **zprostředkovatele ověřování**vyberte **SAML**.
+   a. Jako **zprostředkovatele ověřování**vyberte **SAML**.
 
-    b. V **přihlašovací adresa URL** textového pole vložte hodnotu **přihlašovací adresa URL** zkopírovanou z webu Azure portal.
+   b. V **přihlašovací adresa URL** textového pole vložte hodnotu **přihlašovací adresa URL** zkopírovanou z webu Azure portal.
 
-    c. V **odhlašovací adresa URL** textového pole vložte hodnotu **odhlašovací adresa URL** zkopírovanou z webu Azure portal.
+   c. V **odhlašovací adresa URL** textového pole vložte hodnotu **odhlašovací adresa URL** zkopírovanou z webu Azure portal.
 
-    d. V poznámkovém bloku otevřete certifikát kódováním base-64, zkopírujte obsah ho do schránky a a vložte ho do **certifikát** textové pole
+   d. V poznámkovém bloku otevřete certifikát kódováním base-64, zkopírujte obsah ho do schránky a a vložte ho do **certifikát** textové pole
 
-    e. Klikněte na **Uložit**.
+   e. Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
@@ -172,7 +172,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

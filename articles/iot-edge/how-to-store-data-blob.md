@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 6f82f50ebaa7ad4440078d1fd4658109cf0e19b6
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 0fc34c913453abd174009213233a54e30b9346d3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571282"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57881380"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store dat na hraničních zařízeních s Azure Blob Storage na hraničních zařízeních IoT (preview)
 
@@ -230,6 +230,7 @@ Pomocí požadovaných vlastností můžete nastavit automatické vrstvení a vl
 
 ### <a name="auto-tiering-properties"></a>Ovládání datových vrstev automatické vlastnosti 
 Název tohoto nastavení je `tieringSettings`
+
 | Pole | Možné hodnoty | Vysvětlení |
 | ----- | ----- | ---- |
 | tieringOn | Hodnota TRUE, false | Ve výchozím nastavení nastavena na `false`, pokud chcete, chcete-li ho na hodnotu `true`|
@@ -239,6 +240,7 @@ Název tohoto nastavení je `tieringSettings`
 
 ### <a name="auto-expiration-properties"></a>Automatické vypršení platnosti vlastnosti
 Název tohoto nastavení je `ttlSettings`
+
 | Pole | Možné hodnoty | Vysvětlení |
 | ----- | ----- | ---- |
 | ttlOn | Hodnota TRUE, false | Ve výchozím nastavení nastavena na `false`, pokud chcete, chcete-li ho na hodnotu `true`|
@@ -272,7 +274,7 @@ Nastavte požadované vlastnosti, které chcete povolit automatické vrstvení a
 
    ```
 
- ![nastavit vlastnosti automatické vrstvení a automatické vypršení platnosti](./media/how-to-store-data-blob/iotedge_custom_module.png)
+  ![nastavit vlastnosti automatické vrstvení a automatické vypršení platnosti](./media/how-to-store-data-blob/iotedge_custom_module.png)
 
 - **Po nasazení modulu prostřednictvím funkce "Dvojčete modulu Identity"**: Přejít na "Identity dvojče zařízení" tohoto modulu, zkopírujte JSON ve vlastnostech požadovaného, konfigurace jednotlivých vlastností s příslušnou hodnotu a uložte. Ve formátu Json "Dvojčete modulu Identity" Ujistěte se, že pokaždé, když přidáváte nebo aktualizujete všechny požadované vlastnosti, `reported configuration` části odráží změny a `configurationValidation` části oznámí úspěšné dokončení pro každou vlastnost.
 
@@ -343,6 +345,9 @@ Tady je příklad požadované vlastnosti pro tento modul: ![nastavte požadovan
     }
 
    ```
+  ## <a name="logs"></a>Logs
+
+Postupujte podle pokynů [konfigurovat protokoly dockeru pro moduly IoT Edge](production-checklist.md#set-up-logs-and-diagnostics)
 
 ## <a name="connect-to-your-blob-storage-module"></a>Připojení k modulu úložiště objektů blob
 
@@ -378,7 +383,7 @@ Následující šablony rychlý start použít jazyky, které jsou také podporo
 * [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md) 
 
 ### <a name="azure-storage-explorer"></a>Azure Storage Explorer
-Můžete také zkusit [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) pro připojení k účtu místního úložiště. Jste se pokusili jsme [předchozí verze 1.5.0](https://go.microsoft.com/fwlink/?LinkId=809306&clcid=0x409) Průzkumníka služby Azure.
+Můžete také zkusit [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) pro připojení k účtu místního úložiště. Jste se pokusili jsme [předchozí verze 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0) Průzkumníka služby Azure.
 > [!NOTE]
 > Pravděpodobně dojde k chybám při provádění následujících kroků, ignorovat a aktualizovat. 
 
@@ -388,8 +393,8 @@ Můžete také zkusit [Průzkumníka služby Azure Storage](https://azure.micros
 4. Projděte si kroky pro připojení.
 5. Vytvoření kontejneru v účtu místní úložiště
 6. Spusťte nahrávání souborů jako objekty BLOB bloku.
-> [!NOTE]
-> Zrušte zaškrtnutí políčka a pak ji nahrajte jako objekty BLOB stránky. Tento modul nepodporuje objekty BLOB stránky. Zobrazí se to výzvy při nahrávání souborů, jako je ISO, VHD, vhdx nebo velké soubory.
+   > [!NOTE]
+   > Zrušte zaškrtnutí políčka a pak ji nahrajte jako objekty BLOB stránky. Tento modul nepodporuje objekty BLOB stránky. Zobrazí se to výzvy při nahrávání souborů, jako je ISO, VHD, vhdx nebo velké soubory.
 
 7. Můžete připojit své účty úložiště Azure, pokud nahráváte data. Poskytuje jedno zobrazení pro účet místního úložiště a účet úložiště Azure
 
@@ -445,7 +450,7 @@ Podporovány:
 Nepodporovaný:
 * Vložit blok z adresy URL
 
-##<a name="feedback"></a>Zpětná vazba:
+## <a name="feedback"></a>Zpětná vazba:
 Váš názor je velmi důležité, aby tento modul a jeho funkcí užitečné a snadno se používá. Sdělte nám prosím svůj názor a dejte nám vědět, jak můžeme vylepšit.
 
 Abyste se obrátili na nás na adrese absiotfeedback@microsoft.com 

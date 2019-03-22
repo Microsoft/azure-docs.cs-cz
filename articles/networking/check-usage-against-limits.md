@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: jdial
-ms.openlocfilehash: 56434e12e1d5eec34e8848d71a018147f1e161f6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 54050c4c20b6ebb35f198775448f51ee8cdc533b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777256"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117638"
 ---
 # <a name="check-resource-usage-against-limits"></a>Kontrola využití prostředků proti omezení
 
@@ -34,16 +34,16 @@ V tomto článku se dozvíte, jak můžete zobrazit počet každý typ síťové
 4. Vyberte název předplatného, které chcete zobrazit informace o využití.
 5. V části **nastavení**vyberte **kvóty a využití**.
 6. Můžete vybrat následující možnosti:
-    - **Typy prostředků**: Můžete vybrat všechny typy prostředků nebo vyberte konkrétní typy prostředků, které chcete zobrazit.
-    - **Poskytovatelé**: Můžete vybrat všechny poskytovatele prostředků nebo vyberte **Compute**, **sítě**, nebo **úložiště**.
-    - **Umístění**: Můžete vybrat všech umístěních Azure, nebo vybrat konkrétní umístění.
-    - Můžete vybrat, chcete-li zobrazit všechny prostředky nebo jenom prostředky, ve kterém je nasazená alespoň jeden.
+   - **Typy prostředků**: Můžete vybrat všechny typy prostředků nebo vyberte konkrétní typy prostředků, které chcete zobrazit.
+   - **Poskytovatelé**: Můžete vybrat všechny poskytovatele prostředků nebo vyberte **Compute**, **sítě**, nebo **úložiště**.
+   - **Umístění**: Můžete vybrat všech umístěních Azure, nebo vybrat konkrétní umístění.
+   - Můžete vybrat, chcete-li zobrazit všechny prostředky nebo jenom prostředky, ve kterém je nasazená alespoň jeden.
 
-    Příklad na následujícím obrázku zobrazuje všechny síťových prostředků pomocí nejméně jeden prostředek nasazený v oblasti východní USA:
+     Příklad na následujícím obrázku zobrazuje všechny síťových prostředků pomocí nejméně jeden prostředek nasazený v oblasti východní USA:
 
-        ![View usage data](./media/check-usage-against-limits/view-usage.png)
+       ![Zobrazit data o využití](./media/check-usage-against-limits/view-usage.png)
 
-    Řazení sloupců tak, že vyberete na záhlaví sloupce. Mezní hodnoty uvedené jsou limity pro vaše předplatné. Pokud potřebujete zvýšit výchozí omezení, vyberte **žádost o zvýšení**, potom vyplňte a odešlete žádost o podporu. Všechny prostředky měly maximální limit uvedené v Azure [omezení](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits). Pokud aktuální limit už maximálního počtu, omezení nejde zvýšit.
+     Řazení sloupců tak, že vyberete na záhlaví sloupce. Mezní hodnoty uvedené jsou limity pro vaše předplatné. Pokud potřebujete zvýšit výchozí omezení, vyberte **žádost o zvýšení**, potom vyplňte a odešlete žádost o podporu. Všechny prostředky měly maximální limit uvedené v Azure [omezení](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits). Pokud aktuální limit už maximálního počtu, omezení nejde zvýšit.
 
 ## <a name="powershell"></a>PowerShell
 

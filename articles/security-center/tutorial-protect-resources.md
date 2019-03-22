@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: monhaber
-ms.openlocfilehash: 8662539257422289053e75beeadd07c63d8d3f4d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6e8c10ecb85addf2ef6a995e3c0b8ac611343cfa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106626"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110337"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Kurz: Ochrana prostředků pomocí Azure Security Center
 Security Center omezuje vaše vystavení hrozbám díky tomu, že pomocí řízení přístupu a aplikací blokuje škodlivé aktivity. Přístup k virtuálním počítačům (VM) just-in-Time (JIT) omezuje vaše vystavení útokům umožňuje odepření trvalého přístupu k virtuálním počítačům. Místo toho můžete poskytovat řízený a auditovaný přístup k virtuálním počítačům pouze v případě potřeby. Adaptivní řízení aplikací pomáhá posílit ochranu virtuálních počítačů před malwarem díky tomu, že řídí, které aplikace se na virtuálních počítačích můžou spouštět. Služba Security Center pomocí strojového učení analyzuje procesy spuštěné na virtuálním počítači a pomáhá s aplikováním pravidel přidávání na seznam povolených na základě těchto informací.
@@ -43,30 +43,30 @@ Porty pro správu nemusí být otevřené nepřetržitě. Musí být otevřené 
 
 1. V hlavní nabídce služby Security Center, vyberte **Just-in-Time virtuální počítač přístup k** pod **POKROČILÁ OBRANA cloudu**.
 
-  ![Přístup k virtuálním počítačům podle potřeby][1]
+   ![Přístup k virtuálním počítačům podle potřeby][1]
 
-  **Přístup k virtuálním počítačům just-in-Time** poskytuje informace o stavu vašich virtuálních počítačů:
+   **Přístup k virtuálním počítačům just-in-Time** poskytuje informace o stavu vašich virtuálních počítačů:
 
-  - **Nakonfigurované** – Virtuální počítače s nakonfigurovanou podporou přístupu podle potřeby.
-  - **Doporučené** – Virtuální počítače, které můžou podporovat přístup podle potřeby, ale ještě tak nebyly nakonfigurované.
-  - **Žádné doporučení** – Mezi důvody, proč virtuální počítač nemusí být doporučený, patří:
+   - **Nakonfigurované** – Virtuální počítače s nakonfigurovanou podporou přístupu podle potřeby.
+   - **Doporučené** – Virtuální počítače, které můžou podporovat přístup podle potřeby, ale ještě tak nebyly nakonfigurované.
+   - **Žádné doporučení** – Mezi důvody, proč virtuální počítač nemusí být doporučený, patří:
 
-    - Chybějící NSG – Řešení přístupu podle potřeby vyžaduje existenci NSG.
-    - Klasický virtuální počítač – Přístup k virtuálním počítačům podle potřeby v Security Center aktuálně podporuje pouze virtuální počítače nasazené prostřednictvím Azure Resource Manageru.
-    - Jiné – Virtuální počítač je v této kategorii, pokud je řešení přístupu podle potřeby vypnuté v zásadách zabezpečení předplatného nebo skupiny prostředků nebo pokud virtuální počítač nemá veřejnou IP adresu a NSG.
+     - Chybějící NSG – Řešení přístupu podle potřeby vyžaduje existenci NSG.
+     - Klasický virtuální počítač – Přístup k virtuálním počítačům podle potřeby v Security Center aktuálně podporuje pouze virtuální počítače nasazené prostřednictvím Azure Resource Manageru.
+     - Jiné – Virtuální počítač je v této kategorii, pokud je řešení přístupu podle potřeby vypnuté v zásadách zabezpečení předplatného nebo skupiny prostředků nebo pokud virtuální počítač nemá veřejnou IP adresu a NSG.
 
 2. Vyberte doporučený virtuální počítač a kliknutím na **Povolit přístup podle potřeby na 1 virtuálním počítači** nakonfigurujte pro tento virtuální počítač zásadu přístupu podle potřeby:
 
-  Můžete uložit výchozí porty, které Security Center doporučuje, nebo přidat a nakonfigurovat nový port, na kterém chcete řešení přístupu podle potřeby povolit. V tomto kurzu přidáme port výběrem možnosti **Přidat**.
+   Můžete uložit výchozí porty, které Security Center doporučuje, nebo přidat a nakonfigurovat nový port, na kterém chcete řešení přístupu podle potřeby povolit. V tomto kurzu přidáme port výběrem možnosti **Přidat**.
 
-  ![Přidání konfigurace portu][2]
+   ![Přidání konfigurace portu][2]
 
 3. V části **Přidání konfigurace portu** určíte:
 
-  - Port
-  - Typ protokolu
-  - Povolené zdrojové IP adresy – Rozsahy IP adres s povolením získat přístup po schválení žádosti
-  - Maximální doba žádosti – Maximální časový interval otevření konkrétního portu
+   - Port
+   - Typ protokolu
+   - Povolené zdrojové IP adresy – Rozsahy IP adres s povolením získat přístup po schválení žádosti
+   - Maximální doba žádosti – Maximální časový interval otevření konkrétního portu
 
 4. Výběrem **OK** konfiguraci uložte.
 
@@ -79,22 +79,22 @@ Tato funkce je dostupná pouze pro počítače s Windows.
 
    ![Adaptivní řízení aplikací][3]
 
-  Část **Skupiny prostředků** obsahuje tři karty:
+   Část **Skupiny prostředků** obsahuje tři karty:
 
-  - **Nakonfigurované**: Seznam skupin prostředků obsahujících virtuální počítače s nakonfigurovaným řízením aplikací.
-  - **Doporučené**: Seznam skupin prostředků, pro kterou aplikaci se doporučuje řízení.
-  - **Žádné doporučení**: Seznam skupin prostředků obsahujících virtuální počítače bez jakýchkoli doporučených řízení aplikací. Například virtuální počítače, na kterých se neustále mění aplikace a které se ještě nedostaly do stabilního stavu.
+   - **Nakonfigurované**: Seznam skupin prostředků obsahujících virtuální počítače s nakonfigurovaným řízením aplikací.
+   - **Doporučené**: Seznam skupin prostředků, pro kterou aplikaci se doporučuje řízení.
+   - **Žádné doporučení**: Seznam skupin prostředků obsahujících virtuální počítače bez jakýchkoli doporučených řízení aplikací. Například virtuální počítače, na kterých se neustále mění aplikace a které se ještě nedostaly do stabilního stavu.
 
 2. Výběrem karty **Doporučené** zobrazte seznam skupin prostředků s doporučeními pro řízení aplikací.
 
-  ![Doporučení pro řízení aplikací][4]
+   ![Doporučení pro řízení aplikací][4]
 
 3. Výběrem skupiny prostředků otevřete možnost **Vytvořit pravidla řízení aplikací**. V části **Vybrat virtuální počítače** zkontrolujte seznam doporučených virtuálních počítačů a zrušte zaškrtnutí těch, na které nechcete použít řízení aplikací. V části **Vybrat procesy pro pravidla přidávání na seznam povolených** zkontrolujte seznam doporučených aplikací a zrušte zaškrtnutí těch, které nechcete použít. Seznam obsahuje:
 
-  - **NÁZEV**: Úplná cesta aplikace
-  - **PROCESY**: Počet aplikací se nacházejí v jednotlivých cestách
-  - **BĚŽNÉ**: "Ano" znamená, že tyto procesy spustily na většině virtuálních počítačů v této skupině prostředků
-  - **ZNEUŽITELNÉ**: Ikona upozornění značí, pokud aplikace může používat útočník k obejití seznamu povolených aplikací. Tyto aplikace doporučujeme před schválením zkontrolovat.
+   - **NÁZEV**: Úplná cesta aplikace
+   - **PROCESY**: Počet aplikací se nacházejí v jednotlivých cestách
+   - **BĚŽNÉ**: "Ano" znamená, že tyto procesy spustily na většině virtuálních počítačů v této skupině prostředků
+   - **ZNEUŽITELNÉ**: Ikona upozornění značí, pokud aplikace může používat útočník k obejití seznamu povolených aplikací. Tyto aplikace doporučujeme před schválením zkontrolovat.
 
 4. Jakmile budete s výběry hotovi, vyberte **Vytvořit**.
 

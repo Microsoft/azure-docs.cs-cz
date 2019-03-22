@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee6c6559b5dd6c6a6e357ff2f258bad79d57205c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: 9809993d47141b70484892103e318a6f55381a2e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192638"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856256"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurovat nastavení ověřování Azure Multi-Factor Authentication
 
@@ -64,7 +64,7 @@ Použití _blokovat nebo odblokovat uživatele_ funkci, která uživatelům zabr
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
 2. Přejděte do **Azure Active Directory** > **MFA** > **blokování a odblokování uživatelů**.
 3. Vyberte **přidat** zablokujete určitému uživateli.
-4. Vyberte **replikační skupiny**. Zadejte uživatelské jméno pro blokované uživatele jako datový typ **username@domain.com**. Zadejte komentář **důvod** pole.
+4. Vyberte **replikační skupiny**. Zadejte uživatelské jméno pro blokované uživatele jako datový typ **uživatelské jméno\@domain.com**. Zadejte komentář **důvod** pole.
 5. Vyberte **přidat** dokončete blokování uživatele.
 
 ### <a name="unblock-a-user"></a>Odblokovat uživatele
@@ -154,7 +154,7 @@ _Jednorázové přihlášení_ funkce umožňuje uživatele jednorázově ověř
 2. Přejděte do **Azure Active Directory** > **MFA** > **jednorázové přihlášení**.
 3. Vyberte **Přidat**.
 4. V případě potřeby vyberte replikační skupiny pro jednorázové přihlášení.
-5. Zadejte uživatelské jméno jako **username@domain.com**. Zadejte počet sekund, po které by měl trvat jednorázového přihlášení. Zadejte důvod pro jednorázové přihlášení.
+5. Zadejte uživatelské jméno jako **uživatelské jméno\@domain.com**. Zadejte počet sekund, po které by měl trvat jednorázového přihlášení. Zadejte důvod pro jednorázové přihlášení.
 6. Vyberte **Přidat**. Časový limit začne platit okamžitě. Uživatel musí pro přihlášení, než vyprší platnost jednorázového přihlášení.
 
 ### <a name="view-the-one-time-bypass-report"></a>Zobrazit sestavu jednorázové přihlášení
@@ -252,7 +252,7 @@ Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Musí
 
 Uživatelé můžou vytvářet hesla aplikací při jejich počáteční registraci. Uživatel nemá možnost vytvoření hesel aplikací na konci procesu registrace.
 
-Uživatelé mohou také vytvářet hesla aplikací po registraci. Hesla aplikací lze změnit prostřednictvím nastavení na webu Azure portal nebo na portálu Office 365. Další informace a podrobné pokyny pro uživatele najdete v tématu [co jsou hesla aplikací v Azure Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
+Uživatelé mohou také vytvářet hesla aplikací po registraci. Další informace a podrobné pokyny pro uživatele najdete v tématu [co jsou hesla aplikací v Azure Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
 
 ## <a name="trusted-ips"></a>Důvěryhodné IP adresy
 

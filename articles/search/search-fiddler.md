@@ -1,5 +1,5 @@
 ---
-title: Zkoumání rozhraní REST API v nástroji Postman nebo Fiddler HTTP nástroje pro testování webu – Azure Search
+title: Zkoumání rozhraní REST API v nástroji Postman nebo Fiddler – Azure Search
 description: Jak používat Postman nebo Fiddler k vydávání požadavků HTTP a rozhraní REST API pro volání do služby Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ffa47a2e14ba49630aa8b7017a3b0c557421da57
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 946d8196fbe49e452dab8fa36e4c746a1bcaf490
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792068"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58137619"
 ---
-# <a name="explore-azure-search-rest-apis-using-postman-or-fiddler"></a>Prozkoumejte službu REST API služby Azure Search pomocí nástroje Postman nebo Fiddler
+# <a name="quickstart-explore-azure-search-rest-apis-using-postman-or-fiddler"></a>Rychlý start: Prozkoumejte službu REST API služby Azure Search pomocí nástroje Postman nebo Fiddler
 
 Jeden z nejjednodušších způsobů zkoumání [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice) využívá Postman nebo Fiddler k formulování požadavků HTTP a zkontrolovat odpovědi. S využitím správných nástrojů a pokynů můžete odesílat žádosti a zobrazovat odpovědi, ještě než začnete psát kód.
 
@@ -42,11 +42,13 @@ Následující nástroje se běžně používají při vývoji webových stráne
 
 Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
 
-1. Na webu Azure Portal otevřete stránku vyhledávací služby z řídicího panelu nebo [svou službu vyhledejte](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v seznamu služeb.
-2. Získání koncového bodu adresy URL **přehled**. Příkladem koncového bodu může být `https://my-service-name.search.windows.net`.
-3. Získejte klíč api-key v části **Nastavení** > **Klíče**. Pokud byste chtěli převádět klíče, za účelem zajištění redundance existují dva klíče správce. Klíče správce udělují oprávnění k zápisu pro vaši službu, což je nezbytné k vytváření a načítání indexů. Pro operace zápisu můžete použít primární nebo sekundární klíč.
+1. Na webu Azure Portal, ve vyhledávací službě **přehled** stránce, získat adresu URL. Příkladem koncového bodu může být `https://my-service-name.search.windows.net`.
+
+2. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. U požadavků můžete použít buď primární nebo sekundární klíč pro přidání, úpravy a odstraňování objektů.
 
 ![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-fiddler/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
+
+Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslaného do vaší služby. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
 
 ## <a name="configure-headers"></a>Konfigurace hlaviček
@@ -83,7 +85,7 @@ Zformulujte podobnou žádost, která vypadá jako na následujícím snímku ob
 > [!Tip]
 > Vypněte webový provoz a skrýt nadbytečné, nesouvisejících aktivitu protokolu HTTP. V aplikaci Fiddler od **souboru** nabídky, vypněte **zachycování provozu**. 
 
-## <a name="1---create-the-index"></a>1 – Vytvoření indexu
+## <a name="1---create-an-index"></a>1. Vytvoření indexu
 
 Text žádosti obsahuje definici indexu. Přidáním textu žádosti se dokončí požadavek, který vytvoří váš index.
 
@@ -217,7 +219,7 @@ Změňte operaci na **POST**. Změňte adresu URL tak, aby zahrnovala `/docs/ind
 
 ![Datová část žádosti Fiddleru][9]
 
-## <a name="3---query-the-index"></a>3 – dotazování indexu
+## <a name="3---search-an-index"></a>3. Prohledání indexu
 Teď, když se načtou index a dokumenty, můžete posílat dotazy proti nim pomocí [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents) rozhraní REST API.
 
 + Pro účely tohoto kroku změňte operaci na **GET**.
@@ -260,9 +262,8 @@ Ve Fiddleru klikněte na kartu **Kontroly**, klikněte na kartu **Hlavičky** a 
 
 Klienti REST jsou neocenitelní při zkoumání bez přípravy, ale teď, když víte, jak fungují rozhraní REST API, můžete pokračovat s kódem. Další kroky najdete na následujících odkazech:
 
-+ [Vytvoření indexu (REST)](search-create-index-rest-api.md)
-+ [Import dat (REST)](search-import-data-rest-api.md)
-+ [Prohledávání indexu (REST)](search-query-rest-api.md)
++ [Rychlé zprovoznění: Vytvoření indexu pomocí .NET SDK](search-create-index-dotnet.md)
++ [Rychlé zprovoznění: Vytvoření indexu (REST) pomocí Powershellu](search-create-index-rest-api.md)
 
 <!--Image References-->
 [1]: ./media/search-fiddler/fiddler-url.png

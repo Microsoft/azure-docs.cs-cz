@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 58f16b0aa068c8b333ef4e7986bb49327b002fbb
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: e8afdfece258986f5dc4cc6f1c7e66aed24e0500
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195417"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092544"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Řešení pro monitorování kontejnerů ve službě Azure Monitor
 
@@ -100,19 +100,19 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 1. Přidejte řešení pro monitorování kontejnerů do pracovního prostoru Log Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) nebo pomocí procesu popsaného v [přidat řešení z Galerie řešení monitorování](../../azure-monitor/insights/solutions.md).
 
 2. Nainstalovat a používat Docker pomocí agenta Log Analytics. Na základě vašeho operačního systému a orchestrátor Docker, můžete použít následující metody konfigurace agenta.
-  - Pro samostatné hostitele:
-    - Na podporovaných operačních systémech Linux, instalace a spuštění Dockeru a pak nainstalujte a nakonfigurujte [agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md).  
-    - V systému CoreOS nelze spustit agenta Log Analytics pro Linux. Místo toho spustíte kontejnerizovaných verzi agenta Log Analytics pro Linux. Projděte si včetně CoreOS hostitelé kontejneru s Linuxem nebo hostitelích kontejnerů Azure Government s Linuxem, včetně CoreOS při práci s kontejnery v cloudu Azure Government.
-    - V systému Windows Server 2016 a Windows 10 nainstalujte klienta a modul Docker potom připojit agenta pro shromažďování informací a jejich odesílání do Azure monitoru. Kontrola [instalace a konfigurace hostitelů Windows kontejneru](#install-and-configure-windows-container-hosts) Pokud používáte prostředí Windows.
-  - Orchestrace prostřednictvím Docker více hostitelů:
-    - Pokud máte v prostředí Red Hat OpenShift, zkontrolujte konfigurace agenta Log Analytics pro Red Hat OpenShift.
-    - Pokud máte cluster Kubernetes pomocí služby Azure Container Service:
+   - Pro samostatné hostitele:
+     - Na podporovaných operačních systémech Linux, instalace a spuštění Dockeru a pak nainstalujte a nakonfigurujte [agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md).  
+     - V systému CoreOS nelze spustit agenta Log Analytics pro Linux. Místo toho spustíte kontejnerizovaných verzi agenta Log Analytics pro Linux. Projděte si včetně CoreOS hostitelé kontejneru s Linuxem nebo hostitelích kontejnerů Azure Government s Linuxem, včetně CoreOS při práci s kontejnery v cloudu Azure Government.
+     - V systému Windows Server 2016 a Windows 10 nainstalujte klienta a modul Docker potom připojit agenta pro shromažďování informací a jejich odesílání do Azure monitoru. Kontrola [instalace a konfigurace hostitelů Windows kontejneru](#install-and-configure-windows-container-hosts) Pokud používáte prostředí Windows.
+   - Orchestrace prostřednictvím Docker více hostitelů:
+     - Pokud máte v prostředí Red Hat OpenShift, zkontrolujte konfigurace agenta Log Analytics pro Red Hat OpenShift.
+     - Pokud máte cluster Kubernetes pomocí služby Azure Container Service:
        - Kontrola [konfigurace agenta Log Analytics Linux pro Kubernetes](#configure-a-log-analytics-linux-agent-for-kubernetes).
        - Kontrola [konfigurace agenta Log Analytics Windows pro Kubernetes](#configure-a-log-analytics-windows-agent-for-kubernetes).
        - Zkontrolujte použití Helm nasadit agenta Log Analytics v Kubernetes s Linuxem.
-    - Pokud máte cluster Azure Container Service DC/OS, další informace najdete na [monitorování clusteru služby Azure Container Service DC/OS prostřednictvím služby Azure Monitor](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
-    - Pokud máte prostředí s režimem Docker Swarm, další informace v konfigurace agenta Log Analytics pro Docker Swarm.
-    - Pokud máte cluster Service Fabric, další informace najdete na [monitorování kontejnerů pomocí Azure monitoru](../../service-fabric/service-fabric-diagnostics-oms-containers.md).
+     - Pokud máte cluster Azure Container Service DC/OS, další informace najdete na [monitorování clusteru služby Azure Container Service DC/OS prostřednictvím služby Azure Monitor](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
+     - Pokud máte prostředí s režimem Docker Swarm, další informace v konfigurace agenta Log Analytics pro Docker Swarm.
+     - Pokud máte cluster Service Fabric, další informace najdete na [monitorování kontejnerů pomocí Azure monitoru](../../service-fabric/service-fabric-diagnostics-oms-containers.md).
 
 Zkontrolujte [modul Docker na Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) Další informace o tom, jak nainstalovat a nakonfigurovat váš moduly Docker v počítačích se systémem Windows.
 
@@ -476,17 +476,17 @@ Pokud chcete nasadit agenta Log Analytics v prostředí Linux Kubernetes pomocí
     LAST DEPLOYED: Tue Sep 19 20:37:46 2017
     NAMESPACE: default
     STATUS: DEPLOYED
- 
+ 
     RESOURCES:
     ==> v1/Secret
     NAME            TYPE    DATA  AGE
     omsagent-msoms  Opaque  3     17m
- 
+ 
     ==> v1beta1/DaemonSet
     NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
     omsagent-msoms  3        3        3      3           3          <none>         17m
     ```
-Další informace, navštivte prosím [kontejner grafu helmu řešení](https://aka.ms/omscontainerhelm).
+   Další informace, navštivte prosím [kontejner grafu helmu řešení](https://aka.ms/omscontainerhelm).
 
 ### <a name="install-and-configure-windows-container-hosts"></a>Instalace a konfigurace hostitelích kontejnerů Windows
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 386662a4e98b881228a82de3777632ed002bb5b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.openlocfilehash: d1ecac243ee4cfd3385d0fc69c9ce7c9e2afd95c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989144"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898835"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Použití Webhooků Azure pro monitorování oznámení úloh pro Media Services s .NET 
 
@@ -49,7 +49,7 @@ K dokončení kurzu potřebujete následující:
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
-1. Přejděte na web [Azure Portal](http://portal.azure.com) a přihlaste se pomocí účtu Azure.
+1. Přejděte na web [Azure Portal](https://portal.azure.com) a přihlaste se pomocí účtu Azure.
 2. Vytvoření aplikace function app, jak je popsáno [tady](../../azure-functions/functions-create-function-app-portal.md).
 
 ## <a name="configure-function-app-settings"></a>Konfigurace nastavení aplikace function app
@@ -379,22 +379,22 @@ V této části se zobrazí kód, který se přidá oznámení webhooku k úkolu
 2. Použití [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) k instalaci služby Azure Media Services.
 3. Aktualizace souboru App.config příslušnými hodnotami: 
     
-    * Informace o Azure Media Services připojení, 
-    * Adresa URL webhooku, která očekává, že chcete dostávat oznámení, 
-    * podpisový klíč, který odpovídá klíč, který očekává, že vaše webhooku. Podpisový klíč je 64 bajtů hodnotou kódovanou jako Base64, který se používá k ochraně a zabezpečení vaší webhooky zpětná volání ze služby Azure Media Services. 
+   * Informace o Azure Media Services připojení, 
+   * Adresa URL webhooku, která očekává, že chcete dostávat oznámení, 
+   * podpisový klíč, který odpovídá klíč, který očekává, že vaše webhooku. Podpisový klíč je 64 bajtů hodnotou kódovanou jako Base64, který se používá k ochraně a zabezpečení vaší webhooky zpětná volání ze služby Azure Media Services. 
 
-    ```xml
-            <appSettings>
-                <add key="AMSAADTenantDomain" value="domain" />
-                <add key="AMSRESTAPIEndpoint" value="endpoint" />
+     ```xml
+           <appSettings>
+               <add key="AMSAADTenantDomain" value="domain" />
+               <add key="AMSRESTAPIEndpoint" value="endpoint" />
 
-                <add key="AMSClientId" value="clinet id" />
-                <add key="AMSClientSecret" value="client secret" />
+               <add key="AMSClientId" value="clinet id" />
+               <add key="AMSClientSecret" value="client secret" />
 
-                <add key="WebhookURL" value="https://yourapp.azurewebsites.net/api/functionname?code=ApiKey" />
-                <add key="WebhookSigningKey" value="j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt" />
-            </appSettings>
-    ```
+               <add key="WebhookURL" value="https://yourapp.azurewebsites.net/api/functionname?code=ApiKey" />
+               <add key="WebhookSigningKey" value="j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt" />
+           </appSettings>
+     ```
 
 4. Aktualizace souboru Program.cs následujícím kódem:
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: fb9ee97726632b7eeccc923596c1f5527a7c95bd
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 180075f13be2cc2507a78e3d10a67a49a0c0cb12
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961602"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118625"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace Network Performance Monitoru pro ExpressRoute
 
@@ -62,17 +62,17 @@ Vytvořte pracovní prostor v rámci předplatného, který má propojení virtu
 2. V dolní části hlavního **Network Performance Monitor** klikněte na **vytvořit** otevřete **Network Performance Monitor – vytvořit nové řešení** stránky. Klikněte na tlačítko **pracovní prostor Log Analytics – vyberte pracovní prostor** otevřete stránku pracovních prostorů. Klikněte na tlačítko **+ vytvořit nový pracovní prostor** otevřete stránku pracovního prostoru.
 3. Na **pracovní prostor Log Analytics** stránce **vytvořit nový**, nakonfigurujte následující nastavení:
 
-  * Pracovní prostor log Analytics – zadejte název pro váš pracovní prostor.
-  * Předplatné – Pokud máte více předplatných, vyberte ten, který chcete přidružit k novému pracovnímu prostoru.
-  * Skupina prostředků - vytvořte skupinu prostředků nebo použijte již existující.
-  * Umístění – toto umístění slouží k určení umístění účtu úložiště, který se používá pro připojení protokoly agenta.
-  * Cenová úroveň – výběr cenové úrovně.
+   * Pracovní prostor log Analytics – zadejte název pro váš pracovní prostor.
+   * Předplatné – Pokud máte více předplatných, vyberte ten, který chcete přidružit k novému pracovnímu prostoru.
+   * Skupina prostředků - vytvořte skupinu prostředků nebo použijte již existující.
+   * Umístění – toto umístění slouží k určení umístění účtu úložiště, který se používá pro připojení protokoly agenta.
+   * Cenová úroveň – výběr cenové úrovně.
   
-    >[!NOTE]
-    >Okruh ExpressRoute může být kdekoli na světě. Nemusí být ve stejné oblasti jako pracovní prostor.
-    >
+     >[!NOTE]
+     >Okruh ExpressRoute může být kdekoli na světě. Nemusí být ve stejné oblasti jako pracovní prostor.
+     >
   
-    ![pracovní prostor](./media/how-to-npm/4.png)<br><br>
+     ![pracovní prostor](./media/how-to-npm/4.png)<br><br>
 4. Klikněte na tlačítko **OK** uložení a nasazení nastavení šablony. Jakmile šablonu ověří, klikněte na tlačítko **vytvořit** nasazení pracovního prostoru.
 5. Po nasazení pracovního prostoru, přejděte **NetworkMonitoring(name)** prostředek, který jste vytvořili. Ověřte nastavení a potom klikněte na **řešení vyžaduje další konfiguraci**.
 
@@ -86,7 +86,7 @@ Vytvořte pracovní prostor v rámci předplatného, který má propojení virtu
 2. V dalším kroku zkopírujte **ID pracovního prostoru** a **primární klíč** do poznámkového bloku.
 3. Z **konfigurace agentů Log Analytics pro monitorování prostřednictvím protokolu TCP** oddílu, stáhněte si skript prostředí Powershell. Skript prostředí PowerShell umožňuje otevřít port brány firewall pro TCP transakce.
 
-  ![Skript PowerShellu](./media/how-to-npm/7.png)
+   ![Skript PowerShellu](./media/how-to-npm/7.png)
 
 ### <a name="installagent"></a>2.2: Nainstalujte agenta monitorování na každou monitorovací server (v každé virtuální síti, která chcete monitorovat)
 
@@ -102,15 +102,15 @@ Doporučujeme nainstalovat aspoň dva agenty na každé straně připojení Expr
 4. Na **cílovou složku** stránce, změňte nebo ponechte výchozí instalační složku a potom klikněte na tlačítko **Další**.
 5. Na **možnosti instalace agenta** stránky, můžete také připojit agenta k Azure Monitor protokoly nebo Operations Manager. Nebo můžete ponechat volby prázdné Pokud chcete později konfigurovat agenta. Po provedení vybrané položky, klikněte na tlačítko **Další**.
 
-  * Pokud jste zvolili pro připojení k **Azure Log Analytics**, vložte **ID pracovního prostoru** a **klíč pracovního prostoru** (primární klíč), který jste zkopírovali do poznámkového bloku v předchozí části. Pak klikněte na **Další**.
+   * Pokud jste zvolili pro připojení k **Azure Log Analytics**, vložte **ID pracovního prostoru** a **klíč pracovního prostoru** (primární klíč), který jste zkopírovali do poznámkového bloku v předchozí části. Pak klikněte na **Další**.
 
-    ![ID a klíč](./media/how-to-npm/8.png)
-  * Pokud jste zvolili pro připojení k **nástroje Operations Manager**na **konfigurace skupiny pro správu** stránky, zadejte **název skupiny pro správu**, **serveru pro správu** a **Port serveru pro správu**. Pak klikněte na **Další**.
+     ![ID a klíč](./media/how-to-npm/8.png)
+   * Pokud jste zvolili pro připojení k **nástroje Operations Manager**na **konfigurace skupiny pro správu** stránky, zadejte **název skupiny pro správu**, **serveru pro správu** a **Port serveru pro správu**. Pak klikněte na **Další**.
 
-    ![Operations Manager](./media/how-to-npm/9.png)
-  * Na **účet Agent Action Account** zvolte buď **místní systém** účtu, nebo **doménový nebo místní účet počítače**. Pak klikněte na **Další**.
+     ![Operations Manager](./media/how-to-npm/9.png)
+   * Na **účet Agent Action Account** zvolte buď **místní systém** účtu, nebo **doménový nebo místní účet počítače**. Pak klikněte na **Další**.
 
-    ![Účet](./media/how-to-npm/10.png)
+     ![Účet](./media/how-to-npm/10.png)
 6. Na **připraveno k instalaci** stránky, zkontrolujte zvolené volby a pak klikněte na tlačítko **nainstalovat**.
 7. Na stránce **Konfigurace byla úspěšně dokončena** klikněte na **Dokončit**.
 8. Jakmile budete hotovi, zobrazí se v Ovládacích panelech agenta Microsoft Monitoring Agent. Můžete zkontrolovat svou konfiguraci existuje a ověřte, že agent je připojený k protokoly Azure monitoru. Když se připojí, agent zobrazí zprávu: **Microsoft Monitoring Agent úspěšně připojilo ke službě Microsoft Operations Management Suite**.
@@ -128,7 +128,7 @@ Konfigurace nastavení proxy serveru pro Microsoft Monitoring Agent pomocí ovl�
 3. Klikněte na kartu **Nastavení proxy serveru**.
 4. Vyberte **používat proxy server** a zadejte adresu URL a číslo portu, pokud je to zapotřebí. Pokud váš proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo pro přístup k proxy serveru.
 
-  ![Proxy server](./media/how-to-npm/11.png)
+   ![Proxy server](./media/how-to-npm/11.png)
 
 ### <a name="verifyagent"></a>2.4: Ověřit připojení agenta
 
@@ -139,7 +139,7 @@ Můžete snadno ověřit, zda jsou komunikaci agentů.
 3. Klikněte na tlačítko **Azure Log Analytics** kartu.
 4. V **stav** sloupce, měli byste vidět, že agenta úspěšně připojila k protokoly Azure monitoru.
 
-  ![status](./media/how-to-npm/12.png)
+   ![status](./media/how-to-npm/12.png)
 
 ### <a name="firewall"></a>2.5: Otevřete porty brány firewall na serverech monitorování agenta
 
@@ -172,16 +172,16 @@ Další informace o NSG najdete v tématu [skupiny zabezpečení sítě](../virt
 
 1. Přejděte na dlaždici s přehledem Network Performance Monitor tak, že přejdete **všechny prostředky** stránce a potom klikněte na seznam povolených adres NPM pracovního prostoru.
 
-  ![pracovní prostor npm](./media/how-to-npm/npm.png)
+   ![pracovní prostor npm](./media/how-to-npm/npm.png)
 2. Klikněte na tlačítko **Network Performance Monitor** dlaždici s přehledem a zobrazte si řídicí panel. Řídicí panel obsahuje stránku ExpressRoute, který ukazuje, že je služba ExpressRoute v do nenakonfigurovaného stavu. Klikněte na tlačítko **nastavení funkce** otevřete stránku konfigurace Network Performance monitoru.
 
-  ![nastavení funkce](./media/how-to-npm/npm2.png)
+   ![nastavení funkce](./media/how-to-npm/npm2.png)
 3. Na stránce konfigurace přejděte na kartu partnerské vztahy ExpressRoute, nachází na levé straně panelu. Klepnutím na tlačítko **zjistit nyní**.
 
-  ![Zjistit](./media/how-to-npm/13.png)
+   ![Zjistit](./media/how-to-npm/13.png)
 4. Po dokončení zjišťování, zobrazí se seznam obsahující následující položky:
-  * Všechny partnerské vztahy Microsoftu v okruhy ExpressRoute, přidružené k tomuto předplatnému.
-  * Všechny privátní partnerské vztahy, které se připojují k virtuálním sítím spojené s tímto odběrem.
+   * Všechny partnerské vztahy Microsoftu v okruhy ExpressRoute, přidružené k tomuto předplatnému.
+   * Všechny privátní partnerské vztahy, které se připojují k virtuálním sítím spojené s tímto odběrem.
             
 ## <a name="configmonitor"></a>Krok 5: Konfigurace monitorování
 

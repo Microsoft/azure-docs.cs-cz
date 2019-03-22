@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: alzam
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: a13e8d7b97fcca95c0d90b9dd283b9bafbb4a21f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9fe0c7f7ae0c19833421b647449f0e4100904f5b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541962"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226228"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>Kurz: Vytvoření připojení typu Point-to-Site pomocí Azure virtuální sítě WAN (Preview)
 
@@ -69,7 +69,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2S
 Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
 ```
 
-Jakmile bude tato funkce zaregistrovaná, znovu zaregistrujte předplatné do oboru názvů Microsoft.Network.
+Jakmile se zobrazí jako zaregistrovaný, dané předplatné zaregistrujete do oboru názvů Microsoft.Network.
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Network
@@ -103,11 +103,11 @@ Konfigurace P2S definuje parametry pro připojení vzdálených klientů.
 4. Kliknutím na **+ Přidat konfiguraci point-to-site** v horní části okna otevřete stránku **Vytvořit novou konfiguraci point-to-site**.
 5. Na stránce **Vytvořit novou konfiguraci point-to-site** vyplňte následující pole:
 
-  *  **Název konfigurace** – Název, kterým chcete na konfiguraci odkazovat.
-  *  **Typ tunelu** – Protokol, který se má použít pro tunel.
-  *  **Fond adres** – Fond IP adres, ze kterého se klientům budou přiřazovat IP adresy.
-  *  **Název kořenového certifikátu** – Popisný název certifikátu.
-  *  **Data kořenového certifikátu** – Data certifikátu X.509 s kódováním Base-64.
+   *  **Název konfigurace** – Název, kterým chcete na konfiguraci odkazovat.
+   *  **Typ tunelu** – Protokol, který se má použít pro tunel.
+   *  **Fond adres** – Fond IP adres, ze kterého se klientům budou přiřazovat IP adresy.
+   *  **Název kořenového certifikátu** – Popisný název certifikátu.
+   *  **Data kořenového certifikátu** – Data certifikátu X.509 s kódováním Base-64.
 
 6. Kliknutím na **Vytvořit** vytvořte konfiguraci.
 

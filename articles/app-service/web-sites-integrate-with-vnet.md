@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 951f8f887a7b29aac67b50ff8f92ddfd4a66e26b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ed99bd3626bb44bff68e4122d6b50523f19e1797
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766874"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112615"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrujte svou aplikaci s Azure Virtual Network
 Tento dokument popisuje funkci integrace virtuální sítě Azure App Service a ukazuje, jak ho nastavit s aplikacemi v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure Virtual Networks] [ VNETOverview] (Vnet) umožňuje umístit řadu prostředků Azure v síti bez Internetu možnosti směrování. Tyto sítě můžou potom připojené k vaší místní sítí pomocí technologie VPN. 
@@ -51,7 +51,7 @@ Existuje několik věcí, které integrace virtuální sítě nepodporuje, včet
 
 * připojení na jednotku
 * Integrace služby AD 
-* NetBios
+* NetBIOS
 * přístup privátního lokality
 * přístup k prostředkům prostřednictvím ExpressRoute 
 * přístup k prostředkům prostřednictvím koncových bodů služby 
@@ -259,7 +259,7 @@ Při vaší virtuální sítě je již připojen k místní síti, pak pomocí i
 
 Nad rámec funkční rozdíly, že jsou také cenové rozdíly. Funkce App Service Environment je na úrovni Premium nabídky služeb ale nabízí největší sítě možnosti konfigurace kromě dalších skvělých funkcí. Integrace virtuální sítě je možné s Standard nebo Premium používalo a je ideální pro bezpečné používání prostředků ve virtuální síti ze služby App Service pro více tenantů. Hybridní připojení se aktuálně závisí na BizTalk účtu, který má cenové úrovně, které začít zdarma a získejte postupně dražší, na základě doby, co potřebujete. Při rozhodování o práci napříč mnoha sítím ale, neexistuje žádná funkce jako Hybrid Connections, které vám umožní přístup k prostředkům v samostatných sítích i více než 100. 
 
-## <a name="new-vnet-integration"></a>Nově zavedené integraci virtuální sítě ##
+## <a name="new-vnet-integration"></a>Nová Integrace virtuální sítě ##
 
 Existuje nová verze funkci integrace virtuální sítě, které nejsou závislé na technologii Point-to-Site VPN. Na rozdíl od existující funkce novou funkci ve verzi Preview bude fungovat s ExpressRoute a koncových bodů služby. 
 
@@ -284,13 +284,13 @@ Chcete-li používat nové funkce:
 
 1. Přejděte na uživatelské rozhraní sítě na portálu. Pokud je vaše aplikace využívat nové funkce, se zobrazí možnost využít novou funkci ve verzi preview.  
 
- ![Vyberte nový náhled integrace virtuální sítě][6]
+   ![Vyberte nový náhled integrace virtuální sítě][6]
 
 1. Vyberte **přidání virtuální sítě (preview)**.  
 
 1. Vyberte virtuální síť Resource Manageru, kterou chcete integrovat a pak vytvořit novou podsíť nebo vyberte existující podsíť. Integrace trvá méně než minutu. Během integrace se aplikace restartuje.  Po dokončení integrace, zobrazí se podrobnosti na jsou integrované s virtuální sítí a banner v horní části stránky, dozvíte se, že tato funkce je ve verzi preview.
 
- ![Vyberte virtuální síť a podsíť][7]
+   ![Vyberte virtuální síť a podsíť][7]
 
 Aby vaše aplikace bude moct používat server DNS, který má nakonfigurovanou virtuální síť, vytvoření nastavení aplikace pro vaši aplikaci, ve kterém je WEBSITE_DNS_SERVER název a hodnota je IP adresa serveru.  Pokud máte sekundární server DNS, vytvořte další nastavení aplikace, kde je název WEBSITE_DNS_ALT_SERVER a hodnota je IP adresa serveru. 
 

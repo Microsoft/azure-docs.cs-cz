@@ -9,12 +9,12 @@ ms.date: 01/25/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 29c6dc0f7e71508e7b4ecb4e0f1d5c849df7a68c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: ec8cbddda4137656a53fd4968c451cd413959274
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904844"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110779"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Zobrazit vlastní obsah pomocí markdownu dlaždice na řídicích panelů Azure
 
@@ -24,17 +24,17 @@ Dlaždice markdown můžete přidat na řídicí panely Azure k zobrazení vlast
 
 1. Vyberte **řídicí panel** postranním panelu Azure portal. Pokud žádné vlastní řídicí panely, jste vytvořili v zobrazení řídicího panelu, pomocí rozevírací nabídky vyberte řídicí panel, kde by se měla zobrazit dlaždice vlastní markdown. Vyberte ikonu úprav otevřete **Galerie dlaždic**.
 
-  ![Zobrazení pro úpravy snímek obrazovky zobrazující řídicí panel](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
+   ![Zobrazení pro úpravy snímek obrazovky zobrazující řídicí panel](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
 2. V **Galerie dlaždic**, vyhledejte dlaždici volá **Markdownu** a klikněte na tlačítko **přidat**. Přidání dlaždice na řídicí panel a **upravit Markdown** se otevře podokno.
 
 1. Upravit **Title**, **titulek**, a **obsahu** polí pro přizpůsobení na dlaždici. V tomto příkladu byl upraven dlaždicí markdown pro zobrazení informací helpdesku vlastní nápovědy.
 
-  ![Snímek obrazovky zobrazení pro úpravy dlaždice markdown](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
+   ![Snímek obrazovky zobrazení pro úpravy dlaždice markdown](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
 
 4. Vyberte **provádí** zrušíte **upravit Markdown** podokně. Váš obsah se zobrazí na dlaždici Markdown, který se potom dá změnit přetažením úchytu v pravém dolním rohu.
 
-  ![Snímek obrazovky znázorňující vlastní markdown dlaždice](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
+   ![Snímek obrazovky znázorňující vlastní markdown dlaždice](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 
 ## <a name="markdown-content-capabilities-and-limitations"></a>Možnosti obsahu markdownu a omezení
 

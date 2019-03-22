@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: f92fe2432051b148bf0b35fccc3fa33db9b66a14
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 5c21f1c9345fcf1b89afc3e1ee6b7f61ee79ddbe
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093140"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58168098"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Začínáme s Reliable Actors
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Spusťte sadu Visual Studio 2015 nebo vyšší jako správce a pak vytvořte nov
 
 ![Service Fabric tools pro Visual Studio – nový projekt][1]
 
-V dalším dialogovém okně zvolte **služba objektu Actor** pod **.Net Core 2.0** a zadejte název pro službu.
+V dalším dialogovém okně zvolte **služba objektu Actor** pod **.NET Core 2.0** a zadejte název pro službu.
 
 ![Šablony projektu Service Fabric][5]
 

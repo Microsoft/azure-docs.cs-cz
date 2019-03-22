@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/5/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 6ac9fce9a6903b95156f43f41cea7bffdb1a072d
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 017c8c2f060f969f2e7f8d387dcbafa2dac426d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57402834"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842941"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Kurz: Vytvoření přidružení ExpressRoute pomocí Azure virtuální sítě WAN (Preview)
 
@@ -43,7 +43,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="register"></a>Registrace této funkce
 
-Než budete moci nakonfigurovat virtuální síť WAN, je nejdříve potřeba zaregistrovat vaše předplatné pro verzi Preview. Jinak nebudete moct na portálu pracovat se službou Virtual WAN. Pokud se chcete zaregistrovat, pošlete e-mail s ID předplatného na adresu **azurevirtualwan@microsoft.com**. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením.
+Než budete moci nakonfigurovat virtuální síť WAN, je nejdříve potřeba zaregistrovat vaše předplatné pro verzi Preview. Jinak nebude možné na portálu se službou Virtual WAN pracovat. Při registraci odeslat e-mailu **azurevirtualwan\@microsoft.com** svým ID předplatného. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením.
 
 **Požadavky pro verzi Preview:**
 
@@ -71,15 +71,15 @@ V prohlížeči přejděte na [Azure Portal (Preview)](https://aka.ms/azurevirtu
 ## <a name="hub"></a>4. Vyhledání a přidružení okruhu k rozbočovači
 
 1. Vyberte svou virtuální síť WAN a v části **Architektura virtuální sítě WAN** vyberte **Okruhy ExpressRoute**.
-2. Pokud je okruh ExpressRoute ve stejném předplatném jako vaše virtuální síť WAN, klikněte na **Vybrat okruh ExpressRoute** a vyberte okruh ExpressRoute z vašeho předplatného. 
-3. Pomocí rozevírací seznam, vyberte přes ExpressRoute chcete přidružit k rozbočovači.
-4. Pokud není okruhem ExpressRoute v rámci stejného předplatného nebo vám byl poskytnut [autorizační klíč a peer ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)vyberte **najít okruhu uplatňuje autorizačního klíče**
-5. Zadejte následující podrobnosti:
-* **Autorizační klíč** – Autorizační klíč vygenerovaný vlastníkem okruhu, jak je popsáno výše.
-* **Identifikátor URI partnerského okruhu** – Identifikátor URI okruhu poskytnutý vlastníkem okruhu, který je jedinečným identifikátorem okruhu.
-* **Váha směrování** - [váha směrování](../expressroute/expressroute-optimize-routing.md) umožňuje raději určité cesty ke složkám na stejném centru jsou připojeni víc okruhů z různých umístění partnerského vztahu
-6. Klikněte na **Vyhledat okruh**, a pokud se najde nějaký okruh, vyberte ho.
-7. V rozevíracím seznamu vyberte 1 nebo více rozbočovačů a klikněte na **Uložit**.
+1. Pokud je okruh ExpressRoute ve stejném předplatném jako vaše virtuální síť WAN, klikněte na **Vybrat okruh ExpressRoute** a vyberte okruh ExpressRoute z vašeho předplatného. 
+1. Pomocí rozevírací seznam, vyberte přes ExpressRoute chcete přidružit k rozbočovači.
+1. Pokud není okruhem ExpressRoute v rámci stejného předplatného nebo vám byl poskytnut [autorizační klíč a peer ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)vyberte **najít okruhu uplatňuje autorizačního klíče**
+1. Zadejte následující podrobnosti:
+1. **Autorizační klíč** – Autorizační klíč vygenerovaný vlastníkem okruhu, jak je popsáno výše.
+1. **Identifikátor URI partnerského okruhu** – Identifikátor URI okruhu poskytnutý vlastníkem okruhu, který je jedinečným identifikátorem okruhu.
+1. **Váha směrování** - [váha směrování](../expressroute/expressroute-optimize-routing.md) umožňuje raději určité cesty ke složkám na stejném centru jsou připojeni víc okruhů z různých umístění partnerského vztahu
+1. Klikněte na **Vyhledat okruh**, a pokud se najde nějaký okruh, vyberte ho.
+1. V rozevíracím seznamu vyberte 1 nebo více rozbočovačů a klikněte na **Uložit**.
 
 ## <a name="vnet"></a>5. Připojení virtuální sítě k rozbočovači
 

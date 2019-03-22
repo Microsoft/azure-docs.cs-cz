@@ -15,12 +15,12 @@ ms.date: 03/07/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 42336205726823dd04e0412f29c3e7a23d134d39
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 59c69477e120facec1fbf132ce7017ca21aa8748
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763989"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092612"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Vytvoření nabídky ve službě Azure Stack
 
@@ -54,12 +54,12 @@ ms.locfileid: "57763989"
 
 Po vytvoření nabídky, můžete změnit její stav. Nabídky se musí provádět **veřejné** pro uživatele získat úplné zobrazení při přihlášení k odběru. Nabídek může být:
 
-   - **Veřejné**: Viditelné pro uživatele.
-   - **Privátní**: Viditelné pouze pro správce cloudu. Toto nastavení je užitečné při sestavování plánu nebo nabídky, nebo pokud chce správce cloudu [vytvoření každé předplatné pro uživatele](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator).
-   - **Vyřazení z provozu**: Uzavřené pro nové odběratele. Správce cloudu umožňuje vyřadit z provozu nabídek zabránit budoucím předplatných, ale nechat to neovlivní stávající Odběratelé.
+- **Veřejné**: Viditelné pro uživatele.
+- **Privátní**: Viditelné pouze pro správce cloudu. Toto nastavení je užitečné při sestavování plánu nebo nabídky, nebo pokud chce správce cloudu [vytvoření každé předplatné pro uživatele](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator).
+- **Vyřazení z provozu**: Uzavřené pro nové odběratele. Správce cloudu umožňuje vyřadit z provozu nabídek zabránit budoucím předplatných, ale nechat to neovlivní stávající Odběratelé.
 
-   > [!TIP]  
-   > Změny do nabídky nejsou okamžitě viditelné pro uživatele. Aby se změny projevily, uživatelé můžou mít se odhlásit a znovu přihlásit k portálu user portal zobrazíte nové nabídky.
+  > [!TIP]  
+  > Změny do nabídky nejsou okamžitě viditelné pro uživatele. Aby se změny projevily, uživatelé můžou mít se odhlásit a znovu přihlásit k portálu user portal zobrazíte nové nabídky.
 
 Existují dva způsoby, jak změnit stav nabídky:
 

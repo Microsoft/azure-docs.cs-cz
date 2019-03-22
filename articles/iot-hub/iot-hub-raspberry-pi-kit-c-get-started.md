@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: rangv
-ms.openlocfilehash: 562dc32f6dd40e6b0103fcc255ceafe829e2265d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4f092f2d290138e48068141113b184d8e856bee7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529646"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103209"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Připojení k Azure IoT Hub (C) Raspberry Pi
 
@@ -156,8 +156,8 @@ Zapněte pí pomocí USB kabelu micro a napájení. Pomocí kabelu Ethernet Pi p
    **Mac a uživatelé Ubuntu**
    
    Pomocí integrovaného klienta SSH v systému Ubuntu nebo macOS. Možná budete muset spustit `ssh pi@<ip address of pi>` připojit Pi přes protokol SSH.
-   > [!NOTE] 
-   Výchozí uživatelské jméno `pi` , a heslo je `raspberry`.
+   > [!NOTE]
+   > Výchozí uživatelské jméno `pi` , a heslo je `raspberry`.
 
 
 ### <a name="configure-the-sample-application"></a>Nakonfigurovat ukázkovou aplikaci

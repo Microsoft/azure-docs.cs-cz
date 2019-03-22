@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: ecdb6d7a225d3a2f2c5bbf90a36b91367faf04b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c168182f0b34329ed3e72e90ce86456dfbe210ca
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003342"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189848"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
 
@@ -31,7 +31,7 @@ V Azure Media Services (AMS) **kanál** představuje kanál pro zpracování obs
 
 * Místní kodér služby live Encoding odešle datový proud s jednou přenosovou rychlostí do kanálu, který má povolené provádět živé kódování pomocí Media Services v jednom z následujících formátů: RTMP nebo Smooth Streaming (fragmentovaný MP4). Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
 * Místní kodér služby live Encoding odešle s více přenosovými rychlostmi **RTMP** nebo **technologie Smooth Streaming** (fragmentovaný soubor MP4) na kanál, který není povolené provádět živé kódování pomocí AMS. Ingestované datové proudy prochází **kanál**bez dalšího zpracování. Tato metoda je volána **předávací**. Následující kodéry, které výstupu technologie Smooth Streaming s více přenosovými rychlostmi můžete použít: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco a Elemental. Následující kodéry výstupu RTMP: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek a Tricaster kodérů.  Kodér pro kódování v reálném čase může také odesílat datový proud s jednou přenosovou rychlostí do kanálu, který nemá povolené kódování v reálném čase, ale tato konfigurace se nedoporučuje. Služba Media Services doručí datový proud zákazníkům na vyžádání.
-  
+
   > [!NOTE]
   > Použití průchozí metody je nejekonomičtější způsob, jak živě Streamovat.
   > 
@@ -50,7 +50,7 @@ Od verze Media Services 2.10, když vytvoříte kanál, můžete určit, jakým 
 > 
 
 ## <a name="billing-implications"></a>Vliv na fakturaci
-Živé kódování kanálu začne fakturace, jakmile je přechodů mezi stavy na "Spuštěno" prostřednictvím rozhraní API.   Můžete taky zobrazit stav na webu Azure Portal nebo v nástroji Azure Media Services Explorer (http://aka.ms/amse).
+Živé kódování kanálu začne fakturace, jakmile je přechodů mezi stavy na "Spuštěno" prostřednictvím rozhraní API.   Můžete taky zobrazit stav na webu Azure Portal nebo v nástroji Azure Media Services Explorer (https://aka.ms/amse).
 
 Následující tabulka uvádí přiřazení stavů kanálu stavům fakturace na portálu Azure a rozhraní API. Stavy se mírně liší mezi rozhraním API a portál uživatelské prostředí Jakmile je kanál ve stavu "Spuštěna" prostřednictvím rozhraní API nebo ve stavu "Připraveno" nebo "Streaming" na webu Azure Portal bude aktivováno fakturace.
 Pokud chcete zastavit kanál z můžete dále fakturace, je nutné zastavit kanál prostřednictvím rozhraní API nebo na webu Azure Portal.
@@ -89,29 +89,27 @@ Následující část představuje obecné kroky, které jsou součástí proces
 
 > [!NOTE]
 > V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amslived@microsoft.com. Fakturační dopad kódování v reálném čase a jste měli mít na paměti, že byste museli opustit živého kódování kanálu ve stavu "Spuštěno" budou účtovat poplatky hodinové fakturace.  Doporučuje se po dokončení se vyhnout poplatkům za velmi hodinové živě streamované události okamžitě zastavit spuštěné kanálů. 
-> 
-> 
 
 1. Připojte k počítači videokameru. Spusťte a nakonfigurujte místní kodér služby live Encoding, který umí produkovat **jeden** datový proud s přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo Smooth Streaming. 
-   
+
     Tento krok můžete provést i po vytvoření kanálu.
 2. Vytvořte a spusťte kanál. 
 3. Načtěte adresu URL ingestování kanálu. 
-   
+
     Adresu URL ingestování používá kodér po kódování v reálném čase k odesílání datového proudu do kanálu.
 4. Načtěte adresu URL náhledu kanálu. 
-   
+
     Tuto adresu URL můžete použít, když chcete ověřit, jestli kanál správně přijímá proud živého vysílání.
 5. Vytvořte program. 
-   
+
     Při použití na webu Azure portal, vytvoření programu vytvoří také asset. 
-   
+
     Při použití sady .NET SDK nebo REST je potřeba vytvořit prostředek a nastavení, aby používal tento prostředek po vytvoření programu. 
 6. Publikujte asset přidružený k programu.   
-   
+
     >[!NOTE]
     >Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Koncový bod streamování, ze kterého chcete streamovat obsah, musí být ve stavu **Spuštěno**. 
-    
+
 7. Jakmile budete připraveni začít streamovat a archivovat, spusťte program.
 8. Volitelně můžete dát kodéru pro kódování v reálném čase signál, aby spustil reklamu. Reklama bude vložena do výstupního datového proudu.
 9. Kdykoli budete chtít zastavit streamování a archivaci události, zastavte program.
@@ -217,6 +215,7 @@ Všimněte si, že pokud potřebujete vlastní předvolby, měli byste požádat
 **Default720p** bude kódování videa do následujících 6 vrstev.
 
 #### <a name="output-video-stream"></a>Výstupní Stream videa
+
 | S přenosovou rychlostí | Šířka | Výška | MaxFPS | Profil | Název výstupní Stream |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Vysoký |Video_1280x720_3500kbps |
@@ -357,7 +356,7 @@ Prohlédněte si mapy kurzů k Media Services.
 [Vytvořte kanály, které proveďte kódování v reálném čase ze jednom přenosové rychlosti streamování s adaptivní přenosovou rychlostí pomocí sady .NET SDK](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
 [Správa kanálů pomocí rozhraní REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
- 
+
 [Media Services Concepts](media-services-concepts.md)
 
 [Specifikace Ingestování fragmentovaného MP4 za služby Azure Media Services](media-services-fmp4-live-ingest-overview.md)

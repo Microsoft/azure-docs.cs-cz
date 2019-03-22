@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: ergreenl
-ms.openlocfilehash: 758183efd6a6a2c2b8d172c52ad3bd5c5e12d969
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f2c4f73af00e0093ce98f2de37e9c3a0ba381eda
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169127"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119900"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Povolit Azure Active Directory Domain Services pomocí Powershellu
 Tento článek popisuje, jak povolit Azure Active Directory (AD) Domain Services pomocí Powershellu.
@@ -141,8 +141,7 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 > **Nezapomeňte na další konfigurační kroky po zřízení spravované domény.**
 > Po zřízení spravované domény, je stále potřeba provést následující úlohy:
 > * **[Aktualizace nastavení DNS](active-directory-ds-getting-started-dns.md)**  pro virtuální síť, virtuální počítače můžete najít spravované domény pro připojení k doméně nebo ověřování.
-* **[Povolení synchronizace hesel do služby Azure AD Domain Services](active-directory-ds-getting-started-password-sync.md)**, aby koncoví uživatelé můžou přihlásit ke spravované doméně pomocí podnikových přihlašovacích.
->
+> * **[Povolení synchronizace hesel do služby Azure AD Domain Services](active-directory-ds-getting-started-password-sync.md)**, aby koncoví uživatelé můžou přihlásit ke spravované doméně pomocí podnikových přihlašovacích.
 
 
 ## <a name="powershell-script"></a>Skript PowerShellu
@@ -226,8 +225,7 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 > **Nezapomeňte na další konfigurační kroky po zřízení spravované domény.**
 > Po zřízení spravované domény, je stále potřeba provést následující úlohy:
 > * Aktualizace nastavení DNS pro virtuální síť, virtuální počítače můžete najít spravované domény pro připojení k doméně nebo ověřování.
-* Povolení synchronizace hesel do služby Azure AD Domain Services tak, že koncoví uživatelé můžou přihlásit ke spravované doméně pomocí podnikových přihlašovacích.
->
+> * Povolení synchronizace hesel do služby Azure AD Domain Services tak, že koncoví uživatelé můžou přihlásit ke spravované doméně pomocí podnikových přihlašovacích.
 
 ## <a name="next-steps"></a>Další postup
 Po vytvoření vaší spravované domény proveďte následující úlohy konfigurace, abyste mohli používat spravovanou doménu:

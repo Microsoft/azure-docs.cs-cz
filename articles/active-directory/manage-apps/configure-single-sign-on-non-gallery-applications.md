@@ -12,12 +12,12 @@ ms.date: 01/08/2019
 ms.author: celested
 ms.reviewer: asmalser,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93e33ea311a064058e739bfcf6d63dc2d5462110
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7dfef0e27dd3e38e5a965f47a47619671a3127b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435061"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117655"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Nakonfigurovat jednotné přihlašování do aplikace mimo galerii v Azure Active Directory
 
@@ -29,8 +29,8 @@ Tyto možnosti jsou dostupné, podle vaší licenční smlouvě. Další informa
 
 - Samoobslužná integrace každou aplikaci, která podporuje zprostředkovatelů identity SAML 2.0 (iniciovaného Zprostředkovatelem přihlašování nebo zahájené pomocí IdP)
 - Samoobslužná integrace webové aplikace, který je založený na jazyce HTML přihlašovací stránky pomocí [jednotného přihlašování pomocí hesla](what-is-single-sign-on.md#password-based-sso)
-* Připojení aplikace, které používají protokol SCIM pro zřizování uživatelů samoobslužné služby ([je zde popsáno,](use-scim-to-provision-users-and-groups.md))
-* Možnost přidání odkazů do libovolné aplikace v [Spouštěči aplikací Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel služby Azure AD](what-is-single-sign-on.md#linked-sso)
+- Připojení aplikace, které používají protokol SCIM pro zřizování uživatelů samoobslužné služby ([je zde popsáno,](use-scim-to-provision-users-and-groups.md))
+- Možnost přidání odkazů do libovolné aplikace v [Spouštěči aplikací Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel služby Azure AD](what-is-single-sign-on.md#linked-sso)
 
 To může zahrnovat jenom aplikace SaaS, které můžete použít, ale nebyly dosud byl zprovozněná v galerii aplikací Azure AD, ale třetí strany webových aplikací, které vaše organizace má nasazené na servery, které sami kontrolujete, buď v cloudu nebo místně.
 

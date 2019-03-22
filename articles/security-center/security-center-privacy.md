@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: rkarlin
-ms.openlocfilehash: 8cbe391f756dab35abda411c3a6c943a51eae302
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: fcec410df631a58b76878a4cb327ca2fb04a2105
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115976"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117843"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Správa dat uživatele ve službě Azure Security Center
 Tento článek obsahuje informace o tom, jak můžete spravovat uživatelská data v Azure Security Center. Správa uživatelských dat zahrnuje schopnost přistupovat k, odstranit nebo exportovat data.
@@ -68,25 +68,25 @@ Security Center uživatel přiřazenou roli Čtenář, vlastník, Přispěvatel 
 
 - Při kopírování z portálu Azure portal
 - Provádění volání rozhraní Azure REST API, GET HTTP:
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
+  ```
 
 Security Center uživateli přiřadit roli správce účtu můžete exportovat [jenom v zásadách čas](security-center-just-in-time.md) obsahující IP adres podle:
 
 - Při kopírování z portálu Azure portal
 - Provádění volání rozhraní Azure REST API, GET HTTP:
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
+  ```
 
 Účet správce může exportovat podrobných informacích výstrahy podle:
 
 - Při kopírování z portálu Azure portal
 - Provádění volání rozhraní Azure REST API, GET HTTP:
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
+  ```
 
 Zobrazit [výstrahy zabezpečení získat (GET kolekce)](https://msdn.microsoft.com/library/mt704050.aspx) Další informace.
 

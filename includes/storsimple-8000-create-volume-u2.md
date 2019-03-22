@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: fa433f55839db66bcf8245fe058ac56702af3d6e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2abfa29671bd804ee75194ef621fe07f06c015e9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888611"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125343"
 ---
 #### <a name="to-create-a-volume"></a>Vytvoření svazku
 1. V tabulkovém výpisu zařízení v okně **Zařízení** vyberte vaše zařízení. Klikněte na **+ Přidat svazek**.
@@ -22,7 +22,7 @@ ms.locfileid: "55888611"
 
    2. Z rozevíracího seznamu vyberte kontejner svazků, do kterého potřebujete přidat svazek. 
 
-   3.  Zadejte **Název** svazku. Svazek se po vytvoření už nedá přejmenovat.
+   3. Zadejte **Název** svazku. Svazek se po vytvoření už nedá přejmenovat.
 
    4. V rozevíracím seznamu vyberte **Typ** svazku. Pro úlohy, které vyžadují místní záruky, nízkou latenci a vyšší výkon, vyberte typ svazku **Místně vázaný**. Pro ostatní typy dat vyberte typ svazku **Vrstvený**. Pokud tento svazek používáte k archivaci dat, zaškrtněte políčko **Použít tento svazek pro archivní data s méně častým přístupem**.
       
@@ -36,19 +36,19 @@ ms.locfileid: "55888611"
       
        Pokud v zařízení 8100 zřídíte místně vázaný svazek o velikosti 8.5 TB (maximální možná velikost), vyčerpáte tím veškeré volné místo dostupné v zařízení. Od této chvíle už nebudete moct vytvořit žádné vrstvené svazky, protože v zařízení už nebude žádné volné místo k hostování pracovní sady vrstveného svazku. Objem dostupného volného místa ovlivňují také vrstvené svazky. Pokud například používáte zařízení 8100, ve kterém jsou už zřízeny vrstvené svazky o velikosti zhruba 106 TB, k vytváření místně vázaných svazků zbude už jenom 4 TB dostupného volného místa.
 
-    6. V poli **Připojení hostitelé** klikněte na šipku. 
+      1. V poli **Připojení hostitelé** klikněte na šipku. 
 
-        ![Připojení hostitelé](./media/storsimple-8000-create-volume-u2/step5createvol2.png)
+         ![Připojení hostitelé](./media/storsimple-8000-create-volume-u2/step5createvol2.png)
 
-    7. V okně **Připojení hostitelé** zvolte existující záznam ACR nebo pomocí následujícího postupu přidejte nový záznam ACR:
+      1. V okně **Připojení hostitelé** zvolte existující záznam ACR nebo pomocí následujícího postupu přidejte nový záznam ACR:
 
-       1. Zadejte **Název** záznamu ACR.
-       2. V části **Název iniciátoru iSCSI** zadejte kvalifikovaný název iSCSI (IQN) hostitele s Windows. Pokud název IQN nemáte, přejděte do části [Získání názvu hostitele se systémem Windows Server](#get-the-iqn-of-a-windows-server-host).
+         1. Zadejte **Název** záznamu ACR.
+         2. V části **Název iniciátoru iSCSI** zadejte kvalifikovaný název iSCSI (IQN) hostitele s Windows. Pokud název IQN nemáte, přejděte do části [Získání názvu hostitele se systémem Windows Server](#get-the-iqn-of-a-windows-server-host).
 
-    9. Klikněte na možnost **Vytvořit**. Vytvoří se svazek se zadaným nastavením.
+      1. Klikněte na možnost **Vytvořit**. Vytvoří se svazek se zadaným nastavením.
 
-        ![Kliknutí na Vytvořit](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
+         ![Kliknutí na Vytvořit](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
 
-        > [!NOTE]
-        > Mějte na paměti, že svazek, který jste tu vytvořili, není chráněný. Budete muset vytvořit a přidružit k tomuto svazku zásady zálohování, které zajistí zálohování podle plánu. 
+         > [!NOTE]
+         > Mějte na paměti, že svazek, který jste tu vytvořili, není chráněný. Budete muset vytvořit a přidružit k tomuto svazku zásady zálohování, které zajistí zálohování podle plánu. 
 

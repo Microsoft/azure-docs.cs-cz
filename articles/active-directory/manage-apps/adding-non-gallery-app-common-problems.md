@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a07ca553aee2a6267af5a33836e85b2a12d8ae3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c53675c27276fdcf403ca5a6add5d86fc38e410a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182285"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842453"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>Potíže při přidávání aplikace mimo Galerii
 
@@ -46,20 +46,20 @@ Pokud potřebujete pomoc, další informace o vlastních aplikací [knihovny dok
 
 Můžete zobrazit podrobnosti o oznámení portálu podle následujících kroků:
 
-1.  Klikněte na tlačítko **oznámení** ikonu (zvonek) v pravém horním rohu webu Azure portal
+1. Klikněte na tlačítko **oznámení** ikonu (zvonek) v pravém horním rohu webu Azure portal
 
-2.  Vyberte všechna oznámení v **chyba** stavu (ty s červenou (!) vedle sebe).
+2. Vyberte všechna oznámení v **chyba** stavu (ty s červenou (!) vedle sebe).
 
    >[!NOTE]
    >Nelze klikněte na oznámení v **úspěšné** nebo **probíhá** stavu.
    >
    >
 
-4.  Použijte informace v části **podrobnosti oznámení** pochopit podrobnosti o problému.
+4. Použijte informace v části **podrobnosti oznámení** pochopit podrobnosti o problému.
 
-5.  Pokud stále potřebujete pomoc, můžete také sdílet tyto informace s pracovníkem technické podpory nebo produktovou skupinou účelem vyřešení vašeho problému.
+5. Pokud stále potřebujete pomoc, můžete také sdílet tyto informace s pracovníkem technické podpory nebo produktovou skupinou účelem vyřešení vašeho problému.
 
-6.  Klikněte na tlačítko **ikonu kopírování** napravo od **Kopírovat chybu** textového pole zkopírujte všechny podrobnosti oznámení sdílet s pracovníkem skupiny podpory nebo produktu.
+6. Klikněte na tlačítko **ikonu kopírování** napravo od **Kopírovat chybu** textového pole zkopírujte všechny podrobnosti oznámení sdílet s pracovníkem skupiny podpory nebo produktu.
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Jak získat nápovědu odesláním oznámení podrobnosti pro pracovníka podpory
 
@@ -71,63 +71,63 @@ Přečtěte si následující popisy pro další podrobnosti o oznámení.
 
 ### <a name="essential-notification-items"></a>Základní oznámení položky
 
--   **Název** – popisný název oznámení
-   *  Příklad – **nastavení proxy aplikace.**
+- **Název** – popisný název oznámení
+  *  Příklad – **nastavení proxy aplikace.**
 
--   **Popis** – popis, k čemu došlo v důsledku operace
+- **Popis** – popis, k čemu došlo v důsledku operace
 
-   *  Příklad – **zadanou vnitřní adresu url se už používá jiná aplikace**
+  *  Příklad – **zadanou vnitřní adresu url se už používá jiná aplikace**
 
--   **ID oznámení** – jedinečné ID oznámení
+- **ID oznámení** – jedinečné ID oznámení
 
-   *  Příklad – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
+  *  Příklad – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **ID žádosti klienta** – ID konkrétní žádosti od prohlížeče
+- **ID žádosti klienta** – ID konkrétní žádosti od prohlížeče
 
-   *  Příklad – **302fd775-3329-4670-a9f3-bea37004f0bc**
+  *  Příklad – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
--   **Časové razítko UTC** – časové razítko, během které oznámení došlo k chybě, ve standardu UTC
+- **Časové razítko UTC** – časové razítko, během které oznámení došlo k chybě, ve standardu UTC
 
-   *  Příklad – **2017-03-23T19:50:43.7583681Z**
+  *  Příklad – **2017-03-23T19:50:43.7583681Z**
 
--   **Interní ID transakce** – interní ID můžeme použít k vyhledání Chyba v našem systému
+- **Interní ID transakce** – interní ID můžeme použít k vyhledání Chyba v našem systému
 
-   *  Příklad – **71a2f329-ca29-402f-aa72-bc00a7aca603**
+  *  Příklad – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
--   **Hlavní název uživatele** – uživatel, který provedl operaci
+- **Hlavní název uživatele** – uživatel, který provedl operaci
 
-   *  Příklad: **tperkins@f128.info**
+  *  Příklad – **tperkins\@f128.info**
 
--   **ID tenanta** – jedinečné ID tenanta, který byl členem skupiny uživatele, který provedl operaci
+- **ID tenanta** – jedinečné ID tenanta, který byl členem skupiny uživatele, který provedl operaci
 
-   *  Příklad – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+  *  Příklad – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **ID objektu uživatele** – jedinečné ID uživatele, který provedl operaci
+- **ID objektu uživatele** – jedinečné ID uživatele, který provedl operaci
 
- *  Příklad – **17f84be4-51f8-483a-b533-383791227a99**
+  *  Příklad – **17f84be4-51f8-483a-b533-383791227a99**
 
 ### <a name="detailed-notification-items"></a>Podrobný oznamovací položky
 
--   **Zobrazovaný název** – **(může být prázdné)** podrobnější zobrazovaný název pro chybu
+- **Zobrazovaný název** – **(může být prázdné)** podrobnější zobrazovaný název pro chybu
 
   *  Příklad – **nastavení proxy aplikace.**
 
--   **Stav** – konkrétní stavové oznámení
+- **Stav** – konkrétní stavové oznámení
 
-   *  Příklad – **se nezdařilo**
+  *  Příklad – **se nezdařilo**
 
--   **ID objektu** – **(může být prázdné)** ID objektu, proti kterému byla provedena operace
+- **ID objektu** – **(může být prázdné)** ID objektu, proti kterému byla provedena operace
 
-   *  Příklad – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
+  *  Příklad – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
--   **Podrobnosti o** – podrobný popis, k čemu došlo v důsledku operace
+- **Podrobnosti o** – podrobný popis, k čemu došlo v důsledku operace
 
-   *  Příklad – **interní adresa url 'https://bing.com/"je neplatná, protože se už používá**
+  *  Příklad – **interní adresa url `https://bing.com/` je neplatná, protože se už používá**
 
--   **Chyba při kopírování** – klikněte na tlačítko **ikonu kopírování** napravo od **Kopírovat chybu** textového pole zkopírujte všechny podrobnosti oznámení ke sdílení se skupinou pro podporu nebo produktu 
--   engineer (technik)
+- **Chyba při kopírování** – klikněte na tlačítko **ikonu kopírování** napravo od **Kopírovat chybu** textového pole zkopírujte všechny podrobnosti oznámení ke sdílení se skupinou pro podporu nebo produktu 
+- engineer (technik)
 
-   *  Příklad ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+  *  Příklad ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 
 

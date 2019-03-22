@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9779885869666ffd1198afcda944823b99d52e5b
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: bf7d80bbbe63204cda47719a7d7c019013ad800b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417969"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099167"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Připojení virtuálních sítí z různých modelů nasazení pomocí portálu
 
@@ -114,7 +114,7 @@ Pokud již máte virtuální síť s bránou VPN, ověřte, že brána je dynami
 1. Na **nové připojení VPN** stránky, vyberte **vytvořit bránu hned** zaškrtávací políčko.
 2. Kliknutím na **Volitelná konfigurace brány** otevřete stránku **Konfigurace brány**.
 
-  ![Stránka Konfigurace brány otevřete](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "brány otevřete stránku konfigurace")
+   ![Stránka Konfigurace brány otevřete](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "brány otevřete stránku konfigurace")
 3. Klikněte na tlačítko **podsíť – konfigurovat požadované nastavení** otevřít **přidat podsíť** stránky. **Název** už má nakonfigurovanou požadovaná hodnota: **GatewaySubnet**.
 4. **Rozsah adres** odkazuje na oblast pro podsíť brány. Přestože je možné vytvořit podsíť brány s je/29 (3 adresy), rozsah adres doporučujeme vytvořit podsíť brány, který obsahuje další IP adresy. To bude případné budoucí konfigurace, které mohou vyžadovat další dostupné IP adresy. Pokud je to možné použijte možnost/27 nebo/28. Pokud používáte tyto kroky jako cvičení, můžete použít [ukázkové hodnoty](#values). V tomto příkladu používáme "10.0.0.32/28". Klikněte na tlačítko **OK** vytvořit podsíť brány.
 5. Na **konfigurace brány** stránce **velikost** odkazuje na SKU brány. Vyberte SKU brány pro VPN gateway.
@@ -192,16 +192,16 @@ V této části můžete nahradit zástupnou IP adresu, který jste použili př
 2. Na stránce vaší virtuální sítě, klikněte na tlačítko **přehled**.
 3. V **připojení k síti VPN** klikněte na název vaší místní síti na obrázku.
 
-  ![Připojení VPN](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "připojení k síti VPN")
+   ![Připojení VPN](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "připojení k síti VPN")
 4. Na **připojení Site-to-site VPN** klikněte na název lokality.
 
-  ![Název lokality](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "název místní lokality")
+   ![Název lokality](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "název místní lokality")
 5. Na stránce připojení pro místní lokalitu, klikněte na název místní lokality, chcete-li otevřít **místní lokalita** stránky.
 
-  ![Otevřít místní lokality](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "otevřít místní web")
+   ![Otevřít místní lokality](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "otevřít místní web")
 6. Na **místní lokalita** stránka, nahraďte **IP adresu brány VPN** s IP adresou brány Resource Manageru.
 
-  ![Adresa ip brány](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "IP adresa brány")
+   ![Adresa ip brány](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "IP adresa brány")
 7. Klikněte na tlačítko **OK** k aktualizaci IP adresy.
 
 ## <a name="RMtoclassic"></a>Oddíl 4 – vytvoření připojení classic k Resource Manageru

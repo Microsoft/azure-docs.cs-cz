@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7829627352815bc96a7a81bcbbc7e51240c858e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 9cfff565dec0d6f9d2bbea8edf39f180d4b63fd9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870852"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993167"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy s spravovaných identit pro prostředky Azure
 
@@ -55,17 +55,17 @@ Hranice zabezpečení identity je prostředek, ke kterému je připojený. Např
 Při použití spravované identity pro prostředky Azure s virtuálními počítači, doporučujeme používat IMDS koncového bodu. Služba Azure Instance Metadata je koncový bod REST, která je přístupná pro všechny virtuální počítače IaaS vytvořené prostřednictvím Azure Resource Manageru. 
 
 Mezi výhody použití spravované identity pro prostředky Azure prostřednictvím IMDS patří:
-    - Všechny operační systémy podporované IaaS s nástrojem Azure můžete použít spravovaných identit pro prostředky Azure prostřednictvím IMDS.
-    - Už nebude potřeba nainstalovat rozšíření na vašem virtuálním počítači povolit spravovaných identit pro prostředky Azure. 
-    - Certifikáty používané službou spravovaných identit pro prostředky Azure, už nejsou k dispozici ve virtuálním počítači.
-    - Koncový bod IMDS je dobře známé nesměrovatelných IP adresu, k dispozici pouze z v rámci virtuálního počítače.
-    - uživatelsky přiřazené identity spravované pro 1000 lze přiřadit do jednoho virtuálního počítače. 
+- Všechny operační systémy podporované IaaS s nástrojem Azure můžete použít spravovaných identit pro prostředky Azure prostřednictvím IMDS.
+- Už nebude potřeba nainstalovat rozšíření na vašem virtuálním počítači povolit spravovaných identit pro prostředky Azure. 
+- Certifikáty používané službou spravovaných identit pro prostředky Azure, už nejsou k dispozici ve virtuálním počítači.
+- Koncový bod IMDS je dobře známé nesměrovatelných IP adresu, k dispozici pouze z v rámci virtuálního počítače.
+- uživatelsky přiřazené identity spravované pro 1000 lze přiřadit do jednoho virtuálního počítače. 
 
 Spravované identity pro rozšíření virtuálního počítače prostředků Azure je stále k dispozici. nové funkce v něm jsme ale už vývoji. Doporučujeme přejít na používání IMDS koncového bodu. 
 
 Zde jsou některé omezení týkající se použití rozšíření koncového bodu virtuálního počítače:
-    - Omezená podpora pro distribuce Linuxu: CoreOS Stable, CentOS 7.1, 7.2 systému Red Hat, Ubuntu 15.04, Ubuntu 16.04
-    - K virtuálnímu počítači můžete přiřadit pouze 32, uživatelsky přiřazené identity spravované.
+- Omezená podpora pro distribuce Linuxu: CoreOS Stable, CentOS 7.1, 7.2 systému Red Hat, Ubuntu 15.04, Ubuntu 16.04
+- K virtuálnímu počítači můžete přiřadit pouze 32, uživatelsky přiřazené identity spravované.
 
 
 Poznámka: Spravované identity pro prostředky Azure rozšíření virtuálního počítače bude podpora skončí za leden 2019. 
@@ -75,8 +75,8 @@ Další informace o Azure Instance Metadata Service, najdete v části [IMDS dok
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Se spravovaným identitám znovu vytvoří automaticky když předplatné přesunu do jiného adresáře?
 
 Ne. Pokud je předplatné přesunout do jiného adresáře, budete muset ručně je znovu vytvořit a udělit přiřazení role Azure RBAC znovu.
-    - Pro systém přiřadil spravovaných identit: zakázat a znovu povolit. 
-    - Pro uživatele, přiřazenou spravovaných identit: odstranění, znovu vytvořte a připojte je znovu k potřebné prostředky (např. virtuální počítače)
+- Pro systém přiřadil spravovaných identit: zakázat a znovu povolit. 
+- Pro uživatele, přiřazenou spravovaných identit: odstranění, znovu vytvořte a připojte je znovu k potřebné prostředky (např. virtuální počítače)
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Můžete použít spravovanou identitu pro přístup k prostředku v jiném tenantovi/adresáři?
 

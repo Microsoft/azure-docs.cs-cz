@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/19/2019
+ms.date: 03/13/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: da03121f1ae077cfd0b2098c16727bc19a29220b
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: MT
+ms.openlocfilehash: ade7f86bc5a00c079a7ccbe719ae46043d692047
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791966"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225140"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric s Windows do virtuální sítě Azure
 
@@ -31,21 +31,24 @@ Tento kurz popisuje produkční scénář. Pokud chcete vytvořit cluster menš�
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření virtuální sítě v Azure pomocí prostředí PowerShell.
-> * Vytvoření trezoru klíčů a nahrání certifikátu.
-> * Nastavení ověřování Azure Active Directory.
-> * Vytvoření zabezpečeného clusteru Service Fabric v prostředí Azure PowerShell.
-> * Zabezpečení clusteru pomocí certifikátu X.509.
-> * Připojení ke clusteru pomocí prostředí PowerShell.
-> * Odebrání clusteru.
+> * Vytvoření virtuální sítě v Azure pomocí PowerShellu
+> * Vytvoření trezoru klíčů a nahrání certifikátu
+> * Nastavení ověřování Azure Active Directory
+> * Konfigurace shromažďování diagnostických dat
+> * Nastavení služby Eventstoru
+> * Nastavte si protokoly Azure monitoru
+> * Vytvoření zabezpečeného clusteru Service Fabric v Azure PowerShellu
+> * Zabezpečení clusteru pomocí certifikátu X.509
+> * Připojení ke clusteru pomocí prostředí PowerShell
+> * Odebrání clusteru
 
 V této sérii kurzů se naučíte:
-
 > [!div class="checklist"]
-> * Vytvoření zabezpečeného clusteru v Azure.
-> * [Horizontální snížení nebo navýšení kapacity clusteru](service-fabric-tutorial-scale-cluster.md).
-> * [Upgrade modulu runtime clusteru](service-fabric-tutorial-upgrade-cluster.md).
-> * [Odstranění clusteru](service-fabric-tutorial-delete-cluster.md).
+> * Vytvoření zabezpečeného clusteru v Azure
+> * [Monitorování clusteru](service-fabric-tutorial-monitor-cluster.md)
+> * [Horizontální snížení nebo navýšení kapacity clusteru](service-fabric-tutorial-scale-cluster.md)
+> * [Upgrade modulu runtime clusteru](service-fabric-tutorial-upgrade-cluster.md)
+> * [Odstranění clusteru](service-fabric-tutorial-delete-cluster.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -215,7 +218,7 @@ V [azuredeploy.json][template], nakonfigurujte v Azure AD **Microsoft.ServiceFab
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     ...
@@ -264,6 +267,336 @@ Přidání hodnoty parametrů v [azuredeploy.parameters.json] [ parameters] soub
 },
 "aadClientApplicationId": {
 "value": "7a8f3b37-cc40-45cc-9b8f-57b8919ea461"
+}
+```
+<a id="configurediagnostics" name="configurediagnostics_anchor"></a>
+
+## <a name="configure-diagnostics-collection-on-the-cluster"></a>Konfigurace shromažďování diagnostických dat v clusteru
+Když používáte cluster Service Fabric, je vhodné pro shromažďování protokolů ze všech uzlů v centrálním umístění. S protokoly v centrálním umístění vám pomáhají analyzovat a řešit problémy ve vašem clusteru nebo problémy v aplikace a služby běžící v tomto clusteru.
+
+Jedním ze způsobů shromažďování protokolů a nahrát je pomocí rozšíření Azure Diagnostics (WAD), nahraje protokoly do služby Azure Storage, který má také možnost odeslat protokoly do služby Azure Application Insights nebo Center událostí. Externí proces lze také použít ke čtení události ze služby storage a umístit je do o produkt poskytovaný analýzy platformy, jako jsou protokoly Azure monitoru nebo jiné řešení analýzy protokolů.
+
+Pokud jsou projdete tímto kurzem, shromažďování diagnostických dat je již nakonfigurován v [šablony][template].
+
+Pokud máte existující cluster, který nemá diagnostiky nasazený, můžete přidat nebo aktualizovat prostřednictvím šablona clusteru. Upravte šablonu Resource Manageru, který se používá k vytvoření stávajícího clusteru nebo stáhněte šablonu z portálu. Upravte soubor template.json provedením následujících úloh:
+
+Přidáte nový prostředek úložiště do oddílu prostředků v šabloně:
+```json
+"resources": [
+...
+{
+  "apiVersion": "2015-05-01-preview",
+  "type": "Microsoft.Storage/storageAccounts",
+  "name": "[parameters('applicationDiagnosticsStorageAccountName')]",
+  "location": "[parameters('computeLocation')]",
+  "sku": {
+    "accountType": "[parameters('applicationDiagnosticsStorageAccountType')]"
+  },
+  "tags": {
+    "resourceType": "Service Fabric",
+    "clusterName": "[parameters('clusterName')]"
+  }
+},
+...
+]
+```
+
+V dalším kroku přidáte parametry pro název účtu úložiště a typ do části parametrů šablony. Nahraďte název účtu úložiště text zástupného symbolu platí, že se že tady s názvem úložiště účtu, který jste chtěli.
+
+```json
+"parameters": {
+...
+"applicationDiagnosticsStorageAccountType": {
+    "type": "string",
+    "allowedValues": [
+    "Standard_LRS",
+    "Standard_GRS"
+    ],
+    "defaultValue": "Standard_LRS",
+    "metadata": {
+    "description": "Replication option for the application diagnostics storage account"
+    }
+},
+"applicationDiagnosticsStorageAccountName": {
+    "type": "string",
+    "defaultValue": "**STORAGE ACCOUNT NAME GOES HERE**",
+    "metadata": {
+    "description": "Name for the storage account that contains application diagnostics data from the cluster"
+    }
+},
+...
+}
+```
+
+V dalším kroku přidejte **IaaSDiagnostics** rozšíření k rozšíření pole **VirtualMachineProfile** vlastnosti každého **Microsoft.Compute/virtualMachineScaleSets** prostředek v clusteru.  Pokud používáte [Ukázková šablona][template], existují tři škálovací sady virtuálních počítačů (jeden pro každý typ uzlu v clusteru).
+
+```json
+"apiVersion": "2018-10-01",
+"type": "Microsoft.Compute/virtualMachineScaleSets",
+"name": "[variables('vmNodeType1Name')]",
+"properties": {
+    ...
+    "virtualMachineProfile": {
+        "extensionProfile": {
+            "extensions": [
+                {
+                    "name": "[concat(parameters('vmNodeType0Name'),'_Microsoft.Insights.VMDiagnosticsSettings')]",
+                    "properties": {
+                        "type": "IaaSDiagnostics",
+                        "autoUpgradeMinorVersion": true,
+                        "protectedSettings": {
+                        "storageAccountName": "[parameters('applicationDiagnosticsStorageAccountName')]",
+                        "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName')),'2015-05-01-preview').key1]",
+                        "storageAccountEndPoint": "https://core.windows.net/"
+                        },
+                        "publisher": "Microsoft.Azure.Diagnostics",
+                        "settings": {
+                        "WadCfg": {
+                            "DiagnosticMonitorConfiguration": {
+                            "overallQuotaInMB": "50000",
+                            "EtwProviders": {
+                                "EtwEventSourceProviderConfiguration": [
+                                {
+                                    "provider": "Microsoft-ServiceFabric-Actors",
+                                    "scheduledTransferKeywordFilter": "1",
+                                    "scheduledTransferPeriod": "PT5M",
+                                    "DefaultEvents": {
+                                    "eventDestination": "ServiceFabricReliableActorEventTable"
+                                    }
+                                },
+                                {
+                                    "provider": "Microsoft-ServiceFabric-Services",
+                                    "scheduledTransferPeriod": "PT5M",
+                                    "DefaultEvents": {
+                                    "eventDestination": "ServiceFabricReliableServiceEventTable"
+                                    }
+                                }
+                                ],
+                                "EtwManifestProviderConfiguration": [
+                                {
+                                    "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+                                    "scheduledTransferLogLevelFilter": "Information",
+                                    "scheduledTransferKeywordFilter": "4611686018427387904",
+                                    "scheduledTransferPeriod": "PT5M",
+                                    "DefaultEvents": {
+                                    "eventDestination": "ServiceFabricSystemEventTable"
+                                    }
+                                }
+                                ]
+                            }
+                            }
+                        },
+                        "StorageAccount": "[parameters('applicationDiagnosticsStorageAccountName')]"
+                        },
+                        "typeHandlerVersion": "1.5"
+                    }
+                }
+            ...
+            ]
+        }
+    }
+}
+```
+<a id="configureeventstore" name="configureeventstore_anchor"></a>
+
+## <a name="configure-the-eventstore-service"></a>Konfigurace služby Eventstoru
+Služba Eventstoru je možnosti monitorování v Service Fabric. Eventstoru poskytuje způsob, jak porozumět stavu clusteru nebo úloh v daném bodě v čase. Eventstoru je stavovou službu Service Fabric, který udržuje události z clusteru. Události jsou vystaveny prostřednictvím Service Fabric Explorer, REST a rozhraní API. Eventstoru dotazů clusteru přímo k získání diagnostických dat na entitu ve vašem clusteru a by měla sloužit ke:
+
+* Diagnostikujte problémy ve vývoj a testování, nebo kde může pomocí monitorování kanálu
+* Potvrďte, že správně zpracovává akce správy, které je možné ve vašem clusteru
+* Získat "snímek" jak dixons carphone Service Fabric s konkrétní entity
+
+
+
+Pokud chcete povolit službu Eventstoru ve vašem clusteru, přidejte následující text do **nastavení fabricSettings** vlastnost **Microsoft.ServiceFabric/clusters** prostředků:
+
+```json
+"apiVersion": "2018-02-01",
+"type": "Microsoft.ServiceFabric/clusters",
+"name": "[parameters('clusterName')]",
+"properties": {
+    ...
+    "fabricSettings": [
+        ...
+        {
+            "name": "EventStoreService",
+            "parameters": [
+                {
+                "name": "TargetReplicaSetSize",
+                "value": "3"
+                },
+                {
+                "name": "MinReplicaSetSize",
+                "value": "1"
+                }
+            ]
+        }
+    ]
+}
+```
+<a id="configureloganalytics" name="configureloganalytics_anchor"></a>
+
+## <a name="set-up-azure-monitor-logs-for-the-cluster"></a>Nastavte si protokoly Azure monitoru pro cluster
+
+Protokoly služby Azure Monitor je naše doporučení pro monitorování událostí na úrovni clusteru. Chcete-li nastavit protokoly Azure monitoru ke sledování vašeho clusteru, musíte mít [diagnostiky povoleno zobrazení událostí úrovně clusteru](#configure-diagnostics-collection-on-the-cluster).  
+
+Pracovní prostor se musí být připojen k diagnostická data z vašeho clusteru.  Tato data protokolu se ukládají v *applicationDiagnosticsStorageAccountName* účtu úložiště, WADServiceFabric * EventTable WADWindowsEventLogsTable a WADETWEventTable tabulky.
+
+Přidat pracovní prostor Azure Log Analytics a přidejte řešení do pracovního prostoru:
+
+```json
+"resources": [
+    ...
+    {
+        "apiVersion": "2015-11-01-preview",
+        "location": "[parameters('omsRegion')]",
+        "name": "[parameters('omsWorkspacename')]",
+        "type": "Microsoft.OperationalInsights/workspaces",
+        "properties": {
+            "sku": {
+                "name": "Free"
+            }
+        },
+        "resources": [
+            {
+                "apiVersion": "2015-11-01-preview",
+                "name": "[concat(variables('applicationDiagnosticsStorageAccountName'),parameters('omsWorkspacename'))]",
+                "type": "storageinsightconfigs",
+                "dependsOn": [
+                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]",
+                    "[concat('Microsoft.Storage/storageAccounts/', variables('applicationDiagnosticsStorageAccountName'))]"
+                ],
+                "properties": {
+                    "containers": [],
+                    "tables": [
+                        "WADServiceFabric*EventTable",
+                        "WADWindowsEventLogsTable",
+                        "WADETWEventTable"
+                    ],
+                    "storageAccount": {
+                        "id": "[resourceId('Microsoft.Storage/storageaccounts/', variables('applicationDiagnosticsStorageAccountName'))]",
+                        "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('applicationDiagnosticsStorageAccountName')),'2015-06-15').key1]"
+                    }
+                }
+            },
+            {
+                "apiVersion": "2015-11-01-preview",
+                "type": "datasources",
+                "name": "sampleWindowsPerfCounter",
+                "dependsOn": [
+                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
+                ],
+                "kind": "WindowsPerformanceCounter",
+                "properties": {
+                    "objectName": "Memory",
+                    "instanceName": "*",
+                    "intervalSeconds": 10,
+                    "counterName": "Available MBytes"
+                }
+            },
+            {
+                "apiVersion": "2015-11-01-preview",
+                "type": "datasources",
+                "name": "sampleWindowsPerfCounter2",
+                "dependsOn": [
+                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
+                ],
+                "kind": "WindowsPerformanceCounter",
+                "properties": {
+                    "objectName": "Service Fabric Service",
+                    "instanceName": "*",
+                    "intervalSeconds": 10,
+                    "counterName": "Average milliseconds per request"
+                }
+            }
+        ]
+    },
+    {
+        "apiVersion": "2015-11-01-preview",
+        "location": "[parameters('omsRegion')]",
+        "name": "[variables('solution')]",
+        "type": "Microsoft.OperationsManagement/solutions",
+        "dependsOn": [
+            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
+        ],
+        "properties": {
+            "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
+        },
+        "plan": {
+            "name": "[variables('solution')]",
+            "publisher": "Microsoft",
+            "product": "[Concat('OMSGallery/', variables('solutionName'))]",
+            "promotionCode": ""
+        }
+    }
+]
+```
+
+V dalším kroku přidejte parametry
+```json
+"parameters": {
+    ...
+    "omsWorkspacename": {
+        "type": "string",
+        "defaultValue": "mysfomsworkspace",
+        "metadata": {
+            "description": "Name of your OMS Log Analytics Workspace"
+        }
+    },
+    "omsRegion": {
+        "type": "string",
+        "defaultValue": "West Europe",
+        "allowedValues": [
+            "West Europe",
+            "East US",
+            "Southeast Asia"
+        ],
+        "metadata": {
+            "description": "Specify the Azure Region for your OMS workspace"
+        }
+    }
+}
+```
+
+V dalším kroku přidejte proměnné:
+```json
+"variables": {
+    ...
+    "solution": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
+    "solutionName": "ServiceFabric"
+}
+```
+
+Přidání Log Analytics rozšíření agenta do každého virtuálního počítače škálovací nastavit v clusteru a připojení agenta k pracovnímu prostoru Log Analytics. To umožňuje shromažďování diagnostická data o kontejnerech, aplikací a monitorování výkonu. Tak, že přidáte jako rozšíření k prostředku virtuálního počítače škálovací sady, Azure Resource Manageru se zajistí, že se nainstaluje na všech uzlech i při škálování clusteru.
+
+```json
+"apiVersion": "2018-10-01",
+"type": "Microsoft.Compute/virtualMachineScaleSets",
+"name": "[variables('vmNodeType1Name')]",
+"properties": {
+    ...
+    "virtualMachineProfile": {
+        "extensionProfile": {
+            "extensions": [
+                {
+                    "name": "[concat(variables('vmNodeType0Name'),'OMS')]",
+                    "properties": {
+                        "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+                        "type": "MicrosoftMonitoringAgent",
+                        "typeHandlerVersion": "1.0",
+                        "autoUpgradeMinorVersion": true,
+                        "settings": {
+                            "workspaceId": "[reference(resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename')), '2015-11-01-preview').customerId]"
+                        },
+                        "protectedSettings": {
+                            "workspaceKey": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename')),'2015-11-01-preview').primarySharedKey]"
+                        }
+                    }
+                }
+            ...
+            ]
+        }
+    }
 }
 ```
 
@@ -383,8 +716,21 @@ V dalších článcích v této sérii kurzů používá cluster, který jste vy
 
 Přejděte k následujícímu kurzu se naučíte škálování clusteru.
 
+> [!div class="checklist"]
+> * Vytvoření virtuální sítě v Azure pomocí PowerShellu
+> * Vytvoření trezoru klíčů a nahrání certifikátu
+> * Nastavení ověřování Azure Active Directory
+> * Konfigurace shromažďování diagnostických dat
+> * Nastavení služby Eventstoru
+> * Nastavte si protokoly Azure monitoru
+> * Vytvoření zabezpečeného clusteru Service Fabric v Azure PowerShellu
+> * Zabezpečení clusteru pomocí certifikátu X.509
+> * Připojení ke clusteru pomocí prostředí PowerShell
+> * Odebrání clusteru
+
+Teď přejděte k následujícímu kurzu se naučíte monitorovat svůj cluster.
 > [!div class="nextstepaction"]
-> [Škálování clusteru](service-fabric-tutorial-scale-cluster.md)
+> [Monitorování clusteru](service-fabric-tutorial-monitor-cluster.md)
 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

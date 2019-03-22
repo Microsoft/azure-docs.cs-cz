@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: f9f4dacc8aac2fc47002b65798c8367e354bb69c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d2651bc47f262a45a05217585eb00cbc721c01a1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240537"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58165773"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Správa prostředků a související entity pomocí služby Media Services .NET SDK
 > [!div class="op_single_selector"]
@@ -201,7 +201,7 @@ Další informace o možnostech pro různé prostředky naleznete v tématu [pro
 ```
 
 ## <a name="list-all-access-policies"></a>Seznam všech zásad přístupu
-Ve službě Media Services můžete definovat zásady přístupu na prostředek nebo jeho soubory. Zásady přístupu definuje oprávnění pro soubor nebo prostředek (jaký typ přístupu, a dobu trvání). V kódu Media Services obvykle definovat zásady přístupu tak, že vytvoření objektu IAccessPolicy a přiřadí se mu existující prostředek. Poté vytvoříte objekt ILocator, který umožňuje poskytovat přímý přístup k prostředkům ve službě Media Services. Projekt aplikace Visual Studio, který doprovází tuto řadu dokumentace obsahuje několik příkladů kódu, které ukazují, jak vytvořit a přiřadit zásady přístupu a lokátory k výpočetním prostředkům.
+Ve službě Media Services můžete definovat zásady přístupu na prostředek nebo jeho soubory. Zásady přístupu definuje oprávnění pro soubor nebo prostředek (jaký typ přístupu, a dobu trvání). V kódu Media Services obvykle definovat zásady přístupu tak, že vytvoření objektu IAccessPolicy a přiřadí se mu existující prostředek. Poté vytvoříte objekt ILocator, což umožňuje poskytovat přímý přístup k prostředkům ve službě Media Services. Projekt aplikace Visual Studio, který doprovází tuto řadu dokumentace obsahuje několik příkladů kódu, které ukazují, jak vytvořit a přiřadit zásady přístupu a lokátory k výpočetním prostředkům.
 
 Následující příklad kódu ukazuje, jak zobrazit seznam všech zásad přístupu na serveru a ukazuje typ spojené s jednotlivými oprávnění. Další užitečný způsob, jak zobrazit zásady přístupu je na seznamu všechny objekty ILocator na serveru a pak pro každý Lokátor můžete zobrazit seznam svých zásad přístupu pomocí její vlastnosti AccessPolicy.
 

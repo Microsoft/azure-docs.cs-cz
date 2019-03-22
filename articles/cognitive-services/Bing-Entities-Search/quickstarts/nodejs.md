@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: eff9375919fa946bc74fa6db15cddbebff348717
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8007d576a6b896f12423087cfd4a483d9171abc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541158"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104365"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Rychlý start: Odeslat žádost o vyhledávání Bingu Entity Search REST API pomocí Node.js
 
@@ -87,24 +87,24 @@ Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful
 
 1. Vytvořit funkci s názvem `Search` odeslat žádost o vyhledávání. V něm proveďte následující kroky.
 
-    1. Vytvořit objekt JSON, který obsahuje parametry požadavku: použijte `Get` pro metodu a přidejte své informace o hostitele a cestu. Přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví. 
-    2. Použití `https.request()` k odeslání žádosti s dříve vytvořenou obslužné rutiny a parametry hledání.
+   1. Vytvořit objekt JSON, který obsahuje parametry požadavku: použijte `Get` pro metodu a přidejte své informace o hostitele a cestu. Přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví. 
+   2. Použití `https.request()` k odeslání žádosti s dříve vytvořenou obslužné rutiny a parametry hledání.
     
-    ```javascript
-    let Search = function () {
-        let request_params = {
-            method : 'GET',
-            hostname : host,
-            path : path + query,
-            headers : {
-                'Ocp-Apim-Subscription-Key' : subscriptionKey,
-            }
-        };
+      ```javascript
+      let Search = function () {
+       let request_params = {
+           method : 'GET',
+           hostname : host,
+           path : path + query,
+           headers : {
+               'Ocp-Apim-Subscription-Key' : subscriptionKey,
+           }
+       };
     
-        let req = https.request (request_params, response_handler);
-        req.end ();
-    }
-    ```
+       let req = https.request (request_params, response_handler);
+       req.end ();
+      }
+      ```
 
 2. Volání `Search()` funkce.
 

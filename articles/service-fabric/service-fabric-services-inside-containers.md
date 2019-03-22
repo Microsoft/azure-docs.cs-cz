@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
 ms.author: aljo, anmola
-ms.openlocfilehash: f5e31c6cf08ab455b835231f54b564a3e4ed8dad
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 147607bbea65199ff97459711ad6301a4ae93aa4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806194"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079822"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Kontejnerizace Service Fabric Reliable Services a Reliable Actors ve Windows
 
@@ -38,9 +38,9 @@ Tento dokument obsahuje pokyny k získání vaší služby běžící uvnitř ko
 
 3. Pro každý balíček kódu, který byste chtěli kontejnerizace, inicializovat zavaděč v položce program bodu. Přidání statického konstruktoru je znázorněno v následujícím fragmentu kódu do souboru vstupní bod programu.
 
-  ```csharp
-  namespace MyApplication
-  {
+   ```csharp
+   namespace MyApplication
+   {
       internal static class Program
       {
           static Program()
@@ -53,7 +53,7 @@ Tento dokument obsahuje pokyny k získání vaší služby běžící uvnitř ko
           /// </summary>
           private static void Main()
           {
-  ```
+   ```
 
 4. Sestavení a [balíčku](service-fabric-package-apps.md#Package-App) váš projekt. Pro sestavování a vytváření balíčku, klikněte pravým tlačítkem na projekt aplikace v Průzkumníku řešení a zvolte **balíčku** příkazu.
 
@@ -79,49 +79,49 @@ Tento dokument obsahuje pokyny k získání vaší služby běžící uvnitř ko
 
 7. Upravte ServiceManifest.xml a ApplicationManifest.xml přidání image kontejneru, informace o úložišti, ověřování registru a mapování portů na hostitele. Úpravy manifestů, naleznete v tématu [vytvoření aplikace Azure Service Fabric typu kontejner](service-fabric-get-started-containers.md). Balíček definice kódu v manifestu služby je potřeba nahradit odpovídající image kontejneru. Ujistěte se, že chcete-li změnit na typ ContainerHost vstupnímu bodu.
 
-  ```xml
-<!-- Code package is your service executable. -->
-<CodePackage Name="Code" Version="1.0.0">
-  <EntryPoint>
+   ```xml
+   <!-- Code package is your service executable. -->
+   <CodePackage Name="Code" Version="1.0.0">
+   <EntryPoint>
     <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
     <ContainerHost>
       <ImageName>myregistry.azurecr.io/samples/helloworldapp</ImageName>
     </ContainerHost>
-  </EntryPoint>
-  <!-- Pass environment variables to your container: -->
-</CodePackage>
-  ```
+   </EntryPoint>
+   <!-- Pass environment variables to your container: -->
+   </CodePackage>
+   ```
 
 8. Přidáte mapování portů na hostitele pro replikátor a koncový bod služby. Vzhledem k tomu, že oba tyto porty jsou přiřazeny, na modul runtime Service Fabric, ContainerPort nastavená na nula, pokud chcete použít pro mapování přidělenému portu.
 
- ```xml
-<Policies>
-  <ContainerHostPolicies CodePackageRef="Code">
+   ```xml
+   <Policies>
+   <ContainerHostPolicies CodePackageRef="Code">
     <PortBinding ContainerPort="0" EndpointRef="ServiceEndpoint"/>
     <PortBinding ContainerPort="0" EndpointRef="ReplicatorEndpoint"/>
-  </ContainerHostPolicies>
-</Policies>
- ```
+   </ContainerHostPolicies>
+   </Policies>
+   ```
 
 9. Konfigurace režimu izolace kontejneru, naleznete v tématu [konfigurace režimu izolace]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode). Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V. Následující fragmenty kódu ukazují, jak je režim izolace určený v souboru manifestu aplikace.
 
- ```xml
-<Policies>
-  <ContainerHostPolicies CodePackageRef="Code" Isolation="process">
-  ...
-  </ContainerHostPolicies>
-</Policies>
- ```
-  ```xml
-<Policies>
-  <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
-  ...
-  </ContainerHostPolicies>
-</Policies>
- ```
+   ```xml
+   <Policies>
+   <ContainerHostPolicies CodePackageRef="Code" Isolation="process">
+   ...
+   </ContainerHostPolicies>
+   </Policies>
+   ```
+   ```xml
+   <Policies>
+   <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
+   ...
+   </ContainerHostPolicies>
+   </Policies>
+   ```
 
 10. K otestování této aplikace, musíte ji nasadit do clusteru, který používá verzi 5.7 nebo novější. Pro modul runtime verze 6.1 nebo nižší budete muset upravit a aktualizovat nastavení clusteru povolit tuto funkci ve verzi preview. Postupujte podle kroků v tomto [článku](service-fabric-cluster-fabric-settings.md) přidat nastavení je ukázáno dále.
-```
+    ```
       {
         "name": "Hosting",
         "parameters": [
@@ -131,7 +131,7 @@ Tento dokument obsahuje pokyny k získání vaší služby běžící uvnitř ko
           }
         ]
       }
-```
+    ```
 
 11. Další [nasazení](service-fabric-deploy-remove-applications.md) upravených aplikace balíčku do tohoto clusteru.
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a8e20d617da12aea857308f4020fbd0cfe711430
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
-ms.translationtype: MT
+ms.openlocfilehash: 687f99fb6447eddb4ce10ce81bc349181ec5c48c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651307"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094748"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfigurace úlohy SAP se zónami dostupnosti Azure
 [Zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) je jedna z funkcí vysoké dostupnosti, které poskytuje Azure. Použití zón dostupnosti zlepšuje celkovou dostupnost úloh SAP v Azure. Tato funkce je k dispozici v některých [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/). V budoucnu bude k dispozici v dalších oblastech.
@@ -109,8 +109,8 @@ Pro tuto konfiguraci, platí následující aspekty:
 - Pro všechny virtuální počítače nasadíte, budete muset použít [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/). Nespravované disky nejsou podporovány pro zónové nasazení.
 - Azure Premium Storage a [Ultra SSD úložiště](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nepodporují libovolného typu replikace úložiště mezi zónami. Aplikace (systém DBMS nebo centrální služby SAP) musí replikovat důležitá data.
 - Totéž platí pro adresář sdílené sapmnt, který je sdílený disk (Windows), sdílené složky CIFS (Windows) nebo do sdílené složky systému souborů NFS (Linux). Budete muset použít technologii, která se replikují mezi zóny těchto sdílených disků nebo sdílených složek. Podporují se tyto technologie:
-    - Pro Windows, clusterové řešení, která používá SIOS DataKeeper, jak je uvedeno v [instanci SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s použitím sdíleného disku clusteru v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
-    - SUSE Linux sdílet systému souborů NFS, které tvoříme tak, jak je uvedeno v [vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
+  - Pro Windows, clusterové řešení, která používá SIOS DataKeeper, jak je uvedeno v [instanci SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s použitím sdíleného disku clusteru v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
+  - SUSE Linux sdílet systému souborů NFS, které tvoříme tak, jak je uvedeno v [vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
     
     V současné době řešení, které používá Microsoft horizontální navýšení kapacity souborového serveru, jak je uvedeno v [infrastruktury Příprava Azure pro zajištění vysoké dostupnosti SAP pomocí Windows převzetí služeb při selhání clusteru a sdílenou složku pro instance SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), není podporované napříč zónami.
 - Třetí zóny slouží jako hostitel SBD zařízení v případě, že vytvoříte [operačním systémem SUSE Linux Pacemaker clusteru](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) nebo instance další aplikace.

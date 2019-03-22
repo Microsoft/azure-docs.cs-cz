@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 02a2e9a6d513db5ac82b7bde5c8d3f0ca187ad15
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: cf7afb50006fb273b4d685f9e4259be1cb60fe4e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533948"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084738"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Instalace klienta Chefu na webu Azure Portal
 Na webu Azure Portal můžete přidat rozšíření Chef klienta přímo do počítače s Linuxem nebo Windows. Tento článek vás provede procesem vytvoření nového virtuálního počítače Linux.
@@ -52,31 +52,31 @@ V této části nejprve použijete na webu Azure portal vytvořit počítač s L
 
 1. Na **Základy** kartu, zadejte následující hodnoty a pak vyberte **OK**.
 
-    - **Název** – zadejte název pro nový virtuální počítač.
-    - **Typ disku virtuálního počítače** -zadat buď **SSD** nebo **HDD** pro typ úložného disku. Další informace o typech disků virtuálního počítače v Azure najdete v článku [vyberte typ disku](../virtual-machines/windows/disks-types.md).
-    - **Uživatelské jméno** – zadejte uživatelské jméno, které je udělen oprávnění správce na virtuálním počítači.
-    - **Typ ověřování** – vyberte **heslo**. Můžete také vybrat **veřejný klíč SSH**a zadat hodnotu veřejného klíče SSH. Pro účely této ukázky (a na snímcích obrazovky) **heslo** zaškrtnuto.
-    - **Heslo** a **potvrzení hesla** – zadejte heslo pro tohoto uživatele.
-    - **Přihlásit se přes Azure Active Directory** – vyberte **zakázané**.
-    - **Předplatné** – vyberte požadované předplatné Azure, pokud máte více než jedno.
-    - **Skupina prostředků** – zadejte název vaší skupiny prostředků.
-    - **Umístění** – vyberte **USA – východ**.
+   - **Název** – zadejte název pro nový virtuální počítač.
+   - **Typ disku virtuálního počítače** -zadat buď **SSD** nebo **HDD** pro typ úložného disku. Další informace o typech disků virtuálního počítače v Azure najdete v článku [vyberte typ disku](../virtual-machines/windows/disks-types.md).
+   - **Uživatelské jméno** – zadejte uživatelské jméno, které je udělen oprávnění správce na virtuálním počítači.
+   - **Typ ověřování** – vyberte **heslo**. Můžete také vybrat **veřejný klíč SSH**a zadat hodnotu veřejného klíče SSH. Pro účely této ukázky (a na snímcích obrazovky) **heslo** zaškrtnuto.
+   - **Heslo** a **potvrzení hesla** – zadejte heslo pro tohoto uživatele.
+   - **Přihlásit se přes Azure Active Directory** – vyberte **zakázané**.
+   - **Předplatné** – vyberte požadované předplatné Azure, pokud máte více než jedno.
+   - **Skupina prostředků** – zadejte název vaší skupiny prostředků.
+   - **Umístění** – vyberte **USA – východ**.
 
-    ![Základní informace o kartě při vytváření virtuálního počítače](./media/chef-extension-portal/add-vm-basics.png)
+     ![Základní informace o kartě při vytváření virtuálního počítače](./media/chef-extension-portal/add-vm-basics.png)
 
 1. Na **zvolte velikost** kartu, vyberte velikost virtuálního počítače a pak vyberte **vyberte**.
 
 1. Na **nastavení** kartu, většinou hodnot naplní se podle hodnoty, které jste vybrali v předchozím karty. Vyberte **Extensions** (Rozšíření).
 
-    ![Přidání rozšíření do virtuálních počítačů na kartě nastavení](./media/chef-extension-portal/add-vm-select-extensions.png)
+     ![Přidání rozšíření do virtuálních počítačů na kartě nastavení](./media/chef-extension-portal/add-vm-select-extensions.png)
 
 1. Na **rozšíření** kartu, vyberte možnost **přidat rozšíření**.
 
-    ![Vyberte přidat rozšíření přidat rozšíření virtuálního počítače](./media/chef-extension-portal/add-vm-add-extension.png)
+     ![Vyberte přidat rozšíření přidat rozšíření virtuálního počítače](./media/chef-extension-portal/add-vm-add-extension.png)
 
 1. Na **nový prostředek** kartu, vyberte možnost **rozšíření Linux Chef (1.2.3)**.
 
-    ![Chef obsahuje rozšíření pro virtuální počítače s Linuxem a Windows](./media/chef-extension-portal/select-linux-chef-extension.png)
+     ![Chef obsahuje rozšíření pro virtuální počítače s Linuxem a Windows](./media/chef-extension-portal/select-linux-chef-extension.png)
 
 1. Na **rozšíření Linux Chef** kartu, vyberte možnost **vytvořit**.
 
@@ -94,7 +94,7 @@ V této části nejprve použijete na webu Azure portal vytvořit počítač s L
     - **Šifrované tajné Databag** – vyberte soubor obsahující tajný klíč pro Databag šifrované tento počítač by měl mít přístup k. To může být ponecháno prázdné.
     - **Certifikát protokolu SSL serveru Chef** -vybrat certifikát SSL, které jsou přiřazené k vašemu serveru Chef. To může být ponecháno prázdné.
 
-    ![Instalace Chef serveru na virtuálním počítači s Linuxem](./media/chef-extension-portal/install-extension.png)
+      ![Instalace Chef serveru na virtuálním počítači s Linuxem](./media/chef-extension-portal/install-extension.png)
 
 1. Při návratu do **rozšíření** kartu, vyberte možnost **OK**.
 

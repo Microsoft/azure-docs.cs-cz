@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 14bd9a0bfbef15acdac5a2eddc88c72d3e142591
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b35fa32776fa449bf4f46479345a94e63fe28e68
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537962"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109572"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Rychlý start: Odeslat žádost o vyhledávání Bingu Entity Search REST API pomocí Pythonu
 
@@ -53,18 +53,18 @@ Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTfu
 ## <a name="send-a-request-and-get-a-response"></a>Odešle žádost a získejte odpověď
 
 1. Vytvořit funkci s názvem `get_suggestions()`. Pak proveďte následující kroky.
-    1. Klíč předplatného. přidejte do slovníku s `Ocp-Apim-Subscription-Key` jako klíč.
-    2. Použití `http.client.HTTPSConnection()` k vytvoření objektu klienta HTTPS. Odeslat `GET` požadovat pomocí `request()` s informacemi o cestu a parametry a záhlaví.
-    3. Odpověď se Store `getresponse()`a vrátí `response.read()`.
+   1. Klíč předplatného. přidejte do slovníku s `Ocp-Apim-Subscription-Key` jako klíč.
+   2. Použití `http.client.HTTPSConnection()` k vytvoření objektu klienta HTTPS. Odeslat `GET` požadovat pomocí `request()` s informacemi o cestu a parametry a záhlaví.
+   3. Odpověď se Store `getresponse()`a vrátí `response.read()`.
 
-    ```python
-    def get_suggestions ():
-        headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
-        conn = http.client.HTTPSConnection (host)
-        conn.request ("GET", path + params, None, headers)
-        response = conn.getresponse ()
-        return response.read()
-    ```
+      ```python
+      def get_suggestions ():
+       headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
+       conn = http.client.HTTPSConnection (host)
+       conn.request ("GET", path + params, None, headers)
+       response = conn.getresponse ()
+       return response.read()
+      ```
 
 2. Volání `get_suggestions()`a tisku odpověď json.
 

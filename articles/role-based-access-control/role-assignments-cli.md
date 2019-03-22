@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d7888fd52495f7d2a195b729fae6d0411cfbd64c
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 8e75a6344e517fb0343343f557cb7211f49cfed8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587952"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838306"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Správa přístupu k prostředkům Azure pomocí RBAC a rozhraní příkazového řádku Azure
 
@@ -194,7 +194,7 @@ az role assignment list --assignee <assignee>
 
 Ve výchozím nastavení se zobrazí pouze přiřazení omezená na předplatné. Chcete-li zobrazit přiřazení vymezeny prostředek nebo skupinu, použijte `--all`.
 
-Následující příklad vypíše přiřazení rolí, které jsou přiřazeny přímo *patlong@contoso.com* uživatele:
+Následující příklad vypíše přiřazení rolí, které jsou přiřazeny přímo *patlong\@contoso.com* uživatele:
 
 ```azurecli
 az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -252,7 +252,7 @@ Chcete-li vytvořit přiřazení role pro uživatele v oboru skupiny prostředk�
 az role assignment create --role <role> --assignee <assignee> --resource-group <resource_group>
 ```
 
-Následující příklad přiřadí *Přispěvatel virtuálních počítačů* role *patlong@contoso.com* uživatele na *pharma. prodejní projectforecast* oboru skupiny prostředků:
+Následující příklad přiřadí *Přispěvatel virtuálních počítačů* role *patlong\@contoso.com* uživatele na *pharma. prodejní projectforecast* Obor skupiny prostředků:
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales-projectforecast
@@ -300,7 +300,7 @@ V RBAC, k odebrání přístupu, můžete odebrat přiřazení role pomocí [ods
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>
 ```
 
-Následující příklad odebere *Přispěvatel virtuálních počítačů* přiřazení role z *patlong@contoso.com* uživatele na *pharma. prodejní projectforecast* prostředků Skupina:
+Následující příklad odebere *Přispěvatel virtuálních počítačů* přiřazení role z *patlong\@contoso.com* uživatele na *pharma sales projectforecast* skupina prostředků:
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales-projectforecast

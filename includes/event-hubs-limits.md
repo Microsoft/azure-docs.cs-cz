@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 02/26/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 1eb90e8e04d18179ec361c302244f97956b34137
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: cd64bdabc2b7b34687296c855c27882925d80f63
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553410"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124382"
 ---
 Následující tabulka uvádí kvóty a omezení na konkrétní [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách služby Event Hubs najdete v tématu [ceny služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 | Omezení | Rozsah | Poznámky | Hodnota |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | Počet obory názvů služby Event Hubs na předplatné |Předplatné |- |1 000 |
 | Počet událostí centra na obor názvů |Obor názvů |Odeslání dalších žádostí o vytvoření nové Centrum událostí odmítají. |10 |
 | Počet oddílů na Centrum událostí |Entita |- |32 |

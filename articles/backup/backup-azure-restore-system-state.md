@@ -8,20 +8,20 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
-ms.openlocfilehash: ab307548853a545c4aa8ee5a573ca5b1ca67c91d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 031b3096d919eb3faadf907f0d30e15d8d8fb5e5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310248"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122956"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Obnovení stavu systému na Windows Server
 
 Tento článek vysvětluje postup obnovení zálohy stavu systému Windows Server z trezoru služby Azure Recovery Services. Chcete-li obnovit stav systému, musíte mít zálohu stavu systému (vytvořili pomocí pokynů v [zálohování stavu systému](backup-azure-system-state.md#back-up-windows-server-system-state)a ujistěte se, že jste si nainstalovali [nejnovější verzi sady Microsoft Azure Recovery Services (MARS) Agent](https://aka.ms/azurebackup_agent). Obnovení dat stavu systému Windows Server z trezoru služby Azure Recovery Services je dvoustupňový proces:
 
 1. Obnovení stavu systému souborů z Azure Backup. Při obnovení stavu systému jako soubory ze zálohy Azure, můžete se buď:
-  * Obnovení stavu systému na stejný server ve kterém byly provedeny zálohy, nebo
-  * Obnovení stavu systému souborů na alternativní server.
+   * Obnovení stavu systému na stejný server ve kterém byly provedeny zálohy, nebo
+   * Obnovení stavu systému souborů na alternativní server.
 
 2. Použijte obnovený stav systému souborů na Windows Server.
 

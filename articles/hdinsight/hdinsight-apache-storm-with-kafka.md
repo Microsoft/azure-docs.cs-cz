@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: 39ae76da197db0c2b4f494bd74b3c76e6ff27f8e
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
-ms.translationtype: MT
+ms.openlocfilehash: b6717bc76caffb9c4b6f7743cc5356a80a8f742b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576799"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111850"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Kurz: Použití Apache Stormu s Apache Kafka v HDInsight
 
@@ -400,26 +400,26 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
     * Kafka v HDInsight verze 3.6 (tři pracovní uzly)
     * Storm v HDInsight verze 3.6 (tři pracovní uzly)
 
-  > [!WARNING]  
-  > Pokud chcete zajistit dostupnost Kafka v HDInsightu, musí cluster obsahovat aspoň tři pracovní uzly. Tato šablona vytvoří cluster Kafka se třemi pracovními uzly.
+   > [!WARNING]  
+   > Pokud chcete zajistit dostupnost Kafka v HDInsightu, musí cluster obsahovat aspoň tři pracovní uzly. Tato šablona vytvoří cluster Kafka se třemi pracovními uzly.
 
 2. Podle následujícího návodu vyplňte položky v části **Vlastní nasazení**:
 
-    2. Pomocí následujících informací vyplňte položky v části **Přizpůsobená šablona**:
+   1. Pomocí následujících informací vyplňte položky v části **Přizpůsobená šablona**:
 
-    | Nastavení | Hodnota |
-    | --- | --- |
-    | Předplatné | Vaše předplatné Azure |
-    | Skupina prostředků | Skupina prostředků obsahující prostředky. |
-    | Umístění | Oblast Azure, ve které se prostředky vytvoří. |
-    | Název clusteru Kafka | Název clusteru Kafka. |
-    | Název clusteru Storm | Název clusteru Storm. |
-    | Uživatelské jméno přihlášení clusteru | Uživatelské jméno správce clusterů. |
-    | Heslo přihlášení clusteru | Heslo správce clusterů. |
-    | Uživatelské jméno SSH | Uživatel SSH, který se má pro clustery vytvořit. |
-    | Heslo SSH | Heslo uživatele SSH. |
+      | Nastavení | Hodnota |
+      | --- | --- |
+      | Předplatné | Vaše předplatné Azure |
+      | Skupina prostředků | Skupina prostředků obsahující prostředky. |
+      | Umístění | Oblast Azure, ve které se prostředky vytvoří. |
+      | Název clusteru Kafka | Název clusteru Kafka. |
+      | Název clusteru Storm | Název clusteru Storm. |
+      | Uživatelské jméno přihlášení clusteru | Uživatelské jméno správce clusterů. |
+      | Heslo přihlášení clusteru | Heslo správce clusterů. |
+      | Uživatelské jméno SSH | Uživatel SSH, který se má pro clustery vytvořit. |
+      | Heslo SSH | Heslo uživatele SSH. |
    
-    ![Obrázek parametrů šablony](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
+      ![Obrázek parametrů šablony](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
 
 3. Přečtěte si **Podmínky a ujednání** a pak vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře**.
 
@@ -434,17 +434,17 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
 2. V adresáři **hdinsight-storm-java-kafka** následujícím příkazem zkompilujte projekt a vytvořte balíček pro nasazení:
 
-  ```bash
-  mvn clean package
-  ```
+   ```bash
+   mvn clean package
+   ```
 
     Proces vytvoří v adresáři `target` soubor balíčku s názvem `KafkaTopology-1.0-SNAPSHOT.jar`.
 
 3. Pomocí následujících příkazů zkopírujte balíček do vašeho Stormu v clusteru HDInsight. `sshuser` nahraďte uživatelským jménem SSH pro cluster. `stormclustername` nahraďte názvem clusteru __Storm__.
 
-  ```bash
-  scp ./target/KafkaTopology-1.0-SNAPSHOT.jar sshuser@stormclustername-ssh.azurehdinsight.net:KafkaTopology-1.0-SNAPSHOT.jar
-  ```
+   ```bash
+   scp ./target/KafkaTopology-1.0-SNAPSHOT.jar sshuser@stormclustername-ssh.azurehdinsight.net:KafkaTopology-1.0-SNAPSHOT.jar
+   ```
 
     Po zobrazení výzvy zadejte heslo, které jste při vytváření clusteru nastavili.
 
@@ -577,9 +577,9 @@ Kafka ukládá data do _tématu_. Téma je třeba vytvořit před spuštěním t
 
 1. V okně připojení ke clusteru Storm přes SSH zadáním následujícího příkazu spusťte topologii reader:
 
-  ```bash
-  storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml --filter dev.properties
-  ```
+   ```bash
+   storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml --filter dev.properties
+   ```
 
 2. Počkejte chvíli a pak následujícím příkazem zobrazte soubory vytvořené topologií reader:
 

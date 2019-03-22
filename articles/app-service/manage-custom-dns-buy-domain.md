@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 44252274cc3c0050ba138c3115deeceb2f06f8d8
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0c59e892c8fd5a8bcc74d23e16eaabf1dc1a08f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782764"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121532"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Nákup vlastního názvu domény pro službu Azure App Service
 
@@ -146,7 +146,7 @@ Zobrazí také názvy vybraných hostitelů v **vlastní domény** stránku, **v
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
-Chcete-li otestovat názvy hostitelů, přejděte na uvedené názvy hostitelů v prohlížeči. V příkladu v předchozím snímku obrazovky, zkuste přejít na stránku _kontoso.net_ a _www.kontoso.net_.
+Chcete-li otestovat názvy hostitelů, přejděte na uvedené názvy hostitelů v prohlížeči. V příkladu v předchozím snímku obrazovky, zkuste přejít na stránku _kontoso.net_ a _www\.kontoso.net_.
 
 ## <a name="assign-hostnames-to-app"></a>Názvy hostitelů přiřadit aplikace
 
@@ -177,7 +177,7 @@ Vyberte **Přidat název hostitele**.
 V **přidat název hostitele** dialogové okno, zadejte plně kvalifikovaný název vaše doména App Service nebo jakákoli subdoména. Příklad:
 
 - kontoso.net
-- www.kontoso.net
+- www\.kontoso.net
 - abc.kontoso.net
 
 Až budete hotovi, vyberte **ověřit**. Typ záznamu názvu hostitele se vybere automaticky za vás.

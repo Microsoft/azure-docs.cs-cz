@@ -10,12 +10,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: carlrab
-ms.openlocfilehash: 9a461f84577997ff976956b7f2f50500e9b3d323
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6600a578ba9c73c8a2c71466fd0b008f19058b80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548060"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861284"
 ---
 # <a name="sql-database-release-notes"></a>Zpráva k vydání verze SQL Database
 
@@ -50,7 +50,7 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 |Spravovaná instance podporu pro směrovací tabulky vylepšené| Další informace najdete v tématu [požadavky na síťovou](sql-database-managed-instance-connectivity-architecture.md#network-requirements).|
 |Přejmenování databáze nepodporuje spravované instance | Další podrobnosti najdete v tématu [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) a [proceduru sp_rename](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql) syntaxe.|
 |Databáze SQL jako zdroje referenčních dat pro Stream Analytics. | Další informace najdete v tématu [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/).|
-|Data Migration Assistant přidává podporu pro spravovanou instanci. |Další informace najdete v tématu [co je nového v DMA](https://docs.microsoft.com/sql/dma/dma-whatsnew?view=sql-server-2017).|
+|Data Migration Assistant přidává podporu pro spravovanou instanci. |Další informace najdete v tématu [co je nového v DMA](https://docs.microsoft.com/sql/dma/dma-whatsnew).|
 |SQL Server Pomocníka s migrací přidává podporu pro vyhodnocení připravenosti na cíl pro spravovanou instanci. | Další informace najdete v tématu [SQL Server Pomocníka s migrací](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant).
 |Služby dat migrace podporuje migraci z Amazon vzdálené plochy do spravované instance | Další informace najdete v tématu [kurzu: Migrace vzdálené plochy SQL serveru do Azure SQL Database nebo spravované instance Azure SQL Database online pomocí DMS](../dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md).|
 | &nbsp; |
@@ -60,7 +60,7 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 | Dokumentace k vylepšení | Podrobnosti |
 | --- | --- |
 |Přidání managed instance vyjasnění možnost nasazení|Aktualizovat řada článků o vysvětlení použitelnost pro izolované databáze, elastický fond a možnosti nasazení spravované instance. |
-|Aktualizace databáze tempdb velikosti nákupní model založený na DTU | Další informace najdete v tématu [databáze Tempdb ve službě SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).|
+|Aktualizace databáze tempdb velikosti nákupní model založený na DTU | Další informace najdete v tématu [databáze Tempdb ve službě SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).|
 |Aktualizované import a export souboru bacpac pro podporu spravované instance| Další informace najdete v tématu [importovat ze souboru BACPAC](sql-database-import.md) a [exportovat do souboru BACPAC](sql-database-export.md). |
 | &nbsp; |
 
@@ -97,4 +97,4 @@ Sada dokumentace k Azure SQL je open source. Práce v otevřeném prostředí po
 - Úložiště opensourcových zkontrolujte v publikovat nejužitečnější obsah naší nové verzi.
 - Otevřít zdroj úložiště aktualizovat v programu open, aby bylo snazší průběžné vylepšování obsahu.
 
-Abyste mohli přispívat k obsahu dokumentace ke službě Azure SQL Database, najdete v článku [Přehled Průvodce pro přispěvatele Microsoftu Docs](https://docs.microsoft.com/en-us/contribute/). Možnosti uživatele na [docs.microsoft.com](https://docs.microsoft.com/) integruje [Githubu](https://github.com/) pracovní postupy přímo na to bylo ještě jednodušší. Začněte tím, že [úpravami dokumentu, který si prohlížíte](https://docs.microsoft.com/en-us/contribute/#quick-edits-to-existing-documents). Případně můžete pomoct s [revizemi nových témat](https://docs.microsoft.com/en-us/contribute/#review-open-prs), nebo [vytvářením užitečných položek problémů](https://docs.microsoft.com/en-us/contribute/#create-quality-issues).
+Abyste mohli přispívat k obsahu dokumentace ke službě Azure SQL Database, najdete v článku [Přehled Průvodce pro přispěvatele Microsoftu Docs](https://docs.microsoft.com/contribute/). Možnosti uživatele na [docs.microsoft.com](https://docs.microsoft.com/) integruje [Githubu](https://github.com/) pracovní postupy přímo na to bylo ještě jednodušší. Začněte tím, že [úpravami dokumentu, který si prohlížíte](https://docs.microsoft.com/contribute/#quick-edits-to-existing-documents). Případně můžete pomoct s [revizemi nových témat](https://docs.microsoft.com/contribute/#review-open-prs), nebo [vytvářením užitečných položek problémů](https://docs.microsoft.com/contribute/#create-quality-issues).

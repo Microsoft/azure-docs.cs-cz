@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 15ef1905562d04c2732016dfd1340910b3a8f699
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 381eecefbba238e712820a09c8ec489706ef3751
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900353"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106453"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Přidání zpráv do fronty Azure Storage pomocí funkcí
 
@@ -122,7 +122,7 @@ Při prvním použití výstupní vazby vytvoří modul runtime Functions v úč
 
 Pokud jste si už nainstalovali Průzkumníka služby Storage a propojili jste ho k účtu úložiště, který v tomto rychlém startu používáte, přeskočte tuto část.
 
-2. Spusťte [Microsoft Azure Storage Explorer](https://storageexplorer.com/), vlevo vyberte ikonu připojení, zvolte **Použít název a klíč účtu úložiště** a vyberte **Další**.
+1. Spusťte [Microsoft Azure Storage Explorer](https://storageexplorer.com/), vlevo vyberte ikonu připojení, zvolte **Použít název a klíč účtu úložiště** a vyberte **Další**.
 
     ![Spusťte nástroj Průzkumník účtu úložiště.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
 
@@ -140,13 +140,13 @@ Pokud jste si už nainstalovali Průzkumníka služby Storage a propojili jste h
  
 1. Kliknutím na ikonu zobrazení/skrytí vedle pole **Klíč účtu** zobrazte tuto hodnotu a potom zkopírujte hodnotu z pole **Klíč účtu** a vložte ji do pole **Klíč účtu** v Průzkumníku služby Storage.
   
-3. Vyberte **Další > Připojit**.
+1. Vyberte **Další > Připojit**.
 
    ![Vložte přihlašovací údaje úložiště a připojte se.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
 
 ### <a name="examine-the-output-queue"></a>Prozkoumání výstupní fronty
 
-4. V Průzkumníku služby Storage vyberte účet úložiště, který používáte pro tento rychlý start.
+1. V Průzkumníku služby Storage vyberte účet úložiště, který používáte pro tento rychlý start.
 
 1. Rozbalte uzel **Fronty** a potom vyberte frontu s názvem **outqueue**. 
 
@@ -154,7 +154,7 @@ Pokud jste si už nainstalovali Průzkumníka služby Storage a propojili jste h
 
     ![Zpráva fronty zobrazená v Průzkumníku služby Storage](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
-2. Spusťte tuto funkci znovu. Ve frontě se zobrazí nová zpráva.  
+1. Spusťte tuto funkci znovu. Ve frontě se zobrazí nová zpráva.  
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

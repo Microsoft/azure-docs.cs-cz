@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: Evgeny.Ternovsky
-ms.openlocfilehash: b7814ce2ae94216da691b9a54049d20a03aafdd9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: cbb144cc8aac6dc8e90d196147b0c154471b7239
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994812"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102056"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Usnadňuje korelování dat Application Insights s vlastním zdrojům dat
 
@@ -44,7 +44,7 @@ Aby zahájila odesílání dat protokolů do služby Azure Monitor. Existuje ně
 
 - Synchronní mechanismus, můžete buď přímo volat [rozhraní API kolekce dat](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) nebo použít konektor naší aplikace logiky – jednoduše vyhledejte "Azure Log Analytics" a vyberte možnost "Odeslat Data":
 
- ![Zvolte snímek obrazovky a akce](./media/custom-data-correlation/01-logic-app-connector.png)  
+  ![Zvolte snímek obrazovky a akce](./media/custom-data-correlation/01-logic-app-connector.png)  
 
 - Pro asynchronní možnost použijte rozhraní API kolekce dat k vytvoření kanálu zpracování. Zobrazit [v tomto článku](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) podrobnosti.
 

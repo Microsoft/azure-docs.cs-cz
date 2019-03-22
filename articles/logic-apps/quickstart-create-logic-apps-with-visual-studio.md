@@ -12,14 +12,14 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 07/31/2018
-ms.openlocfilehash: 9d2fe2c18452537f734a8bf176130e1ad68d40e1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: e1d845d1d90a3a70590778013504fea7c0aec85c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231028"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097657"
 ---
-# <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rychlý start: Vytvoření a automatizace úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio
+# <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rychlý start: Vytváření a automatizace úloh, procesy a pracovní postupy s Azure Logic Apps – Visual Studio
 
 Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a sady Visual Studio můžete vytvářet pracovní postupy automatizující úlohy a procesy pro integraci aplikací, dat, systémů a služeb napříč podniky a organizacemi. Tento rychlý start ukazuje, jak můžete navrhovat a sestavovat tyto pracovní postupy vytvářením aplikací logiky v sadě Visual Studio a nasazováním těchto aplikací do <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> v cloudu. A přestože můžete tyto úlohy provádět na webu <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sada Visual Studio umožňuje přidávat aplikace logiky do správy zdrojového kódu, publikovat různé verze a vytvářet šablony Azure Resource Manageru pro různá prostředí nasazení. 
 
@@ -61,7 +61,7 @@ Začněte vytvořením [projektu skupiny prostředků Azure](../azure-resource-m
 
 1. Spusťte sadu Visual Studio a přihlaste se pomocí svého účtu Azure.
 
-2. V nabídce **Soubor** vyberte **Nový** > **Projekt**. (Klávesová zkratka: Ctrl + Shift + N)
+2. V nabídce **Soubor** vyberte **Nový** > **Projekt**. (Klávesnice: Ctrl+Shift+N)
 
    ![Výběr možnosti Nový > Projekt v nabídce Soubor](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
 
@@ -83,11 +83,13 @@ Začněte vytvořením [projektu skupiny prostředků Azure](../azure-resource-m
 
 Po vytvoření projektu skupiny prostředků Azure vytvořte a sestavte svou aplikaci logiky ze šablony **Prázdná aplikace logiky**.
 
-1. V Průzkumníku řešení otevřete místní nabídku pro soubor **LogicApp.json**. Vyberte **Otevřít pomocí Návrháře aplikace logiky**. (Klávesová zkratka: Ctrl + L)
+1. V Průzkumníku řešení otevřete místní nabídku pro soubor **LogicApp.json**. 
+   Vyberte **Otevřít pomocí Návrháře aplikace logiky**. (Klávesnice: Ctrl+L)
 
    ![Otevření souboru .json aplikace logiky pomocí Návrháře aplikace logiky](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
-2. V rozevíracím seznamu **Předplatné** vyberte předplatné Azure, které chcete použít. V rozevíracím seznamu **Skupina prostředků** vyberte **Vytvořit novou...**, čímž se vytvoří nová skupina prostředků Azure. 
+2. V rozevíracím seznamu **Předplatné** vyberte předplatné Azure, které chcete použít. 
+   V rozevíracím seznamu **Skupina prostředků** vyberte **Vytvořit novou...**, čímž se vytvoří nová skupina prostředků Azure. 
 
    ![Výběr předplatného Azure, skupiny prostředků a umístění prostředků](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
@@ -101,7 +103,8 @@ Po vytvoření projektu skupiny prostředků Azure vytvořte a sestavte svou apl
    | **Umístění** | MyLogicApp-RG2 <br> (Západní USA) | Jiné umístění, pokud nechcete použít umístění skupiny prostředků |
    ||||
 
-3. Otevře se Návrhář pro Logic Apps se zobrazenou stránkou s úvodním videem a běžně používanými triggery. Posuňte se za video a triggery. V části **Šablony** vyberte **Prázdná aplikace logiky**.
+3. Otevře se Návrhář pro Logic Apps se zobrazenou stránkou s úvodním videem a běžně používanými triggery. 
+   Posuňte se za video a triggery. V části **Šablony** vyberte **Prázdná aplikace logiky**.
 
    ![Výběr možnosti Prázdná aplikace logiky](./media/quickstart-create-logic-apps-with-visual-studio/choose-blank-logic-app-template.png)
 
@@ -109,7 +112,7 @@ Po vytvoření projektu skupiny prostředků Azure vytvořte a sestavte svou apl
 
 Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), který se aktivuje, když se v informačním kanálu RSS objeví nová položka. Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při splnění určitých kritérií. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky pro spuštění vašeho pracovního postupu.
 
-1. V Návrháři aplikace logiky zadejte do vyhledávacího pole „rss“. Vyberte trigger **Při publikování položky informačního kanálu**.
+1. V Návrháři aplikace logiky zadejte do vyhledávacího pole „rss“. Vyberte tento trigger: **Při publikování položky informačního kanálu**
 
    ![Sestavení aplikace logiky přidáním triggeru a akcí](./media/quickstart-create-logic-apps-with-visual-studio/add-trigger-logic-app.png)
 
@@ -123,7 +126,7 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    ![Hotová aplikace logiky](./media/quickstart-create-logic-apps-with-visual-studio/finished-logic-app.png)
 
-3. Pokud chcete svou aplikaci logiky uložit, uložte řešení sady Visual Studio. (Klávesová zkratka: Ctrl + S)
+3. Pokud chcete svou aplikaci logiky uložit, uložte řešení sady Visual Studio. (Klávesnice: Ctrl + S)
 
 Teď svou aplikaci logiky nasaďte do Azure, abyste ji mohli otestovat.
 
@@ -186,7 +189,7 @@ Vyberte skupinu prostředků pro vaši aplikaci logiky a pak vyberte **Přehled*
 * Pokud máte dotazy, navštivte <a href="https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps" target="_blank">fórum Azure Logic Apps</a>.
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte <a href="https://aka.ms/logicapps-wish" target="_blank">web zpětné vazby od uživatelů Logic Apps</a>.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste pomocí sady Visual Studio sestavili, nasadili a spustili aplikaci logiky. Další informace o správě a provádění pokročilého nasazení aplikací logiky pomocí sady Visual Studio najdete v těchto článcích:
 

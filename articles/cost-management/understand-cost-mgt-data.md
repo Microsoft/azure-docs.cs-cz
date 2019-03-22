@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/07/2019
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: e418cf8d619b55fde56a4d6d7d7cd9a8b36a112e
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 40c08f87a1711ae57ceb8b288851686d1e2ad391
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339228"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993946"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -95,7 +95,7 @@ Následující tabulky popisují data, která je součástí nebo není ve služ
 
 ## <a name="rated-usage-data-refresh-schedule"></a>Plán aktualizace dat používání hodnocení
 
-Data o využití a nákladů je k dispozici v Správa nákladů a fakturace na webu Azure Portal a [podpora rozhraní API](https://aka.ms/costmgmt/docs). Při kontrole nákladů, mít na paměti následující body:
+Data o využití a nákladů je k dispozici v Správa nákladů a fakturace na webu Azure Portal a [podpora rozhraní API](index.yml). Při kontrole nákladů, mít na paměti následující body:
 
 - Odhadované náklady pro aktuální fakturační období se aktualizují šestkrát za den.
 - Odhadované náklady pro aktuální fakturační období může změnit, protože se vám účtovat využití.

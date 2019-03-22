@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: da23d8037f37174826a2b9662c39bb507367a6ae
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537802"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104705"
 ---
 # <a name="project-url-preview-v7-reference"></a>Odkaz na projekt ve verzi Preview se adresy URL v7
 
@@ -56,7 +56,7 @@ Informace o povolených použití a zobrazení výsledků najdete v tématu [pou
 > Některé hlavičky žádosti, které mají smysl pro jiná rozhraní API pro hledání nemají vliv na Náhled adresy URL
 > - Pragma – volající nemá řídit, jestli ve verzi Preview se adresy URL používá mezipaměť
 > - Uživatelský Agent – teď adresy Url rozhraní API ve verzi Preview neposkytuje různé odpovědi pro volání pocházející z počítače, přenosné počítače i mobilní zařízení.
-
+> 
 > Také některé parametry nejsou aktuálně smysl pro adresu URL ve verzi Preview rozhraní API, ale mohou být použity v budoucnosti pro lepší globalizace.
 
 ## <a name="headers"></a>Hlavičky

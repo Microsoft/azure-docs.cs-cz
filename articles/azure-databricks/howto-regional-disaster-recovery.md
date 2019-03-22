@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/27/2018
-ms.openlocfilehash: a42d2c75913b2c9fdfa0d2b7c3ec2742525a4c97
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.date: 03/13/2019
+ms.openlocfilehash: 354f6014e3230b65a0c4f1cd7507e58ca94474dd
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806092"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188097"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Místní zotavení po havárii pro clustery Azure Databricks
 
@@ -263,9 +263,14 @@ Pokud chcete vytvořit vlastní regionálního obnovení topologie, postupujte p
 
 10. **Ručně překonfigurovat a znovu zásadu použijte řízení přístupu.**
 
-   Pokud váš existující primární pracovní prostor je nakonfigurován pro použití na úrovni Premium (SKU), je pravděpodobné, také použijete [funkce řízení přístupu](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control).
+    Pokud váš existující primární pracovní prostor je nakonfigurován pro použití na úrovni Premium (SKU), je pravděpodobné, také použijete [funkce řízení přístupu](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control).
 
-   Pokud používáte funkci řízení přístupu, ručně znovu použijte řízení přístupu k prostředkům (poznámkové bloky, clustery, úlohy, tabulky).
+    Pokud používáte funkci řízení přístupu, ručně znovu použijte řízení přístupu k prostředkům (poznámkové bloky, clustery, úlohy, tabulky).
+
+## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Zotavení po havárii pro vaše ekosystému Azure
+
+Pokud používáte další služby Azure, ujistěte se, že jste příliš implementovat osvědčené postupy pro zotavení po havárii pro tyto služby. Například pokud budete chtít použít instanci externí metastore Hive, měli byste zvážit zotavení po havárii pro [Azure SQL Server](../sql-database/sql-database-disaster-recovery.md), [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md), a/nebo [– Azure Database for MySQL ](../mysql/concepts-business-continuity.md). Obecné informace o zotavení po havárii najdete v tématu [zotavení po havárii pro aplikace Azure](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 ## <a name="next-steps"></a>Další postup
+
 Další informace najdete v tématu [dokumentace k Azure Databricks](https://docs.azuredatabricks.net/user-guide/index.html).

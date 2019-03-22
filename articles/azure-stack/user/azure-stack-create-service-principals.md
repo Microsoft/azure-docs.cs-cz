@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 9f0ccb85fa4b42ef3ca90c6d4ca2d80113b93a0c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3a6fa631fdf3436dc3a76817d2c0043b0407b2ce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733695"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121549"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Přístup aplikací k prostředkům Azure Stack tak, že vytvoříte instanční objekty
 
@@ -56,8 +56,8 @@ Postup pro přiřazení instančního objektu k roli stejný pro Azure AD a AD F
 
 Pokud služby Azure Stack používá jako úložiště identit Azure AD, které můžete vytvořit instanční objekt pomocí stejného postupu jako v Azure pomocí webu Azure portal.
 
->[!NOTE]
-Zkontrolujte, že máte [požadovaná oprávnění Azure AD](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) předtím, než začnete vytvářet instanční objekt služby.
+> [!NOTE]
+> Zkontrolujte, že máte [požadovaná oprávnění Azure AD](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) předtím, než začnete vytvářet instanční objekt služby.
 
 ### <a name="create-service-principal"></a>Vytvoření instančního objektu
 
@@ -80,8 +80,8 @@ Při přihlašování prostřednictvím kódu programu, použijte ID pro vaše a
 
 4. Zadejte popis klíče a jeho dobu platnosti. Až budete hotovi, vyberte **Uložit**.
 
->[!IMPORTANT]
-Po uložení klíče, klíče **hodnotu** se zobrazí. Poznamenejte si tuto hodnotu vzhledem k tomu, že klíč nelze načíst později. Hodnotu klíče uložte na místo, odkud ji aplikace může načíst.
+> [!IMPORTANT]
+> Po uložení klíče, klíče **hodnotu** se zobrazí. Poznamenejte si tuto hodnotu vzhledem k tomu, že klíč nelze načíst později. Hodnotu klíče uložte na místo, odkud ji aplikace může načíst.
 
 ![Klíč-hodnota upozornění pro klíč uložený.](./media/azure-stack-create-service-principals/image15.png)
 
@@ -101,8 +101,8 @@ Podrobnosti o tom, jak vytvořit instanční objekt služby najdete v tématu [v
 
 Pro přístup k prostředkům ve vašem předplatném, musíte přiřadit aplikace k roli. Rozhodněte, jakou roli představuje správná oprávnění pro aplikaci. Další informace o dostupných rolí, najdete v článku [RBAC: Vestavěné role](../../role-based-access-control/built-in-roles.md).
 
->[!NOTE]
-Můžete nastavit obor této role na úrovni předplatného, skupinu prostředků nebo prostředek. Oprávnění se dědí do oboru na nižších úrovních. Aplikaci se službou role Čtenář pro skupinu prostředků například znamená, že aplikace může číst libovolný z prostředků ve skupině prostředků.
+> [!NOTE]
+> Můžete nastavit obor této role na úrovni předplatného, skupinu prostředků nebo prostředek. Oprávnění se dědí do oboru na nižších úrovních. Aplikaci se službou role Čtenář pro skupinu prostředků například znamená, že aplikace může číst libovolný z prostředků ve skupině prostředků.
 
 Následující postup použijte jako vodítko pro přiřazení role instančnímu objektu služby.
 

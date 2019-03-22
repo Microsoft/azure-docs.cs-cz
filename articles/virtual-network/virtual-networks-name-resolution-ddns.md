@@ -1,6 +1,6 @@
 ---
-title: Registrace názvy hostitelů v Azure pomocí dynamického DNS | Microsoft Docs
-description: Zjistěte, jak nastavit dynamického DNS zaregistrovat názvy hostitelů na serverech DNS.
+title: Použití dynamického DNS k registraci názvů hostitelů v Azure | Dokumentace Microsoftu
+description: Další informace o nastavení dynamického DNS k registraci názvů hostitelů na vlastní servery DNS.
 services: dns
 documentationcenter: na
 author: subsarma
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: bbbce45b7c321fd4934374c76f2a4421b125d46f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600950"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994694"
 ---
-# <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Použití dynamického DNS zaregistrovat názvy hostitelů na serveru DNS
+# <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Použití dynamického DNS k registraci názvů hostitelů na serveru DNS
 
-[Azure poskytuje překlad](virtual-networks-name-resolution-for-vms-and-role-instances.md) pro virtuální počítače (VM) a instancí rolí. Pokud vaše překlad musí být delší než možnosti poskytované ve výchozím nastavení Azure DNS, můžete zadat vlastní servery DNS. Pomocí vlastní servery DNS poskytuje schopnost přizpůsobit řešení DNS tak, aby odpovídal vašim požadavkům. Potřebujete například přístup k místním prostředkům prostřednictvím řadiči domény služby Active Directory.
+[Azure nabízí řešení názvů](virtual-networks-name-resolution-for-vms-and-role-instances.md) pro virtuální počítače (VM) a instancí rolí. Když vaši rozlišení názvů musí být delší než možnosti dostupné ve výchozím nastavení Azure DNS, můžete zadat vlastní servery DNS. Použití vlastní servery DNS poskytuje schopnost přizpůsobit řešení DNS tak, aby odpovídala konkrétním potřebám. Například můžete potřebovat pro přístup k místním prostředkům přes řadiči domény služby Active Directory.
 
-Pokud vaše vlastní servery DNS jsou hostované jako virtuální počítače Azure, může předat dotazy název hostitele pro stejnou virtuální síť Azure přeložit názvy hostitelů. Pokud nechcete, aby tuto možnost použít, můžete zaregistrovat vaše názvy hostitelů virtuálních počítačů v serveru DNS pomocí dynamického DNS (DDNS). Azure nemá pověření, které přímo alternativní uspořádání často je třeba vytvořit záznamy v vaše servery DNS. Některé běžné scénáře s alternativami podle:
+Když vaše vlastní servery DNS jsou hostované jako virtuální počítače Azure, můžete dál dotazy název hostitele pro stejnou virtuální síť do Azure, a vyřešte názvy hostitelů. Pokud nechcete, aby tato možnost dala použít, můžete zaregistrovat vaše názvy hostitelů virtuálních počítačů v serveru DNS použití dynamického DNS (DDNS). Azure nemá přihlašovací údaje přímo vytvářet záznamy na serverech DNS, takže alternativní opatření jsou často potřeba. Některé běžné scénáře s alternativami podle:
 
-## <a name="windows-clients"></a>Klienti systému Windows
-Klienty připojené k jiné doméně systému Windows pokusí zabezpečená DDNS aktualizace, když se budou spouštět, nebo když se změní své IP adresy. Název DNS je název hostitele a primární příponu DNS. Azure zůstane prázdné primární příponu DNS, ale příponu ve virtuálním počítači, můžete nastavit pomocí [uživatelské rozhraní](https://technet.microsoft.com/library/cc794784.aspx) nebo [prostředí PowerShell](/powershell/module/dnsclient/set-dnsclient).
+## <a name="windows-clients"></a>Klienti Windows
+Bez připojené k doméně Windows pokusí nezabezpečené DDNS aktualizace při prvním spuštění nebo při změně jeho IP adresu. Název DNS je název hostitele primárního serveru DNS. Azure opustí prázdné přípona primárního serveru DNS, ale příponu ve virtuálním počítači, můžete nastavit prostřednictvím [uživatelské rozhraní](https://technet.microsoft.com/library/cc794784.aspx) nebo [Powershellu](/powershell/module/dnsclient/set-dnsclient).
 
-Klienty připojené k doméně systému Windows registrovat IP adresy s řadičem domény pomocí zabezpečené DDNS. Proces připojení k doméně nastaví primární příponu DNS na straně klienta a vytvoří a udržuje vztah důvěryhodnosti.
+Pomocí zabezpečeného DDNS registrace připojených k doméně klientů Windows jejich IP adresy s řadičem domény. Proces připojení k doméně nastaví primární příponu DNS na klientovi a vytváří a udržuje vztah důvěryhodnosti.
 
 ## <a name="linux-clients"></a>Klienti Linux
-Klienti Linux obecně není zaregistrovat na serveru DNS při spuštění, se předpokládá, že DHCP server dělá. Servery DHCP Azure nemají přihlašovací údaje o registraci záznamů v serveru DNS. Můžete použít nástroj nazvaný `nsupdate`, který je součástí balíčku vazby, odeslání DDNS aktualizací. Protože protokol DDNS je standardizovaný, můžete použít `nsupdate` i když nepoužíváte vazby na serveru DNS.
+Klienti Linux obecně není zaregistrovat na serveru DNS při spuštění, předpokládají, že DHCP server dělá. Servery DHCP Azure není nutné přihlašovací údaje o registraci záznamů v serveru DNS. Můžete použít nástroj zvaný `nsupdate`, který je součástí balíčku vazby, můžete odeslat DDNS aktualizace. Protože protokol DDNS je standardizované. můžete použít `nsupdate` i pokud nepoužíváte vazby na serveru DNS.
 
-Můžete použít háky, které jsou k dispozici klientem DHCP pro vytváření a údržbu položka názvu hostitele v serveru DNS. Během cyklu DHCP, klient spustí skripty v */etc/dhcp/dhclient-exit-hooks.d/*. Háky můžete zaregistrovat nové IP adresy pomocí `nsupdate`. Příklad:
+Můžete použít háky, které jsou k dispozici klient DHCP k vytváření a údržbě položka názvu hostitele na serveru DNS. Během cyklu DHCP klient spustí skripty v */etc/dhcp/dhclient-exit-hooks.d/*. Háky můžete použít k registraci na novou IP adresu pomocí `nsupdate`. Příklad:
 
 ```bash
 #!/bin/sh
@@ -61,11 +61,11 @@ then
 fi
 ```
 
-Můžete také `nsupdate` příkaz k provedení zabezpečené DDNS aktualizací. Například pokud používáte server DNS vytvořit vazbu, páru veřejného a privátního klíče RSA je [generované](http://linux.yyz.us/nsupdate/). DNS server je [nakonfigurované](http://linux.yyz.us/dns/ddns-server.html) s veřejné součástí klíče, takže to můžete ověřit podpis na žádost. K poskytování dvojici klíč k `nsupdate`, použijte `-k` možnost pro DDNS aktualizujete žádost o podepsání.
+Můžete také použít `nsupdate` příkaz k provedení zabezpečené DDNS aktualizuje. Například pokud používáte server DNS vytvořit vazbu, pár veřejného a privátního klíče je [generované](http://linux.yyz.us/nsupdate/). DNS server je [nakonfigurované](http://linux.yyz.us/dns/ddns-server.html) s veřejnou částí klíče, proto ji můžete ověřit podpis na žádost. K poskytování dvojice klíčů do `nsupdate`, použijte `-k` možnost, DDNS aktualizujte žádost o podepsání.
 
-Pokud používáte server DNS systému Windows, můžete použít ověřování pomocí protokolu Kerberos se `-g` parametr v `nsupdate`, ale není k dispozici v systému Windows verze `nsupdate`. Chcete-li používat protokol Kerberos, použijte `kinit` načíst přihlašovací údaje. For example, můžete načíst přihlašovací údaje z [keytab soubor](http://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)), pak `nsupdate -g` převezme přihlašovací údaje z mezipaměti.
+Při použití Windows DNS serveru, můžete použít ověřování protokolu Kerberos `-g` parametr `nsupdate`, ale není k dispozici ve verzi Windows `nsupdate`. K použití protokolu Kerberos, použijte `kinit` načíst přihlašovací údaje. For example, můžete načíst přihlašovací údaje [soubor keytab souboru](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)), pak `nsupdate -g` převezme přihlašovacích údajů z mezipaměti.
 
-V případě potřeby můžete přidat příponu vyhledávání DNS pro virtuální počítače. Přípona DNS je uveden v */etc/resolv.conf* souboru. Většina distribucích systému Linux automaticky spravovat obsah tohoto souboru, takže obvykle nelze jej upravovat. Přípona však můžete přepsat pomocí klienta DHCP `supersede` příkaz. Pokud chcete přepsat příponou, přidejte následující řádek na */etc/dhcp/dhclient.conf* souboru:
+V případě potřeby můžete přidat příponu vyhledávání DNS k vašim virtuálním počítačům. Přípona DNS je zadán v */etc/resolv.conf* souboru. Většině distribucí Linuxu automaticky spravovat obsah tohoto souboru, takže obvykle nemůžete ji upravovat. Přípona však můžete přepsat pomocí klienta DHCP `supersede` příkazu. Pokud chcete přepsat tuto příponu, přidejte následující řádek, který */etc/dhcp/dhclient.conf* souboru:
 
 ```
 supersede domain-name <required-dns-suffix>;

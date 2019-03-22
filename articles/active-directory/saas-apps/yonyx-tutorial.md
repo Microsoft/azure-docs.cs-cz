@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d08b1f3889136fadee68b3aa95d879b0495bddb1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fce7653770d0fb3134f266137e167125b9161865
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198403"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097589"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>Kurz: Integrace Azure Active Directory s Yonyx interaktivní vodítka
 
@@ -174,8 +174,8 @@ Cílem této části je vytvořte uživatele Britta Simon v Yonyx interaktivní 
 
 Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Yonyx interaktivní vodítka, pokud ještě neexistuje.
 
->[!NOTE]
->Pokud je potřeba ručně vytvořit uživatele, budete muset požádat tým podpory interaktivní vodítka Yonyx prostřednictvím <mailto:support@yonyx.com>. 
+> [!NOTE]
+> Pokud je potřeba ručně vytvořit uživatele, budete muset požádat tým podpory interaktivní vodítka Yonyx prostřednictvím <mailto:support@yonyx.com>. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

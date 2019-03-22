@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 252aacfeb85f23699c6a2e2ac1f457f9e2b59b0e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c00e62e237fe263f54926c8e74fb6211a2e5a4e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997179"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993052"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně - Dockeru
 
@@ -96,7 +96,7 @@ Postupujte podle těchto kroků spustíte úlohu Stream Analytics:
 
 ### <a name="connect-to-the-dashboard"></a>Připojte se k řídicímu panelu
 
-Chcete-li získat přístup k řídicím panelu řešení vzdáleného monitorování, přejděte na [ http://localhost:8080 ](http://localhost:8080) v prohlížeči. Teď můžete použít místní mikroslužeb a webového uživatelského rozhraní.
+Chcete-li získat přístup k řídicím panelu řešení vzdáleného monitorování, přejděte na `http://localhost:8080` v prohlížeči. Teď můžete použít místní mikroslužeb a webového uživatelského rozhraní.
 
 ## <a name="clean-up"></a>Vyčištění
 

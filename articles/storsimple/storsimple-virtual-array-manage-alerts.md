@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cd3f506205a3ee4f4435b16fd2185eeb20aef3c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bb6ef5a87c5610d90188471db961ef20dfb18835
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447220"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895460"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Pomocí Správce zařízení StorSimple ke správě výstrah pro StorSimple Virtual Array
 
@@ -39,7 +39,7 @@ Můžete zvolit, jestli chcete dostat e-mailové výstrahy podmínek pro každý
 > [!NOTE]
 > Můžete zadat maximálně 20 e-mailových adres na jedno virtuální pole.
 
-Po povolení e-mailové oznámení pro virtuální pole se v seznamu oznámení obdrží e-mailovou zprávu, vyvolá se pokaždé, když kritickou výstrahu. Pošle zprávy z *storsimple-alerts-noreply@mail.windowsazure.com* a popíše se vyskytl výstražný stav. Můžete kliknout na příjemce **Unsubscribe** sami odebrat ze seznamu e-mailové oznámení.
+Po povolení e-mailové oznámení pro virtuální pole se v seznamu oznámení obdrží e-mailovou zprávu, vyvolá se pokaždé, když kritickou výstrahu. Pošle zprávy z *storsimple oznámení noreply\@mail.windowsazure.com* a popíše se vyskytl výstražný stav. Můžete kliknout na příjemce **Unsubscribe** sami odebrat ze seznamu e-mailové oznámení.
 
 #### <a name="to-enable-email-notification-for-alerts"></a>Chcete-li povolit e-mailové oznámení pro výstrahy
 
@@ -53,7 +53,7 @@ Po povolení e-mailové oznámení pro virtuální pole se v seznamu oznámení 
    
    1. V **povolit e-mailové oznámení** pole, vyberte **Ano**.
    2. V **e-mailem správci služeb** pole, vyberte **Ano** Pokud chcete mít správce služeb a všichni spolusprávci dostávali oznámení výstrah.
-   3. V **další e-mailové příjemce** zadejte e-mailové adresy všech příjemců, kteří mají dostávat oznámení výstrah. Zadejte názvy ve formátu *someone@somewhere.com*. K oddělení e-mailových adres použijte středníky. Nakonfigurovat můžete nanejvýš 20 e-mailových adres na jedno virtuální zařízení.
+   3. V **další e-mailové příjemce** zadejte e-mailové adresy všech příjemců, kteří mají dostávat oznámení výstrah. Zadejte názvy ve formátu *někdo\@somewhere.com*. K oddělení e-mailových adres použijte středníky. Nakonfigurovat můžete nanejvýš 20 e-mailových adres na jedno virtuální zařízení.
       
        ![Konfigurace oznámení výstrah](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
    4. Pokud chcete poslat testovací e-mailové oznámení, klikněte na tlačítko **odeslat zkušební email**. Služba Správce zařízení StorSimple se zobrazí stavové zprávy, jak předává testovací oznámení.
@@ -147,6 +147,7 @@ V následujících tabulkách jsou uvedeny některé výstrahy StorSimple, kter�
 | Klon <*název zařízení* \> nebylo možné dokončit. |Naklonujte nezdaření úlohy. |Nepovedlo se vytvořit klon. Zvažte jednu z následujících akcí:<ul><li>Zálohování seznamu nemusí být platný. Aktualizujte seznam k ověření, že je stále platný.</li><li>Problémy s připojením může bránit úspěšné dokončení operace klonování. Ujistěte se, že neexistují žádné problémy s připojením.</li><li>Jste dosáhli limitu úložiště k dispozici. Uvolněte místo tak, zvažte odstranění všechny zálohy, které už nejsou potřeba.</li></ul>Vyřešte problémy, vymažte upozornění a zkuste operaci zopakovat. |
 
 ### <a name="networking-alerts"></a>Výstrahy sítě
+
 | Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
 | Nelze se připojit k ověřovací službě. |Chyba DataPath |Adresa URL, která se používá k ověření není dostupný. Ujistěte se, že pravidla brány firewall zahrnout vzory adres URL zadaná pro zařízení StorSimple. Další informace o vzorech adres URL na webu Azure portal, přejděte na [StorSimple Virtual Array požadavky na síť](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).|

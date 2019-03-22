@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 584d59592158ccf542dbb05486b159a5e34ffbc3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3f03202d0f4416b3bf08a33e5d997d7149eda9f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759098"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104399"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Rychlý start: Vytvoření a sdílení poznámkového bloku
 
@@ -34,12 +34,12 @@ ms.locfileid: "57759098"
 
 1. V **vytvořit nový projekt** automaticky otevírané okno, které se zobrazí, zadejte nebo nastavte tyto údaje a pak vyberte **vytvořit**:
 
-    - **Název projektu**: Aplikace Hello World v Pythonu
-    - **ID projektu**: hello-world – python
-    - **Veřejné projektu**: (zaškrtnuto)
-    - **Vytvoření README.md**: (zaškrtnuto)
+   - **Název projektu**: Aplikace Hello World v Pythonu
+   - **ID projektu**: hello-world – python
+   - **Veřejné projektu**: (zaškrtnuto)
+   - **Vytvoření README.md**: (zaškrtnuto)
 
-    ![Nový projekt automaticky otevírané okno s podrobnostmi mají údaj vyplněný](media/quickstarts/new-project-popup.png)
+     ![Nový projekt automaticky otevírané okno s podrobnostmi mají údaj vyplněný](media/quickstarts/new-project-popup.png)
 
 1. Po chvíli se poznámkových bloků Azure přejde do nového projektu. Poznámkového bloku přidejte do projektu tak, že vyberete **+ nový** rozevíracího seznamu (který může zobrazit jako pouze **+**), pak vyberete **Poznámkový blok**:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 8b2e42759ba2bffef28e1bf74e07bc149027ab7a
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 6ba21c6eacd5b72d13706c08f0cc9883ccc91388
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651755"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107470"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Vyšetřování incidentů a výstrah v Azure Security Center (Preview)
 Tento dokument vám pomůže používat funkci šetření v Azure Security Center k vyšetřování výstrah a incidentů zabezpečení.
@@ -31,10 +31,8 @@ Cílem je zjednodušit proces šetření propojením všech entit ([výstrah zab
 
 
 > [!NOTE]
-    > * [Vlastní upozornění](security-center-custom-alert.md) nepodporuje funkci šetření Security Center.
-    > * Šetření je podporována pouze pro výstrahy na základě dat shromážděných ze serverů Windows.
->
->
+> * [Vlastní upozornění](security-center-custom-alert.md) nepodporuje funkci šetření Security Center.
+> * Šetření je podporována pouze pro výstrahy na základě dat shromážděných ze serverů Windows.
 
 
 ## <a name="how-investigation-works"></a>Jak šetření funguje?

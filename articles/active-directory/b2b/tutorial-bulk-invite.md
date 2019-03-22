@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 183a6ddf3fd47be552ba13ce42c1f6e29fca4410
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a30281012d28489a40e3366585164628d87c220
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193947"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009143"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Kurz: Hromadné pozvat uživatele spolupráce B2B ve službě Azure AD
 
@@ -119,7 +119,7 @@ Pokud chcete ověřit, zda se uživatelé do Azure AD přidali, spusťte násled
 ```powershell
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
-Pozvané uživatele byste měli vidět na seznamu s hlavním názvem uživatele (UPN) ve formátu *e-mailovaadresa*#EXT#@*domena*. Například *lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com*, kde contoso.onmicrosoft.com je organizace, ze které jste pozvánky odeslali.
+Měli byste vidět, které můžete pozvat uživatele uvedená se hlavní název uživatele (UPN) ve formátu *emailaddress*EXT #\@*domény*. Například *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, kde je organizace, ze kterého jste odeslali pozvánek contoso.onmicrosoft.com.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

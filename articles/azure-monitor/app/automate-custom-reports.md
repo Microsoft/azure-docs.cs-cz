@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/25/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 74fdfed23d30dbf88b2faa6028039159010d9afc
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 37de2de18656f0f8ba85495b3fd72315e0bd885b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53756471"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113074"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatizace vlastní sestavy s daty Azure Application Insights
 
@@ -110,12 +110,12 @@ availabilityResults
     
     (Hodnoty AI_ najdete v části přístup přes rozhraní API pro prostředek služby Application Insights chcete v sestavě. Pokud nemáte klíč rozhraní API Application Insights, je možnost **vytvořit klíč rozhraní API**.)
     
-    * AI_APP_ID = ID aplikace
-    * AI_APP_KEY = klíč rozhraní API
-    * SendGridAPI = klíč rozhraní API SendGrid
+   * AI_APP_ID = ID aplikace
+   * AI_APP_KEY = klíč rozhraní API
+   * SendGridAPI = klíč rozhraní API SendGrid
 
-    > [!NOTE]
-    > Pokud nemáte účet SendGrid, že můžete si ho vytvořit. Dokumentace ke službě Sendgridu pro službu Azure Functions je [tady](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Pokud je to jenom má minimální vysvětlení toho, jak nastavit SendGrid a vygenerovat klíč rozhraní API, které je k dispozici na konci tohoto článku. 
+     > [!NOTE]
+     > Pokud nemáte účet SendGrid, že můžete si ho vytvořit. Dokumentace ke službě Sendgridu pro službu Azure Functions je [tady](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Pokud je to jenom má minimální vysvětlení toho, jak nastavit SendGrid a vygenerovat klíč rozhraní API, které je k dispozici na konci tohoto článku. 
 
 9. Vyberte **integrace** a ve skupinovém rámečku výstupy **SendGrid ($return)**.
 

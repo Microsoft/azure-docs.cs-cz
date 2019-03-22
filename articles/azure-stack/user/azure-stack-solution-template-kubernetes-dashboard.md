@@ -15,12 +15,12 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 243fb01a5c8112afaf310f616b93c2667ac6f19d
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 76af6d6585d52eee99548f69c92bd414068fa28d
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729850"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259206"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Přístup k řídicímu panelu Kubernetes v Azure stacku 
 
@@ -114,11 +114,11 @@ Adresu URL řídicího panelu můžete načíst z hlavního uzlu v clusteru.
 
 ## <a name="open-the-kubernetes-dashboard"></a>Otevřete řídicí panel Kubernetes 
 
-1.  Zakáže blokování automaticky otevíraných oken ve webovém prohlížeči.
+1. Zakáže blokování automaticky otevíraných oken ve webovém prohlížeči.
 
-2.  Bod prohlížeče na adresu URL jste si poznamenali, když jste spustili příkaz `kubectl cluster-info`. Příklad: https://azurestackdomainnamefork8sdashboard/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy 
-3.  Vyberte klientský certifikát.
-4.  Zadejte token. 
+2. Bod prohlížeče na adresu URL jste si poznamenali, když jste spustili příkaz `kubectl cluster-info`. Například: https:\//azurestackdomainnamefork8sdashboard/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard: / proxy serveru 
+3. Vyberte klientský certifikát.
+4. Zadejte token. 
 5. Znovu připojit k příkazovému řádku bash na hlavní uzel a udělit oprávnění k `kubernetes-dashboard`. Spusťte následující příkaz:
 
     ```Bash  

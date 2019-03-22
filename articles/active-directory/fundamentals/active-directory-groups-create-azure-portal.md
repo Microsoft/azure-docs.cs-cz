@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2887badb9a72cc94321263196d02dfab47229b7c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 78e83f4a1aea04bbaea12181419de6c5c06034f2
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078291"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287073"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory
 Základní skupinu můžete vytvořit na portálu Azure Active Directory (Azure AD). Pro účely tohoto článku přidá základní skupinu do jednoho prostředku vlastník prostředku (správce) a skupina zahrnuje konkrétní členy (zaměstnance), kteří k danému prostředku potřebují přístup. Složitější scénáře, které zahrnují dynamická členství a vytváření pravidel, najdete v [dokumentaci ke správě uživatelů ve službě Azure Active Directory](../users-groups-roles/index.yml).
@@ -31,7 +31,7 @@ Vytvořit základní skupinu a přidat do ní členy můžete současně.
 
 2. Vyberte **Azure Active Directory**, **Skupiny** a pak vyberte **Nová skupina**.
 
-    ![Azure AD se zobrazenými skupinami](media/active-directory-groups-create-azure-portal/group-full-screen.png)
+    ![Stránka Azure AD, zobrazuje se skupinami](media/active-directory-groups-create-azure-portal/group-full-screen.png)
 
 3. Na stránce **Skupina** vyplňte požadované informace.
 

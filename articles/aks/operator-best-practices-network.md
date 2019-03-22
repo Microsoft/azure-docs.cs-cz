@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: 680e3990afa3ed08c69402e9e5403cb9a6f3266a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aaa16245fada7fbccdd0865d973de2fa19970989
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175451"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176578"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro připojení k síti a zabezpečení ve službě Azure Kubernetes Service (AKS)
 
@@ -116,7 +116,7 @@ Existuje mnoho scénářů pro příchozí přenos dat, včetně následujícíc
 
 ![Firewall webových aplikací (WAF) jako je například Azure App Gateway můžete chránit a distribuovat provoz pro váš cluster AKS](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-Firewall webových aplikací (WAF) poskytuje další vrstvu zabezpečení pomocí filtrování příchozích přenosů. V otevřené webové aplikace zabezpečení projektu (OWASP) poskytuje sadu pravidel a sledujte útoky jako různé skriptování, nebo soubor cookie (Cache poisoning). [Azure Application Gateway] [ app-gateway] je WAF, která lze integrovat s AKS clusterů a zajistit tak tyto funkce zabezpečení před přenosy přicházejí clusteru AKS a aplikace. Jiná řešení třetích stran také provádění těchto funkcí, proto můžete nadále používat stávající investice nebo odbornými znalostmi v daném produktu.
+Firewall webových aplikací (WAF) poskytuje další vrstvu zabezpečení pomocí filtrování příchozích přenosů. V otevřené webové aplikace zabezpečení projektu (OWASP) poskytuje sadu pravidel a sledujte útoky jako různé skriptování, nebo soubor cookie (Cache poisoning). [Azure Application Gateway] [ app-gateway] (aktuálně ve verzi preview ve službě AKS) je WAF, která lze integrovat s clustery AKS a zajistit tak tyto funkce zabezpečení před přenosy přicházejí clusteru AKS a aplikace. Jiná řešení třetích stran také provádění těchto funkcí, proto můžete nadále používat stávající investice nebo odbornými znalostmi v daném produktu.
 
 Nástroje pro vyrovnávání nebo příchozího přenosu dat prostředků zatížení nadále spuštěna v clusteru AKS pro další upřesnění distribuce provozu. App Gateway můžete centrálně spravovat jako řadič příchozího přenosu dat s definicí prostředků. Abyste mohli začít, [vytvořit řadič služby Application Gateway příchozího přenosu dat][app-gateway-ingress].
 
@@ -124,7 +124,7 @@ Nástroje pro vyrovnávání nebo příchozího přenosu dat prostředků zatí�
 
 **Osvědčené postupy pro moduly** – povolí nebo zakážou provoz na podů pomocí zásady sítě. Ve výchozím nastavení jsou povoleny všechny přenosy mezi pody v rámci clusteru. Pro lepší zabezpečení definujte pravidla, která omezení pod komunikace.
 
-Zásady sítě je funkce, Kubernetes, která umožňuje řídit tok přenosů mezi pody. Můžete povolit nebo zakázat provoz na základě nastavení, jako jsou přiřazená popisky, obor názvů nebo provoz portu. Použití zásad sítě poskytuje cloudově nativních způsob, jak řídit tok provozu. Při vytváření podů v clusteru AKS se dynamicky, požadovaná šířka zásady je automaticky použít. Nepoužívejte skupiny zabezpečení sítě Azure k řízení provozu pod pod, použijte zásady sítě.
+Zásady sítě (aktuálně ve verzi preview ve službě AKS) je funkce, Kubernetes, která umožňuje řídit tok přenosů mezi pody. Můžete povolit nebo zakázat provoz na základě nastavení, jako jsou přiřazená popisky, obor názvů nebo provoz portu. Použití zásad sítě poskytuje cloudově nativních způsob, jak řídit tok provozu. Při vytváření podů v clusteru AKS se dynamicky, požadovaná šířka zásady je automaticky použít. Nepoužívejte skupiny zabezpečení sítě Azure k řízení provozu pod pod, použijte zásady sítě.
 
 Pokud chcete použít zásady sítě, musí být povolena funkce, při vytváření clusteru AKS. Nelze povolit zásady sítě v existujícím clusteru AKS. Plánujte dopředu a ujistěte se, že povolíte zásady sítě v clusterech a můžete je podle potřeby.
 

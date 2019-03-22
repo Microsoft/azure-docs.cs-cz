@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 03/19/2019
 ms.author: magattus
-ms.openlocfilehash: 10275b2938ce66a2816b1d4a5589a5e88ee22e80
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 3a94b8252feb7c5c345d678579c477fce02d6e03
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093914"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259733"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Ovládací prvek Azure CDN s ukládáním do mezipaměti pravidla chování ukládání do mezipaměti
 
@@ -29,11 +29,11 @@ Azure Content Delivery Network (CDN) nabízí dva způsoby, jak řídit, jak jso
 
 - Pravidla ukládání do mezipaměti: Tento článek popisuje, jak můžete síť pro doručování obsahu (CDN) pravidla ukládání do mezipaměti můžete nastavit nebo změnit výchozí chování vypršení platnosti mezipaměti globálně i pomocí vlastních podmínek, jako je například adresa URL a cesta k souboru rozšíření. Azure CDN nabízí dva typy pravidel ukládání do mezipaměti:
 
-   - Globální pravidla ukládání do mezipaměti: Pro každý koncový bod ve vašem profilu můžete nastavit jedno globální pravidlo pro ukládání do mezipaměti, které se bude vztahovat na všechny požadavky na koncový bod. Pokud jsou HTTP hlavičky direktiv pro mezipaměť nastavené, globální pravidlo ukládání do mezipaměti je přepíše.
+   - Globální pravidla ukládání do mezipaměti: Jedna globální pravidlo ukládání do mezipaměti pro každý koncový bod lze nastavit v profilu, které ovlivňují všechny požadavky na koncový bod. Pokud jsou HTTP hlavičky direktiv pro mezipaměť nastavené, globální pravidlo ukládání do mezipaměti je přepíše.
 
-   - Vlastní pravidla ukládání do mezipaměti: pro každý koncový bod ve svém profilu můžete nastavit jedno nebo více vlastních pravidel ukládání do mezipaměti. Vlastní pravidla ukládání do mezipaměti se shodují s cestami a příponami souborů, zpracovávají se v daném pořadí, a pokud je nastavené globální pravidlo ukládání do mezipaměti, přepíší ho. 
+   - Vlastní pravidla ukládání do mezipaměti: Jeden nebo více vlastní pravidla ukládání do mezipaměti pro každý koncový bod lze nastavit v profilu. Vlastní pravidla ukládání do mezipaměti se shodují s cestami a příponami souborů, zpracovávají se v daném pořadí, a pokud je nastavené globální pravidlo ukládání do mezipaměti, přepíší ho. 
 
-- Ukládání řetězce dotazu do mezipaměti: můžete upravit způsob, jakým Azure CDN zpracovává ukládání do mezipaměti u žádostí s řetězci dotazu. Informace najdete v tématu [řízení Azure CDN pomocí řetězců dotazu chování ukládání do mezipaměti](cdn-query-string.md). Pokud soubor není možné ukládat do mezipaměti, řetězec dotazu do mezipaměti nastavení nemá žádný účinek, založené na ukládání do mezipaměti pravidla a CDN výchozí chování.
+- Řetězce dotazu do mezipaměti: Můžete upravit způsob, jakým Azure CDN zpracovává ukládání do mezipaměti u žádostí s řetězci dotazu. Informace najdete v tématu [řízení Azure CDN pomocí řetězců dotazu chování ukládání do mezipaměti](cdn-query-string.md). Pokud soubor není možné ukládat do mezipaměti, řetězec dotazu do mezipaměti nastavení nemá žádný účinek, založené na ukládání do mezipaměti pravidla a CDN výchozí chování.
 
 Informace o výchozí chování ukládání do mezipaměti a ukládání do mezipaměti hlavičky direktiv najdete v tématu [funguje jak ukládání do mezipaměti](cdn-how-caching-works.md). 
 
@@ -54,11 +54,11 @@ Informace o výchozí chování ukládání do mezipaměti a ukládání do mezi
 ## <a name="caching-behavior-settings"></a>Nastavení chování ukládání do mezipaměti
 Pro globální a vlastní pravidla ukládání do mezipaměti, můžete zadat následující **chování ukládání do mezipaměti** nastavení:
 
-- **Obejít mezipaměť**: nemají ukládat do mezipaměti a ignorovat Zadaný původ hlaviček direktiv pro mezipaměť.
+- **Obejít mezipaměť**: Nezadávejte do mezipaměti a ignorovat Zadaný původ hlaviček direktiv pro mezipaměť.
 
-- **Přepsat**: Ignorovat Zadaný původ hlaviček direktiv pro mezipaměť; místo toho použijte doba zadaná mezipaměti.
+- **Přepsat**: Ignorovat doba mezipaměti poskytované původu; Místo toho použijte doba zadaná mezipaměti. To nezmění cache-control: no-cache.
 
-- **Nastavit, pokud chybí**: dodržet Zadaný původ hlaviček direktiv pro mezipaměť, pokud existují; jinak použijte doba zadaná mezipaměti.
+- **Nastavit, pokud chybí**: Přijmout zadaný původ hlaviček direktiv pro mezipaměť, pokud existují; Jinak použijte doba zadaná mezipaměti.
 
 ![Globální pravidla ukládání do mezipaměti](./media/cdn-caching-rules/cdn-global-caching-rules.png)
 
@@ -75,9 +75,9 @@ Pro globální a vlastní pravidla ukládání do mezipaměti můžete zadat dob
 
 Pro vlastní mezipaměti pravidla jsou k dispozici dvě shody podmínky:
  
-- **Cesta**: k tomuto stavu odpovídá cestě adresy URL, s výjimkou názvu domény a podporuje zástupným znakem (\*). Například _/myfile.html_, _/Moje/slozka / *_, a _/my/images/*.jpg_. Maximální délka je 260 znaků.
+- **Cesta**: Tato podmínka odpovídá cestě adresy URL, s výjimkou názvu domény a podporuje zástupným znakem (\*). Například _/myfile.html_, _/Moje/slozka / *_, a _/my/images/*.jpg_. Maximální délka je 260 znaků.
 
-- **Rozšíření**: k tomuto stavu odpovídá přípona souboru požadovaného souboru. Můžete zadat seznam přípon souborů oddělený čárkami tak, aby odpovídaly. Například _.jpg_, _.mp3_, nebo _.png_. Maximální počet rozšíření je 50 a maximální počet znaků na rozšíření je 16. 
+- **Rozšíření**: Tato podmínka odpovídá přípona souboru požadovaného souboru. Můžete zadat seznam přípon souborů oddělený čárkami tak, aby odpovídaly. Například _.jpg_, _.mp3_, nebo _.png_. Maximální počet rozšíření je 50 a maximální počet znaků na rozšíření je 16. 
 
 ## <a name="global-and-custom-rule-processing-order"></a>Pořadí zpracování globálních a vlastních pravidel
 Globální a vlastní pravidla ukládání do mezipaměti se zpracovávají v následujícím pořadí:
@@ -92,18 +92,18 @@ Globální a vlastní pravidla ukládání do mezipaměti se zpracovávají v n�
    - Doba vypršení platnosti mezipaměti: 1 den
 
 - Vlastní ukládání do mezipaměti pravidlo #1:
-   - Odpovídají podmínce: **cesta**
+   - Podmínka shody: **Cesta**
    - Odpovídající hodnotě:   _/home / *_
    - Chování ukládání do mezipaměti: **přepsání**
    - Doba vypršení platnosti mezipaměti: 2 dny
 
 - Vlastní ukládání do mezipaměti pravidlo #2:
-   - Odpovídají podmínce: **rozšíření**
+   - Podmínka shody: **Rozšíření**
    - Odpovídající hodnotě: _HTML_
-   - Chování ukládání do mezipaměti: **nastavit, pokud chybí**
-   - Doba vypršení platnosti mezipaměti: 3 dny.
+   - Chování ukládání do mezipaměti: **Nastavit, pokud chybí**
+   - Doba vypršení platnosti mezipaměti: 3 dny
 
-Pokud jsou nastavena, žádost o  _&lt;název hostitele koncového bodu&gt;_.azureedge.net/home/index.html triggery vlastní ukládání do mezipaměti pravidlo 2 #, která je nastavena na: **nastavit, pokud chybí** a 3 dnů. Proto pokud *index.html* soubor má `Cache-Control` nebo `Expires` hlavičky protokolu HTTP jsou respektovat; jinak, pokud nejsou nastavené tyto hlavičky, soubor je uložená v mezipaměti pro 3 dny.
+Pokud jsou nastavena, žádost o  _&lt;název hostitele koncového bodu&gt;_.azureedge.net/home/index.html triggery vlastní ukládání do mezipaměti pravidlo 2 #, která je nastavena na: **Nastavit, pokud chybí** a 3 dny. Proto pokud *index.html* soubor má `Cache-Control` nebo `Expires` hlavičky protokolu HTTP jsou respektovat; jinak, pokud nejsou nastavené tyto hlavičky, soubor je uložená v mezipaměti pro 3 dny.
 
 > [!NOTE] 
 > Soubory, které jsou uložené v mezipaměti před změnou pravidlo spravovat jejich nastavení doby trvání mezipaměti původu. Pokud chcete resetovat jejich dob trvání mezipaměti, je nutné [vyprázdnění souboru](cdn-purge-endpoint.md). 
@@ -116,4 +116,4 @@ Pokud jsou nastavena, žádost o  _&lt;název hostitele koncového bodu&gt;_.azu
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Jak funguje ukládání do mezipaměti](cdn-how-caching-works.md)
-- [Kurz: Nastavení pravidel ukládání do mezipaměti Azure CDN](cdn-caching-rules-tutorial.md)
+- [Kurz: Nastavte pravidla ukládání do mezipaměti Azure CDN](cdn-caching-rules-tutorial.md)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e2c770625cf92e0db269d14d2f63dc0c896cbe9c
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 4850dd82ca52a060c921569433035256f5b74cce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267508"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58164922"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co je služba Azure Import/Export?
 
@@ -76,7 +76,7 @@ Služba Import/Export Azure umožňuje přenos dat do objektů BLOB Azure a slu�
 > [!NOTE]
 > Pro místní (v rámci datového centra země) dodávky Podělte se prosím účet přepravce domácí 
 >
-> Pro (mimo zemi data center) v zahraničí dodávky Podělte se prosím účet přepravce mezinárodní
+> Pro (mimo zemi data center) v zahraničí dodávky sdělte nám prosím účet mezinárodní poskytovatel služeb
 
  ![Obrázek toku 1:Import úlohy](./media/storage-import-export-service/importjob.png)
 
@@ -106,7 +106,7 @@ Na vysoké úrovni úlohy exportu zahrnuje následující kroky:
 > [!NOTE]
 > Pro místní (v rámci datového centra země) dodávky Podělte se prosím účet přepravce domácí 
 >
-> Pro (mimo zemi data center) v zahraničí dodávky Podělte se prosím účet přepravce mezinárodní
+> Pro (mimo zemi data center) v zahraničí dodávky sdělte nám prosím účet mezinárodní poskytovatel služeb
   
  ![Obrázek toku 2:Export úlohy](./media/storage-import-export-service/exportjob.png)
 

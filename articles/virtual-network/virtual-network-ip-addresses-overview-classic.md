@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: f96ac14d68d98937cf230b04b45503e21c5e0187
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3a295a5c8a202b2f3186e696bb281002090fcad4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024565"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112598"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Typy IP adres a metody přidělení (classic) v Azure
 Přiřazením IP adres k prostředkům Azure umožníte komunikaci s ostatními prostředky Azure, místní sítí a internetem. Existují dva typy IP adres můžete použít v Azure: veřejné a soukromé.
@@ -164,14 +164,14 @@ Níže je uvedeno porovnání IP adresování funkcí v modelu nasazení classic
 
 |  | Prostředek | Classic | Resource Manager |
 | --- | --- | --- | --- |
-| **Veřejná IP adresa** |***VIRTUÁLNÍ POČÍTAČ*** |Označuje jako ILPIP (pouze dynamické) |Označuje jako veřejné IP adresy (dynamické nebo statické) |
-|  ||Přiřazené k Virtuálním počítači IaaS nebo instancí rolí PaaS |Přidružené k síťové karty Virtuálního počítače | |
-|  |***Internet internetový nástroj pro vyrovnávání zatížení*** |Označuje jako virtuální IP adresy (dynamické) nebo rezervovaná IP adresa (staticky) |Označuje jako veřejné IP adresy (dynamické nebo statické) | |
-|  ||Přiřadit cloudové službě |Přidružené ke konfiguraci front-endu nástroje pro vyrovnávání zatížení | |
+| **Veřejná IP adresa** |***VM*** |Označuje jako ILPIP (pouze dynamické) |Označuje jako veřejné IP adresy (dynamické nebo statické) |
+|  ||Přiřazené k Virtuálním počítači IaaS nebo instancí rolí PaaS |Přidružené k síťové karty Virtuálního počítače |
+|  |***Internet internetový nástroj pro vyrovnávání zatížení*** |Označuje jako virtuální IP adresy (dynamické) nebo rezervovaná IP adresa (staticky) |Označuje jako veřejné IP adresy (dynamické nebo statické) |
+|  ||Přiřadit cloudové službě |Přidružené ke konfiguraci front-endu nástroje pro vyrovnávání zatížení |
 |  | | | |
-| **Privátní IP adresa** |***VIRTUÁLNÍ POČÍTAČ*** |Uvedený jako vyhrazené IP adresy |Označuje jako privátní IP adresy |
-|  ||Přiřazené k Virtuálním počítači IaaS nebo instancí rolí PaaS |Přiřazené síťové rozhraní Virtuálního počítače | |
-|  |***Interní služby load balancer (ILB)*** |Přiřazená ILB (dynamické nebo statické) |Přiřazené konfigurace front-endu ILB (dynamické nebo statické) | |
+| **Privátní IP adresa** |***VM*** |Uvedený jako vyhrazené IP adresy |Označuje jako privátní IP adresy |
+|  ||Přiřazené k Virtuálním počítači IaaS nebo instancí rolí PaaS |Přiřazené síťové rozhraní Virtuálního počítače |
+|  |***Interní služby load balancer (ILB)*** |Přiřazená ILB (dynamické nebo statické) |Přiřazené konfigurace front-endu ILB (dynamické nebo statické) |
 
 ## <a name="next-steps"></a>Další postup
 * [Nasazení virtuálního počítače se statickou privátní IP adresou](virtual-networks-static-private-ip-classic-pportal.md) pomocí webu Azure portal.

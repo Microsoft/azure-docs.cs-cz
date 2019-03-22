@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: 57891bcce289c30d7dce1cd00c301064aa9b97cc
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: ee64b4cbfd024c91b226736bc8cac0b9b33f964e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955231"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170390"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Používání Azure CDN pomocí SAS
 
@@ -48,9 +48,9 @@ Další informace o nastavení parametrů najdete v tématu [SAS parametr aspekt
 
 ![Nastavení CDN SAS](./media/cdn-sas-storage-support/cdn-sas-settings.png)
 
-### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>Možnost 1: Použití SAS se předávací do úložiště objektů blob v Azure CDN
+### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>Option 1: Použití SAS se předávací do úložiště objektů blob v Azure CDN
 
-Tato možnost je nejjednodušší a používá jeden token SAS, který je předán z Azure CDN na zdrojový server. Je podporován **Azure CDN Standard od Verizonu** a **Azure CDN Standard od Akamai** profily. 
+Tato možnost je nejjednodušší a používá jeden token SAS, který je předán z Azure CDN na zdrojový server.
  
 1. Vyberte koncový bod, vyberte **pravidla ukládání do mezipaměti**a pak vyberte **ukládat do mezipaměti každou jedinečnou adresu URL** z **ukládání do mezipaměti řetězce dotazu** seznamu.
 
@@ -67,7 +67,7 @@ Tato možnost je nejjednodušší a používá jeden token SAS, který je před�
    
 3. Vyladění dobu uložení do mezipaměti s využitím pravidel ukládání do mezipaměti nebo přidáním `Cache-Control` záhlaví na původním serveru. Protože Azure CDN zpracovává SAS token jako řetězec prostého dotazu, jako osvědčený postup byste měli nastavit nahoru ukládání do mezipaměti Doba trvání, jejíž platnost vyprší při nebo před časem vypršení platnosti SAS. V opačném případě souboru je v mezipaměti uložené delší dobu, než je aktivní SAS, soubor může být přístupný ze serveru původu Azure CDN po uplynutí doby vypršení platnosti SAS. Pokud k této situaci dochází, a mají být váš soubor v mezipaměti nepřístupný, je třeba provést operaci vyprázdnění souboru vymazat z mezipaměti. Informace o nastavení dobu uložení do mezipaměti ve službě Azure CDN najdete v tématu [řízení Azure CDN s ukládáním do mezipaměti pravidla chování ukládání do mezipaměti](cdn-caching-rules.md).
 
-### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>Možnost 2: Skrytý tokenu CDN SAS pomocí pravidlo pro přepis adres
+### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>Option 2: Skryté tokenu CDN SAS pomocí pravidlo pro přepis adres
  
 Tato možnost je dostupná jenom pro **Azure CDN Premium od Verizonu** profily. Pomocí této možnosti můžete svázat s blob storage na původním serveru. Chcete tuto možnost použijte, pokud nepotřebujete omezení specifický přístup k souboru, ale chcete zabránit uživatelům v přístupu k původu úložiště přímo umožňují zrychlit snižování zátěže Azure CDN. Token SAS, který neznámý pro uživatele, se vyžaduje pro každého, kdo přistupuje k souborům v zadaném kontejneru původním serveru. Z důvodu pravidel přepisu adres URL však SAS token není vyžadován na koncový bod CDN.
  
@@ -97,7 +97,7 @@ Tato možnost je dostupná jenom pro **Azure CDN Premium od Verizonu** profily. 
 
 3. Vyladění dobu uložení do mezipaměti s využitím pravidel ukládání do mezipaměti nebo přidáním `Cache-Control` záhlaví na původním serveru. Protože Azure CDN zpracovává SAS token jako řetězec prostého dotazu, jako osvědčený postup byste měli nastavit nahoru ukládání do mezipaměti Doba trvání, jejíž platnost vyprší při nebo před časem vypršení platnosti SAS. V opačném případě souboru je v mezipaměti uložené delší dobu, než je aktivní SAS, soubor může být přístupný ze serveru původu Azure CDN po uplynutí doby vypršení platnosti SAS. Pokud k této situaci dochází, a mají být váš soubor v mezipaměti nepřístupný, je třeba provést operaci vyprázdnění souboru vymazat z mezipaměti. Informace o nastavení dobu uložení do mezipaměti ve službě Azure CDN najdete v tématu [řízení Azure CDN s ukládáním do mezipaměti pravidla chování ukládání do mezipaměti](cdn-caching-rules.md).
 
-### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>Možnost 3: Použití ověřování pomocí tokenu zabezpečení CDN s pravidlo pro přepis adres
+### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>Možnost 3: Ověření tokenu zabezpečení CDN pomocí pravidlo pro přepis adres
 
 Pokud chcete použít ověřování pomocí tokenu zabezpečení Azure CDN, musíte mít **Azure CDN Premium od Verizonu** profilu. Tato možnost je nejbezpečnější a přizpůsobitelné. Klientský přístup je na základě zabezpečení parametrů, které jste nastavili v tokenu zabezpečení. Jakmile máte vytvořený a nastavit token zabezpečení, bude potřeba na všechny adresy URL koncového bodu CDN. Z důvodu pravidel přepisu adres URL však SAS token není vyžadován na koncový bod CDN. Pokud SAS token později níže uvedených situací, Azure CDN už nebude moci znovu ověřit obsah ze zdrojového serveru.
 
@@ -136,7 +136,7 @@ Protože SAS parametry nejsou viditelné pro Azure CDN, Azure CDN nelze změnit 
 | Název parametru SAS | Popis |
 | --- | --- |
 | Start | Čas, který Azure CDN získáte přístup k souboru objektu blob. Z důvodu hodin zkreslit (dorazí signál hodiny v různou dobu pro různé součásti), zvolte čas o 15 minut dřívější, pokud chcete asset bude okamžitě k dispozici. |
-| End | Doba, po jejímž uplynutí Azure CDN už mít přístup k souboru objektu blob. Dříve soubory uložené do mezipaměti ve službě Azure CDN, jsou stále přístupné. Pokud chcete řídit dobu vypršení platnosti souboru, nastavte čas odpovídající vypršení platnosti tokenu zabezpečení Azure CDN nebo odstranit i asset. |
+| Konec | Doba, po jejímž uplynutí Azure CDN už mít přístup k souboru objektu blob. Dříve soubory uložené do mezipaměti ve službě Azure CDN, jsou stále přístupné. Pokud chcete řídit dobu vypršení platnosti souboru, nastavte čas odpovídající vypršení platnosti tokenu zabezpečení Azure CDN nebo odstranit i asset. |
 | Povolené IP adresy | Volitelné. Pokud používáte **Azure CDN od Verizonu**, tento parametr lze nastavit na rozsahy definované v [Azure CDN od Verizonu rozšíření rozsahy IP adres serveru Edge](https://msdn.microsoft.com/library/mt757330.aspx). Pokud používáte **Azure CDN od Akamai**, nelze nastavit parametr rozsahy IP, protože nejsou statické IP adresy.|
 | Povolené protokoly | Protokol povolen pro žádost vytvořenou s podpisem SAS účtu. Nastavení protokolu HTTPS se doporučuje.|
 

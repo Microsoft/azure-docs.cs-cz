@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 50306ab4dee13f772c2c34b3c3a8f13d07861fc0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 53b4d03ac8f5d22595d3a4e840a04583f7ec963d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410260"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995524"
 ---
 # <a name="certificate-creation-methods"></a>Metody vytvoření certifikátu
 
@@ -35,7 +35,7 @@ V následujících popisech odpovídají zelené lettered kroky na předchozím 
 1. Ve výše uvedeném diagramu vaše aplikace vytváří certifikát, který interně začíná tím, že vytvoříte klíče v trezoru klíčů.
 2. Vrátí služby Key Vault do vaší aplikace požádat o (Podepsání certifikátu)
 3. Aplikace předá žádost o podepsání certifikátu vámi zvolené certifikační Autority.
-4. Vaši vybranou certifikační Autority odpoví x X509 certifikátu.
+4. Vaši vybranou certifikační Autority jako odpověď vrátí x X509 certifikátu.
 5. Vaše aplikace dokončí nové vytvoření certifikátu s spojení X509 certifikát z certifikační Autority.
 
 -   **Vytvořte certifikát s zprostředkovatele známé vystavitele:** Tato metoda vyžaduje, abyste k provedení jednorázové úlohy vytvoření objektu vystavitele. Jakmile je vytvořen objekt vystavitelů ve trezor klíčů, jeho název může být odkazováno v zásadách KV certifikátu. Požadavek na vytvoření certifikátu KV vytvoření páru klíčů v trezoru, který se komunikovat se službou poskytovatele vystavitele zobrazíte x x509 pomocí informací v objektu odkazovaný vystavitele certifikátu. Vytvoření certifikátu x509 certifikát se načte ze služby vystavitele a je sloučen s pár klíčů KV dokončit.  

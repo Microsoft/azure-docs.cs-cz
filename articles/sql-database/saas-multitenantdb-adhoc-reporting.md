@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 10/30/2018
-ms.openlocfilehash: 2780215e409886be82ac70642dabe05c9257945e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d4c5a2ca88f982626c8c2a8b37e4a7d6dfdbe599
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568443"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076356"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Spouštění dotazů ad hoc analýzy napříč několika databázemi Azure SQL
 
@@ -27,7 +27,7 @@ V tomto kurzu jste spouštění distribuovaných dotazů ve celá sada tenanta d
 V tomto kurzu se dozvíte:
 
 > [!div class="checklist"]
-
+> 
 > * Jak nasadit databázi ad hoc sestav
 > * Postup spouštění distribuovaných dotazů ve všech databázích tenantů
 
@@ -147,7 +147,7 @@ Při kontrole plánu spuštění, najeďte myší plán ikony podrobnosti.
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-
+> 
 > * Spouštění distribuovaných dotazů ve všech tenantských databázích
 > * Nasadit databázi vytváření sestav ad hoc a přidejte do ní ke spouštění distribuovaných dotazů schématu.
 

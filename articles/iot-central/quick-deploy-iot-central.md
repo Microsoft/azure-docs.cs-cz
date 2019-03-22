@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 0844737288abeb8d6ab1043b4c55ba5ef1c4883c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5df798f0f5f9588b1f2cd792e99d6409e565337e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780248"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098072"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Vytvoření aplikace Azure IoT Central
 
@@ -29,10 +29,10 @@ Pokud chcete začít vytvářet novou aplikaci Azure IoT Central, vyberte **New 
 Vytvoření nové aplikace Azure IoT Central:
 
 1. Zvolte platební plán:
-    - **Trial** – Zkušební verze aplikací jsou bezplatné a jejich platnost vyprší po 7 dnech. Před vypršením platnosti je možné je kdykoli převést na průběžné platby.
-    - **Pay-As-You-Go** – Aplikace s průběžnými platbami se účtují podle počtu zařízení a prvních 5 zařízení je zdarma.
+   - **Trial** – Zkušební verze aplikací jsou bezplatné a jejich platnost vyprší po 7 dnech. Před vypršením platnosti je možné je kdykoli převést na průběžné platby.
+   - **Pay-As-You-Go** – Aplikace s průběžnými platbami se účtují podle počtu zařízení a prvních 5 zařízení je zdarma.
 
-    Další informace o cenách najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
+     Další informace o cenách najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
 1. Zvolte popisný název, jako je třeba **Contoso IoT**. Azure IoT Central pro vás vygeneruje jedinečnou předponu URL. Tuto předponu URL můžete změnit, aby byla snáze zapamatovatelná.
 
@@ -46,14 +46,14 @@ Vytvoření nové aplikace Azure IoT Central:
 
 1. Pokud vytváříte aplikaci s **průběžnými platbami**, musíte vybrat *adresář*, *předplatné Azure* a *oblast*. 
 
-    - *Adresář* je Azure Active Directory (AD) k vytvoření aplikace. Obsahuje identity uživatelů, přihlašovací údaje a další organizační informace. Pokud nemáte Azure AD, vytvoří se pro vás při vytváření předplatného Azure.
+   - *Adresář* je Azure Active Directory (AD) k vytvoření aplikace. Obsahuje identity uživatelů, přihlašovací údaje a další organizační informace. Pokud nemáte Azure AD, vytvoří se pro vás při vytváření předplatného Azure.
 
-    - *Předplatné Azure* umožňuje vytvářet instance služeb Azure. IoT Central bude ve vašem předplatném zřizovat prostředky. Pokud předplatné Azure nemáte, můžete si ho vytvořit na [registrační stránce Azure](https://aka.ms/createazuresubscription). Po vytvoření předplatného Azure se vraťte na stránku **Create Application** (Vytvořit aplikaci). Vaše nové předplatné se zobrazí v rozevírací nabídce **Azure Subscription** (Předplatné Azure).
+   - *Předplatné Azure* umožňuje vytvářet instance služeb Azure. IoT Central bude ve vašem předplatném zřizovat prostředky. Pokud předplatné Azure nemáte, můžete si ho vytvořit na [registrační stránce Azure](https://aka.ms/createazuresubscription). Po vytvoření předplatného Azure se vraťte na stránku **Create Application** (Vytvořit aplikaci). Vaše nové předplatné se zobrazí v rozevírací nabídce **Azure Subscription** (Předplatné Azure).
 
-    - *Oblast* je fyzické umístění, ve kterém chcete aplikaci vytvořit. Obvykle byste pro zajištění optimálního výkonu měli zvolit oblast, která je fyzicky nejblíže vašim zařízením. Seznam oblastí, ve kterých je Azure IoT Central k dispozici, najdete na stránce [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).
+   - *Oblast* je fyzické umístění, ve kterém chcete aplikaci vytvořit. Obvykle byste pro zajištění optimálního výkonu měli zvolit oblast, která je fyzicky nejblíže vašim zařízením. Seznam oblastí, ve kterých je Azure IoT Central k dispozici, najdete na stránce [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).
 
-    > [!Note]
-    > Po zvolení oblasti už později nebude možné přesunout aplikaci do jiné oblasti.
+     > [!Note]
+     > Po zvolení oblasti už později nebude možné přesunout aplikaci do jiné oblasti.
 
 1. Vyberte **Vytvořit**.
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 071054e2ec5fead3ce6181925b3c5f4e99a26736
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7564710b282c7e2ac586980896a28c00bcb2fe80
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164222"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872598"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Kurz: Integrace Azure Active Directory s Yodeck
 
@@ -200,7 +200,7 @@ V případě Yodeck zřizování se ruční úlohy.
 
     b. V **příjmení** , jako je textové pole, typ příjmení uživatele **Simon**.
 
-    c. V **e-mailu** , jako je textové pole, typ e-mailovou adresu uživatele **brittasimon@contoso.com**.
+    c. V **e-mailu** , jako je textové pole, typ e-mailovou adresu uživatele **brittasimon\@contoso.com**.
 
     d. Vyberte odpovídající **oprávnění účtu** možnost podle požadavků vaší organizace.
     

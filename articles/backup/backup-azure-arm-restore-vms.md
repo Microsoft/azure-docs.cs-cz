@@ -7,18 +7,23 @@ manager: vijayts
 keywords: obnovení zálohy; Postup při obnovení; bod obnovení;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/18/2019
+ms.date: 03/19/2019
 ms.author: geg
-ms.openlocfilehash: 0140cbc440e6098290a81f7ae61aa99e36da7d80
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
-ms.translationtype: MT
+ms.openlocfilehash: 44b8d57af83f53c73868a84104da7a7f72cb1e81
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312031"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202584"
 ---
 # <a name="restore-azure-vms"></a>Obnovení virtuálních počítačů Azure
 
 Tento článek popisuje, jak obnovit virtuální počítač Azure data z bodů obnovení uložených v [Azure Backup](backup-overview.md) trezory služby Recovery Services.
+
+Chcete-li obnovit virtuální počítač Ujistěte se, že máte potřebná [RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) oprávnění.
+
+> [!NOTE]
+> Pokud nemáte [RABAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) oprávnění můžete provádět [obnovení disku](backup-azure-arm-restore-vms.md#create-new-restore-disks) a vytvořte virtuální počítač s využitím [nasazení šablony](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm) funkce.
 
 ### <a name="restore-options"></a>Možnosti obnovení
 
@@ -101,11 +106,11 @@ Po obnovení na disku, použijte šablonu, která byla vygenerována jako souč�
     - [Další informace](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) o nasazení prostředků z vlastní šablony.
     - [Další informace](../azure-resource-manager/resource-group-authoring-templates.md) informace o vytváření šablon.
 
-  ![Načtení šablony nasazení](./media/backup-azure-arm-restore-vms/edit-template1.png)
+   ![Načtení šablony nasazení](./media/backup-azure-arm-restore-vms/edit-template1.png)
 
 4. Zadejte vlastní hodnoty pro virtuální počítač, přijměte **podmínky a ujednání** a klikněte na tlačítko **nákupní**.
 
-  ![Odeslání šablony nasazení](./media/backup-azure-arm-restore-vms/submitting-template1.png)
+   ![Odeslání šablony nasazení](./media/backup-azure-arm-restore-vms/submitting-template1.png)
 
 
 ## <a name="replace-existing-disks"></a>Nahraďte existující disky

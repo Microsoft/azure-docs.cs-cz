@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be95a75e7cdcaa11ef3e90093ef52c5615608eac
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4d74b122f3b5567e8291ec5f3ff4e1dda7ff68f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458019"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835012"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Vytvoření funkcí pro data v clusteru Hadoop pomocí dotazů Hive
 Tento dokument ukazuje, jak vytvoření funkcí pro data uložená v clusteru Azure HDInsight Hadoop pomocí dotazů Hive. Tyto dotazy Hive pomocí vložených Hive User-Defined funkcí (UDF), skriptů, pro které jsou k dispozici.
 
 Operace nutné k vytvoření funkcí může být náročné na paměť. Výkonu dotazů Hive se stane větší význam v takových případech a laděním určitých parametrů se dalo zlepšit. Optimalizace pro tyto parametry jsou popsány v poslední části.
 
-Dotazy, které jsou uvedeny příklady specifické pro [Data o jízdách taxislužby NYC](http://chriswhong.com/open-data/foil_nyc_taxi/) scénáře jsou také uvedeny ve [úložiště GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Tyto dotazy už mají zadáno schéma dat a jsou připravené k odeslání ke spuštění. V poslední části jsou také popsány parametry, které můžou uživatelé naladit tak, aby se dalo zlepšit výkon dotazů Hive.
+Dotazy, které jsou uvedeny příklady specifické pro [Data o jízdách taxislužby NYC](https://chriswhong.com/open-data/foil_nyc_taxi/) scénáře jsou také uvedeny ve [úložiště GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Tyto dotazy už mají zadáno schéma dat a jsou připravené k odeslání ke spuštění. V poslední části jsou také popsány parametry, které můžou uživatelé naladit tak, aby se dalo zlepšit výkon dotazů Hive.
 
 Tato úloha je nějaký krok [vědecké zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
@@ -130,7 +130,7 @@ Pole, které se používají v tomto dotazu jsou souřadnice GPS sbírat míčky
         and dropoff_latitude between 30 and 90
         limit 10;
 
-Matematické rovnice, které vypočítá vzdálenost mezi dvěma souřadnice GPS můžete najít na <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Přesouvatelných typ skripty</a> lokality autorem Peter Lapisu. V tomto jazyce Javascript, funkce `toRad()` je právě *lat_or_lon*pí/180 *, který převádí stupně na radiány. Tady *lat_or_lon* je zeměpisné šířky a délky. Protože Hive neposkytuje funkce `atan2`, ale poskytuje funkci `atan`, `atan2` funkce je implementovaná pomocí `atan` funkce ve výše uvedeném dotazu Hive pomocí definice součástí <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
+Matematické rovnice, které vypočítá vzdálenost mezi dvěma souřadnice GPS můžete najít na <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Přesouvatelných typ skripty</a> lokality autorem Peter Lapisu. V tomto jazyce Javascript, funkce `toRad()` je právě *lat_or_lon*pí/180, který převádí stupně na radiány. Tady *lat_or_lon* je zeměpisné šířky a délky. Protože Hive neposkytuje funkce `atan2`, ale poskytuje funkci `atan`, `atan2` funkce je implementovaná pomocí `atan` funkce ve výše uvedeném dotazu Hive pomocí definice součástí <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
 
 ![Vytvoření pracovního prostoru](./media/create-features-hive/atan2new.png)
 
@@ -161,11 +161,11 @@ Výchozí nastavení parametrů clusteru Hive nemusí být vhodný pro dotazy Hi
    
     Obvykle výchozí hodnota:
     
-    - *mapred.min.Split.size* je 0, u
-    - *mapred.Max.Split.size* je **Long.MAX** a 
-    - *DFS.Block.size* 64 MB.
+   - *mapred.min.Split.size* je 0, u
+   - *mapred.Max.Split.size* je **Long.MAX** a 
+   - *DFS.Block.size* 64 MB.
 
-    Jak vidíme, dané velikosti dat ladění tyto parametry "nastavení" je nám umožní optimalizovat počet mapovačů použít.
+     Jak vidíme, dané velikosti dat ladění tyto parametry "nastavení" je nám umožní optimalizovat počet mapovačů použít.
 
 4. Tady je několik dalších dalších **pokročilé možnosti** optimalizace výkonu Hive. Tyto umožňují nastavit je paměť přidělená pro mapovací a redukční úkoly a může být užitečné při úpravách výkonu. Mějte na paměti, *mapreduce.reduce.memory.mb* nemůže být větší než velikost fyzické paměti každý pracovní uzel v clusteru Hadoop.
    

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: abe211ad4745564cb2698aa1261a1aeb6dd63af7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1d0f3bfa03eb4bafdd10222e28782c318848b7f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781727"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995175"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Zajistěte splnění požadavků pro vytváření skupin dostupnosti AlwaysOn na virtuálních počítačích Azure
 
@@ -42,7 +42,7 @@ V tomto kurzu se předpokládá, že máte základní znalosti o skupinách dost
 Potřebujete mít účet Azure. Je možné [otevřete si bezplatný účet Azure](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) nebo [aktivovat výhody pro předplatitele sady Visual Studio](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Klikněte na tlačítko **+** k vytvoření nového objektu na portálu.
 
    ![Nový objekt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
@@ -292,14 +292,14 @@ Po restartování primárním řadiči domény, můžete nakonfigurovat druhého
 15. Klikněte na tlačítko **Další** odkaz na žlutý pruh upozornění.
 16. V **akce** sloupec **všechny podrobnosti úlohy serveru** dialogového okna, klikněte na tlačítko **povýšit tento server na řadič domény**.
 17. V části **konfigurace nasazení**vyberte **přidat řadič domény do již existující domény**.
-   ![Konfigurace nasazení](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
+    ![Konfigurace nasazení](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
 18. Klikněte na **Vybrat**.
 19. Připojte se pomocí účtu správce (**CORP. CONTOSO.COM\domainadmin**) a heslo (**Contoso! 0000**).
 20. V **vyberte doménu v doménové struktuře**, klikněte na vaši doménu a pak klikněte na tlačítko **OK**.
 21. V **možnosti řadiče domény**, použijte výchozí hodnoty a nastavte heslo režimu obnovení adresářových služeb.
 
-   >[!NOTE]
-   >**Možnosti služby DNS** stránky možná by vás varovala, že nelze vytvořit delegování pro tento server DNS. Můžete ignorovat toto upozornění v neprodukčních prostředích.
+    >[!NOTE]
+    >**Možnosti služby DNS** stránky možná by vás varovala, že nelze vytvořit delegování pro tento server DNS. Můžete ignorovat toto upozornění v neprodukčních prostředích.
 22. Klikněte na tlačítko **Další** dokud nedosáhne dialogového okna **požadavky** zkontrolovat. Pak klikněte na **Nainstalovat**.
 
 Jakmile server dokončí změny konfigurace, restartujte server.

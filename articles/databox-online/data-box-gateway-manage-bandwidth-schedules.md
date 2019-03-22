@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: e4bc5de9345bcb65f82ca7ac0095b3e0fd3907e9
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: aefbe4265cb97a003b908c5631e1f9ed4e0192cc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165994"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102102"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Web Azure Portal můžete použít ke správě plánů služby Bandwidth ve službě Azure Data Box Gateway  
 
@@ -43,13 +43,13 @@ Pokud chcete přidat uživatele, proveďte na webu Azure Portal následující k
 
 3. V části **Přidání plánu**: 
 
-    1. Zadejte **den spuštění**, **den ukončení**, **čas spuštění** a **čas ukončení** plánu. 
-    2. Pokud tento plán běží celý den, můžete zaškrtnout možnost **Celý den**. 
-    3. **Rychlost šířky pásma** je šířka pásma v megabitech za sekundu (Mb/s), používaná vašim zařízením při operacích zahrnujících cloud (nahrávání i stahování). Do tohoto pole zadejte číslo od 1 do 1 000. 
-    4. Pokud nechcete omezit nahrávání a stahování dat, zaškrtněte možnost **Neomezená šířka pásma**. 
-    5. Klikněte na tlačítko **Add** (Přidat).
+   1. Zadejte **den spuštění**, **den ukončení**, **čas spuštění** a **čas ukončení** plánu. 
+   2. Pokud tento plán běží celý den, můžete zaškrtnout možnost **Celý den**. 
+   3. **Rychlost šířky pásma** je šířka pásma v megabitech za sekundu (Mb/s), používaná vašim zařízením při operacích zahrnujících cloud (nahrávání i stahování). Do tohoto pole zadejte číslo od 1 do 1 000. 
+   4. Pokud nechcete omezit nahrávání a stahování dat, zaškrtněte možnost **Neomezená šířka pásma**. 
+   5. Klikněte na tlačítko **Add** (Přidat).
 
-    ![Klikněte na Přidat uživatele](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
+      ![Klikněte na Přidat uživatele](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 
 3. Vytvoří se plán se zadanými parametry. Tento plán se následně zobrazí v seznamu plánů služby Bandwidth na portálu.
 
@@ -85,6 +85,6 @@ Chcete-li odstranit plán služby Bandwidth spojený s vaším zařízením slu�
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o [správě šířky pásma](data-box-gateway-manage-bandwidth-schedules.md).

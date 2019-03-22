@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 01/29/2019
+ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 81b2db2da7c1efe0d09c065270c3493f297e49ad
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 551b1d4924c354eb6fd501c1b82ed306a7ea4822
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55235964"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305325"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>Co je globální dosah ExpressRoute?
 
@@ -49,7 +49,7 @@ Ne. Pokud chcete povolit připojení mezi dvěma místními sítěmi, je explici
 
 ### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>Co je propustnost sítě, očekávané mezi Moje sítích na pracovišti po povolit globální dosah ExpressRoute?
 
-Propustnost sítě mezi vaší místní sítě, zajišťuje ExpressRoute globální dosah je uzavřeny menší ze dvou okruhů ExpressRoute.
+Propustnost sítě mezi vaší místní sítě, zajišťuje ExpressRoute globální dosah je uzavřeny menší ze dvou okruhů ExpressRoute. Provoz místní Azure a místní – místní provoz sdílet stejnému okruhu a se vztahují stejné limit šířky pásma. 
 
 ### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>S ExpressRoute globální dosah jaká jsou omezení na počet tras, které můžu můžete inzerovat a počtu tras, které budu dostávat?
 

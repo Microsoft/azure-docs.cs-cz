@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/27/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d1ff4b44ff352742ee91b61c0c774cfe7c3f9d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 28f9c17e21db5a46ad01fd1b318c52a3a721f8b9
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181350"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226959"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Powershellu
 
@@ -46,7 +46,7 @@ V této části se dozvíte, jak povolit a zakázat systém přiřadil spravovan
 
 Chcete-li vytvořit virtuální počítač Azure s využitím systém přiřadil spravovanou identitu povolené, musí váš účet [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) přiřazení role.  Žádné další Azure AD přiřazení rolí adresáře se vyžadují.
 
-1. Odkazovat na jeden z následujících startu virtuálního počítače Azure, dokončení jenom nezbytné oddíly ("Přihlášení k Azure", "Vytvoření skupiny prostředků", "Vytvoření sítě skupiny", "Vytvoření virtuálního počítače").
+1. Odkazovat na jeden z následujících startu virtuálního počítače Azure, dokončení jenom nezbytné oddíly ("přihlášení do Azure", "Vytvoření skupiny prostředků", "Vytvoření sítě group", "Vytvoření virtuálního počítače").
     
     Když dostanete do části "Vytvoření virtuálního počítače", ujistěte se, drobné změny [New-AzVMConfig](/powershell/module/az.compute/new-azvm) Syntaxe rutin. Nezapomeňte si přidat `-AssignIdentity:$SystemAssigned` parametr ke zřízení virtuálního počítače s identitou systém přiřadil povolené, například:
       
@@ -57,14 +57,8 @@ Chcete-li vytvořit virtuální počítač Azure s využitím systém přiřadil
    - [Vytvoření virtuálního počítače s Windows pomocí Powershellu](../../virtual-machines/windows/quick-create-powershell.md)
    - [Vytvoření virtuálního počítače s Linuxem pomocí Powershellu](../../virtual-machines/linux/quick-create-powershell.md)
 
-2. (Volitelné) Přidání spravovaných identit pro prostředky Azure, virtuálního počítače pomocí rozšíření (plánovaná k převedení na zastaralého v lednu 2019) `-Type` parametru u [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu:
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
-    > [!NOTE]
-    > Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také. Spravované identity pro prostředky Azure, které vyřazení v lednu 2019 plánujeme přidat rozšíření virtuálního počítače. 
+> [!NOTE]
+> Volitelně může zřízení spravovaných identit pro rozšíření virtuálního počítače Azure prostředky, ale bude brzo zastaralá. Doporučujeme použít koncový bod Azure Instance Metadata identit pro ověřování. Další informace najdete v tématu [migrace ze služby rozšíření virtuálního počítače do Azure IMDS koncového bodu pro ověřování](howto-migrate-vm-extension.md).
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-vm"></a>Povolit systém přiřadil spravovaná identita na existujícím virtuálním počítači Azure
 
@@ -83,14 +77,8 @@ Aby systém přiřadil spravovaná identita na virtuálním počítači, který 
    Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity:$SystemAssigned
    ```
 
-3. (Volitelné) Přidání spravovaných identit pro prostředky Azure, virtuálního počítače pomocí rozšíření (plánovaná k převedení na zastaralého v lednu 2019) `-Type` parametru u [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu. Nezapomeňte zadat správné `-Location` parametr odpovídající umístění existujícího virtuálního počítače:
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
-    > [!NOTE]
-    > Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.
+> [!NOTE]
+> Volitelně může zřízení spravovaných identit pro rozšíření virtuálního počítače Azure prostředky, ale bude brzo zastaralá. Doporučujeme použít koncový bod Azure Instance Metadata identit pro ověřování. Další informace najdete v tématu [migrace ze služby rozšíření virtuálního počítače do Azure IMDS koncového bodu pro ověřování](howto-migrate-vm-extension.md).
 
 ### <a name="add-vm-system-assigned-identity-to-a-group"></a>Přidejte identitu přiřazenou systémem virtuálního počítače do skupiny
 
@@ -146,13 +134,10 @@ $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 ```
 
-Odebrat spravovaných identit pro rozšíření virtuálního počítače Azure prostředky, uživatel-název přepínače s [odebrat AzVMExtension](/powershell/module/az.compute/remove-azvmextension) rutiny, určení stejným názvem, který při přidání rozšíření:
+> [!NOTE]
+> Pokud jste zřídili spravovanou identitu pro prostředky Azure VM rozšíření (zastaralé), musíte ho odebrat pomocí [odebrat AzVMExtension](/powershell/module/az.compute/remove-azvmextension). Další informace najdete v tématu [migrovat z rozšíření virtuálního počítače Azure IMDS ověřování](howto-migrate-vm-extension.md).
 
-   ```powershell
-   Remove-AzVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
-   ```
-
-## <a name="user-assigned-managed-identity"></a>uživatel přiřazenou spravované identity
+## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživateli
 
 V této části se dozvíte, jak přidávat a odebírat spravované identity přiřazené uživateli z virtuálního počítače pomocí Azure Powershellu.
 
@@ -160,7 +145,7 @@ V této části se dozvíte, jak přidávat a odebírat spravované identity př
 
 K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí váš účet [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a [operátor spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-operator) přiřazení rolí. Žádné další Azure AD přiřazení rolí adresáře se vyžadují.
 
-1. Odkazovat na jeden z následujících startu virtuálního počítače Azure, dokončení jenom nezbytné oddíly ("Přihlášení k Azure", "Vytvoření skupiny prostředků", "Vytvoření sítě skupiny", "Vytvoření virtuálního počítače"). 
+1. Odkazovat na jeden z následujících startu virtuálního počítače Azure, dokončení jenom nezbytné oddíly ("přihlášení do Azure", "Vytvoření skupiny prostředků", "Vytvoření sítě group", "Vytvoření virtuálního počítače"). 
   
     Když dostanete do části "Vytvoření virtuálního počítače", ujistěte se, drobné změny [ `New-AzVMConfig` ](/powershell/module/az.compute/new-azvm) Syntaxe rutin. Přidat `-IdentityType UserAssigned` a `-IdentityID ` parametry pro zřízení virtuálního počítače s identitou uživatele přiřazeny.  Nahraďte `<VM NAME>`,`<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, a `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami.  Příklad:
     
@@ -171,14 +156,8 @@ K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí
     - [Vytvoření virtuálního počítače s Windows pomocí Powershellu](../../virtual-machines/windows/quick-create-powershell.md)
     - [Vytvoření virtuálního počítače s Linuxem pomocí Powershellu](../../virtual-machines/linux/quick-create-powershell.md)
 
-2. (Volitelné) Přidat spravovanou identitu pro prostředky Azure, virtuálního počítače pomocí rozšíření `-Type` parametru u [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu. Nezapomeňte zadat správné `-Location` parametr odpovídající umístění existujícího virtuálního počítače:
-      > [!NOTE]
-    > Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také. Spravované identity pro prostředky Azure, které vyřazení v lednu 2019 plánujeme přidat rozšíření virtuálního počítače.
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
+> [!NOTE]
+> Volitelně může zřízení spravovaných identit pro rozšíření virtuálního počítače Azure prostředky, ale bude brzo zastaralá. Doporučujeme použít koncový bod Azure Instance Metadata identit pro ověřování. Další informace najdete v tématu [migrace ze služby rozšíření virtuálního počítače do Azure IMDS koncového bodu pro ověřování](howto-migrate-vm-extension.md).
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Spravované identity přiřazené uživateli přiřadit existující virtuální počítač Azure
 
@@ -193,7 +172,7 @@ K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí
 2. Vytvořte s využitím uživatelsky přiřazené identity spravované [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/new-azuserassignedidentity) rutiny.  Poznámka: `Id` ve výstupu vzhledem k tomu, že ho budete potřebovat v dalším kroku.
 
    > [!IMPORTANT]
-   > Vytvoření uživatelsky přiřazené identity spravované podporuje pouze alfanumerické znaky a spojovník (0-9 nebo a-z nebo A-Z nebo -) znaků. Kromě toho název by měl být omezený na 24 znaků pro přiřazení k VM/VMSS správně fungovat. Vraťte se sem a přečtěte si nové informace. Další informace najdete v části [nejčastější dotazy a známé problémy](known-issues.md)
+   > Vytvoření uživatelsky přiřazené identity spravované podporuje pouze alfanumerické znaky, podtržítka a pomlčky (0-9 nebo a-z nebo A-Z, \_ nebo -) znaků. Název by měl být navíc z 3 omezené na 128 znaků pro přiřazení k VM/VMSS správně fungovat. Další informace najdete v části [nejčastější dotazy a známé problémy](known-issues.md)
 
    ```powershell
    New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
@@ -208,12 +187,8 @@ K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí
    Update-AzVM -ResourceGroupName <RESOURCE GROUP> -VM $vm -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>"
    ```
 
-4. Přidat spravovanou identitu pro prostředky Azure, virtuálního počítače pomocí rozšíření (plánovaná k převedení na zastaralého v lednu 2019) `-Type` parametru u [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu. Zadejte správný `-Location` parametr odpovídající umístění existujícího virtuálního počítače.
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
+> [!NOTE]
+> Volitelně může zřízení spravovaných identit pro rozšíření virtuálního počítače Azure prostředky, ale bude brzo zastaralá. Doporučujeme použít koncový bod Azure Instance Metadata identit pro ověřování. Další informace najdete v tématu [migrace ze služby rozšíření virtuálního počítače do Azure IMDS koncového bodu pro ověřování](howto-migrate-vm-extension.md).
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Odebrání virtuálního počítače Azure spravované identity přiřazené uživateli
 

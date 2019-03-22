@@ -1,7 +1,7 @@
 ---
 title: Nástroje pro Azure HDInsight – použít Visual Studio Code pro Hive, LLAP nebo PySpark | Dokumentace Microsoftu
 description: Další informace o použití nástroje Azure HDInsight pro Visual Studio Code k vytvoření a odeslání dotazů a skriptů.
-Keywords: Visual Studio Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
+Keywords: Visual Studio Code, Azure HDInsight Tools, Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, Interactive Hive, Interactive Query
 services: HDInsight
 documentationcenter: ''
 author: hrasheed-msft
@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.openlocfilehash: 3301f3cdea1795db3b17bc2fa7da05bf362c744d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 71e12e661c704af028ac4dc48f255bdee980619c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895064"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100322"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Použití Azure HDInsight Tools pro Visual Studio Code
 
@@ -81,7 +81,7 @@ Před odesláním skriptů ke clusterům HDInsight ze sady Visual Studio Code, b
 
         ![Pokyny pro jiné prostředí k přihlášení](./media/hdinsight-for-vscode/hdi-azure-hdinsight-hdinsight-signin.png)
 
- Jakmile budete hotovi, název svého účtu Azure se zobrazí ve stavovém řádku v levé dolní části okna Visual Studio Code.  
+   Jakmile budete hotovi, název svého účtu Azure se zobrazí ve stavovém řádku v levé dolní části okna Visual Studio Code.  
   
 
 <h2 id="linkcluster">Vytvoření odkazu: Azure HDInsight</h2>
@@ -310,20 +310,20 @@ Odešlete soubor, Všimněte si, že složka .vscode je automaticky přidán do 
     | jméno | description | type | 
     | :- | :- | :- | 
     | soubor | Soubor obsahující aplikaci k provedení | Cesta (povinné) | 
-    | proxyUser | Uživatel k zosobnění při spuštění úlohy | řetězec | 
-    | className | Hlavní třída Java/Spark aplikace | řetězec |
+    | proxyUser | Uživatel k zosobnění při spuštění úlohy | string | 
+    | className | Hlavní třída Java/Spark aplikace | string |
     | args | Argumenty příkazového řádku pro aplikaci | seznam řetězců | 
     | Kromě souborů JAR | Kromě souborů JAR pro použití v této relaci | Seznam řetězců | 
     | pyFiles | Soubory Pythonu, který se má použít v této relaci | Seznam řetězců |
     | souborů | soubory, který se má použít v této relaci | Seznam řetězců |
-    | driverMemory | Velikost paměti pro účely driver procesu | řetězec |
+    | driverMemory | Velikost paměti pro účely driver procesu | string |
     | driverCores | Počet jader pro účely driver procesu | int |
-    | executorMemory | Množství paměti podle proces prováděcího modulu | řetězec |
+    | executorMemory | Množství paměti podle proces prováděcího modulu | string |
     | executorCores | Počet jader pro každý prováděcího modulu | int |
     | numExecutors | Počtu prováděcích procesů ke spuštění pro tuto relaci | int |
     | archivy | Archivuje se použije v této relaci | Seznam řetězců |
-    | fronta | Název fronty YARN, ke které odeslání | řetězec |
-    | jméno | Název této relace | řetězec |
+    | fronta | Název fronty YARN, ke které odeslání | string |
+    | jméno | Název této relace | string |
     | conf | Vlastnosti konfigurace Spark | Mapování klíč = val |
 
     Text odpovědi   
@@ -334,8 +334,8 @@ Odešlete soubor, Všimněte si, že složka .vscode je automaticky přidán do 
     | id | Id relace | int | 
     | appId | Id aplikace pro tuto relaci |  String |
     | appInfo | Informace o podrobné aplikace | Mapování klíč = val |
-    | log | Řádky protokolu | seznam řetězců |
-    | state |   Stav služby batch | řetězec |
+    | protokol | Řádky protokolu | seznam řetězců |
+    | state |   Stav služby batch | string |
 
 >[!NOTE]
 >Přiřazené konfigurace livy se zobrazí v podokně výstupů když odešlete skript.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 7bac115ab3215a7dde625f194bdf325f9e0af318
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: e490c7c24ed38e2988c1f097b09b508746f08178
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392852"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118131"
 ---
 # <a name="sqlfilter-syntax"></a>Syntaxe SQLFilter
 
@@ -119,9 +119,9 @@ A `<regular_identifier>` nemůže být rezervované klíčové slovo.
   
 `<pattern>` musí být výraz, který je vyhodnocen jako řetězec. Slouží jako vzor pro operátor LIKE.      Může obsahovat následující znaky:  
   
--   `%`: Řetězec nula nebo více znaků.  
+-   `%`:  Libovolný řetězec nula nebo více znaků.  
   
--   `_`: Jakémukoli jednomu znaku.  
+-   `_`: Libovolný znak.  
   
 ## <a name="escapechar"></a>escape_char  
   
@@ -223,29 +223,29 @@ Vezměte v úvahu následující [SqlFilter](/dotnet/api/microsoft.servicebus.me
   
 ### <a name="property-evaluation-semantics"></a>Sémantika vyhodnocení vlastností  
   
--   Vyvolá pokus o vyhodnocení vlastností neexistující systému [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) výjimky.  
+- Vyvolá pokus o vyhodnocení vlastností neexistující systému [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) výjimky.  
   
--   Vlastnost, která neexistuje interně se vyhodnotí jako **neznámý**.  
+- Vlastnost, která neexistuje interně se vyhodnotí jako **neznámý**.  
   
- Neznámé hodnocení v aritmetické operátory:  
+  Neznámé hodnocení v aritmetické operátory:  
   
--   Pro binární operátory, pokud levé nebo pravé straně operandů vyhodnotí jako **neznámý**, pak je výsledek **neznámý**.  
+- Pro binární operátory, pokud levé nebo pravé straně operandů vyhodnotí jako **neznámý**, pak je výsledek **neznámý**.  
   
--   Pro unární operátory, je-li operand je vyhodnocen jako **neznámý**, pak je výsledek **neznámý**.  
+- Pro unární operátory, je-li operand je vyhodnocen jako **neznámý**, pak je výsledek **neznámý**.  
   
- Neznámé hodnocení v binární relační operátory:  
+  Neznámé hodnocení v binární relační operátory:  
   
--   Pokud levé nebo pravé straně operandů vyhodnotí jako **neznámý**, pak je výsledek **neznámý**.  
+- Pokud levé nebo pravé straně operandů vyhodnotí jako **neznámý**, pak je výsledek **neznámý**.  
   
- Neznámé hodnocení v `[NOT] LIKE`:  
+  Neznámé hodnocení v `[NOT] LIKE`:  
   
--   Pokud libovolný operand je vyhodnocen jako **neznámý**, pak je výsledek **neznámý**.  
+- Pokud libovolný operand je vyhodnocen jako **neznámý**, pak je výsledek **neznámý**.  
   
- Neznámé hodnocení v `[NOT] IN`:  
+  Neznámé hodnocení v `[NOT] IN`:  
   
--   Pokud levý operand je vyhodnocen jako **neznámý**, pak je výsledek **neznámý**.  
+- Pokud levý operand je vyhodnocen jako **neznámý**, pak je výsledek **neznámý**.  
   
- Neznámé hodnocení v **a** operátor:  
+  Neznámé hodnocení v **a** operátor:  
   
 ```  
 +---+---+---+---+  

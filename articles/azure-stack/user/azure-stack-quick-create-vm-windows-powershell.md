@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 9b9a041f1e4269538488d17ee73a7ffdd138c8ab
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f6c8966582c0c5ae31818ce9d88b511cef811328
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251806"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099555"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Rychlý start: vytvoření virtuálního počítače s Windows serverem pomocí prostředí PowerShell ve službě Azure Stack
 
@@ -32,8 +32,8 @@ Virtuální počítač Windows Server 2016 můžete vytvořit pomocí Azure Stac
 * Instalace webového serveru služby IIS a zobrazit výchozí domovskou stránku.
 * Vyčištění prostředků.
 
->[!NOTE]
- Můžete použít postup popsaný v tomto článku z Azure Stack Development Kit, nebo z externího klienta se systémem Windows, pokud jste připojeni přes síť VPN.
+> [!NOTE]
+>  Můžete použít postup popsaný v tomto článku z Azure Stack Development Kit, nebo z externího klienta se systémem Windows, pokud jste připojeni přes síť VPN.
 
 ## <a name="prerequisites"></a>Požadavky
 

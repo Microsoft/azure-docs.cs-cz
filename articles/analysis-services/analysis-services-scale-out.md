@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 03/20/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: eae1569cf6f7ada89f64b96fe81b154b84932a12
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dd89d9645d2054f301ed999121fefc417ea5c6fa
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182842"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293902"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontální navýšení kapacity Azure Analysis Services
 
@@ -46,6 +46,8 @@ Při provádění následná operace škálování na víc systémů, napříkla
 * Synchronizace je povolená i v případě, že nejsou žádné repliky ve fondu dotazů. Pokud se horizontální navýšení kapacity od nuly do jednoho nebo více replik s novými daty z operace zpracování na primárním serveru, nejprve provést synchronizaci s žádnou repliku ve fondu dotaz a pak horizontální navýšení kapacity. Synchronizace před horizontálním navýšením kapacity se vyhnete redundantní dosazení dat do nově přidané replik.
 
 * Při odstraňování databáze modelu z primárního serveru, to není automaticky odstraněn z replik ve fondu dotazů. Je nutné provést operaci synchronizace, která odebere soubor/s pro tuto databázi z repliky sdílených objektů blob úložiště a pak odstraní modelové databáze na replik ve fondu dotazů.
+
+* Při přejmenování databáze na primárním serveru, je nutné zajistit, že databáze je správně synchronizovat na všechny repliky další krok. Po přejmenování, provést synchronizaci zadání `-Database` parametr s názvem starého databáze. Tato synchronizace odebere z všechny repliky databáze a soubory se starým názvem. Pak proveďte zadáním jiného synchronizace `-Database` parametr s názvem nové databáze. Druhý synchronizace zkopíruje nově pojmenovanou databázi pro druhou sadu souborů a hydráty případné repliky. Tato synchronizace nelze provést pomocí příkazu modelu synchronizovat na portálu.
 
 ### <a name="separate-processing-from-query-pool"></a>Samostatné zpracování od fondu dotazů
 

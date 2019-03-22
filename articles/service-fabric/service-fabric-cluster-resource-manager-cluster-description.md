@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1020e18894f4bb307ad14f780e76eab1df1314bb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 810388a85e4ad339ff1444d21ac231fe4c00aeac
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875969"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120529"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Popis clusteru service fabric
 Service Fabric Cluster Resource Manager poskytuje několik mechanismů pro popis clusteru. Cluster Resource Manageru za běhu, používá tyto informace k zajištění vysoké dostupnosti služby spuštěné v clusteru. Při vynucování tyto důležité pravidla, je taky automatický pokus o optimalizaci spotřeby prostředků v rámci clusteru.
@@ -47,6 +47,7 @@ Je důležité, že domén selhání jsou správně nastavené protože Service 
 Na následujícím obrázku jsme barva všech entit, které přispívají k domén selhání a seznam všech různých domén selhání, které vyplývají. V tomto příkladu máme datová centra ("řadiče domény"), stojany ("R") a v oknech ("B"). Případně pokud každé okno obsahuje více než jeden virtuální počítač, může dojít další vrstvu v hierarchii doména selhání.
 
 <center>
+
 ![Uzly uspořádané prostřednictvím domén selhání][Image1]
 </center>
 
@@ -59,6 +60,7 @@ Je vhodné, pokud existují stejný počet uzlů na všech úrovních hloubka v 
 Jak imbalanced domén vypadat? Na obrázku níže ukážeme dvě rozložení jiného clusteru. V prvním příkladu se uzly rovnoměrně distribuovaných napříč doménami selhání. V druhém příkladu jednu doménu selhání má mnoho dalších uzlů, než v jiných doménách selhání. 
 
 <center>
+
 ![Dvě různé clusteru rozložení][Image2]
 </center>
 
@@ -72,6 +74,7 @@ Upgradovací domény jsou mnohem jako domén selhání, ale s několik klíčov�
 Následující diagram znázorňuje, že jsou tři domény upgradu rozdělené mezi tři domény selhání. Také ukazuje jeden možné umístění pro tří různých replik stavové služby, kde každý skončilo v různých chybových nebo upgradu domény. Toto umístění umožňuje ztráty doménu selhání při uprostřed upgrade služby a ještě jednu kopii kódu a data.  
 
 <center>
+
 ![Umístění s chybových nebo Upgradovacích doménách][Image3]
 </center>
 
@@ -88,6 +91,7 @@ Neexistuje žádný skutečný omezení celkový počet selhání nebo upgradu d
 - Modelu "prokládané" nebo "Přehled", kde domén selhání a upgradu domény formuláře matice s počítače, které obvykle běží dolů šikmé rozdělení
 
 <center>
+
 ![Selhání a upgradovací doména rozložení][Image4]
 </center>
 
@@ -190,9 +194,9 @@ Přejděte zpět do předchozího příkladu. S verzí "kvora bezpečné" omezen
 Vzhledem k tomu, že oba přístupy mít silné a slabé stránky, jsme naši nabídku doplnili adaptivní přístup, který kombinuje těchto dvou strategií.
 
 > [!NOTE]
->Bude to výchozí chování, počínaje Service Fabric verze 6.2. 
->
-Adaptivní přístup ve výchozím nastavení používá "maximální rozdíl" logika a přepne do logiky "kvora bezpečné" pouze v případě potřeby. Cluster Resource Manager se automaticky zjistí strategii, kterou je nutné zobrazením konfiguraci clusteru a služeb. Pro danou službu: *Pokud je TargetReplicaSetSize rovnoměrně dělitelné podle počtu domén selhání a počet domén upgradu **a** počet uzlů je menší než nebo rovno (počet domén selhání) * (počet domén upgradu), clusteru Resource Manager by měla využívat "na základě kvora" logiku pro danou službu.* Berte v úvahu, že Cluster Resource Manager bude tuto metodu použijte pro bezstavové a stavové služby, bez ohledu na ztráty kvora, které nejsou relevantní pro bezstavové služby.
+> Bude to výchozí chování, počínaje Service Fabric verze 6.2. 
+> 
+> Adaptivní přístup ve výchozím nastavení používá "maximální rozdíl" logika a přepne do logiky "kvora bezpečné" pouze v případě potřeby. Cluster Resource Manager se automaticky zjistí strategii, kterou je nutné zobrazením konfiguraci clusteru a služeb. Pro danou službu: *Pokud je TargetReplicaSetSize rovnoměrně dělitelné podle počtu domén selhání a počet domén upgradu **a** počet uzlů je menší než nebo rovno (počet domén selhání) * (počet domén upgradu), clusteru Resource Manager by měla využívat "na základě kvora" logiku pro danou službu.* Berte v úvahu, že Cluster Resource Manager bude tuto metodu použijte pro bezstavové a stavové služby, bez ohledu na ztráty kvora, které nejsou relevantní pro bezstavové služby.
 
 Přejděte zpět do předchozího příkladu a předpokládá, že cluster má teď 8 uzlů (stále konfigurací clusteru s pěti doménami selhání a pěti doménami upgradovat a TargetReplicaSetSize službě hostované na tento cluster zůstane pět). 
 
@@ -344,6 +348,7 @@ V některých případech (ve skutečnosti ve většině případů), budete mí
 Service Fabric pro podporu těchto řadu konfigurací, má první třídy hodnoty značek, které se můžou uplatnit na uzly. Tyto značky se nazývají **vlastnosti uzlu**. **Omezení umístění** jsou příkazy připojených služeb, které vyberte jeden nebo více vlastností uzlu. Omezení umístění definovat, ve kterém by měly běžet služby. Je možné rozšířit sadu omezení – všechny dvojice klíč/hodnota může pracovat. 
 
 <center>
+
 ![Cluster různými úlohami rozložení][Image5]
 </center>
 
@@ -351,6 +356,7 @@ Service Fabric pro podporu těchto řadu konfigurací, má první třídy hodnot
 Service Fabric definuje některé výchozí uzel vlastnosti, které je možné automaticky bez nutnosti jejich definování uživatele. Výchozí vlastnosti definované v každém uzlu jsou **NodeType** a **NodeName**. Můžete tak třeba napsat omezení umístění jako `"(NodeType == NodeType03)"`. Obecně jsme našli NodeType být jeden z nejpoužívanějších běžně používané vlastnosti. To je užitečné, protože odpovídá 1:1 s typem počítače. Každý typ počítače odpovídá typu úlohy v tradiční n vrstvou aplikaci.
 
 <center>
+
 ![Omezení umístění a vlastnosti uzlu][Image6]
 </center>
 
@@ -474,6 +480,7 @@ Pokud jste měli vypnuté všechny prostředky *vyrovnávání*, Service Fabric 
 Cluster Resource Manageru za běhu, sleduje zbývající kapacity v clusteru a na uzlech. Aby bylo možné sledovat kapacitu odečte Cluster Resource Manager využití jednotlivých služeb z kapacity uzlu, kde je služba spuštěna. Pomocí těchto informací Service Fabric Cluster Resource Manager můžete zjistit, kam chcete umístit nebo přesuňte repliky tak, aby uzly nenavazují přes kapacity.
 
 <center>
+
 ![Uzly clusteru a kapacita][Image7]
 </center>
 

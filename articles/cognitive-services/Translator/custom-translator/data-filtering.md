@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-jansko
 ms.topic: conceptual
-ms.openlocfilehash: dee0f55d816cae3b178990a432c37d3082d26de3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 195c39562e36000597d04bb760741ec7f40203c8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775760"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57844669"
 ---
 # <a name="data-filtering"></a>Filtrování dat
 
@@ -45,7 +45,7 @@ Vlastní Translator odebere věty, které se nacházejí v testu a ladění doku
 Nahraďte více věty koncové interpunkce znaky s jednou instancí.  
 
 ## <a name="japanese-character-normalization"></a>Normalizace japonské znaky
-Normalizujte duplicitní japonské znaky: Převeďte na poloviční šířku znaky s plnou šířkou.
+Převeďte na poloviční šířku znaků celou šířku písmena a číslice.
 
 ## <a name="unescaped-xml-tags"></a>Neuvozené značky XML
 Filtrování transformace neuvozené klíčová slova do uvozený uvozovacím znakem značky:

@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 7b99dcf621eac90d4b75d6827102b656f95aafbb
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 8d369800bdc9817856eeb7039fe47e5b870735ba
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958877"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107368"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Správa clusteru škálování tak, aby vyhovovaly měnících se požadavků
 
@@ -42,7 +42,7 @@ Následující obrázek znázorňuje tok následujících několika krocích. Da
     **Kritéria**
 
     | Nastavení | Popis a hodnotu |
-    | --- | --- | --- |
+    | --- | --- |
     | **Časová agregace** | Vyberte kritéria agregaci, jako je například **průměrné**. |
     | **Název metriky** | Vyberte metriku, chcete, aby operace škálování na základě na, například **využití mezipaměti**. |
     | **Statistika agregačního intervalu** | Výběr mezi **průměrné**, **minimální**, **maximální**, a **součet**. |
@@ -54,7 +54,7 @@ Následující obrázek znázorňuje tok následujících několika krocích. Da
     **Akce**
 
     | Nastavení | Popis a hodnotu |
-    | --- | --- | --- |
+    | --- | --- |
     | **Operace** | Vyberte příslušnou možnost v vertikálně nebo horizontálně navýšit kapacitu. |
     | **Počet instancí** | Vyberte počet uzlů nebo instance, které chcete přidat nebo odebrat, když se splní podmínku metriky. |
     | **Přestávka (minuty)** | Zvolte vhodný časový interval čekání mezi operace škálování. Začněte s výchozí pět minut. |
@@ -65,7 +65,7 @@ Následující obrázek znázorňuje tok následujících několika krocích. Da
 1. V **limity instancí** části na levé straně, zadejte hodnoty pro každé nastavení.
 
     | Nastavení | Popis a hodnotu |
-    | --- | --- | --- |
+    | --- | --- |
     | **Minimum** | Počet instancí, které váš cluster nebude škálování níže, bez ohledu na využití. |
     | **Maximální počet** | Počet instancí, které váš cluster nebude škálování nad, bez ohledu na využití. |
     | **Výchozí** | Výchozí počet instancí. Toto nastavení se používá, pokud dochází k problémům s čtení metrik prostředku. |

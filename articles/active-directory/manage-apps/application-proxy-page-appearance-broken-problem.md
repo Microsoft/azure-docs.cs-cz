@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c7a6edab1bc63d8cb1ae6f7de43372304e21ed1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 950a349506f32405261d90c05312d24aa3deadc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170631"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089943"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>Stránka aplikace se nezobrazuje správně pro aplikaci Proxy aplikací
 
@@ -31,7 +31,7 @@ Když publikujete aplikaci Proxy aplikací, jsou přístupné pouze stránky v k
 
 Můžete ověřit, zda chybějících prostředků je problém tak, že otevřete sledování vaší sítě (například Fiddler nebo F12 nástroje v Internet Explorer nebo Microsoft Edge), načítání stránky a hledáte chyby 404. Který určuje současné době nelze najít a je potřeba publikovat je.
 
-Jako příklad tento případ, se předpokládá jste publikovali aplikaci výdaje pomocí interní adresy URL http://myapps/expenses, ale aplikace používá šablony stylů http://myapps/style.css. V takovém případě šablony stylů není publikována ve vaší aplikaci, tak načítání aplikace výdaje vyvolat chybu 404 při pokusu o načtení style.css. V tomto příkladu se problém nevyřeší a publikujte aplikace s interní adresa URL http://myapp/.
+Jako příklad tento případ, se předpokládá jste publikovali aplikaci výdaje pomocí interní adresy URL `http://myapps/expenses`, ale aplikace používá šablony stylů `http://myapps/style.css`. V takovém případě šablony stylů není publikována ve vaší aplikaci, tak načítání aplikace výdaje vyvolat chybu 404 při pokusu o načtení style.css. V tomto příkladu se problém nevyřeší a publikujte aplikace s interní adresa URL `http://myapp/`.
 
 ## <a name="problems-with-publishing-as-one-application"></a>Problémy s publikování jako jedna aplikace
 

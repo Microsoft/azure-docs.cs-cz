@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 69aecf3d107000408f98f8ae53968355943c2881
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 55b7e45bb9e600267e1dad0e36e9a97eca9a7d40
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440807"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074994"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Příkazy Windows - CMD a prostředí PowerShell
 
@@ -247,8 +247,8 @@ Pokud chcete spustit prostředí PowerShell v SAC, až se dostanete příkazový
 
 `powershell <enter>`
 
->[!CAUTION]
-Odebrání modulu PSReadLine z relace prostředí PowerShell před spuštěním dalších příkazů Powershellu. Existuje známý problém ve kterém mohou být zavedena nadbytečné znaky v textu ze schránky vložit, pokud je v relaci Powershellu v SAC PSReadLine.
+> [!CAUTION]
+> Odebrání modulu PSReadLine z relace prostředí PowerShell před spuštěním dalších příkazů Powershellu. Existuje známý problém ve kterém mohou být zavedena nadbytečné znaky v textu ze schránky vložit, pokud je v relaci Powershellu v SAC PSReadLine.
 
 Nejprve zkontrolujte, zda je načtena PSReadLine. Načte se ve výchozím nastavení ve Windows serveru 2016, Windows 10 a novějších verzích Windows. Pouze je k dispozici v dřívějších verzích Windows Pokud měl byla ručně nainstalovaná. 
 

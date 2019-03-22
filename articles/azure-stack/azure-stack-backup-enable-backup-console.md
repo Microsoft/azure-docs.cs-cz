@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 1585eb460cc5f8ae437ee59a596dc7a854a108e7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.lastreviewed: 03/14/2019
+ms.openlocfilehash: 98f793b7d94cd554d426a0eec30d8bb4553d3d81
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995726"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105399"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Povolení zálohování pro Azure Stack z portálu pro správu
 Povolte službu Backup infrastruktury prostřednictvím portálu pro správu služby Azure Stack může generovat infrastruktura zálohování. Partner hardwaru tyto zálohy lze použít k obnovení svého prostředí pomocí cloudu obnovení v případě [závažnému selhání](./azure-stack-backup-recover-data.md). Účelem zotavení cloudu je zajistit, že uživatelé a operátoři může přihlásit zpátky na portálu po dokončení obnovení. Uživatelé budou mít svá předplatná obnovit včetně oprávnění k přístupu na základě rolí a rolí, původní plány, nabídky a dříve definované výpočetní prostředky, úložiště, síťové kvóty a tajných kódů služby Key Vault.
@@ -67,12 +67,15 @@ Pro zálohování a obnovení prostředky IaaS a PaaS odděleně od procesů zá
             -FilePath c:\certs\AzSIBCCert.cer 
     ```
 
-    > [!Note]  
-    > **1901 a vyšší**: Azure Stack přijímá certifikát pro šifrování zálohovaných dat infrastruktury. Ujistěte se, že se má certifikát uložit s veřejným i privátním klíčem v zabezpečeném umístění. Z bezpečnostních důvodů nedoporučujeme používání certifikátu s veřejné a privátní klíče ke konfiguraci nastavení zálohování. Další informace o tom, jak spravovat životní cyklus tohoto certifikátu naleznete v tématu [osvědčené postupy služby Backup infrastruktury](azure-stack-backup-best-practices.md).
+   > [!Note]
+   > **1901 a vyšší**: Azure Stack přijímá certifikát pro šifrování zálohovaných dat infrastruktury. Ujistěte se, že se má certifikát uložit s veřejným i privátním klíčem v zabezpečeném umístění. Z bezpečnostních důvodů nedoporučujeme používání certifikátu s veřejné a privátní klíče ke konfiguraci nastavení zálohování. Další informace o tom, jak spravovat životní cyklus tohoto certifikátu naleznete v tématu [osvědčené postupy služby Backup infrastruktury](azure-stack-backup-best-practices.md).
+   > 
+   > **1811 nebo starší**: Azure Stack přijímá symetrický klíč k šifrování zálohovaných dat infrastruktury. Použití [AzsEncryptionKey64 nová rutina pro vytvoření klíče](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/new-azsencryptionkeybase64). Po upgradu z 1811 na 1901 si zachovají nastavení zálohování šifrovacího klíče. Doporučuje se aktualizovat nastavení zálohování pro použití certifikátu. Podpora šifrování klíče je nyní zastaralá. Budete mít aspoň 3 verze se aktualizovat nastavení pro použití certifikátu. 
 
 10. Vyberte **OK** uložte nastavení zálohování kontroleru.
 
 ![Azure Stack – nastavení kontroleru zálohování](media/azure-stack-backup/backup-controller-settings-certificate.png)
+
 
 ## <a name="start-backup"></a>Spustit zálohování
 Pokud chcete spustit zálohování, klikněte na **zálohovat nyní** spustit zálohu na vyžádání. Zálohu na vyžádání nezmění čas příští plánované zálohování. Po dokončení úlohy můžete potvrdit nastavení v **Essentials**:
@@ -115,7 +118,7 @@ Nové zálohování začít používat veřejný klíč v nový certifikát. Nee
 ![Azure Stack – kryptografický otisk certifikátu zobrazení](media/azure-stack-backup/encryption-settings-thumbprint.png)
 
 ### <a name="backwards-compatibility-mode"></a>Zpětně režim kompatibility
-Pokud jste před aktualizací na 1901 nakonfigurovali zálohování, nastavení se přenesou beze změny v chování. V takovém případě šifrovací klíč je podporováno pro zpětnou kompatibilitu. Máte možnost aktualizovat šifrovací klíč nebo přepnutí pro použití certifikátu. Budete mít tři verze, a pokračovat v aktualizaci šifrovací klíč. Pomocí této doby přechodu k certifikátu. 
+Pokud jste před aktualizací na 1901 nakonfigurovali zálohování, nastavení se přenesou beze změny v chování. V takovém případě šifrovací klíč je podporováno pro zpětnou kompatibilitu. Máte možnost aktualizovat šifrovací klíč nebo přepnutí pro použití certifikátu. Budete mít alespoň tři verze, a pokračovat v aktualizaci šifrovací klíč. Pomocí této doby přechodu k certifikátu. Chcete-li vytvořit nový klíč pomocí šifrování [rutiny New-AzsEncryptionKeyBase64](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/new-azsencryptionkeybase64).
 
 ![Azure Stack – pomocí šifrovacího klíče v režimu zpětné kompatibility](media/azure-stack-backup/encryption-settings-backcompat-encryption-key.png)
 

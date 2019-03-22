@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 385e0065123b86f8f8b7c8503fe6de6daa7c6562
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3d9c2a694562977c2a012d9faa9c282c6b8fff9d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874120"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099827"
 ---
 # <a name="data-extraction-from-intents-and-entities"></a>Extrakce dat z záměry a entity
 Služba LUIS umožňuje získat informace z projevy přirozeného jazyka uživatele. Informace je extrahován tak, že jej lze použít program, aplikace nebo chatovací robot k akci. V následující částech se dozvíte, jaká data jsou vrácena z záměry a entity s příklady JSON.
@@ -195,7 +195,7 @@ Data vrácená z koncového bodu obsahuje název entity a názvu podřízené, z
 ```
 
 |Datový objekt|Nadřazené|Podřízené|Hodnota|
-|--|--|--|--|--|
+|--|--|--|--|
 |Hierarchické Entity|Umístění|ToLocation|"Paříž"|
 
 ## <a name="composite-entity-data"></a>Složený entitu dat

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 1/10/2019
 ms.author: victorh
-ms.openlocfilehash: 7006d7ed56c58858e4b7c053af3ba1101455928c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 3da9982d1af886a4329ddc77a7b297e9e285453e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312504"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101546"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurace kompletního protokolu SSL pomocí Application Gateway pomocí Powershellu
 
@@ -53,21 +53,21 @@ Proces konfigurace je popsána v následujících částech.
 Tato část vás provede vytvořením skupinu prostředků, která obsahuje bránu application gateway.
 
 
-   1. Přihlaste se ke svému účtu Azure.
+1. Přihlaste se ke svému účtu Azure.
 
    ```powershell
    Connect-AzAccount
    ```
 
 
-   2. Vyberte předplatné, které chcete použít pro tento scénář.
+2. Vyberte předplatné, které chcete použít pro tento scénář.
 
    ```powershell
    Select-Azsubscription -SubscriptionName "<Subscription name>"
    ```
 
 
-   3. Vytvořte skupinu prostředků. (Tento krok přeskočte, pokud používáte některou ze stávajících skupin prostředků.)
+3. Vytvořte skupinu prostředků. (Tento krok přeskočte, pokud používáte některou ze stávajících skupin prostředků.)
 
    ```powershell
    New-AzResourceGroup -Name appgw-rg -Location "West US"
@@ -78,7 +78,7 @@ Tato část vás provede vytvořením skupinu prostředků, která obsahuje brá
 Následující příklad vytvoří virtuální síť a dvě podsítě. Jednu podsíť se používá k uložení application gateway. Další podsítě se používá pro back-endů, které jsou hostiteli webové aplikace.
 
 
-   1. Přiřaďte rozsah adres podsítě se použije pro službu application gateway.
+1. Přiřaďte rozsah adres podsítě se použije pro službu application gateway.
 
    ```powershell
    $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
@@ -89,19 +89,19 @@ Následující příklad vytvoří virtuální síť a dvě podsítě. Jednu pod
    > 
    > 
 
-   2. Přiřaďte rozsah adres pro fond back endových adres.
+2. Přiřaďte rozsah adres pro fond back endových adres.
 
    ```powershell
    $nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
    ```
 
-   3. Vytvořte virtuální síť s podsítí definovaných v předchozích krocích.
+3. Vytvořte virtuální síť s podsítí definovaných v předchozích krocích.
 
    ```powershell
    $vnet = New-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
    ```
 
-   4. Načíst prostředek virtuální sítě a podsítě prostředky, který se má použít v následujících kroků.
+4. Načíst prostředek virtuální sítě a podsítě prostředky, který se má použít v následujících kroků.
 
    ```powershell
    $vnet = Get-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg
@@ -173,7 +173,7 @@ Všechny položky nastavené před vytvořením služby application gateway. Ná
 
    > [!NOTE]
    > Získá výchozí kontroly veřejný klíč z *výchozí* vazby SSL back endové IP adresy a porovná hodnotu veřejného klíče přijímá hodnotě veřejného klíče je tady zadáte. 
-   
+   > 
    > Pokud používáte hlavičky hostitele a indikace názvu serveru (SNI) na back-endu, nemusí být načtený veřejný klíč zamýšlená lokalita, na které přenosové toky. Pokud už máte pochybnosti, navštivte https://127.0.0.1/ na back-end servery, které chcete potvrdit, který certifikát se používá pro *výchozí* vazby SSL. V této části použijte veřejný klíč z tohoto požadavku. Pokud používáte hlavičky hostitele a SNI na vazby HTTPS a neobdržíte odpověď a certifikátu ze žádosti o ruční prohlížeče k https://127.0.0.1/ na back-end serverech, musíte nastavit výchozí vazbu SSL na na ně. Pokud to neprovedete, selhání sondy a back-end není na seznamu povolených.
 
    ```powershell
@@ -218,17 +218,17 @@ Všechny položky nastavené před vytvořením služby application gateway. Ná
 
 11. Konfigurace zásad protokolu SSL, který se má použít ve službě application gateway. Služba Application Gateway podporuje možnost nastavit minimální verze pro verze protokolu SSL.
 
-   Seznam verzí protokolu, které lze definovat jsou následující hodnoty:
+    Seznam verzí protokolu, které lze definovat jsou následující hodnoty:
 
     - **TLSV1_0**
     - **TLSV1_1**
     - **TLSV1_2**
     
-   Následující příklad nastaví minimální protocol verze **TLSv1_2** a umožňuje **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, a **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** pouze.
+    Následující příklad nastaví minimální protocol verze **TLSv1_2** a umožňuje **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, a **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** pouze.
 
-   ```powershell
-   $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
-   ```
+    ```powershell
+    $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+    ```
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
@@ -242,20 +242,20 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
 
 V předchozích krocích trvalo vás provedou vytvořením aplikace s protokolem SSL začátku do konce a zakázání určitých verzí protokolu SSL. Následující příklad zakazuje určitých zásad protokolu SSL v existující aplikační bráně.
 
-   1. Získat application gateway se aktualizovat.
+1. Získat application gateway se aktualizovat.
 
    ```powershell
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-   2. Definujte zásady protokolu SSL. V následujícím příkladu **TLSv1.0** a **TLSv1.1** jsou zakázána a šifrovacích sad **TLS\_ECDHE\_ECDSA\_WITH\_ AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, a **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** jsou pouze těch, které jsou povoleny.
+2. Definujte zásady protokolu SSL. V následujícím příkladu **TLSv1.0** a **TLSv1.1** jsou zakázána a šifrovacích sad **TLS\_ECDHE\_ECDSA\_WITH\_ AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, a **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** jsou pouze těch, které jsou povoleny.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
-   3. Nakonec aktualizujte brány. Tento poslední krok je dlouho běžící úlohy. Po dokončení, je nakonfigurované – kompletního protokolu SSL ve službě application gateway.
+3. Nakonec aktualizujte brány. Tento poslední krok je dlouho běžící úlohy. Po dokončení, je nakonfigurované – kompletního protokolu SSL ve službě application gateway.
 
    ```powershell
    $gw | Set-AzApplicationGateway

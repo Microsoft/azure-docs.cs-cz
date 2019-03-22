@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c29cf0604e651902474d85dbd6edd3208e6b5944
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 55a829f2ed32152d14ef637c8079f7af8c487bea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811292"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097640"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Přesun dat z server SFTP pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,7 +50,7 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data z SFTP zdr
 Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro propojenou službu FTP.
 
 | Vlastnost | Popis | Požaduje se |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | type | Vlastnost type musí být nastavená na `Sftp`. |Ano |
 | hostitel | Název nebo IP adresa serveru SFTP. |Ano |
 | port |Port, na kterém naslouchá SFTP server. Výchozí hodnota je: 21 |Ne |
@@ -65,7 +65,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 Chcete-li použít základní ověřování, nastavte `authenticationType` jako `Basic`a zadejte následující požadované vlastnosti kromě konektoru SFTP obecných představíme v poslední části:
 
 | Vlastnost | Popis | Požaduje se |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | uživatelské jméno | Uživatel, který má přístup k serveru SFTP. |Ano |
 | heslo | Heslo pro uživatele (uživatelské jméno). | Ano |
 
@@ -115,7 +115,7 @@ Chcete-li použít základní ověřování, nastavte `authenticationType` jako 
 Chcete-li použít ověřování pomocí veřejného klíče SSH, nastavte `authenticationType` jako `SshPublicKey`a zadejte následující požadované vlastnosti kromě konektoru SFTP obecných představíme v poslední části:
 
 | Vlastnost | Popis | Požaduje se |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | uživatelské jméno |Uživatel, který má přístup k serveru SFTP |Ano |
 | privateKeyPath | Zadejte absolutní cestu k souboru privátního klíče můžete přístup k této brány. | Zadejte, jestli `privateKeyPath` nebo `privateKeyContent`. <br><br> Platí pouze při kopírování dat z místní server SFTP. |
 | privateKeyContent | Serializovaný řetězec soukromého klíče obsahu. Průvodce kopírováním může číst soubor privátního klíče a automaticky extrahovat obsah privátního klíče. Pokud používáte žádné další nástroj nebo sadu SDK, použijte vlastnost privateKeyPath. | Zadejte, jestli `privateKeyPath` nebo `privateKeyContent`. |

@@ -1,6 +1,6 @@
 ---
-title: Operace ve verzi preview Azure AD hesla ochrany a vytváření sestav
-description: Azure AD hesla ve verzi preview po nasazení operace ochrany a vytváření sestav
+title: Azure AD ochrana heslem operace a vytváření sestav
+description: Operace po nasazení Azure AD hesla ochrany a vytváření sestav
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fda79f16560a5c96e1283f4d9d9f14dbe503d61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: ac91a70465d79b235ae43681a1375d47e7691efe
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175238"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285798"
 ---
-# <a name="preview-azure-ad-password-protection-operational-procedures"></a>Verze Preview: Azure AD ochranu heslem, provozní postupy
-
-|     |
-| --- |
-| Ochrana hesel Azure AD je funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+# <a name="azure-ad-password-protection-operational-procedures"></a>Azure AD ochranu heslem, provozní postupy
 
 Po dokončení [instalace ochrany hesel služby Azure AD](howto-password-ban-bad-on-premises-deploy.md) místně, je několik položek, které musí být nakonfigurované na webu Azure Portal.
 
@@ -33,7 +28,7 @@ Postupujte podle pokynů v článku [konfigurace seznamu zakázaných hesel vlas
 
 ## <a name="enable-password-protection"></a>Povolit ochranu heslem
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do **Azure Active Directory**, **metody ověřování**, pak **heslo Protection (Preview)**.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do **Azure Active Directory**, **metody ověřování**, pak **ochrana heslem**.
 1. Nastavte **povolení ochrany hesla na Windows Server Active Directory** k **Ano**
 1. Jak je uvedeno v [Průvodce nasazením](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), doporučuje se zpočátku nastaven **režimu** k **auditu**
    * Až si s funkcí, můžete přepnout **režimu** k **vynucené**

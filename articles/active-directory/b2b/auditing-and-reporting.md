@@ -9,14 +9,15 @@ ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dad4872f9bc32a1978de47a52cea23d6bb2742a1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 5763a7e5f122702ddaf86246fbfbd18326878146
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673609"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294191"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Auditování a vytváření sestav uživatele spolupráce B2B
 Uživatelé typu Host máte podobné možnosti auditování s využitím členské uživatele. 
@@ -28,11 +29,11 @@ Kontroly přístupu můžete pravidelně ověřovat, jestli uživatelé typu Hos
 
 Auditování Azure AD protokoly poskytuje záznamy systémových a uživatelských aktivit, včetně aktivit iniciovaných uživatele typu Host. Pro přístup k protokolům auditu v **Azure Active Directory**v části **monitorování**vyberte **protokoly auditu**. Tady je příklad historie pozvánku a uplatnění pozvaného Sam Oogle:
 
-![protokol auditu](./media/auditing-and-reporting/audit-log.png)
+![Snímek obrazovky zobrazující a příklad auditu protokolu výstupu](./media/auditing-and-reporting/audit-log.png)
 
 Můžete věnovat každá z těchto událostí, který obsahuje podrobné informace. Například Pojďme se podívat na podrobnosti přijetí.
 
-![Podrobnosti o aktivitě](./media/auditing-and-reporting/activity-details.png)
+![Snímek obrazovky zobrazující a příklad výstupu podrobnosti aktivity](./media/auditing-and-reporting/activity-details.png)
 
 Můžete také exportovat tyto protokoly z Azure AD a získání přizpůsobených sestav pomocí vytváření sestav nástroje podle vašeho výběru.
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 93046fa8225d8c85172d113d3c7f9e979c336770
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: f28ea3dd2837a241c538057bd118409d4f5b858a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331431"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096261"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(NEPOUŽÍVANÉ) Úplný kanál CI/CD pro nasazení aplikace ve službě Azure Container Service pomocí nástroje Docker Swarm pomocí služby Azure DevOps
 
@@ -204,14 +204,14 @@ Pracovní postup vydávání se skládá ze dvou úkolů, které přidáte.
 
     Příkaz provést na hlavní použití rozhraní příkazového řádku Dockeru a rozhraní příkazového řádku Docker-Compose provádět následující úlohy:
 
-    - Přihlaste se k Azure container registry (používá tři variab'les sestavení, které jsou definovány v **proměnné** kartu)
-    - Definovat **DOCKER_HOST** proměnné pro práci s koncovým bodům Swarmu (: 2375)
-    - Přejděte *nasazení* složku, která byla vytvořena předchozí úlohou zabezpečené kopie, který obsahuje soubor docker-compose.yml 
-    - Spustit `docker-compose` příkazy, které o přijetí změn nové Image zastavení služeb, odeberte služby a vytvoření kontejnerů.
+   - Přihlaste se k Azure container registry (používá tři variab'les sestavení, které jsou definovány v **proměnné** kartu)
+   - Definovat **DOCKER_HOST** proměnné pro práci s koncovým bodům Swarmu (: 2375)
+   - Přejděte *nasazení* složku, která byla vytvořena předchozí úlohou zabezpečené kopie, který obsahuje soubor docker-compose.yml 
+   - Spustit `docker-compose` příkazy, které o přijetí změn nové Image zastavení služeb, odeberte služby a vytvoření kontejnerů.
 
-    >[!IMPORTANT]
-    > Jak je znázorněno na předchozí obrazovce, nechat **neúspěšné, když STDERR** nezaškrtnuté políčko. To je důležité nastavení, protože `docker-compose` vytiskne několik diagnostické zprávy, jako jsou kontejnery, zastavení nebo odstranění, standardního chybového výstupu. Pokud zaškrtnete políčko, sestavy služby Azure DevOps, že došlo k chybám při vydání, i pokud všechno proběhne správně.
-    >
+     >[!IMPORTANT]
+     > Jak je znázorněno na předchozí obrazovce, nechat **neúspěšné, když STDERR** nezaškrtnuté políčko. To je důležité nastavení, protože `docker-compose` vytiskne několik diagnostické zprávy, jako jsou kontejnery, zastavení nebo odstranění, standardního chybového výstupu. Pokud zaškrtnete políčko, sestavy služby Azure DevOps, že došlo k chybám při vydání, i pokud všechno proběhne správně.
+     >
 1. Uložte tento nový kanál pro vydávání verzí.
 
 

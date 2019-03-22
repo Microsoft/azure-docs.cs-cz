@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 22d4a18ad1c6e80baa6e798be399ab2cd4836fbc
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c199adb9ee1d9e5fbc879441da7395efa16f0d40
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733399"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094656"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Kurz integrace protokolů Azure: Zpracování událostí služby Azure Key Vault pomocí Event Hubs
 
@@ -30,8 +30,8 @@ Je upřednostňovanou metodou pro integraci protokolů Azure pomocí Azure Monit
  
 V tomto kurzu použijte k získání seznámí s tím, jak integrace protokolů Azure Event Hubs spolu fungují a podle následujících kroků příklad a vysvětlení, jak každý krok podporuje řešení. Pak můžete využít, co jste se naučili v tomto poli k vytvoření vlastní kroky pro podporu jedinečným požadavkům vaší společnosti.
 
->[!WARNING]
-Kroky a příkazy v tomto kurzu nejsou určeny k zkopírovat a vložit. Jsou to pouze jako příklady. Nepoužívejte příkazy prostředí PowerShell "tak jak jsou" v živém prostředí. Je nutné přizpůsobit podle vašeho prostředí jedinečné.
+> [!WARNING]
+> Kroky a příkazy v tomto kurzu nejsou určeny k zkopírovat a vložit. Jsou to pouze jako příklady. Nepoužívejte příkazy prostředí PowerShell "tak jak jsou" v živém prostředí. Je nutné přizpůsobit podle vašeho prostředí jedinečné.
 
 
 Tento kurz vás provede procesem odběr služby Azure Key Vault aktivit do centra událostí a jejich zpřístupnění jako soubory JSON do vašeho systému SIEM. Potom můžete nakonfigurovat vašeho systému SIEM ke zpracování souborů JSON.

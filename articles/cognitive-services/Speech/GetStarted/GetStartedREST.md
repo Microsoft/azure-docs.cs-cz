@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 9ee0abdf722d3dc6d0d332f3894943bd3a03a877
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ead4026ecec4878c69bc21a9ebc989eaf3d69a13
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671910"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259937"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Rychlý start: Rozpoznávání řeči Bingu rozhraní REST API
 
@@ -66,9 +66,9 @@ V následující tabulce jsou uvedeny některé příklady identifikátorů URI 
 
 | Režim rozpoznávání  | Jazyk | Výstupní formát | Identifikátor URI služby |
 |---|---|---|---|
-| `interactive` | pt-BR | Výchozí | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| `conversation` | en-US | Podrobný |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
-| `dictation` | fr-FR | Jednoduchý | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
+| `interactive` | pt-BR | Výchozí | https:\//speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
+| `conversation` | en-US | Podrobný | https:\//speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
+| `dictation` | fr-FR | Jednoduchý | https:\//speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
 
 > [!NOTE]
 > Identifikátor URI služby je potřeba pouze v případě, že vaše aplikace používá rozhraní REST API pro volání službu rozpoznávání řeči. Pokud použijete jeden z [klientské knihovny](GetStartedClientLibraries.md), obvykle není nutné vědět, jaké identifikátor URI se používá. Tyto klientské knihovny může používat jinou službu identifikátory URI, které se dají použít jenom pro konkrétní klientské knihovny. Další informace najdete v klientské knihovně podle vašeho výběru.

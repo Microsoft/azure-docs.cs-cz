@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 56a4645c5f86e9f95e82533b7f5f81b7bca51e7b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 1b6419feef96b57bafd0831531bd8cfa56142cc4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245314"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089144"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Rychlý start pro Bash ve službě Azure Cloud Shell
 
@@ -44,14 +44,14 @@ Zkontrolujte, že prostředí rozevíracího seznamu na levé straně okna prost
 
 ### <a name="set-your-subscription"></a>Nastavení předplatného
 1. Seznam předplatných, ke kterým máte přístup.
-```azurecli-interactive
-az account list
-```
+   ```azurecli-interactive
+   az account list
+   ```
 
 2. Nastavení předplatného upřednostňované: <br>
-```azurecli-interactive
-az account set --subscription my-subscription-name`
-```
+   ```azurecli-interactive
+   az account set --subscription my-subscription-name`
+   ```
 
 > [!TIP]
 > Vaše předplatné se zachová pro budoucí relace pomocí `/home/<user>/.azure/azureProfile.json`.
@@ -77,26 +77,26 @@ Vaše uživatelské jméno v tomto virtuálním počítači bude vaše uživatel
 ### <a name="ssh-into-your-linux-vm"></a>SSH do virtuálního počítače s Linuxem
 1. Vyhledejte název vašeho virtuálního počítače na panelu Azure search na portálu.
 2. Klikněte na možnost připojit, aby název virtuálního počítače a veřejnou IP adresu. <br>
-![](media/quickstart/sshcmd-copy.png)
+   ![](media/quickstart/sshcmd-copy.png)
 
 3. SSH k virtuálnímu počítači s `ssh` cmd.
-```
-ssh username@ipaddress
-```
+   ```
+   ssh username@ipaddress
+   ```
 
 Při navazování připojení SSH, měli byste vidět řádku uvítání systémem Ubuntu. <br>
 ![](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>Čištění 
 1. Ukončení vaší ssh relace.
-```azurecli-interactive
-exit
-```
+   ```azurecli-interactive
+   exit
+   ```
 
 2. Odstraňte skupinu prostředků a všechny prostředky v ní.
-```azurecli-interactive
-az group delete -n MyRG
-```
+   ```azurecli-interactive
+   az group delete -n MyRG
+   ```
 
 ## <a name="next-steps"></a>Další postup
 [Další informace o zachování souborů pro Bash ve službě Cloud Shell](persisting-shell-storage.md) <br>

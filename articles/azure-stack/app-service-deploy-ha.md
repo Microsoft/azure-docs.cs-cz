@@ -16,12 +16,12 @@ ms.date: 03/13/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 03/13/2019
-ms.openlocfilehash: 50e5272d92ad333e70f65173cf024d165dc7501c
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: db95be94028fcf16871a9dcfee5f0d87eb5d2cdc
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58102039"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285662"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>Nasadit službu App Service v konfiguraci s vysokou dostupností
 
@@ -207,7 +207,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
     ![Hodnoty instance role infrastruktury](media/app-service-deploy-ha/12.png)
 
     > [!NOTE]
-    > Změny z výchozí hodnoty na ty doporučení v tomto tutoral zvyšuje požadavky na hardware pro instalaci služby App Service. Celkem 26 jader a 46,592 MB paměti RAM je potřeba k podpoře doporučených virtuálních počítačů 21 místo 18 jader (výchozí nastavení) a 32,256 MB paměti RAM pro virtuální počítače s 15.
+    > Změny z výchozí hodnoty na ty doporučení v tomto tutoral zvyšuje požadavky na hardware pro instalaci služby App Service. Celkem 26 jader a 46,592 MB paměti RAM je potřeba k podpoře doporučených virtuálních počítačů 21 místo výchozí 18 jader a 32,256 MB paměti RAM pro virtuální počítače s 15.
 
 14. Vyberte image platformy použít k instalaci služby App Service infrastruktury virtuálních počítačů a klikněte na tlačítko **Další**:
 

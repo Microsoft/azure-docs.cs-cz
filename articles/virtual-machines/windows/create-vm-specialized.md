@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 662713a5ef350bd34f25558de69e3cbfd5fc80a3
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 364dca8d7cab3698e501e74d0c2817aac1a36f88
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982858"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58137973"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Vytvoření virtuálního počítače s Windows ze specializovaného disku pomocí prostředí PowerShell
 
@@ -205,7 +205,7 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-Pokud chcete použít tento snímek vytvořit virtuální počítač, který má být vysoce výkonné, přidejte parametr `-AccountType Premium_LRS` příkazu New-AzSnapshot. Tento parametr vytvoří snímek tak, aby se ukládá jako spravovaný Disk úrovně Premium. Jsou dražší než Standard Managed Disks úrovně Premium, proto buďte opravdu že Premium budete potřebovat před použitím tohoto parametru.
+Pokud chcete použít tento snímek vytvořit virtuální počítač, který má být vysoce výkonné, přidejte parametr `-AccountType Premium_LRS` příkazu New-AzSnapshotConfig. Tento parametr vytvoří snímek tak, aby se ukládá jako spravovaný Disk úrovně Premium. Jsou dražší než Standard Managed Disks úrovně Premium, proto buďte opravdu že Premium budete potřebovat před použitím tohoto parametru.
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Vytvoření nového disku ze snímku
 

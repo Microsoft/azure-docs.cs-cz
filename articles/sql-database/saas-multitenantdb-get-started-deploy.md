@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: cb64b96f179bd71c3f885a54b17decb794b40c1a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8f19303dba7fcf2a9edb325464fdd3748220903e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567379"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994906"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Nasazení a zkoumání horizontálně dělené aplikace s více tenanty
 
@@ -66,9 +66,9 @@ Teď zvolte názvy a zapište si.
 ### <a name="steps"></a>Kroky
 
 1. Klikněte na následující modrá **nasadit do Azure** tlačítko.
-    - Otevře se na webu Azure portal se šablonou nasazení SaaS aplikace Wingtip Tickets.
+   - Otevře se na webu Azure portal se šablonou nasazení SaaS aplikace Wingtip Tickets.
 
-    [![Tlačítko pro nasazení do Azure.][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
+     [![Tlačítko pro nasazení do Azure.][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
 1. Zadejte hodnoty parametrů požadované pro nasazení.
 
@@ -125,9 +125,9 @@ Každé místo dostane vlastní webovou aplikaci pro výpis svých akcí a prode
 Centrální **Centrum akcí** webová stránka obsahuje seznam odkazů na klienty v určité nasazení. Pomocí následujícího postupu práce **Centrum akcí** webové stránky a jednotlivé webové aplikace:
 
 1. Otevřít **Centrum akcí** ve webovém prohlížeči:
-    - http://events.wingtip-mt.&lt; Uživatel&gt;. trafficmanager.net &nbsp; *(nahradit &lt;uživatele&gt; s hodnotou uživatele vašeho nasazení.)*
+   - http://events.wingtip-mt.&lt; Uživatel&gt;. trafficmanager.net &nbsp; *(nahradit &lt;uživatele&gt; s hodnotou uživatele vašeho nasazení.)*
 
-    ![centrum akcí](media/saas-multitenantdb-get-started-deploy/events-hub.png)
+     ![centrum akcí](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
 2. V **Centru akcí** klikněte na **Fabrikam Jazz Club**.
 
@@ -208,7 +208,7 @@ V dalším kroku zřídit jiného tenanta, tentokrát v její vlastní databázi
 
 Teď můžeme podívat na některé z nasazených prostředků:
 
-1. V [webu Azure portal](http://portal.azure.com), přejděte na seznam skupin prostředků. Otevřete skupinu prostředků, kterou jste vytvořili při nasazení aplikace.
+1. V [webu Azure portal](https://portal.azure.com), přejděte na seznam skupin prostředků. Otevřete skupinu prostředků, kterou jste vytvořili při nasazení aplikace.
 
    ![skupina prostředků](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
@@ -275,7 +275,7 @@ A [series of related tutorials] is available that build upon this initial deploy
 
 -->
 
-[link-aka-ms-deploywtp-mtapp-52k]: http://aka.ms/deploywtp-mtapp
+[link-aka-ms-deploywtp-mtapp-52k]: https://aka.ms/deploywtp-mtapp
 
 
 [link-azure-get-started-powershell-41q]: https://docs.microsoft.com/powershell/azure/get-started-azureps
@@ -286,7 +286,7 @@ A [series of related tutorials] is available that build upon this initial deploy
 
 <!--  Image references.
 
-[image-deploy-to-azure-blue-48d]: http://aka.ms/deploywtp-mtapp "Button for Deploy to Azure."
+[image-deploy-to-azure-blue-48d]: https://aka.ms/deploywtp-mtapp "Button for Deploy to Azure."
 -->
 
 [image-deploy-to-azure-blue-48d]: media/saas-multitenantdb-get-started-deploy/deploy.png "Tlačítko pro nasazení do Azure."

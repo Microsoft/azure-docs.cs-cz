@@ -16,12 +16,12 @@ ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbae902e7074207453938b14b9e79628e437e1cc
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: eaaad0d7351c398c9b2cc013f40d62461a2dd3f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737344"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845526"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory nejčastější dotazy ke správě zařízení
 
@@ -237,7 +237,13 @@ Připojení k hybridní službě Azure AD má přednost před stavu registrován
 
 **Otázka: Vyžadují zařízení s Windows 10 hybridní připojená k Azure AD na dohled řadič domény získat přístup ke cloudovým prostředkům?**
 
-**Odpověď:** Ne. Dokončení hřívací zařízení Windows 10 hybridní služby Azure AD join a uživatel alespoň jednou přihlásí, zařízení nevyžaduje dohlednost služby k řadiči domény pro přístup k prostředkům cloudu. Windows 10 můžete získat jednotné přihlašování k aplikacím Azure AD z libovolného místa s internetovým připojením, s výjimkou případů, kdy se změnil heslo. Pokud heslo je změněno mimo podnikovou síť (například pomocí samoobslužného resetování HESLA Azure AD), uživatel musí mít dohled řadič domény, než budou moct přihlásit k zařízení pomocí nového hesla. V opačném případě se můžete přihlásit pouze pomocí staré heslo, které zneplatněna službou Azure AD a brání jednotného přihlašování na. Tento problém však nedojde, při použití Windows Hello pro firmy. Uživatelé, kteří se přihlašují se pomocí Windows Hello pro firmy i nadále získat jednotné přihlášení do aplikace Azure AD po změně hesla i v případě, že nebudou mít dohled jejich řadič domény. 
+**Odpověď:** Obecně Ne, s výjimkou případů, kdy se změní heslo uživatele. Dokončení hřívací zařízení Windows 10 hybridní služby Azure AD join a uživatel alespoň jednou přihlásí, zařízení nevyžaduje dohlednost služby k řadiči domény pro přístup k prostředkům cloudu. Windows 10 můžete získat jednotné přihlašování k aplikacím Azure AD z libovolného místa s internetovým připojením, s výjimkou případů, kdy se změnil heslo. Uživatelé, kteří se přihlašují se pomocí Windows Hello pro firmy i nadále získat jednotné Přihlaste se k aplikacím služby Azure AD i po změně hesla i v případě, že nebudou mít dohled jejich řadič domény. 
+
+---
+
+**Otázka: Co se stane, když uživatel změní své heslo a pokusí se přihlásit k hybridní službě Azure AD jejich Windows 10 připojené zařízení mimo podnikovou síť?**
+
+**Odpověď:** Heslo se změnil mimo podnikovou síť (například pomocí samoobslužného resetování HESLA Azure AD), se nezdaří přihlášení uživatele pomocí nového hesla. V místní službě Active Directory pro hybridních zařízení připojených k Azure AD, je primární autoritu. Pokud zařízení nemá dohlednost služby k řadiči domény, se nemůže ověřit nové heslo. Ano, uživatel musí k navázání připojení s řadičem domény (buď prostřednictvím sítě VPN nebo je v podnikové síti) než budou moct přihlásit k zařízení pomocí nového hesla. V opačném případě můžete pouze přihlásí svoje staré heslo z důvodu možnosti přihlášení uložené v mezipaměti ve Windows. Však staré heslo zneplatněna službou Azure AD během žádosti o tokeny a proto brání jednotného přihlašování na a všechny zásady podmíněného přístupu na základě zařízení se nezdaří. Tomuto problému nedojde, pokud používáte Windows Hello pro firmy. 
 
 ---
 

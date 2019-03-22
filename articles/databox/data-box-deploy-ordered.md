@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 16a3fab1fe2338611823a9ab559826302bd06d13
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 07ccd2aaec6b2325d6eef09a466a5d0707836b4b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403834"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834264"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednávky zařízení Azure Data Box
 
@@ -61,6 +61,7 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
 3. Klikněte na možnost **Vytvořit**.
 
 4. Podívejte se, zda je služba Data Box dostupná ve vaší oblasti. Zadejte nebo vyberte následující informace a pak klikněte na **Použít**. 
+
     |Nastavení  |Hodnota  |
     |---------|---------|
     |Předplatné     | Vyberte předplatné EA, CSP nebo Azure sponsorship pro službu Data Box. <br> Předplatné je propojeno s vaším fakturačním účtem.       |
