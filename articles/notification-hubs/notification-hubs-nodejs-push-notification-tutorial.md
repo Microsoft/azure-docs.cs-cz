@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: da6be839f5e7c1bfd885015c9b0206945feb77d1
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: d90f23f52ca4c0cce3d853114acf673aa085d3c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452781"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889776"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Odesílání nabízených oznámení pomocí Azure Notification Hubs a Node.js
 
@@ -31,7 +31,7 @@ ms.locfileid: "54452781"
 > [!IMPORTANT]
 > K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud nemáte účet, vytvořte si bezplatný zkušební účet během několika minut prostřednictvím [bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs).
 
-Tento průvodce vám ukáže, jak odesílat nabízená oznámení pomocí služby Azure Notification Hubs přímo z [Node.js](http://nodejs.org) aplikace.
+Tento průvodce vám ukáže, jak odesílat nabízená oznámení pomocí služby Azure Notification Hubs přímo z [Node.js](https://nodejs.org) aplikace.
 
 Mezi popsané scénáře patří odesílání nabízených oznámení do aplikace na následujících platformách:
 
@@ -60,7 +60,7 @@ Pokud chcete používat Azure Notification Hubs, budete muset stáhnout a použ�
 4. V takové složce najít **azure** balíček, který obsahuje knihovny, budete potřebovat přístup k centru oznámení.
 
 > [!NOTE]
-> Další informace o instalaci NPM official je přínosné pro [NPM blogu](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
+> Další informace o instalaci NPM official je přínosné pro [NPM blogu](https://blog.npmjs.org/post/85484771375/how-to-install-npm).
 
 ### <a name="import-the-module"></a>Import modulu
 
@@ -107,7 +107,7 @@ Získat připojení `connectionstring` hodnotu [Azure Portal] provedením násle
 - **Datová část** -JSON nebo nezpracovaného řetězce datovou část zprávy.
 - **Zpětné volání** – funkce zpětného volání.
 
-Další informace o formátu datové části, najdete v článku **datové části** část [implementace serveru GCM](http://developer.android.com/google/gcm/server.html#payload) dokumentu.
+Další informace o formátu datové části, najdete v článku **datové části** část [implementace serveru GCM](https://developer.android.com/google/gcm/server.html#payload) dokumentu.
 
 Následující kód používá `GcmService` instance vystavené `NotificationHubService` k odesílání nabízených oznámení na všechny registrované klienty.
 
@@ -132,7 +132,7 @@ Stejné jako s aplikací pro Android je popsáno výše, `ApnsService` objekt, k
 - **Datová část** -datovou část JSON nebo řetězec zprávy.
 - **Zpětné volání** – funkce zpětného volání.
 
-Formát datové části Další informace najdete v tématu **datová část oznámení** část [průvodci místních a nabízených oznámení programování](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) dokumentu.
+Formát datové části Další informace najdete v tématu **datová část oznámení** část [průvodci místních a nabízených oznámení programování](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) dokumentu.
 
 Následující kód používá `ApnsService` instance vystavené `NotificationHubService` odeslat zprávu oznámení na všechny klienty:
 
@@ -221,9 +221,9 @@ Výše uvedené ukázkové fragmenty umožňují snadno vytvářet služby infra
 [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
 [4]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-06.png
 [5]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-07.png
-[SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-[Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
-[SqlFilter]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
+[SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
+[Azure Service Bus Notification Hubs]: https://msdn.microsoft.com/library/windowsazure/jj927170.aspx
+[SqlFilter]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
 [Web Site with WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png

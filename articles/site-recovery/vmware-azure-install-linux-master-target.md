@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 28b28dc15809aa5d37eb9347ff3bc7eecccc9a20
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 98718709038d7fd753e5eb3d45c130085c5accd9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452704"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099048"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru s Linuxem pro navrácení služeb po obnovení
 Po převzetí služeb při selhání virtuálních počítačů do Azure, které můžete navrácení služeb po obnovení virtuálních počítačů do místní lokality. K navrácení služeb po obnovení, budete muset znovu nastavit ochranu virtuálního počítače z Azure do místní lokality. Tento proces je nutné místní hlavní cílový server pro příjem provozu. 
@@ -168,15 +168,15 @@ Chcete-li získat ID pro každý SCSI pevný disk do virtuálního počítače s
 
 5. Zda řádek s **disku. EnableUUID** již existuje.
 
-    - Pokud hodnota existuje a je nastavená na **False**, změňte hodnotu na **True**. (Hodnoty nejsou malá a velká písmena.)
+   - Pokud hodnota existuje a je nastavená na **False**, změňte hodnotu na **True**. (Hodnoty nejsou malá a velká písmena.)
 
-    - Pokud hodnota existuje a je nastavená na **True**vyberte **zrušit**.
+   - Pokud hodnota existuje a je nastavená na **True**vyberte **zrušit**.
 
-    - Pokud hodnota neexistuje, vyberte **přidat řádek**.
+   - Pokud hodnota neexistuje, vyberte **přidat řádek**.
 
-    - Ve sloupci Název přidat **disku. EnableUUID**a pak nastavte hodnotu na **TRUE**.
+   - Ve sloupci Název přidat **disku. EnableUUID**a pak nastavte hodnotu na **TRUE**.
 
-    ![Kontroluje, jestli disk. EnableUUID již existuje.](./media/vmware-azure-install-linux-master-target/image25.png)
+     ![Kontroluje, jestli disk. EnableUUID již existuje.](./media/vmware-azure-install-linux-master-target/image25.png)
 
 #### <a name="disable-kernel-upgrades"></a>Zakázat upgrady jádra
 

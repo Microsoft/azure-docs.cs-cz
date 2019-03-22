@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 44056ae1bca2595965abd3a47b4a2aa29d221623
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cec8ab9d678ff559176580fa8eccc261f449f4c5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255229"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012883"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Začínáme s Azure table storage a Visual Studio připojené služby (projekty cloudových služeb)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -29,12 +29,12 @@ Služba Azure Table storage umožňuje ukládat velké objemy strukturovaných d
 
 Abyste mohli začít, musíte nejprve vytvořit tabulku v účtu úložiště. Vám ukážeme, jak vytvořit tabulku Azure v kódu a jak provádět základní tabulky a entity operace, jako jsou přidání, úprava, čtení a čtení tabulkové entity. Ukázky jsou napsané v jazyce C\# kód a použít [Klientská knihovna pro Microsoft Azure Storage pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
-**Poznámka:** některá rozhraní API, provádět volání si do služby Azure storage jsou asynchronní. Zobrazit [asynchronní programování s Async a Await](https://msdn.microsoft.com/library/hh191443.aspx) Další informace. Následující kód předpokládá, že se používají asynchronní programovací metody.
+**POZNÁMKA:** Některé z rozhraní API, která provádět volání si do služby Azure storage jsou asynchronní. Zobrazit [asynchronní programování s Async a Await](https://msdn.microsoft.com/library/hh191443.aspx) Další informace. Následující kód předpokládá, že se používají asynchronní programovací metody.
 
 * Zobrazit [Začínáme s Azure Table storage pomocí .NET](../storage/storage-dotnet-how-to-use-tables.md) Další informace o programově práci s tabulkami.
 * Zobrazit [dokumentace ke službě Storage](https://azure.microsoft.com/documentation/services/storage/) obecné informace o službě Azure Storage.
 * Zobrazit [dokumentace ke službě Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/) obecné informace o cloudových službách Azure.
-* Zobrazit [ASP.NET](http://www.asp.net) Další informace o programování aplikací ASP.NET.
+* Zobrazit [ASP.NET](https://www.asp.net) Další informace o programování aplikací ASP.NET.
 
 ## <a name="access-tables-in-code"></a>Tabulky přístup v kódu
 Chcete-li k tabulkám v projekty cloudových služeb, zahrnují následující položky, které chcete žádné C# zdrojové soubory, které přístup k úložišti tabulek v Azure.

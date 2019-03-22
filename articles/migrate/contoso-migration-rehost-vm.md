@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 47b16966f9e72a43cf4fb934706f7b96becef59a
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4a6ed900753747c1d5bf394aced54da11177320f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694495"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118387"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Migrace Contoso: Změna hostitele místní aplikace na virtuální počítače Azure
 
@@ -168,10 +168,10 @@ Jsou tyto wmm nastavit takto:
     - Databáze aplikace virtuálního počítače (SQLVM) se migrují do podsítě databáze (PROD-DB-EUS2), v produkční síti.
 
 2. Vytvořte účet úložiště – Contoso vytvoří účet úložiště Azure (contosovmsacc20180528) v primární oblasti.
-    - Účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
-    - Účet pro obecné účely používají úložiště úrovně standard a replikací LRS.
+   - Účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
+   - Účet pro obecné účely používají úložiště úrovně standard a replikací LRS.
 
-    ![Site Recovery úložiště](./media/contoso-migration-rehost-vm/asr-storage.png)
+     ![Site Recovery úložiště](./media/contoso-migration-rehost-vm/asr-storage.png)
 
 3. Vytvoření trezoru pomocí účtu sítě a úložiště na místě, Contoso nyní vytvoří trezor služby Recovery Services (ContosoMigrationVault) a umístí jej do skupiny prostředků ContosoFailoverRG v primární oblasti USA – východ 2.
 
@@ -221,15 +221,15 @@ Po převzetí služeb při selhání Contoso chce připojit k virtuálním poč�
 
 1. Pro přístup přes internet jsou:
 
- - Povolte protokol RDP na místním virtuálním počítači před převzetí služeb při selhání.
- - Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejné** profilu.
- - Zkontrolujte, jestli je povolený protokol RDP v **brány Windows Firewall** > **povolené aplikace** pro všechny profily.
+   - Povolte protokol RDP na místním virtuálním počítači před převzetí služeb při selhání.
+   - Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejné** profilu.
+   - Zkontrolujte, jestli je povolený protokol RDP v **brány Windows Firewall** > **povolené aplikace** pro všechny profily.
 
 2. Pro přístup přes síť VPN typu site-to-site jsou:
 
- - Povolte na místním počítači protokol RDP.
- - Povolit RDP v **brány Windows Firewall** -> **povolené aplikace a funkce**, pro **doménovou a privátní** sítě.
- - Nastavit zásada SAN operačního systému na virtuálním počítači s místními **OnlineAll**.
+   - Povolte na místním počítači protokol RDP.
+   - Povolit RDP v **brány Windows Firewall** -> **povolené aplikace a funkce**, pro **doménovou a privátní** sítě.
+   - Nastavit zásada SAN operačního systému na virtuálním počítači s místními **OnlineAll**.
 
 Kromě toho při spuštění převzetí služeb při selhání potřebují zkontrolujte následující:
 
@@ -341,10 +341,10 @@ Všechno v místě správce společnosti Contoso teď můžete povolit replikaci
 
 4. Vyberou **WebVM** pro replikaci, zkontrolovat zásady replikace a povolení replikace.
 
-    - V této fázi se vybere pouze WEBVM protože musí být vybraná virtuální síť a podsíť, a aplikace, virtuální počítače budou umístěny v různých podsítích.
-    - Site Recovery automaticky nainstaluje službu Mobility na virtuálním počítači, když je povolená replikace.
+   - V této fázi se vybere pouze WEBVM protože musí být vybraná virtuální síť a podsíť, a aplikace, virtuální počítače budou umístěny v různých podsítích.
+   - Site Recovery automaticky nainstaluje službu Mobility na virtuálním počítači, když je povolená replikace.
 
-    ![Povolení replikace](./media/contoso-migration-rehost-vm/enable-replication3.png)
+     ![Povolení replikace](./media/contoso-migration-rehost-vm/enable-replication3.png)
 
 5. Sledují průběh replikace v **úlohy**. Po spuštění úlohy **Dokončit ochranu** je počítač připravený k převzetí služeb při selhání.
 6. V **Essentials** na webu Azure Portal, můžete zobrazit strukturu pro virtuální počítače, které se replikují do Azure.

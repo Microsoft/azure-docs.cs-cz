@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
-ms.openlocfilehash: 9d6119b0703ccce61b0731d75f3bb2f75aec4e39
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dcd6d907fec3d7f2cc0c8d5c06fdec28125154c1
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902225"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313239"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -314,12 +314,12 @@ func host start
 | **`--cors-credentials`** | Povolit ověřený požadavky mezi zdroji (tj. soubory cookie a hlavičky ověřování) verze 2.x pouze. |
 | **`--cors`** | Čárkou oddělený seznam zdrojů CORS, bez mezer. |
 | **`--language-worker`** | Argumentů pro konfiguraci jazyka pracovního procesu. Verze 2.x pouze. |
-| **`--nodeDebugPort -n`** | Port pro ladicí program uzel používat. Výchozí hodnota: Hodnota z launch.json nebo 5858. Verzi 1.x pouze. |
+| **`--nodeDebugPort -n`** | Port pro ladicí program uzel používat. Výchozí: Hodnota z launch.json nebo 5858. Verzi 1.x pouze. |
 | **`--password`** | Heslo nebo soubor, který obsahuje heslo pro soubor .pfx. Použít pouze s `--cert`. Verze 2.x pouze. |
 | **`--port -p`** | Místní port pro naslouchání. Výchozí hodnota: 7071. |
 | **`--pause-on-error`** | Pozastavit další vstupní před ukončením procesu. Používá pouze v případě, že spuštění nástroje Core z integrovaného vývojového prostředí (IDE).|
 | **`--script-root --prefix`** | Slouží k zadání cesty do kořenového adresáře aplikace function app, který se má spustit nebo nasadit. Používá se pro kompilované projekty, které Generovat soubory projektu do podsložky. Například při vytváření knihovny tříd jazyka C# projekt, host.json, local.settings.json a function.json soubory jsou generovány *kořenové* , jako je podsložka s cestou `MyProject/bin/Debug/netstandard2.0`. V takovém případě nastavte předponu jako `--script-root MyProject/bin/Debug/netstandard2.0`. To je kořenový adresář aplikace function app, při spuštění v Azure. |
-| **`--timeout -t`** | Časový limit pro hostitele funkce spustit v řádu sekund. Výchozí hodnota: 20 sekund.|
+| **`--timeout -t`** | Časový limit pro hostitele funkce spustit v řádu sekund. Výchozí: 20 sekund.|
 | **`--useHttps`** | Vytvoření vazby k `https://localhost:{port}` spíše než na `http://localhost:{port}`. Ve výchozím nastavení tato volba vytvoří důvěryhodný certifikát ve vašem počítači.|
 
 C# projekt knihovny tříd (.csproj), je třeba zahrnout `--build` možnost k vygenerování knihovny DLL.
@@ -412,10 +412,6 @@ Volat funkci aktivovanou protokolem HTTP a předat text obsahu, spusťte násled
 ```bash
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
-
-### <a name="viewing-log-files-locally"></a>Zobrazení protokolů místně
-
-[!INCLUDE [functions-local-logs-location](../../includes/functions-local-logs-location.md)]
 
 ## <a name="publish"></a>Publikování do Azure
 

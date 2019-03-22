@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: cddb3769cfc5a2ba002e19036d986f4165670dc1
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 3c22aab20a9260bfd21869f0b327211e2f3d8894
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962447"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004219"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Jak používat klientskou knihovnu pro Apache Cordova pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -106,7 +106,7 @@ Postupujte podle těchto pokynů a přidejte svá místní nastavení konfigurac
              "https://localhost:3000"
          ],
 
-    Nahraďte adresy URL adresy URL vaší služby.  Mezi příklady patří "http://localhost:3000" (pro službu ukázky Node.js), nebo "http://localhost:4400" (pro službu Ripple).  Ale tyto adresy URL jsou příklady - vaší situaci, včetně služby uvedené v příkladech se může lišit.
+    Nahraďte adresy URL adresy URL vaší služby.  Mezi příklady patří `http://localhost:3000` (pro službu ukázky Node.js), nebo `http://localhost:4400` (pro službu Ripple).  Ale tyto adresy URL jsou příklady - vaší situaci, včetně služby uvedené v příkladech se může lišit.
 8. Klikněte na tlačítko **r/w** tlačítko v pravém horním rohu obrazovky.
 9. Klikněte na zelené **UMÍSTIT** tlačítko.
 

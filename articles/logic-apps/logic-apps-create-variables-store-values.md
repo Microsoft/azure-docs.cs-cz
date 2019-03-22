@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: bb84c7d5e483b0a2abc3b7d1a37de8760513d203
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: e525e5584e4835b0f2b73203c818c3f799b77cf5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063212"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075710"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Vytvoření proměnné k ukládání a správě hodnoty v Azure Logic Apps
 
@@ -76,7 +76,7 @@ Můžete vytvořit proměnnou a deklarovat jeho datový typ a počáteční hodn
    |----------|----------|-------|--------------|
    | Name | Ano | <*Název proměnné*> | Název proměnné se zvýší | 
    | Type | Ano | <*Typ proměnné*> | Datový typ pro proměnnou | 
-   | Value | Ne | <*Počáteční hodnota*> | Počáteční hodnota proměnné <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždycky věděli, počáteční hodnotu proměnné. | 
+   | Value | Ne | <*start-value*> | Počáteční hodnota proměnné <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždycky věděli, počáteční hodnotu proměnné. | 
    ||||| 
 
    ![Inicializovat proměnnou](./media/logic-apps-create-variables-store-values/initialize-variable.png)
@@ -211,7 +211,7 @@ Pro zvýšení nebo *přírůstek* proměnnou podle konstantní hodnoty, přidej
    | Vlastnost | Požaduje se | Value |  Popis |
    |----------|----------|-------|--------------|
    | Name | Ano | <*Název proměnné*> | Název proměnné se zvýší | 
-   | Value | Ne | <*přírůstková hodnota*> | Hodnota určená pro zvyšování hodnoty proměnné. Výchozí hodnota je 1. <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždycky věděli, konkrétní hodnota se zvyšuje vaše proměnná. | 
+   | Value | Ne | <*increment-value*> | Hodnota určená pro zvyšování hodnoty proměnné. Výchozí hodnota je 1. <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždycky věděli, konkrétní hodnota se zvyšuje vaše proměnná. | 
    |||| 
 
    Příklad: 
@@ -331,7 +331,7 @@ Tady jsou vlastnosti **Dekrementuje proměnnou** akce:
 | Vlastnost | Požaduje se | Value |  Popis |
 |----------|----------|-------|--------------|
 | Name | Ano | <*Název proměnné*> | Název proměnné se sníží | 
-| Value | Ne | <*přírůstková hodnota*> | Hodnota dekrementace proměnné. Výchozí hodnota je 1. <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, budete vždycky vědět, konkrétní hodnota dekrementace proměnné. | 
+| Value | Ne | <*increment-value*> | Hodnota dekrementace proměnné. Výchozí hodnota je 1. <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, budete vždycky vědět, konkrétní hodnota dekrementace proměnné. | 
 ||||| 
 
 Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob, jakým **Dekrementuje proměnnou** akce se zobrazí uvnitř definici aplikace logiky, která je ve formátu JSON.
@@ -366,7 +366,7 @@ Tady jsou vlastnosti **nastavená proměnná** akce:
 | Vlastnost | Požaduje se | Value |  Popis | 
 |----------|----------|-------|--------------| 
 | Name | Ano | <*Název proměnné*> | Název proměnné, chcete-li změnit | 
-| Value | Ano | <*Nová hodnota*> | Hodnota, kterou chcete přiřadit proměnné. Musí mít stejný datový typ. | 
+| Value | Ano | <*new-value*> | Hodnota, kterou chcete přiřadit proměnné. Musí mít stejný datový typ. | 
 ||||| 
 
 > [!NOTE]
@@ -414,17 +414,18 @@ Pro proměnné, které obsahují řetězce nebo pole, můžete vložit nebo *př
 
 1. Vyhledejte a vyberte jednu z těchto akcí podle toho, jestli vaše proměnná řetězce nebo pole: 
 
-  * **Proměnné – připojení k proměnné řetězce**
-  * **Proměnné – připojení k proměnné pole** 
+   * **Proměnné – připojení k proměnné řetězce**
+   * **Proměnné – připojení k proměnné pole** 
 
-2. Zadejte hodnotu pro připojení jako poslední položky v řetězce nebo pole. Tato hodnota se vyžaduje. 
+2. Zadejte hodnotu pro připojení jako poslední položky v řetězce nebo pole. 
+   Tato hodnota se vyžaduje. 
 
 Tady jsou vlastnosti **připojit k...**  akce:
 
 | Vlastnost | Požaduje se | Value |  Popis | 
 |----------|----------|-------|--------------| 
 | Name | Ano | <*Název proměnné*> | Název proměnné, chcete-li změnit | 
-| Value | Ano | <*Přidat hodnotu*> | Hodnota, kterou chcete připojit, který může mít libovolný typ | 
+| Value | Ano | <*append-value*> | Hodnota, kterou chcete připojit, který může mít libovolný typ | 
 |||||  
 
 Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob, jakým **připojení k proměnné pole** akce se zobrazí uvnitř definici aplikace logiky, která je ve formátu JSON.

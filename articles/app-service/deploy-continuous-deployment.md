@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: 1313616818686c7a03269fc1cc837958665732d8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: fcb2c270b36d5efbe7b799787cf2a123b51bea5c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725231"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337540"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Průběžné nasazování do služby Azure App Service
 V tomto článku se dozvíte, jak nakonfigurovat průběžné nasazování pro [služby Azure App Service](overview.md). App Service umožňuje průběžné nasazování z Bitbucketu, Githubu, a [Azure DevOps služby](https://www.visualstudio.com/team-services/) stažením nejnovější aktualizace z existující úložiště v některé z těchto služeb.
@@ -47,6 +47,16 @@ V **sestavení zprostředkovatele** stránce, zvolte poskytovatele sestavení a 
 ### <a name="option-1-use-app-service-kudu-build-server"></a>Možnost 1: použití serveru sestavení App Service Kudu
 
 V **konfigurovat** vyberte organizace, úložiště a větev, ze kterých chcete průběžné nasazování. Až budete hotovi, klikněte na tlačítko **pokračovat**.
+
+Pokud chcete nasadit z úložiště v organizaci GitHub, přejděte na Githubu a přejděte na **nastavení** > **aplikací** > **autorizované aplikace OAuth**. Klikněte na tlačítko "Azure App Service".
+
+![Nastavení > aplikace > oprávnění aplikace OAuth > Služba Azure App Service](media/app-service-continuous-deployment/github-settings-navigation.png)
+
+Na další stránce udělte kliknutím na tlačítko "Udělení" na pravé straně služby App Service přístup k úložištím vaší organizace.
+
+![Klikněte na tlačítko "Udělení" pro udělení přístupu službě App Service do úložiště organizace.](media/app-service-continuous-deployment/grant-access.png)
+
+Vaše organizace by teď zobrazují v seznamu "Organizace" v **konfigurovat** stránka centra pro nasazení.
 
 ### <a name="option-2-use-azure-pipelines-preview"></a>Možnost 2: použití kanály Azure (preview)
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 369f3ebca0ca2f5862d8300934dee57a73d8bada
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c934a3b16f5cdd2b4f703b1be15ce16ddc6d8746
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903398"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338475"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Doprovodné materiály k architektuře nabízení v podnicích
 
@@ -265,7 +265,7 @@ Proveďte následující kurzy a seznámit se s koncepty, stejně jako běžné 
 ### <a name="running-the-sample"></a>Spuštění ukázky
 
 1. Ujistěte se, že vaše webová úloha je úspěšně spuštěná a průběžně spuštění je naplánované.
-2. Spustit ** EnterprisePushMobileApp, který spouští aplikaci Windows Store.
+2. Spustit **EnterprisePushMobileApp**, která spustí aplikaci Windows Store.
 3. Spustit **EnterprisePushBackendSystem** konzolovou aplikaci, která simuluje back-end obchodní a spustí odesílání zpráv a měla by se zobrazit informační zprávy uvedené jako na následujícím obrázku:
 
     ![][5]

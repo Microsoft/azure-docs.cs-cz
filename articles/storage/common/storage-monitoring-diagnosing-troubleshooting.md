@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
-ms.openlocfilehash: bfaa738b0f99594a3bd11541d519701ff5eb98f5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 51d8b9bad4bb4a3663b07a711f363b263f5d64db
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57896156"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339682"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -25,7 +25,7 @@ Ke správě těchto aplikací úspěšně by měl Proaktivní monitorování a p
 
 > [!NOTE]
 > Služba soubory Azure protokolování v tuto chvíli nepodporuje.
-> 
+>
 
 Praktické vodítko na začátku do konce odstraňování potíží v aplikacích Azure Storage, najdete v části [začátku do konce řešení problémů pomocí metrik Azure Storage a protokolování, AzCopy a analyzátoru zpráv](../storage-e2e-troubleshooting.md).
 
@@ -100,7 +100,7 @@ V části "[pokyny při řešení potíží]" poskytuje pokyny při řešení po
 ## <a name="monitoring-your-storage-service"></a>Monitorování vaší služby úložiště
 Pokud jste se seznámili s monitorováním výkonu Windows, si představit metrik úložiště jako ekvivalent čítačů sledování výkonu Windows Azure Storage. V Storage Metrics najdete komplexní sadu metriky (čítače v, řečeno terminologií Windows Performance Monitor), jako je dostupnost služeb, celkový počet požadavků na službu nebo Procento úspěšných požadavků na službu. Úplný seznam dostupných metrik najdete v tématu [tabulkovému schématu metrik Storage Analytics](https://msdn.microsoft.com/library/azure/hh343264.aspx). Můžete určit, zda chcete službu storage ke shromažďování a agregace metrik každou hodinu nebo každou minutu. Další informace o tom, jak povolit metriky a monitorování účtů úložiště najdete v tématu [zapnutí metrik storage a zobrazení dat metrik](https://go.microsoft.com/fwlink/?LinkId=510865).
 
-Můžete zvolit, které hodinové metriky, které chcete zobrazit v [webu Azure portal](https://portal.azure.com) a nakonfigurovat pravidla, která vždy, když hodinové metriky překročí prahovou hodnotu konkrétního upozornit správce e-mailem. Další informace najdete v tématu [přijímat oznámení o výstrahách](/azure/monitoring-and-diagnostics/monitoring-overview-alerts). 
+Můžete zvolit, které hodinové metriky, které chcete zobrazit v [webu Azure portal](https://portal.azure.com) a nakonfigurovat pravidla, která vždy, když hodinové metriky překročí prahovou hodnotu konkrétního upozornit správce e-mailem. Další informace najdete v tématu [přijímat oznámení o výstrahách](/azure/monitoring-and-diagnostics/monitoring-overview-alerts).
 
 Služba úložiště shromažďuje metriky pomocí nezaručené, ale nelze zaznamenat všechny operace úložiště.
 
@@ -132,8 +132,8 @@ Metrik úložiště pouze ukládá metriky kapacity pro službu blob service, pr
 
 > [!NOTE]
 > Měli byste sledovat tyto hodnoty pro včasného varování, že se blíží do omezení kapacity účtu úložiště. Na webu Azure Portal můžete přidat pravidla výstrah, které vás upozorní, pokud je agregované úložiště použijte překročí nebo nedosahuje prahové hodnoty, které zadáte.
-> 
-> 
+>
+>
 
 Nápovědu k odhadování množství různých objektů úložiště, jako jsou objekty BLOB, najdete v příspěvku blogu [Principy Azure Storage fakturace – šířka pásma, transakce a kapacita](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
 
@@ -191,8 +191,8 @@ Uživatelům vaší aplikace může upozorňovat na chyby oznámené službou kl
 
 > [!NOTE]
 > Mějte na paměti, že by se měl zobrazit některé občasné chyby: například kvůli stavu sítě přechodné chyby nebo chyby aplikace.
-> 
-> 
+>
+>
 
 Následující zdroje informací jsou užitečné pro pochopení stavů a chybových kódů souvisejících s úložištěm:
 
@@ -214,8 +214,8 @@ Klientská knihovna pro úložiště pro .NET umožňuje shromažďovat data pro
 
 > [!NOTE]
 > V některých případech (například selhání autorizace SAS) může uživatel nahlásit chybu, pro kterou nenajdete žádné žádosti o data v protokolech úložiště na straně serveru. Můžete použít možnosti protokolování klientskou knihovnu pro úložiště pro zjištění, zda je příčinou problém na straně klienta nebo prozkoumat sítě pomocí nástroje pro monitorování sítě.
-> 
-> 
+>
+>
 
 ### <a name="using-network-logging-tools"></a>Pomocí nástroje protokolování sítě
 Můžete zaznamenávat provoz mezi klientem a serverem, aby poskytoval podrobné informace o datech, které vyměňujete klientem a serverem a podkladové síťové podmínky. Nástroje protokolování užitečné sítě patří:
@@ -242,8 +242,8 @@ Klientská knihovna pro úložiště se automaticky vygeneruje ID žádosti klie
 
 > [!NOTE]
 > Je možné pro víc požadavků sdílet stejné ID žádosti klienta, protože klient můžete přiřadit tuto hodnotu (přestože klientskou knihovnu pro úložiště automaticky přiřadí novou hodnotu). Když klient pokus obnovuje, všechny pokusy sdílejí stejné ID požadavku klienta. V případě batch odeslaných z klienta dávka má ID. požadavek jednoho klienta
-> 
-> 
+>
+>
 
 ### <a name="server-request-id"></a>ID žádosti serveru
 Služby úložiště automaticky vygeneruje ID serveru požadavku.
@@ -254,8 +254,8 @@ Služby úložiště automaticky vygeneruje ID serveru požadavku.
 
 > [!NOTE]
 > Služba úložiště vždy přiřadí jedinečných serverů ID požadavku každého požadavku, které obdrží, takže každý opakovaný pokus od klienta a každé operace zahrnuté v dávce obsahuje ID žádosti o jedinečných serverů
-> 
-> 
+>
+>
 
 Pokud vyvolá klientskou knihovnu pro úložiště **StorageException** v klientovi, **RequestInformation** obsahuje vlastnost **RequestResult** objekt, který zahrnuje  **ServiceRequestID** vlastnost. Se dá dostat taky **RequestResult** objektu z **OperationContext** instance.
 
@@ -351,8 +351,8 @@ Služba úložiště spočítá jenom metriku **AverageE2ELatency** pro úspěš
 
 > [!NOTE]
 > Můžete také zobrazit **E2ELatency** a **ServerLatency** storage jednotlivé operace v protokolování úložiště protokolovat data.
-> 
-> 
+>
+>
 
 #### <a name="investigating-client-performance-issues"></a>Prozkoumat problémy s výkonem klienta
 Mezi možné důvody pro klienta reagovat pomalu patří omezený počet dostupných připojení nebo vláken, nebo je nedostatek prostředků, jako je například procesor, paměť nebo síť šířky pásma. Je možné, že problém vyřešit tak, že upravíte kód klienta efektivnější (například pomocí byla zahájena asynchronní volání do služby storage) nebo s použitím většího virtuálního počítače (s více jádry a větší množství paměti).
@@ -402,8 +402,8 @@ Vysoká **hodnotu AverageServerLatency** hodnoty mohou být také příznakem š
 
 > [!NOTE]
 > Můžete najít zde kontrolní výkonu komplexní kontrolní seznam: [Výkon úložiště Microsoft Azure a kontrolní seznam ke škálovatelnosti](storage-performance-checklist.md).
-> 
-> 
+>
+>
 
 ### <a name="you-are-experiencing-unexpected-delays-in-message-delivery"></a>Dochází k neočekávaným zpožděním při doručování zpráv ve frontě
 Pokud dochází ke zpoždění mezi časem aplikace přidá zprávu do fronty a čas, kdy bude k dispozici ke čtení z fronty, by měl proveďte následující kroky k diagnostice problému:
@@ -429,8 +429,8 @@ Pokud se vám zobrazují špičky v hodnotě **PercentThrottlingError** , který
 
 > [!NOTE]
 > Může se zobrazit také špičky v hodnotě **PercentThrottlingError** , který není časově shodovala se zastávkami období vysoké aktivity pro aplikaci: nejpravděpodobnější příčinou je služba úložiště, přesun oddílů, aby zlepšil Vyrovnávání zatížení.
-> 
-> 
+>
+>
 
 #### <a name="permanent-increase-in-PercentThrottlingError"></a>Trvalé zvýšení PercentThrottlingError chybu
 Pokud se vám zobrazují konzistentně vysoké hodnoty pro **PercentThrottlingError** následující trvalé zvýšení objemu transakcí, nebo při počátečním načtení provádění testů v aplikaci, je nutné vyhodnotit jak vaše aplikace používá oddílů pro úložiště a určuje, zda se přiblíží cíle škálovatelnosti účtu úložiště. Například pokud dochází k omezování chyb do fronty (které se počítá jako jeden oddíl), pak jste měli zvážit použití další fronty k šíření transakce napříč několika oddíly. Pokud dochází k chybám v tabulce, omezování, budete muset zvažte použití jiné schéma rozdělení oddílů pro vaše transakce rozdělit mezi několik oddílů s využitím používání nástroje většímu počtu hodnot klíče oddílu. Jednou z běžných příčin tohoto problému je prepend/připojovat proti vzor kde vybrat datum jako klíč oddílu a pak se všechna data v určitý den se zapisují do jednoho oddílu: pod zátěží, může dojít k kritický bod zápisu. Zvažte návrh, různých oddílů nebo vyhodnotit, jestli pomocí úložiště objektů blob může být lepší řešení. Také zkontrolujte, zda omezování dochází v důsledku špičkami v provozu a způsoby vyhlazení váš model požadavky prozkoumat.
@@ -441,16 +441,16 @@ Návrh neefektivní dotazu může také způsobit dosažení limitů škálovate
 
 > [!NOTE]
 > Testování výkonu byste měli odhalit, žádné návrhy neefektivní dotazu ve vaší aplikaci.
-> 
-> 
+>
+>
 
 ### <a name="metrics-show-an-increase-in-PercentTimeoutError"></a>Metrika ukazuje zvýšení u PercentTimeoutError
 Vaše metrika ukazuje zvýšení **PercentTimeoutError** pro některé z vašich služeb úložiště. Ve stejnou dobu obdrží klient k velkému počtu stavové zprávy "časový limit 500 operace" HTTP z operace úložiště.
 
 > [!NOTE]
 > Může se zobrazit chyby časového limitu dočasně jako službu storage zatížení při zpracování žádostí zůstatky oddílu se přesunete na nový server.
-> 
-> 
+>
+>
 
 **PercentTimeoutError** metrika je agregaci z těchto metrik: **ClientTimeoutError**, **AnonymousClientTimeoutError**, **SASClientTimeoutError**, **ServerTimeoutError**,  **AnonymousServerTimeoutError**, a **SASServerTimeoutError**.
 
@@ -586,8 +586,8 @@ SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
 
 > [!NOTE]
 > Vývojářské nástroje F12 v aplikaci Internet Explorer můžete použít k trasování zprávy vyměňují mezi prohlížečem a služba úložiště, pokud řešíte problémy JavaScriptu na straně klienta.
-> 
-> 
+>
+>
 
 K těmto chybám, protože implementuje webový prohlížeč [zásada stejného zdroje](https://www.w3.org/Security/wiki/Same_Origin_Policy) omezení zabezpečení, které chrání webovou stránku z volání rozhraní API v jiné doméně z domény stránce pochází.
 
@@ -712,8 +712,8 @@ Dodatky popisují několik nástrojů, které může být pro vás užitečné p
 
 > [!NOTE]
 > Fiddler dekódoval přenosy HTTPS; Přečtěte si dokumentaci Fiddleru pečlivě, abyste pochopili, jak to dělá a pochopili důsledky zabezpečení.
-> 
-> 
+>
+>
 
 Tento dodatek obsahuje stručný návod, jak nakonfigurovat aplikaci Fiddler pro zachycení provozu na místním počítači, kam jste nainstalovali aplikaci Fiddler od služby Azure storage.
 
@@ -735,7 +735,7 @@ Následující postup ukazuje, jak zachycení paketu podrobné informace pro pro
 2. V **Start** vyberte místní síťové rozhraní nebo rozhraní, které jsou připojené k Internetu.
 3. Klikněte na tlačítko **možnosti zachytávání**.
 4. Přidat filtr **filtr pro sběr dat** textového pole. Například **hostovat contosoemaildist.table.core.windows.net** nakonfiguruje Wireshark zachytit pouze pakety odesílané do nebo z koncový bod služby table service v **contosoemaildist** účtu úložiště. Podívejte se [úplný seznam filtrů zachycení](https://wiki.wireshark.org/CaptureFilters).
-   
+
    ![][6]
 5. Klikněte na tlačítko **Start**. Wireshark nyní zachytit všechny pakety odesílání do nebo z koncový bod služby table service, jak používat klientskou aplikaci na místním počítači.
 6. Po dokončení, v hlavní nabídce **zachycení** a potom **Zastavit**.
@@ -751,8 +751,8 @@ Můžete také zobrazit data protokolu TCP, jak aplikační vrstvu, uvidí ho ta
 
 > [!NOTE]
 > Další informace o používání Wireshark, najdete v článku [Průvodce uživatele Wireshark](https://www.wireshark.org/docs/wsug_html_chunked).
-> 
-> 
+>
+>
 
 ### <a name="appendix-3"></a>Dodatek 3: Pro zachycení síťového provozu pomocí Microsoft Message Analyzer
 Můžete použít Microsoft Message Analyzer pro zachycení provozu HTTP a HTTPS podobným způsobem jako do Fiddleru a podobným způsobem jako do Wireshark zachycení síťového provozu.
@@ -766,8 +766,8 @@ contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata
 
 > [!NOTE]
 > Znak mezery odděluje názvy hostitelů.
-> 
-> 
+>
+>
 
 Až budete připravení zahájit shromažďování dat trasování, klikněte na tlačítko **Start With** tlačítko.
 
@@ -806,6 +806,17 @@ Můžete použít také funkci Application Insights pro DevOps v Azure jako sou�
 * Rychle Diagnostikujte jakékoli problémy s výkonem nebo výjimky ve webové službě. Zjistěte, pokud využití procesoru nebo jiné prostředky jsou roztažení, získat trasování zásobníku z výjimek a snadno prohledávat protokolu trasování. Pokud výkon vaší aplikace klesne pod přijatelné meze, Microsoft může odeslat e-mailu. Můžete monitorovat webové služby .NET a Javy.
 
 Další informace najdete [co je Application Insights](../../azure-monitor/app/app-insights-overview.md).
+
+## <a name="next-steps"></a>Další postup
+
+Další informace o analýzy ve službě Azure Storage naleznete v následujících zdrojích:
+
+* [Monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md)
+* [Analýza úložiště](storage-analytics.md)
+* [Metrikách Storage analytics](storage-analytics-metrics.md)
+* [Tabulkovému schématu metrik Storage analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema.md)
+* [Úložiště analýzy protokolů](storage-analytics-logging.md)
+* [Formát úložiště analýzy protokolů](/rest/api/storageservices/storage-analytics-log-format.md)
 
 <!--Anchors-->
 [Úvod]: #introduction

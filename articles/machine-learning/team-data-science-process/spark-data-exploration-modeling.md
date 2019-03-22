@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b1e6884366300a4edfce1eb05971e50f673b3a22
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4ddcd2429ce1b7e44670b52a0a7b7494d0400af7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457220"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860971"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Zkoumání a modelování dat pomocí Spark
 
@@ -29,8 +29,8 @@ Modely, které používáme zahrnují logistické a lineární regrese, náhodn�
 
 * [Lineární regrese s SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) je model lineární regrese, který používá metodu pomocí Stochastického přechodu sestup (SGD) a pro optimalizaci a funkce škálování předpovídat špičky částky zaplacené. 
 * [Logistickou regresi s LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) nebo regresní model, který se dá použít při závislé proměnné je zařazená do kategorií provedete klasifikace dat je "logit" regrese. LBFGS je dál Newton optimalizace algoritmus, který blíží algoritmu Broyden – Fletcher – Goldfarb – Shanno (BFGS) pomocí omezené množství paměti a, která se často používá ve službě machine learning.
-* [Náhodné doménových struktur](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) jsou umožňující rozhodovacích stromů.  Jejich kombinací mnoha rozhodovacích stromů, aby se snížilo riziko overfitting. Náhodné doménové struktury se používají pro regresní a klasifikace a dokáže zpracovat zařazené do kategorií funkcí a je možné rozšířit na nastavení klasifikace víc tříd. Se nevyžadují, aby funkce škálování a budou moct zachytit nelineárností a funkce interakce. Náhodné doménových struktur jsou jednou z nejvíce úspěšný strojového učení pro klasifikačních a regresních modelů.
-* [Přechod boosted stromů](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) jsou umožňující rozhodovacích stromů. GBTs trénování rozhodovacích stromů zavádět postupně, chcete-li minimalizovat ztrátu funkce. GBTs se používají pro regresní a klasifikace a dokáže zpracovat zařazené do kategorií funkce, nevyžadují, aby funkce škálování a budou moct zachytit nelineárností a funkce interakce. Můžete také používají v nastavení multiclass klasifikace.
+* [Náhodné doménových struktur](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) jsou umožňující rozhodovacích stromů.  Jejich kombinací mnoha rozhodovacích stromů, aby se snížilo riziko overfitting. Náhodné doménové struktury se používají pro regresní a klasifikace a dokáže zpracovat zařazené do kategorií funkcí a je možné rozšířit na nastavení klasifikace víc tříd. Se nevyžadují, aby funkce škálování a budou moct zachytit nelineárností a funkce interakce. Náhodné doménových struktur jsou jednou z nejvíce úspěšný strojového učení pro klasifikačních a regresních modelů.
+* [Přechod boosted stromů](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) jsou umožňující rozhodovacích stromů. GBTs trénování rozhodovacích stromů zavádět postupně, chcete-li minimalizovat ztrátu funkce. GBTs se používají pro regresní a klasifikace a dokáže zpracovat zařazené do kategorií funkce, nevyžadují, aby funkce škálování a budou moct zachytit nelineárností a funkce interakce. Můžete také používají v nastavení multiclass klasifikace.
 
 Kroky modelování také obsahovat kód ukazující způsob trénování, vyhodnocení a uložte každý typ modelu. Python se použil, jak se programují řešení a zobrazíte relevantní vykreslení.   
 
@@ -60,19 +60,17 @@ Regrese a klasifikace úlohy, které jsou implementovány pomocí clusteru Spark
 
 > [!NOTE]
 > Datová sada letecká společnost byl přidán do poznámkových bloků Spark 2.0 abychom vám lépe předvedli použití klasifikace algoritmů. V následujících tématech o letecká společnost včas odeslání datovou sadu a datovou sadu weather:
-
->- Data o včasných odeslání letecká společnost: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
-
->- Data o počasí letiště: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 > 
+> - Data o včasných odeslání letecká společnost: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
+> - Data o počasí letiště: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 
 <!-- -->
 
 <!-- -->
 
 > [!NOTE]
-Poznámkové bloky Spark 2.0 na NYC taxislužby města a letecká společnost letu zpoždění-sady dat může trvat 10 minut nebo déle ke spuštění (v závislosti na velikosti vašeho clusteru Hdinsight). První poznámkového bloku v seznamu nahoře ukazuje mnoho aspektů zkoumání, vizualizaci a trénování modelů ML v poznámkovém bloku, která přebírá méně času na spuštění pomocí předvýpočtem zredukovaných NYC datové sady, ve kterém byly soubory taxislužby města a tarif předem připojené k doméně: [Spark2.0-pySpark3-Machine-Learning-data-Science-Spark-Advanced-data-Exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) tento poznámkový blok trvá mnohem kratší dobu dokončení (2 až 3 minut) a může být vhodná výchozí bod pro rychlé zkoumání kódu uvádíme pro Spark 2.0. 
+> Poznámkové bloky Spark 2.0 na NYC taxislužby města a letecká společnost letu zpoždění-sady dat může trvat 10 minut nebo déle ke spuštění (v závislosti na velikosti vašeho clusteru Hdinsight). První poznámkového bloku v seznamu nahoře ukazuje mnoho aspektů zkoumání, vizualizaci a trénování modelů ML v poznámkovém bloku, která přebírá méně času na spuštění pomocí předvýpočtem zredukovaných NYC datové sady, ve kterém byly soubory taxislužby města a tarif předem připojené k doméně: [Spark2.0-pySpark3-Machine-Learning-data-Science-Spark-Advanced-data-Exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) tento poznámkový blok trvá mnohem kratší dobu dokončení (2 až 3 minut) a může být vhodná výchozí bod pro rychlé zkoumání kódu uvádíme pro Spark 2.0. 
 
 <!-- -->
 
@@ -81,7 +79,7 @@ Poznámkové bloky Spark 2.0 na NYC taxislužby města a letecká společnost le
 <!-- -->
 
 > [!NOTE]
-Níže se vztahují k použití Spark 1.6. Pro verze Spark 2.0 použijte prosím poznámkových bloků popsaných a propojené výše. 
+> Níže se vztahují k použití Spark 1.6. Pro verze Spark 2.0 použijte prosím poznámkových bloků popsaných a propojené výše. 
 
 <!-- -->
 
@@ -362,8 +360,8 @@ Tento kód ukážeme, jak vytvořit novou funkci binningu hodiny do časovým in
 ### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>Indexování a kódování zařazené do kategorií funkce pro vstup do funkce modelování
 Tato část ukazuje, jak index nebo kódování zařazené do kategorií funkce pro vstup do funkce modelování. Modelování a předpovědět, funkce s kategorií vstupní data indexované nebo se musí kódováním než použití funkce MLlib vyžadují. V závislosti na modelu budete muset index nebo kódování různými způsoby:  
 
-* **Založený na stromové architektuře modelování** vyžaduje kategorie kódovaný jako číselné hodnoty (například funkce s tři kategorie mohou být kódovány s 0, 1, 2). To je poskytována pro MLlib [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) funkce. Tato funkce kóduje řetězec sloupec s popisky sloupců popisek indexů, které jsou řazeny podle frekvence popisek. I když indexované číselné hodnoty pro vstup a zpracování dat, k odpovídajícím způsobem zpracovávat jako kategorie lze zadat algoritmy založený na stromové architektuře. 
-* **Modely logistické a lineární regrese** vyžadují jeden horkou kódování, kde, například funkce s tři kategorie se rozšířit do tří sloupců funkce s každou obsahující 0 nebo 1 podle kategorie hodnotu. Poskytuje MLlib [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) funkce dělat hot jeden kódování. Tomto kodéru mapuje sloupec indexů popisek ke sloupci binárního vektorů s maximálně jeden – hodnotu single. Toto kódování umožňuje algoritmy, které očekávají číselnými hodnotami funkce, jako je logistické regrese, použít zařazené do kategorií funkce.
+* **Založený na stromové architektuře modelování** vyžaduje kategorie kódovaný jako číselné hodnoty (například funkce s tři kategorie mohou být kódovány s 0, 1, 2). To je poskytována pro MLlib [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) funkce. Tato funkce kóduje řetězec sloupec s popisky sloupců popisek indexů, které jsou řazeny podle frekvence popisek. I když indexované číselné hodnoty pro vstup a zpracování dat, k odpovídajícím způsobem zpracovávat jako kategorie lze zadat algoritmy založený na stromové architektuře. 
+* **Modely logistické a lineární regrese** vyžadují jeden horkou kódování, kde, například funkce s tři kategorie se rozšířit do tří sloupců funkce s každou obsahující 0 nebo 1 podle kategorie hodnotu. Poskytuje MLlib [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) funkce dělat hot jeden kódování. Tomto kodéru mapuje sloupec indexů popisek ke sloupci binárního vektorů s maximálně jeden – hodnotu single. Toto kódování umožňuje algoritmy, které očekávají číselnými hodnotami funkce, jako je logistické regrese, použít zařazené do kategorií funkce.
 
 Tady je kód pro index a kódování funkcí zařazené do kategorií:
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 80fbc84c2284b7078b07040a74566cf1e8d57fb4
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
-ms.translationtype: MT
+ms.openlocfilehash: 11b1b46e29ac9a4147c4dc319753edd0fadce8bc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341081"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088906"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzického serveru
 
@@ -50,7 +50,7 @@ Nejnovější verzi instalačního souboru konfigurace serveru je k dispozici na
 4. Na **přidat Server** klikněte na tlačítko pro stažení se stáhnout registrační klíč. Tento klíč budete potřebovat při instalaci konfiguračního serveru k registraci pomocí služby Azure Site Recovery.
 5. Klikněte na tlačítko **stáhněte si Microsoft Azure Site Recovery sjednocené instalace** odkaz ke stažení nejnovější verze konfiguračního serveru.
 
-  ![Stránka Stažení](./media/physical-manage-configuration-server/downloadcs.png)
+   ![Stránka Stažení](./media/physical-manage-configuration-server/downloadcs.png)
 
 
 ## <a name="install-and-register-the-server"></a>Instalace a registrace serveru
@@ -153,40 +153,40 @@ Nastavení proxy serveru pro počítač serveru konfiguraci můžete upravit ná
 3. Klikněte na tlačítko **registrace trezoru** kartu.
 4. Stáhněte si nový soubor registrace trezoru z portálu a zadejte jako vstup do nástroje.
 
-  ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+   ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Zadejte nové podrobnosti proxy a klikněte na tlačítko **zaregistrovat** tlačítko.
 6. Otevřete okno příkazového řádku Powershellu pro správu.
 7. Spusťte následující příkaz:
 
-  ```PowerShell
-  $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
-  Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
-  net stop obengine
-  net start obengine
-  ```
+   ```PowerShell
+   $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
+   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
+   net stop obengine
+   net start obengine
+   ```
 
-  >[!WARNING]
-  Pokud máte dalších procesových serverů, které jsou připojené ke konfiguračnímu serveru, budete muset [opravit nastavení proxy serveru na všechny horizontální navýšení kapacity procesových serverů](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server) ve vašem nasazení.
+   > [!WARNING]
+   > Pokud máte dalších procesových serverů, které jsou připojené ke konfiguračnímu serveru, budete muset [opravit nastavení proxy serveru na všechny horizontální navýšení kapacity procesových serverů](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server) ve vašem nasazení.
 
 ## <a name="reregister-a-configuration-server-with-the-same-vault"></a>Opětovná registrace konfiguračního serveru u stejného trezoru
-  1. Přihlaste se ke konfiguračnímu serveru.
-  2. Spusťte cspsconfigtool.exe pomocí zástupce na ploše.
-  3. Klikněte na tlačítko **registrace trezoru** kartu.
-  4. Stáhněte si nový registrační soubor z portálu a zadejte jako vstup do nástroje.
-        ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
-  5. Zadejte podrobnosti o Proxy serveru a klikněte na tlačítko **zaregistrovat** tlačítko.  
-  6. Otevřete okno příkazového řádku Powershellu pro správu.
-  7. Spuštěním následujícího příkazu
+1. Přihlaste se ke konfiguračnímu serveru.
+2. Spusťte cspsconfigtool.exe pomocí zástupce na ploše.
+3. Klikněte na tlačítko **registrace trezoru** kartu.
+4. Stáhněte si nový registrační soubor z portálu a zadejte jako vstup do nástroje.
+      ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+5. Zadejte podrobnosti o Proxy serveru a klikněte na tlačítko **zaregistrovat** tlačítko.  
+6. Otevřete okno příkazového řádku Powershellu pro správu.
+7. Spuštěním následujícího příkazu
 
-      ```PowerShell
-      $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
-      Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
-      net stop obengine
-      net start obengine
-      ```
+    ```PowerShell
+    $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
+    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
+    net stop obengine
+    net start obengine
+    ```
 
-  >[!WARNING]
-  Pokud máte více procesový server, budete muset [zaregistrovat znovu](vmware-azure-manage-process-server.md#reregister-a-process-server).
+   > [!WARNING]
+   > Pokud máte více procesový server, budete muset [zaregistrovat znovu](vmware-azure-manage-process-server.md#reregister-a-process-server).
 
 ## <a name="register-a-configuration-server-with-a-different-vault"></a>Registrace konfiguračního serveru pomocí jiného trezoru
 
@@ -246,22 +246,22 @@ Upgrade serveru následujícím způsobem:
 4. Klikněte na tlačítko **Ano** k potvrzení odstranění serveru.
 
 ### <a name="uninstall-the-configuration-server-and-its-dependencies"></a>Odinstalace konfiguračního serveru a jeho závislosti
-  > [!TIP]
-  Pokud chcete znovu použít konfiguračního serveru pomocí Azure Site Recovery, pak můžete přeskočit ke kroku 4 přímo
+> [!TIP]
+>   Pokud chcete znovu použít konfiguračního serveru pomocí Azure Site Recovery, pak můžete přeskočit ke kroku 4 přímo
 
 1. Přihlaste se k konfiguračního serveru jako správce.
 2. Otevřete ovládací panely > aplikace > odinstalovat programy
 3. Odinstalujte programy v následujícím pořadí:
-  * Agent Microsoft Azure Recovery Services
-  * Microsoft Azure Site Recovery Mobility Service/hlavní cílový server
-  * Microsoft Azure Site Recovery Provider
-  * Microsoft Azure Site Recovery konfigurační Server/Process Server
-  * Závislosti na Microsoft Azure Site Recovery konfigurace serveru
-  * MySQL Server 5.5
+   * Agent Microsoft Azure Recovery Services
+   * Microsoft Azure Site Recovery Mobility Service/hlavní cílový server
+   * Microsoft Azure Site Recovery Provider
+   * Microsoft Azure Site Recovery konfigurační Server/Process Server
+   * Závislosti na Microsoft Azure Site Recovery konfigurace serveru
+   * MySQL Server 5.5
 4. Spusťte následující příkaz a příkazového řádku správce.
-  ```
-  reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
-  ```
+   ```
+   reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
+   ```
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Odstranění nebo zrušení registrace konfiguračního serveru (PowerShell)
 

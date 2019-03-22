@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 713905ac0c6dcd53f468fe7e9af7c565ee38ac66
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b25a47e929ef540ad3a74a86d431962d37cde434
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106524"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009430"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Úvod do služby Azure Data Lake Storage Gen2
 
@@ -37,7 +37,7 @@ V minulosti cloudové analýzy došlo k ohrožení v oblasti výkonu, správy a 
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Klíčové funkce služby Data Lake Storage Gen2
 
--   **Hadoop kompatibilní přístup**: Data Lake Storage Gen2 umožňuje spravovat a přistupovat k datům, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nové [ABFS ovladač](data-lake-storage-abfs-driver.md) je k dispozici ve všech prostředích Apache Hadoop, včetně [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index), a [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) přístup k datům uloženým v Data Lake Storage Gen2.
+-   **Hadoop kompatibilní přístup**: Data Lake Storage Gen2 umožňuje spravovat a přistupovat k datům, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nové [ABFS ovladač](data-lake-storage-abfs-driver.md) je k dispozici ve všech prostředích Apache Hadoop, včetně [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index), a [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) přístup k datům uloženým v Data Lake Storage Gen2.
 
 -   **Nadmnožina POSIX oprávnění**: Model zabezpečení pro Data Lake Gen2 podporuje oprávnění řízení přístupu a POSIX spolu s nějaké další specifické pro Data Lake Storage Gen2 členitosti. Nastavení může být nakonfigurován pomocí Průzkumníka služby Storage nebo prostřednictvím architektury, jako je Hive a Spark.
 

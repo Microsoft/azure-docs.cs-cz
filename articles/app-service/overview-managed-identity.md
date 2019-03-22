@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: bc5c4648a5efe53e3aa645bf1d6b121008eb86dd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0942d5ba7b31ddb2c0dec5fe979f1331d1bf3bfd
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854921"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336027"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravované identity pro App Service a Azure Functions
 
@@ -252,7 +252,7 @@ Kde `<PRINCIPALID>` a `<CLIENTID>` jsou nahrazeny identifikátory GUID. Principa
 Aplikaci můžete získat tokeny pro jiné prostředky chráněné službou AAD, jako je Azure Key Vault svoji identitu. Tyto tokeny reprezentujícího aplikaci přístup k prostředku a ne všechny konkrétní uživatelské aplikace. 
 
 > [!IMPORTANT]
-> Budete muset nakonfigurovat cílový prostředek, pokud chcete povolit přístup z vaší aplikace. Například pokud jste požádali o token do služby Key Vault, budete muset Ujistěte se, že jste přidali zásady přístupu, která obsahuje identitu vaší aplikace. Jinak vaše volání do služby Key Vault odmítne, i v případě, že zahrnují token. Další informace o tom, které prostředky podporují tokeny služby Azure Active Directory najdete v tématu [služby Azure, že podpora Azure AD ověřování](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication).
+> Budete muset nakonfigurovat cílový prostředek, pokud chcete povolit přístup z vaší aplikace. Například pokud jste požádali o token do služby Key Vault, budete muset Ujistěte se, že jste přidali zásady přístupu, která obsahuje identitu vaší aplikace. Jinak vaše volání do služby Key Vault odmítne, i v případě, že zahrnují token. Další informace o tom, které prostředky podporují tokeny služby Azure Active Directory najdete v tématu [služby Azure, že podpora Azure AD ověřování](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 Neexistuje jednoduchý protokolu REST pro získání tokenu v App Service a Azure Functions. Pro aplikace .NET knihovnu Microsoft.Azure.Services.appauthentication přistupovat přes tento protokol poskytuje abstrakci a podporuje místní vývojové prostředí.
 
@@ -287,7 +287,7 @@ Aplikace s využitím spravované identity má dvě proměnné prostředí defin
 
 > |Název parametru|V|Popis|
 > |-----|-----|-----|
-> |prostředek|Dotaz|AAD identifikátor URI prostředku, pro která by měla být získána token. To může být jedna z [služby Azure, že podpora Azure AD ověřování](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication) nebo jakékoli jiné identifikátor URI prostředku.|
+> |prostředek|Dotaz|AAD identifikátor URI prostředku, pro která by měla být získána token. To může být jedna z [služby Azure, že podpora Azure AD ověřování](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakékoli jiné identifikátor URI prostředku.|
 > |verze API-version|Dotaz|Verze rozhraní API tokenů, který se má použít. "2017-09-01" je momentálně podporována pouze verze.|
 > |Tajný kód|Hlavička|Hodnota proměnné prostředí MSI_SECRET. Tato hlavička se používá pro zmírnění útoků proti padělání (SSRF) žádosti na straně serveru.|
 > |ID klienta|Dotaz|(Volitelné) ID uživatelsky přiřazené identity použít. Pokud tento parametr vynechán, systém přiřadil identita se používá.|

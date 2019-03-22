@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: c251a159ec28d7fb03009ebcdc84056da739f937
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: MT
+ms.openlocfilehash: bf7a8ea00fe94e6896c097b8e27c22c0831f71da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587425"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008650"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Nejčastější dotazy: Replikace z Azure do Azure
 
@@ -26,6 +26,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se nasazení zo
 1.  **[Konzistence více virtuálních počítačů](#multi-vm-consistency)** 
 1.  **[Plán obnovení](#recovery-plan)** 
 1.  **[Opětovného nastavování ochrany a navrácení služeb po obnovení](#reprotection-and-failback)** 
+2.  **[Kapacita](#capacity)**
 1.  **[Zabezpečení](#security)** 
 
 
@@ -35,7 +36,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se nasazení zo
 Kontrola [ceny za Azure Site Recovery](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/) podrobnosti.
 ### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Jak funguje úroveň Free pro práci v rámci Azure Site Recovery?
 Každá instance chráněná Azure Site Recovery je prvních 31 dní ochrany zadarmo. Od 32. dne dál se ochrana instance účtuje podle sazeb uvedených nahoře.
-###<a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Budu se mi během prvních 31 dní účtovat nějaké další poplatky Azure?
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Budu se mi během prvních 31 dní účtovat nějaké další poplatky Azure?
 Ano, i když je Azure Site Recovery během prvních 31 dní chráněné instance zadarmo, můžou vám být účtovány poplatky za Azure Storage, transakce úložiště a přenosy dat. U obnoveného virtuálního počítače se můžou účtovat taky poplatky za výpočty Azure. Získejte kompletní podrobnosti o cenách za [zde](https://azure.microsoft.com/pricing/details/site-recovery)
 
 ### <a name="what-are-the-best-practices-for-configuring-site-recovery-on-azure-vms"></a>Co jsou osvědčené postupy pro konfiguraci Site Recovery na virtuálních počítačích Azure?
@@ -105,7 +106,7 @@ Kvůli další obsah snímky konzistentními se nejvíce podílejí a trvat nejd
 Vzhledem k tomu, body obnovení konzistentní zachytí všechna data v paměti a v procesu vyžaduje architekturu jako třeba stínové kopie svazku v systému windows pro uvedení aplikace. To, v případě velmi často aktivace může mít dopad na výkon Pokud už je velmi vytížený zatížení. Obvykle doporučuje nepoužívat s nízkou frekvencí pro body obnovení konzistentní vzhledem k aplikaci pro jiné databázové úlohy a to i pro databázové úlohy 1 hodinu je dostatečná. 
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Co je minimální frekvenci generování bod obnovení konzistentní s aplikací?
-Site Recovery můžete vytvoří bod obnovení konzistentní s minimální frekvenci za 1 hodinu.
+Site Recovery můžete vytvoří jako bod obnovení konzistentní s minimální frekvenci za 1 hodinu.
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>Jak se body obnovení vygenerovat a uložit?
 K pochopení, jak Site Recovery vytvoří body obnovení, Pojďme se na příklad zásady replikace, který má bodu okno uchování 24 hodin a snímek konzistentní vzhledem k frekvenci 1 hodina.
@@ -117,7 +118,7 @@ Následující snímek obrazovky ukazuje příklad. Na snímku obrazovky:
 1. Dobu menší než poslední 1 hodinu existují body obnovení s četností 5 minut.
 2. Pro čas za poslední 1 hodinu nastavení uchovává Site Recovery bodu obnovení pouze 1.
 
-  ![Seznam bodů obnovení vygenerované](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
+   ![Seznam bodů obnovení vygenerované](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
 
 
 ### <a name="how-far-back-can-i-recover"></a>Jak daleko mohou obnovit?
@@ -220,7 +221,12 @@ To závisí na situace. Například pokud zdrojové oblasti virtuální počíta
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Kolik času udělá provést navrácení služeb po obnovení?
 Množství času pro navrácení služeb po obnovení po opětovného nastavování ochrany, je obvykle podobný čas potřebný pro převzetí služeb při selhání z primární oblasti do sekundární oblasti. 
 
-## <a name="a-namesecuritysecurity"></a><a name="security">Zabezpečení
+## <a name="capacity"></a>Kapacita
+### <a name="does-site-recovery-work-with-reserved-instance"></a>Funguje Site Recovery s rezervované Instance?
+Ano, můžete si koupit [rezervace instancí](https://azure.microsoft.com/pricing/reserved-vm-instances/) v DR oblasti a operace převzetí služeb při selhání Azure Site Recovery je používají. </br> Žádná další konfigurace je nutná od zákazníků.
+
+
+## <a name="security"></a>Zabezpečení
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Posílají se replikační data do služby Site Recovery?
 Ne, Site Recovery nepodporuje nezachycuje replikovaná data a nemá žádné informace o co běží na virtuálních počítačích. Do služby Site Recovery se odesílají jen metadata, která jsou nezbytná k orchestraci replikace a převzetí služeb při selhání.  
 Site Recovery je ISO 27001: 2013, 27018, HIPAA, DPA certifikace a probíhá SOC2 a FedRAMP JAB.

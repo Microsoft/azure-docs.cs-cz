@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.custom: seodec18
-ms.openlocfilehash: a14f568e2485e59cb3e567eb9ee5c5eb20b02afc
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: f5cc06ba1a326d262c1437a941306b4d4a648260
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198418"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101223"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Vytvoření referenční sady dat pro prostředí Time Series Insights pomocí webu Azure portal
 
@@ -82,19 +82,19 @@ Referenční data není připojený zpětně. To znamená, že pouze aktuální 
  
 13. Název datové sady, vyplněním **název datové sady** pole nad datové mřížce.
 
-   ![Název datové sady.](media/add-reference-data-set/name_reference_dataset.png)
+    ![Název datové sady.](media/add-reference-data-set/name_reference_dataset.png)
 
 14. Zadejte **primární klíč** sloupců v datové sadě, tak, že vyberete rozevírací nabídky výše datové mřížce.
 
-   ![Vyberte sloupce klíče.](media/add-reference-data-set/set_primary_key.png)
+    ![Vyberte sloupce klíče.](media/add-reference-data-set/set_primary_key.png)
 
-   Volitelně můžete vybrat **+** tlačítko pro přidání sekundární klíčový sloupec jako složený primární klíč. Pokud je potřeba zrušit výběr, zvolte prázdnou hodnotu z rozevíracího seznamu k odebrání sekundární klíč.
+    Volitelně můžete vybrat **+** tlačítko pro přidání sekundární klíčový sloupec jako složený primární klíč. Pokud je potřeba zrušit výběr, zvolte prázdnou hodnotu z rozevíracího seznamu k odebrání sekundární klíč.
 
-15.  Pokud chcete nahrát data, vyberte **nahrát řádky** tlačítko.
+15. Pokud chcete nahrát data, vyberte **nahrát řádky** tlačítko.
 
-   ![Odeslat](media/add-reference-data-set/upload_rows.png)
+    ![Odeslat](media/add-reference-data-set/upload_rows.png)
 
-   Na stránce potvrdí dokončené nahrávání a zobrazení zprávy **byl úspěšně nahrán datovou sadu**.
+    Na stránce potvrdí dokončené nahrávání a zobrazení zprávy **byl úspěšně nahrán datovou sadu**.
 
 ## <a name="next-steps"></a>Další postup
 * [Spravujte referenční data](time-series-insights-manage-reference-data-csharp.md) prostřednictvím kódu programu.

@@ -15,24 +15,19 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 50b3499a52ac646b6c896dd79b2191651c5b277e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.lastreviewed: 3/19/2018
+ms.openlocfilehash: de57ebbf0c0c4e8a18c955200d1692ea4ae9afae
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782934"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295007"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Ochrana virtuálních počítačů nasazených v Azure stacku
 
 Použijte tento článek jako vodítko k vývoji plánu ochrany virtuálních počítačů (VM), které vaši uživatelé nasazení ve službě Azure Stack.
 
-Pro ochranu před únikem informací a neplánovaných prostojů, budete muset implementovat plán obnovení zálohování nebo zotavení po havárii pro uživatele aplikace a jejich data. Tento plán může být jedinečná pro každou aplikaci, ale řídí framework stanovené vaší organizace komplexní obchodní kontinuity podnikových procesů a strategii (BC/zotavení po Havárii) zotavení po havárii. Dobrým výchozím bodem je [návrh odolných aplikací pro Azure](https://docs.microsoft.com/azure/architecture/resiliency), který poskytuje obecné vzory a postupy pro aplikace dostupnost a odolnost.
-
->[!IMPORTANT]
-> Testovací plány obnovení zálohování a zotavení po havárii průběžně. Musíte zajistit, aby toto:
-> * Plány práce
-> * Plány stále splnění požadavků, které byly navrženy pro.
+Pro ochranu před únikem informací a neplánovaných prostojů, budete muset implementovat plán obnovení zálohování nebo zotavení po havárii pro uživatele aplikace a jejich data. Tento plán může být jedinečná pro každou aplikaci, ale řídí framework stanovené vaší organizace komplexní obchodní kontinuity podnikových procesů a strategii (BC/zotavení po Havárii) zotavení po havárii. Dobrým výchozím bodem je [Azure Stack: Důležité informace týkající se obchodní kontinuity podnikových procesů a zotavení po havárii](https://aka.ms/azurestackbcdrconsiderationswp).
 
 ## <a name="azure-stack-infrastructure-recovery"></a>Obnovení infrastruktury Azure stacku
 
@@ -47,6 +42,9 @@ Pokud cloudu služby Azure Stack je offline po delší dobu nebo trvale Neopravi
 * Umožňuje aplikacím zachovat údržby uživatelských požadavků
 
 Operátor cloudu služby Azure Stack je zodpovědná za vytvoření plánu obnovení pro základní infrastrukturu Azure Stack a služby. Další informace najdete v článku [obnovit ze ztráty dat](https://docs.microsoft.com/azure/azure-stack/azure-stack-backup-recover-data).
+
+## <a name="considerations-for-iaas-vms"></a>Důležité informace týkající se virtuálních počítačů IaaS
+Operační systém nainstalovaný na virtuálním počítači IaaS, omezí produktů, které vám pomůže chránit data, která obsahuje. Pro Windows je založené na virtuální počítače IaaS, můžete k ochraně dat produkty Microsoftu a jeho partnerů. Pro Linux založené na virtuální počítače IaaS, jedinou možností je použití partnerským produktům. Odkazovat na [tento datový list pro všechny partnery BC/zotavení po Havárii s ověřené produkty pro službu Azure Stack](https://aka.ms/azurestackbcdrpartners).
 
 ## <a name="sourcetarget-combinations"></a>Zdroj/cíl kombinace
 

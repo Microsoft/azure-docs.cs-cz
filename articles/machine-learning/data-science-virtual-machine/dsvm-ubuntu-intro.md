@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 92f9fcc8a10f90c0886667f33f3c7d4dec09bc8e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d48f47f66bea0bb8c5e3c982f983f3673bcb157
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884672"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316991"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače pro datové vědy pro Linux (Ubuntu)
 
@@ -144,9 +144,9 @@ Po přihlášení k virtuálnímu počítači pomocí klienta SSH nebo grafické
 
 ### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub a JupyterLab
 
-Datové VĚDY se systémem Ubuntu běží [JupyterHub](https://github.com/jupyterhub/jupyterhub), server Jupyter více uživatelů. Pro připojení, přejděte na https://your-vm-ip:8000 na přenosné a stolní počítače, zadejte uživatelské jméno a heslo, které jste použili k vytvoření virtuálního počítače a přihlaste se. Mnoho ukázkové poznámkové bloky jsou k dispozici pro procházení a vyzkoušejte si.
+Datové VĚDY se systémem Ubuntu běží [JupyterHub](https://github.com/jupyterhub/jupyterhub), server Jupyter více uživatelů. Pro připojení, přejděte na protokol https:\// vaše – virtuální počítač – ip:8000 na přenosném počítači nebo stolní počítač, zadejte uživatelské jméno a heslo, které jste použili k vytvoření virtuálního počítače a přihlaste se. Mnoho ukázkové poznámkové bloky jsou k dispozici pro procházení a vyzkoušejte si.
 
-JupyterLab, generace poznámkové bloky Jupyter a JupyterHub, je také k dispozici. Chcete-li získat přístup, přihlaste se k JupyterHub a potom přejděte na adresu URL https://your-vm-ip:8000/user/your-username/lab. JupyterLab můžete nastavit jako výchozí server poznámkového bloku tak, že přidáte tento řádek /etc/jupyterhub/jupyterhub_config.py:
+JupyterLab, generace poznámkové bloky Jupyter a JupyterHub, je také k dispozici. Získat přístup, přihlaste se k JupyterHub a potom přejděte na adresu URL https:\// vaše-vm-ip:8000/uživatel/your-uživatelské jméno/testovací prostředí. JupyterLab můžete nastavit jako výchozí server poznámkového bloku tak, že přidáte tento řádek /etc/jupyterhub/jupyterhub_config.py:
 
     c.Spawner.default_url = '/lab'
 

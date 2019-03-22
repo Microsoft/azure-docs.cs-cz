@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 03/20/2019
 ms.author: bwren
-ms.openlocfilehash: 2309e7762ad36f59e0833e675e7012ee3c459e3e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c01cdb967fd7f9516b4403aa4f0c76f2577d5050
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997035"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294718"
 ---
 # <a name="standard-properties-in-azure-monitor-log-records"></a>Standardní vlastnosti ve službě Azure Monitor protokolování záznamů
 Data protokolu ve službě Azure Monitor je [uložené jako sady záznamů](../log-query/log-query-overview.md), každý s konkrétním datovým typem, který má jedinečnou sadu vlastností. Mnoho datových typů, bude mít standardní vlastnosti, které jsou společné pro více typů. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je použít v dotazech.
@@ -84,6 +84,18 @@ AzureActivity
    | summarize LoggedOnAccounts = makeset(Account) by _ResourceId 
 ) on _ResourceId  
 ```
+
+Následující dotaz analyzuje **_ResourceId** a datové svazky na předplatné Azure účtuje agregace.
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
+    resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
+| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last 
+```
+
+Pomocí těchto `union withsource = tt *` střídmě dotazy jsou nákladné ke spuštění kontrol napříč datové typy.
 
 ## <a name="isbillable"></a>\_IsBillable
  **\_IsBillable** vlastnost určuje, zda přijatých dat se dají fakturovat. Data s  **\_IsBillable** rovna _false_ se shromažďují zadarmo a není účtují ke svému účtu Azure.
