@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 300f0ddc8b738b5fd8578ed0b33cc15000c1098a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 70a11867dded3b7156f6b212ceb4756ee7c287f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101781"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079158"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Monitorování a upozornění na stav aplikace pomocí Azure Application Insights
 
@@ -69,18 +69,18 @@ Testy dostupnosti ve službě Application Insights umožňují automaticky otest
 ## <a name="create-an-alert-from-metrics"></a>Vytvořte výstrahu z metrik
 Kromě odesílání oznámení z test dostupnosti, můžete vytvořit výstrahy ze všech metrik výkonu, která se shromažďují pro vaši aplikaci.
 
-2. Vyberte **výstrahy** z **konfigurovat** nabídky.  Otevře se panel Azure Alerts.  Můžou existovat další pravidla upozornění nakonfigurované pro jiné služby.
-3. Klikněte na tlačítko **přidat upozornění metriky**.  Otevře se panel Chcete-li vytvořit nové pravidlo upozornění.
+1. Vyberte **výstrahy** z **konfigurovat** nabídky.  Otevře se panel Azure Alerts.  Můžou existovat další pravidla upozornění nakonfigurované pro jiné služby.
+1. Klikněte na tlačítko **přidat upozornění metriky**.  Otevře se panel Chcete-li vytvořit nové pravidlo upozornění.
 
     ![Přidat upozornění metriky](media/tutorial-alert/add-metric-alert.png)
 
-4. Zadejte **název** výstrahy pravidlo a vyberte svou aplikaci v rozevírací nabídce pro **prostředků**.
-5. Vyberte **metrika** vzorků.  Označuje hodnotu této žádosti za posledních 24 hodin se zobrazí graf.  To vám usnadní nastavení podmínky pro metriku.
+1. Zadejte **název** výstrahy pravidlo a vyberte svou aplikaci v rozevírací nabídce pro **prostředků**.
+1. Vyberte **metrika** vzorků.  Označuje hodnotu této žádosti za posledních 24 hodin se zobrazí graf.  To vám usnadní nastavení podmínky pro metriku.
 
     ![Přidání pravidla výstrahy](media/tutorial-alert/add-alert-01.png)
 
-6. Zadejte **podmínku** a **prahová hodnota** výstrahy. Toto je počet případů, kdy musí být překročen metriku pro výstrahu, který se má vytvořit. 
-6. V části **upozorňovat prostřednictvím** zkontrolujte **e-mailu vlastníci, přispěvatelé a čtenáři** pro odeslání e-mailu pro tyto uživatele, když se vyskytl výstražný stav je splněna a přidání e-mailové adresy všech dalších příjemců, kterým.  Můžete také zadat webhook nebo aplikaci logiky tady, která se spustí, když je splněna podmínka.  Toto může pokusit zmírnit zjištěný problém nebo 
+1. Zadejte **podmínku** a **prahová hodnota** výstrahy. Toto je počet případů, kdy musí být překročen metriku pro výstrahu, který se má vytvořit. 
+1. V části **upozorňovat prostřednictvím** zkontrolujte **e-mailu vlastníci, přispěvatelé a čtenáři** pro odeslání e-mailu pro tyto uživatele, když se vyskytl výstražný stav je splněna a přidání e-mailové adresy všech dalších příjemců, kterým.  Můžete také zadat webhook nebo aplikaci logiky tady, která se spustí, když je splněna podmínka.  Toto může pokusit zmírnit zjištěný problém nebo 
 
     ![Přidání pravidla výstrahy](media/tutorial-alert/add-alert-02.png)
 

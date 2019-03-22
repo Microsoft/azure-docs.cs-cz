@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a3ed13cfe764c4f94dfa50fd096cfc7a8ac7656d
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 81ee3c7da43aa4d81838c90f4e8f41d114da72b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673747"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900824"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>Kurz: Translator Speech aplikace vC#
 
@@ -40,7 +40,7 @@ Toto řešení sady Visual Studio také vytvoří instalační program pro aplik
 
 Potřebujete rovněž klíč předplatného pro službu Translator Speech, který si můžete opatřit na řídicím panelu Microsoft Azure. K dispozici je cenová úroveň Free, která umožňuje bezplatný překlad až 10 hodin řeči za měsíc. Tato úroveň je pro účely tohoto kurzu dostačující.
 
-Dále se vyžaduje [knihovna JSON.Net](https://www.newtonsoft.com/json) (od společnosti Newtonsoft). NuGet toto sestavení nainstaluje automaticky, pokud jsou v možnostech sady Visual Studio zaškrtnutá obě políčka pro obnovení balíčku.
+Třetí strany [JSON.NET knihovny](https://www.newtonsoft.com/json) (z Newtonsoft) je také nutný. NuGet toto sestavení nainstaluje automaticky, pokud jsou v možnostech sady Visual Studio zaškrtnutá obě políčka pro obnovení balíčku.
 
 ## <a name="trying-the-translation-app"></a>Vyzkoušení aplikace pro překlad
 

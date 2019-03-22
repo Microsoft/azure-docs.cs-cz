@@ -6,15 +6,15 @@ keywords: Galerie, dílčí klip, kódování, médií
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 02/10/2019
+ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: a67315287f90143701ca38b9f42e243b2d4913a3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 51848b9ba4d18b3ac7d652cfbd97cab6b85f2ee8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437696"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842358"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Vytvářet s Azure Media Clipperem
 Tato část popisuje, jak začít s Azure Media Clipperem základní kroky. Oddíly, které následují poskytují podrobnosti o tom, jak konfigurovat Azure Media Clipperem.
@@ -100,7 +100,7 @@ Parametry pro volání metody inicializace jsou:
 - `height` {VOLITELNÉ, number} Celkový počet výšku widgetu (minimální výška bude 600 px bez podokno prostředky a 850 px s podoknem prostředky).
 - `subclippingMode` (Volitelné tam,: {"vše", "vykreslení", "filtrování"}): Režimy oříznutím, povolené. Výchozí hodnota je vše.
 - `filterAssetsTypes` (Volitelné, logická hodnota): filterAssetsTypes umožňuje zobrazit nebo skrýt filtry rozevíracího seznamu v podokně prostředků. Výchozí hodnota je true.
-- `speedLevels` (Volitelné, pole): speedLevels umožňuje nastavení úrovně jinou rychlost pro přehrávač videa, naleznete v tématu [dokumentace ke službě Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions) pro další informace.
+- `speedLevels` (Volitelné, pole): speedLevels umožňuje nastavení úrovně jinou rychlost pro přehrávač videa, naleznete v tématu [dokumentace ke službě Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions) pro další informace.
 - `resetOnJobDone` (Volitelné, logická hodnota): umožňuje resetOnJobDone Clipperem obnovit subclipperu počáteční stav, když se úloha se úspěšně odeslala.
 - `autoplayVideo` (Volitelné, logická hodnota): autoplayVideo umožňuje Clipperem pro automatické přehrání videa na zatížení. Výchozí hodnota je true.
 - `language` {VOLITELNÝ, řetězec}: jazyk nastaví jazyk widgetu. Pokud není zadán, pokusí se widgetu lokalizovat zprávy podle jazyka prohlížeče. Pokud žádný jazyk se detekuje v prohlížeči, ve widgetu výchozí hodnota je angličtina. Další informace najdete v tématu [konfigurace lokalizace](media-services-azure-media-clipper-localization.md) oddílu.
@@ -108,7 +108,7 @@ Parametry pro volání metody inicializace jsou:
 - `extraLanguages` (Volitelné, JSON): Parametr extraLanguages přidá do slovníku výchozí. nové jazyky. Další informace najdete v tématu [konfigurace lokalizace](media-services-azure-media-clipper-localization.md) oddílu.
 
 ## <a name="typescript-definition"></a>Definice TypeScript
-A [TypeScript](https://www.typescriptlang.org/) najdete soubor definice pro Clipperem [tady](http://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts).
+A [TypeScript](https://www.typescriptlang.org/) najdete soubor definice pro Clipperem [tady](https://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts).
 
 ## <a name="azure-media-clipper-api"></a>Azure Media Clipper API
 Tato část popisuje plochy rozhraní API poskytovaných Clipperem.

@@ -1,21 +1,21 @@
 ---
-title: Vytváření experimentů Machine Learning Studio z příkladů
+title: První kroky své experimenty z příkladů
 titleSuffix: Azure Machine Learning Studio
 description: Naučte se používat příklady experimentů se strojovým učením k vytváření nových experimentů s galerií Azure AI a Azure Machine Learning Studio.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 221f78dbeb6bfb0c76ac12280511a8d5a5138c38
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f88323069ed23f4a038ffa4a030b1c4d4541ec42
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453405"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861617"
 ---
 # <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>Vytvářet experimenty Azure Machine Learning Studio na základě funkčních příkladů v galerii Azure AI
 

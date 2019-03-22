@@ -1,5 +1,5 @@
 ---
-title: Převzetí - správce – nespravovaného adresáře Azure Active Directory | Dokumentace Microsoftu
+title: Správce převzetí nespravovaného adresáře – Azure Active Directory | Dokumentace Microsoftu
 description: Jak převzít kontrolu nad název domény DNS nespravovaného adresáře (stínové tenanta) v Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -10,19 +10,20 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/28/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f166555e2f21ed38e78e659ec181c2d5d90d6bf2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3f9a33b6bce8cef5bf790efeb43259dfb8013487
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886996"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202482"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Převzít kontrolu nad nespravovaného adresáře jako správce v Azure Active Directory
+
 Tento článek popisuje dva způsoby, jak převzít kontrolu nad název domény DNS nespravovaného adresáře v Azure Active Directory (Azure AD). Když se samoobslužný uživatel zaregistruje ke cloudové službě, která využívá Azure AD, přidá se do nespravovaného adresáře Azure AD na základě svojí e-mailové domény. Další informace o samoobslužné nebo "virálního" registrace pro službu, najdete v článku [co je Samoobslužná registrace do služby Azure Active Directory?](directory-self-service-signup.md)
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Rozhodnutí o způsobu převzít kontrolu nad nespravovaného adresáře
@@ -42,7 +43,7 @@ Některé produkty, které obsahují služby SharePoint a OneDrive, jako je Offi
 
 3. Potvrzení e-mailu z Power BI, vyberte **Ano, to jsem já**.
 
-4. Přihlaste se k [centra pro správu Office 365](https://portal.office.com/admintakeover) pomocí uživatelského účtu Power BI. Obdržíte zprávu, která dává pokyn k **stát se správcem** názvu domény, který už je ověřený v nespravovaného tenanta. Vyberte **Ano, chci se stát správcem**.
+4. Přihlaste se k [centra pro správu služeb Microsoft 365](https://admin.microsoft.com) pomocí uživatelského účtu Power BI. Obdržíte zprávu, která dává pokyn k **stát se správcem** názvu domény, který už je ověřený v nespravovaného tenanta. Vyberte **Ano, chci se stát správcem**.
   
    ![První obrazovka pro stát se správcem](./media/domains-admin-takeover/become-admin-first.png)
   
@@ -56,10 +57,10 @@ Po dokončení předchozích kroků nyní jste globální správce tenanta Fourt
 
 ### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Přidání názvu domény do nespravovaného tenanta na spravovaného ve službě Azure AD
 
-1. Otevřít [centra pro správu Office 365](https://portal.office.com/admintakeover).
+1. Otevřít [centra pro správu služeb Microsoft 365](https://admin.microsoft.com).
 2. Vyberte **uživatelé** kartu a vytvořit nový uživatelský účet s názvem, jako je *uživatele\@fourthcoffeexyz.onmicrosoft.com* , který nepoužívá vlastního názvu domény. 
 3. Ujistěte se, že nový uživatelský účet má oprávnění globálního správce pro tenanta Azure AD.
-4. Otevřít **domén** kartě v Centru pro správu Office 365, vyberte název domény a vyberte **odebrat**. 
+4. Otevřít **domén** kartě v Centru pro správu služeb Microsoft 365, vyberte název domény a vyberte **odebrat**. 
   
    ![odebrat název domény z Office 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
@@ -69,7 +70,7 @@ Po dokončení předchozích kroků nyní jste globální správce tenanta Fourt
   
 7. Vyberte **vlastní názvy domén**, pak přidejte název domény. Budete muset zadat záznamy DNS TXT ověřit vlastnictví názvu domény. 
   
-   ![doména přidána do služby Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
+   ![doména se ověřila přidat do služby Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
 > Všechny uživatele služby Power BI nebo Azure Rights Management, kteří mají licenci přidělenou v tenantovi Office 365 musíte uložit svoje řídicí panely, pokud je odebrat název domény. Musíte se přihlásit pomocí uživatelského jména, jako je *uživatele\@fourthcoffeexyz.onmicrosoft.com* spíše než *uživatele\@fourthcoffee.xyz*.
@@ -132,7 +133,7 @@ cmdlet | Využití
 ### <a name="powershell-example"></a>Příklad PowerShellu
 
 1. Připojení k Azure AD pomocí přihlašovacích údajů, které byly použity na nabídku samoobslužné služby:
-   ```
+   ```powershell
     Install-Module -Name MSOnline
     $msolcred = get-credential
     
@@ -140,11 +141,11 @@ cmdlet | Využití
    ```
 2. Získáte seznam domén:
   
-   ```
+   ```powershell
     Get-MsolDomain
    ```
 3. Spuštěním rutiny Get-MsolDomainVerificationDns způsobit:
-   ```
+   ```powershell
     Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
   
     For example:
@@ -153,25 +154,26 @@ cmdlet | Využití
    ```
 
 4. Zkopírujte hodnotu (výzva), která je vrácena z tohoto příkazu. Příklad:
-   ```
+   ```powershell
     MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
 5. Ve vašem oboru názvů veřejné DNS vytvořte záznam DNS txt, který obsahuje hodnotu, kterou jste zkopírovali v předchozím kroku. Název tohoto záznamu je název nadřazené domény, takže pokud vytvoříte tento záznam o prostředku DNS role ze systému Windows Server, ponechte název prázdné a stačí vložit záznam hodnotu do textového pole.
 6. Spusťte rutinu Confirm-MsolDomain ověření před obrovskou výzvou –:
   
-   ```
+   ```powershell
     Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
    ```
   
    Příklad:
   
-   ```
+   ```powershell
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
    ```
 
 Úspěšné výzvy se vrátíte na příkazový řádek bez chyby.
 
 ## <a name="next-steps"></a>Další postup
+
 * [Přidání vlastního názvu domény do Azure AD](../fundamentals/add-custom-domain.md)
 * [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: 336903b6cd451e25f7c696e445be724989c39996
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 648369d89bd2b5b08171e1f6f5482c81bfba3c66
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761935"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010340"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-with-terraform-in-azure"></a>Kurz: Vytvoření centra hvězdicové hybridní topologie sítě s využitím Terraformu v Azure
 
@@ -81,7 +81,7 @@ Při práci prostřednictvím jednotlivých kurzu této série, různé součás
 
 Vytvoření adresáře, který obsahuje konfigurační soubory Terraformu pro tuto ukázku.
 
-1. Přejděte na web [Azure Portal](http://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
 1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview). Pokud jste prostředí ještě nevybrali, vyberte prostředí **Bash**.
 

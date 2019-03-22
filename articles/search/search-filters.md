@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 539a7fc5b9d3038424059f1ee599c6966a968781
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a9e8d2cbc067fd92208fac778ba17c58bdc7a5e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629591"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079141"
 ---
 # <a name="filters-in-azure-search"></a>Filtry ve službě Azure Search 
 
@@ -32,17 +32,17 @@ Ukázkové scénáře zahrnují následující:
 
 1. Pomocí filtru do průřezu zahrnout indexu na základě hodnot dat v indexu. Zadané schéma s Město, bydlení typu a zařízení, můžete například vytvořit filtr pro explicitní výběr dokumenty, které splňují vaše kritéria (v Praze, condos, waterfront). 
 
-  Fulltextové vyhledávání se stejnými vstupy často vytváří podobné výsledky, ale v tom, že vyžaduje přesnou shodu období filtr obsahu v indexu je přesnější filtru. 
+   Fulltextové vyhledávání se stejnými vstupy často vytváří podobné výsledky, ale v tom, že vyžaduje přesnou shodu období filtr obsahu v indexu je přesnější filtru. 
 
 2. Pokud vyhledávání se dodává s filtru požadavků pomocí filtru:
 
- * [Fasetová navigace](search-faceted-navigation.md) používá filtr, aby předávání zpátky kategorie omezující vlastnost vybrané uživatelem.
- * Geografické vyhledávání používá filtr, aby předat souřadnice aktuálního umístění v "najít poblíž" aplikace. 
- * Filtry zabezpečení předat identifikátory zabezpečení jako kritéria filtru, kde se shoda v indexu slouží jako proxy pro přístupová práva k dokumentu.
+   * [Fasetová navigace](search-faceted-navigation.md) používá filtr, aby předávání zpátky kategorie omezující vlastnost vybrané uživatelem.
+   * Geografické vyhledávání používá filtr, aby předat souřadnice aktuálního umístění v "najít poblíž" aplikace. 
+   * Filtry zabezpečení předat identifikátory zabezpečení jako kritéria filtru, kde se shoda v indexu slouží jako proxy pro přístupová práva k dokumentu.
 
 3. Pokud chcete kritéria vyhledávání pro číselné pole, použijte filtr. 
 
-  Číselná pole se retrievable v dokumentu a může zobrazit ve výsledcích hledání, ale nejsou prohledávatelná (v souladu s fulltextové vyhledávání) samostatně. Pokud potřebujete kritéria pro výběr na základě číselných dat, použijte filtr.
+   Číselná pole se retrievable v dokumentu a může zobrazit ve výsledcích hledání, ale nejsou prohledávatelná (v souladu s fulltextové vyhledávání) samostatně. Pokud potřebujete kritéria pro výběr na základě číselných dat, použijte filtr.
 
 ### <a name="alternative-methods-for-reducing-scope"></a>Alternativní metody pro snížení oboru
 
@@ -141,10 +141,8 @@ V sadě .NET SDK dají filtrovat je *vypnout* ve výchozím nastavení. Rozhran�
 
 Pokud chcete provést filtrování pole se nedají filtrovat, budete muset přidat nové pole, nebo znovu vytvořit existující pole. Fyzická struktura indexu mění definici pole mění. Ve službě Azure Search jsou všechny cesty byl povolen přístup indexovány pro rychlost rychlé dotazu, což vyžaduje opětovné sestavení datových struktur při změně definice pole. 
 
-Znovu sestavit jednotlivá pole může být operace malý vliv, vyžaduje pouze operace sloučení, která odesílá existující klíč dokumentu a přidružené hodnoty do indexu, zůstanou nedotčena zbytek každého dokumentu. Pokud narazíte na požadavek na opětovné sestavení, najdete v článku instrukce prostřednictvím následujících odkazů:
+Znovu sestavit jednotlivá pole může být operace malý vliv, vyžaduje pouze operace sloučení, která odesílá existující klíč dokumentu a přidružené hodnoty do indexu, zůstanou nedotčena zbytek každého dokumentu. Pokud narazíte na požadavek na opětovné sestavení, naleznete v tématu [akce indexování (odeslání, sloučení, mergeOrUpload, odstranění)](search-what-is-data-import.md#indexing-actions) seznam možností.
 
- + [Indexování akce pomocí sady .NET SDK](https://docs.microsoft.com/azure/search/search-import-data-dotnet#decide-which-indexing-action-to-use)
- + [Indexování akce pomocí rozhraní REST API](https://docs.microsoft.com/azure/search/search-import-data-rest-api#decide-which-indexing-action-to-use)
 
 ## <a name="text-filter-fundamentals"></a>Základy text filtru
 
@@ -157,8 +155,8 @@ Textové řetězce jsou malá a velká písmena. Neexistuje žádné nižší-ma
 
 | Přístup | Popis | 
 |----------|-------------|
-| [Search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Funkci poskytování čárkami oddělený seznam řetězců pro dané pole. Řetězce tvoří kritéria filtru, které se použijí pro všechna pole v oboru pro dotaz. <br/><br/>`search.in(f, ‘a, b, c’)` je sémanticky ekvivalentní `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`, s tím rozdílem, že provede mnohem rychleji, je-li seznam hodnot velké.<br/><br/>Doporučujeme, abyste **Hledat.v** fungovat [filtry zabezpečení](search-security-trimming-for-azure-search.md) a pro všechny filtry se skládá z nezpracované text, který má být porovnáváno podle hodnot v daném poli. Tento přístup je určený pro rychlost. Můžete očekávat subsecond doba odezvy pro stovky až tisíce hodnoty. Neplatí žádné explicitní limitu počtu položek, které můžete předat do funkce, zvyšuje latenci poměru k počtu řetězců, které zadáte. | 
-| [Search.IsMatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Funkce, která umožňuje kombinovat fulltextové vyhledávání operace s operacemi výhradně Booleovský filtr ve stejném výrazu filtru. Umožňuje více kombinací filtr dotazu v jedné žádosti. Můžete ji také používat *obsahuje* filtr na částečné řetězce v rámci většího řetězce. |  
+| [search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Funkci poskytování čárkami oddělený seznam řetězců pro dané pole. Řetězce tvoří kritéria filtru, které se použijí pro všechna pole v oboru pro dotaz. <br/><br/>`search.in(f, ‘a, b, c’)` je sémanticky ekvivalentní `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`, s tím rozdílem, že provede mnohem rychleji, je-li seznam hodnot velké.<br/><br/>Doporučujeme, abyste **Hledat.v** fungovat [filtry zabezpečení](search-security-trimming-for-azure-search.md) a pro všechny filtry se skládá z nezpracované text, který má být porovnáváno podle hodnot v daném poli. Tento přístup je určený pro rychlost. Můžete očekávat subsecond doba odezvy pro stovky až tisíce hodnoty. Neplatí žádné explicitní limitu počtu položek, které můžete předat do funkce, zvyšuje latenci poměru k počtu řetězců, které zadáte. | 
+| [search.ismatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Funkce, která umožňuje kombinovat fulltextové vyhledávání operace s operacemi výhradně Booleovský filtr ve stejném výrazu filtru. Umožňuje více kombinací filtr dotazu v jedné žádosti. Můžete ji také používat *obsahuje* filtr na částečné řetězce v rámci většího řetězce. |  
 | [$filter = řetězec pole – operátor](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Uživatelem definovaný výraz se skládá z pole, operátory a hodnoty. | 
 
 ## <a name="numeric-filter-fundamentals"></a>Základy číselný filtr

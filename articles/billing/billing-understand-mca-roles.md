@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 9b14174541117878d7fd98b79d1cd139babb1027
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 780870cc71e95507a52ba6a9338026f895a96ac1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543453"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834893"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Vysvětlení smlouvy zákazníků společnosti Microsoft pro správu role v Azure
 
 Ke správě vašeho fakturačního účtu zákaznické smlouvy Microsoft, pomocí role popsané v následujících částech. Tyto role jsou kromě předdefinované role, které Azure nabízí pro řízení přístupu k prostředkům. Další informace najdete v tématu [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md).
 
-Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Zaškrtněte, pokud máte přístup k zákaznické smlouvy Microsoft](#check-your-access-to-a-microsoft-customer-agreement).
+Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. Zaškrtněte, pokud máte přístup k zákaznické smlouvy společnosti Microsoft.
 
 ## <a name="billing-role-definitions"></a>Fakturace definice rolí
 
@@ -44,7 +44,7 @@ Následující tabulka popisuje fakturace rolí umožňuje spravovat vaše faktu
 |Čtenář oddílu faktur|Zobrazení jen pro čtení všeho v části faktury|
 |Tvůrce předplatného Azure|Vytvářet předplatná Azure|
 
-## <a name="billing-account-roles-and-tasks"></a>Fakturace účtu role a úlohy
+## <a name="billing-account-roles-and-tasks"></a>Role a úlohy fakturačního účtu
 
 Fakturační účet vám umožní spravovat fakturaci pro vaši organizaci. Fakturační účet můžete uspořádat nákladů, sledování nákladů a faktury a řízení přístupu k fakturaci pro vaši organizaci. Další informace najdete v tématu [pochopit fakturační účet](billing-mca-overview.md#understand-billing-account).
 
@@ -90,7 +90,7 @@ Jakou roli, budete potřebovat k provádění úloh v rámci fakturačního úč
 |---|---|---|---|
 |Zobrazit všechna předplatná Azure ve fakturačním účtu|✔|✔|✔|
 
-## <a name="billing-profile-roles-and-tasks"></a>Fakturační profil role a úlohy
+## <a name="billing-profile-roles-and-tasks"></a>Role a úlohy fakturačního profilu
 
 Fakturační profil vám umožní spravovat faktury a platby. Měsíční faktuře se vygeneruje pro předplatná Azure a další produkty nákupu využít fakturační profil. Pomocí metody platby zaplatit fakturu. Další informace najdete v tématu [pochopit fakturaci profily](billing-mca-overview.md#understand-billing-profiles).
 
@@ -140,7 +140,7 @@ Následující tabulky popisují, jaké role je potřeba dokončit úlohy v rám
 |---|---|---|---|---|---|---|---|
 |Zobrazit všechna předplatná Azure pro fakturační profil|✔|✔|✔|✔|✔|✔|✔|
 
-## <a name="invoice-section-roles-and-tasks"></a>Role části faktury a úlohy
+## <a name="invoice-section-roles-and-tasks"></a>Role a úlohy oddílu faktury
 
 Oddíl faktury umožňuje uspořádat náklady na vaší faktuře. Můžete vytvořit části uspořádat svoje náklady podle oddělení, vývojové prostředí, nebo na základě potřeb vaší organizace. Dalším osobám udělit oprávnění vytvářet předplatná Azure pro oddíl. Poplatky za využívání a nákup předplatných a zobrazit v části faktury. Další informace najdete v tématu [části faktury porozumění](billing-mca-overview.md#understand-invoice-sections).
 
@@ -148,11 +148,11 @@ Následující tabulky popisují, jaké role, které potřebujete k provádění
 
 ### <a name="manage-invoice-section-permissions-and-properties"></a>Spravovat oprávnění části faktury a vlastnosti
 
-|Úlohy|Vlastník oddílu faktur|Přispěvatel oddílu faktur|Čtenář oddílu faktur|Tvůrce předplatného Azure|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu
-|---|---|---|---|---|---|---|---|
-|Zobrazit všechna oprávnění v části faktury|✔|✔|✔|✔|✔|✔|✔|
-|Ostatním uživatelům oprávnění k zobrazení a správa části faktury|✔|✘|✘|✘|✘|✘|✘|
-|Zobrazit vlastnosti části faktury|✔|✔|✔|✔|✔|✔|✔|
+|Úlohy|Vlastník oddílu faktur|Přispěvatel oddílu faktur|Čtenář oddílu faktur|Tvůrce předplatného Azure|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu | |
+|---|---|---|---|---|---|---|---|---|
+|Zobrazit všechna oprávnění v části faktury|✔|✔|✔|✔|✔|✔|✔| |
+|Ostatním uživatelům oprávnění k zobrazení a správa části faktury|✔|✘|✘|✘|✘|✘|✘| |
+|Zobrazit vlastnosti části faktury|✔|✔|✔|✔|✔|✔|✔| |
 |Aktualizovat vlastnosti části faktury|✔|✔|✘|✘|✘|✘|✘|✘|
 
 ### <a name="manage-products-for-invoice-section"></a>Správa produktů pro části faktury
@@ -171,7 +171,7 @@ Následující tabulky popisují, jaké role, které potřebujete k provádění
 |Změna části faktury pro předplatná|✔|✔|✘|✘|✘|✘|✘|
 |Požádat o vlastnictví fakturace předplatného uživatele v jiné fakturační účty|✔|✔|✘|✘|✘|✘|✘|
 
-## <a name="subscription-billing-roles-and-tasks"></a>Fakturace předplatného role a úlohy
+## <a name="subscription-billing-roles-and-tasks"></a>Role a úlohy fakturace předplatného
 
 Následující tabulka ukazuje, jakou roli, budete potřebovat k provádění úloh v rámci předplatného.
 

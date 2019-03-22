@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: cdaa151f0603cddc9ca1bf17b0ff304f646cfdde
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e826c7a3fc12e819fd6f145d42b7381087d5970c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462830"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000237"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Import dat do úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 
@@ -29,7 +29,7 @@ Než začnete vytvářet úlohy importu pro přenos dat do služby Azure Blob St
     - Informace o kontejneru úložiště, přejděte na [vytvořit kontejner úložiště](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
 - Používejte odpovídající počet disků [podporované typy](storage-import-export-requirements.md#supported-disks). 
 - K dispozici systém Windows [verze operačního systému nepodporuje](storage-import-export-requirements.md#supported-operating-systems). 
-- Povolení nástroje BitLocker v systému Windows. Zobrazit [jak zapnout BitLocker](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
+- Povolení nástroje BitLocker v systému Windows. Zobrazit [jak zapnout BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 - [Stáhněte si WAImportExport verze 1](https://aka.ms/waiev1) v systému Windows. Rozbalte do výchozí složky `waimportexportv1`. Například, `C:\WaImportExportV1`.
 - Máte účet FedEx/DHL.  
     - Účet musí být platná, by měl mít vyrovnávání a musí mít vrácení funkce.
@@ -47,7 +47,7 @@ Proveďte následující kroky pro přípravu disků.
 
 1.  Připojte diskové jednotky systému Windows přes SATA konektory.
 1.  Vytvořte jeden svazek NTFS na každou jednotku. Přiřazení písmene jednotky svazku. Nepoužívejte přípojné body.
-2.  Povolíte šifrování nástrojem BitLocker na svazku NTFS. Pokud používáte systém Windows Server, postupujte podle pokynů v [jak zapnout BitLocker ve Windows serveru 2012 R2](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
+2.  Povolíte šifrování nástrojem BitLocker na svazku NTFS. Pokud používáte systém Windows Server, postupujte podle pokynů v [jak zapnout BitLocker ve Windows serveru 2012 R2](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 3.  Kopírování dat do zašifrovaného svazku. Pomocí přetahování nebo Robocopy nebo takový nástroj pro kopírování.
 4.  Otevřete okno Powershellu nebo příkazového řádku s oprávněními správce. Přejít ke složce rozbaleny, spusťte následující příkaz:
     
@@ -94,14 +94,14 @@ Proveďte následující kroky k vytvoření úlohy importu na webu Azure Portal
 
 4. V **Základy**:
 
-    - Vyberte **Import do Azure**.
-    - Zadejte popisný název úlohy importu. Použijte název sledovat průběh úlohy.
-        - Název může obsahovat jenom malá písmena, číslice a pomlčky.
-        - Název musí začínat písmenem a nesmí obsahovat mezery.
-    - Vyberte předplatné.
-    - Zadejte nebo vyberte skupinu prostředků.  
+   - Vyberte **Import do Azure**.
+   - Zadejte popisný název úlohy importu. Použijte název sledovat průběh úlohy.
+       - Název může obsahovat jenom malá písmena, číslice a pomlčky.
+       - Název musí začínat písmenem a nesmí obsahovat mezery.
+   - Vyberte předplatné.
+   - Zadejte nebo vyberte skupinu prostředků.  
 
-    ![Vytvoření úlohy importu – krok 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+     ![Vytvoření úlohy importu – krok 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
 3. V **podrobnosti úlohy**:
 
@@ -113,21 +113,21 @@ Proveďte následující kroky k vytvoření úlohy importu na webu Azure Portal
 
 4. V **vrátí informace o expedici**:
 
-    - Z rozevíracího seznamu vyberte operátorovi.
-    - Zadejte číslo účtu dopravce platný, kterou jste vytvořili pomocí tohoto operátora. Tento účet Microsoft používá k odeslání jednotky zpět po dokončení úlohy import. Pokud nemáte číslo účtu, vytvořte [FedEx](http://www.fedex.com/us/oadr/) nebo [DHL](http://www.dhl.com/) účtu dopravce.
-    - Zadejte úplné a platné jméno kontaktní osoby, telefonu, e-mailu, adresu, Město, zip, stát/kraj a země/oblast. 
+   - Z rozevíracího seznamu vyberte operátorovi.
+   - Zadejte číslo účtu dopravce platný, kterou jste vytvořili pomocí tohoto operátora. Tento účet Microsoft používá k odeslání jednotky zpět po dokončení úlohy import. Pokud nemáte číslo účtu, vytvořte [FedEx](https://www.fedex.com/us/oadr/) nebo [DHL](http://www.dhl.com/) účtu dopravce.
+   - Zadejte úplné a platné jméno kontaktní osoby, telefonu, e-mailu, adresu, Město, zip, stát/kraj a země/oblast. 
         
-        > [!TIP] 
-        > Místo zadání e-mailovou adresu pro jednoho uživatele, zadejte e-mailů skupiny. Tím se zajistí, že budete dostávat oznámení, i když opustí správcem.
+       > [!TIP] 
+       > Místo zadání e-mailovou adresu pro jednoho uživatele, zadejte e-mailů skupiny. Tím se zajistí, že budete dostávat oznámení, i když opustí správcem.
 
-    ![Vytvoření úlohy importu – krok 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+     ![Vytvoření úlohy importu – krok 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
    
 5. V **Souhrn**:
 
-    - Projděte si informace o úlohách, které jsou k dispozici v souhrnu. Poznamenejte si název úlohy a datového centra Azure dodací adresa dodávat disky zpátky do Azure. Tyto informace se použije v pozdější na Expediční štítek.
-    - Klikněte na tlačítko **OK** k vytvoření úlohy importu.
+   - Projděte si informace o úlohách, které jsou k dispozici v souhrnu. Poznamenejte si název úlohy a datového centra Azure dodací adresa dodávat disky zpátky do Azure. Tyto informace se použije v pozdější na Expediční štítek.
+   - Klikněte na tlačítko **OK** k vytvoření úlohy importu.
 
-    ![Vytvoření úlohy importu – krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+     ![Vytvoření úlohy importu – krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
 ## <a name="step-3-ship-the-drives"></a>Krok 3: Dodávejte jednotky 
 

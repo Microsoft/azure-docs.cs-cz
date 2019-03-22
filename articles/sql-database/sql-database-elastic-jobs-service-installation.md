@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 67b9be6f7788acd44ac60fe0c71133d69a2c122e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
-ms.translationtype: MT
+ms.openlocfilehash: a1e1be24f9cb6d762d5480385843e9a5356d4a29
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313833"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889777"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Přehled instalace úloh elastické databáze
 
@@ -27,12 +27,12 @@ ms.locfileid: "57313833"
 
 [**Úlohy elastic Database** ](sql-database-elastic-jobs-overview.md) lze nainstalovat pomocí Powershellu nebo na webu Azure portal. Můžete získat přístup k vytváření a Správa úloh pomocí rozhraní API prostředí PowerShell, pouze v případě, že balíček nainstalujete, prostředí PowerShell. Kromě toho rozhraní API prostředí PowerShell poskytuje výrazně víc funkcí než na portálu v daném okamžiku.
 
-Pokud jste již nainstalovali **úlohy elastické databáze** prostřednictvím portálu ze stávajícího **elastického fondu**, nejnovější verze prostředí Powershell preview obsahuje skripty pro upgrade existující instalace. Důrazně doporučujeme upgradovat na nejnovější verzi vaší instalace **úlohy elastické databáze** komponenty, abyste mohli využívat nové funkce, které jsou zveřejňovány prostřednictvím rozhraní API Powershellu.
+Pokud jste již nainstalovali **úlohy elastické databáze** prostřednictvím portálu ze stávajícího **elastického fondu**, nejnovější verze prostředí PowerShell preview obsahuje skripty pro upgrade existující instalace. Důrazně doporučujeme upgradovat na nejnovější verzi vaší instalace **úlohy elastické databáze** komponenty, abyste mohli využívat nové funkce, které jsou zveřejňovány prostřednictvím rozhraní API Powershellu.
 
 ## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure. Bezplatná zkušební verze, najdete v části [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 * Azure PowerShell Nainstalujte nejnovější verzi pomocí [instalačního programu webové platformy](https://go.microsoft.com/fwlink/p/?linkid=320376). Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
-* [Nástroje příkazového řádku NuGet](https://nuget.org/nuget.exe) se používá k instalaci balíčku úlohy elastické databáze. Další informace naleznete v tématu http://docs.nuget.org/docs/start-here/installing-nuget.
+* [Nástroje příkazového řádku NuGet](https://nuget.org/nuget.exe) se používá k instalaci balíčku úlohy elastické databáze. Další informace naleznete v tématu https://docs.nuget.org/docs/start-here/installing-nuget.
 
 ## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Stažení a import balíčků Elastic Database úlohy Powershellu
 1. Spusťte okno příkazového řádku Microsoft Azure Powershellu a přejděte do adresáře, kam jste stáhli nástroje příkazového řádku NuGet (nuget.exe).
@@ -75,9 +75,7 @@ Pro požadované nastavení, lze upravit parametry uvedené v této ukázkové v
     <td>Poskytuje název skupiny prostředků Azure vytvořené tak, aby obsahovala nově vytvořený komponenty Azure. Tento parametr výchozí hodnotu "__ElasticDatabaseJob". Nedoporučujeme tuto hodnotu změnit.</td>
     </tr>
 
-</tr>
-
-    <tr>
+<tr>
     <td>ResourceGroupLocation</td>
     <td>Poskytuje umístění Azure, který má být použit pro nově vytvořený komponenty Azure. Tento parametr nastaví jako výchozí umístění střed USA.</td>
 </tr>
@@ -85,28 +83,24 @@ Pro požadované nastavení, lze upravit parametry uvedené v této ukázkové v
 <tr>
     <td>ServiceWorkerCount</td>
     <td>Obsahuje počet pracovních procesů služby k instalaci. Tento parametr výchozí hodnotu 1. Vyšší počet pracovních procesů lze použít pro horizontální navýšení kapacity služby a k zajištění vysoké dostupnosti. Doporučujeme použít pro nasazení, které vyžadují vysokou dostupnost služby "2".</td>
-    </tr>
-
 </tr>
-    <tr>
+
+<tr>
     <td>ServiceVmSize</td>
     <td>Poskytuje velikost virtuálního počítače pro použití v rámci cloudové služby. Výchozí hodnota tohoto parametru A0. Hodnoty parametrů... /.. / A3 nepřijmou, což způsobí, že roli pracovního procesu, který chcete použít pro velikost ExtraSmall/malé/střední/velký v uvedeném pořadí. Další informace o velikosti rolí pracovního procesu, viz Fo [úlohy elastické databáze komponenty a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerDatabaseSlo</td>
     <td>Poskytuje výpočetního prostředí pro edici Standard. Tento parametr výchozí hodnotu S0. Hodnoty parametru findwebconfigpath... /.. /.. /.. / S9 a S12 na úrovni Standard jsou přijímány, což způsobí, že Azure SQL Database k použití příslušného výpočetního prostředí. Další informace o velikostech výpočetních SQL Database, najdete v části [úlohy elastické databáze komponenty a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerAdministratorUserName</td>
     <td>Poskytuje uživatelské jméno správce pro nově vytvořený server Azure SQL Database. Pokud není zadán, otevře se okno přihlašovacích údajů prostředí PowerShell na výzvu k zadání přihlašovacích údajů.</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerAdministratorPassword</td>
     <td>Poskytuje heslo správce pro nově vytvořený server Azure SQL Database. Pokud není zadaný, otevře se okno přihlašovacích údajů prostředí PowerShell na výzvu k zadání přihlašovacích údajů.</td>
 </tr>
@@ -131,22 +125,17 @@ Velikost virtuálního počítače při instalaci aktualizace, spusťte následu
   <th>Popis</th>
 </tr>
 
-  <tr>
+<tr>
     <td>ResourceGroupName</td>
     <td>Určuje název skupiny prostředků Azure při byly původně nainstalované komponenty úlohy elastické databáze. Tento parametr výchozí hodnotu "__ElasticDatabaseJob". Protože nedoporučuje se tuto hodnotu změnit, není nutné tento parametr zadán.</td>
-    </tr>
 </tr>
 
-</tr>
-
-  <tr>
+<tr>
     <td>ServiceWorkerCount</td>
     <td>Obsahuje počet pracovních procesů služby k instalaci.  Tento parametr výchozí hodnotu 1.  Vyšší počet pracovních procesů lze použít pro horizontální navýšení kapacity služby a k zajištění vysoké dostupnosti.  Doporučujeme použít pro nasazení, které vyžadují vysokou dostupnost služby "2".</td>
 </tr>
 
-</tr>
-
-    <tr>
+<tr>
     <td>ServiceVmSize</td>
     <td>Poskytuje velikost virtuálního počítače pro použití v rámci cloudové služby. Výchozí hodnota tohoto parametru A0. Hodnoty parametrů... /.. / A3 nepřijmou, což způsobí, že roli pracovního procesu, který chcete použít pro velikost ExtraSmall/malé/střední/velký v uvedeném pořadí. Další informace o velikosti rolí pracovního procesu, viz Fo [úlohy elastické databáze komponenty a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>

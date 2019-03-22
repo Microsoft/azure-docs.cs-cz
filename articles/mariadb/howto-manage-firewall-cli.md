@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 11/10/2018
-ms.openlocfilehash: a2f0d775f061ab221092c9354d9d04b9241c9430
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f457246b429062625e6542cfdaf00f3526a85209
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543882"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083228"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Vytváření a správa Azure Database pro MariaDB pravidla brány firewall pomocí Azure CLI
 Pravidla brány firewall na úrovni serveru umožňuje správcům spravovat přístup ke službě Azure Database pro MariaDB Server z konkrétní IP adresu nebo rozsah IP adres. Použití vhodné příkazy rozhraní příkazového řádku Azure, můžete vytvořit, aktualizovat, odstranit, seznam a zobrazit pravidla brány firewall pro správu serveru. Přehled služby Azure Database pro MariaDB brány firewall naleznete v tématu [– Azure Database pro MariaDB pravidla brány firewall serveru](./concepts-firewall-rules.md)
@@ -25,20 +25,20 @@ Pravidla brány firewall na úrovni serveru umožňuje správcům spravovat př�
 **Az mariadb server firewall-rule** je pomocí příkazu z příkazového řádku Azure vytvářet, odstraňovat, seznamu, zobrazit a aktualizovat pravidla brány firewall.
 
 Příkazy:
-- **vytvoření**: Vytvoření pravidla brány firewall serveru Azure MariaDB.
+- **Vytvoření**: Vytvoření pravidla brány firewall serveru Azure MariaDB.
 - **Odstranit**: Odstranění pravidla brány firewall serveru Azure MariaDB.
 - **Seznam**: Seznam pravidel brány firewall serveru Azure MariaDB.
 - **Zobrazit**: Zobrazí podrobnosti o serveru Azure MariaDB pravidlo brány firewall.
-- **Aktualizace**: Aktualizujte pravidlo brány firewall serveru Azure MariaDB.
+- **update**: Aktualizujte pravidlo brány firewall serveru Azure MariaDB.
 
 ## <a name="log-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>Připojte se k Azure a seznamu Azure Database pro MariaDB servery
 Bezpečně připojit pomocí rozhraní příkazového řádku Azure pomocí svého účtu Azure **az login** příkazu.
 
 1. Z příkazového řádku spusťte následující příkaz:
-```azurecli
-az login
-```
-Tento příkaz vypíše kód, který použijete v dalším kroku.
+   ```azurecli
+   az login
+   ```
+   Tento příkaz vypíše kód, který použijete v dalším kroku.
 
 2. Použít webový prohlížeč a otevřete tak stránku [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin)a pak zadejte kód.
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: a2ecc2b0b8bfcf65d2ba566b8524a0c37c89ab78
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8aa62e4ed65f8223071786ac165f8343cb6901d5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980546"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079090"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(NEPOUŽÍVANÉ) Úplný kanál CI/CD pro nasazení aplikace ve službě Azure Container Service s modulem ACS a režimu Docker Swarm pomocí Azure DevOps
 
@@ -163,21 +163,21 @@ Budete potřebovat dva kroky Dockeru pro každé bitové kopie, jeden pro sestav
 
    ![Azure DevOps – přidání úlohy pomocí příkazového řádku](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-command-task.png)
 
-      1. Úlohu příkazového řádku pomocí skriptu bash nahrazuje *RegistryURL* výskytu v souboru docker-compose.yml RegistryURL proměnnou. 
+   1. Úlohu příkazového řádku pomocí skriptu bash nahrazuje *RegistryURL* výskytu v souboru docker-compose.yml RegistryURL proměnnou. 
     
-          ```-c "sed -i 's/RegistryUrl/$(RegistryURL)/g' src/docker-compose-v3.yml"```
+       ```-c "sed -i 's/RegistryUrl/$(RegistryURL)/g' src/docker-compose-v3.yml"```
 
-          ![Azure DevOps – soubor Compose aktualizace se adresa URL registru](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
+       ![Azure DevOps – soubor Compose aktualizace se adresa URL registru](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
 
-      2. Úlohu příkazového řádku pomocí skriptu bash nahrazuje *AgentURL* výskytu v souboru docker-compose.yml AgentURL proměnnou.
+   2. Úlohu příkazového řádku pomocí skriptu bash nahrazuje *AgentURL* výskytu v souboru docker-compose.yml AgentURL proměnnou.
   
-          ```-c "sed -i 's/AgentUrl/$(AgentURL)/g' src/docker-compose-v3.yml"```
+       ```-c "sed -i 's/AgentUrl/$(AgentURL)/g' src/docker-compose-v3.yml"```
 
-     3. Úloha, která sníží aktualizovaný soubor Compose jako artefakt sestavení, takže ho můžete použít ve vydané verzi. Podívejte se na následující obrazovce podrobnosti.
+      1. Úloha, která sníží aktualizovaný soubor Compose jako artefakt sestavení, takže ho můžete použít ve vydané verzi. Podívejte se na následující obrazovce podrobnosti.
 
-         ![Azure DevOps – publikování artefaktů](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish.png) 
+      ![Azure DevOps – publikování artefaktů](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish.png) 
 
-         ![Publikování Azure DevOps – vytvořit soubor](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish-compose.png) 
+      ![Publikování Azure DevOps – vytvořit soubor](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish-compose.png) 
 
 5. Klikněte na tlačítko **Uložit & frontu** k otestování vašeho kanálu sestavení.
 
@@ -187,7 +187,7 @@ Budete potřebovat dva kroky Dockeru pro každé bitové kopie, jeden pro sestav
 
 6. Pokud **sestavení** je správný, budete muset zobrazí tato obrazovka:
 
-  ![Azure DevOps – sestavení proběhlo úspěšně](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
+   ![Azure DevOps – sestavení proběhlo úspěšně](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
 
 ## <a name="step-3-create-the-release-pipeline"></a>Krok 3: Vytvořit kanál pro vydávání verzí
 
@@ -235,14 +235,14 @@ Pracovní postup vydávání se skládá ze dvou úkolů, které přidáte.
 
     Příkaz provedený na hlavním serveru používá rozhraní příkazového řádku Dockeru a rozhraní příkazového řádku Docker-Compose a proveďte následující úlohy:
 
-    - Přihlaste se do služby Azure container registry (používá tří proměnných sestavení, které jsou definovány v **proměnné** kartu)
-    - Definovat **DOCKER_HOST** proměnné pro práci s koncovým bodům Swarmu (: 2375)
-    - Přejděte *nasazení* složku, která byla vytvořena předchozí úlohou zabezpečené kopie, který obsahuje soubor docker-compose.yml 
-    - Spustit `docker stack deploy` příkazy, které o přijetí změn nové Image a vytvoření kontejnerů.
+   - Přihlaste se do služby Azure container registry (používá tří proměnných sestavení, které jsou definovány v **proměnné** kartu)
+   - Definovat **DOCKER_HOST** proměnné pro práci s koncovým bodům Swarmu (: 2375)
+   - Přejděte *nasazení* složku, která byla vytvořena předchozí úlohou zabezpečené kopie, který obsahuje soubor docker-compose.yml 
+   - Spustit `docker stack deploy` příkazy, které o přijetí změn nové Image a vytvoření kontejnerů.
 
-    >[!IMPORTANT]
-    > Jak je vidět na předchozí obrazovku, nechat **neúspěšné, když STDERR** nezaškrtnuté políčko. Toto nastavení umožňuje nám k dokončení procesu vydávání verzí z důvodu `docker-compose` vytiskne několik diagnostické zprávy, jako jsou kontejnery, zastavení nebo odstranění, standardního chybového výstupu. Pokud zaškrtnete políčko, sestavy Azure DevOps, že došlo k chybám při vydání, i pokud všechno proběhne správně.
-    >
+     >[!IMPORTANT]
+     > Jak je vidět na předchozí obrazovku, nechat **neúspěšné, když STDERR** nezaškrtnuté políčko. Toto nastavení umožňuje nám k dokončení procesu vydávání verzí z důvodu `docker-compose` vytiskne několik diagnostické zprávy, jako jsou kontejnery, zastavení nebo odstranění, standardního chybového výstupu. Pokud zaškrtnete políčko, sestavy Azure DevOps, že došlo k chybám při vydání, i pokud všechno proběhne správně.
+     >
 3. Uložte tento nový kanál pro vydávání verzí.
 
 ## <a name="step-4-test-the-cicd-pipeline"></a>Krok 4: Test kanálu CI/CD

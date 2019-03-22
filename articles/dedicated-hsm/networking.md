@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: barclayn
-ms.openlocfilehash: d872c4eff3d55ddf5d98243055e831a7a223a8ef
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: aed0eb6ba4cdaa57d282ac4484e0c27c0697afb5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115449"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58083126"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Sítě Azure vyhrazené HSM
 
@@ -51,8 +51,8 @@ Požadavek na aktuální architektuře je konfigurace ER brány v podsíti záka
 Když vytváříte cloudové prostředky, je typické požadavek soukromého připojení zpět k místní prostředky IT. V případě vyhrazeného HSM bude převážně pro klientský software modulu hardwarového zabezpečení můžete nakonfigurovat zařízení HSM a také pro aktivity, jako je zálohování a potáhnete prstem protokoly z modulů hardwarového zabezpečení pro analýzu. Bod klíčová rozhodnutí je povaze připojení, protože jsou k dispozici možnosti.  Jak budou pravděpodobně více místních prostředků, které vyžadují bezpečnou komunikaci s prostředky (včetně moduly hardwarového zabezpečení) v cloudu Azure, je nejflexibilnějším možnost Site-to-Site VPN. To vyžaduje organizace zákazníka k zařízení VPN k usnadnění připojení. Připojení k síti VPN Point-to-Site lze použít, pokud existuje pouze jeden koncový bod v místním například pracovní stanice jednotné správy.
 Další informace o možnostech připojení najdete v tématu [VPN Gateway možnosti plánování](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable).
 
->[!NOTE]
-V tuto chvíli ExpressRoute není možné zvolit pro připojení k místním prostředkům. Je také potřeba poznamenat, že brána ExpressRoute používá jak je popsáno výše, není pro připojení k místní infrastrukturu.
+> [!NOTE]
+> V tuto chvíli ExpressRoute není možné zvolit pro připojení k místním prostředkům. Je také potřeba poznamenat, že brána ExpressRoute používá jak je popsáno výše, není pro připojení k místní infrastrukturu.
 
 ### <a name="point-to-site-vpn"></a>Point-to-Site VPN
 
@@ -80,8 +80,8 @@ Zařízením hardwarového zabezpečení mají možnost, prostřednictvím kniho
 
 U globálně distribuovaných aplikací nebo scénáře vysoké dostupnosti regionální převzetí služeb při selhání se vyžaduje k propojení virtuálních sítí mezi oblastmi. Pomocí vyhrazené modulu hardwarového zabezpečení Azure můžete dosáhnout vysoké dostupnosti s použitím brány VPN, která poskytuje zabezpečené tunelové propojení mezi dvěma virtuálními sítěmi. Další informace o připojení Vnet-to-Vnet pomocí VPN Gateway najdete v článku s názvem [co je VPN Gateway?](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V)
 
->[!NOTE]
-Globální partnerský vztah virtuální sítě není k dispozici připojení mezi různými oblastmi, scénáře s moduly hardwarového zabezpečení vyhrazené v této době a VPN gateway by měl místo toho použít. 
+> [!NOTE]
+> Globální partnerský vztah virtuální sítě není k dispozici připojení mezi různými oblastmi, scénáře s moduly hardwarového zabezpečení vyhrazené v této době a VPN gateway by měl místo toho použít. 
 
 ![globální vnet](media/networking/global-vnet.png)
 

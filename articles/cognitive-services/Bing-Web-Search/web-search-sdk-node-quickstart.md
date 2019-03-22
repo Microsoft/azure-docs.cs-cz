@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 94bc7d2ddca84b01dd799552fe7a331c9bb958a1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 96848e30c13d226978a6be1a1786e9ed2b4ab7c2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856887"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892859"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Rychlý start: Použijte vyhledávání na webu Bingu sady SDK pro Node.js
 
@@ -43,14 +43,14 @@ Nejprve si pro svůj projekt Node.js nastavíme vývojové prostředí.
     mkdir YOUR_PROJECT
     ```
 
-2. Vytvořte nový soubor balíčku:
+1. Vytvořte nový soubor balíčku:
 
     ```console
     cd YOUR_PROJECT
     npm init
     ```
 
-3. Teď nainstalujeme některé moduly Azure a přidáme je do souboru `package.json`:
+1. Teď nainstalujeme některé moduly Azure a přidáme je do souboru `package.json`:
 
     ```console
     npm install --save azure-cognitiveservices-websearch

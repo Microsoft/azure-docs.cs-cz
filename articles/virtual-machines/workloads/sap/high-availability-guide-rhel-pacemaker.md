@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 3c4f1be97308062adc28a0b49ee36c3492906d63
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.openlocfilehash: 791c63b7b7fed55f95905ba7131d6a1d4bb414ff
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990203"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010487"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Nastavení Pacemaker na Red Hat Enterprise Linux v Azure
 
@@ -183,7 +183,7 @@ Využitím techniky STONITH zařízení využívá instanční objekt služby k 
    Přejděte do vlastností a poznamenejte si ID adresáře. Toto je **ID tenanta**.
 1. Klikněte na možnost registrace aplikací
 1. Klikněte na tlačítko Přidat.
-1. Zadejte název, vyberte typ aplikace "Aplikace webového rozhraní API", zadejte přihlašovací adresu URL (například http://localhost) a klikněte na tlačítko Vytvořit
+1. Zadejte název, vyberte typ aplikace "Aplikace webového rozhraní API", zadejte přihlašovací adresu URL (například `http://localhost`) a klikněte na tlačítko Vytvořit
 1. Adresa URL přihlašování se nepoužívá a může být jakákoliv platná adresa URL
 1. Vyberte novou aplikaci a na kartě nastavení klikněte na tlačítko klíče
 1. Zadejte popis pro nový klíč, vyberte "Je platné stále" a klikněte na Uložit

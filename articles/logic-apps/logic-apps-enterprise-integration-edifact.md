@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 2257d2c8-1929-4390-b22c-f96ca8b291bc
 ms.date: 07/26/2016
-ms.openlocfilehash: 2da672e1f55af1e38ae0a3fa90b7ecb10d2f17c7
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: bbcdad7c5496cd08994a613b07e1bc7c611e4572
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128373"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876846"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna zpráv EDIFACT pro podnikovou integraci B2B v Azure Logic Apps sadou Enterprise Integration Pack
 
@@ -38,7 +38,7 @@ Poté co [vytvořit integrační účet](../logic-apps/logic-apps-enterprise-int
 
 ## <a name="create-an-edifact-agreement"></a>Vytvoření smlouvy EDIFACT 
 
-1. Přihlaste se na web [Azure Portal](http://portal.azure.com "Azure Portal"). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com "Azure Portal"). 
 
 2. V hlavní nabídce Azure zvolte **všechny služby**. Do vyhledávacího pole zadejte "integrace" a pak vyberte **účty pro integraci**.
 
@@ -82,7 +82,7 @@ Teď, když jste nastavili vlastnosti smlouvy, můžete nakonfigurovat, jak tato
 1. V části **přidat**vyberte **přijímat nastavení**.
 Konfigurovat tyto vlastnosti závislosti na vaší smlouvě s partnerem, který vyměňuje zprávy s vámi. Popisy vlastností naleznete v tématu tabulky v této části.
 
-   **Získat nastavení** uspořádány do těchto částí: identifikátory, potvrzení, schémata, kontrolních čísel, ověření a interní nastavení.
+   **Získat nastavení** uspořádány do těchto částí: Identifikátory, potvrzení, schémata, kontrolních čísel, ověření a interní nastavení.
 
    ![Konfigurace "Obdrží nastavení"](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
 
@@ -114,7 +114,7 @@ Smlouvy o je nyní připravena ke zpracování příchozích zpráv, které v so
 | UNH2.5 (KÓD PŘIDRUŽENÉ PŘIŘAZENÉ) |Zadejte kód přiřazené. (Maximálně 6 znaků. Musí být alfanumerické znaky). |
 | UNG2.1 (ID ODESÍLATELE APLIKACE) |Zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 35 znaků. |
 | UNG2.2 (KVALIFIKÁTOR KÓDU ODESÍLATELE APLIKACE) |Zadejte hodnotu alfanumerické s maximálně 4 znaky. |
-| SCHÉMA |Vyberte dříve odeslaný schéma, které chcete použít z přidruženého integračního účtu. |
+| SCHEMA |Vyberte dříve odeslaný schéma, které chcete použít z přidruženého integračního účtu. |
 
 ### <a name="control-numbers"></a>Kontrolní čísla
 | Vlastnost | Popis |
@@ -155,7 +155,7 @@ Můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává odchozí z
 1.  V části **přidat**vyberte **odeslat nastavení**.
 Konfigurovat tyto vlastnosti závislosti na vaší smlouvě se vašeho partnera, který vyměňuje zprávy s vámi. Popisy vlastností naleznete v tématu tabulky v této části.
 
-    **Nastavení odesílání** uspořádány do těchto částí: identifikátory, potvrzení, schémata, obálky, znakové sady a oddělovače, kontrolních čísel a ověření.
+    **Nastavení odesílání** uspořádány do těchto částí: Identifikátory, potvrzení, schémata, obálky, znakové sady a oddělovače, kontrolních čísel a ověření.
 
     ![Konfigurace "Nastavení odesílání"](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
 
@@ -187,7 +187,7 @@ Nyní je připravená pro zpracování odchozích zpráv, které v souladu s vá
 | UNH2.1 (TYP) |Vyberte typ sady transakcí. |
 | UNH2.2 (VERZE) |Zadejte číslo verze zprávy. |
 | UNH2.3 (VYDÁNÍ) |Zadejte číslo verze zprávy. |
-| SCHÉMA |Vyberte schéma používat. Schémata se nacházejí v účtu integrace. Pro přístup k vaší schémata, nejprve odkaz účtu pro integraci do aplikace logiky. |
+| SCHEMA |Vyberte schéma používat. Schémata se nacházejí v účtu integrace. Pro přístup k vaší schémata, nejprve odkaz účtu pro integraci do aplikace logiky. |
 
 ### <a name="envelopes"></a>Obálky
 | Vlastnost | Popis |

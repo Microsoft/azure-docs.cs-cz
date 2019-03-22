@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/14/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 0e3d6255d6e2787d407d24a4217a0262ae4c974d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 411a3d606ac8ec2f262ec9a1aabac7b74ccd110a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098473"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010930"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Připojení účtu Amazon Web Services
 
@@ -45,7 +45,7 @@ Prvním krokem je získání připojení jedinečné heslo z portálu Cloudyn. P
 1. Přihlaste se ke konzole AWS na https://console.aws.amazon.com/iam/home a vyberte **role**.
 2. Klikněte na tlačítko **vytvořit roli** a pak vyberte **účtu AWS jiného**.
 3. V **ID účtu** vložte `432263259397`. Toto ID účtu se účet kolekce dat Cloudyn přiřadil AWS ke službě Cloudyn. Použijte přesnou zobrazené ID účtu.
-4. Vedle položky **možnosti**vyberte **vyžadují externí ID**. Vložit vaše jedinečná hodnota, která dříve zkopírovali z **externí ID** pole ve službě Cloudyn. Pak klikněte na tlačítko **Další: oprávnění**.  
+4. Vedle položky **možnosti**vyberte **vyžadují externí ID**. Vložit vaše jedinečná hodnota, která dříve zkopírovali z **externí ID** pole ve službě Cloudyn. Pak klikněte na tlačítko **Další: Oprávnění**.  
     ![na stránce vytvořit role vložte externí ID od Cloudyn](./media/connect-aws-account/create-role01.png)
 5. V části **připojit zásady oprávnění**v **typ zásad** vyhledávací pole filtru, typu `ReadOnlyAccess`vyberte **ReadOnlyAccess**, pak klikněte na tlačítko **Další: Kontrola**.  
     ![Vyberte v seznamu názvů zásad přístup jen pro čtení](./media/connect-aws-account/readonlyaccess.png)
@@ -80,10 +80,10 @@ Následující části vás provede vytvořením uživatele jen pro čtení k po
 1. Přihlaste se ke konzole AWS na https://console.aws.amazon.com/iam/home a vyberte **uživatelé**.
 2. Klikněte na tlačítko **přidat uživatele**.
 3. V **uživatelské jméno** pole, zadejte uživatelské jméno.
-4. Pro **získat přístup k typu**vyberte **programový přístup** a klikněte na tlačítko **Další: oprávnění**.  
+4. Pro **získat přístup k typu**vyberte **programový přístup** a klikněte na tlačítko **Další: Oprávnění**.  
     ![Zadejte uživatelské jméno na stránce Přidat uživatele](./media/connect-aws-account/add-user01.png)
 5. Vyberte oprávnění **připojit existující zásady přímo**.
-6. V části **připojit zásady oprávnění**v **typ zásad** vyhledávací pole filtru, typu `ReadOnlyAccess`vyberte **ReadOnlyAccess**a potom klikněte na tlačítko **další : Zkontrolujte**.  
+6. V části **připojit zásady oprávnění**v **typ zásad** vyhledávací pole filtru, typu `ReadOnlyAccess`vyberte **ReadOnlyAccess**a potom klikněte na tlačítko **další : Kontrola**.  
     ![Vyberte ReadOnlyAccess pro nastavení oprávnění pro uživatele](./media/connect-aws-account/set-permission-for-user.png)
 7. Na stránce Kontrola zkontrolujte zvolené položky jsou správné, a klikněte na tlačítko **vytvořit uživatele**.
 8. Na stránce dokončení se zobrazí Access key ID a tajný kód přístupový klíč. Tyto informace můžete použít ke konfiguraci registrace ve službě Cloudyn.
@@ -127,11 +127,11 @@ Vytvoření kontejneru S3 uložit podrobné informace o fakturaci.
 6. Na stránce zkontrolovat, klikněte na tlačítko **vytvoření kontejneru**. Zobrazí se seznam vašich kontejneru.
 7. Klikněte na tlačítko bloku, který jste vytvořili a vyberte **oprávnění** kartu a potom vyberte **sady zásad**. Otevře se editor zásad kontejneru.
 8. V následujícím příkladu JSON zkopírujte a vložte ho v editoru zásad kontejneru.
-  - Nahraďte `<BillingBucketName>` s názvem vaší sady S3.
-  - Nahraďte `<ReadOnlyUserOrRole>` s rolí nebo uživatelské ARN, který jste dříve zkopírovali.
+   - Nahraďte `<BillingBucketName>` s názvem vaší sady S3.
+   - Nahraďte `<ReadOnlyUserOrRole>` s rolí nebo uživatelské ARN, který jste dříve zkopírovali.
 
-  ```json
-  {
+   ```json
+   {
     "Version": "2012-10-17",
     "Id": "Policy1426774604000",
     "Statement": [
@@ -169,8 +169,8 @@ Vytvoření kontejneru S3 uložit podrobné informace o fakturaci.
             "Resource": "arn:aws:s3:::<BillingBucketName>/*"
         }
     ]
-  }
-  ```
+   }
+   ```
 
 9. Klikněte na **Uložit**.  
     ![Klikněte na Uložit v editoru sady zásad](./media/connect-aws-account/bucket-policy-editor.png)

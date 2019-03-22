@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9493f7ee3278bb42dc21574cd008fbe2f4376a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8f5234674bc41e1f5bfa260dfc32042a3345d9f7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185141"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294821"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Ověření e-mailu jednorázové heslo (preview)
 
@@ -35,11 +36,11 @@ Tato funkce je aktuálně dostupná ve verzi preview (viz [vyjádření výslovn
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>Činnost koncového uživatele pro uživatele typu Host jednorázové heslo
 S ověřováním jednorázovým heslem může uživatel typu Host uplatnit pozvání, kliknutím na přímý odkaz nebo s použitím e-mailová pozvánka. V obou případech se zobrazí v prohlížeči se zpráva, že kód se pošle e-mailovou adresu uživatele typu Host. Uživatel typu Host vybere **poslat kód**:
  
-   ![Správa přístupových panelech aplikace](media/one-time-passcode/otp-send-code.png)
+   ![Snímek obrazovky zobrazující tlačítko Poslat kód](media/one-time-passcode/otp-send-code.png)
  
 Heslo se odešle e-mailovou adresu uživatele. Uživatel načte hesla v e-mailu a vloží jej do okna prohlížeče:
  
-   ![Správa přístupových panelech aplikace](media/one-time-passcode/otp-enter-code.png)
+   ![Snímek obrazovky zobrazující Enter znaková stránka](media/one-time-passcode/otp-enter-code.png)
  
 Uživatel typu Host je nyní ověřen a můžete zobrazit sdílený prostředek nebo pokračovat v přihlašování. 
 
@@ -57,7 +58,7 @@ V době pozvánky neexistuje žádné označení, že uživatel, kterého jste p
 
 Můžete zobrazit uživatele typu Host, kteří používají ověřování pomocí jednorázových hesel na webu Azure Portal tak, že přejdete do **Azure Active Directory** > **organizační vztahy**  >   **Uživatelé z jiných organizací**.
 
-![Zobrazit jednorázové heslo uživatele na webu Azure Portal, zdroje se rovná hodnotě ověřování jednorázovým HESLEM](media/one-time-passcode/otp-users.png)
+![Snímek obrazovky zobrazující jednorázové heslo uživatele s zdrojová hodnota ověřování jednorázovým HESLEM](media/one-time-passcode/otp-users.png)
 
 > [!NOTE]
 > Když uživatel uplatňuje jednorázové heslo a později získá MSA, účet Azure AD nebo jiný federovaný účet, budou dál možné ověřit pomocí jednorázového hesla. Pokud chcete aktualizovat své metody ověřování, můžete odstranit jeho uživatelský účet guest a znovu je pozvat.

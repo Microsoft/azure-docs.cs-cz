@@ -1,6 +1,6 @@
 ---
-title: Odkaz na modul Azure CDN pravidla | Microsoft Docs
-description: Referenční dokumentace pro Azure CDN pravidla shody stav motoru a funkce.
+title: Referenční informace ke stroji pravidel Azure CDN | Dokumentace Microsoftu
+description: Referenční dokumentace pro Azure CDN pravidla podmínky shody stroje a funkce.
 services: cdn
 documentationcenter: ''
 author: Lichard
@@ -14,70 +14,70 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 602b4303dd1940791c11b8b71ac6a27f0474a6d5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3163b33f69f4cc2d6cd4127253c7b6fadfddd6b0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
-ms.locfileid: "29733675"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994236"
 ---
-# <a name="azure-cdn-rules-engine-reference"></a>Odkaz na modul pravidla ve službě Azure CDN
-Tento článek obsahuje seznam podrobný popis funkcí a podmínky k dispozici shodu pro Content Delivery Network (CDN) Azure [stroj pravidel](cdn-rules-engine.md).
+# <a name="azure-cdn-rules-engine-reference"></a>Referenční informace ke stroji pravidel Azure CDN
+Tento článek obsahuje podrobný popis funkcí a podmínky k dispozici shody pro sítě Azure Content Delivery Network (CDN) [stroj pravidel](cdn-rules-engine.md).
 
-Stroj pravidel slouží jako konečné právo na tom, jak konkrétní typy žádostí jsou zpracovávány CDN.
+Stroj pravidel je navržena jako poslední oprávnění na tom, jak konkrétní typy žádostí jsou zpracovány CDN.
 
 **Běžná použití**:
 
-- Přepsání nebo definovat zásady vlastní mezipaměti.
-- Zabezpečení nebo odmítnout požadavky pro citlivého obsahu.
+- Přepsat nebo můžete definovat vlastní mezipaměti zásad.
+- Zajištění nebo zamítnutí žádosti o citlivého obsahu.
 - Přesměrování požadavků.
-- Uložit data vlastního protokolu.
+- Vlastní protokol data Store.
 
 ## <a name="terminology"></a>Terminologie
-Pravidlo je definováno prostřednictvím [ **podmíněné výrazy**](cdn-rules-engine-reference-conditional-expressions.md), [ **splňují podmínky**](cdn-rules-engine-reference-match-conditions.md), a [ **funkce**](cdn-rules-engine-reference-features.md). Tyto prvky jsou vyznačené na následujícím obrázku:
+Pravidlo je definováno prostřednictvím [ **podmíněné výrazy**](cdn-rules-engine-reference-conditional-expressions.md), [ **splňují podmínky**](cdn-rules-engine-reference-match-conditions.md), a [ **funkce**](cdn-rules-engine-reference-features.md). Na následujícím obrázku jsou zvýrazněné tyto prvky:
 
- ![Stav shody CDN](./media/cdn-rules-engine-reference/cdn-rules-engine-terminology.png)
+ ![Podmínka shody CDN](./media/cdn-rules-engine-reference/cdn-rules-engine-terminology.png)
 
 ## <a name="syntax"></a>Syntaxe
 
-Způsobem, ve kterém speciální znaky jsou zpracovávány závisí na způsobu, jakým podmínky shody nebo funkce zpracovává textové hodnoty. Stav shody nebo funkce mohou interpretovat text v jednom z následujících způsobů:
+Způsob, ve kterém speciální znaky jsou zpracovávány se liší podle způsobu, jakým funkci a podmínce shody zpracovává textové hodnoty. Podmínky shody nebo funkce může interpretovat text v jednom z následujících způsobů:
 
-1. [**Literálových hodnot**](#literal-values) 
+1. [**Hodnoty literálu**](#literal-values) 
 2. [**Hodnoty zástupných znaků**](#wildcard-values)
 3. [**Regulární výrazy**](#regular-expressions)
 
-### <a name="literal-values"></a>Literálových hodnot
-Text, který je interpretována jako hodnota literálu zpracovává všechny speciální znaky, s výjimkou % symbol, jako součást hodnotu, která musí odpovídat. Jinými slovy, literál vyhovují podmínce nastavena na `\'*'\` je pouze splněné, při které přesnou hodnotu (tj, `\'*'\`) se nachází.
+### <a name="literal-values"></a>Hodnoty literálu
+Text, který je interpretován jako hodnota literálu zpracovává všechny speciální znaky s výjimkou % symbol, jako součást hodnotu, která musí odpovídat. Jinými slovy, literál odpovídají podmínce nastavena na `\'*'\` je splněna pouze při, který přesnou hodnotu (to znamená, `\'*'\`) se nenašel.
  
-Symbol procenta slouží k označení kódování URL (například `%20`).
+Symbol procenta slouží k určení kódování URL (například `%20`).
 
 ### <a name="wildcard-values"></a>Hodnoty zástupných znaků
-Text, který je interpretován jako zástupný znak hodnotu přiřadí další významy speciální znaky. Následující tabulka popisuje, jak interpretovat následující sadu znaků:
+Text, který je interpretován jako hodnota zástupného znaku přiřadí další významy speciální znaky. Následující tabulka popisuje, jak je interpretován následujícím množinu znaků:
 
 Znak | Popis
 ----------|------------
-\ | Abyste se vyhnuli znaky zadané v této tabulce se používá zpětné lomítko. Zpětné lomítko je třeba zadat přímo před speciální znak, který by měly být ukončeny.<br/>Například následující syntaxi řídicí sekvence hvězdičku: `\*`
-% | Symbol procenta slouží k označení kódování URL (například `%20`).
-* | Znak hvězdičky je zástupný znak, který reprezentuje jeden nebo více znaků.
-Mezera | Znak mezery označuje, že shoda podmínku může vyhovět buď zadaným hodnotám nebo vzory.
-'Hodnota' | V jednoduchých uvozovkách nemá zvláštní význam. Však sadu jednoduchých uvozovek a slouží k označení, že by měl být s hodnotou zacházet jako hodnota literálu. Dá se následujícími způsoby:<br><br/>– Umožňuje shodu podmínku, kterou chcete být splněna vždy, když je zadaná hodnota odpovídá jakékoli její části hodnotu porovnání.  Například `'ma'` odpovídá některé z následujících řetězců: <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template.**ma**p<br /><br />– Umožňuje zadat jako literál znak zvláštní znak. Můžete například určit literálu mezerou uzavřením znak mezery v rámci sady jednoduchých uvozovek (tedy `' '` nebo `'sample value'`).<br/>– Umožňuje na prázdnou hodnotu zadat. Zadejte prázdnou hodnotu zadáním sadu jednoduchých uvozovek (to znamená, ").<br /><br/>**Důležité:**<br/>– Pokud je zadaná hodnota neobsahuje zástupný znak, pak automaticky považuje literálovou hodnotou, což znamená, že není nutné zadávat sadu jednoduchých uvozovek.<br/>– Pokud zpětné lomítko není řídicí jiný znak v této tabulce, je ignorován, pokud je zadána v rámci sady jednoduchých uvozovek.<br/>-Jiný způsob, jak zadat speciální znaky, jako je literál znak pro přepnutí pomocí zpětné lomítko (tedy `\`).
+\ | Zpětné lomítko se používá k uvození znaky zadané v této tabulce. Zpětné lomítko je třeba zadat přímo před speciální znak, který by měl být uvozeny řídicími znaky.<br/>Například následující syntaxe řídicí sekvence hvězdičku: `\*`
+% | Symbol procenta slouží k určení kódování URL (například `%20`).
+\* | Hvězdičku představuje zástupný znak, který představuje jeden nebo více znaků.
+Kosmické aktivity | Znak mezery označuje, že může být splněna podmínka shoda podle zadané hodnoty nebo vzory.
+"hodnota" | Jednoduchá uvozovka nemá žádné zvláštní význam. K označení, že by měla s hodnotou zacházet jako s hodnotou literálu se ale používá sadu jednoduchých uvozovek. Je možné následujícími způsoby:<br><br/>– Umožňuje podmínku shody vyhovět pokaždé, když se zadanou hodnotou odpovídá jakékoli její části hodnotu porovnání.  Například `'ma'` by shodují s některým z následujících řetězců: <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/ obchodní/šablony. **ma**p<br /><br />– Umožňuje zadat jako literální znak zvláštní znak. Můžete například zadat literální znak mezery uzavřením znak mezery v rámci jednoduché uvozovky (to znamená `' '` nebo `'sample value'`).<br/>– Umožňuje zadat prázdnou hodnotu. Zadejte prázdnou hodnotu tak, že zadáte sadu jednoduché uvozovky (to znamená, '').<br /><br/>**Důležité:**<br/>– Pokud je zadaná hodnota neobsahuje zástupný znak, pak bude automaticky považován za hodnotu literálu, což znamená, že není nutné určit sadu jednoduchých uvozovek.<br/>– Pokud je zpětné lomítko neuvozuje další znak v této tabulce, je ignorována, pokud je zadaný v rámci jednoduchých uvozovek.<br/>-Další způsob, jak zadat speciální znaky jako literální znak escape pomocí zpětného lomítka (to znamená `\`).
 
 ### <a name="regular-expressions"></a>Regulární výrazy
 
-Regulární výrazy definovat vzor, který je hledán v rámci textovou hodnotu. Zápis regulární výraz definuje určité významy pro celou řadu symboly. Následující tabulka uvádí, jak speciální znaky jsou považovány podmínky shody a funkce, které podporují regulární výrazy.
+Regulární výrazy definovat vzor, který se hledá v rámci textovou hodnotu. Zápis regulárního výrazu definuje konkrétní význam širokou škálu symboly. Následující tabulka uvádí, jak speciálních znaků nakládá podmínky shody a funkcí, které podporují regulární výrazy.
 
 Speciální znak | Popis
 ------------------|------------
-\ | Zpětné lomítko řídicí sekvence znak pomocí následujícího it, což způsobí, že tento znak, který má být považované za literálovou hodnotou místo s ohledem na její význam regulární výraz. Například následující syntaxi řídicí sekvence hvězdičku: `\*`
-% | Význam symbol procento závisí na jeho použití.<br/><br/> `%{HTTPVariable}`: Tato syntaxe identifikuje Proměnná HTTP.<br/>`%{HTTPVariable%Pattern}`: Tento syntaxi symbol procenta používá k identifikaci protokolu HTTP, proměnné a jako oddělovač.<br />`\%`: To má být použit jako hodnota literálu nebo určete kódování URL uvozovací znaky symbol procento umožňuje (například `\%20`).
-* | Znak hvězdičky umožňuje předchozí znak, který má odpovídat počtu nula či více krát. 
-Mezera | Znak mezery je obvykle považovány za znak literálu. 
-'Hodnota' | Jednoduchých uvozovek a jsou považovány za literály. Sadu jednoduchých uvozovek a nemá žádné zvláštní význam.
+\ | Zpětné lomítko řídicí sekvence znaku pomocí následujícího it, což způsobí, že daný znak do zacházet jako s hodnotou literálu místo s ohledem na jeho význam regulární výraz. Například následující syntaxe řídicí sekvence hvězdičku: `\*`
+% | Význam symbol procenta závisí na jeho využití.<br/><br/> `%{HTTPVariable}`: Tato syntaxe identifikuje proměnnou HTTP.<br/>`%{HTTPVariable%Pattern}`: Tato syntaxe používá k identifikaci protokolu HTTP, proměnných a jako oddělovač symbol procenta.<br />`\%`: Uvozovací znaky symbol procenta umožňuje použít jako hodnotu literálu nebo označení kódování URL (například `\%20`).
+\* | Hvězdička umožňuje předchozí znak pro porovnání nulakrát nebo vícekrát. 
+Kosmické aktivity | Znak mezery, je obvykle považována za literální znak. 
+"hodnota" | Jednoduché uvozovky jsou považovány za literální znaky. Sada jednoduchých uvozovek a nemá žádné zvláštní význam.
 
 
 ## <a name="next-steps"></a>Další postup
-* [Stav shody motoru pravidla](cdn-rules-engine-reference-match-conditions.md)
-* [Podmíněné výrazy stroj pravidel](cdn-rules-engine-reference-conditional-expressions.md)
-* [Funkce modulu pravidla](cdn-rules-engine-reference-features.md)
-* [Potlačení chování HTTP pomocí stroj pravidel](cdn-rules-engine.md)
+* [Podmínky shody stroje pravidel](cdn-rules-engine-reference-match-conditions.md)
+* [Podmíněné výrazy stroje pravidel](cdn-rules-engine-reference-conditional-expressions.md)
+* [Funkce stroje pravidel](cdn-rules-engine-reference-features.md)
+* [Potlačení chování HTTP pomocí stroje pravidel](cdn-rules-engine.md)
 * [Přehled služby Azure CDN](cdn-overview.md)

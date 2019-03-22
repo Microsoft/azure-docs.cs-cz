@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 953f2cdac41dcd610afbde39a318c0237b0b9099
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c9d707d1a76b3b5913d66745767df8e84362a192
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114735"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890845"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Vědecké zpracování týmových dat v akci: použití serveru SQL Server
-V tomto kurzu vás provede procesem sestavování a nasazování modelu strojového učení pomocí SQL serveru a veřejně dostupné datové sady – [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datové sady. Postup následující pracovní postup standardních datových věd: ingestování a zkoumání dat, navrhování funkcí usnadnění vzdělávání, pak sestavit a nasadit model.
+V tomto kurzu vás provede procesem sestavování a nasazování modelu strojového učení pomocí SQL serveru a veřejně dostupné datové sady – [cesty taxíkem NYC](https://www.andresmh.com/nyctaxitrips/) datové sady. Postup následující pracovní postup standardních datových věd: ingestování a zkoumání dat, navrhování funkcí usnadnění vzdělávání, pak sestavit a nasadit model.
 
 ## <a name="dataset"></a>NYC taxislužby přepne popis datové sady
 Data o jízdách taxislužby NYC je přibližně 20GB komprimované soubory CSV (nekomprimovaný ~ 48GB), zahrnující 173 milionů jednotlivé trips a tarify placené pro každou cestu. Každý záznam o jízdách obsahuje číslo řidičského sbírat míčky a dropoff umístění a čas, anonymizované hack (ovladače) a číslo Medailon (jedinečné id taxislužby.). Data v roce 2013 zahrnuje všechny cesty a je dostupné pro každý měsíc následující dvě datové sady:
@@ -82,7 +82,7 @@ Nastavení prostředí Azure pro datové vědy:
 Na základě velikost datové sady, umístění zdroje dat a vybrané Azure cílového prostředí, tento scénář je podobný [scénář \#5: Velké datové sady v místních souborů cílit na SQL Server na virtuálním počítači Azure](plan-sample-scenarios.md#largelocaltodb).
 
 ## <a name="getdata"></a>Získávají Data z veřejných zdrojů
-Chcete-li získat [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datové sady z veřejné umístění, můžete použít některou z metod popsaných v [přesun dat do a z úložiště objektů Blob v Azure](move-azure-blob.md) ke zkopírování dat do nového virtuálního počítače.
+Chcete-li získat [cesty taxíkem NYC](https://www.andresmh.com/nyctaxitrips/) datové sady z veřejné umístění, můžete použít některou z metod popsaných v [přesun dat do a z úložiště objektů Blob v Azure](move-azure-blob.md) ke zkopírování dat do nového virtuálního počítače.
 
 Kopírování dat pomocí AzCopy:
 
@@ -622,8 +622,8 @@ Rekapitulace v tomto kurzu návodu jste vytvořili Azure prostředí pro datové
 Tento ukázkový názorný postup a jeho doprovodném skripty a IPython notebook(s) sdílí Microsoft v rámci licence MIT. Zkontrolujte prosím soubor LICENSE.txt v adresáři ukázkového kódu na Githubu pro další podrobnosti.
 
 ### <a name="references"></a>Odkazy
-• [Cesty taxíkem NYC Andrés Monroy stránce pro stažení](http://www.andresmh.com/nyctaxitrips/)  
-• [FOILing NYC Taxi Data o jízdách podle Chris Whong](http://chriswhong.com/open-data/foil_nyc_taxi/)   
+• [Cesty taxíkem NYC Andrés Monroy stránce pro stažení](https://www.andresmh.com/nyctaxitrips/)  
+• [FOILing NYC Taxi Data o jízdách podle Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • [NYC taxislužby a Limousine Komise výzkumu a statistiky](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sql-walkthrough/sql-walkthrough_26_1.png

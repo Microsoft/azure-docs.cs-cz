@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: fedd83276a0182ecf2d39e43382bc264c6f88de5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 435ee13de28fb1591a5579761ecc7ad5bf9f9d76
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761681"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000841"
 ---
 # <a name="tutorial-create-on-premises-virtual-network-with-terraform-in-azure"></a>Kurz: Vytvořit místní virtuální sítě s využitím Terraformu v Azure
 
@@ -36,7 +36,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Simulovat v místní síti, vytvořte virtuální síť Azure. Ukázka virtuální síti probíhá skutečný privátní místní síti. Postupujte stejným způsobem pracovat s vaší stávající místní sítě, namapujte příslušné IP adresy v podsítí.
 
-1. Přejděte na web [Azure Portal](http://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
 1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview). Pokud jste prostředí ještě nevybrali, vyberte prostředí **Bash**.
 

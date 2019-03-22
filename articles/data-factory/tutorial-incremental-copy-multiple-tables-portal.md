@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: 86333e58a1b97d750bd59189850654d93888008d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 12ca210e1fe7aa60515f5b8c4c0ad830dcdd9594
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776951"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078954"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Přírůstkové načtení dat z více tabulek v SQL Serveru do databáze Azure SQL
 V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načítá rozdílová data z několika tabulek v místním SQL Serveru do databáze Azure SQL.    
@@ -382,7 +382,7 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
    ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
 
    
- 1. Po kliknutí na tlačítko **Dokončit**, uvidíte  **\@dataset(). SinkTableName** jako název tabulky.
+   1. Po kliknutí na tlačítko **Dokončit**, uvidíte  **\@dataset(). SinkTableName** jako název tabulky.
    
    ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -424,11 +424,11 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
     ![Název kanálu](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-name.png)
 1. V okně **Vlastnosti** proveďte následující kroky: 
 
-    1. Klikněte na **+ Nový**. 
-    1. Jano **název parametru** zadejte **tableList**. 
-    1. Jako **typ** parametru vyberte **Objekt**.
+   1. Klikněte na **+ Nový**. 
+   1. Jano **název parametru** zadejte **tableList**. 
+   1. Jako **typ** parametru vyberte **Objekt**.
 
-    ![Parametry kanálu](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
+      ![Parametry kanálu](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
 1. V sadě nástrojů **Aktivity** rozbalte **Iterace a podmíněné výrazy** a přetáhněte aktivitu **ForEach** na plochu návrháře kanálu. Na kartě **Obecné** v okně **Vlastnosti** jako název zadejte **IterateSQLTables**. 
 
     ![Aktivita ForEach – název](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-name.png)
@@ -457,69 +457,69 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
     ![Druhá aktivita vyhledávání – název](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-name.png)
 1. Přepněte na kartu **Nastavení**.
 
-    1. Jako **Zdrojová datová sada** vyberte **SourceDataset**. 
-    1. Jako **Použít dotaz** vyberte **Dotaz**.
-    1. Jako **Dotaz** zadejte následující příkaz jazyka SQL.
+     1. Jako **Zdrojová datová sada** vyberte **SourceDataset**. 
+     1. Jako **Použít dotaz** vyberte **Dotaz**.
+     1. Jako **Dotaz** zadejte následující příkaz jazyka SQL.
 
-        ```sql    
-        select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
-        ```
+         ```sql    
+         select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
+         ```
     
-        ![Druhá aktivita vyhledávání – nastavení](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
+         ![Druhá aktivita vyhledávání – nastavení](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
 1. Z panelu nástrojů **Aktivity** přetáhněte aktivitu **Kopírování** a jako **Název** zadejte **IncrementalCopyActivity**. 
 
-    ![Aktivita kopírování – název](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
+     ![Aktivita kopírování – název](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
 1. Jednu po druhé propojte aktivity **vyhledávání** s aktivitou **kopírování**. Propojte je tak, že začnete přetahovat **zelené** pole připojené k aktivitě **vyhledávání** a přemístíte ho na aktivitu **kopírování**. Jakmile se barva ohraničení aktivity kopírování změní na **modrou**, uvolněte tlačítko myši.
 
-    ![Propojení aktivit vyhledávání s aktivitou kopírování](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
+     ![Propojení aktivit vyhledávání s aktivitou kopírování](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
 1. Vyberte v kanálu aktivitu **kopírování**. V okně **Vlastnosti** přepněte na kartu **Zdroj**. 
 
-    1. Jako **Zdrojová datová sada** vyberte **SourceDataset**. 
-    1. Jako **Použít dotaz** vyberte **Dotaz**. 
-    1. Jako **Dotaz** zadejte následující příkaz jazyka SQL.
+     1. Jako **Zdrojová datová sada** vyberte **SourceDataset**. 
+     1. Jako **Použít dotaz** vyberte **Dotaz**. 
+     1. Jako **Dotaz** zadejte následující příkaz jazyka SQL.
 
-        ```sql
-        select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
-        ```
+         ```sql
+         select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
+         ```
 
-        ![Aktivita kopírování – nastavení zdroje](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
+         ![Aktivita kopírování – nastavení zdroje](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
 1. Přepněte na kartu **Jímka** a jako **Datová sada jímky** vyberte **SinkDataset**. 
         
-    ![Aktivita jímky – nastavení jímky](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
+     ![Aktivita jímky – nastavení jímky](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
 1. Přepněte na kartu **Parametry** a proveďte následující kroky:
 
-    1. Jako hodnotu vlastnosti **Název uložené procedury jímky** zadejte `@{item().StoredProcedureNameForMergeOperation}`.
-    1. Jako hodnotu vlastnosti **Typ tabulky jímky** zadejte `@{item().TableType}`.
-    1. V části **Datová sada jímky** jako hodnotu parametru **SinkTableName** zadejte `@{item().TABLE_NAME}`.
+     1. Jako hodnotu vlastnosti **Název uložené procedury jímky** zadejte `@{item().StoredProcedureNameForMergeOperation}`.
+     1. Jako hodnotu vlastnosti **Typ tabulky jímky** zadejte `@{item().TableType}`.
+     1. V části **Datová sada jímky** jako hodnotu parametru **SinkTableName** zadejte `@{item().TABLE_NAME}`.
 
-        ![Aktivita kopírování – parametry](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
+         ![Aktivita kopírování – parametry](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. Přetáhněte aktivitu **Uložená procedura** z panelu nástrojů **Aktivity** na plochu návrháře kanálu. Propojte aktivitu **kopírování** s aktivitou **Uložená procedura**. 
 
-    ![Aktivita kopírování – parametry](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
+     ![Aktivita kopírování – parametry](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
 1. Vyberte v kanálu aktivitu **Uložená procedura** a na kartě **Obecné** v okně **Vlastnosti** jako **Název** zadejte **StoredProceduretoWriteWatermarkActivity**. 
 
-    ![Aktivita Uložená procedura – název](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
+     ![Aktivita Uložená procedura – název](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
 1. Přepněte na kartu **Účet SQL** a jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
 
-    ![Aktivita Uložená procedura – účet SQL](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
+     ![Aktivita Uložená procedura – účet SQL](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 1. Přepněte na kartu **Uložená procedura** a proveďte následující kroky:
 
-    1. Jako **Název uložené procedury** vyberte `usp_write_watermark`. 
-    1. Vyberte **Importovat parametr**. 
-    1. Zadejte následující hodnoty parametrů: 
+     1. Jako **Název uložené procedury** vyberte `usp_write_watermark`. 
+     1. Vyberte **Importovat parametr**. 
+     1. Zadejte následující hodnoty parametrů: 
 
-        | Název | Typ | Hodnota | 
-        | ---- | ---- | ----- |
-        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+         | Název | Typ | Hodnota | 
+         | ---- | ---- | ----- |
+         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
-        ![Aktivita Uložená procedura – nastavení uložené procedury](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
+         ![Aktivita Uložená procedura – nastavení uložené procedury](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. V levém podokně klikněte na **Publikovat**. Tato akce publikuje vytvořené entity do služby Data Factory. 
 
-    ![Tlačítko Publikovat](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
+     ![Tlačítko Publikovat](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
 1. Počkejte, dokud se nezobrazí zpráva **Publikování proběhlo úspěšně**. Pokud chcete zobrazit oznámení, klikněte na odkaz **Zobrazit oznámení**. Zavřete okno oznámení kliknutím na **X**.
 
-    ![Zobrazit oznámení](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
+     ![Zobrazit oznámení](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
 
  
 ## <a name="run-the-pipeline"></a>Spuštění kanálu

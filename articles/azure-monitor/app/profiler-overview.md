@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 2a2c2667ae3180fd4f7b114ce6cef05ac7a1080c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c42de8cf189c0ebaf5f13ef5971ad91d14d862fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859721"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850271"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil produkční aplikace v Azure pomocí Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Povolit Application Insights Profiler pro vaši aplikaci
@@ -30,6 +30,7 @@ Profiler funguje s aplikacemi .NET, které jsou nasazeny na následujících slu
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines a virtuálních počítačů škálovací sady](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [**Ve verzi PREVIEW** Azure Linuxové webové aplikace ASP.NET Core](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
 
 Pokud jste povolili Profiler, ale nezobrazují trasování, zkontrolujte naše [Průvodce odstraňováním potíží](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
 
@@ -93,6 +94,10 @@ Metody jako **SqlCommand.Execute** znamenat, že kód čeká na dokončení oper
 ### <a id="block"></a>Čas zablokování
 
 **BLOCKED_TIME** označuje, že kód je čekání na jiný prostředek k dispozici. Například může čekat pro synchronizační objekt, má být k dispozici vlákno nebo požadavek dokončit.
+
+### <a name="unmanaged-async"></a>Nespravovaný asynchronní
+
+Rozhraní .NET framework vysílá události trasování událostí pro Windows a předá ID aktivit mezi vlákny tak, aby asynchronní volání lze sledovat přes více vláken. Nespravovaný kód (nativní kód) a některé starší styly asynchronní kód chybí tyto události a ID aktivit, takže profileru nelze zjistit, jaké vlákna a toho, jaké jsou funkce spuštěné ve vlákně. To je označené jako 'Nespravované Async' v zásobníku volání. Pokud si stáhnete soubor trasování událostí pro Windows, je možné použít [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) získat lepší přehled o tom, co se děje.
 
 ### <a id="cpu"></a>Čas procesoru
 

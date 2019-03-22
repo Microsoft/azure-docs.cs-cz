@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 5d2cf4d76ce6f44cb31f05d45f2ccbceccbe9c10
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9edcc313a9e88b657337ba631218388f70d4b41f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339361"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086747"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Kontrolní body a opětovného přehrání v Durable Functions (Azure Functions)
 
@@ -78,8 +78,8 @@ Po dokončení kontrolního bodu funkce orchestrátoru je bezplatné odstraněn 
 
 Po dokončení historie funkce je uvedeno výše bude vypadat nějak takto ve službě Azure Table Storage (zkratka pro ilustraci):
 
-| PartitionKey (ID instance)                     | Typ události             | Timestamp               | Vstup | Název             | Výsledek                                                    | Status |
-|----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------|
+| PartitionKey (ID instance)                     | Typ události             | Časové razítko               | Vstup | Název             | Výsledek                                                    | Status |
+|----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
@@ -100,7 +100,7 @@ Po dokončení historie funkce je uvedeno výše bude vypadat nějak takto ve sl
 Několik poznámek na hodnoty ve sloupcích:
 
 * **PartitionKey**: Obsahuje ID instance orchestraci.
-* **Typ EventType**: Představuje typ události. Může být jedna z následujících typů:
+* **EventType**: Představuje typ události. Může být jedna z následujících typů:
   * **OrchestrationStarted**: Funkce orchestrátoru obnovit od await nebo je poprvé spuštěna. `Timestamp` Sloupec slouží k naplnění deterministická hodnota [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) rozhraní API.
   * **ExecutionStarted**: Funkce orchestrátoru zahájilo se spuštění poprvé. Tato událost také obsahuje funkce vstup v `Input` sloupce.
   * **TaskScheduled**: Funkce protokolem aktivit byl naplánován. Název funkce aktivity jsou zachyceny `Name` sloupce.

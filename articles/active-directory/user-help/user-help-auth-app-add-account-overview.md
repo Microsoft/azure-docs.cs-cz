@@ -12,21 +12,21 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e53afdfc4d2d8288a612cfb461751e6f78ebb2fa
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 34455cac61dd3b1f1251d4bc2003bd8b029de031
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179259"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014970"
 ---
 # <a name="overview-about-adding-accounts-to-the-microsoft-authenticator-app"></a>Přehled o přidávání účtů do aplikace Microsoft Authenticator
 
 Aplikace Microsoft Authenticator přispívá k přihlášení k účtům používáte dvojúrovňového ověřování. Dvoufaktorové ověření vám umožní přístup k účtům bezpečněji, zejména při zobrazování citlivé informace. Protože hesla mohou být vymazány, někdo je ukradne nebo ohrožení zabezpečení, dvojúrovňového ověřování je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout.
 
->[!Important]
->Aplikace Microsoft Authenticator funguje s každou aplikaci, která používá dvojúrovňového ověřování a jakýkoli účet, který podporuje podle času jednorázového hesla (TOTP) normami.
-
->Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
+> [!Important]
+> Aplikace Microsoft Authenticator funguje s každou aplikaci, která používá dvojúrovňového ověřování a jakýkoli účet, který podporuje podle času jednorázového hesla (TOTP) normami.
+> 
+> Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
 Můžete použít aplikaci Microsoft Authenticator několika různými způsoby, včetně:
 
@@ -43,6 +43,7 @@ Můžete zapnout dvoufaktorové ověření pro řadu účtů, které používát
 |Osobní účty|Microsoft a účty jiných společností než Microsoft otevření osobně, například Outlook.com, Xbox LIVE, Google, Facebook a další.|
 
 ## <a name="in-this-section"></a>V tomto oddílu
+
 |Článek |Popis |
 |------|------------|
 |[Přidejte svůj pracovní nebo školní účet](user-help-auth-app-add-work-school-account.md)|Popisuje, jak přidat svůj pracovní nebo školní účet do aplikace Microsoft Authenticator pro dvoufaktorové ověřování.|

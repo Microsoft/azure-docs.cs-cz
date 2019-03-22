@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: c8320a0f504927830c47400f1f1ef0369c0e1cad
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 783cef6ff4e107838bb3ff7502fb4a8e9189ec3d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116530"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011182"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>shromážděná: Metriky výkonu systému Linux ve službě Application Insights
 
@@ -26,14 +26,12 @@ Prozkoumat metriky výkonu systému Linux v [Application Insights](../../azure-m
 
 Obvykle použijete shromážděná, pokud už máte [instrumentována webová služba jazyka Java pomocí Application Insights][java]. Poskytuje víc dat, která umožňují zvýšit výkon vaší aplikace nebo diagnostiky problémů. 
 
-![Ukázkové grafy](./media/java-collectd/sample.png)
-
 ## <a name="get-your-instrumentation-key"></a>Získejte klíč instrumentace
 V [portálu Microsoft Azure](https://portal.azure.com), otevřete [Application Insights](../../azure-monitor/app/app-insights-overview.md) prostředků, ve kterém chcete data zobrazit. (Nebo [vytvořit nový prostředek](../../azure-monitor/app/create-new-resource.md ).)
 
 Pořiďte si klíč instrumentace, který identifikuje prostředek.
 
-![Procházet vše, otevřete prostředek a pak v Essentials rozevíracího seznamu, vyberte a zkopírujte klíč instrumentace](./media/java-collectd/02-props.png)
+![Procházet vše, otevřete prostředek a pak v Essentials rozevíracího seznamu, vyberte a zkopírujte klíč instrumentace](./media/java-collectd/instrumentation-key-001.png)
 
 ## <a name="install-collectd-and-the-plug-in"></a>Nainstalujte shromážděná a modulu plug-in
 Na počítačích serveru Linux:
@@ -93,9 +91,7 @@ Konfigurace dalších [moduly plug-in shromážděná](https://collectd.org/wiki
 Restartujte shromážděná podle jeho [ruční](https://collectd.org/wiki/index.php/First_steps).
 
 ## <a name="view-the-data-in-application-insights"></a>Zobrazení dat ve službě Application Insights
-V prostředku Application Insights, otevřete [Průzkumníka metrik a panel přidávat grafy][metrics], výběr metriky, které chcete zobrazit v kategorii Vlastní.
-
-![](./media/java-collectd/result.png)
+V prostředku Application Insights, otevřete [metriky a panel přidávat grafy][metrics], výběr metriky, které chcete zobrazit v kategorii Vlastní.
 
 Ve výchozím nastavení metriky se agregují napříč všechny hostitelské počítače, ze kterých byly shromážděny metriky. Pokud chcete zobrazit metriky podle hostitelů, v okně podrobností graf, zapněte seskupování a pak se rozhodnout Seskupit podle shromážděná hostitele.
 

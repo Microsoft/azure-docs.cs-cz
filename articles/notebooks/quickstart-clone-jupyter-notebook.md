@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: ced279575c0dd6ca2509911a53a23c2ebf9eb77e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: cfce5765cda1e3a1dfb7eb073719191b13b0696e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762038"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089195"
 ---
 # <a name="quickstart-clone-a-notebook"></a>Rychlý start: Klonování poznámkového bloku
 
@@ -40,13 +40,13 @@ Klonování vytvoří kopii Poznámkový blok Githubu ve vašem účtu poznámko
 
 1. V **nahrát úložiště GitHub** , který se zobrazí, zadejte nebo nastavte tyto údaje a pak vyberte **Import**:
 
-    - **Úložiště GitHub**: Microsoft/cognitive-services-poznámkových bloků (Tento název duplicity poznámkové bloky Jupyter pro Azure Cognitive Services v [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks)).
-    - **Klonovat rekurzivně**: (zaškrtnuto)
-    - **Název projektu**: Cognitive Services Clone
-    - **ID projektu**: cognitive services klonování
-    - **Veřejné**: (zaškrtnuto)
+   - **Úložiště GitHub**: Microsoft/cognitive-services-poznámkových bloků (Tento název duplicity poznámkové bloky Jupyter pro Azure Cognitive Services v [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks)).
+   - **Klonovat rekurzivně**: (zaškrtnuto)
+   - **Název projektu**: Cognitive Services Clone
+   - **ID projektu**: cognitive services klonování
+   - **Veřejné**: (zaškrtnuto)
 
-    ![Nahrát úložiště GitHub automaticky otevírané okno lze shromažďovat informace o úložišti](media/quickstarts/upload-github-repo-popup.png)
+     ![Nahrát úložiště GitHub automaticky otevírané okno lze shromažďovat informace o úložišti](media/quickstarts/upload-github-repo-popup.png)
 
 1. Při dokončení procesu; buďte prosím trpěliví. klonování úložiště může trvat několik minut.
 

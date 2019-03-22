@@ -17,12 +17,12 @@ ms.date: 02/07/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dd988004112fa4f420af7d0149bde19fdc06bfc
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 1b578c0187f7b804b6261fec9d299f83d7dc1832
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958336"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58015143"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Jak: Konfigurace zásady rizik ve službě Azure Active Directory identity protection (Aktualizovat)
 
@@ -32,7 +32,9 @@ Azure AD detekuje rizikových událostí, které jsou indikátory potenciálně 
 - Pomocí zásady rizik přihlašování můžete nakonfigurovat odpověď v reálném čase rizikových událostí, které byly zjištěny během přihlášení uživatele. 
 - Pomocí zásady rizik uživatelů můžete nakonfigurovat odpovědi na všechny aktivní uživatel riziko, jaké byly zjištěny pro uživatele v čase.  
 
-> [!VIDEO https://youtu.be/zEsbbik-BTE]
+> [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
+
+
 ## <a name="what-is-the-sign-in-risk-policy"></a>Co jsou zásady rizik přihlašování?
 
 Azure AD analyzuje každé přihlášení uživatele. Cílem analýzy je ke zjištění podezřelé akce, které společně přihlášení. Například je přihlášení provést pomocí anonymní IP adresy, nebo je přihlášení zahájené z neznámého umístění? Ve službě Azure AD jsou podezřelé akce, které systém může zjistit, označované také jako rizikové události. Podle rizikové události, které byly zjištěny při přihlašování, Azure AD, vypočítá hodnotu. Hodnota představuje pravděpodobnost, že přihlášení není provést legitimní uživatel, (nízká, střední, vysoká). Pravděpodobnost se nazývá **úroveň rizika přihlášení**.

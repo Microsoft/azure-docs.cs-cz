@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 04/10/2018
-ms.openlocfilehash: 530cd5adf942f32aaf883f668e3564ba5c12bbe2
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.date: 03/15/2019
+ms.openlocfilehash: 1ef414b2de2acbf5b92661c8b5f1e249549b14df
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588020"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259138"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-db-sql-api-account"></a>Rychlý start: Vytvoření webové aplikace .NET pomocí účtu rozhraní SQL API služby Azure Cosmos DB
 
@@ -29,9 +29,7 @@ ms.locfileid: "56588020"
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
 
-Tento rychlý start popisuje způsob vytvoření účtu rozhraní [SQL API](sql-api-introduction.md) služby Azure Cosmos DB, databáze dokumentů a kolekce pomocí webu Azure Portal. Potom budete moci sestavit a nasadit webovou aplikaci seznamu úkolů založenou na rozhraní [SQL .NET API](sql-api-sdk-dotnet.md), jak znázorňuje následující snímek obrazovky. 
-
-![Aplikace seznamu úkolů s ukázkovými daty](./media/create-sql-api-dotnet/azure-comosdb-todo-app-list.png)
+Tento rychlý start popisuje způsob vytvoření služby Azure Cosmos DB [rozhraní SQL API](sql-api-introduction.md) účtu, databáze, kolekcí, dokumentů a přidání ukázkových dat do kolekce pomocí webu Azure portal. Potom budete moct sestavit a nasadit webovou aplikaci seznamu úkolů vyvíjené [SQL SDK pro .NET](sql-api-sdk-dotnet.md), chcete-li přidat více spravovat data v rámci kolekce. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,19 +39,64 @@ Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
 
 <a id="create-account"></a>
-## <a name="create-a-database-account"></a>Vytvoření účtu databáze
+## <a name="create-an-account"></a>Vytvoření účtu
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-<a id="create-collection"></a>
-## <a name="add-a-collection"></a>Přidání kolekce
+<a id="create-collection-database"></a>
+## <a name="add-a-database-and-a-collection"></a>Přidejte databáze a kolekce
 
-[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
+Teď můžete pomocí nástroje Průzkumník dat na webu Azure Portal vytvořit databázi a kolekci. 
+
+1. Klikněte na **Průzkumník dat** > **Nová kolekce**. 
+    
+    Úplně vpravo se zobrazí oblast **Přidat kolekci**. Pokud ji nevidíte, možná se budete muset posunout doprava.
+
+    ![Na webu Azure portal Průzkumník dat, podokno přidat kolekci](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
+
+2. Na stránce **Přidat kolekci** zadejte nastavení pro novou kolekci.
+
+    Nastavení|Navrhovaná hodnota|Popis
+    ---|---|---
+    **Id databáze**|ToDoList|Zadejte *ToDoList* jako název nové databáze. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`, ani koncové mezery.
+    **Id kolekce**|Items|Jako název nové kolekce zadejte *Items*. ID kolekcí mají stejné požadavky na znaky jako názvy databází.
+    **Klíč oddílu**| `<your_partition_key>`| Zadejte klíč oddílu. Ukázku popsanou v tomto článku používá */category* jako klíč oddílu.
+    **Propustnost**|400 RU|Změňte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit. 
+    
+    Kromě předchozích nastavení můžete pro kolekci volitelně přidat **Jedinečné klíče**. V tomto příkladu ponecháme toto pole prázdné. Jedinečné klíče umožňují vývojářům přidat do databáze vrstvu integrity dat. Vytvořením zásady jedinečného klíče při vytváření kolekce zajistíte jedinečnost jedné nebo více hodnot pro každý klíč oddílu. Další informace najdete v článku [Jedinečné klíče ve službě Azure Cosmos DB](unique-keys.md).
+    
+    Klikněte na **OK**.
+
+    Průzkumník dat zobrazí novou databázi a kolekci.
+
+    ![Průzkumník dat na webu Azure Portal zobrazující novou databázi a tabulku](./media/create-sql-api-dotnet/azure-cosmos-db-new-collection.png)
 
 <a id="add-sample-data"></a>
 ## <a name="add-sample-data"></a>Přidání ukázkových dat
 
-[!INCLUDE [cosmos-db-create-sql-api-add-sample-data](../../includes/cosmos-db-create-sql-api-add-sample-data.md)]
+Teď můžete do nové kolekce přidávat data pomocí Průzkumníka dat.
+
+1. V Průzkumníku dat se nová databáze zobrazí v podokně Kolekce. Rozbalte databázi **Tasks**, rozbalte kolekci **Items**, klikněte na **Dokumenty** a potom klikněte na **Nové dokumenty**. 
+
+   ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
+  
+2. Teď do kolekce přidejte dokument s následující strukturou.
+
+     ```json
+     {
+         "id": "1",
+         "category": "personal",
+         "name": "groceries",
+         "description": "Pick up apples and strawberries.",
+         "isComplete": false
+     }
+     ```
+
+3. Po přidání formátu json na kartu **Dokumenty** klikněte na **Uložit**.
+
+    ![Zkopírujte data json a v Průzkumníku dat na webu Azure Portal klikněte na Uložit.](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
+
+4. Vytvořte a uložte ještě jeden dokument, ve kterém vložíte jedinečnou hodnotu pro vlastnost `id` a změníte ostatní vlastnosti podle svých potřeb. Nové dokumenty můžou mít jakoukoli strukturu, protože Azure Cosmos DB neuplatňuje pro data žádné schéma.
 
 ## <a name="query-your-data"></a>Dotazování dat
 
@@ -85,32 +128,49 @@ Teď přejděme k práci s kódem. Naklonujeme [aplikaci SQL API z GitHubu](htt
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). 
+Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). V tomto rychlém startu pomocí webu Azure portal vytvořit databázi a kolekci a přidání ukázkových dat s využitím ukázku .NET. Ale můžete také vytvoříte databázi a kolekci pomocí ukázku .NET. 
 
 Všechny následující fragmenty kódu pocházejí ze souboru DocumentDBRepository.cs.
 
-* Na řádku 76 se inicializuje DocumentClient.
+* Inicializuje se documentclient jak je znázorněno v následujícím kódu:
 
     ```csharp
     client = new DocumentClient(new Uri(ConfigurationManager.AppSettings["endpoint"]), ConfigurationManager.AppSettings["authKey"]);
     ```
 
-* Na řádku 91 se vytvoří nová databáze.
+* Vytvoření nové databáze pomocí `CreateDatabaseAsync` způsob, jak je znázorněno v následujícím kódu:
 
     ```csharp
     await client.CreateDatabaseAsync(new Database { Id = DatabaseId });
     ```
 
-* Na řádku 110 se vytvoří nová kolekce.
+* S použitím se vytvoří nová kolekce `CreateDocumentCollectionAsync` jak je znázorněno v následujícím kódu:
 
     ```csharp
-    await client.CreateDocumentCollectionAsync(
-        UriFactory.CreateDatabaseUri(DatabaseId),
-        new DocumentCollection
-            {
-               Id = CollectionId
-            },
-        new RequestOptions { OfferThroughput = 400 });
+    private static async Task CreateCollectionIfNotExistsAsync()
+    {
+        try
+        {
+           await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId));
+        }
+        catch (DocumentClientException e)
+        {
+           if (e.StatusCode == System.Net.HttpStatusCode.NotFound)
+           {
+              await client.CreateDocumentCollectionAsync(
+              UriFactory.CreateDatabaseUri(DatabaseId),
+              new DocumentCollection
+              {
+                  Id = CollectionId
+              },
+              new RequestOptions { OfferThroughput = 400 });
+           }
+           else
+           {
+             throw;
+           }
+        }
+    }
     ```
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
@@ -131,10 +191,13 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     `<add key="authKey" value="FILLME" />`
     
-5. Pak aktualizujte hodnotu databáze tak, aby odpovídala názvu databáze, kterou jste vytvořili dříve. Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
+5. Aktualizujte databázi a kolekci hodnoty tak, aby odpovídaly názvu databáze, kterou jste vytvořili dříve. Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
 
-    `<add key="database" value="Tasks" />`    
-    
+   ```csharp
+   <add key="database" value="ToDoList"/>
+   <add key="collection" value="Items"/>
+   ```
+ 
 ## <a name="run-the-web-app"></a>Spuštění webové aplikace
 1. V sadě Visual Studio klikněte v **Průzkumníku řešení** pravým tlačítkem na projekt a pak vyberte **Spravovat balíčky NuGet**. 
 

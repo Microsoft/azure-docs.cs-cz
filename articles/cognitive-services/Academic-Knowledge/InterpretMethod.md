@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 6db9a5b65fc2723af2eae006ad81716e23e52133
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b679f1da0ada3e61fca79cdb985a43dc445877ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860520"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57975487"
 ---
 # <a name="interpret-method"></a>interpretace – metoda
 
@@ -37,9 +37,11 @@ Název     | Hodnota | Povinné?  | Popis
 **count**    | Číslo | Ne<br>Výchozí: 10 | Maximální počet interpretace vrátit.         
 **Posun**   | Číslo | Ne<br>Výchozí: 0  | Index prvního interpretace vrátit. Například *počet = 2 & UN přenosu = 0* vrátí interpretace 0 a 1. *Počet = 2 & UN přenosu = 2* vrátí interpretace 2 a 3.       
 **timeout**  | Číslo | Ne<br>Výchozí: 1000 | Časový limit v milisekundách. Jsou vráceny pouze interpretace nalezen předtím, než vypršel časový limit.
+
 <br>
   
 ## <a name="response-json"></a>Odpověď (JSON)
+
 Název     | Popis
 ---------|---------
 **Dotaz** |*Dotazu* parametr z požadavku.
@@ -54,6 +56,7 @@ Název     | Popis
 **aborted** | True, pokud vypršel časový limit žádosti.
 
 <br>
+
 #### <a name="example"></a>Příklad:
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime&complete=1&count=2

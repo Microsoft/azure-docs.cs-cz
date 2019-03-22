@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: d496801894560310a4225eae8a32fced52bcc428
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 0a2d964d60d13f0e71de5776112a4edbe3cdcc45
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063536"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993915"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>Přidání ověřování do aplikace Xamarin.Android
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -57,7 +57,7 @@ Aplikace se aktualizuje tak, aby vyžadovala uživatelům umožní klepnout na *
 
 1. Přidejte následující kód, který **TodoActivity** třídy:
    
-        // Define a authenticated user.
+        // Define an authenticated user.
         private MobileServiceUser user;
         private async Task<bool> Authenticate()
         {
@@ -96,7 +96,7 @@ Aplikace se aktualizuje tak, aby vyžadovala uživatelům umožní klepnout na *
     Tím se vytvoří novou metodu k ověření uživatele a metoda obslužné rutiny pro nový **přihlášení** tlačítko. Ověření uživatele ve výše uvedeném příkladu kódu pomocí přihlašovacích údajů služby Facebook. Dialogové okno se používá k zobrazení po ověření ID uživatele.
    
    > [!NOTE]
-   > Pokud používáte zprostředkovatelů identity než Facebook, změňte hodnotu předanou **LoginAsync** výše na jednu z následujících akcí: *MicrosoftAccount*, *Twitter*,  *Google*, nebo *WindowsAzureActiveDirectory*.
+   > Pokud používáte zprostředkovatelů identity než Facebook, změňte hodnotu předanou **LoginAsync** výše na jednu z následujících akcí: *MicrosoftAccount*, *Twitter*, *Google*, nebo *WindowsAzureActiveDirectory*.
    > 
    > 
 2. V **OnCreate** metody, odstranit nebo okomentujte následující řádek kódu:
@@ -130,7 +130,7 @@ Aplikace se aktualizuje tak, aby vyžadovala uživatelům umožní klepnout na *
 
 **Aplikace došlo k chybě s `Java.Lang.NoSuchMethodError: No static method startActivity`**
 
-V některých případech je v konfliktu v podpůrných balíčků zobrazí jako varování v sadě Visual studio, ale selhání aplikace s touto výjimkou za běhu. V tomto případě musíte Ujistěte se, že všechny podporu balíčky v projektu mají stejnou verzi. [Balíčku NuGet pro Azure Mobile Apps](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) má `Xamarin.Android.Support.CustomTabs` závislostí pro platformy Android, tak pokud váš projekt používá novější podporu balíčky je nutné nainstalovat tento balíček s požadovanou verzi přímo, aby nedocházelo ke konfliktům.
+V některých případech je v konfliktu v podpůrných balíčků zobrazí jako varování v sadě Visual studio, ale selhání aplikace s touto výjimkou za běhu. V tomto případě musíte Ujistěte se, že všechny podporu balíčky v projektu mají stejnou verzi. [Balíček NuGet pro mobilní aplikace Azure](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)má`Xamarin.Android.Support.CustomTabs`závislost pro platformu Android, takže pokud váš projekt používá novější balíčky podpory, je nutné nainstalovat přímo tento balíček s požadovanou verzi, aby nedocházelo ke konfliktům.
 
 <!-- URLs. -->
 [Vytvoření aplikace Xamarin.Android]: app-service-mobile-xamarin-android-get-started.md

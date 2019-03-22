@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: b1fc52ac46a6cdb73b9210833e437765398781ef
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0fec9173eb94aa60c3689089e4eacd2d9d47724a
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819123"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200017"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Správa clusterů HDInsight s balíčkem Enterprise Security Package
 Další uživatelé a role v HDInsight Enterprise Security Package (ESP) a jak spravovat clustery ESP.
@@ -179,9 +179,9 @@ HDInsight Enterprise Security Package má následující role:
 ## <a name="open-the-ambari-management-ui"></a>Otevřete uživatelské rozhraní pro správu Ambari
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-2. Otevřete váš cluster HDInsight. Zobrazit [výpisu a zobrazení clusterů](../hdinsight-administer-use-management-portal.md#list-and-show-clusters).
+2. Otevřete váš cluster HDInsight.
 3. Klikněte na tlačítko **řídicí panel** z hlavní nabídky pro otevření Ambari.
-4. Přihlaste se na používání clusteru správce domény uživatelské jméno a heslo Ambari.
+4. Přihlaste se k použití clusteru správce domény uživatelské jméno a heslo Ambari.
 5. Klikněte na tlačítko **správce** rozevírací nabídky v pravém horním rohu klikněte pravým tlačítkem myši a klikněte na **spravovat Ambari**.
 
     ![ESP HDInsight spravovat Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)

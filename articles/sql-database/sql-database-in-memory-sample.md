@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 9551f07efa9d388da69b6474f6a2dd5af947ff2c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2aa98c3958f1dffeb8adbad5e91a11f397d4a9fd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767647"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005739"
 ---
 # <a name="in-memory-sample"></a>Ukázka v paměti
 
@@ -190,11 +190,11 @@ Další informace naleznete v tématu:
 <!--
 dn511655.aspx is for SQL 2014,
 [Extensions to AdventureWorks to Demonstrate In-Memory OLTP]
-(http://msdn.microsoft.com/library/dn511655&#x28;v=sql.120&#x29;.aspx)
+(https://msdn.microsoft.com/library/dn511655&#x28;v=sql.120&#x29;.aspx)
 
 whereas for SQL 2016+
 [Sample Database for In-Memory OLTP]
-(http://msdn.microsoft.com/library/mt465764.aspx)
+(https://msdn.microsoft.com/library/mt465764.aspx)
 -->
 
 
@@ -244,9 +244,9 @@ Až budete mít výsledkem *_inmem* spouštění, proveďte následující kroky
 
 
 1. Obnovení databáze spuštěním následujícího příkazu v aplikaci SSMS odstranit všechna data, která byla vložena předchozího spuštění:
-```sql
-EXECUTE Demo.usp_DemoReset;
-```
+   ```sql
+   EXECUTE Demo.usp_DemoReset;
+   ```
 
 2. Upravit ostress.exe příkazového řádku k nahrazení všech *_inmem* s *_ondisk*.
 
@@ -277,13 +277,13 @@ Pro analýzu v reálném čase na úloh s online zpracováním často je nejvhod
 
 
 1. Pomocí webu Azure portal k vytvoření nové databáze AdventureWorksLT z ukázky.
- - Pomocí tohoto přesným názvem.
- - Vyberte všechny úrovně služeb Premium.
+   - Pomocí tohoto přesným názvem.
+   - Vyberte všechny úrovně služeb Premium.
 
 2. Kopírovat [sql_in memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) do schránky.
- - Skript T-SQL vytvoří objekty nezbytné v paměti v ukázkové databáze AdventureWorksLT, který jste vytvořili v kroku 1.
- - Tento skript vytvoří tabulky dimenzí a dvou tabulek faktů. Tabulky faktů jsou vyplněna 3,5 milionu řádků.
- - Skript může trvat 15 minut.
+   - Skript T-SQL vytvoří objekty nezbytné v paměti v ukázkové databáze AdventureWorksLT, který jste vytvořili v kroku 1.
+   - Tento skript vytvoří tabulky dimenzí a dvou tabulek faktů. Tabulky faktů jsou vyplněna 3,5 milionu řádků.
+   - Skript může trvat 15 minut.
 
 3. Vložte skript T-SQL do aplikace SSMS a pak spusťte tento skript. **COLUMNSTORE** – klíčové slovo v **CREATE INDEX** je velmi důležité, stejně jako v příkazu:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 

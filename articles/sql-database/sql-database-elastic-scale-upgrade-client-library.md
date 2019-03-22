@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 395aff83c8983c4f61ca0b1fd1da276de17ec98b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 02c09e5a2ad0c3e23fe641bf445a646477f7db2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190046"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993971"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Upgrade aplikace použít nejnovější Klientská knihovna elastic database
 
@@ -45,15 +45,15 @@ Provedením těchto kroků v pořadí zajistí, že starší verze klientské kn
 
 **4. Upgrade databáze správce mapování horizontálních oddílů**. Upgrade metadat podporuje vaše mapy horizontálních oddílů ve službě Azure SQL Database.  Existují dva způsoby, můžete to provést, pomocí Powershellu nebo C#. Obě možnosti jsou uvedeny níže.
 
-***Možnost 1: Upgrade metadat pomocí Powershellu***
+***Option 1: Upgrade metadat pomocí Powershellu***
 
-1. Stáhněte si nejnovější nástroje příkazového řádku pro NuGet z [tady](http://nuget.org/nuget.exe) a uložte do složky.
+1. Stáhněte si nejnovější nástroje příkazového řádku pro NuGet z [tady](https://nuget.org/nuget.exe) a uložte do složky.
 2. Otevřete příkazový řádek, přejděte do stejné složky a vydejte příkaz: `nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
 3. Přejděte do podsložky obsahující na novou verzi klienta knihovny DLL, které jste si právě stáhli, například: `cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
 4. Stáhněte si skript upgradu klienta elastické databáze z [centra skriptů](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)a uložte ho do stejné složky obsahující knihovnu DLL.
 5. Z této složky spusťte "Powershellu.\upgrade.ps1" z příkazového řádku a postupujte podle zobrazených výzev.
 
-***Možnost 2: Upgrade s využitím metadatC#***
+***Option 2: Upgrade s využitím metadatC#***
 
 Můžete také vytvořit aplikaci Visual Studio, která otevře vaše ShardMapManager Iteruje přes všechny horizontální oddíly a provede upgrade metadat voláním metody [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) a [UpgradeGlobalStore ](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) jako v následujícím příkladu:
 

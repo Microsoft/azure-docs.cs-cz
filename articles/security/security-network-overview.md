@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 6fd25bbf6910140a338267c51955a817d0195939
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 2aabe3d1fa8a6034c2dab38c8d6fa6da4b00ac1b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247184"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080335"
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
 
@@ -61,8 +61,8 @@ Azure podporuje několik typů řízení přístupu k síti, jako například:
 
 Jakékoli zabezpečené nasazení vyžaduje určitou míru řízení přístupu k síti. Cílem řízení přístupu k síti je omezit komunikaci virtuálních počítačů s nezbytné systémy. Další pokusy o komunikaci jsou zablokované.
 
->[!NOTE]
-Úložiště brány firewall jsou popsané v [Přehled zabezpečení služby Azure storage](security-storage-overview.md) článku
+> [!NOTE]
+> Úložiště brány firewall jsou popsané v [Přehled zabezpečení služby Azure storage](security-storage-overview.md) článku
 
 #### <a name="network-security-rules-nsgs"></a>Pravidla zabezpečení sítě (Nsg)
 
@@ -365,8 +365,8 @@ Azure Network Watcher vám můžou pomoct vyřešit a poskytuje zcela novou sadu
 
 Další informace o Network Watcheru a jak spustit některé funkce testování ve cvičeních, naleznete v tématu [Přehled monitorování Azure network watcheru](../network-watcher/network-watcher-monitoring-overview.md).
 
->[!NOTE]
-Nejaktuálnější oznámení o dostupnosti a stavu této služby najdete [stránku aktualizace Azure](https://azure.microsoft.com/updates/?product=network-watcher).
+> [!NOTE]
+> Nejaktuálnější oznámení o dostupnosti a stavu této služby najdete [stránku aktualizace Azure](https://azure.microsoft.com/updates/?product=network-watcher).
 
 ### <a name="azure-security-center"></a>Azure Security Center
 

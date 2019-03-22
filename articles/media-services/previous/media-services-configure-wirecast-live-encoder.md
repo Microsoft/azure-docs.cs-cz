@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/14/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: c734c8033947c4f4d5636bc8d82d38a3d871bdbd
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d0da69601bfc6fd09c10b30d45195722781d87d6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998565"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890045"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Kodér Wirecast můžete odesílat živý datový proud s jednou přenosovou rychlostí 
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "55998565"
 >
 >
 
-Tento článek popisuje, jak nakonfigurovat [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) kodér služby live Encoding Odeslat datový proud s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase.  Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
+Tento článek popisuje, jak nakonfigurovat [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) kodér služby live Encoding Odeslat datový proud s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase.  Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
 Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure Media Services Explorer (AMSE). Tento nástroj lze spustit pouze na počítač s Windows. Pokud jste v systému Mac nebo Linux, pomocí webu Azure portal k vytvoření [kanály](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) a [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
 
@@ -109,7 +109,7 @@ V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto 
    * Profil: Hlavní
    * Klíčový snímek každých: 60 snímků
 
-    **Zvuk**
+     **Zvuk**
 
    * Cíl přenosová rychlost: 192 kbits za sekundu
    * Vzorkovací frekvence: 44 100 kHz
@@ -134,7 +134,7 @@ V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto 
 1. Vyberte **OK**.
 2. V hlavním **Wirecast** zkontrolujte vstupní zdroje pro připraveni videa a zvuku a pak klikněte na tlačítko **Stream** v levém horním rohu.
 
-   ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
+    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
 > [!IMPORTANT]
 > Před kliknutím na **Stream**, můžete **musí** Ujistěte se, že kanál je připravený.

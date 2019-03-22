@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: ef55f25657d1decb09e438d443e7c289823f7d9d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: ed429d923cad2c715621990c146d4cf3a23e7bca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605904"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904744"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Nejčastější dotazy pro akcelerátor řešení připojená továrna
 
@@ -105,7 +105,7 @@ Simulace vlastní zaregistruje následující zařízení:
 * proxy.rio.corp.contoso
 * proxy.seattle.corp.contoso
 * publisher.beijing.corp.contoso
-* Publisher.capetown.corp.contoso
+* publisher.capetown.corp.contoso
 * publisher.mumbai.corp.contoso
 * publisher.munich0.corp.contoso
 * publisher.rio.corp.contoso
@@ -130,7 +130,7 @@ S [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/too
 Kontrolovat data zaslaná z jednoho zařízení vydavatele:
 
 * publisher.beijing.corp.contoso
-* Publisher.capetown.corp.contoso
+* publisher.capetown.corp.contoso
 * publisher.mumbai.corp.contoso
 * publisher.munich0.corp.contoso
 * publisher.rio.corp.contoso
@@ -148,7 +148,7 @@ Při nasazení pomocí `build.ps1` skript proměnnou prostředí v sadě úloži
 
 Po nasazení můžete také přidat klíče účtu služby Azure Maps na akcelerátor řešení. Přejděte na web Azure Portal a přístup k prostředku služby App Service v nasazení připojené továrny. Přejděte do **nastavení aplikace**, kde najít oddíl **nastavení aplikace**. Nastavte **MapApiQueryKey** k [klíče vašeho účtu Azure Maps](../azure-maps/how-to-manage-account-keys.md). Uložte nastavení a potom přejděte na **přehled** a restartujte služby App Service.
 
-### <a name="how-do-i-create-a-azure-maps-account"></a>Jak vytvořit účet Azure Maps?
+### <a name="how-do-i-create-an-azure-maps-account"></a>Jak vytvořit účet Azure Maps?
 
 Zobrazit, [jak spravovat účet Azure Maps a klíče](../azure-maps/how-to-manage-account-keys.md).
 
@@ -174,15 +174,15 @@ Neodesílat telemetrická data z jiných OPC UA zařízení pro propojenou tová
 
     ```json
     [
-      {
-        "ApplicationUri": "<the_value_of_OpcUri_of_your_station",
-        "DisplayName": "<name_of_the_datapoint>",
-        "NodeId": "value_of_NodeId_of_your_datapoint_in_the_station",
-        "Value": {
-          "Value": <datapoint_value>,
-          "SourceTimestamp": "<timestamp>"
-        }
-      }
+      {
+        "ApplicationUri": "<the_value_of_OpcUri_of_your_station",
+        "DisplayName": "<name_of_the_datapoint>",
+        "NodeId": "value_of_NodeId_of_your_datapoint_in_the_station",
+        "Value": {
+          "Value": <datapoint_value>,
+          "SourceTimestamp": "<timestamp>"
+        }
+      }
     ]
     ```
 

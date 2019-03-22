@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68748175336e8efc5f6642cff58f0bebf70befa7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 77d2312c5a20aa6b90586d47ee120593e807295e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762301"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57893573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>Kurz: Integrace Azure Active Directory s UltiPro
 
@@ -106,6 +106,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s UltiPro, proveďte následu
     ![UltiPro domény a adresy URL jednotného přihlašování – informace](common/sp-identifier-reply.png)
 
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+
     | |
     |--|
     | `https://<companyname>.ultipro.com/`|
@@ -113,6 +114,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s UltiPro, proveďte následu
     | ` https://<companyname>.ultipro.ca`|
     
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+
     | |
     |--|
     | `https://<companyname>.ultipro.com/adfs/services/trust`|
@@ -120,6 +122,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s UltiPro, proveďte následu
     | `https://<companyname>.ultipro.ca/adfs/services/trust`|
     
     c. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    
     | |
     |--|
     | `https://<companyname>.ultipro.com/<instancename>`|
@@ -165,7 +168,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

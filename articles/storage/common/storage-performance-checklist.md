@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 010a9f4e5be34986c1098f403e4df0ccf569838c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1b6c8b1af00c2819632c60a27d61d7cf8db44885
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821658"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012329"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage
 ## <a name="overview"></a>Přehled
@@ -122,7 +122,7 @@ Můžete použít některé osvědčené postupy, abyste snížili četnost těc
 
 * Zásady vytváření názvů, který používáte pro účty, kontejnery, objekty BLOB, tabulek a front, pečlivě zkontrolujte. Vezměte v úvahu předpony názvy účtů 3 číslice hash pomocí hashovací funkce, která nejlépe vyhovuje vašim potřebám.  
 * Můžete uspořádat data pomocí časová razítka nebo číselné identifikátory, budete muset zajistit, že nepoužíváte vzory provozu nabízí jen možnost připojovat (nebo jen předřaďte). Tyto modely nejsou vhodné pro rozsah – na základě dělení systému, a může vést k veškerý provoz, že přejdete do jednoho oddílu a efektivně omezení systému z vyrovnávání zatížení. Například pokud máte každodenní operace, které používají objekt blob s časovým razítkem, jako je například RRRRMMDD, pak všechny přenosy pro každodenní operace je přesměrováni na jeden objekt, který je poskytovaný serverem jednoho oddílu. Podívejte se na, jestli na omezení objektů blob na oddíl omezení vašim potřebám a rozdělení tato operace do více objektů BLOB v případě potřeby. Podobně pokud uchováváte data časových řad v tabulkách, vše, co může být provoz přesměruje na poslední část klíče oboru názvů. Pokud je třeba použít časové razítko nebo číselnými ID, předpona ID s křížkem 3 číslice nebo v případě časová razítka předponu sekundová část času, například ssyyyymmdd. Pokud probíhají pravidelně výpis a operace dotazování, vyberte hashovací funkce, které omezí počet dotazů. V jiných případech může být předponu náhodné.  
-* Další informace o dělení schéma používané ve službě Azure Storage najdete dokument SOSP [tady](http://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf).
+* Další informace o dělení schéma používané ve službě Azure Storage najdete dokument SOSP [tady](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf).
 
 ### <a name="networking"></a>Sítě
 Při volání rozhraní API věci, často omezení fyzické síťové aplikace mít významný dopad na výkon. Následující popisují některá omezení, které uživatelé mohou nastat.  

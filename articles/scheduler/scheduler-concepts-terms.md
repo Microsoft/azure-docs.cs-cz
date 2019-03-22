@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: a58b247732125574a067deff1d5b03859cd036fc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 15770246f52e87b8fba4a9ec01e1583d194d002b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782288"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887047"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Koncepty, terminologie a entity ve službě Azure Scheduler
 
@@ -77,7 +77,7 @@ Azure Scheduler podporuje několik typů úloh:
 
 | Element | Požaduje se | Popis | 
 |---------|----------|-------------| 
-| [**startTime**](#start-time) | Ne | Čas spuštění úlohy s posunem časového pásma ve [formátu ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) | 
+| [**startTime**](#start-time) | Ne | Čas spuštění úlohy s posunem časového pásma ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
 | [**action**](#action) | Ano | Podrobnosti pro primární akci, které můžou zahrnovat objekt **errorAction** | 
 | [**errorAction**](#error-action) | Ne | Podrobnosti pro sekundární akci, která se spustí, pokud primární akce selže |
 | [**recurrence**](#recurrence) | Ne | Podrobnosti pro opakující se úlohu, například frekvence a interval opakování | 
@@ -137,7 +137,7 @@ Tady je příklad, který ukazuje komplexní definici úlohy pro akci HTTP (podr
 
 ## <a name="starttime"></a>startTime
 
-V objektu **startTime** můžete zadat čas spuštění a posun časového pásma ve [formátu ISO 8601](http://en.wikipedia.org/wiki/ISO_8601).
+V objektu **startTime** můžete zadat čas spuštění a posun časového pásma ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
 
 <a name="action"></a>
 

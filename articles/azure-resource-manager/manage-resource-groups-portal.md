@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 2f31809a0d80079730966e2ecdb017b68563949e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: cbbc710c9408c84c601d7b9eb9560641b5313a05
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825105"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090929"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Správa skupin prostředků Azure Resource Manageru pomocí webu Azure portal
 
@@ -46,11 +46,11 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 3. Vyberte **Přidat**.
 4. Zadejte následující hodnoty:
 
-    - **Předplatné**: Vyberte své předplatné Azure. 
-    - **Skupina prostředků**: Zadejte název nové skupiny prostředků. 
-    - **Oblast**: Vyberte umístění Azure, jako je například **USA (střed)**.
+   - **Předplatné**: Vyberte své předplatné Azure. 
+   - **Skupina prostředků**: Zadejte název nové skupiny prostředků. 
+   - **Oblast**: Vyberte umístění Azure, jako je například **USA (střed)**.
 
-    ![Vytvořte skupinu prostředků](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
+     ![Vytvořte skupinu prostředků](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. Vyberte **zkontrolovat a vytvořit**
 6. Vyberte **Vytvořit**. Trvá několik sekund, vytvořte skupinu prostředků.
 7. Vyberte **aktualizovat** z hlavní nabídky aktualizovat seznam skupin prostředků, a potom vyberte nově vytvořený prostředek skupiny a otevřete ho. Nebo vyberte **oznámení**(ikona zvonku) z horní části a pak vyberte **přejít ke skupině prostředků** otevřete nově vytvořený prostředek skupiny
@@ -130,14 +130,14 @@ Tato metoda exportuje šablony pro určité nasazení. Pokud jste změnili prost
 3. Ze seznamu vyberte jedno z nasazení.
 4. V levém podokně vyberte **šablony**. Resource Manager pro vás načte následujících šest souborů:
 
-    - **Template** - Šablona, která definuje infrastrukturu pro vaše řešení. Když jste prostřednictvím portálu vytvářeli účet úložiště, Resource Manager k jeho nasazení použil šablonu a tuto šablonu uložil pro budoucí použití.
-    - **Parameters** - Soubor s parametry, který slouží k předávání hodnot během nasazení. Obsahuje hodnoty, které jste zadali při prvním nasazení. Kteroukoli z těchto hodnot můžete při opětovném nasazování šablony změnit.
-    - **Rozhraní příkazového řádku** -soubor skriptu Azure CLI, který můžete použít k nasazení šablony.
-    - **PowerShell** - Soubor skriptu Azure PowerShellu, který můžete použít k nasazení šablony.
-    - **.NET** - Třída .NET, kterou můžete použít k nasazení šablony.
-    - **Ruby** - Třída Ruby, kterou můžete použít k nasazení šablony.
+   - **Template** - Šablona, která definuje infrastrukturu pro vaše řešení. Když jste prostřednictvím portálu vytvářeli účet úložiště, Resource Manager k jeho nasazení použil šablonu a tuto šablonu uložil pro budoucí použití.
+   - **Parameters** - Soubor s parametry, který slouží k předávání hodnot během nasazení. Obsahuje hodnoty, které jste zadali při prvním nasazení. Kteroukoli z těchto hodnot můžete při opětovném nasazování šablony změnit.
+   - **Rozhraní příkazového řádku** -soubor skriptu Azure CLI, který můžete použít k nasazení šablony.
+   - **PowerShell** - Soubor skriptu Azure PowerShellu, který můžete použít k nasazení šablony.
+   - **.NET** - Třída .NET, kterou můžete použít k nasazení šablony.
+   - **Ruby** - Třída Ruby, kterou můžete použít k nasazení šablony.
 
-    Ve výchozím nastavení zobrazí na portálu šablonu.
+     Ve výchozím nastavení zobrazí na portálu šablonu.
 
 5. Vyberte **Stáhnout** vyexportujte šablonu do místního počítače.
 
@@ -151,14 +151,14 @@ Pokud jste změnili prostředky z portálu, nebo přidat nebo odebrat prostředk
 1. Otevřete skupinu prostředků, kterou chcete odstranit.  Zobrazit [skupiny prostředků otevřete](#open-resource-groups).
 2. V levém podokně vyberte **automatizační skript**. Resource Manager pro vás načte následujících šest souborů:
 
-    - **Template** - Šablona, která definuje infrastrukturu pro vaše řešení. Když jste prostřednictvím portálu vytvářeli účet úložiště, Resource Manager k jeho nasazení použil šablonu a tuto šablonu uložil pro budoucí použití.
-    - **Parameters** - Soubor s parametry, který slouží k předávání hodnot během nasazení. Obsahuje hodnoty, které jste zadali při prvním nasazení. Kteroukoli z těchto hodnot můžete při opětovném nasazování šablony změnit.
-    - **Rozhraní příkazového řádku** -soubor skriptu Azure CLI, který můžete použít k nasazení šablony.
-    - **PowerShell** - Soubor skriptu Azure PowerShellu, který můžete použít k nasazení šablony.
-    - **.NET** - Třída .NET, kterou můžete použít k nasazení šablony.
-    - **Ruby** - Třída Ruby, kterou můžete použít k nasazení šablony.
+   - **Template** - Šablona, která definuje infrastrukturu pro vaše řešení. Když jste prostřednictvím portálu vytvářeli účet úložiště, Resource Manager k jeho nasazení použil šablonu a tuto šablonu uložil pro budoucí použití.
+   - **Parameters** - Soubor s parametry, který slouží k předávání hodnot během nasazení. Obsahuje hodnoty, které jste zadali při prvním nasazení. Kteroukoli z těchto hodnot můžete při opětovném nasazování šablony změnit.
+   - **Rozhraní příkazového řádku** -soubor skriptu Azure CLI, který můžete použít k nasazení šablony.
+   - **PowerShell** - Soubor skriptu Azure PowerShellu, který můžete použít k nasazení šablony.
+   - **.NET** - Třída .NET, kterou můžete použít k nasazení šablony.
+   - **Ruby** - Třída Ruby, kterou můžete použít k nasazení šablony.
 
-    Ve výchozím nastavení zobrazí na portálu šablonu.
+     Ve výchozím nastavení zobrazí na portálu šablonu.
 3. Vyberte **Stáhnout** vyexportujte šablonu do místního počítače.
 
 Některé exportované šablony potřebujete některé úpravy před jejich použitím. Zjistěte, jak vyvíjet šablony, najdete v článku [podrobné kurzy](/azure/azure-resource-manager/).

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 52bdbd1f7fb02c33e9cd6eef862d5be299bf1dad
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: c18597fde157e0308138348432d63d56446931b7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792340"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012562"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Kurz: Azure SignalR služby ověřování s využitím Azure Functions
 
@@ -74,12 +74,12 @@ Místně sestavíte a otestujete aplikaci Azure Functions. Tato aplikace bude m�
 1. V novém okně VS Code pomocí položky nabídky `File > Open Folder` (Soubor > Otevřít složku) vytvořte ve vhodném umístění prázdnou složku a otevřete ji. Toto bude hlavní složka projektu pro aplikaci, kterou vytvoříte.
 
 1. Pomocí rozšíření Azure Functions ve VS Code v hlavní složce projektu inicializujte aplikaci funkcí.
-    1. Ve VS Code otevřete paletu příkazů tím, že v nabídce vyberete **View > Command Palette** (Zobrazit > Paleta příkazů) (klávesová zkratka `Ctrl-Shift-P`, macOS: `Cmd-Shift-P`).
-    1. Hledat **Azure Functions: Vytvoření nového projektu** příkazů a vyberte ji.
-    1. Měla by se zobrazit hlavní složka projektu. Vyberte ji (nebo ji vyhledejte pomocí možnosti Browse (Procházet)).
-    1. Ve výzvě k výběru jazyka vyberte **JavaScript**.
+   1. Ve VS Code otevřete paletu příkazů tím, že v nabídce vyberete **View > Command Palette** (Zobrazit > Paleta příkazů) (klávesová zkratka `Ctrl-Shift-P`, macOS: `Cmd-Shift-P`).
+   1. Hledat **Azure Functions: Vytvoření nového projektu** příkazů a vyberte ji.
+   1. Měla by se zobrazit hlavní složka projektu. Vyberte ji (nebo ji vyhledejte pomocí možnosti Browse (Procházet)).
+   1. Ve výzvě k výběru jazyka vyberte **JavaScript**.
 
-    ![Vytvoření Function App](media/signalr-tutorial-authenticate-azure-functions/signalr-create-vscode-app.png)
+      ![Vytvoření Function App](media/signalr-tutorial-authenticate-azure-functions/signalr-create-vscode-app.png)
 
 ### <a name="install-function-app-extensions"></a>Instalace rozšíření aplikace funkcí
 
@@ -119,14 +119,14 @@ Při místním spouštění a ladění modulu runtime služby Azure Functions se
     }
     ```
 
-    * Do nastavení `AzureSignalRConnectionString` zadejte připojovací řetězec služby Azure SignalR. Tuto hodnotu získáte na stránce **Klíče** v prostředku služby Azure SignalR na webu Azure Portal. Můžete použít primární nebo sekundární připojovací řetězec.
-    * Nastavení `WEBSITE_NODE_DEFAULT_VERSION` se místně nepoužívá, ale vyžaduje se při nasazení do Azure.
-    * V části `Host` se konfigurují nastavení portu a CORS pro místního hostitele služby Functions (při spuštění v Azure nemá toto nastavení žádný vliv).
+   * Do nastavení `AzureSignalRConnectionString` zadejte připojovací řetězec služby Azure SignalR. Tuto hodnotu získáte na stránce **Klíče** v prostředku služby Azure SignalR na webu Azure Portal. Můžete použít primární nebo sekundární připojovací řetězec.
+   * Nastavení `WEBSITE_NODE_DEFAULT_VERSION` se místně nepoužívá, ale vyžaduje se při nasazení do Azure.
+   * V části `Host` se konfigurují nastavení portu a CORS pro místního hostitele služby Functions (při spuštění v Azure nemá toto nastavení žádný vliv).
 
-        > [!NOTE]
-        > Serveru za provozu je typicky nakonfigurován k poskytování obsahu z http://127.0.0.1:5500. Pokud zjistíte, že používá jinou adresu URL nebo používáte jiný server HTTP, změna `CORS` nastavení tak, aby odrážely správnou původu.
+       > [!NOTE]
+       > Serveru za provozu je typicky nakonfigurován k poskytování obsahu z `http://127.0.0.1:5500`. Pokud zjistíte, že používá jinou adresu URL nebo používáte jiný server HTTP, změna `CORS` nastavení tak, aby odrážely správnou původu.
 
-    ![Získání klíče služby SignalR](media/signalr-tutorial-authenticate-azure-functions/signalr-get-key.png)
+     ![Získání klíče služby SignalR](media/signalr-tutorial-authenticate-azure-functions/signalr-get-key.png)
 
 1. Uložte soubor.
 

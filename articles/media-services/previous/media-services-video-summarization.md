@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: c0a6feb1eba1e409c29a650741eadc31f1017342
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.openlocfilehash: 30c342ca31b33d910406bf74d90d49979e5c46bc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004799"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838075"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Vytvořit souhrn videa pomocí Azure Media Video Thumbnails  
 ## <a name="overview"></a>Přehled
@@ -37,10 +37,10 @@ V některých případech Pokud vaše video se skládá z různých scény, výs
 Tady jsou některé příklady, co můžete dělat procesor médií Azure Media Video Thumbnails:
 
 ### <a name="original-video"></a>Původního videa
-[Původního videa](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
+[Původního videa](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
 
 ### <a name="video-thumbnail-result"></a>Miniatura videa výsledek
-[Miniatura videa výsledek](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
+[Miniatura videa výsledek](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="task-configuration-preset"></a>Konfigurace úlohy (nastavení)
 Při vytváření miniatur videa úlohy s **miniatur videí Azure Media**, je nutné zadat nastavení konfigurace. Ukázka výše miniatur byla vytvořena s použitím základní konfigurace JSON:
@@ -62,7 +62,7 @@ V současné době můžete změnit následující parametry:
 Následující tabulka popisuje výchozí doba, kdy **maxMotionThumbnailInSecs** se nepoužívá.
 
 |  |  |  |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- |
 | Doba trvání videa |d < 3 min |3 min < d < 15 min |
 | Doba trvání miniatur |15 sec (scén 2 – 3) |30 sekund (3 až 5 scény) |
 
@@ -276,7 +276,7 @@ Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o
 ```
 
 ### <a name="video-thumbnail-output"></a>Výstup miniatury videa
-[Výstup miniatury videa](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
+[Výstup miniatury videa](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -287,5 +287,5 @@ Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o
 ## <a name="related-links"></a>Související odkazy
 [Azure Media Services Analytics Overview](media-services-analytics-overview.md)
 
-[Azure Media Analytics demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics demos](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

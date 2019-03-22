@@ -3,8 +3,8 @@ title: zahrnout soubor
 description: zahrnout soubor
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,20 +12,20 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/04/2018
-ms.author: andret
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 15db2192703971a8056df34343c427db11c8411a
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: cce0bb9d1a9317396d197d182a424a45c8448f1b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988497"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203581"
 ---
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 
 Zaregistrujte si vaši aplikaci a přidejte informace o registraci aplikace do svého řešení, máte dvě možnosti:
 
-### <a name="option-1-express-mode"></a>Možnost 1: Expresní režim
+### <a name="option-1-express-mode"></a>Option 1: Expresní režim
 
 Můžete rychle registrace vaší aplikace následujícím způsobem:
 
@@ -34,7 +34,7 @@ Můžete rychle registrace vaší aplikace následujícím způsobem:
 3. Ujistěte se, že je zaškrtnuté políčko pro instalační program s asistencí.
 4. Postupujte podle pokynů pro přidání adresy URL přesměrování pro aplikaci.
 
-### <a name="option-2-advanced-mode"></a>Možnost 2: Rozšířeném režimu
+### <a name="option-2-advanced-mode"></a>Option 2: Rozšířený režim
 
 Postup při registraci aplikace a přidání informací o registraci aplikace k řešení:
 

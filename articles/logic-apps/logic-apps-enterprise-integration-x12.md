@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
-ms.openlocfilehash: c4ee56f4ddcccb1fc4ddd84aa1c1b16dea9754d9
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 6665ea8bc4016c9d64005f9c742115cf785ed5ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123953"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842130"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna X12 zpráv pro podnikovou integraci B2B v Azure Logic Apps sadou Enterprise Integration Pack
 
@@ -36,9 +36,10 @@ Poté co [vytvořit integrační účet](../logic-apps/logic-apps-enterprise-int
 
 ## <a name="create-an-x12-agreement"></a>Vytvoření x X12 smlouvy
 
-1. Přihlaste se na web [Azure Portal](http://portal.azure.com "Azure Portal"). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com "Azure Portal"). 
 
-2. V hlavní nabídce Azure zvolte **všechny služby**. Do vyhledávacího pole zadejte "integrace" a pak vyberte **účty pro integraci**.  
+2. V hlavní nabídce Azure zvolte **všechny služby**. 
+   Do vyhledávacího pole zadejte "integrace" a pak vyberte **účty pro integraci**.  
 
    ![Vyhledejte svůj účet integrace](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
@@ -49,7 +50,8 @@ Poté co [vytvořit integrační účet](../logic-apps/logic-apps-enterprise-int
 
    ![Vyberte místo pro vytvoření smlouvu účtu integrace](./media/logic-apps-enterprise-integration-x12/account-3.png)
 
-4. Vyberte **přehled**a pak **smlouvy** dlaždici. Pokud nemáte k dispozici dlaždici smlouvy, přidejte nejprve na dlaždici. 
+4. Vyberte **přehled**a pak **smlouvy** dlaždici. 
+   Pokud nemáte k dispozici dlaždici smlouvy, přidejte nejprve na dlaždici. 
 
    ![Zvolte dlaždici "smlouvy o"](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
@@ -57,7 +59,10 @@ Poté co [vytvořit integrační účet](../logic-apps/logic-apps-enterprise-int
 
    ![Zvolte "Přidat"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
 
-6. V části **přidat**, zadejte **název** pro vaši smlouvu. Typ smlouvy, vyberte **X12**. Vyberte **partner s identitou hostitele**, **identita hostitele**, **partner s identitou hosta**, a **identita hosta** pro vaši smlouvu. Vlastnost podrobnosti najdete v tabulce v tomto kroku.
+6. V části **přidat**, zadejte **název** pro vaši smlouvu. 
+   Typ smlouvy, vyberte **X12**. 
+   Vyberte **partner s identitou hostitele**, **identita hostitele**, **partner s identitou hosta**, a **identita hosta** pro vaši smlouvu. 
+   Vlastnost podrobnosti najdete v tabulce v tomto kroku.
 
     ![Zadejte podrobnosti o smlouvě](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
 
@@ -72,8 +77,8 @@ Poté co [vytvořit integrační účet](../logic-apps/logic-apps-enterprise-int
     | Nastavení příjmu |Tyto vlastnosti se vztahují na všechny zprávy přijaté službou smlouvu. |
     | Nastavení odesílání |Tyto vlastnosti se vztahují na všechny zprávy odeslané dohodou. |  
 
-  > [!NOTE]
-  > Rozlišení X12 smlouvy závisí na odpovídající kvalifikátor odesílatele a identifikátor a kvalifikátoru pro příjemce a identifikátor definovaný v partnera a příchozí zprávy. Pokud tyto hodnoty změnit svého partnera, aktualizujte příliš smlouvy.
+   > [!NOTE]
+   > Rozlišení X12 smlouvy závisí na odpovídající kvalifikátor odesílatele a identifikátor a kvalifikátoru pro příjemce a identifikátor definovaný v partnera a příchozí zprávy. Pokud tyto hodnoty změnit svého partnera, aktualizujte příliš smlouvy.
 
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>Nakonfigurujte, jak vaše smlouvy popisovače přijatých zpráv
 
@@ -82,7 +87,7 @@ Teď, když jste nastavili vlastnosti smlouvy, můžete nakonfigurovat, jak tato
 1.  V části **přidat**vyberte **přijímat nastavení**.
 Konfigurovat tyto vlastnosti závislosti na vaší smlouvě s partnerem, který vyměňuje zprávy s vámi. Popisy vlastností naleznete v tématu tabulky v této části.
 
-    **Získat nastavení** uspořádány do těchto částí: identifikátory, potvrzení, schémata, obálky, kontrolních čísel, ověření a interní nastavení.
+    **Získat nastavení** uspořádány do těchto částí: Identifikátory, potvrzení, schémata, obálky, kontrolních čísel, ověření a interní nastavení.
 
 2. Až budete hotovi, ujistěte se, že uložte nastavení výběrem **OK**.
 
@@ -178,7 +183,7 @@ Můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává odchozí z
 1.  V části **přidat**vyberte **odeslat nastavení**.
 Konfigurovat tyto vlastnosti závislosti na vaší smlouvě se vašeho partnera, který vyměňuje zprávy s vámi. Popisy vlastností naleznete v tématu tabulky v této části.
 
-    **Nastavení odesílání** uspořádány do těchto částí: identifikátory, potvrzení, schémata, obálky, znakové sady a oddělovače, kontrolních čísel a ověření.
+    **Nastavení odesílání** uspořádány do těchto částí: Identifikátory, potvrzení, schémata, obálky, znakové sady a oddělovače, kontrolních čísel a ověření.
 
 2. Až budete hotovi, ujistěte se, že uložte nastavení výběrem **OK**.
 
@@ -213,7 +218,7 @@ Nyní je připravená pro zpracování odchozích zpráv, které v souladu s vá
 | --- | --- |
 | Verze |Vyberte X12 verze |
 | Typ transakce (ST01) |Vyberte typ transakce |
-| SCHÉMA |Vyberte schéma používat. Schémata se nacházejí v účtu integrace. Pokud nejprve vyberte schéma automaticky konfiguruje verze a transakce typu  |
+| SCHEMA |Vyberte schéma používat. Schémata se nacházejí v účtu integrace. Pokud nejprve vyberte schéma automaticky konfiguruje verze a transakce typu  |
 
 > [!NOTE]
 > Nakonfigurujte požadované [schématu](../logic-apps/logic-apps-enterprise-integration-schemas.md) , který se nahraje do vaší [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-accounts.md).

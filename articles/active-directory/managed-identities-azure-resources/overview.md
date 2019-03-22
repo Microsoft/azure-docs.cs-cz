@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc56384d550854c05a813157b32ac36f5ebfb76
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: df2c4e447ff41e56c4d8b9862282b6fcb452a8c9
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211916"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224290"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Co jsou spravované identity prostředků Azure?
 
@@ -64,13 +64,12 @@ Následující diagram ukazuje fungování identit spravovaných služeb s virtu
     1. Aktualizuje koncový bod identity služby Azure Instance Metadata Service s použitím ID klienta a certifikátu instančního objektu.
     1. Zřizuje rozšíření virtuálního počítače (plánované k vyřazení v lednu 2019) a přidává ID klienta a certifikát instančního objektu služby. (Tento krok plánujeme vyřadit.)
 4. Jakmile bude virtuální počítač mít identitu, s použitím informací o instančním objektu udělte virtuálnímu počítači přístup k prostředkům Azure. Pokud chcete volat Azure Resource Manager, přiřaďte k instančnímu objektu virtuálního počítače odpovídající roli pomocí řízení přístupu na základě role (RBAC) v Azure AD. Pokud chcete volat službu Key Vault, udělte kódu přístup ke konkrétnímu tajnému kódu nebo klíči ve službě Key Vault.
-5. Váš kód spuštěný na virtuálním počítači si může vyžádat token ze dvou koncových bodů přístupných pouze z daného virtuálního počítače:
+5. Váš kód, který běží na virtuálním počítači můžete požádat o token z Azure Instance Metadata koncový bod služby, přístupný pouze uvnitř virtuálního počítače: `http://169.254.169.254/metadata/identity/oauth2/token`
+    - Parametr resource (prostředek) určuje službu, do které se token odešle. K ověření v Azure Resource Manageru použijte `resource=https://management.azure.com/`.
+    - Parametr verze rozhraní API určuje verzi IMDS. Použijte api-version=2018-02-01 nebo novější.
 
-    - Koncový bod identity služby Azure Instance Metadata Service (doporučeno): `http://169.254.169.254/metadata/identity/oauth2/token`
-        - Parametr resource (prostředek) určuje službu, do které se token odešle. K ověření v Azure Resource Manageru použijte `resource=https://management.azure.com/`.
-        - Parametr verze rozhraní API určuje verzi IMDS. Použijte api-version=2018-02-01 nebo novější.
-    - Koncový bod rozšíření virtuálního počítače (plánovaný k vyřazení v lednu 2019): `http://localhost:50342/oauth2/token` 
-        - Parametr resource (prostředek) určuje službu, do které se token odešle. K ověření v Azure Resource Manageru použijte `resource=https://management.azure.com/`.
+> [!NOTE]
+> Kód můžete také požádat o token z koncového bodu virtuálního počítače rozšíření, ale to je naplánovaná na vyřazení brzy. Další informace o rozšíření virtuálního počítače najdete v tématu [migrovat z rozšíření virtuálního počítače Azure IMDS ověřování](howto-migrate-vm-extension.md).
 
 6. Zavolá se služba Azure AD s požadavkem na přístupový token (jak je popsáno v kroku 5) s použitím ID klienta a certifikátu nakonfigurovaných v kroku 3. Azure AD vrátí přístupový token JSON Web Token (JWT).
 7. Váš kód odešle přístupový token prostřednictvím volání do služby, která podporuje ověřování Azure AD.
@@ -87,16 +86,14 @@ Následující diagram ukazuje fungování identit spravovaných služeb s virtu
    > [!Note]
    > Tento krok můžete provést také před krokem 3.
 
-5. Váš kód spuštěný na virtuálním počítači si může vyžádat token ze dvou koncových bodů přístupných pouze z daného virtuálního počítače:
+5. Váš kód, který běží na virtuálním počítači můžete požádat o token ze služby Azure Instance Metadata identitu koncového bodu, přístupný pouze uvnitř virtuálního počítače: `http://169.254.169.254/metadata/identity/oauth2/token`
+    - Parametr resource (prostředek) určuje službu, do které se token odešle. K ověření v Azure Resource Manageru použijte `resource=https://management.azure.com/`.
+    - Parametr ID klienta určuje identitu, pro kterou se token požaduje. Tato hodnota je nutná k jednoznačnému určení v případě, že je na jednom virtuálním počítači více identit přiřazených uživatelem.
+    - Parametr verze rozhraní API určuje verzi služby Azure Instance Metadata Service. Použijte `api-version=2018-02-01` nebo novější.
 
-    - Koncový bod identity služby Azure Instance Metadata Service (doporučeno): `http://169.254.169.254/metadata/identity/oauth2/token`
-        - Parametr resource (prostředek) určuje službu, do které se token odešle. K ověření v Azure Resource Manageru použijte `resource=https://management.azure.com/`.
-        - Parametr ID klienta určuje identitu, pro kterou se token požaduje. Tato hodnota je nutná k jednoznačnému určení v případě, že je na jednom virtuálním počítači více identit přiřazených uživatelem.
-        - Parametr verze rozhraní API určuje verzi služby Azure Instance Metadata Service. Použijte `api-version=2018-02-01` nebo novější.
+> [!NOTE]
+> Kód můžete také požádat o token z koncového bodu virtuálního počítače rozšíření, ale to je naplánovaná na vyřazení brzy. Další informace o rozšíření virtuálního počítače najdete v tématu [migrovat z rozšíření virtuálního počítače Azure IMDS ověřování](howto-migrate-vm-extension.md).
 
-    - Koncový bod rozšíření virtuálního počítače (plánovaný k vyřazení v lednu 2019): `http://localhost:50342/oauth2/token`
-        - Parametr resource (prostředek) určuje službu, do které se token odešle. K ověření v Azure Resource Manageru použijte `resource=https://management.azure.com/`.
-        - Parametr ID klienta určuje identitu, pro kterou se token požaduje. Tato hodnota je nutná k jednoznačnému určení v případě, že je na jednom virtuálním počítači více identit přiřazených uživatelem.
 6. Zavolá se služba Azure AD s požadavkem na přístupový token (jak je popsáno v kroku 5) s použitím ID klienta a certifikátu nakonfigurovaných v kroku 3. Azure AD vrátí přístupový token JSON Web Token (JWT).
 7. Váš kód odešle přístupový token prostřednictvím volání do služby, která podporuje ověřování Azure AD.
 

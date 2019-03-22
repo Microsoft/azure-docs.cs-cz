@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52d3e058c7e604a31493bf3b1972b39c9922fd90
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e5ce628716e9e8d0094f678c3d67dcfad9e24ada
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163511"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860529"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Kurz: Integrace Azure Active Directory s Proxyclick
 
@@ -214,7 +214,7 @@ Přihlaste se k Proxyclick Azure AD uživatelům umožnit, musí být poskytnuty
 
     ![Přidat zaměstnance](./media/proxyclick-tutorial/user3.png)
 
-    a. V **e-mailu** , jako je textové pole, typ e-mailovou adresu uživatele **brittasimon@contoso.com**.
+    a. V **e-mailu** , jako je textové pole, typ e-mailovou adresu uživatele **brittasimon\@contoso.com**.
 
     b. V **křestní jméno** textového pole Název typu prvního uživatele, jako je Britta.
 

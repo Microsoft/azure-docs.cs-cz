@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 47496be907726ca8cd0e235775cdb1a8493310d0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4f6c420ab76462818fb17308d062cc9d881af7df
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879101"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091031"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -38,55 +38,55 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <th>Popis</th>
   <tr>
     <td>verze API-version</td>
-    <td>*Povinný parametr*.<br/>Verze rozhraní API požadovaná klientem. Hodnota musí být `3.0`.</td>
+    <td><em>Povinný parametr</em>.<br/>Verze rozhraní API požadovaná klientem. Hodnota musí být <code>3.0</code>.</td>
   </tr>
   <tr>
     <td>od</td>
-    <td>*Volitelný parametr*.<br/>Určuje jazyk, který vstupního textu. Najít jazyky, které jsou k dispozici pro převod z vyhledáním [podporované jazyky](./v3-0-languages.md) pomocí `translation` oboru. Pokud `from` parametr není zadán, automatické rozpoznávání jazyka se použije k určení zdrojového jazyka.</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje jazyk, který vstupního textu. Najít jazyky, které jsou k dispozici pro převod z vyhledáním [podporované jazyky](./v3-0-languages.md) pomocí <code>translation</code> oboru. Pokud <code>from</code> parametr není zadán, automatické rozpoznávání jazyka se použije k určení zdrojového jazyka.</td>
   </tr>
   <tr>
     <td>na</td>
-    <td>*Povinný parametr*.<br/>Určuje jazyk text výstupu. Cílový jazyk musí být jedna z [podporované jazyky](./v3-0-languages.md) součástí `translation` oboru. Například použít `to=de` pro převod na němčinu.<br/>Je možné převést na různých jazycích současně opakováním parametr v řetězci dotazu. Například použít `to=de&to=it` pro převod a němčina, italština.</td>
+    <td><em>Povinný parametr</em>.<br/>Určuje jazyk text výstupu. Cílový jazyk musí být jedna z [podporované jazyky](./v3-0-languages.md) součástí <code>translation</code> oboru. Například použít <code>to=de</code> pro převod na němčinu.<br/>Je možné převést na různých jazycích současně opakováním parametr v řetězci dotazu. Například použít <code>to=de&to=it</code> pro převod a němčina, italština.</td>
   </tr>
   <tr>
     <td>textType</td>
-    <td>*Volitelný parametr*.<br/>Definuje, zda je text, který je překládán prostý text nebo text ve formátu HTML. Musí být ve správném formátu, dokončení element veškeré kódování HTML. Možné hodnoty jsou: `plain` (výchozí) nebo `html`.</td>
+    <td><em>Volitelný parametr</em>.<br/>Definuje, zda je text, který je překládán prostý text nebo text ve formátu HTML. Musí být ve správném formátu, dokončení element veškeré kódování HTML. Možné hodnoty jsou: <code>plain</code> (výchozí) nebo <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
-    <td>*Volitelný parametr*.<br/>Řetězec určující kategorie překladu (domény). Tento parametr slouží k získání překlady z přizpůsobené systému vytvořených pomocí [vlastní Translator](../customization.md). Přidáte ID kategorie z projektu vlastní překladač pro tento parametr použijte vaše nasazené přizpůsobený systém. Výchozí hodnota je: `general`.</td>
+    <td><em>Volitelný parametr</em>.<br/>Řetězec určující kategorie překladu (domény). Tento parametr slouží k získání překlady z přizpůsobené systému vytvořených pomocí [vlastní Translator](../customization.md). Přidáte ID kategorie z projektu vlastní překladač pro tento parametr použijte vaše nasazené přizpůsobený systém. Výchozí hodnota je: <code>general</code>.</td>
   </tr>
   <tr>
     <td>profanityAction</td>
-    <td>*Volitelný parametr*.<br/>Určuje, jak bude pracovat profanities překlady. Možné hodnoty jsou: `NoAction` (výchozí), `Marked` nebo `Deleted`. Způsoby, jak nakládat s vulgárních výrazů najdete v tématu [vulgárních výrazů zpracování](#handle-profanity).</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje, jak bude pracovat profanities překlady. Možné hodnoty jsou: <code>NoAction</code> (výchozí), <code>Marked</code> nebo <code>Deleted</code>. Způsoby, jak nakládat s vulgárních výrazů najdete v tématu [vulgárních výrazů zpracování](#handle-profanity).</td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td>*Volitelný parametr*.<br/>Určuje, jak by měla být označena profanities v překlady. Možné hodnoty jsou: `Asterisk` (výchozí) nebo `Tag`. Způsoby, jak nakládat s vulgárních výrazů najdete v tématu [vulgárních výrazů zpracování](#handle-profanity).</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje, jak by měla být označena profanities v překlady. Možné hodnoty jsou: <code>Asterisk</code> (výchozí) nebo <code>Tag</code>. Způsoby, jak nakládat s vulgárních výrazů najdete v tématu [vulgárních výrazů zpracování](#handle-profanity).</td>
   </tr>
   <tr>
     <td>includeAlignment</td>
-    <td>*Volitelný parametr*.<br/>Určuje, jestli se mají zahrnout zarovnání projekce ze zdrojového textu na přeložený text. Možné hodnoty jsou: `true` nebo `false` (výchozí). </td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje, jestli se mají zahrnout zarovnání projekce ze zdrojového textu na přeložený text. Možné hodnoty jsou: <code>true</code> nebo <code>false</code> (výchozí). </td>
   </tr>
   <tr>
     <td>includeSentenceLength</td>
-    <td>*Volitelný parametr*.<br/>Určuje, jestli se má zahrnout věty hranice pro vstupní text a přeloženým textem. Možné hodnoty jsou: `true` nebo `false` (výchozí).</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje, jestli se má zahrnout věty hranice pro vstupní text a přeloženým textem. Možné hodnoty jsou: <code>true</code> nebo <code>false</code> (výchozí).</td>
   </tr>
   <tr>
     <td>suggestedFrom</td>
-    <td>*Volitelný parametr*.<br/>Určuje jazyk, který použití náhradní lokality, pokud nelze určit jazyk vstupního textu. Automatické rozpoznávání jazyka se použije při `from` parametr se vynechá. Pokud se nezdaří detekce, `suggestedFrom` předpokládá se jazyk.</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje jazyk, který použití náhradní lokality, pokud nelze určit jazyk vstupního textu. Automatické rozpoznávání jazyka se použije při <code>from</code> parametr se vynechá. Pokud se nezdaří detekce, <code>suggestedFrom</code> předpokládá se jazyk.</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*Volitelný parametr*.<br/>Určuje skript vstupního textu.</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje skript vstupního textu.</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*Volitelný parametr*.<br/>Určuje skript přeloženého textu.</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje skript přeloženého textu.</td>
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td>*Volitelný parametr*.<br/>Určuje, že služba může nouzového řešení ověření pomocí obecného systému při vlastní systému neexistuje. Možné hodnoty jsou: `true` (výchozí) nebo `false`.<br/><br/>`allowFallback=false` Určuje, zda překlad by měl používat pouze systémy trénovaných ke zpracování `category` určeném požadavkem. Pokud překlad pro jazyk X jazyk Y vyžaduje řetězení prostřednictvím jazyka pivot E, pak všechny systémy v řetězci (X -> E a E -> Y) bude nutné mít vlastní a mají stejné kategorie. Pokud je nalezen žádný systém s konkrétní kategorií, požadavek vrátí stavový kód 400. `allowFallback=true` Určuje, že služba může nouzového řešení ověření pomocí obecného systému při vlastní systému neexistuje.
+    <td><em>Volitelný parametr</em>.<br/>Určuje, že služba může nouzového řešení ověření pomocí obecného systému při vlastní systému neexistuje. Možné hodnoty jsou: <code>true</code> (výchozí) nebo <code>false</code>.<br/><br/><code>allowFallback=false</code> Určuje, zda překlad by měl používat pouze systémy trénovaných ke zpracování <code>category</code> určeném požadavkem. Pokud překlad pro jazyk X jazyk Y vyžaduje řetězení prostřednictvím jazyka pivot E, pak všechny systémy v řetězci (X -> E a E -> Y) bude nutné mít vlastní a mají stejné kategorie. Pokud je nalezen žádný systém s konkrétní kategorií, požadavek vrátí stavový kód 400. <code>allowFallback=true</code> Určuje, že služba může nouzového řešení ověření pomocí obecného systému při vlastní systému neexistuje.
 </td>
   </tr>
 </table> 
@@ -98,19 +98,19 @@ Hlavičky žádosti patří:
   <th>Popis</th>
   <tr>
     <td>_Jedním autorizačním_<br/>_header_</td>
-    <td>*Hlavička požadavku požadované*.<br/>Zobrazit [dostupné možnosti pro ověřování](./v3-0-reference.md#authentication).</td>
+    <td><em>Hlavička požadavku požadované</em>.<br/>Zobrazit [dostupné možnosti pro ověřování](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
     <td>Typ obsahu</td>
-    <td>*Hlavička požadavku požadované*.<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json`.</td>
+    <td><em>Hlavička požadavku požadované</em>.<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: <code>application/json</code>.</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>*Hlavička požadavku požadované*.<br/>Délka textu požadavku.</td>
+    <td><em>Hlavička požadavku požadované</em>.<br/>Délka textu požadavku.</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Volitelné*.<br/>Klientem generovaná identifikátor GUID k jednoznačné identifikaci požadavku. Tato hlavička můžete vynechat, pokud zahrnete ID trasování v řetězci dotazu pomocí parametru dotazu s názvem `ClientTraceId`.</td>
+    <td><em>Volitelné</em>.<br/>Klientem generovaná identifikátor GUID k jednoznačné identifikaci požadavku. Tato hlavička můžete vynechat, pokud zahrnete ID trasování v řetězci dotazu pomocí parametru dotazu s názvem <code>ClientTraceId</code>.</td>
   </tr>
 </table> 
 
@@ -209,7 +209,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   </tr>
   <tr>
     <td>408</td>
-    <td>Požadavek nelze splnit, protože chybí prostředek. Najdete podrobnosti o chybové zprávě. Při použití vlastního `category`, to často určuje, že vlastní překladový systém ještě není k dispozici pro požadavků. Po určité době čekání (např. 1 minuta) neúspěšného požadavku.</td>
+    <td>Požadavek nelze splnit, protože chybí prostředek. Najdete podrobnosti o chybové zprávě. Při použití vlastního <code>category</code>, to často určuje, že vlastní překladový systém ještě není k dispozici pro požadavků. Po určité době čekání (např. 1 minuta) neúspěšného požadavku.</td>
   </tr>
   <tr>
     <td>429</td>
@@ -217,11 +217,11 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   </tr>
   <tr>
     <td>500</td>
-    <td>Došlo k neočekávané chybě. Pokud chyba přetrvává, nahlaste to s: datum a čas selhání žádost s identifikátorem v hlavičce odpovědi `X-RequestId`a identifikátor klienta v hlavičce požadavku `X-ClientTraceId`.</td>
+    <td>Došlo k neočekávané chybě. Pokud chyba přetrvává, nahlaste to s: datum a čas selhání žádost s identifikátorem v hlavičce odpovědi <code>X-RequestId</code>a identifikátor klienta v hlavičce požadavku <code>X-ClientTraceId</code>.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Server je dočasně nedostupný. Zkuste požadavek. Pokud chyba přetrvává, nahlaste to s: datum a čas selhání žádost s identifikátorem v hlavičce odpovědi `X-RequestId`a identifikátor klienta v hlavičce požadavku `X-ClientTraceId`.</td>
+    <td>Server je dočasně nedostupný. Zkuste požadavek. Pokud chyba přetrvává, nahlaste to s: datum a čas selhání žádost s identifikátorem v hlavičce odpovědi <code>X-RequestId</code>a identifikátor klienta v hlavičce požadavku <code>X-ClientTraceId</code>.</td>
   </tr>
 </table> 
 
@@ -376,28 +376,28 @@ Pokud chcete předejít vulgárních výrazů v překladu, bez ohledu na příto
   <th width="20%">ProfanityAction</th>
   <th>Akce</th>
   <tr>
-    <td>`NoAction`</td>
+    <td><code>NoAction</code></td>
     <td>Toto je výchozí chování. Vulgárních výrazů předá ze zdroje do cíle.<br/><br/>
-    **Příklad zdroje (japonština)**: 彼はジャッカスです。<br/>
-    **Příklad překladu (v angličtině)**: Je jackass.
+    <strong>Příklad zdroje (japonština)</strong>: 彼はジャッカスです。<br/>
+    <strong>Příklad překladu (v angličtině)</strong>: Je jackass.
     </td>
   </tr>
   <tr>
-    <td>`Deleted`</td>
+    <td><code>Deleted</code></td>
     <td>Urážlivá slova se odebere z výstupu bez nahrazení.<br/><br/>
-    **Příklad zdroje (japonština)**: 彼はジャッカスです。<br/>
-    **Příklad překladu (v angličtině)**: Je.
+    <strong>Příklad zdroje (japonština)</strong>: 彼はジャッカスです。<br/>
+    <strong>Příklad překladu (v angličtině)</strong>: Je.
     </td>
   </tr>
   <tr>
-    <td>`Marked`</td>
-    <td>Neslušná slova značky ve výstupu. Značky závisí `ProfanityMarker` parametru.<br/><br/>
-Pro `ProfanityMarker=Asterisk`, jsou nahrazeny urážlivá slova `***`:<br/>
-    **Příklad zdroje (japonština)**: 彼はジャッカスです。<br/>
-    **Příklad překladu (v angličtině)**: Je \* \* \*.<br/><br/>
-Pro `ProfanityMarker=Tag`, urážlivá slova jsou ohraničeny značky XML &lt;vulgárních výrazů&gt; a &lt;/profanity&gt;:<br/>
-    **Příklad zdroje (japonština)**: 彼はジャッカスです。<br/>
-    **Příklad překladu (v angličtině)**: Je &lt;vulgárních výrazů&gt;jackass&lt;/profanity&gt;.
+    <td><code>Marked</code></td>
+    <td>Neslušná slova značky ve výstupu. Značky závisí <code>ProfanityMarker</code> parametru.<br/><br/>
+Pro <code>ProfanityMarker=Asterisk</code>, jsou nahrazeny urážlivá slova <code>***</code>:<br/>
+    <strong>Příklad zdroje (japonština)</strong>: 彼はジャッカスです。<br/>
+    <strong>Příklad překladu (v angličtině)</strong>: Je \* \* \*.<br/><br/>
+Pro <code>ProfanityMarker=Tag</code>, urážlivá slova jsou ohraničeny značky XML &lt;vulgárních výrazů&gt; a &lt;/profanity&gt;:<br/>
+    <strong>Příklad zdroje (japonština)</strong>: 彼はジャッカスです。<br/>
+    <strong>Příklad překladu (v angličtině)</strong>: Je &lt;vulgárních výrazů&gt;jackass&lt;/profanity&gt;.
   </tr>
 </table> 
 

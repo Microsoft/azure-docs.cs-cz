@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: alavital
 ms.custom: ''
-ms.openlocfilehash: d6f7a597ff5737bb5e9a3f07122ece313bd432ff
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: feb7fcdd9005ef131acadfc63defbe4caeaca014
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337768"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57991935"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Použít cost výstrahy a monitorování využití a výdajů
 
@@ -49,7 +49,7 @@ Podpora pro různé typy výstrah závisí na typu účtu Azure, abyste měli (M
 
 ## <a name="view-cost-alerts"></a>Zobrazení nákladů výstrah
 
-Na webu Azure Portal klikněte v seznamu služeb na **Cost Management a fakturace**. Pak v seznamu **Cost Management**vyberte **nákladů výstrahy**.
+Chcete-li zobrazit výstrahy nákladů, otevřete v webu Azure portal a vyberte požadovaný obor **rozpočty** v nabídce. Použití **oboru** obranné přepnout do jiného oboru. Vyberte **nákladů výstrahy** v nabídce. Další informace o oborech najdete v tématu [pochopení a práci s obory](understand-work-scopes.md).
 
 ![Obrázek příkladu výstrah zobrazených ve službě Cost Management](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
 

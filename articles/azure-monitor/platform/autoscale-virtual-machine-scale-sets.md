@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 23618b545814e89a7343d2db4664405855051c1b
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415438"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080773"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Rozšířená konfigurace škálování pro Škálovací sady virtuálních počítačů pomocí šablon Resource Manageru
 Můžete škálování na méně instancí a škálování Škálovací sady virtuálních počítačů na základě výkonu metriky prahových hodnot, podle opakovaného plánu nebo podle konkrétního data. Můžete také nakonfigurovat emailová a webhooková oznámení pro akce škálování. Tento návod ukazuje příklad konfigurace všechny tyto objekty pomocí šablony Resource Manageru v sadě škálování virtuálního počítače.
@@ -47,14 +47,14 @@ V tomto názorném postupu používáme [Azure Resource Exploreru](https://resou
 
 4. Tady je hypotetický škálování scénář, který jsme použili pro tento návod.
 
-    * **Zatížení na základě** – chci horizontální navýšení kapacity nebo v podle zatížení ve své aplikaci hostované na můj set.* škálování
-    * **Velikost fronty zprávy** – použití fronty Service Bus pro příchozí zprávy pro mojí aplikaci. Můžu používat počet zpráv do fronty a % procesoru a nakonfigurovat výchozí profil aktivovat akci škálování, pokud narazí na některý z počet zpráv nebo procesor prahovou hodnotu.\*
-    * **Čas týden a den** – chci, aby týdenní opakované "čas" na základě profilu nazývá 'Hodiny ráno den v týdnu'. Na základě historických dat o vědět, že je lepší mít určitý počet instancí virtuálních počítačů pro zpracování zátěže vaší aplikace během této doby.\*
-    * **Speciální datum** – po přidání profilu produktu spuštění den. Můžu Plánujte dopředu a připravte konkrétní data, aplikace je připravená pro zpracování zátěže z důvodu marketingové oznámení a máme nového produktu v aplikaci.\*
-    * *Poslední dva profily může mít také další metriky na základě pravidel výkonu v nich. V tomto případě jsem se rozhodla nechcete mít jeden a místo toho přináší setrvávání u výchozí metriku výkonu na základě pravidel. Pravidla jsou volitelné pro profily opakované a na základě data.*
+   * **Zatížení na základě** – chci horizontální navýšení kapacity nebo v podle zatížení ve své aplikaci hostované na můj set.* škálování
+   * **Velikost fronty zprávy** – použití fronty Service Bus pro příchozí zprávy pro mojí aplikaci. Můžu používat počet zpráv do fronty a % procesoru a nakonfigurovat výchozí profil aktivovat akci škálování, pokud narazí na některý z počet zpráv nebo procesor prahovou hodnotu.\*
+   * **Čas týden a den** – chci, aby týdenní opakované "čas" na základě profilu nazývá 'Hodiny ráno den v týdnu'. Na základě historických dat o vědět, že je lepší mít určitý počet instancí virtuálních počítačů pro zpracování zátěže vaší aplikace během této doby.\*
+   * **Speciální datum** – po přidání profilu produktu spuštění den. Můžu Plánujte dopředu a připravte konkrétní data, aplikace je připravená pro zpracování zátěže z důvodu marketingové oznámení a máme nového produktu v aplikaci.\*
+   * *Poslední dva profily může mít také další metriky na základě pravidel výkonu v nich. V tomto případě jsem se rozhodla nechcete mít jeden a místo toho přináší setrvávání u výchozí metriku výkonu na základě pravidel. Pravidla jsou volitelné pro profily opakované a na základě data.*
 
-    Stanovení priorit modul automatického škálování profilů a pravidla i zaznamenány [osvědčené postupy automatického škálování](autoscale-best-practices.md) článku.
-    Seznam běžné metriky pro automatické škálování, najdete v části [běžné metriky pro automatické škálování](autoscale-common-metrics.md)
+     Stanovení priorit modul automatického škálování profilů a pravidla i zaznamenány [osvědčené postupy automatického škálování](autoscale-best-practices.md) článku.
+     Seznam běžné metriky pro automatické škálování, najdete v části [běžné metriky pro automatické škálování](autoscale-common-metrics.md)
 
 5. Ujistěte se, že jste na **r/w** režimu v Průzkumníku prostředků
 

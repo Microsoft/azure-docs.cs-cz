@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: kasinh
-ms.openlocfilehash: 0ebf1bae023115a268547e5c64e3a2681438092a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 22507a1b89c6a7d6867e9b669e1a2e70106a4e41
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340667"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880564"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
 
@@ -104,4 +104,4 @@ ms.locfileid: "56340667"
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Nastavení e-mailová oznámení pomocí účtu Office 365 |ID chyby: 2013| **Příčina:**<br> Chcete-li použít účet Office 365 <br>**Doporučená akce:**<ol><li> Nejprve zkontrolujte je, že "umožnit anonymní Relay na přijímat konektor" pro server aplikace DPM je nastavený na serveru Exchange. Další informace o tom, jak nastavit tuto konfiguraci najdete v tématu [povolit anonymní Relay konektoru přijímat](https://technet.microsoft.com/library/bb232021.aspx) na webu TechNet.</li> <li> Pokud nemůžete použít interní předávání SMTP a muset nastavit pomocí serveru služeb Office 365, můžete nastavit IIS bude přenos. Nakonfigurujte server DPM za účelem [předávání SMTP k O365, pomocí služby IIS](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx).<br><br> **DŮLEŽITÉ:** Nezapomeňte použít user@domain.com formátu a *není* doména\uživatel.<br><br><li>Bod DPM použít název místního serveru jako serveru SMTP port 587. Pak nasměrovat ho na e-mailu uživatele, který do e-mailů by měl pocházet z.<li> Uživatelské jméno a heslo na stránce instalace aplikace DPM SMTP by měl být pro doménový účet v doméně, tj. aplikace DPM v. </li><br> **POZNÁMKA:** Když změníte adresu serveru SMTP, proveďte změnu nová nastavení, zavřete dialogové okno nastavení a poté znovu otevřít Ujistěte se, že odráží novou hodnotu.  Nové nastavení se projeví, takže jeho otestování. Díky tomu je osvědčeným postupem nemusí vždy způsobit jednoduše mění a testování.<br><br>Kdykoli během tohoto procesu můžete vymazat nastavení zavření konzoly aplikace DPM a úpravou těchto klíčů registru: **HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> odstranit SMTPPassword a SMTPUserName klíče**. Přidáním zpět do uživatelského rozhraní při znovu spusťte.
+| Nastavení e-mailová oznámení pomocí účtu Office 365 |ID chyby: 2013| **Příčina:**<br> Chcete-li použít účet Office 365 <br>**Doporučená akce:**<ol><li> Nejprve zkontrolujte je, že "umožnit anonymní Relay na přijímat konektor" pro server aplikace DPM je nastavený na serveru Exchange. Další informace o tom, jak nastavit tuto konfiguraci najdete v tématu [povolit anonymní Relay konektoru přijímat](https://technet.microsoft.com/library/bb232021.aspx) na webu TechNet.</li> <li> Pokud nemůžete použít interní předávání SMTP a muset nastavit pomocí serveru služeb Office 365, můžete nastavit IIS bude přenos. Nakonfigurujte server DPM za účelem [předávání SMTP k O365, pomocí služby IIS](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx).<br><br> **DŮLEŽITÉ:** Nezapomeňte použít uživatel\@domain.com formátu a *není* doména\uživatel.<br><br><li>Bod DPM použít název místního serveru jako serveru SMTP port 587. Pak nasměrovat ho na e-mailu uživatele, který do e-mailů by měl pocházet z.<li> Uživatelské jméno a heslo na stránce instalace aplikace DPM SMTP by měl být pro doménový účet v doméně, tj. aplikace DPM v. </li><br> **POZNÁMKA:** Když změníte adresu serveru SMTP, proveďte změnu nová nastavení, zavřete dialogové okno nastavení a poté znovu otevřít Ujistěte se, že odráží novou hodnotu.  Nové nastavení se projeví, takže jeho otestování. Díky tomu je osvědčeným postupem nemusí vždy způsobit jednoduše mění a testování.<br><br>Kdykoli během tohoto procesu můžete vymazat nastavení zavření konzoly aplikace DPM a úpravou těchto klíčů registru: **HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> odstranit SMTPPassword a SMTPUserName klíče**. Přidáním zpět do uživatelského rozhraní při znovu spusťte.

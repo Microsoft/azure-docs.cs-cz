@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 3bc42bf5b83f9ff983c3d8d88a9a496cc395096c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4c7e0e091aeecb205c63b8fa7e97d7592f15b856
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992581"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084374"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Kodeky a formáty Media Encoderu Standard
 
@@ -27,7 +27,7 @@ Tento článek obsahuje seznam nejběžnějších import a export formátů soub
 ## <a name="input-containerfile-formats"></a>Vstupní formáty kontejneru nebo souboru
 
 | Formáty souborů (přípony souborů) | Podporováno |
-| --- | --- | --- | --- |
+| --- | --- |
 | FLV (s kodeky H.264 a AAC) (.flv) |Ano |
 | MXF    (.mxf) |Ano |
 | GXF (.gxf) |Ano |
@@ -56,7 +56,7 @@ nebo
 
 ## <a name="input-video-codecs"></a>Kodeky vstupního videa
 | Kodeky vstupního videa | Podporováno |
-| --- | --- | --- | --- |
+| --- | --- |
 | AVC 8-bit/10-bit, až 4:2:2, včetně AVCIntra |8bitová hloubka, 4:2:0 a 4:2:2 |
 | Avid DNxHD (in MXF) |Ano |
 | DVCPro/DVCProHD (in MXF) |Ano |
@@ -79,7 +79,7 @@ nebo
 
 ## <a name="input-audio-codecs"></a>Kodeky vstupního zvuku
 | Kodeky vstupního zvuku | Podporováno |
-| --- | --- | --- | --- |
+| --- | --- |
 | AAC (AAC-LC, AAC-HE a AAC-HEv2; až 5.1) |Ano |
 | MPEG vrstvy 2 |Ano |
 | MP3 (MPEG-1 Audio Layer 3) |Ano |

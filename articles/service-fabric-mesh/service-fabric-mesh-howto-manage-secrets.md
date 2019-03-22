@@ -9,12 +9,12 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: f767dfdf96b89344fea18893f7030ea0fd1882ad
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 36d0b49f1b9fb1ca5d13283146d134137a5cb028
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764266"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900637"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Správa tajných klíčů aplikací Service Fabric sítě
 Sítě pro Service Fabric podporuje tajné kódy jako prostředky Azure. Tajný klíč služby prostředků infrastruktury sítě může být libovolné citlivé textové informace, jako je například úložiště připojovací řetězce, hesla nebo jiné hodnoty, které mají být uloženy a bezpečně přenášet. Tento článek ukazuje, jak pomocí Service Fabric Secure Store Service můžete nasadit a spravovat tajné kódy.
@@ -24,20 +24,20 @@ Aplikace sítě tajný kód se skládá ze:
 * Jeden nebo více **tajné klíče/hodnoty** prostředky, které jsou uloženy v **tajných kódů** kontejner prostředků. Každý **tajné klíče/hodnoty** prostředků se liší podle čísla verze. Nelze změnit verzi **tajné klíče/hodnoty** prostředků, jenom přidat novou verzi.
 
 Správa tajných klíčů se skládá z následujících kroků:
-1. Deklarovat sítě **tajných kódů** prostředků v Azure Resource modelu YAML nebo JSON souboru pomocí inlinedValue druh a SecretsStoreRef contentType definice.
+1. Deklarovat sítě **tajných kódů** prostředek v souboru YAML Model prostředků Azure nebo formátu JSON pomocí inlinedValue druh a definice SecretsStoreRef contentType.
 2. Deklarovat síť **tajné klíče/hodnoty** prostředky v Azure Resource modelu YAML nebo JSON souboru, který se uloží do **tajných kódů** prostředků (z kroku 1).
 3. Upravte aplikaci sítě tak, aby odkazovaly hodnoty tajných kódů sítě.
 4. Nasazení nebo postupného upgradu aplikací síť pro používání hodnoty tajných kódů.
 5. Použití Azure "az" CLI příkazy pro správu životního cyklu Secure Store Service.
 
 ## <a name="declare-a-mesh-secrets-resource"></a>Deklarujte prostředek mřížky tajných kódů
-Prostředek mřížky tajné kódy je deklarován v souboru YAML nebo JSON modelu prostředků Azure pomocí inlinedValue druh a definice SecretsStoreRef contentType. Prostředek mřížky tajných kódů podporuje tajných kódů služby Secure Store zdrojem. 
+Prostředek mřížky tajné kódy je deklarována v kódu JSON modelu prostředku Azure nebo soubor YAML pomocí inlinedValue druh a SecretsStoreRef contentType definice. Prostředek mřížky tajných kódů podporuje tajných kódů služby Secure Store zdrojem. 
 >
 Následuje příklad toho, jak deklarovat prostředky sítě tajných kódů v souboru JSON:
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -103,7 +103,7 @@ Následuje příklad toho, jak deklarovat prostředky sítě tajné klíče/hodn
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -215,9 +215,9 @@ az mesh secret show --Resource-group <myResourceGroup> --secret-name <mySecret>
 
 - Tajný kód. nelze odstranit, pokud je odkazuje aplikace sítě.
 - Odstraňuje se prostředek tajných kódů odstraní všechny tajné kódy prostředků nebo verze.
-```azurecli-interactive
-az mesh secret delete --Resource-group <myResourceGroup> --secret-name <mySecret>
-```
+  ```azurecli-interactive
+  az mesh secret delete --Resource-group <myResourceGroup> --secret-name <mySecret>
+  ```
 
 ### <a name="list-secrets-in-subscription"></a>Výpis tajných kódů v rámci předplatného
 ```azurecli-interactive

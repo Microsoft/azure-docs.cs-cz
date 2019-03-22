@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: ad3b672a2db9bccaf5124d4bc897e85806966255
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: fb3ed970b7f92e1cc06a9d1023e01f5888915e94
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312796"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088668"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorování aktivit předplatného s protokolem aktivit Azure
 
@@ -118,10 +118,10 @@ Můžete streamování protokolu aktivit do centra událostí nebo je uložíte 
 
     ![Tlačítko pro export na portálu](./media/activity-logs-overview/activity-logs-portal-export-v2.png)
 3. V zobrazeném okně můžete vybrat:  
-  * oblasti, pro které chcete exportovat události
-  * Účet úložiště, do kterého chcete uložit události
-  * počet dní, které chcete uchovávat tyto události v úložišti. Nastavení 0 dnů uchová protokoly navždy.
-  * Namespace služby Service Bus, ve kterém chcete vytvořit pro streamování tyto události v Centru událostí.
+   * oblasti, pro které chcete exportovat události
+   * Účet úložiště, do kterého chcete uložit události
+   * počet dní, které chcete uchovávat tyto události v úložišti. Nastavení 0 dnů uchová protokoly navždy.
+   * Namespace služby Service Bus, ve kterém chcete vytvořit pro streamování tyto události v Centru událostí.
 
      ![Okno Export protokolu aktivit](./media/activity-logs-overview/activity-logs-portal-export-blade.png)
 4. Klikněte na tlačítko **Uložit** nastavení uložte. Nastavení se okamžitě použijí pro vaše předplatné.

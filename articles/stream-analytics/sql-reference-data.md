@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: efd450edb87316e75fc240cac80eda93151a22b3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3368be291770133cdfa10158f6e30540e17b8223
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765080"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084306"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Využití referenčních dat z databáze serveru SQL pro úlohy Azure Stream Analytics (Preview)
 
@@ -173,7 +173,7 @@ Při použití rozdílového dotazu [dočasných tabulek ve službě Azure SQL D
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```
  
-  Všimněte si, že modul runtime Stream Analytics může pravidelně spuštění dotazu snímku kromě rozdílového dotazu k uložení kontrolní body.
+   Všimněte si, že modul runtime Stream Analytics může pravidelně spuštění dotazu snímku kromě rozdílového dotazu k uložení kontrolní body.
 
 ## <a name="faqs"></a>Nejčastější dotazy
 

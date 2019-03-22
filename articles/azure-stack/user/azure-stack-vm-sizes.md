@@ -14,12 +14,12 @@ ms.date: 01/11/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: ffcb6d6d7955a2b276850d6db9d08a2cc5c16adb
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 0188de6d3a29034ec00999b2e07cab6ddb911631
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565016"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176255"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Velikosti virtuálních počítačů, které jsou podporované ve službě Azure Stack
 
@@ -135,14 +135,14 @@ Pro obecné účely velikosti virtuálních počítačů nabízejí vyvážený 
 ### <a name="fsv2-series"></a>Fsv2-series
 *Vyžaduje verzi služby Azure Stack 1804 nebo novější* 
 
-|Velikost     |Virtuální procesory     |Paměť (GiB) | Dočasné úložiště (GiB)  | Operační systém maximální propustnost disku (IOPS) | Maximální propustnost dočasného úložiště (IOPS) | Maximální počet datových disků nebo propustnost (IOPS) |
-|---------------------|----|----|-----|-----|-------|--------------|
-|**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4 / 4x2300    |
-|**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8x2300    |
-|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16x2300  |
-|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32x2300  |
-|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32 / 32x2300  |
-|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32x2300  |
+|Velikost     |Virtuální procesory     |Paměť (GiB) | Dočasné úložiště (GiB)  | Operační systém maximální propustnost disku (IOPS) | Maximální propustnost dočasného úložiště (IOPS) | Maximální počet datových disků nebo propustnost (IOPS) | Maximální počet síťových karet |
+|---------------------|----|----|-----|-----|-------|--------------|---------|
+|**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4 / 4x2300    |2 |
+|**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8x2300    |4 |
+|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16x2300  |8 |
+|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32x2300  |8 |
+|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32 / 32x2300  |8 |
+|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32x2300  |8 |
 
 
 ## <a name="memory-optimized"></a>Optimalizované z hlediska paměti

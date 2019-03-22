@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 64008a91033b1fdd9cb318e76db2b1958f2337e9
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 51754021f5029a751be90bfc4194ac6347c1e278
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309315"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005200"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Ochrana souborového serveru pomocí Azure Site Recovery 
 
@@ -63,6 +63,7 @@ Následující diagram vám pomůže určit, jakou strategii použít pro vaše 
 
 ### <a name="site-recovery-support"></a>Podpora Site Recovery
 Vzhledem k tomu, že je replikace Site Recovery nezávislá na aplikaci, očekává se, že tato doporučení budou platit v následujících scénářích.
+
 | Zdroj    |Do sekundární lokality    |Do Azure
 |---------|---------|---------|
 |Azure| -|Ano|

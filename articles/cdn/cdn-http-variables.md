@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 70154a50086fabc84671e7e540d8496490ab5b2d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 42fd28f2a18ecf81c7846abdc7b3159a275a9cd7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436625"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013558"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Proměnné protokolu HTTP pro Azure CDN stroje pravidel
 HTTP proměnné poskytují prostředky, pomocí kterého můžete získat metadata žádostí a odpovědí HTTP. Tato metadata pak lze dynamicky měnit požadavek nebo odpověď. Použití proměnných HTTP je omezen na následující funkce stroje pravidel:
@@ -54,10 +54,10 @@ Následující tabulka popisuje podporované proměnné protokolu HTTP. Při Geo
 | Nebyl nalezen parametr řetězce dotazu | %{is_amp} | Hodnota pro tuto proměnnou se liší podle Určuje, zda požadavek obsahuje nejméně jeden parametr řetězce dotazu.<br /><br />-Nebyl nalezen parametr: &<br />-Žádné parametry: NULL | & |
 | Hodnotu parametru řetězce dotazu | %{arg_&lt;parameter&gt;} | Vrací hodnotu odpovídající parametru řetězce dotazu, který je identifikován &lt;parametr&gt; termín. | Využití vzorků: <br />%{arg_language}<br /><br />Ukázka parametru řetězce dotazu: <br />? jazyk = en<br /><br />Ukázkové hodnoty: cs |
 | Hodnota řetězce dotazu | %{query_string} | Určuje řetězcovou hodnotu celý dotaz definovaný v adrese URL požadavku. |key1 = val1 & key2 = val2 & klíč3 = val3 |
-| Odkazující server domény | % {referring_domain} | Určuje doménu definovaná v hlavičce požadavku odkazující server. | www.google.com |
+| Odkazující server domény | % {referring_domain} | Určuje doménu definovaná v hlavičce požadavku odkazující server. | <www.google.com> |
 | Oblast (žadateli) | %{geo_region} | Označuje oblast žadatele (například stát nebo kraj) prostřednictvím jeho alfanumerické zkratkou. | CA |
 | Hodnota hlavičky žádosti | %{http_RequestHeader} | Vrací hodnotu odpovídající identifikován jako RequestHeader hlavičky žádosti. <br /><br />Pokud název hlavičky žádosti obsahuje pomlčku (například uživatelský Agent), nahraďte ho podtržítko (například User_Agent).| Využití vzorků: % {http_Connection}<br /><br />Hodnota vzorku: Keep-Alive | 
-| Hostitel požadavku | %{host} | Označuje hostitelů definovaný v adrese URL požadavku. | www.mydomain.com |
+| Hostitel požadavku | %{host} | Označuje hostitelů definovaný v adrese URL požadavku. | <www.mydomain.com> |
 | Žádost o protokol | %{request_protocol} | Určuje protokol žádosti. | HTTP/1.1 |
 | Schéma požadavku | % {scheme} | Určuje schéma požadavku. |http |
 | Identifikátor URI (relativní) žádosti | %{request_uri} | Určuje relativní cestu, včetně řetězce dotazu, které jsou definovány v identifikátoru URI požadavku. | /marketing/foo.js?loggedin=true |
@@ -187,8 +187,8 @@ V tomto ukázkovém scénáři *request_uri* proměnná je nastavená na:
 
 Následující tabulka ukazuje, jak tato syntaxe funguje.
 
-| Ukázky syntaxe | Výsledky |
-| ------------- | ------- |
+| Ukázky syntaxe | Výsledky | |
+| ------------- | ------- | --- |
 | %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/Product.HTML?Language=en-us | Protože proměnné, spustí se vzorem, byl nahrazen. |
 | %{request_uri%html}htm | /800001/myorigin/marketing/Product.HTML?Language=en-us | Protože proměnné ale nekončí u vzor, že žádná změna nenastala.|
 

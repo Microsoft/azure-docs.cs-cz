@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: bee2a715e9e9b163af342b70c4cdd63d24ccee3b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e9e78d3226f90ef780a1ed2114ba256c293463dc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450035"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001578"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Použití sdílených přístupových podpisů (SAS)
 
@@ -40,11 +40,11 @@ Běžný scénář, kde je užitečné SAS je služba, kde uživatelé čtení a
 
 1. Klienti nahrávání a stahování dat přes službu proxy front-endu, který provádí ověřování. Tato služba front-endu proxy nabízí výhodu v podobě povolení ověření obchodní pravidla, ale pro velké objemy dat nebo velkého objemu transakcí, vytvoření služby, který se dá škálovat, aby pokryl může být obtížné nebo nákladné.
 
-  ![Diagram scénáře: Služba front-endu proxy](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png)   
+   ![Diagram scénáře: Služba front-endu proxy](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png)   
 
 1. Jednoduché služby ověřuje klienta podle potřeby a pak vygeneruje sdílený přístupový podpis. Jakmile klient obdrží sdíleného přístupového podpisu, jejich prostředků účtu úložiště přístup přímo se na oprávnění definované pomocí sdíleného přístupového podpisu a intervalu dovolují SAS. SAS snižuje potřebu směrování všech dat přes službu proxy serveru front-endu.
 
-  ![Diagram scénáře: SAS služby zprostředkovatele](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png)   
+   ![Diagram scénáře: SAS služby zprostředkovatele](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png)   
 
 Počet skutečných služby mohou používat v hybridní kombinaci těchto dvou přístupů. Například některá data mohou zpracovat a ověřit prostřednictvím front-endu proxy serveru, zatímco jiná data se uloží a/nebo číst přímo pomocí SAS.
 
@@ -230,8 +230,8 @@ Níže je několik příkladů oba typy sdíleného přístupového podpisu SAS 
 
 Pokud chcete spustit tyto příklady jazyka C#, budete muset odkaz následující balíčky NuGet ve vašem projektu:
 
-* [Klientská knihovna Azure Storage pro .NET](http://www.nuget.org/packages/WindowsAzure.Storage), verze 6.x nebo novější (pro použití účtu SAS).
-* [Azure Configuration Manager](http://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager)
+* [Klientská knihovna Azure Storage pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage), verze 6.x nebo novější (pro použití účtu SAS).
+* [Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager)
 
 Další příklady, které ukazují, jak vytvořit a otestovat SAS najdete v tématu [vzorových kódů Azure pro ukládání](https://azure.microsoft.com/documentation/samples/?service=storage).
 

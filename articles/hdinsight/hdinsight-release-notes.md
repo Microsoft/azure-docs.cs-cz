@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/02/2019
-ms.openlocfilehash: 8441f6793140bcb565b97776a0cd86c7319db9c1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e6a528ae7eda7e10ab06c6f338fd05d20332a9fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448898"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089008"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Zpráva k vydání verze pro Azure HDInsight
 
@@ -1309,116 +1309,116 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 ## <a name="known-issues"></a>Známé problémy
 
--   **Integraci HDInsight s 2. generace ADLS** na clusterech HDInsight ESP adresáře uživatelů a oprávnění pomocí Azure Data Lake Storage generace 2 jsou dva problémy:
+- **Integraci HDInsight s 2. generace ADLS** na clusterech HDInsight ESP adresáře uživatelů a oprávnění pomocí Azure Data Lake Storage generace 2 jsou dva problémy:
    
-   1. Na hlavní uzel 1 získávání nevytvoří domovské adresáře pro uživatele. Alternativním řešením je vytvořit ručně adresáře a změnit vlastnictví pro příslušného uživatele (UPN).
+  1. Na hlavní uzel 1 získávání nevytvoří domovské adresáře pro uživatele. Alternativním řešením je vytvořit ručně adresáře a změnit vlastnictví pro příslušného uživatele (UPN).
    
-   2. Oprávnění pro adresář /hdp není aktuálně nastavená na 751. Tato hodnota musí být nastaveno na 
-      ```bash
-      chmod 751 /hdp 
-      chmod –R 755 /hdp/apps
-      ```
+  2. Oprávnění pro adresář /hdp není aktuálně nastavená na 751. Tato hodnota musí být nastaveno na 
+     ```bash
+     chmod 751 /hdp 
+     chmod –R 755 /hdp/apps
+     ```
 
--   **Spark 2.3**
+- **Spark 2.3**
 
-    -   \[[*SPARK 23523*](https://issues.apache.org/jira/browse/SPARK-23523)\]\[SQL\] nesprávný výsledek způsobena pravidlem OptimizeMetadataOnlyQuery
+  -   \[[*SPARK 23523*](https://issues.apache.org/jira/browse/SPARK-23523)\]\[SQL\] nesprávný výsledek způsobena pravidlem OptimizeMetadataOnlyQuery
 
-    -   \[[*SPARK 23406* ](https://issues.apache.org/jira/browse/SPARK-23406) \] chyby ve službě stream stream spojení
+  -   \[[*SPARK 23406* ](https://issues.apache.org/jira/browse/SPARK-23406) \] chyby ve službě stream stream spojení
 
-    -   Spark ukázkové poznámkové bloky nejsou k dispozici, když Azure Data Lake Storage (Gen2) je výchozí úložiště clusteru.
+  -   Spark ukázkové poznámkové bloky nejsou k dispozici, když Azure Data Lake Storage (Gen2) je výchozí úložiště clusteru.
 
--   **Enterprise Security Package**
+- **Enterprise Security Package**
 
-    - Spark Thrift Server nepřijímá připojení z klientů ODBC.
-      Kroky alternativního řešení:
-      1. Počkejte asi 15 minut po vytvoření clusteru.
-      2. Zkontrolujte existenci hivesampletable_policy ranger uživatelského rozhraní.
-      3. Restartujte službu Spark.
-         Služba tokenů zabezpečení připojení by měl nyní fungovat.
+  - Spark Thrift Server nepřijímá připojení z klientů ODBC.
+    Kroky alternativního řešení:
+    1. Počkejte asi 15 minut po vytvoření clusteru.
+    2. Zkontrolujte existenci hivesampletable_policy ranger uživatelského rozhraní.
+    3. Restartujte službu Spark.
+       Služba tokenů zabezpečení připojení by měl nyní fungovat.
 
--   **Alternativní řešení pro Ranger selhání kontroly služby**
+- **Alternativní řešení pro Ranger selhání kontroly služby**
 
-    -   [RANGER 1607](https://issues.apache.org/jira/browse/RANGER-1607): Alternativní řešení pro Ranger služby zkontrolujte chybu při provádění upgradu na HDP 2.6.2 z předchozích verzí HDP.
+  -   [RANGER 1607](https://issues.apache.org/jira/browse/RANGER-1607): Alternativní řešení pro Ranger služby zkontrolujte chybu při provádění upgradu na HDP 2.6.2 z předchozích verzí HDP.
 
-        > [!NOTE]  
-        > Pouze v případě Ranger je protokol SSL povolený. 
+      > [!NOTE]  
+      > Pouze v případě Ranger je protokol SSL povolený. 
      
-    Tomuto problému dochází při pokusu o upgrade na HDP 2.6.1 z předchozí verze HDP prostřednictvím Ambari. Ambari používá curl volání a provede kontrolu služby Ranger služby v Ambari. Pokud sadu JDK verze používané v Ambari JDK 1.7, curl volání se nezdaří s následující chybu:
+  Tomuto problému dochází při pokusu o upgrade na HDP 2.6.1 z předchozí verze HDP prostřednictvím Ambari. Ambari používá curl volání a provede kontrolu služby Ranger služby v Ambari. Pokud sadu JDK verze používané v Ambari JDK 1.7, curl volání se nezdaří s následující chybu:
     
-    `curl: (35) error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure`
+  `curl: (35) error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure`
     
-    Důvodem této chyby je tomcat verze použitá v Ranger je Tomcat 7.0.7\*. Pomocí sady JDK 1.7 je v konfliktu s výchozí šifry součástí Tomcat 7.0.7\*.
+  Důvodem této chyby je tomcat verze použitá v Ranger je Tomcat 7.0.7\*. Pomocí sady JDK 1.7 je v konfliktu s výchozí šifry součástí Tomcat 7.0.7\*.
     
-    Tento problém dvěma způsoby:
+  Tento problém dvěma způsoby:
     
-    -   Aktualizovat sadu JDK používané Ambari ze sady JDK 1.7 pro sadu JDK 1.8 (naleznete v části [změnit sada JDK verze](https://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_ambari_reference_guide/content/ch_changing_the_jdk_version_on_an_existing_cluster.html) v referenční příručka Ambari).
+  -   Aktualizovat sadu JDK používané Ambari ze sady JDK 1.7 pro sadu JDK 1.8 (naleznete v části [změnit sada JDK verze](https://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_ambari_reference_guide/content/ch_changing_the_jdk_version_on_an_existing_cluster.html) v referenční příručka Ambari).
     
-    -   Pokud chcete i nadále podporovat prostředí JDK 1.7:
+  -   Pokud chcete i nadále podporovat prostředí JDK 1.7:
     
-        1.  Přidat vlastnost ranger.tomcat.ciphers v části ranger-admin-site v konfiguraci Ambari Ranger s nižší než hodnota:
+      1.  Přidat vlastnost ranger.tomcat.ciphers v části ranger-admin-site v konfiguraci Ambari Ranger s nižší než hodnota:
             
-            SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
+          SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
         
-        2.  Pokud vaše prostředí nakonfigurované pro Ranger služby správy KLÍČŮ, přidejte vlastnost ranger.tomcat.ciphers v části theranger. služby správy klíčů lokality ve vaší konfiguraci Ambari Ranger s nižší než hodnota:
+      2.  Pokud vaše prostředí nakonfigurované pro Ranger služby správy KLÍČŮ, přidejte vlastnost ranger.tomcat.ciphers v části theranger. služby správy klíčů lokality ve vaší konfiguraci Ambari Ranger s nižší než hodnota:
             
-            SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
+          SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
     
-    >[!NOTE]  
-    >Uvedené hodnoty jsou příklady práce a nemusí být směrodatný pro vaše prostředí. Zajistěte, aby odpovídal tak, jak tyto vlastnosti nastavit, jak vaše prostředí nakonfigurované.   
+  >[!NOTE]  
+  >Uvedené hodnoty jsou příklady práce a nemusí být směrodatný pro vaše prostředí. Zajistěte, aby odpovídal tak, jak tyto vlastnosti nastavit, jak vaše prostředí nakonfigurované.   
 
--   **RangerUI: Řídicí zásad podmínku textem zadaným ve formuláři zásad**
+- **RangerUI: Řídicí zásad podmínku textem zadaným ve formuláři zásad**
     
-    **Součást vliv:** Ranger
+  **Součást vliv na:** Ranger
     
-    **Popis problému**
+  **Popis problému**
     
-    Pokud chce uživatel vytvořit zásady pomocí vlastních zásad pro podmínky a výraz nebo text obsahuje speciální znaky, nebude fungovat vynucení zásad. Speciální znaky jsou převedeny do ASCII před uložením zásadu do databáze.
+  Pokud chce uživatel vytvořit zásady pomocí vlastních zásad pro podmínky a výraz nebo text obsahuje speciální znaky, nebude fungovat vynucení zásad. Speciální znaky jsou převedeny do ASCII před uložením zásadu do databáze.
     
-    **Speciální znaky:**   &  &lt; &gt; " \` .
+  **Speciální znaky:**  &  &lt; &gt; " \` .
     
-    Například tags.attributes podmínku\['type'\]= "abc" by převede na následující po uložení zásady.
+  Například tags.attributes podmínku\['type'\]= "abc" by převede na následující po uložení zásady.
     
-    tags.attds\[&\#x27;dsds&\#x27;\]=&\#x27;cssdfs&\#x27;
+  tags.attds\[&\#x27;dsds&\#x27;\]=&\#x27;cssdfs&\#x27;
     
-    Zobrazí se zásady podmínku s použitím těchto znaků tak, že otevřete zásady v režimu úprav.
+  Zobrazí se zásady podmínku s použitím těchto znaků tak, že otevřete zásady v režimu úprav.
     
-    **Alternativní řešení**
+  **Alternativní řešení**
     
-    - **Možnost \#1: Vytvoření nebo aktualizace zásad prostřednictvím rozhraní Rest API pro Ranger**
+  - **Možnost \#1: Vytvoření nebo aktualizace zásad prostřednictvím rozhraní Rest API pro Ranger**
         
-        Adresa URL REST: http://&lt;hostitele&gt;: 6080/zásady/service/modulů plug-in
+      Adresa URL REST: http://&lt;hostitele&gt;: 6080/zásady/service/modulů plug-in
         
-        **Vytváření zásad s podmínkou zásad:**
+      **Vytváření zásad s podmínkou zásad:**
         
-        Následující příklad vytvoří zásady s značky jako \`značky a testování\` a přiřadit ji ke \`veřejné\` skupiny s astags.attr podmínky zásad\['type'\]== "abc" tak, že vyberete vše Hive komponenty oprávnění, jako je vybrat, aktualizovat, vytvořit, vyřadit, alter, index, všechno zamknout.
+      Následující příklad vytvoří zásady s značky jako \`značky a testování\` a přiřadit ji ke \`veřejné\` skupiny s astags.attr podmínky zásad\['type'\]== "abc" tak, že vyberete vše Hive komponenty oprávnění, jako je vybrat, aktualizovat, vytvořit, vyřadit, alter, index, všechno zamknout.
         
-        **Příklad:**
+      **Příklad:**
         
-        `curl -H "Content-Type: application/json" -X POST http://localhost:6080/service/plugins/policies -u admin:admin -d '{"policyType":"0","name":"P100","isEnabled":true,"isAuditEnabled":true,"description":"","resources":{"tag":{"values":["tags-test"],"isRecursive":"","isExcludes":false}},"policyItems":[{"groups":["public"],"conditions":[{"type":"accessed-after-expiry","values":[]},{"type":"tag-expression","values":["tags.attr['type']=='abc'"]}],"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}]}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"service":"tagdev"}'`
+      `curl -H "Content-Type: application/json" -X POST http://localhost:6080/service/plugins/policies -u admin:admin -d '{"policyType":"0","name":"P100","isEnabled":true,"isAuditEnabled":true,"description":"","resources":{"tag":{"values":["tags-test"],"isRecursive":"","isExcludes":false}},"policyItems":[{"groups":["public"],"conditions":[{"type":"accessed-after-expiry","values":[]},{"type":"tag-expression","values":["tags.attr['type']=='abc'"]}],"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}]}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"service":"tagdev"}'`
         
-        **Aktualizace existujících zásad s podmínkou zásad:**
+      **Aktualizace existujících zásad s podmínkou zásad:**
         
-        Následující příklad aktualizuje zásady se značkami jako \`značky a testování\` a přiřadit ji ke \`veřejné\` skupiny s astags.attr podmínky zásad\['type'\]== "abc" tak, že vyberete všechny Hive komponenty oprávnění, jako je vybrat, aktualizovat, vytvořit, vyřadit, alter, index, všechno zamknout.
+      Následující příklad aktualizuje zásady se značkami jako \`značky a testování\` a přiřadit ji ke \`veřejné\` skupiny s astags.attr podmínky zásad\['type'\]== "abc" tak, že vyberete všechny Hive komponenty oprávnění, jako je vybrat, aktualizovat, vytvořit, vyřadit, alter, index, všechno zamknout.
         
-        Adresa URL REST: http://&lt;název hostitele&gt;:6080/service/plugins/zásady/&lt;id zásad&gt;
+      Adresa URL REST: http://&lt;název hostitele&gt;:6080/service/plugins/zásady/&lt;id zásad&gt;
         
-        **Příklad:**
+      **Příklad:**
         
-        `curl -H "Content-Type: application/json" -X PUT http://localhost:6080/service/plugins/policies/18 -u admin:admin -d '{"id":18,"guid":"ea78a5ed-07a5-447a-978d-e636b0490a54","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1490802077000,"updateTime":1490802077000,"version":1,"service":"tagdev","name":"P0101","policyType":0,"description":"","resourceSignature":"e5fdb911a25aa7f77af5a9546938d9ed","isAuditEnabled":true,"resources":{"tag":{"values":["tags"],"isExcludes":false,"isRecursive":false}},"policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}],"users":[],"groups":["public"],"conditions":[{"type":"ip-range","values":["tags.attributes['type']=abc"]}],"delegateAdmin":false}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"dataMaskPolicyItems":[],"rowFilterPolicyItems":[]}'`
+      `curl -H "Content-Type: application/json" -X PUT http://localhost:6080/service/plugins/policies/18 -u admin:admin -d '{"id":18,"guid":"ea78a5ed-07a5-447a-978d-e636b0490a54","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1490802077000,"updateTime":1490802077000,"version":1,"service":"tagdev","name":"P0101","policyType":0,"description":"","resourceSignature":"e5fdb911a25aa7f77af5a9546938d9ed","isAuditEnabled":true,"resources":{"tag":{"values":["tags"],"isExcludes":false,"isRecursive":false}},"policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}],"users":[],"groups":["public"],"conditions":[{"type":"ip-range","values":["tags.attributes['type']=abc"]}],"delegateAdmin":false}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"dataMaskPolicyItems":[],"rowFilterPolicyItems":[]}'`
         
-    - **Možnost \#2: Použít změny jazyka Javascript**
+  - **Možnost \#2: Použít změny jazyka Javascript**
         
-        Kroky a aktualizujete soubor JS sady:
+      Kroky a aktualizujete soubor JS sady:
         
-        1.  Přečtěte si soubor PermissionList.js pod /usr/hdp/current/ranger-admin
+      1.  Přečtěte si soubor PermissionList.js pod /usr/hdp/current/ranger-admin
         
-        2.  Přečtěte si definice funkce renderPolicyCondtion (ne řádku: 404).
+      2.  Přečtěte si definice funkce renderPolicyCondtion (ne řádku: 404).
         
-        3.  Odebrat následující řádek z této tj – funkce v části zobrazit – funkce (ne: 434 řádku)
+      3.  Odebrat následující řádek z této tj – funkce v části zobrazit – funkce (ne: 434 řádku)
             
-            Val = \_.escape(val);//Line ne: 460
+          Val = \_.escape(val);//Line ne: 460
             
-            Po odebrání řádek výše, vám umožní Ranger uživatelského rozhraní k vytváření zásad pomocí zásad stavu, který může obsahovat speciální znaky a zásad bude úspěšné stejné zásady pro vyhodnocení.
+          Po odebrání řádek výše, vám umožní Ranger uživatelského rozhraní k vytváření zásad pomocí zásad stavu, který může obsahovat speciální znaky a zásad bude úspěšné stejné zásady pro vyhodnocení.
 
 **Integraci HDInsight s ADLS generace 2: Problém adresářů a oprávnění uživatele s clustery ESP**
     1.  Na hlavní uzel 1 získávání nevytvoří domovské adresáře pro uživatele. Alternativním řešením je vytvořit ručně a změnit vlastnictví pro příslušného uživatele (UPN).

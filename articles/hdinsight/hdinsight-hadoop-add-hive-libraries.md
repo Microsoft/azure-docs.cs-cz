@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 4eb4db9a4057d072f348de48bee2f746f77cbb84
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 6001d291581dc317da89cadbf3891e334362062b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715337"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897584"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Přidat vlastní knihovny Apache Hive při vytváření clusteru HDInsight
 
@@ -51,7 +51,7 @@ Pro **clusterů se systémem Windows**: [https://hdiconfigactions.blob.core.wind
 
 * Účet úložiště obsahující knihovnu soubory jar **musí** propojit při vytváření clusteru HDInsight. Musí být buď výchozí účet úložiště, nebo prostřednictvím přidán účet __volitelná konfigurace__.
 
-* Jako parametr pro skript akce musí být zadána cesta WASB do kontejneru. Například, pokud kromě souborů JAR jsou uloženy v kontejneru nazvaném **knihovny** v účtu úložiště s názvem **mystorage**, bude parametr **wasb://libs@mystorage.blob.core.windows.net/**.
+* Jako parametr pro skript akce musí být zadána cesta WASB do kontejneru. Například, pokud kromě souborů JAR jsou uloženy v kontejneru nazvaném **knihovny** v účtu úložiště s názvem **mystorage**, bude parametr **wasb://libs\@ mystorage.BLOB.Core.Windows.NET/**.
 
   > [!NOTE]  
   > Tento dokument předpokládá, že jste už vytvořili účet úložiště, kontejner objektů blob a odeslat soubory do něj.
@@ -79,7 +79,7 @@ Pro **clusterů se systémem Windows**: [https://hdiconfigactions.blob.core.wind
 
    * **ZOOKEEPER**: Ponechte toto nastavení prázdné.
 
-   * **PARAMETRY**: Zadejte adresu WASB kontejner a účet úložiště, který obsahuje kromě souborů JAR. Příklad: **wasb://libs@mystorage.blob.core.windows.net/**.
+   * **PARAMETRY**: Zadejte adresu WASB kontejner a účet úložiště, který obsahuje kromě souborů JAR. Například **wasb://libs\@mystorage.blob.core.windows.net/**.
 
 3. V dolní části **akcí skriptů**, použijte **vyberte** tlačítko, čímž konfiguraci uložíte.
 

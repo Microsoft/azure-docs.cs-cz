@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 848f319836e492e486bfdcb3c9080860144a7e68
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3424137b36e4e277a8914ab04cdf7097660930e3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869394"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860750"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Rychlý start: Použití sady SDK pro vyhledávání na webu BinguC#
 
@@ -39,7 +39,7 @@ Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebo
 > [!TIP]
 > Získejte z [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/) nejnovější verzi kódu jako řešení sady Visual Studio.
 
-V prvním kroku vytvoříme nový projekt konzoly. Pokud potřebujete pomoct s nastavením projektu konzoly, přečtěte si článek o vytvoření [prvního programu Hello World v programátorské příručce k jazyku C#](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Pokud chcete ve své aplikaci použít sadu SDK Bingu pro vyhledávání na web, budete si muset nainstalovat `Microsoft.Azure.CognitiveServices.Search.WebSearch` pomocí správce balíčků NuGet.
+V prvním kroku vytvoříme nový projekt konzoly. Pokud potřebujete pomoc s nastavením projekt konzoly, přečtěte si téma [Hello World!--váš první Program (C# Programming Guide)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Pokud chcete ve své aplikaci použít sadu SDK Bingu pro vyhledávání na web, budete si muset nainstalovat `Microsoft.Azure.CognitiveServices.Search.WebSearch` pomocí správce balíčků NuGet.
 
 [Balíček sady SDK webového vyhledávání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) také nainstaluje:
 
@@ -61,7 +61,7 @@ using System.Linq;
 
 ## <a name="create-project-scaffolding"></a>Vytvoření projektu pro generování uživatelského rozhraní
 
-Při vytvoření nového projektu konzoly by se také měl pro aplikaci vytvořit obor názvů a třída. Program by měl vypadat takto:
+Při vytvoření nového projektu konzoly by se také měl pro aplikaci vytvořit obor názvů a třída. Váš program by měl vypadat jako v tomto příkladu:
 
 ```csharp
 namespace WebSearchSDK
@@ -101,7 +101,7 @@ public static void WebResults(WebSearchAPI client)
 
 ## <a name="handle-the-response"></a>Zpracování odpovědi
 
-Dále přidáme kód, který parsuje odpověď a vytiskne výsledky. Vytiskne se `name` a `url` první webové stránky, obrázku, článku nebo videa, pokud tato položka v objektu odpovědi existuje.
+Dále přidáme kód, který parsuje odpověď a vytiskne výsledky. Vytiskne se `Name` a `Url` první webové stránky, obrázku, článku nebo videa, pokud tato položka v objektu odpovědi existuje.
 
 ```csharp
 if (webData?.WebPages?.Value?.Count > 0)
@@ -234,9 +234,10 @@ Po prvním volání rozhraní API Bingu pro vyhledávání na webu se pojďme po
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Omezení počtu výsledků vrácených Bingem
 
-V této ukázce jsou parametry `count` a `offset` použité k omezení počtu výsledků vrácených na dotaz „Best restaurants in Seattle“. Vytiskne se `name` a `URL` prvního výsledku.
+V této ukázce jsou parametry `count` a `offset` použité k omezení počtu výsledků vrácených na dotaz „Best restaurants in Seattle“. Vytiskne se `Name` a `Url` prvního výsledku.
 
 1. Do projektu konzoly přidejte tento kód:
+
     ```csharp
     public static void WebResultsWithCountAndOffset(WebSearchAPI client)
     {
@@ -271,7 +272,9 @@ V této ukázce jsou parametry `count` a `offset` použité k omezení počtu v�
         }
     }
     ```
+
 2. Přidejte `WebResultsWithCountAndOffset` do `main`:
+
     ```csharp
     static void Main(string[] args)
     {
@@ -285,13 +288,15 @@ V této ukázce jsou parametry `count` a `offset` použité k omezení počtu v�
         Console.ReadKey();
     }
     ```
+
 3. Spusťte aplikaci.
 
 ### <a name="filter-for-news"></a>Filtrování zpráv
 
-V této ukázce použijeme parametr `response_filter` k filtrování výsledků hledání. Vrácené výsledky hledání jsou omezené na zprávy obsahující „Microsoft“. Vytiskne se `name` a `URL` prvního výsledku.
+V této ukázce použijeme parametr `response_filter` k filtrování výsledků hledání. Vrácené výsledky hledání jsou omezené na zprávy obsahující „Microsoft“. Vytiskne se `Name` a `Url` prvního výsledku.
 
 1. Do projektu konzoly přidejte tento kód:
+
     ```csharp
     public static void WebSearchWithResponseFilter(WebSearchAPI client)
     {
@@ -328,7 +333,9 @@ V této ukázce použijeme parametr `response_filter` k filtrování výsledků 
         }
     }
     ```
+
 2. Přidejte `WebResultsWithCountAndOffset` do `main`:
+
     ```csharp
     static void Main(string[] args)
     {
@@ -344,13 +351,15 @@ V této ukázce použijeme parametr `response_filter` k filtrování výsledků 
         Console.ReadKey();
     }
     ```
+
 3. Spusťte aplikaci.
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Použití bezpečného hledání, počtu odpovědí a propagačního filtru
 
-V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k filtrování výsledků hledání pro „Music Videos“. Zobrazí se `name` a `URL` prvního výsledku.
+V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k filtrování výsledků hledání pro „Music Videos“. Zobrazí se `Name` a `ContentUrl` prvního výsledku.
 
 1. Do projektu konzoly přidejte tento kód:
+
     ```csharp
     public static void WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchAPI client)
     {
@@ -386,7 +395,9 @@ V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k
         }
     }
     ```
+
 2. Přidejte `WebResultsWithCountAndOffset` do `main`:
+
     ```csharp
     static void Main(string[] args)
     {
@@ -404,6 +415,7 @@ V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k
         Console.ReadKey();
     }
     ```
+
 3. Spusťte aplikaci.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

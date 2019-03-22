@@ -8,17 +8,18 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.author: mayg
-ms.openlocfilehash: a1b35d4c10246af7e4dab36585c2bb9b72fd0c01
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f86ded99ef5280a4e6929c39a9fd323d1b61f6f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216961"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992334"
 ---
 # <a name="exclude-disks-from-replication"></a>Vyloučení disků z replikace
 Tento článek popisuje, jak vyloučit disky z replikace. Takové vyloučení může optimalizovat jak využití šířky pásma potřebné pro replikaci, tak i prostředků využívaných na cílové straně těmito disky.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
+
 **Funkce** | **Z VMware do Azure** | **Z Hyper-V do Azure** | **Z Azure do Azure**| **Z Hyper-V do Hyper-V** 
 --|--|--|--|--
 Vyloučení disku | Ano | Ano | Ne | Ne
@@ -72,7 +73,7 @@ Na zdrojovém virtuálním počítači jsou následující disky:
 DB-Disk0-OS | DISK0 | C:\ | Disk operačním systému
 DB-Disk1| Disk1 | D:\ | Databáze systému SQL a uživatelská databáze 1
 DB-Disk2 (disk vyloučený z ochrany) | Disk2 | E:\ | Dočasné soubory
-DB-Disk3 (disk vyloučený z ochrany) | Disk3 | F:\ | Databáze SQL tempdb (cesta ke složce (F:\MSSQL\Data\) </br /> </br /> Poznamenejte si cestu ke složce před převzetím služeb při selhání.
+DB-Disk3 (disk vyloučený z ochrany) | Disk3 | F:\ | SQL databáze tempdb (cesta ke složce (F:\MSSQL\Data\) <br /> <br />Poznamenejte si cestu ke složce před převzetí služeb při selhání.
 DB Disk4 | Disk4 |G:\ |Uživatelská databáze 2
 
 Protože časté změny dat na dvou discích virtuálního počítače jsou dočasné, při ochraně virtuálního počítače SalesDB vylučte Disk2 a Disk3 z replikace. Azure Site Recovery nebude tyto disky replikovat. Po převzetí služeb při selhání tyto disky nebudou na cílovém virtuálním počítači v Azure připojené.
@@ -82,7 +83,7 @@ Ve virtuálním počítači Azure budou po převzetí služeb při selhání tyt
 **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | ---
 DISK0 | C:\ | Disk operačním systému
-Disk1 | E:\ | Dočasné úložiště</br /> </br />Azure tento disk přidá a přiřadí mu první dostupné písmeno jednotky.
+Disk1 | E:\ | Dočasné úložiště<br /> <br />Azure tento disk přidá a přiřadí první dostupné písmeno jednotky.
 Disk2 | D:\ | Databáze systému SQL a uživatelská databáze 1
 Disk3 | G:\ | Uživatelská databáze 2
 
@@ -146,7 +147,7 @@ V předchozím příkladu vypadá konfigurace disků virtuálního počítače A
 **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | ---
 DISK0 | C:\ | Disk operačním systému
-Disk1 | E:\ | Dočasné úložiště</br /> </br />Azure tento disk přidá a přiřadí mu první dostupné písmeno jednotky.
+Disk1 | E:\ | Dočasné úložiště<br /> <br />Azure tento disk přidá a přiřadí první dostupné písmeno jednotky.
 Disk2 | D:\ | Databáze systému SQL a uživatelská databáze 1
 Disk3 | G:\ | Uživatelská databáze 2
 
@@ -186,7 +187,7 @@ Po převzetí služeb virtuálního počítače při selhání z Hyper-V do Azur
 **Název disku** | **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Disk operačním systému
-DB-Disk1 | Disk1 | D:\ | Dočasné úložiště</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | Dočasné úložiště<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Uživatelská data 1
 DB-Disk3 | Disk3 | F:\ | Uživatelská data 2
 
@@ -213,10 +214,10 @@ Tady je nastavení stránkovacího souboru na místním virtuálním počítači
 
 Po převzetí služeb virtuálního počítače při selhání z Hyper-V do Azure budou disky na virtuálním počítači Azure následující:
 
-**Název disku**| **Označení disku v hostovaném operačním systému**| **Písmeno jednotky** | **Typ dat na disku**
+**Název disku** | **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0  |C:\ |Disk operačním systému
-DB-Disk1 | Disk1 | D:\ | Dočasné úložiště</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | Dočasné úložiště<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Uživatelská data 1
 DB-Disk3 | Disk3 | F:\ | Uživatelská data 2
 

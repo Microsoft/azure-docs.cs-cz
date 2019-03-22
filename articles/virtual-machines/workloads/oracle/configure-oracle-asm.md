@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 8cf977f9c5bbf10c6a4d862a29fda98d3ce71844
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 0af6e87d3e0b4b3b40b63db07384d4a33a9d43e1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755683"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998962"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Nastavte Oracle ASM na linuxovém virtuálním počítači Azure  
 
@@ -90,7 +90,7 @@ ssh <publicIpAddress>
 
 Pokud chcete nainstalovat Oracle ASM, proveďte následující kroky. 
 
-Další informace o instalaci Oracle ASM, naleznete v tématu [Oracle ASMLib soubory ke stažení pro Oracle Linux 6](http://www.oracle.com/technetwork/server-storage/linux/asmlib/ol6-1709075.html).  
+Další informace o instalaci Oracle ASM, naleznete v tématu [Oracle ASMLib soubory ke stažení pro Oracle Linux 6](https://www.oracle.com/technetwork/server-storage/linux/asmlib/ol6-1709075.html).  
 
 1. Budete muset přihlásit jako uživatel root, aby bylo možné pokračovat v instalaci ASM:
 
@@ -104,7 +104,7 @@ Další informace o instalaci Oracle ASM, naleznete v tématu [Oracle ASMLib sou
     yum list | grep oracleasm 
     yum -y install kmod-oracleasm.x86_64 
     yum -y install oracleasm-support.x86_64 
-    wget http://download.oracle.com/otn_software/asmlib/oracleasmlib-2.0.12-1.el6.x86_64.rpm 
+    wget https://download.oracle.com/otn_software/asmlib/oracleasmlib-2.0.12-1.el6.x86_64.rpm 
     yum -y install oracleasmlib-2.0.12-1.el6.x86_64.rpm 
     rm -f oracleasmlib-2.0.12-1.el6.x86_64.rpm
    ```
@@ -336,24 +336,24 @@ Pro účely tohoto kurzu je výchozí uživatel *mřížky* a je výchozí skupi
 
 10. Změna oprávnění složky:
 
-   ```bash
-   chmod -R 775 /opt 
-   chown grid:oinstall /opt 
-   chown oracle:oinstall /dev/sdc1 
-   chown oracle:oinstall /dev/sdd1 
-   chown oracle:oinstall /dev/sde1 
-   chown oracle:oinstall /dev/sdf1 
-   chmod 600 /dev/sdc1 
-   chmod 600 /dev/sdd1 
-   chmod 600 /dev/sde1 
-   chmod 600 /dev/sdf1
-   ```
+    ```bash
+    chmod -R 775 /opt 
+    chown grid:oinstall /opt 
+    chown oracle:oinstall /dev/sdc1 
+    chown oracle:oinstall /dev/sdd1 
+    chown oracle:oinstall /dev/sde1 
+    chown oracle:oinstall /dev/sdf1 
+    chmod 600 /dev/sdc1 
+    chmod 600 /dev/sdd1 
+    chmod 600 /dev/sde1 
+    chmod 600 /dev/sdf1
+    ```
 
 ## <a name="download-and-prepare-oracle-grid-infrastructure"></a>Stáhněte si a příprava infrastruktury mřížky Oracle
 
 Chcete-li stáhnout a příprava softwaru Oracle mřížky infrastruktury, proveďte následující kroky:
 
-1. Stáhněte si Oracle mřížky infrastruktury z [stránku pro stažení Oracle ASM](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html). 
+1. Stáhněte si Oracle mřížky infrastruktury z [stránku pro stažení Oracle ASM](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html). 
 
    V části Stažení s názvem **Oracle Database 12c verze 1 mřížky infrastruktury (12.1.0.2.0) pro Linux x86 – x 64**, stáhněte si příslušné dva soubory .zip.
 
@@ -402,7 +402,7 @@ Chcete-li stáhnout a příprava softwaru Oracle mřížky infrastruktury, prove
 ## <a name="prepare-your-local-client-and-vm-to-run-x11"></a>Příprava místního klienta a virtuálních počítačů pro spuštění x11
 Konfigurace Oracle ASM vyžaduje grafické rozhraní pro dokončení instalace a konfigurace. X11 používáme protokol k usnadnění této instalace. Pokud používáte systém klienta (Mac nebo Linux), který už má X11 možnosti povolené a nakonfigurované – můžete přeskočit této konfigurace a nastavení exkluzivní na počítače s Windows. 
 
-1. [Stáhněte si PuTTY](http://www.putty.org/) a [stáhnout Xming](https://xming.en.softonic.com/) do počítače Windows. Budete potřebovat k dokončení instalace obou těchto aplikací s výchozími hodnotami, než budete pokračovat.
+1. [Stáhněte si PuTTY](https://www.putty.org/) a [stáhnout Xming](https://xming.en.softonic.com/) do počítače Windows. Budete potřebovat k dokončení instalace obou těchto aplikací s výchozími hodnotami, než budete pokračovat.
 
 2. Po instalaci klienta PuTTY, otevřete příkazový řádek, přejděte do složky PuTTY (například C:\Program Files\PuTTY) a spusťte `puttygen.exe` aby bylo možné vygenerovat klíč.
 

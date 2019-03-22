@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: cb1d08bb7b4c64d8dbcf39a667cb037ff30c38e7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8602027431fdf2c1378834419977606bab5c6921
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467890"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287260"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Vlastní metriky ve službě Azure Monitor
 
@@ -55,7 +55,7 @@ Tato vlastnost zaznamená jaké oblasti Azure, které jste generování metriky 
 >
 
 ### <a name="timestamp"></a>Časové razítko
-Každý datový bod, který je odeslán do Azure monitoru musí být označen s časovým razítkem. Toto časové razítko zaznamená datum a čas, kdy je hodnota metriky měří nebo shromažďovat. Azure Monitor přijímá data metriky s časovými razítky až na hodnotu 20 minut v minulosti a v budoucnu 5 minut.
+Každý datový bod, který je odeslán do Azure monitoru musí být označen s časovým razítkem. Toto časové razítko zaznamená datum a čas, kdy je hodnota metriky měří nebo shromažďovat. Azure Monitor přijímá data metriky s časovými razítky až na hodnotu 20 minut v minulosti a v budoucnu 5 minut. Časové razítko musí být ve formátu ISO 8601.
 
 ### <a name="namespace"></a>Obor názvů
 Obory názvů jsou způsob, jak zařadit nebo seskupit podobné metriky. Použití oboru názvů, můžete dosáhnout izolace mezi skupinami metriky, které by mohl shromažďovat různé přehledy nebo ukazatele výkonu. Například můžete mít obor názvů s názvem **ContosoMemoryMetrics** , který sleduje metriky využití paměti, která profilu vaší aplikace. Jiný obor názvů s názvem **ContosoAppTransaction** může sledovat všechny metriky o uživatelské transakce ve vaší aplikaci.
@@ -65,7 +65,7 @@ Obory názvů jsou způsob, jak zařadit nebo seskupit podobné metriky. Použit
 
 ### <a name="dimension-keys"></a>Klíče dimenzí
 Dimenze je dvojice klíč nebo hodnota, která pomáhá popisují další charakteristiky o metriku shromažďují. Další vlastnosti můžete shromažďovat další informace o metriku, která umožní hloubkové informace. Například **využití svěřených bajtů paměti** metrika pravděpodobně dimenze klíč s názvem **procesu** , která zaznamenává počet bajtů paměti spotřebuje každý proces na virtuálním počítači. Pomocí tohoto klíče můžete filtrovat metriky, které chcete zobrazit množství paměti, použít konkrétní procesy nebo k identifikaci důležitých 5 procesů podle využití paměti.
-Jednotlivé vlastní metriky můžete mít až 10 dimenze.
+Dimenze jsou volitelné, některé metriky možná dimenze. Vlastní metriky můžete mít až 10 dimenze.
 
 ### <a name="dimension-values"></a>Hodnoty dimenzí
 Při vytváření sestav metrik datový bod, pro každý klíč dimenze na metriku hlásí, neexistuje odpovídající hodnotu dimenze. Můžete například chtít sestavu paměť používanou ContosoApp na vašem virtuálním počítači:
@@ -75,6 +75,7 @@ Při vytváření sestav metrik datový bod, pro každý klíč dimenze na metri
 * Hodnotu dimenze by **ContosoApp.exe**.
 
 Při publikování hodnota metriky, můžete zadat pouze jednu hodnotu dimenze na klíče dimenzí. Pokud shromažďujete stejné využití paměti v aplikaci pro více procesů na virtuálním počítači, může hlásit více hodnoty metrik pro tohoto časového razítka. Každá hodnota metriky byste zadat hodnotu různé dimenze **procesu** klíče dimenzí.
+Dimenze jsou volitelné, některé metriky možná dimenze. Pokud metriky příspěvek definuje klíče dimenzí, hodnoty, které odpovídají dimenze jsou povinné.
 
 ### <a name="metric-values"></a>Hodnoty metrik
 Azure Monitor ukládá všechny metriky v intervalech každou minutu. Chápeme, že během dané minuty metriky možná muset být prováděno vzorkování několikrát. Příkladem je využití procesoru. Nebo může být nutné měřit diskrétní událostem. Příkladem je latence přihlášení transakce. Chcete-li omezit počet nezpracované hodnoty, které je nutné vygenerovat a platit za ve službě Azure Monitor, můžete místně předem agregovat a generování hodnoty:
@@ -169,13 +170,13 @@ Ve verzi public preview je k dispozici pouze v podmnožině oblastí s Azure mo�
 
 |Oblast Azure|Předpona místní koncový bod|
 |---|---|
-|USA – východ|https://eastus.monitoring.azure.com/|
-|Středojižní USA|https://southcentralus.monitoring.azure.com/|
-|Západní střed USA|https://westcentralus.monitoring.azure.com/|
-|Západní USA 2|https://westus2.monitoring.azure.com/|
-|Jihovýchodní Asie|https://southeastasia.monitoring.azure.com/|
-|Severní Evropa|https://northeurope.monitoring.azure.com/|
-|Západní Evropa|https://westeurope.monitoring.azure.com/|
+|USA – východ| https:\//eastus.monitoring.azure.com/ |
+|Středojižní USA| https:\//southcentralus.monitoring.azure.com/ |
+|Západní střed USA| https:\//westcentralus.monitoring.azure.com/ |
+|Západní USA 2| https:\//westus2.monitoring.azure.com/ |
+|Jihovýchodní Asie| https:\//southeastasia.monitoring.azure.com/ |
+|Severní Evropa| https:\//northeurope.monitoring.azure.com/ |
+|Západní Evropa| https:\//westeurope.monitoring.azure.com/ |
 
 ## <a name="quotas-and-limits"></a>Kvóty a omezení
 Azure Monitor má následující omezení použití u vlastních metrik:
@@ -185,6 +186,7 @@ Azure Monitor má následující omezení použití u vlastních metrik:
 |Aktivní čas řady nebo předplatné a oblast|50,000|
 |Klíče dimenzí na metriku|10|
 |Délka řetězce pro metriky obory názvů, názvy metrik, klíče dimenzí a hodnoty dimenzí|256 znaků.|
+
 Aktivní časové řady se definuje jako jakékoli jedinečná kombinace metrika, klíč dimenze nebo dimenze hodnotu, která byla publikována za posledních 12 hodin hodnoty metrik.
 
 ## <a name="next-steps"></a>Další postup

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 68bffaeef0451dae3a3b9707049dd2e44ad311fd
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5c768497cc21b3fae82a9db290531af33841a2cf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865871"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877288"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Zabezpečení rámce: Správa výjimek | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -71,7 +71,7 @@ Zakážete informace o ladění ve službě. Toho můžete docílit tak, že ode
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | MVC 5, MVC 6 |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Zpracování výjimek v rozhraní ASP.NET Web API](http://www.asp.net/web-api/overview/error-handling/exception-handling), [Model ověřování v rozhraní ASP.NET Web API](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
+| **Odkazy**              | [Zpracování výjimek v rozhraní ASP.NET Web API](https://www.asp.net/web-api/overview/error-handling/exception-handling), [Model ověřování v rozhraní ASP.NET Web API](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
 | **Kroky** | Ve výchozím nastavení většina nezachycených výjimek v rozhraní ASP.NET Web API jsou přeloženy do odpovědi HTTP se stavovým kódem `500, Internal Server Error`|
 
 ### <a name="example"></a>Příklad:
@@ -179,7 +179,7 @@ public HttpResponseMessage PostProduct(Product item)
 }
 ```
 
-Zkontrolujte odkazy v části odkazy na další podrobnosti o zpracování výjimek a ověření modelu v rozhraní ASP.Net Web API 
+Zkontrolujte odkazy v části odkazy na další podrobnosti o zpracování výjimek a ověření modelu v rozhraní ASP.NET Web API 
 
 ## <a id="messages"></a>Nezveřejňujte podrobné informace o zabezpečení v chybové zprávy
 

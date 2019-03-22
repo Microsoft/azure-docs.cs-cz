@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 1e62495de35c8df4f446d371a0bbbcdc80c7118d
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 3b27fe0bec4ec23739e3cff02d6aed667f1d3e1d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650099"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226823"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrace clusteru Apache HBase na novou verzi.
 
@@ -199,15 +199,21 @@ Následující příklad je pro upgrade na 3.6 (jsou součástí Apache HBase 1.
 
     ![V Ambari změňte název kontejneru](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
-8. Uložte provedené změny.
-9. Je určeno Ambari, restartujte všechny požadované služby.
-10. Bod aplikace do nového clusteru.
+8. **Pokud nepoužíváte clustery HBase pomocí funkce rozšířeného zapisuje, tento krok přeskočte. Je potřeba pouze pro clustery HBase pomocí funkce rozšířeného zapisuje.**
+   
+   Změňte cestu hbase.rootdir tak, aby odkazoval na kontejner k původnímu clusteru.
+
+    ![V Ambari změňte název kontejneru pro hbase rootdir](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+    
+9. Uložte provedené změny.
+10. Je určeno Ambari, restartujte všechny požadované služby.
+11. Bod aplikace do nového clusteru.
 
     > [!NOTE]  
     > Statické DNS pro vaši aplikaci se změní při upgradu. Místo pevného kódování této služby DNS, můžete nakonfigurovat záznam CNAME v nastavení DNS pro název domény, které odkazuje na název clusteru. Další možností je použít konfigurační soubor pro vaši aplikaci, kterou můžete aktualizovat bez opětovného nasazení.
 
-11. Začněte tak příjem dat, pokud chcete zobrazit, pokud všechno funguje podle očekávání.
-12. Pokud nový cluster nachází uspokojivé kvality, odstraňte původní cluster.
+12. Začněte tak příjem dat, pokud chcete zobrazit, pokud všechno funguje podle očekávání.
+13. Pokud nový cluster nachází uspokojivé kvality, odstraňte původní cluster.
 
 ## <a name="next-steps"></a>Další postup
 

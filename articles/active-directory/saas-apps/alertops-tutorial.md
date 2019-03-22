@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36da69b61ffd4df6d4093023e69887b27dbae243
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 7914bc3775631f3cc5d6ae68fed10c6d5fecb853
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405279"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alertops"></a>Kurz: Integrace Azure Active Directory s AlertOps
 
@@ -176,7 +176,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -227,7 +227,7 @@ V této části je povolit Britta Simon k udělení přístupu k AlertOps použi
 
     a. V **přihlašovací uživatelské jméno** textového pole zadejte uživatelské jméno uživatele, jako je **Brittasimon**.
 
-    b. V **oficiální e-mailu** textového pole zadejte e-mailovou adresu uživatele, jako je **Brittasimon@contoso.com**.
+    b. V **oficiální e-mailu** textového pole zadejte e-mailovou adresu uživatele, jako je **Brittasimon\@contoso.com**.
 
     c. V **křestní jméno** textového pole zadejte jméno uživatele, jako je **Britta**.
 

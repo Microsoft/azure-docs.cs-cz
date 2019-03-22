@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5bdf23d1a2142e5c83ceeb72a79ca4fbea65d09c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5b6c636366d494901a34078100290084298de686
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534272"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999839"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Instalace a konfigurace SAP HANA (velké instance) v Azure
 
@@ -96,11 +96,11 @@ Tady je další a užitečné SAP na související s operačním systémem SUSE 
 
 - [SAP HANA na webu operačním systémem SUSE Linux](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
 - [Osvědčené postupy pro SAP: Zařazování replikaci, SAP NetWeaver na SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
-- [ClamSAP – ochrana proti virům SLES pro SAP](http://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (včetně SLES 12 pro aplikace SAP)
+- [ClamSAP – ochrana proti virům SLES pro SAP](https://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (včetně SLES 12 pro aplikace SAP)
 
 Následují poznámky SAP podpory, které se dají použít k implementaci SAP HANA na SLES 12:
 
-- [Poznámka: podpora #1944799 – SAP HANA pokyny pro instalaci operačního systému SLES pro SAP](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
+- [Poznámka: podpora #1944799 – SAP HANA pokyny pro instalaci operačního systému SLES pro SAP](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
 - [Doporučené nastavení operačního systému pro SLES 12 pro aplikace SAP Poznámka SAP support #2205917 – databáze SAP HANA](https://launchpad.support.sap.com/#/notes/2205917/E)
 - [Poznámka SAP support #1984787 – operačním systémem SUSE Linux Enterprise Server 12: poznámky k instalaci](https://launchpad.support.sap.com/#/notes/1984787)
 - [SAP support Poznámka #171356 – softwaru SAP v Linuxu:  Obecné informace](https://launchpad.support.sap.com/#/notes/1984787)
@@ -143,7 +143,7 @@ Další informace o Ethernet podrobnosti o architektuře, najdete v článku [HL
 
 ## <a name="storage"></a>Storage
 
-Rozložení úložiště pro SAP HANA v Azure (velké instance) je nakonfigurována ve SAP HANA na Azure service management prostřednictvím SAP Doporučené pokyny. Tyto pokyny jsou dokumentovány v článku [požadavky na úložiště SAP HANA](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) dokument white paper. 
+Rozložení úložiště pro SAP HANA v Azure (velké instance) je nakonfigurována ve SAP HANA na Azure service management prostřednictvím SAP Doporučené pokyny. Tyto pokyny jsou dokumentovány v článku [požadavky na úložiště SAP HANA](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) dokument white paper. 
 
 Přibližnou velikostí různé svazky s jinou SKU velké instance HANA je popsána v [architektura v Azure a SAP HANA (velké instance) přehled](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -207,10 +207,10 @@ Můžete také nakonfigurovat parametry po instalaci databáze SAP HANA pomocí 
 > [!IMPORTANT]
 > Aby nedošlo k HANA pokusu o zvětšení datových souborů nad limit velikosti souboru 16 TB úložiště pro velké Instance HANA, je nutné nastavit následující parametry v konfiguračním souboru global.ini SAP HANA
 > 
-- datavolume_striping=true
-- datavolume_striping_size_gb = 15000
-- Viz také SAP Poznámka [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
-- Mějte na paměti ze Poznámka SAP [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
+> - datavolume_striping=true
+> - datavolume_striping_size_gb = 15000
+> - Viz také SAP Poznámka [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+> - Mějte na paměti ze Poznámka SAP [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
 V SAP HANA 2.0 hdbparam framework je zastaralá. Parametry v důsledku toho musíte nastavit pomocí příkazů jazyka SQL. Další informace najdete v tématu [Poznámka SAP #2399079: Odstranění hdbparam v HANA 2](https://launchpad.support.sap.com/#/notes/2399079).

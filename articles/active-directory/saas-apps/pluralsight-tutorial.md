@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 4c3f07d2-4e1f-4ea3-9025-c663f1f2b7b4
 ms.service: active-directory
@@ -12,15 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/26/2018
+ms.date: 03/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c78b634cb0295a2f5109433e6a93b8a5f4f67cea
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b2d8d98fb9c953ef8063bf2081201f7d9bdf3649
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761748"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57874979"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>Kurz: Integrace Azure Active Directory s využitím Pluralsightu
 
@@ -46,6 +45,8 @@ Konfigurace integrace Azure AD s využitím Pluralsightu, potřebujete následuj
 V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
 * Podporuje Pluralsight **SP** jednotné přihlašování zahájené pomocí
+
+* Podporuje Pluralsight **just-in-time** zřizování uživatelů 
 
 ## <a name="adding-pluralsight-from-the-gallery"></a>Přidání Pluralsight z Galerie
 
@@ -114,14 +115,13 @@ Ke konfiguraci Azure AD jednotné přihlašování s využitím Pluralsightu, pr
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné přihlašovací adresu URL a adresy URL odpovědi. Kontakt [tým podpory Pluralsight klienta](mailto:support@pluralsight.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-5. Pluralsight aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
-
+5. Pluralsight aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele** dialogového okna.
     ![image](common/edit-attribute.png)
 
     >[!NOTE]
     >Můžete také přidat **"Jedinečné ID"** atribut s odpovídající hodnotu jako EmployeeID nebo něco jiného, který vyhovuje vaší organizaci. Všimněte si také, že to není povinný atribut; ale můžete přidat, a identifikovat jedinečného uživatele.
 
-6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
+6. Kromě toho výše Pluralsight aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
     
     | Název | Zdrojový atribut|
     | --------------- | --------- |
@@ -173,7 +173,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -208,7 +208,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 ### <a name="create-pluralsight-test-user"></a>Vytvořit testovacího uživatele Pluralsight
 
-Cílem této části je vytvořte uživatele Britta Simon v Pluralsight. Spojte se prosím s [tým podpory Pluralsight klienta](mailto:support@pluralsight.com) k přidání uživatelů v účtu Pluralsight.  Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části se vytvoří uživateli Britta Simon v Pluralsight. Pluralsight podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Pluralsight, vytvoří se nový po ověření.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
@@ -218,7 +218,7 @@ Po kliknutí na dlaždici Pluralsight na přístupovém panelu, můžete by měl
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

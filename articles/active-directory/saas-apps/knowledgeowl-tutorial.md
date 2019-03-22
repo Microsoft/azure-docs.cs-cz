@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32f53742de3242fb3b60a15d436ec6cd842aa429
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c8c86ad6e4b11f21c648083fac35e15eec7658c1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183980"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995516"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>Kurz: Integrace Azure Active Directory s KnowledgeOwl
 
@@ -110,6 +110,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![KnowledgeOwl domény a adresy URL jednotného přihlašování – informace](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url.png)
 
     a. V **identifikátor (Entity ID)** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+
     |||
     |-|-|
     | `https://app.knowledgeowl.com/sp`|
@@ -117,6 +118,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     |||
 
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+
     |||
     |-|-|
     | `https://subdomain.knowledgeowl.com/help/saml-login`|
@@ -132,6 +134,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![KnowledgeOwl domény a adresy URL jednotného přihlašování – informace](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url1.png)
 
     V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    
     |||
     |-|-|
     | `https://subdomain.knowledgeowl.com/help/saml-login`|
@@ -185,29 +188,29 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 1. Klikněte na **nastavení** a pak vyberte **zabezpečení**.
 
-    ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure1.png)
+     ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure1.png)
 
 1. Přejděte k položce **integraci jednotného přihlašování SAML** a proveďte následující kroky:
     
-    ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure2.png)
+     ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure2.png)
 
-    a. Vyberte **povolení jednotného přihlašování SAML**.
+     a. Vyberte **povolení jednotného přihlašování SAML**.
 
-    b. Kopírovat **SP Entity ID** hodnotu a vložte ho do **identifikátor (Entity ID)** v **KnowledgeOwl domény a adresy URL** části na webu Azure portal.
+     b. Kopírovat **SP Entity ID** hodnotu a vložte ho do **identifikátor (Entity ID)** v **KnowledgeOwl domény a adresy URL** části na webu Azure portal.
 
-    c. Kopírovat **SP přihlašovací adresa URL** hodnotu a vložte ho do **přihlašovací adresu URL a adresy URL odpovědi** textová pole v **KnowledgeOwl domény a adresy URL** části na webu Azure portal.
+     c. Kopírovat **SP přihlašovací adresa URL** hodnotu a vložte ho do **přihlašovací adresu URL a adresy URL odpovědi** textová pole v **KnowledgeOwl domény a adresy URL** části na webu Azure portal.
 
-    d. V **IdP entityID** vložit do textového pole **SAML Entity ID** hodnotu, kterou jste zkopírovali z portálu Azure portal.
+     d. V **IdP entityID** vložit do textového pole **SAML Entity ID** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
-    e. V **přihlašovací adresa URL zprostředkovatele identity** vložit do textového pole **SAML jednotné přihlašování – adresa URL služby** hodnotu, kterou jste zkopírovali z portálu Azure portal.
+     e. V **přihlašovací adresa URL zprostředkovatele identity** vložit do textového pole **SAML jednotné přihlašování – adresa URL služby** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
-    f. V **odhlašovací adresa URL zprostředkovatele identity** vložit do textového pole **odhlašování URL** hodnotu, kterou jste zkopírovali z portálu Azure portal
+     f. V **odhlašovací adresa URL zprostředkovatele identity** vložit do textového pole **odhlašování URL** hodnotu, kterou jste zkopírovali z portálu Azure portal
 
-    g. Nahrát certifikát stažený formuláře na webu Azure portal kliknutím **nahrát certifikát IdP**.
+     g. Nahrát certifikát stažený formuláře na webu Azure portal kliknutím **nahrát certifikát IdP**.
 
-    h. Klikněte na **atributy SAML mapy** mapování atributů a proveďte následující kroky:
+     h. Klikněte na **atributy SAML mapy** mapování atributů a proveďte následující kroky:
     
-    ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure3.png)
+     ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure3.png)
 
     * Zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` do **jednotného přihlašování ID** textové pole
     * Zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` do **uživatelské jméno nebo e-mailu** textového pole.
@@ -215,9 +218,9 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     * Zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` do **příjmení** textového pole.
     * Klikněte na **Uložit**.
 
-    i. V dolní části stránky klikněte na **Uložit**.
+      i. V dolní části stránky klikněte na **Uložit**.
 
-    ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure4.png)
+      ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 

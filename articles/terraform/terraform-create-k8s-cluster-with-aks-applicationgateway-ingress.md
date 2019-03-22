@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 1/10/2019
-ms.openlocfilehash: 7eb88f0bd30c9f28f8980cdc0e16ba46a9da9551
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 477b2ec1af4c52f51c3ab20ac2ddf7ef043dfcc7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765590"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994352"
 ---
 # <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Vytvoření clusteru Kubernetes s Application Gateway kontroler příchozího přenosu dat pomocí služby Azure Kubernetes Service a Terraformu
 [Azure Kubernetes Service (AKS)](/azure/aks/) spravuje vaše hostované prostředí Kubernetes. AKS umožňuje rychle a snadno nasadit a spravovat kontejnerizované aplikace bez znalosti Orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.
@@ -36,16 +36,16 @@ V tomto kurzu se dozvíte, jak provádět následující úkoly při vytvářen�
 - **Nakonfigurujte Terraform**: Postupujte podle pokynů v článku, [Terraform a konfigurovat přístup k Azure](/azure/virtual-machines/linux/terraform-install-configure)
 
 - **Instanční objekt Azure**: Postupujte podle pokynů v části **vytvořit instanční objekt** části tohoto článku věnované [vytvoření instančního objektu Azure pomocí rozhraní příkazového řádku Azure](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Poznamenejte si hodnoty pro ID aplikace, displayName a heslo.
-    - Spuštěním následujícího příkazu si poznamenejte ID objektu instanční objekt služby
+  - Spuštěním následujícího příkazu si poznamenejte ID objektu instanční objekt služby
 
     ```bash
-     az ad sp list --display-name <displayName>
+    az ad sp list --display-name <displayName>
     ```
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu pro toto cvičení.
 
-1. Přejděte na web [Azure Portal](http://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
 1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview). Pokud jste prostředí ještě nevybrali, vyberte prostředí **Bash**.
 
@@ -99,8 +99,8 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
     ```bash
     :wq
     ```
-## <a name="define-input-variables"></a>Definujte vstupní proměnné
-Vytvoření konfiguračního souboru Terraform, který zobrazí seznam všech proměnných potřebných pro toto nasazení
+   ## <a name="define-input-variables"></a>Definujte vstupní proměnné
+   Vytvoření konfiguračního souboru Terraform, který zobrazí seznam všech proměnných potřebných pro toto nasazení
 1. Ve službě Cloud Shell vytvořte soubor s názvem `variables.tf`
     ```bash
     vi variables.tf

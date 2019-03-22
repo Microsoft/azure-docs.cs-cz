@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 830825c6ad54a6ff300fb7ee223b32ee0571a55a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: bb244cb03ed5419762541e93784bb72fcf252676
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58163530"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258050"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Správa zařízení pomocí webu Azure portal
 
@@ -83,7 +83,7 @@ Na stránce nastavení zařízení můžete nakonfigurovat:
 
 - **Uživatelé můžou synchronizovat nastavení a data aplikací na zařízeních** – ve výchozím nastavení, toto nastavení nastavené na **NONE**. Vyberte konkrétní uživatele nebo skupiny nebo všechny umožňuje uživatelského nastavení a data aplikací synchronizovat na zařízení s Windows 10. Další informace o tom, jak funguje synchronizace ve Windows 10.
 Tato možnost je dostupná prostřednictvím produktů, jako je Azure AD Premium nebo Enterprise Mobility Suite (EMS) funkce úrovně premium.
- 
+
 
 
 
@@ -119,7 +119,7 @@ Pro některá zařízení s Iosem můžete použít názvy zařízení obsahují
 
 ## <a name="device-management-tasks"></a>Úlohy správy zařízení
 
-Jako globální správce můžete spravovat zařízení registrovaná nebo připojené k doméně. Správci služby Intune můžete:
+Jako globální správce nebo správce cloudových zařízení můžete spravovat zařízení registrovaná nebo připojené k doméně. Správci služby Intune můžete:
  
 - Aktualizace zařízení – příklady jsou každodenní operace, jako je povolení/zakázání zařízení
 
@@ -151,7 +151,7 @@ Chcete-li povolit / zakázat zařízení, máte dvě možnosti:
 
 **Poznámky:**
 
-- Musíte být globálním správcem ve službě Azure AD pro povolení / zákaz zařízení. 
+- Musíte být globálním správcem nebo cloudové zařízení správce ve službě Azure AD pro povolení / zákaz zařízení. 
 - Zakázáním zařízení zabrání zařízení v úspěšném ověření pomocí Azure AD, tím zabrání zařízení v přístupu k prostředkům Azure AD, které jsou chráněné pomocí zařízení certifikační Autority nebo pomocí přihlašovacích údajů WH4B. 
 
 

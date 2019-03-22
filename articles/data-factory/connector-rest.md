@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 372275740b7d4fd757e97a3966e4e87c9d2de940
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 807a6b38b9f2cbe2a3c8787fe09c2ea14106a942
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105385"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864894"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu REST s využitím Azure Data Factory
 
@@ -171,7 +171,7 @@ Ke zkopírování dat z REST, jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | **Typ** musí být nastavena vlastnost datové sady **RestResource**. | Ano |
 | relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Když tato vlastnost neurčí, použije se pouze adresu URL, která je zadána v definici propojené služby. | Ne |
-| requestMethod | Metoda protokolu HTTP. Povolené hodnoty jsou **získat** (výchozí) a **příspěvek**. | Ne |
+| requestMethod | Metoda HTTP Povolené hodnoty jsou **získat** (výchozí) a **příspěvek**. | Ne |
 | additionalHeaders | Další hlavičky požadavků HTTP. | Ne |
 | Includesearchresults: true | Obsah žádosti protokolu HTTP. | Ne |
 | paginationRules | Pravidla stránkování sestavit požadavky na další stránku. Odkazovat na [podporu stránkování](#pagination-support) části na podrobnosti. | Ne |
@@ -274,8 +274,8 @@ Za normálních okolností rozhraní REST API omezit velikost datové části od
 
 Tento obecný konektor REST podporuje následující způsoby stránkování: 
 
-* Další požadavek absolutní adresa URL = hodnotě vlastnosti v aktuální text odpovědi
-* Absolutní adresa URL další požadavek = hodnota hlavičky v aktuální hlavičky odpovědi
+* Příští žádosti o absolutní nebo relativní adresa URL = hodnotě vlastnosti v aktuální text odpovědi
+* Příští žádosti o absolutní nebo relativní adresa URL = hodnota hlavičky v aktuální hlavičky odpovědi
 * Další požadavek dotazu parametr = hodnota vlastnosti v aktuální text odpovědi
 * Další požadavek dotazu parametr = hodnota hlavičky v aktuální hlavičky odpovědi
 * Hlavička požadavku další = hodnota vlastnosti v aktuální text odpovědi
@@ -287,7 +287,7 @@ Tento obecný konektor REST podporuje následující způsoby stránkování:
 
 | Klíč | Popis |
 |:--- |:--- |
-| AbsoluteUrl | Označuje adresu URL vydat další požadavek. |
+| AbsoluteUrl | Označuje adresu URL vydat další požadavek. Může to být **adresa URL absolutní nebo relativní adresa URL**. |
 | QueryParameters. *request_query_parameter* nebo QueryParameters [request_query_parameter] | "request_query_parameter" je uživatelem odkazuje na jeden název parametru dotazu v následující adrese URL požadavku HTTP. |
 | Záhlaví. *request_header* nebo záhlaví [request_header] | "request_header" je uživatelem odkazuje na jeden název hlavičky v další požadavek HTTP. |
 

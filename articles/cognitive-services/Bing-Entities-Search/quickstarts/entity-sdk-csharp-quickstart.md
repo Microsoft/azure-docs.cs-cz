@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: 00a4f222e45bcb62db13e420c6b1829d8be8a14b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 99b7f05304b48b7d885a80705d05fbe24854150f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529321"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080637"
 ---
 # <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>Odeslat požadavek s SDK vyhledávání entit Bingu pro vyhledáváníC#
 
@@ -52,13 +52,13 @@ Chcete-li přidat do projektu sady Visual Studio SDK vyhledávání entit Bingu,
 
 ## <a name="create-a-client-and-send-a-search-request"></a>Vytvoření klienta a odeslat žádost o vyhledávání
 
-2. Vytvořte nového klienta vyhledávání. Přidat klíč předplatného. tím, že vytvoříte nový `ApiKeyServiceClientCredentials`.
+1. Vytvořte nového klienta vyhledávání. Přidat klíč předplatného. tím, že vytvoříte nový `ApiKeyServiceClientCredentials`.
 
     ```csharp
     var client = new EntitySearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
 
-3. Použití klienta `Entities.Search()` funkce vyhledávání pro váš dotaz:
+1. Použití klienta `Entities.Search()` funkce vyhledávání pro váš dotaz:
     
     ```csharp
     var entityData = client.Entities.Search(query: "Satya Nadella");

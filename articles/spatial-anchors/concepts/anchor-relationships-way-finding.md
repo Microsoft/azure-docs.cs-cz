@@ -1,6 +1,6 @@
 ---
 title: Kotvy vztahů a způsob hledání v prostorových kotvy Azure | Dokumentace Microsoftu
-description: Popište konceptuálního modelu za kotvy vztahů. Popis procesu připojování ukotvení v rámci mezeru a proces pomocí rozhraní API pro blízké ke splnění scénáři způsob hledání. Po s vysvětlením konceptuální model, přejděte na vývojáře našich ukázkových aplikací, které umožní tak s tím můžou začít implementace této situace ve svých vlastních aplikacích.
+description: Další informace o konceptuálního modelu za kotvy vztahů. Další informace pro připojení ukotvení v rámci mezerou a k používání rozhraní API blízké ke splnění scénáři způsob hledání.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -8,73 +8,78 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3d1ee0b25fbbf0ef895bdf6ff8afad71ff82de25
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 619cd051eccce3434469ae909f69496a254d0d9a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217168"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863334"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Kotvy vztahů a způsob hledání v prostorových kotev vztahů Azure
 
-Kotvy vztahů umožňují vytvořit propojené ukotvení v prostoru a pak o nich jako klást otázky:
+Pomocí kotvy vztahů můžete vytvořit propojené ukotvení v prostoru a potom klást otázky, jako jsou tyto:
 
 * Existují kotvy okolních?
 * Jak daleko je mezi nimi?
 
 ## <a name="examples"></a>Příklady
 
-Případy použití, které můžete povolit pomocí připojených kotvy patří:
+V takových případech můžete použít připojené kotev vztahů:
 
-1. Pracovní proces musí provádět procedury, která zahrnuje navštívit různých umístěních v objektu pro vytváření průmyslu. Objekt pro vytváření umístěna prostorových ukotvení v každé lokalitě účastnících se. HoloLens nebo mobilní aplikace pomůže průvodce pracovní proces z jednoho umístění do druhého. Nejdřív byste požádat o prostorových kotev vztahů, které jsou poblíž a potom provede pracovního procesu k další oblasti. Aplikace zobrazí visual indikátory Obecné směr a vzdálenost do následujícího umístění, k dokončení úlohy.
+* Pracovní proces potřebuje k dokončení úkolu, který zahrnuje navštívit různých umístěních v objektu pro vytváření průmyslu. Objekt pro vytváření prostorových kotvy má v každém umístění. HoloLens nebo mobilní aplikace pomůže průvodce pracovní proces z jednoho umístění do druhého. Aplikace žádá nejprve blízké prostorových ukotvení a pak provede pracovního procesu k další oblasti. Aplikace bude zobrazovat vizuálně Obecné směr a vzdálenost k další oblasti.
 
-2. Muzejních vytvoří prostorových kotvy na veřejné zobrazení, které společně vytvářejí konkrétní seznámíte muzejních, jako je například "Hodinová si základní veřejné zobrazí". Při jedné veřejné zobrazované návštěvníci, otevřou muzejních hybridní realitu na svém mobilním zařízení. Potom by jejich přejděte svůj telefon kolem prostor a prostřednictvím informačního kanálu fotoaparátu a naleznete obecné směr a vzdálenost k jiné veřejné zobrazí na prohlídku. Jako uživatel spustí procházení na jednu z veřejné zobrazí, aktualizuje aplikaci postupně Obecné směr a vzdálenost k poskytování pomoci uživatelům průvodce existuje.
+* Muzejních vytvoří prostorových kotvy na veřejné zobrazí. Společně tyto kotvy tvoří hodinová si muzejních základní veřejné zobrazí. Na veřejné zobrazení můžete otevřít návštěvníků muzejních pro hybridní realitu na svém mobilním zařízení. Potom ukazují kameře phone kolem místa, které chcete zobrazit obecné směr a vzdálenost k jiné veřejné zobrazí na prohlídku. Uživatel provede směrem k veřejné zobrazení, aplikace aktualizuje Obecné směr a vzdálenost provedou uživatele.
 
-## <a name="way-finding"></a>Way-finding
+## <a name="set-up-way-finding"></a>Nastavit způsob hledání
 
-Představte si, že aplikace používá směr "řádku veškerá" a vzdálenost mezi kotvy poskytnout nápovědu, pokyny pro uživatele. Označujeme jako způsob, jak najít tento celkové scénář. Je důležité si uvědomit, že se liší od zapnout vypnout navigační způsob hledání. V navigačním panelu na řadě vy zapnout uživatelé provádějí kolem stěn prostřednictvím dveře a mezi podlahy. S způsob zjištění, uživateli se nabídnou tipy týkající se obecné směr cíl. Ale odvození nebo znalostní báze prostoru uživatele také pomáhá procházet strukturu do cíle.
+Aplikaci, která využívá dohlednost směr a vzdálenost mezi ukotvení a přidal se návod používá *způsob zjištění*. Najít způsob, jak se liší od zapnout vypnout navigaci. V navigačním panelu na řadě vy zapnout která uživatele provádějí kolem stěn prostřednictvím dveře a mezi podlahy. Uživatel s způsob zjištění, získá tipy týkající se obecné směr cíl. Ale odvození nebo znalostní báze prostoru také pomáhá uživatelům procházet strukturou do cíle.
 
-Vytváření prostředí způsob hledání zahrnuje mezeru Příprava prostředí a vyvíjet aplikace, která bude koncovým uživatelům pracovat. Koncepční kroky patří:
+K vytvoření prostředí způsob zjištění, nejprve připravit mezeru prostředí a vývoj aplikací, které budou uživatelé používat. Jedná se o koncepční kroky:
 
-1. Plánování místo: Určení umístění v rámci oboru, které jsou součástí prostředí způsob hledání. V předchozích příkladech tato aktivita může dokončit nadřízený objekt pro vytváření nebo koordinátor muzejních tour.
-2. Připojování kotev vztahů: Někdo navštíví zvolené umístění a vytvoří prostorových kotvy existuje. Tento úkol můžete udělat pomocí režimu správce aplikace koncového uživatele nebo jinou aplikaci zcela. Pomocí tohoto procesu je ukotvení jednotlivých připojen nebo související s ostatními. Tyto vztahy jsou zachována ve službě.
-3. Spuštění prostředí pro koncové uživatele: Prvním krokem pro koncové uživatele je jeden z ukotvení pomocí aplikace, které mohou být takové zvoleného umístění vyhledejte. Určení umístění, kde můžou koncoví uživatelé zadat prostředí je součástí návrhu celkové prostředí.
-4. Hledání okolních kotev vztahů: Jakmile uživatel pružný jeden ukotvení, aplikace můžou požádat o okolních kotev vztahů. Tento postup vrátí pozici mezi zařízením a tyto ukotvení.
-5. Která bude obsahovat uživatele: Aplikace můžete využít výhod pozici pro každý z těchto kotev vztahů k vykreslení nápovědu užitečné návody, jejich Obecné směr a vzdálenost. Například může být objektem icon a šipku na kamera kanálu v mobilní aplikaci reprezentující jednotlivé potenciální cíle stejně jako na obrázku níže.
-6. Upřesnění pokynů: Jako uživatel provede, můžete aplikaci pravidelně vypočítat nové pozice mezi zařízením a určení ukotvení. Aplikace dál Upřesnit odkazy na pokyny, které uživatel přejít na cíl.
+1. **Plánování prostor**: Rozhodněte, která umístění v rámci prostoru bude součástí prostředí způsob hledání. Ve scénáři nadřízený objekt pro vytváření nebo koordinátor tour muzejních rozhodnout zahrnout do prostředí způsob zjištění umístění.
+2. **Připojit kotvy**: Navštivte zvolené umístění vytvořit prostorových ukotvení. Můžete to provedete v režimu správce aplikace pro koncové uživatele, nebo v jiné aplikaci zcela. Budete připojení nebo se týkají ukotvení jednotlivých ostatním. Služba zajišťuje tyto vztahy.
+3. **Spuštění prostředí pro koncové uživatele**: Uživatelé spustí aplikaci najít anchor, který může být v některém z vybrané umístění. Celkový návrh by měl určit umístění, kde mohou uživatelé zadat prostředí.
+4. **Vyhledání okolního kotvy**: Poté, co uživatel vyhledá anchor, požádat o okolních kotvy aplikace. Tento postup vrátí pozici mezi zařízením a tyto ukotvení.
+5. **Příručka pro uživatele**: Aplikace můžete používat póza ke každé z těchto kotvy poskytnout pokyny týkající se obecné směr uživatele a vzdálenost. Fotoaparát v aplikaci může například zobrazit ikonu a šipku pro reprezentaci jednotlivé potenciální cíle, jak ukazuje následující obrázek.
+6. **Upřesnění pokynů**: Jako uživatel provede, můžete aplikaci pravidelně vypočítat nové pozice mezi zařízením a určení ukotvení. Aplikace dál Upřesnit odkazy na pokyny, které uživatel přejít na cíl.
 
-![Přímé schůzky](./media/meeting-spot.png)
+    ![Příklad, jak aplikace může zobrazit způsob zjištění pokyny](./media/meeting-spot.png)
 
-## <a name="connecting-anchors"></a>Připojení kotvy
+## <a name="connect-anchors"></a>Připojit kotvy
 
-K vytvoření prostředí způsob zjištění, potřebujete umístit připojených kotvy ve zvoleném umístění. Níže budeme předpokládat, že tuto práci provádí správce aplikace.
+K vytvoření prostředí způsob zjištění, musíte nejprve umístit do zvoleného umístění ukotvení. V této části budeme předpokládat, že správce aplikace již byla dokončena tuto práci.
 
-### <a name="connecting-anchors-in-a-single-session"></a>Připojení ukotvení v jedné relaci
+### <a name="connect-anchors-in-a-single-session"></a>Připojit ukotvení v jedné relaci
 
-Postup připojení kotev vztahů jsou:
+Připojení kotev vztahů:
 
-1. Správce provede na první místo a vytvoří ukotvení A použití CloudSpatialAnchorSession.
-2. Správce vás do druhé umístění, zatímco základní platformy MR/AR pokračuje ve sledování uživatele.
-3. Správce vytvoří se stejný CloudSpatialAnchorSession ukotvení B. Ukotvení A a B teď připojení, ale tento vztah se spravuje pomocí služby Azure prostorových kotvy vztahů.
-4. Pokračujte v postupu pro všechny kotev vztahů, které chcete připojit.
+1. Procházet na první místo a vytvořte ukotvení A s využitím CloudSpatialAnchorSession.
+2. Procházet k druhé umístění. Základní platforma MR/AR sleduje přesun.
+3. Vytvoříte pomocí stejného CloudSpatialAnchorSession B ukotvení. Ukotvení A a B teď připojeni. Služba prostorových kotvy udržuje tuto relaci.
+4. Postup pro zbývající kotvy pokračujte.
 
-### <a name="multiple-sessions"></a>Více relací
+### <a name="connect-anchors-in-multiple-sessions"></a>Připojit do několika seminářů zaměřených na ukotvení
 
-Prostorové kotvy můžete také připojit přes více relací. Tato metoda umožňuje vytvořit a připojit některé kotev vztahů najednou a později vytvořit a připojit další ukotvení. Připojení ukotvení s více relací:
+Prostorové ukotvení se můžete připojit přes více relací. Pomocí této metody můžete vytvořit a současně připojit některé kotvy vztahů a potom později vytvořit a připojit další kotvy vztahů. 
 
-1. Aplikace vytvoří v jedné CloudSpatialAnchorSession některé ukotvení.
-2. Později například na jiný den aplikace vyhledá jeden z těchto ukotvení s novou CloudSpatialAnchorSession (například ukotvení A).
-3. Uživatel provede do nového umístění, zatímco základní platformy MR/AR pokračuje ve sledování uživatele.
-4. Pomocí stejného CloudSpatialAnchorSession, uživatel vytvoří kotvy C. ukotvení A, B a C připojení a tento vztah se spravuje pomocí Azure prostorových ukotvení.
-5. Tento postup pro další ukotvení a další relace můžete pokračovat v průběhu času.
+Připojení přes více relací kotev vztahů:
 
-### <a name="verifying-anchor-connections"></a>Ověřuje se připojení ukotvení
+1. Aplikace vytvoří v jedné CloudSpatialAnchorSession některé ukotvení. 
+2. V jinou dobu vyhledá aplikace jednu z těchto kotvy (například ukotvení A) s použitím nového CloudSpatialAnchorSession.
+3. Procházení do nového umístění. Základní platforma realitu nebo rozšířené reality sleduje přesun.
+4. Vytvoříte pomocí stejného CloudSpatialAnchorSession C ukotvení. Ukotvení A, B a C se teď připojení. Služba prostorových kotvy udržuje tuto relaci.
 
-Aplikace můžete ověřit, že dvě kotvy vztahů připojeni pomocí dotazu pro blízké kotev vztahů. Pokud výsledek dotazu obsahuje požadovanou cílovou ukotvení, má aplikace potvrzení, že jsou připojené ukotvení. Pokud nejsou připojeni, můžete aplikaci znovu opakujte postup připojení. Tady jsou některé důvody, proč nemusí podařit připojit kotev vztahů:
+Tento postup pro další ukotvení a další relace můžete pokračovat v průběhu času.
 
-1. Základní sledování MR/AR ztráty sledování během procesu připojování ukotvení.
-2. Došlo k chybě síťové komunikaci se službou Azure prostorových ukotvení a nelze trvale uložit připojení ukotvení.
+### <a name="verify-anchor-connections"></a>Ověření připojení ukotvení
 
-### <a name="sample-code"></a>Ukázka kódu
+Aplikace můžete ověřit, že dvě kotvy vztahů připojeni pomocí dotazu pro blízké kotev vztahů. Když výsledek tohoto dotazu obsahuje cílový ukotvení, ověření připojení ukotvení. Pokud nejste připojeni ukotvení, můžete zkusit aplikaci znovu připojte. 
 
-Zobrazí se ukázkový kód, který ukazuje, jak připojit ukotvení a proveďte okolních dotazy. Odkazovat [prostorových kotvy Azure ukázkové aplikace](https://github.com/Azure/azure-spatial-anchors-samples) na Githubu.
+Tady jsou některé důvody, proč nemusí podařit připojit kotev vztahů:
+
+* Základní realitu nebo rozšířené reality platformy ztráty sledování během procesu připojování ukotvení.
+* Kvůli chybě sítě při komunikaci se službou prostorových ukotvení nelze trvale uložit připojení ukotvení.
+
+### <a name="find-sample-code"></a>Najít ukázky kódu
+
+Ukázkový kód, který ukazuje, jak připojit ukotvení a provádět okolních dotazů najdete v tématu [prostorových kotvy ukázkové aplikace](https://github.com/Azure/azure-spatial-anchors-samples).

@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 03/04/2019
+ms.date: 03/30/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fde8e0807c13fb1e937a565595a65838b4604f2a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: fe7a7a548050d8d5d81ccecf17b4240ebcea10b3
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410366"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295942"
 ---
-V následující tabulce jsou uvedeny dostupné oblasti jsou podporované:
+V následující tabulce jsou uvedeny dostupné oblasti jsou podporované pro funkce, které jsou obecné dostupnosti.
 
 |Geopolitická oblast | Oblast Azure|
 |---|---|
@@ -28,3 +28,6 @@ V následující tabulce jsou uvedeny dostupné oblasti jsou podporované:
 | Vlády Austrálie | Austrálie – střed, Austrálie – střed 2 |
 | Indie | Indie – západ, Indie – střed, Indie – jih |
 | Jižní Korea | Jižní Korea – střed, Jižní Korea – jih |
+
+* Informace o ExpressRoute ve verzi preview najdete v tématu [virtuální sítě WAN a ExpressRoute - preview](../articles/virtual-wan/virtual-wan-expressroute-portal.md#register).
+* Informace o verzi preview Point-to-site najdete v tématu [virtuální sítě WAN a Point-to-site – ve verzi preview](../articles/virtual-wan/virtual-wan-point-to-site-portal.md#register).

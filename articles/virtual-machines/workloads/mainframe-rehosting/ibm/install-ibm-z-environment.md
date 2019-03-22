@@ -8,18 +8,18 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: 5de5f2f48504a711d4b7cff614abdd4214d0ba09
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fa3bf2b513ce7c5a0ea0210c66a9123ceaf1de37
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739445"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58015275"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Instalace IBM zD & T vývojovým/testovacím prostředím v Azure
 
 K vytvoření prostředí pro vývoj/testování pro úlohy sálové v systémech Z IBM, můžete nasadit IBM Z vývojové a testovací prostředí (zD & T) v Azure virtuální počítač (VM) infrastruktury jako služba (IaaS).
 
-ZD & T, můžete využít výhod úspory nákladů x86 platforma pro méně důležité vývojová a testovací prostředí a potom aktualizace zpět do provozního prostředí Z systému nabízených oznámení. Další informace najdete v tématu [pokyny k instalaci IBM ZD & T](http://www-01.ibm.com/support/docview.wss?uid=swg24044565#INSTALL).
+ZD & T, můžete využít výhod úspory nákladů x86 platforma pro méně důležité vývojová a testovací prostředí a potom aktualizace zpět do provozního prostředí Z systému nabízených oznámení. Další informace najdete v tématu [pokyny k instalaci IBM ZD & T](https://www-01.ibm.com/support/docview.wss?uid=swg24044565#INSTALL).
 
 Azure a Azure Stackem podporují následující verze:
 

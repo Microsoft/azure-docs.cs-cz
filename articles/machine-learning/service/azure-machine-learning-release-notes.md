@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: hning86
-ms.author: haining
-ms.reviewer: j-martens
+ms.author: larryfr
+author: Blackmist
 ms.date: 03/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: bb074dd848ce5e752ba8e4ca1d3a8ee533a2f5d2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2a2817501628d55d7ccc84979700ea53e4114eed
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777443"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860631"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -30,6 +29,7 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 
  + **Změny**
    + Balíček azureml tensorboard nahradí azureml. contrib tensorboard.
+   + V této verzi můžete nastavit uživatelský účet na spravované výpočetního clusteru (amlcompute), při jejím vytváření. To můžete udělat jednoduše předáním tyto vlastnosti v konfiguraci zřizování. Můžete najít další podrobnosti najdete [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none-).
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Sada SDK v1.0.17 pro přípravu dat Azure Machine Learning
 
@@ -127,7 +127,7 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
     - Histogram
     - Skládaný pruhový graf
     - Krabicový graf
-    - Bodové vykreslení
+    - Bodový
     - Bublinový graf
 + Na portálu teď dynamicky generuje sestavy pro experimentů. Když uživatel odešle na spuštění experimentu, automaticky se vygeneruje sestava s zaznamenané metriky a grafy umožňující porovnání během různých spuštění. 
 

@@ -15,12 +15,12 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 7b73a0efbe20b43b3ba8e94fce3aabf12ea918e8
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: ca58059716ebebfaf663412b37014ae4f534d0e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986052"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081504"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Přidat Kubernetes na webu Marketplace služby Azure Stack
 
@@ -220,12 +220,12 @@ Přidáte rozhraní Kubernetes na Marketplace:
 1. Zadejte `Custom Script for Linux`.
 
 1. Vyberte skript, který se následující profil:
-    - **Nabízejí**: Vlastní skript pro Linux 2.0
-    - **Verze**: 2.0.6 (nebo nejnovější verze)
-    - **Publisher**: Microsoft Corp
+   - **Nabízejí**: Vlastní skript pro Linux 2.0
+   - **Verze**: 2.0.6 (nebo nejnovější verze)
+   - **Publisher**: Microsoft Corp
 
-    > [!Note]  
-    > Může být uvedeno více než jednu verzi vlastních skriptů pro Linux. Je potřeba přidat poslední verzi položky.
+     > [!Note]  
+     > Může být uvedeno více než jednu verzi vlastních skriptů pro Linux. Je potřeba přidat poslední verzi položky.
 
 1. Vyberte **stáhnout.**
 

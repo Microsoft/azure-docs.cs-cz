@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/21/2018
 ms.author: ramkris
-ms.openlocfilehash: f4e537bb6aa3b9bc4555f7eefb3cac6acd579b64
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 51499b86aa44b89442f84a345cba6e9093f8c274
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233961"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57882790"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Knihovna prováděcí modul hromadného Java: Stažení informací
 
@@ -36,7 +36,7 @@ ms.locfileid: "56233961"
 |**Popis**|Knihovna prováděcí modul hromadného umožňuje klientské aplikace budou provádět hromadné operace v účtech služby Azure Cosmos DB. hromadné prováděcí modul knihovny poskytuje hromadný import a BulkUpdate obory názvů. Hromadný import, které můžete hromadně modul ingestování dokumenty optimálního tak, že je zajištěné propustnosti pro kolekce spotřebované na maximální velikost. BulkUpdate, které modul můžete hromadně aktualizovat stávající data v kontejnerech služby Azure Cosmos DB jako opravy.|
 |**Stažení sady SDK**|[Maven](https://search.maven.org/#search%7Cga%7C1%7Cdocumentdb-bulkexecutor)|
 |**BulkExecutor knihovny v Githubu**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
-| **Dokumentace k rozhraní API**| [Referenční dokumentace rozhraní .net API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
+| **Dokumentace k rozhraní API**| [Referenční dokumentace rozhraní API .NET](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
 |**Začínáme**|[Začínáme s knihovnou prováděcí modul hromadné sady Java SDK](bulk-executor-java.md)|
 |**Minimální podporovaný modul runtime**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 

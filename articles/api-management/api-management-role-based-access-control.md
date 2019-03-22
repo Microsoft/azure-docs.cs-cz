@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 21e7406d566be5be73342d530a4ad66b80a1d23f
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: deef5d17f9970f23c40c323bd1612cc3e3e1304e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990437"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107402"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Použití řízení přístupu na základě Role ve službě Azure API Management
 Azure API Management se spoléhá na Azure Role-Based řízení přístupu (RBAC) umožňuje přesnou správu přístupu služby API Management a entity (například rozhraní API a zásady). Tento článek poskytuje přehled předdefinovaných a vlastních rolí ve službě API Management. Další informace o řízení přístupu na webu Azure Portal najdete v tématu [Začínáme se správou přístupu na webu Azure Portal](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/).
@@ -32,7 +32,7 @@ API Management nyní poskytuje tři předdefinované role a přidá dvě další
 Následující tabulka obsahuje stručný popis předdefinované role. Tyto role můžete přiřadit pomocí webu Azure portal nebo jiné nástroje, včetně Azure [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli), a [rozhraní REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). Podrobnosti o tom, jak přiřadit předdefinované role najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 | Role          | Oprávnění ke čtení<sup>[1]</sup> | Přístup pro zápis<sup>[2]</sup> | Vytvoření služby, odstranění, škálování, VPN a konfigurace vlastní domény | Přístup k portálu pro vydavatele starší verze | Popis
-| ------------- | ---- | ---- | ---- | ---- | ---- | ---- |
+| ------------- | ---- | ---- | ---- | ---- | ---- 
 | Přispěvatel služby Azure API Management | ✓ | ✓ | ✓ | ✓ | Superuživatel. Má plný přístup CRUD služby API Management a entity (například rozhraní API a zásady). Má přístup k portálu pro vydavatele starší verze. |
 | Čtecí zařízení služby Azure API Management | ✓ | | || Má přístup jen pro čtení služby API Management a entity. |
 | Azure API Management Service – operátor | ✓ | | ✓ | | Může spravovat služby API Management, ale ne entity.|

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 69cf0815a8418df4c8a36adf99770640df327d49
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: ffed12b9184c7b6a690c30db9826f031fe6c9f9b
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568851"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259784"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Vyberte styl map ve službě Azure Maps
 
@@ -42,7 +42,7 @@ Druhý blok kódu pomocí mapy [setStyle](https://docs.microsoft.com/javascript/
 
 První blok kódu ve výše uvedeném kódu nastaví klíč předplatného a vytvoří objekt Map, grayscale_dark předem je nastaven styl mapy. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.
 
-Druhý blok kódu vytvoří selektor stylů pomocí atlas [StyleControl](/javascript/api/azure-maps-control/atlas.controls.stylecontrol) konstruktoru.
+Druhý blok kódu vytvoří selektor stylů pomocí atlas [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) konstruktoru.
 
 Styl ovládacího prvku pro výběr umožňuje výběr stylu pro mapu. Třetí blok kódu do mapy pomocí mapy Přidá výběr stylu [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody. Selektor stylů je v rámci mapy **naslouchací proces událostí** zajistit, že načte po plně načte mapy.
 

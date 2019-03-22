@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: fe4134d322c87c199f24cbd7966a8d6fca7256d9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5d7665cbfdf855e194f61910f0c8ee2bce5469b1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538863"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852487"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Přidání úložiště Git pro ukládání vlastních artefaktů a šablony Resource Manageru
 
@@ -78,13 +78,13 @@ Přidání úložiště do vašeho testovacího prostředí, nejprve získejte i
 
     ![Tlačítko Přidat úložiště](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. V druhém **úložišť** stránky, zadejte následující informace:
-  1. **Název**. Zadejte název úložiště.
-  2. **Adresa Url klonu Git**. Zadejte adresu URL klonu Git HTTPS, který jste si zkopírovali z Githubu nebo služby Azure DevOps.
-  3. **Větev**. Chcete-li získat vaše definice, zadejte větev.
-  4. **Token pat**. Zadejte osobní přístupový token, který jste předtím získali z Githubu nebo služby Azure DevOps.
-  5. **Cesty ke složkám**. Zadejte alespoň jedna cesta ke složce relativní adresa URL klonu, který obsahuje vaše artefakt nebo definice šablon Resource Manageru. Při zadávání podadresář, nezapomeňte že zahrnout lomítko cesta ke složce.
+   1. **Název**. Zadejte název úložiště.
+   2. **Adresa Url klonu Git**. Zadejte adresu URL klonu Git HTTPS, který jste si zkopírovali z Githubu nebo služby Azure DevOps.
+   3. **Větev**. Chcete-li získat vaše definice, zadejte větev.
+   4. **Token pat**. Zadejte osobní přístupový token, který jste předtím získali z Githubu nebo služby Azure DevOps.
+   5. **Cesty ke složkám**. Zadejte alespoň jedna cesta ke složce relativní adresa URL klonu, který obsahuje vaše artefakt nebo definice šablon Resource Manageru. Při zadávání podadresář, nezapomeňte že zahrnout lomítko cesta ke složce.
 
-     ![Oblast úložiště](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
+      ![Oblast úložiště](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
 6. Vyberte **Uložit**.
 
 ### <a name="related-blog-posts"></a>Související blogové příspěvky

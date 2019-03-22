@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2e281896d45ada8010f24a1f18265a8cdd523d31
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 799e496fd9dd8a405e5fc356e13cf6c05883e1ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696979"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855399"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení resource zamykání v Azure plány
 
-Vytvoření konzistentního prostředí ve velkém měřítku je pouze skutečně cenná tehdy, když je mechanismus pro udržování této konzistence. Tento článek vysvětluje, jak funguje uzamčení prostředků v Azure plány.
+Vytvoření konzistentního prostředí ve velkém měřítku je pouze skutečně cenná tehdy, když je mechanismus pro udržování této konzistence. Tento článek vysvětluje, jak funguje uzamčení prostředků v Azure plány. K prohlédnutí příkladu uzamčení prostředků a použití _zamítnout přiřazení_, najdete v článku [ochrany nové zdroje](../tutorials/protect-new-resources.md) kurzu.
 
 ## <a name="locking-modes-and-states"></a>Režimy zamykání a stavy
 
@@ -32,7 +32,7 @@ Prostředky vytvořené v přiřazení podrobného plánu artefakty mají čtyř
 |Nezamykat|*|Není uzamčen|Prostředky nejsou chráněny podrobné plány. Tento stav se používá také pro prostředky, které jsou přidány do **jen pro čtení** nebo **neodstraňujte** artefaktu skupinu prostředků z mimo přiřazení podrobného plánu.|
 |Jen pro čtení|Skupina prostředků|Nelze upravit nebo odstranit|Skupina prostředků je jen pro čtení a nejde upravit značky pro skupinu prostředků. **Není uzamčen** prostředky můžete přidat, přesunout, změnit ani odstranit z této skupiny prostředků.|
 |Jen pro čtení|Skupina prostředků bez|Jen pro čtení|Prostředek se nedá změnit žádným způsobem – žádné změny a nelze odstranit.|
-|Neodstraňujte|*|Nelze odstranit|Prostředky můžete změnit, ale nejde odstranit. **Není uzamčen** prostředky můžete přidat, přesunout, změnit ani odstranit z této skupiny prostředků.|
+|Neodstraňovat|*|Nelze odstranit|Prostředky můžete změnit, ale nejde odstranit. **Není uzamčen** prostředky můžete přidat, přesunout, změnit ani odstranit z této skupiny prostředků.|
 
 ## <a name="overriding-locking-states"></a>Přepsání zamykání stavu
 
@@ -58,6 +58,7 @@ RBAC [zamítnout přiřazení](../../../role-based-access-control/deny-assignmen
 
 ## <a name="next-steps"></a>Další postup
 
+- Postupujte podle [chránit nové prostředky](../tutorials/protect-new-resources.md) kurzu.
 - Další informace o [životním cyklu podrobného plánu](lifecycle.md)
 - Principy použití [statických a dynamických parametrů](parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](sequencing-order.md)
