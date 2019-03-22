@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 01/17/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: cc55466dac7344053e0cce3cad5f8161cef5226a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c7d895cd87122374a79a520643580a179961fba3
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438121"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317319"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Doporučené datové proudy kodéry
 
@@ -34,8 +34,7 @@ Podrobné informace o kódování v reálném čase pomocí služby Media Servic
 Služba Media Services se doporučuje používat jednu z následující kodéry, které mají RTMP jako výstup. Jsou podporované schémata URL `rtmp://` nebo `rtmps://`.
 
 > [!NOTE]
- > Při streamování přes RTMP, zkontrolujte nastavení brány firewall nebo proxy serveru pro potvrzení, že jsou otevřené odchozí porty TCP 1935 a 1936.<br/>
- Při streamování přes RTMPS, zkontrolujte nastavení brány firewall nebo proxy serveru pro potvrzení, že jsou otevřené odchozí porty TCP 2935 a 2936.
+> Při streamování přes RTMP, zkontrolujte nastavení brány firewall nebo proxy serveru pro potvrzení, že jsou otevřené odchozí porty TCP 1935 a 1936.
 
 - Adobe Flash Media Live Encoder 3.2
 - Haivision KB

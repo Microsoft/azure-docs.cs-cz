@@ -1,5 +1,5 @@
 ---
-title: Nasazení ochrany hesel Azure AD
+title: Nasazení služby Azure AD hesla ochrana – Azure Active Directory
 description: Ochrana heslem služby Azure AD se zakázat chybná hesla v místním nasazení
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54d2d600771316b0a88ea0a2486c0dedd0f84594
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: 8502ab3257bc1d121e0440ba765dfd19a6722cec
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286529"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311964"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 

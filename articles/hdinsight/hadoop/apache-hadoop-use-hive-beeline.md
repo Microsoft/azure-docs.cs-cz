@@ -4,18 +4,16 @@ description: Další informace o použití Beeline klienta ke spouštění dotaz
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
-keywords: beeline hive, hive beeline
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: ba9746566f0f69ea2131b8f77a14939ea561638a
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 00cf441247b9adf8547f373891bba4db29029d3f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200477"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335993"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití Apache Beeline klienta s Apache Hive
 
@@ -24,8 +22,11 @@ Další informace o použití [Apache Beeline](https://cwiki.apache.org/confluen
 Beeline je klient Hive, který je součástí hlavní uzly clusteru HDInsight. Beeline používá JDBC pro připojení k serveru HiveServer2, služba hostovaná v clusteru HDInsight. Také vám pomůže Beeline Hive v HDInsight přistupovat vzdáleně přes internet. Následující příklady popisují nejběžnější připojovací řetězce pro připojení k HDInsight z Beeline:
 
 * __Použití Beeline z připojení SSH k hlavnímu uzlu nebo hraničnímu uzlu__: `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'`
+
 * __Použití Beeline na klientovi, připojení k HDInsight prostřednictvím služby Azure Virtual Network__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'`
-* __Použití Beeline v klientském počítači připojení ke clusteru HDInsight Enterprise Security Package (ESP) prostřednictvím služby Azure Virtual Network__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>`
+
+* __Použití Beeline v klientském počítači připojení ke clusteru HDInsight Enterprise Security Package (ESP) prostřednictvím služby Azure Virtual Network__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-DOMAIN>;auth-kerberos;transportMode=http' -n <username>` 
+
 * __Použití Beeline na klientovi, připojení k HDInsight prostřednictvím veřejného Internetu__: `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password`
 
 > [!NOTE]  
@@ -37,7 +38,7 @@ Beeline je klient Hive, který je součástí hlavní uzly clusteru HDInsight. B
 >
 > Při připojování ke clusteru přes virtuální síť, nahraďte `<headnode-FQDN>` s plně kvalifikovaný název domény hlavního uzlu clusteru.
 >
-> Při připojování ke clusteru služby Enterprise Security Package (ESP), nahraďte `<AAD-Domain>` s názvem aplikace Azure Active Directory (AAD), ke které je připojený clusteru. Nahraďte `<username>` s názvem účtu domény s oprávněními pro přístup ke clusteru.
+> Při připojování ke clusteru služby Enterprise Security Package (ESP), nahraďte `<AAD-DOMAIN>` s názvem aplikace Azure Active Directory (AAD), ke které je připojený clusteru. Použít velkých řetězec pro `<AAD-DOMAIN>` hodnotu, jinak přihlašovací údaj se nenašel. Zkontrolujte `/etc/krb5.conf` sféry názvů v případě potřeby. Nahraďte `<username>` s názvem účtu domény s oprávněními pro přístup ke clusteru. 
 
 ## <a id="prereq"></a>Požadavky
 

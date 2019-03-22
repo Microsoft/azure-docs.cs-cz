@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 197010271518347025157968012be31c71b3b667
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: c31f3ec503f22ab0d272ff96b85cf0f76a837d11
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121022"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316048"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric pro Visual Studio Code
 
@@ -107,7 +107,7 @@ Service Fabric Reliable Services rozšíření pro VS Code obsahuje mnoho přík
 **Service Fabric: Nasazení aplikace** příkaz nasadí vaši aplikaci Service Fabric na místní cluster. Ujistěte se, že místní cluster běží před použitím příkazu. 
 
 1. Vyberte **Service Fabric: Nasazení aplikace** příkaz
-2. Zobrazit místní cluster pomocí Service Fabric Exploreru (http://localhost:19080/Explorer) potvrďte, že je nainstalovaná aplikace. To může trvat nějakou dobu, tak buďte prosím trpěliví.
+2. Zobrazit místní cluster pomocí Service Fabric Exploreru (http:\//localhost:19080 / Explorer) pro potvrzení, že je nainstalovaná aplikace. To může trvat nějakou dobu, tak buďte prosím trpěliví.
 3. Můžete také použít **Service Fabric: Publikování aplikace** příkaz bez parametrů, nastavte v souboru Cloud.json k nasazení do místního clusteru.
 
 > [!NOTE]

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 5f2052576d0c6a1e663e3b84534fa0784a26e175
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fd72e2a75c00c30fdc5497e0d88e9c83dc5fcad8
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006506"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317353"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrace na Azure Premium Storage (nespravované disky)
 
@@ -158,7 +158,7 @@ Vytvoření účtu úložiště pro zachování virtuálních pevných disků. P
 Pro datové disky je možné zachovat některé datové disky v účtu úložiště úrovně standard (například disky, které obsahují chladnější úložiště), ale důrazně doporučujeme, abyste přesouvání všech dat pro produkční úlohy, které chcete používat premium storage.
 
 #### <a name="copy-vhd-with-azcopy-or-powershell"></a>Krok 3. Zkopírujte virtuální pevný disk pomocí nástroje AzCopy nebo prostředí PowerShell
-Je potřeba najít váš kontejner cesty a klíč účtu úložiště zpracovat kteroukoli z těchto dvou možností. Kontejner cesty a klíč účtu úložiště najdete v **webu Azure Portal** > **úložiště**. Kontejner bude mít adresu URL jako "https://myaccount.blob.core.windows.net/mycontainer/".
+Je potřeba najít váš kontejner cesty a klíč účtu úložiště zpracovat kteroukoli z těchto dvou možností. Kontejner cesty a klíč účtu úložiště najdete v **webu Azure Portal** > **úložiště**. Kontejner bude mít adresu URL jako "https:\//myaccount.blob.core.windows.net/mycontainer/".
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Option 1: Zkopírujte virtuální pevný disk pomocí nástroje AzCopy (asynchronní kopie)
 Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na velikosti virtuálních pevných disků to může trvat dobu. Nezapomeňte zkontrolovat příchozí a odchozí přenos limity účtu úložiště při použití této možnosti. Zobrazit [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md) podrobnosti.

@@ -6,21 +6,21 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/20/2019
+ms.date: 03/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5b8ec726c81dfab710d30c37d6fb1aac97c12265
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: c689a8fe35133456c476106e96336420640ebf66
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293971"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335976"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 
 Správy zdrojového kódu umožňuje udržovat vaše sady runbook ve vaší službě Automation jsou účet aktuální pomocí skriptů v úložišti Githubu nebo úložiště Azure zdrojového ovládacího prvku. Správy zdrojového kódu můžete snadno spolupracovat se svým týmem, sledovat změny a vrátit zpět na starší verze vašich sadách runbook. Například správy zdrojového kódu můžete synchronizovat různými větvemi ve správě zdrojového kódu pro účty služby Automation vývojové, testovací nebo produkční prostředí. To usnadňuje podporu kód, který byl testován ve vašem vývojovém prostředí účtu Automation v produkčním prostředí. Integrace správy zdrojového kódu pomocí automatizace podporuje jeden směr synchronizaci z svým úložištěm řízení zdrojů.
 
-Azure Automation podporuje 3 typy správy zdrojového kódu:
+Azure Automation podporuje tři typy správy zdrojového kódu:
 
 * GitHubu
 * Úložiště Azure (Git)
@@ -30,6 +30,7 @@ Azure Automation podporuje 3 typy správy zdrojového kódu:
 
 * Úložiště správy zdrojového kódu (GitHub nebo úložiště Azure)
 * A [účet Spustit jako](manage-runas-account.md)
+* Zkontrolujte, že máte [nejnovější moduly Azure](automation-update-azure-modules.md) ve vašem účtu Automation
 
 > [!NOTE]
 > Úlohy synchronizace řízení zdrojů spustit v části s uživateli účtu Automation a se účtuje stejná sazba jako za jiných úloh služby Automation.
@@ -62,7 +63,7 @@ Na **souhrnný ovládací prvek zdroje** stránce, potřebné informace a klikn�
 
 ## <a name="configure-source-control---powershell"></a>Konfigurace správy zdrojového kódu – PowerShell
 
-Prostředí PowerShell můžete také použít ke konfiguraci správy zdrojového kódu ve službě Azure Automation. Konfigurace správy zdrojového kódu pomocí rutin prostředí PowerShell [osobní přístupový token PAT](#personal-access-token) je potřeba. Můžete použít [New-AzureRmAutomationSourceControl](/powershell/module/AzureRM.Automation/New-AzureRmAutomationSourceControl) vytvořit připojení správy zdrojů. Rutina vyžaduje zabezpečený řetězec osobní přístupový Token, se naučíte vytvořit zabezpečený řetězec, naleznete v tématu [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
+Prostředí PowerShell můžete také použít ke konfiguraci správy zdrojového kódu ve službě Azure Automation. Konfigurace správy zdrojového kódu pomocí rutin prostředí PowerShell, je potřeba osobní přístupový token PAT. Můžete použít [New-AzureRmAutomationSourceControl](/powershell/module/AzureRM.Automation/New-AzureRmAutomationSourceControl) vytvořit připojení správy zdrojů. Rutina vyžaduje zabezpečený řetězec osobní přístupový Token, se naučíte vytvořit zabezpečený řetězec, naleznete v tématu [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
 
 ### <a name="azure-repos-git"></a>Úložiště Azure (Git)
 
@@ -113,7 +114,7 @@ Další informace o vytvoření osobního přístupového tokenu v úložišti A
 |Pracovní položky (čtení)    |
 |Připojení služby (čtení, dotazování a správu)<sup>1</sup>    |
 
-<sup>1</sup>oprávnění připojení služby je jenom nutné, pokud jste povolili autosync.
+<sup>1</sup> oprávnění připojení služby je jenom nutné, pokud jste povolili autosync.
 
 ## <a name="syncing"></a>Synchronizace
 
@@ -168,7 +169,7 @@ Vyberte modul správy zdrojových kódů, které chcete odebrat. Na **souhrnný 
 
 ## <a name="encoding"></a>Kódování
 
-Pokud více osob jsou úpravy sady runbook v svým úložištěm řízení zdrojů s různými editory může se stát narazíte na problémy s kódováním. To můžete vložit nesprávné znaky ve své sadě runbook. Další informace o tom najdete v tématu [běžných příčin některých kódování problémy](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
+Pokud najde víc lidí upravujete s různými editory sady runbook v svým úložištěm řízení zdrojů, může se stát narazíte na problémy s kódováním. Tato situace může vést k nesprávné znaky ve své sadě runbook. Další informace o tom najdete v tématu [běžných příčin některých kódování problémy](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,7 +1,7 @@
 ---
-title: Sledování experimenty & školení metriky
+title: Protokolujte metriky během tréninková spuštění
 titleSuffix: Azure Machine Learning service
-description: Ve službě Azure Machine Learning můžete sledovat své experimenty a monitorovat metriky vylepšit proces vytváření modelu. Zjistěte, jak přidat protokolování do trénovací skript, jak odeslání experimentu, jak zkontrolovat průběh spuštěné úlohy a postup zobrazení výsledků spuštění.
+description: Může sledovat vaše experimenty a monitorovat metriky vylepšit proces vytváření modelu. Zjistěte, jak přidat protokolování do trénovací skript, jak odeslání experimentu, jak zkontrolovat průběh spuštěné úlohy a postup zobrazení výsledků spuštění.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 79247c4c1f26fadcd5f0291b55c9dd8d4d9aa2af
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 835d1f41ffe940422554a8ca59d0a91ac8e98607
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008815"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336590"
 ---
-# <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Sledujte experimenty a vzdělávání metriky ve službě Azure Machine Learning
+# <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Protokolujte metriky během cvičení běží ve službě Azure Machine Learning
 
 Ve službě Azure Machine Learning může sledovat vaše experimenty a monitorovat metriky vylepšit proces vytváření modelu. V tomto článku se dozvíte, jak k přidání protokolování do trénovací skript, odeslat spuštění experimentu, monitorovat spuštění a zobrazení výsledků spuštění.
 
@@ -218,7 +218,7 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
    ```
 
 ## <a name="cancel-a-run"></a>Zrušit běh
-Odeslání hřívací zařízení spustit i v případě, že jste ztratili odkazu na objekt, za předpokladu, které znáte název experimentu a id spuštění, můžete ho zrušit. 
+Po spuštění se odešle, můžete ji zrušit i v případě, že jste ztratili odkazu na objekt, za předpokladu, které znáte název experimentu a id spuštění. 
 
 ```python
 from azureml.core import Experiment

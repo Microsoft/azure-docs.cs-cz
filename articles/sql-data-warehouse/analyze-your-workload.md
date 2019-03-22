@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7b5ca738ef71e25dfe5e71a1983d701bb8868fe5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 434cbb18a109308844dbc7ff219d40948678e86e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57896802"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310723"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analýza úloh ve službě Azure SQL Data Warehouse
 
@@ -67,7 +67,7 @@ SQL Data Warehouse má následující typy čekání:
 * **LocalQueriesConcurrencyResourceType**: Dotazy, které se nacházejí mimo rámec slotu souběžnosti. Dotazy na zobrazení dynamické správy a systémové funkce, jako například `SELECT @@VERSION` jsou příklady místní dotazů.
 * **UserConcurrencyResourceType**: Dotazy, které se nacházejí uvnitř rozhraní concurrency slot. Dotazy na tabulky s koncovým uživatelem představují příklady, které byste použili tento typ prostředku.
 * **DmsConcurrencyResourceType**: Výsledkem operace přesunu dat čeká.
-* **BackupConcurrencyResourceType**: Tato čekací označuje, že databázi je právě zálohován. Maximální hodnota pro tento typ prostředku je 1. Pokud více záloh je požadována ve stejnou dobu, jiné fronty.
+* **BackupConcurrencyResourceType**: Tato čekací označuje, že databázi je právě zálohován. Maximální hodnota pro tento typ prostředku je 1. Pokud více záloh je požadována ve stejnou dobu, jiné fronty. Obecně doporučujeme minimální čas mezi po sobě jdoucích snímků 10 minut. 
 
 `sys.dm_pdw_waits` Zobrazení dynamické správy je možné zobrazit žádost čeká na prostředky.
 

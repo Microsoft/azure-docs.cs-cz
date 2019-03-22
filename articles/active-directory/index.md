@@ -277,7 +277,7 @@ ms.collection: M365-identity-device-management
                                                         <p>
                                                             <a href="managed-identities-azure-resources/tutorial-windows-vm-access-sql.md">Použití virtuálního počítače s Windows pro přístupu k Azure SQL</a><br>
                                                             <a href="managed-identities-azure-resources/how-to-use-vm-token.md">Použití virtuálního počítače Azure pro získání tokenu</a><br>
-                                                            <a href="managed-identities-azure-resources/services-support-msi.md">Služby, které podporují spravované identity</a><br>
+                                                            <a href="managed-identities-azure-resources/services-support-managed-identities.md">Služby, které podporují spravované identity</a><br>
                                                             <a href="managed-identities-azure-resources/index.yml"><i>Další informace&gt;</i></a>
                                                         </p>
                                                         <br><br>

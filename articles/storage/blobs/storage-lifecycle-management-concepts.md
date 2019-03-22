@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 93c19bc39f64df21dfa9db2490ab2103aba8191d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1428c2925ab57642899732bd4504b2d5b38781a8
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086101"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315143"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Správa úložiště objektů Blob v Azure životního cyklu (Preview)
 
@@ -190,7 +190,7 @@ Ve verzi preview platné filtry zahrnují:
 | Název filtru | Typ filtru | Poznámky | Je požadováno |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Pole hodnot předdefinovaných výčtu. | Vydání verze preview podporuje pouze `blockBlob`. | Ano |
-| prefixMatch | Pole řetězců u předpony, jež mají být shodovat. Řetězec předpony musí začínat znakem název kontejneru. Například, pokud chcete najít všechny objekty BLOB v části "<https://myaccount.blob.core.windows.net/container1/foo/>..." pro pravidlo, je prefixMatch `container1/foo`. | Pokud nebudete definovat prefixMatch, pravidla se vztahují na všechny objekty BLOB v rámci účtu. | Ne |
+| prefixMatch | Pole řetězců u předpony, jež mají být shodovat. Řetězec předpony musí začínat znakem název kontejneru. Například, pokud chcete najít všechny objekty BLOB v části "https:\//myaccount.blob.core.windows.net/container1/foo/..." pro pravidlo, je prefixMatch `container1/foo`. | Pokud nebudete definovat prefixMatch, pravidla se vztahují na všechny objekty BLOB v rámci účtu. | Ne |
 
 ### <a name="rule-actions"></a>Akce pravidla
 

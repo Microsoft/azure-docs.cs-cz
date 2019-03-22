@@ -6,18 +6,21 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: b0c09c5b425beef6badff7fb6ec298f96591abc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 9f890a8468eaa22fbfce326fc16afe545fd515d6
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990541"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339308"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Jak napsat uložené procedury, triggery a uživatelem definovaných funkcí ve službě Azure Cosmos DB
 
 Azure Cosmos DB poskytuje integrovaný jazyk, transakční provádění jazyka JavaScript, který umožňuje zapisovat **uložených procedur komponentami TableAdapter**, **triggery**, a **uživatelem definované funkce (UDF)**. Když ve službě Azure Cosmos DB pomocí rozhraní SQL API, můžete definovat uložené procedury, triggery a uživatelem definovanými funkcemi v jazyce JavaScript. Můžete napsat svoji logiku v jazyce JavaScript a spustit ho v databázovém stroji. Můžete vytvářet a spouštět aktivační události, uložených procedur a uživatelem definovanými funkcemi pomocí [webu Azure portal](https://portal.azure.com/), [jazyka JavaScript integrovaná rozhraní API pro dotazy ve službě Azure Cosmos DB](javascript-query-api.md) a [klienta SQL API služby Cosmos DB Sady SDK](sql-api-dotnet-samples.md). 
 
 Volání uložené procedury, aktivační události a uživatelsky definované funkce, musíte ho zaregistrovat. Další informace najdete v tématu [jak pracovat s uložené procedury, aktivační události, uživatelem definovaných funkcí ve službě Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md).
+
+> [!NOTE]
+> Pro dělené kontejnery, při spouštění uložené procedury je třeba zadat hodnotu klíče oddílu v možnosti žádosti. Uložené procedury jsou vždy s rozsahem klíče oddílu. Položky, které mají hodnotu klíče oddílu různých nebudou viditelné pro uloženou proceduru. To také u triggerů také.
 
 ## <a id="stored-procedures"></a>Jak napsat uložených procedur
 

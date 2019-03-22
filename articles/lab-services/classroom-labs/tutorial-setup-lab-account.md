@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 4c63cb69cd5ce824648d2bf0a6735e316791c44e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ec1b75e7bd2defe96948e9830c25488ecd8289da
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079924"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336350"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Kurz: Nastavení účtu testovacího prostředí pomocí Azure Lab Services
 Účet testovacího prostředí v Azure Lab Services slouží jako centrální účet, ve kterém se spravují testovací prostředí vaší organizace. V účtu testovacího prostředí můžete udělit oprávnění vytvářet testovací prostředí dalším uživatelům a nastavit zásady, které budou platit pro všechna testovací prostředí pod účtem testovacího prostředí. V tomto kurzu zjistíte, jak vytvořit účet testovacího prostředí jako správce testovacího prostředí. 
@@ -37,10 +37,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Následující kroky ukazují postup vytvoření účtu testovacího prostředí se službou Azure Lab Services pomocí webu Azure Portal. 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny služby** v nabídce vlevo. Vyberte **účtů testovacího prostředí** v **DEVOPS** oddílu. Pokud vyberte hvězdičku (`*`) vedle položky **účtů testovacího prostředí**, přidá se do **Oblíbené** části v nabídce vlevo. V příštím a vyšší, vyberte **účtů testovacího prostředí** pod **Oblíbené**.
+2. Vyberte **všechny služby** v nabídce vlevo. Vyberte **Lab Services** v **DEVOPS** oddílu. Pokud vyberte hvězdičku (`*`) vedle položky **Lab Services**, přidá se do **Oblíbené** části v nabídce vlevo. V příštím a vyšší, vyberte **Lab Services** pod **Oblíbené**.
 
-    ![Všechny služby -> účtů testovacího prostředí](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
-3. Na **účtů testovacího prostředí** stránce **přidat** na panelu nástrojů. 
+    ![Všechny služby -> Lab Services](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+3. Na **Lab Services** stránce **přidat** na panelu nástrojů. 
 
     ![Vyberte možnost přidat na stránku účtů testovacího prostředí](../media/tutorial-setup-lab-account/add-lab-account-button.png)
 4. Na **účet testovacího prostředí** stránce, proveďte následující akce: 

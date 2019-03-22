@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: e4a48312dc516010b7a7fe1471ba7e555a2f92f2
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: fdb9b6c09e81ce29d2587fb0faca1aa80d28ea38
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382258"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309975"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně – Visual Studio
 
@@ -96,7 +96,7 @@ npm install
 npm start
 ```
 
-Po dokončení spuštění v prohlížeči zobrazí na stránce **http://localhost:3000/dashboard**. Chyby na této stránce se očekává. Chcete-li zobrazit aplikaci bez chyby, proveďte následující kroky.
+Po dokončení spuštění v prohlížeči zobrazí na stránce **http:\//localhost:3000 / řídicí panel**. Chyby na této stránce se očekává. Chcete-li zobrazit aplikaci bez chyby, proveďte následující kroky.
 
 ### <a name="configure-and-run-nginx"></a>Nakonfigurování a spuštění serveru NGINX
 
@@ -109,7 +109,7 @@ Další informace o spouštění **nginx**, naleznete v tématu [nginx pro Windo
 
 ### <a name="connect-to-the-dashboard"></a>Připojte se k řídicímu panelu
 
-Chcete-li získat přístup k řídicím panelu řešení vzdáleného monitorování, přejděte na [ http://localhost:9000 ](http://localhost:9000) v prohlížeči.
+Chcete-li získat přístup k řídicím panelu řešení vzdáleného monitorování, přejděte na http:\//localhost:9000 v prohlížeči.
 
 ## <a name="clean-up"></a>Vyčištění
 

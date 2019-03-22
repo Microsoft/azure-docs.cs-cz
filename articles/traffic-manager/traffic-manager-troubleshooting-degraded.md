@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: genli
-ms.openlocfilehash: 2cb70c67bc4719eb43c4fcb70edf574c57362f26
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6f539cb905c0ed401816c7f223918a1416f95d6c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013282"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312270"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Řešení potíží s sníženém výkonu Azure Traffic Manageru
 
@@ -47,7 +47,7 @@ Pokud se Traffic Manager zobrazuje **neaktivní** stav, pak oba koncové body mo
 
 Navíc můžete použít na síťové kartě ladicí nástroje F12 v aplikaci Internet Explorer k zobrazení odpovědi protokolu HTTP.
 
-V tomto příkladu chceme vidět odpovědi z adresy URL pro naši testu: http://watestsdp2008r2.cloudapp.net:80/Probe. Následující příklad PowerShell ukazuje problém.
+V tomto příkladu chceme vidět odpovědi z našich test adresy URL: http:\//watestsdp2008r2.cloudapp.net:80/Probe. Následující příklad PowerShell ukazuje problém.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription

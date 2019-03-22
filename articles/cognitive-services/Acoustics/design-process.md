@@ -1,5 +1,5 @@
 ---
-title: Koncepty návrhu s Akustika simulace
+title: Koncepce návrhu s využitím akustické simulace
 titlesuffix: Azure Cognitive Services
 description: Tento přehled vysvětluje, jak Akustika projektu zahrnuje akustický simulace do procesu návrhu zvuku.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: dd27b660dfdd1f4bcec89291b10fd87750ad4c49
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4a1a0b15da091a1c020eb132f6b14b9ee14d334c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136152"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316061"
 ---
 # <a name="project-acoustics-design-process-concepts"></a>Koncepty proces návrhu Akustika projektu
 
@@ -29,7 +29,7 @@ V nadpisech interaktivní zvuky a naslouchacího procesu přesunu v rámci 3D pr
 
 3D názvy pomocí osvětlení a kinematiky fyzika systémy, které jsou opodstatněny fyzika ale Návrhář upravena k dosažení kombinaci cílů podrobných informací a hraní her. Vizuálního návrháře nenastavil jednotlivých obrazových bodů, ale místo toho upravuje 3D modelů, materiály a světla přenosu systémy, které jsou všechny fyzicky založené na obchodu visual estetiku a náklady na využití procesoru. Co by ekvivalentní proces pro zvuk? Projekt Akustika je prvním krokem při zkoumání tento dotaz. Nejprve jsme budete touch na co to znamená přenést akustické energie prostřednictvím mezerou.
 
-![dozvuku zóny](media/reverb-zones-altspace.png)
+![Snímek obrazovky AltSpace scény překrývající se zónami dozvuku](media/reverb-zones-altspace.png)
 
 ## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>Impulsů odpovědi: Dva body v prostoru akusticky sítě
 
@@ -45,7 +45,7 @@ Odpověď impulsů obsahuje každou zajímavé (a každý nezajímavé) akustick
 
 Ale pokud simulace je připojený přímo k parametrům DSP zvuku, kde je návrháře úpravy? Co nám získat? Dobře abychom získali značné množství paměti zpět tak, že impulsů odpovědi se zahodí a zachování několika DSP parametrů. A poskytnout návrháře určitou energii za konečný výsledek, budeme potřebovat pouze hledal způsob, jak vložit návrháře mezi simulace a DSP zvuku.
 
-![Parametry impulsů odpovědi](media/acoustic-parameters.png)
+![Graf s odpovědí stylizované impulsů s parametry překrývající](media/acoustic-parameters.png)
 
 ## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>Zvuk: design by transformace zvuku DSP parametry z simulace
 

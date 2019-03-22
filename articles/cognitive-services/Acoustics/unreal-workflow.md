@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: c65ae71350383896c81fd7057d425822069fc5aa
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 57bde67ac2259b3847f59f95eaefba9c6fddf13e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136950"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316197"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Kurz projektu Akustika Unreal/Wwise návrhu
 Tento kurz popisuje nastavení návrhu a pracovní postup pro projekt Akustika Unreal a Wwise.
@@ -35,44 +35,44 @@ Při aktivním projektu Akustika reaguje na uzavření svazku, nízká pass filt
 
 S tímto nastavením simulace projektu Akustika vypočítá uzavření dB-18-li ji zadávat na pod křivkou u X = 18 a odpovídající Y je hodnota zeslabení použít. Poloviční uzavření proveďte nastavte koncový bod do databáze-50 místo dB-100, nebo do dB-200 exaggerate uzavření. Můžete přizpůsobit a optimalizovat všechny křivku, která je nejvhodnější pro vaši hru.
  
-![Projekt uzavření křivky](media/wwise-occlusion-curve.png)
+![Snímek obrazovky Wwise uzavření křivky editoru](media/wwise-occlusion-curve.png)
 
 ### <a name="disable-wwise-obstruction-curves"></a>Zakázat Wwise překážka křivek
 Překážka křivky Wwise vliv suchého úroveň izolace, ale Akustika projekt používá k vynucení wet/zkušební poměry ovládací prvky návrhu a simulace. Doporučujeme zakázat křivky překážka svazku. Návrh wetness, pomocí ovládacího prvku upravit Wetness popsané dále.
  
 Pokud používáte křivky LPF/HPF překážka pro jiné účely, ujistěte se, že jste je nastavili na Y = 0 X = 0 (to znamená, neexistuje žádný LPF nebo HPF Pokud neexistuje žádná překážka).
 
-![Projekt překážka křivky](media/wwise-obstruction-curve.png)
+![Snímek obrazovky Wwise překážka křivky editoru](media/wwise-obstruction-curve.png)
 
 ### <a name="design-project-acoustics-mixer-parameters"></a>Návrh projektu Akustika mixer parametry
 Vlastnosti globální dozvuku můžete řídit návštěvou kartě mixer modulu plug-in Service Bus Akustika projektu. Chcete-li otevřít panel nastavení modulu plug-in mixer dvakrát klikněte na "Mixer Akustika projektu (vlastní)".
 
 Uvidíte také, že modul plug-in mixer má možnost "Provádět zvuk". Pokud byste chtěli raději použít projekt akustický integrované zvuk, zaškrtněte políčko "Provádět zvuk" a vyberte si z HRTF nebo pro posouvání. Ujistěte se, že chcete zakázat všechny suchého Aux sběrnice, které jste nastavili, jinak uslyšíte přímo dvakrát. Použití "Wetness nastavit" a "Dozvuku čas Škálovací faktor" pro globální kontrolu na kombinaci dozvuku využití. Mějte na paměti, je nutné restartovat Unreal a potom znovu vygenerovat soundbanks před tím play, aby přebíral změny konfigurace modulu plug-in mixer například zaškrtávací políčko "provádět zvuk.
 
-![Možnosti modulu plug-in mixer Akustika projektu](media/mixer-plugin-global-settings.png)
+![Snímek obrazovky projektu Akustika Wwise mixer modulu plug-in možnosti](media/mixer-plugin-global-settings.png)
 
 ## <a name="set-project-acoustics-design-controls-in-the-wwise-actor-mixer-hierarchy"></a>Nastavit ovládací prvky návrhu projektu Akustika v hierarchii Wwise mixer objektu actor
 Ovládací prvek parametry, které jednotlivé mixer objektu actor dvakrát klikněte na objekt Actor – Mixer a potom klikněte na kartu modulu Plug-in jeho Mixer. Tady budete moci změnit všechny parametry na úrovni na zvuk. Tyto hodnoty v kombinaci s těmi nastavení na straně Unreal (popsaných níže). Například pokud je projekt Akustika Unreal modul plug-in nastaví Outdoorness úpravy na objekt, na 0,5 a Wwise sady, tak -0.25 Outdoorness úpravy, které u zvukové je 0,25.
 
-![Podle nastavení zvukové Mixer](media/per-sound-mixer-settings.png)
+![Snímek obrazovky podle nastavení zvukové mixer v hierarchii Wwise mixer objektu actor](media/per-sound-mixer-settings.png)
 
 ### <a name="ensure-the-aux-bus-has-dry-send-and-output-bus-has-wet-send"></a>Ujistěte se, aux Service bus má suchého odeslat a Service bus výstup má wet odeslat
 Mějte na paměti, že instalační program vyžaduje objekt actor mixer výměn obvykle suchého a vlhkou směrování v Wwise. Vytvoří dozvuku signálu na sběrnici výstup mixeru objektu actor (nastavené na Service Bus Akustika projekt) a suchého signálu podél uživatelem definované aux Service bus. Tato směrování se vyžaduje kvůli funkce modulu plug-in mixer Wwise rozhraní API, které používá modul plug-in Wwise Akustika projektu.
 
-![Pokyny k návrhu hlasu](media/voice-design-guidelines.png)
+![Editor Wwise snímek obrazovky znázorňující pokyny k návrhu hlasu pro Akustika projektu](media/voice-design-guidelines.png)
  
 ### <a name="set-up-distance-attenuation-curves"></a>Nastavte vzdálenost zeslabení křivek
 Zkontrolujte všechny zeslabení křivky používá objekt actor – míchání pomocí projektu Akustika mít uživatelem definované aux odeslat nastavená na "výstupní Service bus svazek." Wwise to dělá ve výchozím nastavení pro nově vytvořený zeslabení křivky. Pokud migrujete existující projekt, zkontrolujte nastavení křivky. 
 
 Simulace Akustika projekt má ve výchozím nastavení protokolu radius 45 měřičů kolem player umístění. Obecně doporučujeme nastavit vaše křivka zeslabení do databáze-200 kolem tohoto vzdálenost. Tato vzdálenost není omezení. Pro některé výslovnost zbraní může být vhodné větší radius. V takových případech výstrahou je, že se bude podílet geometrie pouze v rámci 45 m player umístění. Pokud hráč v místnosti a zdroje zvuku nespadá do místnosti a okamžitě 100 mil., ji bude možné správně occluded. Pokud je zdroj v místnosti a hráč je mimo a okamžitě 100 mil., nebude occluded správně.
 
-![Zeslabení křivek](media/atten-curve.png)
+![Snímek obrazovky Wwise zeslabení křivek](media/atten-curve.png)
 
 ## <a name="set-up-scene-wide-project-acoustics-properties"></a>Nastavení vlastností pro projekt Akustika celou scény
 
 Objekt actor Akustika místo poskytuje mnoho ovládacích prvků, které upravují chování systému a jsou užitečné při ladění.
 
-![Akustika rozmístění ovládacích prvků](media/acoustics-space-controls.png)
+![Snímek obrazovky Unreal Akustika rozmístění ovládacích prvků](media/acoustics-space-controls.png)
 
 * **Akustika Data:** Toto pole musí být přiřazena k assetu dokončené Akustika z obsahu/Akustika adresáře. Modul plug-in Akustika projektu automaticky přidá adresář obsahu/Akustika zabalené adresáře vašeho projektu.
 * **Velikost dlaždice:** Rozsahy oblasti kolem naslouchací proces, který chcete Akustika data načtena do paměti RAM. Jako naslouchací proces sondy okamžitě kolem hráč jsou načteny v, výsledky jsou stejné jako načtení akustických dat pro všechny testy. Použijte víc paměti RAM větší dlaždice, ale snížení vstupně-výstupní operace disku
@@ -88,7 +88,7 @@ Objekt actor Akustika místo poskytuje mnoho ovládacích prvků, které upravuj
 ## <a name="actor-specific-acoustics-design-controls"></a>Ovládací prvky návrhu Akustika specifické pro objekt actor
 Tyto ovládací prvky návrhu oborem pro jednotlivé zvukové součástí Unreal.
 
-![Ovládací prvky zvuku komponenty](media/audio-component-controls.png)
+![Snímek obrazovky Unreal zvukové součásti ovládacích prvků](media/audio-component-controls.png)
 
 * **Násobitel uzavření:** Určuje efekt uzavření. Hodnoty > 1 bude dál rozšiřuje vhodné. Hodnoty < 1 budou minimalizovat.
 * **Úprava wetness:** Další dozvuku dB
@@ -104,7 +104,7 @@ Objekt actor Akustika místa jsou přístupná přes podrobného plánu, poskytu
 ### <a name="add-finer-grained-control-over-streaming-load"></a>Přidat citlivější kontrolu nad streamování zatížení
 Ke správě akustických dat streamování sami místo streamování automaticky na základě player pozice, můžete použít funkci podrobného plánu platnost zatížení dlaždice:
 
-![P B streamování](media/blueprint-streaming.png)
+![Snímek obrazovky streamování podrobného plánu možnosti v Unreal](media/blueprint-streaming.png)
 
 * **Cíl:** AcousticsSpace objektu actor
 * **Pozice System Center:** System center oblasti, kterou potřebuje načíst data
@@ -113,12 +113,12 @@ Ke správě akustických dat streamování sami místo streamování automaticky
 
 Před voláním platnost zatížení dlaždice musí již nastavena velikost dlaždice. Například byste mohli dělat něco jako toto tlačítko Načíst soubor ACE, nastavte velikost dlaždic a streamování v oblasti:
 
-![Nastavení datových proudů](media/streaming-setup.png)
+![Snímek obrazovky streamování nastavení možnosti v Unreal](media/streaming-setup.png)
 
 ### <a name="optionally-query-for-surface-proximity"></a>Volitelně můžete dotaz na povrchu blízkých výrazů
 Pokud chcete zobrazit jak blízko plochy jsou v konkrétní směr kolem naslouchací proces, můžete použít funkci vzdálenost dotazu. Tato funkce může být užitečná pro řízení směrové zpožděné odrazů nebo pro další logika hry využitím surface blízkosti. Dotaz je levnější než ray přetypování, protože výsledky se berou z Akustika vyhledávací tabulky.
 
-![Vzdálenost dotazu](media/distance-query.png)
+![Snímek obrazovky příklad dotazu vzdálenost podrobného plánu](media/distance-query.png)
 
 * **Cíl:** AcousticsSpace objektu actor
 * **Směr vypadat:** Směr k dotazování, zarovnání na střed na naslouchací proces

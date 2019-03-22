@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
-ms.openlocfilehash: 5ac05991bc79dcfd24a527a13084b3a9383b4839
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b67f3c590be290515329af390b4d3d79a9746112
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903979"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339223"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Zaregistrujte si předplatné Office 365 pomocí svého účtu Azure
 Pokud jste předplatitelem Azure, můžete si zaregistrovat předplatné služeb Office 365 účtu Azure. Pokud jste součástí organizace, který má předplatné Azure, můžete vytvořit předplatných Office 365 pro uživatele ve vaší stávající Azure Active Directory (Azure AD). Zaregistrujte se k Office 365 pomocí účtu, který má oprávnění globálním správcem nebo správcem pro fakturaci ve vašem tenantovi Azure Active Directory. Další informace najdete v tématu [zkontrolujte Moje oprávnění účtu ve službě Azure AD](#RoleInAzureAD) a [přiřazení rolí správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
@@ -43,12 +43,13 @@ Pokud už máte účet Office 365 a předplatné Azure, můžete si [přidružit
 
     ![Snímek obrazovky příjemce objednávky Office 365](./media/billing-use-existing-azure-account-office-365-subscription/15-office-365-order-receipt.png)
 
-Teď všechno je nastavené. Pokud jste předplatné Office 365 vytvořili pro vaši organizaci, postupujte následovně Chcete-li zkontrolovat, že uživatele Azure AD jsou teď v Office 365.
+Teď všechno je nastavené.
+Pokud jste předplatné Office 365 vytvořili pro vaši organizaci, postupujte následovně Chcete-li zkontrolovat, že uživatele Azure AD jsou teď v Office 365.
 
-1. Otevřete Centrum pro správu Office 365.
+1. Otevřete Centrum pro správu Microsoftu 365.
 2. Rozbalte **uživatelé**a potom klikněte na tlačítko **aktivní uživatelé**.
 
-    ![Snímek obrazovky uživatele služeb Office 365 admin System center](./media/billing-use-existing-azure-account-office-365-subscription/16-office-365-admin-center-users.png)
+    ![Snímek obrazovky uživatele služeb Microsoft 365 správce System center](./media/billing-use-existing-azure-account-office-365-subscription/16-microsoft-365-admin-center-users.png)
 
 Když si zaregistrujete předplatné služeb Office 365 se přidá do stejné instance služby Azure Active Directory, které patří vaše předplatné Azure. Další informace najdete v tématu [Další informace o předplatných Azure a Office 365](billing-use-existing-office-365-account-azure-subscription.md#more-about-subs) a [předplatné Azure propojeno se službou Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
@@ -58,12 +59,12 @@ Když si zaregistrujete předplatné služeb Office 365 se přidá do stejné in
 
     ![Snímek obrazovky s Active Directory na webu Azure Portal](./media/billing-use-existing-azure-account-office-365-subscription/billing-more-services-active-directory.png)
 3. Klikněte na tlačítko **uživatelů a skupin** > **všichni uživatelé**.
-4. Vyberte uživatelské jméno. 
+4. Vyberte uživatelské jméno.
 
     ![Snímek obrazovky zobrazující uživatele Azure Active Directory](./media/billing-use-existing-azure-account-office-365-subscription/billing-users-groups.png)
 
 5. Klikněte na tlačítko **role adresáře**.
-  
+
     ![Snímek obrazovky zobrazující role adresáře Azure portal](./media/billing-use-existing-azure-account-office-365-subscription/billing-user-directory-role.png)
 6.  Roli **globálního správce** nebo **správce s omezením** > **správce fakturace** je potřebný k vytvoření předplatného Office 365 pro uživatele existující Azure Active Directory.
 
@@ -71,4 +72,4 @@ Když si zaregistrujete předplatné služeb Office 365 se přidá do stejné in
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458). 
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 41b6ce24e7c2e8565d7c2f17c32b8b6e1f38ea4f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 16c16c0217a796ffbb57e10430f90cb4a7660ac6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992481"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317608"
 ---
 # <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>(NEPOUŽÍVANÉ) Správa clusteru Azure Container Service DC/OS prostřednictvím webového uživatelského rozhraní Marathon
 
@@ -36,12 +36,12 @@ Než si projdete tyto příklady, budete potřebovat cluster DC/OS nakonfigurova
 >
 
 ## <a name="explore-the-dcos-ui"></a>Zkoumáme uživatelské rozhraní DC/OS
-Tunelu Secure Shell (SSH) [navázat](../container-service-connect.md), přejděte na http://localhost/. Načte se webové uživatelské rozhraní DC/OS a zobrazí se informace o clusteru, například využité prostředky, aktivní agenti a spuštěné služby.
+Tunelu Secure Shell (SSH) [navázat](../container-service-connect.md), přejděte do protokolu http: \/ /localhost /. Načte se webové uživatelské rozhraní DC/OS a zobrazí se informace o clusteru, například využité prostředky, aktivní agenti a spuštěné služby.
 
 ![Uživatelské rozhraní DC/OS](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>Zkoumáme uživatelské rozhraní Marathon
-Pokud chcete zobrazit uživatelské rozhraní Marathon, přejděte na http://localhost/marathon. Prostřednictvím této obrazovky můžete spustit nový kontejner nebo jinou aplikaci z clusteru Azure Container Service na bázi DC/OS. Taky uvidíte informace o spuštěných kontejnerech a aplikacích.  
+Pokud chcete zobrazit uživatelské rozhraní Marathon, přejděte do protokolu http: \/ /localhost/marathon. Prostřednictvím této obrazovky můžete spustit nový kontejner nebo jinou aplikaci z clusteru Azure Container Service na bázi DC/OS. Taky uvidíte informace o spuštěných kontejnerech a aplikacích.  
 
 ![Uživatelské rozhraní Marathon](./media/container-service-mesos-marathon-ui/dcos3.png)
 
@@ -85,7 +85,7 @@ Když se vrátíte na hlavní stránku Marathonu, uvidíte stav nasazení danéh
 
 ![Hlavní stránka uživatelského rozhraní Marathon – stav nasazení kontejneru](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-Když přepnete zpět do rozhraní DC/OS webového uživatelského rozhraní (http://localhost/), uvidíte, že úloha (v tomto případě kontejner formátovaný Dockerem) je spuštěná na clusteru DC/OS.
+Když přepnete zpět do rozhraní DC/OS webového uživatelského rozhraní (http:\//localhost/), uvidíte, že úloha (v tomto případě kontejner formátovaný Dockerem) je spuštěná na clusteru DC/OS.
 
 ![Webové uživatelské rozhraní DC/OS – úloha spuštěná na clusteru](./media/container-service-mesos-marathon-ui/dcos8.png)
 

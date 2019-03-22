@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 0ca3cee0c818bf9d5dda4a7ea8a1f356ed017973
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 6e8883870cc0f035df5122e91449f04203836218
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891082"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319461"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Pro datovou vědu Data Science virtuálním počítačem s Linuxem v Azure
 Tento návod ukazuje, jak provádět několik běžných úloh vědeckého zpracování virtuálního počítače s Linuxem datové vědy. Systému Linux dat virtuálního počítače VĚDY je image virtuálního počítače k dispozici v Azure, který může být předinstalovaný s kolekcí nástrojů používaných pro analýzu dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače umožňuje snadno a rychle začít, datových věd v řádech minut, aniž byste museli instalovat a konfigurovat každý z nástrojů jednotlivě. Můžete snadno vertikálně navýšit kapacitu virtuálních počítačů, v případě potřeby a zastavte ji není při použití. Proto tento prostředek je elastická a nákladově efektivní.
@@ -423,7 +423,7 @@ Mezi skvělé funkce Rattle je schopnost rychle vyhodnotit a spustit několik me
 Jakmile budete hotovi, vytvářet modely, vyberte **protokolu** kartu k zobrazení kódu jazyka R spustit Rattle během vaší relace. Můžete vybrat **exportovat** tlačítko a uložte ho.
 
 > [!NOTE]
-> V aktuální verzi Rattle je chyba. K úpravě skriptu nebo ji použít k vaší kroky opakujte později, je třeba vložit před znak # * exportovat tento protokol... * text v protokolu.
+> V aktuální verzi Rattle je chyba. K úpravě skriptu nebo ji použít k vaší kroky opakujte později, je třeba vložit znak # před *exportovat tento protokol...*  v textu v protokolu.
 >
 >
 

@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: tamram
-ms.openlocfilehash: d57023063fe23db9f57d52ab9cdf99e0687c1fdf
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: df9bc1680f20fe6264da0109cd52db1072fd9fc5
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217287"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311131"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgradovat na účet úložiště pro obecné účely verze 2
 
@@ -29,14 +29,14 @@ Upgrade na účet úložiště pro obecné účely verze 2 z pro obecné účely
 2. Přejděte na svůj účet úložiště.
 3. V **nastavení** klikněte na tlačítko **konfigurace**.
 4. V části **Druh účtu** klikněte na **Upgradovat**.
-5. V části **Potvrdit upgrade** zadejte název svého účtu. 
+5. V části **Potvrdit upgrade** zadejte název svého účtu.
 6. Klikněte na tlačítko **upgradovat** v dolní části okna.
 
 ## <a name="upgrade-with-powershell"></a>Upgrade pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Pokud chcete upgradovat účet pro obecné účely v1 na účet pro obecné účely verze 2 pomocí Powershellu, nejprve aktualizujte PowerShell, které chcete používat nejnovější verzi **Az.Storage** modulu. Informace o instalaci PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-Az-ps). 
+Pokud chcete upgradovat účet pro obecné účely v1 na účet pro obecné účely verze 2 pomocí Powershellu, nejprve aktualizujte PowerShell, které chcete používat nejnovější verzi **Az.Storage** modulu. Informace o instalaci PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
 Pak zavolejte následující příkaz pro upgrade účet, kde nahradíte název vaší skupiny prostředků a účet úložiště:
 
@@ -46,17 +46,17 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 ## <a name="upgrade-with-azure-cli"></a>Upgrade pomocí Azure CLI
 
-Pokud chcete upgradovat účet pro obecné účely v1 na účet pro obecné účely verze 2 pomocí Azure CLI, nejprve nainstalujte nejnovější verzi Azure CLI. Informace o instalaci rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). 
+Pokud chcete upgradovat účet pro obecné účely v1 na účet pro obecné účely verze 2 pomocí Azure CLI, nejprve nainstalujte nejnovější verzi Azure CLI. Informace o instalaci rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 Pak zavolejte následující příkaz pro upgrade účet, kde nahradíte název vaší skupiny prostředků a účet úložiště:
 
 ```cli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
-``` 
+```
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Zadat vrstvu přístupu k datům objektu blob
 
-Účty pro obecné účely v2 podporují všechny služby Azure storage a datové objekty, ale jsou k dispozici pouze pro objekty BLOB bloku v úložišti objektů Blob úrovně přístupu. Při upgradu na účet úložiště pro obecné účely v2, můžete určit úroveň přístupu pro data objektů blob. 
+Účty pro obecné účely v2 podporují všechny služby Azure storage a datové objekty, ale jsou k dispozici pouze pro objekty BLOB bloku v úložišti objektů Blob úrovně přístupu. Při upgradu na účet úložiště pro obecné účely v2, můžete určit úroveň přístupu pro data objektů blob.
 
 Vrstva přístupu umožňují zvolit cenově nejvýhodnější úložiště založené na vaše postupy očekávané využití. Objekty BLOB bloku mohou být uloženy ve vrstvě Hot, Cool nebo Archive. Další informace o úrovních přístupu najdete v části [úložiště objektů Blob v Azure: Horké, studené a archivní úroveň úložiště](../blobs/storage-blob-storage-tiers.md).
 
@@ -96,7 +96,7 @@ Pokud chcete zjistit přibližnou cenu za ukládání a přístup k datům objek
     - Kolik dat se v účtu úložiště ukládá?
     - Jak se mění objem dat měsíčně? Nahrazují nová data neustále stará data?
 * Vzor primární přístupový objekt Blob úložiště dat, včetně:
-    - Kolik dat se čte a zapisuje do účtu úložiště? 
+    - Kolik dat se čte a zapisuje do účtu úložiště?
     - Počet operací čtení a zápisu operace, ke kterým došlo u dat v účtu storage?
 
 Při rozhodování o nejlepší úroveň přístupu pro vaše potřeby, může být užitečné určit kapacitu pro data objektů blob a jak tato data používá. To nejlepší lze zobrazením monitorovací metriky pro svůj účet.
@@ -108,7 +108,7 @@ K monitorování existujících účtů úložiště a sesbírání dat můžete
 Další informace najdete na stránkách věnovaných [metrikám Analýzy úložiště](https://msdn.microsoft.com/library/azure/hh343258.aspx) a [tabulkovému schématu metrik Analýzy úložiště](https://msdn.microsoft.com/library/azure/hh343264.aspx).
 
 > [!NOTE]
-> Účty úložiště Blob zpřístupňují koncový bod služby Table service pouze pro účely ukládání a zpřístupnění dat metrik pro tento účet. 
+> Účty úložiště Blob zpřístupňují koncový bod služby Table service pouze pro účely ukládání a zpřístupnění dat metrik pro tento účet.
 
 Pokud chcete monitorovat využití úložiště pro účet úložiště Blob, je potřeba povolit metriky kapacity.
 Když tuto funkci zapnete, data o kapacitě služby Blob service pro daný účet úložiště se budou denně zaznamenávat jako zápisy do tabulky *$MetricsCapacityBlob* v rámci stejného účtu úložiště.
@@ -120,7 +120,7 @@ Aby bylo možné pro účet úložiště Blob monitorovat vzory přístupu k dat
 
 Pokud chcete dobře odhadnout spotřebu dat a přístup k nim, doporučujeme pro měření dat vybrat takovou dobu uchování, která vystihuje pravidelné používání, a potom údaje extrapolovat. Můžete například měřená data uchovávat po sedm dní, sesbírat jednou za týden a analyzovat je na konci měsíce. Nebo změřte a nasbírejte data za posledních 30 dní a na konci 30denního období je analyzujte.
 
-Podrobnosti o povolení, shromažďování a zobrazování dat metrik najdete v tématu [Povolení metrik Azure Storage a zobrazení dat metrik](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Podrobnosti o povolení, shromažďování a zobrazování dat metrik najdete v tématu [metrikách Storage analytics](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
 > Uložení, zobrazování a stahování analyzovaných data se účtuje stejně jako běžná uživatelská data.

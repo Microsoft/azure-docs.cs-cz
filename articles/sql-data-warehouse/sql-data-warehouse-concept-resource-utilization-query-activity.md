@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 11/27/2018
+ms.date: 03/21/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: dda3725be7549d90223b33608939c392bdf66852
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 69b33b9629863702d576eac39fb4097a2bff2e57
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217967"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337561"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Monitorování využití a dotaz aktivity prostředků ve službě Azure SQL Data Warehouse
 Azure SQL Data Warehouse poskytuje bohaté možnosti monitorování na webu Azure portal na povrchu přehledy, které vaše úlohy datového skladu. Na webu Azure portal je doporučeným nástrojem při monitorování datového skladu, protože poskytuje možnost konfigurace uchovávání období, výstrah, doporučení a přizpůsobitelné grafy a řídicí panely pro metriky a protokoly. Na portálu můžete také integrovat s dalšími službami Azure monitorování jako je například Operations Management Suite (OMS) a Azure Monitor (protokoly) poskytuje holistické možnosti monitorování pouze váš datový sklad, ale také celou analýz Azure Platforma pro integrované možnosti monitorování. Tato dokumentace popisuje, jaké možnosti monitorování jsou k dispozici optimalizovat a spravovat vaši platformu analýzy s využitím SQL Data Warehouse. 
@@ -31,7 +31,7 @@ Tyto metriky jsou k dispozici na webu Azure Portal pro službu SQL Data Warehous
 | Procento CPU                          | Využití procesoru napříč všemi uzly pro datový sklad | Maximum      |
 | Procento datových V/V                      | Využití vstupně-výstupní operace napříč všemi uzly pro datový sklad | Maximum   |
 | Úspěšná připojení                  | Počet úspěšných připojení k datům | Celkem            |
-| Chyba připojení                      | Počet selhání připojení k datovému skladu | Celkem            |
+| Neúspěšná připojení                      | Počet selhání připojení k datovému skladu | Celkem            |
 | Blokovaná bránou Firewall                     | Počet přihlášení k datovému skladu, který se zablokoval | Celkem            |
 | Limit jednotky                              | Cíl na úrovni služby datového skladu | Maximum   |
 | Procento DWU                          | Maximální počet mezi procento využití procesoru a vstupů/výstupů dat | Maximum   |
@@ -46,7 +46,7 @@ Pro programový výkon při monitorování SQL Data Warehouse pomocí T-SQL slu�
 Chcete-li zobrazit seznam zobrazení dynamické správy, které poskytuje SQL Data Warehouse, najdete to [dokumentaci](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs). 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Metriky a protokolování diagnostiky
-Metriky a protokoly je možné exportovat do Azure monitoru, konkrétně [protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) komponenty a programově přistupuje prostřednictvím [prohledávání protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata).
+Metriky a protokoly je možné exportovat do Azure monitoru, konkrétně [protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) komponenty a programově přistupuje prostřednictvím [protokolu dotazy](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata). Latence protokolu pro službu SQL Data Warehouse je asi 10 až 15 minut. Další podrobnosti o faktorů vliv na latenci najdete v následující dokumentaci.
 
 
 ## <a name="next-steps"></a>Další postup

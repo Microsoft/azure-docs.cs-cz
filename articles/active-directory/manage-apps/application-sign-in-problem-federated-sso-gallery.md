@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: celested
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 225676b144d042c51a97fe14a20a5a78f0a77244
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 623d684f701df8b1a7c4b84a2bd3840f039ad174
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013094"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312695"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Potíže při přihlašování k aplikaci galerii konfigurované pro federované jednotné přihlašování
 
@@ -33,7 +33,7 @@ ms.locfileid: "58013094"
 
 ## <a name="application-not-found-in-directory"></a>Aplikace nebyla nalezena v adresáři
 
-*Chyba AADSTS70001: Aplikace s identifikátorem "https://contoso.com' nebyl nalezen v adresáři*.
+*Chyba AADSTS70001: Aplikace s identifikátorem "https:\//contoso.com' nebyl nalezen v adresáři*.
 
 **Možná příčina**
 
@@ -63,7 +63,7 @@ Ujistěte se, `Issuer` atribut v požadavku SAML odpovídá hodnotu Identifier n
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Tato adresa pro odpovědi neodpovídá adresám pro odpovědi nakonfigurovaným pro danou aplikaci.
 
-*Chyba AADSTS50011: Zpáteční adresu https://contoso.com' neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci*
+*Chyba AADSTS50011: Adresa pro odpovědi ' https:\//contoso.com' neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci*
 
 **Možná příčina**
 

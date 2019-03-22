@@ -2,17 +2,18 @@
 title: Migrace místních počítačů do Azure pomocí Azure Site Recovery | Microsoft Docs
 description: Tento článek popisuje migraci místních počítačů do Azure pomocí Azure Site Recovery.
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d5b229d96c0f63e27e36fb95122b36d3d8c128ac
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0daa25cce434b2e97995963918e52df974e2ef9c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110303"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336544"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrace místních počítačů do Azure
 
@@ -113,7 +114,7 @@ Spusťte převzetí služeb při selhání pro počítače, které chcete migrov
 5. Zkontrolujte, že se virtuální počítač Azure zobrazuje v Azure podle očekávání.
 6. V části **Replikované položky** klikněte pravým tlačítkem na virtuální počítač a klikněte na **Dokončit migraci**. To provede následující akce:
 
-   - Proce migrace, zastaví se replikace virtuálního počítače AWS a zastaví se fakturace služby Site Recovery pro virtuální počítač.
+   - Proce migrace, zastaví se replikace místních virtuálních počítačů a zastaví se fakturace služby Site Recovery pro virtuální počítač.
    - Tento krok vyčištění dat replikace. Nedojde k odstranění migrovaných virtuálních počítačů.
 
      ![Dokončení migrace](./media/migrate-tutorial-on-premises-azure/complete-migration.png)

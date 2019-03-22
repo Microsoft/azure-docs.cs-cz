@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 321dfaa1a58cc806394f4807c38cbdc599cfd7a0
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ac0a84aa3121c6ebb91860c96c0f6692827c8a3f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311559"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336520"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Použití spravované identity s Azure Container Instances
 
@@ -33,7 +33,7 @@ Příklady pro povolení a používání identit ve službě Azure Container Ins
 
 ## <a name="why-use-a-managed-identity"></a>Proč používat spravovanou identitu?
 
-Použití spravované identity v spuštěný kontejner ověřování do libovolných [služba, která podporuje ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication) bez nutnosti spravovat přihlašovací údaje ve vašem kontejneru kódu. Pro služby, které nepodporují ověřování AD můžete ukládat tajné kódy ve službě Azure Key Vault a používat spravovanou identitu pro přístup k službě Key Vault načíst přihlašovací údaje. Další informace o použití spravované identity najdete v tématu [co je spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md)
+Použití spravované identity v spuštěný kontejner ověřování do libovolných [služba, která podporuje ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) bez nutnosti spravovat přihlašovací údaje ve vašem kontejneru kódu. Pro služby, které nepodporují ověřování AD můžete ukládat tajné kódy ve službě Azure Key Vault a používat spravovanou identitu pro přístup k službě Key Vault načíst přihlašovací údaje. Další informace o použití spravované identity najdete v tématu [co je spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit. V současné době spravovaných identit jsou podporovány pouze na instance kontejneru systému Linux.
@@ -252,7 +252,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-Teď pomocí přístupového tokenu pro ověření do služby Key Vault a čtení tajného klíče. Nezapomeňte nahradit název trezoru klíčů v adrese URL (*https://mykeyvault.vault.azure.net/...*):
+Teď pomocí přístupového tokenu pro ověření do služby Key Vault a čtení tajného klíče. Nezapomeňte nahradit název trezoru klíčů v adrese URL (*https:\//mykeyvault.vault.azure.net/...* ):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

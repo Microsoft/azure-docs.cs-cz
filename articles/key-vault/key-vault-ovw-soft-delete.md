@@ -6,13 +6,13 @@ ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
-ms.date: 09/25/2017
-ms.openlocfilehash: 526b0b135c8d5c1741ddf5f3fe6fb32f259a3e2c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 03/19/2019
+ms.openlocfilehash: f222b37e8ca6efcfe28146ee948511d887f547a4
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092986"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339138"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Přehled obnovitelného odstranění služby Azure Key Vault
 
@@ -23,9 +23,7 @@ Funkce obnovitelného odstranění služby Key Vault umožňuje obnovení odstra
 
 ## <a name="supporting-interfaces"></a>Podpora rozhraní
 
-Funkce obnovitelného odstranění je zpočátku k dispozici prostřednictvím rozhraní REST, .NET / C#, rozhraní prostředí PowerShell a rozhraní příkazového řádku.
-
-Obecné informace najdete v článku odkazy na tyto další podrobnosti najdete [Key Vault Reference](https://docs.microsoft.com/azure/key-vault/).
+Funkce obnovitelného odstranění je zpočátku k dispozici prostřednictvím [REST](/rest/api/keyvault/), [rozhraní příkazového řádku](key-vault-soft-delete-cli.md), [PowerShell](key-vault-soft-delete-powershell.md) a [.NET /C# ](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) rozhraní.
 
 ## <a name="scenarios"></a>Scénáře
 
@@ -39,26 +37,21 @@ Trezory klíčů Azure jsou sledované prostředky spravovat pomocí Azure Resou
 
 Operace odstranění objektů služby key vault nebo služby key vault s touto funkcí je obnovitelné odstranění, účinně drží prostředky pro danou uchovávají (90 dnů), zároveň dává vzhled odstranění objektu. Další služby poskytuje mechanismus pro obnovení odstraněného objektu v podstatě vrácení odstranění. 
 
-Volitelné chování služby Key Vault se obnovitelného odstranění a je **není povolená ve výchozím nastavení** v této verzi. 
+Volitelné chování služby Key Vault se obnovitelného odstranění a je **není povolená ve výchozím nastavení** v této verzi. Je možné zapnout prostřednictvím [rozhraní příkazového řádku](key-vault-soft-delete-cli.md) nebo [Powershellu](key-vault-soft-delete-powershell.md).
 
-### <a name="purge-protection--flag"></a>Vymazat příznak ochrany
-Vyprázdnit ochrany (**--enable--ochrany** v Azure CLI) příznak je vypnuto ve výchozím nastavení. Když tento příznak zapnutý, trezor nebo objektu ve stavu odstraněno nelze vyprázdnit až do uplynutí uchovávají 90 dnů. Takové trezor nebo objektu je stále možné obnovit. Tento příznak dává zákazníkům jistotu, že trezor nebo objekt může nikdy být trvale odstraněn až do uplynutí doby uchování. Můžete zapnout příznak vyprázdnění ochranu pouze v případě, že je zapnutý příznak obnovitelného odstranění, nebo při vytváření trezoru zapnout v obou obnovitelného odstranění a mazání ochrany.
+### <a name="purge-protection"></a>Vyprázdnit ochrany 
 
-> [!NOTE]
->    Předpokladem pro zapnutí ochrany se musí mít zapnuté obnovitelné odstranění.
-> To je v Azure CLI 2 pomocí příkazu
+Při mazání ochrany je na trezor nebo objektu ve stavu odstraněno nelze vymazat, až do uplynutí doby uchovávání těchto 90 dnů. Tyto trezory a objekty je stále možné obnovit, zákazníky je ujištěním postupovali podle zásady uchovávání informací. 
 
-```
-az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true
-```
+Vyprázdnit ochrany je volitelné chování služby Key Vault a **není povolená ve výchozím nastavení**. Je možné zapnout prostřednictvím [rozhraní příkazového řádku](key-vault-soft-delete-cli.md#enabling-purge-protection) nebo [Powershellu](key-vault-soft-delete-powershell.md#enabling-purge-protection).
 
 ### <a name="permitted-purge"></a>Povolené vyprázdnění
 
 Trvale odstranit, odstranění, trezor klíčů je možné prostřednictvím operace POST na prostředku proxy serveru a vyžaduje speciální oprávnění. Obecně platí pouze vlastník předplatného budete moct odstranit trezor klíčů. Operace POST aktivuje okamžitý a nezotavitelnou odstranění tohoto trezoru. 
 
-Výjimkou jsou
-- případech, kdy předplatné Azure bylo označeno jako *neodstranitelný*. V tomto případě pouze služba potom může provést skutečné odstranění a provádí jako proces naplánované. 
-- Když – zapnutý příznak povolení vyprázdnění ochranu na samotný trezor. Key Vault v tomto případě bude čekat 90 dní od při původní objekt tajného kódu byla označená k odstranění se trvale odstranit objekt.
+Výjimky jsou:
+- Pokud předplatné Azure bylo označeno jako *neodstranitelný*. V tomto případě pouze služba potom může provést skutečné odstranění a provádí jako proces naplánované. 
+- Když--enable--ochrany příznak je povolená v samotném trezoru. Key Vault v tomto případě bude čekat 90 dní od při původní objekt tajného kódu byla označená k odstranění se trvale odstranit objekt.
 
 ### <a name="key-vault-recovery"></a>Obnovení služby Key vault
 
@@ -66,7 +59,7 @@ Při odstranění trezoru klíčů, vytvoří službu proxy prostředků v rámc
 
 ### <a name="key-vault-object-recovery"></a>Obnovení objektu služby Key vault
 
-Při odstraňování objektů trezoru klíčů, jako jsou klíče, služba se umístit objekt ve stavu odstraněno, díky čemuž nepřístupný pro jakékoli operace načtení. V tomto stavu objektů trezoru klíčů pouze výpis je možný, obnovené nebo vynuceně/odstranil natrvalo. 
+Při odstraňování objektů trezoru klíčů, jako jsou klíče, služba se umístit objekt ve stavu odstraněno, díky tomu je nepřístupný pro jakékoli operace načtení. V tomto stavu objektů trezoru klíčů pouze výpis je možný, obnovené nebo vynuceně/odstranil natrvalo. 
 
 Ve stejnou dobu služby Key Vault se naplánuje odstranění podkladová data odpovídající objekt služby key vault pro provádění za dobu uchování předem nebo odstraněný trezor klíčů. DNS záznam odpovídající do trezoru se také uchovávají po dobu trvání interval uchovávání informací.
 

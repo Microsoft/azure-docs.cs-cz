@@ -4,17 +4,17 @@ description: Postup konfigurace modulu runtime Azure IoT Edge a všech modulů I
 author: kgremban
 manager: ''
 ms.author: kgremban
-ms.date: 12/17/2018
+ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 33f5cd6e1d2989a9ca5c26bbcf947bd6eade3831
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4fa5402b87eea969a5a4093000dda06d3cb5675d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774196"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312984"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurace zařízení IoT Edge pro komunikaci přes proxy server
 
@@ -35,7 +35,7 @@ Adresy URL proxy serveru provést následující formát: **protokol**://**proxy
 
 * **Protokol** HTTP nebo HTTPS. Démon Dockeru můžete použít buď protokol, v závislosti na nastavení registru kontejneru, ale kontejnerů démon a modul runtime IoT Edge by měl vždycky používají protokol HTTPS.
 
-* **Proxy_host** je adresa proxy serveru. Pokud váš proxy server vyžaduje ověření, můžete zadat své přihlašovací údaje jako součást proxy_host ve formátu **uživatele**:**heslo**\@**proxy_host**.
+* **Proxy_host** je adresa proxy serveru. Pokud váš proxy server vyžaduje ověření, můžete zadat své přihlašovací údaje jako součást proxy hostitele v následujícím formátu: **uživatele**:**heslo**\@**proxy_host** .
 
 * **Proxy_port** je síťového portu, na kterém proxy serveru reaguje na síťový provoz.
 
@@ -43,7 +43,7 @@ Adresy URL proxy serveru provést následující formát: **protokol**://**proxy
 
 Pokud instalujete modul runtime IoT Edge na zařízení s Linuxem, konfigurace Správce balíčků na serveru proxy pro přístup k instalačnímu balíčku. Například [nastavení apt-get pro používání proxy serveru http](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Jakmile správce balíčku je nakonfigurovaná, postupujte podle pokynů v [modul runtime nainstalovat Azure IoT Edge v Linuxu (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) nebo [nainstalovat modul runtime Azure IoT Edge v Linuxu (x64)](how-to-install-iot-edge-linux.md) jako obvykle.
 
-Pokud instalujete modul runtime IoT Edge na zařízení s Windows, budete muset přejít přes proxy server jednou stáhnout instalační soubor skriptu, pak znovu během instalace nezbytné součásti ke stažení. Můžete nakonfigurovat informace o proxy serveru v nastavení Windows, nebo zahrnout informace o serveru proxy přímo do instalačního skriptu. Následující příkaz powershellu je příkladem systému windows pomocí instalace `-proxy` argument:
+Pokud instalujete modul runtime IoT Edge na zařízení s Windows, budete muset přejít přes proxy server dvakrát. Chcete-li stáhnout instalační soubor skriptu první připojení, a druhé připojení je během instalace nezbytné součásti ke stažení. Můžete nakonfigurovat informace o proxy serveru v nastavení Windows, nebo zahrnout informace o serveru proxy přímo do instalačního skriptu. Následující příkaz powershellu je příkladem systému windows pomocí instalace `-proxy` argument:
 
 ```powershell
 . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -64,20 +64,22 @@ Po instalaci modulu runtime IoT Edge, použijte v následující části ji nako
 
 ## <a name="configure-the-daemons"></a>Konfigurace procesy daemon
 
-Docker a IoT Edge procesy démon běžícího ve vašem zařízení IoT Edge je potřeba nakonfigurovat pro použití proxy serveru. Démona Dockeru provede webových žádostí o přijetí změn imagí kontejneru z registrů kontejnerů. Proces démon IoT Edge umožňuje webové požadavky na komunikaci se službou IoT Hub.
+Démoni Moby a IoT Edge, běžícího ve vašem zařízení IoT Edge je potřeba nakonfigurovat pro použití proxy serveru. Proces démon Moby provede webové požadavky přetáhnout Image kontejneru z registrů kontejnerů. Proces démon IoT Edge umožňuje webové požadavky na komunikaci se službou IoT Hub.
 
-### <a name="docker-daemon"></a>Démon dockeru
+### <a name="moby-daemon"></a>Démon Moby
 
-V dokumentaci Docker ke konfiguraci démona Dockeru s proměnnými prostředí. Většina registrů kontejnerů (včetně Dockerhubu a Azure Container Registry) podporují požadavky HTTPS, takže je parametr, který byste měli nastavit **HTTPS_PROXY**. Pokud jste přetahování imagí z registru, který nepodporuje zabezpečení transportní vrstvy (TLS), pak byste měli nastavit **HTTP_PROXY** parametru. 
+Protože Moby je postavená na Docker, naleznete v dokumentaci Docker démona Moby nakonfigurovat proměnné prostředí. Většina registrů kontejnerů (včetně Dockerhubu a Azure Container Registry) podporují požadavky HTTPS, takže je parametr, který byste měli nastavit **HTTPS_PROXY**. Pokud jste přetahování imagí z registru, který nepodporuje zabezpečení transportní vrstvy (TLS), pak byste měli nastavit **HTTP_PROXY** parametru. 
 
-Vyberte článek, který se vztahuje na vaší verzi Dockeru: 
+Vyberte článek, který se vztahuje na operační systém zařízení IoT Edge: 
 
-* [Dockeru pro Linux](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
-* [Docker pro Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration)
+* [Konfigurace démona Dockeru v Linuxu](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
+    * Moby démon v Linuxu zařízení zůstane název Dockeru.
+* [Konfigurace démona Dockeru na Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration)
+    * Démon Moby na zařízeních s Windows se nazývá iotedge moby. Názvy se liší, protože je možné spustit Docker Desktop i Moby souběžně na zařízení s Windows. 
 
 ### <a name="iot-edge-daemon"></a>Démon IoT Edge
 
-Proces démon IoT Edge je nakonfigurovaný v podobným způsobem jako démona Dockeru. Všechny požadavky, které IoT Edge odesílá do služby IoT Hub pomocí protokolu HTTPS. Použijte následující postup k nastavení proměnné prostředí pro službu založený na operačním systému. 
+Proces démon IoT Edge je nakonfigurovaný v podobným způsobem jako Moby démona. Všechny požadavky, které IoT Edge odesílá do služby IoT Hub pomocí protokolu HTTPS. Použijte následující postup k nastavení proměnné prostředí pro službu založený na operačním systému. 
 
 #### <a name="linux"></a>Linux
 

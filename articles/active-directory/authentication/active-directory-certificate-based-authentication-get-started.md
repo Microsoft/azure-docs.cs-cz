@@ -1,5 +1,5 @@
 ---
-title: Začínáme s ověřováním na základě certifikátů Azure Active Directory
+title: Začínáme s ověřováním na základě certifikátů – Azure Active Directory
 description: Další informace o konfiguraci ověřování na základě certifikátu ve vašem prostředí
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2e6d66993658e7f0531a43a9b9e0f93183f91d9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f57d4615fc80df6c5df9ba295288ad71ae12fa23
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165140"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310825"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Začínáme s ověřováním na základě certifikátů v Azure Active Directory
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 94a0d3f19e595ac040d908ea47d6332ceae0943c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8793f6f4d135d6099541d24aa5f5cfc0b6c21b30
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314801"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339427"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Jak vytvořit filtr omezující vlastnosti ve službě Azure Search 
 
@@ -45,7 +45,7 @@ Omezující vlastnosti můžete počítat z polí s jednou hodnotou, stejně jak
 + Edm.DateTimeOffset
 + Edm.Boolean
 + Edm.Collections
-+ Číselné pole typů: Typem Edm.Int32 Edm.Int64, Edm.Double
++ Číselné pole typů: Edm.Int32, Edm.Int64, Edm.Double
 
 Edm.GeographyPoint nelze použít v Fasetové navigace. Omezující vlastnosti se vytvářejí na základě lidské čitelný text nebo čísla. V důsledku toho omezující vlastnosti nejsou podporovány pro geografické souřadnice. Je třeba pole Město nebo oblasti pro omezující vlastnosti podle umístění.
 
@@ -84,7 +84,7 @@ V rozhraní .NET API filtrování atributů musí být explicitně nastaveny. V 
 
 ## <a name="build-and-load-an-index"></a>Vytvoření a načtení indexu
 
-Na krok zprostředkující (a možná zřejmé) je, že budete muset [vytvořit a naplnit index](https://docs.microsoft.com/azure/search/search-create-index-dotnet#create-the-index) před formulování dotazu. Jsme zmínili, tento krok zde pro úplnost. Jedním ze způsobů k určení, zda index je k dispozici je seznam indexů vrácení se změnami [portál](https://portal.azure.com).
+Na krok zprostředkující (a možná zřejmé) je, že budete muset [vytvořit a naplnit index](https://docs.microsoft.com/azure/search/search-create-index-dotnet#3---construct-index) před formulování dotazu. Jsme zmínili, tento krok zde pro úplnost. Jedním ze způsobů k určení, zda index je k dispozici je seznam indexů vrácení se změnami [portál](https://portal.azure.com).
 
 ## <a name="add-facet-filters-to-a-query"></a>Přidat do dotazu filtry omezující vlastnost
 
@@ -128,4 +128,3 @@ Přestože je toto běžným případem použití, není něco struktuře Faseto
 + [Filtry ve službě Azure Search](search-filters.md)
 + [Vytvoření indexu REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [Hledání dokumentů rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-

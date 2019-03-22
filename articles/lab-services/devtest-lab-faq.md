@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 8b5c5f316ff2c3ada035736755c7898270c49dee
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3752e9c227e4db0f583b2f6b21d6c0aa3106d248
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551819"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337693"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé nejběžnější otázky o Azure DevTest Labs.
@@ -27,8 +27,27 @@ Získejte odpovědi na některé nejběžnější otázky o Azure DevTest Labs.
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 **Obecné**
+
+## <a name="blog-post"></a>Příspěvek blogu
+Náš blog týmu DevTest Labs je vyřazený od 20. března 2019. 
+
+### <a name="where-can-i-track-feature-updates-going-forward"></a>Kde můžete sledovat aktualizace funkcí do budoucna?
+Od této chvíle jsme se být účtování aktualizace funkcí a/nebo informativní blogových příspěvků na blogu Azure a Azure aktualizuje. Příspěvky na blogu také odkaz na dokumentaci bez ohledu na to povinné.
+
+Přihlaste se k odběru [blogu Azure DevTest Labs](https://azure.microsoft.com/blog/tag/azure-devtest-labs/) a [DevTest Labs Azure aktualizuje](https://azure.microsoft.com/updates/?product=devtest-lab) tak neustále informováni o nových funkcích ve službě DevTest Labs.
+
+### <a name="what-happens-to-the-existing-blog-posts"></a>Co se stane v existující blogových příspěvcích?
+Aktuálně pracujeme na migraci stávajících blogových příspěvků (s výjimkou aktualizace výpadek) na naše [dokumentace k DevTest Labs](devtest-lab-overview.md). Když v blogu MSDN je zastaralý, jeho přesměrováni na přehled dokumentace pro DevTest Labs. Po přesměrování, můžete vyhledat článek, který hledáte, v názvu "Filtrování podle". Všimněte si, že jsme ještě nebyly migrovány všechny příspěvky, ale má počítat od konce tohoto měsíce. 
+
+
+### <a name="where-do-i-see-outage-updates"></a>Kde se zobrazí aktualizace výpadku?
+Jsme se, že se účtování výpadek aktualizací pomocí našich popisovač Twitteru do budoucna. Sledujte nás na Twitteru, chcete-li získat nejnovější informace o výpadcích a známé chyby.
+
+### <a name="twitter"></a>Twitter 
+Naše popisovač Twitteru: azlabservices
+
 ## <a name="what-if-my-question-isnt-answered-here"></a>Co když můj dotaz zde nenalezl?
-Pokud zde není uveden váš dotaz, dejte nám vědět, abychom mohli pomoct najít odpověď.
+Pokud zde není uveden váš dotaz, dejte nám vědět a pomůžeme vám najít odpověď.
 
 * Odešlete dotaz na konci tyto Nejčastější dotazy. Spolupracujte s týmem Azure Cache a ostatních členů komunity o tomto článku.
 * K dosažení širší cílovou skupinu, odeslat dotaz na [fóra Azure DevTest Labs MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Spolupracujte s týmem Azure DevTest Labs a ostatní členové komunity.
@@ -41,7 +60,7 @@ Azure DevTest Labs můžete uložit týmu čas i peníze. Vývojáři mohou vytv
 Bez obav samoobslužné funkce znamená, že vývojářům a testerům vytvářet vlastní prostředí podle potřeby. Správci mají zabezpečení vědomím, že DevTest Labs pomáhá minimalizovat plýtvání a řízení nákladů. Správci mohou určit, jaké velikosti virtuálních počítačů jsou povolené a maximální počet virtuálních počítačů, a virtuální počítače jsou při spuštění a vypnutí. DevTest Labs také umožňuje snadno monitorovat náklady a nastavení výstrah můžete zůstat vědět, jak se používají prostředky testovacího prostředí.
 
 ## <a name="how-can-i-use-devtest-labs"></a>Použití DevTest Labs
-DevTest Labs je užitečné, kdykoli mají vývoj nebo testovací prostředí a chcete rychle reprodukovat nebo spravovat pomocí zásad ušetření nákladů.
+DevTest Labs je užitečná, když mají dev nebo testovací prostředí a chcete rychle reprodukovat nebo spravovat pomocí zásad hospodárnému.
 
 Tady je několik scénářů, které naši zákazníci využívat DevTest Labs pro:
 
@@ -106,8 +125,8 @@ Pro další kontinuální integrace (CI) / průběžné doručování (CD) sady 
 
 
 **Virtual Machines**
-## <a name="why-cant-i-see-vms-on-the-virtual-machines-blade-that-i-see-in-devtest-labs"></a>Proč se nezobrazují virtuální počítače v okně virtuální počítače, který se zobrazuje ve službě DevTest Labs?
-Při vytváření virtuálního počítače ve službě DevTest Labs, budete mít oprávnění pro přístup k tomuto virtuálnímu počítači. Můžete zobrazit v okně labs a na virtuálním počítači **virtuálních počítačů** okno. Uživatelé přiřazení k roli uživatele testovacího prostředí DevTest Labs můžete zobrazit všechny virtuální počítače, které byly vytvořeny v testovacím prostředí cvičení **všechny virtuální počítače** okno. Uživatelé, kteří mají roli uživatele testovacího prostředí DevTest Labs však nejsou automaticky udělit oprávnění ke čtení na prostředky virtuálních počítačů, které jste vytvořili jiným uživatelům. Proto tyto virtuální počítače nejsou zobrazeny na **virtuálních počítačů** okno.
+## <a name="why-cant-i-see-vms-on-the-virtual-machines-page-that-i-see-in-devtest-labs"></a>Proč se nezobrazují virtuální počítače na stránce virtuální počítače, které se zobrazuje ve službě DevTest Labs?
+Při vytváření virtuálního počítače ve službě DevTest Labs, budete mít oprávnění pro přístup k tomuto virtuálnímu počítači. Můžete zobrazit na stránce labs a na virtuálním počítači **virtuálních počítačů** stránky. Uživatelé přiřazení k roli uživatele testovacího prostředí DevTest Labs můžete zobrazit všechny virtuální počítače, které byly vytvořeny v testovacím prostředí cvičení **všechny virtuální počítače** stránky. Uživatelé, kteří mají roli uživatele testovacího prostředí DevTest Labs však nejsou automaticky udělit oprávnění ke čtení na prostředky virtuálních počítačů, které jste vytvořili jiným uživatelům. Proto tyto virtuální počítače nejsou zobrazeny na **virtuálních počítačů** stránky.
 
 ## <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>Jaký je rozdíl mezi vlastní image a vzorce?
 Vlastní image je virtuální pevný disk (VHD). Vzorec je bitovou kopii, která můžete nakonfigurovat další nastavení a poté uložit a reprodukovat. Vlastní image může být vhodnější, pokud chcete rychle vytvořit několik prostředí s využitím stejné základní, neměnné image. Vzorec může být lepší, pokud chcete reprodukovat konfigurace virtuálního počítače nejnovější pomůcky, v rámci virtuální sítě nebo podsítě, nebo jako virtuální počítač určité velikosti. Podrobnější vysvětlení najdete v tématu [porovnání vlastních imagí a vzorců ve službě DevTest Labs](devtest-lab-comparing-vm-base-image-types.md).
@@ -184,7 +203,7 @@ Odstranit virtuální počítače z testovacího prostředí na webu Azure Porta
 
 **Artefakty**
 ## <a name="what-are-artifacts"></a>Co se o artefakty?
-Artefakty jsou přizpůsobitelné prvky, které vám umožní nasazovat nejnovější části nebo nasazení nástroje pro vývojáře k virtuálnímu počítači. Při vytváření virtuálního počítače, připojte k vašemu virtuálnímu počítači artefakty. Po zřízení virtuálního počítače artefakty nasazení a konfigurace virtuálního počítače. Jsou k dispozici v různých artefaktů dříve existující naše [veřejného úložiště GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts). Můžete také [vytváření vlastních artefaktů](devtest-lab-artifact-author.md).
+Artefakty jsou přizpůsobitelné prvky, které vám umožní nasazovat nejnovější části nebo nasazení nástroje pro vývojáře k virtuálnímu počítači. Při vytváření virtuálního počítače, připojte k vašemu virtuálnímu počítači artefakty. Po zřízení virtuálního počítače artefakty nasazení a konfigurace virtuálního počítače. Jsou k dispozici v různých artefaktů existující naše [veřejného úložiště GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts). Můžete také [vytváření vlastních artefaktů](devtest-lab-artifact-author.md).
 
 
 **Konfigurace testovacího prostředí**
@@ -232,7 +251,7 @@ Pokud jeden prostředek je nadřazený objekt na jiný prostředek, musí existo
 Virtuální počítače jsou podřízené prostředky v rámci testovacího prostředí ve skupině prostředků. Při použití šablon Resource Manageru k nasazení virtuálních počítačů pomocí Powershellu, název skupiny prostředků, které jsou k dispozici v skriptu prostředí PowerShell by měl být název skupiny prostředků testovacího prostředí. Další informace najdete v tématu [řešení potíží s běžnými chybami nasazení Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors).
 
 ## <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Kde najdu Další informace o chybě, pokud se nezdaří nasazení virtuálního počítače?
-Chyby nasazení virtuálního počítače zachyceny v protokolech aktivit. Testovací prostředí můžete najít protokoly aktivit virtuálního počítače v části **protokoly auditu** nebo **Diagnostika virtuálního počítače** v nabídce prostředků v okně virtuálního počítače testovacího prostředí (v okně se zobrazí po výběru virtuálního počítače z **Můj virtuální počítače** seznamu).
+Chyby nasazení virtuálního počítače zachyceny v protokolech aktivit. Testovací prostředí můžete najít protokoly aktivit virtuálního počítače v části **protokoly auditu** nebo **Diagnostika virtuálního počítače** v nabídce prostředků na stránce testovacího prostředí virtuálních počítačů (se zobrazí po výběru virtuálního počítače z **Moje virtuální počítače** seznamu).
 
 V některých případech nasazení dojde k chybě před zahájením nasazení virtuálního počítače. Příkladem je při překročení limitu předplatného pro prostředek, který byl vytvořen s virtuálním Počítačem. Podrobnosti o chybě v tomto případě jsou zachyceny v protokolech aktivit úrovni testovacího prostředí. Protokoly aktivit jsou umístěné v dolní části **konfigurace a zásad** nastavení. Další informace o používání aktivit protokoly v Azure, najdete v článku [zobrazení protokolů aktivit pro auditování akcí u prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 

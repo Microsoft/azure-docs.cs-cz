@@ -1,5 +1,5 @@
 ---
-title: Přihlašování bez hesla Azure AD pomocí aplikace Microsoft Authenticator (preview)
+title: Přihlašování bez hesla pomocí aplikace Microsoft Authenticator (preview) – Azure Active Directory
 description: Přihlášení k Azure AD pomocí aplikace Microsoft Authenticator bez použití hesla (public preview)
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: librown
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 247e772873cf467b371b4aea45f8ceb43bce16e3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 26dd1bd6717fe0216545d6b3aa729ac2cb19dc9d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180518"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313324"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Přihlašování telefonem bez hesla pomocí aplikace Microsoft Authenticator (public preview)
 

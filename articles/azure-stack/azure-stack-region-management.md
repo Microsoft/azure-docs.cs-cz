@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 03/21/2018
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2018
-ms.openlocfilehash: 2845bb09fa44c3bd9cee914e2446403b4182b0d5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 29e4bb23b4b80f6e472d2dcb27fe5e5279a35890
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871039"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337710"
 ---
 # <a name="region-management-in-azure-stack"></a>Správa oblastí ve službě Azure Stack
 
@@ -29,7 +29,7 @@ ms.locfileid: "56871039"
 
 Azure Stack používá koncept *oblastech*, které jsou logické entity sestává z hardwarové prostředky, které tvoří infrastruktura Azure stacku. V oblasti správy můžete najít všechny prostředky, které jsou nutné pro úspěšný provoz infrastruktury Azure stacku.
 
-Jedna integrovaná nasazení systému (označované jako *cloudu služby Azure Stack*) tvoří jedné oblasti. Každá Azure Stack Development Kit má jedné oblasti s názvem **místní**. Pokud nasazujete druhý systém Azure Stack integrované nebo nastavit jiná instance sada na samostatné hardwaru, je tento cloud Azure Stack v jiné oblasti.
+Jedna integrovaná nasazení systému (označované jako *cloudu služby Azure Stack*) tvoří jedné oblasti. Každá Azure Stack Development Kit (ASDK) má jednu oblast s názvem **místní**. Pokud nasazujete druhý systém Azure Stack integrované nebo nastavit jiná instance sada na samostatné hardwaru, je tento cloud Azure Stack v jiné oblasti.
 
 ## <a name="information-available-through-the-region-management-tile"></a>Informace, které jsou k dispozici prostřednictvím dlaždice oblasti správy
 
@@ -43,7 +43,7 @@ Pokud kliknete na oblasti v **Správa oblastí** dlaždici můžete získat nás
 
 1. **V nabídce prostředků**. Přístup k oblasti konkrétní infrastrukturu správy a zobrazovat a spravovat prostředky uživatele, jako jsou virtuální síť a účet úložiště.
 
-2. **Výstrahy**. Uvádí systémová oznámení a poskytuje podrobné informace o každé z těchto upozornění.
+2. **Výstrahy**. Seznam výstrah celý systém a poskytují podrobné informace o každé z těchto výstrah.
 
 3. **Aktualizace**. Zobrazte aktuální verzi vaší infrastruktury Azure stacku, dostupné aktualizace a aktualizace historie. Můžete aktualizovat také integrovaného systému.
 

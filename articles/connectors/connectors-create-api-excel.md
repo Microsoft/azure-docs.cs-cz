@@ -1,25 +1,25 @@
 ---
-title: Připojení k Excelu Online – Azure Logic Apps | Dokumentace Microsoftu
+title: Připojení k Excelu Online – Azure Logic Apps
 description: Správa dat pomocí aplikace Excel Online rozhraní REST API a Azure Logic Apps
-ms.service: logic-apps
 services: logic-apps
+ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.suite: integration
 tags: connectors
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 917b9abd4a32b7951313c5555f4111dff990078c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 28739ad65462acc9f2d2ed7db1e9ed14d19f032c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230947"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314515"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Spravovat data aplikace Excel Online s Azure Logic Apps
 
-S Azure Logic Apps a konektoru Excelu Online můžete vytvořit automatizovaných úloh a pracovní postupy založené na vašich dat v Excelu Online pro firmy nebo OneDrive. Tento konektor zajišťuje akce, které vám pomohou pracovat s vašimi daty a spravovat tabulky, například: 
+S Azure Logic Apps a konektoru Excelu Online můžete vytvořit automatizovaných úloh a pracovní postupy založené na vašich dat v Excelu Online pro firmy nebo OneDrive. Tento konektor zajišťuje akce, které vám pomohou pracovat s vašimi daty a spravovat tabulky, například:
 
 * Vytvoření nových listů a tabulky.
 * Získání a správě listy, tabulky a řádky.
@@ -34,9 +34,9 @@ Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Log
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
+* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
 
-* [Účet Office 365](https://www.office.com/) pro váš pracovní účet nebo osobní účet Microsoft 
+* [Účet Office 365](https://www.office.com/) pro váš pracovní účet nebo osobní účet Microsoft
 
   Data aplikace Excel může existovat jako soubor hodnot oddělených čárkami (CSV) ve složce úložiště, třeba ve Onedrivu. 
   Můžete také použít stejný soubor CSV s [plochého souboru konektoru](../logic-apps/logic-apps-enterprise-integration-flatfile.md).
@@ -53,7 +53,7 @@ Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Log
 
 1. Do vyhledávacího pole zadejte jako filtr "excel". V seznamu akcí vyberte požadovanou akci.
 
-1. Pokud se zobrazí výzva k přihlášení ke svému účtu Office 365, zvolte **přihlášení**. 
+1. Pokud se zobrazí výzva k přihlášení ke svému účtu Office 365, zvolte **přihlášení**.
 
    Vaše přihlašovací údaje autorizaci aplikace logiky k vytvoření připojení k Excelu Online a přístup k vašim datům.
 
@@ -61,10 +61,10 @@ Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Log
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti, jako je například akcí a omezení, popsaného souborům Swagger konektory najdete v těchto stránky s referenčními informacemi konektoru:
+Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v konektoru OpenAPI (dříve Swagger) soubory, naleznete v tématu tyto stránky s referenčními informacemi konektoru:
 
-* [Excel Online pro firmy](/connectors/excelonlinebusiness/) 
-* [Excel Online pro OneDrive](/connectors/excelonline/) 
+* [Excel Online pro firmy](/connectors/excelonlinebusiness/)
+* [Excel Online pro OneDrive](/connectors/excelonline/)
 
 ## <a name="get-support"></a>Získat podporu
 

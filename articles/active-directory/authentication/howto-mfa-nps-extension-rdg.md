@@ -1,5 +1,5 @@
 ---
-title: Vzdálená plocha brány integrace s rozšíření Azure MFA NPS | Dokumentace Microsoftu
+title: Vzdálené brány plochy integrace s Azure MFA NPS rozšíření – Azure Active Directory
 description: Integrace infrastruktury služby Brána vzdálené plochy s Azure MFA pomocí rozšíření serveru Network Policy Server pro Microsoft Azure
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e540eeecf49f8fb00df4a03de95c5063da360229
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0fe61766daa0edc8436bce34afaaa69759eea5ca
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124044"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316436"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace služby Brána vzdálené plochy infrastrukturu s použitím rozšíření serveru NPS (Network Policy Server) a Azure AD
 

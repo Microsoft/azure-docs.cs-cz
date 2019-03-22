@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Popisuje procesy, které tento power Azure Dev mezery a jak jsou nakonfigurované v konfiguračním souboru azds.yaml
 keywords: azds.yaml prostory vývoj Azure, vývoj mezery, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 4d0b2d24335b03fb1afc729e4cb8f7fc07f8a77e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8d17be31acc6868399e8f785255d28fa2314d48c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456871"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316112"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak funguje Azure Dev mezery a je nakonfigurován
 
@@ -59,7 +59,7 @@ Klientské nástroje mu umožní:
 
 Když aplikace běží, klientské nástroje také:
 * Přijímá a zobrazuje stdout a stderr z vaší aplikace běžící ve službě AKS.
-* Používá [port vpřed](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) pro povolení webového přístupu k vaší aplikace pomocí http://locahost.
+* Používá [port vpřed](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) povolit webový přístup do vaší aplikace pomocí protokolu http:\//localhost.
 * Připojí ladicí program ke spuštěné aplikaci ve službě AKS.
 * Synchronizuje zdrojový kód prostorem dev, když je zjištěna změna pro přírůstkové sestavení umožňující rychlé iterace.
 

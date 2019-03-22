@@ -1,5 +1,5 @@
 ---
-title: Shromažďování dat uživatele služby Azure Multi-Factor Authentication
+title: Azure Multi-Factor Authentication uživatele shromažďování dat – Azure Active Directory
 description: Jaké informace slouží ke snadnější, ověřování uživatelů pomocí ověřování Azure Multi-Factor Authentication?
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a42a25afc03b07393234014d7237c5419095b2b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b0c22d4421aa984a9862f83b9be1095d548e5841
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201495"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314473"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Shromažďování dat uživatele služby Azure Multi-Factor Authentication
 

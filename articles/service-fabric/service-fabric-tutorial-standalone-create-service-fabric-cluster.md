@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: b740aa205982bc0c1104b59e3ea89e2d5980d461
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e4995890a1f2ceec8ddf5d4dafafdd13382864db
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240337"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311454"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Kurz: Instalace a vytvoření clusteru Service Fabric
 
@@ -129,13 +129,13 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ### <a name="bring-up-service-fabric-explorer"></a>Vyvolání Service Fabric Exploreru
 
-Teď se můžete připojit ke clusteru pomocí Service Fabric Exploreru buď přímo z jednoho z počítačů prostřednictvím adresy http://localhost:19080/Explorer/index.html, nebo vzdáleně prostřednictvím adresy http://<*IP_adresa_počítače*>:19080/Explorer/index.html.
+Teď můžete připojit ke clusteru pomocí Service Fabric Exploreru buď přímo od jednoho z počítačů s podporou protokolu http:\//localhost:19080/Explorer/index.html nebo vzdáleně pomocí protokolu http:\/ /<  *IPAddressofaMachine*>: 19080/Explorer/index.html.
 
 ## <a name="add-and-remove-nodes"></a>Přidávání a odebírání uzlů
 
 Podle toho, jak se vaše obchodní potřeby mění, můžete uzly do samostatného clusteru Service Fabric přidávat nebo je z něj odebírat. Podrobné kroky najdete v tématu [Přidávání uzlů do samostatného clusteru Service Fabric nebo jejich odebírání](service-fabric-cluster-windows-server-add-remove-nodes.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V druhé části série jste se seznámili s paralelním nahráváním velkých objemů náhodných dat do účtu úložiště a naučili jste se například:
 

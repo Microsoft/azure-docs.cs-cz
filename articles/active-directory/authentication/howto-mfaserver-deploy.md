@@ -1,5 +1,5 @@
 ---
-title: Začínáme s Azure Multi-Factor Authentication Serverem | Dokumentace Microsoftu
+title: Začínáme se službou Azure Multi-Factor Authentication Server – Azure Active Directory
 description: Podrobný návod, jak začít s místním Azure MFA Serverem
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1cf1d5bb87eea8054d2797634756d1b6c38464d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 260da2d58ab6e3342fe372bd51e4877d83b26bfd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075965"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313052"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Začínáme s Azure Multi-Factor Authentication Serverem
 

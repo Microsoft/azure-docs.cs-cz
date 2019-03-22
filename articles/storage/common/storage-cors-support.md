@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bb1f4861f3867c592ecab86e85d3a4dfbab6738e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 5e65965678ed042081e4a406d3a207fb7ede299f
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002952"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313647"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Prostředků mezi zdroji (CORS) podporu pro služby Azure Storage pro sdílení obsahu
 Od verze 2013-08-15, služby Azure storage podporu sdílení prostředků mezi zdroji (CORS) ke službám Blob, tabulky, fronty a soubor. CORS je funkce protokolu HTTP, která umožňuje webové aplikaci spuštěné v rámci jedné domény pro přístup k prostředkům v jiné doméně. Webové prohlížeče implementují bezpečnostní omezení, označované jako [zásada stejného zdroje](https://www.w3.org/Security/wiki/Same_Origin_Policy) , který chrání webovou stránku před voláním rozhraní API v jiné doméně. CORS nabízí zabezpečený způsob, jak povolit jednu doménu (zdrojová doména) pro volání rozhraní API v jiné doméně. Zobrazit [specifikace CORS](https://www.w3.org/TR/cors/) podrobnosti o CORS.
@@ -67,7 +67,7 @@ Tady je ukázka jednoho pravidla CORS, určené pomocí operace nastavit vlastno
 
 Níže je popsána jednotlivých prvků, součástí pravidlo CORS:
 
-* **AllowedOrigins**: Zdrojové domény, které mohou vytvořit požadavek na službu úložiště přes CORS. Zdrojová doména je doména, ze které žádost pochází. Všimněte si, že počátek musí být velká a malá písmena přesně neshoduje s původ, věk uživatele odešle do služby. Můžete také použít zástupný znak "*" Povolit všechny zdrojové domény k podání žádostí o přes CORS. V příkladu výše, domény [ http://www.contoso.com ](http://www.contoso.com) a [ http://www.fabrikam.com ](http://www.fabrikam.com) mohou vytvářet požadavky na službu pomocí CORS.
+* **AllowedOrigins**: Zdrojové domény, které mohou vytvořit požadavek na službu úložiště přes CORS. Zdrojová doména je doména, ze které žádost pochází. Všimněte si, že počátek musí být velká a malá písmena přesně neshoduje s původ, věk uživatele odešle do služby. Můžete také použít zástupný znak "*" Povolit všechny zdrojové domény k podání žádostí o přes CORS. V příkladu výše, http domény:\//www.contoso.com a http: \/ /www.fabrikam.com mohou vytvářet požadavky na službu pomocí CORS.
 * **Hodnota AllowedMethods**: Metody (akce požadavků HTTP), které může doména zdroje použít pro žádost CORS. V předchozím příkladu jsou povoleny pouze požadavky PUT a GET.
 * **AllowedHeaders**: Hlavičky žádosti, která doména zdroje může určit v požadavku CORS. V předchozím příkladu jsou povoleny všechny hlavičky metadat od verze x-ms-meta-data, x-ms-meta cíl a x-ms-meta-abc. Všimněte si, že zástupný znak ' *' znamená, že není povoleno žádné začátek záhlaví se zadanou předponou.
 * **ExposedHeaders**: Hlavičky odpovědi, které mohou být odeslaný v odpovědi na žádost CORS a zpřístupnit v prohlížeči pro vystavitele žádosti. V předchozím příkladu je vystavit libovolné od záhlaví x-ms-meta pokyn prohlížeče.
@@ -130,9 +130,9 @@ Dále je třeba zvážit následující požadavků CORS:
 | Žádost |  |  | Odpověď |  |
 | --- | --- | --- | --- | --- |
 | **Metoda** |**Počátek** |**Hlavičky požadavku** |**Pravidlo** |**výsledek** |
-| **PUT** |http://www.contoso.com |x-ms-blob-content-type |První pravidlo |Úspěch |
-| **GET** |http://www.contoso.com |x-ms-blob-content-type |Druhé pravidlo |Úspěch |
-| **GET** |http://www.contoso.com |x-ms-client-request-id |Druhé pravidlo |Selhání |
+| **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |První pravidlo |Úspěch |
+| **GET** |http:\//www.contoso.com |x-ms-blob-content-type |Druhé pravidlo |Úspěch |
+| **GET** |http:\//www.contoso.com |x-ms-client-request-id |Druhé pravidlo |Selhání |
 
 První požadavek odpovídá první pravidlo – doména zdroje odpovídá povolené zdroje, metoda odpovídá povolené metody a záhlaví odpovídá povolené hlavičky – i tak proběhne úspěšně.
 

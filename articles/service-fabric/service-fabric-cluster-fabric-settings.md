@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: dc0e326cf3b188a51708115e5496cfbb52a95611
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 46da7c7931eaf163c24f057bac5de35f3c727519
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57836959"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311862"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
 Tento článek popisuje různé nastavení prostředků infrastruktury pro cluster Service Fabric, kterou můžete přizpůsobit. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Další informace najdete v tématu [upgradovat konfiguraci clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery, můžete upravit nastavení aktualizací *ClusterConfig.json* souborů a provádění konfigurace upgradu ve vašem clusteru. Další informace najdete v tématu [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -614,13 +614,13 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="security"></a>Zabezpečení
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|řetězec, výchozí hodnota je ""|Statická|AAD Cert formát koncového bodu, výchozí Azure Commercial zadané pro jiné než výchozí prostředí, jako je například Azure Government "https://login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
+|AADCertEndpointFormat|řetězec, výchozí hodnota je ""|Statická|AAD Cert formát koncového bodu, výchozí Azure Commercial zadané pro jiné než výchozí prostředí, jako je například Azure Government "https:\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
 |AADClientApplication|řetězec, výchozí hodnota je ""|Statická|Název nativní klientské aplikace nebo Identifikátor představující Fabric klientů |
 |AADClusterApplication|řetězec, výchozí hodnota je ""|Statická|Název aplikace webového rozhraní API nebo Identifikátor představující clusteru |
-|AADLoginEndpoint|řetězec, výchozí hodnota je ""|Statická|AAD koncový bod přihlašovacího účtu, výchozí Azure Commercial zadané pro jiné než výchozí prostředí, jako je například Azure Government "https://login.microsoftonline.us" |
+|AADLoginEndpoint|řetězec, výchozí hodnota je ""|Statická|AAD koncový bod přihlašovacího účtu, výchozí Azure Commercial zadané pro jiné než výchozí prostředí, jako je například Azure Government "https:\//login.microsoftonline.us" |
 |AADTenantId|řetězec, výchozí hodnota je ""|Statická|ID tenanta (GUID) |
 |AdminClientCertThumbprints|řetězec, výchozí hodnota je ""|Dynamická|Kryptografické otisky certifikátů používaných klienty v roli správce. Je seznam čárkami oddělených názvů. |
-|AADTokenEndpointFormat|řetězec, výchozí hodnota je ""|Statická|AAD koncový bod tokenu, výchozí Azure Commercial zadané pro jiné než výchozí prostředí, jako je například Azure Government "https://login.microsoftonline.us/{0}" |
+|AADTokenEndpointFormat|řetězec, výchozí hodnota je ""|Statická|AAD koncový bod tokenu, výchozí Azure Commercial zadané pro jiné než výchozí prostředí, jako je například Azure Government "https:\//login.microsoftonline.us/{0}" |
 |AdminClientClaims|řetězec, výchozí hodnota je ""|Dynamická|Všechny možné deklarací, od správce klientů; stejný formát jako ClientClaims; Tento seznam interně přidá do ClientClaims; proto není potřeba přidat také stejné položky ClientClaims. |
 |AdminClientIdentities|řetězec, výchozí hodnota je ""|Dynamická|Identity Windows fabric klientů v roli správce použít k autorizaci fabric privilegované operace. Je čárkami oddělený seznam; Každá položka je název účtu domény nebo název skupiny. Pro usnadnění práce; účet, který spouští fabric.exe se automaticky přiřadí role správce; Proto je seskupit ServiceFabricAdministrators. |
 |AppRunAsAccountGroupX509Folder|řetězec, výchozí je /home/sfuser/sfusercerts |Statická|Složky, ve kterém jsou uložené AppRunAsAccountGroup X509 certifikátů a privátních klíčů |

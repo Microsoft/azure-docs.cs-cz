@@ -6,16 +6,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 16233c9013e97a7db7ef799b79526abac4741612
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 6f178ef1a0aec7f742bce4c2570962b995876026
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318436"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316265"
 ---
-# <a name="overview-of-failback"></a>Přehled o navrácení služeb po obnovení
+# <a name="failback-after-disaster-recovery-of-vmware-vms"></a>Navrácení služeb po obnovení po havárii virtuálních počítačů VMware
 
 Poté, co jste převzetí služeb při selhání do Azure jako součást procesu obnovení po havárii, můžete navrátit služby zpět do místní lokality. Existují dva různé typy navrácení služeb po obnovení, které je možné pomocí Azure Site Recovery: 
 
@@ -25,7 +25,7 @@ Poté, co jste převzetí služeb při selhání do Azure jako součást procesu
 Pokud jste převzetí služeb při selhání virtuálního počítače VMware, můžete navrátit služby zpět do stejného zdrojového virtuálního počítače v místním Pokud stále existuje. V tomto scénáři se replikují jenom změny zpět. Tento scénář se označuje jako **obnovení do původního umístění**. Pokud na místním virtuálním počítači buď neexistuje, tento scénář je **obnovení do alternativního umístění**.
 
 > [!NOTE]
-> Můžete pouze navrácení služeb po obnovení do původní vCenter a konfigurační server. Nelze nasadit nové konfigurační server a selhání, zpět pomocí. Navíc nelze přidat nový vCenter na existující konfigurační server a navrácení služeb po obnovení do nového serveru vCenter.
+> Můžete předat jenom zpět na původní vCenter a konfigurační server. Nelze nasadit nové konfigurační server a selhání, zpět pomocí. Navíc nelze přidat nový vCenter na existující konfigurační server a navrácení služeb po obnovení do nového serveru vCenter.
 
 ## <a name="original-location-recovery-olr"></a>Původní umístění (Olr)
 Pokud se rozhodnete selhání zpět na původní virtuální počítač, musí být splněny následující podmínky:

@@ -2,17 +2,16 @@
 title: Co je Azure DNS?
 description: Přehled hostitelské služby DNS v Microsoft Azure. Hostujte svoji doménu na platformě Microsoft Azure.
 author: vhorne
-manager: jeconnoc
 ms.service: dns
 ms.topic: overview
-ms.date: 9/24/2018
+ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: 62043128b6415a064e35adca6be4d60ccfcae308
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: cea19ad2ba03d3e71df32912a1d7ee9e6171689a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294310"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339448"
 ---
 # <a name="what-is-azure-dns"></a>Co je Azure DNS?
 
@@ -39,6 +38,7 @@ DNS domény v Azure DNS jsou hostované na globální síti názvových serverů
 Další informace najdete v tématu o [ochraně záznamů a zón DNS](dns-protect-zones-recordsets.md). 
 
 ## <a name="dnssec"></a>DNSSEC
+
 Azure DNS v současné době nepodporuje DNSSEC. Ve většině případů můžete snížit nutnost DNSSEC konzistentně pomocí protokolu HTTPS/TLS ve vašich aplikacích. Pokud DNSSEC je důležité požadavky pro vaše zóny DNS, které můžete hostovat tyto zóny s poskytovateli hostingu DNS třetích stran.
 
 ## <a name="ease-of-use"></a>Snadné používání
@@ -57,12 +57,11 @@ Další informace najdete v tématu [Použití Azure DNS pro privátní domény]
 
 ## <a name="alias-records"></a>Záznamy aliasů
 
-Azure DNS podporuje sady záznamů aliasů. Sadu záznamů aliasů můžete použít k odkazování na prostředek Azure, jako je veřejná IP adresa Azure nebo profil služby Azure Traffic Manager. Pokud se změní IP adresa základního prostředku, sada záznamů aliasů se bez problémů aktualizuje během překladu DNS. Sada záznamů aliasů odkazuje na instanci služby a instance služby je spojená s IP adresou. 
+Azure DNS podporuje sady záznamů aliasů. Sady záznamů alias můžete použít k odkazování na prostředek Azure, jako je například Azure veřejné IP adresy, profil Azure Traffic Manager nebo koncový bod Azure Content Delivery Network (CDN). Pokud se změní IP adresa základního prostředku, sada záznamů aliasů se bez problémů aktualizuje během překladu DNS. Sada záznamů aliasů odkazuje na instanci služby a instance služby je spojená s IP adresou.
 
-Kromě toho teď můžete vrchol domény nebo základní doménu odkazovat pomocí záznamu aliasu na profil služby Traffic Manager. Příklad: contoso.com.
+Kromě toho můžete nyní ukázat vrcholu nebo základní doména profil služby Traffic Manager nebo koncový bod CDN pomocí záznamu o aliasu. Příklad: contoso.com.
 
 Další informace najdete v [přehledu záznamů aliasů Azure DNS](dns-alias.md).
-
 
 ## <a name="next-steps"></a>Další postup
 

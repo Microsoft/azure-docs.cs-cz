@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 7ac210d9b30a05fd5dbfd46c41c3e62a1d610357
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b30ef7d0b373f0d9a440b6649f819e429e28328c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891099"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314922"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpečení Azure a dodržování předpisů: PaaS webovou aplikaci hostování pro oficiální úlohy Spojené království
 
@@ -119,7 +119,7 @@ Tato šablona nasadí následující funkce služby App Service:
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 
-SQL Database je spravovaná služba relačních databází pro obecné účely v Microsoft Azure, která podporuje struktury, jako jsou relační data, JSON, prostorová data a XML. SQL Database nabízí spravované izolované databáze SQL, spravované databáze SQL v [elastického fondu](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)a SQL [spravovaných instancí](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (ve verzi public preview). Poskytuje [dynamicky škálovatelný výkon])https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers) a nabízí možnosti jako [indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) pro extrémní analytické analýzy a generování sestav a [OLTP v paměti](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) pro extreme zpracování transakcí. Microsoft zajišťuje bezproblémové opravy a aktualizace základního kódu SQL a odděluje veškerou správu základní infrastruktury.
+SQL Database je spravovaná služba relačních databází pro obecné účely v Microsoft Azure, která podporuje struktury, jako jsou relační data, JSON, prostorová data a XML. SQL Database nabízí spravované izolované databáze SQL, spravované databáze SQL v [elastického fondu](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)a SQL [spravovaných instancí](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (ve verzi public preview). Zajišťuje [dynamicky škálovatelný výkon](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers) a nabízí možnosti jako [indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) pro extrémní analytické analýzy a generování sestav nebo [OLTP v paměti](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) pro extrémní zpracování transakcí. Microsoft zajišťuje bezproblémové opravy a aktualizace základního kódu SQL a odděluje veškerou správu základní infrastruktury.
 
 Azure SQL Database v tomto podrobném plánu
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 68ac03a8aba4042a842b5e740d67ab4198236275
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f22311af277f860c1501287b5be0f5dc149880b9
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013158"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317714"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Kopírování dat z čtverec pomocí Azure Data Factory (Preview)
 
@@ -48,7 +48,7 @@ Následující části obsahují podrobnosti o vlastnostech, které se používa
 | hostitel | Adresa URL instance čtvereček. (to znamená mystore.mysquare.com)  | Ano |
 | ID klienta | ID klienta přidružené k aplikaci čtvereček.  | Ano |
 | ClientSecret | Tajný kód klienta přidružené k aplikaci čtvereček. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| redirectUri | Adresa URL pro přesměrování přiřazené na řídicím panelu Čtvereček aplikace. (tj.) http://localhost:2500)  | Ano |
+| redirectUri | Adresa URL pro přesměrování přiřazené na řídicím panelu Čtvereček aplikace. (tj. http:\//localhost:2500)  | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
 | usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |

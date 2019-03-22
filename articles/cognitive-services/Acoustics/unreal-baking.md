@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: afe4421bea27ff029bd4a1a7808241a54027a6ac
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
-ms.translationtype: HT
+ms.openlocfilehash: 544de5a3ac48c12d75f05a1c9adb56f48bb540f4
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136389"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311547"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Kurz Unreal která má označení vytvoření Akustika projektu
 Tento dokument popisuje proces odesílání Akustika která má označení vytvoření pomocí rozšíření Unreal editoru.
@@ -32,7 +32,7 @@ Existuje pět kroků až po provádění která má označení vytvoření:
 
 Importujte balíček modulu plug-in Akustika projektu do projektu. Vám pomůžou s tím, [Unreal integrace](unreal-integration.md) tématu. Jakmile je integrovaný modul plug-in, otevřete kliknutím na ikonu nový režim Akustika uživatelské rozhraní Akustika.
 
-![Otevřít Akustika režimu](media/acoustics-mode.png)
+![Snímek obrazovky režimu Akustika Unreal editoru – možnost](media/acoustics-mode.png)
 
 ## <a name="tag-actors-for-acoustics"></a>Značka actors pro Akustika
 
@@ -42,7 +42,7 @@ Vyberte jeden nebo více objektů v Tvorba osnovy svět, nebo použijte **Hromad
 
 ### <a name="for-reference-the-objects-tab-parts"></a>Pro referenci: Karta částí objektů
 
-![Podrobnosti o kartě Unreal objekty](media/unreal-objects-tab-details.png)
+![Snímek obrazovky Akustika objekty kartě Unreal](media/unreal-objects-tab-details.png)
 
 1. Výběr tlačítka kartu (**objekty** vybraná karta). Pomocí těchto tlačítek lze projít různé kroky dělat Akustika která má označení vytvoření, shora dolů.
 2. Stručný popis co je potřeba provést pomocí této stránky.
@@ -75,11 +75,11 @@ Akustický materiály řízení velikosti šířky zvukové energie projeví zp�
 
 Čas reverberation dané materiálů v místnosti nepřímo souvisí jeho pohltivosti většina materiálů s absorpce hodnoty v rozsahu 0.01, 0.20 a novější. Jsou velmi absorpčního materiály s absorpční koeficienty nad tento rozsah. Například pokud místnosti zvuky příliš reverberant, změňte na něco vyšší absorptivity akustický materiálu stěn, dolní mez nebo horní mez. Akustický materiálu přiřazení se vztahuje na všechny objekty actor, které používají tento materiál scény.
 
-![Graf doby dozvuku](media/reverb-time-graph.png)
+![Graf zobrazující negativní korelace reverberation čas, který nabízí pohltivosti](media/reverb-time-graph.png)
 
 ### <a name="for-reference-parts-of-the-materials-tab"></a>Pro referenci: Součástí kartě materiály
 
-![Podrobnosti o kartě Unreal objekty](media/unreal-materials-tab-details.png)
+![Snímek obrazovky Akustika objekty kartě Unreal](media/unreal-materials-tab-details.png)
 
 1. **Materiály** tlačítko kartu, zobrazí tato stránka se používá.
 2. Stručný popis co je potřeba provést pomocí této stránky.
@@ -94,7 +94,7 @@ Po přiřazení materiály, přepněte **sondy** kartu.
 
 ### <a name="for-reference-parts-of-the-probes-tab"></a>Pro referenci: Na kartě testy částí
 
-![Podrobnosti karty testy paměti](media/unreal-probes-tab-details.png)
+![Snímek obrazovky sondy Akustika kartě Unreal](media/unreal-probes-tab-details.png)
 
 1. **Sondy** kartu tlačítko použít zobrazíte na této stránce
 2. Stručný popis, co je potřeba provést pomocí této stránky
@@ -124,11 +124,11 @@ Po dokončení těchto výpočtů lze zobrazit náhled dat voxel a umístění t
 
 Po dokončení testu výpočtu nového objektu actor se zobrazí v Tvorba osnovy World, volá **AcousticsDebugRenderer**. Kontroluje **vykreslení sondy** a **vykreslení Voxels** zaškrtávací políčka vám umožní zobrazení ladění uvnitř zobrazení editoru.
 
-![Akustika ladění nástroj pro vykreslování](media/acoustics-debug-renderer.png)
+![Snímek obrazovky zobrazující Akustika ladění nástroj pro vykreslování objektu actor v editoru Unreal](media/acoustics-debug-renderer.png)
 
 Pokud nevidíte žádné voxels nebo testy jako překryvný obrázek na úroveň, ujistěte se, že v zobrazení je povoleno vykreslení v reálném čase.
 
-![Povolit vykreslování v reálném čase](media/unreal-real-time-rendering.png)
+![Snímek obrazovky s možností vykreslování v reálném čase v Unreal](media/unreal-real-time-rendering.png)
 
 ### <a name="voxels"></a>Voxels
 
@@ -137,7 +137,7 @@ Pohyb scéně a ověřte, zda má geometrie akusticky occluding voxels. Zkontrol
 
 Pokud srovnáte voxels vytvořené pomocí řešení jemné hrubé řešení vs, zobrazí hrubý voxels jsou dvakrát velké.
 
-![Voxel Preview](media/unreal-voxel-preview.png)
+![Snímek obrazovky Akustika voxels ve verzi preview v Unreal editoru](media/unreal-voxel-preview.png)
 
 ### <a name="probe-points"></a>Body pro zjišťování
 
@@ -145,7 +145,7 @@ Test body jsou synonymem umístění možné player (naslouchací proces). Když
 
 Je důležité zkontrolovat, že existují test body všude, kde hráč má cestují ve scéně. Test body jsou umístěny na síť navigace modulem Akustika projektu a nelze přesunout nebo upravovat, zajistěte proto na pozadí síť navigace všech možných player umístění zkontrolováním bodů testu.
 
-![Sondy ve verzi Preview](media/unreal-probes-preview.png)
+![Snímek obrazovky Akustika testy ve verzi preview v Unreal](media/unreal-probes-preview.png)
 
 ### <a name="Coarse-vs-Fine-Resolution"></a>Hrubý vs jemné řešení
 
@@ -159,9 +159,9 @@ Když to může zdát jednoduché, má několik dopadů na akustický simulace:
 * Zvukové zdroje nelze umístit uvnitř "vyplněné" voxels, který je voxels obsahující geometrie – výsledkem je žádný zvukový signál. Je obtížnější umístit zdrojů zvuku, nejsou uvnitř větší voxels z hrubé než při použití nastavení v pořádku.
 * Větší voxels bude více pronikat do portálů, jak je znázorněno níže. První image byla vytvořena pomocí hrubý, druhá je stejný vaší bránou pomocí jemné řešení. Označené červenou označení, je mnohem méně neoprávněného vniknutí do vaší bránou pomocí nastavení v pořádku. Modrá čára je vaší bránou dle geometrie, zatímco červená čára je efektivní akustický portál definován velikostí voxel. Jak tento neoprávněného vniknutí hraje v dané situaci závisí zcela jak voxels zarovnejte s geometrie na portálu, který je určena velikost a umístění objektů na scéně.
 
-![Hrubý dveřmi](media/unreal-coarse-bake.png)
+![Snímek obrazovky s hrubým voxels vyplnění vaší bránou v Unreal](media/unreal-coarse-bake.png)
 
-![Bez problémů dveřmi](media/unreal-fine-bake.png)
+![Snímek obrazovky jemné voxels ve vaší bránou v Unreal](media/unreal-fine-bake.png)
 
 ## <a name="bake-your-level-using-azure-batch"></a>Vytvoření vaší úrovni pomocí služby Azure Batch
 
@@ -169,7 +169,7 @@ Můžete zanést vaše Scéna s výpočetní cluster v cloudu pomocí služby Az
 
 ### <a name="for-reference-parts-of-the-bake-tab"></a>Pro referenci: Částí, která má označení vytvoření karty
 
-![Podrobnosti karty zanést](media/unreal-bake-tab-details.png)
+![Snímek obrazovky vytvoření Akustika kartě Unreal](media/unreal-bake-tab-details.png)
 
 1. Vytvoření karty tlačítka sloužícího k otevřete tuto stránku.
 2. Stručný popis toho, jak provést na této stránce.

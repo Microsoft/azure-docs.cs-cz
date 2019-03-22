@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: aljo
-ms.openlocfilehash: 78bf30c01bc240d4fc7439ab14868bf7be90b17e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c27938ad28abc62f42024faae7931196704b9b1b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895818"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314565"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Vytvoření první aplikace Service Fabric typu kontejner v Linuxu
 > [!div class="op_single_selector"]
@@ -122,7 +122,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 Parametr *name* udává název spuštěného kontejneru (namísto ID kontejneru).
 
-Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč a přejděte na vrácenou IP adresu na portu 4000, například http://localhost:4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč a přejděte na IP adresu vrácenou na portu 4000, například "http:\//localhost:4000". V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 ![Hello World!][hello-world]
 
@@ -271,9 +271,9 @@ Pomocí instalačního skriptu, který je součástí šablony při https://gith
 ./install.sh
 ```
 
-Otevřete prohlížeč a přejdete k Service Fabric Exploreru na adrese http://localhost:19080/Explorer (pokud používáte Vagrant v Mac OS X, místo localhost použijte privátní IP adresu virtuálního počítače). Rozbalte uzel Aplikace a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
+Otevřete prohlížeč a přejděte na Service Fabric Explorer na adrese http:\//localhost:19080 / Explorer (místo localhost použijte privátní IP adresu virtuálního počítače, pokud používáte Vagrant v Mac OS X). Rozbalte uzel Aplikace a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
 
-Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč a přejděte na vrácenou IP adresu na portu 4000, například http://localhost:4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč a přejděte na IP adresu vrácenou na portu 4000, například "http:\//localhost:4000". V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 ![Hello World!][hello-world]
 

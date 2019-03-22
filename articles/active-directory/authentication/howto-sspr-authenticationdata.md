@@ -1,5 +1,5 @@
 ---
-title: Požadavky služby Azure AD SSPR dat | Dokumentace Microsoftu
+title: Azure AD SSPR data požadavky – Azure Active Directory
 description: Požadavky na data pro hesla pomocí samoobslužné služby Azure AD resetování a postupy jejich splnění
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccf665147c8fea0e2ce44161ef0b5df085649a0b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 580c9080bb2b019e120ea57e5fe4444a71c24e76
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179037"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314786"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Nasazení resetování hesla bez vyžadování registrace koncového uživatele
 
@@ -42,7 +42,7 @@ Pokud používáte výchozí nastavení ve službě Azure AD Connect, jsou prove
 
 Když uživatel zadání čísla mobilního telefonu, pole Telefon pod kontaktní údaje pro ověření ve službě Azure AD také naplní se s tímto číslem.
 
-## <a name="authentication-contact-info"></a>Kontaktní údaje pro ověření
+## <a name="authentication-contact-info"></a>Kontaktní údaje pro ověřování
 
 Globální správce, můžete ručně nastavit kontaktní údaje pro ověření pro uživatele, jako je zobrazena na následujícím snímku obrazovky.
 

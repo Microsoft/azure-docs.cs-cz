@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a85fb65ad971bfc70bdab0689e99921e616b56ac
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 07fdaa22532f48cc39b6c524d85fdfe625f8b80c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308855"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337122"
 ---
 # <a name="categorize-images"></a>Kategorizace obrázků
 
@@ -24,7 +24,7 @@ Kromě značek a popis pro počítačové zpracování obrazu vrací na základ�
 
 ## <a name="the-86-category-concept"></a>Systém 86 kategorií
 
-Počítačové zpracování obrazu můžete zařadit do kategorií bitovou kopii široce nebo konkrétně, pomocí seznamu 86 categroies v následujícím diagramu. Celou taxonomii v textovém formátu najdete v článku o [taxonomických kategoriích](category-taxonomy.md).
+Počítačové zpracování obrazu můžete zařadit do kategorií bitovou kopii široce nebo konkrétně, pomocí seznamu 86 kategorií v následujícím diagramu. Celou taxonomii v textovém formátu najdete v článku o [taxonomických kategoriích](category-taxonomy.md).
 
 ![seskupené seznam všech kategorií taxonomie kategorií](./Images/analyze_categories-v2.png)
 

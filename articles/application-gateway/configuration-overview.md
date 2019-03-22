@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 61b3a9e066a3ee20effa97f1c6c7a0bd1ae90ac0
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: 18013050546cc5e204d9cc07a2f499388596164c
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285834"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319444"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace služby Application Gateway
 
@@ -33,9 +33,9 @@ Služba Application gateway je vyhrazené nasazení ve virtuální síti. V rám
 
 #### <a name="size-of-the-subnet"></a>Velikost podsítě.
 
-Application Gateway využívá jednu privátní IP adresu na jednu instanci a jiné privátní IP adresu, pokud je nakonfigurovaný privátní front-endovou konfiguraci IP. Azure si vyhrazuje první čtyři a poslední IP adresu v každé podsíti pro interní použití. Například pokud služby application gateway je nastavena na tři instance a žádná privátní front-endovou IP adresa, pak alespoň osm IP adresy je třeba v podsíti - 5 IP adres pro interní použití a tři IP adresy pro tři instance služby application gateway. Proto se v tomto případě je/29 nebo větší velikost podsítě je potřeba. Pokud máte tři instance a IP adres pro privátní front-endovou konfiguraci protokolu IP, pak devět IP adres se bude vyžadovat - tři IP adresy pro tři instance služby application gateway jednu IP adresu pro privátní front-endovou IP Adresou a 5 IP adres pro interní použití. Proto se v tomto případě o velikosti/28 nebo větší velikost podsítě je potřeba.
+Application Gateway využívá jednu privátní IP adresu na jednu instanci a jiné privátní IP adresu, pokud je nakonfigurovaný privátní front-endovou konfiguraci IP. Kromě toho Azure si vyhrazuje 5 IP adres – první čtyři a poslední IP adresy – v každé podsíti pro interní použití. Například pokud služby application gateway je nastavena na 15 instancí a žádná privátní front-endovou IP adresa, pak alespoň 20 IP adres je třeba v podsíti - 5 IP adres pro interní použití a 15 IP adresy pro 15 instance služby application gateway. Proto se v tomto případě velikost/27 nebo větší velikost podsítě je potřeba. Pokud máte 27 instancí a IP adres pro privátní front-endová konfigurace protokolu IP, pak 33 IP adres se bude vyžadovat - 27 IP adresy pro 27 instance služby application gateway jednu IP adresu pro privátní front-endovou IP Adresou a pět IP adresy pro interní použití. Proto se v tomto případě /26 podsíť, velikost nebo novější je nutný.
 
-Jako nejlepší postup použijte aspoň o velikosti/28 velikost podsítě. To vám dává 11 použitelné adresy. Pokud zatížení aplikace vyžaduje víc než 10 instancí, měli byste zvážit možnost/27 nebo/26 velikost podsítě.
+Doporučuje se použít minimálně o velikosti/28 velikost podsítě. To vám dává 11 použitelné adresy. Pokud zatížení aplikace vyžaduje víc než 10 instancí, měli byste zvážit možnost/27 nebo/26 velikost podsítě.
 
 #### <a name="network-security-groups-supported-on-the-application-gateway-subnet"></a>Skupiny zabezpečení sítě podporované na podsítě Application Gateway.
 

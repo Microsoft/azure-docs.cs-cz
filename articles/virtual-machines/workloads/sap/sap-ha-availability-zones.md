@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 687f99fb6447eddb4ce10ce81bc349181ec5c48c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 3772dbdc8582eea1b2eac368784878a8a36d34ad
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094748"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339478"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfigurace úlohy SAP se zónami dostupnosti Azure
 [Zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) je jedna z funkcí vysoké dostupnosti, které poskytuje Azure. Použití zón dostupnosti zlepšuje celkovou dostupnost úloh SAP v Azure. Tato funkce je k dispozici v některých [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/). V budoucnu bude k dispozici v dalších oblastech.
@@ -93,7 +93,7 @@ V rozhodování, rovněž brát v úvahu účet SAP doporučení latence sítě,
 > Očekává se, že měření bylo popsáno dříve bude poskytovat různé výsledky ve všech oblastech Azure, který podporuje [zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview). I v případě, že vaše požadavky na latenci sítě jsou stejné, můžete potřebovat přijmout různé strategie nasazení v různých oblastech Azure, protože latence sítě mezi zónami se může lišit. V některých oblastech Azure latence sítě mezi tři různé oblasti, může se výrazně lišit. V jiných oblastech může být latence sítě mezi tři různé oblasti jednotnější. Deklarace identity, který je vždycky latence sítě mezi 1 a 2 ms není správná. Latence sítě napříč zónami dostupnosti v oblasti Azure, které nelze zobecněný.
 
 ## <a name="activeactive-deployment"></a>Aktivní/aktivní nasazení
-Tato architektura nasazení se nazývá aktivní/aktivní, protože nasazení vaše aktivní dialogové okno instance SAP napříč zónami dvě nebo tři. Centrální služby SAP instanci, která používá replikaci na zařazení do fronty se nasadí mezi dvě zóny. Totéž platí pro vrstvu DBMS, které budou nasazené ve stejné oblasti jako centrální služby SAP.
+Tato architektura nasazení se nazývá aktivní/aktivní, protože nasazení aktivní aplikační servery SAP napříč zónami dvě nebo tři. Centrální služby SAP instanci, která používá replikaci na zařazení do fronty se nasadí mezi dvě zóny. Totéž platí pro vrstvu DBMS, které budou nasazené ve stejné oblasti jako centrální služby SAP.
 
 Při zvažování tuto konfiguraci, budete muset najít dvě zóny dostupnosti ve vaší oblasti této nabídky mezi zónami sítích s latencí, které je přijatelné pro vaši úlohu a vaše synchronní replikace DBMS. Můžete také chtít nechat rozdílů mezi latence sítě v rámci zóny, kterou jste vybrali a latence sítě napříč zónami není příliš velký. Důvodem je, že už nechcete velké odchylky, v závislosti na tom, jestli úloha běží v zóně serverem DBMS nebo napříč oblasti, ve spuštěné časů vašich firemních procesech nebo dávkových úloh Hive. Některé změny jsou přijatelné, ale ne faktory rozdíl.
 

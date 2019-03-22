@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 567890f3beec1eff30effeec0ce23284c5fee141
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fd109a72b092e963bc4fda7894bf67f998b7d0c5
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109286"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309799"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(NEPOUŽÍVANÉ) Správa kontejnerů DC/OS prostřednictvím rozhraní REST API Marathonu
 
@@ -30,7 +30,7 @@ Než si projdete tyto příklady, budete potřebovat cluster DC/OS nakonfigurova
 * [Připojení ke clusteru Azure Container Service](../container-service-connect.md)
 
 ## <a name="access-the-dcos-apis"></a>Přístup k rozhraním API DC/OS
-Až se připojíte ke clusteru Azure Container Service, dostanete DC/OS a související rozhraní REST API přes http://localhost:local-port. Příklady v tomto dokumentu předpokládají, že máte k dispozici tunel na portu 80. Například se dá kontaktovat koncové body nástroje Marathon na identifikátory URI začínající `http://localhost/marathon/v2/`. 
+Až se připojíte ke clusteru Azure Container Service, dostanete DC/OS a související rozhraní REST API pomocí protokolu http:\//localhost:local-port. Příklady v tomto dokumentu předpokládají, že máte k dispozici tunel na portu 80. Například se dá kontaktovat koncové body nástroje Marathon na identifikátory URI začínající http: \/ /localhost/marathon/v2 /. 
 
 Další informace o různých rozhraních API najdete v dokumentaci Mesosphere pro rozhraní [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) a [Chronos API](https://mesos.github.io/chronos/docs/api.html) a v dokumentaci Apache pro rozhraní [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
 
@@ -123,7 +123,7 @@ Vám pomůže rozhraním API Marathonu vertikálně nebo horizontálně navýši
 Z tunelového připojení spusťte následující příkaz pro horizontální navýšení kapacity aplikace.
 
 > [!NOTE]
-> Identifikátor URI je http://localhost/marathon/v2/apps/ za nímž následuje Identifikátor škálování aplikace. Pokud používáte ukázku Nginx, která je k dispozici, identifikátor URI by http://localhost/marathon/v2/apps/nginx.
+> Identifikátor URI je http: \/ /localhost/marathon/v2/aplikace/ID škálování aplikace po něm. Pokud používáte ukázku Nginx, která je k dispozici, identifikátor URI by být http:\//localhost/marathon/v2/apps/nginx.
 
 ```bash
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
@@ -180,7 +180,7 @@ Rozhraní Marathon API je možné použít i k nasazením aplikací se škálov�
 Spusťte následující příkaz pro horizontální navýšení kapacity aplikace:
 
 > [!NOTE]
-> Identifikátor URI je http://localhost/marathon/v2/apps/ za nímž následuje Identifikátor škálování aplikace. Pokud používáte ukázku Nginx, které jsou k dispozici zde, identifikátor URI by http://localhost/marathon/v2/apps/nginx.
+> Identifikátor URI je http: \/ /localhost/marathon/v2/aplikace/ID škálování aplikace po něm. Pokud používáte ukázku Nginx, které jsou k dispozici zde, identifikátor URI by http:\//localhost/marathon/v2/apps/nginx.
 
 ```powershell
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'

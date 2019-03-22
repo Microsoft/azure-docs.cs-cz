@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: bf2f2db57f33645389fd751c8c00f9f135416c50
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9570982e18f2698400c2798dd3e29b0ca6160b8c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864129"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309738"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine streamování pro Android  
 
@@ -153,7 +153,7 @@ Pokud upgradujete mobilního prohlížeče Chrome v62 (nebo vyšší) na telefon
 
 Výše uvedené aplikace PWA open source se vytváří v Node.js. Pokud chcete hostovat vlastní verzi na serveru se systémem Ubuntu, mějte na paměti následující běžné došlo k chybě problémy, které může zabránit přehrávání:
 
-1. Problém CORS: Ukázkové video v ukázkové aplikaci je hostován v https://storage.googleapis.com/biograf-video-files/videos/. Google má nastavení CORS pro všechny své ukázky test hostované v intervalu Google Cloud Storage. Jsou poskytovány pomocí hlavičky CORS explicitním zadáním položky CORS: https://biograf-155113.appspot.com (doménou, ve které google hostitelem jejich ukázkové) brání přístupu podle jakýchkoli jiných lokalit. Pokud se pokusíte, zobrazí se následující chyba HTTP: Nepovedlo se načíst https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: žádné záhlaví 'Přístup-Control-Allow-Origin' je k dispozici u požadovaného prostředku. Původní "https://13.85.80.81:8080' není proto povolený přístup. Pokud odpověď neprůhledné slouží vašim potřebám, nastavte režim požadavek na "no-cors" Načíst prostředek s CORS zakázán.
+1. Problém CORS: Ukázkové video v ukázkové aplikaci je hostován v https://storage.googleapis.com/biograf-video-files/videos/. Google má nastavení CORS pro všechny své ukázky test hostované v intervalu Google Cloud Storage. Jsou poskytovány pomocí hlavičky CORS explicitním zadáním položky CORS: https://biograf-155113.appspot.com (doménou, ve které google hostitelem jejich ukázkové) brání přístupu podle jakýchkoli jiných lokalit. Pokud se pokusíte, zobrazí se následující chyba HTTP: Nepovedlo se načíst https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: žádné záhlaví 'Přístup-Control-Allow-Origin' je k dispozici u požadovaného prostředku. Původní "https:\//13.85.80.81:8080' není proto povolený přístup. Pokud odpověď neprůhledné slouží vašim potřebám, nastavte režim požadavek na "no-cors" Načíst prostředek s CORS zakázán.
 2. Problém certifikátu: Rozšíření EME pro Widevine od Chrome v 58, vyžaduje protokol HTTPS. Proto je nutné pro hostování ukázkové aplikace prostřednictvím protokolu HTTPS s x X509 certifikátu. Certifikát obvykle testů nefunguje kvůli následující požadavky: Musíte získat certifikát splňuje následující požadavky:
     - Chrome a Firefox vyžadují nastavení alternativní název předmětu SAN existovat v certifikátu
     - Musí mít certifikát důvěryhodné certifikační Autority a certifikát podepsaný svým držitelem vývoj nefunguje.

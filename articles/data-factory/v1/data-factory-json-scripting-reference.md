@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 7a3819eedc57e1e349814c9105a0880bf3d4d9ec
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 3fcc2e31431f0deb15332aec7636e2bfefeffe9b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891252"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317540"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON Scripting Reference
 > [!NOTE]
@@ -4595,7 +4595,7 @@ K definování Salesforce propojenou službu, nastavte **typ** propojené služb
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| environmentUrl | Zadejte adresu URL služby Salesforce instanci. <br><br> – Výchozí hodnota je "https://login.salesforce.com". <br> – Chcete-li kopírovat data z karantény, zadejte "https://test.salesforce.com". <br> -Ke zkopírování dat z vlastní domény, zadejte, například "https://[domain].my.salesforce.com". |Ne |
+| environmentUrl | Zadejte adresu URL služby Salesforce instanci. <br><br> – Výchozí hodnota je "https:\//login.salesforce.com". <br> – Chcete-li kopírovat data z karantény, zadejte "https://test.salesforce.com". <br> -Ke zkopírování dat z vlastní domény, zadejte, například "https://[domain].my.salesforce.com". |Ne |
 | uživatelské jméno |Zadejte uživatelské jméno uživatelského účtu. |Ano |
 | heslo |Zadejte heslo pro uživatelský účet. |Ano |
 | Token securityToken |Zadejte token zabezpečení pro uživatelský účet. Zobrazit [získal token zabezpečení](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) pokyny o tom, jak resetování/get token zabezpečení. Obecné informace o tokeny zabezpečení najdete v tématu [zabezpečení a rozhraní API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Ano |

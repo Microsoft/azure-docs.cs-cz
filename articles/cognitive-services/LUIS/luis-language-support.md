@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 98df1d9612d18e4ab5044bd92822b2df76286b12
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 735835d16eb14c3847f36ecb6f46c08c0a8928ef
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340850"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339512"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyka a oblasti pro LUIS
 
@@ -94,3 +94,116 @@ Pro strojové učení, LUIS, rozdělí do utterance [tokeny](luis-glossary.md#to
 |Portugalština (Brazílie)|✔||||
 |Španělština (es-ES)|✔||||
 |Španělština (es-MX)|✔||||
+
+### <a name="custom-tokenizer-versions"></a>Verze vlastního tokenizátor
+
+Následující jazykové verze mají vlastní tokenizátor verze:
+
+|Jazyková verze|Verze|Účel|
+|--|--|--|
+|Němčina<br>`de-de`|1.0.0|Tokenizes slova rozdělením pomocí machine learning na základě tokenizátor, který se pokusí rozdělit složeného slova do jejich jedné součásti.<br>Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, bude převedena na `Ich fahre einen kranken wagen`. Umožňuje označení `kranken` a `wagen` nezávisle na sobě jako různé entity.|
+|Němčina<br>`de-de`|1.0.1|Tokenizes slova rozdělením na mezery.<br> Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, zůstává jeden token. Proto `krankenwagen` je označen jako jednu entitu. |
+
+### <a name="migrating-between-tokenizer-versions"></a>Migrace mezi verzemi tokenizátor
+
+Nejprve je změna tokenizátor verze v souboru aplikace, importujte verze. Tato akce změní jak tokenizovaného projevy, ale umožňuje zachovat stejné ID aplikace. 
+
+Tokenizátor JSON pro 1.0.0. Všimněte si, že hodnota vlastnosti pro `tokenizerVersion`. 
+
+```JSON
+{
+    "luis_schema_version": "3.2.0",
+    "versionId": "0.1",
+    "name": "german_app_1.0.0",
+    "desc": "",
+    "culture": "de-de",
+    "tokenizerVersion": "1.0.0",
+    "intents": [
+        {
+            "name": "i1"
+        },
+        {
+            "name": "None"
+        }
+    ],
+    "entities": [
+        {
+            "name": "Fahrzeug",
+            "roles": []
+        }
+    ],
+    "composites": [],
+    "closedLists": [],
+    "patternAnyEntities": [],
+    "regex_entities": [],
+    "prebuiltEntities": [],
+    "model_features": [],
+    "regex_features": [],
+    "patterns": [],
+    "utterances": [
+        {
+            "text": "ich fahre einen krankenwagen",
+            "intent": "i1",
+            "entities": [
+                {
+                    "entity": "Fahrzeug",
+                    "startPos": 23,
+                    "endPos": 27
+                }
+            ]
+        }
+    ],
+    "settings": []
+}
+```
+
+Tokenizátor JSON pro verzi 1.0.1. Všimněte si, že hodnota vlastnosti pro `tokenizerVersion`. 
+
+```JSON
+{
+    "luis_schema_version": "3.2.0",
+    "versionId": "0.1",
+    "name": "german_app_1.0.1",
+    "desc": "",
+    "culture": "de-de",
+    "tokenizerVersion": "1.0.1",
+    "intents": [
+        {
+            "name": "i1"
+        },
+        {
+            "name": "None"
+        }
+    ],
+    "entities": [
+        {
+            "name": "Fahrzeug",
+            "roles": []
+        }
+    ],
+    "composites": [],
+    "closedLists": [],
+    "patternAnyEntities": [],
+    "regex_entities": [],
+    "prebuiltEntities": [],
+    "model_features": [],
+    "regex_features": [],
+    "patterns": [],
+    "utterances": [
+        {
+            "text": "ich fahre einen krankenwagen",
+            "intent": "i1",
+            "entities": [
+                {
+                    "entity": "Fahrzeug",
+                    "startPos": 16,
+                    "endPos": 27
+                }
+            ]
+        }
+    ],
+    "settings": []
+}
+```
+
+Druhou možností je [importovat soubor jako novou aplikaci](luis-how-to-start-new-app.md#import-an-app-from-file), místo verze. Tato akce znamená, že nová aplikace má ID jiné aplikace, ale používá tokenizátor verze zadaná v souboru. 

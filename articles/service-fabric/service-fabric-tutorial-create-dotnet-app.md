@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7432cbf8fae098c0753641f2002b72eaab3ddbb4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ff6475637b07f50aaea93caac85e65356bc9b96b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57851359"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317200"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro ASP.NET Core a stavovou back-end službou
 
@@ -466,7 +466,7 @@ Tento kurz používá rozhraní [ASP.NET Core Web API](service-fabric-reliable-s
         ],
 ```
 Chcete-li najít port reverzního proxy serveru používají ve vašem místním vývojovém clusteru, zobrazte **HttpApplicationGatewayEndpoint** elementu v manifestu místního clusteru Service Fabric:
-1. Otevřete okno prohlížeče a přejděte do http://localhost:19080 otevřete nástroj Service Fabric Explorer.
+1. Otevřete okno prohlížeče a přejděte do protokolu http:\//localhost:19080 otevřete nástroj Service Fabric Explorer.
 2. Vyberte **clusteru -> Manifest**.
 3. Poznamenejte si port elementu HttpApplicationGatewayEndpoint. Ve výchozím nastavení by to měl být port 19081. Pokud to port 19081 není, bude nutné ho změnit v metodě GetProxyAddress následujícího kódu VotesController.cs.
 

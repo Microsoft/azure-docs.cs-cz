@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: geg
-ms.openlocfilehash: 44b8d57af83f53c73868a84104da7a7f72cb1e81
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: HT
+ms.openlocfilehash: 2253e729daedc3b130919913c1616449245f9cc1
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202584"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315381"
 ---
 # <a name="restore-azure-vms"></a>Obnovení virtuálních počítačů Azure
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak obnovit virtuální počítač Azure data z bodů o
 Chcete-li obnovit virtuální počítač Ujistěte se, že máte potřebná [RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) oprávnění.
 
 > [!NOTE]
-> Pokud nemáte [RABAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) oprávnění můžete provádět [obnovení disku](backup-azure-arm-restore-vms.md#create-new-restore-disks) a vytvořte virtuální počítač s využitím [nasazení šablony](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm) funkce.
+> Pokud nemáte [RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) oprávnění můžete provádět [obnovení disku](backup-azure-arm-restore-vms.md#create-new-restore-disks) a vytvořte virtuální počítač s využitím [nasazení šablony](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm) funkce.
 
 ### <a name="restore-options"></a>Možnosti obnovení
 

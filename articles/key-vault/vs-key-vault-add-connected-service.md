@@ -3,33 +3,33 @@ title: Přidání podpory služby Key Vault do projektu ASP.NET pomocí sady Vis
 description: Pomocí tohoto kurzu vám pomůžou získat informace tom, jak přidat podporu služby Key Vault k webové aplikaci ASP.NET nebo ASP.NET Core.
 services: key-vault
 author: ghogen
-manager: douge
-ms.prod: visual-studio-dev15
+manager: jillfra
+ms.prod: visual-studio
 ms.technology: vs-azure
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/21/2019
 ms.author: ghogen
-ms.openlocfilehash: de849ae290228826ee500ae1c7e623210e585d34
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d95bd114be712953b79ef5afbb0915173f6de26c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113244"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339274"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání služby Key Vault do vaší webové aplikace pomocí připojených služeb sady Visual Studio
 
-V tomto kurzu se dozvíte, jak snadno přidat všechno, co potřebujete, pokud chcete začít používat Azure Key Vault ke správě svých tajných kódů pro webové projekty v sadě Visual Studio, ať už jsou pomocí ASP.NET Core nebo ASP.NET projektu jakéhokoli typu. Pomocí funkce připojené služby v sadě Visual Studio 2017 může sada Visual Studio automaticky přidat balíčky NuGet a nastavení konfigurace, které potřebujete k připojení ke službě Key Vault v Azure. 
+V tomto kurzu se dozvíte, jak snadno přidat všechno, co potřebujete, pokud chcete začít používat Azure Key Vault ke správě svých tajných kódů pro webové projekty v sadě Visual Studio, ať už jsou pomocí ASP.NET Core nebo ASP.NET projektu jakéhokoli typu. Pomocí funkce připojené služby v sadě Visual Studio může sada Visual Studio automaticky přidat balíčky NuGet a nastavení konfigurace, které potřebujete k připojení ke službě Key Vault v Azure. 
 
-Podrobnosti o změnách, připojené služby umožňuje ve vašem projektu povolit služby Key Vault najdete v tématu [službu Key Vault připojené – co se stalo se Moje ASP.NET 4.7.1 projektu](vs-key-vault-aspnet-what-happened.md) nebo [službu Key Vault připojené – co se stalo s mým projektem ASP.NET Core](vs-key-vault-aspnet-core-what-happened.md).
+Podrobnosti o změnách, připojené služby umožňuje ve vašem projektu povolit služby Key Vault najdete v tématu [službu Key Vault připojené – co se stalo se Moje ASP.NET 4.7.1 projektu](#how-your-aspnet-framework-project-is-modified) nebo [službu Key Vault připojené – co se stalo s mým projektem ASP.NET Core](#how-your-aspnet-core-project-is-modified).
 
 ## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure**. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
-- **Visual Studio 2017 verze 15.7** s nainstalovanou sadou funkcí **Vývoj pro web**. [Stáhnout](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)
-- Pro technologii ASP.NET (ne jádro) potřebujete vývojářské nástroje .NET Framework 4.7.1, která ve výchozím nastavení nenainstalují. K instalaci, spusťte instalační program sady Visual Studio, zvolte **změnit**a klikněte na tlačítko **jednotlivé komponenty**, potom na pravé straně, rozbalte **vývoj pro ASP.NET a web**a zvolte **vývojové nástroje .NET Framework 4.7.1**.
-- 4.7.1 technologie ASP.NET nebo ASP.NET Core 2.0 webový projekt otevřít.
+- **Visual Studio 2019** nebo **Visual Studio 2017 verze 15.7** s **vývoj pro Web** nainstalovaná úloha. [Stáhnout](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)
+- Pro technologii ASP.NET (ne jádro) pomocí sady Visual Studio 2017 budete potřebovat rozhraní .NET Framework 4.7.1 nebo vyšší vývojářské nástroje, které ve výchozím nastavení nenainstalují. K instalaci, spusťte instalační program sady Visual Studio, zvolte **změnit**a klikněte na tlačítko **jednotlivé komponenty**, potom na pravé straně, rozbalte **vývoj pro ASP.NET a web**a zvolte **vývojové nástroje .NET Framework 4.7.1**.
+- Technologie ASP.NET 4.7.1 nebo novější, nebo webový projekt ASP.NET Core 2.0 otevřít.
 
 ## <a name="add-key-vault-support-to-your-project"></a>Přidání podpory služby Key Vault do projektu
 
@@ -107,20 +107,26 @@ Teď můžete přistupovat tajné klíče v kódu. Další postup se liší v z�
         private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
     }
    ```
-3. Potom otevřete soubor About.cshtml.cs a napsat následující kód
-   1. Zahrnout odkaz na Microsoft.Extensions.Configuration situace using – příkaz    
-       ```
+
+3. Potom otevřete soubor About.cshtml.cs a napsat následující kód:
+   1. Zahrňte odkaz na Microsoft.Extensions.Configuration situace příkaz using:
+
+       ```csharp
        using Microsoft.Extensions.Configuration
        ```
-   2. Přidejte tento konstruktor
-       ```
+
+   1. Přidejte tento konstruktor:
+
+       ```csharp
        public AboutModel(IConfiguration configuration)
        {
            _configuration = configuration;
        }
        ```
-   3. Metoda OnGet aktualizace. Aktualizovat hodnotu zástupného symbolu, které jsou tady uvedené s název tajného klíče, který jste vytvořili výše uvedené příkazy
-       ```
+
+   1. Metoda OnGet aktualizace. Aktualizujte hodnotu zástupného symbolu, které jsou tady uvedené s název tajného klíče, který jste vytvořili výše uvedené příkazy.
+
+       ```csharp
        public void OnGet()
        {
            //Message = "Your application description page.";
@@ -128,7 +134,7 @@ Teď můžete přistupovat tajné klíče v kódu. Další postup se liší v z�
        }
        ```
 
-Spusťte aplikaci místně tak, že přejdete do o stránce. Měli byste vaše tajná hodnota načíst
+Spusťte aplikaci místně tak, že přejdete na stránku o. Měli byste vidět vaše tajná hodnota načíst.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -137,6 +143,94 @@ Pokud už ji nepotřebujete, odstraňte skupinu prostředků. Tím se odstraní 
 1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Až se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.
 3. Do pole **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ:** zadejte název vaší skupiny prostředků a vyberte **Odstranit**.
+
+## <a name="how-your-aspnet-core-project-is-modified"></a>Jak se mění váš projekt ASP.NET Core
+
+Tato část identifikuje přesný změny provedené v projektu ASP.NET při přidávání služby Key Vault připojení služby pomocí sady Visual Studio.
+
+### <a name="added-references"></a>Přidání odkazů
+
+Ovlivňuje odkazy na rozhraní .NET soubory projektu a odkazy na balíčky NuGet.
+
+| Type | Referenční informace |
+| --- | --- |
+| NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
+
+### <a name="added-files"></a>Přidání souborů
+
+- Soubor ConnectedService.json přidali, která zaznamenává některé informace o poskytovateli připojenou službu, verzi a odkaz na dokumentaci.
+
+### <a name="project-file-changes"></a>Změny v souboru projektu
+
+- Přidání připojené služby ItemGroup a ConnectedServices.json souboru.
+
+### <a name="launchsettingsjson-changes"></a>launchsettings.JSON změny
+
+- Následující položky proměnná prostředí přidat do profilu služby IIS Express a profil, který odpovídá názvu vašeho webového projektu:
+
+    ```json
+      "environmentVariables": {
+        "ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONENABLED": "true",
+        "ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONVAULT": "<your keyvault URL>"
+      }
+    ```
+
+### <a name="changes-on-azure"></a>Změny v Azure
+
+- Vytvoří skupinu prostředků (nebo použít existující).
+- V zadané skupině prostředků vytvořili službu Key Vault.
+
+## <a name="how-your-aspnet-framework-project-is-modified"></a>Jak se mění projektu ASP.NET Framework
+
+Tato část identifikuje přesný změny provedené v projektu ASP.NET při přidávání služby Key Vault připojení služby pomocí sady Visual Studio.
+
+### <a name="added-references"></a>Přidání odkazů
+
+Má vliv na odkazy na soubory .NET projektu a `packages.config` (odkazy na NuGet).
+
+| Type | Referenční informace |
+| --- | --- |
+| .NET; NuGet | Microsoft.Azure.KeyVault |
+| .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |
+| .NET; NuGet | Microsoft.Rest.ClientRuntime |
+| .NET; NuGet | Microsoft.Rest.ClientRuntime.Azure |
+
+### <a name="added-files"></a>Přidání souborů
+
+- Soubor ConnectedService.json přidali, která zaznamenává některé informace o poskytovateli připojenou službu, verzi a odkaz na dokumentaci.
+
+### <a name="project-file-changes"></a>Změny v souboru projektu
+
+- Přidání připojené služby ItemGroup a ConnectedServices.json souboru.
+- Odkazy na sestavení .NET je popsáno v [přidali odkazy](#added-references) oddílu.
+
+### <a name="webconfig-or-appconfig-changes"></a>změny v souboru Web.config nebo app.config
+
+- Přidá následující položky konfigurace:
+
+    ```xml
+    <configSections>
+      <section
+           name="configBuilders"
+           type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" 
+           restartOnExternalChanges="false"
+           requirePermission="false" />
+    </configSections>
+    <configBuilders>
+      <builders>
+        <add 
+             name="AzureKeyVault"
+             vaultName="vaultname"
+             type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.Azure, Version=1.0.0.0, Culture=neutral" 
+             vaultUri="https://vaultname.vault.azure.net" />
+      </builders>
+    </configBuilders>
+    ```
+
+### <a name="changes-on-azure"></a>Změny v Azure
+
+- Vytvoří skupinu prostředků (nebo použít existující).
+- V zadané skupině prostředků vytvořili službu Key Vault.
 
 ## <a name="next-steps"></a>Další postup
 

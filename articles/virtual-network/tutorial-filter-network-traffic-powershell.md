@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 023662f0293debb1b40fc8ea10bb725eab7be4d8
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 22090bf89e469f7e8defcd50b311c555949b9bde
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649930"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317713"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>Filtrování síťového provozu se skupinou zabezpečení sítě pomocí Powershellu
 
@@ -277,7 +277,7 @@ Pomocí následujícího příkazu v PowerShellu nainstalujte na virtuální po�
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Po dokončení instalace služby IIS se odpojte od virtuálního počítače *myVmWeb*. Stále zůstanete připojeni ke vzdálené ploše virtuálního počítače *myVmMgmt*. Pokud chcete zobrazit úvodní obrazovku služby IIS, otevřete internetový prohlížeč a přejděte na adresu http://myVmWeb.
+Po dokončení instalace služby IIS se odpojte od virtuálního počítače *myVmWeb*. Stále zůstanete připojeni ke vzdálené ploše virtuálního počítače *myVmMgmt*. Pokud chcete zobrazit úvodní obrazovku služby IIS, otevřete internetový prohlížeč a přejděte do protokolu http:\//myVmWeb.
 
 Odpojte se od virtuálního počítače *myVmMgmt*.
 

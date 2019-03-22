@@ -10,12 +10,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: ebf858ba86758b11ee896d745d70bdf2f0d0cde6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7388dc0c61dad9c31da0c178febcee4c8481bc50
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878376"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313188"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integraci 3270 aplikace řízené modelem obrazovky na sálové počítače IBM v Azure s využitím konektoru Azure Logic Apps a IBM 3270
 
@@ -402,7 +402,7 @@ Po dokončení těchto kroků, pomocí akce, kterou vytvoříte ve vaší aplika
 1. Jakmile budete hotovi, uložte a spusťte aplikaci logiky.
 
    Po svoji logiku aplikace dokončí spuštěné, kroky z běhu jsou zobrazeny. 
-   Úspěšné kroky ukazují značek zaškrtnutí, zatímco neúspěšné kroky ukazují písmeno "X".
+   Úspěšný postup značky zaškrtnutí při neúspěšné kroky ukazují písmeno "X".
 
 1. Zkontrolujte vstupy a výstupy jednotlivých kroků, rozbalte položku tohoto kroku.
 
@@ -410,7 +410,7 @@ Po dokončení těchto kroků, pomocí akce, kterou vytvoříte ve vaší aplika
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o limitu, akce a aktivačních událostí, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, projděte si referenční stránce konektoru: [ https://docs.microsoft.com/connectors/<replace-with-api-topic-file-name> ](/connectors/).
+Technické podrobnosti o limitu, akce a aktivačních událostí, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, zkontrolujte [konektoru referenční stránce](/connectors/si3270/).
 
 ## <a name="get-support"></a>Získat podporu
 

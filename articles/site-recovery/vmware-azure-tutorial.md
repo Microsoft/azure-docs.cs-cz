@@ -6,22 +6,28 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 3/3/2019
+ms.date: 3/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ccd62c0b0832622bbc74542674c1d09f59ea301b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 06d18ccd6f14f0a2b31f579b0ed7250b2c4f0c92
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848826"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310587"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware
 
 [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR) tím, že zajišťuje provoz a dostupnost obchodních aplikací během plánovaných i neplánovaných výpadků. Site Recovery spravuje a orchestruje zotavení po havárii místních počítačů a virtuálních počítačů Azure, včetně replikace, převzetí služeb při selhání a zotavení.
 
 
-V tomto kurzu vám ukážeme, jak nastavit a povolit replikaci virtuálního počítače VMware do Azure pomocí Azure Site Recovery. Kurzy vám mají ukázat, jak nasadit Site Recovery se základním nastavením. Používají nejjednodušší cestu a neuvidíte v nich všechny možnosti. V tomto kurzu se naučíte:
+V tomto kurzu se dozvíte, jak nasadit službu Site Recovery se základními funkcemi, bez vlastní nastavení. Složitější možnosti projděte si články v části How To.
+
+    - Nastavení [zdroje replikace](vmware-azure-set-up-source.md) a [konfiguračního serveru](vmware-azure-deploy-configuration-server.md)
+    - Nastavení [cíle replikace](vmware-azure-set-up-target.md)
+    - Konfigurace [zásady replikace](vmware-azure-set-up-replication.md) a [povolení replikace](vmware-azure-enable-replication.md)
+
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Zadat zdroj a cíl replikace.
@@ -37,14 +43,10 @@ Než začnete, je vhodné postupovat takto:
 - Pokud chcete získat podrobnější informace o nastavení zotavení po havárii pro virtuální počítače VMware, přečtěte si a použijte následující zdroje informací:
     - [Přečtěte si časté dotazy](vmware-azure-common-questions.md) o zotavení po havárii pro VMware.
     - [Přečtěte si další informace](vmware-physical-azure-support-matrix.md) o tom, co se podporuje a vyžaduje pro VMware.
--  Podrobné pokyny ke všem možnostem nasazení pro VMware najdete v našich **postupech**:
-    - Nastavení [zdroje replikace](vmware-azure-set-up-source.md) a [konfiguračního serveru](vmware-azure-deploy-configuration-server.md)
-    - Nastavení [cíle replikace](vmware-azure-set-up-target.md)
-    - Konfigurace [zásady replikace](vmware-azure-set-up-replication.md) a [povolení replikace](vmware-azure-enable-replication.md)
 - V tomto kurzu jsme ukazují, jak replikovat jeden virtuální počítač. Pokud nasazujete víc virtuálních počítačů byste měli použít [nástroj Plánovač nasazení](https://aka.ms/asr-deployment-planner) usnadňují plánování vašeho nasazení. [Přečtěte si další informace](site-recovery-deployment-planner.md) o tomto nástroji.
 
 A přečtěte si tyto typy:
-- V tomto kurzu se k vytvoření virtuálního počítače VMware s konfiguračním serverem používá šablona OVA. Pokud nemůžete udělat, postupujte podle [tyto instructins](physical-manage-configuration-server.md) ručně nastavit konfigurační server.
+- V tomto kurzu se k vytvoření virtuálního počítače VMware s konfiguračním serverem používá šablona OVA. Pokud nemůžete udělat, postupujte podle [tyto pokyny](physical-manage-configuration-server.md) ručně nastavit konfigurační server.
 - V tomto kurzu Site Recovery stáhne a nainstaluje na konfigurační server MySQL. Pokud dáváte přednost, můžete můžete ho nastavit ručně místo. [Další informace](vmware-azure-deploy-configuration-server.md#configure-settings).
   >Nejnovější verzi šablony konfiguračního serveru můžete stáhnout přímo z webu [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
   Licence, které jsou součástí šablony OVF je zkušební licence, který je platný po dobu 180 dnů. Windows běží na virtuálním počítači musí být aktivováno s požadovanou licenci. 

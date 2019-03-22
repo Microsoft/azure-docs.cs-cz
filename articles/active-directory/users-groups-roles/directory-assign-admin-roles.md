@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f06446cb6af1fa145e5fcec41cc85a1452af207a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 5202d2775e830264543719cafefb5c48fca822d6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839249"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316418"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -134,7 +134,7 @@ K dispozici jsou následující role správce:
 
 * **[Partnerská podpora úrovně 2](#partner-tier2-support)**: Nepoužívejte. Tato role se už nepoužívá a bude odebrána z Azure AD v budoucnu. Tato role je určen pro malý počet těmito partnery společnosti Microsoft a není určena pro obecné použití.
 
-* **[Heslo správce / správce technické podpory](#helpdesk-administrator)**: Uživatelé s touto rolí můžou měnit hesla, zneplatnit obnovovací tokeny, spravovat žádosti o služby a monitorovat stav služby. Zrušení platnosti tokenu obnovení vynutí uživatel znovu přihlásil. Správců technické podpory může resetovat hesla a zneplatnit obnovovací tokeny jiných uživatelů, kteří nejsou správci, nebo přiřadit pouze následující role:
+* **[Správce technické podpory (heslo)](#helpdesk-administrator)**: Uživatelé s touto rolí můžou měnit hesla, zneplatnit obnovovací tokeny, spravovat žádosti o služby a monitorovat stav služby. Zrušení platnosti tokenu obnovení vynutí uživatel znovu přihlásil. Správců technické podpory může resetovat hesla a zneplatnit obnovovací tokeny jiných uživatelů, kteří nejsou správci, nebo přiřadit pouze následující role:
   * Uživatelé s oprávněním ke čtení adresářů
   * Odesílatel pozvánky hostů
   * Správce technické podpory
@@ -149,7 +149,7 @@ K dispozici jsou následující role správce:
   * Všichni uživatelé, jako jsou vedoucí pracovníci, právním poradcem a lidské zdroje zaměstnanců, kteří můžou mít přístup k citlivým nebo soukromých informací.
 
   > [!NOTE]
-  > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role nazývá "Správce technické podpory". Je "Heslo správce" v [webu Azure portal](https://portal.azure.com/).
+  > Tato role se dříve nazývala "heslo správce" [webu Azure portal](https://portal.azure.com/). Měníme její název na "Správce technické podpory" tak, aby odpovídala jeho název v Azure AD PowerShell, Azure AD Graph API a rozhraní Microsoft Graph API. Na krátkou dobu jsme se změní název "Správce technické podpory (heslo)" na webu Azure portal před změnou v "Správce technické podpory".
   >
   
 * **[Správce služby Power BI](#power-bi-service-administrator)**: Uživatelé s touto rolí mají globální oprávnění v Microsoft Power BI, pokud se služba používá, a možnost spravovat lístky podpory a monitorovat stav služby. Další informace na [Principy role správce Power BI](https://docs.microsoft.com/power-bi/service-admin-role).
@@ -164,7 +164,7 @@ K dispozici jsou následující role správce:
 
   <b>Důležité</b>: Tato role uděluje možnost Spravovat přiřazení pro všechny role Azure AD, včetně rolí globálního správce. Tato role neobsahuje další privilegovaných schopnosti ve službě Azure AD, jako je vytváření nebo aktualizaci uživatelů. Však přiřazena k této roli uživatele můžete udělit sami, nebo jinými další oprávnění přiřazením dalších rolí.
 
-* **[Čtenář sestav](#reports-reader)**: Uživatelé s touto rolí můžou zobrazit vytváření sestav dat využití a sestavy řídicího panelu v Centru pro správu Office 365 a kontext přijetí aktualizací Service pack v Power BI. Kromě toho role poskytuje přístup k přihlášení sestavy a aktivity ve službě Azure AD a dat vrácených Microsoft Graph API pro vytváření sestav. Uživatel přiřazený k roli Čtenář sestav můžete přistupovat pouze relevantní využití a metrik přijetí. Nemají žádná oprávnění správce ke konfiguraci nastavení nebo přístupu centra pro správu určitého produktu jako je Exchange. Tato role nemá přístup k zobrazení, vytvořit nebo spravovat lístky podpory.
+* **[Čtenář sestav](#reports-reader)**: Uživatelé s touto rolí můžou zobrazit vytváření sestav dat využití a sestavy řídicího panelu v Centru pro správu služeb Microsoft 365 a kontext přijetí aktualizací Service pack v Power BI. Kromě toho role poskytuje přístup k přihlášení sestavy a aktivity ve službě Azure AD a dat vrácených Microsoft Graph API pro vytváření sestav. Uživatel přiřazený k roli Čtenář sestav můžete přistupovat pouze relevantní využití a metrik přijetí. Nemají žádná oprávnění správce ke konfiguraci nastavení nebo přístupu centra pro správu určitého produktu jako je Exchange. Tato role nemá přístup k zobrazení, vytvořit nebo spravovat lístky podpory.
 
 * **[Správce zabezpečení](#security-administrator)**: Uživatelé s touto rolí mají oprávnění ke správě funkce související se zabezpečením v Centru zabezpečení Microsoft 365, Azure Active Directory Identity Protection, Azure Information Protection a zabezpečení Office 365 a centru dodržování předpisů. Další informace o oprávněních Office 365 je k dispozici na [oprávnění v centru dodržování předpisů a zabezpečení Office 365](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
   
@@ -208,9 +208,9 @@ K dispozici jsou následující role správce:
   [Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | Můžete zobrazit doporučení a výstrahy, zásady zabezpečení, zobrazit stavy zabezpečení, ale nemůže provádět změny zobrazení
   [Stav služby Office 365](https://docs.microsoft.com/office365/enterprise/view-service-health) | Zobrazení stavu služeb Office 365
 
-* **[Správce podpory služeb](#service-support-administrator)**: Uživatelé s touto rolí můžou žádat Microsoft o podporu pro služby Azure a Office 365 a zobrazovat řídicí panel služby a centrum zpráv na portálu Azure Portal a portálu pro správu Office 365. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **[Správce podpory služeb](#service-support-administrator)**: Uživatelé s touto rolí můžete otevřít žádosti o podporu u Microsoftu pro služby Azure a Office 365 a zobrazení řídicí panel služeb a Centrum zpráv [webu Azure portal](https://portal.azure.com) a [centra pro správu služeb Microsoft 365](https://admin.microsoft.com). Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
   > [!NOTE]
-  > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role je označena jako "Správce podpory služeb." Je "Správce služby" v [webu Azure portal](https://portal.azure.com), na portálu pro správu Office 365 a na portálu Intune.
+  > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role je označena jako "Správce podpory služeb." Je "Správce služby" v [webu Azure portal](https://portal.azure.com), [centra pro správu služeb Microsoft 365](https://admin.microsoft.com)a na portálu Intune.
 
 * **[Správce Sharepointu](#sharepoint-service-administrator)**: Uživatelé s touto rolí mají globální oprávnění v Microsoft SharePoint Online, pokud služba používá, a možnost vytvářet a spravovat všechny skupiny Office 365, spravovat lístky podpory a monitorovat stav služby. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
   > [!NOTE]

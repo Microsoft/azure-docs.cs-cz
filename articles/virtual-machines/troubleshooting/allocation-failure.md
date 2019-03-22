@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 1298e7d7ed9c3760ff5022b5b97e8444eb1bcad1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 72fbdbcfcd94dd41a67bb81314802dd7314ae463
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007063"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316622"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Řešení potíží s přidělováním při vytváření, restartování nebo změna velikosti virtuálních počítačů v Azure
 
@@ -25,7 +25,7 @@ Při vytvoření virtuálního počítače (VM), restartování zastaveno (přid
 
 **Kód chyby:**: AllocationFailed nebo ZonalAllocationFailed
 
-**Chybová zpráva**: "Přidělení se nezdařilo. V této oblasti nemáme pro požadovanou velikost virtuálního počítače dostatečnou kapacitu. Další informace o pravděpodobnost, že úspěch přidělení na `https://aka.ms/allocation-guidance`"
+**Chybová zpráva**: "Přidělení se nezdařilo. V této oblasti nemáme pro požadovanou velikost virtuálního počítače dostatečnou kapacitu. Další informace o pravděpodobnost, že úspěch přidělení na protokol https:\//aka.ms/allocation-guidance "
 
 Tento článek popisuje některé běžné chyby v přidělení příčiny a navrhne mezi možné nápravy.
 

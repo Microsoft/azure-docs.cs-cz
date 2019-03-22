@@ -1,21 +1,21 @@
 ---
-title: Připojení k Dynamics 365 – Azure Logic Apps | Dokumentace Microsoftu
+title: Připojení k Dynamics 365 – Azure Logic Apps
 description: Vytvořit a spravovat záznamy s Dynamics 365 (online) rozhraní REST API a Azure Logic Apps
+services: logic-apps
+ms.service: logic-apps
+ms.suite: integration
 author: Mattp123
 ms.author: matp
-ms.service: logic-apps
-services: logic-apps
 ms.reviewer: estfan, LADocs
-ms.suite: integration
 ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: 9fe41cf2946525948897635a4e30213d161431ef
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
+ms.openlocfilehash: b81efba0ce860bea5fd68dd99ce52980e6816b7e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295296"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310570"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Správa záznamů Dynamics 365 s Azure Logic Apps
 
@@ -26,13 +26,13 @@ Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Log
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
+* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
 
 * A [účtu Dynamics 365](https://dynamics.microsoft.com)
 
 * Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikace logiky, ve které chcete přístup k vašemu účtu Dynamics 365. Chcete-li spustit aplikaci logiky s triggerem Dynamics 365, musíte [prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* Aplikace logiky, ve které chcete přístup k vašemu účtu Dynamics 365. Chcete-li spustit aplikaci logiky s triggerem Dynamics 365, musíte [prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="add-dynamics-365-trigger"></a>Přidání triggeru Dynamics 365
 
@@ -50,8 +50,8 @@ Nejprve přidejte triggerem Dynamics 365, který se aktivuje, když se objeví n
 
 1. Uveďte následující údaje aktivační události:
 
-   | Vlastnost | Požaduje se | Popis | 
-   |----------|----------|-------------| 
+   | Vlastnost | Požaduje se | Popis |
+   |----------|----------|-------------|
    | **Název organizace** | Ano | Název instance Dynamics 365 vaší organizace k monitorování, například "Contoso" |
    | **Název entity** | Ano | Název entity k monitorování, například "vede" | 
    | **Frekvence** | Ano | Jednotka času pro použití s intervaly při vyhledávání aktualizací související se aktivační událost |
@@ -72,21 +72,21 @@ Teď přidejte akci Dynamics 365, který se vytvoří úkol záznam pro nový z�
 
 1. Zadejte podrobnosti tyto akce:
 
-   | Vlastnost | Požaduje se | Popis | 
-   |----------|----------|-------------| 
+   | Vlastnost | Požaduje se | Popis |
+   |----------|----------|-------------|
    | **Název organizace** | Ano | Instance Dynamics 365, kde chcete vytvořit záznam, který nemusí být stejné instance v aktivační událost, ale je v tomto příkladu "Contoso" |
-   | **Název entity** | Ano | Entita, ve kterém chcete vytvořit záznam, třeba "Úloh" | 
+   | **Název entity** | Ano | Entita, ve kterém chcete vytvořit záznam, třeba "Úloh" |
    | | |
 
    ![Detaily akce](./media/connectors-create-api-crmonline/action-details.png)
 
 1. Když **subjektu** pole se zobrazí v akci, klikněte do **subjektu** pole, zobrazí se seznam dynamického obsahu. Z tohoto seznamu vyberte pole hodnoty pro zahrnutí v záznamu úlohy spojené s nový záznam zájemce:
 
-   | Pole | Popis | 
-   |-------|-------------| 
+   | Pole | Popis |
+   |-------|-------------|
    | **Příjmení** | Příjmení z zájemce jako primární kontakt v záznamu |
-   | **Téma** | Popisný název pro zájemce v záznamu | 
-   | | | 
+   | **Téma** | Popisný název pro zájemce v záznamu |
+   | | |
 
    ![Podrobnosti záznamu úlohy](./media/connectors-create-api-crmonline/create-record-details.png)
 
@@ -109,7 +109,7 @@ Například dotaz filtru můžete získat jenom aktivní účty a řadit záznam
 
    ![Zadejte filtr a pořadí](./media/connectors-create-api-crmonline/advanced-options.png)
 
-Další informace najdete v tématu tyto možnosti dotazu Dynamics 365 zákazníka Engagement webového rozhraní API systému: 
+Další informace najdete v tématu tyto možnosti dotazu Dynamics 365 zákazníka Engagement webového rozhraní API systému:
 
 * [$filter](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#filter-results)
 * [$orderby](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#order-results)
@@ -128,19 +128,19 @@ Tato tabulka popisuje některé typy polí a typů požadovaná data pro jejich 
 | Zadejte pole, které vyžadují ID záznamu i vyhledávání | Primární klíč | Některá pole, které odkazují na jiný záznam entity vyžadují ID záznamu i typ vyhledávání. | 
 ||||
 
-Pokud rozvineme tyto typy polí, tady je příklad polí v Dynamics 365 triggery a akce, které vyžadují ID záznamu i typ vyhledávání. Tento požadavek znamená, že hodnoty, které můžete vybrat ze seznamu dynamického nebude fungovat. 
+Pokud rozvineme tyto typy polí, tady je příklad polí v Dynamics 365 triggery a akce, které vyžadují ID záznamu i typ vyhledávání. Tento požadavek znamená, že hodnoty, které můžete vybrat ze seznamu dynamického nebude fungovat.
 
-| Pole | Popis | 
+| Pole | Popis |
 |-------|-------------|
-| **Vlastník** | Musí být buď platné ID uživatele nebo týmu ID záznamu. | 
-| **Typ vlastníka** | Musí být buď **systemusers** nebo **týmy**. | 
-| **Pokud jde o** | Musí být platné ID záznamu, jako je například ID účtu nebo se obraťte na ID záznamu. | 
-| **Související typ** | Musí být typ vyhledávání, například **účty** nebo **kontakty**. | 
-| **Zákazníka** | Musí být platné ID záznamu, jako je například ID účtu nebo se obraťte na ID záznamu. | 
-| **Typ odběratele** | Musí být typ vyhledávání, například **účty** nebo **kontakty**. | 
+| **Vlastník** | Musí být buď platné ID uživatele nebo týmu ID záznamu. |
+| **Typ vlastníka** | Musí být buď **systemusers** nebo **týmy**. |
+| **Pokud jde o** | Musí být platné ID záznamu, jako je například ID účtu nebo se obraťte na ID záznamu. |
+| **Související typ** | Musí být typ vyhledávání, například **účty** nebo **kontakty**. |
+| **Zákazníka** | Musí být platné ID záznamu, jako je například ID účtu nebo se obraťte na ID záznamu. |
+| **Typ odběratele** | Musí být typ vyhledávání, například **účty** nebo **kontakty**. |
 |||
 
-V tomto příkladu s názvem akce **vytvoří nový záznam** vytvoří nový záznam úloh: 
+V tomto příkladu s názvem akce **vytvoří nový záznam** vytvoří nový záznam úloh:
 
 ![Vytváření záznamu úkolu s ID záznamu a vyhledávací typů](./media/connectors-create-api-crmonline/create-record-advanced.png)
 
@@ -148,13 +148,13 @@ Tato akce záznam úkolu přiřadí ID konkrétního uživatele nebo ID záznamu
 
 ![Zadejte ID záznamu vlastníka a vyhledávání](./media/connectors-create-api-crmonline/owner-record-id-and-lookup-type.png)
 
-Tato akce také přidá záznam účtu, který je spojen s ID přidá záznam **ohledně** pole a vyhledávání zadejte **související typ** pole: 
+Tato akce také přidá záznam účtu, který je spojen s ID přidá záznam **ohledně** pole a vyhledávání zadejte **související typ** pole:
 
 ![Zadejte odpovídající ID záznamu a vyhledávání](./media/connectors-create-api-crmonline/regarding-record-id-lookup-type-account.png)
 
 ## <a name="find-record-id"></a>Vyhledání ID záznamu
 
-K vyhledání ID záznamu, postupujte podle těchto kroků: 
+K vyhledání ID záznamu, postupujte podle těchto kroků:
 
 1. V Dynamics 365 otevřete záznam, třeba záznam účtu.
 
@@ -175,7 +175,7 @@ Najít a projděte si kroky ve vaší aplikaci logiky, které selhaly, můžete 
 
    ![Stav spuštění aplikace logiky](./media/connectors-create-api-crmonline/run-history.png)
 
-1. Abyste mohli zobrazit další podrobnosti, rozbalte položku neúspěšných kroků. 
+1. Abyste mohli zobrazit další podrobnosti, rozbalte položku neúspěšných kroků.
 
    ![Rozbalte kroku](./media/connectors-create-api-crmonline/expand-failed-step.png)
 
@@ -187,7 +187,7 @@ Další informace o řešení potíží s logic apps najdete v tématu [diagnost
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete v článku [konektoru referenční stránce](/connectors/dynamicscrmonline/). 
+Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v konektoru OpenAPI (dříve Swagger) souboru, najdete v článku [konektoru referenční stránce](/connectors/dynamicscrmonline/).
 
 ## <a name="get-support"></a>Získat podporu
 

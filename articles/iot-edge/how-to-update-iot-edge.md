@@ -5,33 +5,33 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/17/2018
+ms.date: 03/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b11f11aa3966bc57caa5b8dd0379f4d5c59c8375
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a3dd7f78362b5f5c99dc4a74fe0a32c4d26be5b7
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672895"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311913"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace zabezpečení démon IoT Edge a modulu runtime
 
-Jak služba IoT Edge vydání nové verze, budete chtít aktualizaci vašich zařízení IoT Edge mít nejnovější funkce a vylepšení zabezpečení. Tento článek obsahuje informace o tom, jak aktualizovat zařízení IoT Edge, když je dostupná nová verze. 
+Jak služba IoT Edge vydání nové verze, budete chtít aktualizaci vašich zařízení IoT Edge pro nejnovější funkce a vylepšení zabezpečení. Tento článek obsahuje informace o tom, jak aktualizovat zařízení IoT Edge, když je dostupná nová verze. 
 
 Dvě součásti zařízení IoT Edge je potřeba aktualizovat, pokud chcete přejít na novější verzi. První je démon zabezpečení, který běží na zařízení a při spuštění zařízení spustí moduly runtime. Proces démon zabezpečení v současné době je možné pouze aktualizovat ze samotného zařízení. Druhá komponenta je modulu runtime, která se skládá z centra IoT Edge a moduly IoT Edge agenta. V závislosti na tom, jak strukturovat vaše nasazení modul runtime aktualizovat ze zařízení nebo vzdáleně. 
+
+Nejnovější verzi služby Azure IoT Edge najdete v tématu [Azure IoT Edge uvolní](https://github.com/Azure/azure-iotedge/releases).
 
 >[!IMPORTANT]
 >Pokud používáte Azure IoT Edge na zařízení s Windows, neaktualizují na verzi 1.0.5 Pokud některou z těchto platí pro zařízení: 
 >* Vaše zařízení jste neupgradovali na Windows 17763 sestavení. Sestavení verze IoT Edge 1.0.5 nepodporuje Windows starší než 17763.
 >* Spusťte moduly Java nebo Node.js na zařízení s Windows. Přeskočte verze 1.0.5 i v případě, že jste aktualizovali zařízení s Windows na nejnovější verzi. 
 >
->Další informace o verzi 1.0.5 IoT Edge najdete v tématu [poznámky k verzi 1.0.5](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Další informace o tom, jak zajistit vývojářských nástrojů od aktualizace na nejnovější verzi, naleznete v tématu [blog pro vývojáře IoT](https://devblogs.microsoft.com/iotdev/).
+>Další informace o verzi 1.0.5 IoT Edge najdete v tématu [poznámky k verzi 1.0.5](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Další informace o tom, jak zabránit aktualizace na nejnovější verzi nástroje pro vývoj najdete v tématu [blog pro vývojáře IoT](https://devblogs.microsoft.com/iotdev/).
 
-
-Nejnovější verzi služby Azure IoT Edge najdete v tématu [Azure IoT Edge uvolní](https://github.com/Azure/azure-iotedge/releases).
 
 ## <a name="update-the-security-daemon"></a>Aktualizace zabezpečení démona
 
@@ -59,9 +59,9 @@ Odinstalujte démona zabezpečení v rámci relace prostředí PowerShell správ
 Uninstall-SecurityDaemon
 ```
 
-Spuštění `Uninstall-SecurityDaemon` příkaz bez parametrů démona zabezpečení odebere ze zařízení, spolu s dvěma imagí kontejnerů modulu runtime. Soubor config.yaml se ukládají na zařízení, a také data z kontejnerů modulu Moby. Zachování konfigurace znamená, že není nutné zadat připojovací řetězec nebo informace o službě Device Provisioning pro vaše zařízení znovu během procesu instalace. 
+Spuštění `Uninstall-SecurityDaemon` démona zabezpečení příkaz bez parametrů pouze odebere ze zařízení, spolu s dvěma imagí kontejnerů modulu runtime. Soubor config.yaml se ukládají na zařízení, a také data z kontejnerů modulu Moby. Udržování znamená konfigurační informace, že není nutné zadat připojovací řetězec nebo informace o službě Device Provisioning pro vaše zařízení znovu během procesu instalace. 
 
-Přeinstalujte démona zabezpečení v závislosti na tom, zda zařízení IoT Edge používá kontejnery Windows nebo kontejnery Linuxu. Nahraďte frázi **\<Windows nebo Linux\>** s některým z operačních systémů kontejneru. Použití **- ExistingConfig** příznak tak, aby odkazovala na existující soubor config.yaml na vašem zařízení. 
+Přeinstalujte démona zabezpečení v závislosti na tom, zda zařízení IoT Edge používá kontejnery Windows nebo kontejnery Linuxu. Nahraďte frázi **\<Windows nebo Linux\>** s operačními systémy odpovídajícího kontejneru. Použití **- ExistingConfig** příznak tak, aby odkazovala na existující soubor config.yaml na vašem zařízení. 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -91,7 +91,7 @@ Pokud používáte kumulativní značky ve vašem nasazení (například mcr.mic
 
 Odstraňte místní verzi image ze zařízení IoT Edge. Počítačích s Windows, při odinstalaci démona zabezpečení také odebere bitové kopie modulu runtime, takže není nutné tento krok provést znovu. 
 
-```cmd/sh
+```bash
 docker rmi mcr.microsoft.com/azureiotedge-hub:1.0
 docker rmi mcr.microsoft.com/azureiotedge-agent:1.0
 ```
@@ -106,7 +106,7 @@ Pokud ve svém nasazení používáte konkrétními značkami (například mcr.m
 
 Na webu Azure Portal, bitové kopie nasazení modulu runtime jsou deklarovány v **konfigurovat rozšířená nastavení modulu Runtime Edge** oddílu. 
 
-[Konfigurace nastavení modulu runtime edge Upřesnit](./media/how-to-update-iot-edge/configure-runtime.png)
+![Konfigurace nastavení modulu runtime edge Upřesnit](./media/how-to-update-iot-edge/configure-runtime.png)
 
 V manifestu nasazení JSON, aktualizaci bitové kopie modulu v **systemModules** oddílu. 
 

@@ -1,5 +1,5 @@
 ---
-title: Metody ověřování Azure AD
+title: Metody ověřování – Azure Active Directory
 description: Jaké metody ověřování jsou k dispozici ve službě Azure AD pro vícefaktorové ověřování a samoobslužné resetování HESLA
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09f61f60a3885fbc58cddc4b46df11014057f54e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: e6bd67e500756fe5a7ba5ee29db88b9aedb103e4
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999487"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315976"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 

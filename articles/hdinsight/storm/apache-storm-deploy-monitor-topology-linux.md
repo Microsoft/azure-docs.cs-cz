@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: d194a5929e648c09eb204860c528e48bc55259ee
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 5f6708a9c22939395f992c2ac58a7e510b35f763
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635393"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317268"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a správa topologií Apache Storm v Azure HDInsight 
 
@@ -32,7 +32,7 @@ V tomto dokumentu, seznamte se se základy monitorování a správa [Apache Stor
 
 * (Volitelné) **Znalost SSH a SCP**: Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* (Volitelné) **Sady visual Studio**: Azure SDK 2.5.1 nebo novější a Data Lake Tools pro Visual Studio. Další informace najdete v tématu [Začínáme pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* (Optional) **Visual Studio**: Azure SDK 2.5.1 nebo novější a Data Lake Tools pro Visual Studio. Další informace najdete v tématu [Začínáme pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
     Jeden z následujících verzí sady Visual Studio:
 
@@ -215,13 +215,13 @@ Další informace najdete v tématu [Apache Storm uživatelského rozhraní REST
 
 ### <a name="base-uri"></a>Základní identifikátor URI
 
-Základní identifikátor URI pro rozhraní REST API v clusterech HDInsight založených na Linuxu je k dispozici na na hlavní uzel **https://HEADNODEFQDN:8744/api/v1/**. Název domény hlavního uzlu je generována při vytváření clusteru a není statická.
+Základní identifikátor URI pro rozhraní REST API v clusterech HDInsight založených na Linuxu je k dispozici na na hlavní uzel **https:\//HEADNODEFQDN:8744/api/v1/**. Název domény hlavního uzlu je generována při vytváření clusteru a není statická.
 
 Plně kvalifikovaný název domény (FQDN) pro hlavní uzel clusteru najdete v několika různými způsoby:
 
 * **Z relace SSH**: Použijte příkaz `headnode -f` z relace SSH do clusteru.
 * **Z webu Ambari**: Vyberte **služby** z horní části stránky vyberte **Storm**. Z **Souhrn** kartu, vyberte možnost **Server uživatelského rozhraní Storm**. Plně kvalifikovaný název domény uzlu, který je hostitelem Storm UI a rozhraní REST API se zobrazí v horní části stránky.
-* **Z rozhraní Ambari REST API**: Použijte příkaz `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` k načtení informací o uzlu, který se systémem Storm UI a rozhraní REST API. Nahraďte **CLUSTERNAME** s názvem clusteru. Po zobrazení výzvy zadejte heslo pro účet (správce). V odpovědi obsahuje položky "název_hostitele" plně kvalifikovaný název domény uzlu.
+* **Z rozhraní Ambari REST API**: Použijte příkaz `curl -u admin -G "https:\//CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` k načtení informací o uzlu, který se systémem Storm UI a rozhraní REST API. Nahraďte **CLUSTERNAME** s názvem clusteru. Po zobrazení výzvy zadejte heslo pro účet (správce). V odpovědi obsahuje položky "název_hostitele" plně kvalifikovaný název domény uzlu.
 
 ### <a name="authentication"></a>Authentication
 

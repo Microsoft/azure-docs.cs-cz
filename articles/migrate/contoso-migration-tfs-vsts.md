@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 8098196abc415dedba392737fc17a4de5739339d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 21396a10543d388b6ac360f426272f1841b2f510
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100236"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314106"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-azure-devops-services"></a>Migrace Contoso:  Refaktoring nasazení sady Team Foundation Server do sady Azure DevOps Services
 
@@ -156,7 +156,7 @@ Správce společnosti Contoso, spusťte nástroj pro migraci TFS na databázi ko
 
 2. Spuštění nástrojů k provedení ověřování, tak, že zadáte adresu URL kolekce projektu:
 
-        **TfsMigrator validate /collection:http://contosotfs:8080/tfs/ContosoDev**
+   **TfsMigrator ověření /collection:http:\//contosotfs:8080/tfs/ContosoDev**
 
 
 3. Nástroj zobrazí chybu.
@@ -175,7 +175,7 @@ Správce společnosti Contoso, spusťte nástroj pro migraci TFS na databázi ko
 
      ![TFS](./media/contoso-migration-tfs-vsts/collection5.png)
 
-6. Znovu spusťte příkaz pro ověření a vložte tuto hodnotu, spolu s jejich názvem Azure AD: **TfsMigrator ověření/Collection:http://contosotfs:8080/tfs/ContosoDev /tenantDomainName:contosomigration.onmicrosoft.com**.
+6. Znovu spusťte příkaz pro ověření a vložte tuto hodnotu, spolu s jejich názvem Azure AD: **TfsMigrator ověření /collection:http:\//contosotfs:8080/tfs/ContosoDev /tenantDomainName:contosomigration.onmicrosoft.com**.
 
     ![TFS](./media/contoso-migration-tfs-vsts/collection7.png)
 
@@ -195,7 +195,7 @@ Ověřování dokončeno správce společnosti Contoso pomocí nástroje pro mig
 
 1. Spouštějí se v nástroji pro přípravný krok.
 
-    **Příprava TfsMigrator/Collection:http://contosotfs:8080/tfs/ContosoDev /tenantDomainName:contosomigration.onmicrosoft.com /accountRegion:cus**
+    **Příprava TfsMigrator /collection:http:\//contosotfs:8080/tfs/ContosoDev /tenantDomainName:contosomigration.onmicrosoft.com /accountRegion:cus**
 
      ![Příprava](./media/contoso-migration-tfs-vsts/prep1.png)
 

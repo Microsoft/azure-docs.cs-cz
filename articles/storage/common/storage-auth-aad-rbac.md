@@ -1,19 +1,19 @@
 ---
-title: Pomocí webu Azure portal ke správě Azure AD přístupová práva ke kontejnerům a fronty pomocí RBAC (preview) – služby Azure Storage | Dokumentace Microsoftu
+title: Pomocí webu Azure portal ke správě Azure AD přístupová práva ke kontejnerům a fronty pomocí RBAC (preview) – služby Azure Storage
 description: Pomocí řízení přístupu na základě rolí (RBAC) z portálu Azure portal k přiřazení přístupu ke kontejnerům a fronty a objekty zabezpečení. Azure Storage podporuje předdefinované a vlastní role RBAC pro ověřování pomocí Azure AD.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8050027bac3d2f13ac457edcdad9275c040305da
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a38cce7d15b4796bb66803d06f3589569985cb37
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431852"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319495"
 ---
 # <a name="grant-access-to-azure-containers-and-queues-with-rbac-in-the-azure-portal-preview"></a>Udělení přístupu k kontejnery služby Azure a fronty pomocí RBAC na webu Azure Portal (preview)
 
@@ -101,14 +101,6 @@ Následující postup použijte k přiřazení **čtečky** rolí tak, aby uživ
 
 > [!NOTE]
 > Přiřazení role čtenáře je potřebný jenom u uživatelů, kteří potřebují přístup k objektům BLOB nebo fronty pomocí webu Azure portal. 
-
-## <a name="use-azure-ad-credentials-with-the-portal"></a>Přihlašovací údaje služby Azure AD pomocí portálu
-
-Pro přístup k objektům BLOB nebo fronty na webu Azure Portal pomocí svých přihlašovacích údajů Azure AD, použijte odkazy ve verzi preview je znázorněno na následujícím obrázku:
-
-![Přístup k objektům BLOB nebo fronty pomocí přihlašovacích údajů Azure AD na portálu](media/storage-auth-aad-rbac/access-data-azure-ad.png)
-
-Pokud přistupujete k datům objektu blob nebo fronty pomocí produkčního odkazů spíše než odkazy ve verzi preview, na webu Azure portal k autorizaci přístupu, nikoli pomocí služby Azure AD používá klíč účtu.
 
 ## <a name="next-steps"></a>Další postup
 

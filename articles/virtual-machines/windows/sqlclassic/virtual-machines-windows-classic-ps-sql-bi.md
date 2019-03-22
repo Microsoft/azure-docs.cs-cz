@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: 2b2f5a441209b76f4c90c1a4682215d388b2d53a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 29e851772e665b4130ee58b04c264d55bcd54523
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242887"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317778"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>SQL Server Business Intelligence v Azure Virtual Machines
 > [!IMPORTANT] 
@@ -63,7 +63,7 @@ Galerie virtuálních počítačů Microsoft Azure obsahuje několik imagí, kte
 
 Další informace o edicích a funkce v systému SQL Server podporovány naleznete v následujících tématech:
 
-* [Edice SQL serveru](https://www.microsoft.com/sql-server/sql-server-2017-editions)
+* [SQL Server Editions](https://www.microsoft.com/sql-server/sql-server-2017-editions)
 * [Funkce podporované edicemi SQL serveru 2016](https://msdn.microsoft.com/library/cc645993.aspx)
 
 ### <a name="bi-features-installed-on-the-sql-server-virtual-machine-gallery-images"></a>BI součástí nainstalovaných na Image Galerie virtuálních počítačů SQL serveru
@@ -102,12 +102,12 @@ Následující tabulka shrnuje funkce Business Intelligence nainstalované v bě
     Další informace o vytvoření a připojení disků najdete v tématu [jak připojit datový Disk k virtuálnímu počítači](../classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 * Zastavení nebo odinstalaci služby, které nechcete použít. Například pokud virtuální počítač používá jenom pro službu Reporting Services, zastavit nebo odinstalaci služby Analysis Services a SQL Server Integration Services. Na následujícím obrázku je příkladem služby, které jsou spouštěny ve výchozím nastavení.
   
-    ![Služby systému SQL Server](./media/virtual-machines-windows-classic-ps-sql-bi/IC650107.gif)
+    ![SQL Server services](./media/virtual-machines-windows-classic-ps-sql-bi/IC650107.gif)
   
   > [!NOTE]
   > Databázový stroj SQL Server je vyžadována v Podporované scénáře BI. V jednom serveru topologie virtuálního počítače databázový stroj musí běžet na stejném virtuálním počítači.
   
-    Další informace naleznete na následujícím: [odinstalovat Reporting Services](https://msdn.microsoft.com/library/hh479745.aspx) a [instanci Analysis Services odinstalovat](https://msdn.microsoft.com/library/ms143687.aspx).
+    Další informace naleznete v následujících tématech: [Odinstalace služby Reporting Services](https://msdn.microsoft.com/library/hh479745.aspx) a [odinstalovat Instance služby Analysis Services](https://msdn.microsoft.com/library/ms143687.aspx).
 * Zkontrolujte **Windows Update** nových "důležitých aktualizací". Image virtuálního počítače Microsoft Azure se často aktualizují; ale může důležité aktualizace budou dostupné z **Windows Update** po poslední aktualizaci image virtuálního počítače.
 
 ## <a name="example-deployment-topologies"></a>Příklad topologií nasazení
@@ -118,7 +118,7 @@ Analysis Services, služby Reporting Services, databázový stroj SQL serveru a 
 
 ![scénář iaas s BI s 1 virtuální počítač](./media/virtual-machines-windows-classic-ps-sql-bi/IC650108.gif)
 
-### <a name="two-virtual-machines"></a>Dva virtuální počítače
+### <a name="two-virtual-machines"></a>Two Virtual Machines
 * Analysis Services, služby Reporting Services a databázový stroj SQL serveru na jeden virtuální počítač. Toto nasazení zahrnuje databáze serveru sestav.
 * Zdroje dat na druhý virtuální počítač. Druhý virtuální počítač obsahuje databázový stroj SQL serveru jako zdroj dat.
 
@@ -160,12 +160,12 @@ Existují dva běžné pracovní postupy pro připojení k virtuálním počíta
 
 **Spustit Správce konfigurace služby generování sestav**
 
-V **systému Windows Server 2012/2016**:
+In **Windows Server 2012/2016**:
 
 1. Z **Start** zadejte **služby Reporting Services** zobrazíte seznam aplikací.
 2. Klikněte pravým tlačítkem na **Správce konfigurace služby Reporting Services** a klikněte na tlačítko **spustit jako správce**.
 
-V **systému Windows Server 2008 R2**:
+In **Windows Server 2008 R2**:
 
 1. Klikněte na tlačítko **Start**a potom klikněte na tlačítko **všechny programy**.
 2. Klikněte na tlačítko **Microsoft SQL Server 2016**.
@@ -217,7 +217,7 @@ Informace o oprávnění serveru sestav, naleznete v tématu [udělení oprávn�
 Pokud chcete ověřit konfiguraci, přejděte do Správce sestav na virtuálním počítači.
 
 1. Na virtuálním počítači spusťte aplikaci Internet Explorer s oprávněními správce.
-2. Přejděte do http://localhost/reports na virtuálním počítači.
+2. Přejděte do protokolu http: \/ /localhost/sestavy na virtuálním počítači.
 
 ### <a name="to-connect-to-remote-web-portal-or-report-manager-for-2014-and-2012"></a>Pro připojení k vzdálené webový portál nebo správce sestav pro 2014 a 2012
 Pokud chcete pro připojení k webovému portálu nebo správce sestav pro 2014 a 2012, na virtuálním počítači ze vzdáleného počítače, vytvořte nový virtuální počítač koncový bod TCP. Ve výchozím nastavení, server sestav čeká na požadavky HTTP na **port 80**. Při konfiguraci adres URL serveru sestav, chcete-li použít jiný port, musíte zadat číslo tohoto portu v následujících pokynech.
@@ -226,22 +226,22 @@ Pokud chcete pro připojení k webovému portálu nebo správce sestav pro 2014 
 2. Otevřete port 80 v bráně firewall virtuálního počítače.
 3. Přechod na webový portál nebo sestavy manager pomocí virtuálních počítačů Azure **název DNS** jako název serveru v adrese URL. Příklad:
    
-    **Server sestav**: http://uebi.cloudapp.net/reportserver **webový portál**:   http://uebi.cloudapp.net/reports
+    **Server sestav**: http://uebi.cloudapp.net/reportserver  **Webový portál**: http://uebi.cloudapp.net/reports
    
     [Konfigurace brány Firewall pro přístup k serveru sestav](https://msdn.microsoft.com/library/bb934283.aspx)
 
 ### <a name="to-create-and-publish-reports-to-the-azure-virtual-machine"></a>Vytvoření a publikování sestav na virtuálním počítači Azure
 Následující tabulka shrnuje některé z možností dostupných pro existující sestavy z místního počítače na server sestav, které jsou hostované v Azure virtuální počítač Microsoftu pro publikování:
 
-* **Tvůrce sestav**: virtuální počítač obsahuje kliknutím na-jednou verzi Tvůrce sestav Microsoft SQL Server SQL 2014 a 2012. Spuštění sestavy Tvůrce první na virtuálním počítači s SQL 2016:
+* **Tvůrce sestav**: Virtuální počítač obsahuje kliknutím na-jednou verzi Tvůrce sestav Microsoft SQL Server SQL 2014 a 2012. Spuštění sestavy Tvůrce první na virtuálním počítači s SQL 2016:
   
   1. Spusťte prohlížeč s oprávněními správce.
   2. Přechod na webový portál, na virtuálním počítači a vyberte **Stáhnout** ikonu v pravém horním rohu.
   3. Vyberte **Tvůrce sestav**.
      
      Další informace najdete v tématu [spuštění Tvůrce sestav](https://msdn.microsoft.com/library/ms159221.aspx).
-* **SQL Server Data Tools**: virtuálních počítačů: SQL Server Data Tools je nainstalovaná na virtuálním počítači a slouží k vytvoření **projektů serveru sestav** a sestavy na virtuálním počítači. SQL Server Data Tools můžete publikovat sestavy na server sestav na virtuálním počítači.
-* **SQL Server Data Tools: Vzdálený**: V místním počítači, vytvořte projekt služby Reporting Services v SQL Server Data Tools, obsahující sestavy služby Reporting Services. Konfigurace projektu pro připojení k adresu URL webové služby.
+* **SQL Server Data Tools**: VM:  SQL Server Data Tools je nainstalovaná na virtuálním počítači a slouží k vytvoření **projektů serveru sestav** a sestavy na virtuálním počítači. SQL Server Data Tools můžete publikovat sestavy na server sestav na virtuálním počítači.
+* **SQL Server Data Tools: Vzdálené**:  V místním počítači vytvořte projekt služby Reporting Services v SQL Server Data Tools, obsahující sestavy služby Reporting Services. Konfigurace projektu pro připojení k adresu URL webové služby.
   
     ![Vlastnosti projektu rozšíření SSDT pro projekt služby SSRS](./media/virtual-machines-windows-classic-ps-sql-bi/IC650114.gif)
 * Vytvoření. Virtuální pevný disk pevného disku, který obsahuje sestavy a pak nahrajte a připojte jednotku.
@@ -317,7 +317,7 @@ Tento oddíl shrnuje koncovým bodům virtuálních počítačů Microsoft Azure
   * Vytvoření koncovým bodům virtuálních počítačů pro uvedené porty (*).
 * Pokud virtuální počítač je připojený k doméně pomocí tunelového připojení sítě VPN jako je například virtuální síť Azure, pak koncové body se nevyžadují. Ale otevřete porty v bráně firewall na virtuálním počítači.
   
-  | Port | Typ | Popis |
+  | Port | Type | Popis |
   | --- | --- | --- |
   | **80** |TCP |Sestavy serveru vzdáleného přístupu (*). |
   | **1433** |TCP |SQL Server Management Studio (*). |

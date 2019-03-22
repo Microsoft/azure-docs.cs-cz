@@ -8,20 +8,20 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 6f2f002c5ff08e21741927d07a0facfd09ec0914
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
+ms.openlocfilehash: 6dae42dcc8b74b682c7226916482228058db6154
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295687"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336248"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Co je Azure Virtual WAN?
 
 Azure virtuální síť WAN je síťová služba, která poskytuje větev optimalizované a automatické připojení k a prostřednictvím Azure. Oblasti Azure, které slouží jako rozbočovačů, které můžete zvolit připojení větvích. Po připojení se větve, můžete využít páteřní síť Azure k navázání připojení větev to-VNet a větve do větve. Seznam partnerů a umístění, které podporují virtuální sítě WAN VPN najdete v tématu [virtuální sítě WAN partneři a umístění](virtual-wan-locations-partners.md) článku.
 
-Azure virtuální sítě WAN spojuje mnoho připojení k Azure cloudové služby jako site-to-site VPN (obecně dostupné), ExpressRoute (Preview), uživatel Point-to-site VPN (Preview) do jediného provozní rozhraní. Navázat připojení k virtuálním sítím Azure pomocí připojení k virtuální síti.
+Azure virtuální sítě WAN spojuje mnoho připojení k Azure cloudové služby jako site-to-site VPN (obecně dostupné), ExpressRoute (Preview), uživatel point-to-site VPN (Preview) do jediného provozní rozhraní. Navázat připojení k virtuálním sítím Azure pomocí připojení k virtuální síti.
 
-![Diagram virtuální sítě WAN](./media/virtual-wan-about/vwangraphic.png)
+![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwan1.png)
 
 Tento článek obsahuje rychlý přehled připojení k síti v Azure virtuální sítě WAN. Virtual WAN nabízí následující výhody:
 
@@ -49,7 +49,7 @@ Pokud chcete nakonfigurovat začátku do konce virtuální sítě WAN, vytvoří
 
 ## <a name="connectivity"></a>Připojení
 
-Virtuální síť WAN umožňuje tři typy připojení: site-to-site, Point-to-site (Preview) a ExpressRoute (Preview).
+Virtuální síť WAN umožňuje tři typy připojení: site-to-site, point-to-site (Preview) a ExpressRoute (Preview).
 
 ### <a name="s2s"></a>Připojení VPN typu Site-to-site
 
@@ -71,7 +71,7 @@ Seznam dostupných partneři a umístění, najdete v článku [virtuální sít
 
 ### <a name="p2s"></a>Připojení k síti VPN Point-to-site (Preview)
 
-Propojení typu Point-to-Site (P2S) umožňuje vytvořit zabezpečené připojení k virtuálnímu rozbočovači z individuálního klientského počítače. Připojení P2S se vytvoří jeho zahájením z klientského počítače. Toto řešení je užitečné pro osoby pracující na dálku, které se chtějí připojit ze vzdáleného umístění, například z domova nebo konference. Síť VPN P2S je také užitečným řešením nahrazujícím síť VPN S2S, pokud máte pouze několik klientů, kteří se potřebují připojit.
+Připojení point-to-site (P2S) umožňuje vytvořit zabezpečené připojení k virtuální rozbočovač z jednotlivých klientských počítačů. Připojení P2S se vytvoří jeho zahájením z klientského počítače. Toto řešení je užitečné pro osoby pracující na dálku, které se chtějí připojit ze vzdáleného umístění, například z domova nebo konference. Síť VPN P2S je také užitečným řešením nahrazujícím síť VPN S2S, pokud máte pouze několik klientů, kteří se potřebují připojit.
 
 Vytvoření připojení najdete v tématu [vytvoření připojení typu point-to-site pomocí virtuální sítě WAN](virtual-wan-point-to-site-portal.md).
 

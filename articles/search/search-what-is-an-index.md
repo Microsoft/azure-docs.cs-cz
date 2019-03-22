@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 1a07661d97561319b847323981dd2aa8522b0e84
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 645f3177913b903e8262c1fec08c452130e2a671
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537588"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337863"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Vytvoření základní indexu ve službě Azure Search
 
@@ -46,7 +46,7 @@ Při návrhu správné indexu se obvykle dosahuje prostřednictvím několika it
 
 6. Pokračujte v používání kódu a iterovat návrh.  
 
-Protože fyzické struktury jsou vytvořeny ve službě [vyřadit a znovu vytvořit indexy](search-howto-reindex.md) je nutné pokaždé, když provedete změny materiálu ab stávající definice pole. To znamená, že během vývoje, měli byste počítat s častými znovu sestavovat. Můžete zvážit, práci s použitím podmnožiny data tak, aby znovu sestaví go rychleji. 
+Protože fyzické struktury jsou vytvořeny ve službě [vyřadit a znovu vytvořit indexy](search-howto-reindex.md) je nutné pokaždé, když provedete podstatných změn v existující definice pole. To znamená, že během vývoje, měli byste počítat s častými znovu sestavovat. Můžete zvážit, práci s použitím podmnožiny data tak, aby znovu sestaví go rychleji. 
 
 Kód, nikoli portálu přístup se doporučuje pro iterativní návrhu. Pokud se spoléháte na portálu pro definici indexu, budete muset vyplnit definice indexu na každý znovu sestavit. Jako alternativu, nástroje, jako je [Postman a rozhraní REST API](search-fiddler.md) jsou užitečné pro testování konceptu testování vývojové projekty jsou nadále v počátečních fázích. Můžete provádět přírůstkové změny definici indexu do textu žádosti a pak odeslat žádost službě pro opětovné vytvoření indexu pomocí aktualizovaného schématu.
 

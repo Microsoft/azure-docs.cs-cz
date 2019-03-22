@@ -16,12 +16,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, smalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f854c8b27065c2d2bf0c9964fe9dfce66aba423a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9fcc6cb40d83c06a1c9f0a97c72565464e74e655
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104501"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336066"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Ladění založené na SAML jednotného přihlašování k aplikacím v Azure Active Directory
 
@@ -29,7 +29,7 @@ Zjistěte, jak najít a opravit [jednotného přihlašování](../manage-apps/wh
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Doporučujeme vám však nainstalovat [Moje aplikace zabezpečené přihlašování rozšíření](../user-help/active-directory-saas-access-panel-user-help.md#i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension). Toto rozšíření prohlížeče umožňuje snadno získat požadavek SAML a informace odpověď SAML, které potřebujete k řešení problémů s jednotným přihlašováním. V případě, že nemůžete instalovat rozšíření, tento článek ukazuje, jak vyřešit problémy s i bez nainstalované rozšíření.
+Doporučujeme vám však nainstalovat [Moje aplikace zabezpečené přihlašování rozšíření](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension). Toto rozšíření prohlížeče umožňuje snadno získat požadavek SAML a informace odpověď SAML, které potřebujete k řešení problémů s jednotným přihlašováním. V případě, že nemůžete instalovat rozšíření, tento článek ukazuje, jak vyřešit problémy s i bez nainstalované rozšíření.
 
 Stáhnout a nainstalovat rozšíření Moje aplikace zabezpečené přihlašování, použijte jednu z následujících odkazů.
 
@@ -64,7 +64,7 @@ Při pokusu o přihlášení může zobrazit chyba ve vaší společnosti přihl
 
 Chcete-li ladit tuto chybu, budete potřebovat chybovou zprávu a požadavku SAML. Rozšíření Moje aplikace zabezpečené přihlášení automaticky shromažďuje tyto informace a zobrazí pokyny k řešení v Azure AD. 
 
-### <a name="to-resolve-the-sign-in-error-with-the-myapps-secure-sign-in-extension-installed"></a>Chcete-li vyřešit chybu přihlášení pomocí MyApps zabezpečení přihlášení rozšíření nainstalováno
+### <a name="to-resolve-the-sign-in-error-with-the-my-apps-secure-sign-in-extension-installed"></a>Chcete-li vyřešit chyby přihlášení s příponou Moje aplikace zabezpečené přihlašování nainstalovaná
 
 1. Pokud dojde k chybě, rozšíření vás přesměruje zpátky do služby Azure AD **otestovat jednotné přihlašování** okno. 
 1. Na **otestovat jednotné přihlašování** okně vyberte **stáhnout si požadavek SAML**. 
@@ -73,14 +73,14 @@ Chcete-li ladit tuto chybu, budete potřebovat chybovou zprávu a požadavku SAM
 
 Není-li žádné řešení pro chyby přihlášení, doporučujeme používat textové pole zpětné vazby na nás informujte.
 
-### <a name="to-resolve-the-error-without-installing-the-myapps-secure-sign-in-extension"></a>Chcete-li vyřešit chybu bez instalace rozšíření MyApps zabezpečené přihlašování
+### <a name="to-resolve-the-error-without-installing-the-my-apps-secure-sign-in-extension"></a>Chcete-li vyřešit chybu bez instalace rozšíření Moje aplikace zabezpečené přihlášení
 
 1. Zkopírujte chybovou zprávu v pravém dolním rohu stránky. Chybová zpráva obsahuje:
     - ID korelace a časové razítko. Tyto hodnoty jsou důležité při vytváření případu podpory s Microsoftem, protože pomáhají rychle, aby váš problém identifikovat a zadat přesné řešení vašeho problému.
     - Příkaz, který identifikuje původní příčinu problému.
 1. Vraťte se do služby Azure AD a najít **otestovat jednotné přihlašování** okno.
 1. V textovém poli nahoře **pomoc rozlišení**, vložte chybové zprávě.
-1. Klikněte na tlačítko **pomoc rozlišení** zobrazíte kroky vedoucí k vyřešení problému. Pokyny mohou vyžadovat informace z požadavku SAML nebo odpověď SAML. Pokud nepoužíváte rozšíření MyApps zabezpečené přihlašování, budete nejspíš muset nástroj, jako [Fiddler](https://www.telerik.com/fiddler) získat požadavek SAML a odpovědi.
+1. Klikněte na tlačítko **pomoc rozlišení** zobrazíte kroky vedoucí k vyřešení problému. Pokyny mohou vyžadovat informace z požadavku SAML nebo odpověď SAML. Pokud nepoužíváte rozšíření Moje aplikace zabezpečené přihlašování, budete nejspíš muset nástroj, jako [Fiddler](https://www.telerik.com/fiddler) získat požadavek SAML a odpovědi.
 1. Ověřte, že cíl v požadavku SAML odpovídá SAML jednotné přihlašování služby Adresa URL získaná z Azure AD.
 1. Ověřte, že stejný identifikátor, který jste nakonfigurovali pro aplikaci ve službě Azure AD je issuer v požadavku SAML. K vyhledání aplikace ve vašem adresáři používá Azure AD vystavitele.
 1. Ověřte, že AssertionConsumerServiceURL je, kde se očekává, že aplikace přijímat tokenu SAML ze služby Azure AD. Tuto hodnotu můžete nakonfigurovat ve službě Azure AD, ale není povinné, pokud se jedná o požadavek SAML.

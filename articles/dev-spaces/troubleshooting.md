@@ -9,16 +9,18 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: 1ccb96bc8682ad505bc4b21e90951ea25c4c9954
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eff7f88ec6cbf8064df42fa3b22d61bb44baa451
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898078"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339580"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
 Tato příručka obsahuje informace o běžných problémů, možná bude při používání Azure Dev mezery.
+
+Pokud máte potíže při používání prostorů vývoj Azure, vytvořte [problém v úložišti GitHub Azure Dev prostory](https://github.com/Azure/dev-spaces/issues).
 
 ## <a name="enabling-detailed-logging"></a>Povolení podrobného protokolování
 
@@ -262,11 +264,13 @@ az provider register --namespace Microsoft.DevSpaces
 ## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Vývoj prostory vyprší časový limit na *čekání na sestavení image kontejneru...*  krok s virtuálních uzlů AKS
 
 ### <a name="reason"></a>Důvod
-Proběhne, když použijete prostory Dev ke spuštění služby, který je konfigurován pro běh [virtuálního uzlu AKS](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Vývoj prostory aktuálně nepodporuje sestavování nebo ladění služeb na virtuální uzly.
+Tento časový limit nastane, pokud se pokusíte použít Dev prostory ke spuštění služby, který je konfigurován pro běh [virtuálního uzlu AKS](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Vývoj prostory aktuálně nepodporuje sestavování nebo ladění služeb na virtuální uzly.
 
 Pokud spustíte `azds up` s `--verbose` přepínač nebo povolit podrobné protokolování v sadě Visual Studio se zobrazí další podrobnosti:
 
 ```cmd
+$ azds up --verbose
+
 Installed chart in 2s
 Waiting for container image build...
 pods/mywebapi-76cf5f69bb-lgprv: Scheduled: Successfully assigned default/mywebapi-76cf5f69bb-lgprv to virtual-node-aci-linux
@@ -274,7 +278,7 @@ Streaming build container logs for service 'mywebapi' failed with: Timed out aft
 Container image build failed
 ```
 
-Ukazuje to, že byl přiřazen služby pod *virtuální node-aci-linux*, což je virtuálního uzlu.
+Výše uvedený příkaz ukazuje, že byl přiřazen služby pod *virtuální node-aci-linux*, což je virtuálního uzlu.
 
 ### <a name="try"></a>Zkuste:
 Aktualizace grafu Helm pro službu odstraňte přitom všechny *nodeSelector* a/nebo *tolerations* hodnoty, které umožňují bude služba spouštět ve virtuálním uzlu. Tyto hodnoty jsou obvykle definovány v grafu `values.yaml` souboru.

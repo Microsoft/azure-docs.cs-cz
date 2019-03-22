@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 242c2f63735be33fe933ae3229f7aa28356ea697
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e7f292db06d4da9206aabd14a68e6acde867f92d
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548383"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336996"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologii používané v Azure Event Hubs
 
@@ -79,7 +79,7 @@ Event Hubs uchovává data dobu uchování nakonfigurované, která se vztahuje 
 
 Počet oddílů je určený při vytvoření a musí být v rozsahu 2 až 32. Počet oddílů není možné měnit. Proto je při nastavování počtu oddílů potřeba uvažovat z dlouhodobého hlediska. Oddíly slouží jako mechanismus pro organizaci dat a souvisí se stupněm paralelismu příjmu dat, který vyžadují přijímací aplikace. Počet oddílů v centru událostí přímo souvisí s počtem souběžných čtenářů, které plánujete mít. Pokud chcete použít vyšší počet oddílů než 32, kontaktujte tým služby Event Hubs.
 
-I když oddíly identifikovat a je možné odeslat přímo, odesílání přímo do oddílu se nedoporučuje. Místo toho můžete použít konstrukce vyšší úrovně, které představujeme v tématech věnovaných [zdroji událostí](#event-publishers) a [kapacitě](#capacity). 
+I když oddíly identifikovat a je možné odeslat přímo, odesílání přímo do oddílu se nedoporučuje. Místo toho můžete použít konstrukce vyšší úrovně počínaje [vydavatel události](#event-publishers) a kapacitu oddílů. 
 
 Oddíly jsou naplněné posloupností dat událostí, která obsahují tělo události, uživatelem definované vlastnosti kontejneru objektů a dat a metadat – například její posun v oddílu a pořadí v posloupnosti datového proudu.
 
@@ -152,13 +152,15 @@ Data události:
 
 Správa posunu je na vás.
 
-## <a name="capacity"></a>Kapacita
+## <a name="scaling-with-event-hubs"></a>Škálování pomocí služby Event Hubs
 
-Služba Event Hubs využívá vysoce škálovatelnou paralelní architekturu a při nastavování velikosti a škálování je potřeba zvážit několik klíčových aspektů.
+Existují dva faktory, které ovlivňují škálování pomocí služby Event Hubs.
+*   Jednotky propustnosti
+*   Oddíly
 
 ### <a name="throughput-units"></a>Jednotky propustnosti
 
-Kapacita propustnosti je ve službě Event Hubs řízená prostřednictvím *jednotek propustnosti*. Jednotky propustnosti jsou předem zakoupené jednotky kapacity. Jedna jednotka propustnosti zahrnuje následující kapacitu:
+Kapacita propustnosti je ve službě Event Hubs řízená prostřednictvím *jednotek propustnosti*. Jednotky propustnosti jsou předem zakoupené jednotky kapacity. Jeden propustnost vám umožní:
 
 * Příchozí data: Až 1 MB za sekundu nebo 1000 událostí za sekundu (podle toho, co nastane dřív).
 * Odchozí data: Až 2 MB za sekundu nebo 4096 událostí za sekundu.
@@ -167,9 +169,13 @@ Nad rámec kapacity zakoupených jednotek propustnosti je příjem příchozích
 
 Jednotky propustnosti se kupují předem a se účtuje po hodinách. Zakoupené jednotky propustnosti se účtují minimálně za jednu hodinu. Propustnost až 20 jednotek pro obor názvů služby Event Hubs můžete zakoupit a jsou sdílené ve všech centrech event hubs v tomto oboru názvů.
 
-Můžete zakoupit další jednotky propustnosti v blocích po 20 až 100 jednotek propustnosti, kontaktujte podporu Azure. Nad rámec tohoto limitu můžete zakoupit bloky, které 100 jednotek propustnosti.
+### <a name="partitions"></a>Oddíly
 
-Doporučujeme, abyste vyvážili jednotky propustnosti a oddíly, abyste dosáhli optimálního škálování. Jeden oddíl má minimální měřítko, jednu jednotku propustnosti. Počet jednotek propustnosti by měl být menší nebo roven počtu oddílů v centru událostí.
+Oddíly umožňují přizpůsobit pro příjem dat zpracování. Z důvodu modelu oddělených příjemců je pravidlo, které nabízí Služba Event Hubs s oddíly které můžete horizontální navýšení kapacity při zpracování událostí současně. Centra událostí můžete mít až 32 oddíly.
+
+Doporučujeme, abyste vyvážili jednotky propustnosti 1:1 a oddíly, abyste dosáhli optimálního škálování. Jednoho oddílu dovoluje zaručené příchozí a výchozí přenos maximálně jednu jednotku propustnosti. Přestože je možné dosáhnout vyšší propustnost na oddíl, není zaručeno, že výkon. To je důvod, proč důrazně doporučujeme, že počet oddílů v Centru událostí být větší než nebo rovna počtu jednotek propustnosti.
+
+Zadaný celkovou propustnost, kterou plánujete nutnosti, víte, že počet jednotek propustnosti, které vyžadujete a minimální počet oddílů, ale počet oddílů byste měli mít? Vyberte počet oddílů podle stupněm paralelismu příjmu dat, které chcete dosáhnout, jakož i vašim potřebám propustnosti budoucí. Neplatí žádné poplatky pro počet oddílů, které máte v rámci centra událostí.
 
 Podrobné informace o cenách služby Event Hubs najdete na stránce [Ceny služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 

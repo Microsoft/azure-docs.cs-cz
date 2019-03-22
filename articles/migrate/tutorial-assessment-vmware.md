@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dc2fb3faddc8af30edd66b926259c05580d9872a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cdd852e56cf966371cda62f89cee62956551f5c0
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104518"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313103"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Zjištění místních virtuálních počítačů VMware a posouzení vhodnosti jejich migrace do Azure
 
@@ -185,7 +185,7 @@ Importujte stažený soubor do vCenter Serveru.
    - Pokud má virtuální počítač přístup k internetu přes proxy server, klikněte na **Nastavení proxy**, zadejte adresu proxy serveru a nastavte naslouchající port. Pokud proxy server potřebuje přihlašovací údaje, zadejte je. [Další informace](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) týkající se požadavků na připojení k Internetu a [seznam adres URL](https://docs.microsoft.com/azure/migrate/concepts-collector) , který přistupuje k kolektoru.
 
      > [!NOTE]
-     > Adresu proxy serveru je potřeba zadat ve formátu <http://ProxyIPAddress> nebo <http://ProxyFQDN>. Podporuje se jen proxy protokolu HTTP. Pokud máte prověřuje zachycovací proxy server, připojení k Internetu může zpočátku selhat, pokud jste neimportovali certifikát proxy serveru; [Další](https://docs.microsoft.com/azure/migrate/concepts-collector) na jak to vyřešit importem certifikátu proxy jako důvěryhodný certifikát na virtuálním počítači kolektoru.
+     > Adresa proxy serveru je potřeba zadat do formuláře http:\//ProxyIPAddress nebo http:\//ProxyFQDN. Podporuje se jen proxy protokolu HTTP. Pokud máte prověřuje zachycovací proxy server, připojení k Internetu může zpočátku selhat, pokud jste neimportovali certifikát proxy serveru; [Další](https://docs.microsoft.com/azure/migrate/concepts-collector) na jak to vyřešit importem certifikátu proxy jako důvěryhodný certifikát na virtuálním počítači kolektoru.
 
    - Kolektor zkontroluje, jestli je spuštěná služba kolektoru. Ta je ve výchozím nastavení nainstalovaná na virtuálním počítači kolektoru.
    - Stáhněte a nainstalujte VMware PowerCLI.

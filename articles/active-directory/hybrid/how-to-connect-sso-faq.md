@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8de47aab231c66f3539c2d2f0f0e4c535a04038a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4822de6f6470547b47ecaa3874bed0df4ad20cf6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085367"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309584"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: Nejčastější dotazy
 
@@ -45,16 +45,16 @@ Tady je – úplný seznam aplikací, které tyto parametry můžete odeslat do 
 
 | Název aplikace | Adresa URL aplikace, který se má použít |
 | -- | -- |
-| Přístupový panel | https://myapps.microsoft.com/contoso.com |
-| Aplikace Outlook na webu | https://outlook.office365.com/contoso.com |
-| Portály Office 365 | <https://portal.office.com?domain_hint=contoso.com>, <https://www.office.com?domain_hint=contoso.com> |
+| Přístupový panel | https:\//myapps.microsoft.com/contoso.com |
+| Aplikace Outlook na webu | https:\//outlook.office365.com/contoso.com |
+| Portály Office 365 | https:\//portal.office.com?domain_hint=contoso.com, https:\//www.office.com?domain_hint=contoso.com |
 
-Kromě toho, uživatelé získají bezobslužné možnosti přihlašování, když aplikace pošle žádostí o přihlášení ke koncovým bodům služby Azure AD nastavený jako klienti – to znamená, https://login.microsoftonline.com/contoso.com/<..> nebo https://login.microsoftonline.com/<tenant_ID>/<..> – místo pro běžné koncového bodu Azure AD – to znamená, https://login.microsoftonline.com/common/<...>. Tady je – úplný seznam aplikací, které tyto druhy žádostí o přihlášení.
+Kromě toho, uživatelé získají bezobslužné možnosti přihlašování, když aplikace pošle žádostí o přihlášení ke koncovým bodům služby Azure AD nastavený jako klienti – to znamená, že protokol https:\//login.microsoftonline.com/contoso.com/ <.. > nebo https:\//login.microsoftonline.com/ < tenant_ID > / <.. > – místo Azure AD běžné – to znamená, že protokol https koncového bodu:\//login.microsoftonline.com/common/ <... >. Tady je – úplný seznam aplikací, které tyto druhy žádostí o přihlášení.
 
 | Název aplikace | Adresa URL aplikace, který se má použít |
 | -- | -- |
-| SharePoint Online | https://contoso.sharepoint.com |
-| portál Azure | https://portal.azure.com/contoso.com |
+| SharePoint Online | protokol https:\//contoso.sharepoint.com |
+| portál Azure | https:\//portal.azure.com/contoso.com |
 
 Ve výše uvedeným tabulkám nahraďte název vaší domény, abyste se dostali adresy URL správné aplikace pro vašeho tenanta "contoso.com".
 

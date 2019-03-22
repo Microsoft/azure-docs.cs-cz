@@ -1,20 +1,20 @@
 ---
-title: Selhání obnovení IaaS virtuálních počítačů Azure replikovaných do sekundární oblasti Azure pro zotavení po havárii pomocí služby Azure Site Recovery.
+title: Selhání obnovení virtuálních počítačů Azure replikovaných do sekundární oblasti Azure pro zotavení po havárii pomocí služby Azure Site Recovery.
 description: Zjistěte, jak převzít služby při obnovení virtuálních počítačů Azure pomocí služby Azure Site Recovery.
 services: site-recovery
-author: sideeksh
-manager: rochakm
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/07/2019
-ms.author: sideeksh
+ms.date: 03/18/2019
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d8721f313907f0e0519dca52f5565853f1c44110
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c8ce05e644ad556542314b17151b808586734824
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089692"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315313"
 ---
 # <a name="fail-back-azure-vms-between-azure-regions"></a>Selhání obnovení virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -24,51 +24,47 @@ Tento kurz popisuje, jak navrátit služby po obnovení jednoho virtuálního po
 
 > [!div class="checklist"]
 > 
-> * Navrácení služeb po obnovení sekundárního virtuálního počítače
-> * Znovunastavení ochrany primárního virtuálního počítače do sekundární oblasti
+> * Navrácení služeb po obnovení virtuálního počítače Azure v sekundární oblasti.
+> * Znovunastavení ochrany primárního virtuálního počítače Azure zpět do sekundární oblasti.
 > 
 > [!NOTE]
 > 
-> Tento kurz je určen pro uživatele provede kroky k převzetí služeb při selhání pro cílovou oblast a vraťte se minimální přizpůsobení; v případě, že chcete se dozvědět víc o různých aspektech, které jsou přidružené k převzetí služeb při selhání, včetně síťové požadavky na služby automation nebo řešení potíží, získáte v dokumentech v části "Jak na" pro virtuální počítače Azure.
+> V tomto kurzu vám umožní převzít služby několika virtuálních počítačů v cílové oblasti a zpátky do zdrojové oblasti s minimální přizpůsobení. Další podrobné pokyny projděte si články v části "Jak na" pro virtuální počítače Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="before-you-start"></a>Než začnete
 
-> * Ujistěte se, že je virtuální počítač ve stavu převzetí služeb při selhání potvrzeno a zkontrolujte, zda je k dispozici primární oblasti a budete moci vytvářet a přistupovat k nové prostředky v ní.
+> * Ujistěte se, že je virtuální počítač v **převzetí služeb při selhání potvrzeno** stavu.
+> * Zkontrolujte, zda je k dispozici primární oblasti a budete moci vytvářet a přistupovat k nové prostředky v ní.
 > * Ujistěte se, že je tato opětovná ochrana povolená.
 
 ## <a name="fail-back-to-the-primary-region"></a>Navrácení služeb po obnovení do primární oblasti
 
-Po opětovné chráněné virtuální počítače můžete předat zpět do primární oblasti jako a když chcete.
+Po virtuální počítače se znovu zapnula, můžete navrátit služby zpět do primární oblasti podle potřeby.
 
-1. Přejděte do služby Recovery Services Vault. Klikněte na replikované položky a vyberte virtuální počítač, který se znovu zapnula ochrana.
+1. V trezoru, klikněte na **replikované položky** a vyberte virtuální počítač, který se znovu zapnula ochrana.
 
-2. Měli byste vidět následující. Všimněte si, že je podobný okna pro testovací převzetí služeb při selhání a převzetí služeb při selhání z primární oblasti.
-![Navrácení služeb po obnovení primární](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
+    ![Navrácení služeb po obnovení primární](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
 
-3. Klikněte na testovací převzetí služeb při selhání provést testovací převzetí služeb zpět do primární oblasti. Zvolte bod obnovení a virtuální sítě pro testovací převzetí služeb a vyberte OK. Zobrazí se test, který virtuální počítač vytvořen v primární oblasti, které mohou získávat přístup a kontrolu.
+3. Klikněte na tlačítko **testovací převzetí služeb při selhání** Pokud chcete provést test převzetí služeb při selhání zpátky do primární oblasti.
+4. Vyberte bod obnovení a virtuální sítě pro testovací převzetí služeb a klikněte na tlačítko **OK**. Můžete zkontrolovat testu, které vytvořili virtuální počítač v primární oblasti.
+5. Po úspěšném dokončení testovacího převzetí služeb při selhání, klikněte na tlačítko **vyčištění testovacího převzetí služeb při selhání** chcete vyčistit prostředky vytvořené v rámci zdrojové oblasti pro testovací převzetí služeb.
+6. V **replikované položky**, vyberte virtuální počítač a klikněte na tlačítko **převzetí služeb při selhání**.
+7. V **převzetí služeb při selhání**, vyberte bod obnovení pro převzetí služeb při selhání.
+    - **Nejnovější (výchozí)**: Zpracuje všechna data ve službě Site Recovery a poskytuje nejnižší cíl bodu obnovení (RPO).
+    - **Nejnovější zpracovaný**: Obnoví virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery.
+    - **Vlastní**: Převezme služby při selhání do konkrétnímu bodu obnovení. Tato možnost je užitečná při provádění testovacího převzetí služeb při selhání.
 
-4. Po testu převzetí služeb při selhání je vyhovující, můžete kliknout na vyčištění testovacího převzetí služeb při selhání vyčistit prostředky vytvořené v rámci zdrojové oblasti pro testovací převzetí služeb.
+8. Vyberte **před spuštěním převzetí služeb při selhání vypnout počítač** Pokud chcete, aby Site Recovery chcete pokusit před aktivací převzetí služeb při selhání vypnout zdrojové virtuální počítače. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Všimněte si, že Site Recovery nepodporuje čištění zdroji po převzetí služeb při selhání.
+9. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
+10. Po převzetí služeb při selhání ověřte tak, že se k němu připojíte virtuální počítač. Podle potřeby můžete změnit bod obnovení.
+11. Jakmile ověříte, převzetí služeb při selhání, klikněte na tlačítko **potvrzení převzetí služeb**. Potvrzují se odstraní všechny dostupné body obnovení. Možnost změnit obnovení bodu již není k dispozici.
+12. Virtuální počítač by měl zobrazit, protože převzetí služeb při selhání a navrácení služeb obnovit.
 
-5. V replikované položky, vyberte virtuální počítač, který chcete převzetí služeb při selhání > převzetí služeb při selhání.
-
-6. V převzetí služeb při selhání vyberte bod obnovení pro převzetí služeb při selhání. Můžete použít jednu z následujících možností:
-    1. Nejnovější (výchozí): Tato možnost zpracuje všechna data ve službě Site Recovery a poskytuje nejnižší cíl bodu obnovení (RPO)
-    2. Nejnovější zpracovaný: Tato možnost vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery
-    3. Vlastní: Tuto možnost použijte k převzetí služeb při selhání konkrétnímu bodu obnovení. Tato možnost je užitečná při provádění testovací převzetí služeb při selhání
-
-7. Vyberte příkaz Vypnout počítač před spuštěním převzetí služeb při selhání, pokud chcete, aby Site Recovery chcete pokusit před aktivací převzetí služeb při selhání vypnout zdrojové virtuální počítače. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Všimněte si, že Site Recovery nepodporuje vyčištění zdroj po převzetí služeb při selhání.
-
-8. Sledujte průběh převzetí služeb při selhání na stránce úlohy
-
-9. Po převzetí služeb při selhání ověřte virtuální počítač tím, že se k němu připojíte. Pokud chcete vrátit jiný bod obnovení pro virtuální počítač, můžete změnit možnosti bodu obnovení.
-
-10. Jakmile budete spokojeni s tím, neúspěšné přes virtuální počítač, můžete převzetí služeb při selhání potvrdit. Potvrzením dojde k odstranění všech bodů obnovení, které jsou ve službě k dispozici. Možnost změnit obnovení bodu již není k dispozici.
-
-![Virtuální počítač v primární a sekundární oblasti](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
-
-Pokud vidíte na předchozím snímku obrazovky "ContosoWin2016" virtuálního počítače při selhání z USA (střed) – Východ USA a se nezdařilo obnovení z USA – Východ USA (střed).
-
-Mějte prosím na paměti, že zotavení po Havárii virtuálních počítačů zůstanou ve stavu zrušení přidělení vypnutí. Toto chování je záměrné, protože Azure Site Recovery ukládá informace virtuálního počítače, které mohou být užitečné při převzetí služeb při selhání pro primární do sekundární oblasti později. Se vám neúčtují poplatky pro zrušení přidělení virtuálního počítače, abyste je měli uchovávat.
+    ![Virtuální počítač v primární a sekundární oblasti](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
-> Zobrazit ["jak" část](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection) další podrobnosti o pracovní postup opětovné ochrany a co se stane při opětovné ochrany.
+> Zotavení po havárii virtuálních počítačů zůstane v vypnutí navrácena stavu. Jedná se o účel, protože Site Recovery ukládá informace o virtuálních počítačů, které může být užitečná pro převzetí služeb při selhání z primární do sekundární oblasti později. Se vám neúčtují poplatky pro uvolnění virtuální počítače, takže by měly být neustále jsou.
+
+## <a name="next-steps"></a>Další postup
+
+[Další informace](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection) o opětovného nastavování ochrany toku.

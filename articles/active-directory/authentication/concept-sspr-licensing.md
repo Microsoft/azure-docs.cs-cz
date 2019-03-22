@@ -1,5 +1,5 @@
 ---
-title: Licence Azure Active Directory hesla pomocí samoobslužné služby
+title: Licence samoobslužné resetování hesla – Azure Active Directory
 description: Azure AD samoobslužné resetování hesla licenčním požadavkům
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13f8d04a5e59092ee5173e8c1a446385b71faac2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5e4e32aef97d406fa47a2ccfe8cddb12b97ff088
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201580"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316843"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Resetovat licenčních požadavcích pro hesla pomocí samoobslužné služby Azure AD
 

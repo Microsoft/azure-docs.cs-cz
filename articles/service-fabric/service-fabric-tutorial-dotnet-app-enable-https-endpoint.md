@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/17/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5308fc024a53fdbbef12b409622cc35adaea1e2e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ba28014dfb2be4550407c20b4885feda3921f98
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857704"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316887"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Kurz: Přidání koncového bodu HTTPS do front-end služby webového rozhraní API ASP.NET Core pomocí Kestrel
 
@@ -341,9 +341,9 @@ Dále v části **ServiceManifestImport** souboru VotingWebPkg nakonfigurujte **
 
 ## <a name="run-the-application-locally"></a>Místní spuštění aplikace
 
-V Průzkumníku řešení vyberte aplikaci **Voting** a nastavte vlastnost **Adresa URL aplikace** na <https://localhost:443>.
+V Průzkumníku řešení, vyberte **Voting** aplikace a nastavení **adresa URL aplikace** vlastnost "https:\//localhost:443".
 
-Uložte všechny soubory a stisknutím klávesy F5 aplikaci místně spusťte.  Po nasazení aplikace se otevře webový prohlížeč na adrese [https://localhost:443](https://localhost:443). Pokud používáte certifikát podepsaný svým držitelem, zobrazí se upozornění, že váš počítač nedůvěřuje zabezpečení tohoto webu.  Pokračujte na webovou stránku.
+Uložte všechny soubory a stisknutím klávesy F5 aplikaci místně spusťte.  Jakmile se aplikace nasadí, otevře se webový prohlížeč na protokol https:\//localhost:443. Pokud používáte certifikát podepsaný svým držitelem, zobrazí se upozornění, že váš počítač nedůvěřuje zabezpečení tohoto webu.  Pokračujte na webovou stránku.
 
 ![Hlasovací aplikace][image2]
 

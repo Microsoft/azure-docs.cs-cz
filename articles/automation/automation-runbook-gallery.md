@@ -6,71 +6,54 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/11/2018
+ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 68eb3f3e5c568bb518251aca2a4e76932ce2eee5
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 58f666d7ebf8ac02d393a42f55e00f08d82b8cae
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416203"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337083"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galerie modulů a Runbooků Azure Automation
 
 Místo vytváření vlastních modulů a runbooků ve službě Azure Automation, můžete přistupovat scénáře, které již byly vytvořeny od Microsoftu a komunity.
 
-Můžete získat runbooky [Galerie Runbooků](#runbooks-in-runbook-gallery) a modulů [Galerie prostředí PowerShell](#modules-in-powerShell-gallery).  Můžete přispívat také v komunitě sdílením scénáře, které vyvíjíte, naleznete v tématu [přidání sady runbook do Galerie](automation-runbook-gallery.md#adding-a-runbook-to-the-runbook-gallery)
+Můžete získat [Powershellové runbooky](#runbooks-in-runbook-gallery) a [moduly](#modules-in-powerShell-gallery) z Galerie prostředí PowerShell a [runbooky Python](#python-runbooks) z Galerie centra skriptů. Můžete přispívat také v komunitě sdílením scénáře, které vyvíjíte, naleznete v tématu [přidání sady runbook do Galerie](#adding-a-runbook-to-the-runbook-gallery)
 
-## <a name="runbooks-in-runbook-gallery"></a>Sady Runbook ve galerii Runbooků
+## <a name="runbooks-in-powershell-gallery"></a>Sady Runbook ve galerii prostředí PowerShell
 
-[Galerie Runbooků](https://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation) od Microsoftu a komunity, který můžete importovat do služby Azure Automation poskytuje celou řadu sad runbook. Pokud chcete použít jeden, stáhnout z galerie, která je hostována v sadě runbook [centra skriptů TechNet](https://gallery.technet.microsoft.com/scriptcenter/site/upload), nebo může přímo importovat sady runbook z Galerie na webu Azure Portal.
+[Galerie prostředí PowerShell](https://www.powershellgallery.com/packages) od Microsoftu a komunity, který můžete importovat do služby Azure Automation poskytuje celou řadu sad runbook. Pokud chcete použít jeden, stáhněte si sadu runbook z Galerie nebo může přímo importovat sady runbook z galerie, nebo ve svém účtu Automation na webu Azure Portal.
 
-Můžete importovat pouze přímo z Galerie Runbooků pomocí webu Azure portal. Nelze provést tuto funkci pomocí Windows Powershellu.
+Můžete importovat pouze přímo z Galerie prostředí PowerShell pomocí webu Azure portal. Nelze provést tuto funkci pomocí Powershellu.
 
 > [!NOTE]
-> Měli byste ověřit obsah všechny runbooky pořídit v galerii Runbooků a buďte extrémně opatrní při instalaci a spuštění v produkčním prostředí.
+> Měli byste ověřit obsah všechny runbooky pořídit v galerii prostředí PowerShell a buďte extrémně opatrní při instalaci a spuštění v produkčním prostředí.
 
-### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Import runbooku z Galerie Runbooků pomocí webu Azure portal
+### <a name="to-import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Import runbooku Powershellu z Galerie Runbooků pomocí webu Azure portal
 
 1. Na webu Azure Portal otevřete účet Automation.
 2. V části **automatizace procesů**, klikněte na **Galerie Runbooků**
-3. Vyhledejte položku Galerie a vybrat zobrazíte její podrobnosti. Na levé straně můžete zadat další vyhledávací parametry pro vydavatele a typu.
+3. Vyberte **zdroje: Galerie prostředí PowerShell**.
+4. Vyhledejte položku Galerie a vybrat zobrazíte její podrobnosti. Na levé straně můžete zadat další vyhledávací parametry pro vydavatele a typu.
 
    ![Procházet galerii](media/automation-runbook-gallery/browse-gallery.png)
 
-4. Klikněte na **zobrazit zdrojový projekt** zobrazíte položky ve [centra skriptů TechNet](https://gallery.technet.microsoft.com/).
-5. Pokud chcete importovat položky, klikněte na něj a zobrazit jeho podrobnosti a potom klikněte na tlačítko **importovat** tlačítko.
+5. Klikněte na **zobrazit zdrojový projekt** zobrazíte položky ve [centra skriptů TechNet](https://gallery.technet.microsoft.com/).
+6. Pokud chcete importovat položky, klikněte na něj a zobrazit jeho podrobnosti a potom klikněte na tlačítko **importovat** tlačítko.
 
    ![Tlačítko Import](media/automation-runbook-gallery/gallery-item-detail.png)
 
-6. Volitelně můžete změnit název sady runbook a potom klikněte na **OK** a importujte runbook.
-7. Runbook se zobrazí na **sady Runbook** kartu pro účet Automation.
+7. Volitelně můžete změnit název sady runbook a potom klikněte na **OK** a importujte runbook.
+8. Runbook se zobrazí na **sady Runbook** kartu pro účet Automation.
 
-### <a name="adding-a-runbook-to-the-runbook-gallery"></a>Přidání sady runbook do Galerie runbooků
+### <a name="adding-a-powershell-runbook-to-the-gallery"></a>Přidání Powershellový runbook v galerii
 
-Microsoft doporučuje, abyste k přidání runbooků do Galerie Runbooků, které si myslíte, že bude užitečné pro ostatní zákazníci.  Můžete přidat sady runbook pomocí [pak ho nahrát do centra skriptů](https://gallery.technet.microsoft.com/site/upload) zohledněním následující podrobnosti.
+Microsoft doporučuje, abyste k přidání runbooků do Galerie prostředí PowerShell, který si myslíte, že bude užitečné pro ostatní zákazníci. Galerie prostředí PowerShell přijímá moduly Powershellu a skripty prostředí PowerShell. Můžete přidat sady runbook pomocí [nahrávání do Galerie prostředí PowerShell](/powershell/gallery/how-to/publishing-packages/publishing-a-package).
 
-* Je nutné zadat *Windows Azure* pro **kategorie** a *automatizace* pro **podkategorie** pro sadu runbook, který se má zobrazit Průvodce.  
-* Nahrávání musí být jediný `.ps1` nebo `.graphrunbook` souboru.  Pokud runbook vyžaduje všechny moduly, podřízené runbooky a prostředky, by seznam těchto položek v popisu odesílání a v části komentáře sady runbook.  Pokud máte scénář, které vyžadují více sad runbook, nahrajte každý samostatně a seznam názvů souvisejících sad runbook v každé z jejich popisy. Ujistěte se, že je možné použít stejné značky tak, aby se zobrazí ve stejné kategorii. Uživatel bude muset přečíst popis vědět, že se vyžadují další sady runbook scénář fungovat.
-* Přidat značku "GraphicalPS" Pokud publikujete **grafický runbook** (ne grafické pracovního postupu).
-* Vložit fragment kódu Powershellu nebo pracovního postupu Powershellu pomocí popis **vložit část s kódem** ikonu.
-* Proto byste měli poskytnout podrobné informace, které pomáhá uživateli určit funkce sady runbook, zobrazí se souhrn pro nahrávání ve výsledcích v galerii Runbooků.
-* Nahrávání byste měli přiřadit jedné do tří z těchto značek.  Sada runbook je uveden v průvodci v části kategorie, které odpovídají jeho značky.  Žádné značky není v tomto seznamu jsou ignorovány průvodcem. Pokud nezadáte žádné odpovídající značky, sada runbook je uveden v jiné kategorii.
-  
-  * Backup
-  * Správa kapacit
-  * Řízení změn
-  * Dodržování předpisů
-  * Dev / testovacích prostředí
-  * Zotavení po havárii
-  * Monitorování
-  * Oprava
-  * Zřizování
-  * Náprava
-  * Správa životního cyklu virtuálního počítače
-
-* Automatizace aktualizuje v galerii, neuvidíte své příspěvky ihned jednou za hodinu.
+> [!NOTE]
+> Grafické runbooky nejsou podporované v galerii prostředí PowerShell.
 
 ## <a name="modules-in-powershell-gallery"></a>Moduly Galerie prostředí PowerShell
 
@@ -100,7 +83,7 @@ Moduly prostředí PowerShell obsahují rutiny, které můžete použít v runbo
 6. Chcete-li nainstalovat modul přímo do Azure Automation, klikněte na tlačítko **Import** tlačítko.
 7. Po kliknutí na tlačítko Import na **importovat** podokně se zobrazí název modulu, který se chystáte se import. Pokud jsou nainstalovány všechny závislosti, **OK** se aktivuje tlačítko. Pokud jste chybějící závislosti, musíte k importu těchto závislostí, předtím, než importujete tento modul.
 8. Na **importovat** klikněte na **OK** importujte modul. Zatímco Azure Automation importuje modul ke svému účtu, extrahuje metadata modulu a rutin. Tato akce může trvat několik minut, protože každá aktivita je třeba extrahovat.
-9.  Po dokončení zobrazí počáteční oznámení, že se nasazuje modulu a další oznámení.
+9. Po dokončení zobrazí počáteční oznámení, že se nasazuje modulu a další oznámení.
 10. Po importu modulu uvidíte dostupných aktivit. Můžete použít jeho prostředky v runboocích a Desired State Configuration.
 
 > [!NOTE]
@@ -108,7 +91,10 @@ Moduly prostředí PowerShell obsahují rutiny, které můžete použít v runbo
 
 ## <a name="python-runbooks"></a>Sady Runbook Pythonu
 
-Jsou k dispozici v sadách Runbook Python [Galerie centra skriptů](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=). Runbook Python do Galerie centra skriptů můžete přispívat. Když, zajistíte tím, že přidáte značku **Python** při odesílání vašeho příspěvku.
+Jsou k dispozici v sadách Runbook Python [Galerie centra skriptů](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=). Kliknutím můžete přispívat runbooky Python do Galerie centra skriptů **Nahrát příspěvek**. Když, zajistíte tím, že přidáte značku **Python** při odesílání vašeho příspěvku.
+
+> [!NOTE]
+> Aby bylo možné nahrát obsah do [centra skriptů](https://gallery.technet.microsoft.com/scriptcenter) se vyžaduje minimálně 100 bodů. 
 
 ## <a name="requesting-a-runbook-or-module"></a>Vyžádání do sady runbook nebo modulu
 

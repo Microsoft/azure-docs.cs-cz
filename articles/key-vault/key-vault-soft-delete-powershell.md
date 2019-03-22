@@ -5,14 +5,14 @@ author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 02/01/2018
+ms.date: 03/19/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3da4662885b2b09c6474a1a6ceafd627e71cf236
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d34ef1bb5bea6f5f099f7fa2a24ddec2362b44ea
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081028"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336180"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak používat obnovitelné odstranění Key Vaultu s využitím Powershellu
 
@@ -101,7 +101,7 @@ S obnovitelným odstraněním povoleno:
 Trezory klíčů stavu odstraněno, přidružených k vašemu předplatnému, mohou zobrazit pomocí následujícího příkazu:
 
 ```powershell
-PS C:\> Get-AzKeyVault -InRemovedState 
+Get-AzKeyVault -InRemovedState 
 ```
 
 - *ID* slouží k identifikaci prostředku při obnovení nebo vyprazdňování. 
@@ -233,8 +233,27 @@ Seznam objektů odstraněného trezoru klíčů. také ukazuje, kdy jsou naplán
 >[!IMPORTANT]
 >Objekt odstraněný trezor, aktivuje její *naplánované datum vyprázdnit* pole, se trvale odstraní. Se nedá vrátit zpátky!
 
+## <a name="enabling-purge-protection"></a>Povolení ochrany
+
+Pokud ochrany je zapnuté, trezor nebo objektu v odstraněné stavu nelze vyprázdnit až do uplynutí doby uchovávání těchto 90 dnů. Takové trezor nebo objektu je stále možné obnovit. Tato funkce poskytuje jistotu, které trezor nebo objekt může nikdy být trvale odstranit, dokud je předán období uchovávání.
+
+Ochrany můžete povolit jenom v případě, že je taky povolené obnovitelné odstranění. 
+
+Chcete-li zapnout v obou obnovitelného odstranění a mazání ochrany při vytváření trezoru, použijte [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) rutiny:
+
+```powershell
+New-AzKeyVault -Name ContosoVault -ResourceGroupName ContosoRG -Location westus -EnableSoftDelete -EnablePurgeProtection
+```
+
+Přidání ochrany pro existující trezor (který už má povolené obnovitelné odstranění), použijte [Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0), [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0), a [Set-AzResource](/powershell/module/az.resources/set-azresource?view=azps-1.5.0) rutiny:
+
+```
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true"
+
+Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
+```
+
 ## <a name="other-resources"></a>Další prostředky
 
 - Přehled funkce obnovitelného odstranění služby Key Vault najdete v tématu [přehled obnovitelného odstranění služby Azure Key Vault](key-vault-ovw-soft-delete.md).
-- Obecný přehled o využití služby Azure Key Vault najdete v části [co je Azure Key Vault?](key-vault-overview.md).
-
+- Obecný přehled o využití služby Azure Key Vault najdete v části [co je Azure Key Vault?](key-vault-overview.md). snědli = úspěch}

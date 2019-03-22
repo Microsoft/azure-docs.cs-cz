@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 73f962cc8e0d4605c0c5f0bace79553033ebe082
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f615a07352faccc8096752e5ba60360144834907
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110898"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338237"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Verze můžete upravit a testování bez dopadu na pracovní nebo produkční aplikace
 
@@ -56,6 +56,10 @@ Ze seznamu vyberte verzi a potom vyberte **zkontrolujte aktivní** z panelu nás
     ![Správa části, stránka verze, import nové verze](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
     Jakmile dokončíte import verze, nová verze stane aktivní verze.
+
+### <a name="import-errors"></a>Chyby importu
+
+* Tokenizátor chyby: Pokud se zobrazí **tokenizátor chyba** při importování, se pokoušíte importovat, který používá jinou verzi [tokenizátor](luis-language-support.md#custom-tokenizer-versions) než aplikace aktuálně používá. Chcete-li to vyřešit, máte dvě možnosti. Zobrazit [migrace mezi verzemi tokenizátor](luis-language-support.md#migrating-between-tokenizer-versions) Další informace.
 
 <a name = "export-version"></a>
 

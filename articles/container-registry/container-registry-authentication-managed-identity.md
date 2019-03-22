@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: danlep
-ms.openlocfilehash: fdba8969ad326565834625fe1ca7ece5e089a904
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: b09348e98a0dee85338cc9f20289d83b658eb719
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984201"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338458"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Použití spravované identity k ověření do služby Azure container registry v Azure 
 
@@ -31,7 +31,7 @@ Nastavení registru kontejneru a nahrání image kontejneru do ní, musí také 
 
 ## <a name="why-use-a-managed-identity"></a>Proč používat spravovanou identitu?
 
-Spravovaná identita pro prostředky Azure poskytuje služby Azure se automaticky spravovanou identitu ve službě Azure Active Directory (Azure AD). Můžete nakonfigurovat [určité prostředky Azure](../active-directory/managed-identities-azure-resources/services-support-msi.md), včetně virtual machines, s využitím spravované identity. Potom použijte identitu a přístup jiných prostředků služby Azure bez předávání přihlašovacích údajů v kódu nebo skriptech.
+Spravovaná identita pro prostředky Azure poskytuje služby Azure se automaticky spravovanou identitu ve službě Azure Active Directory (Azure AD). Můžete nakonfigurovat [určité prostředky Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), včetně virtual machines, s využitím spravované identity. Potom použijte identitu a přístup jiných prostředků služby Azure bez předávání přihlašovacích údajů v kódu nebo skriptech.
 
 Spravované identity jsou dvou typů:
 
@@ -41,7 +41,7 @@ Spravované identity jsou dvou typů:
 
 Po nastavení prostředku Azure s využitím spravované identity poskytují identitu přístup, které chcete do jiného prostředku, stejně jako libovolný objekt zabezpečení. Například přiřadíte spravovanou identitu role se stejnými o přijetí změn, vložení a o přijetí změn nebo jiná oprávnění privátního registru, v Azure. (Úplný seznam rolí registru najdete v tématu [Azure Container Registry role a oprávnění](container-registry-roles.md).) Můžete poskytnout přístup identity na jeden nebo více prostředků.
 
-Potom použijte identitu ověřování do libovolných [služba, která podporuje ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication), bez jakékoli přihlašovací údaje ve vašem kódu. Používat identitu pro přístup k registru kontejneru Azure z virtuálního počítače, ověřování pomocí Azure Resource Manageru. Volba způsobu ověření pomocí spravované identity, v závislosti na vašem scénáři:
+Potom použijte identitu ověřování do libovolných [služba, která podporuje ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), bez jakékoli přihlašovací údaje ve vašem kódu. Používat identitu pro přístup k registru kontejneru Azure z virtuálního počítače, ověřování pomocí Azure Resource Manageru. Volba způsobu ověření pomocí spravované identity, v závislosti na vašem scénáři:
 
 * [Získání přístupového tokenu Azure AD](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) programově pomocí protokolu HTTP nebo ZBÝVAJÍCÍ volání
 
@@ -164,13 +164,13 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 Připojte přes SSH k virtuálnímu počítači Dockeru, který má nakonfigurovanou identitu. Spuštěním následujících příkazů rozhraní příkazového řádku Azure, pomocí rozhraní příkazového řádku Azure, který je nainstalovaný na virtuálním počítači.
 
-Nejprve, přihlaste se pomocí rozhraní příkazového řádku Azure [az login][az-login], pomocí identity nakonfigurovaný na virtuálním počítači. Pro <userID>, nahraďte ID identity, který jste získali v předchozím kroku. 
+Nejprve ověřit pomocí rozhraní příkazového řádku Azure [az login][az-login], pomocí identity nakonfigurovaný na virtuálním počítači. Pro <userID>, nahraďte ID identity, který jste získali v předchozím kroku. 
 
 ```azurecli
 az login --identity --username <userID>
 ```
 
-Potom se přihlaste do registru příkazem [az acr login][az-acr-login]. Při použití tohoto příkazu rozhraní příkazového řádku používá token služby Active Directory vytvoří, když jste spustili `az login` bez problémů ověřování relace pomocí registru kontejnerů. (V závislosti na nastavení Virtuálního počítače, možná budete muset spustit tento příkaz a příkazy dockeru s `sudo`.)
+Potom ověřování do registru příkazem [az acr login][az-acr-login]. Při použití tohoto příkazu rozhraní příkazového řádku používá token služby Active Directory vytvoří, když jste spustili `az login` bez problémů ověřování relace pomocí registru kontejnerů. (V závislosti na nastavení Virtuálního počítače, možná budete muset spustit tento příkaz a příkazy dockeru s `sudo`.)
 
 ```azurecli
 az acr login --name myContainerRegistry
@@ -216,13 +216,13 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 Připojte přes SSH k virtuálnímu počítači Dockeru, který má nakonfigurovanou identitu. Spuštěním následujících příkazů rozhraní příkazového řádku Azure, pomocí rozhraní příkazového řádku Azure, který je nainstalovaný na virtuálním počítači.
 
-Nejprve, přihlaste se pomocí rozhraní příkazového řádku Azure [az login][az-login], pomocí identity přiřazené systém na virtuálním počítači.
+Nejprve ověřit pomocí rozhraní příkazového řádku Azure [az login][az-login], pomocí identity přiřazené systém na virtuálním počítači.
 
 ```azurecli
 az login --identity
 ```
 
-Potom se přihlaste do registru příkazem [az acr login][az-acr-login]. Při použití tohoto příkazu rozhraní příkazového řádku používá token služby Active Directory vytvoří, když jste spustili `az login` bez problémů ověřování relace pomocí registru kontejnerů. (V závislosti na nastavení Virtuálního počítače, možná budete muset spustit tento příkaz a příkazy dockeru s `sudo`.)
+Potom ověřování do registru příkazem [az acr login][az-acr-login]. Při použití tohoto příkazu rozhraní příkazového řádku používá token služby Active Directory vytvoří, když jste spustili `az login` bez problémů ověřování relace pomocí registru kontejnerů. (V závislosti na nastavení Virtuálního počítače, možná budete muset spustit tento příkaz a příkazy dockeru s `sudo`.)
 
 ```azurecli
 az acr login --name myContainerRegistry

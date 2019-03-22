@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 0a3dfce10fc8ea76bc8f99e2459295bc637017dc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 139c5d47fe6ea82148e2d5e1cf2f5fcb72d4020e
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878404"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339393"
 ---
 # <a name="enable-custom-pronunciation"></a>Povolit vlastní výslovnost
 
-S použitím vlastní výslovnost, můžete definovat zapsané ve fonetické formuláře a zobrazení slovo nebo termín. Je vhodný pro zpracování vlastní podmínky, jako jsou názvy produktů nebo zkratky. Vše, co potřebujete, abyste mohli začít se výslovnost soubor – soubor .txt jednoduché.
+S použitím vlastní výslovnost, můžete definovat zapsané ve fonetické formuláře a zobrazení slovo nebo termín (zkratka). Je vhodný pro zpracování vlastní podmínky, jako jsou názvy produktů nebo zkratky. Vše, co potřebujete, abyste mohli začít se výslovnost soubor – soubor .txt jednoduché.
 
 Zde je, jak to funguje. V souboru .txt jeden můžete zadat několik položek vlastní výslovnost. Struktura je následujícím způsobem:
 
@@ -32,11 +32,12 @@ V následující tabulce jsou uvedeny několik příkladů:
 
 | Formulář pro zobrazení | Mluvené slovo formuláře |
 |----------|-------|
-| C3PO | zobrazit tři pea o |
+| 3CPO | zobrazit tři pea o |
 | L8R | pozdní jsou |
-| CNTK | Zobrazit n čaje tis.|
+| CNTK | k c n t|
 
 ## <a name="requirements-for-the-spoken-form"></a>Požadavky na mluvené slovo formuláře
+
 Mluvené slovo formuláře musí obsahovat malá písmena, která můžete vynutit během importu. Musíte také zajistit kontroly v programu pro import dat. Smí obsahovat žádné karty mluvené slovo formulář nebo formulář pro zobrazení. Ale existuje může být více je zakázané znaky ve formuláři zobrazení (například ~ a ^).
 
 Každý soubor .txt může mít několik položek, jak je znázorněno na následujícím obrázku:
@@ -46,18 +47,20 @@ Každý soubor .txt může mít několik položek, jak je znázorněno na násle
 Mluvené slovo formuláře je zapsané ve fonetické posloupnost formulář pro zobrazení. Skládá se z písmen, slova nebo slabik. V současné době neexistuje žádný další doprovodné materiály nebo sada standardů vám usnadní mluvené slovo formuláře.
 
 ## <a name="supported-pronunciation-characters"></a>Podporované výslovnost znaků
+
 Vlastní Výslovnost je aktuálně podporované pro angličtina (en US) a němčina (de-de). V následující tabulce jsou uvedeny znakových sad, které vám umožní express mluvené formy termín (v souboru vlastní výslovnost):
 
 | Jazyk | Postavy |
 |---------- |----------|
-| Angličtina (en US) | a, b, c, d, e, f, g, h, i, j, k, l, o, p, q, r, s, t, u, v, w, x, y, z |
-| Němčina (de-de) | ä, cos, ř,?, a, b, c, d, e, f, g, h, i, j, k, l, o, p, q, r, s, t, u, v, w, x, y, z |
+| Angličtina (en US) | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
+| Němčina (de-de) | ä, ö, ü, ?, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 
 > [!NOTE]
 > Formulář pro zobrazení na dobu (v souboru výslovnost) by měly být napsány stejným způsobem jako v datové sadě přizpůsobení jazyka.
 
 ## <a name="requirements-for-the-display-form"></a>Požadavky pro formulář pro zobrazení
-Formulář pro zobrazení může být pouze vlastní slova, termín, zkratka nebo složených slov, které kombinují existující slova. Můžete také zadat alternativní výslovnosti pro běžná slova.
+
+Formulář pro zobrazení může být pouze vlastní slova, zkratka nebo složených slov, které kombinují existující slova.
 
 >[!NOTE]
 >Nedoporučujeme používat tuto funkci, aby byla znovu formulována běžná slova nebo pro úpravu mluvené slovo formuláře. Je lepší pro spuštění dekodér zobrazíte, jestli jsou některé neobvyklé slova (jako je například zkratky, technické slova nebo cizí slova) správně dekódovat. Pokud ano, můžete je přidat do vlastní výslovnost souboru. V jazykový model pouze a vždy používejte formulář pro zobrazení slova.

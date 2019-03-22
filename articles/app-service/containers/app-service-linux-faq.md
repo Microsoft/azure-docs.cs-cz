@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: 4c2ed5fa65528a690d618e45c118d2433820ddc6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 223486ec2dc184e6bbe02e1f6862b9d79d773a2c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57871489"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339537"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service v Linuxu – nejčastější dotazy
 
@@ -42,10 +42,10 @@ Všechny soubory Docker můžete najít na [Githubu](https://github.com/azure-ap
 | Zásobník     | Očekávaná hodnota                                                                |
 |-----------|-------------------------------------------------------------------------------|
 | Java SE   | příkaz ke spuštění vaší `.jar` aplikace                                    |
-| Tomcat    | umístění skriptu provádět žádné nezbytné configruations pro vaši aplikaci |
-| Node.js   | konfiguračního souboru PM2 nebo souboru skriptu                                |          
+| Tomcat    | umístění skriptu, který spustí všechny konfigurace pro vaši aplikaci          |
+| Node.js   | konfiguračního souboru PM2 nebo souboru skriptu                                |
 | .Net Core | Název zkompilované knihovny DLL jako `dotnet <myapp>.dll`                                 |
-| Ruby      | skript Ruby, který chcete inicializovat aplikace s využitím                     
+| Ruby      | skript Ruby, který chcete inicializovat aplikace s využitím                     |
 
 ## <a name="management"></a>Správa
 

@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: a22512a960426cc21f4f012e06b9df4fa86e637e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 046aed64d3551d5c0b6ddae44b925452c01c297a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807265"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337575"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Ověřování a přístup k prostředkům pomocí spravované identity v Azure Logic Apps
 
@@ -152,7 +152,7 @@ Jakmile nastavíte aplikaci logiky s systém přiřadil se identita spravované 
 
 1. Zadejte potřebné podrobnosti pro tuto akci, jako je například požadavek **metoda** a **URI** umístění prostředků, kterou chcete volat.
 
-   Předpokládejme například, že používáte ověřování Azure Active Directory (Azure AD) s [jednu z těchto služeb Azure, které podporují služby Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication). 
+   Předpokládejme například, že používáte ověřování Azure Active Directory (Azure AD) s [jednu z těchto služeb Azure, které podporují služby Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
    V **URI** zadejte adresu URL koncového bodu pro tuto službu Azure. 
    Ano, pokud používáte Azure Resource Manageru, zadejte tuto hodnotu v **URI** vlastnost:
 
@@ -167,7 +167,7 @@ Jakmile nastavíte aplikaci logiky s systém přiřadil se identita spravované 
    > [!IMPORTANT]
    > 
    > V **cílovou skupinu** vlastnost, hodnota ID prostředku musí přesně odpovídat hodnotám očekává Azure AD, včetně všech požadovaných koncových lomítek. 
-   > Tyto hodnoty ID prostředků najdete v tomto [tabulku popisující Azure services – Azure AD, které podporují](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication). 
+   > Tyto hodnoty ID prostředků najdete v tomto [tabulku popisující Azure services – Azure AD, které podporují](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
    > Například pokud používáte ID prostředku správce prostředků Azure, ujistěte se, že identifikátor URI má koncové lomítko.
 
 1. Pokračujte v sestavování aplikace logiky požadovaným způsobem.

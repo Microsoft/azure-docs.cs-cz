@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: dd60c5d0210ffba373839fd0f194496c5dbcc20d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 7983169c2b1123c57a48471e3f4d9ad6f19c84dc
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999402"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314718"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Nástroje pro vývoj na virtuální počítač pro datové vědy
 
@@ -65,7 +65,7 @@ Na Data virtuálního počítače VĚDY poskytuje produktivní prostředí pro v
 | Co je to?   | Webové rozhraní IDE pro R    |
 | Podporované DSVM verze      | Linux      |
 | Typické použití      |  Vývoj v jazyce R     |
-| Jak používat nebo ji spustit?      | Povolit službu s _systemctl povolit rstudio serveru_, spusťte službu s _systemctl start rstudio serveru_. Potom můžete přihlásit k přihlašovací stránce RStudio serveru v http://your-vm-ip:8787.       |
+| Jak používat nebo ji spustit?      | Povolit službu s _systemctl povolit rstudio serveru_, spusťte službu s _systemctl start rstudio serveru_. Můžete pak přihlásit k přihlašovací stránce RStudio serveru http:\// vaše-vm-ip:8787.       |
 | Související nástroje na datové VĚDY      |   Visual Studio 2017, Visual Studio Code, RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 

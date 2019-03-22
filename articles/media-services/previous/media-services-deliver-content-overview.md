@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 51d0c7ade46143ecbf6fe46bc54e5d383d50b382
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 3314ad4558fdd55429a5a68326dd46b5920d7daa
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58173072"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316231"
 ---
 # <a name="deliver-content-to-customers"></a>Doručování obsahu zákazníkům
 Při dodáváte streamování nebo vod (Video-on-demand) obsah pro zákazníky, je vaším cílem poskytování vysoce kvalitního videa pro různá zařízení v různých síťových podmínkách.
@@ -92,22 +92,22 @@ Můžete pouze Streamovat přes protokol SSL Pokud koncový bod streamování, z
 ### <a name="mpeg-dash-format"></a>Formátu MPEG-DASH
 {streamování koncový bod služby media název účtu name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
 
 ### <a name="apple-http-live-streaming-hls-v4-format"></a>Formátu Apple HTTP Live Streaming (HLS) V4.
 {streamování koncový bod služby media název účtu name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
 
 ### <a name="apple-http-live-streaming-hls-v3-format"></a>Formátu Apple HTTP Live Streaming (HLS) V3
 {streamování koncový bod služby media název účtu name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
 
 ### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Formátu Apple HTTP Live Streaming (HLS) s filtrem pouze se zvukem
 Ve výchozím nastavení, jsou jen zvukové stopy součástí HLS manifestu. To je potřeba Apple Store certifikaci pro mobilní sítě. V takovém případě pokud klient nemá dostatečnou šířku pásma, nebo je připojený prostřednictvím linky 2G připojení, přehrávání se přepne do pouze se zvukem. To pomáhá udržet streamování obsahu bez ukládání do vyrovnávací paměti, ale neexistuje žádná videa. V některých případech může být player ukládání do vyrovnávací paměti upřednostňované nad pouze se zvukem. Pokud chcete odebrat pouze se zvukem sledovat, přidejte **pouze se zvukem = false** na adresu URL.
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3pouze se zvukem = false)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
 
 Další informace najdete v tématu [výstupní další funkce podpory dynamické složení manifestu a HLS](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
@@ -116,14 +116,14 @@ Další informace najdete v tématu [výstupní další funkce podpory dynamick�
 
 Příklad:
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
 ### <a id="fmp4_v20"></a>Technologie Smooth Streaming 2.0 manifestu (starší verze manifestu)
 Ve výchozím nastavení technologie Smooth Streaming formát manifestu obsahuje značku opakování (r-tag). Některé přehrávače však nepodporují r-tag. Klienti tyto přehrávačích můžete použít formát, který zakáže r-tag:
 
 {streamování koncový bod služby media název účtu name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=fmp4-v20)
 
-    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
 
 ## <a name="progressive-download"></a>Progresivní stahování
 Progresivní stahování můžete spustit přehrávání médií předtím, než byly staženy celý soubor. Nelze stáhnout postupně .ism * (ismv isma, ismt soubory nebo ismc).

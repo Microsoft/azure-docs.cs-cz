@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: ac1384827ceede0f66fd08c6c08fa8e934b1ae42
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fc8dd6770efa1c057a56374ddc0094c2d88d2eb5
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076152"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335727"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Vytvoření směrovací tabulky virtuální rozbočovač řídit provoz do síťového virtuálního zařízení
 
@@ -36,7 +36,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Ověřte, že splňujete následující kritéria:
 
-1. Máte síťové virtuální zařízení (NVA) se softwarem třetích stran podle vašeho výběru, který je obvykle zřízený z Azure Marketplace (odkaz) ve virtuální síti.
+1. Máte síťové virtuální zařízení (NVA). Toto je software třetí strany podle vašeho výběru, který je obvykle zřízený z Azure Marketplace ve virtuální síti.
 2. Máte privátní IP adresa přiřazená síťovému rozhraní síťového virtuálního zařízení. 
 3. Virtuální rozbočovač se nedá nasadit síťové virtuální zařízení. Musí být nasazeny v samostatné virtuální sítě. Pro účely tohoto článku síťové virtuální zařízení virtuální sítě se označuje jako "Virtuální síť DMZ".
 4. "Virtuální síť DMZ" může mít jeden nebo mnoho virtuálních sítí k němu připojená. V tomto článku tuto virtuální síť se nazývá nepřímé paprsku virtuální sítě. Tyto virtuální sítě se dá propojit k virtuální síti DMZ pomocí VNet peering.
@@ -117,14 +117,6 @@ Potvrďte změny do virtuální rozbočovač.
 
 ```powershell
 Update-AzVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub" -RouteTable $routeTable
-```
-
-## <a name="cleanup"></a>Vyčištění prostředků
-
-Pokud už tyto prostředky nepotřebujete, můžete použít [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) k odebrání skupiny prostředků a všech prostředků, které obsahuje. Položku myResourceGroup nahraďte názvem vaší skupiny prostředků a spusťte následující příkaz PowerShellu:
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Další postup

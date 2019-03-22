@@ -1,24 +1,24 @@
 ---
 title: Podpora jazyků – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Seznam jazykovou verzi, podporuje QnA Maker znalostní báze přirozeného jazyka. Nekombinujte jazyky ve stejném znalostní báze.
+description: Jazyk znalostní báze ovlivňuje QnA Maker umožňuje automaticky extrahovat otázky a odpovědi ze zdrojů, jakož i relevance výsledků, které poskytuje nástroj QnA Maker v odpovědi na dotazy uživatelů. Seznam jazykovou verzi, podporuje QnA Maker znalostní báze přirozeného jazyka. Nekombinujte jazyky ve stejném znalostní báze.
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/04/2019
+ms.date: 03/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 4e1dbf408565e78547928047ae2ce2d37ad1a022
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 820a9ae0df91fba8cf00764428867bec6196841a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105120"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335857"
 ---
-# <a name="language-and-region-support-for-qna-maker"></a>Podpora jazyka a oblasti pro nástroj QnA Maker
+# <a name="language-support-for-qna-maker"></a>Jazyková podpora v nástroji QnA Maker
 
 Jazyk znalostní báze ovlivňuje QnA Maker umožňuje automaticky extrahovat otázky a odpovědi z [zdroje](../Concepts/data-sources-supported.md), a také podle relevance výsledků poskytuje nástroj QnA Maker v odpovědi na dotazy uživatelů.
 
@@ -33,16 +33,28 @@ Nástroj QnA Maker podporuje extrakce otázek a odpovědí na libovolné stránc
 |Němčina|de-*|
 |Španělština|ES-*|
 
+## <a name="primary-language-detection"></a>Primární rozpoznávání jazyka
+
+Primární jazyk používaný pro zjišťování je nastavena pro nástroj QnA Maker prostředek a všechny znalostních bází, vytvoří při prvním dokumentu nebo adrese URL se přidá do první znalostní báze na tento prostředek. Jazyk nelze změnit. 
+
+Pokud uživatel plánuje zajistit podporu více jazyků, potřebují mít nový prostředek nástroje QnA Maker pro jednotlivé jazyky. Zjistěte, jak [vytvoření znalostní báze QnA Maker založený na jazyce](/how-to/language-knowledge-base.md).  
+
+Ověřte primárního jazyka pomocí následujících kroků:
+
+1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).  
+1. Vyhledejte a vyberte prostředek Azure Search vytvořených jako součást vašeho prostředku QnA Maker. Název prostředku Azure Search, začne se stejným názvem jako prostředek QnA Maker a bude mít typ **služba Search**. 
+1. Z **přehled** stránky vyhledávání prostředků, vyberte **indexy**. 
+1. Vyberte **testkb** indexu.
+1. Vyberte **pole** kartu. 
+1. Zobrazení **analyzátor** sloupce **dotazy** a **odpovědí** pole. 
+
+
 ## <a name="query-matching-and-relevance"></a>Odpovídající dotaz a relevance
 Nástroj QnA Maker závisí na [jazykové analyzátory](https://docs.microsoft.com/rest/api/searchservice/language-support) ve službě Azure search pro poskytování výsledků. Speciální znovu hodnocení funkce jsou k dispozici En-* jazyky, které umožňují lepší podle relevance.
 
-Možnosti Azure Search jsou na pamětích pro podporované jazyky, nástroje QnA Maker je další klasifikátor, který je umístěný nad výsledky Azure search. V tomto klasifikátor modelu, můžeme použít některé zvláštní sémantické a založené na funkcích aplikace word v en-*, které ještě nejsou k dispozici pro jiné jazyky. Jsme Nedovolte, aby byly tyto k dispozici, protože jde o součást vnitřní fungování klasifikátor. 
+Možnosti Azure Search jsou na pamětích pro podporované jazyky, nástroje QnA Maker je další klasifikátor, který je umístěný nad výsledky Azure search. V tomto modelu klasifikátor používáme některé speciální funkce sémantického a Wordu en-*, které ještě nejsou k dispozici pro jiné jazyky. Jsme zpřístupnění těchto funkcí, jako jsou součástí vnitřní fungování nástroje QnA Maker klasifikátor. 
 
-Nástroj QnA Maker automaticky zjistí jazyk znalostní báze během vytváření a příslušným způsobem nastaví analyzátor. Můžete vytvořit znalostních bází v těchto jazycích. Čtení [to](../How-To/language-knowledge-base.md) podrobné informace o tom, jak QnA Maker zpracovává jazyky.
-
-
-> [!Tip]
-> Analyzátory jazyka, po nastavení, nedá se změnit. Analyzátor jazyka platí také, pro všechny znalostních bází v [služba QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud budete chtít mít znalostních bází v jiném jazyce, je musí vytvořit v rámci samostatné služby QnA Maker.
+Nástroj QnA Maker [automaticky zjistí jazyk znalostní báze](#primary-language-detection) během vytváření a příslušným způsobem nastaví analyzátor. Můžete vytvořit znalostních bází v těchto jazycích. 
 
 |Podporované jazyky|
 |-----|

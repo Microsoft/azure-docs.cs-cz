@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 79440cf69f921e5933ed410e276cdf304e94fa4f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 64cfac0d689df88c4d432e772bcd0a0cc7ab4ade
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817270"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317676"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorování účtu úložiště na webu Azure Portal
 
-[Azure Storage Analytics](../storage-analytics.md) poskytuje metriky pro všechny služby storage a protokoly pro objekty BLOB, fronty a tabulky. Můžete použít [webu Azure portal](https://portal.azure.com) ke konfiguraci, protokoly a metriky, které jsou zaznamenány pro svůj účet a konfigurace grafů, které poskytují vizuální reprezentace vašich dat metriky.
+[Azure Storage Analytics](storage-analytics.md) poskytuje metriky pro všechny služby storage a protokoly pro objekty BLOB, fronty a tabulky. Můžete použít [webu Azure portal](https://portal.azure.com) ke konfiguraci, protokoly a metriky, které jsou zaznamenány pro svůj účet a konfigurace grafů, které poskytují vizuální reprezentace vašich dat metriky.
 
 > [!NOTE]
-> Existují náklady spojené s zkoumání dat monitorování na webu Azure Portal. Další informace najdete v tématu [analytika úložiště a fakturace](/rest/api/storageservices/Storage-Analytics-and-Billing).
+> Existují náklady spojené s zkoumání dat monitorování na webu Azure Portal. Další informace najdete v tématu [Storage Analytics](storage-analytics.md).
 >
 > Služba soubory Azure aktuálně podporuje metrik Storage Analytics, ale zatím nepodporuje protokolování.
-> 
-> Podrobný průvodce k identifikaci, diagnostice a řešit problémy související s Azure Storage pomocí Storage Analytics a další nástroje, najdete v části [monitorování, Diagnostika a řešení problémů s Microsoft Azure Storage](../storage-monitoring-diagnosing-troubleshooting.md).
+>
+> Podrobný průvodce k identifikaci, diagnostice a řešit problémy související s Azure Storage pomocí Storage Analytics a další nástroje, najdete v části [monitorování, Diagnostika a řešení problémů s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
 >
 
 ## <a name="configure-monitoring-for-a-storage-account"></a>Konfigurace monitorování pro účet úložiště
@@ -41,7 +41,7 @@ ms.locfileid: "55817270"
    Chcete-li nastavit zásady uchovávání dat, přesuňte **uchování (dny)** posuvník nebo zadat počet dnů od data, pokud chcete zachovat, od 1 do 365. Výchozí pro nové účty úložiště je sedm dní. Pokud nechcete nastavit zásady uchovávání informací, zadejte nula. Pokud není žádná zásada uchovávání informací, je jenom na vás odstranit data sledování.
 
    > [!WARNING]
-   > Bude se vám účtovat, když ručně odstraňte data metrik. Zastaralé analytických dat (data starší než zásady uchovávání informací) je odstraněn systémem bez poplatků. Doporučujeme nastavit zásady uchovávání informací podle jak dlouho chcete uchovávat analytická data úložiště pro váš účet. Zobrazit [co poplatky se vám účtovat potřeba povolit metriky úložiště?](../common/storage-enable-and-view-metrics.md#what-charges-do-you-incur-when-you-enable-storage-metrics) Další informace.
+   > Bude se vám účtovat, když ručně odstraňte data metrik. Zastaralé analytických dat (data starší než zásady uchovávání informací) je odstraněn systémem bez poplatků. Doporučujeme nastavit zásady uchovávání informací podle jak dlouho chcete uchovávat analytická data úložiště pro váš účet. Zobrazit [fakturace metrik úložiště](storage-analytics-metrics.md#billing-on-storage-metrics) Další informace.
    >
 
 1. Jakmile dokončíte konfiguraci monitorování, vyberte **Uložit**.
@@ -51,12 +51,12 @@ Výchozí sada metriky se zobrazí v grafech v okně účtu úložiště, stejn�
 Shromažďování metrik a protokolování lze zakázat nastavením **stav** k **vypnout**.
 
 > [!NOTE]
-> Azure Storage využívá [tabulky úložiště](../common/storage-introduction.md#table-storage) ukládat metriky pro účet úložiště a úložiště metriky v tabulkách ve vašem účtu. Další informace najdete v tématu. [Jak jsou uloženy metriky](../common/storage-analytics.md#how-metrics-are-stored).
+> Azure Storage využívá [tabulky úložiště](storage-introduction.md#table-storage) ukládat metriky pro účet úložiště a úložiště metriky v tabulkách ve vašem účtu. Další informace najdete v tématu. [Jak jsou uloženy metriky](storage-analytics-metrics.md#how-metrics-are-stored).
 >
 
 ## <a name="customize-metrics-charts"></a>Přizpůsobení grafů metrik
 
-Pomocí následujícího postupu vyberte, které metriky úložiště, chcete-li zobrazit v grafu metrik. 
+Pomocí následujícího postupu vyberte, které metriky úložiště, chcete-li zobrazit v grafu metrik.
 
 1. Začněte tím, že zobrazení grafu metrik úložiště na webu Azure Portal. Grafy můžete najít na **okno účet úložiště** a **metriky** okna pro jednotlivé služby (objekt blob, fronty, tabulky, souboru).
 
@@ -130,17 +130,16 @@ Můžete dát pokyn uložit diagnostické protokoly pro čtení, zápisu a odstr
 1. Vyberte **diagnostiky** v **monitorování** nabídky okna.
 
     ![Položky nabídky Diagnostika v části monitorování na webu Azure Portal.](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
-    
+
 1. Zajištění **stav** je nastavena na **na**a vyberte **služby** pro které chcete povolit protokolování.
 
     ![Konfigurace protokolování na portálu Azure portal.](./media/storage-monitor-storage-account/enable-diagnostics.png)
 1. Klikněte na **Uložit**.
 
-Diagnostické protokoly se ukládají do kontejneru objektů blob s názvem *$logs* ve vašem účtu úložiště. Můžete zobrazit pomocí Průzkumníka služby storage jako data protokolu [Microsoft Storage Explorer](http://storageexplorer.com), nebo prostřednictvím kódu programu pomocí klientské knihovny pro úložiště nebo Powershellu.
+Diagnostické protokoly se ukládají do kontejneru objektů blob s názvem *$logs* ve vašem účtu úložiště. Můžete zobrazit pomocí Průzkumníka služby storage jako data protokolu [Microsoft Storage Explorer](https://storageexplorer.com), nebo prostřednictvím kódu programu pomocí klientské knihovny pro úložiště nebo Powershellu.
 
-Informace o přístupu k $logs kontejneru najdete v tématu [povolení protokolování úložiště a přístup k datům protokolů](/rest/api/storageservices/enabling-storage-logging-and-accessing-log-data).
+Informace o přístupu k $logs kontejneru najdete v tématu [Storage analytics protokolování](storage-analytics-logging.md).
 
 ## <a name="next-steps"></a>Další postup
 
-* Najít další podrobnosti o [metriky, protokolování a fakturaci](../storage-analytics.md) pro Storage Analytics.
-* [Povolení služby Azure Storage metriky a zobrazení dat metrik](../storage-enable-and-view-metrics.md) pomocí prostředí PowerShell a programově pomocí jazyka C#.
+* Najít další podrobnosti o [metriky, protokolování a fakturaci](storage-analytics.md) pro Storage Analytics.

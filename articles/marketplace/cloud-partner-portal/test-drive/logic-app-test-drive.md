@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d784941c43da13a2c1bd120599aa02fe14e5a5b4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4fd946b53956509844ad0a9396575f1ee2450414
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456822"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338594"
 ---
 <a name="logic-app-test-drive"></a>Jednotky Test aplikace logiky
 ====================
@@ -137,6 +137,10 @@ Zadané aplikace se používá k nasazení do předplatného, potřebujeme pro t
 **Klíč aplikace Azure AD –** *[povinné pole]* poslední pole má generovat ověřovací klíč. V části klíče přidejte popis klíče, nastavte dobu trvání nikdy nevyprší, pak vyberte možnost uložit. Je **důležité** abyste se vyhnuli nutnosti vypršela klíčů, což naruší vaše testovací verze v produkčním prostředí. Zkopírujte tuto hodnotu a vložte ho do vašeho povinné pole testovací verze.
 
 ![Azure Active Directory s klíči](./media/azure-resource-manager-test-drive/subdetails8.png)
+
+> [!CAUTION]
+> Registrace aplikace Azure Preview nemůžete použít, protože se nevygeneruje žádný aktuálně klíč kódováním base64.
+
 
 <a name="next-steps"></a>Další postup
 ----------

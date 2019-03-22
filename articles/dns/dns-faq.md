@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: d0c5260fcc2e7ac2acbeec308c6a0cba7d6a81be
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 1d0506179f9f0044f9f05edd3395d2677310c2d0
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098089"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337101"
 ---
 # <a name="azure-dns-faq"></a>Nejčastější dotazy k Azure DNS
 
@@ -103,9 +103,11 @@ Tato podpora aktuálně není k dispozici pro záznamy TXT vytvořené na webu A
 ## <a name="alias-records"></a>Záznamy aliasů
 
 ### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>Co jsou uvedeny některé scénáře, kde záznamů aliasů jsou užitečné?
+
 Viz scénáře tématu [Azure DNS alias záznamy přehled](dns-alias.md).
 
 ### <a name="what-record-types-are-supported-for-alias-record-sets"></a>Jaké typy záznamu jsou podporovány pro sady záznamů aliasů?
+
 Sady záznamů aliasů jsou podporovány pro následující typy záznamů v zóně Azure DNS:
  
 - A 
@@ -116,30 +118,36 @@ Sady záznamů aliasů jsou podporovány pro následující typy záznamů v zó
 
 - **Odkazovat na prostředek veřejné IP adresy ze serveru DNS A/AAAA sadu záznamů.** Můžete vytvořit sadu záznamů A/AAAA a nastavte ji alias záznamu sady tak, aby odkazoval na prostředek veřejné IP adresy.
 - **Přejděte na profil Traffic Manageru ze sady záznamů DNS A/AAAA/CNAME.** Ze sady záznamů DNS CNAME může odkazovat na CNAME profil služby Traffic Manager. Příkladem je contoso.trafficmanager.net. Teď budete také může odkazovat na profil Traffic Manageru, který má externí koncové body z záznam A nebo AAAA, nastavte ve vaší zóně DNS.
+- **Přejděte na koncový bod Azure Content Delivery Network (CDN)**. To je užitečné při vytváření statických webů pomocí služby Azure storage a Azure CDN.
 - **Přejděte na jinou sadu záznamů DNS v rámci stejné zóny.** Záznamů aliasů můžete odkazovat na jiné sady záznamů stejného typu. Můžete mít například sadu záznamů DNS CNAME nastavenou jako alias pro jinou sadu záznamů CNAME stejného typu. Toto uspořádání je užitečné, pokud chcete, aby některé sady záznamů bude aliasy a některé jiné aliasy.
 
 ### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Můžete vytvořit a aktualizovat alias záznamy z portálu Azure portal?
+
 Ano. Můžete vytvořit nebo spravovat záznamů aliasů na webu Azure Portal spolu s rozhraní Azure REST API, Powershellu, rozhraní příkazového řádku a sady SDK.
 
 ### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>Záznamů aliasů pomůže zajistit, aby že můj sady záznamů DNS se odstraní při odstranění základní veřejnou IP adresu?
+
 Ano. Tato funkce je jedním z hlavních schopností v záznamů aliasů. Pomůže vám vyhnout potenciálním výpadkům pro uživatele vaší aplikace.
 
 ### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>Alias se zaznamenává nápovědy, abyste měli jistotu, že moje sady záznamů DNS se aktualizuje na správnou IP adresu při změně podkladového veřejnou IP adresu?
+
 Ano. Tato funkce je jedním z hlavních schopností v záznamů aliasů. Pomůže vám vyhnout potenciálním výpadkům nebo bezpečnostní rizika pro vaši aplikaci.
 
 ### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-a-or-aaaa-records-to-point-to-traffic-manager"></a>Existují nějaká omezení při použití záznam aliasu sad pro záznamy A nebo AAAA tak, aby odkazovala na Traffic Manager?
+
 Ano. Přejděte na profil Traffic Manageru jako alias z A nebo AAAA sady záznamů, Traffic Manager musí používat profil výhradně externími koncovými body. Když vytvoříte externí koncové body Traffic Manageru, zadejte skutečné IP adresy koncových bodů.
 
 ### <a name="is-there-an-additional-charge-to-use-alias-records"></a>Jsou nějaké další poplatky za použití záznamů aliasů?
+
 Záznamů aliasů jsou kvalifikaci na platnou sadu záznamů DNS. Není k dispozici žádné další fakturace za záznamů aliasů.
 
 ## <a name="use-azure-dns"></a>Použití Azure DNS
 
-### <a name="can-i-cohost-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Můžete cohost doméně s využitím Azure DNS a jiného poskytovatele DNS?
+### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Je možné společné hostování domény s využitím Azure DNS a jiného poskytovatele DNS?
 
-Ano. Azure DNS podporuje cohosting domény s jinými službami DNS.
+Ano. Azure DNS podporuje společné hostování domény s jinými službami DNS.
 
-Pokud chcete nastavit cohosting, upravte záznamy NS pro doménu tak, aby odkazoval na názvové servery z obou poskytovatelů. Název serveru (NS) zaznamenává ovládací prvek poskytovatelů, kteří obdrží dotazy DNS pro doménu. Můžete upravit tyto záznamy NS v Azure DNS, v rámci zprostředkovatele a v nadřazené zóně. Nadřazené zóny se obvykle konfiguruje prostřednictvím registrátora názvu domény. Další informace o delegování DNS najdete v tématu [delegování DNS domény](dns-domain-delegation.md).
+Nastavit společné hostování, upravte záznamy NS pro doménu tak, aby odkazoval na názvové servery z obou poskytovatelů. Název serveru (NS) zaznamenává ovládací prvek poskytovatelů, kteří obdrží dotazy DNS pro doménu. Můžete upravit tyto záznamy NS v Azure DNS, v rámci zprostředkovatele a v nadřazené zóně. Nadřazené zóny se obvykle konfiguruje prostřednictvím registrátora názvu domény. Další informace o delegování DNS najdete v tématu [delegování DNS domény](dns-domain-delegation.md).
 
 Také se ujistěte, jestli jsou synchronizované mezi oběma poskytovatelů DNS záznamy DNS pro doménu. Azure DNS v současné době nepodporuje přenosy zóny DNS. Záznamy DNS musí být synchronizovány s použitím buď [portálu pro správu Azure DNS](dns-operations-recordsets-portal.md), [rozhraní REST API](https://docs.microsoft.com/powershell/module/azurerm.dns), [SDK](dns-sdk.md), [rutin prostředí PowerShell](dns-operations-recordsets.md), nebo [Nástroj rozhraní příkazového řádku](dns-operations-recordsets-cli.md).
 
@@ -271,10 +279,9 @@ Privátních zón, které budou vytvořeny již prostřednictvím rozhraní API,
 ## <a name="next-steps"></a>Další postup
 
 - [Další informace o službě Azure DNS](dns-overview.md).
-<br>
-- [Další informace o tom, jak používat Azure DNS pro privátní domény](private-dns-overview.md).
-<br>
-- [Další informace o DNS zóny a záznamy](dns-zones-records.md).
-<br>
-- [Začínáme s Azure DNS](dns-getstarted-portal.md).
 
+- [Další informace o tom, jak používat Azure DNS pro privátní domény](private-dns-overview.md).
+
+- [Další informace o DNS zóny a záznamy](dns-zones-records.md).
+
+- [Začínáme s Azure DNS](dns-getstarted-portal.md).

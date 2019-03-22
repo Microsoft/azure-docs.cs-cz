@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
-ms.openlocfilehash: 4133379ff7c1c0a64bd2d9aefdafdd5cdb530491
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 91b694070147cb0591bcc1763905f471161bf07b
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875064"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336758"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 
@@ -153,7 +153,7 @@ Pokud příkaz nic nevrátí, spusťte následující příkaz a prozkoumejte IP
 docker inspect my-web-site
 ```
 
-Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč a přejděte na vrácenou IP adresu, například <http://172.31.194.61>. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč a přejděte na IP adresu vrácenou, například "http:\//172.31.194.61". V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 Pokud chcete kontejner zastavit, spusťte:
 
@@ -360,10 +360,12 @@ Service Fabric, použije výchozí úložiště pověření, které můžete zad
 * IsDefaultContainerRepositoryPasswordEncrypted (bool)
 * DefaultContainerRepositoryPasswordType (řetězec)---podporovány od verze 6.4 modulu runtime
 
-Tady je příklad toho, co můžete přidat uvnitř `Hosting` oddílu v souboru ClusterManifestTemplate.json. Další informace najdete v tématu [nastavení clusteru změnit Azure Service Fabric](service-fabric-cluster-fabric-settings.md) a [tajných kódů aplikace spravovat Azure Service Fabric](service-fabric-application-secret-management.md)
+Tady je příklad toho, co můžete přidat uvnitř `Hosting` oddílu v souboru ClusterManifestTemplate.json. `Hosting` Oddíl se dají přidat při vytváření clusteru nebo později při upgradu configuration. Další informace najdete v tématu [nastavení clusteru změnit Azure Service Fabric](service-fabric-cluster-fabric-settings.md) a [tajných kódů aplikace spravovat Azure Service Fabric](service-fabric-application-secret-management.md)
 
 ```json
-      {
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -388,6 +390,7 @@ Tady je příklad toho, co můžete přidat uvnitř `Hosting` oddílu v souboru 
           }
         ]
       },
+]
 ```
 
 ## <a name="configure-isolation-mode"></a>Konfigurace režimu izolace
@@ -618,10 +621,12 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>Konfigurace časového intervalu před vynuceným ukončením kontejneru
 
-Můžete nakonfigurovat časový interval, který určuje, jak dlouho modul runtime počká před odebráním kontejneru po zahájení odstraňování služby (nebo jejího přesunu do jiného uzlu). Konfigurací časového intervalu se do kontejneru odešle příkaz `docker stop <time in seconds>`.  Další podrobnosti najdete v dokumentaci k příkazu [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Časový interval pro čekání se zadává v části `Hosting`. Následující fragment manifestu clusteru ukazuje nastavení intervalu čekání:
+Můžete nakonfigurovat časový interval, který určuje, jak dlouho modul runtime počká před odebráním kontejneru po zahájení odstraňování služby (nebo jejího přesunu do jiného uzlu). Konfigurací časového intervalu se do kontejneru odešle příkaz `docker stop <time in seconds>`.  Další podrobnosti najdete v dokumentaci k příkazu [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Časový interval pro čekání se zadává v části `Hosting`. `Hosting` Oddíl se dají přidat při vytváření clusteru nebo později při upgradu configuration. Následující fragment manifestu clusteru ukazuje nastavení intervalu čekání:
 
 ```json
-{
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -630,7 +635,8 @@ Můžete nakonfigurovat časový interval, který určuje, jak dlouho modul runt
           },
           ...
         ]
-}
+    }
+]
 ```
 Výchozí časový interval je nastavený na 10 sekund. Vzhledem k tomu, že je tato konfigurace dynamická, časový limit aktualizuje v clusteru upgrade pouze konfigurace. 
 
@@ -641,7 +647,9 @@ Cluster Service Fabric můžete nakonfigurovat tak, aby z uzlu odebral nepouží
 
 
 ```json
-{
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -655,7 +663,8 @@ Cluster Service Fabric můžete nakonfigurovat tak, aby z uzlu odebral nepouží
           ...
           }
         ]
-} 
+    } 
+]
 ```
 
 Image, které se nesmí odstranit, můžete zadat v rámci parametru `ContainerImagesToSkip`.  
@@ -666,7 +675,9 @@ Image, které se nesmí odstranit, můžete zadat v rámci parametru `ContainerI
 Modul runtime Service Fabric pro stažení a extrakci imagí kontejneru přidělí 20 minut. Pro většinu imagí kontejnerů to stačí. U větších imagí nebo při pomalém síťovém připojení může být potřeba prodloužit čas, po který se čeká, než dojde ke zrušení stahování a extrakce imagí. Tento časový limit se nastavuje pomocí atributu **ContainerImageDownloadTimeout** v části **Hosting** manifestu clusteru, jak ukazuje následující fragment kódu:
 
 ```json
-{
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -674,7 +685,8 @@ Modul runtime Service Fabric pro stažení a extrakci imagí kontejneru přiděl
               "value": "1200"
           }
         ]
-}
+    }
+]
 ```
 
 
@@ -694,7 +706,9 @@ V modulu runtime Service Fabric verze 6.2 a novější můžete spustit démona 
  
 
 ```json
-{ 
+"fabricSettings": [
+    ...,
+    { 
         "name": "Hosting", 
         "parameters": [ 
           { 
@@ -702,8 +716,8 @@ V modulu runtime Service Fabric verze 6.2 a novější můžete spustit démona 
             "value": "-H localhost:1234 -H unix:///var/run/docker.sock" 
           } 
         ] 
-} 
-
+    } 
+]
 ```
 
 ## <a name="next-steps"></a>Další postup

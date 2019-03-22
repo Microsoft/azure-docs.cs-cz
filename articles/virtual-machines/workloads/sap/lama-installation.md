@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 432dcf4608d23f269c5005b86d2c58b7f70b3068
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f09f66e81ec4878aedebfee9be4c0c67b75c8ad6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007575"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313596"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Konektor SAP LaMa pro Azure
 
@@ -77,7 +77,7 @@ Konektor Azure je dodáván od SAP LaMa 3.0 SP05. Doporučujeme vždy nejprve na
 1. Otevře se okno Azure Active Directory
 1. Klikněte na registrace aplikací
 1. Klikněte na Přidat
-1. Zadejte název, vyberte typ aplikace "Aplikace webového rozhraní API", zadejte přihlašovací adresu URL (například `http://localhost`) a klikněte na vytvořit
+1. Zadejte název, vyberte typ aplikace "Aplikace webového rozhraní API", zadejte přihlašovací adresu URL (třeba http:\//localhost) a klikněte na vytvořit
 1. Adresa URL přihlašování se nepoužívá a může být jakákoliv platná adresa URL
 1. Vyberte novou aplikaci a na kartě nastavení klikněte na tlačítko s klíči
 1. Zadejte popis pro nový klíč, vyberte "Je platné stále" a klikněte na Uložit.

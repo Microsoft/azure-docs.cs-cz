@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 18c83717e761f22363ccc69c827f5e383f8a9e85
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5d7dccfecc47b14be62a78600561a8ff0f7ca501
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54122281"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312253"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine streamování pro Android
 
@@ -76,7 +76,7 @@ V [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-serv
     ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
     ```
 
-3. Vytvoření ContentKeyPolicyOptions:
+3. Create ContentKeyPolicyOptions:
 
     ```csharp
     options.Add(
@@ -103,14 +103,14 @@ Následující seznam tříd usnadňuje offline režimu v ExoPlayer SDK pro Andr
 
 - Library/Core/src/Main/Java/COM/Google/Android/exoplayer2/DRM/OfflineLicenseHelper.Java  
 - library/core/src/main/java/com/google/android/exoplayer2/drm/DefaultDrmSession.java
-- Library/Core/src/Main/Java/COM/Google/Android/exoplayer2/DRM/DefaultDrmSessionManager.Java
+- library/core/src/main/java/com/google/android/exoplayer2/drm/DefaultDrmSessionManager.java
 - library/core/src/main/java/com/google/android/exoplayer2/drm/DrmSession.java
 - library/core/src/main/java/com/google/android/exoplayer2/drm/ErrorStateDrmSession.java
 - library/core/src/main/java/com/google/android/exoplayer2/drm/ExoMediaDrm.java
 - Library/Core/src/Main/Java/COM/Google/Android/exoplayer2/offline/SegmentDownloader.Java
 - Library/Core/src/Main/Java/COM/Google/Android/exoplayer2/offline/DownloaderConstructorHelper.Java 
 - Library/Core/src/Main/Java/COM/Google/Android/exoplayer2/offline/Downloader.Java
-- Library/Dash/src/Main/Java/COM/Google/Android/exoplayer2/Source/Dash/offline/DashDownloader.Java 
+- library/dash/src/main/java/com/google/android/exoplayer2/source/dash/offline/DashDownloader.java 
 
 Vývojáři by měly odkazovat [ExoPlayer – Příručka pro vývojáře](https://google.github.io/ExoPlayer/guide.html) a odpovídající [Blog pro vývojáře](https://medium.com/google-exoplayer) během vývoje aplikace. Google nevydala plně zdokumentovaných referenční implementace nebo ukázkový kód pro ExoPlayer aplikace podporu Widevine offline v tuto chvíli proto informace je omezena na blog a příručka vývojářů. 
 
@@ -144,7 +144,7 @@ Pokud upgradujete mobilního prohlížeče Chrome v62 (nebo vyšší) na telefon
 
 Výše uvedené aplikace PWA open source se vytváří v Node.js. Pokud chcete hostovat vlastní verzi na serveru se systémem Ubuntu, mějte na paměti následující běžné došlo k chybě problémy, které může zabránit přehrávání:
 
-1. Problém CORS: Ukázkové video v ukázkové aplikaci je hostován v https://storage.googleapis.com/biograf-video-files/videos/. Google má nastavení CORS pro všechny své ukázky test hostované v intervalu Google Cloud Storage. Jsou poskytovány pomocí hlavičky CORS explicitním zadáním položky CORS: https://biograf-155113.appspot.com (doménou, ve které google hostitelem jejich ukázkové) brání přístupu podle jakýchkoli jiných lokalit. Pokud se pokusíte, zobrazí se následující chyba HTTP: Nepovedlo se načíst https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: žádné záhlaví 'Přístup-Control-Allow-Origin' je k dispozici u požadovaného prostředku. Původní "https://13.85.80.81:8080' není proto povolený přístup. Pokud odpověď neprůhledné slouží vašim potřebám, nastavte režim požadavek na "no-cors" Načíst prostředek s CORS zakázán.
+1. Problém CORS: Ukázkové video v ukázkové aplikaci je hostován v https://storage.googleapis.com/biograf-video-files/videos/. Google má nastavení CORS pro všechny své ukázky test hostované v intervalu Google Cloud Storage. Jsou poskytovány pomocí hlavičky CORS explicitním zadáním položky CORS: https://biograf-155113.appspot.com (doménou, ve které google hostitelem jejich ukázkové) brání přístupu podle jakýchkoli jiných lokalit. Pokud se pokusíte, zobrazí se následující chyba HTTP: Nepovedlo se načíst https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: žádné záhlaví 'Přístup-Control-Allow-Origin' je k dispozici u požadovaného prostředku. Původní "https:\//13.85.80.81:8080' není proto povolený přístup. Pokud odpověď neprůhledné slouží vašim potřebám, nastavte režim požadavek na "no-cors" Načíst prostředek s CORS zakázán.
 2. Problém certifikátu: Rozšíření EME pro Widevine od Chrome v 58, vyžaduje protokol HTTPS. Proto je nutné pro hostování ukázkové aplikace prostřednictvím protokolu HTTPS s x X509 certifikátu. Certifikát obvykle testů nefunguje kvůli následující požadavky: Musíte získat certifikát splňuje následující požadavky:
     - Chrome a Firefox vyžadují nastavení alternativní název předmětu SAN existovat v certifikátu
     - Musí mít certifikát důvěryhodné certifikační Autority a certifikát podepsaný svým držitelem vývoj nefunguje.
@@ -189,9 +189,9 @@ Obě úrovně zabezpečení je definována v Google Widevine. Rozdíl je v jeho 
 
 | **Úrovně zabezpečení, které jsou definovány v architektuře Widevine** |**Úrovně zabezpečení používané ve Widevine rozhraní API**|
 |---|---| 
-| **Úroveň zabezpečení 1**: Zpracování obsahu, šifrování a řízení jsou prováděny v rámci důvěryhodné spuštění prostředí (TEE). V některých modelů rychlou implementaci zpracování zabezpečení mohou být provedeny v různých čipy.|**security_level = 5**: Kryptografických dekódování a všechny zpracování médií (komprimovaným a nekomprimovaným formátem) musí zpracovat v rámci TEE zajištěné hardwaru.<br/><br/>**security_level = 4**: Kryptografie a dekódování obsahu se musí provádět v rámci TEE zajištěné hardwaru.|
-**Úroveň zabezpečení 2**: Provádí šifrování (ale ne videa zpracování) v rámci TEE: dešifrovaný vyrovnávací paměti jsou vráceny do domény aplikace a zpracovává prostřednictvím samostatných grafický hardware nebo software. Na úrovni 2 ale informace o kryptografických je stále zpracovávána pouze v rámci TEE.| **security_level = 3**: Materiál klíče a kryptografické operace se musí provádět v rámci TEE zajištěné hardwaru. |
-| **Úroveň zabezpečení 3**: Nemá TEE na zařízení. Může být přijata vhodná opatření k ochraně kryptografických informace a dešifrovaným obsah na hostitelském operačním systému. Na úroveň 3 implementace může také obsahovat kryptografický modul hardwaru, ale pouze, která vylepšuje výkon, zabezpečení není. | **security_level = 2**: Crypto softwaru a dekodér obfuskovaný jsou povinné.<br/><br/>**security_level = 1**: Crypto softwarových whitebox je povinný.|
+| **Úroveň zabezpečení 1**: Zpracování obsahu, šifrování a řízení jsou prováděny v rámci důvěryhodné spuštění prostředí (TEE). V některých modelů rychlou implementaci zpracování zabezpečení mohou být provedeny v různých čipy.|**security_level=5**: Kryptografických dekódování a všechny zpracování médií (komprimovaným a nekomprimovaným formátem) musí zpracovat v rámci TEE zajištěné hardwaru.<br/><br/>**security_level=4**: Kryptografie a dekódování obsahu se musí provádět v rámci TEE zajištěné hardwaru.|
+**Úroveň zabezpečení 2**: Provádí šifrování (ale ne videa zpracování) v rámci TEE: dešifrovaný vyrovnávací paměti jsou vráceny do domény aplikace a zpracovává prostřednictvím samostatných grafický hardware nebo software. Na úrovni 2 ale informace o kryptografických je stále zpracovávána pouze v rámci TEE.| **security_level=3**: Materiál klíče a kryptografické operace se musí provádět v rámci TEE zajištěné hardwaru. |
+| **Úroveň zabezpečení 3**: Nemá TEE na zařízení. Může být přijata vhodná opatření k ochraně kryptografických informace a dešifrovaným obsah na hostitelském operačním systému. Na úroveň 3 implementace může také obsahovat kryptografický modul hardwaru, ale pouze, která vylepšuje výkon, zabezpečení není. | **security_level=2**: Crypto softwaru a dekodér obfuskovaný jsou povinné.<br/><br/>**security_level=1**: Crypto softwarových whitebox je povinný.|
 
 ### <a name="question"></a>Otázka
 

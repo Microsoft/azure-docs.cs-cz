@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: cb5ad8e4ff3d5a28fa38c7e8972e7e3e69d2762d
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: f44b6f9ed42770fe830346de08058e33ed68a249
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136946"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309636"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Projekt Akustika Unity, která má označení vytvoření kurz
 Tento kurz popisuje Akustika pečení s Akustika projektu v Unity.
@@ -28,7 +28,7 @@ Požadavky na software:
 ## <a name="open-the-project-acoustics-bake-window"></a>Otevřít projekt Akustika vytvoření okna
 Zvolte **okna > Akustika** z nabídky Unity:
 
-![Otevřít Akustika okna](media/window-acoustics.png)
+![Snímek obrazovky z Unity editoru se zvýrazněnou možností nabídky okna Akustika](media/window-acoustics.png)
 
 ## <a name="create-a-navigation-mesh"></a>Vytvoření sítě navigace
 Akustika projekt používá síť navigace umístěte test body naslouchacího procesu pro simulaci. Můžete používat Unity a [pracovního postupu síť navigace](https://docs.unity3d.com/Manual/nav-BuildingNavMesh.html), nebo použijte jiný balíček 3D modelování návrhu vaší vlastní sítě. 
@@ -68,15 +68,15 @@ Navigace mřížek vytvořené pomocí Unity a pracovní postup neexistoval, pou
 
 Pokud není nic vybráno ve scéně, na kartě objektů bude vypadat jako na následujícím obrázku:
 
-![Objekty kartě žádný výběr](media/objects-tab-no-selection-detail.png)
+![Snímek obrazovky Akustika objekty karta se žádný výběr](media/objects-tab-no-selection-detail.png)
 
 Pokud máte něco, co je vybrán v okně scény nebo hierarchii, bude vypadat jako na následujícím obrázku:
 
-![Objekty kartě žádný výběr](media/objects-tab-selection-detail.png)
+![Snímek obrazovky z Akustika objekty karta se výběr uvedený](media/objects-tab-selection-detail.png)
 
 Pokud některé nejsou některé objekty jsou označené, příslušné zaškrtávací políčko se zobrazí hodnotu "hybridní":
 
-![Smíšené hodnota zaškrtávacího políčka](media/mixed-object-selection-detail.png)
+![Kartu objekty Akustika snímek obrazovky s ikonou Smíšený výběr zvýrazněnou](media/mixed-object-selection-detail.png)
 
 Kliknutím na zaškrtávací políčko vynutí všechny objekty označit a kliknutím na znovu se zrušit všechny objekty.
 
@@ -89,10 +89,10 @@ Akustický materiály řízení velikosti šířky zvukové energie projeví zp�
 
 Čas reverberation dané materiálů v místnosti nepřímo souvisí jeho pohltivosti většina materiálů s absorpce hodnoty v rozsahu 0.01, 0.20 a novější. Jsou velmi absorpčního materiály s absorpční koeficienty mimo tento rozsah.
 
-![Graf doby dozvuku](media/reverb-time-graph.png)
+![Graf zobrazující negativní korelace reverberation čas, který nabízí pohltivosti](media/reverb-time-graph.png)
 
 ### <a name="for-reference-parts-of-the-materials-tab"></a>Pro referenci: Součástí kartě materiály
-![Podrobnosti karty materiály](media/materials-tab-detail.png)
+![Snímek obrazovky Akustika materiály kartu v Unity](media/materials-tab-detail.png)
 
 1. **Materiály** tlačítko kartu, zobrazí tato stránka se používá.
 2. Stručný popis co je potřeba provést pomocí této stránky.
@@ -117,23 +117,23 @@ V závislosti na velikosti vaší scény a rychlosti vašeho počítače můžet
 ### <a name="review-voxel-and-probe-placement"></a>Kontrola umístění voxel a kontroly
 Zobrazte náhled dat voxel a ujistěte se, že jste připraveni zanést vaše Scéna bod umístění testu. K neúplné navigace sítě nebo chybí nebo je velmi akustický geometrie bude obvykle rychle viditelné ve verzi preview. Voxel a kontroly umístění je možné povolit nebo zakázat pomocí nabídky Gizma:
 
-![Gizma nabídky](media/gizmos-menu.png)
+![Snímek obrazovky Gizma nabídky v Unity](media/gizmos-menu.png)
 
 Voxels obsahující zvukové geometrie se zobrazují jako zelená datové krychle. Prozkoumat vaše Scéna a ověřte, zda vše, co by měl být geometrie voxels. Fotoaparát scény musí být v rámci objektu pro voxels zobrazíte přibližně 5 měřiče.
 
 Pokud srovnáte voxels vytvořené pomocí řešení jemné hrubé řešení vs, zobrazí hrubý voxels jsou dvakrát velké.
 
-![Voxel Preview](media/voxel-cubes-preview.png)
+![Snímek obrazovky s hrubým voxels ve verzi preview v Unity editoru](media/voxel-cubes-preview.png)
 
 Simulace výsledky jsou interpolovány mezi umístěními bodu naslouchací proces test za běhu. Zkontrolujte bodů testu téměř kdekoli hráč se očekává projít ve scéně.
 
-![Sondy ve verzi Preview](media/probes-preview.png)
+![Snímek obrazovky s testy ve verzi preview v Unity editoru](media/probes-preview.png)
 
 ### <a name="take-care-with-scene-renames"></a>Postará se přejmenuje scény
 Název scény se používá pro připojení k uložení umístění bodu testu a voxelization soubory scény. Pokud přejmenování scény po body test paměti se počítá materiálu přiřazení a umístění dat dojde ke ztrátě a by měl spustit znovu.
 
 ### <a name="for-reference-parts-of-the-probes-tab"></a>Pro referenci: Na kartě testy částí
-![Podrobnosti karty testy paměti](media/probes-tab-detail.png)
+![Snímek obrazovky sondy Akustika kartu v Unity](media/probes-tab-detail.png)
 
 1. **Sondy** kartu tlačítko použít zobrazíte na této stránce
 2. Stručný popis, co je potřeba provést pomocí této stránky
@@ -157,15 +157,15 @@ Když to může zdát jednoduché, má několik dopadů na akustický simulace:
 * Zvukové zdroje nelze umístit uvnitř "vyplněné" voxels, který je voxels obsahující geometrie – výsledkem je žádný zvukový signál. Je obtížnější najít zdroje zvuku, nejsou uvnitř větší voxels z hrubé než nastavení v pořádku.
 * Větší voxels bude více pronikat do portálů, jak je znázorněno níže. První image byla vytvořena pomocí hrubý, druhá je stejný vaší bránou pomocí jemné řešení. Označené červenou označení, je mnohem méně neoprávněného vniknutí do vaší bránou pomocí nastavení v pořádku. Modrá čára je vaší bránou dle geometrie, zatímco červená čára je efektivní akustický portál definován velikostí voxel. Jak tento neoprávněného vniknutí hraje v dané situaci závisí zcela jak voxels zarovnejte s geometrie na portálu, který je určena velikost a umístění objektů na scéně.
 
-![Hrubý dveřmi](media/coarse-voxel-doorway.png)
+![Snímek obrazovky s hrubým voxels ve vaší bránou](media/coarse-voxel-doorway.png)
 
-![Bez problémů dveřmi](media/fine-voxel-doorway.png)
+![Snímek obrazovky jemné voxels ve vaší bránou](media/fine-voxel-doorway.png)
 
 ## <a name="bake-your-scene-using-azure-batch"></a>Vytvoření vašeho scény pomocí služby Azure Batch
 Můžete zanést vaše Scéna s výpočetní cluster v cloudu pomocí služby Azure Batch. Modul plug-in Unity Akustika projekt připojuje přímo k Azure Batch k vytvoření instance, spravovat a dovolí pro každý která má označení vytvoření clusteru služby Azure Batch. Na **zanést** kartu, zadejte přihlašovací údaje Azure, vyberte typ počítače clusteru a velikost a klikněte na tlačítko **zanést**.
 
 ### <a name="for-reference-parts-of-the-bake-tab"></a>Pro referenci: Částí, která má označení vytvoření karty
-![Podrobnosti karty zanést](media/bake-tab-details.png)
+![Snímek obrazovky vytvoření Akustika kartu v Unity](media/bake-tab-details.png)
 
 1. Vytvoření karty tlačítka sloužícího k otevřete tuto stránku.
 2. Stručný popis toho, jak provést na této stránce.
@@ -209,8 +209,8 @@ Jako příklad najdete v našich testech na počítači s technologií Intel Xeo
 ### <a name="setup-docker"></a>Instalace Dockeru
 Instalace a konfigurace Dockeru na počítači, který bude zpracovávat simulace-
 1. Nainstalujte [nástrojů Dockeru](https://www.docker.com/products/docker-desktop).
-2. Spusťte nastavení Dockeru, přejděte na možnosti "Pokročilé" a konfigurovat prostředky mít aspoň 8GB paměti RAM. Více procesorů může přidělit Dockeru, tím rychleji která má označení vytvoření dokončí. ![Příklad nastavení Dockeru](media/docker-settings.png)
-3. Přejděte na "Sdílené jednotky" a zapněte sdílení má jednotka použitá ke zpracování.![DockerDriveSharing](media/docker-shared-drives.png)
+2. Spusťte nastavení Dockeru, přejděte na možnosti "Pokročilé" a konfigurovat prostředky mít aspoň 8GB paměti RAM. Více procesorů může přidělit Dockeru, tím rychleji která má označení vytvoření dokončí. ![Snímek obrazovky s příklady nastavení Dockeru](media/docker-settings.png)
+3. Přejděte na "Sdílené jednotky" a zapněte sdílení má jednotka použitá ke zpracování.![Možnosti Screnshot Dockeru sdílené jednotky](media/docker-shared-drives.png)
 
 ### <a name="run-local-bake"></a>Spusťte místní která má označení vytvoření
 1. Klikněte na tlačítko "Příprava místní zanést" na **zanést** kartě a vyberte složku, kam bude uložena vstupních souborů a provádění skriptů. Poté lze která má označení vytvoření na jakýkoli počítač splňuje minimální hardwarové požadavky a pokud je Docker nainstalovaný tak, že zkopírujete složku do tohoto počítače.
@@ -234,11 +234,11 @@ Editor datových souborů:
 ## <a name="set-up-the-acoustics-lookup-table"></a>Nastavit Akustika vyhledávací tabulky
 Přetáhnout myší **projektu Akustika** prefab z panelu Projekt do vaše Scéna:
 
-![Akustika Prefab](media/acoustics-prefab.png)
+![Snímek obrazovky Akustika prefab v Unity](media/acoustics-prefab.png)
 
 Klikněte na **ProjectAcoustics** hru objektu a přejděte do jeho inspector panelů. Zadejte umístění, která má označení vytvoření výsledků (). ACE souboru, v **prostředky/AcousticsData**) pádem a přetáhněte ji do skriptu Akustika správce, nebo kliknutím na tlačítko kroužek vedle textového pole.
 
-![Acoustics Manager](media/acoustics-manager.png)  
+![Snímek obrazovky Správce Akustika prefab v Unity](media/acoustics-manager.png)  
 
 ## <a name="next-steps"></a>Další postup
 * Prozkoumejte [návrh ovládacích prvků pro Unity](unity-workflow.md)

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: ca18042985669899247c3a0a16b41a98c5c6d1ee
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4b44eec5557d2083c38fe2714d93800f79b21b0f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075164"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338441"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Kurz: Vytvoření připojení typu Site-to-Site pomocí Azure virtuální sítě WAN
 
@@ -43,8 +43,6 @@ V tomto kurzu se naučíte:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="vnet"></a>1. Vytvoření virtuální sítě
 
@@ -76,7 +74,7 @@ Můžete vytvořit libovolný počet lokalit odpovídajících fyzickým umíst�
 
 ## <a name="hub"></a>4. Vytvoření rozbočovače
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-hub-include.md)]
+[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
 
 ## <a name="associate"></a>5. Přidružení lokalit k rozbočovači
 

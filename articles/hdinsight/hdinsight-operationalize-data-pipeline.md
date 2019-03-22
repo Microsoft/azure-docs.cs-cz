@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 175fdcc1bf8d28c0eeb6eeccaa54c996c837ef81
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: b5e7864eae56a6f066590191373d35cb57693f37
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744441"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311675"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Zprovoznění kanálu datových analýz
 
@@ -28,7 +28,7 @@ V následujícím scénáři je vstupní data plochého souboru, který obsahuje
 | --- | --- | --- | --- | --- | --- | --- |
 | 2017 | 1 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
 | 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
-| 2017 | 1 | 3 | DISTRIBUČNÍ SEZNAM | 6.935409 | -2.1893024 | 1909696 |
+| 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
 Příklad kanálu počká, až dorazí nové časové období na zapisovači letových údajů a pak ukládá tyto informace podrobné letu do datového skladu Apache Hive pro dlouhodobé analýzy. Kanál vytvoří také mnohem menší datové sady, který shrnuje jenom denní zapisovači letových údajů. Tento denní souhrn letů odesílat do služby SQL database poskytuje sestavy, například pro web.
 
@@ -150,7 +150,7 @@ K zobrazení stavu koordinátor a instance pracovních postupů pomocí Oozie we
 
 2. Ověřte, zda že je tak, že přejdete Ambari na hlavního uzlu tak, že přejdete na funkční tunelového propojení:
 
-    http://headnodehost:8080
+    http:\//headnodehost:8080
 
 3. Přístup **Oozie Webová konzola** ve Ambari, **Oozie**, **rychlé odkazy**a pak vyberte **Oozie Webová konzola**.
 
@@ -176,7 +176,7 @@ Můžete zkopírovat soubor pomocí spojovacího bodu služby v vaše `bash` pro
 
 Ukázková data jsou teď k dispozici. Kanál však vyžaduje dvě tabulky Hive pro zpracování, jeden pro příchozí data (`rawFlights`) a jeden pro souhrnná data (`flights`). Vytvořte tyto tabulky v Ambari následujícím způsobem.
 
-1. Přihlaste se k Ambari tak, že přejdete do [ http://headnodehost:8080 ](http://headnodehost:8080).
+1. Přihlaste se k Ambari přechodem k protokolu http:\//headnodehost:8080.
 2. V seznamu služeb vyberte **Hive**.
 
     ![Výběr v Ambari Hive](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
@@ -418,7 +418,7 @@ Následující tabulka shrnuje každého vlastností a označuje místo, kde naj
 | jobTracker | Interní název hostitele na aktivním clusteru YARN hlavního uzlu. Na domovské stránce Ambari vyberte ze seznamu služeb YARN a pak zvolte aktivní Resource Manageru. Název hostitele identifikátoru URI se zobrazí v horní části stránky. Připojte za ní port 8050. |
 | queueName | Název fronty YARN při plánování akcí Hive. Ponechte jako výchozí. |
 | oozie.use.system.libpath | Ponechejte tuto položku jako true. |
-| rozsah základu aplikace | Cesta podsložky ve službě Azure Storage, ve kterém nasadíte pracovní postup Oozie a podpůrné soubory. |
+| appBase | Cesta podsložky ve službě Azure Storage, ve kterém nasadíte pracovní postup Oozie a podpůrné soubory. |
 | oozie.wf.application.path | Umístění pracovního postupu Oozie `workflow.xml` ke spuštění. |
 | hiveScriptLoadPartition | Cesta k souboru dotazu Hive ve službě Azure Storage `hive-load-flights-partition.hql`. |
 | hiveScriptCreateDailyTable | Cesta k souboru dotazu Hive ve službě Azure Storage `hive-create-daily-summary-table.hql`. |

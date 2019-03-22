@@ -1,33 +1,33 @@
 ---
-title: Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Azure IaaS replikovaných do sekundární oblasti Azure pro účely zotavení po havárii pomocí služby Azure Site Recovery
-description: Zjistěte, jak pomocí služby Azure Site Recovery provést převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Azure replikovaných do sekundární oblasti Azure pro účely zotavení po havárii.
+title: Převzetí služeb při selhání a znovunastavení ochrany virtuálních počítačů Azure replikovaných do sekundární oblasti Azure pro zotavení po havárii pomocí služby Azure Site Recovery.
+description: Zjistěte, jak převzetí služeb při selhání a znovunastavení ochrany virtuálních počítačů Azure replikovaných do sekundární oblasti Azure pro zotavení po havárii pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 03/18/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ba1e65ca915c576d2424b166488b89baa92c24a9
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: c19e554571927efa907350df1f1fbbd8ff491c42
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729031"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314752"
 ---
-# <a name="fail-over-and-reprotect-azure-vms-between-azure-regions"></a>Převzetí služeb při selhání a znovunastavení ochrany virtuálních počítačů Azure mezi oblastmi Azure
+# <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>Převzetí služeb při selhání a znovunastavení ochrany virtuálních počítačů Azure mezi oblastmi
 
 Služba [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii zotavení po havárii tím, že spravuje a orchestruje replikaci, převzetí služeb při selhání a navrácení služeb po obnovení pro místní počítače a virtuální počítače Azure.
 
-Tento kurz popisuje, jak provést převzetí služeb při selhání jednoho virtuálního počítače Azure do sekundární oblasti Azure. Po převzetí služeb při selhání navrátíte služby po obnovení do primární oblasti, až bude dostupná. V tomto kurzu se naučíte:
+Tento kurz popisuje, jak převzít služby při selhání virtuálního počítače Azure do sekundární oblasti Azure. Po přes, znovunastavení ochrany virtuálního počítače. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Převzetí služeb při selhání virtuálního počítače Azure
 > * Znovunastavení ochrany sekundárního virtuálního počítače Azure, aby se replikoval do primární oblasti.
 
 > [!NOTE]
-> Cílem tohoto kurzu je provést uživatele postupem převzetí služeb při selhání do cílové oblasti a zpět s minimálním přizpůsobením. Pokud se chcete dozvědět více o různých aspektech souvisejících s převzetím služeb při selhání, včetně důležitých aspektů sítí, automatizace nebo řešení potíží, prostudujte si dokumenty v části Postupy pro virtuální počítače Azure.
+> Tento kurz obsahuje nejjednodušší cesta s výchozím nastavením a minimální přizpůsobení. Pro složitější scénáře použijte články v části "Jak na" pro virtuální počítače Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,18 +42,18 @@ Tento kurz popisuje, jak provést převzetí služeb při selhání jednoho virt
 
 2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Můžete použít jednu z následujících možností:
 
-   * **Nejnovější** (výchozí): Tato možnost zpracuje všechna data ve službě Site Recovery a poskytuje nejnižší cíl bodu obnovení (RPO).
-   * **Nejnovější zpracovaný**: Tato možnost vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery.
-   * **Vlastní**: Tuto možnost použijte k převzetí služeb při selhání do konkrétnímu bodu obnovení. Tato možnost je užitečná při provádění testovacího převzetí služeb při selhání.
+   * **Nejnovější** (výchozí): Zpracuje všechna data ve službě Site Recovery a poskytuje nejnižší cíl bodu obnovení (RPO).
+   * **Nejnovější zpracovaný**: Obnoví virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery.
+   * **Vlastní**: Převezme služby při selhání do konkrétnímu bodu obnovení. Tato možnost je užitečná při provádění testovacího převzetí služeb při selhání.
 
-3. Vyberte možnost **Před spuštěním převzetí služeb při selhání vypnout počítač**, pokud chcete, aby se služba Site Recovery pokusila před aktivací převzetí služeb při selhání vypnout zdrojové virtuální počítače. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Všimněte si, že Site Recovery nepodporuje vyčištění zdroj po převzetí služeb při selhání.
+3. Vyberte **před spuštěním převzetí služeb při selhání vypnout počítač** Pokud chcete, aby Site Recovery chcete pokusit před aktivací převzetí služeb při selhání vypnout zdrojové virtuální počítače. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Site Recovery čištění zdroji po převzetí služeb při selhání.
 
 4. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
 
 5. Po převzetí služeb při selhání ověřte virtuální počítač tím, že se k němu připojíte. Pokud chcete u virtuálního počítače přejít k jinému bodu obnovení, můžete použít možnost **Změnit bod obnovení**.
 
 6. Jakmile budete spokojeni s virtuálním počítačem, u kterého došlo k převzetí služeb při selhání, můžete převzetí služeb při selhání **Potvrdit**.
-   Potvrzením dojde k odstranění všech bodů obnovení, které jsou ve službě k dispozici. Možnost **Změnit bod obnovení** už nebude dostupná.
+   Potvrzením dojde k odstranění všech bodů obnovení, které jsou ve službě k dispozici. Nyní nebudete moct změnit bod obnovení.
 
 ## <a name="reprotect-the-secondary-vm"></a>Znovunastavení ochrany sekundárního virtuálního počítače
 
@@ -64,13 +64,10 @@ Po převzetí služeb při selhání virtuálního počítače pro něj musíte 
 
    ![Kliknutí pravým tlačítkem a znovunastavení ochrany](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
 
-2. Všimněte si, že je již vybraný směr ochrany ze sekundární do primární oblasti.
-3. Zkontrolujte informace o **skupině prostředků, síti, úložišti a skupinách dostupnosti**. Všechny prostředky označené jako (nové) se vytvoří v rámci operace znovunastavení ochrany.
+2. Ověřte, že směr ochrany ze sekundární do primární oblasti, je už vybraná.
+3. Zkontrolujte informace o **skupině prostředků, síti, úložišti a skupinách dostupnosti**. Všechny prostředky označené jako nové jsou vytvořeny v rámci operace znovunastavení ochrany.
 4. Kliknutím na **OK** aktivujte úlohu znovunastavení ochrany. Tato úloha přidá do cílové lokality nejnovější data. Pak replikuje rozdíly do primární oblasti. Virtuální počítač je teď v chráněném stavu.
 
-> [!NOTE]
-> Zobrazit ["jak" část](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection) další podrobnosti o pracovní postup opětovného nastavování ochrany a co se stane během opětovného nastavování ochrany.
-
-
 ## <a name="next-steps"></a>Další postup
-- Čtení [jak navrácení služeb po obnovení. ](azure-to-azure-tutorial-failback.md).
+- Po znovunastavení ochrany [zjistěte, jak](azure-to-azure-tutorial-failback.md) zpět do primární oblasti selžou, až bude k dispozici.
+- [Další informace](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection) o opětovného nastavování ochrany toku.

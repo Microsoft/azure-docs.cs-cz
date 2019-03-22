@@ -2,19 +2,19 @@
 title: Výstup Azure Stream Analytics ke službě Azure SQL Database
 description: Seznamte se s odesíláním dat do SQL Azure z Azure Stream Analytics a dosáhnout vyšší propustnosti zápisu.
 services: stream-analytics
-author: chetang
-ms.author: chetang
-manager: katicad
+author: chetanmsft
+ms.author: chetanmsft
+manager: katiiceva
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/21/2018
-ms.openlocfilehash: 794e2f3db44c29707400f96970159578d9e83f2d
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.date: 3/18/2019
+ms.openlocfilehash: d259fd5fc8c60837c6b6110eb751360227d70836
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303271"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338424"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Výstup Azure Stream Analytics ke službě Azure SQL Database
 
@@ -33,7 +33,7 @@ Tady jsou některé konfigurace v rámci jednotlivých služeb, který může po
 
 - **Velikost dávky** -konfiguraci výstupu SQL můžete zadat maximální velikost dávky v závislosti na povaze vašich cílové tabulky/úloh výstup Azure Stream Analytics SQL. Velikost dávky je maximální počet záznamů, které se odešle s každou hromadné vložení transakce. Clusterované indexy columnstore, batch velikostí kolem [100 tisíc](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) povolit další paralelizace, minimální protokolování a zamykání optimalizace. V tabulkách s použitím disku 10 tis. (výchozí) nebo nižší může být taky ideální pro vaše řešení, větší velikosti dávky můžou aktivovat uzamknout eskalace během operace hromadného vložení.
 
-- **Vstupní zpráva ladění** – Pokud jste optimalizovalo pomocí dědit velikost vytváření oddílů a služby batch, zvýšení počtu vstupních událostí za zprávy na oddíl pomáhá další doručením (push) do propustnost zápisu. Vstupní zpráva ladění umožňuje velikosti dávky v rámci Azure Stream Analytics bude až po zadanou velikost dávky; tím se zvýší propustnost. Toho lze dosáhnout pomocí [komprese](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs) nebo větší velikosti zprávy v Eventhubu SKU úrovně Premium k dispozici.
+- **Vstupní zpráva ladění** – Pokud jste optimalizovalo pomocí dědit velikost vytváření oddílů a služby batch, zvýšení počtu vstupních událostí za zprávy na oddíl pomáhá další doručením (push) do propustnost zápisu. Vstupní zpráva ladění umožňuje velikosti dávky v rámci Azure Stream Analytics bude až po zadanou velikost dávky; tím se zvýší propustnost. Toho lze dosáhnout pomocí [komprese](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs) nebo zvýšení velikosti vstupní zprávy do centra událostí nebo objekt Blob.
 
 ## <a name="sql-azure"></a>SQL Azure
 
@@ -43,7 +43,16 @@ Tady jsou některé konfigurace v rámci jednotlivých služeb, který může po
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory a tabulky v paměti
 
-- **Tabulka v paměti jako dočasnou tabulku** – [tabulky v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) umožňují načtení dat velmi vysokou rychlostí, ale data se musí vejít do paměti. Srovnávací testy zobrazit hromadné načítání z tabulky v paměti do tabulky na disku je přibližně 10 x rychlejší než přímo hromadné vložení pomocí jednoho zapisovatele do tabulky na disku se sloupcem identity a clusterovaného indexu. Chcete-li využívají tento výkon hromadné vložení, nastavte [úlohu kopírování pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database) , který kopíruje data z tabulky v paměti do tabulky na disku.
+- **Tabulka v paměti jako dočasnou tabulku** – [tabulky v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) umožňují načtení dat velmi vysokorychlostní ale data se musí vejít do paměti. Srovnávací testy zobrazit hromadné načítání z tabulky v paměti do tabulky na disku je přibližně 10 x rychlejší než přímo hromadné vložení pomocí jednoho zapisovatele do tabulky na disku se sloupcem identity a clusterovaného indexu. Chcete-li využívají tento výkon hromadné vložení, nastavte [úlohu kopírování pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database) , který kopíruje data z tabulky v paměti do tabulky na disku.
+
+## <a name="avoiding-performance-pitfalls"></a>Jak se vyhnout problémům s výkonem
+Hromadné vložení dat je mnohem rychlejší než načítání dat pomocí jediné operace vložení, protože opakované režijní náklady na přenos dat, analýze příkazu insert, spuštění příkazu a vydávání záznam transakce je vyloučeno. Místo toho efektivnější cesta se používá na stroji úložiště Streamovat data. Náklady na instalační program tuto cestu je však mnohem vyšší než vložit jeden příkaz v tabulce na základě disku. Hranice rentability nastane obvykle přibližně 100 řádků, nad kterou hromadné načítání je téměř vždy více efektivní. 
+
+Pokud je počet příchozích událostí nízká, ho můžete snadno vytvořit velikosti dávky nižší než 100 řádků, které umožňuje hromadné vložení neefektivní a využívá příliš mnoho místa na disku. Chcete-li toto omezení obejít, proveďte jednu z těchto akcí:
+* Vytvoření INSTEAD OF [aktivační událost](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-trigger-transact-sql) použít jednoduchý vložení pro každý řádek.
+* Použijte dočasné tabulky v paměti, jak je popsáno v předchozí části.
+
+Další takové situaci dojde při zápisu do indexu columnstore neclusterovaný (NCCI), kde menší Hromadná vložení můžete vytvořit příliš mnoho segmentů, které může dojít k selhání index. V takovém případě doporučujeme místo toho použít s indexem Columnstore clusteru.
 
 ## <a name="summary"></a>Souhrn
 

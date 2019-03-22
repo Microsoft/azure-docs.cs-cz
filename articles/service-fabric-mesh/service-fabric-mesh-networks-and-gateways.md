@@ -3,7 +3,7 @@ title: Úvod do služby Azure Service Fabric sítě | Dokumentace Microsoftu
 description: Další informace o sítích, bran a směrování provozu inteligentní v Service Fabric mřížky.
 services: service-fabric-mesh
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/26/2018
-ms.author: ryanwi
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 8d9f5c71d05477094d733fd6b798831b3ff02ce1
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: b0e1047c5bbd7d8caaf2afd8b002be1c46837852
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892243"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339257"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Úvod do sítě aplikace Service Fabric mřížky
 Tento článek popisuje různé typy nástrojů pro vyrovnávání zatížení, jak brány připojit k síti s vašimi aplikacemi k jiným sítím a směrování provozu mezi službami ve svých aplikacích.
@@ -32,7 +32,7 @@ Vyrovnávání zatížení může běžet na různých úrovních v [modelu OSI]
 
 - Nástroje pro vyrovnávání zatížení L7 funguje na aplikační vrstvu, která se zabývá obsah části jednotlivých paketů. Vzhledem k tomu, že to rozumí protokoly, například HTTP, HTTPS nebo protokoly Websocket prohlédne obsah paketů. To poskytuje možnost provádět pokročilé směrování nástroje pro vyrovnávání zatížení. Například klient zadává jediné připojení HTTP/2 TCP nástroji pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení se pak pokračuje provést dvě připojení k back-endu. Když klient odešle dva datové proudy HTTP/2 do nástroje pro vyrovnávání zatížení, datového proudu, jeden je odeslána do back-endu, jeden a datový proud dvě posílá na back-end dvě. Díky tomu se ještě multiplexing klienti, kteří mají značně rozdílné žádost o načtení se vyvážená efektivně back-EndY. 
 
-## <a name="networks-and-gateways"></a>Sítí a bran
+## <a name="networks-and-gateways"></a>Sítě a brány
 V [modelu prostředků služby Service Fabric](service-fabric-mesh-service-fabric-resources.md), síťový prostředek je prostředek samostatně nasaditelných, nezávisle na prostředek aplikace nebo služby, který může označujeme jako jejich závislosti. Používá se k vytvoření sítě pro vaše aplikace, který je přístupný z Internetu. Více služeb z různých aplikací může být součástí stejné sítě. Tato privátní sítě se vytvoří a spravuje Service Fabric a není virtuální sítě Azure (VNET). Aplikace může dynamicky přidávat a odebírat z prostředku sítě můžete povolit nebo zakázat připojení k virtuální síti. 
 
 Brány se používá pro přemostění dvě sítě. Prostředek brána nasadí [Envoy proxy](https://www.envoyproxy.io/) poskytující L4 směrování pro libovolný protokol a L7 směrování pro pokročilé směrování aplikace HTTP (S). Brány směruje provoz do vaší sítě z externí sítě a určuje, které pro směrování provozu do služby.  Externí síť může být otevřené sítě (v podstatě veřejného Internetu) nebo virtuální síť Azure, umožňuje propojení s vaší aplikací Azure a prostředky. 

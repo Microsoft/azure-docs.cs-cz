@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/21/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 1f6edd871d6815dab93bf9e8d582b0cb1ba6c78f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ab5679f374753d6620b6a0eccca12ac9f162f199
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109235"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337921"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -62,6 +62,9 @@ Po registraci není potřeba oprávnění globálního správce Azure Active Dir
 Uživatel, který registruje Azure Stack je vlastníkem instanční objekt v Azure Active Directory. Registrace Azure Stack můžete upravit jenom uživatel, který zaregistroval Azure Stack. Pokud uživatel bez oprávnění správce, který není vlastníkem objektu registrace služby pokusí zaregistrovat nebo znovu zaregistrovat Azure Stack, můžou setkat 403 odpovědi. 403 odpovědi vyplývá, že uživatel nemá dostatečná oprávnění k dokončení operace.
 
 Pokud nemáte předplatné Azure, které splňuje tyto požadavky, můžete si [vytvořit bezplatný účet Azure zde](https://azure.microsoft.com/free/?b=17.06). Registrace Azure Stack se neúčtují žádné poplatky na vaše předplatné Azure.
+
+> [!NOTE]
+> Pokud máte více než jeden Azure Stack, osvědčeným postupem je registrace jednotlivých Azure Stack do svého vlastního předplatného. To usnadní vám ke sledování využití.
 
 ### <a name="powershell-language-mode"></a>Režim jazyka prostředí PowerShell
 
@@ -240,7 +243,7 @@ Pokud při registraci služby Azure Stack v odpojeném prostředí (bez připoje
 2. Registrační token získáte spuštěním následující rutiny prostředí PowerShell:  
 
    ```Powershell
-   $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
+   $FilePathForRegistrationToken = "$env:SystemDrive\RegistrationToken.txt"
    $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -UsageReportingEnabled:$False -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
    Další informace o rutině Get-AzsRegistrationToken najdete v tématu [Reference k registraci](#registration-reference).

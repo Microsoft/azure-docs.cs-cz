@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/20/2019
 ms.author: victorh
-ms.openlocfilehash: ae55f2abf9815174e7258c2ace949078794c380d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: f549f9c612797c1c956d6921fe4898a5f8bee9e6
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286189"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319410"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Nejčastější dotazy k Application Gateway
 
@@ -59,7 +59,7 @@ Přesměrování se nepodporuje. Zobrazit [přehled přesměrování ve službě
 
 ### <a name="in-what-order-are-listeners-processed"></a>V jakém pořadí se naslouchací procesy zpracovávají?
 
-Naslouchací procesy jsou zpracovávány v pořadí, ve kterém jsou zobrazeny. Z tohoto důvodu Pokud základní naslouchací proces odpovídá příchozí žádosti zpracovávat jej nejprve.  Naslouchací procesy Multi-Site by měl být nakonfigurovaný před základní naslouchací proces chcete zajistit, aby provoz se směruje do správného back endu.
+Zobrazit [pořadí zpracování naslouchacích procesů](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-listeners).
 
 ### <a name="where-do-i-find-application-gateways-ip-and-dns"></a>Kde najdu IP a DNS Application Gateway?
 
@@ -83,16 +83,13 @@ Ve službě application gateway se podporuje jenom jednu veřejnou IP adresu.
 
 ### <a name="how-large-should-i-make-my-subnet-for-application-gateway"></a>Jak velké by měl udělám mou podsíť pro službu Application Gateway?
 
-Application Gateway využívá jednu privátní IP adresu na jednu instanci a jiné privátní IP adresu, pokud je nakonfigurovaný privátní front-endovou konfiguraci IP. Azure si vyhrazuje první čtyři a poslední IP adresu v každé podsíti pro interní použití.
-Například, pokud služby application gateway je nastavena na tři instance a žádné privátní front-endovou IP, pak je/29 nebo větší velikost podsítě je potřeba. V tomto případě application gateway používá tři IP adresy. Pokud máte tři instance a IP adresu pro privátní front-endovou konfiguraci protokolu IP, pak o velikosti/28 podsíť, velikost nebo vyšší je potřeba, protože čtyři IP adresy jsou povinné.
-
-Jako nejlepší postup použijte aspoň o velikosti/28 velikost podsítě. To vám dává 11 použitelné adresy. Pokud zatížení aplikace vyžaduje víc než 10 instancí, měli byste zvážit možnost/27 nebo/26 velikost podsítě.
+Zobrazit [aspekty velikost podsítě Application Gateway](https://docs.microsoft.com/azure/application-gateway/configuration-overview#size-of-the-subnet) pochopit velikost podsítě, které jsou potřebné pro vaše nasazení.
 
 ### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>Otázka: Je možné nasadit více než jeden prostředek aplikační brány pro jednu podsíť?
 
 Ano, kromě má více instancí dané nasazení Application Gateway, můžete zřídit jiný jedinečný prostředek aplikační brány do existující podsítě, který obsahuje jiný prostředek aplikační brány.
 
-Kombinování Standard_v2 a standardní Application Gateway ve stejné podsíti se nepodporuje. Kromě toho pokud je povolené automatické škálování, podsíť může mít pouze jednu bránu aplikace.
+Kombinování Standard_v2 a standardní Application Gateway ve stejné podsíti se nepodporuje.
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Služba Application Gateway podporuje hlavičky x předané pro?
 
@@ -152,13 +149,7 @@ Ne, ale můžete nasadit další služby application Gateway v podsíti.
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>Podporují se skupinami zabezpečení sítě na podsítě služby application gateway?
 
-Skupiny zabezpečení sítě (Nsg) podporují na podsítě služby application gateway s následujícími omezeními:
-
-* Výjimky musí být umístěno v pro příchozí provoz na portech 65503 65534 pro službu Application Gateway v1 SKU a porty 65200 – 65 535 pro v2 SKU. Tento rozsah portů je nutné pro komunikaci infrastruktury Azure. Jsou chráněny (uzamknuty) s použitím certifikátů Azure. Bez správných certifikátů nemohou externí entity, včetně zákazníků těchto bran, nebudou se moct k zahájení změny činnost těchto koncových bodů.
-
-* Odchozí připojení k Internetu, nejde blokovat. Odchozí výchozí pravidla v této skupině již povolit připojení k Internetu. Doporučujeme, že není odebrat výchozí odchozí pravidla a nevytvoříte dalších odchozích pravidel, které odepřou odchozí připojení k Internetu.
-
-* Musí se povolit provoz z značka AzureLoadBalancer.
+Zobrazit [omezení skupiny zabezpečení sítě pro podsítě Application Gateway](https://docs.microsoft.com/azure/application-gateway/configuration-overview#network-security-groups-supported-on-the-application-gateway-subnet) Další informace o skupinách zabezpečení sítě podporované na podsítě služby application gateway.
 
 ### <a name="are-user-defined-routes-supported-on-the-application-gateway-subnet"></a>Podporuje uživatelem definované trasy na podsítě služby application gateway?
 
@@ -190,7 +181,7 @@ Vlastní sondy nepodporují zástupných znaků nebo regulární výraz na data 
 
 ### <a name="how-are-rules-processed"></a>Jak se zpracovávají pravidla?
 
-Pravidla se zpracovávají v pořadí, ve kterém jsou nakonfigurované. Doporučuje se, že jsou před základních pravidel, snížíte pravděpodobnost, že provoz se směruje na nevhodný back-end jako základní pravidlo by odpovídala provoz na portu před Multi-Site pravidlo se vyhodnotí na základě nakonfigurovaná pravidla více lokalit.
+Zobrazit [pořadí zpracování pravidla](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-rules) pochopit, jak pravidla směrování se procesy ve službě Application Gateway.
 
 ### <a name="what-does-the-host-field-for-custom-probes-signify"></a>Co místo pole hostitele pro vlastní sondy?
 
@@ -356,7 +347,7 @@ Také jsme publikovali šablony Resource Manageru, který nainstaluje a spustí 
 
 ### <a name="backend-health-returns-unknown-status-what-could-be-causing-this-status"></a>Stav back-endu vrátí stav neznámý, co by mohlo být příčinou tohoto stavu?
 
-Nejběžnějším důvodem je, skupiny zabezpečení sítě nebo vlastní DNS je blokován přístup k back-endu. Zobrazit [back-endu stav, protokolování diagnostiky a metriky pro službu Application Gateway](application-gateway-diagnostics.md) Další informace.
+Nejběžnějším důvodem je přístup k back-end je blokována skupinu zabezpečení sítě, vlastní DNS, nebo máte trasu UDR na podsítě služby application gateway. Zobrazit [back-endu stav, protokolování diagnostiky a metriky pro službu Application Gateway](application-gateway-diagnostics.md) Další informace.
 
 ## <a name="next-steps"></a>Další kroky
 

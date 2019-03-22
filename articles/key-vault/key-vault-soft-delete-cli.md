@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4311d71775ef877e0090abca9c6caabab503ef08
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: aa9b89b9afec069e97236b7652e0f1d37644f5cf
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097606"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336063"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak používat obnovitelné odstranění Key Vault pomocí rozhraní příkazového řádku
 
@@ -222,6 +222,24 @@ Seznam objektů odstraněného trezoru klíčů. také ukazuje, kdy jsou naplán
 
 >[!IMPORTANT]
 >Objekt odstraněný trezor, aktivuje její *naplánované datum vyprázdnit* pole, se trvale odstraní. Se nedá vrátit zpátky!
+
+## <a name="enabling-purge-protection"></a>Povolení ochrany
+
+Pokud ochrany je zapnuté, trezor nebo objektu v odstraněné stavu nelze vyprázdnit až do uplynutí doby uchovávání těchto 90 dnů. Takové trezor nebo objektu je stále možné obnovit. Tato funkce poskytuje jistotu, které trezor nebo objekt může nikdy být trvale odstranit, dokud je předán období uchovávání.
+
+Ochrany můžete povolit jenom v případě, že je taky povolené obnovitelné odstranění. 
+
+Chcete-li zapnout v obou obnovitelného odstranění a mazání ochrany při vytváření trezoru, použijte [az keyvault vytvořit](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) příkaz:
+
+```
+az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
+```
+
+Přidání ochrany pro existující trezor (který už má povolené obnovitelné odstranění), použijte [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) příkaz:
+
+```
+az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
+```
 
 ## <a name="other-resources"></a>Další prostředky
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 432120c324aa81107946fc30548e6e49acce6575
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d6ab18d68d6508a18f0b36ab5a39e15fa7c0555a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002330"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311658"
 ---
 # <a name="saas-sell-through-azure---apis"></a>Zákazník SaaS pomocí Azure – rozhraní API
 
@@ -65,8 +65,8 @@ Registrace nové aplikace pomocí webu Azure portal, postupujte následovně:
      - Vyberte **Nativní** pro [klientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application), které jsou nainstalované místně na zařízení. Toto nastavení se používá pro veřejné [nativní klienty](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client) OAuth.
      - Vyberte **webová aplikace / rozhraní API** pro [klientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) a [prostředků nebo rozhraní API aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) , které jsou nainstalovány na zabezpečení serveru. Toto nastavení se používá pro OAuth důvěrné [webových klientů](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) a veřejné [uživatelského agenta – klienti se systémem](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
      Stejná aplikace může také zpřístupnit klienta i prostředek / rozhraní API.
-   - **Adresa URL přihlašování**: Pro webové aplikace nebo rozhraní API aplikace zadejte základní adresu URL vaší aplikace. Například **http://localhost:31544** může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by pak pomocí této adresy URL pro přihlášení k webové klientské aplikace.
-   - **Identifikátor URI pro přesměrování**: U nativních aplikací zadejte identifikátor URI používá Azure AD k vracení odpovědí na tokeny. Zadejte hodnotu specifickou pro vaši aplikaci, například **http://MyFirstAADApp**.
+   - **Adresa URL přihlašování**: Pro webové aplikace nebo rozhraní API aplikace zadejte základní adresu URL vaší aplikace. Například **http:\//localhost:31544** může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by pak pomocí této adresy URL pro přihlášení k webové klientské aplikace.
+   - **Identifikátor URI pro přesměrování**: U nativních aplikací zadejte identifikátor URI používá Azure AD k vracení odpovědí na tokeny. Zadejte hodnotu specifickou pro vaši aplikaci, například **http:\//MyFirstAADApp**.
 
      ![Registrace aplikací SaaS AD](./media/saas-offer-app-registration-2.png) konkrétní příklady webových nebo nativních aplikací, podívejte se na rychlý start na základě nastavení, které jsou k dispozici v části Začínáme [příručku pro vývojáře v Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 791c63b7b7fed55f95905ba7131d6a1d4bb414ff
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 1a8e5fd82b44577aa1915d59fc7c29900a1f14ea
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010487"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319512"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Nastavení Pacemaker na Red Hat Enterprise Linux v Azure
 
@@ -85,6 +85,8 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
+   Všimněte si, že ve fondu připojení pro image RHEL průběžné platby Azure Marketplace, bude efektivně double účtuje pro vaše použití RHEL: jednou pro průběžné platby image a jednou pro nárok RHEL ve fondu připojení. Chcete-li tento problém zmírnit, Azure nyní poskytuje BYOS RHEL Image. Další informace jsou k dispozici [tady](https://aka.ms/rhel-byos).
+
 1. **[A]**  Povolit RHEL for SAP úložišť
 
    Abyste mohli nainstalovat požadované balíčky, povolte následující úložiště.
@@ -144,10 +146,10 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
-   
+
    # Run the following command until the status of both nodes is online
    sudo pcs status
-   
+
    # Cluster name: nw1-azr
    # WARNING: no stonith devices and stonith-enabled is not false
    # Stack: corosync
@@ -179,11 +181,10 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 Využitím techniky STONITH zařízení využívá instanční objekt služby k autorizaci s Microsoft Azure. Postupujte podle těchto kroků můžete vytvořit instanční objekt služby.
 
 1. Přejděte na <https://portal.azure.com>.
-1. Otevře se okno Azure Active Directory  
-   Přejděte do vlastností a poznamenejte si ID adresáře. Toto je **ID tenanta**.
+1. Otevře se okno Azure Active Directory, přejděte k vlastnostem a zapište ID adresáře. Toto je **ID tenanta**.
 1. Klikněte na možnost registrace aplikací
 1. Klikněte na tlačítko Přidat.
-1. Zadejte název, vyberte typ aplikace "Aplikace webového rozhraní API", zadejte přihlašovací adresu URL (například `http://localhost`) a klikněte na tlačítko Vytvořit
+1. Zadejte název, vyberte typ aplikace "Aplikace webového rozhraní API", zadejte přihlašovací adresu URL (třeba http:\//localhost) a klikněte na tlačítko Vytvořit
 1. Adresa URL přihlašování se nepoužívá a může být jakákoliv platná adresa URL
 1. Vyberte novou aplikaci a na kartě nastavení klikněte na tlačítko klíče
 1. Zadejte popis pro nový klíč, vyberte "Je platné stále" a klikněte na Uložit

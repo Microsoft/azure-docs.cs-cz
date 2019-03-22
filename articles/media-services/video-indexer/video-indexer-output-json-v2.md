@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: feb74b923a1f15105a2d80f8fefb09184162cb9b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c0eedc32ee96c94b8b3621afc0ee211ed2ff19f5
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990458"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314871"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Prozkoumání výstupu funkce Video Indexer vytvořené metodou rozhraní API v2
 
@@ -85,7 +85,7 @@ Tato část uvádí přehled informací.
 |thumbnailId|ID miniatury videa. Chcete-li získat skutečný miniaturu, volání Get-miniaturu (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) a předejte jí thumbnailVideoId a thumbnailId.|
 |tváří|Může obsahovat nula nebo více ploch. Další informace najdete v tématu [tváří](#faces).|
 |klíčová slova|Může obsahovat nula nebo více klíčových slov. Další informace najdete v tématu [klíčová slova](#keywords).|
-|zabarvení|Může obsahovat nula nebo více mínění. Další informace najdete v tématu [zabarvení](#sentiments).|
+|mínění|Může obsahovat nula nebo více mínění. Další informace najdete v tématu [zabarvení](#sentiments).|
 |audioEffects| Může obsahovat nula nebo více audioEffects. Další informace najdete v tématu [audioEffects](#audioeffects).|
 |popisky| Může obsahovat nula nebo více štítků. Další informace najdete v tématu [popisky](#labels).|
 |značky| Může obsahovat nula nebo více značek. Další informace najdete v tématu [značky](#brands).|
@@ -164,7 +164,7 @@ Přehledy jsou sadu dimenzí (například přepisu řádky, tváří, značky, a
 |snímky|[Snímky](#shots) dimenze.|
 |značky|[Značky](#brands) dimenze.|
 |audioEffects|[AudioEffects](#audioEffects) dimenze.|
-|zabarvení|[Zabarvení](#sentiments) dimenze.|
+|mínění|[Zabarvení](#sentiments) dimenze.|
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation) dimenze.|
 |textualContentModeration|[TextualContentModeration](#textualcontentmoderation) dimenze.|
 |emocí| [Emoce](#emotions) dimenze.|
@@ -245,34 +245,26 @@ Příklad:
 |spolehlivosti|Rozpoznávání spolehlivosti.|
 |language|OCR jazyk.|
 |instance|Seznam časových rozsahů, ve kterém se objevil tento OCR (stejné OCR může objevit více než jednou).|
+|Výška|Výška rámečku optické rozpoznávání znaků|
+|nahoru|Začátek umístění v px|
+|doleva| Vlevo umístění v px|
+|Šířka|Šířka obdélníku optické rozpoznávání znaků|
 
 ```json
 "ocr": [
     {
       "id": 0,
       "text": "LIVE FROM NEW YORK",
-      "confidence": 0.91,
+      "confidence": 675.971,
+      "height": 35,
       "language": "en-US",
+      "left": 31,
+      "top": 97,
+      "width": 400,      
       "instances": [
         {
           "start": "00:00:26",
           "end": "00:00:52"
-        }
-      ]
-    },
-    {
-      "id": 1,
-      "text": "NOTICIAS EN VIVO",
-      "confidence": 0.9,
-      "language": "es-ES",
-      "instances": [
-        {
-          "start": "00:00:26",
-          "end": "00:00:28"
-        },
-        {
-          "start": "00:00:32",
-          "end": "00:00:38"
         }
       ]
     }
@@ -585,7 +577,7 @@ Firmy a produktů názvy v převodu řeči na text přepisu a/nebo Video optick�
 ]
 ```
 
-#### <a name="sentiments"></a>zabarvení
+#### <a name="sentiments"></a>mínění
 
 Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné nebo záporné). Například 0 0.1, 0.2 0,1.
 

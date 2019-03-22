@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: be6b50b5cb4ea7d32f47d6eb0e19ba43a3217cb6
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: HT
+ms.openlocfilehash: 9a5a3e7354d3d89a53e94553ed504df7c8117922
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202686"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314989"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Nainstalovat a používat rozhraní Hue v clusterech HDInsight Hadoop
 
@@ -95,7 +95,7 @@ Tunelové připojení pomocí protokolu SSH je jediný způsob, jak přistupovat
         hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     Toto je název hostitele primárnímu hlavnímu uzlu, kde se nachází na webu Hue.
-4. Použijte postup otevření portál Hue v prohlížeči http://HOSTNAME:8888. Nahraďte názvem hostitele s názvem, který jste získali v předchozím kroku.
+4. Pro otevření portál Hue HTTP použijte prohlížeč:\//HOSTNAME:8888. Nahraďte názvem hostitele s názvem, který jste získali v předchozím kroku.
 
    > [!NOTE]  
    > Po přihlášení poprvé vyzve k vytvoření účtu k přihlášení na portál Hue. Přihlašovací údaje, které zadáte tady bude omezená na portálu a nesouvisí se správce nebo přihlašovacích údajů uživatele SSH, které jste zadali během zřizování clusteru.

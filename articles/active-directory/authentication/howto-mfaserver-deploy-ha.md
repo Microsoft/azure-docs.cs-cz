@@ -1,5 +1,5 @@
 ---
-title: Konfigurace serveru Azure MFA pro zajištění vysoké dostupnosti | Dokumentace Microsoftu
+title: Konfigurace serveru Azure MFA pro zajištění vysoké dostupnosti – Azure Active Directory
 description: Nasazení více instancí Azure Multi-Factor Authentication Server v konfiguracích, které zajišťují vysokou dostupnost.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26216131b461a395d3c87895a055d3ae30abf87c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ba8a1976fa9fc2a02f7f3e8419de10ebba7df950
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198809"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316299"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Konfigurovat ověřování Azure Multi-Factor Authentication Server pro zajištění vysoké dostupnosti
 

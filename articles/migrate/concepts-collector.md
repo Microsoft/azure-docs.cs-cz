@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 228d7b6994c67f9e14424624d264061634d80f27
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 78ef88d0710e8a82d30fa26b60073aa75e363c15
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080061"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315296"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -82,7 +82,7 @@ Kolekce musí úspěšně projít několik kontroly splnění podmínek se můž
 ### <a name="connect-to-the-internet-via-a-proxy"></a>Připojení k Internetu přes proxy server
 
 - Pokud proxy server vyžaduje ověření, můžete zadat uživatelské jméno a heslo při nastavování Kolektoru.
-- IP adresu nebo plně kvalifikovaný název domény Proxy serveru by měl být zadán jako *http://IPaddress* nebo *http://FQDN*.
+- IP adresu nebo plně kvalifikovaný název domény Proxy serveru by měl být zadán jako *http:\//IPaddress* nebo *http:\//FQDN*.
 - Podporuje se jen proxy protokolu HTTP. Servery proxy server založený na protokolu HTTPS nepodporuje Kolektoru.
 - Pokud proxy server je prověřuje zachycovací proxy server, musíte importovat certifikát proxy serveru na virtuálním počítači Kolektoru.
   1. Přejděte ve virtuálním počítači kolektoru **nabídky Start** > **spravovat certifikáty počítače**.

@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: 5c5b32eaf3066abe4489d909e224d2aa65e884a7
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: efdb82f891b21fa03a338c56d3f3e897e684bdf6
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238024"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337066"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Rychlý start: Pomocí SQL Server Management Studio k připojení a dotazování Azure SQL database
 
@@ -142,17 +142,18 @@ To [vložit](https://msdn.microsoft.com/library/ms174335.aspx) kód jazyka Trans
    ```sql
    SELECT * FROM [SalesLT].[Product] 
    WHERE Name='myNewProduct' 
+   ```
+   
+2. Vyberte **Provést**. Zobrazí se následující výsledky. 
 
-2. Select **Execute**. The following result appears. 
-
-   ![result](./media/sql-database-connect-query-ssms/result.png)
+   ![výsledek](./media/sql-database-connect-query-ssms/result.png)
 
  
-## Update data
+## <a name="update-data"></a>Aktualizace dat
 
-Run this [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify your new product.
+To [aktualizace](https://msdn.microsoft.com/library/ms177523.aspx) kód Transact-SQL k úpravě nového produktu.
 
-1. Replace the previous query with this one.
+1. Nahraďte předchozí dotaz s touto položkou.
 
    ```sql
    UPDATE [SalesLT].[Product]

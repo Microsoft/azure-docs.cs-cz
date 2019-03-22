@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: ea41f09269e3ad46db1f254965fd7d7df25232be
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d66db88dd1e962acc63c960270bb5685218aa391
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095598"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316049"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpečení a ověřování 
 
@@ -88,7 +88,7 @@ Příklad zpracování handshake ověření předplatného, najdete v článku [
 
 ### <a name="checklist"></a>Kontrolní seznam
 
-Při vytvoření odběru událostí, pokud dojde k chybě, jako "pokus o ověření poskytnutý koncový bod https://your-endpoint-here se nezdařilo. Další podrobnosti najdete na webu https://aka.ms/esvalidation", znamená to, že dojde k selhání v ověření metody handshake. Chcete-li tuto chybu vyřešit, ověřte následující aspekty:
+Při vytvoření odběru událostí, pokud dojde k chybě, jako "pokus o ověření poskytnutý koncový bod https:\//your-endpoint-here se nezdařilo. Další podrobnosti najdete na webu https:\//aka.ms/esvalidation ", znamená to, že dojde k selhání v ověření metody handshake. Chcete-li tuto chybu vyřešit, ověřte následující aspekty:
 
 * Máte kontrolu nad kódem aplikace v cílový koncový bod? Například pokud píšete triggeru HTTP na základě funkce Azure, máte přístup ke kódu aplikace provádět změny?
 * Pokud máte přístup ke kódu aplikace, implementujte mechanismus handshake ValidationCode na základě, jak je znázorněno v příkladu výše.

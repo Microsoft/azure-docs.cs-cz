@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: c0a86b76622862b477d539c25dd98c925f09192c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5d3525952ec09474d60618c4f99138cef1fce57a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812034"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317506"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Nasazení virtuálních polí StorSimple – sady nahoru jako serveru iSCSI prostřednictvím portálu Azure portal
 
@@ -98,7 +98,7 @@ Nastavit a nakonfigurovat StorSimple Virtual Array pomocí následujících krok
    
     Na **webového proxy serveru** stránky:
    
-   1. Zadat **webová adresa URL proxy serveru** v tomto formátu:  *http://host-IP adresu* nebo *FQDN: port číslo*. Všimněte si, že nejsou podporovány adresy URL HTTPS.
+   1. Zadat **webová adresa URL proxy serveru** v tomto formátu: *http:\//host-IP adresu* nebo *FQDN: port číslo*. Všimněte si, že nejsou podporovány adresy URL HTTPS.
    2. Zadejte **ověřování** jako **základní** nebo **žádný**.
    3. Pokud používáte ověřování, budete také muset poskytnout **uživatelské jméno** a **heslo**.
    4. Klikněte na tlačítko **Použít**. Bude to ověřit a použít nastavení nakonfigurované webového proxy serveru.

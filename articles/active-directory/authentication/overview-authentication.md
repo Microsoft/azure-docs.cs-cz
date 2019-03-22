@@ -1,5 +1,5 @@
 ---
-title: Ověřování uživatelů pomocí Azure Active Directory
+title: Ověřování uživatelů Azure Active Directory – Azure Active Directory
 description: Jak jako správce Azure AD ochráním ověřování uživatelů a zároveň snížím dopad na koncové uživatele?
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b054dd8c78968ffb65b92ab7ee4fe1b21501b0d3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 38bc2f138a8e56fc56b48ccdaf0636a93138f95d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192509"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314650"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>Které metody ověřování jsou dostupné?
 

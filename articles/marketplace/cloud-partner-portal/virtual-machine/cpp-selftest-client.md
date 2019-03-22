@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: aa46fbce9d11a8fd380a5ee1990c0e7924079a9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8dc0a003a12eb0aca28c6a3238e2119dc449d661
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078682"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309414"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Vytvoření klienta sami otestovat kód předběžně ověřit image virtuálních počítačů Azure
 
@@ -54,7 +54,7 @@ Následující diagram znázorňuje, jak funguje ověřování pro volání mezi
 Rozhraní API samočinný test obsahuje jeden koncový bod, který podporuje pouze metody POST.  Má následující strukturu.
 
 ```
-Uri:             https://isvapp.azurewebsites.net/selftest-vm
+Uri:             https:\//isvapp.azurewebsites.net/selftest-vm
 Method:          Post
 Request Header:  Content-Type: “application/json”
 Authorization:   “Bearer xxxx-xxxx-xxxx-xxxxx”
@@ -260,7 +260,7 @@ Následující postup použijte k registraci klientské aplikace.
 
    - **Název** – zadejte popisný název aplikace. Například "SelfTestClient".
    - **Typ aplikace** – vyberte **webové aplikace nebo rozhraní API**
-   - **Adresa URL přihlašování** – typ "https://isvapp.azurewebsites.net/selftest-vm"
+   - **Adresa URL přihlašování** – typ "https:\//isvapp.azurewebsites.net/selftest-vm"
 
 4. Vyberte **Vytvořit**.
 5. V části **registrace aplikací** nebo **registrovaná aplikace**, kopie **ID aplikace**.

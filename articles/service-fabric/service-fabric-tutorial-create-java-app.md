@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 5ad3d7c27b003fb3963333471bceb3226655a5eb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 559c02e74e97093a15b1d768eb5a3b32502db64e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57874877"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314582"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Kurz: Vytvořte aplikaci s webovým front-endová služba rozhraní API Java a stavovou back-end služby v Service Fabric
 
@@ -912,7 +912,7 @@ V tuto chvíli je aplikace připravená k nasazení do místního clusteru Servi
 
 4. V průzkumníku balíčků pro Eclipse klikněte pravým tlačítkem na projekt **Voting** a pak klikněte na **Service Fabric –> Publish Application...** (Service Fabric –> Publikovat aplikaci...). 
 5. V okně **Publish Application** (Publikovat aplikaci) vyberte v rozevíracím seznamu soubor **Local.json** a klikněte na **Publish** (Publikovat).
-6. Přejděte na webový prohlížeč a přístup `http://localhost:8080` zobrazíte běžící aplikaci v místním clusteru Service Fabric. 
+6. Přejděte do webového prohlížeče a přístup protokolu http:\//localhost:8080 zobrazte svou spuštěnou aplikaci v místním clusteru Service Fabric. 
 
 ## <a name="next-steps"></a>Další postup
 

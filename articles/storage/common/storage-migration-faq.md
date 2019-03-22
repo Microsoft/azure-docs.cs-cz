@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 2272414c185388df0ccbc9e21b7d166432fc7a52
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cf1cba6f6d26d66fc560c86ea42459fa276cc880
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110405"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310842"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Nejčastější dotazy ohledně migrace úložiště Azure
 
@@ -282,7 +282,7 @@ Chcete-li poskytnout ostatním přístup k prostředkům úložiště:
 
     - **SAS token**: Použijte SAS token pro přístup k datům z koncového bodu. Další informace najdete v tématu [použití sdílených přístupových podpisů](storage-dotnet-shared-access-signature-part-1.md).
 
-**Použití vlastní domény HTTPS pomocí účtu úložiště Například jak zajistím, aby "<https://mystorageaccountname.blob.core.windows.net/images/image.gif>"se zobrazí jako"<https://www.contoso.com/images/image.gif>"?**
+**Použití vlastní domény HTTPS pomocí účtu úložiště Příklad, jak se mohu ujistit "https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" se zobrazí jako "https:\//www.contoso.com/images/image.gif"?**
 
 V účtech úložiště s použitím vlastních domén se momentálně nepodporuje SSL.
 Ale můžete použít bez HTTPS vlastní domény. Další informace najdete v tématu [konfigurace vlastního názvu domény pro koncový bod služby Blob storage](../blobs/storage-custom-domain-name.md).

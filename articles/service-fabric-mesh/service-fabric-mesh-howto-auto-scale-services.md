@@ -3,7 +3,7 @@ title: Automatické škálování, kterým je aplikace spuštěná ve službě A
 description: Zjistěte, jak nakonfigurovat zásady automatického škálování služby Service Fabric mřížky aplikace.
 services: service-fabric-mesh
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2018
-ms.author: ryanwi
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f34c27addb61ce3dc24406598663d6bfbddf448b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2233dffabd7c76ca55cf215f8bc04e66134f5799
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969433"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338798"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Vytvořit zásady automatického škálování pro aplikaci Service Fabric mřížky
 Jednou z hlavních výhod nasazení aplikací do služby Service Fabric Mesh je možnost snadného horizontálního snížení nebo navýšení kapacity služeb. Tuto možnost byste měli používat ke zvládnutí různých objemů zatížení vašich služeb nebo ke zlepšení dostupnosti. Můžete ručně škálovat služby snížení nebo navýšení kapacity nebo nastavení zásad pro automatické škálování.

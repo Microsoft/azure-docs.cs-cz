@@ -1,20 +1,20 @@
 ---
 title: Migrace místních serverů s Windows Serverem 2008 do Azure pomocí Azure Site Recovery | Microsoft Docs
 description: Tento článek popisuje migraci místních počítačů s Windows Serverem 2008 do Azure pomocí Azure Site Recovery.
-author: bsiva
-manager: abhemraj
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 11/27/2018
-ms.author: bsiva
+ms.date: 03/18/2019
+ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c91fa2c269b507988d2bdefcd2882b2ab55fec35
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5233f9421b02be9b34bb481252f749e153942573
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094861"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312015"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrace serverů s Windows Serverem 2008 do Azure
 

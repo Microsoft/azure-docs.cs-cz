@@ -1,5 +1,5 @@
 ---
-title: Systém podpory Azure Site Recovery pro zotavení po havárii virtuálních počítačů Azure IaaS mezi oblastmi Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
+title: Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Shrnuje podporované operační systémy a konfigurace pro replikaci virtuálních počítačů Azure (VM) Azure Site Recovery z jedné oblasti do jiného pro potřeby zotavení po havárii.
 services: site-recovery
 author: rayne-wiselman
@@ -8,33 +8,33 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: raynew
-ms.openlocfilehash: 0dac046c359bb8affd69145c73a66cf4ac079012
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: b0fb84131f33d216e099978a7c9ba5481c1691d1
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287192"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312814"
 ---
-# <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
+# <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matice podpory pro replikaci virtuálních počítačů Azure z jedné oblasti do jiného
 
 Tento článek shrnuje podporované konfigurace a komponent, pokud nasazení zotavení po havárii pomocí replikace, převzetí služeb při selhání a obnovení virtuálních počítačů Azure z jedné oblasti Azure do jiného, pomocí [Azure Site Recovery](site-recovery-overview.md) služby.
 
 
 ## <a name="deployment-method-support"></a>Podpora nasazení – metoda
 
-**Metoda nasazení** |  **Podporované / nepodporované**
+**Nasazení** |  **Podpora**
 --- | ---
-**Azure Portal** | Podporováno
-**PowerShell** | [Replikace z Azure do Azure pomocí Powershellu](azure-to-azure-powershell.md)
-**REST API** | Podporováno
+**Azure Portal** | Podporuje se.
+**PowerShell** | Podporuje se. [Další informace](azure-to-azure-powershell.md)
+**REST API** | Podporuje se.
 **Rozhraní příkazového řádku** | Aktuálně se nepodporuje.
 
 
 ## <a name="resource-support"></a>Podpora prostředků
 
 **Akce prostředku** | **Podrobnosti**
---- | --- 
-**Přesun trezoru mezi skupinami prostředků** | Nepodporuje se
+--- | --- | ---
+**Přesun trezorů služby mezi skupinami prostředků** | Nepodporuje se
 **Přesunout výpočetní síťi prostředků mezi skupinami prostředků** | Nepodporuje se.<br/><br/> Při přesunutí virtuálního počítače nebo přidružené komponent, jako jsou úložiště nebo sítě po replikaci virtuálního počítače, musíte zakázat a znovu povolte replikaci pro virtuální počítač.
 **Replikace virtuálních počítačů Azure z jednoho předplatného do druhého pro zotavení po havárii** | Podporováno ve stejném tenantovi Azure Active Directory.
 **Migrace virtuálních počítačů napříč oblastmi v rámci podporovaných geografických clusterů (v rámci a napříč předplatnými)** | Podporováno ve stejném tenantovi Azure Active Directory.
@@ -57,12 +57,12 @@ Německo | Německo – střed, Německo – severovýchod
 
 >[!NOTE]
 >
-> - Pro **Brazílie – jih** oblasti, můžete replikaci a převzetí služeb při selhání na jednu z následujících akcí: Střed USA – Jih, střed USA – Západ, USA – východ, USA – východ 2, USA – Západ, USA – západ 2 a oblasti střed USA – sever. Je třeba poznamenat, Site Recovery je povolena pouze oblasti Brazílie – Jih, který se použije jako zdrojové oblasti, ze které se dají chránit virtuální počítače. To **nelze použít jako cíl zotavení po Havárii oblasti** pro všechny oblasti Azure, jako jsou střed USA – jih. Důvod je ten latence zjištěnými z důvodu geografické vzdálenosti doporučujeme vybrat oblasti žádné další Ameriky, než Brazílie – jih.
->
-> - Pokud jste **zobrazíte v oblasti není možné** místo, kam chcete **pro vytvoření trezoru** pak Ujistěte se, že má vaše předplatné přístup k vytváření prostředků v dané oblasti. Příklad: Pokud nejste schopni vytvořit trezor v Francie – jih pak vaše předplatné nemá do oblasti Francie – jih přístup. Zadejte soubor lístek podpory v části problém typu "Správa předplatného" a problém na předmět "ostatní obecné dotazy" "seznamu povolených IP adres předplatné XXX oblasti Azure"
->
-> - Pokud jste **zobrazíte v oblasti není možné** v rámci zeměpisné clusteru **při povolení replikace** pak Ujistěte se, že má vaše předplatné přístup k vytvoření virtuálního počítače v dané oblasti. Příklad: Pokud se pokoušíte ochránit virtuální počítače před Francie – střed Francie – jih a nezobrazí v oblasti Francie – jih rozevírací seznam, pak vaše předplatné nemá přístup k nasazení virtuálního počítače v dané oblasti. Zadejte soubor lístek podpory v části problém typu "Správa předplatného" a problém na předmět "ostatní obecné dotazy" "seznamu povolených IP adres předplatné XXX oblasti Azure"
-> - Nelze vybrat oblasti napříč geografické clustery uvedených výše.
+> - Pro **Brazílie – jih**, můžete replikaci a převzetí služeb při selhání na tyto oblasti: Střední část jihu USA, střed USA – Západ, USA – východ, USA – východ 2, USA – Západ, USA – západ 2 a USA (střed) – sever.
+> - Brazílie – jih jde použít jenom jako zdrojové oblasti, ze kterého můžete replikovat virtuální počítače s využitím Site Recovery. Nemůže fungovat jako cílové oblasti. Toto je z důvodu problémů s latencí kvůli geografické vzdálenosti. 
+> - Můžete pracovat v rámci oblasti, pro které mají odpovídající přístup.
+> - Pokud oblast, ve kterém chcete vytvořit trezor nezobrazí, ujistěte se, že vaše předplatné má přístup k vytváření prostředků v dané oblasti. 
+> - Není-li v oblasti v rámci zeměpisné clusteru při povolení replikace, ujistěte se, že vaše předplatné má oprávnění k vytvoření virtuálních počítačů v dané oblasti. 
+
 
 
 ## <a name="cache-storage"></a>Úložiště mezipaměti
@@ -195,7 +195,7 @@ Prostory úložiště | Podporováno |
 Azure Disk Encryption (ADE) pro operační systém Windows | Povoleno pro virtuální počítače [šifrování pomocí aplikace Azure AD](https://aka.ms/ade-aad-app) jsou podporovány |
 Azure Disk Encryption (ADE) pro operační systém Linux | Nepodporuje se |
 Přidání nebo odebrání horké disku | Nepodporuje se | Je-li přidat nebo odebrat datový disk na virtuálním počítači, musíte zakázat replikaci a povolte replikaci pro virtuální počítač znovu.
-Vyloučení disku | [podporováno prostřednictvím prostředí powershell](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine) |   Dočasný disk je ve výchozím nastavení vyloučen.
+Vyloučení disku | podpora. Je nutné použít [Powershellu](azure-to-azure-exclude-disks.md) ke konfiguraci. |  Ve výchozím nastavení jsou vyloučeny dočasné disky.
 Prostory úložiště s přímým přístupem  | Podporované pro body obnovení konzistentní vzhledem k chybě. Body obnovení konzistentní vzhledem k aplikaci nejsou podporovány. |
 Souborový Server se Škálováním  | Podporované pro body obnovení konzistentní vzhledem k chybě. Body obnovení konzistentní vzhledem k aplikaci nejsou podporovány. |
 LRS | Podporováno |
@@ -203,17 +203,22 @@ GRS | Podporováno |
 RA-GRS | Podporováno |
 ZRS | Nepodporuje se |
 Úložiště Cool a Hot | Nepodporuje se | Disky virtuálního počítače nejsou podporovány na studené a horké úložiště
-Pro virtuální sítě brány firewall služby Azure Storage  | Podporováno | Pokud pro přístup k virtuální síti se omezení pro účty úložiště, zajistěte, aby ["Povolit důvěryhodné služby Microsoftu"](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+Pro virtuální sítě brány firewall služby Azure Storage  | Podporováno | Pokud omezit přístup k virtuální síti k účtům úložiště, povolte [Povolit důvěryhodné služby Microsoftu](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 Účty úložiště pro obecné účely V2 (i horká a studená úroveň) | Ne | Zvýšit náklady na transakce podstatně porovnání pro obecné účely V1 účty úložiště
 
 >[!IMPORTANT]
-> Ujistěte se, že můžete sledovat virtuální počítač disk škálovatelnost a výkonnostní cíle pro [Linux](../virtual-machines/linux/disk-scalability-targets.md) nebo [Windows](../virtual-machines/windows/disk-scalability-targets.md) virtuálních počítačů, aby se zabránilo problémy s výkonem. Pokud budete postupovat podle výchozího nastavení, Site Recovery vytvoří požadované disky a účty úložiště v závislosti na konfiguraci zdroje. Je-li přizpůsobit a vybrat vlastní nastavení, ujistěte se, abyste postupovali podle disku škálovatelnost a výkonnostní cíle pro zdrojové virtuální počítače.
+> Aby se zabránilo problémům s výkonem, ujistěte se, abyste postupovali podle cíle škálovatelnosti a výkonu disku virtuálního počítače pro [Linux](../virtual-machines/linux/disk-scalability-targets.md) nebo [Windows](../virtual-machines/windows/disk-scalability-targets.md) virtuálních počítačů. Pokud používáte výchozí nastavení, nastavení vytvoří Site Recovery požadovaných disků a účty úložiště, v závislosti na konfiguraci zdroje. Je-li přizpůsobit a vybrat vlastní nastavení, postupujte podle disku škálovatelnost a výkonnostní cíle velikostem zdrojových virtuálních počítačů.
 
-## <a name="azure-site-recovery-limits-to-replicate-data-change-rates"></a>Frekvence změny omezení Azure Site Recovery k replikaci dat.
-Následující tabulka obsahuje omezení služby Azure Site Recovery. Tato omezení se zakládají na našich testováních, nemůžou však pokrýt všechny možné kombinace vstupně-výstupních operací aplikace. Skutečné výsledky se můžou lišit v závislosti na kombinaci vstupně-výstupních operací vaší aplikace. Můžeme také nezapomeňte přitom, že existují dvě omezení ke zvážení na disk, četnost změn dat a za virtuální počítač data churn.
-Například, když se podíváte na disk úrovně Premium P20 v níže uvedená tabulka, Site Recovery dokáže zpracovat změny 5 MB/s na disk s maximálně pěti těmito disky na virtuální počítač kvůli omezení 25 MB/s celková četnost změn na virtuální počítač.
+## <a name="limits-and-data-change-rates"></a>Omezení a data frekvence změny
 
-**Cíl ukládání replikace** | **Průměrná velikost vstupně-výstupních operací zdrojového disku** |**Průměrná četnost změn dat zdrojového disku** | **Celková denní četnost změn dat zdrojového disku**
+Následující tabulka shrnuje omezení Site Recovery.
+
+- Tato omezení se zakládají na našich testováních, ale samozřejmě není pokrýt všechny možné vstupně-výstupních operací kombinace aplikace.
+- Skutečné výsledky mohou lišit v závislosti na kombinaci vstupně-výstupních operací aplikace je.
+- Existují dvě omezení ke zvážení na disk, četnost změn dat a za data virtuálního počítače změny.
+- Například pokud používáme disk úrovně Premium P20, jak je popsáno v následující tabulce, Site Recovery dokáže zpracovat 5 MB provozu na disk, se na maximálně pět těmito disky na virtuální počítač, z důvodu omezení 25 MB/s celková četnost změn na virtuální počítač.
+
+**Cílové úložiště** | **Průměrná zdrojový disk vstupně-výstupních operací** |**Průměrná četnost změn dat zdrojového disku** | **Celková denní četnost změn dat zdrojového disku**
 ---|---|---|---
 Storage úrovně Standard | 8 kB | 2 MB/s | 168 GB na disk
 Disk úrovně Premium P10 nebo P15 | 8 kB  | 2 MB/s | 168 GB na disk
@@ -222,7 +227,7 @@ Disk úrovně Premium P10 nebo P15 | 32 kB nebo větší | 8 MB/s | 672 GB na di
 Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 8 kB    | 5 MB/s | 421 GB na disk
 Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |20 MB/s | 1684 GB na disk
 ## <a name="replicated-machines---networking"></a>Replikované počítače - sítě
-**Konfigurace** | **Podpora** | **Podrobnosti**
+**Nastavení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
 NIC | Maximální počet podporovaný pro určité velikosti virtuálních počítačů Azure | Síťové karty se vytvářejí, když virtuální počítač se vytvoří během převzetí služeb při selhání.<br/><br/> Počet síťových adaptérů na převzetí služeb při selhání virtuálního počítače závisí na počet síťových adaptérů na zdrojovém virtuálním počítači při povolení replikace. Je-li přidat nebo odebrat síťovou kartu po povolení replikace, neovlivní počet síťových adaptérů na replikovanému virtuálnímu počítači po převzetí služeb při selhání.
 Internetový nástroj pro vyrovnávání zatížení | Podporováno | Přidružte předkonfigurované zátěže pomocí Azure Automation skriptu v plánu obnovení.
@@ -235,15 +240,15 @@ Dynamická IP adresa | Podporováno | Pokud má síťový adaptér na zdroj dyna
 Traffic Manager     | Podporováno | Traffic Manager vám umožňují předem nakonfigurovat tak, aby provoz se směruje do koncového bodu ve zdrojové oblasti v pravidelných intervalech a ke koncovému bodu v cílové oblasti v případě převzetí služeb při selhání.
 Azure DNS | Podporováno |
 Vlastní DNS  | Podporováno |
-Neověřené Proxy | Podporováno | Odkazovat na [sítě dokument s pokyny.](site-recovery-azure-to-azure-networking-guidance.md)    
+Neověřené proxy | Podporováno | [Další informace]. (site-recovery-azure-to-azure-networking-guidance.md)   
 Ověřený proxy server | Nepodporuje se | Pokud virtuální počítač používá ověřený proxy server pro odchozí připojení, nelze replikovat, pomocí Azure Site Recovery.    
-Site to Site VPN s místními (s nebo bez ExpressRoute)| Podporováno | Ujistěte se, že trasy definované uživatelem a skupin zabezpečení sítě jsou nakonfigurovány tak, že provoz obnovení lokality se nesměruje na místní. Odkazovat na [sítě dokument s pokyny.](site-recovery-azure-to-azure-networking-guidance.md)  
-Připojení mezi virtuálními SÍTĚMI | Podporováno | Odkazovat na [sítě dokument s pokyny.](site-recovery-azure-to-azure-networking-guidance.md)  
+Připojení VPN typu site-to-site k místní<br/><br/>(s nebo bez ExpressRoute)| Podporováno | Ujistěte se, že trasy definované uživatelem a skupin zabezpečení sítě jsou nakonfigurovány tak, že provoz obnovení lokality se nesměruje na místní. [Další informace](site-recovery-azure-to-azure-networking-guidance.md)    
+Připojení mezi virtuálními SÍTĚMI | Podporováno | [Další informace](site-recovery-azure-to-azure-networking-guidance.md)  
 Koncové body služby virtuální sítě | Podporováno | Pokud pro přístup k virtuální síti se omezení pro účty úložiště, ujistěte se, že jsou povolena důvěryhodným službám Microsoftu přístup k účtu úložiště.
-Akcelerované síťové služby | Podporováno | Akcelerované síťové služby musí být povolené na zdrojovém virtuálním počítači. [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Urychlení sítě | Podporováno | Akcelerované síťové služby musí být povolené na zdrojovém virtuálním počítači. [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 
 
 ## <a name="next-steps"></a>Další postup
-- Čtení [sítě pokyny pro replikaci virtuálních počítačů Azure](site-recovery-azure-to-azure-networking-guidance.md).
+- Čtení [sítě pokyny](site-recovery-azure-to-azure-networking-guidance.md) pro replikaci virtuálních počítačů Azure.
 - Nasazení zotavení po havárii podle [replikaci virtuálních počítačů Azure](site-recovery-azure-to-azure.md).

@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 76c7519a166bfbfe5d2a7695a077b809aa971489
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7cb1632fe8c0ae873afcf37504dbd13bcfc753e8
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904027"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338067"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
@@ -104,7 +104,7 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro prostřede
 
    ![Konfigurovat diagnostiku pro elastické fondy](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 
-> [!NOTE]
+> [!IMPORTANT]
 > Kromě konfigurace telemetrická data diagnostiky pro elastický fond, můžete také nutné nakonfigurovat telemetrická data diagnostiky pro každou databázi v elastickém fondu, jak je uvedeno níže. 
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-single-datatbase-or-database-in-elastic-pool"></a>Konfigurace datové proudy telemetrická data diagnostiky pro jeden datatbase nebo databáze v elastickém fondu
@@ -159,7 +159,7 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro prostřede
 
    ![Konfigurovat diagnostiku pro spravovanou instanci](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
-> [!NOTE]
+> [!IMPORTANT]
 > Kromě konfigurace telemetrická data diagnostiky pro spravovanou instanci, také musíte nakonfigurovat telemetrická data diagnostiky pro každou databázi instance, jak je uvedeno níže. 
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases"></a>Konfigurace datové proudy diagnostickou telemetrii pro instanci databáze

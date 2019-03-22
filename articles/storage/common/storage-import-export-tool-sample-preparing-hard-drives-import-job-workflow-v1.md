@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: e183ed5ecda3053ed052952f4db5adfb016bfa68
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b80ba1cbe168270ec591bdd38859408eae387bbf
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459041"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311709"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Ukázkový pracovní postup pro přípravu pevných disků pro úlohu importu
 Toto téma vás provede kompletní proces přípravy disků pro úlohu importu.  
@@ -31,12 +31,12 @@ Tento příklad importuje následující data do účtu úložiště Azure okno 
   
 |Zdroj|Cílový virtuální adresář nebo objekt blob|  
 |------------|-------------------------------------------|  
-|H:\Video|https://mystorageaccount.blob.core.windows.net/video|  
-|H:\Photo|https://mystorageaccount.blob.core.windows.net/photo|  
-|K:\Temp\FavoriteMovie.ISO|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
-|\\\bigshare\john\music|https://mystorageaccount.blob.core.windows.net/music|  
+|H:\Video|https:\//mystorageaccount.blob.core.windows.net/video|  
+|H:\Photo|https:\//mystorageaccount.blob.core.windows.net/photo|  
+|K:\Temp\FavoriteMovie.ISO|https:\//mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
+|\\\bigshare\john\music|https:\//mystorageaccount.blob.core.windows.net/music|  
   
-Pomocí této mapování, soubor `H:\Video\Drama\GreatMovie.mov` , je naimportován do objektu blob `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`.  
+Pomocí této mapování, soubor `H:\Video\Drama\GreatMovie.mov` , je naimportován do objektu blob https:\//mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov.  
   
 V dalším kroku výpočetní můžete určit, kolik pevné disky jsou potřeba, velikost dat:  
   
@@ -46,11 +46,11 @@ V tomto příkladu by měla stačit dva 3 TB pevné disky. Nicméně, protože z
   
 |Umístění|Velikost|Cílový virtuální adresář nebo objekt blob|  
 |--------------|----------|-------------------------------------------|  
-|H:\Video1|2,5 TB|https://mystorageaccount.blob.core.windows.net/video|  
-|H:\Video2|2,5 TB|https://mystorageaccount.blob.core.windows.net/video|  
-|H:\Photo|30 GB|https://mystorageaccount.blob.core.windows.net/photo|  
-|K:\Temp\FavoriteMovies.ISO|25 GB|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
-|\\\bigshare\john\music|10 GB|https://mystorageaccount.blob.core.windows.net/music|  
+|H:\Video1|2,5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  
+|H:\Video2|2,5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  
+|H:\Photo|30 GB|https:\//mystorageaccount.blob.core.windows.net/photo|  
+|K:\Temp\FavoriteMovies.ISO|25 GB|https:\//mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
+|\\\bigshare\john\music|10 GB|https:\//mystorageaccount.blob.core.windows.net/music|  
   
  I v případě, `H:\Video`adresáře byla rozdělena na dva adresáře, ukazují na stejný cílový virtuální adresář v účtu úložiště. Tímto způsobem se zachovají všechny soubory videa v rámci jedné `video` kontejneru v účtu úložiště.  
   

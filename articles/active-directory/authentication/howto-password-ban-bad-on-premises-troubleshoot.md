@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží ve službě Azure AD ochrana heslem
+title: Řešení potíží ve službě Azure AD hesla ochrana – Azure Active Directory
 description: Principy Azure AD ochrany běžné řešení potíží s heslem
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ac97d7bda56a871e0b8f6de6d5d7262f3f44667
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: 51f214688aa1e33bd58e8460baab75228d7c5d1a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285696"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317234"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Řešení potíží Azure AD ochrana heslem
 

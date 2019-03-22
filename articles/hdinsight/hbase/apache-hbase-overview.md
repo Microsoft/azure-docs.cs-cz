@@ -1,8 +1,6 @@
 ---
 title: Co je to HBase v Azure HDInsight?
 description: Úvod do Apache HBase v HDInsight, databáze typu NoSQL postavené na Hadoop. Další informace o případech použití a porovnání HBase s dalšími clustery Hadoop.
-keywords: bigtable, nosql, what is hbase, apache hbase, hbase, habase overview
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 46b201b2b5d8a3ee774f759326afae885ad6cb30
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: d109a1a233aaaf1f3922561106caa15781e31e01
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651840"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337342"
 ---
 # <a name="what-is-apache-hbase-in-hdinsight-a-nosql-database-that-provides-bigtable-like-capabilities-for-apache-hadoop"></a>Co je Apache HBase v HDInsight: Databáze NoSQL, která poskytuje pro Apache Hadoop funkce podobné BigTable
 [Apache HBase](https://hbase.apache.org/) je databáze NoSQL open source, která je založená na [Apache Hadoop](https://hadoop.apache.org/) a modelové po [Google BigTable](https://cloud.google.com/bigtable/). HBase poskytuje náhodný přístup a silnou konzistenci pro velké objemy nestrukturovaných a částečně strukturovaných dat v databázi schemaless uspořádané podle rodin sloupců.
@@ -62,8 +60,3 @@ Byl vytvořen případ použití canonical, pro které je vytvořené BigTable (
 * [Apache HBase](https://hbase.apache.org/)
 * [Apache HBase referenční příručka](https://hbase.apache.org/book.html)
 * [Bigtable: Systém distribuovaného úložiště pro strukturovaná Data](https://research.google.com/archive/bigtable.html)
-* [Apache HBase a Phoenix – tipy, triky a osvědčené postupy v Azure HDInsight](https://blogs.msdn.microsoft.com/ashish/2016/08/28/hdinsight-hbase-faq/)
-
-
-
-

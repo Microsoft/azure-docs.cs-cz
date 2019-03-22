@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ef29dafe32c3c5988cd33f59c8436eeef4b45886
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7a4423449931b74afa15ca238c611f54b071402f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849274"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339291"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Jak pracovat s hledání výsledků ve službě Azure Search
 Tento článek obsahuje pokyny pro implementaci standardní elementy na stránce výsledků hledání, jako je například celkového počtu, načtení dokumentu, řazení a navigaci. Možnosti stránky, které přispívají data nebo informace, které výsledky hledání jsou určeny pomocí [hledání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) požadavky odeslané do služby Azure Search. 
@@ -25,8 +25,8 @@ V rozhraní REST API zahrnují požadavky GET command, cestu a parametry dotazu,
 Několik vzorových kódů patří webového front-endové rozhraní, který najdete tady: [New York City úlohy ukázkovou aplikaci](https://azjobsdemo.azurewebsites.net/) a [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
-> Žádost platná zahrnuje celou řadu prvků, jako je například adresa URL služby a cestu, příkaz HTTP `api-version`, a tak dále. Pro zkrácení jsme oříznut tyto příklady zvýrazňovat syntaxi, která je relevantní pro stránkování. Další informace o žádosti o syntaxi naleznete v tématu [rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice). > 
-> 
+> Žádost platná zahrnuje celou řadu prvků, jako je například adresa URL služby a cestu, příkaz HTTP `api-version`, a tak dále. Pro zkrácení jsme oříznut tyto příklady zvýrazňovat syntaxi, která je relevantní pro stránkování. Další informace o žádosti o syntaxi naleznete v tématu [REST služby Azure Search](https://docs.microsoft.com/rest/api/searchservice).
+>
 
 ## <a name="total-hits-and-page-counts"></a>Celkový počet přístupů a stránka počítá
 Zobrazuje celkový počet výsledků vrácená z dotazu a vrácení výsledků do menších bloků, je nezbytné k prakticky veškerému vyhledávací stránky.

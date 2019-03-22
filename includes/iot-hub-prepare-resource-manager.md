@@ -4,12 +4,12 @@ ms.author: robin.shahan
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 163b479fdf2d6a4885604c52f36f707e558dc3a0
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: b7d043b15cad23c9c9eca60c9a24096fee12e14a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011764"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319743"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Příprava k ověřování požadavků Azure Resource Manageru
 Všechny operace, které můžete provádět s prostředky pomocí musí ověřit [Azure Resource Manageru] [ lnk-authenticate-arm] s Azure Active Directory (AD). Nejjednodušší způsob, jak nastavit tuto konfiguraci je pomocí Powershellu nebo rozhraní příkazového řádku Azure.
@@ -41,8 +41,8 @@ Následující kroky ukazují, jak nastavit ověřování heslem pro aplikaci AD
 3. Vytvořte novou aplikaci Azure Active Directory pomocí následující příkaz a nahraďte zástupné znaky místě:
    
    * **{Název}:** zobrazovaný název pro vaši aplikaci, jako **MySampleApp**
-   * **{Adresu URL domovské stránky}:** adresa URL domovské stránky vaší aplikace, jako **http://mysampleapp/home**. Tato adresa URL nemusí odkazovat na aplikace skutečný.
-   * **{Identifikátor aplikace}:** Jedinečný identifikátor jako **http://mysampleapp**. Tato adresa URL nemusí odkazovat na aplikace skutečný.
+   * **{Adresu URL domovské stránky}:** adresa URL domovské stránky vaší aplikace, jako **http:\//mysampleapp/domácí**. Tato adresa URL nemusí odkazovat na aplikace skutečný.
+   * **{Identifikátor aplikace}:** Jedinečný identifikátor jako **http:\//mysampleapp**. Tato adresa URL nemusí odkazovat na aplikace skutečný.
    * **{Heslo}:** Heslo, které použijete k ověření s vaší aplikací.
      
      ```powershell

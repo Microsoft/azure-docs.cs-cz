@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: v-jamebr
-ms.openlocfilehash: d2e890110194b1fbe0528191fa645628cc3a1345
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9da735f10063649222a38498af17e0404137a706
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161355"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315347"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Vývoj C# aplikace Service Fabric pomocí Visual Studio Code
 
@@ -70,11 +70,11 @@ Po vytvoření aplikace, nasadíte ho do místního clusteru.
 
    ![Nasazení aplikace příkaz ve VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
-4. Po dokončení nasazení spusťte prohlížeč a otevřete Service Fabric Explorer: http://localhost:19080/Explorer. Měli byste vidět, že je aplikace spuštěná. To může trvat nějakou dobu, tak buďte prosím trpěliví. 
+4. Po dokončení nasazení spusťte prohlížeč a otevřete Service Fabric Explorer: http:\//localhost:19080 / Explorer. Měli byste vidět, že je aplikace spuštěná. To může trvat nějakou dobu, tak buďte prosím trpěliví. 
 
    ![Čítač aplikace služby v Service Fabric Exploreru](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
 
-4. Po ověření je aplikace spuštěna, spusťte prohlížeč a otevřete tuto stránku: http://localhost:31002. To je webový front-end aplikace. Aktualizujte stránku, aby zobrazil aktuální hodnotu čítače, jak zvýší.
+4. Po ověření je aplikace spuštěna, spusťte prohlížeč a otevřete tuto stránku: http:\//localhost:31002. To je webový front-end aplikace. Aktualizujte stránku, aby zobrazil aktuální hodnotu čítače, jak zvýší.
 
    ![Čítač aplikace služby v prohlížeči](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
@@ -91,7 +91,7 @@ Pokud chcete nastavit zarážky a ladit, proveďte následující kroky:
 
    ![Ladění ikony v pracovním prostoru VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. Otevřete v prohlížeči Service Fabric Exploreru: http://localhost:19080/Explorer. Klikněte na tlačítko **aplikací** a zotavení po havárii dolů k určení primárního uzlu, na kterém běží CounterService na. Na obrázku níže primární uzel CounterService je uzel 0.
+3. Otevřete v prohlížeči Service Fabric Exploreru: http:\//localhost:19080 / Explorer. Klikněte na tlačítko **aplikací** a zotavení po havárii dolů k určení primárního uzlu, na kterém běží CounterService na. Na obrázku níže primární uzel CounterService je uzel 0.
 
    ![Primární uzel CounterService](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: ba6a9a09945f0e822dfe02a74f2cdb8e21a1691c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 47b5e89164173869d6964e2c5e392bb99e0c8555
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674663"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317387"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Vizualizujte cluster pomocí Service Fabric Exploreru
 
@@ -46,7 +46,7 @@ Chcete-li stáhnout Service Fabric Explorer, jako desktopová aplikace pomocí n
 
 ### <a name="running-service-fabric-explorer-from-the-cluster"></a>Spuštění z clusteru Service Fabric Exploreru
 
-Service Fabric Explorer je také hostovaná v clusteru Service Fabric koncový bod správy HTTP. SFX spustit ve webovém prohlížeči, přejděte na koncový bod správy HTTP clusteru z libovolného prohlížeče – například https://clusterFQDN:19080.
+Service Fabric Explorer je také hostovaná v clusteru Service Fabric koncový bod správy HTTP. SFX spustit ve webovém prohlížeči, přejděte na koncový bod správy HTTP clusteru z libovolného prohlížeče – například https:\//clusterFQDN:19080.
 
 Pro nastavení pracovní stanici vývojáře, můžete spustit Service Fabric Explorer v místním clusteru tak, že přejdete do https://localhost:19080/Explorer. Podívejte se na tomto článku [Příprava vývojového prostředí](service-fabric-get-started.md).
 

@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: c5128e904e540deeb3293fb687da4e8cafcfa1e0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a933824e9553ee7f638da495b46ebed19e04169d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57870990"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316962"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Připojení k místním systémům souborů pomocí Azure Logic Apps
 
@@ -48,7 +48,7 @@ V příkladu, budete potřebovat tyto položky:
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
 
-1. Do vyhledávacího pole zadejte jako filtr "dropboxu". Ze seznamu triggerů vyberte tento trigger: **Když se vytvoří soubor** 
+1. Do vyhledávacího pole zadejte jako filtr "dropboxu". Ze seznamu triggerů vyberte tento trigger: **Když se vytvoří soubor**
 
    ![Vyberte trigger Dropboxu](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
 
@@ -78,7 +78,7 @@ V příkladu, budete potřebovat tyto položky:
    | **gateway** | Ano | <*installed-gateway-name*> | Název pro dříve nainstalovanou bránu | 
    ||| 
 
-1. Jakmile budete hotoví, vyberte **Vytvořit**. 
+1. Jakmile budete hotoví, vyberte **Vytvořit**.
 
    Logic Apps nakonfiguruje a otestuje připojení, ujistěte se, že připojení funguje správně. 
    Pokud je připojení správně nastavené, zobrazí se možnosti pro akci, kterou jste dříve vybrali. 

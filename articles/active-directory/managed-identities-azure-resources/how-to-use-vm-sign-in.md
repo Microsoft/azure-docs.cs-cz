@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dfbb618bafd9ae3cbb0c691e63a243ab2c2c31e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 645fb4e939e308eecdd2b6933197493919c2dd1d
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996537"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338577"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Použití spravované identity pro prostředky Azure na Virtuálním počítači Azure pro přihlášení 
 
@@ -80,7 +80,7 @@ Tento skript ukazuje, jak:
 
 ## <a name="resource-ids-for-azure-services"></a>ID prostředků služeb Azure
 
-Zobrazit [, že podpora Azure AD ověřování služby Azure](services-support-msi.md#azure-services-that-support-azure-ad-authentication) seznam prostředků, které podporují služby Azure AD a prošel testováním s využitím spravované identity pro prostředky Azure a jejich odpovídající ID prostředků.
+Zobrazit [, že podpora Azure AD ověřování služby Azure](services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) seznam prostředků, které podporují služby Azure AD a prošel testováním s využitím spravované identity pro prostředky Azure a jejich odpovídající ID prostředků.
 
 ## <a name="error-handling-guidance"></a>Pokyny pro zpracování chyb 
 

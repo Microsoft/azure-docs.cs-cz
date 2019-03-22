@@ -12,12 +12,12 @@ ms.date: 03/12/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fb504e7c2f76f2edd0921cae0fb02ea0849ff4b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 29f2de6eb0171e5e1c792e8860a56f014dad501f
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878342"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314820"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidat místní aplikace pro vzdálený přístup prostřednictvím Proxy aplikací v Azure Active Directory
 
@@ -173,7 +173,7 @@ Teď, když jste připravit vaše prostředí a nainstalujete konektor, jste př
     | Pole | Popis |
     | :---- | :---------- |
     | **Název** | Název aplikace, které se zobrazí na přístupovém panelu a na webu Azure Portal. |
-    | **Interní adresa URL** | Adresa URL pro přístup k aplikaci uvnitř vaší privátní sítě. Můžete zadat konkrétní cestu na beck-endovém serveru, kterou chcete publikovat, zatímco zbytek serveru publikovaný nebude. Tímto způsobem můžete publikovat různé stránky na stejném serveru jako různé aplikace a použít každý z nich vlastní název a pravidla přístupu.<br><br>Pokud publikujete cestu, ujistěte se, že zahrnuje všechny nezbytné obrázky, skripty a šablony stylů pro vaši aplikaci. Například, pokud je vaše aplikace na <https://yourapp/app> a používá obrázky nacházející se v <https://yourapp/media>, pak by měli zveřejnit <https://yourapp/> jako cestu. Toto interní adresa URL nemusí být na úvodní stránku, kterou uživatelé uvidí. Další informace najdete v tématu [nastavit vlastní domovskou stránku pro publikované aplikace](application-proxy-configure-custom-home-page.md). |
+    | **Interní adresa URL** | Adresa URL pro přístup k aplikaci uvnitř vaší privátní sítě. Můžete zadat konkrétní cestu na beck-endovém serveru, kterou chcete publikovat, zatímco zbytek serveru publikovaný nebude. Tímto způsobem můžete publikovat různé stránky na stejném serveru jako různé aplikace a použít každý z nich vlastní název a pravidla přístupu.<br><br>Pokud publikujete cestu, ujistěte se, že zahrnuje všechny nezbytné obrázky, skripty a šablony stylů pro vaši aplikaci. Například, pokud je vaše aplikace v protokolu https:\//yourapp/aplikace a použití Image nachází v protokolu https:\//yourapp/médium a pak by měli zveřejnit informace protokolu https:\//yourapp/ jako cestu. Toto interní adresa URL nemusí být na úvodní stránku, kterou uživatelé uvidí. Další informace najdete v tématu [nastavit vlastní domovskou stránku pro publikované aplikace](application-proxy-configure-custom-home-page.md). |
     | **Externí adresa URL** | Adresa pro uživatele pro přístup k aplikaci mimo vaši síť. Pokud už nechcete používat výchozí doménu Proxy aplikací, přečtěte si informace o [vlastních domén v Azure AD Application Proxy](application-proxy-configure-custom-domain.md).|
     | **Předběžné ověření** | Jak Proxy aplikace ověřuje uživatele, než jim poskytne přístup k aplikaci.<br><br>**Azure Active Directory** – Proxy aplikace přesměruje uživatele na stránku přihlášení Azure AD, která ověří jejich oprávnění k adresáři a aplikaci. Doporučujeme tuto možnost jako výchozí, takže můžete využít výhod funkcí zabezpečení Azure AD, jako je podmíněný přístup a ověřování službou Multi-Factor Authentication. **Azure Active Directory** je vyžadován pro monitorování aplikací pomocí Microsoft Cloud Application Security.<br><br>**Průchod** – uživatelé nemají k ověřování na základě Azure Active Directory pro přístup k aplikaci. Stále můžete nastavit požadavky na ověřování na back-endu. |
     | **Skupina konektorů.** | Konektory zpracování vzdálený přístup do vaší aplikace a skupiny konektorů můžete uspořádat konektory a aplikace podle oblasti, sítě nebo účel. Pokud nemáte žádné skupiny konektorů nemáte ještě vytvořený, vaše aplikace se přiřadí **výchozí**.<br><br>Pokud vaše aplikace používá objekty Websocket pro připojení, všechny konektory ve skupině musí být ve verzi 1.5.612.0 nebo novější.|

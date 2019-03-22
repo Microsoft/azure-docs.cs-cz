@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: dc2b38f8e8065b8d8763365bf0cbad56ae00cd4b
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: aed63e332375be4f8ed939cf162545c9f366f329
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565424"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317591"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Přizpůsobení akcelerátoru řešení vzdáleného monitorování
 
@@ -73,7 +73,7 @@ Následující kroky popisují postup nastavení místní prostředí pro vývoj
     npm start
     ```
 
-1. Předchozí příkaz se spustí místně na uživatelské rozhraní http://localhost:3000/dashboard. Můžete upravit jeho kód, zatímco je web spuštěný a zobrazit ji dynamicky aktualizovat.
+1. Předchozí příkaz se spustí v uživatelském rozhraní místně http:\//localhost:3000 / řídicí panel. Můžete upravit jeho kód, zatímco je web spuštěný a zobrazit ji dynamicky aktualizovat.
 
 ## <a name="customize-the-layout"></a>Přizpůsobení rozložení
 

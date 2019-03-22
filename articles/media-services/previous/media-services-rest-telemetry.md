@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: b1eb6e1458fab6de3472d68352ba7764b71007c8
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
+ms.openlocfilehash: 9c654c65577c44b1773ff98cb1206beeb5206ba4
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58292577"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317642"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>Konfigurace telemetrie Azure Media Services pomocí REST
 
@@ -34,7 +34,7 @@ Podle kroků popsaných v tomto tématu jsou:
 - Získání koncových bodů oznámení
 - Vytváří se koncový bod oznámení pro sledování. 
 
-    Vytvoření koncového bodu oznámení, nastavte EndPointType AzureTable (2) a endPontAddress nastavení do tabulky úložiště (například https://telemetryvalidationstore.table.core.windows.net/).
+    Vytvoření koncového bodu oznámení, nastavte EndPointType AzureTable (2) a endPontAddress nastavení do tabulky úložiště (například https:\//telemetryvalidationstore.table.core.windows.net/).
   
 - Získání konfigurace monitorování
 
@@ -121,12 +121,12 @@ Podle kroků popsaných v tomto tématu jsou:
     
     {  
         "Name":"monitoring",
-        "EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/",
+        "EndPointAddress":"https:\//telemetryvalidationstore.table.core.windows.net/",
         "EndPointType":2
     }
 
 > [!NOTE]
-> Nezapomeňte změnit "https://telemetryvalidationstore.table.core.windows.net" hodnotu do vašeho účtu úložiště.
+> Nezapomeňte změnit "https:\//telemetryvalidationstore.table.core.windows.net" hodnotu do vašeho účtu úložiště.
 
 ### <a name="response"></a>Odpověď
 

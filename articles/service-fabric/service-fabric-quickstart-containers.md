@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 05f8c1898e565e145aedbfdc13e0a88ad09486dc
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 4c7de6738e30cd883257f3b2ea873c933364c003
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804639"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311879"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rychlý start: Nasadit kontejnery Windows do Service Fabric
 
@@ -149,7 +149,7 @@ Klikněte na **Publikovat**.
 
 Každá aplikace v clusteru musí mít jedinečný název. Pokud dojde ke konfliktu názvů, přejmenujte projekt sady Visual Studio a opakujte nasazení.
 
-Otevřete prohlížeč a přejděte na adresu, kam si ukládáte do **koncový bod připojení** pole v předchozím kroku. Volitelně můžete před adresu URL přidat identifikátor schématu `http://` a připojit za ní port `:80`. Například, http://mysfcluster.SouthCentralUS.cloudapp.azure.com:80.
+Otevřete prohlížeč a přejděte na adresu, kam si ukládáte do **koncový bod připojení** pole v předchozím kroku. Volitelně můžete před adresu URL přidat identifikátor schématu `http://` a připojit za ní port `:80`. Například http:\//mysfcluster.SouthCentralUS.cloudapp.azure.com:80.
 
  Zobrazí se výchozí webová stránka služby IIS: ![Výchozí webová stránka služby IIS][iis-default]
 

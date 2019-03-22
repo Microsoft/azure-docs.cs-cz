@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: 5580d67f796efc809ef536818419ab91e8ee54a2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: edaa0cdcd98ce529ccbf9bf6aafaacf57a3ea383
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540007"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337523"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Objednat zařízení události připojení ze služby Azure IoT Hub pomocí služby Azure Cosmos DB
 
@@ -24,9 +24,9 @@ Pořadové číslo je řetězcové vyjádření šestnáctkového čísla. Porov
 
 * Aktivní účet Azure. Pokud žádný nemáte, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-* Aktivní účet rozhraní SQL API služby Azure Cosmos DB. Pokud ještě jeden ještě nevytvořili, přečtěte si téma [vytvoření databázového účtu](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-a-database-account) návod.
+* Aktivní účet rozhraní SQL API služby Azure Cosmos DB. Pokud ještě jeden ještě nevytvořili, přečtěte si téma [vytvoření databázového účtu](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-an-account) návod.
 
-* Kolekce v databázi. Zobrazit [přidat kolekci](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#add-a-collection) návod.
+* Kolekce v databázi. Zobrazit [přidat kolekci](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#add-a-database-and-a-collection) návod.
 
 * IoT Hub v Azure. Pokud jste si ještě žádné nevytvořili, přečtěte si téma [Začínáme se službou IoT Hub](../iot-hub/iot-hub-csharp-csharp-getstarted.md), kde najdete návod. 
 
@@ -350,5 +350,3 @@ Pokud chcete odebrat účet služby Azure Cosmos DB na webu Azure Portal, klikn�
 * [Projděte si kurz událostí služby IoT Hub](../event-grid/publish-iot-hub-events-to-logic-apps.md)
 
 * Další informace o tom, co jiného vám pomůžou s [služby Event Grid](../event-grid/overview.md)
-
-
