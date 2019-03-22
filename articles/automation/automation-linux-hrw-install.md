@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 29ca8c4114d48fa0d3756930354660712b1b35b3
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: cc07aa9c1b2c540c33949a8c591bd98f91b04666
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820412"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225446"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Linuxu Hybrid Runbook Worker
 
@@ -71,7 +71,7 @@ Než budete pokračovat, Všimněte si pracovní prostor Log Analytics, která v
 
 1. Nainstalujte agenta Log Analytics pro Linux spuštěním následujícího příkazu. Nahraďte \<ID pracovního prostoru\> a \<WorkspaceKey\> příslušnými hodnotami z pracovního prostoru.
 
-  [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
+   [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
 
    ```bash
    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -84,6 +84,9 @@ Než budete pokračovat, Všimněte si pracovní prostor Log Analytics, která v
    ```
 
 1. Po dokončení příkazu **skupiny hybridních pracovních procesů** stránka na webu Azure Portal zobrazuje nové skupiny a počet členů. Pokud je existující skupiny, se zvýší počet členů. Můžete vybrat skupinu ze seznamu na **skupiny hybridních pracovních procesů** stránku a vybrat **hybridní pracovní procesy** dlaždici. Na **hybridní pracovní procesy** stránku, uvidíte každého člena skupiny uvedeny.
+
+> [!NOTE]
+> Pokud používáte rozšíření virtuálního počítače Azure Monitor pro Linux pro virtuální počítač Azure doporučujeme nastavit `autoUpgradeMinorVersion` na hodnotu false jako automatický upgrade verze může způsobit problémy s Hybrid Runbook Worker. Zjistěte, jak rozšíření upgradovat ručně, najdete v článku [nasazení Azure CLI ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
 
 ## <a name="turning-off-signature-validation"></a>Vypnout ověřování podpisu
 
@@ -111,12 +114,8 @@ Následující typy runbooků nefungují v procesu Hybrid Worker Linux:
 * Grafické
 * Grafický Powershellový pracovní postup
 
-## <a name="troubleshoot"></a>Řešení potíží
-
-Další řešení potíží s procesy Hybrid Runbook Worker, najdete v článku [řešení potíží s Linuxem Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#linux)
-
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o konfiguraci runbooky pro automatizaci procesů do vašeho místního datového centra nebo jiné cloudové prostředí, najdete v článku [spouštění runbooků v procesu Hybrid Runbook Worker](automation-hrw-run-runbooks.md).
 * Pokyny k odebrání funkce Hybrid Runbook Worker, naleznete v tématu [odebrat Azure Automation Hybrid Runbook Worker](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).
-
+* Další řešení potíží s procesy Hybrid Runbook Worker, najdete v článku [řešení potíží s Linuxem Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#linux)

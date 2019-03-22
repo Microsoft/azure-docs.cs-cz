@@ -6,12 +6,12 @@ ms.date: 11/27/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: f7b546e8a0ca52fd2037e471f01787bb64db032d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: aefb0684ea065841824ad27d1105ef309418c6b9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842743"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090742"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>Zachování IP adresy během převzetí služeb při selhání
 
@@ -62,10 +62,10 @@ Pokud dojde k oblastnímu výpadku zdroj, může společnost A převzetí služe
 
 - Pomocí IP adresy už na místě před převzetí služeb při selhání, firmy A orchestrovat převzetí služeb při selhání a automatickému vytvoření připojení po převzetí služeb při selhání mezi **virtuální sítě pro zotavení** a **virtuální sítě Azure**. To je znázorněno v následujícím diagramu...
 - V závislosti na požadavcích aplikace, připojení mezi dvěma virtuálními sítěmi (**virtuální sítě pro zotavení** a **virtuální sítě Azure**) v cílové oblasti lze zavedených před, během (jako přechodný krok při) nebo po převzetí služeb.
-    - Společnost můžete použít [plány obnovení](site-recovery-create-recovery-plans.md) k určení, kdy se připojení naváže.
-    - Jejich propojení virtuálních sítí pomocí VNet peering nebo VPN typu site-to-site.
-        - VNet peering nepoužívá bránu sítě VPN a má jiná omezení.
-        - Partnerský vztah virtuální sítě [ceny](https://azure.microsoft.com/pricing/details/virtual-network) se vypočítává odlišně od připojení typu VNet-to-VNet VPN Gateway [ceny](https://azure.microsoft.com/pricing/details/vpn-gateway). Pro převzetí služeb při selhání obecně doporučujeme používat stejnou metodu připojení jako zdrojové sítě, včetně typu připojení, chcete-li minimalizovat neočekávané síti incidenty.
+  - Společnost můžete použít [plány obnovení](site-recovery-create-recovery-plans.md) k určení, kdy se připojení naváže.
+  - Jejich propojení virtuálních sítí pomocí VNet peering nebo VPN typu site-to-site.
+      - VNet peering nepoužívá bránu sítě VPN a má jiná omezení.
+      - Partnerský vztah virtuální sítě [ceny](https://azure.microsoft.com/pricing/details/virtual-network) se vypočítává odlišně od připojení typu VNet-to-VNet VPN Gateway [ceny](https://azure.microsoft.com/pricing/details/vpn-gateway). Pro převzetí služeb při selhání obecně doporučujeme používat stejnou metodu připojení jako zdrojové sítě, včetně typu připojení, chcete-li minimalizovat neočekávané síti incidenty.
 
     ![Prostředky v Azure úplné převzetí služeb při selhání](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover2.png)
 
@@ -128,13 +128,13 @@ V tomto scénáři **společnosti B** spustí hybridní obchodní, s část infr
 Zde je, jak Síťová architektura vypadá před převzetí služeb při selhání.
 
 - Aplikace virtuální počítače jsou hostované v Azure východní Asie.
--  Východní Asie má virtuální síť (**zdrojová virtuální síť**) s adres 10.1.0.0/16 místa.
-    - Východní Asie má úlohy rozdělit mezi třemi podsítěmi v **zdrojová virtuální síť**:
-        - **Podsíť 1**: 10.1.1.0/24
-        - **Podsíť 2**: 10.1.2.0/24,
-        - **Podsíť 3**: 10.1.3.0/24utilizing virtuální sítě Azure s adres 10.1.0.0/16 místa. Tato virtuální síť jmenuje **zdrojová virtuální síť**
- - Oblast sekundární (cíl) je Asie – jihovýchod Azure:
-    - Jihovýchodní Asie má virtuální síť (**virtuální sítě pro zotavení**) stejný jako **zdrojová virtuální síť**.
+- Východní Asie má virtuální síť (**zdrojová virtuální síť**) s adres 10.1.0.0/16 místa.
+  - Východní Asie má úlohy rozdělit mezi třemi podsítěmi v **zdrojová virtuální síť**:
+    - **Podsíť 1**: 10.1.1.0/24
+    - **Podsíť 2**: 10.1.2.0/24,
+    - **Podsíť 3**: 10.1.3.0/24utilizing virtuální sítě Azure s adres 10.1.0.0/16 místa. Tato virtuální síť jmenuje **zdrojová virtuální síť**
+      - Oblast sekundární (cíl) je Asie – jihovýchod Azure:
+  - Jihovýchodní Asie má virtuální síť (**virtuální sítě pro zotavení**) stejný jako **zdrojová virtuální síť**.
 - Virtuální počítače ve východní Asie jsou připojené k místnímu datovému centru s využitím Azure ExpressRoute nebo web na serveru VPN.
 - Pokud chcete snížit RTO, zřídí společnosti B brány na virtuální síť pro obnovení v Azure jihovýchodní Asie před převzetí služeb při selhání.
 - Společnost B přiřadí/ověří cílové IP adresy pro replikované virtuální počítače. Cílová IP adresa je stejná jako zdrojová IP adresa pro každý virtuální počítač.

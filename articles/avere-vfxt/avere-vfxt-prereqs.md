@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0fedfdbb04dd7aa3ff077c13653a22ed710aff9f
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 5642f3acd108d0d3f504fc132522936d1b5ab870
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405313"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082581"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Příprava k vytvoření Avere vFXT
 
@@ -173,7 +173,7 @@ Vytvoření koncového bodu služby úložiště na webu Azure Portal.
 1. Nechte službu jako ``Microsoft.Storage`` a zvolte podsíť clusteru.
 1. V dolní části, klikněte na tlačítko **přidat**.
 
-  ![Azure portal – snímek obrazovky s poznámkami postup vytvoření koncového bodu služby](media/avere-vfxt-service-endpoint.png)
+   ![Azure portal – snímek obrazovky s poznámkami postup vytvoření koncového bodu služby](media/avere-vfxt-service-endpoint.png)
 
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>Další krok: Vytvoření clusteru vFXT

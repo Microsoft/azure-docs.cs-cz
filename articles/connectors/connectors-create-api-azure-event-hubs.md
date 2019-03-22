@@ -1,35 +1,34 @@
 ---
-title: Připojení k Azure Event Hubs – Azure Logic Apps | Dokumentace Microsoftu
+title: Připojení k Azure Event Hubs – Azure Logic Apps
 description: Správa a sledování událostí pomocí Azure Event Hubs a Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 05/21/2018
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.topic: article
+ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: a91daf08a56470e4d1e112e37b51150c2c5f00ef
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a59f21478f85f238d91c01faed44d8e49cb15f0a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230314"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310791"
 ---
-# <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Monitorování, příjem a odesílání událostí pomocí Azure Event Hubs a Azure Logic Apps 
+# <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Monitorování, příjem a odesílání událostí pomocí Azure Event Hubs a Azure Logic Apps
 
-Tento článek popisuje, jak můžete monitorovat a spravovat událostí odeslaných do [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) z uvnitř aplikace logiky pomocí konektoru služby Azure Event Hubs. Tímto způsobem můžete vytvořit aplikace logiky pro automatizaci úloh a pracovních postupů pro kontrolu, odesílání a přijímání událostí z centra událostí. 
+Tento článek popisuje, jak můžete monitorovat a spravovat událostí odeslaných do [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) z uvnitř aplikace logiky pomocí konektoru služby Azure Event Hubs. Tímto způsobem můžete vytvořit aplikace logiky pro automatizaci úloh a pracovních postupů pro kontrolu, odesílání a přijímání událostí z centra událostí.
 
-Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 Technické informace specifické pro konektor najdete v tématu <a href="https://docs.microsoft.com/connectors/eventhubs/" target="blank">referenční informace ke konektorům Azure Event Hubs</a>.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Oboru názvů Azure Event Hubs a centra událostí](../event-hubs/event-hubs-create.md)
 
-* Aplikace logiky, ve které chcete přístup k Centru událostí. Spuštění aplikace logiky se aktivační událost Azure Event Hubs, je nutné [prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* Aplikace logiky, ve které chcete přístup k Centru událostí. Spuštění aplikace logiky se aktivační událost Azure Event Hubs, je nutné [prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="permissions-connection-string"></a>
 
@@ -37,15 +36,15 @@ Technické informace specifické pro konektor najdete v tématu <a href="https:/
 
 Pro aplikace logiky pro přístup k Centru událostí zkontrolujte svoje oprávnění a získání připojovacího řetězce pro váš obor názvů služby Event Hubs.
 
-1. Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Portal</a>. 
+1. Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
 2. Přejděte do služby Event Hubs *obor názvů*, nikoli konkrétní Centrum událostí. Na stránce obor názvů v rámci **nastavení**, zvolte **zásady sdíleného přístupu**. V části **deklarace identity**, zkontrolujte, jestli máte **spravovat** oprávnění pro tento obor názvů.
 
    ![Spravovat oprávnění pro váš obor názvů centra událostí](./media/connectors-create-api-azure-event-hubs/event-hubs-namespace.png)
 
-3. Pokud chcete zadat informace o připojení později ručně, získání připojovacího řetězce pro váš obor názvů služby Event Hubs. 
+3. Pokud chcete zadat informace o připojení později ručně, získání připojovacího řetězce pro váš obor názvů služby Event Hubs.
 
-   1. V části **zásady**, zvolte **RootManageSharedAccessKey**. 
+   1. V části **zásady**, zvolte **RootManageSharedAccessKey**.
 
    2. Najdete váš primární klíč připojovacího řetězce. Klikněte na tlačítko kopírování a uložení připojovacího řetězce pro pozdější použití.
 
@@ -62,13 +61,14 @@ Pro aplikace logiky pro přístup k Centru událostí zkontrolujte svoje oprávn
 
 V Azure Logic Apps, musí začínat každá aplikace logiky [aktivační událost](../logic-apps/logic-apps-overview.md#logic-app-concepts), který se aktivuje při určité události nebo když je splněna konkrétní podmínka. Pokaždé, když se trigger aktivuje, modul Logic Apps vytvoří instanci aplikace logiky a spustí pracovní postup vaší aplikace.
 
-Tento příklad ukazuje, jak spustit pracovní postup aplikace logiky odeslání nové události do vašeho centra událostí. 
+Tento příklad ukazuje, jak spustit pracovní postup aplikace logiky odeslání nové události do vašeho centra událostí.
 
 1. Webu Azure portal nebo Visual Studio vytvořte prázdné aplikace logiky, otevře se návrhář pro Logic Apps. Tento příklad používá na webu Azure portal.
 
-2. Do vyhledávacího pole zadejte jako filtr "event hubs". Ze seznamu triggerů vyberte trigger, který chcete. 
+2. Do vyhledávacího pole zadejte jako filtr "event hubs". Ze seznamu triggerů vyberte trigger, který chcete.
 
-   Tento příklad používá tento trigger: 
+   V tomto příkladu této aktivační události:
+
    **Event Hubs – když jsou události dostupné v Centru událostí**
 
    ![Vybrat trigger](./media/connectors-create-api-azure-event-hubs/find-event-hubs-trigger.png)
@@ -80,9 +80,9 @@ Tento příklad ukazuje, jak spustit pracovní postup aplikace logiky odeslání
       ![Určete Centrum událostí nebo skupina uživatelů](./media/connectors-create-api-azure-event-hubs/select-event-hub.png)
 
    2. Vyberte interval a frekvenci jak často chcete, aby aktivační událost ke kontrole centra událostí.
- 
+
    3. Chcete-li volitelně vyberte některé možnosti pokročilé triggeru, zvolte **zobrazit pokročilé možnosti**.
-   
+
       ![Pokročilá nastavení aktivační události](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger-advanced.png)
 
       | Vlastnost | Podrobnosti | 
@@ -108,7 +108,7 @@ Tento příklad ukazuje, jak spustit pracovní postup aplikace logiky odeslání
 
 ## <a name="add-an-event-hubs-action"></a>Přidání akce služby Event Hubs
 
-V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concepts) je krok v pracovním postupu, který následuje aktivační události nebo jiné akce. V tomto příkladu aplikace logiky začíná triggerem Event Hubs, která vyhledává nové události do vašeho centra událostí. 
+V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concepts) je krok v pracovním postupu, který následuje aktivační události nebo jiné akce. V tomto příkladu aplikace logiky začíná triggerem Event Hubs, která vyhledává nové události do vašeho centra událostí.
 
 1. Webu Azure portal nebo Visual Studio otevřete aplikaci logiky v návrháři pro Logic Apps. Tento příklad používá na webu Azure portal.
 
@@ -118,7 +118,7 @@ V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concept
    Vyberte znaménko plus (**+**), který se zobrazí a klikněte na tlačítko **přidat akci**.
 
 3. Do vyhledávacího pole zadejte jako filtr "event hubs".
-Ze seznamu akcí vyberte požadovanou akci. 
+Ze seznamu akcí vyberte požadovanou akci.
 
    V tomto příkladu vyberte tuto akci: **Event Hubs – odeslání události**
 
@@ -126,14 +126,14 @@ Ze seznamu akcí vyberte požadovanou akci.
 
 4. Pokud se zobrazí výzva k připojení podrobnosti [vytvořit připojení služby Event Hubs](#create-connection). Nebo pokud už připojení existuje, uveďte potřebné informace pro akci.
 
-   | Vlastnost | Požaduje se | Popis | 
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
-   | Název centra událostí | Ano | Vyberte Centrum událostí, ve které chcete odesílat události | 
-   | Událost obsahu | Ne | Obsah události, kterou chcete odeslat | 
-   | Vlastnosti | Ne | Vlastnosti aplikace a hodnoty k odeslání | 
-   |||| 
+   | Název centra událostí | Ano | Vyberte Centrum událostí, ve které chcete odesílat události |
+   | Událost obsahu | Ne | Obsah události, kterou chcete odeslat |
+   | Vlastnosti | Ne | Vlastnosti aplikace a hodnoty k odeslání |
+   ||||
 
-   Příklad: 
+   Příklad:
 
    ![Vyberte název centra událostí a poskytování obsahu události](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
@@ -147,10 +147,10 @@ Ze seznamu akcí vyberte požadovanou akci.
 
 1. Po zobrazení výzvy pro informace o připojení, uveďte následující údaje:
 
-   | Vlastnost | Požaduje se | Hodnota | Popis | 
+   | Vlastnost | Požaduje se | Value | Popis |
    |----------|----------|-------|-------------|
    | Název připojení | Ano | <*Název připojení*> | Název pro vytvoření připojení |
-   | Obor názvů služby Event Hubs | Ano | <*obor názvů Event hubs*> | Vyberte obor názvů služby Event Hubs, kterou chcete použít. | 
+   | Obor názvů služby Event Hubs | Ano | <*event-hubs-namespace*> | Vyberte obor názvů služby Event Hubs, kterou chcete použít. |
    |||||  
 
    Příklad:
@@ -168,7 +168,7 @@ Ze seznamu akcí vyberte požadovanou akci.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete v článku [konektoru referenční stránce](/connectors/eventhubs/). 
+Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete v článku [konektoru referenční stránce](/connectors/eventhubs/).
 
 ## <a name="get-support"></a>Získat podporu
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 09084f71eda611c4b638a339d0d837e77e2639b9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 92a7c1a45655f8804aa1f81b1a77ebf7cd5197e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432307"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122161"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Sledování výkonu služby Azure App Service
 V [webu Azure portal](https://portal.azure.com) můžete nastavit application performance monitoring pro aplikace pro webové aplikace, back-endů mobilních a API apps v [služby Azure App Service](../../app-service/overview.md). [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) využívá vaši aplikaci k odesílání telemetrických dat o jejích aktivitách do služby Application Insights, kde se ukládají a analyzují. Tam lze grafy metrik a vyhledávací nástroje použít při řešení problémů s diagnostikou, při zvyšování výkonu a při vyhodnocování využití.
@@ -38,25 +38,25 @@ Pokud aktuálně používáte službu app service v Azure, které již nabízí 
 
    * Můžete vytvořit nový prostředek, pokud jste už nastavili prostředek Application Insights pro tuto aplikaci. 
 
-    > [!NOTE]
-    > Po kliknutí na **OK** k vytvoření nového prostředku, zobrazí se výzva k **použít nastavení monitorování**. Výběr **pokračovat** propojí nový prostředek Application Insights do vaší služby app service, to může také **aktivujte restartování služby app service**. 
+     > [!NOTE]
+     > Po kliknutí na **OK** k vytvoření nového prostředku, zobrazí se výzva k **použít nastavení monitorování**. Výběr **pokračovat** propojí nový prostředek Application Insights do vaší služby app service, to může také **aktivujte restartování služby app service**. 
 
-    ![Používejte webovou aplikaci.](./media/azure-web-apps/create-resource.png)
+     ![Používejte webovou aplikaci.](./media/azure-web-apps/create-resource.png)
 
 2. Po určení, který prostředek se má použít, můžete nastavit, jak chcete application insights shromažďovat data pro jednotlivé platformy pro vaši aplikaci. Monitorování aplikace ASP.NET je ve výchozím nastavení se dvou různých úrovních kolekce.
 
     ![Vyberte možnosti jednotlivé platformy](./media/azure-web-apps/choose-options-new.png)
 
-    * .NET **základní kolekce** úroveň nabízí základní možnosti APM jednou instancí.
+   * .NET **základní kolekce** úroveň nabízí základní možnosti APM jednou instancí.
     
-    * .NET **doporučuje kolekce** úroveň:
-        * Přidá trendy využití procesoru, paměti a vstupně-výstupních operací.
-        * Koreluje mikroslužby napříč hranicemi požadavku nebo závislost.
-        * Shromažďuje trendy využití a umožňuje spojitost s míněním z výsledky dostupnosti transakcí.
-        * Shromažďuje výjimky ošetřena hostitelský proces.
-        * Při vzorkování se používá, zvyšují přesnost metriky APM v zatížení.
+   * .NET **doporučuje kolekce** úroveň:
+       * Přidá trendy využití procesoru, paměti a vstupně-výstupních operací.
+       * Koreluje mikroslužby napříč hranicemi požadavku nebo závislost.
+       * Shromažďuje trendy využití a umožňuje spojitost s míněním z výsledky dostupnosti transakcí.
+       * Shromažďuje výjimky ošetřena hostitelský proces.
+       * Při vzorkování se používá, zvyšují přesnost metriky APM v zatížení.
     
-    .NET core nabízí **doporučuje kolekce** nebo **zakázané** pro .NET Core 2.0 a 2.1.
+     .NET core nabízí **doporučuje kolekce** nebo **zakázané** pro .NET Core 2.0 a 2.1.
 
 3. **Instrumentace vaší služby app service** po instalaci Application Insights.
 
@@ -67,9 +67,9 @@ Pokud aktuálně používáte službu app service v Azure, které již nabízí 
    * Klikněte na Nastavení > Nastavení aplikace.
    * V části Nastavení aplikace přidejte novou dvojici klíče a hodnoty:
 
-    Klíč: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Klíč: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-    Hodnota: `true`
+     Hodnota: `true`
    * Kliknutím na **Uložit** uložte nastavení a kliknutím na **Restartovat** restartujte aplikaci.
 
 4. Prozkoumejte data monitorování vaší aplikace tak, že vyberete **nastavení** > **Application Insights** > **zobrazit více v Application Insights**.

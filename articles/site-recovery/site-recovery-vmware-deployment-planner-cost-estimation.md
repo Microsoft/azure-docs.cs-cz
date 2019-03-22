@@ -5,18 +5,26 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 3/14/2019
 ms.author: mayg
-ms.openlocfilehash: d1e406567b5f56f6ad08e4d276202ebf43d92534
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 8a36a80903a47bb4163666baf86ed8dac13a00de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321482"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093833"
 ---
 # <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Zkontrolujte sestavu odhadu nákladů v Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure
 
 Sestava plánovače nasazení obsahuje souhrn odhadu nákladů na listech [Recommendations](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) (Doporučení) a podrobnou analýzu nákladů na listu Cost Estimation (Odhad nákladů). Obsahuje podrobnou analýzu nákladů na virtuální počítač. 
+
+>[!Note]
+>Aktuální verze nástroje plánovače nasazení neposkytuje odhad nákladů pro virtuální počítače, které se replikují do Managed Disks.
+>* Odhady nákladů zotavení jsou stejné pro účty úložiště a spravované disky, při použití spravovaných disků parametr je nastaven na hodnotu Ano, v okně "Výpočty a síť".
+>* Získat přibližné roční odhad nákladů pro replikaci, proveďte následující nastavení dočasné na **odhadu nákladů** list:
+>    * Nastavte parametr "Cost duration" **nastavení** tabulky "Rok"
+>    * V **Detailed cost analysis** tabulky, nastavte na 12 sloupců "Number of DR-Drills in a year" a "Each DR-Drill duration (dny)" na 30 
+>    * Náklady na replikaci bude vypadat podobně jako náklady na vložené náklady na úložiště sloupce "R" tj zotavení po Havárii za rok v **DR-Drill cost za rok** dílčí části.
 
 ### <a name="cost-estimation-summary"></a>Souhrn odhadu nákladů 
 Graf zobrazuje přehled odhadovaných celkových nákladů na zotavení po havárii do Azure ve zvolené cílové oblasti a měnu, kterou jste zadali pro generování sestav.
@@ -106,9 +114,9 @@ Ruční přidání virtuálních počítačů:
 * Data redundancy 
 * Zvýhodněné hybridní využití Azure
 
-3.  Pokud chcete použít stejnou hodnotu pro všechny virtuální počítače v tabulce, klikněte na tlačítko Apply to all (Použít u všech) pro sloupce DR-Drills in a year, Each DR-Drill duration (Days), Data redundancy a Azure Hybrid Use Benefit.
+1. Pokud chcete použít stejnou hodnotu pro všechny virtuální počítače v tabulce, klikněte na tlačítko Apply to all (Použít u všech) pro sloupce DR-Drills in a year, Each DR-Drill duration (Days), Data redundancy a Azure Hybrid Use Benefit.
 
-4.  Kliknutím na Re-calculate cost (Přepočítat náklady) aktualizujte náklady.
+1. Kliknutím na Re-calculate cost (Přepočítat náklady) aktualizujte náklady.
 
 **Název virtuálního počítače**: Název virtuálního počítače.
 

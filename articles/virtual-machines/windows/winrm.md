@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 77b575de3a84d582c11fb31952120e1079e23ffb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 89739aa51748e7bc69fc42b8b745994bbe50e39d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091099"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309789"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Nastavení přístupu WinRM pro virtuální počítače v Azure Resource Manageru
 
@@ -83,7 +83,7 @@ Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretV
 Zprostředkovateli prostředků Microsoft.Compute. adresa URL tajného klíče do služby Key Vault musí při zřizování virtuálního počítače. To umožňuje poskytovateli prostředků Microsoft.Compute ke stažení tajný kód a vytvořit ekvivalentní certifikát na virtuálním počítači.
 
 > [!NOTE]
-> Adresa URL tajného klíče musí obsahovat verzi také. Příklad adresy URL vypadá jako níže https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> Adresa URL tajného klíče musí obsahovat verzi také. Příklad adresa URL vypadá jako níže protokol https:\//contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 #### <a name="templates"></a>Šablony
 Můžete získat odkaz na adresu URL pomocí šablony níže uvedeného kódu

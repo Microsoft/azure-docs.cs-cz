@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: 91cabd6601ca8d0c0eabfdb5726d4bd6b37492a6
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: dc84d5850656a0898fba328b652d86f3d8995bef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54216140"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118370"
 ---
 # <a name="use-azure-data-box-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Odešlete data do příslušné úrovně objektů blob Azure Storage pomocí Azure Data Box
 
@@ -109,8 +109,8 @@ Následující kroky popisují, jak můžete nastavit úroveň objektu blob do a
     >> }
     PS C:\WINDOWS\system32>
     ```
-> [!TIP]
-> Pokud chcete data pro archivaci na ingestování, nastavte výchozí úroveň účtu na aktivní. Pokud je výchozí vrstvou Cool, pak je penále 30denní předčasné odstranění Pokud data přesune do archivní úrovně okamžitě.
+   > [!TIP]
+   > Pokud chcete data pro archivaci na ingestování, nastavte výchozí úroveň účtu na aktivní. Pokud je výchozí vrstvou Cool, pak je penále 30denní předčasné odstranění Pokud data přesune do archivní úrovně okamžitě.
 
 ## <a name="next-steps"></a>Další postup
 
