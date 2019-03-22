@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 65625fcc12143a8ea53ff2ab7d1dfcb43a0def8d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 92fc63ed45b6f1ea377138744d19137645c916e7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992139"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57882720"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Jak vytvořit využívající Smooth Streaming aplikace Windows Store  
 
-Technologie Smooth Streaming klienta SDK pro Windows 8 umožňuje vývojářům vytvářet aplikace pro Windows Store, které můžete přehrát na vyžádání i živé vysílání funkce Smooth Streaming obsah. Kromě základních přehrávání obsah Smooth Streaming, sada SDK poskytuje také bohaté funkce, jako je ochrana Microsoft PlayReady, omezení úrovně kvality Live DVR, zvukový datový proud přepínání, poslouchání aktualizace stavu (jako jsou například změny úrovně kvality) a chybové události a tak dále. Další informace o podporovaných funkcích najdete v tématu [poznámky k verzi](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes). Další informace najdete v tématu [Player Framework pro systém Windows 8](http://playerframework.codeplex.com/). 
+Technologie Smooth Streaming klienta SDK pro Windows 8 umožňuje vývojářům vytvářet aplikace pro Windows Store, které můžete přehrát na vyžádání i živé vysílání funkce Smooth Streaming obsah. Kromě základních přehrávání obsah Smooth Streaming, sada SDK poskytuje také bohaté funkce, jako je ochrana Microsoft PlayReady, omezení úrovně kvality Live DVR, zvukový datový proud přepínání, poslouchání aktualizace stavu (jako jsou například změny úrovně kvality) a chybové události a tak dále. Další informace o podporovaných funkcích najdete v tématu [poznámky k verzi](https://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes). Další informace najdete v tématu [Player Framework pro systém Windows 8](https://playerframework.codeplex.com/). 
 
 Tento kurz obsahuje čtyři lekce:
 
@@ -38,7 +38,7 @@ Tento kurz obsahuje čtyři lekce:
 
 * Windows 8, 32bitový nebo 64bitové.
 * Verzí sady Visual Studio 2012 do 2015.
-* [Microsoft Smooth Streaming Klientská sada SDK pro Windows 8](https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home).
+* [Microsoft Smooth Streaming Klientská sada SDK pro Windows 8](https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home).
 
 Dokončené řešení pro každá lekce si můžete stáhnout z ukázky kódu vývojáře MSDN (kód galerie): 
 
@@ -107,7 +107,7 @@ Po přidání odkazy, musíte vybrat cílovou platformu (x64 nebo x86), přidáv
 
          <StackPanel Name="spMediaControl" Grid.Row="1" Orientation="Horizontal">
             <TextBlock x:Name="tbSource" Text="Source :  " FontSize="16" FontWeight="Bold" VerticalAlignment="Center" />
-            <TextBox x:Name="txtMediaSource" Text="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest" FontSize="10" Width="700" Margin="0,4,0,10" />
+            <TextBox x:Name="txtMediaSource" Text="https://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest" FontSize="10" Width="700" Margin="0,4,0,10" />
             <Button x:Name="btnSetSource" Content="Set Source" Width="111" Height="43" Click="btnSetSource_Click"/>
             <Button x:Name="btnPlay" Content="Play" Width="111" Height="43" Click="btnPlay_Click"/>
             <Button x:Name="btnPause" Content="Pause"  Width="111" Height="43" Click="btnPause_Click"/>
@@ -203,7 +203,7 @@ V tomto souboru XAML jsou některé obslužné rutiny události související s 
          }
          # endregion
    ```
-Obslužná rutina události sliderProgress_PointerPressed je zde definované.  Existují další funguje chcete udělat, abyste získali, jak funguje, kterému se věnujeme v další lekci tohoto kurzu.
+   Obslužná rutina události sliderProgress_PointerPressed je zde definované.  Existují další funguje chcete udělat, abyste získali, jak funguje, kterému se věnujeme v další lekci tohoto kurzu.
 6. Stisknutím klávesy **CTRL + S** k uložení souboru.
 
 Dokončené souboru kódu by měl vypadat nějak takto:
@@ -807,7 +807,7 @@ Technologie Smooth Streaming je schopen ke streamování obsahu s více zvukové
             changeStreams(selectedStreams);
         }
    ```
-**Ke kompilaci a testování aplikace**
+   **Ke kompilaci a testování aplikace**
 
 1. Stisknutím klávesy **F6** ke kompilaci projektu. 
 2. Stisknutím klávesy **F5** spusťte aplikaci.
@@ -1009,7 +1009,7 @@ Prezentace technologie Smooth Streaming může obsahovat více videosoubory zak�
             changeStreams(selectedStreams);
          }
    ```
-**Ke kompilaci a testování aplikace**
+   **Ke kompilaci a testování aplikace**
 
 1. Stisknutím klávesy **F6** ke kompilaci projektu. 
 2. Stisknutím klávesy **F5** spusťte aplikaci.
@@ -1026,8 +1026,8 @@ Dokončili jste Lekce 4.  V této lekci se přidat funkci, která zvolte stop.
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="other-resources"></a>Další materiály:
-* [Jak vytvořit aplikaci pomocí pokročilých funkcí, technologie Smooth Streaming JavaScript systému Windows 8](http://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
-* [Technický přehled služby technologie Smooth Streaming](http://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview)
+* [Jak vytvořit aplikaci pomocí pokročilých funkcí, technologie Smooth Streaming JavaScript systému Windows 8](https://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
+* [Technický přehled služby technologie Smooth Streaming](https://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview)
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png

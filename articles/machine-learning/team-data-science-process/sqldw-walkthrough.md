@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8d9e59a11957e8d108ae86ebba157a06129efa58
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: adbf3e4fbc0f9d49458dadaebcdd2a090030654e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111539"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838880"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Vědecké zpracování týmových dat v akci: použití služby SQL Data Warehouse
-V tomto kurzu jsme vás provede procesem vytvoření a nasazení modelu strojového učení pomocí SQL Data Warehouse (SQL data Warehouse) veřejně dostupné datové sady – [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datové sady. Binární klasifikační model vytvořený předpovídá, zda tip platí pro cesty a které předpovědět distribuce pro tip částky zaplacené jsou popsány také pro víc tříd klasifikačních a regresních modelů.
+V tomto kurzu jsme vás provede procesem vytvoření a nasazení modelu strojového učení pomocí SQL Data Warehouse (SQL data Warehouse) veřejně dostupné datové sady – [cesty taxíkem NYC](https://www.andresmh.com/nyctaxitrips/) datové sady. Binární klasifikační model vytvořený předpovídá, zda tip platí pro cesty a které předpovědět distribuce pro tip částky zaplacené jsou popsány také pro víc tříd klasifikačních a regresních modelů.
 
 Následující postup [vědecké zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) pracovního postupu. Vám ukážeme, jak nastavit prostředí pro datové vědy jak načíst data do SQL data Warehouse a použití SQL data Warehouse nebo IPython Notebook pro zkoumání dat a inženýr funkce do modelu. Potom ukážeme, jak sestavit a nasadit model s využitím Azure Machine Learning.
 
@@ -881,7 +881,7 @@ Na rekapitulace, co jsme udělali v tomto kurzu návodu, vytvoříte Azure prost
 Tento ukázkový názorný postup a jeho doprovodném skripty a IPython notebook(s) sdílí Microsoft v rámci licence MIT. Zkontrolujte prosím soubor LICENSE.txt v adresáři ukázkového kódu na Githubu pro další podrobnosti.
 
 ## <a name="references"></a>Odkazy
-• [Stránce pro stažení cesty taxíkem NYC Andrés Monroy](http://www.andresmh.com/nyctaxitrips/) • [FOILing NYC Taxi Data o jízdách podle Chris Whong](http://chriswhong.com/open-data/foil_nyc_taxi/) • [NYC taxislužby a Limousine Komise výzkumu a statistiky](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+• [Stránce pro stažení cesty taxíkem NYC Andrés Monroy](https://www.andresmh.com/nyctaxitrips/) • [FOILing NYC Taxi Data o jízdách podle Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/) • [NYC taxislužby a Limousine Komise výzkumu a statistiky](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sqldw-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sqldw-walkthrough/sql-walkthrough_28_1.png

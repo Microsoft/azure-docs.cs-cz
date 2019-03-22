@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: 39bfea8e3b04be2a5444945356f2c487ea2423e3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0bdad2d59528775d23d882831cfdbdc09471e12e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443296"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109793"
 ---
 # <a name="get-started"></a>Rychlý start: Vytvoření veřejného load balanceru úrovně pomocí Azure Powershellu
 
@@ -295,18 +295,18 @@ Následujícím způsobem nainstalujte na obou back-endových virtuálních poč
 
 1. Získejte veřejnou IP adresu Load Balanceru. Pomocí rutiny `Get-AzPublicIPAddress` získejte veřejnou IP adresu Load Balanceru.
 
-  ```azurepowershell-interactive
+   ```azurepowershell-interactive
     Get-AzPublicIPAddress `
     -ResourceGroupName "myResourceGroupLB" `
     -Name "myPublicIP" | select IpAddress
-  ```
+   ```
 2. Vytvořte pomocí veřejné IP adresy z předchozího kroku připojení ke vzdálené ploše virtuálního počítače VM1. 
 
-  ```azurepowershell-interactive
+   ```azurepowershell-interactive
 
       mstsc /v:PublicIpAddress:4221  
   
-  ```
+   ```
 3. Zadáním přihlašovacích údajů pro virtuální počítač *VM1* spusťte relaci RDP.
 4. Spusťte na virtuálním počítači VM1 Windows PowerShell a pomocí následujících příkazů nainstalujte server služby IIS a aktualizujte výchozí soubor htm.
     ```azurepowershell-interactive

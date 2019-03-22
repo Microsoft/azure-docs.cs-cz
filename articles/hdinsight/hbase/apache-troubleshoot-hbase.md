@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 4dc50de7a97055e336627e34f747a17fcedc7e58
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 37a8882653ffede121d2e2cd3f3357741d8d641a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091541"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336419"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Řešení potíží s Apache HBase pomocí Azure HDInsight
 
@@ -344,7 +344,7 @@ Jedná se o známý problém službou HMaster. Úlohy po spuštění obecné clu
 
 ### <a name="issue"></a>Problém
 
-Selhání restartování na oblastním serveru může být bráněno následující osvědčené postupy. Doporučujeme, abyste při plánování restartování serverů oblasti HBase pozastavení úlohy heavy aktivity. Pokud aplikace i nadále připojit se servery pro oblast, když probíhá vypnutí, operace restartování serveru oblasti sníží se o několik minut. Je také vhodné nejprve vyprázdnit všechny tabulky. Referenční dokumentace o tom, jak vyprázdnění tabulky, najdete v části [HDInsight HBase: Jak vylepšit čas restartování clusteru Apache HBase ve vyčištění tabulek](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+Selhání restartování na oblastním serveru může být bráněno následující osvědčené postupy. Doporučujeme, abyste při plánování restartování serverů oblasti HBase pozastavení úlohy heavy aktivity. Pokud aplikace i nadále připojit se servery pro oblast, když probíhá vypnutí, operace restartování serveru oblasti sníží se o několik minut. Je také vhodné nejprve vyprázdnit všechny tabulky. Referenční dokumentace o tom, jak vyprázdnění tabulky, najdete v části [HDInsight HBase: Jak vylepšit čas restartování clusteru Apache HBase ve vyčištění tabulek](https://web.archive.org/web/20190112153155/ https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
 Pokud spustíte operace restartování na servery oblasti HBase v uživatelském rozhraní Apache Ambari, můžete okamžitě zjistit, že servery oblasti byl vypnut, ale není to hned restartovat. 
 

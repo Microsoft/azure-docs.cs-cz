@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f6e9641d106c40c061752b57744eda09aac157a5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: aad35aa7a958e8bdaf1479d1ffbbad5bf213d46a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821962"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339240"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Řešení potíží s Apache Sparku s využitím Azure HDInsight
 
@@ -23,7 +23,7 @@ Další informace o nejčastější problémy a jejich řešení při práci s [
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-Hodnoty konfigurace pro tento postup byly dříve nastavené v HDInsight. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu co způsobí, že výjimka OutofMemoryError aplikací Apache Spark. 
+Hodnoty konfigurace Spark můžete ladit vyhnout výjimku OutofMemoryError aplikací Apache Spark. Následující kroky ukazují výchozí konfigurační hodnoty Spark v Azure HDInsight: 
 
 1. Vyberte v seznamu clusterů **Spark2**.
 
@@ -85,8 +85,7 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Odeslání úlohy Apache Spark v clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
-
+[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Jak nakonfigurovat aplikaci Apache Sparku s využitím Poznámkový blok Jupyter v clusterech?
 
@@ -100,7 +99,7 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Odeslání úlohy Apache Spark v clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>Jak nakonfigurovat aplikaci Apache Spark pomocí Apache Livy v clusterech?
@@ -117,8 +116,7 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Odeslání úlohy Apache Spark v clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
-
+[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>Jak nakonfigurovat aplikaci s použitím skriptu spark-submit Apache Spark v clusterech?
 
@@ -134,7 +132,7 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Odeslání úlohy Apache Spark v clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
 ## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>Co způsobí, že výjimka OutofMemoryError aplikací Apache Spark?
@@ -205,12 +203,12 @@ Nejpravděpodobnější příčinou této výjimky je, že není dostatek pamět
     spark.yarn.driver.memoryOverhead (Example: 384m for 384MB) 
     ```
 
-    Pro výpočet celková paměť používanou všechny moduly provádění: 
+    Chcete-li vypočítat celkové paměti používané všechny moduly provádění: 
     
     ```apache
     spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
     ```
-   Pro výpočet celkové paměti používané ovladače:
+   Chcete-li vypočítat celkové paměti používané ovladače:
     
     ```apache
     spark.driver.memory + spark.yarn.driver.memoryOverhead
@@ -219,9 +217,8 @@ Nejpravděpodobnější příčinou této výjimky je, že není dostatek pamět
 ### <a name="additional-reading"></a>Další čtení
 
 - [Přehled správy paměti Apache Sparku](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [Ladit aplikace Apache Spark v clusteru služby HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
+- [Ladit aplikace Apache Spark v clusteru služby HDInsight](https://web.archive.org/web/20190112152909/ https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
 
 
 ### <a name="see-also"></a>Viz také
 [Řešení potíží pomocí Azure HDInsight](../../hdinsight/hdinsight-troubleshoot-guide.md)
-

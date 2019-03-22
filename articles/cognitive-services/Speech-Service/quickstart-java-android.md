@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 2ee5028e0766ec52c407bf0ef0e18885c11734d8
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 9458f052258993ee598ddfbca262faf8f6cb4ab9
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961041"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258543"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce Java v Androidu pomocí sadou SDK pro řeč
 
@@ -30,7 +30,7 @@ Sada Speech SDK je aktuálně kompatibilní se zařízeními s Androidem, která
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu potřebujete klíč předplatného služby Speech. Můžete ho získat zdarma. Podrobnosti najdete v článku [Vyzkoušejte si službu Speech zdarma](get-started.md).
+Klíč předplatného hlasové služby k dokončení tohoto rychlého startu potřebujete. Můžete ho získat zdarma. Zobrazit [hlasové služby si můžete vyzkoušet zdarma](get-started.md) podrobnosti.
 
 ## <a name="create-and-configure-a-project"></a>Vytvoření a konfigurace projektu
 
@@ -61,11 +61,11 @@ Android Studiu chvíli trvá, než nový projekt pro Android připraví. V dalš
 Aktuální verze sady Cognitive Services Speech SDK je `1.3.1`.
 
 Sadou SDK pro řeč pro Android je zabalena jako [AAR (knihovna pro Android)](https://developer.android.com/studio/projects/android-library), který obsahuje potřebné knihovny a požadovaná oprávnění pro Android.
-Je hostovaná v úložišti Maven na adrese https://csspeechstorage.blob.core.windows.net/maven/.
+Je hostován v úložiště Maven v protokolu https:\//csspeechstorage.blob.core.windows.net/maven/.
 
 Nastavte projekt tak, aby používal sadu Speech SDK. Výběrem příkazu **File (Soubor)** > **Project Structure (Struktura projektu)** na řádku nabídek Android Studia otevřete okno se strukturou projektu. V okně se strukturou projektu udělejte následující změny:
 
-1. V seznamu na levé straně okna vyberte **Project** (Projekt). Upravte nastavení **Default Library Repository** (Výchozí úložiště knihoven) připojením čárky a adresy URL úložiště Maven v jednoduchých uvozovkách. 'https://csspeechstorage.blob.core.windows.net/maven/'
+1. V seznamu na levé straně okna vyberte **Project** (Projekt). Upravte nastavení **Default Library Repository** (Výchozí úložiště knihoven) připojením čárky a adresy URL úložiště Maven v jednoduchých uvozovkách. 'https:\//csspeechstorage.blob.core.windows.net/maven/'
 
    ![Snímek obrazovky okna se strukturou projektu](media/sdk/qs-java-android-06-add-maven-repository.png)
 
@@ -137,7 +137,7 @@ Textové a grafické vyjádření uživatelském rozhraní by teď měl vypadat 
 
    ![Snímek obrazovky okna s výběrem cíle nasazení](media/sdk/qs-java-android-12-deploy.png)
 
-Stisknutím tlačítka v aplikaci spusťte rozpoznávání řeči. Následujících 15 sekund řeči v angličtině bude odesláno službě Speech a přepsáno. Výsledek se zobrazí v aplikaci pro Android a v okně logcat v Android Studiu.
+Stisknutím tlačítka v aplikaci spusťte rozpoznávání řeči. Další 15 sekund anglické řeči se odesílají do hlasové služby a převede. Výsledek se zobrazí v aplikaci pro Android a v okně logcat v Android Studiu.
 
 ![Snímek obrazovky aplikace pro Android](media/sdk/qs-java-android-13-gui-on-device.png)
 

@@ -4,30 +4,19 @@ description: Tento článek shrnuje běžné otázky při nastavování zotaven�
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.date: 12/12/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: bf7a8ea00fe94e6896c097b8e27c22c0831f71da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 2c1890570f153de68d187c37dc0a7bca156c2d47
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008650"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312049"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Nejčastější dotazy: Replikace z Azure do Azure
 
 Tento článek obsahuje odpovědi na běžné dotazy týkající se nasazení zotavení po havárii (DR) virtuálních počítačů Azure do jiné oblasti Azure pomocí Azure Site Recovery. Pokud po přečtení tohoto článku máte dotazy, zveřejněte na [fórum služby Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
-
-
-## <a name="in-this-article"></a>V tomto článku 
-1.  **[Obecné dotazy v Azure do Azure](#general)** 
-1.  **[Replikace](#replication)** 
-1.  **[Zásady replikace](#replication-policy)** 
-1.  **[Konzistence více virtuálních počítačů](#multi-vm-consistency)** 
-1.  **[Plán obnovení](#recovery-plan)** 
-1.  **[Opětovného nastavování ochrany a navrácení služeb po obnovení](#reprotection-and-failback)** 
-2.  **[Kapacita](#capacity)**
-1.  **[Zabezpečení](#security)** 
 
 
 ## <a name="general"></a>Obecné
@@ -136,7 +125,7 @@ První bod obnovení, který je generován má úplnou kopii. Všechny body obno
 ### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Zvýší náklady na úložiště prodloužení doby uchovávání bodů obnovení?
 Ano. Pokud zvýšíte dobu uchování 24 hodin na 72 hodin, Site Recovery se uloží body obnovení pro další 48 hodin. Další čas budou účtovat poplatky za úložiště. Například pokud bod obnovení jeden má rozdílové změny na 10 GB a cena za GB je 0.16 $ za měsíc, bude účtovat další poplatky $1.6 * 48 za měsíc.
 
-## <a name="multi-vm-consistency"></a>Konzistence více virtuálních počítačů 
+## <a name="multi-vm-consistency"></a>Konzistence vzhledem k více virtuálním počítačům 
 
 ### <a name="what-is-multi-vm-consistency"></a>Co je konzistence více virtuálních počítačů?
 Znamená to, a ujistěte se, že je bod obnovení konzistentní vzhledem k aplikacím na všech replikovaných virtuálních počítačů.
@@ -186,7 +175,7 @@ Můžete aktivovat převzetí služeb při selhání po výpadek. Site Recovery 
 ### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>Co je RTO převzetí služeb při selhání virtuálního počítače?
 Site Recovery obsahuje [RTO smlouva SLA na úrovni 2 hodiny](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). Ale ve většině případů, Site Recovery převzetí služeb při selhání virtuálních počítačů během několika minut. Můžete vypočítat RTO tak, že přejdete převzetí služeb při selhání úlohy, která ukazuje čas, jakou trvalo a zobrazte si virtuální počítač. Obnovení plánování RTO, přečtěte si níže část. 
 
-## <a name="recovery-plan"></a>Plán obnovení
+## <a name="recovery-plans"></a>Plány obnovení
 
 ### <a name="what-is-a-recovery-plan"></a>Co je plán obnovení?
 Plán obnovení ve službě Site Recovery orchestruje převzetí služeb při selhání virtuálních počítačů. Umožňuje konzistentně přesné, opakovatelných a automatizovaných provést obnovení. Plán obnovení řeší následující požadavky pro uživatele:

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3b46acfbfd77015193135d1a8c7646c331340145
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 96a334b4bd39513bfad128a8f1b59f319fef013e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200646"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317404"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>Instalace a využít Apache Giraph u clusterů HDInsight se systémem Windows
 
@@ -49,7 +49,7 @@ Giraph můžete nainstalovat na libovolný typ clusteru Azure HDInsight (Hadoop,
     |Vlastnost|Hodnota|  
     |---|---|  
     |Název|Zadejte název akce skriptu. Například **nainstalovat Giraph**|
-    |Identifikátor URI skriptu|Zadejte identifikátor URI (Uniform Resource), která je volána k přizpůsobení clusteru skriptu. Například *https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1*|
+    |Identifikátor URI skriptu|Zadejte identifikátor URI (Uniform Resource), která je volána k přizpůsobení clusteru skriptu. For example, *https:\//hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1*|
     |Typ uzlu|Zadejte uzly, na kterých běží přizpůsobení skriptu. Můžete zvolit **všechny uzly**, **hlavním uzlům pouze**, nebo **pracovní uzly pouze**.
     |Parametry|Zadejte parametry, pokud je to nutné skript. Skript, který chcete nainstalovat Giraph nevyžaduje žádné parametry, takže můžete nechat prázdné.|  
 

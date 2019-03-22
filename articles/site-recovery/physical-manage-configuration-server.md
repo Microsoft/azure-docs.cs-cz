@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 11b1b46e29ac9a4147c4dc319753edd0fadce8bc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 338c4a97bced7d9e524f96fcd82f19e5230ff143
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088906"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317336"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzického serveru
 
@@ -149,7 +149,7 @@ ProxyPassword="Password"
 Nastavení proxy serveru pro počítač serveru konfiguraci můžete upravit následujícím způsobem:
 
 1. Přihlaste se ke konfiguračnímu serveru.
-2. Spusťte cspsconfigtool.exe na pomocí zkratky vaše.
+2. Spusťte cspsconfigtool.exe pomocí zástupce na ploše.
 3. Klikněte na tlačítko **registrace trezoru** kartu.
 4. Stáhněte si nový soubor registrace trezoru z portálu a zadejte jako vstup do nástroje.
 
