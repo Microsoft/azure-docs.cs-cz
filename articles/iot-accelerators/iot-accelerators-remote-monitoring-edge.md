@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d28a88efc1a9f980d74737936bb960ba13573fa3
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675088"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58166748"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Kurz: Detekovat anomálie na hraničních zařízeních s akcelerátor řešení vzdálené monitorování
 
@@ -245,7 +245,7 @@ Dále vytvořte manifest nasazení IoT Edge, který definuje moduly, které chce
 
 1. Klikněte na tlačítko **ropy čerpadlo zařízení** nasazení a pak klikněte na tlačítko **IoT Edge stáhnout manifest**. Uložte soubor jako **ropy. čerpadlo device.json** do vhodného umístění na místním počítači. Tento soubor v další části tohoto kurzu potřebujete.
 
-Právě jste vytvořili manifest IoT Edge, který chcete importovat do řešení vzdáleného monitorování jako balíček. Vývojáři obvykle vytvoří IoT Edge, moduly a soubor manifestu.
+Právě jste vytvořili manifest IoT Edge pro import do řešení vzdáleného monitorování jako balíček. Vývojáři obvykle vytvoří IoT Edge, moduly a soubor manifestu.
 
 ## <a name="import-a-package"></a>Importovat balíček
 

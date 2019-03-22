@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a45ee818a444f31a8d2c20151f7e7f015e13cb3b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2b0b3921640ebf6ed21860cfac75ffca195096db
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440331"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57869740"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Kurz: Integrace Azure Active Directory s zástupce
 
@@ -106,6 +106,7 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí zástupce, proveďte 
     ![Náměstek domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
 
     a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+
     |  |
     | ----|
     | `https://<subdomain>.<region>.au.deputy.com` |
@@ -125,6 +126,7 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí zástupce, proveďte 
     | `https://<subdomain>.<region>.deputy.com` |
 
     b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    
     | |
     |----|
     | `https://<subdomain>.<region>.au.deputy.com/exec/devapp/samlacs` |
@@ -209,7 +211,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

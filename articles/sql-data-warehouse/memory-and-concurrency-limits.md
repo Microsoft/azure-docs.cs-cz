@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 10/04/2018
+ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: cc42a0289316116b843696c984f9fc3c2114eb6c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 141112b8b6b44706a750d8a97780e018d96a5006
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592889"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890783"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Omezení paměti a souběžnosti pro službu Azure SQL Data Warehouse
 Zobrazení omezení paměti a souběžnosti přidělené pro různé úrovně výkonu a třídy prostředků ve službě Azure SQL Data Warehouse. Další informace a použít tyto možnosti pro váš plán úloh správy najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). 
@@ -70,7 +70,7 @@ Maximální DWU Gen2 je DW30000c, který má 60 výpočetních uzlů a k jednomu
 | DW6000            | 60            | 1                              | 1440                           |
 
 ## <a name="concurrency-maximums"></a>Maximální hodnoty souběžnosti
-Zajistit, že každý dotaz nemá dostatek prostředků k úspěšnému provedení SQL datový sklad sleduje využití prostředků přiřazením slotů souběžnosti každý dotaz. Systém vloží dotazy do fronty, kde počkat do dostatek [slotů souběžnosti](resource-classes-for-workload-management.md#concurrency-slots) jsou k dispozici. Sloty souběžnosti taky určit stanovení procesoru. Další informace najdete v tématu [analýza úloh](analyze-your-workload.md)
+Zajistit, že každý dotaz nemá dostatek prostředků k úspěšnému provedení SQL datový sklad sleduje využití prostředků přiřazením slotů souběžnosti každý dotaz. Systém zařadí do fronty na základě důležitosti a slotů souběžnosti dotazy. Dotazy čekat ve frontě, dokud nejsou k dispozici dostatek slotů souběžnosti. [Důležitost](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) a slotů souběžnosti určit priority procesoru. Další informace najdete v tématu [analýza úloh](analyze-your-workload.md)
 
 ### <a name="gen2"></a>Gen2
  

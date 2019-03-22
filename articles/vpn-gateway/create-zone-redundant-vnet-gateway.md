@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand how to create zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 03/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: af72b0255c8e01398048f075134efb452f28b81e
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 00c50f95324e18f738740a9bec572ca676ab9165
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417563"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010607"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Vytvoření zónově redundantní virtuální síťová brána v zónách dostupnosti Azure
 
@@ -154,7 +154,7 @@ Ano, můžete na webu Azure portal k nasazení nové SKU. Nicméně zobrazí se 
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Které oblasti jsou k dispozici pro mě nejlepší používat na nové SKU?
 
-Nové SKU jsou k dispozici v oblasti Azure, které mají zóny dostupnosti Azure – USA (střed), Francie – střed, Severní Evropa, západní Evropa a oblasti západní USA 2. Od této chvíle jsme zpřístupníte zónově redundantní brány je v jiných veřejných oblastech Azure.
+Zobrazit [zóny dostupnosti](../availability-zones/az-overview.md#regions-that-support-availability-zones) nejnovější seznam dostupných oblastí.
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Je možné změnit/migrace a upgrade mé existující brány virtuální sítě k bránám zónové a zónově redundantní?
 

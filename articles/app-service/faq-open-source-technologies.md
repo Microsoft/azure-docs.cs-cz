@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 07912dab52cb0569428d070282551eebbdb1c7bc
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7831e5e989835b2c9432dbd61a242584a7b6244d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191441"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082938"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Technologie Open source nejčastější dotazy k Web Apps v Azure
 
@@ -44,10 +44,10 @@ Zapnutí protokolování PHP:
 9. Vyberte **Uložit**.
 10. Vyberte ikonu tužky vedle **wp config.php**.
 11. Změní celý text na následující kód:
-   ```php
-   //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
-   //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
-   ```
+    ```php
+    //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
+    //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
+    ```
 12. Na webu Azure Portal, v nabídce webové aplikace restartujte webovou aplikaci.
 
 Další informace najdete v tématu [protokoly chyb pro WordPress povolit](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
@@ -59,31 +59,31 @@ Další informace najdete v tématu [protokoly chyb pro WordPress povolit](https
 
 Pokud chcete změnit verzi aplikace Node.js, můžete použít jednu z následujících možností:
 
-*   Na webu Azure Portal, použijte **nastavení aplikace**.
-    1. Na webu Azure Portal přejděte do své webové aplikace.
-    2. Na **nastavení** okně vyberte **nastavení aplikace**.
-    3. V **nastavení aplikace**, můžete zahrnout WEBSITE_NODE_DEFAULT_VERSION jako klíči a verzi Node.js chcete použít jako hodnotu.
-    4. Přejděte k vaší [konzola Kudu](https://*yourwebsitename*.scm.azurewebsites.net).
-    5. Pokud chcete zkontrolovat verze Node.js, zadejte následující příkaz:  
-   ```
-   node -v
-   ```
-*   Upravte soubor iisnode.yml poskytovaný rozhraním. Změna verze Node.js v souboru iisnode.yml poskytovaný rozhraním nastaví běhové prostředí pouze při, jemuž modul iisnode používá. Vaše Kudu cmd a dalšími lidmi dál používat verze Node.js, která je nastavena v **nastavení aplikace** na webu Azure Portal.
+* Na webu Azure Portal, použijte **nastavení aplikace**.
+  1. Na webu Azure Portal přejděte do své webové aplikace.
+  2. Na **nastavení** okně vyberte **nastavení aplikace**.
+  3. V **nastavení aplikace**, můžete zahrnout WEBSITE_NODE_DEFAULT_VERSION jako klíči a verzi Node.js chcete použít jako hodnotu.
+  4. Přejděte k vaší [konzola Kudu](https://*yourwebsitename*.scm.azurewebsites.net).
+  5. Pokud chcete zkontrolovat verze Node.js, zadejte následující příkaz:  
+     ```
+     node -v
+     ```
+* Upravte soubor iisnode.yml poskytovaný rozhraním. Změna verze Node.js v souboru iisnode.yml poskytovaný rozhraním nastaví běhové prostředí pouze při, jemuž modul iisnode používá. Vaše Kudu cmd a dalšími lidmi dál používat verze Node.js, která je nastavena v **nastavení aplikace** na webu Azure Portal.
 
-    Nastavit soubor iisnode.yml ručně, vytvořte soubor iisnode.yml v kořenové složce aplikace. V souboru přidejte následující řádek:
-   ```yml
-   nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
-   ```
+  Nastavit soubor iisnode.yml ručně, vytvořte soubor iisnode.yml v kořenové složce aplikace. V souboru přidejte následující řádek:
+  ```yml
+  nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
+  ```
    
-*   Nastavte soubor iisnode.yml poskytovaný rozhraním prostřednictvím souboru package.json během nasazení ovládacího prvku zdroje.
-    Proces nasazení Azure zdrojového ovládacího prvku zahrnuje následující kroky:
-    1. Obsah přesune do webové aplikace Azure.
-    2. Vytvoří výchozí skript nasazení, pokud není k dispozici (deploy.cmd, .deployment souborů) v kořenové složce webové aplikace.
-    3. Spustí skript nasazení, ve kterém se vytvoří soubor iisnode.yml poskytovaný rozhraním Pokud zmíníte verze Node.js v souboru package.json > modul `"engines": {"node": "5.9.1","npm": "3.7.3"}`
-    4. Soubor iisnode.yml poskytovaný rozhraním má následující řádek kódu:
-        ```yml
-        nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
-        ```
+* Nastavte soubor iisnode.yml poskytovaný rozhraním prostřednictvím souboru package.json během nasazení ovládacího prvku zdroje.
+  Proces nasazení Azure zdrojového ovládacího prvku zahrnuje následující kroky:
+  1. Obsah přesune do webové aplikace Azure.
+  2. Vytvoří výchozí skript nasazení, pokud není k dispozici (deploy.cmd, .deployment souborů) v kořenové složce webové aplikace.
+  3. Spustí skript nasazení, ve kterém se vytvoří soubor iisnode.yml poskytovaný rozhraním Pokud zmíníte verze Node.js v souboru package.json > modul `"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  4. Soubor iisnode.yml poskytovaný rozhraním má následující řádek kódu:
+      ```yml
+      nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
+      ```
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>Zobrazí zpráva "Chyba při navazování připojení k databázi" ve své aplikaci WordPress, který je hostovaný ve službě App Service. Jak to můžu vyřešit?
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0a875b69a10f6305b4ffe32b63d3db5b508faf01
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: a3124ca2f163291d266fba77255d2ee98d30fd23
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639720"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888804"
 ---
 # <a name="create-virtual-machine-offer"></a>Vytvoření nabídky virtuálních počítačů
 
@@ -40,7 +40,7 @@ kde:
 
 ## <a name="new-offer-form"></a>Formulář nové nabídky
 
-Jednou vaše Přihlaste se [portál partnerů cloudu](http://cloudpartner.azure.com/), klikněte na tlačítko **+ nová nabídka** položka na levém řádku nabídek. V nabídce výsledný klikněte na **virtuálních počítačů** zobrazíte **nová nabídka** formuláře a zahájit proces definice prostředků pro nové nabídky virtuálních počítačů. 
+Jednou vaše Přihlaste se [portál partnerů cloudu](https://cloudpartner.azure.com/), klikněte na tlačítko **+ nová nabídka** položka na levém řádku nabídek. V nabídce výsledný klikněte na **virtuálních počítačů** zobrazíte **nová nabídka** formuláře a zahájit proces definice prostředků pro nové nabídky virtuálních počítačů. 
 <!-- not all publishers see corevm or azure apps test, you need to be whitelisted to see them. we should hide those in these images. -->
 
 ![Výběr nového virtuálního počítače nabídka uživatelského rozhraní](./media/publishvm_003.png)
@@ -55,6 +55,6 @@ Následující témata v této části odráží karet **nová nabídka** strán
 
 - [Karta Nastavení nabídky](./cpp-offer-settings-tab.md)
 - [Karta Skladové položky](./cpp-skus-tab.md)
-- [Karta testu jednotky](./cpp-test-drive-tab.md)
+- [Karta Testovací verze](./cpp-test-drive-tab.md)
 - [Karta Marketplace](./cpp-marketplace-tab.md)
 - [Karta Podpora](./cpp-support-tab.md)

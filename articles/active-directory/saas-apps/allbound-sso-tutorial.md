@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 140c178e8bbc0417f48283e0de1728284b2b6f6d
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: c8f06fa6d387cfb8ec01437e6a6aa9925907a45b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409614"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904520"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním Allbound
 
@@ -155,7 +155,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

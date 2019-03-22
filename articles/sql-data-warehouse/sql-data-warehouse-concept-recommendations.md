@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 11/05/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5588d2bd6cf2098d8744479c2bf2d308c9bf8f0d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b275f23209979e1a8068ecd99465f7b52392bc6c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460433"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082904"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>Doporučení pro SQL Data Warehouse
 
@@ -63,4 +63,3 @@ Aktuálně služby Advisor zobrazí pouze maximálně čtyři replikované tabul
 
 > [!IMPORTANT]
 > Doporučení replikované tabulky není úplné testování a nebere operace přesunu dat účtu. Pracujeme na přidání tohoto jako heuristické metody, ale do té doby by měla vždy ověřovaly vašich úloh po použití doporučení. Obraťte se prosím na sqldwadvisor@service.microsoft.com při zjištění doporučení replikované tabulky, které způsobí, že úlohy chcete vrátit. Další informace o replikované tabulky, navštivte následující [dokumentaci](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table).
->

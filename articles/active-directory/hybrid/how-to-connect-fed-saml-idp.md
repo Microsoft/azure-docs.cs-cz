@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b82c2261e949c724b1310ee43c6f3fe29766945
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8b5eb46b845bebbb81dce6aadb9d97af08955df3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531007"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096941"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Použití zprostředkovatele 2.0 Identity (IdP) SAML pro jednotné přihlašování na
 
@@ -30,16 +30,16 @@ Tento dokument obsahuje informace o použití SAML 2.0 kompatibilní SP Lite na 
 
 Společnost Microsoft podporuje tyto možnosti přihlašování jako integrace cloudové služby Microsoftu, jako je Office 365 pomocí svého správně nakonfigurovaný protokol SAML 2.0 na základě profilu zprostředkovatele identity. Zprostředkovatelé identity SAML 2.0 jsou produkty třetích stran a proto společnost Microsoft neposkytuje podporu pro nasazení, konfiguraci, řešení potíží s osvědčené postupy týkající se jejich. Jednou správně nakonfigurována integrace pomocí SAML 2.0 zprostředkovatele identity může být testovány z hlediska správnou konfiguraci s použitím nástroje Microsoft připojení analyzátor, který je podrobněji popsaný níže. Další informace o zprostředkovateli identity na základě profilu SAML 2.0 SP-Lite požádejte organizaci, který je zadán.
 
->[!IMPORTANT]
->Jen omezenou sadou klientů jsou k dispozici v tomto scénáři přihlašování pomocí zprostředkovatelů identity SAML 2.0, to zahrnuje:
-
->- Webové klienty, například Outlook Web Access a Sharepointu Online
-- E-mailu ve formátu RTF, které používají základní ověřování a podporovaná metoda přístupu serveru Exchange jako je například IMAP, POP, Active Sync, MAPI, atd. (je vyžadována k nasazení rozšířeného klientský protokol koncového bodu), včetně:
-    - Aplikace Microsoft Outlook 2010, Outlook 2013/Outlook 2016, iPhone Apple (různé verze iOS)
-    - Různá zařízení Google Android
-    - Windows Phone 8.0, Windows Phone 7 a Windows Phone 7.8
-    - E-mailového klienta systému Windows 8 a Windows 8.1 e-mailového klienta
-    - E-mailového klienta Windows 10
+> [!IMPORTANT]
+> Jen omezenou sadou klientů jsou k dispozici v tomto scénáři přihlašování pomocí zprostředkovatelů identity SAML 2.0, to zahrnuje:
+> 
+> - Webové klienty, například Outlook Web Access a Sharepointu Online
+> - E-mailu ve formátu RTF, které používají základní ověřování a podporovaná metoda přístupu serveru Exchange jako je například IMAP, POP, Active Sync, MAPI, atd. (je vyžadována k nasazení rozšířeného klientský protokol koncového bodu), včetně:
+>     - Aplikace Microsoft Outlook 2010, Outlook 2013/Outlook 2016, iPhone Apple (různé verze iOS)
+>     - Různá zařízení Google Android
+>     - Windows Phone 8.0, Windows Phone 7 a Windows Phone 7.8
+>     - E-mailového klienta systému Windows 8 a Windows 8.1 e-mailového klienta
+>     - E-mailového klienta Windows 10
 
 Všechny ostatní klienti nejsou k dispozici v tomto scénáři přihlášení pomocí zprostředkovatele Identity SAML 2.0. Například klient klasické pracovní plochy Lync 2010 není moct přihlásit ke službě pomocí zprostředkovatele Identity SAML 2.0 pro jednotné přihlašování nakonfigurované.
 
@@ -194,7 +194,7 @@ Následující postup vás provede převod existující standardní domény na f
 Další informace o "Set-MsolDomainAuthentication" v tématu: [ https://technet.microsoft.com/library/dn194112.aspx ](https://technet.microsoft.com/library/dn194112.aspx).
 
 >[!NOTE]
->Je nutné spustit pomocí "$ecpUrl ="https://WS2012R2-0.contoso.com/PAOS"" pouze v případě, že nastavíte ECP rozšíření pro zprostředkovatele identity. Exchange Online, s výjimkou Outlook Web Application (OWA), klienty na základě příspěvek aktivní koncový bod. Pokud váš protokol SAML 2.0 STS implementuje active koncový bod podobná společnosti Shibboleth ECP provádění aktivní koncový bod je možné, že pro tyto bohatých klientů k interakci se službou Exchange Online.
+>Je nutné spustit pomocí `$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"` pouze v případě, že nastavíte ECP rozšíření pro zprostředkovatele identity. Exchange Online, s výjimkou Outlook Web Application (OWA), klienty na základě příspěvek aktivní koncový bod. Pokud váš protokol SAML 2.0 STS implementuje active koncový bod podobná společnosti Shibboleth ECP provádění aktivní koncový bod je možné, že pro tyto bohatých klientů k interakci se službou Exchange Online.
 
 Jakmile federation není nakonfigurovaná můžete přepnout zpět na "nefederovaných" (nebo "spravovaný"), ale tato změna trvá až dvě hodiny a vyžaduje přiřazení nové náhodná hesla pro cloudové přihlašování k jednotlivým uživatelům. Přepnutí zpět do "spravovaný" může být nutné v některých scénářích resetování chybu v nastavení. Další informace o převodu domény naleznete v tématu: [ https://msdn.microsoft.com/library/windowsazure/dn194122.aspx ](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
 

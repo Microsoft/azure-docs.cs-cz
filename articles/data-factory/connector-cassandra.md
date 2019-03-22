@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1347012971d53728d978f378e30684311c88828b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 743dad6032547f8f535543413adff416efb56ac0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022271"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998389"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopírování dat z Cassandry pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-onprem-cassandra-connector.md)
 > * [Aktuální verze](connector-cassandra.md)
 
@@ -132,7 +132,7 @@ Pro kopírování dat z Cassandry, nastavte typ zdroje v aktivitě kopírování
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **CassandraSource** | Ano |
-| query |Použijte vlastní dotaz číst data. |SQL-92 nebo dotazu CQL. Zobrazit [CQL odkaz](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Při použití jazyka SQL, zadejte **keyspace name.table název** představující tabulku, kterou dotaz. |Ne (Pokud je určen "tableName", "keyspace" v datové sadě). |
+| query |Použijte vlastní dotaz číst data. SQL-92 nebo dotazu CQL. Zobrazit [CQL odkaz](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Při použití jazyka SQL, zadejte **keyspace name.table název** představující tabulku, kterou dotaz. |Ne (Pokud je určen "tableName", "keyspace" v datové sadě). |
 | consistencyLevel |Úrovně konzistentnosti Určuje, kolik repliky musí odpovědět na požadavek čtení před vrácením data do klientské aplikace. Cassandra ověří zadaný počet replik pro data splňují požadavek na čtení. Zobrazit [konfigurace konzistentnosti dat](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) podrobnosti.<br/><br/>Povolené hodnoty jsou: **JEDEN**, **DVĚ**, **tři**, **KVORA**, **všechny**, **LOCAL_QUORUM**, **EACH_QUORUM**, a **LOCAL_ONE**. |Ne (výchozí hodnota je `ONE`) |
 
 **Příklad:**
@@ -173,21 +173,21 @@ Při kopírování dat z Cassandry, se používají následující mapování z 
 
 | Typ dat Cassandra | Data factory dočasné datový typ |
 |:--- |:--- |
-| ASCII |Řetězec |
+| ASCII |String |
 | BIGINT |Int64 |
-| OBJEKT BLOB |Byte] |
+| BLOB |Byte[] |
 | DATOVÝ TYP BOOLEAN |Logická hodnota |
-| DECIMAL |Desítkově |
+| DECIMAL |Decimal |
 | DOUBLE |Double |
-| PLOVOUCÍ DESETINNOU ČÁRKOU |Jednoduchá |
-| INET |Řetězec |
-| INT |Datový typ Int32 |
-| TEXT |Řetězec |
+| PLOVOUCÍ DESETINNOU ČÁRKOU |Single |
+| INET |String |
+| INT |Int32 |
+| TEXT |String |
 | ČASOVÉ RAZÍTKO |DateTime |
 | TIMEUUID |Guid |
-| IDENTIFIKÁTOR UUID |Guid |
-| VARCHAR |Řetězec |
-| VARINT |Desítkově |
+| UUID |Guid |
+| VARCHAR |String |
+| VARINT |Decimal |
 
 > [!NOTE]
 > Kolekce typů (mapování, sady, seznam, atd.), najdete v tématu [práci s typy kolekcí Cassandra pomocí virtuální tabulky](#work-with-collections-using-virtual-table) oddílu.

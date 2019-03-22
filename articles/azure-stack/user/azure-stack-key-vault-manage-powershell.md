@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: sethm
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: b5c43215ce1800ac162c8b5d19ba4d4c987a3bac
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b00082ec567d51c320f55210cb38dcab9547e0d9
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445802"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258747"
 ---
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>Správa služby Key Vault ve službě Azure Stack pomocí Powershellu
 
@@ -92,7 +92,7 @@ New-AzureRmKeyVault -VaultName "Vault01" -ResourceGroupName "VaultRG" -Location 
 
 ![Nový trezor klíčů](media/azure-stack-key-vault-manage-powershell/image4.png)
 
-Výstup tohoto příkazu zobrazuje vlastnosti trezoru klíčů, který jste vytvořili. Když aplikace přistupuje k tomuto trezoru, musíte použít **identifikátor URI trezoru** vlastnost, která je "https://vault01.vault.local.azurestack.external" v tomto příkladu.
+Výstup tohoto příkazu zobrazuje vlastnosti trezoru klíčů, který jste vytvořili. Když aplikace přistupuje k tomuto trezoru, musíte použít **identifikátor URI trezoru** vlastnost, která je "https:\//vault01.vault.local.azurestack.external" v tomto příkladu.
 
 ### <a name="active-directory-federation-services-ad-fs-deployment"></a>Nasazení služby Active Directory Federation Services (AD FS)
 
@@ -127,8 +127,8 @@ Add-AzureKeyVaultKey -VaultName "Vault01" -Name "Key01" -verbose -Destination So
 
 Vytvořený klíč teď můžete odkazovat pomocí jeho identifikátoru URI. Pokud vytvoříte nebo import klíče, který má stejný název jako existující klíč původní klíč se aktualizuje hodnoty zadané v nový klíč. Můžete získat přístup k předchozí verzi pomocí identifikátoru URI specifické pro verzi klíče. Příklad:
 
-* Použití "https://vault10.vault.local.azurestack.external:443/keys/key01" vždy získáte aktuální verzi.
-* Použití "https://vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a" získat tuto konkrétní verzi.
+* Používá "https:\//vault10.vault.local.azurestack.external:443/keys/key01" vždy získáte aktuální verzi.
+* Používá "https:\//vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a" získat tuto konkrétní verzi.
 
 ### <a name="get-a-key"></a>Získání klíče
 

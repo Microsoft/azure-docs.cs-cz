@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 96ee65bfe8792bd56feb39f48659397cb517471a
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 97b0b6256b7aaf7b42565fe9453fb87a0c414569
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56735362"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861566"
 ---
 # <a name="request-limits-for-translator-text"></a>Omezení počtu požadavků pro Translator Text
 
@@ -43,7 +43,7 @@ Tato omezení jsou omezeny na obecná systémy od Microsoftu. Vlastní překlado
 
 ## <a name="latency"></a>Latence
 
-Translator Text má maximální latence 13 sekund. V tuto chvíli budete obdrželi jste výsledek nebo vypršení časového limitu odpovědi. Obvykle jsou odpovědi vrácené v milisekundách 150 do 300 milisekund. Doba odezvy bude lišit v závislosti na velikosti nebo dvojici žádost a jazyk.
+Translator Text API má maximální latence 15 sekund pomocí standardní modelů. Překlad pomocí vlastních modelů má maximální latence 25 sekund. V tuto chvíli budete obdrželi jste výsledek nebo vypršení časového limitu odpovědi. Obvykle jsou odpovědi vrácené v milisekundách 150 do 300 milisekund. Doby odezvy bude lišit v závislosti na velikosti pár požadavků a jazyk. Pokud jste neobdrželi překlad nebo s [chybová odpověď](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) v tomto časovém rámci, by měl zkontrolujte síťové připojení a zkuste to znovu.
 
 ## <a name="sentence-length-limits"></a>Omezení délky větu
 

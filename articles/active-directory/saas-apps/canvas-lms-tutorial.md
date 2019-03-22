@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ffac91aef9a091f827c333605ab20c1cce7e258
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b7556e93e6e7b7e9bdb1f19f5a6e5b3c15c7b910
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446091"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894066"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Kurz: Integrace Azure Active Directory s plátna
 
@@ -180,7 +180,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -239,9 +239,9 @@ Pokud chcete povolit Azure AD uživatelům přihlášení na plátno, musí být
 
    a. V **jméno a příjmení** textového pole zadejte jméno uživatele, jako je **BrittaSimon**.
 
-   b. V **e-mailu** textového pole zadejte e-mailu uživatele, jako je **brittasimon@contoso.com**.
+   b. V **e-mailu** textového pole zadejte e-mailu uživatele, jako je **brittasimon\@contoso.com**.
 
-   c. V **přihlášení** textového pole zadejte uživatele Azure AD e-mailovou adresu jako **brittasimon@contoso.com**.
+   c. V **přihlášení** textového pole zadejte uživatele Azure AD e-mailovou adresu jako **brittasimon\@contoso.com**.
 
    d. Vyberte **e-mailu uživatele o vytvoření tohoto účtu**.
 

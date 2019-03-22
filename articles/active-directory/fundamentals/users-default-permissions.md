@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1a3204e70fdde162d953c9c2241e9d71877cf78
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 26178066b2f5353cba99c5965bb2f3055556784c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428920"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894270"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Co jsou výchozí oprávnění uživatelů ve službě Azure Active Directory?
 V Azure Active Directory (Azure AD) mají všichni uživatelé udělenou sadu výchozích oprávnění. Přístup uživatele se skládá z typ uživatele, jejich [přiřazení rolí](active-directory-users-assign-role-azure-portal.md)a jejich vlastnictví jednotlivé objekty. Tento článek popisuje tato výchozí oprávnění a obsahuje porovnání výchozích nastavení člena a uživatele typu host. Výchozí oprávnění uživatelů lze změnit pouze v nastavení uživatele ve službě Azure AD.
@@ -49,8 +49,8 @@ Výchozí oprávnění pro členy je možné omezit následujícími způsoby.
 
 Oprávnění | Vysvětlení nastavení
 ---------- | ------------
-Možnost vytvářet skupiny zabezpečení | Nastavení této možnosti na hodnotu Ne zabrání uživatelům vytvářet skupiny zabezpečení. Globální správci a správci uživatelských účtů budou moct skupiny zabezpečení vytvářet i nadále. Informace o postupu najdete v tématu [Rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-cmdlets.md).
-Možnost vytvářet skupiny Office 365 | Nastavení této možnosti na hodnotu Ne zabrání uživatelům vytvářet skupiny Office 365. Nastavení této možnosti na hodnotu Někteří umožní vytvářet skupiny Office 365 vybrané skupině uživatelů. Globální správci a správci uživatelských účtů budou moct skupiny Office 365 vytvářet i nadále. Informace o postupu najdete v tématu [Rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-cmdlets.md).
+Možnost vytvářet skupiny zabezpečení | Nastavení této možnosti na hodnotu Ne zabrání uživatelům vytvářet skupiny zabezpečení. Globální správci a Správci uživatelů stále můžou vytvářet skupiny zabezpečení. Informace o postupu najdete v tématu [Rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-cmdlets.md).
+Možnost vytvářet skupiny Office 365 | Nastavení této možnosti na hodnotu Ne zabrání uživatelům vytvářet skupiny Office 365. Nastavení této možnosti na hodnotu Někteří umožní vytvářet skupiny Office 365 vybrané skupině uživatelů. Globální správci a Správci uživatelů bude stále moci vytvářet skupiny Office 365. Informace o postupu najdete v tématu [Rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-cmdlets.md).
 Omezení přístupu k portálu pro správu Azure AD | Nastavení této možnosti na Ne zabraňuje uživatelům v přístupu k Azure Active Directory.
 Možnost číst ostatní uživatele | Toto nastavení je k dispozici pouze v PowerShellu. Nastavení této možnosti na hodnotu $false zabrání všem uživatelům, kteří nejsou správci, číst z adresáře informace o uživatelích. Toto nastavení nebrání čtení informací o uživatelích v ostatních službách Microsoftu, jako je například Exchange Online. Toto nastavení je určené pro zvláštní okolnosti a jeho nastavení na hodnotu $false se nedoporučuje.
 
@@ -65,7 +65,7 @@ When a user adds a new enterprise application, they are automatically added as a
 
 ### <a name="group-owner-permissions"></a>Oprávnění vlastníka skupiny
 
-Když uživatel vytvoří skupinu, automaticky se přidá jako vlastník této skupiny. Jako vlastníka, mohou spravovat vlastnosti skupiny, jako je například název, jakož i Správa členství ve skupinách. Vlastník může také přidat nebo odebrat další vlastníky. Na rozdíl od globálních správců a správců uživatelských účtů můžou vlastníci spravovat pouze skupiny, které vlastní. Pokud chcete přiřadit vlastníka skupiny, přečtěte si téma [Správa vlastníků skupiny](active-directory-accessmanagement-managing-group-owners.md).
+Když uživatel vytvoří skupinu, automaticky se přidá jako vlastník této skupiny. Jako vlastníka, mohou spravovat vlastnosti skupiny, jako je například název, jakož i Správa členství ve skupinách. Vlastník může také přidat nebo odebrat další vlastníky. Na rozdíl od globální správci a Správci uživatelů pouze vlastníci můžou spravovat skupiny, které vlastní. Pokud chcete přiřadit vlastníka skupiny, přečtěte si téma [Správa vlastníků skupiny](active-directory-accessmanagement-managing-group-owners.md).
 
 ## <a name="next-steps"></a>Další postup
 

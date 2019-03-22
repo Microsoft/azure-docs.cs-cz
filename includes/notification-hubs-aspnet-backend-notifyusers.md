@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/04/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 9a94f76e2d1fe930d2d6d43e81a756f0cb15d23d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 8413044beff68390dbccdf16c4477e113a85f81b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453065"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125223"
 ---
 ## <a name="create-the-webapi-project"></a>Vytvoření projektu WebAPI
 
@@ -55,7 +55,7 @@ Vytvořte nový back-end ASP.NET WebAPI provedením následujících akcí:
     * Vyberte plán služby App Service, který jste už vytvořili.
     * Vyberte možnost **Vytvořit nový plán App Service** a pak tento plán vytvořte.
 
-  Pro účely tohoto kurzu nepotřebujete databázi. Jakmile vyberete plán služby App Service, výběrem **OK** vytvořte projekt.
+   Pro účely tohoto kurzu nepotřebujete databázi. Jakmile vyberete plán služby App Service, výběrem **OK** vytvořte projekt.
 
     ![Okno Konfigurovat webovou aplikaci Microsoft Azure][B5]
 
@@ -84,9 +84,9 @@ V této části vytvoříte pro nový back-end novou třídu popisovače zprávy
    * Požadavek používá *základní* ověřování.
    * Řetězce uživatelského jména a hesla jsou stejné.
 
-  Jinak bude požadavek zamítnut. Při tomto ověření se nepoužívá správný přístup k ověřování a autorizaci. Je to jenom jednoduchý příklad pro účely tohoto kurzu.
+   Jinak bude požadavek zamítnut. Při tomto ověření se nepoužívá správný přístup k ověřování a autorizaci. Je to jenom jednoduchý příklad pro účely tohoto kurzu.
 
-  Pokud třída `AuthenticationTestHandler` ověří a autorizuje zprávu požadavku, uživatel základního ověřování se připojí k aktuálnímu požadavku v objektu [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx). Informace o uživateli v objektu HttpContext později použije jiný kontroler (RegisterController) pro přidání [značky](https://msdn.microsoft.com/library/azure/dn530749.aspx) do požadavku na registraci oznámení.
+   Pokud třída `AuthenticationTestHandler` ověří a autorizuje zprávu požadavku, uživatel základního ověřování se připojí k aktuálnímu požadavku v objektu [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx). Informace o uživateli v objektu HttpContext později použije jiný kontroler (RegisterController) pro přidání [značky](https://msdn.microsoft.com/library/azure/dn530749.aspx) do požadavku na registraci oznámení.
 
     ```csharp
     public class AuthenticationTestHandler : DelegatingHandler

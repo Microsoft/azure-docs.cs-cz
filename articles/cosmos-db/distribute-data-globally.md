@@ -5,45 +5,43 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/26/2018
-ms.openlocfilehash: 75940f9c3c8022c5445eb998b133a156dacde9b5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 03/18/2019
+ms.openlocfilehash: 70ead36e20861026e08e864f438071948c526844
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106864"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294412"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Distribuce globálních dat pomocí služby Azure Cosmos DB – přehled
 
 Dnešní aplikace musí být vždy online a s velmi rychlou odezvou. Pokud chcete dosáhnout nízké latence a vysoká dostupnost, instancí těchto aplikací je nutné nasadit v datových centrech, která jsou blízko uživatelům. Tyto aplikace jsou obvykle nasazené v několika datových centrech a jsou volány globálně distribuované. Globálně distribuované aplikace potřebují globálně distribuovanou databázi, která umí transparentně replikovat data kdekoli ve světě povolit aplikace, které chcete použít pro kopírování dat, která se nachází blízko uživatelů. 
 
-Azure Cosmos DB je globálně distribuovaná databázová služba, která zajišťuje nízkou latenci, elastickou škálovatelnost propustnosti, sémantiku jasně definovaných pro konzistenci dat a vysokou dostupnost. Stručně řečeno pokud vaše aplikace potřebuje zaručené rychlou odezvu kdekoli na světě, pokud je potřeba mít vždy online a vyžaduje neomezenou a elastické škálovatelnosti propustnost a úložiště, vezměte v úvahu vytváření aplikací pomocí služby Azure Cosmos DB.
+Azure Cosmos DB je globálně distribuovaná databázová služba, která zajišťuje nízkou latenci, elastickou škálovatelnost propustnosti, sémantiku jasně definovaných pro konzistenci dat a vysokou dostupnost. Stručně řečeno pokud vaše aplikace potřebuje zaručené rychlou odezvu kdekoli na světě, pokud je potřeba mít vždy online a vyžaduje neomezenou a elastické škálovatelnosti propustnost a úložiště, měli byste vytvořit aplikaci ve službě Azure Cosmos DB.
 
-Můžete nakonfigurovat vaše databáze bude globálně distribuovaná a k dispozici ve všech oblastech Azure. Pokud chcete snížit latenci, umístěte data blíž k kde jsou vaši uživatelé. Volba požadované oblasti závisí na globální dosah aplikace, a kde se nachází vaši uživatelé. Data v rámci svého účtu Azure Cosmos DB transparentně replikuje do všech oblastí, které jsou spojené s vaším účtem. Poskytuje jeden systémový obraz globálně distribuovanou databázi Azure Cosmos a kontejnerů, které vaše aplikace může číst a zapisovat do místně. 
+Můžete nakonfigurovat vaše databáze bude globálně distribuovaná a k dispozici ve všech oblastech Azure. Snížit latenci, umístění dat blízko kde jsou vaši uživatelé. Volba požadované oblasti závisí na globální dosah aplikace, a kde se nachází vaši uživatelé. Cosmos DB transparentně replikuje data do všech oblastí, přidružených k účtu Cosmos. Poskytuje jeden systémový obraz globálně distribuovanou databázi Azure Cosmos a kontejnerů, které vaše aplikace může číst a zapisovat do místně. 
 
-Pomocí služby Azure Cosmos DB můžete přidat nebo odebrat oblasti spojené s vaším účtem v každém okamžiku. Vaše aplikace nemusí pozastavená nebo znovu nasadit do přidat nebo odebrat oblasti. Pokračuje k zajištění vysoké dostupnosti neustále kvůli multihomingu možnosti, které služba poskytuje.
+Pomocí služby Azure Cosmos DB můžete přidat nebo odebrat oblasti spojené s vaším účtem v každém okamžiku. Vaše aplikace nemusí pozastavená nebo znovu nasadit do přidat nebo odebrat oblasti. Pokračuje k zajištění vysoké dostupnosti neustále kvůli možnostmi multihomingu, které nativně poskytuje službu.
 
 ![Topologie nasazení s vysokou dostupností](./media/distribute-data-globally/deployment-topology.png)
 
 ## <a name="key-benefits-of-global-distribution"></a>Klíčové výhody globální distribuce
 
-**Vytváření globálních aplikací typu aktivní aktivní.** S několika hlavními databázemi funkcí každou oblast je oblast pro zápis. Je také čitelné. Také zaručuje více hlavní funkce:
+**Vytváření globálních aplikací typu aktivní aktivní.** Každou oblast se používá protokol nové multimasterovou replikací podporuje zápisy a čtení. Taky umožňuje více hlavních možností:
 
-- Zápis neomezené elastické škálovatelnosti. 
+- Neomezené elastické zápis a čtení škálovatelnost. 
 - 99,999 % čtení a zápis dostupnost po celém světě.
 - Garantované operací čtení a zápisů v méně než 10 milisekund na 99. percentilu.
 
-Pomocí služby Azure Cosmos DB multihoming rozhraní API je seznámen je nejbližší oblast vaší aplikace. Pak může odeslat žádosti pro tuto oblast. Je nejbližší oblast je identifikován bez změny konfigurace. Jak přidat a odebrat oblasti ze svého účtu Azure Cosmos DB, vaše aplikace nevyžaduje se znovu nasadit. Aplikace i nadále s vysokou dostupností.
+Vícenásobné navádění služby Azure Cosmos DB pomocí rozhraní API, aplikace si je vědoma je nejbližší oblast a zasílat žádosti pro tuto oblast. Je nejbližší oblast je identifikován bez změny konfigurace. Můžete přidat nebo odebrat oblasti do a z vašeho účtu Azure Cosmos, aplikace nemusí být znovu nasadit nebo pozastavena, pokračuje k zajištění vysoké dostupnosti po celou dobu.
 
-**Vytvářejte aplikace s velmi rychlou odezvou.** Aplikace můžete snadno navržené k téměř v reálném čase operací čtení a zápisu. Latence v řádu milisekund může použít pro všechny oblasti, kterou jste zvolili pro vaši databázi. Azure Cosmos DB interně zpracovává replikaci dat mezi oblastmi. V důsledku toho je zaručena konzistence úroveň, vybraná pro účet služby Azure Cosmos DB.
+**Vytvářejte aplikace s velmi rychlou odezvou.** Vaše aplikace může provádět téměř v reálném čase čtení a zápisu všech oblastech, které jste zvolili pro vaši databázi. Azure Cosmos DB interně zpracovává replikaci dat mezi oblastmi se úroveň záruky konzistence úrovně, kterou jste vybrali.
 
-Mnoho aplikací mít prospěch z vylepšení výkonu, které jsou součástí schopnost provádět zápisy (místní) ve více oblastech. Některé aplikace, které vyžadují silnou konzistenci raději trychtýře všechny operace zápisu do jedné oblasti. V případě těchto aplikací služby Azure Cosmos DB podporuje jedné oblasti a konfigurací ve více oblastech.
+**Vytvářejte aplikace s vysokou dostupností.** Spuštění databáze ve více oblastech po celém světě, zvýšíte dostupnost databáze. Pokud jedna oblast nedostupný, ostatní oblasti automaticky zpracovává žádosti o aplikace. Azure Cosmos DB nabízí 99,999 % čtení a zápis dostupnost pro databáze ve více oblastech.
 
-**Vytvářejte aplikace s vysokou dostupností.** Spuštění databáze v několika oblastech, zvýšíte dostupnost databáze. Pokud jedna oblast nedostupný, ostatní oblasti automaticky zpracovává žádosti o aplikace. Azure Cosmos DB nabízí 99,999 % čtení a zápis dostupnost pro databáze ve více oblastech.
+**Zachování kontinuity obchodních procesů během regionální výpadky.** Azure Cosmos DB podporuje [automatické převzetí služeb při selhání](how-to-manage-database-account.md#automatic-failover) během oblastního výpadku. Během oblastního výpadku služby Azure Cosmos DB nadále udržovat smluv SLA latence, dostupnosti, konzistence a propustnost. Abyste měli jistotu, že má vysokou dostupnost celé aplikace, služby Cosmos DB nabízí ruční převzetí služeb rozhraní API k simulaci místního výpadku. Pomocí tohoto rozhraní API, můžete provádět pravidelné Obchodní kontinuity podnikových procesů cvičení.
 
-**Zachování kontinuity obchodních procesů během regionální výpadky.** Azure Cosmos DB podporuje [automatické převzetí služeb při selhání](how-to-manage-database-account.md#automatic-failover) během oblastního výpadku. Během oblastního výpadku služby Azure Cosmos DB nadále udržovat smluv SLA latence, dostupnosti, konzistence a propustnost. Abyste měli jistotu, že má vysokou dostupnost celé aplikace, služby Azure Cosmos DB nabízí ruční převzetí služeb rozhraní API k simulaci místního výpadku. Pomocí tohoto rozhraní API, můžete provádět pravidelné Obchodní kontinuity podnikových procesů cvičení.
-
-**Škálování pro čtení a zápis propustnost globálně.** S několika hlavními databázemi funkcí můžete elastické škálování pro čtení a zápis propustnost po celém světě. Funkci multimasterovou zaručuje propustnost, které vaše aplikace nakonfiguruje na databázi Azure Cosmos DB nebo kontejneru se doručí ve všech oblastech. Propustnost je také chráněn pomocí [finančně zajištěné smlouvy SLA](https://aka.ms/acdbsla).
+**Škálování pro čtení a zápis propustnost globálně.** Můžete povolit každou oblast umožňovat zápis a Elasticky škálovat čtení a zápisy po celém světě. Je zaručeno, že propustnost, které vaše aplikace nakonfiguruje na databázi Azure Cosmos nebo kontejner doručena ve všech oblastech, které jsou spojené s vaším účtem Azure Cosmos. Zřízená propustnost je zaručeno, že si podle [finančně zajištěné smlouvy SLA](https://aka.ms/acdbsla).
 
 **Vyberte si z několika jasně definované modely konzistence.** Protokol replikace služby Azure Cosmos DB nabízí pět modelů konzistence dobře definovaných, praktických a intuitivních. Každý model má kompromis mezi konzistencí a výkonem. Pomocí těchto modelů konzistence můžete vytvářet globálně distribuované aplikace s lehkostí a elegancí.
 

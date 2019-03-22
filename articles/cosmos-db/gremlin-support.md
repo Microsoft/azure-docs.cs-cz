@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: e7230e9c4d97c1c3ba8f0cf20d32f5a59ea2219b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c4622293f05be5f4595136a5bbf194116fb2887c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034518"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081096"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Podpora grafu Gremlin ve službě Azure Cosmos DB
 Azure Cosmos DB podporuje [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) – jazyk pro procházení grafu od společnosti [Apache Tinkerpop](https://tinkerpop.apache.org), což je rozhraní Gremlin API pro vytváření grafových entit a provádění operací dotazování grafu. Pomocí jazyka Gremlin můžete vytvářet grafové entity (vrcholy a okraje), upravovat vlastnosti v rámci těchto entit, provádět dotazy a přechody a odstraňovat entity. 
@@ -181,7 +181,7 @@ Nyní se podívejme na kroky v jazyce Gremlin, které Azure Cosmos DB podporuje.
 | `range` | Vyfiltruje zadaný rozsah hodnot.| [range step](https://tinkerpop.apache.org/docs/current/reference/#range-step) |
 | `repeat` | Opakuje krok po zadaný počet opakování. Slouží k vytváření cyklů. | [repeat step](https://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
 | `sample` | Slouží k zobrazení ukázkových výsledků z procházení. | [sample step](https://tinkerpop.apache.org/docs/current/reference/#sample-step) |
-| `select` | Slouží k zobrazení výsledků z procházení. |  [select step](https://tinkerpop.apache.org/docs/current/reference/#select-step) | |
+| `select` | Slouží k zobrazení výsledků z procházení. |  [select step](https://tinkerpop.apache.org/docs/current/reference/#select-step) |
 | `store` | Slouží k zobrazení neblokujících agregací z procházení. | [store step](https://tinkerpop.apache.org/docs/current/reference/#store-step) |
 | `tree` | Agreguje cesty z vrcholu do stromu. | [tree step](https://tinkerpop.apache.org/docs/current/reference/#tree-step) |
 | `unfold` | Rozbalí iterátor jako krok.| [unfold step](https://tinkerpop.apache.org/docs/current/reference/#unfold-step) |

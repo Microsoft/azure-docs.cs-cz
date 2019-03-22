@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2c3da9470668fa2987195c26e98eee51f14027f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7d95ae1f750c59c121e998c6f51f9439b1b0339a
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136340"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287090"
 ---
 # <a name="data-import-overview---azure-search"></a>Import dat přehled – Azure Search
 
@@ -40,18 +40,25 @@ Vkládání dat prostřednictvím portálu není aktuálně podporováno.
 
 <a name="indexing-actions"></a>
 
-### <a name="indexing-actions-upload-merge-uploadormerge-delete"></a>Indexování akce: odeslání, sloučení, uploadOrMerge, odstranit
+### <a name="indexing-actions-upload-merge-mergeorupload-delete"></a>Indexování akce: odeslání, sloučení, mergeOrUpload, odstranit
 
-Při používání REST API budete na URL koncového bodu indexu Azure Search vydávat požadavky HTTP POST s textem žádosti ve formátu JSON. Objekt JSON v požadavku HTTP bude obsahovat jedno pole JSON s názvem „value“ s objekty JSON reprezentujícími dokumenty, které si přejete přidat do indexu, aktualizovat nebo odstranit.
+Typ akce indexování na základě každý dokument můžete řídit určující, zda dokumentu musí být nahrán úplnou, sloučené s již existujícím obsahem dokumentu nebo odstraněný.
 
-Každý objekt JSON v poli „value“ reprezentuje dokument, který se má indexovat. Každá z těchto objektů obsahuje klíč dokumentu a určuje požadovanou akci indexování (odeslání, sloučení, odstranění). V závislosti na zvolené akci musí objekt pro každý dokument obsahovat pouze určitá pole.
+V rozhraní REST API zasílání požadavků HTTP POST s textem žádosti ve formátu JSON na URL koncového bodu indexu Azure Search. Každý objekt JSON v poli "value" obsahuje klíč dokumentu a určuje akci indexování jsou přidání, aktualizace, nebo odstraní obsah dokumentu. Příklad kódu naleznete v tématu [načítat dokumenty](search-create-index-rest-api.md#load-documents).
+
+V sadě .NET SDK zabalit vaše data do `IndexBatch` objektu. `IndexBatch` Zapouzdřuje kolekci `IndexAction` objektů, z nichž každý obsahuje dokument a vlastnost, která říká službě Azure Search jaká akce se má provést pro daný dokument. Příklad kódu naleznete v tématu [vytvořit IndexBatch](search-import-data-dotnet.md#construct-indexbatch).
+
 
 | @search.action | Popis | Potřebná pole pro každý dokument | Poznámky |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Akce `upload` je podobná akci „upsert“, kdy je dokument vložený, pokud je nový a aktualizovaný nebo nahrazený, pokud již existuje. |klíč a další pole, která si přejete definovat |Pokud aktualizujete nebo nahrazujete stávající dokument, bude každé pole, které není zadané v žádosti, nastavené na `null`. K tomu dojde i v případě, že bylo pole dříve nastavené na nenulovou hodnotu. |
-| `merge` |Aktualizuje stávající dokument se zadanými poli. Pokud dokument v indexu neexistuje, sloučení selže. |klíč a další pole, která si přejete definovat |Každé pole zadané ve sloučení nahradí stávající pole v dokumentu. To zahrnuje i pole typu `Collection(Edm.String)`. Například pokud dokument obsahuje pole `tags` s hodnotou `["budget"]` a vy spustíte sloučení s polem `tags` s hodnotou `["economy", "pool"]`, konečná hodnota pole `tags` bude `["economy", "pool"]`. Hodnota nebude `["budget", "economy", "pool"]`. |
+| `merge` |Aktualizuje stávající dokument se zadanými poli. Pokud dokument v indexu neexistuje, sloučení selže. |klíč a další pole, která si přejete definovat |Každé pole zadané ve sloučení nahradí stávající pole v dokumentu. V sadě .NET SDK zahrnuje pole typu `DataType.Collection(DataType.String)`. V rozhraní REST API, to zahrnuje i pole typu `Collection(Edm.String)`. Například pokud dokument obsahuje pole `tags` s hodnotou `["budget"]` a vy spustíte sloučení s polem `tags` s hodnotou `["economy", "pool"]`, konečná hodnota pole `tags` bude `["economy", "pool"]`. Hodnota nebude `["budget", "economy", "pool"]`. |
 | `mergeOrUpload` |Pokud již dokument s daným klíčem v indexu existuje, chová se tato akce jako `merge`. Pokud dokument neexistuje, chová se s novým dokumentem jako `upload`. |klíč a další pole, která si přejete definovat |- |
 | `delete` |Odebere z indexu zadaný dokument. |pouze klíč |Všechna zadaná pole kromě pole klíče budou ignorována. Chcete-li odebrat z dokumentu jednotlivá pole, použijte místo toho `merge` a jednoduše nastavte hodnotu pole na „null“. |
+
+## <a name="decide-which-indexing-action-to-use"></a>Rozhodněte, jakou akci indexování použít
+Import dat pomocí sady .NET SDK, (odeslání, sloučení, odstranění a mergeOrUpload). V závislosti na zvolené akci musí objekt pro každý dokument obsahovat pouze určitá pole.
+
 
 ### <a name="formulate-your-query"></a>Formulování dotazu
 Existují dva způsoby [vyhledávání v indexu pomocí REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). První způsob je vydání požadavku HTTP POST, kde parametry dotazu jsou určené v objektu JSON v textu požadavku. Druhý způsob je vydání požadavku HTTP GET, kde parametry dotazu jsou určené v rámci URL požadavku. Metoda POST má [mírnější omezení](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) velikosti parametrů dotazu než metoda GET. Z tohoto důvodu doporučujeme používat metodu POST, pokud pro vás neplatí zvláštní podmínky, kdy by bylo pohodlnější použití metody GET.

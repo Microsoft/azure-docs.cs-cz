@@ -3,8 +3,8 @@ title: zahrnout soubor
 description: zahrnout soubor
 services: active-directory
 documentationcenter: dev-center-name
-author: brandwe
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,20 +12,20 @@ ms.topic: include
 ms.tgt_pltfrm: ios
 ms.workload: identity
 ms.date: 09/19/2018
-ms.author: brandwe
+ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 1604b7c9ee9888375e65aa679803c6e996e13b14
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 9782c6c2024c5cf490f207bb12a214c93a53b813
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988238"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203465"
 ---
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 
 Můžete zaregistrovat aplikaci v některém ze dvou způsobů, jak je popsáno v následujících dvou částech.
 
-### <a name="option-1-express-mode"></a>Možnost 1: Expresní režim
+### <a name="option-1-express-mode"></a>Option 1: Expresní režim
 
 Teď musíte zaregistrovat svoji aplikaci *portál pro registraci aplikací Microsoft*:
 
@@ -34,7 +34,7 @@ Teď musíte zaregistrovat svoji aplikaci *portál pro registraci aplikací Micr
 3. Ujistěte se, že je zaškrtnuté políčko pro instalační program s asistencí.
 4. Postupujte podle pokynů k získání ID aplikace a vložte ho do svého kódu.
 
-### <a name="option-2-advanced-mode"></a>Možnost 2: Rozšířeném režimu
+### <a name="option-2-advanced-mode"></a>Option 2: Rozšířený režim
 
 1. Přejděte na [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com/portal/register-app).
 2. Zadejte název své aplikace.

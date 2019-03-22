@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: bc81f479305f39024b8d946e1ace3fc84ecb6253
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: 1f6887a403e03ac11bb080a1d9855daff66ca088
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588852"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096771"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Sledujte náklady spojené s testovacího prostředí ve službě Azure DevTest Labs
 Tento článek obsahuje informace o tom, jak sledovat náklady testovacího prostředí. Ukazuje, jak chcete zobrazit odhadované náklady trent za aktuální kalendářní měsíc pro testovací prostředí. Tento článek také ukazuje, jak zobrazit náklady za měsíc k datu jednotlivých prostředků v testovacím prostředí.
@@ -41,19 +41,19 @@ Chcete-li zobrazit graf měsíční Trend nákladů odhad, postupujte takto:
 
     Částky nákladů se zaokrouhluje na nejbližší celé číslo. Příklad: 
 
-    * 5.01 zaokrouhlí až 6 
-    * 5.50 zaokrouhlí až 6
-    * 5.99 zaokrouhlí až 6
+   * 5.01 zaokrouhlí až 6 
+   * 5.50 zaokrouhlí až 6
+   * 5.99 zaokrouhlí až 6
 
-    Jak se uvádí nad grafem, náklady, které se zobrazí v grafu ve výchozím nastavení se *odhadované* náklady pomocí [s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) nabízejí sazby. Můžete také nastavit vlastní útraty cíle, které se zobrazí v grafech podle [Správa cíle nákladů pro vaše testovací prostředí.](#managing-cost-targets-for-your-lab)
+     Jak se uvádí nad grafem, náklady, které se zobrazí v grafu ve výchozím nastavení se *odhadované* náklady pomocí [s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) nabízejí sazby. Můžete také nastavit vlastní útraty cíle, které se zobrazí v grafech podle [Správa cíle nákladů pro vaše testovací prostředí.](#managing-cost-targets-for-your-lab)
 
-    Tyto náklady jsou *není* zahrnutých do výpočtu ceny:
+     Tyto náklady jsou *není* zahrnutých do výpočtu ceny:
 
-    * Předplatná CSP a Dreamspark se momentálně nepodporují, protože používá Azure DevTest Labs [rozhraní API pro fakturaci Azure](../billing/billing-usage-rate-card-overview.md) pro výpočet nákladů, který nepodporuje předplatná CSP nebo Dreamspark testovacího prostředí.
-    * Ceník vaší nabídky. V současné době nemůžete použít plateb (viz obrázek v rámci vašeho předplatného), že máte vyjedná s Microsoftem nebo Microsoft partnery. Se používají pouze tarifů průběžných plateb.
-    * Daně
-    * Slevy
-    * Fakturační Měna. V současné době náklady testovacího prostředí se zobrazí pouze v místní měně USD.
+   * Předplatná CSP a Dreamspark se momentálně nepodporují, protože používá Azure DevTest Labs [rozhraní API pro fakturaci Azure](../billing/billing-usage-rate-card-overview.md) pro výpočet nákladů, který nepodporuje předplatná CSP nebo Dreamspark testovacího prostředí.
+   * Ceník vaší nabídky. V současné době nemůžete použít plateb (viz obrázek v rámci vašeho předplatného), že máte vyjedná s Microsoftem nebo Microsoft partnery. Se používají pouze tarifů průběžných plateb.
+   * Daně
+   * Slevy
+   * Fakturační Měna. V současné době náklady testovacího prostředí se zobrazí pouze v místní měně USD.
 
 ### <a name="managing-cost-targets-for-your-lab"></a>Správa nákladů cíle testovacího prostředí.
 DevTest Labs umožňuje lépe spravovat tak, že nastavíte útraty cíl, který pak můžete zobrazit v grafu měsíční Trend nákladů odhad nákladů ve vašem testovacím prostředí. DevTest Labs můžete také pošle oznámení po dosažení zadané cílové útraty nebo prahovou hodnotu. 
@@ -76,11 +76,11 @@ DevTest Labs umožňuje lépe spravovat tak, že nastavíte útraty cíl, který
 
        ![Konfigurace podokno oznámení](./media/devtest-lab-configure-cost-management/configure-notification.png)
 
-      - Pokud zadáte **upozornění**, je nutné zadat adresu URL webhooku.
-      - Podobně, pokud definujete adresu URL webhooku, je nutné nastavit **oznámení** k **na** v podokně prahové hodnoty nákladů.
-      - Je nutné vytvořit webhook před vstupem tady.  
+     - Pokud zadáte **upozornění**, je nutné zadat adresu URL webhooku.
+     - Podobně, pokud definujete adresu URL webhooku, je nutné nastavit **oznámení** k **na** v podokně prahové hodnoty nákladů.
+     - Je nutné vytvořit webhook před vstupem tady.  
 
-      Další informace o webhooků najdete v tématu [vytvoření webhooku nebo funkce rozhraní API Azure](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+       Další informace o webhooků najdete v tématu [vytvoření webhooku nebo funkce rozhraní API Azure](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
 
 ## <a name="view-cost-by-resource"></a>Zobrazení náklady podle prostředků 
 Funkci měsíční trend nákladů v labs můžete zobrazit, kolik jsem strávil po zbytek aktuálního měsíce. Také ukazuje projekci výdaje až do konce měsíce a podle vaší útraty za posledních sedm dní. Vám pomůžou pochopit, proč útraty v testovacím prostředí je splnění prahové hodnoty raném stádiu, můžete použít **náklady podle prostředků** funkce, která ukazuje cenu za měsíc k datu **jednotlivých prostředků** v tabulce.

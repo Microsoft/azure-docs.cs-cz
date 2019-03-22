@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 24a957260e3e3f161ce9e2e61b746f9b052e784d
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 82310857276c53c85af033ae32a3aeef4f33c8da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264365"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109371"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-projects"></a>Vytvoření kanálu CI/CD pro jazyk PHP s projekty Azure DevOps
 
@@ -30,7 +30,7 @@ Projekty Azure DevOps představuje zjednodušené prostředí, která vytváří
 
 Pokud nemáte předplatné Azure, můžete jej získat zdarma prostřednictvím [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlásit se na Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
  Projekty DevOps vytvoří kanál CI/CD v kanálech Azure. Můžete vytvořit bezplatné novou organizaci Azure DevOps nebo použít existující organizace. Prostředky Azure DevOps Projects také vytvoří v rámci předplatného Azure podle vašeho výběru.
 
@@ -65,7 +65,7 @@ Pokud nemáte předplatné Azure, můžete jej získat zdarma prostřednictvím 
 
     ![Zobrazení řídicího panelu](_img/azure-devops-project-php/dashboardnopreview.png) 
     
- Projekty DevOps automaticky nakonfiguruje položky konfigurace sestavení a vydaná verze triggeru.  Teď jste připraveni při práci na aplikaci v PHP spolupracovat s týmem s využitím procesu CI/CD, který automaticky nasazuje nejnovější práci na web.
+   Projekty DevOps automaticky nakonfiguruje položky konfigurace sestavení a vydaná verze triggeru.  Teď jste připraveni při práci na aplikaci v PHP spolupracovat s týmem s využitím procesu CI/CD, který automaticky nasazuje nejnovější práci na web.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Potvrzení změn kódu a spuštění CI/CD
 

@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/25/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 68532ec4ae7e6d6b496ece8d08755555f756a60e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 4f0c93c41a468b62baf1ec50d030f235d36a8dd2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413447"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006469"
 ---
-# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Kurz: Použití Azure CLI ke směrování webového provozu na základě adresy URL
+# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Kurz: Směrování webového provozu na základě adresy URL pomocí Azure CLI
 
 Jako správce IT, který má na starosti správu webového provozu, chcete zákazníkům nebo uživatelům pomoct co nejrychleji získat informace, které potřebují. Jedním ze způsobů, jak můžete jejich prostředí optimalizovat, je směrovat různé druhy webového provozu do různých prostředků serveru. V tomto kurzu se dozvíte, jak pomocí Azure CLI nastavit a nakonfigurovat směrování služby Application Gateway pro různé typy provozu z vaší aplikace. Toto směrování pak bude na základě adresy URL směrovat provoz do různých fondů serverů.
 
@@ -234,7 +234,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-K získání veřejné IP adresy aplikační brány použijte příkaz az network public-ip show. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Příklad: *http://40.121.222.19*, *http://40.121.222.19:8080/images/test.htm* nebo *http://40.121.222.19:8080/video/test.htm*.
+K získání veřejné IP adresy aplikační brány použijte příkaz az network public-ip show. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Jako jsou například `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`, nebo `http://40.121.222.19:8080/video/test.htm`.
 
 ```azurecli-interactive
 az network public-ip show \
@@ -262,7 +262,7 @@ Pokud už je nepotřebujete, odeberte skupinu prostředků, aplikační bránu a
 az group delete --name myResourceGroupAG --location eastus
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Vytvoření aplikační brány se směrováním založeným na cestě URL](./tutorial-url-redirect-cli.md)

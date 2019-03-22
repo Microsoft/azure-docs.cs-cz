@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: cfefa8a1bfee03959d0f3b077d9915a6badb1ffd
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fd680b00feb8a75dfec952d7211554100fca00d8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55988081"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075062"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Vložení widgetů Video Indexer do vašich aplikací
 
@@ -45,7 +45,7 @@ Widget **Player** umožňuje streamovat video pomocí adaptivní přenosové ryc
 |t|Počet sekund od začátku|Přehrávač začne přehrávat od daného časového bodu.<br/>Příklad: t=60|
 |captions|Kód jazyka|Při načítání widgetu načte titulky v daném jazyce, aby byly k dispozici v nabídce titulků.<br/>Příklad: captions=en-US|
 |showCaptions|Logická hodnota|Přehrávač se načte s už povolenými titulky.<br/>Příklad: showCaptions=true|
-|type||Aktivuje vzhled přehrávače zvuku (video část se odebere).<br/>Příklad: type=audio|"
+|type||Aktivuje vzhled přehrávače zvuku (video část se odebere).<br/>Příklad: type=audio|
 |autoplay|Logická hodnota|Udává, jestli má přehrávač začít přehrávat video při načtení (výchozí hodnota je true).<br/>Příklad: autoplay=false|
 |language|Kód jazyka|Určuje jazyk přehrávače (výchozí hodnota je en-US)<br/>Příklad: language=de-DE|
 

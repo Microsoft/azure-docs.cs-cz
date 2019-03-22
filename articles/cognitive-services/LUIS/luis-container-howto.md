@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 19206278f838b77954c28e95e9171a857ba1338a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 1cf5fb00e9f1a202fe7ad46253f916e3e6bee7a7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670646"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295568"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -46,15 +46,14 @@ Chcete-li spustit kontejner LUIS, musíte mít následující:
 
 Tento kontejner podporuje minimální a doporučené hodnoty pro nastavení:
 
-|Nastavení| Minimální | Doporučené |
-|-----------|---------|-------------|
-|Jádra<BR>`--cpus`|1 jádro|1 jádro|
-|Memory (Paměť)<BR>`--memory`|2 GB|4 GB|
-|Transakce za sekundu<BR>(TPS)|20 TPS|40 TPS|
+|Kontejner| Minimální | Doporučené | TPS<br>(Minimum, Maximum)|
+|-----------|---------|-------------|--|
+|LUIS|1 jádro, 2 GB paměti|1 jádro, 4 GB paměti|20,40|
 
-Každé jádro, musí být aspoň 2.6 gigahertz (GHz) nebo rychlejší.
+* Každé jádro, musí být aspoň 2.6 gigahertz (GHz) nebo rychlejší.
+* TPS – transakcí za sekundu
 
-`--cpus` a `--memory` nastavení jsou použita jako součást `docker run` příkazu.
+Jader a paměti odpovídají `--cpus` a `--memory` nastavení, které se používají jako součást `docker run` příkazu.
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru s `docker pull`
 
@@ -102,8 +101,8 @@ Může obsahovat vstupní přípojného adresáře **produkční**, **pracovní*
 
 |Typ balíčku|Rozhraní API pro dotazy koncového bodu|Dostupnost dotazu|Formát názvu souboru balíčku|
 |--|--|--|--|
-|Školení|GET, Post|Pouze kontejner|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
-|Fázování|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_STAGING.gz`|
+|Trénovaný|GET, Post|Pouze kontejner|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
+|Staging|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_STAGING.gz`|
 |Výroba|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
@@ -259,13 +258,13 @@ Použít hostitele, `https://localhost:5000`, pro kontejner rozhraní API.
 |Typ balíčku|Metoda|Trasa|Parametry dotazu|
 |--|--|--|--|
 |Publikováno|[Získat](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [příspěvku](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q = {q}<br>& pracovní<br>[& timezoneOffset]<br>[& podrobné]<br>[& protokolu]<br>|
-|Školení|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q = {q}<br>[& timezoneOffset]<br>[& podrobné]<br>[& protokolu]|
+|Trénovaný|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q = {q}<br>[& timezoneOffset]<br>[& podrobné]<br>[& protokolu]|
 
 Konfigurovat parametry dotazu jak a co je vrácená v odpovědi na dotaz:
 
 |Parametr dotazu|Type|Účel|
 |--|--|--|
-|`q`|řetězec|Utterance uživatele.|
+|`q`|string|Utterance uživatele.|
 |`timezoneOffset`|číslo|TimezoneOffset umožňuje [změnit časové pásmo](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) používané datetimeV2 předem připravených entit.|
 |`verbose`|Boolean|Vrátí všechny příkazy a jejich výsledky, pokud je nastavena na hodnotu true. Výchozí hodnota je false, která vrací pouze hlavní záměr.|
 |`staging`|Boolean|Vrátí dotaz z pracovní prostředí výsledky, pokud je nastavena na hodnotu true. |

@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 04653dcdf0fb64e8b935cda18c01198ec91c548d
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ed91425ca56278eccf21c10db6360b4f770b0660
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807469"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226534"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 
@@ -554,6 +554,16 @@ module.exports = myObj;
 ```
 
 V tomto příkladu je důležité si uvědomit, že i když objekt se exportuje, neexistují žádné záruky pro uchování stavu mezi spuštěními.
+
+## <a name="local-debugging"></a>Místní ladění
+
+Když se spustí s `--inspect` parametr procesu Node.js naslouchá ladění klienta na zadaném portu. Ve službě Azure Functions 2.x, lze zadat argumenty k předání do procesu Node.js, na kterém běží váš kód tak, že přidáte proměnné prostředí nebo nastavení aplikace, které `languageWorkers:node:arguments = <args>`. 
+
+Chcete-li ladit místně, přidejte `"languageWorkers:node:arguments": "--inspect=5858"` pod `Values` v vaše [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) souboru a připojit ladicí program k portu 5858.
+
+Při ladění pomocí VS Code, `--inspect` parametr automaticky přidána pomocí `port` hodnota v souboru launch.json projektu.
+
+Ve verzi 1.x nastavení `languageWorkers:node:arguments` nebude fungovat. Port pro ladění lze vybrat pomocí [ `--nodeDebugPort` ](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) parametru u nástrojů Azure Functions Core.
 
 ## <a name="typescript"></a>TypeScript
 

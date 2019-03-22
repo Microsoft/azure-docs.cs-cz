@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 1db3fbbd39418504f98469c7b4999c5a91b5d6de
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: e6e20db39be8a6e60833bf5c4f9b6a34a9ead461
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342170"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013033"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytvoření a Správa rozpočtů Azure
 
@@ -53,7 +53,9 @@ Další informace o přiřazování oprávnění k datům služby Cost Managemen
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Vytvořit rozpočet na webu Azure Portal
 
-Rozpočet předplatné Azure můžete vytvořit pro měsíčně, čtvrtletně nebo roční období. Navigační obsah na webu Azure Portal určuje, zda rozpočet pro předplatné nebo skupinu prostředků vytvoříte. Například na webu Azure Portal, přejděte na **předplatná** &gt; vybrat odběr, který &gt; **rozpočty**. V tomto příkladu je rozpočtu, který vytvoříte pro předplatné, které jste vybrali. Pokud chcete vytvořit rozpočet pro skupinu prostředků, přejděte na **skupiny prostředků** > vyberte skupinu prostředků > **rozpočty**...
+Rozpočet předplatné Azure můžete vytvořit pro měsíčně, čtvrtletně nebo roční období. Navigační obsah na webu Azure Portal určuje, zda vytvořit rozpočet pro předplatné nebo skupinu pro správu.
+
+K vytvoření ani zobrazení rozpočtu, otevřete v webu Azure portal a vyberte požadovaný obor **rozpočty** v nabídce. Například, přejděte na **předplatná**, vyberte předplatné, ze seznamu a pak vyberte **rozpočty** v nabídce. Použití **oboru** obranné přepnout do jiného oboru, jako jsou skupiny pro správu v rozpočtech. Další informace o oborech najdete v tématu [pochopení a práci s obory](understand-work-scopes.md).
 
 Po vytvoření rozpočty, zobrazí se vaše aktuální útratu proti nim jednoduché zobrazení.
 

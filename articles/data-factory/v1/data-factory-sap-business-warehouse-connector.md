@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9e972ee64d60f0fc9703e766c3ab45c3057c32a2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1823c2ec28b342d41371eb6677e0330d7f885087
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019873"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893250"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Přesun dat z SAP Business Warehouse s využitím Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -64,13 +64,13 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-server | Název serveru, na kterém se nachází instance SAP BW. | řetězec | Ano
+server | Název serveru, na kterém se nachází instance SAP BW. | string | Ano
 systemNumber | Číslo systému systému SAP BW. | Dvěma číslicemi desetinné číslo reprezentované jako řetězec. | Ano
 ID klienta | ID klienta v systému SAP W klienta. | Tři číslice desetinné číslo reprezentované jako řetězec. | Ano
-uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Ano
-heslo | Heslo pro tohoto uživatele. | řetězec | Ano
-Název brány | Název brány, který služba Data Factory měla použít pro připojení k místní instanci SAP BW. | řetězec | Ano
-encryptedCredential | Řetězec, který šifrované přihlašovací údaje. | řetězec | Ne
+uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | string | Ano
+heslo | Heslo pro tohoto uživatele. | string | Ano
+gatewayName | Název brány, který služba Data Factory měla použít pro připojení k místní instanci SAP BW. | string | Ano
+encryptedCredential | Řetězec, který šifrované přihlašovací údaje. | string | Ne
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny datové sady typy (Azure SQL, Azure blob, tabulky Azure, atd.).
@@ -289,30 +289,30 @@ Jak je uvedeno v [aktivity přesunu dat](data-factory-data-movement-activities.m
 
 Při přesouvání dat ze SAP BW, se používají následující mapování z typů SAP BW na typy .NET.
 
-Typ dat ve slovníku ABAP | Datový typ .net
+Typ dat ve slovníku ABAP | Datový typ .NET
 -------------------------------- | --------------
 ACCP |  Int
-CHAR | Řetězec
-CLNT | Řetězec
-AKTUÁLNÍ | Desítkově
-CUKY | Řetězec
-DEC | Desítkově
+CHAR | String
+CLNT | String
+CURR | Decimal
+CUKY | String
+DEC | Decimal
 FLTP | Double
-INT1 | Bajt
+INT1 | Byte
 INT2 | Int16
 INT4 | Int
-LANG | Řetězec
-LCHR | Řetězec
-LRAW | Byte]
+LANG | String
+LCHR | String
+LRAW | Byte[]
 PREC | Int16
-QUAN | Desítkově
-NEZPRACOVANÉ | Byte]
-RAWSTRING | Byte]
-ŘETĚZEC | Řetězec
-JEDNOTKA | Řetězec
-DAT | Řetězec
-NUMC | Řetězec
-TIMS | Řetězec
+QUAN | Decimal
+RAW | Byte[]
+RAWSTRING | Byte[]
+STRING | String
+JEDNOTKA | String
+DAT | String
+NUMC | String
+TIMS | String
 
 > [!NOTE]
 > Pokud chcete namapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky, najdete v článku [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).

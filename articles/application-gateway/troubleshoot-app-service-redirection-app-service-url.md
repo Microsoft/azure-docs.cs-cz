@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: cd15e139b2bcd0046d2cfbd7603809936adf1cfc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 359d75f10f95b0e41ccd9a869d49247355f0d5d0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548128"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123177"
 ---
 # <a name="troubleshoot-application-gateway-with-app-service--redirection-to-app-services-url"></a>Řešení potíží s Application Gateway s využitím služby App Service – přesměrování na adresu URL služby App Service
 
@@ -42,7 +42,7 @@ Služby App Service je přístupný pouze s názvy hostitelů nakonfigurované v
 
 Chcete-li toho dosáhnout pomocí služby Application Gateway, používáme přepínače "Vybrat název hostitele z back-end adres" v nastavení HTTP a kontroly pro práci, používáme "Vybrat název hostitele z back-Endového nastavení HTTP" v konfiguraci sondy.
 
-![appservice-1](.\media\troubleshoot-app-service-redirection-app-service-url\appservice-1.png)
+![appservice-1](./media/troubleshoot-app-service-redirection-app-service-url/appservice-1.png)
 
 Kvůli tomu když služby App Service nemá přesměrování, používá název hostitele "example.azurewebsites.net" v hlavičce Location namísto původní název hostitele Pokud se nenakonfiguruje. Můžete zkontrolovat příkladu hlaviček žádostí a odpovědí níže.
 ```
@@ -78,7 +78,7 @@ K dosažení tohoto musí vlastní doménu a pokračujte v procesu uvedených n�
 
 - Registrace domény do seznamu vlastních domén služby App Service. V takovém případě musí mít záznam CNAME ve vaší vlastní doméně, přejdete na plně kvalifikovaný název domény služby App Service. Další informace najdete v tématu [mapování existujícího vlastního názvu DNS do služby Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain).
 
-![appservice-2](.\media\troubleshoot-app-service-redirection-app-service-url\appservice-2.png)
+![appservice-2](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
 - Po dokončení, který je připraven přijmout hostname "www.contoso.com" na službu App Service. Teď změňte váš záznam CNAME v DNS tak, aby odkazovala zpátky na plně kvalifikovaný název domény Application Gateway. Například "appgw.eastus.cloudapp.azure.com".
 
@@ -94,7 +94,7 @@ K dosažení tohoto musí vlastní doménu a pokračujte v procesu uvedených n�
 - Přidružení vlastní test paměti nastavení HTTP back-endu a ověřte stav back-endu, pokud je v pořádku.
 
 - Až to uděláte, služba Application Gateway nyní předávat stejný název hostitele "www.contoso.com" do služby App Service a provede přesměrování na stejný název hostitele. Můžete zkontrolovat příkladu hlaviček žádostí a odpovědí níže.
-```
+  ```
   ## Request headers to Application Gateway:
 
   Request URL: http://www.contoso.com/path
@@ -114,7 +114,7 @@ K dosažení tohoto musí vlastní doménu a pokračujte v procesu uvedených n�
   Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619700e4010;Path=/;HttpOnly;Domain=www.contoso.com
 
   X-Powered-By: ASP.NET
-```
-## <a name="next-steps"></a>Další postup
+  ```
+  ## <a name="next-steps"></a>Další postup
 
 Pokud předchozí kroky není problém vyřešit, otevřete [lístek podpory](https://azure.microsoft.com/support/options/).

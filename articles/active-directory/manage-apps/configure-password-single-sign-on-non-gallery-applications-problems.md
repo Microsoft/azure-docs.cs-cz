@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bacefaada8ab0d63bb17d22f67b91c51a789de8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c769d241f54d5d86ef4954609eec555d8aab947a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172327"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857993"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Potíže s konfigurací heslem jednotného přihlašování pro aplikaci mimo Galerii
 
@@ -46,25 +46,25 @@ Obecně platí **Pokud zachycení pole automatické přihlašování nefunguje, 
 
 Ke konfiguraci **založené na heslech Single Sign-on** pro aplikace s využitím **automatické přihlášení pole zachycení**, postupujte podle následujících kroků:
 
-1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
+1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
+4. Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-  * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete nakonfigurovat jednotné přihlašování.
+6. Vyberte aplikaci, kterou chcete nakonfigurovat jednotné přihlašování.
 
-7.  Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
+7. Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
 
-8.  Vyberte režim **přihlašování na základě heslo.**
+8. Vyberte režim **přihlašování na základě heslo.**
 
-9.  Zadejte **přihlašovací adresa URL**, adresu URL, kde uživatelé zadat svoje uživatelské jméno a heslo pro přihlášení. **Zkontrolujte pole přihlášení zobrazují na adrese URL můžete poskytnout**.
+9. Zadejte **přihlašovací adresa URL**, adresu URL, kde uživatelé zadat svoje uživatelské jméno a heslo pro přihlášení. **Zkontrolujte pole přihlášení zobrazují na adrese URL můžete poskytnout**.
 
 10. Klikněte na tlačítko **Uložit**.
 
@@ -76,25 +76,25 @@ Chcete-li ručně zachytit pole pro přihlášení, musíte nejprve mít nainsta
 
 Ke konfiguraci **založené na heslech Single Sign-on** pro aplikace s využitím **ruční pole zachycení**, postupujte podle následujících kroků:
 
-1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
+1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
+4. Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
    * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete nakonfigurovat jednotné přihlašování.
+6. Vyberte aplikaci, kterou chcete nakonfigurovat jednotné přihlašování.
 
-7.  Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
+7. Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
 
-8.  Vyberte režim **přihlašování na základě heslo.**
+8. Vyberte režim **přihlašování na základě heslo.**
 
-9.  Zadejte **přihlašovací adresa URL**, adresu URL, kde uživatelé zadat svoje uživatelské jméno a heslo pro přihlášení. **Zkontrolujte pole přihlášení zobrazují na adrese URL můžete poskytnout**.
+9. Zadejte **přihlašovací adresa URL**, adresu URL, kde uživatelé zadat svoje uživatelské jméno a heslo pro přihlášení. **Zkontrolujte pole přihlášení zobrazují na adrese URL můžete poskytnout**.
 
 10. Klikněte na tlačítko **Uložit**.
 
@@ -174,21 +174,21 @@ Rozšíření pro Chrome a Firefox lze také stáhnout z přímé odkazy níže:
 
 Můžete zobrazit podrobnosti o oznámení portálu podle následujících kroků:
 
-1.  Klikněte na tlačítko **oznámení** ikonu (zvonek) v pravém horním rohu webu Azure portal
+1. Klikněte na tlačítko **oznámení** ikonu (zvonek) v pravém horním rohu webu Azure portal
 
-2.  Vyberte všechna oznámení v **chyba** stavu (ty s červenou (!) vedle sebe).
+2. Vyberte všechna oznámení v **chyba** stavu (ty s červenou (!) vedle sebe).
 
-  >! Poznámka:] nelze klikněte na oznámení **úspěšné** nebo **v průběhu** stavu.
-  >
-  >
+   >! Poznámka:] nelze klikněte na oznámení **úspěšné** nebo **v průběhu** stavu.
+   >
+   >
 
-3.  **Podrobnosti oznámení** se otevře podokno.
+3. **Podrobnosti oznámení** se otevře podokno.
 
-4.  Pomocí informací sami, abyste porozuměli další podrobnosti o problému.
+4. Pomocí informací sami, abyste porozuměli další podrobnosti o problému.
 
-5.  Pokud stále potřebujete pomoc, můžete také sdílet informace s pracovníkem technické podpory nebo produktovou skupinou účelem vyřešení vašeho problému.
+5. Pokud stále potřebujete pomoc, můžete také sdílet informace s pracovníkem technické podpory nebo produktovou skupinou účelem vyřešení vašeho problému.
 
-6.  Klikněte na tlačítko **kopírování** **ikonu** napravo od **Kopírovat chybu** textového pole zkopírujte všechny podrobnosti oznámení sdílet s pracovníkem skupiny podpory nebo produktu.
+6. Klikněte na tlačítko **kopírování** **ikonu** napravo od **Kopírovat chybu** textového pole zkopírujte všechny podrobnosti oznámení sdílet s pracovníkem skupiny podpory nebo produktu.
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Jak získat nápovědu odesláním oznámení podrobnosti pro pracovníka podpory
 
@@ -226,7 +226,7 @@ Níže popisuje více co jednotlivé oznámení položky znamená, že a příkl
 
 -   **Hlavní název uživatele** – uživatel, který provedl operaci
 
-    -   Příklad: **tperkins@f128.info**
+    -   Příklad – **tperkins\@f128.info**
 
 -   **ID tenanta** – jedinečné ID tenanta, který byl členem skupiny uživatele, který provedl operaci
 
@@ -240,11 +240,11 @@ Níže popisuje více co jednotlivé oznámení položky znamená, že a příkl
 
 -   **Zobrazovaný název** – **(může být prázdné)** podrobnější zobrazovaný název pro chybu
 
-    -   Příklad * – **nastavení proxy aplikace.**
+    -   Příklad – **nastavení proxy aplikace.**
 
 -   **Stav** – konkrétní stavové oznámení
 
-    -   Příklad * – **se nezdařilo**
+    -   Příklad – **se nezdařilo**
 
 -   **ID objektu** – **(může být prázdné)** ID objektu, proti kterému byla provedena operace
 
@@ -252,7 +252,7 @@ Níže popisuje více co jednotlivé oznámení položky znamená, že a příkl
 
 -   **Podrobnosti o** – podrobný popis, k čemu došlo v důsledku operace
 
-    -   Příklad – **interní adresa url 'https://bing.com/"je neplatná, protože se už používá**
+    -   Příklad – **interní adresa url '<https://bing.com/>"je neplatná, protože se už používá**
 
 -   **Chyba při kopírování** – klikněte na tlačítko **ikonu kopírování** napravo od **Kopírovat chybu** textového pole zkopírujte všechny podrobnosti oznámení sdílet s pracovníkem skupiny podpory nebo produktu
 

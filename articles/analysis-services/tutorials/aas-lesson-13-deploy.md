@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 780853644125c8fa6d5edcef642cfad724516ef2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 72fa9bf211139b971afa443af812d644c76062fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188381"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123466"
 ---
 # <a name="deploy"></a>Nasazení
 
@@ -49,15 +49,15 @@ Tento článek je součástí kurzu tabulkového modelování, který by se měl
   
 #### <a name="to-deploy-the-adventure-works-internet-sales"></a>Nasazení modelu Adventure Works Internet Sales
   
-1.  V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt **AW Internet Sales** > **Sestavit**.  
+1. V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt **AW Internet Sales** > **Sestavit**.  
 
-2.  Klikněte pravým tlačítkem na projekt **AW Internet Sales** > **Nasadit**.
+2. Klikněte pravým tlačítkem na projekt **AW Internet Sales** > **Nasadit**.
 
-    Při nasazování do služby Azure Analysis Services můžete být vyzváni k zadání účtu. Zadejte účet organizace a heslo, například nancy@adventureworks.com. Tento účet musí být mezi správci serveru.
+   Při nasazování do služby Azure Analysis Services můžete být vyzváni k zadání účtu. Zadejte účet organizace a heslo, například nancy@adventureworks.com. Tento účet musí být mezi správci serveru.
   
-    Zobrazí se dialogové okno Nasadit ukazující stav nasazení metadat a každé tabulky zahrnuté v modelu.  
+   Zobrazí se dialogové okno Nasadit ukazující stav nasazení metadat a každé tabulky zahrnuté v modelu.  
     
-    ![aas-lesson13-deploy-status](../tutorials/media/aas-lesson13-deploy-status.png)
+   ![aas-lesson13-deploy-status](../tutorials/media/aas-lesson13-deploy-status.png)
   
 3. Po úspěšném dokončení nasazení pokračujte kliknutím na **Zavřít**.  
   

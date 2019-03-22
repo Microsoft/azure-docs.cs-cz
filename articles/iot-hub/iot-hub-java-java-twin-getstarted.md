@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/04/2017
-ms.openlocfilehash: 53eed3148483285bbcbc1e66edea5f2b189624c8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: bfb111b07db105190fc59f21b3255c2ea2b1471c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530548"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081011"
 ---
 # <a name="get-started-with-device-twins-java"></a>Začínáme s dvojčaty zařízení (Java)
 
@@ -294,18 +294,18 @@ V této části vytvoříte konzolovou aplikaci Java, která nastaví hodnotu oh
     * Vytvoření klienta zařízení ke komunikaci s centrem IoT.
     * Vytvoření **zařízení** objekt pro uložení vlastnosti dvojčete zařízení.
 
-    ```java
-    DeviceClient client = new DeviceClient(connString, protocol);
+      ```java
+      DeviceClient client = new DeviceClient(connString, protocol);
 
-    // Create a Device object to store the device twin properties
-    Device dataCollector = new Device() {
+      // Create a Device object to store the device twin properties
+      Device dataCollector = new Device() {
       // Print details when a property value changes
       @Override
       public void PropertyCall(String propertyKey, Object propertyValue, Object context) {
         System.out.println(propertyKey + " changed to " + propertyValue);
       }
-    };
-    ```
+      };
+      ```
 
 10. Přidejte následující kód, který **hlavní** metodu pro vytvoření **connectivityType** hlášené vlastnost a jeho odeslání do služby IoT Hub:
 
@@ -341,9 +341,9 @@ V této části vytvoříte konzolovou aplikaci Java, která nastaví hodnotu oh
 
 1. Upravte podpis metody **Main** tak, aby zahrnoval následující výjimky:
 
-    ```java
-    public static void main(String[] args) throws URISyntaxException, IOException
-    ```
+     ```java
+     public static void main(String[] args) throws URISyntaxException, IOException
+     ```
 
 1. Uložte a zavřete `simulated-device\src\main\java\com\mycompany\app\App.java` souboru.
 

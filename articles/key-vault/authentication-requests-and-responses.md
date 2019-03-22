@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2d63c14c5eba1a9637cfd5544585e71d2bc86048
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7ca486768cf56059328801b1b4b1036bb8aeece8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535157"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081776"
 ---
 # <a name="authentication-requests-and-responses"></a>Ověřování, požadavky a odpovědi
 
@@ -31,17 +31,17 @@ Toto téma obsahuje podrobné informace o službě Azure Key Vault. Obecné info
 
  Pro práci s objekty ve službě Azure Key Vault, tady jsou adresy URL příklad:  
 
--   Chcete-li vytvořit klíč s názvem TESTKEY služby Key Vault používá – `PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
+- Chcete-li vytvořit klíč s názvem TESTKEY služby Key Vault používá – `PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
 
--   Chcete-li IMPORTOVAT klíč s názvem IMPORTEDKEY na použití služby Key Vault – `POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
+- Chcete-li IMPORTOVAT klíč s názvem IMPORTEDKEY na použití služby Key Vault – `POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
 
--   Chcete-li získat tajný kód volá MYSECRET služby Key Vault používá – `GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
+- Chcete-li získat tajný kód volá MYSECRET služby Key Vault používá – `GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
 
--   K PODEPSÁNÍ přehled pomocí klíče volá TESTKEY v používání služby Key Vault – `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
+- K PODEPSÁNÍ přehled pomocí klíče volá TESTKEY v používání služby Key Vault – `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
- Autorita pro žádost do služby Key Vault je vždy následujícím způsobem,  `https://{keyvault-name}.vault.azure.net/`  
+  Autorita pro žádost do služby Key Vault je vždy následujícím způsobem,  `https://{keyvault-name}.vault.azure.net/`  
 
- Na cestě /keys byly vždy uloženy klíče, tajné klíče byly vždy uloženy v rámci cesty /secrets.  
+  Na cestě /keys byly vždy uloženy klíče, tajné klíče byly vždy uloženy v rámci cesty /secrets.  
 
 ## <a name="api-version"></a>Verze rozhraní API  
  Službu Azure Key Vault podporuje protokol správy verzí pro zajištění kompatibility s klienty nižší úrovně, ale ne všechny funkce bude k dispozici pro klienty. Musí ho klienti používat `api-version` parametr řetězce k určení verze protokolu, které podporují, protože není žádná výchozí hodnota dotazu.  
@@ -64,17 +64,17 @@ Toto téma obsahuje podrobné informace o službě Azure Key Vault. Obecné info
 ## <a name="error-responses"></a>Chybové odpovědi  
  Zpracování chyb použije stavové kódy HTTP. Výsledky jsou:  
 
--   2xx – Úspěch: Použít pro běžné operace. Text odpovědi bude obsahovat očekávaný výsledek  
+- 2xx – Úspěch: Použít pro běžné operace. Text odpovědi bude obsahovat očekávaný výsledek  
 
--   3xx – Přesměrování: 304 "Nedojde ke změně" mohou být vráceny ke splnění podmíněné operace GET. Další kódy 3xx lze v budoucnu k označení změny DNS a cestu.  
+- 3xx – Přesměrování: 304 "Nedojde ke změně" mohou být vráceny ke splnění podmíněné operace GET. Další kódy 3xx lze v budoucnu k označení změny DNS a cestu.  
 
--   4xx – chyba klienta: Používá se pro chybných požadavků, chybí klíče, chyby syntaxe, neplatný parametry, chyby ověřování, atd. Text odpovědi bude obsahovat vysvětlení podrobné informace o chybě.  
+- 4xx – chyba klienta: Používá se pro chybných požadavků, chybí klíče, chyby syntaxe, neplatný parametry, chyby ověřování, atd. Text odpovědi bude obsahovat vysvětlení podrobné informace o chybě.  
 
--   5xx – Chyba serveru: Používá se pro vnitřní chyby serveru. Text odpovědi bude obsahovat informace o souhrnné chybě.  
+- 5xx – Chyba serveru: Používá se pro vnitřní chyby serveru. Text odpovědi bude obsahovat informace o souhrnné chybě.  
 
- Systém je navržen pro práci za proxy nebo brány firewall. Klient proto může zobrazit v dalších chybových kódech.  
+  Systém je navržen pro práci za proxy nebo brány firewall. Klient proto může zobrazit v dalších chybových kódech.  
 
- Služba Azure Key Vault také vrátí informace o chybě v těle odpovědi, když dojde k potížím. Text odpovědi je ve formátu JSON a má podobu:  
+  Služba Azure Key Vault také vrátí informace o chybě v těle odpovědi, když dojde k potížím. Text odpovědi je ve formátu JSON a má podobu:  
 
 ```  
 

@@ -14,12 +14,12 @@ ms.date: 07/30/2018
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee21080fd95815289f73654cc5bc650296c8e8dd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 47128bce8dbbee1b28f6b0a3a5783e5ccee501bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433361"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177394"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Správa hesel aplikací pro dvoustupňové ověřování.
 
@@ -89,7 +89,7 @@ Pokud používáte dvoustupňové ověřování s svůj pracovní nebo školní 
 
 1. Přihlaste se ke svému pracovnímu nebo školnímu účtu.
 
-2. Přejděte na https://portal.office.com, vyberte **nastavení** ikonu v pravém horním rohu **portál služeb Office 365** stránce a potom rozbalte **dalšího ověření zabezpečení**.
+2. Přejděte na [ https://portal.office.com ](https://portal.office.com), vyberte **nastavení** ikonu v pravém horním rohu **portál služeb Office 365** stránce a potom rozbalte **zvýšení zabezpečení ověření**.
 
     ![Zobrazení portálu Office rozbalená oblast další bezpečnostní ověření](media/security-info/security-info-o365password.png)
 
@@ -105,7 +105,7 @@ Pokud používáte dvoustupňové ověřování s svůj pracovní nebo školní 
 
 1. Přihlaste se ke svému pracovnímu nebo školnímu účtu.
 
-2. Přejděte na https://portal.office.com, vyberte **nastavení** ikonu v pravém horním rohu **portál služeb Office 365** stránce a pak vyberte **dalšího ověření zabezpečení**.
+2. Přejděte na [ https://portal.office.com ](https://portal.office.com), vyberte **nastavení** ikonu v pravém horním rohu **portál služeb Office 365** stránce a pak vyberte **zvýšení zabezpečení ověření**.
 
 3. Vyberte text, který říká, **vytvořit a spravovat hesla aplikací** otevřít **hesla aplikací** stránky.
 

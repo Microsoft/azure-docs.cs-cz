@@ -15,12 +15,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 548ea67092a2cdb8cedeed869becd8933c08c5c6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 22bf80c13ef3b18ab3119b6b35e529c8ad32f504
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181788"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285090"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Vyhledání nápovědy a vytvořit lístek podpory pro Azure Active Directory
 Společnost Microsoft poskytuje globální technickou, před prodejem, fakturaci a předplatné podpory pro Azure Active Directory (Azure AD). Podpora je k dispozici online a po telefonu pro placené Microsoft Azure a zkušebních verzí předplatného. Telefonické podpory a online podporu fakturace jsou dostupné v dalších jazycích. 
@@ -31,7 +31,7 @@ Než budete vytvářet lístek podpory, projděte si následující prostředky 
 
 * Obsah, jako je například postupy nebo ukázek kódu pro IT profesionály a vývojáře, najdete v článku [technické dokumentace na webu docs.microsoft.com](https://docs.microsoft.com/azure/active-directory/).
 
-* [Technické komunitě Microsoftu](https://techcommunity.microsoft.com/) je určená pro naše IT pro partnery a zákazníky pro spolupráci, sdílení a rozšiřování. [Microsoft Tech Community informace Center](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) se používá pro oznámení, blogové příspěvky, požádejte mě cokoli (AMA) interakce s experty a další. Můžete také [připojte se ke komunitě na předkládat své nápady](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities).
+* [Technické komunitě Microsoftu](https://techcommunity.microsoft.com/) je určená pro naše IT pro partnery a zákazníky pro spolupráci, sdílení a rozšiřování. [Microsoft Technical Community informace Center](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) se používá pro oznámení, blogové příspěvky, požádejte mě cokoli (AMA) interakce s experty a další. Můžete také [připojte se ke komunitě na předkládat své nápady](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities).
 
 
 ## <a name="open-a-support-ticket"></a>Vytvořit lístek podpory
@@ -64,8 +64,7 @@ Pokud nemůžete najít odpovědi sami, můžete otevřít lístek online podpor
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>Jak vytvořit lístek podpory pro službu Azure AD v Centru pro správu služeb Microsoft 365
 
 > [!NOTE]
-> Podpora pro Azure AD [centra pro správu služeb Microsoft 365](https://admin.microsoft.com) nabízíte pouze správci.
-> 
+> Podpora pro Azure AD [centra pro správu služeb Microsoft 365](https://admin.microsoft.com) nabízíte pouze správci. 
 
 1. Přihlaste se k [centra pro správu služeb Microsoft 365](https://admin.microsoft.com) pomocí účtu, který má Enterprise Mobility + Security (EMS) licence.
 

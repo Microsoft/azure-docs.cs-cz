@@ -1,6 +1,6 @@
 ---
 title: Apache Pig pomocí prostředí PowerShell ve službě HDInsight – Azure
-description: Zjistěte, jak odesílat úlohy Apache Pig do clusterů Apache Hadoop v HDInsight pomocí Azure Powershellu.
+description: Zjistěte, jak odesílat úlohy Apache Pig do clusteru Apache Hadoop v HDInsight pomocí Azure Powershellu.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 84780d7c432e818153f964522063f29d8540e0ec
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 69a45a0c2c21ffafde8a4b366e1f3e90b7c8f59a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434303"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012620"
 ---
 # <a name="use-azure-powershell-to-run-apache-pig-jobs-with-hdinsight"></a>Pomocí Azure Powershellu spouštět úlohy Apache Pig s HDInsight
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Tento dokument obsahuje příklad použití Azure Powershellu pro odeslání úlohy Apache Pig Apache Hadoop v clusteru HDInsight. Pig umožňuje zapisovat úlohy mapreduce je možné pomocí jazyka (Pig Latin) této transformace dat modely, spíše než mapovací a redukční funkce.
+Tento dokument obsahuje příklad použití Azure PowerShell k odesílání úloh Apache Pig do Apache Hadoop v clusteru HDInsight. Pig umožňuje zapisovat úlohy mapreduce je možné pomocí jazyka (Pig Latin) této transformace dat modely, spíše než mapovací a redukční funkce.
 
 > [!NOTE]  
 > Tento dokument neobsahuje podrobný popis co dělat v příkladech používají příkazy Pig Latin. Informace o Pig Latin použitý v tomto příkladu najdete v tématu [použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md).
@@ -41,9 +41,9 @@ Prostředí Azure PowerShell poskytuje *rutiny* , které umožňují vzdáleně 
 Při spuštění úlohy Pig ve vzdáleném clusteru HDInsight se používají následující rutiny:
 
 * **Connect-AzureRmAccount**: Ověřuje se prostředí Azure PowerShell ke svému předplatnému Azure.
-* **Nové AzureRmHDInsightPigJobDefinition**: Vytvoří *úlohy definice* pomocí zadané příkazy Pig Latin.
+* **New-AzureRmHDInsightPigJobDefinition**: Vytvoří *úlohy definice* pomocí zadané příkazy Pig Latin.
 * **Start-AzureRmHDInsightJob**: Odešle definice úlohy HDInsight a spustí úlohu. A *úlohy* je vrácen objekt.
-* **Čekání AzureRmHDInsightJob**: Objekt úlohy používá ke kontrole stavu úlohy. To počká, až úloha dokončí, nebo byla překročena doba čekání.
+* **Wait-AzureRmHDInsightJob**: Objekt úlohy používá ke kontrole stavu úlohy. To počká, až úloha dokončí, nebo byla překročena doba čekání.
 * **Get-AzureRmHDInsightJobOutput**: Umožňuje načíst výstup úlohy.
 
 Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy ve vašem clusteru HDInsight.

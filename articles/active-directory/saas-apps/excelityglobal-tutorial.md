@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 94ba673f7617d3df5ca51254b3d4ab9695dab0fb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b962f0e7d571828fb3a1180b3d77a3368ef6c665
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769246"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852623"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-excelityglobal"></a>Kurz: Integrace Azure Active Directory s ExcelityGlobal
 
@@ -117,7 +117,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s ExcelityGlobal, proveďte n
     **Pro prostředí izolovaného prostoru** : `https://s6.excelityglobal.com/ACS`
 
 5. Vaše aplikace ExcelityGlobal očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. Očekává, že aplikace ExcelityGlobal **nameidentifier** namapovat s **user.mail**, takže budete muset upravit mapování atributů po kliknutí na **upravit** ikonu a změňte mapování atributů.
- 
+ 
     ![image](common/edit-attribute.png)
 
 6. V **podpisový certifikát SAML** klikněte na tlačítko **upravit** tlačítko Otevřít **podpisový certifikát SAML** dialogového okna.
@@ -160,7 +160,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: cd02930394fd4cd09808a808765e54ff9ea6b4ea
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e3757e94dcd8ccc39613b9a6fff8bf491812866a
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57434297"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224194"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Vytvořte clustery systému Apache Hadoop v HDInsight pomocí šablon Resource Manageru
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -36,14 +36,14 @@ Postupujte podle pokynů v tomto článku, budete potřebovat:
 
 V šabloně definujte prostředky, které jsou potřeba pro aplikaci. Zadejte také parametry nasazení pro vstupní hodnoty pro různá prostředí. Šablona se skládá z JSON a z výrazů, které můžete použít k vytvoření hodnot pro vaše nasazení.
 
-Můžete najít ukázkové šablony HDInsight v [šablony pro rychlý start Azure](https://azure.microsoft.com/resources/templates/?term=hdinsight). Používat různé platformy [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) s [rozšíření Resource Manageru](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) nebo textovém editoru a uložte šablonu do souboru na pracovní stanici. 
+Můžete najít ukázkové šablony HDInsight v [šablony rychlý start Azure](https://azure.microsoft.com/resources/templates/?term=hdinsight). Používat různé platformy [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) s [rozšíření Resource Manageru](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) nebo textovém editoru a uložte šablonu do souboru na pracovní stanici. 
 
 Další informace o šablonách Resource Manageru najdete v následujících článcích a příklady:
 
 * [Tvorba šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Nasazení aplikace pomocí šablon Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md)
 * [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/allversions) referenčními informacemi k šablonám
-* [Šablony Azure pro rychlý start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
+* [Šablony rychlý start Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
 ## <a name="generate-templates"></a>Generování šablon
 
@@ -76,7 +76,7 @@ Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se 
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste se naučili několik způsobů, jak vytvořit HDInsight cluster. Další informace naleznete v následujících článcích:
 
-* Pro další HDInsight naleznete v tématu související šablony [šablony pro rychlý start Azure](https://azure.microsoft.com/resources/templates/?term=hdinsight).
+* Pro další HDInsight naleznete v tématu související šablony [šablony rychlý start Azure](https://azure.microsoft.com/resources/templates/?term=hdinsight).
 * Příklad nasazení prostředků pomocí klientské knihovny .NET najdete v tématu [nasazení prostředků pomocí knihovny .NET a šablonou](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Podrobný příklad nasazení aplikace, najdete v části [zřizování a nasazování mikroslužeb v Azure předvídatelně](../app-service/deploy-complex-application-predictably.md).
 * Pokyny pro nasazení řešení do různých prostředí najdete v článku věnovaném [testovacím a vývojovým prostředím v Microsoft Azure](../solution-dev-test-environments.md).

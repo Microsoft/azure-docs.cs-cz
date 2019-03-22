@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 16717bbbb8974a1adb740c8fee5a5ba06043f53e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e77c7ea6036e92c33c975f8180053a8880db55a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544367"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090521"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí PHP a rozhraní API REST vyhledávání zpráv Bingu
 
@@ -200,4 +200,4 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-[Vytvoření jednostránkové webové aplikace](tutorial-bing-news-search-single-page-app.md)
+> [Vytvoření jednostránkové webové aplikace](tutorial-bing-news-search-single-page-app.md)

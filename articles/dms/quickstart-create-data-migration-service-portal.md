@@ -3,20 +3,20 @@ title: 'Rychlý start: Vytvoření instance služby Azure Database Migration Ser
 description: Použití webu Azure Portal k vytvoření instance služby Azure Database Migration Service
 services: database-migration
 author: HJToland3
-ms.author: rajpo
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/12/2019
-ms.openlocfilehash: 42493568a539c32441966d4562591e393004c22e
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: af5ffdb1c1f030c2bbc0616d027c06b59f1a34de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791272"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177462"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Rychlý start: Vytvoření instance služby Azure Database Migration Service pomocí webu Azure Portal
 V tomto rychlém startu použijete Azure Portal k vytvoření instance služby Azure Database Migration Service.  Po vytvoření služby ji můžete použít k migraci dat z místního SQL Serveru do databáze SQL Azure.

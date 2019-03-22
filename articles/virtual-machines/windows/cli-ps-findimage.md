@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: danlep
-ms.openlocfilehash: 1b3f000352a91d0204469f4ac14d5293140b933f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ebf4b413ecfbdf850f0d9e6ebc50f166e27bee0a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868846"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081844"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Vyhledání imagí virtuálních počítačů Windows na webu Azure Marketplace pomocí Azure Powershellu
 
@@ -37,7 +37,7 @@ Můžete také procházet dostupné Image a pomocí nabídky [Azure Marketplace]
 Tato tabulka uvádí podmnožinu dostupných skladových položek pro uvedené vydavatele a nabídky.
 
 | Vydavatel | Nabídka | Skladová jednotka (SKU) |
-|:--- |:--- |:--- |:--- |
+|:--- |:--- |:--- |
 | MicrosoftWindowsServer |WindowsServer |2019-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2019-Datacenter-Core |
 | MicrosoftWindowsServer |WindowsServer |2019-Datacenter-with-Containers |

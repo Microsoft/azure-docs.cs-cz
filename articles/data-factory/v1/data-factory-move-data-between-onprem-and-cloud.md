@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 94c464733d731505cde0327ce9a295d3b4ab68de
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 72e93b99783441bda97c52ff295a89b0fcf4e629
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538680"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995896"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat
 > [!NOTE]
@@ -359,7 +359,7 @@ V tomto kroku vytvoříte **kanálu** s jedním **aktivity kopírování** , kte
 
    * V části aktivit je jenom aktivity jehož **typ** je nastavena na **kopírování**.
    * **Vstup** aktivity je nastavený na **EmpOnPremSQLTable** a **výstup** aktivity je nastavený na **OutputBlobTable**.
-   * V **typeProperties** části **SqlSource** je zadán jako **typ zdroje** a ** BlobSink ** je zadán jako **jímky typu**.
+   * V **typeProperties** části **SqlSource** je zadán jako **typ zdroje** a **BlobSink** je stanoveno, **jímky typu**.
    * Příkaz jazyka SQL `select * from emp` je určená pro **sqlReaderQuery** vlastnost **SqlSource**.
 
    Počáteční a koncové hodnoty data a času musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41Z. Čas hodnoty **end** je nepovinný, ale my ho v tomto kurzu použijeme.

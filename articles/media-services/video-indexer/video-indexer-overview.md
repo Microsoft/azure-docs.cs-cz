@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: c1c81ba0f168759ab9cc05f3441e07ff03275e84
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 8ebf9826f156245381ce3503dc64275bca571cc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417376"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890777"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
@@ -24,7 +24,7 @@ Azure Video Indexer je cloudová aplikace sestavená s využitím služeb Azure 
 
 - **Rozpoznávání tváře**: Zjistí a skupiny tváří povolí, nebude ve videu.
 - **Identifikace celebrit**: Video Indexer automaticky identifikuje přes 1 millión celebrit – například vedoucí pracovníci world, actors a actresses, sportovců z celého světa, výzkumní pracovníci, obchodní a technické vedoucí po celém světě. Data o těchto celebritách najdete taky na různých známých webech, třeba IMDB nebo v encyklopedii Wikipedia.
-- **Identifikace tváře založené na účtu**: Video Indexer trénovat modelu pro zadaný účet. Potom na základě modelu vytrénovaného speciálně pro videa v příslušném účtu dokáže rozpoznat tváře ve videu.
+- **Identifikace tváře založené na účtu**: Video Indexer trénovat modelu pro zadaný účet. Pak rozezná tváří na videu na základě trénovaného modelu. Další informace najdete v tématu [přizpůsobení modelu osoby z webu Video Indexer](customize-person-model-with-website.md) a [přizpůsobení modelu osoba s Video Indexer API](customize-person-model-with-api.md).
 - **Miniatura extrakce pro plošky** ("co nejlepší pro rozpoznávání tváře"): Automaticky identifikuje nejvhodnější zachycené tváří v každé skupině tváří (podle kvality, velikost a umístění čelní) a rozbalte ho jako prostředek obrázku.
 - **Rozpoznávání textu Visual** (OCR): Extrahuje text, který se zobrazí vizuální ve videu.
 - **Vizuální moderování obsahu**: Zjistí pro dospělé nebo pikantního vizuály.
@@ -40,7 +40,7 @@ Azure Video Indexer je cloudová aplikace sestavená s využitím služeb Azure 
 - **Skryté titulky**: Vytvoří titulků v tří formátů: VTT, TTML, SRT.
 - **Dvě kanálu zpracování**: Automaticky detekuje, oddělte přepisu a sloučí do jediné časové osy.
 - **Noise snížení**: Vymaže nahoru nahrávky zvuku nebo hlučného telefonního subsystému (na základě Skype filtrů).
-- **Přizpůsobení přepisu** (CRIS): Trénovat a spustí rozšířenou vlastní převod řeči na text modely a vytvořte záznamy o studiu specifických pro dané odvětví.
+- **Přizpůsobení přepisu** (CRIS): Trénovat vlastní převod řeči na text modely a vytvořte záznamy o studiu specifických pro dané odvětví. Další informace najdete v tématu [přizpůsobení jazykového modelu z webu Video Indexer](customize-language-model-with-website.md) a [upravit jazykový model s rozhraními API pro Video Indexer](customize-language-model-with-api.md).
 - **Výčet mluvčího**: Mapuje a rozumí, které mluvčího paprsků která slova a kdy.
 - **Statistiky mluvčího**: Poskytuje statistiky pro přednášející řeči poměry.
 - **Textové moderování obsahu**: Detekuje explicitní text v přepisu zvuku.
@@ -58,8 +58,6 @@ Indexování pomocí částečných výsledků jeden kanál pro tyto modely kdy 
 - **Artefakty**: Extrahuje bohatou sadu "Další úroveň podrobností" artefakty pro každou modelů.
 - **Analýza subjektivního hodnocení**: Identifikuje kladná, záporná a neutrální zabarvení řeči a vizuální text.
  
-  
- 
 Jakmile Video Indexer dokončí zpracování a analýzu, můžete přehledné informace o videích revidovat, kurátorovat, prohledávat a publikovat.
 
 Služba Video Indexer dokáže splnit vaše požadavky, ať už jste vývojář, nebo správce obsahu. Správci obsahu můžou pomocí webového portálu Video Indexer tuto službu využívat, aniž by museli napsat jediný řádek kódu. Další informace najdete v článku [Začínáme s webem Video Indexer](video-indexer-get-started.md). Vývojáři mohou využít rozhraní API ke zpracování obsahu ve velkém měřítku, viz téma věnované [použití rozhraní REST API služby Video Indexer](video-indexer-use-apis.md). Tato služba také zákazníkům umožňuje používat widgety k publikování datových proudů videa a extrahovaných přehledů ve vlastních aplikacích. Další informace najdete v tématu [Vložení vizuálních widgetů do vaší aplikace](video-indexer-embed-widgets.md).
@@ -75,8 +73,6 @@ Dál najdete několik scénářů, ve kterých se Video Indexer může hodit
 - Finanční zhodnocení – Video Indexer umožňuje zvýšit hodnotu videí. Například obory, které závisejí na výnosech z reklam (například sdělovací prostředky, sociální média atd.), mohou využít extrahované přehledy jako další signály pro reklamní server a poskytovat díky nim relevantnější reklamy (reklama na sportovní obuv je relevantnější během fotbalového utkání než při plaveckých soutěžích).
 
 - Zapojení uživatelů – Video Insights se dá využít k lepšímu zapojení uživatelů díky možnosti předkládání relevantních videookamžiků. Jako příklad si představte vzdělávací video, které prvních 30 minut vysvětluje kulové plochy a dalších 30 minut pyramidy. Studentovi, který si čte o pyramidách, by víc pomohlo, kdyby se video nastavilo tak, aby se spustilo od značky 30 minut.
-
-Další informace najdete na tomto [blogu](https://aka.ms/videoindexerblog).
 
 ## <a name="next-steps"></a>Další postup
 

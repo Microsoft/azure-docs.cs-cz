@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7eb18b5560e849796770ce9d24574d7a3d0db262
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b35c5073f2b19523010528800c2a989d5de5b448
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716136"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848009"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -73,7 +73,7 @@ Velikost virtuálního počítače a typ se určuje podle procesoru, výkon, vel
 
 * Procesor: Velikost virtuálního počítače určuje počet jader. Více jader, vyšší stupeň paralelní zpracování každého uzlu dosáhnout. Některé typy virtuálních počítačů navíc mají rychlejší jader.
 
-* PAMĚŤ RAM: Velikost virtuálního počítače také určuje množství paměti RAM ve virtuálním počítači k dispozici. Pro úlohy, které ukládat data v paměti pro zpracování, místo čtení z disku, zkontrolujte navyšte kapacitu pracovních uzlů k dispozici dostatek paměti k datům.
+* Paměť RAM: Velikost virtuálního počítače také určuje množství paměti RAM ve virtuálním počítači k dispozici. Pro úlohy, které ukládat data v paměti pro zpracování, místo čtení z disku, zkontrolujte navyšte kapacitu pracovních uzlů k dispozici dostatek paměti k datům.
 
 * Síť: Pro většinu typů clusteru je dat zpracovaných branami clusteru není na místním disku, ale v služby externí úložiště, jako je Data Lake Storage nebo Azure Storage. Vezměte v úvahu šířka pásma sítě a propustnosti mezi uzlu virtuálního počítače a služby úložiště. Šířku pásma sítě dostupnou pro virtuální počítač se obvykle zvyšuje s větší velikosti. Podrobnosti najdete v tématu [velikosti virtuálních počítačů přehled](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
 
@@ -109,13 +109,13 @@ Po určení cílovou velikost virtuálního počítače clusteru, škálování 
 1. Klikněte na **Nápověda a podpora** v levé dolní části stránky.
 1. Klikněte na **nová žádost o podporu**.
 1. Na **nová žádost o podporu** stránce v části **Základy** kartu, vyberte následující možnosti:
-    - **Typ problému**: **Omezení služby a předplatného (kvóty)**
-    - **Předplatné**: předplatné, které chcete upravit
-    - **Typ kvóty**: **HDInsight**
+   - **Typ problému**: **Omezení služby a předplatného (kvóty)**
+   - **Předplatné**: předplatné, které chcete upravit
+   - **Typ kvóty**: **HDInsight**
     
-    ![Vytvořit žádost o podporu o navýšení kvóty pro jádra HDInsight](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
+     ![Vytvořit žádost o podporu o navýšení kvóty pro jádra HDInsight](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
-1. Klikněte na tlačítko **Další**.
+1. Klikněte na **Další**.
 1. Na **podrobnosti** stránky, zadejte popis problému, vyberte závažnost problému a vyberte upřednostňovaný způsob kontaktu.
 1. Klikněte na tlačítko **Další: Zkontrolovat a vytvořit**.
 1. Na **revize + vytvořit** klikněte na tlačítko **vytvořit**.
@@ -125,7 +125,7 @@ Po určení cílovou velikost virtuálního počítače clusteru, škálování 
 
 Je možné [obraťte se na podporu požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-Ale existují některá omezení pevné kvóty, například v rámci jednoho předplatného Azure může mít maximálně 10 000 jader. Podrobnosti o těchto omezeních najdete v tématu [předplatného Azure a limity, kvóty a omezení](https://docs.microsoft.com/azure/azure-subscription-service-limits#limits-and-the-azure-resource-manager).
+Ale existují některá omezení pevné kvóty, například v rámci jednoho předplatného Azure může mít maximálně 10 000 jader. Podrobnosti o těchto omezeních najdete v tématu [předplatného Azure a limity, kvóty a omezení](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
 ## <a name="next-steps"></a>Další postup
 

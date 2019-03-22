@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3b503c7f0693a90d438fcec3ecae335fd349b3d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cb44c64540cc461bca4e305f7783f7c6b612591b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187997"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996337"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect uživatelské možnosti přihlášení
 Azure Active Directory (Azure AD) Connect umožňuje uživatelům se přihlásit k cloudových a místních prostředků pomocí přihlašovali stejnými hesly. Tento článek popisuje klíčové koncepty pro každý model identit vám pomůže vybrat identitu, která chcete použít pro přihlášení k Azure AD.
@@ -75,7 +75,9 @@ Další informace naleznete v tématu:
 ### <a name="federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2"></a>Federace, která používá nové nebo existující farmy se službou AD FS ve Windows serveru 2012 R2
 Pomocí federovaného přihlašování můžou vaši uživatelé přihlašovat ke službám Azure na základě AD pomocí svých místních hesel. Když jsou v podnikové síti, ještě nemají k zadání hesla. Pomocí možnosti federační službou AD FS, můžete nasadit do nové nebo existující farmy se službou AD FS ve Windows serveru 2012 R2. Pokud se rozhodnete zadat existující farmy, Azure AD Connect nakonfiguruje vztah důvěryhodnosti mezi farmy a Azure AD tak, aby vaši uživatelé mohou přihlásit.
 
-<center>![Federace se službou AD FS ve Windows serveru 2012 R2](./media/plan-connect-user-signin/federatedsignin.png)</center>
+<center>
+
+![Federace se službou AD FS ve Windows serveru 2012 R2](./media/plan-connect-user-signin/federatedsignin.png)</center>
 
 #### <a name="deploy-federation-with-ad-fs-in-windows-server-2012-r2"></a>Nasazení federace se službou AD FS ve Windows serveru 2012 R2
 
@@ -152,6 +154,7 @@ Je velmi důležité porozumět vztahu mezi stavy vlastní doménu v adresáři 
 Následující informace, Předpokládejme, že jsme se contoso.com přípona UPN, který je používán v místním adresáři jako součást UPN – například user@contoso.com.
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Express synchronizaci hodnot hash hesel se/nastavení
+
 | Stav | Dopad na činnost koncového uživatele přihlášení do Azure |
 |:---:|:--- |
 | Nepřidáno |V takovém případě žádné vlastní domény pro doménu contoso.com se přidala v adresáři Azure AD. Uživatelé, kteří mají UPN místní s příponou @contoso.com nebudou moci používat své místní hlavní název uživatele pro přihlášení k Azure. Místo toho budete muset použít nový název UPN, která je k dispozici k nim pomocí Azure AD tak, že přidáte příponu pro výchozí adresář Azure AD. Například, pokud synchronizujete uživatelům azurecontoso.onmicrosoft.com adresář Azure AD a místní uživatel user@contoso.com dostanou název UPN user@azurecontoso.onmicrosoft.com. |

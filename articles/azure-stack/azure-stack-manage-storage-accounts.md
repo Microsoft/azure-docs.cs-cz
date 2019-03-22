@@ -1,6 +1,6 @@
 ---
 title: Správa účtů úložiště Azure Stack | Dokumentace Microsoftu
-description: Zjistěte, jak najít, spravovat, obnovit a získat účty úložiště Azure Stack
+description: Zjistěte, jak hledat, spravovat, obnovit a získat účty úložiště Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,29 +11,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 03/19/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: bce00300e62b3ea04331530bbda2c16f0ddd2ab3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.lastreviewed: 03/19/2019
+ms.openlocfilehash: 34e49060a28869015f067f058b81239ec13eff47
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759368"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226395"
 ---
-# <a name="manage-storage-accounts-in-azure-stack"></a>Správa účtů úložiště ve službě Azure Stack
+# <a name="manage-azure-stack-storage-accounts"></a>Správa účtů úložiště Azure Stack
 
-Zjistěte, jak spravovat účty úložiště ve službě Azure Stack najít, obnovit a získat kapacity úložiště na základě obchodních potřeb.
+Další informace o správě účtů úložiště Azure Stack. Obnovit a získat kapacity úložiště na základě obchodních potřeb.
 
 ## <a name="find-a-storage-account"></a>Najít účet úložiště
+
 Seznam účtů úložiště v oblasti lze zobrazit ve službě Azure Stack podle:
 
 1. Přihlaste se k [portál pro správu](https://adminportal.local.azurestack.external).
 
-2. Vyberte **všechny služby** > **účty úložiště**.
+2. Vyberte **všechny služby** > **úložiště** > **účty úložiště**.
 
-   ![](media/azure-stack-manage-storage-accounts/image4.png)
+   ![Účty úložiště Azure Stack](media/azure-stack-manage-storage-accounts/image4.png)
 
 Ve výchozím nastavení se zobrazí prvních 10 účtů. Můžete také načíst informace kliknutím **načíst další** odkaz v dolní části seznamu.
 
@@ -45,17 +46,18 @@ Pokud vás zajímají konkrétní účet úložiště – můžete **filtrovat a
 **Chcete-li filtrovat účty:**
 
 1. Vyberte **filtr** v horní části podokna.
-2. V podokně filtru umožňuje zadat **název účtu**, ** ID předplatného, nebo **stav** a systém doladit seznam účtů úložiště, který se má zobrazit. Podle potřeby použijte je.
-3. Vyberte **aktualizace**. V seznamu by měl aktualizovat odpovídajícím způsobem.
+2. V podokně filtru umožňuje zadat **název účtu**, **ID předplatného**, nebo **stav** a systém doladit seznam účtů úložiště, který se má zobrazit. Podle potřeby použijte je.
+3. Při psaní seznam automaticky použijte filtr.  .
    
-    ![](media/azure-stack-manage-storage-accounts/image5.png)
+    ![Vyfiltrujte účty úložiště Azure Stack](media/azure-stack-manage-storage-accounts/image5.png)
+
 4. Resetovat filtr: vyberte **filtr**, vymažte výběry a aktualizovat.
 
 Textové pole hledání (nahoře v podokně seznamu účtů úložiště) umožňuje zvýraznit text vybraný v seznamu účtů. To můžete použít, pokud úplný název nebo ID není snadno k dispozici.
 
 To vám umožní najít účet, který vás zajímá můžete použít libovolný text tady.
 
-![](media/azure-stack-manage-storage-accounts/image6.png)
+![Najít účty úložiště Azure Stack](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## <a name="look-at-account-details"></a>Podívejte se na Podrobnosti účtu
 Po otevření účty, že máte zájem o zobrazení, můžete vybrat konkrétní účtu a zobrazit některé podrobnosti. Nové podokno otevře s podrobnostmi o účtu jako například: typ účtu, čas vytvoření, umístění atd.
@@ -97,9 +99,8 @@ Nastavení doby uchování umožňuje operátor cloudu k zadejte časové obdob�
 
 1. Přihlaste se k [portál pro správu](https://adminportal.local.azurestack.external).
 2. Vyberte **všechny služby** > **Správa oblastí** pod **správu**.
-3. Vyberte **úložiště** z **poskytovatelů prostředků** seznamu.
-4. Vyberte **nastavení** v horní části stránky a otevřete tak podokno nastavení.
-5. Vyberte **konfigurace** pak upravte hodnotu doby uchování.
+3. Vyberte **poskytovatelů prostředků** > **úložiště** > **nastavení**. Vaše cesta je Domů > *oblasti* – poskytovatelé prostředků > úložiště.
+4. Vyberte **konfigurace** pak upravte hodnotu doby uchování.
 
    Nastavte počet dní a pak ho uložte.
    

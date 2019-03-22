@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b590d75abb9e3f6465594a5c8c684b94e6f2e07f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d1debbcc8f225a0d4608d67b19e5e00aca580ce1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864291"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122008"
 ---
 # <a name="what-is-azure-backup"></a>Co je Azure Backup?
 
@@ -55,10 +55,10 @@ Obě služby poskytují doplňkové, ale jiné funkce.
 Pomocí body tabulku zjistit vašim potřebám BCDR. 
 
 **Cíl** | **Podrobnosti** | **Porovnání**
---- | --- | --- | --- |
+--- | --- | --- 
 **Zálohování a uchovávání dat** | Zálohovaná data můžete uchovávat a ukládají dnů, měsíců nebo roků i v případě potřeby z hlediska dodržování předpisů. | Záložní řešení, jako je Azure Backup umožňuje jemně vyberte data, která chcete zálohovat a jemně ladit zásady zálohování a uchovávání.<br/><br/> Site Recovery neumožňuje stejné dolaďování.
 **Cíl bodu obnovení (RPO)** | Přijatelná míra ztráty dat v případě potřeby provedení obnovení. | Zálohování mají další proměnnou cíle bodu obnovení.<br/><br/> Zálohy virtuálních počítačů obvykle mají RPO za den, zatímco zálohy databází mají rpo nižší, až 15 minut.<br/><br/> Site Recovery poskytuje nízkou hodnotou RPO, protože je replikace průběžné nebo časté, tak, aby je malý rozdíl mezi kopírovat zdroje a repliky.
-**Plánovaná doba obnovení (RTO)** |Množství času potřebného k dokončení obnovení nebo zotavení. | Z důvodu vyššího RPO je množství dat, které musí řešení zálohování zpracovat, typicky mnohem vyšší, což vede k delším RTO. Například obnovení dat z pásků může trvat i dny v závislosti na tom, jak dlouho trvá přenos pásku z odlehlého umístění. | Řešení zotavení po havárii, jako je například Site Recovery mít s nízkou hodnotou RPO, protože replikace průběžné/časté obecně znamená, že se cíl více vysoce synchronizují se zdrojem. |
+**Plánovaná doba obnovení (RTO)** |Množství času potřebného k dokončení obnovení nebo zotavení. | Z důvodu vyššího RPO je množství dat, které musí řešení zálohování zpracovat, typicky mnohem vyšší, což vede k delším RTO. Například obnovení dat z pásků může trvat i dny v závislosti na tom, jak dlouho trvá přenos pásku z odlehlého umístění. 
 
 ## <a name="what-backup-scenarios-are-supported"></a>Jaké scénáře zálohování se podporují?
 

@@ -9,12 +9,12 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 description: Zjistěte, jak rychle vytvořit cluster Kubernetes povolené prostory vývoj Azure přímo z prohlížeče bez nutnosti instalace cokoli.
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
-ms.openlocfilehash: 7d55261c3b5461e6986c1c194da7afd37587ff55
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: bfde055c99a1109a8f71c838b44ed1742e3f06aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781523"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895562"
 ---
 # <a name="create-a-kubernetes-cluster-using-azure-cloud-shell"></a>Vytvoření clusteru Kubernetes pomocí Azure Cloud Shell
 
@@ -22,7 +22,7 @@ Můžete použít [Azure Cloud Shell](/azure/cloud-shell) k vytvoření clusteru
 
 ## <a name="create-the-cluster"></a>Vytvoření clusteru
 
-Nejprve vytvořte skupinu prostředků. Použijte některou z aktuálně podporovaných oblastí (USA – východ, USA – východ 2, USA – střed, USA – západ 2, Západní Evropa, Jihovýchodní Asie, Kanada – střed nebo Kanada – východ).
+Nejprve vytvořte skupinu prostředků [oblast, která podporuje Azure Dev prostory](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams).
 
 ```azurecli-interactive
 az group create --name MyResourceGroup --location <region>
@@ -31,7 +31,7 @@ az group create --name MyResourceGroup --location <region>
 Pomocí následujícího příkazu vytvořte cluster Kubernetes:
 
 ```azurecli-interactive
-az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.13
+az aks create -g MyResourceGroup -n MyAKS --location <region>
 ```
 
 Vytvoření clusteru bude trvat několik minut.  Po dokončení se zobrazí výstup ve formátu JSON. Vyhledejte `provisioningState` a ověřte ho má `Succeeded`.

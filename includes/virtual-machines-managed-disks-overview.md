@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 10afad7f782d1a98dfde5f7d708477375af54597
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 287ae3b8122dd2a1e43c31055ac0ea5b04dddb07
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330962"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190631"
 ---
 ## <a name="benefits-of-managed-disks"></a>Výhody spravovaných disků
 
@@ -53,7 +53,7 @@ Tento disk má maximální kapacitu 2 048 GB.
 
 ### <a name="temporary-disk"></a>Dočasný disk
 
-Každý virtuální počítač obsahuje dočasný disk, který není spravovaný disk. Dočasný disk obsahuje krátkodobé úložiště pro aplikace a procesy a je určené k ukládání pouze data, jako jsou stránkovací nebo odkládací soubory. Data na dočasném disku mohou být ztracena během [události údržby](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo při opětovném nasazování virtuálního počítače. Během standardní restartování virtuálního počítače byste neměli zachovat data na dočasné jednotce. Existují však případy, kde nemusí uchovávat data, jako je například přesun do nového hostitele. Proto se všechna data na dočasné jednotky by neměl být data, která jsou zásadní pro systém.
+Každý virtuální počítač obsahuje dočasný disk, který není spravovaný disk. Dočasný disk obsahuje krátkodobé úložiště pro aplikace a procesy a je určené k ukládání pouze data, jako jsou stránkovací nebo odkládací soubory. Data na dočasném disku mohou být ztracena během [události údržby](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) události nebo když jste [opětovné nasazení virtuálního počítače](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Při úspěšném standardní restartování virtuálního počítače bude uchovávat data na dočasné jednotce. 
 
 ## <a name="managed-disk-snapshots"></a>Snímky spravovaného disku
 

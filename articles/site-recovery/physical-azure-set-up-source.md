@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 2e5b90f36a6dc5c88db3f6f449c911d22de680b1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e9bf06ba058078fc5012410bdd75ef90ff6c93d4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976796"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899005"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Nastavení konfigurace serveru pro zotavení po havárii fyzických serverů do Azure
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak nastavit v místním prostředí ke spuštění rep
 ## <a name="prerequisites"></a>Požadavky
 
 Tento článek předpokládá, že již máte:
-- V trezoru služby Recovery Services [webu Azure portal](http://portal.azure.com "webu Azure portal").
+- V trezoru služby Recovery Services [webu Azure portal](https://portal.azure.com "webu Azure portal").
 - Fyzický počítač, na kterém se má nainstalovat konfigurační server.
 - Pokud jste jste zakázali protokol TLS 1.0 na počítači, na kterém instalujete konfiguračního serveru, ujistěte se, že je povoleno TLs 1.2, a rozhraní .NET Framework verze 4.6 nebo novější byl nainstalován na počítači (pomocí silného šifrování, zakázáno). [Další informace](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
@@ -47,7 +47,7 @@ V následující tabulce jsou uvedeny minimální hardware, software a požadavk
 
 1. V **připravit zdroj**, pokud nemáte konfiguračního serveru, klikněte na tlačítko **+ konfigurační server** aby vám ho přidal.
 
-  ![Nastavení zdroje](./media/physical-azure-set-up-source/plus-config-srv.png)
+   ![Nastavení zdroje](./media/physical-azure-set-up-source/plus-config-srv.png)
 2. V **přidat Server** okno, zkontrolujte, že **konfigurační Server** se zobrazí v **typ serveru**.
 4. Stáhněte si instalační soubor sjednocené instalace Site Recovery.
 5. Stáhněte registrační klíč trezoru. Při spuštění sjednocené instalace potřebujete registrační klíč. Klíč je platný pět dní od jeho vygenerování.

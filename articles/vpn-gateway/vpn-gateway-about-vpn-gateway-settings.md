@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 24b08bb843b4f1a0eb9f2471cb17b81f2c8ac4d0
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 76323ab00a3562cae10520b18008d030e40043fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417529"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864666"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informace o nastavení konfigurace služby VPN Gateway
 
@@ -43,7 +43,7 @@ Vyžaduje bránu sítě VPN `-GatewayType` *Vpn*.
 
 Příklad:
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `
 -VpnType RouteBased
@@ -63,7 +63,7 @@ Je-li vytvořit bránu virtuální sítě Resource Manageru pomocí webu Azure p
 
 Následující příklad Powershellu Určuje, `-GatewaySku` jako VpnGw1. Při použití Powershellu k vytvoření brány, je třeba nejprve vytvořit konfiguraci IP adresy a poté na něj odkazovat pomocí proměnné. V tomto příkladu je proměnná konfigurace $gwipconfig.
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -Location 'US East' -IpConfigurations $gwipconfig -GatewaySku VpnGw1 `
 -GatewayType Vpn -VpnType RouteBased
@@ -77,7 +77,7 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 
 ###  <a name="resizechange"></a>Změna velikosti nebo změnu SKU
 
-Pokud máte bránu sítě VPN a chcete použít různé skladové položky brány, vaše možnosti jsou buď Změna velikosti SKU brány, nebo chcete změnit na druhý. Při změně na jiný skladové položky brány zcela odstranit existující bránu a vytvářet nové. To může trvat až 45 minut na sestavení. Porovnání když změníte velikost skladové položky, brány budete mít velmi málo výpadek protože není nutné odstranit a znovu vytvořit bránu. Pokud máte možnost Změna velikosti SKU brány, spíše než ho změnit, můžete to udělat. Existují však pravidla týkající se změny velikosti:
+Pokud máte bránu sítě VPN a chcete použít různé skladové položky brány, vaše možnosti jsou buď Změna velikosti SKU brány, nebo chcete změnit na druhý. Při změně na jiný skladové položky brány zcela odstranit existující bránu a vytvářet nové. Brány může trvat až 45 minut na sestavení. Porovnání když změníte velikost skladové položky, brány není velká Doba výpadku protože není nutné odstranit a znovu vytvořit bránu. Pokud máte možnost Změna velikosti SKU brány, spíše než ho změnit, můžete to udělat. Existují však pravidla týkající se změny velikosti:
 
 1. Můžete měnit velikost mezi VpnGw1, VpnGw2 a VpnGw3 SKU.
 2. Pokud používáte staré SKU brány, můžete měnit velikost mezi Basic, Standard a HighPerformance SKU.
@@ -102,7 +102,7 @@ V modelu nasazení Resource Manager Každá konfigurace vyžaduje typ připojen�
 
 V následujícím příkladu Powershellu vytvoříme připojení S2S, které vyžaduje typ připojení *IPsec*.
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
 -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
 -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
@@ -120,7 +120,7 @@ Po vytvoření brány virtuální sítě, nelze změnit typ sítě VPN. Budete m
 
 Následující příklad Powershellu Určuje, `-VpnType` jako *RouteBased*. Při vytváření brány se musíte ujistit, že parametr -VpnType odpovídá vaší konfiguraci.
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig `
 -GatewayType Vpn -VpnType RouteBased
@@ -132,7 +132,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ## <a name="gwsub"></a>Podsíť brány
 
-Než vytvoříte bránu VPN, musíte vytvořit podsíť brány. Podsíť brány obsahuje IP adresy, které používají bránu virtuální sítě virtuálních počítačů a služeb. Při vytváření brány virtuální sítě, virtuální počítače brány se nasazují do podsítě brány a nakonfigurovanou povinné nastavení služby VPN gateway. Musíte nikdy nenasazujte nic jiného (třeba dalších virtuálních počítačů) do podsítě brány. Podsíť brány musí mít název "GatewaySubnet" fungovala správně. Název podsítě brány: GatewaySubnet"umožňuje vědět, že se jedná o podsítě k nasazení brány virtuální sítě virtuálních počítačů a služeb na Azure.
+Než vytvoříte bránu VPN, musíte vytvořit podsíť brány. Podsíť brány obsahuje IP adresy, které používají bránu virtuální sítě virtuálních počítačů a služeb. Při vytváření brány virtuální sítě, virtuální počítače brány se nasazují do podsítě brány a nakonfigurovanou povinné nastavení služby VPN gateway. Nikdy nenasazujte nic jiného (třeba dalších virtuálních počítačů) do podsítě brány. Podsíť brány musí mít název "GatewaySubnet" fungovala správně. Název podsítě brány: GatewaySubnet"umožňuje vědět, že se jedná o podsítě k nasazení brány virtuální sítě virtuálních počítačů a služeb na Azure.
 
 >[!NOTE]
 >[!INCLUDE [vpn-gateway-gwudr-warning.md](../../includes/vpn-gateway-gwudr-warning.md)]
@@ -142,7 +142,7 @@ Při vytváření podsítě brány zadáte počet IP adres, které podsíť obsa
 
 Následující příklad Powershellu pro Resource Manager ukazuje podsíť brány s názvem GatewaySubnet. Uvidíte, že zápis CIDR Určuje velikost/27, která zajistíte dostatek IP adres u většiny konfigurací, které momentálně existují.
 
-```powershell
+```azurepowershell-interactive
 Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
 ```
 
@@ -156,7 +156,7 @@ Pojmenujte bránu místní sítě, veřejnou IP adresu místního zařízení VP
 
 Následující příklad Powershellu vytvoří novou bránu místní sítě:
 
-```powershell
+```azurepowershell-interactive
 New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```

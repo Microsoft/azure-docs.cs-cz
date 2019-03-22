@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e7449b5c36d9a1c3df3692f80aed8ccc05a98ade
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 6215230a52bcb5c44f54747b447dc5f64e6af650
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731014"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999082"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrace aktivního názvu DNS do Azure App Service
 
@@ -54,16 +54,16 @@ Pokud chcete ověřit vlastnictví domény, přidejte záznam TXT. Záznam TXT m
 
 Záznam TXT, které potřebujete, závisí na záznam DNS, které chcete migrovat. Příklady najdete v následující tabulce (`@` obvykle představuje kořenovou doménu):
 
-| Příklad záznamu DNS | Hostitel TXT | Hodnota TXT |
+| Příklad záznamu DNS | TXT Host | Hodnota TXT |
 | - | - | - |
-| \@ (uživatel root) | _awverify_ | _&lt;název_aplikace >. azurewebsites.net_ |
-| WWW (sub) | _awverify.www_ | _&lt;název_aplikace >. azurewebsites.net_ |
-| \* (zástupný znak) | _awverify.\*_ | _&lt;název_aplikace >. azurewebsites.net_ |
+| \@ (uživatel root) | _awverify_ | _&lt;appname>.azurewebsites.net_ |
+| WWW (sub) | _awverify.www_ | _&lt;appname>.azurewebsites.net_ |
+| \* (zástupný znak) | _awverify.\*_ | _&lt;appname>.azurewebsites.net_ |
 
 Na stránce záznamy DNS Všimněte si typ záznamu názvu DNS, které chcete migrovat. App Service podporuje mapování CNAME záznamy a A.
 
 > [!NOTE]
-> U určitých poskytovatelů, jako je například CloudFlare, `awverify.*` není platný záznam. Použití `*` pouze místo.
+> For certain providers, such as CloudFlare, `awverify.*` is not a valid record. Použití `*` pouze místo.
 
 > [!NOTE]
 > Zástupný znak `*` záznamy neověří subdomény s existující CNAME záznamu. Musíte explicitně vytvořit záznam TXT pro každá z nich.
@@ -124,8 +124,8 @@ Pro `contoso.com` kořenové domény příklad, přemapujte záznam A nebo CNAME
 | Příklad plně kvalifikovaný název domény | Typ záznamu | Hostitel | Hodnota |
 | - | - | - | - |
 | contoso.com (kořen) | A | `@` | IP adresa z části [Zkopírování IP adresy aplikace](#info) |
-| www.contoso.com (sub) | CNAME | `www` | _&lt;název_aplikace >. azurewebsites.net_ |
-| \*. contoso.com (zástupný znak) | CNAME | _\*_ | _&lt;název_aplikace >. azurewebsites.net_ |
+| www\.contoso.com (sub) | CNAME | `www` | _&lt;appname>.azurewebsites.net_ |
+| \*. contoso.com (zástupný znak) | CNAME | _\*_ | _&lt;appname>.azurewebsites.net_ |
 
 Uložte nastavení.
 
@@ -136,4 +136,4 @@ Dotazy DNS by měl spustit okamžitě poté, co se stane, šíření DNS překl�
 Zjistěte, jak vytvořit vazbu vlastního certifikátu SSL služby App Service.
 
 > [!div class="nextstepaction"]
-> [Vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md)
+> [Vytvoření vazby existujícího vlastního certifikátu SSL ke službě Azure App Service](app-service-web-tutorial-custom-ssl.md)

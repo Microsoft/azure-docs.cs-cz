@@ -14,12 +14,12 @@ ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d9a60544f01048cd90605306e64d750982bf7a4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3b91e2c15e86cdda4daab27892fa7a2b6ed0c0e0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200543"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008900"
 ---
 # <a name="view-audit-history-for-azure-ad-directory-roles-in-pim"></a>Zobrazení historie auditů pro role adresáře Azure AD v PIM
 Pokud chcete zobrazit všechna přiřazení uživatelů a aktivace v daném časovém období pro všechny privilegované role můžete použít historie auditu Privileged Identity Management (PIM). Pokud chcete zobrazit úplnou historii auditu aktivity ve vašem tenantovi, včetně správce, koncový uživatel a aktivitu synchronizace můžete použít [sestavy o přístupech a použití služby Azure Active Directory.](../reports-monitoring/overview-reports.md)
@@ -27,10 +27,10 @@ Pokud chcete zobrazit všechna přiřazení uživatelů a aktivace v daném čas
 ## <a name="navigate-to-audit-history"></a>Přejděte do historie auditu
 Z [webu Azure portal](https://portal.azure.com) řídicího panelu, vyberte **Azure AD Privileged Identity Management** aplikace. Odtud přejít do historie auditu kliknutím **spravovat privilegované role** > **historie auditu** na řídicím panelu PIM.
 
-![](media/azure-ad-pim-approval-workflow/image021.png)
+![Historie auditu](media/azure-ad-pim-approval-workflow/image021.png)
 
->[!NOTE]
-Řazení dat podle akce a vyhledejte "Schválení aktivace"
+> [!NOTE]
+> Řazení dat podle akce a vyhledejte "Schválení aktivace"
 
 
 ## <a name="audit-history-graph"></a>Graf historie auditu

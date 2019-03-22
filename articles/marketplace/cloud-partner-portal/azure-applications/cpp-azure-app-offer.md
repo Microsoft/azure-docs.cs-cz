@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 6d86d4c03a41834322c98438958c0b9e87e6025c
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 9faa38a23b2039902366e5b885ab73c68a2a3d80
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213514"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076016"
 ---
 # <a name="azure-application-offer"></a>Nabídky aplikace Azure
 
@@ -58,15 +58,15 @@ Následující diagram znázorňuje proces vysoké úrovně pro uvedení nabídk
 
 Postup vysoké úrovně pro uvedení nabídky aplikace Azure jsou:
 
-0. Splnění [požadavky](./cpp-prerequisites.md) – (nejsou zobrazené) ověřte, že jste splnili obchodní a technické požadavky pro publikování aplikaci Azure na webu Azure Marketplace. 
+1. Splnění [požadavky](./cpp-prerequisites.md) – (nejsou zobrazené) ověřte, že jste splnili obchodní a technické požadavky pro publikování aplikaci Azure na webu Azure Marketplace. 
 
 1. [Vytvořte svou nabídku](./cpp-create-offer.md) -poskytují podrobné informace týkající se nabídky. Tyto informace zahrnují: popis nabídky, marketingové materiály, informace o podpoře a specifikace asset.
 
-2. [Vytvořit nebo shromažďovat existující obchodní a technické prostředky](./cpp-create-technical-assets.md) – vytváření podnikových prostředků (právní dokumenty a marketingové materiály) a technických prostředků přidružené řešení.
+1. [Vytvořit nebo shromažďovat existující obchodní a technické prostředky](./cpp-create-technical-assets.md) – vytváření podnikových prostředků (právní dokumenty a marketingové materiály) a technických prostředků přidružené řešení.
 
-3. [Vytvoření skladové Položce](./cpp-skus-tab.md) – vytvoření skladové jednotky spojené s nabídkou. Je vyžadována pro každý obrázek, který se chystáte publikovat jedinečný skladová položka.
+1. [Vytvoření skladové Položce](./cpp-skus-tab.md) – vytvoření skladové jednotky spojené s nabídkou. Je vyžadována pro každý obrázek, který se chystáte publikovat jedinečný skladová položka.
 
-4. Certifikace a [publikování nabídky](./cpp-publish-offer.md) – po dokončení nabídka a technických prostředků, můžete odeslat nabídku. Toto odeslání spustí se proces publikování. Během tohoto procesu řešení je testována ověřen, certifikace, pak "místo pro živé" na webu Azure Marketplace.
+1. Certifikace a [publikování nabídky](./cpp-publish-offer.md) – po dokončení nabídka a technických prostředků, můžete odeslat nabídku. Toto odeslání spustí se proces publikování. Během tohoto procesu řešení je testována ověřen, certifikace, pak "místo pro živé" na webu Azure Marketplace.
 
 ## <a name="next-steps"></a>Další postup
 

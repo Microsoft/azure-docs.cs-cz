@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a2c416df849f59040985524394d2caa3399d910
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bc45c63d3168a15b4701dcaff7bb531f759d47ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439696"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888702"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Kurz: Integrace Azure Active Directory s Brightidea
 
@@ -163,18 +163,18 @@ Ke konfiguraci Azure AD jednotné přihlašování s Brightidea, proveďte násl
     
     ![Konfigurace Brightidea](./media/brightidea-tutorial/configure4.png)
     
-     * Zadejte **název profilu SAML** jako je např. `Azure Ad SSO`
+   * Zadejte **název profilu SAML** jako je např. `Azure Ad SSO`
     
-     * Pro **nahrát metadat**, klikněte na tlačítko Vybrat soubor a nahrát soubor metadat stažené z webu Azure portal.
+   * Pro **nahrát metadat**, klikněte na tlačítko Vybrat soubor a nahrát soubor metadat stažené z webu Azure portal.
 
      > [!NOTE]
      > Po nahrání souboru metadat, zbývající pole **jednotné přihlašování, Vystavitel zprostředkovatele Identity, nahrát veřejný klíč služby** se vyplní automaticky.
 
-     * V **e-mailu** textového pole zadejte hodnotu jako `mail`.
+   * V **e-mailu** textového pole zadejte hodnotu jako `mail`.
      
-     * V **název obrazovky** textového pole zadejte hodnotu jako `givenName`.
+   * V **název obrazovky** textového pole zadejte hodnotu jako `givenName`.
      
-     * Klikněte na tlačítko **uložit změny**.  
+   * Klikněte na tlačítko **uložit změny**.  
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
@@ -194,7 +194,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

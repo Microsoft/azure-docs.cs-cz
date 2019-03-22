@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ef2ab2282dc52ae7651f1f5093fa39a83cac6c5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ea17794a5ca57ae0d38d9a90857706cf380cab36
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452551"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895664"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deskradar"></a>Kurz: Integrace Azure Active Directory s Deskradar
 
@@ -203,7 +203,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

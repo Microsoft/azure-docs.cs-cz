@@ -8,21 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 3233357d9013c2a1f9d77178c217ca9310a34ac4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 95a27ff17ca74f930fc1a739c0eb94a90bd82ec4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198197"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834485"
 ---
-# <a name="search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Vyhledávání na webu pomocí rozhraní API REST webové vyhledávání Bingu a Node.js
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Rychlý start: Vyhledávání na webu pomocí rozhraní API REST webové vyhledávání Bingu a Node.js
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. Tuto aplikaci Node.js odešle požadavek hledání do rozhraní API a zobrazí odpovědi. Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
+V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. Tuto aplikaci Node.js k rozhraní API odešle žádost o vyhledávání a ukázka odezvy. Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
+
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * [Node.js 6](https://nodejs.org/en/download/) nebo novější
@@ -43,7 +44,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Nastavení klíče předplatného
 
-Tento fragment kódu používá proměnnou prostředí `AZURE_SUBSCRIPTION_KEY`, pomocí které ukládá váš klíč předplatného. To je dobrý způsob, jak zabránit nechtěnému zveřejnění vašich klíčů, když se kód nasazuje. Pokud chcete vyhledat svůj klíč předplatného, [klikněte sem](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7).
+Tento fragment kódu používá proměnnou prostředí `AZURE_SUBSCRIPTION_KEY`, pomocí které ukládá váš klíč předplatného. To je dobrý způsob, jak zabránit nechtěnému zveřejnění vašich klíčů, když se kód nasazuje. Přejděte [stránku vašeho rozhraní API](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) k vyhledání váš klíč předplatného.
 
 Pokud používání proměnných prostředí neznáte nebo chcete spustit tuto aplikaci co nejdříve, můžete nahradit hodnotu `process.env['AZURE_SUBSCRIPTION_KEY']` svým klíčem předplatného nastaveným jako řetězec.
 
@@ -110,7 +111,7 @@ Pokud chcete porovnat svůj kód s naším, tady je celý program:
 const https = require('https')
 const SUBSCRIPTION_KEY = process.env['AZURE_SUBSCRIPTION_KEY']
 if (!SUBSCRIPTION_KEY) {
-  throw new Error('Missing the AZURE_SUBSCRIPTION_KEY environment varable')
+  throw new Error('Missing the AZURE_SUBSCRIPTION_KEY environment variable')
 }
 function bingWebSearch(query) {
   https.get({

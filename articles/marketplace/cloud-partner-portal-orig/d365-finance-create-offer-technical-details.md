@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: cb8e5074d0cd99f5c7cb2130e6f9181eb5382015
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 5aa118815146287d00a3bb8ee7d5fce57a6ad9ca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809270"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120291"
 ---
 <a name="how-to-fill-out-the-technical-info-form"></a>Jak vyplnit formulář technické informace
 ===========================================
@@ -36,9 +36,9 @@ ms.locfileid: "48809270"
 
 -   **Automatizace testování aplikace** --povinné – VS programového testu balíček, který je třeba vytvořit pro automatizované testování rozšíření.
 
-2.  V **Další informace o rozšíření** části, odeslat další informace o rozšíření. Tyto informace se používají při ověřování.
+1. V **Další informace o rozšíření** části, odeslat další informace o rozšíření. Tyto informace se používají při ověřování.
 
-    ![Další informace o formuláři rozšíření aplikace](./media/d365-financials/image016.png)
+   ![Další informace o formuláři rozšíření aplikace](./media/d365-financials/image016.png)
 
 
 -   **Adresa URL pro dokumentaci k produktu** --požadované – adresa URL pro dokumentaci pro rozšíření.

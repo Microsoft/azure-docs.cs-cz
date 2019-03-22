@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2f47a145f00748a3366ea5bd1aa961f4b556a08f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cc37109eda2690b4407f9cd0c92851b7c0e3f915
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474662"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835226"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Škálovatelné datových věd s využitím Azure Data Lake: Návod začátku do konce
 Tento návod ukazuje, jak pomocí Azure Data Lake a zkoumání dat a úlohy binární klasifikace na vzorek cesty taxíkem NYC jízdenky datovou sadu, která předpovědět, jestli je tip zaplaceno tarif. Provede vás provede postupem [vědecké zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), začátku do konce, od získání dat pro trénování modelu a nasazení webové služby, který publikuje modelu.
@@ -72,17 +72,17 @@ Tato část obsahuje informace o tom, jak vytvořit každý z těchto prostředk
 ### <a name="create-an-azure-data-lake-store"></a>Vytvoření Azure Data Lake Store
 
 
-Vytvořit ze ADLS [webu Azure portal](http://portal.azure.com). Podrobnosti najdete v tématu [vytvoření clusteru HDInsight s Data Lake Store pomocí webu Azure portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). Nezapomeňte nastavit Identity AAD clusteru v **DataSource** okně **volitelná konfigurace** popsanou okno.
+Vytvořit ze ADLS [webu Azure portal](https://portal.azure.com). Podrobnosti najdete v tématu [vytvoření clusteru HDInsight s Data Lake Store pomocí webu Azure portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). Nezapomeňte nastavit Identity AAD clusteru v **DataSource** okně **volitelná konfigurace** popsanou okno.
 
  ![3](./media/data-lake-walkthrough/3-create-ADLS.PNG)
 
 ### <a name="create-an-azure-data-lake-analytics-account"></a>Vytvoření účtu Azure Data Lake Analytics
-Vytvoření účtu ADLA z [webu Azure portal](http://portal.azure.com). Podrobnosti najdete v tématu [kurz: Začínáme s Azure Data Lake Analytics pomocí webu Azure portal](../../data-lake-analytics/data-lake-analytics-get-started-portal.md).
+Vytvoření účtu ADLA z [webu Azure portal](https://portal.azure.com). Podrobnosti najdete v tématu [kurz: Začínáme s Azure Data Lake Analytics pomocí webu Azure portal](../../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 
  ![4](./media/data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 ### <a name="create-an-azure-blob-storage-account"></a>Vytvoření účtu úložiště objektů Blob v Azure
-Vytvoření účtu služby Azure Blob storage z [webu Azure portal](http://portal.azure.com). Podrobnosti najdete v tématu o vytvoření účtu úložiště v tématu v [účty Azure storage](../../storage/common/storage-create-storage-account.md).
+Vytvoření účtu služby Azure Blob storage z [webu Azure portal](https://portal.azure.com). Podrobnosti najdete v tématu o vytvoření účtu úložiště v tématu v [účty Azure storage](../../storage/common/storage-create-storage-account.md).
 
  ![5](./media/data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
@@ -99,7 +99,7 @@ Po úspěšném dokončení instalace, otevřete Visual Studio. Měli byste vid�
  ![7](./media/data-lake-walkthrough/7-install-ADL-tools-VS-done.PNG)
 
 ## <a name="the-nyc-taxi-trips-dataset"></a>Cesty taxíkem NYC datové sady
-Datová sada se tady použít je veřejně dostupná datová sada – [datovou sadu cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/). Data o jízdách taxislužby NYC se skládá z přibližně 20 GB komprimované soubory CSV (nekomprimovaný ~ 48 GB), záznam 173 milionů jednotlivé trips a tarify placené pro každou cestu. Každý záznam o jízdách zahrnuje sbírat míčky a dropoff umístění a čas, číslo řidičského anonymizované hack (ovladače) a číslo Medailon (jedinečné ID taxislužby.). Data v roce 2013 zahrnuje všechny cesty a je dostupné pro každý měsíc následující dvě datové sady:
+Datová sada se tady použít je veřejně dostupná datová sada – [datovou sadu cesty taxíkem NYC](https://www.andresmh.com/nyctaxitrips/). Data o jízdách taxislužby NYC se skládá z přibližně 20 GB komprimované soubory CSV (nekomprimovaný ~ 48 GB), záznam 173 milionů jednotlivé trips a tarify placené pro každou cestu. Každý záznam o jízdách zahrnuje sbírat míčky a dropoff umístění a čas, číslo řidičského anonymizované hack (ovladače) a číslo Medailon (jedinečné ID taxislužby.). Data v roce 2013 zahrnuje všechny cesty a je dostupné pro každý měsíc následující dvě datové sady:
 
 "Trip_data" CSV obsahuje podrobnosti o jízdách, jako je třeba počet cestujících, vyzvednutí a dropoff body, doba trvání cesty a délka cesty. Tady je několik ukázkových záznamů:
 
@@ -147,7 +147,8 @@ Ke spuštění U-SQL, otevřete Visual Studio, klikněte na tlačítko **soubor-
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
 ### <a name="ingest"></a>Příjem dat: Přečíst data z veřejných objektů blob
-Umístění dat v Azure blob je odkazováno jako **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** a může být extrahována pomocí **Extractors.Csv()**. Nahraďte vlastní název kontejneru a název účtu úložiště v následujících skriptů pro container_name@blob_storage_account_name adresu wasb. Vzhledem k tomu, že názvy souborů jsou ve stejném formátu, je možné použít **o jízdách\_data_ {\*\}CSV** číst ve všech souborech 12 o jízdách.
+
+Umístění dat v Azure blob je odkazováno jako **wasb://container\_název\@blob\_úložiště\_účet\_name.blob.core.windows.net/blob_name**a může být extrahována pomocí **Extractors.Csv()**. Nahraďte vlastní název kontejneru a název účtu úložiště v následujících skriptů pro kontejner\_název\@blob\_úložiště\_účet\_názvem v adrese wasb. Vzhledem k tomu, že názvy souborů jsou ve stejném formátu, je možné použít **o jízdách\_data\_\{\*\}CSV** číst ve všech souborech 12 o jízdách.
 
     ///Read in Trip data
     @trip0 =
@@ -170,7 +171,7 @@ Umístění dat v Azure blob je odkazováno jako **wasb://container_name@blob_st
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-Protože je v prvním řádku záhlaví, budete muset odebrat záhlaví a změňte typ sloupce na odpovídající značky. Můžete buď uložit zpracovaná data do úložiště Azure Data Lake pomocí **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ nebo do účtu úložiště objektů Blob v Azure pomocí  **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**.
+Protože je v prvním řádku záhlaví, budete muset odebrat záhlaví a změňte typ sloupce na odpovídající značky. Můžete buď uložit zpracovaná data do úložiště Azure Data Lake pomocí **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ nebo do účtu úložiště objektů Blob v Azure pomocí **wasb: / / container_name\@blob_storage_account_name.blob.core.windows.net/blob_name**.
 
     // change data types
     @trip =
@@ -596,7 +597,7 @@ Chcete pro zprovoznění modelu strojového učení po byl sestaven. Binární m
 Azure Machine Learning Studio čte data přímo z Azure Data Lake Store a následně použije k vytvoření a nasazení modelů. Tento postup používá tabulku Hive, která odkazuje na Azure Data Lake Store. K tomu je potřeba zřídit na jiném clusteru Azure HDInsight, na které se vytvoří tabulku Hive. Následující části vysvětlují, jak to udělat.
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>Vytvoření clusteru HDInsight s Linuxem
-Vytvoření clusteru služby HDInsight (Linux) z [webu Azure portal](http://portal.azure.com). Podrobnosti najdete v tématu **vytvoření clusteru HDInsight s přístupem k Azure Data Lake Store** tématu [vytvoření clusteru HDInsight s Data Lake Store pomocí webu Azure portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+Vytvoření clusteru služby HDInsight (Linux) z [webu Azure portal](https://portal.azure.com). Podrobnosti najdete v tématu **vytvoření clusteru HDInsight s přístupem k Azure Data Lake Store** tématu [vytvoření clusteru HDInsight s Data Lake Store pomocí webu Azure portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 

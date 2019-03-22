@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 3/01/2019
 ms.author: pullabhk
-ms.openlocfilehash: 25c78e4050f1f5fdb02500fa1f206f6cf05e7134
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 22ada6f9bb614bdc3698c58c6aa8ec3dd5def868
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111952"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259532"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze záloh virtuálních počítačů Azure
 
@@ -67,16 +67,16 @@ Obnovit soubory a složky z bodu obnovení, přejděte na virtuální počítač
 
     - download.microsoft.com
     - Adresy URL služby zotavení (geo-name se odkazuje na oblast, ve které se nachází trezor služby recovery Services)
-        - <https://pod01-rec2.geo-name.backup.windowsazure.com> (U veřejných zeměpisných oblastech Azure)
-        - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (Pro Azure Čína)
-        - <https://pod01-rec2.geo-name.backup.windowsazure.us> (Pro Azure Government v USA)
-        - <https://pod01-rec2.geo-name.backup.windowsazure.de> (Pro Azure Germany)
+        - protokol https:\//pod01-rec2.geo-name.backup.windowsazure.com (veřejných zeměpisných oblastech Azure pro)
+        - protokol https:\//pod01-rec2.geo-name.backup.windowsazure.cn (pro Azure Čína)
+        - protokol https:\//pod01-rec2.geo-name.backup.windowsazure.us (pro Azure pro státní správu USA)
+        - protokol https:\//pod01-rec2.geo-name.backup.windowsazure.de (pro Azure Germany)
     - odchozí port 3260
 
 > [!Note]
 > 
 > * Název souboru staženého skriptu bude mít **geo-name** pro vyplnění v adrese URL. Pro např: Název staženého skriptu začíná \'VMname\'\_\'geoname\'_\'GUID\', jako jsou ContosoVM_wcus_12345678...<br><br>
-> * Adresa URL bude "<https://pod01-rec2.wcus.backup.windowsazure.com>"
+> * Adresa URL bude "https:\//pod01-rec2.wcus.backup.windowsazure.com"
 
 
    Pro Linux vyžaduje skript 'open-iscsi' a "lshw" součásti pro připojení k bodu obnovení. Pokud komponenty na počítači, ve kterém se skript spouští neexistují, skript vyzve k zadání oprávnění k instalaci součásti. Poskytnout souhlas nainstalujte nezbytné součásti.

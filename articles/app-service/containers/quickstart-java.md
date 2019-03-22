@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 541d431c9387d512374047c4cc004e1a237e1ef1
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 4b95c75b863cdc86dd8a1ebe8347b77b637b110c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406520"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999113"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Rychlý start: Vytvoření aplikace v Javě ve službě App Service v Linuxu
 
@@ -111,3 +111,5 @@ V tomto rychlém startu jste použili Maven k vytvoření aplikace v Javě, nako
 - [Konfigurace zdroje dat Tomcat](app-service-linux-java.md#tomcat)
 - [CI/CD pomocí Jenkinse](/azure/jenkins/deploy-jenkins-app-service-plugin)
 - [Nastavení nástroje pro monitorování výkonu aplikací](how-to-java-apm-monitoring.md)
+- [Příručka pro vývojáře Java pro službu App Service v Linuxu](app-service-linux-java.md)
+

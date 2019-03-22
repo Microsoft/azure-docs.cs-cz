@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: a46f2b4ed1bb3fc5fff65a627bd3d808ed85ffce
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4e32d2357636cb488d3a58b78b025860da3f74c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967278"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091354"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na CentOS pro Azure
 
@@ -196,7 +196,7 @@ Tento článek předpokládá, že jste už nainstalovali CentOS (nebo podobné 
 
 - - -
 
-## <a name="centos-70"></a>CentOS 7.0 +
+## <a name="centos-70"></a>CentOS 7.0+
 
 **Změny v CentOS 7 (a podobné odvozené konfigurace)**
 
@@ -299,13 +299,13 @@ Příprava virtuálního počítače CentOS 7 pro Azure je velmi podobný CentOS
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-10. Pokud sestavení image ze **VMware, VirtualBox nebo KVM:** ovladače Ujistěte se, že technologie Hyper-V jsou součástí initramfs:
+10. Pokud sestavení image ze **VMware, VirtualBox nebo KVM:** Zajistěte, aby že ovladače Hyper-V jsou součástí initramfs:
 
-   Upravit `/etc/dracut.conf`, přidat obsah:
+    Upravit `/etc/dracut.conf`, přidat obsah:
 
         add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
 
-   Znovu sestavte initramfs:
+    Znovu sestavte initramfs:
 
         # sudo dracut -f -v
 
@@ -316,7 +316,7 @@ Příprava virtuálního počítače CentOS 7 pro Azure je velmi podobný CentOS
 
 12. Nevytvářejte odkládacího prostoru na disku s operačním systémem.
 
-   Azure Linux Agent mohou automaticky konfigurovat odkládacího prostoru pomocí disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že je místní prostředek disku *dočasné* disk a může být vyprázdněna při zřízení virtuálního počítače. Po instalaci agenta Azure Linux (viz předchozí krok), upravte následující parametry v `/etc/waagent.conf` odpovídajícím způsobem:
+    Azure Linux Agent mohou automaticky konfigurovat odkládacího prostoru pomocí disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že je místní prostředek disku *dočasné* disk a může být vyprázdněna při zřízení virtuálního počítače. Po instalaci agenta Azure Linux (viz předchozí krok), upravte následující parametry v `/etc/waagent.conf` odpovídajícím způsobem:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4

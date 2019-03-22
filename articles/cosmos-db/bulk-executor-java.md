@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 8254e3221fee3d76e2d27715f76c26397c309f08
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 65023fbf96dc3e1276413f8c40ecb262d60c1454
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862713"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863351"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Java prováděcí modul hromadného budou provádět hromadné operace s daty služby Azure Cosmos DB
 
 Tento kurz obsahuje pokyny k používání knihovny Java prováděcí modul hromadného rozhraní Azure Cosmos DB importovat a aktualizovat dokumenty Azure Cosmos DB. Další informace o hromadně prováděcí modul knihovny a jak vám může pomoct využít mimořádně velkou propustnost a úložiště, najdete v článku [hromadně přehled knihovny prováděcí modul](bulk-executor-overview.md) článku. V tomto kurzu sestavení aplikace v Javě, která generuje náhodné dokumentů a budou hromadně importovat do kontejneru Azure Cosmos DB. Po naimportování pak hromadně aktualizovat některé vlastnosti dokumentu. 
 
-Hromadné prováděcí modul knihovny je v současné době nepodporuje rozhraní SQL API služby Azure Cosmos DB a pouze účty rozhraní Gremlin API. Tento článek popisuje, jak pomocí hromadné knihovny .net prováděcí modul s účty SQL API. Další informace o použití knihovny hromadné prováděcí modul .NET pomocí rozhraní Gremlin API, najdete v článku [provádět hromadné operace v rozhraní Gremlin API služby Azure Cosmos DB](bulk-executor-graph-dotnet.md).
+Hromadné prováděcí modul knihovny je v současné době nepodporuje rozhraní SQL API služby Azure Cosmos DB a pouze účty rozhraní Gremlin API. Tento článek popisuje, jak pomocí hromadné knihovny .NET prováděcí modul s účty SQL API. Další informace o použití knihovny hromadné prováděcí modul .NET pomocí rozhraní Gremlin API, najdete v článku [provádět hromadné operace v rozhraní Gremlin API služby Azure Cosmos DB](bulk-executor-graph-dotnet.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -86,13 +86,13 @@ Naklonované úložiště obsahuje dvě ukázky "hromadný import" a "bulkupdate
    // Set retries to 0 to pass complete control to bulk executor
    client.getConnectionPolicy().getRetryOptions().setMaxRetryWaitTimeInSeconds(0);
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
-```
+   ```
 
 4. Volání hodnotu importAll rozhraní API, které generuje náhodné dokumenty pro hromadný import do kontejneru Azure Cosmos DB. Konfigurace příkazový řádek v souboru CmdLineConfiguration.java můžete nakonfigurovat.
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
-```
+   ```
    Rozhraní API hromadného importu přijímá kolekce dokumentů, serializací JSON a má následující syntaxi, další podrobnosti naleznete [dokumentace k rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
 
    ```java

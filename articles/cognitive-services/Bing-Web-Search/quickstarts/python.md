@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 0f86af63be760a6ba4291f683f41845a6c54ed96
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: c00b805a8a702828f6d6402478ed8d2a79d3966e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446303"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862875"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>Rychlý start: Použití Pythonu k volání rozhraní API webové vyhledávání Bingu  
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. Tuto aplikaci v Pythonu odešle požadavek hledání do rozhraní API a zobrazí odpovědi. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. Tuto aplikaci v Pythonu odešle požadavek hledání do rozhraní API a ukázka odezvy. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-Tento příklad je spuštěný jako poznámkový blok Jupyter na [MyBinder](https://mybinder.org). Klikněte na odznáček pro spuštění Binderu:
+Tento příklad je spuštěný jako poznámkový blok Jupyter na [MyBinder](https://mybinder.org). Vyberte spuštění vazače oznámení "BADGE":
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
 
@@ -69,7 +69,7 @@ search_results = response.json()
 
 ## <a name="format-and-display-the-response"></a>Formátování a zobrazení odpovědi
 
-Objekt `search_results` obsahuje výsledky hledání a metadata, jako jsou související dotazy a stránky. Tento kód používá k formátování a zobrazení odpovědi v prohlížeči knihovnu `IPython.display`.
+`search_results` Objekt obsahuje výsledky hledání a metadata jako souvisejících dotazů a stránky. Tento kód používá k formátování a zobrazení odpovědi v prohlížeči knihovnu `IPython.display`.
 
 ```python
 from IPython.display import HTML

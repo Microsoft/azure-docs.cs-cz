@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0bcaf867f6686832193aa03585a54272ad6e459e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c3a621714ff7a3f3d0f902c37e59a1829bf3ebd3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871961"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854428"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-go-in-computer-vision"></a>Rychlý start: Generování miniatur pomocí rozhraní REST API a přejděte v počítačové zpracování obrazu
 
-V tomto rychlém startu vygenerujete pomocí rozhraní REST API počítačového zpracování obrazu miniaturu obrázku. Miniaturu obrázku můžete vygenerovat pomocí metody [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb). Zadáte výšku a šířku, které se mohou od poměru stran vstupního obrázku lišit. Počítačové zpracování obrazu používá inteligentní oříznutí inteligentně identifikovat oblasti zájmu a generovat oříznutí souřadnice založené na danou oblast.
+V tomto rychlém startu generovat miniatury z image pomocí rozhraní REST API pro počítačové zpracování obrazu. Můžete určit výšku a šířku, které se můžou lišit v poměru stran ze vstupního obrázku. Počítačové zpracování obrazu používá inteligentní oříznutí inteligentně identifikovat oblasti zájmu a generovat oříznutí souřadnice založené na danou oblast.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
@@ -122,13 +122,9 @@ func main() {
 
 Úspěšná odpověď obsahuje binární data miniatury obrázku. Pokud požadavek selže, bude odpověď obsahovat chybový kód a zprávu, která vám pomůže určit, co se nepovedlo.
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud už tuto ukázku nepotřebujete, odstraňte zkompilovaný balíček a soubor, ze kterého se tento balíček zkompiloval, a pak zavřete okno příkazového řádku a textový editor.
-
 ## <a name="next-steps"></a>Další postup
 
-Prozkoumejte rozhraní API pro počítačové zpracování obrazu, které se používá pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte rozhraní API pro počítačové zpracování obrazu k analýze bitovou kopii, zjišťování celebrit a památek, vytvořit miniaturu a extrahovat tištěné a rukou psaný text. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Prozkoumat rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

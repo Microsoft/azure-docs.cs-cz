@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: eb924bcfe3e2545cf6666a19bbb3494c11bc3a48
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 28a7de1b43d793641237197aea841022996b07e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055050"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994033"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Začínáme s Azure Queue storage a Visual Studio připojené služby (projekty cloudových služeb)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -32,7 +32,7 @@ Vám ukážeme, jak vytvořit frontu v kódu. Vám také ukážeme, jak provád�
 * Zobrazit [Začínáme s Azure Queue storage pomocí .NET](../storage/queues/storage-dotnet-how-to-use-queues.md) Další informace o zpracování fronty v kódu.
 * Zobrazit [dokumentace ke službě Storage](https://azure.microsoft.com/documentation/services/storage/) obecné informace o službě Azure Storage.
 * Zobrazit [dokumentace ke službě Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/) obecné informace o cloudových službách Azure.
-* Zobrazit [ASP.NET](http://www.asp.net) Další informace o programování aplikací ASP.NET.
+* Zobrazit [ASP.NET](https://www.asp.net) Další informace o programování aplikací ASP.NET.
 
 Azure Queue Storage je služba pro ukládání velkého počtu zpráv, ke které můžete získat přístup z jakéhokoli místa na světě prostřednictvím ověřených volání s využitím protokolu HTTP nebo HTTPS. Zpráva s jednou frontou může mít velikost až 64 kB a jedna fronta můžete obsahovat miliony zpráv, až do dosažení celkové kapacity účtu úložiště.
 
@@ -57,7 +57,7 @@ Pro přístup k frontám v projektech Visual Studio Cloud Services, budete muset
         // Get a reference to a queue named "messageQueue"
         CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**Poznámka:** používat všechny výše uvedený kód před kód v následujících ukázkách.
+**POZNÁMKA:** Použijte všechny výše uvedený kód před kód v následujících ukázkách.
 
 ## <a name="create-a-queue-in-code"></a>Vytvořit frontu v kódu
 Vytvořte frontu v kódu, stačí přidat volání **CreateIfNotExists**.

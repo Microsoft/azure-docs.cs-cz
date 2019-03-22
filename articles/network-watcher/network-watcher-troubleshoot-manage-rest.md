@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: e3c172a0e88988acfb0244fff4603dc644aee03f
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 0889476d84bbeaf620d9fc952efe102601a1eaf8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091019"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857840"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Řešení potíží s brány virtuální sítě a připojení pomocí Azure Network Watcher
 
@@ -36,7 +36,7 @@ Tento článek vás provede jiné úlohy, které jsou aktuálně k dispozici pro
 - [**Řešení potíží s bránu virtuální sítě**](#troubleshoot-a-virtual-network-gateway)
 - [**Řešení potíží s připojení**](#troubleshoot-connections)
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 ARMclient slouží k volání rozhraní REST API pomocí Powershellu. ARMClient se nachází na chocolatey na [ARMClient v Chocolatey](https://chocolatey.org/packages/ARMClient)
 
@@ -161,7 +161,7 @@ Příklady typických degradovaný odpovědi vrácené při dotazování na výs
         },
         {
           "actionText": "If your VPN gateway isn't up and running by the expected resolution time, contact support",
-          "actionUri": "http://azure.microsoft.com/support",
+          "actionUri": "https://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
       ]
@@ -178,7 +178,7 @@ Příklady typických degradovaný odpovědi vrácené při dotazování na výs
         },
         {
           "actionText": "If you are experiencing problems you believe are caused by Azure, contact support",
-          "actionUri": "http://azure.microsoft.com/support",
+          "actionUri": "https://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
       ]
@@ -295,7 +295,7 @@ is a transient state while the Azure platform is being updated.",
         },
         {
           "actionText": "If your VPN Connection isn't up and running by the expected resolution time, contact support",
-          "actionUri": "http://azure.microsoft.com/support",
+          "actionUri": "https://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
       ]
@@ -312,7 +312,7 @@ is a transient state while the Azure platform is being updated.",
         },
         {
           "actionText": "If you are experiencing problems you believe are caused by Azure, contact support",
-          "actionUri": "http://azure.microsoft.com/support",
+          "actionUri": "https://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
       ]
@@ -325,7 +325,7 @@ is a transient state while the Azure platform is being updated.",
 
 Text akce obsahuje obecné pokyny k vyřešení daného problému. Pokud mohou se akce pro tento problém, je k dispozici odkaz Další informace. V případě, pokud neexistuje žádné další doprovodné materiály, odpověď obsahuje adresu url pro otevření případu podpory.  Další informace o vlastnostech odpovědi a co je součástí [přehled řešení potíží s sledovací proces sítě](network-watcher-troubleshoot-overview.md)
 
-Pokyny ke stahování souborů z účtů úložiště azure, najdete v tématu [Začínáme s Azure Blob storage pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Dalším nástrojem, který je možné je Průzkumníka služby Storage. Další informace o Průzkumníku služby Storage najdete tady na následující odkaz: [Průzkumníka služby Storage](http://storageexplorer.com/)
+Pokyny ke stahování souborů z účtů úložiště azure, najdete v tématu [Začínáme s Azure Blob storage pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Dalším nástrojem, který je možné je Průzkumníka služby Storage. Další informace o Průzkumníku služby Storage najdete tady na následující odkaz: [Storage Explorer](https://storageexplorer.com/)
 
 ## <a name="next-steps"></a>Další postup
 

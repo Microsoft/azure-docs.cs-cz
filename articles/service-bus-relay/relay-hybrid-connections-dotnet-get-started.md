@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 16b1ad580ce9d2a6c34da7c243ab6dd9ab810078
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 88d540f274d8b07bfbdbb566c670adf6ddfefd74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763972"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878694"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Začínáme s předávání hybridních připojení WebSockets v rozhraní .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -38,7 +38,7 @@ V tomto rychlém startu proveďte následující kroky:
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
-* [Sada Visual Studio 2015 nebo novější](http://www.visualstudio.com). V příkladech v tomto kurzu se používá sada Visual Studio 2017.
+* [Sada Visual Studio 2015 nebo novější](https://www.visualstudio.com). V příkladech v tomto kurzu se používá sada Visual Studio 2017.
 * Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="create-a-namespace"></a>Vytvoření oboru názvů

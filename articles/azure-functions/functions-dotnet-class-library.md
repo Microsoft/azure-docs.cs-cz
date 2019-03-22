@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: b54585805a2d94d1b41c1ec39aea911ed05b3ca7
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 55b4cf6e621bc1e5bd3d8ba4718e5714ea652c27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193311"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111476"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Funkce jazyka C# pro vývojáře referenční informace k Azure
 

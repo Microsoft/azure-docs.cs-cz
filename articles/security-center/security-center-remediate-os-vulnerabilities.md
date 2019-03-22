@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: f3764e5f4a5d6bbc3d6988321a2d7648012825ae
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: f4558c6fdb1e5e4f0ffb7a4b4fdb1ab62eb4cfa9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242237"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121277"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Opravit konfigurace zabezpečení v Azure Security Center
 Azure Security Center analyzuje denně operační systém (OS) virtuálních počítačů (VM) a počítačů pro konfiguraci, které by mohly znamenat virtuálních počítačů a počítačů, které jsou zranitelnější vůči útokům. Security Center doporučuje, abyste vyřešili ohrožení zabezpečení, když vaše konfigurace operačního systému se neshoduje s pravidla konfigurace doporučené zabezpečení a doporučuje změny konfigurace, které tyto nedostatky zabezpečení řeší.
@@ -31,34 +31,34 @@ Další informace o konkrétní konfigurace se monitorují, najdete v článku [
 
 Tento příklad se vztahuje "Opravit konfigurace zabezpečení" doporučení v části **výpočty a aplikace**.
 1. Ve službě Security Center, v levém podokně vyberte **výpočty a aplikace**.  
-  **Výpočty a aplikace** otevře se okno.
+   **Výpočty a aplikace** otevře se okno.
 
    ![Náprava konfigurací zabezpečení][1]
 
 2. Vyberte **náprava konfigurací zabezpečení**.  
-  **Konfigurace zabezpečení** otevře se okno.
+   **Konfigurace zabezpečení** otevře se okno.
 
    ![V okně "Konfigurace zabezpečení"][2]
 
-  Horní části řídicího panelu zobrazí:
+   Horní části řídicího panelu zobrazí:
 
-  - **Neúspěšná pravidla podle závažnosti**: Celkový počet pravidel, konfigurace operačního systému se nezdařilo napříč virtuálních počítačů a počítačů rozdělené podle závažnosti.
-  - **Neúspěšná pravidla podle typu**: Celkový počet pravidel, konfigurace operačního systému se nezdařilo napříč virtuálních počítačů a počítačů rozdělené podle typu.
-  - **Neúspěšná pravidla Windows**: Celkový počet pravidel, podle konfigurace vašeho operačního systému Windows se nezdařilo.
-  - **Neúspěšná pravidla Linux**: Celkový počet pravidel, podle konfigurace operačního systému Linux se nezdařilo.
+   - **Neúspěšná pravidla podle závažnosti**: Celkový počet pravidel, konfigurace operačního systému se nezdařilo napříč virtuálních počítačů a počítačů rozdělené podle závažnosti.
+   - **Neúspěšná pravidla podle typu**: Celkový počet pravidel, konfigurace operačního systému se nezdařilo napříč virtuálních počítačů a počítačů rozdělené podle typu.
+   - **Neúspěšná pravidla Windows**: Celkový počet pravidel, podle konfigurace vašeho operačního systému Windows se nezdařilo.
+   - **Neúspěšná pravidla Linux**: Celkový počet pravidel, podle konfigurace operačního systému Linux se nezdařilo.
 
-  Dolní části řídicího panelu zobrazuje seznam všech pravidel, která selhala pro vaše virtuální počítače a počítače a závažnost chybějící aktualizace. Seznam obsahuje následující prvky:
+   Dolní části řídicího panelu zobrazuje seznam všech pravidel, která selhala pro vaše virtuální počítače a počítače a závažnost chybějící aktualizace. Seznam obsahuje následující prvky:
 
-  - **CCEID**: Jedinečný identifikátor CCE pro pravidlo. Security Center používá Common Configuration Enumeration (CCE) pro přiřazení jedinečných identifikátorů pro konfiguraci pravidla.
-  - **Název**: Název pravidla se nezdařilo.
-  - **Typ pravidla**: *Klíč registru*, *zásady zabezpečení*, *zásady auditu*, nebo *IIS* typ pravidla.
-  - **Ne. virtuálních počítačů a počítačů**: Celkový počet virtuálních počítačů a počítačů, pro které platí pravidlo, které selhalo.
-  - **Závažnost pravidla**: Hodnota CCE *kritický*, *důležité*, nebo *upozornění*.
-  - **Stav**: Aktuální stav doporučení:
+   - **CCEID**: Jedinečný identifikátor CCE pro pravidlo. Security Center používá Common Configuration Enumeration (CCE) pro přiřazení jedinečných identifikátorů pro konfiguraci pravidla.
+   - **Název**: Název pravidla se nezdařilo.
+   - **Typ pravidla**: *Klíč registru*, *zásady zabezpečení*, *zásady auditu*, nebo *IIS* typ pravidla.
+   - **Ne. virtuálních počítačů a počítačů**: Celkový počet virtuálních počítačů a počítačů, pro které platí pravidlo, které selhalo.
+   - **Závažnost pravidla**: Hodnota CCE *kritický*, *důležité*, nebo *upozornění*.
+   - **Stav**: Aktuální stav doporučení:
 
-    - **Otevřít**: Doporučení dosud nebylo řešeno.
-    - **V průběhu**: Doporučení se aktuálně zavádí prostředky a nevyžaduje žádné akce se.
-    - **Vyřešené**: Použití doporučení. Pokud je problém vyřešen, položka je vyšedlá.
+     - **Otevřít**: Doporučení dosud nebylo řešeno.
+     - **V průběhu**: Doporučení se aktuálně zavádí prostředky a nevyžaduje žádné akce se.
+     - **Vyřešené**: Použití doporučení. Pokud je problém vyřešen, položka je vyšedlá.
 
 3. Chcete-li zobrazit podrobnosti o pravidlo, které selhalo, vyberte ho v seznamu.
 
@@ -79,17 +79,17 @@ Tento příklad se vztahuje "Opravit konfigurace zabezpečení" doporučení v �
    - **Pravidlo operace**: Operace pravidla, která se používá služba Security Center při analýze konfigurace operačního systému virtuálního počítače pro pravidlo.
 
 4. V horní části okna podrobné zobrazení, vyberte **hledání**.  
-  Vyhledávání se otevře seznam pracovních prostorů, které mají virtuální počítače a počítače s konfigurací neshoda vybrané zabezpečení. Výběr pracovního prostoru se zobrazí, jenom Pokud vybrané pravidlo se vztahuje na několika virtuálních počítačů, které jsou připojeny k různé pracovní prostory.
+   Vyhledávání se otevře seznam pracovních prostorů, které mají virtuální počítače a počítače s konfigurací neshoda vybrané zabezpečení. Výběr pracovního prostoru se zobrazí, jenom Pokud vybrané pravidlo se vztahuje na několika virtuálních počítačů, které jsou připojeny k různé pracovní prostory.
 
    ![Uvedené pracovní prostory][4]
 
 5. Vyberte pracovní prostor.  
-  Vyfiltrováno do pracovního prostoru s neshoda konfigurace zabezpečení se otevře dotaz vyhledávání protokolů služby Azure Monitor.
+   Vyfiltrováno do pracovního prostoru s neshoda konfigurace zabezpečení se otevře dotaz vyhledávání protokolů služby Azure Monitor.
 
    ![Pracovní prostor s ohrožení zabezpečení operačního systému][5]
 
 6. V seznamu vyberte počítač.  
-  Nový výsledek vyhledávání se otevře s informacemi filtrovat pouze pro daný počítač.
+   Nový výsledek vyhledávání se otevře s informacemi filtrovat pouze pro daný počítač.
 
    ![Podrobné informace o vybraném počítači][6]
 

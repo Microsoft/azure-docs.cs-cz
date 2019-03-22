@@ -8,19 +8,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2019
 ms.author: ramamill
-ms.openlocfilehash: 3f500abe0ea37b35236547824c655adc1a4c4d93
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ef0e29217e03b3c5d1b2880a6ce755c6cc02ceba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448828"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004459"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
 Při použití se nasadíte místní konfigurační server [Azure Site Recovery](site-recovery-overview.md) pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure. Konfigurace serveru souřadnice komunikaci mezi místní VMware a Azure. Spravuje taky data replikace. Tento článek vás provede kroky potřebné k nasazení konfiguračního serveru při replikaci virtuálních počítačů VMware do Azure. [Postupujte podle tohoto článku](physical-azure-set-up-source.md) Pokud je potřeba nastavit konfigurační server pro replikaci fyzických serverů.
 
->[!TIP]
-Informace o roli konfiguračního serveru jako součást Azure Site Recovery architektury [tady](vmware-azure-architecture.md).
+> [!TIP]
+> Informace o roli konfiguračního serveru jako součást Azure Site Recovery architektury [tady](vmware-azure-architecture.md).
 
 ## <a name="deployment-of-configuration-server-through-ova-template"></a>Nasazení konfiguračního serveru pomocí šablony pro soubory OVA
 
@@ -46,7 +46,7 @@ Vyžadujete, aby uživatel s **jednu z následujících** oprávnění nastavil 
    1. Přejděte do služby Azure Active Directory > uživatelské nastavení
    1. V části ** registrace aplikací ","Uživatelé můžou registrovat aplikace"je třeba zvolit jako"Ano".
 
-    ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
+      ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
 > Active Directory Federation Services(ADFS) je **nepodporuje**. Použijte prosím účet spravovaný prostřednictvím [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
@@ -70,11 +70,11 @@ Pokud replikujete více než jeden virtuální počítač VMware, přečtěte si
 3. V části **Přidat server** zkontrolujte, jestli se v části **Typ serveru** zobrazí **Konfigurační server pro VMware**.
 4. Stáhněte si šablonu otevřít virtualizace aplikace OVA () pro konfigurační server.
 
-  > [!TIP]
->Můžete také stáhnout nejnovější verzi šablona konfiguračního serveru přímo z [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+   > [!TIP]
+   >Můžete také stáhnout nejnovější verzi šablona konfiguračního serveru přímo z [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
 
->[!NOTE]
-Licence, které jsou poskytovány s šablonou OVA je zkušební licence, který je platný po dobu 180 dnů. Po uplynutí této doby zákazník potřebuje aktivovat systém windows s licencí opatřené.
+> [!NOTE]
+> Licence, které jsou poskytovány s šablonou OVA je zkušební licence, který je platný po dobu 180 dnů. Po uplynutí této doby zákazník potřebuje aktivovat systém windows s licencí opatřené.
 
 ## <a name="import-the-template-in-vmware"></a>Import šablony do VMware
 
@@ -136,6 +136,7 @@ Pokud chcete přidat další síťový adaptér ke konfiguračnímu serveru, př
     |Můžete stáhnout a nainstalovat MySQL ručně?     |  Ano. Stažení aplikace MySQL a umístěte ho do složky **C:\Temp\ASRSetup**, nainstalujte ručně. Teď, když je přijímáte > klikněte na **stáhněte a nainstalujte**, uvádí, že na portálu *už nainstalovaná*. Můžete přejít k dalšímu kroku.       |
     |Můžete vyhnout stažení nástroje MySQL online?     |   Ano. Umístěte do složky aplikace Instalační program MySQL **C:\Temp\ASRSetup**. Přijměte podmínky > klikněte na **stáhnout a nainstalovat**, portál použije instalační program přidali a nainstaluje aplikaci. Můžete přejít na další krok po instalaci.    |
     |Chci stáhnout a nainstalovat MySQL pomocí Azure Site Recovery     |  Přijměte licenční smlouvu a klikněte na **stáhnout a nainstalovat**. Potom můžete přejít na další krok po instalaci.       |
+
 5. Než budete pokračovat, v části **Ověřit konfiguraci zařízení** se ověří požadavky.
 6. V části **Konfigurovat vCenter Server nebo server vSphere ESXi** zadejte plně kvalifikovaný název domény nebo IP adresu vCenter Serveru nebo hostitele vSphere, na kterém jsou umístěné virtuální počítače, které chcete replikovat. Zadejte port, na kterém server naslouchá. Zadejte popisný název, který se použije pro server VMware v trezoru.
 7. Zadejte přihlašovací údaje, které bude konfigurační server používat pro připojení k serveru VMware. Služba Site Recovery je použije k automatickému zjištění virtuálních počítačů VMware, které jsou dostupné pro replikaci. Vyberte **přidat**a potom **pokračovat**. Zde zadané přihlašovací údaje se uloží místně.

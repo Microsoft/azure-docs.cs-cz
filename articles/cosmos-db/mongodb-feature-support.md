@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 69a57aed0a53febbe547386de8053fc6c9d4ed8f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 795002d450505b9103f1815a8b03c8d546bddde8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751102"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119458"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-supported-features-and-syntax"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB: podporovány funkcí a syntaxe
 
@@ -214,22 +214,22 @@ Jsou podporované následující operátory, doplněné o odpovídající přík
 
 Operátor | Příklad: |
 --- | --- |
-$eq | ``` { "Volcano Name": { $eq: "Rainier" } } ``` |  | -
-$gt | ``` { "Elevation": { $gt: 4000 } } ``` |  | -
-$gte | ``` { "Elevation": { $gte: 4392 } } ``` |  | -
-$lt | ``` { "Elevation": { $lt: 5000 } } ``` |  | -
-$lte | ``` { "Elevation": { $lte: 5000 } } ``` | | -
-$ne | ``` { "Elevation": { $ne: 1 } } ``` |  | -
-$in | ``` { "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } } ``` |  | -
-$nin | ``` { "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } } ``` | | -
-$or | ``` { $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |  | -
-$and | ``` { $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |  | -
-$not | ``` { "Elevation": { $not: { $gt: 5000 } } } ```|  | -
-$nor | ``` { $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] } ``` |  | -
-$exists | ``` { "Status": { $exists: true } } ```|  | -
-$type | ``` { "Status": { $type: "string" } } ```|  | -
-$mod | ``` { "Elevation": { $mod: [ 4, 0 ] } } ``` |  | -
-$regex | ``` { "Volcano Name": { $regex: "^Rain"} } ```|  | -
+$eq | ``` { "Volcano Name": { $eq: "Rainier" } } ``` |
+$gt | ``` { "Elevation": { $gt: 4000 } } ``` |
+$gte | ``` { "Elevation": { $gte: 4392 } } ``` |
+$lt | ``` { "Elevation": { $lt: 5000 } } ``` |
+$lte | ``` { "Elevation": { $lte: 5000 } } ``` |
+$ne | ``` { "Elevation": { $ne: 1 } } ``` |
+$in | ``` { "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } } ``` |
+$nin | ``` { "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } } ``` |
+$or | ``` { $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |
+$and | ``` { $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |
+$not | ``` { "Elevation": { $not: { $gt: 5000 } } } ```|
+$nor | ``` { $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] } ``` |
+$exists | ``` { "Status": { $exists: true } } ```|
+$type | ``` { "Status": { $type: "string" } } ```|
+$mod | ``` { "Elevation": { $mod: [ 4, 0 ] } } ``` |
+$regex | ``` { "Volcano Name": { $regex: "^Rain"} } ```|
 
 ### <a name="notes"></a>Poznámky
 
@@ -267,19 +267,19 @@ V první části se použije index k omezení hledání na dokumenty, které za�
 
 ### <a name="geospatial-operators"></a>Geoprostorové operátory
 
-Operátor | Příklad: 
---- | --- |
-$geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Ano
-$geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ano
-$near | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ano
-$nearSphere | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Ano
-$geometry | ```{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ano
-$minDistance | ```{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }``` | Ano
-$maxDistance | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Ano
-$center | ```{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }``` | Ano
-$centerSphere | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Ano
-$box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }``` | Ano
-$polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ano
+Operátor | Příklad: | |
+--- | --- | --- |
+$geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Ano |
+$geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ano |
+$near | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ano |
+$nearSphere | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Ano |
+$geometry | ```{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ano |
+$minDistance | ```{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }``` | Ano |
+$maxDistance | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Ano |
+$center | ```{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }``` | Ano |
+$centerSphere | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Ano |
+$box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }``` | Ano |
+$polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ano |
 
 ## <a name="sort-operations"></a>Operace řazení
 Při použití `findOneAndUpdate` operace, operace řazení na jedno pole jsou podporovány, ale operace řazení podle více polí nejsou podporovány.

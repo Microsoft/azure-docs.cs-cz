@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cfc14379fce1fea346d33e8e29e4385e14f2356
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: bd137b71cab4a345afce835effd2ecb0c03df312
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409070"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57882977"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Rychlý start: Škálujte kapacitu výpočetních prostředků ve službě Azure SQL Data Warehouse v Powershellu
 
@@ -37,13 +37,13 @@ Přihlaste se k předplatnému Azure pomocí [připojit AzAccount](/powershell/m
 Connect-AzAccount
 ```
 
-Chcete-li zjistit, které předplatné používáte, spusťte [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription).
+Chcete-li zjistit, které předplatné používáte, spusťte [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription).
 
 ```powershell
 Get-AzSubscription
 ```
 
-Pokud budete muset použít jiné předplatné než výchozí, spusťte [Set-AzContext](/powershell/module/az.profile/set-azcontext).
+Pokud budete muset použít jiné předplatné než výchozí, spusťte [Set-AzContext](/powershell/module/az.accounts/set-azcontext).
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"

@@ -1,7 +1,7 @@
 ---
 title: V1 na v2 migrace rozhraní API
 titleSuffix: Azure Cognitive Services
-description: Koncový bod verze 1 a pro vytváření rozhraní API jsou zastaralé. Tento průvodce vám pochopit, jak migrovat na koncový bod verze 2 a rozhraní API pro vytváření.
+description: Koncový bod verze 1 a vytváření rozhraní API pro rozpoznávání tomu jsou zastaralé. Tento průvodce vám pochopit, jak migrovat na koncový bod verze 2 a rozhraní API pro vytváření.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: dfd30ce148002e32986c58aff607e182033e02b3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7496142b1c762ce0a7afa96a1a94dd3026351cc9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859865"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087920"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Rozhraní API v1 na v2 Průvodce migrací pro aplikace LUIS
 Verze 1 [koncový bod](https://aka.ms/v1-endpoint-api-docs) a [vytváření](https://aka.ms/v1-authoring-api-docs) jsou zastaralé rozhraní API. Tento průvodce vám pochopit, jak migrovat na verzi 2 [koncový bod](https://aka.ms/luis-endpoint-apis) a [vytváření](https://aka.ms/luis-authoring-apis) rozhraní API. 
 
 ## <a name="new-azure-regions"></a>Nové oblasti Azure
-Služba LUIS je nový [oblastech](https://aka.ms/LUIS-regions) k rozhraním API LUIS k dispozici. Služba LUIS obsahuje jiný web pro oblasti skupiny. Aplikace musí být vytvořen ve stejné oblasti, které očekáváte, že k dotazování. Aplikace se nemigrují automaticky oblastech. Exportujte aplikace z jedné oblasti a importovat do jiného být k dispozici v nové oblasti.
+Služba LUIS je nový [oblastech](https://aka.ms/LUIS-regions) k rozhraním API LUIS k dispozici. Služba LUIS poskytuje jiný portál pro skupiny oblasti. Aplikace musí být vytvořen ve stejné oblasti, které očekáváte, že k dotazování. Aplikace se nemigrují automaticky oblastech. Exportujte aplikace z jedné oblasti a importovat do jiného být k dispozici v nové oblasti.
 
 ## <a name="authoring-route-changes"></a>Vytváření změny směrování
 Vytváření rozhraní API route změnit pomocí **GID** trasy k použití **api** trasy.

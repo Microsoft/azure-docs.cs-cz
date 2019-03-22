@@ -5,21 +5,21 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.author: mabvrigg
+ms.date: 03/20/2019
 ms.reviewer: waltero
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 6a5efce2f50a25902b33f2cb85d470a280000305
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.lastreviewed: 03/20/2019
+ms.openlocfilehash: 01a9405c98160149782ab2cf248f64818d631dde
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002058"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293783"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Řešení potíží s Kubernetes nasazení do služby Azure Stack
 
@@ -66,8 +66,8 @@ Následující diagram znázorňuje obecný postup nasazení clusteru.
 
     Skript provede následující úlohy:
     - Nainstaluje etcd, Docker a Kubernetes prostředky, jako jsou kubelet. etcd je distribuovaná hodnota klíče úložiště, který poskytuje způsob, jak ukládat data napříč clusterem počítačů. Docker podporuje virtualizations holou úroveň operačního systému, známé jako kontejnery. Kubelet je agenta uzlu, na kterém běží na všech uzlech Kubernetes.
-    - Nastaví etcd služby.
-    - Nastaví kubelet služby.
+    - Nastaví **etcd** služby.
+    - Nastaví **kubelet** služby.
     - Spustí kubelet. Tato úloha zahrnuje následující kroky:
         1. Spustí službu rozhraní API.
         2. Spustí službu řadiče.
@@ -77,9 +77,9 @@ Následující diagram znázorňuje obecný postup nasazení clusteru.
 7. Stažení a spuštění rozšíření vlastních skriptů.
 
 7. Spusťte skript agenta. Agent vlastní skript provede následující úlohy:
-    - Nainstaluje etcd
-    - Nastaví službu kubelet
-    - Připojí ke clusteru Kubernetes
+    - Nainstaluje **etcd**.
+    - Nastaví **kubelet** služby.
+    - Připojí ke clusteru Kubernetes.
 
 ## <a name="steps-for-troubleshooting"></a>Kroky pro řešení potíží
 
@@ -119,66 +119,52 @@ Při nasazování clusteru Kubernetes, můžete zkontrolovat stav nasazení zkon
 
     Každá položka má zelená nebo červená ikona stavu.
 
-## <a name="get-logs-from-a-vm"></a>Získání protokolů z virtuálního počítače
+## <a name="review-deployment-logs"></a>Zkontrolujte protokoly nasazení
 
-Generovat protokoly, budete potřebovat připojení k hlavnímu virtuálnímu počítači pro váš cluster, otevřete příkazový řádek bash a spusťte skript. Hlavní najdete ve vaší skupině prostředků clusteru virtuálního počítače a názvem `k8s-master-<sequence-of-numbers>`. 
+Pokud na portálu Azure Stack neposkytuje dostatek informací k řešení potíží nebo překonat selhání nasazení, dalším krokem je podívat do protokolů clusteru. Pokud chcete ručně načíst protokoly nasazení, je obvykle potřeba připojit k hlavní virtuálních počítačů clusteru. Jednodušší alternativním přístupem je stáhněte a spusťte následující příkaz [skriptu Bash](https://aka.ms/AzsK8sLogCollectorScript) poskytované týmem služby Azure Stack. Tento skript připojí ke clusteru virtuálních počítačů a DVM, shromažďuje relevantní systému a protokolů clusteru a stáhne je zpátky do pracovní stanice.
 
 ### <a name="prerequisites"></a>Požadavky
 
-Je nutné bash výzvy na počítači, který používáte ke správě služby Azure Stack. Použijte bash spouštět skripty, které přístup k protokolům. Na počítači s Windows můžete použít příkazový řádek bash, který je nainstalován pomocí Gitu. Pokud chcete získat nejnovější verzi gitu, naleznete v tématu [pro stažení Gitu](https://git-scm.com/downloads).
+Budete potřebovat příkazovém řádku Bash na počítači, který používáte ke správě služby Azure Stack. Na počítači s Windows můžete získat Bash výzvy nainstalováním [Git pro Windows](https://git-scm.com/downloads). Po instalaci, vyhledejte _Git Bash_ v nabídce start.
 
-### <a name="get-logs"></a>Získání protokolů
+### <a name="retrieving-the-logs"></a>Načítají se protokoly
 
-Pokud chcete získat protokoly, proveďte následující kroky:
+Postupujte podle těchto kroků ke shromažďování a stažení protokolů clusteru:
 
-1. Otevřete příkazový řádek bash. Pokud používáte Git na počítači s Windows, můžete otevřít příkazový řádek bash v následující cestě: `c:\programfiles\git\bin\bash.exe`.
-2. Spusťte následující příkazy bash:
+1. Otevřete příkazový řádek Bash. Z počítače s Windows otevřete _Git Bash_ nebo spustit: `C:\Program Files\Git\git-bash.exe`.
+
+2. Spuštěním následujících příkazů v vaše příkazovém řádku Bash Stáhněte skript kolektoru protokolů:
 
     ```Bash  
     mkdir -p $HOME/kuberneteslogs
     cd $HOME/kuberneteslogs
     curl -O https://raw.githubusercontent.com/msazurestackworkloads/azurestack-gallery/master/diagnosis/getkuberneteslogs.sh
-    sudo chmod 744 getkuberneteslogs.sh
+    chmod 744 getkuberneteslogs.sh
     ```
 
-    > [!Note]  
-    > Na Windows, není nutné ke spuštění `sudo`. Místo toho můžete použít jenom `chmod 744 getkuberneteslogs.sh`.
-
-3. Ve stejné relaci, spusťte následující příkaz s parametry, aktualizovat, aby odpovídaly vašemu prostředí:
-
-    ```Bash  
-    ./getkuberneteslogs.sh --identity-file id_rsa --user azureuser --vmd-host 192.168.102.37
-    ```
-
-4. Zkontrolujte parametry a nastavte hodnoty podle vašeho prostředí.
+3. Vyhledání informací o vyžaduje skript a spusťte ho:
 
     | Parametr           | Popis                                                                                                      | Příklad:                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -d, --vmd-host       | Veřejná IP adresa nebo plně kvalifikovaný název domény DVM. Název virtuálního počítače začíná `vmd-`.                                                       | IP adresa: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
-    | -f,--force | Nezobrazovat výzvu před nahráním privátní klíč. | |
-    | -i,-identity soubor | RSA souboru privátního klíče pro připojení Kubernetes hlavním virtuálním počítači. Tento klíč musí začínat znakem: <br>`-----BEGIN RSA PRIVATE KEY-----` | C:\data\id_rsa.pem                                                        |
-    | -h, – Nápověda  | Použití příkazu pro tisk `getkuberneteslogs.sh` skriptu. | |
-    | -m, --master-host          | Veřejnou IP adresu nebo název plně kvalifikované domény (FQDN) hlavního uzlu clusteru Kubernetes virtuálního počítače. Název virtuálního počítače začíná `k8s-master-`.                       | IP adresa: 192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
-    | -u, --user          | Uživatelské jméno hlavního uzlu clusteru Kubernetes virtuálního počítače. Tento název se nastavit při konfiguraci položku marketplace.                                                                    | azureuser                                                                     |
+    | -d, --vmd-host      | Veřejná IP adresa nebo plně kvalifikovaný název (FQDN) DVM. Název virtuálního počítače začíná `vmd-`. | IP adresa: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
+    | -h, – Nápověda  | Tisk použití příkazu. | |
+    | -i,-identity soubor | Soubor privátního klíče RSA předán položky marketplace při vytváření clusteru Kubernetes. Třeba do vzdáleného úložiště v uzlech Kubernetes. | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
+    | -m, --master-host   | Veřejnou IP adresu nebo název plně kvalifikované domény (FQDN) hlavního uzlu Kubernetes. Název virtuálního počítače začíná `k8s-master-`. | IP adresa: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | -u, --user          | Uživatelské jméno předané do položky marketplace při vytváření clusteru Kubernetes. Třeba do vzdáleného úložiště v uzlech Kubernetes | azureuser (výchozí hodnota) |
 
 
-
-
-   Když přidáte všechny hodnoty parametrů, může vypadat jako v následujícím kódu:
+   Když přidáte všechny hodnoty parametrů, váš příkaz může vypadat přibližně takto:
 
     ```Bash  
-    ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmdhost 192.168.102.37
+    ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmd-host 192.168.102.37
      ```
 
-    Úspěšné spuštění vytvoří v protokolech.
+4. Za pár minut, bude výstup skriptu shromažďovat protokoly a adresář s názvem `KubernetesLogs_{{time-stamp}}`. Zde najdete adresář pro každý virtuální počítač, který patří do clusteru.
 
-    ![Generované protokoly](media/azure-stack-solution-template-kubernetes-trouble/azure-stack-generated-logs.png)
+    Skript kolektoru protokolů také vyhledávání chyb v souborech protokolu a zahrnují potíží, když se stane najít známý problém. Ujistěte se, že používáte nejnovější verzi souboru, který chcete zvýšit pravděpodobnost hledání známých problémů.
 
-
-1. Načtěte protokoly ve složkách, které byly vytvořeny pomocí příkazu. Tento příkaz vytvoří nové složky a opatří je.
-    - KubernetesLogs*YYYY-MM-DD-XX-XX-XX-XXX*
-        - Dvmlogs
-        - Acsengine-kubernetes-dvm.log
+> [!Note]  
+> Podívejte se na tomto Githubu [úložiště](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis) další podrobnosti o skriptu kolektoru protokolů.
 
 ## <a name="next-steps"></a>Další postup
 

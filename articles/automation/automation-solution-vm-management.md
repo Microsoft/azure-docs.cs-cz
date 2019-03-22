@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 22347ce7296dc55d98f1ee6d4458fa6d7c5a21e6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6b5ef0f165433e2dd0685aa0e4f64bd04bf5c823
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551244"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902242"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -73,7 +73,7 @@ Proveďte následující kroky pro přidání spouštění/zastavování virtuá
 6. Na **přidat řešení** stránce **účtu Automation**. Pokud vytváříte nový pracovní prostor Log Analytics, můžete vytvořit nový účet Automation, který se má přidružit ho nebo vyberte existující účet Automation, který není již propojený s pracovním prostorem Log Analytics. Vyberte existující účet Automation, nebo klikněte na tlačítko **vytvořit účet Automation**a na **přidat účet Automation** stránky, zadejte následující informace:
    - Do pole **Název** zadejte název účtu služby Automation.
 
-    Všechny ostatní možnosti se vyplní automaticky podle vybrané pracovní prostor Log Analytics. Tyto možnosti nelze upravovat. Účet Spustit v Azure jako představuje výchozí metodu ověřování pro runbooky obsažené v tomto řešení. Po kliknutí na **OK**, se ověří možnosti konfigurace a vytvoření účtu Automation. Průběh zpracování můžete sledovat prostřednictvím možnosti nabídky **Oznámení**.
+     Všechny ostatní možnosti se vyplní automaticky podle vybrané pracovní prostor Log Analytics. Tyto možnosti nelze upravovat. Účet Spustit v Azure jako představuje výchozí metodu ověřování pro runbooky obsažené v tomto řešení. Po kliknutí na **OK**, se ověří možnosti konfigurace a vytvoření účtu Automation. Průběh zpracování můžete sledovat prostřednictvím možnosti nabídky **Oznámení**.
 
 7. Nakonec v **přidat řešení** stránce **konfigurace**. **Parametry** se zobrazí stránka.
 
@@ -289,8 +289,8 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 |Dotaz | Popis|
 |----------|----------|
-|Najít úlohy runbooku ScheduledStartStop_Parent, která mají bylo úspěšně dokončeno | ```search Category == "JobLogs" | kde (RunbookName_s == "ScheduledStartStop_Parent") | kde (hodnotu ResultType == "Dokončeno")  | shrnutí |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | Seřadit podle TimeGenerated desc ".|
-|Najít úlohy runbooku SequencedStartStop_Parent, která mají bylo úspěšně dokončeno | ```search Category == "JobLogs" | kde (RunbookName_s == "SequencedStartStop_Parent") | kde (hodnotu ResultType == "Dokončeno") | shrnutí |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | Seřadit podle TimeGenerated desc ".|
+|Najít úlohy runbooku ScheduledStartStop_Parent, která mají bylo úspěšně dokončeno | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|Najít úlohy runbooku SequencedStartStop_Parent, která mají bylo úspěšně dokončeno | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc```|
 
 ## <a name="viewing-the-solution"></a>Zobrazení řešení
 

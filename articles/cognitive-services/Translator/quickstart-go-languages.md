@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 3bccf50d9236fb5b51b89f31ffc2ec9b0d2c74cd
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: bf33860b111900fed850158d6b80d5a9d4404893
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727277"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181601"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-go"></a>Rychlý start: Získání seznamu podporovaných jazycích pomocí jazyka Go pomocí rozhraní Translator Text API
 
@@ -29,7 +29,7 @@ K tomuto rychlému startu potřebujete:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
-Vytvoření nového projektu přejít pomocí Oblíbené prostředí IDE nebo editoru. Pak do svého projektu, do souboru s názvem `get-languages.go`, zkopírujte tento fragment kódu.
+Vytvoření nového projektu přejít pomocí vašeho oblíbeného prostředí IDE nebo editoru nebo nové složky na vašem počítači. Tento fragment kódu zkopírujte do složky vašeho projektu nebo do souboru s názvem `get-languages.go`.
 
 ```go
 package main
@@ -134,6 +134,8 @@ go run get-languages.go
 Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go).
 
 ## <a name="sample-response"></a>Ukázková odpověď
+
+Najít – zkratka země v tomto [seznam jazyků](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 

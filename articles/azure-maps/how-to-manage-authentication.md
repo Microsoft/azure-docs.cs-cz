@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: fe0e325543d245e4415fea925fcdade32eb00614
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 414ca7156fd59ec1dc08e45c73e9eb30835078d4
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570500"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259920"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Spravovat ověřování ve službě Azure Maps
 
@@ -32,7 +32,7 @@ Vašich ověřovacích údajů můžete zobrazit na portálu Azure portal. Přej
 
 Po vytvoření účtu Azure Maps, budete muset vytvořit propojení mezi vaším tenantem Azure AD a prostředků Azure Maps.
 
-1. Přejděte do okna Azure AD a vytvořit registrace aplikace. Zadejte název pro registraci. V **přihlašovací adresa URL** zadejte Domovská stránka webové aplikace a rozhraní API (například https://localhost/). Pokud už máte registrovaná aplikace, přejděte ke kroku 2.
+1. Přejděte do okna Azure AD a vytvořit registrace aplikace. Zadejte název pro registraci. V **přihlašovací adresa URL** zadejte Domovská stránka webové aplikace a rozhraní API (například https:\//localhost/). Pokud už máte registrovaná aplikace, přejděte ke kroku 2.
 
     ![Registrace aplikace](./media/how-to-manage-authentication/app-registration.png)
 

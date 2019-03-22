@@ -1,6 +1,6 @@
 ---
 title: Monitorování webové aplikace v ASP.NET pomocí Azure Application Insights | Dokumentace Microsoftu
-description: Pokyny pro rychlé nastavení webové aplikace v ASP.NET pro monitorování s využitím Application Insights
+description: Pokyny pro rychlé nastavení webové aplikace ASP.NET pro monitorování pomocí Application Insights
 services: application-insights
 keywords: ''
 author: mrbullwinkle
@@ -10,18 +10,18 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 8d4b5bb987e04e30953c7a2bb3a3d2387e51fdeb
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 9a4c6b8046934159533755f048e1aa158e7e591e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081222"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011768"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Zahájení monitorování webové aplikace v ASP.NET
 
 Azure Application Insights umožňuje snadné monitorování webové aplikace z hlediska dostupnosti, výkonu a využití.  Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé.  Na základě informací o výkonu a efektivitu vaší aplikace, které získáte ze služby Application Insights, můžete informovaně rozhodovat o údržbě a vylepšení vaší aplikace.
 
-V tomto kurzu Rychlý start se dozvíte, jak přidat Application Insights do už existující webové aplikace v ASP.NET a začít analyzovat živé statistiky. Je to jedna z řady různých metod, které můžete využít k analýze vaší aplikace. Pokud webovou aplikaci v ASP.NET nemáte, můžete si ji vytvořit pomocí [kurzu Rychlý start pro vytvoření webové aplikace v ASP.NET](../../app-service/app-service-web-get-started-dotnet-framework.md).
+V tomto kurzu Rychlý start se dozvíte, jak přidat Application Insights do už existující webové aplikace v ASP.NET a začít analyzovat živé statistiky. Je to jedna z řady různých metod, které můžete využít k analýze vaší aplikace. Pokud webovou aplikaci ASP.NET, můžete si ji vytvořit [vytvořit rychlý start webové aplikaci ASP.NET](../../app-service/app-service-web-get-started-dotnet-framework.md).
 
 ## <a name="prerequisites"></a>Požadavky
 K provedení kroků v tomto kurzu Rychlý start je potřeba:

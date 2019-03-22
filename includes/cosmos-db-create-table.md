@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 37d7b1d44c2a4b2f3cd2fd3ac881b106d5056279
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: a91c42ca32fb356b418dcd412c0690b01ff85789
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38726106"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57908114"
 ---
 Teď můžete pomocí nástroje Průzkumník dat na webu Azure Portal vytvořit databázi a tabulku. 
 
@@ -28,11 +28,10 @@ Teď můžete pomocí nástroje Průzkumník dat na webu Azure Portal vytvořit 
     Nastavení|Navrhovaná hodnota|Popis
     ---|---|---
     ID tabulky|sample-table|ID vaší nové tabulky. Názvy tabulek mají stejné požadavky na znaky jako ID databází. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat znaky `/ \ # ?` ani koncové mezery.
-    Kapacita úložiště| Pevná (10 GB)|Použijte výchozí hodnotu **Pevná (10 GB)**. Tato hodnota je kapacita úložiště databáze.
     Propustnost|400 RU/s|Změňte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.
 
-    Klikněte na **OK**.
+3. Klikněte na **OK**.
 
-    Průzkumník dat zobrazí novou databázi a tabulku.
+4. Průzkumník dat zobrazí novou databázi a tabulku.
 
-    ![Průzkumník dat na webu Azure Portal zobrazující novou databázi a tabulku](./media/cosmos-db-create-table/azure-cosmos-db-new-table.png)
+   ![Průzkumník dat na webu Azure Portal zobrazující novou databázi a tabulku](./media/cosmos-db-create-table/azure-cosmos-db-new-table.png)
