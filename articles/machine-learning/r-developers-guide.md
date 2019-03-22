@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: 0e5db2c08749a59a03e384c6048e67f7570f6750
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 70fc78fb515c56f0b3102bb006eb6491a664babd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211425"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886665"
 ---
 # <a name="r-developers-guide-to-azure"></a>Příručka pro vývojáře jazyka R do Azure
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -125,7 +125,7 @@ Machine Learning Services byl součástí místního SQL serveru od 2016, je rel
 
 
 ### <a name="next-steps"></a>Další postup
-* [Spuštění kódu jazyka R v Azure s mrsdeploy](http://blog.revolutionanalytics.com/2017/03/running-your-r-code-azure.html)
+* [Spuštění kódu jazyka R v Azure s mrsdeploy](https://blog.revolutionanalytics.com/2017/03/running-your-r-code-azure.html)
 * [Machine Learning Server v cloudu](https://docs.microsoft.com/machine-learning-server/install/machine-learning-server-in-the-cloud)
 * [Další zdroje informací pro Machine Learning Server a Microsoft R](https://docs.microsoft.com/machine-learning-server/resources-more)
 * [R v Azure](https://github.com/yueguoguo/r-on-azure) – Přehled balíčků, nástroje a případové studie pro Azure pomocí jazyka R

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 45b3149c0d546be201412567041ab1c5a86036e6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f83b525a423ccb2e66d75032811a5f921238a06b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455968"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57893403"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Přesun dat z místní HDFS pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -397,49 +397,49 @@ Existují dvě možnosti, jak nastavit v místním prostředí tak, aby použív
 
 **Na serveru služby KDC:**
 
-1.  Upravit konfiguraci služby KDC v **krb5.conf** souboru chcete, aby služba KDC důvěřovat odkazující na následující šablonu konfigurace domény Windows. Ve výchozím nastavení, se nachází v konfiguraci **/etc/krb5.conf**.
+1. Upravit konfiguraci služby KDC v **krb5.conf** souboru chcete, aby služba KDC důvěřovat odkazující na následující šablonu konfigurace domény Windows. Ve výchozím nastavení, se nachází v konfiguraci **/etc/krb5.conf**.
 
-            [logging]
-             default = FILE:/var/log/krb5libs.log
-             kdc = FILE:/var/log/krb5kdc.log
-             admin_server = FILE:/var/log/kadmind.log
+           [logging]
+            default = FILE:/var/log/krb5libs.log
+            kdc = FILE:/var/log/krb5kdc.log
+            admin_server = FILE:/var/log/kadmind.log
 
-            [libdefaults]
-             default_realm = REALM.COM
-             dns_lookup_realm = false
-             dns_lookup_kdc = false
-             ticket_lifetime = 24h
-             renew_lifetime = 7d
-             forwardable = true
+           [libdefaults]
+            default_realm = REALM.COM
+            dns_lookup_realm = false
+            dns_lookup_kdc = false
+            ticket_lifetime = 24h
+            renew_lifetime = 7d
+            forwardable = true
 
-            [realms]
-             REALM.COM = {
-              kdc = node.REALM.COM
-              admin_server = node.REALM.COM
-             }
+           [realms]
+            REALM.COM = {
+             kdc = node.REALM.COM
+             admin_server = node.REALM.COM
+            }
+           AD.COM = {
+            kdc = windc.ad.com
+            admin_server = windc.ad.com
+           }
+
+           [domain_realm]
+            .REALM.COM = REALM.COM
+            REALM.COM = REALM.COM
+            .ad.com = AD.COM
+            ad.com = AD.COM
+
+           [capaths]
             AD.COM = {
-             kdc = windc.ad.com
-             admin_server = windc.ad.com
+             REALM.COM = .
             }
 
-            [domain_realm]
-             .REALM.COM = REALM.COM
-             REALM.COM = REALM.COM
-             .ad.com = AD.COM
-             ad.com = AD.COM
+   **Restartujte** služba KDC po konfiguraci.
 
-            [capaths]
-             AD.COM = {
-              REALM.COM = .
-             }
+2. Příprava objekt zabezpečení s názvem **krbtgt/REALM.COM\@AD.COM** v KDC server pomocí následujícího příkazu:
 
-  **Restartujte** služba KDC po konfiguraci.
+           Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-2.  Příprava objekt zabezpečení s názvem **krbtgt/REALM.COM@AD.COM** na serveru služby KDC pomocí následujícího příkazu:
-
-            Kadmin> addprinc krbtgt/REALM.COM@AD.COM
-
-3.  V **hadoop.security.auth_to_local**  konfigurace služby HDFS přidejte `RULE:[1:$1@$0](.*@AD.COM)s/@.*//`.
+3. V **hadoop.security.auth_to_local**  konfigurace služby HDFS přidejte `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`.
 
 **Na řadiči domény:**
 
@@ -448,7 +448,7 @@ Existují dvě možnosti, jak nastavit v místním prostředí tak, aby použív
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Navázání vztahu důvěryhodnosti z domény Windows do sféry Kerberos. [heslo] je heslo pro objekt **krbtgt/REALM.COM@AD.COM**.
+2.  Navázání vztahu důvěryhodnosti z domény Windows do sféry Kerberos. [heslo] je heslo pro objekt zabezpečení **krbtgt/REALM.COM\@AD.COM**.
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
