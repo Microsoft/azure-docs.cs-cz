@@ -1,32 +1,34 @@
 ---
-title: cíle škálování a výkonu služby Azure Storage
-description: Další informace o škálovatelnost a výkonnostní cíle, včetně kapacity a frekvence požadavků, příchozí a odchozí šířka pásma pro účty úložiště Azure úrovně standard.
+title: Azure škálovatelnost a výkonnostní cíle Storage - účty úložiště
+description: Další informace o škálovatelnost a výkonnostní cíle, včetně kapacity a frekvence požadavků, příchozí a odchozí šířka pásma pro účty úložiště Azure.
 services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
-ms.date: 11/08/2018
+ms.topic: conceptual
+ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 2f00b01bb07aafca847897f0c31d24d4add7cdbf
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: ca9c4c959d21f26369600129f3897b7624dd84f2
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328873"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371169"
 ---
-# <a name="azure-storage-scalability-and-performance-targets-for-standard-storage-accounts"></a>Azure škálovatelnost a výkonnostní cíle Storage pro účty úložiště úrovně standard
+# <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Azure škálovatelnost a výkonnostní cíle Storage pro účty úložiště
 
-Tento článek obsahuje podrobnosti o škálovatelnost a výkonnostní cíle pro účty úložiště Azure. Škálovatelnost a výkonnostní cíle, které jsou tady uvedené špičkové cíle, ale jsou dosažitelný. Ve všech případech, frekvence požadavků a šířku pásma dosaženou úložiště účtu závisí na velikosti objekty uložené, vzory přístupu k optimalizováno a typu úlohy, která vaše aplikace provádí. 
+Tento článek obsahuje podrobnosti o škálovatelnost a výkonnostní cíle pro účty úložiště Azure. Škálovatelnost a výkonnostní cíle, které jsou tady uvedené špičkové cíle, ale jsou dosažitelný. Ve všech případech, frekvence požadavků a šířku pásma dosaženou úložiště účtu závisí na velikosti objekty uložené, vzory přístupu k optimalizováno a typu úlohy, která vaše aplikace provádí.
 
 Nezapomeňte otestovat vaší služby k určení, zda jeho výkon a vyhovuje vašim požadavkům. Pokud je to možné vyhnout nečekaným špičkám míru přenosu dat a ujistěte se, že provoz je dobře distribuovaná napříč oddíly.
 
 Když aplikace dosáhne limitu co dokáže zpracovat oddíl pro vaši úlohu, začne Azure Storage vrátí kód chyby 503 (zaneprázdněný Server) nebo kód chyby odpovědi 500 (časový limit operace). Pokud se vyskytnou chyby 503, zvažte úpravu aplikaci pomocí exponenciálního omezení rychlosti zásady opakování. Exponenciální regresí umožňuje zatížení v oddílu snížit a doběhu špičkami v provozu do daného oddílu.
 
-## <a name="standard-storage-account-scale-limits"></a>Limity škálování účtu úložiště úrovně Standard
+## <a name="standard-performance-storage-account-scale-limits"></a>Limity škálování účtu úložiště Standard výkonu
+
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
 
-## <a name="premium-storage-account-scale-limits"></a>Limity škálování účtu úložiště úrovně Premium
+## <a name="premium-performance-storage-account-scale-limits"></a>Limity škálování účtu úložiště výkon úrovně Premium
+
 [!INCLUDE [azure-premium-limits](../../../includes/azure-storage-limits-premium.md)]
 
 ## <a name="storage-resource-provider-scale-limits"></a>Limity škálování poskytovatele prostředků úložiště
@@ -34,27 +36,32 @@ Když aplikace dosáhne limitu co dokáže zpracovat oddíl pro vaši úlohu, za
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
 ## <a name="azure-blob-storage-scale-targets"></a>Azure Blob storage škálování cíle
+
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
 
 ## <a name="azure-files-scale-targets"></a>Azure soubory měřítko cíle
+
 Další informace o škálování a výkonnostní cíle pro soubory Azure a Azure File Sync najdete v tématu [škálovatelnost a výkonnostní cíle Azure Files](../files/storage-files-scale-targets.md).
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
 ### <a name="azure-file-sync-scale-targets"></a>Azure File Sync měřítko cíle
+
 Azure File Sync byly navržené s cílem neomezené využití, ale neomezené využití není vždy možné. Následující tabulka označuje hranice testování od Microsoftu a také určuje cíle, které jsou pevných limitů:
 
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ## <a name="azure-queue-storage-scale-targets"></a>Azure Queue storage škálování cíle
+
 [!INCLUDE [storage-queues-scale-targets](../../../includes/storage-queues-scale-targets.md)]
 
 ## <a name="azure-table-storage-scale-targets"></a>Azure Table storage škálování cíle
+
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
 ## <a name="see-also"></a>Viz také
-* [Podrobnosti o cenách Storage](https://azure.microsoft.com/pricing/details/storage/)
-* [Předplatné Azure a limity, kvóty a omezení](../../azure-subscription-service-limits.md)
-* [Replikace Azure Storage](../storage-redundancy.md)
-* [Kontrolní seznam pro výkon a škálovatelnost služby Microsoft Azure Storage](../storage-performance-checklist.md)
 
+- [Podrobnosti o cenách Storage](https://azure.microsoft.com/pricing/details/storage/)
+- [Předplatné Azure a limity, kvóty a omezení](../../azure-subscription-service-limits.md)
+- [Replikace Azure Storage](../storage-redundancy.md)
+- [Kontrolní seznam pro výkon a škálovatelnost služby Microsoft Azure Storage](../storage-performance-checklist.md)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/03/2018
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 21d8f6a3b10de17172ff59463cca4162585fe40f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d516cee81aef66ec58399cb5ff23c89db16bf2ab
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858983"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350432"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Testování a přeučování modelů pomocí služby Custom Vision Service
 
@@ -35,7 +35,7 @@ Uprostřed stránky se zobrazí obrázek, který jste vybrali. Potom výsledky s
 
 Můžete teď do modelu přidat tento testovací obrázek a potom přeučování modelu.
 
-## <a name="use-the-predicted-image-for-training"></a>Použijte předpokládané obrázků k trénování.
+## <a name="use-the-predicted-image-for-training"></a>Použít předpokládané obrázků k trénování
 
 Pokud chcete použít image dříve odešle ke školení, postupujte následovně:
 

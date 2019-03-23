@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: f626ef4cfb385a62f68ab611b77dd0c307cd3820
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ab5fba6bbbf6ade83c7699edec937ba02b222939
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882375"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370053"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Příprava pro změnu formátu pro diagnostické protokoly Azure monitoru archivovat do účtu úložiště
 
@@ -24,7 +24,7 @@ ms.locfileid: "54882375"
 
 ## <a name="what-is-changing"></a>Co se mění
 
-Azure Monitor nabízí možnosti, které vám umožní odesílat data diagnostiky prostředků a data protokolu aktivit do účtu služby Azure storage, obor názvů Event Hubs, nebo do Log Analytics. Aby bylo možné řešení problému s výkonem systému na **1. listopadu 2018 půlnoci 12:00 UTC** změní formát protokolu posílat data do úložiště objektů blob. Pokud máte nástroje, který je čtení dat z úložiště objektů blob, musíte aktualizovat nástrojů pochopit nový formát data.
+Azure Monitor nabízí možnosti, které vám umožní odesílat data diagnostiky prostředků a data protokolu aktivit do účtu služby Azure storage, obor názvů Event Hubs, nebo do pracovního prostoru Log Analytics ve službě Azure Monitor. Aby bylo možné řešení problému s výkonem systému na **1. listopadu 2018 půlnoci 12:00 UTC** změní formát protokolu posílat data do úložiště objektů blob. Pokud máte nástroje, který je čtení dat z úložiště objektů blob, musíte aktualizovat nástrojů pochopit nový formát data.
 
 * Čtvrtek, dne 1. 2018 půlnoci 12:00 UTC, se změní formát objektu blob bude [řádků JSON](http://jsonlines.org/). To znamená, že každý záznam se být odděleny znaku nového řádku, žádné pole vnější záznamy a žádné čárek mezi záznamy JSON.
 * Změny formátu objektů blob pro všechna nastavení diagnostiky napříč všemi předplatnými najednou. První soubor PT1H.json pro 1. listopadu se bude používat tento nový formát. Názvy objektů blob a kontejnerů zůstávají stejné.

@@ -13,12 +13,12 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b433d8556377206ea53ece2764e251dcb266eb95
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e2ba6b2d33c3fb5d9fda6821718ac61513a958b7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192349"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369135"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Připojení pracovních zařízení k síti vaší organizace
 Připojte se k zařízení s Windows 10 vlastněných společností práce k síti vaší organizace, budete mít přístup k prostředkům potenciálně s omezeným přístupem.
@@ -26,7 +26,7 @@ Připojte se k zařízení s Windows 10 vlastněných společností práce k sí
 ## <a name="what-happens-when-you-join-your-device"></a>Co se stane, když svoje zařízení připojíte
 Když zařízení s Windows 10 se připojení k síti vaší organizace, se stane následující akce:
 
-- Windows registrů zařízení k síti vaší organizace, že vám dovolí můžete přístup k prostředkům pomocí osobního účtu. Po registraci zařízení s Windows potom připojí zařízení k síti, tak uživatelské jméno a heslo vaší organizace můžete použít k přihlášení a přístup k prostředkům s omezeným přístupem.
+- Windows zaregistruje zařízení k síti vaší organizace umožňuje přístup k prostředkům pomocí osobního účtu. Po registraci zařízení s Windows potom připojí zařízení k síti, tak uživatelské jméno a heslo vaší organizace můžete použít k přihlášení a přístup k prostředkům s omezeným přístupem.
 
 - Volitelně můžete na základě vaší organizace voleb, můžete být požádáni nastavit dvoustupňové ověřování pomocí kteréhokoliv [ověřování službou Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) nebo [bezpečnostní údaje](user-help-security-info-overview.md).
 

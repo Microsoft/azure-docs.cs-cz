@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a77c6ce205c40b5814f9b26f9099d868d434d3ce
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d38d93a1c9716cc3a71d904b7b1a46fb8b1c2ee0
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316445"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369220"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Přizpůsobení funkce služby Azure AD pro samoobslužné resetování hesla
 
@@ -26,12 +26,12 @@ Odborníci v oblasti IT, kteří chtějí nasadit samoobslužné resetování he
 
 I v případě, že není povolené samoobslužné resetování HESLA, mít uživatelé dál na portál pro resetování odkaz "Kontaktujte správce" na heslo. Pokud uživatel vybere tento odkaz je buď:
 
-   * E-mailem správci a požádá o pomoc při změně uživatelského hesla.
-   * Odešle uživatelům na adresu URL, které určíte pro pomoc.
+* E-mailem správci a požádá o pomoc při změně uživatelského hesla.
+* Odešle uživatelům na adresu URL, které určíte pro pomoc.
 
 Doporučujeme nastavit tento kontakt na e-mailovou adresu nebo web, který vaši uživatelé již používají pro dotazy na podporu.
 
-![Obraťte se na][Contact]
+![Ukázková žádost o resetování e-mailu odeslaného správci][Contact]
 
 Kontaktní e-mail je odeslán následujícím příjemcům v následujícím pořadí:
 
@@ -68,8 +68,8 @@ Grafiky, kterou zvolíte, jsou uvedeny v následujících případech:
 
 * Poté, co uživatel zadá své uživatelské jméno
 * Když chce uživatel na přizpůsobenou adresu URL:
-    * Předáním `whr` parametr heslo resetovat stránky, jako je třeba `https://login.microsoftonline.com/?whr=contoso.com`
-    * Předáním `username` parametr heslo resetovat stránky, jako je třeba `https://login.microsoftonline.com/?username=admin@contoso.com`
+   * Předáním `whr` parametr heslo resetovat stránky, jako je třeba `https://login.microsoftonline.com/?whr=contoso.com`
+   * Předáním `username` parametr heslo resetovat stránky, jako je třeba `https://login.microsoftonline.com/?username=admin@contoso.com`
 
 Najít podrobnosti o tom, jak nakonfigurovat vlastní firemní branding v článku [přidání firemního brandingu na přihlašovací stránku ve službě Azure AD](../fundamentals/customize-branding.md).
 

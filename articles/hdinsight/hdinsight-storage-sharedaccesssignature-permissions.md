@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1e55552e238e16f2221b138b6e12afa5635d2ab2
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: d248db787db1e3945fb632c6770d45e4bf9a8f02
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202669"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360992"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Omezení přístupu k datům v HDInsight pomocí Azure Storage sdílených přístupových podpisů
 
@@ -27,6 +27,8 @@ HDInsight má úplný přístup k datům v Azure Storage účty přidružené ke
 > HDInsight musí mít úplný přístup k výchozím úložištěm clusteru.
 
 ## <a name="requirements"></a>Požadavky
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Předplatné Azure
 * C# nebo Python. Příklad kódu jazyka C# je k dispozici jako řešení sady Visual Studio.
@@ -160,12 +162,12 @@ Příklad vytvoření clusteru služby HDInsight, který používá sdíleného 
 1. Z příkazového řádku použijte následující příkaz k ověření ke svému předplatnému Azure:
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
     Po zobrazení výzvy se přihlaste pomocí účtu pro vašeho předplatného Azure.
 
-    Pokud je váš účet přidružený k více předplatným Azure, budete možná muset použít `Select-AzureRmSubscription` vyberte předplatné, které chcete použít.
+    Pokud je váš účet přidružený k více předplatným Azure, budete možná muset použít `Select-AzSubscription` vyberte předplatné, které chcete použít.
 
 4. V příkazovém řádku přejděte do adresáře `CreateCluster` adresář obsahující soubor HDInsightSAS.ps1. Potom použijte následující příkaz pro spuštění skriptu
 
@@ -273,11 +275,11 @@ Po připojení ke clusteru, postupujte následovně Chcete-li ověřit, že je m
 
 **Příznaky**: Při vytváření clusteru pomocí skriptu prostředí PowerShell, může se zobrazit následující chybová zpráva:
 
-    New-AzureRmHDInsightCluster : A task was canceled.
+    New-AzHDInsightCluster : A task was canceled.
     At C:\Users\larryfr\Documents\GitHub\hdinsight-azure-storage-sas\CreateCluster\HDInsightSAS.ps1:62 char:5
-    +     New-AzureRmHDInsightCluster `
+    +     New-AzHDInsightCluster `
     +     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        + CategoryInfo          : NotSpecified: (:) [New-AzureRmHDInsightCluster], CloudException
+        + CategoryInfo          : NotSpecified: (:) [New-AzHDInsightCluster], CloudException
         + FullyQualifiedErrorId : Hyak.Common.CloudException,Microsoft.Azure.Commands.HDInsight.NewAzureHDInsightClusterCommand
 
 **Příčina:** K této chybě může dojít, pokud uživatele SSH můžete použít heslo uživatele správce nebo HTTP pro cluster nebo (u clusterů se systémem Linux).

@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f8f3da82d5c8747398882fd589e3ff91aaaa9739
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c9f8e13ad089fd40cde22bb76587b171a1c52c7b
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849206"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361885"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co je služba Azure Machine Learning?
 
@@ -87,7 +87,7 @@ Získáte kredity, které můžete využít na služby Azure. Po jejich vyčerp�
 
 ## <a name="next-steps"></a>Další postup
 
-- Vytvoření pracovního prostoru služby Machine Learning, abyste mohli začít [pomocí webu Azure portal](quickstart-get-started.md) (ne instalace přístup) nebo [v Pythonu](quickstart-create-workspace-with-python.md) (sada SDK instalovat přístup).
+- [Vytvořit pracovní prostor služby Machine Learning](setup-create-workspace.md) začít.
 
 - Postupujte podle najdete kurzy: 
   + [Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning](tutorial-train-models-with-aml.md) 
@@ -99,4 +99,4 @@ Získáte kredity, které můžete využít na služby Azure. Po jejich vyčerp�
 
 - Přečtěte si podrobné [architektura služby Azure Machine Learning a koncepty](concept-azure-machine-learning-architecture.md) článku.
 
-- Další informace najdete v tématu [jiných strojového učení produkty společnosti Microsoft](./overview-more-machine-learning.md).
+- Další informace najdete v tématu [jiných strojového učení produkty společnosti Microsoft](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning).

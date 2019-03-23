@@ -4,23 +4,23 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 7cb91628-e758-480d-a233-7a3caaaff50d
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 03/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed1c7cd88bb5abf27066658f175d2447d334ce6b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e76e2b9b4778229fc70e90f1ff3af5f19251d424
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57872205"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360908"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Kurz: Integrace Azure Active Directory s TargetProcess
 
@@ -78,10 +78,11 @@ Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s TargetProcess, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvořit testovacího uživatele TargetProcess](#create-targetprocess-test-user)**  – Pokud chcete mít protějšek Britta Simon TargetProcess, který je propojený s Azure AD reprezentace uživatele.
+2. **[Konfigurace TargetProcess Single Sign-On](#configure-targetprocess-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+5. **[Vytvořit testovacího uživatele TargetProcess](#create-targetprocess-test-user)**  – Pokud chcete mít protějšek Britta Simon TargetProcess, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -105,12 +106,12 @@ Ke konfiguraci Azure AD jednotné přihlašování s TargetProcess, proveďte n�
 
     ![TargetProcess domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.tpondemand.com/`
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<subdomain>.tpondemand.com/`
 
-    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.tpondemand.com/`
+    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<subdomain>.tpondemand.com/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem.  Kontakt [tým podpory TargetProcess klienta](mailto:support@targetprocess.com) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory TargetProcess klienta](mailto:support@targetprocess.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
 5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
@@ -122,48 +123,47 @@ Ke konfiguraci Azure AD jednotné přihlašování s TargetProcess, proveďte n�
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure Ad
+    b. Identifikátor Azure AD
 
     c. Adresa URL – odhlášení
 
-7. K automatizaci konfigurace v rámci **TargetProcess**, je potřeba nainstalovat **Moje aplikace zabezpečené přihlašování rozšíření prohlížeče** kliknutím **nainstalovat rozšíření**.
+### <a name="configure-targetprocess-single-sign-on"></a>Konfigurace TargetProcess jednotné přihlašování
+
+1. K automatizaci konfigurace v rámci **TargetProcess**, je potřeba nainstalovat **Moje aplikace zabezpečené přihlašování rozšíření prohlížeče** kliknutím **nainstalovat rozšíření**.
 
     ![image](./media/target-process-tutorial/install_extension.png)
 
-8. Po přidání rozšíření do prohlížeče, klikněte na **nastavení TargetProcess** nasměruje na TargetProcess aplikace. Odtud zadejte přihlašovací údaje správce pro přihlášení do TargetProcess. Rozšíření prohlížeče budou automaticky nakonfigurovat aplikaci za vás a automatizovat kroky 13. 9.
+2. Po přidání rozšíření do prohlížeče, klikněte na **nastavení TargetProcess** nasměruje na TargetProcess aplikace. Odtud zadejte přihlašovací údaje správce pro přihlášení do TargetProcess. Rozšíření prohlížeče budou automaticky nakonfigurovat aplikaci za vás a automatizovat kroky 3 – 7.
 
     **Pokud chcete nakonfigurovat aplikaci ručně proveďte následující kroky:**
 
-9. Přihlášení do aplikace TargetProcess jako správce.
+3. Přihlášení do aplikace TargetProcess jako správce.
 
-10. V nabídce v horní části klikněte na tlačítko **nastavení**.
+4. V nabídce v horní části klikněte na tlačítko **nastavení**.
 
     ![Nastavení](./media/target-process-tutorial/tutorial_target_process_05.png)
 
-11. Klikněte na tlačítko **nastavení**.
+5. Klikněte na tlačítko **nastavení** kartu.
 
     ![Nastavení](./media/target-process-tutorial/tutorial_target_process_06.png)
 
-12. Klikněte na tlačítko **jednotného přihlašování**.
+6. Klikněte na tlačítko **Single Sign-on** kartu.
 
     ![Klikněte na jednotné přihlašování](./media/target-process-tutorial/tutorial_target_process_07.png)
 
-13. Na Single Sign-on dialogovém okně nastavení proveďte následující kroky:
+7. Na Single Sign-on dialogovém okně nastavení proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/target-process-tutorial/tutorial_target_process_08.png)
 
     a. Klikněte na tlačítko **povolit jednotné přihlašování**.
 
-    b. V **přihlašovací adresa URL** textového pole vložte hodnotu **SAML jednotné přihlašování – adresa URL služby** zkopírovanou z webu Azure portal.
+    b. V **přihlašovací adresa URL** textového pole vložte hodnotu **přihlašovací adresa URL** zkopírovanou z webu Azure portal.
 
     c. Otevřete stažený certifikát v poznámkovém bloku, zkopírujte jeho obsah a vložte jej do **certifikát** textového pole.
 
     d. Klikněte na tlačítko **povolení zřizování JIT**.
 
     e. Klikněte na **Uložit**.
-
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -198,7 +198,7 @@ V této části je povolit Britta Simon k udělení přístupu k TargetProcess p
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
-2. V seznamu aplikace zadejte a vyberte **TargetProcess**.
+2. V seznamu aplikací vyberte **TargetProcess**.
 
     ![Odkaz TargetProcess v seznamu aplikací](common/all-applications.png)
 
@@ -218,7 +218,7 @@ V této části je povolit Britta Simon k udělení přístupu k TargetProcess p
 
 ### <a name="create-targetprocess-test-user"></a>Vytvoření TargetProcess testovacího uživatele
 
-Cílem této části je vytvořte uživatele Britta Simon v TargetProcess. TargetProcess podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k TargetProcess, pokud ještě neexistuje.
+V této části se vytvoří uživateli Britta Simon v TargetProcess. TargetProcess podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi TargetProcess, vytvoří se nový po ověření.
 
 > [!Note]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory TargetProcess](mailto:support@targetprocess.com).
@@ -231,8 +231,8 @@ Po kliknutí na dlaždici TargetProcess na přístupovém panelu, můžete by m�
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

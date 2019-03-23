@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 251a2a3fed57e957de11a20189b6b6d553d98a78
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 88113fee64251344bd84085caedc9dfccfa10933
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310264"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351452"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Co jsou Azure Media Services v3?
 
@@ -77,24 +77,11 @@ Příklady zahrnují
 
 Zobrazit [získání obsahu klíče zásad – .NET](get-content-key-policy-dotnet-howto.md) příklad.
 
-## <a name="how-can-i-get-started-with-v3"></a>Jak začít s v3?
-
-Informace o tom, jak začít s vývojem pomocí rozhraní API v3 Media Services pomocí různých nástrojů a sad SDK najdete v tématu [začít s vývojem](developers-guide.md).
-
-## <a name="v3-content-map"></a>Mapa obsahu v3
-
-Služba Media Services v3 obsah je uspořádaný podle následující strukturu (odráží rovněž v obsahu):
-
-|Oddíly| Popis|
-|---|---|
-| Přehled | Popisuje funkce služby Media Services a co můžete dělat ve službě.|
-| Šablony Rychlý start | Zobrazit základní 1 den pokyny pro rychlé vyzkoušení služby Media Services ji noví zákazníci.|
-| Kurzy | Zobrazte založené na scénářích postupy pro některé nejčastější úkoly Media Services.|
-| Ukázky | Obsahuje odkazy na ukázky kódu. |
-| Koncepty | Obsahují podrobné vysvětlení [Media Services v3 koncepcích a funkcích](concepts-overview.md). Základní koncepty popsané v těchto témat byste měli zkontrolovat před spuštěním vývoje.<br/><br/>* Cloudu nahrávání a úložiště<br/>* Kódování<br/>* Media analytics<br/>* Balení, poskytování ochrany<br/>* Živé streamování<br/>* Monitorování<br/>* Player klientů<br/><br/>a další. |
-| Návody | Předvedeme vám k dokončení úkolu.|
-
 ## <a name="next-steps"></a>Další postup
 
-Projděte si článek o [streamování souborů](stream-files-dotnet-quickstart.md), kde se dozvíte, jak je snadné začít s kódováním a streamováním videosouborů. 
+Jak začít s v3? 
+
+> [!div class="nextstepaction"]
+> [Další informace o základních konceptech](concepts-overview.md)<br/>
+> [Vývoj s využitím rozhraní API v3 Media Services pomocí sady SDK](developers-guide.md) 
 

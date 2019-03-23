@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: 6e4a83eb8b3488c4ce2816151ca31b4a594dd742
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: ce66d44c0ddb84ed8c2908d02b8062195d6b461d
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338628"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351010"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Služba Azure policy podpoře a vyřazení hostovaného operačního systému
 Informace na této stránce se týká operačního systému hosta Azure ([hostovaného operačního systému](cloud-services-guestos-update-matrix.md)) pro cloudové služby worker a webová role (PaaS). Nevztahuje se na virtuálních počítačích (IaaS).
@@ -57,7 +57,7 @@ Verze operačního systému hosta, jsou vydávány každý měsíc. Z důvodu m�
 
 Nějakou dobu po stávají "zakázáno", verze operačního systému hosta "vyprší" a všechny instalace pořád běží vypršela platnost verze jsou vystaveny ohrožení zabezpečení problémy se zabezpečením a. Obecně platí vypršení platnosti se provádí v dávkách, tak období od postižení vypršení platnosti se může lišit.
 
-Zákazníci, kteří konfigurují svých služeb k aktualizaci operačního systému hosta ručně, se ujistěte, že jejich nasazení jsou spuštěny na podporovaný operační systém hosta. Pokud služba je nakonfigurovaná automaticky aktualizovat hostovaný operační systém, základní platformy zajistí dodržování předpisů a upgradují na nejnovější verzi operačního systému hosta.
+Zákazníci, kteří konfigurují svých služeb k aktualizaci operačního systému hosta ručně, se ujistěte, že jejich služby běží na podporované hostovaného operačního systému. Pokud služba je nakonfigurovaná automaticky aktualizovat hostovaný operační systém, základní platformy zajistí dodržování předpisů a upgradují na nejnovější verzi operačního systému hosta.
 
 Tyto tečky se dají vytvořit delší uvážení společnosti Microsoft pro usnadnění přechody zákazníků. Všechny změny oznámíme na [verzí hostovaného operačního systému Azure a sady SDK matice kompatibility](cloud-services-guestos-update-matrix.md).
 

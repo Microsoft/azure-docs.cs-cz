@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34cfd37caf45d709fdc0b3639a218e2e587e8164
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 0c1a05cc25be7a5763a8891b92e870a92792191d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314344"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372170"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>Integrace ověření služby RADIUS se serverem Azure Multi-Factor Authentication
 
@@ -27,7 +27,7 @@ RADIUS je standardní protokol pro přijímání požadavků na ověření a zpr
 >
 > V této konfiguraci nejsou funkční jednosměrné tokeny SMS a OATH, protože MFA Server nemůže vytvořit úspěšné odpovědi RADIUS na výzvy k ověření pomocí alternativních protokolů.
 
-![Ověřování Radius](./media/howto-mfaserver-dir-radius/radius.png)
+![Ověřování pomocí protokolu RADIUS serveru MFA](./media/howto-mfaserver-dir-radius/radius.png)
 
 ## <a name="add-a-radius-client"></a>Přidání klienta protokolu RADIUS
 
@@ -66,9 +66,10 @@ Opakováním kroků 4 až 8 přidejte požadovaný počet dalších klientů pro
 
 Opakováním těchto kroků přidejte další servery RADIUS. Pomocí tlačítek **Přesunout nahoru** a **Přesunout dolů** nakonfigurujte pořadí, ve kterém je Azure MFA Server má volat.
 
-Úspěšně jste nakonfigurovali Azure Multi-Factor Authentication Server. Server teď naslouchá na nakonfigurovaných portech požadavkům přístupu protokolu RADIUS z konfigurovaných klientů.   
+Úspěšně jste nakonfigurovali Azure Multi-Factor Authentication Server. Server teď naslouchá na nakonfigurovaných portech požadavkům přístupu protokolu RADIUS z konfigurovaných klientů.
 
 ## <a name="radius-client-configuration"></a>Konfigurace klienta protokolu RADIUS
+
 Chcete-li nakonfigurovat klienta RADIUS, postupujte podle pokynů:
 
 * Nakonfigurujte zařízení/server pro ověřování přístupu prostřednictvím protokolu RADIUS k IP adrese Azure Multi-Factor Authentication Serveru, která funguje jako server RADIUS.

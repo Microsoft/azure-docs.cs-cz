@@ -14,19 +14,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 9c3fbe7cd7ebd41f59be360f40d66b8d38dbce5e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 6084687f54be265e88e6755e7d082da7c32eda1b
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57318933"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349514"
 ---
 # <a name="saas-fulfillment-apis"></a>Rozhraní API pro SaaS splnění
 
 Rozhraní API SaaS splnění umožňuje nezávislí výrobci softwaru (ISV) pro integraci s Azure Marketplace své aplikace SaaS. Toto rozhraní API umožňuje aplikace nezávislých výrobců softwaru se účastnit všech kanálů commerce povoleno: s přímým přístupem, vedené partnerem (prodejci) a vedla pole.  Toto rozhraní API je požadavek na výpis transactable SaaS nabídky na webu Azure Marketplace.
-
-Aktuální verze tohoto rozhraní API je verze 2, který má být použit pro všechny nové SaaS nabízí.  Verze 1 z rozhraní API je zastaralá a je udržována pro podporu existující nabídky.
-
 
 ## <a name="business-model-support"></a>Podpora obchodního modelu
 
@@ -40,4 +37,4 @@ Toto rozhraní API podporuje následující funkce obchodního modelu; Můžeš:
 
 ## <a name="next-steps"></a>Další postup
 
-Použijte nejnovější verzi tohoto rozhraní pro vývoj: [Verze rozhraní API SaaS splnění 2](./cpp-saas-fulfillment-api-v2.md).
+Pomocí tohoto rozhraní pro vývoj: [Verze rozhraní API SaaS splnění 2](./cpp-saas-fulfillment-api-v2.md).

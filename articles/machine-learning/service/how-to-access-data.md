@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: e6e1b304b90b37c93bed22bcb720a646680ee083
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: c171e35c6542febffc666ad5abfab50e093bb698
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223610"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359275"
 ---
 # <a name="access-data-from-your-datastores"></a>Přístup k datům z vašich úložišť
 
@@ -32,7 +32,7 @@ Tento návod ukazuje příklady pro následující úlohy:
 
 Použití úložiště, je nutné [pracovní prostor](concept-azure-machine-learning-architecture.md#workspace) první. 
 
-Začněte tím, že buď [vytváří se nový pracovní prostor](quickstart-create-workspace-with-python.md) nebo některý z existujících načítání:
+Začněte tím, že buď [vytváří se nový pracovní prostor](setup-create-workspace.md#sdk) nebo některý z existujících načítání:
 
 ```Python
 import azureml.core
@@ -40,8 +40,6 @@ from azureml.core import Workspace, Datastore
 
 ws = Workspace.from_config()
 ```
-
-Nebo, [postupovat podle tohoto rychlého startu Python](quickstart-create-workspace-with-python.md) k použití sady SDK k vytvoření pracovního prostoru a můžete začít.
 
 <a name="access"></a>
 

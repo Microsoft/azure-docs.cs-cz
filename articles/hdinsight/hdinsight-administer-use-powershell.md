@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: tylerfox
-ms.openlocfilehash: b8e9ad31c2ce7b001297012bca2aa7dd526f732a
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 20b232c53427c8ce13ded2cd722a74b1a686b536
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201275"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360423"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí Azure Powershellu
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -22,6 +22,8 @@ ms.locfileid: "58201275"
 Prostředí Azure PowerShell slouží k řízení a automatizaci nasazení a správu vašich úloh v Azure. V tomto článku se dozvíte, jak spravovat [Apache Hadoop](https://hadoop.apache.org/) clustery v Azure HDInsight pomocí Azure Powershellu. Seznam rutin Powershellu pro HDInsight najdete v tématu [Reference k rutinám HDInsight](https://msdn.microsoft.com/library/azure/dn479228.aspx).
 
 **Požadavky**
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Před zahájením tohoto článku, musíte mít následující položky:
 
@@ -35,7 +37,7 @@ Pokud jste nainstalovali Azure PowerShell verze 0.9 x, musíte ho odinstalovat p
 Pokud chcete zkontrolovat verzi nainstalovaného powershellu:
 
 ```powershell
-Get-Module *azure*
+Get-Module *Az*
 ```
 
 Odinstalovat starší verze, spusťte v ovládacím panelu Programy a funkce.
@@ -47,27 +49,27 @@ Zobrazit [vytvoření linuxových clusterech v HDInsight pomocí Azure Powershel
 Pomocí následujícího příkazu zobrazíte seznam všech clusterů v rámci aktuálního předplatného:
 
 ```powershell
-Get-AzureRmHDInsightCluster
+Get-AzHDInsightCluster
 ```
 
 ## <a name="show-cluster"></a>Zobrazení clusteru
 Chcete-li zobrazit podrobnosti o konkrétní cluster v aktuálním předplatném, použijte následující příkaz:
 
 ```powershell
-Get-AzureRmHDInsightCluster -ClusterName <Cluster Name>
+Get-AzHDInsightCluster -ClusterName <Cluster Name>
 ```
 
 ## <a name="delete-clusters"></a>Odstranění clusterů
 Pomocí následujícího příkazu odstraňte cluster:
 
 ```powershell
-Remove-AzureRmHDInsightCluster -ClusterName <Cluster Name>
+Remove-AzHDInsightCluster -ClusterName <Cluster Name>
 ```
 
 Odstraněním skupiny prostředků, která obsahuje clusteru můžete také odstranit cluster. Odstranění skupiny prostředků odstraní všechny prostředky ve skupině, včetně výchozího účtu úložiště.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name <Resource Group Name>
+Remove-AzResourceGroup -Name <Resource Group Name>
 ```
 
 ## <a name="scale-clusters"></a>Škálování clusterů
@@ -120,7 +122,7 @@ Dopad Změna počtu datových uzlů pro každý typ clusteru podporuje HDInsight
 Chcete-li změnit velikost clusteru Hadoop s použitím prostředí Azure PowerShell, spusťte následující příkaz z klientského počítače:
 
 ```powershell
-Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
+Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
 ```
 
 
@@ -136,7 +138,7 @@ Clustery HDInsight mají následující webové služby HTTP (mít všechny tyto
 Tyto služby jsou ve výchozím nastavení oprávnění pro přístup. Vám může k nim odvolat/udělit přístup. Chcete-li odebrat:
 
 ```powershell
-Revoke-AzureRmHDInsightHttpServicesAccess -ClusterName <Cluster Name>
+Revoke-AzHDInsightHttpServicesAccess -ClusterName <Cluster Name>
 ```
 
 Chcete-li udělit:
@@ -153,7 +155,7 @@ $credential = New-Object System.Management.Automation.PSCredential($hadoopUserNa
 # Credential option 2
 #$credential = Get-Credential -Message "Enter the HTTP username and password:" -UserName "admin"
 
-Grant-AzureRmHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredential $credential
+Grant-AzHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredential $credential
 ```
 
 > [!NOTE]  
@@ -168,10 +170,10 @@ Je stejným způsobem jako HTTP udělení nebo odvolání přístupu. Pokud clus
 Následující skript prostředí PowerShell ukazuje, jak získat výchozí název účtu úložiště a související informace:
 
 ```powershell
-#Connect-AzureRmAccount
+#Connect-AzAccount
 $clusterName = "<HDInsight Cluster Name>"
 
-$clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+$clusterInfo = Get-AzHDInsightCluster -ClusterName $clusterName
 $storageInfo = $clusterInfo.DefaultStorageAccount.split('.')
 $defaultStoreageType = $storageInfo[1]
 $defaultStorageName = $storageInfo[0]
@@ -182,8 +184,8 @@ echo "Default Storage account type: $defaultStoreageType"
 if ($defaultStoreageType -eq "blob")
 {
     $defaultBlobContainerName = $cluster.DefaultStorageContainer
-    $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName)[0].Value
-    $defaultStorageAccountContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey
+    $defaultStorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName)[0].Value
+    $defaultStorageAccountContext = New-AzStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey
 
     echo "Default Blob container name: $defaultBlobContainerName"
     echo "Default Storage account key: $defaultStorageAccountKey"
@@ -197,7 +199,7 @@ V režimu Resource Manager každý cluster HDInsight patří do skupiny prostře
 ```powershell
 $clusterName = "<HDInsight Cluster Name>"
 
-$cluster = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+$cluster = Get-AzHDInsightCluster -ClusterName $clusterName
 $resourceGroupName = $cluster.ResourceGroup
 ```
 

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 647d40db87f76a9e1a13a108c5f55fac40524017
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9f6698eebf184d1df80920b7779512e2fda83a0c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012789"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369084"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Použití rozhraní REST API pro službu Azure Storage
 
@@ -266,7 +266,7 @@ Teď, když je pochopit, jak vytvořit žádost, zavolá službu a analyzovat v�
 ## <a name="creating-the-authorization-header"></a>Vytváří se autorizační hlavičky.
 
 > [!TIP]
-> Azure Storage teď podporuje integraci služby Azure Active Directory (Azure AD) pro služby objektů Blob a frontu (Preview). Azure AD nabízí mnohem jednodušší prostředí pro autorizaci žádost do služby Azure Storage. Další informace o používání služby Azure AD k autorizaci operace REST, naleznete v tématu [ověřování pomocí Azure Active Directory (Preview)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Přehled integrace služby Azure AD pomocí služby Azure Storage najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview)](storage-auth-aad.md).
+> Azure Storage teď podporuje integraci služby Azure Active Directory (Azure AD) pro objekty BLOB a fronty. Azure AD nabízí mnohem jednodušší prostředí pro autorizaci žádost do služby Azure Storage. Další informace o používání služby Azure AD k autorizaci operace REST, naleznete v tématu [ověřování pomocí Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Přehled integrace služby Azure AD pomocí služby Azure Storage najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory](storage-auth-aad.md).
 
 Existuje článek, který vysvětluje, koncepčně (žádný kód) provádění [ověřování pro služby Azure Storage](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services).
 Pojďme přesně zjištění využitelných dolů k tomuto článku je potřeba a zobrazit kód.

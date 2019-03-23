@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7243249e7aabf588115ef74f838be8ca67a94c7
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: cda1b1c2a484f3aa627b8b9cf486528d13f27be8
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309499"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369424"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Ověřování Azure Active Directory na základě certifikátů v Iosu
 
@@ -35,16 +35,16 @@ Tato funkce je dostupná ve verzi preview v plánech Office 365 Government obran
 
 | Aplikace | Podpora |
 | --- | --- |
-| Azure Information Protection aplikace |![Zaškrtnout][1] |
-| Portál společnosti Intune |![Zaškrtnout][1] |
-| Microsoft Teams |![Zaškrtnout][1] |
-| OneNote |![Zaškrtnout][1] |
-| OneDrive |![Zaškrtnout][1] |
-| Outlook |![Zaškrtnout][1] |
-| Power BI |![Zaškrtnout][1] |
-| Skype pro firmy |![Zaškrtnout][1] |
-| Word / Excel / PowerPoint |![Zaškrtnout][1] |
-| Yammer |![Zaškrtnout][1] |
+| Azure Information Protection aplikace |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Portál společnosti Intune |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Microsoft Teams |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| OneNote |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| OneDrive |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Outlook |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Power BI |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Skype pro firmy |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Word / Excel / PowerPoint |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Yammer |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
 
 ## <a name="requirements"></a>Požadavky
 

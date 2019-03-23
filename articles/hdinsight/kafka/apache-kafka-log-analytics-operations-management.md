@@ -9,18 +9,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 281b4b8d20957cbbbf0f4ff52166e8c3a78b3e7d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5154058bb1562b670e24f8813e979588a536f086
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108133"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359853"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analýza protokolů pro Apache Kafka v HDInsight
 
 Zjistěte, jak používat Azure Monitor protokoly k analýze protokolů generovaných Apache Kafka v HDInsight.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Povolit protokoly Azure monitoru pro Apache Kafka
 
@@ -33,7 +35,7 @@ Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny 
 3. Konfigurace clusteru Kafka používat protokoly Azure monitoru. Další informace najdete v tématu [protokoly použití Azure Monitor k monitorování HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentu.
 
     > [!NOTE]  
-    > Můžete také nakonfigurovat cluster používat protokoly Azure monitoru s využitím `Enable-AzureRmHDInsightOperationsManagementSuite` rutiny. Tato rutina vyžaduje následující informace:
+    > Můžete také nakonfigurovat cluster používat protokoly Azure monitoru s využitím `Enable-AzHDInsightOperationsManagementSuite` rutiny. Tato rutina vyžaduje následující informace:
     >
     > * Název clusteru HDInsight.
     > * ID pracovního prostoru pro protokoly Azure monitoru. ID pracovního prostoru můžete najít ve vašem pracovním prostoru Log Analytics.

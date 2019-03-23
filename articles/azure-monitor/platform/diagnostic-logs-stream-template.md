@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: e6185a7b62e3c599a7c3588824e3a9c4ac60cb53
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7edce5175a1dda66abf3316cb8f0eb33e9f64ef7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467624"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371464"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automaticky povolení diagnostických nastavení při vytváření prostředků pomocí šablony Resource Manageru
-V tomto článku vám ukážeme, jak můžete použít [šablony Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) ke konfiguraci nastavení diagnostiky pro prostředek při jeho vytvoření. To umožňuje automaticky spustit streamování diagnostických protokolů a metrik do služby Event Hubs, archivovat v účtu úložiště nebo odeslání do Log Analytics, když se vytvoří prostředek.
+V tomto článku vám ukážeme, jak můžete použít [šablony Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) ke konfiguraci nastavení diagnostiky pro prostředek při jeho vytvoření. To umožňuje automaticky spustit streamování diagnostických protokolů a metrik do služby Event Hubs, archivovat v účtu úložiště nebo odesílání do pracovního prostoru Log Analytics, když se vytvoří prostředek.
 
 > [!WARNING]
 > 1. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md). 
@@ -40,7 +40,7 @@ Dále poskytujeme příklad souboru JSON šablony, které je potřeba vygenerova
 ## <a name="non-compute-resource-template"></a>Non-výpočetního prostředku šablony
 Pro prostředky rozsáhlých výpočetních prostředků budete muset udělat dvě věci:
 
-1. Přidání parametrů do objektu blob parametry pro název účtu úložiště, ID pravidla autorizace centra událostí nebo ID pracovního prostoru Log Analytics (povolení archivace diagnostických protokolů v účtu úložiště, streamování protokolů do služby Event Hubs nebo odesílání protokolů do Log Analytics).
+1. Přidání parametrů do objektu blob parametry pro název účtu úložiště, ID pravidla autorizace centra událostí nebo ID pracovního prostoru Log Analytics (povolení archivace diagnostických protokolů v účtu úložiště, streamování protokolů do služby Event Hubs nebo odesílání protokolů do Azure monitoru).
    
     ```json
     "settingName": {

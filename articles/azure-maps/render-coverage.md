@@ -3,17 +3,17 @@ title: Zajištění pokrytí ve službě Azure Maps | Dokumentace Microsoftu
 description: Další informace o pokrytí vykreslovací ve službě Azure Maps
 author: jingjing-z
 ms.author: jinzh
-ms.date: 03/07/2018
+ms.date: 03/22/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 6e4ebd5bfd7225537046d34dd885d04e8a94878f
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 536a74046f46c7f83907833846e9ec99e8d8a289
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42054824"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370274"
 ---
 # <a name="azure-maps-render-coverage"></a>Zajištění vykreslování Azure Maps
 
@@ -32,7 +32,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 ## <a name="africa"></a>Afrika 
 
 
-| Oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
+| Země/oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
 | ------ | :------------------: | :------------------: |
 | Alžírsko                          | ✓ | ✓ |
 | Angola                           | ✓ | ✓ |
@@ -40,29 +40,29 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Botswana                         | ✓ | ✓ |
 | Burkina Faso                     | ✓ | ✓ |
 | Burundi                          | ✓ | ✓ |
-| Cabo Verde                       |   | ✓ |
+| Cabo Verde                       | ✓ | ✓ |
 | Kamerun                         | ✓ | ✓ |
-| Středoafrická republika         |   | Ø |
-| Čad                             |   | Ø |
-| Komory                          |   | Ø |
+| Středoafrická republika         | ✓ | Ø |
+| Čad                             | ✓ | Ø |
+| Komory                          | ✓ | Ø |
 | Kongo                            | ✓ | ✓ |
 | Demokratická republika Kongo | ✓ | ✓ |
-| Pobřeží slonoviny                    |   | Ø |
-| Džibutsko                         |   | Ø |
+| Pobřeží slonoviny                    | ✓ | Ø |
+| Džibuti                         | ✓ | Ø |
 | Egypt                            | ✓ | ✓ |
-| Rovníková Guinea                |   | Ø |
-| Eritrea                          |   | Ø |
-| Etiopie                         |   | Ø |
+| Rovníková Guinea                | ✓ | Ø |
+| Eritrea                          | ✓ | Ø |
+| Etiopie                         | ✓ | Ø |
 | Gabon                            | ✓ | ✓ |
-| Gambie                           |   | Ø |
+| Gambie                           | ✓ | Ø |
 | Ghana                            | ✓ | ✓ |
-| Guinea                           |   | Ø |
-| Guinea-Bissau                    |   | Ø |
+| Guinea                           | ✓ | Ø |
+| Guinea-Bissau                    | ✓ | Ø |
 | Keňa                            | ✓ | ✓ |
 | Lesotho                          | ✓ | ✓ |
-| Libérie                          |   | Ø |
-| Libye                            |   | Ø |
-| Madagaskar                       |   | Ø |
+| Libérie                          | ✓ | Ø |
+| Libye                            | ✓ | Ø |
+| Madagaskar                       | ✓ | Ø |
 | Malawi                           | ✓ | ✓ |
 | Mali                             | ✓ | ✓ |
 | Mauritánie                       | ✓ | ✓ |
@@ -75,14 +75,14 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Nigérie                          | ✓ | ✓ |
 | Réunion                          | ✓ | ✓ |
 | Rwanda                           | ✓ | ✓ |
-| Svatá Helena, Ascension a Tristan da Cunha |   | Ø |
-| Svatý Tomáš a Princův ostrov            |   | Ø |
+| Svatá Helena, Ascensión a Tristan da Cunha | ✓ | Ø |
+| Svatý Tomáš a Princův ostrov            | ✓ | Ø |
 | Senegal                          | ✓ | ✓ |
-| Sierra Leone                     |   | Ø |
-| Somálsko                          |   | Ø |
-| Jihoafrická republika                     | ✓ | ✓ |
-| Jižní Súdán                      |   | Ø |
-| Súdán                            |   | Ø |
+| Sierra Leone                     | ✓ | ✓ |
+| Somálsko                          | ✓ | ✓ |
+| Jižní Afrika                     | ✓ | ✓ |
+| Jižní Súdán                      | ✓ | ✓ |
+| Súdán                            | ✓ | ✓ |
 | Svazijsko                        | ✓ | ✓ |
 | Sjednocená tanzanská republika      | ✓ | ✓ |
 | Togo                             | ✓ | ✓ |
@@ -93,7 +93,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 
 ## <a name="americas"></a>Amerika
 
-| Oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
+| Země/oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
 | ------ | :------------------: | :------------------: |
 | Anguilla                  | ✓ | ✓ |
 | Antigua a Barbuda       | ✓ | ✓ |
@@ -102,27 +102,27 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Bahamy                   | ✓ | ✓ |
 | Barbados                  | ✓ | ✓ |
 | Belize                    | ✓ | ✓ |
-| Bermudy                   |   | ✓ |
-| Mnohonárodní stát Bolívie |   | ✓ |
-| Bonaire, Svatý Eustach a Saba |   | ✓ |
+| Bermudy                   | ✓ | ✓ |
+| Mnohonárodnostní stát Bolívie | ✓ | ✓ |
+| Bonaire, Svatý Eustach a Saba | ✓ | ✓ |
 | Brazílie                    | ✓ | ✓ |
 | Kanada                    | ✓ | ✓ |
 | Kajmanské ostrovy            | ✓ | ✓ |
 | Chile                     | ✓ | ✓ |
-| Clippertonův ostrov         |   | ✓ |
+| Clippertonův ostrov         | ✓ | ✓ |
 | Kolumbie                  | ✓ | ✓ |
-| Kostarika                |   | ✓ |
+| Kostarika                | ✓ | ✓ |
 | Kuba                      | ✓ | ✓ |
 | Curaçao                   | ✓ | ✓ |
 | Dominika                  | ✓ | ✓ |
 | Dominikánská republika        | ✓ | ✓ |
-| Ekvádor                   |   | ✓ |
-| Falklandské ostrovy (Malvíny) |   | ✓ |
+| Ekvádor                   | ✓ | ✓ |
+| Falklandy (Malvíny) | ✓ | ✓ |
 | Francouzská Guyana             | ✓ | ✓ |
-| Grónsko                 |   | Ø |
+| Grónsko                 | ✓ | Ø |
 | Grenada                   | ✓ | ✓ |
 | Guadeloupe                | ✓ | ✓ |
-| Guatemala                 |   | ✓ |
+| Guatemala                 | ✓ | ✓ |
 | Guyana                    | ✓ | ✓ |
 | Haiti                     | ✓ | ✓ |
 | Honduras                  | ✓ | ✓ |
@@ -131,21 +131,21 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Mexiko                    | ✓ | ✓ |
 | Montserrat                | ✓ | ✓ |
 | Nikaragua                 | ✓ | ✓ |
-| Severní Mariany  |   | ✓ |
+| Severní Mariany  | ✓ | ✓ |
 | Panama                    | ✓ | ✓ | 
-| Paraguay                  |   | ✓ |
+| Paraguay                  | ✓ | ✓ |
 | Peru                      | ✓ | ✓ |
 | Portoriko               | ✓ | ✓ |
-| Quebec (Kanada)           |   | ✓ |
+| Quebec (Kanada)           | ✓ | ✓ |
 | Svatý Bartoloměj          | ✓ | ✓ |
 | Svatý Kryštof a Nevis     | ✓ | ✓ |
 | Svatá Lucie               | ✓ | ✓ |
 | Svatý Martin (francouzština)     | ✓ | ✓ |
-| Svatý Pierre a Miquelon |   | ✓ |
+| Svatý Pierre a Miquelon | ✓ | ✓ |
 | Svatý Vincenc a Grenadiny | ✓ | ✓ |
 | Sint Maarten (holandština)      | ✓ | ✓ |
-| Jižní Georgie a Jižní Sandwichovy ostrovy |   | ✓ |
-| Surinam                  |   | ✓ |
+| Jižní Georgie a Jižní Sandwichovy ostrovy | ✓ | ✓ |
+| Surinam                  | ✓ | ✓ |
 | Trinidad a Tobago       | ✓ | ✓ |
 | Turks a Caicos  | ✓ | ✓ |
 | Spojené státy             | ✓ | ✓ |
@@ -156,7 +156,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 
 ## <a name="asia"></a>Asie 
 
-| Oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
+| Země/oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
 | ------ | :------------------: | :------------------: |
 | Afghánistán               |   | Ø |
 | Bahrajn                   | ✓ | ✓ |
@@ -166,10 +166,11 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Brunej                    | ✓ | ✓ |
 | Kambodža                  |   | Ø |
 | Čína                     |   | Ø |
-| Kokosové (Keelingovy) ostrovy   |   | Ø |
+| Kokosové ostrovy (Keeling)   |   | Ø |
 | Korejská lidově demokratická republika |   | Ø |
 | Dokdo a Takeshima       |   | Ø |
 | Hongkong                 | ✓ | ✓ |
+| Indie                     | Ø | ✓ | 
 | Indonésie                 | ✓ | ✓ |
 | Írán                      |   | Ø |
 | Irák                      | ✓ | ✓ |
@@ -186,7 +187,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Maledivy                  |   | Ø |
 | Mongolsko                  |   | Ø |
 | Myanmar                   |   | Ø |
-| Napal                     |   | Ø |
+| Nepál                     |   | Ø |
 | Omán                      | ✓ | ✓ |
 | Pákistán                  |   | Ø |
 | Filipíny               | ✓ | ✓ |
@@ -200,7 +201,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Tchaj-wan                    | ✓ | ✓ |
 | Tádžikistán                |   | Ø |
 | Thajsko                  | ✓ | ✓ |
-| Timor-Leste               |   | Ø |
+| Východní Timor               |   | Ø |
 | Turkmenistán              |   | Ø |
 | Spojené arabské emiráty      | ✓ | ✓ |
 | Menší odlehlé ostrovy Spojených států amerických |   | Ø |
@@ -210,7 +211,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 
 ## <a name="oceania"></a>Oceánie
 
-| Oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
+| Země/oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
 | ------ | :------------------: | :------------------: |
 | Americká Samoa            |   | ✓ |
 | Austrálie                 | ✓ | ✓ |
@@ -225,10 +226,10 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Nová Kaledonie             |   | Ø |
 | Nový Zéland               | ✓ | ✓ |
 | Niue                      |   | Ø |
-| Norfolk            |   | Ø |
+| Norfolk (ostrov)            |   | Ø |
 | Palau                     |   | Ø |
 | Papua - Nová Guinea          |   | Ø |
-| Ostrovy Pitcairn                  |   | Ø |
+| Pitcairn                  |   | Ø |
 | Samoa                     |   | Ø |
 | Šalamounovy ostrovy           |   | Ø|
 | Tokelau                   |   | Ø |
@@ -240,13 +241,13 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 
 ## <a name="europe"></a>Evropa
 
-| Oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
+| Země/oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
 | ------ | :------------------: | :------------------: |
 | Albánie                   | ✓ | ✓ |
 | Andorra                   | ✓ | ✓ |
-| Arménie                   |   | Ø |
+| Arménie                   | ✓ | Ø |
 | Rakousko                   | ✓ | ✓ |
-| Ázerbájdžán                |   | Ø |
+| Ázerbájdžán                | ✓ | Ø |
 | Bělorusko                   | Ø | ✓ |
 | Belgie                   | ✓ | ✓ |
 | Bosna a Hercegovina        | ✓ | ✓ |
@@ -256,26 +257,26 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Česká republika            | ✓ | ✓ |
 | Dánsko                   | ✓ | ✓ |
 | Estonsko                   | ✓ | ✓ |
-| Faerské ostrovy             |   | Ø |
+| Faerské ostrovy             | ✓ | Ø |
 | Finsko                   | ✓ | ✓ |
 | Francie                    | ✓ | ✓ |
-| Gruzie                   |   | Ø |
-| Německo                   | ✓ |✓ |
-| Gibraltar                 | ✓ |   |
+| Gruzie                   | ✓ | Ø |
+| Německo                   | ✓ | ✓ |
+| Gibraltar                 | ✓ | ✓ |
 | Řecko                    | ✓ | ✓ |
-| Guernsey                  |   | ✓ |
+| Guernsey                  | ✓ | ✓ |
 | Maďarsko                   | ✓ | ✓ |
 | Island                   | ✓ | ✓ |
-| Irsko (republika)     | ✓ | ✓ |
-| Ostrov Man               |   | ✓ |
+| Irsko                   | ✓ | ✓ |
+| Ostrov Man               | ✓ | ✓ |
 | Itálie                     | ✓ | ✓ |
-| Jan Mayen                 |   | ✓ |
-| Jersey                    |   | ✓ |
+| Jan Mayen                 | ✓ | ✓ |
+| Jersey                    | ✓ | ✓ |
 | Lotyšsko                    | ✓ | ✓ |
 | Lichtenštejnsko             | ✓ | ✓ |
 | Litva                 | ✓ | ✓ |
 | Lucembursko                | ✓ | ✓ |
-| Makedonie – bývalá rep. Jugoslávie                 | ✓ | ✓ |
+| Makedonie                 | ✓ | ✓ |
 | Malta                     | ✓ | ✓ |
 | Moldavsko                   | ✓ | ✓ |
 | Monako                    | ✓ | ✓ |
@@ -290,10 +291,10 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Srbsko                    | ✓ | ✓ |
 | Slovensko                  | ✓ | ✓ |
 | Slovinsko                  | ✓ | ✓ |
-| Jižní Kurils           |   | ✓ |
+| Jižní Kurils           | ✓ | ✓ |
 | Španělsko                     | ✓ | ✓ |
-| Svalbard                  |   | ✓ |
-| Švédsko                    | ✓ |   |
+| Svalbard                  | ✓ | ✓ |
+| Švédsko                    | ✓ | ✓ |
 | Švýcarsko               | ✓ | ✓ |
 | Turecko                    | ✓ | ✓ |
 | Ukrajina                   | ✓ | ✓ |

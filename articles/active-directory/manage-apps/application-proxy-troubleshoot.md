@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32d218e057fa040eded07f0adc813485ddaa52fd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3f8c9c6be51a30fd4e30fedc85f8d17d16324391
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080095"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359891"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Poradce při potížích s Proxy aplikací problémy a chybové zprávy
 Pokud dojde k chybám při přístupu k publikované aplikaci nebo publikování aplikace, zkontrolujte následující možnosti a zda správně funguje Proxy aplikací služby Microsoft Azure AD:
@@ -78,9 +78,10 @@ Tento seznam obsahuje chyby, které vaši koncoví uživatelé setkat při pokus
 | ----- | ----------------- |
 | Web nelze zobrazit stránku. | Uživatel může zobrazit tato chyba při pokusu o přístup k aplikaci, kterou jste publikovali, pokud je aplikace IWA. Definované hlavního názvu služby pro tuto aplikaci může být nesprávná. Pro aplikace IWA Ujistěte se, že správnost SPN konfigurované pro tuto aplikaci. |
 | Web nelze zobrazit stránku. | Uživatel může zobrazit tato chyba při pokusu o přístup k aplikaci, kterou jste publikovali, pokud je aplikace OWA. To může být způsobeno jedním z následujících:<br><li>Definované hlavního názvu služby pro tuto aplikaci je nesprávný. Ujistěte se, že je správný název SPN konfigurované pro tuto aplikaci.</li><li>Uživatel, který pokusu o přístup k aplikaci je pomocí účtu Microsoft, nikoli na řádné podnikový účet pro přihlášení, nebo je uživatel uživatele typu Host. Ujistěte se, že uživatel přihlásí pomocí firemního účtu, který odpovídá doméně publikovanou aplikaci. Account Microsoft uživatelů a hostů nemá přístup k aplikacím IWA.</li><li>Uživatel, který pokusu o přístup k aplikaci není správně definováno pro tuto aplikaci na straně v místním prostředí. Ujistěte se, že tento uživatel má příslušná oprávnění definované pro tuto aplikaci back-endu na na místním počítači. |
-| Nelze získat přístup k této podnikové aplikace. Nemáte oprávnění přistupovat k této aplikaci. Ověření se nepovedlo. Ujistěte se, že chcete přiřadit uživatele s přístupem k této aplikaci. | Uživatelé mohou získat tuto chybu při pokusu o přístup k aplikaci, kterou jste publikovali, pokud používají účty Microsoft namísto jejich podnikový účet pro přihlášení. Tato chyba může zobrazit také uživatele typu Host. Uživatelé Microsoft Account a hosté nelze přístup k aplikacím IWA. Ujistěte se, že uživatel přihlásí pomocí firemního účtu, který odpovídá doméně publikovanou aplikaci.<br><br>Nemusí mít přiřazené uživatele pro tuto aplikaci. Přejděte na **aplikace** kartu a v části **uživatelů a skupin**, přiřaďte tento uživatel nebo skupina uživatelů k této aplikaci. |
-| Teď je nepřístupný této podnikové aplikace. Zkuste to prosím znovu později... Konektor vypršel časový limit. | Uživatelům může zobrazit tato chyba při pokusu o přístup k aplikaci, kterou jste publikovali, pokud nejsou správně definované pro tuto aplikaci na straně v místním prostředí. Ujistěte se, aby uživatelé měli správná oprávnění, jak jsou definovány pro tuto aplikaci back-endu na na místním počítači. |
-| Nelze získat přístup k této podnikové aplikace. Nemáte oprávnění přistupovat k této aplikaci. Ověření se nepovedlo. Ujistěte se, že uživatel má licenci pro Azure Active Directory Premium nebo Basic. | Uživatelům může zobrazit tato chyba při pokusu o přístup k aplikaci, kterou jste publikovali, pokud jejich nebyly explicitně přiřazovat licence Premium nebo Basic správcem účastníka. Přejděte do služby Active Directory účastníka **licence** kartu a ujistěte se, že tento uživatel nebo skupina uživatelů je přiřazená licence Premium nebo Basic. |
+| Nelze získat přístup k této podnikové aplikace. Nemáte oprávnění přistupovat k této aplikaci. Ověření se nepovedlo. Ujistěte se, že chcete přiřadit uživatele s přístupem k této aplikaci. | Uživatel může zobrazit tato chyba při pokusu o přístup k aplikaci, kterou jste publikovali, pokud používají účty Microsoft namísto jejich podnikový účet pro přihlášení. Tato chyba může zobrazit také uživatele typu Host. Uživatelé Microsoft Account a hosté nelze přístup k aplikacím IWA. Ujistěte se, že uživatel přihlásí pomocí firemního účtu, který odpovídá doméně publikovanou aplikaci.<br><br>Nemusí mít přiřazené uživatele pro tuto aplikaci. Přejděte na **aplikace** kartu a v části **uživatelů a skupin**, přiřaďte tento uživatel nebo skupina uživatelů k této aplikaci. |
+| Teď je nepřístupný této podnikové aplikace. Zkuste to prosím znovu později... Konektor vypršel časový limit. | Uživatel může zobrazit tato chyba při pokusu o přístup k aplikaci, kterou jste publikovali, pokud nejsou správně definované pro tuto aplikaci na straně místní. Ujistěte se, aby uživatelé měli správná oprávnění, jak jsou definovány pro tuto aplikaci back-endu na na místním počítači. |
+| Nelze získat přístup k této podnikové aplikace. Nemáte oprávnění přistupovat k této aplikaci. Ověření se nepovedlo. Ujistěte se, že uživatel má licenci pro Azure Active Directory Premium nebo Basic. | Uživatel může zobrazit tato chyba při pokusu o přístup k aplikaci, kterou jste publikovali, pokud jejich nebyly explicitně přiřazovat licence Premium nebo Basic správcem účastníka. Přejděte do služby Active Directory účastníka **licence** kartu a ujistěte se, že tento uživatel nebo skupina uživatelů je přiřazená licence Premium nebo Basic. |
+| Server s názvem zadaného hostitele se nenašel. | Uživatel může zobrazit tato chyba při pokusu o přístup k aplikaci, kterou jste publikovali, pokud není správně nakonfigurovaný vlastní doménu aplikace. Ujistěte se, že jste nahráli certifikát pro doménu a záznam DNS správně nakonfigurovaný podle postupu v [práce s vlastními doménami v Proxy aplikací Azure AD](application-proxy-configure-custom-domain.md) |
 
 ## <a name="my-error-wasnt-listed-here"></a>Moje chyby se zde uvedené.
 

@@ -1,6 +1,6 @@
 ---
-title: Vytvořte index v kódu s využitím rozhraní API pro .NET – Azure Search
-description: Zjistěte, jak vytvořit fulltextový index s možností vyhledávání pomocí .NET SDK služby Azure Search a C# ukázkový kód.
+title: Vytvoření indexu v C# – Azure Search
+description: Zjistěte, jak vytvořit fulltextový index v prohledávatelných C# pomocí .NET SDK služby Azure Search.
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/20/2019
-ms.openlocfilehash: dbaac1478fdbf1b42fc6b597c3a5c541e007e413
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/22/2019
+ms.openlocfilehash: a5861faaf26962d34d1c356e29dce1be40f8716b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287141"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370580"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>Rychlý start: 1 – Vytvoření indexu Azure Search vC#
 
@@ -32,7 +32,7 @@ Tento článek vás provede procesem vytvoření [indexu Azure Search](search-wh
 
 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), všechny edice. Ukázky kódu a instrukce byly testovány v bezplatná edice Community.
 
-Koncový bod adresy URL a správce klíč rozhraní api služby search. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
+Získejte koncový bod adresy URL a správce klíč rozhraní api služby search. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
 
   1. Na webu Azure Portal, ve vyhledávací službě **přehled** stránce, získat adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
@@ -200,7 +200,9 @@ serviceClient.Indexes.Delete("hotels");
 > 
 
 ## <a name="next-steps"></a>Další postup
-V tomto rychlém startu jste vytvořili na základě schématu, který definuje datové typy polí a chování prázdný index Azure Search. Další rychlý start v tomto seriálu se zaměřuje na načtení indexu s prohledávatelný obsah.
+V tomto rychlém startu jste vytvořili na základě schématu, který definuje datové typy polí a chování prázdný index Azure Search. Index je index "mnohastránkový", který se skládá z názvu a kolekci polí s atributy. Víc odpovídají realitě index bude zahrnovat další prvky, jako například [profily skórování](index-add-scoring-profiles.md), [moduly pro návrhy](index-add-suggesters.md) typeahead podporu [synonyma](search-synonyms.md)a případně [ vlastní analyzátory](index-add-custom-analyzers.md). Doporučujeme, abyste návštěvě těchto funkcí po pochopit základní pracovní postup.
+
+Další rychlý start v tomto seriálu se zaměřuje na načtení indexu s prohledávatelný obsah.
 
 > [!div class="nextstepaction"]
 > [Načtení dat do indexu Azure Search pomocíC#](search-import-data-dotnet.md)

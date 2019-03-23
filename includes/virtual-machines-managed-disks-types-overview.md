@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f36ce51a9f385933cbc21e27280828b0ff0e43e2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6eae536bd19a2c0e5707d8e0b379774b6eb2707a
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58016717"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58395590"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou dostupné v Azure?
 
@@ -27,9 +27,9 @@ Následující tabulka obsahuje porovnání ultra solid-stát disky (SSD) (previ
 |---------|---------|---------|---------|---------|
 |Typ disku   |SSD   |SSD   |SSD   |HDD   |
 |Scénář   |Úlohy náročné na vstupně-výstupních operací, jako jsou SAP HANA, databáze na nejvyšší úrovni (třeba SQL, Oracle) a dalších transakcí náročná na výkon úloh.   |Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu   |Webové servery, málo používaná podnikové aplikace a pro vývoj/testování   |Zálohování méně náročné úlohy s řídkým přístupem   |
-|Velikost disku   |gibibajt 65 536 (GiB) (Preview)   |4095 giB (GA), 32 767 GiB (Preview)    |4095 GiB (GA), 32 767 GiB (Preview)   |4095 giB (GA), 32 767 GiB (Preview)   |
-|Maximální propustnost   |2 000 MiB/s (Preview)   |250 (GA) MiB/s, 750 MiB/s (Preview)   |60 MiB/s (GA), 500 MiB/s (Preview)   |60 Mib/s (GA), 500 MiB/s (Preview)   |
-|Maximální počet vstupně-výstupních operací za sekundu   |160,000 (preview)   |7500 (GA), 20 000 (Preview)   |500 (GA), 2 000 (Preview)   |500 (GA), 2 000 (Preview)   |
+|Velikost disku   |gibibajt 65 536 (GiB) (Preview)   |32 767 giB    |32 767 giB   |32 767 giB   |
+|Maximální propustnost   |2 000 MiB/s (Preview)   |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Maximální počet vstupně-výstupních operací za sekundu   |160,000 (preview)   |20,000   |6,000   |2 000   |
 
 ## <a name="ultra-ssd-preview"></a>Ultra SSD (preview)
 

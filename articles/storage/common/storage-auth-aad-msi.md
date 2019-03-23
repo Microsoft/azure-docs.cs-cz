@@ -1,25 +1,25 @@
 ---
-title: Ověření přístupu k objektům BLOB a fronty s Azure Active Directory spravovat identity pro prostředky Azure (Preview) – služby Azure Storage | Dokumentace Microsoftu
+title: Ověření přístupu k objektům BLOB a fronty s Azure Active Directory spravovat identity pro prostředky Azure – Azure Storage | Dokumentace Microsoftu
 description: Úložiště objektů Blob a fronty Azure podporuje ověřování Azure Active Directory pomocí spravované identity pro prostředky Azure. Spravované identity pro prostředky Azure můžete použít k ověření přístupu k objektům BLOB a fronty z aplikací běžících v Azure virtuální počítače, aplikace function App, škálovací sady virtuálních počítačů a dalších. Pomocí spravované identity pro prostředky Azure a využívá širokých možností ověřování Azure AD, můžete zabránit ukládání přihlašovacích údajů s vašimi aplikacemi, které běží v cloudu.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 15c37be3f3b1b3f72c32865e095091fa10ee9750
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4372045590938df701dd00e58a111215f6e8e56d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251686"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369645"
 ---
-# <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources-preview"></a>Ověření přístupu k objektům BLOB a fronty pomocí spravované identity pro prostředky Azure (Preview)
+# <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources"></a>Ověření přístupu k objektům BLOB a fronty pomocí spravované identity pro prostředky Azure
 
 Úložiště objektů Blob a fronty Azure podporují ověřování Azure Active Directory (Azure AD) s [spravovaných identit pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md). Spravovat identity pro prostředky Azure může ověřit přístup k objektům BLOB a fronty pomocí přihlašovacích údajů Azure AD z aplikace běžící v Azure virtuální počítače (VM), aplikace function App, škálovací sady virtuálních počítačů a dalších. Pomocí spravované identity pro prostředky Azure a využívá širokých možností ověřování Azure AD, můžete zabránit ukládání přihlašovacích údajů s vašimi aplikacemi, které běží v cloudu.  
 
-Udělení oprávnění pro spravovanou identitu do kontejneru objektů blob nebo fronty, přiřadíte roli řízení přístupu na základě role spravovanou identitu, která zahrnuje oprávnění pro daný prostředek na příslušný obor. Další informace o rolích RBAC v úložišti, najdete v části [Správa přístupových práv k datům úložiště pomocí RBAC (Preview)](storage-auth-aad-rbac.md). 
+Udělení oprávnění pro spravovanou identitu do kontejneru objektů blob nebo fronty, přiřadíte roli řízení přístupu na základě role spravovanou identitu, která zahrnuje oprávnění pro daný prostředek na příslušný obor. Další informace o rolích RBAC v úložišti, najdete v části [Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md). 
 
 Tento článek ukazuje, jak ověřit do fronty nebo Azure Blob storage s využitím spravované identity z virtuálního počítače Azure.  
 
@@ -37,7 +37,7 @@ Před použitím spravovaných identit pro prostředky Azure k ověření přís
 
 ## <a name="assign-an-rbac-role-to-an-azure-ad-managed-identity"></a>Přiřaďte roli RBAC na identitu spravované služby Azure AD
 
-K ověření spravovanou identitu aplikace služby Azure Storage, nejprve nakonfigurujte nastavení řízení přístupu na základě role pro tuto spravovanou identitu. Azure Storage definuje role RBAC, které zahrnuje oprávnění pro kontejnery a fronty. Když RBAC role je přiřazená spravovanou identitu, která se identita spravované je udělen přístup k prostředku. Další informace najdete v tématu [Správa přístupových práv k datům objektů Blob v Azure a fronty pomocí RBAC (Preview)](storage-auth-aad-rbac.md).
+K ověření spravovanou identitu aplikace služby Azure Storage, nejprve nakonfigurujte nastavení řízení přístupu na základě role pro tuto spravovanou identitu. Azure Storage definuje role RBAC, které zahrnuje oprávnění pro kontejnery a fronty. Když RBAC role je přiřazená spravovanou identitu, která se identita spravované je udělen přístup k prostředku. Další informace najdete v tématu [Správa přístupových práv k datům objektů Blob v Azure a fronty pomocí RBAC](storage-auth-aad-rbac.md).
 
 ## <a name="get-a-managed-identity-access-token"></a>Získání tokenu přístupu spravované identity
 
@@ -49,7 +49,7 @@ Příklad kódu předpokládá, že máte přístupový token spravovaná identi
 
 ### <a name="add-references-and-using-statements"></a>Přidání odkazů a příkazy using  
 
-V sadě Visual Studio nainstalujte klientské knihovny Azure Storage ve verzi preview. Z **nástroje** nabídce vyberte možnost **Správce balíčků Nuget**, pak **Konzola správce balíčků**. Do konzoly zadejte následující příkaz:
+V sadě Visual Studio nainstalujte klientské knihovny Azure Storage. Z **nástroje** nabídce vyberte možnost **Správce balíčků Nuget**, pak **Konzola správce balíčků**. Do konzoly zadejte následující příkaz:
 
 ```
 Install-Package https://www.nuget.org/packages/WindowsAzure.Storage  
@@ -63,7 +63,7 @@ using Microsoft.WindowsAzure.Storage.Auth;
 
 ### <a name="create-credentials-from-the-managed-identity-access-token"></a>Vytvořte přihlašovací údaje z přístupového tokenu spravované identity
 
-Chcete-li vytvořit objekt blob bloku, použijte **TokenCredentials** třídy poskytovaný balíček ve verzi preview. Vytvořit novou instanci třídy **TokenCredentials**a předejte spravovanou identitu přístupový token, který jste získali dříve:
+Chcete-li vytvořit objekt blob bloku, použijte **TokenCredentials** třídy. Vytvořit novou instanci třídy **TokenCredentials**a předejte spravovanou identitu přístupový token, který jste získali dříve:
 
 ```dotnet
 // Create storage credentials from your managed identity access token.
@@ -79,7 +79,6 @@ CloudBlockBlob blob = new CloudBlockBlob(new Uri("https://storagesamples.blob.co
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o rolích RBAC pro Azure storage najdete v tématu [Správa přístupových práv k datům úložiště pomocí RBAC (Preview)](storage-auth-aad-rbac.md).
+- Další informace o rolích RBAC pro Azure storage najdete v tématu [Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md).
 - Zjistěte, jak autorizovat přístup ke kontejnerům a front z v rámci aplikace úložiště, najdete v článku [pomocí služby Azure AD s aplikacemi úložiště](storage-auth-aad-app.md).
-- Zjistěte, jak k přihlášení do Powershellu a Azure CLI s Azure AD identity, najdete v článku [pomocí identity Azure AD pro přístup k Azure Storage s využitím rozhraní příkazového řádku nebo Powershellu (Preview)](storage-auth-aad-script.md).
-- Další informace o integraci služby Azure AD pro objekty BLOB Azure a front, najdete v článku na blogu týmu Azure Storage účtovat, [oznamujeme vydání verze Preview služby Azure AD Authentication pro službu Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).
+- Zjistěte, jak se přihlásit k Azure CLI a Powershellu s Azure AD identity, najdete v článku [pomocí identity Azure AD pro přístup k úložišti Azure pomocí Powershellu nebo rozhraní příkazového řádku](storage-auth-aad-script.md).

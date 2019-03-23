@@ -14,19 +14,21 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 7b4ee33d3e231dc59ce1d7b4ae6337efb11e96bc
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: f26597022b89bcd113ee250db75a842c634273eb
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355502"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371379"
 ---
 # <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>Odstranění nabídky Azure Marketplace a AppSource nebo skladové položky
 
 Z různých důvodů se můžete rozhodnout pro stažení vaši nabídku z webu Microsoft marketplace, který může mít dvě formy:
 
 - *Odebrání nabídky* zajistí, že noví zákazníci mohou už koupit a nasadit vaši nabídku, ale nemá žádný vliv na stávající zákazníky, kterým musí podporovat podle licenční smlouvou a které jsou relevantní zákony. 
-- *Nabízí ukončení* je proces ukončení služby a/nebo licenční smlouva mezi vámi a vašimi stávajícími zákazníky. Pokyny a zásady týkající se odebrání a ukončení nabídky se řídí [smlouvy vydavatele Microsoft Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) (sekce 7) a [zásadách pro účast](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (část 6.2). 
+- *Nabízí ukončení* je proces ukončení služby a/nebo licenční smlouva mezi vámi a vašimi stávajícími zákazníky. 
+
+Pokyny a zásady týkající se odebrání a ukončení nabídky se řídí [smlouvy vydavatele Microsoft Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) (sekce 7) a [zásadách pro účast](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (část [ Pozastavení nebo odebrání nabídky](https://docs.microsoft.com/en-us/legal/marketplace/participation-policy#offering-suspension-and-removal)). 
 
 Tento článek hovoří o různých nepodporuje odstranění scénáře a kroky potřebné k provedení každého.  
 

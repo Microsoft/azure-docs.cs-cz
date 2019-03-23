@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f8411cf2aebf5ab3e25239d1cb1a9b81cfda4c2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 53140c7b02dd657036b76db0dd137bd770d97f4d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163893"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369526"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti zasílání zpráv o správě hesel Azure AD
 
 Po nasazení, řada organizací chtít vědět, jak nebo pokud samoobslužné resetování hesla (SSPR) je doopravdy používá. Funkci vytváření sestav, které poskytuje Azure Active Directory (Azure AD) pomáhá lze zodpovědět otázky pomocí předem připravených sestav. Pokud máte správně licenci, můžete také vytvořit vlastní dotazy.
 
-![Vytváření sestav][Reporting]
+![Vytváření sestav o samoobslužném resetování HESLA pomocí auditování protokoluje ve službě Azure AD][Reporting]
 
 Sestavy, které existují v můžete odpovědět na následující otázky [webu Azure portal](https://portal.azure.com/):
 
@@ -97,7 +97,7 @@ Následující seznam popisuje tato aktivita podrobně:
 * **Aktivita actor**: Uživatel, který byla omezena z provedením další operace resetování. Tímto uživatelem může být koncový uživatel nebo správce.
 * **Cílové aktivity**: Uživatel, který byla omezena z provedením další operace resetování. Tímto uživatelem může být koncový uživatel nebo správce.
 * **Stav aktivity**:
-  * _Úspěch_: Označuje, že uživatel byla omezena z provádění jakékoli další resetování, pokusu o jakékoli další metody ověřování nebo ověřování jakékoli další telefonní čísla dobu následujících 24 hodin.
+  * _Success_: Označuje, že uživatel byla omezena z provádění jakékoli další resetování, pokusu o jakékoli další metody ověřování nebo ověřování jakékoli další telefonní čísla dobu následujících 24 hodin.
 * **Důvod selhání stavu aktivity**: Není k dispozici.
 
 ### <a name="activity-type-change-password-self-service"></a>Typ aktivity: Změna hesla (samoobslužná)
@@ -108,7 +108,7 @@ Následující seznam popisuje tato aktivita podrobně:
 * **Aktivita actor**: Uživatel, který změní heslo. Tímto uživatelem může být koncový uživatel nebo správce.
 * **Cílové aktivity**: Uživatel, který změní heslo. Tímto uživatelem může být koncový uživatel nebo správce.
 * **Aktivita stavy**:
-  * _Úspěch_: Označuje, že uživatel se úspěšně změnil heslo.
+  * _Success_: Označuje, že uživatel se úspěšně změnil heslo.
   * _Selhání_: Udává, že uživatel se nepodařilo změnit své heslo. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
 * **Důvod selhání stavu aktivity**:
   * _FuzzyPolicyViolationInvalidPassword_: Uživatel vybral, který byl automaticky zakázán, protože funkce Microsoft zakázané heslo detekce zjistila, že se moc známé nebo zvlášť slabé heslo.
@@ -121,7 +121,7 @@ Následující seznam popisuje tato aktivita podrobně:
 * **Aktivita actor**: Správce, který provedl resetování jménem jiného koncový uživatel nebo správce hesel. Musí být buď globální správce, heslo správce, Správce uživatelů nebo správce technické podpory.
 * **Cílové aktivity**: Uživatel, jehož heslo se resetovalo. Tímto uživatelem může být koncový uživatel nebo jiný správce.
 * **Aktivita stavy**:
-  * _Úspěch_: Označuje, že správce bylo úspěšně resetováno heslo uživatele.
+  * _Success_: Označuje, že správce bylo úspěšně resetováno heslo uživatele.
   * _Selhání_: Udává, že správce se nepodařilo změnit heslo uživatele. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
 
 ### <a name="activity-type-reset-password-self-service"></a>Typ aktivity: Resetování hesla (samoobslužné)
@@ -132,7 +132,7 @@ Následující seznam popisuje tato aktivita podrobně:
 * **Aktivita actor**: Uživatel, který resetování hesla. Tímto uživatelem může být koncový uživatel nebo správce.
 * **Cílové aktivity**: Uživatel, který resetování hesla. Tímto uživatelem může být koncový uživatel nebo správce.
 * **Aktivita stavy**:
-  * _Úspěch_: Označuje, že uživatel úspěšně resetoval svoje vlastní heslo.
+  * _Success_: Označuje, že uživatel úspěšně resetoval svoje vlastní heslo.
   * _Selhání_: Udává, že uživatel se nepodařilo resetovat vlastní heslo. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
 * **Důvod selhání stavu aktivity**:
   * _FuzzyPolicyViolationInvalidPassword_: Vybrat správce, který byl automaticky zakázán, protože funkce Microsoft zakázané heslo detekce zjistila, že se moc známé nebo zvlášť slabé heslo.
@@ -145,7 +145,7 @@ Následující seznam popisuje tato aktivita podrobně:
 * **Aktivita actor**: Uživatele, který provedl součástí heslo resetovat toku. Tímto uživatelem může být koncový uživatel nebo správce.
 * **Cílové aktivity**: Uživatele, který provedl součástí heslo resetovat toku. Tímto uživatelem může být koncový uživatel nebo správce.
 * **Aktivita stavy**:
-  * _Úspěch_: Indikuje, že uživatel úspěšně dokončeno konkrétním krokem procesu resetování hesla.
+  * _Success_: Indikuje, že uživatel úspěšně dokončeno konkrétním krokem procesu resetování hesla.
   * _Selhání_: Určuje, že konkrétní krok hesla resetovat tok selhal. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
 * **Důvody stavu aktivity**:   V následující tabulce najdete [všechny důvody přípustné obnovení činnosti stavu](#description-of-the-report-columns-in-the-azure-portal).
 
@@ -157,7 +157,7 @@ Následující seznam popisuje tato aktivita podrobně:
 * **Aktivita actor**: Uživatel, který odemknout svůj účet bez resetování hesel. Tímto uživatelem může být koncový uživatel nebo správce.
 * **Cílové aktivity**: Uživatel, který odemknout svůj účet bez resetování hesel. Tímto uživatelem může být koncový uživatel nebo správce.
 * **Povolené stavy aktivity**:
-  * _Úspěch_: Označuje, že uživatel úspěšně odemknuli svůj vlastní účet.
+  * _Success_: Označuje, že uživatel úspěšně odemknuli svůj vlastní účet.
   * _Selhání_: Udává, že uživatel se nepodařilo odemknout svůj účet. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
 
 ### <a name="activity-type-user-registered-for-self-service-password-reset"></a>Typ aktivity: Registrace uživatele pro samoobslužné resetování hesla
@@ -168,12 +168,11 @@ Následující seznam popisuje tato aktivita podrobně:
 * **Aktivita actor**: Uživatel, který je registrovaný pro resetování hesla. Tímto uživatelem může být koncový uživatel nebo správce.
 * **Cílové aktivity**: Uživatel, který je registrovaný pro resetování hesla. Tímto uživatelem může být koncový uživatel nebo správce.
 * **Povolené stavy aktivity**:
-  * _Úspěch_: Označuje, že uživatel úspěšně zaregistrován v souladu s aktuální zásady resetování hesla. 
+  * _Success_: Označuje, že uživatel úspěšně zaregistrován v souladu s aktuální zásady resetování hesla. 
   * _Selhání_: Označuje, že se nepodařilo zaregistrovat pro resetování hesla uživatele. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
 
      >[!NOTE]
      >Selhání neznamená, že uživatel se nepovedlo se resetovat vlastní heslo. Znamená to, že se nedokončilo proces registrace. Pokud neověřené data na svůj účet, který je správný, jako je například telefonní číslo, který není ověřen, i v případě, že neověřili toto telefonní číslo, že ji mohou dál používat k resetování hesla.
-     >
 
 ## <a name="next-steps"></a>Další postup
 

@@ -5,20 +5,20 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 03/21/2019
 ms.author: danlep
-ms.openlocfilehash: 0c43c81528c2de656e1d788f6af6ba337d7aacb8
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 3e7e292f36296ce09af89f03e8b154b57e18b55c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403018"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369975"
 ---
 # <a name="set-environment-variables"></a>Nastavení proměnných prostředí
 
 Nastavení proměnných prostředí ve vaší službě container instances umožňuje poskytovat dynamickou konfiguraci aplikace nebo skript spustit v kontejneru. Chcete-li nastavit proměnné prostředí v kontejneru, zadejte je při vytváření instance kontejneru. Můžete nastavit proměnné prostředí při spuštění kontejneru s [rozhraní příkazového řádku Azure](#azure-cli-example), [prostředí Azure PowerShell](#azure-powershell-example)a [webu Azure portal](#azure-portal-example).
 
-Například pokud spustíte [microsoft/aci-wordcount] [ aci-wordcount] image kontejneru, můžete upravit své chování tak, že zadáte následující proměnné prostředí:
+Například pokud spustíte Microsoft [aci wordcount] [ aci-wordcount] image kontejneru, můžete upravit své chování tak, že zadáte následující proměnné prostředí:
 
 *NumWords*: Počet odeslaných do STDOUT slov.
 
@@ -28,13 +28,13 @@ Pokud je potřeba předat tajné kódy jako proměnné prostředí, Azure Contai
 
 ## <a name="azure-cli-example"></a>Příklad rozhraní příkazového řádku Azure
 
-Pokud chcete zobrazit výchozí výstup [microsoft/aci-wordcount] [ aci-wordcount] kontejner, nejprve spustit s tímto [az container vytvořit] [ az-container-create] příkazu (ne proměnné prostředí zadaný):
+Pokud chcete zobrazit výchozí výstup [aci wordcount] [ aci-wordcount] kontejner, nejprve spustit s tímto [vytvořit az container] [ az-container-create] příkazu (ne proměnné prostředí zadaný):
 
 ```azurecli-interactive
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer1 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure
 ```
 
@@ -44,7 +44,7 @@ Pokud chcete upravit výstup, spusťte druhý kontejner s `--environment-variabl
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer2 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
@@ -83,13 +83,13 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 Nastavení proměnných prostředí v prostředí PowerShell se podobá rozhraní příkazového řádku, ale používá `-EnvironmentVariable` argument příkazového řádku.
 
-Nejprve spusťte [microsoft/aci-wordcount] [ aci-wordcount] kontejneru v její výchozí konfiguraci s tímto [New-AzContainerGroup] [ new-Azcontainergroup] příkaz:
+Nejprve spusťte [aci wordcount] [ aci-wordcount] kontejneru v její výchozí konfiguraci s tímto [New-AzContainerGroup] [ new-Azcontainergroup] příkaz:
 
 ```azurepowershell-interactive
 New-AzContainerGroup `
     -ResourceGroupName myResourceGroup `
     -Name mycontainer1 `
-    -Image microsoft/aci-wordcount:latest
+    -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
 Nyní spusťte následující příkaz [New-AzContainerGroup] [ new-Azcontainergroup] příkazu. Tohohle Určuje, *NumWords* a *MinLength* proměnné prostředí po naplnění proměnnou pole `envVars`:
@@ -99,7 +99,7 @@ $envVars = @{'NumWords'='5';'MinLength'='8'}
 New-AzContainerGroup `
     -ResourceGroupName myResourceGroup `
     -Name mycontainer2 `
-    -Image microsoft/aci-wordcount:latest `
+    -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest `
     -RestartPolicy OnFailure `
     -EnvironmentVariable $envVars
 ```
@@ -143,7 +143,7 @@ Chcete-li nastavit proměnné prostředí při spuštění kontejneru na webu Az
 
 Při nasazení pomocí portálu jste aktuálně omezeni na tři proměnné a je nutné je zadat v tomto formátu: `"variableName":"value"`
 
-Chcete-li zobrazit příklad, spusťte [microsoft/aci-wordcount] [ aci-wordcount] kontejner s *NumWords* a *MinLength* proměnné.
+Chcete-li zobrazit příklad, spusťte [aci wordcount] [ aci-wordcount] kontejner s *NumWords* a *MinLength* proměnné.
 
 1. V **konfigurace**, nastavte **zásady restartování** k *při selhání*
 2. Zadejte `"NumWords":"5"` první proměnné, vyberte **Ano** pod **přidat další proměnné prostředí**a zadejte `"MinLength":"8"` druhé proměnné. Vyberte **OK** ověřte a pak nasaďte kontejner.
@@ -246,7 +246,7 @@ Scénáře založené na úlohách, jako jsou dávkové zpracování velkou dato
 [portal-env-vars-02]: ./media/container-instances-environment-variables/portal-env-vars-02.png
 
 <!-- LINKS - External -->
-[aci-wordcount]: https://hub.docker.com/r/microsoft/aci-wordcount/
+[aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

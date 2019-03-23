@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 236e4e7079da792d055a8de148d03852ca1012ab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a6746fa193331aff66b8726da1cb3afe49fdc9bf
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877356"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351539"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 poznámky k verzi
 
@@ -34,9 +34,13 @@ Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek 
 
 Další informace najdete v tématu [pokyny k migraci pro přechod ze služby Media Services v2 na v3](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="march-2019"></a>2019. března
+
+Dynamické balení, teď podporuje Dolby Atmos. Další informace najdete v tématu [zvuk kodeky podporuje dynamické balení](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
+
 ## <a name="february-2019"></a>. Února 2019
 
-Media Services v3 je teď upported v národních cloudech Azure. Ne všechny funkce jsou dostupné ve všech cloudech ještě. Podrobnosti najdete v tématu [Cloudy a oblasti, ve které Azure Media Services v3 existuje](azure-clouds-regions.md).
+Media Services v3 je nyní podporována v národních cloudů Azure. Ne všechny funkce jsou dostupné ve všech cloudech ještě. Podrobnosti najdete v tématu [Cloudy a oblasti, ve které Azure Media Services v3 existuje](azure-clouds-regions.md).
 
 [Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) událostí byl přidán do služby Azure Event Grid schémata pro Media Services.
 

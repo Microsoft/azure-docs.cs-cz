@@ -1,18 +1,18 @@
 ---
 title: Azure Data Factory mapování toku dat datové sady
-description: Azure Data Factory mapování toku dat má kompatibility sepecific datové sady
+description: Azure Data Factory mapování toku dat má kompatibility konkrétní datové sady
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: ad6cfdad519ab3901c58979970ea07439b3106e9
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 4e36e96947e6a8595230023065eb9f44a5a1f3d2
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726919"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371311"
 ---
 # <a name="mapping-data-flow-datasets"></a>Mapování datového toku datových sad
 
@@ -42,6 +42,12 @@ Při vytváření nové datové sady, je zaškrtávací políčko s popiskem "Da
 ## <a name="import-schemas"></a>Importovat schémata
 
 Při importu schématu datové sady se předávají Data, zobrazí se na tlačítko Importovat schéma. Kliknutím na toto tlačítko zobrazíte dvě možnosti: Import ze zdroje nebo importovat z místního souboru. Ve většině případů budete importovat schéma přímo ze zdroje. Nicméně pokud máte existující soubor schématu (soubory Parquet nebo CSV se záhlavími), může odkazovat na místní soubor a Data Factory se budou definovat schéma na základě tohoto souboru schématu.
+
+## <a name="create-new-table"></a>Vytvořit novou tabulku
+
+V toku dat můžete požádat o ADF můžete vytvořit novou definici tabulky v cílové databázi nastavením datovou sadu jímky transformace, která má nový název tabulky. V sadě dat SQL klikněte na tlačítko "Upravit" pod název tabulky a zadejte nový název tabulky. Potom v transformaci jímky zapněte "Povolit schématu odchylek". Seth "Importovat schéma" nastavení na hodnotu None.
+
+![Transformace schématu zdroje](media/data-flow/dataset2.png "SQL schématu")
 
 ## <a name="delimited-text-dataset"></a>Datová sada obsahující text oddělený znaky
 

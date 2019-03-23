@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd0ce02a92c0a2e803866b6f070dba113c566f5d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d9ce388c53a28d6b04bf7685da397eade4b1fd94
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112207"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371770"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>verze 2.0 protokolů – SPA pomocí implicitní tok
 
@@ -55,7 +55,7 @@ Následující diagram znázorňuje vypadá celý implicitní přihlášení tok
 Pro počáteční přihlášení uživatele do vaší aplikace, můžete odeslat [OpenID Connect](v2-protocols-oidc.md) žádost o autorizaci a získat `id_token` z koncového bodu v2.0.
 
 > [!IMPORTANT]
-> Úspěšně požádat o token ID registrace aplikace v [portál pro registraci](https://apps.dev.microsoft.com) musí mít **povolit implicitní tok** pro webového klienta povolena. Pokud není povolen, `unsupported_response` se vrátí Chyba: **Zadaná hodnota pro 'typ odpovědi' vstupní parametr není povolený pro tohoto klienta. Očekávaná hodnota je "kód"**
+> Úspěšně požádat o token ID registrace aplikace v [portál Azure – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránka musí mít povolené správně, tak, že vyberete tok implicitní grant **přístupové tokeny** a **Tokeny typu ID** pod **implicitní grant** oddílu. Pokud není povolen, `unsupported_response` se vrátí Chyba: **Zadaná hodnota pro 'typ odpovědi' vstupní parametr není povolený pro tohoto klienta. Očekávaná hodnota je "kód"**
 
 ```
 // Line breaks for legibility only
@@ -77,7 +77,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parametr |  | Popis |
 | --- | --- | --- |
 | `tenant` | povinné |`{tenant}` Hodnota v cestě požadavku je možné řídit, kdo se můžete přihlásit do aplikace. Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátorů klienta. Další podrobnosti najdete v části [protokol Základy](active-directory-v2-protocols.md#endpoints). |
-| `client_id` | povinné |Id aplikace, která na portál pro registraci ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) přiřazené vaší aplikaci. |
+| `client_id` | povinné |ID aplikace (klient), který [portál Azure – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky přiřazené vaší aplikaci. |
 | `response_type` | povinné |Musí zahrnovat `id_token` pro přihlášení OpenID Connect. Může také zahrnovat typ odpovědi `token`. Pomocí `token` tady vám umožní vaši aplikaci pro příjem přístupový token z koncového bodu authorize okamžitě bez nutnosti provádět druhou žádost do koncového bodu authorize. Pokud používáte `token` typ odpovědi, `scope` parametr musí obsahovat obor určující, který prostředek se má token vydat. |
 | `redirect_uri` | Doporučené |Redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Musí odpovídat přesně jeden z redirect_uris, které jste zaregistrovali na portálu, s tím rozdílem, musí být kódování url. |
 | `scope` | povinné |Místo oddělený seznam [obory](v2-permissions-and-consent.md). Pro OpenID Connect, musí zahrnovat obor `openid`, který se přeloží na "Přihlášení" oprávnění v souhlasu uživatelského rozhraní. Volitelně můžete také chtít zahrnout `email` nebo `profile` obory pro získání přístupu k datům uživatele. V této žádosti pro vyžádání souhlasu k různým prostředkům mohou zahrnovat také další obory. |

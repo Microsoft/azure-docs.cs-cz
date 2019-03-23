@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 02/19/2019
 ms.author: danlep
-ms.openlocfilehash: cdf457eefc88edcc22f1fbaab4859fbcf3b69bca
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: ebbfaba158e7ddb669111f097eb1adde2373aa6c
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56653688"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361281"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Zamknout image kontejneru do služby Azure container registry
 
@@ -35,6 +35,24 @@ Ale při nasazení image kontejneru do produkčního prostředí, může být nu
 Viz příklady v následujících částech.
 
 ## <a name="lock-an-image-or-repository"></a>Zamknout obrázek nebo úložiště 
+
+### <a name="show-the-current-repository-attributes"></a>Zobrazit aktuální úložiště atributů
+Pokud chcete zobrazit aktuální atributy z úložiště, spusťte následující příkaz [az acr úložiště zobrazit] [ az-acr-repository-show] příkaz:
+
+```azurecli
+az acr repository show \
+    --name myregistry --repository myrepo
+    --output jsonc
+```
+
+### <a name="show-the-current-image-attributes"></a>Zobrazit aktuální atributy obrázku
+Pokud chcete zobrazit aktuální atributy značky, spusťte následující příkaz [az acr úložiště zobrazit] [ az-acr-repository-show] příkaz:
+
+```azurecli
+az acr repository show \
+    --name myregistry --image image:tag \
+    --output jsonc
+```
 
 ### <a name="lock-an-image-by-tag"></a>Zamknout bitovou kopii podle značky
 

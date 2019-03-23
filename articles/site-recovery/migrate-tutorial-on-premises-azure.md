@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 0daa25cce434b2e97995963918e52df974e2ef9c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 31d08c0dac63662568bf55a021e85ec414c61e52
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336544"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360363"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrace místních počítačů do Azure
 
@@ -38,7 +38,7 @@ Toto je třetí kurz ze specializované série. Tento kurz předpokládá, že j
 Než začnete, doporučujeme zkontrolovat architekturu [VMware](vmware-azure-architecture.md) nebo [Hyper-V](hyper-v-azure-architecture.md) určenou pro zotavení po havárii.
 
 > [!TIP]
-> Hledáte bez agentů způsob, jak migrovat virtuální počítače VMware do Azure? [Kliknutím sem](https://aka.ms/migrateVMs-signup)
+> Chcete se zúčastnit naší nové prostředí bez agentů pro migrace virtuálních počítačů VMware do Azure? [Více informací najdete](https://aka.ms/migrateVMs-signup).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -129,7 +129,7 @@ V některých scénářích vyžaduje převzetí služeb při selhání další 
 
 Po migraci počítačů do Azure musíte provést celou řadu kroků.
 
-Některé kroky se dají automatizovat jako součást migračního procesu pomocí integrovaných automatizačních skriptů v [plánech obnovení]( https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation).   
+Některé kroky se dají automatizovat jako součást migračního procesu pomocí integrovaných automatizačních skriptů v [plánech obnovení](site-recovery-runbook-automation.md).   
 
 
 ### <a name="post-migration-steps-in-azure"></a>Kroky po migraci v Azure
@@ -140,7 +140,7 @@ Některé kroky se dají automatizovat jako součást migračního procesu pomoc
     - Pokud migrujete počítače VMware a fyzické servery, instalační program služby mobility nainstaluje dostupného agenta virtuálního počítače Azure na počítače s Windows. Na linuxových virtuálních počítačích doporučujeme nainstalovat agenta po převzetí služeb při selhání.
     - Pokud migrujete virtuální počítače Azure do sekundární oblasti, musí být agent virtuálního počítače Azure zřízen na virtuálním počítači ještě před migrací.
     - Pokud migrujete virtuální počítače Hyper-V do Azure, nainstalujte agenta virtuálního počítače Azure na virtuální počítač Azure po migraci.
-- Ručně odeberte všechny agenty nebo poskytovatele služby Site Recovery z virtuálního počítače. Pokud migrujete virtuální počítače VMware nebo fyzické servery, [odinstalujte službu mobility][vmware-azure-install-mobility-service.md#uninstall-mobility-service-on-a-windows-server-computer] z virtuálního počítače Azure.
+- Ručně odeberte všechny agenty nebo poskytovatele služby Site Recovery z virtuálního počítače. Pokud provádíte migraci virtuálních počítačů VMware nebo fyzické servery, z virtuálního počítače odinstalujte službu Mobility.
 - Pro zvýšení odolnosti:
     - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal).
     - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](azure-to-azure-quickstart.md).

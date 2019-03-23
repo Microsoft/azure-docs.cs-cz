@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 03/18/2019
+ms.date: 03/22/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 859f0d168dcf1cc999f79ef22b5ba6669da79593
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: e7ab09522184f5c2d1c5168b24b2948f58e5189e
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189559"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368957"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximalizace rowgroup kvality columnstore
 
@@ -67,7 +67,7 @@ from cte;
 ```
 
 Trim_reason_desc Určuje, zda byla oříznuta skupiny řádků (trim_reason_desc = NO_TRIM znamená došlo bez ořezávání a skupina řádků je optimální kvality). Důvody: uvolnění dočasné paměti znamenat předčasné oříznutí skupiny řádků:
-- BULKLOAD: Uvolnění dočasné paměti z tohoto důvodu se používá, kdy příchozí dávku řádků pro zatížení menší než 1 milion řádků. Modul se vytvoří komprimovaná skupina řádků, pokud jsou větší než 100 000 řádků vloženého (na rozdíl od vkládání do obchodu rozdílovou), ale nastaví uvolnění dočasné paměti z důvodu BULKLOAD. V tomto scénáři zvažte zvýšení okno zatížení služby batch, aby akumulují další řádky. Navíc přehodnotit vaše schéma vytváření oddílů a ujistěte se, že není příliš podrobné jako skupiny řádků nemůžou zahrnovat hranice oddílů.
+- BULKLOAD: Uvolnění dočasné paměti z tohoto důvodu se používá, kdy příchozí dávku řádků pro zatížení menší než 1 milion řádků. Modul se vytvoří komprimovaná skupina řádků, pokud jsou větší než 100 000 řádků vloženého (na rozdíl od vkládání do obchodu rozdílovou), ale nastaví uvolnění dočasné paměti z důvodu BULKLOAD. V tomto scénáři zvažte zvýšení zatížení batch zahrnout další řádky. Navíc přehodnotit vaše schéma vytváření oddílů a ujistěte se, že není příliš podrobné jako skupiny řádků nemůžou zahrnovat hranice oddílů.
 - MEMORY_LIMITATION: Chcete-li vytvořit skupiny řádků s 1 milion řádků, určitá část paměti pracovní vyžaduje modul. Je-li dostupná paměť relace načítání menší než požadované pracovní paměti, získat předčasně oříznut skupiny řádků. Následující části popisují, jak odhadnout paměť požadovanou a přidělení více paměti.
 - DICTIONARY_SIZE: Uvolnění dočasné paměti z tohoto důvodu označuje, že došlo k oříznutí rowgroup protože nastal minimálně jeden sloupec řetězce s širokým nebo vysokou kardinalitou řetězce. Velikost slovník je omezena na 16 MB v paměti a je komprimován po dosažení tohoto limitu skupinu řádků. Pokud narazíte na situace, zvažte možnost odizolování problematický sloupec do samostatné tabulky.
 

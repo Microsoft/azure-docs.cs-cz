@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 03/21/2019
 ms.author: larryfr
-ms.openlocfilehash: 7f123187ea869931b0701fd9d68372deb0b272e1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: af1b96b4ab47053a6737893832b484372ed37e99
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879067"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351860"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Kurz: Pomocí modelu ONNX ze Custom Vision ML Windows (preview)
 
@@ -51,7 +51,7 @@ Ukázková aplikace je k dispozici na adrese [https://github.com/Azure-Samples/c
 
 1. Ke spuštění aplikace ze sady Visual Studio použijte klávesu `F5`. Může se zobrazit výzva k povolení vývojářského režimu. Další informace najdete v dokumentu týkajícím se [povolení zařízení pro vývoj](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development).
 
-2. Po spuštění aplikace pomocí tlačítka vyberte obrázek k vyhodnocení.
+1. Po spuštění aplikace pomocí tlačítka vyberte obrázek k vyhodnocení.
 
 ## <a name="use-your-own-model"></a>Použití vlastního modelu
 
@@ -65,8 +65,8 @@ Pokud chcete použít vlastní model, postupujte následovně:
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na složku Assets a vyberte __Přidat existující položku__. Vyberte soubor ONNX.
 
-1. V Průzkumníku řešení vyberte soubor ONNX ze složky Assets. Změňte následující vlastnosti souboru: 
-    
+1. V Průzkumníku řešení vyberte soubor ONNX ze složky Assets. Změňte následující vlastnosti souboru:
+
     * __Akce sestavení__ -> __Obsah__
     * __Kopírovat do výstupního adresáře__ -> __Kopírovat, pokud je novější__
 

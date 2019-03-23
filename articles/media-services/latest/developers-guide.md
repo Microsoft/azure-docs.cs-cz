@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/22/2019
+ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: b9c89b6cb6dbc6cb217be671eb0e52c0416811ed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cda6c9cd1f9c8b9305349f0904aeb744ba373711
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889841"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350245"
 ---
 # <a name="start-developing-with-media-services-v3-api-using-sdkstools"></a>Začněte vyvíjet s využitím rozhraní API služby Media Services v3 pomocí sady SDK a nástroje
 
@@ -34,6 +34,7 @@ Toto téma obsahuje odkazy na sady SDK, nástroje, dokumentaci. Poskytuje také 
 Jak začít s vývojem ve službě Media Services, budete potřebovat:
 
 - Aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+- [Další informace o základních konceptech](concepts-overview.md)
 - [Vytvoření účtu Media Services](create-account-cli-how-to.md)
 
 ## <a name="start-developing"></a>Zahájení vývoje

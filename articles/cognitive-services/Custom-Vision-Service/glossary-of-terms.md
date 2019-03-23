@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/08/2017
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: e659367ae13026dbe48ed681d0a68058d686e3ec
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3530dbfe15f6dbdf481df70de6d03979750aa38e
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884337"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352098"
 ---
 # <a name="glossary-of-terms-for-custom-vision-service"></a>Slovník pojmů pro službu Custom Vision Service
 
-Tady jsou některé termíny používané ve službě Custom Vision Service a jejich význam.
+Tady jsou některé podmínky používaných ve službě Custom Vision Service:
 
 ## <a name="classifier"></a>Třídění
 
@@ -37,33 +37,21 @@ Když vytvoříte projekt, vyberte "domény" pro tento projekt. Doména optimali
 
 Modely generovaných **compact domén** je možné exportovat pomocí funkce exportu iterace. Jsou optimalizované pro omezení v reálném čase klasifikace na mobilních zařízeních. Třídění vytvořených pomocí compact domény může být méně přesné standardní domény s velkou trénovací data. Výměnou za to je, že jsou dostatečně malá, má být spuštěn místně v téměř reálném čase. 
 
-## <a name="training-image"></a>Obrázek školení
+## <a name="evaluation"></a>Vyhodnocení
 
-K vytvoření klasifikátoru velmi přesné, musí službě Custom Vision Service několik trénovacích obrázků. Obrázek školení je fotografie image chcete službu Custom Vision Service ke klasifikaci. Například ke klasifikaci oranges, je třeba nahrát několik imagí oranges službu Custom Vision Service, aby byla povolena pro vytvoření klasifikátor, který dokáže rozpoznat oranges. Doporučujeme aspoň 30 obrázků na značky.
+Po klasifikátoru mají školení, můžete pomocí koncový bod https pro automaticky generované odesílat žádné image pro vyhodnocení. Klasifikátor vrátí sadu předpokládané značky v pořadí výrazné zvýšení sebedůvěry.
 
 ## <a name="iteration"></a>Iterace
 
 Každý čas trénování nebo znovu klasifikátor trénovat, vytvoříte novou iteraci modelu. Budeme udržovat několik posledních iteracích, aby bylo možné porovnat průběh v čase. Můžete odstranit všechny iterace, které jste už pro vás užitečné. Mějte na paměti, že odstranění iterace je trvalá a odstraní se zároveň všechny obrázky nebo změny, které byly jedinečné pro danou iteraci. 
 
-## <a name="workspace"></a>Pracovní prostor
+## <a name="precision"></a>Přesnost
 
-Pracovní prostor obsahuje všechny trénovacích obrázků a odráží všechny změny od poslední iterace, jako přidaly nebo odebraly bitové kopie. Klasifikátor Trénovat, vytvoříte novou iteraci klasifikátoru, s použitím imagí, které jsou k dispozici ve vašem pracovním prostoru.
-
-## <a name="tags"></a>Značky
-
-Použití značek k označení objekty v trénovacích obrázků. Pokud vytváříte třídění k identifikaci psi a poníci, vložíte na imagích, které obsahují psy, značky "malwaru pony" na imagích, které obsahují poníci a zároveň "pes" a "malwaru pony" značku na imagích, které obsahují pes i malwaru pony značku "pes".
-
-## <a name="evaluation"></a>Vyhodnocení
-
-Po klasifikátoru mají školení, můžete pomocí koncový bod https pro automaticky generované odesílat žádné image pro vyhodnocení. Klasifikátor vrátí sadu předpokládané značky v pořadí výrazné zvýšení sebedůvěry.
+Při klasifikaci obrázku, jak pravděpodobné je klasifikátor a klasifikaci obrázku správně? Mimo všechny Image, které využívají k tréninku třídění (PSI a poníci) jaké procento modelu jsou k dispozici správné? 99 správné značky mimo 100 imagí poskytuje 99 % přesností.
 
 ## <a name="predictions"></a>Predikce
 
 Jak klasifikátoru přijímá nových imagí ke klasifikaci, ukládá Image za vás. Tyto Image můžete zlepšit přesnost klasifikátoru správně označování nepředpovězené bitové kopie. Tyto nové Image pak můžete klasifikátor trénovat, znovu.
-
-## <a name="precision"></a>Přesnost
-
-Při klasifikaci obrázku, jak pravděpodobné je klasifikátor a klasifikaci obrázku správně? Mimo všechny Image, které využívají k tréninku třídění (PSI a poníci) jaké procento modelu jsou k dispozici správné? 99 správné značky mimo 100 imagí poskytuje 99 % přesností.
 
 ## <a name="recall"></a>Svolat
 
@@ -73,7 +61,7 @@ Mimo všechny bitové kopie, které by byly klasifikovány správně kolik klasi
 
 Existují dva typy nastavení, nastavení na úrovni projektu a nastavení na úrovni uživatele.
 
-- Nastavení na úrovni projektu: 
+- Nastavení na úrovni projektu:
   
   Použít nastavení na úrovni projektu na projekt nebo třídění. Mezi ně patří:
 
@@ -90,3 +78,15 @@ Existují dva typy nastavení, nastavení na úrovni projektu a nastavení na ú
    - Použití:
       - Počet projekty vytvořené
       - Počet provedených volání rozhraní API hodnocení/předpovědi.
+
+## <a name="tags"></a>Značky
+
+Použití značek k označení objekty v trénovacích obrázků. Pokud vytváříte třídění k identifikaci psi a poníci, vložíte na imagích, které obsahují psy, značky "malwaru pony" na imagích, které obsahují poníci a zároveň "pes" a "malwaru pony" značku na imagích, které obsahují pes i malwaru pony značku "pes".
+
+## <a name="training-image"></a>Obrázek školení
+
+K vytvoření klasifikátoru velmi přesné, musí službě Custom Vision Service několik trénovacích obrázků. Obrázek školení je fotografie image chcete službu Custom Vision Service ke klasifikaci. Například ke klasifikaci oranges, je třeba nahrát několik imagí oranges službu Custom Vision Service, aby byla povolena pro vytvoření klasifikátor, který dokáže rozpoznat oranges. Doporučujeme aspoň 30 obrázků na značky.
+
+## <a name="workspace"></a>Pracovní prostor
+
+Pracovní prostor obsahuje všechny trénovacích obrázků a odráží všechny změny od poslední iterace, jako přidaly nebo odebraly bitové kopie. Klasifikátor Trénovat, vytvoříte novou iteraci klasifikátoru, s použitím imagí, které jsou k dispozici ve vašem pracovním prostoru.

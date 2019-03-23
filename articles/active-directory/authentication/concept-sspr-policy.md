@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36959582a3866426f8dc0e9969210e29e751ea60
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 4d9055ef11bc5c117efc6d4de87d4ca8ec73a661
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311896"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360499"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
@@ -93,7 +93,7 @@ Následující tabulka popisuje nastavení zásad hesel použitý pro uživatels
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>Nastavení zásad vypršení platnosti hesel ve službě Azure AD
 
-Globální správce pro cloudové služby Microsoftu můžete použít modul Microsoft Azure AD pro prostředí Windows PowerShell k nastavení hesla uživatelů se vypršení platnosti. Rutiny prostředí Windows PowerShell můžete použít taky k odebrání platné stále konfigurace nebo chcete-li zjistit, které uživatel hesla se nastavilo na nekonečnou platnost. 
+Globální správce nebo Správce uživatelů pro cloudové služby Microsoftu můžete použít modul Microsoft Azure AD pro prostředí Windows PowerShell k nastavení hesla uživatelů se vypršení platnosti. Rutiny prostředí Windows PowerShell můžete použít taky k odebrání platné stále konfigurace nebo chcete-li zjistit, které uživatel hesla se nastavilo na nekonečnou platnost. 
 
 Tento návod se vztahuje na jiných poskytovatelů, jako je Intune a Office 365, které také závisí na službě Azure AD pro identitu a adresářové služby. Vypršení platnosti hesla je jediná součást zásadami, které je možné změnit.
 
@@ -107,7 +107,7 @@ Chcete-li začít, je potřeba [stáhněte a nainstalujte modul Azure AD PowerSh
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>Zkontrolujte, že zásada vypršení platnosti hesla
 
-1. Připojení k prostředí Windows PowerShell s použitím svých přihlašovacích údajů správce společnosti.
+1. Připojení k prostředí Windows PowerShell s použitím uživatele správce nebo pověření správce společnosti.
 1. Spustí jednu z následujících příkazů:
 
    * Pokud chcete zobrazit, pokud jeden uživatel heslo se nastavilo na nekonečnou platnost, spusťte následující rutinu pomocí hlavního názvu uživatele (například *aprilr\@contoso.onmicrosoft.com*) nebo ID uživatele, kterého chcete zkontrolovat: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
@@ -115,7 +115,7 @@ Chcete-li začít, je potřeba [stáhněte a nainstalujte modul Azure AD PowerSh
 
 ### <a name="set-a-password-to-expire"></a>Nastavení vypršení platnosti hesla
 
-1. Připojení k prostředí Windows PowerShell s použitím svých přihlašovacích údajů správce společnosti.
+1. Připojení k prostředí Windows PowerShell s použitím uživatele správce nebo pověření správce společnosti.
 1. Spustí jednu z následujících příkazů:
 
    * Chcete-li nastavit heslo s jedním uživatelem, tak, aby platnost hesla vyprší, spusťte následující rutinu s použitím hlavní název uživatele nebo ID uživatele uživatele: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None`
@@ -123,7 +123,7 @@ Chcete-li začít, je potřeba [stáhněte a nainstalujte modul Azure AD PowerSh
 
 ### <a name="set-a-password-to-never-expire"></a>Nastavení hesla nikdy nevyprší
 
-1. Připojení k prostředí Windows PowerShell s použitím svých přihlašovacích údajů správce společnosti.
+1. Připojení k prostředí Windows PowerShell s použitím uživatele správce nebo pověření správce společnosti.
 1. Spustí jednu z následujících příkazů:
 
    * Pokud chcete nastavit heslo jednoho uživatele bez vypršení platnosti, spusťte následující rutinu s použitím hlavní název uživatele nebo ID uživatele uživatele: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration`

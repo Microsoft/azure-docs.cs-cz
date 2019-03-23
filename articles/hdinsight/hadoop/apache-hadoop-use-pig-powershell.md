@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 69a45a0c2c21ffafde8a4b366e1f3e90b7c8f59a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bb00f6ccd22be75a235d9cd6fc174741207a76e0
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012620"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359156"
 ---
 # <a name="use-azure-powershell-to-run-apache-pig-jobs-with-hdinsight"></a>Pomocí Azure Powershellu spouštět úlohy Apache Pig s HDInsight
 
@@ -26,6 +26,8 @@ Tento dokument obsahuje příklad použití Azure PowerShell k odesílání úlo
 > Tento dokument neobsahuje podrobný popis co dělat v příkladech používají příkazy Pig Latin. Informace o Pig Latin použitý v tomto příkladu najdete v tématu [použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md).
 
 ## <a id="prereq"></a>Požadavky
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * **Cluster Azure HDInsight**
 
@@ -40,11 +42,11 @@ Prostředí Azure PowerShell poskytuje *rutiny* , které umožňují vzdáleně 
 
 Při spuštění úlohy Pig ve vzdáleném clusteru HDInsight se používají následující rutiny:
 
-* **Connect-AzureRmAccount**: Ověřuje se prostředí Azure PowerShell ke svému předplatnému Azure.
-* **New-AzureRmHDInsightPigJobDefinition**: Vytvoří *úlohy definice* pomocí zadané příkazy Pig Latin.
-* **Start-AzureRmHDInsightJob**: Odešle definice úlohy HDInsight a spustí úlohu. A *úlohy* je vrácen objekt.
-* **Wait-AzureRmHDInsightJob**: Objekt úlohy používá ke kontrole stavu úlohy. To počká, až úloha dokončí, nebo byla překročena doba čekání.
-* **Get-AzureRmHDInsightJobOutput**: Umožňuje načíst výstup úlohy.
+* **Connect-AzAccount**: Ověřuje se prostředí Azure PowerShell ke svému předplatnému Azure.
+* **New-AzHDInsightPigJobDefinition**: Vytvoří *úlohy definice* pomocí zadané příkazy Pig Latin.
+* **Start-AzHDInsightJob**: Odešle definice úlohy HDInsight a spustí úlohu. A *úlohy* je vrácen objekt.
+* **Wait-AzHDInsightJob**: Objekt úlohy používá ke kontrole stavu úlohy. To počká, až úloha dokončí, nebo byla překročena doba čekání.
+* **Get-AzHDInsightJobOutput**: Umožňuje načíst výstup úlohy.
 
 Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy ve vašem clusteru HDInsight.
 
@@ -76,7 +78,7 @@ Pokud po dokončení úlohy nevrátí žádné informace, podívejte se na proto
 
     # Print the output of the Pig job.
     Write-Host "Display the standard error output ..." -ForegroundColor Green
-    Get-AzureRmHDInsightJobOutput `
+    Get-AzHDInsightJobOutput `
             -Clustername $clusterName `
             -JobId $pigJob.JobId `
             -HttpCredential $creds `

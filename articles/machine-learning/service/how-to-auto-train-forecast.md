@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: cc5aae0e46e181e8063a4e01a832e68eab0eae0e
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 32f96a28e027bfd0e65d934bb47bb98400af459d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226604"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360717"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automaticky – train model prognózy časových řad
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak pro trénování časových řad prognóz regr
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, najdete v článku [Začínáme se službou Azure Machine Learning](quickstart-get-started.md).
+* Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, najdete v článku [vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md).
 * Tento článek předpokládá základní znalost nastavení automatizované experimentu strojového učení. Postupujte podle [kurzu](tutorial-auto-train-models.md) nebo [postupy](how-to-configure-auto-train.md) zobrazíte základní automatizované strojového učení vzory návrhu v experimentu.
 
 ## <a name="preparing-data"></a>Příprava dat

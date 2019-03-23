@@ -2,16 +2,16 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 3/23/2019
 ms.author: tamram
-ms.openlocfilehash: 2f46d1ddc8eeefd7d05c51c1d0640f69774746c4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c4c62876ac2483851a1f60835eeee17b4ae47f13
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553458"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58395547"
 ---
-| Prostředek | Cíl |
+| Prostředek | Cíl        |
 |----------|---------------|
 | Maximální velikost kontejneru jeden objekt blob | Stejná jako maximální účet kapacita úložiště |
 | Maximální počet objektů blob bloků v bloku nebo doplňovacího objektu blob | 50 000 bloků |
@@ -21,4 +21,3 @@ ms.locfileid: "57553458"
 | Maximální velikost doplňovacího objektu BLOB | 50 000 × 4 MiB (přibližně 195 GB) |
 | Maximální velikost objektu blob stránky | 8 TiB |
 | Maximální počet uložené zásady přístupu na kontejner objektů blob | 5 |
-| Nastavte propustnost pro jeden objekt blob | Až 60 MiB za sekundu, nebo až 500 požadavků za sekundu |

@@ -13,39 +13,39 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: magoedte
-ms.openlocfilehash: a497662ac7a885b53e69bb8c86a646045bd2eef7
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 47b589d32accc4a699e7260b9e4b2de4cca58f2b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314666"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369611"
 ---
-# <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway"></a>Připojit počítače bez připojení k Internetu pomocí brány Log Analytics
+# <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojit počítače bez připojení k Internetu pomocí brány Log Analytics ve službě Azure Monitor
 
 >[!NOTE]
 >Jak Microsoft Operations Management Suite (OMS) přejde do Microsoft Azure Monitor, se mění terminologie. Tento článek odkazuje na bránu OMS jako brána Azure Log Analytics. 
 >
 
-Tento článek popisuje, jak nakonfigurovat komunikaci s Azure Automation a Log Analytics pomocí Log Analytics gateway, pokud počítače, které jsou připojeny přímo nebo které jsou monitorovány nástrojem Operations Manager mají bez připojení k Internetu. 
+Tento článek popisuje, jak nakonfigurovat komunikaci s Azure Automation a Azure Monitor pomocí Log Analytics gateway, pokud počítače, které jsou připojeny přímo nebo které jsou monitorovány nástrojem Operations Manager mají bez připojení k Internetu. 
 
-Brána Log Analytics je dopředné proxy server HTTP, který podporuje HTTP tunelování, pomocí příkazu HTTP připojení. Tuto bránu můžete shromažďovat data a odeslat do služby Azure Automation a Log Analytics jménem počítačů, které nejsou připojené k Internetu.  
+Brána Log Analytics je dopředné proxy server HTTP, který podporuje HTTP tunelování, pomocí příkazu HTTP připojení. Tuto bránu můžete shromažďovat data a odeslat do služby Azure Automation a pracovního prostoru Log Analytics ve službě Azure Monitor jménem počítačů, které nejsou připojené k Internetu.  
 
 Log Analytics gateway podporuje:
 
 * Vytváření sestav až čtyři stejné Log Analytics pracovní prostor agenty, které jsou za to, které jsou nakonfigurovány s Azure Automation Hybrid Runbook Worker.  
-* Počítače Windows, na kterých Microsoft Monitoring Agent je přímo připojeno k pracovnímu prostoru Log Analytics.
-* Linux počítače, na kterých agenta Log Analytics pro Linux je přímo připojeno k pracovnímu prostoru Log Analytics.  
+* Počítače Windows, na kterých Microsoft Monitoring Agent je přímo připojeno k pracovnímu prostoru Log Analytics ve službě Azure Monitor.
+* Linux počítače, na kterých agenta Log Analytics pro Linux je přímo připojeno k pracovnímu prostoru Log Analytics ve službě Azure Monitor.  
 * System Center Operations Manager 2012 SP1 UR7, Operations Manager 2012 R2 s UR3 nebo skupinu pro správu v Operations Manageru 2016 nebo novější, který je integrovaný s Log Analytics.  
 
-Některé zásady zabezpečení IT neumožňují připojení k Internetu pro počítače v síti. Tyto počítače nepřipojené může být bodu terminálů zařízení nebo podporu IT služeb, například serverů. Pro připojení k Azure Automation nebo Log Analytics, správu a monitorování těchto zařízení, konfigurovat, aby mohla komunikovat přímo s bránou Log Analytics. Log Analytics gateway můžou získat informace o konfiguraci a předávání dat jejich jménem. Pokud počítačích nakonfigurovaných pomocí agenta Log Analytics k přímému připojení k pracovnímu prostoru Log Analytics, počítače místo toho komunikovat s Log Analytics gateway.  
+Některé zásady zabezpečení IT neumožňují připojení k Internetu pro počítače v síti. Tyto počítače nepřipojené může být bodu terminálů zařízení nebo podporu IT služeb, například serverů. Pro připojení k Azure Automation nebo pracovnímu prostoru Log Analytics, správu a monitorování těchto zařízení, konfigurovat, aby mohla komunikovat přímo s bránou Log Analytics. Log Analytics gateway můžou získat informace o konfiguraci a předávání dat jejich jménem. Pokud počítačích nakonfigurovaných pomocí agenta Log Analytics k přímému připojení k pracovnímu prostoru Log Analytics, počítače místo toho komunikovat s Log Analytics gateway.  
 
 Log Analytics gateway přenáší data z agentů do služby přímo. Nelze analyzovat jakákoliv data při přenosu.
 
 Když skupiny pro správu Operations Manageru je integrovaný s Log Analytics, servery pro správu je nakonfigurovat pro připojení k bráně Log Analytics pro příjem informací o konfiguraci a posílání shromážděných dat, v závislosti na řešení, které jste povolili .  Agenti nástroje Operations Manager odeslat data na server pro správu. Například agentů může odesílat výstrahy nástroje Operations Manager, údaje o posouzení konfigurace, data prostoru instancí a data o kapacitě. Další velkého objemu dat, jako jsou protokoly, údaje o výkonu a událostech zabezpečení, Internetové informační služby (IIS) se pošle přímo brány Log Analytics. 
 
-Pokud jeden nebo více serverů brány Operations Manager k monitorování nedůvěryhodného systémů v hraniční síti nebo v izolované síti nasadíte, tyto servery nemůže komunikovat s Log Analytics gateway.  Servery nástroje Operations Manager brány může hlásit pouze k serveru pro správu.  Když skupinu pro správu Operations Manageru je nakonfigurován pro komunikaci s bránou Log Analytics, informace o konfiguraci proxy serveru je automaticky distribuován do každý počítač spravovaný agentem, který je nakonfigurovaný ke shromažďování dat i pro Log Analytics Pokud nastavení je prázdné.    
+Pokud jeden nebo více serverů brány Operations Manager k monitorování nedůvěryhodného systémů v hraniční síti nebo v izolované síti nasadíte, tyto servery nemůže komunikovat s Log Analytics gateway.  Servery nástroje Operations Manager brány může hlásit pouze k serveru pro správu.  Když skupinu pro správu Operations Manageru je nakonfigurován pro komunikaci s bránou Log Analytics, informace o konfiguraci proxy serveru je automaticky distribuován do každého počítače spravovaného agentem, který je nakonfigurovaný ke shromažďování dat protokolů pro monitorování Azure, i v případě, nastavení je prázdné.    
 
-Pro zajištění vysoké dostupnosti pro přímo připojená nebo skupin pro správu operací, které komunikují se službou Log Analytics prostřednictvím brány, použijte Vyrovnávání zatížení sítě (NLB) k přesměrování a distribuovat provoz napříč několika servery brány. Tímto způsobem, pokud jeden server brány ocitne mimo provoz, provoz přesměruje do jiného uzlu k dispozici.  
+Pro zajištění vysoké dostupnosti pro přímo připojená nebo skupin pro správu operací, které komunikují s pracovním prostorem Log Analytics prostřednictvím brány, použijte Vyrovnávání zatížení sítě (NLB) k přesměrování a distribuovat provoz napříč několika servery brány. Tímto způsobem, pokud jeden server brány ocitne mimo provoz, provoz přesměruje do jiného uzlu k dispozici.  
 
 Počítač, na kterém běží brána Log Analytics vyžaduje, aby agent Windows Log Analytics k identifikaci koncové body služby, které brána potřebuje ke komunikaci s. Agent také musí směrovat brány na zprávy do stejné pracovních prostorů, které agentů nebo skupiny pro správu nástroje Operations Manager za bránou nakonfigurovanou. Tato konfigurace umožňuje bránu a agenta pro komunikaci s jejich přiřazené pracovního prostoru.
 

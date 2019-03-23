@@ -10,18 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4c1d7357dc78ca6c9387fc594f3d49f043008631
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 95a78fafcd83e6f56f26ef6670beaa179085de62
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58120565"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359576"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Vývoj programů MapReduce se streamováním pro HDInsight v Pythonu
 
 Naučte se používat Python v MapReduce operací datového proudu. Apache Hadoop poskytuje rozhraní API pro streamování pro MapReduce, která umožňuje zápis mapy a omezit funkce v jiných jazycích než Java. Kroky v tomto dokumentu implementujte mapy a snížit komponent v Pythonu.
 
 ## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Apache Hadoop založené na Linuxu v clusteru HDInsight
 
@@ -33,7 +35,7 @@ Naučte se používat Python v MapReduce operací datového proudu. Apache Hadoo
   > [!IMPORTANT]
   > Textový editor, musíte použít LF jako ukončení řádku. Použití řádku konec CRLF způsobí chyby při spuštění úlohy MapReduce v clusterech HDInsight založených na Linuxu.
 
-* `ssh` a `scp` příkazy, nebo [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-3.8.0)
+* `ssh` a `scp` příkazy, nebo [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 
 ## <a name="word-count"></a>Počet slov
 

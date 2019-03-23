@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213a55cb02c718628a4a2d64bdee98ab66af5ce3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 970e570d9ad27da2690cd38fe480823128322db0
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317047"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370699"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Konfigurace serveru Azure Multi-Factor Authentication pro práci se službou AD FS ve Windows Serveru
 
@@ -45,30 +45,22 @@ Před zahájením se ujistěte, že znáte následující informace:
 2. Na Azure Multi-Factor Authentication Serveru klikněte na ikonu **AD FS**. Vyberte možnosti **Povolit zápis uživatele** a **Povolit uživatelům výběr metody**.
 3. Vyberte další možnosti, které byste chtěli pro svou organizaci nastavit.
 4. Klikněte na **Instalovat adaptér služby AD FS**.
-   
-   <center>
-   
-   ![Cloud](./media/howto-mfaserver-adfs-2012/server.png)</center>
+
+   ![Instalace adaptéru služby AD FS z konzoly serveru MFA](./media/howto-mfaserver-adfs-2012/server.png)
 
 5. Pokud se zobrazí okno služby Active Directory, znamená to dvě věci. Počítač je připojený k doméně a konfigurace Active Directory pro zabezpečení komunikace mezi adaptérem AD FS a ověřovací službou Multi-Factor Authentication není kompletní. Kliknutím na možnost **Další** konfiguraci automaticky dokončíte. Nebo můžete zaškrtnout políčko **Vynechat automatickou konfiguraci služby Active Directory a konfigurovat nastavení ručně**. Klikněte na **Další**.
 6. Pokud se zobrazí okno místní skupiny, znamená to dvě věci. Počítač není připojený k doméně a konfigurace místní skupiny pro zabezpečení komunikace mezi adaptérem AD FS a ověřovací službou Multi-Factor Authentication není kompletní. Kliknutím na možnost **Další** konfiguraci automaticky dokončíte. Nebo můžete zaškrtnout políčko **Vynechat automatickou konfiguraci místní skupiny a konfigurovat nastavení ručně**. Klikněte na **Další**.
 7. V průvodci instalací klikněte na tlačítko **Další**. Azure Multi-Factor Authentication Server vytvoří skupinu PhoneFactor Admins a přidá do ní účet služby AD FS.
-   <center>
-   
-   ![Cloud](./media/howto-mfaserver-adfs-2012/adapter.png)</center>
 8. V kroku **Spustit instalační program** klikněte na **Další**.
 9. V instalačním programu adaptéru Multi-Factor Authentication AD FS klikněte na **Další**.
 10. Po dokončení instalace klikněte na **Zavřít**.
-11. Nainstalovaný adaptér je třeba zaregistrovat ve službě AD FS. Otevřete Windows PowerShell a spusťte následující příkaz:<br>
+11. Nainstalovaný adaptér je třeba zaregistrovat ve službě AD FS. Otevřete Windows PowerShell a spusťte následující příkaz:
+
     `C:\Program Files\Multi-Factor Authentication Server\Register-MultiFactorAuthenticationAdfsAdapter.ps1`
-    <center>
-    
-    ![Cloud](./media/howto-mfaserver-adfs-2012/pshell.png)</center>
+
 12. Upravte globální zásady ověřování ve službě AD FS tak, abyste mohli nově zaregistrovaný adaptér použít. V konzole pro správu služby AD FS přejděte k uzlu **Zásady ověřování**. V oddílu **Multi-Factor Authentication** klikněte na odkaz **Upravit** vedle oddílu **Globální nastavení**. V okně **Upravit globální zásady ověření** vyberte jako další metodu ověření **Multi-Factor Authentication** a klikněte na **OK**. Adaptér je zaregistrovaný jako WindowsAzureMultiFactorAuthentication. Restartujte službu AD FS, aby se registrace projevila.
 
-<center>
-
-![Cloud](./media/howto-mfaserver-adfs-2012/global.png)</center>
+![Upravit globální zásady ověřování](./media/howto-mfaserver-adfs-2012/global.png)
 
 Multi-Factor Authentication Server máte teď nastavený jako dodatečného poskytovatele ověření vedle služby AD FS.
 
@@ -85,6 +77,7 @@ Multi-Factor Authentication Server máte teď nastavený jako dodatečného posk
 5. Po dokončení instalace klikněte na **Zavřít**.
 
 ## <a name="edit-the-multifactorauthenticationadfsadapterconfig-file"></a>Úprava souboru MultiFactorAuthenticationAdfsAdapter.config
+
 Postupujte podle těchto kroků a upravte soubor MultiFactorAuthenticationAdfsAdapter.config:
 
 1. Uzel **UseWebServiceSdk** nastavte na **true**.  
@@ -138,20 +131,22 @@ K zabezpečení cloudových prostředků nastavte pravidlo deklarace identity ta
 2. Na levé straně vyberte **Vztahy důvěryhodnosti předávající strany**.
 3. Klikněte pravým tlačítkem na **Platforma identit Microsoft Office 365** a vyberte **Upravit pravidla deklarací identity**.
 
-   ![Cloud](./media/howto-mfaserver-adfs-2012/trustedip1.png)
+   ![Upravit pravidla deklarace identity v konzole služby AD FS](./media/howto-mfaserver-adfs-2012/trustedip1.png)
 
 4. V pravidlech transformace vystavení klikněte na **Přidat pravidlo**.
 
-   ![Cloud](./media/howto-mfaserver-adfs-2012/trustedip2.png)
+   ![Upravit pravidla transformace v konzole služby AD FS](./media/howto-mfaserver-adfs-2012/trustedip2.png)
 
 5. V Průvodci přidáním pravidla – deklarace identity transformace vyberte v rozevíracím seznamu **Předávat nebo filtrovat příchozí deklarace** a klikněte na **Další**.
 
-   ![Cloud](./media/howto-mfaserver-adfs-2012/trustedip3.png)
+   ![Přidat Průvodce vytvořením pravidla transformace deklarací identity](./media/howto-mfaserver-adfs-2012/trustedip3.png)
 
 6. Pojmenujte pravidlo.
 7. Jako typ příchozí deklarace identity vyberte **Odkazy na metody ověřování**.
 8. Vyberte **Předávat všechny hodnoty deklarací identity**.
-    ![Průvodce přidáním pravidla deklarace identity transformace](./media/howto-mfaserver-adfs-2012/configurewizard.png)
+
+    ![Přidat Průvodce vytvořením pravidla transformace deklarací identity](./media/howto-mfaserver-adfs-2012/configurewizard.png)
+
 9. Klikněte na **Dokončit**. Uzavřete konzolu pro správu služby AD FS.
 
 ## <a name="troubleshooting-logs"></a>Řešení potíží s protokoly

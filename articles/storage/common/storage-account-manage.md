@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 03/05/2019
 ms.author: tamram
-ms.openlocfilehash: d3f6009c77618bc043586771a6f67442533b2a0d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fa574558afeec5a7706482a142c0187e6a34bdb3
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444051"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370385"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Spravovat nastavení účtu úložiště na webu Azure Portal
 
@@ -20,9 +20,9 @@ Jsou k dispozici v různých nastavení pro váš účet úložiště [webu Azur
 
 ## <a name="access-control"></a>Řízení přístupu
 
-Azure Storage podporuje ověřování pomocí Azure Active Directory pro úložiště objektů Blob a Queue storage (preview) prostřednictvím řízení přístupu na základě role (RBAC). Další informace o ověřování pomocí Azure AD najdete v tématu [ověřit přístup k Azure, objekty BLOB a fronty pomocí Azure Active Directory (Preview)](storage-auth-aad.md).
+Azure Storage podporuje ověřování pomocí Azure Active Directory pro úložiště objektů Blob a Queue storage prostřednictvím řízení přístupu na základě role (RBAC). Další informace o ověřování pomocí Azure AD najdete v tématu [ověřit přístup k Azure, objekty BLOB a fronty pomocí Azure Active Directory](storage-auth-aad.md).
 
-**Řízení přístupu** nastavení na portálu Azure portal nabízí jednoduchý způsob, jak přiřadit role RBAC uživatelům, skupinám, instančních objektů a spravovaných identit. Další informace o přiřazení role RBAC najdete v tématu [Správa přístupových práv k datům objektu blob a fronty pomocí RBAC (Preview)](storage-auth-aad-rbac.md).
+**Řízení přístupu** nastavení na portálu Azure portal nabízí jednoduchý způsob, jak přiřadit role RBAC uživatelům, skupinám, instančních objektů a spravovaných identit. Další informace o přiřazení role RBAC najdete v tématu [Správa přístupových práv k datům objektu blob a fronty pomocí RBAC](storage-auth-aad-rbac.md).
 
 > [!NOTE]
 > Ověřování uživatelů a aplikací s použitím přihlašovacích údajů Azure AD poskytuje nejvyšší zabezpečení a snadné použití přes jiným způsobem autorizace. Když můžete nadále používat povolení sdíleného klíče s vašimi aplikacemi, používání služby Azure AD obchází potřebou ukládání přístupový klíč k účtu s vaším kódem. Můžete taky dál používat sdílené přístupové podpisy (SAS) k udělení velice přesně kontrolovat přístup k prostředkům ve vašem účtu úložiště, ale Azure AD nabízí podobné funkce bez nutnosti spravovat tokeny SAS nebo si dělat starosti o odvolání SAS ohrožení zabezpečení. 

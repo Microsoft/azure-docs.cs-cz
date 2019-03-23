@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e81d5513f43882093883256cf9eab4a22e9ca01
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 59c06ae83327683942885190e4b401617dc020f9
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875270"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361366"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role správce ve Správci úloh v Azure Active Directory
 
@@ -235,13 +235,13 @@ Spravovat podmínky použití | Globální správce |
 
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------
-Konfigurovat metody ověřování | Globální správce | 
-Konfigurace vlastního nastavení | Globální správce | 
-Konfigurace oznámení | Globální správce | 
-Konfigurovat místní integraci | Globální správce | 
-Konfigurace vlastností resetování hesla | Globální správce | 
-Konfigurace registrace | Globální správce | 
-Číst všechny konfigurace | Správce uživatelů Správce zabezpečení | 
+Konfigurovat metody ověřování | Globální správce |
+Konfigurace vlastního nastavení | Globální správce |
+Konfigurace oznámení | Globální správce |
+Konfigurovat místní integraci | Globální správce |
+Konfigurace vlastností resetování hesla | Správce uživatelů | Globální správce
+Konfigurace registrace | Globální správce |
+Číst všechny konfigurace | Správce zabezpečení | Správce uživatelů |
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 

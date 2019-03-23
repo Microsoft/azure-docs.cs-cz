@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 10/02/2018
+ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 41313a8b140886247b830db7ca9b34a22257de96
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: f4d232d4d6043ede3979db67e5cd35130d931bef
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729159"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369441"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Rychlý start: Nasadit instanci kontejneru v Azure pomocí webu Azure portal
 
@@ -38,12 +38,12 @@ Vyberte **Vytvořit prostředek** > **Kontejnery** > **Container Instances**.
 Do textových polí **Název kontejneru**, **Image kontejneru** a **Skupina prostředků** zadejte následující hodnoty. U ostatních hodnot ponechte výchozí nastavení a vyberte **OK**.
 
 * Název kontejneru: `mycontainer`
-* Image kontejneru: `microsoft/aci-helloworld`
+* Image kontejneru: `mcr.microsoft.com/azuredocs/aci-helloworld`
 * Skupina zdrojů: **Vytvořit nový** > `myResourceGroup`
 
 ![Konfigurace základního nastavení pro novou instanci kontejneru na webu Azure Portal][aci-portal-03]
 
-Pro účely tohoto rychlého startu ponechte výchozí nastavení **veřejné** nasazení veřejnosti `microsoft/aci-helloworld` bitové kopie. Tento obrázek balíčky malé webové aplikace napsané v Node.js, která slouží jako statická stránka HTML.
+Pro účely tohoto rychlého startu ponechte výchozí nastavení **veřejné** nasazení veřejné Microsoft `aci-helloworld` bitové kopie. Tento obrázek balíčky malé webové aplikace napsané v Node.js, která slouží jako statická stránka HTML.
 
 V části **Konfigurace** zadejte **Popisek názvu DNS** pro váš kontejner. Název musí být jedinečný v rámci oblasti Azure, ve kterém vytváříte instanci kontejneru. Váš kontejner bude veřejně dostupný na adrese `<dns-name-label>.<region>.azurecontainer.io`. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
@@ -89,7 +89,7 @@ Jakmile se zobrazí potvrzovací dialogové okno, vyberte **Ano**.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste vytvořili instanci kontejneru Azure z image ve veřejném registru Docker Hub. Pokud chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
+V tomto rychlém startu jste vytvořili instanci kontejneru Azure z veřejné image Microsoft. Pokud chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Kurz služby Azure Container Instances](./container-instances-tutorial-prepare-app.md)

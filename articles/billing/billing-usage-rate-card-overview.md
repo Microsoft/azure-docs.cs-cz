@@ -16,12 +16,12 @@ ms.workload: billing
 ms.date: 5/10/2018
 ms.author: erikre
 ms.custom: seodec18
-ms.openlocfilehash: 944623943fc49f4f6856c3a62f30ea61f901c16d
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: cd1688cd9d3d19242800b04e7e29c8875879cffc
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579409"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351555"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Pomocí Azure API pro fakturaci prostřednictvím kódu programu získáte přehled o využívání služeb Azure
 Pomocí Azure API pro fakturaci. data o využití a prostředků o přijetí změn do nástroje pro vaše preferované datové analýzy. Rozhraní API využití a ceníku prostředků Azure vám pomohou přesně odhadnout a spravovat vaše náklady. Rozhraní API se implementují jako poskytovatele prostředků a součástí rodiny API pomocí Azure Resource Manageru.  
@@ -30,7 +30,7 @@ Pomocí Azure API pro fakturaci. data o využití a prostředků o přijetí zm�
 Jednou [vyjádřit výslovný souhlas se kompletní](billing-manage-access.md#opt-in), stahování faktur ve verzi preview [faktury API](/rest/api/billing). Mezi funkce patří:
 
 * **Řízení přístupu Azure na základě rolí** – Konfigurace zásady přístupu na [webu Azure portal](https://portal.azure.com) nebo prostřednictvím [rutin prostředí Azure PowerShell](/powershell/azure/overview) k určení, které uživatele nebo aplikace můžete získat přístup k data o využití předplatného. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář fakturace, čtenář, vlastník nebo Přispěvatel získat přístup k datům využití pro konkrétní předplatné Azure.
-* **Datum filtrování** – použití `$filter` parametr zobrazíte všechny faktury v obráceném pořadí časovém období koncové datum faktury. 
+* **Datum filtrování** – použití `$filter` parametr zobrazíte všechny faktury v obráceném pořadí časovém období koncové datum faktury.
 
 > [!NOTE]
 > Tato funkce je v první verzi preview a může být v souladu s změny zpětně kompatibilní. V současné době není k dispozici pro některé nabídky předplatného (EA, CSP, AIO nepodporuje) a Azure Germany.
@@ -48,7 +48,7 @@ Použití Azure [rozhraní API využití prostředků](https://msdn.microsoft.co
 Použití [Azure Resource RateCard API](https://msdn.microsoft.com/library/azure/mt219005) zobrazíte seznam dostupných prostředků Azure a odhadovaných informace o cenách pro všechny. Toto rozhraní API zahrnuje:
 
 * **Řízení přístupu Azure na základě rolí** – konfigurace zásad přístupu na [webu Azure portal](https://portal.azure.com) nebo prostřednictvím [rutin prostředí Azure PowerShell](/powershell/azure/overview) k určení, které uživatele nebo aplikace můžete získat přístup k RateCard data. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář, vlastník nebo Přispěvatel získat přístup k datům využití ke konkrétnímu předplatnému Azure.
-* **Podpora pro průběžné platby, MSDN, peněžního závazku a nabídek peněžních kreditů (EA a [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card) nepodporuje)** -toto rozhraní API poskytuje informace sazeb Azure úrovně nabídky.  Volající toto rozhraní API musíte předat informace o nabídce zobrazíte podrobnosti o prostředku a kurzy. Aktuálně nám poskytnout sazby EA, protože nabídky EA upravili sazby za registraci. 
+* **Podpora pro průběžné platby, MSDN, peněžního závazku a nabídek peněžních kreditů (EA a [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card) nepodporuje)** -toto rozhraní API poskytuje informace sazeb Azure úrovně nabídky.  Volající toto rozhraní API musíte předat informace o nabídce zobrazíte podrobnosti o prostředku a kurzy. Aktuálně nám poskytnout sazby EA, protože nabídky EA upravili sazby za registraci.
 
 ## <a name="scenarios"></a>Scénáře
 Tady jsou některé scénáře, které jsou možné kombinací využití a RateCard API:
@@ -58,12 +58,10 @@ Tady jsou některé scénáře, které jsou možné kombinací využití a RateC
 * **Předpověď vyúčtování** – Get Odhadované využití a cloudové výdaje a použití algoritmů strojového učení k předpovědi, co bude na faktuře na konci fakturačního cyklu.
 * **Předběžné spotřeby analýza nákladů** – použijte RateCard API předpovědět, kolik vaše faktura se pro očekávané využití při přesun úloh do Azure. Pokud máte existující úlohy v jiných cloudech nebo privátních cloudů, využití s Azure můžete také namapovat sazby získat lepší odhad Azure výdajů. Tento odhad poskytuje schopnost zaměření na nabídku a porovnat a kontrast mezi typy jinou nabídku nad rámec s průběžnými platbami, jako je peněžních závazků a peněžního kreditu. Rozhraní API také nabízí možnost zobrazit rozdíly náklady podle oblasti a umožňuje provádět analýzy what-if nákladů pro vám pomůže zajistit rozhodnutí o nasazení.
 * **Analýza "co kdyby"** -
-  
+
   * Můžete určit, zda je cenově výhodnější ke spouštění úloh v jiné oblasti nebo na jinou konfiguraci prostředků Azure. Náklady na prostředky Azure může lišit v závislosti na oblasti Azure, které používáte.
   * Můžete také určit, pokud jiný typ nabídky Azure poskytuje lepší rychlost v prostředku Azure.
-  
-## <a name="partner-solutions"></a>Partnerská řešení
-[Integrace rozhraní API pro fakturaci Microsoft Azure a řešení Cloud Cruiseru](billing-usage-rate-card-partner-solution-cloudcruiser.md) popisuje, jak [sada Express for Azure od Cloud Cruiseru](http://www.cloudcruiser.com/partners/microsoft/) pracuje přímo z portálu Windows Azure Pack (WAP). Provozní i finanční aspekty privátního nebo hostovaného veřejného cloudu Microsoft Azure můžete bez problémů spravovat pomocí jednoho uživatelského rozhraní.   
+
 
 ## <a name="next-steps"></a>Další postup
 * Prohlédněte si ukázky kódu na Githubu:
@@ -73,7 +71,4 @@ Tady jsou některé scénáře, které jsou možné kombinací využití a RateC
 
   * [Vzorový kód pro rozhraní API služby RateCard](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
 
-* Další informace o Azure Resource Manageru najdete v tématu [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md). 
-
-
-
+* Další informace o Azure Resource Manageru najdete v tématu [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).

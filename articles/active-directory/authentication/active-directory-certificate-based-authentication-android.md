@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0f4a648227e62642bb071a76cbd1f3a50bf78ae
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b55b439f61c76d6d0524c1f01ba5fef745187d04
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314498"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368285"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Ověřování Azure Active Directory na základě certifikátů v Androidu
 
@@ -35,16 +35,16 @@ Tato funkce je dostupná ve verzi preview v plánech Office 365 Government obran
 
 | Aplikace | Podpora |
 | --- | --- |
-| Azure Information Protection aplikace |![Zaškrtnout][1] |
-| Portál společnosti Intune |![Zaškrtnout][1] |
-| Microsoft Teams |![Zaškrtnout][1] |
-| OneNote |![Zaškrtnout][1] |
-| OneDrive |![Zaškrtnout][1] |
-| Outlook |![Zaškrtnout][1] |
-| Power BI |![Zaškrtnout][1] |
-| Skype pro firmy |![Zaškrtnout][1] |
-| Word / Excel / PowerPoint |![Zaškrtnout][1] |
-| Yammer |![Zaškrtnout][1] |
+| Azure Information Protection aplikace |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Portál společnosti Intune |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Microsoft Teams |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| OneNote |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| OneDrive |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Outlook |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Power BI |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Skype pro firmy |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Word / Excel / PowerPoint |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Yammer |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
 
 ### <a name="implementation-requirements"></a>Požadavky na implementaci
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f508475166346c56b3bd0c8607c27beb7aba66c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 0abf2eca52616638f0c4dce89691c0d4f7875106
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316469"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371524"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Zabezpečení cloudových prostředků s Azure Multi-Factor Authentication a AD FS
 
@@ -30,15 +30,15 @@ K zabezpečení cloudových prostředků nastavte pravidlo deklarace identity ta
 2. Na levé straně vyberte **Vztahy důvěryhodnosti předávající strany**.
 3. Klikněte pravým tlačítkem na **Platforma identit Microsoft Office 365** a vyberte **Upravit pravidla deklarací identity**.
 
-   ![Cloud](./media/howto-mfa-adfs/trustedip1.png)
+   ![Konzola služby AD FS – vztahy důvěryhodnosti předávající strany](./media/howto-mfa-adfs/trustedip1.png)
 
 4. V pravidlech transformace vystavení klikněte na **Přidat pravidlo**.
 
-   ![Cloud](./media/howto-mfa-adfs/trustedip2.png)
+   ![Úprava pravidla transformace vystavení](./media/howto-mfa-adfs/trustedip2.png)
 
 5. V Průvodci přidáním pravidla – deklarace identity transformace vyberte v rozevíracím seznamu **Předávat nebo filtrovat příchozí deklarace** a klikněte na **Další**.
 
-   ![Cloud](./media/howto-mfa-adfs/trustedip3.png)
+   ![Přidat Průvodce vytvořením pravidla transformace deklarací identity](./media/howto-mfa-adfs/trustedip3.png)
 
 6. Pojmenujte pravidlo. 
 7. Jako typ příchozí deklarace identity vyberte **Odkazy na metody ověřování**.
@@ -58,15 +58,15 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
 
 1. Otevřete správu služby AD FS.
 2. Na levé straně vyberte **Vztahy důvěryhodnosti předávající strany**.
-3. Klikněte pravým tlačítkem na **Platforma identit Microsoft Office 365** a vyberte **Upravit pravidla deklarací identity…**
-   ![Cloud](./media/howto-mfa-adfs/trustedip1.png)
-4. V pravidlech transformace vystavení klikněte na **Přidat pravidlo.**
-   ![Cloud](./media/howto-mfa-adfs/trustedip2.png)
+3. Klikněte pravým tlačítkem na **platforma identit Microsoft Office 365** a vyberte **upravit pravidla deklarací identity... ** 
+    ![Konzoly služby AD FS – upravit pravidla deklarací identity](./media/howto-mfa-adfs/trustedip1.png)
+4. V pravidlech transformace vystavení klikněte na tlačítko **přidat pravidlo.** 
+    ![Přidávání pravidel deklarací identity](./media/howto-mfa-adfs/trustedip2.png)
 5. V Průvodci přidáním pravidla – deklarace identity transformace vyberte v rozevíracím seznamu **Předávat nebo filtrovat příchozí deklarace** a klikněte na **Další**.
-   ![Cloud](./media/howto-mfa-adfs/trustedip3.png)
+   ![Průvodce přidáním pravidla deklarace identity transformace](./media/howto-mfa-adfs/trustedip3.png)
 6. Do pole vedle názvu pravidla deklarace identity zadejte název pravidla. Příklad: InsideCorpNet.
 7. V rozevíracím seznamu vedle Typ příchozí deklarace vyberte **Uvnitř podnikové sítě**.
-   ![Cloud](./media/howto-mfa-adfs/trustedip4.png)
+   ![Deklarace identity přidává uvnitř podnikové sítě](./media/howto-mfa-adfs/trustedip4.png)
 8. Klikněte na **Dokončit**.
 9. V pravidlech transformace vystavení klikněte na **Přidat pravidlo**.
 10. V Průvodci přidáním pravidla – deklarace identity transformace vyberte **Odesílat deklarace pomocí vlastního pravidla** v rozevíracím seznamu a klikněte na **Další**.
@@ -75,7 +75,7 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
 
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
-    ![Cloud](./media/howto-mfa-adfs/trustedip5.png)
+    ![Vytvoření vlastní deklarace identity uživatele přihlášení](./media/howto-mfa-adfs/trustedip5.png)
 13. Klikněte na **Dokončit**.
 14. Klikněte na tlačítko **Použít**.
 15. Klikněte na tlačítko **OK**.

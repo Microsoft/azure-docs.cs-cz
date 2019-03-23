@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 0553bd904cfaabaefce4e6ab3f7fbf5d356922d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f685521adbbd8b9be9128ff77ab38b42860518b6
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100356"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351044"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv typu zařízení cloud Azure IoT s distribuované trasování (preview)
 
@@ -170,9 +170,16 @@ Tyto pokyny jsou určené pro sestavení ukázky na Windows. Jiné prostředí, 
 
 <!-- For a client app that can receive sampling decisions from the cloud, check out [this sample](https://aka.ms/iottracingCsample).  -->
 
-### <a name="using-third-party-clients"></a>Pomocí třetí strany klientů
+### <a name="workaround-for-third-party-clients"></a>Alternativní řešení pro klienty třetích stran
 
-Pokud nepoužíváte SDK pro jazyk C a přesto chcete pro službu IoT Hub ve verzi preview distribuované trasování, vytvořit zprávu tak, aby obsahovala `tracestate` vlastnost aplikace s časem vytvoření zprávy ve formátu unix timestamp. Například, `tracestate=timestamp=1539243209`. K řízení procento zprávy obsahující tuto vlastnost, implementujte logiku pro naslouchání událostem jako je aktualizace dvojčete s iniciované cloudu.
+Má **není triviální** náhled funkce distribuované trasování bez použití C SDK. Proto tento přístup nedoporučuje.
+
+Nejdřív musí implementovat všechny primitivy protokolu IoT Hub ve vašich zpráv podle příručky pro vývojáře [vytvoření a čtení zpráv IoT Hub](iot-hub-devguide-messages-construct.md). Upravte vlastnosti protokolu v protokol MQTT nebo AMQP zprávy přidat `tracestate` jako **vlastnost systému**. Konkrétně:
+
+* Protokol MQTT, přidejte `%24.tracestate=timestamp%3d1539243209` zpráv tématu, kde `1539243209` by měla být nahrazena čas vytvoření zprávy ve formátu unix timestamp. Jako příklad odkazovat na implementaci [v SDK pro jazyk C](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761)
+* AMQP, přidejte `key("tracestate")` a `value("timestamp=1539243209")` stejně jako zprávy poznámky. Referenční implementaci, najdete v části [tady](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527).
+
+K řízení procento zprávy obsahující tuto vlastnost, implementujte logiku pro naslouchání událostem jako je aktualizace dvojčete s iniciované cloudu.
 
 ## <a name="update-sampling-options"></a>Možnosti vzorkování aktualizace 
 

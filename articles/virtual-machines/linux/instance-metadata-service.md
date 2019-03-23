@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/15/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 3f42aa57a4db445f0fb222905a6350b57c2c2a62
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c38b21d860e25c0f31122e75d822257e14ca01db
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315611"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351962"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata service
 
@@ -502,8 +502,9 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 Azure má různé suverénních cloudech, jako je [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Někdy potřebujete prostředí Azure tak, aby některé rozhodování modulu runtime. Následující příklad ukazuje, jak dosáhnout tohoto chování.
 
 **Požadavek**
-
-curl Metadata:true -H "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
+``` bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
+```
 
 **Odpověď**
 ```

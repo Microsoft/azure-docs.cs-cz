@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f3d4bfa7d8ffda1ab2789927d03a777fab0ed89c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 365264d40554f45533e2ddf0aeb9d85f3e8f8d2d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281577"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370614"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Připojení sdílené složky Azure ve službě Azure Container Instances
 
@@ -70,7 +70,7 @@ Připojení sdílené složky Azure jako svazek v kontejneru, zadejte do sdílen
 az container create \
     --resource-group $ACI_PERS_RESOURCE_GROUP \
     --name hellofiles \
-    --image microsoft/aci-hellofiles \
+    --image mcr.microsoft.com/azuredocs/aci-hellofiles \
     --dns-name-label aci-demo \
     --ports 80 \
     --azure-file-volume-account-name $ACI_PERS_STORAGE_ACCOUNT_NAME \
@@ -83,7 +83,7 @@ Hodnota `--dns-name-label` musí být jedinečná v rámci oblasti Azure, ve kte
 
 ## <a name="manage-files-in-mounted-volume"></a>Správa souborů ve svazku připojeném
 
-Po spuštění kontejneru můžete jednoduché webové aplikace nasazené prostřednictvím [microsoft/aci-hellofiles] [ aci-hellofiles] image k vytvoření malé textové soubory do sdílené složky Azure v zadané cestě připojení. Získat webové aplikace plně kvalifikovaný název domény (FQDN) se [az container show] [ az-container-show] příkaz:
+Po spuštění kontejneru můžete jednoduché webové aplikace nasazené prostřednictvím Microsoft [aci hellofiles] [ aci-hellofiles] image k vytvoření malé textové soubory do sdílené složky Azure v zadané cestě připojení. Získat webové aplikace plně kvalifikovaný název domény (FQDN) se [az container show] [ az-container-show] příkaz:
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn
@@ -140,7 +140,7 @@ Zjistěte, jak připojit další typy svazku ve službě Azure Container Instanc
 * [Připojení tajný svazku v Azure kontejner instancí](container-instances-volume-secret.md)
 
 <!-- LINKS - External -->
-[aci-hellofiles]: https://hub.docker.com/r/microsoft/aci-hellofiles/
+[aci-hellofiles]: https://hub.docker.com/_/microsoft-azuredocs-aci-hellofiles 
 [portal]: https://portal.azure.com
 [storage-explorer]: https://storageexplorer.com
 

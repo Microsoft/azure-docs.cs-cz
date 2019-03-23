@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 56c09d9c6d1249713de7c6a0428ad2a124eee157
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e0c8d4883bb9183f866450477df972fc66c960c5
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013074"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369739"
 ---
 # <a name="azure-storage-security-guide"></a>Průvodci zabezpečením Azure Storage
 
@@ -22,7 +22,7 @@ Azure Storage nabízí komplexní sadu možností zabezpečení, které společn
 - Všechna data zapsaná do služby Azure Storage budou automaticky šifrována pomocí [šifrování služby Storage (SSE)](storage-service-encryption.md). Další informace najdete v tématu [oznamujeme výchozí šifrování objektů BLOB Azure, soubory, tabulky a fronty úložiště](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
 - Azure Active Directory (Azure AD) a řízení přístupu na základě Role (RBAC) jsou podporovány pro službu Azure Storage pro operace správy zdrojů a operace s daty, následujícím způsobem:   
     - Můžete přiřadit role RBAC omezená na účet úložiště pro objekty zabezpečení a pomocí služby Azure AD povolit operace správy zdrojů, například správu klíčů.
-    - Integrace se službou Azure AD je podporovaná ve verzi preview pro operace s daty ve službách objektů Blob a fronty. Můžete přiřadit role RBAC obor na předplatné, skupinu prostředků, účet úložiště nebo kontejner nebo fronty k objektu zabezpečení nebo spravovanou identitu pro prostředky Azure. Další informace najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview)](storage-auth-aad.md).   
+    - Integrace se službou Azure AD je podporována pro operace s daty objektů blob a fronty. Můžete přiřadit role RBAC obor na předplatné, skupinu prostředků, účet úložiště nebo kontejner nebo fronty k objektu zabezpečení nebo spravovanou identitu pro prostředky Azure. Další informace najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory](storage-auth-aad.md).   
 - Může být šifrují data přenášená mezi aplikací a službou Azure pomocí [šifrování na straně klienta](../storage-client-side-encryption.md), HTTPS nebo SMB 3.0.  
 - Operační systém a datové disky, které používají virtuální počítače Azure se dají zašifrovat pomocí [Azure Disk Encryption](../../security/azure-security-disk-encryption.md). 
 - Delegovaný přístup k datové objekty ve službě Azure Storage lze udělit prostřednictvím [sdílené přístupové podpisy](../storage-dotnet-shared-access-signature-part-1.md).
@@ -155,8 +155,8 @@ Zabezpečení roviny dat odkazuje na metody používané k zabezpečení datové
 
 Existují tři možnosti pro autorizaci přístupu k datovým objektům ve službě Azure Storage, včetně:
 
-- Používání služby Azure AD k autorizaci přístupu ke kontejnerům a front (Preview). Azure AD poskytuje výhody oproti další přístupy k ověřování, včetně odstraňují potřebu tajné kódy ukládat v kódu. Další informace najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview)](storage-auth-aad.md). 
-- K ověřování přístupu prostřednictvím sdíleného klíče pomocí klíče účtu úložiště. Ověřování pomocí sdíleného klíče vyžaduje uložení klíče účtu úložiště ve vaší aplikaci, takže Microsoft doporučuje místo toho pomocí služby Azure AD, kde je to možné. Pro produkční aplikace, nebo pro autorizaci přístupu k Azure tabulky a soubory pokračujte v používání sdíleného klíče, integrace služby Azure AD je ve verzi preview.
+- Používání služby Azure AD k autorizaci přístupu ke kontejnerům a fronty. Azure AD poskytuje výhody oproti další přístupy k ověřování, včetně odstraňují potřebu tajné kódy ukládat v kódu. Další informace najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory](storage-auth-aad.md). 
+- K ověřování přístupu prostřednictvím sdíleného klíče pomocí klíče účtu úložiště. Ověřování pomocí sdíleného klíče vyžaduje uložení klíče účtu úložiště ve vaší aplikaci, takže Microsoft doporučuje místo toho pomocí služby Azure AD, kde je to možné.
 - Použití sdílených přístupových podpisů udělit řízenými oprávněními pro konkrétní datové objekty určitou dobu.
 
 Kromě toho pro úložiště objektů Blob, můžete povolit veřejný přístup k objektům BLOB tak, že nastavíte úroveň přístupu pro kontejner, který obsahuje objekty BLOB odpovídajícím způsobem. Pokud nastavíte přístupu pro kontejner objektů Blob nebo kontejneru, vám umožní veřejný přístup pro čtení pro objekty BLOB v tomto kontejneru. To znamená, že každý, kdo má adresu URL odkazující na objekt blob v tomto kontejneru ho otevřete v prohlížeči bez použití sdíleného přístupového podpisu nebo s klíče účtu úložiště.

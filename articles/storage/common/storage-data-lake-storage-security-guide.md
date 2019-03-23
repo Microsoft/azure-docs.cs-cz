@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 03/21/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 22b070e6d70208057c85ad6a2322cc440d12a0fa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ce01301455c7abcd26006e622fcfbb8127e1c511
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008215"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372484"
 ---
 # <a name="azure-data-lake-storage-gen2-security-guide"></a>Příručka zabezpečení služby Azure Data Lake Storage Gen2
 
@@ -134,7 +134,7 @@ Zabezpečení roviny dat odkazuje na metody používané k zabezpečení datové
 Existují tři možnosti pro autorizaci přístupu k datovým objektům ve službě Azure Storage, včetně:
 
 - Používání služby Azure AD k autorizaci přístupu k systémy souborů a front. Azure AD poskytuje výhody oproti další přístupy k ověřování, včetně odstraňují potřebu tajné kódy ukládat v kódu. Další informace najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory](storage-auth-aad.md). 
-- K ověřování přístupu prostřednictvím sdíleného klíče pomocí klíče účtu úložiště. Ověřování pomocí sdíleného klíče vyžaduje uložení klíče účtu úložiště ve vaší aplikaci, takže Microsoft doporučuje místo toho pomocí služby Azure AD, kde je to možné. Pro produkční aplikace, nebo pro autorizaci přístupu k Azure tabulky a soubory pokračujte v používání sdíleného klíče, integrace služby Azure AD je ve verzi preview.
+- K ověřování přístupu prostřednictvím sdíleného klíče pomocí klíče účtu úložiště. Ověřování pomocí sdíleného klíče vyžaduje uložení klíče účtu úložiště ve vaší aplikaci, takže Microsoft doporučuje místo toho pomocí služby Azure AD, kde je to možné.
 - Použití sdílených přístupových podpisů udělit řízenými oprávněními pro konkrétní datové objekty určitou dobu.
 
 Kromě omezení přístupu prostřednictvím ověřování, můžete také použít [virtuální sítí a bran firewall](storage-network-security.md) omezit přístup k účtu úložiště na základě pravidel sítě.  Tento přístup umožňuje odepřít přístup k veřejné internetové přenosy a udělte přístup jenom ke konkrétním virtuálním sítím Azure nebo veřejná internetová rozsahy IP adres.

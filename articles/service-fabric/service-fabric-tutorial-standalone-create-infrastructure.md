@@ -3,7 +3,7 @@ title: Kurz vytváření infrastruktury pro cluster Service Fabric v AWS – Azu
 description: V tomto kurzu se naučíte, jak nastavit infrastrukturu AWS pro spuštění clusteru Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: david-stanford
+author: dkkapur
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,18 +13,18 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/11/2018
-ms.author: dastanfo
+ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 6b7d2223d33abb429ab5f59b14c80d43c70598dc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 9a0c56ecb20857b8fe2f5e55851e5d0d98ed3038
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209646"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369104"
 ---
-# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: Vytvoření infrastruktury AWS pro hostování clusteru Service Fabric
+# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: Vytvoření infrastruktury AWS k hostování clusteru Service Fabric
 
-Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na AWS a nainstalujete na něj aplikaci.
+Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na AWS a nainstalujete do něj aplikaci.
 
 Tento kurz je první částí série. V tomto článku vygenerujeme prostředky AWS potřebné pro hostování vašeho samostatného clusteru Service Fabric. V dalších článcích bude třeba nainstalovat samostatnou sadu Service Fabric, nainstalovat do clusteru ukázkovou aplikaci a nakonec cluster vyčistit.
 
@@ -50,7 +50,7 @@ Vyberte **Launch Instance** (Spustit instanci), na další obrazovce zvolte **Se
 
 ![Výběr instance EC2][aws-ec2instance]
 
-Vyberte **t2.medium**, pak vyberte **Next: Configure Instance Details** (Další: Konfigurace podrobností instancí), na další obrazovce změňte počet instancí na `3`, pak vyberte **Advanced Details** (Rozšířené) a rozbalte tuto část.
+Vyberte **t2.medium**a pak vyberte **Další: Nakonfigurujte podrobnosti Instance**na na další obrazovce změnit počet instancí `3`a pak vyberte **Rozšířené podrobnosti** tím ji rozbalíte.
 
 Pro propojení virtuálních počítačů do Service Fabric je třeba, aby virtuální počítače hostující vaši infrastrukturu měly stejné přihlašovací údaje.  Existují dva běžné způsoby, jak zajistit konzistenci přihlašovacích údajů: připojení všech virtuálních počítačů do stejné domény nebo nastavení stejného hesla správce na každém počítači.  V tomto kurzu nastavíme stejné heslo ke všem instancím EC2 pomocí uživatelského datového skriptu.  V produkčním prostředí je bezpečnější připojení hostitelů k doméně systému Windows.
 
@@ -98,7 +98,7 @@ Poslední dvě pravidla by měla Service Fabric zpřístupnit světu, abyste clu
 
 Nakonec potřebujeme otevřít port 8080, abyste viděli aplikaci po nasazení. Vyberte **Add Rule** (Přidat pravidlo), z rozevíracího seznamu vyberte možnost **Custom TCP Rule** (Vlastní pravidlo TCP), jako rozsah portů zadejte `8080` a v rozevíracím seznamu Source (Zdroj) vyberte možnost Anywhere (Libovolný).
 
-Všechna pravidla jsou nyní nastavená. Vyberte **Save** (Uložit).
+Všechna pravidla jsou nyní nastavená. Vyberte **Uložit**.
 
 ## <a name="connect-to-an-instance-and-validate-connectivity"></a>Připojení k instanci a ověření připojení
 
@@ -110,7 +110,7 @@ Až budete mít všechny IP adresy, vyberte jednu z instancí, ke které se při
 
 Po úspěšném připojení k vaší instanci ověřte, že funguje spojení mezi instancemi a sdílení souborů.  Máte shromážděné IP adresy všech instancí, vyberte tedy jednu, ke které právě nejste připojeni. Otevřete nabídku **Start**, zadejte `cmd` a vyberte **Příkazový řádek**.
 
-V těchto příkladech bylo navázáno spojení RDP s IP adresou 172.31.21.141. Testy připojení budou prováděny s IP adresou 172.31.20.163.
+V těchto příkladech bylo vytvořeno připojení RDP k následující IP adresy: 172.31.21.141. Všechna připojení k testování pak dojít na IP adresu: 172.31.20.163.
 
 K ověření, jestli základní připojení funguje, použijeme příkaz ping.
 
@@ -144,7 +144,7 @@ Pro otevření portů v bráně firewall zase slouží tento příkaz PowerShell
 New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V první části této série jste se naučili, jak spustit tři instance EC2 a nakonfigurovat je pro instalaci služby Service Fabric:
 

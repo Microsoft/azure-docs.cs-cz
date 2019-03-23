@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: 637ec63d1c3e5a3eb1ce26765b1ab22e9823e9a1
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 63821ef5ebc36f49d4f3a43a7fbfbcf8fda12c50
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317421"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352030"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 Můžete použít [služby Azure Backup](backup-overview.md) pro zálohování místních počítačů a úlohy a Azure virtual machines (VM). Tento článek shrnuje podporu nastavení a omezení při zálohování virtuálních počítačů Azure pomocí Azure Backup.
@@ -82,7 +82,7 @@ Zálohování virtuálních počítačů Azure s Linuxem, Azure Backup podporuje
 - Azure Backup nepodporuje základního OS Linux.
 - Azure Backup nepodporuje 32bitové operační systémy.
 - Jiné přineste vlastní distribuce Linuxu mohou fungovat tak dlouho, dokud [agenta virtuálního počítače Azure pro Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) je k dispozici na virtuálním počítači a pokud je podporován Python.
-- Azure Backup nepodporuje virtuální počítač spuštěný  **Python verze 2.6* pouze** s proxy server nakonfigurovaný.
+- Azure Backup nepodporuje virtuální počítač spuštěný Python verze 2.6* pouze s proxy server nakonfigurovaný.
 
 
 

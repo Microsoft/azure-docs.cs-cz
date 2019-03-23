@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a7752fac54f9dfb2f8fb0aecd3b6249c52c3bcf
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 57d3e955059724756eb7102c1b9fbbf55ed203ab
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316350"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370444"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>Postup: Povolit heslo resetovat z Windows 7, 8 a 8.1
 
@@ -46,7 +46,7 @@ Na rozdíl od počítačů s Windows 10, Windows 7, 8 a 8.1 počítače tak nebu
 1. Po restartování počítače na přihlašovací obrazovce zvolte uživatele a klikněte na tlačítko "Zapomněli jste heslo?" k zahájení heslo pracovního postupu pro obnovení.
 1. Dokončení pracovního postupu pokynů na obrazovce pro resetování hesla.
 
-![Například Windows 7 kliknutí na "Zapomněli jste heslo?" resetování hesla pomocí samoobslužné služby flow](media/howto-sspr-windows-7-8/windows-7-sspr.png)
+![Například Windows 7 kliknutí na "Zapomněli jste heslo?" Toku samoobslužného resetování HESLA](media/howto-sspr-windows-7-8/windows-7-sspr.png)
 
 ### <a name="silent-installation"></a>Bezobslužná instalace
 
@@ -67,13 +67,11 @@ Na počítači a ve službě Azure AD, budou protokolovány události.
 
 Azure AD události bude obsahovat informace o IP adresu a typu klienta, kde došlo k resetování hesla.
 
-![Příklad Windows 7 přihlašovací obrazovky heslo resetovat do protokolu auditu Azure AD](media/howto-sspr-windows-7-8/windows-7-sspr-azure-ad-audit-log.png)
+![Například Windows 7 resetování hesla ve protokolů auditu Azure AD](media/howto-sspr-windows-7-8/windows-7-sspr-azure-ad-audit-log.png)
 
 Pokud se vyžaduje dodatečné protokolování, klíče registru na počítači můžete změnit na zapnout podrobné protokolování. Zapnout podrobné protokolování pro řešení potíží s pouze pro účely.
 
-```
-HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}
-```
+`HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
 * Pokud chcete povolit podrobné protokolování, vytvořením hodnoty registru: "EnableLogging" a nastavte ho na hodnotu 1.
 * Vypnout podrobné protokolování, změňte REG_DWORD "EnableLogging" na hodnotu 0.
@@ -82,4 +80,4 @@ Pokud vaše počítače Windows 7, 8 a 8.1 jsou za proxy server nebo bránu fire
 
 ## <a name="next-steps"></a>Další postup
 
-[Povolit uživatelům resetování hesla na přihlašovací obrazovce Windows 10](tutorial-sspr-windows.md)
+* [Povolit uživatelům resetování hesla na přihlašovací obrazovce Windows 10](tutorial-sspr-windows.md)

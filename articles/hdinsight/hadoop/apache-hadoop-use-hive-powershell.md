@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8bd754533758d2c736e3951e5c7a10f63bb72bd8
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 77d2d0b5b9f994668abdd02640a9c6d5f463e137
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410172"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360754"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Spouštějte dotazy Apache Hive pomocí Powershellu
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -25,6 +25,8 @@ Tento dokument obsahuje příklad použití Azure Powershellu v režimu skupiny 
 > Tento dokument neobsahuje podrobný popis co dělat, které se používají v příkladech příkazy HiveQL. Informace o HiveQL, který se používá v tomto příkladu najdete v tématu [použití Apache Hivu se službou Apache Hadoop v HDInsight](hdinsight-use-hive.md).
 
 ## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Apache Hadoop s linuxem v clusteru HDInsight verze 3.4 nebo vyšší.
 
@@ -41,13 +43,13 @@ Prostředí Azure PowerShell poskytuje *rutiny* , které umožňují vzdálené 
 
 Při spouštění dotazů Hive ve vzdáleném clusteru HDInsight se používají následující rutiny:
 
-* `Connect-AzureRmAccount`: Ověří prostředí Azure PowerShell ke svému předplatnému Azure.
-* `New-AzureRmHDInsightHiveJobDefinition`: Vytvoří *úlohy definice* pomocí zadané příkazy HiveQL.
-* `Start-AzureRmHDInsightJob`: Odešle definice úlohy HDInsight a spustí úlohu. A *úlohy* je vrácen objekt.
-* `Wait-AzureRmHDInsightJob`: Objekt úlohy používá ke kontrole stavu úlohy. To počká, až do dokončení úlohy nebo je Překročená doba čekání.
-* `Get-AzureRmHDInsightJobOutput`: Umožňuje načíst výstup úlohy.
-* `Invoke-AzureRmHDInsightHiveJob`: Umožňuje spouštět příkazy HiveQL. Tato rutina bloky dotaz dokončí a vrátí výsledky.
-* `Use-AzureRmHDInsightCluster`: Nastaví aktuální cluster pro účely `Invoke-AzureRmHDInsightHiveJob` příkazu.
+* `Connect-AzAccount`: Ověří prostředí Azure PowerShell ke svému předplatnému Azure.
+* `New-AzHDInsightHiveJobDefinition`: Vytvoří *úlohy definice* pomocí zadané příkazy HiveQL.
+* `Start-AzHDInsightJob`: Odešle definice úlohy HDInsight a spustí úlohu. A *úlohy* je vrácen objekt.
+* `Wait-AzHDInsightJob`: Objekt úlohy používá ke kontrole stavu úlohy. To počká, až do dokončení úlohy nebo je Překročená doba čekání.
+* `Get-AzHDInsightJobOutput`: Umožňuje načíst výstup úlohy.
+* `Invoke-AzHDInsightHiveJob`: Umožňuje spouštět příkazy HiveQL. Tato rutina bloky dotaz dokončí a vrátí výsledky.
+* `Use-AzHDInsightCluster`: Nastaví aktuální cluster pro účely `Invoke-AzHDInsightHiveJob` příkazu.
 
 Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy ve vašem clusteru HDInsight:
 
@@ -81,7 +83,7 @@ Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy ve
    > [!NOTE]  
    > Pro delší HiveQL dotazy, můžete použít rutinu prostředí Azure PowerShell **tady řetězce** rutiny nebo HiveQL soubory skriptů. Následující fragment kódu ukazuje způsob použití `Invoke-Hive` rutina umožňuje spustit soubor skript HiveQL. Musí být odeslán souboru skript HiveQL do wasb: / /.
    >
-   > `Invoke-AzureRmHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
+   > `Invoke-AzHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
    > Další informace o **tady řetězce**, naleznete v tématu <a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">pomocí Windows Powershellu tady řetězce</a>.
 
@@ -91,7 +93,7 @@ Pokud po dokončení úlohy nevrátí žádné informace, podívejte se na proto
 
 ```powershell
 # Print the output of the Hive job.
-Get-AzureRmHDInsightJobOutput `
+Get-AzHDInsightJobOutput `
         -Clustername $clusterName `
         -JobId $job.JobId `
         -HttpCredential $creds `

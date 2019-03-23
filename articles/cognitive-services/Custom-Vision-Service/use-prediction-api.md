@@ -7,26 +7,26 @@ author: anrothMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: sample
-ms.date: 05/03/2018
+ms.topic: article
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: a285bc4c6eecf1a8cdda758af9df1a697c374b5a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e50933ea0231b4be22c2d0f82d33fd02dd0918f5
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533965"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351605"
 ---
-# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>Použití koncového bodu předpovědi k programovému testování obrázků pomocí klasifikátoru služby Custom Vision Service
+# <a name="use-the-prediction-endpoint-to-test-images-programmatically"></a>Použití koncového bodu předpovědi k otestování Image prostřednictvím kódu programu
 
-Po vytrénování modelu můžete programově testovat obrázky jejich odesláním do rozhraní API pro předpovědi. 
+Po vytrénování modelu můžete programově testovat obrázky jejich odesláním do rozhraní API pro předpovědi.
 
 > [!NOTE]
 > Tento dokument ukazuje použití jazyka C# k odeslání obrázku do rozhraní API pro předpovědi. Další informace a příklady použití rozhraní API najdete v tématu pojednávajícím o [referencích k rozhraní API pro předpovědi](https://go.microsoft.com/fwlink/?linkid=865445).
 
 ## <a name="get-the-url-and-prediction-key"></a>Získání adresy URL a klíče předpovědi
 
-Na [webové stránce služby Custom Vision](https://customvision.ai) vyberte svůj projekt a pak vyberte kartu __Výkon__. K zobrazení informací o použití rozhraní API pro předpovědi včetně __klíče předpovědi__ vyberte __URL předpovědi__. Pro projekty, které jsou připojené k prostředku Azure, můžete __klíč předpovědi__  najít také na stránce [Azure Portal](https://portal.azure.com) pro přidružený prostředek Azure v části __Klíče__. Zkopírujte následující informace pro použití v aplikaci:
+Na [webové stránce služby Custom Vision](https://customvision.ai) vyberte svůj projekt a pak vyberte kartu __Výkon__. K zobrazení informací o použití rozhraní API pro předpovědi včetně __klíče předpovědi__ vyberte __URL předpovědi__. Pro projekty, které jsou připojené k prostředku Azure vaše __předpovědi klíč__ najdete také v [webu Azure portal](https://portal.azure.com) stránky pro přidružený prostředek Azure v rámci __klíče__. Zkopírujte následující informace pro použití v aplikaci:
 
 * __URL__ pro použití se __souborem obrázku__.
 * Hodnotu __Prediction-key__.
@@ -40,7 +40,7 @@ Na [webové stránce služby Custom Vision](https://customvision.ai) vyberte sv�
 
 1. V sadě Visual Studio vytvořte novou konzolovou aplikaci v jazyce C#.
 
-2. Použijte následující kód jako obsah souboru __Program.cs__.
+1. Použijte následující kód jako obsah souboru __Program.cs__.
 
     > [!IMPORTANT]
     > Změňte následující informace:

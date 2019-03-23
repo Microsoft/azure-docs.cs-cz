@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ed99bd3626bb44bff68e4122d6b50523f19e1797
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 768179f8569eac14166bcbb0a888e1cdbe41d497
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112615"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369696"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrujte svou aplikaci s Azure Virtual Network
 Tento dokument popisuje funkci integrace virtuální sítě Azure App Service a ukazuje, jak ho nastavit s aplikacemi v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure Virtual Networks] [ VNETOverview] (Vnet) umožňuje umístit řadu prostředků Azure v síti bez Internetu možnosti směrování. Tyto sítě můžou potom připojené k vaší místní sítí pomocí technologie VPN. 
@@ -247,7 +247,7 @@ Existují tři funkce, které umožňují přístup k prostředkům hostované v
 
 Hybridní připojení vyžaduje instalaci přenosový agent volá Manager(HCM) hybridní připojení se ve vaší síti. HCM musí být schopný se připojit k Azure a také do vaší aplikace. Hybridní připojení nevyžaduje příchozí internetové dostupný koncový bod pro vzdálené sítě, jako je požadovaná pro připojení k síti VPN. HCM pouze běží na Windows a může mít až pět instancí spuštěných pro zajištění vysoké dostupnosti. Hybridní připojení podporuje jenom TCP ale a každý koncový bod hybridní připojení se musí shodovat na konkrétní port hostitele: kombinaci. 
 
-Funkce App Service Environment umožňuje spustit instanci jednoho tenanta služby Azure App Service ve vaší virtuální síti. Pokud vaše aplikace nacházely ve službě App Service Environment, vaše aplikace přístupná prostředků ve vaší virtuální síti bez nějaké dodatečné kroky. S a služby App Service Environment vaše aplikace spouštět na výkonnější pracovních procesů a můžete škálovat až 100 instancí ASP. Služby App Service Environment fungovat se všemi sítě funkcí, včetně ExpressRoute a koncových bodů služby.  
+Funkce App Service Environment umožňuje spustit instanci jednoho tenanta služby Azure App Service ve vaší virtuální síti. Pokud vaše aplikace nacházely ve službě App Service Environment, vaše aplikace přístupná prostředků ve vaší virtuální síti bez nějaké dodatečné kroky. Pomocí služby App Service Environment vaše aplikace spouštět na výkonnější pracovních procesů a můžete škálovat až 100 instancí ASP. Služby App Service Environment fungovat se všemi sítě funkcí, včetně ExpressRoute a koncových bodů služby.  
 
 Zatímco je, že některé používají případu překrývají, žádný z těchto funkcí můžete nahradit všechny ostatní. Vědět, jaké funkce pro použití se váže na vaše potřeby. Příklad:
 

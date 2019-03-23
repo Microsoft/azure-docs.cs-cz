@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 20491981cb02e428ff4114b9456d74b0de651be8
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 54302f97913fd01dc8f8e4a8d987a407c8bdf9a7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569021"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369161"
 ---
 # <a name="mapping-data-flow-source-transformation"></a>Mapování datového toku zdroj transformace
 
@@ -74,7 +74,7 @@ Volitelně můžete při vytváření oddílů připojení na základě dotazu. 
 ## <a name="source-file-management"></a>Správa zdrojového souboru
 ![Nová nastavení zdroje](media/data-flow/source2.png "nové nastavení")
 
-* Zástupný cesta k výběru řadu soubory ze zdrojové složky, které odpovídají vzoru. Tím se přepíše všech souborů, které jste nastavili v definici datové sady.
+* Cesta se zástupným znakem vybrat řadu soubory ze zdrojové složky, které odpovídají vzoru. Tím se přepíše všech souborů, které jste nastavili v definici datové sady.
 * Seznam souborů. Stejné jako sady souborů. Přejděte do textového souboru, který vytvoříte seznam soubory relativní cestu ke zpracování.
 * Sloupce pro uložení názvu souboru uloží název souboru ze zdroje ve sloupci ve vašich datech. Zadejte nový název pro uložení řetězce názvu souboru.
 * Po dokončení (můžete zvolit Neprovádět žádnou akci se zdrojovým souborem po spuštění toku dat, zdrojový soubor odstranit nebo přesunout zdrojové soubory. Cesty pro přesunutí jsou relativní cesty.
@@ -83,7 +83,7 @@ Volitelně můžete při vytváření oddílů připojení na základě dotazu. 
 
 Pokud používáte Azure SQL Database nebo Azure SQL data Warehouse jako zdroj, budou mít další možnosti.
 
-* Dotaz: Zadejte dotaz SQL pro zdroj. Nastavení dotazu se přepíšou všechny tabulky, kterou jste zvolili v datové sadě. Všimněte si, že se tady nepodporují klauzule Order By.
+* Dotaz: Zadejte dotaz SQL pro zdroj. Nastavení dotazu se přepíšou všechny tabulky, kterou jste zvolili v datové sadě. Všimněte si, že se tady nepodporují klauzule Order By. Však můžete tady nastavíte, úplný příkaz SELECT FROM.
 
 * Velikost dávky: Zadejte velikost dávky k bloku dat velkých objemů dat do služby batch velikost čtení.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5411770e6f9d660557ab9360f026efe4c28a9256
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 2d5a196af8ee6a7d41833185136a76255be4082a
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314378"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371739"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak vyžadovat dvoustupňové ověřování pro uživatele
 
@@ -66,10 +66,10 @@ Přístup ke stránce, kde můžete zobrazit a spravovat stavů uživatele pomoc
 
 1. Použít k ověřování Azure Multi-Factor Authentication v předchozích krocích **uživatelé** stránky.
 2. Najdete uživatele, kterého chcete povolit pro Azure MFA. Můžete potřebovat změnit zobrazení v horní části.
-   ![Najít uživatele – snímek obrazovky](./media/howto-mfa-userstates/enable1.png)
+   ![Vyberte uživatele, chcete-li změnit stav z kartu uživatelé](./media/howto-mfa-userstates/enable1.png)
 3. Zaškrtněte políčko vedle svého názvu.
 4. Na pravé straně v části **rychlých krocích**, zvolte **povolit** nebo **zakázat**.
-   ![Povolit vybraného uživatele – snímek obrazovky](./media/howto-mfa-userstates/user1.png)
+   ![Povolit vybraného uživatele kliknutím na tlačítko Povolit v nabídce rychlých krocích](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
    > *Povolené* uživatelé jsou automaticky přepnout do *vynucené* při registraci pro Azure MFA. To není ručně změnit stav uživatele *vynucené*.
@@ -90,45 +90,52 @@ Nepřesouvejte přímo na uživatele *vynucené* stavu. Pokud tak učiníte, apl
 
 Nejprve nainstalujte modul pomocí:
 
-       Install-Module MSOnline
-       
+   ```PowerShell
+   Install-Module MSOnline
+   ```
+
 > [!TIP]
 > Nezapomeňte a připojte se nejprve pomocí **Connect-MsolService**
 
+V tomto příkladu skript prostředí PowerShell umožňuje vícefaktorové ověřování pro konkrétního uživatele:
 
- V tomto příkladu skript prostředí PowerShell umožňuje vícefaktorové ověřování pro konkrétního uživatele:
-
-        Import-Module MSOnline
-        $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
-        $st.RelyingParty = "*"
-        $st.State = "Enabled"
-        $sta = @($st)
-        Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
+   ```PowerShell
+   Import-Module MSOnline
+   $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
+   $st.RelyingParty = "*"
+   $st.State = "Enabled"
+   $sta = @($st)
+   Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
+   ```
 
 Použití prostředí PowerShell je dobrou volbou, když budete potřebovat k hromadné povolení uživatelů. Následující skript jako příklad, prochází seznam uživatelů a umožňuje vícefaktorové ověřování u svých účtů:
 
-    $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
-    foreach ($user in $users)
-    {
-        $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
-        $st.RelyingParty = "*"
-        $st.State = "Enabled"
-        $sta = @($st)
-        Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
-    }
-    
+   ```PowerShell
+   $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
+   foreach ($user in $users)
+   {
+       $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
+       $st.RelyingParty = "*"
+       $st.State = "Enabled"
+       $sta = @($st)
+       Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
+   }
+   ```
+
 Pokud chcete zakázat MFA, použijte tento skript:
 
-    Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
-    
+   ```PowerShell
+   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
+   ```
+
 která může také zkrátila na:
 
-    Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
+   ```PowerShell
+   Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
+   ```
 
 ## <a name="next-steps"></a>Další postup
 
-Proč byla uživateli zobrazí výzva nebo nechcete zobrazit výzvu k provedení vícefaktorové ověřování? V části [sestavy přihlášení Azure AD v sestavách v dokumentu ověřování Azure Multi-Factor Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).
-
-Chcete-li nakonfigurovat další nastavení, jako jsou důvěryhodné IP adresy, vlastní hlasové zprávy a upozornění na podvod, najdete v článku [nastavení konfigurace Azure Multi-Factor Authentication](howto-mfa-mfasettings.md)
-
-Informace o správě nastavení pro ověřování Azure Multi-Factor Authentication najdete v článku [spravovat uživatelská nastavení pomocí ověřování Azure Multi-Factor Authentication v cloudu](howto-mfa-userdevicesettings.md)
+* Proč byla uživateli zobrazí výzva nebo nechcete zobrazit výzvu k provedení vícefaktorové ověřování? V části [sestavy přihlášení Azure AD v sestavách v dokumentu ověřování Azure Multi-Factor Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+* Chcete-li nakonfigurovat další nastavení, jako jsou důvěryhodné IP adresy, vlastní hlasové zprávy a upozornění na podvod, najdete v článku [nastavení konfigurace Azure Multi-Factor Authentication](howto-mfa-mfasettings.md)
+* Informace o správě nastavení pro ověřování Azure Multi-Factor Authentication najdete v článku [spravovat uživatelská nastavení pomocí ověřování Azure Multi-Factor Authentication v cloudu](howto-mfa-userdevicesettings.md)

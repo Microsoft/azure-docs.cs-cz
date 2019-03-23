@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 6cbc6e351147ed5b4c31463b5cf319417f34da34
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 50935aca20af931eec63717921ef7a73267d2373
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456771"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350465"
 ---
 # <a name="what-is-azure-custom-vision"></a>Co je Azure Custom Vision?
 
@@ -25,17 +25,18 @@ Azure Custom Vision je služby cognitive Services vám umožňuje vytvořit, nas
 
 Custom Vision service pomocí algoritmu strojového učení použije popisky na obrázky. Vás jako na vývojáři, musíte odeslat skupiny imagí, které běží na procesorech a nemají dotyčný charakteristiky. Označování imagí sami v okamžiku odeslání. Pak algoritmus trénovat na tato data a vypočítává samotného testování na těchto imagí stejné vlastní přesnost. Jakmile se trénuje algoritmus, testování a přeučování nakonec použijete ke klasifikaci nových imagí podle potřeb vaší aplikace. Samotný model můžete také exportovat pro offline použití.
 
-## <a name="classification-and-object-detection"></a>Klasifikace a detekce objektů
+### <a name="classification-and-object-detection"></a>Klasifikace a detekce objektů
 
 Funkce služby Custom Vision je možné rozdělit do dvou funkcí. **Klasifikace obrázků** jeden nebo více štítků platí pro bitovou kopii. **Objekt detekce** je podobné, ale také vrátí souřadnice na obrázku kde lze nalézt použité názvy.
 
-## <a name="optimization"></a>Optimalizace
+### <a name="optimization"></a>Optimalizace
 
 Custom Vision service je optimalizovaná na rychle rozpoznat hlavní rozdíly mezi bitové kopie. To umožňuje začít vytváření prototypů s menším objemem dat modelu. 50 obrázků na popisek jsou obecně o dobrý začátek. To však znamená, že služba není ideální pro rozpoznávání drobných rozdílů na obrázcích (například menší praskliny nebo promáčknutí ve scénářích kontroly kvality).
 
 Kromě toho můžete vybrat z několika typy prvků Custom Vision algoritmus, které jsou optimalizovány pro Image některé materiály, které subjektu&mdash;například zajímavá nebo maloobchodního prodeje položek. Další informace najdete v příručce věnované [sestavení klasifikátoru](getting-started-build-a-classifier.md).
 
 ## <a name="what-it-includes"></a>Co zahrnuje
+
 Služba Custom Vision je dostupná jako sada nativních sad SDK i prostřednictvím webového rozhraní na [domovské stránce služby Custom Vision](https://customvision.ai/). Můžete vytvořit, otestovat a trénování modelu až buď rozhraní nebo použít společně.
 
 ![Domovská stránka služby Custom Vision v okně prohlížeče Chrome](media/browser-home.png)

@@ -12,18 +12,18 @@ manager: daveba
 ms.reviewer: librown
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26dd1bd6717fe0216545d6b3aa729ac2cb19dc9d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 47e8541b82a1cd38f07684508a96b9789df20e92
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313324"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370377"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Přihlašování telefonem bez hesla pomocí aplikace Microsoft Authenticator (public preview)
 
 Aplikace Microsoft Authenticator je možné se přihlásit k libovolnému účtu služby Azure AD bez použití hesla. Podobně jako technologii, kterou [Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-identity-verification), Microsoft Authenticator využívá ověřování pomocí klíče k zajištění pověření uživatele, který se váže na zařízení a používá biometrika nebo PIN kód.
 
-![Příklad prohlížeči přihlášení s výzvou pro uživatele ke schválení pokus o přihlášení v rámci vlastní aplikace Microsoft Authenticator](./media/howto-authentication-phone-sign-in/phone-sign-in-microsoft-authenticator-app.png)
+![Příklad prohlížeči přihlášení s výzvou pro uživatele ke schválení přihlášení](./media/howto-authentication-phone-sign-in/phone-sign-in-microsoft-authenticator-app.png)
 
 Místo zobrazuje se neočekávaná výzva k zadání hesla po zadání uživatelského jména, osoby, která má povolenou přihlašování telefonem v aplikaci Microsoft Authenticator se zobrazí zpráva s upozorněním na klepněte na příslušný počet do své aplikace. V aplikaci uživatel musí shodovat s číslem, zvolte možnost Schválit a pak zadejte svůj PIN kód nebo biometrické, pak ověřování dokončí.
 
@@ -40,17 +40,20 @@ Pro verzi public preview správce musíte nejprve přidat zásady pomocí powers
 ### <a name="steps-to-enable"></a>Postup povolení
 
 1. Ujistěte se, že máte nejnovější verzi modulu Azure Active Directory V2 PowerShell verze Public Preview. Možná budete chtít odinstalovat a znovu nainstalujte, potvrďte to spuštěním následujících příkazů:
+
     ```powershell
     Uninstall-Module -Name AzureADPreview
     Install-Module -Name AzureADPreview
     ```
 
 2. Ověření do tenanta Azure AD, který chcete použít modul Azure AD V2 Powershellu. Použitý účet musí být buď správce zabezpečení nebo globální správce.
+
     ```powershell
     Connect-AzureAD
     ```
 
 3. Vytvoření zásad ověřovací data přihlášení:
+
     ```powershell
     New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn
     ```

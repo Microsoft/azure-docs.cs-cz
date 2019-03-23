@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/11/2019
+ms.date: 03/22/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97e5976603ee1574e8410702069b97a9f0ef6198
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: be66ead6521bdb21626caaecd582fac4da6f664b
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768740"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351265"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postup: Blok starší verze ověřování do služby Azure AD s podmíněným přístupem   
 
@@ -54,6 +54,8 @@ Azure AD podporuje některé z nejčastěji používaných ověřovací a autori
 Jednomu faktoru ověřování (například uživatelské jméno a heslo) není dostatek těchto dnů. Hesla je špatné, jako jsou snadno uhodnutelné a jsme (lidé) je špatné za výběr vhodné hesla. Hesla jsou také citlivé na celou řadu útoků, jako jsou útoky phishing a heslo zařízení. Jedním z nejjednodušší věcí, které vám pomůžou chránit před hesla hrozbami je implementovat vícefaktorové ověřování. Se používá služba MFA i v případě, že útočník získá ve vlastnictví uživatele heslo heslo samostatně není dostatečná k úspěšnému ověření a přístup k datům.
 
 Jak můžete zabránit aplikacím pomocí starší verze ověřování přístup k prostředkům vašeho tenanta? Doporučuje se jen zablokovat zásadami podmíněného přístupu. V případě potřeby můžete povolit pouze určité uživatele a konkrétní síťová umístění používat aplikace, které jsou založeny na starší verze ověřování.
+
+Po dokončení první dvojúrovňové ověřování se vynucují zásady podmíněného přístupu. Proto podmíněného přístupu není určen jako první linií obrany řádku pro scénáře, jako jsou útoky s cílem odepření služeb (DoS), ale můžete využít signály z těchto událostí (například úroveň rizika přihlášení, umístění žádosti a tak dále) a zjistí přístup k.
 
 
 

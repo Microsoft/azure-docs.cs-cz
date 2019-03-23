@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: ece621b18c15061ccb559baf9583677dcc848ca4
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 25694a44b1474cccaf62ed5005566cdb5230b15c
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201751"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360856"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Použití Apache Oozie s Hadoopem Apache k definování a spuštění workflowu v HDInsight
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -53,6 +53,9 @@ Pracovní postup, který můžete implementovat podle pokynů uvedených v tomto
 > 
 
 ### <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Než začnete tento kurz, musíte mít následující položky:
 
 * **Pracovní stanice s prostředím Azure PowerShell**. 
@@ -233,34 +236,34 @@ Tady je skript.  Skript můžete spustit z Windows PowerShell ISE. Potřebujete 
 
     #region - Connect to Azure subscription
     Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
-    try{Get-AzureRmContext}
+    try{Get-AzContext}
     catch{
-        Connect-AzureRmAccount
-        Select-AzureRmSubscription -SubscriptionId $subscriptionID
+        Connect-AzAccount
+        Select-AzSubscription -SubscriptionId $subscriptionID
     }
     #endregion
 
     #region - Create Azure resource group
     Write-Host "`nCreating an Azure resource group ..." -ForegroundColor Green
     try{
-        Get-AzureRmResourceGroup -Name $resourceGroupName
+        Get-AzResourceGroup -Name $resourceGroupName
     }
     catch{
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
     }
     #endregion
 
     #region - Create Azure SQL database server
     Write-Host "`nCreating an Azure SQL Database server ..." -ForegroundColor Green
     try{
-        Get-AzureRmSqlServer -ServerName $sqlDatabaseServerName -ResourceGroupName $resourceGroupName}
+        Get-AzSqlServer -ServerName $sqlDatabaseServerName -ResourceGroupName $resourceGroupName}
     catch{
         Write-Host "`nCreating SQL Database server ..."  -ForegroundColor Green
 
         $sqlDatabasePW = ConvertTo-SecureString -String $sqlDatabasePassword -AsPlainText -Force
         $sqlLoginCredentials = New-Object System.Management.Automation.PSCredential($sqlDatabaseLogin,$sqlDatabasePW)
 
-        $sqlDatabaseServerName = (New-AzureRmSqlServer `
+        $sqlDatabaseServerName = (New-AzSqlServer `
                                     -ResourceGroupName $resourceGroupName `
                                     -ServerName $sqlDatabaseServerName `
                                     -SqlAdministratorCredentials $sqlLoginCredentials `
@@ -269,7 +272,7 @@ Tady je skript.  Skript můžete spustit z Windows PowerShell ISE. Potřebujete 
 
         Write-Host "`nCreating firewall rule, $fireWallRuleName ..." -ForegroundColor Green
         $workstationIPAddress = Invoke-RestMethod $ipAddressRestService
-        New-AzureRmSqlServerFirewallRule `
+        New-AzSqlServerFirewallRule `
             -ResourceGroupName $resourceGroupName `
             -ServerName $sqlDatabaseServerName `
             -FirewallRuleName "$fireWallRuleName-workstation" `
@@ -278,7 +281,7 @@ Tady je skript.  Skript můžete spustit z Windows PowerShell ISE. Potřebujete 
 
         #To allow other Azure services to access the server add a firewall rule and set both the StartIpAddress and EndIpAddress to 0.0.0.0. 
         #Note that this allows Azure traffic from any Azure subscription to access the server.
-        New-AzureRmSqlServerFirewallRule `
+        New-AzSqlServerFirewallRule `
             -ResourceGroupName $resourceGroupName `
             -ServerName $sqlDatabaseServerName `
             -FirewallRuleName "$fireWallRuleName-Azureservices" `
@@ -291,13 +294,13 @@ Tady je skript.  Skript můžete spustit z Windows PowerShell ISE. Potřebujete 
     Write-Host "`nCreating SQL Database, $sqlDatabaseName ..."  -ForegroundColor Green
 
     try {
-        Get-AzureRmSqlDatabase `
+        Get-AzSqlDatabase `
             -ResourceGroupName $resourceGroupName `
             -ServerName $sqlDatabaseServerName `
             -DatabaseName $sqlDatabaseName
     }
     catch {
-        New-AzureRMSqlDatabase `
+        New-AzSqlDatabase `
             -ResourceGroupName $resourceGroupName `
             -ServerName $sqlDatabaseServerName `
             -DatabaseName $sqlDatabaseName `
@@ -337,20 +340,20 @@ Tady je skript.  Skript můžete spustit z Windows PowerShell ISE. Potřebujete 
     Write-Host "Creating the HDInsight cluster and the dependent services ..." -ForegroundColor Green
 
     # Create the default storage account
-    New-AzureRmStorageAccount `
+    New-AzStorageAccount `
         -ResourceGroupName $resourceGroupName `
         -Name $defaultStorageAccountName `
         -Location $location `
         -Type Standard_LRS
 
     # Create the default Blob container
-    $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey `
+    $defaultStorageAccountKey = (Get-AzStorageAccountKey `
                                     -ResourceGroupName $resourceGroupName `
                                     -Name $defaultStorageAccountName)[0].Value
-    $defaultStorageAccountContext = New-AzureStorageContext `
+    $defaultStorageAccountContext = New-AzStorageContext `
                                         -StorageAccountName $defaultStorageAccountName `
                                         -StorageAccountKey $defaultStorageAccountKey 
-    New-AzureStorageContainer `
+    New-AzStorageContainer `
         -Name $defaultBlobContainerName `
         -Context $defaultStorageAccountContext 
 
@@ -358,7 +361,7 @@ Tady je skript.  Skript můžete spustit z Windows PowerShell ISE. Potřebujete 
     $pw = ConvertTo-SecureString -String $httpPassword -AsPlainText -Force
     $httpCredential = New-Object System.Management.Automation.PSCredential($httpUserName,$pw)
 
-    New-AzureRmHDInsightCluster `
+    New-AzHDInsightCluster `
         -ResourceGroupName $resourceGroupName `
         -ClusterName $HDInsightClusterName `
         -Location $location `
@@ -371,7 +374,7 @@ Tady je skript.  Skript můžete spustit z Windows PowerShell ISE. Potřebujete 
         -DefaultStorageContainer $defaultBlobContainerName 
 
     # Validate the cluster
-    Get-AzureRmHDInsightCluster -ClusterName $hdinsightClusterName
+    Get-AzHDInsightCluster -ClusterName $hdinsightClusterName
     #endregion
 
     #region - copy Oozie workflow and HiveQL files
@@ -379,7 +382,7 @@ Tady je skript.  Skript můžete spustit z Windows PowerShell ISE. Potřebujete 
     Write-Host "Copy workflow definition and HiveQL script file ..." -ForegroundColor Green
 
     # Both files are stored in a public Blob
-    $publicBlobContext = New-AzureStorageContext -StorageAccountName "hditutorialdata" -Anonymous
+    $publicBlobContext = New-AzStorageContext -StorageAccountName "hditutorialdata" -Anonymous
 
     # WASB folder for storing the Oozie tutorial files.
     $destFolder = "tutorials/useoozie"  # Do NOT use the long path here
@@ -403,12 +406,12 @@ Tady je skript.  Skript můžete spustit z Windows PowerShell ISE. Potřebujete 
         -Force
 
     #validate the copy
-    Get-AzureStorageBlob `
+    Get-AzStorageBlob `
         -Context $defaultStorageAccountContext `
         -Container $defaultBlobContainerName `
         -Blob $destFolder/workflow.xml
 
-    Get-AzureStorageBlob `
+    Get-AzStorageBlob `
         -Context $defaultStorageAccountContext `
         -Container $defaultBlobContainerName `
         -Blob $destFolder/useooziewf.hql
@@ -428,7 +431,7 @@ Tady je skript.  Skript můžete spustit z Windows PowerShell ISE. Potřebujete 
         -destBlob "$destFolder/data/sample.log" 
 
     #validate the copy
-    Get-AzureStorageBlob `
+    Get-AzStorageBlob `
         -Context $defaultStorageAccountContext `
         -Container $defaultBlobContainerName `
         -Blob $destFolder/data/sample.log
@@ -591,11 +594,11 @@ Tady je ukázkový skript Powershellu, které můžete použít:
     $sqlDatabaseTableName = "log4jLogsCount"
 
     Write-host "Delete the Hive script output file ..." -ForegroundColor Green
-    $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey `
+    $defaultStorageAccountKey = (Get-AzStorageAccountKey `
                                 -ResourceGroupName $resourceGroupName `
                                 -Name $defaultStorageAccountName)[0].Value
-    $destContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey
-    Remove-AzureStorageBlob -Context $destContext -Blob "tutorials/useoozie/output/000000_0" -Container $defaultBlobContainerName
+    $destContext = New-AzStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey
+    Remove-AzStorageBlob -Context $destContext -Blob "tutorials/useoozie/output/000000_0" -Container $defaultBlobContainerName
 
     Write-host "Delete all the records from the log4jLogsCount table ..." -ForegroundColor Green
     $conn = New-Object System.Data.SqlClient.SqlConnection

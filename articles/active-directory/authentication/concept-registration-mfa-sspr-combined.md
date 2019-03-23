@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2865c19e747ca1c5b0a6cda84b8be18bfaeb9335
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 536d26abf563f18ed7cec6668fcd1d4223f5a135
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317659"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370155"
 ---
 # <a name="combined-security-information-registration-preview"></a>Informace o registraci kombinované zabezpečení (preview)
 
 Před kombinovaná registrace uživatelé registrovaní metody ověřování pro Azure Multi-Factor Authentication (MFA) a samoobslužné resetování hesla (SSPR) prostřednictvím dvou různých možností. Lidé byli zaměňovat, podobné metody byly použity pro Azure MFA a samoobslužné resetování HESLA, ale měli zaregistrovat pro jednotlivé funkce samostatně. Nyní s kombinovaná registrace uživatelé po registraci a získat výhody Azure MFA a samoobslužné resetování HESLA.
 
-![Kombinovat informace o zabezpečení - Můj profil zobrazující registrované bezpečnostní údaje pro uživatele, jako je Microsoft Authenticator a Telefon ukázkového uživatele v adresáři.](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![Můj profil zobrazující registrované bezpečnostní údaje pro uživatele](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
 Než povolíte nové prostředí, projděte si tuto dokumentaci zaměřené na správce a dokumentaci zaměřené na uživatele, ujistěte se, že rozumíte funkce a dopad této funkce. Základní trénování v dokumentaci pro uživatele můžete připravit vaši uživatelé nové prostředí a pomáhají zajistit úspěšné zavedení.
 
@@ -36,7 +36,7 @@ Než povolíte nové prostředí, projděte si tuto dokumentaci zaměřené na s
 
 Můj profil stránky jsou lokalizovány na základě aktuální nastavení jazyka na počítači přistoupit ke stránce. Společnost Microsoft ukládá jiným mezipaměť prohlížeče k vykreslení v poslední jazyk používaný bude pokračovat následné pokusy o přístup k nejnovější jazyk. Vymazání mezipaměti způsobí, že stránky, které znovu zpracovat. Pokud chcete vynutit konkrétní jazyk přidávání `?lng=de-DE` na konec adresy URL kde `de-DE` je nastavena na příslušný jazyk kódu vynutí stránky k vykreslení v daném jazyce.
 
-![Můj profil rozhraní zobrazuje informace o zabezpečení a možnosti pro nastavení samoobslužného resetování HESLA nebo jiné metody další bezpečnostní ověření.](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
+![Nastavení samoobslužného resetování HESLA nebo jiné metody další bezpečnostní ověření](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
 ## <a name="methods-available-in-converged-registration"></a>Metody dostupné v sblížené registraci
 
@@ -99,7 +99,7 @@ Příklad:
 
 Následující diagram popisuje, jaké metody se zobrazí uživateli, když k přerušení registrace při přihlášení:
 
-![V kombinaci s vysvětlením, počet metod požadovaných při při přihlášení jsou požadovány další informace zabezpečení informací o vývojový diagram. To můžete změnit, pokud pouze MFA nebo pouze samoobslužné resetování HESLA je povinné](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
+![Vývojový diagram kombinované zabezpečení informací](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
 
 Pokud máte vícefaktorové ověřování a samoobslužné resetování HESLA povoleno, doporučujeme vám vynucovat registrace MFA.
 

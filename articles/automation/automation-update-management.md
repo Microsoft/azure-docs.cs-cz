@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 85b920767cbdc5ba60c2046563c32e87f6ad7ef8
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 5267467b2874c1cc36c8a9f5f27cc1c348eba7ac
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259393"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369764"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -172,7 +172,7 @@ Pokud agent nemůže komunikovat se službou protokoly Azure monitoru a agent je
 
 Zobrazit stav nově přidaných agentů systému Linux **aktualizované** po provedení vyhodnocení. Tento proces může trvat až 6 hodin.
 
-Pokud chcete potvrdit, že skupiny pro správu Operations Manageru komunikuje s protokoly Azure monitoru, naleznete v tématu [Operations Manageru ověřit integrace s protokoly Azure monitoru](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-log-analytics).
+Pokud chcete potvrdit, že skupiny pro správu Operations Manageru komunikuje s protokoly Azure monitoru, naleznete v tématu [Operations Manageru ověřit integrace s protokoly Azure monitoru](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor).
 
 ## <a name="data-collection"></a>Shromažďování dat
 

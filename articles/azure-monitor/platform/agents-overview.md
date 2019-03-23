@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: d1e896aee4ba699704ce01e0cff8210d53700993
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8b10cb0d66103410159a09ca156be3ea180c068b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899804"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371923"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Přehled služby Azure agentů monitorování 
 Microsoft Azure poskytuje několik způsobů, jak shromažďovat různé typy dat z virtuálních počítačů se systémem Microsoft Windows a Linux hostované v Azure, vaše datové centrum nebo jiných poskytovatelů cloudových služeb. Jsou tři typy agenty, které jsou k dispozici pro monitorování virtuálního počítače:
@@ -49,10 +49,10 @@ Agenta diagnostiky Azure byste měli použít, když chcete:
 * Škálovací sady virtuálních počítačů automatického škálování a cloudové služby Classic podle metrik operačního systému hosta.
 * Prozkoumat problémy spouštění virtuálních počítačů s [Diagnostika spouštění](../../virtual-machines/troubleshooting/boot-diagnostics.md).
 * Porozumět, jaký výkon vašich aplikací a proaktivně identifikuje problémy neovlivňují pomocí [Application Insights](../../azure-monitor/overview.md).
-* Nakonfigurujte Log Analytics pro import metrik a protokolování data shromážděná ze služby Cloud Services, klasické virtuální počítače, a uzly Service Fabricu uložených v účtu služby Azure storage.
+* Konfigurace služby Azure Monitor importovat metrik a protokolů data shromážděná ze služby Cloud Services, klasické virtuální počítače a služby infrastruktury uzly uložených v účtu služby Azure storage.
 
 ## <a name="log-analytics-agent"></a>Agenta log Analytics
-U rozšířené monitorování, které je potřeba shromažďovat více než metriky a podmnožinu protokolů, se vyžaduje agenta Log Analytics pro Windows (také označované jako Microsoft Monitoring Agent (MMA)) a Linux. Agenta Log Analytics byla vyvinuta pro komplexní správu napříč místní fyzické a virtuální počítače, System Center Operations Manager monitoruje počítače a hostované virtuální počítače v jiných cloudech. Agenti Windows a Linux se připojit k pracovnímu prostoru Log Analytics ke shromažďování dat monitorování na základě řešení i vlastní zdroje dat, které nakonfigurujete.
+U rozšířené monitorování, které je potřeba shromažďovat více než metriky a podmnožinu protokolů, se vyžaduje agenta Log Analytics pro Windows (také označované jako Microsoft Monitoring Agent (MMA)) a Linux. Agenta Log Analytics byla vyvinuta pro komplexní správu napříč místní fyzické a virtuální počítače, System Center Operations Manager monitoruje počítače a hostované virtuální počítače v jiných cloudech. Agenti Windows a Linux se připojit k pracovnímu prostoru Log Analytics ve službě Azure Monitor ke shromažďování dat monitorování na základě řešení i vlastní zdroje dat, které nakonfigurujete.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -70,7 +70,7 @@ Dříve byly spojeny několik služeb Azure jako *Operations Management Suite*, 
 * Služby Azure, jako [Application Insights](https://docs.microsoft.com/azure/application-insights/) a [Azure Security Center](https://docs.microsoft.com/azure/security-center/), která nativně ukládají data přímo do Log Analytics.  
 
 ## <a name="dependency-agent"></a>Agent závislostí
-Agent závislostí vyvinula jako součást řešení Service Map, který byl původně vytvořen externě od Microsoftu. [Řešení Service Map](../insights/service-map.md) a [monitorování Azure pro virtuální počítače](../insights/vminsights-overview.md) vyžaduje, aby Agent závislostí ve Windows a Linuxu virtuálních počítačů a integruje do agenta Log Analytics shromažďuje zjištění dat o procesech spuštěných na virtuální počítače a procesu externí závislosti. Ukládá tato data do Log Analytics a vizualizuje zjištěných vzájemně propojených součástí.
+Agent závislostí vyvinula jako součást řešení Service Map, který byl původně vytvořen externě od Microsoftu. [Řešení Service Map](../insights/service-map.md) a [monitorování Azure pro virtuální počítače](../insights/vminsights-overview.md) vyžaduje, aby Agent závislostí ve Windows a Linuxu virtuálních počítačů a integruje do agenta Log Analytics shromažďuje zjištění dat o procesech spuštěných na virtuální počítače a procesu externí závislosti. Tato data ukládá v pracovním prostoru Log Analytics a vizualizuje zjištěných vzájemně propojených součástí.
 
 Možná bude nutné určitou kombinaci těchto agentů monitorování virtuálního počítače. Agenty je možné nainstalovat vedle sebe jako rozšíření Azure, ale v Linuxu, agenta Log Analytics *musí* nainstalovat první, jinak se instalace nezdaří. 
 

@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 03/21/2019
 ms.author: danlep
-ms.openlocfilehash: b254adb050aa9826170c0849c3811380db6d9b38
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: ef34985e7897aa751275231a28c6031d6c9747b0
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321029"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369957"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Spouštění kontejnerizovaných úloh pomocí zásady restartování
 
@@ -26,7 +26,7 @@ Příklady uvedené v tomto článku využívají Azure CLI. Musíte mít Azure 
 
 Když vytvoříte [skupinu kontejnerů](container-instances-container-groups.md) ve službě Azure Container Instances, můžete určit jednu z tři nastavení zásad restartovat.
 
-| Zásady restartování   | Popis |
+| Restartovat zásadu   | Popis |
 | ---------------- | :---------- |
 | `Always` | Kontejnery ve skupině kontejnerů se vždy restartuje. Toto je **výchozí** nastavení použijí v případě, že žádné zásady restartování je určený při vytvoření kontejneru. |
 | `Never` | Nikdy se restartují kontejnerů ve skupině kontejnerů. Kontejnery spustit maximálně jednou. |
@@ -46,7 +46,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>Spuštění příkladu dokončení
 
-Pokud chcete zobrazit zásady restartování v akci, vytvořit instanci kontejneru z [microsoft/aci-wordcount] [ aci-wordcount-image] obrázku a zadejte `OnFailure` zásady restartování. Tento příklad kontejner spustí skript v jazyce Python, který ve výchozím nastavení, analyzuje text prvku Shakespeare [obce](http://shakespeare.mit.edu/hamlet/full.html), zapíše 10 nejčastější slova do STDOUT a následně skončí.
+Zásady restartování v akci najdete vytvořit instanci kontejneru z Microsoft [aci wordcount] [ aci-wordcount-image] obrázku a zadejte `OnFailure` zásady restartování. Tento příklad kontejner spustí skript v jazyce Python, který ve výchozím nastavení, analyzuje text prvku Shakespeare [obce](http://shakespeare.mit.edu/hamlet/full.html), zapíše 10 nejčastější slova do STDOUT a následně skončí.
 
 Spuštění kontejneru příklad následujícím [az container vytvořit] [ az-container-create] příkaz:
 
@@ -54,7 +54,7 @@ Spuštění kontejneru příklad následujícím [az container vytvořit] [ az-c
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure
 ```
 
@@ -129,7 +129,7 @@ Například můžete změnit chování skriptu v kontejneru příkladu tak, že 
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer2 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure \
     --environment-variables NumWords=5 MinLength=8
 ```
@@ -164,7 +164,7 @@ Například chcete-li určit nejčastějších 3 pět písmeno slov v *Valentýn
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer3 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure \
     --environment-variables NumWords=3 MinLength=5 \
     --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
@@ -189,7 +189,7 @@ Výstup:
 Podrobnosti o tom, jak zachovat výstup kontejnery, na kterých běží až do ukončení najdete v tématu [připojení sdílené složky Azure pomocí služby Azure Container Instances](container-instances-mounting-azure-files-volume.md).
 
 <!-- LINKS - External -->
-[aci-wordcount-image]: https://hub.docker.com/r/microsoft/aci-wordcount/
+[aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create

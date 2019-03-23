@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1640b1cdb9410f33f6556667f36aafcfe575a082
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ec35e383a182cf783c253b9242e6abb73e39385d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080318"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361094"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: Architektura a koncepty
 
@@ -70,7 +70,7 @@ Taxonomie pracovního prostoru je znázorněn v následujícím diagramu:
 
 Experiment je seskupení mnoho spuštění ze zadaného skriptu. Vždy patří do pracovního prostoru. Když odešlete spustit, zadejte název experimentu. Informace pro spuštění jsou uloženy v rámci testu. Pokud odešlete spustit a zadejte název experimentu, který neexistuje, je automaticky vytvoří nový experiment s nově zadaným názvem.
 
-Příklad použití experiment, naleznete v tématu [rychlý start: Začínáme se službou Azure Machine Learning](quickstart-get-started.md).
+Příklad použití experiment, naleznete v tématu [rychlý start: Začínáme se službou Azure Machine Learning](quickstart-run-cloud-notebook.md).
 
 ## <a name="model"></a>Model
 
@@ -80,7 +80,7 @@ Model je produkovaný spustit ve službě Azure Machine Learning. Můžete také
 
 Služba Azure Machine Learning je nezávislý na rozhraní framework. Při vytváření modelu, můžete použít jakoukoli architekturu learningu oblíbených počítačů, jako je například Scikit poučení, XGBoost, PyTorch, TensorFlow, Chainer a Microsoft Cognitive Toolkit (dříve označovaná jako CNTK).
 
-Příklad trénování modelu najdete v tématu [rychlý start: Vytvořit pracovní prostor služby Machine Learning](quickstart-get-started.md).
+Příklad trénování modelu najdete v tématu [kurzu: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning](tutorial-train-models-with-aml.md).
 
 ### <a name="model-registry"></a>Model registru
 
@@ -143,7 +143,7 @@ Informace o výběru cílové výpočetní prostředí pro nasazení, najdete v 
 
 Pro trénování modelu, určíte adresář, který obsahuje skript školení a přidružené soubory. Můžete také zadat název experimentu, který se používá k ukládání informací, která se nashromáždí během cvičení. Při školení, celý adresář se zkopíruje do prostředí pro školení (cílové výpočetní prostředí) a spuštění skriptu, který je určen podle konfigurace spuštění. Snímek adresáře je také uložen v rámci testu v pracovním prostoru.
 
-Příklad najdete v tématu [vytvořit pracovní prostor s Pythonem](quickstart-get-started.md).
+Příklad najdete v tématu [kurzu: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning](tutorial-train-models-with-aml.md).
 
 ## <a name="run"></a>Spusťte
 
@@ -156,7 +156,7 @@ Spuštění je záznam, který obsahuje následující informace:
 
 Spuštění na základě když odešlete skript pro trénování modelu. Spuštění může mít nula nebo více podřízených spuštění. Například běh nejvyšší úrovně může mít dvě podřízené spuštění, z nichž každá může mít svůj vlastní podřízený prvek spustit.
 
-Příklad zobrazení spuštění, které vytváří trénování modelu, naleznete v tématu [rychlý start: Začínáme se službou Azure Machine Learning](quickstart-get-started.md).
+Příklad zobrazení spuštění, které vytváří trénování modelu, naleznete v tématu [rychlý start: Začínáme se službou Azure Machine Learning](quickstart-run-cloud-notebook.md).
 
 ## <a name="snapshot"></a>Snímek
 
@@ -227,6 +227,6 @@ Při vývoji řešení protokolovat libovolné metriky pomocí sady Python SDK A
 Abyste mohli začít se službou Azure Machine Learning, naleznete v tématu:
 
 * [Co je služba Azure Machine Learning?](overview-what-is-azure-ml.md)
-* [Rychlé zprovoznění: Vytvoření pracovního prostoru s využitím Pythonu](quickstart-get-started.md)
+* [Vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md)
 * [Kurz: Trénování modelu](tutorial-train-models-with-aml.md)
-* [Vytvořit pracovní prostor s pomocí šablony resource Manageru](how-to-create-workspace-template.md)
+* [Vytvoření pracovního prostoru pomocí šablony Resource Manageru](how-to-create-workspace-template.md)

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/03/2018
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 080a4691869c4deaf86f0e27961e80b60d439f05
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 405b6ebd06091536749751a94362d8c4a6495dbc
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857240"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351286"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>Export modelu pro použití s mobilními zařízeními
 
-Služba Custom Vision Service umožňuje třídění export ke spuštění v režimu offline. Můžete vložení klasifikátoru exportované do aplikace a spustit místně na zařízení pro klasifikaci v reálném čase. 
+Služba Custom Vision Service umožňuje třídění export ke spuštění v režimu offline. Můžete vložení klasifikátoru exportované do aplikace a spustit místně na zařízení pro klasifikaci v reálném čase.
 
 Služba Custom Vision Service podporuje následující exportů:
 
@@ -37,7 +37,7 @@ Služba Custom Vision Service podporuje následující exportů:
 
 > [!NOTE]
 > Kroky v této části platí pouze pokud máte existující třídění, které není nastavena na compact domény.
- 
+
 K převodu domény existujících třídění, použijte následující kroky:
 
 1. Z [vlastní stránku pro zpracování obrazu](https://customvision.ai), vyberte __Domů__ ikonu k zobrazení seznamu vašich projektů. Můžete také použít [ https://customvision.ai/projects ](https://customvision.ai/projects) zobrazíte vaše projekty.

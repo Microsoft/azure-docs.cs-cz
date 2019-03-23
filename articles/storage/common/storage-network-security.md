@@ -5,21 +5,21 @@ services: storage
 author: cbrooksmsft
 ms.service: storage
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 03/21/2019
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c7f7768406ae64615b46abeb396b5469caf2f6e9
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: c34af90f946542608eaf20f4f21d4986f3c80e6b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750646"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369390"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 
 Azure Storage poskytuje vrstvený model zabezpečení. Tento model umožňuje zabezpečit vaše účty úložiště s konkrétní sadou podporované sítí. Když jsou nakonfigurovaná pravidla sítě, pouze aplikace vyžadující data z více než zadaných sítí můžou k účtu úložiště.
 
-Aplikace, který přistupuje k účtu úložiště, když pravidla sítě jsou aktivní, vyžaduje řádné autorizace v požadavku. Autorizace je podporováno pomocí přihlašovacích údajů Azure Active Directory (AD) (pro objekty BLOB a fronty) (preview), platným účtem přístupový klíč nebo SAS token.
+Aplikace, který přistupuje k účtu úložiště, když pravidla sítě jsou aktivní, vyžaduje řádné autorizace v požadavku. Autorizace je podporováno pomocí přihlašovacích údajů Azure Active Directory (Azure AD) pro objekty BLOB a fronty, platným účtem přístupový klíč nebo SAS token.
 
 > [!IMPORTANT]
 > Ve výchozím nastavení, zapnutí pravidla brány firewall pro váš účet úložiště blokuje příchozí požadavky na data, není-li, požadavky pocházejí z služba, která je zpracovávána v rámci služby Azure Virtual Network (VNet). Požadavky, které jsou blokovány mezi patří zařízení se od ostatních služeb Azure z webu Azure portal, protokolování a metrik služby a tak dále.

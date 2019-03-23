@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 402a2d6afc7b58d4dfc1c9fa67e354b4d157bd4c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 5c81a9f3891130f1c6fc2f1a665d7065fb983227
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310230"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370186"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory inteligentní uzamčení
 
@@ -40,8 +40,8 @@ Inteligentní uzamčení lze integrovat s hybridní nasazení pomocí synchroniz
 
 Při použití [předávací ověřování](../hybrid/how-to-connect-pta.md), je třeba Ujistěte se, že:
 
-   * Prahová hodnota pro uzamčení Azure AD je **méně** než prahovou hodnotu uzamknutí účtu služby Active Directory. Nastavte hodnoty tak, aby prahovou hodnotu uzamknutí účtu služby Active Directory je minimálně dvakrát nebo třikrát déle než prahová hodnota pro uzamčení Azure AD. 
-   * Doba trvání uzamčení Azure AD **během několika sekund** je **delší** než Active Directory Vynulovat čítač uzamčení účtu po dobu trvání **minut**.
+* Prahová hodnota pro uzamčení Azure AD je **méně** než prahovou hodnotu uzamknutí účtu služby Active Directory. Nastavte hodnoty tak, aby prahovou hodnotu uzamknutí účtu služby Active Directory je minimálně dvakrát nebo třikrát déle než prahová hodnota pro uzamčení Azure AD. 
+* Doba trvání uzamčení Azure AD **během několika sekund** je **delší** než Active Directory Vynulovat čítač uzamčení účtu po dobu trvání **minut**.
 
 > [!IMPORTANT]
 > Správce aktuálně nedá odemknout účtům cloudových uživatelů, pokud se mají byl uzamčen inteligentním uzamčením schopnosti. Správce musí počkat po dobu trvání uzamknutí vyprší.
@@ -55,7 +55,7 @@ Chcete-li ověřit vaše místní zásady uzamčení účtů služby Active Dire
 3. Přejděte do **konfigurace počítače** > **zásady** > **nastavení Windows** > **nastavení zabezpečení**   >  **Zásady účtů** > **zásady uzamčení účtů**.
 4. Ověřte vaše **prahovou hodnotu uzamknutí účtu** a **resetování čítače uzamčení účtu po** hodnoty.
 
-![Upravit pomocí objektu zásad skupiny zásady uzamčení účtu místní služby Active Directory](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
+![Upravit zásady uzamčení účtů služby Active Directory v místním](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Správa služby Azure AD inteligentním uzamčením hodnot
 
@@ -78,9 +78,7 @@ Když prahová hodnota pro inteligentní uzamčení se aktivuje, zobrazí se ná
 
 **Váš účet je dočasně uzamčený, abyste zabránili neoprávněnému používání. Zkuste to znovu později a Pokud potíže přetrvávají, obraťte se na svého správce.**
 
-
 ## <a name="next-steps"></a>Další postup
 
-[Zjistěte, jak zakázat chybná hesla ve vaší organizaci pomocí služby Azure AD.](howto-password-ban-bad.md)
-
-[Nakonfigurujte samoobslužné resetování hesla a umožňují uživatelům odemknout své účty.](quickstart-sspr.md)
+* [Zjistěte, jak zakázat chybná hesla ve vaší organizaci pomocí služby Azure AD.](howto-password-ban-bad.md)
+* [Nakonfigurujte samoobslužné resetování hesla a umožňují uživatelům odemknout své účty.](quickstart-sspr.md)

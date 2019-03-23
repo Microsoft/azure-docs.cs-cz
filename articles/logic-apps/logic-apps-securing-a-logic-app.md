@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 02/05/2019
-ms.openlocfilehash: 34076b790a91b1c0e9d8bee224423aab0db7c8f3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6f878e05255be8f65868d8d1dcdbacb3ccfa2729
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891803"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369934"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Zabezpečený přístup v Azure Logic Apps
 
@@ -34,7 +34,7 @@ Tady jsou prvky v aplikaci logiky, ve kterém se dají zabezpečit přístup:
 Když vaše aplikace logiky používá triggerem založené na požadavku HTTP, jako [požadavek](../connectors/connectors-native-reqres.md) nebo [Webhooku](../connectors/connectors-native-webhook.md) aktivační událost, můžete omezit přístup pouze autorizovaní klienti můžou začít svou aplikaci logiky. Všechny požadavky přijaté aplikací logiky je šifrovaný a zabezpečený pomocí vrstvy SSL (Secure Sockets) protokolů. Tady jsou různé způsoby, jak můžete zabezpečit přístup k tomuto typu triggeru:
 
 * [Generování sdílených přístupových podpisů](#sas)
-* [Omezit příchozí IP adresy](#restrict-incoming-IP)
+* [Omezit příchozí IP adresy](#restrict-incoming-ip-addresses)
 * [Přidat Azure Active Directory, OAuth nebo jiných zabezpečení](#add-authentication)
 
 <a name="sas"></a>

@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: c7dd2fba852881680b43ceabafec2ac6b2751df4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e65f739a9641181381205c7255d0472325e8055c
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839589"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359882"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Vytvoření a správa pracovních prostorů služby Azure Machine Learning
 
@@ -28,24 +28,19 @@ Chcete-li vytvořit pracovní prostor, budete potřebovat předplatné Azure. Po
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="view-a-workspace"></a>Zobrazení pracovního prostoru
+## <a name="view"></a>Zobrazení pracovního prostoru
 
 1. V levém horním rohu portálu, vyberte **všechny služby**. 
 
-1. V **všechny služby** pole filtru, typu **pracovní prostor služby Machine Learning**.  
+1. V **všechny služby** pole filtru, typu **služby machine learning service**.  
 
-   ![Hledat pracovní prostor služby Azure Machine Learning](media/how-to-manage-workspace/allservices-search1.png)
+1. Vyberte **pracovních prostorů služby Machine Learning**.
 
-1. Ve výsledcích filtru vybrat **pracovní prostor služby Machine Learning** zobrazíte seznam vašich pracovních prostorů. 
-
-   ![Seznam pracovních prostorů služby Azure Machine Learning](media/how-to-manage-workspace/allservices-search.PNG)
+   ![Hledat pracovní prostor služby Azure Machine Learning](media/how-to-manage-workspace/all-services.png)
 
 1. Prohlédněte si seznam pracovních prostorů nalezen. Můžete filtrovat podle předplatného, skupiny prostředků a umístění.  
 
-   ![Zobrazit pracovní prostory](media/how-to-manage-workspace/allservices_view_workspace.PNG)
-
-1. Vyberte pracovní prostor, který jste právě vytvořili, zobrazíte její vlastnosti.
-
+1. Vyberte pracovní prostor zobrazíte jeho vlastnosti.
    ![Vlastnosti pracovního prostoru](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>Odstranění pracovního prostoru

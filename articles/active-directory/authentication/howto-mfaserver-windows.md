@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43c21fb3c3e7c00ecdbadb1e730ba5ce303dc869
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 36172850c345fc190c3326413f2883dc2b070e98
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312185"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58367886"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Ověření Windows a server Azure Multi-Factor Authentication
 
@@ -29,9 +29,10 @@ ms.locfileid: "58312185"
 > [!NOTE]
 > Tato funkce není podporována pro zabezpečené terminálové služby v systému Windows Server 2012 R2.
 
-## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Chcete-li zabezpečit aplikaci pomocí ověřování systému Windows, použijte následující postup.
+## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Pro zabezpečení aplikace s ověřováním Windows, použijte následující postup
+
 1. Na serveru Azure Multi-Factor Authentication klikněte na ikonu ověřování systému Windows.
-   ![Ověřování systému Windows](./media/howto-mfaserver-windows/windowsauth.png)
+   ![Ověřování Windows serveru MFA](./media/howto-mfaserver-windows/windowsauth.png)
 2. Zaškrtněte políčko **Povolit ověřování systému Windows**. Ve výchozím nastavení je toto políčko zaškrtnuté.
 3. Karta aplikace umožňuje správci konfigurovat jednu nebo více aplikací pro ověřování systému Windows.
 4. Vyberte server nebo aplikaci – určete, zda je povolen server/aplikace. Klikněte na **OK**.

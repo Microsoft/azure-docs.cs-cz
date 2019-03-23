@@ -1,19 +1,19 @@
 ---
 title: Zajištění geokódování ve službě Azure Maps | Dokumentace Microsoftu
 description: Další informace o zajištění Geokódování ve službě Azure Maps
-author: dsk-2015
-ms.author: dkshir
-ms.date: 05/07/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 03/22/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 664d52a96f1e724502f82f5f72567f87c74e716b
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 733d27549542d3ebdd0cfba429aeaaab9f8be473
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444252"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370298"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Zajištění geokódování Azure Maps
 
@@ -27,25 +27,25 @@ Schopnost geokód v zemi, je závislá na data pokrytí cestách a přesnost geo
 
 ## <a name="americas"></a>Amerika
 
-| Oblast             | Adresa body | Čísla House | Ulice úroveň | Na úrovni města | Body zájmu |
+| Země/oblast                                       | Adresa body | Čísla House | Ulice úroveň | Na úrovni města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Anguilla                                            |                 |                |              |      ✓     |          ✓         |
 | Antarktida                                          |                 |                |              |      ✓     |          ✓         |
 | Antigua a Barbuda                                 |                 |                |       ✓      |      ✓     |          ✓         |
-| Argentina                                           |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Argentina                                           |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
 | Aruba                                               |                 |                |              |      ✓     |          ✓         |
 | Bahamy                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Barbados                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Belize                                              |                 |                |              |      ✓     |          ✓         |
 | Bermudy                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Bolívie                                             |                 |                |       ✓      |      ✓     |          ✓         |
-| Bonaire, Svatý Eustach a Saba|                 |                |              |      ✓     |          ✓         |
+| Bonaire, Svatý Eustach a Saba                   |                 |                |              |      ✓     |          ✓         |
 | Brazílie                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kanada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kajmanské ostrovy                                      |                 |                |       ✓      |      ✓     |          ✓         |
-| Chile                                               |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Chile                                               |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
 | Clippertonův ostrov                                   |                 |                |              |      ✓     |                    |
-| Kolumbie                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Kolumbie                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kostarika                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Kuba                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Dominika                                            |                 |                |       ✓      |      ✓     |          ✓         |
@@ -55,10 +55,10 @@ Schopnost geokód v zemi, je závislá na data pokrytí cestách a přesnost geo
 | Falklandské ostrovy                                    |                 |                |              |      ✓     |          ✓         |
 | Francouzská Guyana                                       |                 |                |       ✓      |      ✓     |          ✓         |
 | Grenada                                             |                 |                |       ✓      |      ✓     |          ✓         |
-| Guadeloupe|                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Guadeloupe                                          |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Guam                                                |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Guatemala                                           |                 |                |       ✓      |      ✓     |          ✓         |
-| Guyana        |                |             |           |      ✓     |                 |
+| Guyana                                              |                |             |           |      ✓     |                 |
 | Haiti                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Honduras                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Jamajka                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -67,14 +67,14 @@ Schopnost geokód v zemi, je závislá na data pokrytí cestách a přesnost geo
 | Montserrat                                          |                 |                |              |      ✓     |          ✓         |
 | Nikaragua                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Panama                                              |                 |                |       ✓      |      ✓     |          ✓         |
-| Paraguay                                            |                 |                |       ✓      |      ✓     |          ✓         |
-| Peru                                                |                 |                |       ✓      |      ✓     |          ✓         |
+| Paraguay                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Peru                                                |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Portoriko                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Svatý Bartoloměj                                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatý Kryštof a Nevis                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatá Lucie                                         |                 |                |              |      ✓     |          ✓         |
 | Svatý Martin (Francie)                                        |                 |                |       ✓      |      ✓     |          ✓         |
-| Svatý Pierre a Miquelon|                 |                |       ✓      |      ✓     |          ✓         |
+| Svatý Pierre a Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatý Vincenc a Grenadiny                    |                 |                |              |      ✓     |          ✓         |
 | Svatý Martin (Nizozemsko)                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Jižní Georgie a Jižní Sandwichovy ostrovy        |                 |                |              |      ✓     |          ✓         |
@@ -82,14 +82,14 @@ Schopnost geokód v zemi, je závislá na data pokrytí cestách a přesnost geo
 | Trinidad a Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Menší odlehlé ostrovy Spojených států amerických                |                 |                |              |      ✓     |          ✓         |
 | Spojené státy americké                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Uruguay                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Panenské ostrovy – britské                            |                 |                |              |      ✓     |          ✓         |
 | Panenské ostrovy – Spojené státy                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
 ## <a name="asia-pacific"></a>Asie a Tichomoří
 
-| Oblast             | Adresa body |Čísla House | Ulice úroveň | Na úrovni města | Body zájmu |
+| Země/oblast                                      | Adresa body |Čísla House | Ulice úroveň | Na úrovni města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Americká Samoa                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Austrálie                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -98,26 +98,27 @@ Schopnost geokód v zemi, je závislá na data pokrytí cestách a přesnost geo
 | Britské území v Indickém oceánu                      |                 |                |              |      ✓     |          ✓         |
 | Brunej                                              |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Kambodža                                            |                 |                |              |      ✓     |          ✓         |
-| Čína |                 |                |              |      ✓     |          ✓         |
+| Čína                                               |        ✓        |        ✓       |              |      ✓     |          ✓         |
 | Vánoční ostrov                                    |        ✓        |                |       ✓      |      ✓     |          ✓         |
-| Kokosové ostrovy (Keeling)|                 |                |              |      ✓     |          ✓         |
-| Komory|                 |                |              |      ✓     |          ✓         |
+| Kokosové ostrovy (Keeling)                             |                 |                |              |      ✓     |          ✓         |
+| Komory                                             |                 |                |              |      ✓     |          ✓         |
 | Cookovy ostrovy                                        |                 |                |              |      ✓     |          ✓         |
-| Fidži |                 |                |              |      ✓     |          ✓         |
+| Fidži                                                |                  |                |              |      ✓     |          ✓         |
 | Francouzská Polynésie                                    |                 |                |              |      ✓     |          ✓         |
 | Heardův ostrov a McDonaldovy ostrovy                   |                 |                |              |      ✓     |          ✓         |
 | Hongkong                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonésie                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Indie       |        ✓        |        ✓       |       ✓      |      ✓     |                   |
+| Indie                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
 | Japonsko                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
+| Jižní Korea                                         |                 |                |              |      ✓     |          ✓         |
 | Laos                                                |                 |                |              |      ✓     |          ✓         |
 | Macao                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malajsie                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Mikronésie |                 |                |              |      ✓     |          ✓         |
+| Mikronésie                                          |                 |                |              |      ✓     |          ✓         |
 | Mongolsko                                            |                 |                |              |      ✓     |          ✓         |
 | Nauru                                               |                 |                |              |      ✓     |          ✓         |
-| Napal|                 |                |              |      ✓     |          ✓         |
+| Nepál                                               |                 |                |              |      ✓     |          ✓         |
 | Nová Kaledonie                                       |                 |                |              |      ✓     |          ✓         |
 | Nový Zéland                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Niue                                                |                 |                |              |      ✓     |          ✓         |
@@ -125,7 +126,7 @@ Schopnost geokód v zemi, je závislá na data pokrytí cestách a přesnost geo
 | Severní Korea                                         |                 |                |              |      ✓     |          ✓         |
 | Severní Mariany                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Pákistán                                            |                 |                |              |      ✓     |          ✓         |
-| Palau |                 |                |              |      ✓     |          ✓         |
+| Palau                                               |                 |                |              |      ✓     |          ✓         |
 | Papua - Nová Guinea                                    |                 |                |              |      ✓     |          ✓         |
 | Paracel ostrovy                                     |                 |                |              |      ✓     |                    |
 | Filipíny                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -134,7 +135,6 @@ Schopnost geokód v zemi, je závislá na data pokrytí cestách a přesnost geo
 | Senkaku ostrovy                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Singapur                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Šalamounovy ostrovy                                     |                 |                |              |      ✓     |          ✓         |
-| Jižní Korea                                         |                 |                |              |      ✓     |          ✓         |
 | Jižní Kurils                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Spratly ostrovy                                     |                 |                |              |      ✓     |                    |
 | Srí Lanka                                           |                 |                |              |      ✓     |          ✓         |
@@ -146,21 +146,21 @@ Schopnost geokód v zemi, je závislá na data pokrytí cestách a přesnost geo
 | Tuvalu                                              |                 |                |              |      ✓     |          ✓         |
 | Vanuatu                                             |                 |                |              |      ✓     |          ✓         |
 | Vietnam                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Wallis a Futuna|                 |                |              |      ✓     |          ✓         |
+| Wallis a Futuna                                   |                 |                |              |      ✓     |          ✓         |
 
 ## <a name="europe"></a>Evropa
 
-| Oblast             | Adresa body |Čísla House | Ulice úroveň | Na úrovni města | Body zájmu |
+| Země/oblast                                      | Adresa body |Čísla House | Ulice úroveň | Na úrovni města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Albánie                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Andorra                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Arménie                                             |                 |                |              |      ✓     |          ✓         |
+| Arménie                                             |        ✓        |        ✓       |              |      ✓     |          ✓         |
 | Rakousko                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Ázerbájdžán                                          |                 |                |              |      ✓     |          ✓         |
+| Ázerbájdžán                                          |        ✓        |        ✓       |              |      ✓     |          ✓         |
 | Belgie                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Bosna a Hercegovina                              |                 |                |       ✓      |      ✓     |          ✓         |
-| Bulharsko                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Bělorusko|                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Bosna a Hercegovina                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Bulharsko                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Bělorusko                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Chorvatsko                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kypr                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Česká republika                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -169,39 +169,40 @@ Schopnost geokód v zemi, je závislá na data pokrytí cestách a přesnost geo
 | Faerské ostrovy                                       |                 |                |              |      ✓     |          ✓         |
 | Finsko                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Francie                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Gruzie                                             |                 |                |              |      ✓     |          ✓         |
+| Gruzie                                             |        ✓        |        ✓       |              |      ✓     |          ✓         |
 | Německo                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Gibralter                                           |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Řecko                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Gibraltar                                           |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Řecko                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Grónsko                                           |                 |                |              |      ✓     |          ✓         |
 | Guernsey                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Maďarsko                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Island                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Irsko (republika)                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Maďarsko                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Island                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Irsko                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Ostrov Man                                         |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Itálie                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Jan Mayen                                           |        ✓        |                |              |      ✓     |          ✓         |
 | Jersey                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Kazachstán                                          |        ✓        |                |       ✓      |      ✓     |          ✓         |
+| Kazachstán                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kosovo                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Kyrgyzstán                                          |                 |                |              |      ✓     |          ✓         |
 | Lotyšsko                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Lichtenštejnsko                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Litva                                           |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Litva                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Lucembursko                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Makedonie                                           |                 |                |       ✓      |      ✓     |          ✓         |
+| Makedonie                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malta                                               |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Moldavsko                                             |                 |                |       ✓      |      ✓     |          ✓         |
+| Moldavsko                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Monako                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Černá Hora                                          |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Nizozemsko                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Norsko                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Polsko                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Portugalsko                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| + Azory a Madeira                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Rumunsko                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Ruská federace                                  |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | San Marino                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Srbsko                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Srbsko                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Slovensko                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Slovinsko                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Španělsko                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -211,7 +212,7 @@ Schopnost geokód v zemi, je závislá na data pokrytí cestách a přesnost geo
 | Tádžikistán                                          |                 |                |              |      ✓     |          ✓         |
 | Turecko                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Turkmenistán                                        |                 |                |              |      ✓     |          ✓         |
-| Ukrajina                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Ukrajina                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Spojené království                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uzbekistán                                          |                 |                |              |      ✓     |          ✓         |
 | Vatikán                                        |                 |                |       ✓      |      ✓     |          ✓         |
@@ -219,30 +220,30 @@ Schopnost geokód v zemi, je závislá na data pokrytí cestách a přesnost geo
 
 ## <a name="middle-east-and-africa"></a>Střední východ a Afrika
 
-| Oblast             | Adresa body |Čísla House | Ulice úroveň | Na úrovni města | Body zájmu |
+| Země/oblast                                      | Adresa body |Čísla House | Ulice úroveň | Na úrovni města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Afghánistán                                         |                 |                |              |      ✓     |          ✓         |
 | Alžírsko                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Angola                                              |                 |                |       ✓      |      ✓     |          ✓         |
-| Bahrajn                                             |                 |                |       ✓      |      ✓     |          ✓         |
+| Bahrajn                                             |        ✓        |       ✓        |       ✓      |      ✓     |          ✓         |
 | Benin                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Botswana                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Bouvet                                       |                 |                |              |      ✓     |          ✓         |
 | Burkina Faso                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Burundi                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Kamerun                                            |                 |                |       ✓      |      ✓     |          ✓         |
-| Cabo Verde|                 |                |       ✓      |      ✓     |          ✓         |
+| Cabo Verde                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Středoafrická republika                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Čad                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Kongo                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Pobřeží slonoviny                                       |                 |                |       ✓      |      ✓     |          ✓         |
-| Demokratická republika Kongo                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Demokratická republika Kongo                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Džibuti                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Egypt                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Rovníková Guinea, republika                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Eritrea                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Etiopie                                            |                 |                |       ✓      |      ✓     |          ✓         |
-| Francouzská jižní území|                 |                |              |      ✓     |          ✓         |
+| Francouzská jižní území|                        |                |              |      ✓     |          ✓         |
 | Gabon                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Gambie                                              |                 |                |              |      ✓     |          ✓         |
 | Ghana                                               |                 |                |       ✓      |      ✓     |          ✓         |
@@ -250,34 +251,34 @@ Schopnost geokód v zemi, je závislá na data pokrytí cestách a přesnost geo
 | Guinea-Bissau                                       |                 |                |       ✓      |      ✓     |          ✓         |
 | Írán                                                |                 |                |              |      ✓     |          ✓         |
 | Irák                                                |                 |                |       ✓      |      ✓     |          ✓         |
-| Izrael                                              |                 |                |              |      ✓     |          ✓         |
-| Jordánsko                                              |        ✓        |                |       ✓      |      ✓     |          ✓         |
+| Izrael                                              |        ✓        |       ✓        |              |      ✓     |          ✓         |
+| Jordánsko                                              |        ✓        |       ✓        |       ✓      |      ✓     |          ✓         |
 | Keňa                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Kuvajt                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Libanon                                             |                 |                |       ✓      |      ✓     |          ✓         |
+| Libanon                                             |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Lesotho                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Libérie                                             |                 |                |       ✓      |      ✓     |          ✓         |
-| Libye|                 |                |       ✓      |      ✓     |          ✓         |
+| Libye                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Madagaskar                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Malawi                                              |                 |                |       ✓      |      ✓     |          ✓         |
-| Maledivy |                 |                |              |      ✓     |          ✓         |
+| Maledivy                                            |                 |                |              |      ✓     |          ✓         |
 | Mali                                                |                 |                |       ✓      |      ✓     |          ✓         |
-| Marshallovy ostrovy |                 |                |              |      ✓     |          ✓         |
+| Marshallovy ostrovy                                    |                 |                |              |      ✓     |          ✓         |
 | Mauritánie                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Mauricius                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Mayotte                                             |                 |                |       ✓      |      ✓     |          ✓         |
-| Maroko                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Maroko                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Mosambik                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Myanmar                                             |                 |                |              |      ✓     |          ✓         |
 | Namibie                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Niger                                               |                 |                |       ✓      |      ✓     |          ✓         |
-| Nigérie                                             |                 |                |       ✓      |      ✓     |          ✓         |
+| Nigérie                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Omán                                                |                 |                |       ✓      |      ✓     |          ✓         |
-| Katar                                               |                 |                |       ✓      |      ✓     |          ✓         |
-| Réunion|                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Katar                                               |        ✓        |                |       ✓      |      ✓     |          ✓         |
+| Réunion                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Rwanda                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatá Helena                                        |                 |                |              |      ✓     |          ✓         |
-| Saúdská Arábie                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Saúdská Arábie                                        |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Senegal                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Seychely                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Sierra Leone                                        |                 |                |       ✓      |      ✓     |          ✓         |
@@ -287,10 +288,10 @@ Schopnost geokód v zemi, je závislá na data pokrytí cestách a přesnost geo
 | Súdán                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Svazijsko                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Sýrie                                               |                 |                |              |      ✓     |          ✓         |
-| Svatý Tomáš a Princův ostrov, Konžská demokratická republika       |                 |                |       ✓      |      ✓     |          ✓         |
+| Svatý Tomáš a Princův ostrov                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Tanzanie                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Togo                                                |                 |                |       ✓      |      ✓     |          ✓         |
-| Tunisko                                             |                 |                |       ✓      |      ✓     |          ✓         |
+| Tunisko                                             |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Uganda                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Spojené arabské emiráty                                |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Západní břeh                                           |                 |                |              |      ✓     |          ✓         |

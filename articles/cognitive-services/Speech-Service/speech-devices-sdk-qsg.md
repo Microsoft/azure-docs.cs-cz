@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 114e0b951b2bfe83e8b989646bd07a5fd75b3ee6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d520a9dc8d60a386d25694d441931fbc3ed38e4
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894406"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352064"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Začínáme se sadou SDK pro řeč zařízení
 
@@ -64,7 +64,7 @@ Než začnete s vývojem pomocí sady SDK zařízení řeči, shromážděte inf
 
     ![orientace lineární dev kit](media/speech-devices-sdk/qsg-2.png)
 
-1. Nainstalujte certifikáty a soubor tabulky probuzení word (klíčové slovo) a nastavit oprávnění zvukové zařízení. V okně příkazového řádku zadejte následující příkazy:
+1. Instalace certifikátů a nastavení oprávnění zvukové zařízení. V okně příkazového řádku zadejte následující příkazy:
 
    ```
    adb push C:\SDSDK\Android-Sample-Release\scripts\roobo_setup.sh /data/

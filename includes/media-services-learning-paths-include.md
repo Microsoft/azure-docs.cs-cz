@@ -2,21 +2,27 @@
 author: Juliako
 ms.service: media-services
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 4c803b4915823b3a723728732479b605d9d7ee8a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 135232e3e9894bcef1ef657e41f5ad3a5e307289
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52269652"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352445"
 ---
-Projděte si nejnovější verzi Azure Media Services: [Azure Media Services v3](https://docs.microsoft.com/azure/media-services/latest/).
+### <a name="media-services-v3-latest"></a>Media Services v3 (nejnovější)
 
-Můžete začít s následujícími tématy: 
+Prohlédněte si nejnovější verzi služby Azure Media Services! 
 
 * [Přehled](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
-* [Nahrávání, kódování a streamování videí pomocí rozhraní API](https://docs.microsoft.com/azure/media-services/latest/stream-files-tutorial-with-api)
-* [Analýza](https://docs.microsoft.com/azure/media-services/latest/analyze-videos-tutorial-with-api)
-* [Živé streamování](https://docs.microsoft.com/azure/media-services/latest/stream-live-tutorial-with-api)
-* [Ochrana vašeho obsahu](https://docs.microsoft.com/azure/media-services/latest/protect-with-aes128)
+* [Koncepty](https://docs.microsoft.com/azure/media-services/latest/concepts-overview)
+* [Začít s vývojem](https://docs.microsoft.com/azure/media-services/latest/developers-guide)
+* [Pokyny k migraci z v2 na v3](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3)
+
+### <a name="media-services-v2-legacy"></a>Služba Media Services v2 (starší verze)
+
+* [Přehled](https://docs.microsoft.com/azure/media-services/previous/media-services-overview)
+* [Vytvoření účtu](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-create-account)
+* [Doručovat na vyžádání](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-vod-get-started)
+* [Doručování živě](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-live-passthrough-get-started)

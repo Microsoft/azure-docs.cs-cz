@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: danlep
-ms.openlocfilehash: af1fbe66c805517c07975b2e4cf6e13e87ec661c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 70593bffbf30b3a0c0978e56c2af1a856a22f2ec
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388268"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369654"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Připojit svazek gitRepo ve službě Azure Container Instances
 
@@ -33,17 +33,17 @@ Když připojíte *gitRepo* svazku, můžete nastavit tři vlastnosti konfigurac
 | `directory` | Ne | Adresář, do kterého by měl klonovat úložiště. Cesta nesmí obsahovat ani začínat "`..`".  Pokud zadáte "`.`", úložiště se naklonovalo do adresáře svazku. V opačném případě naklonování úložiště Git do podadresáře v adresáři svazek se zadaným názvem. |
 | `revision` | Ne | Hodnota hash zápisu revize ke klonování. Pokud tento parametr zadán, `HEAD` klonovat revize. |
 
-## <a name="mount-gitrepo-volume-azure-cli"></a>GitRepo připojení svazku: rozhraní příkazového řádku Azure
+## <a name="mount-gitrepo-volume-azure-cli"></a>GitRepo připojení svazku: Azure CLI
 
 Připojení svazku gitRepo při nasazování instancí kontejnerů s [rozhraní příkazového řádku Azure](/cli/azure), poskytují `--gitrepo-url` a `--gitrepo-mount-path` parametrů [az container vytvořit] [ az-container-create] příkazu. Volitelně můžete zadat adresář na svazku naklonovat do (`--gitrepo-dir`) a hodnota hash zápisu revize ke klonování (`--gitrepo-revision`).
 
-Příkaz v tomto příkladu duplicity [aci-helloworld] [ aci-helloworld] ukázkové aplikace do `/mnt/aci-helloworld` v instanci kontejneru:
+Příkaz v tomto příkladu duplicity Microsoft [aci-helloworld] [ aci-helloworld] ukázkové aplikace do `/mnt/aci-helloworld` v instanci kontejneru:
 
 ```azurecli-interactive
 az container create \
     --resource-group myResourceGroup \
     --name hellogitrepo \
-    --image microsoft/aci-helloworld \
+    --image mcr.microsoft.com/azuredocs/aci-helloworld \
     --dns-name-label aci-demo \
     --ports 80 \
     --gitrepo-url https://github.com/Azure-Samples/aci-helloworld \
@@ -68,7 +68,8 @@ Připojení svazku gitRepo při nasazování instancí kontejnerů pomocí [šab
 
 Například následující šablony Resource Manageru vytvoří skupinu kontejnerů, který se skládá z jednoho kontejneru. Kontejner duplicity dvou úložišť GitHub, které jsou určené *gitRepo* blocích svazku. Druhý svazek zahrnuje určení adresáře naklonujete další vlastnosti a hodnotu hash potvrzení konkrétní revizi klonování.
 
-<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json --> [!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json -->
+[!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
 
 Výsledný struktura adresářů dvě klonovaných úložištích definované v předchozí šablonu postupem je:
 
@@ -97,9 +98,9 @@ Pro úložiště Git v úložišti Azure zadejte libovolné uživatelské jméno
 
 Další informace o osobní přístupové tokeny Githubu a úložiště Azure naleznete v následujících tématech:
 
-GitHub: [vytvoření osobního přístupového tokenu pro příkazový řádek][pat-github]
+GitHub: [Vytvoření osobního přístupového tokenu pro příkazový řádek][pat-github]
 
-Úložiště Azure: [vytvářet osobní přístupové tokeny k ověření přístupu][pat-repos]
+Azure Repos: [Vytvářet osobní přístupové tokeny k ověření přístupu][pat-repos]
 
 ## <a name="next-steps"></a>Další postup
 

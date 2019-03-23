@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6f1620c9977f997b4037fbf3f823c429e43b4f6a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 015728a43e091e36dcf02b5cc17f0135a64428ca
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436258"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361944"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Spuštění úlohy mapreduce je možné s Apache Hadoop v HDInsight pomocí Powershellu
 
@@ -23,6 +23,8 @@ ms.locfileid: "53436258"
 Tento dokument obsahuje příklad použití Azure Powershellu a spusťte úlohu MapReduce v Hadoop na clusteru HDInsight.
 
 ## <a id="prereq"></a>Požadavky
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * **Cluster Azure HDInsight (Hadoop v HDInsight)**
 
@@ -37,15 +39,15 @@ Prostředí Azure PowerShell poskytuje *rutiny* , které umožňují vzdálené 
 
 Při spuštění úlohy mapreduce je možné ve vzdáleném clusteru HDInsight se používají následující rutiny.
 
-* **Connect-AzureRmAccount**: Ověří prostředí Azure PowerShell ke svému předplatnému Azure.
+* **Connect-AzAccount**: Ověří prostředí Azure PowerShell ke svému předplatnému Azure.
 
-* **Nové AzureRmHDInsightMapReduceJobDefinition**: Vytvoří novou *úlohy definice* s použitím zadaných informací MapReduce.
+* **New-AzHDInsightMapReduceJobDefinition**: Vytvoří novou *úlohy definice* s použitím zadaných informací MapReduce.
 
-* **Start-AzureRmHDInsightJob**: Odešle definice úlohy HDInsight a spustí úlohu. A *úlohy* je vrácen objekt.
+* **Start-AzHDInsightJob**: Odešle definice úlohy HDInsight a spustí úlohu. A *úlohy* je vrácen objekt.
 
-* **Čekání AzureRmHDInsightJob**: Objekt úlohy používá ke kontrole stavu úlohy. To počká, až do dokončení úlohy nebo je Překročená doba čekání.
+* **Wait-AzHDInsightJob**: Objekt úlohy používá ke kontrole stavu úlohy. To počká, až do dokončení úlohy nebo je Překročená doba čekání.
 
-* **Get-AzureRmHDInsightJobOutput**: Umožňuje načíst výstup úlohy.
+* **Get-AzHDInsightJobOutput**: Umožňuje načíst výstup úlohy.
 
 Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy ve vašem clusteru HDInsight.
 
@@ -92,7 +94,7 @@ Pokud žádné informace se vrátí po dokončení úlohy, zobrazení chyb pro �
 ```powershell
 # Print the output of the WordCount job.
 Write-Host "Display the standard output ..." -ForegroundColor Green
-Get-AzureRmHDInsightJobOutput `
+Get-AzHDInsightJobOutput `
         -Clustername $clusterName `
         -JobId $wordCountJob.JobId `
         -HttpCredential $creds `

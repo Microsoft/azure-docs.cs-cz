@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/17/2017
-ms.openlocfilehash: d336d659a15f5b4cb1cbc917a8ae10ab8224d029
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b8bad1d0f53ce4e4c924734201165e1b050c153f
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426314"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361468"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Práce v ekosystému Apache Hadoop v HDInsight z počítače s Windows
 
@@ -30,7 +30,7 @@ Příklady úloh, které můžete provést v prostředí PowerShell:
 * [Dotazy Apache Hive pomocí Powershellu spusťte](hadoop/apache-hadoop-use-hive-powershell.md).
 * [Správa clusterů pomocí prostředí PowerShell](hdinsight-administer-use-powershell.md).
 
-Postupujte podle kroků a [instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) získat nejnovější verzi. Pokud máte skripty, které je potřeba upravit tak, aby používaly nové rutiny pro Azure Resource Manager, najdete v článku [migrace do nástroje pro vývoj založených na Azure Resource Manageru pro clustery HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
+Postupujte podle kroků a [instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/install-az-ps) získat nejnovější verzi. Pokud máte skripty, které je potřeba upravit tak, aby používaly nové rutiny pro Azure Resource Manager, najdete v článku [migrace do nástroje pro vývoj založených na Azure Resource Manageru pro clustery HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>Nástroje můžete spustit v prohlížeči
 Následující nástroje mít webové uživatelské rozhraní, které běží v prohlížeči:

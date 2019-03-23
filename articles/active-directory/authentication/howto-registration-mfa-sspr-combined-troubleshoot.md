@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f799b671e6216b402aa988aa66da4c2cfc44693
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d926f7312b62e788289939dfd81c236a33503b43
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317523"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370461"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>Řešení potíží s kombinovat informace o registraci zabezpečení (preview)
 
@@ -31,7 +31,7 @@ Informace uvedené v tomto článku můžete Příručka pro správce, kteří j
 
 Události evidované pro kombinované registrace jsou v kategorii "Metody ověřování" ve službě Azure AD protokoly auditu.
 
-![Rozhraní zobrazuje některé zabezpečení události registrační informace pro nového uživatele v adresáři protokoly auditu Azure AD](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
+![Auditování Azure AD protokoly událostí registrace zobrazující rozhraní](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
 Následuje seznam všech událostí auditu generovaných kombinovaná registrace:
 
@@ -162,4 +162,4 @@ Uživatelům se už výzva k registraci pomocí prostředí ve verzi preview.
 
 ## <a name="next-steps"></a>Další postup
 
-[Další informace o verzi public preview kombinovaná registrace pro samoobslužné resetování hesla a ověřování Azure Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)
+* [Další informace o verzi public preview kombinovaná registrace pro samoobslužné resetování hesla a ověřování Azure Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)

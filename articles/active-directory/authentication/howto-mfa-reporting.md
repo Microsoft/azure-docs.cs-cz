@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dd26bbb06310439aae065349c14c6df1c1c12e6
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 1f78a3135fca290d50370652b33fe0a4d16a6f83
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316928"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369042"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Sestavy v Azure Multi-Factor Authentication
 
@@ -36,9 +36,7 @@ Azure Multi-Factor Authentication nabízí několik sestav, které mohou využí
 2. Na levé straně vyberte **Azure Active Directory** > **MFA Server**.
 3. Vyberte sestavu, kterou chcete zobrazit.
 
-   <center>
-   
-   ![Cloud](./media/howto-mfa-reporting/report.png)</center>
+   ![Sestava stavu serveru MFA Server na webu Azure Portal](./media/howto-mfa-reporting/report.png)
 
 ## <a name="azure-ad-sign-ins-report"></a>Sestava přihlašování Azure AD
 
@@ -55,7 +53,7 @@ Sestava přihlášení vám může poskytnout informace o použití spravovanýc
 
 Tato data jsou k dispozici prostřednictvím [webu Azure portal](https://portal.azure.com) a [API pro vytváření sestav](../reports-monitoring/concept-reporting-api.md).
 
-![Cloud](./media/howto-mfa-reporting/sign-in-report.png)
+![Sestava přihlašování Azure AD na webu Azure Portal](./media/howto-mfa-reporting/sign-in-report.png)
 
 ### <a name="sign-ins-report-structure"></a>Struktura sestavy přihlášení
 

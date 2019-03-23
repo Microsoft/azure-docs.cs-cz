@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 07d233ba50f4253b4ea3097748b9c58142e08a91
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 9d38e3caf3d835eaf73df90282157eed76c5ea25
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549424"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350636"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy k nasazení pro službu Web Apps v Azure
 
@@ -90,7 +90,7 @@ Další informace o okolnostech, za kterých nasazení aplikace může vést k r
 
 Máte dvě možnosti pro průběžné nasazování pomocí Azure DevOps:
 
-*   Použití projektu Git. Připojení pomocí služby App Service s použitím možnosti nasazení pro tohoto úložiště.
+*   Použití projektu Git. Připojení prostřednictvím služby App Service pomocí centra pro nasazení.
 *   Použití projektu Team Foundation verze ovládacího prvku (TFVC). Nasazení pomocí agenta sestavení pro službu App Service.
 
 Nasazení průběžné kódu pro obě tyto možnosti závisí na stávajících pracovních postupů pro vývojáře a postupy k vrácení se změnami. Další informace najdete v těchto článcích: 

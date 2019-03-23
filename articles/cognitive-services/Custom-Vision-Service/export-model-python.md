@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 05/17/2018
+ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: 02f93b86bc53b482127bdd6df963f75680242bcd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1e4c08c1e1f9c32c7c397cf187ad2ef91a25c59d
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007137"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350449"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Kurz: Spuštění modelu TensorFlow v Pythonu
 
@@ -24,16 +24,14 @@ V tomto rychlém startu se dozvíte, jak po [exportování modelu TensorFlow](ht
 > [!NOTE]
 > Tento kurz se vztahuje pouze na modely exportovat z projektů klasifikace obrázků.
 
-## <a name="install-required-components"></a>Instalace požadovaných součástí
-
-### <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadavky
 
 Pro tento kurz budete muset:
 
 - Nainstalovat Python 2.7+ nebo Python 3.5+.
 - Nainstalovat pip.
 
-Budete muset nainstalovat také následující balíčky:
+V dalším kroku je potřeba nainstalovat následující balíčky:
 
 ```
 pip install tensorflow
@@ -114,7 +112,6 @@ max_square_image = crop_center(image, min_dim, min_dim)
 augmented_image = resize_to_256_square(max_square_image)
 ```
 
-
 ### <a name="crop-the-center-for-the-specific-input-size-for-the-model"></a>Oříznutí středu na konkrétní velikost vstupu pro model
 
 ```Python
@@ -185,6 +182,7 @@ input_node = 'Placeholder:0'
 with tf.Session() as sess:
     try:
         prob_tensor = sess.graph.get_tensor_by_name(output_layer)
+        predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })
     except KeyError:
         print ("Couldn't find classification output layer: " + output_layer + ".")
         print ("Verify this a model exported from an Object Detection project.")
@@ -208,10 +206,10 @@ Výsledky zpracování tensoru obrázku modelem pak bude potřeba namapovat zpě
         print (labels[label_index], truncated_probablity)
         label_index += 1
 ```
+
 ## <a name="next-steps"></a>Další postup
 
-Model můžete také zabalit do mobilní aplikace:
+V dalším kroku zjistěte, jak zabalit modelu do mobilní aplikace:
 * [Použití exportovaného modelu Tensorflow v aplikaci pro Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [Použití exportovaného modelu CoreML v aplikaci Swift pro iOS](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Použití exportovaného modelu CoreML v aplikaci pro iOS s Xamarinem](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
-

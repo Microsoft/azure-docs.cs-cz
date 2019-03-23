@@ -1,7 +1,7 @@
 ---
 title: Typy entit
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Přidání entity (klíčových dat v doméně vaší aplikace) v aplikacích Language Understanding Intelligent Service (LUIS).
+description: 'Entity extrahovat data z utterance. Typy entit poskytují předvídatelný extrakce dat. Existují dva typy entit: zjistili počítače a jiné počítače zjistili. Je důležité vědět, jaký typ entity v projevy pracujete.'
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: c8d2ccc197eb8818cfe3fc54449ee982bbe0c087
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d12ea20f9f510b0e2d3d3512d8d8c71a3fb96eec
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57844584"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372518"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy entit a jejich účely v LUIS
 
-Entity jsou slova nebo fráze v projevy, které jsou data klíče v doméně vaší aplikace.
+Entity extrahovat data z utterance. Typy entit poskytují předvídatelný extrakce dat. Existují dva typy entit: zjistili počítače a jiné počítače zjistili. Je důležité vědět, jaký typ entity v projevy pracujete. 
 
 ## <a name="entity-compared-to-intent"></a>Entity ve srovnání s cílem
 
@@ -190,7 +190,7 @@ Entita je vhodná podle při:
 
 * Data odpovídá běžným případem použití předem připravených entit pro vaši kulturu jazyk nepodporuje. 
 
-Předem připravených entit můžete přidávat a odebírat kdykoli. Pokud zjistíte, že je v příkladu utterance nalezeny předem připravených entit, provádění nemožné, označení vlastní entity z aplikace odebrat předem připravených entit, označit vaší entity a pak přidejte předem připravených entit. 
+Předem připravených entit můžete přidávat a odebírat kdykoli.
 
 ![Číslo předem připravených entit](./media/luis-concept-entities/number-entity.png)
 
@@ -198,6 +198,29 @@ Předem připravených entit můžete přidávat a odebírat kdykoli. Pokud zjis
 [Příklad odpovědi JSON pro entitu](luis-concept-data-extraction.md#prebuilt-entity-data)
 
 Některé z těchto předem připravených entit jsou definovány v open-source [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text) projektu. Pokud konkrétní jazykovou verzi nebo entity se aktuálně nepodporuje, přispět k projektu. 
+
+### <a name="troubleshooting-prebuilt-entities"></a>Řešení potíží s předem vytvořenými entitami
+
+Na portálu služby LUIS Pokud namísto vlastní entitu, se označí předem připravených entit máte několik možností, jak tento problém vyřešit.
+
+Předem připravených entit, které jsou přidány do aplikace bude _vždy_ vrátit, i v případě, utterance by měl extrahovat vlastní entity pro stejný text. 
+
+#### <a name="change-tagged-entity-in-example-utterance"></a>Změňte označené entity v příkladu utterance
+
+Pokud předem připravených entit se stejný text nebo tokeny jako vlastní entitu, vyberte text v příkladu utterance a změňte označené utterance. 
+
+Pokud předem připravených entit je označené další text nebo tokeny než vlastní entitu, máte několik možností, jak tento problém vyřešit:
+
+* [Odebrat příklad utterance](#remove-example-utterance-to-fix-tagging) – metoda
+* [Odebrat předem připravených entit](#remove-prebuilt-entity-to-fix-tagging) – metoda
+
+#### <a name="remove-example-utterance-to-fix-tagging"></a>Odebrat příklad utterance opravit označování 
+
+Nejprve je odstranit utterance příklad a přeučování aplikace. Přidejte zpátky pouze slova nebo fráze entity jako příklad utterance a pak označit entity a trénování. Nyní přidejte zpět předem připravených entit a původní utterance příklad. Vlastní entity by měly být nadále označit místo předem připravených entit. 
+
+#### <a name="remove-prebuilt-entity-to-fix-tagging"></a>Odebrat předem připravených entit opravit označování
+
+Druhou možnost, je odebrat předem připravených entit z aplikace, pak Označit vlastní entity na utterance příkladu a pak přidejte předem připravených entit do aplikace. Tato oprava předpokládá, že předem připravených entit, které nejsou součástí složeného entity. 
 
 ## <a name="regular-expression-entity"></a>Entiay regulárního výrazu 
 

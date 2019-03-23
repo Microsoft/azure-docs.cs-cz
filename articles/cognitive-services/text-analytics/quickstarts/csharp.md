@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: assafi
-ms.openlocfilehash: bc4553df239dbb8b62a31414539b10998cd74f02
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: e960f662fda4272bbc9763eb04fdb739c4776af8
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189644"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371328"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Pomocí C# zavolat Text Analytics služby Cognitive Services
 <a name="HOLTop"></a>
@@ -35,7 +35,7 @@ Dále musíte mít [koncový bod a přístupový klíč](../How-tos/text-analyti
 1. Klikněte na řešení pravým tlačítkem a pak klikněte na **Spravovat balíčky NuGet pro řešení**.
 1. Zaškrtněte políčko **Zahrnout předběžné verze**.
 1. Vyberte kartu **Procházet** a vyhledejte **Microsoft.Azure.CognitiveServices.Language.TextAnalytics**.
-1. Vyberte balíček NuGet a nainstalujte ho. Nyní je opraveno (3-18-2019), nikoli v3.0.0, dokud se chyby v softwaru možná bude nutné v2.8.0 pro.
+1. Vyberte balíček NuGet a nainstalujte ho. Budete muset přejít na starší v2.8.0 prozatím (jak z 3-18-2019) až po aktualizaci vzorový kód s v3.0.0.
 
 > [!Tip]
 >  [Koncové body HTTP](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) můžete volat přímo z kódu jazyka C#, ale sada SDK Microsoft.Azure.CognitiveServices.Language volání služby výrazně usnadňuje díky tomu, že se nemusíte starat o serializaci a deserializaci formátu JSON.

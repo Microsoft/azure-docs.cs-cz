@@ -1,7 +1,7 @@
 ---
-title: Uživatel záměry
+title: Záměry
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Záměru představuje úkol nebo akci uživatel chce provést. Jedná o účely nebo cíl vyjádřeny utterance uživatele.
+description: Představuje jeden záměru úkol nebo akci uživatel chce provést. Jedná o účely nebo cíl vyjádřeny utterance uživatele. Definujte sadu příkazů, který odpovídá na akce, které uživatelé chtějí využít ve vaší aplikaci.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: ae1dd16e3296c11d6bce6ea623f590deaee8f65d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e635a11cb99d11befc40703d9f5d2abec8559632
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871349"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371107"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>Principy záměry aplikace LUIS
 
@@ -31,7 +31,7 @@ Cestovní záměry aplikace   |   Ukázkové promluvy   |
  CheckWeather | "Jak se o počasí v Bostonu jako"? <br/> "Zobrazit předpovědi pro tento víkendu" |
  Žádný         | "Si předpisu soubor cookie"<br>"Lakers win?" |
 
-Všechny aplikace, které jsou součástí předdefinovaných záměr "[žádný](#none-intent-is-fallback-for-app)" tedy záložní záměr. 
+Všechny aplikace, které jsou součástí předdefinovaných záměr "[žádný](#none-intent-is-fallback-for-app)", což je záložní záměr. 
 
 ## <a name="prebuilt-domains-provide-intents"></a>Předem připravených domén poskytují záměrů
 Kromě záměrů, které definujete můžete použít předem připravených záměry z jednoho z předem připravených domén. Další informace najdete v tématu [použití předem připravených domén v aplikacích LUIS](luis-how-to-use-prebuilt-domains.md) Další informace o tom, jak přizpůsobit příkazy z předem připravených domény pro použití ve vaší aplikaci.
@@ -57,7 +57,11 @@ Podobně míněný [projevy](luis-concept-utterance.md) odpovídají jedné zám
 
 [Předem připravených domén](luis-how-to-use-prebuilt-domains.md) mají záměry s projevy.  
 
-## <a name="none-intent-is-fallback-for-app"></a>Žádná záměru není pro aplikaci pro použití náhradní lokality
+## <a name="none-intent"></a>Žádný záměr
+
+**Žádný** záměr je důležité pro každou aplikaci a nesmí mít nulovou projevy.
+
+### <a name="none-intent-is-fallback-for-app"></a>Žádná záměru není pro aplikaci pro použití náhradní lokality
 **Žádný** pokrývající vše nebo záložní záměr je cílem. Používá se naučit LUIS projevy, které nejsou důležité v doméně aplikace (oblastí). **Žádný** záměr by měl mít 10 až 20 procent celkového projevy v aplikaci. Nenechávají žádný prázdný. 
 
 ### <a name="none-intent-helps-conversation-direction"></a>Žádný záměru pomáhá směr konverzace
@@ -76,6 +80,12 @@ Jaký typ projevy jsou ponechána pro žádný záměru? Začněte s nějaké ko
 
 ## <a name="negative-intentions"></a>Záporná záměry 
 Pokud chcete určit kladnému i záměrů, jako například "můžu **má** automobilu" a "můžu **není** má automobilu", můžete vytvořit dvě záměry (jednu pozitivní a negativní jeden) a přidejte odpovídající projevy pro Každý. Nebo můžete vytvořit jeden záměr a označit dvě různé kladné a záporné podmínky jako entity.  
+
+## <a name="intents-and-patterns"></a>Záměry a vzory
+
+Pokud máte například projevy, které mohou být definovány částečně nebo zcela jako regulární výraz, zvažte použití [regulárního výrazu entity](luis-concept-entity-types.md#regular-expression-entity) spárované s [vzor](luis-concept-patterns.md). 
+
+Extrakce dat pomocí regulárních výrazů entity zaručuje, tak, aby je vzorek párován. Porovnávání vzorů zaručuje, že se vrátí přesné záměru. 
 
 ## <a name="intent-balance"></a>Záměru zůstatek
 Domény záměry aplikace by měl mít rovnováhu projevy mezi každou záměr. Není nutné jeden záměr s 10 projevy a jiný účel s 500 projevy. To se rovnováha. Pokud máte tuto situaci, přečtěte si záměr s 500 projevy zobrazíte, pokud řadu příkazů může být znovu uspořádat do [vzor](luis-concept-patterns.md). 
@@ -96,6 +106,8 @@ Další informace o kombinování aplikace LUIS a QnA maker pomocí [odesílán�
 
 ### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Požádat o pomoc pro aplikace s velký počet záměrů
 Pokud pro vás nebude fungovat snížení počtu záměry nebo rozdělení vaše záměry do více aplikací, obraťte se na podporu. Pokud vaše předplatné Azure zahrnuje odbornou pomoc, obraťte se na [technické podpoře Azure](https://azure.microsoft.com/support/options/). 
+
+
 
 ## <a name="next-steps"></a>Další postup
 

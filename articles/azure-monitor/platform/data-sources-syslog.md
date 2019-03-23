@@ -11,17 +11,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2018
+ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: fa94bffc05879be9d6bbaaa7cd884c36ffe7e0b8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 41ea6222689516f224fc23ce6a658d17f7f81866
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451277"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372297"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Syslog zdroje dat ve službě Azure Monitor
-Syslog je protokol protokolování událostí, které jsou společné pro Linux.  Aplikace odešle zprávy, které mohou být uložené na místním počítači nebo doručí do kolekcí Syslog.  Při instalaci agenta Log Analytics pro Linux, konfiguruje místní démona Syslog na předávání zpráv k agentovi.  Agent pak odešle zprávu do Azure monitoru, kde se vytvoří odpovídající záznam.  
+Syslog je protokol protokolování událostí, které jsou společné pro Linux. Aplikace odešle zprávy, které mohou být uložené na místním počítači nebo doručí do kolekcí Syslog. Při instalaci agenta Log Analytics pro Linux, konfiguruje místní démona Syslog na předávání zpráv k agentovi. Agent pak odešle zprávu do Azure monitoru, kde se vytvoří odpovídající záznam.  
 
 > [!NOTE]
 > Azure Monitor podporuje sadu zpráv odeslaných rsyslog nebo syslog-ng, kde je rsyslog démona výchozí. Démon procesu syslog výchozí verze 5 Red Hat Enterprise Linux, CentOS a Oracle Linux verze (sysklog) není podporována pro shromažďování událostí protokolu syslog. Pro shromažďování syslogu z této verze těchto distribuce [používá proces démona rsyslogu](http://rsyslog.com) by měla být nainstalovaná a nakonfigurovaná pro nahrazení sysklog.
@@ -30,20 +30,38 @@ Syslog je protokol protokolování událostí, které jsou společné pro Linux.
 
 ![Shromažďování Syslogu](media/data-sources-syslog/overview.png)
 
+Následující zařízení podporují s kolektorem Syslog:
+
+* Prokládat
+* uživatel
+* mail
+* daemon
+* ověřování
+* syslog
+* lpr
+* Novinky
+* uucp
+* cron
+* authpriv
+* ftp
+* local0 local7
+
+Pro další zařízení [konfigurace zdroje dat vlastní protokoly](data-sources-custom-logs.md) ve službě Azure Monitor.
+ 
 ## <a name="configuring-syslog"></a>Konfigurace Syslog
-Agenta Log Analytics pro Linux bude shromažďovat pouze události s zařízení a závažnosti, které jsou uvedeny v jeho konfiguraci.  Syslog můžete nakonfigurovat prostřednictvím webu Azure portal nebo Správa konfiguračních souborů na agenty Linux.
+Agenta Log Analytics pro Linux bude shromažďovat pouze události s zařízení a závažnosti, které jsou uvedeny v jeho konfiguraci. Syslog můžete nakonfigurovat prostřednictvím webu Azure portal nebo Správa konfiguračních souborů na agenty Linux.
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Konfigurovat Syslog na webu Azure Portal
-Konfigurovat Syslog z [dat nabídky v upřesňujícím nastavení](agent-data-sources.md#configuring-data-sources).  Tato konfigurace se doručí do konfiguračního souboru na každého agenta pro Linux.
+Konfigurovat Syslog z [dat nabídky v upřesňujícím nastavení](agent-data-sources.md#configuring-data-sources). Tato konfigurace se doručí do konfiguračního souboru na každého agenta pro Linux.
 
-Můžete přidat nové zařízení tak, že zadáte jeho název a kliknete **+**.  Pro každé zařízení nebudou se shromažďovat pouze zprávy s vybranou závažnosti.  Zaškrtněte závažnosti pro konkrétní zařízení, která chcete shromažďovat.  Nelze zadat žádná další kritéria filtru zpráv.
+Můžete přidat nové zařízení tak, že zadáte jeho název a kliknete **+**. Pro každé zařízení nebudou se shromažďovat pouze zprávy s vybranou závažnosti.  Zaškrtněte závažnosti pro konkrétní zařízení, která chcete shromažďovat. Nelze zadat žádná další kritéria filtru zpráv.
 
 ![Konfigurovat Syslog](media/data-sources-syslog/configure.png)
 
-Standardně jsou všechny změny konfigurace automaticky nahrány do všech agentů.  Pokud chcete ručně konfigurovat Syslog na každého agenta pro Linux, poté zrušte zaškrtnutí políčka *použít uvedenou konfiguraci u mých Linuxových počítačů*.
+Standardně jsou všechny změny konfigurace automaticky nahrány do všech agentů. Pokud chcete ručně konfigurovat Syslog na každého agenta pro Linux, poté zrušte zaškrtnutí políčka *použít uvedenou konfiguraci u mých Linuxových počítačů*.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Konfigurace Syslog na agenta pro Linux
-Když [agenta Log Analytics je nainstalován do klienta Linux](../../azure-monitor/learn/quick-collect-linux-computer.md), nainstaluje výchozí konfigurační soubor procesu syslog, který definuje zařízení a závažnost zpráv, které byly shromážděny.  Můžete upravit tento soubor a změňte konfiguraci.  Konfigurační soubor se liší v závislosti na démon procesu Syslog, který se klient nainstaloval.
+Když [agenta Log Analytics je nainstalován do klienta Linux](../../azure-monitor/learn/quick-collect-linux-computer.md), nainstaluje výchozí konfigurační soubor procesu syslog, který definuje zařízení a závažnost zpráv, které byly shromážděny. Můžete upravit tento soubor a změňte konfiguraci. Konfigurační soubor se liší v závislosti na démon procesu Syslog, který se klient nainstaloval.
 
 > [!NOTE]
 > Pokud upravíte konfiguraci syslogu, je nutné restartovat démon procesu syslog, aby se změny projevily.
@@ -51,7 +69,7 @@ Když [agenta Log Analytics je nainstalován do klienta Linux](../../azure-monit
 >
 
 #### <a name="rsyslog"></a>rsyslog
-Konfigurační soubor pro rsyslog nachází ve **/etc/rsyslog.d/95-omsagent.conf**.  Níže se zobrazují výchozí obsah.  To shromažďuje syslog zpráv odeslaných z místního agenta pro všechna zařízení s úrovní varování nebo vyšší.
+Konfigurační soubor pro rsyslog nachází ve **/etc/rsyslog.d/95-omsagent.conf**. Níže se zobrazují výchozí obsah. To shromažďuje syslog zpráv odeslaných z místního agenta pro všechna zařízení s úrovní varování nebo vyšší.
 
     kern.warning       @127.0.0.1:25224
     user.warning       @127.0.0.1:25224
@@ -71,13 +89,13 @@ Konfigurační soubor pro rsyslog nachází ve **/etc/rsyslog.d/95-omsagent.conf
     local6.warning     @127.0.0.1:25224
     local7.warning     @127.0.0.1:25224
 
-Zařízení můžete odebrat odstraněním jeho oddílu konfiguračního souboru.  Můžete omezit závažnosti, které se shromažďují pro konkrétní zařízení tak, že upravíte položka tohoto zařízení.  Například pro omezení zařízení uživatele na zprávy s závažnost chyby nebo vyšší upravíte tento řádek v souboru konfigurace následujícím:
+Zařízení můžete odebrat odstraněním jeho oddílu konfiguračního souboru. Můžete omezit závažnosti, které se shromažďují pro konkrétní zařízení tak, že upravíte položka tohoto zařízení. Například pro omezení zařízení uživatele na zprávy s závažnost chyby nebo vyšší upravíte tento řádek v souboru konfigurace následujícím:
 
     user.error    @127.0.0.1:25224
 
 
 #### <a name="syslog-ng"></a>Syslog-ng
-Konfigurační soubor pro syslog-ng je umístění, od **/etc/syslog-ng/syslog-ng.conf**.  Níže se zobrazují výchozí obsah.  To shromažďuje syslog zpráv odeslaných z místního agenta pro všechna zařízení a všechny závažnosti.   
+Konfigurační soubor pro syslog-ng je umístění, od **/etc/syslog-ng/syslog-ng.conf**.  Níže se zobrazují výchozí obsah. To shromažďuje syslog zpráv odeslaných z místního agenta pro všechna zařízení a všechny závažnosti.   
 
     #
     # Warnings (except iptables) in one file:
@@ -128,7 +146,7 @@ Konfigurační soubor pro syslog-ng je umístění, od **/etc/syslog-ng/syslog-n
     filter f_user_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(user); };
     log { source(src); filter(f_user_oms); destination(d_oms); };
 
-Zařízení můžete odebrat odstraněním jeho oddílu konfiguračního souboru.  Můžete omezit závažnosti, které se shromažďují pro konkrétní zařízení tak, že odeberete ze seznamu.  Například pokud chcete omezit zařízení uživatele na právě upozornění a kritické zprávy, upravíte tohoto oddílu konfiguračního souboru takto:
+Zařízení můžete odebrat odstraněním jeho oddílu konfiguračního souboru. Můžete omezit závažnosti, které se shromažďují pro konkrétní zařízení tak, že odeberete ze seznamu.  Například pokud chcete omezit zařízení uživatele na právě upozornění a kritické zprávy, upravíte tohoto oddílu konfiguračního souboru takto:
 
     #OMS_facility = user
     filter f_user_oms { level(alert,crit) and facility(user); };
@@ -168,7 +186,7 @@ Zprávy Syslog na místní klient na portu 25224 naslouchá agenta Log Analytics
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* Konfigurace syslog-ng by měl být upraven tak, že zkopírujete Ukázková konfigurace je uvedeno níže, a přidáte vlastní upravené nastavení za účelem syslog ng.conf konfigurační soubor umístěný ve `/etc/syslog-ng/`.  Proveďte **není** použít výchozí popisek **% WORKSPACE_ID % _oms** nebo **% WORKSPACE_ID_OMS**, definovat vlastní popisek, rozeznali provedené změny.  
+* Konfigurace syslog-ng by měl být upraven tak, že zkopírujete Ukázková konfigurace je uvedeno níže, a přidáte vlastní upravené nastavení za účelem syslog ng.conf konfigurační soubor umístěný ve `/etc/syslog-ng/`. Proveďte **není** použít výchozí popisek **% WORKSPACE_ID % _oms** nebo **% WORKSPACE_ID_OMS**, definovat vlastní popisek, rozeznali provedené změny.  
 
     > [!NOTE]
     > Pokud změníte výchozí hodnoty v konfiguračním souboru, budou přepsány při agent použije výchozí konfiguraci.

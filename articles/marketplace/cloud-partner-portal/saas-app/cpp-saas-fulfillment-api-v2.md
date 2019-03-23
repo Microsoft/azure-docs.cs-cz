@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 7e1fa82e71738ac113bfe748a7117d0c3a10b14b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 81213d1f7cfeb7ea10cdadfb124047ecb76aa7d4
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57318758"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352081"
 ---
-# <a name="saas-fulfillment-api-version-2"></a>Verze rozhraní API SaaS splnění 2
+# <a name="saas-fulfillment-api"></a>Splnění SaaS API
 
 Tento článek podrobně popisuje rozhraní API, která umožňuje nezávislí výrobci softwaru (ISV) můžete integrovat své aplikace SaaS pomocí Azure Marketplace. Toto rozhraní API umožňuje aplikace nezávislých výrobců softwaru se účastnit všech kanálů commerce povoleno: s přímým přístupem, vedené partnerem (prodejci) a vedla pole.  Toto rozhraní API je požadavek na výpis transactable SaaS nabídky na webu Azure Marketplace.
 

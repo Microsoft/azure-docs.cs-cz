@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: 83c286be6429376d4d0b4009b18c5f751a4b158f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: cd0369f45529082ac929b1d87608204033cd78f6
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226687"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370512"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -517,7 +517,14 @@ Straně klienta (JavaScript) SDK se účastní-frekvence vzorkování ve spojen�
 
 *Existují určité výjimečných událostí, které chci vždy zobrazit. Jak získám je poslední vzorkování modulu?*
 
-* Inicializujte samostatnou instanci TelemetryClient s novou TelemetryConfiguration (ne výchozí aktivní). Použijte k odesílání výjimečných událostí.
+* Nejlepší způsob, jak toho dosáhnout, je napsat vlastní [TelemetryProcessor](../../azure-monitor/app/api-filtering-sampling.md#filtering), který nastaví `SamplingPercentage` na 100 na položky telemetrie má zachované, jak je znázorněno níže. Tím se zajistí, že všechny odběry vzorků bude ignorovat tuto položku ze všechny důležité informace o vzorkování.
+
+```csharp
+    if(somecondition)
+    {
+        ((ISupportSampling)item).SamplingPercentage = 100;
+    }
+```
 
 ## <a name="next-steps"></a>Další postup
 

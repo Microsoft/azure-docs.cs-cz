@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: ''
-ms.date: 03/13/2019
+ms.date: 03/23/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
-ms.lastreviewed: 03/13/2019
-ms.openlocfilehash: db95be94028fcf16871a9dcfee5f0d87eb5d2cdc
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.lastreviewed: 03/23/2019
+ms.openlocfilehash: 1c105548f19994c4ca0ce161eedcfe11736864c7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285662"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370019"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>Nasadit službu App Service v konfiguraci s vysokou dostupností
 
@@ -54,8 +54,7 @@ Před použitím této šablony, ujistěte se, že následující [položky mark
 ### <a name="deploy-the-app-service-infrastructure"></a>Nasazení infrastruktury služby App Service
 Postupujte podle kroků v této části k vytvoření vlastního nasazení pomocí **služby App Service – sdílení souborů – systému SQL Server – ha** šablony Quickstart pro Azure Stack.
 
-1. 
-   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+1. [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Vyberte **\+** **vytvořit prostředek** > **vlastní**a potom **nasazení šablony**.
 
@@ -94,8 +93,7 @@ Zajistěte, aby že každá z těchto hodnot výstupu zaznamenat:
 
 Použijte následující postup zjistit výstupní hodnoty šablony:
 
-1. 
-   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+1. [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. V portálu pro správu, vyberte **skupiny prostředků** a klikněte na název skupiny prostředků vytvořené pro vlastní nasazení (**app-service-ha** v tomto příkladu). 
 
@@ -168,9 +166,20 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
     ![Informace o výstupu sdílené složky souboru](media/app-service-deploy-ha/07.png)
 
-9. Vzhledem k tomu, že počítač, který používáte k instalaci služby App Service se nenachází na stejné virtuální síti jako souborový server se používá k hostování sdílené služby App Service, nebudete schopni vyřešit název. Toto je očekávané chování.<br><br>Ověřte správnost informací zadaných pro sdílené složky UNC cestu a účty informace a stiskněte klávesu **Ano** v dialogovém okně upozornění a pokračujte v instalaci služby App Service.
+9. Vzhledem k tomu, že počítač, který používáte k instalaci služby App Service se nenachází na stejné virtuální síti jako souborový server se používá k hostování sdílené služby App Service, nebudete schopni vyřešit název. **Toto chování je očekávané**.<br><br>Ověřte správnost informací zadaných pro sdílené složky UNC cestu a účty informace a stiskněte klávesu **Ano** v dialogovém okně upozornění a pokračujte v instalaci služby App Service.
 
     ![Očekávané chybové dialogové okno](media/app-service-deploy-ha/08.png)
+
+    Pokud jste se rozhodli nasadit do existující virtuální sítě a interní IP adresu pro připojení k souborovému serveru, je nutné přidat odchozí pravidlo zabezpečení, povolení provozu SMB mezi podsítě pracovního procesu a souborový server. Přejděte na WorkersNsg portálu pro správu a přidat odchozí pravidlo zabezpečení s následujícími vlastnostmi:
+    - Zdroj: Všechny
+    - Zdrojový rozsah portů: *
+    - Cíl: IP adresy
+    - Rozsah cílových IP adres: Rozsah IP adres pro souborový server
+    - Rozsah cílových portů: 445
+    - Protokol: TCP
+    - Akce: Povolit
+    - Priorita: 700
+    - Název: Outbound_Allow_SMB445
 
 10. Zadejte ID aplikace Identity a cestu a hesel, která se certifikáty identity a klikněte na tlačítko **Další**:
     - Certifikát aplikace identity (ve formátu **sso.appservice.local.azurestack.external.pfx**)
@@ -189,7 +198,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
     ![Informace o připojení SQL serveru](media/app-service-deploy-ha/10.png)
 
-12. Vzhledem k tomu, že počítač, který používáte k instalaci služby App Service se nenachází na stejné virtuální síti jako SQL server používá k hostování databáze aplikace služby, nebudete schopni vyřešit název.  Toto je očekávané chování.<br><br>Ověřte správnost informací zadaných pro informace o systému SQL Server název a účty a stiskněte klávesu **Ano** a pokračujte v instalaci služby App Service. Klikněte na **Další**.
+12. Vzhledem k tomu, že počítač, který používáte k instalaci služby App Service se nenachází na stejné virtuální síti jako SQL server používá k hostování databáze aplikace služby, nebudete schopni vyřešit název.  **Toto chování je očekávané**.<br><br>Ověřte správnost informací zadaných pro informace o systému SQL Server název a účty a stiskněte klávesu **Ano** a pokračujte v instalaci služby App Service. Klikněte na **Další**.
 
     ![Informace o připojení SQL serveru](media/app-service-deploy-ha/11.png)
 
@@ -231,3 +240,5 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 [Horizontální navýšení kapacity služby App Service](azure-stack-app-service-add-worker-roles.md). Můžete potřebovat přidat další služby App Service infrastrukturu role pracovní procesy pro splnění požadavků očekávané aplikace ve vašem prostředí. Ve výchozím nastavení podporuje služby App Service ve službě Azure Stack vrstvy bezplatných a sdílených pracovních procesů. Přidání další vrstvy pracovních procesů, budete muset přidat další role pracovního procesu.
 
 [Konfigurace zdrojů nasazení](azure-stack-app-service-configure-deployment-sources.md). Další konfigurace je nutná pro podporu nasazení na vyžádání od více poskytovatelů zdrojového ovládacího prvku, jako jsou GitHub, BitBucket, OneDrive nebo DropBox.
+
+[Zálohování služby App Service](app-service-back-up.md). Po úspěšné nasazení a konfiguraci služby App Service měli byste zajistit, že všechny komponenty potřebné pro zotavení po havárii se zálohují na zabraňují úniku dat a vyhněte se výpadkům zbytečné service během operace obnovení.

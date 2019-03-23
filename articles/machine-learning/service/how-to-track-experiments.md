@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 835d1f41ffe940422554a8ca59d0a91ac8e98607
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 50cd5969ce02ee5eea0637c950069d684d67b5d3
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336590"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361451"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Protokolujte metriky během cvičení běží ve službě Azure Machine Learning
 
@@ -32,7 +32,7 @@ Pro spuštění při školení experiment lze přidat následující metriky. Ch
 |Seznamy|Funkce:<br>`run.log_list(name, value, description='')`<br><br>Příklad:<br>Run.log_list ("přesností" [0.6, 0,7, 0.87]) | Přihlaste se seznam hodnot pro spouštění s daným názvem.|
 |Řádek|Funkce:<br>`run.log_row(name, description=None, **kwargs)`<br>Příklad:<br>Run.log_row ("Y nad X", x = 1, y = 0.4) | Pomocí *log_row* vytvoří metriku s více sloupců, jak je popsáno v kwargs. Každý pojmenovaný parametr generuje sloupec s hodnotou.  *log_row* může být volána jednou pro přihlášení libovolné řazené kolekce členů nebo více než jednou ve smyčce pro generování celou tabulku.|
 |Table|Funkce:<br>`run.log_table(name, value, description='')`<br><br>Příklad:<br>Run.log_table ("Y nad X", {"x": [1, 2, 3], "y": [0.6, 0,7, 0.89]}) | Přihlaste se na objekt slovníku běh s daným názvem. |
-|Image|Funkce:<br>`run.log_image(name, path=None, plot=None)`<br><br>Příklad:<br>Run.log_image ("ROC", čas načtení stránky) | Přihlaste se image spusťte záznam. Použití k protokolování soubor obrázku nebo matplotlib log_image vykreslení spustit.  Tyto Image budou viditelné a srovnatelné v běhu záznamu.|
+|Image|Funkce:<br>`run.log_image(name, path=None, plot=None)`<br><br>Příklad:<br>`run.log_image("ROC", plt)` | Přihlaste se image spusťte záznam. Použití k protokolování soubor obrázku nebo matplotlib log_image vykreslení spustit.  Tyto Image budou viditelné a srovnatelné v běhu záznamu.|
 |Označení spuštění|Funkce:<br>`run.tag(key, value=None)`<br><br>Příklad:<br>Run.tag ("vybrat", "Ano") | Označte běh s klíčem řetězce a volitelný řetězec.|
 |Nahrát soubor nebo adresář|Funkce:<br>`run.upload_file(name, path_or_stream)`<br> <br> Příklad:<br>Run.upload_file ("best_model.pkl", ". / model.pkl") | Nahrání souboru do běhu záznamu. Spuštění automaticky zachytávací soubor v zadané výstupní adresář, kde je použit výchozí ". / výstupy" pro většinu spuštění typy.  Není zadána upload_file použijte jenom v případě, že budete muset nahrát další soubory nebo výstupní adresář. Doporučujeme přidat `outputs` název tak, že nahrán do adresáře výstupy. Můžete vytvořit seznam všech souborů, které jsou spojeny s tímto spustit záznam podle volá `run.get_file_names()`|
 
@@ -48,7 +48,7 @@ Pokud chcete sledovat nebo sledovat experimentu, musíte přidat kód pro spušt
 ## <a name="set-up-the-workspace"></a>Nastavit pracovní prostor
 Před přidáním protokolování a odeslání experimentu, musíte nastavit pracovní prostor.
 
-1. Načtení pracovního prostoru. Další informace o nastavení konfigurace pracovního prostoru, postupujte [rychlý Start](https://docs.microsoft.com/azure/machine-learning/service/quickstart-get-started).
+1. Načtení pracovního prostoru. Další informace o nastavení konfigurace pracovního prostoru, postupujte podle kroků v [vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md#sdk).
 
    ```python
    from azureml.core import Experiment, Run, Workspace
@@ -218,7 +218,9 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
    ```
 
 ## <a name="cancel-a-run"></a>Zrušit běh
-Po spuštění se odešle, můžete ji zrušit i v případě, že jste ztratili odkazu na objekt, za předpokladu, které znáte název experimentu a id spuštění. 
+
+Příkaz ALTER spuštění se odešle, můžete ji zrušit i v případě, že jste ztratili odkazu na objekt, za předpokladu, které znáte název experimentu a ID spuštění. 
+
 
 ```python
 from azureml.core import Experiment
@@ -239,7 +241,7 @@ print(type(r), r.get_status())
 if r.get_status() not in ['Complete', 'Failed']:
     r.cancel()
 ```
-Všimněte si, že momentálně se podporuje jenom ScriptRun a PipelineRun typů podporuje operace zrušení.
+Momentálně se podporuje jenom ScriptRun a PipelineRun typů podporuje operace zrušení.
 
 Kromě toho můžete zrušit běh přes rozhraní příkazového řádku pomocí následujícího příkazu:
 ```shell
@@ -261,7 +263,7 @@ Při použití **ScriptRunConfig** spuštěním metody k odeslání, můžete sl
 
    ![Snímek obrazovky aplikace Jupyter notebook widgetu](./media/how-to-track-experiments/widgets.PNG)
 
-2. **[Pro automatizované strojového učení spuštění]**  Pro přístup k grafy z předchozích spuštění. Nahraďte prosím `<<experiment_name>>` s názvem odpovídající experiment:
+2. **[Pro automatizované strojového učení spuštění]**  Pro přístup k grafy z předchozích spuštění. Nahraďte `<<experiment_name>>` s názvem odpovídající experiment:
 
    ``` 
    from azureml.widgets import RunDetails

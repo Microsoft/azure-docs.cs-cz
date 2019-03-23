@@ -11,18 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 580c9080bb2b019e120ea57e5fe4444a71c24e76
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314786"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371362"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Nasazení resetování hesla bez vyžadování registrace koncového uživatele
 
 Ověřovací data pro nasazení služby Azure Active Directory (Azure AD) samoobslužné resetování hesla (SSPR), musí být k dispozici. Některé organizace mají své uživatele zadejte ověřovací data sami. Ale mnoho organizací raději synchronizovat s daty, která již existuje ve službě Active Directory. Synchronizace dat je k dispozici pro Azure AD a samoobslužné resetování HESLA bez nutnosti zásahu uživatele, pokud jste:
-   * Správně formátování dat v místním adresáři.
-   * Konfigurace [Azure AD Connect s použitím expresního nastavení](../hybrid/how-to-connect-install-express.md).
+
+* Správně formátování dat v místním adresáři.
+* Konfigurace [Azure AD Connect s použitím expresního nastavení](../hybrid/how-to-connect-install-express.md).
 
 Pro vše správně fungovalo, musí být telefonní čísla ve formátu *+ CountryCode PhoneNumber*, například 4255551234 + 1.
 
@@ -46,7 +47,7 @@ Když uživatel zadání čísla mobilního telefonu, pole Telefon pod kontaktn�
 
 Globální správce, můžete ručně nastavit kontaktní údaje pro ověření pro uživatele, jako je zobrazena na následujícím snímku obrazovky.
 
-![Obraťte se na][Contact]
+![Ověřování kontaktní informace na uživatele ve službě Azure AD][Contact]
 
 Pokud je vyplněno pole Telefon a v zásadách samoobslužné resetování HESLA je povoleno mobilní telefon, uživateli se zobrazí, že číslo, na stránce registrace pro resetování hesla a během heslo pracovního postupu pro obnovení.
 
@@ -84,7 +85,7 @@ Chcete-li začít, je potřeba [stáhněte a nainstalujte modul Azure AD PowerSh
 
 #### <a name="set-the-authentication-data-with-powershell-version-1"></a>Nastavení ověření dat pomocí prostředí PowerShell verze 1
 
-```
+```PowerShell
 Connect-MsolService
 
 Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com")
@@ -96,7 +97,7 @@ Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("emai
 
 #### <a name="read-the-authentication-data-with-powershell-version-1"></a>Čtení ověřovacích dat pomocí prostředí PowerShell verze 1
 
-```
+```PowerShell
 Connect-MsolService
 
 Get-MsolUser -UserPrincipalName user@domain.com | select AlternateEmailAddresses
@@ -110,7 +111,7 @@ Get-MsolUser | select DisplayName,UserPrincipalName,AlternateEmailAddresses,Mobi
 
 Ke čtení **telefon pro ověření** a **E-mail pro ověření** při použití prostředí PowerShell verze 1, použijte následující příkazy:
 
-```
+```PowerShell
 Connect-MsolService
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select PhoneNumber
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select Email
@@ -122,7 +123,7 @@ Chcete-li začít, je potřeba [stáhněte a nainstalujte modul prostředí Powe
 
 Pokud chcete rychle nainstalovat z nejnovější verze prostředí PowerShell, které podporují Install-Module, spusťte následující příkazy. (První řádek zkontroluje, pokud je již nainstalován modul.)
 
-```
+```PowerShell
 Get-Module AzureADPreview
 Install-Module AzureADPreview
 Connect-AzureAD
@@ -130,7 +131,7 @@ Connect-AzureAD
 
 #### <a name="set-the-authentication-data-with-powershell-version-2"></a>Nastavení ověření dat pomocí prostředí PowerShell verze 2
 
-```
+```PowerShell
 Connect-AzureAD
 
 Set-AzureADUser -ObjectId user@domain.com -OtherMails @("email@domain.com")
@@ -142,7 +143,7 @@ Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mo
 
 #### <a name="read-the-authentication-data-with-powershell-version-2"></a>Čtení ověřovacích dat pomocí prostředí PowerShell verze 2
 
-```
+```PowerShell
 Connect-AzureAD
 
 Get-AzureADUser -ObjectID user@domain.com | select otherMails

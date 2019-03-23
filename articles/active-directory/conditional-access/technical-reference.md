@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/12/2019
+ms.date: 03/22/2019
 ms.author: markvi
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b475eae337b7e6a7e26b3e5a7518be0e461c9fa4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6a303319a3f87f684b72bcddd8d30cd4a2c60642
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170611"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351520"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -144,20 +144,25 @@ Ve své zásady podmíněného přístupu můžete vybrat **prohlížeče** jako
 Toto nastavení funguje u všech prohlížečů. Tím se uspokojí zásady pro zařízení, jako je zařízení kompatibilní s požadavkem, následující operační systémy a prohlížeče jsou však podporovány:
 
 
-| Operační systém                     | Prohlížeče                            | Podpora     |
-| :--                    | :--                                 | :-:         |
-| Windows 10             | Internet Explorer, Microsoft Edge, Chrome     | ![Zaškrtnout][1] |
-| Windows 8 nebo 8.1        | Internet Explorer, Chrome           | ![Zaškrtnout][1] |
-| Windows 7              | Internet Explorer, Chrome           | ![Zaškrtnout][1] |
-| iOS                    | Safari, Intune Managed Browser      | ![Zaškrtnout][1] |
-| Android                | Chrome, Intune Managed Browser      | ![Zaškrtnout][1] |
-| telefon se systémem Windows          | Internet Explorer, Microsoft Edge             | ![Zaškrtnout][1] |
-| Windows Server 2016    | Internet Explorer, Microsoft Edge             | ![Zaškrtnout][1] |
-| Windows Server 2016    | Chrome                              | Již brzy |
-| Windows Server 2012 R2 | Internet Explorer, Chrome           | ![Zaškrtnout][1] |
-| Windows Server 2008 R2 | Internet Explorer, Chrome           | ![Zaškrtnout][1] |
-| macOS                  | Chrome, Safari                      | ![Zaškrtnout][1] |
+| Operační systém                     | Prohlížeče                                      |
+| :--                    | :--                                           |
+| Windows 10             | Internet Explorer, Microsoft Edge, Chrome     |
+| Windows 8 nebo 8.1        | Internet Explorer, Chrome                     |
+| Windows 7              | Internet Explorer, Chrome                     |
+| iOS                    | Safari, Intune Managed Browser                |
+| Android                | Chrome, Intune Managed Browser                |
+| telefon se systémem Windows          | Internet Explorer, Microsoft Edge             |
+| Windows Server 2016    | Internet Explorer, Microsoft Edge             |
+| Windows Server 2016    | Chrome                                        |
+| Windows Server 2012 R2 | Internet Explorer, Chrome                     |
+| Windows Server 2008 R2 | Internet Explorer, Chrome                     |
+| macOS                  | Chrome, Safari                                |
+ 
 
+
+#### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>Proč vidím certifikát výzvu v prohlížeči
+
+Azure AD ve Windows 7, iOS, Android a macOS Určuje zařízení používají klientský certifikát, který je zřízený, když je zařízení zaregistrované ve službě Azure AD.  Když uživatel poprvé přihlásí pomocí prohlížeče bude uživatel vyzván k výběru certifikátu. Než začnete používat prohlížeč, musí uživatel vybrat tento certifikát.
 
 
 #### <a name="chrome-support"></a>Podpora Chrome

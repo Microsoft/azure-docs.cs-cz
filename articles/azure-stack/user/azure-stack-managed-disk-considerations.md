@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: c1a0e77f98d269185bc065c86a367c3ed6519fb5
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 28210048cd007fc10dcd4cf5e92577cbd121e2a3
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961971"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368268"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Managed Disks zásobníku: rozdíly a aspekty
 
@@ -134,13 +134,27 @@ Azure Stack podporuje *spravované image*, které umožňují můžete vytvořit
 - Máte zobecněný nespravované virtuální počítače a chcete použít spravované disky do budoucna.
 - Máte generalizovaného spravované počítače a chcete vytvořit více, podobně jako spravovaných virtuálních počítačů.
 
-### <a name="migrate-unmanaged-vms-to-managed-disks"></a>Migrace nespravované virtuální počítače na managed disks
+### <a name="step-1-generalize-the-vm"></a>Krok 1: Generalizace virtuálního počítače
+Pro Windows pomocí postupu v části "Generalizace virtuálního počítače Windows pomocí nástroje Sysprep" zde: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep Pro Linux postupujte podle kroku 1 na tady: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm 
+
+Poznámka: Nezapomeňte generalizace virtuálního počítače. Vytvoření virtuálního počítače z image, který se nezobecnil správně povede k VMProvisioningTimeout chyby.
+
+### <a name="step-2-create-the-managed-image"></a>Krok 2: Vytvoření spravované Image
+K tomu můžete použít na portálu, powershellu nebo rozhraní příkazového řádku. Postupujte podle zde dokumentů Azure: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource
+
+### <a name="step-3-choose-the-use-case"></a>Krok 3: Zvolte případ použití:
+#### <a name="case-1-migrate-unmanaged-vms-to-managed-disks"></a>Případ 1: Migrace nespravované virtuální počítače na managed disks
+Nezapomeňte generalizace virtuálního počítače správně před provedením tohoto kroku. Generalizace, tento virtuální počítač nemůže být po další používané. Vytvoření virtuálního počítače z image, který se nezobecnil správně povede k VMProvisioningTimeout chyby. 
 
 Postupujte podle pokynů [tady](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account) pro vytvoření spravované image z generalizovaného VHD v účtu úložiště. Tento image je možné k vytvoření spravovaných virtuálních počítačů do budoucna.
 
-### <a name="create-managed-image-from-vm"></a>Vytvoření spravované image z virtuálního počítače
+#### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>Případ 2: Vytvořit spravovaný virtuální počítač z bitové kopie spravovaného pomocí Powershellu
 
 Po vytvoření image z existujícího spravovaného disku virtuálního počítače pomocí skriptu [tady](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell) , následující ukázkový skript vytvoří podobně jako virtuální počítač s Linuxem z existujícího objektu image:
+
+Modul prostředí powershell Azure Stack 1.7.0 nebo novější: Postupujte podle pokynů [zde](../../virtual-machines/windows/create-vm-generalized-managed.md) 
+
+Modul prostředí powershell Azure Stack 1.6.0 nebo níže:
 
 ```powershell
 # Variables for common values
@@ -191,7 +205,7 @@ Add-AzureRmVMNetworkInterface -Id $nic.Id
 New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-Další informace najdete v tématu Azure spravované image články [vytvoření spravované image zobecněného virtuálního počítače v Azure](../../virtual-machines/windows/capture-image-resource.md) a [vytvoření virtuálního počítače ze spravované image](../../virtual-machines/windows/create-vm-generalized-managed.md).
+Na portálu můžete také použít k vytvoření virtuálního počítače ze spravované image. Další informace najdete v tématu Azure spravované image články [vytvoření spravované image zobecněného virtuálního počítače v Azure](../../virtual-machines/windows/capture-image-resource.md) a [vytvoření virtuálního počítače ze spravované image](../../virtual-machines/windows/create-vm-generalized-managed.md).
 
 ## <a name="configuration"></a>Konfigurace
 

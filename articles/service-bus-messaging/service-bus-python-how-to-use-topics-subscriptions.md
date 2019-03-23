@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/20/2018
 ms.author: aschhab
-ms.openlocfilehash: 476c51d1835a1be0178faf28e6dd8a3c95371929
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: a12288de2f9a7682fb433dd0d5c7905cc76c12b9
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240962"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351656"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Jak používat témata a odběry Service Bus pomocí Pythonu
 
@@ -167,7 +167,7 @@ Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb
 
 K dispozici je také vypršení časového limitu zpráva uzamčená v odběru a pokud se aplikaci nepodaří zprávu zpracovat před zámku vyprší časový limit (například pokud aplikace spadne), pak služby Service Bus zprávu automaticky odemkne a ji zpřístupní k přijetí.
 
-V případě, že aplikace spadne po zpracování zprávy, ale předtím, než `delete` metoda je volána, pak bude doručit víckrát do aplikace při restartování. Toto chování se často říká. Alespoň jednou zpracování *; To znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. Uděláte to tak, můžete použít **MessageId** vlastnosti zprávy, která zůstává konstantní pokusu o doručení.
+V případě, že aplikace spadne po zpracování zprávy, ale předtím, než `delete` metoda je volána, pak bude doručit víckrát do aplikace při restartování. Toto chování se často říká. Alespoň jedno zpracování\*; to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. Uděláte to tak, můžete použít **MessageId** vlastnosti zprávy, která zůstává konstantní pokusu o doručení.
 
 ## <a name="delete-topics-and-subscriptions"></a>Odstranění témat a odběrů
 

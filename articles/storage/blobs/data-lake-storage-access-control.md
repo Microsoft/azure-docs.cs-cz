@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 906b1dde3d145268df4fb1ff5c243c7daa8396ec
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a102216a6a2a7dec471678e14f7050cb4ef41d77
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992445"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370104"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -279,7 +279,18 @@ Vlastnící uživatel může změnit oprávnění k souboru a sám si udělit ve
 
 ### <a name="why-do-i-sometimes-see-guids-in-acls"></a>Proč se někdy zobrazují identifikátory GUID v seznamech ACL?
 
-Identifikátor GUID se zobrazí, pokud položka představuje uživatele a tohoto uživatele v Azure AD už neexistuje. K tomu obvykle dochází, když uživatel opustí společnost nebo když je jeho účet odstraněn ve službě Azure AD. Kromě toho instanční objekty a skupiny zabezpečení nemají hlavní název uživatele (UPN) jejich identifikaci a proto jsou reprezentované prostřednictvím jejich atribut OID (guid). 
+Identifikátor GUID se zobrazí, pokud položka představuje uživatele a tohoto uživatele v Azure AD už neexistuje. K tomu obvykle dochází, když uživatel opustí společnost nebo když je jeho účet odstraněn ve službě Azure AD. Kromě toho instanční objekty a skupiny zabezpečení nemají hlavní název uživatele (UPN) jejich identifikaci a proto jsou reprezentované prostřednictvím jejich atribut OID (guid).
+
+### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>Jak nastavit seznamy ACL správně pro službu objektu zabezpečení?
+
+Při definování seznamů ACL pro instanční objekty, je potřeba použít ID objektu (OID) z *instanční objekt služby* pro registraci aplikace, kterou jste vytvořili. Je důležité si uvědomit, že registrovaných aplikací mají samostatné instančního objektu v konkrétní tenanta Azure AD. Registrovaná aplikace mají OID, který se zobrazuje na webu Azure portal, ale *instanční objekt služby* má jiný identifikátor objektu (různé).
+
+Chcete-li získat identifikátor OID pro instanční objekt této corresonds do registrace aplikace, můžete použít `az ad sp show` příkazu. Zadejte ID aplikace jako parametr. Tady je příklad týkající se získání identifikátor OID pro instanční objekt, který odpovídá registrace aplikace s Id aplikace = 18218b12 1895-43e9-ad80-6e8fc1ea88ce. V Azure CLI, spusťte následující příkaz:
+
+`az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
+<<OID will be displayed>>`
+
+Až budete mít správný identifikátor objektu k objektu služby, přejděte do Průzkumníka úložišť **spravovat přístup** stránku a přidejte Identifikátor objektu a přiřaďte odpovídající oprávnění pro Identifikátor objektu. Ujistěte se, že vyberete **Uložit**.
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Podporuje Data Lake Storage Gen2 dědění seznamů ACL?
 

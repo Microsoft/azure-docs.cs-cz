@@ -16,12 +16,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: aff9dade7fe0238c0ea8ccc3ae5bba57437c6f89
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 3d9376ba5945c97d18f6cf68c242d5217beee679
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339544"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349701"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy kvót ve službě Azure Stack
 
@@ -40,7 +40,10 @@ ms.locfileid: "58339544"
 | Maximální kapacita (v GB) spravovaných disků úrovně standard | 2 048 | Maximální kapacita spravované disky úrovně standard, vytvořené v tomto umístění. |
 | Maximální kapacita spravovaný disk úrovně premium (v GB) | 2 048 | Maximální kapacita premium spravované disky, které lze vytvořit v tomto umístění. |
 
-## <a name="storage-quota-types"></a>Typy kvót úložiště
+> [!NOTE]  
+> Je oddělená od spravovaných disková kvóta maximální kapacita nespravovaný disk (objekty BLOB stránky), mělo by být nastavené v rámci kvóty úložiště.
+
+## <a name="storage-quota-types"></a>Typy kvót úložiště 
 
 | **Položka** | **Výchozí hodnota** | **Popis** |
 | --- | --- | --- |
@@ -48,7 +51,7 @@ ms.locfileid: "58339544"
 | Celkový počet účtů úložiště |20 |Maximální počet účtů úložiště, které předplatné můžete vytvořit v tomto umístění. |
 
 > [!NOTE]  
-> Může trvat až dvě hodiny, než bude vynucovat kvóty úložiště.
+> Může trvat až dvě hodiny, než bude vynucovat kvóty úložiště. Maximální kapacita spravovaného disku je oddělená od kvóta celkový úložiště, musí být nastaveno v kvóty výpočtů.
 
 ## <a name="network-quota-types"></a>Typy kvót sítě
 

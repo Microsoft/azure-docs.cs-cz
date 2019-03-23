@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 10/02/2018
+ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 00f5f8e045a2ec78751d115db3d9d75ec76189e8
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 8c50a3069ea8b1303e45c571425a6f4c9b4c0d5b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57732299"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368184"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Rychlý start: Nasadit instanci kontejneru v Azure pomocí Azure Powershellu
 
@@ -43,14 +43,14 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Teď máte skupinu prostředků a můžete spustit kontejner v Azure. Pokud chcete vytvořit instanci kontejneru s využitím Azure Powershellu, zadejte název skupiny prostředků, název instance kontejneru a image kontejneru Dockeru pro [AzContainerGroup nový] [ New-AzContainerGroup] rutiny. V tomto rychlém startu použijete `microsoft/iis:nanoserver` image Windows z veřejného registru Docker Hub. Tento obrázek balíčky Internetové informační služby (IIS) ke spuštění na Nano serveru.
+Teď máte skupinu prostředků a můžete spustit kontejner v Azure. Pokud chcete vytvořit instanci kontejneru s využitím Azure Powershellu, zadejte název skupiny prostředků, název instance kontejneru a image kontejneru Dockeru pro [AzContainerGroup nový] [ New-AzContainerGroup] rutiny. V tomto rychlém startu použijete veřejnosti `mcr.microsoft.com/windows/servercore/iis:nanoserver` bitové kopie. Tento obrázek balíčky Microsoft Internet informační služby (IIS) pro spuštění na Nano serveru.
 
 Kontejnery můžete zveřejnit na internetu tak, že zadáte jeden nebo více otevíraných portů, popisek názvu DNS nebo oboje. V tomto rychlém startu nasadíte kontejner s použitím popisku názvu DNS tak, aby služba IIS je veřejně dostupný.
 
 Spusťte příkaz podobný následujícímu spusťte instanci kontejneru. Nastavte `-DnsNameLabel` hodnotu, která je jedinečný v rámci oblasti Azure, kde můžete vytvořit instanci. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
  ```azurepowershell-interactive
-New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
+New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image mcr.microsoft.com/windows/servercore/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
 ```
 
 Během několika sekund by se měla zobrazit odezva z Azure. Stav `ProvisioningState` kontejneru má nejdřív hodnotu **Vytváření**, ale během jedné nebo dvou minut by se měla zobrazit hodnota **Úspěšné**. Zkontrolujte stav nasazení se [Get-AzContainerGroup] [ Get-AzContainerGroup] rutiny:

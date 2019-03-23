@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ccb408a427680cffc339797bd3421ed9f53af640
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 80c2d25fa24acff92a462f0289259792f217fbfd
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200680"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361689"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu
 
@@ -26,6 +26,8 @@ Azure HDInsight poskytuje konfigurace metodu nazvanou **akcí skriptů** , kter�
 > Linux je pouze operační systém používaný v HDInsight verze 3.4 a vyšší. Další informace najdete v tématu [HDInsight Windows vyřazení](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 Akce se skripty můžete také publikovat na webu Azure Marketplace jako aplikace HDInsight. Další informace o aplikace HDInsight, naleznete v tématu [publikovat aplikace HDInsight na Azure Marketplace](hdinsight-apps-publish-applications.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -131,7 +133,7 @@ Chyba ve skriptu, spusťte na již spuštěný cluster nezpůsobí automaticky c
 >
 > Akce skriptů, spusťte s kořenovými oprávněními. Ujistěte se, že chápete, co dělá skript před použitím ke svému clusteru.
 
-Při použití skriptu na clusteru se stav clusteru změní z **systémem** k **přijato**. Pak se změní na **konfigurace HDInsight** a nakonec zpět do **systémem** úspěšné skriptů. Stav skriptu je zaznamenána v historii akcí skriptu. Tyto informace zjistíte, zda skript úspěšné nebo neúspěšné. Například `Get-AzureRmHDInsightScriptActionHistory` rutiny Powershellu se zobrazuje stav skriptu. Vrátí informace podobné následujícímu textu:
+Při použití skriptu na clusteru se stav clusteru změní z **systémem** k **přijato**. Pak se změní na **konfigurace HDInsight** a nakonec zpět do **systémem** úspěšné skriptů. Stav skriptu je zaznamenána v historii akcí skriptu. Tyto informace zjistíte, zda skript úspěšné nebo neúspěšné. Například `Get-AzHDInsightScriptActionHistory` rutiny Powershellu se zobrazuje stav skriptu. Vrátí informace podobné následujícímu textu:
 
     ScriptExecutionId : 635918532516474303
     StartTime         : 8/14/2017 7:40:55 PM
@@ -223,7 +225,7 @@ Získejte další informace o tom, jak nasadit šablonu:
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Použití akce skriptu při vytváření clusteru pomocí Azure Powershellu
 
-V této části použijete [přidat AzureRmHDInsightScriptAction](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction) rutiny vyvolání skriptů přizpůsobení clusteru. Než začnete, ujistěte se, že instalace a konfigurace Azure Powershellu. Informace o konfiguraci pracovní stanice ke spouštění rutin prostředí HDInsight PowerShell najdete v tématu [Přehled prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+V této části použijete [přidat AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) rutiny vyvolání skriptů přizpůsobení clusteru. Než začnete, ujistěte se, že instalace a konfigurace Azure Powershellu. Informace o konfiguraci pracovní stanice ke spouštění rutin prostředí HDInsight PowerShell najdete v tématu [Přehled prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
 
 Tento skript ukazuje, jak použít akci skriptu při vytváření clusteru pomocí prostředí PowerShell:
 
@@ -368,13 +370,13 @@ Příklad použití skriptů do clusteru pomocí sady .NET SDK najdete v tématu
 
 | cmdlet | Funkce |
 | --- | --- |
-| `Get-AzureRmHDInsightPersistedScriptAction` |Načíst informace o trvalé akce se skripty. |
-| `Get-AzureRmHDInsightScriptActionHistory` |Načtěte historii akcí skriptu u clusteru nebo podrobnosti pro konkrétní skript. |
-| `Set-AzureRmHDInsightPersistedScriptAction` |Umožňuje zvýšit úroveň akci ad hoc skriptů s akcí trvalého skriptu. |
-| `Remove-AzureRmHDInsightPersistedScriptAction` |Snížení úrovně trvalá akce skriptu do ad hoc akce. |
+| `Get-AzHDInsightPersistedScriptAction` |Načíst informace o trvalé akce se skripty. |
+| `Get-AzHDInsightScriptActionHistory` |Načtěte historii akcí skriptu u clusteru nebo podrobnosti pro konkrétní skript. |
+| `Set-AzHDInsightPersistedScriptAction` |Umožňuje zvýšit úroveň akci ad hoc skriptů s akcí trvalého skriptu. |
+| `Remove-AzHDInsightPersistedScriptAction` |Snížení úrovně trvalá akce skriptu do ad hoc akce. |
 
 > [!IMPORTANT]  
-> `Remove-AzureRmHDInsightPersistedScriptAction` nelze vrátit zpět akce prováděné pomocí skriptu. Tato rutina odebere jenom příznak trvalý.
+> `Remove-AzHDInsightPersistedScriptAction` nelze vrátit zpět akce prováděné pomocí skriptu. Tato rutina odebere jenom příznak trvalý.
 
 Následující ukázkový skript ukazuje použití rutiny k propagaci a pak snížit úroveň skriptu.
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ac30888c9f54c5dc88cb72aeec0f3db81d5a99dc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f88a560d4fa819a055534530ddc0862e4aa330fe
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004944"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351877"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Začátku do konce řešení problémů pomocí metrik Azure Storage a protokolování, AzCopy a analyzátoru zpráv
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -29,12 +29,12 @@ Tento kurz obsahuje praktické zkoumání scénáře řešení potíží začát
 Řešení potíží s klientským aplikacím pomocí služby Microsoft Azure Storage, můžete kombinaci nástroje k určení, kdy došlo k problému a co mohou být příčinou problému. Mezi tyto nástroje patří:
 
 * **Azure Storage Analytics**. [Azure Storage Analytics](/rest/api/storageservices/Storage-Analytics) poskytuje metriky a protokolování pro službu Azure Storage.
-  
+
   * **Metriky úložiště** sleduje metriku transakcí a metriky kapacity účtu úložiště. Pomocí metrik, můžete určit, jaký je výkon vaší aplikace podle širokou škálu různých opatření. Zobrazit [tabulkovému schématu metrik Storage Analytics](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) pro další informace o typech metriky sledován pomocí funkce Storage Analytics.
   * **Protokolování úložiště** zaznamená každý požadavek do služby Azure Storage do protokolu na straně serveru. V protokolu se sleduje podrobná data pro každý požadavek, včetně operaci provést, stav provozu a informace o latenci. Zobrazit [formát Log Analytics úložiště](/rest/api/storageservices/Storage-Analytics-Log-Format) Další informace o požadavku a odpovědi data, která jsou zapsána do protokoly Storage Analytics.
 
 * **Azure portal**. Můžete nakonfigurovat metrik a protokolování pro váš účet úložiště v [webu Azure portal](https://portal.azure.com). Můžete také zobrazit tabulky a grafy, které ukazují, jaký je výkon vaší aplikace v čase a nakonfigurovat výstrahy, které vás upozorní, pokud aplikace provádí odlišně, než se očekávalo zadané metriky.
-  
+
     Zobrazit [monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md) informace o konfiguraci monitorování na webu Azure Portal.
 * **AzCopy**. Protokoly serveru pro službu Azure Storage jsou uložené jako objekty BLOB, takže můžete pomocí AzCopy můžete kopírovat objekty BLOB protokolů do místního adresáře pro analýzu pomocí Microsoft Message Analyzer. Zobrazit [přenos dat pomocí nástroje příkazového řádku Azcopy](storage-use-azcopy.md) Další informace o AzCopy.
 * **Microsoft Message Analyzer**. Message Analyzer je nástroj, který využívá soubory protokolu a zobrazí data protokolu ve formátu visual, který usnadňuje filter, search a data protokolu pro skupiny do užitečné sad, které můžete použít k analýze chyb a problémů s výkonem. Zobrazit [operační příručce k Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) Další informace o Message Analyzer.
@@ -79,51 +79,7 @@ V tomto kurzu použijeme Message Analyzer pro práci s tři různé typy soubor�
 * **Protokol trasování sítě HTTP**, které shromažďuje údaje o dat požadavků a odpovědí HTTP/HTTPS, včetně pro operace využívající službu Azure Storage. V tomto kurzu vytvoříme trasování v síti prostřednictvím nástroje Message Analyzer.
 
 ### <a name="configure-server-side-logging-and-metrics"></a>Konfigurace protokolování na straně serveru a metriky
-Nejprve jsme budete muset nakonfigurovat protokolování služby Azure Storage a metriky, takže máme data z klientské aplikace k analýze. Protokolování a metrik v mnoha různými způsoby – můžete nakonfigurovat přes [webu Azure portal](https://portal.azure.com), pomocí prostředí PowerShell, nebo prostřednictvím kódu programu. Zobrazit [povolení metrik Storage a zobrazení dat metrik](https://msdn.microsoft.com/library/azure/dn782843.aspx) a [povolení protokolování úložiště a přístup k datům protokolů](https://msdn.microsoft.com/library/azure/dn782840.aspx) na webové stránce MSDN podrobnosti o konfiguraci protokolování a metriky.
-
-**Prostřednictvím portálu Azure portal**
-
-Ke konfiguraci účtu pomocí protokolování a metriky pro úložiště [webu Azure portal](https://portal.azure.com), postupujte podle pokynů na adrese [monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md).
-
-> [!NOTE]
-> Není možné nastavit minutové metriky pomocí webu Azure portal. Doporučujeme však, že je nastavit pro účely tohoto kurzu a prozkoumání problémů s výkonem s vaší aplikací. Můžete nastavit minutové metriky pomocí Powershellu, jak je znázorněno níže, nebo programově pomocí klientskou knihovnu pro úložiště.
-> 
-> Všimněte si, že na webu Azure portal nemůže zobrazit minutové metriky, pouze hodinovou metriku.
-> 
-> 
-
-**Via PowerShell**
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Začínáme s prostředím PowerShell for Azure, najdete v článku [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
-
-1. Použití [přidat AzAccount](/powershell/module/servicemanagement/azure/add-azureaccount) rutiny pro přidání účtu uživatele Azure do okna prostředí PowerShell:
-   
-    ```powershell
-    Add-AzAccount
-    ```
-
-2. V **Přihlaste se k Microsoft Azure** okně zadejte e-mailovou adresu a heslo spojené s vaším účtem. Azure přihlašovací údaje ověří, uloží je a pak zavře okno.
-3. Nastavte výchozí účet úložiště na účet úložiště, který používáte pro tento kurz spuštěním těchto příkazů v okně Powershellu:
-   
-    ```powershell
-    $SubscriptionName = 'Your subscription name'
-    $StorageAccountName = 'yourstorageaccount'
-    Set-AzSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
-    ```
-
-4. Povolení protokolování úložiště pro službu Blob service:
-   
-    ```powershell
-    Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
-    ```
-
-5. Zapnutí metrik úložiště pro službu Blob service, nezapomeňte nastavit **- MetricsType** k `Minute`:
-   
-    ```powershell
-    Set-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
-    ```
+Nejprve jsme budete muset nakonfigurovat protokolování služby Azure Storage a metriky, takže máme data ze strany služby pro analýzu. Protokolování a metrik v mnoha různými způsoby – můžete nakonfigurovat přes [webu Azure portal](https://portal.azure.com), pomocí prostředí PowerShell, nebo prostřednictvím kódu programu. Zobrazit [zapnutí metrik](storage-analytics-metrics.md#enable-metrics-using-the-azure-portal) a [povolit protokolování](storage-analytics-logging.md#enable-storage-logging) podrobnosti o konfiguraci protokolování a metriky.
 
 ### <a name="configure-net-client-side-logging"></a>Konfigurace protokolování na straně klienta .NET
 Pokud chcete nakonfigurovat protokolování na straně klienta pro aplikace .NET, povolte diagnostiku .NET v konfiguračním souboru aplikace (web.config nebo app.config). Zobrazit [Client-side protokolování pomocí klientské knihovny úložiště .NET](https://msdn.microsoft.com/library/azure/dn782839.aspx) a [Client-side protokolování pomocí služby Microsoft Azure Storage SDK pro Javu](https://msdn.microsoft.com/library/azure/dn782844.aspx) na webové stránce MSDN o.
@@ -159,8 +115,8 @@ Pro tento kurz shromažďovat a nejdříve uložte trasování sítě v Message 
 
 > [!NOTE]
 > Po dokončení shromažďování trasování v síti, důrazně doporučujeme, můžete se vrátit nastavení, která může jste změnili v aplikaci Fiddler k dešifrování provozu HTTPS. V dialogovém okně Možnosti Fiddleru zrušte výběr **zachycení umožňuje připojení HTTPS** a **dešifrování provozu HTTPS** zaškrtávací políčka.
-> 
-> 
+>
+>
 
 Zobrazit [díky funkcím, které trasování sítě](https://technet.microsoft.com/library/jj674819.aspx) na webu Technet pro další podrobnosti.
 
@@ -175,8 +131,8 @@ Podrobné informace o přidání a přizpůsobení grafů metrik najdete v člá
 
 > [!NOTE]
 > Může trvat nějakou dobu pro vaše data metriky se zobrazí na webu Azure Portal po povolení metrik úložiště. Je to proto hodinové metriky pro do předchozí hodiny nejsou zobrazeny na webu Azure Portal, dokud neuplyne do aktuální hodiny. Minutové metriky navíc nejsou aktuálně zobrazené na webu Azure Portal. Takže v závislosti na při povolení metriky, může trvat až dvě hodiny, pokud chcete zobrazit data metrik.
-> 
-> 
+>
+>
 
 ## <a name="use-azcopy-to-copy-server-logs-to-a-local-directory"></a>Pomocí AzCopy můžete kopírovat protokoly serveru do místního adresáře
 Úložiště Azure zapíše data protokolu serveru pro objekty BLOB, zatímco metriky se zapisují do tabulek. Objekty BLOB protokolů jsou k dispozici v dobře známé `$logs` kontejneru účtu úložiště. Objekty BLOB protokolů jsou pojmenovány hierarchicky za rok, měsíc, den a hodina, takže máte jednoduchý přístup k rozsahu dobu, po kterou chcete prozkoumat. Například v `storagesample` je účet, kontejner pro objekty BLOB protokolů pro 01/02/2015 z 8 až 9 am, `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. Jednotlivé objekty BLOB v tomto kontejneru jsou postupně pojmenované, počínaje `000000.log`.
@@ -211,8 +167,8 @@ Message Analyzer zahrnuje prostředky pro službu Azure Storage, který vám pom
 
 > [!NOTE]
 > Nainstalujte, všechny prostředky služby Azure Storage pro účely tohoto kurzu.
-> 
-> 
+>
+>
 
 ### <a name="import-your-log-files-into-message-analyzer"></a>Naimportujte soubory protokolu nástroje Message Analyzer
 Můžete importovat všechny své uložené soubory protokolů (na straně serveru, na straně klienta a sítě) v rámci jedné relace Microsoft Message Analyzer pro analýzu.
@@ -255,8 +211,8 @@ Obrázek níže ukazuje toto rozložení zobrazení použitý na ukázková data
 
 > [!NOTE]
 > Různých protokolových souborech mají různé sloupce, takže když data z více souborů protokolu se zobrazí v mřížce analýzy, některé sloupce nesmí obsahovat žádná data pro daný řádek. Například na obrázku výše, řádky protokolu klienta zobrazovat žádná data pro **časové razítko**, **TimeElapsed**, **zdroj**, a **cílové**sloupců, protože tyto sloupce neexistují v protokolu klienta, ale existují v trasování sítě. Podobně **časové razítko** sloupec zobrazuje časové razítko data z protokolů serveru, ale nezobrazí se žádná data pro **TimeElapsed**, **zdroj**, a  **Určení** sloupce, které nejsou součástí protokolu serveru.
-> 
-> 
+>
+>
 
 Kromě použití rozložení zobrazení služby Azure Storage, můžete také definovat a uložit vlastní rozložení zobrazení. Můžete vybrat další požadované pole pro seskupení dat a uložit si vlastní rozložení v rámci seskupení.
 
@@ -289,12 +245,12 @@ Po použití tohoto filtru, uvidíte, že řádky z protokolu klienta jsou vylou
 
 > [!NOTE]
 > Můžete filtrovat i **StatusCode** sloupce a stále zobrazovat data ze všech tří protokolů, včetně protokolu klienta, pokud přidáte výraz filtru, který obsahuje položky protokolu, kde se stavovým kódem má hodnotu null. K vytvoření tohoto výrazu filtru, použijte:
-> 
+>
 > <code>&#42;StatusCode >= 400 or !&#42;StatusCode</code>
-> 
+>
 > Tento filtr vrátí všechny řádky z klienta protokolu a z protokolu HTTP i protokol serveru pouze řádky kde je větší než 400 stavový kód. Pokud ho použít pro zobrazení rozložení seskupené podle ID žádosti klienta a modul, můžete vyhledávání nebo přejděte přes položky protokolu pro vyhledání těch, které jsou, kde jsou reprezentovány všechny tři protokoly.   
-> 
-> 
+>
+>
 
 ### <a name="filter-log-data-to-find-404-errors"></a>Data protokolu filtru k vyhledání chyby 404
 Prostředky úložiště zahrnují předdefinované filtry, které vám umožní omezit data protokolu k vyhledání chyby nebo trendy, které hledáte. Dále jsme budete používat dvě předdefinované filtry: ten, který filtruje serveru a protokoly trasování sítě pro chyby 404 a ten, který filtruje data pro zadaný časový rozsah.

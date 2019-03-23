@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbee5316b78838bedc62454e8c1954eb5f9205ff
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 66a75ee7746d0ab04b505544f91f2905fa392902
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317116"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370359"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>User Portal pro Azure Multi-Factor Authentication Server
 
@@ -28,7 +28,7 @@ Správce portálu User Portal je možné nastavit a udělit jim oprávnění př
 
 V závislosti na vašem prostředí můžete chtít portál User Portal nasadit na stejný server jako Azure Multi-Factor Authentication Server, nebo na jiný server s přístupem k internetu.
 
-![MFA User Portal](./media/howto-mfaserver-deploy-userportal/portal.png)
+![MFA Server User Portal na přihlašovací stránce portálu](./media/howto-mfaserver-deploy-userportal/portal.png)
 
 > [!NOTE]
 > Portál User Portal je k dispozici pouze v Azure Multi-Factor Authentication Serveru. Pokud používáte službu Multi-Factor Authentication v cloudu, odkažte své uživatele na témata [Nastavení účtu pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user-first-time.md) nebo [Správa nastavení pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user-manage-settings.md).
@@ -118,6 +118,7 @@ Teď, když je portál User Portal nainstalovaný, musíte nakonfigurovat Azure 
 3. Na kartě **Správci** definujte, kdo má být správcem. Pomocí zaškrtávacích políček a rozevíracích seznamů v polích Přidat/Upravit můžete vytvořit podrobná oprávnění správce.
 
 Volitelná konfigurace:
+
 - **Bezpečnostní otázky** – Můžete definovat schválené bezpečnostní otázky pro vaše prostředí a jazyk, ve kterém se zobrazí.
 - **Předané relace** – Můžete konfigurovat integraci portálu User Portal s webem na základě formuláře, který používá MFA.
 - **Důvěryhodné IP adresy** – Můžete uživatelům umožnit přeskočení MFA při ověřování z některé z IP adres ze seznamu důvěryhodných IP adres nebo rozsahů IP adres.
@@ -141,9 +142,12 @@ Server Azure Multi-Factor Authentication poskytuje pro uživatelský portál ně
 | V nouzové situaci použít token OATH | Umožní použití tokenu OAUTH, pokud se nezdaří dvoustupňové ověřování. Můžete taky zadat časový limit relace v minutách. |
 | Povolit protokolování | Povolí protokolování na portálu User Portal. Soubory protokolu se nachází na: C:\Program Files\Multi-Factor Authentication Server\Logs. |
 
+> [!IMPORTANT]
+> Počínaje březnem 2019 možnosti telefonního hovoru nebudou k dispozici pro uživatele serveru MFA v tenantech bezplatné a zkušební verze Azure AD. Zprávy SMS, nejsou ovlivněny tuto změnu. Telefonní hovor budou nadále dostupné uživatelům v placené tenantů Azure AD. Tato změna ovlivní jenom klienty bezplatné a zkušební verze Azure AD.
+
 Na portálu se tato nastavení uživatelům zviditelní, jakmile jsou povolena a uživatelé jsou přihlášeni na portálu User Portal.
 
-![Nastavení uživatelského portálu](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
+![Správa účtu MFA serveru s portálem user portal](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
 
 ### <a name="self-service-user-enrollment"></a>Samoobslužná registrace uživatele
 
@@ -159,7 +163,7 @@ Pokud musí uživatel při ověřování zadat kód PIN, zobrazí se na stránce
 
 Pokud si uživatel vybere metodu ověření zprávou SMS nebo je tato možnost předem nastavená, na stránce se zobrazí výzva k zadání čísla mobilního telefonu. Pokud musí uživatel při ověřování zadat kód PIN, zobrazí se na stránce také výzva k zadání kódu PIN.  Po zadání telefonního čísla a PIN kódu (pokud je potřeba) uživatel klikne na tlačítko **Poslat mi nyní zprávu SMS a ověřit mě**. Azure Multi-Factor Authentication provede ověření tím, že na mobilní telefon uživatele pošle zprávu SMS. Uživatel obdrží zprávu SMS s jednorázovým heslem a odpoví na zprávu s použitím jednorázového hesla spolu s PIN kódem (pokud je potřeba).
 
-![SMS uživatelského portálu](./media/howto-mfaserver-deploy-userportal/text.png)
+![Uživatel portálu ověřování pomocí SMS](./media/howto-mfaserver-deploy-userportal/text.png)
 
 Pokud si uživatel vybere metodu ověření pomocí mobilní aplikace, na stránce se zobrazí výzva k instalaci aplikace Microsoft Authenticator na mobilní zařízení a vygenerování aktivačního kódu. Po nainstalování aplikace uživatel klikne na tlačítko Generovat aktivační kód.
 

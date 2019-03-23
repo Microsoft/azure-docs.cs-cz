@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: f2d2ded849af5054935b6bec8f74e021078b7641
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b9dbd644aff3a41bcf38b982ebd46396ad30edca
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57860414"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361961"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -27,7 +27,7 @@ Můžete nasadit modely do následující cílových výpočetních prostředí:
 | Cílové výpočetní prostředí | Typ nasazení | Popis |
 | ----- | ----- | ----- |
 | [Azure Kubernetes Service (AKS)](#aks) | Odvození v reálném čase | Vhodné pro nasazení v produkčním prostředí vysoce škálovatelné. Nabízí automatické škálování a krátké doby odezvy. |
-| [Azure ML Compute](#azuremlcompute) | Odvození služby batch | Spusťte dávky předpovědi na výpočetní prostředí. Podporuje virtuální počítače s normální a s nízkou prioritou. |
+| [Azure Machine Learning Compute (amlcompute)](#azuremlcompute) | Odvození služby batch | Spusťte dávky předpovědi na výpočetní prostředí. Podporuje virtuální počítače s normální a s nízkou prioritou. |
 | [Azure Container Instances (ACI)](#aci) | Testování | Je vhodný pro vývoj a testování. **Není vhodný pro úlohy v produkčním prostředí.** |
 | [Azure IoT Edge](#iotedge) | (Preview) Modul IoT | Nasaďte modely na zařízeních IoT. Odvozování se stane v zařízení. |
 | [Pole programmable gate array (FPGA)](#fpga) | (Preview) Webová služba | Mimořádně nízkou latenci pro odvozování v reálném čase. |
@@ -50,13 +50,13 @@ Další informace o konceptech pracovního postupu nasazení, najdete v části 
 
 - Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
-- Pracovní prostor služby Azure Machine Learning service a Azure Machine Learning SDK for nainstalovaný Python. Další informace o získání těchto nezbytných podmínkách používání [Začínáme s Azure Machine Learning quickstart](quickstart-get-started.md).
+- Pracovní prostor služby Azure Machine Learning service a Azure Machine Learning SDK for nainstalovaný Python. Další informace o získání těchto nezbytných podmínkách použití [vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md).
 
 - Trénovaného modelu. Pokud nemáte trénovaného modelu, postupujte podle kroků v [trénování modelů](tutorial-train-models-with-aml.md) kurzu pro trénování a zaregistrovat ve službě Azure Machine Learning.
 
     > [!NOTE]
     > Zatímco služba Azure Machine Learning můžete pracovat s obecný model, který lze načíst v Python 3, příklady v tomto dokumentu ukazují uložené ve formátu Python pickle modelu.
-    > 
+    >
     > Další informace o použití modely ONNX, najdete v článku [ONNX a Azure Machine Learning](how-to-build-deploy-onnx.md) dokumentu.
 
 ## <a id="registermodel"></a> Registrace trénovaného modelu
@@ -83,7 +83,7 @@ Další informace najdete v tématu v referenční dokumentaci [třída modelu](
 
 Nasazených modelů jsou dodávány jako obrázek. Bitová kopie obsahuje závislosti potřebné ke spuštění modelu.
 
-Pro **Azure Container Instance**, **Azure Kubernetes Service**, a **Azure IoT Edge** nasazení, [azureml.core.image.ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) třída se používá k vytvořit konfiguraci bitové kopie. Obrázek konfigurace, pak se k vytvoření nové image Dockeru. 
+Pro **Azure Container Instance**, **Azure Kubernetes Service**, a **Azure IoT Edge** nasazení, [azureml.core.image.ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) třída se používá k vytvořit konfiguraci bitové kopie. Obrázek konfigurace, pak se k vytvoření nové image Dockeru.
 
 Následující kód ukazuje, jak vytvořit novou konfiguraci bitové kopie:
 
@@ -126,14 +126,13 @@ Skript obsahuje dvě funkce, které načíst a spustit model:
 Následující ukázkový skript přijímá a vrací JSON data. `run` Funkce transformuje data z JSON do formátu, očekává, že model a potom transformuje před jeho vrácením odpovědi do formátu JSON:
 
 ```python
-# import things required by this script
+%%writefile score.py
 import json
 import numpy as np
 import os
 import pickle
 from sklearn.externals import joblib
 from sklearn.linear_model import LogisticRegression
-
 from azureml.core.model import Model
 
 # load the model
@@ -185,7 +184,7 @@ def run(request):
 > [!IMPORTANT]
 > `azureml.contrib` Oboru názvů změní často, protože pracujeme na vylepšení služby. V důsledku toho cokoli, co je v tomto oboru názvů by měl být považovány za verzi preview a nejsou plně podporovány společností Microsoft.
 >
-> Pokud je potřeba otestovat na místním vývojovém prostředí, můžete nainstalovat komponenty `contrib` oboru názvů pomocí následujícího příkazu: 
+> Pokud je potřeba otestovat na místním vývojovém prostředí, můžete nainstalovat komponenty `contrib` oboru názvů pomocí následujícího příkazu:
 > ```shell
 > pip install azureml-contrib-services
 > ```
@@ -196,7 +195,7 @@ Po vytvoření bitové kopie konfigurace můžete zaregistrovat bitovou kopii. T
 
 ```python
 # Register the image from the image configuration
-image = ContainerImage.create(name = "myimage", 
+image = ContainerImage.create(name = "myimage",
                               models = [model], #this is the model object
                               image_config = image_config,
                               workspace = ws
@@ -209,7 +208,7 @@ Image se systémovou správou verzí automaticky při registraci více bitových
 
 Další informace najdete v tématu v referenční dokumentaci [ContainerImage třídy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py).
 
-## <a id="deploy"></a> Nasazení bitové kopie
+## <a id="deploy"></a> Nasadit jako webovou službu
 
 Při přechodu na krok nasazení se mírně liší v závislosti na cílové výpočetní prostředí, který nasadíte do procesu. Použijte informace v následujících částech Další informace o nasazení do:
 
@@ -251,7 +250,7 @@ Další informace najdete v tématu v referenční dokumentaci [AciWebservice](h
 
 Nasazení modelu jako produkční vysoce škálovatelnou webovou službu, použijte Azure Kubernetes Service (AKS). Můžete použít existující cluster AKS, nebo vytvořte novou pomocí sady SDK Azure Machine Learning, rozhraní příkazového řádku nebo na webu Azure portal.
 
-Vytvoření clusteru AKS je čas procesu pro váš pracovní prostor. Tento cluster pro více nasazení můžete znovu použít. 
+Vytvoření clusteru AKS je čas procesu pro váš pracovní prostor. Tento cluster pro více nasazení můžete znovu použít.
 
 > [!IMPORTANT]
 > Při odstranění clusteru, pak musíte vytvořit nový cluster, které se budete muset nasadit.
@@ -270,7 +269,7 @@ Azure Kubernetes Service poskytuje následující možnosti:
 Automatické škálování můžete řídit pomocí nastavení `autoscale_target_utilization`, `autoscale_min_replicas`, a `autoscale_max_replicas` AKS webové služby. Následující příklad ukazuje, jak povolit automatické škálování:
 
 ```python
-aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True, 
+aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True,
                                                 autoscale_target_utilization=30,
                                                 autoscale_min_replicas=1,
                                                 autoscale_max_replicas=4)
@@ -315,10 +314,10 @@ from azureml.core.compute import AksCompute, ComputeTarget
 # Use the default configuration (you can also provide parameters to customize this)
 prov_config = AksCompute.provisioning_configuration()
 
-aks_name = 'aml-aks-1' 
+aks_name = 'aml-aks-1'
 # Create the cluster
-aks_target = ComputeTarget.create(workspace = ws, 
-                                    name = aks_name, 
+aks_target = ComputeTarget.create(workspace = ws,
+                                    name = aks_name,
                                     provisioning_configuration = prov_config)
 
 # Wait for the create process to complete
@@ -366,7 +365,7 @@ from azureml.core.webservice import Webservice, AksWebservice
 aks_config = AksWebservice.deploy_configuration()
 aks_service_name ='aks-service-1'
 # Deploy from image
-service = Webservice.deploy_from_image(workspace = ws, 
+service = Webservice.deploy_from_image(workspace = ws,
                                             name = aks_service_name,
                                             image = image,
                                             deployment_config = aks_config,
@@ -393,87 +392,91 @@ Project Brainwave umožňuje dosáhnout mimořádně nízkou latenci pro požada
 
 Postup nasazení model pomocí aplikace Project Brainwave, najdete v části [nasadit do FPGA](how-to-deploy-fpga-web-service.md) dokumentu.
 
-### <a id="iotedge"></a> Nasazení do Azure IoT Edge
+## <a name="define-schema"></a>Definovat schéma
 
-Zařízení Azure IoT Edge je na Linuxu nebo zařízení se systémem Windows, který spustí modul runtime Azure IoT Edge. Pomocí služby Azure IoT Hub, můžete nasadit modely strojového učení do těchto zařízení jako moduly IoT Edge. Nasazení modelu do zařízení IoT Edge umožňuje zařízení využívat model přímo, namísto toho, aby k zasílání dat do cloudu pro zpracování. Získáte rychlejší reakční dobu a menší datové přenosy.
+Vlastní dekoratéry lze použít pro [OpenAPI](https://swagger.io/docs/specification/about/) specifikace generování a vstupu zadejte manipulaci s při nasazení webové služby. V `score.py` soubor, zadejte vzorek vstup nebo výstup v konstruktoru pro jeden z objektů definovaný typ. a ukázka a typ se používají pro automatické generování schématu. Aktuálně jsou podporovány následující typy:
 
-Moduly Azure IoT Edge se nasadí do zařízení z registru kontejneru. Po vytvoření image z modelu je uložen v registru kontejneru pro váš pracovní prostor.
+* `pandas`
+* `numpy`
+* `pyspark`
+* Standardní Pythonu
 
-> [!IMPORTANT]
-> Informace v této části se předpokládá, že jste už obeznámení s nainstalovanými moduly Azure IoT Hub a Azure IoT Edge. Zatímco některé informace v této části je specifické pro službu Azure Machine Learning, se stane, většinou procesu nasazení do hraničního zařízení ve službě Azure IoT.
->
-> Pokud nejste obeznámeni s Azure IoT, přečtěte si téma [základy Azure IoT](https://docs.microsoft.com/azure/iot-fundamentals/) a [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) základní informace. Další informace o konkrétní operace použije další odkazy v této části.
+Nejprve zkontrolujte, že potřebné závislosti pro `inference-schema` balíčku jsou součástí vašeho `env.yml` souboru prostředí conda. V tomto příkladu `numpy` parametr typu schématu, takže další pip `[numpy-support]` je rovněž nainstalován.
 
-#### <a name="set-up-your-environment"></a>Nastavení prostředí
+```python
+%%writefile myenv.yml
+name: project_environment
+dependencies:
+  - python=3.6.2
+  - pip:
+    - azureml-defaults
+    - scikit-learn
+    - inference-schema[numpy-support]
+```
 
-* Vývojové prostředí. Další informace najdete v tématu [jak nakonfigurovat prostředí pro vývoj](how-to-configure-environment.md) dokumentu.
+V dalším kroku změnit `score.py` soubor k importu `inference-schema` balíčky. Definování vstupních a výstupních formátů, ukázka v `input_sample` a `output_sample` proměnné, které představují formáty požadavků a odpovědí pro webovou službu. Používají tyto vzorky ve vstupu a výstupu dekoratéry funkce na `run()` funkce.
 
-* [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure. 
+```python
+%%writefile score.py
+import json
+import numpy as np
+import os
+import pickle
+from sklearn.externals import joblib
+from sklearn.linear_model import LogisticRegression
+from azureml.core.model import Model
 
-* Trénovaného modelu. Příklad toho, jak pro trénování modelu, najdete v článku [trénování modelu klasifikace obrázků s Azure Machine Learning](tutorial-train-models-with-aml.md) dokumentu. Předem natrénovaných modelů je k dispozici na [AI Toolkit pro Azure IoT Edge na Githubu úložiště](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial).
+from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 
-#### <a id="getcontainer"></a> Získání přihlašovacích údajů registru kontejneru
 
-Azure IoT pro nasazení modulu IoT Edge do zařízení, potřebuje přihlašovací údaje pro registr kontejneru, který ukládá Image dockeru ve službě Azure Machine Learning.
+def init():
+    global model
+    model_path = Model.get_model_path('sklearn_mnist')
+    model = joblib.load(model_path)
 
-Přihlašovací údaje můžete získat dvěma způsoby:
 
-+ **Na webu Azure Portal**:
+input_sample = np.array([[1.8]])
+output_sample = np.array([43638.88])
 
-  1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/signin/index).
+@input_schema('data', NumpyParameterType(input_sample))
+@output_schema(NumpyParameterType(output_sample))
+def run(raw_data):
+    data = np.array(json.loads(raw_data)['data'])
+    y_hat = model.predict(data)
+    return json.dumps(y_hat.tolist())
+```
 
-  1. Přejděte do pracovního prostoru služby Azure Machine Learning a vyberte __přehled__. Chcete-li přejít do nastavení registru kontejneru, vyberte __registru__ odkaz.
+Až projdete normální image registrace a webové služby procesu nasazení se aktualizovaný `score.py` souboru, načtení identifikátoru uri Swagger ze služby. Vyžádání tohoto identifikátoru uri vrátí `swagger.json` souboru.
 
-     ![Obrázek položky registru kontejneru](./media/how-to-deploy-and-where/findregisteredcontainer.png)
+```python
+service.wait_for_deployment(show_output=True)
+print(service.swagger_uri)
+```
 
-  1. Jednou v registru kontejneru, vyberte **přístupové klíče** a pak povolte uživatele s rolí správce.
- 
-     ![Snímek obrazovky klíčů přístup](./media/how-to-deploy-and-where/findaccesskey.png)
 
-  1. Uložte příslušné hodnoty pro **přihlašovací server**, **uživatelské jméno**, a **heslo**. 
 
-+ **Pomocí skriptu v jazyce Python**:
+Když vytvoříte novou bitovou kopii, je nutné ručně aktualizovat každou službu, kterou chcete použít novou bitovou kopii. Pokud chcete aktualizovat webovou službu, použijte `update` metody. Následující kód ukazuje, jak aktualizovat webovou službu, která používá novou bitovou kopii:
 
-  1. Pomocí následujícího skriptu Pythonu za kód, který jste spustili výše vytvořte kontejner:
+```python
+from azureml.core.webservice import Webservice
+from azureml.core.image import Image
 
-     ```python
-     # Getting your container details
-     container_reg = ws.get_details()["containerRegistry"]
-     reg_name=container_reg.split("/")[-1]
-     container_url = "\"" + image.image_location + "\","
-     subscription_id = ws.subscription_id
-     from azure.mgmt.containerregistry import ContainerRegistryManagementClient
-     from azure.mgmt import containerregistry
-     client = ContainerRegistryManagementClient(ws._auth,subscription_id)
-     result= client.registries.list_credentials(resource_group_name, reg_name, custom_headers=None, raw=False)
-     username = result.username
-     password = result.passwords[0].value
-     print('ContainerURL{}'.format(image.image_location))
-     print('Servername: {}'.format(reg_name))
-     print('Username: {}'.format(username))
-     print('Password: {}'.format(password))
-     ```
-  1. Uložte hodnoty ContainerURL, servername, uživatelské jméno a heslo. 
+service_name = 'aci-mnist-3'
+# Retrieve existing service
+service = Webservice(name = service_name, workspace = ws)
 
-     Tyto přihlašovací údaje jsou nezbytné k zajištění na hraničních zařízeních IoT zařízení přístup k imagím v váš privátní registr kontejnerů.
+# point to a different image
+new_image = Image(workspace = ws, id="myimage2:1")
 
-#### <a name="prepare-the-iot-device"></a>Připravte zařízení IoT
+# Update the image used by the service
+service.update(image = new_image)
+print(service.state)
+```
 
-Registraci zařízení ve službě Azure IoT Hub a pak nainstalujte modul runtime IoT Edge na zařízení. Pokud nejste obeznámeni s tímto procesem, přečtěte si téma [rychlý start: Nasazení prvního modulu IoT Edge do zařízení Linux x64](../../iot-edge/quickstart-linux.md).
+Další informace najdete v tématu v referenční dokumentaci [webová služba](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) třídy.
 
-Další metody registrace zařízení jsou následující:
-
-* [Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)
-* [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-cli)
-* [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-vscode)
-
-#### <a name="deploy-the-model-to-the-device"></a>Model nasadit do zařízení
-
-Pokud chcete model nasadit do zařízení, použijte informace registru během dodavatelé technologií sešli v [získání přihlašovacích údajů registru kontejneru](#getcontainer) části modulu pro nasazení pomocí kroků pro moduly IoT Edge. Například když [moduly nasazení Azure IoT Edge z portálu Azure portal](../../iot-edge/how-to-deploy-modules-portal.md), musíte nakonfigurovat __nastavení registru__ pro zařízení. Použití __přihlašovací server__, __uživatelské jméno__, a __heslo__ pro svůj registr kontejneru pracovní prostor.
-
-Můžete také nasadit pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) a [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-vscode).
-
-## <a name="testing-web-service-deployments"></a>Testování nasazením webových služeb
+## <a name="test-web-service-deployments"></a>Nasazení služeb webového testu
 
 Chcete-li otestovat nasazení webové služby, můžete použít `run` metodu objektu webové služby. V následujícím příkladu dokument JSON je nastavena na webové služby a zobrazí výsledek. Data odeslaná musí odpovídat hodnotám modelu očekává. V tomto příkladu formát dat odpovídá vstup očekává modelem cukrovka.
 
@@ -481,7 +484,7 @@ Chcete-li otestovat nasazení webové služby, můžete použít `run` metodu ob
 import json
 
 test_sample = json.dumps({'data': [
-    [1,2,3,4,5,6,7,8,9,10], 
+    [1,2,3,4,5,6,7,8,9,10],
     [10,9,8,7,6,5,4,3,2,1]
 ]})
 test_sample = bytes(test_sample,encoding = 'utf8')
@@ -514,6 +517,86 @@ print(service.state)
 
 Další informace najdete v tématu v referenční dokumentaci [webová služba](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) třídy.
 
+## <a id="iotedge"></a> Nasazení do Azure IoT Edge
+
+Zařízení Azure IoT Edge je na Linuxu nebo zařízení se systémem Windows, který spustí modul runtime Azure IoT Edge. Pomocí služby Azure IoT Hub, můžete nasadit modely strojového učení do těchto zařízení jako moduly IoT Edge. Nasazení modelu do zařízení IoT Edge umožňuje zařízení využívat model přímo, namísto toho, aby k zasílání dat do cloudu pro zpracování. Získáte rychlejší reakční dobu a menší datové přenosy.
+
+Moduly Azure IoT Edge se nasadí do zařízení z registru kontejneru. Po vytvoření image z modelu je uložen v registru kontejneru pro váš pracovní prostor.
+
+> [!IMPORTANT]
+> Informace v této části se předpokládá, že jste už obeznámení s nainstalovanými moduly Azure IoT Hub a Azure IoT Edge. Zatímco některé informace v této části je specifické pro službu Azure Machine Learning, se stane, většinou procesu nasazení do hraničního zařízení ve službě Azure IoT.
+>
+> Pokud nejste obeznámeni s Azure IoT, přečtěte si téma [základy Azure IoT](https://docs.microsoft.com/azure/iot-fundamentals/) a [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) základní informace. Další informace o konkrétní operace použije další odkazy v této části.
+
+### <a name="set-up-your-environment"></a>Nastavení prostředí
+
+* Vývojové prostředí. Další informace najdete v tématu [jak nakonfigurovat prostředí pro vývoj](how-to-configure-environment.md) dokumentu.
+
+* [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure.
+
+* Trénovaného modelu. Příklad toho, jak pro trénování modelu, najdete v článku [trénování modelu klasifikace obrázků s Azure Machine Learning](tutorial-train-models-with-aml.md) dokumentu. Předem natrénovaných modelů je k dispozici na [AI Toolkit pro Azure IoT Edge na Githubu úložiště](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial).
+
+### <a id="getcontainer"></a> Získání přihlašovacích údajů registru kontejneru
+
+Azure IoT pro nasazení modulu IoT Edge do zařízení, potřebuje přihlašovací údaje pro registr kontejneru, který ukládá Image dockeru ve službě Azure Machine Learning.
+
+Přihlašovací údaje můžete získat dvěma způsoby:
+
++ **Na webu Azure Portal**:
+
+  1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/signin/index).
+
+  1. Přejděte do pracovního prostoru služby Azure Machine Learning a vyberte __přehled__. Chcete-li přejít do nastavení registru kontejneru, vyberte __registru__ odkaz.
+
+     ![Obrázek položky registru kontejneru](./media/how-to-deploy-and-where/findregisteredcontainer.png)
+
+  1. Jednou v registru kontejneru, vyberte **přístupové klíče** a pak povolte uživatele s rolí správce.
+
+     ![Snímek obrazovky klíčů přístup](./media/how-to-deploy-and-where/findaccesskey.png)
+
+  1. Uložte příslušné hodnoty pro **přihlašovací server**, **uživatelské jméno**, a **heslo**.
+
++ **Pomocí skriptu v jazyce Python**:
+
+  1. Pomocí následujícího skriptu Pythonu za kód, který jste spustili výše vytvořte kontejner:
+
+     ```python
+     # Getting your container details
+     container_reg = ws.get_details()["containerRegistry"]
+     reg_name=container_reg.split("/")[-1]
+     container_url = "\"" + image.image_location + "\","
+     subscription_id = ws.subscription_id
+     from azure.mgmt.containerregistry import ContainerRegistryManagementClient
+     from azure.mgmt import containerregistry
+     client = ContainerRegistryManagementClient(ws._auth,subscription_id)
+     result= client.registries.list_credentials(resource_group_name, reg_name, custom_headers=None, raw=False)
+     username = result.username
+     password = result.passwords[0].value
+     print('ContainerURL{}'.format(image.image_location))
+     print('Servername: {}'.format(reg_name))
+     print('Username: {}'.format(username))
+     print('Password: {}'.format(password))
+     ```
+  1. Uložte hodnoty ContainerURL, servername, uživatelské jméno a heslo.
+
+     Tyto přihlašovací údaje jsou nezbytné k zajištění na hraničních zařízeních IoT zařízení přístup k imagím v váš privátní registr kontejnerů.
+
+### <a name="prepare-the-iot-device"></a>Připravte zařízení IoT
+
+Registraci zařízení ve službě Azure IoT Hub a pak nainstalujte modul runtime IoT Edge na zařízení. Pokud nejste obeznámeni s tímto procesem, přečtěte si téma [rychlý start: Nasazení prvního modulu IoT Edge do zařízení Linux x64](../../iot-edge/quickstart-linux.md).
+
+Další metody registrace zařízení jsou následující:
+
+* [Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)
+* [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-cli)
+* [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-vscode)
+
+### <a name="deploy-the-model-to-the-device"></a>Model nasadit do zařízení
+
+Pokud chcete model nasadit do zařízení, použijte informace registru během dodavatelé technologií sešli v [získání přihlašovacích údajů registru kontejneru](#getcontainer) části modulu pro nasazení pomocí kroků pro moduly IoT Edge. Například když [moduly nasazení Azure IoT Edge z portálu Azure portal](../../iot-edge/how-to-deploy-modules-portal.md), musíte nakonfigurovat __nastavení registru__ pro zařízení. Použití __přihlašovací server__, __uživatelské jméno__, a __heslo__ pro svůj registr kontejneru pracovní prostor.
+
+Můžete také nasadit pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) a [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-vscode).
+
 ## <a name="clean-up"></a>Vyčištění
 
 Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()`.
@@ -524,21 +607,9 @@ Chcete-li odstranit registrovaný model, použijte `model.delete()`.
 
 Další informace najdete v tématu v referenční dokumentaci [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--), [Image.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#delete--), a [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
-## <a name="troubleshooting"></a>Řešení potíží
-
-* __Pokud se vyskytnou chyby během nasazení__, použijte `service.get_logs()` k zobrazení protokolů služby. Zaznamenané informace může ukazovat na příčinu chyby.
-
-* Tyto protokoly mohou obsahovat chybu, která dává pokyn k __nastavení úrovně protokolování ladění__. Pokud chcete nastavit úroveň protokolování, přidejte následující řádky do hodnoticí skript, vytvořte image a pak vytvořit službu pomocí bitové kopie:
-
-    ```python
-    import logging
-    logging.basicConfig(level=logging.DEBUG)
-    ```
-
-    Tato změna umožňuje dodatečné protokolování a může vrátit další informace o Proč dochází k chybě.
-
 ## <a name="next-steps"></a>Další postup
 
+* [Řešení potíží s nasazení](how-to-troubleshoot-deployment.md)
 * [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)
 * [Používání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md)
 * [Jak spustit predikcí služby batch](how-to-run-batch-predictions.md)

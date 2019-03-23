@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 7701ef463124fafd4c750fbb9f23aa03d6bc25ab
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 963fd1bfd67a20033f0712d3b447091abda40d11
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262485"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369893"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správu a údržbu agenta Log Analytics pro Windows a Linux
 
-Po počátečním nasazení nástroje Windows nebo Linux agenta pro Log Analytics budete muset změnit konfiguraci agenta nebo jej odeberte z počítače, pokud bylo dosaženo vyřazení z provozu fázi životního cyklu. Tyto úlohy běžné údržby můžete snadno spravovat ručně nebo pomocí automatizace, což snižuje provozní chyby a výdaje.
+Po počátečním nasazení nástroje Windows Log Analytics nebo agenta pro Linux ve službě Azure Monitor budete muset změnit konfiguraci agenta nebo ji odeberte z počítače, pokud bylo dosaženo vyřazení z provozu fázi životního cyklu. Tyto úlohy běžné údržby můžete snadno spravovat ručně nebo pomocí automatizace, což snižuje provozní chyby a výdaje.
 
 ## <a name="adding-or-removing-a-workspace"></a>Přidání nebo odebrání pracovního prostoru
 
@@ -115,7 +115,7 @@ Konfigurace agenta pro komunikaci ve službě pomocí proxy serveru nebo [Log An
 
 #### <a name="update-settings-using-powershell"></a>Aktualizovat nastavení pomocí Powershellu
 
-Zkopírujte následující ukázkový kód Powershellu, aktualizujte ji pomocí informací specifických pro vaše prostředí a uložte s příponou názvu souboru PS1. Spusťte skript na každém počítači, který se připojuje přímo ke službě Log Analytics.
+Zkopírujte následující ukázkový kód Powershellu, aktualizujte ji pomocí informací specifických pro vaše prostředí a uložte s příponou názvu souboru PS1. Spusťte skript na každém počítači, který se připojuje přímo k pracovnímu prostoru Log Analytics ve službě Azure Monitor.
 
 ```PowerShell
 param($ProxyDomainName="https://proxy.contoso.com:30443", $cred=(Get-Credential))

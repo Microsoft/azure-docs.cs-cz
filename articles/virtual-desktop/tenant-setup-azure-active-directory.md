@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 2dafb58a805a2da89852c84ebad08f1c495adb83
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 26bcae12ee5e053289dd18c9f378eff43a0b0e04
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318117"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368166"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Kurz: Vytvořit tenanta v virtuální plochy Windows (Preview)
 
@@ -53,16 +53,16 @@ Udělení oprávnění služby:
 
 ## <a name="assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant"></a>Přiřazení role aplikace TenantCreator uživatel ve vašem tenantovi Azure Active Directory
 
-Přiřazení uživatele služby Azure Active Directory umožňuje TenantCreator aplikační role tohoto uživatele k vytvoření virtuálního klienta Windows tenanta přidružený k Azure Active Directory. Bude potřeba přiřadit roli TenantCreator svůj účet globálního správce.
+Přiřazení uživatele služby Azure Active Directory umožňuje TenantCreator aplikační role tohoto uživatele k vytvoření virtuálního klienta Windows tenanta přidružený k Azure Active Directory. Bude potřeba přiřadit roli TenantCreator pomocí účtu globálního správce.
 
-Přiřazení role aplikace TenantCreator ke svému účtu globálního správce:
+Přiřazení role aplikace TenantCreator pomocí účtu globálního správce:
 
 1. Otevřete prohlížeč a připojte se k [portálu Azure Active Directory](https://aad.portal.azure.com) pomocí účtu globálního správce.
    - Pokud pracujete s více tenanty Azure AD, je osvědčeným postupem je otevřete relaci prohlížeče privátní a zkopírujte a vložte do adresy URL.
-2. Vyberte **podnikové aplikace**, vyhledejte **virtuální plochy Windows** a vybrat požadovanou aplikaci.
+2. Vyberte **podnikové aplikace**, vyhledejte **virtuální plochy Windows**. Uvidíte dvě aplikace, které jste zadali souhlas pro v předchozí části. Tyto dvě aplikace, vyberte **virtuální plochy Windows**.
 3. Vyberte **uživatelů a skupin**a pak vyberte **přidat uživatele**.
 4. Vyberte uživatele a skupiny v **přidat přiřazení** okno
-5. Vyhledejte uživatelský účet, který vytvoří váš tenant virtuální plochy Windows. 
+5. Vyhledejte uživatelský účet, který vytvoří váš tenant virtuální plochy Windows.
    - Pro jednoduchost může to být účet globálního správce.
 6. Vyberte uživatelský účet, klikněte na tlačítko **vyberte** tlačítko a pak vyberte **přiřadit**.
 

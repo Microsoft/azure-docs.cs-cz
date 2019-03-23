@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: ea808609add942c5cac36e7f0306e4a27ac3bb3a
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 02f698d531555aa9b5498060918a2a361b28817e
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743642"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361247"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migrace z clusteru HDInsight se systémem Windows do clusteru se systémem Linux
 
@@ -24,6 +24,8 @@ HDInsight se systémem Windows poskytuje snadný způsob, jak používat Apache 
 
 > [!NOTE]  
 > Clustery HDInsight se systémem Ubuntu dlouhodobé podporu (LTS) použít jako operační systém pro uzly v clusteru. Informace o verzi Ubuntu s HDInsight, spolu s dalšími informacemi součásti správy verzí, naleznete v tématu [verzí komponenty HDInsight](hdinsight-component-versioning.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="migration-tasks"></a>Úlohy migrace
 
@@ -63,7 +65,7 @@ Pomocí následujících kroků ke zkopírování dat z produkčního prostřed�
 
     ```powershell
     $clusterName="Your existing HDInsight cluster name"
-    $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+    $clusterInfo = Get-AzHDInsightCluster -ClusterName $clusterName
     write-host "Storage account name: $clusterInfo.DefaultStorageAccount.split('.')[0]"
     write-host "Default container: $clusterInfo.DefaultStorageContainer"
     ```
@@ -93,7 +95,7 @@ Pomocí následujících kroků ke zkopírování dat z produkčního prostřed�
 
 #### <a name="direct-copy-between-blobs-in-azure-storage"></a>Přímé kopírování mezi objekty BLOB ve službě Azure Storage
 
-Alternativně můžete chtít použít `Start-AzureStorageBlobCopy` rutiny Azure Powershellu pro kopírování objektů BLOB mezi účty úložiště mimo HDInsight. Další informace najdete v tématu jak spravovat části objektů BLOB systému Azure pomocí Azure powershellu s Azure Storage.
+Alternativně můžete chtít použít `Start-AzStorageBlobCopy` rutiny Azure Powershellu pro kopírování objektů BLOB mezi účty úložiště mimo HDInsight. Další informace najdete v tématu jak spravovat části objektů BLOB systému Azure pomocí Azure powershellu s Azure Storage.
 
 ## <a name="client-side-technologies"></a>Technologie na straně klienta
 
@@ -150,7 +152,7 @@ Další informace o práci s Ambari najdete v následujících dokumentech:
 * [Apache Ambari Web](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
 
-### <a name="ambari-alerts"></a>Ambari výstrahy
+### <a name="ambari-alerts"></a>Upozornění Ambari
 
 Ambari obsahuje upozornění systému, který může identifikovat potenciální problémy s clusterem. Výstrahy se zobrazují jako červené a žluté položky ve webové uživatelské rozhraní Ambari, ale můžete také načíst přes rozhraní REST API.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 93313557781c6b3788d8b4d43d6676fc17625709
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: d8f7808401b2e11a38b239a353e3b7af2ffcffb3
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201309"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361298"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Vývoj skriptových akcí skriptů pro clustery se systémem Windows pro HDInsight
 Zjistěte, jak psát skripty akci skriptu pro HDInsight. Informace o pomocí skriptových akcí skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md). Stejného článku napsané pro clustery HDInsight se systémem Linux, najdete v části [vývoj skriptových akcí skriptů pro HDInsight](hdinsight-hadoop-script-actions-linux.md).
@@ -32,6 +32,8 @@ Akce skriptu lze použít k instalaci dalšího softwaru, které se spouští v 
 > System.Management.Automation.CommandNotFoundException; ExceptionMessage: Termín 'Save-HDIFile' nebyl rozpoznán jako název rutiny, funkce, soubor skriptu nebo spustitelného programu. Zkontrolujte, zda název, nebo pokud cesty byl zahrnut, ověřte správnost cesty a zkuste to znovu.
 > 
 > Je, protože jste nezahrnuli pomocné metody.  Zobrazit [pomocné metody pro vlastní skripty](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
 Akci skriptu pro vytváření clusterů HDInsight v operačním systému Windows, je skript Azure Powershellu. Následující skript je ukázka konfigurace lokality konfigurační soubory:
@@ -191,8 +193,8 @@ Skripty používané k úpravám cluster musí buď být ve výchozí účet úl
 
 V tomto příkladu musíte zajistit, aby kontejneru `somecontainer` v účtu úložiště `somestorageaccount` je veřejně dostupná. V opačném případě skript výjimku "Nebyl nalezen" a selhání.
 
-### <a name="pass-parameters-to-the-add-azurermhdinsightscriptaction-cmdlet"></a>Předání parametrů do rutiny Add-AzureRmHDInsightScriptAction
-K rutině Add-AzureRmHDInsightScriptAction předat více parametrů, budete muset formátování řetězcovou hodnotu obsahující všechny parametry skriptu. Příklad:
+### <a name="pass-parameters-to-the-add-azhdinsightscriptaction-cmdlet"></a>Předání parametrů do rutiny Add-AzHDInsightScriptAction
+K rutině Add-AzHDInsightScriptAction předat více parametrů, budete muset formátování řetězcovou hodnotu obsahující všechny parametry skriptu. Příklad:
 
     "-CertifcateUri wasb:///abc.pfx -CertificatePassword 123456 -InstallFolderName MyFolder"
 

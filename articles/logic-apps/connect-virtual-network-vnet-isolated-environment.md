@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 8bbbe7a924c98c9628ce967892177599a1d13017
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9cb3abff10482ec7e58b4b049f051e99178cb742
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854989"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371975"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps s využitím integrace služby prostředí (ISE)
 
@@ -46,7 +46,14 @@ Další informace o prostředí integrační služby naleznete v tématu [přís
 
 * [Virtuální síť Azure](../virtual-network/virtual-networks-overview.md). Pokud nemáte virtuální síť, zjistěte, jak [vytvořit virtuální síť Azure](../virtual-network/quick-create-portal.md). 
 
-  * Vaše virtuální síť musí mít čtyři *prázdný* podsítě pro nasazení a vytváření prostředků ve vaší ISE. Tyto podsítě můžete vytvořit předem nebo můžete počkat, dokud nevytvoříte vašeho ISE, kde můžete vytvořit podsítě ve stejnou dobu. Další informace o [podsítě požadavky](#create-subnet).
+  * Vaše virtuální síť musí mít čtyři *prázdný* podsítě pro nasazení a vytváření prostředků ve vaší ISE. Tyto podsítě můžete vytvořit předem nebo můžete počkat, dokud nevytvoříte vašeho ISE, kde můžete vytvořit podsítě ve stejnou dobu. Další informace o [podsítě požadavky](#create-subnet). 
+  
+    > [!NOTE]
+    > Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md), která poskytuje privátní připojení ke cloudovým službám Microsoftu, je nutné [přidat následující trasa každé podsítě](../virtual-network/virtual-network-manage-subnet.md) používané vaší ISE. Pokud používáte směrovací tabulku s podsítěmi, [přidat následující trasy do směrovací tabulky](../virtual-network/manage-route-table.md):
+    > 
+    > **Název**: D3655BASE-route<br>
+    > **Předpona adresy**: 0.0.0.0/0<br>
+    > **Směrování**: Internet
 
   * Ujistěte se, že vaše virtuální síť [zpřístupní tyto porty](#ports) tak, aby vaše ISE správně funguje a zůstane dostupný.
 
@@ -138,6 +145,12 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
      * `10.0.0.0/28` má jenom 16 adresy a je příliš malá, protože 2<sup>(32-28)</sup> je 2<sup>4</sup> nebo 16.
 
      Další informace o výpočet adresy najdete v tématu [bloky IPv4 CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
+
+   * Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md), nezapomeňte [přidat následující trasa každé podsítě](../virtual-network/virtual-network-manage-subnet.md) používané vaší ISE. Pokud používáte směrovací tabulku s podsítěmi, [přidat následující trasy do směrovací tabulky](../virtual-network/manage-route-table.md):
+
+     **Název**: D3655BASE-route<br>
+     **Předpona adresy**: 0.0.0.0/0<br>
+     **Směrování**: Internet
 
    1. V části **podsítě** klikněte na položku **spravovat konfiguraci podsítě**.
 

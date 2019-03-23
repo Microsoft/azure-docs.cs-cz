@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: d0b5dede5846b3ff9eac3ee865685fe5b3f773f9
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 455e3b4ac4a5020f68b5201bc19f85892ef62cb1
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318103"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368982"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Kurz: Správa skupiny aplikací pro Windows virtuálního klienta (Preview)
 
@@ -68,7 +68,7 @@ Než začnete, [stáhněte a naimportujte modul Powershellu virtuální plochy W
 8. Spuštěním následující rutiny můžete uživatelům udělit přístup k aplikace RemoteApp ve skupině aplikací.
 
    ```powershell
-   Add-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname> -UserPrincipalNames <userupn>
+   Add-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname> -UserPrincipalName <userupn>
    ```
 
 ## <a name="next-steps"></a>Další postup

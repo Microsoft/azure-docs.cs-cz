@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 3829fb3c045b149552d3f022e31f30f9cfae8182
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a56f391aa76bd1216fd51d516adb836a2093bcba
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852436"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371135"
 ---
 # <a name="mapping-data-flow-sink-transformation"></a>Mapování datového toku jímky transformace
 
@@ -56,8 +56,8 @@ Pokud chcete obnovit mapování sloupců, stiskněte tlačítko "Přemapování"
 
 ## <a name="file-name-options"></a>Možnosti názvu souboru
 
-   * Výchozí hodnota: Spark umožňuje soubory název založeném na výchozím nastavení součástí
-   * Vzor: Zadejte název výstupních souborů
+   * Výchozí: Spark umožňuje soubory název založeném na výchozím nastavení součástí
+   * Vzor: Zadejte vzor pro výstupní soubory. Například "půjček [n]" vytvoří loans1.csv, loans2.csv,...
    * Na oddíl: Zadejte název souboru na oddíl
    * Jako data ve sloupci: Nastavte na hodnotu sloupce výstupního souboru
 
@@ -66,11 +66,16 @@ Pokud chcete obnovit mapování sloupců, stiskněte tlačítko "Přemapování"
 
 ## <a name="database-options"></a>Možnosti databáze
 
-* Povolte insert, update, delete, upsertuje. Výchozí hodnota je umožňující vložení. Pokud chcete aktualizace funkcí upsert a vložit řádky, musí nejprve přidat transformaci alter řádek do řádků značky pro tyto konkrétní akce.
+* Povolte insert, update, delete, upsertuje. Výchozí hodnota je umožňující vložení. Pokud chcete aktualizovat, upsert nebo odstranit řádky, musí nejprve přidat transformaci alter řádek do řádků značky pro tyto konkrétní akce. Vypnutí "Povolit Vložit" zastaví ADF vložením nových řádků ze zdroje.
 * Truncate table (odebere všechny řádky z cílové tabulce před dokončením toku dat)
 * Vytvořte tabulku (provádí rozevírací/vytvoření cílové tabulky před dokončením toku dat)
 * Velikost dávky pro načítání velkých objemů dat Zadejte číslo do kbelíku zápisy do bloků dat
 * Zapnout pracovní režim: To bude dát pokyn ADF pomocí Polybase při načítání Azure Data Warehouse jako datové sady jímky
+
+> [!NOTE]
+> V toku dat můžete požádat o ADF můžete vytvořit novou definici tabulky v cílové databázi nastavením datovou sadu jímky transformace, která má nový název tabulky. V sadě dat SQL klikněte na tlačítko "Upravit" pod název tabulky a zadejte nový název tabulky. Potom v transformaci jímky zapněte "Povolit schématu odchylek". Seth "Importovat schéma" nastavení na hodnotu None.
+
+![Transformace schématu zdroje](media/data-flow/dataset2.png "SQL schématu")
 
 ![SQL jímky možnosti](media/data-flow/alter-row2.png "možnosti SQL")
 

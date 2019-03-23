@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 12/19/2018
+ms.date: 03/21/2019
 ms.author: wesmc
-ms.openlocfilehash: e35e669c4abc4815b932e09d369af28e42617e8c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 941455e39a32405097563b043046866aeb5c7964
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535675"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351928"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 se připojit ke službě Azure IoT Hub
 
@@ -128,7 +128,7 @@ Můžete sledovat ty [Channel 9](https://channel9.msdn.com/) videa, která mají
 Použijte následující postup Příprava vývojového prostředí pro DevKit:
 
 1. Nainstalujte [rozhraním Arduino IDE](https://www.arduino.cc/en/Main/Software). Poskytuje nezbytné sady nástrojů pro kompilaci a nahrání kódu Arduino.
-    * **Windows:** Používejte verzi Instalační služby systému Windows. Neinstalujte z app storu.
+    * **Windows:** Používejte verzi Instalační služby systému Windows. Neinstalujte z App Store.
     * **macOS**: Přetáhnout myší extrahované **Arduino.app** do `/Applications` složky.
     * **Ubuntu**: Například rozbalte do složky `$HOME/Downloads/arduino-1.8.8`
 
@@ -139,6 +139,9 @@ Použijte následující postup Příprava vývojového prostředí pro DevKit:
 
 4. Vyhledejte **nástroje Azure IoT** v marketplace pro rozšíření a nainstalujte ho.
     ![Instalace nástrojů Azure IoT](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
+
+    > [!div class="nextstepaction"]
+    > [Nainstalovat balíček rozšíření pro nástroje Azure IoT](vscode:extension/vsciot-vscode.azure-iot-tools)
 
 5. Konfigurace VS Code s rozhraním Arduino nastavení.
 
@@ -175,11 +178,11 @@ Použijte následující postup Příprava vývojového prostředí pro DevKit:
 
 ### <a name="install-st-link-drivers"></a>Instalace ovladačů ST – odkaz
 
-[Sv-odkaz/V2](https://www.st.com/en/development-tools/st-link-v2.html) je rozhraní USB používající IoT DevKit ke komunikaci s počítači pro vývoj. Potřebujete ji nainstalujete na Windows umožňující pracovat bez velkých příprav kód zkompilovaný deivce DevKit. Postupujte podle kroků specifické pro operační systém umožňující počítači přístup k zařízení.
+[Sv-odkaz/V2](https://www.st.com/en/development-tools/st-link-v2.html) je rozhraní USB používající IoT DevKit ke komunikaci s počítači pro vývoj. Budete muset nainstalovat na Windows tak, aby zařízení zkompilovaný kód, který DevKit. Postupujte podle kroků specifické pro operační systém umožňující počítači přístup k zařízení.
 
-* **Windows:** Stáhnout a nainstalovat ovladač USB z [STMicroelectronics webu](https://www.st.com/en/development-tools/stsw-link009.html).
+* **Windows:** Stáhnout a nainstalovat ovladač USB z [STMicroelectronics webu](https://www.st.com/en/development-tools/stsw-link009.html) pro [přímý odkaz](https://aka.ms/stlink-v2-windows).
 * **macOS**: Žádný ovladač je vyžadován pro macOS.
-* **Ubuntu**: V terminálu spusťte následující příkaz a odhlásit a přihlásit projeví se změna skupiny:
+* **Ubuntu**: Spuštění příkazů v terminálu a odhlásit se a přihlásit projeví se změna skupiny:
     ```bash
     # Copy the default rules. This grants permission to the group 'plugdev'
     sudo cp ~/.arduino15/packages/AZ3166/tools/openocd/0.10.0/linux/contrib/60-openocd.rules /etc/udev/rules.d/
@@ -194,16 +197,47 @@ Nyní vše je nastaveno s Příprava a konfigurace vývojového prostředí. Dej
 
 ## <a name="build-your-first-project"></a>Svůj první projekt sestavit
 
-1. Ujistěte se, že je vaše IoT DevKit **Nepřipojeno** k vašemu počítači. Nejprve spusťte VS Code a DevKit připojte se k počítači.
+### <a name="open-sample-code-from-sample-gallery"></a>Otevřete ukázkový kód z Galerie ukázek
 
+1. Ujistěte se, že je vaše IoT DevKit **Nepřipojeno** k vašemu počítači. Nejprve spusťte VS Code a DevKit připojte se k počítači.
 
 1. Klikněte na tlačítko `F1` otevřete paletu příkazů, zadejte a vyberte **Workbench zařízení Azure IoT: Otevřít příklady...** . Potom vyberte **IoT DevKit** jako panel.
 
 1. Na stránce IoT aplikace Workbench příklady najít **Začínáme** a klikněte na tlačítko **otevřít ukázkové**. Potom vybere výchozí cestu pro stažení ukázkového kódu.
     ![Otevřete ukázkový](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/open-sample.png)
 
+### <a name="provision-azure-iot-hub-and-device"></a>Zřízení Azure IoT Hub a zařízení
+
 1. V novém okně otevřeném projektu, klikněte na tlačítko `F1` otevřete paletu příkazů, zadejte a vyberte **Workbench zařízení Azure IoT: Zřízení služby Azure...** . Postupujte podle podrobného průvodce na dokončení zřízení služby Azure IoT Hub a vytvoření zařízení IoT Hub.
-    ![Zřizování cloudu](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/cloud-provision.png)
+    ![Příkaz zřizování](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/provision.png)
+
+    > [!NOTE]
+    > Pokud nejste v Azure. Použijte místní oznámení pro přihlášení.
+
+1. Vyberte předplatné, které chcete použít.
+    ![Vyberte sub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-subscription.png)
+
+1. Vyberte nebo vytvořte novou [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#terminology).
+    ![Vyberte skupinu prostředků.](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-resource-group.png)
+
+1. Ve skupině prostředků, které jste zadali postupujte podle průvodce a vyberte nebo vytvořte novou službu Azure IoT Hub.
+    ![Vyberte službu IoT Hub kroky](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-provision.png)
+
+    ![Vyberte službu IoT Hub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-iot-hub.png)
+
+    ![Vybranému centru IoT Hub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-selected.png)
+
+1. V okně výstupu uvidíte Azure IoT Hub, zřídit ![zřízené centra IoT](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-provisioned.png)
+
+1. Vyberte nebo vytvořte nové zařízení ve službě Azure IoT Hub jste zřídili.
+    ![Vyberte zařízení IoT kroky](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-device-provision.png)
+
+    ![Vyberte možnost pro zřízení zařízení IoT](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-iot-device.png)
+
+1. Nyní máte zřízené služby Azure IoT Hub a zařízení se vytvořilo v ní. Také připojovací řetězec zařízení se uloží v nástroji VS Code pro konfiguraci IoT DevKit později.
+    ![Zřízení Hotovo](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/provision-done.png)
+
+### <a name="configure-and-compile-device-code"></a>Konfigurace a kompilaci kódu zařízení
 
 1. V pravém dolním stavovém, zkontrolujte **MXCHIP AZ3166** se zobrazuje jako vybraný panelu a sériového portu pomocí **STMicroelectronics** se používá.
     ![Vyberte panelu a modelu COM](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-com.png)
@@ -252,6 +286,16 @@ Můžete použít [nástroje Azure IoT](https://marketplace.visualstudio.com/ite
 
 1. V **výstup** podokně, zobrazí se příchozí zprávy D2C do služby IoT Hub.
     ![Zpráva D2C](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/d2c-output.png)
+
+## <a name="review-the-code"></a>Kontrola kódu
+
+`GetStarted.ino` Je hlavní soubor sketch Arduino.
+
+![Zpráva D2C](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/code.png)
+
+Chcete-li zjistit, jak se odesílají telemetrii zařízení do služby Azure IoT Hub, otevřete `utility.cpp` soubor ve stejné složce. Zobrazení [Reference k rozhraní API](https://microsoft.github.io/azure-iot-developer-kit/docs/apis/arduino-language-reference/) se naučíte používat senzory a periferní zařízení v IoT DevKit.
+
+`DevKitMQTTClient` Použitá je obálku **iothub_client** z [sadami SDK služby Microsoft Azure IoT a knihovny pro jazyk C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client) k interakci s Azure IoT Hub.
 
 ## <a name="problems-and-feedback"></a>Problémy a zpětná vazba
 

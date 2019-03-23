@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6a51e57cfac326663d41b545c9f2883a446467d3
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 1d4144a2a6cf41d594ee096d8802ccc5b29009a5
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340758"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361791"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -40,7 +40,7 @@ Pokud už máte prostředí Python 3, nebo chcete jenom základní kroky pro ins
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, najdete v článku [Začínáme se službou Azure Machine Learning](quickstart-get-started.md).
+- Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, najdete v článku [vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md).
 
 - Buď [Anaconda](https://www.anaconda.com/download/) nebo [Miniconda](https://conda.io/miniconda.html) Správce balíčků.
 
@@ -61,7 +61,7 @@ Pokud už máte prostředí Python 3, nebo chcete jenom základní kroky pro ins
 * Sada SDK Azure Machine Learning je již nainstalována.
 * Po vytvoříte pracovní prostor služby Azure Machine Learning na webu Azure Portal, můžete kliknout na tlačítko pro automatickou konfiguraci prostředí Azure poznámkového bloku pro práci s pracovním prostorem.
 
-Vývoj s využitím poznámkových bloků Azure, najdete v článku [Začínáme se službou Azure Machine Learning](quickstart-get-started.md).
+Vývoj s využitím poznámkových bloků Azure, najdete v článku [Začínáme se službou Azure Machine Learning](quickstart-run-cloud-notebook.md).
 
 Ve výchozím nastavení používá vrstvy bezplatná služba, která je omezena na 4GB paměti a 1GB dat poznámkových bloků Azure. Tato omezení můžete, ale odebrat připojením k instanci virtuálního počítače pro datové vědy do projektu poznámkových bloků Azure. Další informace najdete v tématu [spravovat a nakonfigurovat projekty poznámkových bloků Azure – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
@@ -350,7 +350,7 @@ Chcete-li použít tento soubor z vašeho kódu, použijte `ws=Workspace.from_co
 
 Konfigurační soubor můžete vytvořit třemi způsoby:
 
-* **Postupujte podle [rychlý start Azure Machine Learning](quickstart-get-started.md)**: A *config.json* vytvoří soubor v knihovně poznámkových bloků Azure. Soubor obsahuje informace o konfiguraci pro váš pracovní prostor. Stáhněte nebo zkopírujte *config.json* do jiných vývojových prostředích.
+* **Postupujte podle kroků v [vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md#sdk)**: A *config.json* vytvoří soubor v knihovně poznámkových bloků Azure. Soubor obsahuje informace o konfiguraci pro váš pracovní prostor. Stáhněte nebo zkopírujte *config.json* do jiných vývojových prostředích.
 
 * **Vytvoření souboru ručně**: Pomocí této metody pomocí textového editoru. Můžete najít hodnoty, které pohledu vývojáře návštěvou pracovního prostoru v konfiguračním souboru [webu Azure portal](https://portal.azure.com). Zkopírujte název pracovního prostoru, skupinu prostředků a hodnoty ID předplatného a jejich použití v konfiguračním souboru.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 3d187851fda9054bbfbae245ef34440b66ad017e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: bd760fca20a602127e7d33913547dcb2c6bc95f6
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309311"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351542"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Stream diagnostické protokoly Azure do Log Analytics
 
@@ -100,6 +100,39 @@ Můžete přidat další kategorie pro protokol diagnostiky tak, že přidáte s
 ## <a name="how-do-i-query-the-data-in-log-analytics"></a>Jak dotaz na data v Log Analytics?
 
 V okně hledání v protokolu na portálu nebo Advanced Analytics prostředí jako součást Log Analytics se můžete dotazovat diagnostické protokoly jako součást řešení Správa protokolů ve složce AzureDiagnostics tabulky. Existují také [několik řešení pro prostředky Azure](../../azure-monitor/insights/solutions.md) instalací získat okamžitý přehled o data protokolu odesílají do Log Analytics.
+
+### <a name="known-limitation-column-limit-in-azurediagnostics"></a>Známá omezení: omezení počtu sloupců v AzureDiagnostics
+Protože mnoho prostředků odeslat datové typy se odesílají do stejné tabulky (_AzureDiagnostics_), schéma v této tabulce je velmi sadu schémat všech různých datových typů shromažďují. Například pokud jste vytvořili nastavení diagnostiky pro kolekci následující typy dat, všechny odesílají do stejného pracovního prostoru:
+- Auditovat protokoly 1 prostředek (s schématu, který se skládá ze sloupců A, B a C)  
+- Protokoly chyb prostředků 2 (schéma skládající se z sloupců D, E a F s)  
+- Protokoly toku dat 3 prostředků (skládající se z sloupců G, H a jsem schéma s)  
+ 
+V tabulce AzureDiagnostics bude vypadat následovně, s ukázkovými daty:  
+ 
+| ResourceProvider | Kategorie | A | B | C | D | E | F | G | H | I |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
+| Microsoft.Resource2 | ErrorLogs | | | | q1 | w1 | e1 |
+| Microsoft.Resource3 | DataFlowLogs | | | | | | | j1 | k1 | l1|
+| Microsoft.Resource2 | ErrorLogs | | | | q2 | w2 | e2 |
+| Microsoft.Resource3 | DataFlowLogs | | | | | | | j3 | k3 | l3|
+| Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
+| ... |
+ 
+Je omezený na explicitní jakékoli dané tabulky protokolu Azure nemá více než 500 sloupce. Po jeho dosažení se v době příjmu se zahodí všechny řádky obsahující data s žádným sloupcem mimo prvních 500. V tabulce AzureDiagnostics je zejména napadnutelné přes bezpečnostní bude dopad na toto omezení. To obvykle proběhne buď protože širokou škálu zdrojů dat se odesílají do stejného pracovního prostoru, nebo několik zdrojů velmi podrobné údaje odesílané do stejného pracovního prostoru. 
+ 
+#### <a name="azure-data-factory"></a>Azure Data Factory  
+Azure Data Factory, z důvodu velmi podrobné sadu protokolů, je prostředek, který je známé hlavně ovlivní tento limit. Zejména:  
+- *Uživatel parametry definované pro všechny aktivity v kanálu*: bude nový sloupec, který vytvoří pro každý parametr jedinečně pojmenovaná uživatele pro všechny aktivity. 
+- *Aktivita vstupy a výstupy*: tyto aktivity aktivity se liší a generují velké množství sloupců z důvodu jejich podrobné povahy. 
+ 
+Jako s širší návrhy řešení níže, se doporučuje k izolaci ADF protokoly do své vlastní pracovní prostor, který minimalizuje riziko tyto protokoly vliv na jiné typy protokolů shromažďují ve vašich pracovních prostorů. Očekáváme, že připravili protokoly služby Azure Data Factory dostupná roku 2019 poloviny dubna.
+ 
+#### <a name="workarounds"></a>Alternativní řešení
+Krátkodobé, dokud předefinovat limit 500 sloupce, doporučujeme k oddělení do samostatných pracovních prostorů pro snížení rizika vzniku dosažení limitu podrobné datové typy.
+ 
+Dlouhodobější, diagnostiky Azure se přesouvají směrem od jednotné a řídkých schématu do jednotlivých tabulek na jednotlivé typy dat; spárovat s podporou pro dynamické typy, značně tím zlepšíte použitelnost data přicházející do protokolů Azure pomocí Azure Diagnostics mechanismu. Už to pro uvidíte vyberte typy prostředků Azure, například [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics) nebo [Intune](https://docs.microsoft.com/intune/review-logs-using-azure-monitor) protokoly. Podívejte se prosím pro nejnovější zprávy o nové typy prostředků v Azure podporuje tyto kurátorované protokoly na [aktualizace Azure](https://azure.microsoft.com/updates/) blogu!
+
 
 ## <a name="next-steps"></a>Další postup
 

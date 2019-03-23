@@ -8,14 +8,15 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: f7bfb4f403104bb91fb1a9ba4b70cb164e0738b4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e9b562cb04bb8916245d9df7b9b6d526bd443a24
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113295"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352132"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky ve službě Azure Monitor
+
 Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, včetně grafů na portálu, přístup přes rozhraní REST API nebo dotazování je pomocí Powershellu nebo rozhraní příkazového řádku. Níže je úplný seznam všech metrik aktuálně k dispozici pro monitorování Azure metriky kanálu. Jiné metriky, může být k dispozici na portálu nebo pomocí starší verze rozhraní API. Tento seznam níže obsahuje pouze metriky, které jsou k dispozici prostřednictvím konsolidované kanálu metrik Azure monitoru. K vyhledání a přístup k těmto metrikám prosím použijte [2018-01-01 verze api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 
 > [!NOTE]
@@ -358,8 +359,8 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které virtuální počítače aktuálně používají|Žádné dimenze|
-|Síťové vstupy|Síťové vstupy|B|Celkem|Počet bajtů přijatých na všech síťových rozhraní virtuálních počítačů (příchozí provoz)|Žádné dimenze|
-|Síťové výstupy|Síťové výstupy|B|Celkem|Počet bajtů odchozích všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
+|Síťové vstupy|Síťové vstupy|B|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|Žádné dimenze|
+|Síťové výstupy|Síťové výstupy|B|Celkem|Počet bajtů odchozích ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
 |Čtení z disku – bajty|Čtení z disku – bajty|B|Celkem|Celkový počet bajtů přečtený z disku během období monitorování|Žádné dimenze|
 |Zápis na disk – bajty|Zápis na disk – bajty|B|Celkem|Celkový počet bajtů zapsaný na disk během období monitorování|Žádné dimenze|
 |Čtení z disku – operace/s|Čtení z disku – operace/s|CountPerSecond|Průměr|Čtení z disku – IOPS|Žádné dimenze|
@@ -534,7 +535,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |serverlog_storage_usage|Využité úložiště protokolů serveru|B|Průměr|Využité úložiště protokolů serveru|Žádné dimenze|
 |serverlog_storage_limit|Limit úložiště protokolů serveru|B|Průměr|Limit úložiště protokolů serveru|Žádné dimenze|
 |active_connections|Aktivní připojení|Počet|Průměr|Aktivní připojení|Žádné dimenze|
-|connections_failed|Chyba připojení|Počet|Celkem|Chyba připojení|Žádné dimenze|
+|connections_failed|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádné dimenze|
 |network_bytes_egress|Síťové výstupy|B|Celkem|Odchozí síťový provoz mezi aktivních připojení|Žádné dimenze|
 |network_bytes_ingress|Síťové vstupy|B|Celkem|Sítě v rámci aktivních připojení|Žádné dimenze|
 
@@ -552,7 +553,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |serverlog_storage_usage|Využité úložiště protokolů serveru|B|Průměr|Využité úložiště protokolů serveru|Žádné dimenze|
 |serverlog_storage_limit|Limit úložiště protokolů serveru|B|Průměr|Limit úložiště protokolů serveru|Žádné dimenze|
 |active_connections|Aktivní připojení|Počet|Průměr|Aktivní připojení|Žádné dimenze|
-|connections_failed|Chyba připojení|Počet|Celkem|Chyba připojení|Žádné dimenze|
+|connections_failed|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádné dimenze|
 |seconds_behind_master|Zpoždění replikace v řádu sekund|Počet|Průměr|Zpoždění replikace v řádu sekund|Žádné dimenze|
 |network_bytes_egress|Síťové výstupy|B|Celkem|Odchozí síťový provoz mezi aktivních připojení|Žádné dimenze|
 |network_bytes_ingress|Síťové vstupy|B|Celkem|Sítě v rámci aktivních připojení|Žádné dimenze|
@@ -571,7 +572,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |serverlog_storage_usage|Využité úložiště protokolů serveru|B|Průměr|Využité úložiště protokolů serveru|Žádné dimenze|
 |serverlog_storage_limit|Limit úložiště protokolů serveru|B|Průměr|Limit úložiště protokolů serveru|Žádné dimenze|
 |active_connections|Aktivní připojení|Počet|Průměr|Aktivní připojení|Žádné dimenze|
-|connections_failed|Chyba připojení|Počet|Celkem|Chyba připojení|Žádné dimenze|
+|connections_failed|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádné dimenze|
 |network_bytes_egress|Síťové výstupy|B|Celkem|Odchozí síťový provoz mezi aktivních připojení|Žádné dimenze|
 |network_bytes_ingress|Síťové vstupy|B|Celkem|Sítě v rámci aktivních připojení|Žádné dimenze|
 
@@ -660,7 +661,6 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 | MetadataRequests |    Požadavky na metadata   |Počet| Počet   | Počet žádostí o metadata. Azure Cosmos DB udržuje kolekci metadat systému pro každý účet, který umožňuje vytvoření výčtu kolekce, databázím atd., a jejich konfigurací, které jsou zdarma.    | Název databáze, StatusCode CollectionName, oblasti,| Vše|  |Používá k monitorování omezení z důvodu požadavků na metadata.|
 | MongoRequests |   Požadavky mongo| Počet | Počet|  Počet zpracovaných požadavků Mongo   | Název databáze, CollectionName, oblast, CommandName, kód chyby| Vše |Frekvence požadavků dotaz mongo, Mongo aktualizace frekvence, Mongo odstranit frekvence požadavků, Mongo vložit frekvence požadavků, Mongo počet požadavek frekvence žádostí|   Slouží k monitorování Mongo žádost o chyby, zadejte použití jeden příkaz. |
 
-
 ### <a name="request-unit-metrics"></a>Metriky jednotek žádosti
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze| Čas přírůstcích| Starší verze metriky mapování | Využití |
@@ -673,7 +673,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze| Čas přírůstcích| Starší verze metriky mapování | Využití |
 |---|---|---|---|---|---| ---| ---| ---|
-| AvailableStorage| Dostupné úložiště   |B| Celkem|  Celkový úložiště k dispozici hlášené v intervalech 5 minut na oblast|   DatabaseName CollectionName, oblast|   5 MIN| Dostupné úložiště|   Slouží k monitorování úložiště k dispozici minimální členitost kapacity (platí pouze pro kolekce dlouhodobého úložiště) by měl být 5 minut.| 
+| AvailableStorage| Dostupné úložiště   |B| Celkem|  Celkový úložiště k dispozici hlášené v intervalech 5 minut na oblast|   DatabaseName CollectionName, oblast|   5 MIN| Dostupné úložiště|   Slouží k monitorování úložiště k dispozici minimální členitost kapacity (platí pouze pro kolekce dlouhodobého úložiště) by měl být 5 minut.|
 | DataUsage |Využití dat |B| Celkem   |Celkové množství dat využití hlášené v intervalech 5 minut na oblast|    DatabaseName CollectionName, oblast|   5 MIN  |Velikost dat  | Slouží k monitorování využití celkové množství dat v kolekci a oblasti, minimální členitost by měl být 5 minut.|
 | IndexUsage|   Použití indexu|    B|  Celkem   |Celkové využití Index hlášené v intervalech 5 minut na oblast|    DatabaseName CollectionName, oblast|   5 MIN| Velikost indexu| Slouží k monitorování využití celkové množství dat v kolekci a oblasti, minimální členitost by měl být 5 minut. |
 | DocumentQuota|    Kvóta dokumentu| B|  Celkem|  Kvóta celkový úložiště Ohlášeno za 5 minut členitosti v jedné oblasti. Dají se použít pro kolekce dlouhodobého úložiště| DatabaseName CollectionName, oblast|   5 MIN  |Kapacita úložiště|  Slouží k monitorování celkovou kvótu v kolekci a oblasti, minimální členitost by měl být 5 minut.|
@@ -749,7 +749,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Velikost|Velikost (Preview)|B|Průměr|Velikost centra událostí v bajtech (Preview)|EntityName|
 |INREQS|Příchozí požadavky|Počet|Celkem|Celkový počet příchozích žádostí o odeslání pro obor názvů|Žádné dimenze|
 |SUCCREQ|Úspěšné požadavky|Počet|Celkem|Celkový počet úspěšných žádostí pro obor názvů|Žádné dimenze|
-|FAILREQ|Neúspěšné žádosti|Počet|Celkem|Celkový počet neúspěšných žádostí pro obor názvů|Žádné dimenze|
+|FAILREQ|Neúspěšné požadavky|Počet|Celkem|Celkový počet neúspěšných žádostí pro obor názvů|Žádné dimenze|
 |SVRBSY|Chyby kvůli zaneprázdněnosti serveru|Počet|Celkem|Celkový počet chyb kvůli zaneprázdnění serveru pro obor názvů|Žádné dimenze|
 |INTERR|Vnitřní chyby serveru|Počet|Celkem|Celkový počet vnitřních chyb serveru pro obor názvů|Žádné dimenze|
 |MISCERR|Jiné chyby|Počet|Celkem|Celkový počet neúspěšných žádostí pro obor názvů|Žádné dimenze|
@@ -805,6 +805,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |ScaleActionsInitiated|Zahájené akce škálování|Počet|Celkem|Směr operace škálování|ScaleDirection|
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
+
 (Public Preview)
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
@@ -1014,7 +1015,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |UnhealthyHostCount|Není v pořádku. počet hostitelů|Počet|Průměr|Počet hostitelů back-end není v pořádku|BackendSettingsPool|
 |HealthyHostCount|V pořádku. počet hostitelů|Počet|Průměr|Počet hostitelů v dobrém stavu back-endu|BackendSettingsPool|
 |TotalRequests|Požadavky celkem|Počet|Celkem|Počet úspěšných požadavků, které má služba Application Gateway obsluhuje|BackendSettingsPool|
-|FailedRequests|Neúspěšné žádosti|Počet|Celkem|Počet neúspěšných žádostí, které má služba Application Gateway obsluhuje|BackendSettingsPool|
+|FailedRequests|Neúspěšné požadavky|Počet|Celkem|Počet neúspěšných žádostí, které má služba Application Gateway obsluhuje|BackendSettingsPool|
 |ResponseStatus|Stav odpovědi|Počet|Celkem|Stav odpovědi HTTP vrácené Application Gateway|HttpStatusGroup|
 |CurrentConnections|Aktuální počet připojení|Počet|Celkem|Počet aktuální připojení ke službě Application Gateway|Žádné dimenze|
 
@@ -1224,7 +1225,6 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Aktualizace|Aktualizace|Počet|Průměr|Aktualizace|Počítače, produktů, klasifikace, UpdateState volitelné, schválené|
 |Událost|Událost|Počet|Průměr|Událost|Zdroj protokolu událostí, počítače, EventCategory, EventLevel, EventLevelName, ID události|
 
-
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
@@ -1300,7 +1300,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |dtu_consumption_percent|Procento DTU|Procento|Průměr|Procento DTU|Žádné dimenze|
 |úložiště|Celkovou velikost databáze|B|Maximum|Celkovou velikost databáze|Žádné dimenze|
 |connection_successful|Úspěšná připojení|Počet|Celkem|Úspěšná připojení|Žádné dimenze|
-|connection_failed|Chyba připojení|Počet|Celkem|Chyba připojení|Žádné dimenze|
+|connection_failed|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádné dimenze|
 |blocked_by_firewall|Blokovaná bránou Firewall|Počet|Celkem|Blokovaná bránou Firewall|Žádné dimenze|
 |Zablokování|Zablokování|Počet|Celkem|Zablokování|Žádné dimenze|
 |storage_percent|Procento velikosti databáze|Procento|Maximum|Procento velikosti databáze|Žádné dimenze|
@@ -1608,7 +1608,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |MemoryPercentage|Procento paměti|Procento|Průměr|Procento paměti|Instance|
 
 ## <a name="next-steps"></a>Další postup
+
 * [Přečtěte si informace o metriky ve službě Azure Monitor](../../azure-monitor/platform/data-collection.md)
 * [Vytváření upozornění na metriky](../../azure-monitor/platform/alerts-overview.md)
 * [Export metrik úložiště, Centrum událostí a Log Analytics](../../azure-monitor/platform/diagnostic-logs-overview.md)
-

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78879f0e54dbd8f573ade7381ba83429346d00db
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 093849e10e9776327a54ea3a9ae22b863a528d37
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314259"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58367860"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>Ověřování pomocí protokolu LDAP a ověřování Azure Multi-Factor Authentication Server
 
@@ -25,6 +25,7 @@ Ve výchozím nastavení je server Azure Multi-Factor Authentication nakonfiguro
 Chcete-li použít Azure Multi-Factor Authentication jako proxy protokolu LDAP, vložte Azure Multi-Factor Authentication Server mezi klienta protokolu LDAP (například zařízení VPN, aplikace) a adresářový server LDAP. Azure Multi-Factor Authentication Server musí být nakonfigurován tak, aby komunikoval s klientskými servery i s adresářem LDAP. V této konfiguraci server Azure Multi-Factor Authentication přijímá požadavky LDAP od klientských serverů a aplikací a předává je cílovému adresářovému serveru LDAP pro ověření primárních pověření. Pokud adresář LDAP ověří primární přihlašovací údaje, ověřování Azure Multi-Factor Authentication provede druhé ověření identity a odešle odpověď zpět do klienta protokolu LDAP. Celkové ověření proběhne úspěšně pouze pokud je úspěšné ověření pomocí serveru LDAP i druhý krok ověření.
 
 ## <a name="configure-ldap-authentication"></a>Konfigurace ověřování pomocí protokolu LDAP
+
 Pro konfiguraci ověřování pomocí protokolu LDAP nainstalujte server Azure Multi-Factor Authentication na server Windows. Použijte následující postup:
 
 ### <a name="add-an-ldap-client"></a>Přidání klienta protokolu LDAP
@@ -32,7 +33,7 @@ Pro konfiguraci ověřování pomocí protokolu LDAP nainstalujte server Azure M
 1. V Azure Multi-Factor Authentication Server vyberte v nabídce vlevo na ikonu ověřování pomocí protokolu LDAP.
 2. Zaškrtněte políčko **Povolit ověřování pomocí protokolu LDAP**.
 
-   ![Ověřování pomocí protokolu LDAP](./media/howto-mfaserver-dir-ldap/ldap2.png)
+   ![Ověřování pomocí protokolu LDAP na MFA serveru](./media/howto-mfaserver-dir-ldap/ldap2.png)
 
 3. Na kartě Klienti změňte port TCP a SSL, pokud má služba Azure Multi-Factor Authentication LDAP vytvořit vazbu na nestandardní porty pro naslouchání požadavkům protokolu LDAP.
 4. Pokud plánujete používat LDAPS z klienta k serveru Azure Multi-Factor Authentication, musí být nainstalován certifikát SSL na stejném serveru jako serveru MFA. Klikněte na tlačítko **Procházet** vedle SSL certificate pole a vyberte certifikát, který chcete použít pro zabezpečené připojení.
@@ -51,7 +52,7 @@ Pokud je Azure Multi-Factor Authentication nakonfigurováno pro příjem ověřo
 3. Vyberte **Upravit...**
 4. V dialogovém okně Upravit konfiguraci LDAP vyplňte pole pomocí informací požadovaných pro připojení k adresáři protokolu LDAP. Popisy těchto polí jsou uvedeny v souboru nápovědy Azure Multi-Factor Authentication Serveru.
 
-    ![Integrace adresáře](./media/howto-mfaserver-dir-ldap/ldap.png)
+    ![Konfigurace protokolu LDAP integrace adresáře](./media/howto-mfaserver-dir-ldap/ldap.png)
 
 5. Otestujte připojení LDAP kliknutím na tlačítko **Test**.
 6. Pokud byl test připojení LDAP úspěšný, klikněte na tlačítko **OK**.
@@ -61,16 +62,16 @@ Pokud je Azure Multi-Factor Authentication nakonfigurováno pro příjem ověřo
 10. V dialogovém okně Upravit atributy upravte mapování atributů protokolu LDAP pro váš adresář. Názvy atributů můžete zadat nebo vybrat kliknutím na **...** na tlačítko vedle každého pole. Kliknutím na odkaz **Nápověda** zobrazíte další informace o atributech.
 11. Klikněte na tlačítko **OK**.
 12. Klikněte na ikonu **Nastavení společnosti** a vyberte kartu **Překlad uživatelského jména**.
-13. Pokud se připojujete ke službě Active Directory ze serveru připojeného k doméně, ponechejte vybraný přepínač **Pro porovnání uživatelských jmen použít identifikátory zabezpečení systému Windows (SID)**. Jinak vyberte přepínač **Pro porovnávání uživatelských jmen použít atribut jedinečného identifikátoru LDAP**. 
+13. Pokud se připojujete ke službě Active Directory ze serveru připojeného k doméně, ponechejte vybraný přepínač **Pro porovnání uživatelských jmen použít identifikátory zabezpečení systému Windows (SID)**. Jinak vyberte přepínač **Pro porovnávání uživatelských jmen použít atribut jedinečného identifikátoru LDAP**.
 
 Když je vybraný přepínač **Pro porovnávání uživatelských jmen použít atribut jedinečného identifikátoru LDAP**, Azure Multi-Factor Authentication Server se pokusí každé uživatelské jméno přeložit na jedinečný identifikátor v adresáři LDAP. Provede se vyhledávání protokolu LDAP u atributů uživatelského jména definovaných v části Integrace adresáře na kartě Atributy. Při ověření uživatele uživatelské jméno přeloží na jedinečný identifikátor v adresáři protokolu LDAP. Jedinečný identifikátor se použije k porovnání s uživatelem v datovém souboru Azure Multi-Factor Authentication. To umožňuje porovnávání velkých a malých písmen a dlouhé a krátké formáty uživatelských jmen.
 
 Po dokončení těchto kroků MFA Server naslouchá na nakonfigurovaných portech požadavkům přístupu protokolu LDAP z konfigurovaných klientů a funguje jako proxy pro těchto požadavků do adresáře LDAP pro ověřování.
 
 ## <a name="configure-ldap-client"></a>Konfigurace klienta protokolu LDAP
+
 Chcete-li nakonfigurovat klienta LDAP, postupujte podle pokynů:
 
 * Nakonfigurujte zařízení, server nebo aplikaci k ověřování prostřednictvím protokolu LDAP na Azure Multi-Factor Authentication Serveru, jako by šlo o váš adresář LDAP. Použijte stejné nastavení, které běžně používáte pro připojení přímo k adresáři LDAP, s výjimkou názvu serveru nebo IP adresy, u kterých použijte hodnoty pro Azure Multi-Factor Authentication Server.
 * Nakonfigurujte na 30 – 60 sekund vypršel časový limit protokolu LDAP tak, aby se čas na ověření přihlašovacích údajů uživatele v adresáři LDAP, provedení druhého kroku ověřování, obdržení odpovědi a reakce na žádosti o přístup protokolu LDAP.
 * V případě použití LDAPS musí zařízení nebo server provádějící žádosti LDAP důvěřovat certifikátu SSL nainstalovaném na serveru Azure Multi-Factor Authentication.
-

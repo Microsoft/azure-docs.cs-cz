@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 26e4b921b4050efa5217e3b599b9dc942a003090
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 61a4be19000265910493963db9f29df143a7e21c
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58173919"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360346"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>Přineste si vlastní klíč pro Apache Kafka v Azure HDInsight (Preview)
 
@@ -26,6 +26,8 @@ BYOK šifrování je jednoduchý proces, při vytváření clusteru bez dalšíc
 Všechny zprávy do clusteru Kafka (včetně replik spravuje Kafka) jsou šifrována pomocí symetrický datový šifrovací klíč (DEK). Klíč DEK je chráněn pomocí klíče šifrování klíčů (KEK) z trezoru klíčů. Procesy šifrování a dešifrování dat provádí zcela služba Azure HDInsight. 
 
 Na webu Azure portal nebo rozhraní příkazového řádku Azure můžete bezpečně obměna klíčů v trezoru klíčů. Když otočí klíče clusteru HDInsight Kafka spustí během několika minut pomocí nového klíče. Povolení funkcí ochrany klíčů "Proveďte nelze vymazat" a "Obnovitelné odstranění" pro ochranu před ransomwarem scénáře a nechtěnému odstranění. Bez těchto funkcí ochrany klíče nejsou podporovány.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="get-started-with-byok"></a>Začínáme s BYOK
 
@@ -99,7 +101,7 @@ Na webu Azure portal nebo rozhraní příkazového řádku Azure můžete bezpe�
 
 **Jak můžete obnovit clusteru, pokud se odstraní klíče?**
 
-   Vzhledem k tomu, že jsou podporovány pouze klíče "Obnovitelné odstranění" povoleno, pokud se obnoví klíče v trezoru klíčů, clusteru by měl znovu získali přístup ke klíčům. Obnovit klíče služby Azure Key Vault, najdete v článku [Restore-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey).
+   Vzhledem k tomu, že jsou podporovány pouze klíče "Obnovitelné odstranění" povoleno, pokud se obnoví klíče v trezoru klíčů, clusteru by měl znovu získali přístup ke klíčům. Obnovit klíče služby Azure Key Vault, najdete v článku [obnovení AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey).
 
 **Může mít producenta/konzumenta najdete aplikace pracující s BYOK clusteru a clusteru bez BYOK se současně?**
 

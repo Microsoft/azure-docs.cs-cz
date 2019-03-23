@@ -9,14 +9,15 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: 18ba86ce7876ba8275eb4853e4fc9ea0f35fa186
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 8d8b314965253dc00b39d0b068b1d6fb3e4aa471
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302183"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58395719"
 ---
-1. Dokončení [rychlý start Python pro Azure Machine Learning](../articles/machine-learning/service/quickstart-create-workspace-with-python.md) instalace sady SDK a vytvoření pracovního prostoru.  Můžete přejít **použití poznámkového bloku** části, chcete-li.
+1. Postupujte podle pokynů v [vytvořit pracovní prostor služby Azure Machine Learning](../articles/machine-learning/service/setup-create-workspace.md#portal) Miniconda prostředí vytvořit, vytvořit pracovní prostor a zápis do souboru konfigurace pracovního prostoru (**aml_config/config.json**) .
+
 1. Naklonujte [úložiště GitHub](https://aka.ms/aml-notebooks).
 
     ```
@@ -24,7 +25,7 @@ ms.locfileid: "55302183"
     ```
 
 1. Přidejte konfigurační soubor pracovního prostoru pomocí některé z těchto metod:
-    * Kopírovat **aml_config\config.json** soubor vytvořený pomocí tohoto rychlého startu požadovaných součástí na klonovaný adresář.
+    * Kopírovat **aml_config/config.json** soubor vytvořený pomocí tohoto rychlého startu požadovaných součástí na klonovaný adresář.
     * Vytvořit nový pracovní prostor pomocí kódu v [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb).
 1. Spusťte server poznámkového bloku v naklonovaném adresáři.
     

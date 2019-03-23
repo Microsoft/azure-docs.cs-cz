@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 297d32311b6b697b0141488878d170b3f2f4c359
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 81519a9452bf578c2640b547b2102b8e162e2878
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315483"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369781"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Řešení potíží s resetováním hesla pomocí samoobslužné služby
 
@@ -35,7 +35,6 @@ Dochází k potížím s Azure Active Directory (Azure AD) samoobslužné reseto
 | UserNotProperlyConfigured = 14 | Je nám líto, že v tuto chvíli nemůžete resetovat heslo, protože chybí požadované informace z vašeho účtu. Neexistuje žádná další akce, které můžete provést k vyřešení této situace. Kontaktujte správce a požádejte ho, aby vám heslo resetoval. Až budete mít přístup ke svému účtu znovu, budete muset zaregistrovat potřebné informace. K registraci informací, postupujte podle kroků v [zaregistrovat pro resetování hesla pomocí samoobslužné služby](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-reset-register) článku. | SSPR_0014: K resetování hesla je potřeba další bezpečnostní údaje. Chcete-li pokračovat, obraťte se na správce a požádejte ho o resetování hesla. Jakmile budete mít přístup ke svému účtu, můžete zaregistrovat další bezpečnostní údaje na adrese https://aka.ms/ssprsetup. Váš správce můžete přidat další bezpečnostní údaje k vašemu účtu pomocí kroků v [sadu a čtení ověřovacích dat pro resetování hesla](howto-sspr-authenticationdata.md). |
 | OnPremisesAdminActionRequired = 29 | Je nám líto, že nemůžeme resetovat heslo v tuto chvíli kvůli problému s konfigurací resetování hesla vaší organizace. Neexistuje žádná další akce, které můžete provést k vyřešení této situace. Obraťte se na správce a požádejte ho o prověření. Další informace o potenciální problém, naleznete v tématu [řešení potíží se zpětným zápisem hesla](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback). | SSPR_0029: Nepovedlo se nám k resetování hesla z důvodu chyby v konfiguraci vaší místní. Obraťte se na správce a požádejte ho o prověření. |
 | OnPremisesConnectivityError = 30 | Je nám líto, že nemůžeme resetovat heslo v tuto chvíli kvůli problémům s připojením k vaší organizaci. Neexistuje žádná akce se má provést hned teď ale problémem může být vyřešen, pokud se pokusíte znovu později. Pokud se problém nevyřeší, obraťte se na správce a požádejte ho o prověření. Další informace o problémech s připojením najdete v tématu [řešení potíží s připojením zpětného zápisu hesla](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity). | SSPR_0030: Nemůžeme resetovat heslo kvůli špatnému připojení k místním prostředí. Obraťte se na správce a požádejte ho o prověření.|
-
 
 ## <a name="troubleshoot-the-password-reset-configuration-in-the-azure-portal"></a>Řešení potíží s konfigurací resetování hesla na webu Azure Portal
 
@@ -168,8 +167,8 @@ Aby brána firewall je největší společný bod selhání a nebo jsou nespráv
 
 Pro Azure AD Connect verze 1.1.443.0 a vyšší, budete potřebovat přístup odchozí připojení HTTPS takto:
 
-   - passwordreset.microsoftonline.com
-   - servicebus.windows.net
+* passwordreset.microsoftonline.com
+* servicebus.windows.net
 
 Pro větší členitostí odkazovat na aktualizovaný seznam [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653) aktualizuje každou středu a začíná platit následující pondělí.
 
@@ -184,7 +183,7 @@ Chcete-li vyřešit potíže s připojením nebo jiné přechodné problémy se 
 1. Hledat **Microsoft Azure AD Sync** položka.
 1. Klikněte pravým tlačítkem na položku služby, vyberte **restartovat**a potom počkejte na dokončení operace.
 
-   ![Restartujte službu Azure AD Sync][Service restart]
+   ![Restartujte službu Azure AD Sync pomocí grafického uživatelského rozhraní][Service restart]
 
 Tyto kroky znovu navázat připojení s cloudovou službou a vyřešit přerušení práce, které se mohou setkat. Restartovat službu ADSync váš problém nevyřeší, doporučujeme pokusu zakázat a znovu povolit funkci zpětného zápisu hesla.
 
@@ -215,7 +214,6 @@ Doporučujeme, abyste tento krok proveďte až po pokusu o první dva kroky pops
 
 > [!WARNING]
 > Pokud jste upravili out-of-the-box synchronizační pravidla, *zálohování je před pokračováním v upgradu a poté ručně znovu nasadit až budete hotovi.*
->
 
 1. Stáhněte si nejnovější verzi služby Azure AD Connect z [Microsoft Download Center](https://go.microsoft.com/fwlink/?LinkId=615771).
 1. Vzhledem k tomu, že jste již nainstalovali Azure AD Connect, budete muset provést místní upgrade na nejnovější verzi aktualizace instalace služby Azure AD Connect.
@@ -231,33 +229,27 @@ Azure AD Connect vyžaduje služby Active Directory **resetovat heslo** oprávn�
 
 1. Přihlaste se k serveru služby Azure AD Connect a spustit **Synchronization Service Manager** tak, že vyberete **Start** > **synchronizační služba**.
 1. V části **konektory** kartu, vyberte místní **Active Directory Domain Services** konektoru a pak vyberte **vlastnosti**.  
-   ![Efektivní oprávnění – krok 2](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
+   ![Ukazuje, jak upravit vlastnosti Synchronization Service Manager](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
   
 1. V místním okně vyberte **připojit k doménové struktuře služby Active Directory** a poznamenejte si **uživatelské jméno** vlastnost. Tato vlastnost je účet služby AD DS používá k provedení synchronizace adresářů Azure AD Connect. Pro Azure AD Connect k provádění zpětného zápisu hesla musí mít účet služby AD DS resetovat heslo oprávnění.  
-   
-   ![Efektivní oprávnění – krok 3](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
+
+   ![Hledání uživatelský účet synchronizační služby Active Directory](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
   
 1. Přihlaste se k řadiči domény s místními a spustit **Active Directory Users and Computers** aplikace.
 1. Vyberte **zobrazení** a ujistěte se, že **rozšířené funkce** je povolená možnost.  
-   
-   ![Efektivní oprávnění – krok 5](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
+
+   ![Active Directory Users and Computers zobrazit upřesňující funkce](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
   
 1. Vyhledejte uživatelský účet Active Directory, kterou chcete ověřit. Klikněte pravým tlačítkem na název účtu a vyberte **vlastnosti**.  
-   
-   ![Efektivní oprávnění – krok 6](./media/active-directory-passwords-troubleshoot/checkpermission04.png) 
-
 1. V místním okně, přejděte **zabezpečení** kartě a vyberte **Upřesnit**.  
-   
-   ![Efektivní oprávnění – krok 7](./media/active-directory-passwords-troubleshoot/checkpermission05.png) 
-   
 1. V **Upřesnit nastavení zabezpečení pro správce** automaticky otevírané okno, přejděte **platného přístupu** kartu.
 1. Vyberte **vybrat uživatele**, vyberte účet služby AD DS používá Azure AD Connect (viz krok 3) a pak vyberte **zobrazit platný přístup**.
 
-   ![Efektivní oprávnění - kroku 9](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
+   ![Efektivní přístup kartu zobrazující účet synchronizace](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
   
 1. Posuňte se dolů a najděte **resetovat heslo**. Pokud má položka zaškrtávací políčko, má účet služby AD DS oprávnění resetovat heslo vybraného uživatelského účtu služby Active Directory.  
-   
-   ![Efektivní oprávnění - krok 10](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
+
+   ![Ověřuje se, že synchronizační účet má oprávnění k resetování hesla](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
 ## <a name="azure-ad-forums"></a>Fóra služby Azure AD
 
@@ -272,17 +264,17 @@ K usnadnění správně, můžeme požádat, zadejte co nejvíce podrobností ne
 * **Obecný popis chyby**: Co je chyba? Jak se chování, které bylo si všimli? Jak jsme chybu reprodukovat? Zadejte co nejvíce podrobností nejvíce.
 * **Stránka**: Které stránce jste byli na kdy jste si všimli chybu? Zahrnují adresu URL, pokud jste byli schopni a snímek obrazovky stránky.
 * **Podpora kódu**: Jak se kód podpory, který se vygeneroval při uživateli zobrazila chyba?
-  * Tento kód najdete chybu reprodukovat a pak vyberte **podpory kódu** odkaz v dolní části obrazovky a identifikátor GUID, který výsledky odeslat pracovníkem technické podpory.
+   * Tento kód najdete chybu reprodukovat a pak vyberte **podpory kódu** odkaz v dolní části obrazovky a identifikátor GUID, který výsledky odeslat pracovníkem technické podpory.
 
-    ![Kód podpory, v dolní části obrazovky][Support code]
+   ![Kód podpory, v dolní části obrazovky][Support code]
 
   * Pokud jste na stránce bez podpory kód v dolní části, vyberte F12 a vyhledejte identifikátor SID a CID a odesílat tyto dva výsledky pro pracovníka podpory.
 * **Datum, čas a časové pásmo**: Uveďte přesné datum a čas *s časovým pásmem* , ke které došlo k chybě.
 * **ID uživatele**: Kdo byl uživatel, který viděli chybu? Příkladem je *uživatele\@contoso.com*.
-    * Je to federovaného uživatele?
-    * Je to předávací ověřování uživatele?
-    * Je to synchronizaci hodnoty hash hesla uživatele?
-    * Je to výhradně cloudový uživatel?
+   * Je to federovaného uživatele?
+   * Je to předávací ověřování uživatele?
+   * Je to synchronizaci hodnoty hash hesla uživatele?
+   * Je to výhradně cloudový uživatel?
 * **Licencování**: Má uživatel přiřazenou licenci Azure AD Premium nebo Azure AD Basic?
 * **Protokol událostí aplikace**: Pokud používáte zpětný zápis hesla a chyba je ve vaší místní infrastruktuře, zahrnují ZIP kopii protokolu událostí aplikací ze serveru služby Azure AD Connect.
 

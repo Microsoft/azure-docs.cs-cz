@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.subservice: common
-ms.openlocfilehash: fd72e2a75c00c30fdc5497e0d88e9c83dc5fcad8
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: fdca10c54c798bd47a34eb0f8af091908bcc2711
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317353"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372314"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrace na Azure Premium Storage (nespravované disky)
 
@@ -69,10 +69,10 @@ V závislosti na velikosti pracovní zátěže určí, jestli další datové di
 |:--- |:--- |
 | Kapacita disku: 35TB<br />Kapacita snímku: 10 TB |Až na 50 gigabity za sekundu pro příchozí a odchozí |
 
-Další informace o specifikacích Premium Storage, podívejte se na [škálovatelnost a výkonnostní cíle Azure Storage](storage-scalability-targets.md#premium-storage-account-scale-limits).
+Další informace o specifikacích Premium Storage, podívejte se na [škálovatelnost a výkonnostní cíle Azure Storage](storage-scalability-targets.md#premium-performance-storage-account-scale-limits).
 
 #### <a name="disk-caching-policy"></a>Zásady ukládání do mezipaměti na disku
-Ve výchozím nastavení, disk zásady ukládání do mezipaměti je *jen pro čtení* pro všechny úrovně Premium datové disky, a *čtení a zápis* pro disk s operačním systémem Premium připojené k virtuálnímu počítači. Toto nastavení konfigurace se doporučuje pro zajištění optimálního výkonu pro vaše aplikace IOs. Náročné na zápis nebo jen pro zápis datové disky (jako jsou například soubory protokolu serveru SQL Server) Zakázání používání mezipaměti disku, takže můžete dosáhnout lepší výkon aplikace. Nastavení mezipaměti pro existující datové disky můžete aktualizovat pomocí [webu Azure Portal](https://portal.azure.com) nebo *- HostCaching* parametr *Set-AzureDataDisk* rutiny.
+Ve výchozím nastavení, disk zásady ukládání do mezipaměti je *jen pro čtení* pro všechny úrovně Premium datové disky, a *čtení a zápis* pro disk s operačním systémem Premium připojené k virtuálnímu počítači. Toto nastavení konfigurace se doporučuje pro zajištění optimálního výkonu pro vaše aplikace IOs. Náročné na zápis nebo jen pro zápis datové disky (jako jsou například soubory protokolu serveru SQL Server) Zakázání používání mezipaměti disku, takže můžete dosáhnout lepší výkon aplikace. Nastavení mezipaměti pro existující datové disky můžete aktualizovat pomocí [webu Azure portal](https://portal.azure.com) nebo *- HostCaching* parametr *Set-AzureDataDisk* rutiny.
 
 #### <a name="location"></a>Umístění
 Vyberte umístění, kde je k dispozici Azure Premium Storage. Zobrazit [služeb Azure podle oblasti](https://azure.microsoft.com/regions/#services) aktuální informace o dostupných umístění. Virtuální počítače umístěné ve stejné oblasti jako účet úložiště, že úložiště disky virtuálního počítače získáte mnohem lepší výkon než pokud jsou v oblastech.

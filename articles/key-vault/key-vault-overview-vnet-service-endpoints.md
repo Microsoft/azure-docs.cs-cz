@@ -10,12 +10,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 9848ed6baab240556e9eda59fbc3815c0767e899
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: bb5770f4e09c0ed764d17998936c0fe97bdaebfb
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108573"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370631"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služeb virtuální sítě pro Azure Key Vault
 
@@ -55,7 +55,7 @@ Další informace najdete v tématu [virtuální sítí a bran firewall nakonfig
 > Mějte na paměti následující omezení konfigurace:
 > * Jsou povoleny maximálně 127 pravidla virtuální sítě a 127 pravidla IPv4. 
 > * Rozsahy, které využívají malé adres "/ 31" nebo "/ 32" předpony velikosti se nepodporují. Místo toho nakonfigurujte tyto rozsahy pomocí jednotlivých pravidel IP adresu.
-> * Pravidla síťových IP jsou povoleny pouze pro veřejné IP adresy. Rozsahy IP adres vyhrazené pro privátní sítě (jak jsou definovány v dokumentu RFC 1918) nejsou povoleny v pravidlech IP. Privátní sítě zahrnují adresy začínající hodnotami **10.**, **172.16.**, a **192.168.**. 
+> * Pravidla síťových IP jsou povoleny pouze pro veřejné IP adresy. Rozsahy IP adres vyhrazené pro privátní sítě (jak jsou definovány v dokumentu RFC 1918) nejsou povoleny v pravidlech IP. Privátní sítě zahrnují adresy začínající hodnotami **10.**, **172.16-31**, a **192.168.**. 
 > * V současnosti jsou podporované jenom adresy IPv4.
 
 ## <a name="trusted-services"></a>Důvěryhodné služby
