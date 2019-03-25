@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b7765fc5506129cdf594ef3fd0424f8771de5ef4
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: a97c11b49574d0014ea7fa97f42420b22f9568d7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651664"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371152"
 documentType: LandingData
 title: Dokumentace ke službě Azure Machine Learning
 metadata:
@@ -36,12 +36,12 @@ sections:
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: 'Pokud chcete tuto službu používat, musíte mít pracovní prostor a přidružené prostředky.  Při zahájení práce využijte tyto možnosti:'
+    text: 'Po   <a href="setup-create-workspace">vytvoření pracovního prostoru</a> pro službu Azure Machine Learning můžete začít s využitím těchto rychlých zprovoznění:'
   - type: list
     style: unordered
     items:
-    - html: <a href="quickstart-get-started">Rychlé zprovoznění pro Azure Portal:</a> získání pracovního prostoru a spouštění experimentů bez nutnosti instalace.
-    - html: <a href="quickstart-create-workspace-with-python">Rychlé zprovoznění pro Python:</a> Instalace hlavní sady SDK, vytvoření pracovního prostoru a experimentování na místním serveru poznámkového bloku.
+    - html: <a href="quickstart-run-cloud-notebook">Spuštění experimentu v cloudu</a> (nevyžaduje se žádná instalace)
+    - html: <a href="quickstart-run-local-notebook">Spuštění experimentu s využitím místního serveru poznámkového bloku</a> (místní instalace SDK)
 - title: Podrobné kurzy
   items:
   - type: paragraph

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
-ms.openlocfilehash: 51d8b9bad4bb4a3663b07a711f363b263f5d64db
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
+ms.openlocfilehash: 6edb1abae91a675a3fe47b417a112f0951886aaf
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339682"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351911"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -246,7 +246,7 @@ Klientská knihovna pro úložiště se automaticky vygeneruje ID žádosti klie
 >
 
 ### <a name="server-request-id"></a>ID žádosti serveru
-Služby úložiště automaticky vygeneruje ID serveru požadavku.
+Služby úložiště automaticky generuje požadavek ID serveru.
 
 * Protokolování úložiště protokolu na straně serveru, zobrazí se ID serveru požadavku **záhlaví ID žádosti** sloupce.
 * Trasování sítě, jako jsou například nezachytává Fiddler, zobrazí se ID serveru požadavku v odpovědích jako **x-ms-request-id** hodnota hlavičky protokolu HTTP.
@@ -814,9 +814,9 @@ Další informace o analýzy ve službě Azure Storage naleznete v následujíc�
 * [Monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md)
 * [Analýza úložiště](storage-analytics.md)
 * [Metrikách Storage analytics](storage-analytics-metrics.md)
-* [Tabulkovému schématu metrik Storage analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema.md)
+* [Tabulkovému schématu metrik Storage analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema)
 * [Úložiště analýzy protokolů](storage-analytics-logging.md)
-* [Formát úložiště analýzy protokolů](/rest/api/storageservices/storage-analytics-log-format.md)
+* [Formát úložiště analýzy protokolů](/rest/api/storageservices/storage-analytics-log-format)
 
 <!--Anchors-->
 [Úvod]: #introduction

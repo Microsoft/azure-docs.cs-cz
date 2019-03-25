@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: c934a3b16f5cdd2b4f703b1be15ce16ddc6d8746
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 938801148b175456553865b54d59271021811401
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338475"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372408"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Doprovodné materiály k architektuře nabízení v podnicích
 
@@ -73,156 +73,156 @@ Proveďte následující kurzy a seznámit se s koncepty, stejně jako běžné 
 
     b. Tato aplikace je jednoduchá C# konzolové aplikace pro simulaci systému LoB, který zahájí zpráv, který bude doručen do mobilní aplikace.
 
-        ```csharp
-        static void Main(string[] args)
-        {
-            string connectionString =
-                CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
+    ```csharp
+    static void Main(string[] args)
+    {
+        string connectionString =
+            CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
 
-            // Create the topic
-            CreateTopic(connectionString);
+        // Create the topic
+        CreateTopic(connectionString);
 
-            // Send message
-            SendMessage(connectionString);
-        }
-        ```
+        // Send message
+        SendMessage(connectionString);
+    }
+    ```
 
     c. `CreateTopic` slouží k vytvoření tématu služby Service Bus.
 
-        ```csharp
-        public static void CreateTopic(string connectionString)
+    ```csharp
+    public static void CreateTopic(string connectionString)
+    {
+        // Create the topic if it does not exist already
+
+        var namespaceManager =
+            NamespaceManager.CreateFromConnectionString(connectionString);
+
+        if (!namespaceManager.TopicExists(sampleTopic))
         {
-            // Create the topic if it does not exist already
-
-            var namespaceManager =
-                NamespaceManager.CreateFromConnectionString(connectionString);
-
-            if (!namespaceManager.TopicExists(sampleTopic))
-            {
-                namespaceManager.CreateTopic(sampleTopic);
-            }
+            namespaceManager.CreateTopic(sampleTopic);
         }
-        ```
+    }
+    ```
 
     d. `SendMessage` slouží k odesílání zpráv pro toto téma služby Service Bus. Tento kód jednoduše odešle sadu náhodné zpráv do tématu pravidelně pro účely ukázky. Obvykle je back-end systém, který odesílá zprávy při výskytu události.
 
-        ```csharp
-        public static void SendMessage(string connectionString)
+    ```csharp
+    public static void SendMessage(string connectionString)
+    {
+        TopicClient client =
+            TopicClient.CreateFromConnectionString(connectionString, sampleTopic);
+
+        // Sends random messages every 10 seconds to the topic
+        string[] messages =
         {
-            TopicClient client =
-                TopicClient.CreateFromConnectionString(connectionString, sampleTopic);
+            "Employee Id '{0}' has joined.",
+            "Employee Id '{0}' has left.",
+            "Employee Id '{0}' has switched to a different team."
+        };
 
-            // Sends random messages every 10 seconds to the topic
-            string[] messages =
-            {
-                "Employee Id '{0}' has joined.",
-                "Employee Id '{0}' has left.",
-                "Employee Id '{0}' has switched to a different team."
-            };
+        while (true)
+        {
+            Random rnd = new Random();
+            string employeeId = rnd.Next(10000, 99999).ToString();
+            string notification = String.Format(messages[rnd.Next(0,messages.Length)], employeeId);
 
-            while (true)
-            {
-                Random rnd = new Random();
-                string employeeId = rnd.Next(10000, 99999).ToString();
-                string notification = String.Format(messages[rnd.Next(0,messages.Length)], employeeId);
+            // Send Notification
+            BrokeredMessage message = new BrokeredMessage(notification);
+            client.Send(message);
 
-                // Send Notification
-                BrokeredMessage message = new BrokeredMessage(notification);
-                client.Send(message);
+            Console.WriteLine("{0} Message sent - '{1}'", DateTime.Now, notification);
 
-                Console.WriteLine("{0} Message sent - '{1}'", DateTime.Now, notification);
-
-                System.Threading.Thread.Sleep(new TimeSpan(0, 0, 10));
-            }
+            System.Threading.Thread.Sleep(new TimeSpan(0, 0, 10));
         }
-        ```
+    }
+    ```
 2. **ReceiveAndSendNotification**
 
     a. Tento projekt používá *WindowsAzure.ServiceBus* a **Microsoft.Web.WebJobs.Publish** NuGet balíčky a je založena na [Programování služby Service Bus Pub/Sub].
 
     b. Následující Konzolová aplikace spouští jako [Azure WebJob] vzhledem k tomu, že má spouštět nepřetržitě naslouchat zprávám ze systémů LoB/back-endu. Tato aplikace je součástí mobilní back-end.
 
-        ```csharp
-        static void Main(string[] args)
-        {
-            string connectionString =
-                     CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
+    ```csharp
+    static void Main(string[] args)
+    {
+        string connectionString =
+                 CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
 
-            // Create the subscription that receives messages
-            CreateSubscription(connectionString);
+        // Create the subscription that receives messages
+        CreateSubscription(connectionString);
 
-            // Receive message
-            ReceiveMessageAndSendNotification(connectionString);
-        }
-        ```
+        // Receive message
+        ReceiveMessageAndSendNotification(connectionString);
+    }
+    ```
 
     c. `CreateSubscription` slouží k vytvoření odběru služby Service Bus pro téma kde back-end systém posílání zpráv. V závislosti na podnikový scénář, tato komponenta vytvoří jeden nebo více odběrů do příslušných témat (například některé mohou přijímat zprávy ze systému řízení zdrojů, některé ze systému Finance a tak dále)
 
-        ```csharp
-        static void CreateSubscription(string connectionString)
-        {
-            // Create the subscription if it does not exist already
-            var namespaceManager =
-                NamespaceManager.CreateFromConnectionString(connectionString);
+    ```csharp
+    static void CreateSubscription(string connectionString)
+    {
+        // Create the subscription if it does not exist already
+        var namespaceManager =
+            NamespaceManager.CreateFromConnectionString(connectionString);
 
-            if (!namespaceManager.SubscriptionExists(sampleTopic, sampleSubscription))
-            {
-                namespaceManager.CreateSubscription(sampleTopic, sampleSubscription);
-            }
+        if (!namespaceManager.SubscriptionExists(sampleTopic, sampleSubscription))
+        {
+            namespaceManager.CreateSubscription(sampleTopic, sampleSubscription);
         }
-        ```
+    }
+    ```
 
     d. `ReceiveMessageAndSendNotification` slouží ke čtení zprávy z tématu pomocí svého předplatného a pokud je úspěšné čtení pak si vytvořte oznámení (v ukázkovém scénáři Windows nativní informační zpráva) k odeslání do mobilní aplikace pomocí Azure Notification Hubs.
 
-        ```csharp
-        static void ReceiveMessageAndSendNotification(string connectionString)
+    ```csharp
+    static void ReceiveMessageAndSendNotification(string connectionString)
+    {
+        // Initialize the Notification Hub
+        string hubConnectionString = CloudConfigurationManager.GetSetting
+                ("Microsoft.NotificationHub.ConnectionString");
+        hub = NotificationHubClient.CreateClientFromConnectionString
+                (hubConnectionString, "enterprisepushservicehub");
+
+        SubscriptionClient Client =
+            SubscriptionClient.CreateFromConnectionString
+                    (connectionString, sampleTopic, sampleSubscription);
+
+        Client.Receive();
+
+        // Continuously process messages received from the subscription
+        while (true)
         {
-            // Initialize the Notification Hub
-            string hubConnectionString = CloudConfigurationManager.GetSetting
-                    ("Microsoft.NotificationHub.ConnectionString");
-            hub = NotificationHubClient.CreateClientFromConnectionString
-                    (hubConnectionString, "enterprisepushservicehub");
+            BrokeredMessage message = Client.Receive();
+            var toastMessage = @"<toast><visual><binding template=""ToastText01""><text id=""1"">{messagepayload}</text></binding></visual></toast>";
 
-            SubscriptionClient Client =
-                SubscriptionClient.CreateFromConnectionString
-                        (connectionString, sampleTopic, sampleSubscription);
-
-            Client.Receive();
-
-            // Continuously process messages received from the subscription
-            while (true)
+            if (message != null)
             {
-                BrokeredMessage message = Client.Receive();
-                var toastMessage = @"<toast><visual><binding template=""ToastText01""><text id=""1"">{messagepayload}</text></binding></visual></toast>";
-
-                if (message != null)
+                try
                 {
-                    try
-                    {
-                        Console.WriteLine(message.MessageId);
-                        Console.WriteLine(message.SequenceNumber);
-                        string messageBody = message.GetBody<string>();
-                        Console.WriteLine("Body: " + messageBody + "\n");
+                    Console.WriteLine(message.MessageId);
+                    Console.WriteLine(message.SequenceNumber);
+                    string messageBody = message.GetBody<string>();
+                    Console.WriteLine("Body: " + messageBody + "\n");
 
-                        toastMessage = toastMessage.Replace("{messagepayload}", messageBody);
-                        SendNotificationAsync(toastMessage);
+                    toastMessage = toastMessage.Replace("{messagepayload}", messageBody);
+                    SendNotificationAsync(toastMessage);
 
-                        // Remove message from subscription
-                        message.Complete();
-                    }
-                    catch (Exception)
-                    {
-                        // Indicate a problem, unlock message in subscription
-                        message.Abandon();
-                    }
+                    // Remove message from subscription
+                    message.Complete();
+                }
+                catch (Exception)
+                {
+                    // Indicate a problem, unlock message in subscription
+                    message.Abandon();
                 }
             }
         }
-        static async void SendNotificationAsync(string message)
-        {
-            await hub.SendWindowsNativeNotificationAsync(message);
-        }
-        ```
+    }
+    static async void SendNotificationAsync(string message)
+    {
+        await hub.SendWindowsNativeNotificationAsync(message);
+    }
+    ```
 
     e. Pro publikování této aplikace jako **WebJob**, klikněte pravým tlačítkem na řešení v sadě Visual Studio a vyberte **publikovat jako webovou úlohu**
 
@@ -244,23 +244,23 @@ Proveďte následující kurzy a seznámit se s koncepty, stejně jako běžné 
 
     c. Ujistěte se, že následující Notification Hubs registrační kód je volána v aplikaci spustit (po nahrazení `HubName` a `DefaultListenSharedAccessSignature` hodnoty:
 
-        ```csharp
-        private async void InitNotificationsAsync()
+    ```csharp
+    private async void InitNotificationsAsync()
+    {
+        var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+
+        var hub = new NotificationHub("[HubName]", "[DefaultListenSharedAccessSignature]");
+        var result = await hub.RegisterNativeAsync(channel.Uri);
+
+        // Displays the registration ID so you know it was successful
+        if (result.RegistrationId != null)
         {
-            var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
-
-            var hub = new NotificationHub("[HubName]", "[DefaultListenSharedAccessSignature]");
-            var result = await hub.RegisterNativeAsync(channel.Uri);
-
-            // Displays the registration ID so you know it was successful
-            if (result.RegistrationId != null)
-            {
-                var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
-                dialog.Commands.Add(new UICommand("OK"));
-                await dialog.ShowAsync();
-            }
+            var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
+            dialog.Commands.Add(new UICommand("OK"));
+            await dialog.ShowAsync();
         }
-        ```
+    }
+    ```
 
 ### <a name="running-the-sample"></a>Spuštění ukázky
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
-ms.openlocfilehash: b12809627bc7a3ab3f17f4c3b11bc3a899fd0485
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 98ffe145103b4be04014627ed04d04dcf7542015
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849920"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368948"
 ---
 # <a name="azure-backup-architecture"></a>Architektura služby Azure Backup
 
@@ -179,7 +179,7 @@ Další informace o diskové úložiště a typy dostupných disků pro virtuál
 Virtuální počítače Azure můžete zálohovat pomocí služby premium storage s Azure Backup:
 
 - Během zálohování virtuálních počítačů se službou premium storage vytvoří služba Backup dočasné pracovní umístění s názvem *AzureBackup -*, v účtu úložiště. Velikost pracovního umístění se rovná velikosti snímku bodu obnovení.
-- Ujistěte se, zda má účet premium storage dostatek volného místa pro toto dočasné pracovní umístění. [Další informace](../storage/common/storage-scalability-targets.md#premium-storage-account-scale-limits). Neupravujte pracovní umístění.
+- Ujistěte se, zda má účet premium storage dostatek volného místa pro toto dočasné pracovní umístění. [Další informace](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Neupravujte pracovní umístění.
 - Po dokončení úlohy zálohování je pracovní umístění odstraněno.
 - Cena úložiště použitého pro pracovní umístění je konzistentní s [ceny za službu storage úrovně premium](../virtual-machines/windows/disks-types.md#billing).
 

@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d0c39462bc046b13a2756d37c089ba0e68c90452
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0c5ceda99fe35fafff23f2bcf4ea766d7dd42b75
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456635"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403217"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Konfigurace aplikace App Service pro použití přihlášení Azure Active Directory
+
+> [!NOTE]
+> V tuto chvíli AAD V2 (včetně MSAL) není podporována pro Azure App Services a Azure Functions. Zkontrolujte prosím novinky.
+>
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 

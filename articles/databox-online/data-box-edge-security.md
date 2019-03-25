@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: e3a24117cfd01c1c0bd0f08e8eca5adddf5ee7b6
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: 43de22f7e56178559df4fc45980d064962580d2b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58119781"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403387"
 ---
-# <a name="data-box-edge-security-and-data-protection-preview"></a>Data Box Edge zabezpečení a ochranu dat (preview)
+# <a name="data-box-edge-security-and-data-protection"></a>Data Box Edge zabezpečení a ochranu dat
 
 Zabezpečení představuje závažný problém při přijetí nové technologie, zejména v případě, že tato technologie se používá s důvěrných nebo vlastnických dat. Řešení Microsoft Azure Data Box Edge pomáhá zajistit, že jen autorizované entity můžete zobrazit, upravit nebo odstranit data.
 
@@ -27,9 +27,6 @@ Tento článek popisuje funkce zabezpečení okraj pole dat, které pomáhají c
 - **Zařízení data Box Edge** – přenos zařízení dodávané do import místních dat do Azure.
 - **Klienty a hostitele připojené k zařízení** – klienti ve vaší infrastruktuře, připojte se k zařízení Data Box Edge a obsahující data, která se dají chránit.
 - **Cloudové úložiště** – umístění v cloudu Azure, kam se data uloží. Toto umístění je obvykle účtu úložiště propojeném prostředku okraj pole dat, který jste vytvořili.
-
-> [!IMPORTANT]
-> Data Box Edge je ve verzi Preview. Než pořadí a nasazení tohohle řešení, projděte si [podmínkami pro verzi preview služby Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 
 ## <a name="data-box-edgedata-box-gateway-service-protection"></a>Ochrana služby pole Edge/Data Box brány dat
@@ -44,7 +41,7 @@ Služba Data Box Edge/Data pole brány je služba pro správu hostované v Micro
 Data Box hraniční zařízení je místní zařízení, která pomáhá transformovat data pomocí zpracování místně a odesílá je do Azure. Vaše zařízení:
 
 - Potřebuje aktivační klíč pro přístup ke službě Data Box Edge/Data pole brány.
-- Je chráněn za všech okolností hesla správce zařízení.
+- Je chráněn za všech okolností heslo zařízení.
 - Je zařízení uzamknuté. Zařízení chráněném heslem s omezeným přístupem uživatele pro systém BIOS jsou BMC a systému BIOS.
 - Má povolené zabezpečené spouštění.
 - Spuštění Windows Defenderu Device Guard. Device Guard umožňuje spouštět jenom důvěryhodné aplikace, které definujete v zásadách integrity kódu. 
@@ -68,14 +65,14 @@ Hesla Ujistěte se, že vaše data jsou přístupné pouze oprávněným uživat
 Můžete:
 
 - Připojení k místní webové uživatelské rozhraní zařízení přes prohlížeč a zadejte heslo pro přihlášení na zařízení.
-- Vzdálené připojení k rozhraní PowerShell zařízení prostřednictvím protokolu HTTP. Ve výchozím nastavení je zapnutá Vzdálená správa. Zadejte heslo správce zařízení pro přihlášení na zařízení. Další informace najdete v části [připojit vzdáleně na vaše zařízení Data Box Edge](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).
+- Vzdálené připojení k rozhraní PowerShell zařízení prostřednictvím protokolu HTTP. Ve výchozím nastavení je zapnutá Vzdálená správa. Zadejte heslo zařízení pro přihlášení na zařízení. Další informace najdete v části [připojit vzdáleně na vaše zařízení Data Box Edge](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).
 
 Následující osvědčené postupy mějte na paměti:
 
 - Služba Data Box Edge nelze načíst existující hesla: ji můžete obnovit pouze prostřednictvím webu Azure portal. Doporučujeme, abyste tak, že není potřeba resetovat heslo, pokud je zapomenuté ukládání všech hesel na bezpečném místě. Pokud resetujete heslo, nezapomeňte informovat všechny uživatele před jeho resetování.
 - Použití místní webové uživatelské rozhraní pro [změnit heslo](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access). Pokud změníte heslo, nezapomeňte informovat všechny uživatele vzdáleného přístupu tak, aby nesetkávají přihlášením.
 - Rozhraní Windows PowerShell vašeho zařízení může přistupovat vzdáleně přes protokol HTTP. Z hlediska zabezpečení je nejvhodnější HTTP by měly používat jenom v důvěryhodných sítích.
-- Ujistěte se, že hesla správce zařízení jsou silné a dobře chráněné. Postupujte podle [osvědčené postupy pro hesla](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices#enable-password-management).
+- Ujistěte se, že hesla zařízení jsou silné a dobře chráněné. Postupujte podle [osvědčené postupy pro hesla](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices#enable-password-management).
 
 ## <a name="protect-the-data"></a>Ochrana dat
 

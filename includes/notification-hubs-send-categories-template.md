@@ -8,22 +8,26 @@ ms.topic: include
 ms.date: 03/30/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 19352df7abff23ed44521a11e7907c84c8c0327f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
-ms.translationtype: HT
+ms.openlocfilehash: ce8496596f25b85719b8a6dff849ebf0fc3e5dc3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "33835820"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58405597"
 ---
 V této části odešlete nejnovější zprávy jako šablonové oznámení se značkami z konzolové aplikace .NET. 
 
-1. Ve Visual Studiu vytvořte novou konzolovou aplikaci Visual C#:
+1. V sadě Visual Studio vytvořte nový vizuál C# konzolové aplikace:. V nabídce vyberte **souboru** > **nový** > **projektu**.
+    b. Rozbalte **Visual C#** a vyberte **Windows Desktop**. 
+    c. Vyberte **Konzolová aplikace (.NET Framework)** v seznamu šablon. 
+    d. Zadejte **název** pro aplikaci. 
+    e. Vyberte **složky** pro aplikaci.
+    f. Vyberte **OK** a vytvořte projekt. 
+2. V hlavní nabídce sady Visual Studio, vyberte **nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků** a poté v okně konzoly Zadejte následující řetězec:
    
-      ![Odkaz Konzolová aplikace][13]
-
-2. V hlavní nabídce sady Visual Studio vyberte **Nástroje** > **Správce balíčků knihoven** > **Konzola Správce balíčků** a pak v okně konzoly zadejte následující řetězec:
-   
-        Install-Package Microsoft.Azure.NotificationHubs
+    ```
+    Install-Package Microsoft.Azure.NotificationHubs
+    ```
    
 3. Stiskněte **Enter**.  
     Tato akce přidá referenci na sadu SDK služby Azure Notification Hubs pomocí [Balíček NuGet Microsoft.Azure.Notification Hubs].
