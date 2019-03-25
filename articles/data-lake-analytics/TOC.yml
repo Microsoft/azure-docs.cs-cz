@@ -1,0 +1,163 @@
+items:
+- name: Dokumentace ke službě Data Lake Analytics
+  href: index.md
+- name: Přehled
+  items:
+  - name: Co je služba Data Lake Analytics?
+    href: data-lake-analytics-overview.md
+- name: Začínáme
+  items:
+  - name: portál Azure
+    href: data-lake-analytics-get-started-portal.md
+  - name: Visual Studio
+    href: data-lake-analytics-data-lake-tools-get-started.md
+  - name: Visual Studio Code
+    href: data-lake-analytics-data-lake-tools-for-vscode.md
+  - name: Azure PowerShell
+    href: data-lake-analytics-get-started-powershell.md
+  - name: Azure CLI
+    href: data-lake-analytics-get-started-cli.md
+- name: Postup
+  items:
+  - name: Správa služby Data Lake Analytics
+    items:
+    - name: portál Azure
+      href: data-lake-analytics-manage-use-portal.md
+    - name: Příkazový řádek
+      items:
+      - name: Azure CLI
+        href: data-lake-analytics-manage-use-cli.md
+      - name: Azure PowerShell
+        href: data-lake-analytics-manage-use-powershell.md
+    - name: Sady SDK
+      items:
+      - name: .NET
+        href: data-lake-analytics-manage-use-dotnet-sdk.md
+      - name: Python
+        href: data-lake-analytics-manage-use-python-sdk.md
+      - name: Java
+        href: data-lake-analytics-manage-use-java-sdk.md
+      - name: Node.js
+        href: data-lake-analytics-manage-use-nodejs.md
+    - name: Přidání uživatelů
+      href: data-lake-analytics-add-users.md
+    - name: Zásady
+      href: data-lake-analytics-policies.md
+    - name: Zabezpečené složky úloh
+      href: data-lake-analytics-secure.md
+    - name: Přístup k diagnostickým protokolům
+      href: data-lake-analytics-diagnostic-logs.md
+    - name: Úprava omezení kvót
+      href: data-lake-analytics-quota-limits.md
+  - name: Vývoj programů U-SQL
+    items:
+    - name: Jazyk U-SQL
+      items:
+      - name: Základy
+        href: data-lake-analytics-u-sql-get-started.md
+      - name: Referenční informace k jazyku
+        href: https://msdn.microsoft.com/library/azure/mt591959
+      - name: Katalog
+        href: data-lake-analytics-u-sql-catalog.md
+      - name: Uživatelsky definované operátory
+        href: data-lake-analytics-u-sql-develop-user-defined-operators.md
+      - name: Rozšíření Pythonu
+        href: data-lake-analytics-u-sql-python-extensions.md
+      - name: Rozšíření R
+        href: data-lake-analytics-u-sql-r-extensions.md
+      - name: Kognitivní rozšíření
+        href: data-lake-analytics-u-sql-cognitive.md
+      - name: Průvodce programovatelností
+        href: data-lake-analytics-u-sql-programmability-guide.md
+    - name: Visual Studio
+      items:
+      - name: Instalace
+        href: data-lake-analytics-data-lake-tools-install.md
+      - name: Místní spuštění
+        href: data-lake-analytics-data-lake-tools-local-run.md
+      - name: Místní ladění
+        href: data-lake-analytics-data-lake-tools-local-debug.md
+      - name: Vývoj databází U-SQL
+        href: data-lake-analytics-data-lake-tools-develop-usql-database.md
+      - name: Procházení a zobrazování úloh
+        href: data-lake-analytics-data-lake-tools-view-jobs.md
+      - name: Ladění vlastního kódu v C#
+        href: data-lake-analytics-debug-u-sql-jobs.md
+      - name: Řešení potíží s opakovanými úlohami
+        href: data-lake-analytics-data-lake-tools-debug-recurring-job.md
+      - name: Podrobnosti spouštění vrcholů
+        href: data-lake-analytics-data-lake-tools-use-vertex-execution-view.md
+      - name: Export databáze U-SQL
+        href: data-lake-analytics-data-lake-tools-export-database.md
+      - name: Analýza webových protokolů
+        href: data-lake-analytics-analyze-weblogs.md
+      - name: Vyřešení nerovnoměrné distribuce dat
+        href: data-lake-analytics-data-lake-tools-data-skew-solutions.md
+      - name: Monitorování úloh a odstraňování potíží
+        href: data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md
+    - name: Visual Studio Code
+      items:
+      - name: Vytváření obsahu
+        href: data-lake-analytics-data-lake-tools-for-vscode.md
+      - name: Vlastní kód
+        href: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+      - name: Místní spuštění a ladění
+        href: data-lake-tools-for-vscode-local-run-and-debug.md
+  - name: Plánování úloh U-SQL
+    items:
+    - name: Plánování úloh s využitím SSIS
+      href: data-lake-analytics-schedule-jobs-ssis.md
+  - name: Průběžná integrace a průběžné nasazování
+    items:
+    - name: Přehled
+      href: data-lake-analytics-cicd-overview.md
+    - name: Registrace sestavení
+      href: data-lake-analytics-cicd-manage-assemblies.md
+    - name: Nastavení testů
+      href: data-lake-analytics-cicd-test.md
+    - name: U-SQL SDK
+      href: data-lake-analytics-u-sql-sdk.md
+- name: Referenční informace
+  items:
+  - name: Azure PowerShell
+    href: /powershell/module/az.datalakeanalytics
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.management.datalake.analytics
+  - name: Node.js
+    href: https://www.npmjs.com/package/azure-arm-datalake-analytics
+  - name: Python
+    href: https://docs.microsoft.com/python/api/overview/azure/data-lake-analytics?view=azure-python
+  - name: REST
+    href: /rest/api/datalakeanalytics/
+  - name: Šablona Resource Manageru
+    href: /azure/templates/microsoft.datalakeanalytics/allversions
+  - name: Rozhraní příkazového řádku
+    href: https://docs.microsoft.com/cli/azure/dla
+- name: Zdroje a prostředky
+  items:
+  - name: Blog služby Azure Data Lake
+    href: https://blogs.msdn.microsoft.com/azuredatalake/
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
+  - name: Vyžádání změn
+    href: https://feedback.azure.com/forums/327234-data-lake
+  - name: Fórum MSDN
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/data-lake-analytics/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Aktualizace služeb
+    href: https://azure.microsoft.com/updates/?product=data-lake-analytics
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/azure-data-lake
+  - name: Videa
+    href: https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics
+  - name: Ukázky kódů
+    href: https://azure.microsoft.com/resources/samples/?service=data-lake-analytics
+ms.openlocfilehash: 34553cebfdad45477b0442e9966b3b15c81bd1f4
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340978"

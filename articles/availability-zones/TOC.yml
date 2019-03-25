@@ -1,0 +1,104 @@
+items:
+- name: Odolnost Azure
+  items:
+  - name: Stránka funkce odolnosti Azure
+    href: https://azure.microsoft.com/features/resiliency
+  - name: Návrh odolných aplikací pro Azure
+    href: https://docs.microsoft.com/azure/architecture/resiliency/
+- name: Vysoká dostupnost
+  items:
+  - name: Vysoká dostupnost pro aplikace Azure
+    href: https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications
+  - name: Dokumentace k zónám dostupnosti
+    items:
+    - name: Co jsou zóny dostupnosti?
+      href: az-overview.md
+    - name: Virtuální počítače
+      items:
+      - name: Vytvoření virtuálního počítače s Linuxem v zóně dostupnosti s využitím rozhraní příkazového řádku
+        href: ../virtual-machines/linux/create-cli-availability-zone.md
+      - name: Vytvoření virtuálního počítače s Windows v zóně dostupnosti s využitím PowerShellu
+        href: ../virtual-machines/windows/create-powershell-availability-zone.md
+      - name: Vytvoření virtuálního počítače s Windows v zóně dostupnosti s využitím webu Azure Portal
+        href: ../virtual-machines/windows/create-portal-availability-zone.md
+    - name: Managed Disks
+      items:
+      - name: Přidání spravovaného disku do zón dostupnosti s využitím rozhraní příkazového řádku
+        href: ../virtual-machines/linux/add-disk.md#use-managed-disks
+      - name: Přidání spravovaného disku do zón dostupnosti s PowerShellu
+        href: ../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine
+    - name: Škálovací sady virtuálních počítačů
+      items:
+      - name: Vytvoření škálovací sady v zóně dostupnosti
+        href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md
+    - name: Load Balancer
+      items:
+      - name: Co je nástroj pro vyrovnávání zatížení?
+        href: ../load-balancer/load-balancer-standard-overview.md
+      - name: Load Balancer úrovně Standard a zóny dostupnosti
+        href: ../load-balancer/load-balancer-standard-availability-zones.md
+      - name: Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard
+        href: ../load-balancer/load-balancer-get-started-internet-az-portal.md
+        items:
+        - name: Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard (PowerShell)
+          href: ../load-balancer/load-balancer-get-started-internet-az-powershell.md
+        - name: Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard (CLI)
+          href: ../load-balancer/load-balancer-get-started-internet-az-cli.md
+      - name: Vytvoření zónového veřejného Load Balanceru úrovně Standard
+        href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md
+        items:
+        - name: Vytvoření zónového veřejného Load Balanceru úrovně Standard (PowerShell)
+          href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md
+        - name: Vytvoření zónového veřejného Load Balanceru úrovně Standard (CLI)
+          href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md
+      - name: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti
+        href: ../load-balancer/load-balancer-standard-public-availability-zones-portal.md
+        items:
+        - name: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti s využitím Azure (CLI)
+          href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
+    - name: Veřejná IP adresa
+      href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
+    - name: SQL Database
+      items:
+      - name: Zóny dostupnosti pro SQL Database
+        href: ../sql-database/sql-database-high-availability.md#zone-redundant-configuration
+    - name: Úložiště
+      items:
+      - name: Zónově redundantní úložiště
+        href: ../storage/common/storage-redundancy-zrs.md
+    - name: Event Hubs
+      items:
+      - name: Geografické zotavení po havárii služby Event Hubs
+        href: ../event-hubs/event-hubs-geo-dr.md#availability-zones-preview
+    - name: Service Bus
+      items:
+      - name: Geografické zotavení po havárii služby Service Bus
+        href: ../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview
+    - name: VPN Gateway
+      items:
+      - name: Vytvoření zónově redundantní brány virtuální sítě
+        href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+    - name: ExpressRoute
+      items:
+      - name: Vytvoření zónově redundantní brány virtuální sítě
+        href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+- name: Zotavení po havárii
+  items:
+  - name: Použití Azure Site Recovery
+    href: https://docs.microsoft.com/azure/site-recovery/
+- name: Azure Backup
+  items:
+  - name: Použití služby Azure Backup
+    href: https://docs.microsoft.com/azure/backup/
+- name: Zdroje a prostředky
+  items:
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Oblasti Azure
+    href: https://azure.microsoft.com/regions/
+ms.openlocfilehash: 45a73ec4d5e3649be38133e5ce055f206ecf80ab
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340672"

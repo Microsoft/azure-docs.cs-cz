@@ -1,0 +1,322 @@
+items:
+- name: Dokumentace k Mobile Apps
+  href: index.md
+- name: Přehled
+  items:
+  - name: Co jsou Mobile Apps?
+    href: app-service-mobile-value-prop.md
+  - name: Plány služby App Service
+    href: ../app-service/overview-hosting-plans.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+- name: Šablony Rychlý start
+  items:
+  - name: Android
+    href: app-service-mobile-android-get-started.md
+  - name: Cordova
+    href: app-service-mobile-cordova-get-started.md
+  - name: iOS
+    href: app-service-mobile-ios-get-started.md
+  - name: Windows
+    href: app-service-mobile-windows-store-dotnet-get-started.md
+  - name: Xamarin.Android
+    href: app-service-mobile-xamarin-android-get-started.md
+  - name: Xamarin.Forms
+    href: app-service-mobile-xamarin-forms-get-started.md
+  - name: Xamarin.iOS
+    href: app-service-mobile-xamarin-ios-get-started.md
+- name: Postup
+  items:
+  - name: Plánování a návrh
+    items:
+    - name: Ověřování a autorizace pro Azure Mobile Apps
+      href: app-service-mobile-auth.md
+    - name: Offline synchronizace dat pro Azure Mobile Apps
+      href: app-service-mobile-offline-data-sync.md
+    - name: Osvědčené postupy pro Azure App Service
+      href: ../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Podrobný popis plánů App Service
+      href: ../app-service/overview-hosting-plans.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Hostování s vysokou hustotou
+      href: ../app-service/manage-scale-per-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: App Service Environment
+      href: ../app-service/environment/app-service-app-service-environment-intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Vývoj
+    items:
+    - name: Android
+      items:
+      - name: Povolení offline synchronizace
+        href: app-service-mobile-android-get-started-offline-data.md
+      - name: Přidání ověřování
+        href: app-service-mobile-android-get-started-users.md
+      - name: Přidání nabízených oznámení
+        href: app-service-mobile-android-get-started-push.md
+      - name: Práce s klientskou sadou SDK
+        href: app-service-mobile-android-how-to-use-client-library.md
+    - name: Cordova
+      items:
+      - name: Povolení offline synchronizace
+        href: app-service-mobile-cordova-get-started-offline-data.md
+      - name: Přidání ověřování
+        href: app-service-mobile-cordova-get-started-users.md
+      - name: Přidání nabízených oznámení
+        href: app-service-mobile-cordova-get-started-push.md
+      - name: Práce s klientskou sadou SDK
+        items:
+        - name: Cordova
+          href: app-service-mobile-cordova-how-to-use-client-library.md
+        - name: JavaScript/HTML
+          href: app-service-mobile-html-how-to-use-client-library.md
+    - name: iOS
+      items:
+      - name: Povolení offline synchronizace
+        href: app-service-mobile-ios-get-started-offline-data.md
+      - name: Přidání ověřování
+        href: app-service-mobile-ios-get-started-users.md
+      - name: Přidání nabízených oznámení
+        href: app-service-mobile-ios-get-started-push.md
+      - name: Práce s klientskou sadou SDK
+        href: app-service-mobile-ios-how-to-use-client-library.md
+    - name: Windows
+      items:
+      - name: Povolení offline synchronizace
+        href: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+      - name: Přidání ověřování
+        href: app-service-mobile-windows-store-dotnet-get-started-users.md
+      - name: Přidání nabízených oznámení
+        href: app-service-mobile-windows-store-dotnet-get-started-push.md
+      - name: Práce s klientskou sadou SDK
+        href: app-service-mobile-dotnet-how-to-use-client-library.md
+    - name: Xamarin.Android
+      items:
+      - name: Povolení offline synchronizace
+        href: app-service-mobile-xamarin-android-get-started-offline-data.md
+      - name: Přidání ověřování
+        href: app-service-mobile-xamarin-android-get-started-users.md
+      - name: Přidání nabízených oznámení
+        href: app-service-mobile-xamarin-android-get-started-push.md
+      - name: Práce s klientskou sadou SDK
+        href: app-service-mobile-dotnet-how-to-use-client-library.md
+    - name: Xamarin.Forms
+      items:
+      - name: Povolení offline synchronizace
+        href: app-service-mobile-xamarin-forms-get-started-offline-data.md
+      - name: Přidání ověřování
+        href: app-service-mobile-xamarin-forms-get-started-users.md
+      - name: Přidání nabízených oznámení
+        href: app-service-mobile-xamarin-forms-get-started-push.md
+      - name: Práce s klientskou sadou SDK
+        href: app-service-mobile-dotnet-how-to-use-client-library.md
+    - name: Xamarin.iOS
+      items:
+      - name: Povolení offline synchronizace
+        href: app-service-mobile-xamarin-ios-get-started-offline-data.md
+      - name: Přidání ověřování
+        href: app-service-mobile-xamarin-ios-get-started-users.md
+      - name: Přidání nabízených oznámení
+        href: app-service-mobile-xamarin-ios-get-started-push.md
+      - name: Práce s klientskou sadou SDK
+        href: app-service-mobile-dotnet-how-to-use-client-library.md
+    - name: Práce se serverovou sadou SDK
+      items:
+      - name: Back-end .NET
+        href: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+      - name: Back-end Node.js
+        href: app-service-mobile-node-backend-how-to-use-server-sdk.md
+      - name: Správa verzí klienta a serveru
+        href: app-service-mobile-client-and-server-versioning.md
+    - name: App Service Environment
+      items:
+      - name: Vytvoření webové aplikace v prostředí App Service Environment
+        href: ../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Vytvoření a použití interního nástroje pro vyrovnávání zatížení
+        href: ../app-service/environment/create-ilb-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Vytvoření ASE pomocí šablony
+        href: ../app-service/environment/create-from-template.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Nasazení
+    items:
+    - name: Nasazení pomocí synchronizace cloudu
+      href: ../app-service/deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Průběžné nasazování
+      href: ../app-service/deploy-continuous-deployment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Přípravná prostředí
+      href: ../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Místní nasazení Gitu
+      href: ../app-service/deploy-local-git.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Nasazení podle modelu Azure Resource Manager
+      href: ../app-service/deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Měřítko
+    items:
+    - name: Vertikální škálování aplikace
+      href: ../app-service/web-sites-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: App Service Environment
+      href: ../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      items:
+      - name: Geograficky distribuované škálování v prostředí App Service Environments
+        href: ../app-service/environment/app-service-app-service-environment-geo-distributed-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Škálování aplikací ve službě App Service Environment
+        href: ../app-service/environment/app-service-web-scale-a-web-app-in-an-app-service-environment.md
+      - name: Automatické škálování v App Service Environment
+        href: ../app-service/environment/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Spravovat
+    items:
+    - name: Konfigurace
+      href: ../app-service/web-sites-configure.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Vlastní domény
+      items:
+      - name: Zakoupení a konfigurace vlastních domén
+        href: ../app-service/manage-custom-dns-buy-domain.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Mapování vašich vlastních domén
+        href: ../app-service/app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Vlastní domény s Traffic Managerem
+        href: ../app-service/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Klonování existující aplikace
+      href: ../app-service/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Azure Virtual Network
+      href: ../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Skupiny prostředků
+      href: ../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json#app-service-limitations
+      items:
+      - name: Spouštění úloh na pozadí pomocí WebJobs
+        href: ../app-service/webjobs-create.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Konfigurace
+        href: ../app-service/environment/app-service-web-configure-an-app-service-environment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Nastavení vlastní konfigurace
+        href: ../app-service/environment/app-service-app-service-environment-custom-settings.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Řízení příchozího provozu
+        href: ../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Přehled architektury sítě
+        href: ../app-service/environment/app-service-app-service-environment-network-architecture-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Podrobnosti o konfiguraci sítě pomocí ExpressRoute
+        href: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Migrace
+    items:
+    - name: Jak se dá porovnat App Service a Mobile Services?
+      href: app-service-mobile-value-prop-migration-from-mobile-services.md
+    - name: Migrace existující mobilní služby na App Service
+      href: app-service-mobile-migrating-from-mobile-services.md
+    - name: Upgrade existující mobilní služby na App Service
+      items:
+      - name: Back-end .NET
+        href: app-service-mobile-net-upgrading-from-mobile-services.md
+      - name: Back-end Node.js
+        href: app-service-mobile-node-backend-upgrading-from-mobile-services.md
+  - name: Zabezpečení
+    items:
+    - name: Ověřování pomocí zprostředkovatelů identity
+      items:
+      - name: Ověřování pomocí Azure Active Directory
+        href: ../app-service/configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Ověřování pomocí Facebooku
+        href: ../app-service/configure-authentication-provider-facebook.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Ověřování pomocí Googlu
+        href: ../app-service/configure-authentication-provider-google.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Ověřování pomocí účtu Microsoft
+        href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Ověřování pomocí Twitteru
+        href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: HTTPS
+      items:
+      - name: Konfigurace vzájemného ověřování TLS
+        href: ../app-service/app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Nákup certifikátu SSL v Azure
+        href: ../app-service/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Použití certifikátu SSL získaného jinde
+        href: ../app-service/app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Zabezpečení prostředí App Service Environment
+      items:
+      - name: Konfigurace firewallu webových aplikací
+        href: ../app-service/environment/app-service-app-service-environment-web-application-firewall.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Implementace vrstvené architektury zabezpečení
+        href: ../app-service/environment/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Bezpečné připojení k back-endovým prostředkům
+        href: ../app-service/environment/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Backup
+    items:
+    - name: Zálohování aplikace v Azure
+      href: ../app-service/manage-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Obnovení aplikace v Azure
+      href: ../app-service/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Monitorování
+    href: ../app-service/web-sites-monitor.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    items:
+    - name: Povolení diagnostického protokolování
+      href: ../app-service/troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Řešení potíží pomocí sady Visual Studio
+      href: ../app-service/troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Integrace
+    items:
+    - name: Odeslání e-mailů v Azure pomocí SendGridu
+      href: ../sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Export do PowerApps a Microsoft Flow
+      href: ../azure-functions/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Použití spravované identity
+      href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Řešení potíží
+    items:
+    - name: Obecné řešení potíží v Mobile Apps
+      items:
+      - name: Back-end .NET
+        href: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-debug-and-troubleshoot-the-net-server-sdk
+      - name: Back-end Node.js
+        href: app-service-mobile-node-backend-how-to-use-server-sdk.md#Debugging
+    - name: Povolení diagnostického protokolování
+      href: ../app-service/troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Řešení potíží pomocí sady Visual Studio
+      href: ../app-service/troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+- name: Referenční informace
+  items:
+  - name: Back-endová sada SDK pro .NET
+    href: https://msdn.microsoft.com/library/azure/dn961176.aspx
+  - name: Back-endová sada SDK pro Node.js
+    href: https://azure.github.io/azure-mobile-apps-node/
+  - name: Klientská sada SDK pro Android
+    href: https://azure.github.io/azure-mobile-apps-android-client/
+  - name: Klientská sada SDK pro iOS
+    href: https://azure.github.io/azure-mobile-apps-ios-client/
+  - name: Klientská sada SDK pro JavaScript/Cordovu
+    href: https://azure.github.io/azure-mobile-apps-js-client/
+  - name: Klientská sada SDK pro Windows/Xamarin
+    href: https://msdn.microsoft.com/library/azure/mt419521.aspx
+- name: Související
+  items:
+  - name: Úložiště GitHub
+    href: https://github.com/Azure/azure-mobile-apps
+- name: Zdroje a prostředky
+  items:
+  - name: Osvědčené postupy pro App Service
+    href: ../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Fórum MSDN
+    href: https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/app-service/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Aktualizace služeb
+    href: https://azure.microsoft.com/updates/?product=mobile-services
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/azure-mobile-services
+  - name: Videa
+    href: https://azure.microsoft.com/documentation/videos/index/?services=mobile-services
+  - name: Ukázky
+    items:
+    - name: Field Engineer
+      href: https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/
+    - name: Synchronizace strukturovaných dat
+      href: https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-todo-list-files/
+    - name: Rychlý start dokončen
+      items:
+      - name: Back-end .NET
+        href: https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-backend-quickstart/
+      - name: Back-end Node.js
+        href: https://azure.microsoft.com/resources/samples/app-service-mobile-nodejs-backend-quickstart/
+      - name: Windows
+        href: https://azure.microsoft.com/resources/samples/app-service-mobile-windows-quickstart/
+      - name: Xamarin.Android
+        href: https://azure.microsoft.com/resources/samples/app-service-mobile-xamarin-android-quickstart/
+ms.openlocfilehash: b7aa7664e7261233cda211b3d206432f388c4e87
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341199"

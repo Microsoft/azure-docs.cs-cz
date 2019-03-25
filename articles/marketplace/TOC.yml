@@ -1,0 +1,474 @@
+items:
+- name: Dokumentace k platformám Azure Marketplace a AppSource
+  href: index.md
+  items:
+  - name: Plán nasazení pro Azure Marketplace a AppSource
+    href: ./marketplace-roadmap.md
+  - name: Podmínky a zásady Azure Marketplace
+    href: ./policies-terms.md
+  - name: Přehled a výhody platforem Azure Marketplace a AppSource
+    href: ./marketplace-publishers-guide.md
+    items:
+    - name: Jak se stát vydavatelem v Marketplace
+      href: ./become-publisher.md
+      items:
+      - name: Vytvoření účtu Microsoft
+        href: ./guidelines.md
+      - name: Registrace na webu Dev Center
+        href: ./register-dev-center.md
+      - name: Přisuzování využití ze strany zákazníků partnerům Azure
+        href: ./azure-partner-customer-usage-attribution.md
+    - name: Jeden marketplace, dvě prodejní místa
+      href: ./comparing-appsource-azure-marketplace.md
+    - name: Aspekty a možnosti publikování
+      href: ./determine-your-listing-type.md
+      items:
+      - name: Správa potenciálních zákazníků
+        href: ./lead-management-for-cloud-marketplace.md
+      - name: Transakce na Azure Marketplace
+        href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
+      - name: Soukromé nabídky
+        href: ./private-offers.md
+      - name: Standardní kontrakt
+        href: ./standard-contract.md
+    - name: Průvodce publikováním podle typu nabídky
+      href: ./publisher-guide-by-offer-type.md
+      items:
+      - name: Virtuální počítače
+        href: ./marketplace-virtual-machines.md
+      - name: 'Aplikace Azure: šablony řešení'
+        href: ./marketplace-solution-templates.md
+      - name: 'Aplikace Azure: spravované aplikace'
+        href: ./marketplace-managed-apps.md
+      - name: Aplikace SaaS
+        href: ./marketplace-saas-applications-technical-publishing-guide.md
+      - name: Containers
+        href: ./marketplace-containers.md
+      - name: Moduly IoT Edge
+        href: ./iot-edge-module.md
+      - name: Konzultační služba
+        href: ./consulting-services.md
+      - name: Průvodce publikováním pro Office 365, Dynamics 365 a Power BI
+        href: ./appsource-offer-publishing-guide.md
+      - name: Povolení uvedení na AppSource a Marketplace s využitím Azure Active Directory
+        href: ./enable-appsource-marketplace-using-azure-ad.md
+    - name: Marketingové osvědčené postupy
+      href: ./gtm-marketing-best-practices.md
+      items:
+      - name: Osvědčené postupy nabídky
+        href: ./gtm-offer-listing-best-practices.md
+      - name: Jak získat doporučení
+        href: ./gtm-how-to-get-featured.md
+      - name: Ověření obsahu na Marketplace
+        href: ./marketplace-criteria-content-validation.md
+      - name: Poskytovatelé cloudových řešení
+        href: ./cloud-solution-providers.md
+    - name: Vaše výhody na trhu
+      href: ./gtm-your-marketplace-benefits.md
+      items:
+      - name: Propagace vašeho podnikání s Microsoftem
+        href: ./gtm-promote-your-business.md
+      - name: Upřednostňovaná řešení
+        href: ./preferred-solutions.md
+      - name: Integrovaná řešení
+        href: ./integrated-solutions.md
+    - name: Podpora pro Azure Marketplace a AppSource
+      href: ./support-azure-marketplace.md
+      items:
+      - name: Nejčastější dotazy k Marketplace
+        href: ./marketplace-faq-publisher-guide.md
+      - name: Geografická dostupnost a měny
+        href: ./marketplace-geo-availability-currencies.md
+- name: Portál Cloud Partner
+  href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
+  items:
+  - name: Prohlídka portálu
+    href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
+    items:
+    - name: Navigace na portálu
+      href: ./cloud-partner-portal/portal-tour/cpp-portal-navigation.md
+    - name: Nabídka Nová nabídka
+      href: ./cloud-partner-portal/portal-tour/cpp-new-offer-menu.md
+    - name: Stránka Všechny nabídky
+      href: ./cloud-partner-portal/portal-tour/cpp-all-offers-page.md
+    - name: Stránka Schvalování
+      href: ./cloud-partner-portal/portal-tour/cpp-approvals-page.md
+    - name: Stránka Všichni vydavatelé
+      href: ./cloud-partner-portal/portal-tour/cpp-all-publishers-page.md
+    - name: Stránka Uživatelé
+      href: ./cloud-partner-portal/portal-tour/cpp-users-page.md
+    - name: Stránka Historie auditu
+      href: ./cloud-partner-portal/portal-tour/cpp-history-page.md
+    - name: Stránka Přehledy
+      href: ./cloud-partner-portal/portal-tour/cpp-insights-page.md
+  - name: Správa portálu
+    items:
+    - name: Registrace účtu centra pro vývojáře
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md
+    - name: Správa profilu vydavatele
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md
+    - name: Správa uživatelů
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md
+  - name: Řízení podniku
+    items:
+    - name: Doprovodné materiály pro SEO
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md
+    - name: Dodržování předpisů GDPR
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md
+    - name: Privátní skladové položky
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md
+    - name: Aspekty cen
+      items:
+      - name: Zjednodušené ceny s měnou
+      - name: Informace o daních a cenách
+      - name: Ceny za export a import
+    - name: Správa potenciálních zákazníků
+      items:
+      - name: Konfigurace potenciálních zákazníků
+        href: ./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md
+      - name: Tabulka Azure
+        href: ./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md
+      - name: Dynamics
+        href: ./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md
+      - name: Koncový bod HTTPS
+        href: ./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md
+      - name: Marketo
+        href: ./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md
+      - name: Salesforce
+        href: ./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md
+    - name: Seller Insights
+      items:
+      - name: Začínáme
+        href: ./cloud-partner-portal-orig/si-getting-started.md
+      - name: Co je nového
+        href: ./cloud-partner-portal-orig/si-changes.md
+      - name: Webové analýzy
+        href: ./cloud-partner-portal-orig/web-analytics.md
+      - name: Definice
+        href: ./cloud-partner-portal-orig/si-insights-definitions-v4.md
+      - name: Přehledy – nejčastější dotazy
+        href: ./cloud-partner-portal-orig/si-faqs.md
+  - name: Nabídky Marketplace
+    href: ./cloud-partner-portal/cpp-marketplace-offers.md
+    items:
+    - name: Správa nabídek
+      href: ./cloud-partner-portal/manage-offers/cpp-manage-offers.md
+      items:
+      - name: Vytvoření nabídky
+        href: ./cloud-partner-portal/manage-offers/cpp-create-offer.md
+      - name: Publikování nabídky
+        href: ./cloud-partner-portal/manage-offers/cpp-publish-offer.md
+      - name: Zobrazení stavu nabídky
+        href: ./cloud-partner-portal/manage-offers/cpp-view-status-offer.md
+      - name: Aktualizace nabídky
+        href: ./cloud-partner-portal/manage-offers/cpp-update-offer.md
+      - name: Odstranění nabídky
+        href: ./cloud-partner-portal/manage-offers/cpp-delete-offer.md
+    - name: Testovací verze
+      items:
+      - name: Co je testovací verze?
+        href: ./cloud-partner-portal/test-drive/what-is-test-drive.md
+      - name: Testovací verze Azure Resource Manageru
+        href: ./cloud-partner-portal/test-drive/azure-resource-manager-test-drive.md
+      - name: Hostovaná testovací verze
+        href: ./cloud-partner-portal/test-drive/hosted-test-drive.md
+      - name: Testovací verze aplikace logiky
+        href: ./cloud-partner-portal/test-drive/logic-app-test-drive.md
+      - name: Transformace příkladů pro testovací verzi
+        href: ./cloud-partner-portal/test-drive/transforming-examples-for-test-drive.md
+      - name: Marketing a osvědčené postupy
+        href: ./cloud-partner-portal/test-drive/marketing-and-best-practices.md
+    - name: Nabídka aplikace Azure
+      href: ./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md
+      items:
+      - name: Požadavky
+        href: ./cloud-partner-portal/azure-applications/cpp-prerequisites.md
+      - name: Vytvoření nabídky aplikací Azure
+        href: ./cloud-partner-portal/azure-applications/cpp-create-offer.md
+        items:
+        - name: Karta nastavení nabídky
+          href: ./cloud-partner-portal/azure-applications/cpp-offer-settings-tab.md
+        - name: Karta Skladové položky
+          href: ./cloud-partner-portal/azure-applications/cpp-skus-tab.md
+        - name: Karta Testovací verze
+          href: ./cloud-partner-portal/azure-applications/cpp-testdrive-tab.md
+        - name: Karta Marketplace
+          href: ./cloud-partner-portal/azure-applications/cpp-marketplace-tab.md
+        - name: Karta Podpora
+          href: ./cloud-partner-portal/azure-applications/cpp-support-tab.md
+      - name: Vytvoření technických prostředků
+        href: ./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md
+      - name: Publikování nabídky aplikací Azure
+        href: ./cloud-partner-portal/azure-applications/cpp-publish-offer.md
+      - name: Zpracování zpětné vazby
+        href: ./cloud-partner-portal/azure-applications/cpp-handling-review-feedback.md
+      - name: Aktualizace stávající nabídky
+        href: ./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md
+    - name: Konzultační služby
+      href: ./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md
+      items:
+      - name: Požadavky
+        href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md
+      - name: Vytvoření nabídky konzultačních služeb
+        href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md
+        items:
+        - name: Karta nastavení nabídky
+          href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-define-offer-settings.md
+        - name: Karta podrobností o prodejních místech
+          href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-storefront-details.md
+      - name: Publikování nabídky konzultačních služeb
+        href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-publish-offer.md
+    - name: Nabídka kontejnerů
+      href: ./cloud-partner-portal/containers/cpp-containers-offer.md
+      items:
+      - name: Požadavky
+        href: ./cloud-partner-portal/containers/cpp-prerequisites.md
+      - name: Vytvoření nabídky kontejnerů
+        href: ./cloud-partner-portal/containers/cpp-create-offer.md
+        items:
+        - name: Karta nastavení nabídky
+          href: ./cloud-partner-portal/containers/cpp-offer-settings-tab.md
+        - name: Karta Skladové položky
+          href: ./cloud-partner-portal/containers/cpp-skus-tab.md
+        - name: Karta Marketplace
+          href: ./cloud-partner-portal/containers/cpp-marketplace-tab.md
+        - name: Karta Podpora
+          href: ./cloud-partner-portal/containers/cpp-support-tab.md
+      - name: Vytvoření technických prostředků kontejneru
+        href: ./cloud-partner-portal/containers/cpp-create-technical-assets.md
+      - name: Publikace nabídky kontejnerů
+        href: ./cloud-partner-portal/containers/cpp-publish-offer.md
+      - name: Aktualizace stávající nabídky
+        href: ./cloud-partner-portal/containers/cpp-update-existing-offer.md
+    - name: Nabídka Dynamics 365 for Business Central
+      href: ./cloud-partner-portal-orig/cpp-business-central-offer.md
+      items:
+      - name: Přehled publikování
+        href: ./cloud-partner-portal-orig/d365-finance-overview-publish-your-app.md
+      - name: Vytvoření nové nabídky
+        href: ./cloud-partner-portal-orig/d365-finance-create-new-offer.md
+      - name: Nastavení nabídky
+        href: ./cloud-partner-portal-orig/d365-finance-create-offer-settings.md
+      - name: Technické podrobnosti
+        href: ./cloud-partner-portal-orig/d365-finance-create-offer-technical-details.md
+      - name: Podrobnosti o prodejních místech
+        href: ./cloud-partner-portal-orig/d365-finance-create-storefront-details.md
+      - name: Proces publikování
+        href: ./cloud-partner-portal-orig/d365-finance-app-publishing-process.md
+    - name: Nabídka Dynamics 365 for Customer Engagement
+      href: ./cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer.md
+      items:
+      - name: Požadavky
+        href: ./cloud-partner-portal/dyn365ce/cpp-prerequisites.md
+      - name: Vytvoření nabídky Customer Engagement
+        href: ./cloud-partner-portal/dyn365ce/cpp-create-offer.md
+        items:
+        - name: Karta nastavení nabídky
+          href: ./cloud-partner-portal/dyn365ce/cpp-offer-settings-tab.md
+        - name: Karta Technické informace
+          href: ./cloud-partner-portal/dyn365ce/cpp-technical-info-tab.md
+        - name: Karta Testovací verze
+          href: ./cloud-partner-portal/dyn365ce/cpp-testdrive-tab.md
+        - name: Karta podrobností o prodejních místech
+          href: ./cloud-partner-portal/dyn365ce/cpp-storefront-details-tab.md
+        - name: Karta Kontakty
+          href: ./cloud-partner-portal/dyn365ce/cpp-contacts-tab.md
+      - name: Vytváření technických prostředků pro Customer Engagement
+        href: ./cloud-partner-portal/dyn365ce/cpp-create-technical-assets.md
+      - name: Publikování nabídky Customer Engagement
+        href: ./cloud-partner-portal/dyn365ce/cpp-publish-offer.md
+    - name: Nabídka Dynamics 365 for Operations
+      href: ./cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md
+      items:
+      - name: Požadavky
+        href: ./cloud-partner-portal-orig/pre-requisites.md
+      - name: Jak publikovat
+        href: ./cloud-partner-portal-orig/manage-dynamics-365-for-operations.md
+      - name: Předplatné LCS
+        href: ./cloud-partner-portal-orig/lcs-subscription.md
+      - name: Upgrade kódu
+        href: ./cloud-partner-portal-orig/code-upgrade.md
+      - name: Datové entity
+        href: ./cloud-partner-portal-orig/data-entities.md
+      - name: BPM a metodologie
+        href: ./cloud-partner-portal-orig/bpm-and-methodologies.md
+      - name: Wikiweb nápovědy
+        href: ./cloud-partner-portal-orig/help-wiki.md
+    - name: Nabídka modul IoT Edge
+      href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
+      items:
+      - name: Požadavky
+        href: ./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md
+      - name: Vytvoření nabídky modulu IoT Edge
+        href: ./cloud-partner-portal/iot-edge-module/cpp-create-offer.md
+        items:
+        - name: Karta nastavení nabídky
+          href: ./cloud-partner-portal/iot-edge-module/cpp-offer-settings-tab.md
+        - name: Karta Skladové položky
+          href: ./cloud-partner-portal/iot-edge-module/cpp-skus-tab.md
+        - name: Karta Marketplace
+          href: ./cloud-partner-portal/iot-edge-module/cpp-marketplace-tab.md
+        - name: Karta Podpora
+          href: ./cloud-partner-portal/iot-edge-module/cpp-support-tab.md
+      - name: Vytvoření technických prostředků modulu IoT Edge
+        href: ./cloud-partner-portal/iot-edge-module/cpp-create-technical-assets.md
+      - name: Publikování nabídky modulu IoT Edge
+        href: ./cloud-partner-portal/iot-edge-module/cpp-publish-offer.md
+      - name: Aktualizace stávající nabídky
+        href: ./cloud-partner-portal/iot-edge-module/cpp-update-existing-offer.md
+    - name: Nabídka aplikací Power BI
+      href: ./cloud-partner-portal/power-bi/cpp-power-bi-offer.md
+      items:
+      - name: Požadavky
+        href: ./cloud-partner-portal/power-bi/cpp-prerequisites.md
+      - name: Vytvoření nabídky aplikací Power BI
+        href: ./cloud-partner-portal/power-bi/cpp-create-offer.md
+        items:
+        - name: Karta nastavení nabídky
+          href: ./cloud-partner-portal/power-bi/cpp-offer-settings-tab.md
+        - name: Karta Technické informace
+          href: ./cloud-partner-portal/power-bi/cpp-technical-info-tab.md
+        - name: Karta podrobností o prodejních místech
+          href: ./cloud-partner-portal/power-bi/cpp-storefront-details-tab.md
+        - name: Karta Kontakty
+          href: ./cloud-partner-portal/power-bi/cpp-contacts-tab.md
+      - name: Vytvoření technických prostředků aplikace Power BI
+        href: ./cloud-partner-portal/power-bi/cpp-create-technical-assets.md
+      - name: Publikování nabídky aplikací Power BI
+        href: ./cloud-partner-portal/power-bi/cpp-publish-offer.md
+      - name: Aktualizace stávající nabídky
+        href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
+    - name: Nabídka aplikace SaaS
+      href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
+      items:
+      - name: Požadavky
+        href: ./cloud-partner-portal/saas-app/cpp-prerequisites.md
+      - name: Vytvoření nabídky aplikací SaaS
+        href: ./cloud-partner-portal/saas-app/cpp-create-offer.md
+        items:
+        - name: Karta nastavení nabídky
+          href: ./cloud-partner-portal/saas-app/cpp-offer-settings-tab.md
+        - name: Karta Technické informace
+          href: ./cloud-partner-portal/saas-app/cpp-technical-info-tab.md
+        - name: Karta Plány
+          href: ./cloud-partner-portal/saas-app/cpp-plans-tab.md
+        - name: Karta informací o kanálech
+          href: ./cloud-partner-portal/saas-app/cpp-channel-info-tab.md
+        - name: Karta Testovací verze
+          href: ./cloud-partner-portal/saas-app/cpp-testdrive-tab.md
+        - name: Karta podrobností o prodejních místech
+          href: ./cloud-partner-portal/saas-app/cpp-storefront-tab.md
+        - name: Karta Kontakty
+          href: ./cloud-partner-portal/saas-app/cpp-contacts-tab.md
+      - name: Publikování nabídky
+        href: ./cloud-partner-portal/saas-app/cpp-publish-offer.md
+      - name: Aktualizace stávající nabídky
+        href: ./cloud-partner-portal/saas-app/cpp-update-existing-offer.md
+      - name: Rozhraní API naplnění SaaS
+        href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md
+        items:
+        - name: Rozhraní API SaaS V1
+          href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v1.md
+        - name: Rozhraní API SaaS V2
+          href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2.md
+    - name: Nabídka virtuálních počítačů
+      href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
+      items:
+      - name: Požadavky
+        href: ./cloud-partner-portal/virtual-machine/cpp-prerequisites.md
+      - name: Vytvoření nabídky virtuálních počítačů
+        href: ./cloud-partner-portal/virtual-machine/cpp-create-offer.md
+        items:
+        - name: Karta nastavení nabídky
+          href: ./cloud-partner-portal/virtual-machine/cpp-offer-settings-tab.md
+        - name: Karta Skladové položky
+          href: ./cloud-partner-portal/virtual-machine/cpp-skus-tab.md
+        - name: Karta Testovací verze
+          href: ./cloud-partner-portal/virtual-machine/cpp-test-drive-tab.md
+        - name: Karta Marketplace
+          href: ./cloud-partner-portal/virtual-machine/cpp-marketplace-tab.md
+        - name: Karta Podpora
+          href: ./cloud-partner-portal/virtual-machine/cpp-support-tab.md
+      - name: Vytvoření technických prostředků virtuálního počítače
+        href: ./cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md
+        items:
+        - name: Vytvoření VHD
+          href: ./cloud-partner-portal/virtual-machine/cpp-create-vhd.md
+        - name: Běžné problémy při vytváření VHD
+          href: ./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md
+        - name: Připojení k virtuálnímu počítači
+          href: ./cloud-partner-portal/virtual-machine/cpp-connect-vm.md
+        - name: Konfigurace virtuálního počítače
+          href: ./cloud-partner-portal/virtual-machine/cpp-configure-vm.md
+        - name: Vzdálená správa systému Windows
+          href: ./cloud-partner-portal/virtual-machine/cpp-winrm-over-https.md
+          items:
+          - name: Konfigurace WinRM po vytvoření virtuálních počítačů
+            href: ./cloud-partner-portal/virtual-machine/cpp-configure-winrm-after-vm-creation.md
+        - name: Nasazení virtuálního počítače
+          href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md
+          items:
+          - name: Vytvoření uživatelské image virtuálního počítače
+            href: ./cloud-partner-portal/virtual-machine/cpp-create-user-image.md
+          - name: Vytvoření certifikátu trezoru klíčů
+            href: ./cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert.md
+            items:
+            - name: Šablona nasazení trezoru klíčů
+              href: ./cloud-partner-portal/virtual-machine/cpp-key-vault-deploy-template.md
+        - name: Nasazení virtuálního počítače z virtuálního pevného disku uživatele
+          href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-user-image.md
+          items:
+          - name: Šablona nasazení VHD
+            href: ./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md
+          - name: Nasazení virtuálního počítače z marketplace
+            href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md
+        - name: Certifikace image virtuálního počítače
+          href: ./cloud-partner-portal/virtual-machine/cpp-certify-vm.md
+        - name: Klient samočinného testování virtuálního počítače
+          href: ./cloud-partner-portal/virtual-machine/cpp-selftest-client.md
+        - name: Získání identifikátoru URI sdíleného přístupového podpisu
+          href: ./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md
+        - name: Běžné problémy s adresou URL sdíleného přístupového podpisu
+          href: ./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md
+      - name: Publikování nabídky virtuálních počítačů
+        href: ./cloud-partner-portal/virtual-machine/cpp-publish-offer.md
+      - name: Aktualizace stávající nabídky
+        href: ./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md
+  - name: Referenční materiály k rozhraní API
+    items:
+    - name: Přehled
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
+    - name: Požadavky
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
+    - name: Požadavky
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md
+    - name: Řízení souběžnosti
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-api-concurrency-control.md
+    - name: Načtení nabídek
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
+    - name: Načtení konkrétní nabídky
+      href: ./cloud-partner-portal-orig//cloud-partner-portal-api-retrieve-specific-offer.md
+    - name: Přidání nebo úprava nabídky
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
+    - name: Načtení stavu nabídky
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offer-status.md
+    - name: Publikování nabídky
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-api-publish-offer.md
+    - name: Načtení operací
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-operations.md
+    - name: Zrušení operací
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-api-cancel-operations.md
+    - name: Zveřejnění
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
+    - name: Ceny nabídek virtuálních počítačů
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
+    - name: Řešení potíží s chybami ověřování
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
+  - name: Získání podpory
+    href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
+ms.openlocfilehash: 90243803c7637e12cc1e72dc7b3e698fd3b9c273
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341182"

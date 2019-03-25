@@ -1,0 +1,69 @@
+items:
+- name: Dokumentace ke službě Scheduler
+  href: index.md
+- name: Přehled
+  items:
+  - name: Co je Azure Scheduler?
+    href: scheduler-intro.md
+- name: Začínáme
+  items:
+  - name: Vytváření a správa úloh – portál
+    href: scheduler-get-started-portal.md
+  - name: Migrace ze služby Scheduler na Logic Apps
+    href: migrate-from-scheduler-to-logic-apps.md
+- name: Koncepty
+  items:
+  - name: Koncepty, termíny a entity
+    href: scheduler-concepts-terms.md
+- name: Návody
+  items:
+  - name: Plánování a návrh
+    items:
+    - name: Plány a fakturace
+      href: scheduler-plans-billing.md
+    - name: Limity, kvóty a výchozí hodnoty
+      href: scheduler-limits-defaults-errors.md
+    - name: Vysoká dostupnost a spolehlivost
+      href: scheduler-high-availability-reliability.md
+  - name: Vývoj
+    items:
+    - name: Vytváření složitých plánů a pokročilých opakování
+      href: scheduler-advanced-complexity.md
+    - name: Vytváření a správa plánů – Azure PowerShell
+      href: scheduler-powershell-reference.md
+  - name: Zabezpečení
+    items:
+    - name: Ověřování odchozích volání
+      href: scheduler-outbound-authentication.md
+- name: Referenční informace
+  items:
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.scheduler
+  - name: REST API
+    href: /rest/api/scheduler
+  - name: Šablona Resource Manageru
+    href: /azure/templates/microsoft.scheduler/allversions
+- name: Zdroje a prostředky
+  items:
+  - name: Plán služby Azure Scheduler
+    href: https://azure.microsoft.com/updates/?product=scheduler
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/updates/
+  - name: Fórum MSDN
+    href: https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/azure-scheduler
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/scheduler/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Aktualizace služeb
+    href: https://azure.microsoft.com/updates/?product=scheduler
+  - name: Videa
+    href: https://azure.microsoft.com/documentation/videos/index/?services=scheduler
+ms.openlocfilehash: fa4c53b0061f9ef23f8086cdcd6bcc73fc55986c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341471"

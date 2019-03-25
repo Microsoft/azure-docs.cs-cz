@@ -1,0 +1,129 @@
+items:
+- name: Přehled
+  items:
+  - name: Virtuální počítače s Windows a SQL Serverem
+    href: virtual-machines-windows-sql-server-iaas-overview.md
+  - name: Poznámky k verzi
+    href: virtual-machines-windows-sql-server-iaas-release-notes.md
+- name: Šablony Rychlý start
+  items:
+  - name: Vytvoření virtuálního počítače SQL – portál
+    href: quickstart-sql-vm-create-portal.md
+  - name: Vytvoření virtuálního počítače SQL – PowerShell
+    href: quickstart-sql-vm-create-powershell.md
+- name: Koncepty
+  items:
+  - name: Osvědčené postupy
+    items:
+    - name: Osvědčené postupy z hlediska výkonu
+      href: virtual-machines-windows-sql-performance.md
+    - name: Aspekty zabezpečení
+      href: virtual-machines-windows-sql-security.md
+    - name: Vzory aplikací
+      href: virtual-machines-windows-sql-server-app-patterns-dev-strategies.md
+  - name: Kontinuita podnikových procesů
+    items:
+    - name: Možnosti vysoké dostupnosti
+      href: virtual-machines-windows-sql-high-availability-dr.md
+    - name: Skupina dostupnosti Always On
+      href: virtual-machines-windows-portal-sql-availability-group-overview.md
+    - name: Zálohování a obnovení
+      href: virtual-machines-windows-sql-backup-recovery.md
+    - name: Automatizovaná záloha pro SQL Server 2014
+      href: virtual-machines-windows-sql-automated-backup.md
+    - name: Automatizovaná záloha pro SQL Server 2016+
+      href: virtual-machines-windows-sql-automated-backup-v2.md
+  - name: Správa
+    items:
+    - name: Připojení k virtuálnímu počítači
+      href: virtual-machines-windows-sql-connect.md
+    - name: Konfigurace úložiště
+      href: virtual-machines-windows-sql-server-storage-configuration.md
+    - name: Automatizace úloh správy
+      items:
+      - name: Použití rozšíření agenta SQL Server IaaS
+        href: virtual-machines-windows-sql-server-agent-extension.md
+      - name: Automatizované opravy
+        href: virtual-machines-windows-sql-automated-patching.md
+      - name: Integrace se službou Azure Key Vault
+        href: virtual-machines-windows-ps-sql-keyvault.md
+- name: Návody
+  items:
+  - name: Vytvoření virtuálního počítače SQL
+    items:
+    - name: Použití portálu
+      href: virtual-machines-windows-portal-sql-server-provision.md
+    - name: Použití Azure Powershell
+      href: virtual-machines-windows-ps-sql-create.md
+  - name: Změna modelu licencování pro virtuální počítač SQL
+    href: virtual-machines-windows-sql-ahb.md
+  - name: Migrace
+    items:
+    - name: Migrace databáze SQL Serveru
+      href: virtual-machines-windows-migrate-sql.md
+  - name: Konfigurace vysoké dostupnosti
+    items:
+    - name: Použití služby Azure Storage pro zálohování a obnovení
+      href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
+    - name: Skupina dostupnosti Always On
+      items:
+      - name: Rozhraní Azure SQL VM CLI
+        href: virtual-machines-windows-sql-availability-group-cli.md
+      - name: Šablona webu Azure Portal
+        href: virtual-machines-windows-portal-sql-alwayson-availability-groups.md
+      - name: Šablony rychlého zprovoznění pro Azure
+        href: virtual-machines-windows-sql-availability-group-quickstart-template.md
+      - name: Několik oblastí
+        href: virtual-machines-windows-portal-sql-availability-group-dr.md
+      - name: Ruční konfigurace
+        items:
+        - name: Požadavky
+          href: virtual-machines-windows-portal-sql-availability-group-prereq.md
+        - name: Kurz
+          href: virtual-machines-windows-portal-sql-availability-group-tutorial.md
+        - name: Load Balancer – web Azure Portal
+          href: virtual-machines-windows-portal-sql-alwayson-int-listener.md
+        - name: Load Balancer – Azure PowerShell
+          href: virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md
+    - name: Instance clusteru převzetí služeb při selhání
+      items:
+      - name: Konfigurace
+        href: virtual-machines-windows-portal-sql-create-failover-cluster.md
+- name: Referenční informace
+  items:
+  - name: Azure PowerShell
+    href: /powershell/azure/overview
+  - name: Azure CLI
+    href: /cli/azure/
+  - name: T-SQL
+    href: https://docs.microsoft.com/sql/t-sql/language-reference
+  - name: Ovladače SQL Serveru
+    href: https://docs.microsoft.com/sql/connect/sql-connection-libraries
+  - name: REST
+    href: /rest/api/
+- name: Zdroje a prostředky
+  items:
+  - name: Nejčastější dotazy
+    href: virtual-machines-windows-sql-server-iaas-faq.md
+  - name: Ceny
+    href: virtual-machines-windows-sql-server-pricing-guidance.md
+  - name: PaaS nebo IaaS?
+    href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json
+  - name: SQL Server Data Tools (SSDT)
+    href: https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt
+  - name: SQL Server Management Studio (SSMS)
+    href: https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms
+  - name: Nástroje SQL Serveru
+    href: https://docs.microsoft.com/sql/tools/overview-sql-tools
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=compute
+  - name: Fórum MSDN
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server
+  - name: Stack Overflow
+    href: https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server
+ms.openlocfilehash: 4e3e565bd700bb4106028e98a2a7833707561376
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340621"

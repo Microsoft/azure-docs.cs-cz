@@ -24,6 +24,12 @@ items:
       href: azure-to-azure-tutorial-failover-failback.md
     - name: Spuštění navrácení služeb po obnovení
       href: azure-to-azure-tutorial-failback.md
+  - name: Přesun virtuálních počítačů Azure
+    items:
+    - name: Přesun virtuálních počítačů Azure do jiné oblasti
+      href: azure-to-azure-tutorial-migrate.md
+    - name: Přesun virtuálních počítačů Azure do zón dostupnosti
+      href: move-Azure-VMs-AVset-Azone.md
   - name: Zotavení po havárii virtuálního počítače VMware do Azure
     items:
     - name: Příprava Azure
@@ -60,19 +66,11 @@ items:
       href: migrate-tutorial-windows-server-2008.md
     - name: Migrace instancí AWS do Azure
       href: migrate-tutorial-aws-azure.md
-  - name: Přesun virtuálních počítačů Azure
-    items:
-    - name: Přehled
-      href: azure-to-azure-move-overview.md
-    - name: Přesun virtuálních počítačů Azure do jiné oblasti
-      href: azure-to-azure-tutorial-migrate.md
-    - name: Přesun virtuálních počítačů Azure do zón dostupnosti
-      href: move-Azure-VMs-AVset-Azone.md
 - name: Koncepty
   items:
   - name: Běžné otázky týkající se Site Recovery
     href: site-recovery-faq.md
-  - name: O zotavení po havárii virtuálního počítače Azure do Azure
+  - name: Informace o zotavení po havárii pro virtuální počítače Azure
     items:
     - name: Architektura replikace z Azure do Azure
       href: azure-to-azure-architecture.md
@@ -80,12 +78,14 @@ items:
       href: azure-to-azure-common-questions.md
     - name: Systém podpory replikace z Azure do Azure
       href: azure-to-azure-support-matrix.md
+    - name: Použití Site Recovery se službou Azure Backup
+      href: site-recovery-backup-interoperability.md
     - name: Akcelerované síťové služby pro zotavení po havárii virtuálního počítače Azure
       href: azure-vm-disaster-recovery-with-accelerated-networking.md
     - name: ExpressRoute se zotavení po havárii virtuálního počítače Azure
       href: azure-vm-disaster-recovery-with-expressroute.md
-    - name: Vzájemná funkční spolupráce mezi zotavením po havárii virtuálních počítačů Azure a službou Azure Backup
-      href: site-recovery-backup-interoperability.md
+  - name: Informace o přesunu virtuálních počítačů Azure
+    href: azure-to-azure-move-overview.md
   - name: O zotavení po havárii virtuálního počítače VMware do Azure
     items:
     - name: Přehled zotavení po havárii VMware
@@ -468,9 +468,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 5286e3479561e6effd279978e84f045207a0a7a3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 66b14ba7100b8bd8e4bb3a100e8fd10d226f555e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835295"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317098"

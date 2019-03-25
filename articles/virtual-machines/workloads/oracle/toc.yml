@@ -1,0 +1,35 @@
+items:
+- name: Přehled
+  items:
+  - name: Požadavky na virtuální počítače s Oraclem
+    href: oracle-considerations.md
+- name: Šablony Rychlý start
+  items:
+  - name: Vytvoření Oracle DB
+    href: oracle-database-quick-create.md
+- name: Kurzy
+  items:
+  - name: Konfigurace Oracle ASM
+    href: configure-oracle-asm.md
+  - name: Konfigurace Oracle DataGuardu
+    href: configure-oracle-dataguard.md
+  - name: Konfigurace Oracle GoldenGate
+    href: configure-oracle-golden-gate.md
+- name: Koncepty
+  items:
+  - name: Vytvoření Oracle DB
+    href: oracle-design.md
+  - name: Strategie zálohování pro Oracle DB
+    href: oracle-backup-recovery.md
+  - name: Možnosti Oracle pro zotavení po havárii
+    href: oracle-disaster-recovery.md
+- name: Zdroje a prostředky
+  items:
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: 9c8aba887e728904aed51d3db2db5bb02c03d7b8
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340604"

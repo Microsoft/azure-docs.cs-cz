@@ -1,0 +1,29 @@
+items:
+- name: Jak vytvořit žádost o podporu Azure
+  href: how-to-create-azure-support-request.md
+- name: Odeslání souborů pro žádost o podporu
+  href: how-to-use-file-uploader.md
+- name: Přístupová práva pro vytvoření a správu žádostí o podporu
+  href: create-manage-support-requests-using-access-control.md
+- name: Žádosti o navýšení kvóty
+  href: resource-manager-core-quotas-request.md
+- name: Řešení potíží s oblastí nebo předplatným skladové položky
+  href: sku-series-unavailable.md
+- name: Referenční informace
+  items:
+  - name: Azure CLI
+    href: /cli/azure
+  - name: Azure PowerShell
+    href: /powershell/azure
+- name: Zdroje a prostředky
+  items:
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=monitoring-management
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: 31120ea857d0e080bc9629d781ac2cdd73d31bc0
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340910"

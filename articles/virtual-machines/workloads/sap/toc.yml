@@ -1,0 +1,235 @@
+items:
+- name: Přehled
+  items:
+  - name: Začínáme
+    href: get-started.md
+  - name: Certifikace
+    href: sap-certifications.md
+- name: SAP HANA v Azure (velké instance)
+  items:
+  - name: Přehled
+    items:
+    - name: Co je SAP HANA ve velkých instancích Azure?
+      href: hana-overview-architecture.md
+    - name: Seznámení s podmínkami
+      href: hana-know-terms.md
+    - name: Certifikace
+      href: hana-certification.md
+    - name: Dostupné skladové položky pro HLI
+      href: hana-available-skus.md
+    - name: Velikosti
+      href: hana-sizing.md
+    - name: Požadavky na onboarding
+      href: hana-onboarding-requirements.md
+    - name: Rozšiřující uzly a datové vrstvy SAP HANA
+      href: hana-data-tiering-extension-nodes.md
+    - name: Provozní model a zodpovědnosti
+      href: hana-operations-model.md
+  - name: Architektura
+    items:
+    - name: Obecná architektura
+      href: hana-architecture.md
+    - name: Architektura sítě
+      href: hana-network-architecture.md
+    - name: Architektura úložiště
+      href: hana-storage-architecture.md
+    - name: Podporované scénáře HLI
+      href: hana-supported-scenario.md
+  - name: Infrastruktura a možnosti připojení
+    items:
+    - name: Nasazení HLI
+      href: hana-overview-infrastructure-connectivity.md
+    - name: Připojení virtuálních počítačů Azure k Velkým instancím HANA
+      href: hana-connect-azure-vm-large-instances.md
+    - name: Připojení virtuální sítě k Velkým instancím HANA s využitím ExpressRoute
+      href: hana-connect-vnet-express-route.md
+    - name: Další požadavky na síť
+      href: hana-additional-network-requirements.md
+  - name: Instalace SAP HANA
+    items:
+    - name: Ověření konfigurace
+      href: hana-installation.md
+    - name: Ukázková instalace HANA
+      href: hana-example-installation.md
+  - name: Vysoká dostupnost a zotavení po havárii
+    items:
+    - name: Možnosti a aspekty
+      href: hana-overview-high-availability-disaster-recovery.md
+    - name: Zálohování a obnovení
+      href: hana-backup-restore.md
+    - name: Principy a příprava
+      href: hana-concept-preparation.md
+    - name: Postup převzetí služeb při selhání pro zotavení po havárii
+      href: hana-failover-procedure.md
+  - name: Řešení potíží a monitorování
+    items:
+    - name: Sledování HLI
+      href: troubleshooting-monitoring.md
+    - name: Sledování a řešení potíží na straně HANA
+      href: hana-monitor-troubleshoot.md
+  - name: Postup
+    items:
+    - name: Nastavení vysoké dostupnosti s využitím techniky STONITH
+      href: ha-setup-with-stonith.md
+    - name: Zálohování operačního systému pro SKU typu II
+      href: os-backup-type-ii-skus.md
+    - name: Upgrade operačního systému pro Velké instance HANA
+      href: os-upgrade-hana-large-instance.md
+    - name: Nastavení serveru SMT pro SUSE Linux
+      href: hana-setup-smt.md
+- name: SAP HANA ve službě Azure Virtual Machines
+  items:
+  - name: Instalace jedné instance SAP HANA
+    href: hana-get-started.md
+  - name: Průvodce nasazením S/4 HANA nebo BW/4 HANA SAP CAL
+    href: cal-s4h.md
+  - name: Konfigurace infrastruktury SAP HANA a operace v Azure
+    href: hana-vm-operations.md
+  - name: Dostupnost SAP HANA ve službě Azure Virtual Machines
+    items:
+    - name: Přehled dostupnosti SAP HANA v Azure
+      href: sap-hana-availability-overview.md
+    - name: Dostupnost SAP HANA v Azure v rámci jedné oblasti Azure
+      href: sap-hana-availability-one-region.md
+    - name: Dostupnost SAP HANA v Azure napříč oblastmi Azure
+      href: sap-hana-availability-across-regions.md
+    - name: Nastavení systémové replikace SAP HANA na SLES
+      href: sap-hana-high-availability.md
+    - name: Nastavení systémové replikace SAP HANA na RHEL
+      href: sap-hana-high-availability-rhel.md
+    - name: Řešení potíží se škálováním na více instancí SAP HANA a Pacemaker na SLES
+      href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
+  - name: Přehled zálohování SAP HANA
+    href: sap-hana-backup-guide.md
+  - name: Zálohování SAP HANA na úrovni souborů
+    href: sap-hana-backup-file-level.md
+  - name: Zálohy snímků úložiště SAP HANA
+    href: sap-hana-backup-storage-snapshots.md
+- name: SAP NetWeaver a Business One ve službě Azure Virtual Machines
+  items:
+  - name: Kontrolní seznam pro nasazení a plánování úloh SAP
+    href: sap-deployment-checklist.md
+  - name: Plánování a implementace SAP NetWeaveru v Azure
+    href: planning-guide.md
+  - name: Průvodce nasazením SAP NetWeaveru
+    href: deployment-guide.md
+  - name: Průvodci nasazením DBMS pro úlohy SAP
+    items:
+    - name: Nasazení DBMS v obecných počítačích Azure Virtual Machines pro úlohy SAP
+      href: dbms_guide_general.md
+    - name: Nasazení DBMS v počítačích Azure Virtual Machines s SQL Serverem pro úlohy SAP
+      href: dbms_guide_sqlserver.md
+    - name: Nasazení DBMS v počítačích Azure Virtual Machines s Oraclem pro úlohy SAP
+      href: dbms_guide_oracle.md
+    - name: Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP
+      href: dbms_guide_ibm.md
+    - name: Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP
+      href: dbms_guide_sapase.md
+    - name: Nasazení SAP MaxDB, liveCache a Content Serveru v Azure
+      href: dbms_guide_maxdb.md
+    - name: Dostupnost SAP HANA ve službě Azure Virtual Machines
+      items:
+      - name: Přehled dostupnosti SAP HANA v Azure
+        href: sap-hana-availability-overview.md
+      - name: Dostupnost SAP HANA v Azure v rámci jedné oblasti Azure
+        href: sap-hana-availability-one-region.md
+      - name: Dostupnost SAP HANA v Azure napříč oblastmi Azure
+        href: sap-hana-availability-across-regions.md
+  - name: SAP Business One ve službě Azure Virtual Machines
+    href: business-one-azure.md
+  - name: Průvodce nasazením SAP IDES na Windows/SQL Server SAP CAL
+    href: cal-ides-erp6-erp7-sp3-sql.md
+  - name: Konektor SAP LaMa pro Azure
+    href: lama-installation.md
+  - name: Vysoká dostupnost (HA) ve Windows a Linuxu
+    items:
+    - name: Přehled
+      href: sap-high-availability-guide-start.md
+    - name: Architektura pro vysokou dostupnost
+      items:
+      - name: Scénáře a architektura pro vysokou dostupnost
+        href: sap-high-availability-architecture-scenarios.md
+      - name: Scénáře a architektura pro vyšší dostupnost
+        href: sap-higher-availability-architecture-scenarios.md
+      - name: Konfigurace úloh SAP s využitím služby Zóny dostupnosti Azure
+        href: sap-ha-availability-zones.md
+      - name: HA ve Windows se sdíleným diskem pro instanci (A)SCS
+        href: sap-high-availability-guide-wsfc-shared-disk.md
+      - name: HA ve Windows se sdílenou složkou SOFS pro instanci (A)SCS
+        href: sap-high-availability-guide-wsfc-file-share.md
+      - name: HA v SUSE Linuxu pro instanci (A)SCS
+        href: high-availability-guide-suse.md
+      - name: HA v SUSE Linuxu pro instanci (A)SCS s využitím Azure NetApp Files
+        href: high-availability-guide-suse-netapp-files.md
+      - name: Vysoká dostupnost v Red Hat Enterprise Linuxu pro instanci (A)SCS
+        href: high-availability-guide-rhel.md
+    - name: Příprava infrastruktury Azure
+      items:
+      - name: Windows se sdíleným diskem pro instanci (A)SCS
+        href: sap-high-availability-infrastructure-wsfc-shared-disk.md
+      - name: Windows se sdílenou složkou SOFS pro instanci (A)SCS
+        href: sap-high-availability-infrastructure-wsfc-file-share.md
+      - name: Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SLES
+        href: high-availability-guide-suse-nfs.md
+      - name: GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver
+        href: high-availability-guide-rhel-glusterfs.md
+      - name: Pacemaker na SLES
+        href: high-availability-guide-suse-pacemaker.md
+      - name: Pacemaker na RHEL
+        href: high-availability-guide-rhel-pacemaker.md
+    - name: Instalace SAPu
+      items:
+      - name: Windows se sdíleným diskem pro instanci (A)SCS
+        href: sap-high-availability-installation-wsfc-shared-disk.md
+      - name: Windows se sdílenou složkou SOFS pro instanci (A)SCS
+        href: sap-high-availability-installation-wsfc-file-share.md
+      - name: SUSE Linux s NFS pro instanci (A)SCS
+        href: high-availability-guide-suse.md
+      - name: SUSE Linux s NFS pro instanci (A)SCS s využitím Azure NetApp Files
+        href: high-availability-guide-suse-netapp-files.md
+      - name: Vysoká dostupnost pro SAP NetWeaver na Red Hat Enterprise Linuxu
+        href: high-availability-guide-rhel.md
+    - name: SAP s několika SID
+      items:
+      - name: Windows se sdíleným diskem pro instanci (A)SCS
+        href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
+      - name: Windows se sdílenou složkou SOFS pro instanci (A)SCS
+        href: sap-ascs-ha-multi-sid-wsfc-file-share.md
+  - name: Azure Site Recovery pro zotavení po havárii SAPu
+    href: ../../../site-recovery/site-recovery-workload.md#protect-sap
+- name: Jednotné přihlašování a integrace identit AAD SAP
+  items:
+  - name: Integrace se SAP Cloudem
+    href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+  - name: Integrace AAD s ověřováním identit cloudové platformy SAP
+    href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+  - name: Nastavení jednotného přihlašování s využitím cloudové platformy SAP
+    href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+  - name: Integrace AAD se SAP NetWeaverem
+    href: ../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+  - name: Integrace AAD se SAP Business ByDesign
+    href: ../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+  - name: Integrace AAD se SAP HANA DBMS
+    href: ../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+  - name: Jednotné přihlašování pomocí SAP Fiori Launchpad SAML s Azure AD
+    href: https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad
+- name: Integrace služeb Azure do SAPu
+  items:
+  - name: Použití SAP HANA v Power BI Desktopu
+    href: https://docs.microsoft.com/power-bi/desktop-sap-hana
+  - name: DirectQuery a SAP HANA
+    href: https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana
+  - name: Použití konektoru SAP BW v Power BI Desktopu
+    href: https://docs.microsoft.com/power-bi/desktop-sap-bw-connector
+  - name: Azure Data Factory nabízí integraci dat pro SAP HANA a Business Warehouse
+    href: https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration
+- name: Zdroje a prostředky
+  items:
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: 6b72c8e10d54035e69e802db14c1a2fb97a89408
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341454"

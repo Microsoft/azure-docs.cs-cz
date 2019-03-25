@@ -134,8 +134,11 @@ Tento obsah jsme vytvořili, abychom vám pomohli s nastavením a použitím bez
                     <div class="cardText">
                         <h3>Nápověda k portálu Moje aplikace</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/active-directory-saas-access-panel-introduction">Co je portál Moje aplikace?</a><br/>
-                        <a href="/azure/active-directory/active-directory-saas-access-panel-user-help">Řešení problémů</a>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-access">Přístup k portálu Moje aplikace a jeho používání</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-update-profile">Aktualizace informací o profilu a účtu</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-groups">Aktualizace informací týkajících se skupin</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-access-reviews">Provedení vlastních kontrol přístupu</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-troubleshoot">Řešení problémů</a>
                         </p>
                     </div>
                 </div>
