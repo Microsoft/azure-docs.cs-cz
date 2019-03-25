@@ -6,27 +6,22 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 11/13/2018
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 60186ee6aa614c83691c9ce4ab9d8124fd5925fd
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 696f4fee95926009ebda0be3c28672838d89edda
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685952"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400442"
 ---
-# <a name="what-is-azure-data-box-edge-preview"></a>Co je Azure Data Box Edge (Preview)? 
+# <a name="what-is-azure-data-box-edge"></a>Co je Azure Data Box Edge? 
 
 Azure Data Box Edge je řešení úložiště, které umožňuje zpracovat data a odeslat je přes síť do Azure. Tento článek poskytuje přehled řešení Data Box Edge, jeho výhody, klíčové funkce a scénáře, ve kterých můžete toto zařízení nasadit. 
 
 K urychlení bezpečného přenosu dat používá Data Box Edge fyzické zařízení dodané Microsoftem. Fyzické zařízení se nachází ve vašich prostorách a data na něj zapisujete pomocí protokolů NFS a SMB. 
 
 Data Box Edge má všechny funkce zařízení Data Box Gateway. Zařízení Data Box je navíc vybavené hraničními výpočetními prostředky s podporou AI, které pomáhají analyzovat, zpracovávat a filtrovat data při přesunu do objektů blob bloku nebo objektů blob stránky Azure, případně do souborů Azure.  
-
-> [!IMPORTANT]
-> - Data Box Edge je ve verzi Preview. [Zaregistrujte si](#sign-up) tuto službu.
-> - Před nasazením tohoto řešení si přečtěte [podmínky použití verze Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 ## <a name="use-cases"></a>Případy použití
 
@@ -76,7 +71,7 @@ Fyzické zařízení Data Box Edge má následující funkce:
 
 | Funkce/specifikace                                          | Popis              |
 |---------------------------------------------------------|--------------------------|
-| Dimenze   | Šířka: 43,8 cm, délka: 69,2 cm, výška: 4,5 cm<br>(bez oušek a úchytů PSU)  |            
+| Dimenze   | Width: 17.25" hloubky: 27.25" height: 1.75”<br>(bez oušek a úchytů PSU)  |            
 | Místo v racku|1U při umístění v racku|
 | Kabely| 2× napájecí kabel<br>2× kabely RJ45 1 GB/s<br>2× měděný kabel SFP 10 GB/s|
 | Komponenty|2 integrované jednotky PSU (Power Supply Unit)|

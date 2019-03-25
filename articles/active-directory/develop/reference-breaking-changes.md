@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f4a04f1598b3ab0efd9ff95a707d3837bb37503
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2fcc400f952cc89f5fb4bf6e8d6f0f331483868e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196021"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401300"
 ---
 # <a name="whats-new-for-authentication"></a>Co je nového v ověřování? 
 
@@ -42,6 +42,37 @@ Ověřování systému mění a přidává funkce pro zlepšení zabezpečení a
 ## <a name="upcoming-changes"></a>Připravované změny
 
 Nenaplánováno v tuto chvíli. 
+
+## <a name="march-2019"></a>2019. března
+
+### <a name="looping-clients-will-be-interrupted"></a>Opakování ve smyčce klientů se přeruší.
+
+**Datum účinnosti**: 25. března 2019
+
+**Koncové body, které jsou ovlivněné**: V1.0 a v2.0
+
+**Protokol vliv**: Všechny toky
+
+Klientské aplikace můžou někdy misbehave, vydávání stovky stejné žádosti o přihlášení po krátkou dobu.  Tyto požadavky může nebo nemusí být úspěšné, ale všechny přispívat na špatné uživatelské prostředí a zvýšenou úlohy pro zprostředkovatele identity, zvýšení latence pro všechny uživatele a snížit dostupnost zprostředkovatele identity.  Tyto aplikace pracují mimo hranice normálního využití a je potřeba aktualizovat na fungují správně.  
+
+Klienti, kteří vydávat duplicitní žádosti více než jednou se pošle `invalid_grant` Chyba: `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`. 
+
+Většina klientů nebude muset změnit chování lze vyvarovat této chyby.  Tuto chybu bude mít vliv pouze špatně nakonfigurované klientů (bez ukládání tokenu do mezipaměti nebo kteří už vykazujících výzvy smyčky).  Klienti jsou sledována na základě jednotlivé instance místní (pomocí souborů cookie) na následujících faktorech:
+
+* Pomocný parametr uživatele, pokud existuje
+
+* Obory nebo resource požadovanému
+
+* ID klienta
+
+* Přesměrovat identifikátor URI
+
+* Typ odpovědi a režim
+
+Aplikace provádění vícenásobných (15 +) v krátké době (5 minut) budou dostávat `invalid_grant` chyba s vysvětlením, že jsou opakování.  Tokeny žádá obsahovat dostatečně dlouhodobé životnost (minimálně 10 minut, ve výchozím nastavení 60 minut), takže opakované požadavky za toto časové období nejsou potřeba.  
+
+Všechny aplikace by měl zpracovat `invalid_grant` zobrazující interaktivní výzvu, spíše než tiše požadování tokenu.  Pokud se chcete vyhnout této chybě, klienti zajistil, že jsou správně ukládání do mezipaměti tokeny, které obdrží.
+
 
 ## <a name="october-2018"></a>Říjen 2018
 

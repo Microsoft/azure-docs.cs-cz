@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 03/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 08f84a3e037301837da984b0891d978027dc2e11
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a0a16fbda662ee1d3718dbafc4231de67aab277e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58083160"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400677"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Kurz: Detekce hrozeb s Azure Sentinelu ve verzi Preview
 
@@ -27,18 +27,21 @@ ms.locfileid: "58083160"
 > Azure Sentinel je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tento kurz pomůže odhalit hrozby s využitím Azure Sentinelu.
-
 Poté co [připojené zdroje dat](quickstart-onboard.md) Sentinelu Azure chcete budete upozorněni, když se stane něco podezřelé. Pokud chcete povolit, můžete k tomu, Sentinelu Azure, které vytvoříte upřesňující pravidla výstrah, které generují případů, které můžete přiřadit a použití jak hluboko zjistit anomálie a hrozby ve vašem prostředí. 
 
-
+Tento kurz pomůže odhalit hrozby s využitím Azure Sentinelu.
 > [!div class="checklist"]
 > * Vytvoření pravidla zjišťování
 > * Reakce na hrozby
 
 ## <a name="create-detection-rules"></a>Vytvoření pravidla zjišťování
 
-K prozkoumání případy, musíte nejprve vytvořit pravidla detekce. Pravidla zjišťování jsou založeny na typy hrozeb a anomálií, které může být podezřelá ve vašem prostředí, budete chtít vědět o hned, zajištění jsou prezentované, prozkoumat a napravené s cílem zajistit. 
+K prozkoumání případy, musíte nejprve vytvořit pravidla detekce. 
+
+> [!NOTE]
+> Výstrahy generované v ověřovacích Azure jsou dostupné prostřednictvím [zabezpečení společnosti Microsoft Graph](https://aka.ms/securitygraphdocs). Odkazovat [výstrahy zabezpečení Microsoft Graph dokumentaci](https://aka.ms/graphsecurityreferencebetadocs) další podrobnosti a partneři pro integraci.
+
+Pravidla zjišťování jsou založeny na typy hrozeb a anomálií, které může být podezřelá ve vašem prostředí, budete chtít vědět o hned, zajištění jsou prezentované, prozkoumat a napravené s cílem zajistit. 
 
 1. Na webu Azure portal v části Azure Sentinelu vyberte **Analytics**.
 
@@ -87,7 +90,9 @@ Azure Sentinel poskytuje dvě primární možnosti pro reakce na hrozby pomocí 
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu jste zjistili, jak začít, detekuje hrozby pomocí ověřovacích Azure. Dál najdete v tomto kurzu [týkající se reakce na hrozby pomocí automatizovaných playbooky](tutorial-respond-threats-playbook.md).
+V tomto kurzu jste zjistili, jak začít, detekuje hrozby pomocí ověřovacích Azure. 
+
+Další informace o automatizaci vaše odpovědi na ně, [týkající se reakce na hrozby pomocí automatizovaných playbooky](tutorial-respond-threats-playbook.md).
 > [!div class="nextstepaction"]
 > [Reakce na hrozby](tutorial-respond-threats-playbook.md) k automatizaci vaše odpovědi na ně.
 

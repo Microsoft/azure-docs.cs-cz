@@ -6,74 +6,77 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 03/22/2019
 ms.author: raynew
-ms.openlocfilehash: c6d6e380cded18a089f624f90d998477a89293be
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 3133f22a4d9ecd8a0ee4bff9f8b0be9c1f4eb705
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259037"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403659"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure na trezor služby Recovery Services
 
-Tento článek popisuje, jak zálohovat virtuální počítač Azure pomocí [Azure Backup](backup-overview.md) nasazení a povolením zálohy v trezoru služby Recovery Services.
+Tento článek popisuje, jak zálohovat virtuální počítače Azure do trezorů služby Recovery Services se [Azure Backup](backup-overview.md) služby. 
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Ověřte Podporované scénáře a požadavky.
+> * Ověřte podpory a požadavky pro zálohování.
 > * Příprava virtuálních počítačů Azure. Nainstalujte agenta virtuálního počítače Azure v případě potřeby a ověření odchozího přístupu pro virtuální počítače.
 > * Vytvořte trezor.
-> * Nastavení úložiště pro trezor
-> * Zjištění virtuálních počítačů, nakonfigurujte nastavení zálohování a zásady.
-> * Povolit zálohování pro virtuální počítače Azure
+> * Zjištění virtuálních počítačů a konfigurovat zásady zálohování.
+> * Povolte zálohování pro virtuální počítače Azure.
 
 
 > [!NOTE]
-   > Tento článek popisuje, jak zálohovat virtuální počítače Azure s nastavením úložiště a vyberete virtuální počítače k zálohování. To je užitečné, pokud chcete zálohovat několik virtuálních počítačů. Můžete také [zálohování virtuálního počítače Azure](backup-azure-vms-first-look-arm.md) přímo z nastavení virtuálního počítače.
+   > Tento článek popisuje, jak nastavit trezor a vyberte virtuální počítače k zálohování. To je užitečné, pokud chcete zálohovat několik virtuálních počítačů. Případně můžete [zálohování jednoho virtuálního počítače Azure](backup-azure-vms-first-look-arm.md) přímo z nastavení virtuálního počítače.
 
 ## <a name="before-you-start"></a>Než začnete
 
-Azure Backup zálohuje virtuální počítače Azure po instalaci rozšíření virtuálního počítače Azure agenta spuštěného na počítači.
 
-1. [Kontrola](backup-architecture.md#architecture-direct-backup-of-azure-vms) architektura zálohování virtuálního počítače Azure.
-[Další informace o](backup-azure-vms-introduction.md) zálohování virtuálních počítačů Azure a linka záložního telefonu.
-2. [Zkontrolujte podporu](backup-support-matrix-iaas.md) pro zálohování virtuálních počítačů Azure.
-3. Příprava virtuálních počítačů Azure. Pokud není nainstalovaná, nainstalujte agenta virtuálního počítače a ověření odchozího přístupu pro virtuální počítače, které chcete zálohovat.
+- [Kontrola](backup-architecture.md#architecture-direct-backup-of-azure-vms) architektura zálohování virtuálního počítače Azure.
+- [Další informace o](backup-azure-vms-introduction.md) zálohování virtuálních počítačů Azure a linka záložního telefonu.
+- [Zkontrolujte podporu](backup-support-matrix-iaas.md) pro zálohování virtuálních počítačů Azure.
 
 
 ## <a name="prepare-azure-vms"></a>Příprava virtuálních počítačů Azure
 
-Nainstalujte agenta virtuálního počítače v případě potřeby a ověřte odchozí přístup z virtuálních počítačů.
+V některých případech můžete potřebovat nastavit agenta virtuálního počítače Azure na virtuálních počítačích Azure nebo výslovně povolit odchozí přístup na virtuálním počítači.
 
-### <a name="install-the-vm-agent"></a>Nainstalujte agenta virtuálního počítače
-V případě potřeby nainstalujte agenta následujícím způsobem.
+### <a name="install-the-vm-agent"></a>Nainstalujte agenta virtuálního počítače 
+
+Azure Backup zálohuje virtuální počítače Azure po instalaci rozšíření virtuálního počítače Azure agenta spuštěného na počítači. Pokud byl váš virtuální počítač vytvořen z image Azure marketplace, je agent nainstalován a spuštěn. Pokud vytváříte vlastní virtuální počítač nebo migrovat místní počítač, můžete potřebovat nainstalovat agenta ručně, jak je uvedené v tabulce.
 
 **VM** | **Podrobnosti**
 --- | ---
-**Virtuální počítače s Windows** | [Stáhněte a nainstalujte](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) soubor MSI agenta. Instalace pomocí oprávnění správce na počítači.<br/><br/> Ověření instalace – nachází se v *C:\WindowsAzure\Packages* na virtuálním počítači, klikněte pravým tlačítkem myši WaAppAgent.exe > **vlastnosti**, > **podrobnosti** kartu. **Verze produktu** by mělo být 2.6.1198.718 nebo vyšší.<br/><br/> Pokud chcete aktualizovat agenta, ujistěte se, že žádná operace zálohování jsou spuštěné, a [znovu nainstalujte agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
-**Virtuální počítače s Linuxem** | Instalace pomocí RPM nebo DEB balíček z úložiště balíčků vaší distribuce je preferovanou metodu instalace a upgradování agenta Azure Linux. Všechny [poskytovatelé distribuce schválené pro](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) balíček agenta Azure Linux integrovat do své Image a úložiště. Agent je k dispozici na [Githubu](https://github.com/Azure/WALinuxAgent), ale doporučujeme nejprve nainstalovat z něj.<br/><br/> Pokud chcete aktualizovat agenta, ujistěte se, že žádná operace zálohování běží a aktualizovat binární soubory.
+**Virtuální počítače s Windows** | 1. [Stáhněte a nainstalujte](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) soubor MSI agenta.<br/><br/> 2. Instalace pomocí oprávnění správce na počítači.<br/><br/> 3. Ověření instalace. V *C:\WindowsAzure\Packages* na virtuálním počítači, klikněte pravým tlačítkem myši WaAppAgent.exe > **vlastnosti**, > **podrobnosti** kartu. **Verze produktu** by mělo být 2.6.1198.718 nebo vyšší.<br/><br/> Pokud chcete aktualizovat agenta, ujistěte se, že žádná operace zálohování jsou spuštěné, a [znovu nainstalujte agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
+**Virtuální počítače s Linuxem** | Instalace s použitím RPM nebo DEB balíček z úložiště balíčků vaší distribuce. Toto je upřednostňovanou metodou pro instalaci a upgrade agenta Azure Linux. Všechny [poskytovatelé distribuce schválené pro](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) balíček agenta Azure Linux integrovat do své Image a úložiště. Agent je k dispozici na [Githubu](https://github.com/Azure/WALinuxAgent), ale doporučujeme nejprve nainstalovat z něj.<br/><br/> Pokud chcete aktualizovat agenta, ujistěte se, že žádná operace zálohování jsou spuštěné a aktualizovat binární soubory.
 
 
 ### <a name="establish-network-connectivity"></a>Vytvoření připojení k síti
 
-Rozšíření zálohování spuštěná na virtuálním počítači musí mít odchozí přístup k veřejným IP adresám Azure.
+Rozšíření zálohování spuštěná na virtuálním počítači musí odchozí přístup k veřejným IP adresám Azure.
 
-- Žádné explicitní odchozí síťový přístup je požadovaná pro virtuální počítač Azure komunikovat se službou Azure Backup.
-- Ale některé starší virtuálních počítačů může mít potíže s a nezdaří s chybou **ExtensionSnapshotFailedNoNetwork** při pokusu o připojení. V takovém případě použijte jednu z následujících možností tak, aby rozšíření zálohování můžete komunikovat na Azure veřejné IP adresy pro provoz zálohování.
+- Obvykle není nutné výslovně povolit odchozí síťový přístup pro virtuální počítač Azure mohla komunikovat s Azure Backup.
+- Pokud narazíte na potíže s virtuálními počítači s připojením a pokud se zobrazí chyba **ExtensionSnapshotFailedNoNetwork** při pokusu o připojení, byste měli explicitně povolit přístup tak rozšíření zálohování sdělit veřejný Azure IP adresy pro provoz zálohování.
 
-   **Možnost** | **Akce** | **Výhody** | **Nevýhody**
-   --- | --- | --- | ---
-   **Nastavení pravidla skupiny zabezpečení sítě** | Povolit [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653).<br/><br/>  Můžete přidat pravidlo povolující přístup s použitím služby Azure Backup [značka služby](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure), namísto samostatně povolení a správa každý rozsah adres. [Další informace](../virtual-network/security-overview.md#service-tags) informace o značkách služby. | Žádné další náklady. Jednoduchá správa pomocí značky služeb
-   **Nasazení proxy serveru** | Nasazení proxy server HTTP pro směrování provozu. | Poskytuje přístup k celé Azure, a ne jenom úložiště. Podrobnou kontrolu nad adresy URL úložiště je povolený.<br/><br/> Přístup k jedné bodu Internetu pro virtuální počítače.<br/><br/> Další náklady pro proxy server.<br/><br/>
-   **Nastavení brány Firewall Azure** | Povolte přenos přes bránu Firewall služby Azure ve virtuálním počítači, pomocí značku plně kvalifikovaný název domény pro službu Azure Backup.|  Snadno se používá, pokud máte brány Firewall Azure nastavit v podsíti virtuální sítě | Nejde vytvořit vlastní značky plně kvalifikovaný název domény nebo upravit plně kvalifikovaných názvů domén ve značce.<br/><br/> Pokud používáte Azure Managed Disks, může být nutné počáteční další portu (port 8443) na bránu firewall.
 
-#### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>Nastavit pravidlo skupiny zabezpečení sítě a povolit odchozí přístup k Azure
+#### <a name="explicitly-allow-outbound-access"></a>Výslovně povolit odchozí přístup
 
-Pokud váš virtuální počítač Azure má přístup spravuje skupinu zabezpečení sítě, povolí odchozí přístup pro úložiště záloh na požadované rozsahy a porty.
+Pokud váš virtuální počítač nemůže připojit ke službě Backup, výslovně povolte odchozí přístup pomocí jedné z metod uvedené v tabulce.
 
-1. Ve virtuálním počítači > **sítě**, klikněte na tlačítko **přidat pravidlo portu pro odchozí**.
+**Možnost** | **Akce** | **Podrobnosti** 
+--- | --- | --- 
+**Nastavení pravidla skupiny zabezpečení sítě** | Povolit [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Místo povolení a správa každý rozsah adres, můžete přidat pravidlo povolující přístup s použitím služby Azure Backup [značka služby](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure). [Další informace](../virtual-network/security-overview.md#service-tags).<br/><br/> Žádné další náklady.<br/><br/> Jednoduchá správa pomocí značky služeb.
+**Nasazení proxy serveru** | Nasazení proxy server HTTP pro směrování provozu. | Poskytuje přístup k celé Azure, a ne jenom úložiště.<br/><br/> Podrobnou kontrolu nad adresy URL úložiště je povolený.<br/><br/> Přístup k jedné bodu Internetu pro virtuální počítače.<br/><br/> Další náklady pro proxy server.
+**Nastavení brány Firewall Azure** | Povolte přenos přes bránu Firewall služby Azure ve virtuálním počítači, pomocí značku plně kvalifikovaný název domény pro službu Azure Backup. |  Snadno se používá, pokud máte brány Firewall Azure nastavit v podsíti virtuální sítě<br/><br/> Nejde vytvořit vlastní značky plně kvalifikovaný název domény nebo upravit plně kvalifikovaných názvů domén ve značce.<br/><br/> Pokud používáte Azure Managed Disks, může být nutné počáteční další portu (port 8443) na bránu firewall.
+
+##### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>Nastavit pravidlo skupiny zabezpečení sítě a povolit odchozí přístup k Azure
+
+Pokud skupina zabezpečení sítě spravuje přístup k virtuálnímu počítači, povolí odchozí přístup pro úložiště záloh na požadované rozsahy a porty.
+
+1. Ve vlastnostech virtuálního počítače > **sítě**, klikněte na tlačítko **přidat pravidlo portu pro odchozí**.
 2. V **přidat odchozí pravidlo zabezpečení**, klikněte na tlačítko **Upřesnit**.
 3. V **zdroj**vyberte **VirtualNetwork**.
 4. V **zdrojové rozsahy portů**, zadejte hvězdičku (*) povolit přístup z jakéhokoli portu pro odchozí připojení.
@@ -83,30 +86,29 @@ Pokud váš virtuální počítač Azure má přístup spravuje skupinu zabezpe�
     - Nespravovaného virtuálního počítače s zašifrovaném účtu úložiště: 443 (výchozí nastavení)
     - Spravovaný virtuální počítač: 8443.
 7. V **protokol**vyberte **TCP**.
-8. V **Priority**, zadejte hodnotu priority menší než pravidla odmítnutí výše. Pokud máte pravidlo odepírající přístup, nová Povolit pravidlo musí být vyšší. Pokud máte například **Deny_All** s prioritou 1 000, nové pravidlo sady pravidel musí být nastavena na méně než 1000.
+8. V **Priority**, zadejte hodnotu priority menší než pravidla odmítnutí výše.
+   - Pokud máte pravidlo odepírající přístup, nová Povolit pravidlo musí být vyšší.
+   - Pokud máte například **Deny_All** s prioritou 1 000, nové pravidlo sady pravidel musí být nastavena na méně než 1000.
 9. Zadejte název a popis pravidla a klikněte na tlačítko **OK**.
 
-Pravidlo skupiny zabezpečení sítě můžete použít k více virtuálním počítačům povolit odchozí přístup.
-
-Toto video vás provede procesem.
+Pravidlo skupiny zabezpečení sítě můžete použít k více virtuálním počítačům povolit odchozí přístup. Toto video vás provede procesem.
 
 >[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
 
-#### <a name="route-backup-traffic-through-a-proxy"></a>Zálohování směrování provozu přes proxy server
+##### <a name="route-backup-traffic-through-a-proxy"></a>Zálohování směrování provozu přes proxy server
 
-Můžete směrovat provoz zálohování prostřednictvím proxy serveru a poté poskytnout proxy přístup k požadované oblasti Azure.
-Měli byste nakonfigurovat váš proxy server, virtuální počítač povolit následující:
+Můžete směrovat provoz zálohování prostřednictvím proxy serveru a poté poskytnout proxy přístup k požadované oblasti Azure. Konfigurace proxy serveru virtuálního počítače umožňuje následující:
 
 - Virtuální počítač Azure by měl směrovat všechen provoz protokolu HTTP mez pro veřejný internet přes proxy server.
 - Proxy server by měl povolit příchozí provoz z virtuálních počítačů v příslušné virtuální sítě (VNet).
 - Skupiny zabezpečení sítě **NSF uzamčení** potřebuje pravidlo, které umožňuje odchozí internetový provoz z virtuálního počítače proxy serveru.
 
-##### <a name="set-up-the-proxy"></a>Nastavení serveru proxy
+###### <a name="set-up-the-proxy"></a>Nastavení serveru proxy
+
 Pokud nemáte účet proxy systému, nastavte jeden následujícím způsobem:
 
 1. Stáhněte si [PsExec](https://technet.microsoft.com/sysinternals/bb897553).
-
 2. Spustit **PsExec.exe -i -s cmd.exe** spustit příkazový řádek pod účtem system.
 3. Spusťte prohlížeč v kontextu systému. Příklad: **%PROGRAMFILES%\Internet Explorer\iexplore.exe** pro aplikaci Internet Explorer.  
 4. Definujte nastavení proxy serveru.
@@ -127,18 +129,22 @@ Pokud nemáte účet proxy systému, nastavte jeden následujícím způsobem:
 
        ```
 
-##### <a name="allow-incoming-connections-on-the-proxy"></a>Povolte příchozí připojení na proxy serveru
+###### <a name="allow-incoming-connections-on-the-proxy"></a>Povolte příchozí připojení na proxy serveru
 
 Povolte příchozí připojení v nastavení proxy serveru.
 
-- Například otevřete **brány Windows Firewall s pokročilým zabezpečením**.
-    - Klikněte pravým tlačítkem na **příchozí pravidla** > **nové pravidlo**.
-    - V **typ pravidla** vyberte **vlastní** > **Další**.
-    - V **Program**vyberte **všechny programy** > **Další**.
-    - V **protokoly a porty** nastavte typ **TCP**, **místní porty** k **specifické porty protokolu**, a **vzdálený port**k **všechny porty**.
-    - Dokončete průvodce a zadejte název pravidla.
+1, v bráně Windows Firewall otevřete **brány Windows Firewall s pokročilým zabezpečením**.
+2. Klikněte pravým tlačítkem na **příchozí pravidla** > **nové pravidlo**.
+3. V **typ pravidla** vyberte **vlastní** > **Další**.
+4. V **Program**vyberte **všechny programy** > **Další**.
+5. V **protokoly a porty**:
+   - Nastavte typ **TCP**
+   - Nastavte **místní porty** k **specifické porty protokolu**
+   - Nastavte **vzdálený port** k **všechny porty**.
+  
+6. Dokončete průvodce a zadejte název pravidla.
 
-##### <a name="add-an-exception-rule-to-the-nsg-for-the-proxy"></a>Přidejte pravidlo výjimky pro skupiny zabezpečení sítě pro proxy server
+###### <a name="add-an-exception-rule-to-the-nsg-for-the-proxy"></a>Přidejte pravidlo výjimky pro skupiny zabezpečení sítě pro proxy server
 
 Na skupiny zabezpečení sítě **NSF uzamčení**, povolit provoz z jakéhokoli portu na 10.0.0.5 na jakoukoli adresu v Internetu na portu 80 (HTTP) nebo 443 (HTTPS).
 
@@ -157,16 +163,17 @@ Můžete nastavit brány Firewall Azure umožňující přístup pro odchozí p�
 - [Další informace o](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) nasazení Brána Firewall služby Azure.
 - [Přečtěte si informace o](https://docs.microsoft.com/azure/firewall/fqdn-tags) značky plně kvalifikovaný název domény.
 
-## <a name="set-up-storage-replication"></a>Nastavení replikace úložiště
+## <a name="modify-storage-replication-settings"></a>Upravit nastavení replikace úložiště
 
-Ve výchozím nastavení, má váš trezor nastavené [geograficky redundantní úložiště (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs). Doporučujeme pro vaši primární zálohu GRS, ale můžete použít[místně redundantní úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) pro levnější možnost.
+Ve výchozím nastavení, má váš trezor nastavené [geograficky redundantní úložiště (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
 
-Azure Backup automaticky zpracovává úložiště pro trezor. Je třeba zadat způsob replikace úložiště.
-Úprava replikace úložiště následujícím způsobem:
+- Doporučujeme účet úložiště GRS pro vaši primární zálohu.
+- Můžete použít [místně redundantní úložiště (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) pro levnější možnost.
 
-1. V okně **Trezory služby Recovery Services** klikněte na nový trezor. V části **nastavení** klikněte na tlačítko **vlastnosti**.
+Změňte typ replikace úložiště následujícím způsobem:
+
+1. Na portálu klikněte na nový trezor. V části **nastavení** klikněte na tlačítko **vlastnosti**.
 2. V **vlastnosti**v části **konfigurace zálohování**, klikněte na tlačítko **aktualizace**.
-
 3. Vyberte typ replikace úložiště a klikněte na tlačítko **Uložit**.
 
       ![Nastavení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/full-blade.png)
@@ -213,8 +220,7 @@ Po povolení zálohování:
 - Prvotní zálohování spustí podle vašeho plánu zálohování.
 - Služba Backup nainstaluje rozšíření zálohování, jestli je virtuální počítač spuštěný.
     - Spuštěný virtuální počítač poskytuje největší šanci získání bodu obnovení, který je konzistentní v rámci aplikace.
-    -  Ale i v případě, že je vypnutý a rozšíření nejde nainstalovat je zálohování virtuálního počítače. To se označuje jako *offline virtuálního počítače*. V takovém případě bude bod obnovení *konzistentní pro případ chyby*.
-    Všimněte si, že Azure Backup nepodporuje úpravu automatické hodiny pro letní čas – změny pro zálohy virtuálních počítačů Azure. Upravte zásady zálohování ručně podle potřeby.
+    -  Ale i v případě, že je vypnutý a rozšíření nejde nainstalovat je zálohování virtuálního počítače. To se označuje jako offline virtuálního počítače. V takovém případě bude bod obnovení konzistentní při selhání. [Další informace]() Všimněte si, že Azure Backup nepodporuje úpravu automatické hodiny pro letní čas – změny pro zálohy virtuálních počítačů Azure. Upravte zásady zálohování ručně podle potřeby.
 
 ## <a name="run-the-initial-backup"></a>Spusťte prvotní zálohování
 
@@ -231,5 +237,6 @@ Prvotní zálohování se spustí podle plánu, pokud jste ručně ho chcete ihn
 
 ## <a name="next-steps"></a>Další postup
 
-- Řešení potíží, ke kterým dochází s [Azure VM agents](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) nebo [zálohování virtuálních počítačů Azure](backup-azure-vms-troubleshoot.md).
-- [Zálohování virtuálních počítačů Azure](backup-azure-vms-first-look-arm.md)
+- Vyřešte všechny problémy s [Azure VM agents](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) nebo [zálohování virtuálních počítačů Azure](backup-azure-vms-troubleshoot.md).
+- [Obnovení](backup-azure-arm-restore-vms.md) virtuální počítače Azure.
+

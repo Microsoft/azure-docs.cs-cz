@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 02e03868f5a48088b78d5d9b0221387212f248cf
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 5e5a186be19c0ecc9730bc79bddff41fb6bbb571
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958707"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401661"
 ---
 # <a name="quickstart-get-intent-using-java"></a>Rychlý start: Získání záměru pomocí Javy
 
@@ -29,9 +29,8 @@ V tomto rychlém startu budete do koncového bodu služby LUIS předávat promlu
 ## <a name="prerequisites"></a>Požadavky
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
-* [Visual Studio Code](https://code.visualstudio.com/)
+* [Visual Studio Code](https://code.visualstudio.com/) nebo oblíbeného prostředí IDE
 * ID veřejné aplikace: df67dcdb-c37d-46af-88e1-8b97951ca1c2
-
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
@@ -43,9 +42,9 @@ V tomto rychlém startu budete do koncového bodu služby LUIS předávat promlu
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-## <a name="get-intent-programmatically"></a>Získání záměru prostřednictvím kódu programu 
+## <a name="get-intent-programmatically"></a>Získání záměru prostřednictvím kódu programu
 
-Pomocí Javy můžete získat přístup ke stejným výsledkům, jako jste viděli v okně prohlížeče v předchozím kroku. 
+Pomocí Javy můžete získat přístup ke stejným výsledkům, jako jste viděli v okně prohlížeče v předchozím kroku. Ujistěte se, že jste do projektu přidejte knihovny Apache.
 
 1. Zkopírujte následující kód a vytvořte třídu v souboru s názvem `LuisGetRequest.java`:
 
@@ -53,9 +52,9 @@ Pomocí Javy můžete získat přístup ke stejným výsledkům, jako jste vidě
 
 2. Nahraďte hodnotu proměnné `YOUR-KEY` klíčem služby LUIS.
 
-3. Kompilujte program Javy pomocí `javac -cp ":lib/*" LuisGetRequest.java`. 
+3. Nahraďte vaše cesta k souboru a kompilovat program v jazyce java z příkazového řádku: `javac -cp .;<FILE_PATH>\* LuisGetRequest.java`.
 
-4. Spusťte aplikaci klávesou `java -cp ":lib/*" LuisGetRequest.java`. Zobrazí se stejný JSON, jako jste viděli dříve v okně prohlížeče.
+4. Nahraďte vaše cesta k souboru a spuštění aplikace z příkazového řádku: `java -cp .;<FILE_PATH>\* LuisGetRequest.java`. Zobrazí se stejný JSON, jako jste viděli dříve v okně prohlížeče.
 
     ![Okno konzoly se zobrazeným výsledkem JSON ze služby LUIS](./media/luis-get-started-java-get-intent/console-turn-on.png)
     
@@ -65,7 +64,7 @@ Pomocí Javy můžete získat přístup ke stejným výsledkům, jako jste vidě
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Odstraňte soubor Javy. 
+Odstraňte složku souboru nebo projektu jazyka Java.
 
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]

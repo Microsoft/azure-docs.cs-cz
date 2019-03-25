@@ -1,22 +1,22 @@
 ---
-title: Správa skupiny aplikací pro Windows virtuálního klienta (preview) – Azure
-description: Popisuje, jak nastavit virtuální plochy Windows tenantů ve službě Azure Active Directory.
+title: Správa skupiny aplikací pro Windows Virtual Desktop Preview – Azure
+description: Popisuje, jak nastavit službu Windows Virtual Desktop Preview tenantů ve službě Azure Active Directory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 455e3b4ac4a5020f68b5201bc19f85892ef62cb1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2baabe6837d25cce5e9f5d9e1071af8417fe5f4d
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368982"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401858"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Kurz: Správa skupiny aplikací pro Windows virtuálního klienta (Preview)
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Kurz: Správa skupiny aplikací pro Windows Virtual Desktop Preview
 
-Výchozí skupina aplikace vytvořené pro nový fond hostitele, publikuje také úplný desktop. Kromě toho můžete vytvořit jeden nebo více skupin aplikací RemoteApp (preview) pro fond hostitele. V tomto kurzu vytvořte skupinu aplikací RemoteApp a publikování aplikací pro jednotlivé nabídky Start.
+Výchozí skupina aplikace vytvořené pro nový fond hostitele Windows virtuální plochy, ve verzi Preview, publikuje také úplný desktop. Kromě toho můžete vytvořit jeden nebo více skupin aplikací RemoteApp pro fond hostitele. V tomto kurzu vytvořte skupinu aplikací RemoteApp a publikování aplikací pro jednotlivé nabídky Start.
 
 V tomto kurzu získáte informace o těchto tématech:
 

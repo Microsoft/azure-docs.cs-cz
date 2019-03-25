@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
-ms.date: 04/17/2018
+ms.date: 03/22/2019
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 605598d1470cbb535d626c15a5e8e4e08aa4d571
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3a260102e9964cfc248ed3dbabab487bd1c5dfc2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883810"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403761"
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Pomocí Azure Stream Analytics s využitím SQL Data Warehouse
 Azure Stream Analytics je plně spravovaná služba poskytuje nízkou latenci, vysoce dostupná a škálovatelná komplexní zpracování událostí přes streamovaných dat v cloudu. Seznámíte se základy načtením [Úvod do služby Azure Stream Analytics][Introduction to Azure Stream Analytics]. Můžete pak zjistěte, jak vytvořit-ucelené řešení Stream Analytics pomocí následujících [začít používat Azure Stream Analytics] [ Get started using Azure Stream Analytics] kurzu.
@@ -34,12 +34,10 @@ Vytvořte databázi Azure SQL Data Warehouse
 
 ## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>Zadejte výstup úlohy: Databáze Azure SQL Data Warehouse
 ### <a name="step-1"></a>Krok 1
-V úloze Stream Analytics klikněte na tlačítko **výstup** z horní části stránky a pak klikněte na tlačítko **přidat výstup**.
+V úloze Stream Analytics klikněte na tlačítko **výstup** z horní části stránky a pak klikněte na tlačítko **přidat**.
 
 ### <a name="step-2"></a>Krok 2
-Vyberte databázi SQL a klikněte na tlačítko Další.
-
-![][add-output]
+Vyberte databázi SQL.
 
 ### <a name="step-3"></a>Krok 3
 Na další stránce zadejte následující hodnoty:
@@ -62,9 +60,7 @@ Na další stránce zadejte následující hodnoty:
 ### <a name="step-4"></a>Krok 4
 Klikněte na tlačítko se symbolem zaškrtnutí, chcete-li přidat tento výstup úlohy a ověřte, jestli Stream Analytics můžete úspěšně připojit k databázi.
 
-![][test-connection]
-
-Při připojení k databázi úspěšný, zobrazí se oznámení v dolní části portálu. Můžete kliknout na Test připojení v dolní části a otestujte připojení k databázi.
+Při připojení k databázi úspěšný, zobrazí se oznámení na portálu. Klikněte na tlačítko Test můžete vyzkoušet připojení k databázi.
 
 ## <a name="next-steps"></a>Další postup
 Přehled integrace najdete v tématu [Přehled integrace SQL Data Warehouse][SQL Data Warehouse integration overview].

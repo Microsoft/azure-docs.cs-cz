@@ -10,38 +10,51 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: daeff897cf284df6e820afbcdd35ee54bf88db08
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 8005b187f300375b62c254516a61f4993675b0b9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405398"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403104"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu
 
 Zjistěte, jak nasadit prostředky do Azure pomocí šablon Resource Manageru pomocí prostředí Azure PowerShell. Další informace o konceptech, nasazení a správě řešení Azure najdete v tématu [přehled Azure Resource Manageru](resource-group-overview.md).
 
-Pokud chcete nasadit šablonu, je obvykle třeba dva kroky:
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. Vytvořte skupinu prostředků. Skupina prostředků slouží jako kontejner pro nasazených prostředků. Název skupiny prostředků může obsahovat jenom alfanumerické znaky, tečky, podtržítka, pomlčky a závorky. Může být až 90 znaků. Nesmí končit tečkou.
-2. Nasazení šablony. Šablona definuje prostředky vytvořit.  Nasazení vytvoří ve skupině prostředků zadané prostředky.
+## <a name="deployment-scope"></a>Rozsah nasazení
 
-V tomto článku se používá tato metoda nasazení ve dvou krocích.  Další možností je nasazení skupiny prostředků a prostředky ve stejnou dobu.  Další informace najdete v tématu [vytvořte skupinu prostředků a nasazení prostředků](./deploy-to-subscription.md#create-resource-group-and-deploy-resources).
+Můžete cílit na vaše nasazení předplatného Azure nebo skupinu prostředků v rámci předplatného. Ve většině případů cílíte nasazení do skupiny prostředků. Použití předplatného nasazení použít zásady a přiřazení rolí v rámci předplatného. Vytvořte skupinu prostředků a nasazení prostředků do ní také použijete nasazení předplatných. V závislosti na rozsahu nasazení můžete použít různé příkazy.
+
+Nasazení do **skupiny prostředků**, použijte [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
+```
+
+Nasazení do **předplatné**, použijte [New-AzDeployment](/powershell/module/az.resources/new-azdeployment):
+
+```azurepowershell
+New-AzDeployment -Location <location> -TemplateFile <path-to-template>
+```
+
+V příkladech v tomto článku se používá nasazení skupiny prostředků. Další informace o nasazení předplatných najdete v tématu [vytvoření skupiny prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
+Budete potřebovat k nasazení šablony. Pokud již nemáte, stáhněte a uložte [Ukázková šablona](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) z úložiště šablon Quickstart pro Azure. Název místního souboru použitý v tomto článku je **c:\MyTemplates\azuredeploy.json**.
+
 Pokud nechcete použít [Azure Cloud shell](#deploy-templates-from-azure-cloud-shell) k nasazení šablony, budete muset nainstalovat Azure PowerShell a připojte se k Azure:
+
 - **Instalace rutin Powershellu pro Azure v místním počítači.** Další informace najdete v tématu [Začínáme s Azure PowerShellem](/powershell/azure/get-started-azureps).
 - **Připojení k Azure s využitím [připojit AZAccount](/powershell/module/az.accounts/connect-azaccount)**. Pokud máte více předplatných Azure, může být také potřeba spustit [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext). Další informace najdete v tématu [použít několik předplatných Azure](/powershell/azure/manage-subscriptions-azureps).
-- * Stáhněte a uložte [šablonu pro rychlý Start](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) . Název místního souboru použitý v tomto článku je **c:\MyTemplates\azuredeploy.json**.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="deploy-local-template"></a>Nasazení místního šablony
 
-## <a name="deploy-templates-stored-locally"></a>Nasazení šablony uložené místně
-
-Následující příklad vytvoří skupinu prostředků a nasadí šablony z místního počítače:
+Následující příklad vytvoří skupinu prostředků a nasadí šablony z místního počítače. Název skupiny prostředků může obsahovat jenom alfanumerické znaky, tečky, podtržítka, pomlčky a závorky. Může být až 90 znaků. Nesmí končit tečkou.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -52,11 +65,9 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateFile c:\MyTemplates\azuredeploy.json
 ```
 
-Poznámka: *c:\MyTemplates\azuredeploy.json* je šablonu pro rychlý start.  Viz [Požadavky](#prerequisites).
-
 Dokončení nasazení může trvat několik minut.
 
-## <a name="deploy-templates-stored-externally"></a>Nasazení šablon uložených externě
+## <a name="deploy-remote-template"></a>Nasazení vzdálené šablony
 
 Místo uložení šablony Resource Manageru na místním počítači, můžete chtít uložit je do externího umístění. Šablony můžete uložit úložiště správy zdrojového kódu (např. GitHub). Nebo můžete je ukládat v účtu úložiště Azure pro zajištění sdíleného přístupu ve vaší organizaci.
 
@@ -73,7 +84,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 V předchozím příkladu vyžaduje veřejně přístupné identifikátor URI pro šablony, které lze použít pro většinu scénářů, protože šablony by neměl obsahovat citlivá data. Pokud je třeba zadat citlivá data (jako je zadání hesla správce), předáte tuto hodnotu jako zabezpečený parametr. Ale pokud nechcete, aby vaše šablona veřejně přístupný, budete ho chránit ukládáním do privátního úložiště kontejnerů. Informace o nasazení šablony, která se vyžaduje token sdíleného přístupového podpisu (SAS), najdete v části [nasazení privátní šablony s tokenem SAS](resource-manager-powershell-sas-token.md). Absolvovat kurz, naleznete v tématu [kurzu: Integrace Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md).
 
-## <a name="deploy-templates-from-azure-cloud-shell"></a>Nasazení šablon ze služby Azure Cloud shell
+## <a name="deploy-from-azure-cloud-shell"></a>Nasazení ze služby Azure Cloud shell
 
 Můžete použít [Azure Cloud Shell](https://shell.azure.com) k nasazení vaší šablony. Pokud chcete nasadit šablonu externí, zadejte identifikátor URI šablony. Pokud chcete nasadit šablonu místní, musí nejdřív načíst šablony do účtu úložiště pro službu Cloud Shell. Postup nahrání souborů do prostředí, vyberte **nahrávání a stahování souborů** ikonu nabídky v okně prostředí.
 
@@ -89,10 +100,6 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 ```
 
 Vložte kód do prostředí, klikněte pravým tlačítkem uvnitř prostředí a potom vyberte **vložte**.
-
-## <a name="deploy-to-multiple-resource-groups-or-subscriptions"></a>Nasazení do několika skupin prostředků nebo předplatných
-
-Zpravidla nasazujete, všechny prostředky ve vaší šabloně do jedné skupiny prostředků. Existují ale scénáře, ve které chcete nasadit sadu prostředků společně, ale je umístit do různých skupin prostředků nebo předplatných. Můžete nasadit do pouze pět skupin prostředků v jednom nasazení. Další informace najdete v tématu [Azure nasadit prostředky do více skupin prostředků a předplatná](resource-manager-cross-resource-group-deployment.md).
 
 ## <a name="redeploy-when-deployment-fails"></a>Opětovné nasazení při nasazení se nezdaří
 

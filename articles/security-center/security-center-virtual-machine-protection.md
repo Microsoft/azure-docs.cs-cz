@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/25/2019
+ms.date: 3/20/2019
 ms.author: monhaber
-ms.openlocfilehash: dd7dad51f29b4b5034c72085cd789077747faa0b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fa664952f3eb7d6f9e611fb87a9e484e97f388a2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106555"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403829"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrana vašich počítačů a aplikací ve službě Azure Security Center
-Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol. Doporučení platí pro typy prostředků Azure: virtuální počítače (VM) a počítačů, aplikací, sítí, SQL a identit a přístupů.
+Azure Security Center analyzuje stav zabezpečení prostředků Azure, mimo Azure serverů a virtuálních počítačů. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol. Doporučení platí pro typy prostředků Azure: virtuální počítače (VM) a počítačů, aplikací, sítí, SQL a identit a přístupů.
 
 Tento článek se zabývá doporučení, která platí pro počítače a aplikace.
 
@@ -53,7 +53,7 @@ Chcete-li pokračovat, vyberte **výpočty a aplikace** pod **kontrolu zabezpeč
 Na každé kartě můžete mít několik částí a v každé části můžete vybrat jednotlivé možnosti, abyste zobrazili další podrobnosti o doporučeném postupu k vyřešení konkrétního problému.
 
 ### Nemonitorované virtuální počítače a počítače <a name="unmonitored-vms-and-computers"></a>
-Virtuální počítač nebo počítač je nemonitorovaný službou Security Center, pokud počítač není spuštěný rozšíření Microsoft Monitoring Agent. Na počítači může mít místní agent již nainstalovaný, například přímý agent OMS nebo SCOM agent. Počítače s těmito agenty se identifikují jako nemonitorované, protože tyto agenty plně nepodporuje ve službě Security Center. Pokud chcete naplno využívat všechny schopnosti služby Security Center, potřebujete rozšíření Microsoft Monitoring Agent.
+Virtuální počítač nebo počítač je nemonitorovaný službou Security Center, pokud počítač není spuštěný rozšíření Microsoft Monitoring Agent. Na počítači může mít místní agent již nainstalovaný, například přímý agent OMS nebo agenta System Center Operations Manager. Počítače s těmito agenty se identifikují jako nemonitorované, protože tyto agenty plně nepodporuje ve službě Security Center. Pokud chcete naplno využívat všechny schopnosti služby Security Center, potřebujete rozšíření Microsoft Monitoring Agent.
 
 Rozšíření můžete nainstalovat na nemonitorovaný virtuální počítač nebo počítač kromě již nainstalovanému místnímu agentu. Nakonfigurujte oba agenty stejným způsobem a připojte je ke stejnému pracovnímu prostoru. Tím umožníte službě Security Center pracovat s rozšířením Microsoft Monitoring Agent a shromažďovat data. Pokyny k instalaci rozšíření Microsoft Monitoring Agent najdete v tématu popisujícím [povolení rozšíření virtuálního počítače](../azure-monitor/learn/quick-collect-azurevm.md).
 
@@ -103,7 +103,7 @@ Existují čtyři typy ikon v tomto seznamu:
 ![Virtuální počítač Azure Classic](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png) Virtuální počítač Azure Classic.
 
 
-![Virtuální počítače uvedené v pracovním prostoru](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Virtuální počítače identifikované pouze z pracovního prostoru, který je součástí zobrazeného předplatného. To zahrnuje virtuální počítače z jiných předplatných, které se hlásí k pracovnímu prostoru v tomto předplatném, a virtuální počítače nainstalované s přímým agentem SCOM, které nemají žádné ID prostředku.
+![Virtuální počítače uvedené v pracovním prostoru](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Virtuální počítače identifikované pouze z pracovního prostoru, který je součástí zobrazeného předplatného. To zahrnuje virtuální počítače z jiných předplatných této sestavy do pracovního prostoru v tomto předplatném a virtuální počítače, které byly nainstalované s přímým přístupem agenta nástroje Operations Manager a mít žádné ID prostředku.
 
 Ikona, který se zobrazí pod každým doporučením, pomáhá rychle identifikovat virtuální počítač a počítač, který vyžaduje pozornost a typ doporučení se jedná. Můžete také použít filtry pro prohledání seznamu podle **typ prostředku** a **závažnost**.
 

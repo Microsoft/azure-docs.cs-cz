@@ -2,23 +2,18 @@
 title: Co jsou rezervace Azure? | Dokumenty Microsoft
 description: Přečtěte si o Azure rezervace a ceny a Ušetřete na virtuálních počítačů, databází SQL, Azure Cosmos DB a další náklady na prostředky.
 services: billing
-documentationcenter: ''
 author: yashesvi
 manager: yashar
-editor: ''
 ms.service: billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/06/2019
+ms.date: 03/22/2019
 ms.author: banders
-ms.openlocfilehash: a4ad3574849d3c80f671abc93e463b06454289e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3081ab352152d6d736f20da94ed0b513121e231b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904163"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401794"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -44,17 +39,11 @@ Pro virtuální počítače Windows a SQL Database, může zahrnovat náklady na
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Kdo má nárok na nákup rezervace?
 
-Zákazníkům Azure s následujícími typy předplatného, můžete si koupit rezervaci:
+Koupit plán, musíte mít roli vlastníka předplatného v podniku (MS-AZR - 0017P nebo MS-AZR - 0148P) nebo předplatné s průběžnými platbami (MS-AZR - 003P nebo MS-AZR - 0023P). Poskytovatele cloud solution Provider, můžete pomocí webu Azure portal nebo [partnerského centra](/partner-center/azure-reservations) nákupu rezervace Azure.
 
-- Podnikové smlouvy typu nabídky předplatného (MS-AZR - 0017P nebo MS-AZR - 0148P).
-- Průběžné platby typu nabídky předplatného (MS-AZR - 003P nebo MS-AZR - 0023P).
-- Partnery cloud Solution Provider (CSP) můžete použít na webu Azure portal nebo [partnerského centra](https://docs.microsoft.com/partner-center/azure-reservations) k nákupu rezervace Azure.
+Zákazníkům se smlouvou EA může omezit nákupy správcům EA zakázáním **přidat Reserved Instances** možnost přes portál EA. Správce EA musí být vlastníkem předplatného pro alespoň jedno předplatné EA si koupit rezervaci. Možnost je užitečná pro podniky, které mají centralizovaný tým k nákupu rezervace pro jiné nákladových středisek. Po nákupu můžete přidat centralizované týmy cost center vlastníky rezervace. Vlastníci můžete pak určit obor rezervace svá předplatná. Centrální tým nemusí mít přístup vlastníka předplatného se nákup rezervace.
 
 Sleva za rezervaci se vztahuje pouze na prostředky spojené s typy předplatného Enterprise, s průběžnými platbami nebo poskytovatel CSP.
-
- Koupit plán:
-
-- Musí být v roli vlastník pro alespoň jeden Enterprise nebo předplatné s průběžnými platbami.
 
 ## <a name="how-is-a-reservation-billed"></a>Jak se účtuje rezervace?
 

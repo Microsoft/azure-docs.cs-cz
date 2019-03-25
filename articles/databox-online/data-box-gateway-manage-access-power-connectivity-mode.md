@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 0ad94799320e25d88f616117f1bfcf9f0513aadf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d46d74544181a6b9cbfd049b2f5461b20b928483
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873015"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401434"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway-preview"></a>Spravovat přístup, napájení a režimu připojení pro bránu Azure Data Box (preview)
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Spravovat přístup, napájení a režimu připojení pro bránu Azure Data Box
 
 Tento článek popisuje, jak spravovat režimu přístupu, power a připojení pro bránu Azure Data Box. Tato operace se provádí prostřednictvím místního webového uživatelského rozhraní nebo na webu Azure portal.
 
@@ -26,16 +26,13 @@ V tomto článku získáte informace o těchto tématech:
 > * Správa režim připojení
 > * Správa napájení
 
-> [!IMPORTANT]
-> Data Box Gateway je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="manage-device-access"></a>Spravovat přístup zařízení
 
-Přístup k zařízení Data Box brány se řídí použití hesla správce zařízení. Můžete změnit heslo správce prostřednictvím místního webového uživatelského rozhraní. Můžou také resetovat hesla správce zařízení na portálu Azure portal.
+Přístup k zařízení Data Box brány je řízen pomocí hesla zařízení. Můžete změnit heslo prostřednictvím místního webového uživatelského rozhraní. Můžou také resetovat heslo zařízení na portálu Azure portal.
 
-### <a name="change-device-administrator-password"></a>Změna hesla správce zařízení
+### <a name="change-device-password"></a>Změna hesla zařízení
 
-Následující postup v místním uživatelském rozhraní ke změně hesla správce zařízení.
+Postupujte podle těchto kroků v Uživatelském rozhraní místní, chcete-li změnit heslo zařízení.
 
 1. V místním webovém uživatelském rozhraní, přejděte na **údržby > Změna hesla**.
 2. Zadejte aktuální heslo a pak nové heslo. Zadané heslo musí být dlouhé 8 až 16 znaků. Heslo musí obsahovat 3 z následujících znaků: velká písmena, malá písmena, číselné a speciální znaky. Potvrzení nového hesla.
@@ -44,7 +41,7 @@ Následující postup v místním uživatelském rozhraní ke změně hesla spr�
 
 3. Klikněte na tlačítko **změnit heslo**.
  
-### <a name="reset-device-administrator-password"></a>Resetování hesla správce zařízení
+### <a name="reset-device-password"></a>Resetovat heslo zařízení
 
 Obnovení pracovního postupu není nutné, aby si možná Vzpomínáte staré heslo a je užitečné v případě ztráty hesla není. Tento pracovní postup se provádí na webu Azure Portal.
 

@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 03/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 6f47606e91ec55bae624527bace81d947c5ea4f9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 78008357e3ea8fbfe707a7dbead19e3fce83b578
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091542"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403693"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>Kurz: Příprava na nasazení Azure Data Box Gateway (Preview)
+# <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Kurz: Příprava na nasazení Azure Data Box brány
 
 
 Toto je první kurz série kurzů nasazení potřebných k dokončení nasazení služby Azure Data Box Gateway. Tento kurz popisuje přípravu webu Azure Portal k nasazení prostředku Data Box Gateway. 
@@ -29,13 +29,7 @@ V tomto kurzu se naučíte:
 > * Stažení image virtuálního zařízení
 > * Získání aktivačního klíče
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-
-
-> [!IMPORTANT]
-> - Data Box Gateway je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-
-### <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začínáme
 
 Pokud chcete nasadit službu Data Box Gateway, postupujte podle následujících kurzů v uvedeném pořadí.
 
@@ -56,97 +50,109 @@ Tady najdete požadavky na konfiguraci prostředku Data Box Gateway, zařízení
 
 Než začnete, ujistěte se, že:
 
-* Ve vašem předplatném Microsoft Azure je povolený prostředek Data Box Gateway.
-* Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
+- Pro prostředek brány dat pole by měla podporovat vaše předplatné Microsoft Azure. Předplatná s průběžnými platbami nejsou podporovány.
+- Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
 
 ### <a name="for-the-data-box-gateway-device"></a>Zařízení Data Box Gateway
 
 Před nasazením virtuálního zařízení se ujistěte, že:
 
-* Máte přístup k systému hostitele s technologií Hyper-V v systému Windows Server 2012 R2 nebo novější nebo VMware (ESXi 6.0 a 6.5, 6.7), kterou lze použít na základě zařízení.
-* Hostitelský systém může pro zřízení virtuálního zařízení Data Box vyhradit následující prostředky:
+- Máte přístup k systému hostitele s technologií Hyper-V v systému Windows Server 2012 R2 nebo novější nebo VMware (ESXi 6.0 a 6.5, 6.7), kterou lze použít na základě zařízení.
+- Hostitelský systém může pro zřízení virtuálního zařízení Data Box vyhradit následující prostředky:
   
-  * Minimálně 4 jádra
-  * Minimálně 8 GB paměti RAM 
-  * Jedno síťové rozhraní
-  * 250GB disk s operačním systémem
-  * 2TB virtuální disk pro data systému
+  - Minimálně 4 virtuální procesory.
+  - Minimálně 8 GB paměti RAM
+  - Jedno síťové rozhraní
+  - 250GB disk s operačním systémem
+  - 2TB virtuální disk pro data systému
 
 ### <a name="for-the-datacenter-network"></a>Síť datacentra
 
 Než začnete, ujistěte se, že:
 
-* Síť ve vašem datacentru je nakonfigurovaná podle požadavků na síť pro vaše zařízení Data Box Gateway. Další informace najdete v tématu [Systémové požadavky na Data Box Gateway](data-box-gateway-system-requirements.md).
+- Síť ve vašem datacentru je nakonfigurovaná podle požadavků na síť pro vaše zařízení Data Box Gateway. Další informace najdete v tématu [požadavky na systém brána pole dat](data-box-gateway-system-requirements.md).
 
-* Vaše služba Data Box Gateway má vyhrazenou šířku internetového pásma 20 Mb/s (nebo více), která je vždy dostupná. Tato šířka pásma by se neměla sdílet s žádnými jinými aplikacemi. Pokud používáte omezení využití sítě, doporučujeme použít šířku internetového pásma 32 Mb/s nebo více, aby omezování fungovalo.
+- Normální provozní podmínky při pole brány dat měli byste mít a:
+
+    - Stáhnout minimálně 10 MB/s šířky pásma zajišťující, že zařízení zůstane aktualizované.
+    - Minimálně 20 MB/s vyhrazenou nahrávání a stahování šířky pásma pro přenos souborů.
 
 ## <a name="create-a-new-resource"></a>Vytvoření nového prostředku
 
-Pomocí následujícího postupu vytvořte nový prostředek Data Box Gateway. 
-
 Pokud už pro správu vašich virtuálních zařízení máte existující prostředek Data Box Gateway, přeskočte tento krok a přejděte k části [Získání aktivačního klíče](#get-the-activation-key).
 
-Provedením následujících kroků na webu Azure Portal vytvořte prostředek Data Box.
-1. Pomocí svých přihlašovacích údajů Microsoft Azure se přihlaste k portálu Azure Preview na této adrese URL: [https://aka.ms/databox-edge](https://aka.ms/databox-edge). 
+Vytvoření prostředku brány pole dat, proveďte následující kroky na webu Azure Portal.
 
-2. Vyberte předplatné, které chcete použít pro Data Box Edge ve verzi Preview. Vyberte oblast, ve které chcete prostředek Data Box Edge nasadit. V možnosti **Data Box Gateway** klikněte na **Vytvořit**.
+1. K přihlášení použijte svoje přihlašovací údaje Microsoft Azure:
+
+    - Na webu Azure portal na této adrese URL: [ https://portal.azure.com ](http://portal.azure.com).
+    - Nebo na portálu Azure Government na této adrese URL: [ https://portal.azure.us ](https://portal.azure.us). Další podrobnosti najdete v části [připojit se k portálu Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+
+2. V levém podokně vyberte **+ vytvořit prostředek**. Vyhledejte **Data Box Edge / Data Box brány**. Vybrat hranu pole Data nebo Data Box brány. Vyberte **Vytvořit**.
+3. Vyberte předplatné, které chcete použít pro zařízení Data Box brány. Vyberte oblast, ve které chcete nasadit prostředek brány Data Box. Tato verze východní USA, jihovýchodní Asie a západní Evropa jsou k dispozici. Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit. V **brána dat pole** možnosti, vyberte **vytvořit**.
 
     ![Vyhledání služby Data Box Gateway](media/data-box-gateway-deploy-prep/data-box-gateway-edge-sku.png)
 
-3. Zadejte nebo vyberte pro nový prostředek následující informace.
+4. Na **Základy** kartu, zadejte nebo vyberte následující **podrobnosti o projektu**.
     
-    |Nastavení  |Value  |
+    |Nastavení  |Hodnota  |
     |---------|---------|
-    |Název prostředku   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |
-    |Předplatné    |Předplatné je propojené s vaším fakturačním účtem. |
+    |Předplatné    |To se automaticky vyplní podle předchozí výběr. Předplatné je propojené s vaším fakturačním účtem. |
     |Skupina prostředků  |Vyberte existující skupinu nebo vytvořte novou.<br>Další informace o [skupinách prostředků Azure](../azure-resource-manager/resource-group-overview.md).     |
-    |Umístění     |Pro tuto verzi jsou dostupné oblasti USA – východ, Západní USA 2, Jihovýchodní Asie a Západní Evropa. <br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
+
+5. Zadejte nebo vyberte následující **Instance podrobnosti**.
+   | Název | Popisný název pro identifikaci prostředků.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |   
+    | Oblast | Pro tuto verzi východní USA, jihovýchodní Asie a západní Evropa jsou k dispozici pro nasazení vašich prostředků. Všechny oblasti státní správy pro Azure Government, jsou uvedeny v [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/) jsou k dispozici. <br> Zvolte umístění co nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit. |
     
     ![Vytvoření prostředku Data Box Gateway](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     
-4. Klikněte na **OK**.
+6. Vyberte **Zkontrolovat a vytvořit**.
  
-Vytvoření prostředku trvá několik minut. Po úspěšném vytvoření prostředku obdržíte odpovídající oznámení.
+7. Na **zkontrolujte + vytvořit** kartu, zkontrolujte **podrobnosti o cenách**, **podmínky použití**a podrobnosti pro váš prostředek. Vyberte **Vytvořit**.
 
+    ![Projděte si podrobnosti o prostředku brány dat pole](media/data-box-gateway-deploy-prep/data-box-gateway-resource1.png)
+
+Vytvoření prostředku trvá několik minut. Po prostředek se úspěšně vytvoří a nasadí, budete upozorněni na to. Vyberte **přejít k prostředku**.
+
+![Projděte si podrobnosti o prostředku brány dat pole](media/data-box-gateway-deploy-prep/data-box-gateway-resource2.png)
 
 ## <a name="download-the-virtual-device-image"></a>Stažení image virtuálního zařízení
 
-Po vytvoření prostředku Data Box Gateway si stáhněte odpovídající image virtuálního zařízení, pomocí které můžete ve svém hostitelském systému zřídit virtuální zařízení. Image virtuálních zařízení jsou specifické pro jednotlivé operační systémy a můžete si je stáhnout v okně **Rychlý start** vašeho prostředku na webu Azure Portal.
+Po vytvoření prostředku Data Box Gateway si stáhněte odpovídající image virtuálního zařízení, pomocí které můžete ve svém hostitelském systému zřídit virtuální zařízení. Image virtuálního zařízení jsou specifické pro operační systém.
 
 > [!IMPORTANT]
 > Software ve službě Data Box Gateway je možné používat pouze s prostředkem Data Box Gateway.
 
+Postupujte podle těchto kroků [webu Azure portal](https://portal.azure.com/) Chcete-li stáhnout bitovou kopii virtuálního zařízení.
 
-Na webu [Azure Portal](https://portal.azure.com/) proveďte následující kroky.
-
-1. Klikněte na prostředek, který jste vytvořili, a pak klikněte na **Přehled**. Pokud máte existující prostředek Azure Data Box Gateway, klikněte na něj a přejděte do části **Přehled**.
+1. V prostředku, který jste vytvořili a pak vyberte **přehled**. Pokud máte existující prostředek služby Azure Data Box brány, vyberte prostředek a přejděte k **přehled**. Vyberte **nastavení zařízení**.
 
     ![Nový prostředek Data Box Gateway](media/data-box-gateway-deploy-prep/data-box-gateway-resource-created.png)
 
-4. V pravém podokně rychlého startu klikněte na odkaz odpovídající imagi, kterou chcete stáhnout. Soubory imagí mají velikost přibližně 4,8 GB.
+2. Na **stažení image** dlaždice, vyberte bitovou kopii virtuálního zařízení odpovídající operační systém na hostitelském serveru používají ke zřízení virtuálního počítače. Soubory obrázků jsou přibližně 5.6 GB.
    
    * [VHDX pro Hyper-V ve Windows Serveru 2012 R2 nebo novějším](https://aka.ms/dbe-vhdx-2012)
    * [VMDK pro VMWare ESXi 6.0 a 6.5, 6.7](https://aka.ms/dbe-vmdk).
+
+    ![Stáhnout image virtuálního zařízení Data Box brány](media/data-box-gateway-deploy-prep/data-box-gateway-download-image.png)
 
 5. Stáhněte soubor na místní disk, rozbalte ho a poznamenejte si umístění rozbaleného souboru.
 
 
 ## <a name="get-the-activation-key"></a>Získání aktivačního klíče
 
-Po zprovoznění prostředku Data Box Gateway bude potřeba získat aktivační klíč. Tento klíč slouží k aktivaci a propojení zařízení Data Box Gateway s prostředkem.
+Po zprovoznění prostředků brány Data Box se budete muset získat aktivační klíč. Tento klíč slouží k aktivaci a propojení zařízení Data Box Gateway s prostředkem. Tento klíč můžete získat teď, když jste na webu Azure Portal.
 
-Aktivační klíč slouží k registraci všech zařízení Data Box Gateway, které je potřeba aktivovat, v prostředku Data Box Gateway. Tento klíč můžete získat teď, když jste na webu Azure Portal.
+1. Vyberte prostředek, který jste vytvořili a pak vyberte **přehled**. V **nastavení zařízení**, přejděte **konfigurovat a aktivovat** dlaždici.
 
-1. Klikněte na prostředek, který jste vytvořili, a pak klikněte na **Přehled**.
+    ![Konfigurovat a aktivovat dlaždice](media/data-box-gateway-deploy-prep/data-box-gateway-configure-activate.png)
 
-    ![Nový prostředek Data Box Gateway](media/data-box-gateway-deploy-prep/data-box-gateway-resource-created.png)
-
-2. Kliknutím na **Vygenerovat klíč** vytvořte aktivační klíč. Kliknutím na ikonu kopírování klíč zkopírujte a uložte ho pro pozdější použití.
+2. Vyberte **vygenerovat klíč** vytvořit aktivační kód. Vyberte ikonu kopírování zkopírujte klíč a uložit pro pozdější použití.
 
     ![Získání aktivačního klíče](media/data-box-gateway-deploy-prep/get-activation-key.png)
 
 > [!IMPORTANT]
-> - Platnost aktivačního klíče vyprší 3 dny po vygenerování. 
+> - Vypršení platnosti tohoto klíče aktivace tři dny po jeho vygenerování.
 > - Pokud vypršela platnost klíče, vygenerujte nový klíč. Starší klíč není platný.
 
 ## <a name="next-steps"></a>Další postup

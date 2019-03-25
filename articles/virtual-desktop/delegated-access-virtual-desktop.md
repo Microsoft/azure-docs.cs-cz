@@ -1,22 +1,22 @@
 ---
-title: Delegovaný přístup ve Windows virtuálního klienta (preview) – Azure
-description: Jak delegovat správu funkce při nasazení virtuálního klienta Windows, včetně příkladů.
+title: Delegovaný přístup ve Windows Virtual Desktop Preview – Azure
+description: Jak udělit oprávnění pro správu funkcí na Windows Virtual Desktop Preview nasazení, včetně příkladů.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 49645b697071abb8a2f8c85ebde1e6761a3536ab
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 250aea52de63a6397ce00e9cadcadf3a8ba39858
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336095"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400006"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-preview"></a>Delegovaný přístup ve Windows virtuálního klienta (Preview)
+# <a name="delegated-access-in-windows-virtual-desktop-preview"></a>Delegovaný přístup v náhledu virtuální plochy Windows
 
-Virtuální plochy Windows (preview) je model Delegovaný přístup, který umožňuje definovat takovou úroveň přístupu, které konkrétní uživatel může mít přiřazením role. Přiřazení role má tři komponenty: objekt zabezpečení, definice role a obor. Model Delegovaný přístup virtuálního klienta Windows je založen na modelu Azure RBAC. Další informace o přiřazení konkrétních rolí a jejich komponent, naleznete v tématu [Přehled řízení přístupu na základě rolí Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles).
+Virtuální Desktop Preview Windows má model Delegovaný přístup, který umožňuje definovat takovou úroveň přístupu, které konkrétní uživatel může mít přiřazením role. Přiřazení role má tři komponenty: objekt zabezpečení, definice role a obor. Model Delegovaný přístup virtuálního klienta Windows je založen na modelu Azure RBAC. Další informace o přiřazení konkrétních rolí a jejich komponent, naleznete v tématu [Přehled řízení přístupu na základě rolí Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles).
 
 Virtuální Desktop Windows Delegovaný přístup podporuje následující hodnoty pro každý prvek přiřazení role:
 
@@ -66,4 +66,4 @@ Můžete upravit základní tři rutiny s následujícími parametry:
 
 Úplnější seznam rutin Powershellu pro každou roli můžete použít, najdete v článku [referenční informace prostředí PowerShell](/powershell/windows-virtual-desktop/overview).
 
-Pokyny, jak nastavit prostředí virtuálního klienta Windows, naleznete v tématu [nastavení prostředí virtuálního klienta Windows](environment-setup.md).
+Pokyny, jak nastavit prostředí virtuálního klienta Windows, naleznete v tématu [prostředí Preview virtuální plochy Windows](environment-setup.md).

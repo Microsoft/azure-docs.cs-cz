@@ -2,20 +2,20 @@
 title: Analýza dat pomocí Azure Machine Learning | Dokumentace Microsoftu
 description: Pomocí Azure Machine Learning sestavte prediktivní model Machine Learning založený na datech uložených v datovém skladu SQL Azure.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
-ms.date: 04/17/2018
-ms.author: kavithaj
+ms.date: 03/22/2019
+ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 8a33d733f4737bf19e7baad6d80d8fa72999268f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7f9500adc6871c4c9f81c32bf456bc36cf91db4b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477654"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402554"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analýza dat pomocí Azure Machine Learning
 > [!div class="op_single_selector"]
@@ -42,9 +42,9 @@ Pro jednotlivé kroky v tomto kurzu budete potřebovat:
 Data jsou v zobrazení dbo.vTargetMail v databázi AdventureWorksDW. Postup načtení těchto dat:
 
 1. Přihlaste se k [Azure Machine Learning Studio][Azure Machine Learning studio] a klikněte na Moje experimenty.
-2. Klikněte na **+NOVÝ** a vyberte **Prázdný experiment**.
+2. Klikněte na tlačítko **+ nová** v levé dolní části obrazovky a vyberte **prázdný Experiment**.
 3. Zadejte název svého experimentu: Cíleného marketingu.
-4. Přetáhněte modul **Reader** z podokna modulů na plátno.
+4. Přetáhněte **importovat data** modul v rámci **datový vstup a výstup** z podokna modulů na plátno.
 5. V podokně vlastností zadejte podrobné informace o vaší databázi SQL Data Warehouse.
 6. Zadejte databázový **dotaz** pro načtení data, která vás zajímají.
 
@@ -77,7 +77,7 @@ Po úspěšném dokončení experimentu klikněte v dolní části modulu Reader
 ## <a name="2-clean-the-data"></a>2. Vymazání dat
 Pro vymazání dat odstraňte některé sloupce, které nejsou pro model důležité. Použijte následující postup:
 
-1. Přetáhněte na plátno modul **Project Columns** (Sloupce projektu).
+1. Přetáhněte **výběr sloupců v datové sadě** modul v rámci **transformace dat. < manipulaci s** na plátno. Připojení tohoto modulu **Import dat** modulu.
 2. V podokně vlastností klikněte na **Launch column selector** (Spustit selektor sloupců) a určete sloupce, které se mají odstranit.
    ![Project Columns][4]
 3. Vylučte dva sloupce: CustomerAlternateKey a GeographyKey.
@@ -87,21 +87,19 @@ Pro vymazání dat odstraňte některé sloupce, které nejsou pro model důlež
 Rozdělíme data 80 – 20: 80 % pro trénování modelu strojového učení a 20 % pro otestování modelu. Pro tento problém binární klasifikace budeme používat algoritmy Two-Class.
 
 1. Přetáhněte na plátno modul **Split**.
-2. Nastavte podíl řádků v první výstupní sadě dat v podokně vlastností na 0,8.
+2. V podokně vlastností 0,8 řádků v první výstupní datovou sadu.
    ![Rozdělení dat na sadu učení a testovací sadu][6]
 3. Přetáhněte na plátno modul **Two-Class Boosted Decision Tree**.
-4. Přetáhněte na plátno modul **Train Model** a určete vstupy. V podokně vlastností pak klikněte na **Launch column selector** (Spustit selektor sloupců).
-   * První vstup: Algoritmus strojového učení.
-   * Druhý vstup: Data pro učení algoritmu.
+4. Přetáhněte **trénování modelu** na plátno modul a určete vstupy díky připojení k **Two-Class Boosted Decision Tree** (algoritmus strojového učení) a **rozdělení** (data pro učení moduly algoritmus na). 
      ![Připojení modulu Train Model][7]
-5. Jako sloupec pro předpověď vyberte sloupec **BikeBuyer**.
+5. V podokně vlastností pak klikněte na **Launch column selector** (Spustit selektor sloupců). Jako sloupec pro předpověď vyberte sloupec **BikeBuyer**.
    ![Vyberte sloupec pro předpověď][8]
 
 ## <a name="4-score-the-model"></a>4. Ohodnocení modelu
 Teď otestujeme, jaký je výkon modelu při použití testovacích dat. Porovnáme námi zvolený algoritmus s jiným algoritmem, abychom zjistili, který z nich vrací lepší výsledky.
 
-1. Přetáhněte na plátno modul **Score Model**.
-    První vstup: Trénovaný model druhý vstup: Testovací data ![modul Score model][9]
+1. Přetáhněte **Score Model** na plátno modul a propojte jej s **Train Model** a **rozdělení dat** moduly.
+   ![Modul score model][9]
 2. Na plátno experimentu přetáhněte **Two-Class Bayes Point Machine**. Porovnáme výsledky tohoto algoritmu s rozhodovacím stromem Two-Class Boosted Decision Tree.
 3. Zkopírujte na plátno moduly Train Model a Score Model.
 4. Přetáhněte modul **Evaluate Model** na plátno pro porovnání obou algoritmů.
@@ -124,18 +122,18 @@ Při porovnání sloupce BikeBuyer (skutečnost) s popisky vyhodnocení (předpo
 Další informace o vytváření prediktivních modelů strojového učení najdete v tématu [Úvod do strojového učení na platformě Azure][Introduction to Machine Learning on Azure].
 
 <!--Image references-->
-[1]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1_reader.png
-[2]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img2_visualize.png
-[3]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img3_readerdata.png
-[4]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4_projectcolumns.png
-[5]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img5_columnselector.png
-[6]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img6_split.png
-[7]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img7_train.png
-[8]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img8_traincolumnselector.png
-[9]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img9_score.png
-[10]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img10_evaluate.png
-[11]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img11_evalresults.png
-[12]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img12_scoreresults.png
+[1]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1-reader-new.png
+[2]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img2-visualize-new.png
+[3]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img3-readerdata-new.png
+[4]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4-projectcolumns-new.png
+[5]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img5-columnselector-new.png
+[6]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img6-split-new.png
+[7]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img7-train-new.png
+[8]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img8-traincolumnselector-new.png
+[9]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img9-score-new.png
+[10]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img10-evaluate-new.png
+[11]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img11-evalresults-new.png
+[12]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img12-scoreresults-new.png
 
 
 <!--Article references-->

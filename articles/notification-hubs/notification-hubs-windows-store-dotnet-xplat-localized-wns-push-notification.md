@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: b4f308e7053e000115f22abd291d934d90c11a94
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f3880db813072ca0bcecf073a8db24b21c87189f
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837588"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402707"
 ---
 # <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>Kurz: Odesílání lokalizovaných nabízených oznámení do aplikace Windows pomocí Azure Notification Hubs
 
@@ -116,7 +116,7 @@ Další informace o šablonách najdete v tématu [Push šablony](notification-h
     {
         ApplicationData.Current.LocalSettings.Values["categories"] = string.Join(",", categories);
         ApplicationData.Current.LocalSettings.Values["locale"] = locale;
-        return await SubscribeToCategories(categories);
+        return await SubscribeToCategories(locale, categories);
     }
 
     public async Task<Registration> SubscribeToCategories(string locale, IEnumerable<string> categories = null)
@@ -190,7 +190,21 @@ Další informace o šablonách najdete v tématu [Push šablony](notification-h
     }
     ```
 
-## <a name="send-localized-notifications-from-your-back-end"></a>Odesílání lokalizovaných oznámení z back-endu
+
+
+## <a name="run-the-uwp-application"></a>Spuštění aplikace UPW
+
+1. Spusťte aplikaci pro univerzální platformu Windows. Počkejte, až se zobrazí zpráva o **úspěšné registraci**.
+
+    ![Mobilní aplikace a registrace](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
+2. Vyberte **kategorie** a **národní prostředí** a klikněte na **Přihlásit k odběru**. Aplikace převede vybrané kategorie na značky a u vybraných značek požádá centrum oznámení o novou registraci zařízení.
+
+    ![Mobilní aplikace](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/mobile-app.png)
+3. Zobrazí se **potvrzovací** zpráva o **odběrech**.
+
+    ![Zpráva o odběru](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/subscription-message.png)
+
+## <a name="update-console-app-to-send-localized-notifications"></a>Aktualizace konzoly aplikace na odesílání lokalizovaných oznámení
 
 Při posílání šablonových oznámení stačí zadat sadu vlastností. V tomto kurzu odešle back-endová aplikace sadu vlastností, které obsahují lokalizovanou verzi aktuálních zpráv, jako například:
 
@@ -243,20 +257,10 @@ private static async void SendTemplateNotificationAsync()
 
 Toto jednoduché volání zajišťuje lokalizované část zpráv **všechny** zařízení, bez ohledu na platformě, jako vaše Centrum oznámení sestavení a zajišťuje správné předplatné služby na všech zařízeních s konkrétní značkou nativní datové části.
 
-## <a name="test-the-app"></a>Otestování aplikace
+## <a name="run-console-app-to-send-localized-notification"></a>Spustit konzolovou aplikaci k odesílání lokalizovaných oznámení
+Spustit **konzolovou aplikaci** k odesílání oznámení pro každou kategorii a každý podporovaný jazyk. Ověřte, že dostáváte oznámení jenom o odebíraných kategoriích a že zpráva odpovídá vybranému národnímu prostředí.
 
-1. Spusťte aplikaci pro Univerzální platformu Windows. Počkejte, až se zobrazí zpráva o **úspěšné registraci**.
-
-    ![Mobilní aplikace a registrace](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
-2. Vyberte **kategorie** a **národní prostředí** a klikněte na **Přihlásit k odběru**. Aplikace převede vybrané kategorie na značky a u vybraných značek požádá centrum oznámení o novou registraci zařízení.
-
-    ![Mobilní aplikace](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/mobile-app.png)
-3. Zobrazí se **potvrzovací** zpráva o **odběrech**.
-
-    ![Zpráva o odběru](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/subscription-message.png)
-4. Jakmile vám přijde potvrzení, spusťte **konzolovou aplikaci**, která posílá oznámení o všech kategoriích ve všech podporovaných jazycích. Ověřte, že dostáváte oznámení jenom o odebíraných kategoriích a že zpráva odpovídá vybranému národnímu prostředí.
-
-    ![Oznámení](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/notifications.png)
+![Oznámení](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/notifications.png)
 
 ## <a name="next-steps"></a>Další postup
 

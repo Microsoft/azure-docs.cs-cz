@@ -1,22 +1,22 @@
 ---
-title: Prostředí virtuálního klienta Windows (preview) – Azure
-description: Základní prvky prostředí virtuálního klienta Windows.
+title: Prostředí Preview virtuální plochy Windows – Azure
+description: Základní elementy prostředí Windows virtuální plochy, ve verzi Preview.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: c503f665e3e2f99cd59f207c3fc4823b927eaac3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: ceed6a8bb74206b7c6689ce542482148800e4ba9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318446"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403506"
 ---
-# <a name="windows-virtual-desktop-environment-preview"></a>Prostředí virtuálního klienta Windows (Preview)
+# <a name="windows-virtual-desktop-preview-environment"></a>Prostředí Preview virtuální plochy Windows
 
-Virtuální Desktop Windows (preview) je služba, která poskytuje uživatelům snadný a bezpečný přístup k jejich virtualizované desktopy a aplikace RemoteApp. Toto téma vám sdělí něco o obecnou strukturu prostředí virtuálního klienta Windows.
+Virtuální Desktop Preview Windows je služba, která poskytuje uživatelům snadný a bezpečný přístup k jejich virtualizované desktopy a aplikace RemoteApp. Toto téma vám sdělí něco o obecnou strukturu prostředí virtuálního klienta Windows.
 
 ## <a name="tenants"></a>Tenanti
 
@@ -57,11 +57,11 @@ Po přiřazení uživatelů k jejich skupiny aplikací, můžete připojit k nas
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Delegovaný přístup a přiřazení role u uživatelů v [Delegovaný přístup v virtuální plochy Windows](delegated-access-virtual-desktop.md).
+Další informace o Delegovaný přístup a přiřazení role u uživatelů v [Delegovaný přístup ve Windows Virtual Desktop Preview](delegated-access-virtual-desktop.md).
 
-Informace o nastavení klientů Windows virtuální plochy najdete v tématu [vytvořit tenanta v virtuální plochy Windows](tenant-setup-azure-active-directory.md).
+Informace o nastavení klientů Windows virtuální plochy najdete v tématu [vytvořit tenanta v náhledu virtuální plochy Windows](tenant-setup-azure-active-directory.md).
 
 Zjistěte, jak se připojit k virtuálnímu klientovi Windows, naleznete v následujících článcích:
 
 - [Připojte se ke klientovi vzdálené plochy na Windows 7 a Windows 10](connect-windows-7-and-10.md)
-- [Připojení k webovému klientovi virtuálního klienta Windows](connect-web.md)
+- [Připojte se k Windows Virtual Desktop Preview webového klienta](connect-web.md)

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2018
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 15707e9854e79b3aa05ff9024fc5b3c7a38fa8f2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c0c37724e61490c8c33b5e2d37879549bbc6d7ce
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106881"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402112"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Přizpůsobení konfiguracemi zabezpečení operačního systému ve službě Azure Security Center (Preview)
 
@@ -112,7 +112,7 @@ Každá kategorie má svou vlastní sadu atributů. Můžete změnit následují
 
     - Seznam povolených skupin uživatelů, například: *Správci*, *Backup Operators*
 
--   **Stav**: Řetězec může obsahovat možnosti *zakázané* nebo *povoleno*. Pro toto vydání ve verzi private preview řetězec je velká a malá písmena.
+-   **Stav**: Řetězec může obsahovat možnosti *zakázané* nebo *povoleno*. Řetězec je pro tuto verzi, velká a malá písmena.
 
 Jedná se pouze pole, které lze nastavit. Pokud jste porušují formát nebo velikost, nebudete moci uložit změny. Zobrazí se chybová zpráva oznamující, že je třeba nahrát platný konfigurační soubor JSON.
 
@@ -281,7 +281,7 @@ Všechny možné chyby jsou uvedené v následující tabulce:
 | BaselineRuleCceIdNotUniqueError          | Identifikátor CCE *{0}* není jedinečný.                                                                                                                  |
 | BaselineRuleEmptyProperty                | Vlastnost *{0}* chybí nebo není platná.                                                                                                       |
 | BaselineRuleIdNotInDefault               | Toto pravidlo má vlastnosti zdroje *Microsoft* , ale nebyl nalezen v sadě Microsoft výchozích pravidel.                                                   |
-| BaselineRuleIdNotUniqueError             | Pravidlo Id není jedinečné.                                                                                                                       |
+| BaselineRuleIdNotUniqueError             | ID pravidla není jedinečný.                                                                                                                       |
 | BaselineRuleInvalidGuid                  | Vlastnost *{0}* nebyla platná. Hodnota není platným identifikátorem GUID.                                                                             |
 | BaselineRuleInvalidHive                  | Hive je třeba úložiště LocalMachine.                                                                                                                   |
 | BaselineRuleNameNotUniqueError           | Název pravidla není jedinečný.                                                                                                                 |

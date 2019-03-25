@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 81407a298ccfe1b9884fc5d5b815ac8c18ffee6a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 522dddde4994bb019e6547fcd18465b201f048d8
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094673"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401735"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>Vývoj modulu jazyka C# IoT Edge pro přesun souborů na okraji pole dat (Preview)
+# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Vývoj C# modul IoT Edge pro přesun souborů na hraničních zařízeních Data Box
 
 Tento článek vás provede jednotlivými kroky k vytvoření modul IoT Edge pro nasazení s vaším zařízením Data Box Edge. Azure Data Box Edge je řešení úložiště, které umožňuje zpracovat data a odeslat je přes síť do Azure.
 
@@ -27,19 +27,13 @@ V tomto článku získáte informace o těchto tématech:
 > * Vytvoření registru kontejnerů k ukládání a správě modulů (imagí Dockeru).
 > * Vytvoření modulu IoT Edge pro nasazení v zařízení Data Box Edge.
 
-> [!IMPORTANT]
-> Data Box Edge je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 ## <a name="about-the-iot-edge-module"></a>Informace o modulu IoT Edge
 
 Vaše zařízení Data Box Edge můžete nasadit a spustit moduly IoT Edge. Moduly Edge jsou v podstatě kontejnery Dockeru, které provedení určitého úkolu, jako například příjem zpráv ze zařízení, transformujte zprávy nebo odeslání zprávy do služby IoT Hub. V tomto článku vytvoříte modul, který zkopíruje soubory z místní sdílené složky do cloudové sdílené složky na vašem zařízení Data Box Edge.
 
 1. Soubory jsou zapsány do místní sdílené složky na vašem zařízení Data Box Edge.
-2. Generátor souboru události vytvoří událost souboru pro každý soubor zapsán do místní sdílené složky. Soubor událostí se pak odesílají do služby IoT Edge Hub (v modul runtime IoT Edge).
-
-   > [!IMPORTANT]
-   > Soubor události se generují jenom pro nově vytvořené soubory. Úprava existující soubory negeneruje žádné události souboru.
-
+2. Generátor souboru události vytvoří událost souboru pro každý soubor zapsán do místní sdílené složky. Soubor události jsou také generovány, pokud při změně souboru na. Soubor událostí se pak odesílají do služby IoT Edge Hub (v modul runtime IoT Edge).
 3. Vlastní modul IoT Edge zpracovává událost souboru k vytvoření souboru událostí objektu, který také obsahuje relativní cestu k souboru. Modul generuje absolutní cesta pomocí relativní cesta k souboru a zkopíruje soubor z místní sdílené složky ke sdílené složce cloudu. V modulu pak odstraní soubor z místní sdílené složky.
 
 ![Jak funguje Azure IoT Edge module na hraničních zařízeních Data Box](./media/data-box-edge-create-iot-edge-module/how-module-works.png)
@@ -52,8 +46,9 @@ Než začnete, ujistěte se, že máte následující:
 
 - Data Box hraniční zařízení, na kterém běží.
 
-    - Zařízení má taky přidružený prostředek služby IoT Hub. Další informace najdete v části [vytvoří prostředek služby IoT Hub](data-box-edge-deploy-configure-compute.md#create-an-iot-hub-resource) pro hranici Data Box.
-    - Zařízení má Edge nakonfigurovaná rolí služby compute. Další informace najdete v části [nastavení výpočetní roli](data-box-edge-deploy-configure-compute.md#set-up-compute-role) na hranici vaší Data Box.
+    - Zařízení má taky přidružený prostředek služby IoT Hub.
+    - Zařízení má Edge nakonfigurovaná rolí služby compute.
+    Další informace najdete v části [konfigurace výpočtů](data-box-edge-deploy-configure-compute.md#configure-compute) pro hranici Data Box.
 
 - Následující prostředky pro vývoj:
 
@@ -128,7 +123,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
 
-1. V Průzkumníku VS Code, Otevřít **moduly > CSharpModule > Program.cs**.
+1. V Průzkumníku VS Code, Otevřít **moduly > FileCopyModule > Program.cs**.
 2. V horní části **obor názvů FileCopyModule**, přidejte následující příkazy using pro typy, které se později použijí. **Microsoft.Azure.Devices.Client.Transport.Mqtt** je protokol pro odesílání zpráv do IoT Edge Hub.
 
     ```
@@ -141,12 +136,9 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
     class Program
         {
             static int counter;
-            private const string InputFolderPath = "/home/LocalShare";
-            private const string OutputFolderPath = "/home/CloudShare";
+            private const string InputFolderPath = "/home/input";
+            private const string OutputFolderPath = "/home/output";
     ```
-
-    > [!IMPORTANT]
-    > Poznamenejte si, `InputFolderPath` a `OutputFolderPath`. Je potřeba zadat tyto cesty při nasazení tohoto modulu.
 
 4. Přidat **MessageBody** třídy do třídy Program. Tyto třídy definují očekávané schéma textu příchozích zpráv.
 
@@ -189,7 +181,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
 6. Vložit kód pro **FileCopy**.
 
     ```
-            /// <summary>
+        /// <summary>
         /// This method is called whenever the module is sent a message from the IoT Edge Hub. 
         /// This method deserializes the file event, extracts the corresponding relative file path, and creates the absolute input file path using the relative file path and the InputFolderPath.
         /// This method also forms the absolute output file path using the relative file path and the OutputFolderPath. It then copies the input file to output file and deletes the input file after the copy is complete.
@@ -241,8 +233,6 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
             Console.WriteLine($"Processed event.");
             return MessageResponse.Completed;
         }
-
-    }
     ```
 
 7. Soubor uložte.
@@ -251,7 +241,8 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
 
 V předchozí části jste vytvořili hraničních zařízeních IoT řešení a přidat kód do FileCopyModule kopírování souborů z místní sdílené složky ke sdílené složce cloudu. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
 
-1. Zadáním následujícího příkazu v integrovaném terminálu editoru Visual Studio Code se přihlaste k Dockeru.
+1. Ve VSCode, přejděte do terminálu > nové terminálu a otevřete novou integrovaný terminál aplikace Visual Studio Code.
+2. Přihlaste se k Dockeru zadáním následujícího příkazu v integrovaném terminálu.
 
     `docker login <ACR login server> -u <ACR username>`
 
@@ -282,4 +273,4 @@ V předchozí části jste vytvořili hraničních zařízeních IoT řešení a
 
 ## <a name="next-steps"></a>Další postup
 
-K nasazení a spuštění tohoto modulu na okraji pole Data, podívejte se na postup v [přidat vlastní modul](data-box-edge-deploy-configure-compute.md#add-a-custom-module).
+K nasazení a spuštění tohoto modulu na okraji pole Data, podívejte se na postup v [přidat modul](data-box-edge-deploy-configure-compute.md#add-a-module).

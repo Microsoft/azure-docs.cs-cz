@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: monhaber
-ms.openlocfilehash: 7e4a4572a53338dc0c7b5d7d11dca7130c8979be
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 276b2815b36f05aa49183681b6c9e622155938e9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226891"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401137"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Nejčastější dotazy ohledně Azure Security Center
 Tyto nejčastější dotazy odpovědi na otázky o Azure Security Center, služba, která vám pomůže zabránit, detekci a reakce na ně prostřednictvím zvýšené viditelnosti a kontroly nad zabezpečením vašich prostředků Microsoft Azure.
@@ -291,11 +291,14 @@ Security Center je služba Azure nepřetržitě monitoruje prostředí Azure zá
 Azure Security Center monitoruje prostředky Azure následující:
 
 * Virtuální počítače (VM) (včetně [Cloud Services](../cloud-services/cloud-services-choose-me.md))
+* Škálovací sady virtuálních počítačů (VMSSs)
 * Virtuální sítě Azure
 * Služba Azure SQL
 * Účet služby Azure Storage
 * Azure Web Apps (v [App Service Environment](../app-service/environment/intro.md))
 * Partnerských řešení integrovaných ve vašem předplatném Azure, jako je například firewallu webových aplikací na virtuálních počítačích a ve službě App Service Environment
+
+Také dále monitorovat počítače mimo Azure (včetně v místním prostředí) pomocí služby Azure Security Center (obojí [počítače Windows](./quick-onboard-windows-computer.md) a [počítače se systémem Linux](./quick-onboard-linux-computer.md) jsou podporovány)
 
 ## <a name="virtual-machines"></a>Virtuální počítače
 ### <a name="what-types-of-virtual-machines-are-supported"></a>Jaké typy virtuálních počítačů jsou podporovány?

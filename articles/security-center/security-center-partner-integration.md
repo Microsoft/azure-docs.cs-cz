@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/3/2019
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5a25ba889ebde750937f88e447123263a82d5627
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e756a0a7af9ad89e3aad8b0dbe27a870a3f855c1
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57896819"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400927"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
 Tento dokument vám pomůže se správou řešení zabezpečení již propojených s Azure Security Center a s přidáním nových řešení.
@@ -229,8 +229,6 @@ Tady je několik Splunk dotazů, které můžete použít k načítání dat vý
 
 V tomto článku jste se naučili integrovat partnerská řešení do služby Security Center. Další informace o službě Security Center najdete v následujících článcích:
 
-* [Propojení Microsoft Advanced Threat Analytics a Azure Security Center](security-center-ata-integration.md)
-* [Propojení Azure Active Directory Identity Protection a Azure Security Center](security-center-aadip-integration.md)
 * [Monitorování stavu zabezpečení ve službě Security Center](security-center-monitoring.md). Zjistěte, jak monitorovat stav svých prostředků Azure.
 * [Monitorování partnerských řešení pomocí služby Security Center](security-center-partner-solutions.md). Zjistěte, jak monitorovat stav partnerských řešení.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md). Získejte odpovědi na nejčastější dotazy k používání služby Security Center.

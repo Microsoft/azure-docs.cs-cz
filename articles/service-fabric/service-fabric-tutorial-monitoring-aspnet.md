@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/17/2019
+ms.date: 3/21/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 8657e9cabdf7dcd4900f65b6bef56f62a1caf472
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b5485d1dbde48a9fe52196bbeb449b6e4186a88e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901715"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402605"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Kurz: Monitorování a Diagnostika aplikace ASP.NET Core v Service Fabric pomocí Application Insights
 
@@ -59,7 +59,9 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="set-up-an-application-insights-resource"></a>Nastavení prostředku Application Insights
 
-Application Insights je platforma pro správu výkonu aplikací Azure a doporučená platforma Service Fabric pro monitorování a diagnostiku aplikací. Pokud chcete vytvořit prostředek Application Insights, přejděte na web [Azure Portal](https://portal.azure.com). Kliknutím na **Vytvořit prostředek** v levé navigační nabídce otevřete Azure Marketplace. Klikněte na **Application Insights**.
+Application Insights je platforma pro správu výkonu aplikací Azure a doporučená platforma Service Fabric pro monitorování a diagnostiku aplikací.
+
+Pokud chcete vytvořit prostředek Application Insights, přejděte na web [Azure Portal](https://portal.azure.com). Kliknutím na **Vytvořit prostředek** v levé navigační nabídce otevřete Azure Marketplace. Klikněte na **Monitorování a správa** a pak na **Application Insights**.
 
 ![Vytvoření nového prostředku Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/new-ai-resource.png)
 
@@ -72,19 +74,26 @@ Po vyplnění požadovaných informací kliknutím na **Vytvořit** zřiďte pro
 
 ## <a name="add-application-insights-to-the-applications-services"></a>Přidání Application Insights do služeb aplikace
 
-Spusťte sadu Visual Studio 2017 se zvýšenými oprávněními. Provedete to tak, že kliknete pravým tlačítkem na ikonu sady Visual Studio v nabídce Start a zvolíte **Spustit jako správce**. Klikněte na **Soubor** > **Otevřít** > **Projekt nebo řešení** a přejděte k hlasovací aplikaci (vytvořené v první části kurzu nebo naklonované z Gitu). Otevřete řešení *Voting.sln*, a pokud se zobrazí výzva k obnovení balíčků NuGet aplikace, klikněte na **Ano**.
+Spusťte Visual Studio 2017 se zvýšenými oprávněními tak, že kliknete pravým tlačítkem na ikonu sady Visual Studio v nabídce Start a zvolíte **spustit jako správce**. Klikněte na **Soubor** > **Otevřít** > **Projekt nebo řešení** a přejděte k hlasovací aplikaci (vytvořené v první části kurzu nebo naklonované z Gitu). Otevřít *Voting.sln*. Pokud se zobrazí výzva k obnovení balíčků NuGet aplikace, klikněte na tlačítko **Ano**.
 
-Postupujte podle těchto kroků a nakonfigurujte Application Insights pro službu VotingWeb i VotingData:
+Postupujte podle těchto kroků a nakonfigurujte Application Insights pro služby VotingWeb i VotingData:
 
-1. Klikněte pravým tlačítkem na název služby a vyberte **Přidat -> Telemetrie Application Insights...** .    
+1. Klikněte pravým tlačítkem na název služby a klikněte na tlačítko **Přidat > připojené služby > monitorování pomocí Application Insights**.
+
+    ![Konfigurace Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/configure-ai.png)
+>[!NOTE]
+>V závislosti na typu projektu když jste klikněte pravým tlačítkem na název služby, budete muset klikněte na tlačítko Přidat -> Telemetrie Application Insights...
+
 2. Klikněte na tlačítko **Začínáme**.
-3. Přihlaste se ke svému účtu (se kterým jste také nastavili své předplatné Azure) a vyberte předplatné, ve kterém jste vytvořili prostředek Application Insights. Vyhledejte prostředek v rozevírací nabídce Prostředek v části *Stávající prostředek Application Insights*. Kliknutím na **Zaregistrovat** přidejte Application Insights do své služby.
+3. Přihlaste se k účtu, který jste použili k nastavení předplatného Azure a vyberte předplatné, ve které jste vytvořili prostředek Application Insights. Vyhledejte prostředek v rozevírací nabídce Prostředek v části *Stávající prostředek Application Insights*. Kliknutím na **Zaregistrovat** přidejte Application Insights do své služby.
 
     ![Registrace Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/register-ai.png)
 
 4. Jakmile otevřené dialogové okno dokončí akci, klikněte na **Dokončit**.
 
-Nezapomeňte výše uvedené kroky provést pro **obě** služby v aplikaci. Tím se dokončí konfigurace Application Insights pro aplikaci. Pro obě služby se používá stejný prostředek Application Insights za účelem zobrazení příchozích i odchozích požadavků a komunikace mezi službami.
+> [!NOTE]
+> Nezapomeňte výše uvedené kroky provést pro **obě** služby v aplikaci. Tím se dokončí konfigurace Application Insights pro aplikaci.
+> Pro obě služby se používá stejný prostředek Application Insights za účelem zobrazení příchozích i odchozích požadavků a komunikace mezi službami.
 
 ## <a name="add-the-microsoftapplicationinsightsservicefabricnative-nuget-to-the-services"></a>Přidání balíčku NuGet Microsoft.ApplicationInsights.ServiceFabric.Native do služeb
 
@@ -92,63 +101,65 @@ Application Insights má dva balíčky NuGet specifické pro Service Fabric, kte
 
 Tady je postup nastavení balíčku NuGet:
 
-1. Klikněte pravým tlačítkem na **Řešení Voting** v horní části Průzkumníku řešení a pak klikněte na **Spravovat balíčky NuGet pro řešení**.
+1. Klikněte pravým tlačítkem na **řešení "Hlasování"** na začátek Průzkumníka řešení a klikněte na tlačítko **spravovat balíčky NuGet pro řešení...** .
 2. Klikněte na **Procházet** v horní části navigační nabídky v okně NuGet – Řešení a zaškrtněte políčko **Zahrnout předběžné verze** vedle panelu vyhledávání.
+>[!NOTE]
+>Podobným způsobem možná bude potřeba nainstalovat balíček Microsoft.ServiceFabric.Diagnostics.Internal, pokud už nebyl nainstalovaný před instalací balíčku Application Insights.
+
 3. Vyhledejte `Microsoft.ApplicationInsights.ServiceFabric.Native` a klikněte na odpovídající balíček NuGet.
-
-    >[!NOTE]
-    >Podobným způsobem možná bude potřeba nainstalovat balíček Microsoft.ServiceFabric.Diagnostics.Internal, pokud už nebyl nainstalovaný před instalací balíčku Application Insights.
-
-4. Na pravé straně klikněte na dvě zaškrtávací políčka vedle dvou služeb v aplikaci – **VotingWeb** a **VotingData** – a klikněte na **Nainstalovat**.
+4. Na pravé straně, klikněte na dvě zaškrtávací políčka vedle dvou služeb v aplikaci **VotingWeb** a **VotingData** a klikněte na tlačítko **nainstalovat**.
     ![Balíček NuGet sady Application Insights SDK](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
-5. V dialogovém okně *Zkontrolovat změny*, které se otevře, klikněte na **OK** a přijměte *Souhlas s podmínkami licence*. Tím se dokončí přidání balíčku NuGet do služeb.
-6. Teď je potřeba v obou službách nastavit inicializátor telemetrie. Provedete to tak, že otevřete soubory *VotingWeb.cs* a *VotingData.cs*. U obou z nich proveďte následující kroky:
-   1. Na začátek obou souborů *\<název_služby>.cs* přidejte tyto dva příkazy *using*:
+5. Klikněte na tlačítko **OK** na *náhled změn* dialogové okno, které se zobrazí a přijměte *přijetí licence*. Tím se dokončí přidání balíčku NuGet do služeb.
+6. Teď je potřeba v obou službách nastavit inicializátor telemetrie. Chcete-li to provést, otevřete *VotingWeb.cs* a *VotingData.cs*. U obou z nich proveďte následující kroky:
+    1. Přidejte tyto dva *pomocí* příkazů v horní části každé  *\<název_služby > .cs*, po existující *pomocí* příkazy:
 
-      ```csharp
-      using Microsoft.ApplicationInsights.Extensibility;
-      using Microsoft.ApplicationInsights.ServiceFabric;
-      ```
+    ```csharp
+    using Microsoft.ApplicationInsights.Extensibility;
+    using Microsoft.ApplicationInsights.ServiceFabric;
+    ```
 
-   2. Ve vnořeném příkazu *return* metody *CreateServiceInstanceListeners()* nebo *CreateServiceReplicaListeners()* v části *ConfigureServices* > *služby* přidejte mezi dvě deklarované služby Singleton následující kód: `.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`
-      Tím se do vaší telemetrie přidá *kontext služby*, který umožňuje lepší porozumění zdroji telemetrie v Application Insights. Váš vnořený příkaz *return* v souboru *VotingWeb.cs* by měl vypadat takto:
+    2. V obou souborech ve vnořeném *vrátit* příkazem *CreateServiceInstanceListeners()* nebo *CreateServiceReplicaListeners()* v části  *ConfigureServices* > *služby*, jiné deklarace služeb typu singleton, přidejte:
+    ```csharp
+    .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))
+    ```
+    Tím se do vaší telemetrie přidá *kontext služby*, který umožňuje lepší porozumění zdroji telemetrie v Application Insights. Váš vnořený příkaz *return* v souboru *VotingWeb.cs* by měl vypadat takto:
 
-      ```csharp
-      return new WebHostBuilder()
-       .UseKestrel()
-       .ConfigureServices(
-           services => services
-               .AddSingleton<HttpClient>(new HttpClient())
-               .AddSingleton<FabricClient>(new FabricClient())
-               .AddSingleton<StatelessServiceContext>(serviceContext)
-               .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
-       .UseContentRoot(Directory.GetCurrentDirectory())
-       .UseStartup<Startup>()
-       .UseApplicationInsights()
-       .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.None)
-       .UseUrls(url)
-       .Build();
-      ```
+    ```csharp
+    return new WebHostBuilder()
+        .UseKestrel()
+        .ConfigureServices(
+            services => services
+                .AddSingleton<HttpClient>(new HttpClient())
+                .AddSingleton<FabricClient>(new FabricClient())
+                .AddSingleton<StatelessServiceContext>(serviceContext)
+                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
+        .UseContentRoot(Directory.GetCurrentDirectory())
+        .UseStartup<Startup>()
+        .UseApplicationInsights()
+        .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.None)
+        .UseUrls(url)
+        .Build();
+    ```
 
-      Podobně byste v souboru *VotingData.cs* měli mít následující:
+    Podobně byste v souboru *VotingData.cs* měli mít následující:
 
-      ```csharp
-      return new WebHostBuilder()
-       .UseKestrel()
-       .ConfigureServices(
-           services => services
-               .AddSingleton<StatefulServiceContext>(serviceContext)
-               .AddSingleton<IReliableStateManager>(this.StateManager)
-               .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
-       .UseContentRoot(Directory.GetCurrentDirectory())
-       .UseStartup<Startup>()
-       .UseApplicationInsights()
-       .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.UseUniqueServiceUrl)
-       .UseUrls(url)
-       .Build();
-      ```
+    ```csharp
+    return new WebHostBuilder()
+        .UseKestrel()
+        .ConfigureServices(
+            services => services
+                .AddSingleton<StatefulServiceContext>(serviceContext)
+                .AddSingleton<IReliableStateManager>(this.StateManager)
+                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
+        .UseContentRoot(Directory.GetCurrentDirectory())
+        .UseStartup<Startup>()
+        .UseApplicationInsights()
+        .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.UseUniqueServiceUrl)
+        .UseUrls(url)
+        .Build();
+    ```
 
-Pečlivě zkontrolujte, že se v obou souborech volá metoda `UseApplicationInsights()`, jak je znázorněno výše.
+Pečlivě zkontrolujte, že `UseApplicationInsights()` metoda je volána v obou *VotingWeb.cs* a *VotingData.cs* jak je znázorněno výše.
 
 >[!NOTE]
 >Tato ukázková aplikace pro zajištění komunikace služeb používá protokol HTTP. Pokud vyvíjíte aplikaci s využitím vzdálené komunikace služeb V2, budete muset na stejné místo jako výše přidat také následující řádky kódu.
@@ -163,6 +174,9 @@ ConfigureServices(services => services
 
 V tuto chvíli jste připraveni nasadit aplikaci. Klikněte na **Spustit** v horní části (nebo stiskněte **F5**) a sada Visual Studio sestaví a zabalí aplikaci, nastaví místní cluster a nasadí do něj aplikaci.
 
+>[!NOTE]
+>Pokud nemáte aktuální verze nainstalovaná sada .NET Core SDK se může zobrazit chyba buildu.
+
 Po nasazení aplikace přejděte na adresu [localhost:8080](localhost:8080), kde by se měla zobrazit jednostránková aplikace Voting Sample. Hlasujte pro několik různých položek, abyste vytvořili nějaká ukázková data a telemetrii – my jsme zvolili zákusky.
 
 ![Ukázkové hlasy v Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/vote-sample.png)
@@ -176,7 +190,9 @@ Přejděte ke svému prostředku Application Insights na webu Azure Portal.
 Kliknutím na **Přehled** se vraťte na úvodní stránku vašeho prostředku. Pak kliknutím na **Vyhledávání** v horní části zobrazte příchozí trasování. Zobrazení trasování v Application Insights trvá několik minut. V případě, že se žádné nezobrazí, chvíli počkejte a stiskněte tlačítko **Aktualizovat** v horní části.
 ![Zobrazení trasování Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/ai-search.png)
 
-Když se posunete dolů v okně *Vyhledávání*, zobrazí se veškerá příchozí telemetrie, která je součástí Application Insights. Pro každou akci, kterou trvala v hlasovací aplikaci, musí být požadavek PUT odchozí ze *VotingWeb* (PUT hlasy nebo Put [name]), z příchozí žádosti PUT *VotingData* (PUT VoteData nebo Put název []), za nímž následuje pár požadavků GET pro aktualizace dat, které se zobrazí. Vzhledem k tomu, že se jedná o požadavky HTTP, zobrazí se také trasování závislosti protokolu HTTP na místním hostiteli. Tady je příklad se zobrazí jednoho hlasu se přidá: ![Trasování ukázkového požadavku AI](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
+Když se posunete dolů v okně *Vyhledávání*, zobrazí se veškerá příchozí telemetrie, která je součástí Application Insights. Pro každou akci, kterou trvala v hlasovací aplikaci, musí být požadavek PUT odchozí ze *VotingWeb* (PUT hlasy nebo Put [name]), z příchozí žádosti PUT *VotingData* (PUT VoteData nebo Put název []), za nímž následuje pár požadavků GET pro aktualizace dat, které se zobrazí. Vzhledem k tomu, že se jedná o požadavky HTTP, zobrazí se také trasování závislosti protokolu HTTP na místním hostiteli. Tady je příklad se zobrazí jednoho hlasu se přidá:
+
+![Trasování ukázkového požadavku AI](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
 
 Kliknutím na některé z trasování můžete zobrazit další podrobnosti. Zobrazí se užitečné informace o požadavku, které poskytuje Application Insights, včetně *doby odezvy* a *adresy URL požadavku*. Navíc vzhledem k tomu, že jste přidali balíček NuGet specifický pro Service Fabric, se v části *Vlastní data* uvedené níže zobrazí také data o vaší aplikaci v kontextu clusteru Service Fabric. To zahrnuje kontext služby, takže se zobrazí *ID oddílu* a *ID repliky* zdroje požadavku, pomocí kterých můžete lépe vyhledat problémy při diagnostice chyb v aplikaci.
 

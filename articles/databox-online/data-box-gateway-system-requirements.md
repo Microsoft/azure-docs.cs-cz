@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 02/04/2019
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: be51e6c829c5f12d17c6302bb951039711f12075
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 73f97128dc7b71179c0b0ab41340af6c0f371da1
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113222"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402962"
 ---
-# <a name="azure-data-box-gateway-system-requirements-preview"></a>Azure Data Box brány požadavky na systém (Preview)
+# <a name="azure-data-box-gateway-system-requirements"></a>Požadavky na systém Azure Data Box brány
 
 Tento článek popisuje důležité systémové požadavky pro vaše řešení Microsoft Azure Data Box brány a klienti připojení k Azure Data Box brány. Doporučujeme, abyste si informace o pečlivě před nasazení brány dat pole a pak zpátky na ni odkazovat podle potřeby během nasazení a následná operace.
 
@@ -24,8 +24,6 @@ Požadavky na systém pro virtuální zařízení Data Box brány patří:
 - **Požadavky na software pro hostitele** -popisuje podporované platformy, prohlížeče pro místní konfiguraci, uživatelského rozhraní, klienti SMB a veškeré další požadavky pro hostitele, které se připojují k zařízení.
 - **Požadavky na síť pro zařízení** – poskytuje informace o všech požadavků na síť pro operaci virtuálního zařízení.
 
-> [!IMPORTANT]
-> Data Box Gateway je ve verzi Preview. Před nasazením tohoto řešení si prosím přečtěte [podmínky použití verze Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 ## <a name="specifications-for-the-virtual-device"></a>Specifikace pro virtuální zařízení
 

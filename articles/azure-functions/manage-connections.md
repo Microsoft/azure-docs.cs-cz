@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 965fa1e82be3fb87bf58a0114f97091bad212738
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 079fe74ec11570b26cbba93e4aba26d7359bef20
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450732"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402367"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
 
@@ -57,7 +57,7 @@ public static async Task Run(string input)
 
 Běžné otázky o [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) v rozhraní .NET je "By měl jsem vyřadit klientovi?" Obecně platí, vyřadit objekty, které implementují `IDisposable` po dokončení jejich používání. Ale není dispose statické klienta, protože nebyly provedeny používat po skončení funkce. Chcete, aby statické klienta na živá po dobu trvání aplikace.
 
-### <a name="http-agent-examples-nodejs"></a>Příklady agenta HTTP (Node.js)
+### <a name="http-agent-examples-javascript"></a>Příklady agenta HTTP (JavaScript)
 
 Protože lepší připojení poskytuje možnosti správy, měli byste používat nativní [ `http.agent` ](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) třídy místo metody není nativní, jako `node-fetch` modulu. Parametry připojení jsou nakonfigurované přes možnosti na `http.agent` třídy. Podrobné možnosti k dispozici s agentem HTTP najdete v tématu [nového agenta (\[možnosti\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
 
@@ -105,6 +105,25 @@ public static async Task Run(string input)
     await documentClient.UpsertDocumentAsync(collectionUri, document);
     
     // Rest of function
+}
+```
+
+### <a name="cosmosclient-code-example-javascript"></a>Příklad kódu CosmosClient (JavaScript)
+[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) připojí k instanci služby Azure Cosmos DB. Dokumentace ke službě Azure Cosmos DB doporučuje vám [používání klienta služby Azure Cosmos DB jednotlivý prvek po dobu životnosti aplikace](../cosmos-db/performance-tips.md#sdk-usage). Následující příklad ukazuje jeden vzor, který to ve funkci:
+
+```javascript
+const cosmos = require('@azure/cosmos');
+const endpoint = process.env.COSMOS_API_URL;
+const masterKey = process.env.COSMOS_API_KEY;
+const { CosmosClient } = cosmos;
+
+const client = new CosmosClient({ endpoint, auth: { masterKey } });
+// All function invocations also reference the same database and container.
+const container = client.database("MyDatabaseName").container("MyContainerName");
+
+module.exports = async function (context) {
+    const { result: itemArray } = await container.items.readAll().toArray();
+    context.log(itemArray);
 }
 ```
 

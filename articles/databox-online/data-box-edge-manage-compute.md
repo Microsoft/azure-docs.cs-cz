@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/13/2019
+ms.date: 03/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8128afa7078c396156d2cbffb47effeb7de68a0b
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: de8ddd0d2886cd7798160e830094b295c62e17e9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58005056"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400682"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Správa výpočetních služeb v Azure Data Box hranici
 
@@ -132,6 +132,23 @@ Pomocí následujících kroků na webu Azure Portal k synchronizaci přístupov
      ![Po zobrazení výzvy vyberte Ano](media/data-box-edge-manage-compute/refresh-configuration-2.png)
 
 3. Po dokončení synchronizace zavřete dialogové okno.
+
+## <a name="enable-a-network-interface-for-compute"></a>Povolení síťového rozhraní pro službu compute
+
+Můžete potřebovat pro přístup k modulu běžícího ve vašem zařízení Data Box Edge. Pro přístup k modulu externě, je potřeba přiřadit IP adresu do síťového rozhraní na zařízení. Můžete spravovat tyto compute nastavení z vašeho místního webového uživatelského rozhraní.
+
+Proveďte následující kroky na vaší místního webového uživatelského rozhraní a zadejte nastavení výpočetní prostředky.
+
+1. V místním webovém uživatelském rozhraní, přejděte na **konfigurace > Compute nastavení**.  
+
+2. **Povolit** síťové rozhraní, které chcete použít pro připojení k modulům výpočetní prostředky na zařízení. 
+
+    - Pokud používáte statické IP adresy, zadejte IP adresu pro síťové rozhraní.
+    - Pokud používáte DHCP, pak IP adres automaticky přiřadí.
+
+3. Vyberte **použít** aplikaci nastavení.
+
+    ![Povolení nastavení výpočetní prostředky](media/data-box-edge-manage-compute/compute-settings-1.png)
 
 
 ## <a name="next-steps"></a>Další postup

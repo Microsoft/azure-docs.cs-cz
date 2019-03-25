@@ -1,22 +1,22 @@
 ---
-title: Co je virtuální plochy Windows? (preview) – Azure
-description: Přehled virtuální plochy Windows.
+title: Co je Windows Virtual Desktop Preview?  – Azure
+description: Přehled Windows virtuální plochy, ve verzi Preview.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 679c7d3c84237747fd341f92c5dfcc0588d23be2
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 4443d71d5c0b84ac7dbc18129338229c40323d2c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338543"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401039"
 ---
-# <a name="what-is-windows-virtual-desktop"></a>Co je virtuální plochy Windows? 
+# <a name="what-is-windows-virtual-desktop-preview"></a>Co je Windows Virtual Desktop Preview? 
 
-Teď ve verzi public preview, virtuální plochy Windows je služba virtualizace plochy a aplikace, která běží v cloudu.
+Teď ve verzi public preview, Windows virtuální plochy, ve verzi Preview je služba virtualizace plochy a aplikace, která běží v cloudu.
 
 Zde je, co můžete dělat, když spustíte virtuální plochy Windows na Azure:
 
@@ -39,7 +39,7 @@ Virtuální plochy Windows můžete nastavit, škálovatelnou, flexibilní prost
 
 Můžete nasadit a spravovat virtuální klienty:
 
-* Nakonfigurujte fondy hostitele, vytvořit skupiny aplikací, přiřazení uživatelů a publikovat prostředky pomocí rozhraní Windows virtuální plochy Powershellu a REST
+* Nakonfigurujte fondy hostitele, vytvoření skupiny aplikací, přiřazení uživatelů a publikování prostředků pomocí rozhraní Windows virtuální plochy Powershellu a REST.
 * Publikovat zcela klasické pracovní plochy nebo jednotlivé vzdálené aplikace z jednoho hostitele fondu, vytvoření skupin pro jednotlivé aplikace pro různé skupiny uživatelů nebo dokonce přiřadit uživatele do několika skupin aplikací ke snížení počtu imagí.
 * Při správě prostředí pomocí předdefinovaných Delegovaný přístup přiřazení rolí a shromažďování diagnostiky pochopit různé chyby konfigurace nebo uživatele.
 * Pomocí nové služby Diagnostika potíží s chybami.
@@ -97,4 +97,4 @@ Přejděte [technické komunitě virtuální plochy Windows](https://techcommuni
 Abyste mohli začít, musíte tenanta vytvořit. Další informace o tom, jak vytvořit tenanta, pokračujte ke kurzu vytváření tenanta.
 
 > [!div class="nextstepaction"]
-> [Vytvořit tenanta v virtuální plochy Windows](tenant-setup-azure-active-directory.md)
+> [Vytvořit tenanta v náhledu virtuální plochy Windows](tenant-setup-azure-active-directory.md)

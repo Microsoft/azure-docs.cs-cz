@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 9fde3befb147aeeab9419e08602552a970368cfe
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 32714b3e5a5ed859716faef2ca660f8b2c90b089
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57844980"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402504"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Kurz: Odesílání oznámení pro konkrétní uživatele pomocí Azure Notification Hubs
 
@@ -53,13 +53,13 @@ V tomto kurzu vychází z centra oznámení a projekt aplikace Visual Studio, kt
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
-## <a name="update-the-code-for-the-client-project"></a>Aktualizace kódu klientského projektu
+## <a name="update-the-code-for-the-uwp-client"></a>Aktualizujte kód pro UPW klienta
 
 V této části můžete aktualizovat kód v projektu pro dokončení [kurzu: Odesílat oznámení do aplikací pro univerzální platformu Windows pomocí Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) kurzu. Projekt už by měl být přidružený k Windows Storu. Také už by měl být nakonfigurovaný tak, aby používal vaše centrum oznámení. V této části přidáte kód, který volá nový back-end WebAPI a používá ho k registraci a zasílání oznámení.
 
 1. V sadě Visual Studio, otevřete řešení, které jste vytvořili pro [kurzu: Odesílat oznámení do aplikací pro univerzální platformu Windows pomocí Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
-2. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **WindowsApp** a pak klikněte na **Správa balíčků NuGet**.
-3. Na levé straně klikněte na **Online**.
+2. V Průzkumníku řešení klikněte pravým tlačítkem na projekt pro univerzální platformu Windows (UPW) a potom klikněte na tlačítko **spravovat balíčky NuGet**.
+3. Na levé straně vyberte **Procházet**.
 4. Do pole **Hledat** zadejte **Http Client**.
 5. V seznamu výsledků klikněte na **System.Net.Http** a pak klikněte na **Nainstalovat**. Dokončete instalaci.
 6. Vraťte se do pole **Hledat** pro balíčky NuGet a zadejte **Json.net**. Nainstalujte balíček **Newtonsoft.json** a pak zavřete okno Správce balíčků NuGet.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ff14afc9e438c2b493219e9fa207b2e8793b3c87
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 1390d68a93dd3d80b5977bab6665553ea3f8b398
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189202"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403070"
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Vložení videa adaptivního streamování MPEG-DASH do aplikace HTML5 se souborem DASH.js  
 
@@ -55,7 +55,7 @@ Prvním krokem je vytvoření standardní stránku HTML obsahující **videa** e
 ```
 
 ## <a name="adding-the-dashjs-player"></a>Přidání přehrávači souborem DASH.js
-Chcete-li přidat souborem dash.js referenční implementaci k aplikaci, budete muset vzít dash.all.js soubor z projektu souborem dash.js verzi 1.0. To by měl být uloženy ve složce JavaScript vaší aplikace. Tento soubor je soubor usnadnění práce, která stáhne všechny potřebné souborem dash.js kódu do jednoho souboru. Pokud máte najdete kolem souborem dash.js úložiště, můžete najít jednotlivé soubory, otestovat kód a spoustu dalších věcí, ale pokud vše, co chcete udělat je použít souborem dash.js, dash.all.js souboru je, co potřebujete.
+Přidání souborem dash.js referenční implementaci k aplikaci, musíte zkopírovat soubor dash.all.js z nejnovější verze souborem dash.js projektu. To by měl být uloženy ve složce JavaScript vaší aplikace. Tento soubor je soubor usnadnění práce, která stáhne všechny potřebné souborem dash.js kódu do jednoho souboru. Pokud máte najdete kolem souborem dash.js úložiště, můžete najít jednotlivé soubory, otestovat kód a spoustu dalších věcí, ale pokud vše, co chcete udělat je použít souborem dash.js, dash.all.js souboru je, co potřebujete.
 
 K přehrávači souborem dash.js přidejte do svých aplikací, přidáte značky skriptu do hlavní části basicPlayer.html:
 

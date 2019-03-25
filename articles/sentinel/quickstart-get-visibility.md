@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/4/2019
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1d54ac521fb8b81ed5fa135f68af420bda261661
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: a80c4db1b81dd2bc0b223a2781e28ccb1f5ba68e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246946"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402877"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Rychlý start: Začínáme s Azure Sentinelu ve verzi Preview
 
@@ -118,7 +118,22 @@ Můžete chtít vytvořit dotaz, který zahrnuje data z více zdrojů. Můžete 
 
 Můžete vytvořit na základě role osoby prohlížení dat a co hledají různých řídicích panelech. Můžete například vytvořit řídicí panel pro správce sítě, která obsahuje data brány firewall. Můžete také vytvořit řídicí panely založené na tom, jak často chcete podívejte se na ně, zda věcí, které chcete zkontrolovat každý den a jiné položky, které chcete zkontrolovat jednou za hodinu, například můžete chtít podívat na přihlášení Azure AD za hodinu pro hledání anomali ES. 
 
+## <a name="create-new-detections"></a>Vytvořit nové detekce
 
+Generovat detekce [zdroje dat, které jste se připojili k Azure Sentinelu](connect-data-sources.md) k prošetření hrozeb ve vaší organizaci.
+
+Při vytváření nové detekce, využijte integrované detekce vytvořený zabezpečení odborníky společnosti Microsoft, které jsou přizpůsobené ke zdrojům dat, ke kterému jste připojeni.
+
+1. [V komunitě GitHub](https://github.com/Azure/Azure-Sentinel/tree/master/Detections) přejděte **detekce** složky a vyberte příslušné složky.
+   ![příslušné složky](./media/qs-get-visibility/detection-folders.png)
+ 
+3.  Přejděte **Analytics** kartě a vyberte **přidat**.
+   ![Vytvoření pravidla v Log Analytics](./media/qs-get-visibility/query-params.png)
+
+3.  Zkopírujte všechny parametry do pravidla a klikněte na tlačítko **vytvořit**.
+   ![Vytvořit pravidlo upozornění](./media/qs-get-visibility/create-alert-rule.png)
+
+ 
 ## <a name="next-steps"></a>Další postup
 V tomto rychlém startu jste zjistili, jak chcete začít používat Azure Sentinelu. Dál najdete v tomto kurzu [jak detekovat hrozby](tutorial-detect-threats.md).
 > [!div class="nextstepaction"]

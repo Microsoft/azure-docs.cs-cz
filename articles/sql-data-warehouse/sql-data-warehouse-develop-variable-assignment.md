@@ -10,17 +10,19 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 29b86d430fb5d65e7f089c616651da5f488b675c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ee97f7e5cda8b954fb697f73746e416d88d38c2d
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455979"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401698"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Přiřazení proměnné ve službě Azure SQL Data Warehouse
+
 Tipy pro přiřazení proměnné jazyka T-SQL ve službě Azure SQL Data Warehouse pro vývoj řešení.
 
 ## <a name="setting-variables-with-declare"></a>Nastavení proměnných s DECLARE
+
 Proměnné ve službě SQL Data Warehouse se nastavují pomocí `DECLARE` příkazu nebo `SET` příkazu. Inicializace proměnných s DECLARE, je jedním z nejflexibilnější způsoby, jak nastavit hodnotu proměnné ve službě SQL Data Warehouse.
 
 ```sql
@@ -45,6 +47,7 @@ DECLARE @p1 int = 0
 ```
 
 ## <a name="setting-values-with-set"></a>Nastavení hodnot SET
+
 Sada je běžnou metodu pro nastavení jedné proměnné.
 
 Následující příkazy jsou všechny platné způsoby, jak nastavit proměnnou pomocí sady:
@@ -59,8 +62,9 @@ SET     @v +=1;
 Jednu proměnnou lze nastavit pouze současně se SADOU. Složené operátory jsou však přípustné.
 
 ## <a name="limitations"></a>Omezení
-Vyberte nebo aktualizaci nelze použít pro přiřazení proměnné.
+
+AKTUALIZACI nelze použít pro přiřazení proměnné.
 
 ## <a name="next-steps"></a>Další postup
-Další tipy pro vývoj najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
 
+Další tipy pro vývoj najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).

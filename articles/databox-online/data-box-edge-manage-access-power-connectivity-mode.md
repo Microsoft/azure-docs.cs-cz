@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/21/2019
 ms.author: alkohli
-ms.openlocfilehash: e0aa3468bda9f904d62e9e20545ac5f990cef521
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: e0b8b35c654f0716fae1e6ab785f57dcf04e1a5a
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57902057"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400891"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge-preview"></a>Správa přístupu, napájení a režimu připojení pro Azure Data Box hranici (preview)
 
@@ -31,11 +31,11 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="manage-device-access"></a>Spravovat přístup zařízení
 
-Přístup k zařízení Data Box Edge se řídí použití hesla správce zařízení. Můžete změnit heslo správce prostřednictvím místního webového uživatelského rozhraní. Můžou také resetovat hesla správce zařízení na portálu Azure portal.
+Přístup k zařízení Data Box Edge je řízen pomocí hesla zařízení. Můžete změnit heslo prostřednictvím místního webového uživatelského rozhraní. Můžou také resetovat heslo zařízení na portálu Azure portal.
 
-### <a name="change-device-administrator-password"></a>Změna hesla správce zařízení
+### <a name="change-device-password"></a>Změna hesla zařízení
 
-Následující postup v místním uživatelském rozhraní ke změně hesla správce zařízení.
+Postupujte podle těchto kroků v Uživatelském rozhraní místní, chcete-li změnit heslo zařízení.
 
 1. V místním webovém uživatelském rozhraní, přejděte na **údržby > Změna hesla**.
 2. Zadejte aktuální heslo a pak nové heslo. Zadané heslo musí být dlouhé 8 až 16 znaků. Heslo musí obsahovat 3 z následujících znaků: velká písmena, malá písmena, číselné a speciální znaky. Potvrzení nového hesla.
@@ -44,7 +44,7 @@ Následující postup v místním uživatelském rozhraní ke změně hesla spr�
 
 3. Vyberte **změnit heslo**.
  
-### <a name="reset-device-administrator-password"></a>Resetování hesla správce zařízení
+### <a name="reset-device-password"></a>Resetovat heslo zařízení
 
 Obnovení pracovního postupu není nutné, aby si možná Vzpomínáte staré heslo a je užitečné v případě ztráty hesla není. Tento pracovní postup se provádí na webu Azure Portal.
 
@@ -63,7 +63,7 @@ Kromě výchozí plně propojené režim můžete zařízení také spustit v re
 
 - **Plně připojení** – to je normální výchozí režim, ve kterém zařízení funguje. Jak cloud nahrání a stažení dat je v tomto režimu nepovolily. Na webu Azure portal nebo místního webového uživatelského rozhraní můžete použít ke správě zařízení.
 
-- **Částečně odpojení** – v tomto režimu zařízení nemůžete nahrát žádné data do sdílených složek ale je možné spravovat prostřednictvím portálu Azure portal.
+- **Částečně odpojení** – v tomto režimu nelze zařízení odeslání nebo stažení všechny sdílené složky data ale mohou být spravována přes Azure portal.
 
     Tento režim se obvykle používá při práci v síti satelitních Účtovaná podle objemu dat a cílem je minimalizovat využití šířky pásma sítě. Využití sítě minimální může stále dojít k pro monitorování provozu zařízení.
 

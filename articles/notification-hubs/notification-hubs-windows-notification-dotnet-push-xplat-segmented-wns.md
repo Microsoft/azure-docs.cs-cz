@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 8e583ac1c8ac4b6f32c2fa9f8b7ed07c2e7033e8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9cfe5f490ef4063e02d9407f23130c1a216961ed
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889994"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402452"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>Kurz: Nabízená oznámení odesílaná konkrétním zařízením Windows spouštění aplikací pro univerzální platformu Windows
 
@@ -222,30 +222,28 @@ V této části provedete registraci v centru oznámení při spuštění pomoc�
 
 Aplikace je teď hotová. Může uchovávat sadu kategorií v místním úložišti zařízení, které se používá k registraci v centru oznámení, když uživatelé změní výběr kategorií. V další části definujete back-end, který aplikaci posílá oznámení kategorií.
 
-## <a name="send-tagged-notifications"></a>Posílání značených oznámení
-
-[!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
-
-## <a name="run-the-app-and-generate-notifications"></a>Spuštění aplikace a generování oznámení
-
+## <a name="run-the-uwp-app"></a>Spuštění aplikace pro UPW 
 1. Pokud chcete v sadě Visual Studio kompilovat aplikaci a spustit ji, stiskněte **F5**. Uživatelské rozhraní aplikace nabízí sadu přepínačů, kterými můžete vybrat kategorie přihlášené k odběru.
 
-    ![Aplikace Nejnovější zprávy][1]
+    ![Aplikace Nejnovější zprávy](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png)
 
 2. Zapněte jeden nebo více přepínačů kategorií a klikněte na **Přihlásit k odběru**.
 
     Aplikace převede vybrané kategorie na značky a u vybraných značek požádá centrum oznámení o registraci nových zařízení. Zaregistrované kategorie se vrátí a zobrazí v dialogovém okně.
 
-    ![Přepínače kategorií a tlačítko Přihlásit k odběru][19]
+    ![Přepínače kategorií a tlačítko Přihlásit k odběru](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png)
 
-3. Odešlete nové oznámení z back-endu jedním z následujících způsobů:
+## <a name="create-a-console-app-to-send-tagged-notifications"></a>Vytvoření konzolové aplikace odesílat oznámení příznakem
 
-   * **Aplikace konzoly**: Spustíte konzolovou aplikaci.
-   * **Java/PHP**: Spuštění aplikace nebo skript.
+[!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-     Oznámení pro vybrané kategorie se zobrazí jako informační zprávy.
+## <a name="run-the-console-app-to-send-tagged-notifications"></a>Spustit konzolovou aplikaci k odesílání oznámení příznakem
 
-     ![Informační zprávy][14]
+1. Spusťte aplikaci vytvořenou v předchozí části.
+2. Oznámení pro vybrané kategorie se zobrazí jako informační zprávy. Pokud vyberete oznámení, uvidíte první okno aplikace UPW. 
+
+     ![Informační zprávy](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png)
+
 
 ## <a name="next-steps"></a>Další postup
 
@@ -260,11 +258,6 @@ V tomto článku jste se dozvěděli, jak vysílat nejnovější zprávy podle k
 [Send notifications from your back-end]: #send
 [Run the app and generate notifications]: #test-app
 [Next Steps]: #next-steps
-
-<!-- Images. -->
-[1]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png
-[14]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png
-[19]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png
 
 <!-- URLs.-->
 [get-started]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md

@@ -6,23 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 02/21/2019
+ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: f36e13ccf91c983c54897dcff7e1c02689fb055c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: d930b1db48e3a5c4bda96f0b7d80a9c9f24d53d9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592651"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400640"
 ---
-# <a name="tutorial-transfer-data-with-azure-data-box-gateway-preview"></a>Kurz: Přenos dat pomocí Azure Data Box Gateway (Preview)
+# <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Kurz: Přenos dat pomocí Azure Data Box brány
 
 
 ## <a name="introduction"></a>Úvod
 
-Tento článek popisuje, jak do služby Data Box Gateway přidat sdílené složky a připojit se k nim. Po přidání sdílených složek může zařízení Data Box Gateway přenést data do Azure.
+Tento článek popisuje, jak přidat a připojte se ke sdíleným složkám na bráně Data Box. Po přidání sdílených složek na zařízení Data Box brány může přenášet data do Azure.
 
-Dokončení tohoto postupu může trvat přibližně 10 minut. 
+Dokončení tohoto postupu může trvat přibližně 10 minut.
 
 V tomto kurzu se naučíte:
 
@@ -30,62 +30,63 @@ V tomto kurzu se naučíte:
 > * Přidání sdílené složky
 > * Připojení ke sdílené složce
 
-> [!IMPORTANT]
-> - Data Box Gateway je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
- 
+
 ## <a name="prerequisites"></a>Požadavky
 
 Před přidáním sdílených složek do služby Data Box Gateway se ujistěte, že:
 
-* Máte zřízené virtuální zařízení a jste k němu připojeni, jak je podrobně popsáno v tématu [Zřízení služby Data Box Gateway v prostředí Hyper-V](data-box-gateway-deploy-provision-hyperv.md) nebo [Zřízení služby Data Box Gateway v prostředí VMware](data-box-gateway-deploy-provision-vmware.md). 
+- Jsme zřídili virtuální zařízení a jsou k němu připojená podle popisu v [bránu Data Gateway pole v Hyper-V zřídit](data-box-gateway-deploy-provision-hyperv.md) nebo [zřízení bránu Data Gateway pole v prostředí VMware](data-box-gateway-deploy-provision-vmware.md).
 
-    Virtuální zařízení je aktivované, jak je podrobně popsáno v tématu [Připojení a aktivace služby Azure Data Box Gateway](data-box-gateway-deploy-connect-setup-activate.md), a připravené k vytvoření sdílených složek a přenosu dat.
+- Po dokončení aktivace virtuální zařízení je popsáno v [připojit a aktivovat Azure Data Box Gateway](data-box-gateway-deploy-connect-setup-activate.md).
 
+- Zařízení je připravené pro vytvoření sdílených složek a přenos dat.
 
 ## <a name="add-a-share"></a>Přidání sdílené složky
 
-Provedením následujících kroků na webu [Azure Portal](https://portal.azure.com/) vytvořte sdílenou složku.
+Chcete-li vytvořit sdílenou složku proveďte následující postup:
 
-1. Vraťte se na Azure Portal. Přejděte do části **Všechny prostředky** a vyhledejte prostředek vaší služby Data Box Gateway.
-    
-2. Ve vyfiltrovaném seznamu prostředků vyberte prostředek Data Box Gateway a pak přejděte na **Přehled**. Na panelu příkazů zařízení klikněte na **+ Přidat sdílenou složku**.
+1. V [webu Azure portal](https://portal.azure.com/), vyberte prostředek brány dat pole a potom přejděte ke **přehled**. Vaše zařízení by měl být online. Vyberte **+ přidat sdílenou složku** na panelu příkazů zařízení.
    
    ![Přidání sdílené složky](./media/data-box-gateway-deploy-add-shares/click-add-share.png)
 
-4. V části **Přidat sdílenou složku** zadejte nastavení sdílené složky. Zadejte jedinečný název sdílené složky. 
+4. V **přidat sdílenou složku**, proveďte následující postup:
 
-   Názvy sdílených složek můžou obsahovat pouze číslice, malá písmena a spojovníky. Název sdílené složky musí mít délku 3 až 63 znaků a začínat písmenem nebo číslicí. Před i za každým spojovníkem musí být jiný znak než spojovník.
+    1. Zadejte jedinečný název sdílené složky. Názvy sdílených složek obsahovat pouze malá písmena, číslice a pomlčky. Název sdílené složky musí mít délku 3 až 63 znaků a musí začínat písmenem nebo číslicí. Před i za každým spojovníkem musí být jiný znak než spojovník.
     
-5. Vyberte **Typ** sdílené složky. Typ může být SMB nebo NFS, přičemž výchozí typ je SMB. Protokol SMB je standardem pro klienty Windows a systém souborů NFS se používá pro klienty Linuxu. V závislosti na tom, jestli vyberete sdílené složky SMB nebo systému souborů NFS, se budou mírně lišit zobrazené možnosti. 
+    2. Vyberte **Typ** sdílené složky. Typ může být SMB nebo NFS, přičemž výchozí typ je SMB. Protokol SMB je standardem pro klienty Windows a systém souborů NFS se používá pro klienty Linuxu. V závislosti na tom, jestli vyberete sdílené složky SMB nebo systému souborů NFS, se budou mírně lišit zobrazené možnosti.
 
-6. Musíte zadat účet úložiště, ve kterém se sdílená složka bude nacházet. V účtu úložiště se vytvoří kontejner s názvem sdílené složky, pokud ještě neexistuje. Pokud už kontejner existuje, použije se existující kontejner. 
+    3. Zadejte účet úložiště, kde se bude nacházet sdílenou složku. Pokud kontejner neexistuje, vytvoří se v účtu úložiště s názvem nově vytvořené sdílené složky. Pokud kontejner již existuje, použije se tento kontejner.
     
-7. V části **Služba úložiště** zvolte Objekt blob bloku, Objekt blob stránky nebo Soubory. Zvolený typ služby závisí na tom, v jakém formátu chcete ukládat data v Azure. Například v tomto případě chceme data v Azure ukládat jako objekty blob bloku, proto vybereme Objekt blob bloku. Pokud zvolíte Objekt blob stránky, musíte zajistit, aby vaše data byla zarovnaná na 512 bajtů. Poznámka: Formát VHDX je vždy zarovnaný na 512 bajtů.
+    4. V části **Služba úložiště** zvolte Objekt blob bloku, Objekt blob stránky nebo Soubory. Zvolený typ služby závisí na tom, v jakém formátu chcete ukládat data v Azure. Například v tomto případě chceme data v Azure ukládat jako objekty blob bloku, proto vybereme Objekt blob bloku. Pokud zvolíte Objekt blob stránky, musíte zajistit, aby vaše data byla zarovnaná na 512 bajtů. Například formát VHDX je vždy zarovnaný na 512 bajtů.
    
-8. Postup v tomto kroku závisí na tom, jestli vytváříte sdílenou složku SMB nebo systému souborů NFS. 
+    5. Postup v tomto kroku závisí na tom, jestli vytváříte sdílenou složku SMB nebo systému souborů NFS.
      
-    - **Pokud vytváříte sdílenou složku SMB** – V poli Místní uživatel se všemi oprávněními zvolte **Vytvořit nový** nebo **Použít existující**. Pokud vytváříte nového místního uživatele, zadejte **uživatelské jméno**, **heslo** a pak **potvrďte heslo**. Tím se místnímu uživateli přiřadí oprávnění. Jakmile tady přiřadíte oprávnění, můžete pak tato oprávnění upravit pomocí Průzkumníka souborů.
+    - **Sdílená složka SMB** – v části **všechny místní uživatel s oprávněním**vyberte **vytvořit nový** nebo **použít existující**. Pokud vytváříte novou místní uživatele, zadejte **uživatelské jméno** a **heslo**a potom **potvrzení hesla**. Tato akce se přiřadí oprávnění na místního uživatele. Po přiřazení oprávnění tady, můžete upravit tato oprávnění Průzkumníka souborů.
     
         ![Přidání sdílené složky SMB](./media/data-box-gateway-deploy-add-shares/add-share-smb-1.png)
         
-        Pokud pro data této sdílené složky zaškrtnete možnost **Povolit jen operace čtení**, budete mít možnost určit uživatele jen pro čtení.
+        Pokud vyberete **Povolit jenom operace čtení** zaškrtávací políčko pro tato data sdílené složky můžete zadat jen pro čtení uživatelů.
         
-    - **Pokud vytváříte sdílenou složku systému souborů NFS** – Musíte zadat IP adresy klientů s povoleným přístupem ke sdílené složce.
+    - **Sdílených složek NFS** – zadejte IP adresy povolené klientů, které můžete přístup ke sdílené složce.
 
         ![Přidání sdílené složky systému souborů NFS](./media/data-box-gateway-deploy-add-shares/add-share-nfs-1.png)
    
-9. Kliknutím na **Vytvořit** vytvořte sdílenou složku. 
+9. Vyberte **vytvořit** sdílenou složku vytvořit.
     
-    Zobrazí se oznámení o probíhajícím vytváření sdílené složky. Po vytvoření sdílené složky se zadaným nastavením se okno **Sdílené složky** aktualizuje a zobrazí se v něm nová sdílená složka. 
+    Zobrazí upozornění, že vytvoření sdílené složky se v průběhu. Po vytvoření sdílené složky se zadaným nastavením **sdílené složky** dlaždici aktualizace tak, aby odrážely novou sdílenou složku.
     
-    ![Aktualizovaný seznam sdílených složek](./media/data-box-gateway-deploy-add-shares/updated-list-of-shares.png) 
+    ![Aktualizované dlaždice sdílené složky](./media/data-box-gateway-deploy-add-shares/updated-list-of-shares.png) 
 
 ## <a name="connect-to-the-share"></a>Připojení ke sdílené složce
 
-Pokud se chcete připojit ke sdíleným složkám, na svém klientovi Windows Serveru připojeném k vaší službě Data Box Gateway proveďte následující kroky.
+Teď můžete připojit k jednomu nebo více sdílených složek, které jste vytvořili v předchozím kroku. V závislosti na tom, jestli máte SMB nebo sdílené složky NFS, postup se může lišit.
+
+### <a name="connect-to-an-smb-share"></a>Připojení ke sdílené složce SMB
+
+V klientu Windows Server připojený k vaší bráně dat pole připojení k serveru SMB pro sdílení zadáním příkazů:
 
 
-1. Otevřete příkazové okno. Na příkazovém řádku zadejte:
+1. V příkazovém řádku zadejte:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -93,17 +94,18 @@ Pokud se chcete připojit ke sdíleným složkám, na svém klientovi Windows Se
 
     ```powershell
     Microsoft Windows [Version 18.8.16299.192) 
-    (c) 2817 microsoft Corporation. All rights reserved . 
+    (c) 2017 microsoft Corporation. All rights reserved . 
     
     C: \Users\GatewayUser>net use \\10.10.10.60\newtestuser /u:Tota11yNewUser 
-    Enter the password for 'TotallyNewUser' to connect to '10.10.10.60' • 
+    Enter the password for 'TotallyNewUser' to connect to '10.10.10.60'  
     The command completed successfully. 
     
     C: \Users\GatewayUser>
     ```   
 
 
-2. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Klikněte na **OK**. Tím se otevře Průzkumník souborů. Sdílené složky, které jste vytvořili, by se teď měly zobrazit jako složky. Pokud chcete zobrazit obsah sdílené složky, vyberte příslušnou složku a dvakrát na ni klikněte.
+2. Na klávesnici stiskněte Windows + r 
+3. V **spustit** okno, zadejte `\\<device IP address>` a pak vyberte **OK**. Otevře se Průzkumník souborů. Nyní by se zobrazit sdílené složky, které jste vytvořili jako složky. V Průzkumníku souborů dvakrát klikněte na sdílenou složku (složku) a zobrazit obsah.
  
     ![Připojení ke sdílené složce SMB](./media/data-box-gateway-deploy-add-shares/connect-to-share2.png)-->
 
@@ -111,9 +113,9 @@ Pokud se chcete připojit ke sdíleným složkám, na svém klientovi Windows Se
 
 ### <a name="connect-to-an-nfs-share"></a>Připojení ke sdílené složce systému souborů NFS
 
-Na svém klientovi Linuxu připojeném k vašemu Data Boxu Edge proveďte následující kroky.
+U svého klienta systému Linux, připojení k zařízení Data Box Edge proveďte následující postup:
 
-1. Ujistěte se, že je na klientovi nainstalovaný klient NFSv4. Klienta systému souborů NFS nainstalujete následujícím příkazem:
+1. Ujistěte se, že klient má názvů NFSv4 nainstalovaného klienta. Klienta systému souborů NFS nainstalujete následujícím příkazem:
 
    `sudo apt-get install nfs-common`
 
@@ -130,8 +132,8 @@ Na svém klientovi Linuxu připojeném k vašemu Data Boxu Edge proveďte násle
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/gateway`
 
 > [!NOTE] 
-> Pro verzi Preview platí následující upozornění:
-> - Po vytvoření souboru ve sdílené složce se nepodporuje přejmenování souboru. 
+> Na tuto verzi platí následující upozornění:
+> - Po vytvoření souboru ve sdílené složce se nepodporuje přejmenování souboru.
 > - Odstraněním souboru ze sdílené složky se neodstraní příslušná položka v účtu úložiště.
 > - Pokud používáte `rsync` ke kopírování dat, pak `rsync -a` možnost není podporována.
 

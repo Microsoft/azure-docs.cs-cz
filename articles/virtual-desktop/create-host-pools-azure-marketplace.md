@@ -1,22 +1,22 @@
 ---
-title: Vytvoření fondu hostitele pomocí webu Azure Marketplace (preview) – Azure
-description: Postup vytvoření fondu hostitele virtuální plochy Windows pomocí webu Azure Marketplace.
+title: Vytvoření fondu hostitele Preview virtuální plochy Windows pomocí Azure Marketplace – Azure
+description: Postup vytvoření fondu hostitele Preview virtuální plochy Windows pomocí webu Azure Marketplace.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: a1d172f219580b390ba4855928d6f6a68c8269b9
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: cc404c84bf855ab6e49d13207f40b9faa32cdbb2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318110"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399875"
 ---
-# <a name="tutorial-create-a-host-pool-with-azure-marketplace-preview"></a>Kurz: Vytvoření fondu hostitele pomocí webu Azure Marketplace (Preview)
+# <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Kurz: Vytvoření fondu hostitele pomocí webu Azure Marketplace
 
-Hostitel fondy jsou kolekce jednoho nebo víc stejných virtuálních počítačů v rámci tenanta (preview) prostředí virtuálního klienta Windows. Každý hostitel fond může obsahovat skupinu aplikací, které mohou uživatelé komunikovat s stejně jako ve fyzických stolním počítači.
+Hostitel fondy jsou kolekce jednoho nebo víc stejných virtuálních počítačů v prostředí klienta Windows virtuální plochy, ve verzi Preview. Každý hostitel fond může obsahovat skupinu aplikací, které mohou uživatelé komunikovat s stejně jako ve fyzických stolním počítači.
 
 Tento článek popisuje postup vytvoření fondu hostitele v rámci tenanta virtuální plochy Windows pomocí Microsoft Azure Marketplace nabídku. To zahrnuje vytváření hostitele fondu ve Windows virtuálního klienta, vytváří se skupina prostředků s virtuálními počítači v rámci předplatného Azure připojení těchto počítačů k doméně služby Active Directory a registrace virtuálních počítačů pomocí virtuální plochy Windows.
 
@@ -64,7 +64,7 @@ Pro okno nastavení virtuálního počítače:
 3. Vyberte virtuální síť, která má připojení k serveru služby Active Directory, a potom vyberte podsíť k hostování virtuálních počítačů.
 4. Vyberte **OK**.
 
-### <a name="windows-virtual-desktop-tenant-information"></a>Informace o tenantovi virtuální plochy Windows
+### <a name="windows-virtual-desktop-preview-tenant-information"></a>Informace o tenantovi Preview virtuální plochy Windows
 
 Okno informace o tenantovi virtuální plochy Windows:
 

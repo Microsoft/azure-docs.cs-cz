@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: fa48d3825b5b942497b1eabd19a1eeb7e0141058
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 39198c0093f018b64a1292f023914651b51b4faf
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003138"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403778"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>Vyberte stránku smlouvu v Azure Active Directory B2C pomocí vlastních zásad
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 Kód jazyka JavaScript na straně klienta můžete povolit v Azure Active Directory (Azure AD) B2C zásady, ať už používáte toky uživatelů nebo vlastními zásadami. Tento článek popisuje, jak v Azure AD B2C vyberte stránku smlouvy tím, že nakonfigurujete v [vlastní zásady](active-directory-b2c-overview-custom.md). Kontrakt stránky je sdružení prvky, které poskytuje Azure AD B2C a obsah, který zadáte. Pokud máte v úmyslu použít [Javascript](javascript-samples.md), budete muset definovat verze kontraktu stránky pro všechny vaše definice obsahu ve vlastních zásadách.
 

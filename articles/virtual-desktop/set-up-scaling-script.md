@@ -1,22 +1,22 @@
 ---
-title: Automatické škálování hostitelů relací – Azure
-description: Popisuje, jak nastavit automatické škálování skriptu pro hostitele relace Windows virtuálního klienta (preview).
+title: Automatické škálování hostitelé systému Windows virtuální plochy Preview relace – Azure
+description: Popisuje, jak nastavit automatické škálování skriptu pro hostitele relace Windows virtuální plochy, ve verzi Preview.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: d800b45310ae476ec0c54460d9719c17e35dfe5a
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: bee02549d68b1dbdba3f0e62477b28bbd475ea32
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318356"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402486"
 ---
 # <a name="automatically-scale-session-hosts"></a>Automatické škálování hostitele relace
 
-Náklady na virtuální počítač pro v mnoha nasazeních virtuálního klienta Windows v Azure, představují podstatnou část celkové náklady na nasazení virtuální plochy Windows. Pokud chcete snížit náklady, je nejlepší vypnout a uvolnit relace hostování virtuálních počítačů (VM) během hodin mimo špičku využití a pak je restartujte během špičky využití.
+Pro mnoho nasazení virtuální Preview Desktop Windows v Azure náklady na virtuální počítač představují významnou část celkové náklady na nasazení virtuální plochy Windows. Pokud chcete snížit náklady, je nejlepší vypnout a uvolnit relace hostování virtuálních počítačů (VM) během hodin mimo špičku využití a pak je restartujte během špičky využití.
 
 Tento článek používá jednoduchý skript škálování pro automatické škálování relace hostování virtuálních počítačů v prostředí virtuálního klienta Windows. Další informace o tom, jak škálování skriptu funguje, najdete v článku [fungování škálování skriptu](#how-the-scaling-script-works) oddílu.
 

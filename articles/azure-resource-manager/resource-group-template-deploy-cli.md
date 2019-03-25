@@ -10,24 +10,40 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/14/2019
+ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0c298ba2074a57bd182b23e5fd9bc6b68ee496ad
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: f64a76fa6063ebc5681b546b53fe9d6ca7bc5037
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300445"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400398"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI
 
 Tento článek vysvětluje, jak nasadit prostředky do Azure pomocí rozhraní příkazového řádku Azure pomocí šablon Resource Manageru. Pokud nejsou dobře známé koncepty nasazení a správou řešení Azure, najdete v článku [přehled Azure Resource Manageru](resource-group-overview.md).  
 
-Šablony Resource Manageru, který nasazujete, může být místní soubor na počítači, nebo externí soubor, který se nachází v úložišti, jako je GitHub. Šablona nasazení v tomto článku je k dispozici jako [Šablona účtu úložiště v Githubu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
-
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
 Pokud nemáte nainstalované rozhraní příkazového řádku Azure, můžete použít [Cloud Shell](#deploy-template-from-cloud-shell).
+
+## <a name="deployment-scope"></a>Rozsah nasazení
+
+Můžete cílit na vaše nasazení předplatného Azure nebo skupinu prostředků v rámci předplatného. Ve většině případů cílíte nasazení do skupiny prostředků. Použití předplatného nasazení použít zásady a přiřazení rolí v rámci předplatného. Vytvořte skupinu prostředků a nasazení prostředků do ní také použijete nasazení předplatných. V závislosti na rozsahu nasazení můžete použít různé příkazy.
+
+Nasazení do **skupiny prostředků**, použijte [vytvořit nasazení skupiny pro az](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create):
+
+```azurecli
+az group deployment create --resource-group <resource-group-name> --template-file <path-to-template>
+```
+
+Nasazení do **předplatné**, použijte [az nasazení vytvořit](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create):
+
+```azurecli
+az deployment create --location <location> --template-file <path-to-template>
+```
+
+V příkladech v tomto článku se používá nasazení skupiny prostředků. Další informace o nasazení předplatných najdete v tématu [vytvoření skupiny prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
 
 ## <a name="deploy-local-template"></a>Nasazení místního šablony
 
@@ -56,7 +72,7 @@ Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zp
 "provisioningState": "Succeeded",
 ```
 
-## <a name="deploy-external-template"></a>Nasazení externí šablony
+## <a name="deploy-remote-template"></a>Nasazení vzdálené šablony
 
 Místo uložení šablony Resource Manageru na místním počítači, můžete chtít uložit je do externího umístění. Šablony můžete uložit úložiště správy zdrojového kódu (např. GitHub). Nebo můžete je ukládat v účtu úložiště Azure pro zajištění sdíleného přístupu ve vaší organizaci.
 
@@ -83,10 +99,6 @@ az group deployment create --resource-group examplegroup \
   --template-uri <copied URL> \
   --parameters storageAccountType=Standard_GRS
 ```
-
-## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>Nasazení do více než jedné skupiny prostředků nebo předplatného
-
-Zpravidla nasazujete, všechny prostředky ve vaší šabloně do jedné skupiny prostředků. Existují ale scénáře, ve které chcete nasadit sadu prostředků společně, ale je umístit do různých skupin prostředků nebo předplatných. Můžete nasadit do pouze pět skupin prostředků v jednom nasazení. Další informace najdete v tématu [Azure nasadit prostředky do více než jedno předplatné nebo skupinu prostředků](resource-manager-cross-resource-group-deployment.md).
 
 ## <a name="redeploy-when-deployment-fails"></a>Opětovné nasazení při nasazení se nezdaří
 
@@ -196,7 +208,6 @@ az group deployment create \
   --parameters @demotemplate.parameters.json \
   --parameters exampleArray=@arrtest.json
 ```
-
 
 ## <a name="test-a-template-deployment"></a>Test šablony nasazení
 

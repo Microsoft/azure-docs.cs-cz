@@ -1,22 +1,22 @@
 ---
-title: Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru (preview) – Azure
-description: Postup vytvoření fondu hostitele ve virtuální plochy Windows pomocí šablony Azure Resource Manageru.
+title: Vytvoření fondu hostitele Preview virtuální plochy Windows pomocí šablony Azure Resource Manageru – Azure
+description: Postup vytvoření fondu hostitele v náhledu virtuální plochy Windows pomocí šablony Azure Resource Manageru.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 7f4849c19d56bb385e7ad3ce0aa95e16d5c53c23
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 262ec35a8a177652dff12bccb3b5435cb5856d81
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318461"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401423"
 ---
-# <a name="create-a-host-pool-with-an-azure-resource-manager-template-preview"></a>Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru (Preview)
+# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru
 
-Hostitel fondy jsou kolekce jednoho nebo víc stejných virtuálních počítačů v rámci tenanta (preview) prostředí virtuálního klienta Windows. Každý hostitel fond může obsahovat skupinu aplikací, které mohou uživatelé komunikovat s stejně jako ve fyzických stolním počítači.
+Hostitel fondy jsou kolekce jednoho nebo víc stejných virtuálních počítačů v prostředí klienta Windows virtuální plochy, ve verzi Preview. Každý hostitel fond může obsahovat skupinu aplikací, které mohou uživatelé komunikovat s stejně jako ve fyzických stolním počítači.
 
 Postupujte podle pokynů v této části a vytvořit tak fond hostitele pro virtuální plochy Windows tenanta pomocí šablony Azure Resource Manageru poskytované společností Microsoft. V tomto článku zjistíte, jak vytvoření hostitele fondu ve virtuální plochy Windows, vytvořte skupinu prostředků s virtuálními počítači v rámci předplatného Azure, připojit tyto virtuální počítače k doméně AD a zaregistrovat virtuální počítače s Windows virtuálního klienta.
 

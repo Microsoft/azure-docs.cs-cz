@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 814becd2092c3603f20cd65152e8183446954ce8
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 41f9ce38124cdee2166b5a573c4ab91a26c5fb8a
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216352"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402418"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zásady omezení přístupu služby API Management
 
@@ -382,7 +382,8 @@ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure
     require-expiration-time="true|false"
     require-scheme="scheme"
     require-signed-tokens="true|false"
-    clock-skew="allowed clock skew in seconds">
+    clock-skew="allowed clock skew in seconds"
+    output-token-variable-name="name of a variable to receive a JWT object representing successfully validated token">
   <issuer-signing-keys>
     <key>base64 encoded signing key</key>
     <!-- if there are multiple keys, then add additional key elements -->
@@ -464,43 +465,32 @@ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure
 
 #### <a name="authorize-access-to-operations-based-on-token-claims"></a>Povolit přístup k operacím na základě tokenu deklarací identity
 
-Tento příklad ukazuje způsob použití [ověření JWT](api-management-access-restriction-policies.md#ValidateJWT) zásad má předběžně autorizovat přístup k operacím na základě tokenu deklarací identity. Ukázka konfigurace a používání této zásady, najdete v části [Cloud Cover epizodě 177: Další funkce API Management s Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a přechod na libovolný krok 13:50. Rychlé převinutí vpřed na 15:00, jaké zásady nakonfigurované v editoru zásad a potom na 18:50 ukázku volání operace z portálu pro vývojáře s i bez požadovaný autorizační token.
+Tento příklad ukazuje způsob použití [ověření JWT](api-management-access-restriction-policies.md#ValidateJWT) zásad autorizace přístupu k operacím podle hodnoty deklarací identity tokenu.
 
 ```xml
-<!-- Copy the following snippet into the inbound section at the api (or higher) level to pre-authorize access to operations based on token claims -->
-<set-variable name="signingKey" value="insert signing key here" />
+<validate-jwt header-name="Authorization" require-scheme="Bearer" output-token-variable-name="jwt">
+    <issuer-signing-keys>
+        <key>{{jwt-signing-key}}</key> <!-- signing key is stored in a named value -->
+    </issuer-signing-keys>
+    <audiences>
+        <audience>@(context.Request.OriginalUrl.Host)</audience>
+    </audiences>
+    <issuers>
+        <issuer>contoso.com</issuer>
+    </issuers>
+    <required-claims>
+        <claim name="group" match="any">
+            <value>finance</value>
+            <value>logistics</value>
+        </claim>
+    </required-claims>
+</validate-jwt>
 <choose>
-  <when condition="@(context.Request.Method.Equals("patch",StringComparison.OrdinalIgnoreCase))">
-    <validate-jwt header-name="Authorization">
-      <issuer-signing-keys>
-        <key>@((string)context.Variables["signingKey"])</key>
-      </issuer-signing-keys>
-      <required-claims>
-        <claim name="edit">
-          <value>true</value>
-        </claim>
-      </required-claims>
-    </validate-jwt>
-  </when>
-  <when condition="@(new [] {"post", "put"}.Contains(context.Request.Method,StringComparer.OrdinalIgnoreCase))">
-    <validate-jwt header-name="Authorization">
-      <issuer-signing-keys>
-        <key>@((string)context.Variables["signingKey"])</key>
-      </issuer-signing-keys>
-      <required-claims>
-        <claim name="create">
-          <value>true</value>
-        </claim>
-      </required-claims>
-    </validate-jwt>
-  </when>
-  <otherwise>
-    <validate-jwt header-name="Authorization">
-      <issuer-signing-keys>
-        <key>@((string)context.Variables["signingKey"])</key>
-      </issuer-signing-keys>
-    </validate-jwt>
-  </otherwise>
+    <when condition="@(context.Request.Method == "POST" && !((Jwt)context.Variables["jwt"]).Claims["group"].Contains("finance"))">
+        <return-response>
+            <set-status code="403" reason="Forbidden" />
+        </return-response>
+    </when>
 </choose>
 ```
 
@@ -550,6 +540,7 @@ Tento příklad ukazuje způsob použití [ověření JWT](api-management-access
 | požadovat podepsané tokenů           | Datový typ Boolean. Určuje, zda je token musí být podepsán.                                                                                                                                                                                                                                                                                                                                                                                           | Ne                                                                               | true (pravda)                                                                              |
 | Oddělovač                       | řetězec. Určuje oddělovač (například ",") má být použit pro extrahování sadu hodnot z více Vážíme si toho deklarace identity.                                                                                                                                                                                                                                                                                                                                          | Ne                                                                               | neuvedeno                                                                               |
 | url                             | Otevřete adresu URL koncového bodu konfigurace ID kde lze získat metadata Open ID konfigurace. Odpověď by měla být podle specifikace definované na adrese URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`. Azure Active Directory použít následující adresu URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` nahraďte název tenanta adresáře, třeba `contoso.onmicrosoft.com`. | Ano                                                                              | neuvedeno                                                                               |
+výstup token proměnnou název|řetězec. Název kontextové proměnné, která se zobrazí hodnota tokenu jako objekt typu [ `Jwt` ](api-management-policy-expressions.md) po úspěšném ověření tokenu|Ne|neuvedeno
 
 ### <a name="usage"></a>Využití
 

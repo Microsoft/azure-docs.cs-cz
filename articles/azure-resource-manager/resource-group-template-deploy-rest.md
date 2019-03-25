@@ -10,28 +10,30 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/14/2019
+ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: bd574eb2d3537d3e5c0774f57e37283817cc7879
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3468f5b625911cd637b22e2c1d35a47fb7d7b0e4
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112020"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402826"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API
 
 Tento článek vysvětluje, jak nasadit prostředky do Azure pomocí rozhraní REST API Resource Manageru se šablonami Resource Manageru.  
 
-> [!TIP]
-> Chybě během nasazování, vám pomůžou s laděním:
-> 
-> * [Zobrazení operací nasazení](resource-manager-deployment-operations.md) Další informace o tom, jak informace, které pomůžou vyřešit chyby
-> * [Řešení běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md) se dozvíte, jak řešit běžné chyby nasazení
-> 
-> 
-
 Šablony můžete zahrnout buď v textu žádosti nebo odkaz na soubor. Při použití souboru, může to být z místního souboru nebo externí soubor, který je k dispozici prostřednictvím identifikátoru URI. Když je šablona v účtu úložiště, můžete omezit přístup k šabloně a během nasazení zadat token sdíleného přístupového podpisu (SAS).
+
+## <a name="deployment-scope"></a>Rozsah nasazení
+
+Můžete cílit na vaše nasazení předplatného Azure nebo skupinu prostředků v rámci předplatného. Ve většině případů cílíte nasazení do skupiny prostředků. Použití předplatného nasazení použít zásady a přiřazení rolí v rámci předplatného. Vytvořte skupinu prostředků a nasazení prostředků do ní také použijete nasazení předplatných. V závislosti na rozsahu nasazení můžete použít různé příkazy.
+
+Nasazení do **skupiny prostředků**, použijte [nasazení – vytvořit](/rest/api/resources/deployments/createorupdate).
+
+Nasazení do **předplatné**, použijte [nasazení – vytvořit v oboru předplatného](/rest/api/resources/deployments/createorupdateatsubscriptionscope).
+
+V příkladech v tomto článku se používá nasazení skupiny prostředků. Další informace o nasazení předplatných najdete v tématu [vytvoření skupiny prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
 
 ## <a name="deploy-with-the-rest-api"></a>Nasazení pomocí rozhraní REST API
 1. Nastavte [společných parametrů a záhlaví](/rest/api/azure/), včetně ověřování tokenů.

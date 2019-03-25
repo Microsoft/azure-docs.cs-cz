@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2c5a7dc08886e21ef8e287540d9139ec555b11a2
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bc8a644f99d9a84e1f2c177a87e2668ae9a57868
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242288"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400632"
 ---
 # <a name="collect-data-from-threat-intelligence-providers"></a>Shromažďování dat od poskytovatelů analýzy hrozeb 
 
@@ -31,6 +31,8 @@ Až budete Streamovat data do Azure Sentinelu, obohatit ho s hrozeb informační
 Umožňuje křížové obraťte se na hodnotu true hrozeb, například Pokud dostanete výstrahu od konkrétní IP adresu, výstrahy a pravidla integraci vašich threat intelligence poskytovatele úspěšnost dali vám vědět, pokud tuto IP adresu bylo nedávno zjištěno škodlivé , Umožňuje integraci s azure Sentinel [poskytovatelů analýzy hrozeb](https://aka.ms/graphsecuritytips). 
 
 Do Azure Sentinelu jediným kliknutím můžete Streamovat protokoly z poskytovatelů analýzy hrozeb. Toto připojení umožňuje začlenit ukazatele, který obsahuje různé typy pozorovatelné objekty, jako je například IP adresa, domény, adresa URL a hodnota hash souboru, vyhledávání a vytvářet vlastní výstrahy v Azure ověřovacích pravidel.  
+> [!NOTE]
+> Ukazatele upravené hrozeb můžete zadat do ověřovacích Azure pro použití v pravidel upozornění, řídicí panely a scénáře typu díky integraci s [zabezpečení společnosti Microsoft Graph tiIndicator](https://aka.ms/graphsecuritytiindicators) entity nebo pomocí [Microsoft Graf zabezpečení integrované platformy Threat Intelligence](https://aka.ms/graphsecuritytips).
 
 ## <a name="prerequisites"></a>Požadavky  
 

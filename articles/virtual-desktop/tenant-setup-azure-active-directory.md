@@ -1,22 +1,22 @@
 ---
-title: Vytvořit tenanta ve Windows virtuálního klienta (preview) – Azure
-description: Popisuje, jak nastavit virtuální plochy Windows tenantů ve službě Azure Active Directory.
+title: Vytvořit tenanta ve Windows Virtual Desktop Preview – Azure
+description: Popisuje, jak nastavit službu Windows Virtual Desktop Preview tenantů ve službě Azure Active Directory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 26bcae12ee5e053289dd18c9f378eff43a0b0e04
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: b8b5c2cef1db5018ce0d61e1950f49a3bd215ac2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368166"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402894"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Kurz: Vytvořit tenanta v virtuální plochy Windows (Preview)
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Kurz: Vytvořit tenanta v náhledu virtuální plochy Windows
 
-Vytvoření tenanta v virtuální plochy Windows (preview) je prvním krokem k vytvoření řešení virtualizace plochy. Tenant je skupina jednoho nebo několika fondů hostitele. Každý hostitel fond se skládá z více hostitelů relací, spuštěná jako virtuální počítače v Azure a zaregistrován ke službě Windows virtuálního klienta. Každý hostitel fond obsahuje také jeden nebo více skupin aplikací, které se používají k publikování zdrojů Vzdálená plocha a Vzdálená aplikace pro uživatele. S tenantem sestavení hostitele fondy, vytvořit skupiny aplikací, přiřazení uživatelů a připojovat prostřednictvím služby.
+Vytvoření tenanta v náhledu virtuální plochy Windows je prvním krokem k vytvoření řešení virtualizace plochy. Tenant je skupina jednoho nebo několika fondů hostitele. Každý hostitel fond se skládá z více hostitelů relací, spuštěná jako virtuální počítače v Azure a zaregistrován ke službě Windows virtuálního klienta. Každý hostitel fond obsahuje také jeden nebo více skupin aplikací, které se používají k publikování zdrojů Vzdálená plocha a Vzdálená aplikace pro uživatele. S tenantem sestavení hostitele fondy, vytvořit skupiny aplikací, přiřazení uživatelů a připojovat prostřednictvím služby.
 
 V tomto kurzu získáte informace o těchto tématech:
 
@@ -32,7 +32,7 @@ Zde je, co potřebujete k nastavení tenanta virtuální plochy Windows:
    * To platí také pro vytvoření virtuálního klienta Windows tenanta pro své zákazníky organizace Cloud Solution Provider (CSP). Pokud jste v organizaci zprostředkovatele kryptografických služeb, musíte být schopni se přihlásit jako globální správce Azure Active Directory zákazníka.
 * ID předplatného Azure
 
-## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-service"></a>Oprávnění grant Azure Active Directory na službu Windows virtuálního klienta
+## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>Oprávnění grant Azure Active Directory na službu Windows Virtual Desktop Preview
 
 Pokud jste už udělili oprávnění k virtuálnímu klientovi Windows Azure Active Directory, můžete tuto část přeskočte.
 
@@ -66,7 +66,7 @@ Přiřazení role aplikace TenantCreator pomocí účtu globálního správce:
    - Pro jednoduchost může to být účet globálního správce.
 6. Vyberte uživatelský účet, klikněte na tlačítko **vyberte** tlačítko a pak vyberte **přiřadit**.
 
-## <a name="create-a-windows-virtual-desktop-tenant"></a>Vytvoření klienta Windows virtuálního klienta
+## <a name="create-a-windows-virtual-desktop-preview-tenant"></a>Vytvoření klienta Windows virtuální plochy, ve verzi Preview
 
 Teď, když máte oprávnění služby virtuální plochy Windows k dotazování služby Azure Active Directory a přiřazenou roli TenantCreator uživatelský účet, můžete vytvořit klienta virtuální plochy Windows.
 

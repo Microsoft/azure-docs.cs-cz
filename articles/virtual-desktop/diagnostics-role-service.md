@@ -1,22 +1,22 @@
 ---
-title: Identifikujte problémy s funkcí diagnostiky (preview) – Azure
-description: Popisuje funkce Diagnostika virtuální plochy Windows a jak ji používat.
+title: Identifikujte problémy s funkcí diagnostiky Windows Virtual Desktop Preview – Azure
+description: Popisuje funkce Diagnostika Preview virtuální plochy Windows a jak ji používat.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: f44f4d632fa1fc607f3933be8e15eb939e20a8ae
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: a9b8be58e8dfb27fbe896cf1c8d8dc0e91e3b24c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318611"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402843"
 ---
-# <a name="identify-issues-with-the-diagnostics-feature-preview"></a>Identifikujte problémy s funkcí diagnostiky (Preview)
+# <a name="identify-issues-with-the-diagnostics-feature"></a>Identifikujte problémy s funkcí diagnostiky
 
-Virtuální Desktop Windows (preview) nabízí funkce diagnostiky (preview), která umožňuje správci umožní identifikovat problémy s pomocí jednoho rozhraní. Role virtuálního klienta Windows protokolování diagnostiky činnosti, pokaždé, když uživatel komunikuje s systému. Každý protokol obsahuje důležité informace, třeba virtuální plochy Windows role zapojené do transakce, chybové zprávy, informace o tenantovi a informace o uživateli. Diagnostické aktivity se vytvoří s koncovým uživatelem i akce správy a lze rozdělit do tří hlavních bloků:
+Virtuální Desktop Preview Windows nabízí diagnostické funkce, která umožňuje správci umožní identifikovat problémy s pomocí jednoho rozhraní. Role virtuálního klienta Windows protokolování diagnostiky činnosti, pokaždé, když uživatel komunikuje s systému. Každý protokol obsahuje důležité informace, třeba virtuální plochy Windows role zapojené do transakce, chybové zprávy, informace o tenantovi a informace o uživateli. Diagnostické aktivity se vytvoří s koncovým uživatelem i akce správy a lze rozdělit do tří hlavních bloků:
 
 * Informační kanál aktivit předplatného: koncový uživatel spustí tyto aktivity při každém pokusu o připojení k jejich kanálu pomocí aplikace Vzdálená plocha od Microsoftu.
 * Připojení aktivity: koncový uživatel spustí tyto aktivity pokaždé, když se pokusí připojit k počítači nebo vzdálené aplikace RemoteApp prostřednictvím aplikace Vzdálená plocha od Microsoftu.
@@ -145,7 +145,7 @@ V následující tabulce najdete běžné chyby, které vaši správci tyto prob
 |8000|InvalidAuthorizationRoleScope|Název role, které jste zadali neodpovídá žádné existující názvy rolí. Zkontrolujte název role pro překlepy a zkuste to znovu. |
 |8001|UserNotFound |Uživatelské jméno, které jste zadali, neodpovídá žádné existující uživatelská jména. Zkontrolujte název překlepy a zkuste to znovu.|
 |8005|UserNotFoundInAAD |Uživatelské jméno, které jste zadali, neodpovídá žádné existující uživatelská jména. Zkontrolujte název překlepy a zkuste to znovu.|
-|8008|TenantConsentRequired|Postupujte podle pokynů [tady](tenant-setup-azure-active-directory.md#grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-service) k poskytnutí souhlasu pro vašeho tenanta.|
+|8008|TenantConsentRequired|Postupujte podle pokynů [tady](tenant-setup-azure-active-directory.md#grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service) k poskytnutí souhlasu pro vašeho tenanta.|
 
 ### <a name="external-connection-error-codes"></a>Kódy chyb externí připojení
 
@@ -164,6 +164,6 @@ V následující tabulce najdete běžné chyby, které vaši správci tyto prob
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o rolích v rámci virtuální plochy Windows najdete v tématu [prostředí virtuálního klienta Windows](environment-setup.md).
+Další informace o rolích v rámci virtuální plochy Windows najdete v tématu [prostředí Preview virtuální plochy Windows](environment-setup.md).
 
 Pokud chcete zobrazit seznam dostupných rutin Powershellu pro virtuální plochy Windows, najdete v článku [referenční informace prostředí PowerShell](/powershell/windows-virtual-desktop/overview).

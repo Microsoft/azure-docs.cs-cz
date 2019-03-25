@@ -1,22 +1,22 @@
 ---
-title: Vytvoření instančních objektů a přiřazení role pomocí prostředí PowerShell (preview) – Azure
-description: Postup vytvoření instančních objektů a přiřadit role pomocí prostředí PowerShell ve Windows virtuálního klienta.
+title: Vytvoření instančních objektů Preview virtuální plochy Windows a přiřazení role pomocí prostředí PowerShell – Azure
+description: Postup vytvoření instančních objektů a přiřadit role pomocí prostředí PowerShell ve Windows virtuální plochy, ve verzi Preview.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 86dafa5ccfb28a174a268c23d7dbc847272aaa3f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 1bbe89484d72a21c4432d452d4ddae83ea2d2553
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318145"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400033"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Kurz: Vytvoření instančních objektů a přiřazení role pomocí prostředí PowerShell
 
-Instanční objekty jsou identit, které vytvoříte v Azure Active Directory a přiřadit role a oprávnění pro konkrétní účel. Ve Windows virtuálního klienta (preview) můžete vytvořit službu instančního objektu pro:
+Instanční objekty jsou identit, které vytvoříte v Azure Active Directory a přiřadit role a oprávnění pro konkrétní účel. Windows virtuální Desktop ve verzi Preview je můžete vytvořit instanční objekt pro:
 
 - Automatizace úloh správy konkrétní virtuální plochy Windows
 - Použijte jako přihlašovací údaje místo vyžaduje vícefaktorové ověřování uživatelů při spuštění libovolné šabloně Windows virtuální plochy Azure Resource Manageru
@@ -58,7 +58,7 @@ $svcPrincipal = New-AzureADApplication -AvailableToOtherTenants $true -DisplayNa
 $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrincipal.ObjectId
 ```
 
-## <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Vytvořit přiřazení role v virtuální plochy Windows
+## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Vytvořit přiřazení role v náhledu virtuální plochy Windows
 
 Teď, když jste vytvořili službu objektu zabezpečení, můžete ho použít pro přihlášení k virtuálnímu klientovi Windows. Ujistěte se, že se přihlásit pomocí účtu, který má oprávnění k vytvoření přiřazení role.
 
@@ -112,4 +112,4 @@ Tady jsou tři přihlašovací údaje, které si musí zapsat a rutiny, které p
 V tomto kurzu jste zjistili, jak vytvořit instanční objekt a přihlaste se k virtuálnímu klientovi Windows s ním. Další informace o tom, jak se přihlásit k virtuálnímu klientovi Windows, i nadále připojit k virtuální ploše postupy Windows.
 
 - [Připojte se ke klientovi vzdálené plochy na Windows 7 a Windows 10](connect-windows-7-and-10.md)
-- [Připojení k webovému klientovi virtuálního klienta Windows](connect-web.md)
+- [Připojte se k Windows Virtual Desktop Preview webového klienta](connect-web.md)

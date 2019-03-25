@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat Palo Alto ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak shromažďovat data Palo Alto v ověřovacích Azure.
+title: Shromažďování dat Palo Alto Networks ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
+description: Zjistěte, jak shromažďovat data Palo Alto Networks v Azure Sentinelu.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 149b3b813091033bf5c1685e8b0793f955169808
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6145d77e6485a33ea3a9f9d66a4356587966bc5f
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57841204"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403557"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>Připojit zařízení Palo Alto Networks
 
@@ -27,14 +27,14 @@ ms.locfileid: "57841204"
 > Azure Sentinel je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Je možné připojit Sentinelu Azure do všech zařízení Palo Alto Networks s ukládání souborů protokolu ve formátu Syslog CEF. Integrace s Azure Sentinelu umožňuje snadno spouštět analýzy a dotazy napříč data protokolů z Palo Alto. Další informace o tom, jak Azure Sentinelu ingestuje CEF data, naleznete v tématu [zařízení připojit CEF](connect-common-event-format.md).
+Je možné připojit Sentinelu Azure do všech zařízení Palo Alto Networks s ukládání souborů protokolu ve formátu Syslog CEF. Integrace s Azure Sentinelu umožňuje snadno spouštět analýzy a dotazy napříč data protokolů z Palo Alto Networks. Další informace o tom, jak Azure Sentinelu ingestuje CEF data, naleznete v tématu [zařízení připojit CEF](connect-common-event-format.md).
 
 > [!NOTE]
-> - Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
+> Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
 
-## <a name="step-1-connect-your-palo-alto-appliance-using-an-agent"></a>Krok 1: Připojit zařízení Palo Alto pomocí agenta
+## <a name="step-1-connect-your-palo-alto-networks-appliance-using-an-agent"></a>Krok 1: Připojit zařízení Palo Alto Networks pomocí agenta
 
-Pro vaše zařízení Palo Alto připojení k Azure Sentinelu, budete muset nasadit agenta na vyhrazený počítač (VM v místním prostředí) aby mohly podporovat komunikaci mezi zařízením a Sentinelu Azure. Agenta můžete nasadit automaticky nebo ručně. Automatické nasazení je pouze k dispozici, pokud je vyhrazený počítač v Azure vytváříte nový virtuální počítač. 
+Pro vaše zařízení Palo Alto Networks připojení k Azure Sentinelu, budete muset nasadit agenta na vyhrazený počítač (VM v místním prostředí) aby mohly podporovat komunikaci mezi zařízením a Sentinelu Azure. Agenta můžete nasadit automaticky nebo ručně. Automatické nasazení je pouze k dispozici, pokud je vyhrazený počítač v Azure vytváříte nový virtuální počítač. 
 
 Alternativně můžete nasadit agenta ručně na existující virtuální počítač Azure, na virtuálním počítači v jiném cloudu nebo na místním počítači.
 
@@ -98,12 +98,12 @@ Pokud Azure nepoužíváte, ručně nasaďte agenta Sentinelu Azure ke spuštěn
       1. Restartujte agenta Syslog pomocí tohoto příkazu: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Potvrďte, že nejsou žádné chyby v protokolu agenta spuštěním tohoto příkazu: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
-## <a name="step-2-forward-palo-alto-logs-to-the-syslog-agent"></a>Krok 2: Předávání protokolů Palo Alto agentům Syslog
+## <a name="step-2-forward-palo-alto-networks-logs-to-the-syslog-agent"></a>Krok 2: Předávání protokolů Palo Alto Networks agentům Syslog
 
 Nakonfigurujte Palo Alto Networks předávat zprávy Syslog ve formátu CEF do pracovního prostoru Azure prostřednictvím agenta Syslog:
-1.  Přejděte na [Průvodci konfigurací formát cef (Common Event Format)](https://docs.paloaltonetworks.com/resources/cef) a stahovat pdf pro váš typ zařízení. Postupujte podle všech pokynů v Průvodci nastavit vaše zařízení Palo Alto shromažďování událostí CEF. 
+1.  Přejděte na [Průvodci konfigurací formát cef (Common Event Format)](https://docs.paloaltonetworks.com/resources/cef) a stahovat pdf pro váš typ zařízení. Postupujte podle všech pokynů v Průvodci nastavit vaše zařízení Palo Alto Networks shromažďování událostí CEF. 
 
-1.  Přejděte na [monitorování konfigurace Syslog](https://aka.ms/asi-syslog-paloalto-forwarding) a postupujte podle kroků 2 a 3 a konfigurace předávání událostí CEF vaše zařízení Palo Alto Sentinelu Azure.
+1.  Přejděte na [monitorování konfigurace Syslog](https://aka.ms/asi-syslog-paloalto-forwarding) a postupujte podle kroků 2 a 3 a konfigurace předávání událostí CEF vaše zařízení Palo Alto Networks Sentinelu Azure.
 
     1. Nezapomeňte nastavit **formát serveru Syslog** k **BSD**.
     1. Ujistěte se, že nastavíte **zařízení číslo** na stejnou hodnotu, která jste nastavili v agentovi Syslog.
@@ -130,7 +130,7 @@ Může trvat upwards of 20 minut, než vaše protokoly spuštění se zobrazí v
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto dokumentu jste zjistili, jak se připojit k Azure Sentinelu zařízení Palo Alto. Další informace o Azure Sentinelu, naleznete v následujících článcích:
+V tomto dokumentu jste zjistili, jak se připojit k Azure Sentinelu zařízení Palo Alto Networks. Další informace o Azure Sentinelu, naleznete v následujících článcích:
 - Zjistěte, jak [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
 - Začínáme [detekuje hrozby s využitím Azure Sentinelu](tutorial-detect-threats.md).
 

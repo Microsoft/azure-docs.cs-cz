@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/04/2019
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 52d2061262fd04e68ed13aac8932c23b7074f83e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 125ad28f049662ae6d91c61bb5ee79c1c1428af5
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113766"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401762"
 ---
-# <a name="azure-data-box-edge-system-requirements-preview"></a>Azure Data Box Edge požadavky na systém (preview)
+# <a name="azure-data-box-edge-system-requirements"></a>Požadavky na systém Azure Data Box Edge
 
 Tento článek popisuje důležité systémové požadavky pro vaše řešení Microsoft Azure Data Box Edge a klienti připojení k Azure Data Box Edge. Doporučujeme, abyste si informace o pečlivě před nasazením hranici pole Data. Můžete se vrátit zpět k těmto informacím podle potřeby během nasazení a následná operace.
 
@@ -23,9 +23,6 @@ Požadavky na systém pro okraji pole Data patří:
 
 - **Požadavky na software pro hostitele** -popisuje podporované platformy, prohlížeče pro místní konfiguraci, uživatelského rozhraní, klienti SMB a veškeré další požadavky pro klienty, kteří přístup k zařízení.
 - **Požadavky na síť pro zařízení** – poskytuje informace o žádné požadavky na síť pro operaci fyzickém zařízení.
-
-> [!IMPORTANT]
-> Data Box Edge je ve verzi Preview. Před nasazením tohoto řešení si prosím přečtěte [podmínky použití verze Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Podporovaný operační systém pro klienty připojené k zařízení
 
@@ -63,10 +60,7 @@ Použijte následující tabulku pro konfigurace portů pro servery, které host
 
 | Port č. | Snížení nebo navýšení kapacity | Rozsah portů | Požaduje se | Doprovodné materiály |
 |----------|-----------|------------|----------|----------|
-| TCP 5671 (AMQP)| Výstup       | WAN        | Ano      | Výchozí komunikační protokol pro IoT Edge. Musí být otevřený, pokud Azure IoT Edge není nakonfigurovaná pro jiné podporované protokoly nebo je požadovaný komunikační protokol AMQP. <br>5672 pro AMQP nepodporuje IoT Edge. <br>Blokovat tento port při použití Azure IoT Edge různé IoT Hub podporovaný protokol. |
-| TCP 443 (HTTPS)| Výstup       | WAN        | Ano      | Odchozí otevřen pro IoT Edge zřizování. Pokud máte transparentní brány pomocí zařízení typu list, které může odesílat požadavky metod. Port 443 v takovém případě nemusí být otevřený, aby externí sítě připojit ke službě IoT Hub nebo poskytuje služby IoT Hub pomocí Azure IoT Edge. Proto může být příchozí pravidlo s omezeným přístupem pouze otevřít příchozí z interní sítě. |
-| TCP 5671 (AMQP) | V        |            | Ne       | Příchozí připojení by se zablokovat.|
-| TCP 443 (HTTPS) | V        |            | V některých případech naleznete v tématu komentáře | Příchozí připojení by měl být otevřen pouze pro konkrétní scénáře. Pokud jiným protokolem než HTTP protokoly, jako AMQP, MQTT se nedá nakonfigurovat, nelze odesílat zprávy přes WebSockets přes port 443. |
+| TCP 443 (HTTPS)| Výstup       | Síť WAN        | Ano      | Odchozí otevřen pro IoT Edge zřizování. Tato konfigurace je nutná, pokud používáte ruční skripty nebo Azure IoT zařízení zřizování služby (DPS).|
 
 Podrobnější informace, přejděte na [brány Firewall a pravidla konfigurace portů pro nasazení IoT Edge](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 

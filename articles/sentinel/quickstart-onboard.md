@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/12/2019
 ms.author: rkarlin
-ms.openlocfilehash: 30f6d08594bdf2e5d78bc8c7881a135d6e57f397
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b6ea852c9a1bb8ea6eb51df310aab97e9b10d48e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852190"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399680"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Ve verzi Preview připojit Azure Sentinel
 
@@ -55,7 +55,7 @@ Po připojení zdroje dat, vyberte si z Galerie odborně řídicí panely, kter�
 1. Klikněte na tlačítko **+ přidat**.
 1. Vyberte pracovní prostor, který chcete použít nebo vytvořit nový. Můžete spustit ověřovací Azure na více než jednomu pracovnímu prostoru, ale data budou izolovaná do jednoho pracovního prostoru.
 
-   ![search](./media/quickstart-onboard/choose-workspace.png)
+   ![hledat](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
    > - **Umístění pracovního prostoru** je důležité pochopit, že všechna data můžete Streamovat do ověřovacích Azure je uložen v zeměpisné oblasti pracovního prostoru, který jste vybrali.  
@@ -75,7 +75,6 @@ Klikněte například na **Azure Active Directory**. Pokud propojíte tento zdro
 V dolní části Sentinelu Azure poskytuje doporučení, pro které řídicí panely byste měli nainstalovat pro každý konektor je můžete okamžitě získat zajímavé přehledy napříč vašimi daty. <br> Postupujte podle pokynů k instalaci nebo [naleznete v Průvodci příslušné připojení](connect-data-sources.md) Další informace. Informace o datových konektorů najdete v tématu [připojení služby](connect-data-sources.md).
 
 Za data, ke které jsou připojené zdroje vaše data spustí Streamovat do ověřovacích Azure a je připraven k zahájení práce s. Můžete zobrazit v protokolech [integrované řídicí panely](quickstart-get-visibility.md) a začněte vytvářet dotazy v Log Analytics pro [prozkoumat data](tutorial-investigate-cases.md).
-
 
 
 

@@ -8,19 +8,16 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 03/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 5642f0c1bcb7d7d8dcb17885aa6d3e9197889685
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: 1fae648b4dc946227564e588c6cd9b70b910b2f7
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57887656"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403438"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-edge"></a>Pomocí webu Azure portal ke správě uživatelů na hranici vaší Azure Data Box
 
 Tento článek popisuje, jak spravovat uživatele na hranici vaší Azure Data Box. Můžete spravovat Azure Data Box Edge prostřednictvím webu Azure portal nebo přes místní webové uživatelské rozhraní. Azure Portal můžete použít k přidání, úpravě nebo odstranění uživatelů.
-
-> [!IMPORTANT]
-> Data Box Edge je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 V tomto článku získáte informace o těchto tématech:
 

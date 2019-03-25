@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zásad exportu pro svazek Azure NetApp Files | Microsoft Docs
-description: Popisuje způsob konfigurace zásad exportu pro řízení přístupu ke svazku Azure NetApp Files.
+title: Konfigurace zásad export pro svazek systému souborů NFS pomocí souborů NetApp Azure | Dokumentace Microsoftu
+description: Popisuje postup konfigurace export zásad pro řízení přístupu na použití služby soubory Azure NetApp svazek systému souborů NFS
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 03/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 1098c5c2f42b242b3ba2f68ec7480de90dd7c22e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766644"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401486"
 ---
-# <a name="configure-export-policy-for-a-volume"></a>Konfigurace zásad exportu pro svazek
+# <a name="configure-export-policy-for-an-nfs-volume"></a>Konfigurace zásad export pro svazek systému souborů NFS
 
-Můžete volitelně nakonfigurovat zásady exportu pro řízení přístupu ke svazku Azure NetApp Files. 
+Můžete volitelně nakonfigurovat zásady exportu pro řízení přístupu ke svazku Azure NetApp Files. Export zásad je podpora pouze pro svazky systému souborů NFS. 
 
 ## <a name="steps"></a>Kroky 
 
@@ -47,7 +47,7 @@ Můžete volitelně nakonfigurovat zásady exportu pro řízení přístupu ke s
 
     * **Protokoly**   
         Zadejte protokol, který se použije pro zásadu exportu.   
-        Azure NetApp Files v současné době podporuje jenom NFSv3.
+        Export zásad souborů NetApp Azure v současné době podporuje pouze NFSv3.
 
     ![Zásada exportu](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 

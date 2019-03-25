@@ -6,23 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 02/26/2019
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: c07293971c4cadd8b7bccc608f69faa3baa19ba7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 86cd4190647586ec47519ca481f78267f8999cef
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100849"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402197"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Vyřešte potíže s Azure Data Box Gateway 
 
-Tento článek popisuje postup řešení potíží s Azure Data Box Gateway. 
-
-> [!IMPORTANT]
-> - Data Box Gateway je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-V tomto článku získáte informace o těchto tématech:
+Tento článek popisuje postup řešení potíží s Azure Data Box Gateway. V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Spuštění diagnostiky
@@ -53,9 +48,9 @@ Pokud chcete balíček pro podporu vyzvednout, proveďte následující kroky.
 
     ![Přidání uživatele kliknutím](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
-2. Po vytvoření balíčku pro podporu klikněte na **Stáhnout balíček pro podporu**. Komprimovaný balíček se stáhne do vámi vybrané cesty. Balíček můžete rozbalit a zobrazit soubory systémového protokolu.
+2. Po vytvoření balíčku pro podporu klikněte na **Stáhnout balíček pro podporu**. Komprimovaný balíček se stáhne do vámi vybrané cesty. Můžete rozbalit balíček.
 
-    ![Přidání uživatele kliknutím](media/data-box-gateway-troubleshoot/collect-logs-2.png)
+    ![Klikněte na Přidat uživatele](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
 ## <a name="use-logs-to-troubleshoot"></a>Použití protokolů k řešení potíží
 

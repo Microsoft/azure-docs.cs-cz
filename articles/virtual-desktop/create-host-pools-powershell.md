@@ -1,22 +1,22 @@
 ---
-title: Vytvoření fondu hostitele s prostředím PowerShell (preview) – Azure
-description: Postup vytvoření fondu hostitele v virtuální plochy Windows pomocí rutin prostředí PowerShell.
+title: Vytvoření fondu hostitele Preview virtuální plochy Windows pomocí prostředí PowerShell – Azure
+description: Postup vytvoření fondu hostitele v náhledu virtuální plochy Windows pomocí rutin prostředí PowerShell.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 4b65d7614db94a9cc3fdca3f4b784c2c84ebaef8
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 7b9b7ffbb034a7fb1256d9cc44048cfa55b02245
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318536"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402724"
 ---
-# <a name="create-a-host-pool-with-powershell-preview"></a>Vytvoření fondu hostitele s prostředím PowerShell (Preview)
+# <a name="create-a-host-pool-with-powershell"></a>Vytvoření hostitele fondu pomocí Powershellu
 
-Hostitel fondy jsou kolekce jednoho nebo víc stejných virtuálních počítačů v rámci tenanta (preview) prostředí virtuálního klienta Windows. Každý hostitel fond může obsahovat skupinu aplikací, které mohou uživatelé komunikovat s stejně jako ve fyzických stolním počítači.
+Hostitel fondy jsou kolekce jednoho nebo víc stejných virtuálních počítačů v prostředí klienta Windows virtuální plochy, ve verzi Preview. Každý hostitel fond může obsahovat skupinu aplikací, které mohou uživatelé komunikovat s stejně jako ve fyzických stolním počítači.
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>Použití klienta Powershellu k vytvoření fondu hostitele
 
@@ -70,12 +70,12 @@ Vytvoření virtuálního počítače v několika způsoby:
 - [Vytvoření virtuálního počítače ze spravované image](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
 - [Vytvoření virtuálního počítače z nespravované image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
-## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations"></a>Příprava virtuálních počítačů pro virtuální plochy Windows instalace agentů
+## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-preview-agent-installations"></a>Příprava virtuálních počítačů pro virtuální plochy Preview Windows instalace agentů
 
 Je třeba provést následující kroky, kterými Příprava virtuálních počítačů, aby bylo možné instalovat agenty virtuální plochy Windows a registraci virtuálních počítačů do hostitelů fondu virtuální plochy Windows:
 
 - Je nutné připojení k doméně počítače. To umožňuje příchozí uživatelé virtuální plochy Windows ze svého účtu Azure Active Directory mapovat na svůj účet služby Active Directory a mít přístup k virtuálnímu počítači úspěšně povolený.
-- Pokud virtuální počítač je spuštěný operační systém Windows Server, je nutné nainstalovat roli hostitel relace vzdálené plochy (RDSH) (preview). RDSH role umožňuje agentů virtuálního klienta Windows správně nainstalovat.
+- Pokud virtuální počítač je spuštěný operační systém Windows Server, je nutné nainstalovat roli hostitel relace vzdálené plochy (RDSH). RDSH role umožňuje agentů virtuálního klienta Windows správně nainstalovat.
 
 Pro úspěšné připojení k doméně proveďte následující akce na každém virtuálním počítači:
 
@@ -85,7 +85,7 @@ Pro úspěšné připojení k doméně proveďte následující akce na každém
 4. Vyberte **domény** a pak zadejte doménu služby Active Directory ve virtuální síti.
 5. Ověření pomocí účtu domény, který má oprávnění k připojení k doméně počítače.
 
-## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>Registrace virtuálních počítačů do hostitelů fondu virtuálního klienta Windows
+## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>Registrace virtuálních počítačů do fondu hostitele Windows virtuální plochy, ve verzi Preview
 
 Registrace virtuálních počítačů do hostitelů fondu virtuální plochy Windows je stejně jednoduché jako instalace agentů virtuálního klienta Windows.
 
@@ -114,7 +114,7 @@ K registraci agentů virtuálního klienta Windows, proveďte postup na každý 
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste provedli fondu hostitele, je čas na přidání aplikace RemoteApp (preview). Další informace o tom, jak spravovat aplikace v virtuální plochy Windows, najdete v kurzu skupiny spravovat aplikace.
+Teď, když jste provedli hostitele fondu, můžete ho naplnit aplikace RemoteApp. Další informace o tom, jak spravovat aplikace v virtuální plochy Windows, najdete v kurzu skupiny spravovat aplikace.
 
 > [!div class="nextstepaction"]
 > [Správa kurz skupiny aplikací](./manage-app-groups.md)

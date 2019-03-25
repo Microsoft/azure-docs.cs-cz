@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: fd58bf9582663e64e1aefd8193d48d92f51dcd0e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: 50a505b7f4cc1e8fd840703b1f1aa0111dafdec4
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165656"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400576"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Použití webu Azure Portal ke správě sdílených složek ve službě Azure Data Box Gateway 
 
 Tento článek popisuje postup správy sdílených složek ve službě Azure Data Box Gateway. Azure Data Box Gateway můžete spravovat přes web Azure Portal nebo v místním webovém uživatelském rozhraní. Použijte web Azure Portal k přidání, odstranění a aktualizaci sdílených složek nebo k synchronizaci klíče úložiště pro účet úložiště, který ke sdíleným složkám přidružený.
-
-> [!IMPORTANT]
-> - Data Box Gateway je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 ## <a name="about-shares"></a>Informace o sdílených složkách
 
@@ -51,7 +47,7 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
 4. Je nutné zadat **účet úložiště**, ve kterém se bude sdílená složka nacházet. V účtu úložiště se vytvoří kontejner s názvem sdílené složky, pokud ještě neexistuje. Pokud už kontejner existuje, použije se existující kontejner.
 
-5. V části **Služba úložiště** zvolte Objekt blob bloku, Objekt blob stránky nebo Soubory. Zvolený typ služby závisí na tom, v jakém formátu chcete ukládat data v Azure. V tomto případě chceme, aby se ukládala jako objekty blob bloku v Azure, proto vybereme **Objekt blob bloku**. Pokud zvolíte **Objekt blob stránky**, je nutné zajistit, aby vaše data byla zarovnaná na 512 bajtů. Formát VHDX je například vždy zarovnaný na 512 bajtů.
+5. V části **Služba úložiště** zvolte Objekt blob bloku, Objekt blob stránky nebo Soubory. Zvolený typ služby závisí na tom, v jakém formátu chcete ukládat data v Azure. V tomto případě chceme, aby se ukládala jako objekty blob bloku v Azure, proto vybereme **Objekt blob bloku**. Pokud zvolíte **Objekt blob stránky**, je nutné zajistit, aby vaše data byla zarovnaná na 512 bajtů. Například formát VHDX je vždy zarovnaný na 512 bajtů.
 
 6. Postup v tomto kroku závisí na tom, jestli vytváříte sdílenou složku SMB nebo systému souborů NFS.
     - **Pokud vytváříte sdílenou složku SMB** – v poli **Místní uživatel se všemi oprávněními** zvolte **Vytvořit nový** nebo **Použít existující**. Pokud vytváříte nového místního uživatele, zadejte **uživatelské jméno**, **heslo** a pak potvrďte heslo. Tím se místnímu uživateli přiřadí oprávnění. Jakmile tady přiřadíte oprávnění, můžete pak tato oprávnění upravit pomocí Průzkumníka souborů.
@@ -132,6 +128,6 @@ Pokud chcete synchronizovat přístupový klíč úložiště, proveďte na webu
 > U každého účtu úložiště to stačí provést jednou. Není nutné tento postup opakovat u každé sdílené složky, která je přidružená ke stejnému účtu úložiště.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si, jak [spravovat uživatele pomocí webu Azure Portal](data-box-gateway-manage-users.md).

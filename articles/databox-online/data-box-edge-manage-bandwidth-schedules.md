@@ -6,23 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/12/2019
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 2c8d21a9494bace7d60b90637450cb10a5f3576e
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: f88003e38a34eb3396b83158ff71e4739080cd9d
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58109354"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401407"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-edge"></a>Pomocí webu Azure portal ke správě plánů šířky pásma na hranici vaší Azure Data Box  
 
 Tento článek popisuje, jak spravovat uživatele na hranici vaší Azure Data Box. Plány služby Bandwidth vám umožňují nakonfigurovat využití šířky pásma sítě pro více denních plánů. Tyto plány lze použít k operacím nahrávání a stahování ze zařízení do cloudu a naopak.
 
 Můžete přidat, upravit nebo odstranit plány šířky pásma pro vaše Data pole hraničních zařízení prostřednictvím webu Azure portal.
-
-> [!IMPORTANT]
-> Data Box Edge je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 V tomto článku získáte informace o těchto tématech:
 

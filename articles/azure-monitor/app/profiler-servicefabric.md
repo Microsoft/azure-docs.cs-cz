@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 73e453385a6916b6999691afbacd1f102ce7270d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0b1a06d181fc4d2a44d389d47d1f9480c2fdcb40
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865732"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401105"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Profilovat živé aplikace Azure Service Fabric pomocí Application Insights
 
@@ -55,7 +55,7 @@ Nastavení prostředí, pomocí následujících kroků:
   Pokud je nastavení správné, bude být nainstalované a povolené při instalaci rozšíření Azure Diagnostics Application Insights Profiler. 
 
 1. Přidejte Application Insights do vaší aplikace Service Fabric.  
-  Pro Profiler ke shromažďování profilů pro vaše požadavky aplikace musí odesílat žádosti o data do Application Insights. Další informace najdete v části [Application Insights SDK pro projekty Service Fabricu](https://github.com/Microsoft/ApplicationInsights-ServiceFabric) stránky.
+  Pro Profiler ke shromažďování profily pro své žádosti musí aplikace sledování operací pomocí nástroje Application Insights. Pro rozhraní API je bezstavové, najdete pokyny, jak [sledování požadavků pro profilaci](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json). Další informace o sledování vlastních operací v jiných typů aplikací, najdete [sledování vlastních operací pomocí Application Insights .NET SDK](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json).
 
 1. Znovu nasadíte aplikaci.
 

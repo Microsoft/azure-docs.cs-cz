@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 9cb3abff10482ec7e58b4b049f051e99178cb742
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2f84c48092581a313ff7bead7a862221e0fe4eee
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371975"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400916"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps s využitím integrace služby prostředí (ISE)
 
@@ -49,9 +49,9 @@ Další informace o prostředí integrační služby naleznete v tématu [přís
   * Vaše virtuální síť musí mít čtyři *prázdný* podsítě pro nasazení a vytváření prostředků ve vaší ISE. Tyto podsítě můžete vytvořit předem nebo můžete počkat, dokud nevytvoříte vašeho ISE, kde můžete vytvořit podsítě ve stejnou dobu. Další informace o [podsítě požadavky](#create-subnet). 
   
     > [!NOTE]
-    > Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md), která poskytuje privátní připojení ke cloudovým službám Microsoftu, je nutné [přidat následující trasa každé podsítě](../virtual-network/virtual-network-manage-subnet.md) používané vaší ISE. Pokud používáte směrovací tabulku s podsítěmi, [přidat následující trasy do směrovací tabulky](../virtual-network/manage-route-table.md):
+    > Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md), která poskytuje privátní připojení ke cloudovým službám Microsoftu, je nutné [vytvořit směrovací tabulku](../virtual-network/manage-route-table.md) , který má následující směrování a propojit danou tabulku s každou podsíť, která používá vaše ISE:
     > 
-    > **Název**: D3655BASE-route<br>
+    > **Název**: <*název trasy*><br>
     > **Předpona adresy**: 0.0.0.0/0<br>
     > **Směrování**: Internet
 
@@ -146,9 +146,9 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
 
      Další informace o výpočet adresy najdete v tématu [bloky IPv4 CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 
-   * Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md), nezapomeňte [přidat následující trasa každé podsítě](../virtual-network/virtual-network-manage-subnet.md) používané vaší ISE. Pokud používáte směrovací tabulku s podsítěmi, [přidat následující trasy do směrovací tabulky](../virtual-network/manage-route-table.md):
+   * Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md), nezapomeňte [vytvořit směrovací tabulku](../virtual-network/manage-route-table.md) , který má následující směrování a propojit danou tabulku s každou podsíť, která používá vaše ISE:
 
-     **Název**: D3655BASE-route<br>
+     **Název**: <*název trasy*><br>
      **Předpona adresy**: 0.0.0.0/0<br>
      **Směrování**: Internet
 

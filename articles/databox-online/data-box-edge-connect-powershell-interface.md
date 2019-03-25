@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/21/2019
 ms.author: alkohli
-ms.openlocfilehash: b3effdbace2be582bfe85d0402088f8aa0d96fe7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9b0e94deda205497cda4ebf383f302c6c3bb896a
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554936"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403591"
 ---
-# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell-preview"></a>Správa Azure Data Box hraničního zařízení pomocí Windows Powershellu (preview)
+# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Správa Azure Data Box hraničního zařízení pomocí Windows Powershellu
 
 Azure Data Box řešení vám umožní zpracování dat a odesílání přes síť do Azure. Tento článek popisuje některé z úloh konfigurace a správa pro vaše zařízení Data Box Edge. Na webu Azure portal, místního webového uživatelského rozhraní nebo rozhraní Windows PowerShell můžete použít ke správě vašeho zařízení.
 
@@ -32,18 +32,9 @@ Tento článek obsahuje následující postupy:
 - Získání protokolů výpočetní prostředky
 - Monitorování a odstraňování potíží výpočetní moduly
 
-> [!IMPORTANT]
-> Azure Data Box Edge je aktuálně ve verzi public preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="connect-to-the-powershell-interface"></a>Připojení k rozhraní prostředí PowerShell
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
-
-## <a name="start-a-support-session"></a>Spustit relaci
-
-[!INCLUDE [Connect to support runspace](../../includes/data-box-edge-gateway-connect-support.md)]
 
 ## <a name="create-a-support-package"></a>Vytvořit balíček pro podporu
 
@@ -73,11 +64,15 @@ Pokud výpočetní roli je nakonfigurovaný na vašem zařízení, můžete tak�
     ```
     Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username/password" -RoleInstanceName "IotRole" -FullLogCollection
     ```
-    Tady je popis parametrů použitých pro tuto rutinu: 
+    Tady je popis parametrů použitých pro tuto rutinu:
     - `Path`: Zadejte síťovou cestu ke sdílené složce, ve kterém chcete vytvořit balíček protokolu výpočetní prostředky.
     - `Credential`: Zadejte uživatelské jméno a heslo pro sdílené síťové složce.
     - `RoleInstanceName`: Zadejte tento řetězec `IotRole` pro tento parametr.
     - `FullLogCollection`: Tento parametr zajišťuje, že balíček protokolu bude obsahovat všechny protokoly výpočetní prostředky. Ve výchozím nastavení balíček protokolu obsahuje pouze podmnožinu protokolů.
+
+## <a name="monitor-and-troubleshoot-compute-modules"></a>Monitorování a odstraňování potíží výpočetní moduly
+
+[!INCLUDE [Monitor and troubleshoot compute modules](../../includes/data-box-edge-monitor-troubleshoot-compute.md)]
 
 
 ## <a name="next-steps"></a>Další postup

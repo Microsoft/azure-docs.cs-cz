@@ -10,14 +10,16 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5bc9e44cc1f1759231d405e64fab097d73d48486
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 51342a7544295b465d1f2dfc3e1b27d8285b3588
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160522"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403812"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Sledování chování uživatelů v Azure Active Directory B2C pomocí Application Insights
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 Při použití Azure Active Directory (Azure AD) B2C společně s Azure Application Insights můžete získat podrobné a vlastní protokoly událostí pro vaše uživatele cesty. V tomto článku získáte informace o těchto tématech:
 
@@ -25,9 +27,6 @@ Při použití Azure Active Directory (Azure AD) B2C společně s Azure Applicat
 * Řešení potíží s vlastním zásad při vývoji nebo v produkčním prostředí.
 * Měření výkonu.
 * Vytvoření oznámení ze služby Application Insights.
-
-> [!NOTE]
-> Tato funkce je ve verzi Preview.
 
 ## <a name="how-it-works"></a>Jak to funguje
 

@@ -1,22 +1,22 @@
 ---
 title: Příprava a přizpůsobit hlavní imagi virtuálního pevného disku – Azure
-description: Jak připravit, přizpůsobit a odeslat hlavní imagi virtuálního klienta Windows (preview) do Azure.
+description: Jak můžete připravit, přizpůsobit a nahrajte virtuální plochy Windows hlavní image ve verzi preview do Azure.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 53bf33aad6511cc282f53659bbe43873cacfc3ff
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: ca186090f28f04811030e83b159782a9bfeb87f9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318416"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400778"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobit hlavní imagi virtuálního pevného disku
 
-Tento článek vám sdělí postup přípravy bitové kopie hlavního virtuálního pevného disku (VHD) pro odeslání do Azure, jak vytvořit virtuální počítače (VM) a instalace a konfigurace softwaru na ně. Tyto pokyny jsou určené ke konfiguraci Windows virtuální plochy konkrétní (preview), která lze použít s existujícími procesy vaší organizace.
+Tento článek vám sdělí postup přípravy bitové kopie hlavního virtuálního pevného disku (VHD) pro odeslání do Azure, jak vytvořit virtuální počítače (VM) a instalace a konfigurace softwaru na ně. Tyto pokyny se týkají konfigurace specifické pro virtuální plochy Windows ve verzi Preview, který lze použít s existujícími procesy vaší organizace.
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
@@ -370,8 +370,8 @@ Postupujte podle následujících pokynů zjistíte, jak nahrát hlavní image d
 
 Teď, když máte image, můžete vytvořit nebo aktualizovat hostitele fondy. Další informace o tom, jak vytvořit a aktualizovat hostitele fondy, najdete v následujících článcích:
 
-- [Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru (Preview)](create-host-pools-arm-template.md)
-- [Kurz: Vytvoření fondu hostitele pomocí webu Azure Marketplace (Preview)](create-host-pools-azure-marketplace.md)
-- [Vytvoření fondu hostitele s prostředím PowerShell (Preview)](create-host-pools-powershell.md)
+- [Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru](create-host-pools-arm-template.md)
+- [Kurz: Vytvoření fondu hostitele pomocí webu Azure Marketplace](create-host-pools-azure-marketplace.md)
+- [Vytvoření hostitele fondu pomocí Powershellu](create-host-pools-powershell.md)
 - [Nastavení sdílené složky profilu uživatele pro fond hostitele](create-host-pools-user-profile.md)
 - [Konfigurace metody vyrovnávání zatížení virtuálního klienta Windows](configure-host-pool-load-balancing.md)

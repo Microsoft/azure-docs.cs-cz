@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 27db3327e296dafea3af2180eeaadd0ff4680b8d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: da6c9bb6cbd94ab5078641f25e42ad2203ff7a53
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341945"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402350"
 ---
 # <a name="azure-managed-applications-overview"></a>Přehled spravovaných aplikací Azure
 
@@ -32,6 +32,8 @@ Spravované aplikace vám umožňují vytvořit si se zákazníky dlouhodobý vz
 I když zákazníci nasadí tyto spravované aplikace do svého předplatného, nemusejí je spravovat, aktualizovat ani udržovat. Vy se staráte o to, aby všichni zákazníci používali schválené verze. Zákazníci si nepotřebují osvojovat znalosti jednotlivých aplikací, aby je mohli spravovat. Zákazníci automaticky získávají aktualizace aplikací, aniž by si museli dělat starosti s řešením potíží a diagnostikou problémů s aplikacemi. 
 
 Týmům IT umožňují spravované aplikace nabízet uživatelům v rámci organizace předem schválená řešení. Máte jistotu, že jsou tato řešení v souladu se standardy organizace.
+
+Spravované aplikace aktuálně nepodporují [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="types-of-managed-applications"></a>Typy spravovaných aplikací
 

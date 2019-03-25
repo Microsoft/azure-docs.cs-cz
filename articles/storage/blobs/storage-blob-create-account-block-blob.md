@@ -7,18 +7,18 @@ ms.date: 03/23/2019
 author: twooley
 ms.author: twooley
 ms.subservice: blobs
-ms.openlocfilehash: 16ecade7a8d0049e098bb06bd14828b19934f5f5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: f4d3e3ad923b6a603902bc007107cb41dae8cf6c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58373042"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400467"
 ---
 # <a name="create-a-block-blob-storage-account"></a>Vytvoření účtu úložiště objektů blob bloku
 
 Typ účtu úložiště objektů blob bloku umožňuje vytvářet objekty BLOB bloku s charakteristikami výkonu premium. Tento typ účtu úložiště je optimalizována pro úlohy s vysokou transakce plateb nebo, které vyžadují velmi rychlé zpracování čas přístupu. Tento článek ukazuje, jak vytvořit účet úložiště objektů blob bloku pomocí webu Azure portal, rozhraní příkazového řádku Azure nebo Azure Powershellu.
 
-Další informace o účtech úložiště objektů blob bloku, najdete v tématu [přehled účtu Azure storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+Další informace o účtech úložiště objektů blob bloku, v tématu [přehled účtu Azure storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
 ## <a name="create-account-in-the-azure-portal"></a>Vytvoření účtu na webu Azure Portal
 
@@ -54,7 +54,7 @@ K vytvoření účtu úložiště objektů blob bloku na webu Azure Portal, post
 
 1. Vyberte **Vytvořit**.
 
-### <a name="create-account-using-azure-powershell"></a>Vytvoření účtu pomocí Azure Powershellu
+## <a name="create-account-using-azure-powershell"></a>Vytvoření účtu pomocí Azure Powershellu
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

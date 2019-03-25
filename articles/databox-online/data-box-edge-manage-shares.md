@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/11/2019
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 79648e30e832a056016b8842fdc39e27e206c9ee
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: ec5fbffdf7df5ef3a952e21b79ab02f355fb8e29
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57896137"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403642"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Pomocí webu Azure portal ke správě sdílených složek na hranici vaší Azure Data Box
 
 Tento článek popisuje, jak spravovat sdílené složky na hranici vaší Azure Data Box. Můžete spravovat Azure Data Box Edge prostřednictvím webu Azure portal nebo přes místní webové uživatelské rozhraní. Pomocí webu Azure portal k přidání, odstranění, aktualizace sdílené složky nebo synchronizovat klíč úložiště pro účet úložiště přidružený k sdíleným složkám.
-
-> [!IMPORTANT]
-> Data Box Edge je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 ## <a name="about-shares"></a>Informace o sdílených složkách
 
@@ -67,8 +63,10 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
         ![Přidání sdílené složky systému souborů NFS](media/data-box-edge-manage-shares/add-nfs-share.png)
 
-7. Kliknutím na **Vytvořit** vytvořte sdílenou složku. Zobrazí se oznámení o probíhajícím vytváření sdílené složky. Po vytvoření sdílené složky se zadaným nastavením se okno **Sdílené složky** aktualizuje a zobrazí se v něm nová sdílená složka.
- 
+7. Pro snadný přístup ke sdíleným složkám z výpočetní moduly Edge, použijte místní přípojného bodu. Vyberte **použít sdílenou složku s výpočetními prostředky na Edge** tak, aby sdílenou složku automaticky připojí po něm jeho vytvořený. Pokud je vybraná tato možnost, modul Edge můžete také použít tak výpočetní prostředky s místní přípojného bodu.
+
+8. Kliknutím na **Vytvořit** vytvořte sdílenou složku. Zobrazí se oznámení o probíhajícím vytváření sdílené složky. Po vytvoření sdílené složky se zadaným nastavením se okno **Sdílené složky** aktualizuje a zobrazí se v něm nová sdílená složka.
+
 ## <a name="add-a-local-share"></a>Přidat místní sdílené složky
 
 1. Na webu Azure Portal, přejděte na váš prostředek okraj pole Data a potom přejděte ke **brána > sdílených složek**. Vyberte **+ přidat sdílenou složku** na panelu příkazů.
@@ -93,11 +91,32 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
     Zobrazí se oznámení, že probíhá vytváření sdílené složky. Po vytvoření sdílené složky se zadaným nastavením se okno **Sdílené složky** aktualizuje a zobrazí se v něm nová sdílená složka.
 
-    ![Zobrazit aktualizace sdílené složky okno](media/data-box-edge-manage-shares/add-local-share-4.png)
+    ![Zobrazit aktualizace sdílené složky okno](media/data-box-edge-manage-shares/add-local-share-3.png)
     
     Vyberte sdílenou složku, chcete-li zobrazit místní přípojný bod pro výpočetní moduly Edge pro tuto sdílenou složku.
 
     ![Zobrazit podrobnosti o místní sdílené složky](media/data-box-edge-manage-shares/add-local-share-4.png)
+
+
+## <a name="unmount-a-share"></a>Odpojte sdílenou složku
+
+Proveďte následující kroky na webu Azure Portal odpojit sdílenou složku.
+
+1. Na webu Azure Portal, přejděte na váš prostředek okraj pole Data a potom přejděte ke **brána > sdílených složek**.
+
+    ![Vyberte sdílenou složku](media/data-box-edge-manage-shares/select-share-unmount.png)
+
+2. Ze seznamu sdílené složky vyberte sdílenou složku, kterou chcete odpojit. Chcete, aby se zajistilo, že všechny moduly, které nepoužívají sdílenou složku, kterou můžete odpojit. Pokud sdílená složka používá modul, se zobrazí problémy s odpovídající modulu. Vyberte **odpojte**.
+
+    ![Vyberte odpojení](media/data-box-edge-manage-shares/select-unmount.png)
+
+3. Po zobrazení výzvy k potvrzení, vyberte **Ano**. To se odpojte sdílenou složku.
+
+    ![Potvrdit odpojení](media/data-box-edge-manage-shares/confirm-unmount.png)
+
+4. Poté, co je sdílená složka odpojeny, přejděte na seznam sdílených složek. Uvidíte, že **použít pro službu compute** sloupci se zobrazuje stav sdílenou složku jako **zakázané**.
+
+    ![Odpojit sdílenou složku](media/data-box-edge-manage-shares/share-unmounted.png)
 
 ## <a name="delete-a-share"></a>Odstranění sdílené složky
 

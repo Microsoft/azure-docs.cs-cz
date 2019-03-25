@@ -1,22 +1,22 @@
 ---
-title: Nastavení sdílené složky profilu uživatele pro fond hostitele – Azure
-description: Jak vytvořit kontejner FSLogix profil pro fond hostitele virtuálního klienta Windows (preview).
+title: Nastavení sdílené složky profilu uživatele pro fond hostitele Windows Virtual Desktop Preview – Azure
+description: Jak vytvořit kontejner FSLogix profil pro fond hostitele Windows virtuální plochy, ve verzi Preview.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 9dfbda6e17cf954369fd6caa533ba9eef41fd451
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c9c2ca2cc27c5fa757b8ff6846e0a6a8f7087875
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336010"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403710"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Nastavení sdílené složky profilu uživatele pro fond hostitele
 
-Tato služba virtuálního klienta Windows (preview) nabízí FSLogix profilu kontejnery jako řešení doporučené uživatelských profilů. Nedoporučujeme ale používat řešení disku profilu uživatele (UPD) a bude vyřazena v budoucích verzích Windows virtuálního klienta.
+Služba Windows virtuální plochy, ve verzi Preview nabízí FSLogix profilu kontejnery jako řešení doporučené uživatelských profilů. Nedoporučujeme ale používat řešení disku profilu uživatele (UPD) a bude vyřazena v budoucích verzích Windows virtuálního klienta.
 
 V této části zjistíte, jak vytvořit sdílenou složku FSLogix profilu kontejner pro skupinu hostitelů.
 

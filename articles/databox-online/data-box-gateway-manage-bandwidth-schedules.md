@@ -1,28 +1,25 @@
 ---
-title: Správa uživatelů Azure Data Box Gateway | Microsoft Docs
+title: Správa šířky pásma plány ve službě Azure Data Box Gateway | Dokumentace Microsoftu
 description: Popisuje používání webu Azure Portal ke správě plánů služby Bandwidth ve službě Azure Data Box Gateway.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: aefbe4265cb97a003b908c5631e1f9ed4e0192cc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a50091ec8878cbc8c1167c03acddaf269d697f31
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102102"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400416"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Web Azure Portal můžete použít ke správě plánů služby Bandwidth ve službě Azure Data Box Gateway  
 
 Tento článek popisuje postup správy uživatelů ve službě Azure Data Box Gateway. Plány služby Bandwidth vám umožňují nakonfigurovat využití šířky pásma sítě pro více denních plánů. Tyto plány lze použít k operacím nahrávání a stahování ze zařízení do cloudu a naopak. 
 
 Prostřednictvím webu Azure Portal můžete přidávat, upravovat nebo odstraňovat plány služby Bandwidth pro vaši službu Data Box Gateway.
-
-> [!IMPORTANT]
-> - Data Box Gateway je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 V tomto článku získáte informace o těchto tématech:
 

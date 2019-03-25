@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/26/2018
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 658f38e32c2680e7c538147154a004359e431027
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 63275db36bdb64985625c3789d558bd09e2d47bc
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246742"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401448"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro službu Azure Security Center
 Tento průvodce je určený odborníkům na informační technologie (IT), analytikům zabezpečení informací a správcům cloudů, jejichž společnosti používají službu Azure Security Center a potřebují odstraňovat potíže týkající se služby Security Center.
@@ -29,7 +29,7 @@ Tento průvodce je určený odborníkům na informační technologie (IT), analy
 >
 
 ## <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
-Tento průvodce vysvětluje, jak odstraňovat potíže související se službou Security Center. U většiny postupů odstraňování potíží prováděných v rámci služby Security Center je třeba nejprve si prohlédnout záznamy [protokolu auditu](https://azure.microsoft.com/updates/audit-logs-in-azure-preview-portal/) pro komponentu, u které se potíže vyskytly. Na základě protokolů auditu můžete zjistit:
+Tento průvodce vysvětluje, jak odstraňovat potíže související se službou Security Center. U většiny postupů odstraňování potíží prováděných v rámci služby Security Center je třeba nejprve si prohlédnout záznamy [protokolu auditu](../azure-monitor/platform/activity-logs-overview.md) pro komponentu, u které se potíže vyskytly. Na základě protokolů auditu můžete zjistit:
 
 * Které operace proběhly
 * Kdo operaci zahájil
@@ -74,7 +74,7 @@ Existují dva scénáře instalace služby Microsoft Monitoring Agent na počít
 | Agent virtuálního počítače Azure chybí nebo není platný | Microsoft Monitoring Agent ještě není nainstalovaný.  Aby služba Security Center mohla nainstalovat rozšíření, potřebuje platného agenta virtuálního počítače Azure. | Nainstalujte, přeinstalujte nebo upgradujte na virtuálním počítači agenta virtuálního počítače Azure. |
 | Stav virtuálního počítače není připravený k instalaci  | Microsoft Monitoring Agent ještě není nainstalovaný, protože stav virtuálního počítače brání v jeho instalaci. Virtuální počítač není připraven pro instalaci z důvodu problému s agentem nebo zřizováním virtuálního počítače. | Zkontrolujte stav virtuálního počítače. Vraťte se na portálu na obrazovku **Virtual Machines** a výběrem virtuálního počítače zobrazte jeho stav. |
 |Instalace selhala – obecná chyba | Microsoft Monitoring Agent je nainstalovaný, ale selhal kvůli chybě. | [Ručně rozšíření nainstalujte](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) nebo odinstalujte, aby se ho služba Security Center mohla pokusit znovu nainstalovat. |
-| Instalace selhala – místní agent je už nainstalovaný | Instalace nástroje Microsoft Monitoring Agent selhala. Služba Security Center zjistila místní agent (Log Analytics nebo SCOM) už nainstalovaná na virtuálním počítači. Aby se zabránilo vícenásobné konfiguraci, kdy se virtuální počítač hlásí dvěma samostatným pracovním prostorům, instalace agenta Microsoft Monitoring Agent byla zastavena. | Je možné to vyřešit dvěma způsoby: [nainstalovat rozšíření ručně](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) a připojit ho do požadovaného pracovního prostoru. Nebo nastavit požadovaný pracovní prostor jako výchozí a povolit automatické zřizování agenta.  Viz [zapnutí automatického zřizování](security-center-enable-data-collection.md). |
+| Instalace selhala – místní agent je už nainstalovaný | Instalace nástroje Microsoft Monitoring Agent selhala. Služba Security Center zjistila místní agent (Log Analytics nebo System Center Operations Manager) už nainstalovaná na virtuálním počítači. Aby se zabránilo vícenásobné konfiguraci, kdy se virtuální počítač hlásí dvěma samostatným pracovním prostorům, instalace agenta Microsoft Monitoring Agent byla zastavena. | Je možné to vyřešit dvěma způsoby: [nainstalovat rozšíření ručně](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) a připojit ho do požadovaného pracovního prostoru. Nebo nastavit požadovaný pracovní prostor jako výchozí a povolit automatické zřizování agenta.  Viz [zapnutí automatického zřizování](security-center-enable-data-collection.md). |
 | Agent se nemůže připojit k pracovnímu prostoru | Microsoft Monitoring Agent je nainstalovaný, ale selhal kvůli chybě připojení k síti.  Zkontrolujte připojení k internetu a jestli je pro agenta nakonfigurovaný správný proxy server HTTP. | Najdete v části požadavky na síť agenta monitorování. |
 | Agent je připojený do chybějícího nebo neznámého pracovního prostoru | Služba Security Center zjistila, že Microsoft Monitoring Agent instalovaný na virtuálním počítači je připojený k pracovnímu prostoru, do kterého nemá přístup. | K tomu může dojít ve dvou případech. Pracovní prostor byl odstraněn a už neexistuje. Znovu nainstalujte agenta s použitím správného pracovního prostoru nebo agenta odinstalujte a povolte službě Security Center provést jeho instalaci pomocí automatického zřizování. Druhou možností je, že pracovní prostor patří do předplatného, pro které nemá Security Center oprávnění. Security Center vyžaduje, aby předplatné povolovalo přístup zprostředkovateli služby Microsoft Security Resource Provider. Napravíte to tak, že dané předplatné zaregistrujete do služby Microsoft Security Resource Provider. Můžete to udělat přes rozhraní API, v prostředí PowerShell, na portálu nebo jednoduše pomocí filtrování podle předplatného na řídicím panelu **Přehled** služby Security Center. Další informace najdete v tématu [Poskytovatelé a typy prostředků](../azure-resource-manager/resource-manager-supported-services.md#azure-portal). |
 | Agent neodpovídá nebo chybí ID | Security Center nemůže z virtuálního počítače načíst shromážděná data zabezpečení, přestože je agent nainstalovaný. | Agent nevrací žádná data, a to ani prezenční signál. Agent může být poškozený nebo něco blokuje provoz. Agent možná odesílá data, ale chybí mu ID prostředku Azure, takže není možné data přiřadit správnému virtuálnímu počítači. Řešení problémů v Linuxu, naleznete v tématu [Průvodce odstraňováním potíží pro agenta Log Analytics pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Informace o řešení problémů ve Windows najdete v tématu [Odstraňování problémů virtuálních počítačů Windows](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |

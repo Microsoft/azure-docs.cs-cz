@@ -6,21 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 8adec2986a286e55ee71f0fddca695d1800b5317
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: fb61567818196c3b501819534a1e5b406c06e8b9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167184"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403727"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Použití webu Azure Portal ke správě uživatelů ve službě Azure Data Box Gateway 
 
 Tento článek popisuje postup správy uživatelů ve službě Azure Data Box Gateway. Azure Data Box Gateway můžete spravovat přes web Azure Portal nebo v místním webovém uživatelském rozhraní. Azure Portal můžete použít k přidání, úpravě nebo odstranění uživatelů.
-
-> [!IMPORTANT]
-> - Data Box Gateway je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -49,10 +46,10 @@ Pokud chcete přidat uživatele, proveďte na webu Azure Portal následující k
 
 2. Zadejte uživatelské jméno a heslo pro uživatele, kterého chcete přidat. Potvrďte heslo a klikněte na **Přidat**.
 
-    ![Kliknutí na Přidat uživatele](media/data-box-gateway-manage-users/add-user-2.png)
+    ![Klikněte na Přidat uživatele](media/data-box-gateway-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
-    > Tito uživatelé jsou rezervováni systémem a není možné je používat: Administrator, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Guest.  
+    > Tito uživatelé jsou rezervované systémem a neměl by se používat: Administrator, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Guest.  
 
 3. Budete informováni o zahájení vytváření uživatele a jeho dokončení. Po vytvoření uživatele klikněte na panelu příkazů na **Aktualizovat**, abyste zobrazili aktualizovaný seznam uživatelů.
 
@@ -81,6 +78,6 @@ Seznam uživatelů se aktualizuje a odstraněný uživatel z něj zmizí.
 ![Odstranění uživatele](media/data-box-gateway-manage-users/delete-user-3.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o [správě šířky pásma](data-box-gateway-manage-bandwidth-schedules.md).

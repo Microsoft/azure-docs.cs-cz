@@ -3,7 +3,7 @@ title: Použití služby Azure Security Center doporučení k vylepšení zabezp
 description: " Další informace o použití zásady a doporučení zabezpečení v Azure Security Center můžete zmírnit útok na zabezpečení. "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: ''
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/2/2019
-ms.author: rkarlin
-ms.openlocfilehash: 5ff59a9ed7dc44bb7a4176f7a174be1e7d0ec9b6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 3/24/2019
+ms.author: monhaber
+ms.openlocfilehash: 8c8108697e39153aef8727942c166a741cb8398c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104902"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402758"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití služby Azure Security Center doporučení k vylepšení zabezpečení
-Tak, že konfigurace zásad zabezpečení a pak implementace doporučení poskytovaných službou Azure Security Center můžete snížit riziko zabezpečení významné události. V tomto článku se dozvíte, jak používat zásady zabezpečení a doporučení ve službě Security Center můžete zmírnit útok na zabezpečení.
+Tak, že konfigurace zásad zabezpečení a pak implementace doporučení poskytovaných službou Azure Security Center můžete snížit riziko zabezpečení významné události. V tomto článku se dozvíte, jak používat zásady zabezpečení a doporučení ve službě Security Center můžete zmírnit útok na zabezpečení. 
 
-Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných bezpečnostní kontroly.
+Security Center automaticky spustí nepřetržité kontroly pro analýzu stavu zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných bezpečnostní kontroly. Security Center aktualizuje doporučení každých 24 hodin.
 
 ## <a name="scenario"></a>Scénář
 Tento scénář popisuje, jak používat Security Center Chcete-li snížit riziko bezpečnostních incidentů monitorování doporučení služby Security Center a provádění akcí. Tento scénář používá fiktivní společnosti, Contoso a rolí uváděné v Centru zabezpečení [Průvodce plánováním a provozem](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). V tomto scénáři Zaměřujeme na role následujících osob:

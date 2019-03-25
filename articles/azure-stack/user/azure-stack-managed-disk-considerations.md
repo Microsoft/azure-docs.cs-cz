@@ -1,6 +1,6 @@
 ---
-title: Rozdíly a aspekty u služby Managed Disks ve službě Azure Stack | Dokumentace Microsoftu
-description: Další informace o rozdíly a aspekty při práci se službou Managed Disks v Azure stacku.
+title: Rozdíly a aspekty pro spravované disky a spravovat obrázky ve službě Azure Stack | Dokumentace Microsoftu
+description: Další informace o rozdíly a aspekty při práci se spravovanými disky a spravované Image ve službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,27 +12,27 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/23/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: 28210048cd007fc10dcd4cf5e92577cbd121e2a3
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.lastreviewed: 03/23/2019
+ms.openlocfilehash: c1975c885efc0a2a22b2ab478f8bc9afbcc8bce3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368268"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400361"
 ---
-# <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Managed Disks zásobníku: rozdíly a aspekty
+# <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack spravované disky: rozdíly a aspekty
 
-Tento článek shrnuje známé rozdíly mezi [Azure Stack Managed Disks](azure-stack-manage-vm-disks.md) a [Managed Disks pro Azure](../../virtual-machines/windows/managed-disks-overview.md). Další informace o základní rozdíly mezi Azure Stack a Azure, najdete v článku [klíče aspekty](azure-stack-considerations.md) článku.
+Tento článek shrnuje známé rozdíly mezi [spravované disky Azure Stack](azure-stack-manage-vm-disks.md) a [managed disks pro Azure](../../virtual-machines/windows/managed-disks-overview.md). Další informace o základní rozdíly mezi Azure Stack a Azure, najdete v článku [klíče aspekty](azure-stack-considerations.md) článku.
 
 Spravované disky zjednodušují správu disků pro virtuální počítače IaaS pomocí správy [účty úložiště](../azure-stack-manage-storage-accounts.md) přidružené k diskům virtuálních počítačů.
 
 > [!Note]  
-> Spravované disky ve službě Azure Stack je k dispozici aktualizace. 1808. Je povolené ve výchozím nastavení při vytváření virtuálních počítačů pomocí portálu Azure Stack od 1811 aktualizace.
+> Spravované disky ve službě Azure Stack je k dispozici aktualizace. 1808. Je povolené ve výchozím nastavení při vytváření virtuálních počítačů pomocí portálu Azure Stack, počínaje 1811 aktualizace.
   
-## <a name="cheat-sheet-managed-disk-differences"></a>Tahák: Spravovaného disku rozdíly
+## <a name="cheat-sheet-managed-disk-differences"></a>Tahák: spravovaného disku rozdíly
 
 | Funkce | Azure (globální) | Azure Stack |
 | --- | --- | --- |
@@ -50,7 +50,7 @@ Spravované disky zjednodušují správu disků pro virtuální počítače IaaS
 |Migrace      |Poskytuje nástroj pro migraci z existující nespravovaná správce prostředků virtuálních počítačů Azure bez nutnosti znovu vytvořte virtuální počítač  |Není dosud podporován. |
 
 > [!NOTE]  
-> Spravované disky vstupně-výstupních operací a propustnosti ve službě Azure Stack je číslo zakončení místo zřízené číslo, které může vliv hardwaru a pracovní postupy spouštěné ve službě Azure Stack.
+> Spravované disky vstupně-výstupních operací a propustnosti ve službě Azure Stack je číslo zakončení místo zřízené číslo, které může být ovlivněno hardwaru a pracovní postupy spouštěné ve službě Azure Stack.
 
 ## <a name="metrics"></a>Metriky
 
@@ -61,7 +61,7 @@ Existují také rozdíly pomocí metrik storage:
 
 ## <a name="api-versions"></a>Verze rozhraní API
 
-Služba Azure Managed Disks zásobníku podporuje následující verze rozhraní API:
+Azure Stack spravované disky podporuje následující rozhraní API verze:
 
 - 2017-03-30
 - 2017-12-01
@@ -135,26 +135,31 @@ Azure Stack podporuje *spravované image*, které umožňují můžete vytvořit
 - Máte generalizovaného spravované počítače a chcete vytvořit více, podobně jako spravovaných virtuálních počítačů.
 
 ### <a name="step-1-generalize-the-vm"></a>Krok 1: Generalizace virtuálního počítače
-Pro Windows pomocí postupu v části "Generalizace virtuálního počítače Windows pomocí nástroje Sysprep" zde: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep Pro Linux postupujte podle kroku 1 na tady: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm 
 
-Poznámka: Nezapomeňte generalizace virtuálního počítače. Vytvoření virtuálního počítače z image, který se nezobecnil správně povede k VMProvisioningTimeout chyby.
+Pro Windows, postupujte [generalizace virtuálního počítače Windows pomocí nástroje Sysprep](/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep) oddílu. Pro Linux, postupujte podle kroku 1 [tady](/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm).
 
-### <a name="step-2-create-the-managed-image"></a>Krok 2: Vytvoření spravované Image
-K tomu můžete použít na portálu, powershellu nebo rozhraní příkazového řádku. Postupujte podle zde dokumentů Azure: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource
+> [!NOTE]
+> Ujistěte se, že generalizace virtuálního počítače. Vytvoření virtuálního počítače z image, který se nezobecnil správně povede k **VMProvisioningTimeout** chyby.
 
-### <a name="step-3-choose-the-use-case"></a>Krok 3: Zvolte případ použití:
+### <a name="step-2-create-the-managed-image"></a>Krok 2: Vytvoření spravované image
+
+Můžete na portálu, Powershellu nebo rozhraní příkazového řádku k vytvoření spravované image. Postupujte podle kroků v článku o Azure [tady](/azure/virtual-machines/windows/capture-image-resource).
+
+### <a name="step-3-choose-the-use-case"></a>Krok 3: Zvolte případ použití
+
 #### <a name="case-1-migrate-unmanaged-vms-to-managed-disks"></a>Případ 1: Migrace nespravované virtuální počítače na managed disks
-Nezapomeňte generalizace virtuálního počítače správně před provedením tohoto kroku. Generalizace, tento virtuální počítač nemůže být po další používané. Vytvoření virtuálního počítače z image, který se nezobecnil správně povede k VMProvisioningTimeout chyby. 
 
-Postupujte podle pokynů [tady](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account) pro vytvoření spravované image z generalizovaného VHD v účtu úložiště. Tento image je možné k vytvoření spravovaných virtuálních počítačů do budoucna.
+Ujistěte se, že jste správně zobecnit virtuální počítač před provedením tohoto kroku. Po generalizace kterou již nebudete používat tento virtuální počítač. Vytvoření virtuálního počítače z image, který se nezobecnil správně povede k **VMProvisioningTimeout** chyby.
 
-#### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>Případ 2: Vytvořit spravovaný virtuální počítač z bitové kopie spravovaného pomocí Powershellu
+Postupujte podle pokynů [tady](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account) pro vytvoření spravované image z generalizovaného VHD v účtu úložiště. Můžete použít tuto bitovou kopii do budoucna pro vytvoření spravované virtuální počítače.
 
-Po vytvoření image z existujícího spravovaného disku virtuálního počítače pomocí skriptu [tady](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell) , následující ukázkový skript vytvoří podobně jako virtuální počítač s Linuxem z existujícího objektu image:
+#### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>Případ 2: Vytvoření spravovaného virtuálního počítače ze spravované image pomocí Powershellu
 
-Modul prostředí powershell Azure Stack 1.7.0 nebo novější: Postupujte podle pokynů [zde](../../virtual-machines/windows/create-vm-generalized-managed.md) 
+Po vytvoření image z existujícího spravovaného disku virtuálního počítače pomocí skriptu [tady](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell), následující ukázkový skript vytvoří podobně jako virtuální počítač s Linuxem z existujícího objektu image:
 
-Modul prostředí powershell Azure Stack 1.6.0 nebo níže:
+Modul Azure Stack Powershellu 1.7.0 nebo novější: postupujte podle pokynů [tady](../../virtual-machines/windows/create-vm-generalized-managed.md).
+
+Modul Azure Stack Powershellu 1.6.0 nebo dříve:
 
 ```powershell
 # Variables for common values
@@ -195,6 +200,7 @@ $nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName $resourceGroup
   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
 
 $image = get-azurermimage -ResourceGroupName $imagerg -ImageName $imagename
+
 # Create a virtual machine configuration
 $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D1 | `
 Set-AzureRmVMOperatingSystem -Linux -ComputerName $vmName -Credential $cred | `

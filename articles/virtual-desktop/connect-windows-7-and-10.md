@@ -1,24 +1,24 @@
 ---
-title: Spojte se s Windows 7 a Windows 10 (verze preview) – Azure
-description: Jak se připojit k webovému klientovi HTML5 virtuální plochy Windows.
+title: Připojte se k Windows virtuálních klientů ve verzi Preview s Windows 7 a Windows 10 – Azure
+description: Jak se připojit ke klientovi Windows Virtual Desktop Preview s Windows 7 nebo Windows 10.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 925d762bb065567f6462fdb1614fc308e87b5247
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 644a1d650384f151d9c43b9efa5f47532c58ce14
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318236"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399734"
 ---
-# <a name="connect-with-windows-7-and-windows-10-preview"></a>Spojte se s Windows 7 a Windows 10 (verze Preview)
+# <a name="connect-with-windows-7-and-windows-10"></a>Spojte se s Windows 7 a Windows 10
 
 > Týká se Windows 7 a Windows 10.
 
-Je k dispozici ke stažení klienta, která poskytuje přístup k prostředkům virtuálního klienta Windows (preview) ze zařízení s Windows 7 a Windows 10.
+Je k dispozici ke stažení klienta, která poskytuje přístup k prostředkům Windows Virtual Desktop Preview ze zařízení s Windows 7 a Windows 10.
 
 ## <a name="install-the-client"></a>Instalace klienta
 

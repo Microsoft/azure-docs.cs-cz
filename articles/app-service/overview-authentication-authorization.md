@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b66b293e5d6e422c994e2b7cef13fd4100144cbf
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: d914e3ad3043b2671e154d1616c6800f34415c11
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297000"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402741"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
+
+> [!NOTE]
+> V tuto chvíli AAD V2 (včetně MSAL) není podporována pro Azure App Services a Azure Functions. Zkontrolujte prosím novinky.
+>
 
 Azure App Service poskytuje integrované ověřování a autorizace podpory, abyste se mohli přihlásit uživatele a přístup k datům zápis minimální nebo žádný kód ve vaší webové aplikace, rozhraní RESTful API a mobilní back-end a také [Azure Functions](../azure-functions/functions-overview.md). Tento článek popisuje, jak služby App Service pomáhá zjednodušit ověřování a autorizaci pro vaši aplikaci. 
 

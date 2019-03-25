@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 03/22/2019
 ms.author: banders
-ms.openlocfilehash: dbfb559516177d496f5b16dc31f0ef8d0603cf68
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b37f198052ee927ea986d2a6046bfd93b6ee5d5e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904010"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399981"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací pro prostředky Azure
 
@@ -28,7 +28,7 @@ Pokud jste si zakoupili rezervované instance virtuálních počítačů Azure, 
 
 ## <a name="change-the-scope-for-a-reservation"></a>Změnit obor pro rezervaci.
 
- Vaše sleva za rezervaci se vztahuje na virtuální počítače, databáze SQL, Azure Cosmos DB nebo další prostředky, které odpovídají vaší rezervace a spustit v rámci oboru rezervace. Rozsah rezervace může být jedno předplatné nebo všechna předplatná v fakturační kontextu. Je-li nastavit obor na jedno předplatné, rezervace porovnáváno s prostředky ve vybraném předplatném. Je-li nastavit obor na sdílené Azure odpovídá rezervace k prostředkům, které běží ve všech předplatných v rámci kontextu fakturace. Kontext fakturace je závislá na předplatné použité k koupit rezervaci.
+ Vaše sleva za rezervaci se vztahuje na virtuální počítače, databáze SQL, Azure Cosmos DB nebo další prostředky, které odpovídají vaší rezervace a spustit v rámci rezervace. Kontext fakturace je závislá na předplatné použité k koupit rezervaci.
 
 Chcete-li aktualizovat obor rezervace, rezervaci:
 
@@ -115,6 +115,10 @@ Aktualizace nastavení optimalizace pro rezervaci:
 4. Vyberte **Nastavení** > **Konfigurace**.
 5. Změnit **optimalizovat pro** nastavení.
 
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
+
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+
 ## <a name="next-steps"></a>Další postup
 
 Další informace o rezervacích Azure, najdete v následujících článcích:
@@ -130,7 +134,3 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Náklady na software Windows, které nejsou součástí rezervace](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
-
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
