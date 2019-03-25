@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: fffac197d99dfe03617b281bb9a09e54f3cd5705
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 5b5f323e20bbaf91c151641f8dc78fbc8cde8c24
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202295"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351631"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL v Azure HDInsight?
 
@@ -70,7 +70,7 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
 ```
 
-Hive podporuje taky vlastní **serializátor/deserializers (SerDe)** pro komplexní nebo nepravidelně strukturovaná data. Další informace najdete v tématu [použití vlastní SerDe JSON s HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx) dokumentu.
+Hive podporuje taky vlastní **serializátor/deserializers (SerDe)** pro komplexní nebo nepravidelně strukturovaná data. Další informace najdete v tématu [použití vlastní SerDe JSON s HDInsight](https://web.archive.org/web/20190217104719/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/) dokumentu.
 
 Další informace o formátech podporovaných Hive najdete v článku [ruční jazyka (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 

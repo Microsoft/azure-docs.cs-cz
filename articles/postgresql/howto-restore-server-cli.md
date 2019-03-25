@@ -1,18 +1,18 @@
 ---
 title: Zálohování a obnovení serveru ve službě Azure Database for PostgreSQL
 description: Informace o zálohování a obnovení serveru ve službě Azure Database for PostgreSQL pomocí rozhraní příkazového řádku Azure.
-author: jasonwhowell
-ms.author: jasonh
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 17f9acf6dcdc5a81c785bedc3649ee0258562b43
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3415910426d365ea2dc17e7515871c1bf4841fd3
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994155"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349771"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Jak zálohovat a obnovovat server ve službě Azure Database for PostgreSQL pomocí Azure CLI
 

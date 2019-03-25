@@ -9,11 +9,11 @@ ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: 37a8882653ffede121d2e2cd3f3357741d8d641a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336419"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361927"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Řešení potíží s Apache HBase pomocí Azure HDInsight
 

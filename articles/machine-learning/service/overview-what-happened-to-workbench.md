@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ff065816e287e0d4e37cdea9a7770c9ff806520
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 22615d07e69d707c90e3ff9bda83bfa6f0852996
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890742"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360280"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co se stalo s aplikací Azure Machine Learning Workbench?
 
@@ -40,7 +40,7 @@ Nejnovější verze služby Azure Machine Learning obsahuje následující funkc
 + Nové a další komplexní Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>.
 + Nové rozšířit [rozšíření rozhraní příkazového řádku Azure](reference-azure-machine-learning-cli.md) pro machine learning.
 
-[Architektura](concept-azure-machine-learning-architecture.md) byla přepracována pro snadné použití. Místo několika prostředků a účtů Azure potřebujete jenom [pracovní prostor služby Azure Machine Learning](concept-azure-machine-learning-architecture.md#workspace). Pracovní prostory můžete vytvářet rychle na webu [Azure Portal](quickstart-get-started.md). Použití pracovního prostoru, více mohou uživatelé ukládat školení a nasazení výpočetního cíle, model experimenty, Image Dockeru, nasazených modelů a tak dále.
+[Architektura](concept-azure-machine-learning-architecture.md) byla přepracována pro snadné použití. Místo několika prostředků a účtů Azure potřebujete jenom [pracovní prostor služby Azure Machine Learning](concept-azure-machine-learning-architecture.md#workspace). Pracovní prostory můžete rychle vytvořit v [Azure portal]((setup-create-workspace.md#portal). Použití pracovního prostoru, více mohou uživatelé ukládat školení a nasazení výpočetního cíle, model experimenty, Image Dockeru, nasazených modelů a tak dále.
 
 I když existují nové vylepšené rozhraní příkazového řádku a sady SDK klienty v aktuální verzi, samotná aplikace klasické pracovní plochy aplikace workbench je vyřazený. Je možné spravovat experimenty [řídicího panelu pracovního prostoru na webu Azure portal](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal). Řídicí panel můžete použít k zobrazení historie experimentu, ke správě výpočetních cílů připojených k pracovnímu prostoru, ke správě modelů a imagí Dockeru, a dokonce i k nasazení webových služeb.
 
@@ -50,7 +50,7 @@ I když existují nové vylepšené rozhraní příkazového řádku a sady SDK 
 
 9. ledna 2019 podpora pro Machine Learning Workbench, experimentování ve službě Azure Machine Learning a účty správy modelů a jejich přidružené sady SDK a rozhraní příkazového řádku byla ukončena. 
 
-Všechny nejnovější funkce jsou dostupné prostřednictvím tohoto <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>, [rozhraní příkazového řádku](reference-azure-machine-learning-cli.md)a [portál](quickstart-get-started.md).
+Všechny nejnovější funkce jsou dostupné prostřednictvím tohoto <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>, [rozhraní příkazového řádku](reference-azure-machine-learning-cli.md)a [portál](setup-create-workspace.md#portal).
 
 ## <a name="what-about-run-histories"></a>Co se stane s historií spuštění?
 
@@ -81,7 +81,7 @@ Velká část obsahu projektu se již v místním počítači. Proto stačí na 
 run = exp.submit(source_directory = script_folder, script = 'train.py', run_config = run_config_system_managed)
 ```
 
-Zjistěte, jak začít pracovat [Python s hlavním SDK](quickstart-create-workspace-with-python.md) nebo pomocí [webu Azure portal](quickstart-get-started.md).
+[Vytvoření pracovního prostoru](setup-create-workspace.md#portal) začít.
 
 ## <a name="what-about-my-registered-models-and-images"></a>Jak Moje registrované modely a Image?
 
@@ -121,6 +121,6 @@ Další informace o [nejnovější architektura pro službu Azure Machine Learni
 
 Přehled služby najdete v článku [co je služba Azure Machine Learning?](overview-what-is-azure-ml.md)
 
-Rychlý start ukazuje, jak vytvořit pracovní prostor, vytvoření projektu, spusťte skript a prozkoumejte historii spuštění tohoto skriptu s nejnovější verzí služby Azure Machine Learning, vyzkoušejte [Začínáme se službou Azure Machine Learning](quickstart-get-started.md).
+Rychlý start ukazuje, jak spustit skript a prozkoumejte historii spuštění tohoto skriptu s nejnovější verzí služby Azure Machine Learning, vyzkoušejte [Začínáme se službou Azure Machine Learning](quickstart-run-cloud-notebook.md).
 
 Podrobnější poznatky o tomto pracovním postupu, postupujte [komplexně kurzu](tutorial-train-models-with-aml.md) , který obsahuje podrobné návody k trénování a nasazení modelů pomocí služby Azure Machine Learning. 

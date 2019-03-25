@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 96a334b4bd39513bfad128a8f1b59f319fef013e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 37e8b0a5cc89eded1890eebbeb93cc82d54c9f05
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317404"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360890"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>Instalace a využít Apache Giraph u clusterů HDInsight se systémem Windows
 
@@ -25,6 +25,8 @@ Zjistěte, jak přizpůsobit Windows založené na clusteru HDInsight s Apache G
 
 
 Giraph můžete nainstalovat na libovolný typ clusteru Azure HDInsight (Hadoop, Storm, HBase, Spark) s použitím *akce skriptu*. Ukázkový skript do clusteru služby HDInsight nainstalovat Giraph je k dispozici jen pro čtení služby Azure storage blob na [ https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1). Ukázkový skript funguje pouze s verze clusteru HDInsight verze 3.1. Další informace o verzích clusterů HDInsight, naleznete v tématu [verze clusterů HDInsight](hdinsight-component-versioning.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 **Související články**
 
@@ -121,12 +123,12 @@ K předvedení na úrovni basic použijeme příklad SimpleShortestPathsComputat
     Select-AzureSubscription $subscriptionName
 
     # Create the Storage account context object
-    $storageAccountKey = Get-AzureStorageKey $storageAccountName | %{ $_.Primary }
-    $storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+    $storageAccountKey = Get-AzStorageKey $storageAccountName | %{ $_.Primary }
+    $storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
 
     # Download the job output to the workstation
-    Get-AzureStorageBlobContent -Container $containerName -Blob example/output/shortestpaths/part-m-00001 -Context $storageContext -Force
-    Get-AzureStorageBlobContent -Container $containerName -Blob example/output/shortestpaths/part-m-00002 -Context $storageContext -Force
+    Get-AzStorageBlobContent -Container $containerName -Blob example/output/shortestpaths/part-m-00001 -Context $storageContext -Force
+    Get-AzStorageBlobContent -Container $containerName -Blob example/output/shortestpaths/part-m-00002 -Context $storageContext -Force
     ```
 
     Tím se vytvoří **příklad/výstup/shortestpaths** adresářovou strukturu v aktuálním adresáři na pracovní stanici a stažení dvou výstupní soubory do tohoto umístění.
