@@ -3,7 +3,7 @@ title: Řešení potíží s chybami přihlášení pomocí Azure Active Directo
 description: Zjistěte, jak řešit chyby přihlášení pomocí Azure Active Directory sestavy na webu Azure Portal
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22126114f2d4fcb865485d9cebc69f0e35f70201
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 26a3594b00f19c2790e9dfd5f09fbdc7d73d478f
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198469"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434887"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Postup: Řešení potíží s chybami přihlášení pomocí sestav Azure Active Directory
 
@@ -37,7 +37,7 @@ Kromě toho sestavy přihlášení také můžete řešení potíží se selhán
 Budete potřebovat:
 
 * Klient služby Azure AD s licenci úrovně premium (P1/P2). Zobrazit [Začínáme se službou Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) upgradovat edici Azure Active Directory.
-* Uživatel, který je v **globálního správce**, **správce zabezpečení**, **Čtenář zabezpečení** nebo **čtečky sestav** role pro příslušného tenanta. Každý uživatel můžete navíc použít vlastní přihlášení. 
+* Uživatel, který je v **globálního správce**, **správce zabezpečení**, **Čtenář zabezpečení**, nebo **čtečky sestav** role pro příslušného tenanta. Každý uživatel můžete navíc použít vlastní přihlášení. 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Řešení potíží s chybami přihlášení pomocí sestavy přihlášení
 
@@ -47,7 +47,7 @@ Budete potřebovat:
 
     ![Filtrování výsledků](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
-4. Určení neúspěšných přihlášení, které chcete prozkoumat a vyberte ji. Tím se otevře v okně Další podrobností s dalšími informacemi o neúspěšných přihlášení. Poznamenejte si **přihlášení kód chyby:** a **důvod selhání**. 
+4. Určení neúspěšných přihlášení, které chcete prozkoumat. Vyberte ji a otevřete okno Podrobnosti s dalšími informacemi o neúspěšných přihlášení. Poznamenejte si **přihlášení kód chyby:** a **důvod selhání**. 
 
     ![Výběr záznamu](./media/howto-troubleshoot-sign-in-errors/sign-in-failures.png)
         
@@ -55,7 +55,7 @@ Budete potřebovat:
 
     ![Řešení potíží a podpora](./media/howto-troubleshoot-sign-in-errors/troubleshooting-and-support.png)
 
-6. Důvod selhání popisuje chybu. Například ve výše popsaném scénáři, příčina selhání je **neplatné uživatelské jméno nebo heslo nebo neplatné místní uživatelské jméno nebo heslo**. To znamená, že uživatel zadali jste nesprávné uživatelské jméno nebo heslo pro přihlášení k webu Azure portal. Oprava je jednoduše přihlásit znovu s správné uživatelské jméno a heslo.
+6. Důvod selhání popisuje chybu. Například ve výše popsaném scénáři, příčina selhání je **neplatné uživatelské jméno nebo heslo nebo neplatné místní uživatelské jméno nebo heslo**. Oprava je jednoduše přihlásit znovu s správné uživatelské jméno a heslo.
 
 7. Můžete získat další informace, včetně návrhů na odstranění problému, tak, že kód chyby: **50126** v tomto příkladu v [kódy chyb přihlášení odkaz](reference-sign-ins-error-codes.md). 
 

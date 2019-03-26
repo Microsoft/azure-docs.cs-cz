@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 310e0e77b898171aea3fdcf5996cbc53f9f582a6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 32faab707b7a40a9f637e4ee5863690a9d9ff4c3
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57864605"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439275"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Vytvoření služby application gateway pomocí adresy URL na základě cest pravidla směrování pomocí prostředí Azure PowerShell
 
@@ -355,11 +355,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Otestování základní adresy URL v aplikační bráně](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-Změňte adresu URL na http://<ip-address>:8080/video/test.htm nahrazování vaši IP adresu pro < ip-address > a by měl vypadat přibližně jako v následujícím příkladu:
+Změňte adresu URL na `http://<ip-address>:8080/video/test.htm`, nahraďte IP adresy pro `<ip-address>`, a by měl vypadat přibližně jako v následujícím příkladu:
 
 ![Testování adresy URL obrázků v aplikační bráně](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 
-Změňte adresu URL na http://<ip-address>:8080/video/test.htm a by měl vypadat přibližně jako v následujícím příkladu:
+Změňte adresu URL na `http://<ip-address>:8080/video/test.htm` a by měl vypadat přibližně jako v následujícím příkladu:
 
 ![Testování adresy URL videa v aplikační bráně](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-video.png)
 

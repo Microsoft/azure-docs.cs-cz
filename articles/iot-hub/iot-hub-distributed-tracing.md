@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: f685521adbbd8b9be9128ff77ab38b42860518b6
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: fc6db4d02898ea0e8eed3cdf3d0b1a9788d943e9
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351044"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439292"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv typu zařízení cloud Azure IoT s distribuované trasování (preview)
 
@@ -174,7 +174,7 @@ Tyto pokyny jsou určené pro sestavení ukázky na Windows. Jiné prostředí, 
 
 Má **není triviální** náhled funkce distribuované trasování bez použití C SDK. Proto tento přístup nedoporučuje.
 
-Nejdřív musí implementovat všechny primitivy protokolu IoT Hub ve vašich zpráv podle příručky pro vývojáře [vytvoření a čtení zpráv IoT Hub](iot-hub-devguide-messages-construct.md). Upravte vlastnosti protokolu v protokol MQTT nebo AMQP zprávy přidat `tracestate` jako **vlastnost systému**. Konkrétně:
+Nejdřív musí implementovat všechny primitivy protokolu IoT Hub ve vašich zpráv podle příručky pro vývojáře [vytvoření a čtení zpráv IoT Hub](iot-hub-devguide-messages-construct.md). Upravte vlastnosti protokolu ve zprávách protokolu MQTT/AMQP přidat `tracestate` jako **vlastnost systému**. Konkrétně:
 
 * Protokol MQTT, přidejte `%24.tracestate=timestamp%3d1539243209` zpráv tématu, kde `1539243209` by měla být nahrazena čas vytvoření zprávy ve formátu unix timestamp. Jako příklad odkazovat na implementaci [v SDK pro jazyk C](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761)
 * AMQP, přidejte `key("tracestate")` a `value("timestamp=1539243209")` stejně jako zprávy poznámky. Referenční implementaci, najdete v části [tady](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527).
