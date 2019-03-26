@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 44c7f6d32737fe83e80a2f2df15f0ae078a5849e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 376f2bd792cb1b3190507f5571a8b7a33daf2542
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400285"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439106"
 documentType: LandingData
 title: Dokumentace ke službě Azure Data Box – online přenos
 metadata:
@@ -16,10 +16,10 @@ metadata:
   ms.service: databox
   ms.subservice: edge
   ms.topic: landing-page
-  ms.date: 03/22/2019
+  ms.date: 03/25/2019
   ms.author: alkohli
 abstract:
-  description: Řada služeb Azure Data Box umožňuje přenášet stovky terabajtů dat do Azure rychlým, cenově dostupným a spolehlivým způsobem. Zařízení Data Box použijte pro velké datové přenosy prostřednictvím sítě.<p>Pokud chcete odesílat data pro cloudovou archivaci nebo zotavení po havárii nebo zpracovávat data v cloudovém měřítku, zvolte Data Box Gateway<SUP>Preview</SUP>.  Pokud chcete během přenosu do Azure data filtrovat, analyzovat a transformovat, použijte Data Box Edge<SUP>Preview</SUP>.</p><p>V našich kurzech se dozvíte, jak se Data Box Gateway a Data Box Edge dají použít pro síťové přenosy dat.</p>
+  description: Řada služeb Azure Data Box umožňuje přenášet stovky terabajtů dat do Azure rychlým, cenově dostupným a spolehlivým způsobem. Zařízení Data Box použijte pro velké datové přenosy prostřednictvím sítě.<p>Pokud chcete odesílat data pro cloudovou archivaci nebo zotavení po havárii nebo zpracovávat data v cloudovém měřítku, zvolte Data Box Gateway.  Pokud chcete během přenosu do Azure filtrovat, analyzovat a transformovat data, použijte Data Box Edge.</p><p>V našich kurzech se dozvíte, jak se Data Box Gateway a Data Box Edge dají použít pro síťové přenosy dat.</p>
 sections:
 - title: Kurzy
   items:

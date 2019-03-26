@@ -17,7 +17,7 @@ ms.author: alkohli
 <p>Řada Azure Data Box nabízí produkty s různou úložnou kapacitou, které pomáhají rychle, spolehlivě a bez velkých nákladů odesílat do Azure terabajty (TB) dat. Microsoft urychluje zabezpečený přenos dat dodávkou vlastnických úložných zařízení, která umožňují přenos dat offline nebo přes síť.</p>
 <h2>Offline přenos dat</h2>
 <p>Pro omezenou (nebo žádnou) šířku pásma sítě</p>
-<ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
+<ul class="cardsA panelContent singlePanelContent cols cols3">
     <li>
         <a href="/azure/databox/data-box-disk-overview">
             <div class="cardSize">
@@ -29,7 +29,7 @@ ms.author: alkohli
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Disk</b> pro velikosti dat < 40 TB. Microsoft vám dodá 1 až 5 šifrovaných jednotek SSD (solid-state drive), na které zkopírujete data a vrátíte je zpátky.</p>
+                            <p><b>Data Box Disk</b> pro velikosti dat &lt; 40 TB. Microsoft vám dodá 1 až 5 šifrovaných jednotek SSD (solid-state drive), na které zkopírujete data a vrátíte je zpátky.</p>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@ ms.author: alkohli
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Heavy<SUP>Preview</SUP></b> pro velikosti dat > 500 TB. Microsoft vám prostřednictvím přepravní společnosti dodá 1petabajtové (PB) zařízení, na které zkopírujete data a vrátíte ho zpátky.</p>
+                            <p><b>Data Box Heavy</b> pro velikosti dat &gt; 500 TB. Microsoft vám prostřednictvím přepravní společnosti dodá 1petabajtové (PB) zařízení, na které zkopírujete data a vrátíte ho zpátky.</p>
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ ms.author: alkohli
                             </div>
                         </div>
                         <div class="cardText">
-                            <p>Virtuální zařízení s úložištěm <b>Data Box Gateway <SUP>Preview</SUP></b>. Toto zařízení použijte k odeslání vašich dat přes síť do Azure.</p>
+                            <p>Virtuální zařízení s úložištěm <b>Data Box Gateway</b>. Toto zařízení použijte k odeslání vašich dat přes síť do Azure.</p>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@ ms.author: alkohli
                             </div>
                         </div>
                         <div class="cardText">
-                            <p>Fyzické zařízení s úložištěm a výpočetními funkcemi <b>Data Box Edge <SUP>Preview</SUP></b>. Toto zařízení použijte, pokud během přenosu do Azure chcete vaše data analyzovat, transformovat nebo filtrovat.</p>
+                            <p>Fyzické zařízení s úložištěm a výpočetními funkcemi <b>Data Box Edge</b>. Toto zařízení použijte, pokud během přenosu do Azure chcete vaše data analyzovat, transformovat nebo filtrovat.</p>
                         </div>
                     </div>
                 </div>

@@ -91,6 +91,15 @@ items:
       href: personal-data-delete-export.md
     - name: Import virtuálních počítačů z jiného testovacího prostředí
       href: import-virtual-machines-from-another-lab.md
+    - name: Vytvoření objektu pro vytváření imagí
+      href: image-factory-create.md
+      items:
+      - name: Spuštění objektu pro vytváření imagí z AzureDevOps
+        href: image-factory-set-up-devops-lab.md
+      - name: Uložení vlastních imagí a jejich distribuce do několika testovacích prostředí
+        href: image-factory-save-distribute-custom-images.md
+      - name: Nastavení zásad uchovávání informací a spuštění čisticích skriptů
+        href: image-factory-set-retention-policy-cleanup.md
     - name: Nastavení infrastruktury DevTest Labs ve vašem podniku
       href: devtest-lab-guidance-prescriptive-adoption.md
       items:
@@ -132,6 +141,8 @@ items:
         href: devtest-lab-redeploy-vm.md
       - name: Import virtuálního počítače
         href: devtest-lab-import-vm.md
+      - name: Spuštění nebo zastavení virtuálního počítače s použitím PowerShellu nebo CLI
+        href: use-command-line-start-stop-virtual-machines.md
     - name: Použití prostředí v testovacím prostředí
       items:
       - name: Vytvoření prostředí
@@ -252,9 +263,9 @@ items:
       href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
     - name: Nejčastější dotazy
       href: devtest-lab-faq.md
-ms.openlocfilehash: a0b21dfaa64b351e98b6f505568bdbc06c48dd1c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 03ae5399295c0f9fac29fb4cd88cea85130881f7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338373"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435630"
