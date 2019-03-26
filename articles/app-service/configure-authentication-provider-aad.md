@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 0c5ceda99fe35fafff23f2bcf4ea766d7dd42b75
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: d687e770fae6c32ee351a597e12d1aca6094e5cb
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403217"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438220"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Konfigurace aplikace App Service pro použití přihlášení Azure Active Directory
 
@@ -43,8 +43,6 @@ Tento článek ukazuje postup při konfiguraci Azure App Service pro použití s
 5. (Volitelné) Chcete-li omezit přístup k webu pouze uživatelům ověření službou Azure Active Directory, nastavte **akce má být provedena, když požadavek nebude ověřený** k **přihlášení pomocí Azure Active Directory**. K tomu je potřeba ověřit, že všechny požadavky, a všechny neověřené požadavky jsou přesměrovány do služby Azure Active Directory pro ověřování.
 6. Klikněte na **Uložit**.
 
-Nyní jste připraveni pro ověřování ve vaší aplikaci služby App Service pomocí Azure Active Directory.
-
 ## <a name="advanced"> </a>Konfigurace s pokročilým nastavením
 
 Můžete také zadat nastavení konfigurace ručně. To je preferovaným řešením, pokud se liší od tenanta, pomocí kterého můžete přihlásit k Azure tenanta Azure Active Directory, kterou chcete použít. Chcete-li dokončit konfiguraci, musíte nejdřív vytvořit registrace ve službě Azure Active Directory a pak je nutné zadat některé podrobnosti registrace do služby App Service.
@@ -57,8 +55,12 @@ Můžete také zadat nastavení konfigurace ručně. To je preferovaným řešen
 4. Během několika sekund byste měli vidět registrace nové aplikace, kterou jste právě vytvořili.
 5. Po registraci aplikace se přidala, klikněte na název registrace aplikace, klikněte na **nastavení** nahoře, potom klikněte na **vlastnosti** 
 6. V **identifikátor ID URI aplikace** pole, vložte adresu URL aplikace (z kroku 1), také v **adresa URL domovské stránky** vložte adresu URL aplikace (z kroku 1), potom klikněte na tlačítko **uložit**
-7. Nyní klikněte na **adresy URL odpovědí**, upravit **adresy URL odpovědi**, vložte adresu URL aplikace (z kroku 1) a potom připojí na konec adresy URL, */.auth/login/aad/callback* (pro například `https://contoso.azurewebsites.net/.auth/login/aad/callback`). Klikněte na **Uložit**.   
-8.  V tomto okamžiku zkopírovat **ID aplikace** pro aplikaci. Zachovat ho pro pozdější použití. Budete potřebovat a nakonfigurovat aplikaci služby App Service.
+7. Nyní klikněte na **adresy URL odpovědí**, upravit **adresy URL odpovědi**, vložte adresu URL aplikace (z kroku 1) a pak připojte na konec adresy URL, */.auth/login/aad/callback* (pro například `https://contoso.azurewebsites.net/.auth/login/aad/callback`). Klikněte na **Uložit**.
+
+   > [!NOTE]
+   > Můžete použít stejné registrace aplikace pro víc domén tak, že přidáte další **adresy URL odpovědí**. Ujistěte se, že k modelování každá instance služby App Service s vlastním registrací, tak má svůj vlastní oprávnění a vyjádření souhlasu. Také zvážit použití registrace samostatných aplikací pro samostatnou lokalitu sloty. To je vyhnout se sdílí mezi prostředími, oprávnění tak, aby chybu v novém kódu, který testujete nemá vliv na produkční.
+    
+8. V tomto okamžiku zkopírovat **ID aplikace** pro aplikaci. Zachovat ho pro pozdější použití. Budete potřebovat a nakonfigurovat aplikaci služby App Service.
 9. Zavřít **registrovaná aplikace** stránky. Na **registrace aplikací** stránky, klikněte na **koncové body** tlačítko v horní části stránky, zkopírujte **koncového bodu WS-FEDERATION přihlašování** adresu URL, ale odebrat `/wsfed` končí z adresy URL. Konečný výsledek by měl vypadat jako `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000`. Název domény se může lišit pro suverénních cloudů. To bude sloužit jako adresu URL vystavitele pro pozdější.
 
 ### <a name="secrets"> </a>Přidejte informace o Azure Active Directory do aplikace služby App Service
