@@ -26,10 +26,6 @@ items:
     href: gen2-migration-schedule.md
   - name: Archivované poznámky k verzi
     items:
-    - name: Prosinec 2018
-      href: release-notes-december-2018.md
-    - name: Říjen 2018
-      href: release-notes-october-2018.md
     - name: Září 2018
       href: release-notes-september-2018.md
     - name: Srpen 2018
@@ -245,16 +241,18 @@ items:
     items:
     - name: Analýza úloh
       href: analyze-your-workload.md
-  - name: Monitorování a ladění
+  - name: Správa a monitorování
     items:
-    - name: Monitorování úloh pomocí zobrazení dynamické správy
-      href: sql-data-warehouse-manage-monitor.md
     - name: Upgrade na Gen2
       href: upgrade-to-latest-generation.md
-    - name: Monitorování mezipaměti Gen2
-      href: sql-data-warehouse-how-to-monitor-cache.md
     - name: Obnovení datového skladu
       href: sql-data-warehouse-restore.md
+    - name: Monitorování úloh – portál
+      href: sql-data-warehouse-monitor-workload-portal.md
+    - name: Monitorování úloh – DMV
+      href: sql-data-warehouse-manage-monitor.md
+    - name: Monitorování mezipaměti Gen2
+      href: sql-data-warehouse-how-to-monitor-cache.md
   - name: Integrace
     items:
     - name: Použití strojového učení
@@ -319,9 +317,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: Správa dat
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: 1ee4b1806047d93cbdbe0758b728dd4d835cf8eb
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: e206a9a171736ac7755e670838ee4854dabcdffb
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309448"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402860"

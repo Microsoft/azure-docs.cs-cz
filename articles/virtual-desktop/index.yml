@@ -1,17 +1,17 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 06b95c24914574a2aea59c6c597e3d9b3d5097cc
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b9f4cd78288d1b9868a823c5e0ccd0b68b324229
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318731"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400244"
 documentType: LandingData
-title: Dokumentace k Windows Virtual Desktop
+title: Dokumentace ke službě Windows Virtual Desktop verze Preview
 metadata:
-  title: Dokumentace k Windows Virtual Desktop – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs
-  description: Windows Virtual Desktop pro Azure je prostředí Windows 10 Enterprise pro více uživatelů virtualizované v cloudu.
+  title: Dokumentace ke službě Windows Virtual Desktop verze Preview – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs
+  description: Windows Virtual Desktop verze Preview pro Azure je prostředí Windows 10 Enterprise pro více uživatelů virtualizované v cloudu.
   author: Heidilohr
-  manager: dansimp
+  manager: daveba
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
@@ -23,11 +23,11 @@ sections:
 - title: Přehled
   items:
   - type: paragraph
-    text: Informace o Windows Virtual Desktop a jeho použití. Kurzy, postupy, referenční obsah a další položky vám ukážou, jak nastavit fondy hostitelů a klienty a přiřadit role uživatelům pro prostředí Windows Virtual Desktop.
+    text: Další informace o službě Windows Virtual Desktop a jejím použití Kurzy, postupy, referenční obsah a další položky vám ukážou, jak nastavit fondy hostitelů a klienty a přiřadit role uživatelům pro prostředí Windows Virtual Desktop.
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/virtual-desktop/overview">Co je Windows Virtual Desktop? (Preview)</a>
+    - html: <a href="/azure/virtual-desktop/overview">Co je Windows Virtual Desktop verze Preview?</a>
 - title: Podrobné kurzy
   items:
   - type: paragraph
@@ -44,4 +44,4 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell (Preview)</a>
+    - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>
