@@ -5,22 +5,22 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 03/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 11eb849567079bfb1293c3c1e8ce97c43b66d493
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f32434e5ac0cd35cf620c1589aeb441476622442
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116840"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407449"
 ---
 # <a name="choose-the-right-consistency-level"></a>Volba vhodné úrovně konzistence 
 
-Distribuované databáze spoléhat na replikaci pro vysokou dostupnost, s nízkou latencí nebo obojí, ujistěte se, základní kompromis mezi konzistence čtení a dostupnosti, latence a propustnosti. Většina komerčně dostupný distribuovaných databází požádejte vývojáři zvolit mezi těmito dvěma modely extreme konzistence: silnou konzistenci a konečné konzistence. Azure Cosmos DB umožňuje vývojářům volit pět jasně definované modely konzistence: silná, omezená neaktuálnost, relace, konzistentní Předpona a konečný výsledek. Každá z těchto modelů konzistence je dobře definovaný a intuitivní a je možné u konkrétních scénářů reálného světa. Zadejte každou pět modelů konzistence [dostupnost a výkon kompromisy](consistency-levels-tradeoffs.md) a je zajištěná komplexní smlouvy SLA. Následující pokyny pro jednoduché můžete učinit správnou volbu v mnoha běžným scénářům.
+Distribuované databáze spoléhat na replikaci pro vysokou dostupnost, s nízkou latencí nebo obojí, ujistěte se, základní kompromis mezi konzistence čtení a dostupnosti, latence a propustnosti. Většina komerčně dostupný distribuovaných databází požádejte vývojáři zvolit mezi těmito dvěma modely konzistence extreme: *silné* konzistence a *konečné* konzistence. Azure Cosmos DB umožňuje vývojářům volit pět jasně definované modely konzistence: *silné*, *omezená neaktuálnost*, *relace*, *konzistentní vzhledem k aplikacím Předpona* a *konečné*. Každá z těchto modelů konzistence je dobře definovaný a intuitivní a je možné u konkrétních scénářů reálného světa. Každý pět modelů konzistence poskytnout přesné [dostupnost a výkon kompromisy](consistency-levels-tradeoffs.md) a je zajištěná komplexní smlouvy SLA. Následující pokyny pro jednoduché můžete učinit správnou volbu v mnoha běžným scénářům.
 
 ## <a name="sql-api-and-table-api"></a>SQL API a rozhraní API tabulky
 
-Zvažte následující body, pokud vaše aplikace je sestavena pomocí rozhraní SQL API služby Cosmos DB nebo pomocí rozhraní Table API
+Pokud vaše aplikace je sestavena pomocí rozhraní SQL API nebo rozhraní API tabulky, zvažte následující body:
 
 - Pro většinu scénářů reálného světa konzistence typu relace je optimální a je doporučenou možnost. Další informace najdete v článku, [postupy spravovat tokenu relace pro aplikaci](how-to-manage-consistency.md#utilize-session-tokens).
 
@@ -36,7 +36,7 @@ Zvažte následující body, pokud vaše aplikace je sestavena pomocí rozhraní
 
 - Pokud budete potřebovat ještě větší odolnost dat bez omezení výkonu, můžete vytvořit vlastní konzistence úroveň v aplikační vrstvě. Další informace najdete v tématu [postupy implementovat vlastní synchronizaci ve svých aplikacích](how-to-custom-synchronization.md).
 
-## <a name="cassandra-mongodb-and-gremlin-api"></a>Cassandra, MongoDB a Gremlin API
+## <a name="cassandra-mongodb-and-gremlin-apis"></a>Cassandra, MongoDB a rozhraní Gremlin API
 
 - Podrobnosti o mapování mezi "Úrovně konzistence čtení" nabízí úrovně konzistence Apache Cassandra a Cosmos DB, najdete v tématu [úrovně konzistence a rozhraní API Cosmos DB](consistency-levels-across-apis.md#cassandra-mapping).
 
@@ -44,7 +44,7 @@ Zvažte následující body, pokud vaše aplikace je sestavena pomocí rozhraní
 
 ## <a name="consistency-guarantees-in-practice"></a>Záruky konzistence v praxi
 
-V praxi se může zobrazit silnější záruky konzistence. Záruky konzistence pro operace čtení odpovídají aktuálnosti a pořadí stavu databáze, která požadujete. Konzistence čtení se váže k řazení a šíření operace zápisu/aktualizace.  
+V praxi však může často získáte silnější záruky konzistence. Záruky konzistence pro operace čtení odpovídají aktuálnosti a pořadí stavu databáze, která požadujete. Konzistence čtení se váže k řazení a šíření operace zápisu/aktualizace.  
 
 * Pokud je úroveň konzistence nastavená na **omezená neaktuálnost**, Cosmos DB zaručuje, že klienti vždy načíst hodnotu předchozí zápis s lag ohraničena neaktuálnost okno.
 
@@ -52,9 +52,9 @@ V praxi se může zobrazit silnější záruky konzistence. Záruky konzistence 
 
 * Pro zbývající tři konzistence úrovně okno neaktuálnost je do značné míry závisí na velikosti pracovní zátěže. Například, pokud neexistují žádné operace zápisu na databázi, operace čtení se **konečné**, **relace**, nebo **konzistentní předpona** úrovně konzistence je pravděpodobně poskytne stejné výsledky jako operace čtení se úroveň silná konzistence.
 
-Pokud váš účet služby Cosmos DB má nakonfigurovanou úrovně konzistence, než je silná konzistence, můžete najít na více systémů pravděpodobnost, že vaši klienti mohou získat silné a konzistentních čtení pro vaše úlohy pohledem na pravděpodobnostní omezená Neaktuálnost (PBS) Metrika. Tato metrika je zveřejněný na webu Azure Portal najdete další informace najdete v tématu [metriku monitorování Probabilistically omezená Neaktuálnost (PBS)](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
+Pokud váš účet Azure Cosmos je nakonfigurovaný s úrovní konzistence než silná konzistence, můžete najít na více systémů pravděpodobnost, že vaši klienti mohou získat silné a konzistentních čtení pro vaše úlohy pohledem *Probabilistically Omezená Neaktuálnost* metriku (PBS). Tato metrika je zveřejněný na webu Azure Portal najdete další informace najdete v tématu [metriku monitorování Probabilistically omezená Neaktuálnost (PBS)](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
-Pravděpodobnostní omezená neaktuálnost ukáže, jak konečné konzistenci typu případné. Tato metrika poskytuje přehled o tom, jak často, získáte silnější konzistence než úroveň konzistence, kterou jste právě nakonfigurovali na účtu služby Cosmos DB. Jinými slovy můžete vidět pravděpodobnost (měřeno v milisekundách) získávání silně konzistentních čtení pro kombinaci zápisu a oblasti čtení.
+Pravděpodobnostní omezená neaktuálnost ukáže, jak konečné konzistenci typu případné. Tato metrika poskytuje přehled o tom, jak často, získáte silnější konzistence než úroveň konzistence, kterou jste právě nakonfigurovali na vašem účtu Azure Cosmos. Jinými slovy můžete vidět pravděpodobnost (měřeno v milisekundách) získávání silně konzistentních čtení pro kombinaci zápisu a oblasti čtení.
 
 ## <a name="next-steps"></a>Další postup
 

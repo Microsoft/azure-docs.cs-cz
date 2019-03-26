@@ -3,7 +3,7 @@ title: Co je monitorování Azure Active Directory? (Preview) | Microsoft Docs
 description: Poskytuje obecný přehled monitorování Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: e2b3d8ce-708a-46e4-b474-123792f35526
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d81905d3e42302a5654b51cc0269e546fee49d2f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: de416d18505d0258da446318b3dc6a9853ff13e7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816772"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434853"
 ---
 # <a name="what-is-azure-active-directory-monitoring-preview"></a>Co je monitorování Azure Active Directory? (Preview)
 

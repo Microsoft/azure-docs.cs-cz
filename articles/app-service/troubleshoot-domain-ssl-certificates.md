@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: d007f688483366f2f714a78b5bf9b56a67c55490
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: b367251e6799031ed96058d21e606446e14636c7
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730098"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407602"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Řešení potíží s doménou a problémy s certifikátem protokolu SSL ve službě Azure App Service
 
@@ -278,7 +278,7 @@ Při nákupu domény z portálu Azure portal aplikace App Service se automaticky
 
 **Můžete použít doménu zakoupit na webu Azure Portal přejděte místo toho na Virtuálním počítači Azure?**
 
-Ano, pak můžete domény do virtuálního počítače, úložiště atd. Další informace najdete v tématu [vytvořit vlastní plně kvalifikovaný název domény pro virtuální počítač s Windows na webu Azure Portal](../virtual-machines/windows/portal-create-fqdn.md).
+Ano, může odkazovat domény k virtuálnímu počítači. Další informace najdete v tématu popisujícím [použití Azure DNS k určení nastavení vlastní domény pro službu Azure](../dns/dns-custom-domain.md).
 
 **Moje doména hostitelem je například GoDaddy nebo Azure DNS?**
 

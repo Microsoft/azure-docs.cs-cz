@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: ca186090f28f04811030e83b159782a9bfeb87f9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ccea3ebae4bcc19410cfb5537a7140f69b04c4e7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400778"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438780"
 ---
-# <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobit hlavní imagi virtuálního pevného disku
+# <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
 Tento článek vám sdělí postup přípravy bitové kopie hlavního virtuálního pevného disku (VHD) pro odeslání do Azure, jak vytvořit virtuální počítače (VM) a instalace a konfigurace softwaru na ně. Tyto pokyny se týkají konfigurace specifické pro virtuální plochy Windows ve verzi Preview, který lze použít s existujícími procesy vaší organizace.
 
@@ -162,8 +162,8 @@ Můžete zakázat automatické aktualizace ručně.
 
 Chcete-li zakázat automatické aktualizace:
 
-1. Instalace Office 365 podle pokynů v [přípravě image Office](set-up-customize-master-image.md#office-image-preparation).
-2. Nainstalujte další aplikace podle pokynů v [nastavení profilu uživatele (FSLogix)](set-up-customize-master-image.md#user-profile-setup-fslogix), [programu Windows Defender](set-up-customize-master-image.md#windows-defender), a [další aplikace a konfigurace registru](set-up-customize-master-image.md#other-applications-and-registry-configuration).
+1. Instalace Office 365 podle pokynů v [přípravy softwaru a instalace](set-up-customize-master-image.md#software-preparation-and-installation).
+2. Nainstalujte další aplikace podle pokynů v [nastavit kontejner profilu uživatele (FSLogix)](set-up-customize-master-image.md#set-up-user-profile-container-fslogix), [konfigurace programu Windows Defender](set-up-customize-master-image.md#configure-windows-defender), a [jinými aplikacemi a registru konfigurace](set-up-customize-master-image.md#other-applications-and-registry-configuration).
 3. Zakázání Windows automatické aktualizace služby na místním virtuálním počítači.
 4. Otevřít **Editor místních zásad skupiny\\šablony pro správu\\součásti Windows\\Windows Update**.
 5. Klikněte pravým tlačítkem na **Konfigurace automatických aktualizací** a nastavte ho na **zakázané**.
@@ -171,7 +171,7 @@ Chcete-li zakázat automatické aktualizace:
 Můžete také spustit následující příkaz na příkazovém řádku, chcete-li zakázat automatické aktualizace.
 
 ```batch
-reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
+reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
 Spuštěním tohoto příkazu zadejte počáteční rozložení pro počítače s Windows 10.
@@ -232,9 +232,7 @@ Virtuální Desktop Windows oficiálně nepodporuje Skype pro firmy a týmy.
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Nastavit kontejner profilu uživatele (FSLogix)
 
-Chcete-li zahrnout jako součást image kontejneru FSLogix, postupujte podle pokynů v [nastavení sdílené složky profilu uživatele pro hostitele fond](create-host-pools-user-profile.md#configure-the-fslogix-profile-container).
-
-Při konfiguraci klíče registru sdílené složky souborů, používejte sdílenou složku vytvoříte v [nakonfigurovat oprávnění pro souborový server](set-up-customize-master-image.md#configure-permissions-for-the-file-server) kam chcete uložit profil kontejnery. Můžete také testovat funkce kontejneru FSLogix použití této funkce [rychlý Start](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start).
+Chcete-li zahrnout jako součást image kontejneru FSLogix, postupujte podle pokynů v [nastavení sdílené složky profilu uživatele pro hostitele fond](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). Můžete otestovat funkci FSLogix kontejner s [v tomto rychlém startu](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start).
 
 ### <a name="configure-windows-defender"></a>Konfigurace programu Windows Defender
 

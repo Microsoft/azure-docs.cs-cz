@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: dabffd88965a10fe4feca2b600cfaf5741e2f664
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 247ebdc8156453062eefe6738c5c281d393a9923
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157903"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436050"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technický profil pro vystavitele tokenu JWT ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -54,7 +54,7 @@ Následující příklad ukazuje technický profil pro `JwtIssuer`:
 | rolling_refresh_token_lifetime_secs | Ne | Aktualizujte token doba života posuvného okna. Po tomto časovém období uplyne uživatel bude muset donutit, bez ohledu na období platnosti posledního obnovovací token získaný aplikace. Pokud nechcete, aby k vynucení doba života posuvného okna, nastavte hodnotu allow_infinite_rolling_refresh_token k `true`. Výchozí hodnota je 7,776,000 sekund (90 dnů). (Včetně) minimální hodnota je 86 400 sekund (24 hodin). Maximální počet (včetně) je 31,536,000 sekund (365 dní). | 
 | allow_infinite_rolling_refresh_token | Ne | Pokud nastavena na `true`, obnovovací token klouzavým 5minutovým životnost nikdy nevyprší. |
 | IssuanceClaimPattern | Ano | Ovládací prvky deklarace identity vystavitele (iss). Jedna z hodnot:<ul><li>AuthorityAndTenantGuid - deklaraci identity iss zahrnuje název domény, jako například `login.microsoftonline` nebo `tenant-name.b2clogin.com`a svůj identifikátor tenanta https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp - deklaraci identity iss zahrnuje název domény, jako například `login.microsoftonline` nebo `tenant-name.b2clogin.com`, váš tenant identifikátor a název zásady předávající strany. https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> | 
-| AuthenticationContextReferenceClaimPattern | Ne | Ovládací prvky `acr` hodnoty deklarace identity.<ul><li>Žádný - není Azure AD B2C vydávání deklarací acr</li><li>Vlastnosti PolicyId - `acr` deklarací identity obsahuje název zásady</li></ul>Možnosti pro nastavení této hodnoty jsou TFP (zásady důvěryhodnosti framework) a služby ACR (authentication kontextu odkaz). Doporučuje se tuto hodnotu nastavíte na TFP, ujistěte se, pokud chcete nastavit hodnotu, `<Item>` s `Key="AuthenticationContextReferenceClaimPattern"` existuje a má hodnotu `None`. V přijímající strany zásady, přidejte <OutputClaims> položky, přidejte tento element `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`. Také se ujistěte, že vaše zásady obsahuje typ deklarace identity `<ClaimType Id="trustFrameworkPolicy"> <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` | 
+| AuthenticationContextReferenceClaimPattern | Ne | Ovládací prvky `acr` hodnoty deklarace identity.<ul><li>Žádný - není Azure AD B2C vydávání deklarací acr</li><li>Vlastnosti PolicyId - `acr` deklarací identity obsahuje název zásady</li></ul>Možnosti pro nastavení této hodnoty jsou TFP (zásady důvěryhodnosti framework) a služby ACR (authentication kontextu odkaz). Doporučuje se tuto hodnotu nastavíte na TFP, ujistěte se, pokud chcete nastavit hodnotu, `<Item>` s `Key="AuthenticationContextReferenceClaimPattern"` existuje a má hodnotu `None`. V přijímající strany zásady, přidejte `<OutputClaims>` položky, přidejte tento element `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`. Také se ujistěte, že vaše zásady obsahuje typ deklarace identity `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` | 
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 

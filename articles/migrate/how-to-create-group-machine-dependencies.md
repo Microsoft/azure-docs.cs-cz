@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 388a0419d5de87c3eb7faff9b556f888e52ac12e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e186effb63c1ca96ace33ec389c2487448e4d20d
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58117366"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407093"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Seskupení počítačů s využitím mapování závislostí počítačů
 
@@ -60,7 +60,7 @@ Instalace agenta na počítači s Windows:
 4. V **možnosti instalace agenta**vyberte **Azure Log Analytics** > **Další**.
 5. Klikněte na tlačítko **přidat** přidáte nový pracovní prostor Log Analytics. Vložte ID pracovního prostoru a klíč, který jste zkopírovali z portálu. Klikněte na **Další**.
 
-Agenta můžete nainstalovat z příkazového řádku nebo pomocí automatizovaného metody, jako je Azure Automation DSC, System Center Configuration Manager, nebo pomocí šablony Azure Resource Manageru, pokud jste nasadili Microsoft Azure Stack ve vašem datovém centru. [Další informace](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) o použití těchto metod k instalaci agenta MMA.
+Agenta můžete nainstalovat z příkazového řádku nebo pomocí automatizovaného metody jako je System Center Configuration Manager. [Další informace](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) o použití těchto metod k instalaci agenta MMA.
 
 #### <a name="install-the-agent-on-a-linux-machine"></a>Nainstalujte agenta na počítači s Linuxem
 

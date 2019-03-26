@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: edc38296374538fd708a74f575d5b0c77770c005
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da9b82b1e17a62aa9b3d606b0b16295acf04eb85
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901538"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418750"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Integrace správy zdrojového kódu ve službě Azure Automation – starší verze
 
@@ -65,17 +65,17 @@ Pokud už máte účet GitHub a úložiště, který chcete propojit s Azure Aut
      
      | **Parametr** | **Hodnota** |
      |:--- |:--- |
-     | Název |Microsoft.Azure.Automation.SourceControl.Connection |
-     | Type |String |
-     | Hodnota |{"Větve":\<*název vaší větve*>, "RunbookFolderPath":\<*cesta ke složce Runbooků*>, "typ zprostředkovatele":\<*má hodnotu 1 pro GitHub*>, "Úložiště":\<*název vašeho úložiště*>, "Username":\<*GitHub si uživatelské jméno*>} |
+     | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
+     | `Type`  |String |
+     | `Value` |{"Větve":\<*název vaší větve*>, "RunbookFolderPath":\<*cesta ke složce Runbooků*>, "typ zprostředkovatele":\<*má hodnotu 1 pro GitHub*>, "Úložiště":\<*název vašeho úložiště*>, "Username":\<*GitHub si uživatelské jméno*>} |
 
      * Proměnná **Microsoft.Azure.Automation.SourceControl.OAuthToken**, obsahuje zabezpečené zašifrovanou hodnotu vaše OAuthToken.  
 
      |**Parametr**            |**Hodnota** |
      |:---|:---|
-     | Název  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
-     | Type | Unknown(Encrypted) |
-     | Hodnota | <*Šifrované OAuthToken*> |  
+     | `Name`  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
+     | `Type`  | Unknown(Encrypted) |
+     | `Value` | <*Šifrované OAuthToken*> |  
 
      ![Proměnné](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
 

@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 6a7d79d8a9328eaf0808c79ed359299e1ec37d1a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4c2c22d2d3d68080b1d4e05410121ea1d1be283d
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57862711"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439171"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Kurz: Použití rozhraní API Video Indexeru
 
@@ -73,19 +73,6 @@ Kvůli usnadnění můžete pomocí **Autorization** API > **GetAccounts** získ
 Platnost přístupových tokenů vyprší za 1 hodinu. Před použitím API Operations se ujistěte, že je váš přístupový token platný. Pokud platnost vyprší, znovu volejte API Authorization, abyste získali nový přístupový token.
  
 Jste připraveni pustit se do integrace pomocí rozhraní API. Najděte si [podrobný popis každého REST API Video Indexeru](https://api-portal.videoindexer.ai/).
-
-## <a name="location"></a>Umístění
-
-Všechna API operací vyžadují parametr Location (Poloha), který označuje oblast, do které by se mělo volání směrovat a ve kterém byl vytvořen účet.
-
-Používají se hodnoty popsané v následující tabulce. **Hodnota parametru** je hodnota, kterou předáte při použití rozhraní API.
-
-|**Název**|**Hodnota parametru**|**Popis**|
-|---|---|---|
-|Zkušební verze|záznam pro|Používá se pro zkušební účty.|
-|Západní USA|westus2|Používá se pro oblasti Azure Západní USA 2.|
-|Severní Evropa |northeurope|Používá se pro oblasti Azure Severní Evropa.|
-|Východní Asie|eastasia|Používá se pro oblasti Azure Východní Asie.|
 
 ## <a name="account-id"></a>Account ID 
 
@@ -224,6 +211,6 @@ Debug.WriteLine(playerWidgetLink);
 
 ## <a name="next-steps"></a>Další postup
 
-[Prozkoumejte podrobnosti výstupního JSON](video-indexer-output-json-v2.md).
-
-[Přehled Video Indexeru](video-indexer-overview.md)
+- [Prozkoumejte podrobnosti výstupního JSON](video-indexer-output-json-v2.md).
+- [Přehled Video Indexeru](video-indexer-overview.md)
+- [Oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

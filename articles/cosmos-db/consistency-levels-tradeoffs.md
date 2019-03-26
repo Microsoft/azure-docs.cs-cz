@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: cf3dc71e96dac96a6406c97a433398b31a370869
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: ac5b6e0d44376332e005d30b4a8fcc97021c4eda
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571163"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407517"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy mezi konzistencí, dostupností a výkonem 
 
@@ -20,13 +20,13 @@ Distribuované databáze, které závisí na replikaci pro vysokou dostupnost a 
 
 Azure Cosmos DB blíží konzistence dat jako celé spektrum od volby. Tento přístup zahrnuje více možností než dvěma extrémy silné a konečné konzistence. Můžete vybrat z pěti jasně definované modely na spektra konzistence. Od nejsilnější do nejslabší, modely jsou:
 
-- Silné
-- Omezená neaktuálnost
-- Relace
-- Konzistentní předpona
-- Nahodilé
+- *Silné*
+- *Omezená neaktuálnost*
+- *Relace*
+- *Konzistentní předpona*
+- *Konečný výsledek*
 
-Každý model poskytuje dostupnost a výkon kompromisy a je zajištěná komplexní smlouvou SLA.
+Každý model poskytuje dostupnost a výkon kompromisy a je zajištěná komplexní smlouvy SLA.
 
 ## <a name="consistency-levels-and-latency"></a>Úrovně konzistence a latence
 
@@ -34,9 +34,9 @@ Latence čtení pro všechny úrovně konzistence je vždycky zaručená být kr
 
 Latence zápisu pro všechny úrovně konzistence je vždycky zaručená být kratší než 10 milisekund na 99. percentilu. Latence zápisu je zajištěná smlouva SLA. Zápis průměrnou latenci, na 50. percentil, je obvykle 5 MS nebo nižší.
 
-Pro účty služby Azure Cosmos nakonfigurovanou silná konzistence s více než jedné oblasti latence zápisu je zaručeno, že bude menší než dvěma časy odezvy doba mezi dvěma oblastmi nejvíce plus 10 milisekund na 99. percentilu. Tato možnost je aktuálně ve verzi preview.
+Pro účty služby Azure Cosmos nakonfigurovanou silná konzistence s více než jedné oblasti latence zápisu je zaručeno, že bude menší než dvěma časy odezvy doba mezi dvěma oblastmi nejvíce plus 10 milisekund na 99. percentilu.
 
-Přesné čekací doba požadavku je funkce rychlostí světla vzdálenosti a topologii sítě Azure. Sítě Azure neposkytuje žádné latence smlouvy o úrovni služeb pro požadavku mezi všechny dvou oblastech Azure. Pro váš účet Azure Cosmos latenci replikace se zobrazují na webu Azure Portal. Na webu Azure portal můžete použít ke sledování latence replikace mezi různými oblastmi, které jsou spojené s vaším účtem.
+Přesné čekací doba požadavku je funkce rychlostí světla vzdálenosti a topologii sítě Azure. Sítě Azure neposkytuje žádné latence smlouvy o úrovni služeb pro požadavku mezi všechny dvou oblastech Azure. Pro váš účet Azure Cosmos latenci replikace se zobrazují na webu Azure Portal. Na webu Azure portal (přejděte do okna metrik) můžete použít ke sledování latence replikace mezi různými oblastmi, které jsou přidružené k vašemu účtu Azure Cosmos.
 
 ## <a name="consistency-levels-and-throughput"></a>Úrovně konzistence a propustnosti
 
@@ -46,21 +46,22 @@ Přesné čekací doba požadavku je funkce rychlostí světla vzdálenosti a to
 
 ## <a id="rto"></a>Konzistence úrovně a data odolnosti
 
-V prostředí s globálně distribuovanou databázi je přímý vztah mezi konzistence odolnosti úroveň a dat za přítomnosti výpadku celé oblasti. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než úplného obnovení aplikace po ničivé události. Čas potřebný pro aplikaci k plnému obnovení se označuje jako plánovaná doba obnovení (RTO). Také musíte pochopit maximální období posledních aktualizací dat aplikace může tolerovat možnost ztráty při obnovení po ničivé události. Časové období aktualizací, které si může dovolit přijít o se označuje jako cíl bodu obnovení (RPO).
+V prostředí s globálně distribuovanou databázi je přímý vztah mezi konzistence odolnosti úroveň a dat za přítomnosti výpadku celé oblasti. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než úplného obnovení aplikace po ničivé události. Čas potřebný pro aplikaci k plnému obnovení se označuje jako **plánovaná doba obnovení** (**RTO**). Také musíte pochopit maximální období posledních aktualizací dat aplikace může tolerovat možnost ztráty při obnovení po ničivé události. Časové období aktualizací, které si může dovolit přijít o se označuje jako **cíl bodu obnovení** (**cíle bodu obnovení**).
 
-V tabulce definuje vztahy mezi konzistence modelu a datům odolnosti za přítomnosti široké výpadku oblasti. Je důležité si uvědomit, že v distribuovaném systému i přes silná konzistence, není možné mít distribuované databáze s RPO a RTO nula kvůli věty. Další informace o tom najdete v tématu [úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md).
+Následující tabulka definuje vztahy mezi konzistence modelu a datům odolnosti za přítomnosti široké výpadku oblasti. Je důležité si uvědomit, že v distribuovaném systému i přes silná konzistence, není možné mít distribuované databáze s RPO a RTO nula kvůli věty. Další informace o tom, proč najdete v tématu [úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md).
 
 |**Položky nakoupené**|**Režim replikace**|**Úrovně konzistence**|**CÍL BODU OBNOVENÍ**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Jednoho nebo několika hlavními databázemi|Všechny úrovně konzistence|< 240 minut|< 1 týden|
 |>1|Single Master|Relace, konzistentní předpona, konečný výsledek|< 15 minut|< 15 minut|
-|>1|Single Master|Omezená neaktuálnost|K & T|< 15 minut|
+|>1|Single Master|Omezená neaktuálnost|*K* & *T*|< 15 minut|
 |>1|Více hlavních databází|Relace, konzistentní předpona, konečný výsledek|< 15 minut|0|
-|>1|Více hlavních databází|Omezená neaktuálnost|K & T|0|
+|>1|Více hlavních databází|Omezená neaktuálnost|*K* & *T*|0|
 |>1|Jednoho nebo několika hlavními databázemi|Silné|0|< 15 minut|
 
-Tisíc = počet verzí "K" (aktualizace) položky.
-T = času "T" časový interval od poslední aktualizace.
+*K* = počet *"K"* verze (například aktualizace) položky.
+
+*T* = časový interval *"T"* od poslední aktualizace.
 
 ## <a name="next-steps"></a>Další postup
 

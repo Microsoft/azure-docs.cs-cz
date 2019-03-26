@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9820fcae0dfb366c1722c50c95400c7de0fbeb12
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: fb29fb5ef2e755ff456ad177b66349792b2fa21c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285781"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418852"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Přidání vlastního názvu domény pomocí portálu Azure Active Directory
 Každý nový Azure AD tenanta se dodává s počáteční název domény, *domainname*. onmicrosoft.com. Nelze změnit ani odstranit název domény, ale vaše organizace názvy můžete přidat do seznamu. Přidání vlastních názvů domén vám pomůže vytvořit uživatelská jména, které jsou vaši uživatelé znají, jako je například *alain\@contoso.com*.
@@ -84,6 +84,8 @@ Až dokončíte registraci vlastního názvu domény, budete muset Ujistěte se,
 4. Na **Contoso** stránce **ověřte** zajistit vaší vlastní domény správně zaregistrován a je platný pro službu Azure AD.
 
     ![Stránka Contoso s informace o DNS záznam a na tlačítko Ověřit](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
+
+Po ověření vlastního názvu domény, můžete odstranit souboru TXT nebo MX ověření.
 
 ## <a name="common-verification-issues"></a>Běžné problémy ověření
 - Pokud Azure AD nemůže ověřit vlastní název domény, vyzkoušejte následující návrhy:

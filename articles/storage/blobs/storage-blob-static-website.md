@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1794aa26fc725207c4a901c11c345eeaa3d2f65d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a72182091721dd6a1104cb8e3495aee1a3b25eb8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867730"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439378"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
 Účty úložiště GPv2 Azure umožňují poskytovat statický obsah (HTML, CSS, JavaScript a soubory obrázků) přímo z kontejneru úložiště s názvem *$web*. Využití výhod hostování ve službě Azure Storage umožňuje používat architektur bez serveru, včetně [Azure Functions](/azure/azure-functions/functions-overview) a další služby PaaS.
@@ -46,6 +46,9 @@ https://contoso.z4.web.core.windows.net/image.png
 ```
 
 Vybrané výchozí název souboru se používá v kořenovém adresáři a všech jeho podadresářích, když není zadaný název souboru. Pokud nezadáte cesta dokumentu chyby serveru vrátí kód 404, je výchozí 404 – Stránka vrátí uživateli.
+
+> [!NOTE]
+> Výchozí úroveň veřejného přístupu pro soubory je privátní. Protože soubory jsou poskytovány prostřednictvím žádosti o anonymní přístup, toto nastavení se ignoruje. Je veřejný přístup ke všem souborům, a oprávnění RBAC se ignorují.
 
 ## <a name="cdn-and-ssl-support"></a>Podpora CDN a SSL
 

@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: ce691ec0622749f1cb7252e237dae25b2657d115
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a98ec18f2ed38b290d04c3fdc36d9a6ff80a675a
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010527"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407347"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -170,7 +170,6 @@ Pokud jste zvolili pro zápis protokolů auditu do účtu služby Azure storage,
   - Po stažení několik souborů nebo na podsložku, která obsahuje soubory protokolu, sloučit je místně, jak je popsáno v SSMS sloučení auditu soubory pokynů je popsáno výše.
   - Auditování objektů blob k zobrazení protokolů prostřednictvím kódu programu:
 
-    - Použití [rozšířené události čtečky](https://blogs.msdn.microsoft.com/extended_events/20../../introducing-the-extended-events-reader/) knihovny v jazyce C#.
     - [Dotazování rozšířené události soubory](https://sqlscope.wordpress.com/20../../reading-extended-event-files-using-client-side-tools-only/) pomocí prostředí PowerShell.
 
 ## <a id="subheading-5"></a>Postupy v produkčním prostředí
@@ -258,8 +257,11 @@ Rozšířené zásady pomocí kde klauzule podpory pro další filtrování:
 Můžete spravovat pomocí auditování Azure SQL database [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) šablony, jak je znázorněno v těchto příkladech:
 
 - [Nasazení Azure SQL serveru s auditování povoleno pro zápis protokolů auditu do účtu úložiště objektů Blob v Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
-- [Nasazení Azure SQL serveru s auditování povoleno pro zápis protokolů auditu na protokoly Azure monitoru](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
+- [Nasazení Azure SQL serveru s auditování povoleno pro zápis protokolů auditu do Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
 - [Nasazení Azure SQL serveru s auditování povoleno pro zápis protokolů auditu do služby Event Hubs](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
+
+> [!NOTE]
+> Propojené ukázky jsou na externí veřejného úložiště a jsou k dispozici "jako je", bez jakékoli záruky a nejsou podporované v rámci jakékoli programu nebo služby podpory společnosti Microsoft.
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

@@ -4,7 +4,7 @@ description: Postup pro nasazení image Dockeru s aplikací v Go do služby Azur
 keywords: azure app service, web app, go, docker, kontejner
 services: app-service
 author: msangapu
-manager: cfowler
+manager: jeconnoc
 ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.service: app-service
 ms.devlang: go
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 01/17/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 9bf773a9804356dac153dca8730ffe520a250d28
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 3335163c15319e39858003032ae7113c9c26a3fd
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600307"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438576"
 ---
 # <a name="deploy-a-dockergo-web-app-in-web-app-for-containers"></a>Nasazení webové aplikace v Dockeru/Go ve službě Web App for Containers
 
@@ -28,8 +28,6 @@ ms.locfileid: "53600307"
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
 

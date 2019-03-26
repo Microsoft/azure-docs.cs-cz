@@ -1,93 +1,108 @@
 ---
-title: Kurz – Konfigurace geografického filtrování na doméně pro Azure Front Door Service | Microsoft Docs
+title: Kurz – konfigurace geografické filtrování webové aplikace zásady brány firewall pro službu Azure branou
 description: V tomto kurzu se dozvíte, jak vytvořit jednoduchou zásadu geografického filtrování a přidružit ji k existujícímu hostiteli front-endu služby Front Door.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/20/2018
-ms.author: sharadag
-ms.openlocfilehash: 68da9a0255cde6cbad5c675901c80193888bf255
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.date: 03/21/2019
+ms.author: kumud;tyao
+ms.openlocfilehash: 371347149b3c3f14784ba62365cfd6224ded99d1
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214874"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407330"
 ---
-# <a name="how-to-set-up-a-geo-filtering-policy-for-your-front-door"></a>Nastavení zásady geografického filtrování pro službu Front Door
+# <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Jak nastavit zásadu geografické filtrování WAF pro vaše branou
 V tomto kurzu se dozvíte, jak pomocí Azure PowerShellu vytvořit ukázkovou zásadu geografického filtrování a přidružit ji k existujícímu hostiteli front-endu služby Front Door. Tato ukázková zásada geografického filtrování bude blokovat požadavky ze všech zemí s výjimkou USA.
 
-## <a name="1-set-up-your-powershell-environment"></a>1. Nastavení prostředí PowerShell
+Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+## <a name="prerequisites"></a>Požadavky
+Před zahájením nastavení zásady geografického filtrování, nastavte si prostředí PowerShell a vytvořte profil branou.
+### <a name="set-up-your-powershell-environment"></a>Nastavení prostředí PowerShell
 Prostředí Azure PowerShell poskytuje sadu rutin, které ke správě vašich prostředků Azure využívají model [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Podle pokynů na stránce se přihlaste pomocí svých přihlašovacích údajů Azure a nainstalujte AzureRM.
-```
-# Connect to Azure with an interactive dialog for sign-in
-Connect-AzureRmAccount
-Install-Module -Name AzureRM
-```
-> [!NOTE]
->  Brzy bude k dispozici podpora služby [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Na stránce, přihlaste se pomocí přihlašovacích údajů Azure, postupujte podle pokynů a nainstalujte modul prostředí PowerShell Az.
 
-Před instalací modulu Front Door se ujistěte, že máte nainstalovanou aktuální verzi modulu PowerShellGet. Spusťte následující příkaz a znovu otevřete PowerShell.
+#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Připojení k Azure pomocí interaktivního dialogové okno pro přihlášení
+```
+Connect-AzAccount
+Install-Module -Name Az
+```
+Ujistěte se, že máte aktuální verzi modul PowerShellGet nainstalovaný. Spusťte následující příkaz a znovu otevřete PowerShell.
 
 ```
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
 
-Nainstalujte modul AzureRM.FrontDoor. 
+### <a name="create-a-front-door-profile"></a>Vytvoření profilu branou
+Vytvoření profilu branou podle pokynů v tématu [rychlý start: Vytvoření profilu branou](quickstart-create-front-door.md).
 
-```
-Install-Module -Name AzureRM.FrontDoor -AllowPrerelease
-```
+## <a name="define-geo-filtering-match-condition"></a>Definování geografické filtrování odpovídají podmínce
 
-## <a name="2-define-geo-filtering-match-conditions"></a>2. Definice podmínek shody geografického filtrování
-Nejprve vytvořte ukázkovou podmínku shody, která vybere požadavky, které nepochází z oblasti USA. Informace o parametrech při vytváření podmínky shody najdete v [příručce](https://docs.microsoft.com/azure/frontdoor/new-azurermfrontdoormatchconditionobject) k PowerShellu. Dvoupísmenné kódy zemí pro mapování země najdete [tady](front-door-geo-filtering.md).
+Vytvořit podmínku shody vzorku, který vybere není než dorazí požadavky od "USA" pomocí [New-AzFrontDoorMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoormatchconditionobject) na parametry při vytváření podmínku shody. Jsou k dispozici dva kódy zemí písmeno země mapování [tady](front-door-geo-filtering.md).
 
-```
-$nonUSGeoMatchCondition = New-AzureRmFrontDoorMatchConditionObject -MatchVariable RemoteAddr -OperatorProperty GeoMatch -NegateCondition $true -MatchValue "US"
+```azurepowershell-interactive
+$nonUSGeoMatchCondition = New-AzFrontDoorMatchConditionObject `
+-MatchVariable RemoteAddr `
+-OperatorProperty GeoMatch `
+-NegateCondition $true `
+-MatchValue "US"
 ```
  
-## <a name="3-add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>3. Přidání podmínky shody geografického filtrování do pravidla s parametry Action a Priority
+## <a name="add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>Přidání podmínky shody geografického filtrování do pravidla s parametry Action a Priority
 
-Dále vytvořte objekt CustomRule `nonUSBlockRule` na základě podmínky shody a parametrů Action a Priority.  Objekt CustomRule může mít více podmínek shody MatchCondition.  V tomto příkladu se parametr Action nastaví na Block a parametr Priority na 1, což je nejvyšší priorita.
-
-```
-$nonUSBlockRule = New-AzureRmFrontDoorCustomRuleObject -Name "geoFilterRule" -RuleType MatchRule -MatchCondition $nonUSGeoMatchCondition -Action Block -Priority 1
-```
-
-Informace o parametrech při vytváření objektu CustomRuleObject najdete v [příručce](https://docs.microsoft.com/azure/frontdoor/new-azurermfrontdoorcustomruleobject) k PowerShellu.
-
-## <a name="4-add-rules-to-a-policy"></a>4. Přidání pravidel do zásady
-V tomto kroku se v zadané skupině prostředků vytvoří objekt zásad `geoPolicy` obsahující pravidlo `nonUSBlockRule` z předchozího kroku. Pomocí rutiny `Get-AzureRmResourceGroup` vyhledejte hodnotu $resourceGroup pro parametr ResourceGroupName.
+Vytvořte objekt CustomRule `nonUSBlockRule` na základě podmínky shody, akci a prioritu pomocí [New-AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorcustomruleobject).  Objekt CustomRule může mít více podmínek shody MatchCondition.  V tomto příkladu se parametr Action nastaví na Block a parametr Priority na 1, což je nejvyšší priorita.
 
 ```
-$geoPolicy = New-AzureRmFrontDoorFireWallPolicy -Name "geoPolicyAllowUSOnly" -resourceGroupName $resourceGroup -Customrule $nonUSBlockRule  -Mode Prevention -EnabledState Enabled
+$nonUSBlockRule = New-AzFrontDoorCustomRuleObject `
+-Name "geoFilterRule" `
+-RuleType MatchRule `
+-MatchCondition $nonUSGeoMatchCondition `
+-Action Block `
+-Priority 1
 ```
 
-Informace o parametrech při vytváření zásady najdete v [příručce](https://docs.microsoft.com/azure/frontdoor/new-azurermfrontdoorfirewallpolicy) k PowerShellu.
+## <a name="add-rules-to-a-policy"></a>Přidání pravidel pro zásadu
+Najít název skupiny prostředků, která obsahuje pomocí profilu branou `Get-AzResourceGroup`. Dále vytvořte `geoPolicy` zásady objekt obsahující `nonUSBlockRule` pomocí [New-AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy) v zadané skupině prostředků, který obsahuje profil branou. Musíte zadat jedinečný název pro zásadu geo. 
 
-## <a name="5-link-policy-to-a-front-door-frontend-host"></a>5. Propojení zásady s hostitelem front-endu služby Front Door
-Posledními kroky je propojení objektu zásad ochrany s existujícím hostitelem front-endu služby Front Door a aktualizace vlastností služby Front Door. Nejprve pomocí rutiny [Get-AzureRmFrontDoor](https://docs.microsoft.com/azure/frontdoor/get-azurermfrontdoor) načtete objekt vaší služby Front Door a pak nastavíte vlastnost WebApplicationFirewallPolicyLink jejího front-endu na ID prostředku `geoPolicy`.
+Následujícím příkladu používá název skupiny prostředků *myResourceGroupFD1* za předpokladu, že jste vytvořili branou profilována za použití podle pokynů [rychlý start: Vytvoření branou](quickstart-create-front-door.md) článku.
 
 ```
-$geoFrontDoorObjectExample = Get-AzureRmFrontDoor -ResourceGroupName $resourceGroup
+$geoPolicy = New-AzFrontDoorFireWallPolicy `
+-Name "geoPolicyAllowUSOnly" `
+-resourceGroupName myResourceGroupFD1 `
+-Customrule $nonUSBlockRule  `
+-Mode Prevention `
+-EnabledState Enabled
+```
+
+## <a name="link-waf-policy-to-a-front-door-frontend-host"></a>Zásady odkaz WAF pro hostování front-endu branou
+Propojit existujícího hostitele front-endu branou objektu zásad WAF a aktualizovat vlastnosti branou. 
+
+Uděláte to tak, nejdřív načtěte pomocí objektu branou [Get-AzFrontDoor](/powershell/module/az.frontdoor/get-azfrontdoor). 
+
+```
+$geoFrontDoorObjectExample = Get-AzFrontDoor -ResourceGroupName myResourceGroupFD1
 $geoFrontDoorObjectExample[0].FrontendEndpoints[0].WebApplicationFirewallPolicyLink = $geoPolicy.Id
 ```
 
-Pomocí následujícího [příkazu](https://docs.microsoft.com/azure/frontdoor/set-azurermfrontdoor) aktualizujte objekt vaší služby Front Door.
+Dále nastavte vlastnost WebApplicationFirewallPolicyLink front-endu na ID prostředku z `geoPolicy`pomocí [Set-AzFrontDoor](/powershell/module/az.frontdoor/set-azfrontdoor).
 
 ```
-Set-AzureRmFrontDoor -InputObject $geoFrontDoorObjectExample[0]
+Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 ```
 
 > [!NOTE] 
-> K propojení zásady ochrany s hostitelem front-endu služby Front Door stačí nastavit vlastnost WebApplicationFirewallPolicyLink pouze jednou. Další aktualizace zásad se budou u hostitele front-endu uplatňovat automaticky.
+> Stačí nastavit vlastnost WebApplicationFirewallPolicyLink jednou propojení zásadu WAF pro hostování front-endu branou. Další zásady aktualizace automaticky nainstalují do hostitele front-endu.
 
 ## <a name="next-steps"></a>Další postup
 

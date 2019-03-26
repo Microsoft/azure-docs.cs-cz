@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 941455e39a32405097563b043046866aeb5c7964
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 0c6189dfd02a4bdd3662f4fa50dbb812fe995884
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351928"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438478"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 se připojit ke službě Azure IoT Hub
 
@@ -24,7 +24,9 @@ Můžete použít [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-deve
 
 ## <a name="what-you-do"></a>Co můžete dělat
 
-Připojení DevKit do služby Azure IoT hub, kterou vytvoříte. Potom shromažďovat teploty a vlhkosti data ze senzorů a odesílání dat do služby IoT hub.
+V tomto článku budete používat [Visual Studio Code](https://code.visualstudio.com/), napříč platformami zdrojový kód editor, spolu s [nástroje Azure IoT](https://aka.ms/azure-iot-tools) balíček rozšíření.
+
+DevKit se připojí k Azure IoT hub, kterou vytvoříte. Potom shromažďovat teploty a vlhkosti data ze senzorů a odesílání dat do služby IoT hub.
 
 DevKit ještě nemáte? Zkuste [DevKit simulátor](https://azure-samples.github.io/iot-devkit-web-simulator/) nebo [nákupu DevKit](https://aka.ms/iot-devkit-purchase).
 
@@ -119,7 +121,9 @@ Kliknutím na tlačítko B testování snímačům. Pokračujte stisknutím a uv
 
 ### <a name="install-azure-iot-tools"></a>Instalace nástrojů Azure IoT
 
-Doporučujeme [nástroje Azure IoT](https://aka.ms/azure-iot-tools) balíček rozšíření pro Visual Studio Code pro vývoj na DevKit. Obsahuje nástroje Azure IoT [Workbench zařízení Azure IoT](https://aka.ms/iot-workbench) vyvíjet a ladit s různými zařízeními IoT devkit a [Azure IoT Hub Toolkit](https://aka.ms/iot-toolkit) ke správě a interakci s Azure IoT Hub.
+V této části, který nainstalujete [rozhraním Arduino IDE](https://www.arduino.cc/en/Main/Software) spolu s [Visual Studio Code](https://code.visualstudio.com/), editor zdrojového kódu různých platformách.
+
+Taky nainstalujete [nástroje Azure IoT](https://aka.ms/azure-iot-tools) balíček rozšíření pro Visual Studio Code. Doporučujeme používat [nástroje Azure IoT](https://aka.ms/azure-iot-tools) balíček rozšíření pro Visual Studio Code pro vývoj aplikací na DevKit. Balíček rozšíření Azure IoT nástroje obsahuje [Workbench zařízení Azure IoT](https://aka.ms/iot-workbench) sloužící k vývoji a ladění na různých zařízeních IoT devkit. [Azure IoT Hub Toolkit](https://aka.ms/iot-toolkit), také součástí balíček rozšíření pro nástroje Azure IoT, se používá ke správě a interakci s Azure IoT Hubs.
 
 Můžete sledovat ty [Channel 9](https://channel9.msdn.com/) videa, která mají přehled o jejich význam:
 * [Úvod do nové aplikace IoT Workbench rozšíření pro VS Code](https://channel9.msdn.com/Shows/Internet-of-Things-Show/IoT-Workbench-extension-for-VS-Code)

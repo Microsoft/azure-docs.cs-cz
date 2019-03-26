@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 03/25/2019
 ms.author: magattus
-ms.openlocfilehash: 5be1835de2aa1631c4ec2115dd34ea85f0267403
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 954d19fb557540e4fdc6b17f313127e01eba97a7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870886"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435596"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Optimalizovat pro typ doručování obsahu Azure CDN
 
@@ -38,6 +38,8 @@ Tento článek obsahuje přehled různých funkcí optimalizace a jejich použit
 
 * [Obecné doručování webu](#general-web-delivery). Tato optimalizace se používá také pro streamování médií a stahování velkých souborů.
 
+> [!NOTE]
+> Akcelerace dynamického webu společnosti Microsoft je nabízené prostřednictvím [branou služby Azure](https://docs.microsoft.com/azure/frontdoor/front-door-overview).
 
 **Azure CDN Standard od Verizonu** a **Azure CDN Premium od Verizonu** profily podporují následující optimalizace:
 
@@ -120,6 +122,9 @@ Další informace o optimalizace velkých souborů najdete v tématu [optimaliza
 ### <a name="dynamic-site-acceleration"></a>Akcelerace dynamických webů
 
  Akcelerace dynamického webu (DSA) je k dispozici pro **Azure CDN Standard od Akamai**, **Azure CDN Standard od Verizonu**, a **Azure CDN Premium od Verizonu** profily. Tato optimalizace zahrnuje žádné další poplatky se použije. Další informace najdete v tématu [ceny Content Delivery Network](https://azure.microsoft.com/pricing/details/cdn/).
+
+> [!NOTE]
+> Akcelerace dynamického webu společnosti Microsoft je nabízené prostřednictvím [branou služby Azure](https://docs.microsoft.com/azure/frontdoor/front-door-overview) což je globální [anycast](https://en.wikipedia.org/wiki/Anycast) služby využívající privátní globální sítě společnosti Microsoft k poskytování své pracovní zatížení aplikace.
 
 DSA zahrnuje různých technik vytváření využívajících latenci a výkonu dynamického obsahu. Mezi dostupné techniky patří optimalizaci trasy a sítě, optimalizace TCP a další. 
 

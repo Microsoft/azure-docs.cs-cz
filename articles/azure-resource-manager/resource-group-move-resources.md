@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 03/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 80577b4585a6c9e4ec83a8f21b358b7609d85268
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 98236133a90cfddfe2ea476486556318b2c88b10
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081249"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418886"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -49,7 +49,7 @@ Kontakt [podporují](https://portal.azure.com/#blade/Microsoft_Azure_Support/Hel
 
 ## <a name="services-that-can-be-moved"></a>Služby, které je možné přesunout
 
-Následující seznam obsahuje obecný přehled služby Azure, které lze přesunout do nové skupiny prostředků a předplatném. Víc podrobností najdete v části [přesunout operace Podpora prostředků](move-support-resources.md).
+Následující seznam obsahuje obecný přehled služby Azure, které lze přesunout do nové skupiny prostředků a předplatném. Seznam prostředku, které typy podporují přesunutí, najdete v tématu [přesunout operace Podpora prostředků](move-support-resources.md).
 
 * Analysis Services
 * API Management
@@ -143,7 +143,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které nelze pře
 * Dynamics LCS
 * ExpressRoute
 * Kubernetes Service
-* Je povoleno Lab Services - přesunout do nové skupiny prostředků ve stejném předplatném, ale přesun mezi předplatnými není povolen.
+* Služby testovacího prostředí – testovacím prostředím v Učebnách nelze přesunout do nové skupiny prostředků nebo předplatného. DevTest Labs můžete přesunout do nové skupiny prostředků ve stejném předplatném, ale ne napříč předplatnými.
 * Managed Applications
 * Microsoft Genomics
 * SAP HANA v Azure

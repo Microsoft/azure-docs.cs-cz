@@ -9,14 +9,14 @@ keywords: Azure functions, funkce, zpracování událostí, webhooky, dynamické
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 030/25/2019
 ms.author: cshoe
-ms.openlocfilehash: d3da5cc9e0eff27fde6bcd503c033db12f49371e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4b3cba7e7656ea13a6e7b36be4cb2fef99893867
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767698"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439324"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie pro testování kódu ve službě Azure Functions
 
@@ -44,7 +44,7 @@ K nastavení prostředí, vytvořte funkci a testování aplikací. Následujíc
 2. [Vytvoření funkce protokolu HTTP v šabloně](./functions-create-first-azure-function.md) a pojmenujte ho *HttpTrigger*.
 3. [Vytvoření funkce časovačem ze šablony](./functions-create-scheduled-function.md) a pojmenujte ho *TimerTrigger*.
 4. [Vytvoření aplikace testů xUnit](https://xunit.github.io/docs/getting-started-dotnet-core) v sadě Visual Studio kliknutím **soubor > Nový > Projekt > Visual C# > .NET Core > Projekt testů xUnit** a pojmenujte ho *Functions.Test*. 
-5. Přidat odkazy z testovací aplikaci pomocí balíčku Nuget [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/) a [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
+5. Přidat odkazy z aplikace pro testy pomocí balíčku Nuget [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
 6. [Odkaz *funkce* aplikace](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) z *Functions.Test* aplikace.
 
 ### <a name="create-test-classes"></a>Vytvoření tříd testu
@@ -55,11 +55,28 @@ Každá funkce přebírá instanci [ILogger](https://docs.microsoft.com/dotnet/a
 
 `ListLogger` Třída slouží k implementaci `ILogger` rozhraní a udržení ve vnitřním seznamu zpráv pro vyhodnocení během testu.
 
-**Klikněte pravým tlačítkem na** na *Functions.Test* aplikaci a vyberte **Přidat > třída**, pojmenujte ho **ListLogger.cs** a zadejte následující kód:
+**Klikněte pravým tlačítkem na** na *Functions.Test* aplikaci a vyberte **Přidat > třída**, pojmenujte ho **NullScope.cs** a zadejte následující kód:
+
+```csharp
+using System;
+
+namespace Functions.Tests
+{
+    public class NullScope : IDisposable
+    {
+        public static NullScope Instance { get; } = new NullScope();
+
+        private NullScope() { }
+
+        public void Dispose() { }
+    }
+}
+```
+
+Dále **klikněte pravým tlačítkem na** na *Functions.Test* aplikaci a vyberte **Přidat > třída**, pojmenujte ho **ListLogger.cs** a zadejte Následující kód:
 
 ```csharp
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions.Internal;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -94,7 +111,7 @@ namespace Functions.Tests
 
 `ListLogger` Třída implementuje následující členy jako zakázku podle `ILogger` rozhraní:
 
-- **BeginScope**: Obory přidání kontextu do vaší protokolování. V tomto případě test právě odkazuje na statickou instanci služby [NullScope](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.abstractions.internal.nullscope) třídu, která umožňuje testovací funkce.
+- **BeginScope**: Obory přidání kontextu do vaší protokolování. V tomto případě test právě odkazuje na statickou instanci služby `NullScope` třídu, která umožňuje testovací funkce.
 
 - **Hodnotu IsEnabled**: Výchozí hodnota `false` je k dispozici.
 

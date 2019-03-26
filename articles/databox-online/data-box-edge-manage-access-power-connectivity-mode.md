@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: e0b8b35c654f0716fae1e6ab785f57dcf04e1a5a
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 813563b500b9365289285a89536f2724fb87acad
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400891"
+ms.locfileid: "58417798"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge-preview"></a>Správa přístupu, napájení a režimu připojení pro Azure Data Box hranici (preview)
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Správa přístupu, napájení a režimu připojení pro Azure Data Box hranici
 
 Tento článek popisuje, jak spravovat přístup, power a připojení režimu pro váš Azure Data Box Edge. Tato operace se provádí prostřednictvím místního webového uživatelského rozhraní nebo na webu Azure portal.
 
@@ -26,8 +26,6 @@ V tomto článku získáte informace o těchto tématech:
 > * Správa režim připojení
 > * Správa napájení
 
-> [!IMPORTANT]
-> Data Box Edge je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="manage-device-access"></a>Spravovat přístup zařízení
 

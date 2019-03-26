@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9134f939e771f92453b184aad643d41089623e19
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 57aabb25b960c1135704c62c30b5724026078b08
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201462"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439258"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z nativních aplikací pro iOS
 
@@ -44,7 +44,7 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může nativ
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurace aplikace
-> Aby vzorový kód v tomto rychlém startu fungoval, je potřeba přidat adresu URL odpovědi `msal<AppId>://auth` (kde msal<AppId> je ID aplikace).
+> Pro ukázkový kód pro tento rychlý start pro práci, budete muset přidat adresu URL odpovědi jako `msal<AppId>://auth` (kde msal\<AppId > je tato aplikace Id).
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Udělat změnu za mě]()
 >
@@ -168,7 +168,7 @@ applicationContext.acquireToken(forScopes: self.kScopes) { (result, error) in /*
 
 > |Kde:||
 > |---------|---------|
-> | `forScopes` | Obsahuje požadované obory (to znamená [ "user.read" ]` for Microsoft Graph or `[ "<Application ID URL>/scope" ]` for custom Web APIs (i.e. `api://<Application ID>/access_as_user`)). |
+> | `forScopes` | Obsahuje požadované obory (to znamená `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (např. `api://<Application ID>/access_as_user`)). |
 
 #### <a name="getting-an-access-token-silently"></a>Získání přístupového tokenu bez upozornění
 

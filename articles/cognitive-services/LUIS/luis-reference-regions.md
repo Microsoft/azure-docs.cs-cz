@@ -1,7 +1,7 @@
 ---
 title: Publikování oblastech & koncových bodů
 titleSuffix: Azure Cognitive Services
-description: Oblast, ve kterém můžete publikovat aplikaci LUIS odpovídá oblast nebo umístění, ve kterém zadáte na webu Azure Portal, při vytváření klíče koncového bodu Azure LUIS. Při publikování aplikace LUIS automaticky generuje adresu URL koncového bodu pro oblast spojené s klíči.
+description: 3 pro vytváření oblasti a jejich portály podporují mnoho publikování oblastech. Oblast, ve kterém můžete publikovat aplikaci LUIS odpovídá oblast nebo umístění, ve kterém zadáte na webu Azure Portal, při vytváření klíče koncového bodu Azure LUIS. Při publikování aplikace LUIS automaticky generuje adresu URL koncového bodu pro oblast spojené s klíči.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,27 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 03/25/2019
 ms.author: diberry
-ms.openlocfilehash: bbe46db1972951b466b431c9efc0420e15ff6dee
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 01444cec798763bc4e44bcabe0d7ebb640e537a8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765166"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436332"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Vytváření a publikování oblasti a přidružené klíče
 
-Oblast, ve kterém můžete publikovat aplikaci LUIS odpovídá oblast nebo umístění, ve kterém zadáte na webu Azure Portal, při vytváření klíče koncového bodu Azure LUIS. Pokud jste [publikování aplikace](./luis-how-to-publish-app.md), LUIS automaticky generuje adresu URL koncového bodu pro oblast spojené s klíči. K publikování aplikace LUIS do více než jedné oblasti, budete potřebovat alespoň jeden klíč v jedné oblasti. 
+Tři oblasti pro vytváření obsahu a jejich portály podporují mnoho publikování oblastech. Oblast, ve kterém můžete publikovat aplikaci LUIS odpovídá oblast nebo umístění, ve kterém zadáte na webu Azure Portal, při vytváření klíče koncového bodu Azure LUIS. Pokud jste [publikování aplikace](./luis-how-to-publish-app.md), LUIS automaticky generuje adresu URL koncového bodu pro oblast spojené s klíči. K publikování aplikace LUIS do více než jedné oblasti, budete potřebovat alespoň jeden klíč v jedné oblasti. 
 
-## <a name="luis-website"></a>Služba LUIS webu
+<a name="luis-website"></a>
+
+## <a name="luis-authoring-regions"></a>Služba LUIS vytváření oblastí
 Existují tři websites LUIS, podle oblasti. Musí se vytvářet a publikovat ve stejné oblasti. 
 
-|LUIS|Oblast|
-|--|--|
-|[www.LUIS.ai][www.luis.ai]|USA<br>není Evropa<br>není Austrálie|
-|[AU.LUIS.ai][au.luis.ai]|Austrálie|
-|[EU.LUIS.ai][eu.luis.ai]|Evropa|
+|LUIS|Globální oblast|Pro vytváření oblasti v Azure|
+|--|--|--|
+|[www.LUIS.ai][www.luis.ai]|USA<br>není Evropa<br>není Austrálie| `westus`|
+|[AU.LUIS.ai][au.luis.ai]|Austrálie| `australiaeast`|
+|[EU.LUIS.ai][eu.luis.ai]|Evropa|`westeurope`|
+
+Můžete použít pro vytváření oblasti pro interakci s nasazené služby LUIS v jiné oblasti Azure pro publikování.  
+
+Pro vytváření oblasti mají [spárované oblasti převzetí služeb při selhání](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 ## <a name="regions-and-azure-resources"></a>Oblasti a prostředků Azure
 Publikování aplikace do všech oblastí, které jsou spojené s prostředky služby LUIS přidat na portálu služby LUIS. Například aplikace vytvořená v [www.luis.ai][www.luis.ai], pokud vytvoříte prostředek LUIS v **westus** a přidejte ho do aplikace jako prostředek, publikování aplikace v dané oblasti. 

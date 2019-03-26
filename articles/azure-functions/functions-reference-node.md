@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: ed91425ca56278eccf21c10db6360b4f770b0660
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: d9de47ad83f37fa976c3816a0cb2e3e3beaa5472
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226534"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437573"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 
@@ -48,7 +48,6 @@ FunctionsProject
  | - host.json
  | - package.json
  | - extensions.csproj
- | - bin
 ```
 
 V kořenovém adresáři projektu neexistuje sdílené [host.json](functions-host-json.md) soubor, který můžete použít ke konfiguraci aplikace function app. Každá funkce má složku s vlastními souboru s kódem (.js) a vazbu konfigurační soubor (function.json). Název `function.json`jeho nadřazený adresář je vždy název vaší funkce.
@@ -616,6 +615,10 @@ Když vytvoříte aplikaci function app, který používá plán služby App Ser
 ### <a name="cold-start"></a>Studený Start
 
 Při spuštění vývoj Azure Functions bez serveru hostování modelu cold jsou realitou. *Studený start* odkazuje na skutečnost, že při spuštění aplikace function app poprvé po určité době nečinnosti, trvá déle, se spustí. Pro funkce jazyka JavaScript s stromové struktury velké závislost zejména studený start můžou být významné. Ke zrychlení procesu studený start [spouštět funkce jako soubor balíčku](run-functions-from-deployment-package.md) Pokud je to možné. Mnoho metod nasazení pomocí spustit z balíčku modelu ve výchozím nastavení, ale pokud vnímají velké souvisejícím s úplným spuštěním a neběží tímto způsobem, tato změna může nabídnout výrazným vylepšením.
+
+### <a name="connection-limits"></a>Omezení počtu připojení
+
+Při použití klienta specifickou pro službu v aplikaci Azure Functions, nevytvářejte nový klient se každé volání funkce. Místo toho vytvořte jednu statickou klienta v globálním oboru. Další informace najdete v tématu [Správa připojení ve službě Azure Functions](manage-connections.md).
 
 ## <a name="next-steps"></a>Další postup
 

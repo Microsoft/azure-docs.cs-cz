@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: a9b8be58e8dfb27fbe896cf1c8d8dc0e91e3b24c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 6b79a26d63c02dd06b62ea6ad09941f947704dc0
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402843"
+ms.locfileid: "58418631"
 ---
-# <a name="identify-issues-with-the-diagnostics-feature"></a>Identifikujte problémy s funkcí diagnostiky
+# <a name="identify-issues-with-the-diagnostics-feature"></a>Identifikace problémů pomocí diagnostické funkce
 
 Virtuální Desktop Preview Windows nabízí diagnostické funkce, která umožňuje správci umožní identifikovat problémy s pomocí jednoho rozhraní. Role virtuálního klienta Windows protokolování diagnostiky činnosti, pokaždé, když uživatel komunikuje s systému. Každý protokol obsahuje důležité informace, třeba virtuální plochy Windows role zapojené do transakce, chybové zprávy, informace o tenantovi a informace o uživateli. Diagnostické aktivity se vytvoří s koncovým uživatelem i akce správy a lze rozdělit do tří hlavních bloků:
 
@@ -32,20 +32,20 @@ Diagnostika virtuální plochy Windows používá pouze jeden rutiny Powershellu
 
 ### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>Získání diagnostiky aktivit ve vašem tenantovi
 
-Diagnostické aktivity můžete načíst tak, že zadáte **Get-RdsDiagnosticsActivities** rutiny. Tuto ukázkovou rutinu, vrátí se seznam diagnostických aktivit, seřazené od nejvíce nejstarší.
+Diagnostické aktivity můžete načíst tak, že zadáte **Get-RdsDiagnosticActivities** rutiny. Tuto ukázkovou rutinu, vrátí se seznam diagnostických aktivit, seřazené od nejvíce nejstarší.
 
 ```powershell
-Get-RdsDiagnosticsActivities -TenantName <tenantName>
+Get-RdsDiagnosticActivities -TenantName <tenantName>
 ```
 
 Stejně jako ostatní rutiny Windows Powershellu virtuální plochy musíte použít **- TenantName** parametr k určení názvu tenanta, kterou chcete použít pro váš dotaz. Název tenanta platí pro téměř všechny dotazy diagnostických aktivity.
 
 ### <a name="retrieve-detailed-diagnostic-activities"></a>Načíst podrobné diagnostické aktivity
 
-**-Podrobné** parametr poskytuje další podrobnosti pro každou diagnostických aktivitu vrátila. Formát pro každé aktivity se liší v závislosti na jeho typu aktivity. **-Podrobné** parametr je přidat k libovolnému **Get-RdsDiagnosticsActivities** zjistit, jak je znázorněno v následujícím příkladu.
+**-Podrobné** parametr poskytuje další podrobnosti pro každou diagnostických aktivitu vrátila. Formát pro každé aktivity se liší v závislosti na jeho typu aktivity. **-Podrobné** parametr je přidat k libovolnému **Get-RdsDiagnosticActivities** zjistit, jak je znázorněno v následujícím příkladu.
 
 ```powershell
-Get-RdsDiagnosticsActivities -TenantName <tenantName> -Detailed
+Get-RdsDiagnosticActivities -TenantName <tenantName> -Detailed
 ```
 
 ### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>Načtení konkrétní diagnostické ID aktivity podle aktivity

@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 01/18/2019
-ms.openlocfilehash: c7ca8100fc91fe45789d81298cb889b1794e8474
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.date: 03/22/2019
+ms.openlocfilehash: f7fbbb421a01b268b784a6d6c875cd959a5d1d42
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55757517"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407874"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Předplatit si virtuální počítače se službou Azure Reserved VM Instances
 
@@ -21,21 +21,41 @@ Můžete si koupit rezervované Instance virtuálního počítače [webu Azure p
 - Předplatné Enterprise **přidat Reserved Instances** musí být povolená v [portál EA](https://ea.azure.com). Nebo, pokud je toto nastavení zakázané, musíte být správce EA na předplatné.
 - Do programu Cloud Solution Provider (CSP) pouze správce agentů nebo obchodní zástupci koupit rezervace.
 
+Sleva za rezervaci se automaticky použije na počet spuštěných virtuálních počítačů, které odpovídají obor rezervace a atributy. Můžete aktualizovat rozsah rezervace prostřednictvím [webu Azure portal](https://portal.azure.com), prostředí PowerShell, rozhraní příkazového řádku, nebo prostřednictvím rozhraní API.
+
 ## <a name="determine-the-right-vm-size-before-you-buy"></a>Určení správné velikosti virtuálního počítače před zakoupením
 
-Pole podkategorie měřiče a produktu v datech využití není rozlišovat mezi velikosti virtuálních počítačů, které používají službu premium storage z virtuálních počítačů, které ji nemají. Používáte-li tato pole k určení velikosti virtuálního počítače pro rezervaci, mohou koupit nesprávnou velikost a nebude získat slevu na rezervaci, které očekáváte. K určení správné velikosti virtuálního počítače při nákupu rezervace použijte jednu z následujících metod:
+Předtím, než můžete koupit rezervaci, byste měli určit velikost virtuálního počítače, které potřebujete. V následujících částech vám pomůže určit správné velikosti virtuálního počítače.
 
-- Odkazujte na pole AdditionalInfo v souboru využití nebo rozhraní API využití k určení správné velikosti virtuálních počítačů. Nepoužívejte hodnoty z polí podkategorie měřiče nebo produktu. Tato pole není rozdíl mezi verzí S a Non-S virtuálního počítače.
-- Získat přesné informace o velikosti virtuálních počítačů pomocí Powershellu, Azure Resource Manageru, nebo z virtuálního počítače podrobnosti na webu Azure Portal.
+### <a name="use-reservation-recommendations"></a>Doporučení pro použití v rezervace
 
-Rezervované instance virtuálních počítačů jsou dostupné pro většinu velikostí virtuálních počítačů s několika výjimkami:
+Rezervace doporučení můžete použít k určení rezervace, které byste si zakoupit.
 
-- Sleva za rezervaci neplatí pro následující virtuální počítače:
-  - Řady virtuálních počítačů: Řady A-series, Av2-series a G-series
-  - Virtuální počítače ve verzi Preview: Všechny řady virtuálních počítačů nebo velikost, která je ve verzi preview
-- Cloudů: Rezervace nejsou dostupné ke koupi v oblastí Německo a Čína.
-- Nedostatečná kvóta: Rezervace, který je v oboru pro jedno předplatné musí mít kvóty virtuálních procesorů dostupných v předplatném pro nové rezervovaných Instancí. Například pokud cílové předplatné má kvótu virtuálních procesorů 10 pro řady D-Series, pak nelze koupíte rezervace pro 11 Standard_D1 instancí. Kontrola kvóty pro rezervace zahrnují virtuální počítače už nasazená v předplatném. Například pokud předplatné má kvótu virtuálních procesorů 10 pro řady D-Series a má dvě instance standard_D1 nasazený, pak můžete koupit rezervaci pro 10 standard_D1 instancí v tomto předplatném.
-- Kapacitní omezení: Ve výjimečných případech omezeních nákup rezervace nový dílčí velikostí virtuálních počítačů z důvodu nízká kapacita v oblasti Azure.
+- Doporučení k nákupu a doporučené množství jsou zobrazit, když si koupíte rezervovanou instanci virtuálního počítače na webu Azure Portal.
+- Azure Advisor poskytuje doporučení nákupu pro jednotlivá předplatná.  
+- Rozhraní API můžete využít k získání nákupní doporučení pro sdílený obor a rozsahem jednoho předplatného. Další informace najdete v tématu [rezervované instance purchase doporučení rozhraní API pro podnikové zákazníky](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
+- Pro zákazníky EA, nákupní doporučení pro sdílené a obory jednoho předplatného jsou dostupné [Azure Consumption Insights Power BI content pack](/power-bi/service-connect-to-azure-consumption-insights).
+
+### <a name="analyze-your-usage-information"></a>Analyzovat informace o použití
+Je vhodné analyzovat informace o použití sloužící k určení rezervace, které byste si zakoupit.
+
+Data o využití je k dispozici v souboru využití a rozhraní API. Je používáte společně k určení, které rezervace zakoupit. Měli byste zkontrolovat pro instance virtuálních počítačů, které mají vysoké využití na každý den k určení množství rezervací k nákupu.
+
+Vyhněte `Meter` podkategorie a `Product` využití datových polí. Nemusíte se rozlišovat mezi velikosti virtuálních počítačů, které používají službu premium storage. Pokud použijete tato pole k určení velikosti virtuálního počítače pro nákup rezervace, může si koupit nesprávnou velikost. Pak nebude získat slevu na rezervaci, které očekáváte. Místo toho odkazovat `AdditionalInfo` v souboru využití nebo rozhraní API využití k určení správné velikosti virtuálních počítačů.
+
+### <a name="purchase-restriction-considerations"></a>Důležité informace o nákupu omezení
+
+Rezervované instance virtuálních počítačů jsou dostupné pro většinu velikostí virtuálních počítačů s několika výjimkami. Pro následující virtuální počítače se nevztahují slevy na rezervaci:
+
+- **Virtuální počítač řady** -A-series, Av2-series a G-series.
+
+- **Virtuální počítače ve verzi preview** – všechny řady virtuálních počítačů nebo velikost, která je ve verzi preview.
+
+- **Cloudy** -rezervace nejsou dostupné ke koupi v oblastí Německo a Čína.
+
+- **Nedostatečná kvóta** -rezervace, který je v oboru pro jedno předplatné musí mít kvóty virtuálních procesorů dostupných v předplatném pro nové rezervovaných Instancí. Například pokud cílové předplatné má kvótu virtuálních procesorů 10 pro řady D-Series, pak nelze koupíte rezervace pro 11 Standard_D1 instancí. Kontrola kvóty pro rezervace zahrnují virtuální počítače už nasazená v předplatném. Například pokud předplatné má kvótu virtuálních procesorů 10 pro řady D-Series a má dvě instance standard_D1 nasazený, pak můžete koupit rezervaci pro 10 standard_D1 instancí v tomto předplatném. Je možné [vytvoření nabídky žádosti o zvýšení](../articles/azure-supportability/resource-manager-core-quotas-request.md) k vyřešení tohoto problému.
+
+- **Omezení kapacity** – ve výjimečných případech, omezení pro nákup rezervace nový dílčí virtuálního počítače o velikosti, z důvodu nízká kapacita v oblasti Azure.
 
 ## <a name="buy-a-reserved-vm-instance"></a>Nákup instancí rezervovaných virtuálních počítačů
 
@@ -45,8 +65,8 @@ Rezervované instance virtuálních počítačů jsou dostupné pro většinu ve
 4. Vyplňte požadovaná pole. Instance spuštěného virtuálního počítače, které odpovídají atributy, které jste vybrali kvalifikovat pro získání sleva za rezervaci. Skutečný počet instancí virtuálních počítačů, které získávají slevy závisí na rozsah a množství vybranou.
 
     | Pole      | Popis|
-    |:------------|:--------------|
-    |Název        |Název této rezervace.| 
+    |------------|--------------|
+    |Název        |Název této rezervace.|
     |Předplatné|Předplatné použité k úhradě rezervace. Způsob platby v rámci předplatného účtuje pořizovací náklady pro rezervaci. Tento typ předplatného musí být smlouvu enterprise agreement (nabízejí čísla: MS-AZR-0017P nebo MS-AZR - 0148 P) nebo s průběžnými platbami (nabízejí čísla: MS-AZR-0003P nebo MS-AZR - 0023 P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.|    
     |Rozsah       |Obor pro rezervaci může vztahovat na jedno předplatné jeden nebo více odběrů (sdíleném oboru). Pokud vyberete: <ul><li>Jedno předplatné – sleva za rezervaci se používá pro virtuální počítače v tomto předplatném. </li><li>Na úrovni Shared – sleva za rezervaci se použijí pro virtuální počítače spuštěné v rámci všech předplatných v rámci kontextu vaší fakturace. Pro podnikové zákazníky sdílený obor je registrace a obsahuje všechna předplatná v rámci registrace. Pro zákazníky s průběžnými platbami sdílený obor je Všechna předplatná s průběžnými platbami, vytváří správce účtu.</li></ul>|
     |Oblast    |Oblast Azure, která je předmětem rezervace.|    
@@ -63,28 +83,43 @@ Rezervované instance virtuálních počítačů jsou dostupné pro většinu ve
 
     ![Snímek obrazovky po odeslání nákup rezervace](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvmInstance-submit.png)
 
+## <a name="change-a-reservation-after-purchase"></a>Změňte rezervaci po nákupu
+
+Rezervace po nákupu můžete provádět následující typy změn:
+
+- Aktualizovat obor rezervace
+- Flexibilita instancí velikost (Pokud je k dispozici)
+- Vlastnictví
+
+Také můžete rozdělit do menších bloků dat a sloučení už rozdělit rezervace rezervaci. Žádná ze změn způsobí nové obchodní transakce nebo změnit koncové datum rezervaci.
+
+Následující typy změn nelze změnit po zakoupení přímo:
+
+- Stávající rezervaci oblasti
+- Skladová jednotka (SKU)
+- Množství
+- Doba trvání
+
+Můžete však *exchange* rezervace, pokud chcete provádět změny.
+
 ## <a name="cancellations-and-exchanges"></a>Zrušení a výměny
 
 Pokud potřebujete zrušit svou rezervaci, může se vám účtovat poplatek za předčasné ukončení ve výši 12 %. Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší. Výše vrácených peněz je omezená na 50 000 USD za rok. Výše vrácených peněz, které obdržíte, je zbývající poměrný zůstatek minus poplatek za předčasné ukončení ve výši 12 %. Pokud chcete požádat o zrušení, přejděte na rezervaci v Azure portal a vyberte **náhrada** vytvořit žádost o podporu.
 
 Pokud potřebujete u své rezervace rezervovaných instancí virtuálních počítačů změnit oblast, skupinu velikostí virtuálních počítačů nebo období, můžete ji vyměnit za jinou rezervaci stejné nebo vyšší hodnoty. Počáteční datum období nové rezervace se z vyměněné rezervace nepřenáší. 1 nebo 3 roky termín začíná od když vytvoříte novou rezervaci. Žádost o exchange, přejděte na rezervaci na webu Azure Portal a vyberte **Exchange** vytvořit žádost o podporu.
 
-## <a name="next-steps"></a>Další postup
-
-Sleva za rezervaci se automaticky použije na počet spuštěných virtuálních počítačů, které odpovídají obor rezervace a atributy. Můžete aktualizovat rozsah rezervace prostřednictvím [webu Azure portal](https://portal.azure.com), prostředí PowerShell, rozhraní příkazového řádku, nebo prostřednictvím rozhraní API.
-
-Další informace o správě rezervaci, najdete v článku [spravovat Azure rezervace](../articles/billing/billing-manage-reserved-vm-instance.md).
-
-Další informace o rezervacích Azure, najdete v následujících článcích:
-
-- [Co jsou Azure rezervace?](../articles/billing/billing-save-compute-costs-reservations.md)
-- [Správa rezervací v Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
-- [Vysvětlení, jak se sleva za rezervaci použije](../articles/billing/billing-understand-vm-reservation-charges.md)
-- [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](../articles/billing/billing-understand-reserved-instance-usage.md)
-- [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
-- [Náklady na software Windows, které nejsou součástí rezervace](../articles/billing/billing-reserved-instance-windows-software-costs.md)
-- [Rezervace Azure v programu Partnerské centrum Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
-
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
+## <a name="next-steps"></a>Další postup
+
+- Další informace o správě rezervaci, najdete v článku [spravovat Azure rezervace](../articles/billing/billing-manage-reserved-vm-instance.md).
+- Další informace o rezervacích Azure, najdete v následujících článcích:
+    - [Co jsou Azure rezervace?](../articles/billing/billing-save-compute-costs-reservations.md)
+    - [Správa rezervací v Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
+    - [Vysvětlení, jak se sleva za rezervaci použije](../articles/billing/billing-understand-vm-reservation-charges.md)
+    - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](../articles/billing/billing-understand-reserved-instance-usage.md)
+    - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
+    - [Náklady na software Windows, které nejsou součástí rezervace](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+    - [Rezervace Azure v programu Partnerské centrum Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

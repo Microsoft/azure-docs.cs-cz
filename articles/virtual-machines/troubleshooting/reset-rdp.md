@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
-ms.date: 10/31/2018
+ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 875f2d9dbbece4e9587462c6e8bdb2b2d8536c86
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c61e606bde4b50fa10c194c76c79a3d8a27a4b8e
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979883"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407687"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Resetování služby Vzdálená plocha nebo jeho heslo správce virtuálního počítače s Windows
 Pokud se nemůžete připojit k virtuálnímu počítači Windows (VM), můžete resetovat heslo místního správce nebo resetujte konfiguraci služby Vzdálená plocha (není podporováno ve Windows řadiče domény). Heslo můžete resetovat pomocí webu Azure Portal nebo rozšíření VMAccess v Azure PowerShellu. Po přihlášení k virtuálnímu počítači resetujte heslo příslušného místního správce.  
@@ -39,18 +39,19 @@ Nejprve se přihlaste k [webu Azure portal](https://portal.azure.com) a pak vybe
 
 1. Vyberte svůj virtuální počítač Windows a pak vyberte **resetovat heslo** pod **podpora a řešení potíží**. **Resetovat heslo** se zobrazí okno.
 
-1. Vyberte **resetovat heslo**, zadejte uživatelské jméno a heslo a pak vyberte **aktualizace**. 
+2. Vyberte **resetovat heslo**, zadejte uživatelské jméno a heslo a pak vyberte **aktualizace**. 
 
-1. Zkuste se znovu připojit k virtuálnímu počítači.
+3. Zkuste se znovu připojit k virtuálnímu počítači.
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**Resetovat konfiguraci služby Vzdálená plocha**
 
+Tento proces povolí služby Vzdálená plocha ve virtuálním počítači a vytvořte pravidlo brány firewall pro port RDP 3389 výchozí.
+
 1. Vyberte svůj virtuální počítač Windows a pak vyberte **resetovat heslo** pod **podpora a řešení potíží**. **Resetovat heslo** se zobrazí okno. 
 
-1. Vyberte **resetovat jenom konfiguraci** a pak vyberte **aktualizace**. 
+2. Vyberte **resetovat jenom konfiguraci** a pak vyberte **aktualizace**. 
 
-1. Zkuste se znovu připojit k virtuálnímu počítači.
-
+3. Zkuste se znovu připojit k virtuálnímu počítači.
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Resetovat pomocí rozšíření VMAccess a prostředí PowerShell
 

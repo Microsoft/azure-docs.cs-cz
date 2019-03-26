@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 241b820122fe1c82b9a68829db87635745c051d9
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8e6c4047182901c5282f280f59fa95eca6571ecc
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825154"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417917"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Správa prostředků Azure pomocí Azure Powershellu
 
@@ -25,7 +25,7 @@ Zjistěte, jak pomocí Azure Powershellu s [Azure Resource Manageru](resource-gr
 Další články o správě prostředků:
 
 - [Správa prostředků Azure pomocí webu Azure portal](./manage-resources-portal.md)
-- [Správa prostředků Azure pomocí Azure Powershellu](./manage-resources-powershell.md)
+- [Správa prostředků Azure pomocí Azure CLI](./manage-resources-cli.md)
 
 ## <a name="deploy-resources-to-an-existing-resource-group"></a>Nasazení prostředků do existující skupiny prostředků
 
@@ -97,7 +97,7 @@ $storageAccount = Get-AzResource -ResourceGroupName $srcResourceGroupName -Resou
 Move-AzResource -DestinationResourceGroupName $destResourceGroupName -ResourceId $storageAccount.ResourceId
 ```
 
-Absolvovat kurz, naleznete v tématu [kurzu: Přesunutí prostředků Azure do jiné skupiny prostředků nebo předplatného](./resource-manager-tutorial-move-resources.md). 
+Absolvovat kurz, naleznete v tématu [kurzu: Přesun prostředků Azure do jiné skupiny prostředků nebo předplatného](./resource-manager-tutorial-move-resources.md) 
 
 Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0a3fd2cc66a066d2790d2e12822e3246dc3db382
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c22b82dcd3438a8175457aa0963d52e84d582abf
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898869"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438495"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 Tento článek popisuje různé typy výstupy, které jsou k dispozici pro úlohy Azure Stream Analytics. Výstupy umožňují ukládat a uložit výsledky úlohy Stream Analytics. Pomocí výstupní data, můžete provést další obchodní analýzy a skladování dat vaše data.
@@ -127,6 +127,7 @@ Existuje několik parametrů, které jsou potřeba ke konfiguraci centra událos
 | Kódování | CSV a JSON UTF-8 je jediný podporovaný formát kódování v tuto chvíli. |
 | Oddělovač | Platí jenom pro serializaci sdíleného svazku clusteru. Stream Analytics podporuje celou řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárka, středník, místa, karty a svislá čára. |
 | Formát | Platí jenom pro serializaci JSON. Řádcích: Určuje takový formát výstupu tak, že každý objekt JSON oddělené novým řádkem. Pole určuje, že je výstup naformátovaný jako pole objektů JSON. Toto pole se zavře, když je úloha pozastavena nebo Stream Analytics je přesunout další časový interval. Obecně je vhodnější použít řádku oddělené JSON, protože nevyžaduje žádným zvláštním způsobem, zatímco výstupní soubor je stále se zapisují do. |
+| Sloupce vlastností [volitelný] | Sloupce, které musí být připojené jako vlastnosti uživatele odchozí zprávy místo datové části oddělené čárkou. Další informace o této funkci v části "Vlastnosti vlastních metadat pro výstup" |
 
 ## <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com/) může sloužit jako výstup pro úlohu Stream Analytics k poskytování bohatých funkcí vizualizace poznatky o výsledky analýzy. Tato funkce je možné pro provozní řídicích panelů, generování sestav a metriku řízené generování sestav.
@@ -230,6 +231,7 @@ Následující tabulka uvádí názvy vlastností a jejich popis vytváření v�
 | Kódování |CSV a JSON UTF-8 v tuto chvíli je jediný podporovaný formát kódování |
 | Oddělovač |Platí jenom pro serializaci sdíleného svazku clusteru. Stream Analytics podporuje celou řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárka, středník, místa, karty a svislá čára. |
 | Formát |Platí jenom pro typ formátu JSON. Řádcích: Určuje takový formát výstupu tak, že každý objekt JSON oddělené novým řádkem. Pole určuje, že je výstup naformátovaný jako pole objektů JSON. |
+| Sloupce vlastností [volitelný] | Sloupce, které musí být připojené jako vlastnosti uživatele odchozí zprávy místo datové části oddělené čárkou. Další informace o této funkci v části "Vlastnosti vlastních metadat pro výstup" |
 
 Počet oddílů je [na základě skladové položky služby Service Bus a velikosti](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečné celé číslo pro každý oddíl.
 
@@ -248,6 +250,7 @@ Následující tabulka uvádí názvy vlastností a jejich popis pro vytvoření
 | Formát serializace události |Formát serializace pro výstupní data. JSON, CSV nebo Avro, jsou podporovány. |
 | Kódování |Pokud používáte formát CSV nebo JSON, kódování musí být zadán. UTF-8 v tuto chvíli je jediný podporovaný formát kódování |
 | Oddělovač |Platí jenom pro serializaci sdíleného svazku clusteru. Stream Analytics podporuje celou řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárka, středník, místa, karty a svislá čára. |
+| Sloupce vlastností [volitelný] | [Volitelné] Sloupce, které musí být připojené jako vlastnosti uživatele odchozí zprávy místo datové části oddělené čárkou. Další informace o této funkci v části "Vlastnosti vlastních metadat pro výstup" |
 
 Počet oddílů je [na základě skladové položky služby Service Bus a velikosti](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečné celé číslo pro každý oddíl.
 
@@ -293,6 +296,25 @@ Když Azure Stream Analytics přijímá 413 (příliš velký požadavek Entity 
 
 Také v situaci, kde není žádná událost doručení časový interval, nebude vygenerován žádný výstup. V důsledku toho computeResult funkce není volána. Toto chování je konzistentní s integrovanou oddílové agregační funkce.
 
+## <a name="custom-metadata-properties-for-output"></a>Vlastnosti vlastních metadat pro výstup 
+
+Tato funkce umožňuje připojení k odchozí zprávy dotazu sloupce jako vlastnosti uživatele. Tyto sloupce nepřejdou do datové části. Tyto vlastnosti jsou k dispozici v podobě slovníku na výstupní zprávu. Název sloupce je klíč a hodnota je hodnota sloupce ve slovníku vlastností. Všechny typy dat Stream Analytics jsou podporované s výjimkou záznamu a pole.  
+
+Podporované výstupy: 
+* Fronty služby Service Bus 
+* Témata služby Service Bus 
+* Centrum událostí 
+
+Příklad: V následujícím příkladu přidáme 2 pole ID zařízení a DeviceStatus v metadatech. 
+* Dotaz: `select *, DeviceId, DeviceStatus from iotHubInput` .
+* Konfigurace výstupu: `DeviceId,DeviceStatus`.
+
+![Sloupce vlastností](./media/stream-analytics-define-outputs/10-stream-analytics-property-columns.png)
+
+Výstupní vlastnosti zprávy zkontroloval do centra událostí pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer).
+
+   ![Vlastní vlastnosti události](./media/stream-analytics-define-outputs/09-stream-analytics-custom-properties.png)
+
 ## <a name="partitioning"></a>Dělení
 
 Následující tabulka shrnuje podporu oddílu a počet modulů pro zápis výstupu pro každý typ výstupu:
@@ -302,7 +324,7 @@ Následující tabulka shrnuje podporu oddílu a počet modulů pro zápis výst
 | Azure Data Lake Store | Ano | Použijte {date} a {time} tokeny v vzor předpony cesty. Vyberte formát data, jako je rrrr/MM/DD, DD/MM/RRRR MM-DD-RRRR. HH se používá pro formát času. | Následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). |
 | Azure SQL Database | Ano | Podle v klauzuli PARTITION BY v dotazu | Následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). Další informace o dosažení lépe zápisu propustnost při načítání dat do databáze SQL Azure najdete v tématu [výstupu Azure Stream Analytics ke službě Azure SQL Database](stream-analytics-sql-output-perf.md). |
 | Azure Blob Storage | Ano | Použijte {date} a {time} tokeny z polí událostí v vzor cesty. Vyberte formát data, jako je rrrr/MM/DD, DD/MM/RRRR MM-DD-RRRR. HH se používá pro formát času. Výstupní objekt BLOB lze rozdělit pomocí jedné události vlastní atribut {pole fieldname} nebo {data a času:\<specifikátor >}. | Následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). |
-| Centrum událostí Azure | Ano | Ano | Se liší v závislosti na zarovnání oddílu.<br /> Výstupem, který klíč oddílu je stejně v souladu s nadřazeného (předchozí) kroku dotazu, počet zapisovače centra událostí je stejný počet výstupu oddílů centra událostí. Každý writer používá pro EventHub [EventHubSender třídy](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) k odesílání událostí do konkrétních oddílů. <br /> Pokud výstup Eventhub klíč oddílu není zarovnána s nadřazeného (předchozí) kroku dotazu, počet modulů pro zápis je stejný jako počet oddílů v tomto dřívějším kroku. Každý writer používá EventHubClient [SendBatchAsync třídy](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) k odesílání událostí do všech oddílů výstup. |
+| Centrum událostí Azure | Ano | Ano | Se liší v závislosti na zarovnání oddílu.<br /> Výstupem, který klíč oddílu je stejně v souladu s nadřazeného (předchozí) kroku dotazu, počet zapisovače centra událostí je stejný počet výstupu oddílů centra událostí. Každý writer používá pro EventHub [EventHubSender třídy](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) k odesílání událostí do konkrétních oddílů. <br /> Pokud výstup Eventhub klíč oddílu není zarovnána s nadřazeného (předchozí) kroku dotazu, počet modulů pro zápis je stejný jako počet oddílů v tomto dřívějším kroku. Každý writer používá EventHubClient [SendBatchAsync třídy](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) k odesílání událostí do všech oddílů výstup. |
 | Power BI | Ne | Žádný | Není k dispozici. |
 | Azure Table Storage | Ano | Výstup je sloupec.  | Následuje vstupní dělení pro [plně paralelizovaná dotazy](stream-analytics-scale-jobs.md). |
 | Služby Azure Service Bus | Ano | Automaticky zvolí. Počet oddílů je založen na [SKU služby Service Bus a velikost](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečné celé číslo pro každý oddíl.| Stejný jako počet oddílů tématu výstup.  |

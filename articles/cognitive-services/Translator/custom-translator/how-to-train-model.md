@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 8fee19b4d7a1ae05ca9a38c5a9ba374c0674a867
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2045041a9ee4872e4510e5ee0deba258b0342557
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776253"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437284"
 ---
 # <a name="train-a-model"></a>Učení modelu
 
@@ -51,6 +51,9 @@ K natrénování modelu:
 6.  Vlastní Translator předloží školení a zobrazit stav školení v kartě modely.
 
     ![Trénování modelu stránky](media/how-to/how-to-train-model-3.png)
+
+>[!Note]
+>Vlastní Translator podporuje 10 souběžných školení v rámci pracovního prostoru v libovolném bodě v čase.
 
 
 ## <a name="edit-a-model"></a>Upravit model

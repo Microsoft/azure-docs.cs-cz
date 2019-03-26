@@ -14,22 +14,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: b-juche
-ms.openlocfilehash: 6c1a6bf4e7042c28239f57af6b39c0822b63b5e8
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1cac267be026d0e472db9a7a321f5fff6ab3e917
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768072"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434768"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Delegování podsítě do Azure NetApp Files 
 
 Podsíť, která se soubory Azure NetApp musí delegovat.   Při vytváření svazku je třeba zadat delegované podsítě.
 
-## <a name="about-this-task"></a>O této úloze
+## <a name="considerations"></a>Požadavky
 * Průvodce vytvořením nové podsítě. výchozí hodnota je/24 je maska sítě, která poskytuje pro 251 dostupných IP adres. Pomocí o velikosti/28 maska sítě, která poskytuje 16 použitelných IP adres, je dostatečná pro službu.
-* Nelze určit skupinu zabezpečení sítě nebo služby koncového bodu v delegované podsítě. To způsobí, že podsíť delegování selhání.
 * V každé Azure Virtual Network (Vnet) je možné jenom jednu podsíť delegovat do služby soubory Azure NetApp.
-* Přístup ke svazku z partnerské virtuální síti se aktuálně nepodporuje.
+* Nelze určit skupinu zabezpečení sítě nebo služby koncového bodu v delegované podsítě. To způsobí, že podsíť delegování selhání.
+* Přístup ke svazku v globálním partnerském vztahu virtuální sítě se momentálně nepodporuje.
+* Vytváření [vlastní trasy definované uživatelem](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) na podsítě virtuálních počítačů s adresou předpony (cíl) k podsíti delegovat do služby soubory Azure NetApp není podporovaný a má vliv na připojení virtuálních počítačů.
 
 ## <a name="steps"></a>Kroky 
 1.  Přejděte **virtuální sítě** okno z webu Azure portal a vyberte virtuální síť, kterou chcete použít pro soubory Azure NetApp.    

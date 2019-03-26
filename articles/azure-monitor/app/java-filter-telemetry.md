@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 692113257e483f67eaaee038c07d8702d95a7b31
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ee50a0e9c7fca8f01f12b3508c86d901b5315120
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116805"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418818"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrování telemetrických dat ve vaší webové aplikace v Javě
 
@@ -253,6 +253,20 @@ In ApplicationInsights.xml:
     </ApplicationInsights>
 
 ```
+
+### <a name="3-invoke-your-filter-java-spring"></a>3. Vyvolání filtr (Java Spring)
+
+Pro aplikace založené na Spring framework vlastní telemetrii procesory musí být registrovaný ve své třídě hlavní aplikace jako položku bean. Pak budou automaticky napojovány při spuštění aplikace.
+
+```Java
+@Bean
+public TelemetryProcessor successFilter() {
+      return new SuccessFilter();
+}
+```
+
+Budete muset vytvořit vlastní parametry filtru v `application.properties` a využít framework externalized konfigurace Spring Boot pro předání těchto parametrů do vlastního filtru. 
+
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

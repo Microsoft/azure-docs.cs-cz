@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 164448f2e96b796d21419e90a3965390f22d7d38
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b20a119a69ac796bc9ea85083d335f0a7d2fdf2d
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762972"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417951"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurace replikace databáze spravované instance Azure SQL Database
 
@@ -45,13 +45,13 @@ Konfigurace managed instance fungovat jako vydavatel nebo distributora vyžaduje
 Podporuje:
 
 - Transakční replikace a replikace snímků kombinaci místní SQL Server a spravované instance Azure SQL Database.
-- Předplatitelé může být v místních databází SQL serveru, izolované databáze ve službě Azure SQL Database nebo databáze ve fondu v elastických fondů Azure SQL Database.
+- Předplatitelé můžou být v místních databází SQL serveru, jediné databáze/spravované instance v Azure SQL Database nebo databáze ve fondu v elastických fondů Azure SQL Database.
 - Jednosměrné nebo obousměrné replikace.
 
 Ve službě Azure SQL Database managed instance nepodporuje následující funkce:
 
 - Aktualizovatelné odběry.
-- Aktivní geografickou replikaci.
+- [Aktivní geografická replikace](sql-database-active-geo-replication.md) a [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md) neměl by se používat, pokud je nakonfigurovaný transakční replikace.
 
 ## <a name="configure-publishing-and-distribution-example"></a>Konfigurace publikování a distribuci příklad
 

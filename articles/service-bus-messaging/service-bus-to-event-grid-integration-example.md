@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 7c38de9c1dbb5e8a286fa1b72d0461dd74ed6f25
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4e1ea3d822c8b032617b7f202f1c176aeb966210
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770523"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436774"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Příklady integrace služby Azure Service Bus do služby Azure Event Grid
 
@@ -27,7 +27,7 @@ V tomto článku zjistíte, jak nastavit funkci Azure a aplikaci logiky, které 
  
 * Vytvořte jednoduchou testovací funkci Azure pro účely ladění a zobrazení počátečního toku událostí ze služby Event Grid. Tento krok proveďte bez ohledu na to, jestli provedete i ostatní kroky.
 * Vytvořte funkci Azure pro příjem a zpracování zpráv služby Azure Service Bus na základě událostí služby Event Grid.
-* Využijte funkci Logic Apps služby Azure App Service.
+* Pomocí funkce Logic Apps služby Azure App Service.
 
 Příklad, který vytvoříte, předpokládá, že má téma služby Service dva odběry. Příklad také předpokládá, že odběr služby Event Grid byl vytvořený k odesílání událostí pouze pro jeden odběr služby Service Bus. 
 

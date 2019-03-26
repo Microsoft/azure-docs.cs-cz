@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 82483d8d84349a929ef4892d5e9571ea65b9a88a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 081adc9421a97f7cafcf7fba946ce0b901a00a0c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104834"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439426"
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: Přihlášení jednostránkové aplikace pomocí implicitního toku OAuth 2.0
 
@@ -27,7 +27,7 @@ ms.locfileid: "56104834"
 
 Pro podporu těchto aplikací Azure Active Directory B2C (Azure AD B2C) používá implicitní tok OAuth 2.0. Tok autorizačního implicitní grant OAuth 2.0 je popsaný v [části 4.2 specifikaci OAuth 2.0](https://tools.ietf.org/html/rfc6749). V implicitní tok, aplikace obdrží tokeny přímo z Azure Active Directory (Azure AD) zajistí autorizaci koncového bodu, bez jakékoli k serveru exchange. Všechna logika ověřování a relace zpracování trvá umístit zcela v klientovi JavaScript bez přesměrování další stránky.
 
-Azure AD B2C rozšiřuje standardní implicitního toku OAuth 2.0 k více než jednoduché ověřování a autorizace. Azure AD B2C zavádí [parametr zásad](active-directory-b2c-reference-policies.md). S parametrem zásad vám pomůže OAuth 2.0 přidání zásad do vaší aplikace, jako například registrace, přihlášení a Profilovat toky uživatelů pro správu. V tomto článku ukážeme, jak implementaci každého z těchto možností v jednostránkové aplikace pomocí implicitního toku a Azure AD. Abyste mohli začít, podívejte se na naše [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) a [rozhraní Microsoft .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi) ukázky.
+Azure AD B2C rozšiřuje standardní implicitního toku OAuth 2.0 k více než jednoduché ověřování a autorizace. Azure AD B2C zavádí [parametr zásad](active-directory-b2c-reference-policies.md). S parametrem zásad vám pomůže OAuth 2.0 přidání zásad do vaší aplikace, jako například registrace, přihlášení a Profilovat toky uživatelů pro správu. V tomto článku ukážeme, jak implementaci každého z těchto možností v jednostránkové aplikace pomocí implicitního toku a Azure AD.
 
 V žádosti o příklad HTTP v tomto článku používáme naše ukázka adresář Azure AD B2C, **fabrikamb2c.onmicrosoft.com**. Také používáme vlastní ukázkové aplikace a uživatele toky. Požadavky můžete také vyzkoušet sami s využitím těchto hodnot, nebo je můžete nahradit vlastními hodnotami.
 Zjistěte, jak [získat vlastní toky adresáře, aplikace a uživatele Azure AD B2C](#use-your-own-azure-ad-b2c-tenant).
@@ -275,9 +275,4 @@ Pokud chcete vyzkoušet tyto požadavky, proveďte následující tři kroky. Na
 1. [Vytvoření tenanta Azure AD B2C](active-directory-b2c-get-started.md). Použijte název vašeho tenanta v požadavcích.
 2. [Vytvoření aplikace](active-directory-b2c-app-registration.md) k získání ID aplikace a `redirect_uri` hodnotu. Zahrnout webovou aplikaci nebo webové rozhraní API ve vaší aplikaci. Volitelně můžete vytvořit tajný klíč aplikace.
 3. [Vytvářet toky uživatelů](active-directory-b2c-reference-policies.md) získat názvy tok uživatele.
-
-## <a name="samples"></a>Ukázky
-
-* [Vytvořit jednostránkovou aplikaci s využitím Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)
-* [Vytvoření jednostránkové aplikace s použitím rozhraní .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 16899c833d996902cf7a0a3f7ab57479869fbdd9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e18a63892f000eff0f72656082d5e6e1f0ca159b
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737777"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437468"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Vazby Azure Blob storage pro službu Azure Functions
 
@@ -282,7 +282,7 @@ V [knihoven tříd C#](functions-dotnet-class-library.md), můžete nakonfigurov
   {
       ....
   }
-  ```
+   ```
 
   Kompletní příklad naleznete v tématu [Trigger – C# příklad](#trigger---c-example).
 
@@ -318,8 +318,8 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**type** | neuvedeno | Musí být nastaveno na `blobTrigger`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
 |**direction** | neuvedeno | Musí být nastaveno na `in`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. Výjimky jsou uvedeny v [využití](#trigger---usage) oddílu. |
-|**Jméno** | neuvedeno | Název proměnné, která představuje objektů blob v kódu funkce. | 
-|**Cesta** | **BlobPath** |[Kontejneru](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) k monitorování.  Může být [vzor názvu objektu blob](#trigger---blob-name-patterns). | 
+|**Jméno** | neuvedeno | Název proměnné, která představuje objektů blob v kódu funkce. |
+|**Cesta** | **BlobPath** |[Kontejneru](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) k monitorování.  Může být [vzor názvu objektu blob](#trigger---blob-name-patterns). |
 |**připojení** | **připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek název tady. Například pokud nastavíte `connection` na "MyStorage", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, modul runtime služby Functions používá výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.<br><br>Připojovací řetězec nesmí být pro účet úložiště pro obecné účely [účtu úložiště objektů Blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -450,7 +450,9 @@ Funkce jazyka JavaScript a Java načíst celý objekt blob do paměti, a C# funk
 
 ## <a name="trigger---polling"></a>Aktivovat - cyklického dotazování
 
-Pokud kontejner objektů blob, který je monitorován obsahuje více než 10 000 objektů BLOB, soubory jak pro nové nebo změněné objekty BLOB protokolů kontroly runtime Functions. Tento proces může způsobit zpoždění. Funkce nemusí se aktivují až několik minut nebo i déle po vytvoření objektu blob. Kromě toho [protokoly úložiště se vytváří na "best effort"](/rest/api/storageservices/About-Storage-Analytics-Logging) základ. Není zaručeno, že se všechny události mají zachytávat. Za určitých podmínek mohou chybět protokoly. Pokud potřebujete rychlejší a spolehlivější blob zpracování, zvažte vytvoření [zpráva fronty](../storage/queues/storage-dotnet-how-to-use-queues.md) při vytváření objektu blob. Potom použijte [aktivační událost fronty](functions-bindings-storage-queue.md) místo aktivační událost objektů blob ke zpracování objektu blob. Další možností je použití služby Event Grid; Projděte si kurz [automatizace změny velikosti nahraných obrázků s využitím služby Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
+Pokud kontejner objektů blob, který je monitorován obsahuje více než 10 000 objektů BLOB (v rámci všech kontejnerů), kontroly runtime Functions soubory jak pro nové nebo změněné objekty BLOB protokolů. Tento proces může způsobit zpoždění. Funkce nemusí se aktivují až několik minut nebo i déle po vytvoření objektu blob. Kromě toho [protokoly úložiště se vytváří na "best effort"](/rest/api/storageservices/About-Storage-Analytics-Logging) základ. Není zaručeno, že se všechny události mají zachytávat. Za určitých podmínek mohou chybět protokoly.
+
+Pokud potřebujete rychlejší a spolehlivější blob zpracování, zvažte vytvoření [zpráva fronty](../storage/queues/storage-dotnet-how-to-use-queues.md) při vytváření objektu blob. Potom použijte [aktivační událost fronty](functions-bindings-storage-queue.md) místo aktivační událost objektů blob ke zpracování objektu blob. Další možností je použití služby Event Grid; Projděte si kurz [automatizace změny velikosti nahraných obrázků s využitím služby Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
 
 ## <a name="input"></a>Vstup
 
@@ -479,7 +481,7 @@ public static void Run(
 {
     log.LogInformation($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
 }
-```        
+```
 
 ### <a name="input---c-script-example"></a>(Vstup) – příklad skriptu jazyka C#
 
@@ -802,7 +804,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
     { ImageSize.Small,      (640, 400) },
     { ImageSize.Medium,     (800, 600) }
 };
-```        
+```
 
 ### <a name="output---c-script-example"></a>Výstup – příklad skriptu jazyka C#
 

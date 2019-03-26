@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: a56f391aa76bd1216fd51d516adb836a2093bcba
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a39fa0949276b7e86c7fdd0d0861492a9a0b723e
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371135"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438628"
 ---
 # <a name="mapping-data-flow-sink-transformation"></a>Mapování datového toku jímky transformace
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Jímka možnosti](media/data-flow/windows1.png "jímky 1")
+![Jímka možnosti](media/data-flow/sink1.png "jímky 1")
 
 Po dokončení vaší transformace toku dat můžete jímky Transformovaná data do cílové datové sadě. V transformaci jímky můžete definici datové sady, kterou chcete použít pro určení výstupní data. Můžete mít libovolný počet jímky transformace jako váš tok dat vyžaduje.
 

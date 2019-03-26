@@ -1,5 +1,5 @@
 ---
-title: Příklady jednoduchých dotazů – Azure Search
+title: Příklady dotazů pomocí syntaxe "jednoduchý" hledání – Azure Search
 description: Příklady jednoduchých dotazů pro fulltextové vyhledávání, vyhledávání filtr, geografické vyhledávání, Fasetové vyhledávání a jiných řetězců dotazu používá k dotazování indexu Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -7,17 +7,17 @@ tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/09/2018
+ms.date: 03/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: a975c95af75e9f3e09e5d0142716795ab4b90e28
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9b7147971bd320a11606a93ab4d988e924cf93b2
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136474"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439107"
 ---
-# <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>Příklady jednoduchá syntaxe dotazů pro tvorbu dotazů ve službě Azure Search
+# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Příklady dotazů pomocí syntaxe "jednoduchý" vyhledávání ve službě Azure Search
 
 [Jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) vyvolá výchozí analyzátor dotazů pro provádění fulltextové vyhledávací dotazy na index Azure Search. Analyzátor jednoduchého dotazu je rychlá a zpracovává běžné scénáře ve službě Azure Search, včetně fulltextové vyhledávání, vyhledání filtrované a fasetová a geografické vyhledávání. V tomto článku krokovat příklady demonstrující operace dotazu jsou dostupné při použití jednoduchého syntaxe.
 
@@ -55,7 +55,9 @@ Adresa URL sestavení obsahuje následující prvky:
 
 ## <a name="send-your-first-query"></a>Odeslat svůj první dotaz
 
-Jako ověřovací krok, vložte následující požadavek do GET a klikněte na tlačítko **odeslat**. Výsledky jsou vráceny jako podrobné dokumenty JSON. Je možné kopírování a vkládání tuto adresu URL v prvním příkladu níže.
+Jako ověřovací krok, vložte následující požadavek do GET a klikněte na tlačítko **odeslat**. Výsledky jsou vráceny jako podrobné dokumenty JSON. Vrátí se celý dokumenty, které vám umožní vidět všechna pole a všechny hodnoty.
+
+Vložte tuto adresu URL do klienta REST jako krok ověření a chcete-li zobrazit strukturu dokumentu.
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
@@ -74,6 +76,20 @@ Pro interaktivní dotazy, není nutné zadávat nemusíte: jednoduché je výcho
 Tento první příklad není specifické pro analyzátor, ale jsme s ním vést k zavedení prvního pojem základních dotazů: členství ve skupině. V tomto příkladu obory, provádění dotazu a odpovědi na pár konkrétních polí. Znalost, jak strukturovat, čitelné odpověď JSON je důležité, pokud je nástroj Postman nebo vyhledávání explorer. 
 
 Pro zkrácení, zaměřuje dotazu pouze *business_title* pole a určuje pouze názvy business jsou vráceny. Syntaxe je **searchFields** omezit spuštění dotazu pouze na pole business_title a **vyberte** k určení, která pole jsou zahrnuty v odpovědi.
+
+### <a name="partial-query-string"></a>Řetězec dotazu částečné
+
+```http
+searchFields=business_title&$select=business_title&search=*
+```
+
+Zde je stejný dotaz obsahuje několik polí v seznamu odděleného čárkami.
+
+```http
+search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
+```
+
+### <a name="full-url"></a>Úplná adresa URL
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*

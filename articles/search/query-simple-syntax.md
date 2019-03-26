@@ -4,7 +4,7 @@ description: Referenční informace pro jednoduchá syntaxe dotazů používá p
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 03/25/2019
 author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 4f06af8044a79a7dc54d6fde55992111d24d22a7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 99729141e5e1478f45ad385cf671c44a8e08f21a
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441556"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437488"
 ---
 # <a name="simple-query-syntax-in-azure-search"></a>Jednoduchá syntaxe dotazů ve službě Azure Search
 Služba Azure Search implementuje dva jazyků dotazů Lucene: [Jednoduchý analyzátor dotazů](https://lucene.apache.org/core/4_7_0/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) a [analyzátor dotazů Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Jednoduchá syntaxe dotazů ve službě Azure Search, nezahrnuje možnosti přibližné/odpadový.  
 
 > [!NOTE]  
->  Služba Azure Search poskytuje alternativu [syntaxe dotazů Lucene](query-lucene-syntax.md) pro složitější dotazy. Další informace o analýze architektury a výhody každého syntaxi dotazu najdete v tématu [jak funguje fulltextové vyhledávání ve službě Azure Search](https://docs.microsoft.com/azure/search/search-lucene-query-architecture).
+>  Služba Azure Search poskytuje alternativu [syntaxe dotazů Lucene](query-lucene-syntax.md) pro složitější dotazy. Další informace o analýze architektury a výhody každého syntaxi dotazu najdete v tématu [jak funguje fulltextové vyhledávání ve službě Azure Search](search-lucene-query-architecture.md).
 
 ## <a name="how-to-invoke-simple-parsing"></a>Jak volat jednoduchou analýza kódu
 
@@ -44,38 +44,38 @@ Jednoznačné zvuky, je jeden aspekt jejich provádění dotazů ve službě Azu
 
 Obvykle můžete si s větší pravděpodobností zobrazíte těchto projevů v vzory interakcí uživatelů pro aplikace, které možnost vyhledávat obsah, ve kterém budou pravděpodobně obsahovat operátor v dotazu, třeba weby elektronického obchodování, které mají další vestavěné navigační struktury na rozdíl od uživatelů. Další informace najdete v tématu [operátor NOT](#not-operator). 
 
-## <a name="operators-in-simple-search"></a>Operátory v jednoduché hledání
+## <a name="boolean-operators-and-or-not"></a>Logické operátory (AND, OR, NOT) 
 
 Operátory můžete vložit do řetězce dotazu k sestavení bohatou sadu kritérií, u kterých se nacházejí odpovídajících dokumentů. 
 
-## <a name="and-operator-"></a>AND – operátor `+`
+### <a name="and-operator-"></a>AND – operátor `+`
 
 Operátor AND se znaménkem plus. Například `wifi+luxury` Vyhledá dokumenty, které obsahují i `wifi` a `luxury`.
 
-## <a name="or-operator-"></a>NEBO – operátor `|`
+### <a name="or-operator-"></a>NEBO – operátor `|`
 
 Operátor OR je svislá čára neboli znakem přesměrování. Například `wifi | luxury` Vyhledá dokumenty, které obsahují buď `wifi` nebo `luxury` nebo obojí.
 
 <a name="not-operator"></a>
 
-## <a name="not-operator--"></a>NOT – operátor `-`
+### <a name="not-operator--"></a>NOT – operátor `-`
 
 Operátor NOT se záporným znaménkem. Například `wifi –luxury` Vyhledá dokumenty, které mají `wifi` termín a/nebo nemají `luxury` (a/nebo se řídí `searchMode`).
 
 > [!NOTE]  
 >  `searchMode` Možnost řídí, zda výraz s operátorem NOT spojeny nebo sloučeny pomocí operátoru OR s podmínkami v dotazu chybí `+` nebo `|` operátor. Vzpomeňte si, že `searchMode` může být nastaven na hodnotu `any` (výchozí) nebo `all`. Pokud používáte `any`, včetně více výsledků a ve výchozím nastavení odvolání dotazů zvýší `-` bude vyhodnocen jako "Nebo NOT". Například `wifi -luxury` bude odpovídaly i dokumenty, že buď obsahují pojem `wifi` nebo ty, které neobsahují termín `luxury`. Pokud používáte `all`, zvýšit přesnost dotazů včetně méně výsledků a ve výchozím nastavení – bude interpretovat jako "A ne". Například `wifi -luxury` bude odpovídat dokumenty, které obsahují pojem `wifi` a neobsahují termín "luxusní". To je pravděpodobně mnohem intuitivnější chování `-` operátor. Proto byste měli zvážit použití `searchMode=all` místo `searchMode=any` Pokud chcete optimalizovat vyhledá přesnost Vzpomínáte, *a* vaši uživatelé často používají `-` operátor v hledání.
 
-## <a name="suffix-operator-"></a>Přípona – operátor `*`
+## <a name="suffix-operator"></a>Přípona – operátor
 
-Sufixový operátor je hvězdička. Například `lux*` Vyhledá dokumenty, které mají termín, který začíná `lux`, ignorování případu.  
+Sufixový operátor je hvězdička `*`. Například `lux*` Vyhledá dokumenty, které mají termín, který začíná `lux`, ignorování případu.  
 
-## <a name="phrase-search-operator--"></a>Operátor vyhledávání frází `" "`
+## <a name="phrase-search-operator"></a>Operátor vyhledávání frází
 
-Operátor frázi obklopuje frázi v uvozovkách. Například zatímco `Roach Motel` (bez uvozovek) by vyhledejte dokumenty, které obsahují `Roach` a/nebo `Motel` kdekoli v libovolném pořadí `"Roach Motel"` (pomocí nabídky) bude porovnávat pouze dokumenty, které obsahují tento celá fráze dohromady a v pořadí (Analýza textu je relevantní).
+Operátor frázi uzavře do uvozovek frázi `" "`. Například zatímco `Roach Motel` (bez uvozovek) by vyhledejte dokumenty, které obsahují `Roach` a/nebo `Motel` kdekoli v libovolném pořadí `"Roach Motel"` (pomocí nabídky) bude porovnávat pouze dokumenty, které obsahují tento celá fráze dohromady a v pořadí (Analýza textu je relevantní).
 
-## <a name="precedence-operator--"></a>Přednost operátoru `( )`
+## <a name="precedence-operator"></a>Přednost operátoru
 
-Přednost operátoru obklopuje řetězce v závorkách. Například `motel+(wifi | luxury)` Vyhledá dokumenty, které obsahují termín motel a buď `wifi` nebo `luxury` (nebo obojí). |  
+Přednost operátoru obklopuje řetězce v závorkách `( )`. Například `motel+(wifi | luxury)` Vyhledá dokumenty, které obsahují termín motel a buď `wifi` nebo `luxury` (nebo obojí).  
 
 ## <a name="escaping-search-operators"></a>Uvozovací znaky operátorů vyhledávání  
 

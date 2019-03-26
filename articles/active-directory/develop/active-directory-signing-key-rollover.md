@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5597937ff0bc44b55deb43ccc45b618a1bb8fec
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 82e9941a6c468a3b0ed9d1f22a2970cfa6584617
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186093"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439341"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Výměna podpisových klíčů ve službě Azure Active Directory
 Tento článek popisuje, co potřebujete vědět o veřejných klíčů, které se používají ve službě Azure Active Directory (Azure AD) k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto výměny klíčů a v pravidelných intervalech a ve stavu nouze, může být převracet okamžitě. Všechny aplikace, které používají službu Azure AD by možné programově zpracovávat procesu výměny klíčů nebo vytvořit proces periodické ruční výměna. Pokračujte ve čtení pochopit, jak fungují klíče, jak posoudit dopad efekt přechodu do vaší aplikace a jak aktualizovat vaše aplikace nebo vytvoření procesu periodické ruční výměna zpracování výměny klíčů, v případě potřeby.
@@ -278,7 +278,7 @@ Jakmile jste postupovali podle těchto kroků, Web.config vaší aplikace se akt
 
 Postupujte podle kroků níže. Tím ověříte, že funguje logiky výměny klíčů.
 
-1. Až si ověříte, že vaše aplikace používá výše uvedený kód, otevřete **Web.config** soubor a přejděte **<issuerNameRegistry>** bloku, konkrétně analyzuje vracení pro následující po zadání několika řádků:
+1. Až si ověříte, že vaše aplikace používá výše uvedený kód, otevřete **Web.config** soubor a přejděte do  **\<issuerNameRegistry >** zablokovat, konkrétně vyhledávání Po zadání několika řádků:
    ```
    <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -286,7 +286,7 @@ Postupujte podle kroků níže. Tím ověříte, že funguje logiky výměny kl�
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. V **<add thumbprint="">** změňte hodnotu kryptografického otisku nahrazením libovolný znak jiný. Uložit **Web.config** souboru.
+2. V  **\<přidat kryptografický otisk = "" >** změňte hodnotu kryptografického otisku nahrazením libovolný znak jiný. Uložit **Web.config** souboru.
 3. Sestavení aplikace a pak ho spusťte. Pokud dokončíte proces přihlašování, vaše aplikace úspěšně aktualizuje klíč stažením požadované informace z vašeho adresáře dokumentu federačních metadat. Pokud máte potíže s přihlášením, zkontrolujte změny v aplikaci jsou správné načtením [přidání přihlašování do vaší webové aplikace pomocí Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) článku, nebo stahování a zkontrolujete následující ukázka kódu: [Víceklientské cloudové aplikace pro službu Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>Technologie Windows Identity Foundation (WIF) verze 1.0 pro rozhraní .NET 3.5 a webových aplikací chrání prostředky a vytvořené pomocí sady Visual Studio 2008 nebo 2010

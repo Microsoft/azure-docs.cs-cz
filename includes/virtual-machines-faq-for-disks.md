@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/30/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 94893a5b5716c9bd207ad2a8bc8ca457974dddd4
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 233834bd040362e27ffadc3d0003a87827012352
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58395601"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407981"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovaných a nespravovaných prémiové disky
 
@@ -300,7 +300,7 @@ Neexistuje žádné nevýhodou použití operace TRIM na Azure disks na premium 
 
 **Co je největší velikost disku spravované podporováno pro operační systém a datové disky?**
 
-Typ oddílu, které Azure podporuje pro disk s operačním systémem je hlavní spouštěcí záznam (MBR). Formát hlavního spouštěcího záznamu podporuje velikost disku až 2 TB. Největší velikost, které Azure podporuje pro disk s operačním systémem je 2 TB. Azure podporuje až 32 TB pro spravované datové disky. Spravované disky o velikosti větší než 4 TB jsou ve verzi preview. Další informace o nich najdete v tématu naše [blogový příspěvek](https://aka.ms/azure-large-disk-32TB-preview-blog).
+Typ oddílu, které Azure podporuje pro disk s operačním systémem je hlavní spouštěcí záznam (MBR). Formát hlavního spouštěcího záznamu podporuje velikost disku až 2 TB. Největší velikost, které Azure podporuje pro disk s operačním systémem je 2 TB. Azure podporuje až 32 TB pro disky spravovaných dat v globální Azure, 4 TB v suverénních cloudech Azure.
 
 **Co je největší velikost nespravovaného disku podporované pro operační systém a datové disky?**
 
@@ -335,7 +335,7 @@ Můžete pořídit snímek malé disky a pak vytvořte na cenovou úroveň se au
 
 **Můžete je změnit velikost existující spravované disky z velikostí méně než 4 tebibytes (TiB) na nový nově zavedená disky o velikosti až 32 TB?**
 
-Nové velikosti spravovaného disku 8 TB, 16 TiB a 32 TB jsou aktuálně ve verzi Preview. Dosud nepodporujeme změnu velikosti existujícího velikosti disků na nové velikosti disků.
+Ano.
 
 **Co jsou největší velikostí disků, podporované službou Azure Backup a Azure Site Recovery?**
 

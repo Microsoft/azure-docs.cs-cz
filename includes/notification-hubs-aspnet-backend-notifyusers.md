@@ -5,15 +5,15 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 04/04/2018
+ms.date: 03/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8413044beff68390dbccdf16c4477e113a85f81b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 28eac814364b56f59b8edc6f59209a6d742ff403
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58125223"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407840"
 ---
 ## <a name="create-the-webapi-project"></a>Vytvoření projektu WebAPI
 
@@ -58,6 +58,8 @@ Vytvořte nový back-end ASP.NET WebAPI provedením následujících akcí:
    Pro účely tohoto kurzu nepotřebujete databázi. Jakmile vyberete plán služby App Service, výběrem **OK** vytvořte projekt.
 
     ![Okno Konfigurovat webovou aplikaci Microsoft Azure][B5]
+
+    Pokud se tato stránka pro konfiguraci plánu služby app service, pokračujte kurz. Můžete ho nakonfigurovat při publikování aplikace později. 
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>Ověřování klientů v back-endu WebAPI
 
@@ -265,8 +267,8 @@ V této části přidáte do back-endu WebAPI nový kontroler, který bude zprac
             case "apns":
                 registration = new AppleRegistrationDescription(deviceUpdate.Handle);
                 break;
-            case "gcm":
-                registration = new GcmRegistrationDescription(deviceUpdate.Handle);
+            case "fcm":
+                registration = new FcmRegistrationDescription(deviceUpdate.Handle);
                 break;
             default:
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -354,10 +356,10 @@ V této části přidáte nový kontroler, který zveřejňuje způsob odesílá
                 var alert = "{\"aps\":{\"alert\":\"" + "From " + user + ": " + message + "\"}}";
                 outcome = await Notifications.Instance.Hub.SendAppleNativeNotificationAsync(alert, userTag);
                 break;
-            case "gcm":
+            case "fcm":
                 // Android
                 var notif = "{ \"data\" : {\"message\":\"" + "From " + user + ": " + message + "\"}}";
-                outcome = await Notifications.Instance.Hub.SendGcmNativeNotificationAsync(notif, userTag);
+                outcome = await Notifications.Instance.Hub.SendFcmNativeNotificationAsync(notif, userTag);
                 break;
         }
 

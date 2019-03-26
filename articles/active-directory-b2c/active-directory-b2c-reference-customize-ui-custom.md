@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a51c2987781184539edfcc8be9b9f483a215a157
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 88abd3d17218f1168119a66701f1474d27244acf
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122922"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438253"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Přizpůsobení uživatelského rozhraní cesty uživatele pomocí vlastních zásad
 
@@ -150,7 +150,7 @@ Následující tabulka popisuje účel předchozí stránky HTML5.
 
 Přímou úpravou vlastní zásady můžete svou cestu uživatele přidat odkaz do šablon HTML5 a CSS.
 
-Vlastní šablony HTML5/CSS pro použití na vaší cestě uživatele musí být uvedený v seznamu obsahu definic, které lze použít v těchto cest uživatele. Pro tento účel, volitelně *<ContentDefinitions>* elementu XML musí být deklarována v rámci *<BuildingBlocks>* část souboru XML vlastní zásady.
+Vlastní šablony HTML5/CSS pro použití na vaší cestě uživatele musí být uvedený v seznamu obsahu definic, které lze použít v těchto cest uživatele. Pro tento účel, volitelně  *\<ContentDefinitions >* elementu XML musí být deklarována v rámci  *\<BuildingBlocks >* část souboru XML vlastní zásady.
 
 Následující tabulka popisuje sadu obsahu ID definic uznané identity Azure AD B2C prostředí modulu a typu stránky, která má vztah k nim.
 

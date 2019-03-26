@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0c22d4421aa984a9862f83b9be1095d548e5841
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: e2b8d68cc348ce8e157c7d58424eaebb06940335
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314473"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436656"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Shromažďování dat uživatele služby Azure Multi-Factor Authentication
 
@@ -138,7 +138,7 @@ Následující proces pro MFA Server verze 8.0 nebo novější umožňuje správ
 - Přihlaste se k serveru MFA, přejděte **uživatelé** kartu, vyberte uživatele a klikněte na **upravit** tlačítko. Pořizovat snímky obrazovky (Alt + PrtScn) jednotlivé karty můžete poskytnout uživateli jejich aktuální nastavení vícefaktorového ověřování.
 - Z příkazového řádku MFA serveru, spusťte následující příkaz změna cestu podle vaší instalace `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` k vytvoření JSON ve formátu souboru.
 - Správci mohou také pomocí operace GetUserGdpr sady SDK webové služby jako možnost exportovat všechny MFA cloudové služby informace shromážděné pro daného uživatele nebo začlenit do větší řešení generování sestav.
-- Hledání `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` a všechny zálohy pro "<username>" (včetně uvozovek v hledání) najít všechny výskyty záznam uživatele je přidáno nebo změněno.
+- Hledání `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` a všechny zálohy pro "\<uživatelské jméno >" (včetně uvozovek v hledání) najít všechny výskyty záznam uživatele je přidáno nebo změněno.
    - Tyto záznamy můžete omezen (ale nebylo odstraněno) zrušením **"Protokolovat změny uživatelů"** v MFA Server uživatelského rozhraní, protokolování části, karta soubory protokolu.
    - Pokud je nakonfigurovaná syslog, a **"Protokolovat změny uživatelů"** se změnami MFA Server uživatelského rozhraní, protokolování části, pomocí karty Syslog, pak položky protokolu se dají shromáždit z protokolu syslog místo.
 - Další výskyty uživatelské jméno v souborech MultiFactorAuthSvc.log a druhý Server MFA protokolů vztahující se k ověřování, které pokusy jsou považovány za provozu a hromadně šířenými informacím pomocí exportu MultiFactorAuthGdpr.exe nebo sadu SDK webové služby GetUserGdpr.

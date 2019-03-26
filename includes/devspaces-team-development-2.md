@@ -10,57 +10,43 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: include
 manager: yuvalm
-ms.openlocfilehash: 5d66dcaccc6ca2e40fbd516f535ec56c1baf6b17
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: e0f768b876b49ec006ce98decf121d73d334b6d8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195601"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439514"
 ---
 ### <a name="run-the-service"></a>Spuštění služby
 
-1. Pokud chcete spustit službu, stiskněte klávesu F5 (nebo v okně terminálu zadejte `azds up`). Služba se automaticky spustí v nově vybraný prostor _dev/scott_. 
-1. Opětovným spuštěním `azds list-up` můžete ověřit, že je vaše služba spuštěná ve vlastním prostoru. Můžete si všimnout instance *mywebapi* je nyní spuštěna v _dev/scott_ místa (verze, která běží _dev_ je pořád spuštěný, ale není uvedená).
+Pokud chcete spustit službu, stiskněte F5 (nebo typ `azds up` v okně terminálu) ke spuštění služby. Služba se automaticky spustí v nově vybraný prostor _dev/scott_. Potvrďte, že vaše služba je spuštěná ve vlastním prostoru spuštěním `azds list-up`:
 
-    ```
-    Name                      DevSpace  Type     Updated  Status
-    mywebapi                  scott     Service  3m ago   Running
-    mywebapi-bb4f4ddd8-sbfcs  scott     Pod      3m ago   Running
-    webfrontend               dev       Service  26m ago  Running
-    ```
+```cmd
+$ azds list-up
 
-1. Spustit `azds list-uris`a Všimněte si, že přístupový bod adresy URL pro *webfrontend*.
-
-    ```
-    Uri                                                                        Status
-    -------------------------------------------------------------------------  ---------
-    http://localhost:53831 => mywebapi.scott:80                                Tunneled
-    http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
-    ```
-
-1. Použijte adresu URL se *scott.s* předpona, která přejděte k vaší aplikaci. Všimněte si, že tato adresa URL aktualizována stále řeší. Je jedinečný pro tuto adresu URL _dev/scott_ místa. Speciální URL znamená, že požadavky odeslané na adresu"Scott" se pokusí první trasa ke službám v _dev/scott_ místa, ale pokud se nezdaří, bude přejdou na služby ve _dev_ místa.
-
-<!--
-TODO: replace 2 & 3 with below once bug#753164 and PR#158827 get pushed to production.
-
-You can confirm that your service is running in its own space by running `azds list-up` again. First, you'll notice an instance of *mywebapi* is now running in the _dev/scott_ space (the version running in _dev_ is still running but it is not listed). If you run `azds list-uris`, you will notice that the access point URL for *webfrontend* is prefixed with the text "scott.s.". This URL is unique to the _dev/scott_ space. The special URL signifies that requests sent to the "Scott URL" will try to first route to services in the _dev/scott_ space, but if that fails, they will fall back to services in the _dev_ space.
-
-```
 Name                      DevSpace  Type     Updated  Status
 mywebapi                  scott     Service  3m ago   Running
-mywebapi-bb4f4ddd8-sbfcs  scott     Pod      3m ago   Running
 webfrontend               dev       Service  26m ago  Running
 ```
 
-```
+Všimněte si, že instance *mywebapi* je nyní spuštěna v _dev/scott_ místa. Verze, která běží _dev_ je pořád spuštěný, ale není uvedený.
+
+Seznam adres URL pro aktuální místo spuštěním `azds list-uris`.
+
+```cmd
+$ azds list-uris
+
 Uri                                                                        Status
 -------------------------------------------------------------------------  ---------
 http://localhost:53831 => mywebapi.scott:80                                Tunneled
 http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 ```
--->
 
-![](../articles/dev-spaces/media/common/space-routing.png)
+Všimněte si, že adresa URL bodu veřejný přístup pro *webfrontend* předchází *scott.s*. Je jedinečný pro tuto adresu URL _dev/scott_ místa. Tuto předponu adresy URL říká kontroler příchozího přenosu dat ke směrování požadavků _dev/scott_ verzi služby. Při žádosti o tuto adresu URL zařizuje služba Dev mezery, kontroler příchozího přenosu dat se nejprve pokusí směrovat žádosti *webfrontend* služby v _dev/scott_ místa. Pokud selže, žádost přesměruje na *webfrontend* službu _dev_ místo jako záložní. Všimněte si také adresu URL místního hostitele pro přístup ke službě prostřednictvím místního hostitele pomocí rozhraní Kubernetes je *port vpřed* funkce. Další informace o směrování v Azure Dev mezery a adresy URL, najdete v části [jak prostory vývoj Azure funguje a je nakonfigurován](../articles/dev-spaces/how-dev-spaces-works.md).
+
+
+
+![Místo směrování](../articles/dev-spaces/media/common/Space-Routing.png)
 
 Tato integrovaná funkce služby Azure Dev Spaces umožňuje testování kódu ve sdíleném prostoru bez toho, aby si každý vývojář musel znovu vytvářet všechny služby ve svém prostoru. Tyto cesty vyžadují přesměrování šíření hlaviček v kódu aplikace, jak ukazuje předchozí krok tohoto průvodce.
 

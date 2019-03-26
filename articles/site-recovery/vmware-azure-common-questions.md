@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 03/21/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 82ae36eaaf4616dbd85760a0962f301a2b1a20f5
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.openlocfilehash: cdb8fe5deb71c014f7e0af01d070e5004d8c9994
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319376"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418784"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -57,12 +57,12 @@ Spravované disky se účtují poněkud liší od účty úložiště. Podrobnos
 
 * Účet úložiště úrovně Standard Vs. Standardní HDD spravovaný Disk
 
-    - **Disk zřízeného úložiště pomocí Azure Site Recovery**: S10
+    - **Disk zřízeného úložiště služba Azure Site Recovery**: S10
     - **Účet úložiště úrovně standard se účtují po využité svazku**: 5 USD za měsíc
     - **Spravovaných disků úrovně Standard vám účtovat na svazku zřízené**: 5.89 $ za měsíc
 
 * Účet Premium storage Vs. Premium SSD Managed Disk 
-    - **Disk zřízeného úložiště pomocí Azure Site Recovery**: P10
+    - **Disk zřízeného úložiště služba Azure Site Recovery**: P10
     - **Za účet úložiště úrovně Premium na svazku zřízené**: 17.92 $ za měsíc
     - **Spravovaný disk úrovně Premium účtuje na svazku zřízené**: 17.92 $ za měsíc
 
@@ -275,7 +275,7 @@ V **trezor služby Recovery Services**, **spravovat** > **infrastruktura Site Re
 Instalační programy jsou uloženy v **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository** složky na konfiguračním serveru.
 
 ## <a name="how-do-i-install-the-mobility-service"></a>Jak nainstalovat službu Mobility?
-Nainstalujete na každý virtuální počítač, který chcete replikovat, použití [nabízená instalace](vmware-azure-install-mobility-service.md), nebo [ruční instalace](vmware-physical-mobility-service-install-manual.md) z uživatelského rozhraní nebo Powershellu. Alternativně můžete nasadit pomocí nástroje nasazení, jako [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md).
+Nainstalujete na každý virtuální počítač, který chcete replikovat, použití [nabízená instalace](vmware-physical-mobility-service-overview.md#push-installation), nebo [ruční instalace](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui) z uživatelského rozhraní nebo Powershellu. Alternativně můžete nasadit pomocí nástroje nasazení, jako [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md).
 
 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 99148332a8310428cb73287d861ef71c35d59a26
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1d7a18f3f46cec73d70389b82eed5a85e440d340
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233196"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418597"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Jak vytvořit a spravovat Azure mezipaměti Redis pomocí Azure classic CLI
 > [!div class="op_single_selector"]
@@ -57,9 +57,9 @@ Následující vlastnosti se používají při vytváření a aktualizaci mezipa
 | Počet horizontálních oddílů |-r,--počet horizontálních oddílů |Počet horizontálních oddílů k vytvoření v clusteru mezipaměti úrovně Premium s clusteringem. |
 | Virtual Network |-v,--virtuální sítě |Při hostování mezipaměti ve virtuální síti, určuje přesné ARM ID prostředku virtuální sítě pro nasazení mezipaměti Azure redis cache v. Příklad formátu: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | Typ klíče |-t,--key-type |Typ klíče pro obnovení. Platné hodnoty: [primární, sekundární] |
-| StaticIP |-p, --static-ip <static-ip> |Při hostování mezipaměti ve virtuální síti, určuje jedinečnou IP adresu v podsíti pro ukládání do mezipaměti. Pokud se nezadá, jeden je vybrán pro vás z podsítě. |
-| Podsíť |t, --subnet <subnet> |Při hostování mezipaměti ve virtuální síti, určuje název podsítě, ve které se má nasadit do mezipaměti. |
-| VirtualNetwork |-v, – virtuální sítě < virtual-network > |Při hostování mezipaměti ve virtuální síti, určuje přesné ARM ID prostředku virtuální sítě pro nasazení mezipaměti Azure redis cache v. Příklad formátu: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| StaticIP |-p, – statické ip \<statické ip\> |Při hostování mezipaměti ve virtuální síti, určuje jedinečnou IP adresu v podsíti pro ukládání do mezipaměti. Pokud se nezadá, jeden je vybrán pro vás z podsítě. |
+| Podsíť |t, --subnet \<subnet\> |Při hostování mezipaměti ve virtuální síti, určuje název podsítě, ve které se má nasadit do mezipaměti. |
+| VirtualNetwork |-v, --virtual-network \<virtual-network\> |Při hostování mezipaměti ve virtuální síti, určuje přesné ARM ID prostředku virtuální sítě pro nasazení mezipaměti Azure redis cache v. Příklad formátu: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | Předplatné |-s, – předplatné |Identifikátor předplatného. |
 
 ## <a name="see-all-azure-cache-for-redis-commands"></a>Zobrazit všechny mezipaměti Azure pro příkazy Redis

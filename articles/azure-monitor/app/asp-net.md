@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: fbb8eabebd5728c3ff772f78f01b8ea93ff0a526
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 719cbe1ec8962b320aa2850053d44cdef7f56a8c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400196"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437812"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
@@ -125,16 +125,16 @@ Pokud chcete upgradovat na [novou verzi sady SDK](https://github.com/Microsoft/A
 
 Pokud jste provedli jakékoli úpravy souboru ApplicationInsights.config, před upgradem si uložte jeho kopii. Potom slučte změny do nové verze.
 
+## <a name="video"></a>Video
+
+* Externí krok za krokem videu o [konfigurace Application Insights s .NET aplikace od začátku](https://www.youtube.com/watch?v=blnGAVgMAfA).
+
 ## <a name="next-steps"></a>Další postup
 
 K dispozici jsou i alternativní témata, na která se v případě zájmu můžete podívat:
 
 * [Instrumentace webové aplikace za běhu](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Azure Cloud Services](../../azure-monitor/app/cloudservices.md)
-
-## <a name="video"></a>Video
-
-* Externí krok za krokem videu o [konfigurace Application Insights s .NET aplikace od začátku](https://www.youtube.com/watch?v=blnGAVgMAfA).
 
 ### <a name="more-telemetry"></a>Další telemetrická data
 

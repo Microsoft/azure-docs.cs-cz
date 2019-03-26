@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 2daaa1275d9a97bec43f277e726518ead6eca9ff
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 92294700ac9a491bfdbfa3b3d3f781eb18d5339e
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876360"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437097"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -338,6 +338,39 @@ I když IoT Edge poskytuje rozšířené konfigurace pro zabezpečení modulu ru
 |AMQP|5671|BLOKOVANÉ (výchozí)|Otevřít (výchozí)|<ul> <li>Výchozí komunikační protokol pro IoT Edge. <li> Musí být nakonfigurován Open Azure IoT Edge není nakonfigurovaný pro jiné podporované protokoly nebo je požadovaný komunikační protokol AMQP.<li>5672 pro AMQP nepodporuje IoT Edge.<li>Blokovat tento port při použití Azure IoT Edge různé IoT Hub podporovaný protokol.<li>Příchozí připojení (příchozí) by se zablokovat.</ul></ul>|
 |HTTPS|443|BLOKOVANÉ (výchozí)|Otevřít (výchozí)|<ul> <li>Nakonfigurujte odchozí (odchozí) bude otevřít na 443 pro IoT Edge zřizování. Tato konfigurace je nutná, pokud používáte ruční skripty nebo Azure IoT zařízení zřizování služby (DPS). <li>Příchozí připojení (příchozí) by měl být otevřené pouze u konkrétních scénářů: <ul> <li>  Pokud máte transparentní brány pomocí zařízení typu list, které může odesílat požadavky metod. Port 443 v takovém případě nemusí být otevřený, aby externí sítě připojit k IOT hub nebo poskytuje služby IOT hub pomocí Azure IoT Edge. Proto může být příchozí pravidlo s omezeným přístupem můžete pouze otevřít příchozí (příchozí) z interní sítě. <li> Klient zařízení (C2D) scénáře.</ul><li>80 pro protokol HTTP není podporován IoT Edge.<li>Pokud se v podnikové síti; nedá nakonfigurovat jiných protokolů než HTTP (například připojení přes AMQP nebo MQTT) zprávy odesílat přes WebSockets. Port 443 se v takovém případě používat pro komunikaci pomocí protokolu WebSocket.</ul>|
 
+## <a name="edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device"></a>Modul agenta Edge průběžně sestavy "prázdný konfigurační soubor" a žádné moduly start na zařízení
+
+Zařízení má problémy se spuštěním moduly, které jsou definovány v nasazení. Pouze edgeAgent je spuštěná, ale neustále reporting "prázdný konfigurační soubor …".
+
+### <a name="potential-root-cause"></a>Hlavní příčinu
+IoT Edge ve výchozím nastavení spustí moduly ve vlastní síti izolovaného kontejneru. Zařízení může mít potíže s překladem názvů DNS v rámci této privátní sítě.
+
+### <a name="resolution"></a>Řešení
+Určení serveru DNS pro vaše prostředí v nastavení modulu kontejneru. Vytvořte soubor s názvem `daemon.json` určení serveru DNS pro použití. Příklad:
+
+```
+{
+    "dns": ["1.1.1.1"]
+}
+```
+
+Výše uvedený příklad nastaví na veřejně dostupná služba DNS DNS server. Hraniční zařízení nemůže získat přístup k této IP ze své prostředí, nahraďte ho adresu serveru DNS, který je přístupný.
+
+Místo `daemon.json` na správném místě pro vaši platformu: 
+
+| Platforma | Umístění |
+| --------- | -------- |
+| Linux | `/etc/docker` |
+| Hostitel Windows s kontejnery Windows | `C:\ProgramData\iotedge-moby-data\config` |
+
+Pokud umístění již obsahuje `daemon.json` přidejte **dns** klíče k němu a soubor uložte.
+
+*Restartujte modul kontejneru aktualizace se projeví*
+
+| Platforma | Příkaz |
+| --------- | -------- |
+| Linux | `sudo systemctl restart docker` |
+| Windows (Powershellu pro správce) | `Restart-Service iotedge-moby -Force` |
 
 ## <a name="next-steps"></a>Další postup
 Myslíte si, že jste v platformě IoT Edge našli chybu? [Odešlete problém](https://github.com/Azure/iotedge/issues) tak, aby Pokračujeme ke zlepšení. 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 3676a1e4bf69f7d31bb347f99787c4e2f08721a9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 287a4104104c12e33fa2c50c398f422f9e6ea8c5
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107589"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418699"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Řešení potíží s konfigurací serveru
 
@@ -48,11 +48,10 @@ Zdrojový počítač zaregistruje s konfiguračním serverem při instalaci agen
     3. Ujistěte se, že složek v [Site Recovery vyloučení složek z antivirové programy](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) jsou vyloučené z antivirového softwaru.  
     4. Až problémy vyřešíte, zkuste registraci tak, že následující pokyny v [zaregistrovat zdrojový počítač s konfiguračním serverem](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 
-7. V Linuxu Pokud hodnota platformy v < INSTALLATION_DIR\>/etc/drscout.conf je poškozený, registrace selže. Pokud chcete tento problém identifikovat, otevřete soubor /var/log/ua_install.log. Vyhledejte řetězec **přerušení konfigurace jako VM_PLATFORM hodnota je null nebo je není VmWare/Azure**. Platforma by měl být nastaven na hodnotu **VmWare** nebo **Azure**. Pokud soubor drscout.conf je poškozený, doporučujeme vám [odinstalujte agenta mobility](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service) a poté znovu nainstalujte agenta mobility. Pokud odinstalace narazí, proveďte následující kroky:
-    1. Otevřete soubor Installation_Directory/uninstall.sh a Odkomentujte volání **StartServices** funkce.
-    2. Otevřete soubor Installation_Directory/Vx/bin/uninstall.sh a Odkomentujte volání **stop_services** funkce.
-    3. Otevřete soubor Installation_Directory/Fx/uninstall.sh a Odkomentujte celý oddíl, který se pokouší zastavit službu Fx.
-    4. [Odinstalujte](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service) agenta mobility. Po úspěšné odinstalaci, restartujte počítač systému a poté přeinstalujte agenta mobility.
+7. V Linuxu Pokud hodnota platformy v < INSTALLATION_DIR\>/etc/drscout.conf je poškozený, registrace selže. Pokud chcete tento problém identifikovat, otevřete soubor /var/log/ua_install.log. Vyhledejte řetězec **přerušení konfigurace jako VM_PLATFORM hodnota je null nebo je není VmWare/Azure**. Platforma by měl být nastaven na hodnotu **VmWare** nebo **Azure**. Pokud soubor drscout.conf je poškozený, doporučujeme vám [odinstalujte agenta mobility](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) a poté znovu nainstalujte agenta mobility. Pokud odinstalace narazí, proveďte následující kroky:. Otevřete soubor Installation_Directory/uninstall.sh a Odkomentujte volání **StartServices** funkce.
+    b. Otevřete soubor Installation_Directory/Vx/bin/uninstall.sh a Odkomentujte volání **stop_services** funkce.
+    c. Otevřete soubor Installation_Directory/Fx/uninstall.sh a Odkomentujte celý oddíl, který se pokouší zastavit službu Fx.
+    d. [Odinstalujte](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) agenta mobility. Po úspěšné odinstalaci, restartujte počítač systému a poté přeinstalujte agenta mobility.
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>Instalace se nezdařila: Nepovedlo se načíst účty.
 
@@ -80,9 +79,9 @@ Lze vyvarovat této chyby, zkontrolujte, jestli, který čas systémových hodin
 
 Nelze vytvořit certifikát, který má vyžadovaný k ověření v Site Recovery. Po zajištění, že instalační program spouštíte jako místní správce. Spusťte znovu instalační program.
 
-## <a name="failure-to-activate-windows-licence-from-server-standard-evaluation-to-server-standard"></a>Nepodařilo se aktivovat licenci Windows ze standardní zkušební verze serveru na Server Standard
+## <a name="failure-to-activate-windows-license-from-server-standard-evaluation-to-server-standard"></a>Nepodařilo se aktivovat licenci Windows ze standardní zkušební verze serveru pro Server Standard
 
-1. Jako součást nasazení konfiguračního serveru pomocí OVF se používá zkušební licence, který je platný po dobu 180 dnů. Potřebujete aktivovat tuto licenci předtím, než to vyprší. Jinak to mít za následek časté vypnutí konfiguračního serveru a hinderance replikace aktivitám, čímž vznikne.
+1. Jako součást nasazení konfiguračního serveru pomocí OVF se používá zkušební licence, který je platný po dobu 180 dnů. Potřebujete aktivovat tuto licenci předtím, než to vyprší. Jinak to mít za následek časté vypnutí konfiguračního serveru a překážku aktivity replikace, čímž vznikne.
 2. Pokud se nemůžete aktivovat licenci Windows, kontaktujte [tým podpory Windows](https://aka.ms/Windows_Support) k vyřešení daného problému.
 
 ## <a name="register-source-machine-with-configuration-server"></a>Zdrojový počítač zaregistrovat u konfiguračního serveru
@@ -146,7 +145,7 @@ K odebrání zastaralých chráněného počítače na konfiguračním serveru, 
    
     `Syntax: Unregister-ASRComponent.pl -IPAddress <IP_ADDRESS_OF_MACHINE_TO_UNREGISTER> -Component <Source/ PS / MT>`
  
-    Pokud máte záznam serveru zdroj "OnPrem VM01" s IP adresu z 10.0.0.4 následně místo toho použijte následující příkaz.
+    Pokud máte záznam zdrojového serveru z "OnPrem VM01" ip adresou 10.0.0.4 následně místo toho použijte následující příkaz.
  
     `perl Unregister-ASRComponent.pl -IPAddress 10.0.0.4 -Component Source`
  

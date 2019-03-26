@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc27e5cd6af19f06a5eab73e30d3034fada0ccc2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838387"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438297"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Synchronizace identit a odolnost duplicitních atributů
 Odolnost duplicitních atributů je funkce v Azure Active Directory, ke které dojde k odstranění řešit zádrhele spojené s způsobené **UserPrincipalName** a **ProxyAddress** je v konfliktu při spuštění jedné od Microsoftu Nástroje pro synchronizaci.
@@ -40,7 +40,7 @@ Při pokusu o zřízení nového objektu s hodnotou hlavní název uživatele ne
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Chování s odolnost duplicitních atributů
 Místo úplně neúspěšné ke zřízení nebo aktualizaci objektu s duplicitní atribut, Azure Active Directory "umístí do karantény" duplicitní atribut, který by mohla narušit omezení jedinečnosti. Pokud tento atribut je vyžadován pro zřizování, jako jsou UserPrincipalName, služba přiřadí hodnotu zástupného symbolu. Formát tyto dočasné hodnoty  
-"***<OriginalPrefix>+ < 4DigitNumber >\@<InitialTenantDomain>. onmicrosoft.com***".  
+"***\<OriginalPrefix > +\<4DigitNumber >\@\<InitialTenantDomain >. onmicrosoft.com***".  
 Pokud atribut není vyžadována, třeba **ProxyAddress**, Azure Active Directory jednoduše umístí do karantény atribut konflikt a pokračuje v objektu vytvoření nebo aktualizace.
 
 Při umístění do karantény atribut, odesílají informace o konflikt stejné chybě sestav e-mailu používat staré chování. Ale tyto informace se zobrazí jenom v chybové zprávě jednou, když se stane o karanténě, ho nepokračuje má být zaznamenána v budoucích e-mailů. Navíc protože úspěšném exportu pro tento objekt synchronizačního klienta neprotokoluje chybu a neopakuje vytvořit nebo aktualizovat operace při následné synchronizaci cykly.
@@ -66,7 +66,7 @@ Pokud chcete zkontrolovat, pokud je funkce pro vašeho tenanta, můžete tak uč
 > Rutina Set-MsolDirSyncFeature už můžete aktivně povolit funkci duplicitní atribut odolnost předtím, než je zapnutý pro vašeho tenanta. Aby bylo možné otestovat funkci, musíte vytvořit nového tenanta Azure Active Directory.
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>Identifikaci objektů s DirSyncProvisioningErrors
-K identifikaci objektů, které mají tyto chyby z důvodu duplicitní vlastnost je v konfliktu, Azure Active Directory PowerShell a portálu pro správu Office 365 aktuálně dvěma způsoby. Existují plány můžete rozšířit do další portálu závislosti vytváření sestav v budoucnu.
+Nyní existují dvě metody k identifikaci objektů, které mají tyto chyby z důvodu duplicitní vlastnost je v konfliktu, Azure Active Directory PowerShell a [centra pro správu služeb Microsoft 365](https://admin.microsoft.com). Existují plány můžete rozšířit do další portálu závislosti vytváření sestav v budoucnu.
 
 ### <a name="azure-active-directory-powershell"></a>Azure Active Directory PowerShell
 Pro rutiny Powershellu v tomto tématu platí následující:
@@ -113,17 +113,17 @@ Postup použití vyhledávání široký řetězec **- SearchString:** příznak
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
 #### <a name="in-a-limited-quantity-or-all"></a>V omezené množství nebo vše
-1. **MaxResults <Int>**  slouží k omezení dotazu na konkrétní počet hodnot.
+1. **MaxResults \<Int >** slouží k omezení dotazu na konkrétní počet hodnot.
 2. **Všechny** slouží k zajištění všechny výsledky jsou načteny v případě, že existuje velký počet chyb.
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
-## <a name="office-365-admin-portal"></a>Portál pro správu Office 365
-Chyby synchronizace adresáře můžete zobrazit v Centru pro správu Office 365. Na portálu Office 365 je sestava zobrazena pouze **uživatele** objekty, které mají tyto chyby. Nezobrazuje se informace o konfliktech mezi **skupiny** a **kontakty**.
+## <a name="microsoft-365-admin-center"></a>Centrum pro správu služeb Microsoft 365
+Chyby synchronizace adresáře můžete zobrazit v Centru pro správu Microsoftu 365. Sestavy v Microsoft 365 admin center zobrazí se jenom **uživatele** objekty, které mají tyto chyby. Nezobrazuje se informace o konfliktech mezi **skupiny** a **kontakty**.
 
 ![Aktivní uživatelé](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "aktivních uživatelů")
 
-Pokyny o tom, jak zobrazit chyby synchronizace adresáře v Centru pro správu Office 365 najdete v tématu [identifikaci chyb synchronizace adresáře v Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
+Pokyny o tom, jak zobrazit chyby synchronizace adresáře v Centru pro správu služeb Microsoft 365 najdete v tématu [identifikaci chyb synchronizace adresáře v Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
 ### <a name="identity-synchronization-error-report"></a>Sestava chyb synchronizace identit
 Když se zpracovává objekt s konfliktem duplicitní atribut kontaktovat toto nové chování oznámení je součástí standardní e-mailovou zprávu o chybách synchronizace identit, odeslaný technická oznámení tenanta. Je však důležité změny v rámci tohoto chování. V minulosti informace o duplicitní atribut konfliktu by být součástí každé následné chybách dokud konflikt se vyřešil. S toto nové chování oznamování chyb pro danou konflikt být použito pouze jednou – v době, kdy je v karanténě konfliktním atributem.

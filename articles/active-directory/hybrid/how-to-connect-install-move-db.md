@@ -11,12 +11,12 @@ ms.date: 03/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeeb9989b6bf0233354d493f5dbb6916c806cfdb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3485639062f33d013152cd30f6785df4d1c79790
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076832"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437777"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Přesun databáze Azure AD Connect z SQL Serveru Express na SQL Server 
 
@@ -42,7 +42,7 @@ Pomocí následujících kroků přesuňte databázi Azure AD Connect na vzdále
 8. Po připojení databáze se vraťte na server Azure AD Connect a nainstalujte Azure AD Connect.
 9. Po dokončení instalace MSI se spustí průvodce Azure AD Connect v režimu expresní instalace. Zavřete obrazovku kliknutím na ikonu Ukončit.
    ![Uvítání](./media/how-to-connect-install-move-db/db1.png)
-10. Spusťte nový příkazový řádek nebo novou relaci PowerShellu. Přejděte do složky <drive>\Program Files\Microsoft Azure AD Connect. Spuštěním příkazu .\AzureADConnect.exe /useexistingdatabase spusťte průvodce Azure AD Connect v režimu instalace Použít stávající databázi.
+10. Spusťte nový příkazový řádek nebo novou relaci PowerShellu. Přejděte do složky \<jednotku > \program files\Microsoft Azure AD Connect. Spuštěním příkazu .\AzureADConnect.exe /useexistingdatabase spusťte průvodce Azure AD Connect v režimu instalace Použít stávající databázi.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. Zobrazí se obrazovka Vítá vás Azure AD Connect. Jakmile odsouhlasíte licenční podmínky a oznámení o ochraně osobních údajů, klikněte na **Pokračovat**.
     ![Uvítání](./media/how-to-connect-install-move-db/db3.png)

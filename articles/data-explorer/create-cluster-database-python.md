@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze s použitím jazyka Python'
-description: Zjistěte, jak vytvořit cluster Průzkumník dat Azure a databáze služby pomocí Pythonu
+description: Zjistěte, jak vytvořit cluster Průzkumník dat Azure a databáze služby s použitím jazyka Python
 services: data-explorer
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/17/2019
-ms.openlocfilehash: 4f87c5996ea323c26c32c1680ba6f627bf8f95c2
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/25/2019
+ms.openlocfilehash: db6064feb379bf7da4f2c2e6417583c3d8b8b0d3
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287507"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417883"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Vytvoření clusteru Průzkumník dat Azure a databáze s použitím jazyka Python
 
@@ -25,11 +25,11 @@ ms.locfileid: "58287507"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Tento rychlý start popisuje způsob vytvoření clusteru Průzkumník dat Azure a databáze s použitím jazyka Python.
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto rychlém startu vytvoříte cluster a databáze s použitím jazyka Python.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu potřebujete předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="install-python-package"></a>Instalovat balíček Pythonu
 
@@ -53,9 +53,9 @@ pip install azure-mgmt-kusto
 
     Existují další volitelné parametry, které můžete použít, jako je například kapacita clusteru.
     
-    Nastavení "pověření" vašich přihlašovacích údajů (Další informace najdete v části https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python )
+1. Nastavte [ *svoje přihlašovací údaje*](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python)
 
-2. Spusťte následující příkaz a zkontrolujte, zda byl úspěšně vytvořen cluster:
+1. Spusťte následující příkaz a zkontrolujte, zda byl úspěšně vytvořen cluster:
 
     ```Python
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
@@ -91,7 +91,7 @@ Pokud výsledek obsahuje `provisioningState` s `Succeeded` hodnotu, pak clusteru
    | soft_delete_period | *3650 dnů, 0:00:00* | Množství času, které data zůstanou k dispozici pro dotazy. |
    | hot_cache_period | *3650 dnů, 0:00:00* | Množství času, které data zůstanou v mezipaměti. |
 
-2. Spuštěním následujícího příkazu zobrazte databázi, kterou jste vytvořili:
+1. Spuštěním následujícího příkazu zobrazte databázi, kterou jste vytvořili:
 
     ```Python
     database_operations.get(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName)

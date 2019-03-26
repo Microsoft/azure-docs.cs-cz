@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: d12ea20f9f510b0e2d3d3512d8d8c71a3fb96eec
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: efe50533a03551a673583265e107263d79cff90a
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372518"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418682"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy entit a jejich účely v LUIS
 
@@ -216,11 +216,20 @@ Pokud předem připravených entit je označené další text nebo tokeny než v
 
 #### <a name="remove-example-utterance-to-fix-tagging"></a>Odebrat příklad utterance opravit označování 
 
-Nejprve je odstranit utterance příklad a přeučování aplikace. Přidejte zpátky pouze slova nebo fráze entity jako příklad utterance a pak označit entity a trénování. Nyní přidejte zpět předem připravených entit a původní utterance příklad. Vlastní entity by měly být nadále označit místo předem připravených entit. 
+Nejprve je odebrat utterance příklad. 
+
+1. Odstraňte utterance příklad.
+1. Přeučování aplikace. 
+1. Přidat zpět pouze slova nebo fráze entity, která je označena jako předem připravených entit, jako utterance kompletní příklad. Slovo nebo frázi, budete mít stále předem připravených entit označené. 
+1. Vyberte entitu v příkladu utterance na **záměr** stránce a změnit do vlastní entity a trénování znovu. To by měla služba LUIS zabránit v označení přesný text jako předem připravených entit v jakékoli projevy příkladu, které používají tento text. 
+1. Přidejte celý původní utterance příklad zpět k příslušnému záměru. Vlastní entity by měly být nadále označit místo předem připravených entit. Pokud není označena vlastní entitu, budete muset přidat další příklady tohoto textu v projevy.
 
 #### <a name="remove-prebuilt-entity-to-fix-tagging"></a>Odebrat předem připravených entit opravit označování
 
-Druhou možnost, je odebrat předem připravených entit z aplikace, pak Označit vlastní entity na utterance příkladu a pak přidejte předem připravených entit do aplikace. Tato oprava předpokládá, že předem připravených entit, které nejsou součástí složeného entity. 
+1. Odeberte předem připravených entit z aplikace. 
+1. Na **záměr** stránce, označit vlastní entitě v příkladu utterance.
+1. Trénujte aplikaci.
+1. Přidat do aplikace předem připravených entit a jejich trénování aplikace. Tato oprava předpokládá, že předem připravených entit, které nejsou součástí složeného entity.
 
 ## <a name="regular-expression-entity"></a>Entiay regulárního výrazu 
 

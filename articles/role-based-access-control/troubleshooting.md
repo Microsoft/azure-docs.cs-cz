@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 03/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 7b27c811214def7f5646f886b955d035a50c0725
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: d85c49cc8533b88382de81f8f12fde7116afb69a
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342469"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407585"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Řešení potíží s RBAC pro prostředky Azure
 
@@ -28,23 +28,31 @@ V tomto článku, abyste věděli, co očekávat při používání role na webu
 
 ## <a name="problems-with-rbac-role-assignments"></a>Potíže s přiřazováním rolí RBAC
 
-- Pokud se nemůžete přidat přiřazení role, protože **přidat přiřazení role** možnost je zakázaná, nebo protože se zobrazí chybu oprávnění, zkontrolujte, že používáte roli, která má `Microsoft.Authorization/roleAssignments/*` oprávnění v oboru, který se pokoušíte přiřazení role. Pokud toto oprávnění nemáte, obraťte se na správce vašeho předplatného.
-- Pokud dojde k chybě oprávnění při pokusu o vytvoření prostředku, zkontrolujte, že používáte roli, která má oprávnění k vytváření prostředků na vybraný obor. Potřebujete například stát přispěvatelem. Pokud nemáte oprávnění, obraťte se na správce předplatného.
-- Pokud dojde k chybě oprávnění při pokusu o vytvoření nebo aktualizaci lístek podpory, zkontrolujte, že používáte roli, která má `Microsoft.Support/*` oprávnění, jako například [podpory požádat o Přispěvatel](built-in-roles.md#support-request-contributor).
-- Pokud při pokusu o přiřazení role dojde k chybě kvůli překročení počtu přiřazení rolí, zkuste snížit počet přiřazení rolí tím, že místo toho přiřadíte role ke skupinám. Azure podporuje až **2000** přiřazení rolí na jedno předplatné.
+- Pokud se nemůžete přidat přiřazení role na webu Azure Portal na **řízení přístupu (IAM)** protože **přidat** > **přidat přiřazení role** možnost je zakázaná, nebo vzhledem k tomu, že se zobrazí chyba oprávnění "Klient s id objektu nemá oprávnění k provedení akce", zkontrolujte, že jste aktuálně přihlášení jako uživatel, který má přiřazenou roli, která má `Microsoft.Authorization/roleAssignments/write` oprávnění jako [vlastníka](built-in-roles.md#owner) nebo [správce uživatelských přístupů](built-in-roles.md#user-access-administrator) v oboru, který se snažíte přiřadit roli.
+- Pokud se zobrazí chybová zpráva "žádné další přiřazení rolí je možné vytvořit. (kód: RoleAssignmentLimitExceeded) "při pokusu o přiřazení role se snaží snížit počet přiřazení rolí tak, že místo toho přiřadíte role do skupin. Azure podporuje až **2000** přiřazení rolí na jedno předplatné.
 
 ## <a name="problems-with-custom-roles"></a>Potíže s vlastními rolemi
 
-- Pokud se nemůžete aktualizovat existující vlastní roli, zkontrolujte, jestli máte `Microsoft.Authorization/roleDefinition/write` oprávnění.
-- Pokud nemůžete aktualizovat existující vlastní roli, zkontrolujte, zda jeden nebo více přiřaditelnými obory se odstranily v tenantovi. `AssignableScopes` Vlastnost pro ovládací prvky vlastní roli [který můžete vytvořit, odstranit, aktualizovat nebo zobrazit vlastní roli](custom-roles.md#who-can-create-delete-update-or-view-a-custom-role).
-- Pokud dojde k chybě, která překročila maximální počet definic rolí při pokusu o vytvoření nové role, odstranit vlastní role, ke kterým se dá použít. Můžete také zkusit konsolidovat nebo opakovaně používat všechny stávající vlastní role. Azure podporuje až **2000** vlastní role v tenantovi.
-- Pokud nemůžete odstranit vlastní roli, zkontrolujte, zda jeden nebo více přiřazení rolí stále používají vlastní roli.
+- Pokud potřebujete postup, jak vytvořit vlastní roli, najdete v kurzech vlastní role pomocí [prostředí Azure PowerShell](tutorial-custom-role-powershell.md) nebo [rozhraní příkazového řádku Azure](tutorial-custom-role-cli.md).
+- Pokud se nemůžete aktualizovat existující vlastní roli, zkontrolujte, že jste aktuálně přihlášení jako uživatel, který má přiřazenou roli, která má `Microsoft.Authorization/roleDefinition/write` oprávnění jako [vlastníka](built-in-roles.md#owner) nebo [správce uživatelských přístupů](built-in-roles.md#user-access-administrator).
+- Pokud nemůžete odstranit vlastní roli a zobrazí se chybová zpráva "existuje jsou odkazují stávající přiřazení rolí role (kód: RoleDefinitionHasAssignments) ", pak přiřazení rolí se pořád používá vlastní roli. Odebrání těchto přiřazení rolí a zkuste to znovu odstranit vlastní roli.
+- Pokud se zobrazí chybová zpráva "maximální počet definic rolí překročena. Je možné vytvořit další definice rolí (kód: RoleDefinitionLimitExceeded) "při pokusu o vytvoření nové vlastní role odstranit všechny vlastní role, které nejsou používány. Azure podporuje až **2000** vlastní role v tenantovi.
+- Pokud podobně jako "klient má oprávnění k provedení akce"Microsoft.Authorization/roleDefinitions/write"v rozsahu '/Subscriptions/ {subscriptionid}', ale nebyl nalezen propojenému předplatnému" dojde k chybě při pokusu aktualizovat vlastní roli, zkontrolujte zda jeden nebo více [přiřaditelnými obory](role-definitions.md#assignablescopes) byly odstraněny v tenantovi. Pokud byla odstraněna oboru, vytvořte lístek podpory jako neexistuje žádné řešení samoobslužné služby v tuto chvíli k dispozici.
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Obnovení RBAC při přesouvání předplatných mezi tenanty
 
-- Pokud potřebujete zjistit, jak postupovat při přenosu předplatného do jiného tenanta, přečtěte si téma [Přenos vlastnictví předplatného Azure na jiný účet](../billing/billing-subscription-transfer.md).
-- Pokud přenesete předplatné na jiného tenanta, všechna přiřazení rolí se trvale odstraní z tenanta zdroje a nebudou migrována k cílovému tenantovi. Budete muset znovu vytvořit přiřazení role v cílovému tenantovi.
-- Pokud jsou globální správy a jste ztratili přístup k předplatnému, použijte **Access management pro prostředky Azure** tímto přepínačem můžete dočasně [zvýšení vaší přístupu](elevate-access-global-admin.md) moct znovu přistupovat ke předplatné.
+- Pokud potřebujete postup na převod předplatného do jiné služby Azure AD tenanta, přečtěte si téma [přenos vlastnictví předplatného Azure na jiný účet](../billing/billing-subscription-transfer.md).
+- Převod předplatného do jiné služby Azure AD tenanta, všechna přiřazení rolí se trvale odstraní z tenanta Azure AD zdroje a nebudou migrována do cílového tenanta Azure AD. Budete muset znovu vytvořit přiřazení role v cílovému tenantovi.
+- Pokud jste Azure AD globálního správce a nemají přístup k předplatnému po byl přesunut mezi tenanty, použijte **Access management pro prostředky Azure** tímto přepínačem můžete dočasně [zvýšení vaší přístupu](elevate-access-global-admin.md) získat přístup k předplatnému.
+
+## <a name="issues-with-service-admins-or-co-admins"></a>Problémy se správci služeb nebo spolusprávci
+
+- Pokud máte problémy s pomocí Správce služeb nebo spolupracující správce, přečtěte si téma [přidat nebo změnit správce předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md) a [Classic role správců předplatného, role Azure RBAC a Azure AD role správce](rbac-and-directory-admin-roles.md).
+
+## <a name="access-denied-or-permission-errors"></a>Přístup byl odepřen nebo chyby oprávnění
+
+- Pokud se zobrazí chyba oprávnění "Klient s id objektu nemá oprávnění k provedení akce rozsahu (kód: AuthorizationFailed) "při pokusu o vytvoření prostředku, zkontrolujte, že jste aktuálně přihlášení jako uživatel, který je přiřazena role, který má oprávnění k zápisu do zdroje na vybraný obor. Třeba ke správě virtuálních počítačů ve skupině prostředků, měli byste mít [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) role na skupinu prostředků (nebo nadřazený obor). Seznam oprávnění pro každou integrovanou roli najdete v tématu [předdefinované role pro prostředky Azure](built-in-roles.md).
+- Pokud se zobrazí chyba oprávnění "Nemáte oprávnění k vytvoření žádosti o podporu" při pokusu o vytvoření nebo aktualizaci lístek podpory, zkontrolujte, že jste aktuálně přihlášení jako uživatel, který má přiřazenou roli, která má `Microsoft.Support/supportTickets/write` oprávnění, jako je například [Přispěvatel žádostí o podporu](built-in-roles.md#support-request-contributor).
 
 ## <a name="rbac-changes-are-not-being-detected"></a>Nebyly detekovány změny RBAC
 

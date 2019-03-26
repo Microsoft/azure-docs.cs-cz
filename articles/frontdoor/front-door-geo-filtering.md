@@ -3,31 +3,31 @@ title: Geografické filtrování na doméně pro Azure Front Door Service | Micr
 description: V tomto článku se seznámíte se zásadami geografického filtrování pro službu Azure Front Door Service.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: KumudD
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/09/2018
-ms.author: sharadag
-ms.openlocfilehash: a2ba0fb34dd34129a134aa2639d06816f3523408
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 03/21/2019
+ms.author: kumud;tyao
+ms.openlocfilehash: a7b4975a81c0966e5cbff0c8b940c9231e66f32b
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865501"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407636"
 ---
-# <a name="geo-filtering-geographic-based-access-control-to-azure-front-door-service-frontends"></a>Geografické filtrování: Řízení přístupu k front-endům služby Azure Front Door Service na základě geografického umístění
+# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Co je geografické filtrování v doméně pro branou Azure?
 
-Azure Front Door Service ve výchozím nastavení reaguje na požadavky uživatelů bez ohledu na umístění uživatele, který požadavek provádí. V některých případech však můžete chtít omezit přístup k vašim webovým aplikacím podle země. Zabezpečení aplikační vrstvy ve službě Azure Front Door umožňuje pro konkrétní cestu na koncovém bodu definovat zásadu s použitím vlastních pravidel ochrany, která povolí nebo zablokuje přístup ze zadaných zemí. 
+Azure Front Door Service ve výchozím nastavení reaguje na požadavky uživatelů bez ohledu na umístění uživatele, který požadavek provádí. V některých případech však můžete chtít omezit přístup k vašim webovým aplikacím podle země. Brány firewall (WAF) služby webových aplikací za branou umožňuje definovat zásady, pomocí pravidel pro vlastní přístup pro konkrétní cestu na váš koncový bod má povolit nebo blokovat přístup ze zadaného zemí. 
 
-Zásada zabezpečení aplikace obvykle zahrnuje sadu vlastních pravidel. Pravidlo se skládá z podmínek shody, akce a priority. V podmínce shody definujete proměnnou shody, operátor a hodnotu shody.  V případě pravidla geografického filtrování je proměnná shody REMOTE_ADDR, operátor je GeoMatch a hodnota je dvoupísmenný kód požadované země. Kombinací podmínky GeoMatch a podmínky shody řetězce REQUEST_URI můžete vytvořit pravidlo geografického filtrování na základě cesty.
+Zásady WAF obvykle zahrnuje sadu vlastních pravidel. Pravidlo se skládá z podmínek shody, akce a priority. V podmínce shody definujete proměnnou shody, operátor a hodnotu shody.  V případě pravidla geografického filtrování je proměnná shody REMOTE_ADDR, operátor je GeoMatch a hodnota je dvoupísmenný kód požadované země. Kombinací podmínky GeoMatch a podmínky shody řetězce REQUEST_URI můžete vytvořit pravidlo geografického filtrování na základě cesty.
 
-Zásadu geografického filtrování pro službu Front Door můžete nakonfigurovat pomocí [Azure PowerShellu](front-door-tutorial-geo-filtering.md) nebo naší [šablony pro rychlý start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
+Můžete nakonfigurovat zásady geografického filtrování pro vaše branou buď pomocí [prostředí Azure PowerShell](front-door-tutorial-geo-filtering.md) nebo s použitím našich [šablonu pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
 
-## <a name="country-code-reference"></a>Referenční informace ke kódům zemí
+## <a name="country-code-reference"></a>Odkaz na kód země
 
 |Kód země | Jméno země |
 | ----- | ----- |

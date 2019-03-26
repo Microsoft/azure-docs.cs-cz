@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/22/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 696f4fee95926009ebda0be3c28672838d89edda
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 31a50d1dab0d5b62ab4dd549127e9092148bd88c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400442"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438083"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Co je Azure Data Box Edge? 
 
@@ -65,22 +65,6 @@ Data Box Edge nabízí následující funkce:
 |Odolnost     | Integrovaná odolnost sítě.        |
 
 
-## <a name="features-and-specifications"></a>Funkce a specifikace
-
-Fyzické zařízení Data Box Edge má následující funkce:
-
-| Funkce/specifikace                                          | Popis              |
-|---------------------------------------------------------|--------------------------|
-| Dimenze   | Width: 17.25" hloubky: 27.25" height: 1.75”<br>(bez oušek a úchytů PSU)  |            
-| Místo v racku|1U při umístění v racku|
-| Kabely| 2× napájecí kabel<br>2× kabely RJ45 1 GB/s<br>2× měděný kabel SFP 10 GB/s|
-| Komponenty|2 integrované jednotky PSU (Power Supply Unit)|
-| Procesor|2 procesory Intel Xeon, každý s 10 jádry  |
-| Memory (Paměť)| 64 GB RAM|
-| Disky| 8 disků SSD NVMe, každý o kapacitě 1,6 TB <br> Pokud selže jeden z disků SSD NVMe, selže celý systém. |
-| Kapacita místního úložiště| Celková kapacita 12,8 TB|
-| Síťová rozhraní| 2× rozhraní 1 GbE, z nichž jedno slouží pro správu, uživatelé ho nemohou konfigurovat a používá se pro počáteční instalaci. Další rozhraní je konfigurovatelná uživatelem, lze použít pro přenos dat a ve výchozím nastavení je DHCP. <br>2× rozhraní 25 GbE – mohou fungovat také jako rozhraní 10 GbE. Tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická. <br> 2× rozhraní 25 GbE – tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická.|
-
 ## <a name="components"></a>Komponenty
 
 Řešení Data Box Edge sestává z prostředku Data Box Edge, fyzického zařízení Data Box Edge a místního webového uživatelského rozhraní.
@@ -105,30 +89,16 @@ Fyzické zařízení Data Box Edge má následující funkce:
 Fyzické zařízení Data Box Edge, prostředek Azure a účet cílového úložiště, do kterého přenášíte data, se nemusí nacházet ve stejné oblasti.
 
 - **Dostupnost prostředku** – u této vydané verze je prostředek Data Box Edge dostupný v následujících oblastech:
-    - **Spojené státy americké** – Západní USA 2 a Východní USA
+    - **Spojené státy** – USA – východ
     - **Evropská unie** – Západní Evropa
     - **Asie a Tichomoří** – Jihovýchodní Asie
-
+    
+    Brána dat pole můžete také nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+    
 - **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure. 
 
     Oblasti, do kterých účty úložiště ukládají data služby Data Box, by se měly nacházet v blízkosti umístění zařízení, aby byl zajištěn optimální výkon. Účet úložiště umístěný daleko od zařízení bude vykazovat dlouhé latence a nižší výkon. 
 
-
-## <a name="sign-up"></a>Registrace
-
-Služba Data Box Edge je ve verzi Preview a musíte se k ní zaregistrovat. Data Box Gateway si zaregistrujete následujícím způsobem:
-
-1. Přihlaste se k portálu Azure Portal na adrese: [https://aka.ms/databox-edge](https://aka.ms/databox-edge).
-
-2. Vyberte předplatné, které chcete použít pro Data Box Edge ve verzi Preview. Vyberte oblast, ve které chcete prostředek Data Box Edge nasadit. U možnosti Data Box Edge klikněte na **Zaregistrovat se**.
-
-    ![Registrace pro Data Box Edge 3](media/data-box-edge-overview/data-box-edge-sign-up3.png)
-
-3.  Odpovězte na otázky týkající země trvalého umístění dat, časového rámce, cílové služby Azure pro přenos dat, šířky pásma sítě a frekvence přenosu dat. Projděte si **ochranu osobních údajů a podmínky** a zaškrtněte políčko, že **Microsoft může použít vaši e-mailovou adresu, aby vás kontaktoval**.
-
-    ![Registrace pro Data Box Edge 4](media/data-box-edge-overview/data-box-edge-sign-up4.png)
-
-4. Po registraci a povolení verze Preview si můžete objednat službu Data Box Edge.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,8 +1,16 @@
-                                        ---
-Autor: alkohli ms.service: databox  
-MS.topic: zahrnují ms.date: 03/21/2019 ms.author: alkohli
 ---
-
+author: alkohli
+ms.service: databox
+ms.topic: include
+ms.date: 03/25/2019
+ms.author: alkohli
+ms.openlocfilehash: 674ca630aa41d930ad7d7cfebccbe9b44351b68c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58431313"
+---
 Tady je seznam podporovaných operačních systémů pro klienty nebo hostitelů připojených k zařízení. Tyto verze operačních systémů byly testovány interně.
 
 | **Operačního systému a platformy** | **Verze** |
@@ -13,4 +21,3 @@ Tady je seznam podporovaných operačních systémů pro klienty nebo hostitelů
 | Ubuntu |16.04.3 LTS|
 | CentOS | 7.0 |
 | Mac OS | 10.14.1 |
-                                                                                                                                                                                                                                                                                                                                                                                              

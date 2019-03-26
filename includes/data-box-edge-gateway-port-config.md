@@ -1,8 +1,16 @@
-      ---
-Autor: alkohli ms.service: databox  
-MS.topic: zahrnují ms.date: 03/21/2019 ms.author: alkohli
 ---
-
+author: alkohli
+ms.service: databox
+ms.topic: include
+ms.date: 03/25/2019
+ms.author: alkohli
+ms.openlocfilehash: 98f9e0377e560fa0bba2fd470ff01431b2ed21d9
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58431618"
+---
 | Port č.| Snížení nebo navýšení kapacity | Rozsah portů| Požaduje se|   Poznámky |   |
 |--------|-----|-----|-----------|----------|-----------|
 | TCP 80 (HTTP)|Výstup|Síť WAN |Ne|Odchozí port se používá pro přístup k Internetu pro načtení aktualizací. <br>Odchozí webový proxy server je konfigurovatelná uživatelem. |
@@ -15,4 +23,3 @@ MS.topic: zahrnují ms.date: 03/21/2019 ms.author: alkohli
 | TCP 443 (HTTPS)|Out nebo přihlášení.|LAN|Ano|Toto je příchozí port pro místní uživatelské rozhraní na zařízení pro místní správu. |
 | TCP 445 (SMB)|V|LAN|V některých případech<br>Viz poznámky|Tento port je povinný, jenom v případě, že se připojujete přes SMB. |
 | TCP 2049 (NFS)|V|LAN|V některých případech<br>Viz poznámky|Tento port je povinný, jenom v případě, že se připojujete pomocí systému souborů NFS. |
-

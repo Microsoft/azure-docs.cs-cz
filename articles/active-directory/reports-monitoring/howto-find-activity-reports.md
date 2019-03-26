@@ -3,7 +3,7 @@ title: Vyhledávání sestav aktivit uživatelů Azure Active Directory na webu 
 description: Zjistěte, ve kterém jsou sestavy aktivit uživatelů Azure Active Directory na webu Azure Portal.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65e803ca373fb9853fc23d17f1a27ecadc6a209c
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: d47072713c57576abe780134792c3a5cbc27127c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295211"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439035"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Vyhledávání sestav aktivit na webu Azure Portal
 

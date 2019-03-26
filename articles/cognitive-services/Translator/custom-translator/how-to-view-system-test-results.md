@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 67ddc7a8e9d79d0eef9c017b315385df62c18e33
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ccd31a0e8b91bc95ac364fe5bc0ec0ecdfaa4618
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997718"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438610"
 ---
 # <a name="view-system-test-results"></a>Zobrazení výsledků systémových testů
 
@@ -78,6 +78,9 @@ Požádat o nasazení:
     ![Nasazení modelu](media/how-to/how-to-deploy-model-regions.png)
 
 5.  Stav modelu se zobrazí ve sloupci "Stavu".
+
+>[!Note]
+>Vlastní Translator podporuje 10 nasazených modelů v rámci pracovního prostoru v libovolném bodě v čase.
 
 ## <a name="update-deployment-settings"></a>Nastavení aktualizace nasazení
 

@@ -4,8 +4,8 @@ description: Zjistěte, jak použít vlastní image Dockeru pro službu Web App 
 keywords: azure app service, web app, linux, docker, container
 services: app-service
 documentationcenter: ''
-author: SyntaxC4
-manager: SyntaxC4
+author: msangapu
+manager: jeconnoc
 editor: ''
 ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.service: app-service
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2017
-ms.author: cfowler
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ee91c9f152d72fbcc58cb4707af9420a57a1517b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 98e690ab73b9a51126f4eae9ac5eff410e211957
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224189"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435838"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Použití vlastní image Dockeru pro službu Web App for Containers
 
@@ -309,7 +309,7 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Aby vlastn�
     EXPOSE 8000 2222
     ```
 
-* Nezapomeňte [spustit službu ssh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh) pomocí skriptu prostředí v adresáři /bin.
+* Nezapomeňte [spustit službu ssh](https://github.com/Azure-App-Service/node/blob/master/8.9/startup/init_container.sh#L18) pomocí skriptu prostředí v adresáři /bin.
  
     ```bash
     #!/bin/bash

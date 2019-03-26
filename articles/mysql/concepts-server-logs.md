@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: b1b5dffed0a82e3e3c91efd4024bafdc64f0d3d2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c5087a038e31c4819ef1ef173bb32faa41e04c97
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119033"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417764"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Protokolů serveru ve službě Azure Database for MySQL
 Ve službě Azure Database for MySQL je k dispozici uživatelům v protokolu pomalých dotazů. Přístup k protokolu transakcí se nepodporuje. Protokol pomalých dotazů je možné identifikovat kritické body výkonu pro řešení potíží. 
@@ -53,31 +53,31 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na me
 
 | **Vlastnost** | **Popis** |
 |---|---|
-| TenantId | Vaše ID tenanta |
-| SourceSystem | `Azure` |
-| TimeGenerated [UTC] | Časové razítko, kdy se přihlášení v protokolu ve standardu UTC |
-| Type | Typ protokolu. Vždy `AzureDiagnostics` |
-| SubscriptionId | Identifikátor GUID pro předplatné, které server patří do |
-| ResourceGroup | Název skupiny prostředků, do které patří server |
-| ResourceProvider | Název poskytovatele prostředků. Vždy `MICROSOFT.DBFORMYSQL` |
-| ResourceType | `Servers` |
-| ResourceId | Identifikátor URI prostředku |
-| Prostředek | Název serveru |
-| Kategorie | `MySqlSlowLogs` |
-| OperationName | `LogEvent` |
-| Logical_server_name_s | Název serveru |
-| start_time_t [UTC] | Čas zahájení dotazu |
-| query_time_s | Celková doba, kterou trvalo provádění dotazu |
-| lock_time_s | Celkový čas, který dotaz byl uzamčen. |
-| user_host_s | Uživatelské jméno |
-| rows_sent_s | Počet řádků, které jsou odeslány |
-| rows_examined_s | Počet řádků, které jsou zkoumány |
-| last_insert_id_s | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
-| insert_id_s | Vložte id |
-| sql_text_s | Celý dotaz |
-| server_id_s | Id serveru |
-| thread_id_s | id vlákna |
-| \_ID prostředku | Identifikátor URI prostředku |
+| `TenantId` | Vaše ID tenanta |
+| `SourceSystem` | `Azure` |
+| `TimeGenerated` [UTC] | Časové razítko, kdy se přihlášení v protokolu ve standardu UTC |
+| `Type` | Typ protokolu. Vždy `AzureDiagnostics` |
+| `SubscriptionId` | Identifikátor GUID pro předplatné, které server patří do |
+| `ResourceGroup` | Název skupiny prostředků, do které patří server |
+| `ResourceProvider` | Název poskytovatele prostředků. Vždy `MICROSOFT.DBFORMYSQL` |
+| `ResourceType` | `Servers` |
+| `ResourceId` | Identifikátor URI prostředku |
+| `Resource` | Název serveru |
+| `Category` | `MySqlSlowLogs` |
+| `OperationName` | `LogEvent` |
+| `Logical_server_name_s` | Název serveru |
+| `start_time_t` [UTC] | Čas zahájení dotazu |
+| `query_time_s` | Celková doba, kterou trvalo provádění dotazu |
+| `lock_time_s` | Celkový čas, který dotaz byl uzamčen. |
+| `user_host_s` | Uživatelské jméno |
+| `rows_sent_s` | Počet řádků, které jsou odeslány |
+| `rows_examined_s` | Počet řádků, které jsou zkoumány |
+| `last_insert_id_s` | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
+| `insert_id_s` | Vložte id |
+| `sql_text_s` | Celý dotaz |
+| `server_id_s` | Id serveru |
+| `thread_id_s` | id vlákna |
+| `\_ResourceId` | Identifikátor URI prostředku |
 
 ## <a name="next-steps"></a>Další kroky
 - [Jak nakonfigurovat a přístup k protokolům server z příkazového řádku Azure](howto-configure-server-logs-in-cli.md).

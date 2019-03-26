@@ -4,45 +4,49 @@ description: Tento článek obsahuje podrobné technické informace o globální
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 03/24/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 86e4441174fa89fc688fa4e411ead0a7b3ebc8ee
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a599be52575ed06cdb3a3713fc2f0915ab2f6c2b
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475376"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407483"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Distribuce globálních dat pomocí služby Azure Cosmos DB - pod pokličkou
 
-Azure Cosmos DB je podkladovou službu Azure, takže je nasazená ve všech oblastech Azure po celém světě, včetně veřejného, suverénních, ministerstva obrany (DoD) a cloudů pro státní správu. V rámci datového centra můžeme nasadit a spravovat služby Azure Cosmos DB na velkém razítka počítačů, každý s vyhrazenou místního úložiště. V rámci datového centra Azure Cosmos DB je nasadit napříč mnoha clusterech je každý potenciálně spuštění více generacemi hardwaru. Počítače v rámci clusteru jsou typicky rozděleny mezi 10-20 domén selhání. Následující obrázek ukazuje topologie systému globální distribuce služby Cosmos DB:
+Azure Cosmos DB je podkladovou službu v Azure, takže je nasazená ve všech oblastech Azure po celém světě, včetně veřejného, suverénních, ministerstva obrany (DoD) a státních cloudů. V rámci datového centra můžeme nasadit a spravovat služby Azure Cosmos DB na velkém razítka počítačů, každý s vyhrazenou místního úložiště. V rámci datového centra Azure Cosmos DB je nasadit napříč mnoha clusterech je každý potenciálně spuštění více generacemi hardwaru. Počítače v rámci clusteru jsou typicky rozděleny mezi 10-20 domén selhání pro zajištění vysoké dostupnosti v rámci oblasti. Následující obrázek ukazuje topologie systému globální distribuce služby Cosmos DB:
 
 ![Topologie systému](./media/global-dist-under-the-hood/distributed-system-topology.png)
 
-**Globální distribuce ve službě Azure Cosmos DB je klíč:** V každém okamžiku jen několika kliknutími nebo programově pomocí jediného volání rozhraní API můžete přidat nebo odebrat zeměpisné oblasti přidružené k jejich databázi Cosmos. Databáze Cosmos zase obsahuje sadu kontejnerů Cosmos. Ve službě Cosmos DB kontejnery slouží jako logické jednotky distribuci a škálovatelnost. Kolekce, tabulky a grafy, které vytvoříte jsou (interní) právě Cosmos kontejnery. Kontejnery jsou zcela nezávislý na schématu a zadejte rozsah dotazu. Data v kontejneru Cosmos automaticky indexuje po ingestování. Automatické indexování umožňuje uživatelům zadávat dotazy na data, aniž byste museli řešit schématu nebo starostí se správou indexu, zejména v globálně distribuované instalaci.  
+**Globální distribuce ve službě Azure Cosmos DB je na klíč:** V každém okamžiku jen několika kliknutími nebo programově pomocí jediného volání rozhraní API můžete přidat nebo odebrat zeměpisné oblasti přidružené k databázi Cosmos. Databáze Cosmos, pak sestává ze sady Cosmos kontejnerů. Ve službě Cosmos DB kontejnery slouží jako logické jednotky distribuci a škálovatelnost. Kolekce, tabulky a grafy, které vytvoříte jsou (interní) právě Cosmos kontejnery. Kontejnery jsou zcela nezávislý na schématu a zadejte rozsah dotazu. Data v kontejneru Cosmos automaticky indexuje po ingestování. Automatické indexování umožňuje uživatelům zadávat dotazy na data bez starostí o schéma nebo správu indexů, zejména v globálně distribuované instalaci.  
 
-- V dané oblasti distribuci dat v rámci kontejneru pomocí oddílu – klíče, které poskytuje a transparentně spravuje základní fyzické oddíly (místní distribuce).  
+- V dané oblasti, distribuci dat v rámci kontejneru pomocí oddílu – klíče, které poskytuje a transparentně spravuje základní fyzické oddíly (*místní distribuční*).  
 
-- Jednotlivé fyzické oddíly se také replikuje napříč zeměpisnými oblastmi (globální distribuce). 
+- Jednotlivé fyzické oddíly se také replikuje napříč zeměpisnými oblastmi (*globální distribuce*). 
 
-Když aplikace pomocí služby Cosmos DB Elasticky škáluje propustnost (nebo využívá další úložiště) v kontejneru Cosmos, Cosmos DB transparentně zpracovává operace správy oddílů (rozdělení, klonování, odstranění) ve všech oblastech. Bez ohledu na škálování, distribuci nebo selhání, Cosmos DB nadále bude poskytovat jeden systémový obraz data v kontejnerech, které jsou globálně distribuované napříč libovolným počtem oblastí.  
+Když aplikace pomocí služby Cosmos DB elastické škálování propustnosti kontejneru Cosmos nebo využívá další úložiště, Cosmos DB transparentně zpracovává operace správy oddílů (rozdělení, klonování, odstranění) ve všech oblastech. Bez ohledu na škálování, distribuci nebo selhání, Cosmos DB nadále bude poskytovat jeden systémový obraz data v kontejnerech, které jsou globálně distribuované napříč libovolným počtem oblastí.  
 
-Jak je znázorněno na následujícím obrázku, data v rámci kontejneru se distribuují podél dvou dimenzí:  
+Jak je znázorněno na následujícím obrázku, data v rámci kontejneru se distribuují podél dvou dimenzí – v rámci oblasti a oblastmi po celém světě:  
 
 ![Fyzické oddíly](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
 
-Fyzický oddíl se implementuje podle skupiny replik, názvem sady replik. Každý počítač hostuje stovky repliky, které odpovídají různé fyzické oddíly v rámci dlouhodobého procesy, jak je znázorněno na předchozím obrázku. Repliky odpovídající na fyzické oddíly jsou umístěné dynamicky a vyrovnáváno zatížení napříč počítači v rámci clusteru a datových center v rámci oblasti.  
+Fyzický oddíl je implementováno skupina repliky, volá se *sady replik*. Každý počítač hostuje stovky repliky, které odpovídají různé fyzické oddíly v rámci dlouhodobého procesy, jak je znázorněno na obrázku výše. Repliky odpovídající na fyzické oddíly jsou umístěné dynamicky a vyrovnáváno zatížení napříč počítači v rámci clusteru a datových center v rámci oblasti.  
 
-Replika jednoznačně patří do tenanta služby Azure Cosmos DB. Každá replika je hostitelem instance služby Cosmos DB [databázový stroj](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), která spravuje prostředky, jakož i přidružené indexy. Databázový stroj Cosmos DB funguje v systému typu atom sekvence záznamů (ARS). Modul je závislá na konceptu schéma a rozmazání hranici mezi strukturu a instance hodnoty záznamů. Cosmos DB dosahuje úplného schématu agnosticism automaticky automatického indexování veškerých při ingestování efektivním způsobem, který umožňuje dotazování jejich globálně distribuovaných dat bez nutnosti schéma nebo správu indexů.
+Replika jednoznačně patří do tenanta služby Azure Cosmos DB. Každá replika je hostitelem instance služby Cosmos DB [databázový stroj](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), která spravuje prostředky, jakož i přidružené indexy. Databázový stroj Cosmos DB funguje v systému typu atom sekvence záznamů (ARS). Modul je závislá na konceptu schématu, rozostření hranici mezi strukturu a instance hodnoty záznamů. Cosmos DB dosahuje úplného schématu agnosticism automaticky automatického indexování veškerých při ingestování efektivním způsobem, který umožňuje dotazování jejich globálně distribuovaných dat bez nutnosti schéma nebo správu indexů.
 
-Databázový stroj Cosmos DB se skládá z komponent včetně provádění několika koordinaci primitiv, jazykové moduly runtime, procesor dotazů a úložiště a indexování subsystémy za transakcí úložiště a indexování dat v uvedeném pořadí. Zajištění vysoké dostupnosti a odolnosti databázový stroj udržuje jeho dat a indexu na jednotkách SSD a replikuje mezi různými instancemi databáze modul v rámci repliku-deklaračních v uvedeném pořadí. Větší tenantů odpovídají škálování ve větším měřítku propustnost a úložiště a větší nebo větší počet replik nebo obojí. Všechny komponenty systému je plně asynchronní – někdy blokuje žádné vlákno a každé vlákno funguje krátkodobou bez dalších nákladů na všechny nepotřebné vlákno přepínače. Omezení četnosti a protitlak jsou zapojena napříč celým spektrem, od řízení přístupu na všech vstupně-výstupní cesty. Naše databázový stroj je určen využívat jemně odstupňovaná souběžnosti a k zajištění vysoké propustnosti při práci v rámci frugal objemy systémových prostředků.
+Databázový stroj Cosmos se skládá z komponent včetně provádění několika koordinaci primitiv, jazykové moduly runtime, procesor dotazů a úložiště a indexování subsystémy za transakcí úložiště a indexování dat v uvedeném pořadí. Zajištění vysoké dostupnosti a odolnosti databázový stroj udržuje jeho dat a indexu na jednotkách SSD a replikuje mezi různými instancemi databáze modul v rámci repliku-deklaračních v uvedeném pořadí. Větší tenantů odpovídají škálování propustnosti a úložiště ve větším měřítku a mít větší nebo více replikami, nebo obojí. Všechny komponenty systému je plně asynchronní – někdy blokuje žádné vlákno a každé vlákno funguje krátkodobou bez dalších nákladů na všechny nepotřebné vlákno přepínače. Omezení četnosti a protitlak jsou zapojena napříč celým spektrem, od řízení přístupu na všech vstupně-výstupní cesty. Databázový stroj cosmos je určen využívat jemně odstupňovaná souběžnosti a k zajištění vysoké propustnosti při práci v rámci frugal objemy systémových prostředků.
 
-Globální distribuce cosmos DB spoléhá na dva klíče abstrakce – sady replik a sady oddílů. Sady replik je modulární Lego blok pro koordinaci a sadě oddílů je dynamické překrytí jeden nebo více geograficky distribuované fyzické oddíly. Chcete-li pochopit, jak globální distribuce díla, Nejdřív musíte seznámit tyto dva klíče abstrakce. 
+Globální distribuce cosmos DB spoléhá na dva klíče abstrakce – *sady replik* a *sad oddílů*. Sady replik je modulární Lego blok pro koordinaci a sadě oddílů je dynamické překrytí jeden nebo více geograficky distribuované fyzické oddíly. Chcete-li pochopit, jak globální distribuce díla, Nejdřív musíte seznámit tyto dva klíče abstrakce. 
 
 ## <a name="replica-sets"></a>Sady replik
 
-Fyzický oddíl je vyhodnocena jako skupinu samoobslužně spravovaným a dynamicky s vyrovnáváním zatížení rozdělené mezi více domén selhání, názvem sady replik replik. Tato sada souhrnně implementuje protokol počítače replikované stavu tak, aby data v rámci oddílu fyzického vysoce dostupné, odolné a konzistentní vzhledem k aplikacím. Je dynamické členství sady replik N – udržuje kolísá mezi Nminimum a Nmaximum na základě chyby, úkoly správy a čas pro neúspěšné repliky a obnovení/obnovení. Replikace podle změn členství, protokolu také změní konfiguraci velikost čtení a zápis kvor. Propustnost, které je přiřazen k dané fyzickému oddílu rovnoměrně distribuovat, použijeme dvě myšlenky: nejprve je vyšší než náklady na použití aktualizací na následovník náklady na zpracování požadavky na zápis na vedoucí instancí. Odpovídajícím způsobem, je vedoucí instancí rozpočtu více systémových prostředků, než sledujícími. Za druhé Pokud je to možné, je čtení kvora pro úrovně konzistence dané složen výhradně z následný repliky. Můžeme vyhnout kontaktování vedoucí pro poskytování čtení, pokud to není vyžadováno. Využíváme celou řadou nápady z research na vztah [zatížení a kapacitu](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) v systémech kvora pro pět konzistence modely, které podporuje Cosmos DB.  
+Fyzický oddíl je vyhodnocena jako skupinu samoobslužně spravovaným a dynamicky s vyrovnáváním zatížení rozdělené mezi více domén selhání, názvem sady replik replik. Tato sada souhrnně implementuje protokol počítače replikované stavu tak, aby data v rámci oddílu fyzického vysoce dostupné, odolné a konzistentní vzhledem k aplikacím. Členství sady replik *N* je dynamický – udržuje kolísá mezi *Nminimum* a *Nmaximum* založené na chyby, úkoly správy a čas se nezdařilo repliky pro obnovení/obnovení. Replikace podle změn členství, protokolu také změní konfiguraci velikost čtení a zápis kvor. Propustnost, které je přiřazen k dané fyzickému oddílu rovnoměrně distribuovat, použijeme dvě myšlenky: 
+
+- Nejprve je vyšší než náklady na použití aktualizací na následovník náklady na zpracování požadavky na zápis na vedoucí instancí. Odpovídajícím způsobem, je vedoucí instancí rozpočtu více systémových prostředků, než sledujícími. 
+
+- Za druhé Pokud je to možné, je čtení kvora pro úrovně konzistence dané složen výhradně z následný repliky. Můžeme vyhnout kontaktování vedoucí pro poskytování čtení, pokud to není vyžadováno. Využíváme celou řadou nápady z research na vztah [zatížení a kapacitu](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) v systémech kvora pro [pět modelů konzistence](consistency-levels.md) podporující Cosmos DB.  
 
 ## <a name="partition-sets"></a>Sad oddílů
 

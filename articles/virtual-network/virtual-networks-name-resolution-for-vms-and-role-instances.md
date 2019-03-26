@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 3/25/2019
 ms.author: subsarma
-ms.openlocfilehash: 9130fef895d4f9cd31f643b20a735c0e821923b8
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: ea15468722fcf1b9e2649236ef4dd05549d8f460
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193989"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418733"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
 
@@ -74,6 +74,7 @@ Body ke zvážení při používání Azure překlad:
 * Názvy hostitelů musí být kompatibilní s DNS. Názvy musí používat pouze 0-9, a – z, a "-" a nesmí začínat ani končit '-'.
 * Pro každý virtuální počítač je omezen provoz dotazu DNS. Omezení využití sítě by neměla mít vliv na většinu aplikací. Pokud se vyskytuje omezování žádostí, ujistěte se, že je povoleno ukládání do mezipaměti na straně klienta. Další informace najdete v tématu [konfigurace klienta DNS](#dns-client-configuration).
 * Pouze virtuální počítače v prvních 180 cloudové služby jsou registrovány pro každou virtuální síť v modelu nasazení classic. Toto omezení se nevztahuje k virtuálním sítím v Azure Resource Manageru.
+* Azure DNS IP adresa je 168.63.129.16. Jedná se statickou IP adresu, se nezmění.
 
 ## <a name="dns-client-configuration"></a>Konfigurace klienta DNS
 

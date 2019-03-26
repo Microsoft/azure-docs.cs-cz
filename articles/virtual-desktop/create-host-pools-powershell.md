@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 7b9b7ffbb034a7fb1256d9cc44048cfa55b02245
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: bd46e5f7428bab58508521b2c7d4d7cca25d689b
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402724"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439069"
 ---
-# <a name="create-a-host-pool-with-powershell"></a>Vytvoření hostitele fondu pomocí Powershellu
+# <a name="create-a-host-pool-with-powershell"></a>Vytvoření fondu hostitelů pomocí PowerShellu
 
 Hostitel fondy jsou kolekce jednoho nebo víc stejných virtuálních počítačů v prostředí klienta Windows virtuální plochy, ve verzi Preview. Každý hostitel fond může obsahovat skupinu aplikací, které mohou uživatelé komunikovat s stejně jako ve fyzických stolním počítači.
 
@@ -54,7 +54,7 @@ Add-RdsAppGroupUser -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGr
 
 **Přidat RdsAppGroupUser** rutina nepodporuje přidávání skupin zabezpečení a přidá pouze jeden uživatel v čase do skupiny aplikací. Pokud chcete přidat více uživatelů na skupinu aplikací, spusťte rutinu s hlavních názvů uživatelů odpovídající znovu.
 
-Spuštěním následující rutiny můžete exportovat registrační token na proměnnou, kterou použijete později v [registraci virtuálních počítačů do hostitelů fondu virtuální plochy Windows](#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool).
+Spuštěním následující rutiny můžete exportovat registrační token na proměnnou, kterou použijete později v [registraci virtuálních počítačů do hostitelů fondu virtuální plochy Windows](#register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool).
 
 ```powershell
 $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname>).Token

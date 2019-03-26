@@ -3,7 +3,7 @@ title: Řešení potíží s chybami v Azure Active Directory API pro vytvářen
 description: Poskytuje řešení pro chyby při volání Azure Active Directory Reporting API.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 0030c5a4-16f0-46f4-ad30-782e7fea7e40
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41d085b8043470ea16b4c2493760e4dc5875fe15
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8b517204fb650020bdebf8172186f30fff58f722
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176437"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438542"
 ---
 # <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>Řešení potíží s chybami v Azure Active Directory API pro vytváření sestav
 

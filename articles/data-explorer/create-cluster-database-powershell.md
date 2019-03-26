@@ -7,13 +7,13 @@ ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/17/2019
-ms.openlocfilehash: 650bdc5cdf99645bc2be6c8e85737dacd10a6b27
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/25/2019
+ms.openlocfilehash: ec012f85c4b4e93e9be475781e9da79f686cbf9e
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287506"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417713"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Vytvoření clusteru Průzkumník dat Azure a databáze pomocí prostředí PowerShell
 
@@ -25,20 +25,21 @@ ms.locfileid: "58287506"
 > * [Python](create-cluster-database-python.md)
 >  
 
-
-Tento rychlý start popisuje způsob vytvoření clusteru Průzkumník dat Azure a databáze pomocí prostředí PowerShell.
-
-Spuštěním rutin a skriptů Powershellu na Windows, Linux, nebo v [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) vytvořit a nakonfigurovat [Průzkumník dat Azure](https://docs.microsoft.com/azure/kusto/ ).
-
-The [**Az.Kusto**](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto ). Pomocí Azure Powershellu a **Az.Kusto**, můžete provádět následující úlohy:
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto rychlém startu vytvoříte cluster a databáze pomocí prostředí Powershell. Spuštěním rutin a skriptů Powershellu na Windows, Linux, nebo v [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) spolu s [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto) vytvoření a konfigurace clusterů Průzkumníka služby Azure Data a databáze.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu potřebujete předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, tento rychlý start vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Spuštěním příkazu `az --version` zkontrolujte svou verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="configure-parameters"></a>Konfigurovat parametry
 
-Následující kroky nejsou nutné, pokud spouštíte příkazy ve službě Azure Cloud Shell. Pokud používáte rozhraní příkazového řádku místně, postupujte podle těchto kroků pro přihlášení do Azure a nastavit aktuální předplatné:
+Následující kroky nejsou nutné, pokud spouštíte příkazy ve službě Azure Cloud Shell. Pokud používáte rozhraní příkazového řádku místně, postupujte podle kroků 1 a 2 pro přihlášení do Azure a nastavit aktuální předplatné:
 
 1. Spuštěním následujícího příkazu se přihlaste k Azure:
 
@@ -46,12 +47,12 @@ Následující kroky nejsou nutné, pokud spouštíte příkazy ve službě Azur
     Connect-AzAccount
     ```
 
-2. Nastavte předplatné, ve kterém chcete vašeho clusteru, který se má vytvořit.
+2. Nastavte předplatné, ve kterém chcete vytvoření clusteru:
 
     ```azurepowershell-interactive
      Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
-3. Instalace modulu Az.Kusto na vašem zařízení:
+3. Při spuštění rozhraní příkazového řádku Azure, místně nebo ve službě Azure Cloud Shell, musíte nainstalovat modul Az.Kusto na vašem zařízení:
     
     ```azurepowershell-interactive
      Install-Module -Name Az.Kusto  
@@ -116,7 +117,5 @@ Teď máte cluster a databázi.
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete najít další příkazy Az.Kusto [ **zde**](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto )
-
-> [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Příjem dat s využitím dat Explorer .NET Standard SDK služby Azure (Preview)](net-standard-ingest-data.md)
+* [Další příkazy Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto)
+* [Rychlé zprovoznění: Příjem dat s využitím dat Explorer .NET Standard SDK služby Azure (Preview)](net-standard-ingest-data.md)

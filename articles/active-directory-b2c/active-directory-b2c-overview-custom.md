@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 03/20/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 92bd57822226e683f17582bb1534b84961f61032
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7921454cc9269278db58fcc50bc63ca49b41b1e0
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187160"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417929"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Vlastní zásady v Azure Active Directory B2C
 
@@ -29,10 +29,10 @@ Vlastní zásady jsou konfigurační soubory, které definují chování vašeho
 |-|-------------------|-----------------|
 | Cílových uživatelů | S nebo bez znalosti identity všechny vývojáře aplikací. | Profesionály pracující identitami, systémovým integrátorům, konzultantům a interních identity týmy. Jsou zvyklí OpenIDConnect toky a pochopit poskytovatelů identit a ověřování nezaloženého na deklaracích. |
 | Metodě konfigurace | Azure portal s přívětivější uživatelské rozhraní (UI). | Přímá úprava souborů XML a potom nahrajete na webu Azure portal. |
-| Přizpůsobení uživatelského rozhraní | Úplné přizpůsobení uživatelského rozhraní, včetně HTML a CSS.<br><br>Podporu více jazyků pomocí vlastního řetězce. | Stejné |
+| Přizpůsobení uživatelského rozhraní | Úplné přizpůsobení uživatelského rozhraní, včetně HTML, CSS a JavaScriptu.<br><br>Podporu více jazyků pomocí vlastního řetězce. | Stejné |
 | Vlastní nastavení atributu | Standardní a vlastní atributy. | Stejné |
 | Token a relace správy | Vlastní token a více možností relace. | Stejné |
-| Zprostředkovatelé identit | Předdefinované místní nebo sociálních sítí poskytovatele. | Založené na standardech OIDC, protokolu OAUTH a SAML. |
+| Zprostředkovatelé identit | Předdefinovaný poskytovatel místní nebo sociální a většina identity zprostředkovatelů OIDC, jako je například federace se službou Azure Active Directory, tenantů. | Založené na standardech OIDC, protokolu OAUTH a SAML.  Ověřování je také možné pomocí integrace rozhraní REST API. |
 | Identita úlohy | Registrace nebo přihlášení pomocí místních nebo mnoho účtů na sociálních sítích.<br><br>Samoobslužné resetování hesla.<br><br>Upravit profil.<br><br>Ověřování službou Multi-Factor Authentication.<br><br>Přizpůsobení tokenů a relací.<br><br>Toky tokenu přístupu. | Dokončení úloh toky uživatelů pro používání vlastních poskytovatelů identit nebo použijte vlastní obory.<br><br>Poskytnutí uživatelského účtu v jiném systému v době registrace.<br><br>Odeslání Uvítacího e-mailu pomocí vlastního poskytovatele e-mailové služby.<br><br>Použití úložiště uživatele mimo Azure AD B2C.<br><br>Ověření uživatele pomocí rozhraní API poskytuje informace o důvěryhodných systémem. |
 
 ## <a name="policy-files"></a>Zásady souborů

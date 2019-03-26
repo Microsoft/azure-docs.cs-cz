@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/09/2019
+ms.date: 03/24/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f2de9274e1b6c996e75148d1a1f018d73a721bb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3f6ac8a693e09d0efbac080d7effc6ce21c6a094
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443449"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418963"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít pracovat s podmínkami použití.
@@ -190,11 +190,15 @@ Po vytvoření a vynucení podmínek použití se příslušným uživatelům p�
 
 ![Webové přihlášení](./media/active-directory-tou/user-tou.png)
 
+Uživatelé mohou zobrazit podmínky použití a v případě potřeby pomocí tlačítek pro přiblížení a oddálení.
+
+![Zobrazit podmínky pro použití s tlačítky přiblížení](./media/active-directory-tou/zoom-buttons.png)
+
 Následující obrazovka ukazuje, jak podmínky použití vypadají na mobilních zařízeních.
 
 ![Mobilní přihlášení uživatele](./media/active-directory-tou/mobile-tou.png)
 
-Uživatelé pouze musí přijmout podmínky použití jednou a neuvidí podmínky použití znovu na následné přihlášení.
+Uživatelé pouze musí přijmout podmínky použití jednou a neuvidí podmínky použití znovu na následující přihlášení.
 
 ### <a name="how-users-can-review-their-terms-of-use"></a>Jak si uživatelé můžou zobrazit a přečíst své podmínky použití
 Uživatelé si můžou zobrazit a přečíst podmínky použití, které přijali, pomocí následujícího postupu.

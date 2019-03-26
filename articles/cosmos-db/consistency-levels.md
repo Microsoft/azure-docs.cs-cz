@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: b43fe513b15d55ee595acaa6733d96cdb58f4e83
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 836d36cc6f220bb544e0c7723506c624c5f9fc39
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294498"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407296"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Úrovně konzistence ve službě Azure Cosmos DB
 
@@ -31,41 +31,41 @@ Konzistence čtení platí pro jednu operaci čtení s rozsahem v rámci rozsahu
 
 ## <a name="configure-the-default-consistency-level"></a>Konfigurace výchozí úrovně konzistence
 
-Kdykoli můžete nakonfigurovat výchozí úroveň konzistence na vašem účtu Azure Cosmos. Výchozí úroveň konzistence nakonfigurovaný na vašem účtu se vztahuje na všechny databáze Azure Cosmos DB a kontejnery pod tímto účtem. Všechny dotazy vydaný pro kontejner nebo databáze a čtení použít úroveň konzistence zadané ve výchozím nastavení. Další informace najdete v tématu Jak [nakonfigurovat výchozí úroveň konzistence](how-to-manage-consistency.md#configure-the-default-consistency-level).
+Kdykoli můžete nakonfigurovat výchozí úroveň konzistence na vašem účtu Azure Cosmos. Výchozí úroveň konzistence nakonfigurovaný na vašem účtu se vztahuje na všechny databáze Azure Cosmos a kontejnery pod tímto účtem. Všechny dotazy vydaný pro kontejner nebo databáze a čtení použít úroveň konzistence zadané ve výchozím nastavení. Další informace najdete v tématu Jak [nakonfigurovat výchozí úroveň konzistence](how-to-manage-consistency.md#configure-the-default-consistency-level).
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>Záruky související s úrovní konzistence
 
-Komplexní smlouvy SLA k dispozici ve službě Azure Cosmos DB záruku, že splňují 100 procent požadavků na čtení záruce konzistence pro všechny úrovně konzistence, že kterou si zvolíte. Žádost o čtení splňuje konzistence smlouvy SLA, pokud jsou splněny všechny záruky konzistence spojené s úrovní konzistence. Přesné definice úrovní pět konzistence ve službě Azure Cosmos DB s použitím [TLA + specifikačnímu jazyku](https://lamport.azurewebsites.net/tla/tla.html) jsou součástí [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) úložiště GitHub. 
+Komplexní smlouvy SLA k dispozici ve službě Azure Cosmos DB záruku, že splňují 100 procent požadavků na čtení záruce konzistence pro všechny úrovně konzistence, že kterou si zvolíte. Žádost o čtení splňuje konzistence smlouvy SLA, pokud jsou splněny všechny záruky konzistence spojené s úrovní konzistence. Přesné definice úrovní pět konzistence ve službě Azure Cosmos DB pomocí [TLA + specifikačnímu jazyku](https://lamport.azurewebsites.net/tla/tla.html) jsou součástí [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) úložiště GitHub. 
 
 Sémantika úrovně konzistence pět jsou popsány zde:
 
 - **Silná**: Nabízí silnou konzistenci [linearizovatelnosti](https://aphyr.com/posts/313-strong-consistency-models) zaručit. Čtení má zaručeno vrátí nejnovější potvrzené verzi položky. Klient nikdy vidí nepotvrzených nebo částečné zápisu. Přečtěte si nejnovější potvrzené zápisu uživatele je vždycky zaručená.
 
-- **Omezená neaktuálnost**: Čtení má zaručeno případném dalším sdílení dodržovat záruku konzistentní předpony. Může prodleva čtení zápisů maximálně verzemi "K" (které je "aktualizací") položky nebo "t" časovém intervalu. Pokud si zvolíte omezená neaktuálnost, "neaktuálnost" můžete nakonfigurovat dvěma způsoby: 
+- **Omezená neaktuálnost**: Čtení má zaručeno případném dalším sdílení dodržovat záruku konzistentní předpony. Čtení může být bude tak hrozit zápisy maximálně *"K"* verze (například "aktualizace") položky nebo podle *"T"* časový interval. Jinými slovy Pokud si zvolíte omezená neaktuálnost, "neaktuálnost" můžete nakonfigurovat dvěma způsoby: 
 
-  * Počet verzí (kB)
-  * Časový interval (t), podle kterého může prodleva čtení zápisů 
+  * Číslo verze (*K*) položky
+  * Časový interval (*T*) podle který může prodleva čtení zápisů 
 
-  Omezená neaktuálnost nabízí celkový globální pořadí s výjimkou v rámci "neaktuálnost okno." Monotónní čtení záruky existovat v rámci oblasti uvnitř i mimo časový interval pro odolnost. Silná konzistence má stejnou sémantiku jako ty, které nabízí omezená neaktuálnost. Okno neaktuálnost je rovna hodnotě nula. Omezená neaktuálnost se také označuje jako doba zpoždění linearizovatelnosti. Když klient provádí operace čtení v oblasti, která přijímá zápisy, záruky poskytované konzistenci omezená neaktuálnost jsou stejné jako záruk se silnou konzistenci.
+  Omezená neaktuálnost nabízí celkový globální pořadí s výjimkou v rámci "neaktuálnost okno." Monotónní čtení záruky existovat v rámci oblasti uvnitř i mimo časový interval pro odolnost. Silná konzistence má stejnou sémantiku jako ta, které nabízí omezená neaktuálnost. Okno neaktuálnost je rovna hodnotě nula. Omezená neaktuálnost se také označuje jako doba zpoždění linearizovatelnosti. Když klient provádí operace čtení v oblasti, která přijímá zápisy, záruky poskytované konzistenci omezená neaktuálnost jsou stejné jako ty záruky silnou konzistenci.
 
 - **Relace**: Čtení má zaručeno případném dalším sdílení dodržovat konzistentní předpona (za předpokladu, že jeden "zapisovač" relace), monotónní čtení, monotónní zápisy, čtení zápisů a zápis čtení záruky. Konzistence typu relace je vymezen relace klienta.
 
-- **Konzistentní předpona**: Aktualizace, které jsou vráceny obsahují předponou všech aktualizací bez mezer. Konzistentní předpona zaručuje, že čtení nikdy neuvidí zápisy mimo pořadí.
+- **Konzistentní předpona**: Aktualizace, které jsou vráceny obsahují předponou všech aktualizací bez mezer. Úroveň konzistence konzistentní předpona zaručuje, že čtení nikdy neuvidí zápisy mimo pořadí.
 
 - **Konečný výsledek**: Není zaručeno pořadí pro čtení. Chybí dalším zápisům nakonec sloučí replik.
 
 ## <a name="consistency-levels-explained-through-baseball"></a>Úrovně konzistence je vysvětleno pomocí baseballu
 
-Pojďme se na scénář herní baseballu jako příklad. Představte si posloupnost zápisů, které představují skóre z baseballu hru. Skóre inning inning řádku je popsána v [replikovat konzistence dat pomocí baseballu](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) papíru. V této hře hypotetické baseballu aktuálně provádí sedmého inning. Je sedmý – inning stretch. Návštěvníkům jsou za se skóre 2 až 5.
+Pojďme se na scénář herní baseballu jako příklad. Představte si posloupnost zápisů, které představují skóre z baseballu hru. Skóre inning inning řádku je popsána v [replikovat konzistence dat pomocí baseballu](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) papíru. V této hře hypotetické baseballu aktuálně provádí sedmého inning. Je sedmý – inning stretch. Návštěvníkům jsou za se skóre 2 až 5 jak je znázorněno níže:
 
 | | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **Spuštění** |
 | - | - | - | - | - | - | - | - | - | - | - |
 | **Návštěvníci** | 0 | 0 | 1 | 0 | 1 | 0 | 0 |  |  | 2 |
 | **Domovská stránka** | 1 | 0 | 1 | 1 | 0 | 2 |  |  |  | 5 |
 
-Kontejner služby Azure Cosmos DB obsahuje návštěvníci a domácí týmu spustit celkový počet položek. Zatímco probíhá hry, různé čtení záruky může vést k čtení skóre, které se různé klienty. V následující tabulce jsou uvedeny úplnou sadu výsledků, které může být vrácen čtení návštěvníků a domácí skóre, které se s jednotlivými záruky konzistence pět. Skóre návštěvníci je uvedená jako první. Možné návratové hodnoty jsou oddělené čárkami.
+Kontejner služby Azure Cosmos obsahuje spuštění součty pro návštěvníky a domácí týmy. Zatímco probíhá hry, různé čtení záruky může vést k čtení skóre, které se různé klienty. V následující tabulce jsou uvedeny úplnou sadu výsledků, které může být vrácen čtení návštěvníků a domácí skóre, které se s jednotlivými záruky konzistence pět. Skóre návštěvníci je uvedená jako první. Možné návratové hodnoty jsou oddělené čárkami.
 
-| **Úrovně konzistence** | **Skóre** |
+| **Úrovně konzistence** | **Stanoví skóre (návštěvníci, domovská stránka)** |
 | - | - |
 | **Silné** | 2 – 5 |
 | **Omezená neaktuálnost** | Skóre, které jsou maximálně jeden inning zastaralé: 2-3, 2-4, 2-5 |

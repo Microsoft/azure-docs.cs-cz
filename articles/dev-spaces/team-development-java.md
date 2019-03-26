@@ -10,17 +10,17 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
 manager: mmontwil
-ms.openlocfilehash: ab9db26f7de67308f3156988bcb498f1e35613eb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3f7a7b5c9a22ba9cb8746cecde56c0a047521ad0
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57758953"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437628"
 ---
 [!INCLUDE [](../../includes/devspaces-team-development-1.md)]
 
 ### <a name="make-a-code-change"></a>Změně kódu
-Přejděte do okna editoru VS Code s projektem `mywebapi` a upravte kód metody `String index()` například takto:
+Přejděte do okna nástroje VS Code pro `mywebapi` a kód upravit, pokud chcete `String index()` metoda ve `src/main/java/com/ms/sample/mywebapi/Application.java`, například:
 
 ```java
 @RequestMapping(value = "/", produces = "text/plain")

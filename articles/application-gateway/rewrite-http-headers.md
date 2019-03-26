@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: aedd81af8b5821b1f8032faad1896790804df2a0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 846f07051ee65a542b56624fa84a9bdc4ca0f4e6
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119288"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418002"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Přepsání hlavičky protokolu HTTP pomocí služby Application Gateway (public preview)
 
@@ -96,10 +96,12 @@ Tato funkce podporuje přepis adres hlavičky pro následující proměnné na s
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | Vrátí seznam šifer podporovaných klientem          |
 | ciphers_used               | Vrátí řetězec šifry použitý pro navázané připojení SSL |
+| client_ip                  | IP adresa klienta. obzvláště užitečné v situacích, kde chcete přepsat záhlaví X-předané-pro nastavení službou Application Gateway, tak, aby záhlaví obsahuje jenom IP adresy bez informace o portech zákazníkům. |
 | client_port                | port klienta                                                  |
 | client_tcp_rtt             | informace o klientovi připojení TCP. k dispozici v systémech, které podporují možnost soketu TCP_INFO |
 | client_user                | Pokud používáte ověřování pomocí protokolu HTTP, uživatelské jméno zadané pro ověřování |
 | hostitel                       | v tomto pořadí priorit: název hostitele z řádku požadavku nebo název hostitele z pole hlavičky požadavku "Hostitel", nebo odpovídající žádost o název serveru |
+| cookie_*název*              | *název* souboru cookie |
 | http_method                | Metoda použitá k odeslání požadavku adresa URL. Třeba získáte POST atd. |
 | http_status                | Stav relace, třeba: 200, 400, 403 atd.                       |
 | http_version               | žádost o protokol, obvykle "HTTP verze 1.0", "HTTP/1.1" nebo "HTTP/2.0" |
@@ -120,10 +122,6 @@ Tato funkce podporuje přepis adres hlavičky pro následující proměnné na s
 - Podpora přepsání hlavičky protokolu HTTP je podporována pouze na nové SKU [Standard_V2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant). Možnost nebude podporovat staré skladové položky.
 
 - Přepsání hlavičky připojení, Upgrade a hostitel ještě nepodporuje.
-
-- Dvě důležité serverových proměnných, client_ip (IP adresu klientovi provádějícímu žádost) a cookie_*název* ( *název* souborů cookie), se zatím nepodporují. Proměnná serveru client_ip je zvláště užitečné v situacích, kde chcete přepsat nastavení službou Application Gateway, Hlavička x předané – pro tak, aby záhlaví obsahuje IP adresu klienta a ne informace o portu zákazníkům.
-
-  Obě tyto proměnné serveru budou již brzy bude podporován.
 
 - Brzy bude k dispozici možnost podmíněně přepsání hlavičky protokolu http.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze pomocí rozhraní příkazového řádku'
+title: 'Rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze pomocí příkazového řádku Azure'
 description: Zjistěte, jak vytvořit cluster Průzkumník dat Azure a databáze služby pomocí rozhraní příkazového řádku Azure
 services: data-explorer
 author: radennis
@@ -7,15 +7,15 @@ ms.author: radennis
 ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 2/4/2019
-ms.openlocfilehash: ca4ffce1ae966d2bb8fb187c9b04938330969641
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 3/25/2019
+ms.openlocfilehash: 2a77671ca405a69ec87e335004a84acb2e649c2c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286325"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418648"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-the-cli"></a>Vytvoření clusteru Průzkumník dat Azure a databáze pomocí rozhraní příkazového řádku
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Vytvoření clusteru Průzkumník dat Azure a databáze pomocí příkazového řádku Azure
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](create-cluster-database-portal.md)
@@ -23,9 +23,9 @@ ms.locfileid: "58286325"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
+>
 
-Tento rychlý start popisuje vytvoření clusteru Průzkumník dat Azure a databáze pomocí rozhraní příkazového řádku Azure.
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto rychlém startu vytvoříte cluster a databáze pomocí příkazového řádku Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,7 +45,7 @@ Následující kroky nejsou nutné, pokud spouštíte příkazy ve službě Azur
     az login
     ```
 
-2. Nastavte předplatné, ve kterém chcete vašeho clusteru, který se má vytvořit. Nahraďte `MyAzureSub` s názvem předplatné Azure, kterou chcete použít:
+1. Nastavte předplatné, ve kterém chcete vašeho clusteru, který se má vytvořit. Nahraďte `MyAzureSub` s názvem předplatné Azure, kterou chcete použít:
 
     ```azurecli-interactive
     az account set --subscription MyAzureSub
@@ -67,7 +67,7 @@ Následující kroky nejsou nutné, pokud spouštíte příkazy ve službě Azur
 
     Existují další volitelné parametry, které můžete použít, jako je například kapacita clusteru.
 
-2. Spusťte následující příkaz a zkontrolujte, zda byl úspěšně vytvořen cluster:
+1. Spusťte následující příkaz a zkontrolujte, zda byl úspěšně vytvořen cluster:
 
     ```azurecli-interactive
     az kusto cluster show --name azureclitest --resource-group testrg
@@ -91,7 +91,7 @@ Pokud výsledek obsahuje `provisioningState` s `Succeeded` hodnotu, pak clusteru
    | Konfigurace soft-delete období | *3650:00:00:00* | Množství času, které data zůstanou k dispozici pro dotazy. |
    | Horká doby uložení v mezipaměti | *3650:00:00:00* | Množství času, které data zůstanou v mezipaměti. |
 
-2. Spuštěním následujícího příkazu zobrazte databázi, kterou jste vytvořili:
+1. Spuštěním následujícího příkazu zobrazte databázi, kterou jste vytvořili:
 
     ```azurecli-interactive
     az kusto database show --name clidatabase --resource-group testrg --cluster-name azureclitest

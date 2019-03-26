@@ -7,13 +7,13 @@ ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/17/2019
-ms.openlocfilehash: d861eba6ce905ccaf0d08a08cdd9998a199889da
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/25/2019
+ms.openlocfilehash: c2a11422398b3cdb99c9f71accddfcd78237c64c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287504"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417900"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Vytvoření clusteru Průzkumník dat Azure a databáze s použitímC#
 
@@ -25,20 +25,19 @@ ms.locfileid: "58287504"
 > * [Python](create-cluster-database-python.md)
 >  
 
-
-Tento rychlý start popisuje způsob tvorby clusteru Průzkumník dat Azure a databáze služby s použitím C#.
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto rychlém startu vytvoříte cluster a databází pomocí C#.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout a použít **bezplatnou verzi** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
+* Pokud nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout a použít **bezplatné** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
 
-- K dokončení tohoto rychlého startu potřebujete předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="install-c-nuget"></a>Nainstalujte C# nuget
 
-- Budete potřebovat balíček nuget pro Průzkumník dat Azure (Kusto), můžete najít zde Nuget: https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/
-- Budete také potřebovat nuget Microsoft.IdentityModel.Clients.ActiveDirectory pro ověřování https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/
+1. Nainstalujte [balíček nuget Průzkumník dat Azure (Kusto)](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 
+1. Nainstalujte [balíček nuget Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) pro ověřování.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Vytvoření clusteru Průzkumník dat Azure
 
@@ -72,10 +71,10 @@ Tento rychlý start popisuje způsob tvorby clusteru Průzkumník dat Azure a da
    | resourceGroupName | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
 
     Existují další volitelné parametry, které můžete použít, jako je například kapacita clusteru.
-    
-    Nastavení "pověření" vašich přihlašovacích údajů (Další informace najdete v části https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet )
 
-2. Spusťte následující příkaz a zkontrolujte, zda byl úspěšně vytvořen cluster:
+1. Nastavte [svoje přihlašovací údaje](https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet)
+
+1. Spusťte následující příkaz a zkontrolujte, zda byl úspěšně vytvořen cluster:
 
     ```C#-interactive
     KustoManagementClient.Clusters.Get(resourceGroupName, clusterName);

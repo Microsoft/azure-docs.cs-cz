@@ -1,19 +1,19 @@
 ---
-title: Instalace služby Mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure | Dokumentace Microsoftu
-description: Zjistěte, jak nainstalovat agenta služby Mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí služby Azure Site Recovery.
+title: Příprava zdrojové počítače nainstalovat službu Mobility pomocí nabízené instalace pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure | Dokumentace Microsoftu
+description: Informace o přípravě serveru na instalaci agenta Mobility pomocí nabízené instalace pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí služby Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 30b177578464653499cdcde8cacf65defa5548ef
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 628be573d03d42ec62a358071074facfe228852d
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846908"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418665"
 ---
-# <a name="install-the-mobility-service-for-disaster-recovery-of-vmware-vms-and-physical-servers"></a>Instalace služby Mobility pro zotavení po havárii virtuálních počítačů VMware a fyzické servery
+# <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Příprava zdrojového počítače na nabízenou instalaci agenta mobility
 
 Při nastavení zotavení po havárii pro virtuální počítače VMware a fyzických serverů požíváním [Azure Site Recovery](site-recovery-overview.md), můžete nainstalovat [služby Site Recovery Mobility](vmware-physical-mobility-service-overview.md) na každém místních virtuálních počítačů VMware a fyzických serverů.  Služba Mobility zaznamenává datové zápisy na počítači a předává je na procesní server Site Recovery.
 
@@ -24,9 +24,9 @@ Na každém počítači s Windows, kterou chcete chránit, postupujte takto:
 1. Zkontrolujte, zda je síťové připojení mezi počítačem a procesovým serverem. Pokud jste nenastavili samostatný procesový server, pak ve výchozím nastavení běží na konfiguračním serveru.
 1. Vytvořte účet, pomocí kterého bude procesový server moct přistupovat k počítači. Účet by měl mít oprávnění správce, místní nebo doménový. Pouze pro nabízenou instalaci a aktualizací agenta, použijte tento účet.
 2. Pokud nepoužíváte doménový účet, zakažte vzdálené řízení přístupu uživatele v místním počítači následujícím způsobem:
-    - V klíči registru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System přidáte novou hodnotu DWORD: **LocalAccountTokenFilterPolicy**. Nastavte hodnotu na **1**.
+    - V klíči registru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System přidejte novou hodnotu DWORD: **LocalAccountTokenFilterPolicy**. Nastavte hodnotu na **1**.
     -  Chcete-li to provést z příkazového řádku, spusťte následující příkaz:  
-   "REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d
+   `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d
 3. V bráně Windows Firewall na počítači, který chcete chránit, vyberte **povolit aplikaci nebo funkci průchod bránou Firewall**. Povolit **sdílení souborů a tiskáren** a **Windows Management Instrumentation (WMI)**. Pro počítače, které patří do nějaké domény můžete nakonfigurovat nastavení brány firewall pomocí objektu zásad skupiny (GPO).
 
    ![Nastavení brány firewall](./media/vmware-azure-install-mobility-service/mobility1.png)
@@ -59,6 +59,10 @@ Na každém počítači s Linuxem, který chcete chránit postupujte takto:
 11. Na **spravovat účty** kartu, vyberte možnost **přidat účet**.
 12. Přidejte účet, který jste vytvořili.
 13. Zadejte přihlašovací údaje, které používáte při povolení replikace počítače.
+
+## <a name="anti-virus-on-replicated-machines"></a>Antivirový program replikované počítače
+
+Pokud chcete replikovat počítače aktivní antivirový software spuštěný, ujistěte se, vyloučit složky instalace služby Mobility z operace antivirový program (*C:\ProgramData\ASR\agent*). Tím se zajistí, že replikace pracuje podle očekávání.
 
 ## <a name="next-steps"></a>Další postup
 

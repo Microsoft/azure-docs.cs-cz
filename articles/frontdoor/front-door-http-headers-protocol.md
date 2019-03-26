@@ -1,5 +1,5 @@
 ---
-title: Služba Azure branou – podpora hlavičky protokolu HTTP | Dokumentace Microsoftu
+title: Služba Azure branou – hlavičky protokolu HTTP podporují | Dokumentace Microsoftu
 description: Tento článek vám pomůže pochopit podporovaných protokolů záhlaví HTTP pomocí přední dveře
 services: frontdoor
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: b34ab417ab1d9ef77c3141d5aa130c338fb89188
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 40bfdfc3837da12f62864433508482a65def291c
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726324"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407313"
 ---
-# <a name="azure-front-door-service---http-headers-protocol-support"></a>Služba Azure branou – podpora hlavičky protokolu HTTP
+# <a name="azure-front-door-service---http-headers-support"></a>Služba Azure branou – podpora hlavičky protokolu HTTP
 Tento dokument popisuje, jak protokol, který branou služby Azure podporuje s různými částmi volání cesty, jak je uvedeno v následujícím obrázku. Následující části poskytují lepší přehled o hlavičky protokolu HTTP, který podporuje branou.
 
 ![Azure hlavičky protokolu HTTP služby branou][1]
@@ -36,10 +36,10 @@ Přední dveře bude obsahovat záhlaví z příchozího požadavku, pokud byly 
 
 | Hlavička  | Příklad a popis |
 | ------------- | ------------- |
-| Přes |  *Prostřednictvím: 1.1 azure* </br> Přední dveře přidá verze klienta protokolu HTTP, za nímž následuje "Azure" jako hodnota pro průchozí záhlaví. To je přidán k označení verze klienta protokolu HTTP a dveří Front Azure se zprostředkující příjemce pro žádost mezi klientem a back-endu.  |
+| Přes |  *Prostřednictvím: 1.1 azure* </br> Přední dveře přidá verze klienta protokolu HTTP, za nímž následuje "Azure" jako hodnota pro průchozí záhlaví. Je přidán k označení verze klienta protokolu HTTP a dveří Front Azure se zprostředkující příjemce pro žádost mezi klientem a back-endu.  |
 | X-Azure-ClientIP | *X-Azure-ClientIP: 127.0.0.1* </br> Představuje "client" IP adresa přidružená k požadavek zpracovávaný. Požadavek pocházející z proxy serveru může například přidat hlavičku X-předané-pro určení IP adresy volajícího původní. |
-| X-Azure-SocketIP |  *X-Azure-SocketIP: 127.0.0.1* </br> Představuje adresu IP soketu spojenou s připojením TCP, pochází z aktuálního požadavku. Požadavku IP adresa klienta nemusí být rovna Socket IP adresu, protože to může být libovolně přepsána koncový uživatel.|
-| X-Azure-Ref |  *X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Toto je odkaz na jedinečný řetězec, který identifikuje požadavek obsluhuje branou. Je velmi důležité pro řešení potíží, protože se používá pro přístup k protokolům vyhledávání.|
+| X-Azure-SocketIP | *X-Azure-SocketIP: 127.0.0.1* </br> Představuje adresu IP soketu spojenou s připojením TCP, pochází z aktuálního požadavku. Klient IP adresu požadavku nemusí být rovna Socket IP adresu, protože to může být libovolně přepsána koncový uživatel.|
+| X-Azure-Ref | *X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Toto je odkaz na jedinečný řetězec, který identifikuje požadavek obsluhuje branou. Je velmi důležité pro řešení potíží, protože se používá pro přístup k protokolům vyhledávání.|
 | X-Azure-RequestChain |  *X-Azure-RequestChain: hops=1* </br> Toto je hlavičku, která branou využívá ke zjištění smyčky žádosti a uživatelé neměla by mít závislost na něm. |
 | X-Forwarded-For | *X-předané pro: 127.0.0.1* </br> Pole hlavičky X-Forwarded-For (XFF) protokolu HTTP se o běžnou metodu pro určení zdrojovou IP adresu klienta připojení k webovým serverem prostřednictvím HTTP proxy server nebo službu Vyrovnávání zatížení. Pokud došlo stávajícího XFF záhlaví, pak branou připojí socket IP adresu klienta do jinde přidá hlavičku XFF socket IP adresu klienta. |
 | X-Forwarded-Host | *X-Forwarded-Host: contoso.azurefd.net* </br> Pole hlavičky HTTP X předané hostiteli se o běžnou metodu pro určení původního hostitele vyžádaného klientem v hlavičce žádosti HTTP na hostitele, protože název hostitele z branou se může lišit pro back-end serveru, který zpracovává požadavek. |

@@ -4,14 +4,14 @@ description: Seznam typů prostředků Azure, které lze přesunout do nové sku
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 2/13/2019
+ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: f82c3adc0049c7386206fb4be10d3e634627a25a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d44b1bf778c7ec9551e2fd30f67083f8dded22d1
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236885"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438464"
 ---
 # <a name="move-operation-support-for-resources"></a>Přesunout operace podporu pro prostředky
 Tento článek uvádí, zda typ prostředku Azure podporuje operace přesunu. I když typ prostředku podporuje operace přesunutí, může být podmínky, které brání přesunutí prostředku. Podrobnosti o podmínkách, které mají vliv operací přesunu najdete v tématu [přesunutí prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
@@ -241,7 +241,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftdataexchange"></a>Microsoft.DataExchange
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
-| Balíčky | Ne | Ne |
+| balíčky | Ne | Ne |
 | Plány | Ne | Ne |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
@@ -422,7 +422,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
-| labaccounts | Ano | Ano |
+| labaccounts | Ne | Ne |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -533,7 +533,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | expressroutecrossconnections | Ne | Ne |
 | expressroutegateways | Ne | Ne |
 | expressrouteports | Ne | Ne |
-| frontdoors | Ano | Ano |
+| frontdoory | Ano | Ano |
 | frontdoorwebapplicationfirewallpolicies | Ano | Ano |
 | interfaceendpoints | Ne | Ne |
 | loadbalancers | Ano | Ano |
@@ -752,7 +752,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
 | providerregistrations | Ne | Ne |
-| zdroje | Ne | Ne |
+| prostředky | Ne | Ne |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Typ prostředku | Skupina prostředků | Předplatné |

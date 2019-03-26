@@ -1,5 +1,5 @@
 ---
-title: Dynamics CRM | Dokumentace Microsoftu
+title: Dynamics CRM | Microsoft Docs
 description: Konfigurace správy zájemce Dynamics CRM.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8c432146d33db992a0ae612dfc56ace9460ade17
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a1398d172a5c578ec3c0f16627eadd1da3fd1e45
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870855"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437607"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Konfigurace Správa potenciálních zákazníků pro Dynamics CRM online
 
@@ -63,6 +63,7 @@ Použijte následující postup ke konfiguraci služby Azure Active Directory pr
 1.  Přihlaste se k [webu Azure portal](https://portal.azure.com/) a potom vyberte službu Azure Active Directory.
 
 2.  Vyberte **vlastnosti** a zkopírujte **Id adresáře**. Toto je vaše identifikace účtu tenanta, které potřebujete, použijte v portál partnerů cloudu.
+
     ![Získejte ID adresáře](./media/cloud-partner-portal-lead-management-instructions-dynamics/directoryid.png)
 
 3.  Vyberte **registrace aplikací**a pak vyberte **registrace nové aplikace**.
@@ -77,6 +78,7 @@ Použijte následující postup ke konfiguraci služby Azure Active Directory pr
 11. V nabídce klíče, vyberte **hodnotu klíče si zkopírujte.** Uložte kopii této hodnoty, protože ho budete potřebovat pro portál partnerů cloudu.
     
     ![Získat registrovaný klíč Dynamics](./media/cloud-partner-portal-lead-management-instructions-dynamics/registerkeys.png)
+    
 12. Vyberte **požadovaná oprávnění** a pak vyberte **přidat**. 
 13. Vyberte **Dynamics CRM Online** jako nové rozhraní API a zaškrtněte políčko pro oprávnění *přístup CRM Online jako uživatelé organizace*.
 
@@ -84,24 +86,27 @@ Použijte následující postup ke konfiguraci služby Azure Active Directory pr
     
     ![Uživatelé aplikace](./media/cloud-partner-portal-lead-management-instructions-dynamics/applicationuserfirst.PNG)
 
-15. Vyberte **nový** k vytvoření nového uživatele. Vyberte **uživatelů: uživatel aplikace** rozevíracího seznamu.
+15. Vyberte **nový** k vytvoření nového uživatele. Vyberte **uživatele: UŽIVATEL aplikace** rozevíracího seznamu.
     
     ![Přidání nového uživatele aplikace](./media/cloud-partner-portal-lead-management-instructions-dynamics/applicationuser.PNG)
 
 16. V **nového uživatele**, zadejte název a e-mailu, kterou chcete použít k tomuto připojení. Vložte **Id aplikace** pro aplikace, které jste vytvořili na webu Azure Portal.
+
      ![Konfigurace nového uživatele](./media/cloud-partner-portal-lead-management-instructions-dynamics/leadgencreateuser.PNG)
 
 17. Přejdete na "Nastavení zabezpečení" v tomto článku dokončete konfiguraci připojení pro tohoto uživatele.
 
 ### <a name="office-365"></a>Office 365
 
-Pokud už nechcete používat Azure Active Directory, můžete se zaregistrovat nového uživatele na portálu pro správu Office 365. Bude třeba k aktualizaci vašeho uživatelského jména a hesla každých 90 dnech pokračovat v uplatňování potenciálních zákazníků.
+Pokud už nechcete používat Azure Active Directory, můžete zaregistrovat nový uživatel na *centra pro správu služeb Microsoft 365*. Bude třeba k aktualizaci vašeho uživatelského jména a hesla každých 90 dnech pokračovat v uplatňování potenciálních zákazníků.
 
 Následujícím postupem nakonfigurujte Office 365 pro Dynamics CRM.
 
-1. Přihlaste se k [portálu pro správu Microsoft Office 365](https://go.microsoft.com/fwlink/?LinkId=225975).
+1. Přihlaste se k [centra pro správu služeb Microsoft 365](https://admin.microsoft.com).
 
-2. Vyberte **správce** dlaždici ![Office Online správce](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline3.png)
+2. Vyberte **správce** dlaždici.
+
+    ![Správce služeb Office Online](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline3.png)
 
 3. Vyberte **přidání uživatele**.
 
@@ -112,6 +117,7 @@ Následujícím postupem nakonfigurujte Office 365 pro Dynamics CRM.
     -   Zadejte heslo a zrušte zaškrtnutí možnosti "Vytvořit tento uživatel heslo změnit při prvním přihlášení".
     -   Vyberte roli pro uživatele "Uživatel (bez přístupových práv správce)".
     -   Vyberte licenci na produkt je znázorněno v následující snímek obrazovky. Bude se účtovat licenci, kterou zvolíte. Řešení budou fungovat i pro Dynamics CRM Online licence Basic.
+    
     ![Konfigurovat uživatelská oprávnění a licence](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline5.png)
 
 ## <a name="security-settings"></a>Nastavení zabezpečení
@@ -124,12 +130,14 @@ Posledním krokem je povolit uživateli, který jste vytvořili pro zápis si po
     ![Nastavení zabezpečení](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline6.png)
 
 3.  Vyberte uživatele, který jste vytvořili v **uživatelská oprávnění**a pak vyberte **spravovat role uživatelů**. Zkontrolujte **zapisovače vést Microsoft Marketplace** přiřazení role.
+
     ![Přiřazení role uživatele](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline7.png)\
 
     >[!NOTE]
     >Tato role se vytvoří řešení, že jste importovali a má pouze oprávnění k zápisu potenciální zákazníky a ke sledování verze řešení pro zajištění kompatibility.
 
 4.  V oblasti zabezpečení, vyberte **role zabezpečení** a najít roli pro zapisovač vést Microsoft Marketplace.
+    
     ![Konfigurace zabezpečení zájemce zapisovače](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline10.jpg)\
 
 5. Vyberte **základní záznamy** kartu. Povolte vytvoření, čtení a zápisu pro entitu uživatele uživatelského rozhraní.
@@ -140,5 +148,5 @@ Posledním krokem je povolit uživateli, který jste vytvořili pro zápis si po
 
 Dokončení konfigurace Dynamics CRM pro zájemce management tak, že přidáte informace generované účtu na portál Cloud Partner. Příklad:
 
--   **Azure Active Directory** - **Id aplikace** (Příklad: *23456052-aaaa-bbbb-8662-1234df56788f*), **Id adresáře** (Příklad: *12345678-8af1-4asf-1234-12234d01db47*), a **klíč aplikace** (Příklad: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc =*).
+-   **Azure Active Directory** - **Id aplikace** (Příklad: *23456052-AAAA-bbbb-8662-1234df56788f*), **Id adresáře** (Příklad: *12345678-8af1-4asf-1234-12234d01db47*), a **klíč aplikace** (Příklad: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=*).
 -   **Office 365** - **Url** (Příklad: *https://contoso.crm4.dynamics.com*), **uživatelské jméno** (Příklad: *contoso\@ contoso.onmicrosoft.com*), a **heslo** (Příklad: *P\@ssw0rd*).
