@@ -9,16 +9,18 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.date: 05/10/2017
 ms.reviewer: sngun
-ms.openlocfilehash: 2712e4d13895a9dbd10f0f0d5053015c6e0a25a8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: bd4e512710130a59461e515792c1d6d216d02621
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034059"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496765"
 ---
 # <a name="regenerate-an-azure-cosmos-db-account-key-using-powershell"></a>Obnovení klíče účtu služby Azure Cosmos DB pomocí PowerShellu
 
 Tato ukázka obnoví jakýkoli druh klíče účtu služby Azure Cosmos DB pomocí Azure CLI.  
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -31,7 +33,7 @@ Tato ukázka obnoví jakýkoli druh klíče účtu služby Azure Cosmos DB pomoc
 Po spuštění ukázkového skriptu můžete pomocí následujícího příkazu odebrat skupinu prostředků a všechny k ní přidružené prostředky.
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
+Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 ```
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
@@ -40,10 +42,10 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [New-AzureRmResource](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresource?view=azurermps-3.8.0) | Vytvoří logický server, který je hostitelem databáze nebo elastického fondu. |
-| [Invoke-AzureRmResourceAction](https://docs.microsoft.com/powershell/module/azurerm.resources/invoke-azurermresourceaction?view=azurermps-3.8.0) | Vyvolá akci pro účet služby Azure Cosmos DB. |
-| [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Vytvoří logický server, který je hostitelem databáze nebo elastického fondu. |
+| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | Vyvolá akci pro účet služby Azure Cosmos DB. |
+| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
 ## <a name="next-steps"></a>Další postup

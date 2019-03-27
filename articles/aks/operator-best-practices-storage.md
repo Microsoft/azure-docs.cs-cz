@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: iainfou
-ms.openlocfilehash: 691decb88188a428edfeab1ea9e99c48876b6d9f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7476747de31819907cf144e5a6b33cb29e1f866f
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109714"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496170"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro ukládání a zálohování ve službě Azure Kubernetes Service (AKS)
 
@@ -91,9 +91,9 @@ Další informace o možnostech třídy úložiště, najdete v části [úloži
 
 ## <a name="secure-and-back-up-your-data"></a>Zabezpečení a zálohovat data
 
-**Osvědčené postupy pro moduly** – zálohujete svá data pomocí vhodného nástroje pro váš typ úložiště, jako je například Heptio Ark nebo Azure Site Recovery. Ověření integrity a zabezpečení, tyto zálohy.
+**Osvědčené postupy pro moduly** – zálohujete svá data pomocí vhodného nástroje pro váš typ úložiště, jako je například Velero nebo Azure Site Recovery. Ověření integrity a zabezpečení, tyto zálohy.
 
-Při ukládání vašich aplikací a využívat data se ukládají na discích nebo v souborech, je potřeba provést pravidelného zálohování nebo snímky tato data. Disky Azure můžete použít předdefinované snímku technologie. Budete muset hook pro vaše aplikace k vyprázdnění zápisy na disk před provedením operace vytvoření snímku. [Heptio Ark] [ heptio-ark] můžete zálohovat trvalé svazky spolu s prostředky další clusteru a konfiguracemi. Pokud to není možné [odebrání stavu z vašich aplikací][remove-state], zálohování dat z trvalého svazky a pravidelně testujeme funkčnost operací obnovení k ověření integrity dat a procesy nezbytné.
+Při ukládání vašich aplikací a využívat data se ukládají na discích nebo v souborech, je potřeba provést pravidelného zálohování nebo snímky tato data. Disky Azure můžete použít předdefinované snímku technologie. Budete muset hook pro vaše aplikace k vyprázdnění zápisy na disk před provedením operace vytvoření snímku. [Velero] [ velero] můžete zálohovat trvalé svazky spolu s prostředky další clusteru a konfiguracemi. Pokud to není možné [odebrání stavu z vašich aplikací][remove-state], zálohování dat z trvalého svazky a pravidelně testujeme funkčnost operací obnovení k ověření integrity dat a procesy nezbytné.
 
 Principy omezení různé přístupy k zálohování dat a pokud je potřeba uvést vaše data před snímku. Zálohování dat není nutně umožnit obnovení prostředí pro vaše aplikace nasazení clusteru. Další informace o těchto scénářích najdete v tématu [osvědčené postupy pro obchodní kontinuity podnikových procesů a zotavení po havárii ve službě AKS][best-practices-multi-region].
 
@@ -102,7 +102,7 @@ Principy omezení různé přístupy k zálohování dat a pokud je potřeba uv�
 Tento článek zaměřuje na úložiště osvědčené postupy ve službě AKS. Další informace o základní informace o úložišti v Kubernetes najdete v tématu [koncepty úložiště pro aplikace ve službě AKS][aks-concepts-storage].
 
 <!-- LINKS - External -->
-[heptio-ark]: https://github.com/heptio/ark
+[velero]: https://github.com/heptio/velero
 [dysk]: https://github.com/Azure/kubernetes-volume-drivers/tree/master/flexvolume/dysk
 [blobfuse]: https://github.com/Azure/azure-storage-fuse
 

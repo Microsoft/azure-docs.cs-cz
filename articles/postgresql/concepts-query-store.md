@@ -5,21 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.openlocfilehash: db62c1ec03ae9005f33a09010486b04ac6976742
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 03/26/2019
+ms.openlocfilehash: c904b6e6cd7a4dc0f9d5a442e20738e43595b369
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005907"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485913"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Sledování výkonu s Query Store
 
 **Platí pro:** Azure Database for PostgreSQL 9.6 a 10
-
-> [!IMPORTANT]
-> Funkce Query Store je ve verzi Public Preview.
-
 
 Funkce Query Store ve službě Azure Database for PostgreSQL poskytuje způsob, jak sledovat výkon dotazu v čase. Store zjednodušuje tím, že vám pomáhá rychle problémů s výkonem dotazů najít dotazy nejdéle probíhající a nejvíce náročné. Query Store automaticky zaznamenává historii dotazů a statistické údaje a uchovávají je po dobu zkontrolovali. Rozděluje data podle časových oken, kde můžete zobrazit způsobů využití databází. Data pro všechny uživatele, databází a dotazů se ukládají v databázi s názvem **azure_sys** ve službě Azure Database for postgresql – instance.
 

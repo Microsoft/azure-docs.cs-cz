@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 7bfda764c418258a7bc555697530214240a5f0d3
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: abeca204296bcb3933013f2b7434b8c558f62e50
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734315"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496583"
 ---
 # <a name="brand-detection"></a>Detekce značky
 
@@ -91,7 +91,8 @@ V některých případech detektor značky vyzvedne, až bude obrázek loga a st
 ```
 
 ## <a name="use-the-api"></a>Použití rozhraní API
-Funkce detekce značky je součástí [analyzovat Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) rozhraní API. Můžete volat toto rozhraní API prostřednictvím nativní sadou SDK nebo volání REST. Když získáte úplnou odpověď JSON, jednoduše analyzovat řetězec pro obsah `"brands"` oddílu.
+
+Funkce detekce značky je součástí [analyzovat Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) rozhraní API. Můžete volat toto rozhraní API prostřednictvím nativní sadou SDK nebo volání REST. Zahrnout `Brands` v **visualFeatures** parametr dotazu. Potom, když dostanete úplnou odpověď JSON, jednoduše analýzu řetězce pro obsah `"brands"` oddílu.
 
 * [Rychlé zprovoznění: Analýza obrázku (sadu .NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 * [Rychlé zprovoznění: Analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)
