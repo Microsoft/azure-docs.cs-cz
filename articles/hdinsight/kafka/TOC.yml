@@ -94,21 +94,6 @@ items:
       - name: Publikování aplikací HDInsight na Azure Marketplace
         href: ../hdinsight-apps-publish-applications.md
         maintainContext: true
-      - name: Instalace publikované aplikace – CDAP (Cask Data Application Platform)
-        href: ../hdinsight-apps-install-cask.md
-        maintainContext: true
-      - name: Instalace publikované aplikace – Dataiku
-        href: ../hdinsight-apps-install-dataiku.md
-        maintainContext: true
-      - name: Instalace publikované aplikace – Datameer
-        href: ../hdinsight-apps-install-datameer.md
-        maintainContext: true
-      - name: Instalace publikované aplikace – H2O
-        href: ../hdinsight-apps-install-h2o.md
-        maintainContext: true
-      - name: Instalace publikované aplikace – Streamsets
-        href: ../hdinsight-apps-install-streamsets.md
-        maintainContext: true
   - name: Zabezpečení
     items:
     - name: Použití SSH s HDInsightem
@@ -283,9 +268,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 1806a0bd5b32b29a9eb349bea7f7b5dff5d0f99e
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 48769b08c69bb5ee397ac61ffba09e3b8a324ca1
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371889"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58442715"
