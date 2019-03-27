@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 10/27/2016
-ms.openlocfilehash: 102d06f6d4a51f7edc1fc269180f8fb3e5b0626c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ff7aa1ab8972b6cbb891a67b1065044b48f1cfa3
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121464"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446224"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Správa životního cyklu aplikací v nástroji Azure Machine Learning Studio
 Azure Machine Learning Studio je nástroj pro vývoj experimenty machine learning, které se mají zprovoznit v cloudové platformy Azure. Je třeba Visual Studio IDE a škálovatelné cloudové služby sloučena do jedné platformy. Standardní postupy Application Lifecycle Management (ALM) ze správy verzí můžete začlenit různých prostředků a na automatické spuštění a nasazení do Azure Machine Learning Studio. Tento článek popisuje některé z možností a přístupů.
@@ -73,7 +73,7 @@ V průběhu času může mít mnoho koncové body vytvořené ve stejném webov�
 Můžete také vytvořit mnoho koncových bodů stejné webové služby a poté opravu různými verzemi soubor iLearner, který na koncový bod k dosažení podobný vliv. [Tento článek](create-models-and-endpoints-with-powershell.md) podrobně vysvětluje, jak provést tuto akci.
 
 ### <a name="new-web-service"></a>Nové webové služby
-Pokud vytvoříte novou službu založené na Azure Resource Manageru, konstrukce koncového bodu již není k dispozici. Místo toho můžete vygenerovat definici (WSD) souborů webové služby, ve formátu JSON z prediktivní experiment s využitím [Export AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) použít rutinu Powershellu nebo pomocí [ *Export AzureRmMlWebservice* ](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice?view=azurermps-6.6.0) rutinu Powershellu ze služby nasazené webové využívající Resource Manager.
+Pokud vytvoříte novou službu založené na Azure Resource Manageru, konstrukce koncového bodu již není k dispozici. Místo toho můžete vygenerovat definici (WSD) souborů webové služby, ve formátu JSON z prediktivní experiment s využitím [Export AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) použít rutinu Powershellu nebo pomocí [ *Export AzureRmMlWebservice* ](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice) rutinu Powershellu ze služby nasazené webové využívající Resource Manager.
 
 Až budete mít exportovaný soubor WSD a verze řídit, můžete taky nasadit WSD jako nové webové služby v plánu jiné webové služby v jiné oblasti Azure. Ujistěte se, že zadáte konfiguraci účtu úložiště správné, jakož i nové ID webové služby plánu. O opravu v různých iLearner soubory, můžete upravit soubor WSD a aktualizovat odkaz na umístění trénovaného modelu a nasadit ho jako nové webové služby.
 

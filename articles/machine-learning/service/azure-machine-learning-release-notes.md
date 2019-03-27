@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b9ab48ea971a5e7f5e9c72f9e729d2fcb5ed37f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: HT
+ms.openlocfilehash: c1c6e0408145ea76ad93b6dc3803fd56a01dc6d4
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437862"
+ms.locfileid: "58444658"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -29,6 +29,23 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 
 + **Nové funkce**
   + *Azureml.core.Run.create_children* metoda umožňuje vytváření s nízkou latencí více podřízených spouští pomocí jediného volání.
+
+### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Sada SDK v1.1.0 pro přípravu dat Azure Machine Learning
+
++ **Rozbíjející změny v**
+  + Koncept balíček Data Prep je zastaralá a už není podporovaná. Namísto uchování více toků v rámci jednoho balíčku, je možné zachovat Dataflows jednotlivě.
+    + Postupy: Průvodce: [Otevírání a ukládání Dataflows poznámkového bloku](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
+
++ **Nové funkce**
+  + Data Prep nyní dokáže rozpoznat sloupce, které odpovídají konkrétní sémantický typ. a odpovídajícím způsobem rozdělení. Zahrnout STypes v tuto chvíli nepodporuje: e-mailová adresa, zeměpisných souřadnic (zeměpisná šířka a zeměpisná délka), adresy IPv4 a IPv6, americké telefonní číslo a PSČ USA.
+    + Postupy: Průvodce: [Sémantické typy poznámkového bloku](https://aka.ms/aml-data-prep-semantic-types-nb)
+  + Příprava dat teď podporuje následující operace ke generování výsledné sloupce ze dvou číselných sloupcích: odečítání, násobení, dělení a modulo.
+  + Můžete volat `verify_has_data()` na toku dat ke kontrole, jestli toku dat vyprodukuje záznamy, pokud se spouští.
+
++ **Opravy chyb a vylepšení**
+  + Nyní můžete zadat počet intervalů pro použití v histogramu číselný sloupec profilů.
+  + `read_pandas_dataframe` Transformace nyní vyžaduje datový rámec mít řetězec - nebo bajt zadané názvy sloupců.
+  + Oprava chyby v `fill_nulls` transformace, kde hodnoty nebyly zadány správně if sloupec nebyl nalezen.
 
 ## <a name="2019-03-11"></a>2019-03-11
 

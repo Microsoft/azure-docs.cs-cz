@@ -16,18 +16,18 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bb9b90ca239ff03f44b76a7ee5754eb7872caa31
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 8d31f04c355b47720a1c9b0334042ba2f6654768
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415897"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448577"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Pokyny k výkonu pro SQL Server ve službě Azure Virtual Machines
 
 ## <a name="overview"></a>Přehled
 
-Tento článek obsahuje pokyny pro optimalizaci výkonu systému SQL Server na virtuálním počítači Microsoft Azure. Při spuštění systému SQL Server ve službě Azure Virtual Machines, doporučujeme dál používat stejný výkon databáze možností, které se vztahují k serveru SQL Server v prostředí serveru v místním ladění. Výkon relační databáze ve veřejném cloudu, ale závisí na mnoha faktorech, jako je například velikost virtuálního počítače a konfigurace datových disků.
+Tento článek obsahuje pokyny pro optimalizaci výkonu systému SQL Server na virtuálním počítači Microsoft Azure. Při spuštění systému SQL Server ve službě Azure Virtual Machines, doporučujeme dál používat stejný výkon databáze možností, které se vztahují k serveru SQL Server v prostředí serveru v místním ladění. Výkon relační databáze ve veřejném cloudu však závisí na řadě faktorů, jako je velikost virtuálního počítače nebo konfigurace datových disků.
 
 [Image SQL serveru na webu Azure Portal zřídit](quickstart-sql-vm-create-portal.md) řídit se doporučenými postupy konfigurace obecné úložiště (Další informace o konfiguraci úložiště, najdete v části [konfiguraci úložiště pro virtuální počítače s SQL serverem](virtual-machines-windows-sql-server-storage-configuration.md)). Po zřízení, jestli nebude lepší uplatňovat další optimalizace popisovaných v tomto článku. Založit vaše volby na vašich úloh a ověření pomocí testování.
 
@@ -135,7 +135,7 @@ Existuje jedna výjimka tohoto doporučení: _pokud využití databáze TempDB j
 
   * Předchozí doporučení se vztahují na premium SSD. Pokud nepoužíváte premium SSD, nepovolujte žádné ukládání do mezipaměti pro všechny datové disky.
 
-  * Další pokyny ke konfiguraci ukládání do mezipaměti na disku naleznete v následujících článcích. Classic (ASM) modelu nasazení najdete tady: [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) a [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx). Pro nasazení Azure Resource Manageru najdete v modelu: [Set-AzOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk?view=azurermps-4.4.1) a [Set-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdatadisk?view=azurermps-4.4.1).
+  * Další pokyny ke konfiguraci ukládání do mezipaměti na disku naleznete v následujících článcích. Classic (ASM) modelu nasazení najdete tady: [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) a [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx). Pro nasazení Azure Resource Manageru najdete v modelu: [Set-AzOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) a [Set-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdatadisk).
 
      > [!WARNING]
      > Zastavte službu systému SQL Server při změně nastavení mezipaměti disků virtuálního počítače Azure, aby možnost všechny poškození databáze.

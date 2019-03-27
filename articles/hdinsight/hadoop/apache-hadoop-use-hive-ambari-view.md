@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: cb68e93553be66d0d0be0edf61e491217bfe4d48
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 92c09e7defe159818b22bc8275d011d05512aa66
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091303"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446580"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive Apache s Apache Hadoop v HDInsight
 
@@ -108,8 +108,6 @@ Chcete-li zobrazit uživatelského rozhraní Tez pro dotaz, vyberte **Tez** kart
 
 > [!IMPORTANT]  
 > Chcete-li vyřešit všechny dotazy se nepoužívá tez. Mnoho dotazů lze vyřešit bez použití Tez. 
-
-Pokud Tez se použil při překladu dotazu, zobrazí se orientovaného Acyklického grafu (DAG). Pokud chcete zobrazit orientovaného acyklického grafu pro dotazy, které jste spustili v minulosti, nebo pokud chcete ladit proces Tez, použijte [Tez zobrazení](../hdinsight-debug-ambari-tez-view.md) místo.
 
 ## <a name="view-job-history"></a>Zobrazení historie úlohy
 

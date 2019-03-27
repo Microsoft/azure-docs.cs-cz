@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 3/26/2019
 ms.author: victorh
-ms.openlocfilehash: 77a391cc661ed33f5888d2b18cb9c5db16498cd6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5ad1339c04444bcb4cc550be26e239e65227d2ce
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553478"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58494652"
 ---
 | Prostředek | Výchozí omezení | Poznámka |
 | --- | --- | --- |
@@ -31,7 +31,7 @@ ms.locfileid: "57553478"
 | Map URL na naslouchací proces |1 | |
 | Mapování maximální pravidel založené na cestě na adresu URL|100||
 | Konfigurace přesměrování |100<sup>1</sup>| |
-| Souběžná připojení pomocí protokolu WebSocket |5 000| |
+| Souběžná připojení pomocí protokolu WebSocket |Střední brány 20 tis.<br> Velké brány 50 tis.| |
 | Maximální délka adresy URL|8 000||
 | Maximální velikost nahrání, Standard |2 GB | |
 | Maximální nahrávání velikost WAF |Střední brány WAF, 100 MB<br>Velké brány WAF, 500 MB| |

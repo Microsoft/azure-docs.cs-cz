@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 8cda538cade4750e03ecb91dfb2c478df730e556
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 20ca4b9d347b9dc01e3b890fcf3758fb2fb135b9
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961291"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486134"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -63,8 +63,8 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Objednání | Ano | Pořadí kroků Orchestrace. | 
-| Type | Ano | Typ kroku Orchestrace. Možné hodnoty: <ul><li>**ClaimsProviderSelection** – označuje, že krok Orchestrace představuje různých zprostředkovatelů deklarací identity k uživateli vybrat jednu.</li><li>**CombinedSignInAndSignUp** – označuje, že krok Orchestrace představuje kombinovanou poskytovatele sociálních sítí registrační stránku pro přihlášení a místní účet.</li><li>**ClaimsExchange** – označuje, že krok Orchestrace výměny deklarací identity se zprostředkovatelem deklarací identity.</li><li>**SendClaims** – označuje, že krok Orchestrace, odešle se u tokenu vydaného službou deklarace identity vystavitele deklarace identity na přijímající straně.</li></ul> | 
+| `Order` | Ano | Pořadí kroků Orchestrace. | 
+| `Type` | Ano | Typ kroku Orchestrace. Možné hodnoty: <ul><li>**ClaimsProviderSelection** – označuje, že krok Orchestrace představuje různých zprostředkovatelů deklarací identity k uživateli vybrat jednu.</li><li>**CombinedSignInAndSignUp** – označuje, že krok Orchestrace představuje kombinovanou poskytovatele sociálních sítí registrační stránku pro přihlášení a místní účet.</li><li>**ClaimsExchange** – označuje, že krok Orchestrace výměny deklarací identity se zprostředkovatelem deklarací identity.</li><li>**SendClaims** – označuje, že krok Orchestrace, odešle se u tokenu vydaného službou deklarace identity vystavitele deklarace identity na přijímající straně.</li></ul> | 
 | ContentDefinitionReferenceId | Ne | Identifikátor [obsahu definice](contentdefinitions.md) přidružené k tento krok Orchestrace. Obvykle identifikátor obsahu definice odkazu je definován v s vlastním potvrzením technický profil. Ale existují případy, když Azure AD B2C potřebuje rychle zobrazit něco bez technického profilu. Existují dva příklady, pokud je typ kroku Orchestrace jednu z následujících akcí: `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp`. Azure AD B2C musí zobrazit výběru zprostředkovatele identity bez nutnosti technický profil. | 
 | CpimIssuerTechnicalProfileReferenceId | Ne | Typ kroku Orchestrace je `SendClaims`. Tato vlastnost definuje technický profil identifikátor zprostředkovatele deklarací identity, který vydá token pro předávající stranu.  Pokud chybí, je vytvořen žádný předávající strany token. |
 
@@ -92,8 +92,8 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Type | Ano | Typ kontroly nebo dotaz k provedení této předběžné podmínky. Hodnota může být **ClaimsExist**, která určuje, že by měl provést akce, pokud zadané deklarace existuje v aktuální sadě deklarací identity uživatele nebo **ClaimEquals**, která určuje, že akce je třeba provést, pokud existuje zadaný deklarace identity a jeho hodnota se rovná se zadanou hodnotou. |
-| ExecuteActionsIf | Ano | Použijte hodnotu true nebo false test se rozhodnout, pokud by provádět akce v předpoklad. | 
+| `Type` | Ano | Typ kontroly nebo dotaz k provedení této předběžné podmínky. Hodnota může být **ClaimsExist**, která určuje, že by měl provést akce, pokud zadané deklarace existuje v aktuální sadě deklarací identity uživatele nebo **ClaimEquals**, která určuje, že akce je třeba provést, pokud existuje zadaný deklarace identity a jeho hodnota se rovná se zadanou hodnotou. |
+| `ExecuteActionsIf` | Ano | Použijte hodnotu true nebo false test se rozhodnout, pokud by provádět akce v předpoklad. | 
 
 **Předběžné podmínky** prvky obsahuje následující prvky:
 

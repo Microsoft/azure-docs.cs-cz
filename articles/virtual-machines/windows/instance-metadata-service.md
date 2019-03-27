@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/15/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 777b3a8d414f0b785d908c37da98e987445ed96d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c54d2aef2d8e748e31bffcecef323c4806d15f60
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317455"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482046"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata service
 
@@ -96,6 +96,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > Všechny instance metadatové dotazy jsou malá a velká písmena.
 
 ### <a name="data-output"></a>Výstup dat
+
 Ve výchozím nastavení, vrátí služba Instance Metadata data ve formátu JSON (`Content-Type: application/json`). Ale různých rozhraní API vrátí data v různých formátech, pokud o to požádá.
 V následující tabulce je odkaz jiné formáty dat, které můžou podporovat rozhraní API.
 
@@ -111,6 +112,9 @@ Pro přístup k formátu odpovědi jiné než výchozí, zadejte požadovaný fo
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
+> [!NOTE]
+> Pro uzly listů `format=json` nebude fungovat. Aby tyto dotazy `format=text` musí být explicitně zadán, pokud je výchozí formát json.
+
 ### <a name="security"></a>Zabezpečení
 
 Služba Instance Metadata koncový bod je přístupný jenom zevnitř spuštěné instance virtuálního počítače na nesměrovatelných adres IP. Kromě toho každá žádost s `X-Forwarded-For` záhlaví zamítá službou.
@@ -123,8 +127,8 @@ Pokud je datový prvek nebyl nalezen nebo chybně vytvořený požadavek, vrát�
 Kód stavu HTTP | Důvod
 ----------------|-------
 200 OK |
-400 – Chybný požadavek | Chybí `Metadata: true` záhlaví
-404 – Nenalezeno | Požadovaný element neexistuje 
+400 – Chybný požadavek | Chybí `Metadata: true` záhlaví nebo chybějící formát při dotazování na uzel typu list
+404 – Nenalezeno | Požadovaný element neexistuje
 405 Metoda není povolena | Pouze `GET` a `POST` jsou podporovány požadavky
 429 příliš mnoho požadavků | Rozhraní API v současné době podporuje maximálně 5 dotazů za sekundu
 Chyba 500 služby     | Zkuste to znovu za nějakou dobu
@@ -503,12 +507,12 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 Azure má různé suverénních cloudech, jako je [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Někdy potřebujete prostředí Azure tak, aby některé rozhodování modulu runtime. Následující příklad ukazuje, jak dosáhnout tohoto chování.
 
 **Požadavek**
-``` bash
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 **Odpověď**
-```
+```bash
 AZUREPUBLICCLOUD
 ```
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: f6a9d688169f0f8fdd6f0be7b664dbe9ebd71941
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: adcfb308bbbc8e3de456c4e7a71c543f988db02a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295228"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497988"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Použití Pythonu uživatelem definované funkce (UDF) s Apache Hivu a Apache Pig v HDInsight
 
@@ -35,7 +35,7 @@ HDInsight také zahrnuje Jython, což je implementace Python napsané v jazyce J
 * Volitelné.  Pokud plánujete použít PowerShell, bude nutné [AZ modulu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) nainstalované.
 
 > [!NOTE]  
-> Účet úložiště používané v tomto článku se službou Azure Storage [zabezpečený přenos](/../storage/common/storage-require-secure-transfer.md) povolena. proto `wasbs` se používá v celém článku.
+> Účet úložiště používané v tomto článku se službou Azure Storage [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md) povolena. proto `wasbs` se používá v celém článku.
 
 ## <a name="storage-configuration"></a>Konfigurace úložiště
 Není vyžadována žádná akce, pokud je účet úložiště používané druhu `Storage (general purpose v1)` nebo `StorageV2 (general purpose v2)`.  Proces v tomto článku vygeneruje výstup do alespoň `/tezstaging`.  Výchozí konfigurace hadoop bude obsahovat `/tezstaging` v `fs.azure.page.blob.dir` konfigurační proměnnou v `core-site.xml` služby `HDFS`.  Způsobí, že tato konfigurace výstup do adresáře se objekty BLOB stránky, které nejsou podporovány pro typ účtu úložiště `BlobStorage`.  Použití `BlobStorage` pro účely tohoto článku, odeberte `/tezstaging` z `fs.azure.page.blob.dir` konfigurační proměnnou.  Konfigurace je přístupný z [uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).  V opačném případě se zobrazí chybová zpráva: `Page blob is not supported for this account type.`

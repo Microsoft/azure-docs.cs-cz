@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d558f0fa5abc421785ff6f9fcc2a6318819e3ebc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ae2384d0ac6773ccd362778d2913cdcaa9cb4d6c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012730"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446709"
 ---
 # <a name="introduction-to-azure-storage"></a>Seznámení se službou Azure Storage
 
@@ -93,23 +93,15 @@ Azure Storage také zahrnuje funkce spravovaných a nespravovaných disků využ
 
 Další informace o typech účtů úložiště najdete v tématu [přehled účtu Azure storage](storage-account-overview.md). 
 
-## <a name="accessing-your-blobs-files-and-queues"></a>Přístup k objektům blob, frontám a souborům
+## <a name="securing-access-to-storage-accounts"></a>Zabezpečení přístupu k účtům úložiště
 
-Každý účet úložiště má dva ověřovací klíče a každý z nich je možné použít pro libovolnou operaci. Dva klíče se používají proto, abyste je mohli příležitostně prohodit pro zvýšení zabezpečení. Je velmi důležité, aby tyto klíče byly zabezpečené, protože jejich vlastnictví spolu s názvem účtu umožňuje neomezený přístup ke všem datům v účtu úložiště.
+Každý požadavek do služby Azure Storage se musí autorizovat. Azure Storage podporuje následující metody ověřování:
 
-V této části se probírají dva způsoby, jak zabezpečit účet úložiště a jeho data. Podrobné informace o zabezpečení vašeho účtu úložiště a vašich dat najdete v [průvodci zabezpečením Azure Storage](storage-security-guide.md).
-
-### <a name="securing-access-to-storage-accounts-using-azure-ad"></a>Zabezpečení přístupu k účtům úložiště pomocí služby Azure AD
-
-Jedním ze způsobů zabezpečení přístupu k datům úložiště je řízení přístupu ke klíčům účtu úložiště. Pomocí řízení přístupu na základě role (RBAC) Resource Manageru můžete přiřazovat role uživatelů, skupinám nebo aplikacím. Tyto role jsou svázané s konkrétní sadou akcí, které jsou povolené nebo zakázané. Použití RBAC pro udělení přístupu k účtu úložiště zajišťuje pro daný účet úložiště jenom operace správy, jako je třeba změna vrstvy přístupu. RBAC se nedá použít pro udělení přístupu k datovým objektům, jako je třeba konkrétní kontejner nebo sdílená složka. Můžete ho ale použít pro udělení přístupu ke klíčům účtu úložiště, které se potom dají využít ke čtení datových objektů.
-
-### <a name="securing-access-using-shared-access-signatures"></a>Zabezpečení přístupu pomocí sdílených přístupových podpisů
-
-K zabezpečení vašich datových objektů můžete využít sdílené přístupové podpisy a uložené zásady přístupu. Sdílený přístupový podpis (SAS) je řetězec obsahující token zabezpečení, který je možné připojit k identifikátoru URI pro určitý prostředek, který umožňuje delegovat přístup ke konkrétním objektům úložiště a zadat omezení, jako je třeba oprávnění a datový/časový rozsah přístupu. Tato funkce má rozsáhlé možnosti. Podrobné informace najdete v tématu [Použití sdílených přístupových podpisů (SAS)](storage-dotnet-shared-access-signature-part-1.md).
-
-### <a name="public-access-to-blobs"></a>Veřejný přístup k objektům blob
-
-Služba objektů blob umožňuje poskytnout veřejný přístup ke kontejneru a jeho objektům blob nebo ke konkrétnímu objektu blob. Když nějaký kontejner nebo objekt blob označíte jako veřejně přístupný, kdokoli si ho může anonymně přečíst bez nutnosti ověření. Příkladem, kdy se to může hodit, je situace, kdy máte web využívající obrázky, video nebo dokumenty ze služby Blob Storage. Další informace najdete v tématu [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](../blobs/storage-manage-access-to-resources.md).
+- **Integrace Azure Active Directory (Azure AD) pro data objektů blob a fronty.** Azure Storage podporuje ověřování a autorizace pomocí přihlašovacích údajů Azure AD pro objekt Blob a fronty služby prostřednictvím řízení přístupu na základě role (RBAC). Autorizace žádosti s Azure AD se doporučuje pro nejvyšší zabezpečení a snadné použití. Další informace najdete v tématu [ověřit přístup k Azure, objekty BLOB a fronty pomocí Azure Active Directory](storage-auth-aad.md).
+- **Azure AD autorizace přes protokol SMB pro soubory Azure (preview).** Služba soubory Azure podporuje ověřování na základě identity přes protokol SMB (Server Message Block) pomocí Azure Active Directory Domain Services. Připojené k doméně Windows virtuálních počítačů (VM) můžete přistupovat sdílenými složkami Azure pomocí přihlašovacích údajů Azure AD. Další informace najdete v tématu [autorizace přehled o Azure Active Directory přes protokol SMB pro soubory Azure (preview)](../files/storage-files-active-directory-overview.md).
+- **Ověření pomocí sdíleného klíče.** Služby Azure Storage Blob, fronty a tabulky a službou soubory Azure podporu ověřování pomocí sdíleného Key.A klienta pomocí sdíleného klíče hlavičku při každé žádosti, která je podepsaná pomocí přístupového klíče účtu úložiště předá autorizace. Další informace najdete v tématu [autorizovat pomocí sdíleného klíče](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key).
+- **Povolení použití sdílených přístupových podpisů (SAS).** Sdílený přístupový podpis (SAS) je řetězec obsahující token zabezpečení, který lze připojit k identifikátoru URI pro prostředek úložiště. Token zabezpečení zapouzdřuje omezení, jako jsou oprávnění a interval přístup. Další informace najdete v [použití sdílených přístupových podpisů (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+- **Anonymní přístup ke kontejnerům a objektům BLOB.** Kontejner a jeho objekty BLOB může být veřejně dostupný. Pokud určíte, že je kontejner nebo objekt blob veřejný, kdokoli ho mohou číst anonymně; není vyžadováno žádné ověřování. Další informace najdete v tématu [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](../blobs/storage-manage-access-to-resources.md).
 
 ## <a name="encryption"></a>Šifrování
 

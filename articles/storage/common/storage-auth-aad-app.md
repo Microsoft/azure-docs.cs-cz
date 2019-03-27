@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: a313061f89d33ee2bf5379dbd37495db06b64440
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 8fdc4445e28a420b6b4f7935443d7d991d9e8a4d
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369509"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446058"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Ověřování pomocí Azure Active Directory z aplikace pro přístup k objektům BLOB a fronty
 
@@ -25,7 +25,7 @@ Před ověření objektu zabezpečení z vaší aplikace Azure Storage, nakonfig
 
 Přehled toku přidělení kódu OAuth 2.0, naleznete v tématu [autorizovat přístup k Azure Active Directory webovým aplikacím pomocí OAuth 2.0 kódu udělit tok](../../active-directory/develop/v1-protocols-oauth-code.md).
 
-[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
+K autorizaci objektů blob a frontu operací pomocí tokenu OAuth, musí používat protokol HTTPS.
 
 ## <a name="assign-an-rbac-role-to-an-azure-ad-security-principal"></a>Přiřaďte roli RBAC pro objekt zabezpečení Azure AD
 
@@ -157,7 +157,7 @@ static string GetUserOAuthToken()
 
 ### <a name="create-the-block-blob"></a>Vytvořit objekt blob bloku
 
-Nakonec použijte přístupový token k vytvoření nových přihlašovacích údajů úložiště a použít tyto přihlašovací údaje k vytvoření objektu blob:
+Nakonec použijte přístupový token k vytvoření nových přihlašovacích údajů úložiště a použít tyto přihlašovací údaje k vytvoření objektu blob. Mějte na paměti, že pokud chcete autorizovat objektů blob a frontu operací pomocí tokenu OAuth, musí používat protokol HTTPS.:
 
 ```dotnet
 // Get the access token.

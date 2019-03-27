@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: ab3d3a13f8bfa69bd9e13dae344cfbcc3731cc77
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 52fb32a8b34c62fe94ab35e2c051d996ab8bef10
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402588"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449193"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge technických specifikací
 
@@ -57,9 +57,17 @@ V následující tabulce jsou uvedeny dimenze skříň v milimetrech a palců.
 
 |     Skříň     |     Milimetrech     |     Palců     |
 |-------------------|---------------------|----------------|
-|    Výška         |    304.8            |    12          |
-|    Šířka          |    660.4            |    26          |
-|    Hloubka          |    1041.4           |    41          |
+|    Výška         |    44.45            |    1.75"          |
+|    Šířka          |    434.1           |    17.09"          |
+|    Délka          |    740.4           |    29.15"          |
+
+V následující tabulce jsou uvedeny dimenze přesouvání balíčku v milimetrech a palců.
+
+|     Balíček     |     Milimetrech     |     Palců     |
+|-------------------|---------------------|----------------|
+|    Výška         |    311.2            |    12.25"          |
+|    Šířka          |    642.8          |    25.31"          |
+|    Délka          |   1,051.1          |    41.38"          |
 
 ### <a name="enclosure-weight"></a>Váha skříň
 
@@ -67,8 +75,8 @@ Balíček zařízení váží 66 lbs. a vyžaduje dvě osoby, aby to zvládnul. 
 
 |     Skříň                                 |     Hmotnost          |
 |-----------------------------------------------|---------------------|
-|    Celková váha včetně balení       |    66 lbs.          |
-|    Váha zařízení                       |    48,3 lbs.        |
+|    Celková váha včetně balení       |    61 lbs.          |
+|    Váha zařízení                       |    35 lbs.          |
 
 ## <a name="enclosure-environment-specifications"></a>Specifikace prostředí skříň
 

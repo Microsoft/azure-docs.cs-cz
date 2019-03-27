@@ -7,15 +7,15 @@ manager: cgrounlun
 ms.service: cognitive-services
 ms.technology: anomaly-finder
 ms.topic: include
-ms.date: 11/15/2018
+ms.date: 03/21/2019
 ms.author: nitinme
 ms.custom: include file
-ms.openlocfilehash: e93b889ee3ead06c28f9fec5659a61aad2752bac
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 1dab9b0e23b5fe574f9b4506fdcad510d378bfef
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716152"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58495005"
 ---
 > [!NOTE]
-> Vyhledávač anomálií je ve verzi Private Preview. K připojení privátní vyhledávač anomálií ve verzi Preview, [kontaktujte nás](mailto:kenshoteam@microsoft.com). Jakmile je udělen přístup, najdete v článku přístup řízen [anomálií Finder Private Preview dokumentaci](https://aka.ms/AnomalyFinderPrivatePreview) Další informace.
+> Vyhledávač anomálií lab nahrazuje rozhraní API detekce anomálií (nyní ve verzi public preview). Existující testovací prostředí vyhledávač anomálií odebere na 30. dubna 2019. Doporučujeme migrovat na detekce anomálií před tímto časem. Zobrazit [dokumentace k rozhraní API detekce anomálií](../articles/cognitive-services/anomaly-detector/index.yml) Další informace. 

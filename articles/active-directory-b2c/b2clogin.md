@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 61c4212233dd7ed9c34de779176c3402890e673f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8188e36278bad9c93f709a5d7d9f831d1c19e6b4
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160900"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486843"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Sada přesměrovaly na b2clogin.com pro Azure Active Directory B2C
 
@@ -25,6 +25,13 @@ Použití b2clogin.com poskytuje další výhody, jako například:
 
 - Nezabírá místo v záhlaví souboru cookie používané služby Microsoftu.
 - Vaší adresy URL už nebude obsahovat odkaz na Microsoft. Například, `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`.
+
+>[!NOTE]
+> Můžete název klienta a identifikátor GUID klienta následujícím způsobem:
+> * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` (stále odkazuje na `onmicrosoft.com`)
+> * `https://your-tenant-name.b2clogin.com/your-tenant-guid` (v takovém případě není žádná reference Microsoftu vůbec)
+>
+> Však nelze použít _vlastní doménu_ pro Azure Active Directory B2C tenanta, třeba `https://your-tenant-name.b2clogin.com/your-custom-domain-name` by _není_ fungovat.
 
 Vezměte v úvahu tato nastavení, které může být nutné změnit při použití b2clogin.com:
 

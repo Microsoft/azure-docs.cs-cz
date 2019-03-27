@@ -5,15 +5,15 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 03/02/2019
+ms.date: 03/26/2019
 ms.author: hux
 ms.subservice: blobs
-ms.openlocfilehash: 86e28c3561968b1411a3baa9ec0daecfab6ac73f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 32328b89e8a220269f0d07c3700566db5b899d5b
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202873"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445691"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store důležitých podnikových dat ve službě Azure Blob storage
 
@@ -46,6 +46,8 @@ Neměnné úložiště podporuje následující funkce:
 ## <a name="how-it-works"></a>Jak to funguje
 
 Neměnné úložiště pro úložiště objektů Blob v Azure podporuje dva typy ČERV nebo neměnné zásady: uchovávání informací podle času a právních důvodů. Při použití zásady uchovávání informací podle času nebo blokování z právních důvodů na kontejner, přesuňte všechny existující objekty BLOB do neměnného stavu ČERV za méně než 30 sekund. Všechny nové objekty BLOB, které se nahrají do tohoto kontejneru se přesunou také do neměnného stavu. Jakmile se všechny objekty BLOB, bylo přesunuto do neměnného stavu, je potvrzen neměnné zásady a všechny přepsat nebo odstranit operace pro stávající i nové objekty v kontejneru neměnné nejsou povoleny.
+
+Kontejner a účet se také nejsou povolené, pokud neexistují žádné objekty BLOB chráněné zásadami neměnné. Operace odstranění kontejneru se nezdaří, pokud existuje alespoň jeden objekt blob se zásadami uzamčené uchovávání informací podle času nebo skupiny s povinností uchování. Odstranění účtu úložiště selže, pokud obsahuje alespoň jeden kontejner WORM s blokováním z právních důvodů nebo objektem blob s aktivním intervalem uchovávání informací. 
 
 ### <a name="time-based-retention"></a>Uchovávání informací podle času
 
@@ -85,12 +87,10 @@ V následující tabulce jsou uvedeny typy operace objektů blob, které jsou za
 Neexistuje žádné další poplatky za použití této funkce. Stejným způsobem jako regulární proměnlivých dat vychází z neměnnými daty. Podrobnosti o cenách Azure Blob Storage, najdete v článku [stránce s cenami služby Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="getting-started"></a>Začínáme
+Neměnné storage je dostupné jenom pro obecné účely v2 a účty Blob Storage. Tyto účet se musí spravovat přes [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Informace o upgradu existující obecné účely v1 účtu služby storage najdete v tématu [upgradovat účet úložiště](../common/storage-account-upgrade.md).
 
 Nejnovější verze [webu Azure portal](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), a [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases) podporují neměnné úložiště pro úložiště objektů Blob v Azure. [Podpora knihovny klienta](#client-libraries) je také k dispozici.
 
-> [!NOTE]
->
-> Neměnné storage je dostupné jenom pro obecné účely v2 a účty Blob Storage. Tyto účet se musí spravovat přes [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Informace o upgradu existující obecné účely v1 účtu služby storage najdete v tématu [upgradovat účet úložiště](../common/storage-account-upgrade.md).
 
 ### <a name="azure-portal"></a>portál Azure
 
@@ -114,17 +114,19 @@ Nejnovější verze [webu Azure portal](https://portal.azure.com), [rozhraní p�
 
     !["Zamknout zásady" v nabídce](media/storage-blob-immutable-storage/portal-image-4-lock-policy.png)
 
-    Vyberte **zamknout zásady**. Zásada je nyní uzamčen a nelze ji odstranit, bude povoleno pouze rozšíření interval uchovávání informací.
+6. Vyberte **zásady uzamčení** a potvrďte zámek. Zásada je nyní uzamčen a nelze ji odstranit, bude povoleno pouze rozšíření interval uchovávání informací. Odstraní objekt BLOB a přepsání nejsou povoleny. 
 
-6. Chcete-li povolit právních důvodů, vyberte **přidat zásadu**. Vyberte **blokování z právních důvodů** z rozevírací nabídky.
+    ![Potvrďte "Zásady Lock" v nabídce](media/storage-blob-immutable-storage/portal-image-5-lock-policy.png)
+
+7. Chcete-li povolit právních důvodů, vyberte **přidat zásadu**. Vyberte **blokování z právních důvodů** z rozevírací nabídky.
 
     !["Blokování z právních důvodů" v nabídce v části "Zásady typu"](media/storage-blob-immutable-storage/portal-image-legal-hold-selection-7.png)
 
-7. Vytvoření skupiny s povinností uchování pomocí jedné nebo více značek.
+8. Vytvoření skupiny s povinností uchování pomocí jedné nebo více značek.
 
     ![Pole "Název značky" v části Typ zásady](media/storage-blob-immutable-storage/portal-image-set-legal-hold-tags.png)
 
-8. Vymazat blokování z právních důvodů, jednoduše odeberte identifikátor značky použité skupiny s povinností uchování.
+9. Vymazat blokování z právních důvodů, jednoduše odeberte identifikátor značky použité skupiny s povinností uchování.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -170,9 +172,9 @@ Ano. K dodržování předpisů dokumentu společnost Microsoft uchovávat před
 
 Neměnné úložiště lze použít s žádným typem objektů blob, ale doporučujeme používat hlavně pro objekty BLOB bloku. Na rozdíl od objekty BLOB bloku objekty BLOB stránky a doplňovací objekty BLOB se musí vytvořit mimo kontejner ČERV a poté zkopírován v. Po zkopírování těchto objektů BLOB do kontejneru ČERV, ne další *připojí* připojit jsou povoleny změny pro objekt blob stránky nebo objekt blob.
 
-**Je pro použití této funkce potřeba vždy vytvářet nový účet úložiště?**
+**Je potřeba vytvořit nový účet úložiště pro použití této funkce?**
 
-Můžete použít neměnné úložiště pomocí jakékoli existující nebo nově vytvořený obecné účely v2 nebo účty Blob Storage. Tato funkce je určená pro použití s objekty BLOB bloku v účtech GPv2 a Blob Storage.
+Ne, můžete použít neměnné úložiště pomocí jakékoli existující nebo nově vytvořený obecné účely v2 nebo účty služby Blob storage. Tato funkce je určená pro použití s objekty BLOB bloku v účtech GPv2 a Blob Storage. Úložiště účty pro obecné účely v1 nejsou podporovány, ale je možné snadno upgradovat na obecné účely v2. Informace o upgradu existující obecné účely v1 účtu služby storage najdete v tématu [upgradovat účet úložiště](../common/storage-account-upgrade.md).
 
 **Můžete použít skupiny s povinností uchování i zásady uchovávání informací podle času?**
 
@@ -188,7 +190,7 @@ Operace odstranění kontejneru se nezdaří, pokud existuje alespoň jeden obje
 
 **Co se stane, když se pokusím odstranit účet úložiště obsahující kontejner WORM s *uzamknutou* zásadou uchovávání informací podle času nebo blokováním z právních důvodů?**
 
-Odstranění účtu úložiště selže, pokud obsahuje alespoň jeden kontejner WORM s blokováním z právních důvodů nebo objektem blob s aktivním intervalem uchovávání informací.  Než budete moct odstranit účet úložiště, je nutné odstranit všechny kontejnery ČERV. Informace o odstranění kontejneru najdete v předchozí otázce.
+Odstranění účtu úložiště selže, pokud obsahuje alespoň jeden kontejner WORM s blokováním z právních důvodů nebo objektem blob s aktivním intervalem uchovávání informací. Než budete moct odstranit účet úložiště, je nutné odstranit všechny kontejnery ČERV. Informace o odstranění kontejneru najdete v předchozí otázce.
 
 **Můžu přesouvat data mezi různými úrovněmi objektu blob (horká, studená, archivní), když je objekt blob v neměnném stavu?**
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: 9929b09280cea56a5fadcd4d0d9aba5b851f326e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f7d1c5bc54d909d1a948123839d95e1ee1158a5c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544032"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444823"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatické škálování a zónově redundantní služba Application Gateway (Public Preview)
 
@@ -29,6 +29,29 @@ Služba Application Gateway a Firewall webových aplikací (WAF) jsou teď dostu
 > Skladová položka automaticky škálované a zónově redundantní Application Gateway je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
+
+## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Porovnání funkcí mezi v1 SKU a v2 SKU
+
+Následující tabulka porovnává funkce, které jsou dostupné v jednotlivých SKU.
+
+|                                                   | V1 SKU   | v2 SKU   |
+| ------------------------------------------------- | -------- | -------- |
+| Automatické škálování                                       |          | &#x2713; |
+| Redundanci zón                                   |          | &#x2713; |
+| &nbsp;Statické virtuálních IP adres&nbsp;&nbsp;                      |          | &#x2713; |
+| Směrování na základě adresy URL                                 | &#x2713; | &#x2713; |
+| Hostování několika webů                             | &#x2713; | &#x2713; |
+| Přesměrování přenosů                               | &#x2713; | &#x2713; |
+| Firewall webových aplikací (WAF)                    | &#x2713; | &#x2713; |
+| Ukončení protokolu SSL (Secure Sockets Layer)            | &#x2713; | &#x2713; |
+| Šifrování SSL začátku do konce                         | &#x2713; | &#x2713; |
+| Spřažení relací                                  | &#x2713; | &#x2713; |
+| Vlastní chybové stránky                                | &#x2713; | &#x2713; |
+| Přepsání hlavičky protokolu HTTP (S)                           |          | &#x2713; |
+| Podpora protokolu WebSocket                                 | &#x2713; | &#x2713; |
+| Podpora HTTP/2                                    | &#x2713; | &#x2713; |
+| Vyprázdnění připojení                               | &#x2713; | &#x2713; |
+| Azure kontroler příchozího přenosu dat Kubernetes Service (AKS) |          | &#x2713; |
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
@@ -48,7 +71,7 @@ Ve verzi preview se neúčtuje. Účtují se prostředky než aplikační brány
 |Skupina NSG pro rozsah portu pro příchozí spojení| -65200 až 65535. pro Standard_v2 SKU<br>-65503 až 65534 pro standardní SKU.<br>Další informace najdete v tématu [nejčastější dotazy k](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Protokoly výkonu v diagnostice Azure|Nepodporuje se.<br>Metriky Azure je třeba použít.|
 |Fakturace|Neexistuje žádné fakturace aktuálně.|
-|Režim FIPS, protokol WebSocket|Ty nejsou aktuálně podporovány.|
+|Režim FIPS|Ty nejsou aktuálně podporovány.|
 |Režim pouze ILB|To není aktuálně podporováno. Veřejné a režim ILB společně se nepodporuje.|
 |Integrace sledování sítě|Není podporováno ve verzi Public Preview.|
 

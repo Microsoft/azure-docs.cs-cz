@@ -1,0 +1,69 @@
+---
+title: Příklad Powershellu – vytvoření ve službě Azure SQL Database managed instance | Dokumentace Microsoftu
+description: Ukázkový skript Azure Powershellu pro vytvoření spravované instance Azure SQL Database
+services: sql-database
+ms.service: sql-database
+ms.subservice: managed-instance
+ms.custom: ''
+ms.devlang: PowerShell
+ms.topic: sample
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: ''
+manager: craigg
+ms.date: 03/25/2019
+ms.openlocfilehash: 955f13376ac899f66b0ec4e1ed99166164508fbe
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449864"
+---
+# <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>Použití Powershellu k vytvoření služby Azure SQL Database managed instance
+
+Tento ukázkový skript Powershellu vytvoří spravovanou instanci Azure SQL Database ve vyhrazené podsíti v rámci nové virtuální sítě. Nakonfiguruje taky směrovací tabulku a skupinu zabezpečení sítě pro virtuální síť. Po úspěšném spuštění skriptu bude spravovaná instance je přístupný z v rámci virtuální sítě nebo z místního prostředí. Šablony rychlý start ukazuje, jak to provést, najdete v části [konfigurace virtuálního počítače Azure pro připojení k Azure SQL Database Managed Instance](../sql-database-managed-instance-configure-vm.md) a [do Azure SQL Database Managed Instance z konfigurace připojení typu point-to-site on-premises](../sql-database-managed-instance-configure-p2s.md).
+
+> [!IMPORTANT]
+> Omezení, najdete v části [podporované oblasti](../sql-database-managed-instance-resource-limits.md#supported-regions) a [podporované typy předplatného](../sql-database-managed-instance-resource-limits.md#supported-subscription-types).
+
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, v tomto kurzu vyžaduje AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+
+## <a name="sample-script"></a>Ukázkový skript
+
+[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/managed-instance/create-and-configure-managed-instance.ps1 "Create managed instance")]
+
+## <a name="clean-up-deployment"></a>Vyčištění nasazení
+
+Po spuštění ukázkového skriptu můžete pomocí následujícího příkazu odebrat skupinu prostředků a všechny k ní přidružené prostředky.
+
+```powershell
+Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
+```
+
+## <a name="script-explanation"></a>Vysvětlení skriptu
+
+Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+
+| Příkaz | Poznámky |
+|---|---|
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. 
+| [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Vytvoří virtuální síť |
+| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-AzVirtualNetworkSubnetConfig) | Přidá konfiguraci podsítě do virtuální sítě |
+| [Get-AzVirtualNetwork](/powershell/module/az.network/Get-AzVirtualNetwork) | Získá virtuální sítě ve skupině prostředků |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/Set-AzVirtualNetwork) | Nastaví cílový stav pro virtuální síť |
+| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Get-AzVirtualNetworkSubnetConfig) | Získá podsíť ve virtuální síti |
+| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Set-AzVirtualNetworkSubnetConfig) | Nastaví cílový stav pro konfiguraci podsítě ve virtuální síti |
+| [New-AzRouteTable](/powershell/module/az.network/New-AzRouteTable) | Vytvoří směrovací tabulku |
+| [Get-AzRouteTable](/powershell/module/az.network/Get-AzRouteTable) | Získá směrovací tabulky |
+| [Set-AzRouteTable](/powershell/module/az.network/Set-AzRouteTable) | Nastaví cílový stav pro směrovací tabulky |
+| [New-AzSqlInstance](/powershell/module/az.sql/New-AzSqlInstance) | Vytvoří spravovanou instanci Azure SQL Database |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+|||
+
+## <a name="next-steps"></a>Další postup
+
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
+
+Další ukázkové skripty PowerShellu pro službu SQL Database najdete v tématu [Skripty PowerShellu pro službu Azure SQL Database](../sql-database-powershell-samples.md).

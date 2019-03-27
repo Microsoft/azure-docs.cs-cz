@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
 ms.author: monhaber
-ms.openlocfilehash: 5f49de453f9cd694598918500a8ac0221937bdb1
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 680e39b291cbaa1012cd972e188ab4e5f7aef694
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201683"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449008"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Upgrade na Security Center úrovně Standard pro zvýšení zabezpečení
 Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami pro úlohy běžící v Azure, na místních systémech a v jiných cloudech. Poskytuje přehled a kontrolu nad hybridními cloudovými úlohami aktivní ochrany, které sníží vaši zranitelnost vůči hrozbám a inteligentního zjišťování, které vám pomůžou udržet krok s rychle vyvíjejícími se kybernetickými útoky.
@@ -49,7 +49,7 @@ Pokud chcete získat na úrovni Standard:
 ![Ceny Security Center](./media/security-center-pricing/get-standard.png)
 
 > [!NOTE]
-> Pokud chcete povolit všechny funkce Security Center, musíte použít cenovou úroveň pro předplatné nebo skupinu prostředků obsahující příslušný virtuální počítače Standard. Konfigurace ceny pro pracovní prostor není povoleno pouze v přístup podle potřeby, adaptivní řízení aplikací a zjištění sítě pro prostředky Azure.
+> Pokud chcete povolit všechny funkce Security Center, musíte použít standardní cenová úroveň k předplatnému, které obsahuje příslušný virtuální počítače. Konfigurace ceny pro pracovní prostor není povoleno pouze v přístup podle potřeby, adaptivní řízení aplikací a zjištění sítě pro prostředky Azure.
 >
 >
 

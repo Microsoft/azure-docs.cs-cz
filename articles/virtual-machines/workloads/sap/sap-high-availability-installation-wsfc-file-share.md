@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4f9628be1d1f1d146ed0dbc5ebd9579f0512aeac
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a0192b88525d326840283f79ecea7027516ce8c7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997365"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483434"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Vysoká dostupnost SAP NetWeaver nainstalovat Windows převzetí služeb při selhání clusteru a sdílenou složku pro SAP ASCS/SCS instance v Azure
 
@@ -253,7 +253,7 @@ Odeberte sdílenou SAPMNT na *obě* ASCS/SCS uzly clusteru.
 
 Spusťte následující skript prostředí PowerShell:
 
-```PowerShell
+```powershell
 Remove-SmbShare sapmnt -ScopeName * -Force
  ```
 
@@ -261,7 +261,7 @@ Pokud SAPLOC sdílená složka neexistuje, vytvořte ho na *obě* ASCS/SCS uzly 
 
 Spusťte následující skript prostředí PowerShell:
 
-```PowerShell
+```powershell
 #Create SAPLOC share and set security
 $SAPSID = "PR1"
 $DomainName = "SAPCLUSTER"
@@ -289,12 +289,12 @@ Vytvořte následující svazek a sdílenou složku v clusteru SOFS:
 Vytvoření Sdíleného svazku clusteru s odolností, spusťte následující rutinu Powershellu na jednom uzlu clusteru SOFS:
 
 
-```PowerShell
+```powershell
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR1 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 Vytvořit SAPMNT a nastavit zabezpečení složky a sdílené složky, spusťte následující skript prostředí PowerShell na jednotlivé uzly clusteru SOFS:
 
-```PowerShell
+```powershell
 # Create SAPMNT on file share
 $SAPSID = "PR1"
 $DomainName = "SAPCLUSTER"
@@ -354,7 +354,7 @@ Proveďte následující kroky:
 
 Spusťte následující příkaz powershellu na jednom uzlu clusteru SAP ASCS/SCS:
 
-```PowerShell
+```powershell
 # Grant <DOMAIN>\SAP_<SID>_GlobalAdmin group access to the cluster
 
 $SAPSID = "PR1"
@@ -419,7 +419,7 @@ K použití nového názvu SAP ASCS/SCS virtuálního hostitele a SAP název glo
 
 Kopírování [ **SAPScripts.psm1** ] [ sap-powershell-scrips] s vaší místní jednotky C:\tmp a spusťte následující rutinu Powershellu:
 
-```PowerShell
+```powershell
 Import-Module C:\tmp\SAPScripts.psm1
 
 Update-SAPASCSSCSProfile -PathToAscsScsInstanceProfile \\sapglobal\sapmnt\PR1\SYS\profile\PR1_ASCS00_ascs-1 -NewASCSHostName pr1-ascs -NewSAPGlobalHostName sapglobal -Verbose  
@@ -463,7 +463,7 @@ Další informace najdete v tématu [1596496 Poznámka SAP – jak aktualizovat 
 
 Chcete-li vytvořit SAP \<SID > Skupina clusteru, název sítě ASCS/SCS a odpovídající IP adresy, spusťte následující rutinu Powershellu:
 
-```PowerShell
+```powershell
 # Create SAP Cluster Group
 $SAPSID = "PR1"
 $SAPClusterGroupName = "SAP $SAPSID"
@@ -533,7 +533,7 @@ Pro dokončení vytváření prostředků SAP SAP\<SID > Skupina clusteru, vytvo
 
 Spusťte následující rutinu Powershellu:
 
-```PowerShell
+```powershell
 $SAPSID = "PR1"
 $SAPInstanceNumber = "00"
 $SAPNetworkNameClusterResourceName = "pr1-ascs"

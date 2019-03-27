@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7f3b8101b633c977201b6c413ad12e4bbe55e9a7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 934d0a73bf6345edd79ae00526a1db0361b3524d
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011777"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482771"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights pro ASP.NET Core
 
@@ -197,7 +197,7 @@ K automatizaci požadavky na vaši aplikaci za použití syntetických transakc�
 
 3. Spusťte následující smyčka prostředí PowerShell pro vytvoření 100 syntetické transakce pomocí aplikace pro vaše testy. Změňte číslo portu po `localhost:` tak, aby odpovídaly adresu URl, kterou jste zkopírovali v předchozím kroku. Příklad:
 
-   ```PowerShell
+   ```powershell
    for ($i = 0 ; $i -lt 100; $i++)
    {
     Invoke-WebRequest -uri http://localhost:50984/

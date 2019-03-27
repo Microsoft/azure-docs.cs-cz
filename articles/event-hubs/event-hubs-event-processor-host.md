@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2b4fcb42c913149f8caf05a72fb089586ee21e2a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 26f0abb48ba268f79167ed5d00e4f96d8b5e5998
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106116"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498167"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>Příjem událostí z Azure Event Hubs pomocí třídy Event Processor Host
 
@@ -83,11 +83,11 @@ public class SimpleEventProcessor : IEventProcessor
 
 V dalším kroku vytvoření instance [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) instance. V závislosti na přetížení, při vytváření [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) instance v konstruktoru, se používají následující parametry:
 
-- **název hostitele:** název instance jednotlivých uživatelů. Každá instance **EventProcessorHost** musí mít jedinečnou hodnotu této proměnné v rámci skupiny příjemců, takže je vhodné nechcete pevně kód tuto hodnotu.
+- **název hostitele:** název instance jednotlivých uživatelů. Každá instance **EventProcessorHost** musí mít jedinečnou hodnotu této proměnné v rámci skupiny uživatelů, takže není pevně kód tuto hodnotu.
 - **eventHubPath:** Název centra událostí.
-- **Název:** Služba Event Hubs využívá **$Default** jako název výchozí skupinu příjemců, ale je vhodné vytvořit skupinu uživatelů pro specifické aspekty zpracování.
+- **consumerGroupName:** Služba Event Hubs využívá **$Default** jako název výchozí skupinu příjemců, ale je vhodné vytvořit skupinu uživatelů pro specifické aspekty zpracování.
 - **eventHubConnectionString:** Připojovací řetězec do centra událostí, která se dá načíst z portálu Azure portal. Tento připojovací řetězec by měl mít **naslouchání** oprávnění v Centru událostí.
-- **StorageConnectionString:** Účet úložiště používané pro správu vnitřních prostředků.
+- **storageConnectionString:** Účet úložiště používané pro správu vnitřních prostředků.
 
 Nakonec příjemci zaregistrovat [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) instance se službou Event Hubs. Registrace procesoru třídě události s instancí třídy EventProcessorHost spustí zpracování událostí. Registrace služby Event Hubs můžete očekávat, že příjemce aplikace využívá službu události z některé z jejích oddílů a který má být vyvolán nastaví [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) implementace kódu pokaždé, když se toho odesílá události využívat. 
 
@@ -125,7 +125,7 @@ Každý hostitel, získá vlastnictví oddílu určitou dobu (doba trvání zap�
 
 Každé volání [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) nabízí kolekci událostí. Je vaší odpovědností, abyste zpracování těchto událostí. Pokud chcete zajistit, aby že hostitel procesoru zpracovávat všechny zprávy alespoň jednou, budete muset napsat vlastní zachovat opakování kódu. Ale buďte opatrní při poškozená po zprávy.
 
-Doporučujeme, abyste udělali poměrně rychle; co potřebujete To znamená proveďte jako zpracování co nejvíc. Místo toho použijte skupiny příjemců. Pokud potřebujete k zápisu do úložiště a provést některé směrování, je obecně vhodnější použít dvě skupiny uživatelů a mít dvě [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) implementace, které spustit samostatně.
+Doporučujeme, abyste udělali poměrně rychle; co potřebujete To znamená proveďte jako zpracování co nejvíc. Místo toho použijte skupiny příjemců. Pokud potřebujete k zápisu do úložiště a provést některé směrování, je vhodnější použít dvě skupiny uživatelů a mít dvě [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) implementace, které spustit samostatně.
 
 V určitém okamžiku během zpracování můžete sledovat, co jste přečetli a dokončit. Sledování je velmi důležité, pokud je nutné restartovat čtení, takže se nemusíte vrátit k začátku datového proudu. [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) zjednodušuje tento sledování pomocí *kontrolní body*. Kontrolní bod je umístění, nebo posunutí pro daný oddíl, v rámci konkrétní skupiny příjemců, v tom okamžiku se ujistí, že mají zpracovat zprávy. Označení kontrolní bod v **EventProcessorHost** provádí volání [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) metodu [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) objektu. Tato operace se provádí v rámci [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) metody, ale je možné provést [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync).
 
@@ -141,7 +141,7 @@ Ve výchozím nastavení [EventProcessorHost](/dotnet/api/microsoft.azure.eventh
 
 ## <a name="shut-down-gracefully"></a>Řádné ukončení
 
-Nakonec [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) umožňuje čistého vypnutí všech oddílů čtenářů a by měla být volána vždy při vypínání instance [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Pokud tak neučiníte, může vést k prodlevám při spuštění další výskyty **EventProcessorHost** kvůli vypršení platnosti zapůjčení a epocha konflikty. Unixový správy je podrobně popsána v to [blogový příspěvek](https://blogs.msdn.microsoft.com/gyan/2014/09/02/event-hubs-receiver-epoch/)
+Nakonec [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) umožňuje čistého vypnutí všech oddílů čtenářů a by měla být volána vždy při vypínání instance [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Pokud tak neučiníte, může vést k prodlevám při spuštění další výskyty **EventProcessorHost** kvůli vypršení platnosti zapůjčení a epocha konflikty. Správa epocha je podrobně popsána v [epocha](#epoch) části tohoto článku. 
 
 ## <a name="lease-management"></a>Řízení pronájmu
 Registrace procesoru třídě události s instancí třídy EventProcessorHost spustí zpracování událostí. Instance hostitele získává zapůjčení u některých oddílů centra událostí, případně kliknete na některé z dalších hostitelské instance, tak, aby sladila na rozdělení oddílů napříč všemi instancemi hostitele. Pro každý oddíl pronajatých instance hostitele vytvoří instanci třídy procesoru zadané události, pak přijímá události z tohoto oddílu a předává je do instance procesoru událostí. Nechejte se přidat více instancí a jsou obstaral větší počet zapůjčení, EventProcessorHost nakonec vyrovnává zatížení mezi všechny uživatele.
@@ -159,6 +159,32 @@ Kromě toho jednomu přetížení [RegisterEventProcessorAsync](/dotnet/api/micr
 - [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): Pokud je tento parametr **true**, [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) se volá, když podkladové volání pro příjem událostí v oddílu vyprší časový limit. Tato metoda je užitečná pro provádění akcí založených na čase během období nečinnosti v oddílu.
 - [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider): Povolí funkce ukazatel nebo lambda výraz, který má nastavení, která je volána k poskytnutí počáteční posun při čtečku zahájí čtení oddílu. Bez zadání tento posun, čtečky začíná nejstarší událost, pokud soubor JSON s posunem již byla uložena v účtu úložiště zadaný pro [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) konstruktoru. Tato metoda je užitečná, pokud chcete změnit chování čtečky při spuštění. Po vyvolání tato metoda obsahuje parametr objektu ID oddílu, pro který se spouští čtecí modul.
 - [ExceptionReceivedEventArgs](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs): Umožňuje dostávat upozornění na jakékoli základní výjimky, ke kterým dochází v [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Pokud kroky nefungují podle očekávání, tato událost je dobrým začátkem hledání.
+
+## <a name="epoch"></a>Epoch
+
+Tady je Princip epocha příjmu:
+
+### <a name="with-epoch"></a>S epocha
+Epocha je jedinečný identifikátor (epocha hodnota), který službu používá k vynucení vlastnictví oddílu/zapůjčení. Vytvoření přijímače na základě epocha pomocí [CreateEpochReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) metody. Tato metoda vytvoří přijímače epocha založené. Příjemce se vytvoří pro oddíl centra určité události ze skupiny pro zadaného příjemce.
+
+Funkce epocha poskytuje uživatelům možnost zkontrolujte, zda je pouze jeden příjemce pro skupinu uživatelů v libovolném bodě v čase s použitím následujících pravidel:
+
+- Pokud není žádná existující příjemce pro skupinu uživatelů, můžete vytvořit uživatele příjemce s libovolnou hodnotou epocha.
+- Pokud je příjemce se hodnotu e1 epocha a nového příjemce se vytvoří s e2 hodnotu epocha kde e1 < = e2, se automaticky odpojí příjemce s e1, příjemce s e2 je úspěšně vytvořen.
+- Pokud je příjemce se hodnotu e1 epocha a nového příjemce se vytvoří s e2 hodnotu epocha kde e1 > e2, pak vytvoření e2 se nezdaří s chybou: Příjemce s e1 epocha již existuje.
+
+### <a name="no-epoch"></a>No Epoch
+Vytvoření příjemce nezaložené epocha pomocí [CreateReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) metody. 
+
+Existují některé scénáře, ve službě stream zpracování, pokud uživatelé chtějí vytvořit několik příjemců pro skupinu jednoho příjemce. Pro zajištění podpory těchto scénářů, budeme mít možnost vytvoření příjemce bez epocha a v tomto případě jsou povoleny až 5 souběžných přijímačů na skupinu příjemců.
+
+### <a name="mixed-mode"></a>Ve smíšeném režimu
+Nedoporučujeme použití aplikací, kde vytvoříte příjemce s epocha a přepněte se do ne epocha nebo naopak na stejnou skupinu uživatelů. Ale pokud k tomuto chování dochází, služba zpracovává pomocí následujících pravidel:
+
+- Pokud je příjemce již vytvořené pomocí epocha e1 a aktivně přijímat události a vytvoření nového příjemce se žádné epochy, vytvoření nového příjemce se nezdaří. Příjemci epocha vždy přednost v systému.
+- Pokud se příjemce již vytvořené pomocí epocha e1 a byl odpojen a vytvoření nového příjemce se žádné epocha na nové MessagingFactory, bude úspěšné vytvoření nového příjemce. Je zde výstrahou, že náš systém zjistí "příjemce odpojení" po přibližně 10 minut.
+- Pokud je jeden nebo více příjemců vytvořené pomocí žádné epocha a nového příjemce se vytvoří s epocha e1, původní příjemci odpojeny.
+
 
 ## <a name="next-steps"></a>Další postup
 
