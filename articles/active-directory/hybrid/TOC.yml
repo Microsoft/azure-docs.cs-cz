@@ -251,6 +251,8 @@ items:
       href: how-to-connect-sync-best-practices-changing-default-configuration.md
     - name: Změna výchozí konfigurace
       href: how-to-connect-sync-change-the-configuration.md
+    - name: Oprava upravených výchozích pravidel
+      href: how-to-connect-fix-default-rules.md
     - name: Konfigurace rozšíření adresáře
       href: how-to-connect-sync-feature-directory-extensions.md
     - name: Konfigurace upřednostňovaného umístění dat
@@ -273,6 +275,8 @@ items:
         href: how-to-connect-sync-service-manager-ui-mvsearch.md
   - name: Řešení potíží
     items:
+    - name: Co je agent pro správu Azure AD Connectu?
+      href: whatis-aadc-admin-agent.md
     - name: Co je powershellový modul ADConnectivityTools?
       href: how-to-connect-adconnectivitytools.md
     - name: Připojení
@@ -337,9 +341,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: Referenční informace k ADConnectivityTools
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 613adb5c19c3ca7fa2f47700a0358a51beac98e4
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: aac9615fde8547493851ba513156ec860c51c13c
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193700"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498277"

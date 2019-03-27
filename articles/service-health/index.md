@@ -1,27 +1,22 @@
 ---
 title: Azure Service Health | Microsoft Docs
-description: Azure Service Health je sada prostředí, která poskytují pokyny a podporu na míru v situacích, kdy vás ovlivňují problémy ve službách Azure.
+description: 'Azure Service Health je sada prostředí, která poskytují pokyny a podporu na míru v situacích, kdy vás ovlivňují problémy ve službách Azure.'
 author: stephbaron
 layout: LandingPage
 ms.service: service-health
 ms.topic: landing-page
-ms.date: 03/27/2018
+ms.date: 03/4/2019
 ms.author: stbaron
-ms.openlocfilehash: d8d922dd16cb00b5e3a682dc491af6b59f8476f2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881923"
 ---
 # <a name="azure-service-health-documentation"></a>Dokumentace ke službě Azure Service Health
 
-Azure Service Health je sada prostředí, která poskytují pokyny a podporu na míru v situacích, kdy vás ovlivňují problémy ve službách Azure. Mohou vás upozornit, pomohou vám zjistit dopad případných potíží a upozorní vás na průběh jejich řešení. Také vám pomohou připravit se na plánovanou údržbu a změny, které by mohly ovlivnit dostupnost vašich prostředků.
+Azure nabízí sadu prostředí, která vás informují o stavu vašich cloudových prostředků, včetně aktuálních a možných nadcházejících potížích, jako jsou události s dopadem na služby, plánovaná údržba a další změny, které mohou ovlivnit vaši dostupnost.
 
-Služba Azure Service Health se skládá z těchto částí:
- 1. **Stav Azure** – Globální zobrazení stavu služeb Azure
- 2. **Service Health** – Přizpůsobené zobrazení stavu služeb Azure
- 3. **Resource Health** – Podrobnější přehled o stavu jednotlivých prostředků, které pro vás zřídily služby Azure
+Možná už znáte **[stavovou stránku Azure](https://status.azure.com)**, globální zobrazení stavu všech služeb Azure napříč všemi oblastmi Azure. Stavová stránka je vhodnou referencí pro incidenty s širším dopadem, ale důrazně doporučujeme, aby aktuální uživatelé Azure využívali službu **Azure Service Health** a zajistili si tak informace o údržbě a incidentech Azure.
+
+**[Azure Service Health](service-health-overview.md)** poskytuje přizpůsobené zobrazení stavu oblastí a služeb Azure, které využíváte. Je to nejvhodnější místo pro hledání informací o výpadcích s dopadem na služby, aktivitách plánované údržby a dalších rad ohledně stavu, protože ověřené prostředí služby Azure Service Health ví, které služby a prostředky aktuálně používáte. Nejlepší způsob využití služby Service Health je nastavit upozornění této služby, která vás budou prostřednictvím vašich upřednostňovaných komunikačních kanálů informovat o potížích se službami, plánované údržbě nebo jiných změnách, které by mohly ovlivnit oblasti nebo služby Azure, které využíváte.
+
+**[Azure Resource Health](resource-health-overview.md)** poskytuje informace o stavu jednotlivých cloudových prostředků, jako je třeba konkrétní instance virtuálního počítače. Pomocí Azure Monitoru můžete také nastavit výstrahy, které vás upozorní na změny dostupnosti vašich cloudových prostředků. Azure Resource Health vám společně s oznámeními Azure Monitoru pomůže zajistit lepší informovanost o okamžité dostupnosti vašich prostředků a rychle vyhodnotit, jestli případné potíže jsou způsobené problémy na vaší straně, nebo jestli souvisejí s událostí platformy Azure.
 
 Společně poskytují kompletní přehled o stavu Azure, a to s takovou úrovní podrobností, která je pro vás nejrelevantnější.
 

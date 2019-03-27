@@ -1,0 +1,47 @@
+items:
+- name: Dokumentace k Detektoru anomálií
+  href: index.yml
+- name: Přehled
+  items:
+  - name: Co je rozhraní API Detektoru anomálií?
+    href: overview.md
+  expanded: true
+- name: Šablony Rychlý start
+  items:
+  - name: Detekce anomálií ve vašich datech
+    items:
+    - name: Pomocí C#
+      href: quickstarts/detect-data-anomalies-csharp.md
+    - name: Pomocí Javy
+      href: quickstarts/detect-data-anomalies-java.md
+    - name: Pomocí Pythonu
+      href: quickstarts/detect-data-anomalies-python.md
+  expanded: true
+- name: Návody
+  items:
+  - name: Zjištění anomálií ve vašich datech
+    href: how-to/identify-anomalies.md
+- name: Koncepty
+  items:
+  - name: Osvědčené postupy rozhraní API pro detekci anomálií
+    href: concepts/anomaly-detection-best-practices.md
+- name: Referenční informace
+  items:
+  - name: Reference k rozhraní REST API
+    href: https://aka.ms/anomaly-detector-rest-api-ref
+  - name: Sady SDK
+    items:
+    - name: .NET
+      href: https://aka.ms/anomaly-detector-dotnet-ref
+- name: Zdroje a prostředky
+  items:
+  - name: Ceny
+    href: https://aka.ms/anomaly-detector-pricing
+  - name: Regionální dostupnost
+    href: https://aka.ms/anomaly-detector-region
+ms.openlocfilehash: c752383026434ca2f8f1d3f047bb1dbc3740c7ea
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58473363"

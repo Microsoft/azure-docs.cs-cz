@@ -102,7 +102,7 @@ items:
         href: search-dotnet-mgmt-sdk-migration.md
     - name: Upgrade rozhraní REST API
       href: search-api-migration.md
-  - name: Návrh indexů
+  - name: Vytváření indexů
     items:
     - name: Vytvoření základního indexu
       href: search-what-is-an-index.md
@@ -120,9 +120,7 @@ items:
       items:
       - name: Vytvoření navrhovatele
         href: index-add-suggesters.md
-      - name: Příklad automatických návrhů
-        href: search-autosuggest-example.md
-      - name: Příklad automatického dokončování
+      - name: Příklady (návrhy, automatické dokončování)
         href: search-autocomplete-tutorial.md
     - name: Synonyma
       items:
@@ -172,7 +170,7 @@ items:
         href: search-indexer-field-mappings.md
       - name: Řešení běžných potíží
         href: search-indexer-troubleshooting.md
-  - name: Obohacené indexování s využitím AI (kognitivní vyhledávání)
+  - name: Indexování AI (kognitivní vyhledávání)
     items:
     - name: Připojení prostředku služeb Cognitive Services
       href: cognitive-search-attach-cognitive-services.md
@@ -202,9 +200,9 @@ items:
       href: query-simple-syntax.md
     - name: Úplná syntaxe dotazů Lucene
       href: query-lucene-syntax.md
-    - name: Příklady dotazů (jednoduchá syntaxe)
+    - name: Příklady (jednoduchá syntaxe)
       href: search-query-simple-examples.md
-    - name: Příklady dotazů (úplná syntaxe Lucene)
+    - name: Příklady (úplná syntaxe Lucene)
       href: search-query-lucene-examples.md
   - name: Zpracování výsledků
     items:
@@ -309,9 +307,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: Videa
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: a126d909d90e70324a0f6038ddd89e4a619d0721
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 74d4c29b7a4c70116531ef242929571eee3e4d90
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437743"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500488"

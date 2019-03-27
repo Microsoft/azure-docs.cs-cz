@@ -1,31 +1,38 @@
 items:
-- name: Dokumentace k přizpůsobení webu Azure Portal
+- name: Dokumentace k webu Azure Portal
   href: index.yml
-- name: Řídicí panely Azure
+- name: Přehled
+  items:
+  - name: Informace o webu Azure Portal
+    href: azure-portal-overview.md
+  - name: Podporované prohlížeče a zařízení
+    href: azure-portal-supported-browsers-devices.md
+- name: Koncepty
   items:
   - name: Vytváření a sdílení řídicích panelů Azure
     href: azure-portal-dashboards.md
-  - name: Použití vlastní dlaždice Markdown
-    href: azure-portal-markdown-tile.md
   - name: Sdílení řídicích panelů prostřednictvím řízení přístupu na základě role
     href: azure-portal-dashboard-share-access.md
-  - name: Struktura řídicích panelů Azure
-    href: azure-portal-dashboards-structure.md
   - name: Vytváření řídicích panelů Azure prostřednictvím kódu programu
     href: azure-portal-dashboards-create-programmatically.md
-- name: Nastavení
+- name: Návody
+  items:
+  - name: Zapnutí vysokého kontrastu nebo změna motivu
+    href: azure-portal-change-theme-high-contrast.md
+  - name: Použití vlastní dlaždice Markdown
+    href: azure-portal-markdown-tile.md
+  - name: Export nebo odstranění uživatelských nastavení
+    href: azure-portal-export-delete-settings.md
+- name: Referenční informace
   items:
   - name: Klávesové zkratky
     href: azure-portal-keyboard-shortcuts.md
-  - name: Podporované prohlížeče a zařízení
-    href: ../azure-preview-portal-supported-browsers-devices.md
-  - name: Zapnutí vysokého kontrastu nebo změna motivu
-    href: azure-portal-change-theme-high-contrast.md
-  - name: Export nebo odstranění uživatelských nastavení
-    href: azure-portal-export-delete-settings.md
-  expanded: true
+  - name: Struktura řídicích panelů Azure
+    href: azure-portal-dashboards-structure.md
 - name: Zdroje a prostředky
   items:
+  - name: Série videí s postupy pro Azure Portal
+    href: https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR
   - name: Plány Azure do budoucna
     href: https://azure.microsoft.com/updates/
   - name: Získávání dovedností pomocí Microsoft Learn
@@ -36,11 +43,11 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-management-portal
-  - name: Videa
+  - name: Videa k Azure
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest
-ms.openlocfilehash: 7fee5a433470309384931e6ea43817288aecf7a8
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 43a009582b565f10261c0cc6cc24507c3ef6e44e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902767"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443876"
