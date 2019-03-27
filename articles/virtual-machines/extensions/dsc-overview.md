@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: ba5baa928e60729aa128ca5097646768cf5656e8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1448c72e87d51c0bb88c9ee521a7a3112060473b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441914"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483825"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod do obslužné rutiny rozšíření Azure Desired State Configuration
 
@@ -76,7 +76,7 @@ Při použití rozšíření DSC k uzlu zaregistrovat do služby konfiguraci sta
 
 Tyto informace si můžete prohlédnout ve [webu Azure portal](../../automation/automation-dsc-onboarding.md#azure-portal) nebo můžete použít PowerShell.
 
-```PowerShell
+```powershell
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).Endpoint
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
 ```

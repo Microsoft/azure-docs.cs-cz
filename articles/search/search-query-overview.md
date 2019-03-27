@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 6afc9325cb2aababb286f653323531c9ebb04b4a
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: cfc9b44963f6880e97859bc7ab77bff12d258471
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438797"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500164"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Jak sestavit dotazu ve službě Azure Search
 
@@ -76,7 +76,7 @@ Atributy indexu na pole nastavit povolené operace -, zda je pole *prohledávate
 Výše uvedeném snímku obrazovky je částečný seznam atributů indexu pro ukázku nemovitostí. Celý index schéma můžete zobrazit na portálu. Další informace o atributech indexu najdete v tématu [vytvořit Index rozhraní REST API služby](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
 > [!Note]
-> Některé funkce dotazu je povoleno celý index spíše než na základě na pole. Mezi tyto možnosti patří: [mapy synonym](search-synonyms.md), [vlastní analyzátory](index-add-custom-analyzers.md), [konstruktory modulu pro návrhy (pro automatické dokončování a pro automatické návrhy)](index-add-suggesters.md), [vyhodnocování logiku pro řazení výsledků](index-add-scoring-profiles.md).
+> Některé funkce dotazu je povoleno celý index spíše než na základě na pole. Mezi tyto možnosti patří: [mapy synonym](search-synonyms.md), [vlastní analyzátory](index-add-custom-analyzers.md), [modulu pro návrhy vytvoří (pro automatické dokončování a navrhované dotazy)](index-add-suggesters.md), [vyhodnocování logiky pro řazení výsledků](index-add-scoring-profiles.md).
 
 ## <a name="elements-of-a-query-request"></a>Elementy dotazu požadavku
 

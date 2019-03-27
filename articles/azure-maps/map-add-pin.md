@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 718a679418790a6bf1207a96e5c204f7962de239
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: a4d1a54e94b3228c64352bf08cd8cc69820a5e2d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411250"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500045"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Přidat vrstvu symbolů do mapy
 
@@ -35,6 +35,9 @@ V druhém bloku kódu, je vytvořen objekt zdroje dat pomocí [DataSource](https
 Vytvoří třetí bloku kódu [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) a aktualizace souřadnice bodu po myši klikněte na tlačítko horizontálních oddílů pomocí třídy tvar [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) metoda.
 
 A [symbol vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá k vykreslení dat na základě bodu zabalené v textu nebo ikony [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě.  Zdroj dat, naslouchací proces událostí kliknutím a vrstvě symbol vytvořen a přidán do mapování v rámci [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce, která se ujistěte, že po načtení mapy plně, zobrazí se místo.
+
+> [!TIP]
+> Ve výchozím nastavení pro výkon a optimalizace symbol vrstvy vykreslování symboly skrytím symboly, které se překrývají. Jak přiblížit skryté symboly pak bude viditelný. Chcete-li tuto funkci zakázat a vykreslit všechny symboly za všech okolností, nastavte `allowOverlap` vlastnost `iconOptions` možnosti k `true`.
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Přidat vlastní ikonu na vrstvu symbol
 

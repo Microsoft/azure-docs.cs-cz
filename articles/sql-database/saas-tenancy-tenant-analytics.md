@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 9f88314bbf507dc3b4e282532acfa079c2a63cce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0be39aaf5526ea288764fc72d6c498cca2d659b7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890538"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481684"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Pomocí analýzy napříč tenanty extrahovaná data – aplikace s jedním tenantem
  
@@ -91,7 +91,7 @@ V následujících krocích nasazení analýzy úložiště, která se nazývá 
 2. Nastavte proměnnou $DemoScenario ve skriptu, tak, aby odpovídaly podle vašeho výběru analýzy úložiště:
     - Chcete-li používat SQL database bez úložiště sloupců, nastavte **$DemoScenario** = **2**
     - Chcete-li používat SQL database prostřednictvím úložiště sloupců, nastavte **$DemoScenario** = **3**  
-3. Stisknutím klávesy **F5** spustit ukázkový skript (, která volá *nasadit TenantAnalytics<XX>.ps1* skript) vytváří úložišti analýzy tenanta. 
+3. Stisknutím klávesy **F5** spustit ukázkový skript (, která volá *nasadit TenantAnalytics\<XX > .ps1* skript) vytváří úložišti analýzy tenanta. 
 
 Teď, když nasadíte aplikaci a naplní se zajímavá data tenanta, použijte [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) připojit **tenants1-dpt -&lt;uživatele&gt;**  a **katalogu-dpt -&lt;uživatele&gt;**  servery pomocí přihlášení = *developer*, heslo = *P\@ssword1*. Zobrazit [úvodní tutoriál](saas-dbpertenant-wingtip-app-overview.md) další pokyny.
 
@@ -120,7 +120,7 @@ Než budete pokračovat, ujistěte se, že jste nasadili databáze účtu a joba
 
 1. V aplikaci SSMS připojit k **jobaccount** databáze v katalogu-dpt -&lt;uživatele&gt;.
 2. V aplikaci SSMS otevřete *...\Learning Modules\Operational Analytics\Tenant Analytics\ TargetGroups.sql* 
-3. Upravit @User proměnné v horní části skriptu, nahrazení <User> hodnotou uživatele jste použili při nasazení SaaS aplikace Wingtip.
+3. Upravit @User proměnné v horní části skriptu, nahrazení `<User>` hodnotou uživatele jste použili při nasazení SaaS aplikace Wingtip.
 4. Stisknutím klávesy **F5** pro spuštění skriptu, který vytvoří dvě cílové skupiny.
 
 ### <a name="extract-raw-data-from-all-tenants"></a>Extrahovat nezpracovaná data ze všech tenantů
@@ -134,7 +134,7 @@ Každá úloha extrahuje data a publikuje do úložiště analytics. Samostatná
 
 1. V aplikaci SSMS připojit k **jobaccount** databáze v katalogu-dpt -&lt;uživatele&gt; serveru.
 2. V aplikaci SSMS otevřete *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*.
-3. Upravit @User v horní části skriptu a nahraďte <User> s uživatelským jménem, které jste použili při nasazení SaaS aplikace Wingtip 
+3. Upravit @User v horní části skriptu a nahraďte `<User>` s uživatelským jménem, které jste použili při nasazení SaaS aplikace Wingtip 
 4. Stisknutím klávesy F5 spusťte skript, který vytvoří a spustí úlohu, který extrahuje data lístků a zákazníkům z všechny databáze tenantů. Úloha uloží data do úložiště analytics.
 5. Dotaz TicketsRawData tabulku v databázi tenantanalytics, ujistěte se, že v tabulce se vyplní informace lístků ze všech tenantů.
 

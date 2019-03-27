@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7156249e720416161cd56af7589ed85827c6034b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: aed341c50332b424a1149c129629cd451a4e5133
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812544"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500079"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Přesun dat do a z Azure Table pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,6 +31,8 @@ ms.locfileid: "55812544"
 Tento článek vysvětluje, jak pomocí aktivity kopírování ve službě Azure Data Factory k přesunu dat do a z Azure Table Storage. Je nástavbou [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který nabízí obecný přehled o přesun dat pomocí aktivity kopírování. 
 
 Můžete zkopírovat data z libovolné podporované zdrojové úložiště dat do služby Azure Table Storage nebo Azure Table Storage pro všechny podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="getting-started"></a>Začínáme
 Vytvoření kanálu s aktivitou kopírování, která přesouvání dat do a z Azure Table Storage pomocí různých nástrojů a rozhraní API.
@@ -476,7 +478,7 @@ Při přesunu dat do a z Azure Table, následující [mapování, které jsou de
 | Typ dat OData | Typ formátu .NET | Podrobnosti |
 | --- | --- | --- |
 | Edm.Binary |Byte |Pole bajtů až 64 KB. |
-| Edm.Boolean |BOOL |Logická hodnota. |
+| Edm.Boolean |bool |Logická hodnota. |
 | Edm.DateTime |DateTime |Hodnota 64-bit, vyjádřené jako koordinovaný univerzální čas (UTC). Podporovaný rozsah data a času počínaje 12:00 hodin 1 dne 1601 N.L. (C.E.), UTC. Rozsah končí 31. prosince 9999. |
 | Edm.Double |double |Bod hodnotu s plovoucí desetinnou čárkou 64bitové. |
 | Edm.Guid |Guid |128bitové globálně jedinečný identifikátor. |

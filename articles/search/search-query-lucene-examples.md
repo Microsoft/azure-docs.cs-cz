@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c7c120b9bac33f71df72650d8a9d9a72e819d227
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 6f7fce7eab697f6517b351d00595cb02110d3641
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439181"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499569"
 ---
 # <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Příklady dotazů pomocí syntaxe vyhledávání "úplné" Lucene (pokročilé dotazy ve službě Azure Search)
 
@@ -139,6 +139,7 @@ Zadáním **fieldname:searchterm** konstrukce, můžete definovat operace fielde
 
 * business_title:(senior NOT junior)
 * Stav: ("New York" a "Nové Jersey")
+* business_title:(senior NOT junior) posting_type:external a
 
 Nezapomeňte vložit více řetězce v uvozovkách, pokud chcete, aby oba řetězce, který se má vyhodnotit jako jedna entita, stejně jako v tomto případě vyhledávání různých měst v poli umístění. Také se ujistěte, operátor, který je velkými písmeny, jak vidíte s NOT a AND.
 

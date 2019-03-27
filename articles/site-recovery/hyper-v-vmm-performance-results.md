@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 62137f64f0f138ea1c2dfbdf97bde791227617db
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7e2f5c344a0fb632956ab5d5b951ee69cff528ec
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793032"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482796"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Výsledky testu pro replikaci Hyper-V do sekundární lokality
 
@@ -108,7 +108,7 @@ Ve výsledcích zobrazí jasně, že s minimální režie pro velký cluster šk
 
 | Server | Paměť RAM | Model | Procesor | Počet procesorů | NIC | Software |
 | --- | --- | --- | --- | --- | --- | --- |
-| Servery Hyper-V v clusteru: <br />ESTLAB HOST11<br />ESTLAB HOST12<br />ESTLAB HOST13<br />ESTLAB HOST14<br />ESTLAB-HOST25 |128ESTLAB HOST25 má 256 |Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |4 |Můžu x 4 GB/s |Windows Server Datacenter 2012 R2 (x64) + roli Hyper-V |
+| Servery Hyper-V v clusteru: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB HOST25 má 256 |Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |4 |Můžu x 4 GB/s |Windows Server Datacenter 2012 R2 (x64) + roli Hyper-V |
 | VMM Server |2 | | |2 |1 Gb/s |Windows Server databáze 2012 R2 (x 64) a VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>Sekundární lokalita
@@ -120,9 +120,9 @@ Ve výsledcích zobrazí jasně, že s minimální režie pro velký cluster šk
 
 | Server | Paměť RAM | Model | Procesor | Počet procesorů | NIC | Software |
 | --- | --- | --- | --- | --- | --- | --- |
-| Servery Hyper-V v clusteru: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB HOST10 |96 |Dell™ PowerEdge™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 \@ 2.30 GHz |2 |Můžu x 4 GB/s |Windows Server Datacenter 2012 R2 (x64) + roli Hyper-V |
-| ESTLAB HOST17 |128 |Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + roli Hyper-V |
-| ESTLAB HOST24 |256 |Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + roli Hyper-V |
+| Servery Hyper-V v clusteru: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell™ PowerEdge™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 \@ 2.30 GHz |2 |Můžu x 4 GB/s |Windows Server Datacenter 2012 R2 (x64) + roli Hyper-V |
+| ESTLAB-HOST17 |128 |Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + roli Hyper-V |
+| ESTLAB-HOST24 |256 |Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + roli Hyper-V |
 | VMM Server |2 | | |2 |1 Gb/s |Windows Server databáze 2012 R2 (x 64) a VMM 2012 R2 |
 
 ### <a name="server-workloads"></a>Jiné úlohy serveru
@@ -131,11 +131,11 @@ Ve výsledcích zobrazí jasně, že s minimální režie pro velký cluster šk
 * Používáme [IOMeter](http://www.iometer.org) s charakteristika úlohy uvedené v tabulce pro simulaci.
 * Všechny profily IOMeter jsou nastaveny na zápis náhodných bajtů pro simulaci nejhorším zápisu vzory pro úlohy.
 
-| Úloha | Vstupně-výstupních operací velikost (KB) | % Přístupu | % Čtení | Nezpracovaných vstupně-výstupních operací | Vzor vstupně-výstupních operací |
+| Úloha | Vstupně-výstupních operací velikost (KB) | % Přístupu | %Read | Nezpracovaných vstupně-výstupních operací | Vzor vstupně-výstupních operací |
 | --- | --- | --- | --- | --- | --- |
 | Souborový server |48163264 |60%20%5%5%10% |80%80%80%80%80% |88888 |Náhodné 100 % |
 | SQL Server (svazku 1) SQL serveru (svazku. 2) |864 |100%100% |70%0% |88 |100 % random100 % sekvenční |
-| Výměna |32 |100% |67% |8 |100 % náhodné |
+| Výměna |32 |100 % |67% |8 |100 % náhodné |
 | Pracovní stanice/VDI |464 |66%34% |70%95% |11 |Obě náhodné 100 % |
 | Web souborového serveru |4864 |33%34%33% |95%95%95% |888 |Náhodné 75 % |
 
@@ -175,10 +175,10 @@ Tabulka shrnuje metriky výkonu a čítače, které se měří v nasazení.
 | Procesor |\Processor(_Total)\% Processor Time |
 | Dostupná paměť |\Memory\Available paměť v megabajtech |
 | IOPS |Přenosy \Disk \PhysicalDisk (využití _celkem) za sekundu |
-| Operací za sekundu (IOPS) čtení virtuálního počítače |Zařízení virtuálního úložiště \Hyper-V (<VHD>) \Read operace/s |
-| Operace zápisu (IOPS) virtuálního počítače za sekundu |Zařízení virtuálního úložiště \Hyper-V (<VHD>) \Write operací za sekundu |
-| Propustnost čtení virtuálního počítače |Zařízení virtuálního úložiště \Hyper-V (<VHD>) \Read bajty/s |
-| Propustnost zápisu virtuálního počítače |Zařízení virtuálního úložiště \Hyper-V (<VHD>) \Write bajty/s |
+| Operací za sekundu (IOPS) čtení virtuálního počítače |Zařízení virtuálního úložiště \Hyper-V (\<VHD >) \Read operace/s |
+| Operace zápisu (IOPS) virtuálního počítače za sekundu |Zařízení virtuálního úložiště \Hyper-V (\<VHD >) \Write operací za sekundu |
+| Propustnost čtení virtuálního počítače |Zařízení virtuálního úložiště \Hyper-V (\<VHD >) \Read bajty/s |
+| Propustnost zápisu virtuálního počítače |Zařízení virtuálního úložiště \Hyper-V (\<VHD >) \Write bajty/s |
 
 ## <a name="next-steps"></a>Další postup
 

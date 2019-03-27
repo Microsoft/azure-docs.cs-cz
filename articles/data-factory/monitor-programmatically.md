@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: gauravmalhot
 ms.author: gamal
 manager: craigg
-ms.openlocfilehash: ed1d6ab96a7658880a8784c5e03c3787cf87a8ba
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 035e12da67d28e8e3fb46ac295717dd6b579922c
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576306"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486609"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programové monitorování služby Azure data factory
 Tento článek popisuje, jak monitorovat kanál v datové továrně pomocí různých software development Kit (SDK). 
@@ -105,7 +105,7 @@ Kompletní postup vytváření a monitorování kanálu pomocí rozhraní REST A
     ```
 2. Spusťte následující skript, který načte podrobnosti o spuštění aktivity kopírování, například velikost načtených/zapsaných dat.
 
-    ```PowerShell
+    ```powershell
     $request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelineruns/${runId}/activityruns?api-version=${apiVersion}&startTime="+(Get-Date).ToString('yyyy-MM-dd')+"&endTime="+(Get-Date).AddDays(1).ToString('yyyy-MM-dd')+"&pipelineName=Adfv2QuickStartPipeline"
     $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
     $response | ConvertTo-Json

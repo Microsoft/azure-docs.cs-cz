@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 8bfd6bd7e42d5978f6db2c2a6bdb634661c6bfed
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 857f621ee2c6d594f769b642b7cc671c5e7f7a9a
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886741"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482568"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Vytvoření šablony Resource Manageru clusteru Service Fabric
 
@@ -241,13 +241,13 @@ Moduly RM nemají možnost vygenerovat konfiguraci Azure AD pro vás, tak pokud 
 ## <a name="test-your-template"></a>Test šablony
 Pro testování soubor parametrů šablony Resource Manageru pomocí následujícího příkazu Powershellu:
 
-```PowerShell
+```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
 V případě narazíte na problémy a získat zprávy jako nesrozumitelné, pak použijte "-Debug" jako možnost.
 
-```PowerShell
+```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
 ```
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d5100a3da9b00f5c9a1defee1e4b9280528fd2d8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2d816ab2f14be8574f77491807d4dbd071487f42
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543011"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483061"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Kurz: Vytvoření datové továrny pomocí sady Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -314,8 +314,8 @@ V tomto kroku publikujete entity služby Data Factory (propojené služby, datov
    5. Vyberte **oblast** pro objekt pro vytváření dat.
    6. Kliknutím na **Další** přejděte na stránku **Publish Items** (Publikovat položky). (Pokud je tlačítko **Další** neaktivní, opusťte pole Název stisknutím klávesy **TAB**.)
 
-    > [!IMPORTANT]
-    > Pokud se při publikování zobrazí chyba typu **Název objektu pro vytváření dat FirstDataFactoryUsingVS není dostupný**, název změňte (třeba na vaše_jméno_FirstDataFactoryUsingVS). V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.   
+      > [!IMPORTANT]
+      > Pokud se při publikování zobrazí chyba typu **Název objektu pro vytváření dat FirstDataFactoryUsingVS není dostupný**, název změňte (třeba na vaše_jméno_FirstDataFactoryUsingVS). V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.   
 1. Na stránce **Publish Items** (Publikovat položky) zkontrolujte, jestli jsou vybrané všechny entity služby Data Factory, a kliknutím na **Další** přejděte na stránku **Souhrn**.
 
     ![Stránka publikování položek](media/data-factory-build-your-first-pipeline-using-vs/publish-items-page.png)     
@@ -328,12 +328,12 @@ Všimněte si těchto důležitých bodů:
 
 - Pokud se zobrazí chybová zpráva: **Toto předplatné není zaregistrované používání oboru názvů Microsoft.DataFactory**, proveďte jednu z následujících akcí a znovu zkuste název publikovat:
     - V prostředí Azure PowerShell zaregistrujte zprostředkovatele služby Data Factory pomocí následujícího příkazu.
-        ```PowerShell   
+        ```powershell   
         Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
         ```
         Spuštěním následujícího příkazu si můžete ověřit, jestli je zprostředkovatel služby Data Factory zaregistrovaný.
 
-        ```PowerShell
+        ```powershell
         Get-AzResourceProvider
         ```
     - Přihlaste se na web [Azure Portal](https://portal.azure.com) pomocí předplatného Azure a přejděte do okna Objekt pro vytváření dat nebo na webu Azure Portal vytvořte objekt pro vytváření dat. Zprostředkovatel se při takovém postupu zaregistruje automaticky.
@@ -565,6 +565,7 @@ Dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením
 
 
 ## <a name="see-also"></a>Viz také
+
 | Téma | Popis |
 |:--- |:--- |
 | [Kanály](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení pracovních postupů založených na datech. |

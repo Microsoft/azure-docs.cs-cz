@@ -1,23 +1,23 @@
 ---
-title: Spusťte příkazy prostředí PowerShell nebo rozhraní příkazového řádku Azure v rámci identity Azure AD pro přístup k úložišti Azure | Dokumentace Microsoftu
-description: Azure CLI a Powershellu podporu přihlášení pomocí identity Azure AD ke spouštění příkazů na kontejnery služby Azure Storage a fronty a jejich data. Přístupový token je k dispozici pro relaci a použít k autorizaci volání operace. Oprávnění, závisí na roli přiřazenou k identitě služby Azure AD.
+title: Spusťte příkazy prostředí PowerShell nebo rozhraní příkazového řádku Azure v rámci identity Azure AD pro přístup k datům objektu blob a fronty | Dokumentace Microsoftu
+description: Azure CLI a Powershellu podporu přihlášení pomocí identity Azure AD ke spouštění příkazů na data objektů blob a fronty Azure Storage. Přístupový token je k dispozici pro relaci a použít k autorizaci volání operace. Oprávnění, závisí na roli RBAC přiřazenou k identitě služby Azure AD.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 03/26/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 6c57367a3a11aeb5bdded8e19ce57b7e265aeea9
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: d1fdafaaecd448fd09fc40cf5f6173ce600ac4f9
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369237"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483201"
 ---
-# <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell"></a>Pomocí identity Azure AD pro přístup k úložišti Azure pomocí Powershellu nebo rozhraní příkazového řádku
+# <a name="use-an-azure-ad-identity-to-access-blob-and-queue-data-with-cli-or-powershell"></a>Identity Azure AD pro přístup k datům objektu blob a fronty pomocí Powershellu nebo rozhraní příkazového řádku
 
-Azure Storage poskytuje rozšíření pro Azure CLI a Powershellu, které vám umožní přihlásit a spuštění příkazů skriptu v rámci Azure Active Directory (Azure AD) identity. Identity Azure AD může být uživatele, skupinu nebo instanční objekt služby aplikace nebo může se jednat [spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md). Můžete přiřadit oprávnění pro přístup k prostředkům úložiště do identity Azure AD prostřednictvím řízení přístupu na základě role (RBAC). Další informace o rolích RBAC ve službě Azure Storage najdete v tématu [Správa přístupových práv k datům služby Azure Storage pomocí RBAC](storage-auth-aad-rbac.md).
+Azure Storage poskytuje rozšíření pro Azure CLI a Powershellu, které vám umožní přihlásit a spuštění příkazů skriptu v rámci Azure Active Directory (Azure AD) identity. Identity Azure AD může být uživatele, skupinu nebo instanční objekt služby aplikace nebo může se jednat [spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md). Můžete přiřadit oprávnění pro přístup k datům objektu blob a fronty k identitě služby Azure AD prostřednictvím řízení přístupu na základě role (RBAC). Další informace o rolích RBAC ve službě Azure Storage najdete v tématu [Správa přístupových práv k datům služby Azure Storage pomocí RBAC](storage-auth-aad-rbac.md).
 
 Při přihlášení k Azure CLI nebo Powershellu s Azure AD identity, je vrácena přístupového tokenu pro přístup k Azure Storage v rámci této identity. Tento token se pak automaticky použije pomocí Powershellu nebo rozhraní příkazového řádku k autorizaci operace využívající službu Azure Storage. Pro podporované operace je už nebude potřeba předat klíč k účtu nebo token SAS pomocí příkazu.
 
@@ -29,7 +29,7 @@ Podrobnosti o oprávněních požadovaných pro každou operaci služby Azure St
 
 ## <a name="call-cli-commands-using-azure-ad-credentials"></a>Volání příkazů rozhraní příkazového řádku pomocí přihlašovacích údajů Azure AD
 
-Azure CLI podporuje `--auth-mode` parametr pro operace s daty využívající službu Azure Storage:
+Azure CLI podporuje `--auth-mode` parametr pro operace s daty objektů blob a fronty:
 
 - Nastavte `--auth-mode` parametr `login` k přihlášení pomocí instančního objektu zabezpečení služby Azure AD.
 - Nastavte `--auth-mode` parametr starší `key` jsou k dispozici hodnota pokusu o dotaz na klíče if účet žádné parametry ověřování pro účet. 
@@ -61,7 +61,7 @@ Následující příklad ukazuje, jak vytvořit kontejner ve nový účet úlož
         --encryption-services blob
     ```
     
-1. Než vytvoříte kontejner, přiřaďte [Přispěvatel dat objektu Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) role na vás. I když jste vlastník účtu, potřebují explicitní oprávnění k provedení operace s daty proti účtu úložiště. Další informace o přiřazení role RBAC najdete v tématu [udělit přístup k kontejnery služby Azure a fronty pomocí RBAC na webu Azure Portal](storage-auth-aad-rbac.md).
+1. Než vytvoříte kontejner, přiřaďte [Přispěvatel dat objektu Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) role na vás. I když jste vlastník účtu, potřebují explicitní oprávnění k provedení operace s daty proti účtu úložiště. Další informace o přiřazení role RBAC najdete v tématu [udělit přístup k Azure data objektů blob a fronty pomocí RBAC na webu Azure Portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > Přiřazení rolí pro RBAC může trvat několik minut na dokončení propagace.
@@ -114,7 +114,7 @@ Následující příklad ukazuje, jak vytvořit kontejner ve nový účet úlož
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. Než vytvoříte kontejner, přiřaďte [Přispěvatel dat objektu Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) role na vás. I když jste vlastník účtu, potřebují explicitní oprávnění k provedení operace s daty proti účtu úložiště. Další informace o přiřazení role RBAC najdete v tématu [udělit přístup k kontejnery služby Azure a fronty pomocí RBAC na webu Azure Portal](storage-auth-aad-rbac.md).
+1. Než vytvoříte kontejner, přiřaďte [Přispěvatel dat objektu Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) role na vás. I když jste vlastník účtu, potřebují explicitní oprávnění k provedení operace s daty proti účtu úložiště. Další informace o přiřazení role RBAC najdete v tématu [udělit přístup k Azure data objektů blob a fronty pomocí RBAC na webu Azure Portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > Přiřazení rolí pro RBAC může trvat několik minut na dokončení propagace.

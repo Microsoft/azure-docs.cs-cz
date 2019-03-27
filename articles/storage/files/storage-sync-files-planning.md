@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: c032961bf89ba470a38ebccfd846659b080f9fab
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 034beeaaebb86786106f7884fc147ff15167538e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013220"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480715"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -75,7 +75,7 @@ Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompat
 #### <a name="download-instructions"></a>Pokyny ke stažení
 1. Ujistěte se, že máte nejnovější verzi modulu PackageManagement a modul PowerShellGet nainstalovaný (díky tomu můžete nainstalovat moduly ve verzi preview)
     
-    ```PowerShell
+    ```powershell
         Install-Module -Name PackageManagement -Repository PSGallery -Force
         Install-Module -Name PowerShellGet -Repository PSGallery -Force
     ```
@@ -83,29 +83,29 @@ Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompat
 2. Restartujte prostředí PowerShell
 3. Instalace modulů
     
-    ```PowerShell
+    ```powershell
         Install-Module -Name Az.StorageSync -AllowPrerelease -AllowClobber -Force
     ```
 
 #### <a name="usage"></a>Využití  
 Nástroj pro vyhodnocení můžete vyvolat několika různými způsoby: můžete provádět kontrolu systému, kontroly datovou sadu nebo obojí. K provedení kontroly systému a datové sady: 
 
-```PowerShell
+```powershell
     Invoke-AzStorageSyncCompatibilityCheck -Path <path>
 ```
 
 Chcete-li otestovat pouze datovou sadu:
-```PowerShell
+```powershell
     Invoke-AzStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
 ```
  
 K otestování pouze požadavky na systém:
-```PowerShell
+```powershell
     Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name>
 ```
  
 Chcete-li zobrazit výsledky ve sdíleném svazku clusteru:
-```PowerShell
+```powershell
     $errors = Invoke-AzStorageSyncCompatibilityCheck […]
     $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
 ```

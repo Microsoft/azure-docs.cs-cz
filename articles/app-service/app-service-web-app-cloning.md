@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 53cde81ed5df97c4cb6d8360c9bb639b8bdabe20
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 198fedbbd1e97dcda15c9124109e50664f58f8e7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818132"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487885"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Aplikace Azure App Service klonování pomocí Powershellu
 
@@ -35,31 +35,31 @@ Scénář: Existující aplikace v oblasti střed USA – jih a chcete naklonova
 
 Znalost, název skupiny prostředků, který obsahuje zdrojovou aplikaci, slouží následující příkaz Powershellu získat informace o aplikaci zdroje (v tomto případě s názvem `source-webapp`):
 
-```PowerShell
+```powershell
 $srcapp = Get-AzWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-webapp
 ```
 
 Pokud chcete vytvořit nový plán služby App Service, můžete použít `New-AzAppServicePlan` příkaz jako v následujícím příkladu
 
-```PowerShell
+```powershell
 New-AzAppServicePlan -Location "South Central US" -ResourceGroupName DestinationAzureResourceGroup -Name NewAppServicePlan -Tier Premium
 ```
 
 Použití `New-AzWebApp` příkazu, můžete vytvořit novou aplikaci v oblasti střed USA – sever a spojit je k vrstvě premium existující plán služby App Service. Kromě toho můžete použít stejnou skupinu prostředků jako zdrojová aplikace nebo definovat novou skupinu prostředků, jak je znázorněno v následujícím příkazu:
 
-```PowerShell
+```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp
 ```
 
 Klonování existující aplikace včetně všech přidružených nasazovacích slotů, budete muset použít `IncludeSourceWebAppSlots` parametru. Následující příkaz prostředí PowerShell ukazuje použití tohoto parametru se `New-AzWebApp` příkaz:
 
-```PowerShell
+```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots
 ```
 
 Klonování existující aplikace v rámci stejné oblasti, je potřeba vytvořit novou skupinu prostředků a novou službu app service plánování ve stejné oblasti a pak pomocí následujícího příkazu Powershellu naklonujte aplikaci:
 
-```PowerShell
+```powershell
 $destapp = New-AzWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan NewAppServicePlan -SourceWebApp $srcap
 ```
 
@@ -68,13 +68,13 @@ Scénář: Existující aplikace v oblasti střed USA – jih a chcete naklonova
 
 Znalost, název skupiny prostředků, který obsahuje zdrojovou aplikaci, slouží následující příkaz Powershellu získat informace o aplikaci zdroje (v tomto případě s názvem `source-webapp`):
 
-```PowerShell
+```powershell
 $srcapp = Get-AzWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-webapp
 ```
 
 Vědět, že služba ASE název a název skupiny prostředků, které patří služby ASE, můžete vytvořit novou aplikaci do existující služby ASE, jak je znázorněno v následujícím příkazu:
 
-```PowerShell
+```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -ASEName DestinationASE -ASEResourceGroupName DestinationASEResourceGroupName -SourceWebApp $srcapp
 ```
 
@@ -85,13 +85,13 @@ Scénář: Chcete naklonovat existující slot nasazení aplikace do buď nové 
 
 Znalost, název skupiny prostředků, která obsahuje zdrojová aplikace, slouží následující příkaz Powershellu k získání informací o zdrojový slot app (v tomto případě s názvem `source-appslot`) spojený s `source-app`:
 
-```PowerShell
+```powershell
 $srcappslot = Get-AzWebAppSlot -ResourceGroupName SourceAzureResourceGroup -Name source-app -Slot source-appslot
 ```
 
 Následující příkaz ukazuje vytvoření klonu byla zdrojová aplikace do nové aplikace:
 
-```PowerShell
+```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-app -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcappslot
 ```
 
@@ -101,20 +101,20 @@ Vytvoření aplikace ve více oblastech a konfigurace Azure Traffic Manageru sm�
 ### <a name="creating-a-new-traffic-manager-profile-while-cloning-an-app"></a>Vytvoření nového profilu Traffic Manageru při klonování aplikace
 Scénář: Chcete klonování aplikace do jiné oblasti, při konfiguraci Azure Resource Manageru profil služby traffic manager, která obsahuje obě aplikace. Následující příkaz ukazuje vytvoření klonu byla zdrojová aplikace do nové aplikace při konfiguraci nového profilu Traffic Manageru:
 
-```PowerShell
+```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileName newTrafficManagerProfile
 ```
 
 ### <a name="adding-new-cloned-app-to-an-existing-traffic-manager-profile"></a>Přidání nových klonovat aplikaci tak, aby existující profil Traffic Manageru
 Scénář: Již máte profil traffic Manageru Azure Resource Manageru a chcete přidat obě aplikace jako koncové body. K tomu, je nejprve nutné sestavit existující provozu ID profilu správce. Budete potřebovat ID předplatného, název skupiny prostředků a stávající název profilu traffic Manageru.
 
-```PowerShell
+```powershell
 $TMProfileID = "/subscriptions/<Your subscription ID goes here>/resourceGroups/<Your resource group name goes here>/providers/Microsoft.TrafficManagerProfiles/ExistingTrafficManagerProfileName"
 ```
 
 Po s ID traffic Manager, následující příkaz ukazuje vytvoření klonu byla zdrojová aplikace do nové aplikace při jejich přidání do existujícího profilu Traffic Manageru:
 
-```PowerShell
+```powershell
 $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileId $TMProfileID
 ```
 

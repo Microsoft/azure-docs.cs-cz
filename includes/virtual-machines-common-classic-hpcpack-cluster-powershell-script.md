@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 2df08968ad66bd330611b975c045c9e9c9b240aa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 6f0d2d59ed50c743adb19027c404bfa83a1886f1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735554"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484861"
 ---
 V závislosti na prostředí a možnosti můžete vytvořit skript všechny clusteru infrastrukturu, včetně virtuální sítě Azure, účty úložiště, cloudové služby, řadič domény, vzdálené nebo místní databáze SQL, hlavní uzel a další uzly clusteru. Skript můžete také použít už existující infrastrukturu Azure a vytvořit pouze uzly clusteru prostředí HPC.
 
@@ -22,7 +22,7 @@ Základní informace o plánování clusteru HPC Pack, najdete v článku [obdob
 * **Konfigurační soubor skriptu**: Vytvořte soubor XML, který tento skript používá ke konfiguraci clusteru prostředí HPC. Informace a příklady najdete v částech dále v tomto článku a soubor Manual.rtf, který doprovází skript nasazení.
 
 ## <a name="syntax"></a>Syntaxe
-```PowerShell
+```powershell
 New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminPassword] <String>] [[-HPCImageName] <String>] [[-LogFile] <String>] [-Force] [-NoCleanOnFailure] [-PSSessionSkipCACheck] [<CommonParameters>]
 ```
 > [!NOTE]
@@ -53,7 +53,7 @@ New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminP
 ### <a name="example"></a>Příklad:
 Následující příklad vytvoří cluster prostředí HPC Pack je používán konfigurační soubor *MyConfigFile.xml*a určuje přihlašovací údaje správce pro instalaci clusteru.
 
-```PowerShell
+```powershell
 .\New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName <username> –AdminPassword <password>
 ```
 

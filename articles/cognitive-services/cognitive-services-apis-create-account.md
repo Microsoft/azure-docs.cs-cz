@@ -1,20 +1,20 @@
 ---
 title: Vytvoření účtu služeb Cognitive Services na webu Azure Portal
 titlesuffix: Azure Cognitive Services
-description: Jak vytvořit účet Microsoft API služeb Cognitive Services na webu Azure Portal.
+description: Jak vytvořit účet Azure API služeb Cognitive Services na webu Azure Portal.
 services: cognitive-services
 author: garyericson
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 02/01/2018
+ms.date: 03/22/2019
 ms.author: garye
-ms.openlocfilehash: 21e1eb00f688f2e7061e876cc4375d6d780838fc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7df429aa848c6f9fb9abe09fbf4357db20fcde6a
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534799"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472850"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Rychlý start: Vytvoření účtu služeb Cognitive Services na webu Azure Portal
 
@@ -29,7 +29,7 @@ V tomto rychlém startu se budete dozvíte, jak se zaregistrovat pro Azure Cogni
 Než začnete, je důležité vědět, že existují dva typy předplatných Azure Cognitive Services. První je předplatné do jediné služby, jako je například pro počítačové zpracování obrazu nebo hlasových služeb. Předplatné jednoúčelovou je omezen na tento prostředek. Druhým je víc služeb předplatného pro Azure Cognitive Services. Toto předplatné umožňuje používat v rámci jednoho předplatného pro většinu služeb Azure Cognitive Services. Tato možnost také konsoliduje fakturace. Zobrazit [ceny služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) pro další informace.
 
 >[!WARNING]
-> V tuto chvíli tyto služby **není** podporovat víc služeb klíče: Nástroj QnA Maker, hlasových služeb a Custom Vision.
+> V tuto chvíli tyto služby **není** podporovat víc služeb klíče: Nástroj QnA Maker, hlasových služeb, Custom Vision a detekce anomálií.
 
 Následující části vás provede vytvořením jedné nebo víc služeb předplatného.
 

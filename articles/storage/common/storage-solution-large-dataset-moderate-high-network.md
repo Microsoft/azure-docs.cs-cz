@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: alkohli
-ms.openlocfilehash: 4a8a014b365974bb8c138c74197d3d89cc63e42e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d3326713b0fbae070d04fa0fe7ead712fbcacf84
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771976"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496889"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Přenos dat pro rozsáhlé datové sady s střední pro velká šířka pásma sítě
  
@@ -76,7 +76,7 @@ Pokud používáte přenos dat offline, vysvětluje rozdíly mezi klíčové fun
 |    Integrace partnerských řešení              |    Někteří                         |    [Vysoká](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Vysoká](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Někteří                                |
 |    Expedice                         |    Spravovaná Microsoftem            |    Spravovaná Microsoftem                             |    Spravovaná Microsoftem                     |    Spravovaná zákazníkem                    |
 | Použijte v případě přesunu dat         |V rámci obchodní oblasti|V rámci obchodní oblasti|V rámci obchodní oblasti|Přes geografické hranice, například nám EU|
-|    Ceny                          |    [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/disk/)                    |   [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Ceny](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
+|    Ceny                          |    [Ceny](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Ceny](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
 Pokud používáte online datové přenosy, použijte v tabulce v části pro velká šířka pásma sítě.

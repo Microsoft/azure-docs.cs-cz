@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 87db25bbfd68aea1b8835211d7b51dfddcd43038
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2aeb756bda50597bf3e43c0c84391e0750bd8acb
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899379"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486814"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Zkopírujte transakčně konzistentní kopie databáze Azure SQL
 
@@ -54,7 +54,7 @@ Pokud chcete zkopírovat databázi pomocí webu Azure portal, otevřete stránku
 
 Pokud chcete zkopírovat databázi s použitím prostředí PowerShell, použijte [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) rutiny. 
 
-```PowerShell
+```powershell
 New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
     -ServerName $sourceserver `
     -DatabaseName "MySampleDatabase" `

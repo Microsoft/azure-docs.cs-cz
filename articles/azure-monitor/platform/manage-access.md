@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: be285b6a51ae5a0f4239b841ce64100f1875d785
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 6990bed4065183ecabb502ea90b5ddf26db563b4
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294344"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500181"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Správa dat protokolů a pracovním prostorům ve službě Azure Monitor
 Azure Monitor úložiště vytvářet protokoly dat v pracovním prostoru Log Analytics, která je v podstatě kontejner, který obsahuje data a informace o konfiguraci. Ke správě přístupu k protokolování dat, můžete provádět různé úlohy správy související s pracovními prostory. Vy nebo další členové vaší organizace můžete používat víc pracovních prostorů ke správě různých sad dat, která se shromažďují ze všech částí vaší infrastruktury IT.
@@ -114,7 +114,7 @@ Následující tabulka shrnuje režimy přístupu:
 |:---|:---|:---|
 | Komu je každý model určená? | Centrální správy. Správci, kteří potřebují přístup k široké škály zdrojů, kteří potřebují ke konfiguraci shromažďování dat a uživatelů. Také se momentálně nutná pro uživatele, kteří mají na přístup k protokolům pro prostředky mimo Azure. | Aplikační týmy. Správce prostředků Azure, které jsou monitorovány. |
 | Chcete-li zobrazit protokoly co vyžaduje uživatele? | Oprávnění k pracovnímu prostoru. Zobrazit **oprávnění k pracovním prostorům** v [Správa účtů a uživatelů](#manage-accounts-and-users). | Přístup pro čtení k prostředku. Zobrazit **oprávnění zdrojů** v [Správa účtů a uživatelů](#manage-accounts-and-users). Oprávnění může být zděděno (jako třeba příslušnou skupinu prostředků) nebo přímo přiřazenou k prostředku. Oprávnění k protokolům pro prostředek se automaticky přiřadí. |
-| Jaký je rozsah oprávnění? | Pracovní prostor. Uživatelé s přístupem k pracovnímu prostoru se můžete dotazovat všechny protokoly v daném pracovním prostoru z tabulek, které mají oprávnění k. Zobrazit [řízení přístupu na tabulku](#table-access-control) | Prostředek Azure. Uživatele můžete dotazovat protokoly pro prostředky máte přístup z libovolného pracovního prostoru, ale nemohou spustit dotaz pro protokoly pro další prostředky. |
+| Jaký je rozsah oprávnění? | Pracovní prostor. Uživatelé s přístupem k pracovnímu prostoru se můžete dotazovat všechny protokoly v daném pracovním prostoru z tabulek, které mají oprávnění k. Zobrazit [řízení přístupu na tabulku](#table-level-rbac) | Prostředek Azure. Uživatele můžete dotazovat protokoly pro prostředky máte přístup z libovolného pracovního prostoru, ale nemohou spustit dotaz pro protokoly pro další prostředky. |
 | Jak může uživatel přístup k protokolům? | Spustit **protokoly** z **Azure Monitor** nabídky nebo **pracovních prostorů Log Analytics**. | Spustit **protokoly** z nabídky pro prostředky Azure. |
 
 
@@ -150,13 +150,13 @@ Toto nastavení můžete změnit na **vlastnosti** stránky pro pracovní prosto
 
 Použijte následující příkaz k prozkoumání režim řízení přístupu pro všechny pracovní prostory v předplatném:
 
-```PowerShell
+```powershell
 Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions} 
 ```
 
 Pomocí následujícího skriptu pro nastavení režimu řízení přístupu pro konkrétní pracovní prostor:
 
-```PowerShell
+```powershell
 $WSName = "my-workspace"
 $Workspace = Get-AzResource -Name $WSName -ExpandProperties
 if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
@@ -168,7 +168,7 @@ Set-AzResource -ResourceId $Workspace.ResourceId -Properties $Workspace.Properti
 
 Pomocí následujícího skriptu pro nastavení režimu řízení přístupu pro všechny pracovní prostory v rámci předplatného
 
-```PowerShell
+```powershell
 Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {
 if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
     { $_.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
@@ -273,13 +273,13 @@ Když se přihlásí uživatelé dotazu z pracovního prostoru pomocí závislý
 
 Tato oprávnění jsou obvykle udělena z role, která zahrnuje  _\*/čtení nebo_ _\*_ oprávnění, jako je například předdefinované [čtečky](../../role-based-access-control/built-in-roles.md#reader) a [ Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) role. Mějte na paměti, že vlastní role, které zahrnují určité akce nebo vyhrazené předdefinovaných rolí nemusí zahrnovat toto oprávnění.
 
-V tématu [definování řízení přístupu na tabulky](#defining-per-table-access-control) níže Pokud chcete vytvořit různá řízení přístupu pro jiné tabulky.
+V tématu [definování řízení přístupu na tabulky](#table-level-rbac) níže Pokud chcete vytvořit různá řízení přístupu pro jiné tabulky.
 
 
 ## <a name="table-level-rbac"></a>Na úrovni tabulky RBAC
 **Tabulka úroveň RBAC** umožňuje poskytovat podrobnější řízení dat v pracovním prostoru Log Analytics další oprávnění. Tento ovládací prvek můžete zadat konkrétní datové typy, které jsou dostupné jenom pro konkrétní skupinu uživatelů.
 
-Implementujte řízení přístupu na tabulku pomocí [vlastní role Azure](../../role-based-access-control/custom-roles.md) udělit nebo odepřít přístup na konkrétní [tabulky](../log-query/log-query-overview.md#how-azure-monitor-log-data-is-organized) v pracovním prostoru. Tyto role se použijí u pracovních prostorů s zaměřené na pracovní prostor nebo zaměřené na prostředek [přístup k řízení režimy](#access-control-modes) bez ohledu na uživatele [režim přístupu](#access-mode).
+Implementujte řízení přístupu na tabulku pomocí [vlastní role Azure](../../role-based-access-control/custom-roles.md) udělit nebo odepřít přístup na konkrétní [tabulky](../log-query/log-query-overview.md#how-azure-monitor-log-data-is-organized) v pracovním prostoru. Tyto role se použijí u pracovních prostorů s zaměřené na pracovní prostor nebo zaměřené na prostředek [přístup k řízení režimy](#access-control-mode) bez ohledu na uživatele [režim přístupu](#access-modes).
 
 Vytvoření [vlastní roli](../../role-based-access-control/custom-roles.md) s definují přístup k řízení přístupu k tabulce následujících akcí.
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0f0a22ea4a24a82cb4acf7a3b20a743ee7425c72
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: ac1c1c4ae21ebd184b833fe4d23084f7cf324d2c
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294905"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500470"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Správa protokolů pro cluster HDInsight
 
@@ -98,7 +98,7 @@ Dalším krokem je kontrola souborů protokolu spuštění úlohy pro různé sl
 
 ### <a name="access-the-hadoop-log-files"></a>Soubory protokolů Hadoop
 
-HDInsight ukládá soubory protokolu v systému souborů clusteru i ve službě Azure storage. Soubory protokolu v clusteru můžete zkontrolovat tak, že otevřete [SSH](/hdinsight-hadoop-linux-use-ssh-unix.md) připojení clusteru, a procházení systému souborů nebo pomocí portálu Hadoop YARN stavu na serveru pro vzdálený hlavního uzlu. Můžete zkontrolovat soubory protokolů ve službě Azure storage pomocí některého nástroje, které můžete používat a stahovat data ze služby Azure storage. Mezi příklady patří [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer)a Průzkumníka serveru Visual Studia. Prostředí PowerShell a knihovny klienta úložiště Azure nebo Azure .NET SDK, můžete také použít pro přístup k datům ve službě Azure blob storage.
+HDInsight ukládá soubory protokolu v systému souborů clusteru i ve službě Azure storage. Soubory protokolu v clusteru můžete zkontrolovat tak, že otevřete [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) připojení clusteru, a procházení systému souborů nebo pomocí portálu Hadoop YARN stavu na serveru pro vzdálený hlavního uzlu. Můžete zkontrolovat soubory protokolů ve službě Azure storage pomocí některého nástroje, které můžete používat a stahovat data ze služby Azure storage. Mezi příklady patří [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer)a Průzkumníka serveru Visual Studia. Prostředí PowerShell a knihovny klienta úložiště Azure nebo Azure .NET SDK, můžete také použít pro přístup k datům ve službě Azure blob storage.
 
 Hadoop spustí pracovní úlohy jako *úkolů pokusy* na různých uzlech v clusteru. HDInsight, může iniciovat pokusy o spuštění úkolu spekulativního, ukončuje se žádné další pokusy o spuštění úkolu, které nejprve dokončí. Tím se vygeneruje významnou aktivitu, která je zaznamenána řadič, stderr a syslog protokolu souborů v běhu. Kromě toho více pokusy o spuštění úkolu jsou spuštěny současně, ale soubor protokolu lze zobrazit pouze výsledky lineárně.
 

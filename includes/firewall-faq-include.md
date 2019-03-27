@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 3/25/2019
+ms.date: 3/26/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 5029fb29aecda1f1bef14dc95f6301b539c60441
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: c632989ea85033c6cbdd4188351d34345e919c49
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419100"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500657"
 ---
 ### <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -45,10 +45,11 @@ Brána Firewall služby Azure můžete nastavit pomocí webu Azure portal, Power
 
 Azure Brána Firewall podporuje pravidel a kolekcí pravidel. Kolekce pravidel je sada pravidel, která mají stejné pořadí a priority. Kolekce pravidel jsou provedeny v pořadí podle jejich priority. Kolekce pravidel sítě mají vyšší prioritu než kolekcí pravidel aplikaci a všechna pravidla se ukončuje.
 
-Existují dva typy kolekcí pravidel:
+Existují tři typy kolekcí pravidel:
 
-* *Pravidla aplikací*: Umožňují nakonfigurovat plně kvalifikované názvy domény (FQDN), které mohou být přístupné z podsítě.
-* *Pravidla síťových*: Umožňují nakonfigurovat pravidla, která obsahují zdrojové adresy, protokoly, cílové porty a cílové adresy.
+* *Pravidla aplikací*: Konfigurace plně kvalifikované názvy domény (FQDN), které mohou být přístupné z podsítě.
+* *Pravidla síťových*: Konfigurace pravidel, která obsahují zdrojové adresy, protokoly, cílové porty a cílové adresy.
+* *Pravidla NAT*: Konfigurace pravidel DNAT povolovat příchozí připojení.
 
 ### <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Brána Firewall služby Azure podporuje filtrování příchozího provozu?
 
@@ -94,19 +95,19 @@ Příklad:
 ```azurepowershell
 # Stop an exisitng firewall
 
-$azfw = Get-AzureRmFirewall -Name "FW Name" -ResourceGroupName "RG Name"
+$azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $azfw.Deallocate()
-Set-AzureRmFirewall -AzureFirewall $azfw
+Set-AzFirewall -AzureFirewall $azfw
 ```
 
 ```azurepowershell
 #Start a firewall
 
-$azfw = Get-AzureRmFirewall -Name "FW Name" -ResourceGroupName "RG Name"
-$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
-$publicip = Get-AzureRmPublicIpAddress -Name "Public IP Name" -ResourceGroupName " RG Name"
+$azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
+$vnet = Get-AzVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
+$publicip = Get-AzPublicIpAddress -Name "Public IP Name" -ResourceGroupName " RG Name"
 $azfw.Allocate($vnet,$publicip)
-Set-AzureRmFirewall -AzureFirewall $azfw
+Set-AzFirewall -AzureFirewall $azfw
 ```
 
 > [!NOTE]
@@ -124,6 +125,14 @@ Ano, brána Firewall služby Azure můžete v centrální virtuální síti pro 
 
 Ano. Konfigurace trasy definované uživatelem pro přesměrování přenosu dat mezi podsítěmi ve stejné virtuální síti, ale vyžaduje další pozornost. Při používání rozsah adres virtuální sítě je dostatečná předponu cíl pro uživatelem definovaná TRASA, to také směruje veškerý provoz z jednoho počítače do jiného počítače ve stejné podsíti prostřednictvím instance Brána Firewall služby Azure. Abyste tomu předešli, obsahoval trasu pro podsíť v uživatelem definovaná TRASA s typem dalšího segmentu směrování z **VNET**. Správa tyto trasy může být náročné a náchylné k chybám. Doporučenou metodou pro interní síť segmentace, je použití skupin zabezpečení sítě, které nevyžadují trasy definované uživatelem.
 
+### <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Musí tunelové propojení/řetězení síťové virtuální zařízení podporované?
+
+Ano.
+
+Azure brány Firewall musí mít přímé připojení k Internetu. Ve výchozím nastavení, má AzureFirewallSubnet trasy 0.0.0.0/0 nastavená na hodnotu NextHopType **Internet**.
+
+Pokud povolíte vynuceného tunelování k místnímu přes ExpressRoute nebo VPN Gateway, budete muset explicitně nakonfigurovat 0.0.0.0/0 trasy definované uživatelem (UDR) se sadou NextHopType hodnotu jako Internet a přidružte jej k vaší AzureFirewallSubnet. Tím se přepíše potenciální výchozí bránu inzerování protokolu BGP zpět k místní síti. Pokud vaše organizace vyžaduje, aby vynucené tunelování za Firewall služby Azure pro směrování výchozí brány zpět prostřednictvím místní sítě, obraťte se na podporu. Můžeme vytvořit bílou listinu udržuje vaše předplatné, abyste zajistili vyžaduje připojení k Internetu bránu firewall.
+
 ### <a name="are-there-any-firewall-resource-group-restrictions"></a>Existují všechny brány firewall omezení skupin prostředků?
 
 Ano. Brána firewall, podsítě, virtuální sítě a veřejné IP adresy musí být ve stejné skupině prostředků.
@@ -131,3 +140,7 @@ Ano. Brána firewall, podsítě, virtuální sítě a veřejné IP adresy musí 
 ### <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Při konfiguraci DNAT pro příchozí síťový provoz, také potřeba nakonfigurovat odpovídající pravidlo sítě, které umožňují tento přenos dat?
 
 Ne. Pravidla NAT implicitně přidat odpovídající pravidlo sítě přeložené provoz. Toto chování můžete přepsat explicitním přidáním kolekce pravidel sítě s pravidly pro odepření, která odpovídají přeloženému provozu. Další informace najdete v článku, který pojednává o [logice zpracování pravidel služby Azure Firewall](../articles/firewall/rule-processing.md).
+
+### <a name="how-to-wildcards-work-in-an-application-rule-target-fqdn"></a>K zástupné znaky fungování v cíli pravidla aplikace plně kvalifikovaný název domény?
+
+Pokud nakonfigurujete ***. contoso.com**, umožňuje *anyvalue*. contoso.com, ale ne contoso.com (vrcholu domény). Pokud chcete povolit vrcholu domény, musíte ho explicitně nakonfigurovat jako cílový plně kvalifikovaný název domény.

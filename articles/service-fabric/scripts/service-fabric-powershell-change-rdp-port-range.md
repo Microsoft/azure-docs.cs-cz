@@ -3,7 +3,7 @@ title: Ukázkový skript Azure PowerShellu – Změna rozsahu portů RDP | Micro
 description: Ukázkový skript Azure PowerShellu – Změna rozsahu portů RDP u nasazeného clusteru
 services: service-fabric
 documentationcenter: ''
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 tags: azure-service-management
@@ -13,18 +13,20 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 03/19/2018
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 83fb6cc03f605a60b06f31fa6ddd82cd4e3e899e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: HT
+ms.openlocfilehash: ee2ac3a2051ba7dd63aac5928e1713541f23b81f
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30180183"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500096"
 ---
 # <a name="update-the-rdp-port-range-values"></a>Aktualizace hodnot rozsahu portů RDP
 
 Tento ukázkový skript po nasazení clusteru změní hodnoty rozsahu portů RDP na virtuálních počítačích uzlu clusteru.  Aby se základní virtuální počítače nezacyklily, používá se Azure PowerShell.  Skript získá prostředek `Microsoft.Network/loadBalancers` ve skupině prostředků clusteru a aktualizuje hodnoty `inboundNatPools.frontendPortRangeStart` a `inboundNatPools.frontendPortRangeEnd`. Podle potřeby upravte parametry.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview). 
 
@@ -38,10 +40,10 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Získá prostředek `Microsoft.Network/loadBalancers`. |
-|[Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource)|Aktualizuje prostředek `Microsoft.Network/loadBalancers`.|
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Získá prostředek `Microsoft.Network/loadBalancers`. |
+|[Set-AzResource](/powershell/module/az.resources/set-azresource)|Aktualizuje prostředek `Microsoft.Network/loadBalancers`.|
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

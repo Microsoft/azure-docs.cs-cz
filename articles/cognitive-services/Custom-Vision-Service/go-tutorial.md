@@ -8,18 +8,18 @@ manager: daauld
 ms.service: cognitive-services
 ms.component: custom-vision
 ms.topic: quickstart
-ms.date: 2/25/2018
+ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: 9a45cc3f8aaae3fb000858f8903ed4aff248513c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: f740974d17ad5f95bca6530a61619ee0283f819a
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884894"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58479976"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>Rychlý start: Vytvoření projektu klasifikace obrázků s Custom Vision Go SDK
 
-Tento článek obsahuje informace a ukázky kódu pro vám pomůže začít s pomocí sady SDK pro zpracování obrazu vlastní s využitím Go sestavit model klasifikace obrázků. Po jeho vytvoření můžete přidat značky, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. V tomto příkladu můžete použijte jako šablonu pro vytváření vlastních aplikací v Go. Pokud chcete procesem vytvoření a používání modelu klasifikace projít _bez_ kódu, přečtěte si místo toho [pokyny s využitím prohlížeče](getting-started-build-a-classifier.md).
+Tento článek obsahuje informace a ukázky kódu pro vám pomůže začít s pomocí sady SDK pro zpracování obrazu vlastní s využitím Go sestavit model klasifikace obrázků. Po jeho vytvoření, je můžete přidat značky, nahrávání obrázků, trénování projektu, získat adresu URL koncového bodu publikované predikce v projektu a použít koncový bod pro programové testování bitovou kopii. V tomto příkladu můžete použijte jako šablonu pro vytváření vlastních aplikací v Go. Pokud chcete procesem vytvoření a používání modelu klasifikace projít _bez_ kódu, přečtěte si místo toho [pokyny s využitím prohlížeče](getting-started-build-a-classifier.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -59,15 +59,17 @@ import(
     "path"
     "log"
     "time"
-    "github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.2/customvision/training"
-    "github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction"
+    "github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v3.0/customvision/training"
+    "github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v3.0/customvision/prediction"
 )
 
 var (
     training_key string = "<your training key>"
     prediction_key string = "<your prediction key>"
+    prediction_resource_id = "<your prediction resource id>"
     endpoint string = "https://southcentralus.api.cognitive.microsoft.com"
     project_name string = "Go Sample Project"
+    iteration_publish_name = "classifyModel"
     sampleDataDirectory = "<path to sample images>"
 )
 
@@ -89,7 +91,7 @@ func main() {
 Vytvořit klasifikaci značky do projektu přidejte následující kód do konce *sqlserversample*:
 
 ```go
-    # Make two tags in the new project
+    // Make two tags in the new project
     hemlockTag, _ := trainer.CreateTag(ctx, *project.ID, "Hemlock", "Hemlock tree tag", string(training.Regular))
     cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese cherry tree tag", string(training.Regular))
 ```
@@ -127,9 +129,9 @@ Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vlož�
     }
 ```
 
-### <a name="train-the-classifier"></a>Trénování klasifikátoru
+### <a name="train-the-classifier-and-publish"></a>Klasifikátor trénovat a publikovat
 
-Tento kód vytvoří první iteraci v projektu a označí ji jako výchozí iteraci. Výchozí iterace odráží verzi modelu, který bude odpovídat na požadavky na předpověď. Při každém přetrénování modelu byste ji měli aktualizovat.
+Tento kód vytvoří první iterace v projektu a ke koncovému bodu predikcí následně publikuje danou iteraci. Název zadaný pro publikované iterace lze použít k odesílání požadavků předpovědi. Iterace není k dispozici v koncovém bodě predikcí, dokud je publikována.
 
 ```go
     fmt.Println("Training...")
@@ -144,11 +146,10 @@ Tento kód vytvoří první iteraci v projektu a označí ji jako výchozí iter
     }
     fmt.Println("Training status: " + *iteration.Status)
 
-    *iteration.IsDefault = true
-    trainer.UpdateIteration(ctx, *project.ID, *iteration.ID, iteration)
+    trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-default-prediction-endpoint"></a>Získání a použití výchozího koncového bodu předpovědi
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získat a používat publikované iterace na koncovém bodu predikcí
 
 Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
 
@@ -157,7 +158,7 @@ Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpo
     predictor := prediction.New(prediction_key, endpoint)
 
     testImageData, _ := ioutil.ReadFile(path.Join(sampleDataDirectory, "Test", "test_image.jpg"))
-    results, _ := predictor.PredictImage(ctx, *project.ID, ioutil.NopCloser(bytes.NewReader(testImageData)), iteration.ID, "")
+    results, _ := predictor.ClassifyImage(ctx, *project.ID, iteration_publish_name, ioutil.NopCloser(bytes.NewReader(testImageData)), "")
 
     for _, prediction := range *results.Predictions {
         fmt.Printf("\t%s: %.2f%%", *prediction.TagName, *prediction.Probability * 100)
@@ -170,7 +171,7 @@ Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpo
 
 Spustit *sqlserversample*.
 
-```PowerShell
+```powershell
 go run sample.go
 ```
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: ad6fd4a75ca139c4943ca0d079a2d041ccb46d09
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2c04c13eb6399bebf908337d8f71bd03adf4d06a
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101087"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447222"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Načtení dat do Azure Data Lake Storage Gen2 s Azure Data Factory
 
@@ -39,9 +39,10 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **nový** > **Data a analýzy** > **služby Data Factory**:
+1. V nabídce vlevo vyberte **vytvořit prostředek** > **Data a analýzy** > **služby Data Factory**:
    
-   ![Vytvoření nové datové továrny](./media/load-azure-data-lake-storage-gen2/new-azure-data-factory-menu.png)
+   ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. V **nová datová továrna** zadejte hodnoty pro pole, která jsou zobrazena na následujícím obrázku: 
       
    ![Stránka Nová datová továrna](./media/load-azure-data-lake-storage-gen2//new-azure-data-factory.png)

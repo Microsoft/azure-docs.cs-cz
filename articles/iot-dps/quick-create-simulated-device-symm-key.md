@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c0a8fc31674fbe1a6c4e882fb30093bee865787b
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 6517f93035010be7fe8937c3ff34d54147f51e6f
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439086"
+ms.locfileid: "58481735"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Rychlý start: Zřízení simulovaného zařízení pomocí symetrických klíčů
 
@@ -50,7 +50,7 @@ Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované za
 
     Následující příklad používá prostředí Windows PowerShell k ověření kryptografické hodnoty hash verze 3.13.4 x64 distribuce MSI:
 
-    ```PowerShell
+    ```powershell
     PS C:\Downloads> $hash = get-filehash .\cmake-3.13.4-win64-x64.msi
     PS C:\Downloads> $hash.Hash -eq "64AC7DD5411B48C2717E15738B83EA0D4347CD51B940487DFF7F99A870656C09"
     True

@@ -3,7 +3,7 @@ title: Rychlé nasazení existující aplikace do clusteru Azure Service Fabric
 description: Použijte cluster Azure Service Fabric k hostování existující aplikace Node.js pomocí sady Visual Studio.
 services: service-fabric
 documentationcenter: nodejs
-author: rwike77
+author: msfussell
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
-ms.author: ryanwi
-ms.openlocfilehash: 2e7511f0efa36243a9e7e8e25f1697bdd3e60b63
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.author: mfussell
+ms.openlocfilehash: 90ecf8a3f6d660c665cf3cdee3e1158bebee9d12
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005290"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499722"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hostování aplikace Node.js na platformě Azure Service Fabric
 

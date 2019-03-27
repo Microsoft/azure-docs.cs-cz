@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: sngun
 Customer intent: As a developer, I want to build a .NET Core application to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities that Azure Cosmos DB offers.
-ms.openlocfilehash: 1aad68a3248561c86e195b55c1d509ab7a15964e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 52e39b705b8bd0e20c846f065702bcaf7b3a45f1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035674"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487273"
 ---
 # <a name="tutorial-build-a-net-core-app-to-manage-data-stored-in-a-sql-api-account"></a>Kurz: Vytvoření aplikace .NET Core pro správu dat uložených v účtu rozhraní SQL API
 
@@ -76,7 +76,7 @@ Následujícím postupem vytvoření účtu služby Azure Cosmos:
 
    ![Snímek obrazovky místní nabídky projektu](./media/sql-api-dotnetcore-get-started/nosql-tutorial-manage-nuget-pacakges.png)
 
-6. Na **NuGet** kartu, vyberte možnost **Procházet** v horní části okna a typ **azure documentdb** do vyhledávacího pole.
+6. Na **NuGet** kartu, vyberte možnost **Procházet** v horní části okna a typ **azure documentdb** do vyhledávacího pole. Ujistěte se, **zahrnout předběžné verze** je zaškrtnuté políčko.
 
 7. Ve výsledcích hledání **Microsoft.Azure.DocumentDB.Core** a vyberte **nainstalovat**.
 

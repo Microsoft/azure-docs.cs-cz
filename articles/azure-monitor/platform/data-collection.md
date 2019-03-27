@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: b65613de8f11aa36c398d15176541ac43a3dba69
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e6d953841e5c22c21640f874ecad942f8db76ad1
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770216"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448895"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Sledování dat shromážděných službou Azure Monitor
 [Azure Monitor](../overview.md) je služba, která vám pomůže sledovat vaše aplikace a prostředky, které spoléhají na to. Centrální pro tuto funkci je úložiště dat a další data z monitorovaných prostředků. Tento článek poskytuje úplný popis toho, jak tato data se ukládají a používat Azure Monitor.
@@ -102,7 +102,7 @@ Existují tři základní zdroje z metrik shromážděných službou Azure Monit
 - Metriky tras s protokoly k analýze dat metriky spolu s daty log a k uložení hodnoty metrik déle než 93 dní. 
 - Stream metrik [centra událostí](stream-monitoring-data-event-hubs.md) směrovat je do [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) nebo k externím systémům.
 - [Archiv](../../azure-monitor/learn/tutorial-archive-data.md) historii výkon nebo stav prostředku pro dodržování předpisů, auditování, nebo v režimu offline pro účely vykazování.
-- Přístup k hodnoty metrik z příkazového řádku nebo vlastní aplikace s využitím [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) nebo [rozhraní REST API](rest-api-walkthrough.md).
+- Přístup k hodnoty metrik z příkazového řádku nebo vlastní aplikace s využitím [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/) nebo [rozhraní REST API](rest-api-walkthrough.md).
 
 
 
@@ -146,7 +146,7 @@ Azure Monitor může shromažďovat data protokolu z různých zdrojů v rámci 
 - Konfigurace [pravidel upozornění protokolů](alerts-log.md) , který odešle oznámení, nebo má [automatizované akce](action-groups.md) při výsledky dotazu splňují konkrétní výsledek.
 - Vytvořit pracovní postup podle dat protokolu pomocí [Logic Apps](~/articles/logic-apps/index.yml).
 - Export výsledků dotazu na [Power BI](powerbi.md) a použít různé vizualizace a sdílet s uživateli mimo Azure.
-- Přístup k hodnoty metrik z příkazového řádku nebo vlastní aplikace s využitím [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) nebo [rozhraní REST API](https://dev.loganalytics.io/).
+- Přístup k hodnoty metrik z příkazového řádku nebo vlastní aplikace s využitím [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) nebo [rozhraní REST API](https://dev.loganalytics.io/).
 
 ### <a name="viewing-log-data"></a>Zobrazení dat protokolu
 Všechna data protokolu ve službě Azure Monitor jsou načítány s použitím [dotaz protokolu](../log-query/log-query-overview.md) napsané pomocí [Kusto dotazovací jazyk](../log-query/get-started-queries.md), která umožňuje rychle načítat, konsolidovat a analýzy shromážděných dat. Použití [Log Analytics](../log-query/portals.md) k psaní a testování dotazů na webu Azure Portal. Můžete interaktivně pracovat s výsledky nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace. Můžete také načíst protokoly pomocí [Azure, rozhraní REST API pro monitorování](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).

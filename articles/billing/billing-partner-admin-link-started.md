@@ -11,18 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4857b1771ae66cbee25765bb5173a638cbcd223e
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 5a03805fc055583f1f965854d4da3ae6b0c90e20
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008589"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444889"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojit ID partnera účtů Azure
 
 Jako partner můžete sledovat vliv napříč vaše zákazníky. Propojte své ID partnera k účtům, které se používají ke správě prostředků zákazníka.
-
-Tato funkce je dostupná ve verzi public preview.
 
 ## <a name="get-access-from-your-customer"></a>Získání přístupu z vašich zákazníků
 
@@ -56,7 +54,7 @@ Až budete mít přístup k prostředkům zákazníka, použijte na webu Azure p
 
 1. Nainstalujte [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner) modul prostředí PowerShell.
 
-2. Přihlaste se do tenanta zákazníka s účtem uživatele nebo instanční objekt služby. Další informace najdete v tématu [Přihlaste se pomocí prostředí PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-5.2.0).
+2. Přihlaste se do tenanta zákazníka s účtem uživatele nebo instanční objekt služby. Další informace najdete v tématu [Přihlaste se pomocí prostředí PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
  
    ```azurepowershell-interactive
     C:\> Connect-AzureRmAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: eeda1ed3181b8cc8f641ed731b7f00fac2d3fad6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: bbda2a16e57f3907ef2910b17ed3c744d2d1ec3e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005831"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487851"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -58,7 +58,7 @@ Tato zpráva se zobrazí, pokud server byl dříve zaregistrován u služby sync
 
 Pokud server není uveden v části **registrované servery** v služba synchronizace úložiště na serveru, na kterém chcete zrušit registraci, spusťte následující příkazy Powershellu:
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Reset-StorageSyncServer
 ```
@@ -113,7 +113,7 @@ K tomuto problému dochází, pokud se server je offline nebo nemá připojení 
 <a id="server-endpoint-provisioningfailed"></a>**Nelze otevřít stránku Vlastnosti koncového bodu serveru nebo aktualizujete zásady pro vrstvení cloudu**  
 Tomuto problému může dojít v případě selhání operace správy na koncovém bodu serveru. Pokud na stránce Vlastnosti koncového bodu serveru nelze otevřít na webu Azure Portal, aktualizuje se koncový bod serveru pomocí příkazů Powershellu ze serveru může tento problém vyřešit. 
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 # Get the server endpoint id based on the server endpoint DisplayName property
 Get-AzureRmStorageSyncServerEndpoint `
@@ -253,7 +253,7 @@ Pokud chcete zobrazit tyto chyby, spusťte **FileSyncErrorsReport.ps1** skript p
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Nevyžaduje se žádná akce. Azure File Sync vytvoří dočasné snímek služby VSS jednou za den na serveru, aby synchronizovat soubory, které mají otevřených popisovačů. |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Soubor byl změněn, ale změny ještě nezjistil synchronizace. Synchronizace se obnoví po této změně se detekuje. | Nevyžaduje se žádná akce. |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Soubor nelze synchronizovat, protože je dosažen limit sdílené složky Azure file. | Chcete-li vyřešit tento problém, naleznete v tématu [jste dosáhli limitu úložiště sdílené složky Azure file](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) části v Průvodci odstraňováním potíží. |
-| 0x80070005 | -2147024891 | E_ACCESSDENIED | Této chybě může dojít, pokud je soubor šifrovaný pomocí nepodporované řešení (například systém souborů EFS systému souborů NTFS) nebo soubor má odstranění stavu čekání. | Pokud je soubor šifrovaný pomocí nepodporované řešení, dešifrování souboru a používejte šifrování podporovaných řešení. Seznam řešení podpory najdete v tématu [řešení šifrování](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) části v Průvodci plánem. Pokud se soubor nachází v odstranění stav Čekání na vyřízení, soubor odstraní, jakmile se zavřou všechny otevřené popisovače souborů. |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | Této chybě může dojít z následujících důvodů: soubor je zašifrovaný pomocí nepodporované řešení (například systém souborů EFS systému souborů NTFS), soubor obsahuje odstranění stav Čekání na vyřízení nebo soubor se nachází ve složce jen pro čtení replikace DFS-R | Pokud je soubor šifrovaný pomocí nepodporované řešení, dešifrování souboru a používejte šifrování podporovaných řešení. Seznam řešení podpory najdete v tématu [řešení šifrování](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) části v Průvodci plánem. Pokud se soubor nachází v odstranění stav Čekání na vyřízení, soubor odstraní, jakmile se zavřou všechny otevřené popisovače souborů. Pokud se soubor nachází ve složce jen pro čtení replikace DFS-R, Azure File Sync nepodporuje koncové body serveru na složky jen pro čtení replikace DFS-R. Zobrazit [Příručka pro plánování](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) Další informace.
 | 0x20 | 32 | ERROR_SHARING_VIOLATION | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Nevyžaduje se žádná akce. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Nějaký soubor se během synchronizace změnil, takže je nutné ho synchronizovat znovu. | Nevyžaduje se žádná akce. |
 
@@ -331,7 +331,7 @@ K této chybě dochází, protože agenta Azure File Sync nemá přístup ke sd�
 
 1. Zkontrolujte, zda lze přeložit název DNS úložiště ze serveru.
 
-    ```PowerShell
+    ```powershell
     Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 443
     ```
 2. [Ověřte, že účet úložiště existuje.](#troubleshoot-storage-account)
@@ -457,13 +457,13 @@ K této chybě může dojít, pokud vaše organizace používá SSL proxy ukonč
 
 1. Vytvořte hodnotu registru SkipVerifyingPinnedRootCertificate.
 
-    ```PowerShell
+    ```powershell
     New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Azure\StorageSync -Name SkipVerifyingPinnedRootCertificate -PropertyType DWORD -Value 1
     ```
 
 2. Restartujte službu synchronizace na registrovaného serveru.
 
-    ```PowerShell
+    ```powershell
     Restart-Service -Name FileSyncSvc -Force
     ```
 
@@ -503,7 +503,7 @@ Pokud je serveru správná, proveďte následující kroky k vyřešení daného
 1. Ověření agenta Azure File Sync verze 4.0.1.0 nebo novější nainstalován.
 2. Spusťte následující příkazy Powershellu na serveru:
 
-    ```PowerShell
+    ```powershell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
     Login-AzureRmStorageSync -SubscriptionID <guid> -TenantID <guid>
     Reset-AzureRmStorageSyncServerCertificate -SubscriptionId <guid> -ResourceGroupName <string> -StorageSyncServiceName <string>
@@ -616,7 +616,7 @@ K této chybě dochází z důvodu vnitřní problém s databáze sync. Tato chy
     ![Snímek obrazovky ukazující na panelu informací o koncový bod cloudu s odkazem na účet úložiště.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```PowerShell
+```powershell
 # Variables for you to populate based on your configuration
 $agentPath = "C:\Program Files\Azure\StorageSyncAgent"
 $region = "<Az_Region>"
@@ -719,7 +719,7 @@ if ($storageAccount -eq $null) {
     ![Snímek obrazovky zobrazující úložiště účtu sítě a brány firewall pravidla zakázán.](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```PowerShell
+```powershell
 if ($storageAccount.NetworkRuleSet.DefaultAction -ne 
     [Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum]::Allow) {
     Write-Host ("The storage account referenced contains network " + `
@@ -735,7 +735,7 @@ if ($storageAccount.NetworkRuleSet.DefaultAction -ne
 3. Ověřte sdílenou odkazuje koncového bodu cloudu se zobrazí v seznamu sdílených složek (měli jste zaznamenali to v kroku 1 výše).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```PowerShell
+```powershell
 $fileShare = Get-AzureStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.StorageAccountShareName -and
     $_.IsSnapshot -eq $false
@@ -762,7 +762,7 @@ if ($fileShare -eq $null) {
     - V **vyberte** zadejte **hybridní služby File Sync**, vyberte roli a klikněte na tlačítko **Uložit**.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```PowerShell    
+```powershell    
 $foundSyncPrincipal = $false
 Get-AzRoleAssignment -Scope $storageAccount.Id | ForEach-Object { 
     if ($_.DisplayName -eq "Hybrid File Sync Service") {
@@ -790,13 +790,13 @@ Můžete použít [blokování souborů prostředků správce soubor serveru (FS
 
 Nejprve vytvořte skupinu souborů správce prostředků souborového serveru pomocí [rutiny New-FsrmFileGroup](https://docs.microsoft.com/powershell/module/fileserverresourcemanager/new-fsrmfilegroup). Tento příklad definuje skupiny tak, aby obsahovala pouze dvě z nepodporované znaky, ale může obsahovat libovolný počet znaků podle potřeby ve skupině souborů.
 
-```PowerShell
+```powershell
 New-FsrmFileGroup -Name "Unsupported characters" -IncludePattern @(("*"+[char]0x00000090+"*"),("*"+[char]0x0000008F+"*"))
 ```
 
 Po definování skupiny souborů služby Správce prostředků souborového serveru, můžete vytvořit blokování souborů správce prostředků souborového serveru pomocí rutiny New-FsrmFileScreen.
 
-```PowerShell
+```powershell
 New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported characters" -IncludeGroup "Unsupported characters"
 ```
 
@@ -893,7 +893,7 @@ Pokud není problém vyřešen, spusťte nástroj AFSDiag:
 1. Vytvoření adresáře, ve kterém se uloží výstupní AFSDiag (například C:\Output).
 2. Otevřete okno Powershellu se zvýšenými oprávněními a spusťte následující příkazy (po každém z nich stiskněte klávesu Enter):
 
-    ```PowerShell
+    ```powershell
     cd "c:\Program Files\Azure\StorageSyncAgent"
     Import-Module .\afsdiag.ps1
     Debug-Afs c:\output # Note: Use the path created in step 1.

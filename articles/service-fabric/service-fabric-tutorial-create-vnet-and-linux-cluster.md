@@ -3,7 +3,7 @@ title: Vytvoření clusteru Service Fabric s Linuxem v Azure | Dokumentace Micro
 description: Naučte se nasadit cluster Service Fabric s Linuxem do existující virtuální sítě Azure s použitím rozhraní příkazového řádku Azure.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 780f87924bcd25f0485bfed1b9640915b7d8e1d3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 890f7c207b373781c55e4261a58505d849298d82
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309465"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499144"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Nasazení clusteru Service Fabric s Linuxem do virtuální sítě Azure
 
@@ -34,6 +34,7 @@ Než začnete:
 * Nainstalujte si [rozhraní příkazového řádku Service Fabric](service-fabric-cli.md).
 * Instalace [rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli)
 * Informace o klíčových konceptech clusterů, přečtěte si téma [clusterů Azure – přehled](service-fabric-azure-clusters-overview.md)
+* [Plánování a příprava](service-fabric-cluster-azure-deployment-preparation.md) pro produkční nasazení clusteru.
 
 Následující postupy vytvářejí sedm uzly clusteru Service Fabric. Pokud chcete vypočítat náklady vzniklé používáním clusteru Service Fabric v Azure, použijte [cenovou kalkulačku funkcí Azure](https://azure.microsoft.com/pricing/calculator/).
 

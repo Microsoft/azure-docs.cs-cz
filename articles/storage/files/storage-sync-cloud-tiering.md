@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
 ms.subservice: files
-ms.openlocfilehash: fe363bd6d16d7beea1c8f1e6ec17710975a80924
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 871eb1663d6cba550f1403215b1d3ce5fe8278d3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652556"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486100"
 ---
 # <a name="cloud-tiering-overview"></a>Přehled vrstvení cloudu
 Cloud ovládání datových vrstev je volitelná funkce služby Azure File Sync, ve kterém často používaných souborů jsou uložené v mezipaměti místně na serveru při další souborů proběhne do služby soubory Azure na základě nastavení zásad. Pokud se vrstvený soubor, filtr systému souborů Azure File Sync (StorageSync.sys) nahradí soubor místně ukazatel nebo spojovacím bodem. Bod rozboru představuje adresu URL k souboru ve službě soubory Azure. Vrstvený soubor má atribut "offline" a FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS atributu nastavit v systému souborů NTFS tak, aby aplikace třetích stran můžou bezpečně identifikovat vrstvené soubory.
@@ -85,7 +85,7 @@ Existuje několik způsobů, jak zkontrolovat, zda byl soubor Vrstvená do sdíl
    * **Použití `fsutil` ke kontrole spojovacích bodů u souboru.**
        Jak je popsáno v předchozí možnosti, vrstvený soubor má vždy spojovacím bodu sady. Ukazatel rozboru je speciální ukazatel pro filtr systému souborů Azure File Sync (StorageSync.sys). Chcete-li zkontrolovat, zda má soubor spojovacím bodem, v okně příkazového řádku nebo Powershellu se zvýšenými oprávněními, spusťte `fsutil` nástroje:
     
-        ```PowerShell
+        ```powershell
         fsutil reparsepoint query <your-file-name>
         ```
 
@@ -101,7 +101,7 @@ Nejjednodušší způsob, jak si možná Vzpomínáte soubor na disk se k otevř
 
 Prostředí PowerShell můžete použít také k vynucení soubor, který chcete zrušit. Tato možnost může být užitečné, pokud chcete odvolat více souborů najednou, jako je například všechny soubory ve složce. Otevřete relaci Powershellu k uzlu serveru, kde je nainstalovaný Azure File Sync a pak spusťte následující příkazy Powershellu:
     
-    ```PowerShell
+    ```powershell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
     Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
     ```
@@ -114,7 +114,7 @@ Průzkumníka souborů Windows poskytuje dvě vlastnosti k reprezentaci velikost
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Jak vynutit soubor nebo adresář vrstvený?
 Pokud je povolena funkce výběru vrstvy na cloud, vrstvení automaticky soubory úrovních cloudu založený na poslední přístup a upravit dobu k dosažení Procento volné místo svazku na koncový bod cloudu. V některých případech však můžete chtít ručně vynutit soubor k vrstvě. To může být užitečné, pokud uložíte s velkými soubory, které nechcete použít znovu po dlouhou dobu a požadované volné místo na svazku teď má použít pro jiné soubory a složky. Můžete vynutit ovládání datových vrstev na následující příkazy Powershellu:
 
-    ```PowerShell
+    ```powershell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
     Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
     ```

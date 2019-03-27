@@ -7,12 +7,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: bwren
-ms.openlocfilehash: b25bbc0c4beac12c0b0f693dd4e01ddb2896fa16
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6ed3a98282221d5ac148e88b6646bfaa4da768be
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857874"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446435"
 ---
 # <a name="analyze-log-data-in-azure-monitor"></a>Analyzuje data protokolů ve službě Azure Monitor
 
@@ -41,7 +41,7 @@ Různé způsoby, že budete používat dotazy ve službě Azure Monitor, patř�
 - **Zobrazení.**  Možnost tvorby vizualizací dat mají být zahrnuty v řídicích panelech uživatele s [Návrhář zobrazení](../platform/view-designer.md).  Protokol dotazů, které poskytují data používá [dlaždice](../platform/view-designer-tiles.md) a [části vizualizace](../platform/view-designer-parts.md) v každém zobrazení.  
 
 - **Export.**  Když importujete data protokolů ze služby Azure Monitor do aplikace Excel nebo [Power BI](../platform/powerbi.md), vytvořte dotaz protokolu pro definování dat k exportu.
-- **PowerShell.** Skript prostředí PowerShell můžete spustit z příkazového řádku nebo runbooku Azure Automation, který používá [Get-AzOperationalInsightsSearchResults](/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) načíst data protokolů ze služby Azure Monitor.  Tato rutina vyžaduje dotazu určit data, která mají načíst.
+- **PowerShell.** Skript prostředí PowerShell můžete spustit z příkazového řádku nebo runbooku Azure Automation, který používá [Get-AzOperationalInsightsSearchResults](/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults) načíst data protokolů ze služby Azure Monitor.  Tato rutina vyžaduje dotazu určit data, která mají načíst.
 - **Rozhraní API protokoly Azure monitoru.**  [Rozhraní API služby Azure Monitor protokoly](../platform/alerts-overview.md) umožňuje jakéhokoli klienta REST API k načtení dat protokolu z pracovního prostoru.  Žádosti rozhraní API obsahuje dotaz, který je spuštěn proti Azure Monitor k určení dat k načtení.
 
 ![Prohledávání protokolů](media/log-query-overview/queries-overview.png)

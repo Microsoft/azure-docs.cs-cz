@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d87fe608b92dd70cb2dee78c817e0055445b7c70
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: ee4a78148c36c7838edcc36f8f76ad612ac87ab0
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732511"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487953"
 ---
-# <a name="automation-with-service-principals"></a>Automatizace pomocí instančních objektů
+# <a name="automation-with-service-principals"></a>Automatizace s využitím instančních objektů
 
 Instanční objekty jsou prostředky aplikací služby Azure Active Directory, které vytvoříte v tenantovi za účelem provedení bezobslužných operací na úrovni prostředků a služeb. Jsou jedinečný typ *identitu uživatele* pomocí ID aplikace a heslo nebo certifikát. Instanční objekt služby má pouze oprávnění nezbytná k provádění úloh definovaných podle role a oprávnění, pro které je přiřazen. 
 
@@ -51,7 +51,7 @@ Při použití instančního objektu pro operace správy zdrojů se [Az.Analysis
 
 V následujícím příkladu appID a heslo slouží k provedení operace obnovení databáze modelu:
 
-```PowerShell
+```powershell
 Param (
 
         [Parameter(Mandatory=$true)] [String] $AppId,

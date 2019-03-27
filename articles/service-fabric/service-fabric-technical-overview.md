@@ -3,7 +3,7 @@ title: Přečtěte si terminologie pro Azure Service Fabric | Dokumentace Micros
 description: Přehled terminologie Service Fabric. Pojednává klíčovou terminologií konceptů a termínů používaných ve zbývající části dokumentace.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: masnider
 manager: timlt
 editor: chackdan;subramar
 ms.assetid: 3a970679-e19e-43b3-9be8-71773f307c57
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/17/2018
-ms.author: ryanwi
-ms.openlocfilehash: fda6af0f253457aaf3aef1e8444850592255b318
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: masnider
+ms.openlocfilehash: d9012ff37693b406d4e91560c880d6bed66c051b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113669"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498294"
 ---
 # <a name="service-fabric-terminology-overview"></a>Přehled terminologie Service Fabric
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Je možné [clustery hostitelů Service Fabric, kdekoli](service-fabric-deploy-anywhere.md): Azure, v místním datovém centru, nebo jakýkoli jiný poskytovatel cloudu.  Service Fabric je orchestrátor, která je základem [Azure Service Fabric mřížky](/azure/service-fabric-mesh). K psaní služeb a rozhodnete, jak spustit aplikaci z několika možností prostředí můžete použít libovolné architektury. Tento článek obsahuje podrobnosti o terminologii používané k pochopení termínů používaných v dokumentaci k Service Fabric.

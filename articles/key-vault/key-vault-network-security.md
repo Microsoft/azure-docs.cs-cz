@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/02/2019
 ms.author: ambapat
-ms.openlocfilehash: 4b3225dd25fee2859a36f98add51fcf612a45c83
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c54b78a24068758fabb0918cfeb7d6516fd1bce5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108887"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487231"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurace bran firewall služby Azure Key Vault a virtuální sítě
 
@@ -84,33 +84,33 @@ Tady je postup konfigurace brány firewall služby Key Vault a virtuální sít�
 1. Nainstalujte nejnovější [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps), a [přihlášení](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
 2. Seznam pravidel virtuální sítě k dispozici. Pokud jste nenastavili všechna pravidla pro tento trezor klíčů, bude seznam prázdný.
-   ```PowerShell
+   ```powershell
    (Get-AzKeyVault -VaultName "mykeyvault").NetworkAcls
    ```
 
 3. Povolte koncový bod služby Key Vault na existující virtuální síť a podsíť.
-   ```PowerShell
+   ```powershell
    Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzVirtualNetwork
    ```
 
 4. Přidáte pravidlo pro sítě pro virtuální síť a podsíť.
-   ```PowerShell
+   ```powershell
    $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
    Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -VirtualNetworkResourceId $subnet.Id
    ```
 
 5. Přidáte rozsah IP adres, ze kterého chcete povolit přenosy.
-   ```PowerShell
+   ```powershell
    Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
    ```
 
 6. Pokud tento trezor klíčů by měly být přístupné pro všechny důvěryhodné služby, nastavte `bypass` k `AzureServices`.
-   ```PowerShell
+   ```powershell
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
    ```
 
 7. Zapnout pravidel sítě tak, že nastavíte výchozí akce `Deny`.
-   ```PowerShell
+   ```powershell
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
    ```
 

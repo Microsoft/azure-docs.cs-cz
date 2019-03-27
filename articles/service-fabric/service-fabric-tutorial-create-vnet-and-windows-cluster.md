@@ -3,7 +3,7 @@ title: Vytvoření clusteru Service Fabric s Windows v Azure | Dokumentace Micro
 description: V tomto kurzu se dozvíte, jak nasadit cluster Windows Service Fabric do virtuální sítě Azure a skupinu zabezpečení sítě pomocí prostředí PowerShell.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/13/2019
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: aa44355ea86b42f8865d7791fec04ffad2b6f3ad
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 28f115e356c8852174b923f4891f93ad435ce7d7
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313817"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498158"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric s Windows do virtuální sítě Azure
 
@@ -58,6 +58,7 @@ Než začnete s tímto kurzem:
 * Nainstalujte [Service Fabric SDK a modul Powershellu](service-fabric-get-started.md).
 * Nainstalujte [modul Azure Powershellu verze 4.1 nebo vyšší](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
 * Projděte si klíčové koncepty [Azure clustery](service-fabric-azure-clusters-overview.md).
+* [Plánování a příprava](service-fabric-cluster-azure-deployment-preparation.md) pro produkční nasazení clusteru.
 
 Následující postupy vytvářejí sedm uzly clusteru Service Fabric. Použití [cenovou kalkulačku funkcí Azure](https://azure.microsoft.com/pricing/calculator/) vypočítat náklady vzniklé používáním clusteru Service Fabric v Azure.
 
@@ -181,7 +182,7 @@ Vytvořit dvě aplikace Azure AD pro řízení přístupu ke clusteru: jeden web
 
 Spustit `SetupApplications.ps1`a zadat tenanta jako parametry ID, název clusteru a adresy URL odpovědi webové aplikace. Zadejte uživatelská jména a hesla pro uživatele. Příklad:
 
-```PowerShell
+```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
 .\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestUser' -Password 'P@ssword!123'
 .\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestAdmin' -Password 'P@ssword!123' -IsAdmin

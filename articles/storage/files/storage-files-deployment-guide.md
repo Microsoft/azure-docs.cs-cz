@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 1b62bb6b00e1add93ee4215507d1b110dcf51424
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f0b6ed366f35368c70f3d2224f430f400ee9656c
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566951"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481174"
 ---
 # <a name="how-to-deploy-azure-files"></a>Nasazení služby Soubory Azure
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní protokol SMB. Tento článek vám ukáže postup prakticky nasazení služby soubory Azure v rámci vaší organizace.
@@ -132,7 +132,7 @@ Nahradit sdílenou složku v místním, je vhodné předem připojte sdílené s
 ### <a name="windows"></a>Windows
 PowerShell je možné spustit příkaz připojení ve víc počítačích. V následujícím příkladu `$computers` se vyplní ručně, ale dají vygenerovat seznam počítačů, které se automaticky připojit. Například lze vyplnit tuto proměnnou s výsledky ze služby Active Directory.
 
-```PowerShell
+```powershell
 $computer = "MyComputer1", "MyComputer2", "MyComputer3", "MyComputer4"
 $computer | ForEach-Object { Invoke-Command -ComputerName $_ -ScriptBlock { net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name> /PERSISTENT:YES } }
 ```

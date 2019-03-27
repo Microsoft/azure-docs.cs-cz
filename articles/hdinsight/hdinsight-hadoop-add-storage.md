@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5f46e7846a5b0cd9479f19d475d4604f37bead4f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 833198f3b5dd07988bcb5fc85f815ae2c12f1197
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58168737"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481922"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Přidání dalších účtů úložiště pro HDInsight
 
@@ -76,7 +76,7 @@ Informace o úložiště není zobrazit, protože skript upravuje pouze core-sit
 
 Chcete-li zobrazit informace o účtu úložiště do clusteru pomocí tohoto skriptu, použijte rozhraní Ambari REST API. Použijte následující příkazy pro načtení těchto informací pro váš cluster:
 
-```PowerShell
+```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" `
     -Credential $creds

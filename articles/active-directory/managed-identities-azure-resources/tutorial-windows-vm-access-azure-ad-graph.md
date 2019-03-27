@@ -3,7 +3,7 @@ title: Použití spravované identity přiřazené systémem na virtuálním po�
 description: Tento kurz vás provede použitím spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k rozhraní Azure AD Graph API.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
-ms.author: priyamo
+ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10b74b85235cc47375f6289b52371bc588105ad9
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 49b0d9e4fad61195118c92c047340f2cd4d9e20f
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890092"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480681"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k rozhraní Azure AD Graph API
 
@@ -85,7 +85,7 @@ K použití této možnosti budete potřebovat Azure AD PowerShell. Pokud ho nem
    ```
    Chcete-li připojit k určité Azure Active Directory, použijte _TenantId_ parametr následujícím způsobem:
 
-   ```PowerShell
+   ```powershell
    Connect-AzureAD -TenantId "Object Id of the tenant"
    ```
 

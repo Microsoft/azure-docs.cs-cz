@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2ed42e10071e3100f285c55c7b965dfa836d6c0e
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 0ec778cc349ba7c21e693437b6a20c40f2e9c173
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437454"
+ms.locfileid: "58485308"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Rychlý start: Zřízení simulovaného zařízení TPM pomocí sady Azure IoT C SDK
 
@@ -48,7 +48,7 @@ V této části připravíte vývojové prostředí použité k sestavení [Azur
 
     Následující příklad používá prostředí Windows PowerShell k ověření kryptografické hodnoty hash verze 3.13.4 x64 distribuce MSI:
 
-    ```PowerShell
+    ```powershell
     PS C:\Downloads> $hash = get-filehash .\cmake-3.13.4-win64-x64.msi
     PS C:\Downloads> $hash.Hash -eq "64AC7DD5411B48C2717E15738B83EA0D4347CD51B940487DFF7F99A870656C09"
     True

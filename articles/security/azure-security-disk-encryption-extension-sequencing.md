@@ -6,12 +6,12 @@ ms.service: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/21/2019
-ms.openlocfilehash: 33958eae291b03b568491e24f09abefdacb667c8
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: e98e501806971f3cf1bec29960ad15ef9c0024fc
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58405899"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498141"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Použití Azure Disk Encryption pomocí škálování virtuálního počítače nastavte nastavení posloupnosti rozšíření
 
@@ -152,7 +152,7 @@ Tady je příklad použití "AzureDiskEncryption" následované "VMDiagnosticsSe
 ```
 
 Další podrobné šablony najdete tady:
-* Použití rozšíření Azure Disk Encryption po skript vlastní prostředí, která formátuje helpdesku (Linux): [deploy-extseq-linux-ADE-after-customscript.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
+* Použití rozšíření Azure Disk Encryption po vlastní prostředí skript, který se naformátuje disk (Linux): [deploy-extseq-linux-ADE-after-customscript.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
 * Použití rozšíření Azure Disk Encryption po vlastní skript prostředí Powershell, který inicializuje a naformátuje disk (Windows): [deploy-extseq-linux-ADE-after-customscript.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-windows-ADE-after-customscript.json)
 * Použití rozšíření Azure Disk Encryption před vlastní skript prostředí Powershell, který inicializuje a naformátuje disk (Windows): [deploy-extseq-windows-CustomScript-after-ADE.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-windows-CustomScript-after-ADE.json)
 

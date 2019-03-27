@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 76944d98d6a5fe7c3f83ce12bb2fdf1a34d5e234
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c904d8306c145bad57ca7d77b139a2ad6d216b0b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839096"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500249"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 
@@ -274,7 +274,7 @@ Další informace o možnosti Azure VPN najdete v článku [plánování a návr
 
 [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) využívá zásady šifrování, identity a autorizace, aby napomohla zabezpečení souborů a e-mailu. Azure RMS funguje napříč více zařízeními – telefony, tablety a počítače s ochranou v rámci vaší organizace i mimo vaši organizaci. Tato funkce je možné, protože Azure RMS přidá úroveň ochrany, která zůstává s daty, i když opustí hranice vaší organizace.
 
-Při použití služby Azure RMS k ochraně souborů použijete standardní kryptografie s plnou podporou [FIPS 140-2](https://csrc.nist.gov/groups/STM/cmvp/standards.html). Při využití Azure RMS pro ochranu dat, máte jistotu, že zůstane ochrana se souborem, i v případě, že je zkopírován do úložiště, které není pod kontrolou oddělení IT, třeba do cloudového úložiště. Stejné dojde k souborů sdílených prostřednictvím e-mailu, je soubor chráněný jako příloha e-mailovou zprávu s pokyny, jak chráněnou přílohu otevřít.
+Při použití služby Azure RMS k ochraně souborů použijete standardní kryptografie s plnou podporou [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf). Při využití Azure RMS pro ochranu dat, máte jistotu, že zůstane ochrana se souborem, i v případě, že je zkopírován do úložiště, které není pod kontrolou oddělení IT, třeba do cloudového úložiště. Stejné dojde k souborů sdílených prostřednictvím e-mailu, je soubor chráněný jako příloha e-mailovou zprávu s pokyny, jak chráněnou přílohu otevřít.
 Při plánování přechodu na službu Azure RMS, doporučujeme následující:
 
 - Nainstalujte [aplikace pro sdílení obsahu RMS](https://technet.microsoft.com/library/dn339006.aspx). Tato aplikace integruje Office aplikace nainstalováním Office doplňku tak, aby uživatelé mohli snadno chránit soubory přímo.
@@ -456,7 +456,7 @@ Auditování zabezpečení sítě je důležité pro zjištění ohrožení zabe
 
 [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) je místní služba, která umožňuje monitorovat a diagnostikovat podmínky na úrovni síťového v, do a z Azure. Pro diagnostiku sítě a vizualizačních nástrojů, které jsou k dispozici pomocí služby Network Watcher pomáhají porozumět, diagnostice a získání přehledu o vaší síti v Azure. Tato služba zahrnuje zachycení paketu, další směrování, IP tok ověřit, zobrazení skupin zabezpečení, protokoly toků NSG. Scénář úrovně monitorování poskytuje komplexní přehled síťové prostředky, na rozdíl od sledování jednotlivých síťových prostředků.
 
-### <a name="storage-analytics"></a>Analýza služby Storage
+### <a name="storage-analytics"></a>Analýzy úložiště
 
 [Analýza úložiště](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) můžete ukládat metriky, včetně transakce agregované statistiky a dat o kapacitě požadavků na službu úložiště. Transakce jsou zaznamenány na úrovni operace rozhraní API i na úrovni služby úložiště, a je kapacita ohlášená na úrovni služby úložiště. Můžete například měřená data slouží k analýze využití služeb úložiště, Diagnostika potíží s požadavky na službu úložiště a zlepšit výkon aplikace, které používají službu.
 

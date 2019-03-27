@@ -3,7 +3,7 @@ title: Ukázkový skript Azure PowerShellu – Vytvoření clusteru Service Fabr
 description: Ukázkový skript Azure PowerShellu – Vytvoření clusteru Service Fabric
 services: service-fabric
 documentationcenter: ''
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 tags: azure-service-management
@@ -13,20 +13,22 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 01/19/2018
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: ad3c51f0f43d63fd784156eca680218850897e8f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: de807a52e0e97c7cc0886cee5d5586afdf5077a5
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31596547"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496067"
 ---
 # <a name="create-a-service-fabric-cluster"></a>Vytvoření clusteru Service Fabric
 
 Tento ukázkový skript vytvoří cluster Service Fabric s pěti uzly zabezpečený pomocí certifikátu X.509.  Příkaz vytvoří certifikát podepsaný svým držitelem a nahraje ho do nového trezoru klíčů. Certifikát se také zkopíruje do místního adresáře.  Nastavením parametru *-OS* zvolte verzi Windows nebo Linuxu, která se používá na uzlech clusteru.  Podle potřeby upravte parametry.
 
-V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview) a pak spuštěním příkazu `Connect-AzureRmAccount` vytvořte připojení k Azure. 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview) a pak spuštěním příkazu `Connect-AzAccount` vytvořte připojení k Azure. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -38,7 +40,7 @@ Po spuštění ukázkového skriptu můžete pomocí následujícího příkazu 
 
 ```powershell
 $groupname="mysfclustergroup"
-Remove-AzureRmResourceGroup -Name $groupname -Force
+Remove-AzResourceGroup -Name $groupname -Force
 ```
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
@@ -47,9 +49,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/New-AzureRmServiceFabricCluster) | Vytvoří nový cluster Service Fabric. |
+| [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | Vytvoří nový cluster Service Fabric. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

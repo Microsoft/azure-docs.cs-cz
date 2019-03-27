@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: c769ae8e684a94e60f6a2e31ba404a0593f7aa78
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d67a87b182758e37c9e379a8f96a6540797ce3e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096703"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482942"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge
 
@@ -71,7 +71,7 @@ Nainstalujte OpenSSL pro Windows na počítači, který používáte, čímž vy
    
    2. Po instalaci se vcpkg z příkazového řádku powershellu, spusťte následující příkaz k instalaci balíčku OpenSSL pro Windows x64. Instalace obvykle trvá přibližně 5 minut na dokončení.
 
-      ```PowerShell
+      ```powershell
       .\vcpkg install openssl:x64-windows
       ```
    3. Přidat `<VCPKGDIR>\installed\x64-windows\tools\openssl` do proměnné prostředí PATH, aby je k dispozici pro vyvolání openssl.exe soubor.
@@ -84,7 +84,7 @@ Zařízení Azure IoT SDK pro jazyk C obsahuje skripty, které můžete použít
 
 2. Naklonujte úložiště git, který obsahuje skripty pro generování certifikátů nevýrobní prostředí. Tyto skripty vám pomůžou vytvořit potřebné certifikáty pro nastavení transparentní brány. Použití `git clone` příkazu nebo [stáhnout ZIP](https://github.com/Azure/azure-iot-sdk-c/archive/master.zip). 
 
-   ```PowerShell
+   ```powershell
    git clone https://github.com/Azure/azure-iot-sdk-c.git
    ```
 
@@ -92,7 +92,7 @@ Zařízení Azure IoT SDK pro jazyk C obsahuje skripty, které můžete použít
 
 4. Zkopírujte soubory konfigurace a skript do pracovního adresáře. 
 
-   ```PowerShell
+   ```powershell
    copy <path>\azure-iot-sdk-c\tools\CACertificates\*.cnf .
    copy <path>\azure-iot-sdk-c\tools\CACertificates\ca-certs.ps1 .
    ```
@@ -101,25 +101,25 @@ Zařízení Azure IoT SDK pro jazyk C obsahuje skripty, které můžete použít
 
 5. Nastavte proměnnou prostředí OPENSSL_CONF použijte openssl_root_ca.cnf konfigurační soubor.
 
-    ```PowerShell
+    ```powershell
     $env:OPENSSL_CONF = "$PWD\openssl_root_ca.cnf"
     ```
 
 6. Povolte spouštění skriptů prostředí PowerShell.
 
-   ```PowerShell
+   ```powershell
    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
    ```
 
 7. Používání funkce, které využívají skripty, prostředí PowerShell pro globální obor názvů.
    
-   ```PowerShell
+   ```powershell
    . .\ca-certs.ps1
    ```
 
 8. Ověřte, jestli je správně nainstalovaná OpenSSL a ujistěte se, že nebudou kolize názvů s využitím existujících certifikátů. Pokud dochází k problémům, by měl skript popisují, jak je opravit ve vašem systému.
 
-   ```PowerShell
+   ```powershell
    Test-CACertsPrerequisites
    ```
 
@@ -129,19 +129,19 @@ V této části vytvoříte tři certifikáty a připojit je v řetězu. Uveden�
 
 1. Vytvoření certifikátu vlastníka certifikační Autority a jeho podepsat jeden zprostředkující certifikát. Certifikáty jsou umístěny v  *\<WRKDIR >*.
 
-      ```PowerShell
+      ```powershell
       New-CACertsCertChain rsa
       ```
 
 2. Pomocí následujícího příkazu vytvořte certifikát hraniční zařízení certifikační Autority a privátního klíče. Zadejte název pro zařízení brány, který se použije pro pojmenování souborů a během generování certifikátů. 
 
-   ```PowerShell
+   ```powershell
    New-CACertsEdgeDevice "<gateway name>"
    ```
 
 3. Z certifikátu certifikační Autority vlastníka, zprostředkující certifikát a certifikát certifikační Autority hraničních zařízení pomocí následujícího příkazu vytvořte řetěz certifikátů. 
 
-   ```PowerShell
+   ```powershell
    Write-CACertsCertificatesForEdgeDevice "<gateway name>"
    ```
 

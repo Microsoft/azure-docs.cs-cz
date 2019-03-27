@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: 73a7c2ef80291920a6d19f0c3ab01b45c1d6b22a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 42780eae0a85ec8a2ca7e9d6ca1149f6530c25e1
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53627720"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448981"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Příklad topologií Apache Storm a komponenty pro Apache Storm v HDInsight
 
@@ -46,7 +46,7 @@ Tady je seznam příkladů vytvořené a udržované microsoftem pro použití s
 * [Další informace o nasazení a správa topologií Apache Storm pomocí Apache Storm v HDInsight][6eb0d3b8]
 
 [2b8c3488]:apache-storm-tutorial-get-started-linux.md "Naučte se vytvořit Apache Storm v clusteru HDInsight a používat řídicí panel Storm k nasazení příklad topologií."
-[6eb0d3b8]:apache-storm-deploy-monitor-topology.md "Zjistěte, jak nasadit a spravovat topologie pomocí panelu webové Apache Storm a uživatelské rozhraní Storm nebo nástrojů HDInsight pro Visual Studio."
+[6eb0d3b8]:apache-storm-deploy-monitor-topology-linux.md "Zjistěte, jak nasadit a spravovat topologie pomocí panelu webové Apache Storm a uživatelské rozhraní Storm nebo nástrojů HDInsight pro Visual Studio."
 [16fce2d1]:apache-storm-develop-csharp-visual-studio-topology.md "Zjistěte, jak vytvořit topologie C# Storm pomocí nástrojů HDInsight pro Visual Studio."
 [5797064f]:apache-storm-develop-java-topology.md "Zjistěte, jak vytváření topologií Storm v Javě pomocí Maven, tak, že vytvoříte topologie základní wordcount."
 [844d1d81]:apache-storm-develop-csharp-event-hub-topology.md "Zjistěte, jak číst a zapisovat data z Azure Event Hubs se Stormem v HDInsight."

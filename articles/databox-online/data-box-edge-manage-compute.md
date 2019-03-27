@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/24/2019
+ms.date: 03/26/2019
 ms.author: alkohli
-ms.openlocfilehash: de8ddd0d2886cd7798160e830094b295c62e17e9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: f2416bd3393ae05a74665fe7e11bd1c8c04c91d7
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400682"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499026"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Správa výpočetních služeb v Azure Data Box hranici
 
@@ -32,7 +32,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="manage-triggers"></a>Správa aktivační události
 
-Události jsou možnosti, ke kterým dochází ve vašem cloudovém prostředí nebo na zařízení, která může být vhodné provést určitou akci u. Například když se vytvoří soubor ve sdílené složce, je událost. Aktivační události jsou odpovědi na tyto události. Aktivační události může pomoct provést funkci pokaždé, když se aktivuje událost. Pro hranici pole dat může být aktivační události v reakci na události souboru nebo plánu.
+Události jsou možnosti, ke kterým dochází ve vašem cloudovém prostředí nebo na zařízení, která může být vhodné provést určitou akci u. Například když se vytvoří soubor ve sdílené složce, je událost. Aktivační události vyvolat události. Pro hranici pole dat může být aktivační události v reakci na události souboru nebo plánu.
 
 - **Soubor**: Tyto triggery jsou v reakci na události souboru, jako je například vytvoření souboru, úpravy souboru.
 - **Naplánované**: Tyto triggery jsou v reakci na plán, který můžete definovat s počátečním datem, počáteční čas a interval opakování.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e14e35cc8589bb524bae791ccd74952da90bdb04
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: f0963e7f558de7b591576a49a74750d6697d7127
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871532"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486040"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Po havárii pro obnovení a úložiště účtu převzetí služeb při selhání (preview) ve službě Azure Storage
 
@@ -121,14 +121,14 @@ Verzi preview je určeno pouze pro nevýrobní prostředí. Produkční smlouvy 
 
 Chcete-li zaregistrovat verzi preview, spusťte následující příkazy v prostředí PowerShell. Ujistěte se, zda jste zástupný symbol v závorkách nahraďte vlastním ID předplatného:
 
-```PowerShell
+```powershell
 Connect-AzureRmAccount -SubscriptionId <subscription-id>
 Register-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 To může trvat 1 – 2 dnů, která získala schválení pro verzi preview. K ověření, že vaše registrace byla schválena, spusťte následující příkaz:
 
-```PowerShell
+```powershell
 Get-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
@@ -164,6 +164,7 @@ Následující funkce nebo služby se nepodporují u účtu převzetí služeb p
 - Účty úložiště pomocí Azure Data Lake Storage Gen2 hierarchického oboru názvů nemůže být převzetí služeb při selhání.
 - Účet úložiště obsahující archivované objekty BLOB nemůže být převzetí služeb při selhání. Udržujte archivované objektů BLOB v účtu samostatného úložiště, který nemáte v plánu převzít služby při selhání.
 - Účet úložiště obsahující objekty BLOB bloku premium nejde převzít. Účty úložiště, které podporují objekty BLOB bloku premium aktuálně nepodporují geografickou redundancí.
+- Po dokončení převzetí služeb následující funkce přestanou fungovat, pokud původně povolené: [Odběry událostí](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [zásady životního cyklu](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Storage Analytics protokolování](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Kopírování dat jako alternativu k převzetí služeb při selhání
 

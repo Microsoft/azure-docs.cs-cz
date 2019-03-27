@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 5501e92b9a9d977f74bf4ed028b3cd3de4e56133
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: e00c086e0b91c0f48821143ff118c62afdd76e82
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225378"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485165"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Rychlý start: Vytvoření .NET Core aplikace s konfigurací aplikace
 
@@ -51,7 +51,7 @@ Můžete použít [rozhraní příkazového řádku .NET Core (CLI)](https://doc
 
 1. Přidejte odkaz na `Microsoft.Extensions.Configuration.AzureAppConfiguration` balíček NuGet spuštěním následujícího příkazu:
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
+        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-007830001
 
 2. Spusťte následující příkaz k obnovení balíčků pro váš projekt:
 
@@ -60,6 +60,11 @@ Můžete použít [rozhraní příkazového řádku .NET Core (CLI)](https://doc
 3. Otevřít *Program.cs*a aktualizovat `Main` používat konfiguraci aplikací pomocí volání metody `builder.AddAzureAppConfiguration()` metoda.
 
     ```csharp
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+
+    ...
+
     static void Main(string[] args)
     {
         var builder = new ConfigurationBuilder();
@@ -100,7 +105,7 @@ Můžete použít [rozhraní příkazového řádku .NET Core (CLI)](https://doc
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste vytvořili novým úložištěm konfigurace aplikace a použít ho s konzolovou aplikaci .NET Core. Další informace o tom, jak používat konfiguraci aplikací, pokračujte k dalšímu kurzu, který ukazuje ověření.
+V tomto rychlém startu jste vytvořili novým úložištěm konfigurace aplikace a použít s konzolovou aplikaci .NET Core prostřednictvím [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Další informace o tom, jak používat konfiguraci aplikací, pokračujte k dalšímu kurzu, který ukazuje ověření.
 
 > [!div class="nextstepaction"]
 > [Spravované identity pro integraci prostředků Azure](./integrate-azure-managed-service-identity.md)

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 820a9ae0df91fba8cf00764428867bec6196841a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: a6304a93b1409cff871ed1c4c1d7e66d6c8c6f53
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335857"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497682"
 ---
 # <a name="language-support-for-qna-maker"></a>Jazyková podpora v nástroji QnA Maker
 
@@ -37,7 +37,7 @@ Nástroj QnA Maker podporuje extrakce otázek a odpovědí na libovolné stránc
 
 Primární jazyk používaný pro zjišťování je nastavena pro nástroj QnA Maker prostředek a všechny znalostních bází, vytvoří při prvním dokumentu nebo adrese URL se přidá do první znalostní báze na tento prostředek. Jazyk nelze změnit. 
 
-Pokud uživatel plánuje zajistit podporu více jazyků, potřebují mít nový prostředek nástroje QnA Maker pro jednotlivé jazyky. Zjistěte, jak [vytvoření znalostní báze QnA Maker založený na jazyce](/how-to/language-knowledge-base.md).  
+Pokud uživatel plánuje zajistit podporu více jazyků, potřebují mít nový prostředek nástroje QnA Maker pro jednotlivé jazyky. Zjistěte, jak [vytvoření znalostní báze QnA Maker založený na jazyce](../how-to/language-knowledge-base.md).  
 
 Ověřte primárního jazyka pomocí následujících kroků:
 

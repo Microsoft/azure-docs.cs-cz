@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 937346bf6927efe11e43b64b7c9a2111f00c0e0a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 35904c3854ddbcf3648c8a226d56f73be890b6ad
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890820"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481496"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
 Azure File Sync se připojí k Azure Files umožňuje synchronizaci více webů a funkce vrstvení cloudu na místních serverech. V důsledku toho musí být na místním serveru připojený k Internetu. Správce IT je potřeba rozhodnout nejlepší cestu pro server k získání přístupu do cloudových služeb Azure.
@@ -49,7 +49,7 @@ Azure File Sync podporuje nastavení proxy serveru pro konkrétní aplikace a ce
 **Nastavení proxy serveru pro konkrétní aplikace** povolit konfiguraci proxy serveru speciálně pro provoz Azure File Sync. Nastavení proxy serveru specifické pro aplikace jsou podporované ve verzi agenta 4.0.1.0 nebo novější a je možné konfigurovat během instalace agenta nebo pomocí rutiny prostředí PowerShell Set-StorageSyncProxyConfiguration.
 
 Příkazy prostředí PowerShell a zadejte nastavení proxy server pro konkrétní aplikaci:
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```

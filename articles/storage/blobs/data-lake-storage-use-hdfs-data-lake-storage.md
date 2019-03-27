@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: c77981574ff2e507af7012f26f742dda62d952fc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 051681150501f7c5737f335f8eb48144b08bb990
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57991969"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482662"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Pomocí rozhraní příkazového řádku HDFS s Data Lake Storage Gen2
 
@@ -62,7 +62,7 @@ Příklad: `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.wind
 
 Nejprve navázat [vzdálený přístup ke službám](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services). Pokud vyberete [SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) ukázkový kód Powershellu vypadá takto:
 
-```PowerShell
+```powershell
 #Connect to the cluster via SSH.
 ssh sshuser@clustername-ssh.azurehdinsight.net
 #Execute basic HDFS commands. Display the hierarchy.

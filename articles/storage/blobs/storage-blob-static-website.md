@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a72182091721dd6a1104cb8e3495aee1a3b25eb8
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 67d3dcad4ec73ee09ec40282b2fbdea945daefe4
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439378"
+ms.locfileid: "58472765"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
 Účty úložiště GPv2 Azure umožňují poskytovat statický obsah (HTML, CSS, JavaScript a soubory obrázků) přímo z kontejneru úložiště s názvem *$web*. Využití výhod hostování ve službě Azure Storage umožňuje používat architektur bez serveru, včetně [Azure Functions](/azure/azure-functions/functions-overview) a další služby PaaS.
@@ -112,7 +112,7 @@ az storage blob upload-batch -s <SOURCE_PATH> -d \$web --account-name <ACCOUNT_N
 Metody dostupné pro nasazení obsahu do kontejneru úložiště zahrnují následující:
 
 - [AzCopy](../common/storage-use-azcopy.md)
-- [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - [Kanály Azure](https://azure.microsoft.com/services/devops/pipelines/)
 - [Rozšíření sady Visual Studio Code](https://code.visualstudio.com/tutorials/static-website/getting-started)
 

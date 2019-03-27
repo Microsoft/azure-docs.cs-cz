@@ -8,12 +8,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: db6064feb379bf7da4f2c2e6417583c3d8b8b0d3
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 24e482d223fec2c1f95d7cc964f62eac81c5de05
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417883"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472575"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Vytvoření clusteru Průzkumník dat Azure a databáze s použitím jazyka Python
 
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure]
 
 ## <a name="install-python-package"></a>Instalovat balíček Pythonu
 
-Chcete-li nainstalovat balíček Pythonu pro Azure Průzkumník dat (Kusto), otevřete příkazový řádek, který má Python v cestě a spusťte tento příkaz:
+Chcete-li nainstalovat balíček Pythonu pro Azure Průzkumník dat (Kusto), otevřete příkazový řádek, který má Python v cestě. Spusťte tento příkaz:
 
 ```
 pip install azure-mgmt-kusto
@@ -43,7 +43,26 @@ pip install azure-mgmt-kusto
 
 1. Vytvoření clusteru pomocí následujícího příkazu:
 
+    ```Python
+    from azure.mgmt.kusto.kusto_management_client import KustoManagementClient
+    from azure.mgmt.kusto.models import Cluster, AzureSku
+
+    credentials = xxxxxxxxxxxxxxx
     
+    subscription_id = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx'
+    location = 'Central US'
+    sku = 'D13_v2'
+    capacity = 5
+    resource_group_name = 'testrg'
+    cluster_name = 'mykustocluster'
+    cluster = Cluster(location=location, sku=AzureSku(name=sku, capacity=capacity))
+    
+    kustoManagementClient = KustoManagementClient(credentials, subscription_id)
+    
+    cluster_operations = kustoManagementClient.clusters
+    
+    cluster_operations.create_or_update(resource_group_name, cluster_name, cluster)
+    ```
 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|

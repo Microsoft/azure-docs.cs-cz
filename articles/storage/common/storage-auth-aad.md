@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ff543b7275ab05a83b1be1d156cbc6059a3b5430
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 08fdc20df70e4a97dd0cb99468354ef2b5c51f2b
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369885"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447035"
 ---
 # <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Ověření přístupu k objektům BLOB Azure a fronty pomocí Azure Active Directory
 
@@ -22,8 +22,6 @@ Azure Storage podporuje ověřování a autorizace pomocí Azure Active Director
 Ověřování uživatelů a aplikací s použitím přihlašovacích údajů Azure AD poskytuje nejvyšší zabezpečení a snadné použití přes jiným způsobem autorizace. Když můžete nadále používat povolení sdíleného klíče s vašimi aplikacemi, používání služby Azure AD obchází potřebou ukládání přístupový klíč k účtu s vaším kódem. Můžete taky dál používat sdílené přístupové podpisy (SAS) k udělení velice přesně kontrolovat přístup k prostředkům ve vašem účtu úložiště, ale Azure AD nabízí podobné funkce bez nutnosti spravovat tokeny SAS nebo si dělat starosti o odvolání SAS ohrožení zabezpečení. Microsoft doporučuje používat ověřování Azure AD pro vaše aplikace Azure Storage, pokud je to možné.
 
 Ověřování a autorizace pomocí přihlašovacích údajů Azure AD je k dispozici pro všechny pro obecné účely v2 pro obecné účely v1 a účty úložiště Blob ve všech veřejných oblastech. Jenom účty úložiště s podporou modelu nasazení Azure Resource Manageru vytvořené autorizace Azure AD.
-
-[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Přehled služby Azure AD pro objekty BLOB a fronty
 
@@ -41,7 +39,11 @@ Když roli RBAC je přiřazena k objektu zabezpečení Azure AD, Azure uděluje 
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-Informace o přiřazení předdefinované role na webu Azure Portal najdete v tématu [udělit přístup k kontejnery služby Azure a fronty pomocí RBAC na webu Azure Portal](storage-auth-aad-rbac.md).
+Zjistěte, jak přiřadit předdefinované RBAC pro prostředky služby Azure Storage, najdete v jedné z následujících témat:
+
+- [Udělení přístupu k Azure data objektů blob a fronty pomocí RBAC na webu Azure Portal](storage-auth-aad-rbac-portal.md)
+- [Udělení přístupu k Azure data objektů blob a fronty pomocí RBAC pomocí rozhraní příkazového řádku Azure](storage-auth-aad-rbac-cli.md)
+- [Udělení přístupu k Azure data objektů blob a fronty pomocí RBAC pomocí Powershellu](storage-auth-aad-rbac-powershell.md)
 
 ### <a name="access-permissions-granted-by-rbac-roles"></a>Přístupová oprávnění udělená role RBAC 
 
@@ -49,7 +51,6 @@ Podrobnosti o oprávněních požadovaných k volání operací služby Azure St
 
 ## <a name="next-steps"></a>Další postup
 
-- [Udělení přístupu k kontejnery služby Azure a fronty pomocí RBAC na webu Azure Portal](storage-auth-aad-rbac.md)
 - [Ověřování s využitím Azure Active Directory z aplikace pro přístup k objektům blob a frontám](storage-auth-aad-app.md)
 - [Ověření přístupu k objektům BLOB a fronty pomocí spravované identity pro prostředky Azure](storage-auth-aad-msi.md)
-- [Pomocí identity Azure AD pro přístup k úložišti Azure pomocí Powershellu nebo rozhraní příkazového řádku](storage-auth-aad-script.md)
+- Služba soubory Azure podporuje ověřování pomocí Azure AD prostřednictvím protokolu SMB pro připojené k doméně pouze pro virtuální počítače (preview). Další informace o používání služby Azure AD prostřednictvím protokolu SMB pro soubory Azure najdete v tématu [přehled o Azure Active Directory authentication přes protokol SMB pro soubory Azure (preview)](../files/storage-files-active-directory-overview.md).

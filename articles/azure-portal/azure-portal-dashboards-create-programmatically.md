@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: kfollis
-ms.openlocfilehash: 21119816477d460aa48560b8ca231f23144a901b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: b24a0397a1365479907fedc6348caa54508dbbb0
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888486"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444869"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Vytváření řídicích panelů Azure prostřednictvím kódu programu
 
@@ -28,7 +28,7 @@ Tento dokument vás provede procesem programové vytváření a publikování ř
 
 ## <a name="overview"></a>Přehled
 
-Sdílené řídicí panely v Azure jsou [prostředky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) stejně, jako jsou virtuální počítače a účty úložiště.  Proto, že je možné spravovat prostřednictvím kódu programu přes [rozhraní REST API Azure Resource Manageru](/rest/api/), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure), [příkazy prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0)a mnoho [ Azure portal](https://portal.azure.com) funkce postaveny tato rozhraní API pro usnadnění správy prostředků.  
+Sdílené řídicí panely v Azure jsou [prostředky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) stejně, jako jsou virtuální počítače a účty úložiště.  Proto, že je možné spravovat prostřednictvím kódu programu přes [rozhraní REST API Azure Resource Manageru](/rest/api/), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure), [příkazy prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)a mnoho [ Azure portal](https://portal.azure.com) funkce postaveny tato rozhraní API pro usnadnění správy prostředků.  
 
 Každá z těchto rozhraní API a nástroje nabízí způsoby, jak vytvořit seznam, načíst, upravit a odstranit prostředky.  Vzhledem k tomu, že řídicí panely jsou prostředky, můžete vybrat vaše oblíbená rozhraní API / nástroj použít.
 

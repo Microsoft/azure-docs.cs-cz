@@ -9,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: cbbc710c9408c84c601d7b9eb9560641b5313a05
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cb1eb5ac27c53f4c0d48fe3644febc62f848486d
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090929"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484691"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Správa skupin prostředků Azure Resource Manageru pomocí webu Azure portal
 
@@ -122,7 +122,7 @@ Existují dva způsoby, jak exportovat šablonu:
 
 Tato metoda exportuje šablony pro určité nasazení. Pokud jste změnili prostředky z portálu nebo přidání nebo odebrání prostředků ve více nasazeních, přečtěte si téma [Export šablony ze skupiny prostředků](#export-templates-from-resource-groups).
 
-1. Otevřete skupinu prostředků, kterou chcete odstranit.  Zobrazit [skupiny prostředků otevřete](#open-resource-groups).
+1. Otevřete skupinu prostředků, kterou chcete exportovat.  Zobrazit [skupiny prostředků otevřete](#open-resource-groups).
 2. V levém podokně vyberte **nasazení**, nebo vyberte propojení v rámci **nasazení**.  Na následujícím snímku obrazovky ukazuje **4 úspěšné** protože neexistovaly čtyř oddělených nasazení s čtyři názvy jiného nasazení. Může se zobrazit **1 úspěšné**.
 
     ![export šablony skupin prostředků Azure](./media/manage-resource-groups-portal/manage-resource-groups-export-templates-deployment-history.png)
@@ -148,8 +148,8 @@ Tato metoda exportuje šablony pro určité nasazení. Pokud jste změnili prost
 
 Pokud jste změnili prostředky z portálu, nebo přidat nebo odebrat prostředky ve více nasazeních, získání šablony z historie nasazení nebude odrážet aktuální stav skupiny prostředků. V této části se dozvíte, jak exportovat šablonu, která odráží aktuální stav skupiny prostředků. Je určena jako snímek skupiny prostředků, který můžete použít k opětovnému nasazení do stejné skupiny prostředků. Použití vyexportované šablony pro ostatní řešení, je třeba ho upravit výrazně.
 
-1. Otevřete skupinu prostředků, kterou chcete odstranit.  Zobrazit [skupiny prostředků otevřete](#open-resource-groups).
-2. V levém podokně vyberte **automatizační skript**. Resource Manager pro vás načte následujících šest souborů:
+1. Otevřete skupinu prostředků, kterou chcete exportovat.  Zobrazit [skupiny prostředků otevřete](#open-resource-groups).
+2. V levém podokně vyberte **exportovat šablonu**. Resource Manager pro vás načte následujících šest souborů:
 
    - **Template** - Šablona, která definuje infrastrukturu pro vaše řešení. Když jste prostřednictvím portálu vytvářeli účet úložiště, Resource Manager k jeho nasazení použil šablonu a tuto šablonu uložil pro budoucí použití.
    - **Parameters** - Soubor s parametry, který slouží k předávání hodnot během nasazení. Obsahuje hodnoty, které jste zadali při prvním nasazení. Kteroukoli z těchto hodnot můžete při opětovném nasazování šablony změnit.

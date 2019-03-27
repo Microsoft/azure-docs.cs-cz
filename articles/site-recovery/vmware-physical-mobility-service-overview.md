@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 6b06ee7710dedbf2283fc4e365b767aa57547e7c
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 0e5e4e207542a74ef3fc5ff7fc78431b7956e54c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417815"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449258"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informace o službě Mobility pro virtuální počítače VMware a fyzické servery
 
@@ -43,7 +43,8 @@ Během nabízená instalace agenta mobility následující kroky se provádějí
 2. Poté, co agent byl úspěšně zkopírován do kontroly splnění podmínek na serveru se provádí na serveru. Instalace selže, pokud jeden nebo více následujících [požadavky](vmware-physical-azure-support-matrix.md) nejsou splněné. Pokud jsou splněny všechny požadavky, instalace se aktivuje.
 3. Azure Site Recovery VSS provider nainstalovaný na serveru jako součást instalace agenta Mobility. Tento zprostředkovatel slouží ke generování konzistentní body aplikací. V případě selhání instalace zprostředkovatele služby VSS, tento krok se přeskočí a bude pokračovat v instalaci agenta.
 4. Pokud bude úspěšné instalace agenta, ale instalace zprostředkovatele služby VSS se nezdaří, stav úlohy je označena jako "Upozornění". To ale nijak neovlivní generování body selhání konzistence.
-    a. Generovat žádosti konzistentní body, najdete v tématu [naše doprovodné materiály](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine) pro dokončení instalace nástroje Site Recovery VSS provider ručně.
+
+    a. Generovat žádosti konzistentní body, najdete v tématu [naše doprovodné materiály](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine) pro dokončení instalace nástroje Site Recovery VSS provider ručně. </br>
     b.  Pokud nechcete, aby byla konzistentní vzhledem k aplikacím body aplikace chcete vygenerovat, [zásady replikace změnit](vmware-azure-set-up-replication.md#create-a-policy) vypnout konzistentní body aplikací.
 
 ### <a name="before-922-versions"></a>Před 9.22 verze

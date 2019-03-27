@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: ba56804431048005914a79c4cd957a8365de067a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970888"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486364"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Šablony rozhraní API ve službě Azure API Management
 
@@ -82,15 +82,15 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
 ### <a name="controls"></a>Ovládací prvky  
  `API list` Šablona může používat následující [stránce ovládací prvky](api-management-page-controls.md).  
   
--   [ovládací prvek stránkování](api-management-page-controls.md#paging-control)  
+-   [paging-control](api-management-page-controls.md#paging-control)  
   
--   [ovládací prvek hledání](api-management-page-controls.md#search-control)  
+-   [search-control](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>Datový model  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|rozhraní API|Kolekce [souhrn rozhraní API](api-management-template-data-model-reference.md#APISummary) entity.|Rozhraní API viditelné pro aktuálního uživatele.|  
+|`apis`|Kolekce [souhrn rozhraní API](api-management-template-data-model-reference.md#APISummary) entity.|Rozhraní API viditelné pro aktuálního uživatele.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -345,15 +345,15 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|apiId|řetězec|Id aktuální rozhraní API.|  
-|ApiName|řetězec|Název rozhraní API.|  
-|apiDescription|řetězec|Popis rozhraní API.|  
-|rozhraní api|[Souhrn rozhraní API](api-management-template-data-model-reference.md#APISummary) entity.|Aktuální rozhraní API.|  
-|operace|[Operace](api-management-template-data-model-reference.md#Operation)|Aktuálně zobrazené operace.|  
-|sampleUrl|řetězec|Adresa URL pro aktuální operaci.|  
-|operationMenu|[Operace nabídky](api-management-template-data-model-reference.md#Menu)|Nabídka operací pro toto rozhraní API.|  
-|consoleUrl|URI|Identifikátor URI pro **vyzkoušet** tlačítko.|  
-|ukázky|Kolekce [vzorový kód](api-management-template-data-model-reference.md#Sample) entity.|Ukázky kódu pro aktuální operaci...|  
+|`apiId`|string|Id aktuální rozhraní API.|  
+|`apiName`|string|Název rozhraní API.|  
+|`apiDescription`|string|Popis rozhraní API.|  
+|`api`|[Souhrn rozhraní API](api-management-template-data-model-reference.md#APISummary) entity.|Aktuální rozhraní API.|  
+|`operation`|[Operace](api-management-template-data-model-reference.md#Operation)|Aktuálně zobrazené operace.|  
+|`sampleUrl`|string|Adresa URL pro aktuální operaci.|  
+|`operationMenu`|[Operace nabídky](api-management-template-data-model-reference.md#Menu)|Nabídka operací pro toto rozhraní API.|  
+|`consoleUrl`|Identifikátor URI|Identifikátor URI pro **vyzkoušet** tlačítko.|  
+|`samples`|Kolekce [vzorový kód](api-management-template-data-model-reference.md#Sample) entity.|Ukázky kódu pro aktuální operaci...|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   

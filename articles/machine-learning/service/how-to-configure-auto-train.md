@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 03/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 79d013e5836555547cbf254bb25c06add0a717e1
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 0de6cf9be01fc93a26a782189a2062d19eaf73e8
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295381"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499263"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Konfigurace automatizovaného se strojovým učením
 
@@ -39,21 +39,24 @@ Než začnete experimentu, byste měli určit druh machine learning problému js
 
 Technologie automatizovaného strojového učení, které jsou obecně dostupné, **Prognózování je stále ve verzi public preview.**
 
-Automatizované machine learning podporuje tyto algoritmy během automatizace a ladění procesu. Jako uživatel není nutné lze určit algoritmus.
+Automatizované machine learning podporuje tyto algoritmy během automatizace a ladění procesu. Jako uživatel není nutné lze určit algoritmus. Během cvičení jsou k dispozici DNN algoritmy, automatizované ML nesestaví DNN modely.
 
 Klasifikace | Regrese | Prognózování
 |-- |-- |--
 [Logistické regrese](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Elastické Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Elastické Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Pomocí stochastického sestupu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[Světlý GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Světlý GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[Přechodu zvýšení skóre](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Přechodu zvýšení skóre](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[Vektorové podpory C klasifikace (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#regression)|[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#regression)
-[Lineární SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[K nejbližší okolí](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K nejbližší okolí](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[K nejbližší okolí](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors)|[LARS laso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS laso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Pomocí stochastického sestupu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Pomocí stochastického sestupu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Světlý GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Světlý GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Světlý GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[Přechodu zvýšení skóre](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Přechodu zvýšení skóre](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Přechodu zvýšení skóre](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#regression)|[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K nejbližší okolí](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K nejbližší okolí](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K nejbližší okolí](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Lineární SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS laso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS laso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[Vektorové podpory C klasifikace (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Pomocí stochastického sestupu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Pomocí stochastického sestupu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
 [Náhodné doménové struktury](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Náhodné doménové struktury](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Náhodné doménové struktury](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [Velmi náhodnou stromů](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Velmi náhodnou stromů](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Velmi náhodnou stromů](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[Přechodu zvýšení skóre](https://scikit-learn.org/stable/modules/ensemble.html#classification)|
-[Světlý GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|
+[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[DNN Classifer](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[Regresor DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [Regresor DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[Lineární třídění DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Regresor lineární](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Regresor lineární](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
+[Pomocí stochastického sestupu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
 
 
 ## <a name="data-source-and-format"></a>Zdroj dat a formát
@@ -156,15 +159,15 @@ Můžete zadat samostatné trénování a ověření nastavení prostřednictví
 
 ### <a name="k-folds-cross-validation"></a>K přeložení křížové ověření
 
-Použití `n_cross_validations` nastavení určuje počet křížové ověření. Trénovací datové sady se náhodně rozdělit na `n_cross_validations` složení stejnou velikost. Při každé křížového ověření round jeden složení se použije pro ověřování modelů trénovaných na zbývající složení. Tento proces se opakuje pro `n_cross_validations` zaokrouhlí dokud každý fold se jednou nepoužije jako sada ověření. Průměrné skóre napříč všemi `n_cross_validations` zaokrouhlí se ohlásí, a odpovídající modelu budou retrained na celém trénovací datové sady.
+Použití `n_cross_validations` nastavení určuje počet křížové ověření. Trénovací datové sady se náhodně rozdělit na `n_cross_validations` složení stejnou velikost. Při každé křížového ověření round jeden složení se použije pro ověřování modelů trénovaných na zbývající složení. Tento proces se opakuje pro `n_cross_validations` zaokrouhlí dokud každý fold se jednou nepoužije jako sada ověření. Průměrné skóre napříč všemi `n_cross_validations` zaokrouhlí se ohlásí, a odpovídající modelu budou retrained na celém trénovací datové sady. 
 
 ### <a name="monte-carlo-cross-validation-aka-repeated-random-sub-sampling"></a>Monte Carlo ke zjištění křížové ověření (označovaný také jako Opakuje se náhodný dílčí vzorkování)
 
-Použít `validation_size` určit procento trénovací datové sady, který se má použít pro ověření a potom použijte `n_cross_validations` určit počet křížové ověření. Při každé křížové ověření round podmnožinu velikost `validation_size` budou náhodně vybrány pro ověřování modelů trénovaných na zbývající data. Nakonec se stanoví skóre průměr všech `n_cross_validations` zaokrouhlí se ohlásí, a odpovídající modelu budou retrained na celém trénovací datové sady.
+Použít `validation_size` určit procento trénovací datové sady, který se má použít pro ověření a potom použijte `n_cross_validations` určit počet křížové ověření. Při každé křížové ověření round podmnožinu velikost `validation_size` budou náhodně vybrány pro ověřování modelů trénovaných na zbývající data. Nakonec se stanoví skóre průměr všech `n_cross_validations` zaokrouhlí se ohlásí, a odpovídající modelu budou retrained na celém trénovací datové sady. Monte Carlo ke zjištění nepodporuje prognózy časových řad.
 
 ### <a name="custom-validation-dataset"></a>Vlastní ověření datové sady
 
-Použít datovou sadu vlastní ověřování, pokud náhodného dělení není přijatelná (obvykle časové řady dat nebo imbalanced dat). Můžete zadat vlastní ověření datové sady. Ověření datové sadě zadán namísto náhodného datové sady se vyhodnotí modelu.
+Použijte vlastní ověřovací datové sady, pokud není přijatelná náhodného dělení, obvykle dat časových řad nebo imbalanced data. Můžete zadat vlastní ověření datové sady. Ověření datové sadě zadán namísto náhodného datové sady se vyhodnotí modelu.
 
 ## <a name="compute-to-run-experiment"></a>Výpočetní prostředky pro spuštění experimentu
 
@@ -178,7 +181,7 @@ Zobrazit [webu GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/ma
 
 ## <a name="configure-your-experiment-settings"></a>Konfigurovat nastavení testu
 
-Existuje několik možností, které můžete použít ke konfiguraci vašeho automatizované experimentu strojového učení. Tyto parametry jsou nastavené po vytvoření instance `AutoMLConfig` objektu.
+Existuje několik možností, které můžete použít ke konfiguraci vašeho automatizované experimentu strojového učení. Tyto parametry jsou nastavené po vytvoření instance `AutoMLConfig` objektu. Zobrazit [AutoMLConfig třídy](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) zobrazit úplný seznam parametrů.  
 
 Možné příklady:
 
@@ -223,6 +226,7 @@ Existují tři různé `task` hodnoty parametrů, které určují seznamu algori
     * GradientBoosting
     * TensorFlowDNN
     * TensorFlowLinearClassifier
+    * XGBoostClassifier
 * Regrese
     * ElasticNet
     * GradientBoosting
@@ -235,6 +239,7 @@ Existují tři různé `task` hodnoty parametrů, které určují seznamu algori
     * LightGBM
     * TensorFlowLinearRegressor
     * TensorFlowDNN
+    * XGBoostRegressor
 * Prognózování
     * ElasticNet
     * GradientBoosting
@@ -247,8 +252,7 @@ Existují tři různé `task` hodnoty parametrů, které určují seznamu algori
     * LightGBM
     * TensorFlowLinearRegressor
     * TensorFlowDNN
-
-Zobrazit [AutoMLConfig třídy](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) zobrazit úplný seznam parametrů.  
+    * XGBoostRegressor
 
 ## <a name="data-pre-processing-and-featurization"></a>Předběžné zpracování dat a snadné
 
@@ -265,6 +269,44 @@ Pokud používáte `preprocess=True`, následující data předběžného zpraco
     * Číselné funkce s velmi malým počtem jedinečných hodnot transformována do kategorií funkce.
     * V závislosti na mohutnosti zařazené do kategorií funkcí proveďte popisek kódování nebo (algoritmu hash) jeden horkou kódování.
 
+## <a name="time-series-forecasting"></a>Vytváření prognóz časových řad
+Pro typ Prognózování úloh čas řady je nutné definovat další parametry.
+1. time_horizon_name – Toto je povinný parametr, který definuje název sloupce do řady obsahující datum a čas trénovací data. 
+1. max_horizon – Určuje dobu, kterou chcete předpovědět navýšení kapacity podle periodicitu trénovací data. Například pokud máte trénovacích dat s zrna denní dobu, můžete definovat jak daleko out ve dnech modelu pro trénování.
+1. grain_column_names – ten definuje název sloupce, které obsahují data jednotlivých časových řad v trénovací data. Například pokud prognózy prodeje konkrétní značku ve storu byste definovali úložiště a značky sloupců jako sloupců intervalem.
+
+Viz příklad těchto nastavení se používá pod, například Poznámkový blok je k dispozici [tady](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
+
+```python
+# Setting Store and Brand as grains for training.
+grain_column_names = ['Store', 'Brand']
+nseries = data.groupby(grain_column_names).ngroups
+
+# View the number of time series data with defined grains
+print('Data contains {0} individual time-series.'.format(nseries))
+```
+
+```python
+time_series_settings = {
+    'time_column_name': time_column_name,
+    'grain_column_names': grain_column_names,
+    'drop_column_names': ['logQuantity'],
+    'max_horizon': n_test_periods
+}
+
+automl_config = AutoMLConfig(task='forecasting',
+                             debug_log='automl_oj_sales_errors.log',
+                             primary_metric='normalized_root_mean_squared_error',
+                             iterations=10,
+                             X=X_train,
+                             y=y_train,
+                             n_cross_validations=5,
+                             enable_ensembling=False,
+                             path=project_folder,
+                             verbosity=logging.INFO,
+                             **time_series_settings)
+```
+
 ## <a name="run-experiment"></a>Spusťte experiment
 
 Odeslání experimentu ke spuštění a generovat model. Předání `AutoMLConfig` k `submit` metoda ke generování modelu.
@@ -277,6 +319,13 @@ run = experiment.submit(automl_config, show_output=True)
 >Závislosti jsou nejprve nainstalována na nový počítač.  Může trvat až 10 minut, než se zobrazí výstup.
 >Nastavení `show_output` k `True` výsledků ve výstupu se zobrazí se v konzole.
 
+## <a name="exit-criteria"></a>Výstupní kritéria 
+Existuje několik možností můžete definovat na dokončení experimentu.
+1. Žádná kritéria – Pokud nedefinujete některý ukončete parametry testu bude pokračovat, dokud se žádné další krok se provádí na primární metriku. 
+1. Počet iterací - definujete počet iterací pro experiment ke spuštění. Můžete si volitelné přidat iteration_timeout_minutes k definování časového limitu během několika minut za každé iterace.
+1. Ukončit po dobu - pomocí experiment_timeout_minutes v nastavení, které můžete definovat dobu v minutách by experiment pokračovat v běhu.
+1. Ukončete po skóre se dosáhlo - pomocí experiment_exit_score, které můžete provést experiement po skóre na základě primární metriky se dosáhlo.
+
 
 ## <a name="explore-model-metrics"></a>Zkoumání metrik model
 Ve widgetu nebo vložené můžete zobrazit výsledky, pokud jste v poznámkovém bloku. Zobrazit [sledovat a posuzovat modely](how-to-track-experiments.md#view-run-details) další podrobnosti.
@@ -285,7 +334,7 @@ Ve widgetu nebo vložené můžete zobrazit výsledky, pokud jste v poznámkové
 ### <a name="classification-metrics"></a>Klasifikace metriky
 Tyto metriky jsou uloženy v každé iteraci pro úlohu klasifikace.
 
-|Primární metriku|Popis|Výpočet|Další parametry
+|Metrika|Popis|Výpočet|Další parametry
 --|--|--|--|
 AUC_Macro| AUC je oblasti pod křivkou charakteristiku provozní příjemce. Makro je aritmetický průměr AUC pro každou třídu.  | [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Průměrná = "makro"|
 AUC_Micro| AUC je oblasti pod křivkou charakteristiku provozní příjemce. Micro je vypočítán globálně kombinací pravdivě pozitivní i falešně pozitivních výsledků z každé třídě| [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Průměrná = "micro"|
@@ -311,7 +360,7 @@ weighted_accuracy|Vážený přesnost je přesnost, kde je rovna podíl true ins
 ### <a name="regression-and-forecasting-metrics"></a>Regrese a Prognózování metriky
 Tyto metriky jsou uloženy v každé iteraci pro regresní nebo Prognózování úloh.
 
-|Primární metriku|Popis|Výpočet|Další parametry
+|Metrika|Popis|Výpočet|Další parametry
 --|--|--|--|
 explained_variance|Bylo vysvětleno odchylky je poměr, ke kterému matematické modelu účty pro variantu dané datové sady. Je, že procento snížení odchylku původní data, která mají odchylku chyby. Pokud chyby je 0, je roven bylo vysvětleno variance.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Žádný|
 r2_score|R2 je koeficient stanovení nebo snížení procenta v porovnání s modelem směrný plán, který zobrazí průměr kvadratických chyb. Pokud chyby je 0, je roven bylo vysvětleno variance.|[Výpočet](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Žádný|

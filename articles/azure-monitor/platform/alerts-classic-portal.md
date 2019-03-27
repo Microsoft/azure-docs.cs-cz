@@ -6,12 +6,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
-ms.openlocfilehash: 65064707374ba76701566e061b77bfd6cdf520ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b1259d8f15ac719db833bef5ae37a7c2e665b2fb
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57833381"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480630"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Vytvořit, zobrazit a spravovat klasické metriky upozornění pomocí Azure monitoru
 
@@ -93,37 +93,37 @@ Tato část ukazuje, jak pomocí prostředí PowerShell příkazů vytvořit, zo
 
 2. Nejdřív přihlaste ke svému předplatnému Azure.
 
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```
 
 3. Zobrazí přihlašovací obrazovka. Jednou přihlásíte ve vašem účtu, TenantID, a jsou zobrazeny výchozí ID předplatného. Všechny rutiny služby Azure fungují v rámci výchozího předplatného. Chcete-li zobrazit seznam předplatných, ke kterým máte přístup, použijte následující příkaz:
 
-    ```PowerShell
+    ```powershell
     Get-AzSubscription
     ```
 
 4. Chcete-li změnit pracovního kontextu do jiného předplatného, použijte následující příkaz:
 
-    ```PowerShell
+    ```powershell
     Set-AzContext -SubscriptionId <subscriptionid>
     ```
 
 5. Můžete načíst všechny klasické pravidla upozornění metrik pro skupinu prostředků:
 
-    ```PowerShell
+    ```powershell
     Get-AzAlertRule -ResourceGroup montest
     ```
 
 6. Můžete zobrazit podrobnosti o klasické metriky upozornění pravidla
 
-    ```PowerShell
+    ```powershell
     Get-AzAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
     ```
 
 7. Můžete načíst všechna pravidla výstrah pro cílový prostředek. Všechna pravidla výstrah je třeba nastavit na virtuálním počítači.
 
-    ```PowerShell
+    ```powershell
     Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 

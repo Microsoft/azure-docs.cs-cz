@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: richrund
-ms.openlocfilehash: 1cfb4850c35806d702f76f4006ad46ad43d6bcf0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 956c6c7c17812996853f35440c60251aa5a91057
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076407"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482095"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Správa služby Log Analytics pomocí PowerShellu
 
@@ -58,7 +58,7 @@ Následující ukázkový skript ukazuje, jak:
 11. Shromažďovat čítač výkonu paměť v MB k dispozici z počítačů s Windows
 12. Shromažďovat vlastní protokol
 
-```PowerShell
+```powershell
 
 $ResourceGroup = "oms-example"
 $WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique - Get-Random helps with this for the example code
@@ -222,7 +222,7 @@ Podrobnosti o dostupných metrik, najdete v tématu [podporované metriky ve slu
 
 Podrobnosti o dostupných protokolů, najdete v tématu [podporované služby a schéma pro diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-schema.md).
 
-```PowerShell
+```powershell
 $workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
 $resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO"
@@ -246,7 +246,7 @@ Následující příklad ukazuje postup:
 3. Aktualizace nově vytvořeného konfigurace na index data z dalších umístěních
 4. Odstranit nově vytvořený konfiguraci
 
-```PowerShell
+```powershell
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
 $workspace = (Get-AzOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
 

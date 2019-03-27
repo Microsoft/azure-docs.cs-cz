@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 01/14/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 450b27d21cf4079bdef6fc20c3f2e83f4e47cbd2
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 8d432d588cfd563ee48b93f9042339e9590bb5e2
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806555"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481769"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Správa řešení IoT Central z Azure PowerShellu
 
@@ -33,13 +33,13 @@ Pokud chcete spustit prostředí Azure PowerShell na místním počítači, pře
 
 Spusťte následující příkaz a zkontrolujte [modulu IoT Central](https://docs.microsoft.com/powershell/module/az.iotcentral/) je nainstalovaný ve vašem prostředí PowerShell:
 
-```PowerShell
+```powershell
 Get-InstalledModule -name Az.I*
 ```
 
 Pokud se seznam nainstalovaných modulů neobsahuje **Az.IotCentral**, spusťte následující příkaz:
 
-```PowerShell
+```powershell
 Install-Module Az.IotCentral
 ```
 
@@ -47,13 +47,13 @@ Install-Module Az.IotCentral
 
 Použití [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) rutina pro vytvoření aplikace IoT Central ve vašem předplatném Azure. Příklad:
 
-```PowerShell
+```powershell
 # Create a resource group for the IoT Central application
 New-AzResourceGroup -ResourceGroupName "MyIoTCentralResourceGroup" `
   -Location "East US"
 ```
 
-```PowerShell
+```powershell
 # Create an IoT Central application
 New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -Name "myiotcentralapp" -Subdomain "mysubdomain" `
@@ -89,7 +89,7 @@ Použití [Get-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.
 
 Použití [Set-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/set-aziotcentralapp) rutiny pro aktualizaci metadat aplikace IoT Central. Chcete-li například změnit zobrazovaný název aplikace:
 
-```PowerShell
+```powershell
 Set-AzIotCentralApp -Name "myiotcentralapp" `
   -ResourceGroupName "MyIoTCentralResourceGroup" `
   -DisplayName "My new display name"
@@ -99,7 +99,7 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 Použití [odebrat AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) rutina pro odstranění aplikace IoT Central. Příklad:
 
-```PowerShell
+```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
  -Name "myiotcentralapp"
 ```

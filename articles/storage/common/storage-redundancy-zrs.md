@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeking
 ms.subservice: common
-ms.openlocfilehash: 8928e59b97143038e0850132196f1ce9a1da131d
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: ab3984b29b3bdfac7599c68c14bd6cc5b671cdf4
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337880"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447258"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zónově redundantní úložiště (ZRS): Vysoce dostupné aplikace služby Azure Storage
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -50,7 +50,7 @@ Migrace do nebo z LRS, GRS a RA-GRS je jednoduché. Pomocí webu Azure portal ne
 
 Migrace dat do nebo z ZRS vyžaduje jinou strategii. ZRS migrace zahrnuje fyzické přesun dat z razítka s jediným úložištěm do několika razítek v rámci oblasti.
 
-Existují dvě primární možnosti pro migraci do nebo z ZRS: 
+Existují dvě primární možnosti pro migraci do ZRS: 
 
 - Ručně zkopírovat nebo přesunout data do nového účtu ZRS z existující účet.
 - Požádat o migraci za provozu.
@@ -73,6 +73,7 @@ Mějte na paměti následující omezení migrace za provozu:
 - Váš účet musí obsahovat data.
 - Můžete migrovat pouze data v rámci stejné oblasti. Pokud chcete migrovat data do účtu ZRS nachází v jiné než účet zdrojové oblasti, je nutné provést ruční migraci.
 - Pouze typy účtů úložiště úrovně standard podporují migraci za provozu. Účty služby Premium storage je potřeba migrovat ručně.
+- Migrace za provozu z ZRS LRS, GRS nebo RA-GRS se nepodporuje. Je potřeba ručně přesun dat do nové nebo existující účet úložiště.
 
 Můžete požádat o migraci za provozu prostřednictvím [portál podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Z portálu vyberte účet úložiště, který chcete převést na ZRS.
 1. Vyberte **novou žádost o podporu**
@@ -128,7 +129,19 @@ ZRS Classic je k dispozici pouze pro **objekty BLOB bloku** v pro obecné účel
 
 Jak ručně provést migraci dat účtu ZRS do nebo z účet LRS, ZRS Classic, GRS nebo RA-GRS, použijte jednu z následujících nástrojů: AzCopy, Průzkumníka služby Azure Storage, Azure Powershellu nebo Azure CLI. Můžete také vytvořit svoje vlastní řešení migrace s jedním z klientských knihoven pro úložiště Azure.
 
-Účty ZRS Classic můžete také upgradovat na ZRS v portálu nebo pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure.
+Rovněž lze upgradovat ZRS Classic účty ZRS v portálu nebo pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure v oblastech, kde zónově redundantní úložiště je k dispozici.
+
+Upgrade na ZRS na portálu přejděte do části Konfigurace účtu a zvolte upgradovat:![Upgrade ZRS Classic ZRS na portálu](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.jpg)
+
+Upgrade na ZRS pomocí volání Powershellu následující příkaz:
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_account> -UpgradeToStorageV2
+```
+
+Upgrade na ZRS pomocí volání rozhraní příkazového řádku následující příkaz:
+```cli
+az storage account update -g <resource_group> -n <storage_account> --set kind=StorageV2
+```
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 - [Účet replikace Azure Storage](storage-redundancy.md)

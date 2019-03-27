@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: b9dbd644aff3a41bcf38b982ebd46396ad30edca
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 370fb17e9f00d64db847e49c48c6f03cb329612d
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361961"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472935"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -330,7 +330,7 @@ print(aks_target.provisioning_errors)
 
 #### <a name="use-an-existing-cluster"></a>Použít existující cluster
 
-Pokud už máte AKS cluster ve vašem předplatném Azure, a je verze 1.11. ## a obsahuje alespoň 12 virtuálních procesorů, ve kterém můžete nasadit svou image. Následující kód ukazuje, jak se připojit existující 1.11 AKS. ## clusteru do pracovního prostoru:
+Pokud už máte AKS cluster ve vašem předplatném Azure, a je verze 1.12. ## a obsahuje alespoň 12 virtuálních procesorů, ve kterém můžete nasadit svou image. Následující kód ukazuje, jak se připojit existující 1.12 AKS. ## clusteru do pracovního prostoru:
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: b0842bfc4c9d60420f6409afc4bc42692346050b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a2e03a548b403262dca7e7a76b84cc99661242c6
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999653"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487360"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -563,6 +563,36 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
    params pcmk_delay_max="15" \
    op monitor interval="15" timeout="15"
 </code></pre>
+
+## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Pacemaker konfiguraci pro Azure naplánované události
+
+Azure nabízí [naplánované události](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/scheduled-events). Naplánované události jsou k dispozici prostřednictvím služby metadata a nějakou dobu počkat aplikace přípravy na události, jako jsou vypnutí virtuálního počítače, opětovné nasazení virtuálního počítače, atd. Prostředek agenta **[akce azure](https://github.com/ClusterLabs/resource-agents/pull/1161)** monitory pro naplánovaných událostí Azure. Pokud jsou detekovány události, agent se pokusí zastavit všechny prostředky v ovlivněných virtuálních počítačů a přesuňte je do jiného uzlu v clusteru. Musí být nakonfigurovaný k dosažení této další Pacemaker prostředky. 
+
+1. **[A]**  Nainstalovat **akce azure** agenta. 
+
+<pre><code>sudo zypper install resource-agents
+</code></pre>
+
+2. **[1]**  V Pacemaker konfiguraci prostředků. 
+
+<pre><code>
+#Place the cluster in maintenance mode
+sudo crm configure property maintenance-mode=true
+
+#Create Pacemaker resources for the Azure agent
+sudo crm configure primitive rsc_azure-events ocf:heartbeat:azure-events op monitor interval=10s
+sudo crm configure clone cln_azure-events rsc_azure-events
+
+#Take the cluster out of maintenance mode
+sudo crm configure property maintenance-mode=false
+</code></pre>
+
+   > [!NOTE]
+   > Po dokončení konfigurace Pacemaker prostředky pro agenta azure události, když umístíte clusteru nebo z režimu údržby, můžete obdržet upozornění jako:  
+     Upozornění: cib-bootstrap-options: Neznámý atribut "hostName_  <strong>hostname</strong>.  
+     Upozornění: cib-bootstrap-options: Neznámý atribut "azure events_globalPullState.  
+     Upozornění: cib-bootstrap-options: Neznámý atribut "hostName_ <strong>hostname</strong>.  
+   > Tyto zprávy upozornění můžete ignorovat.
 
 ## <a name="next-steps"></a>Další postup
 

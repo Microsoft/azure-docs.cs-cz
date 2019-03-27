@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d62fd909d10515c9217a4dd0aa760afa376b8d7c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d9b3ba8d216f3e82c9aff7f2b49b9c24115b32f2
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838897"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487902"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Řešení problémů pomocí sestav o stavu systému
 Komponenty služby Azure Service Fabric vám na všechny entity v clusteru předem připravené sestav stravu systému. [Health store](service-fabric-health-introduction.md#health-store) vytvoří a odstraní entity, které jsou založeny na sestavách systému. Je také uspořádány v hierarchii, který explicitně zaznamenává interakce entity.
@@ -84,7 +84,7 @@ System.FM – hlásí jako OK, pokud uzel připojí prstenec (je zprovozněný).
 
 Následující příklad zobrazuje System.FM – události se stavem Stav OK pro uzel:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricNodeHealth  _Node_0
 
 NodeName              : _Node_0
@@ -137,7 +137,7 @@ System.CM hlásí jako OK při vytvoření nebo aktualizace aplikace. Při odstr
 
 Následující příklad ukazuje na události stavu **fabric: / WordCount** aplikace:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount -ServicesFilter None -DeployedApplicationsFilter None -ExcludeHealthStatistics
 
 ApplicationName                 : fabric:/WordCount
@@ -169,7 +169,7 @@ System.FM – hlásí jako OK po vytvoření služby. Odstraní entitu z health 
 
 Následující příklad ukazuje události stavu služby **fabric: / WordCount/WordCountWebService**:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricServiceHealth fabric:/WordCount/WordCountWebService -ExcludeHealthStatistics
 
 
@@ -224,7 +224,7 @@ Následující příklady popisují některé z těchto sestav.
 
 Následující příklad ukazuje oddíl v pořádku:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountWebService | Get-ServiceFabricPartitionHealth -ExcludeHealthStatistics -ReplicasFilter None
 
 PartitionId           : 8bbcd03a-3a53-47ec-a5f1-9b77f73c53b2
@@ -246,7 +246,7 @@ HealthEvents          :
 
 Následující příklad ukazuje stav oddíl nedosahuje počtu cílových replik. Dalším krokem je získání popisu oddílu, který ukazuje, jak je nakonfigurovaný: **MinReplicaSetSize** je třetí a **TargetReplicaSetSize** je sedm. Potom Získejte počet uzlů v clusteru, který v tomto případě je pět. Ano v tomto případě dvě repliky nelze umístit, protože cílový počet replik je vyšší než počet dostupných uzlů.
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None -ExcludeHealthStatistics
 
 
@@ -324,7 +324,7 @@ PS C:\> @(Get-ServiceFabricNode).Count
 
 Následující příklad ukazuje stav oddílu, který se zasekla v kvůli uživatele není dodržením zrušení rekonfiguraci token **RunAsync** metody. Zkoumání sestava stavu jakákoli replika označena jako primární (P) může pomoct přejít k další nižší na problém.
 
-```PowerShell
+```powershell
 PS C:\utilities\ServiceFabricExplorer\ClientPackage\lib> Get-ServiceFabricPartitionHealth 0e40fd81-284d-4be4-a665-13bc5a6607ec -ExcludeHealthStatistics 
 
 
@@ -388,7 +388,7 @@ System.RA sestavy OK po vytvoření repliky.
 
 Následující příklad ukazuje repliku v pořádku:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricReplica | where {$_.ReplicaRole -eq "Primary"} | Get-ServiceFabricReplicaHealth
 
 PartitionId           : af2e3e44-a8f8-45ac-9f31-4093eb897600
@@ -419,7 +419,7 @@ Tato upozornění stavu jsou vyvolány po opakovaném pokusu akce místně někt
 
 Následující příklad ukazuje stav repliky, která vyvolává `TargetInvocationException` z jeho metodu open. Popis obsahuje bodem selhání, **IStatefulServiceReplica.Open**, typ výjimky **typu TargetInvocationException**a trasování zásobníku.
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
 
 
@@ -470,7 +470,7 @@ Exception has been thrown by the target of an invocation.
 
 Následující příklad ukazuje, která neustále selhává během zavírání repliky:
 
-```PowerShell
+```powershell
 C:>Get-ServiceFabricReplicaHealth -PartitionId dcafb6b7-9446-425c-8b90-b3fdf3859e64 -ReplicaOrInstanceId 131483565548493142
 
 
@@ -515,7 +515,7 @@ Ve výjimečných případech může být rekonfiguraci zablokované kvůli komu
 
 Následující příklad ukazuje sestava stavu, ve kterém Rekonfigurace se zablokovala místní repliky. V této ukázce to není z důvodu služba dodržením token zrušení.
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 9a0cedee-464c-4603-abbc-1cf57c4454f3 -ReplicaOrInstanceId 131483600074836703
 
 
@@ -601,7 +601,7 @@ Odblokování změna konfigurace:
 
 Následující příklad ukazuje událost stavu z System.RAP spolehlivé služby, který není dodržením zrušení tokenu v **RunAsync**:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 5f6060fb-096f-45e4-8c3d-c26444d8dd10 -ReplicaOrInstanceId 131483966141404693
 
 
@@ -679,7 +679,7 @@ Při pojmenování operace trvá déle, než se očekávalo, je označen jako op
 
 Následující příklad ukazuje operaci služby vytvořit. Operace trvalo déle než nakonfigurovaná doba trvání. "AO" počet opakování a odešle práce "Ne" "Ne" dokončit poslední operaci s časovým LIMITEM. V takovém případě je stejné repliky primární žádosti "o" a "Žádná" rolí.
 
-```PowerShell
+```powershell
 PartitionId           : 00000000-0000-0000-0000-000000001000
 ReplicaId             : 131064359253133577
 AggregatedHealthState : Warning
@@ -736,7 +736,7 @@ System.Hosting hlásí jako OK při aplikace se úspěšně aktivoval na uzlu. V
 
 Následující příklad ukazuje úspěšné aktivaci:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricDeployedApplicationHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ExcludeHealthStatistics
 
 ApplicationName                    : fabric:/WordCount
@@ -793,7 +793,7 @@ System.Hosting hlásí jako OK, pokud typ služby byl úspěšně zaregistrován
 
 Následující příklad ukazuje v pořádku nasazený balíček služby:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricDeployedServicePackageHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ServiceManifestName WordCountServicePkg
 
 

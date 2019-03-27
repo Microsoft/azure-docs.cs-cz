@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: 7e401fe099a4e18573ccfe2aacda6068c37abfb7
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 00684df614771437f33655538a808468ee778d29
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352047"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487001"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>Rychlý start: Vytvoření projektu zjišťování objektu se vlastní Vision SDK pro Javu
 
@@ -43,7 +43,7 @@ Tento projekt Javy vytvoří nový projekt detekce objektů pomocí služby Cust
 
 Program je nakonfigurovaný tak, aby ukládal klíčová data do proměnných prostředí. Tyto proměnné můžete nastavit tak, že v PowerShellu přejdete do složky **Vision/CustomVision**. Potom zadejte tyto příkazy:
 
-```PowerShell
+```powershell
 $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
 $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 ```
@@ -76,9 +76,9 @@ Předchozí fragment kódu používá dvě pomocné funkce, které obrázky nač
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?range=277-314)]
 
-### <a name="train-the-project"></a>Trénování projektu
+### <a name="train-the-project-and-publish"></a>Projekt pro trénování a publikování
 
-Tento kód vytvoří první iteraci v projektu a označí ji jako výchozí iteraci. Výchozí iterace odráží verzi modelu, který bude odpovídat na požadavky na předpověď. Při každém přetrénování modelu byste ji měli aktualizovat.
+Tento kód vytvoří první iterace v projektu a ke koncovému bodu predikcí následně publikuje danou iteraci. Název zadaný pro publikované iterace lze použít k odesílání požadavků předpovědi. Iterace není k dispozici v koncovém bodě predikcí, dokud je publikována.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?range=233-242)]
 
@@ -92,7 +92,7 @@ Koncový bod předpovědi, který zde představuje objekt `predictor`, je odkaz,
 
 Pokud chcete řešení zkompilovat a spustit pomocí nástroje Maven, spusťte v PowerShellu v adresáři projektu následující příkaz:
 
-```PowerShell
+```powershell
 mvn compile exec:java
 ```
 

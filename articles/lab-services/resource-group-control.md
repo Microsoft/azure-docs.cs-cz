@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: f6e604940c9e2e84f119fdd1859ad4b2cda23aef
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: 1001e6aec7ba2f6ce62eb267d218149296048bb9
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588699"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485879"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Zadejte skupinu prostředků pro virtuální počítače testovacího prostředí ve službě Azure DevTest Labs
 
@@ -47,7 +47,7 @@ Následujícím postupem určete skupinu prostředků pro všechny virtuální p
 ## <a name="use-powershell"></a>Použití prostředí PowerShell 
 Následující příklad ukazuje, jak použít skript prostředí PowerShell k vytvoření všech virtuálních počítačů testovací prostředí v nové skupině prostředků.
 
-```PowerShell
+```powershell
 [CmdletBinding()]
 Param(
     $subId,
@@ -71,7 +71,7 @@ az resource update -g $labRg -n $labName --resource-type "Microsoft.DevTestLab/l
 
 Vyvolání skriptu pomocí následujícího příkazu. ResourceGroup.ps1 je soubor, který obsahuje předchozí skript:
 
-```PowerShell
+```powershell
 .\ResourceGroup.ps1 -subId <subscriptionID> -labRg <labRGNAme> -labName <LanName> -vmRg <RGName> 
 ```
 

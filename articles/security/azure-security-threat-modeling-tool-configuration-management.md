@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bd1d3c71660ae584b0aa57c7cc765fdc519f4b1b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 284d0e888b89d340088f770af22c026a861a4685
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863589"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498379"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Zabezpečení rámce: Správa konfigurace | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -85,7 +85,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Přehled ladění ASP.NET](https://msdn2.microsoft.com/library/ms227556.aspx), [trasování – Přehled technologie ASP.NET](https://msdn2.microsoft.com/library/bb386420.aspx), [jak: Povolení trasování pro aplikaci ASP.NET](https://msdn2.microsoft.com/library/0x5wc973.aspx), [jak: Povolit ladění pro aplikace ASP.NET](https://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **Odkazy**              | [Přehled ladění ASP.NET](https://msdn.microsoft.com/library/ms227556.aspx), [trasování – Přehled technologie ASP.NET](https://msdn.microsoft.com/library/bb386420.aspx), [jak: Povolení trasování pro aplikaci ASP.NET](https://msdn.microsoft.com/library/0x5wc973.aspx), [jak: Povolit ladění pro aplikace ASP.NET](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | **Kroky** | Když je povoleno trasování pro stránku, každý prohlížeče požadování že také získá informace o trasování, který obsahuje data o stav vnitřní serveru a pracovní postup. Tyto informace může být citlivé na zabezpečení. Při ladění je povoleno pro stránky, způsobit chyby děje na serveru data trasování plného zásobníku zobrazí v prohlížeči. Tato data může zveřejnit citlivé na zabezpečení informace o pracovní postup serveru. |
 
 ## <a id="js-trusted"></a>JavaScript třetích stran přístup pouze z důvěryhodných zdrojů

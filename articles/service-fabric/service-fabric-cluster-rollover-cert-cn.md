@@ -3,7 +3,7 @@ title: Změna certifikátu clusteru Azure Service Fabric | Dokumentace Microsoft
 description: Zjistěte, jak chcete efekt přechodu certifikát clusteru Service Fabric identifikovaný běžný název certifikátu.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: aljo
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
-ms.author: ryanwi
-ms.openlocfilehash: 72640a4d917ddb2485199f0df1fead8b0bdcd1c9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: aljo
+ms.openlocfilehash: 549c5fed02402bb17b85fe796fecc4b53b321a66
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192961"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497058"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Ručně nespotřebujete certifikát clusteru Service Fabric
 Jakmile certifikát clusteru Service Fabric se blíží vypršení platnosti, budete muset aktualizovat certifikát.  Výměny certifikátů je jednoduchý, pokud se cluster [nastavený používat certifikáty založené na běžný název](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (namísto kryptografický otisk).  Získejte nový certifikát od certifikační autority se nové datum vypršení platnosti.  Certifikáty podepsané svým držitelem nejsou podporu pro produkční clustery Service Fabric, zahrnovat certifikáty vygenerované během Azure pracovní postup vytvoření clusteru portálu. Nový certifikát musí mít stejný běžný název jako starší certifikát. 

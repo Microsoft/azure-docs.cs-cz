@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3172354752e2c6a1a7368b297e3cc6e763cd2fcb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 466ed4c2bd353e4a5ec3bec5535b70a90446ee0b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900569"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483892"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil ověření definování ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -65,8 +65,8 @@ S vlastním potvrzením technický profil může definovat profil technické ov�
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Type | Ano | Typ kontroly nebo dotaz k provedení pro předpoklad. Buď `ClaimsExist` je zadali, a ověřte, že by měl provést akce, pokud zadané deklarace existuje v aktuální sadě deklarací identity uživatele nebo `ClaimEquals` je zadán, že by měl provést akce, pokud existuje zadaný deklarace identity a jeho hodnota se rovná Zadaná hodnota. |
-| ExecuteActionsIf | Ano | Určuje, zda má být provedena akce v předpoklad je-li test true nebo false. |
+| `Type` | Ano | Typ kontroly nebo dotaz k provedení pro předpoklad. Buď `ClaimsExist` je zadali, a ověřte, že by měl provést akce, pokud zadané deklarace existuje v aktuální sadě deklarací identity uživatele nebo `ClaimEquals` je zadán, že by měl provést akce, pokud existuje zadaný deklarace identity a jeho hodnota se rovná Zadaná hodnota. |
+| `ExecuteActionsIf` | Ano | Určuje, zda má být provedena akce v předpoklad je-li test true nebo false. |
 
 **Předběžné podmínky** prvek obsahuje následující prvky:
 

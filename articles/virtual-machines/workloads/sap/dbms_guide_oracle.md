@@ -1,6 +1,6 @@
 ---
 title: Nasazení Azure Virtual Machines DBMS Oracle pro úlohy SAP | Dokumentace Microsoftu
-description: Nasazení Azure Virtual Machines DBMS Oracle pro úlohy SAP
+description: Nasazení DBMS v počítačích Azure Virtual Machines s Oraclem pro úlohy SAP
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ef8498ae1aa9be0322f508b3723778311e2cdd5
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6abfd26e63cc8001f501371fffce0a4c10f4ff85
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327778"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483508"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení Azure Virtual Machines DBMS pro úlohy SAP
 
@@ -158,7 +158,7 @@ ms.locfileid: "56327778"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -172,7 +172,7 @@ ms.locfileid: "56327778"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -314,7 +314,7 @@ Tento dokument popisuje několik různých oblastí, které je třeba zvážit p
 Informace o verzích Oracle a odpovídající verze operačního systému, které jsou podporovány pro spuštění SAP v Oracle v Azure je poznámka SAP [2039619].
 
 Obecné informace o spouštění SAP Business Suite v Oracle můžete najít v [SAP v Oracle](https://www.sap.com/community/topic/oracle.html).
-Oracle software je podporován společností Oracle v Microsoft Azure. Další informace týkající se obecné podpory pro Windows Hyper-V a Azure, zkontrolujte, [Oracle a Microsoft Azure – nejčastější dotazy](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
+Oracle software je podporován společností Oracle v Microsoft Azure. Další informace týkající se obecné podpory pro Windows Hyper-V a Azure, zkontrolujte, [Oracle a Microsoft Azure – nejčastější dotazy](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
 
 ## <a name="sap-notes-relevant-for-oracle-sap-and-azure"></a>SAP poznámky, které jsou relevantní pro Oracle, SAP a Azure 
 
@@ -426,7 +426,7 @@ Pro nasazování Oracle na Windows, důrazně doporučujeme akcelerované síťo
 [Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) popisuje dalšími důležitými pojmy týkající se nasazení virtuálních počítačů s Oracle Database, včetně monitorování SAP a skupinami dostupnosti Azure.
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Podrobné informace o databázi Oracle v Oracle Linuxu
-Oracle software podporuje Oracle pro použití v Microsoft Azure s Oracle Linux jako hostovaný operační systém. Další informace týkající se obecné podpory pro Windows Hyper-V a Azure, najdete v článku [Azure a nejčastější dotazy k Oracle](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
+Oracle software podporuje Oracle pro použití v Microsoft Azure s Oracle Linux jako hostovaný operační systém. Další informace týkající se obecné podpory pro Windows Hyper-V a Azure, najdete v článku [Azure a nejčastější dotazy k Oracle](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
 
 Konkrétní scénář využití databází Oracle aplikací SAP se podporuje stejně. Podrobnosti jsou popsané v další části dokumentu.
 
@@ -463,12 +463,13 @@ Pokud používáte disků na základě úložiště objektů blob stránky Azure
 Pokud chcete identifikovat podporované typy virtuálních počítačů Azure, viz poznámka SAP [1928533].
 
 Minimální konfigurace:
+
 | Komponenta | Disk | Ukládání do mezipaměti | Odstranění * |
 | --- | ---| --- | --- |
-| /Oracle/<SID>/origlogaA & mirrlogB | Premium | Žádný | Není vyžadováno |
-| /Oracle/<SID>/origlogaB & mirrlogA | Premium | Žádný | Není vyžadováno |
-| /Oracle/<SID>/sapdata1...n | Premium | Jen pro čtení | Je možné |
-| /Oracle/<SID>/oraarch | Standard | Žádný | Není vyžadováno |
+| /Oracle/\<SID > / origlogaA & mirrlogB | Premium | Žádný | Není vyžadováno |
+| /Oracle/\<SID > / origlogaB & mirrlogA | Premium | Žádný | Není vyžadováno |
+| /Oracle/\<SID > / sapdata1... n | Premium | Jen pro čtení | Je možné |
+| /Oracle/\<SID > / oraarch | Standard | Žádný | Není vyžadováno |
 | Domovská stránka Oracle, saptrace... | Disk OS | | Není vyžadováno |
 
 * Odstranění: LVM stripe nebo MDADM pomocí 0
@@ -476,15 +477,16 @@ Minimální konfigurace:
 Výběr disku pro hostování Oracle online znovu protokolů by měl vycházet požadavky na vstupně-výstupních operací. Je možné ukládat všechny sapdata1... n (tabulkové prostory) na jednom připojeném disku, dokud svazek, IOPS a propustnost splňují požadavky. 
 
 Konfigurace výkonu:
+
 | Komponenta | Disk | Ukládání do mezipaměti | Odstranění * |
 | --- | ---| --- | --- |
-| /Oracle/<SID>/origlogaA | Premium | Žádný | Je možné  |
-| /oracle/<SID>/origlogaB | Premium | Žádný | Je možné |
-| /Oracle/<SID>/mirrlogAB | Premium | Žádný | Je možné |
-| /Oracle/<SID>/mirrlogBA | Premium | Žádný | Je možné |
-| /Oracle/<SID>/sapdata1...n | Premium | Jen pro čtení | Doporučené  |
-| /Oracle/SID/sapdata(n+1)* | Premium | Žádný | Je možné |
-| /Oracle/<SID>/oraarch* | Premium | Žádný | Není vyžadováno |
+| /Oracle/\<SID > / origlogaA | Premium | Žádný | Je možné  |
+| /Oracle/\<SID > / origlogaB | Premium | Žádný | Je možné |
+| /Oracle/\<SID > / mirrlogAB | Premium | Žádný | Je možné |
+| /Oracle/\<SID > / mirrlogBA | Premium | Žádný | Je možné |
+| /Oracle/\<SID > / sapdata1... n | Premium | Jen pro čtení | Doporučené  |
+| /Oracle/\<SID > / sapdata(n+1) * | Premium | Žádný | Je možné |
+| /Oracle/\<SID > / oraarch * | Premium | Žádný | Není vyžadováno |
 | Domovská stránka Oracle, saptrace... | Disk OS | Není vyžadováno |
 
 * Odstranění: LVM stripe nebo MDADM pomocí 0

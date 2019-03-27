@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: 1b15a3966c6e408fb17655b112c1ec900bd86c5f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 822dce08d4555d9039ce310464ba49b6e3d4849c
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999789"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480647"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Nakonfigurujte jeden nebo více Always On naslouchacích procesů skupin dostupnosti - Resource Manageru
 Toto téma ukazuje, jak:
@@ -64,13 +64,13 @@ Aktuální [šablony aplikace Microsoft](virtual-machines-windows-portal-sql-alw
 
 V příkladech v tomto článku určení load balanceru úrovně standard. V příkladech skript obsahuje `-sku Standard`.
 
-```PowerShell
+```powershell
 $ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 ```
 
 Chcete-li vytvořit load balanceru úrovně basic, odeberte `-sku Standard` z řádku, který vytvoří nástroj pro vyrovnávání zatížení. Příklad:
 
-```PowerShell
+```powershell
 $ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
 ```
 

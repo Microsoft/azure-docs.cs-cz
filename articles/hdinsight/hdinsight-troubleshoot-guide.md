@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 9dbc6b5de3f2050067dc558be7bffdbcad2cb4eb
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 5ffd1cb0c71c4948e522d44231242e33889c6409
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339359"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58442451"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Řešení potíží pomocí Azure HDInsight
 
@@ -32,4 +32,4 @@ ms.locfileid: "58339359"
 | HDInsight v Linuxu a optimalizace | - [Informace o používání HDInsight v Linuxu](hdinsight-hadoop-linux-information.md)<br>- [Apache Hadoop paměti a řešení potíží s výkonem](hdinsight-hadoop-stack-trace-error-messages.md)<br>- [Apache Hive výkon dotazů](https://web.archive.org/web/20190217214250/ https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
 | Protokoly a výpisy paměti | - [Protokoly přístupu aplikací Apache Hadoop YARN v Linuxu](hdinsight-hadoop-access-yarn-app-logs-linux.md)<br>- [Povolení výpisů paměti haldy pro služby Apache Hadoop v Linuxu](hdinsight-hadoop-collect-debug-heap-dump-linux.md)<br>- [Analýza protokolů pro HDInsight](hdinsight-debug-jobs.md)|
 | Chyby | - [Vysvětlení a řešení chyb WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [Apache Hive nastavení, chcete-li vyřešit chybu OutofMemory](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
-| Nástroje | - [Použití zobrazení Apache Ambari k ladění úloh Apache Tez](hdinsight-debug-ambari-tez-view.md)<br>- [Optimalizovat dotazy Apache Hive](hdinsight-hadoop-optimize-hive-query.md)<br>- [Nástroje HDInsight IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)<br>- [Nástroje HDInsight Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [Nástroje HDInsight VSCode](hdinsight-for-vscode.md)<br>- [Nástroje HDInsight Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |
+| Nástroje | - [Optimalizovat dotazy Apache Hive](hdinsight-hadoop-optimize-hive-query.md)<br>- [Nástroje HDInsight IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)<br>- [Nástroje HDInsight Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [Nástroje HDInsight VSCode](hdinsight-for-vscode.md)<br>- [Nástroje HDInsight Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |

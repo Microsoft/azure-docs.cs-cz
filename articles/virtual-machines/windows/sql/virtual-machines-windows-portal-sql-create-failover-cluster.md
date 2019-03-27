@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 19910782142bf78c10dda155f40a5c41bdd64958
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3bb829e7cc99ee0d6e2d02f7ed3880d6c0226123
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842749"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486314"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurace Instance clusteru převzetí služeb při selhání SQL serveru na virtuálních počítačích Azure
 
@@ -222,7 +222,7 @@ Dalším krokem je konfigurace clusteru převzetí služeb při selhání s S2D.
 
    K instalaci funkce Clustering převzetí služeb při selhání pomocí prostředí PowerShell, spusťte následující skript z relace prostředí PowerShell správce v jednom z virtuálních počítačů.
 
-   ```PowerShell
+   ```powershell
    $nodes = ("<node1>","<node2>")
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
@@ -253,7 +253,7 @@ Pro ověření clusteru pomocí uživatelského rozhraní, proveďte následují
 
 Pro ověření clusteru pomocí prostředí PowerShell, spusťte následující skript z relace prostředí PowerShell správce v jednom z virtuálních počítačů.
 
-   ```PowerShell
+   ```powershell
    Test-Cluster –Node ("<node1>","<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
    ```
 
@@ -270,7 +270,7 @@ K vytvoření clusteru převzetí služeb při selhání, budete potřebovat:
 
 Následující příkaz Powershellu vytvoří cluster převzetí služeb při selhání. Tento skript aktualizace s názvy uzlů (názvy virtuálních počítačů) a dostupnou IP adresu z virtuální sítě Azure:
 
-```PowerShell
+```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
 
@@ -294,7 +294,7 @@ Disky pro S2D musí být prázdné a bez oddílů nebo jiná data. K vyčištěn
 
    Následující příkaz Powershellu povolí prostory úložiště s přímým přístupem.  
 
-   ```PowerShell
+   ```powershell
    Enable-ClusterS2D
    ```
 
@@ -304,7 +304,7 @@ Disky pro S2D musí být prázdné a bez oddílů nebo jiná data. K vyčištěn
 
    Jednou z funkcí S2D je, že ji automaticky vytvoří fond úložiště Pokud je povolená. Nyní jste připraveni vytvořit svazek. Rutiny Powershellu `New-Volume` automatizuje proces vytváření svazku, včetně formátování, přidání do clusteru a vytvoření sdíleného svazku clusteru (CSV). Následující příklad vytvoří 800 gigabajt (GB) sdíleného svazku clusteru.
 
-   ```PowerShell
+   ```powershell
    New-Volume -StoragePoolFriendlyName S2D* -FriendlyName VDisk01 -FileSystem CSVFS_REFS -Size 800GB
    ```   
 
@@ -431,7 +431,7 @@ Nastavte parametr port sondy clusteru v prostředí PowerShell.
 
 Pokud chcete nastavit parametr port sondy clusteru, aktualizujte proměnné v následujícím skriptu s hodnotami ze svého prostředí. Odebrat lomené závorky `<>` ze skriptu. 
 
-   ```PowerShell
+   ```powershell
    $ClusterNetworkName = "<Cluster Network Name>"
    $IPResourceName = "<SQL Server FCI IP Address Resource Name>" 
    $ILBIP = "<n.n.n.n>" 
@@ -457,7 +457,7 @@ V předchozím skriptu nastavte hodnoty pro vaše prostředí. Následující se
 
 Jakmile nastavíte cluster testu můžete zobrazit všechny parametry clusteru v prostředí PowerShell. Spusťte tento skript:
 
-   ```PowerShell
+   ```powershell
    Get-ClusterResource $IPResourceName | Get-ClusterParameter 
   ```
 

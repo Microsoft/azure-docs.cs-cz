@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 8bb035a02b8ab684bc1efb7accd785518cb151c2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a30f9c1a61044c0911a5afc27ad95fc758b4c83e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107606"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449099"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurace virtuálního počítače s Linuxem s využitím konfigurace požadovaného stavu
 
@@ -143,6 +143,6 @@ V rámci tohoto rychlého startu jste připojili virtuální počítač s Linuxe
 > [Průběžné nasazování do virtuálního počítače pomocí DSC a Chocolatey](./automation-dsc-cd-chocolatey.md)
 
 * Další informace o konfiguraci požadovaného stavu PowerShellu najdete v tématu [Přehled konfigurace požadovaného stavu PowerShellu](https://docs.microsoft.com/powershell/dsc/overview).
-* Další informace o správě Automation DSC z PowerShellu najdete v tématu [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0).
+* Další informace o správě Automation DSC z PowerShellu najdete v tématu [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/).
 * Informace o přesměrování sestav DSC do protokolů Azure Monitor pro generování sestav a upozorňování najdete v tématu [přesměrování sestav DSC do Azure monitoru protokoly](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
 

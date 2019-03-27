@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: 6ef020ff1054416e2b9af5af824b9aa27f0b1e64
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ad005ff879ef5e4c0fb2fb72ce3062a5dd25d99a
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247235"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486780"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura připojení pro spravovanou instanci Azure SQL Database 
 
@@ -67,7 +67,7 @@ Pojďme se dozvědět více o do připojení architektury pro spravované instan
 
 ![Architektura připojení z virtuální cluster](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Klienti připojit k managed instance pomocí názvu hostitele, který má tvar `<mi_name>.<dns_zone>.database.windows.net`. Tento název hostitele se přeloží na privátní IP adresu, i když je zaregistrovaný v zóně Name System (DNS) veřejné domény a je veřejně přeložitelného. `zone-id` Není automaticky vygenerován při vytváření clusteru. Pokud je to nově vytvořený cluster hostitelem sekundární managed instance, sdílí jeho ID zóny s primární clusteru. Další informace najdete v tématu [povolit transparentní a koordinovaný převzetí služeb při selhání několika databází pomocí skupin autofailover](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
+Klienti připojit k managed instance pomocí názvu hostitele, který má tvar `<mi_name>.<dns_zone>.database.windows.net`. Tento název hostitele se přeloží na privátní IP adresu, i když je zaregistrovaný v zóně Name System (DNS) veřejné domény a je veřejně přeložitelného. `zone-id` Není automaticky vygenerován při vytváření clusteru. Pokud je to nově vytvořený cluster hostitelem sekundární managed instance, sdílí jeho ID zóny s primární clusteru. Další informace najdete v tématu [povolit transparentní a koordinovaný převzetí služeb při selhání několika databází pomocí skupin automatického převzetí služeb při selhání](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
 
 Tato privátní IP adresa patří do spravované instance interního nástroje load balancer. Nástroje pro vyrovnávání zatížení bude směrovat provoz do spravované instance brány. Protože více spravovaných instancí lze spustit ve stejném clusteru, brána používá název hostitele spravované instance pro přesměrování přenosu dat do služby správný modul SQL.
 
@@ -109,6 +109,8 @@ Nasazení spravované instance ve vyhrazené podsíti ve virtuální síti. Pods
 |------------|--------------|--------|-----------------|-----------|------|
 |Správa  |80, 443, 12000|TCP     |Všechny              |Internet   |Povolit |
 |mi_subnet   |Všechny           |Všechny     |Všechny              |MI PODSÍTĚ *  |Povolit |
+
+> Ujistěte se, že existuje pouze jedno příchozí pravidlo pro porty 9000 9003, 1438, 1440, 1452 a jeden odchozí pravidlo pro port 80, 443, 12000. Spravovaná Instance zřizování prostřednictvím ARM nasazení může selhat, pokud vstupní a výstupní pravidla jsou nakonfigurované samostatně pro každý porty. 
 
 \* PODSÍŤ MI odkazuje na rozsah IP adres podsítě v 10.x.x.x/y formuláře. Tyto informace můžete najít na webu Azure Portal, v okně Vlastnosti podsítě.
 
@@ -167,6 +169,6 @@ Pokud virtuální síť obsahuje vlastní DNS, přidejte záznam pro Azure rekur
 - [Vypočítat velikost podsítě](sql-database-managed-instance-determine-size-vnet-subnet.md) ve které chcete nasadit spravované instance.
 - Zjistěte, jak vytvořit spravovanou instanci:
   - Z [webu Azure portal](sql-database-managed-instance-get-started.md).
-  - S použitím [Powershellu](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/).
+  - S použitím [Powershellu](scripts/sql-database-create-configure-managed-instance-powershell.md).
   - S použitím [šablony Azure Resource Manageru](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
   - S použitím [šablonu Azure Resource Manageru (s použitím Jumpboxu, pomocí aplikace SSMS zahrnuté)](https://portal.azure.com/).

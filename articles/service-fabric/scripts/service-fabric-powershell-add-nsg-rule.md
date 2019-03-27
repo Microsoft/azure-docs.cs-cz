@@ -1,9 +1,9 @@
 ---
-title: Azure skript prostředí PowerShell ukázkový – přidat pravidlo pro skupinu zabezpečení sítě | Microsoft Docs
-description: Ukázkový skript prostředí PowerShell Azure – přidá skupinu zabezpečení sítě chcete povolit příchozí přenosy na určitém portu.
+title: Skript Azure Powershellu ukázkový – přidání pravidla skupiny zabezpečení sítě | Dokumentace Microsoftu
+description: Ukázkový skript Azure Powershellu – přidá skupinu zabezpečení sítě, které povolí příchozí provoz na určitém portu.
 services: service-fabric
 documentationcenter: ''
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 tags: azure-service-management
@@ -13,20 +13,22 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 11/28/2017
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: fd3c648ee63c45bef305658832a4d31dfdb213be
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
-ms.translationtype: HT
+ms.openlocfilehash: fead6aa19775eab6cc3a1014e9f52b30cfa2cefa
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2017
-ms.locfileid: "25987381"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498311"
 ---
-# <a name="add-an-inbound-network-security-group-rule"></a>Přidání skupiny pravidla zabezpečení příchozích síťových
+# <a name="add-an-inbound-network-security-group-rule"></a>Přidejte pravidlo skupiny zabezpečení příchozích dat
 
-Tento ukázkový skript vytvoří pravidlo skupiny zabezpečení sítě chcete povolit příchozí přenosy na portu 8081.  Získá skript `Microsoft.Network/networkSecurityGroups` prostředek, který je součástí clusteru, vytvoří nové pravidlo konfigurace zabezpečení sítě a aktualizuje skupinu zabezpečení sítě. Podle potřeby upravte parametry.
+Tento ukázkový skript vytvoří pravidlo skupiny zabezpečení sítě, které povolí příchozí provoz na portu 8081.  Získá skript `Microsoft.Network/networkSecurityGroups` prostředek, který je součástí clusteru, vytvoří nové pravidlo konfigurace zabezpečení sítě a aktualizuje skupinu zabezpečení sítě. Podle potřeby upravte parametry.
 
-V případě potřeby nainstalujte pomocí pokynů v prostředí Azure PowerShell [prostředí Azure PowerShell průvodce](/powershell/azure/overview). 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+V případě potřeby nainstalujte Azure PowerShell podle pokynů v [příručce k Azure Powershellu](/powershell/azure/overview). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -34,15 +36,15 @@ V případě potřeby nainstalujte pomocí pokynů v prostředí Azure PowerShel
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Získá `Microsoft.Network/networkSecurityGroups` prostředků. |
-|[Get-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermnetworksecuritygroup)| Načte skupinu zabezpečení sítě podle názvu.|
-|[Přidat AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/add-azurermnetworksecurityruleconfig)| Přidá skupinu zabezpečení sítě konfiguraci pravidla zabezpečení sítě. |
-|[Set-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/set-azurermnetworksecuritygroup)| Nastaví cíl stavu pro skupinu zabezpečení sítě.|
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Získá prostředek `Microsoft.Network/networkSecurityGroups`. |
+|[Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)| Načte skupinu zabezpečení sítě s názvem.|
+|[Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Konfigurace pravidla zabezpečení sítě se přidá do skupiny zabezpečení sítě. |
+|[Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup)| Nastaví cílový stav pro skupinu zabezpečení sítě.|
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: 4656cc5a27d459c4f30f7cf23cc41b9525e79dcd
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: d27b1ae05205d5b9c19b99733a3fa647a7f69c58
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437618"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499181"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Reference – IoT Hub kvóty a omezování
 
@@ -42,7 +42,7 @@ V následující tabulce jsou uvedeny vynucené omezení. Hodnoty se vztahují j
 | Cloudové zařízení obdrží<sup>1</sup> <br/> (pouze pokud zařízení používá protokol HTTPS)| 16.67/sec/Unit (1 000/min/jednotku) | 16.67/sec/Unit (1 000/min/jednotku) | 833.33/sec/Unit (50000/min/jednotku) |
 | Nahrání souboru | Soubor 1.67 odesílání oznámení/s/jednotku (100/min/jednotku) | Soubor 1.67 odesílání oznámení/s/jednotku (100/min/jednotku) | soubor 83.33 odesílání oznámení/s/jednotku (5 000/min/jednotku) |
 | Přímé metody<sup>1</sup> | 160KB/s/jednotku<sup>2</sup> | 480KB/s/jednotku<sup>2</sup> | 24MB/s/jednotku<sup>2</sup> | 
-| Dotazy | 20/s/jednotku | 20/s/jednotku | 1 000/s/jednotku |
+| Dotazy | 20/min/jednotku | 20/min/jednotku | 1 000/min/jednotku |
 | (Zařízení a modul) čtení dvojčat<sup>1</sup> | 100/s | Vyšší 100/s nebo 10/s/jednotku | 500/sec/unit |
 | Dvojče aktualizace (zařízení a modul)<sup>1</sup> | 50/sec | Vyšší 50/s nebo 5/s/jednotku | 250/s/jednotku |
 | Úlohy operace<sup>1,3</sup> <br/> (vytvoření, aktualizace, výpis, odstranění) | 1.67/sec/Unit (100/min/jednotku) | 1.67/sec/Unit (100/min/jednotku) | 83.33/sec/Unit (5 000/min/jednotku) |

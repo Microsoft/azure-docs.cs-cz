@@ -3,7 +3,7 @@ title: Ukázkový skript Azure PowerShellu – Přidání certifikátu aplikace 
 description: Ukázkový skript Azure PowerShellu – Přidání certifikátu aplikace do clusteru Service Fabric
 services: service-fabric
 documentationcenter: ''
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 tags: azure-service-management
@@ -13,20 +13,22 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: be097f88f774df9e4a6429af444c6c742737f4c9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: d5e1540a347bb14e7479bc445afa98e220b5475a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31598706"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497055"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Přidání certifikátu aplikace do clusteru Service Fabric
 
 Tento ukázkový skript vytvoří v zadaném trezoru klíčů Azure certifikát podepsaný svým držitelem a nainstaluje ho do všech uzlů clusteru Service Fabric. Certifikát se také stáhne do místní složky. Název staženého certifikátu je stejný jako název certifikátu v trezoru klíčů. Podle potřeby upravte parametry.
 
-V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview) a pak spuštěním příkazu `Connect-AzureRmAccount` vytvořte připojení k Azure. 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview) a pak spuštěním příkazu `Connect-AzAccount` vytvořte připojení k Azure. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -38,9 +40,9 @@ Tento skript používá následující příkazy: Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [Add-AzureRmServiceFabricApplicationCertificate](/powershell/module/azurerm.servicefabric/Add-AzureRmServiceFabricApplicationCertificate) | Přidá nový certifikát aplikace do škálovací sady virtuálních počítačů, která tvoří cluster.  |
+| [Add-AzServiceFabricApplicationCertificate](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) | Přidá nový certifikát aplikace do škálovací sady virtuálních počítačů, která tvoří cluster.  |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

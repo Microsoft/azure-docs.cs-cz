@@ -4,15 +4,15 @@ description: Poskytuje informace o zařízení Kolektoru ve službě Azure Migra
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 03/26/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 78ef88d0710e8a82d30fa26b60073aa75e363c15
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 224511b9748c540f2cd48a3d8393a9c74f76ce32
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315296"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498413"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -150,6 +150,9 @@ vCenter Server | TCP 443 | Kolekce musí být schopný komunikovat s systému vC
 Protokol RDP | TCP 3389 |
 
 ## <a name="collected-metadata"></a>Shromáždila se metadata
+
+> [!NOTE]
+> Metadat zjištěných službou Azure Migrate zařízení kolektoru je použít při nastavení správné velikosti aplikací při migraci do Azure, provést analýzu vhodnost pro Azure, analýza závislosti aplikace a plánování nákladů. Microsoft nepoužívá tato data ve vztahu k auditování dodržování předpisů žádné licence.
 
 Zařízení kolektoru zjistí následující metadat konfigurace pro každý virtuální počítač. Konfigurační data pro virtuální počítače jsou k dispozici hodinu po spuštění zjišťování.
 

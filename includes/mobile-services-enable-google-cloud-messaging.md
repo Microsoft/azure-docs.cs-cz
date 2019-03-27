@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ae84b5fd5647ef6c54006c0411e334b14173392e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33836461"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488038"
 ---
 1. Přejděte na [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager) a přihlaste se pomocí svých přihlašovacích údajů k účtu Google. 
 2. Na panelu nástrojů vyberte **Vytvořit projekt**. 
    
     ![Vytvoření nového projektu](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
 3. Do pole **Project name** (Název projektu) zadejte název vašeho produktu a klikněte na **Create** (Vytvořit).
-4. Vyberte na panelu nástrojů tlačítko **upozornění** a v seznamu vyberte váš projekt. Zobrazí se řídicí panel pro váš projekt. Můžete také přejít přímo na řídicí panel pomocí adresy URL: https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>
+4. Vyberte na panelu nástrojů tlačítko **upozornění** a v seznamu vyberte váš projekt. Zobrazí se řídicí panel pro váš projekt. Můžete také přejít přímo na řídicí panel pomocí adresy URL: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 
     ![Výběr projektu v upozorněních](./media/mobile-services-enable-google-cloud-messaging/alert-new-project.png)
 5. Poznamenejte si údaj **Project number** (Číslo projektu), který se nachází v řídicím panelu na dlaždici **Project info** (Informace o projektu). 
@@ -51,5 +51,5 @@ ms.locfileid: "33836461"
 
     ![Zkopírování klíče rozhraní API](./media/mobile-services-enable-google-cloud-messaging/copy-api-key.png)
    
-    Pomocí této hodnoty klíče API potom povolíte službě Azure ověření na serveru GCM a odesílání nabízených oznámení jménem vaší aplikace. K návratu na řídicí panel projektu použijte adresu URL: https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>
+    Pomocí této hodnoty klíče API potom povolíte službě Azure ověření na serveru GCM a odesílání nabízených oznámení jménem vaší aplikace. Přejděte zpět do řídicího panelu Projekt, použijte adresu URL: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 

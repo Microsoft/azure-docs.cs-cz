@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e6ea0be84cc36ca6fa6547d01054599e37229d7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0aac3e40089c67cd71a2c634280e333964e47902
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162930"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499977"
 ---
 # <a name="application-types-for-v20"></a>Typy aplikací pro verze 2.0
 
@@ -124,7 +124,7 @@ V tomto toku aplikace obdrží autorizační kód z koncového bodu v2.0 při p�
 
 Aplikace, které mají dlouho běžící procesy nebo které pracují bez interakce s uživatelem také potřebují způsob, jak přistupovat k zabezpečeným prostředkům, jako je například webová rozhraní API. Tyto aplikace můžete ověřit a získat tokeny pomocí identity aplikace, spíše než uživatele delegovaná identita s tok přihlašovacích údajů klienta OAuth 2.0. Může být velmi identity aplikace pomocí tajného klíče klienta nebo certifikát. Další informace najdete v tématu [ověřování v Azure AD aplikace démonů s certifikáty](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/).
 
-V tomto toku aplikace komunikuje přímo `/token` koncový bod pro získání koncových bodů:
+V tomto toku aplikace komunikuje přímo `/token` koncového bodu získat přístup:
 
 ![Démon procesu tok ověřování aplikace](./media/v2-app-types/convergence_scenarios_daemon.png)
 

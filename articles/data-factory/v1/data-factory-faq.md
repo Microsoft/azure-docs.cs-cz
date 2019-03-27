@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d9d26ced30f718f06d6d0ba9eb7c2a78682305ad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 518e3fa842c5283dc20a6111773bd55451f026b6
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102362"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485845"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – nejčastější dotazy
 > [!NOTE]
@@ -175,7 +175,7 @@ Můžete znovu spustit určitý řez v jednom z následujících způsobů:
 * Klikněte na tlačítko **spustit** panelu příkazů **datový ŘEZ** okno řezu na webu Azure Portal.
 * Spustit **Set-AzDataFactorySliceStatus** rutiny se stavem nastavena na **čekání** řez.   
 
-    ```PowerShell
+    ```powershell
     Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
   Zobrazit [Set-AzDataFactorySliceStatus] [ set-azure-datafactory-slice-status] podrobné informace o rutině.

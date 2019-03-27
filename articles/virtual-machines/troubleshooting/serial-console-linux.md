@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 4fd96aedc658833493d6fddb704104a70c01df44
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f407d87249c44ad3a4773b2cd8fc85ee09506ceb
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010993"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445657"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Konzola sériového portu virtuálního počítače pro Linux
 
@@ -41,9 +41,9 @@ Dokumentaci ke konzole sériového portu pro virtuální počítače s Windows, 
 
 - Musíte mít účet, který se používá konzoly sériového portu [role Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) pro virtuální počítač a [Diagnostika spouštění](boot-diagnostics.md) účtu úložiště:
 
-    - Virtuální počítač, ve kterém přistupujete konzoly sériového portu, musíte mít účet založené na heslech. Můžete si ho vytvořit pomocí [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkce rozšíření přístupu virtuálních počítačů. Vyberte **resetovat heslo** z **podpora a řešení potíží** oddílu.
+- Virtuální počítač, ve kterém přistupujete konzoly sériového portu, musíte mít účet založené na heslech. Můžete si ho vytvořit pomocí [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkce rozšíření přístupu virtuálních počítačů. Vyberte **resetovat heslo** z **podpora a řešení potíží** oddílu.
 
-    - Nastavení specifická pro Linuxové distribuce, naleznete v tématu [konzoly sériového portu dostupnost distribuce Linuxu](#serial-console-linux-distribution-availability).
+- Nastavení specifická pro Linuxové distribuce, naleznete v tématu [konzoly sériového portu dostupnost distribuce Linuxu](#serial-console-linux-distribution-availability).
 
 
 
@@ -85,12 +85,11 @@ Vlastní Linuxové Image     | Pokud chcete povolit konzole sériového portu pr
 
 Scénář          | Akce v konzole sériového portu
 :------------------|:-----------------------------------------
-Nefunkční *FSTAB* souboru | Stisknutím klávesy **Enter** klíč pomocí textového editoru opravit a pokračovat *FSTAB* souboru. Musíte může být v jednouživatelském režimu Uděláte to tak. Další informace najdete v tématu [k vyřešení potíží se souborem fstab](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) a [konzoly sériového portu používá pro přístup k GRUB a režimu jednoho uživatele](serial-console-grub-single-user-mode.md).
-Pravidla brány firewall na nesprávný | Přístup ke konzole sériového portu a iptables vyřešit.
-Poškození systému souborů a vrácení | Přístup ke konzole sériového portu a proveďte obnovení ze systému souborů.
-Problémy s konfigurací SSH nebo RDP | Přístup ke konzole sériového portu a změnit nastavení.
-Uzamknutí sítě v systému| Na webu Azure Portal ke správě systému přístup ke konzole sériového portu.
-Interakce s zaváděcího programu pro spouštění | Restartujte virtuální počítač z v rámci okna konzoly sériového portu pro přístup k GRUB na virtuální počítač s Linuxem. Další informace najdete v tématu [konzoly sériového portu používá pro přístup k GRUB a režimu jednoho uživatele](serial-console-grub-single-user-mode.md).
+Nefunkční *FSTAB* souboru | Stisknutím klávesy **Enter** klíč pomocí textového editoru opravit a pokračovat *FSTAB* souboru. Musíte může být v jednouživatelském režimu Uděláte to tak. Další informace najdete v části konzoly sériového portu v [k vyřešení potíží se souborem fstab](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) a [konzoly sériového portu používá pro přístup k GRUB a režimu jednoho uživatele](serial-console-grub-single-user-mode.md).
+Pravidla brány firewall na nesprávný |  Pokud jste nakonfigurovali iptables blokovat připojení SSH, můžete k interakci s virtuálním Počítačem bez nutnosti SSH konzoly sériového portu. Další podrobnosti najdete v [iptables člověk stránky](https://linux.die.net/man/8/iptables). Podobně pokud jste firewalld blokuje přístup přes SSH, můžete přístup k virtuálnímu počítači prostřednictvím konzoly sériového portu a překonfigurujte firewalld. Další podrobnosti najdete v [firewalld dokumentaci](https://firewalld.org/documentation/).
+Poškození systému souborů a vrácení | Podrobnosti najdete v části konzoly sériového portu [Linuxový virtuální počítač Azure nejde spustit kvůli chybám systémových souborů](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck) další podrobnosti o řešení potíží s poškozený soubor systémů pomocí konzoly sériového portu.
+Problémy s konfigurací SSH | Přístup ke konzole sériového portu a změnit nastavení. Konzola sériového portu je možné bez ohledu na to se konfigurace SSH z virtuálního počítače nevyžaduje virtuální počítač má síťové připojení k práci. Průvodce odstraňováním potíží je k dispozici na [řešení potíží s připojení SSH k virtuálnímu počítači Azure Linux, který selže, chyby, nebo bylo odmítnuto](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection). Další podrobnosti najdete na adrese [podrobné SSH řešení potíží pro problémy s připojením k virtuálnímu počítači s Linuxem v Azure](./detailed-troubleshoot-ssh-connection.md)
+Interakce s zaváděcího programu pro spouštění | Restartujte virtuální počítač z v rámci okna konzoly sériového portu pro přístup k GRUB na virtuální počítač s Linuxem. Další podrobnosti a informace specifické pro distribuce, naleznete v tématu [konzoly sériového portu používá pro přístup k GRUB a režimu jednoho uživatele](serial-console-grub-single-user-mode.md).
 
 ## <a name="disable-the-serial-console"></a>Zakázat konzole sériového portu
 Všechna předplatná mají ve výchozím přístupem ke konzole sériového portu pro všechny virtuální počítače. Můžete zakázat konzole sériového portu na úrovni předplatného nebo na úrovni virtuálního počítače.

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: afe71953e9917ccf274742124d59cb790f15521b
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 790a8b74f437fe8fd7b8660c2ac9d208328b487f
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414129"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445220"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Kurz: Vytvoření a Správa služby VPN gateway pomocí Powershellu
 
@@ -118,7 +118,7 @@ Po dokončení vytváření brány můžete vytvořit propojení mezi vaší vir
 
 ## <a name="view-the-gateway-public-ip-address"></a>Zobrazení veřejné IP adresy brány
 
-Pokud znáte název veřejné IP adresy, použijte [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azurermps-6.8.1) zobrazíte veřejnou IP adresu přiřazenou bráně.
+Pokud znáte název veřejné IP adresy, použijte [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) zobrazíte veřejnou IP adresu přiřazenou bráně.
 
 Pokud vypršel časový limit vaší relace, od začátku do nové relace v tomto kurzu zkopírujte společné parametry sítě a pokračovat a pokračovat.
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9c7c6d31b9443ee09539d4882a9e8f4c4332763b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 276ddf0a70fa450451cd3ddc78c7610c4ab1edc1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124637"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58494893"
 ---
 Naslouchací proces skupiny dostupnosti se IP adresy a síťového názvu, které skupiny dostupnosti systému SQL Server naslouchá. Chcete-li vytvořit naslouchací proces skupiny dostupnosti, postupujte takto:
 
@@ -92,7 +92,7 @@ Naslouchací proces skupiny dostupnosti se IP adresy a síťového názvu, kter�
     
    - `$ListenerProbePort` je port, který jste nakonfigurovali v nástroji pro vyrovnávání zatížení Azure pro naslouchací proces skupiny dostupnosti.
 
-   ```PowerShell
+   ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
    $IPResourceName = "<IPResourceName>" # the IP Address resource name
    $ListenerILBIP = "<n.n.n.n>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
@@ -126,7 +126,7 @@ V případě potřeby opakujte tento postup k nastavení parametrů clusteru pro
 
    - `$ClusterProbePort` je port, který jste nakonfigurovali v nástroji pro vyrovnávání zatížení Azure pro sondy stavu služby WSFC. To se liší od testu paměti pro naslouchací proces skupiny dostupnosti.
 
-   ```PowerShell
+   ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
    $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
    $ClusterCoreIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.

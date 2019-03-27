@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0fc34c913453abd174009213233a54e30b9346d3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3a0df408e70ed61355ffba319f6261f90d8e4348
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881380"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499154"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store dat na hraničních zařízeních s Azure Blob Storage na hraničních zařízeních IoT (preview)
 
@@ -345,7 +345,7 @@ Tady je příklad požadované vlastnosti pro tento modul: ![nastavte požadovan
     }
 
    ```
-  ## <a name="logs"></a>Logs
+## <a name="logs"></a>Logs
 
 Postupujte podle pokynů [konfigurovat protokoly dockeru pro moduly IoT Edge](production-checklist.md#set-up-logs-and-diagnostics)
 
@@ -383,9 +383,10 @@ Následující šablony rychlý start použít jazyky, které jsou také podporo
 * [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md) 
 
 ### <a name="azure-storage-explorer"></a>Azure Storage Explorer
-Můžete také zkusit [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) pro připojení k účtu místního úložiště. Jste se pokusili jsme [předchozí verze 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0) Průzkumníka služby Azure.
+Můžete také zkusit "Průzkumníka služby Azure Storage" pro připojení k účtu místního úložiště. Funguje s [Průzkumníka služby Azure Storage verze 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0).
+
 > [!NOTE]
-> Pravděpodobně dojde k chybám při provádění následujících kroků, ignorovat a aktualizovat. 
+> Mohou se vyskytnout chyby při provádění následujících kroků, jako je například přidání připojení k účtu místního úložiště nebo vytváření kontejnerů v účtu místní úložiště. Ignorovat a aktualizovat. 
 
 1. Stažení a instalace Průzkumníka služby Azure Storage
 2. Připojení ke službě Azure Storage pomocí připojovacího řetězce

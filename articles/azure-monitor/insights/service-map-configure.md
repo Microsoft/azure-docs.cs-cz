@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 26da504188a9060dbbb35330dbd8604bf5fe5e1b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4d3de1d0b242017f7026873ccaeba547f85981fc
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57995132"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482087"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ho zobrazit servery přirozeným způsobem – propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP žádnou konfiguraci kromě instalace agenta vyžaduje.
@@ -166,7 +166,7 @@ Rozšíření je k dispozici pro Windows (DependencyAgentWindows) i Linux (Depen
 
 Pokud chcete nasadit rozšíření virtuálního počítače Azure pomocí Powershellu, můžete použít v následujícím příkladu:
 
-```PowerShell
+```powershell
 #
 # Deploy the Dependency agent to every VM in a Resource Group
 #
@@ -278,7 +278,7 @@ Soubory pro agenta závislostí jsou umístěny v následujících adresářích
 Následující ukázkový skript je snadno nasazovat agenta závislosti na mnoha serverech najednou, k dispozici ke stažení a instalace agenta závislostí ve Windows nebo Linuxu.
 
 ### <a name="powershell-script-for-windows"></a>Skript PowerShellu pro Windows
-```PowerShell
+```powershell
 Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDependencyAgent-Windows.exe
 
 .\InstallDependencyAgent-Windows.exe /S

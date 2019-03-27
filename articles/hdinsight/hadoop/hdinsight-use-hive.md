@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 5b5f323e20bbaf91c151641f8dc78fbc8cde8c24
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 6d667df3062112e0c805e3ba26bc6240022cab8b
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351631"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446336"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL v Azure HDInsight?
 
@@ -204,8 +204,6 @@ Tyto příkazy provádět následující akce:
 
 [Apache Hive na dokumentech návrhu Tez](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) obsahuje podrobné informace o možnosti implementace a ladění konfigurace.
 
-Pro ladění úlohy proběhla za použití Tez, HDInsight poskytuje následující webové uživatelské rozhraní, které vám umožní zobrazit podrobnosti o úlohách Tez: [Použití zobrazení Apache Ambari Tez na Linuxovým systémem HDInsight](../hdinsight-debug-ambari-tez-view.md).
-
 ### <a name="low-latency-analytical-processing-llap"></a>Analytické zpracování s nízkou latencí (LLAP)
 
 [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) (někdy označované jako Live Long and Process) je nová funkce ve verzi 2.0 Hive, umožňující ukládání v mezipaměti dotazů. LLAP díky dotazů Hive mnohem rychlejší, až [26 x rychlejší než Hive 1.x v některých případech](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
@@ -256,7 +254,7 @@ Teď, když jste se naučili, co je Hive a jeho použití se systémem Hadoop v 
 [ssispack]: https://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
 
 [hdinsight-use-pig]: hdinsight-use-pig.md
-[hdinsight-use-oozie]: hdinsight-use-oozie.md
+[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
 [hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
 
 

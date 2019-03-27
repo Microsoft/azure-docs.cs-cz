@@ -3,18 +3,18 @@ title: Interaktivní hledání v mapách pomocí Azure Maps | Dokumentace Micros
 description: Rychlý start Azure – vytvoření ukázku interaktivního hledání v mapách s využitím Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 03/07/2018
+ms.date: 03/07/2019
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: be6d9ab0011e3d6b5d8ae1da489fc60c316e2867
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5e7994ba5fcd3efa061f56d7ee77f796bab16708
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095462"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449294"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>Vytvořte mapu interaktivního hledání s využitím Azure Maps
 

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření služby application gateway pomocí firewallu webových aplikací – Azure portal | Dokumentace Microsoftu
+title: Kurz – vytvoření služby application gateway pomocí firewallu webových aplikací – Azure portal | Dokumentace Microsoftu
 description: Zjistěte, jak vytvořit službu application gateway s firewallem webových aplikací s využitím webu Azure portal.
 services: application-gateway
 author: vhorne
@@ -9,18 +9,26 @@ tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 01/26/2018
+ms.date: 03/25/2019
 ms.author: victorh
-ms.openlocfilehash: 510a243b9133fe0ef0fe33b4dccce97f9d65e301
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c5f1cb992f27a8d3f97967ff6b885b3296be8710
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58074959"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448438"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Vytvoření služby application gateway s firewallem webových aplikací, pomocí webu Azure portal
 
-Na webu Azure portal můžete použít k vytvoření [služba application gateway](application-gateway-introduction.md) s [firewallu webových aplikací](application-gateway-web-application-firewall-overview.md) (WAF). WAF používá k ochraně aplikace pravidla [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Tato pravidla zahrnují ochranu před útoky, jako je injektáž SQL, skriptování mezi weby a krádeže relací.
+> [!div class="op_single_selector"]
+>
+> - [Azure Portal](application-gateway-web-application-firewall-portal.md)
+> - [PowerShell](tutorial-restrict-web-traffic-powershell.md)
+> - [Azure CLI](tutorial-restrict-web-traffic-cli.md)
+>
+> 
+
+V tomto kurzu se dozvíte, jak pomocí webu Azure portal k vytvoření [služba application gateway](application-gateway-introduction.md) s [firewallu webových aplikací](application-gateway-web-application-firewall-overview.md) (WAF). WAF používá k ochraně aplikace pravidla [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Tato pravidla zahrnují ochranu před útoky, jako je injektáž SQL, skriptování mezi weby a krádeže relací. Po vytvoření aplikační brány, můžete otestovat a ujistěte se, že funguje správně. Pomocí služby Azure Application Gateway řízení provozu webové aplikace ke konkrétním prostředkům prostřednictvím přiřazení naslouchacích procesů k portům, vytváření pravidel a přidávání prostředků do back-endový fond. Z důvodu zjednodušení tento článek používá jednoduché uspořádání s veřejnou IP adresu front-endu, základní naslouchací proces pro hostování jedné lokalitě v této brány application gateway, dva virtuální počítače pro back-endového fondu a pravidel směrování základní požadavek.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -33,104 +41,126 @@ V tomto článku získáte informace o těchto tématech:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
-Přihlaste se k portálu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com)
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-Virtuální sítě je potřeba ke komunikaci mezi prostředky, které vytvoříte. V tomto příkladu jsou vytvořeny dvě podsítě: jedna pro aplikační bránu a druhá pro back-endové servery. Virtuální síť můžete vytvořit současně s aplikační bránou.
+U Azure ke komunikaci mezi prostředky, že vytvoříte potřebuje virtuální sítě. Můžete vytvořit novou virtuální síť, nebo použijte již existující. V tomto příkladu vytvoříme nové virtuální sítě. Virtuální síť můžete vytvořit současně s aplikační bránou. Do samostatných podsítí se vytvářejí instance Application Gateway. V tomto příkladu vytvoříte dvě podsítě: jednu pro application gateway a jinou pro back-end serverů.
 
-1. Klikněte na tlačítko **nový** v levém horním rohu webu Azure portal.
-2. Vyberte **Sítě** a potom v seznamu Doporučené vyberte **Application Gateway**.
-3. Pro aplikační bránu zadejte tyto hodnoty:
+Vyberte **vytvořit prostředek** v nabídce vlevo na webu Azure portal. **Nový** zobrazí se okno.
 
-   - *myAppGateway* – tuto hodnotu zadejte jako název aplikační brány.
-   - *myResourceGroupAG* – tuto hodnotu zadejte jako skupinu prostředků.
-   - Vyberte *WAF* pro úroveň služby application gateway.
+Vyberte **sítě** a pak vyberte **Application Gateway** v **doporučené** seznamu.
 
-     ![Vytvoření nové aplikační brány](./media/application-gateway-web-application-firewall-portal/application-gateway-create.png)
+### <a name="basics-page"></a>Základní informace o stránce
 
-4. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
-5. Klikněte na tlačítko **zvolit virtuální síť**, klikněte na tlačítko **vytvořit nový**a potom zadejte tyto hodnoty pro virtuální síť:
+1. Na **Základy** stránky, zadejte tyto hodnoty pro následující nastavení aplikační brány:
+   - **Název**: Zadejte *myAppGateway* pro název služby application gateway.
+   - **Skupina prostředků**: Vyberte **myResourceGroupAG** pro skupinu prostředků. Pokud neexistuje, vyberte **vytvořit nový** k jeho vytvoření.
+   - Vyberte *WAF* pro úroveň služby application gateway.![ Vytvořit novou aplikační bránu](./media/application-gateway-web-application-firewall-portal/application-gateway-create.png)
 
-   - *myVNet* – tuto hodnotu zadejte jako název virtuální sítě.
-   - *10.0.0.0/16* – tuto hodnotu zadejte jako adresní prostor virtuální sítě.
-   - *myBackendSubnet* – tuto hodnotu zadejte jako název podsítě.
-   - *10.0.0.0/24* – tuto hodnotu zadejte jako adresní prostor podsítě.
+U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
 
-     ![Vytvoření virtuální sítě](./media/application-gateway-web-application-firewall-portal/application-gateway-vnet.png)
+### <a name="settings-page"></a>Stránka Nastavení
 
-6. Kliknutím na **OK** vytvořte virtuální síť a podsíť.
-7. Klikněte na tlačítko **zvolte veřejnou IP adresu**, klikněte na tlačítko **vytvořit nový**a potom zadejte název veřejné IP adresy. V tomto příkladu se veřejná IP adresa nazývá *myAGPublicIPAddress*. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
-8. Přijměte výchozí hodnoty pro konfiguraci naslouchacího procesu, nechat zakázané brány firewall webových aplikací a pak klikněte na **OK**.
-9. Zkontrolujte nastavení na stránce Souhrn a pak klikněte na tlačítko **OK** k vytvoření síťových prostředků a aplikační brány. Může trvat několik minut, než pro službu application gateway, chcete-li vytvořit, počkejte na úspěšné dokončení nasazení přejde k další části.
+1. Na **nastavení** stránce v části **konfiguraci podsítě**vyberte **zvolit virtuální síť**. <br>
+2. Na **zvolte virtuální síť** stránce **vytvořit nový**a potom zadejte hodnoty pro následující nastavení virtuální sítě:
+   - **Název**: Zadejte *myVNet* pro název virtuální sítě.
+   - **Adresní prostor**: Zadejte *10.0.0.0/16* pro adresní prostor virtuální sítě.
+   - **Název podsítě**: Zadejte *myAGSubnet* název podsítě.<br>Podsítě služby application gateway může obsahovat jenom aplikační brány. Jsou povoleny žádné další prostředky.
+   - **Rozsah adres podsítě**: Zadejte *10.0.0.0/24* pro rozsah adres podsítě.![ Vytvoření virtuální sítě](./media/application-gateway-web-application-firewall-portal/application-gateway-vnet.png)
+3. Kliknutím na **OK** vytvořte virtuální síť a podsíť.
+4. Zvolte **konfigurace protokolu IP front-endu**. V části **konfigurace protokolu IP front-endu**, ověřte **IP adres jako typu** je nastavena na **veřejné**. V části **veřejnou IP adresu**, ověřte **vytvořit nový** zaškrtnuto. <br>Můžete nakonfigurovat IP front-endu být veřejné a privátní podle vašemu případu použití. V tomto příkladu vybereme možnost veřejná IP adresa front-endu. 
+5. Zadejte *myAGPublicIPAddress* pro název veřejné IP adresy. 
+6. Přijměte výchozí hodnoty pro další nastavení a pak vyberte **OK**.<br>Vybereme možnost výchozí hodnoty v tomto článku pro zjednodušení, ale můžete nakonfigurovat vlastní hodnoty u ostatních nastavení v závislosti na vašemu případu použití 
+
+### <a name="summary-page"></a>Stránka souhrnu
+
+Zkontrolujte nastavení na **Souhrn** stránce a pak vyberte **OK** vytvořit virtuální síť, veřejnou IP adresu a application gateway. Může trvat několik minut, než Azure k vytvoření služby application gateway. Počkejte na úspěšné dokončení nasazení přejde k další části.
+
+## <a name="add-backend-pool"></a>Přidat back-endový fond
+
+Back-endového fondu se používá k směrovat požadavky do back-end serverů, které budou sloužit pro požadavek. Back-endové fondy se může skládat ze síťových rozhraní škálovací sady virtuálních počítačů, veřejné IP adresy, interní IP adresy nebo plně kvalifikované názvy (plně kvalifikovaný název domény) a více tenantů back EndY, jako je Azure App Service. Budete muset přidat cíle vaší back-endu do back-endový fond.
+
+V tomto příkladu budeme používat virtuální počítače jako cíl back-endu. Můžeme použít stávající virtuální počítače nebo vytvořit nové. V tomto příkladu vytvoříte dva virtuální počítače, které Azure používá jako servery back-end pro službu application gateway. Chcete-li to provést, provedeme následující:
+
+1. Vytvořit novou podsíť *myBackendSubnet*, ve kterém se vytvoří nové virtuální počítače. 
+2. Vytvořit 2 nové virtuální počítače, *myVM* a *myVM2*, které se použijí jako servery back-end.
+3. Instalace služby IIS na virtuálních počítačích a ověřte, že službu application gateway vytvořil úspěšně.
+4. Přidání serverů back-endu do back-endový fond.
 
 ### <a name="add-a-subnet"></a>Přidání podsítě
 
-1. V nabídce nalevo klikněte na **Všechny prostředky** a potom v seznamu prostředků klikněte na **myVNet**.
-2. Klikněte na tlačítko **podsítě**a potom klikněte na tlačítko **podsítě**.
+Přidání podsítě do virtuální sítě, kterou jste vytvořili pomocí následujících kroků:
 
-    ![Vytvoření podsítě](./media/application-gateway-web-application-firewall-portal/application-gateway-subnet.png)
+1. Vyberte **všechny prostředky** v nabídce vlevo na webu Azure portal, zadejte *myVNet* ve vyhledávacím poli a pak vyberte **myVNet** ve výsledcích hledání.
 
-3. Jako název podsítě zadejte *myBackendSubnet* a potom klikněte na **OK**.
+2. Vyberte **podsítě** v levé nabídce a pak vyberte **+ podsíť**. 
 
-## <a name="create-backend-servers"></a>Vytvoření serverů back-end
+   ![Vytvoření podsítě](./media/application-gateway-create-gateway-portal/application-gateway-subnet.png)
 
-V tomto příkladu vytvoříte dva virtuální počítače, které se použijí jako servery back-end pro aplikační bránu. Na virtuální počítače také nainstalujete službu IIS, abyste ověřili, že se aplikační brána úspěšně vytvořila.
+3. Z **přidat podsíť** zadejte *myBackendSubnet* pro **název** podsíť a pak vyberte **OK**.
 
 ### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. Klikněte na možnost **Nové**.
-2. Klikněte na tlačítko **Compute** a pak vyberte **systému Windows Server 2016 Datacenter** v seznamu vybrané.
-3. Zadejte pro virtuální počítač tyto hodnoty:
+1. Na webu Azure portal, vyberte **vytvořit prostředek**. **Nový** zobrazí se okno.
+2. Vyberte **Compute** a pak vyberte **systému Windows Server 2016 Datacenter** v **doporučené** seznamu. **Vytvoření virtuálního počítače** se zobrazí stránka.<br>Služba Application Gateway může směrovat provoz na libovolný typ virtuálního počítače, v jeho back-endový fond. V tomto příkladu použijete Windows Server 2016 Datacenter.
+3. Zadejte tyto hodnoty **Základy** kartu pro následující nastavení virtuálního počítače:
+   - **Skupina prostředků**: Vyberte **myResourceGroupAG** pro název skupiny prostředků.
+   - **Název virtuálního počítače**: Zadejte *myVM* pro název virtuálního počítače.
+   - **Uživatelské jméno**: Zadejte *azureuser* pro uživatelské jméno správce.
+   - **Heslo**: Enter *Azure123456!* k zadání hesla správce.
+4. Přijměte ostatní výchozí hodnoty a pak vyberte **Další: Disky**.  
+5. Přijměte **disky** karta výchozí hodnoty a pak vyberte **Další: Sítě**.
+6. Na **sítě** kartu, ověřte, že **myVNet** vybraná **virtuální síť** a **podsítě** je nastavena na  **myBackendSubnet**. Přijměte ostatní výchozí hodnoty a pak vyberte **Další: Správa**.<br>Služba Application Gateway může komunikovat s instancemi mimo virtuální síť, která je v, ale potřebujeme zajistit, že existuje připojení pomocí IP adresy. 
+7. Na **správu** kartu, nastavte **Diagnostika spouštění** k **vypnout**. Přijměte ostatní výchozí hodnoty a pak vyberte **revize + vytvořit**.
+8. Na **zkontrolujte + vytvořit** kartu, zkontrolujte nastavení, opravte všechny chyby ověření a potom vyberte **vytvořit**.
+9. Počkejte na dokončení před pokračováním vytváření virtuálního počítače.
 
-    - *myVM1* – název virtuálního počítače.
-    - *azureuser* – uživatelské jméno správce.
-    - *Azure123456!* – heslo.
-    - Vyberte **Použít existující** a pak vyberte *myResourceGroupAG*.
+### <a name="install-iis-for-testing"></a>Instalace služby IIS pro účely testování
 
-4. Klikněte na **OK**.
-5. Vyberte velikost virtuálního počítače **DS1_V2** a klikněte na **Vybrat**.
-6. Zkontrolujte, že u virtuální sítě je vybrána možnost **myVNet** a u podsítě **myBackendSubnet**. 
-7. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
-8. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.
+V tomto příkladu jsme se instalace služby IIS na virtuální počítače pouze pro účely ověření, že Azure application gateway úspěšně vytvořil. 
 
-### <a name="install-iis"></a>Instalace služby IIS
+1. Otevřít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell). Chcete-li to provést, vyberte **Cloud Shell** z horního navigačního panelu webu Azure portal a pak vyberte **Powershellu** z rozevíracího seznamu. 
 
-1. Otevřete interaktivní prostředí a zkontrolujte, že je nastaveno na **PowerShell**.
-
-    ![Instalace vlastního rozšíření](./media/application-gateway-web-application-firewall-portal/application-gateway-extension.png)
+   ![Instalace vlastního rozšíření](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
 2. Spuštěním následujícího příkazu nainstalujte službu IIS na virtuální počítač: 
 
-    ```azurepowershell-interactive
-    Set-AzVMExtension `
-      -ResourceGroupName myResourceGroupAG `
-      -ExtensionName IIS `
-      -VMName myVM `
-      -Publisher Microsoft.Compute `
-      -ExtensionType CustomScriptExtension `
-      -TypeHandlerVersion 1.4 `
-      -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
-      -Location EastUS
-    ```
+   ```azurepowershell-interactive
+   Set-AzureRmVMExtension `
+     -ResourceGroupName myResourceGroupAG `
+     -ExtensionName IIS `
+     -VMName myVM `
+     -Publisher Microsoft.Compute `
+     -ExtensionType CustomScriptExtension `
+     -TypeHandlerVersion 1.4 `
+     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
+     -Location EastUS
+   ```
 
-3. Vytvořte druhý virtuální počítač a stejným postupem na něj nainstalujte službu IIS. Zadejte *myVM2* pro její název a VMName v sadě AzVMExtension.
+3. Vytvoření druhého virtuálního počítače a instalace služby IIS pomocí kroků, které jste dříve dokončili. Použití *myVM2* pro název virtuálního počítače a **VMName** nastavení **Set-AzureRmVMExtension** rutiny.
 
-### <a name="add-backend-servers"></a>Přidání back-endových serverů
+### <a name="add-backend-servers-to-backend-pool"></a>Přidání serverů back-endu do back-endový fond
 
-1. Klikněte na tlačítko **všechny prostředky**a potom klikněte na tlačítko **myAppGateway**.
-2. Klikněte na **Back-endové fondy**. V aplikační bráně je automaticky vytvořen výchozí fond. Klikněte na **appGatewayBackendPool**.
-3. Klikněte na tlačítko **přidat cíl** přidáte každý virtuální počítač, který jste vytvořili pro back-endový fond.
+1. Vyberte **všechny prostředky**a pak vyberte **myAppGateway**.
 
-    ![Přidání back-endových serverů](./media/application-gateway-web-application-firewall-portal/application-gateway-backend.png)
+2. Vyberte **back-endové fondy** v levé nabídce. Azure automaticky vytvoří výchozí fond **appGatewayBackendPool**, když vytvoříte službu application gateway. 
 
-4. Klikněte na **Uložit**.
+3. Vyberte **appGatewayBackendPool**.
+
+4. V části **cíle**vyberte **virtuálního počítače** z rozevíracího seznamu.
+
+5. V části **VIRTUÁLNÍHO počítače** a **síťová rozhraní**, vyberte **myVM** a **myVM2** virtuálních počítačů a jejich přidružené síťové rozhraní z rozevíracích seznamů.
+
+   ![Přidání back-endových serverů](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
+
+6. Vyberte **Uložit**.
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Vytvořit účet úložiště a nakonfigurovat diagnostiku
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 V tomto kurzu používá aplikační brána k ukládání dat účet úložiště, aby bylo možné je rozpoznat a také z preventivních důvodů. Protokoly Azure monitoru nebo centra událostí můžete použít také k zaznamenání dat.
 
@@ -138,7 +168,7 @@ V tomto kurzu používá aplikační brána k ukládání dat účet úložišt�
 2. Vyberte **Úložiště** a pak vyberte **Účet úložiště – objekt blob, soubor, tabulka, fronta**.
 3. Zadejte název účtu úložiště vyberte **použít existující** pro skupinu prostředků a pak vyberte **myResourceGroupAG**. V tomto příkladu je název účtu úložiště *myagstore1*. Přijměte výchozí hodnoty pro další nastavení a klikněte na **vytvořit**.
 
-## <a name="configure-diagnostics"></a>Konfigurace diagnostiky
+### <a name="configure-diagnostics"></a>Konfigurace diagnostiky
 
 Nakonfigurujte diagnostiku, aby se data zaznamenávala do protokolů ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog a ApplicationGatewayFirewallLog.
 
@@ -154,13 +184,22 @@ Nakonfigurujte diagnostiku, aby se data zaznamenávala do protokolů Application
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-1. Na obrazovce Přehled vyhledejte veřejnou IP adresu aplikační brány. Klikněte na tlačítko **všechny prostředky** a potom klikněte na tlačítko **myAGPublicIPAddress**.
+I když služba IIS není nutné k vytvoření služby application gateway, nainstalovaná v tomto rychlém startu k ověření úspěšného vytvoření aplikační brány Azure. Služba IIS použijte k otestování application gateway:
 
-    ![Záznam veřejné IP adresy aplikační brány](./media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png)
-
+1. Najít veřejnou IP adresu pro službu application gateway na jeho **přehled** stránky.![ Zaznamenat veřejné IP adresy brány aplikace](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)Alternativně můžete vybrat **všechny prostředky**, zadejte *myAGPublicIPAddress* do vyhledávacího pole a vyberte ho v hledání výsledky. Azure se zobrazí na veřejnou IP adresu **přehled** stránky.
 2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
+3. Zkontrolujte odpovědi. Platné odpovědi ověří, jestli application gateway se úspěšně vytvořil, se může úspěšně připojit s back-endu.![Otestování aplikační brány](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
-    ![Otestování aplikační brány](./media/application-gateway-web-application-firewall-portal/application-gateway-iistest.png)
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už nepotřebujete prostředky, které jste vytvořili ve službě application gateway, odeberte skupinu prostředků. Odstraněním skupiny prostředků je taky odebrat application gateway a všechny související prostředky. 
+
+K odebrání skupiny prostředků:
+
+1. V nabídce vlevo na webu Azure portal vyberte **skupiny prostředků**.
+2. Na **skupiny prostředků** stránky, vyhledejte **myResourceGroupAG** v seznamu, vyberte ji.
+3. Na **stránce skupiny prostředků**vyberte **odstranit skupinu prostředků**.
+4. Zadejte *myResourceGroupAG* pro **zadejte název skupiny prostředků** a pak vyberte **odstranit**
 
 ## <a name="next-steps"></a>Další postup
 

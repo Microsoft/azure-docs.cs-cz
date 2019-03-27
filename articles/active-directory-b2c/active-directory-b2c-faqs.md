@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 12b8fc2fb8df7fd730e220a3c1b60097ed7748a2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 89ad91316da027e399891a7e1b348e66c1d3a4f5
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433718"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499892"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy 
 Tato stránka odpovědi na nejčastější dotazy týkající se Azure Active Directory (Azure AD) B2C. Kontrolovat novinky.
@@ -113,7 +113,8 @@ Není aktuálně. Tato funkce je do našeho plánu. Ověření domény v **domé
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Jak odstranit tenanta Azure AD B2C?
 Postupujte podle těchto kroků odstraňte vašeho tenanta Azure AD B2C:
 
-1. Odstraňte všechny zásady ve vašem tenantovi Azure AD B2C.
+1. Odstraňte všechny uživatele toků (zásady) ve vašem tenantovi Azure AD B2C.
+1. Odstraňte všechny aplikace, které jste zaregistrovali ve vašem tenantovi Azure AD B2C.
 1. Teď může přihlásit k [webu Azure portal](https://portal.azure.com/) jako správce předplatného. (Použít stejný pracovní nebo školní účet nebo stejný účet Microsoft, který jste použili k registraci do Azure.)
 1. Přepnutí na tenanta Azure AD B2C chcete odstranit.
 2. Přejděte do služby Active Directory nabídky na levé straně.

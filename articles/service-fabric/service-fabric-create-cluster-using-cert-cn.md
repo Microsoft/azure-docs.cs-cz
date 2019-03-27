@@ -3,7 +3,7 @@ title: Vytvoření clusteru Azure Service Fabric pomocí běžný název certifi
 description: Zjistěte, jak vytvořit cluster Service Fabric pomocí běžný název certifikátu ze šablony.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
-ms.author: ryanwi
-ms.openlocfilehash: f6f4858740288facb1e206eed3a8cd4ee1854daa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: aljo
+ms.openlocfilehash: 5f2ba517e68dcd37de44bd26f476442e80817086
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111442"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498022"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Nasazení clusteru Service Fabric, která používá namísto kryptografický otisk certifikátu běžný název
 Žádné dva certifikáty můžou mít se stejným kryptografickým otiskem, což znesnadňuje clusteru certifikáty vyměnit nebo správy. Více certifikátů, ale mají stejný běžný název nebo předmětu.  Clusteru běžnému názvu certifikátu pomocí certifikátu značně zjednodušuje správu. Tento článek popisuje, jak nasadit cluster Service Fabric běžný název certifikátu použít místo kryptografického otisku certifikátu.

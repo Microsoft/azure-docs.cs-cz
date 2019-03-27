@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2e05e5e430760d16d5d494a6f27ef985aafc487
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 71e9a3f614048185d9444011da3c47b88931d0c5
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097987"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499941"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Kurz: Konfigurace platformy Zendesk pro automatické zřizování uživatelů
 
@@ -39,7 +39,7 @@ Scénář popsaný v tomto kurzu se předpokládá, že už máte splněné nás
 *   Uživatelský účet v systému Zendesk s oprávněními správce 
 
 > [!NOTE]
-> Zřizování integrace Azure AD spoléhá na [rozhraní Rest API služby Zendesk](https://developer.zendesk.com/rest_api/docs/core/introduction), což je k dispozici pro týmy Zendesku v plánu Enterprise nebo vyšší.
+> Zřizování integrace Azure AD spoléhá na [rozhraní Rest API služby Zendesk](https://developer.zendesk.com/rest_api/docs/zendesk-apis/resources), což je k dispozici pro týmy Zendesku v plánu Enterprise nebo vyšší.
 
 ## <a name="adding-zendesk-from-the-gallery"></a>Přidání Zendesku z Galerie
 Před konfigurací Zendesk pro automatické zřizování uživatelů pomocí Azure AD, budete muset přidat Zendesku z Galerie aplikací Azure AD na váš seznam spravovaných aplikací SaaS.

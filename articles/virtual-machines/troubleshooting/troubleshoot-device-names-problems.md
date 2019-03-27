@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: bb33427712533e669ecf41f48474c02313e2a411
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: d636d5f31e78828a518882091af29b25f7219304
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568875"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443991"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Řešení potíží s změny názvu zařízení virtuálního počítače s Linuxem
 
@@ -36,15 +36,17 @@ Při spouštění virtuálních počítačů s Linuxem v Microsoft Azure se mů�
 
 Umístění zařízení v systému Linux nemusí být konzistentní vzhledem k aplikacím napříč restartování. Názvy zařízení jsou tvořeny hlavní čísla (písmena) a podverze. Ovladač systému Linux paměťového zařízení zjišťuje nové zařízení, ovladače přiřadí hlavní a dílčí čísla z rozsahu z dostupného rozsahu do zařízení. Při odebrání zařízení čísla zařízení jsou uvolněny pro opakované použití.
 
-K problému dochází, protože zařízení vyhledávání v Linuxu je naplánováno podsystémem SCSI asynchronně. V důsledku toho cesta zařízení se mohou lišit mezi restarty. 
+K problému dochází, protože zařízení vyhledávání v Linuxu je naplánováno podsystémem SCSI asynchronně. V důsledku toho cesta zařízení se mohou lišit mezi restarty.
 
 ## <a name="solution"></a>Řešení
 
-Chcete-li tento problém vyřešit, použijte trvalé pojmenování. Existují čtyři způsoby, jak používat trvalé pojmenování: pomocí systému souborů popisek, UUID, podle ID nebo podle cesty. Doporučujeme použít popisek systému souborů nebo UUID pro Linuxové virtuální počítače Azure. 
+Chcete-li tento problém vyřešit, použijte trvalé pojmenování. Existují čtyři způsoby, jak používat trvalé pojmenování: pomocí systému souborů popisek, UUID, podle ID nebo podle cesty. Doporučujeme použít popisek systému souborů nebo UUID pro Linuxové virtuální počítače Azure.
 
-Zadejte většině distribucí `fstab` **nofail** nebo **nobootwait** parametry. Tyto parametry umožňují spustit, pokud se disk připojit při spuštění systému. Další informace o těchto parametrech v dokumentaci distribuce. Informace o tom, jak nakonfigurovat virtuální počítač s Linuxem pro použití UUID při přidání datového disku najdete v tématu [připojit k počítači s Linuxem připojit nový disk](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk). 
+Zadejte většině distribucí `fstab` **nofail** nebo **nobootwait** parametry. Tyto parametry umožňují spustit, pokud se disk připojit při spuštění systému. Další informace o těchto parametrech v dokumentaci distribuce. Informace o tom, jak nakonfigurovat virtuální počítač s Linuxem pro použití UUID při přidání datového disku najdete v tématu [připojit k počítači s Linuxem připojit nový disk](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 Při instalaci agenta Azure Linux ve virtuálním počítači agent použije k vytvoření sadu symbolické odkazy na cestě /dev/disk/azure Udev pravidla. Aplikace a skripty pomocí procesu Udev pravidla Identifikujte disky, které jsou připojené k virtuálnímu počítači, spolu s typ disku a disk na logické jednotky.
+
+Pokud už jste upravili vaše fstab tak, že váš virtuální počítač se nespouští a nemůžete SSH k virtuálnímu počítači, můžete použít [konzoly sériového portu virtuálního počítače](./serial-console-linux.md) zadat [režimu jednoho uživatele](./serial-console-grub-single-user-mode.md) a upravovat vaše fstab.
 
 ### <a name="identify-disk-luns"></a>Identifikace disku logické jednotky
 
@@ -83,29 +85,29 @@ Informace o logických jednotkách hosta se používá s metadaty předplatného
 
     $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
     [
-      {
-        "caching": "None",
-          "createOption": "empty",
-        "diskSizeGb": 1023,
-          "image": null,
-        "lun": 0,
-        "managedDisk": null,
-        "name": "testVM-20170619-114353",
-        "vhd": {
-          "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
-        }
-      },
-      {
-        "caching": "None",
-        "createOption": "empty",
-        "diskSizeGb": 512,
-        "image": null,
-        "lun": 1,
-        "managedDisk": null,
-        "name": "testVM-20170619-121516",
-        "vhd": {
-          "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
-        }
+    {
+    "caching": "None",
+      "createOption": "empty",
+    "diskSizeGb": 1023,
+      "image": null,
+    "lun": 0,
+    "managedDisk": null,
+    "name": "testVM-20170619-114353",
+    "vhd": {
+      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
+    }
+    },
+    {
+    "caching": "None",
+    "createOption": "empty",
+    "diskSizeGb": 512,
+    "image": null,
+    "lun": 1,
+    "managedDisk": null,
+    "name": "testVM-20170619-121516",
+    "vhd": {
+      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
+      }
       }
     ]
 
@@ -138,7 +140,7 @@ Všechny další oddíly z `blkid` seznamu jsou umístěny na datový disk. Apli
 
     lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
 
-    
+
 ### <a name="get-the-latest-azure-storage-rules"></a>Získat nejnovější pravidla služby Azure Storage
 
 Pokud chcete získat nejnovější pravidla služby Azure Storage, spusťte následující příkazy:

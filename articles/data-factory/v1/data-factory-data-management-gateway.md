@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 5fa553d63a33f06432d8ae3e5247d7eca0fde90a
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 00c8d7cefd7539cd53de8081f44fe861bd063bee
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351894"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487783"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -283,12 +283,12 @@ Můžete zakázat nebo povolit funkci Automatické aktualizace provedením násl
 2. Přejděte do složky C:\Program Files\Microsoft integrace Runtime\3.0\PowerShellScript\.
 3. Spusťte následující příkaz, který zapnout automatické aktualizace funkci vypnout (zakázat).
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off
     ```
 4. Chcete-li ji zpět na:
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on
     ```
    [Pro vysoce dostupnou a škálovatelnou bránu několika uzly](data-factory-data-management-gateway-high-availability-scalability.md)
@@ -297,12 +297,12 @@ Můžete zakázat nebo povolit funkci Automatické aktualizace provedením násl
 3. Spusťte následující příkaz, který zapnout automatické aktualizace funkci vypnout (zakázat).
 
     Pro bránu s vysokou dostupností funkcí je navíc param AuthKey vyžaduje.
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off -AuthKey <your auth key>
     ```
 4. Chcete-li ji zpět na:
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on -AuthKey <your auth key>
     ```
 
@@ -485,12 +485,12 @@ Tato část popisuje, jak vytvořit a zaregistrovat bránu pomocí rutin prostř
 1. Spuštění **prostředí Azure PowerShell** v režimu správce.
 2. Přihlaste se ke svému účtu Azure tak, že spustíte následující příkaz a zadávání přihlašovacích údajů Azure.
 
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```
 3. Použití **New-AzDataFactoryGateway** rutina pro vytvoření logické brány následujícím způsobem:
 
-    ```PowerShell
+    ```powershell
     $MyDMG = New-AzDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
     ```
     **Ukázkový příkaz a výstupní**:
@@ -513,7 +513,7 @@ Tato část popisuje, jak vytvořit a zaregistrovat bránu pomocí rutin prostř
 
 1. V prostředí Azure PowerShell přejděte do složky: **C:\\Program Files\Microsoft Data správy Gateway\2.0\PowerShellScript\\**. Spustit **RegisterGateway.ps1** přidružený k místní proměnné **$Key** jak je znázorněno v následujícím příkazu. Tento skript zaregistruje Klientský agent nainstalovaný na vašem počítači využít logické brány, kterou vytvořili dříve.
 
-    ```PowerShell
+    ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
     ```
     ```
@@ -521,25 +521,25 @@ Tato část popisuje, jak vytvořit a zaregistrovat bránu pomocí rutin prostř
     ```
     Brána ve vzdáleném počítači můžete registrovat pomocí parametru IsRegisterOnRemoteMachine. Příklad:
 
-    ```PowerShell
+    ```powershell
     .\RegisterGateway.ps1 $MyDMG.Key -IsRegisterOnRemoteMachine true
     ```
 2. Můžete použít **Get-AzDataFactoryGateway** rutiny zobrazíte seznam bran ve službě data factory. Když **stav** ukazuje **online**, to znamená, že vaše brána je připravená k použití.
 
-    ```PowerShell        
+    ```powershell        
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
     ```
    Můžete odebrat bránu pomocí **odebrat AzDataFactoryGateway** brány pomocí rutiny a aktualizace popis **Set-AzDataFactoryGateway** rutiny. Syntaxe a další podrobnosti o těchto rutinách najdete v tématu Reference k rutinám Data Factory.  
 
 ### <a name="list-gateways-using-powershell"></a>Seznam Gateway pomocí Powershellu
 
-```PowerShell
+```powershell
 Get-AzDataFactoryGateway -DataFactoryName jasoncopyusingstoredprocedure -ResourceGroupName ADF_ResourceGroup
 ```
 
 ### <a name="remove-gateway-using-powershell"></a>Odstranění brány pomocí Powershellu
 
-```PowerShell
+```powershell
 Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force
 ```
 

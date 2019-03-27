@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e2c3c5530ac21d97adfabfcc00a9351599646f0e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: ce1fd1af404f5fc44bc202be08cd2c2f1b4ef909
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317285"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443833"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Rychlý start: Pozastavení a obnovení výpočetních prostředků ve službě Azure SQL Data Warehouse pomocí prostředí PowerShell
 
@@ -106,7 +106,7 @@ $resultDatabase
 
 ## <a name="check-status-of-your-data-warehouse-operation"></a>Kontrola stavu operace vašeho datového skladu
 
-Chcete-li zkontrolovat stav datového skladu, použijte [Get-AzureRmSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/azurerm.sql/Get-AzureRmSqlDatabaseActivity?view=azurermps-6.13.0#description) rutiny.
+Chcete-li zkontrolovat stav datového skladu, použijte [Get-AzureRmSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/azurerm.sql/Get-AzureRmSqlDatabaseActivity#description) rutiny.
 
 ```
 Get-AzureRmSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02"

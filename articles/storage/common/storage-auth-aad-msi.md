@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 4372045590938df701dd00e58a111215f6e8e56d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 76bf36f63051f02d6c37261799342f424609f9b2
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369645"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58442301"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources"></a>Ověření přístupu k objektům BLOB a fronty pomocí spravované identity pro prostředky Azure
 
@@ -22,8 +22,6 @@ ms.locfileid: "58369645"
 Udělení oprávnění pro spravovanou identitu do kontejneru objektů blob nebo fronty, přiřadíte roli řízení přístupu na základě role spravovanou identitu, která zahrnuje oprávnění pro daný prostředek na příslušný obor. Další informace o rolích RBAC v úložišti, najdete v části [Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md). 
 
 Tento článek ukazuje, jak ověřit do fronty nebo Azure Blob storage s využitím spravované identity z virtuálního počítače Azure.  
-
-[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="enable-managed-identities-on-a-vm"></a>Povolit spravovaným identitám na virtuálním počítači
 
@@ -42,6 +40,8 @@ K ověření spravovanou identitu aplikace služby Azure Storage, nejprve nakonf
 ## <a name="get-a-managed-identity-access-token"></a>Získání tokenu přístupu spravované identity
 
 K ověření pomocí spravované identity, musíte získat přístupový token spravovanou identitu vaše aplikace nebo skript. Další informace o tom, jak získat přístupový token, naleznete v tématu [použití spravované identity pro prostředky Azure na Virtuálním počítači Azure získat přístupový token](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
+
+K autorizaci objektů blob a frontu operací pomocí tokenu OAuth, musí používat protokol HTTPS.
 
 ## <a name="net-code-example-create-a-block-blob"></a>Příklad kódu .NET: Vytvořit objekt blob bloku
 

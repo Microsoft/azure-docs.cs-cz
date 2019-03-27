@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: fd5ae375dff80c8b1179d2fd73566d07c5861e4a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a9de0f0021d92c59c44e85f0487cc9a08b6a3099
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000334"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497358"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Vytvoření MATLAB distribuovaný Server výpočetních clusterů na virtuálních počítačích Azure
 Pomocí Microsoft Azure virtual machines můžete vytvořit jeden nebo více MATLAB distribuované výpočetní clustery spouštět úlohy náročné na výpočetní paralelní MATLAB. Nainstalovat software serveru distribuované výpočetní MATLAB na virtuálním počítači používat jako základní image a použít šablonu Azure pro rychlý start nebo skriptu Azure Powershellu (k dispozici na [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)) k nasazení a správě clusteru. Po nasazení připojte se ke clusteru pro spouštění vašich úloh.
@@ -34,7 +34,7 @@ Využití Azure virtual machines, můžete vytvořit MATLAB distribuované výpo
 * **Prostředí Azure PowerShell** -naleznete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) instalace na klientském počítači.
 * **Předplatné Azure** – Pokud nemáte předplatné, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free/) během několika minut. Pro větší clustery zvažte předplatné s průběžnými platbami nebo jiné možnosti nákupu.
 * **kvóty virtuálních procesorů** – možná budete muset zvýšit kvótu virtuálních procesorů nasadit velký cluster nebo více než jeden cluster MATLAB distribuovaný Server výpočetního prostředí. Na zvýšení této kvóty, [otevřete žádost o online zákaznickou podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) bez poplatků.
-* **Licence MATLAB, paralelní výpočty nástrojů a MATLAB distribuovaný Server computingu** – skripty se předpokládá, že [společnost MathWorks hostovaný správce licencí](https://www.mathworks.com/products/parallel-computing/mathworks-hosted-license-manager/) se používá pro všechny licence.  
+* **Licence MATLAB, paralelní výpočty nástrojů a MATLAB distribuovaný Server computingu** – skripty se předpokládá, že [společnost MathWorks hostovaný správce licencí](https://www.mathworks.com/help/install/license-management.html) se používá pro všechny licence.  
 * **Software serveru distribuované výpočetní MATLAB** – se nainstaluje na virtuálním počítači, který se použije jako základní image virtuálního počítače pro virtuální počítače clusteru.
 
 ## <a name="high-level-steps"></a>Postup vysoké úrovně

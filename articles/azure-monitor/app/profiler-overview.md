@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: c42de8cf189c0ebaf5f13ef5971ad91d14d862fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c07b325f3de6cd2cf3aaa436736786d2cdc42881
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850271"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498124"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil produkční aplikace v Azure pomocí Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Povolit Application Insights Profiler pro vaši aplikaci
@@ -75,7 +75,7 @@ Pokud **clr! ThePreStub** trvá dlouhou dobu pro požadavek, žádost je první 
 
 ### <a id="ngencold"></a>Kód pro načtení ([STUDENÉHO])
 
-Pokud název metody obsahuje **[STUDENOU]**, jako například **mscorlib.ni! [ COLD]System.Reflection.CustomAttribute.IsDefined**, modul runtime rozhraní .NET Framework spouští kód poprvé, která není optimalizována tak [profilováním řízená optimalizace](https://msdn.microsoft.com/library/e7k32f4k.aspx). Pro každou metodu by se měla zobrazit maximálně jednou během procesu.
+Pokud název metody obsahuje **[STUDENOU]**, jako například **mscorlib.ni! [ COLD]System.Reflection.CustomAttribute.IsDefined**, modul runtime rozhraní .NET Framework spouští kód poprvé, která není optimalizována tak [profilováním řízená optimalizace](/cpp/build/profile-guided-optimizations). Pro každou metodu by se měla zobrazit maximálně jednou během procesu.
 
 Pokud načítání kódu trvá podstatnou část času požadavku, požadavek je první z nich provádět neoptimalizované část metody. Zvažte použití zahřívání proces, který provede část kódu, než vaši uživatelé k němu přístup.
 

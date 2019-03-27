@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e9b562cb04bb8916245d9df7b9b6d526bd443a24
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 89f5294d6ac01a6fa377e8d0763e77f8034ab44a
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352132"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449553"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky ve službě Azure Monitor
 
@@ -1287,8 +1287,8 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |MessageCount|Počet zpráv|Počet|Celkem|Celkový počet zpráv.|Žádné dimenze|
 |InboundTraffic|Příchozí provoz|B|Celkem|Příchozí provoz služby|Žádné dimenze|
 |OutboundTraffic|Odchozí provoz|B|Celkem|Odchozí provoz služby|Žádné dimenze|
-|UserErrors|Chyby uživatele|Procento|Maximum|Procento chyb uživatele|Žádné dimenze|
-|SystemErrors|Chyby systému|Procento|Maximum|Procento chyb systému|Žádné dimenze|
+|UserErrors|Chyby uživatele|Procento|Průměr|Procento chyb uživatele|Žádné dimenze|
+|SystemErrors|Chyby systému|Procento|Průměr|Procento chyb systému|Žádné dimenze|
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 

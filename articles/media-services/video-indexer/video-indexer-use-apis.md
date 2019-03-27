@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 4c2c22d2d3d68080b1d4e05410121ea1d1be283d
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 41c665a2a1aec56cc07d5465742d01e41e6adfff
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439171"
+ms.locfileid: "58443588"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Kurz: Použití rozhraní API Video Indexeru
 
@@ -209,8 +209,12 @@ Debug.WriteLine(playerWidgetLink);
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Prozkoumejte podrobnosti výstupního JSON](video-indexer-output-json-v2.md).
 - [Přehled Video Indexeru](video-indexer-overview.md)
 - [Oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
+
+## <a name="next-steps"></a>Další postup
+
+[Prozkoumejte podrobnosti výstupního JSON](video-indexer-output-json-v2.md).
+

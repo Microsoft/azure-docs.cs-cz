@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 398b984f4d97005fdc4d749f3fe072423cc5bbd7
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1d1e0f100a90c28bd7469991dee559abcd88f9a2
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309294"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499460"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Instalace modulu runtime Azure IoT Edge v Linuxu (x64)
 
@@ -23,7 +23,7 @@ Modul runtime Azure IoT Edge je co se změní na zařízení do zařízení IoT 
 
 Další informace najdete v tématu [pochopení runtime Azure IoT Edge a jeho architektura](iot-edge-runtime.md).
 
-V tomto článku jsou uvedené kroky instalace modulu runtime Azure IoT Edge na vaší platformě Linux x64 (Intel nebo AMD) zařízení IoT Edge. Odkazovat na [podpory Azure IoT Edge](support.md#operating-systems) seznam podporovaných operačních systémech AMD64.
+V tomto článku jsou uvedené kroky k instalaci modulu runtime Azure IoT Edge v systému Ubuntu Linux x64 (Intel nebo AMD) zařízení IoT Edge. Odkazovat na [podpory Azure IoT Edge](support.md#operating-systems) seznam podporovaných operačních systémech AMD64.
 
 > [!NOTE]
 > Balíčky v úložiště softwaru Linux jsou souladu s licenčními podmínkami v jednotlivých balíčků (/ usr/sdílet/doc/*název balíčku*). Přečtěte si licenční podmínky před použitím balíčku. Instalace a použití balíčku se považuje za svůj souhlas s těmito podmínkami. Pokud s licenčními podmínkami nesouhlasíte, nepoužívejte balíček.
@@ -33,11 +33,22 @@ V tomto článku jsou uvedené kroky instalace modulu runtime Azure IoT Edge na 
 Připravte zařízení IoT Edge instalace modulu runtime.
 
 
-Instalace konfigurace úložiště. Nahraďte **\<release\>** s **16.04** nebo **18.04** podle potřeby pro svou verzi Ubuntu.
+Instalace konfigurace úložiště. Zvolte buď **16.04** nebo **18.04** fragmentu kódu v závislosti na vaší verze Ubuntu.
 
+> [!IMPORTANT]
+> Ujistěte se, že zvolíte fragmentu kódu v rozevíracím seznamu správný kód pro vaši verzi systému Ubuntu.
+
+* Pro **Ubuntu 16.04**:
    ```bash
-   curl https://packages.microsoft.com/config/ubuntu/<release>/prod.list > ./microsoft-prod.list
+   curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
    ```
+
+* Pro **Ubuntu 18.04**:
+   ```bash
+   curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > ./microsoft-prod.list
+   ```
+   
+Instalace konfigurace úložiště. Zvolte buď **16.04** nebo **18.04** fragmentu kódu v závislosti na vaší verze Ubuntu.
 
 Zkopírujte vygenerovaný seznam.
 

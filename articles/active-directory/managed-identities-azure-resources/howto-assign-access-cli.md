@@ -3,7 +3,7 @@ title: Přiřazení spravovanou identitu přístup k prostředku Azure pomocí A
 description: Podrobné pokyny pro přiřazování spravovanou identitu na jeden prostředek, přístup k jiný zdroj, pomocí rozhraní příkazového řádku Azure.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2017
-ms.author: priyamo
+ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37f6a13913c80689955486f897b119cf4994e25c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2fb16b1762f1e5330cf058c37a6b7e0f008eb447
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177389"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443702"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Přiřazení přístupu spravovanou identitu prostředku pomocí rozhraní příkazového řádku Azure
 

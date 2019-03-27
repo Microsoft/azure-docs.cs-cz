@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ec71f8998f7db07cafca7f8141acb9898b016328
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 1cbf91af4e91f41fff30a7edfa869d07a21b881e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821349"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487664"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Sada Runbook výstup a zprávy ve službě Azure Automation
 Většina runbooků služeb automatizace Azure mají určitou formu výstupu. Tento výstup může být chybová zpráva pro uživatele nebo složitý objekt, že máte v úmyslu používat s jinou sadou runbook. Prostředí Windows PowerShell poskytuje [různých datových proudů](/powershell/module/microsoft.powershell.core/about/about_redirection) odesílat výstup ze skriptu nebo pracovního postupu. Azure Automation funguje s každou z těchto datových proudů jinak. Postupujte podle osvědčené postupy pro jejich používání při vytváření sady runbook.
@@ -35,7 +35,7 @@ Výstupní datový proud je určený pro výstup objektů, které jsou vytvořen
 
 Umožňuje zápis dat do výstupního datového proudu pomocí [Write-Output](https://technet.microsoft.com/library/hh849921.aspx) nebo vložením objektu na samostatném řádku v sadě runbook.
 
-```PowerShell
+```powershell
 #The following lines both write an object to the output stream.
 Write-Output –InputObject $object
 $object
@@ -46,7 +46,7 @@ Při zápisu do výstupního datového proudu ve funkci, která je zahrnutá ve 
 
 Vezměte v úvahu následující ukázkové sady runbook:
 
-```PowerShell
+```powershell
 Workflow Test-Runbook
 {
   Write-Verbose "Verbose outside of function" -Verbose
@@ -90,7 +90,7 @@ Tady je seznam příklad výstupní typy:
 
 Následující vzorový runbook výstup objektu řetězce a zahrnuje deklaraci jeho typu výstupu. Pokud vaše sada runbook jako výstup pole určitého typu, byste měli stále zadat typ na rozdíl od pole typu.
 
-```PowerShell
+```powershell
 Workflow Test-Runbook
 {
   [OutputType([string])]
@@ -126,7 +126,7 @@ Datové proudy upozornění a chyb jsou určené k protokolování problémů, k
 
 Vytvořte upozornění nebo chybovou zprávu pomocí [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) nebo [Write-Error](https://technet.microsoft.com/library/hh849962.aspx) rutiny. Do těchto datových proudů můžou zapisovat taky aktivity.
 
-```PowerShell
+```powershell
 #The following lines create a warning message and then an error message that will suspend the runbook.
 
 $ErrorActionPreference = "Stop"
@@ -141,7 +141,7 @@ Když [testování runbooku](automation-testing-runbook.md), podrobné zprávy n
 
 Vytvoření podrobné zprávy použijte [Write-Verbose](https://technet.microsoft.com/library/hh849951.aspx) rutiny.
 
-```PowerShell
+```powershell
 #The following line creates a verbose message.
 
 Write-Verbose –Message "This is a verbose message."
@@ -183,7 +183,7 @@ V prostředí Windows PowerShell můžete načítat výstup a zprávy z runbooku
 
 Následující příklad spouští vzorový runbook a potom čeká na její dokončení. Po dokončení je jeho výstupní datový proud shromáždí z úlohy.
 
-```PowerShell
+```powershell
 $job = Start-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
   –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
 

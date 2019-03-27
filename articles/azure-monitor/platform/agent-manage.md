@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 963fd1bfd67a20033f0712d3b447091abda40d11
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: de27d5c4fd65515e25319f9e7ac3eafc4110b137
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369893"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481559"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správu a údržbu agenta Log Analytics pro Windows a Linux
 
@@ -39,7 +39,7 @@ Po počátečním nasazení nástroje Windows Log Analytics nebo agenta pro Linu
 
 #### <a name="remove-a-workspace-using-powershell"></a>Odebrat pracovní prostor pomocí Powershellu
 
-```PowerShell
+```powershell
 $workspaceId = "<Your workspace Id>"
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
 $mma.RemoveCloudWorkspace($workspaceId)
@@ -48,7 +48,7 @@ $mma.ReloadConfiguration()
 
 #### <a name="add-a-workspace-in-azure-commercial-using-powershell"></a>Přidat pracovní prostor v Azure komerční pomocí Powershellu
 
-```PowerShell
+```powershell
 $workspaceId = "<Your workspace Id>"
 $workspaceKey = "<Your workspace Key>"
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
@@ -58,7 +58,7 @@ $mma.ReloadConfiguration()
 
 #### <a name="add-a-workspace-in-azure-for-us-government-using-powershell"></a>Přidat pracovní prostor v Azure pro státní správu USA pomocí Powershellu
 
-```PowerShell
+```powershell
 $workspaceId = "<Your workspace Id>"
 $workspaceKey = "<Your workspace Key>"
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
@@ -117,7 +117,7 @@ Konfigurace agenta pro komunikaci ve službě pomocí proxy serveru nebo [Log An
 
 Zkopírujte následující ukázkový kód Powershellu, aktualizujte ji pomocí informací specifických pro vaše prostředí a uložte s příponou názvu souboru PS1. Spusťte skript na každém počítači, který se připojuje přímo k pracovnímu prostoru Log Analytics ve službě Azure Monitor.
 
-```PowerShell
+```powershell
 param($ProxyDomainName="https://proxy.contoso.com:30443", $cred=(Get-Credential))
 
 # First we get the Health Service configuration object. We need to determine if we

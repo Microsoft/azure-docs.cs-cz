@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 41b80e3914c93a4baeb39f35c7281f8fe81ff37c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fee22561bb0c341ed5c6e4dc49a8d7f8aa8efaf2
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835312"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445204"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu – nejčastější dotazy
 
@@ -163,7 +163,7 @@ Informace o zdroji se zobrazuje na řídicím panelu; Nicméně jsou k dispozici
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>Můžete nakonfigurovat analýzu provozu pomocí Powershellu nebo šablony Azure Resource Manageru nebo klienta?
 
-Analýza provozu můžete nakonfigurovat pomocí Windows Powershellu z verze 6.2.1 a vyšší. Konfigurace protokolování toků a analýzu provozu pro konkrétní skupiny zabezpečení sítě pomocí rutiny Set, naleznete v tématu [Set-AzureRmNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.3.0). Protokolování toků a stav analýzy provozu pro konkrétní skupiny zabezpečení sítě, získáte [Get-AzureRmNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcherflowlogstatus?view=azurermps-6.3.0).
+Analýza provozu můžete nakonfigurovat pomocí Windows Powershellu z verze 6.2.1 a vyšší. Konfigurace protokolování toků a analýzu provozu pro konkrétní skupiny zabezpečení sítě pomocí rutiny Set, naleznete v tématu [Set-AzureRmNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog). Protokolování toků a stav analýzy provozu pro konkrétní skupiny zabezpečení sítě, získáte [Get-AzureRmNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcherflowlogstatus).
 
 V současné době nelze použít šablonu Azure Resource Manageru nakonfigurovat analýzu provozu.
 

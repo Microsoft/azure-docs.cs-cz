@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 68f21ef70b402fe45613fdcbda3074bac1d4eb5a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: aa5f8aaef21967a23505c785eb8ef811cf5767cc
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464955"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486441"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Přidání nebo odebrání koncového bodu serveru Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to pomocí transformace serverů Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
@@ -51,7 +51,7 @@ Pokud chcete ukončit používání Azure File Sync pro koncový bod daného ser
 
 Aby bylo zajištěno, že jsou všechny vrstvené soubory připomenout před odebráním koncového bodu serveru, zakažte na koncovém bodu serveru vrstvení cloudu a pak spusťte následující rutinu prostředí PowerShell mají svolat všechny vrstvené soubory v rámci vašeho oboru názvů koncový bod serveru:
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```

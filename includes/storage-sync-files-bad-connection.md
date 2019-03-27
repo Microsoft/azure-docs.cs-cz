@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 07/08/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 754562487f0fe9f825107445a3059cc15a1faa26
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 359347e41264711a6ac0fa4d2dd0c3633590e917
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39146232"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488021"
 ---
 Této chybě může dojít, když není přístupný ze serveru pro službu Azure File Sync. Odstranění této chyby z práce prostřednictvím následujících kroků:
 
 1. Ověření služby Windows `FileSyncSvc.exe` není blokován bránou firewall.
 2. Ověřte, zda je port 443 otevřený pro odchozí připojení ke službě Azure File Sync. Můžete to provedete `Test-NetConnection` rutiny. Adresa URL `<azure-file-sync-endpoint>` zástupný symbol níže lze nalézt v [nastavení proxy serveru a brány firewall Azure File Sync](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall) dokumentu. 
 
-    ```PowerShell
+    ```powershell
     Test-NetConnection -ComputerName <azure-file-sync-endpoint> -Port 443
     ```
 
 3. Ujistěte se, že je nastavena konfigurace proxy serveru, podle očekávání. To lze provést pomocí `Get-StorageSyncProxyConfiguration` rutiny. Další informace o konfiguraci konfiguraci proxy serveru pro Azure File Sync najdete v [nastavení proxy serveru a brány firewall Azure File Sync](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall).
 
-    ```PowerShell
+    ```powershell
     $agentPath = "C:\Program Files\Azure\StorageSyncAgent"
     Import-Module "$agentPath\StorageSync.Management.ServerCmdlets.dll"
     Get-StorageSyncProxyConfiguration

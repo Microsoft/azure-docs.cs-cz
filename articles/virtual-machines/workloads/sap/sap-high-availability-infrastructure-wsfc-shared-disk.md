@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43e4cf27d9a57db58c0f90b269e7a52622508ee1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 130dca5efdf39936fdf2a4dc4409f8b29d15bbcd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57998763"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487681"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Připravit infrastrukturu Azure pro SAP HA pomocí Windows cluster převzetí služeb při selhání a sdíleného disku pro SAP ASCS/SCS
 
@@ -235,14 +235,14 @@ Pro produkční systémy SAP, nasaďte virtuální počítače Azure s [připoje
 2. V **SUBNETID** přidejte úplný řetězec ID podsítě připravené síť Azure, jež chcete nasadit virtuální počítače Azure.
 3. Pokud chcete získat seznam všech podsítí síť Azure, spusťte tento příkaz Powershellu:
 
-   ```PowerShell
+   ```powershell
    (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
    ```
 
    **ID** pole zobrazí hodnotu pro ID podsítě.
 4. Pokud chcete získat seznam všech hodnot ID podsítě, spusťte tento příkaz Powershellu:
 
-   ```PowerShell
+   ```powershell
    (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
    ```
 

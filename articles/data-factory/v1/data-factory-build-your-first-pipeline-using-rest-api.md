@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 384294dfcd443f0bdbb7a915069d2563bcc35ae4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5dcf31adc5e8bdf810d484f07ebeb6f23acbf452
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533881"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487800"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí rozhraní REST API služby Data Factory
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ Kanál v tomto kurzu má jednu aktivitu: **Aktivita HDInsight Hive**. Tato aktiv
   3. Spustit **Get AzSubscription - SubscriptionName Nazevpredplatnehoazure | Set-AzContext** vyberte předplatné, které chcete pracovat. Místo **NazevPredplatnehoAzure** uveďte název svého předplatného Azure.
 * Spuštěním následujícího příkazu v prostředí PowerShell vytvořte skupinu prostředků Azure s názvem **ADFTutorialResourceGroup**:
 
-    ```PowerShell
+    ```powershell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
@@ -272,7 +272,7 @@ V prostředí Azure PowerShell spusťte následující příkazy (po nahrazení 
 >
 >
 
-```PowerShell
+```powershell
 $client_id = "<client ID of application in AAD>"
 $client_secret = "<client key of application in AAD>"
 $tenant = "<Azure tenant ID>";
@@ -285,7 +285,7 @@ $adf = "FirstDataFactoryREST"
 
 ## <a name="authenticate-with-aad"></a>Ověření pomocí ADD
 
-```PowerShell
+```powershell
 $cmd = { .\curl.exe -X POST https://login.microsoftonline.com/$tenant/oauth2/token  -F grant_type=client_credentials  -F resource=https://management.core.windows.net/ -F client_id=$client_id -F client_secret=$client_secret };
 $responseToken = Invoke-Command -scriptblock $cmd;
 $accessToken = (ConvertFrom-Json $responseToken).access_token;
@@ -301,17 +301,17 @@ V tomto kroku vytvoříte službu Azure Data Factory s názvem **FirstDataFactor
 
     Zkontrolujte, že název objektu pro vytváření dat zadaný zde (ADFCopyTutorialDF) odpovídá názvu zadanému v souboru **datafactory.json**.
 
-    ```PowerShell
+    ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@datafactory.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/FirstDataFactoryREST?api-version=2015-10-01};
     ```
 2. Příkaz spusťte pomocí **Invoke-Command**.
 
-    ```PowerShell
+    ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
 3. Zkontrolujte výsledky. Pokud byl objekt pro vytváření dat vytvořen úspěšně, v části **výsledky** se zobrazí JSON pro příslušný objekt pro vytváření dat. V opačném případě se zobrazí chybová zpráva.
 
-    ```PowerShell
+    ```powershell
     Write-Host $results
     ```
 
@@ -327,12 +327,12 @@ Je třeba počítat s následujícím:
 
   * Spuštěním následujícího příkazu v prostředí Azure PowerShell zaregistrujte zprostředkovatele služby Data Factory:
 
-    ```PowerShell
+    ```powershell
     Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
       Spuštěním následujícího příkazu si můžete ověřit, zda je zprostředkovatel služby Data Factory zaregistrovaný:
-    ```PowerShell
+    ```powershell
     Get-AzResourceProvider
     ```
   * Přihlaste se na web [Azure Portal ](https://portal.azure.com) pomocí předplatného Azure a přejděte do okna Objekt pro vytváření dat nebo na webu Azure Portal vytvořte objekt pro vytváření dat. Zprostředkovatel se při takovém postupu zaregistruje automaticky.
@@ -347,17 +347,17 @@ V tomto kroku propojíte se svým objektem pro vytváření dat svůj účet slu
 
 1. Přiřaďte příkaz k proměnné s názvem **cmd**.
 
-    ```PowerShell
+    ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azurestoragelinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01};
     ```
 2. Příkaz spusťte pomocí **Invoke-Command**.
 
-    ```PowerShell
+    ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
 3. Zkontrolujte výsledky. Pokud byla propojená služba vytvořena úspěšně, v části **výsledky** se zobrazí JSON pro tuto propojenou službu. V opačném případě se zobrazí chybová zpráva.
 
-    ```PowerShell
+    ```powershell
     Write-Host $results
     ```
 
@@ -366,17 +366,17 @@ V tomto kroku propojíte se svým objektem pro vytváření dat cluster HDInsigh
 
 1. Přiřaďte příkaz k proměnné s názvem **cmd**.
 
-    ```PowerShell
+    ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@hdinsightondemandlinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/hdinsightondemandlinkedservice?api-version=2015-10-01};
     ```
 2. Příkaz spusťte pomocí **Invoke-Command**.
 
-    ```PowerShell
+    ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
 3. Zkontrolujte výsledky. Pokud byla propojená služba vytvořena úspěšně, v části **výsledky** se zobrazí JSON pro tuto propojenou službu. V opačném případě se zobrazí chybová zpráva.
 
-    ```PowerShell
+    ```powershell
     Write-Host $results
     ```
 
@@ -388,17 +388,17 @@ V tomto kroku vytvoříte vstupní datovou sadu, která bude představovat vstup
 
 1. Přiřaďte příkaz k proměnné s názvem **cmd**.
 
-    ```PowerShell
+    ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@inputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobInput?api-version=2015-10-01};
     ```
 2. Příkaz spusťte pomocí **Invoke-Command**.
 
-    ```PowerShell
+    ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
 3. Zkontrolujte výsledky. Pokud byla datová sada vytvořena úspěšně, v části **výsledky** se zobrazí JSON pro tuto datovou sadu. V opačném případě se zobrazí chybová zpráva.
 
-    ```PowerShell
+    ```powershell
     Write-Host $results
     ```
 
@@ -407,17 +407,17 @@ V tomto kroku vytvoříte výstupní datovou sadu, která bude představovat vý
 
 1. Přiřaďte příkaz k proměnné s názvem **cmd**.
 
-    ```PowerShell
+    ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@outputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobOutput?api-version=2015-10-01};
     ```
 2. Příkaz spusťte pomocí **Invoke-Command**.
 
-    ```PowerShell
+    ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
 3. Zkontrolujte výsledky. Pokud byla datová sada vytvořena úspěšně, v části **výsledky** se zobrazí JSON pro tuto datovou sadu. V opačném případě se zobrazí chybová zpráva.
 
-    ```PowerShell
+    ```powershell
     Write-Host $results
     ```
 
@@ -428,17 +428,17 @@ Ujistěte se, že se ve složce **adfgetstarted/inputdata** ve službě Azure Bl
 
 1. Přiřaďte příkaz k proměnné s názvem **cmd**.
 
-    ```PowerShell
+    ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@pipeline.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datapipelines/MyFirstPipeline?api-version=2015-10-01};
     ```
 2. Příkaz spusťte pomocí **Invoke-Command**.
 
-    ```PowerShell
+    ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
 3. Zkontrolujte výsledky. Pokud byla datová sada vytvořena úspěšně, v části **výsledky** se zobrazí JSON pro tuto datovou sadu. V opačném případě se zobrazí chybová zpráva.
 
-    ```PowerShell
+    ```powershell
     Write-Host $results
     ```
 4. Úspěšně jste vytvořili první kanál pomocí prostředí Azure PowerShell, blahopřejeme!
@@ -446,7 +446,7 @@ Ujistěte se, že se ve složce **adfgetstarted/inputdata** ve službě Azure Bl
 ## <a name="monitor-pipeline"></a>Monitorování kanálu
 V tomto kroku použijete rozhraní REST API služby Data Factory k monitorování řezů vytvářených kanálem.
 
-```PowerShell
+```powershell
 $ds ="AzureBlobOutput"
 
 $cmd = {.\curl.exe -X GET -H "Authorization: Bearer $accessToken" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/$ds/slices?start=1970-01-01T00%3a00%3a00.0000000Z"&"end=2016-08-12T00%3a00%3a00.0000000Z"&"api-version=2015-10-01};

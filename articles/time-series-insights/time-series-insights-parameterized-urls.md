@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 305d81d6614d1f0654e0d96b10f1759498683003
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 172e6f53b25a1aeef67afea0c1769e6fcaf497cd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558460"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487868"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Sdílení vlastního zobrazení pomocí parametrizovaných adres URL
 
@@ -81,13 +81,13 @@ Parametr 'multiChartStack=<true/false>' povoluje umístění grafu do zásobník
 - 'multiChartStack=false&multiChartSameScale=true' 
   - Pokud chcete ve všech podmínkách použít stejné měřítko osy Y, musíte povolit umísťování do zásobníku.  Výchozí hodnotou je „false“. Pokud chcete tuto funkci povolit, nastavte hodnotu „true“.  
   
-Parametr 'timeBucketUnit=<Unit>&timeBucketSize=<integer>' umožňuje upravit interval posuvníku tak, aby poskytoval podrobnější nebo plynulejší (agregovanější) zobrazení grafu.  
-- 'timeBucketUnit=<Unit>&timeBucketSize=<integer>'
+`timeBucketUnit=<Unit>&timeBucketSize=<integer>` Umožňuje upravit interval posuvníku poskytoval podrobnější nebo plynulejší agregovanější zobrazení grafu.  
+- `timeBucketUnit=<Unit>&timeBucketSize=<integer>`
   - Jednotky = dny, hodiny, minuty, sekundy a milisekundy.  Pro jednotku použijte vždy velká písmena.
   - Počet jednotek se definuje předáním požadované celočíselné hodnoty parametru timeBucketSize.  Plynulost je možné nastavit až na 7 dnů.  
   
-Parametr 'timezoneOffset=<integer>' umožňuje nastavit časové pásmo grafu tak, aby bylo možné ho zobrazit jako posun oproti času UTC.  
-  - 'timezoneOffset=-<integer>'
+`timezoneOffset=<integer>` Parametr umožňuje nastavit časové pásmo grafu tak, aby se ho zobrazit jako posun oproti času UTC.  
+  - `timezoneOffset=-<integer>`
     - Celočíselná hodnota je vždy v milisekundách.  
     - Tato funkce se trochu liší od možností povolených v průzkumníku TSI, kde můžete vybrat místní čas prohlížeče nebo čas UTC.  
  

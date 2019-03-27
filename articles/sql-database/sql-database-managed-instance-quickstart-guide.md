@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 02/18/2019
-ms.openlocfilehash: 44ea6db1c31f0ebfbe2abe2f9f6eea165a3ff4e0
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/25/2019
+ms.openlocfilehash: 08b7870000b38d782e9282eef7ec9c0d551094dd
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306761"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444319"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Začínáme s Azure SQL Database managed instance
 
@@ -65,9 +65,10 @@ Pokud již máte virtuální síť a podsíť kde byste chtěli nasadit spravova
 
  Pokud jste ještě nevytvořili síťové prostředí, jak je popsáno v předchozím kroku, na webu Azure portal může udělat pro vás – pouze nevýhodou je skutečnost, že se konfiguruje s nějakou výchozí parametry, které nelze později změnit. Jako alternativu můžete použít:
 
-- [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/)
+- [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)
 - [Prostředí PowerShell pomocí šablony Resource Manageru](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)
 - [Rozhraní příkazového řádku Azure](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/create-azure-sql-managed-instance-using-azure-cli/).
+- [Šablona Resource Manageru](sql-database-single-database-get-started-template.md)
 
 ## <a name="migrating-to-a-managed-instance-with-minimal-downtime"></a>Migrace na spravované instanci s minimálními výpadky
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51f214688aa1e33bd58e8460baab75228d7c5d1a
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 12cbd9bebf001eb902147175c89b5d7ce49e8449
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317234"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487222"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Řešení potíží Azure AD ochrana heslem
 
@@ -105,7 +105,7 @@ Pokud je se rozhodli odinstalovat software ochrany hesla Azure AD a vyčištěn�
 2. Odinstalace softwaru agenta řadiče domény ze všech řadičů domény. Tento krok **vyžaduje** restartovat počítač.
 3. Ručně odeberte všechny body připojení proxy server služby v každé doméně názvový kontext. Umístění tyto objekty mohou být zjištěny pomocí následujícího příkazu Powershellu pro Active Directory:
 
-   ```PowerShell
+   ```powershell
    $scp = "serviceConnectionPoint"
    $keywords = "{ebefb703-6113-413d-9167-9f8dd4d24468}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
@@ -117,7 +117,7 @@ Pokud je se rozhodli odinstalovat software ochrany hesla Azure AD a vyčištěn�
 
 4. Ručně odeberte všechny body připojení agenta řadiče domény v každé doméně názvový kontext. Může jich být tyto objekty na řadič domény v doménové struktuře, v závislosti na tom, jak často byl nasazen software. Umístění tohoto objektu může být nalezeny pomocí následujícího příkazu Powershellu pro Active Directory:
 
-   ```PowerShell
+   ```powershell
    $scp = "serviceConnectionPoint"
    $keywords = "{2bac71e6-a293-4d5b-ba3b-50b995237946}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
@@ -129,7 +129,7 @@ Pokud je se rozhodli odinstalovat software ochrany hesla Azure AD a vyčištěn�
 
 5. Ručně odeberte stavu konfigurace na úrovni doménové struktury. Stav konfigurace doménové struktuře se udržuje v kontejneru v názvovém kontextu konfigurace služby Active Directory. Lze zjistit a odstranit následujícím způsobem:
 
-   ```PowerShell
+   ```powershell
    $passwordProtectionConfigContainer = "CN=Azure AD Password Protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
    Remove-ADObject -Recursive $passwordProtectionConfigContainer
    ```

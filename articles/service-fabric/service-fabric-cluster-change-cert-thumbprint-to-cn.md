@@ -3,7 +3,7 @@ title: Aktualizovat cluster Azure Service Fabric používat běžný název cert
 description: Zjistěte, jak přepnout cluster Service Fabric pomocí kryptografické otisky certifikátů pomocí běžný název certifikátu.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: aljo
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/01/2019
-ms.author: ryanwi
-ms.openlocfilehash: e1a52aff0890e32ae739285c0380258939f29597
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.author: aljo
+ms.openlocfilehash: 7280424c57e2dfab0a64794855cb522bcf69e135
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312867"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500496"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Změnit z kryptografický otisk certifikátu clusteru na běžný název
 Žádné dva certifikáty můžou mít se stejným kryptografickým otiskem, což znesnadňuje clusteru certifikáty vyměnit nebo správy. Více certifikátů, ale mají stejný běžný název nebo předmětu.  Přepínání nasazeném clusteru pomocí kryptografické otisky certifikátů k běžnému názvu certifikátu pomocí certifikátu značně zjednodušuje správu. Tento článek popisuje postup aktualizace spuštěný cluster Service Fabric běžný název certifikátu použít místo kryptografického otisku certifikátu.

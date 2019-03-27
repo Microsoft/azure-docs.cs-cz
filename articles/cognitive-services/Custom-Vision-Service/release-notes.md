@@ -9,14 +9,28 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 1850959946531abbaf531484696951dee59dadbb
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: ce48a240c67c6077027210ffb0ca85db93610782
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351758"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472952"
 ---
 # <a name="custom-vision-service-release-notes"></a>Zpráva k vydání verze služby Custom Vision
+
+## <a name="march-26-2019"></a>26. března 2019
+- Služba Custom Vision Service přešla obecné dostupnosti v Azure! 
+- Školení pokročilé funkce s novou strojového učení back-end za účelem vylepšení výkonu, zejména u náročné datové sady a podrobných klasifikace. Pokročilé školení, můžete určit, že výpočetní čas rozpočet pro trénování a vlastní zpracování obrazu experimentálně určují nastavení nejlepší školení a rozšíření. Pro rychlé iterace můžete dál používat existující rychlé školení. 
+- Zavedená 3.0 rozhraní API. Oznámili nadcházejících zastarání rozhraní API 3.0 před 1. října 2019. Naleznete v dokumentaci k rychlé starty pro [.Net](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/csharp-tutorial), [Python](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/python-tutorial), [uzel](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/node-tutorial), [Java](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/java-tutorial), nebo [Přejít](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/go-tutorial) příklady o tom, jak začít pracovat. 
+- Nahradí "Výchozí iterace" s publikování a zrušení publikování ve 3.0 rozhraní API. 
+- Přidali jsme nový model export cíle. Soubor Dockerfile export byl upgradován na podporu ARM pro Raspberry Pi 3. Byla přidána podpora export do [Dev Kit AI pro zpracování obrazu.](https://visionaidevkit.com/) 
+- Vyšší omezení značek na projekt na 500 pro úroveň S0. Vyšší omezení obrázků na projekt na 100 000 pro úroveň S0.
+- Odebrat domény pro dospělé. Obecné doména je místo toho chování nedoporučujeme.
+- Oznámili [ceny](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/custom-vision-service/) pro obecnou dostupnost.  
+
+
+## <a name="february-25-2019"></a>25. února 2019
+- Oznámili konec omezenou zkušební verzí projekty (projekty není přidružena k prostředku Azure), protože Custom Vision přiblíží dokončení jeho přesun do Azure ve verzi public preview. Od 25. března 2019 CustomVision.ai lokality se podporují jenom zobrazení projektů v souvislosti s prostředky Azure, jako je bezplatný zdroj Custom Vision. Prostřednictvím 1. října 2019 stále budete mít přístup k existující projekty omezenou zkušební prostřednictvím vlastní rozhraní API pro zpracování obrazu. To vám poskytne vám čas k aktualizaci klíčů rozhraní API pro všechny aplikace, který jste napsali s Custom Vision. Po 1 říjnu 2019 se odstraní všechny omezenou zkušební projekty, které nebyly přesunuta do Azure.
 
 ## <a name="january-22-2019"></a>22. ledna 2019
 - Byla přidána podpora pro nové oblasti Azure: Západní USA 2, USA – východ, USA – východ 2, západní Evropa, Severní Evropa, jihovýchodní Asie, Austrálie – východ, střed Indie, Velká Británie – Jih, Japonsko – východ a USA (střed) – sever. Podpora pokračuje, střed USA – jih. 

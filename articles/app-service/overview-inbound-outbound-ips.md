@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 56ca87f318aa5f1843a3b28480be834df1669c71
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 96f580532d9ea45dd767e32c2451243e83af66ea
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811005"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480800"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Příchozí a odchozí IP adresy ve službě Azure App Service
 
@@ -45,11 +45,11 @@ Bez ohledu na počet škálovaných instancí přičemž každá aplikace má st
 
 Sadu odchozích IP adres pro změny aplikace při škálování aplikace mezi vrstvami nižší (**základní**, **standardní**, a **Premium**) a  **Premium V2** vrstvy.
 
-Můžete najít sadu všechny možné odchozí IP adresy vaší aplikace můžete použít, bez ohledu na cenové úrovně, tím, že hledají `possibleOutboundIPAddresses` vlastnost. Zobrazit [najít odchozí IP adresy](#find-outbound-ips).
+Můžete najít sadu všechny možné odchozí IP adresy vaší aplikace můžete použít, bez ohledu na cenové úrovně, tím, že hledají `possibleOutboundIPAddresses` vlastnost nebo v **další odchozí IP adresy** pole **vlastnosti**  okna na webu Azure Portal. Zobrazit [najít odchozí IP adresy](#find-outbound-ips).
 
 ## <a name="find-outbound-ips"></a>Najít odchozí IP adresy
 
-Chcete-li zjistit odchozí IP adresy, které aktuálně používají ve vaší aplikaci na webu Azure Portal, klikněte na tlačítko **vlastnosti** v levém navigačním panelu vaší aplikace. 
+Chcete-li zjistit odchozí IP adresy, které aktuálně používají ve vaší aplikaci na webu Azure Portal, klikněte na tlačítko **vlastnosti** v levém navigačním panelu vaší aplikace. Jsou uvedeny v **odchozí IP adresy** pole.
 
 Tyto informace můžete najít spuštěním následujícího příkazu v [Cloud Shell](../cloud-shell/quickstart.md).
 
@@ -61,7 +61,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-K vyhledání všech možných odchozí IP adresy pro vaši aplikaci, bez ohledu na cenové úrovně, spusťte následující příkaz [Cloud Shell](../cloud-shell/quickstart.md).
+K vyhledání _všechny_ možné odchozí IP adresy pro vaši aplikaci, bez ohledu na cenové úrovně, klikněte na tlačítko **vlastnosti** v levém navigačním panelu vaší aplikace. Jsou uvedeny v **další odchozí IP adresy** pole.
+
+Tyto informace můžete najít spuštěním následujícího příkazu v [Cloud Shell](../cloud-shell/quickstart.md).
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv

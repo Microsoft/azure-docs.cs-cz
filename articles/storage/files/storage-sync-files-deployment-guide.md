@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: f871174982e965a32d5f2dca5e2e53c5dc436055
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: eeb9765cfd6242ecdc14dd59dd9b5337cc56c597
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405483"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481211"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -28,7 +28,7 @@ Důrazně doporučujeme, abyste si přečetli [plánování nasazení služby so
 * Alespoň jeden podporované instance systému Windows Server nebo cluster s Windows serverem, synchronizaci se službou Azure File Sync. Další informace o podporovaných verzích systému Windows Server najdete v tématu [vzájemná funkční spolupráce s Windows serverem](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability).
 * Ujistěte se, že je nainstalovaný PowerShell 5.1 v systému Windows Server. Pokud používáte Windows Server 2012 R2, ujistěte se, že používáte alespoň prostředí PowerShell 5.1. \*. Tato kontrola ve Windows serveru 2016 můžete bezpečně přeskočit výchozí verze out-of-box je prostředí PowerShell 5.1. Ve Windows serveru 2012 R2 můžete ověřit, že používáte PowerShell 5.1. \* prohlédněte hodnoty **PSVersion** vlastnost **$PSVersionTable** objektu:
 
-    ```PowerShell
+    ```powershell
     $PSVersionTable.PSVersion
     ```
 
@@ -40,7 +40,7 @@ Důrazně doporučujeme, abyste si přečetli [plánování nasazení služby so
     - Modul Az se dá nainstalovat podle pokynů uvedených zde: [Instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/install-Az-ps). 
     - Modul AzureRM Powershellu se dá nainstalovat spuštěním následující rutiny Powershellu:
     
-        ```PowerShell
+        ```powershell
         Install-Module AzureRM
         ```
 
@@ -59,7 +59,7 @@ Pro každý server, který chcete používat s Azure File Sync, včetně každé
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Pokud chcete zakázat rozšířeného zabezpečení aplikace Internet Explorer, spusťte z relace Powershellu se zvýšenými oprávněními následující:
 
-```PowerShell
+```powershell
 # Disable Internet Explorer Enhanced Security Configuration 
 # for Administrators
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
@@ -100,7 +100,7 @@ Před interakci s rutinami pro správu Azure File Sync, je potřeba importovat k
 > [!Note]  
 > StorageSync.Management.PowerShell.Cmdlets.dll balíček, který obsahuje rutiny pro správu Azure File Sync (záměrně) obsahuje rutiny s neschválených operací (`Login`). Název `Login-AzureStorageSync` byl vybrán tak, aby odpovídaly `Login-AzAccount` alias rutiny v modulu Azure PowerShell. Tato chybová zpráva (a rutiny) se odebere při agenta Azure File Sync je přidání do modulu Azure PowerShell.
 
-```PowerShell
+```powershell
 $acctInfo = Login-AzAccount
 
 # The location of the Azure File Sync Agent. If you have installed the Azure File Sync 
@@ -160,7 +160,7 @@ Login-AzureRmStorageSync `
 
 Po vytvoření kontextu Azure File Sync s `Login-AzureR,StorageSync` rutiny, můžete vytvořit službu synchronizace úložiště. Nezapomeňte nahradit `<my-storage-sync-service>` s požadovaným názvem vaší služby synchronizace úložiště.
 
-```PowerShell
+```powershell
 $storageSyncName = "<my-storage-sync-service>"
 New-AzureRmStorageSyncService -StorageSyncServiceName $storageSyncName
 ```
@@ -188,7 +188,7 @@ Spusťte následující kód Powershellu správnou verzi agenta Azure File Sync 
 > [!Important]  
 > Pokud máte v úmyslu používat Azure File Sync s clusterem převzetí služeb při selhání, musíte na všech uzlech v clusteru nainstalovat agenta Azure File Sync. Každý uzel v clusteru musí být zaregistrovaný pro práci s Azure File Sync.
 
-```PowerShell
+```powershell
 # Gather the OS version
 $osver = [System.Environment]::OSVersion.Version
 
@@ -242,7 +242,7 @@ Po přihlášení, zobrazí se výzva pro následující informace:
 Po výběru příslušné informace, vyberte **zaregistrovat** k dokončení registrace serveru. V rámci procesu registrace se zobrazí výzva k dalšímu přihlášení.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```PowerShell
+```powershell
 $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $storageSyncName
 ```
 
@@ -271,14 +271,14 @@ V podokně, které se otevře, zadejte následující informace pro vytvoření 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Chcete-li vytvořit skupinu synchronizace, spusťte následující příkaz Powershellu. Nezapomeňte nahradit `<my-sync-group>` s požadovaným názvem skupiny synchronizace.
 
-```PowerShell
+```powershell
 $syncGroupName = "<my-sync-group>"
 New-AzureRmStorageSyncGroup -SyncGroupName $syncGroupName -StorageSyncService $storageSyncName
 ```
 
 Jakmile se skupina synchronizace se úspěšně vytvořil, můžete vytvořit váš koncový bod cloudu. Nezapomeňte nahradit `<my-storage-account>` a `<my-file-share>` s očekávané hodnoty.
 
-```PowerShell
+```powershell
 # Get or create a storage account with desired name
 $storageAccountName = "<my-storage-account>"
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup | Where-Object {
@@ -335,7 +335,7 @@ Chcete-li přidat koncový bod serveru **vytvořit**. Soubory jsou teď udržova
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Spusťte následující příkazy prostředí PowerShell k vytvoření koncového bodu serveru a nezapomeňte nahradit `<your-server-endpoint-path>` a `<your-volume-free-space>` s požadované hodnoty.
 
-```PowerShell
+```powershell
 $serverEndpointPath = "<your-server-endpoint-path>"
 $cloudTieringDesired = $true
 $volumeFreeSpacePercentage = <your-volume-free-space>

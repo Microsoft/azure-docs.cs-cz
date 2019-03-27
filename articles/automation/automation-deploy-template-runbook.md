@@ -10,12 +10,12 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: prostředí PowerShell, sady runbook, json, služby azure automation
-ms.openlocfilehash: ef97d4e2fd0951e30a725e8f2f9603a73c61f1ca
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 2008ba697665baa0e8cf73564ec31d6267425404
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416110"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446972"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Nasazení šablony Azure Resource Manageru v powershellovém runbooku Azure Automation
 
@@ -32,7 +32,7 @@ K dokončení tohoto kurzu potřebujete následující položky:
 * Předplatné Azure. Pokud jeden ještě nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/).
 * [Účet Automation](automation-sec-configure-azure-runas-account.md), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure.  Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
 * [Účet služby Azure Storage](../storage/common/storage-create-storage-account.md) pro uložení šablony Resource Manageru
-* Na místním počítači nainstalovaný Azure Powershell. Zobrazit [nainstalovat a nakonfigurovat Azure Powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.1.0) informace o tom, jak získat Azure Powershellu.
+* Na místním počítači nainstalovaný Azure Powershell. Zobrazit [nainstalovat a nakonfigurovat Azure Powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) informace o tom, jak získat Azure Powershellu.
 
 ## <a name="create-the-resource-manager-template"></a>Vytvoření šablony Resource Manageru
 
@@ -203,7 +203,7 @@ Publish-AzureRmAutomationRunbook @publishParams
 
 ## <a name="start-the-runbook"></a>Spuštění runbooku
 
-Teď můžeme spouštět sadu runbook pomocí volání [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook?view=azurermps-4.1.0) rutiny.
+Teď můžeme spouštět sadu runbook pomocí volání [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) rutiny.
 
 Informace o tom, jak spustit sadu runbook na portálu Azure portal najdete v tématu [spuštění runbooku ve službě Azure Automation](automation-starting-a-runbook.md).
 

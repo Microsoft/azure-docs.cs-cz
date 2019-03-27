@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 7a478a9f73edae463a5dace1b1a28180e5d09bdc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6a7e0a27d3cda4193a04467d541f851a9e57fa46
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437730"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446718"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Načtení dat do Azure SQL Data Warehouse pomocí Azure Data Factory
 
@@ -45,10 +45,11 @@ Tento článek ukazuje, jak použít nástroje pro kopírování dat objekt pro 
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **nový** > **Data a analýzy** > **služby Data Factory**: 
+1. V nabídce vlevo vyberte **vytvořit prostředek** > **Data a analýzy** > **služby Data Factory**: 
    
-   ![Vytvoření nové datové továrny](./media/load-azure-sql-data-warehouse/new-azure-data-factory-menu.png)
-1. V **nová datová továrna** zadejte hodnoty pro pole, která jsou zobrazena na následujícím obrázku:
+   ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
+2. V **nová datová továrna** zadejte hodnoty pro pole, která jsou zobrazena na následujícím obrázku:
       
    ![Stránka Nová datová továrna](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
  
@@ -58,8 +59,8 @@ Tento článek ukazuje, jak použít nástroje pro kopírování dat objekt pro 
     * **Verze**: Vyberte **V2**.
     * **Umístění**: Vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, které jsou používané datovou továrnou můžou být v jiných umístěních a oblastech. Úložiště těchto dat patří Azure Data Lake Store, Azure Storage, Azure SQL Database a tak dále.
 
-1. Vyberte **Vytvořit**.
-1. Po vytvoření se, přejděte do služby data factory. Zobrazí **služby Data Factory** domovskou stránku, jak je znázorněno na následujícím obrázku:
+3. Vyberte **Vytvořit**.
+4. Po vytvoření se, přejděte do služby data factory. Zobrazí **služby Data Factory** domovskou stránku, jak je znázorněno na následujícím obrázku:
    
    ![Domovská stránka datové továrny](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
 

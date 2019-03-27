@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 493f6f3380dee4ed70bb6e0bc9bba24f93071097
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 954cbe66bfc4a0cebf7692a90aeee637ffcb6ca3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165327"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485051"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Správa registrovaných serverů pomocí služby Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to pomocí transformace serverů Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
@@ -101,7 +101,7 @@ Předtím, než server může sloužit jako *koncový bod serveru* do Azure File
 #### <a name="register-the-server-with-powershell"></a>Registrace serveru pomocí Powershellu
 Můžete také provést registraci serveru přes PowerShell. Toto je jediným podporovaným způsobem registrace serveru pro předplatná Cloud Solution Provider (CSP):
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 Login-AzureRmStorageSync -SubscriptionID "<your-subscription-id>" -TenantID "<your-tenant-id>"
 Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - ResourceGroupName "<your-resource-group-name>" - StorageSyncService "<your-storage-sync-service-name>"
@@ -116,7 +116,7 @@ Existuje několik kroků, které jsou nutné pro zrušení registrace serveru se
 #### <a name="optional-recall-all-tiered-data"></a>(Volitelné) Odvolat všechny Vrstvená data
 Pokud chcete soubory, které jsou aktuálně k dispozici po odebrání Azure File Sync (to znamená Toto je výrobní, ne testu, prostředí) vrstvený, svolat všechny soubory na každém svazku, který obsahuje koncové body serveru. Zakázat pro všechny koncové body serveru vrstvení cloudu a potom spusťte následující rutinu Powershellu:
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```
@@ -134,7 +134,7 @@ Před zrušením registrace serveru na službu synchronizace úložiště, musí
 
 To můžete provést také pomocí jednoduchý skript prostředí PowerShell:
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 
 $accountInfo = Connect-AzAccount
@@ -172,20 +172,20 @@ Můžete omezit využití sítě služby Azure File Sync s použitím `StorageSy
 
 Například můžete vytvořit nový limit omezení k zajištění, že Azure File Sync nepoužívá více než 10 MB/s mezi 9: 00 a 17: 00 (h 17:00) během pracovního týdne: 
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 New-StorageSyncNetworkLimit -Day Monday, Tuesday, Wednesday, Thursday, Friday -StartHour 9 -EndHour 17 -LimitKbps 10000
 ```
 
 Limit můžete zobrazit pomocí následující rutiny:
 
-```PowerShell
+```powershell
 Get-StorageSyncNetworkLimit # assumes StorageSync.Management.ServerCmdlets.dll is imported
 ```
 
 Chcete-li odebrat omezení sítě, použijte `Remove-StorageSyncNetworkLimit`. Například následující příkaz odebere všechny síťové omezení:
 
-```PowerShell
+```powershell
 Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -Id $_.Id } # assumes StorageSync.Management.ServerCmdlets.dll is imported
 ```
 

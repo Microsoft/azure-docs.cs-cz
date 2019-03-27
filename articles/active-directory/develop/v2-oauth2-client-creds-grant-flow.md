@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 03/21/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d25963d44960ec3ab15fdee2c264c3bf18e26c2a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8183ac9241ab57150717eebd85267a33912f1660
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540564"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445437"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 a tok přihlašovacích údajů klienta OAuth 2.0
 
@@ -76,10 +76,10 @@ Oprávnění aplikace ve vaší aplikaci, postupujte podle kroků popsaných v n
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Požádat o oprávnění v portálu pro registraci aplikace
 
-1. Zaregistrujte a vytvořte aplikaci prostřednictvím [portálu pro registraci aplikací](quickstart-v2-register-an-app.md) nebo do nového [prostředí registrace aplikací (Preview)](quickstart-register-app.md).
-1. Přejděte do vaší aplikace v portálu, který jste použili k registraci nebo vytvořte aplikaci. Budete muset použít aspoň jeden tajný klíč aplikace při vytváření vaší aplikace.
-1. Vyhledejte **oprávnění k rozhraní API** a pak přidejte **oprávnění aplikace** , která vaše aplikace vyžaduje.
-1. **Uložit** registraci aplikace.
+1. Zaregistrujte a vytvořte aplikaci prostřednictvím nového [prostředí registrace aplikací (Preview)](quickstart-register-app.md).
+2. Přejděte do vaší aplikace v prostředí aplikace registrace (Preview). Přejděte **certifikáty a tajné kódy** a přidejte **nový tajný kód klienta**, protože budete muset použít aspoň jeden tajný kód klienta k vyžádání tokenu.
+3. Vyhledejte **oprávnění k rozhraní API** a pak přidejte **oprávnění aplikace** , která vaše aplikace vyžaduje.
+4. **Uložit** registraci aplikace.
 
 #### <a name="recommended-sign-the-user-in-to-your-app"></a>Doporučené: Přihlášení uživatele do vaší aplikace
 
@@ -172,7 +172,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | `tenant` | Požaduje se | Tenantu Active directory aplikace v plánu fungovat proti ve formátu název domény nebo identifikátor GUID. |
 | `client_id` | Požaduje se | ID aplikace, který je přiřazen do vaší aplikace. Tyto informace můžete najít na portálu, kde jste nezaregistrovali vaši aplikaci. |
 | `scope` | Požaduje se | Hodnota předaná `scope` parametr v této žádosti by měl být identifikátor prostředku (identifikátor URI ID aplikace) požadovaný prostředek, označeny `.default` příponu. Například Microsoft Graphu, je hodnota `https://graph.microsoft.com/.default`. </br>Tato hodnota informuje koncového bodu v2.0, že všechny aplikace s přímým přístupem oprávnění, které jste nakonfigurovali pro vaše aplikace, koncový bod by měl vydání tokenu pro ty, které jsou přidružené k prostředku, který chcete použít. Další informace o `/.default` oboru, najdete v článku [souhlas dokumentaci](v2-permissions-and-consent.md#the-default-scope). |
-| `client_secret` | Požaduje se | Tajný klíč aplikace, kterou jste vygenerovali pro vaši aplikaci v portálu pro registraci aplikace. Tajný kód klienta musí být kódovaná adresou URL před odesláním. |
+| `client_secret` | Požaduje se | Tajný kód klienta, který jste vygenerovali pro vaši aplikaci v portálu pro registraci aplikace. Tajný kód klienta musí být kódovaná adresou URL před odesláním. |
 | `grant_type` | Požaduje se | Musí být nastaveno na `client_credentials`. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Druhý případ: Žádost o přístupový token s certifikátem

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ramamill
-ms.openlocfilehash: da7750198f76bc9e17c23b1347e9fc78262aa06c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d8b0d78d33c0780b05ac6f4bd8a21c6423d801f4
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086951"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445069"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware
 
@@ -234,7 +234,7 @@ ProxyPassword="Password"
 
 Volitelně můžete odstranit konfigurační server pomocí prostředí PowerShell.
 
-1. [Nainstalujte](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.0) modulu Azure PowerShell.
+1. [Nainstalujte](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) modulu Azure PowerShell.
 2. Přihlaste se ke svému účtu Azure pomocí tohoto příkazu:
 
     `Connect-AzureRmAccount`

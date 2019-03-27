@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 93ba17c58dfcb5955bafbcc63655778903f60c18
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2bf323b34c5a5301094bdecdc9fa705fe9077320
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076339"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482126"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -49,7 +49,7 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 
     Následující kód PowerShellu předpokládá, že máte nainstalovaný modul AzureRM PowerShell. Další informace najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resource-group-name>` odpovídajícími názvy pro váš účet úložiště.
 
-    ```PowerShell
+    ```powershell
     $resourceGroupName = "<your-resource-group-name>"
     $storageAccountName = "<your-storage-account-name>"
 
@@ -87,7 +87,7 @@ Při migraci obchodních aplikací očekávajících sdílenou složku SMB metod
 ### <a name="persisting-azure-file-share-credentials-in-windows"></a>Trvalé uložení přihlašovacích údajů sdílené složky Azure ve Windows  
 Nástroj [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) umožňuje uložit přihlašovací údaje účtu úložiště v rámci Windows. To znamená, že při pokusu o přístup ke sdílené složce Azure přes cestu UNC nebo její připojení nebudete muset zadávat přihlašovací údaje. Pokud chcete uložit přihlašovací údaje vašeho účtu úložiště, spusťte následující příkazy PowerShellu, ve kterých podle potřeby nahraďte `<your-storage-account-name>` a `<your-resource-group-name>`.
 
-```PowerShell
+```powershell
 $resourceGroupName = "<your-resource-group-name>"
 $storageAccountName = "<your-storage-account-name>"
 
@@ -107,7 +107,7 @@ Invoke-Expression -Command ("cmdkey /add:$([System.Uri]::new($storageAccount.Con
 
 Uložení přihlašovacích údajů pro účet úložiště nástrojem cmdkey můžete ověřit pomocí parametru list:
 
-```PowerShell
+```powershell
 cmdkey /list
 ```
 
@@ -128,7 +128,7 @@ V případě nástroje cmdkey existují další dva scénáře, které byste mě
 
 Uložení přihlašovacích údajů pro jiného uživatele na počítači je velmi snadné: když jste přihlášeni ke svému účtu, stačí spustit následující příkaz PowerShellu:
 
-```PowerShell
+```powershell
 $password = ConvertTo-SecureString -String "<service-account-password>" -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "<service-account-username>", $password
 Start-Process -FilePath PowerShell.exe -Credential $credential -LoadUserProfile
@@ -141,7 +141,7 @@ Uložení přihlašovacích údajů na vzdáleném počítači s využitím vzd�
 ### <a name="mount-the-azure-file-share-with-powershell"></a>Připojení sdílené složky Azure pomocí PowerShellu
 Spuštěním následujících příkazů v normální relaci PowerShellu (tj. bez zvýšených oprávnění) připojte sdílenou složku Azure. Nezapomeňte nahradit `<your-resource-group-name>`, `<your-storage-account-name>`, `<your-file-share-name>` a `<desired-drive-letter>` odpovídajícími údaji.
 
-```PowerShell
+```powershell
 $resourceGroupName = "<your-resource-group-name>"
 $storageAccountName = "<your-storage-account-name>"
 $fileShareName = "<your-file-share-name>"
@@ -172,7 +172,7 @@ New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\$($file
 
 V případě potřeby můžete sdílenou složku Azure odpojit pomocí následující rutiny PowerShellu.
 
-```PowerShell
+```powershell
 Remove-PSDrive -Name <desired-drive-letter>
 ```
 
@@ -252,7 +252,7 @@ Před odebráním protokolu SMB 1 z vašeho prostředí možná budete chtít au
 
 Pokud chcete povolit auditování, spusťte v relaci PowerShellu se zvýšenými oprávněními následující rutinu:
 
-```PowerShell
+```powershell
 Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
@@ -261,7 +261,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 
 Pokud chcete odebrat protokol SMB 1 z instance Windows Serveru, spusťte v relaci PowerShellu se zvýšenými oprávněními následující rutinu:
 
-```PowerShell
+```powershell
 Remove-WindowsFeature -Name FS-SMB1
 ```
 
@@ -275,7 +275,7 @@ Proces odebrání dokončíte restartováním serveru.
 
 Pokud chcete odebrat protokol SMB 1 z klienta Windows Serveru, spusťte v relaci PowerShellu se zvýšenými oprávněními následující rutinu:
 
-```PowerShell
+```powershell
 Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
 ```
 
@@ -288,7 +288,7 @@ Ve starších verzích Windows a Windows Serveru není možné protokol SMB 1 zc
 
 Můžete to také snadno provést pomocí následující rutiny PowerShellu:
 
-```PowerShell
+```powershell
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -Type DWORD -Value 0 –Force
 ```
 

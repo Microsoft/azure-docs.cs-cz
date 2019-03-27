@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: b7cc47c449b91693831dda74bf987f595fe65681
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 646b862733e8727c9c8729f1ac038fa88cfa0580
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997875"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443185"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Použití skriptů založených na Azure Resource Manageru SDK ke správě zařízení StorSimple
 
@@ -62,10 +62,10 @@ Tato část používá ukázkový skript a podrobně popisuje různé kroky pot�
 Než začnete, ujistěte se, že máte:
 
 *   Azure PowerShell nainstalovaný. Instalace modulů Azure Powershellu:
-    * V prostředí Windows, postupujte podle kroků v [nainstalovat a nakonfigurovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.0). Prostředí Azure PowerShell můžete nainstalovat na hostiteli s Windows serverem pro StorSimple Pokud pomocí jedné.
-    * V prostředí Linuxu nebo MacOS, postupujte podle kroků v [instalace a konfigurace Azure Powershellu v systému MacOS nebo Linux](https://docs.microsoft.com/powershell/azure/azurerm/install-azurermps-maclinux?view=azurermps-4.4.0).
+    * V prostředí Windows, postupujte podle kroků v [nainstalovat a nakonfigurovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). Prostředí Azure PowerShell můžete nainstalovat na hostiteli s Windows serverem pro StorSimple Pokud pomocí jedné.
+    * V prostředí Linuxu nebo MacOS, postupujte podle kroků v [instalace a konfigurace Azure Powershellu v systému MacOS nebo Linux](https://docs.microsoft.com/powershell/azure/azurerm/install-azurermps-maclinux).
 
-Další informace o použití Azure Powershellu najdete v části [začít pracovat s využitím Azure Powershellu](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.4.0).
+Další informace o použití Azure Powershellu najdete v části [začít pracovat s využitím Azure Powershellu](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 ### <a name="run-azure-powershell-script"></a>Spuštění skriptu Azure Powershellu
 

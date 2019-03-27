@@ -9,19 +9,17 @@ manager: daveba
 ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbfc325d1a33db45afecf30bfa21244e3336961d
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 706a826d1b256e95e459d2a44cdb13ee56c70599
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295483"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499127"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace služby Azure AD Connect
 **Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](how-to-connect-install-express.md) nevyhovuje nasazení nebo topologii.
@@ -37,11 +35,11 @@ Na této stránce kliknutím na **Přizpůsobit** spustíte instalaci s vlastní
 ### <a name="install-required-components"></a>Instalace požadovaných součástí
 Při instalaci služeb synchronizace můžete nechat volitelnou konfiguraci nezaškrtnutou a Azure AD Connect nastaví všechno automaticky. Nastaví instanci SQL Server 2012 Express LocalDB, vytvoří příslušné skupiny a přiřadí oprávnění. Pokud chcete změnit výchozí nastavení, následující tabulka vás seznámí s volitelnými možnostmi konfigurace, které jsou dostupné.
 
-![Požadované součásti](./media/how-to-connect-install-custom/requiredcomponents.png)
+![Požadované součásti](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
 | Volitelná konfigurace | Popis |
 | --- | --- |
-| Použít existující server SQL Server |Umožňuje zadat název serveru SQL Server a název instance. Tuto možnost zvolte, pokud už máte databázový server, který chcete použít. Pokud SQL Server nemá povoleno procházení, zadejte do položky **Název instance** požadovaný název instance, za nímž následuje čárka a číslo portu. |
+| Použít existující server SQL Server |Umožňuje zadat název serveru SQL Server a název instance. Tuto možnost zvolte, pokud už máte databázový server, který chcete použít. Pokud SQL Server nemá povoleno procházení, zadejte do položky **Název instance** požadovaný název instance, za nímž následuje čárka a číslo portu.  Zadejte název databáze služby Azure AD Connect.  Vaše oprávnění SQL určení, zda bude vytvořena nová databáze nebo databáze musíte vytvořit předem správce SQL.  Pokud máte oprávnění správce systému SQL najdete v článku [jak nainstalovat pomocí stávající databáze](how-to-connect-install-existing-database.md).  Pokud jste již delegovaná oprávnění (DBO) najdete v článku [instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL](how-to-connect-install-sql-delegation.md). |
 | Použít existující účet služby |Ve výchozím nastavení použije Azure AD Connect virtuální účet služby, který můžou služby synchronizace používat. Pokud používáte vzdálený server SQL nebo používáte proxy server vyžadující ověření, potřebujete mít **účet spravované služby** nebo účet služby v dané doméně a znát heslo. V těchto případech zadejte účet, který chcete použít. Ujistěte se, jestli uživatel, který provádí instalaci, je SA v SQL, aby bylo možné vytvořit přihlašovací jméno pro účet služby.  Viz téma [Účty a oprávnění Azure AD Connect](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>S nejnovějším sestavením teď může databáze vzdáleně zřizovat správce SQL a pak je instalovat správce služby Azure AD Connect s oprávněními vlastníka databáze.  Další informace najdete v tématu [Instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL](how-to-connect-install-sql-delegation.md).|
 | Zadat vlastní skupiny pro synchronizaci |Ve výchozím nastavení vytvoří Azure AD Connect při instalaci služeb synchronizace čtyři skupiny, které jsou místní pro server. Tyto skupiny jsou: Skupiny Administrators, skupina Operators, procházet skupiny a skupina Password Reset. Tady můžete zadat vlastní skupiny. Skupiny musí být místní na serveru a nemůžou být umístěny v doméně. |
 

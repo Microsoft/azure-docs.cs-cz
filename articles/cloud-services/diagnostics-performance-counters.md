@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 7713b449d5e5291ce1dd6c9b814ebefd07bc53a9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 68101be211335d51eb4bf99361ea36b73fa19218
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737667"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485395"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Shromažďování čítačů výkonu pro cloudové služby Azure
 
@@ -29,7 +29,7 @@ ms.locfileid: "56737667"
 
 Čítače výkonu, který se skládá ze dvou částí, název sady (označované také jako kategorie) a jeden nebo více čítačů. Chcete-li získat seznam dostupných čítačů výkonu můžete použít PowerShell:
 
-```PowerShell
+```powershell
 Get-Counter -ListSet * | Select-Object CounterSetName, Paths | Sort-Object CounterSetName
 
 CounterSetName                                  Paths
@@ -56,7 +56,7 @@ Authorization Manager Applications              {\Authorization Manager Appl...
 
 Chcete-li získat všechny čítače pro sadu, použijte `CounterSetName` hodnotu a rozbalte `Paths` kolekce. Každá položka cesta je čítač, který můžete zadávat dotazy. Například, chcete-li získat dostupné čítače související s `Processor` nastavení, rozbalte `Paths` kolekce:
 
-```PowerShell
+```powershell
 Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -ExpandProperty Paths
 
 \Processor(*)\% Processor Time

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: aljo
-ms.openlocfilehash: 5831a21225b80e613f713a516d2f000f8b33f096
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fa883f819c53f57a8e281069b2a3db1c55efc6c6
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853150"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480531"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Balení a nasazení existujícího spustitelného souboru do Service Fabric
 Při vytváření balíčku existujícího spustitelného souboru jako [spustitelný soubor typu Host](service-fabric-guest-executables-introduction.md), můžete buď použít šablonu projektu sady Visual Studio nebo [ručně vytvořit balíček aplikace](#manually). Pomocí sady Visual Studio, struktury balíček aplikace a soubory manifestu jsou vytvářeny nová šablona projektu pro vás.
@@ -254,7 +254,7 @@ Soubory protokolu jsou uloženy v jednom z pracovních adresářů služby. Chce
 ## <a name="deployment"></a>Nasazení
 Posledním krokem je [při nasazování aplikace](service-fabric-deploy-remove-applications.md). Následující skript prostředí PowerShell ukazuje, jak nasadit aplikaci do místního vývojového clusteru a spusťte novou službu Service Fabric.
 
-```PowerShell
+```powershell
 
 Connect-ServiceFabricCluster localhost:19000
 

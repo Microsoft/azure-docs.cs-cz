@@ -74,21 +74,6 @@ items:
       - name: Publikování aplikací HDInsight na Azure Marketplace
         href: ../hdinsight-apps-publish-applications.md
         maintainContext: true
-      - name: Instalace publikované aplikace – CDAP (Cask Data Application Platform)
-        href: ../hdinsight-apps-install-cask.md
-        maintainContext: true
-      - name: Instalace publikované aplikace – Dataiku
-        href: ../hdinsight-apps-install-dataiku.md
-        maintainContext: true
-      - name: Instalace publikované aplikace – Datameer
-        href: ../hdinsight-apps-install-datameer.md
-        maintainContext: true
-      - name: Instalace publikované aplikace – H2O
-        href: ../hdinsight-apps-install-h2o.md
-        maintainContext: true
-      - name: Instalace publikované aplikace – Streamsets
-        href: ../hdinsight-apps-install-streamsets.md
-        maintainContext: true
   - name: Zabezpečení
     items:
     - name: Použití SSH s HDInsightem
@@ -178,9 +163,6 @@ items:
       maintainContext: true
     - name: Použití Apache Oozie pro pracovní postupy
       href: ../hdinsight-use-oozie-linux-mac.md
-      maintainContext: true
-    - name: Použití časových koordinátorů Apache Oozie
-      href: ../hdinsight-use-oozie-coordinator-time.md
       maintainContext: true
     - name: Porty a identifikátory URI clusterů a služeb
       href: ../hdinsight-hadoop-port-settings-for-services.md
@@ -283,20 +265,6 @@ items:
     - name: Migrace řešení .NET do linuxových clusterů
       href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
       maintainContext: true
-    - name: Nasazení a správa topologií Apache Storm
-      href: apache-storm-deploy-monitor-topology.md
-    - name: Použití Apache Mavenu k vytváření aplikací v Javě
-      href: ../hdinsight-hbase-build-java-maven.md
-      maintainContext: true
-    - name: Přístup k protokolům aplikací Apache Hadoop YARN
-      href: ../hdinsight-hadoop-access-yarn-app-logs.md
-      maintainContext: true
-    - name: Vývoj akcí skriptů
-      href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: Monitorování clusterů pomocí rozhraní Apache Ambari API
-      href: ../hdinsight-monitor-use-ambari-api.md
-      maintainContext: true
 - name: Zdroje a prostředky
   items:
   - name: Plány Azure do budoucna
@@ -312,9 +280,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 2dd6ba413eaaad3e740c9c4dcc905f7384172f1a
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: b8a55191f78010bab759cf90880c3b7aaddab7ba
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359786"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444967"

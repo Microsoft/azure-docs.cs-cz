@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: laurenhughes
 ms.author: lahugh
-ms.date: 12/11/2018
+ms.date: 03/26/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8ce430d83c52014b3d1d3d2a985f74aeb488caea
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 84b2ca30f1ccd49e18e2f9d42133f8672d3f8ad6
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791881"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496016"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>Předinstalované aplikace na vykreslování imagí virtuálních počítačů
 
@@ -22,7 +22,7 @@ Kde je to možné, licencování průběžnými platbami podle využití je k di
 
 Některé aplikace podporují jenom Windows, ale většina jsou podporované ve Windows a Linuxu.
 
-## <a name="applications-on-centos-7-rendering-nodes"></a>Aplikace na CentOS 7 uzlů vykreslování
+## <a name="applications-on-centos-7-rendering-images"></a>Aplikace na CentOS 7 vykreslení obrázků
 
 * Autodesk Maya I/O 2017 Update 5 (verze 201708032230)
 * Autodesk Maya I/O 2018 Update 2 (Vyjmout 201711281015)
@@ -32,7 +32,29 @@ Některé aplikace podporují jenom Windows, ale většina jsou podporované ve 
 * Chaos Group V-Ray pro Maya 2018 (verze 3.60.04)
 * Blender (2.68)
 
-## <a name="applications-on-windows-server-2016-rendering-nodes"></a>Aplikace na Windows serveru 2016 uzlů vykreslování
+## <a name="applications-on-latest-windows-server-2016-rendering-images"></a>Aplikace na nejnovější vykreslení obrázků systému Windows Server 2016
+
+V následujícím seznamu se vztahuje na Windows Server 2016, verze 1.3.4 vykreslení obrázků.
+
+* Autodesk Maya I/O 2017 Update 5 (verze 17.4.5459)
+* Autodesk Maya I/O 2018 Update 4 (verze 18.4.0.7622)
+* Autodesk 3ds Max vstupně-výstupních operací. 2019 Update 1 (verze 21.2.0.2219)
+* Autodesk 3ds Max I/O 2018 Update 4 (verze 20.4.0.4254)
+* Autodesk Arnold pro Maya 2017 (Arnold verze 5.2.0.1) MtoA-3.1.0.1 – 2017
+* Autodesk Arnold pro Maya 2018 (Arnold verze 5.2.0.1) MtoA – 3.1.0.1 – 2018
+* Autodesk Arnold pro 3ds Max (verze 5.0.2.4)(version Arnold 1.2.926)
+* Chaos Group V-Ray pro Maya 2018 (verze 3.52.03)
+* Chaos Group V-Ray pro 3ds Max 2018 (verze 3.60.02)
+* Chaos Group V-Ray pro Maya 2019 (verze 3.52.03)
+* Chaos Group V-Ray pro 3ds Max 2019 (verze 4.10.01)
+* Blender (2.79)
+
+> [!NOTE]
+> Chaos Group V-Ray pro 3ds Max 2019 (verze 4.10.01) přináší změny způsobující chyby V-ray. Pokud chcete použít předchozí verze (verze 3.60.02), použijte Windows Server 2016, verze 1.3.2 vykreslování uzly.
+
+## <a name="applications-on-previous-windows-server-2016-rendering-images"></a>Aplikace na předchozí vykreslení obrázků systému Windows Server 2016
+
+V následujícím seznamu se vztahuje na Windows Server 2016, verze 1.3.2 vykreslení obrázků.
 
 * Autodesk Maya I/O 2017 Update 5 (verze 17.4.5459)
 * Autodesk Maya I/O 2018 Update 4 (verze 18.4.0.7622)  
@@ -41,8 +63,8 @@ Některé aplikace podporují jenom Windows, ale většina jsou podporované ve 
 * Autodesk Arnold pro Maya 2017 (Arnold verze 5.2.0.1) MtoA-3.1.0.1 – 2017
 * Autodesk Arnold pro Maya 2018 (Arnold verze 5.2.0.1) MtoA – 3.1.0.1 – 2018
 * Autodesk Arnold pro 3ds Max (verze 5.0.2.4)(version Arnold 1.2.926)
-* Chaos Group V-Ray pro Maya (verze 3.52.03)
-* Chaos Group V-Ray pro 3ds Max (verze 3.60.02)
+* Chaos Group V-Ray pro Maya 2019 (verze 3.52.03)
+* Chaos Group V-Ray pro 3ds Max 2018 (verze 3.60.02)
 * Blender (2.79)
 
 ## <a name="next-steps"></a>Další postup

@@ -1,24 +1,21 @@
 ---
 title: Doporučení k výkonu ve službě Azure Database for PostgreSQL
-description: Tento článek popisuje doporučení ohledně výkonu, které jeden můžete získat ve službě Azure Database for PostgreSQL.
+description: Tento článek popisuje funkce výkonu doporučení ve službě Azure Database for PostgreSQL.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2018
-ms.openlocfilehash: 1dedc08f27d1a483290dc61cce879290ca66592d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 03/26/2018
+ms.openlocfilehash: d8edbc2847c06e95e658a1324f2e85f1758e60be
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548088"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487936"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql"></a>Doporučení k výkonu ve službě Azure Database for PostgreSQL
 
 **Platí pro:** Azure Database for PostgreSQL 9.6 a 10
-
-> [!IMPORTANT]
-> Doporučení k výkonu je ve verzi Public Preview.
 
 Doporučení k výkonu funkcí Určuje horní indexy, které je možné vytvořit v Azure Database for PostgreSQL server ke zlepšení výkonu. K vytvoření doporučení indexu, tato funkce vezme v úvahu různé vlastnosti databáze, včetně jeho schématu a úloh podle Query Store. Po implementaci jakékoli doporučení výkon, by měl zákazníkům testování výkonu vyhodnotit její dopad těchto změn. 
 

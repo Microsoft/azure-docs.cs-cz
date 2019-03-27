@@ -16,12 +16,12 @@ ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 840ea818c7c2e197f1ab65f4bd61067bf5e51283
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ab0e7ce1891dc3553f89f652c7dac70e66a4df0
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57836976"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499909"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -40,6 +40,56 @@ Stáhnout | [Stažení služby Azure AD Connect](https://go.microsoft.com/fwlink
 
 >[!NOTE]
 >Ne všechny verze služby Azure AD Connect bude k dispozici pro automatický upgrade. Stav verze označí, zda verze je k dispozici pro automatický upgrade nebo si můžete stáhnout pouze. Pokud byl povolen automatický upgrade na serveru služby Azure AD Connect pak tento server se automaticky upgradovat na nejnovější verzi služby Azure AD Connect, která je vydána pro automatický upgrade. Všimněte si, že všechny konfigurace služby Azure AD Connect jsou způsobilé pro upgradování automaticky. Postupujte podle tohoto odkazu Další informace o tom [automatický upgrade](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
+
+## <a name="13900"></a>1.3.90.0 
+
+### <a name="release-status"></a>Stav verze 
+
+3/25/2019: Ještě není 
+ 
+### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení 
+
+
+
+- Přidání podpory pro aktualizace domény 
+- Veřejné složky pošty Exchange funkce bude všeobecně dostupná 
+- Vylepšení Průvodce zpracování chyb pro selhání služby 
+- Přidán odkaz upozornění pro staré uživatelského rozhraní na stránce vlastností konektoru. 
+- Tato funkce Unified zpětný zápis skupin je teď GA 
+- Vylepšené chybové zprávy samoobslužné resetování HESLA, pokud řadič domény chybí ovládacího prvku LDAP 
+- Přidání diagnostiku pro model DCOM registru chyby při instalaci  
+- Vylepšené sledování chyb PHS RPC 
+- Povolit přihlašovací údaje pro EA z podřízené domény 
+- Aby název databáze je třeba zadat během instalace (výchozí název ADSync)
+- Upgrade na ADAL 3.19.8 vyzvednutí opravu WS-Trust pro příkaz Ping a přidání podpory pro nové instance Azure 
+- Upravit skupinu synchronizace pravidla pro tok samAccountName, DomainNetbios a DomainFQDN do cloudu – třeba deklarace identity 
+- Změnit výchozí synchronizační pravidlo zpracování – přečtěte si další [tady](how-to-connect-fix-default-rules.md).
+- Přidat nový agent spuštěn jako služba systému windows. Tento agent s názvem "Agent pro správu", umožňuje podrobnější diagnostice vzdálené pomoci Microsoft Engineers řešení při otevření případu podpory serveru služby Azure AD Connect. Další informace o Agent pro správu [tady](whatis-aadc-admin-agent.md). 
+- Aktualizovat licenční smlouvy s koncovým uživatelem (EULA) 
+- Přidání podpory upgradu automaticky pro nasazení, která používají službu AD FS jako jejich typ přihlašovacího jména.  Tato položka odebrána také požadavek na aktualizaci AD FS Azure AD vztah důvěryhodnosti předávající strany v rámci procesu upgradu. 
+- Přidat úlohu správy důvěryhodnosti služby Azure AD, která poskytuje dvě možnosti: analýza nebo aktualizace zabezpečení a resetovat vztah důvěryhodnosti. 
+- Změnit chování vztahu důvěryhodnosti předávající strany serveru AD FS Azure AD tak, aby vždy používala přepínače – SupportMultipleDomain (zahrnuje důvěryhodnosti a Azure AD domain aktualizace). 
+- Změnit chování farmy instalace nové služby AD FS tak, aby se vyžaduje certifikát PFX tak, že odeberete možnost použití předem nainstalovaný certifikát.
+- Aktualizace pracovního postupu instalace nové služby AD FS farmy tak, aby se povoluje jenom nasazení 1 AD FS a 1 serveru WAP.  Všechny další servery se provede po počáteční instalaci. 
+
+### <a name="fixed-issues"></a>Oprava potíží 
+
+
+- Oprava SQL připojit logiku pro službu ADSync 
+- Opravu, která umožňuje čistou instalaci pomocí prázdné SQL DB AOA 
+- Opravte skript PS oprávnění pro upřesnění GWB oprávnění 
+- Opravte chyby služby VSS s LocalDB  
+- Oprava zavádějící chybové zprávy, když typ objektu není v oboru 
+- Byl opraven problém, kdy instalace Azure AD powershellu na serveru by mohla způsobit, došlo ke konfliktu sestavení s využitím Azure AD Connect. 
+- Oprava chyby PHS na serveru pracovní přihlašovací údaje konektoru se aktualizují v Uživatelském rozhraní staré. 
+- Oprava některých nevracení paměti 
+- Ostatní opravy Autoupgrade 
+- Ostatní opravy nepotvrzené zpracování importu a exportu 
+- Oprava chyby pomocí zpětného lomítka do domény a organizační jednotky zpracování filtrování 
+- Opravili jsme problém, kde ADSync service má více než 2 minuty zastavit a způsobí, že problém během upgradu. 
+
+
+
 
 ## <a name="12700"></a>1.2.70.0
 

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: b30ef7d0b373f0d9a440b6649f819e429e28328c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 95e10f4727de239016a2e3c88571e74267e3967b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314922"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482980"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpečení Azure a dodržování předpisů: PaaS webovou aplikaci hostování pro oficiální úlohy Spojené království
 
@@ -95,7 +95,7 @@ Data jsou přenosu z mimo a mezi komponentami Azure je chráněný pomocí [Tran
 
 [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) je individuální cloudový konzultant, který pomáhá dodržovat osvědčené postupy a optimalizovat nasazení Azure. Analyzuje konfiguraci vašich prostředků a telemetrii jejich využívání a následně doporučí řešení, která zlepší finanční úspornost, výkon, dostupnost a zabezpečení vašich prostředků Azure.
 
-[Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) je funkce ochrany v reálném čase, který pomáhá zjistit a odebrat viry, spyware a jiný škodlivý software. To ve výchozím nastavení je nainstalovaná na základní infrastrukturu modelu PaaS virtuálních počítačů a spravuje prostředky infrastruktury Azure transparentně s konkrétním zákazníkem, zajištění
+[Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) je funkce ochrany v reálném čase, který pomáhá zjistit a odebrat viry, spyware a jiný škodlivý software. To ve výchozím nastavení je nainstalovaná na základní infrastrukturu modelu PaaS virtuálních počítačů a spravuje prostředky infrastruktury Azure transparentně přesměrovalo zákazníka.
 
 ### <a name="paas-services-in-this-blueprint"></a>Služby PaaS v tomto podrobném plánu
 

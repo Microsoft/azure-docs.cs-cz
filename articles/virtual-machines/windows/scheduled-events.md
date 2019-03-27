@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: c9bd14128a6874f06983aa99ebb5a8a9a85843a2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2ed92486b55aa4fd7dce32f54f0b6567c7bb3cf2
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550667"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486729"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Služby Azure Metadata: Naplánované události pro virtuální počítače s Windows
 
@@ -46,7 +46,9 @@ Pomocí naplánovaných událostí aplikace můžete zjistit, kdy bude údržby 
 
 Naplánované události poskytuje události v následujících případech použití:
 - Údržby iniciované platformy (například aktualizace operačního systému hostitele)
+- Degradované hardwaru
 - Údržba (například uživatel restartuje nebo znovu nasadí virtuální počítač), kterou inicioval uživatel
+- [Vyřazení virtuálního počítače s nízkou prioritou](https://azure.microsoft.com/en-us/blog/low-priority-scale-sets) škále nastaví
 
 ## <a name="the-basics"></a>Základní informace  
 
@@ -55,15 +57,16 @@ Služby Azure Metadata zveřejňuje informace o spouštění virtuálních poč�
 ### <a name="endpoint-discovery"></a>Zjišťování koncových bodů
 Pro virtuální síť virtuálních počítačů s povoleným, je k dispozici statickou IP adresu nesměrovatelných, služba metadat `169.254.169.254`. Úplné koncový bod pro nejnovější verzi naplánovaných událostí je: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
 
 Pokud není vytvořený virtuální počítač ve virtuální síti, výchozí případy pro cloud services a klasické virtuální počítače, je další logiku potřebné ke zjišťování IP adres používat. Odkazovat na této ukázce se dozvíte postupy [zjistit koncový bod hostitele](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
 
 ### <a name="version-and-region-availability"></a>Verze a dostupnost oblastí
-Služba naplánované události se systémovou správou verzí. Verze jsou povinné a aktuální verze je `2017-08-01`.
+Služba naplánované události se systémovou správou verzí. Verze jsou povinné a aktuální verze je `2017-11-01`.
 
 | Verze | Typ verze | Oblasti | Poznámky k verzi | 
 | - | - | - | - |
+| 2017-11-01 | Všeobecná dostupnost | Vše | <li> Přidání podpory pro vyřazení EventType "Preempt" virtuálního počítače s nízkou prioritou<br> | 
 | 2017-08-01 | Všeobecná dostupnost | Vše | <li> Odebrat před podtržítka z názvy prostředků pro virtuální počítače IaaS<br><li>Hlavičku metadat požadavek vynucovat pro všechny požadavky | 
 | 2017-03-01 | Preview | Vše |<li>Původní vydaná verze
 
@@ -90,7 +93,7 @@ Můžete zadat dotaz na Scheduled Events jednoduše tak, že následující vol�
 
 #### <a name="powershell"></a>PowerShell
 ```
-curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01 -H @{"Metadata"="true"}
+curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @{"Metadata"="true"}
 ```
 
 Odpověď obsahuje celou řadu naplánovaných událostí. Prázdné pole znamená, že aktuálně neexistují žádné události naplánované.
@@ -101,7 +104,7 @@ V případě, kdy jsou naplánované události, odpověď obsahuje celou řadu u
     "Events": [
         {
             "EventId": {eventID},
-            "EventType": "Reboot" | "Redeploy" | "Freeze",
+            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt",
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
@@ -116,7 +119,7 @@ DocumentIncarnation je značka ETag a poskytuje snadný způsob, jak zkontrolova
 |Vlastnost  |  Popis |
 | - | - |
 | ID události | Globálně jedinečný identifikátor pro tuto událost. <br><br> Příklad: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| Typ události | Dopad, který způsobí, že se tato událost. <br><br> Hodnoty: <br><ul><li> `Freeze`: Virtuální počítač je naplánovaná pozastavit několik sekund. Procesor je pozastaveno, ale neexistuje žádný vliv na paměť, otevřené soubory nebo připojení k síti. <li>`Reboot`: Virtuální počítač je naplánovaná restartování (dojde ke ztrátě dočasné paměti). <li>`Redeploy`: Virtuální počítač je naplánovaná přesunout do jiného uzlu (dočasné disky jsou ztraceny). |
+| Typ události | Dopad, který způsobí, že se tato událost. <br><br> Hodnoty: <br><ul><li> `Freeze`: Virtuální počítač je naplánovaná pozastavit několik sekund. Procesor je pozastaveno, ale neexistuje žádný vliv na paměť, otevřené soubory nebo připojení k síti. <li>`Reboot`: Virtuální počítač je naplánovaná restartování (dojde ke ztrátě dočasné paměti). <li>`Redeploy`: Virtuální počítač je naplánovaná přesunout do jiného uzlu (dočasné disky jsou ztraceny). <li>`Preempt`: Odstraňuje se virtuální počítač s nízkou prioritou (dočasné disky jsou ztraceny).|
 | ResourceType | Typ prostředku, který má vliv na tuto událost. <br><br> Hodnoty: <ul><li>`VirtualMachine`|
 | Zdroje a prostředky| Seznam prostředků, které má vliv na tuto událost. To je zaručeno, obsahují počítače maximálně jednu [aktualizační doména](manage-availability.md), ale nemusí obsahovat všechny počítače ve skupině UD. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Stav události | Stav této události. <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánované spuštění po dobu určenou v `NotBefore` vlastnost.<li>`Started`: Tato událost se spustila.</ul> Ne `Completed` nebo podobné stav je stále k dispozici; událost již nevrátí se po dokončení události.
@@ -130,6 +133,7 @@ Každé události je naplánovaný minimální množství čas v budoucnosti pod
 | zablokování| 15 minut |
 | Restartování | 15 minut |
 | Opětovné nasazení | 10 minut |
+| Vyřizuje | 30 sekund |
 
 ### <a name="event-scope"></a>Události oboru     
 Naplánované události se doručují na:        
@@ -156,7 +160,7 @@ Tady je ve formátu json v očekává `POST` text žádosti. Požadavek by měl 
 
 #### <a name="powershell"></a>PowerShell
 ```
-curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
+curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
 ```
 
 > [!NOTE] 
@@ -167,7 +171,7 @@ curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": 
 
 Následující ukázka dotazuje službu metadat pro naplánované události a následně schválí každé nevyřízené události.
 
-```PowerShell
+```powershell
 # How to get scheduled events 
 function Get-ScheduledEvents($uri)
 {
@@ -202,7 +206,7 @@ function Handle-ScheduledEvents($scheduledEvents)
 
 # Set up the scheduled events URI for a VNET-enabled VM
 $localHostIP = "169.254.169.254"
-$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-08-01' -f $localHostIP 
+$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-11-01' -f $localHostIP 
 
 # Get events
 $scheduledEvents = Get-ScheduledEvents $scheduledEventURI

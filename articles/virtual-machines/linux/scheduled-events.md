@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: df7f3dfa525c59ff8862c3b1a46f70be53a93a32
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 6337477b55addefb7579d6f328473428ba72ba24
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198741"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446132"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Služby Azure Metadata: Naplánované události pro virtuální počítače s Linuxem
 
@@ -47,7 +47,9 @@ Pomocí naplánovaných událostí vaše aplikace můžete zjistit, kdy bude úd
 Naplánované události poskytuje události v následujících případech použití:
 
 - Údržby iniciované uživatelem platformy (například aktualizace hostitelský operační systém)
+- Degradované hardwaru
 - Údržba zahájená uživatelem (například uživatele restartuje nebo znovu nasadí virtuální počítač)
+- [Vyřazení virtuálního počítače s nízkou prioritou](https://azure.microsoft.com/en-us/blog/low-priority-scale-sets) škále nastaví
 
 ## <a name="the-basics"></a>Základní informace  
 
@@ -65,15 +67,16 @@ Proto zkontrolujte, `Resources` pole událostí k určení, které virtuální p
 ### <a name="endpoint-discovery"></a>Zjišťování koncových bodů
 Pro virtuální síť virtuálních počítačů s povoleným, Metadata služba je k dispozici z IP adresy statické nepoužívající `169.254.169.254`. Úplné koncový bod pro nejnovější verzi naplánovaných událostí je: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
 
 Pokud virtuální počítač se vytvoří ve virtuální síti, výchozí případy pro cloud services a klasické virtuální počítače, je další logiku potřebné ke zjišťování IP adres používat. Další postupy [zjistit koncový bod hostitele](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm), najdete v této ukázce.
 
 ### <a name="version-and-region-availability"></a>Verze a dostupnost oblastí
-Služba Scheduled Events se systémovou správou verzí. Verze jsou povinné; aktuální verze je `2017-08-01`.
+Služba Scheduled Events se systémovou správou verzí. Verze jsou povinné; aktuální verze je `2017-11-01`.
 
 | Verze | Typ verze | Oblasti | Poznámky k verzi | 
 | - | - | - | - | 
+| 2017-11-01 | Všeobecná dostupnost | Vše | <li> Přidání podpory pro vyřazení EventType "Preempt" virtuálního počítače s nízkou prioritou<br> | 
 | 2017-08-01 | Všeobecná dostupnost | Vše | <li> Odebrat před podtržítka z názvy prostředků pro virtuální počítače IaaS<br><li>Požadavek na metadata záhlaví vynucovat pro všechny požadavky | 
 | 2017-03-01 | Preview | Vše | <li>Původní vydaná verze
 
@@ -112,7 +115,7 @@ V případě, kdy jsou naplánované události, odpověď obsahuje celou řadu u
     "Events": [
         {
             "EventId": {eventID},
-            "EventType": "Reboot" | "Redeploy" | "Freeze",
+            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt",
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
@@ -126,7 +129,7 @@ V případě, kdy jsou naplánované události, odpověď obsahuje celou řadu u
 |Vlastnost  |  Popis |
 | - | - |
 | ID události | Globálně jedinečný identifikátor pro tuto událost. <br><br> Příklad: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| Typ události | Dopad, který způsobí, že se tato událost. <br><br> Hodnoty: <br><ul><li> `Freeze`: Virtuální počítač je naplánovaná pozastavit na několik sekund. Procesor je pozastaveno, ale neexistuje žádný vliv na paměť, otevřené soubory nebo připojení k síti. <li>`Reboot`: Virtuální počítač je naplánovaná restartování. (Nonpersistent paměti je ztracena). <li>`Redeploy`: Virtuální počítač je naplánovaná přesunout do jiného uzlu. (Dočasné disky se ztratí.) |
+| Typ události | Dopad, který způsobí, že se tato událost. <br><br> Hodnoty: <br><ul><li> `Freeze`: Virtuální počítač je naplánovaná pozastavit několik sekund. Procesor je pozastaveno, ale neexistuje žádný vliv na paměť, otevřené soubory nebo připojení k síti. <li>`Reboot`: Virtuální počítač je naplánovaná restartování (dojde ke ztrátě dočasné paměti). <li>`Redeploy`: Virtuální počítač je naplánovaná přesunout do jiného uzlu (dočasné disky jsou ztraceny). <li>`Preempt`: Odstraňuje se virtuální počítač s nízkou prioritou (dočasné disky jsou ztraceny).|
 | ResourceType | Typ prostředku, který má vliv na tuto událost. <br><br> Hodnoty: <ul><li>`VirtualMachine`|
 | Zdroje a prostředky| Seznam prostředků, které má vliv na tuto událost. V seznamu je zaručeno, že obsahují počítače maximálně jednu [aktualizační doména](manage-availability.md), ale nemusí obsahovat všechny počítače ve skupině UD. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Stav této události. <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánované spuštění po dobu určenou v `NotBefore` vlastnost.<li>`Started`: Tato událost se spustila.</ul> Ne `Completed` nebo podobné stav je stále k dispozici. Vrátí události se už po dokončení události.
@@ -140,6 +143,7 @@ Každé události je naplánovaný minimální množství čas v budoucnosti pod
 | zablokování| 15 minut |
 | Restartování | 15 minut |
 | Opětovné nasazení | 10 minut |
+| Vyřizuje | 30 sekund |
 
 ### <a name="start-an-event"></a>Spustit událost 
 
@@ -158,7 +162,7 @@ Podle následující ukázky JSON se očekává v `POST` text žádosti. Požada
 
 #### <a name="bash-sample"></a>Ukázková prostředí bash
 ```
-curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
+curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
 ```
 
 > [!NOTE] 
@@ -176,7 +180,7 @@ import urllib2
 import socket
 import sys
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01"
 headers = "{Metadata:true}"
 this_host = socket.gethostname()
 

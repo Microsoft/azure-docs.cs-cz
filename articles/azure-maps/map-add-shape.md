@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3023d5d4010108d46424bba284029b58f5fd279c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 7598bbc879351752580247e46bc986ee84fa0d56
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658738"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497240"
 ---
 # <a name="add-a-shape-to-a-map"></a>Přidání obrazce do mapy
 
@@ -119,7 +119,7 @@ A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/at
 Další příklady kódu pro přidání do vaše mapy najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
-> [Přidat vlastního HTML](./map-add-custom-html.md)
+> [HTML Markers](./map-add-custom-html.md)
 
 > [!div class="nextstepaction"]
-> [Zobrazení výsledků hledání](./map-search-location.md)
+> [Přidat vrstvu heat mapy](./map-add-heat-map-layer.md)

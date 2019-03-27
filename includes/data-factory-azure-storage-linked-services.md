@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: f7c189c59b5098ef22491a914a618afda2b5f51e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b8585b62b0728d1ba6e010e42b44840903c46833
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554724"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500861"
 ---
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
 **Propojenou službu Azure Storage** umožňuje propojit účet úložiště Azure do služby Azure data factory pomocí **klíč účtu**, který nabízí služby data factory a globální přístup ke službě Azure Storage. Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro propojenou službu Azure Storage.
@@ -42,8 +42,8 @@ Sdílený přístupový podpis (SAS) poskytuje Delegovaný přístup k prostřed
 > Azure Data Factory podporuje nyní pouze **SAS služby** , ale ne SAS účtu. V tématu [typy z sdílené přístupové podpisy](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures) podrobné informace o těchto dvou typů a jak sestavit. Poznámka: adresa URL SAS generable z webu Azure portal nebo Průzkumníka služby Storage je SAS účtu, který není podporován.
 
 > [!TIP]
-> Spuštěním následujících příkazů prostředí PowerShell k vygenerování SAS služby pro účet úložiště (nahrazení zástupné znaky a udělit příslušná oprávnění): `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
-> `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
+> Spuštěním následujících příkazů prostředí PowerShell k vygenerování SAS služby pro účet úložiště (nahrazení zástupné znaky a udělit příslušná oprávnění): `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 Služby Azure Storage SAS propojené umožňuje propojit účet úložiště Azure do služby Azure data factory pomocí sdílený přístupový podpis (SAS). Poskytuje objekt pro vytváření dat s omezením pomocí specifikátoru/časově omezenou přístup k prostředkům all/konkrétní (objektu blob nebo kontejneru) ve službě storage. Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro SAS úložiště Azure, propojené služby. 
 

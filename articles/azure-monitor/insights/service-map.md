@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 143d14df3019aa0c5c5dd798f656f95c8ebde372
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 2abec4d9d74cf58503dec667080f478b1fec06ff
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731093"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485148"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Pomocí řešení Service Map v Azure
-Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Pomocí mapy služeb, můžete zobrazit vaše servery tak, aby přirozeným způsobem: jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy, příchozí a odchozí připojení čekací doba a požadované porty v jakékoli architektuře propojené TCP, žádnou konfiguraci kromě instalace agenta.
+Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Služba Service Map poskytuje zobrazení vašich serverů tak, jak si je představujete – jako vzájemně propojené systémy, které zajišťují důležité služby. Service Map zobrazuje propojení mezi servery, procesy, latenci příchozích a odchozích připojení a porty napříč libovolnou architekturou propojenou protokolem TCP. Nevyžaduje se přitom žádná konfigurace kromě instalace agenta.
 
 Tento článek popisuje podrobnosti o zařazení do systému a použitím řešení Service Map. Informace o konfiguraci řešení Service Map a připojováním agentů najdete v tématu [řešení Service Map konfigurace v Azure]( service-map-configure.md).
 
@@ -374,50 +374,50 @@ Záznamy typu *ServiceMapComputer_CL* mít data inventáře pro servery s agenty
 
 | Vlastnost | Popis |
 |:--|:--|
-| Type | *ServiceMapComputer_CL* |
-| SourceSystem | *OpsManager* |
-| ResourceId | Jedinečný identifikátor pro počítač v pracovním prostoru |
-| ResourceName_s | Jedinečný identifikátor pro počítač v pracovním prostoru |
-| ComputerName_s | Plně kvalifikovaný název domény počítače |
-| Ipv4Addresses_s | Seznam serveru IPv4 adres |
-| Ipv6Addresses_s | Seznam serveru IPv6 adres |
-| DnsNames_s | Pole názvů DNS |
-| OperatingSystemFamily_s | Windows nebo Linux |
-| OperatingSystemFullName_s | Úplný název operačního systému  |
-| Bitness_s | Bitová verze počítače (32bitová nebo 64bitová verze)  |
-| PhysicalMemory_d | Fyzická paměť v MB |
-| Cpus_d | Počet procesorů |
-| CpuSpeed_d | Rychlost procesoru v MHz|
-| VirtualizationState_s | *Neznámý*, *fyzické*, *virtuální*, *hypervisoru* |
-| VirtualMachineType_s | *Hyper-v*, *vmware*, a tak dále |
-| VirtualMachineNativeMachineId_g | ID virtuálního počítače přiřazené službou jeho hypervisoru |
-| VirtualMachineName_s | Název virtuálního počítače |
-| BootTime_t | Čas spuštění |
+| `Type` | *ServiceMapComputer_CL* |
+| `SourceSystem` | *OpsManager* |
+| `ResourceId` | Jedinečný identifikátor pro počítač v pracovním prostoru |
+| `ResourceName_s` | Jedinečný identifikátor pro počítač v pracovním prostoru |
+| `ComputerName_s` | Plně kvalifikovaný název domény počítače |
+| `Ipv4Addresses_s` | Seznam serveru IPv4 adres |
+| `Ipv6Addresses_s` | Seznam serveru IPv6 adres |
+| `DnsNames_s` | Pole názvů DNS |
+| `OperatingSystemFamily_s` | Windows nebo Linux |
+| `OperatingSystemFullName_s` | Úplný název operačního systému  |
+| `Bitness_s` | Bitová verze počítače (32bitová nebo 64bitová verze)  |
+| `PhysicalMemory_d` | Fyzická paměť v MB |
+| `Cpus_d` | Počet procesorů |
+| `CpuSpeed_d` | Rychlost procesoru v MHz|
+| `VirtualizationState_s` | *Neznámý*, *fyzické*, *virtuální*, *hypervisoru* |
+| `VirtualMachineType_s` | *Hyper-v*, *vmware*, a tak dále |
+| `VirtualMachineNativeMachineId_g` | ID virtuálního počítače přiřazené službou jeho hypervisoru |
+| `VirtualMachineName_s` | Název virtuálního počítače |
+| `BootTime_t` | Čas spuštění |
 
 ### <a name="servicemapprocesscl-type-records"></a>Typ ServiceMapProcess_CL záznamů
 Záznamy typu *ServiceMapProcess_CL* mít data inventáře pro procesy připojené protokolem TCP na serverech s agenty řešení Service Map. Tyto záznamy mají vlastnosti v následující tabulce:
 
 | Vlastnost | Popis |
 |:--|:--|
-| Type | *ServiceMapProcess_CL* |
-| SourceSystem | *OpsManager* |
-| ResourceId | Jedinečný identifikátor procesu v rámci pracovního prostoru |
-| ResourceName_s | Jedinečný identifikátor procesu v počítači, na kterém je spuštěná|
-| MachineResourceName_s | Název prostředku počítače |
-| ExecutableName_s | Název spustitelného souboru procesu |
-| StartTime_t | Čas spuštění procesu fondu |
-| FirstPid_d | První identifikátor PID ve fondu procesů |
-| Description_s | Popis procesu |
-| CompanyName_s | Název společnosti |
-| InternalName_s | Interní název |
-| ProductName_s | Název produktu |
-| ProductVersion_s | Verze produktu |
-| FileVersion_s | Verze souboru |
-| CommandLine_s | Příkazový řádek |
-| ExecutablePath _Malá | Cesta ke spustitelnému souboru |
-| WorkingDirectory_s | Pracovní adresář |
-| Uživatelské jméno | Účet, pod kterým je spuštěn proces |
-| UserDomain | Domény, pod kterým je spuštěn proces |
+| `Type | *ServiceMapProcess_CL* |
+| `SourceSystem` | *OpsManager* |
+| `ResourceId` | Jedinečný identifikátor procesu v rámci pracovního prostoru |
+| `ResourceName_s` | Jedinečný identifikátor procesu v počítači, na kterém je spuštěná|
+| `MachineResourceName_s` | Název prostředku počítače |
+| `ExecutableName_s` | Název spustitelného souboru procesu |
+| `StartTime_t` | Čas spuštění procesu fondu |
+| `FirstPid_d` | První identifikátor PID ve fondu procesů |
+| `Description_s` | Popis procesu |
+| `CompanyName_s` | Název společnosti |
+| `InternalName_s` | Interní název |
+| `ProductName_s` | Název produktu |
+| `ProductVersion_s` | Verze produktu |
+| `FileVersion_s` | Verze souboru |
+| `CommandLine_s` | Příkazový řádek |
+| `ExecutablePath _s` | Cesta ke spustitelnému souboru |
+| `WorkingDirectory_s` | Pracovní adresář |
+| `UserName` | Účet, pod kterým je spuštěn proces |
+| `UserDomain` | Domény, pod kterým je spuštěn proces |
 
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 

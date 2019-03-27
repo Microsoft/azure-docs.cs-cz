@@ -10,12 +10,12 @@ ms.workload: mobile
 ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: jowargo
-ms.openlocfilehash: 8d2b54e65c1409c01a4c38ca8fcdfeca5f031277
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04108c4b5a8ce04b971a0529393ea442cb1cf226
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113329"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480119"
 ---
 # <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Nastavení nabízených oznámení v centru oznámení na webu Azure Portal
 
@@ -29,7 +29,7 @@ Pokud jste ještě nevytvořili centra oznámení, vytvořte teď. Další infor
 
 Chcete-li nastavit nahoru Apple Push Notification Service (APNS):
 
-1. Na webu Azure Portal v **centra oznámení**vyberte **Apple (APNS)**.
+1. Na webu Azure Portal na **centra oznámení** stránce **Apple (APNS)** v levé nabídce.
 
 1. Pro **režim ověřování**, vyberte buď **certifikát** nebo **Token**.
 
@@ -42,7 +42,7 @@ Chcete-li nastavit nahoru Apple Push Notification Service (APNS):
 
    b. Pokud vyberete **Token**:
 
-   * Zadejte hodnoty pro **Id klíče**, **Id sady prostředků**, **Id týmu**, a **Token**.
+   * Zadejte hodnoty pro **ID klíče**, **ID sady prostředků**, **ID týmu**, a **Token**.
    * Vyberte režim **Sandbox**. Nebo k odesílání nabízených oznámení uživatelům, kteří si zakoupili aplikaci z obchodu, vyberte **produkční** režimu.
 
      ![Snímek obrazovky APNS token konfigurace na webu Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
@@ -53,7 +53,7 @@ Další informace najdete v tématu [nabízená oznámení do iOS pomocí Azure 
 
 Nastavení nabízených oznámení pro Google Firebase Cloud Messaging (FCM):
 
-1. Na webu Azure Portal v **centra oznámení**vyberte **Google (GCM/FCM)**. 
+1. Na webu Azure Portal na **centra oznámení** stránce **Google (GCM/FCM)** v levé nabídce. 
 2. Vložit **klíč rozhraní API** FCM projektu, který jste předtím uložili. 
 3. Vyberte **Uložit**. 
 
@@ -67,7 +67,7 @@ Další informace najdete v tématu [nabízená oznámení do zařízení s Andr
 
 Chcete-li nastavit nahoru Windows Push Notification Service (WNS):
 
-1. Na webu Azure Portal v **centra oznámení**vyberte **Windows (WNS)**.
+1. Na webu Azure Portal na **centra oznámení** stránce **Windows (WNS)** v levé nabídce.
 2. Zadejte hodnoty pro **SID balíčku** a **klíč zabezpečení**.
 3. Vyberte **Uložit**.
 
@@ -79,7 +79,7 @@ Informace najdete v tématu [odesílat oznámení do aplikací pro UWP pomocí A
 
 Nastavení pro Windows Phone do Microsoft nabízené služby oznámení (MPNS): 
 
-1. Na webu Azure Portal v **centra oznámení**vyberte **Windows Phone (MPNS)**.
+1. Na webu Azure Portal na **centra oznámení** stránce **Windows Phone (MPNS)** v levé nabídce.
 1. Povolit neověřený nebo ověřený nabízených oznámení:
 
    a. Chcete-li povolit neověřená nabízená oznámení, vyberte **povolit neověřená nabízená oznámení** > **Uložit**.
@@ -99,7 +99,7 @@ Další informace najdete v tématu [nabízená oznámení do aplikací Windows 
 
 Nastavení nabízených oznámení pro zasílání zpráv zařízení Amazon (ADM):
 
-1. Na webu Azure Portal v **centra oznámení**vyberte **Amazon (ADM)**.
+1. Na webu Azure Portal na **centra oznámení** stránce **Amazon (ADM)** v levé nabídce.
 2. Zadejte hodnoty pro **ID klienta** a **tajný kód klienta**.
 3. Vyberte **Uložit**.
     
@@ -111,7 +111,7 @@ Další informace najdete v tématu [Začínáme s Notification Hubs pro aplikac
 
 Nastavení nabízených oznámení Baidu:
 
-1. Na webu Azure Portal v **centra oznámení**vyberte **Baidu (Android China)**. 
+1. Na webu Azure Portal na **centra oznámení** stránce **Baidu (Android China)** v levé nabídce. 
 2. Zadejte **klíč rozhraní Api** , který jste získali z konzoly Baidu v projektu nabízených oznámení cloudu Baidu. 
 3. Zadejte **tajný klíč** , který jste získali z konzoly Baidu v projektu nabízených oznámení cloudu Baidu. 
 4. Vyberte **Uložit**. 

@@ -4,14 +4,14 @@ description: Poskytuje základní informace o známých problémech ve službě 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 03/13/2019
 ms.author: raynew
-ms.openlocfilehash: 2b542cc8202b75c0007686e3f0e0d9fbd1ac28c1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 67c07169b3ff66d99ee52a0e078e0e463a42702e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119169"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482908"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -61,11 +61,11 @@ Pokud nemůžete exportovat sestavu posouzení je z portálu, zkuste použít n�
 
    a.    V okně Správce Windows PowerShell spusťte následující příkaz: ```armclient login```
 
-   Tím se otevře Azure místní přihlášení potřebujete-li přihlásit k Azure.
+        This opens the Azure login pop-up where you need to sign in to Azure.
 
    b.    Ve stejném okně prostředí PowerShell spusťte následující příkaz můžete získat adresu URL ke stažení pro sestavu hodnocení (nahradit níže požádat o parametry identifikátoru URI příslušnými hodnotami ukázkové rozhraní API)
 
-      ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
+       ```armclient POST https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
 
       Ukázka požadavku a výstup:
 
@@ -102,6 +102,9 @@ Můžete přejít na **Essentials** tématu **přehled** stránce projektu k ide
    - Klikněte na soubor > šablony OVF nasazení > přejděte na soubor OVA a dokončit nasazení
 4. Pokud se nasazení stále nedaří, obraťte se na podporu Azure Migrate.
 
+### <a name="unable-to-select-the-azure-cloud-in-the-appliance"></a>Nepovedlo se vybrat Azure cloud v zařízení
+
+Jedná se o známý problém a opravu je dostupná pro problém. Stáhněte si prosím [nejnovější upgradovat bits](https://docs.microsoft.com/azure/migrate/concepts-collector-upgrade#continuous-discovery-upgrade-versions) pro zařízení a aktualizace zařízení použít opravu.
 
 ### <a name="collector-is-not-able-to-connect-to-the-internet"></a>Kolekce není možné se připojit k Internetu
 

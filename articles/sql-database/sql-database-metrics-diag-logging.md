@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: da7dfdb1217e41b7dcb7c7fb6ade55c33488e54b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: c5be8af71fcbdf6f38f878c70180f38227070245
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372603"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499321"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
@@ -88,9 +88,16 @@ Můžete nastavit prostředek elastického fondu pro shromažďování následuj
 | :------------------- | ------------------- |
 | **Elastický fond** | [Všechny metriky](sql-database-metrics-diag-logging.md#all-metrics) obsahuje procento eDTU a využití procesoru, limit eDTU/procesoru, fyzických čtení dat procento, protokolu zapisovat, procento, procento relací, procento pracovních procesů, úložiště, procento úložiště, limit úložiště a XTP úložiště. |
 
+Pokud chcete nakonfigurovat, vysílání datového proudu telemetrická data diagnostiky pro elastických fondů a databází v elastických fondech, budete muset nakonfigurovat samostatně **obě** z následujících akcí:
+
+- Umožňoval vysílání datového proudu telemetrická data diagnostiky pro elastický fond, **a**
+- Umožňoval vysílání datového proudu telemetrická data diagnostiky pro každou databázi v elastickém fondu
+
+Je to proto elastický fond je kontejner databáze pomocí vlastní telemetrická data jsou oddělená od telemetrii jednotlivých databází.
+
 Pokud chcete povolit streamování telemetrická data diagnostiky pro prostředek elastického fondu, postupujte podle těchto kroků:
 
-1. Přejdete k prostředku elastického fondu na webu Azure portal.
+1. Přejděte **elastického fondu** prostředku na webu Azure portal.
 1. Vyberte **nastavení diagnostiky**.
 1. Vyberte **zapnout diagnostiku** Pokud neexistují žádné předchozí nastavení, nebo vyberte **upravit nastavení** upravit předchozí nastavení.
 
@@ -100,9 +107,9 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro prostřede
 1. Vyberte cílový prostředek pro streamování dat diagnostiky: **Archivovat do účtu úložiště**, **Stream do centra událostí**, nebo **odesílat do Log Analytics**.
 1. Ke službě log analytics, vyberte **konfigurovat** a vytvořte nový pracovní prostor tak, že vyberete **+ vytvořit nový pracovní prostor**, nebo vyberte existující pracovní prostor.
 1. Zaškrtněte políčko pro elastický fond diagnostickou telemetrii: **AllMetrics**.
-1. Vyberte **Uložit**.
-
    ![Konfigurovat diagnostiku pro elastické fondy](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
+1. Vyberte **Uložit**.
+1. Kromě toho konfigurace vysílání datového proudu telemetrická data diagnostiky pro každou databázi v rámci elastického fondu, který chcete monitorovat pomocí kroků popsaných v další části.
 
 > [!IMPORTANT]
 > Kromě konfigurace telemetrická data diagnostiky pro elastický fond, můžete také nutné nakonfigurovat telemetrická data diagnostiky pro každou databázi v elastickém fondu, jak je uvedeno níže. 
@@ -111,9 +118,9 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro prostřede
 
    ![Ikona SQL Database](./media/sql-database-metrics-diag-logging/icon-sql-database-text.png)
 
-Povolení streamování telemetrická data diagnostiky pro zadání jedné, klientů ve fondu, nebo instance databáze, postupujte podle těchto kroků:
+Pokud chcete povolit streamování telemetrická data diagnostiky pro jeden, nebo součástí fondu, postupujte takto:
 
-1. Přejdete na prostředek databáze Azure SQL.
+1. Přejděte na Azure **SQL database** prostředků.
 1. Vyberte **nastavení diagnostiky**.
 1. Vyberte **zapnout diagnostiku** Pokud neexistují žádné předchozí nastavení, nebo vyberte **upravit nastavení** upravit předchozí nastavení.
    - Můžete vytvořit až tři paralelní připojení telemetrická data diagnostiky datového proudu.
@@ -124,9 +131,9 @@ Povolení streamování telemetrická data diagnostiky pro zadání jedné, klie
 1. Vyberte cílový prostředek pro streamování dat diagnostiky: **Archivovat do účtu úložiště**, **Stream do centra událostí**, nebo **odesílat do Log Analytics**.
 1. Standard, založený na událostech monitorování prostředí vyberte následující políčka pro databáze telemetrii protokolů diagnostiky: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics**, **chyby** , **DatabaseWaitStatistics**, **vypršení časových limitů**, **bloky**, a **zablokování**.
 1. Monitorování prostředí Upřesnit, na základě jednu minutu, zaškrtněte políčko pro **AllMetrics**.
-1. Vyberte **Uložit**.
-
    ![Konfigurovat diagnostiku pro jeden, ve fondu nebo instanci databáze](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
+1. Vyberte **Uložit**.
+1. Tento postup opakujte pro každou databázi, kterou chcete monitorovat.
 
 > [!NOTE]
 > Protokoly auditu zabezpečení není možné z databáze nastavení diagnostiky. Pokud chcete povolit streamování protokolů auditu, naleznete v tématu [nastavení auditování databáze](sql-database-auditing.md#subheading-2), a [auditování protokoly v protokolech Azure Monitor a Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
@@ -143,9 +150,16 @@ Můžete nastavit shromažďovat následující telemetrická data diagnostiky p
 | :------------------- | ------------------- |
 | **Spravovaná instance** | ResourceUsageStats obsahuje počet virtuálních jader, průměrné procento využití procesoru, vstupně-výstupní požadavky, bajtů načtených/zapsaných, vyhrazený úložný prostor a využitého prostoru úložiště. |
 
+Pokud chcete nakonfigurovat, vysílání datového proudu telemetrická data diagnostiky pro spravovanou instanci a instanci databáze, budete muset nakonfigurovat samostatně **obě** z následujících akcí:
+
+- Umožňoval vysílání datového proudu telemetrická data diagnostiky pro spravovanou instanci **a**
+- Umožňoval vysílání datového proudu telemetrická data diagnostiky pro každou instanci databáze
+
+Je to proto managed instance je kontejner databáze pomocí vlastní telemetrie samostatného z telemetrických dat jednotlivé instance databáze.
+
 Pokud chcete povolit streamování telemetrická data diagnostiky pro prostředek spravované instance, postupujte podle těchto kroků:
 
-1. Přejděte do spravované instance prostředku na webu Azure portal.
+1. Přejděte **spravovanou instanci** prostředku na webu Azure portal.
 1. Vyberte **nastavení diagnostiky**.
 1. Vyberte **zapnout diagnostiku** Pokud neexistují žádné předchozí nastavení, nebo vyberte **upravit nastavení** upravit předchozí nastavení.
 
@@ -155,9 +169,9 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro prostřede
 1. Vyberte cílový prostředek pro streamování dat diagnostiky: **Archivovat do účtu úložiště**, **Stream do centra událostí**, nebo **odesílat do Log Analytics**.
 1. Ke službě log analytics, vyberte **konfigurovat** a vytvořte nový pracovní prostor tak, že vyberete **+ vytvořit nový pracovní prostor**, nebo použijte existující pracovní prostor.
 1. Zaškrtněte políčko pro instanci telemetrická data diagnostiky: **ResourceUsageStats**.
-1. Vyberte **Uložit**.
-
    ![Konfigurovat diagnostiku pro spravovanou instanci](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
+1. Vyberte **Uložit**.
+1. Kromě toho konfigurace vysílání datového proudu telemetrická data diagnostiky pro každou instanci databáze ve spravované instanci, kterou chcete monitorovat pomocí kroků popsaných v další části.
 
 > [!IMPORTANT]
 > Kromě konfigurace telemetrická data diagnostiky pro spravovanou instanci, také musíte nakonfigurovat telemetrická data diagnostiky pro každou databázi instance, jak je uvedeno níže. 
@@ -168,20 +182,20 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro prostřede
 
 Pokud chcete povolit streamování diagnostickou telemetrii pro instanci databáze, postupujte takto:
 
-1. Přejděte do instance databáze spravované instance.
-2. Vyberte **nastavení diagnostiky**.
-3. Vyberte **zapnout diagnostiku** Pokud neexistují žádné předchozí nastavení, nebo vyberte **upravit nastavení** upravit předchozí nastavení.
+1. Přejděte na **instance databáze** prostředků v rámci spravované instance.
+1. Vyberte **nastavení diagnostiky**.
+1. Vyberte **zapnout diagnostiku** Pokud neexistují žádné předchozí nastavení, nebo vyberte **upravit nastavení** upravit předchozí nastavení.
    - Můžete vytvořit až tři (3) paralelní připojení telemetrická data diagnostiky datového proudu.
    - Vyberte **+ přidat nastavení diagnostiky** konfigurace paralelní streamování dat diagnostiky k více prostředkům.
 
    ![Povolit diagnostiku pro instanci databáze](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
-4. Zadejte název nastavení pro vlastní referenci.
-5. Vyberte cílový prostředek pro streamování dat diagnostiky: **Archivovat do účtu úložiště**, **Stream do centra událostí**, nebo **odesílat do Log Analytics**.
-6. Zaškrtněte políčka pro databáze diagnostickou telemetrii: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** a **chyby**.
-7. Vyberte **Uložit**.
-
+1. Zadejte název nastavení pro vlastní referenci.
+1. Vyberte cílový prostředek pro streamování dat diagnostiky: **Archivovat do účtu úložiště**, **Stream do centra událostí**, nebo **odesílat do Log Analytics**.
+1. Zaškrtněte políčka pro databáze diagnostickou telemetrii: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** a **chyby**.
    ![Konfigurovat diagnostiku pro instanci databáze](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+1. Vyberte **Uložit**.
+1. Tento postup opakujte pro každou instanci databáze, kterou chcete monitorovat.
 
 > [!TIP]
 > Tento postup opakujte pro každou instanci databáze, kterou chcete monitorovat.
@@ -388,7 +402,7 @@ Pokud používáte Azure SQL Analytics, můžete monitorovat spotřebu příjem 
 
 ## <a name="metrics-and-logs-available"></a>Metriky a protokoly, které jsou k dispozici
 
-Shromážděné telemetrické monitorování lze použít pro vlastní _vlastní analýza_ a _vývoj aplikací_ pomocí [jazyk SQL Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries).
+Monitorování telemetrických dat, které jsou k dispozici pro službu Azure SQL Database, elastických fondů a spravovaná instance je uvedeno níže. Shromážděné monitorování telemetrických dat do SQL Analytics je možné pro své vlastní analýzy a vývoj aplikace s využitím [dotazů na protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) jazyka.
 
 ## <a name="all-metrics"></a>Všechny metriky
 

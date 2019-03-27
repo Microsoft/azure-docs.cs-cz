@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e8253238bf5edb5e0ea3f89fe67d6aa39f4a2d7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 501c5ffa86f2360e44c187e087f7285bbf4084fd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855451"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482959"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Podporované scénáře pro velké instance HANA
 Tento dokument popisuje podporované scénáře a jejich podrobnosti architektury pro HANA velké instance (HLI).
@@ -68,10 +68,10 @@ Každý server zřízené vybavená předem nakonfigurovaným rozhraním sady ro
 | B | ZADEJTE MI | eth2.tenant | eno3.tenant | Uzel k uzlu |
 | C | ZADEJTE MI | eth1.tenant | eno2.tenant | Uzel úložiště |
 | D | ZADEJTE MI | eth4.tenant | eno4.tenant | VYUŽITÍM TECHNIKY STONITH |
-| A | TYP II | síť VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | síť VLAN < tenantNo + 2 > | team0.tenant + 2 | Uzel k uzlu |
-| C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
-| D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | VYUŽITÍM TECHNIKY STONITH |
+| A | TYP II | síť VLAN\<tenantNo > | team0.tenant | Klient HLI |
+| B | TYP II | síť VLAN\<tenantNo + 2 > | team0.tenant + 2 | Uzel k uzlu |
+| C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
+| D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | VYUŽITÍM TECHNIKY STONITH |
 
 Použijete rozhraní, které jsou založeny na topologii nakonfigurován na jednotce HLI. Rozhraní "B" je třeba nastavit pro komunikace na uzly, což je užitečné, když máte nakonfigurované strukturu horizontální navýšení kapacity. V případě konfigurace vertikálně navýšit kapacitu jednoho uzlu toto rozhraní se nepoužívá. Zkontrolujte požadované scénáře (dále v tomto dokumentu) Chcete-li získat další informace o využití rozhraní. 
 
@@ -101,7 +101,7 @@ V případech nasazení HANA System Replication nebo horizontální navýšení 
 Úložiště je předem nakonfigurován založeny na topologii požadavku. Velikosti svazku a přípojný bod se liší v závislosti na počet serverů, SKU a topologii nakonfigurována. Zkontrolujte požadované scénáře (dále v tomto dokumentu) Chcete-li získat další informace. Pokud je potřeba větší úložiště, můžete ji zakoupit v TB přírůstcích.
 
 >[!NOTE]
->Přípojnýbod/USR/sap/<SID> symbolický odkaz k přípojnému bodu/hana/sdílené.
+>Přípojnýbod/USR/sap/\<SID > je symbolický odkaz k přípojnému bodu/hana/sdílené.
 
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
@@ -142,10 +142,10 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | B | ZADEJTE MI | eth2.tenant | eno3.tenant | Nakonfigurované ale nepoužívá |
 | C | ZADEJTE MI | eth1.tenant | eno2.tenant | Uzel úložiště |
 | D | ZADEJTE MI | eth4.tenant | eno4.tenant | Nakonfigurované ale nepoužívá |
-| A | TYP II | síť VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | síť VLAN < tenantNo + 2 > | team0.tenant + 2 | Nakonfigurované ale nepoužívá |
-| C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
-| D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
+| A | TYP II | síť VLAN\<tenantNo > | team0.tenant | Klient HLI |
+| B | TYP II | síť VLAN\<tenantNo + 2 > | team0.tenant + 2 | Nakonfigurované ale nepoužívá |
+| C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
+| D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
 ### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
@@ -177,10 +177,10 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | B | ZADEJTE MI | eth2.tenant | eno3.tenant | Nakonfigurované ale nepoužívá |
 | C | ZADEJTE MI | eth1.tenant | eno2.tenant | Uzel úložiště |
 | D | ZADEJTE MI | eth4.tenant | eno4.tenant | Nakonfigurované ale nepoužívá |
-| A | TYP II | síť VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | síť VLAN < tenantNo + 2 > | team0.tenant + 2 | Nakonfigurované ale nepoužívá |
-| C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
-| D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
+| A | TYP II | síť VLAN\<tenantNo > | team0.tenant | Klient HLI |
+| B | TYP II | síť VLAN\<tenantNo + 2 > | team0.tenant + 2 | Nakonfigurované ale nepoužívá |
+| C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
+| D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
 ### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
@@ -217,10 +217,10 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | B | ZADEJTE MI | eth2.tenant | eno3.tenant | Nakonfigurované ale nepoužívá |
 | C | ZADEJTE MI | eth1.tenant | eno2.tenant | Uzel úložiště |
 | D | ZADEJTE MI | eth4.tenant | eno4.tenant | Nakonfigurované ale nepoužívá |
-| A | TYP II | síť VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | síť VLAN < tenantNo + 2 > | team0.tenant + 2 | Nakonfigurované ale nepoužívá |
-| C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
-| D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
+| A | TYP II | síť VLAN\<tenantNo > | team0.tenant | Klient HLI |
+| B | TYP II | síť VLAN\<tenantNo + 2 > | team0.tenant + 2 | Nakonfigurované ale nepoužívá |
+| C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
+| D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
 ### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
@@ -258,10 +258,10 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | B | ZADEJTE MI | eth2.tenant | eno3.tenant | Nakonfigurované ale nepoužívá |
 | C | ZADEJTE MI | eth1.tenant | eno2.tenant | Uzel úložiště |
 | D | ZADEJTE MI | eth4.tenant | eno4.tenant | Nakonfigurované ale nepoužívá |
-| A | TYP II | síť VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | síť VLAN < tenantNo + 2 > | team0.tenant + 2 | Nakonfigurované ale nepoužívá |
-| C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
-| D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
+| A | TYP II | síť VLAN\<tenantNo > | team0.tenant | Klient HLI |
+| B | TYP II | síť VLAN\<tenantNo + 2 > | team0.tenant + 2 | Nakonfigurované ale nepoužívá |
+| C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
+| D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
 ### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
@@ -312,10 +312,10 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | B | ZADEJTE MI | eth2.tenant | eno3.tenant | Nakonfigurované ale nepoužívá |
 | C | ZADEJTE MI | eth1.tenant | eno2.tenant | Uzel úložiště |
 | D | ZADEJTE MI | eth4.tenant | eno4.tenant | Používá pro využitím techniky STONITH |
-| A | TYP II | síť VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | síť VLAN < tenantNo + 2 > | team0.tenant + 2 | Nakonfigurované ale nepoužívá |
-| C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
-| D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Používá pro využitím techniky STONITH |
+| A | TYP II | síť VLAN\<tenantNo > | team0.tenant | Klient HLI |
+| B | TYP II | síť VLAN\<tenantNo + 2 > | team0.tenant + 2 | Nakonfigurované ale nepoužívá |
+| C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
+| D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Používá pro využitím techniky STONITH |
 
 ### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
@@ -360,10 +360,10 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | B | ZADEJTE MI | eth2.tenant | eno3.tenant | Nakonfigurované ale nepoužívá |
 | C | ZADEJTE MI | eth1.tenant | eno2.tenant | Uzel úložiště |
 | D | ZADEJTE MI | eth4.tenant | eno4.tenant | Používá pro využitím techniky STONITH |
-| A | TYP II | síť VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | síť VLAN < tenantNo + 2 > | team0.tenant + 2 | Nakonfigurované ale nepoužívá |
-| C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
-| D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Používá pro využitím techniky STONITH |
+| A | TYP II | síť VLAN\<tenantNo > | team0.tenant | Klient HLI |
+| B | TYP II | síť VLAN\<tenantNo + 2 > | team0.tenant + 2 | Nakonfigurované ale nepoužívá |
+| C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
+| D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Používá pro využitím techniky STONITH |
 
 ### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
@@ -419,10 +419,10 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | B | ZADEJTE MI | eth2.tenant | eno3.tenant | Uzel má uzel komunikace |
 | C | ZADEJTE MI | eth1.tenant | eno2.tenant | Uzel úložiště |
 | D | ZADEJTE MI | eth4.tenant | eno4.tenant | Nakonfigurované ale nepoužívá |
-| A | TYP II | síť VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | síť VLAN < tenantNo + 2 > | team0.tenant + 2 | Uzel má uzel komunikace |
-| C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
-| D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
+| A | TYP II | síť VLAN\<tenantNo > | team0.tenant | Klient HLI |
+| B | TYP II | síť VLAN\<tenantNo + 2 > | team0.tenant + 2 | Uzel má uzel komunikace |
+| C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
+| D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
 ### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
@@ -460,10 +460,10 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | B | ZADEJTE MI | eth2.tenant | eno3.tenant | Uzel má uzel komunikace |
 | C | ZADEJTE MI | eth1.tenant | eno2.tenant | Uzel úložiště |
 | D | ZADEJTE MI | eth4.tenant | eno4.tenant | Nakonfigurované ale nepoužívá |
-| A | TYP II | síť VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | síť VLAN < tenantNo + 2 > | team0.tenant + 2 | Uzel má uzel komunikace |
-| C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
-| D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
+| A | TYP II | síť VLAN\<tenantNo > | team0.tenant | Klient HLI |
+| B | TYP II | síť VLAN\<tenantNo + 2 > | team0.tenant + 2 | Uzel má uzel komunikace |
+| C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
+| D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
 ### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
@@ -496,10 +496,10 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | B | ZADEJTE MI | eth2.tenant | eno3.tenant | Uzel má uzel komunikace |
 | C | ZADEJTE MI | eth1.tenant | eno2.tenant | Uzel úložiště |
 | D | ZADEJTE MI | eth4.tenant | eno4.tenant | Nakonfigurované ale nepoužívá |
-| A | TYP II | síť VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | síť VLAN < tenantNo + 2 > | team0.tenant + 2 | Uzel má uzel komunikace |
-| C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
-| D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
+| A | TYP II | síť VLAN\<tenantNo > | team0.tenant | Klient HLI |
+| B | TYP II | síť VLAN\<tenantNo + 2 > | team0.tenant + 2 | Uzel má uzel komunikace |
+| C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
+| D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
 ### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
@@ -535,10 +535,10 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | B | ZADEJTE MI | eth2.tenant | eno3.tenant | Uzel má uzel komunikace |
 | C | ZADEJTE MI | eth1.tenant | eno2.tenant | Uzel úložiště |
 | D | ZADEJTE MI | eth4.tenant | eno4.tenant | Nakonfigurované ale nepoužívá |
-| A | TYP II | síť VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | síť VLAN < tenantNo + 2 > | team0.tenant + 2 | Uzel má uzel komunikace |
-| C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
-| D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
+| A | TYP II | síť VLAN\<tenantNo > | team0.tenant | Klient HLI |
+| B | TYP II | síť VLAN\<tenantNo + 2 > | team0.tenant + 2 | Uzel má uzel komunikace |
+| C | TYP II | síť VLAN\<tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
+| D | TYP II | síť VLAN\<tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
 ### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:

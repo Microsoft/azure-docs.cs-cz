@@ -8,20 +8,15 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: 5328173090bce3e3adf51a1503e18c8da5532b0e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b6009471048232b52020e4bef6272ed8cb1bd35b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310894"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497750"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archivace protokolu aktivit Azure
 V tomto článku vám ukážeme, jak pomocí webu Azure portal, rutin Powershellu nebo CLI pro různé platformy pro archivaci vaše [ **protokolu aktivit Azure** ](../../azure-monitor/platform/activity-logs-overview.md) v účtu úložiště. Tato možnost je užitečná, pokud byste chtěli zachovat váš protokol aktivit déle než 90 dnů (s úplnou kontrolou nad zásady uchovávání informací) pro audit, statické analýzy nebo pro zálohování. Pokud potřebujete události uchovávat po 90 dní nebo méně nepotřebujete nastavit archivaci do účtu úložiště, protože události protokolu aktivit se zachovají na platformě Azure po dobu 90 dnů bez povolení archivace.
-
-> [!WARNING]
-> 1. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md). 
->
-> 
 
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, budete muset [vytvořit účet úložiště](../../storage/common/storage-quickstart-create-account.md) ke kterému je možné protokol aktivit můžete archivovat. Důrazně doporučujeme, že nepoužíváte existující účet úložiště, který obsahuje jiné, než monitorování data uložená v něm může lépe řídit přístup k datům monitorování. Ale pokud jsou také archivace diagnostických protokolů a metrik na účet úložiště, může mít smysl použít tento účet úložiště pro váš protokol aktivit také zajistit všechna data monitorování v centrálním umístění. Účet úložiště nemusí být ve stejném předplatném jako předplatné, které vysílá protokoly za předpokladu, že uživatel, který konfiguruje nastavení má odpovídající přístup RBAC k oběma předplatným.
@@ -65,7 +60,7 @@ Archivace protokolu aktivit některou z níže uvedených metod, že nastavíte 
 | --- | --- | --- |
 | StorageAccountId |Ano |ID prostředku účtu úložiště, ke kterému má být uložen protokolů aktivit. |
 | Umístění |Ano |Čárkami oddělený seznam oblasti, pro které chcete shromažďovat události protokolu aktivit. Můžete zobrazit seznam všech oblastí pro vaše předplatné pomocí `(Get-AzLocation).Location`. |
-| RetentionInDays |Ne |Počet dní pro události, které by měla být zachována, od 1 do 2147483647. Hodnota nula ukládá protokoly po neomezenou dobu (trvale). |
+| RetentionInDays |Ne |Počet dní pro události, které by měla být zachována, od 1 do 365. Hodnota nula ukládá protokoly po neomezenou dobu (trvale). |
 | Kategorie |Ne |Čárkami oddělený seznam kategorie událostí, které se mají shromažďovat. Možné hodnoty jsou Write, Delete a akce.  Pokud se nezadá, pak všechny možné hodnoty jsou považovány za |
 
 ## <a name="archive-the-activity-log-via-cli"></a>Archivace protokolu aktivit prostřednictvím rozhraní příkazového řádku
@@ -79,7 +74,7 @@ Archivace protokolu aktivit některou z níže uvedených metod, že nastavíte 
 | jméno |Ano |Název profilu protokolu. |
 | storage-account-id |Ano |ID prostředku účtu úložiště, ke kterému má být uložen protokolů aktivit. |
 | umístění |Ano |Místo oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Můžete zobrazit seznam všech oblastí pro vaše předplatné pomocí `az account list-locations --query [].name`. |
-| dny |Ano |Počet dní pro události, které by měla být zachována, od 1 do 2147483647. Hodnota nula bude po neomezenou dobu ukládání protokolů (trvale).  Pokud nula, povolené parametr by měl být nastavte na hodnotu true. |
+| dny |Ano |Počet dní pro události, které by měla být zachována, od 1 do 365. Hodnota nula bude po neomezenou dobu ukládání protokolů (trvale).  Pokud nula, povolené parametr by měl být nastavte na hodnotu true. |
 |povoleno | Ano |True nebo False.  Umožňuje povolit nebo zakázat zásady uchovávání informací.  Pokud je hodnota True, musí být parametr dní hodnotu větší než 0.
 | categories |Ano |Místo oddělený seznam kategorie událostí, které se mají shromažďovat. Možné hodnoty jsou Write, Delete a akce. |
 

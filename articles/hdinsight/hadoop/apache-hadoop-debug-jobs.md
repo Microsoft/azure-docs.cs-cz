@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 4d3d45434a90e89e011bf8aa7c3fd37909e25386
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: a035789af08aa4c0d877a06295d9bd6fdedf6844
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203060"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449490"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>Analýza protokolů Apache Hadoopu
 
@@ -315,6 +315,5 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 
 ## <a name="next-steps"></a>Další postup
 
-* [Použití zobrazení Apache Ambari k ladění úloh Tez Apache v HDInsight](../hdinsight-debug-ambari-tez-view.md)
 * [Povolení výpisů paměti haldy pro služby Apache Hadoop v HDInsight se systémem Linux](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](../hdinsight-hadoop-manage-ambari.md)

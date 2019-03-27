@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 8bee1c3b5863cfe8b4b2e50a927b0eb15576f02f
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: f0a1184daa41a30bb0c47764a3a47af68a6a9251
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248679"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58442808"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell"></a>Vytvoření virtuálního počítače s použitím existujícího spravovaného disku s operačním systémem pomocí PowerShellu
 
@@ -60,7 +60,7 @@ Tento skript k získání vlastností spravovaného disku, připojení spravovan
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Vytvoří virtuální počítač. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 
-Image z marketplace použít [Set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan?view=azurermps-6.7.0) nastavit informace o plánu.
+Image z marketplace použít [Set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan) nastavit informace o plánu.
 
 ```powershell
 Set-AzVMPlan -VM $VirtualMachine -Publisher $Publisher -Product $Product -Name $Bame

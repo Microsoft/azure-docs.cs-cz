@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: fce3c2975e4b82583aa09a3862f704f05a363828
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a10b4d7fac29a6b016b5660b0430d042f2443fbd
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210590"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498073"
 ---
 # <a name="service-bus-faq"></a>Nejčastější dotazy k Service Bus
 
@@ -55,7 +55,7 @@ Následující vlastnosti frontu a téma jsou neměnné. Při zřizování entit
 ## <a name="pricing"></a>Ceny
 Tato část odpovídá na některé časté otázky ke správě služby Service Bus Cenová struktura.
 
-[Služby Service Bus, ceny a fakturace](service-bus-pricing-billing.md) článku vysvětluje měřiče ve službě Service Bus. Konkrétní informace o možnostech cen Service Bus najdete v tématu [podrobnosti o cenách služby Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
+[Služby Service Bus, ceny a fakturace](https://azure.microsoft.com/pricing/details/service-bus/) článku vysvětluje měřiče ve službě Service Bus. Konkrétní informace o možnostech cen Service Bus najdete v tématu [podrobnosti o cenách služby Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
 
 Můžete také navštívit [nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/) obecné informace o cenách Azure. 
 

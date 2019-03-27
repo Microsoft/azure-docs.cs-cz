@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: bc4896f634bb98b4663dfc3fbc6bad7ba9bace3e
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.openlocfilehash: 5a4426b665c58dd2c0bf7f5b5b41ebfca158e782
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319647"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444721"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Pomocí webu Azure portal pro přístup k datům objektu blob nebo fronty
 
@@ -43,7 +43,7 @@ Pro přístup k datům objektu blob nebo fronty na webu Azure Portal pomocí sv�
 - Jste byli přiřazeni Azure Resource Manageru [čtečky](../../role-based-access-control/built-in-roles.md#reader) role minimálně s vymezeným oborem úroveň účtu úložiště nebo vyšší. **Čtečky** role uděluje oprávnění nejvíce s omezeným přístupem, ale jiné role Azure Resource Manageru, který uděluje přístup k prostředkům správy účtu úložiště je také přijatelné.
 - Jste byli přiřazeni buď vestavěná nebo vlastní roli, která poskytuje přístup k objektům BLOB nebo fronty data.
 
-**Čtečky** přiřazení role nebo jiné přiřazení role Azure Resource Manageru je nutné, aby uživatel můžete zobrazit a procházet prostředky správy účtu úložiště na webu Azure Portal. Role RBAC, které udělují přístup k datům objektu blob nebo fronty bez možnosti udělovat přístup k prostředkům správy účtu úložiště. Uživatel pro přístup k datům objektu blob nebo fronty na portálu, potřebuje oprávnění k procházení prostředků účtu úložiště. Další informace o tomto požadavku najdete v tématu [přiřadit role Čtenář pro přístup k portálu](../common/storage-auth-aad-rbac.md#assign-the-reader-role-for-portal-access).
+**Čtečky** přiřazení role nebo jiné přiřazení role Azure Resource Manageru je nutné, aby uživatel můžete zobrazit a procházet prostředky správy účtu úložiště na webu Azure Portal. Role RBAC, které udělují přístup k datům objektu blob nebo fronty bez možnosti udělovat přístup k prostředkům správy účtu úložiště. Uživatel pro přístup k datům objektu blob nebo fronty na portálu, potřebuje oprávnění k procházení prostředků účtu úložiště. Další informace o tomto požadavku najdete v tématu [přiřadit role Čtenář pro přístup k portálu](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access).
 
 Předdefinované role, které podporují přístup k datům objektu blob nebo fronty patří:
 
@@ -96,5 +96,7 @@ Všimněte si, že se žádné objekty BLOB se zobrazí v seznamu, pokud nemáte
 
 ## <a name="next-steps"></a>Další postup
 
-- [Ověření přístupu k objektům BLOB Azure a fronty pomocí Azure Active Directory (Preview)](storage-auth-aad.md)
-- [Udělení přístupu k kontejnery služby Azure a fronty pomocí RBAC na webu Azure Portal (preview)](storage-auth-aad-rbac.md)
+- [Ověření přístupu k objektům BLOB Azure a fronty pomocí Azure Active Directory](storage-auth-aad.md)
+- [Udělení přístupu k kontejnery služby Azure a fronty pomocí RBAC na webu Azure Portal](storage-auth-aad-rbac-portal.md)
+- [Udělení přístupu k Azure data objektů blob a fronty pomocí RBAC pomocí rozhraní příkazového řádku Azure](storage-auth-aad-rbac-cli.md)
+- [Udělení přístupu k Azure data objektů blob a fronty pomocí RBAC pomocí Powershellu](storage-auth-aad-rbac-powershell.md)

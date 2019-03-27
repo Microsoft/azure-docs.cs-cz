@@ -9,12 +9,12 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
 ms.date: 02/09/2019
-ms.openlocfilehash: 2ac60287c9d92ab6230e1dd6777504036e54492d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e77556ac0d6f64797906c0f3b4181f147b1668e2
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244670"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448409"
 ---
 # <a name="azure-sql-data-warehouse-release-notes-and-documentation-updates"></a>Poznámky k verzi Azure SQL Data Warehouse a aktualizace dokumentace
 
@@ -22,9 +22,10 @@ Azure SQL Data Warehouse (datový Sklad SQL) je cloudové podnikového datového
 
 Kliknutím na odkazy níže a zjistěte další informace o nové funkce a vylepšení, které můžete očekávat v nejnovější verzi služby Azure SQL Data Warehouse. Můžete očekávat pro příjem těchto aktualizací služby během vašeho plánu údržby identifikovaní.
 
-- [SQL Data Warehouse verze 10.0.10106.0 (leden)](./release-notes-10-0-10106-0.md)
-- [Prosince 2018](./release-notes-december-2018.md)
-- [. Října 2018](./release-notes-october-2018.md)
+- [2019. března](./release-notes-10-0-10106-0.md#march-2019)
+- [2019. ledna](./release-notes-10-0-10106-0.md#january-2019)
+- [Prosince 2018](./release-notes-10-0-10106-0.md#december-2018)
+- [. Října 2018](./release-notes-10-0-10106-0.md#october-2018)
 - [. Září 2018](./release-notes-september-2018.md)
 - [. Srpna 2018](./release-notes-august-2018.md)
 - [. Července 2018](./release-notes-july-2018.md)
@@ -39,9 +40,9 @@ Pro potvrzení, které vydání bylo podle byla použita k vašemu datovému skl
 SELECT @@VERSION AS 'SQL Data Warehouse';
 ```
 
-Příklad výstupu: ![Verze SQL Data Warehouse](./media/release-notes/dw-version.png)
+Příklad výstupu: ![Verze SQL Data Warehouse](./media/release-notes/sql_data_warehouse_version.png)
 
-Použijte prosím verzi identifikovat pro potvrzení, které verze se nastavily pro Azure SQL Data Warehouse. 
+Použijte prosím datum identifikovat pro potvrzení, které verze se nastavily pro Azure SQL Data Warehouse. 
 
 
 ## <a name="next-steps"></a>Další postup

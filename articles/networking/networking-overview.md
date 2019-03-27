@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: c37e2357038e4f711b015fda80a0de8c4dbd9498
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 02db9f2b8cb2ec71d23ad077b90eeacb905d2a16
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880921"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445639"
 ---
 # <a name="azure-networking"></a>Sítě Azure
 
@@ -34,7 +34,7 @@ Azure nabízí širokou škálu možností sítě, které lze použít společn�
 - [Možnosti správy](#manageability): Monitorování a Správa síťových prostředků Azure.
 - [Nasazení a konfigurace nástroje](#tools): Webový portál nebo nástrojů příkazového řádku pro různé platformy použijte k nasazení a konfiguraci síťových prostředků.
 
-## <a name="Connectivity"></a>Připojení mezi prostředky Azure
+## <a name="connectivity"></a>Připojení mezi prostředky Azure
 
 Prostředky Azure, jako jsou Virtual Machines, Cloud Services, Škálovací sady virtuálních počítačů a Azure App Service Environment může komunikovat soukromě mezi sebou prostřednictvím služby Azure Virtual Network (VNet). Virtuální síť je logickou izolaci cloudu Azure, které jsou vyhrazené pro váš [předplatné](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fnetworking%2ftoc.json). Můžete implementovat několik virtuálních sítí v každém předplatném Azure a Azure [oblasti](https://azure.microsoft.com/regions). Každá virtuální síť je izolovaná od jiných virtuálních sítí. Pro každou virtuální síť můžete:
 
@@ -150,7 +150,7 @@ Azure poskytuje následující nástroje pro monitorování a Správa sítě:
 Můžete nasadit a nakonfigurovat síťovými prostředky Azure s žádným z následujících nástrojů:
 
 - **Azure portal:** Grafické uživatelské rozhraní, na kterém běží v prohlížeči. Otevřete web [Azure Portal](https://portal.azure.com).
-- **Azure PowerShell:** Nástroje příkazového řádku pro správu Azure z počítačů s Windows. Další informace o Azure Powershellu najdete [Přehled prostředí Azure PowerShell](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json) článku.
+- **Azure PowerShell:** Nástroje příkazového řádku pro správu Azure z počítačů s Windows. Další informace o Azure Powershellu najdete [Přehled prostředí Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fnetworking%2ftoc.json) článku.
 - **Rozhraní příkazového řádku Azure (CLI):** Nástroje příkazového řádku pro správu Azure z počítačů systému Linux, macOS nebo Windows. Další informace o rozhraní příkazového řádku Azure pro čtení [přehled Azure CLI](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json) článku.
 - **Šablony Azure Resource Manageru:** Soubor (ve formátu JSON), která definuje infrastrukturu a konfiguraci řešení Azure. Pomocí šablony můžete řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně. Další informace o vytváření šablon najdete v článku [osvědčené postupy pro vytváření šablon](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json) článku. Šablony můžete nasadit pomocí webu Azure portal, rozhraní příkazového řádku nebo Powershellu. Začínáme se šablonami hned, nasaďte jednu z mnoha předem nakonfigurovaných šablon v [šablony pro rychlý start Azure](https://azure.microsoft.com/resources/templates/?term=network) knihovny. 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.subservice: ''
-ms.openlocfilehash: 12c0ee08435ca4b3077bc3a8c28b217ebaf70e08
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f47e9fd8842f9884ced290385e5f647fac57bc13
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993326"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484978"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure návod monitorování rozhraní REST API
 
@@ -31,7 +31,7 @@ Prvním krokem je ověřit žádost.
 
 Všechny úkoly pro rozhraní API služby Azure Monitor použít model ověřování Azure Resource Manageru. Proto všechny požadavky musí být ověřené na Azure Active Directory (Azure AD). Jedním z přístupů k ověřování klientskou aplikaci je k vytvoření instančního objektu služby Azure AD a získat token ověřování (JWT). Následující ukázkový skript ukazuje vytvoření služby Azure AD instančního objektu pomocí Powershellu. Podrobnější návod, jak, naleznete v dokumentaci na [pomocí prostředí Azure PowerShell k vytvoření instančního objektu pro přístup k prostředkům](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps). Je také možné [vytvoření instančního objektu pomocí webu Azure portal](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-```PowerShell
+```powershell
 $subscriptionId = "{azure-subscription-id}"
 $resourceGroupName = "{resource-group-name}"
 
@@ -60,7 +60,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader `
 
 Dotaz rozhraní API služby Azure Monitor, klientská aplikace k ověření používala dříve vytvořený instanční objekt. Skript prostředí PowerShell následující příklad ukazuje jednu přístup, pomocí [Active Directory Authentication Library](../../active-directory/develop/active-directory-authentication-libraries.md) (ADAL) k získání ověřovacího tokenu JWT. JWT token je předán jako součást parametrem HTTP autorizace v požadavku REST API služby Azure Monitor.
 
-```PowerShell
+```powershell
 $azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
 
 $subscription = Get-AzSubscription -SubscriptionId $subscriptionId
@@ -102,7 +102,7 @@ Použití [definice metrik Azure monitoru rozhraní REST API](https://docs.micro
 
 Například pokud chcete načíst definice metrik pro účet služby Azure Storage, žádost by vypadat takto:
 
-```PowerShell
+```powershell
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metricDefinitions?api-version=2018-01-01"
 
 Invoke-RestMethod -Uri $request `
@@ -246,7 +246,7 @@ Použijte název tuto metriku 'value' (ne "localizedValue") pro všechny požada
 
 Například chcete-li načíst seznam hodnot dimenzí, které byly vygenerován pro název rozhraní API dimenzi metriky "Transakcí", kde dimenze GeoType = 'Primární' během zadaného časového rozsahu, žádost by měl vypadat takto:
 
-```PowerShell
+```powershell
 $filter = "APIName eq '*' and GeoType eq 'Primary'"
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T00:00:00Z/2018-03-02T00:00:00Z&resultType=metadata&`$filter=${filter}&api-version=2018-01-01"
 Invoke-RestMethod -Uri $request `
@@ -319,7 +319,7 @@ Použijte název tuto metriku 'value' (ne "localizedValue") pro všechny požada
 
 Například načíst první 3 rozhraní API, sestupně podle hodnoty podle počtu "Transakcí" během 5 minut rozsah, kterých se spustil GeotType 'Primární', žádost by měl vypadat takto:
 
-```PowerShell
+```powershell
 $filter = "APIName eq '*' and GeoType eq 'Primary'"
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T02:00:00Z/2018-03-01T02:05:00Z&`$filter=${filter}&interval=PT1M&aggregation=Total&top=3&orderby=Total desc&api-version=2018-01-01"
 Invoke-RestMethod -Uri $request `
@@ -398,7 +398,7 @@ Použití [definice metrik Azure monitoru rozhraní REST API](https://msdn.micro
 
 Například pokud chcete načíst definice metrik pro aplikaci logiky Azure, žádost by vypadat takto:
 
-```PowerShell
+```powershell
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricDefinitions?api-version=2016-03-01"
 
 Invoke-RestMethod -Uri $request `
@@ -471,7 +471,7 @@ Jakmile je k dispozici definice metriky jsou známé, je pak možné načíst so
 
 Například pokud chcete načíst data metriky body RunsSucceeded pro dané časové rozmezí a pro časový interval 1 hodina, žádost by měl vypadat takto:
 
-```PowerShell
+```powershell
 $filter = "(name.value eq 'RunsSucceeded') and aggregationType eq 'Total' and startTime eq 2017-08-18T19:00:00 and endTime eq 2017-08-18T23:00:00 and timeGrain eq duration'PT1H'"
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metrics?`$filter=${filter}&api-version=2016-09-01"
 Invoke-RestMethod -Uri $request `
@@ -519,7 +519,7 @@ Výsledný text JSON odpovědi bude podobně jako v následujícím příkladu:
 
 K načtení více bodů dat nebo agregace, přidáte definice metriky názvy a typy agregace do filtru, jak je znázorněno v následujícím příkladu:
 
-```PowerShell
+```powershell
 $filter = "(name.value eq 'ActionsCompleted' or name.value eq 'RunsSucceeded') and (aggregationType eq 'Total' or aggregationType eq 'Average') and startTime eq 2017-08-18T21:00:00 and endTime eq 2017-08-18T21:30:00 and timeGrain eq duration'PT1M'"
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metrics?`$filter=${filter}&api-version=2016-09-01"
 Invoke-RestMethod -Uri $request `
@@ -631,7 +631,7 @@ ID prostředku lze také získat z webu Azure portal. Uděláte to tak, přejdě
 
 ID prostředku se dá načíst pomocí rutin Powershellu pro Azure i. Třeba získat ID prostředku pro aplikaci logiky Azure, spusťte rutinu Get-AzureLogicApp, jako v následujícím příkladu:
 
-```PowerShell
+```powershell
 Get-AzLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
 ```
 
@@ -710,7 +710,7 @@ Výsledek by měl vypadat přibližně jako v následujícím příkladu:
 
 Kromě definice metrik a souvisejících hodnot je také možné načíst další zajímavé informace související s prostředky Azure pomocí REST API služby Azure Monitor. Jako příklad, je možné dotazu [protokolu aktivit](https://msdn.microsoft.com/library/azure/dn931934.aspx) data. Následující příklad ukazuje použití REST API služby Azure Monitor k dotazu data protokolu aktivit v určité datum rozsahu pro předplatné Azure:
 
-```PowerShell
+```powershell
 $apiVersion = "2015-04-01"
 $filter = "eventTimestamp ge '2017-08-18' and eventTimestamp le '2017-08-19'and eventChannels eq 'Admin, Operation'"
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/microsoft.insights/eventtypes/management/values?api-version=${apiVersion}&`$filter=${filter}"

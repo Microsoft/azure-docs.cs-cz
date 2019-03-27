@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 051c9cb0c6c1af121a1bdd1f553ef124f980b49d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d17d7c9d7b57e6ca040e4f81c9665789c8bc26e2
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977147"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483246"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Přehled služby Azure agenta virtuálního počítače
 Agent virtuálního počítače Microsoft Azure (VM Agent) je zabezpečeného a nenáročného proces, který spravuje interakci virtuálních počítačů (VM) s Kontrolerem prostředků infrastruktury Azure. Agent virtuálního počítače má primární roli při povolování a spouštění rozšíření virtuálního počítače Azure. Rozšíření virtuálních počítačů povolit konfiguraci po nasazení virtuálního počítače, jako je například instalací a konfigurací softwaru. Rozšíření virtuálních počítačů povolit také funkce pro obnovení, jako je resetování hesla pro správu virtuálního počítače. Rozšíření virtuálních počítačů nelze spustit bez agenta virtuálního počítače Azure.
@@ -80,7 +80,7 @@ Get-AzVM
 
 Následujícímu zhuštěnému příkladu výstup ukazuje *ProvisionVMAgent* vlastnost vnořit do *OSProfile*. Tuto vlastnost lze použít k určení, pokud agent virtuálního počítače byla nasazena do virtuálního počítače:
 
-```PowerShell
+```powershell
 OSProfile                  :
   ComputerName             : myVM
   AdminUsername            : myUserName
@@ -91,7 +91,7 @@ OSProfile                  :
 
 Tento skript je možné se seznam stručné názvy virtuálních počítačů a stav agenta virtuálního počítače:
 
-```PowerShell
+```powershell
 $vms = Get-AzVM
 
 foreach ($vm in $vms) {

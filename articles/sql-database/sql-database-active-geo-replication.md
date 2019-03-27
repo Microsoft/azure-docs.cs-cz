@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: cb83f0c38f6860340444c15b6c5eef0b990d0ad0
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.date: 03/26/2019
+ms.openlocfilehash: ca53f4bfa80d6fdead24dc7d562c2240bb3fa86d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295245"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498481"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Vytváření a používání aktivní geografické replikace
 
@@ -75,8 +75,11 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
   Aplikace můžete přistupovat k sekundární databáze pro operace jen pro čtení pomocí objektů stejného nebo jiného zabezpečení použít pro přístup k primární databáze. Sekundární databáze, pracují v režimu izolace snímku zajistit replikaci aktualizací primární (protokol opětovného přehrání) není opožděná. dotazy se prováděné na sekundární.
 
-  > [!NOTE]
-  > Protokol opětovného přehrání je zpožděno v sekundární databázi, pokud nejsou aktualizace schématu na primárním. Druhá možnost vyžaduje schéma zámek na sekundární databázi.
+> [!NOTE]
+> Protokol opětovného přehrání je zpožděno v sekundární databázi, pokud nejsou aktualizace schématu na primárním. Druhá možnost vyžaduje schéma zámek na sekundární databázi.
+> [!IMPORTANT]
+> Geografická replikace můžete použít k vytvoření sekundární databáze ve stejné oblasti jako primární. Tato sekundární – nástroj pro vyrovnávání zatížení jen pro čtení úlohám, které můžete použít ve stejné oblasti. Sekundární databáze ve stejné oblasti, ale neposkytuje další odolnosti a proto není cílem vhodný převzetí služeb při selhání pro zotavení po havárii. Také nezaručuje avaialability zóny izolace. Použijte pro důležité obchodní informace nebo úrovně Premium s [redundantní konfigurace](sql-database-high-availability.md#zone-redundant-configuration) dosáhnout izolace avaialability zóny.   
+>
 
 - **Plánované převzetí služeb při selhání**
 

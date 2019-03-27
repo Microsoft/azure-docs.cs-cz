@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database zjišťování a klasifikace dat | Dokumentace Microsoftu
-description: Azure SQL Database zjišťování a klasifikace dat
+title: Azure SQL Database a SQL Data Warehouse zjišťování a klasifikace dat | Dokumentace Microsoftu
+description: Azure SQL Database a data zjišťování a klasifikace
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,15 +11,15 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: ac52d8fa03c3c3ad1d618d014381fadfa752b7d7
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 03/22/2019
+ms.openlocfilehash: 74bd3af3e1ffd126f8cb4f2347e4566cc4708e25
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202975"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58495982"
 ---
-# <a name="azure-sql-database-data-discovery--classification"></a>Azure SQL Database zjišťování a klasifikace dat
+# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL Database a SQL Data Warehouse zjišťování a klasifikace dat
 
 Data zjišťování a klasifikace (aktuálně ve verzi preview) nabízí rozšířené možnosti, které jsou integrované do Azure SQL Database pro **zjišťování**, **klasifikace**, **označování**  &  **ochrana** citlivá data ve vašich databázích.
 Zjišťování a klasifikace nejcitlivější data (obchodní finanční, zdravotní péče, identifikovatelné osobní údaje (PII) a atd.) můžete přehrát velmi důležitou roli v zásadní roli. ochrany vaší organizace. Může sloužit jako infrastruktura pro:
@@ -28,10 +28,10 @@ Zjišťování a klasifikace nejcitlivější data (obchodní finanční, zdravo
 - Různé scénáře zabezpečení, jako je například monitorování (auditování) a upozorňuje na neobvyklé přístup k citlivým datům.
 - Řízení přístupu k a posílení zabezpečení databáze, které obsahují hodně citlivá data.
 
-Zjišťování a klasifikace dat je součástí [rozšířené zabezpečení dat](sql-database-advanced-data-security.md) (reklamy) nabídky, která je jednotný balíček pro pokročilé funkce zabezpečení SQL. zjišťování a klasifikace dat je možné získat přístup a spravovat prostřednictvím portálu pro centrální SQL reklamy.
+Zjišťování a klasifikace dat je součástí [pokročilé zabezpečení dat](sql-database-advanced-data-security.md) (reklamy) nabídky, která je jednotný balíček pro pokročilé funkce zabezpečení SQL. zjišťování a klasifikace dat je možné získat přístup a spravovat prostřednictvím portálu pro centrální SQL reklamy.
 
 > [!NOTE]
-> Tento dokument se týká pouze ke službě Azure SQL Database. SQL Server (v místním prostředí), najdete v části [SQL Data zjišťování a klasifikace](https://go.microsoft.com/fwlink/?linkid=866999).
+> Tento dokument se týká k Azure SQL Database a Azure SQL Data Warehouse. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. SQL Server (v místním prostředí), najdete v části [SQL Data zjišťování a klasifikace](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a id="subheading-1"></a>Co je zjišťování a klasifikace dat
 

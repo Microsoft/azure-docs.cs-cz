@@ -10,14 +10,22 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3ce40c2e0726094113253258d3b3f0bf6d876f6f
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 1387dc5bb2cabf9a3078474564aadc81b28fd9a7
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452631"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443629"
 ---
-# <a name="tutorial-enable-web-application-firewall-using-the-azure-cli"></a>Kurz: Povolení firewallu webových aplikací pomocí Azure CLI
+# <a name="enable-web-application-firewall-using-the-azure-cli"></a>Povolení firewallu webových aplikací pomocí Azure CLI
+
+> [!div class="op_single_selector"]
+>
+> - [Azure Portal](application-gateway-web-application-firewall-portal.md)
+> - [PowerShell](tutorial-restrict-web-traffic-powershell.md)
+> - [Azure CLI](tutorial-restrict-web-traffic-cli.md)
+>
+> 
 
 K omezení provozu [aplikační brány](overview.md) můžete použít [Firewall webových aplikací](waf-overview.md) (WAF). WAF používá k ochraně aplikace pravidla [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Tato pravidla zahrnují ochranu před útoky, jako je injektáž SQL, skriptování mezi weby a krádeže relací. 
 

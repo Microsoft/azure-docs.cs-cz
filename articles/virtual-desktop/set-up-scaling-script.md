@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: bee02549d68b1dbdba3f0e62477b28bbd475ea32
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 379e73c33aa4570c3e56f902b011d75944c94a8d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402486"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497893"
 ---
-# <a name="automatically-scale-session-hosts"></a>Automatické škálování hostitele relace
+# <a name="automatically-scale-session-hosts"></a>Automatické škálování hostitelů relace
 
 Pro mnoho nasazení virtuální Preview Desktop Windows v Azure náklady na virtuální počítač představují významnou část celkové náklady na nasazení virtuální plochy Windows. Pokud chcete snížit náklady, je nejlepší vypnout a uvolnit relace hostování virtuálních počítačů (VM) během hodin mimo špičku využití a pak je restartujte během špičky využití.
 
@@ -81,7 +81,7 @@ Do následujících polí se aktualizovat nastavení škálování skript v soub
 | currentAzureSubscriptionId    | ID předplatného Azure, kde spustit relaci hostitele virtuálních počítačů                        |
 | tenantName                    | Název tenanta virtuálního klienta Windows                                                    |
 | hostPoolName                  | Název fondu hostitele virtuálního klienta Windows                                                 |
-| RDBroker                      | URL služby WVD, výchozí hodnota <https://rdbroker.wvd.microsoft.com>             |
+| RDBroker                      | Adresa URL ke službě WVD výchozí hodnotu https:\//rdbroker.wvd.microsoft.com             |
 | Uživatelské jméno                      | ID aplikace instančního objektu služby (je možné mít instanční objekt stejný jako v AADApplicationId) nebo standardního uživatele bez ověřování Multi-Factor Authentication |
 | isServicePrincipal            | Platné hodnoty jsou **true** nebo **false**. Určuje, zda je druhou sadu pověření používá objekt služby nebo standardní účet. |
 | BeginPeakTime                 | Kdy začíná špičky využití                                                            |

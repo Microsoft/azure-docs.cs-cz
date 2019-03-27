@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 6523c2b26a0340fa5347d8224ac8bf6c5e285926
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 90e841628d989a16f504d2efd7a2c7b18335ff48
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759045"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482619"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Odeslání metrik hostovaného operačního systému do Azure monitoru metriky uložit klasické cloudové služby 
 
@@ -142,26 +142,26 @@ Uložte tento soubor diagnostiky místně.
 
 Spusťte PowerShell a připojte se k Azure. 
 
-```PowerShell
+```powershell
 Login-AzAccount 
 ```
 
 Pomocí následujících příkazů ukládat podrobnosti o účtu úložiště, který jste vytvořili dříve. 
 
-```PowerShell
+```powershell
 $storage_account = <name of your storage account from step 3> 
 $storage_keys = <storage account key from step 3> 
 ```
 
 Podobně nastavte diagnostiky cestu k souboru na proměnnou pomocí následujícího příkazu:
 
-```PowerShell
+```powershell
 $diagconfig = “<path of the Diagnostics configuration file with the Azure Monitor sink configured>” 
 ```
 
 Nasazení rozšíření diagnostiky do cloudové služby pomocí diagnostiky souboru s jímka Azure monitoru, který je nakonfigurovaný pomocí následujícího příkazu:  
 
-```PowerShell
+```powershell
 Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -StorageAccountName $storage_account -StorageAccountKey $storage_keys -DiagnosticsConfigurationPath $diagconfig 
 ```
 

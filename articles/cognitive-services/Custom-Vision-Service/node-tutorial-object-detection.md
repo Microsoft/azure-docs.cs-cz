@@ -8,18 +8,18 @@ manager: daauld
 ms.service: cognitive-services
 ms.component: custom-vision
 ms.topic: quickstart
-ms.date: 2/21/2019
+ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: 9cc1e2cd3735d8292ebca803b83351bb97de8b83
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 17b6e59e121b836823b9e86d0d60b91d93ba82f9
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752350"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487256"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Rychlý start: Vytvoření projektu zjišťování objektu sadou Custom Vision Node.js SDK
 
-Tento článek obsahuje informace a ukázky kódu pro vám pomůže začít s pomocí sady SDK pro zpracování obrazu vlastní s využitím Node.js k vytvoření objektový model zjišťování. Po jeho vytvoření můžete přidat označené oblasti, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. V tomto příkladu můžete použijte jako šablonu pro vytvoření aplikace Node.js.
+Tento článek obsahuje informace a ukázky kódu pro vám pomůže začít s pomocí sady SDK pro zpracování obrazu vlastní s využitím Node.js k vytvoření objektový model zjišťování. Po jeho vytvoření, je můžete přidat označený oblastí, nahrávání obrázků, trénování projektu, získat adresu URL koncového bodu publikované předpovědi projektu a použít koncový bod pro programové testování bitovou kopii. V tomto příkladu můžete použijte jako šablonu pro vytvoření aplikace Node.js.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -58,9 +58,12 @@ const setTimeoutPromise = util.promisify(setTimeout);
 
 const trainingKey = "<your training key>";
 const predictionKey = "<your prediction key>";
+const predictionResourceId = "<your prediction resource id>";
 const sampleDataRoot = "<path to image files>";
 
 const endPoint = "https://southcentralus.api.cognitive.microsoft.com"
+
+const publishIterationName = "detectModel";
 
 const trainer = new TrainingApi.TrainingAPIClient(trainingKey, endPoint);
 
@@ -181,9 +184,9 @@ Obrázky, značky a oblasti do projektu přidáte tak, že po vytvoření značk
     await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-project"></a>Trénování projektu
+### <a name="train-the-project-and-publish"></a>Projekt pro trénování a publikování
 
-Tento kód vytvoří první iteraci v projektu a označí ji jako výchozí iteraci. Výchozí iterace odráží verzi modelu, který bude odpovídat na požadavky na předpověď. Při každém přetrénování modelu byste ji měli aktualizovat.
+Tento kód vytvoří první iterace v projektu a ke koncovému bodu predikcí následně publikuje danou iteraci. Název zadaný pro publikované iterace lze použít k odesílání požadavků předpovědi. Iterace není k dispozici v koncovém bodě predikcí, dokud je publikována.
 
 ```javascript
     console.log("Training...");
@@ -198,11 +201,11 @@ Tento kód vytvoří první iteraci v projektu a označí ji jako výchozí iter
     }
     console.log("Training status: " + trainingIteration.status);
 
-    trainingIteration.isDefault = true;
-    await trainer.updateIteration(sampleProject.id, trainingIteration.id, trainingIteration);
+    // Publish the iteration to the end point
+    await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
-### <a name="get-and-use-the-default-prediction-endpoint"></a>Získání a použití výchozího koncového bodu předpovědi
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získat a používat publikované iterace na koncovém bodu predikcí
 
 Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
 
@@ -210,7 +213,7 @@ Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpo
     const predictor = new PredictionApi.PredictionAPIClient(predictionKey, endPoint);
     const testFile = fs.readFileSync(`${sampleDataRoot}/Test/test_od_image.jpg`);
 
-    const results = await predictor.predictImage(sampleProject.id, testFile, { iterationId: trainingIteration.id })
+    const results = await predictor.detectImage(sampleProject.id, publishIterationName, testFile)
 
     // Show results
     console.log("Results:");
@@ -224,7 +227,7 @@ Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpo
 
 Spustit *sample.js*.
 
-```PowerShell
+```powershell
 node sample.js
 ```
 

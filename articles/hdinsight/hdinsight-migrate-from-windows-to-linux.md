@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: 02f698d531555aa9b5498060918a2a361b28817e
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: ec40c587ea4c609b1f8201e9860eb0e98e06ec62
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361247"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448179"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migrace z clusteru HDInsight se systémem Windows do clusteru se systémem Linux
 
@@ -238,7 +238,7 @@ Pokud máte pracovní postup, který používá aplikace v jazyce C#, ověření
 
 Na clusterech založených na Linuxu je nadřazenou znode HBase `/hbase-unsecure`. Nastavení této hodnoty v konfiguraci pro jakéhokoli Java klienta aplikace, které používají nativní rozhraní API Java HBase.
 
-Zobrazit [sestavit aplikaci Apache HBase založené na jazyce Java](hdinsight-hbase-build-java-maven.md) pro příklad klienta, který nastaví tuto hodnotu.
+Zobrazit [sestavit aplikaci Apache HBase založené na jazyce Java](hbase/apache-hbase-build-java-maven-linux.md) pro příklad klienta, který nastaví tuto hodnotu.
 
 ## <a name="spark"></a>Spark
 

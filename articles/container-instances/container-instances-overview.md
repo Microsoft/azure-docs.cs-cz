@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/30/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8362ae5e9647c023ff950a363f9ba7bfde37fdb6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 91cf0986241a40c48430d8305849c12864d645fb
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863317"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499552"
 ---
 # <a name="what-is-azure-container-instances"></a>Co je Azure Container Instances?
 
@@ -52,10 +52,11 @@ Některé funkce jsou momentálně omezené jenom na Linuxové kontejnery:
 
 * Více kontejnerů na skupinu kontejnerů
 * Připojení svazku ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [tajný klíč](container-instances-volume-secret.md))
+* [Metriky využití prostředků](container-instances-monitor.md) službou Azure Monitor
 * [Nasazení virtuální sítě](container-instances-vnet.md) (preview)
 * [Prostředky GPU](container-instances-gpu.md) (preview)
 
-Služba Azure Container Instances podporuje Image Windows serveru 2016 na základě dlouhodobé údržby kanálu (LTSC) verze. Vydané verze Windows půlročního kanálu, jako jsou 1709 nebo 1803, podporované nejsou.
+Na základě dlouhodobé údržby kanálu (LTSC) verze Image Windows serveru 2016 v současné době podporuje služba Azure Container Instances. Vydané verze Windows půlročního kanálu, jako jsou 1709 nebo 1803, podporované nejsou.
 
 ## <a name="co-scheduled-groups"></a>Společně plánované skupiny
 

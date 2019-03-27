@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/12/2017
+ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53c14ce92a422c2254a1e9b7fc4989b49790a88a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: eeb2af6283e5c9d8a41e74152a94b85efdae1866
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774434"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487310"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
 Pomocí filtrování, můžete řídit objektů, které se zobrazí ve službě Azure Active Directory (Azure AD) z místního adresáře. Výchozí konfigurace přijímá všechny objekty ve všech doménách nakonfigurovaných doménových struktur. Obecně platí toto je doporučená konfigurace. Uživatele, kteří používají úlohy Office 365, jako je Exchange Online a Skype pro firmy, těžit z globální seznam adresu odeslání e-mailu a volat všem uživatelům. Ve výchozí konfiguraci bylo by nutné stejným způsobem, který by měla s implementací místní Exchange nebo Lync.
@@ -99,6 +99,12 @@ Založený na doméně filtrování konfigurace se skládá z následujících k
 3. [Použít a ověřit změny](#apply-and-verify-changes).
 
 ### <a name="select-the-domains-to-be-synchronized"></a>Vybrat domény, které se mají synchronizovat
+Existují dva způsoby, jak vybrat domény se dá provést synchronizace:
+    - Pomocí služby synchronizace
+    - Pomocí Průvodce Azure AD Connect.
+
+
+#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>Vybrat domény se dá provést synchronizace pomocí služby synchronizace
 Pokud chcete nastavit filtr domény, proveďte následující kroky:
 
 1. Přihlaste se k serveru, na kterém je spuštěna synchronizace Azure AD Connect s použitím účtu, který je členem skupiny **ADSyncAdmins** skupiny zabezpečení.
@@ -112,6 +118,17 @@ Pokud chcete nastavit filtr domény, proveďte následující kroky:
    ![Je potřeba aktualizace](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. Až budete hotovi, zavřete **vlastnosti** dialogové okno kliknutím **OK**. Pokud odebrání domén z doménové struktury se místní zpráva, že byla odebrána domény a tuto konfiguraci se vymažou.
 7. Dál Upravit profily spuštění.
+
+#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>Vybrat domény se dá provést synchronizace pomocí Průvodce Azure AD Connect
+Pokud chcete nastavit filtr domény, proveďte následující kroky:
+
+1.  Spusťte Průvodce Azure AD Connect
+2.  Klikněte na **Konfigurovat**.
+3.  Vyberte **přizpůsobit možnosti synchronizace** a klikněte na tlačítko **Další**.
+4.  Zadejte svoje přihlašovací údaje služby Azure AD.
+5.  Na **připojení adresáře** obrazovku kliknutím **Další**.
+6.  Na **domény a organizační jednotky filtrování stránky** klikněte na tlačítko **aktualizovat**.  Teď budou zobrazovat nové domény výplně a domén odstraněné zmizí.
+   ![Oddíly](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
 ### <a name="update-the-run-profiles"></a>Aktualizovat profilů spuštění
 Pokud jste aktualizovali filtr domény, musíte také aktualizovat profily spuštění.

@@ -3,7 +3,7 @@ title: Další informace o zabezpečení aplikace Azure Service Fabric | Dokumen
 description: Přehled o tom, jak bezpečně spouštět aplikace mikroslužby na platformě Service Fabric. Zjistěte, jak spustit služby a po spuštění skriptu v rámci účtů zabezpečení, ověřování a autorizaci uživatelů, Správa tajných klíčů aplikací, zabezpečená komunikace služeb, použít bránu rozhraní API a zabezpečení aplikačních dat v klidovém stavu.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: msfussell
 manager: timlt
 editor: ''
 ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
-ms.author: ryanwi
-ms.openlocfilehash: 91e7fdd215d246156f601d3b5e6e05b7f8f71f59
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mfussell
+ms.openlocfilehash: fd90bdba94a985a2a3529f605972217382b23b2a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116452"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498345"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Zabezpečení služby a aplikace Service Fabric
 Architektura mikroslužeb přinést [řadu výhod](service-fabric-overview-microservices.md). Správa zabezpečení mikroslužeb, ale výzvy a jiné než Správa zabezpečení tradiční monolitické aplikace. 

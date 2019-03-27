@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 03/25/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dd89d9645d2054f301ed999121fefc417ea5c6fa
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 6a69d8d60b2e588ded9ccca20521195ae11ff136
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293902"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449427"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontální navýšení kapacity Azure Analysis Services
 
@@ -45,9 +45,9 @@ Při provádění následná operace škálování na víc systémů, napříkla
 
 * Synchronizace je povolená i v případě, že nejsou žádné repliky ve fondu dotazů. Pokud se horizontální navýšení kapacity od nuly do jednoho nebo více replik s novými daty z operace zpracování na primárním serveru, nejprve provést synchronizaci s žádnou repliku ve fondu dotaz a pak horizontální navýšení kapacity. Synchronizace před horizontálním navýšením kapacity se vyhnete redundantní dosazení dat do nově přidané replik.
 
-* Při odstraňování databáze modelu z primárního serveru, to není automaticky odstraněn z replik ve fondu dotazů. Je nutné provést operaci synchronizace, která odebere soubor/s pro tuto databázi z repliky sdílených objektů blob úložiště a pak odstraní modelové databáze na replik ve fondu dotazů.
+* Při odstraňování databáze modelu z primárního serveru, to není automaticky odstraněn z replik ve fondu dotazů. Musíte provést operaci synchronizace pomocí [synchronizace AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) příkaz prostředí PowerShell, který odebere soubor/s pro tuto databázi z umístění úložiště objektů blob sdíleného repliky a pak odstraní modelu databáze na replik ve fondu dotazů.
 
-* Při přejmenování databáze na primárním serveru, je nutné zajistit, že databáze je správně synchronizovat na všechny repliky další krok. Po přejmenování, provést synchronizaci zadání `-Database` parametr s názvem starého databáze. Tato synchronizace odebere z všechny repliky databáze a soubory se starým názvem. Pak proveďte zadáním jiného synchronizace `-Database` parametr s názvem nové databáze. Druhý synchronizace zkopíruje nově pojmenovanou databázi pro druhou sadu souborů a hydráty případné repliky. Tato synchronizace nelze provést pomocí příkazu modelu synchronizovat na portálu.
+* Při přejmenování databáze na primárním serveru, je nutné zajistit, že databáze je správně synchronizovat na všechny repliky další krok. Po přejmenování, provést synchronizaci s použitím [synchronizace AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) zadáním příkazu `-Database` parametr s názvem starého databáze. Tato synchronizace odebere z všechny repliky databáze a soubory se starým názvem. Pak proveďte zadáním jiného synchronizace `-Database` parametr s názvem nové databáze. Druhý synchronizace zkopíruje nově pojmenovanou databázi pro druhou sadu souborů a hydráty případné repliky. Tato synchronizace nelze provést pomocí příkazu modelu synchronizovat na portálu.
 
 ### <a name="separate-processing-from-query-pool"></a>Samostatné zpracování od fondu dotazů
 
@@ -67,7 +67,7 @@ Jiné dobrou metrikou a sledujte je průměrná QPU podle ServerResourceType. Ta
 
 Další informace najdete v tématu [Monitorování metrik serveru](analysis-services-monitor.md).
 
-## <a name="configure-scale-out"></a>Konfigurace horizontální navýšení kapacity
+## <a name="configure-scale-out"></a>Konfigurace škálování na více instancí
 
 ### <a name="in-azure-portal"></a>Na webu Azure portal
 
@@ -103,6 +103,20 @@ Použití **synchronizace** operace.
 
 `GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
 
+Návratové kódy stavu:
+
+
+|Kód  |Popis  |
+|---------|---------|
+|-1     |  Neplatný       |
+|0     | Replikování        |
+|1     |  Rehydratace       |
+|2     |   Dokončeno       |
+|3     |   Selhalo      |
+|4     |    Finalizace     |
+|||
+
+
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -112,6 +126,8 @@ Před použitím prostředí PowerShell, [nainstalovat nebo aktualizovat nejnov�
 Chcete-li spustit synchronizaci, použijte [synchronizace AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance).
 
 Pokud chcete nastavit počet replik dotazu, použijte [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte nepovinný `-ReadonlyReplicaCount` parametru.
+
+Chcete-li oddělte server pro zpracování od fondu dotazů, použijte [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte nepovinný `-DefaultConnectionMode` parametr, který se `Readonly`.
 
 ## <a name="connections"></a>Připojení
 

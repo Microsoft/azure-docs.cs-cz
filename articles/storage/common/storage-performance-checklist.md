@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 1b6c8b1af00c2819632c60a27d61d7cf8db44885
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d39c2414aa8299282b3896a9ceb57897fdb25ff1
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012329"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446002"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage
 ## <a name="overview"></a>Přehled
@@ -98,7 +98,7 @@ V době psaní cíle šířky pásma v USA pro účet geograficky redundantní �
 Pokud se blíží se limit účty úložiště, které můžete použít v kombinaci konkrétní předplatné nebo oblast, vyhodnoťte svoje aplikace a používání účtů úložiště a určit, pokud platí kterákoli z těchto podmínek.
 
 * Použít účty úložiště jako nespravované disky a přidáte tyto disky do virtuálních počítačů. V tomto scénáři doporučujeme použít [spravované disky](../../virtual-machines/windows/managed-disks-overview.md), jak zpracovat škálovatelnosti úložiště disku pro vás aniž byste je museli vytvářet a spravovat jednotlivé účty.
-* Na základě za zákazníků pro účely izolace dat pomocí jednoho účtu úložiště. V tomto scénáři doporučujeme použít kontejnery úložiště pro každý zákazník, nikoli celý účet úložiště. Úložiště Azure teď umožňuje nastavit řízení přístupu na základě rolí na za [kontejneru základ](storage-auth-aad-rbac.md).
+* Na základě za zákazníků pro účely izolace dat pomocí jednoho účtu úložiště. V tomto scénáři doporučujeme použít kontejnery úložiště pro každý zákazník, nikoli celý účet úložiště. Úložiště Azure teď umožňuje nastavit řízení přístupu na základě rolí na za [kontejneru základ](storage-auth-aad-rbac-portal.md).
 * Použití více účtů úložiště do horizontálního oddílu pro větší škálovatelnost příchozí a výchozí přenos dat/vstupně-výstupních operací/kapacity. V tomto scénáři, pokud je to možné, doporučujeme využít výhod [zvýšit limity](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) o účtech úložiště úrovně standard, abyste snížili počet účtů úložiště potřebné pro vaši úlohu.
 
 Pokud vaše aplikace se blíží cíle škálovatelnosti pro jeden účet úložiště, vezměte v úvahu přijetím jedné z následujících postupů:  

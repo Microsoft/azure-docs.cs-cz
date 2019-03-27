@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2c317bbdef2511728d23b33d8eef1c4a41a87d97
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 4599498918b7a01a1207f20135c26924c6758eb8
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201513"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499421"
 ---
 # <a name="how-to-manage-concurrency-in-azure-search"></a>Správa souběžnosti ve službě Azure Search
 
@@ -170,7 +170,7 @@ Následující kód ukazuje, že kontroluje accessCondition operace aktualizace 
 
 Návrhový vzor pro implementace optimistického řízení souběžnosti by měl obsahovat smyčku, která se pokusí znovu podmínka přístupu zkontrolujte testovací podmínku přístup a volitelně načte aktualizované prostředků než se pokusíte znovu použít změny.
 
-Tento fragment kódu ukazuje přidání synonymMap na index, který již existuje. Tento kód je z [Synonym (preview) C# příklad pro službu Azure Search](https://docs.microsoft.com/azure/search/search-synonyms-example-sdk).
+Tento fragment kódu ukazuje přidání synonymMap na index, který již existuje. Tento kód je z [Synonym (preview) C# příklad pro službu Azure Search](search-synonyms-tutorial-sdk.md).
 
 Fragment kódu získá index "hotels", verze objektu na operaci aktualizace zkontroluje, vyvolá výjimku, pokud podmínka selže a potom opakovat operaci (až třikrát), počínaje indexem načtení ze serveru získat nejnovější verzi.
 

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: d66db88dd1e962acc63c960270bb5685218aa391
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 23654dd41714314ab5c9f217d4f805d7b9d62413
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316049"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472802"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpečení a ověřování 
 
@@ -41,7 +41,7 @@ Pokud používáte jiný typ koncového bodu, jako například aktivační udál
 
    Počínaje verzí 2018-05-01-preview, podporuje Služba Event Grid handshake ruční ověření. Pokud vytváříte odběr událostí pomocí sady SDK nebo nástroj, který používá rozhraní API verze 2018-05-01-preview nebo později, odešle služby Event Grid `validationUrl` vlastnost v datové části události ověření předplatného. Dokončete signalizace najít tuto adresu URL v datech událostí a ručně odeslat požadavek GET. Můžete použít klienta REST nebo ve webovém prohlížeči.
 
-   Zadaná adresa URL je platný 10 minut. Během této doby je stav zřizování odběr události `AwaitingManualAction`. Pokud neprovedete ruční ověření během 10 minut, Stav zřizování nastavená na `Failed`. Budete muset vytvořit odběr události znovu před zahájením ruční ověření.
+   Zadaná adresa URL je platný po dobu 5 minut. Během této doby je stav zřizování odběr události `AwaitingManualAction`. Pokud neprovedete ruční ověření během 10 minut, Stav zřizování nastavená na `Failed`. Budete muset vytvořit odběr události znovu před zahájením ruční ověření.
 
 ### <a name="validation-details"></a>Podrobnosti ověřování
 

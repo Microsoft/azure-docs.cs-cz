@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0310a74986f86e072e3ee0fa81df36a03d2e5117
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 10ba16fc06a4678c7bd70cbb7e6797b8d9be8ff4
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409937"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485115"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>Rutiny prostředí PowerShell a rozhraní REST API pro službu SQL Data Warehouse
 Mnoho úkolů správy SQL Data Warehouse je možné spravovat pomocí rutin Azure Powershellu nebo rozhraní REST API.  Níže je několik příkladů toho, jak používat příkazy Powershellu k automatizaci běžných úkolů ve službě SQL Data Warehouse.  Některé dobré příklady REST, najdete v článku [spravovat škálovatelnost s využitím REST][Manage scalability with REST].
@@ -26,7 +26,7 @@ Mnoho úkolů správy SQL Data Warehouse je možné spravovat pomocí rutin Azur
 1. Otevřete Windows PowerShell.
 2. Na příkazovém řádku Powershellu, spusťte tyto příkazy pro přihlášení k Azure Resource Manageru a vyberte své předplatné.
    
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     Get-AzSubscription
     Select-AzSubscription -SubscriptionName "MySubscription"

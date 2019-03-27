@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 116defb43126932c1a9ce0e7a9d588e731abff78
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a6cb5ffe6c21c6eda9eb8b7f610952e92707a6bd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182026"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483467"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Rozhraní API klienta Azure Service Fabric Java
 
@@ -126,11 +126,11 @@ Postupujte podle pokynů uvedených níže pro generování kódu klienta Servic
 Pro každé rozhraní API najdete čtyři přetížení implementace. Pokud jsou volitelné parametry by najít čtyři další změny, včetně těchto volitelné parametry. Představme si třeba rozhraní API ``removeReplica``.
  1. **public void removeReplica (řetězec nodeName, UUID partitionId, replicaId řetězec, logická forceRemove, dlouhý časový limit)**
     * Toto je synchronní variant volání removeReplica rozhraní API
- 2. **veřejné ServiceFuture<Void> removeReplicaAsync (řetězec nodeName, UUID partitionId, replicaId řetězec, logická forceRemove, dlouhý časový limit, finální ServiceCallback<Void> serviceCallback)**
+ 2. **veřejné ServiceFuture\<Void > removeReplicaAsync (řetězec nodeName, UUID partitionId, replicaId řetězec, logická forceRemove, dlouhý časový limit, finální ServiceCallback\<Void > serviceCallback)**
     * Tato varianta volání rozhraní API je možné, pokud chcete použít budoucí založené na asynchronní programování a použít zpětná volání
- 3. **veřejné pozorovat<Void> removeReplicaAsync (nodeName řetězec, ID oddílu UUID, replicaId řetězec)**
+ 3. **veřejné pozorovat\<Void > removeReplicaAsync (nodeName řetězec, ID oddílu UUID, replicaId řetězec)**
     * Tato varianta volání rozhraní API lze použít, pokud chcete použít reaktivní asynchronní programování
- 4. **veřejné pozorovat < ServiceResponse<Void>> removeReplicaWithServiceResponseAsync (nodeName řetězec, ID oddílu UUID, replicaId řetězec)**
+ 4. **veřejné pozorovat\<ServiceResponse\<Void >> removeReplicaWithServiceResponseAsync (nodeName řetězec, ID oddílu UUID, replicaId řetězec)**
     * Tato varianta volání rozhraní API je možné, pokud chcete použít reaktivní asynchronní programování a řešil odpověď NEZPRACOVANÁ rest
 
 ## <a name="next-steps"></a>Další postup

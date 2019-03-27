@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b472927f435cb86787c4580920250cb33438a07b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 59b390776a5e23c08d8793125747742cee4e473e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992245"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487019"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Kurz: Vytvoření aplikace ASP.NET se službou SQL Database v Azure
 
@@ -227,19 +227,19 @@ V nabídce **Nástroje** klikněte na **Správce balíčků NuGet** > **Konzola 
 
 V okně konzoly správce balíčků povolte migraci Code First:
 
-```PowerShell
+```powershell
 Enable-Migrations
 ```
 
 Přidejte migraci:
 
-```PowerShell
+```powershell
 Add-Migration AddProperty
 ```
 
 Aktualizujte místní databázi:
 
-```PowerShell
+```powershell
 Update-Database
 ```
 

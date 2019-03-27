@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: df1542d6d20120a9b1e087fadf3743479ecebf07
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c89764d746f07e6100b1f250d4c107bb700fe014
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533829"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445854"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových souborů na základě času dělené názvu souboru s použitím nástroje pro kopírování dat
 
@@ -54,9 +54,10 @@ Připravte úložiště objektů Blob pro tento kurz provedením následujícíc
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **Nový** > **Data a analýzy** > **Datová továrna**: 
+1. V nabídce vlevo vyberte **vytvořit prostředek** > **Data a analýzy** > **služby Data Factory**: 
    
-   ![Vytvoření nové datové továrny](./media/tutorial-copy-data-tool/new-azure-data-factory-menu.png)
+   ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**. 
       
     ![Nová datová továrna](./media/tutorial-copy-data-tool/new-azure-data-factory.png)

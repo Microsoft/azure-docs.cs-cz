@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0a25dd3a2228f0b1b3ab33db0c9c689d7b2899d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e6623e18fa319066f121dced551dcada133ebd5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310553"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58479525"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Vynucení ochrany hesla Azure AD pro Windows Server Active Directory
 
@@ -32,8 +32,15 @@ Ochrana hesel Azure AD je navržen s těmito zásadami v úvahu:
 * Žádné minimální služby Active Directory domény nebo doménová struktura úroveň funkčnosti (funkčnosti domény/FFL) se vyžaduje.
 * Software nelze vytvořit nebo vyžadují účtů v doménách Active Directory, které chrání.
 * Hesla uživatelů nešifrovaný text nenechávejte řadič domény během operací ověření hesla nebo kdykoli.
-* Je podporováno přírůstkové nasazení. Ale zásady hesel se vynucují jenom, kde je nainstalovaný Agent řadič domény (DC agenta).
-* Doporučujeme nainstalovat agenta pro řadič domény na všechny řadiče domény, aby vynucení zabezpečení ochrany univerzální hesla.
+* Přírůstkové nasazení je podporováno, ale zásady hesel se vynucují jenom, kde je nainstalovaný Agent řadič domény (DC agenta). Naleznete v části Další podrobnosti.
+
+## <a name="incremental-deployment"></a>Přírůstkové nasazení
+
+Ochrana hesel Azure AD podporuje přírůstkové nasazení řadiče domény v doméně služby Active Directory, ale je důležité pochopit, co to vlastně znamená a jaké jsou nevýhody.
+
+Software agenta ochrany řadič domény hesla Azure AD můžete pouze ověření hesel, když je nainstalovaný na řadiči domény a pouze pro změny hesla, které se odesílají do řadiče domény. Není možné do ovládacího prvku, které řadiče domény se zvolí klientské počítače Windows pro zpracování změn hesla uživatele. Aby bylo možné zaručit konzistenci a prosazování zabezpečení ochrany univerzální heslo, musí být nainstalován software agenta řadiče domény na všechny řadiče domény v doméně.
+
+Mnoho organizací bude chtít provést opatrní testování ochrany hesla Azure AD na podmnožinu svých řadičů domény před tím úplné nasazení. Ochrana hesel Azure AD podporuje částečné nasazení, ie softwaru agenta řadiče domény v dané řadiči domény se aktivně ověření hesla i v případě, že jiné řadiče domény v doméně nemají nainstalovaného softwaru agenta řadiče domény. Částečné nasazení tohoto typu nejsou zabezpečení a jsou jiné než nedoporučuje pro účely testování.
 
 ## <a name="architectural-diagram"></a>Diagram architektury
 

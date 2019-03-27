@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 5f6708a9c22939395f992c2ac58a7e510b35f763
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 32ad4434db8c2816fe7792b1b851e020021d543a
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317268"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447111"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a správa topologií Apache Storm v Azure HDInsight 
 
@@ -23,7 +23,6 @@ V tomto dokumentu, seznamte se se základy monitorování a správa [Apache Stor
 > [!IMPORTANT]  
 > Kroky v tomto článku vyžadují linuxovým Storm v clusteru HDInsight. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement). 
 >
-> Informace o nasazení a monitorování topologií v HDInsight se systémem Windows, naleznete v tématu [nasazení a správa topologií Apache Storm v HDInsight se systémem Windows](apache-storm-deploy-monitor-topology.md).
 
 
 ## <a name="prerequisites"></a>Požadavky

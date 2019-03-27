@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: f1515af1ef61bc40ae91e3e5b43154f92bc89ae4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f158e08f0f882801dc488721013e9705ea4ff738
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725368"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448318"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Pochopení a vyřešení chyb přijatých z WebHCat v HDInsight
 
@@ -29,7 +29,7 @@ Další informace o chyb oznámených při použití WebHCat s HDInsight a způs
 > [!IMPORTANT]  
 > Několik chyb uvedených v tomto dokumentu dojít, protože se překročila nakonfigurované maximum. Když krok řešení uvádí, že můžete změnit hodnotu, musíte použít jednu z následujících provádět změny:
 
-* Pro **Windows** clustery: Nakonfigurujte tuto hodnotu při vytváření clusteru pomocí skriptových akcí. Další informace najdete v tématu [vývoj akcí skriptů](hdinsight-hadoop-script-actions.md).
+* Pro **Windows** clustery: Nakonfigurujte tuto hodnotu při vytváření clusteru pomocí skriptových akcí. Další informace najdete v tématu [vývoj akcí skriptů](hdinsight-hadoop-script-actions-linux.md).
 
 * Pro **Linux** clustery: Použití Apache Ambari (web nebo rozhraní REST API) ke změně hodnoty. Další informace najdete v tématu [Správa HDInsight pomocí nástroje Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 
@@ -70,7 +70,7 @@ Překročení následujících výchozích hodnot může snížit výkon WebHCat
 | --- | --- |
 | Podrobnosti úlohy nebyly vyčištěny pomocí historie úloh čisticí |Výchozí době uchování historie úlohy je 7 dní. Úpravou můžete změnit výchozí dobu uchování `mapreduce.jobhistory.max-age-ms`. Další informace najdete v tématu [změna konfigurace](#modifying-configuration) |
 | Úlohy byl ukončen z důvodu převzetí služeb při selhání |Opakujte odeslání úlohy pro až dvě minuty |
-| Id úlohy je neplatné. byl použit. |Zkontrolujte, jestli je správný id úlohy |
+| ID úlohy je neplatné. byl použit. |Zkontrolujte, jestli je správný ID úlohy |
 
 ## <a name="bad-gateway"></a>Chybná brána
 
@@ -80,7 +80,7 @@ Překročení následujících výchozích hodnot může snížit výkon WebHCat
 | --- | --- |
 | Interní uvolňování paměti dochází v rámci procesu WebHCat |Počkejte, uvolňování paměti na dokončení nebo restartujte službu WebHCat |
 | Časový limit čekání na odpověď ze služby Správce prostředků. Této chybě může dojít, když se počet aktivních aplikací dostane nakonfigurované maximum (výchozí hodnota 10 000) |Počkejte právě probíhajících úloh dokončíte. nebo zvýšení limitu souběžných úloh tak, že upravíte `yarn.scheduler.capacity.maximum-applications`. Další informace najdete v tématu [změna konfigurace](#modifying-configuration) oddílu. |
-| Při pokusu o načtení všech úloh prostřednictvím [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) volání při `Fields` je nastavena na `*` |Nepřijmou *všechny* podrobnosti úlohy. Místo toho použijte `jobid` k načtení podrobností pro úlohy pouze větší než id určité úlohy. Nebo, nepoužívejte `Fields` |
+| Při pokusu o načtení všech úloh prostřednictvím [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) volání při `Fields` je nastavena na `*` |Nepřijmou *všechny* podrobnosti úlohy. Místo toho použijte `jobid` k načtení podrobností pro úlohy pouze větší než určité ID úlohy. Nebo, nepoužívejte `Fields` |
 | Služba WebHCat je mimo provoz během převzetí služeb při selhání hlavního uzlu |Počkejte po dobu dvou minut a zkuste operaci zopakovat |
 | Existuje více než 500 čekající úlohy odeslat prostřednictvím WebHCat |Počkejte na dokončení aktuálně čeká na provedení úloh před odesláním další úlohy |
 

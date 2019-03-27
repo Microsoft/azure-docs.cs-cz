@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: aschhab
-ms.openlocfilehash: 93c4fdd778f1dc3689de74c0144c513744f438c5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8c33418a8de4510bd8e45487c2f97bd204750dec
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762412"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485095"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Přehled integrace služby Azure Service Bus do služby Event Grid
 
@@ -152,9 +152,9 @@ az eventgrid event-subscription create --resource-id $namespaceid --name “<YOU
 
 ## <a name="powershell-instructions"></a>Pokyny pro PowerShell
 
-Ujistěte se, že máte nainstalovaný Azure PowerShell. [Stáhněte instalační program](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.4.0). Stiskněte **Windows + X** a pak otevřete novou konzolu PowerShellu s oprávněními správce. Případně může použít příkazové prostředí na webu Azure Portal.
+Ujistěte se, že máte nainstalovaný Azure PowerShell. [Stáhněte instalační program](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). Stiskněte **Windows + X** a pak otevřete novou konzolu PowerShellu s oprávněními správce. Případně může použít příkazové prostředí na webu Azure Portal.
 
-```PowerShell-interactive
+```powershell-interactive
 Connect-AzureRmAccount
 
 Select-AzureRmSubscription -SubscriptionName "<YOUR SUBSCRIPTION NAME>"

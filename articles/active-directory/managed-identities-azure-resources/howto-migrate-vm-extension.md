@@ -3,7 +3,7 @@ title: Pomocí rozšíření virtuálních počítačů spravovanou identitu a s
 description: Projděte pokyny ke přestat používat rozšíření virtuálního počítače a začít používat služba metadat Instance Azure (IMDS) pro ověřování.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
-ms.author: priyamo
-ms.openlocfilehash: c29eb22f2606fc44cfd7d948f2c363cb51c811dd
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.author: markvi
+ms.openlocfilehash: 5b3c6c99b05320ee53c3ff49f5c299650c32e939
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227569"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498328"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Postup zastavení virtuálního počítače pomocí spravované identity rozšíření a začít používat službu Azure Instance Metadata
 
@@ -196,7 +196,7 @@ Existuje několik hlavních omezení pomocí rozšíření virtuálního počít
 
 ## <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
-[Azure Instance Metadata služby (IMDS)](https://docs.microsoft.com/azure/virtual-machines/instance-metadata-service) je koncový bod REST, který poskytuje informace o spuštěných instancí virtuálních počítačů, které lze použít ke správě nebo konfiguraci virtuálních počítačů. Koncový bod je k dispozici na dobře známé nesměrovatelných adres IP (`169.254.169.254`), který je přístupný pouze z v rámci virtuálního počítače.
+[Azure Instance Metadata služby (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) je koncový bod REST, který poskytuje informace o spuštěných instancí virtuálních počítačů, které lze použít ke správě nebo konfiguraci virtuálních počítačů. Koncový bod je k dispozici na dobře známé nesměrovatelných adres IP (`169.254.169.254`), který je přístupný pouze z v rámci virtuálního počítače.
 
 Existuje několik výhod Azure IMDS pomocí žádosti o tokeny. 
 

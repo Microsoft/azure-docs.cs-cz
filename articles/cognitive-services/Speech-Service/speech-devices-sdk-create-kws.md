@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 22d270d9bc337b9d7ad776baf5dd35f877c05eae
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b5ace2e741f900dd4ab7ba6518d0956284af35f6
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856423"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498227"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Vytvořit vlastní probuzení word s použitím Speech service
 
@@ -47,25 +47,21 @@ Při výběru slova probuzení vezměte v úvahu následující pokyny:
 
 ## <a name="create-your-wake-word"></a>Vytvoření vaší aplikace word probuzení
 
-Slovo vlastní funkci mohli používat s vaším zařízením, musíte vytvořit slovo probuzení pomocí služby Microsoft vlastní funkci generování aplikace Word. Po zadání slovo probuzení, služba vytvoří soubor, který nasadíte vaše development Kit, aby vaše aplikace word probuzení na vašem zařízení.
+Slovo vlastní funkci mohli používat s vaším zařízením, musíte vytvořit slovo probuzení pomocí služby Microsoft vlastní funkci generování aplikace Word. Po zadání slovo probuzení, služba vytvoří soubor, který nasadíte do vaše sada povolit probuzení slovo na vašem zařízení.
 
-1. Přejděte [portál Custom Speech service](https://cris.ai/).
+1. Přejděte [portál Custom Speech Service](https://cris.ai/).
 
-1. Vytvořte nový účet s e-mailovou adresu, na který jste obdrželi pozvánku pro Azure Active Directory.
+    ![Portál Custom Speech Service](media/speech-devices-sdk/wake-word-4.png)
 
-    ![Vytvoření nového účtu](media/speech-devices-sdk/wake-word-1.png)
+1. Přihlaste se pomocí e-mailovou adresu, která se zobrazila pozvánky pro Azure Active Directory.
 
-1. **Slovo probuzení vlastní** stránka není dostupná, proto neexistuje žádný přímý odkaz, která vás existuje. Custom Speech funkce vyžaduje předplatným Azure, ale nebude slovo probuzení vlastní funkce. Pokud jste se dostali **nenašla se žádná předplatná.** chybové stránky, stačí nahradit **"předplatných? chybová zpráva = žádná % 20Subscriptions % 20found"** s "**customkws**" v adrese URL a přístupů ENTER. Adresa URL by měla být jedna z následujících: https://westus.cris.ai/customkws, https://eastasia.cris.ai/customkws nebo https://northeurope.cris.ai/customkws, v závislosti na místě, kde vaši oblast.
-
-    ![Word probuzení vlastní stránka skrytá](media/speech-devices-sdk/wake-word-4.png)
+1. **Slovo probuzení vlastní** stránka není dostupná, proto neexistuje žádný přímý odkaz, která vás existuje. Custom Speech funkce vyžaduje předplatné Azure, ale nebude slovo probuzení vlastní funkce. Pokud jste se dostali **nenašla se žádná předplatná.** chybové stránky, stačí nahradit **"předplatných? chybová zpráva = žádná % 20Subscriptions % 20found"** s "**customkws**" v adrese URL a přístupů ENTER. Adresa URL by měla být jedna z následujících: https://westus.cris.ai/customkws, https://eastasia.cris.ai/customkws nebo https://northeurope.cris.ai/customkws, v závislosti na místě, kde vaši oblast.
 
 1. Zadejte hledané klíčové slovo probuzení podle vašeho výběru a pak vyberte **odeslat slovo**.
 
     ![Zadejte vaše slova probuzení](media/speech-devices-sdk/wake-word-5.png)
 
 1. Může trvat několik minut, než soubory, které chcete vygenerovat. Měli byste vidět pokryjte kolečko v okně prohlížeče. Za okamžik informační panel se zobrazí, s výzvou ke stažení souboru .zip.
-
-    ![Přijetí souboru ZIP](media/speech-devices-sdk/wake-word-6.png)
 
 1. Uložte soubor .zip na vašem počítači. Je nutné tento soubor a nasadit vlastní probuzení slovo development Kit. Pokud chcete nasadit vlastní probuzení slovo, postupujte podle pokynů v [Začínáme se sadou SDK pro řeč zařízení](speech-devices-sdk-qsg.md).
 

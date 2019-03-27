@@ -11,21 +11,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/14/2019
+ms.date: 3/26/2019
 ms.author: raiye
-ms.openlocfilehash: ec50cff2a2d3323b988632fd7ee96b73f60117b1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 42c241ce6b14eac2f76785b7b16b537d3e88bd8d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57887285"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500606"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
-
->[!NOTE]
->Březen hostovaného operačního systému je aktuálně nasazuje pro služby virtuálního počítače v cloudu, které jsou nakonfigurované pro automatické aktualizace. Po dokončení tohoto uvedení se tato verze bude k dispozici ruční aktualizace přes Azure portal a konfigurační soubory. Následující opravy jsou součástí operačního systému. března. Tento seznam se může změnit.
-
 
 ## <a name="march-2019-guest-os"></a>Březen 2019 hostovaného operačního systému
 

@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: df9bc1680f20fe6264da0109cd52db1072fd9fc5
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: a1ee95ad847d20159c79af8f080cc7878e114759
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311131"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444528"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgradovat na účet úložiště pro obecné účely verze 2
 
@@ -21,7 +21,7 @@ ms.locfileid: "58311131"
 Upgrade na účet úložiště pro obecné účely verze 2 z pro obecné účely v1 a účty úložiště Blob je jednoduché. Můžete upgradovat pomocí webu Azure portal, Powershellu nebo rozhraní příkazového řádku Azure.
 
 > [!IMPORTANT]
-> Upgraduje se účet úložiště v1 pro obecné účely verze 2 je trvalá a není možné vrátit zpět.
+> Upgrade pro obecné účely v1 nebo účet úložiště Blob storage pro obecné účely verze 2 je trvalá a není možné vrátit zpět.
 
 ## <a name="upgrade-using-the-azure-portal"></a>Upgrade s využitím webu Azure portal
 
@@ -31,6 +31,8 @@ Upgrade na účet úložiště pro obecné účely verze 2 z pro obecné účely
 4. V části **Druh účtu** klikněte na **Upgradovat**.
 5. V části **Potvrdit upgrade** zadejte název svého účtu.
 6. Klikněte na tlačítko **upgradovat** v dolní části okna.
+
+    ![Upgrade druh účtu](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
 ## <a name="upgrade-with-powershell"></a>Upgrade pomocí PowerShellu
 
@@ -116,7 +118,7 @@ Když tuto funkci zapnete, data o kapacitě služby Blob service pro daný úče
 Aby bylo možné pro účet úložiště Blob monitorovat vzory přístupu k datům, je potřeba povolit hodinovou metriku transakcí z rozhraní API. Když povolíte hodinovou metriku transakcí, data o transakcích rozhraní API se budou každou hodinu shromažďovat a zaznamenávat jako zápisy do tabulky *$MetricsHourPrimaryTransactionsBlob* v rámci stejného účtu úložiště. Při použití účtů úložiště RA-GRS zaznamenává tabulka *$MetricsHourSecondaryTransactionsBlob* transakce do sekundárního koncového bodu.
 
 > [!NOTE]
-> Pokud máte účet úložiště pro obecné účely, ve kterém jsou uložené objekty blob stránky a disky virtuálních počítačů, případně fronty, soubory, nebo tabulky, vedle dat objektů blob bloku a doplňovacích objektů blob, odhad tímto postupem provést nepůjde. Data o kapacitě nerozlišují objekty blob bloku od ostatních typů a neposkytují data o kapacitě pro ostatní typy dat. Pokud používáte tyto typy, můžete se podívat na množství na nejnovějším vyúčtování.
+> Pokud máte účet úložiště pro obecné účely, ve kterém jsou uložené objekty BLOB stránky a disky virtuálních počítačů nebo fronty, soubory, nebo tabulky, vedle bloku a doplňovacích data objektů blob, odhad tímto postupem není použitelné. Data o kapacitě nerozlišují objekty blob bloku od ostatních typů a neposkytují data o kapacitě pro ostatní typy dat. Pokud používáte tyto typy, můžete se podívat na množství na nejnovějším vyúčtování.
 
 Pokud chcete dobře odhadnout spotřebu dat a přístup k nim, doporučujeme pro měření dat vybrat takovou dobu uchování, která vystihuje pravidelné používání, a potom údaje extrapolovat. Můžete například měřená data uchovávat po sedm dní, sesbírat jednou za týden a analyzovat je na konci měsíce. Nebo změřte a nasbírejte data za posledních 30 dní a na konci 30denního období je analyzujte.
 

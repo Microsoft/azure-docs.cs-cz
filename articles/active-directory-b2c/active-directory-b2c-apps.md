@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 116abd259d11e66be2dc158d833c569f06aaa923
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 5324f1ed92ae4513dcd877853cb6fa2f4c7dd8f3
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446371"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497954"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikací, které lze použít v Active Directory B2C
 
@@ -108,7 +108,7 @@ Chcete-li zjistit, jak zabezpečit webové rozhraní API pomocí Azure AD B2C, p
 
 Aplikace, které jsou nainstalované na zařízeních, jako jsou mobilní i desktopové aplikace, často potřebují přístup k back endovým službám nebo webovým rozhraním API jménem uživatele. Můžete přidat vlastní činnosti správy identity pro vaše nativní aplikace a bezpečně volat back endové služby pomocí Azure AD B2C a [tok autorizačního kódu OAuth 2.0](active-directory-b2c-reference-oauth-code.md).  
 
-V tomto toku, aplikace provede [zásady](active-directory-b2c-reference-policies.md) a přijímá `authorization_code` z Azure AD poté, co uživatel vykoná zásadu. `authorization_code` Představuje oprávnění aplikace volat back endové služby jménem uživatele, který je aktuálně přihlášený. Aplikace můžete potom exchange `authorization_code` na pozadí pro `id_token` a `refresh_token`.  Aplikace můžete použít `id_token` ověřování do back endové webové rozhraní API v požadavcích HTTP. Může také použít `refresh_token` k získání nového `id_token` po vypršení platnosti toho starého.
+V tomto toku, aplikace provede [zásady](active-directory-b2c-reference-policies.md) a přijímá `authorization_code` z Azure AD poté, co uživatel vykoná zásadu. `authorization_code` Představuje oprávnění aplikace volat back endové služby jménem uživatele, který je aktuálně přihlášený. Aplikace můžete potom exchange `authorization_code` na pozadí pro `access_token` a `refresh_token`.  Aplikace můžete použít `access_token` ověřování do back endové webové rozhraní API v požadavcích HTTP. Může také použít `refresh_token` k získání nového `access_token` po vypršení platnosti toho starého.
 
 ## <a name="current-limitations"></a>Aktuální omezení
 

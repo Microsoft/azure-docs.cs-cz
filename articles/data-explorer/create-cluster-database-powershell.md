@@ -8,12 +8,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: ec012f85c4b4e93e9be475781e9da79f686cbf9e
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 86fbf5801e9ff1c8bd9dead8be14aeeea1b58a29
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417713"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472476"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Vytvoření clusteru Průzkumník dat Azure a databáze pomocí prostředí PowerShell
 
@@ -25,7 +25,7 @@ ms.locfileid: "58417713"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto rychlém startu vytvoříte cluster a databáze pomocí prostředí Powershell. Spuštěním rutin a skriptů Powershellu na Windows, Linux, nebo v [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) spolu s [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto) vytvoření a konfigurace clusterů Průzkumníka služby Azure Data a databáze.
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto rychlém startu vytvoříte cluster a databáze pomocí prostředí Powershell. Spuštěním rutin a skriptů Powershellu na Windows, Linux, nebo v [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) s [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto) vytvoření a konfigurace clusterů Průzkumníka služby Azure Data a databáze.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -47,12 +47,12 @@ Následující kroky nejsou nutné, pokud spouštíte příkazy ve službě Azur
     Connect-AzAccount
     ```
 
-2. Nastavte předplatné, ve kterém chcete vytvoření clusteru:
+1. Nastavte předplatné, ve kterém chcete vytvoření clusteru:
 
     ```azurepowershell-interactive
      Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
-3. Při spuštění rozhraní příkazového řádku Azure, místně nebo ve službě Azure Cloud Shell, musíte nainstalovat modul Az.Kusto na vašem zařízení:
+1. Při spuštění rozhraní příkazového řádku Azure, místně nebo ve službě Azure Cloud Shell, musíte nainstalovat modul Az.Kusto na vašem zařízení:
     
     ```azurepowershell-interactive
      Install-Module -Name Az.Kusto  
@@ -74,7 +74,7 @@ Následující kroky nejsou nutné, pokud spouštíte příkazy ve službě Azur
 
     Existují další volitelné parametry, které můžete použít, jako je například kapacita clusteru.
 
-2. Spusťte následující příkaz a zkontrolujte, zda byl úspěšně vytvořen cluster:
+1. Spusťte následující příkaz a zkontrolujte, zda byl úspěšně vytvořen cluster:
 
     ```azurepowershell-interactive
     Get-AzKustoCluster -Name mykustocluster --ResourceGroupName testrg
@@ -98,7 +98,7 @@ Pokud výsledek obsahuje `provisioningState` s `Succeeded` hodnotu, pak clusteru
    | SoftDeletePeriod | *3650:00:00:00* | Množství času, které data zůstanou k dispozici pro dotazy. |
    | HotCachePeriod | *3650:00:00:00* | Množství času, které data zůstanou v mezipaměti. |
 
-2. Spuštěním následujícího příkazu zobrazte databázi, kterou jste vytvořili:
+1. Spuštěním následujícího příkazu zobrazte databázi, kterou jste vytvořili:
 
     ```azurepowershell-interactive
     Get-AzKustoDatabase -ClusterName mykustocluster --ResourceGroupName testrg -Name mykustodatabase

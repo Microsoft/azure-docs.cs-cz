@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: f9df65d143fbb0eaf6276a0f38971e19c0741786
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: c7031e54c354392379fee83dbf2a777ba726c5e7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370954"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480049"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Připojení počítačů s Windows do Azure monitoru
 
@@ -138,7 +138,7 @@ Chcete-li načíst kód přímo z instalačního balíčku agenta, můžete pou�
 2.  Vytvoření proměnných assetů Azure Automation pro *OPSINSIGHTS_WS_ID* a *OPSINSIGHTS_WS_KEY*. Nastavte *OPSINSIGHTS_WS_ID* ID pracovního prostoru Log Analytics a nastavte *OPSINSIGHTS_WS_KEY* na primární klíč pracovního prostoru.
 3.  Zkopírujte skript a uložte ho jako MMAgent.ps1.
 
-    ```PowerShell
+    ```powershell
     Configuration MMAgent
     {
         $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"

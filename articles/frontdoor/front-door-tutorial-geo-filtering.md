@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 371347149b3c3f14784ba62365cfd6224ded99d1
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: 2553dccaa57e5340bf36bbccdf7826d242716300
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407330"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472629"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Jak nastavit zásadu geografické filtrování WAF pro vaše branou
 V tomto kurzu se dozvíte, jak pomocí Azure PowerShellu vytvořit ukázkovou zásadu geografického filtrování a přidružit ji k existujícímu hostiteli front-endu služby Front Door. Tato ukázková zásada geografického filtrování bude blokovat požadavky ze všech zemí s výjimkou USA.
@@ -42,6 +42,11 @@ Ujistěte se, že máte aktuální verzi modul PowerShellGet nainstalovaný. Spu
 ```
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
+#### <a name="install-azfrontdoor-module"></a>Instalace modulu Az.FrontDoor 
+
+```
+Install-Module -Name Az.FrontDoor -AllowPrerelease
+```
 
 ### <a name="create-a-front-door-profile"></a>Vytvoření profilu branou
 Vytvoření profilu branou podle pokynů v tématu [rychlý start: Vytvoření profilu branou](quickstart-create-front-door.md).

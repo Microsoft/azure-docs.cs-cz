@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cc5b40b6a800ff185c6c52652435b558fabe091f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e3311aab74f58e3936039393eab76dee12b83ea
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57873882"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496934"
 ---
 # <a name="object-detection"></a>Detekce objektů
 
@@ -97,7 +97,7 @@ Je důležité si uvědomit omezení objektu zjišťování můžete vyhnout neb
 
 ## <a name="use-the-api"></a>Použití rozhraní API
 
-Funkce zjišťování objektu je součástí [analyzovat Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) rozhraní API. Můžete volat toto rozhraní API prostřednictvím nativní sadou SDK nebo volání REST. Když získáte úplnou odpověď JSON, analyzovat řetězec pro obsah `"objects"` oddílu.
+Funkce zjišťování objektu je součástí [analyzovat Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) rozhraní API. Můžete volat toto rozhraní API prostřednictvím nativní sadou SDK nebo volání REST. Zahrnout `Objects` v **visualFeatures** parametr dotazu. Potom, když dostanete úplnou odpověď JSON, jednoduše analýzu řetězce pro obsah `"objects"` oddílu.
 
 * [Rychlé zprovoznění: Analýza obrázku (sadu .NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 * [Rychlé zprovoznění: Analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)

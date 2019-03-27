@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: c64a3455e1189b83558707a96dc80b88dc242b48
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eaea0719aa8ca981da68841dae365decdd3c860e
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181652"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499858"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Přednastavení přizpůsobení Media Encoder Standard  
 
@@ -28,6 +28,9 @@ ms.locfileid: "58181652"
 Tento článek ukazuje, jak provádět pokročilé kódování pomocí Media Encoder Standard (MES) pomocí vlastního nastavení. Tento článek používá k vytvoření úlohu kódování a úlohu, která spustí tuto úlohu .NET.  
 
 Tento článek ukazuje, jak přizpůsobit přednastavení provedením [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) přednastavení, jednak snižuje počet vrstev. [Přizpůsobení kodéru Media Encoder Standard přednastavení](media-services-advanced-encoding-with-mes.md) článku ukazuje vlastní předvolby, podle kterých je možné provádět pokročilé úlohy kódování.
+
+> [!NOTE]
+> Vlastní předvolby je popsáno v tomto článku nelze použít v [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/) transformace nebo příkazů rozhraní příkazového řádku. Zobrazit [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md) další podrobnosti.
 
 ## <a id="customizing_presets"></a> Přizpůsobení přednastavení MES
 
@@ -260,6 +263,11 @@ namespace CustomizeMESPresests
     }
 }
 ```
+
+## <a name="see-also"></a>Další informace najdete v tématech
+
+- [Kódování s vlastní transformace s využitím rozhraní příkazového řádku](../latest/custom-preset-cli-howto.md)
+- [Kódování pomocí Media Services v3](../latest/encoding-concept.md)
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Popisuje procesy, které tento power Azure Dev mezery a jak jsou nakonfigurované v konfiguračním souboru azds.yaml
 keywords: azds.yaml prostory vývoj Azure, vývoj mezery, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: b6f178628961001c4022ffc86bc13ee0e529e3c4
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 622a0780d74618fe694e5b9da0327490e0ec38dd
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438967"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500555"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak funguje Azure Dev mezery a je nakonfigurován
 
@@ -96,7 +96,7 @@ Když Azure Dev prostory je povolené ve vašem clusteru AKS, nainstaluje kontro
 * Odebere všechny Kubernetes oboru názvů s názvem *azds*, pokud existuje a vytvoří nový.
 * Nasadí do Kubernetes inicializátoru objektu.
 
-! [Azure Dev prostory připravit cluster]] (media/how-dev-spaces-works/prepare-cluster.svg)
+![Příprava Azure Dev prostory clusteru](media/how-dev-spaces-works/prepare-cluster.svg)
 
 Chcete-li používat Azure Dev mezery, musí být alespoň jedna mezera vývoj. Azure Dev prostory používá obory názvů Kubernetes v clusteru AKS dev prostory. Při instalaci kontroleru vyzve k vytvoření nového oboru názvů Kubernetes nebo zvolte existující obor názvů pro použití jako první prostor vývoj. Pokud obor názvů je určena jako vývoj místa, kontroler přidá *azds.io/space=true* popisku na tento obor názvů k jeho identifikaci jako vývoj místa. Počáteční vývoj místo vytvoření nebo určení je standardně vybraná, po přípravě vašeho clusteru. Pokud je vybrána mezeru, se používá mezerami vývoj Azure pro vytvoření nové úlohy.
 

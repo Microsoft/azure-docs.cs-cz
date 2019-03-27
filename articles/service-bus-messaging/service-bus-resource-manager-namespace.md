@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: a79565661ae11e70364d64503b3b11bdeabeabdb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e5c4eca772cf17f04ea10f4d5ae166ea41eaa830
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899753"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496917"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů služby Service Bus pomocí šablony Azure Resource Manageru
 V tomto rychlém startu vytvoříte šablonu Azure Resource Manageru, která vytvoří obor názvů služby Service Bus typu **zasílání zpráv** s **standardní** SKU. Tento článek také definuje parametry, které jsou určené pro spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky. Další informace o vytváření šablon najdete v tématu [Tvorba šablon Azure Resource Manageru][Authoring Azure Resource Manager templates]. Úplnou šablonu najdete v článku [šablony obor názvů služby Service Bus] [ Service Bus namespace template] na Githubu.
@@ -44,7 +44,7 @@ Pokud chcete vytvořit a nasadit šablonu ručně, projděte si následující �
 ## <a name="prerequisites"></a>Požadavky
 K dokončení tohoto rychlého startu potřebujete předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-Pokud chcete použít **prostředí Azure PowerShell** k nasazení šablony Resource Manageru [instalace Azure Powershellu](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.7.0).
+Pokud chcete použít **prostředí Azure PowerShell** k nasazení šablony Resource Manageru [instalace Azure Powershellu](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
 
 Pokud chcete použít **rozhraní příkazového řádku Azure** k nasazení šablony Resource Manageru [instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -205,6 +205,6 @@ V tomto článku jste vytvořili obor názvů služby Service Bus. Další rychl
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Service Bus namespace template]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
-[Service Bus pricing and billing]: service-bus-pricing-billing.md
+[Service Bus pricing and billing]: https://azure.microsoft.com/pricing/details/service-bus/
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md

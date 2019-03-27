@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 64fb3acf9b134b7188d316633bc663d7dd9b14b8
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 573c205cd2e208a1cb2b526d96fb08ca21331c80
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760218"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481319"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Odeslání metrik hostovaného operačního systému k úložišti Azure Monitor metriky s použitím šablony Azure Resource Manageru pro škálovací sadu virtuálních počítačů s Windows
 
@@ -242,12 +242,12 @@ Pokud chcete nasadit šablonu Resource Manageru, pomocí Azure Powershellu:
 1. Získat seznam vašich předplatných s použitím `Get-AzSubscription`.
 1. Nastavení předplatného budete vytvořit nebo aktualizovat virtuální počítač: 
 
-   ```PowerShell
+   ```powershell
    Select-AzSubscription -SubscriptionName "<Name of the subscription>" 
    ```
 1. Vytvořte novou skupinu prostředků pro virtuální počítač se nasazuje. Spusťte následující příkaz: 
 
-   ```PowerShell
+   ```powershell
     New-AzResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
    ```
 
@@ -259,7 +259,7 @@ Pokud chcete nasadit šablonu Resource Manageru, pomocí Azure Powershellu:
    > [!NOTE]  
    > Pokud chcete aktualizovat existující škálovací sadě, přidejte **-režim přírůstkového** na konec příkazu. 
  
-   ```PowerShell
+   ```powershell
    New-AzResourceGroupDeployment -Name "VMSSWADTest" -ResourceGroupName "VMSSWADtestGrp" -TemplateFile "<File path of your azuredeploy.JSON file>" -TemplateParameterFile "<File path of your azuredeploy.parameters.JSON file>"  
    ```
 
