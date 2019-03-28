@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 51be74d0adbd5ce75234be2a5b7c99fcd36ca91c
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: e33d014bd2dddf0c7310727229f8137c9f181325
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295262"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540971"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -77,14 +77,12 @@ Zobrazit vaše kvóty účtu Batch na [webu Azure portal][portal].
 1. Vyberte **účty Batch** na portálu vyberte účet Batch, který vás zajímá.
 1. Vyberte **kvóty** v nabídce účtu Batch.
 1. Zobrazit kvóty aktuálně používané k účtu Batch
-   
+
     ![Kvóty účtu batch][account_quotas]
-
-
 
 ## <a name="increase-a-quota"></a>Navýšení kvóty
 
-Postupujte podle těchto kroků žádost o kvótu zvýšit pro váš účet Batch nebo předplatnému pomocí [webu Azure portal][portal]. Typ zvýšení kvóty, závisí na režimu přidělování fondů pro váš účet Batch.
+Postupujte podle těchto kroků žádost o kvótu zvýšit pro váš účet Batch nebo předplatnému pomocí [webu Azure portal][portal]. Typ zvýšení kvóty, závisí na režimu přidělování fondů pro váš účet Batch. Požádat o zvýšení kvóty, je nutné uvést chcete zvýšit kvótu pro virtuální počítače řady. Při použití zvýšení kvóty, platí pro všechny řady virtuálních počítačů.
 
 ### <a name="increase-a-batch-cores-quota"></a>Zvýšit kvótu pro jádra služby Batch 
 

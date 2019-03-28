@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 04da80cd5c30d0556dc681b7bff412391aa2bcda
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ab71b8d3af573f62e69c02564c237ad433962ff9
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107725"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541226"
 ---
 # <a name="backup-and-restore"></a>Zálohování a obnovení
 
@@ -416,10 +416,10 @@ For snapshot of the volume storing the boot LUN
 Podrobnosti o parametrech jsou následující: 
 
 - První parametr určuje typ zálohy snímku. Povolené hodnoty jsou **hana**, **protokoly**, a **spouštěcí**. 
-- Parametr **<HANA Large Instance Type>** je potřebné pro spouštěcí svazek pouze zálohy. Existují dvě platné hodnoty "TypeI" nebo "TypeII" závislé na jednotce velké Instance HANA. Pokud chcete zjistit, jaký typ jednotky je naleznete v tématu [architektura v Azure a SAP HANA (velké instance) přehled](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).  
-- Parametr **< snapshot_prefix >** je snímek nebo zálohování popisek pro typ snímku. Má dva účely: jeden je pro vás s názvem, abyste věděli, co tyto snímky se týkají. Druhým účelem je pro skript *azure\_hana\_backup.pl* k určení počtu snímků úložiště, které jsou zachovány v rámci tohoto konkrétního popisku. Pokud naplánujete dvě zálohy snímků úložiště stejného typu (například **hana**), dva různé popisky a určit, že by měly být neustále 30 snímků pro každé, skončíte se 60 úložiště snímků svazků vliv. Pouze alfanumerické ("A-Z, a-z, 0-9"), podtržítka ("_") a pomlčka ("-") jsou povolené znaky. 
-- Parametr **< snapshot_frequency >** je vyhrazen pro budoucí vývoj a nemá žádný vliv. Nastavte na "3min" při provádění zálohy typu **protokolu**a "15 min" při provádění jiné typy zálohování.
-- Parametr **<number of snapshots retained>** definuje uchování snímků nepřímo tak, že definujete počet snímků se stejnou předponou snímku (popisek). Tento parametr je důležité pro naplánované spuštění prostřednictvím procesu cron. Pokud počtu snímků pomocí stejné snapshot_prefix překračuje počet Dal tento parametr, odstraní se nejstarší snímek před spuštěním nový snímek úložiště.
+- Parametr  **\<typu velké Instance HANA >** je potřebné pro spouštěcí svazek pouze zálohy. Existují dvě platné hodnoty "TypeI" nebo "TypeII" závislé na jednotce velké Instance HANA. Pokud chcete zjistit, jaký typ jednotky je naleznete v tématu [architektura v Azure a SAP HANA (velké instance) přehled](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).  
+- Parametr  **\<snapshot_prefix >** je snímek nebo zálohování popisek pro typ snímku. Má dva účely: jeden je pro vás s názvem, abyste věděli, co tyto snímky se týkají. Druhým účelem je pro skript *azure\_hana\_backup.pl* k určení počtu snímků úložiště, které jsou zachovány v rámci tohoto konkrétního popisku. Pokud naplánujete dvě zálohy snímků úložiště stejného typu (například **hana**), dva různé popisky a určit, že by měly být neustále 30 snímků pro každé, skončíte se 60 úložiště snímků svazků vliv. Pouze alfanumerické ("A-Z, a-z, 0-9"), podtržítka ("_") a pomlčka ("-") jsou povolené znaky. 
+- Parametr  **\<snapshot_frequency >** je vyhrazen pro budoucí vývoj a nemá žádný vliv. Nastavte na "3min" při provádění zálohy typu **protokolu**a "15 min" při provádění jiné typy zálohování.
+- Parametr  **\<počet snímků, které uchovávají >** definuje uchování snímků nepřímo tak, že definujete počet snímků se stejnou předponou snímku (popisek). Tento parametr je důležité pro naplánované spuštění prostřednictvím procesu cron. Pokud počtu snímků pomocí stejné snapshot_prefix překračuje počet Dal tento parametr, odstraní se nejstarší snímek před spuštěním nový snímek úložiště.
 
 V případě Škálováním skript provede další kontroly k zajištění, zda máte přístup všechny servery pro HANA. Skript také zkontroluje, že všechny instance HANA vrátí příslušný stav instance předtím, než vytvoří snímek SAP HANA. Snímek SAP HANA je následován snímek úložiště.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 99732a61ab64f8600ca368d4af5f47451014a993
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c70e88a572bc261ad9d25f9a742b1987d0c19b44
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760746"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540835"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Problém šablon ve službě Azure API Management
 Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu pro vývojáře pomocí sady šablon, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a do editoru podle vašeho výběru, jako například [DotLiquid pro profesionální návrháře využívající](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), nebo umístění zadaná sada [prostředky řetězce, které](api-management-template-resources.md#strings), [glyfů prostředky](api-management-template-resources.md#glyphs), a [stránce ovládací prvky](api-management-page-controls.md), máte velkou flexibilitu konfigurovat obsahu stránek podle svých potřeb, pomocí těchto šablon.  
@@ -99,11 +99,11 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|Problémy|Kolekce [problém](api-management-template-data-model-reference.md#Issue) entity.|Problémy, které jsou viditelné pro aktuálního uživatele.|  
-|Stránkování|[Stránkování](api-management-template-data-model-reference.md#Paging) entity.|Informace o stránkování pro kolekci aplikací.|  
-|Ověření identity|Boolean|Určuje, zda má aktuální uživatel je přihlášený ke portálu pro vývojáře.|  
-|CanReportIssues|Boolean|Určuje, zda má aktuální uživatel oprávnění k souboru k problému.|  
-|Search|string|Tato vlastnost je zastaralý a neměl by se používat.|  
+|`Issues`|Kolekce [problém](api-management-template-data-model-reference.md#Issue) entity.|Problémy, které jsou viditelné pro aktuálního uživatele.|  
+|`Paging`|[Stránkování](api-management-template-data-model-reference.md#Paging) entity.|Informace o stránkování pro kolekci aplikací.|  
+|`IsAuthenticated`|Boolean|Určuje, zda má aktuální uživatel je přihlášený ke portálu pro vývojáře.|  
+|`CanReportIssues`|Boolean|Určuje, zda má aktuální uživatel oprávnění k souboru k problému.|  
+|`Search`|string|Tato vlastnost je zastaralý a neměl by se používat.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   

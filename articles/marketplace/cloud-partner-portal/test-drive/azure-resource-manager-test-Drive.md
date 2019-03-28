@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 615005e265f199cd6950123aa2af8b26f4fa4637
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2fe1a1fc1ff82415a5c2f88c72ae707b12cd5283
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456808"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541158"
 ---
-# <a name="azure-resource-manager-test-drive"></a>Vyzkoušejte Azure Resource Manageru
+# <a name="azure-resource-manager-test-drive"></a>Testovací verze Azure Resource Manageru
 
 Tento článek je určený pro vydavatele, kteří mají jejich nabídek zveřejněných na webu Azure Marketplace nebo kteří jsou v AppSource, ale má být sestaveno jejich testovací verze s pouze prostředky Azure.
 
@@ -51,7 +51,7 @@ Tady je proces vytváření Azure Resource Manageru testovací verze:
 
 Nejdůležitější část o vytvoření Azure Resource Manageru Test Drive je určit, jaké scénáře mají vaši zákazníci práce. Je, že brána firewall a chcete je ukázka, jak dobře zpracování útoků prostřednictvím injektáže skriptu? Se, že je produkt úložiště a chcete ukázka jak rychlé a snadné řešení komprimuje soubory?
 
-Ujistěte se, ručitel strávit dostatečné množství času hodnocení, jaké jsou nejlepší způsoby předvést váš produkt. Konkrétně kolem všechny požadované prostředky budete potřebovat, jako je balení dostatečně jednodušší šablony Resource Manageru.
+Ujistěte se, že věnovat dostatečné množství času hodnocení, jaké jsou nejlepší způsoby předvést váš produkt. Konkrétně kolem všechny požadované prostředky budete potřebovat, jako je balení dostatečně jednodušší šablony Resource Manageru.
 
 Chcete-li pokračovat v našem příkladu brány firewall, může být architektury, že budete potřebovat veřejnou IP adresu URL pro vaši službu a jinou veřejnou IP adresu URL webu, který chrání vaše brána firewall. Každý IP je nasazené ve virtuálním počítači a společně se skupinu zabezpečení sítě a síťové rozhraní připojené.
 

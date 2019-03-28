@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 994612f390cb6c6dcb3b4c2acaaec839ef461d2c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 07a488556bc899efa80d67ceb984b60f461b9742
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999559"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541022"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure virtual machine scale sets s nejčastější dotazy
 
@@ -243,7 +243,7 @@ Příklad najdete v tématu [šablonu pro rychlý start Githubu 101-vm-sshkey](h
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Při spuštění `Update-AzVmss` po přidání více než jeden certifikát ze stejné služby key vault, zobrazí následující zpráva:
 
->Update-AzVmss: Tajný kód seznam obsahuje opakované instance /subscriptions/ < my-subscription-id > / resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, což se nepovoluje.
+>Update-AzVmss: Tajný kód seznam obsahuje opakované instance /subscriptions/\<Moje id předplatného > / resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, což se nepovoluje.
 
 To může nastat, pokud se pokusíte do stejného trezoru namísto použití nového certifikátu trezoru pro existující zdrojový trezor je znovu přidat. `Add-AzVmssSecret` Příkaz nebude fungovat správně při přidávání dalších tajných kódů.
 
@@ -303,7 +303,7 @@ Komponenta CRP nezachová tajné klíče zákazníků. Pokud spustíte `stop dea
 
 Tento problém není dojde při horizontálním navýšení kapacity, protože je kopie v mezipaměti tajný klíč v Azure Service Fabric (v modelu fabric jeden tenant).
 
-### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>Proč musím zadávat přesné umístění pro adresu URL certifikátu (https://<name of the vault>.vault.azure.net:443/secrets/<exact location>), jak je uvedeno v [scénáře zabezpečení clusteru Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)?
+### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>Proč musím zadávat přesné umístění pro adresu URL certifikátu (protokol https:\/\/\<název trezoru >.vault.azure.net:443/secrets/\<přesné umístění >), jak je uvedeno v [Service Fabric scénáře zabezpečení clusteru](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)?
 
 Dokumentace ke službě Azure Key Vault hlásí, že REST API služby získat tajný kód by měl vrátit nejnovější verzi tajného kódu, pokud není zadána verze.
 

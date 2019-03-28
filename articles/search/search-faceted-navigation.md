@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/10/2017
+ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f1d557396f17357afd6f9e5d701e946668fcee65
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b5c7050ac006ea2500854f8f41b134895e5e0061
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861039"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541209"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak v Azure Search implementovat fasetovou navigaci
 Fasetová navigace je filtrační mechanismus, který poskytuje samořízeného k podrobnostem námětů a navigace ve vyhledávání aplikací. Termín 'Fasetové navigace' může být obeznámeni, ale pravděpodobně ho před jste použili. Jak ukazuje následující příklad, Fasetové navigace není nic jiného než kategorie slouží k filtrování výsledků.
@@ -34,7 +34,7 @@ Psaní kódu, který vytvoří dotazy vývoje aplikací, představuje velkou č�
 ## <a name="sample-code-and-demo"></a>Ukázkový kód a ukázky
 Tento článek používá portál pro prohledávání úlohy jako příklad. V příkladu je implementovaný jako aplikaci ASP.NET MVC.
 
--   A testování pracovní si online ukázku v [Azure Search úlohy portálu Demo](https://azjobsdemo.azurewebsites.net/).
+-   A testování pracovní si online ukázku v [Azure Search úlohy portálu Demo](http://azjobsdemo.azurewebsites.net/).
 
 -   Stáhněte si kód z [Azure-Samples úložišti na Githubu](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -364,7 +364,7 @@ Existují dva geoprostorové funkce ve službě Azure Search **geo.distance** a 
 * **Geo.distance** funkce vrací vzdálenost v kilometrech mezi dvěma body. Jeden bod je pole a druhá je konstantní předanou v rámci filtru. 
 * **Geo.intersects** funkce vrátí hodnotu true, pokud danému bodu v rámci dané mnohoúhelníku. Bod je pole a mnohoúhelník je zadána jako konstanta seznam souřadnice předanou v rámci filtru.
 
-Můžete najít příklady filtrů v [syntaxe výrazů OData (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+Můžete najít příklady filtrů v [syntaxe výrazů OData (Azure Search)](query-odata-filter-orderby-syntax.md).
 
 <a name="tryitout"></a>
 

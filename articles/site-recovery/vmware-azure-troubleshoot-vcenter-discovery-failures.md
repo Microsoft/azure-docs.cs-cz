@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: v-doglov
-ms.openlocfilehash: a0707ad356e51a9e4d4f73c54085fe9736bb0752
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c598c5e238458c010500579c5371622b85e71de0
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56885295"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540801"
 ---
-# <a name="troubleshoot-vcenter-discovery-failures"></a>Řešení potíží se selháním zjišťování serveru vCenter
+# <a name="troubleshoot-vcenter-discovery-failures"></a>Řešení potíží se selháním zjišťování vCenter
 
 Tento článek pomůže při řešení problémů, ke kterým dochází z důvodu selhání rozpoznávání VMware vCenter.
 
@@ -46,8 +46,8 @@ Obecně platí proxy server slouží ke komunikaci k veřejným sítím; jako je
 
 Při výskytu tohoto problému se dojít k následující situace:
 
-- VCenter server <vCenter> není dostupný, protože došlo k chybě: Vzdálený server vrátil chybu: (503) server není k dispozici
-- VCenter server <vCenter> není dostupný, protože došlo k chybě: Vzdálený server vrátil chybu: Ke vzdálenému serveru se nelze připojit.
+- VCenter server \<vCenter > není dosažitelný kvůli chybě: Vzdálený server vrátil chybu: (503) server není k dispozici
+- VCenter server \<vCenter > není dosažitelný kvůli chybě: Vzdálený server vrátil chybu: Ke vzdálenému serveru se nelze připojit.
 - Nelze se připojit k serveru vCenter/ESXi.
 
 Řešení tohoto problému:
