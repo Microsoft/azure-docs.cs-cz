@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: d70ad65f5bbc4424b4224cf601d903ad7ec10691
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: f44161586f9f4e121001b9f5e285b0e1e1dcd9d1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405109"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518741"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Jak indexovat objektů BLOB JSON pomocí indexeru Azure Search Blob
 V tomto článku se dozvíte, jak nakonfigurovat Azure Search blob [indexer](search-indexer-overview.md) extrahujte strukturované obsah z dokumentů JSON ve službě Azure Blob storage a usnadnit prohledávatelná ve službě Azure Search. Tento pracovní postup vytvoří index Azure Search a načte se existující text extrahovaný z objektů BLOB JSON. 
@@ -142,7 +142,7 @@ Zkopírujte následující čtyři hodnoty do poznámkového bloku tak, aby vlo�
 
 + Název služby Azure Search
 + Klíč správce služby Azure Search
-+ Název účtu služby Azure storage
++ Název účtu úložiště Azure
 + Klíč účtu úložiště Azure
 
 Tyto hodnoty můžete najít na portálu:
@@ -211,7 +211,7 @@ Konfigurace indexeru je v textu požadavku. Vyžaduje zdroje dat a index prázdn
 
 Plán a parametry jsou volitelné. Vynecháte-li je, spuštění indexeru okamžitě, pomocí `json` analýzy režim.
 
-Tento konkrétní indexer nezahrnuje [mapování polí](#field-mappings). V rámci definice indexeru můžete nechat **mapování polí** Pokud pole cílovým indexem vyhledávání neodpovídají vlastnosti ve zdrojovém dokumentu JSON. 
+Tento konkrétní indexer neobsahuje mapování polí. V rámci definice indexeru můžete nechat **mapování polí** Pokud pole cílovým indexem vyhledávání neodpovídají vlastnosti ve zdrojovém dokumentu JSON. 
 
 
 ### <a name="rest-example"></a>Příklad REST
@@ -253,7 +253,7 @@ Všechny indexery vyžadují cílový index, který přijímá data. Text žádo
 
 ### <a name="indexer-request"></a>Žádost o indexeru
 
-Tento požadavek zobrazuje indexeru se plně zadaný. Zahrnuje [mapování polí](#field-mappings), které byly vynechány v předchozích příkladech. Odvolat tento "plán", "parametrů" a "fieldMappings" jsou volitelné, dokud není k dispozici výchozí. Vynechání "plán" způsobí, že indexer spustit okamžitě. Vynechání "parsingMode" způsobí, že index, který chcete použít výchozí nastavení "json".
+Tento požadavek zobrazuje indexeru se plně zadaný. Obsahuje mapování polí, které byly vynechány v předchozích příkladech. Odvolat tento "plán", "parametrů" a "fieldMappings" jsou volitelné, dokud není k dispozici výchozí. Vynechání "plán" způsobí, že indexer spustit okamžitě. Vynechání "parsingMode" způsobí, že index, který chcete použít výchozí nastavení "json".
 
 Vytvoření indexeru Azure Search aktivuje data importovat. Pokud jste zadali jednu poběží podle plánu okamžitě a po tomto datu.
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/25/2019
+ms.date: 03/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 31a50d1dab0d5b62ab4dd549127e9092148bd88c
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 8e07678604797e7e2090f5fefcdb3f3adff40161
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438083"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521767"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Co je Azure Data Box Edge? 
 
@@ -102,9 +102,9 @@ Fyzické zařízení Data Box Edge, prostředek Azure a účet cílového úlož
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si [systémové požadavky služby Data Box Edge](https://aka.ms/dbe-docs).
-- Seznamte se s [omezeními služby Data Box Edge](https://aka.ms/dbe-docs).
-- Rychle nasaďte [Azure Data Box Edge](https://aka.ms/dbe-docs) na webu Azure Portal.
+- Přečtěte si [systémové požadavky služby Data Box Edge](data-box-edge-system-requirements.md).
+- Seznamte se s [omezeními služby Data Box Edge](data-box-edge-limits.md).
+- Rychle nasaďte [Azure Data Box Edge](data-box-edge-deploy-prep.md) na webu Azure Portal.
 
 
 

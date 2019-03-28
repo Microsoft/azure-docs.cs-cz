@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0192b88525d326840283f79ecea7027516ce8c7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 04490abb8b7f3f4c39e4134a314429e190db5174
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483434"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540784"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Vysoká dostupnost SAP NetWeaver nainstalovat Windows převzetí služeb při selhání clusteru a sdílenou složku pro SAP ASCS/SCS instance v Azure
 
@@ -278,7 +278,7 @@ New-SmbShare -Name saploc -Path c:\usr\sap -FullAccess "BUILTIN\Administrators",
 
 Vytvořte následující svazek a sdílenou složku v clusteru SOFS:
 
-* Soubor SAP GLOBALHOST C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS\ struktura v clusteru SOFS sdílený svazek (CSV)
+* Soubor SAP GLOBALHOST `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` struktura v clusteru SOFS sdílený svazek (CSV)
 
 * SAPMNT sdílené složky
 
@@ -347,8 +347,8 @@ Proveďte následující kroky:
 ## <a name="move-the-sys-folder-to-the-sofs-cluster"></a>Přesunout \SYS\... složky do clusteru SOFS
 
 Proveďte následující kroky:
-1. Zkopírujte složku SYS (například C:\usr\sap\\<SID>\SYS) z jednoho z ASC/SCS uzly clusteru do clusteru SOFS (třeba kvůli C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS).
-2. Odstranit C:\usr\sap\\<SID>\SYS složku z obou uzlů clusteru ASC/SCS.
+1. Zkopírujte složku SYS (například `C:\usr\sap\<SID>\SYS`) z jednoho z ASC/SCS uzly clusteru do clusteru SOFS (například `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS`).
+2. Odstranit `C:\usr\sap\<SID>\SYS` složku z obou uzlů clusteru ASC/SCS.
 
 ## <a name="update-the-cluster-security-setting-on-the-sap-ascsscs-cluster"></a>Aktualizace nastavení zabezpečení clusteru v clusteru SAP ASCS/SCS
 
@@ -374,7 +374,7 @@ Vytvoření názvu sítě clusteru SAP ASCS/SCS (například **pr1-ascs [10.0.6.
 
 ## <a name="update-the-default-and-sap-ascsscs-instance-profile"></a>Aktualizovat výchozí a profil instance SAP ASCS/SCS
 
-K použití nového názvu SAP ASCS/SCS virtuálního hostitele a SAP název globální hostitele, je nutné aktualizovat výchozí a profil instance SAP ASCS/SCS \<SID >_ASCS/SCS\<Nr >_<Host>.
+K použití nového názvu SAP ASCS/SCS virtuálního hostitele a SAP název globální hostitele, je nutné aktualizovat výchozí a profil instance SAP ASCS/SCS \<SID >_ASCS/SCS\<Nr >_\<hostitele >.
 
 
 | Staré hodnoty |  |
@@ -459,7 +459,7 @@ Nový soubor saprc.dll se nainstaluje do obou uzlů clusteru ASC/SCS.
 
 Další informace najdete v tématu [1596496 Poznámka SAP – jak aktualizovat typ prostředku SAP knihovny DLL pro sledování prostředků clusteru][1596496].
 
-## <a name="create-a-sap-sid-cluster-group-network-name-and-ip"></a>Vytvoření SAP <SID> skupiny, síťový název a IP clusteru
+## <a name="create-a-sap-sid-cluster-group-network-name-and-ip"></a>Vytvoření SAP \<SID > skupiny, síťový název a IP clusteru
 
 Chcete-li vytvořit SAP \<SID > Skupina clusteru, název sítě ASCS/SCS a odpovídající IP adresy, spusťte následující rutinu Powershellu:
 

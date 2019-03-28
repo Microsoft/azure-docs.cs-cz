@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 92c09e7defe159818b22bc8275d011d05512aa66
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 978b865f6dd7e3427a0139e7e71ed4b2d937fbe5
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446580"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517296"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive Apache s Apache Hadoop v HDInsight
 
@@ -24,22 +24,14 @@ Zjistěte, jak spouštět dotazy Hive pomocí zobrazení Hive Apache Ambari. Zob
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Apache Hadoop s linuxem v clusteru HDInsight verze 3.4 nebo vyšší.
-
-  > [!IMPORTANT]  
-  > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
+* Cluster Hadoop v HDInsight. Zobrazit [Začínáme s HDInsight v Linuxu](./apache-hadoop-linux-tutorial-get-started.md).
 * Webový prohlížeč
 
 ## <a name="run-a-hive-query"></a>Spuštění dotazu Hive
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Z [webu Azure portal](https://portal.azure.com/), vyberte svůj cluster.  Zobrazit [výpisu a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters) pokyny. Cluster se otevře v novém okně portálu.
 
-2. Vyberte svůj cluster HDInsight a pak vyberte **zobrazení Ambari** z **rychlé odkazy** oddílu.
-
-    ![Části Rychlé odkazy na portálu](./media/apache-hadoop-use-hive-ambari-view/quicklinks.png)
-
-    Po zobrazení výzvy k ověření pomocí přihlášení ke clusteru (výchozí `admin`) účtu jméno a heslo, které jste zadali při vytváření clusteru.
+2. Z **řídicí panely clusteru**vyberte **zobrazení Ambari**. Po zobrazení výzvy k ověření pomocí přihlášení ke clusteru (výchozí `admin`) účtu jméno a heslo, které jste zadali při vytváření clusteru.
 
 3. V seznamu zobrazení, vyberte __zobrazení Hive__.
 
@@ -81,30 +73,30 @@ Zjistěte, jak spouštět dotazy Hive pomocí zobrazení Hive Apache Ambari. Zob
 
    * `SELECT`: Počet všech řádků, kde t4 sloupec obsahuje hodnotu [Chyba] vybere.
 
-     > [!IMPORTANT]  
-     > Nechte __databáze__ výběr na __výchozí__. V příkladech v tomto dokumentu pomocí výchozí databáze je součástí HDInsight.
+   > [!IMPORTANT]  
+   > Nechte __databáze__ výběr na __výchozí__. V příkladech v tomto dokumentu pomocí výchozí databáze je součástí HDInsight.
 
-5. Chcete-li spustit dotaz, použijte **Execute** tlačítko pod listem. Tlačítko oranžově a se text změní na **Zastavit**.
+5. Chcete-li spustit dotaz, vyberte **Execute** pod listem. Tlačítko oranžově a se text změní na **Zastavit**.
 
 6. Po dokončení dotazu **výsledky** karta zobrazuje výsledky operace. Následující text je výsledek dotazu:
 
         loglevel       count
         [ERROR]        3
 
-    Můžete použít **protokoly** kartu, chcete-li zobrazit informace o vytvoření úlohy protokolování.
+    Můžete použít **protokolu** kartu, chcete-li zobrazit informace o vytvoření úlohy protokolování.
 
    > [!TIP]  
-   > Stáhnout nebo uložit výsledky z **uložit výsledky** rozevíracím seznamu dialogového okna v horním levém rohu **výsledky zpracování dotazu** oddílu.
+   > Stáhnout nebo uložit výsledky z **akce** rozevíracím seznamu dialogového okna **výsledky** kartu.
 
 ### <a name="visual-explain"></a>Vysvětlují vizuálu
 
 Chcete-li zobrazit vizualizaci plán dotazu, vyberte **Visual vysvětlují** kartu pod listem.
 
-**Visual vysvětlují** zobrazení dotazu může být užitečné porozumět toku složitým dotazům. Textový ekvivalent toto zobrazení můžete zobrazit pomocí **vysvětlit** tlačítko v editoru dotazů.
+**Visual vysvětlují** zobrazení dotazu může být užitečné porozumět toku složitým dotazům.
 
 ### <a name="tez-ui"></a>Tez UI
 
-Chcete-li zobrazit uživatelského rozhraní Tez pro dotaz, vyberte **Tez** kartu pod listem.
+Chcete-li zobrazit uživatelského rozhraní Tez pro dotaz, vyberte **uživatelského rozhraní Tez** kartu pod listem.
 
 > [!IMPORTANT]  
 > Chcete-li vyřešit všechny dotazy se nepoužívá tez. Mnoho dotazů lze vyřešit bez použití Tez. 

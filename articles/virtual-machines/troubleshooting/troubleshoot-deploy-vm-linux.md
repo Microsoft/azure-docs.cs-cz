@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží s nasazením Linux virtuálního počítače v Azure | Dokumentace Microsoftu
-description: Řešení potíží s nasazením Linux virtuálního počítače v modelu nasazení Azurethe Resource Manager.
+description: Řešení potíží s nasazením Linux virtuálního počítače v modelu nasazení Azure Resource Manageru.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 56df020b7948ff41ee7710fca19d05924e118c81
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1317a4731d3598c5fba317167ba4a45d95823ca2
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729706"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539815"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Řešení potíží s nasazením Linux virtuálního počítače v Azure
 
@@ -32,11 +32,7 @@ Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, mů�
 [!INCLUDE [virtual-machines-linux-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Cluster nepodporuje požadovanou velikost virtuálního počítače
-<properties
-supportTopicIds="123456789"
-resourceTags="windows"
-productPesIds="1234, 5678"
-/>
+\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
 - Opakujte žádost, použijte menší velikost virtuálního počítače.
 - Pokud velikost pro požadovaný virtuální počítač nejde změnit:
     - Zastavte všechny virtuální počítače ve skupině dostupnosti. Klikněte na tlačítko **skupiny prostředků** > vaší skupiny prostředků > **prostředky** > dostupnosti > **virtuálních počítačů** > váš virtuální počítač >  **Zastavit**.
@@ -45,11 +41,7 @@ productPesIds="1234, 5678"
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>Cluster nemá žádné volné prostředky
-<properties
-supportTopicIds="123456789"
-resourceTags="windows"
-productPesIds="1234, 5678"
-/>
+\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
 - Zopakujte později.
 - Pokud nový virtuální počítač může být součástí do jiné skupiny dostupnosti
     - Vytvoření virtuálního počítače v různých dostupnosti (ve stejné oblasti).

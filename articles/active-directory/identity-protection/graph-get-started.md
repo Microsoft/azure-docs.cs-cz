@@ -4,7 +4,7 @@ description: Zjistěte, jak provádět dotazy Microsoft Graphu seznam rizikovýc
 services: active-directory
 keywords: Azure active directory identity protection, rizikovou událost, ohrožení zabezpečení, zásady zabezpečení, Microsoft Graphu
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: fa109ba7-a914-437b-821d-2bd98e681386
 ms.service: active-directory
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
-ms.author: markvi
-ms.reviewer: nigu
+ms.author: joflore
+ms.reviewer: sahandle
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d9935b5605bc09f000a81e7616e807a0e194e12
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8f748e10ffa8b1c8a7f4ee3dc3d151f7413179ab
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295534"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517449"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
 
-Microsoft Graph je Microsoft unified koncový bod rozhraní API a Domovská [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) rozhraní API. Existují tři rozhraní API, které poskytují informace o rizikových uživatelů a přihlášení. Prvního rozhraní API, **identityRiskEvents**, umožňuje dotazů Microsoft Graphu seznam [rizikových událostí](../reports-monitoring/concept-risk-events.md) a související informace. Druhé rozhraní API, **riskyUsers**, informace o uživatelích Identity Protection zjistilo, že rizik vám umožní dotazů Microsoft Graphu. Rozhraní API třetí **signIn**, umožňuje dotazů Microsoft Graphu informace o službě Azure AD přihlášení mají určité vlastnosti související s stav rizika, podrobnosti a úroveň. Tento článek vám pomůže začít s [připojení k Microsoft Graphu](#Connect-to-Microsoft-Graph) a [dotazování těchto rozhraní API](#Query-the-APIs). Důkladný úvod, úplnou dokumentaci a přístup ke Graph Exploreru, najdete v článku [webu Microsoft Graphu](https://graph.microsoft.io/) nebo konkrétní referenční dokumentaci pro tato rozhraní API:
+Microsoft Graph je Microsoft unified koncový bod rozhraní API a Domovská [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) rozhraní API. Existují tři rozhraní API, které poskytují informace o rizikových uživatelů a přihlášení. Prvního rozhraní API, **identityRiskEvents**, umožňuje dotazů Microsoft Graphu seznam [rizikových událostí](../reports-monitoring/concept-risk-events.md) a související informace. Druhé rozhraní API, **riskyUsers**, informace o uživatelích Identity Protection zjistilo, že rizik vám umožní dotazů Microsoft Graphu. Rozhraní API třetí **signIn**, umožňuje dotazů Microsoft Graphu informace o službě Azure AD přihlášení mají určité vlastnosti související s stav rizika, podrobnosti a úroveň. Tento článek vám pomůže začít s připojením k Microsoft Graphu a dotazování na tato rozhraní API. Důkladný úvod, úplnou dokumentaci a přístup ke Graph Exploreru, najdete v článku [webu Microsoft Graphu](https://graph.microsoft.io/) nebo konkrétní referenční dokumentaci pro tato rozhraní API:
 
 * [identityRiskEvents rozhraní API](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta)
 * [riskyUsers rozhraní API](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)

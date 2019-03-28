@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: acf338afdf33408637bf7cca79d28f5e90888eba
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 6400e3d3fa7f0317ff927f2931e705365a450770
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224436"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520662"
 ---
 # <a name="what-is-speech-to-text"></a>Co je převod řeči na text?
 
@@ -24,7 +24,7 @@ Převod řeči na text z Azure hlasové služby, označované také jako převod
 
 Ve výchozím nastavení používá služba speech to text univerzální jazykový model. Tento model se naučil pomocí dat ve vlastnictví společnosti Microsoft a je nasazena v cloudu. Je ideální pro konverzační a scénáře diktování. Pokud používáte speech to text pro rozpoznávání a přepis v jedinečné prostředí, můžete vytvořit a trénování vlastních akustických, jazyk a výslovnost modelů hluk adresu nebo slovníku specifických pro dané odvětví. 
 
-Můžete snadno zaznamenat zvuk z mikrofonu, čtení z datového proudu nebo přístup zvukové soubory ze služby storage se sadou SDK pro řeč a rozhraní REST API. Sadou SDK pro řeč podporuje WAV/PCM 16-bit, 16 kHz, zvuk jeden kanál pro rozpoznávání řeči. Další formáty zvuku jsou podporovány při použití [koncový bod REST speech to text](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#audio-formats) nebo [určené k transkripci služba batch](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
+Můžete snadno zaznamenat zvuk z mikrofonu, čtení z datového proudu nebo přístup zvukové soubory ze služby storage se sadou SDK pro řeč a rozhraní REST API. Sadou SDK pro řeč podporuje WAV/PCM 16-bit, 16 kHz, zvuk jeden kanál pro rozpoznávání řeči. Další formáty zvuku jsou podporovány při použití [koncový bod REST speech to text](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) nebo [určené k transkripci služba batch](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
 
 ## <a name="core-features"></a>Základní funkce
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 18013050546cc5e204d9cc07a2f499388596164c
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.openlocfilehash: ca4f9bf00d70f327ff756558e25315762a9a77a8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319444"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519744"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace služby Application Gateway
 
@@ -72,7 +72,7 @@ Můžete nakonfigurovat application gateway buď mít veřejnou IP adresu privá
 
 Je podporován pouze jednu veřejnou IP adresu nebo jednu privátní IP adresu. Zvolte IP adresu front-endu při vytvořením služby Application Gateway. 
 
-- V případě veřejnou IP adresu můžete vytvořit novou veřejnou IP adresu nebo použít stávající veřejnou IP adresu ve stejném umístění jako služba Application Gateway. Pokud jste vytvořili novou veřejnou IP adresu, IP adres jako typu vybrané (statická nebo dynamická) není možné později změnit. Další informace najdete v tématu [porovnání statické a dynamické veřejné IP](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip) 
+- V případě veřejnou IP adresu můžete vytvořit novou veřejnou IP adresu nebo použít stávající veřejnou IP adresu ve stejném umístění jako služba Application Gateway. Pokud jste vytvořili novou veřejnou IP adresu, IP adres jako typu vybrané (statická nebo dynamická) není možné později změnit. Další informace najdete v tématu [porovnání statické a dynamické veřejné IP](https://docs.microsoft.com/azure/application-gateway/application-gateway-components) 
 
 - V případě privátní IP adresa můžete zadat privátní IP adresu z podsítě, ve kterém se vytvoří aplikační bránu. Pokud není explicitně zadán, IP adresu libovolného vybere se automaticky z podsítě. Další informace najdete v tématu [vytvořte aplikační bránu s koncovým bodem interní služby load balancer (ILB).](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)
 
@@ -110,7 +110,7 @@ Musíte zvolit protokol HTTP a HTTPS.
 
 - Pokud vyberete možnost protokolu HTTP, budou směrovat přenos dat mezi brány klienta a aplikačního nezašifrované.
 
-- Vyberte protokol HTTPS, pokud vás zajímají [vrstvy SSL (Secure Sockets) ukončení](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssl-terminationl) nebo [koncové šifrování protokolu SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Pokud vyberete možnost HTTPS, přenos dat mezi brány klienta a aplikaci budou zašifrovaná a ukončí připojení protokolem SSL ve službě application gateway.  Pokud chcete koncové šifrování protokolu SSL, bude kromě toho musíte zvolit protokol HTTPS při konfiguraci *nastavení HTTP back-endu*. Tím se zajistí, že provoz je znovu zašifrován při jejich přenosu z aplikační brány pro back-endu.
+- Vyberte protokol HTTPS, pokud vás zajímají [vrstvy SSL (Secure Sockets) ukončení](https://docs.microsoft.com/azure/application-gateway/overview) nebo [koncové šifrování protokolu SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Pokud vyberete možnost HTTPS, přenos dat mezi brány klienta a aplikaci budou zašifrovaná a ukončí připojení protokolem SSL ve službě application gateway.  Pokud chcete koncové šifrování protokolu SSL, bude kromě toho musíte zvolit protokol HTTPS při konfiguraci *nastavení HTTP back-endu*. Tím se zajistí, že provoz je znovu zašifrován při jejich přenosu z aplikační brány pro back-endu.
 
   Pokud chcete nakonfigurovat ukončení vrstvy SSL (Secure Sockets) a koncového šifrování protokolu SSL, je vyžadován certifikát přidat k naslouchacímu procesu, aby byla zajištěna aplikační brány pro odvození symetrického klíče podle specifikace protokolu SSL. Symetrický klíč se pak používá k šifrování a dešifrování provoz odeslaný na bránu. Certifikát brány musí být ve formátu Personal Information Exchange (PFX). Tento formát souboru umožňuje exportovat soukromý klíč, který vyžaduje službu application gateway šifrování a dešifrování přenosů. 
 

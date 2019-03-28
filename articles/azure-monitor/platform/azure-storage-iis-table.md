@@ -1,6 +1,6 @@
 ---
-title: Použití úložiště objektů blob pro službu IIS a table storage pro události v Azure Log Analytics | Dokumentace Microsoftu
-description: Log Analytics najdete v protokolech služby Azure, které zápis diagnostiky do table storage nebo protokoly IIS zapsána do úložiště objektů blob.
+title: Použití úložiště objektů blob pro službu IIS a table storage pro události ve službě Azure Monitor | Dokumentace Microsoftu
+description: Azure Monitor můžete přečíst v protokolech služby Azure, které zápis diagnostiky do table storage nebo protokoly IIS zapsána do úložiště objektů blob.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,28 +13,28 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 9f5948887262ae190547c96aa09318a19f64812e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 35befe7122f493998d0d91c2721e6013e057fed3
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306625"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540597"
 ---
-# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Používání úložiště objektů blob v Azure pro službu IIS a Azure table storage pro události s využitím Log Analytics
+# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-azure-monitor"></a>Používání úložiště objektů blob v Azure pro službu IIS a Azure table storage pro události prostřednictvím služby Azure Monitor
 
-Log Analytics najdete v protokolech tyto služby, které zapsat diagnostiky do table storage nebo protokoly IIS zapsána do úložiště objektů blob:
+Azure Monitor můžete přečíst v protokolech tyto služby, které zapsat diagnostiky do table storage nebo protokoly IIS zapsána do úložiště objektů blob:
 
 * Clustery Service Fabric (verze Preview)
 * Virtuální počítače
 * Webové a pracovní role
 
-Před Log Analytics může shromažďovat data pro tyto prostředky, musí být povolená Diagnostika Azure.
+Předtím, než Azure Monitor může shromažďovat data do pracovního prostoru Log Analytics pro tyto prostředky, musí být povolená Diagnostika Azure.
 
-Jakmile je povolená Diagnostika, můžete použít na webu Azure portal nebo Powershellu konfigurace Log Analytics ke shromažďování protokolů.
+Jakmile je povolená Diagnostika, můžete použít na webu Azure portal nebo Powershellu konfigurovat pracovní prostor ke shromažďování protokolů.
 
-Diagnostika Azure je rozšířením Azure, která umožňuje shromažďovat diagnostická data z role pracovního procesu, webové role nebo virtuálního počítače spuštěného v Azure. Data uložená v účtu služby Azure storage a můžete pak shromážděná službou Log Analytics.
+Diagnostika Azure je rozšířením Azure, která umožňuje shromažďovat diagnostická data z role pracovního procesu, webové role nebo virtuálního počítače spuštěného v Azure. Data uložená v účtu služby Azure storage a můžou shromažďovat službou Azure Monitor.
 
-Ke službě Log Analytics pro tyto protokoly diagnostiky Azure shromažďovat protokoly musí být v následujících umístěních:
+Protokoly Azure monitoru ke shromažďování těchto protokolech diagnostiky Azure, musí být v následujících umístěních:
 
 | Typ protokolu | Typ prostředku | Umístění |
 | --- | --- | --- |
@@ -116,10 +116,10 @@ Ujistěte se, že vaše ConfigurationSettings Určuje účet úložiště, jako 
 
 **AccountName** a **AccountKey** hodnoty se nacházejí na webu Azure Portal na řídicím panelu úložiště účtu, pod spravovat přístupové klíče. Protokol pro připojovací řetězec musí být **https**.
 
-Jakmile aktualizované konfigurace diagnostiky se použije ke cloudové službě a je Diagnostika zapisuje do služby Azure Storage, pak jste připraveni ke konfiguraci Log Analytics.
+Jakmile aktualizované konfigurace diagnostiky se použije ke cloudové službě a je Diagnostika zapisuje do služby Azure Storage, pak jste připraveni ke konfiguraci pracovního prostoru Log Analytics.
 
 ## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Shromažďování protokolů ze služby Azure Storage pomocí webu Azure portal
-Na webu Azure portal můžete použít ke konfiguraci Log Analytics pro shromažďování protokolů u následujících služeb Azure:
+Na webu Azure portal můžete použít ke konfiguraci pracovního prostoru Log Analytics ve službě Azure Monitor pro shromažďování protokolů u následujících služeb Azure:
 
 * Clustery Service Fabricu
 * Virtuální počítače
@@ -136,9 +136,9 @@ Na webu Azure Portal přejděte do pracovního prostoru Log Analytics a provád�
 5. Hodnota zdroje se vyplní automaticky na základě datového typu a nedá se změnit
 6. Kliknutím na tlačítko OK uložte konfiguraci
 
-Opakujte kroky 2 až 6 pro datové typy, které chcete Log Analytics ke shromažďování a dalších účtů úložiště.
+Opakujte kroky 2 až 6 pro další účty úložiště a datové typy, které chcete shromáždit do pracovního prostoru.
 
-Během přibližně 30 minut budete moct zobrazit data z účtu úložiště ve službě Log Analytics. Zobrazí se pouze data, která jsou zapsána do úložiště, až tato konfigurace používá. Log Analytics nenačítá existující data z účtu úložiště.
+Během přibližně 30 minut budete moct zobrazit data z účtu úložiště v pracovním prostoru Log Analytics. Zobrazí se pouze data, která jsou zapsána do úložiště, až tato konfigurace používá. Pracovní prostor nenačítá existující data z účtu úložiště.
 
 > [!NOTE]
 > Na portálu se neověřuje, jestli zdroj existuje v účtu úložiště nebo pokud je zapisovaná nová data.
@@ -149,7 +149,7 @@ Během přibližně 30 minut budete moct zobrazit data z účtu úložiště ve 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Postupujte podle kroků v [konfigurace Log Analytics k indexování Azure diagnostics](../../azure-monitor/platform/powershell-workspace-configuration.md#configuring-log-analytics-to-collect-azure-diagnostics-from-storage) čtení z diagnostiky Azure, který se zapisovat do table storage pomocí Powershellu.
+Postupujte podle kroků v [konfigurace Azure Monitor k indexování Azure diagnostics](powershell-workspace-configuration.md#configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage) čtení z diagnostiky Azure, který se zapisovat do table storage pomocí Powershellu.
 
 Pomocí prostředí Azure PowerShell můžete přesněji určit události, které jsou zapsány do služby Azure Storage.
 Další informace najdete v tématu [povolení diagnostiky v Azure Virtual Machines](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).

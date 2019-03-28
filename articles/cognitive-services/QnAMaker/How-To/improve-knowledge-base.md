@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: 739ae64c6b32958271260bcbd01b339c1b108f11
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: dbdd0165e276e5c82f8d4c15ef70d3a541d76bc0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337421"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522192"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Aktivní studium slouží ke zlepšení znalostní báze
 
@@ -208,7 +208,7 @@ Příklad text JSON vypadá takto:
 
 Když se vaše aplikace může aktivně učit povolené a exportovat do aplikace `SuggestedQuestions` sloupec v souboru tsv uchovává data aktivně učit. 
 
-`SuggestedQuestions` Sloupec je objekt JSON informací o implicitní (`autosuggested`) a explicitní (`usersuggested`) [zpětnou vazbu](#active-learning). Příkladem tohoto objektu JSON pro jeden uživatel odeslal otázku `help` je:
+`SuggestedQuestions` Sloupec je objekt JSON informací o implicitní (`autosuggested`) a explicitní (`usersuggested`) zpětnou vazbu. Příkladem tohoto objektu JSON pro jeden uživatel odeslal otázku `help` je:
 
 ```JSON
 [

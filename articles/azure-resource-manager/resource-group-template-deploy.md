@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8005b187f300375b62c254516a61f4993675b0b9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 3b9a35cb5a37aa17a2f7803f3e996d51bede81e0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403104"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518554"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu
 
@@ -47,7 +47,7 @@ V příkladech v tomto článku se používá nasazení skupiny prostředků. Da
 
 Budete potřebovat k nasazení šablony. Pokud již nemáte, stáhněte a uložte [Ukázková šablona](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) z úložiště šablon Quickstart pro Azure. Název místního souboru použitý v tomto článku je **c:\MyTemplates\azuredeploy.json**.
 
-Pokud nechcete použít [Azure Cloud shell](#deploy-templates-from-azure-cloud-shell) k nasazení šablony, budete muset nainstalovat Azure PowerShell a připojte se k Azure:
+Pokud používáte Azure Cloud shell k nasazení šablony, budete muset nainstalovat Azure PowerShell a připojte se k Azure:
 
 - **Instalace rutin Powershellu pro Azure v místním počítači.** Další informace najdete v tématu [Začínáme s Azure PowerShellem](/powershell/azure/get-started-azureps).
 - **Připojení k Azure s využitím [připojit AZAccount](/powershell/module/az.accounts/connect-azaccount)**. Pokud máte více předplatných Azure, může být také potřeba spustit [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext). Další informace najdete v tématu [použít několik předplatných Azure](/powershell/azure/manage-subscriptions-azureps).

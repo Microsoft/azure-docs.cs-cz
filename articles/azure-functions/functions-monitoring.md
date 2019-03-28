@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: e9e47eff3df941b0c1437083dc7440fab4091418
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 0224d9ba5a430635e4675c2fb2bf354e7c975f31
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317064"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518724"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -24,7 +24,7 @@ ms.locfileid: "58317064"
 
 ![Průzkumník metrik Application Insights](media/functions-monitoring/metrics-explorer.png)
 
-Služba Azure Functions má také [integrované monitorování, která nepoužívá Application Insights](#monitoring-without-application-insights). Doporučujeme vám Application Insights, protože nabízí větší množství dat a lepší způsoby, jak analyzovat data.
+Azure Functions také nabízí integrované monitorování, který nepoužívá Application Insights. Doporučujeme vám Application Insights, protože nabízí větší množství dat a lepší způsoby, jak analyzovat data.
 
 ## <a name="application-insights-pricing-and-limits"></a>Ceny Application Insights a omezení
 
@@ -77,7 +77,7 @@ Dalším krokem je [zakázat vestavěné protokolování](#disable-built-in-logg
 
 ## <a name="disable-built-in-logging"></a>Zakázat vestavěné protokolování
 
-Když povolíte Application Insights, zakažte [vestavěné protokolování, která používá službu Azure Storage](#logging-to-storage). Integrované protokolování se hodí při testování s malé úlohy, ale není určena pro použití v produkčním prostředí vysokým zatížením. Pro monitorování produkčního prostředí, doporučujeme vám Application Insights. Pokud vestavěné protokolování je použít v produkčním prostředí, může být protokolování záznamů nedokončené kvůli omezování u služby Azure Storage.
+Když povolíte Application Insights, zakažte vestavěné protokolování, která používá službu Azure Storage. Integrované protokolování se hodí při testování s malé úlohy, ale není určena pro použití v produkčním prostředí vysokým zatížením. Pro monitorování produkčního prostředí, doporučujeme vám Application Insights. Pokud vestavěné protokolování je použít v produkčním prostředí, může být protokolování záznamů nedokončené kvůli omezování u služby Azure Storage.
 
 Chcete-li zakázat vestavěné protokolování, odstraňte `AzureWebJobsDashboard` nastavení aplikace. Informace o tom, jak odstranit nastavení aplikace na webu Azure Portal najdete v tématu **nastavení aplikace** část [Správa aplikace function app](functions-how-to-use-azure-function-app-settings.md#settings). Před odstraněním nastavení aplikace, které Ujistěte se, že žádné existující funkce ve stejné aplikaci function app používat nastavení pro aktivační události služby Azure Storage nebo vazby.
 
@@ -125,7 +125,7 @@ V [Průzkumníka metrik](../azure-monitor/app/metrics-explorer.md), můžete vyt
 
 ![Průzkumník metrik](media/functions-monitoring/metrics-explorer.png)
 
-Na [selhání](../azure-monitor/app/asp-net-exceptions.md) kartu, můžete vytvořit grafy a výstrah na základě selhání funkce a server výjimky. **Název operace** je název funkce. Selhání v závislosti se nezobrazují, Pokud implementujete [vlastní telemetrii](#custom-telemetry-in-c-functions) pro závislosti.
+Na [selhání](../azure-monitor/app/asp-net-exceptions.md) kartu, můžete vytvořit grafy a výstrah na základě selhání funkce a server výjimky. **Název operace** je název funkce. Selhání v závislosti nezobrazí, Pokud implementujete vlastní telemetrii pro závislosti.
 
 ![Chyby](media/functions-monitoring/failures.png)
 
@@ -423,7 +423,7 @@ Ve skriptu funkcí jazyka C#, můžete použít `LogMetric` rozšiřující meto
 logger.LogMetric("TestMetric", 1234);
 ```
 
-Tento kód se o alternativu k volání `TrackMetric` pomocí [rozhraní API Application Insights pro .NET](#custom-telemetry-in-c-functions).
+Tento kód se o alternativu k volání `TrackMetric` pomocí rozhraní API Application Insights pro .NET.
 
 ## <a name="write-logs-in-javascript-functions"></a>Zapisují protokoly do funkce jazyka JavaScript
 
@@ -441,7 +441,7 @@ Při spouštění [verzi 1.x](functions-versions.md#creating-1x-apps) modul runt
 context.log.metric("TestMetric", 1234);
 ```
 
-Tento kód se o alternativu k volání `trackMetric` pomocí [sady Node.js SDK pro Application Insights](#custom-telemetry-in-javascript-functions).
+Tento kód se o alternativu k volání `trackMetric` pomocí sady Node.js SDK pro Application Insights.
 
 ## <a name="log-custom-telemetry-in-c-functions"></a>Přihlaste se vlastní telemetrická data C# funkce
 
@@ -632,7 +632,7 @@ module.exports = function (context, req) {
 
 ### <a name="dependencies"></a>Závislosti
 
-Závislosti, které funkce má k jiným službám nezobrazují automaticky. Můžete napsat vlastní kód k zobrazení závislostí. Příklady najdete v tématu ukázkový kód v [ C# vlastní telemetrii části](#custom-telemetry-in-c-functions). Vzorový kód vede *Mapa aplikace* ve službě Application Insights, vypadá podobně jako na následujícím obrázku:
+Závislosti, které funkce má k jiným službám nezobrazují automaticky. Můžete napsat vlastní kód k zobrazení závislostí. Příklady najdete v tématu ukázkový kód v [ C# vlastní telemetrii části](#log-custom-telemetry-in-c-functions). Vzorový kód vede *Mapa aplikace* ve službě Application Insights, vypadá podobně jako na následujícím obrázku:
 
 ![Mapa aplikace](media/functions-monitoring/app-map.png)
 

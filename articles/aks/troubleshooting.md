@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 5902ba86b51ca1998364e393ac02bbb0d0a23a28
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 56d91d7801c576064b941ac6089a52e74b4a3b7b
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432630"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540920"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -90,3 +90,7 @@ Operace clusteru jsou omezené, když dochází k upgradu aktivní operace nebo 
 
 * Pokud je aktivním upgradu clusteru, počkejte, až do doby ukončení operace. Pokud byla úspěšná, zkuste to znovu dříve nezdařené operace.
 * Pokud cluster selhal upgrade, postupujte podle kroků uvedených výše
+
+## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Můžu přesunout cluster do jiného předplatného nebo předplatného s clusteru do nového tenanta?
+
+Pokud váš cluster AKS přesunuty do jiného předplatného nebo clusteru, který je vlastníkem předplatného do nového tenanta, přijdete o funkce z důvodu ztráta přiřazení rolí a práva objekty zabezpečení služby clusteru. **AKS nepodporuje přesun clustery napříč předplatných a tenantů** z důvodu tohoto omezení.

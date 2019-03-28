@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3355f9068d35f29483e257e5c236275f76a1c9d0
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: 8ae9ad4d1101c3b42c46c51546ac82e5b4a134c8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58008597"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519846"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql-preview"></a>Rychlý start: Vytvoření úlohy třídění pomocí jazyka T-SQL (Preview)
 
@@ -51,7 +51,9 @@ END
 ;
 ```
 
-## <a name="create-theceo-user-in-mysampledatawarehouse"></a>Vytvořit uživatele TheCEO v mySampleDataWarehouse
+## <a name="create-user"></a>Vytvořit uživatele
+
+[Vytvoření uživatele](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest), "TheCEO" v mySampleDataWarehouse
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'THECEO')
@@ -61,7 +63,9 @@ END
 ;
 ```
 
-## <a name="create-a-workload-classifier-for-theceo-with-high-importance"></a>Vytvoření úlohy třídění pro TheCEO s vysokou důležitostí
+## <a name="create-a-workload-classifier"></a>Vytvoření úlohy třídění
+
+Vytvoření [úlohy třídění](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) pro "TheCEO" s vysokou důležitostí.
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO];

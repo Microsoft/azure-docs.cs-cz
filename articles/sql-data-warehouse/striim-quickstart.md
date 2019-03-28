@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 10/12/2018
 ms.author: elbutter
 ms.reviewer: craigg
-ms.openlocfilehash: 1f8c2590ea01e9a819ebdacd6b3774555dded800
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a835fbd427408afae9ea6ae1b1bc2a84c18b0c34
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250836"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540446"
 ---
 # <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Striim Azure SQL data Warehouse Marketplace nabízí Instalační příručka
 
@@ -29,7 +29,7 @@ Konfigurace virtuálního počítače Striim pomocí zadané vlastnosti poznamen
 
 ![Konfigurace Striim][configure]
 
-Po nasazení, klikněte na <VM Name>masternode – na webu Azure Portal, klikněte na připojit a kopírovat přihlášení pomocí místního účtu virtuálního počítače 
+Po nasazení, klikněte na \<název virtuálního počítače >-masternode na webu Azure Portal, klikněte na připojit a kopírovat přihlášení pomocí místního účtu virtuálního počítače 
 
 ![Striim připojení k SQL Data Warehouse][connect]
 
@@ -55,7 +55,7 @@ Spuštěním následujících příkazů do adresáře Striim lib, přesunout so
 
 ![Spustit Striim cluster][start-striim]
 
-Nyní, otevřete svůj oblíbený prohlížeč a přejděte do <DNS Name>: 9080
+Nyní, otevřete svůj oblíbený prohlížeč a přejděte do \<DNS Name >: 9080
 
 ![Přejít na přihlašovací obrazovku][navigate]
 

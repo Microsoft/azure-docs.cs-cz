@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 06478cb3366054bd20239bf80f026562efd26232
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f0fd93af7cba3057ad4c2224aa1298a221505645
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087393"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541032"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Syntaxe výrazů OData pro filtry a klauzulemi klauzule order by ve službě Azure Search
 
@@ -128,10 +128,10 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
 ## <a name="filter-examples"></a>Příklady filtrů  
 
- Najdete všechny hotels základní sazba menší než 100 USD, který jsou hodnoceny dosahovalo nebo přesahovalo 4:  
+ Najdete všechny hotels základní sazba menší než 200 USD, který jsou hodnoceny dosahovalo nebo přesahovalo 4:  
 
 ```
-$filter=baseRate lt 100.0 and rating ge 4
+$filter=baseRate lt 200.0 and rating ge 4
 ```
 
  Najdete všechny hotels než "Roach Motel", které mají byla renovovanou od 2010:  
@@ -140,10 +140,10 @@ $filter=baseRate lt 100.0 and rating ge 4
 $filter=hotelName ne 'Roach Motel' and lastRenovationDate ge 2010-01-01T00:00:00Z
 ```
 
- Najdete všechny hotels základní sazba menší než 200 USD, které mají byla renovovanou od 2012 DateTime literál, který obsahuje informace o časovém pásmu pro Tichomořský běžný čas:  
+ Najdete všechny hotels základní sazba menší než 200 USD, které mají byla renovovanou od 2010 s datetime literál, který obsahuje informace o časovém pásmu pro Tichomořský běžný čas:  
 
 ```
-$filter=baseRate lt 200 and lastRenovationDate ge 2012-01-01T00:00:00-08:00
+$filter=baseRate lt 200 and lastRenovationDate ge 2010-01-01T00:00:00-08:00
 ```
 
  Najdete všechny hotely, které mají parkovací zahrnuté a neumožňují kouření:  

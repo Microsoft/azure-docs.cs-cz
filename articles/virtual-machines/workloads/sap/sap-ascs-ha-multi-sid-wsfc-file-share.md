@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 845bf72f52bb83fa597c597871599c826e5749f6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479968"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540138"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -241,7 +241,7 @@ Cílem je nainstalovat víc instancí SAP Java (SCS) v clusteru nebo SAP Advance
 
 _**Obrázek 2:** Konfigurace několika identifikátorů SID SAP ve dvou clusterech_
 
-Instalace dalšího **SAP \<SID2 >** systému se shoduje s instalaci jedné <SID> systému. Dva další přípravné kroky jsou požadovány v clusteru ASC/SCS i na cluster souborových sdílené složky serveru SOFS.
+Instalace dalšího **SAP \<SID2 >** systému se shoduje s instalaci jedné \<SID > systému. Dva další přípravné kroky jsou požadovány v clusteru ASC/SCS i na cluster souborových sdílené složky serveru SOFS.
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>Příprava infrastruktury SAP s několika SID scénář
 
@@ -261,7 +261,7 @@ Tyto kroky jsou popsány v [Příprava infrastruktury SAP s několika SID scén�
 
 ### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>Příprava infrastruktury v clusteru SOFS s použitím existujícího hostitele globální SAP
 
-Můžete znovu použít existující \<SAPGlobalHost > a Volume1 první SAP <SID1> systému.
+Můžete znovu použít existující \<SAPGlobalHost > a Volume1 první SAP \<SID1 > systému.
 
 ![Obrázek 3: SOFS s několika SID je stejný jako název hostitele globální SAP][sap-ha-guide-figure-8014]
 
@@ -271,7 +271,7 @@ _**Obrázek 3:** SOFS s několika SID je stejný jako název hostitele globáln�
 >Pro druhý **SAP \<SID2 >** systému, stejný Volume1 a stejné  **\<SAPGlobalHost >** názvu sítě se používají.
 >Protože jste už nastavili **SAPMNT** jako název sdílené složky různých systémů SAP vyhrazené pro opětovné použití  **\<SAPGlobalHost >** název sítě, musíte použít stejné **Volume1**.
 >
->Cesta k souboru <SID2> globální hostitele je C:\ClusterStorage\\**Volume1**\usr\sap\<SID2 > \SYS\.
+>Cesta k souboru \<SID2 > globální hostitele je C:\ClusterStorage\\**Volume1**\usr\sap\<SID2 > \SYS\.
 >
 
 Pro \<SID2 > systému, musíte připravit hostitele globální SAP... \SYS\.. složka na clusteru SOFS.

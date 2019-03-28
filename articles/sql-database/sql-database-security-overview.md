@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 121226ad9ca1ea0c29dd192ed69797b37245da46
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: a4f1b26a20da3b22561538f7814105b356c4148a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213921"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519132"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database
 
@@ -100,12 +100,16 @@ Detekce vylepšuje auditování prostřednictvím analýzy protokolů auditu pro
 
 SQL Database chrání vaše zákaznická data tím, že šifruje data přenášená data pomocí [Transport Layer Security](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
 
+SQL Server vynutí šifrování (SSL/TLS) na všechny časy pro všechna připojení. To zajistí, že všechna data jsou zašifrovaná "při přenosu" mezi klientem a serverem bez ohledu na nastavení **šifrovat** nebo **TrustServerCertificate** v připojovacím řetězci.
+
+Jako osvědčený postup, doporučit, připojení aplikace řetězec můžete zadat šifrované připojení a _**není**_ důvěřovat certifikátu serveru. To přinutí vaše aplikace se ověřit certifikát serveru a znemožňuje, aby vaše aplikace nebudou ohrožena dál pohání muže v prostředním typů útoků.
+
+Například při použití ovladače ADO.NET to lze provést prostřednictvím **Encrypt = True** a **TrustServerCertificate = False**. Připojovací řetězec můžete získat z webu Azure portal, bude mít správné nastavení.
+
 > [!IMPORTANT]
-> Azure SQL Database vynucuje šifrování (SSL/TLS) na všechny časy pro všechna připojení, které zajišťuje, že všechna data jsou zašifrovaná "při přenosu" mezi databází a klienta. K tomu dochází bez ohledu na nastavení **šifrovat** nebo **TrustServerCertificate** v připojovacím řetězci.
+> Poznámka: Některé ovladače jiných výrobců nemusí ve výchozím nastavení používají TLS nebo využívají starší verzi protokolu TLS (< 2.0) mohl fungovat. V tomto případě systému SQL Server stále umožňuje připojení k vaší databázi. Doporučujeme však, že při hodnocení rizik zabezpečení umožnit tyto ovladače a aplikace pro připojení k SQL Database, zejména v případě, že ukládat citlivá data. 
 >
-> V připojovacím řetězci vaší aplikace, ujistěte se, že jste určili šifrované připojení a _není_ důvěřovat certifikátu serveru (to je ovladač pro technologii ADO.NET **Encrypt = True** a  **TrustServerCertificate = False**). To pomáhá zabránit aplikaci v muže v prostředním útoku vynucením aplikace k ověření serveru a vynucení šifrování. Připojovací řetězec můžete získat z webu Azure portal, bude mít správné nastavení.
->
-> Informace o připojení a TLS najdete v tématu [požadavky TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
+> Další informace o připojení a TLS najdete v tématu [požadavky TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
 
 ### <a name="transparent-data-encryption-encryption-at-rest"></a>Transparentní šifrování dat (šifrování neaktivních)
 

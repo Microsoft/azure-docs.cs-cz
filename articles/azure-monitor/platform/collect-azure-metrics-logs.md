@@ -1,6 +1,6 @@
 ---
-title: Shromažďování metrik a protokolování služby Azure Log Analytics | Dokumentace Microsoftu
-description: Konfigurace diagnostiky pro prostředky Azure pro zápis protokolů a metrik do Log Analytics.
+title: Shromažďování metrik a protokolování služby Azure do pracovního prostoru Log Analytics | Dokumentace Microsoftu
+description: Konfigurace diagnostiky pro prostředky Azure pro zápis protokolů a metrik do pracovního prostoru Log Analytics ve službě Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 034abe4e3c37c94afbe431a51efd9493b707fa89
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 5a619b768d61875a03e53a613dfb9a3fb01dd7aa
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498532"
+ms.locfileid: "58540172"
 ---
-# <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Shromažďovat protokoly služby Azure a metriky pro použití v Log Analytics
+# <a name="collect-azure-service-logs-and-metrics-into-log-analytics-workspace-in-azure-monitor"></a>Shromažďování metrik a protokolování služby Azure do pracovního prostoru Log Analytics ve službě Azure Monitor
 
 Existují různé způsoby shromažďování protokolů a metrik pro služby Azure:
 
-1. Diagnostika Azure směrovat do služby Log Analytics (*diagnostiky* v následující tabulce)
-2. Diagnostika Azure do služby Azure storage do služby Log Analytics (*úložiště* v následující tabulce)
+1. Diagnostika Azure směrovat do pracovního prostoru Log Analytics ve službě Azure Monitor (*diagnostiky* v následující tabulce)
+2. Diagnostika Azure do služby Azure storage k pracovnímu prostoru Log Analytics ve službě Azure Monitor (*úložiště* v následující tabulce)
 3. Konektory pro služby Azure (*konektory* v následující tabulce)
-4. Skripty, které shromažďovat a následně je publikovat data do Log Analytics (prázdné hodnoty v následující tabulce a pro služby, které nejsou uvedené)
+4. Skripty, které shromažďovat a následně je publikovat data do pracovního prostoru Log Analytics ve službě Azure Monitor (prázdné hodnoty v následující tabulce a pro služby, které nejsou uvedené)
 
 
 | Služba                 | Typ prostředku                           | Logs        | Metriky     | Řešení |
@@ -64,12 +64,12 @@ Existují různé způsoby shromažďování protokolů a metrik pro služby Azu
 >
 
 ## <a name="azure-diagnostics-direct-to-log-analytics"></a>Diagnostika Azure směrovat do služby Log Analytics
-Řadu prostředků Azure jsou schopni zapisovat diagnostické protokoly a metriky přímo k Log Analytics, což je upřednostňovaný způsob shromažďování dat pro analýzu. Při použití diagnostiky Azure, data se zapisují okamžitě do Log Analytics a není nutné nejprve zapisovat data do úložiště.
+Řadu prostředků Azure se nemůže zapisovat přímo do pracovního prostoru Log Analytics ve službě Azure Monitor diagnostické protokoly a metriky a toto je upřednostňovaný způsob shromažďování dat pro analýzu. Při použití diagnostiky Azure, data se zapisují okamžitě do pracovního prostoru a není nutné nejprve zapisovat data do úložiště.
 
-Prostředky Azure, které podporují [Azure monitor](../../azure-monitor/overview.md) posílat svoje protokoly a metriky přímo ke službě Log Analytics.
+Prostředky Azure, které podporují [Azure monitor](../../azure-monitor/overview.md) posílat svoje protokoly a metriky přímo do pracovního prostoru Log Analytics.
 
 > [!NOTE]
-> Odesílání vícedimenzionálních metrik do Log Analytics přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
+> Odesílání vícedimenzionálních metrik pracovní prostor Log Analytics přes nastavení diagnostiky se momentálně nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
 >
 > *Například*: Metrika 'Příchozí zprávy' v Centru událostí můžete prozkoumat a převést na graf úrovni jednotlivých front. Ale při exportu přes nastavení diagnostiky, které metrika je vyjádřena jako všechny příchozí zprávy ve všech zařadí do fronty událostí centra.
 >
@@ -125,9 +125,9 @@ Povolit diagnostiku na prostředku, když se vytvoří a Diagnostika odeslali do
 
 ## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>Diagnostika Azure storage a do služby Log Analytics
 
-Pro shromažďování protokolů z v rámci některé prostředky, je možné odeslat protokoly do služby Azure storage a potom nakonfigurujte Log Analytics pro čtení protokolů ze služby storage.
+Pro shromažďování protokolů z v rámci některé prostředky, je možné odeslat protokoly do služby Azure storage a pak nakonfigurujte pracovní prostor Log Analytics pro čtení protokolů z úložiště.
 
-Log Analytics můžete tento postup použijte ke shromažďování diagnostických údajů ze služby Azure storage pro protokoly a následující prostředky:
+Azure Monitor můžete tento postup použijte ke shromažďování diagnostických údajů ze služby Azure storage pro protokoly a následující prostředky:
 
 | Prostředek | Logs |
 | --- | --- |
@@ -136,23 +136,23 @@ Log Analytics můžete tento postup použijte ke shromažďování diagnostický
 | Webové role <br> Role pracovního procesu |Protokolu Syslog v Linuxu <br> Události Windows <br> Protokol IIS <br> Windows ETWEvent |
 
 > [!NOTE]
-> Účtují se běžné Azure datové sazby za úložiště a transakce při odeslání diagnostiky do účtu úložiště a kdy Log Analytics načítá data z vašeho účtu úložiště.
+> Azure běžné datové sazby za úložiště a transakce se účtují při odeslání diagnostiky do účtu úložiště a kdy pracovní prostor Log Analytics načítá data z vašeho účtu úložiště.
 >
 >
 
-Zobrazit [úložiště objektů blob můžete použít pro služby IIS a table storage pro události](azure-storage-iis-table.md) Další informace o tom, jak Log Analytics může shromažďovat protokoly.
+Zobrazit [úložiště objektů blob můžete použít pro služby IIS a table storage pro události](azure-storage-iis-table.md) Další informace o tom, jak Azure Monitor může shromažďovat tyto protokoly.
 
 ## <a name="connectors-for-azure-services"></a>Konektory pro služby Azure
 
-Je konektor pro službu Application Insights, která umožňuje dat shromážděných službou Application Insights k odeslání do Log Analytics.
+Je konektor pro službu Application Insights, která umožňuje dat shromážděných službou Application Insights k odeslání do pracovního prostoru Log Analytics.
 
 Další informace o [Application Insights connector](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/).
 
-## <a name="scripts-to-collect-and-post-data-to-log-analytics"></a>Skripty ke shromažďování a odesílání dat do služby Log Analytics
+## <a name="scripts-to-collect-and-post-data-to-log-analytics-workspace"></a>Skripty ke shromažďování a odesílání dat do pracovního prostoru Log Analytics
 
-Pro služby Azure, které neposkytují přímý způsob, jak odesílat protokoly a metriky do Log Analytics můžete použít skriptu Azure Automation ke shromažďování protokolů a metrik. Skript potom může data odeslat na pomocí Log Analytics [rozhraní API kolekce dat](../../azure-monitor/platform/data-collector-api.md)
+Pro služby Azure, které neposkytují přímý způsob, jak posílat protokoly a metriky k pracovnímu prostoru Log Analytics můžete použít skriptu Azure Automation ke shromažďování protokolů a metrik. Skript potom může data odeslat na použití pracovního prostoru [rozhraní API kolekce dat](../../azure-monitor/platform/data-collector-api.md)
 
-Galerie Azure šablony má [příklady použití Azure Automation](https://azure.microsoft.com/resources/templates/?term=OMS) ke shromažďování dat ze služby a odesílá je do Log Analytics.
+Galerie Azure šablony má [příklady použití Azure Automation](https://azure.microsoft.com/resources/templates/?term=OMS) pro shromažďování dat ze služeb a jejich odesílání do Azure monitoru.
 
 ## <a name="next-steps"></a>Další postup
 

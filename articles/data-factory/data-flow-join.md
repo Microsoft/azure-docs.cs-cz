@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 204ee1b812949311258be968de387dc5b66c4fc0
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 18f713198ef9aa45cb72a6718c0f7b086c019258
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726868"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540036"
 ---
 # <a name="mapping-data-flow-join-transformation"></a>Mapování datového toku spojení transformace
 
@@ -67,6 +67,10 @@ Spojení sama na sebe podmínky v toku dat ADF můžete dosáhnout použitím vy
 ![Spojení sama na sebe](media/data-flow/selfjoin.png "spojení sama na sebe")
 
 V diagramu vyberte transformací, která je v horní části. Veškeré její probíhající činnosti je aliasing původního datového proudu na "OrigSourceBatting". V zvýrazněné spojení transformací, která se pod ní uvidíte, že používáme tento datový proud vyberte alias jako pravé spojení, abychom mohli odkazovat na stejný klíč v levé a pravé straně vnitřního spojení.
+
+## <a name="composite-and-custom-keys"></a>Složené a vlastní klíče
+
+Můžete vytvořit vlastní a složené klíče v reálném čase v připojení k transformaci. Přidání řádků pro další spojované sloupce se symbolem plus (+) vedle každého řádku vztah. Nebo vypočítat nové hodnoty klíče v okně Tvůrce výrazů spojení na průběžné hodnoty.
 
 ## <a name="next-steps"></a>Další postup
 

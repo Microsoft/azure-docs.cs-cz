@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0e5e4e207542a74ef3fc5ff7fc78431b7956e54c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 523567a0db79e54bea1ed6ff23557c7fa29c74f6
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449258"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541099"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informace o službě Mobility pro virtuální počítače VMware a fyzické servery
 
@@ -125,7 +125,7 @@ Instalační protokoly | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstall
 #### <a name="registration-settings"></a>Nastavení registrace
 **Nastavení** | **Podrobnosti**
 --- | ---
-Využití | / Csendpoint UnifiedAgentConfigurator.exe  <CSIP> /passphrasefilepath <PassphraseFilePath>
+Využití | / Csendpoint UnifiedAgentConfigurator.exe \<CSIP >/passphrasefilepath \<PassphraseFilePath >
 Protokoly konfigurace agenta | V části % ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
 /CSEndPoint | Povinný parametr. Určuje IP adresu konfiguračního serveru. Použijte libovolná platná IP adresa.
 /PassphraseFilePath |  Povinné. Umístění přístupové heslo. Použijte libovolný platný název UNC nebo místní cesta k souboru.
@@ -154,7 +154,7 @@ Protokoly konfigurace agenta | V části % ProgramData%\ASRSetupLogs\ASRUnifiedA
 #### <a name="installation-settings"></a>Nastavení instalace
 **Nastavení** | **Podrobnosti**
 --- | ---
-Využití | . / install -d <Install Location> - r < MS|MT> -v VmWare -q
+Využití | . / install -d \<Umístění_instalace > - r < MS|MT> -v VmWare -q
 -r | Instalace povinných parametrů. Určuje, zda by měla nainstalovat služba Mobility (MS) nebo hlavní cíl (MT).
 -d | Volitelný parametr. Určuje umístění instalace služby Mobility: /usr/local/ASR.
 -v | Povinné. Určuje platformu, na kterém je nainstalovaná služba Mobility. **VMware** pro virtuální počítače VMware a fyzických serverů. **Azure** pro virtuální počítače Azure. 
@@ -163,7 +163,7 @@ Využití | . / install -d <Install Location> - r < MS|MT> -v VmWare -q
 #### <a name="registration-settings"></a>Nastavení registrace
 **Nastavení** | **Podrobnosti**
 --- | ---
-Využití | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i <CSIP> -P <PassphraseFilePath>
+Využití | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>
 -i | Povinný parametr. Určuje IP adresu konfiguračního serveru. Použijte libovolná platná IP adresa.
 -P |  Povinné. Úplnou cestu souboru, ve kterém se heslo uloží. Použijte libovolnou platnou složku.
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: dc84d5850656a0898fba328b652d86f3d8995bef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bb1d6c5bd51fcfe35127c2f6d8dd6a80b727c45f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118370"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517143"
 ---
 # <a name="use-azure-data-box-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Odešlete data do příslušné úrovně objektů blob Azure Storage pomocí Azure Data Box
 
@@ -27,7 +27,7 @@ Azure storage umožňuje tři různé úrovně pro ukládání dat v nejvíce ce
 
 Úroveň studeného úložiště je pro zřídka využívaná data, která musí být uloženy minimálně za 30 dnů. Náklady na úložiště pro studená vrstva je nižší než úroveň horkého úložiště, ale poplatky za přístup k data jsou vysoké ve srovnání s vrstvou Hot.
 
-Úroveň archivu Azure je v režimu offline a nabízí nejnižší náklady na úložiště, ale také nejvyšší náklady na přístup. Tato úroveň je určená pro data, která zůstanou v archivní úložiště pro nejméně na 180 dnů. Podrobnosti o každém z těchto úrovní a cenový model, v části [srovnání vrstev úložiště](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#comparison-of-the-storage-tiers).
+Úroveň archivu Azure je v režimu offline a nabízí nejnižší náklady na úložiště, ale také nejvyšší náklady na přístup. Tato úroveň je určená pro data, která zůstanou v archivní úložiště pro nejméně na 180 dnů. Podrobnosti o každém z těchto úrovní a cenový model, v části [srovnání vrstev úložiště](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
 
 Data ze zařízení Data Box nahraje do vrstvy úložiště, která je přidružená k účtu úložiště. Když vytvoříte účet úložiště, můžete jako horké nebo studené úrovně přístupu. V závislosti na vzory přístupu vašich úloh a náklady, můžete přesunout data z výchozí úroveň na jinou vrstvu úložiště.
 

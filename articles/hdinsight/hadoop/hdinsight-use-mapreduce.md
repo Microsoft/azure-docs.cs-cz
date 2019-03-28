@@ -8,27 +8,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
-ms.openlocfilehash: eeb548d6bd955aedf322a63c861fd23bb37c1167
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.date: 03/20/2019
+ms.openlocfilehash: f2baaf598be8ede69fd6e1fa49a5f5a6b64c24ff
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634622"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521191"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>Použití MapReduce se v Apache Hadoop v HDInsight
 
-Zjistěte, jak spouštět úlohy MapReduce na clusterech HDInsight. Následující tabulku použijte k prozkoumejte různé způsoby, jak je možné MapReduce s HDInsight:
-
-| **Použít**... | **...a tomu** | ...při to **clusteru operačního systému** | ...from to **klientský operační systém** |
-|:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) |Použití příkazu Hadoop prostřednictvím **SSH** |Linux |Linux, Unix, Mac OS X a Windows |
-| [REST](apache-hadoop-use-mapreduce-curl.md) |Odeslání úlohy vzdáleně pomocí **REST** (příkladech používáme nástroj cURL) |Linux nebo Windows |Linux, Unix, Mac OS X a Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |Odeslání úlohy vzdáleně pomocí **prostředí Windows PowerShell** |Linux nebo Windows |Windows |
-
-> [!IMPORTANT]
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
+Zjistěte, jak spouštět úlohy MapReduce na clusterech HDInsight. 
 
 ## <a id="whatis"></a>Co je MapReduce
 
@@ -36,11 +26,11 @@ Apache Hadoop MapReduce je software platformě pro psaní úlohy, které zpracov
 
 * **Mapovač**: Zpracovává vstupní data, analyzuje je (obvykle pomocí filtrování a řazení) a generuje řazených kolekcí členů (páry klíč hodnota)
 
-* **Redukční funkci**: Využívá řazených kolekcí členů, protože ho vygeneroval Mapovač a provádí operaci summary, která vytvoří menší, kombinované výsledek z Mapovač dat
+* **Reducer**: Využívá řazených kolekcí členů, protože ho vygeneroval Mapovač a provádí operaci summary, která vytvoří menší, kombinované výsledek z Mapovač dat
 
 Jako příklad úlohy MapReduce počet slova je znázorněn v následujícím diagramu:
 
-![HDI. WordCountDiagram][image-hdi-wordcountdiagram]
+![HDI.WordCountDiagram][image-hdi-wordcountdiagram]
 
 Výstupem této úlohy je počet, kolikrát se každé slovo došlo k chybě v textu.
 
@@ -162,9 +152,6 @@ HDInsight můžete spouštět úlohy HiveQL pomocí různých metod. Použijte n
 | [SSH](apache-hadoop-use-mapreduce-ssh.md) |Použití příkazu Hadoop prostřednictvím **SSH** |Linux |Linux, Unix, Mac OS X a Windows |
 | [Curl](apache-hadoop-use-mapreduce-curl.md) |Odeslání úlohy vzdáleně pomocí **REST** |Linux nebo Windows |Linux, Unix, Mac OS X a Windows |
 | [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |Odeslání úlohy vzdáleně pomocí **prostředí Windows PowerShell** |Linux nebo Windows |Windows |
-
-> [!IMPORTANT]  
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a id="nextsteps"></a>Další kroky
 

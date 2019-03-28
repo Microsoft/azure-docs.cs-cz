@@ -4,14 +4,14 @@ description: Zjistěte, jak nastavit zřízená propustnost pro kontejnery Azure
 author: aliuy
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 03/19/2019
 ms.author: andrl
-ms.openlocfilehash: 439b48c271260e9744bb9c9ca0e2b21e61cf4687
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8335a235de708227136400f3af8fa7b4d0a52e29
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005059"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520900"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Zřízení propustnosti u kontejnerů a databází
 
@@ -75,6 +75,20 @@ Můžete kombinovat dva modely. Zřizování propustnosti na databázi a kontejn
 * Můžete explicitně nakonfigurovat "P" ru zřízenou propustnost na kontejner s názvem B.
 * "K" rezervovaných jednotek propustnosti je sdílen mezi čtyři kontejnery A, C, D a E. Přesné množství propustnost k dispozici A C, D nebo elektronické liší. Neexistují žádné smlouvy SLA pro jednotlivých jednotlivých kontejnerů o propustnosti.
 * Kontejner s názvem B je zaručeno, že získáte "P" rezervovaných jednotek propustnosti. Se zajištěním smlouvy o úrovni služeb.
+
+## <a name="update-throughput-on-a-database-or-a-container"></a>Aktualizace propustnosti na databázi nebo kontejneru
+
+Po vytvoření kontejneru Azure Cosmos nebo databázi, můžete aktualizovat zřízenou propustnost. Maximální propustnosti, můžete nakonfigurovat na databázi nebo kontejner neexistuje žádné omezení. Minimální zřízená propustnost závisí na následujících faktorech: 
+
+* Maximální velikost dat, ve kterém dříve uložený v kontejneru
+* Maximální propustnost, které někdy zřídíte v kontejneru
+* Maximální počet kontejnery Azure Cosmos, které můžete vytvářet v databázi s sdílené propustnost. 
+
+Můžete programově načíst minimální propustnosti kontejneru nebo databáze pomocí sad SDK nebo zobrazit hodnotu na webu Azure Portal. Při použití sady .NET SDK [DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) metoda umožňuje škálovat hodnoty zřízené propustnosti. Při použití sady Java SDK [RequestOptions.setOfferThroughput](sql-api-java-samples.md#offer-examples) metoda umožňuje škálovat hodnoty zřízené propustnosti. 
+
+Při použití sady .NET SDK [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) metoda vám umožňuje načíst minimální propustnosti kontejneru nebo databáze. 
+
+Zřízená propustnost kontejneru nebo databázi můžete škálovat v každém okamžiku. Můžete spustit operaci vertikální snížení kapacity po nečinnosti období 4 hodiny. Doba nečinnosti je definován jako čas období, kdy se žádné nabídky nahradit operací (to zahrnuje i horizontálního navýšení nebo snížení) na kontejner nebo databáze. 
 
 ## <a name="comparison-of-models"></a>Porovnání modelů
 

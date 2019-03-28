@@ -8,12 +8,12 @@ ms.author: mattwoj
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4714ea7aa4bf55f7cbd4500977b09505788233dd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9e77dcd96ffa0fbd57aa0ed1b4f857279ca768a7
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895800"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520798"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Vytvoření prostředí efektivní ukotvení pomocí prostorových kotev vztahů Azure
 
@@ -86,7 +86,7 @@ Scénář, cíl může pomoct fotografie. Je-li zobrazit uživatele fotku na ur�
 
 Uživatelé v místnosti scénář, zadejte mezeru jednoduše vědomím, že tady ukotvení je někde. Uživatelé zkontrolovat prostor pomocí jejich zařízení a rychle vyhledat ukotvení.
 
-Toto prostředí obvykle vyžaduje, abyste dobře kurátorované ukotvení vytvářet jak je popsáno v [různých perspektiv zobrazení](#consider-various-viewing-perspectives). Pokud jste místo z mnoho pohledů na problematiku při vytváření ukotvení, uživatelé můžete naskenovat skoro kdekoli, při pokusu o ho najít.
+Toto prostředí obvykle vyžaduje, abyste dobře kurátorované ukotvení vytvářet jak je popsáno v různých perspektiv zobrazení. Pokud jste místo z mnoho pohledů na problematiku při vytváření ukotvení, uživatelé můžete naskenovat skoro kdekoli, při pokusu o ho najít.
 
 ![Obrázek jak uživatele můžete naskenovat místo najít ukotvení](./media/scan-room.png)
 

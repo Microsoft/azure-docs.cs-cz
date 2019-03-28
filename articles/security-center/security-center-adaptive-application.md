@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/21/2019
+ms.date: 03/26/2019
 ms.author: monhaber
-ms.openlocfilehash: cbda94b8ceeaf7a225117e1ca73445135a32a243
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c4b2ed1269ef669def2b6f2036d34a40fb181c5d
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088991"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517976"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptivní řízení aplikací v Azure Security Center
 Pomocí tohoto názorného postupu zjistíte, jak nakonfigurovat řízení aplikací v Azure Security Center.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Co je adaptivní řízení aplikací ve službě Security Center?
-Adaptivní řízení aplikací je přidání na seznam povolených řešení inteligentní, automatizované začátku do konce aplikace ze služby Azure Security Center. To pomáhá řídit, které aplikace se můžou spouštět na vašich virtuálních počítačích v Azure, což kromě dalších výhod posiluje ochranu virtuálních počítačů před malwarem. Security Center pomocí strojového učení analyzuje aplikace spuštěné na virtuálních počítačích a pomáhá konkrétní aplikováním pravidel těchto informací. Tato funkce výrazně zjednodušuje proces konfigurace a Správa zásad na seznam povolených aplikací, umožňuje:
+Adaptivní řízení aplikací je přidání na seznam povolených řešení inteligentní, automatizované začátku do konce aplikace ze služby Azure Security Center. Pomůže vám řízení aplikací, které lze spustit v Azure a jiné – virtuální počítače Azure (Windows nebo Linuxem), což kromě dalších výhod posiluje ochranu virtuálních počítačů před malwarem. Security Center pomocí strojového učení analyzuje aplikace spuštěné na virtuálních počítačích a pomáhá konkrétní aplikováním pravidel těchto informací. Tato funkce výrazně zjednodušuje proces konfigurace a Správa zásad na seznam povolených aplikací, umožňuje:
 
 - Blokovat nebo upozorňovat na pokusy o spuštění škodlivých aplikací, včetně těch, které může být jinak mohla vynechat antimalwarová řešení.
 - Dodržovat zásady zabezpečení vaší organizace, které vyžadují používání pouze licencovaného softwaru.
@@ -34,8 +34,11 @@ Adaptivní řízení aplikací je přidání na seznam povolených řešení int
 - Zabránit používání konkrétních softwarových nástrojů, které nejsou ve vaší organizaci povolené.
 - Umožnit IT oddělení řídit přístup k citlivým datům prostřednictvím používání aplikace.
 
+> [!NOTE]
+> Pro virtuální počítače s Linuxem a mimo Azure jsou podporovány adaptivní řízení aplikací v pouze v režimu auditování.
+
 ## <a name="how-to-enable-adaptive-application-controls"></a>Jak povolit adaptivní řízení aplikací?
-Adaptivní řízení aplikací pomáhá definovat sadu aplikací, které jsou povoleno spouštění v nakonfigurovaných skupinách virtuálních počítačů. Tato funkce je dostupná pouze pro počítače s Windows (všechny verze, Classic nebo Azure Resource Manager). Pokud chcete ve službě Security Center nakonfigurovat přidávání aplikací na seznam povolených, můžete postupovat podle následujících kroků:
+Adaptivní řízení aplikací pomáhá definovat sadu aplikací, které jsou povoleno spouštění v nakonfigurovaných skupinách virtuálních počítačů. Tato funkce je dostupná pro Azure a jiných - Azure Windows (všechny verze, classic nebo Azure Resource Manageru) a virtuální počítače s Linuxem a servery. Pokud chcete ve službě Security Center nakonfigurovat přidávání aplikací na seznam povolených, můžete postupovat podle následujících kroků:
 
 1. Otevřete řídicí panel **Security Center**.
 2. V levém podokně vyberte **Adaptivní řízení aplikací** umístěné v části **Pokročilá obrana cloudu**.
@@ -64,10 +67,10 @@ Zobrazí se stránka **Adaptivní řízení aplikací**.
 
    Seznam obsahuje:
 
-   - **NÁZEV:** Název předplatného a skupiny.
-   - **VIRTUÁLNÍ POČÍTAČE:** Počet virtuálních počítačů ve skupině.
+   - **Název skupiny**: Název předplatného a skupiny
+   - **Virtuální počítače a počítače**: Počet virtuálních počítačů ve skupině
    - **Stav**: stav doporučení
-   - **ZÁVAŽNOST:** Úroveň závažnosti doporučení.
+   - **Závažnost**: úroveň závažnosti doporučení
 
 2. Klikněte na skupinu, která otevře **vytvořit pravidla řízení aplikací** možnost.
 
@@ -102,8 +105,8 @@ Zobrazí se stránka **Adaptivní řízení aplikací**.
 
    Seznam obsahuje:
 
-   - **Název**: Název předplatného a skupiny
-   - **VIRTUÁLNÍ POČÍTAČE:** Počet virtuálních počítačů ve skupině.
+   - **Název skupiny**: Název předplatného a skupiny
+   - **Virtuální počítače a počítače**: počet virtuálních počítačů ve skupině
    - **Režim**: Režim auditování se budou protokolovat pokusy o spuštění není na seznamu povolených aplikací. Vynutit bude neumožní spouštění aplikací seznamu povolených
    - **Výstrahy**: všechna aktuální porušení pravidel
 
@@ -146,14 +149,14 @@ Security Center doporučuje jenom zásady na seznam povolených aplikací pro vi
 ![Doporučení](./media/security-center-adaptive-application/security-center-adaptive-application-fig11.png)
 
 Seznam obsahuje:
-- **NÁZEV:** Název předplatného a skupiny.
-- **VIRTUÁLNÍ POČÍTAČE:** Počet virtuálních počítačů ve skupině.
+- **Název skupiny**: Název předplatného a skupiny
+- **Virtuální počítače a počítače**: počet virtuálních počítačů ve skupině
 
 Azure Security Center vám umožní definovat zásady na seznam povolených aplikací v jiných doporučuje i pro skupinu virtuálních počítačů. Postupujte podle stejné zásady, jak bylo popsáno, nakonfigurovat zásadu na seznam povolených aplikací na těchto skupin také.
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto dokumentu jste zjistili, jak použít adaptivní řízení aplikací v Azure Security Center k přidávání aplikací spuštěných na virtuálních počítačích Azure na seznam povolených aplikací. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
+V tomto dokumentu jste zjistili, jak použít adaptivní řízení aplikací v Azure Security Center k přidávání aplikací na spouštění v Azure a jiné – virtuální počítače Azure. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Zjistěte, jak spravovat výstrahy a reagovat na incidenty zabezpečení ve službě Security Center.
 * [Monitorování stavu zabezpečení ve službě Azure Security Center](security-center-monitoring.md). Zjistěte, jak monitorovat stav svých prostředků Azure.

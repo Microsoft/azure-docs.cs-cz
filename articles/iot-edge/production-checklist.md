@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 618414331ab22cff41c7ac02c78f4bef333d0c84
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c64db6b35aa2f1daa4484f137c8505b1415c5a0b
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433446"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521750"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava k nasazení svého řešení IoT Edge v produkčním prostředí
 
@@ -134,7 +134,7 @@ V kurzech a další dokumentace nám dáte pokyn, aby vám používat stejné p�
 
 ### <a name="use-tags-to-manage-versions"></a>Použití značek ke správě verzí
 
-Klíčové slovo je koncept Dockeru, můžete použít k rozlišení mezi verzemi kontejnery Dockeru. Značky jsou přípony jako **1.0** , přejděte na konci kontejneru úložiště. Například **mcr.microsoft.com/azureiotedge-agent:1.0**. Značky jsou měnitelné a může změnit tak, aby odkazoval na jiný kontejner v okamžiku, takže váš tým musí shodnout na konvenci dodržovat při aktualizaci vaší bitové kopie modulu v budoucnu. 
+Klíčové slovo je koncept dockeru, můžete použít k rozlišení mezi verzemi kontejnery dockeru. Značky jsou přípony jako **1.0** , přejděte na konci kontejneru úložiště. Například **mcr.microsoft.com/azureiotedge-agent:1.0**. Značky jsou měnitelné a může změnit tak, aby odkazoval na jiný kontejner v okamžiku, takže váš tým musí shodnout na konvenci dodržovat při aktualizaci vaší bitové kopie modulu v budoucnu. 
 
 Značky pomáhají také k vynucení aktualizací na zařízení IoT Edge. Když nahrajete aktualizovanou verzi modulu do vašeho registru kontejneru, zvýšte značky. Potom push nové nasazení do zařízení se značkou zvýší. Modul kontejneru rozpozná zvýšena značky jako novou verzi a získávat nejnovější verze modulu do svého zařízení stáhli. 
 
@@ -172,7 +172,7 @@ Tento kontrolní seznam je výchozím bodem pro pravidla brány firewall:
    | \*.azurecr.io | 443 | Registry kontejnerů osobní a 3. stran |
    | \*.blob.core.windows.net | 443 | Časový limit stažení bitové kopie rozdíly | 
    | \*.azure-devices.net | 5671, 8883, 443 | Přístup k službě IoT Hub |
-   | \*.docker.io  | 443 | Přístup ke docker (volitelné) |
+   | \*.docker.io  | 443 | Docker Hub přístup (nepovinné) |
 
 ### <a name="configure-communication-through-a-proxy"></a>Konfigurace komunikace prostřednictvím proxy serveru
 
@@ -186,16 +186,57 @@ Pokud vaše zařízení se chystáte nasadit v síti, která používá proxy se
 
 ### <a name="set-up-logs-and-diagnostics"></a>Nastavení diagnostiky a protokolování
 
-Démon IoT Edge v Linuxu, použije deníky jako výchozí protokolování ovladače. Můžete použít nástroj příkazového řádku `journalctl` k dotazování démona protokoly. Démon IoT Edge na Windows, používá diagnostiky prostředí PowerShell. Použití `Get-WinEvent` do protokolů dotazu z démona. Moduly IoT Edge použít ovladač JSON pro protokolování, což je výchozí Dockeru.  
+Démon IoT Edge v Linuxu, použije deníky jako výchozí protokolování ovladače. Můžete použít nástroj příkazového řádku `journalctl` k dotazování démona protokoly. Démon IoT Edge na Windows, používá diagnostiky prostředí PowerShell. Použití `Get-WinEvent` do protokolů dotazu z démona. Moduly IoT Edge používat ovladač JSON pro protokolování, což je výchozí hodnota.  
 
 Při testování nasazení IoT Edge, obvykle možné získat přístup zařízení k načtení protokolů a řešení potíží. V případě nasazení nemusí mít tuto možnost. Zvažte, jak budete shromažďovat informace o zařízeních v produkčním prostředí. Jednou z možností je použít modul protokolování, který shromažďuje informace z jiných modulů a odešle ji do cloudu. Jedním z příkladů modulu protokolování je [logspout loganalytics](https://github.com/veyalla/logspout-loganalytics), nebo můžete navrhnout vlastní. 
 
-Pokud máte obavy o protokolech příliš velká na zařízení prostředků omezené, máte několik možností ke snížení využití paměti. 
+### <a name="place-limits-on-log-size"></a>Vliv na velikost protokolu omezení
 
-* Konkrétně můžete omezit velikost všech docker logfiles v samotné démona Dockeru. Pro Linux, konfigurace démona v `/etc/docker/daemon.json`. Pro Windows `C:\ProgramData\docker\confige\daemon.json`. 
-* Pokud chcete upravit velikost souboru protokolu pro každý kontejner, provést v CreateOptions field každého modulu. 
-* Konfigurace Dockeru k automatické správě protokoly nastavením deníky jako výchozí protokolování ovladač pro Docker. 
-* Pravidelně odstraňuje staré protokoly ze zařízení nainstalováním nástroje logrotate pro Docker. Použijte následující specifikace souboru: 
+Ve výchozím nastavení modul container Moby nenastavuje omezení velikosti protokolu kontejneru. To může vést k zařízení naplňování s protokoly a nemá dostatek místa na disku, v čase. Zvažte následující možnosti, pokud tomu chcete zabránit:
+
+**Možnost: Nastavení globální omezení, které platí pro všechny moduly kontejneru**
+
+Můžete omezit velikost všech kontejnerů logfiles v možnostech kontejner modulu protokolu. Následující příklad nastaví ovladače protokolu `json-file` (doporučeno) s limity na velikosti a počtu souborů:
+
+    {
+        "log-driver": "json-file",
+        "log-opts": {
+            "max-size": "10m",
+            "max-file": "3"
+        }
+    }
+
+Přidat (nebo připojit) tyto informace do souboru s názvem `daemon.json` a umístěte ho na správném místě pro platformu vašeho zařízení.
+
+| Platforma | Umístění |
+| -------- | -------- |
+| Linux | `/etc/docker/` |
+| Windows | `C:\ProgramData\iotedge-moby-data\config\` |
+
+Změny se projeví až po restartování stroje kontejneru.
+
+**Možnost: Upravit nastavení protokolu pro každý modul kontejneru**
+
+Můžete provést, **CreateOptions field** každého modulu. Příklad:
+
+    "createOptions": {
+        "HostConfig": {
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {
+                    "max-size": "10m",
+                    "max-file": "3"
+                }
+            }
+        }
+    }
+
+
+**Další možnosti v systémech Linux**
+
+* Konfigurace jádra kontejneru odeslat protokoly do `systemd` [deníku](https://docs.docker.com/config/containers/logging/journald/) nastavením `journald` jako výchozí protokolování ovladač. 
+
+* Pravidelně odstraňuje staré protokoly ze zařízení nainstalováním nástroj logrotate. Použijte následující specifikace souboru: 
 
    ```
    /var/lib/docker/containers/*/*-json.log{

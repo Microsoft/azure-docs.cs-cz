@@ -8,17 +8,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 1c863bc3b0ded0558e052ee3d98586ad815a0cfd
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 03/21/2019
+ms.openlocfilehash: 63def1464c3c219b5181a31bf19cc80a1e487025
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202737"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521733"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimalizovat dotazy Apache Hive v Azure HDInsight
 
-V Azure HDInsight existuje několik typů clusteru a technologie, které můžete spouštět dotazy Apache Hive. Při vytváření clusteru HDInsight, zvolte typ příslušného clusteru za účelem optimalizace výkonu pro potřeby vašich úloh. 
+V Azure HDInsight existuje několik typů clusteru a technologie, které můžete spouštět dotazy Apache Hive. Při vytváření clusteru HDInsight, zvolte typ příslušného clusteru za účelem optimalizace výkonu pro potřeby vašich úloh.
 
 Například zvolte **Interactive Query** typ optimalizace pro ad hoc, interaktivní dotazy clusteru. Zvolte Apache **Hadoop** typ optimalizace dotazů Hive používá jako dávkové zpracování clusteru. **Spark** a **HBase** typy clusteru můžete také spouštět dotazy Hive. Další informace o spouštění dotazů Hive na různé typy clusterů HDInsight, naleznete v tématu [co je Apache Hive a HiveQL v Azure HDInsight?](hadoop/hdinsight-use-hive.md).
 

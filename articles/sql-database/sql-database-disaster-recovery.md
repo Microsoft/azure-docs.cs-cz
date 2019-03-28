@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5fcd7f05aeb294441b16bab0aeb18ef5d0bf5c28
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 1e1bc92c684bf6ddbb7dc4ff0f882ad61ddeb27e
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749027"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540478"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Obnovení služby Azure SQL Database a převzetí služeb při selhání sekundární lokalitou
 
@@ -32,6 +32,13 @@ Další informace o obchodní kontinuity podnikových procesů scénáře a funk
 
 > [!NOTE]
 > Pokud používáte zónově redundantní databáze úrovně Premium nebo pro důležité obchodní informace nebo fondy, je automatizovaný proces obnovení a zbývající část tohoto materiálu se nedá použít.
+
+> [!NOTE]
+> Primární a sekundární databáze musí mít stejné úrovně služeb. Také důrazně doporučujeme, aby se vytvoří sekundární databáze se stejnou velikostí výpočetní prostředky (počet jednotek Dtu nebo virtuálních jader) jako primární. Další informace najdete v tématu [upgradu nebo downgradu jako primární databáze](sql-database-active-geo-replication.md#upgrading-or-downgrading-a-primary-database).
+
+> [!NOTE]
+> Použití jednoho nebo několika skupin převzetí služeb při selhání pro správu převzetí služeb při selhání několika databází.
+> Pokud chcete přidat existující relaci geografické replikace do skupiny převzetí služeb při selhání, nezapomeňte že GEO-secondary má nakonfigurovanou na stejné úrovně služeb a velikost výpočetního jako primární. Další informace najdete v tématu [pomocí skupin – automatické převzetí služeb při selhání můžete povolit transparentní a koordinovaný převzetí služeb při selhání několika databází](sql-database-auto-failover-group.md).
 
 ## <a name="prepare-for-the-event-of-an-outage"></a>Příprava pro případ výpadku
 
@@ -73,6 +80,7 @@ Převzít služby při selhání do geograficky replikované sekundární datab�
 
 - [Převzetí služeb při selhání do geograficky replikované sekundární server pomocí webu Azure portal](sql-database-geo-replication-portal.md)
 - [Převzetí služeb při selhání na sekundární server pomocí Powershellu](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+- [Převzetí služeb při selhání na sekundární server pomocí příkazů jazyka Transact-SQL (T-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
 
 ## <a name="recover-using-geo-restore"></a>Obnovení s využitím geografického obnovení
 

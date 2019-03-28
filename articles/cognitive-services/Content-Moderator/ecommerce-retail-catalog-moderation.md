@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 5c4d2320ffd54054eb8a5bb26ef14c8e99dabb33
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 900ad8b7f676eb67f9ac0fc808600779f832a102
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855950"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539492"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Kurz: Obrázky produktů střední e-commerce s Azure Content Moderator
 
@@ -61,7 +61,7 @@ V tomto kurzu se zaměřuje na kód, který je centrální do projektu, ale nebu
 
 ## <a name="define-api-keys-and-endpoints"></a>Definujte klíče rozhraní API a koncových bodů
 
-Jak je uvedeno výše, tento kurz používá tři služby cognitive services; Proto je vyžadováno tři odpovídající klíče a koncových bodů rozhraní API. Zobrazit následující pole v **Program** třídy: 
+Jak je uvedeno výše, tento kurz používá tři služby cognitive services; Proto je vyžadováno tři odpovídající klíče a koncových bodů rozhraní API. Zobrazit následující pole v **Program** třídy:
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
@@ -79,19 +79,19 @@ Najdete v článku **EvaluateAdultRacy** metoda ve **Program** třídy. Tato met
 
 [!code-csharp[define EvaluateAdultRacy method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=73-113)]
 
-## <a name="evaluatecustomvisiontags-method"></a>EvaluateCustomVisionTags – metoda
+## <a name="evaluatecomputervisiontags-method"></a>EvaluateComputerVisionTags – metoda
 
-Další metoda přebírá adresu URL obrázku a informace o předplatném pro počítačové zpracování obrazu a analyzuje bitovou kopii na přítomnost celebrit. Pokud jeden nebo více celebrit nenajde, nastaví odpovídající hodnotu v **ReviewTags** pole k **True**. 
+Další metoda přebírá adresu URL obrázku a informace o předplatném pro počítačové zpracování obrazu a analyzuje bitovou kopii na přítomnost celebrit. Pokud jeden nebo více celebrit nenajde, nastaví odpovídající hodnotu v **ReviewTags** pole k **True**.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=115-146)]
 
 ## <a name="evaluatecustomvisiontags-method"></a>EvaluateCustomVisionTags – metoda
 
-V dalším kroku najdete v článku **EvaluateCustomVisionTags** metodu, která klasifikuje skutečných produktů&mdash;v tomto případě příznaky toys a pera. Postupujte podle pokynů [sestavení klasifikátoru](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) průvodce k vytvoření vlastní image klasifikátor k detekci přítomnosti příznaky, toys a pera (nebo cokoli, co jste zvolili jako vlastní značky) na obrázcích.
+V dalším kroku najdete v článku **EvaluateCustomVisionTags** metodu, která klasifikuje skutečných produktů&mdash;v tomto případě příznaky toys a pera. Postupujte podle pokynů [sestavení klasifikátoru](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) průvodce k vytvoření vlastní image klasifikátor k detekci přítomnosti příznaky, toys a pera (nebo cokoli, co jste zvolili jako vlastní značky) na obrázcích. Můžete použít image **ukázkové obrázky** složky [úložiště GitHub se vzorovými](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) rychle školení některé z kategorií v tomto příkladu.
 
 ![Vlastní webovou stránku pro zpracování obrazu pomocí pera, toys a příznaky trénovacích obrázků](images/tutorial-ecommerce-custom-vision.PNG)
 
-Po klasifikátoru mají školení, získat klíč předpovědi a adresu URL koncového bodu predikcí (naleznete v tématu [získání adresy URL a předpovědi klíče](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) Pokud potřebujete pomoc, jejich načítání) a přiřadit tyto hodnoty na vaše `CustomVisionKey` a `CustomVisionUri` pole , v uvedeném pořadí. Metoda tyto hodnoty používá k dotazování třídění. Pokud třídění vyhledá jeden nebo více vlastních značek na obrázku, tato metoda nastaví odpovídající hodnoty v **ReviewTags** pole k **True**. 
+Po klasifikátoru mají školení, získat klíč předpovědi a adresu URL koncového bodu predikcí (naleznete v tématu [získání adresy URL a předpovědi klíče](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) Pokud potřebujete pomoc, jejich načítání) a přiřadit tyto hodnoty na vaše `CustomVisionKey` a `CustomVisionUri` pole , v uvedeném pořadí. Metoda tyto hodnoty používá k dotazování třídění. Pokud třídění vyhledá jeden nebo více vlastních značek na obrázku, tato metoda nastaví odpovídající hodnoty v **ReviewTags** pole k **True**.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 

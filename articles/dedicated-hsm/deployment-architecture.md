@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/27/2019
 ms.author: barclayn
-ms.openlocfilehash: 36de8378a7dd22cfa6ba37da921213a18670cc67
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 1e00e1f06f2409c94174a752a799cd4c1b7b23ef
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113341"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539968"
 ---
-# <a name="azure-dedicated-hsm-deployment-architecture"></a>Architektura služby Azure vyhrazené nasazení modulu hardwarového zabezpečení
+# <a name="azure-dedicated-hsm-deployment-architecture"></a>Architektura nasazení služby Azure vyhrazené HSM
 
 Azure vyhrazené HSM nabízí kryptografického klíče úložiště v Azure. Splňuje požadavky na přísné zásady zabezpečení. Zákazníci se benefitovat z použití vyhrazené modulu hardwarového zabezpečení Azure, pokud jsou:
 
@@ -37,6 +37,12 @@ Moduly hardwarového zabezpečení jsou distribuovány napříč datovými centr
 * Východní Asie
 * Severní Evropa
 * Západní Evropa
+* Velká Británie – jih
+* Spojené království – západ
+* Kanada – střed
+* Kanada – východ
+* Austrálie – východ
+* Austrálie – jihovýchod
 
 Každý z těchto oblastí má stojany modulu hardwarového zabezpečení, které jsou nasazené ve dvou nezávislých datových center nebo aspoň dva nezávislé dostupnost zóny. Jihovýchodní Asie má tři zóny dostupnosti a východní USA 2 má dvě. Je tam dohromady osm oblastí Evropa, Asie a USA, který nabízí služba Dedicated modulu hardwarového zabezpečení. Další informace o oblastech Azure, najdete v oficiální [informace o oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
 Některé faktory návrhu pro jakékoli řešení založené na vyhrazené modulu hardwarového zabezpečení jsou umístění/latenci, vysokou dostupnost a podporu dalších distribuované aplikace.

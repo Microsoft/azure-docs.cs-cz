@@ -15,12 +15,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c68e937c1c4e77a5b24b48f8b73271bf8ec9da66
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 49b93cb7852692e4dad65fcbd72cd749db1b16fb
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170798"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540903"
 ---
 # <a name="risky-ip-report-public-preview"></a>Sestavě rizikových IP adres (public preview)
 Zákazníci služby AD FS můžou zveřejnit koncové body ověřování pomocí hesla na internetu a poskytnout tak koncovým zákazníkům ověřovací služby pro přístup k aplikacím SaaS, jako je Office 365. V takovém případě může pochybný aktér zkoušet přihlášení do systému AD FS za účelem uhodnutí hesla koncového uživatele a získání přístupu k prostředkům aplikace. Služba AD FS od verze AD FS ve Windows Serveru 2012 R2 poskytuje funkci uzamčení účtu pro extranet, která brání těmto typům útoku. Pokud používáte nižší verzi, důrazně doporučujeme upgradovat systém AD FS na Windows Server 2016. <br />
@@ -38,7 +38,7 @@ Kromě toho je možné, aby se jedna IP adresa pokoušela o přihlášení za n�
 > 
 
 ## <a name="what-is-in-the-report"></a>Co jsou sestavy?
-Každá položka v sestavě rizikových IP adres ukazuje agregované informace o neúspěšných aktivitách přihlášení ke službě AD FS, které překročí určenou prahovou hodnotu. Poskytuje následující informace: ![Azure AD Connect Health portálu](./media/how-to-connect-health-adfs/report4a.png)
+Neúspěšné přihlášení aktivity klientských IP adres se agregují přes Proxy servery webových aplikací. Každá položka v sestavě rizikových IP adres ukazuje agregované informace o neúspěšných aktivitách přihlášení ke službě AD FS, které překročí určenou prahovou hodnotu. Poskytuje následující informace: ![Azure AD Connect Health portálu](./media/how-to-connect-health-adfs/report4a.png)
 
 | Položky sestavy | Popis |
 | ------- | ----------- |

@@ -14,12 +14,12 @@ ms.date: 07/30/2018
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d0dbfeaf3fb018c8dd3f671ce7ad9d7d50e5fca
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c6790fa1cbb10999a751b31bcb27db2edcb67b4a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336299"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517747"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Správa hesel aplikací pro dvoustupňové ověřování.
 
@@ -40,7 +40,7 @@ Při používání hesel aplikací, je důležité pamatovat:
 
 Heslo aplikace už zadaný při počátečním dvoustupňovém ověření registrace. Pokud potřebujete více než jednoho hesla, můžete vytvořit další hesla podle způsobu, jakým používáte dvoustupňové ověřování:
 
-- **Dvoustupňové ověřování pomocí pracovního nebo školního účtu a portálu MyApps.** Vytvoření a odstranění hesla aplikace, postupujte podle pokynů v [vytvoření a odstranění hesla aplikace pomocí portálu MyApps](#create-and-delete-app-passwords-using-the-my-apps-portal) části tohoto článku. Další informace o portálu MyApps a jak ji používat, naleznete v tématu [co je v Azure Active Directory portálu MyApps?](active-directory-saas-access-panel-introduction.md).
+- **Dvoustupňové ověřování pomocí pracovního nebo školního účtu a portálu MyApps.** Vytvářet a odstraňovat podle pokynů v části Vytvoření hesel aplikací a odstranění hesla aplikace pomocí portálu MyApps části tohoto článku. Další informace o portálu MyApps a jak ji používat, naleznete v tématu [co je v Azure Active Directory portálu MyApps?](active-directory-saas-access-panel-introduction.md).
 
 - **Dvoustupňové ověřování pomocí svůj pracovní nebo školní účet a portálu služeb Office 365.** Vytvoření a odstranění hesla aplikace, postupujte podle pokynů v [vytvoření a odstranění hesla aplikace pomocí portálu služeb Office 365](#create-and-delete-app-passwords-using-the-office-365-portal) části tohoto článku.
 

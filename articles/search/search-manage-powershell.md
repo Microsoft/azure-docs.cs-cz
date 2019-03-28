@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: heidist
-ms.openlocfilehash: 541feee2005428226b3f46927bc0e4bfb53cc98d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 7a91ad691089ac816b31ebe1fce202110e580f71
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781710"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520560"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Správa služby Azure Search pomocí Powershellu
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ Spuštěním rutin a skriptů Powershellu na Windows, Linux, nebo v [Azure Cloud
 > * [Seznam všech vyhledávací služby v rámci vašeho předplatného](#list-search-services)
 > * [Získejte informace o konkrétní vyhledávací služba](#get-search-service-information)
 > * [Vytvoření nebo odstranění služby](#create-or-delete-a-service)
-> * [Znovu vygenerovat klíče API-Key správce](#regenerate-admin-api-keys)
+> * Znovu vygenerovat klíče API-Key správce
 > * [Vytvoření nebo odstranění klíče dotazu api Key](#create-or-delete-query-keys)
 > * [Škálování služby zvýšením nebo snížením repliky a oddíly](#scale-replicas-and-partitions)
 

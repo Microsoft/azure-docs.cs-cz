@@ -1,19 +1,19 @@
 ---
 title: Přehled o diagnostické protokoly Azure
 description: Další diagnostické protokoly Azure a jak je můžete použít k pochopení události, ke kterým dochází v rámci prostředku Azure.
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/07/2018
-ms.author: johnkem
+ms.date: 03/26/2019
+ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: 07ea18a767044f0f74249859bb46d8285d52d7ab
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 890f2224a4053ec8cad65b44b85eab0e31be3b64
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310178"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519387"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Shromažďování a zpracování dat protokolu z vašich prostředků Azure
 
@@ -49,11 +49,6 @@ Můžete použít účet úložiště nebo oboru názvů Event Hubs, která nen�
 > [!NOTE]
 >  Nelze aktuálně archivovat protokoly toku network na účet úložiště, který je za zabezpečené virtuální síti.
 
-> [!WARNING]
-> 1. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md). 
->
-> 
-
 ## <a name="diagnostic-settings"></a>Nastavení diagnostiky
 
 Protokolů diagnostiky prostředků je konfigurovat pomocí nastavení diagnostiky prostředku. Diagnostické protokoly tenanta se konfigurují pomocí nastavení diagnostiky tenanta. **Nastavení diagnostiky** pro řízení služeb:
@@ -61,7 +56,7 @@ Protokolů diagnostiky prostředků je konfigurovat pomocí nastavení diagnosti
 * Diagnostické protokoly a metriky se odešle (účet úložiště, Event Hubs a Azure Monitor).
 * Kategorie protokolu, které se odesílají a určuje, zda metrika data jsou taktéž odeslána.
 * Jak dlouho se každá kategorie protokolu uchovávat v účtu úložiště
-    - Uchování 0 dnů znamená, že protokoly se uchovávají navždy. V opačném případě hodnota může být libovolný počet dnů mezi 1 a 2147483647.
+    - Uchování 0 dnů znamená, že protokoly se uchovávají navždy. V opačném případě hodnota může být libovolný počet dnů od 1 do 365.
     - Pokud nejsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázaný (například pokud pouze jsou vybrané možnosti služby Event Hubs nebo Log Analytics), zásady uchovávání informací nemají žádný vliv.
     - Zásady uchovávání informací jsou použitých za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště.
 

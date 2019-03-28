@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/20/2019
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 0d52b2f59bba2270b3d36ff2499ce1e0e492b228
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: fe5e4b6a4f6a3da851b6e27419bff265758a1ba1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500419"
+ms.locfileid: "58522209"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů Blob v Azure
 
@@ -227,7 +227,7 @@ Tento příklad ukazuje, jak převést objekty BLOB bloku s předponou `containe
 
 ### <a name="archive-data-at-ingest"></a>Archivovat data v ingestu 
 
-Některá data zůstává nečinnosti v cloudu a je jen zřídka, pokud vůbec někdy jednou uložená. Archivujte data ihned po je jejich ingestování. Tyto zásady životního cyklu je nakonfigurován k archivaci dat na ingestování. Tento příklad, objekty BLOB v účtu úložiště v rámci kontejneru bloku přechody `archivecontainer` okamžitě do archivní úrovně. Okamžitý přechod provádí funguje pro objekty BLOB 0 dnů po čas poslední změny:
+Některá data zůstává nečinnosti v cloudu a je jen zřídka, pokud vůbec někdy jednou uložená. Tyto zásady životního cyklu je nakonfigurován k archivaci dat po zpracování. Tento příklad, objekty BLOB v účtu úložiště v rámci kontejneru bloku přechody `archivecontainer` do archivní úrovně. Přechodu lze dosáhnout funguje pro objekty BLOB 0 dnů po čas poslední změny:
 
 ```json
 {

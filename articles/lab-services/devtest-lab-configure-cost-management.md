@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 1f6887a403e03ac11bb080a1d9855daff66ca088
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f761af3a5a3f08e4da89d8869aea5d666ecd69d0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096771"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517262"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Sledujte náklady spojené s testovacího prostředí ve službě Azure DevTest Labs
 Tento článek obsahuje informace o tom, jak sledovat náklady testovacího prostředí. Ukazuje, jak chcete zobrazit odhadované náklady trent za aktuální kalendářní měsíc pro testovací prostředí. Tento článek také ukazuje, jak zobrazit náklady za měsíc k datu jednotlivých prostředků v testovacím prostředí.
@@ -71,7 +71,7 @@ DevTest Labs umožňuje lépe spravovat tak, že nastavíte útraty cíl, který
    - Zadejte **cílové náklady**. Například, kolik chcete výdajů v časovém období, které jste definovali v tomto testovacím prostředí.
    - Vyberte možnost k povolení nebo zakázání jakékoli prahu chcete hlášené – v přírůstcích po 25 % – až 125 % vaše zadané **cílové náklady**.
       - **Oznámit**: Při splnění této prahové hodnoty jsou upozorněni prostřednictvím zadaná adresa URL webhooku.
-      - **Vykreslit v grafu**: Při splnění této prahové hodnoty, výsledky jsou zobrazeny v grafu trend nákladů, které můžete zobrazit, jak je popsáno v [zobrazení grafu měsíční Trend nákladů odhadované](#viewing-the-monthly-estimated-cost-trend-chart).
+      - **Vykreslit v grafu**: Při splnění této prahové hodnoty, výsledky jsou zobrazeny v grafu trend nákladů, které můžete zobrazit, jak je popsáno v zobrazení grafu měsíční Trend odhad nákladů.
    - Pokud budete chtít **upozornění** při splnění prahové hodnoty, je nutné zadat adresu URL webhooku. V oblasti integrace nákladů, vyberte **kliknutím sem přidáte integraci**. Zadejte **adresu URL Webhooku** v podokně Konfigurace oznámení a pak vyberte **OK**.
 
        ![Konfigurace podokno oznámení](./media/devtest-lab-configure-cost-management/configure-notification.png)

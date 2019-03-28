@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: ad971ae3157dd17ecd4af662626c986584a27fe2
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 63f301b4618df9764460d0a9a133834fb72e33bb
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329162"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540580"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Správa postupné upgrady cloudových aplikací s využitím SQL Database aktivní geografické replikace
 
@@ -103,7 +103,21 @@ Aby bylo možné vrátit zpět, musíte vytvořit testovací prostředí s plně
 Po dokončení postupu přípravy je pracovní prostředí připraveno k upgradu. Následující diagram znázorňuje tyto kroky upgradu:
 
 1. Nastavte primární databází v produkčním prostředí do režimu jen pro čtení (10). Tento režim zaručuje, že je provozní databáze (V1) nezmění při upgradu, zamezuje tak odchylkami dat mezi instancemi databáze V1 a V2.
-2. Odpojte sekundární databázi ve stejné oblasti pomocí plánované ukončení režimu (11). Tato akce vytvoří nezávislé, ale plně synchronizované kopie produkční databázi. Tato databáze se upgraduje.
+
+```sql
+-- Set the production database to read-only mode
+ALTER DATABASE <Prod_DB>
+SET (ALLOW_CONNECTIONS = NO)
+```
+
+2. Když se odpojíte od sekundární (11) ukončete geografické replikace. Tato akce vytvoří nezávislé, ale plně synchronizované kopie produkční databázi. Tato databáze se upgraduje. Následující příklad používá příkazů jazyka Transact-SQL, ale [Powershellu](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) je také k dispozici. 
+
+```sql
+-- Disconnect the secondary, terminating geo-replication
+ALTER DATABSE V1
+REMOVE SECONDARY ON SERVER <Partner-Server>
+```
+
 3. Spuštění upgradu skriptu proti `contoso-1-staging.azurewebsites.net`, `contoso-dr-staging.azurewebsites.net`a pracovní primární databázi (12). Změny databáze se automaticky replikovat do sekundárního přípravy.
 
 ![Konfigurace geografické replikace SQL Database pro zotavení po havárii cloudu.](media/sql-database-manage-application-rolling-upgrade/option2-2.png)

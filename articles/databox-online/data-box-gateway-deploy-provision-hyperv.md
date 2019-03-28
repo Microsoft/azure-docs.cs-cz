@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/22/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 38c8e98d92c21e3dc7d37337466dc79c85d0a15f
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 0b106e0412de972801fa8782de08269e13042191
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401124"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517908"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Kurz: Zřízení Azure Data Box brány technologie Hyper-v
 
@@ -136,7 +136,9 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte zařízení.
 18. Na stránce **Zadejte název a umístění** zadejte **název** a **umístění** (k umístění můžete přejít) datového disku. Klikněte na **Další**.
 
     ![Zadejte název a umístění stránky](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
-19. Na stránce **Konfigurovat disk** vyberte možnost **Vytvořit nový prázdný virtuální pevný disk** a jako velikost zadejte **2 TB** (nebo více). Minimální požadavek je 2 TB, ale vždy můžete zřídit větší disk. Mějte na paměti, že disk po zřízení už není možné zmenšit.  Můžete ho však zvětšit přidáním datového disku. Klikněte na **Další**.
+19. Na stránce **Konfigurovat disk** vyberte možnost **Vytvořit nový prázdný virtuální pevný disk** a jako velikost zadejte **2 TB** (nebo více). 
+    
+    Minimální požadavek je 2 TB, ale vždy můžete zřídit větší disk. Mějte na paměti, že disk po zřízení už není možné zmenšit. Probíhá pokus o zmenšit výsledky disku za následek ztrátu všech místních dat v zařízení. Můžete ho však zvětšit přidáním datového disku. Klikněte na **Další**.
 
     ![Konfigurace disku stránky](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
 20. Na stránce **Souhrn** zkontrolujte podrobnosti virtuálního pevného disku, a pokud budete spokojeni, kliknutím na **Dokončit** disk vytvořte. Průvodce se zavře a do vašeho počítače se přidá virtuální pevný disk.

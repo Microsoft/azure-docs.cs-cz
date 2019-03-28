@@ -1,21 +1,19 @@
 ---
 title: Vytvoření nové sestavy z datové sady v kolekcích pracovních prostorů Power BI | Dokumentace Microsoftu
 description: Teď je možné vytvářet sestavy Power BI kolekce pracovních prostorů z datové sady ve své aplikaci.
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: ''
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: 9b3a91399ddcae687a982527c02d23d31eec4289
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 92f75a15374738d02972adc012b3a28918d7825d
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891480"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518809"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Vytvoření nové sestavy z datové sady v kolekcích pracovních prostorů Power BI
 

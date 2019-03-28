@@ -1,21 +1,19 @@
 ---
 title: Připojení ke zdroji dat v kolekcích pracovních prostorů Power BI | Dokumentace Microsoftu
 description: Zjistěte, jak se připojit ke zdroji dat v rámci kolekce pracovních prostorů Power BI.
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: 2a4caeb3-255d-4215-9554-0ca8e3568c13
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: c67369edec2f3c84ada14e6c2a3a3ab8056b3e0c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 143213b148518fdf936974152d5d9196c42febd8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57870091"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521495"
 ---
 # <a name="connect-to-a-data-source"></a>Připojení ke zdroji dat
 
@@ -43,7 +41,7 @@ S kolekcemi pracovních prostorů Power BI můžete použít DirectQuery s cloud
 
 **Import**
 
-Můžete importovat, používá všechny dostupné zdroje dat v Power BI Desktopu. Budete **není** moct aktualizovat tato data v rámci kolekce pracovních prostorů Power BI. Budete muset uložit změny do souboru PBIX do kolekce pracovních prostorů Power BI. To je způsobeno žádné dostupné brány. 
+Můžete importovat, používá všechny dostupné zdroje dat v Power BI Desktopu. Budete **není** moct aktualizovat tato data v rámci kolekce pracovních prostorů Power BI. Budete muset uložit změny do souboru PBIX do kolekce pracovních prostorů Power BI. To je způsobeno žádné dostupné brány.
 
 ## <a name="benefits-of-using-directquery"></a>Výhody použití DirectQuery
 
@@ -73,4 +71,3 @@ K zajištění, že dotazy odeslané do podkladového zdroje dat budou mít při
 * [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
 Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](https://community.powerbi.com/)
-

@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 58f666d7ebf8ac02d393a42f55e00f08d82b8cae
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 20aafc117ad8b6bd625894180fdfe79bd86192bd
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337083"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518996"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galerie modulů a Runbooků Azure Automation
 
 Místo vytváření vlastních modulů a runbooků ve službě Azure Automation, můžete přistupovat scénáře, které již byly vytvořeny od Microsoftu a komunity.
 
-Můžete získat [Powershellové runbooky](#runbooks-in-runbook-gallery) a [moduly](#modules-in-powerShell-gallery) z Galerie prostředí PowerShell a [runbooky Python](#python-runbooks) z Galerie centra skriptů. Můžete přispívat také v komunitě sdílením scénáře, které vyvíjíte, naleznete v tématu [přidání sady runbook do Galerie](#adding-a-runbook-to-the-runbook-gallery)
+Powershellové runbooky můžou získat a [moduly](#modules-in-powershell-gallery) z Galerie prostředí PowerShell a [runbooky Python](#python-runbooks) z Galerie centra skriptů. Můžete přispívat také v komunitě sdílením scénáře, které vyvíjíte, najdete v tématu Přidání sady runbook do Galerie
 
 ## <a name="runbooks-in-powershell-gallery"></a>Sady Runbook ve galerii prostředí PowerShell
 

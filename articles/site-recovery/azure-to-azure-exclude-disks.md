@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 978566eb9e0073c60046eca024e09ba63c642180
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: b378f77874b1ebef243836c101fa71a53f4775d1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458011"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517738"
 ---
 # <a name="exclude-disks-from-replication-of-azure-vms-to-azure-using-azure-powershell"></a>Vyloučení disků z replikace virtuálních počítačů Azure do Azure pomocí Azure Powershellu
 
@@ -31,7 +31,7 @@ Než začnete, potřebujete:
 ## <a name="why-exclude-disks-from-replication"></a>Proč vylučovat disky z replikace?
 Vyloučení disků z replikace je často nutné z těchto důvodů:
 
-- Váš virtuální počítač byl dosažen [frekvence změny limity Azure Site Recovery k replikaci dat.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#azure-site-recovery-limits-to-replicate-data-change-rates)
+- Váš virtuální počítač byl dosažen [frekvence změny limity Azure Site Recovery k replikaci dat.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)
 
 - Často měněná data uložená na vyloučených discích nejsou důležitá nebo nemusí být replikována.
 

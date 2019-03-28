@@ -5,18 +5,18 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 03/26/2019
 ms.author: danlep
-ms.openlocfilehash: c6c82ee26fdbd824bdf42720ed7fc08135a872da
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a4da7a23d6dcb50164829507130fed145abeebbd
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372400"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517313"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejneru do služby Azure virtual network
 
-[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) poskytuje zabezpečené a privátní sítě, včetně filtrování a směrování, partnerský vztah pro Azure a místním prostředkům. Nasazením skupiny kontejnerů do služby Azure virtual network můžete své kontejnery bezpečně komunikovat s ostatními prostředky ve virtuální síti.
+[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) poskytuje zabezpečené a privátní sítě pro Azure a místním prostředkům. Nasazením skupiny kontejnerů do služby Azure virtual network můžete své kontejnery bezpečně komunikovat s ostatními prostředky ve virtuální síti.
 
 Skupiny kontejner nasadí do služby Azure virtual network umožňují scénáře, jako jsou:
 
@@ -34,7 +34,6 @@ Skupiny kontejner nasadí do služby Azure virtual network umožňují scénář
 Při nasazení skupin kontejneru k virtuální síti platí určitá omezení.
 
 * Nasazení skupin kontejnerů k podsíti, podsíť nemůže obsahovat další typy prostředků. Odeberte všechny existující prostředky z existující podsítě před nasazením skupiny kontejnerů na ni, nebo vytvořte novou podsíť.
-* Skupin kontejnerů nasazený do virtuální sítě nepodporuje aktuálně veřejné IP adresy nebo popisky názvů DNS.
 * Nelze použít [se identita spravované](container-instances-managed-identity.md) ve skupině kontejnerů nasazený do virtuální sítě.
 * Z důvodu dalších síťových prostředků zahrnutých nasazení skupiny kontejnerů k virtuální síti je obvykle o něco pomalejší než nasazení kontejneru standardní instance.
 
@@ -46,10 +45,14 @@ Tato funkce je ve verzi preview, platí následující omezení při nasazován�
 
 Omezení prostředků kontejner může lišit od limity pro jiné síťové container instances v těchto oblastech. Momentálně se podporuje jenom na Linuxové kontejnery jsou podporovány pro tuto funkci. Podpora Windows je naplánovaná.
 
-### <a name="unsupported-network-resources-and-features"></a>Nepodporovaná síťových prostředků a funkcí
+### <a name="unsupported-networking-scenarios"></a>Nepodporované scénáře pro sítě 
 
-* Nástroj pro vyrovnávání zatížení Azure
-* Partnerské vztahy virtuálních sítí
+* **Nástroj Azure Load Balancer** – uvedení služby Azure Load Balancer před instance kontejnerů ve skupině síťových kontejnerů se nepodporuje.
+* **Partnerský vztah virtuální sítě** -nelze vytvořit partnerský vztah virtuální sítě obsahující podsítě delegovat do služby Azure Container Instances, s jinou virtuální sítí
+* **Směrovací tabulky** -trasy definované uživatelem, nejde nastavit v podsíti delegovat do služby Azure Container Instances
+* **Skupiny zabezpečení sítě** – nyní nejsou vynucena odchozí pravidla zabezpečení do skupiny zabezpečení sítě použitá na podsíť delegovat do služby Azure Container Instances 
+* **Veřejné IP adresy nebo DNS popisek** -skupiny kontejnerů nasazený do virtuální sítě v současnosti nepodporujeme zpřístupňuje kontejnery přímo na Internetu s veřejnou IP adresu nebo plně kvalifikovaný název
+* **Interní překlad adres** -překlad názvů pro prostředky Azure ve virtuální síti přes interní DNS Azure se nepodporuje.
 
 **Odstranění prostředku sítě** vyžaduje [další kroky](#delete-network-resources) po nasazení skupiny kontejnerů na virtuální síť.
 

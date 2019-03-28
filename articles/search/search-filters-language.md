@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: aae081232d3633d3f7d8094979764606bf99430d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 76892e22e940476ca26cde7a91bfe928b47f22ba
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311180"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522260"
 ---
 # <a name="how-to-filter-by-language-in-azure-search"></a>Jak filtrovat podle jazyka ve službě Azure Search 
 
@@ -39,11 +39,11 @@ V naše vzorcích, včetně [využil její plochu naplno ukázka](search-get-sta
   ![](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> Příklady kódu znázorňující definice polí s analyzátory jazyky, naleznete v tématu [definování indexu (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet#define-your-azure-search-index) a [definování indexu (REST)](https://docs.microsoft.com/azure/search/search-create-index-rest-api#define-your-azure-search-index-using-well-formed-json).
+> Příklady kódu znázorňující definice polí s analyzátory jazyky, naleznete v tématu [definování indexu (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) a [definování indexu (REST)](https://docs.microsoft.com/azure/search/search-create-index-rest-api-using-well-formed-json).
 
 ## <a name="build-and-load-an-index"></a>Vytvoření a načtení indexu
 
-Na krok zprostředkující (a možná zřejmé) je, že budete muset [vytvořit a naplnit index](https://docs.microsoft.com/azure/search/search-create-index-dotnet#create-the-index) před formulování dotazu. Jsme zmínili, tento krok zde pro úplnost. Jedním ze způsobů k určení, zda index je k dispozici je seznam indexů vrácení se změnami [portál](https://portal.azure.com).
+Na krok zprostředkující (a možná zřejmé) je, že budete muset [vytvořit a naplnit index](https://docs.microsoft.com/azure/search/search-create-index-dotnet) před formulování dotazu. Jsme zmínili, tento krok zde pro úplnost. Jedním ze způsobů k určení, zda index je k dispozici je seznam indexů vrácení se změnami [portál](https://portal.azure.com).
 
 ## <a name="constrain-the-query-and-trim-results"></a>Omezení dotazu a výsledky uvolnění paměti
 

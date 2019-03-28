@@ -3,7 +3,7 @@ title: Azure Active Directory, podmíněného přístupu, nejčastější dotazy
 description: Získejte odpovědi na nejčastější dotazy týkající se podmíněného přístupu v Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1a1a038ceb8153753433ad4f418b8f33837c6b3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 21c89d9d686c4af594aa7a0fd921471105669e02
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190292"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518146"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory, podmíněného přístupu, nejčastější dotazy
 

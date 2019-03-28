@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 3/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 84af16c156635f7f7dbfb42972e564dd21a554bb
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: b7e60b4fbdf076c50a7d9a29092de9ab1c32b210
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436885"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520645"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalace a spouštění kontejnerů rozpoznat Text
 
@@ -133,6 +133,11 @@ Můžete použít `POST /vision/v2.0/recognizeText` a `GET /vision/v2.0/textOper
 
 Můžete použít `POST /vision/v2.0/recognizeTextDirect` operace synchronně rozpoznat tištěný text v obrázku. Protože tato operace je synchronní, text požadavku pro tuto operaci je stejný jako u `POST /vision/v2.0/recognizeText` operace, ale odpověď body pro tuto operaci je stejný jako vrácené `GET /vision/v2.0/textOperations/*{id}*` operace.
 
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+
+
 ## <a name="stop-the-container"></a>Zastavit kontejner
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
@@ -141,9 +146,6 @@ Můžete použít `POST /vision/v2.0/recognizeTextDirect` operace synchronně ro
 
 Pokud spouštíte kontejner s výstupem [připojit](./computer-vision-resource-container-config.md#mount-settings) a povolení protokolování kontejneru vygeneruje soubory protokolů, které jsou užitečné při řešení potíží, ke kterým dochází při spuštění nebo spuštění kontejneru. 
 
-## <a name="containers-api-documentation"></a>Dokumentace k rozhraní API kontejneru
-
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Fakturace
 

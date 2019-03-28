@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: d17b1b754afc5067a885025dba83cd0fba2370d5
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 1a5b6d435dcc82b59c30302f9cd711975864594c
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214568"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522243"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
 Application Insights .NET SDK se skládá z počtu balíčků NuGet. [Balíčku core](https://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrických dat ze služby Application Insights. [Další balíčky](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automatické sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat inicializátory a moduly telemetrie a nastavit parametry pro některé z nich.
@@ -30,7 +30,7 @@ Není k dispozici odpovídající soubor do ovládacího prvku [SDK na webové s
 Tento dokument popisuje oddílů, které se zobrazí v konfiguraci souboru, jak jsou součástí sady SDK, řídit a které balíčky NuGet načítání těchto komponent.
 
 > [!NOTE]
-> Pokyny k souboru ApplicationInsights.config nebo .xml se nevztahují na .NET Core SDK. Změny v aplikaci .NET Core obvykle používáme soubor appsettings.json. Příklad najdete v [dokumentaci Snapshot Debugger.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)
+> Pokyny k souboru ApplicationInsights.config nebo .xml se nevztahují na .NET Core SDK. Změny v aplikaci .NET Core obvykle používáme soubor appsettings.json. Příklad najdete v [dokumentaci Snapshot Debugger.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)
 
 ## <a name="telemetry-modules-aspnet"></a>Moduly telemetrická data (ASP.NET)
 Každý modul telemetrie určitém typu dat shromažďuje a používá základního rozhraní API odesílat data. Moduly jsou nainstalovány jiné balíčky NuGet, které také přidat požadované řádky do souboru .config.
@@ -49,10 +49,10 @@ Můžete také napsat vlastní sledování kódu pomocí závislostí [TrackDepe
 [Shromažďuje čítače výkonu systému](../../azure-monitor/app/performance-counters.md) , jako například procesoru, paměti a sítě z instalace služby IIS. Můžete zadat které čítače, které chcete shromažďovat, včetně čítačů výkonu, které jste vytvořili sami.
 
 * `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule`
-* [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) balíček NuGet.
+* [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet package.
 
 ### <a name="application-insights-diagnostics-telemetry"></a>Diagnostika Telemetrie Application Insights
-`DiagnosticsTelemetryModule` Hlásí chyby v samotný kód instrumentace Application Insights. Například kód nemůže získat přístup k čítače výkonu, nebo pokud `ITelemetryInitializer` vyvolá výjimku. Telemetrie trasování sledován pomocí funkce tento modul se zobrazí ve [diagnostické vyhledávání][diagnostic]. Odešle dc.services.vsallin.net diagnostická data.
+`DiagnosticsTelemetryModule` Hlásí chyby v samotný kód instrumentace Application Insights. Například kód nemůže získat přístup k čítače výkonu, nebo pokud `ITelemetryInitializer` vyvolá výjimku. Telemetrie trasování sledován pomocí funkce tento modul se zobrazí ve [diagnostické vyhledávání][diagnostic]. Sends diagnostic data to dc.services.vsallin.net.
 
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
 * [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) balíček NuGet. Pokud nainstalujete jenom tento balíček, soubor ApplicationInsights.config se nevytvoří automaticky.
@@ -67,13 +67,13 @@ Můžete také napsat vlastní sledování kódu pomocí závislostí [TrackDepe
 Sestavy [čas a výsledek kód odpovědi](../../azure-monitor/app/asp-net.md) požadavků protokolu HTTP.
 
 * `Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule`
-* [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) balíček NuGet
+* [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet package
 
 ### <a name="exception-tracking"></a>Sledování výjimek
 `ExceptionTrackingTelemetryModule` sleduje neošetřených výjimek ve vaší webové aplikace. Zobrazit [chyby a výjimky][exceptions].
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
-* [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) balíček NuGet
+* [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet package
 * `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` -sleduje [nepozorované výjimky úkolu](https://blogs.msdn.com/b/pfxteam/archive/2011/09/28/task-exception-handling-in-net-4-5.aspx).
 * `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` -sleduje neošetřené výjimky pro pracovní role, služby systému windows a konzolových aplikací.
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) balíček NuGet.

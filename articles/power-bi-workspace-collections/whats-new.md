@@ -1,21 +1,19 @@
 ---
 title: Novinky v kolekcích pracovních prostorů Power BI
 description: Získat nejnovější informace o tom, co je nového v kolekcích pracovních prostorů Power BI
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: 2794ae98-b9a7-45df-b6e1-962a395b91fa
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: 072fa8978bd4f08494191708d9a71c6c112a0629
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b29996b8e2cd9a95b9c1566036b1009b65c18bfa
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252049"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518061"
 ---
 # <a name="whats-new-in-power-bi-workspace-collections"></a>Novinky v kolekcích pracovních prostorů Power BI
 
@@ -24,7 +22,7 @@ Aktualizace **kolekce pracovních prostorů Power BI** vydávají v pravidelnýc
 > [!IMPORTANT]
 > Kolekce Pracovních prostorů Power BI jsou zastaralé a dostupné do června 2018 nebo do data uvedeného ve vaší smlouvě. Doporučujeme naplánovat migraci do Power BI Embedded, předejdete tak výpadkům vaší aplikace. Informace o postupu migrace dat do Power BI Embedded najdete v tématu [Migrace obsahu kolekcí Pracovních prostorů Power BI do Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
-## <a name="march-2017"></a>. Března 2017
+## <a name="march-2017"></a>Březen 2017
 
 **Samoobslužné funkce**
 

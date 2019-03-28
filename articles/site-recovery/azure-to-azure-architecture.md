@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 73def6b659676cc4fecf1d9ef499247c23888566
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 96873b5fdefc74893929f8150230118a162f195b
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310281"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540716"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura pro zotavení po havárii Azure do Azure
 
@@ -144,7 +144,7 @@ K řízení odchozího připojení pro virtuální počítače pomocí IP adresy
 
 **Pravidlo** |  **Podrobnosti** | **Značka služby**
 --- | --- | --- 
-Povolit HTTPS odchozí: port 443 | Povolte rozsahy, které odpovídají na účty úložiště ve zdrojové oblasti | Úložiště. < název oblasti >.
+Povolit HTTPS odchozí: port 443 | Povolte rozsahy, které odpovídají na účty úložiště ve zdrojové oblasti | Úložiště. \<oblasti name >.
 Povolit HTTPS odchozí: port 443 | Povolte rozsahy, které odpovídají Azure Active Directory (Azure AD).<br/><br/> Pokud se v budoucnu přidají adresy služby Azure AD musíte vytvořit nová pravidla skupiny zabezpečení sítě (NSG).  | AzureActiveDirectory
 Povolit HTTPS odchozí: port 443 | Povolit přístup k [koncovými body Site Recovery](https://aka.ms/site-recovery-public-ips) , které odpovídají do cílového umístění. 
 
@@ -152,7 +152,7 @@ Povolit HTTPS odchozí: port 443 | Povolit přístup k [koncovými body Site Rec
 
 **Pravidlo** |  **Podrobnosti** | **Značka služby**
 --- | --- | --- 
-Povolit HTTPS odchozí: port 443 | Povolte rozsahy, které odpovídají na účty úložiště v cílové oblasti. | Úložiště. < název oblasti >.
+Povolit HTTPS odchozí: port 443 | Povolte rozsahy, které odpovídají na účty úložiště v cílové oblasti. | Úložiště. \<oblasti name >.
 Povolit HTTPS odchozí: port 443 | Povolte rozsahy, které odpovídají do služby Azure AD.<br/><br/> Pokud se v budoucnu přidají adresy služby Azure AD musíte vytvořit nová pravidla skupiny zabezpečení sítě.  | AzureActiveDirectory
 Povolit HTTPS odchozí: port 443 | Povolit přístup k [koncovými body Site Recovery](https://aka.ms/site-recovery-public-ips) , které odpovídají umístění zdroje. 
 

@@ -1,6 +1,6 @@
 ---
 title: Použití Powershellu k vytvoření a konfigurace pracovního prostoru Log Analytics | Dokumentace Microsoftu
-description: Protokolovat Analytics používá data ze serverů ve vaší místní nebo cloudovou infrastrukturu. Shromažďovat počítačových dat z Azure storage generování diagnostiky Azure.
+description: Pracovní prostory log Analytics ve službě Azure Monitor ukládání dat ze serverů v místní nebo cloudovou infrastrukturu. Shromažďovat počítačových dat z Azure storage generování diagnostiky Azure.
 services: log-analytics
 author: richrundmsft
 ms.service: log-analytics
@@ -8,18 +8,18 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: richrund
-ms.openlocfilehash: 956c6c7c17812996853f35440c60251aa5a91057
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: f37c8290defa5e7c9baa3b705393aba376936fd8
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482095"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539373"
 ---
-# <a name="manage-log-analytics-using-powershell"></a>Správa služby Log Analytics pomocí PowerShellu
+# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Správa pracovního prostoru Log Analytics ve službě Azure Monitor, pomocí Powershellu
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Můžete použít [rutiny Powershellu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) k provádění různých funkcí ve službě Log Analytics z příkazového řádku nebo v rámci skriptu.  Příklady úloh, které můžete provést pomocí prostředí PowerShell:
+Můžete použít [rutiny Powershellu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) k provádění různých funkcí na pracovní prostor Log Analytics ve službě Azure Monitor z příkazového řádku nebo v rámci skriptu.  Příklady úloh, které můžete provést pomocí prostředí PowerShell:
 
 * Vytvoření pracovního prostoru
 * Přidat nebo odebrat řešení
@@ -195,7 +195,7 @@ Ve výše uvedeném příkladu regexDelimiter byla definována jako "\\n" pro no
 | `yyyy-MM-ddTHH:mm:ss` <br> T je literál písmeno T | `((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))T((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Konfigurace Log Analytics k odesílání Azure diagnostics
-Prostředky pro monitorování bez agentů prostředků Azure, musí mít diagnostiky Azure povolené a nakonfigurované pro zápis do pracovního prostoru Log Analytics. Tento přístup přímo k Log Analytics odesílá data a nevyžaduje, aby data k zápisu do účtu úložiště. Podporované prostředky zahrnují:
+Prostředky pro monitorování bez agentů prostředků Azure, musí mít diagnostiky Azure povolené a nakonfigurované pro zápis do pracovního prostoru Log Analytics. Tento přístup odesílá data přímo do pracovního prostoru a nevyžaduje, aby data k zápisu do účtu úložiště. Podporované prostředky zahrnují:
 
 | Typ prostředku | Logs | Metriky |
 | --- | --- | --- |
@@ -233,15 +233,15 @@ Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Ena
 Můžete také použít rutinu předchozí shromažďování protokolů z prostředků, které jsou v různých předplatných. Rutina je možné pracovat napříč předplatnými vzhledem k tomu, že zadáváte ID prostředku vytváření protokoly a protokoly jsou odeslána do pracovního prostoru.
 
 
-## <a name="configuring-log-analytics-to-collect-azure-diagnostics-from-storage"></a>Konfigurace Log Analytics ke shromažďování diagnostiky Azure ze služby storage
-Shromažďovat data protokolu z v rámci běžící instance cloudovou službou modelu classic nebo clusteru service fabric, budete muset nejprve zapisovat data do služby Azure storage. Log Analytics se pak nakonfiguruje k shromažďovat protokoly z účtu úložiště. Podporované prostředky zahrnují:
+## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>Konfigurace pracovního prostoru Log Analytics ke shromažďování diagnostiky Azure ze služby storage
+Shromažďovat data protokolu z v rámci běžící instance cloudovou službou modelu classic nebo clusteru service fabric, budete muset nejprve zapisovat data do služby Azure storage. Pracovní prostor Log Analytics je nakonfigurovaný pro shromažďování protokolů z účtu úložiště. Podporované prostředky zahrnují:
 
 * Klasické cloudové služby (webové a pracovní role)
 * Clustery Service fabric
 
 Následující příklad ukazuje postup:
 
-1. Seznam existujících účtů úložiště a umístění, která Log Analytics bude indexování dat z
+1. Seznam existujících účtů úložiště a umístění, které pracovní prostor bude indexování dat z
 2. Vytvořit konfiguraci, kterou chcete číst z účtu úložiště
 3. Aktualizace nově vytvořeného konfigurace na index data z dalších umístěních
 4. Odstranit nově vytvořený konfiguraci
@@ -250,7 +250,7 @@ Následující příklad ukazuje postup:
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
 $workspace = (Get-AzOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
 
-# Update these two lines with the storage account resource ID and the storage account key for the storage account you want to Log Analytics to index
+# Update these two lines with the storage account resource ID and the storage account key for the storage account you want the workspace to index
 $storageId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
 $key = "abcd=="
 

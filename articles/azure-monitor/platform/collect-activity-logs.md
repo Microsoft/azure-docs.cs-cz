@@ -1,5 +1,5 @@
 ---
-title: Shromažďování a analýza protokolů aktivit Azure do Log Analytics | Dokumentace Microsoftu
+title: Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics | Dokumentace Microsoftu
 description: Řešení protokolů aktivit Azure můžete použít k analýze a hledání v protokolu aktivit Azure napříč všemi předplatnými Azure.
 services: log-analytics
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 20246cfa5904c3c89ab9a14d11f2e61883b27344
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2fd74262d9c1b4a751df5d836f98bf89d31dbdc2
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540232"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540427"
 ---
-# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Shromažďování a analýza protokolů aktivit Azure do Log Analytics
+# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics ve službě Azure Monitor
 
 ![Symbol protokolů aktivit Azure](./media/collect-activity-logs/activity-log-analytics.png)
 
@@ -28,7 +28,7 @@ ms.locfileid: "53540232"
 
 Použití protokolu aktivit, můžete určit *co*, *kdo*, a *při* veškerých operací (PUT, POST, DELETE) provedených pro prostředky ve vašem předplatném zápisu. Můžete také zjištění stavu operace a další relevantní vlastnosti. Protokol aktivit neobsahuje operace čtení (GET) ani operace pro prostředky, které používají model nasazení Classic.
 
-Když se připojíte protokolů aktivit Azure do Log Analytics, můžete:
+Když se připojíte protokolů aktivit Azure do pracovního prostoru Log Analytics, můžete:
 
 - Analýza protokolů aktivit se předdefinované zobrazení
 - Analýza a hledání a protokolů aktivit z více předplatných Azure
@@ -40,15 +40,15 @@ Když se připojíte protokolů aktivit Azure do Log Analytics, můžete:
 - Identifikujte výpadku nebo služba problémy se stavem dopadu na vaše prostředky
 - Korelovat aktivity uživatelů, operace automatického škálování, změny autorizace a stavy služeb do jiných protokolů nebo metrik z vašeho prostředí pomocí prohledávání protokolů
 
-<sup>1</sup>ve výchozím nastavení, Log Analytics udržuje vaše protokoly aktivit Azure po dobu 90 dnů, i když jsou na úrovni Free. Nebo, pokud máte pracovní prostor nastavení uchování menší než 90 dnů. Pokud váš pracovní prostor má uchování delší než 90 dnů, se zachovají protokoly aktivit na základě na doby uchování pracovního prostoru.
+<sup>1</sup>ve výchozím nastavení, Azure Monitor sleduje vaše protokoly aktivit Azure v pracovním prostoru Log Analytics po dobu 90 dnů, i v případě, že jsou na úrovni Free. Nebo, pokud máte pracovní prostor nastavení uchování menší než 90 dnů. Pokud váš pracovní prostor má uchování delší než 90 dnů, se zachovají protokoly aktivit na základě na doby uchování pracovního prostoru.
 
-Log Analytics shromažďuje protokoly aktivit je zdarma a ukládá protokoly po dobu 90 dnů zdarma. Pokud ukládání protokolů po dobu delší než 90 dnů vám budou účtovat poplatky uchovávání dat pro data uložená déle než 90 dní.
+Pracovní prostor Log Analytics shromažďuje protokoly aktivit je zdarma a ukládá protokoly po dobu 90 dnů zdarma. Pokud ukládání protokolů po dobu delší než 90 dnů vám budou účtovat poplatky uchovávání dat pro data uložená déle než 90 dní.
 
 Pokud jste na cenové úrovni Free, protokoly aktivit se nevztahují na vaší denní spotřebu dat.
 
 ## <a name="connected-sources"></a>Připojené zdroje
 
-Na rozdíl od většiny jiných řešení Log Analytics data nejsou shromažďována pro protokoly aktivit agenty. Všechna data, která používá řešení pochází přímo z Azure.
+Na rozdíl od většiny jiných řešení Azure Monitor není data shromážděná pro protokoly aktivit pomocí agentů. Všechna data, která používá řešení pochází přímo z Azure.
 
 | Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |

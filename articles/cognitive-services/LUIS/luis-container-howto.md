@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: b007575c614134f298a16b32c3179f7f0dfd31e5
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: edd035bc95cd2e694a7cfac39e447c63fce0f7d3
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436689"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520150"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -309,6 +309,11 @@ Z portálu služby LUIS, vyberte svou aplikaci a pak vyberte **importovat protok
 
 Po nahrání protokolu [zkontrolujte koncový bod](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) projevy na portálu služby LUIS.
 
+
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+
 ## <a name="stop-the-container"></a>Zastavit kontejner
 
 Chcete-li vypnout kontejneru, v prostředí příkazového řádku, ve kterém je kontejner spuštěný, stiskněte **Ctrl + C**.
@@ -316,10 +321,6 @@ Chcete-li vypnout kontejneru, v prostředí příkazového řádku, ve kterém j
 ## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud spouštíte kontejner s výstupem [připojit](luis-container-configuration.md#mount-settings) a povolení protokolování kontejneru vygeneruje soubory protokolů, které jsou užitečné při řešení potíží, ke kterým dochází při spuštění nebo spuštění kontejneru. 
-
-## <a name="containers-api-documentation"></a>Dokumentace k rozhraní API kontejneru
-
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Fakturace
 

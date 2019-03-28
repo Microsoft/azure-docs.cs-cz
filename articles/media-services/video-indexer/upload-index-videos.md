@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: e7f39b6298dd950147fea7ac21969c53e1b58e2e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f9bf23094f47f5c200f7a02f81a8e185f469c580
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877866"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516956"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -37,6 +37,7 @@ Jakmile je Nahraná videa, Video Indexer, volitelně kóduje video (popsané v �
 - Pole bajtů možnost vyprší po 30 min
 - Adresa URL zadaná v parametru `videoURL` musí být zakódovaná.
 - Indexování prostředků Media Services má stejné omezení jako indexování z adresy URL
+- Video Indexer má limit maximální dobu trvání 4 hodiny pro jeden soubor
 
 > [!Tip]
 > Doporučujeme používat rozhraní .NET Framework verze 4.6.2 nebo novější, protože starší rozhraní .NET Framework nemají ve výchozím nastavení protokol TLS 1.2.
@@ -60,7 +61,7 @@ Adresa URL, která se používá k upozornění zákazníků (pomocí požadavku
     
         |Název|Popis|
         |---|---|
-        |id|Id videa|
+        |id|ID videa|
         |state|Stav videa|  
     - Příklad: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - Osobu identifikovanou ve videu:
@@ -68,7 +69,7 @@ Adresa URL, která se používá k upozornění zákazníků (pomocí požadavku
     
       |Název|Popis|
       |---|---|
-      |id| Id videa|
+      |id| ID videa|
       |funkci faceId|Face ID, které se zobrazí v rejstřík videí|
       |knownPersonId|ID osoby, které jsou jedinečné v rámci modelu pro rozpoznávání tváře|
       |PersonName|Jméno osoby|

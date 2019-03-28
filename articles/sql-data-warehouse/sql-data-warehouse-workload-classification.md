@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: bcc09095955a28bde3ed999f23180e08485543fc
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: c27856da0a5131f2c0e8dfd4d929b577a0a68421
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57994008"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520127"
 ---
 # <a name="sql-data-warehouse-workload-classification-preview"></a>Klasifikace úlohy SQL Data Warehouse (Preview)
 
@@ -33,6 +33,8 @@ Tento článek vysvětluje proces klasifikace úlohy SQL Data Warehouse na pří
 Existuje mnoho způsobů, jak klasifikovat úlohy datových skladů, nejjednodušším a nejběžnějším klasifikace je zatížení a dotazu. Načtení dat pomocí odstranění příkazů insert, update a.  Dotazování dat pomocí vybere. Řešení datového skladu často bude mít zásadu zatížení pro zatížení aktivity, jako je například přiřazení vyšší třídě prostředků s dalšími materiály. Různé úlohy zásady možné aplikovat na dotazy, jako je například nižší ve srovnání s aktivity načíst význam.
 
 Můžete také subclassify zatížení a dotaz úlohy. Dílčí klasifikace v rámci dává větší kontrolu na vašimi úlohami. Například dotaz úlohy se může skládat z datové krychle aktualizuje, dotazy na řídicí panel nebo ad-hoc dotazů. Můžete klasifikovat každý z těchto úloh dotazu pomocí různých prostředků třídy ani nastavení význam. Zatížení mohou také těžit z dílčí klasifikace v rámci. Velké transformace je možné přiřadit do větší třídy prostředků. Větší význam slouží k Ujistěte se, že klíče prodejních dat je zavaděč před data o počasí nebo sociální datového kanálu.
+
+Ne všechny příkazy jsou klasifikovány jako vyžadovat prostředky nebo potřebujete význam k ovlivnění spuštění.  Příkaz DBCC příkazy nejsou klasifikovány příkazů BEGIN, potvrzení a vrácení transakce zpět.
 
 ## <a name="classification-process"></a>Proces klasifikace
 

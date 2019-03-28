@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 4ff99cab168abeb0bbeeb8b29de0ea0285c255b0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 01020a23b102c896bbeb3d8cf455afabfc164917
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457839"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505778"
 ---
 ## <a name="prepare-for-akv-integration"></a>Příprava pro integrace se službou AZURE
 Konfigurace virtuálního počítače s SQL serverem pomocí integrace Azure Key Vaultu, existuje několik požadavků: 
@@ -29,8 +29,10 @@ Konfigurace virtuálního počítače s SQL serverem pomocí integrace Azure Key
 
 Následující části popisují tyto požadavky a informace, které je potřeba shromáždit k později spustit rutiny prostředí PowerShell.
 
+[!INCLUDE [updated-for-az](./updated-for-az.md)]
+
 ### <a id="install"></a> Instalace Azure Powershellu
-Ujistěte se, že máte nainstalovanou nejnovější Azure PowerShell SDK. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azureps-cmdlets-docs).
+Ujistěte se, že máte nainstalovanou nejnovější Azure PowerShell SDK. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-az-ps).
 
 ### <a id="register"></a> Registrace aplikace ve službě Azure Active Directory
 
@@ -49,7 +51,7 @@ V dalším kroku registrace aplikace v AAD. Tím získáte účet instančního 
 
 * ID aplikace a tajný kód se taky použije k vytvoření přihlašovacích údajů v systému SQL Server.
 
-* Musíte povolit toto nové ID klienta mají následující přístupová oprávnění: **získat**, **wrapKey**, **unwrapKey**. Používá se k tomu [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) rutiny. Další informace najdete v tématu [Přehled služby Azure Key Vault](../articles/key-vault/key-vault-overview.md).
+* Musíte povolit toto nové ID klienta mají následující přístupová oprávnění: **získat**, **wrapKey**, **unwrapKey**. Používá se k tomu [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) rutiny. Další informace najdete v tématu [Přehled služby Azure Key Vault](../articles/key-vault/key-vault-overview.md).
 
 ### <a id="createkeyvault"></a> Vytvoření trezoru klíčů
 Chcete-li používat Azure Key Vault pro ukládání klíčů, které budete používat pro šifrování ve virtuálním počítači, musíte mít přístup k trezoru klíčů. Pokud už jste nenastavili trezoru klíčů, vytvořte ho provedením kroků v [Začínáme se službou Azure Key Vault](../articles/key-vault/key-vault-overview.md) článku. Před dokončením těchto kroků, se některé informace, které je potřeba shromáždit během této sady až budete později potřebovat při povolení integrace se službou Azure Key Vault na vašem virtuálním počítači SQL.

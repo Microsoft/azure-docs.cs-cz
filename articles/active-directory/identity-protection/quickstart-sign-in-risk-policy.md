@@ -4,7 +4,7 @@ description: V tomto rychlém startu zjistíte, jak nakonfigurovat zásadu podm�
 services: active-directory
 keywords: podmíněný přístup aplikací, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu a podmíněný přístup s Azure AD identity protection
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/13/2018
-ms.author: markvi
-ms.reviewer: raluthra
+ms.author: joflore
+ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce2dc95aae2ba4677da81ce6af45b8a715000e10
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4f5127342f97a90103ef56efbd7465832440ec0f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210335"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521801"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Rychlý start: Blokovat přístup, když se zjistí ohrožení relace s Azure Active Directory Identity Protection  
 

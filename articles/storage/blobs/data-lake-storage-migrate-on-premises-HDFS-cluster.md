@@ -8,12 +8,12 @@ ms.date: 03/01/2019
 ms.author: normesta
 ms.topic: article
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 1c0a04a074cfbd96423502ac92dd5821bade78e1
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 841193305556e3bc9e543abc47974c7b91b0cea1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258526"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518028"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Použití Azure Data Box pro migraci dat z úložiště místní HDFS do služby Azure Storage
 
@@ -111,7 +111,7 @@ Aby se zvýšila rychlost kopírování:
 
 Postupujte podle těchto kroků Připravíme a odešleme zařízení Data Box společnosti Microsoft.
 
-1. Jakmile se kopírování dat dokončí, spustit [přípravu k odeslání](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#prepare-to-ship) na vaše zařízení Data Box. Po dokončení přípravy zařízení stahujte soubory BOM. Budete používat tyto BOM nebo manifest soubory později chcete ověřit nahrání dat do Azure. Vypněte zařízení a odeberte kabely. 
+1. Jakmile se kopírování dat dokončí, spustit [přípravu k odeslání](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest) na vaše zařízení Data Box. Po dokončení přípravy zařízení stahujte soubory BOM. Budete používat tyto BOM nebo manifest soubory později chcete ověřit nahrání dat do Azure. Vypněte zařízení a odeberte kabely. 
 2.  S UPS k vyzvednutí naplánovat [odeslání vašeho zařízení Data Box zpět do Azure](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up). 
 3.  Poté, co Microsoft obdrží zařízení, je připojený k síti datového centra a nahrání dat do účtu úložiště, který jste zadali (s hierarchické obory názvů, zakázáno) Pokud jste si objednali zařízení Data Box. Proti BOM soubory ověřte, že všechna vaše data se nahraje do Azure. Tato data teď můžete přesunout do účtu úložiště Data Lake Storage Gen2.
 

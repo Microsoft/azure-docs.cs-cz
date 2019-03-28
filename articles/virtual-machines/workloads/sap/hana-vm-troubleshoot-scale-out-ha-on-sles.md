@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: fb4fed2aa6b80ceb37dde1205996a16f0c30bdd4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994706"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520577"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Ověřte a řešení potíží s nastavením vysoké dostupnosti SAP HANA horizontální navýšení kapacity na SLES 12 SP3 
 
@@ -79,8 +79,8 @@ Při použití **crm migrovat** příkaz, ujistěte se, že pro vyčištění ko
 | Majoritní maker | hso-hana-dm | 10.0.0.13 |
 | Server SBD zařízení | hso-hana-sbd | 10.0.0.19 |
 | | | |
-| Server systému souborů NFS 1 | hso-systému souborů nfs-vm-0 | adresu 10.0.0.15 |
-| Server systému souborů NFS 2 | hso-systému souborů nfs-vm-1 | 10.0.0.14 |
+| Server systému souborů NFS 1 | hso-nfs-vm-0 | 10.0.0.15 |
+| Server systému souborů NFS 2 | hso-nfs-vm-1 | 10.0.0.14 |
 
 
 
@@ -964,7 +964,7 @@ Tento příklad ukazuje způsobené migrace prostředků clusteru, jak je vysvě
 ![HAWK seznamu omezení](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-Můžete také nahrát **hb_report** výstup v Hawk pod **historie**, jak je znázorněno následujícím způsobem. Zobrazit [hb_report shromažďovat soubory protokolů](#hbreport-to-collect-log-files): 
+Můžete také nahrát **hb_report** výstup v Hawk pod **historie**, jak je znázorněno následujícím způsobem. Zobrazit hb_report shromažďovat soubory protokolů: 
 
 ![Výstup hb_report HAWK nahrávání](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 

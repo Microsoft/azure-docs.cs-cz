@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: d1b5125c2e3904900adb0a121d60cba8a1731d43
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 105996cf72e2a96a06a4478518e68765d3d158f5
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499637"
+ms.locfileid: "58516888"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Použití webu Azure Portal ke správě sdílených složek ve službě Azure Data Box Gateway 
 
@@ -84,6 +84,9 @@ Seznam sdílených složek se aktualizuje tak, aby se v něm odstranění promí
 
 Funkce aktualizace umožňuje aktualizovat obsah místní sdílené složky. Když aktualizujete sdílenou složku, spustí se vyhledávání, které najde všechny objekty Azure včetně objektů blob a souborů, které byly do cloudu přidány od poslední aktualizace. Tyto další soubory se pak použijí k aktualizaci obsah místní sdílené složky na zařízení. 
 
+> [!NOTE]
+> Mezi operace aktualizace není zachováno oprávnění a seznamy řízení přístupu (ACL). 
+
 Pokud chcete sdílenou složku aktualizovat, proveďte na webu Azure Portal následující kroky.
 
 1.  Na webu Azure Portal přejděte na **Sdílené složky**. Vyberte a klikněte na sdílenou složku, kterou chcete aktualizovat.
@@ -107,7 +110,7 @@ Pokud chcete sdílenou složku aktualizovat, proveďte na webu Azure Portal nás
 Pokud dojde k selhání, bude vydána výstraha. Výstraha uvede podrobnosti příčiny a doporučení k vyřešení problému. Výstraha obsahuje také odkazy na soubor s úplným souhrnem chyb, včetně souborů, které se nepovedlo aktualizovat nebo odstranit.
 
 >[!IMPORTANT]
-> V této verzi Preview neaktualizujte více než jednou sdílenou složkou najednou.
+> V této verzi ne k aktualizaci více než jednou sdílenou složkou najednou.
 
 ## <a name="sync-storage-keys"></a>Synchronizace klíčů úložiště
 

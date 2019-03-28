@@ -4,12 +4,12 @@ ms.service: log-analytics
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 44febf95c660601df78047fc473f61e0d3169890
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 6890c71ac7c265d46cc77751786fea4d0b228588
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52269643"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505653"
 ---
 ### <a name="troubleshoot-azure-diagnostics"></a>Odstraňování potíží Diagnostiky Azure
 
@@ -32,6 +32,6 @@ Jakmile bude poskytovatel prostředků *Microsoft.insights* zaregistrovaný, zop
 
 Potřebujete v prostředí PowerShell, pokud se zobrazí následující chybová zpráva, aktualizujte na verzi prostředí PowerShell:
 
-`Set-AzureRmDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
+`Set-AzDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
 
-Aktualizujte na verzi prostředí PowerShell do listopadu 2016 (v2.3.0) nebo novější verzi pomocí pokynů v [Začínáme s rutinami Azure Powershellu](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) článku.
+Aktualizujte na verzi prostředí Azure PowerShell, postupujte podle pokynů [instalace Azure Powershellu](/powershell/azure/install-az-ps) článku.

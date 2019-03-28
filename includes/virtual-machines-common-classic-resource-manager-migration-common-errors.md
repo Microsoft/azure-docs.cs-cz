@@ -4,15 +4,17 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 432d0d4c201d0d73e5695a1726129e7fa744bdde
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 2a1bf160926bc2f90e326d773bf6a3e7fdc37103
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319738"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505717"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>Běžné chyby při migraci z modelu Classic na Azure Resource Manager
 Tento článek obsahuje katalog nejběžnějších chyb a omezení rizik při migraci prostředků IaaS z modelu nasazení Azure Classic do zásobníku Azure Resource Manageru.
+
+[!INCLUDE [updated-for-az](./updated-for-az.md)]
 
 ## <a name="list-of-errors"></a>Seznam chyb
 
@@ -22,7 +24,7 @@ Tento článek obsahuje katalog nejběžnějších chyb a omezení rizik při mi
 | Migrace se u nasazení {název_nasazení} v hostované službě {název_hostované_služby} nepodporuje, protože jde o nasazení PaaS (webová role/role pracovního procesu). |K tomu dochází v případě, že nasazení obsahuje webovou roli nebo roli pracovního procesu. Protože se migrace podporuje pouze u virtuálních počítačů, odeberte z nasazení webovou roli nebo roli pracovního procesu a zkuste migrovat znovu. |
 | Nasazení šablony {název_šablony} selhalo. CorrelationId={guid} |V back-endu služby migrace používáme k vytváření prostředků v zásobníku Azure Resource Manageru šablony Azure Resource Manageru. Vzhledem k tomu, že šablony jsou idempotentní, obvykle můžete bez obav opakovat operaci migrace a obejít tuto chybu. Pokud k této chybě dochází i nadále, [kontaktujte podporu Azure](../articles/azure-supportability/how-to-create-azure-support-request.md) a sdělte jim hodnotu CorrelationId. <br><br> **POZNÁMKA:** Jakmile incident začne sledovat tým podpory, nepokoušejte sami o omezení rizik mohlo by to mít nežádoucí důsledky pro vaše prostředí. |
 | Virtuální síť {název_virtuální_sítě} neexistuje. |K tomu může dojít v případě, že jste virtuální síť vytvořili na novém webu Azure Portal. Název skutečné virtuální sítě má tvar „Group * <VNET name>“ |
-| Virtuální počítač {název_virtuálního_počítače} v hostované službě {název_hostované_služby} obsahuje rozšíření {název_rozšíření}, které se v Azure Resource Manageru nepodporuje. Před pokračováním v migraci se doporučuje toto rozšíření odinstalovat z virtuálního počítače. |Rozšíření XML, jako je například BGInfo 1.*, nejsou podporována v Azure Resource Manageru. Proto tato rozšíření není možné migrovat. Pokud tato rozšíření zůstanou nainstalována na virtuálním počítači, před dokončením migrace se automaticky odinstalují. |
+| Virtuální počítač {název_virtuálního_počítače} v hostované službě {název_hostované_služby} obsahuje rozšíření {název_rozšíření}, které se v Azure Resource Manageru nepodporuje. Před pokračováním v migraci se doporučuje toto rozšíření odinstalovat z virtuálního počítače. |Rozšíření XML, jako je například BGInfo 1. \* nejsou podporované v Azure Resource Manageru. Proto tato rozšíření není možné migrovat. Pokud tato rozšíření zůstanou nainstalována na virtuálním počítači, před dokončením migrace se automaticky odinstalují. |
 | Virtuální počítač {název_virtuálního_počítače} v hostované službě {název_hostované_služby} obsahuje rozšíření VMSnapshot/VMSnapshotLinux, jehož migrace se aktuálně nepodporuje. Odinstalujte ho z virtuálního počítače a po dokončení migrace ho přidejte zpět pomocí Azure Resource Manageru. |Jedná se o scénář, kde je virtuální počítač nakonfigurovaný pro službu Azure Backup. Protože aktuálně se jedná o nepodporovaný scénář, postupujte prosím podle alternativní řešení na https://aka.ms/vmbackupmigration |
 | Virtuální počítač {název_virtuálního_počítače} v hostované službě {název_hostované_služby} obsahuje rozšíření {název_rozšíření}, jehož stav se nehlásí z virtuálního počítače. Virtuální počítač proto není možné migrovat. Ujistěte se, že se stav rozšíření hlásí, nebo rozšíření odinstalujte z virtuálního počítače a opakujte migraci. <br><br> Virtuální počítač {název_virtuálního_počítače} v hostované službě {název_hostované_služby} obsahuje rozšíření {název_rozšíření}, které hlásí stav obslužné rutiny: {stav_obslužné_rutiny}. Virtuální počítač proto není možné migrovat. Ujistěte se, že se stav obslužné rutiny rozšíření hlásí jako {stav_obslužné_rutiny}, nebo rozšíření odinstalujte z virtuálního počítače a opakujte migraci. <br><br> Agent virtuálního počítače pro virtuální počítač {název_virtuálního_počítače} v hostované službě {název_hostované_služby} hlásí celkový stav agenta jako Není připraveno. Virtuální počítač proto možná nepůjde migrovat, i když bude mít rozšíření, které migrovat jde. Ujistěte se, že agent virtuálního počítače hlásí celkový stav agenta jako Připraveno. Odkazovat na https://aka.ms/classiciaasmigrationfaqs. |Agent hosta Azure a rozšíření virtuálního počítače pro zadání svého stavu potřebují odchozí internetový přístup k účtu úložiště virtuálního počítače. Mezi běžné příčiny chyby stavu patří: <li> Skupina zabezpečení sítě, která blokuje odchozí přístup k internetu <li> Pokud má virtuální síť místní servery DNS a dojde ke ztrátě připojení v DNS <br><br> Pokud se bude i nadále zobrazovat nepodporovaný stav, můžete odinstalováním rozšíření tuto kontrolu přeskočit a pokračovat v migraci. |
 | Migrace se u nasazení {název_nasazení} v hostované službě {název_hostované_služby} nepodporuje, protože má více skupin dostupnosti. |Aktuálně je možné migrovat pouze hostované služby s 1 nebo žádnou skupinou dostupnosti. Pokud chcete tento problém obejít, přesuňte dodatečné skupiny dostupnosti a virtuální počítače v těchto skupinách dostupnosti do jiné hostované služby. |
@@ -44,7 +46,7 @@ K tomu dochází, když je možné, že logická velikost datového disku není 
 
 #### <a name="verifying-the-issue"></a>Ověření problému
 
-```PowerShell
+```powershell
 # Store the VM details in the VM object
 $vm = Get-AzureVM -ServiceName $servicename -Name $vmname
 
@@ -65,7 +67,7 @@ ExtensionData       :
 
 # Now get the properties of the blob backing the data disk above
 # NOTE the size of the blob is about 15 GB which is different from LogicalDiskSizeInGB above
-$blob = Get-AzureStorageblob -Blob "coreosvm-dd1.vhd" -Container vhds 
+$blob = Get-AzStorageblob -Blob "coreosvm-dd1.vhd" -Container vhds 
 
 $blob
 
@@ -82,7 +84,7 @@ Name              : coreosvm-dd1.vhd
 
 #### <a name="mitigating-the-issue"></a>Zmírnění problému
 
-```PowerShell
+```powershell
 # Convert the blob size in bytes to GB into a variable which we'll use later
 $newSize = [int]($blob.Length / 1GB)
 

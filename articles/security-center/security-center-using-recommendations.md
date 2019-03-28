@@ -12,19 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/24/2019
+ms.date: 3/26/2019
 ms.author: monhaber
-ms.openlocfilehash: 8c8108697e39153aef8727942c166a741cb8398c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 82a46ae9523c4c2778f86c445e35d0bec961307f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402758"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517687"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití služby Azure Security Center doporučení k vylepšení zabezpečení
 Tak, že konfigurace zásad zabezpečení a pak implementace doporučení poskytovaných službou Azure Security Center můžete snížit riziko zabezpečení významné události. V tomto článku se dozvíte, jak používat zásady zabezpečení a doporučení ve službě Security Center můžete zmírnit útok na zabezpečení. 
 
-Security Center automaticky spustí nepřetržité kontroly pro analýzu stavu zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných bezpečnostní kontroly. Security Center aktualizuje doporučení každých 24 hodin.
+Security Center automaticky spustí nepřetržité kontroly pro analýzu stavu zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných bezpečnostní kontroly. Security Center aktualizuje svá doporučení během 24 hodin, s následujícími výjimkami:
+
+- Doporučené konfigurace zabezpečení operačního systému se aktualizují do 48 hodin
+- Doporučení pro Endpoint Protection problémy jsou aktualizovány v 8 hodin
 
 ## <a name="scenario"></a>Scénář
 Tento scénář popisuje, jak používat Security Center Chcete-li snížit riziko bezpečnostních incidentů monitorování doporučení služby Security Center a provádění akcí. Tento scénář používá fiktivní společnosti, Contoso a rolí uváděné v Centru zabezpečení [Průvodce plánováním a provozem](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). V tomto scénáři Zaměřujeme na role následujících osob:

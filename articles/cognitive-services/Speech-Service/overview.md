@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: d4587b5268635691d55b51a7bf88bbe01df2a0c4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 06b2a5211c720d50a2f14e5fa56fa296cb80d41f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57871635"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519625"
 ---
-# <a name="what-are-the-speech-services"></a>Co jsou hlasové služby?
+# <a name="what-are-the-speech-services"></a>Co jsou služby Speech?
 
 Hlasové služby Azure jsou sjednocení speech to text, převod textu na řeč a překladu řeči na jedno předplatné Azure. Je snadné rozpoznávání řeči povolit aplikace, nástroje a zařízení s [sadou SDK pro řeč](speech-sdk-reference.md), [sadou SDK pro řeč zařízení](speech-devices-sdk-qsg.md), nebo [rozhraní REST API](rest-apis.md).
 
@@ -39,9 +39,9 @@ Tyto funkce tvoří hlasové služby Azure. Další informace o běžných pří
 
 Zjistěte, co je nového v hlasových služeb Azure.
 
+* 2019. března – nový koncový bod pro převod textu na řeč, která vrací úplný seznam dostupných hlasy v konkrétní oblasti je nyní k dispozici. Další informace najdete v tématu [referenční dokumentace rozhraní API pro převod textu na řeč (REST)](rest-text-to-speech.md).
 * . Února 2019 – vydali sadou SDK pro řeč 1.3.0 s podporou [Unity (beta verze)](quickstart-csharp-unity.md). Přidání podpory pro `AudioInput` třídu, která vám umožní vybrat zdroji streamování Audio. Úplný seznam vylepšení a známých problémů naleznete v tématu [poznámky k verzi](releasenotes.md).
 * Prosince 2018 – vydání sadou SDK pro řeč 1.2.0 s podporou [Python](quickstart-python.md) a [Node.js](quickstart-js-node.md), stejně jako Ubuntu 18.04 LTS. Další informace najdete v tématu [poznámky k verzi](releasenotes.md).
-* Prosince 2018 – rychlé starty pro převod textu na řeč přidány pro [.NET Core](quickstart-dotnet-text-to-speech.md), [Python](quickstart-python-text-to-speech.md), [Node.js](quickstart-nodejs-text-to-speech.md). Další ukázky jsou k dispozici na [Githubu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http).
 
 ## <a name="try-speech-services"></a>Vyzkoušejte hlasové služby
 

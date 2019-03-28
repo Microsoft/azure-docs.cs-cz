@@ -7,21 +7,21 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 03/20/2019
 ms.author: hrasheed
-ms.openlocfilehash: f804cfd693a37099edc22e7f4861d6d7e1af0fc7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 8bc44949d804349de37796a2695edbdc64693edf
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651109"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518673"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Použití akce skriptu k instalaci externích balíčků Python pro poznámkové bloky Jupyter v clusterech Apache Spark v HDInsight
 > [!div class="op_single_selector"]
 > * [Využitím magických příkazů](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [Pomocí akce skriptu](apache-spark-python-package-installation.md)
 
-Zjistěte, jak pomocí skriptových akcí můžete nakonfigurovat [Apache Spark](https://spark.apache.org/) clusteru v HDInsight (Linux) používat externí, komunitou **python** balíčky, které nejsou součástí clusteru out-of-the-box.
+Zjistěte, jak pomocí skriptových akcí můžete nakonfigurovat [Apache Spark](https://spark.apache.org/) clusteru v HDInsight používat externí, komunitou **python** balíčky, které nejsou součástí clusteru out-of-the-box.
 
 > [!NOTE]  
 > Můžete také nakonfigurovat poznámkového bloku Jupyter s použitím `%%configure` magic použití externích balíčků. Pokyny najdete v tématu [použití externích balíčků s poznámkovými bloky Jupyter v clusterech Apache Spark v HDInsight](apache-spark-jupyter-notebook-use-external-packages.md).
@@ -48,7 +48,7 @@ Existují dva druhy opensourcové komponenty, které jsou k dispozici ve služb�
 * **Integrované komponenty** – tyto součásti jsou předem nainstalované na clusterech HDInsight a poskytuje základní funkce clusteru. Například Apache Hadoop YARN ResourceManager, dotazovací jazyk Apache Hive (HiveQL) a knihovny Mahout patří do této kategorie. Úplný seznam součástí clusteru je k dispozici v [co je nového ve verzích clusterů systému Apache Hadoop poskytovaných službou HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
 * **Vlastní komponenty** -, jako uživatel clusteru, můžete nainstalovat nebo použít ve vašich úloh žádné součásti k dispozici v komunitě nebo vytvořené vámi.
 
-> [!WARNING]   
+> [!IMPORTANT]   
 > Součásti, které jsou součástí clusteru HDInsight jsou plně podporované. Microsoft Support pomáhá izolovat a vyřešit problémy týkající se těchto součástí.
 >
 > Vlastní komponenty získat obchodně přiměřenou podporu můžete-li dále řešit tento problém. Podpory Microsoftu může být schopni vyřešit problém nebo že vás může požádat o zapojení dostupné kanály pro open source technologie, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [Fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Také projektů Apache mít projektovým webům na [ https://apache.org ](https://apache.org), například: [Hadoop](https://hadoop.apache.org/).
@@ -56,33 +56,52 @@ Existují dva druhy opensourcové komponenty, které jsou k dispozici ve služb�
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Použijte externí balíčky s poznámkovými bloky Jupyter
 
-1. Z [Portálu Azure](https://portal.azure.com/) z úvodního panelu klikněte na dlaždici pro váš cluster Spark (pokud je připnutý na úvodní panel). Můžete také přejít na cluster pod položkou **Procházet vše** > **Clustery HDInsight**.   
+1. Z [webu Azure portal](https://portal.azure.com/), přejděte k vašemu clusteru.  
 
-2. Z okna clusteru Spark klikněte na tlačítko **akcí skriptů** v levém podokně. Použijte typ skriptu "Vlastní" a zadejte popisný název akce skriptu. Spuštění skriptu na **hlavní a pracovní uzly** a parametry pole ponechte prázdné. Skriptu bash můžete odkazovat z: https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh Nahlédněte do dokumentace na [jak použít vlastní skript akce](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+2. S vaším clusterem vybrán, v levém podokně v části **nastavení**vyberte **akcí skriptů**.
 
-   > [!NOTE]  
-   > Existují dva python instalací v clusteru. Spark použije nachází v instalaci pythonu Anaconda `/usr/bin/anaconda/bin` a použije výchozí nastavení prostředí Pythonu 2.7. Chcete-li použít Python 3.x a nainstalovat balíčky v jádru PySpark3, cestu k `conda` spustitelný soubor pro tohoto prostředí a použití `-n` parametr zadat prostředí. Například příkaz `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`, nainstaluje `ggplot` balíček pomocí prostředí Python 3.5 `conda-forge` kanálu.
+3. Vyberte **+ odeslat novou**.
 
-3. Otevřete Poznámkový blok PySpark Jupyter
+4. Zadejte následující hodnoty **odeslat akci skriptu** okno:  
+
+
+    |Parametr | Hodnota |
+    |---|---|
+    |Typ skriptu | Vyberte **– vlastní** z rozevíracího seznamu.|
+    |Název |Zadejte `tensorflow` v textovém poli.|
+    |URI skriptu Bash |Zadejte `https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh` v textovém poli. |
+    |Typy uzlů | Vyberte **Head**, a **pracovního procesu** zaškrtávací políčka. |
+
+    `tensorflowinstall.sh` obsahuje následující příkazy:
+
+    ```bash
+    #!/usr/bin/env bash
+    /usr/bin/anaconda/bin/conda install -c conda-forge tensorflow
+    ```
+
+5. Vyberte **Vytvořit**.  Nahlédněte do dokumentace na [jak použít vlastní skript akce](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+
+6. Počkejte na dokončení skriptu.  **Akcí skriptů** podokně informaci **nové akce skriptu jde odeslat po dokončení aktuální operace clusteru** při provádění skriptu.  Indikátor průběhu lze zobrazit v uživatelském rozhraní Ambari **operací na pozadí** okna.
+
+7. Otevřete Poznámkový blok PySpark Jupyter.  Zobrazit [vytvoření poznámkového bloku Jupyter na HDInsight Spark](./apache-spark-jupyter-notebook-kernels.md#create-a-jupyter-notebook-on-spark-hdinsight) kroky.
 
     ![Vytvoření nového poznámkového bloku Jupyter](./media/apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "Vytvoření nového poznámkového bloku Jupyter")
 
-4. Nový poznámkový blok se vytvoří a otevře s názvem Untitled.pynb. Klikněte na název poznámkového bloku v horní části a zadejte popisný název.
+8. Teď budete `import tensorflow` a spustit příklad hello world. Zadejte následující kód:
 
-    ![Zadání názvu poznámkového bloku](./media/apache-spark-python-package-installation/hdinsight-spark-name-notebook.png "Zadání názvu poznámkového bloku")
-
-5. Teď budete `import tensorflow` a spustit příklad hello world. 
-
-    Kód ke kopírování:
-
-        import tensorflow as tf
-        hello = tf.constant('Hello, TensorFlow!')
-        sess = tf.Session()
-        print(sess.run(hello))
+    ```
+    import tensorflow as tf
+    hello = tf.constant('Hello, TensorFlow!')
+    sess = tf.Session()
+    print(sess.run(hello))
+    ```
 
     Výsledek vypadá takto:
     
     ![Spuštění kódu TensorFlow](./media/apache-spark-python-package-installation/execution.png "TensorFlow spuštění kódu")
+
+> [!NOTE]  
+> Existují dva python instalací v clusteru. Spark použije nachází v instalaci pythonu Anaconda `/usr/bin/anaconda/bin` a použije výchozí nastavení prostředí Pythonu 2.7. Chcete-li použít Python 3.x a nainstalovat balíčky v jádru PySpark3, cestu k `conda` spustitelný soubor pro tohoto prostředí a použití `-n` parametr zadat prostředí. Například příkaz `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`, nainstaluje `ggplot` balíček pomocí prostředí Python 3.5 `conda-forge` kanálu.
 
 ## <a name="seealso"></a>Viz také
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/20/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: ec5fbffdf7df5ef3a952e21b79ab02f355fb8e29
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: e85e006a54fcb4bb677932b3e1ff9fa79352dba9
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403642"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519829"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Pomocí webu Azure portal ke správě sdílených složek na hranici vaší Azure Data Box
 
@@ -63,7 +63,7 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
         ![Přidání sdílené složky systému souborů NFS](media/data-box-edge-manage-shares/add-nfs-share.png)
 
-7. Pro snadný přístup ke sdíleným složkám z výpočetní moduly Edge, použijte místní přípojného bodu. Vyberte **použít sdílenou složku s výpočetními prostředky na Edge** tak, aby sdílenou složku automaticky připojí po něm jeho vytvořený. Pokud je vybraná tato možnost, modul Edge můžete také použít tak výpočetní prostředky s místní přípojného bodu.
+7. Pro snadný přístup ke sdíleným složkám z výpočetní moduly Edge, použijte místní přípojného bodu. Vyberte **použít sdílenou složku s výpočetními prostředky na Edge** tak, aby sdílená složka je automaticky připojena po jeho vytvoření. Pokud je vybraná tato možnost, modul Edge můžete také použít tak výpočetní prostředky s místní přípojného bodu.
 
 8. Kliknutím na **Vytvořit** vytvořte sdílenou složku. Zobrazí se oznámení o probíhajícím vytváření sdílené složky. Po vytvoření sdílené složky se zadaným nastavením se okno **Sdílené složky** aktualizuje a zobrazí se v něm nová sdílená složka.
 
@@ -97,6 +97,30 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
     ![Zobrazit podrobnosti o místní sdílené složky](media/data-box-edge-manage-shares/add-local-share-4.png)
 
+## <a name="mount-a-share"></a>Připojte sdílenou složku
+
+Pokud jste vytvořili sdílenou složku před konfigurací výpočetní prostředky na vašem zařízení Data Box okraj, je potřeba připojit sdílenou složku. Proveďte následující kroky pro připojení sdílené složky.
+
+
+1. Na webu Azure Portal, přejděte na váš prostředek okraj pole Data a potom přejděte ke **brána > sdílených složek**. Ze seznamu sdílené složky vyberte sdílenou složku, kterou chcete připojit. **Použít pro službu compute** sloupce budou zobrazovat stav jako **zakázané** pro vybranou sdílenou složku.
+
+    ![Vyberte sdílenou složku](media/data-box-edge-manage-shares/select-share-mount.png)
+
+2. Vyberte **připojit**.
+
+    ![Vyberte připojení](media/data-box-edge-manage-shares/select-mount.png)
+
+3. Po zobrazení výzvy k potvrzení, vyberte **Ano**. To bude připojení sdílené složky.
+
+    ![Ověřte připojení](media/data-box-edge-manage-shares/confirm-mount.png)
+
+4. Po připojení sdílené složky přejděte k seznamu sdílených složek. Uvidíte, že **použít pro službu compute** sloupci se zobrazuje stav sdílenou složku jako **povoleno**.
+
+    ![Připojené sdílené složky](media/data-box-edge-manage-shares/share-mounted.png)
+
+5. Vyberte sdílenou složku znovu, chcete-li zobrazit místní přípojný bod sdílené složky. Hraniční výpočetní modul používá tuto místní přípojný bod sdílené složky.
+
+    ![Místní přípojný bod sdílené složky](media/data-box-edge-manage-shares/share-mountpoint.png)
 
 ## <a name="unmount-a-share"></a>Odpojte sdílenou složku
 
@@ -142,7 +166,8 @@ Seznam se aktualizuje tak, aby odrážely odstranění sdílené složky.
 Funkce aktualizace umožňuje aktualizovat obsah sdílené složky. Když aktualizujete sdílenou složku, spustí se vyhledávání, které najde všechny objekty Azure včetně objektů blob a souborů, které byly do cloudu přidány od poslední aktualizace. Tyto další soubory se potom stáhnou do aktualizovat obsah sdílené složky v zařízení.
 
 > [!IMPORTANT]
-> Nelze aktualizovat místní sdílené složky.
+> - Nelze aktualizovat místní sdílené složky.
+> - Mezi operace aktualizace není zachováno oprávnění a seznamy řízení přístupu (ACL). 
 
 Pokud chcete sdílenou složku aktualizovat, proveďte na webu Azure Portal následující kroky.
 

@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/21/2019
-ms.openlocfilehash: 2c3b63e671240a239dc2037ce56e56af4a8f95e7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: e55c898cdbb45dc7ff3466c61e968e3ae52be0cb
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369152"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521002"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Vytvořit pracovní prostor služby Azure Machine Learning
 
@@ -24,7 +24,7 @@ Pokud chcete používat službu Azure Machine Learning, je nutné [ **pracovníh
 V tomto článku se dozvíte, jak vytvořit pracovní prostor pomocí některé z těchto metod: 
 * [Webu Azure portal](#portal) rozhraní
 * [Azure Machine Learning sady SDK pro Python](#sdk)
-* [Šablony Azure Resource Manageru](#template)
+* Šablony Azure Resource Manageru
 * [Azure Machine Learning rozhraní příkazového řádku](#cli)
 
 Pracovní prostor, který vytvoříte pomocí postupu v tady může sloužit jako předpokladem pro další kurzy a články s postupy. 

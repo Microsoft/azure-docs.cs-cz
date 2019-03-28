@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 8b86103f76e2425acea1b4f7c590204f0a893510
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 4e2808378834a0270586ce674e1043ca443320c5
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484424"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539628"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Řešení potíží se synchronizací dat SQL
 
@@ -40,7 +40,7 @@ Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několi
 
 - [Najdete v článku významné snížení výkonu](#sync-perf)
 
-- [Zobrazí tato zpráva: "Nelze vložit hodnoty NULL do sloupce <column>. Sloupec nepovoluje hodnoty nulls." Co to znamená, a jak ho můžou opravit?](#sync-nulls)
+- [Zobrazí tato zpráva: "Nelze vložit hodnoty NULL do sloupce \<sloupce >. Sloupec nepovoluje hodnoty nulls." Co to znamená, a jak ho můžou opravit?](#sync-nulls)
 
 - [Jak synchronizovat Data zpracovává. cyklické odkazy? To znamená, když na stejná data se synchronizují do více skupin synchronizace a neustále mění díky tomu?](#sync-circ)
 
@@ -105,7 +105,7 @@ Výkon výrazně zhorší, případně do bodu, ve kterém nelze otevřít i už
 
 - **Rozlišení**. Nejlepší je ochrany před únikem informací. Ujistěte se, že není nutné cyklické odkazy do skupiny synchronizace. Všechny řádky, které se synchronizuje podle jednu skupinu synchronizace nejde synchronizovat jinou skupinou synchronizace.
 
-### <a name="sync-nulls"></a> Zobrazí tato zpráva: "Nelze vložit hodnoty NULL do sloupce <column>. Sloupec nepovoluje hodnoty nulls." Co to znamená, a jak ho můžou opravit? 
+### <a name="sync-nulls"></a> Zobrazí tato zpráva: "Nelze vložit hodnoty NULL do sloupce \<sloupce >. Sloupec nepovoluje hodnoty nulls." Co to znamená, a jak ho můžou opravit? 
 Tato chybová zpráva indikuje, že jeden z následujících dvou problémů došlo k chybě:
 -  Tabulka nemá primární klíč. Chcete-li vyřešit tento problém, přidáte do všech tabulek, které synchronizujete primární klíč.
 -  Existuje klauzule WHERE v příkazu CREATE INDEX. Synchronizace dat není zpracovat tento stav. Chcete-li vyřešit tento problém, odeberte klauzuli WHERE nebo ručně provést změny na všechny databáze. 

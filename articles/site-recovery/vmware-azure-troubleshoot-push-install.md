@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 02/27/2019
-ms.openlocfilehash: 65b8253a307693d00f5eaefe7660d500dce49be4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0278332105f2102fc82122c5a74db6326f011e81
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078648"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541178"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Řešení potíží s nabízenou instalací služby Mobility
 
@@ -183,7 +183,7 @@ Pokud zjistíte tučné řetězec výše, GRUB má skutečné zařízení názvy
 Názvy zařízení mělo být nahrazeno s odpovídající identifikátor UUID.<br>
 
 
-1. Najít identifikátor UUID zařízení spuštěním příkazu "blkid <device name>". Příklad:<br>
+1. Najít identifikátor UUID zařízení spuštěním příkazu "blkid \<název zařízení >". Příklad:<br>
    ```
    blkid /dev/sda1
    /dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
@@ -191,7 +191,7 @@ Názvy zařízení mělo být nahrazeno s odpovídající identifikátor UUID.<b
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
    ```
 
-2. Nyní nahraďte její identifikátor UUID v následujícím formátu název zařízení "kořenový = UUID =<UUID>". Například, pokud jsme nahradit názvy zařízení UUID pro kořenové a pokračovat v parametru zmíněné v souborech "/ boot/grub2/grub.cfg", "/ boot/grub2/grub.cfg" nebo "/ etc/výchozí/grub: pak řádky v souborech vypadat. <br>
+2. Nyní nahraďte její identifikátor UUID v následujícím formátu název zařízení "kořenový = UUID =\<UUID >". Například, pokud jsme nahradit názvy zařízení UUID pro kořenové a pokračovat v parametru zmíněné v souborech "/ boot/grub2/grub.cfg", "/ boot/grub2/grub.cfg" nebo "/ etc/výchozí/grub: pak řádky v souborech vypadat. <br>
    *jádra /boot/vmlinuz-3.0.101-63-default **kořenové = UUID = 62927e85 f7ba-40bc-9993-cc1feeb191e4** **obnovit = UUID = 6f614b44 433b-431b-9ca1-4dd2f6f74f6b** splash = tiché crashkernel = 256M-:128M showopts vga = 0x314*
 3. Opětné spuštění ochrany znovu
 

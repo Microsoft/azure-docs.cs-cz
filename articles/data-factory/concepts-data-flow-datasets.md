@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 4e36e96947e6a8595230023065eb9f44a5a1f3d2
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: efb82c57a5620ef3eace8b39f6f27f2286202f84
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371311"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521835"
 ---
 # <a name="mapping-data-flow-datasets"></a>Mapování datového toku datových sad
 
@@ -49,9 +49,27 @@ V toku dat můžete požádat o ADF můžete vytvořit novou definici tabulky v 
 
 ![Transformace schématu zdroje](media/data-flow/dataset2.png "SQL schématu")
 
-## <a name="delimited-text-dataset"></a>Datová sada obsahující text oddělený znaky
+## <a name="choose-your-type-of-data-first"></a>Nejprve zvolte typ dat
 
-V datové sadě obsahující text oddělený znaky, bude nastaven oddělovač, který má zpracovat buď jeden oddělovače ('\t 'pro TSV,',' pro sdílený svazek clusteru, "|"...) nebo několika znaky oddělovače. Nastavte přepínač záhlaví řádku a přejděte do transformace zdroje k automatické detekci datových typů.
+### <a name="delimited-text"></a>Text s oddělovači
+
+V datové sadě obsahující text oddělený znaky, bude nastaven oddělovač, který má zpracovat buď jeden oddělovače ('\t 'pro TSV,',' pro sdílený svazek clusteru, "|"...) nebo několika znaky oddělovače. Nastavte přepínač záhlaví řádku a přejděte do transformace zdroje k automatické detekci datových typů. Pokud používáte oddělený Text datové sady pro příjem dat v jímky, stačí vyberte cílovou složku. V nastavení jímky můžete definovat název výstupních souborů.
+
+### <a name="parquet"></a>Parquet
+
+Použijte Parquet jako upřednostňovaný typ datové sady pracovní toky dat ADF. Parquet uloží schématu bohatých metadat spolu s daty.
+
+### <a name="database-types"></a>Typy databáze
+
+Můžete vybrat databázi SQL Azure nebo Azure SQL data Warehouse.
+
+U jiných ADF datovou sadu typů použije aktivitu kopírování připraví vaše data. V galerii šablon, které vám pomůžou vytvářet tento model je šablonu ADF.
+
+![Zkopírujte pracovní](media/data-flow/templatedf.png "zkopírovat pracovní")
+
+## <a name="choose-your-connection-type"></a>Vyberte typ připojení
+
+Pokud používáte Parquet nebo Text oddělený datových sad, pak můžete vybrat umístění pro vaše data: ADLS nebo objekt Blob.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 400583f50e898bfc750a387bf0ee83a3147e5006
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6834ab15f3d46b8b7116a48b0e970f553eb65ba8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57905051"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521810"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Nejčastější dotazy
 
@@ -153,7 +153,7 @@ Je to možné, pokud váš kód odesílá tyto údaje. To může také dojít, p
 
 **Všechny** oktety webovou adresu klienta jsou vždy nastaveny na 0, poté, co jsou vyhledány atributů geografického umístění.
 
-## <a name="my-ikey-is-visible-in-my-web-page-source"></a>Moje Instrumentační klíč je viditelná ve zdroji webové stránky. 
+## <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Můj klíč instrumentace je viditelná ve zdroji webové stránky. 
 
 * To je běžný postup při sledování řešení.
 * Nelze se používá ke krádeži vaše data.
@@ -162,7 +162,7 @@ Je to možné, pokud váš kód odesílá tyto údaje. To může také dojít, p
 
 Můžete:
 
-* Dva samostatné Instrumentační klíče (oddělení prostředků Application Insights), použijte pro data s klientem a serverem. Nebo
+* Použijte dva různé Instrumentační klíče (oddělení prostředků Application Insights), pro klientské a serverové data. Nebo
 * Zápis proxy server, na kterém běží na vašem serveru a mít webového klienta posílat data přes tento proxy server.
 
 ## <a name="post"></a>Jak můžu zobrazit následných dat v diagnostickém vyhledávání?

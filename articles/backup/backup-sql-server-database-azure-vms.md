@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 6709bb2beae6dd1964f475ce2ba07b569b9ad4ab
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 899068141a936aa5257501e733c6600185f22b8e
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285067"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522158"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -145,7 +145,7 @@ Konfigurace zálohování následujícím způsobem:
 
    - Vyberte výchozí zásady: HourlyLogBackup.
    - Vyberte existující zásadu zálohování dříve vytvořili pro SQL.
-   - [Definovat novou zásadu](#configure-a-backup-policy) na základě cíle bodu obnovení a uchovávání rozsahu.
+   - Definujte novou zásadu na základě cíle bodu obnovení a uchovávání rozsahu.
 
      ![Vyberte zásady zálohování](./media/backup-azure-sql-database/select-backup-policy.png)
 

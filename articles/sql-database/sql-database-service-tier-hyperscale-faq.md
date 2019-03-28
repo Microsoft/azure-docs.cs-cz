@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: 36b2f3817c7e96a35c1e8f3aba22db201224ceba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/26/2019
+ms.openlocfilehash: 5247183f50301554a986fde474b27a9bfc67d91d
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075931"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540665"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy týkající se databáze Azure SQL Hyperškálováním
 
@@ -216,7 +216,7 @@ Ne. Ve verzi public preview nejde přesunout databázi Hyperškálovatelného na
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Ztratit všechny možnosti nebo funkce po migraci na vrstvu služby hyperškálovatelný systém
 
-Ano. Některé funkce služby Azure SQL Database nepodporuje Hyperškálovatelného ve verzi public preview, včetně, ale nikoli výhradně transparentní šifrování dat a dlouho období uchování zálohy. Po dokončení migrace databází do Hyperškálovatelného tyto funkce přestanou fungovat.
+Ano. Některé funkce služby Azure SQL Database nepodporuje Hyperškálovatelného ve verzi public preview, včetně, ale nikoli výhradně dlouho období uchování zálohy. Po dokončení migrace databází do Hyperškálovatelného tyto funkce přestanou fungovat.
 
 ### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Můžu přesunout místní databázi systému SQL Server nebo virtuální počítač databázi systému SQL Server na hyperškálovatelný systém
 

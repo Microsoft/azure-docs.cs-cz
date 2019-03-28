@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5b21c16a166a3a264156b7719be6a331e00e6e8e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5ad8dad35013a28696e7c9cb5cc68464f3c4bf64
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881363"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520050"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Správa úloh pomocí tříd prostředků ve službě Azure SQL Data Warehouse
 
@@ -130,7 +130,21 @@ Některé dotazy se vždy spustit ve třídě prostředků smallrc i v případ�
 
 Následující příkazy jsou vyloučené z třídy prostředků a vždy spouštějí v smallrc:
 
--Vytvořit nebo DROP TABLE - příkaz ALTER TABLE... PŘEPÍNAČE, ROZDĚLIT nebo sloučit oddíl – zakázat příkaz ALTER INDEX - DROP INDEX – vytvoření, aktualizace nebo použít příkaz DROP STATISTICS – TRUNCATE TABLE – ALTER AUTHORIZATION – CREATE LOGIN-vytvořit, ALTER a DROP USER-vytvořit, ALTER, nebo VYŘADIT postup – vytvořit nebo VYŘADIT VIEW - vložení hodnoty - vyberte systémová zobrazení a zobrazení dynamické správy – POPISUJÍ - DBCC
+- Vytvořit nebo DROP TABLE
+- PŘÍKAZ ALTER TABLE... PŘEPÍNAČE, ROZDĚLIT nebo sloučit oddíl
+- PŘÍKAZ ALTER INDEX DISABLE
+- ODSTRANIT INDEX
+- Vytvoření, aktualizace nebo použít příkaz DROP STATISTICS
+- TRUNCATE TABLE
+- PŘÍKAZ ALTER AUTORIZACE
+- VYTVOŘTE PŘIHLAŠOVACÍ ÚDAJE
+- CREATE, ALTER nebo DROP USER
+- CREATE, ALTER nebo VYŘADIT PROCEDURY
+- Vytvořit nebo VYŘADIT zobrazení
+- VLOŽENÍ HODNOT
+- Vyberte z systémová zobrazení a zobrazení dynamické správy
+- VYSVĚTLUJÍ
+- DBCC
 
 <!--
 Removed as these two are not confirmed / supported under SQL DW
