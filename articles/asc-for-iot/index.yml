@@ -1,0 +1,67 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 12ba136bb227ef5ea469d91c6da9477b718b9e92
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58542229"
+documentType: LandingData
+title: Dokumentace ke službě Azure Security Center (ASC) for IoT Preview
+metadata:
+  title: Dokumentace ke službě Azure Security Center (ASC) for IoT Preview – kurzy, rychlá zprovoznění | Microsoft Doc
+  meta.description: Azure Security Center for IoT unifies your security management and enables advanced threat protection across your IoT solution.
+  services: ascforiot
+  author: mlottner
+  manager: barbkess
+  ms.service: ascforiot
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/26/19
+  ms.author: barbkess
+abstract:
+  description: Azure Security Center for IoT Preview využijte k rozšíření koncepce vašeho stávajícího kybernetického zabezpečení na celé řešení IoT. Získáte skutečně panoramatický přehled zabezpečení všech vašich prostředků souvisejících s Azure. Možnosti rychlého nasazení a kompletní integrace s dvojčaty modulu IoT Hub vám poskytnou širokou škálu možností přizpůsobení a snadnou integraci s vašimi aktuálními nástroji pro správu zařízení. 
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Zjistěte, jak ASC pro IoT povolit v IoT Hubu, nainstalovat agenty ASC for IoT a získat přehled o vašich datech a potenciálních hrozbách.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/deploy.svg
+      text: Povolení ASC for IoT
+      href: /azure/ascforiot/quickstart-onboard-iot-hub
+    - image:
+        src: media/index/get-started.svg
+      text: Začínáme s ASC for IoT
+      href: /azure/ascforiot/quickstart-getting-started
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Naučíte se definovat zásady zabezpečení, chránit zařízení před škodlivými aktivitami a reagovat na incidenty a výstrahy zabezpečení.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/ascforiot/tutorial-investigate-device">Detekce hrozeb s využitím ASC for IoT</a>
+- title: Získávání dovedností pomocí Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Úvod do zabezpečení v Azure
+      href: https://docs.microsoft.com/learn/azure
+      image:
+        src: media/index/tutorial.svg
+        href: https://docs.microsoft.com/learn/azure
+  - type: paragraph
+    text: <a href="/learn/browse/?term=security">Další interaktivní výuka...</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - html: <a href="https://azure.microsoft.com/updates/?product=iotsecurity">Aktualizace služeb</a>

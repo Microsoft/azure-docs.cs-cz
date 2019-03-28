@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4581173f142170248a48d99683804bdb67f1703e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2f8e833088ffdf819e387fd28ae88508d5fe6d00
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250671"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519917"
 abstract:
   description: Zjistěte, jak do aplikací a webů zapracovat inteligentní algoritmy s využitím těchto produktů Azure Machine Learning.  Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.
 documentType: LandingData
@@ -38,8 +38,8 @@ sections:
   - text: <b>Rychlá zprovoznění:</b>
     type: paragraph
   - items:
-    - html: <a href="service/quickstart-create-workspace-with-python">Použití Pythonu k zahájení práce</a>
-    - html: <a href="service/quickstart-get-started">Použití webu Azure Portal k zahájení práce</a>
+    - html: <a href="service/quickstart-run-cloud-notebook">Spuštění experimentu v cloudu</a> (nevyžaduje se žádná instalace)
+    - html: <a href="service/quickstart-run-local-notebook">Spuštění experimentu s využitím místního serveru poznámkového bloku</a> (místní instalace SDK)
     style: unordered
     type: list
   - text: <b>Kurz klasifikace dat s využitím dat MNIST:</b>

@@ -1,35 +1,58 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7372c3010f31a43dc91a33de08f059a5a60d5ba4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 45c8f83ce814d5fa8b6d9cde29e59e4628534522
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55987996"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521988"
 documentType: LandingData
 title: Dokumentace ke službě Video Indexer
 metadata:
   document_id: 
   title: Dokumentace ke službě Video Indexer | Microsoft Docs
-  meta.description: Learn how about Video Indexer.
+  meta.description: Learn about Video Indexer.
   services: media-services
-  author: Juliako
+  author: juliako
   manager: femila
   ms.service: media-services
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/10/2019
+  ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: Video Indexer zahrnuje mediální technologie AI, které usnadňují extrakci informací z videí.
+  description: Azure Video Indexer je cloudová aplikace sestavená s využitím služeb Azure Media Analytics, Azure Search, Cognitive Services (jako jsou rozhraní API pro rozpoznávání tváře, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a služba Custom Speech). Umožňuje extrahovat přehledy z videí pomocí zvukových modelů a videomodelů Video Indexeru.<br/>Informace o tom, kdy je vhodnější použít Video Indexer a kdy předvolby analyzátoru Media Services, najdete v <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">dokumentu, který je porovnává</a>.
 sections:
 - items:
   - type: list
     style: cards
     className: cardsM
-    columns: 3
+    columns: 2
+    items:
+    - href: video-indexer-overview.md
+      html: <p>Video Indexer zahrnuje mediální technologie AI, které usnadňují extrakci informací z videí.</p>
+      image:
+        src: media/index/AMSIcons-media_servicesV3.svg
+      title: Co je Video Indexer?
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Přihlaste se k webu Video Indexeru a nahrajte první video:'
+  - type: list
+    style: icon48
     items:
     - image:
-        src: 
-      text: Co je Video Indexer?
-      href: video-indexer-overview.md
+        src: media/index/AMSIcons-media_analytics.svg
+      text: Extrahování přehledů
+      href: /azure/media-services/video-indexer/video-indexer-get-started
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: 'Naučte se extrahovat přehledy z videí pomocí rozhraní API Video Indexeru:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/AMSIcons-media_analytics.svg
+      text: Extrahování přehledů
+      href: /azure/media-services/video-indexer/video-indexer-use-apis

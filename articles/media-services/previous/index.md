@@ -18,6 +18,8 @@ ms.author: carolz
 
 Zjistěte, jak pomocí služby Media Services, rozšiřitelné cloudové platformy, streamovat video ve vysílací kvalitě. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak bezpečně doručovat živé video a video na vyžádání nebo zvukový stream, který se škáluje milionům uživatelů.
 
+**POZNÁMKA:** Do Media Services v2 se nepřidávají žádné nové funkce. Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se také na [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md).
+
 <ul class="panelContent cardsFTitle">
      <li>
         <a href="/azure/media-services/media-services-overview">
