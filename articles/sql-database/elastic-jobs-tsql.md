@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d2b0209f57ff5f59d59ee057db7675b2dcd071b8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 4f4032551efbf517ab47a64afc393cc57ace6bc1
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522056"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621494"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření a správa Elastických úloh databáze
 
@@ -408,19 +408,19 @@ Následující uložené procedury jsou v [úloh databáze](sql-database-job-aut
 
 |Uložená procedura  |Popis  |
 |---------|---------|
-|sp_add_job     |     Přidá novou úlohu.    |
-|sp_update_job    |      Aktualizuje existující úlohy.   |
-|sp_delete_job     |      Odstraní existující úlohy.   |
-|sp_add_jobstep    |    Přidá nový krok do úlohy.     |
-|sp_update_jobstep     |     Aktualizuje krok úlohy.    |
-|sp_delete_jobstep     |     Odstraní krok úlohy.    |
-|sp_start_job    |  Začne provádět úlohy.       |
-|sp_stop_job     |     Zastaví provádění úlohy.   |
-|sp_add_target_group    |     Přidá cílovou skupinu.    |
-|sp_delete_target_group     |    Odstraní cílovou skupinu.     |
-|sp_add_target_group_member     |    Přidá do skupiny cílové databázi nebo skupině databází.     |
-|sp_delete_target_group_member     |     Odebere z cílová skupina členem cílové skupiny.    |
-|sp_purge_jobhistory    |    Odebere záznamy historie úlohy.     |
+|[sp_add_job](#sp_add_job)     |     Přidá novou úlohu.    |
+|[sp_update_job](#sp_update_job)    |      Aktualizuje existující úlohy.   |
+|[sp_delete_job](#sp_delete_job)     |      Odstraní existující úlohy.   |
+|[sp_add_jobstep](#sp_add_jobstep)    |    Přidá nový krok do úlohy.     |
+|[sp_update_jobstep](#sp_update_jobstep)     |     Aktualizuje krok úlohy.    |
+|[sp_delete_jobstep](#sp_delete_jobstep)     |     Odstraní krok úlohy.    |
+|[sp_start_job](#sp_start_job)    |  Začne provádět úlohy.       |
+|[sp_stop_job](#sp_stop_job)     |     Zastaví provádění úlohy.   |
+|[sp_add_target_group](#sp_add_target_group)    |     Přidá cílovou skupinu.    |
+|[sp_delete_target_group](#sp_delete_target_group)     |    Odstraní cílovou skupinu.     |
+|[sp_add_target_group_member](#sp_add_target_group_member)     |    Přidá do skupiny cílové databázi nebo skupině databází.     |
+|[sp_delete_target_group_member](#sp_delete_target_group_member)     |     Odebere z cílová skupina členem cílové skupiny.    |
+|[sp_purge_jobhistory](#sp_purge_jobhistory)    |    Odebere záznamy historie úlohy.     |
 
 
 
@@ -1195,13 +1195,13 @@ Jsou k dispozici v následujících zobrazení [úloh databáze](sql-database-jo
 
 |Zobrazení  |Popis  |
 |---------|---------|
-|jobs_executions     |  Zobrazí historii spuštění úlohy.      |
+|[jobs_executions](#jobs_executions-view)     |  Zobrazí historii spuštění úlohy.      |
 |[Úlohy](#jobs-view)     |   Zobrazí všechny úlohy.      |
-|job_versions     |   Zobrazí všechny verze úlohy.      |
+|[job_versions](#job_versions-view)     |   Zobrazí všechny verze úlohy.      |
 |[kroky úlohy](#jobsteps-view)     |     Zobrazí všechny kroky v aktuální verzi každou úlohu.    |
-|jobstep_versions     |     Zobrazí všechny kroky ve všech verzích každé úlohy.    |
-|target_groups     |      Zobrazí všechny cílové skupiny.   |
-|target_group_members     |   Zobrazuje všechny členy všechny cílové skupiny.      |
+|[jobstep_versions](#jobstep_versions-view)     |     Zobrazí všechny kroky ve všech verzích každé úlohy.    |
+|[target_groups](#target_groups-view)     |      Zobrazí všechny cílové skupiny.   |
+|[target_group_members](#target_groups_members-view)     |   Zobrazuje všechny členy všechny cílové skupiny.      |
 
 
 ### <a name="jobsexecutions-view"></a>jobs_executions zobrazení
@@ -1347,4 +1347,3 @@ Zobrazuje všechny členy všechny cílové skupiny.
 
 - [Vytváření a správa elastických úloh s využitím PowerShellu](elastic-jobs-powershell.md)
 - [Autorizace a oprávnění systému SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)
-  

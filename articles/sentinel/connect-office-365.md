@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 3/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7cd90b987550dc60b30d3aa0cd1016b681eec85f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ad501958a5f88c821e48a3e21f69a960160b3c8e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547011"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574854"
 ---
 # <a name="collect-data-from-office-365-logs"></a>Shromažďovat data z Office 365 protokolů
 
@@ -33,7 +33,7 @@ Můžete Streamovat protokoly auditu z [Office 365](https://docs.microsoft.com/o
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte být globálním správcem nebo správcem zabezpečení ve svém tenantovi
-- Přidání tenanta, otevřete port 4433 pro webový provoz na počítači, ze kterého provádíte připojení.
+- V počítači, ze kterého jste přihlášeni do Azure Sentinelu k vytvoření připojení, zkontrolujte suretha port 4433 je otevřený pro webový provoz.
 
 ## <a name="connect-to-office-365"></a>Připojení k Office 365
 

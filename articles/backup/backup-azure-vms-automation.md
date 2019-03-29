@@ -7,16 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 230c68b0b1de1ef452de51b7b0661a3c3786ea76
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 3f64be35aca985d0374e224cc9c8940502005014
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521699"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578879"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí Powershellu
 
-Tento článek vysvětluje, jak zálohovat a obnovit virtuální počítač v Azure [Azure Backup](backup-overview.md) trezor služby Recovery Services pomocí rutin prostředí PowerShell. 
+Tento článek vysvětluje, jak zálohovat a obnovit virtuální počítač v Azure [Azure Backup](backup-overview.md) trezor služby Recovery Services pomocí rutin prostředí PowerShell.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -24,10 +24,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Vytvořte trezor služby Recovery Services a nastavte kontext trezoru.
 > * Definice zásady zálohování
 > * Použití zásady zálohování k ochraně několika virtuálních počítačů
-> * Aktivační událost úlohu zálohování na vyžádání pro chráněné virtuální počítače před můžete zálohovat (nebo chránit) virtuální počítač, je třeba provést [požadavky](backup-azure-arm-vms-prepare.md) Příprava prostředí pro ochranu virtuálních počítačů. 
-
-
-
+> * Aktivační událost úlohu zálohování na vyžádání pro chráněné virtuální počítače před můžete zálohovat (nebo chránit) virtuální počítač, je třeba provést [požadavky](backup-azure-arm-vms-prepare.md) Příprava prostředí pro ochranu virtuálních počítačů.
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -44,8 +41,6 @@ V následujícím diagramu je automaticky shrnutý hierarchie objektů.
 
 Zkontrolujte **Az.RecoveryServices** [Reference k rutinám](https://docs.microsoft.com/powershell/module/Az.RecoveryServices/?view=azps-1.4.0) odkaz v knihovně Azure.
 
-
-
 ## <a name="set-up-and-register"></a>Nastavení a registrace
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -58,7 +53,7 @@ Chcete-li začít:
 
     ```powershell
     Get-Command *azrecoveryservices*
-    ```   
+    ```
  
     Zobrazí aliasů a rutin pro trezor služby Recovery Services, Azure Backup a Azure Site Recovery. Na následujícím obrázku je příklad takhle. Není úplný seznam rutin.
 
@@ -147,6 +142,18 @@ Než povolíte ochranu virtuálního počítače, použijte [Set-AzRecoveryServi
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
 ```
 
+### <a name="modifying-storage-replication-settings"></a>Úprava nastavení replikace úložiště
+
+Použití [Set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperties?view=azps-1.6.0) příkaz pro nastavení konfigurace úložiště replikace úložiště LRS nebo GRS
+
+```powershell
+$vault= Get-AzRecoveryServicesVault -name "testvault"
+Set-AzRecoveryServicesBackupProperties -Vault $vault -BackupStorageRedundancy GeoRedundant/LocallyRedundant
+```
+
+> [!NOTE]
+> Redundance úložiště je možné upravit pouze v případě, že neexistují žádné zálohované položky chráněné do trezoru.
+
 ### <a name="create-a-protection-policy"></a>Vytvořit zásady ochrany.
 
 Při vytváření trezoru služby Recovery Services se vytvoří i výchozí zásady ochrany a uchovávání informací. Výchozí zásady ochrany aktivují úlohu zálohování každý den v určenou dobu. Výchozí zásady uchovávání informací uchovávají denní bod obnovení po dobu 30 dnů. Výchozí zásady můžete použít k rychlému zajištění ochrany vašeho virtuálního počítače a upravovat zásady později pomocí různých údajů.
@@ -226,7 +233,6 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 > Pokud používáte cloud Azure Government, použijte pro parametr ServicePrincipalName ff281ffe-705c-4f53-9f37-a40e6f2c68f3 hodnotu v [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) rutiny.
 >
 
-
 ### <a name="modify-a-protection-policy"></a>Upravit zásady ochrany.
 
 Chcete-li upravit zásady ochrany, použijte [Set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy) upravit objekty SchedulePolicy nebo parametru RetentionPolicy.
@@ -239,6 +245,19 @@ $retPol.DailySchedule.DurationCountInDays = 365
 $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
 Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $RetPol
 ```
+
+#### <a name="configuring-instant-restore-snapshot-retention"></a>Konfigurace uchovávání rychlé obnovení snímku
+
+> [!NOTE]
+> Z PS Az a vyšší verze 1.6.0 jeden můžete aktualizovat doba uchování snímků okamžitá obnova ve zásady pomocí Powershellu
+
+````powershell
+PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+$bkpPol.SnapshotRetentionInDays=7
+PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+````
+
+Výchozí hodnota bude 2, může uživatel nastavit hodnotu s minimální hodnotu 1 a maximálně 5. Pro týdenní zálohování zásady, období je nastavena na 5 a nedá se změnit.
 
 ## <a name="trigger-a-backup"></a>Aktivujte zálohování
 
@@ -672,7 +691,7 @@ $rp[0]
 
 Výstup se podobá následujícímu příkladu:
 
-```
+```powershell
 RecoveryPointAdditionalInfo :
 SourceVMStorageType         : NormalStorage
 Name                        : 15260861925810
@@ -719,4 +738,4 @@ Disable-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete spolupracovat s prostředky Azure pomocí Powershellu, najdete v článku prostředí PowerShell, [nasazení a Správa zálohování pro Windows Server](backup-client-automation.md). Pokud budete spravovat zálohy aplikace DPM, najdete v článku, [nasazení a Správa zálohování aplikace DPM](backup-dpm-automation.md). 
+Pokud chcete spolupracovat s prostředky Azure pomocí Powershellu, najdete v článku prostředí PowerShell, [nasazení a Správa zálohování pro Windows Server](backup-client-automation.md). Pokud budete spravovat zálohy aplikace DPM, najdete v článku, [nasazení a Správa zálohování aplikace DPM](backup-dpm-automation.md).

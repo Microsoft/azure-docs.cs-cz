@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/28/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 72a3bead4ba8670187c35856f9cd4e4f4b975a30
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0f94a1fdc01825b5bf78644f84c72e6b031109c0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311691"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621970"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Doporučené postupy nástroje QnA Maker znalostní báze
 [Životního cyklu vývoje znalostní báze](../Concepts/development-lifecycle-knowledge-base.md) vás o tom, jak spravovat znalostní BÁZÍ od začátku do konce. Použijte tyto osvědčené postupy pro zlepšení znalostní báze a application/chatovací robot koncovým uživatelům poskytovat lepší výsledky.
@@ -108,7 +108,7 @@ Nástroj QnA Maker umožňuje uživatelům [spolupracovat](../How-to/collaborate
 
 ## <a name="active-learning"></a>Aktivní vzdělávání
 
-[Aktivní učení](../How-to/improve-knowledge-base.md) je nejvhodnější navrhnout alternativní otázky, pokud obsahuje širokou škálu kvalitě a množství dotazů založené na uživatelích. Je potřeba povolit dotazy na klienta aplikací pro uživatele k účasti na aktivního učení smyčku zpětné vazby bez cenzurou. Jakmile dotazy jsou navržené v portál QnA Maker, budete muset zkontrolovat a přijmout nebo odmítnout tyto návrhy. 
+[Aktivní učení](../How-to/improve-knowledge-base.md) je nejvhodnější navrhnout alternativní otázky, pokud obsahuje širokou škálu kvalitě a množství dotazů založené na uživatelích. Je potřeba povolit dotazy na klienta aplikací pro uživatele k účasti na aktivního učení smyčku zpětné vazby bez cenzurou. Po portálu QnA Maker jsou navrhované dotazy, můžete **[filtrovat podle návrhy](../How-To/improve-knowledge-base.md#add-active-learning-suggestion-to-knowledge-base)** pak zkontrolovat a přijmout nebo odmítnout tyto návrhy. 
 
 ## <a name="next-steps"></a>Další postup
 

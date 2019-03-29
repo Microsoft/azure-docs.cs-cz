@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 591000f251d384b961569f9d7ca09ae93edea617
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: fa1825d6f6f6ea5e6c026791aa70dd1b37bdad90
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541626"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574732"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Rychlý start: Vytvořit vlastní upozornění
 
@@ -90,4 +90,4 @@ Následující tabulka nabízí souhrn výstrah, které jsou k dispozici pro př
 Přejděte k dalším článku se dozvíte, jak nasadit agenta zabezpečení...
 
 > [!div class="nextstepaction"]
-> [Nasazení agenta zabezpečení](select-deploy-agent.md)
+> [Nasazení agenta zabezpečení](how-to-deploy-agent.md)

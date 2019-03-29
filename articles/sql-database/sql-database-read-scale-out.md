@@ -11,15 +11,15 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 8f34b3ed91e4b470fdfa7c2ffad401e7890abe1e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/28/2019
+ms.openlocfilehash: d9ad859ef24b51dc337dc23281d2fe4e1eada1e6
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886452"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619887"
 ---
-# <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Použít repliky jen pro čtení k načtení vyrovnávat zatížení dotazu jen pro čtení (preview)
+# <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Načtení vyrovnávat zatížení dotazu jen pro čtení pomocí repliky jen pro čtení
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -27,24 +27,23 @@ ms.locfileid: "57886452"
 
 **Horizontální navýšení kapacity pro čtení** vám umožní načíst jen pro čtení úlohy serveru zůstatek Azure SQL Database pomocí kapacita jednu repliku pouze pro čtení.
 
-Každá databáze na úrovni Premium ([nákupní model založený na DTU](sql-database-service-tiers-dtu.md)) nebo na úrovni pro důležité obchodní informace ([nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md)) je automaticky zřízena několik replik AlwaysON Podpora smlouva SLA o dostupnosti.
+Každá databáze na úrovni Premium ([nákupní model založený na DTU](sql-database-service-tiers-dtu.md)) nebo na úrovni pro důležité obchodní informace ([nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md)) je automaticky zřízena několik replik AlwaysON Podpora smlouva SLA o dostupnosti. To je znázorněno v následujícím diagramu.
 
-![Repliky jen pro čtení](media/sql-database-managed-instance/business-critical-service-tier.png)
+![Repliky jen pro čtení](media/sql-database-read-scale-out/business-critical-service-tier-read-scale-out.png)
 
-Tyto repliky se zřizují se stejnou velikostí výpočetních jako repliky pro čtení a zápis používají standardní databázi připojení. **Horizontální navýšení kapacity pro čtení** funkce vám umožní načíst zůstatek SQL jen pro čtení na zatížení databáze využití kapacity o jednu z replik jen pro čtení místo sdílení repliky pro čtení i zápis. Tímto způsobem úlohy jen pro čtení budou z hlavní úlohy čtení a zápis izolovaných a nebude mít vliv na jeho výkon. Tato funkce je určená pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako jsou třeba analýzy a proto by mohl získat zvýšit efektivitu tuto dodatečnou kapacitu bez dalších poplatků.
+Sekundární repliky se zřizují se stejnou velikostí výpočetních jako primární repliku. **Horizontální navýšení kapacity pro čtení** funkce vám umožní načíst zůstatek SQL jen pro čtení na zatížení databáze využití kapacity o jednu z replik jen pro čtení místo sdílení repliky pro čtení i zápis. Tímto způsobem úlohy jen pro čtení budou z hlavní úlohy čtení a zápis izolovaných a nebude mít vliv na jeho výkon. Tato funkce je určená pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako jsou třeba analýzy a proto by mohl získat zvýšit efektivitu tuto dodatečnou kapacitu bez dalších poplatků.
 
 Použít funkci škálování pro čtení s danou databází, musíte výslovně povolit ho při vytváření databáze nebo později změnou jeho konfigurace přes PowerShell voláním [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) nebo [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) rutiny nebo pomocí rozhraní REST API Azure Resource Manageru [databází – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) metoda.
 
-Po povolení horizontální navýšení kapacity pro čtení pro databázi aplikace propojíte databázi budete přesměrováni do repliky pro čtení a zápis nebo jen pro čtení replik databáze podle `ApplicationIntent` vlastnost nakonfigurovaný ve vaší aplikace připojovací řetězec. Informace o tom, `ApplicationIntent` vlastnost, naleznete v tématu [zadání záměru aplikace](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
+Po povolení horizontální navýšení kapacity pro čtení pro databázi aplikace připojení k databázi, budete přesměrováni bránou repliky pro čtení a zápis nebo jen pro čtení replik databáze podle `ApplicationIntent` vlastnost gurovaný připojovací řetězec vaší aplikace. Informace o tom, `ApplicationIntent` vlastnost, naleznete v tématu [zadání záměru aplikace](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
 
 Pokud je zakázán horizontální navýšení kapacity pro čtení nebo nastavte vlastnost ReadScale v vrstvu Nepodporovaná služba, všechna připojení jsou směrované na repliky pro čtení i zápis, nezávisle `ApplicationIntent` vlastnost.
 
 > [!NOTE]
-> Data Store dotazu a rozšířených událostí nejsou podporovány u replik jen pro čtení.
-
+> Dotaz Data Store, rozšířených událostí, SQL Profiler a auditu funkce nejsou podporovány u replik jen pro čtení. 
 ## <a name="data-consistency"></a>Konzistence dat
 
-Jednou z výhod repliky je, že tyto repliky jsou vždy transakčně konzistentní stav, ale v různých okamžicích v době může některé malé latence mezi existovat různých replik. Horizontální navýšení kapacity pro čtení podporuje relace úrovně konzistence. Znamená to, pokud relace jen pro čtení obnoví po připojení chyby způsobené nedostupnost repliky, je možné přesměrovat do repliky, který není 100 % naskočíte repliky pro čtení i zápis. Podobně pokud aplikace zapíše data pomocí relace pro čtení i zápis a okamžitě přečte pomocí relaci jen pro čtení, je možné, že nejnovější aktualizace nejsou okamžitě viditelné. Je to proto, že znovu protokolu transakce do replik je asynchronní.
+Jednou z výhod repliky je, že tyto repliky jsou vždy transakčně konzistentní stav, ale v různých okamžicích v době může některé malé latence mezi existovat různých replik. Horizontální navýšení kapacity pro čtení podporuje relace úrovně konzistence. Znamená to, pokud relace jen pro čtení obnoví po připojení chyby způsobené nedostupnost repliky, je možné přesměrovat do repliky, který není 100 % naskočíte repliky pro čtení i zápis. Podobně pokud aplikace zapíše data pomocí relace pro čtení i zápis a okamžitě přečte pomocí relaci jen pro čtení, je možné, že nejnovější aktualizace nejsou okamžitě viditelné v replice. Latence je způsobené operací asynchronní transakce protokolu znovu.
 
 > [!NOTE]
 > Jsou nízké latence replikace v rámci oblasti a tato situace není obvyklé.
@@ -77,6 +76,14 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 
 > [!NOTE]
 > V každém okamžiku pouze jeden z replik AlwaysON přístupný relacemi jen pro čtení.
+
+## <a name="monitoring-and-troubleshooting-read-only-replica"></a>Monitorování a řešení potíží s repliky jen pro čtení
+
+Při připojení k replice jen pro čtení, můžete přistupovat pomocí metrik výkonu `sys.dm_db_resource_stats` zobrazení dynamické správy. Chcete-li získat přístup k plánu statistiky dotazů, použijte `sys.dm_exec_query_stats`, `sys.dm_exec_query_plan` a `sys.dm_exec_sql_text` zobrazení dynamické správy.
+
+> [!NOTE]
+> Zobrazení dynamické správy `sys.resource_stats` v logickou hlavní databázi vrátí data o využití a úložiště procesoru primární repliky.
+
 
 ## <a name="enable-and-disable-read-scale-out"></a>Povolení a zákaz horizontální navýšení kapacity pro čtení
 
@@ -124,9 +131,13 @@ Body:
 
 Další informace najdete v tématu [databází – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).
 
+## <a name="using-tempdb-on-read-only-replica"></a>Pomocí databáze TempDB na repliku pouze pro čtení
+
+Databáze TempDB nejsou replikována do repliky jen pro čtení. Každá replika má svou vlastní verzi databáze TempDB, který je vytvořen při vytvoření repliky. Zajišťuje, že databáze TempDB je možné aktualizovat a můžete upravovat během provádění vašeho dotazu. Pokud vaše úlohy jen pro čtení, závisí na používání objektů databáze TempDB, měli byste vytvořit tyto objekty jako součást vašeho skriptu dotazu. 
+
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Horizontální navýšení kapacity pro čtení pomocí geograficky replikované databáze
 
-Pokud používáte další horizontální navýšení kapacity pro načtení vyrovnávat zatížení jen pro čtení na databázi, která je geograficky replikovaný (například jako člen skupiny převzetí služeb při selhání), ujistěte se, že čtení horizontální navýšení kapacity je povolena na primární a geograficky replikované sekundární databáze. Tím se zajistí stejný účinek Vyrovnávání zatížení, když vaše aplikace připojuje k nové primární po převzetí služeb při selhání. Pokud se chcete připojit do geograficky replikované sekundární databáze se Škálováním pro čtení povolené, vaše relace `ApplicationIntent=ReadOnly` se budou směrovat na jednu z replik stejným způsobem můžeme směrovat připojení na primární databázi.  Relace bez `ApplicationIntent=ReadOnly` se budou směrovat na primární repliku geograficky replikované sekundární, což je také jen pro čtení. Protože geograficky replikované sekundární databáze má jiný koncový bod než primární databázi, v minulosti pro přístup k sekundární ho nebyl vyžadují `ApplicationIntent=ReadOnly`. K zajištění zpětné kompatibility `sys.geo_replication_links` zobrazení dynamické správy ukazuje `secondary_allow_connections=2` (nepovoluje se žádné připojení klienta).
+Pokud používáte další horizontální navýšení kapacity načíst vyrovnávat zatížení jen pro čtení na databázi, která je geograficky replikovaný (například jako člen skupiny převzetí služeb při selhání), ujistěte se, že pro čtení pro primární a geograficky replikovanou sekundární databází je povolené horizontální navýšení kapacity. Tato konfigurace zajistí, že pokud vaše aplikace připojuje k nové primární po převzetí služeb při selhání bude pokračovat stejné prostředí vyrovnávání zatížení. Pokud se chcete připojit do geograficky replikované sekundární databáze se Škálováním pro čtení povolené, vaše relace `ApplicationIntent=ReadOnly` se budou směrovat na jednu z replik stejným způsobem můžeme směrovat připojení na primární databázi.  Relace bez `ApplicationIntent=ReadOnly` se budou směrovat na primární repliku geograficky replikované sekundární, což je také jen pro čtení. Protože geograficky replikované sekundární databáze má jiný koncový bod než primární databázi, v minulosti pro přístup k sekundární ho nebyl vyžadují `ApplicationIntent=ReadOnly`. K zajištění zpětné kompatibility `sys.geo_replication_links` zobrazení dynamické správy ukazuje `secondary_allow_connections=2` (nepovoluje se žádné připojení klienta).
 
 > [!NOTE]
 > Kruhové dotazování nebo jakékoli jiné s vyrovnáváním zatížení směrování mezi místní replik sekundární databáze se nepodporuje.

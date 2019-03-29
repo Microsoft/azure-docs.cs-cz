@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 213e6a95484b5f6953f8423474953125f8739015
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 0188dace0e666d4abfe31ac1c6c14d63c947c566
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541824"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574740"
 ---
 # <a name="asc-for-iot-prerequisites"></a>ASC pro požadavky IoT
 
@@ -59,7 +59,7 @@ Zkontrolujte umístění vaší služby IoT Hub k ověření dostupnosti služby
 
 ## <a name="supported-platforms-for-agents"></a>Podporované platformy pro agenty 
 
-ASC pro agenty IoT podporuje rostoucí seznam zařízení a platformy. Najdete v článku [podporované platformy seznamu](select-deploy-agent.md) zkontrolovat vaše existující nebo plánovaný knihovna zařízení.  
+ASC pro agenty IoT podporuje rostoucí seznam zařízení a platformy. Najdete v článku [podporované platformy seznamu](how-to-deploy-agent.md) zkontrolovat vaše existující nebo plánovaný knihovna zařízení.  
 
 ## <a name="next-steps"></a>Další postup
 - [Přehled](overview.md)

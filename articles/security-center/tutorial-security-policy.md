@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/14/2019
+ms.date: 3/28/2019
 ms.author: monhaber
-ms.openlocfilehash: d99ef6026f3605f4081393811d840ba3fe2892ba
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 1931026869e930caef2ff2f92fb85dade15a9c8c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226109"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578437"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -109,7 +109,7 @@ Další informace o doporučeních najdete v tématu [Správa doporučení zabez
 
    ![Správa zásad](./media/tutorial-security-policy/policy-management.png)
 
-2. Klikněte na předplatné, pro který chcete zakázat toto doporučení.
+2. Klikněte předplatné nebo skupinu pro správu pro kterou chcete zakázat toto doporučení.
 
 1. Klikněte na přiřazené zásady.
 

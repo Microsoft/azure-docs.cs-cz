@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 03/28/2019
 ms.author: heidist
-ms.openlocfilehash: 7a91ad691089ac816b31ebe1fce202110e580f71
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 8f07468ccff4431e1afdf66aedc72599ddc0c25b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520560"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620593"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Správa služby Azure Search pomocí Powershellu
 > [!div class="op_single_selector"]
@@ -24,17 +24,17 @@ ms.locfileid: "58520560"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Spuštěním rutin a skriptů Powershellu na Windows, Linux, nebo v [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) vytvořit a nakonfigurovat [Azure Search](https://docs.microsoft.com/azure/search/). [ **Az.Search** ](https://docs.microsoft.com/powershell/module/az.search/?view=azps-1.4.0#search) rozšiřuje modul [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.4.0) s úplnou paritu [Management REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchmanagement). Pomocí Azure Powershellu a **Az.Search**, můžete provádět následující úlohy:
+Spuštěním rutin a skriptů Powershellu na Windows, Linux, nebo v [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) vytvoření a konfigurace Azure Search. **Az.Search** rozšiřuje modul Azure PowerShell] s úplnou paritu [Management REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchmanagement). Pomocí Azure Powershellu a **Az.Search**, můžete provádět následující úlohy:
 
 > [!div class="checklist"]
 > * [Seznam všech vyhledávací služby v rámci vašeho předplatného](#list-search-services)
 > * [Získejte informace o konkrétní vyhledávací služba](#get-search-service-information)
 > * [Vytvoření nebo odstranění služby](#create-or-delete-a-service)
-> * Znovu vygenerovat klíče API-Key správce
+> * [Znovu vygenerovat klíče API-Key správce](#regenerate-admin-keys)
 > * [Vytvoření nebo odstranění klíče dotazu api Key](#create-or-delete-query-keys)
 > * [Škálování služby zvýšením nebo snížením repliky a oddíly](#scale-replicas-and-partitions)
 
-Chcete-li změnit název, oblast nebo vrstva služby nelze použít PowerShell. Vyhrazené prostředky se přidělují při vytváření služby. Změna základního hardwaru (typ umístění nebo uzel) vyžaduje novou službu. Neexistují žádné nástroje nebo rozhraní API pro přenos obsahu. Všechny správy obsahu, je prostřednictvím [REST](https://docs.microsoft.com/rest/api/searchservice/) nebo [.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) rozhraní API, a pokud chcete přesunout indexy, budete muset znovu vytvořit a načítat je znovu na novou službu. 
+Chcete-li změnit název, oblast nebo vrstva služby nelze použít PowerShell. Vyhrazené prostředky se přidělují při vytváření služby. Změna základního hardwaru (typ umístění nebo uzel) vyžaduje novou službu. Neexistují žádné nástroje nebo rozhraní API pro přenos obsahu z jedné služby do jiného. Všechny správy obsahu, je prostřednictvím [REST](https://docs.microsoft.com/rest/api/searchservice/) nebo [.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) rozhraní API, a pokud chcete přesunout indexy, budete muset znovu vytvořit a načítat je znovu na novou službu. 
 
 Když neexistují žádné vyhrazené příkazy prostředí PowerShell pro správu obsahu, můžete napsat skript Powershellu, který volá REST nebo .NET k vytváření a načítání indexů. **Az.Search** modulu sám o sobě neposkytuje tyto operace.
 

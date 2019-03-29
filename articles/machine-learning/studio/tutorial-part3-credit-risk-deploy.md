@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 7132c2073223008cd82d0ffd54aaf266d0a630ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6cdccd54546296c85864f1588b71109ed8b8f79f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839013"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620503"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>Kurz 3: Nasadit model rizika kredit – Azure Machine Learning Studio
 
@@ -172,7 +172,7 @@ Při přístupu k webové službě, data uživatele zadá prostřednictvím **we
 Výsledky se vrátí uživateli z webové služby prostřednictvím **webové služby výstup** modulu.
 
 > [!TIP]
-> Způsob, jak máte prediktivní experiment nakonfigurovaná, výsledkem celé [Score Model] [ score-model] modulu jsou vráceny. To zahrnuje veškerá vstupní data a rizika hodnota kreditů a bodovací pravděpodobnosti. Ale něco jiného může vrátit, pokud chcete, aby – například může vrátit pouze hodnota kreditů rizika. Chcete-li to provést, vložte [sloupce projektu] [ project-columns] modulu mezi [Score Model] [ score-model] a **webové služby výstup**Chcete-li odstranit sloupce nechcete, aby webové služby se vraťte. 
+> Způsob, jak máte prediktivní experiment nakonfigurovaná, výsledkem celé [Score Model] [ score-model] modulu jsou vráceny. To zahrnuje veškerá vstupní data a rizika hodnota kreditů a bodovací pravděpodobnosti. Ale něco jiného může vrátit, pokud chcete, aby – například může vrátit pouze hodnota kreditů rizika. Chcete-li to provést, vložte [výběr sloupců] [ select-columns] modulu mezi [Score Model] [ score-model] a **webové služby výstup**Chcete-li odstranit sloupce nechcete, aby webové služby se vraťte. 
 > 
 > 
 
@@ -267,4 +267,4 @@ Můžete také vyvíjet vlastní aplikace pro přístup k webové službě pomoc
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
-[project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/

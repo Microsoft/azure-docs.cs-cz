@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8973558e0841bfd0d6651a08d39da96b544156c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 223eff79d809a78d531d86d315fff80282cd29bb
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842444"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620151"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Stát vydavatelem cloudové Tržiště
 
@@ -44,6 +44,8 @@ Tento článek se týká registrace jako vydavatele na webu marketplace cloudu. 
 Po registraci, zaznamenejte ID Microsoft Partner Network pro vaši organizaci. Ho budete potřebovat v kroku 3 při odesílání marketplace registračního formuláře.
 *   Další informace o výhodách [programu Microsoft Partner Network](https://partner.microsoft.com/commercial)
 *   Pokud vaše organizace má stávající členství, bude připojení k organizaci během registrace. Pokud používáte [partnerského centra](https://partnercenter.microsoft.com/partner/home), budete moci zobrazit ID ve vašem účtu partnerského centra. Pokud používáte [členství Partner Center (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx), budete moci podívat, jak to ve svém účtu Partner Membership Center. 
+
+Vytvořit lístek s Microsoftem [partnerská podpora](https://partner.microsoft.com/support) pro problémy s registrací v programu MPN.
 
 ---
 

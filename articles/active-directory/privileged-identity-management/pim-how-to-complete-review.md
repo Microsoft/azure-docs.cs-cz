@@ -1,6 +1,6 @@
 ---
-title: Dokončení kontroly přístupu pro role adresáře Azure AD v PIM | Dokumentace Microsoftu
-description: Další informace o dokončení kontroly přístupu pro role adresáře Azure AD v Azure AD Privileged Identity Management (PIM) a zobrazit výsledky
+title: Dokončení kontroly přístupu pro role Azure AD v PIM – Azure Active Directory | Dokumentace Microsoftu
+description: Další informace o dokončení kontroly přístupu pro role Azure AD v Azure AD Privileged Identity Management (PIM) a zobrazit výsledky
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,15 +14,15 @@ ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bea4f649b40298de15b8352fc8eb522da87dead5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ed53c8bb3cb735822fc40aab86ca40bef7b9607a
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190343"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619178"
 ---
-# <a name="complete-an-access-review-for-azure-ad-directory-roles-in-pim"></a>Dokončení kontroly přístupu pro role adresáře Azure AD v PIM
-Správci privilegovaných rolí jednou zkontrolovat privilegovaný přístup [se spustila kontrola přístupu](pim-how-to-start-security-review.md). Azure AD Privileged Identity Management (PIM) se automaticky pošle e-mail vyzývá uživatele, aby zkontrolujte svůj přístup. Pokud uživatel nezískaly v e-mailu, můžete jim poslat pokyny [jak k provádění kontroly přístupu](pim-how-to-perform-security-review.md).
+# <a name="complete-an-access-review-for-azure-ad-roles-in-pim"></a>Dokončení kontroly přístupu pro role Azure AD v PIM
+Správci privilegovaných rolí jednou zkontrolovat privilegovaný přístup [se spustila kontrola přístupu](pim-how-to-start-security-review.md). Privileged Identity Management (PIM) ve Azure Active Directory (Azure AD) se automaticky pošle e-mail vyzývá uživatele, aby zkontrolujte svůj přístup. Pokud uživatel nezískaly v e-mailu, můžete jim poslat pokyny [jak k provádění kontroly přístupu](pim-how-to-perform-security-review.md).
 
 Po období kontroly přístupu je nad nebo dokončení jejich svým přezkoumat všechny uživatele, postupujte podle kroků v tomto článku můžete spravovat revize a zobrazit výsledky.
 
@@ -55,5 +55,5 @@ Pokud si nejste zájem o další revizi, odstraňte ho. **Odstranit** tlačítko
 
 ## <a name="next-steps"></a>Další postup
 
-- [Zahájení kontroly přístupu pro role adresáře Azure AD v PIM](pim-how-to-start-security-review.md)
-- [Provedení kontroly přístupu rolí adresáře Azure AD v nástroji PIM](pim-how-to-perform-security-review.md)
+- [Zahájení kontroly přístupu pro role Azure AD v PIM](pim-how-to-start-security-review.md)
+- [Provádění kontroly přístupu sady Moje role Azure AD v PIM](pim-how-to-perform-security-review.md)

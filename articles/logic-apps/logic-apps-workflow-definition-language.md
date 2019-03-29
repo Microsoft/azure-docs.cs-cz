@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/30/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 3c17ec2133e278b17475e4988e1e9766b1349ba4
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d2de2a25d67da230d539156c851cca34335a01c2
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734636"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620832"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Referenční dokumentace schématu pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
@@ -41,7 +41,7 @@ Tady je základní strukturu pro definici pracovního postupu:
 | Element | Požaduje se | Popis |
 |---------|----------|-------------|
 | Definice | Ano | Počáteční element definice pracovního postupu |
-| $schema | Pouze v případě, že externě odkazující na definici pracovního postupu | Umístění pro soubor schématu JSON, který popisuje verzi jazyka definice pracovního postupu, který najdete tady: <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`</p> |
+| $schema | Pouze v případě, že externě odkazující na definici pracovního postupu | Umístění pro soubor schématu JSON, který popisuje verzi jazyka definice pracovního postupu, který najdete tady: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
 | contentVersion | Ne | Číslo verze definice pracovního postupu, který je ikona "1.0.0.0" ve výchozím nastavení. K identifikaci a ověřte správnou definici při nasazení pracovního postupu, zadejte hodnotu používat. |
 | parameters | Ne | Definice pro minimálně jeden parametr, který vkládá data do vašich pracovních postupů <p><p>Maximální parametry: 50 |
 | triggery | Ne | Definice pro jeden nebo více aktivačních událostí, které instanci pracovního postupu. Můžete definovat více než jeden trigger, ale pouze pomocí jazyka definice pracovního postupu, ne vizuálně pomocí návrháře pro Logic Apps. <p><p>Maximální aktivační události: 10 |
@@ -72,8 +72,8 @@ Tady je obecnou strukturu pro definici parametru:
 
 | Element | Požaduje se | Typ | Popis |
 |---------|----------|------|-------------|
-| type | Ano | int, float, string, securestring, bool, pole, objekt JSON, secureobject <p><p>**Poznámka:** Pro všechna hesla, klíče a tajné klíče, použijte `securestring` a `secureobject` typy, protože `GET` operace nevrací těchto typů. | Typ parametru |
-| Výchozí hodnota | Ne | Stejné jako `type` | Výchozí hodnota parametru, pokud není zadána žádná hodnota, když vytvoří instanci pracovního postupu |
+| type | Ano | int, float, string, securestring, bool, pole, objekt JSON, secureobject <p><p>**Poznámka:** Pro všechna hesla, klíče a tajné klíče, použijte `securestring` a `secureobject` typy, protože `GET` operace nevrací těchto typů. Další informace o zabezpečení parametry najdete v tématu [zabezpečení aplikací logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | Typ parametru |
+| Výchozí hodnota | Ano | Stejné jako `type` | Výchozí hodnota parametru, pokud není zadána žádná hodnota, když vytvoří instanci pracovního postupu |
 | allowedValues | Ne | Stejné jako `type` | Pole s hodnotami, které přijímají parametr |
 | zprostředkovatele identity | Ne | JSON – objekt | Další parametr podrobnosti, například název nebo čitelný popis pro svou aplikaci logiky nebo použít Visual Studio nebo jinými nástroji dat doby návrhu |
 ||||

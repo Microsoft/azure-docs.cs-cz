@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 8fb60f36bbc7c8886c1f465177a11224a1c90659
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3c2384b536235554fed7c1cf1a08b7c665f513a8
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541243"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621919"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API Management šablony data referenční informace k modelu
 Toto téma popisuje entitu a typ záruky pro společné položky, které se používá v datových modelů pro šablon portálu pro vývojáře ve službě Azure API Management.  
@@ -162,7 +162,7 @@ Portál pro vývojáře není k dispozici na úrovni Consumption.
 ##  <a name="Header"></a> Záhlaví  
  Tato část popisuje `parameter` reprezentace.  
   
-|Vlastnost|Popis|Type|  
+|Vlastnost|Typ|Popis|  
 |--------------|-----------------|----------|  
 |`name`|string|Název parametru.|  
 |`description`|string|Popis parametru.|  
@@ -239,7 +239,7 @@ Portál pro vývojáře není k dispozici na úrovni Consumption.
 ##  <a name="Parameter"></a> Parametr  
  Tato část popisuje `parameter` reprezentace.  
   
-|Vlastnost|Popis|Type|  
+|Vlastnost|Typ|Popis|  
 |--------------|-----------------|----------|  
 |`name`|string|Název parametru.|  
 |`description`|string|Popis parametru.|  

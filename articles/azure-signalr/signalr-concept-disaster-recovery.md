@@ -6,17 +6,17 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: 69a2d9e7858c0f152056e821c19caa9852b420d5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: eb70e65db4a086afc60e91cadf55a8844b102591
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554957"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620272"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Odolnost a zotavení po havárii
 
 Odolnost proti chybám a zotavení po havárii je běžné potřebu online systémy. Službě Azure SignalR již zaručuje 99,9 % dostupnost, ale je stále místní služba.
-Instance služby je vždy spuštěn v jedné oblasti a nebude převzetí služeb při selhání do jiné oblasti, když dojde k výpadku celé oblasti.
+Instance služby je vždy spuštěn v jedné oblasti a nebude převzetí služby při selhání do jiné oblasti po výpadku celé oblasti.
 
 Místo toho naše sady SDK služby poskytuje funkce pro podporu více instancí služby SignalR a automaticky přepnout na další instance, pokud některé z nich nejsou k dispozici.
 Díky této funkci bude možné obnovit, když je po havárii probíhá, ale budete muset nastavit topologie systému práva sami. Budete se dozvíte, jak k tomu v tomto dokumentu.
@@ -28,8 +28,8 @@ Při připojování k serveru aplikace víc instancí služby, existují dvě ro
 Primární je instancí, který trvá online provozu a sekundární je plně funkční, ale zálohování instance pro primární.
 V naší implementaci SDK vyjednávání se vrátit pouze primární koncové body, tak v případě běžných klienti připojit jenom k primární koncových bodů.
 Ale pokud primární instance je vypnutý, vyjednávání se vrátit sekundární koncové body, takže klient může pořád vytvořit připojení.
-Primární instance a aplikačního serveru jsou připojené přes připojení normální serveru ale sekundární server pro instanci a aplikace jsou připojené prostřednictvím zvláštní druh připojení volat slabé připojení.
-Hlavní rozdíl slabé připojení je, že ho nepřijme směrování připojení klienta, protože sekundární instance se obvykle nachází v jiné oblasti. Směrování klienta do jiné oblasti obvykle není optimální volbou (zvyšuje latenci).
+Primární instance a aplikačního serveru jsou připojené přes připojení normální serveru, ale sekundární instance a aplikačního serveru jsou připojené prostřednictvím speciální typ připojení s názvem slabé připojení.
+Hlavní rozdíl slabé připojení je, že ho nepřijme směrování připojení klienta, protože sekundární instance se nachází v jiné oblasti. Směrování klienta do jiné oblasti není optimální volbou (zvyšuje latenci).
 
 Jedna instance služby může mít různé role, při připojování k více serverů aplikace.
 Jeden typické nastavení pro různé oblasti scénář je, aby dva (nebo více) párů instancí služeb SignalR a serverů aplikací.
@@ -51,7 +51,7 @@ Můžete to provést dvěma způsoby:
 
 ### <a name="through-config"></a>Prostřednictvím konfigurace
 
-Už byste měli vědět jak nastavit připojovací řetězec služby SignalR prostřednictvím prostředí settings/web.cofig proměnné nebo aplikace, prostřednictvím položku konfigurace s názvem `Azure:SignalR:ConnectionString`.
+Můžete měla vědět, jak nastavit připojovací řetězec služby SignalR prostřednictvím prostředí settings/web.cofig proměnné nebo aplikace, prostřednictvím položku konfigurace s názvem `Azure:SignalR:ConnectionString`.
 Pokud máte více koncových bodů, můžete je nastavit v více položek konfigurace, každou v následujícím formátu:
 
 ```
@@ -121,7 +121,7 @@ Služby SignalR může podporovat oba vzorky, hlavní rozdíl je, jak implemento
 Servery aplikace jsou aktivní/pasivní vysokou dostupnost, služby SignalR bude aktivní/pasivní vysoká dostupnost také (jak primární aplikačního serveru vrátí pouze jeho primární instance služby SignalR).
 Pokud jsou servery aplikace aktivní/aktivní, SignalR také bude služba aktivní/aktivní (jako všechny servery aplikace vrátí svá vlastní primární instance SignalR, takže všechny z nich dokážete zajistit provoz).
 
-Prosím poznamenat, bez ohledu na to, které vzory, které chcete použít, budete muset připojit k serveru aplikace jako primární každá instance služby SignalR.
+Třeba poznamenat, bez ohledu na to, které vzory, které chcete použít, budete muset připojit k serveru aplikace jako primární každá instance služby SignalR.
 
 Také vzhledem k povaze připojení SignalR (jde o připojení pro dlouhé) klientů bude docházet k připojení nedojde k havárii a provést převzetí služeb při selhání.
 Budete potřebovat pro zpracování takových případech na straně klienta, aby byla transparentní pro vaše koncové zákazníky. Třeba znovu připojte po ukončení připojení.
@@ -129,3 +129,5 @@ Budete potřebovat pro zpracování takových případech na straně klienta, ab
 ## <a name="next-steps"></a>Další postup
 
 V tomto článku jste zjistili, jak nakonfigurovat svoji aplikaci pro zajištění odolnosti proti chybám pro služby SignalR. Informace o tom další podrobnosti o serveru/klientu připojení a směrování připojení v SignalR služby, můžete si přečíst [v tomto článku](signalr-concept-internals.md) pro interní informace služby SignalR.
+
+Škálování scénářů, jako je v případě horizontálního dělení, které používají víc instancí současně zpracovat velký počet připojení, najdete v článku [škálování na více instancí](signalr-howto-scale-multi-instances.md)?

@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 7f2fe6fc3ba3ae515d372fb5a794e46897bad115
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6a4e9a0c33b227716227213e94948df430566065
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517942"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622191"
 ---
 # <a name="monitor-published-apis"></a>Monitorování publikovaných rozhraní API
 
@@ -77,21 +77,28 @@ Můžete nakonfigurovat odesílání upozornění na základě metrik a protokol
 
 Konfigurace upozornění:
 
-1. V řádku nabídek ve spodní části stránky vyberte **Upozornění (klasická)**.
+1. Vyberte **výstrahy** z panelu nabídky v dolní části stránky.
 
-    ![výstrahy](./media/api-management-azure-monitor/api-management-alert-rules-blade.png)
+    ![výstrahy](./media/api-management-azure-monitor/alert-menu-item.png)
 
-2. Vyberte **Přidat upozornění metriky**.
-3. Zadejte **Název** tohoto upozornění.
-4. Jako metriku k monitorování vyberte **Neoprávněné požadavky brány**.
-5. Vyberte možnost **Vlastníci, přispěvatelé a čtenáři e-mailů**.
-6. Stiskněte **OK**.
-7. Zkuste volat rozhraní Conference API bez klíče rozhraní API. Jako vlastník této služby API Management dostanete e-mailem upozornění. 
+2. Klikněte na **nové pravidlo upozornění** pro tuto výstrahu.
+3. Klikněte na **přidat podmínku**.
+4. Vyberte **metriky** v typu signálu rozevírací seznam.
+5. Vyberte **neoprávněné žádosti brány** jako signál k monitorování.
 
-    > [!TIP]
-    > Pravidlo upozornění může také při aktivaci volat webhook nebo aplikaci logiky Azure.
+    ![výstrahy](./media/api-management-azure-monitor/signal-type.png)
 
-    ![Nastavení upozornění](./media/api-management-azure-monitor/set-up-alert.png)
+6. V **konfigurovat logiku signálů** zobrazení, zadejte prahovou hodnotu, po jejímž uplynutí by měly aktivovat upozornění a klikněte na **provádí**.
+
+    ![výstrahy](./media/api-management-azure-monitor/threshold.png)
+
+7. Vyberte existující skupinu akcí nebo vytvořte novou. V následujícím příkladu se odešle e-mail na správce. 
+
+    ![výstrahy](./media/api-management-azure-monitor/action-details.png)
+
+8. Zadejte název a popis pravidla výstrahy a zvolte úroveň závažnosti. 
+9. Stisknutím klávesy **vytvořit pravidlo upozornění**.
+10. Teď si vyzkoušejte pro volání rozhraní API Conference bez klíče rozhraní API. Výstraha se aktivuje, odešle e-mail správce. 
 
 ## <a name="activity-logs"></a>Protokoly aktivit
 

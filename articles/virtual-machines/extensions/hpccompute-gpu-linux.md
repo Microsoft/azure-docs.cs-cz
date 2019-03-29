@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: roiyz
-ms.openlocfilehash: d8b2b10f9a12fb32a522a9c87c67bb24d6d4475e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d9f634d494c3c88146ab1f243d17609cf30bbcd
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57991847"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620678"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladačů NVIDIA GPU pro Linux
 
 ## <a name="overview"></a>Přehled
 
-Toto rozšíření nainstaluje ovladačů NVIDIA GPU na virtuálních počítačích s Linuxem řady N-series. V závislosti na řadu virtuálních počítačů nainstaluje rozšíření ovladače CUDA nebo MŘÍŽKA. Při instalaci NVIDIA ovladače, které používají toto rozšíření přijímáte a vyjádření souhlasu s těmito podmínkami [licenční smlouva s koncovým uživatelem NVIDIA](https://developer.download.nvidia.com/compute/cuda/5_5/rel/docs/EULA.pdf). Virtuální počítač může během procesu instalace restartovat k dokončení instalace ovladačů.
+Toto rozšíření nainstaluje ovladačů NVIDIA GPU na virtuálních počítačích s Linuxem řady N-series. V závislosti na řadu virtuálních počítačů nainstaluje rozšíření ovladače CUDA nebo MŘÍŽKA. Při instalaci NVIDIA ovladače, které používají toto rozšíření přijímáte a vyjádření souhlasu s těmito podmínkami [licenční smlouva s koncovým uživatelem NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330). Virtuální počítač může během procesu instalace restartovat k dokončení instalace ovladačů.
 
 Rozšíření je také dostupná k instalaci ovladačů NVIDIA GPU na [virtuální počítače řady N-series s Windows](hpccompute-gpu-windows.md).
 

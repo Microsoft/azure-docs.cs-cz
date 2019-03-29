@@ -1,6 +1,6 @@
 ---
-title: Schválit nebo zamítnout žádosti pro role adresáře Azure AD v PIM | Dokumentace Microsoftu
-description: Naučte se schválit nebo zamítnout žádosti pro role adresáře Azure AD v Azure AD Privileged Identity Management (PIM).
+title: Schválit nebo zamítnout žádosti pro role Azure AD v PIM – Azure Active Directory | Dokumentace Microsoftu
+description: Naučte se schválit nebo zamítnout žádosti pro role Azure AD v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,32 +16,32 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68b0dba0280ce7875e797634a5dc2254cb889ad7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 125a9864eaf53ecdf035247ba23d7c95a8daf131
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244977"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576790"
 ---
-# <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>Schválit nebo zamítnout žádosti pro role adresáře Azure AD v PIM
+# <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>Schválit nebo zamítnout žádosti pro role Azure AD v PIM
 
-S Azure AD Privileged Identity Management (PIM) můžete nakonfigurovat role, které vyžadují schválení pro aktivaci a zvolte jednu nebo více uživatelů nebo skupin jako delegovaný schvalovatele. Delegované schvalovatelů mít 24 hodin se schválit žádosti. Pokud žádost není schválený během 24 hodin, oprávněný uživatel musí znovu odešlete novou žádost. Časový interval 24 hodin schválení není konfigurovatelné.
+S Azure Active Directory (Azure AD) Privileged Identity Management (PIM), můžete konfigurovat role, které vyžadují schválení pro aktivaci a zvolte jednu nebo více uživatelů nebo skupin jako delegovaný schvalovatele. Delegované schvalovatelů mít 24 hodin se schválit žádosti. Pokud žádost není schválený během 24 hodin, oprávněný uživatel musí znovu odešlete novou žádost. Časový interval 24 hodin schválení není konfigurovatelné.
 
-Postupujte podle kroků v tomto článku pro schválení nebo zamítnutí žádosti pro role adresáře Azure AD.
+Postupujte podle kroků v tomto článku pro schválení nebo zamítnutí žádosti pro role Azure AD.
 
 ## <a name="view-pending-requests"></a>Zobrazit čekající žádosti
 
-Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek pro role adresáře Azure AD čeká na schválení. Zobrazí se tyto žádosti čekající na vyřízení v PIM.
+Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek role Azure AD čeká na schválení. Zobrazí se tyto žádosti čekající na vyřízení v PIM.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Otevřít **Azure AD Privileged Identity Management**.
 
-1. Klikněte na tlačítko **role adresáře Azure AD**.
+1. Klikněte na tlačítko **role Azure AD**.
 
 1. Klikněte na tlačítko **schvalovat žádosti o**.
 
-    ![Role adresáře PIM Azure AD - role](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
+    ![Role AD PIM Azure – role](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
 
     Zobrazí se vám seznam žádosti čekající na vaše schválení.
 

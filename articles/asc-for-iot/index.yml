@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 12ba136bb227ef5ea469d91c6da9477b718b9e92
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: fad8ecd0658b2a00f249e8b218bab1dbdaf83187
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58542229"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578216"
 documentType: LandingData
-title: Dokumentace ke službě Azure Security Center (ASC) for IoT Preview
+title: Dokumentace ke službě ASC for IoT Preview
 metadata:
-  title: Dokumentace ke službě Azure Security Center (ASC) for IoT Preview – kurzy, rychlá zprovoznění | Microsoft Doc
-  meta.description: Azure Security Center for IoT unifies your security management and enables advanced threat protection across your IoT solution.
+  title: Dokumentace k ASC for IoT verze Preview – kurzy, rychlá zprovoznění | Microsoft Doc
+  meta.description: ASC for IoT unifies your security management and enables advanced threat protection across your IoT solution.
   services: ascforiot
   author: mlottner
   manager: barbkess
@@ -20,7 +20,7 @@ metadata:
   ms.date: 03/26/19
   ms.author: barbkess
 abstract:
-  description: Azure Security Center for IoT Preview využijte k rozšíření koncepce vašeho stávajícího kybernetického zabezpečení na celé řešení IoT. Získáte skutečně panoramatický přehled zabezpečení všech vašich prostředků souvisejících s Azure. Možnosti rychlého nasazení a kompletní integrace s dvojčaty modulu IoT Hub vám poskytnou širokou škálu možností přizpůsobení a snadnou integraci s vašimi aktuálními nástroji pro správu zařízení. 
+  description: ASC for IoT Preview využijte k rozšíření koncepce vašeho stávajícího kybernetického zabezpečení na celé řešení IoT. Získáte skutečně panoramatický přehled zabezpečení všech vašich prostředků souvisejících s Azure. Možnosti rychlého nasazení a kompletní integrace s dvojčaty modulu IoT Hub vám poskytnou širokou škálu možností přizpůsobení a snadnou integraci s vašimi aktuálními nástroji pro správu zařízení. 
 sections:
 - title: Zprovoznění během 5 minut
   items:
@@ -32,19 +32,19 @@ sections:
     - image:
         src: media/index/deploy.svg
       text: Povolení ASC for IoT
-      href: /azure/ascforiot/quickstart-onboard-iot-hub
+      href: /azure/asc-for-iot/quickstart-onboard-iot-hub
     - image:
         src: media/index/get-started.svg
       text: Začínáme s ASC for IoT
-      href: /azure/ascforiot/quickstart-getting-started
-- title: Podrobné kurzy
+      href: /azure/asc-for-iot/getting-started
+- title: Návody
   items:
   - type: paragraph
     text: Naučíte se definovat zásady zabezpečení, chránit zařízení před škodlivými aktivitami a reagovat na incidenty a výstrahy zabezpečení.
   - type: list
-    style: ordered
+    style: unordered
     items:
-    - html: <a href="/azure/ascforiot/tutorial-investigate-device">Detekce hrozeb s využitím ASC for IoT</a>
+    - html: <a href="/azure/asc-for-iot/how-to-investigate-device">Detekce hrozeb s využitím ASC for IoT</a>
 - title: Získávání dovedností pomocí Microsoft Learn
   items:
   - type: list

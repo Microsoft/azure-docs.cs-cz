@@ -45,6 +45,8 @@ items:
     href: supported-languages.md
   - name: Podporované styly map
     href: supported-map-styles.md
+  - name: Podporované prohlížeče pro sadu Web SDK
+    href: supported-browsers.md
 - name: Návody
   items:
   - name: Správa účtů Maps
@@ -85,6 +87,8 @@ items:
         href: map-add-shape.md
       - name: Přidání vrstvy heat mapy
         href: map-add-heat-map-layer.md
+      - name: Data bodů clusteru
+        href: clustering-point-data-web-sdk.md
       - name: Překryv obrázku
         href: map-add-image-layer.md
       - name: Přidání vrstev dlaždic
@@ -107,8 +111,6 @@ items:
         href: map-get-information-from-coordinate.md
       - name: Zobrazení pokynů pro trasu z A do B
         href: map-route.md
-    - name: Podporované prohlížeče
-      href: supported-browsers.md
   - name: Vývoj s využitím sady Android SDK
     items:
     - name: Jak používat mapový ovládací prvek pro Android
@@ -203,9 +205,9 @@ items:
       href: /azure/iot-edge
     - name: Sady SDK pro zařízení IoT
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: 7cb06543874f24a6d339e4e0ce402c838b572f9a
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: db82c8eac3288867b524f19b688b6358b8e6bbc6
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500113"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575819"

@@ -12,23 +12,22 @@ ms.workload: multiple
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/02/2018
+ms.date: 03/27/2019
 ms.author: kfollis
 ms.custom: accessibility
-ms.openlocfilehash: c9425875685236db99d78506e23f879d39d94ce5
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 1595d744fbfda47a9db9ff27de09cd53c6f73ece
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888749"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576390"
 ---
-# <a name="supported-browsers-and-devices-for-the-azure-portal"></a>Podporované prohlížeče a zařízení na webu Azure portal
-Můžete spustit [webu Azure portal](https://portal.azure.com) na všechny moderní desktop, tablet, zařízení a prohlížeče.
+# <a name="supported-devices"></a>Podporovaná zařízení
 
-### <a name="supported-devices"></a>Podporovaná zařízení
-Na moderních počítačích, počítače Mac a tabletech spustí skvělé na webu Azure portal. Pokud potřebujete spravovat prostředky Azure z mobilního zařízení, zkuste mobilní aplikace Azure, která je k dispozici na iPhone a Android. Další informace najdete v tématu [mobilní aplikace Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/).
+[Webu Azure portal](https://portal.azure.com) je webová konzola a běží v prohlížeči všechny moderní stolní počítače a tablety. Pokud potřebujete ke správě prostředků Azure z mobilního zařízení, zkuste [mobilní aplikace Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/). Je dostupná pro iOS a Android.
 
-### <a name="supported-browsers"></a>Podporované prohlížeče
+## <a name="recommended-browsers"></a>Doporučenými prohlížeči
+
 Doporučujeme vám, že používáte nejnovější prohlížeče, který je kompatibilní s operačním systémem. Podporují se následující prohlížeče:
 
 * Microsoft Edge (nejnovější verze)
@@ -36,4 +35,3 @@ Doporučujeme vám, že používáte nejnovější prohlížeče, který je komp
 * Safari (nejnovější verze, jen Mac)
 * Chrome (nejnovější verze)
 * Firefox (nejnovější verze)
-

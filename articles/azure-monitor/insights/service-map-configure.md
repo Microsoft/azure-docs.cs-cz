@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 4d3de1d0b242017f7026873ccaeba547f85981fc
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a152d9242c4d272800e2e159603c2554f1d89092
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482087"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622038"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ho zobrazit servery přirozeným způsobem – propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP žádnou konfiguraci kromě instalace agenta vyžaduje.
@@ -57,13 +57,11 @@ Následující část obsahuje seznam podporovaných operačních systémech pro
 - Windows 7
 
 ## <a name="supported-linux-operating-systems"></a>Podporované operační systémy a Linux
-Následující část obsahuje seznam podporovaných operačních systémech pro agenta závislostí na Red Hat Enterprise Linux, CentOS Linux a Oracle Linux (pomocí jádra RHEL).  
+Následující část obsahuje seznam podporovaných operačních systémech pro agenta závislostí v Linuxu.  
 
 - Jsou podporované jen verze s výchozím a SMP jádrem Linuxu.
 - Verze s nestandardním jádrem, jako jsou PAE a Xen, nejsou podporované v žádné distribuci Linuxu. Například systém s vydání řetězec "2.6.16.21-0.8-xen" není podporován.
 - Vlastní jádra, včetně opětovně zkompilovaných standardních jader, nejsou podporovaná.
-- Je podporován CentOSPlus jádra.
-- Jádro Oracle Unbreakable Enterprise (UEK) je popsané v další části tohoto článku.
 
 ### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 

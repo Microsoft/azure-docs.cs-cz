@@ -1,6 +1,6 @@
 ---
-title: Provádění kontroly přístupu sady Moje role adresáře Azure AD v PIM | Dokumentace Microsoftu
-description: Zjistěte, jak k provádění kontroly přístupu vaší rolí adresáře Azure AD v Azure AD Privileged Identity Management (PIM).
+title: Provádění kontroly přístupu sady Moje role Azure AD v PIM – Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak k provádění kontroly přístupu Azure AD role v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,15 +14,15 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c7b3905d05e62bd3f11ef4de7f966e6bf9340f0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 66f16e02716ceb94d2c8b10bb246a13dc566229c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178902"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578304"
 ---
-# <a name="perform-an-access-review-of-my-azure-ad-directory-roles-in-pim"></a>Provádění kontroly přístupu sady Moje role adresáře Azure AD v PIM
-Azure Active Directory (AD) Privileged Identity Management zjednodušuje, jak podniky spravovat privilegovaný přístup k prostředkům v Azure AD a dalších online službách Microsoftu jako Office 365 nebo Microsoft Intune.  
+# <a name="perform-an-access-review-of-my-azure-ad-roles-in-pim"></a>Provádění kontroly přístupu sady Moje role Azure AD v PIM
+Azure Active Directory (AD) Privileged Identity Management (PIM) zjednodušuje, jak podniky spravovat privilegovaný přístup k prostředkům v Azure AD a dalších online službách Microsoftu jako Office 365 nebo Microsoft Intune.  
 
 Pokud máte přiřazenou roli správce privilegovaných rolí správce ve vaší organizaci může vás vyzve k pravidelně potvrzení pro vaše úloha stále potřebovat danou roli. Může se zobrazit e-mailu, který obsahuje odkaz, nebo můžete přejít přímo na [webu Azure portal](https://portal.azure.com). Postupujte podle kroků v tomto článku provádět svým přezkoumat přiřazených rolí.
 

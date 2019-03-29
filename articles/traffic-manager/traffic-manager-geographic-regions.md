@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 26e54ba507ecab5d12ceb4169baaa52f99c20792
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: b6a8393a5f47d7fb85699f6828c4d08cc7afcabc
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232426"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620695"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Hierarchie zemí/oblastí používaná pro geografickou metodu směrování provozu Azure Traffic Managerem
 
@@ -29,7 +29,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - AD(Andorra)
 
-        - Al(Albania)
+        - AL(Albania)
 
         - AT(Austria)
 
@@ -121,13 +121,14 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - SI(Slovenia)
 
-        - Sj(Svalbard)
+        - SJ(Svalbard)
 
         - Sk(slovakia)
 
-        - SM (San Marino)
+        - SM(San Marino)
 
         - UA(Ukraine)
+            - Oblast Krym
 
         - Posouzení ohrožení zabezpečení (Vatikán)
 
@@ -199,7 +200,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
             - NL(Newfoundland and Labrador) certifikační Autority
 
-            - NS(Nova Scotia) certifikační Autority
+            - CA-NS(Nova Scotia)
 
             - NT(Northwest Territories) certifikační Autority
 
@@ -217,9 +218,9 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - Znak CR (Kostarika)
 
-        - Cu(Cuba)
+        - CU(Cuba)
 
-        - CW(CuraÃ§AO)
+        - CW(CuraÃ§ao)
 
         - DM(Dominica)
 
@@ -255,7 +256,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - NI(Nicaragua)
 
-        - Pa(Panama)
+        - PA(Panama)
 
         - ODP. (Saint Pierre a Miquelon)
 
@@ -263,7 +264,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - SV (El Salvador)
 
-        - SX (Sint Maarten)
+        - SX(Sint Maarten)
 
         - TC (Turks a Caicos)
 
@@ -273,17 +274,17 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - US(United States)
 
-            - US-ak(Alaska)
+            - US-AK(Alaska)
 
-            - US-Al(Alabama)
+            - US-AL(Alabama)
 
             - US-ar(Arkansas)
 
-            - US-az(Arizona)
+            - US-AZ(Arizona)
 
             - US-CA(California)
 
-            - US-co(Colorado)
+            - US-CO(Colorado)
 
             - US-CT(Connecticut)
 
@@ -303,7 +304,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
             - US-IL(Illinois)
 
-            - US-in(Indiana)
+            - US-IN(Indiana)
 
             - US-KS(Kansas)
 
@@ -311,7 +312,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
             - US-la(Louisiana)
 
-            - US-ma(Massachusetts)
+            - US-MA(Massachusetts)
 
             - US-MD(Maryland)
 
@@ -319,29 +320,29 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
             - US-mi(Michigan)
 
-            - US-Mn(Minnesota)
+            - US-MN(Minnesota)
 
-            - US-mo(Missouri)
+            - US-MO(Missouri)
 
             - US-MS(Mississippi)
 
             - US-MT(Montana)
 
-            - NC(North Carolina) USA
+            - US-NC(North Carolina)
 
             - ND(North Dakota) USA
 
-            - US-ne(Nebraska)
+            - US-NE(Nebraska)
 
             - NH(New Hampshire) USA
 
             - NJ(New Jersey) USA
 
-            - NM(New Mexico) USA
+            - US-NM(New Mexico)
 
             - US-NV(Nevada)
 
-            - NY(New York) USA
+            - US-NY(New York)
 
             - US-OH(Ohio)
 
@@ -369,7 +370,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
             - US-WA(Washington)
 
-            - US-Wi(Wisconsin)
+            - US-WI(Wisconsin)
 
             - WV(West Virginia) USA
 
@@ -421,7 +422,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - KH(Cambodia)
 
-        - KP (Severní Korea)
+        - KP(North Korea)
 
         - KR(Korea)
 
@@ -433,7 +434,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - MM(Myanmar)
 
-        - Mn(Mongolia)
+        - MN(Mongolia)
 
         - Měsíc (Macao – zvláštní administrativní oblast)
 
@@ -467,7 +468,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - AO(Angola)
 
-        - BF (Burkina Faso)
+        - BF(Burkina Faso)
 
         - BI(Burundi)
 
@@ -487,7 +488,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - CM(Cameroon)
 
-        - CV (Cabo Verde)
+        - CV(Cabo Verde)
 
         - DJ(Djibouti)
 
@@ -537,7 +538,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - NA(Namibia)
 
-        - Ne(niger)
+        - NE(Niger)
 
         - NG(Nigeria)
 
@@ -551,7 +552,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - SH (SV. Helena, Ascensión a Tristan da Cunha)
 
-        - SL (Sierra Leone)
+        - SL(Sierra Leone)
 
         - SN(Senegal)
 
@@ -563,7 +564,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - SZ(Swaziland)
 
-        - TD(CHAD)
+        - TD(Chad)
 
         - TF (Francouzská jižní území)
 
@@ -621,7 +622,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
     - GEO-AP(Australia / Pacific)
 
-        - As(American Samoa)
+        - AS(American Samoa)
 
         - AU(Australia)
 
@@ -651,7 +652,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - HM (Heardův ostrov a McDonaldovy ostrovy)
 
-        - Ki(Kiribati)
+        - KI(Kiribati)
 
         - MH (Marshallovy ostrovy)
 

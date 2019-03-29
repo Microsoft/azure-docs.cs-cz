@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: a78eeda814b21d489eb957d44202b17c61d836d5
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 1186b362cf8f59f24020ae9afa3526e2e27b1794
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541884"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575211"
 ---
 # <a name="get-started-with-azure-security-center-asc-for-iot"></a>Začínáme s Azure Security Center (ASC) pro IoT 
 
@@ -67,7 +67,7 @@ Využijte ASC k IoT rozšířené možnosti zabezpečení, jako je například m
 1. Pokud nemá žádná zaregistrovaná zařízení služby IoT Hub [zaregistrovat nová zařízení](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy).
 1. [Vytvoření modulu zabezpečení azureiotsecurity](quickstart-create-security-twin.md) pro vaše zařízení.
 1. Instalace agenta na Azure simulované zařízení se místo instalace na zařízení s skutečné [otočit nahoru nový Azure virtuální počítač (VM)](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) v zóně dostupná. 
-1. [Nasazení ASC pro agenta zabezpečení IoT](tutorial-deploy-linux-cs.md) na zařízení IoT nebo nového virtuálního počítače.
+1. [Nasazení ASC pro agenta zabezpečení IoT](how-to-deploy-linux-cs.md) na zařízení IoT nebo nového virtuálního počítače.
 1. Postupujte podle pokynů pro [trigger_events](https://aka.ms/iot-security-github-trigger-events) ke spuštění simulace neškodné útoku.
 1. Ověřte ASC pro výstrahy IoT v reakci na simulované útoku v předchozím kroku. 
     - Proces ověření pět minut po spuštění skriptu.
@@ -79,4 +79,4 @@ Využijte ASC k IoT rozšířené možnosti zabezpečení, jako je například m
 - Konfigurace vašeho [řešení](quickstart-configure-your-solution.md)
 - [Vytvoření modulů zabezpečení](quickstart-create-security-twin.md)
 - Konfigurace [vlastní upozornění](quickstart-create-custom-alerts.md)
-- [Nasazení agenta zabezpečení](select-deploy-agent.md)
+- [Nasazení agenta zabezpečení](how-to-deploy-agent.md)

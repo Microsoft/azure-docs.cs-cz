@@ -2,20 +2,20 @@
 title: 'Kurz: Načtení dat taxislužby města New York do služby Azure SQL Data Warehouse | Dokumentace Microsoftu'
 description: Kurz používá Azure portal a SQL Server Management Studio k načtení dat taxislužby města New York z veřejného Azure blob do služby Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: ckarst
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 09/12/2018
-ms.author: cakarst
+ms.date: 03/27/2019
+ms.author: mlee3gsd
 ms.reviewer: igorstan
-ms.openlocfilehash: 979488009f7afa2ccae3993d756e92e1ae15d5a0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 57ca749aec2a72379e92c46764eb9b6558653e29
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466521"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620185"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Kurz: Načtení dat taxislužby města New York do služby Azure SQL Data Warehouse
 
@@ -80,7 +80,7 @@ Pomocí následujících kroků vytvořte prázdný datový sklad SQL.
 
 6. Klikněte na tlačítko **úroveň výkonu** k určení, zda datový sklad je Gen1 a Gen2 a počet datových skladů jednotky. 
 
-7. Pro účely tohoto kurzu vyberte **Gen1** služby SQL Data Warehouse. Posuvník, ve výchozím nastavení, je nastavený na **DW1000c**.  Zkuste jeho posouváním hodnotu zvýšit a snížit a podívejte se, jak funguje. 
+7. Pro účely tohoto kurzu vyberte **Gen2** služby SQL Data Warehouse. Posuvník nastavený na **DW1000c** ve výchozím nastavení.  Zkuste jeho posouváním hodnotu zvýšit a snížit a podívejte se, jak funguje. 
 
     ![konfigurace výkonu](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 

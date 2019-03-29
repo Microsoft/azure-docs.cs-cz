@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 3ba8b1a099dc204730813754fdfc4b0b8ce45303
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 2a24db1124ecd9c2437eafee54d856120a77e97f
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541623"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576441"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>Rychlý start: Konfigurovat řešení IoT
 
@@ -33,7 +33,7 @@ Tento článek obsahuje vysvětlení, jak provést počáteční konfiguraci zab
 
 ASC pro IoT poskytuje komplexní-koncové zabezpečení pro řešení IoT založené na Azure.
 
-S ASC pro IoT. celé řešení IoT na jednom řídicím panelu, můžete monitorovat zpřístupnění všech zařízení IoT, platformy IoT a back-endovým prostředkům v Azure.
+S ASC pro IoT můžete monitorovat celé řešení IoT na jednom řídicím panelu, zpřístupnění všech zařízení IoT, platformy IoT a back-endovým prostředkům v Azure.
 
 Jakmile povolíte službu ve službě IoT Hub, ASC pro IoT automaticky identifikuje dalšími službami Azure, také připojené ke službě IoT hub a týkající se řešení IoT.
 
@@ -50,7 +50,7 @@ Chcete-li přidat nový prostředek do vašeho řešení IoT, postupujte takto:
 2. Vyberte a otevřete **prostředky** pod **zabezpečení** v levé nabídce. 
 3. Vyberte **přidat prostředky**.
 4. Zvolte prostředky, které patří do vašeho řešení IoT.
-4. Klikněte na tlačítko **Add** (Přidat). 
+5. Klikněte na tlačítko **Add** (Přidat). 
 
 Blahopřejeme! Přidání nového prostředku do vašeho řešení IoT.
 

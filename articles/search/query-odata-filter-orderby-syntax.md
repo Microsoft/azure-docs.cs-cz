@@ -1,7 +1,7 @@
 ---
 title: Syntaxe výrazů OData pro filtry a klauzule order by – klauzule – Azure Search
 description: Filtr a klauzule order by výraz syntaxe OData pro Azure Search dotazy.
-ms.date: 01/31/2019
+ms.date: 03/27/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f0fd93af7cba3057ad4c2224aa1298a221505645
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 8445ab2c8797226b08519e2f186350a31416f049
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541032"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578403"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Syntaxe výrazů OData pro filtry a klauzulemi klauzule order by ve službě Azure Search
 
@@ -207,7 +207,7 @@ $filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.
 $filter=description eq null
 ```
 
-Najít všechny hotels s názvem rovná buď Roach motel "nebo"Rozpočtu hotel"):  
+Najdete všechny hotels s názvem rovno "Roach motel" nebo "Rozpočtu hotel"). Fráze obsahovat mezery, která je výchozím oddělovačem. Chcete-li určit potlačení oddělovače, uzavřete nový oddělovač v jednoduchých uvozovkách jako součást výrazu filtru:  
 
 ```
 $filter=search.in(name, 'Roach motel,Budget hotel', ',')
@@ -223,6 +223,12 @@ Nalezení hotelů všechny značky wifi nebo "fondu":
 
 ```
 $filter=tags/any(t: search.in(t, 'wifi, pool'))
+```
+
+Najdete shodu na více značek, "vyhřívaný ručníků stojany" nebo "fén zahrnuté". Nezapomeňte zadat alternativní oddělovač po nefunkčním oddělovače místo výchozí. 
+
+```
+$filter=tags/any(t: search.in(t, 'heated towel racks,hairdryer included', ','))
 ```
 
 Najdete všechny hotels bez značky "motel" ani "kabině":  

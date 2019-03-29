@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 52f1316b8167d2e1c3e37dbbfc0059b68e832172
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 827d7d9a3d584342703a84dd2a42e5cda9b3a656
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538557"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579406"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu
 
@@ -24,7 +24,7 @@ Ve výchozím nastavení, zprávy jsou směrovány na integrovaný koncový bod 
 | **Počet oddílů** | Tuto vlastnost nastavit při vytváření definuje počet [oddíly](../event-hubs/event-hubs-features.md#partitions) pro příjem událostí typu zařízení cloud. |
 | **Doba uchování**  | Tato vlastnost určuje dobu v dní, po které zprávy jsou zachována ve službě IoT Hub. Výchozí hodnota je jeden den, ale je možné zvýšit na sedm dní. |
 
-IoT Hub umožňuje uchovávání dat v integrované služby Event Hubs maximálně 7 dnů. Můžete nastavit dobu uchování během vytváření služby IoT Hub. Velikost uchovávání dat ve službě IoT Hub závisí na vaší úrovně služby IoT hub a typ jednotky. Z hlediska velikosti integrované služby Event Hubs můžete zachovat zprávy maximální velikost až kvóty nejméně 24 hodin. Například pro 1 jednotku S1 služby IoT Hub poskytuje dostatek prostoru k uchování alespoň 400 tisíc zpráv 4 kB velikost každého. Pokud vaše zařízení odesílají zprávy menší, nemusí být zachovány pro delší dobu (až 7 dnů) v závislosti na tom, jak velké úložiště využívá. Garantujeme zachování dat dobu uchování zadaná jako minimální.
+IoT Hub umožňuje uchovávání dat v integrované služby Event Hubs maximálně 7 dnů. Můžete nastavit dobu uchování během vytváření služby IoT Hub. Doba uchovávání dat ve službě IoT Hub závisí na vaší úrovně služby IoT hub a typ jednotky. Z hlediska velikosti integrované služby Event Hubs můžete zachovat zprávy maximální velikost až kvóty nejméně 24 hodin. Například pro 1 jednotku S1 služby IoT Hub poskytuje dostatek prostoru k uchování alespoň 400 tisíc zpráv 4 kB velikost každého. Pokud vaše zařízení odesílají zprávy menší, nemusí být zachovány pro delší dobu (až 7 dnů) v závislosti na tom, jak velké úložiště využívá. Garantujeme zachování dat dobu uchování zadaná jako minimální.
 
 IoT Hub můžete také spravovat skupiny uživatelů na integrovaných zařízení cloud přijímat koncový bod.
 

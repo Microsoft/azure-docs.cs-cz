@@ -1,5 +1,5 @@
 ---
-title: Rozšíření nebo obnovení přiřazení role prostředků Azure v PIM | Dokumentace Microsoftu
+title: Rozšíření nebo obnovení přiřazení role prostředků Azure v PIM – Azure Active Directory | Dokumentace Microsoftu
 description: Zjistěte, jak rozšířit nebo prodlužovat platnost přiřazení role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79549c1b8ed578319e43fc1c4354c7cd76f71589
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8aef7d4ac37109233af4ffb364b6f3e4c9b291ac
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004227"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578386"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>Rozšíření nebo obnovení přiřazení role prostředků Azure v PIM
 
-Privileged Identity Management (PIM) pro prostředky Azure, zavádí nové ovládací prvky pro správu přístupu a přiřazení životní cyklus pro prostředky Azure. Správci mohou přiřadit členství pomocí vlastnosti počáteční a koncové datum a čas. Když se blíží konec přiřazení PIM odešle e-mailová oznámení k ovlivnění uživatelé nebo skupiny. Rovněž odesílá e-mailová oznámení pro správce prostředků k zajištění, že se udržuje odpovídající přístup. Přiřazení může být obnovena a zůstávají viditelné vypršela platnost po dobu až 30 dnů, i když není rozšířené přístup.
+Privileged Identity Management (PIM) ve Azure Active Directory (Azure AD) představuje nové ovládací prvky pro správu přístupu a přiřazení životní cyklus pro prostředky Azure. Správci mohou přiřadit členství pomocí vlastnosti počáteční a koncové datum a čas. Když se blíží konec přiřazení PIM odešle e-mailová oznámení k ovlivnění uživatelé nebo skupiny. Rovněž odesílá e-mailová oznámení pro správce prostředků k zajištění, že se udržuje odpovídající přístup. Přiřazení může být obnovena a zůstávají viditelné vypršela platnost po dobu až 30 dnů, i když není rozšířené přístup.
 
 ## <a name="who-can-extend-and-renew"></a>Kdo může rozšířit a obnovit?
 

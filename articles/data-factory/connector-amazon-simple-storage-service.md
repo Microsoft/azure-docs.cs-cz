@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 03/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 5a3da4d890cd5bdffa5373d2e1319009609283f2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6f531a814255b9171ff1767ede379bbd4f4a19b3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541634"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578165"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopírování dat z Amazon Simple Storage Service pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +28,7 @@ Tento článek popisuje, jak používat aktivitu kopírování ve službě Azure
 
 Kopírování dat Amazon S3 do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
-Konkrétně tento konektor Amazon S3 podporuje kopírování souborů jako-je nebo analýza souborů pomocí [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md).
+Konkrétně tento konektor Amazon S3 podporuje kopírování souborů jako-je nebo analýza souborů pomocí [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md). Používá [AWS podpis verze 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) k ověření požadavků na S3.
 
 >[!TIP]
 >Tento konektor Amazon S3 můžete použít ke zkopírování dat z **všechny zprostředkovatele úložiště kompatibilního S3** například [Google Cloud Storage](connector-google-cloud-storage.md). Zadejte adresu URL odpovídající služby v konfiguraci propojenou službu.

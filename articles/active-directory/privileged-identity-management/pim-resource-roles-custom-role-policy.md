@@ -1,5 +1,5 @@
 ---
-title: Použití vlastních rolí pro prostředky Azure v PIM | Dokumentace Microsoftu
+title: Použití vlastních rolí pro prostředky Azure v PIM – Azure Active Directory | Dokumentace Microsoftu
 description: Další informace o použití vlastních rolí pro prostředky Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.subservice: pim
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2767d817d6f15d38aeef4c669b2b11c3d8a8a6b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 13aef9b180a671a9b42bbc6319c487be36652093
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168013"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574871"
 ---
 # <a name="use-custom-roles-for-azure-resources-in-pim"></a>Použití vlastních rolí pro prostředky Azure v PIM
 
-Můžete potřebovat k aplikování nastavení striktní Privileged Identity Management (PIM) pro některé členy role, poskytují větší volnost pro ostatní. Představte si třeba situaci, ve kterém vaše organizace zaměstná několik smlouvy associates, které pomáhají při vývoji aplikace, který se spustí v rámci předplatného Azure.
+Můžete potřebovat k aplikování nastavení striktní Azure Active Directory (Azure AD) Privileged Identity Management (PIM) pro některé členy role, poskytují větší volnost pro ostatní. Představte si třeba situaci, ve kterém vaše organizace zaměstná několik smlouvy associates, které pomáhají při vývoji aplikace, který se spustí v rámci předplatného Azure.
 
 Jako správce prostředků chcete zaměstnanci mají oprávnění pro přístup bez vyžadování schválení. Všechny smlouvy přidruží však musí být schválen, když zadají žádost o přístup k prostředkům ve vaší organizaci.
 

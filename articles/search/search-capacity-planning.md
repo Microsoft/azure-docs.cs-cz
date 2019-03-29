@@ -6,20 +6,20 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 69fce34c55007daff48b2463da590ffb9cd59926
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775318"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620628"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Škálování oddílů a replik pro dotazy a indexování úloh ve službě Azure Search
 Poté co [zvolte cenovou úroveň](search-sku-tier.md) a [při zřizování vyhledávací služby](search-create-service-portal.md), dalším krokem je Volitelně můžete zvýšit počet repliky nebo oddíly, které používá vaše služba. Každá úroveň nabízí pevný počet jednotek fakturace. Tento článek vysvětluje, jak přidělit jednotkách zajistit optimální konfiguraci, která vyrovnává vaše požadavky na spuštění dotazu, indexování a úložiště.
 
-Konfigurace prostředků je k dispozici, když nastavujete službu na [úroveň Basic](https://aka.ms/azuresearchbasic) nebo jeden z [úrovně Standard](search-limits-quotas-capacity.md). Pro služby na těchto úrovních kapacity dokupovat v jednotkách po *hledání jednotky* (su) kde jednotlivých oddílů a replik se počítá jako jeden příkaz SU. 
+Konfigurace prostředků je k dispozici, když nastavujete službu na [úroveň Basic](https://aka.ms/azuresearchbasic) nebo jeden z [úroveň Standard nebo optimalizované pro úložiště](search-limits-quotas-capacity.md). Pro služby na těchto úrovních kapacity dokupovat v jednotkách po *hledání jednotky* (su) kde jednotlivých oddílů a replik se počítá jako jeden příkaz SU. 
 
 Použití méně výsledků SUs v proporcionálně snížení nákladů. Účtování probíhá za platit tak dlouho, dokud je nastavení služby. Pokud nepoužíváte dočasně služby, je jediný způsob, jak se vyhnout fakturace odstraňování služby a potom vytvoříte ho znovu když je potřebujete.
 
@@ -81,7 +81,7 @@ Obecně platí Hledat aplikace potřebovat víc replik, než má téma oddílů,
 
 Základní služby může obsahovat právě jeden oddíl a až tři repliky, maximum omezit tři služby SUS. Pouze měnitelné prostředek je repliky. Budete potřebovat minimálně dvě repliky pro zajištění vysoké dostupnosti pro dotazy.
 
-Všechny standardní služby, můžete předpokládat následující kombinace repliky a oddíly, v souladu s limit 36 SU. 
+Všechny standardní a optimalizované pro úložiště vyhledávací služby může převzít následující kombinace repliky a oddíly, v souladu s limit 36 SU. 
 
 |   | **oddíl 1** | **2 oddíly** | **3 oddíly** | **4 oddíly** | **6 oddíly** | **12 oddíly** |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -112,7 +112,7 @@ Obecná doporučení pro zajištění vysoké dostupnosti jsou:
 
 Smlouvy o úrovni služeb (SLA) pro službu Azure Search je určená v operacích dotazu a na aktualizace indexu, které se skládají z přidání, aktualizace nebo odstranění dokumentů.
 
-Úroveň Basic zbarvení hlavy kořene navýšení kapacity na jeden oddíl a tři repliky. Pokud požadujete flexibilitu okamžitě reagovat na výkyvy poptávky pro indexování a dotazování propustnost, zvažte jednu z úrovně Standard.
+Úroveň Basic zbarvení hlavy kořene navýšení kapacity na jeden oddíl a tři repliky. Pokud požadujete flexibilitu okamžitě reagovat na výkyvy poptávky pro indexování a dotazování propustnost, zvažte jednu z úrovně Standard.  Pokud zjistíte, že se že mnohem rychleji než propustnost dotazů rostou vaše požadavky na úložiště, zvažte jednu z úrovní optimalizované pro úložiště.
 
 ### <a name="index-availability-during-a-rebuild"></a>Index dostupnost během opětovné sestavení
 

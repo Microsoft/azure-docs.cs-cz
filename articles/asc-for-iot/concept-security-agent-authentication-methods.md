@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 23bc4d0df1c8124ec225ac31239c7acb3f1ab546
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 2ace8ffd82efe70251b48e20593906986173cbb0
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541809"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577796"
 ---
 # <a name="security-agent-authentication-methods"></a>Metody ověřování zabezpečení agenta 
 
@@ -41,10 +41,12 @@ Dvě metody pro agenta AzureIoTSecurity provádět ověřování:
 
  - **Modul** režim ověřování<br>
    Modul je ověřený nezávisle na dvojče zařízení.
-   Informace požadované pro tento typ ověřování je definován v souboru Authentication.config pro C# a LocalConfiguration.json pro C.
+   Tento typ ověřování použijte, pokud chcete zabezpečení agenta pro použití s metodu ověřování vyhrazené modul zabezpečení (pouze symetrický klíč).
         
  - **Zařízení** režim ověřování<br>
-    V této metodě nejprve agenta zabezpečení provede ověření zařízení. Po počáteční ověřování ASC pro agenta IoT provede **Rest** volání do IoT Hubu pomocí rozhraní Rest API s ověřovacími údaji ze zařízení. ASC pro agenta IoT pak požadavky zabezpečení modulu ověřování a dat ze služby IoT Hub. V posledním kroku ASC IoT agent provádí ověření proti ASC pro modul IoT.    
+    V této metodě nejprve agenta zabezpečení ověří s identitou zařízení. Po počáteční ověřování provádí ASC pro agenta IoT **REST** volání do IoT Hubu pomocí rozhraní REST API s ověřovacími údaji ze zařízení. ASC pro agenta IoT pak požadavky zabezpečení modulu ověřování a dat ze služby IoT Hub. V posledním kroku ASC IoT agent provádí ověření proti ASC pro modul IoT.
+    
+    Tento typ ověřování použijte, pokud chcete agenta zabezpečení znovu použít stávající metodu ověřování zařízení (s podpisem držitele certifikátu nebo symetrický klíč). 
 
 Zobrazit [parametry instalace agenta zabezpečení](#security-agent-installation-parameters) na další informace o konfiguraci.
                                 
@@ -55,7 +57,7 @@ Zobrazit [parametry instalace agenta zabezpečení](#security-agent-installation
 
 ## <a name="security-agent-installation-parameters"></a>Parametry instalace agenta zabezpečení
 
-Když [nasazení agenta zabezpečení](select-deploy-agent.md), podrobnosti o ověřování musí být zadané jako argumenty.
+Když [nasazení agenta zabezpečení](how-to-deploy-agent.md), podrobnosti o ověřování musí být zadané jako argumenty.
 Tyto argumenty jsou popsány v následující tabulce.
 
 
@@ -111,5 +113,5 @@ Upravit _LocalConfiguration.json_ s následujícími parametry:
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 - [Přehled zabezpečení agentů](security-agent-architecture.md)
-- [Nasazení agenta pro zabezpečení](select-deploy-agent.md)
+- [Nasazení agenta pro zabezpečení](how-to-deploy-agent.md)
 - [Přístup k datům raw zabezpečení](how-to-security-data-access.md)

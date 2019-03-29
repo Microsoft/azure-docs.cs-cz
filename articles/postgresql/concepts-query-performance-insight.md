@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.openlocfilehash: 69963f34cb49482cc7eae25320a6a3a5f176f8dd
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 03/28/2019
+ms.openlocfilehash: 56abdd819e78312e64209078c3966826385df7bc
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486575"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620729"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
 
@@ -28,11 +28,11 @@ Pro Query Performance Insight k funkci, musí existovat data [Query Store](conce
 ## <a name="viewing-performance-insights"></a>Informace o zobrazení výkonu
 Zobrazení [Query Performance Insight](concepts-query-performance-insight.md) na portálu Azure, bude přinášet vizualizace o klíčových informacích z Query Storu. 
 
-Na stránce portálu vašeho serveru Azure Database for postgresql – výběr **přehled o výkonu dotazů** pod **podpora a řešení potíží** části řádku nabídek.
+Na stránce portálu vašeho serveru Azure Database for postgresql – výběr **přehled o výkonu dotazů** pod **inteligentní výkonu** části řádku nabídek.
 
 ![Query Performance Insight dlouho běžící dotazy](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
 
-Karta **Dlouho běžících dotazů** zobrazuje 5 nejčastějších dotazů podle průměrné doby trvání na spuštění, agregované do 15minutových intervalů. Další dotazy můžete zobrazit tak, že v rozevíracím seznamu vyberete **Počet dotazů**. Barvy grafu se mohou při této akci změnit pro konkrétní ID dotazu.
+**Dlouho běžící dotazy** karta zobrazuje prvních pěti dotazech podle průměrné doby trvání na spuštění, agregují v intervalech 15 minut. Další dotazy můžete zobrazit tak, že v rozevíracím seznamu vyberete **Počet dotazů**. Barvy grafu se mohou při této akci změnit pro konkrétní ID dotazu.
 
 Můžete kliknout a přetáhnout v grafu, abyste zmenšili konkrétní časové okno. Můžete také použijte funkce zvětšení ani výstupní ikony zobrazíte menší nebo větší časový úsek, v uvedeném pořadí.
 
@@ -40,7 +40,7 @@ V tabulce pod grafem jsou uvedené další podrobnosti o dlouho běžící dotaz
 
 Vyberte kartu **Statistiky čekání** k zobrazení odpovídající vizualizace týkající se čekání na serveru.
 
-![Statistiky čekání Query Performance Insight](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+![Query Performance Insight čeká statistiky](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o [sledování a ladění ](concepts-monitoring.md) ve službě Azure Database for PostgreSQL.

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/14/2018
+ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: fca93c002fba4d54e8e87ca31e0fd1c258826665
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 8c1ff4d2ca9ab7257b28a2b14aaf5a796183a286
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369730"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576259"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API pro Application Insights pro vlastní události a metriky
 
@@ -168,7 +168,7 @@ namespace User.Namespace.Example01
 {
     using System;
     using Microsoft.ApplicationInsights;
-    using TraceSeverityLevel = Microsoft.ApplicationInsights.DataContracts.SeverityLevel;
+    using Microsoft.ApplicationInsights.DataContracts;
 
     /// <summary>
     /// Most simple cases are one-liners.
@@ -220,7 +220,7 @@ namespace User.Namespace.Example01
             if (!animalsSold.TrackValue(count, species))
 
             {
-                client.TrackTrace($"Data series or dimension cap was reached for metric {animalsSold.Identifier.MetricId}.", TraceSeverityLevel.Error);
+                client.TrackTrace($"Data series or dimension cap was reached for metric {animalsSold.Identifier.MetricId}.", SeverityLevel.Error);
             }
 
             // You can inspect a metric object to reason about its current state. For example:
@@ -1173,7 +1173,7 @@ Chcete-li zjistit, jak dlouho se data ukládají, přečtěte si téma [uchováv
 ## <a name="reference-docs"></a>Referenční dokumenty
 
 * [Referenční dokumentace technologie ASP.NET](https://msdn.microsoft.com/library/dn817570.aspx)
-* [Referenční informace k Java](http://dl.windowsazure.com/applicationinsights/javadoc/)
+* [Reference k Javě](http://dl.windowsazure.com/applicationinsights/javadoc/)
 * [Referenční dokumentace jazyka JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 * [Sada SDK pro Android](https://github.com/Microsoft/ApplicationInsights-Android)
 * [Sada SDK pro iOS](https://github.com/Microsoft/ApplicationInsights-iOS)

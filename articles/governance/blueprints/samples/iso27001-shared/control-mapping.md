@@ -8,12 +8,12 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: f655db8643a16e6818f5becf25c8761fb4c9093b
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: 34cda2f09392513b0d3f76cc5f77ea0064109410
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58009244"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576101"
 ---
 # <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Mapování ovládacího prvku vzorku podrobného plánu se standardy ISO 27001 Azure podrobné plány.
 
@@ -122,7 +122,7 @@ Principy, kde vašich prostředků Azure může mít optimální kryptografické
 
 ## <a name="a1241-event-logging"></a>Protokolování událostí A.12.4.1
 
-Tento podrobný plán vám pomůže zajistit systémové události jsou protokolovány přiřazením sedm [Azure Policy](../../../policy/overview.md) definice, které auditování protokolu nastavení pro prostředky Azure. Přiřazených zásad se taky Audituje, jestli virtuální počítače nejsou posílá protokoly do pracovního prostoru zadané log analytics.
+Tento podrobný plán vám pomůže zajistit systémové události jsou protokolovány přiřazením sedm [Azure Policy](../../../policy/overview.md) definice, které auditování nastavení protokolu pro prostředky Azure. Přiřazených zásad se taky Audituje, jestli virtuální počítače nejsou posílá protokoly do pracovního prostoru zadané log analytics.
 
 - [Preview]: Nasazení agenta závislostí auditu - obrázku (operačního systému virtuálního počítače) neuvedené v seznamu
 - [Preview]: Auditovat nasazení agenta závislostí v VMSS - obrázku (operačního systému virtuálního počítače) neuvedené v seznamu
@@ -187,10 +187,10 @@ Teď, když jste zkontrolovali mapování ovládacích prvků podrobného plánu
 > [Podrobný plán ISO 27001 Shared Services - přehled](./index.md)
 > [ISO 27001 Shared Services podrobný plán – kroky nasazení](./deploy.md)
 
-Další články o podrobné plány a jejich použití:
+Další články věnované podrobným plánům a postupu jejich využití:
 
-- Další informace o [podrobný plán životního cyklu](../../concepts/lifecycle.md).
-- Vysvětlení použití [statické a dynamické parametry](../../concepts/parameters.md).
-- Zjistěte, jak přizpůsobit [podrobný plán pořadí řazení](../../concepts/sequencing-order.md).
-- Zjistěte, jak se využívání [podrobný plán uzamčení prostředků](../../concepts/resource-locking.md).
-- Zjistěte, jak [aktualizovat existující přiřazení](../../how-to/update-existing-assignments.md).
+- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
+- Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)
+- Další informace o [aktualizaci existujících přiřazení](../../how-to/update-existing-assignments.md)

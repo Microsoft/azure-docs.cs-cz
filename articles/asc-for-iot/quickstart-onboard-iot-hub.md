@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 4fd7fb68fd2eb8be0c1c109d76cff341faba9391
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: cea7517a99358d41a8ba60a78b4e2bfdbdeaf0e8
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541624"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576220"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Rychlý start: Povolit službu ve službě IoT Hub
 
@@ -36,7 +36,7 @@ Tento článek obsahuje vysvětlení, jak povolit ASC pro službu IoT ve verzi p
 ## <a name="prerequisites-for-enabling-the-service"></a>Požadavky pro povolení služby
 
 - Pracovní prostor Log Analytics
-  - Dva druhy informace jsou uloženy ve výchozím nastavení v pracovním prostoru Log Analytics ve služba ASC pro IoT; **výstrahy zabezpečení** a **doporučení**. 
+  - Dva druhy informace jsou uloženy ve výchozím nastavení v pracovním prostoru Log Analytics služba ASC pro IoT; **výstrahy zabezpečení** a **doporučení**. 
   - Můžete také přidat další informace o typu, úložiště **nezpracovaných událostí**. Všimněte si, že ukládání **nezpracovaných událostí** v Log Analytics představuje náklady na další úložiště. 
 - IoT Hub (úrovně standard nebo vyšší)
 

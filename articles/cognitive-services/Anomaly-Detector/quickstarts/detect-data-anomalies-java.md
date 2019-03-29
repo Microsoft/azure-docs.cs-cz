@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 2a6d356bcf65cdb59e84b34cf2a7478de796e61a
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 06cb4d32359014f3cbc67ed1f75988c794e6599e
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473163"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619507"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Rychlý start: Detekovat anomálie ve vašich datech časových řad pomocí rozhraní REST API služby detekce anomálií a Java
 
@@ -91,7 +91,7 @@ V tomto rychlém startu můžete začít používat rozhraní API detekce anomá
 
 2. Vytvoření `CloseableHttpClient` objekt, který může odesílat požadavky na rozhraní API. Odeslat žádost o `HttpPost` objekt žádosti kombinací koncový bod služby a adresu URL detekce anomálií.
 
-3. Použijte žádosti `setHeader()` funkce nastavíte `Content-Type` záhlaví do `application/json`a přidat váš klíč předplatného na `Ocp-Apim-Subscription-Key` záhlaví.
+3. Použijte žádosti `setHeader()` funkce nastavíte `Content-Type` záhlaví `application/json`a přidat váš klíč předplatného na `Ocp-Apim-Subscription-Key` záhlaví.
 
 4. Použijte žádosti `setEntity()` funkci pro data, která mají být odeslány.   
 

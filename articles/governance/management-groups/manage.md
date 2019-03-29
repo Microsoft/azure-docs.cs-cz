@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 51e9d44a95a3896767caf4b3f04d17c2933e8599
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 801a37496b36be1f98408c46807f5b10db2b0282
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990526"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622055"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa vašich prostředků pomocí skupin pro správu
 
@@ -67,9 +67,9 @@ Pokud chcete odstranit skupinu pro správu, musí být splněny následující p
 
 1. Neexistují žádné podřízené skupiny pro správu nebo předplatná v rámci skupiny pro správu.
 
-   - Pokud chcete přejít u určitého předplatného mimo skupinu pro správu, přečtěte si téma [přesunout do jiné skupiny pro správu předplatného](#Move-subscriptions-in-the-hierarchy).
+   - Pokud chcete přejít u určitého předplatného mimo skupinu pro správu, přečtěte si téma [přesunout do jiné skupiny pro správu předplatného](#move-subscriptions-in-the-hierarchy).
 
-   - Přesunout skupinu pro správu do jiné skupiny pro správu, najdete v článku [přesunutí správy skupin v hierarchii](#Move-management-groups-in-the-hierarchy).
+   - Přesunout skupinu pro správu do jiné skupiny pro správu, najdete v článku [přesunutí správy skupin v hierarchii](#move-management-groups-in-the-hierarchy).
 
 1. Máte oprávnění k zápisu ve skupině pro správu ("Vlastník", "Přispěvatel" nebo "Přispěvatel skupiny Management"). A zjistit, jaká oprávnění máte, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o rolích RBAC najdete v tématu [spravovat přístup a oprávnění pomocí RBAC](../../role-based-access-control/overview.md).  
 
@@ -316,11 +316,11 @@ az account management-group update --name 'Contoso' --parent-id '/providers/Micr
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Audit skupin pro správu s využitím protokolů aktivit
 
-Skupiny pro správu jsou podporovány v rámci [protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md). Všechny události, ke kterým dochází ve skupině pro správu ve stejném centrální umístění jako ostatní prostředky Azure se můžete dotazovat.  Například můžete zobrazit všechna přiřazení rolí nebo přiřazení zásad změny provedené ve skupině pro správu konkrétní.
+Skupiny pro správu se podporují v rámci [protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md). Všechny události, ke kterým dochází ve skupině pro správu ve stejném centrální umístění jako ostatní prostředky Azure se můžete dotazovat.  Pro konkrétní skupinu pro správu si můžete si zobrazit všechny změny přiřazení zásad nebo přiřazení rolí.
 
-![Protokoly aktivit se skupiny pro správu](media/al-mg.png)
+![Protokoly aktivit se skupinami pro správu](media/al-mg.png)
 
-Když chcete dotaz na skupiny pro správu mimo na webu Azure portal, cílový obor pro skupiny pro správu vypadá jako **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"**.
+Pokud se chcete na skupiny pro správu dotazovat mimo Azure Portal, cílový obor pro skupiny pro správu vypadá takto: **"/providers/Microsoft.Management/managementGroups/{yourMgID}"**.
 
 ## <a name="referencing-management-groups-from-other-resource-providers"></a>Odkazování na skupiny pro správu od jiných poskytovatelů prostředků
 

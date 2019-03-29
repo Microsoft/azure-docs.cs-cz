@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/11/2019
+ms.date: 3/28/2019
 ms.author: amitsriva
-ms.openlocfilehash: 14b99f648bb1d7e1926aa9d5dd9926e267ba9709
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309124"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620872"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back endu, diagnostické protokoly a metriky pro službu Application Gateway
 
@@ -131,7 +131,7 @@ Protokolování aktivit je u každého prostředku Správce prostředků povolen
 
 ### <a name="enable-logging-through-the-azure-portal"></a>Povolit protokolování prostřednictvím webu Azure Portal
 
-1. Na webu Azure Portal, najít váš prostředek a klikněte na tlačítko **diagnostické protokoly**.
+1. Na webu Azure Portal vyhledejte vašeho prostředku a vyberte **nastavení diagnostiky**.
 
    Pro službu Application Gateway jsou k dispozici tři protokoly:
 
@@ -139,21 +139,15 @@ Protokolování aktivit je u každého prostředku Správce prostředků povolen
    * V protokolu výkonu
    * Protokol brány firewall
 
-2. Pokud chcete začít shromažďovat data, klikněte na **Zapnout diagnostiku**.
+2. Chcete-li spustit shromažďování dat, vyberte **zapnout diagnostiku**.
 
    ![Zapínání diagnostik][1]
 
-3. **Nastavení diagnostiky** okno obsahuje nastavení pro diagnostické protokoly. V tomto příkladu služba Log Analytics ukládá protokoly. Klikněte na tlačítko **konfigurovat** pod **Log Analytics** proveďte konfiguraci pracovního prostoru. Diagnostické protokoly můžete ukládat také pomocí služby center událostí a účtu úložiště.
+3. Stránka **Nastavení diagnostiky** obsahuje nastavení diagnostických protokolů. V tomto příkladu služba Log Analytics ukládá protokoly. Diagnostické protokoly můžete ukládat také pomocí služby center událostí a účtu úložiště.
 
    ![Spouští se proces konfigurace][2]
 
-4. Zvolte existující pracovní prostor Log Analytics nebo vytvořte novou. Tento příklad používá již existující.
-
-   ![Možnosti pro pracovní prostory Log Analytics][3]
-
-5. Potvrďte nastavení a klikněte na tlačítko **Uložit**.
-
-   ![Okno nastavení diagnostiky se vybrané možnosti][4]
+5. Zadejte název pro nastavení, potvrďte nastavení a vyberte **Uložit**.
 
 ### <a name="activity-log"></a>Protokol aktivit
 
@@ -334,7 +328,7 @@ Metriky jsou funkce pro určité prostředky Azure, kde můžete zobrazit číta
 
    Můžete filtrovat základě back-endový fond zobrazíte v pořádku a není v pořádku hostitelů v konkrétním back-endový fond.
 
-Přejděte do služby application gateway, v části **monitorování** klikněte na tlačítko **metriky**. Chcete-li zobrazit dostupné hodnoty, vyberte rozevírací seznam **METRIKA**.
+Přejděte do služby application gateway, v části **monitorování** vyberte **metriky**. Chcete-li zobrazit dostupné hodnoty, vyberte rozevírací seznam **METRIKA**.
 
 Na následujícím obrázku uvidíte příklad tří metrik, které se zobrazí za posledních 30 minut:
 
@@ -348,11 +342,11 @@ Můžete začít pravidla upozornění na základě metrik pro prostředek. Výs
 
 Následující příklad vás provede procesem vytvoření pravidla upozornění, která odešle e-mail správce po propustnost porušení mezní hodnoty:
 
-1. Klikněte na tlačítko **přidat upozornění metriky** otevřít **přidat pravidlo** okno. Můžete také kontaktovat tohoto okna v okně metriky.
+1. Vyberte **přidat upozornění metriky** otevřít **přidat pravidlo** stránky. Můžete také dosáhnout tuto stránku na stránce metriky.
 
    ![Tlačítko "Přidat upozornění metriky"][6]
 
-2. Na **přidat pravidlo** okno, vyplňte název podmínky a upozornit části a klikněte na tlačítko **OK**.
+2. Na **přidat pravidlo** stránce, vyplňte název podmínky a upozornit oddíly a vyberte **OK**.
 
    * V **podmínku** selektor, vyberte jednu ze čtyř hodnot: **Větší než**, **větší než nebo rovna**, **menší než**, nebo **menší než nebo rovno**.
 
@@ -360,7 +354,7 @@ Následující příklad vás provede procesem vytvoření pravidla upozornění
 
    * Pokud vyberete **e-mailu vlastníci, přispěvatelé a čtenáři**, e-mailu může být dynamické na základě uživatelů, kteří mají přístup do tohoto prostředku. V opačném případě můžete zadat čárkou oddělený seznam uživatelů v **další email(s) správce** pole.
 
-   ![Přidat pravidlo okno][7]
+   ![Přidat pravidlo stránku][7]
 
 Pokud překročení prahové hodnoty přijde nový e-mail, který je podobný tomu na následujícím obrázku:
 

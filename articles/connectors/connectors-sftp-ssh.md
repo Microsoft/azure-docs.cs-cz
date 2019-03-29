@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
-ms.openlocfilehash: e196a7a0b1ad29462aa7e2fb60fcb5d07c57eea7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 660d785baf12052bddf5206d8641116c9ac606aa
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886657"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575092"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytvářet a spravovat soubory protokolu SFTP pomocí SSH a Azure Logic Apps
 
@@ -27,10 +27,16 @@ Automatizace úloh, které monitorování, vytvářet, odesílat a přijímat so
 * Získáte obsah souboru a metadata.
 * Extrahujte archivy do složek.
 
-Ve srovnání s [konektor SFTP](../connectors/connectors-create-api-sftp.md), konektor SFTP-SSH může číst nebo zapisovat soubory až *1 GB* dílky velikostí správy dat v 50 MB. Pro soubory větší než 1 GB, můžete použít akce [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md). Další rozdíly najdete v tématu [porovnání SFTP SSH a SFTP](#comparison) dále v tomto článku.
-
 Můžete použít aktivační události, které sledovat události na vašem serveru SFTP a zpřístupnit výstup dalších akcí. Můžete použít akce, které provádění různých úloh na vašem serveru SFTP. Také můžete mít další akce ve vaší aplikaci logiky použít výstup z akcí SFTP. Například pokud pravidelně Načtení souborů ze serveru SFTP, můžete odeslat e-mailová upozornění o těchto souborech a jejich obsah s použitím konektoru Office 365 Outlook nebo konektor Outlook.com.
 Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+
+## <a name="limits"></a>Omezení
+
+* SFTP-SSH akce může číst nebo zapisovat soubory, které jsou *1 GB nebo menší* tím, že spravuje data jako *50 MB kusy*, ne 1 GB kusy.
+
+* Pro soubory *větší než 1 GB*, můžete použít akce [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md). V současné době SFTP-SSH triggerů nepodporují dělením dat do bloků.
+
+Další rozdíly najdete v tématu [porovnání SFTP SSH a SFTP](#comparison) dále v další části.
 
 <a name="comparison"></a>
 
@@ -38,23 +44,23 @@ Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Log
 
 Tady jsou další hlavní rozdíly mezi konektoru SFTP-SSH a SFTP konektor, kde konektor SFTP-SSH má tyto možnosti:
 
-* Používá <a href="https://github.com/sshnet/SSH.NET" target="_blank"> **SSH.NET** </a> knihovny, která je open source knihovna Secure Shell (SSH), který podporuje .NET. 
+* Používá <a href="https://github.com/sshnet/SSH.NET" target="_blank"> **SSH.NET** </a> knihovny, která je open source knihovna Secure Shell (SSH), který podporuje .NET.
 
   > [!NOTE]
   >
   > Podporuje konektor SFTP-SSH *pouze* těchto privátních klíčů, formátů, algoritmy a otisky prstů:
-  > 
+  >
   > * **Privátní klíče formáty**: RSA (Rivest Shamir Adleman) a klíče algoritmu DSA (algoritmu Digital Signature Algorithm) ve formátu OpenSSH a ssh.com
   > * **Algoritmy šifrování**: DES-EDE3-CBC, DES-EDE3-CFB DES-CBC, AES-128-CBC, AES-192-CBC a AES-256-CBC
   > * **Otisk prstu**: MD5
 
-* Čtení nebo zápis do souborů *1 GB* velikosti ve srovnání s konektoru SFTP, ale zpracovává data v části 50 MB, ne 1 GB kusy. Pro soubory větší než 1 GB, můžete také použít akce [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md). V současné době aktivační události nepodporují dělením dat do bloků.
+* Akce může číst nebo zapisovat soubory *až 1 GB* ve srovnání s konektor SFTP, ale zpracovává data v části 50 MB, ne 1 GB kusy. Pro soubory větší než 1 GB, můžete také použít akce [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md). V současné době SFTP-SSH triggerů nepodporují dělením dat do bloků.
 
 * Poskytuje **vytvořit složku** akce, která vytvoří složku v zadané složce na serveru SFTP.
 
 * Poskytuje **přejmenování souboru** akce, která přejmenuje soubor na serveru SFTP.
 
-* Ukládá do mezipaměti, připojení k serveru SFTP *až 1 hodinu*, což zvyšuje výkon a snižuje počet pokusů při připojování k serveru. Chcete-li nastavit dobu trvání pro toto chování ukládání do mezipaměti, upravte <a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank"> **ClientAliveInterval** </a> vlastnosti v konfiguraci SSH na vašem serveru SFTP. 
+* Ukládá do mezipaměti, připojení k serveru SFTP *až 1 hodinu*, což zvyšuje výkon a snižuje počet pokusů při připojování k serveru. Chcete-li nastavit dobu trvání pro toto chování ukládání do mezipaměti, upravte <a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank"> **ClientAliveInterval** </a> vlastnosti v konfiguraci SSH na vašem serveru SFTP.
 
 ## <a name="prerequisites"></a>Požadavky
 

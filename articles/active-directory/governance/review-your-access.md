@@ -1,6 +1,6 @@
 ---
-title: Zkontrolovat přístup skupinám nebo aplikacím v kontrol přístupu Azure AD | Dokumentace Microsoftu
-description: Zjistěte, jak kontrolovat svůj vlastní přístup do skupiny nebo aplikace v Azure Active Directory kontroly přístupu.
+title: Zkontrolovat přístup skupinám nebo aplikacím v kontroly přístupu – Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak kontrolovat svůj vlastní přístup skupinám nebo aplikacím v kontrol přístupu Azure Active Directory.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -15,16 +15,16 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76f90a5aa3f201fa5d1578ac63526be26377aedf
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3fe2013ff84dd0451fed7d108539606520cb9403
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731204"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576305"
 ---
-# <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Zkontrolovat přístup skupinám nebo aplikacím v kontrol přístupu Azure AD
+# <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Zkontrolovat přístup ke skupinám nebo aplikacím ve službě Azure AD kontroly přístupu
 
-Azure Active Directory (Azure AD) zjednodušuje, jak podniky spravovat přístup skupinám nebo aplikacím ve službě Azure AD a druhou Microsoft Online Services s funkcí s názvem kontrol přístupu Azure AD.
+Azure Active Directory (Azure AD) zjednodušuje podnikům správu přístupu k skupiny a aplikace ve službě Azure AD a zkontroluje ostatní Microsoft Online Services s funkci s názvem přístup služby Azure AD.
 
 Tento článek popisuje, jak kontrolovat svůj vlastní přístup ke skupině nebo aplikaci.
 
@@ -44,11 +44,11 @@ Pokud nemáte k dispozici v e-mailu, zjistíte, že se čeká na přístup kontr
 
     ![Portálu MyApps](./media/review-your-access/myapps-access-panel.png)
 
-1. V pravém horním rohu stránky klikněte na symbol uživatele, která zobrazuje název a výchozí organizace. Pokud je uveden více než jedné organizace, vyberte organizace, která požadované kontroly přístupu.
+1. V pravém horním rohu stránky klikněte na symbol uživatele. Zobrazí se vaše jméno a výchozí organizace. Pokud se zobrazí více než jedna organizace, vyberte organizaci, která požádala o kontrolu přístupu.
 
 1. Na pravé straně stránky klikněte na tlačítko **kontrol přístupu** dlaždici zobrazíte seznam kontrol přístupu.
 
-    Pokud není zobrazena na dlaždici, neexistují žádné kontroly přístupu k provedení pro danou organizaci a v tuto chvíli není potřeba žádná akce.
+    Pokud se dlaždice nezobrazí, pro danou organizaci není potřeba provést žádné kontroly přístupu a v tuto chvíli se nevyžaduje žádná akce.
 
     ![Seznam kontrol přístupu](./media/review-your-access/access-reviews-list.png)
 

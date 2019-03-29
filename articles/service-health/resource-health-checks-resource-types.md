@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 01/29/2019
-ms.openlocfilehash: a8bc82a2717bfa6838b2331ef54ed8098422c223
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0f79a1eed044814d6c2e27f4eadb5ba68a47303f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770335"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620746"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu ve službě Azure resource health
 Níže je úplný seznam všech kontrol provést prostřednictvím služby resource health podle typu prostředku.
@@ -51,10 +51,15 @@ Níže je úplný seznam všech kontrol provést prostřednictvím služby resou
 |---|
 |<ul><li>Je server hostování tohoto virtuálního počítače si a spuštěna?</li><li>Spuštění operačního systému hostitele dokončil?</li><li>Je kontejner virtuálního počítače zřízené a zapnuté?</li><li>Je k dispozici síťové připojení mezi hostitelem a účet úložiště?</li><li>Spuštění hostovaného operačního systému dokončí?</li><li>Existuje probíhající plánované údržby?</li></ul>|
 
+## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
+|Provedený kontroly|
+|---|
+|<ul><li>Existuje byly selhání spuštění kanálu?</li><li>Cluster je hostitelem služby Data Factory v pořádku?</li></ul>|
+
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |Provedený kontroly|
 |---|
-|<ul><li>Máte problémy zkušení uživatelé odeslání nebo výpis svých úloh Data Lake Analytics?</li><li>Jsou úlohy Data Lake Analytics nelze dokončit chyby systému?</li></ul>|
+|<ul><li>Máte problémy zkušení uživatelé odeslání nebo výpis svých úloh Data Lake Analytics?</li><li>Jsou úlohy Data Lake Analytics nelze dokončit z důvodu chyby systému?</li></ul>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
@@ -62,8 +67,27 @@ Níže je úplný seznam všech kontrol provést prostřednictvím služby resou
 |---|
 |<ul><li>Mají uživatelé došlo k potížím nahrávání dat do Data Lake Store?</li><li>Mají uživatelé došlo k potížím, stahování dat z Data Lake Store?</li></ul>|
 
-## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
+## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigration/services
+|Provedený kontroly|
+|---|
+|<ul><li>Má službu database migration service se nepodařilo zřídit?</li><li>Se služba database migration service zastavila kvůli neaktivitě nebo uživatele na žádost?</li></ul>|
 
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
+|Provedený kontroly|
+|---|
+|<ul><li>Server nedostupný kvůli údržbě?</li><li>Není k dispozici z důvodu změny konfigurace serveru?</li></ul>|
+
+## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
+|Provedený kontroly|
+|---|
+|<ul><li>Server nedostupný kvůli údržbě?</li><li>Není k dispozici z důvodu změny konfigurace serveru?</li></ul>|
+
+## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
+|Provedený kontroly|
+|---|
+|<ul><li>Server nedostupný kvůli údržbě?</li><li>Není k dispozici z důvodu změny konfigurace serveru?</li></ul>|
+
+## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 |Provedený kontroly|
 |---|
 |<ul><li>Vytvoření a spuštění je IoT hub?</li></ul>|
@@ -73,15 +97,40 @@ Níže je úplný seznam všech kontrol provést prostřednictvím služby resou
 |---|
 |<ul><li>Zde byly všechny databáze nebo kolekce žádosti nelze zpracovat v důsledku nedostupnosti služby Azure Cosmos DB?</li><li>Existuje byly všechny žádosti dokumentu nelze zpracovat v důsledku nedostupnosti služby Azure Cosmos DB?</li></ul>|
 
+## <a name="microsofteventhubnamespaces"></a>Microsoft.eventhub/namespaces
+|Provedený kontroly|
+|---|
+|<ul><li>Dochází k oboru názvů Event Hubs chybám generovaným uživateli?</li><li>Obor názvů Event Hubs aktuálně probíhá upgrade?</li></ul>|
+
+## <a name="microsofthdinsightclusters"></a>Microsoft.hdinsight/clusters
+|Provedený kontroly|
+|---|
+|<ul><li>Základní služby jsou k dispozici v clusteru HDInsight?</li><li>Můžete clusteru HDInsight přístupový klíč pro BYOK šifrování v klidovém stavu?</li></ul>|
+
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 |Provedený kontroly|
 |---|
 |<ul><li>Selhává kvůli problémům s Azure Key Vaultu platformy žádosti o služby key vault?</li><li>Se žádostí o služby key vault omezují z důvodu příliš mnoho požadavků provedených zákazníky?</li></ul>|
 
+## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
+|Provedený kontroly|
+|---|
+|<ul><li>Je výkon služby Application Gateway snížený výkon?</li><li>Application Gateway je k dispozici?</li></ul>|
+
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |Provedený kontroly|
 |---|
 |<ul><li>Je připojen tunelového připojení sítě VPN?</li><li>Existují konfliktům v konfiguraci v připojení?</li><li>Jsou předsdílené klíče správně nakonfigurovaná?</li><li>Je dostupný v místním zařízení VPN?</li><li>Existují problémy v zásadách zabezpečení protokolu IPSec/IKE?</li><li>Správně zřízené nebo v chybovém stavu, je připojení S2S VPN?</li><li>Správně zřízené nebo v chybovém stavu, je připojení VNET-to-VNET?</li></ul>|
+
+## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft.network/expressreoutecircuits
+|Provedený kontroly|
+|---|
+|<ul><li>Okruh ExpressRoute je v pořádku?</li></ul>|
+
+## <a name="microsoftnetworkfrontdoors"></a>Microsoft.network/frontdoors
+|Provedený kontroly|
+|---|
+|<ul><li>Back-EndY branou neodpovídá s chybami na sond stavu?</li><li>Zpoždění změn konfigurace?</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |Provedený kontroly|
@@ -91,7 +140,12 @@ Níže je úplný seznam všech kontrol provést prostřednictvím služby resou
 ## <a name="microsoftnotificationhubsnamespace"></a>Microsoft.NotificationHubs/namespace
 |Provedený kontroly|
 |---|
-|<ul><li> Operace modulu runtime, jako je registrace, instalace a odeslat provést na obor názvů?</li></ul>|
+|<ul><li>Operace modulu runtime, jako je registrace, instalace a odeslat provést na obor názvů?</li></ul>|
+
+## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.operationalinsights/workspaces
+|Provedený kontroly|
+|---|
+|<ul><li>Existují indexování zpoždění pro pracovní prostor?</li></ul>|
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
 |Provedený kontroly|
@@ -101,7 +155,7 @@ Níže je úplný seznam všech kontrol provést prostřednictvím služby resou
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
 |Provedený kontroly|
 |---|
-|<ul><li>Vytvoření a spuštění je hostitelský operační systém?</li><li>Je workspaceCollection dosažitelný z mimo datové centrum?</li><li>Poskytovatel prostředků Power BI je k dispozici?</li><li>Je služba Power BI k dispozici v příslušné oblasti?</li></ul>|
+|<ul><li>Vytvoření a spuštění je hostitelský operační systém?</li><li>Je workspaceCollection dosažitelný z mimo datové centrum?</li><li>Poskytovatel prostředků Power BI je k dispozici?</li><li>Je dostupná ve službě Power BI v příslušné oblasti?</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
 |Provedený kontroly|

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: aa29b1e2d0e80b3134be69d17ed5be454f8a51c3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fadf1aa54f525fb3d4c414161583f8a89f2e4c05
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57850356"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576288"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Pokročilé kódování přizpůsobením přednastavení MES 
 
@@ -27,11 +27,10 @@ ms.locfileid: "57850356"
 
 Toto téma ukazuje, jak přizpůsobení předvoleb Media Encoderu Standard. [Kódování pomocí Media Encoderu Standard s využitím vlastní předvolby](media-services-custom-mes-presets-with-dotnet.md) téma ukazuje, jak pomocí .NET vytvořit úlohu kódování a úlohu, která spustí tuto úlohu. Jakmile upravíte přednastavení, zadejte vlastní předvolby pro úlohu kódování. 
 
->[!NOTE]
->Pokud používáte přednastavení XML, ujistěte se, že chcete zachovat pořadí prvků, jak je znázorněno v následující ukázky XML (například KeyFrameInterval by měl předcházet SceneChangeDetection).
->
+Pokud používáte přednastavení XML, ujistěte se, že chcete zachovat pořadí prvků, jak je znázorněno v následující ukázky XML (například KeyFrameInterval by měl předcházet SceneChangeDetection).
 
-V tomto tématu na vlastní předvolby, které provádějí následující úkoly kódování je ukázán.
+> [!NOTE] 
+> Mnoho pokročilých funkcí služby Media Services v2 Media Encoder Standard aktuálně nejsou k dispozici ve verzi 3. Další informace najdete v tématu [funkce mezery](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3#feature-gaps-with-respect-to-v2-apis).
 
 ## <a name="support-for-relative-sizes"></a>Podpora pro relativní velikosti
 
@@ -245,7 +244,7 @@ Platí následující aspekty:
     Můžete kombinovat a párovat zápisy, jako je prosím.
 
     Kromě toho Start také podporuje speciálního makra: {osvědčené}, která se pokusí určit "zajímavý" prvního rámce obsahu poznámky: (Krok a rozsahu jsou ignorovány při spuštění nastavený na {nejlepší})
-  * Výchozí hodnoty: Spustit: {nejlepší}
+  * Výchozí nastavení: Spustit: {nejlepší}
 * Výstupní formát, musí se explicitně zadat pro každou formát obrázku: Jpg/Png/BmpFormat. Pokud je přítomen, odpovídá MES JpgVideo k JpgFormat a tak dále. OutputFormat zavádí nové makro konkrétní kodek obrázků: {Index}, které musí být k dispozici (jednou a jen jednou) pro formáty výstupu bitové kopie.
 
 ## <a id="trim_video"></a>Střih videa (výstřižek)

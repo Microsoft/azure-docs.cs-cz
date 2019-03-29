@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: c35352c47edb4f34100501ac791c84108fa9ac17
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 07221e5d93c004a2542adfc3a5374fd75ca34b31
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762836"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621401"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Řetězec funkce pro šablony Azure Resource Manageru
 
@@ -1809,7 +1809,7 @@ Následující příklad ukazuje, jak vytvořit jedinečný název pro účet ú
     ...
 ```
 
-Pokud je potřeba vytvořit nový jedinečný název pokaždé, když nasazení šablony a záměr aktualizace prostředku není, můžete použít [utcNow](#utcnow) funkci s uniqueString. Tento přístup můžete použít v testovacím prostředí. Příklad najdete v tématu [utcNow](#utcNow).
+Pokud je potřeba vytvořit nový jedinečný název pokaždé, když nasazení šablony a záměr aktualizace prostředku není, můžete použít [utcNow](#utcnow) funkci s uniqueString. Tento přístup můžete použít v testovacím prostředí. Příklad najdete v tématu [utcNow](#utcnow).
 
 ### <a name="return-value"></a>Návratová hodnota
 

@@ -1,17 +1,17 @@
 ---
 title: Restartovat – Azure Database for MySQL pomocí webu Azure portal
-description: Tento článek popisuje, jak je možné restartovat Azure Database for MySQL pomocí webu Azure Portal.
+description: Tento článek popisuje, jak je možné restartovat Azure Database for MySQL pomocí webu Azure portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/7/2019
-ms.openlocfilehash: 6cf6679dc6398b112ffc964f50986b2ab30aba47
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a20030a1dc6cd8b89064731c283f9b462d30ec8f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882480"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621392"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>Restartovat – Azure Database for MySQL pomocí webu Azure portal
 Toto téma popisuje, jak je možné restartovat serveru Azure Database for MySQL. Budete muset restartovat server z důvodů údržby, což způsobuje krátké výpadky, jak server provádí operaci.
@@ -22,7 +22,7 @@ Restartování serveru se zablokuje, pokud služba je zaneprázdněna. Napříkl
 
 ## <a name="prerequisites"></a>Požadavky
 K dokončení této příručce s postupy, potřebujete:
-- [– Azure Database for MySQL serveru a databáze](quickstart-create-mysql-server-database-using-azure-portal.md)
+- [– Azure Database for MySQL serveru](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="perform-server-restart"></a>Provést restartování serveru
 

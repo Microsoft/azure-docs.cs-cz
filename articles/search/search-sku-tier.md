@@ -7,19 +7,22 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d325a5dfd57bb6b69e6cf171487adfa8d374512f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 523c99436eb49f1658a5d4c56d64248adccc5c3a
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762921"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621264"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
-Ve službě Azure Search [je prostředek vytvořený](search-create-service-portal.md) na cenové úrovně nebo SKU, který je pevně po dobu životnosti služby. Dostupné úrovně **Free**, **základní**, nebo **standardní**, kde **standardní** je k dispozici v několika konfiguracích a kapacity. Většina zákazníků začíná **Free** vrstvy pro vyhodnocení a potom jim dodejte **standardní** vývojovou a provozní nasazení. Můžete na dokončení všech rychlých startů a kurzů **Free** úrovně, včetně těch, které pro náročné kognitivního vyhledávání. 
+Ve službě Azure Search [je prostředek vytvořený](search-create-service-portal.md) na cenové úrovně nebo SKU, který je pevně po dobu životnosti služby. Dostupné úrovně **Free**, **základní**, **standardní**, nebo **optimalizované pro úložiště**.  **Standardní** a **optimalizované pro úložiště** jsou k dispozici v několika konfiguracích a kapacity. Většina zákazníků začíná **Free** vrstvy pro vyhodnocení a potom jim dodejte na jednu z placených vyšší úrovně pro vývoj a provoz nasazení. Můžete na dokončení všech rychlých startů a kurzů **Free** úrovně, včetně těch, které pro náročné kognitivního vyhledávání.
+
+> [!NOTE]
+> Úrovně optimalizované pro úložiště služby jsou aktuálně k dispozici ve verzi preview za zlevněné ceny pro účely testování a experimentování s cílem shromažďování zpětné vazby. Chcete zjistit koncové ceny oznámíme později při těchto úrovních jsou obecně dostupné. Nedoporučujeme tyto úrovně používají, aplikacích v produkčním prostředí.
 
 Vrstev odrážejí charakteristiky hardwaru, hostování služby (spíše než funkce) a jsou rozlišené pomocí:
 
@@ -42,11 +45,16 @@ V následující tabulce jsou uvedeny dostupné úrovně. Zahrnout další zdroj
 |-----|-------------|
 |Free | Sdílenou s jinými odběrateli. Neškálovatelná, omezená na 3 indexy a přes 50 MB úložiště. |
 |Basic | Vyhrazené výpočetní prostředky pro produkční úlohy v menším měřítku. Jeden oddíl 2 GB a až tři repliky. |
-|Standard 1 (S1) | Z S1 na nahoru vyhrazených počítačů s další kapacitou úložiště a zpracování na všech úrovních. Velikost oddílu je 25 GB na oddíl (maximálně 300 GB dokumentů na službu) pro S1. |
-|Standard 2 (S2) | Podobně jako na S1, ale s 100 GB/oddíly (max. 1,2 TB dokumentů na službu) |
-|Standard 3 (S3) | 200 GB na oddíl (max. 2,4 TB dokumentů na službu). |
+|Standard 1 (S1) | Z S1 na nahoru vyhrazených počítačů s další kapacitou úložiště a zpracování na všech úrovních. Velikost oddílu je 25 GB na oddíl (maximálně 300 GB na službu) pro S1. |
+|Standard 2 (S2) | Podobně jako na S1, ale s 100 GB/oddíly (max 1,2 TB na službu) |
+|Standard 3 (S3) | 200 GB na oddíl (max. 2,4 TB na službu) |
 |Standardní 3 Vysoká hustota (S3 – HD, High Density) | S vysokou hustotou je *hostující režim* pro S3. Základního hardwaru je optimalizovaná pro velký počet menší indexy, které jsou určené pro scénáře víceklientské architektury. S3 HD má stejné poplatky za jednotky S3, ale hardware je optimalizovaný pro rychlejší čtení na spoustu menších indexy.|
+|Optimalizované pro úložiště 1 (L1) | 1 TB na oddíl (max. 12 TB na službu) |
+|Úložiště optimalizované 2 (L2) | 2 TB na oddíl (max. 24 TB na službu) |
 
+> [!NOTE] 
+> Úrovně optimalizované pro úložiště nabízejí větší kapacitu úložiště za nižší cenu za TB než úrovně Standard.  Primární kompromis je vyšší latence dotazu, který by měl ověřit pro vaše konkrétní aplikační požadavky.  Další informace o aspektech týkajících se výkonu této vrstvy, naleznete v tématu [aspekty týkající se výkonu a optimalizace](search-performance-optimization.md).
+>
 
 ## <a name="how-billing-works"></a>Jak funguje fakturace
 
@@ -56,7 +64,7 @@ Ve službě Azure Search existují tři způsoby, jak vynakládá ve službě Az
 
 Pro samotnou službu minimální sazba je první částí vyhledávání (1 repliky x 1 oddílu) a tato velikost je konstantní po dobu životnosti služby, protože službu nelze spustit žádnou menší než tato konfigurace. 
 
-Na následujícím snímku obrazovky za cenu jednotky je označen pro Free a Basic, S1 (S2 a S3 se nezobrazí). Pokud jste vytvořili základní služby nebo služeb standard, váš měsíční náklady by průměrná hodnota, která se zobrazí pro *cena 1* a *cena 2* v uvedeném pořadí. Náklady na jednotku zvýší pro každou vrstvu protože je větší na jednotlivých úrovních po sobě jdoucích výpočetní výkon a výpočetní kapacitu.
+Na následujícím snímku obrazovky za cenu jednotky je označen pro Free a Basic, S1 (S2, S3, L1 a L2 nezobrazují). Pokud jste vytvořili **základní**, **standardní**, nebo **optimalizované pro úložiště** služby, váš měsíční náklady by průměrná hodnota, která se zobrazí pro *cena-1*a *cena 2* v uvedeném pořadí. Náklady na jednotku zvýší pro každou vrstvu protože je větší na jednotlivých úrovních po sobě jdoucích výpočetní výkon a výpočetní kapacitu.
 
 ![Za cenu jednotky](./media/search-sku-tier/per-unit-pricing.png "za cenu jednotky")
 
@@ -117,7 +125,7 @@ Ve službě Azure Search má strukturu kapacity *repliky* a *oddíly*.
 + Oddíly ukládat indexy a automaticky rozdělí prohledávatelná data: dva oddíly rozdělit třetiny indexu v polovině, tři oddíly a tak dále. Z hlediska kapacity *oddílu velikost* je primární odlišující funkce napříč úrovněmi.
 
 > [!NOTE]
-> Všechny **standardní** úrovní podpory [flexibilní kombinace repliky a oddíly](search-capacity-planning.md#chart) , abyste mohli [váha systému rychlost ani prostředky úložiště](search-performance-optimization.md) změnou zůstatek na účtu. **Základní** nabízí tři repliky vysokou dostupnost, ale má pouze jeden oddíl. **Bezplatné** úrovně se neposkytuje vyhrazené prostředky: výpočetní prostředky se sdílí několik předplatitelů.
+> Všechny **standardní** a **optimalizované pro úložiště** úrovní podpory [flexibilní kombinace repliky a oddíly](search-capacity-planning.md#chart) , abyste mohli [váha systému pro rychlost nebo úložiště](search-performance-optimization.md) změnou zůstatek na účtu. **Základní** nabízí tři repliky vysokou dostupnost, ale má pouze jeden oddíl. **Bezplatné** úrovně se neposkytuje vyhrazené prostředky: výpočetní prostředky se sdílí několik předplatitelů.
 
 ### <a name="more-about-service-limits"></a>Další informace o omezení služby
 
@@ -125,7 +133,7 @@ Služby prostředky hostitele, jako jsou indexy, indexery a tak dále. Každá �
 
 ## <a name="consumption-patterns"></a>Vzory využití
 
-Většina zákazníků začíná **Free** služby, které se zachovat po neomezenou dobu a pak vyberte jednu z **standardní** úrovní pro úlohy vážné vývojové nebo produkční prostředí. 
+Většina zákazníků začíná **Free** služby, které se zachovat po neomezenou dobu a pak vyberte jednu z **standardní** nebo **optimalizované pro úložiště** úrovně pro vývoj závažné nebo úlohy v produkčním prostředí. 
 
 ![Služba Azure search úrovně](./media/search-sku-tier/tiers.png "cenových úrovní Azure search")
 
@@ -147,6 +155,15 @@ Stránky portálu a cenové zaměření na velikost oddílu a úložiště, ale 
 > [!NOTE]
 > Dříve limity pro dokumenty byly potřeba, ale již nejsou použitelné pro nové služby. Další informace o podmínky, za kterých se omezení dokumentů vztahuje stále používají, najdete v části [omezení služby: dokumentu limity](search-limits-quotas-capacity.md#document-limits).
 >
+
+Vrstvy úložiště služba optimalizovaný **L1 L2**, jsou ideální pro aplikace s požadavky velkých objemů dat, ale relativně nízký počet koncovým uživatelům minimalizace latence dotazu není-li nejvyšší prioritou.  
+
+|  | L1 | L2 |  |  |  |  |  |
+|--|----|----|--|--|--|--|--|
+| Velikost oddílu|  1 TB | 2 TB |  |  |  |  |  |
+| omezení indexu a indexeru| 10 | 10 |  |  |  |  |  |
+
+*L2* nabízí dvakrát celkové kapacity úložiště do *L1*.  Volba úrovně podle maximální množství dat, která si myslíte, že potřebuje indexu.  *L1* úroveň oddíly škálování nahoru v 1 TB přírůstcích až 12 TB, zatímco *L2* se tak zvýší o 2 TB na oddíl až do maximálního počtu 24 TB.
 
 ## <a name="evaluate-capacity"></a>Vyhodnocení kapacity
 
@@ -174,16 +191,17 @@ Předpokládáme, že byla ukázka zástupce a 10 % celý zdroj dat. a 30 MB ind
 
 Zákazníci, kteří dávají přednost začínat vyhrazených prostředcích, které může pojmout větší vzorkování a časy zpracování a pak vytvářet realistické odhady množství index, velikost a svazků dotazu během vývoje. Zpočátku služba se zřizuje podle odhad nejlepší odhad a pak zrání vývojového projektu, týmy obvykle zjistit, zda existující službu nad nebo pod kapacity pro předpokládané produkční úlohy. 
 
-1. [Zkontrolujte limity pro služby v jednotlivých vrstvách](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits) můžete určit, zda nižší úrovně můžou podporovat množství indexy, které potřebujete. Mezi **základní**-**S1**- **S2** úrovně, omezení indexu jsou 15-50-200, v uvedeném pořadí.
+1. [Zkontrolujte limity pro služby v jednotlivých vrstvách](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits) můžete určit, zda nižší úrovně můžou podporovat množství indexy, které potřebujete. Mezi **základní**-**S1**-**S2** úrovně, omezení indexu jsou 15-50-200, v uvedeném pořadí.  **Optimalizované pro úložiště** úroveň má limit 10 indexy, protože jde o návrháře pro podporu nízký počet velmi velké indexy.
 
 1. [Vytvoření služby na fakturovatelné úrovni](search-create-service-portal.md):
 
     + Začněte s nízkou, na **základní** nebo **S1** Pokud jste na začátku učení křivky.
     + Spustit na vysokou **S2** nebo dokonce **S3**, pokud ve velkém měřítku indexování a dotazování načítají samozřejmé.
+    + Optimalizované pro úložiště na **L1** nebo **L2**, pokud se indexování velké množství dat a zatížení dotazu je relativně nízký, jako je například interní obchodní aplikace.
 
 1. [Vytvoření počátečního indexu](search-create-index-portal.md) k určení, jak přeloží zdroje dat do indexu. Toto je jediný způsob, jak odhadnout velikost indexu.
 
-1. [Monitorování úložiště, limity pro služby, množství dotazů a latence](search-monitor-usage.md) na portálu. Na portálu se zobrazí dotazy za druhé, omezené dotazy a latence hledání; všechny z nich může pomoci při rozhodování, pokud jste na správné úrovni. Kromě portálu metriky, můžete nakonfigurovat hloubkového monitorování, jako je například interaktivní analýza povolením [Analýza provozu vyhledávání](search-traffic-analytics.md). 
+1. [Monitorování úložiště, limity pro služby, množství dotazů a latence](search-monitor-usage.md) na portálu. Na portálu se zobrazí dotazy za druhé, omezené dotazy a latence hledání; všechny z nich může pomoci při rozhodování, pokud jste vybrali správné úrovně. Kromě portálu metriky, můžete nakonfigurovat hloubkového monitorování, jako je například interaktivní analýza povolením [Analýza provozu vyhledávání](search-traffic-analytics.md). 
 
 Index počtu a velikosti jsou stejně důležité pro analýzu, protože je dosaženo omezení maximální prostřednictvím plného využití úložiště (oddíly) nebo maximálními limity prostředků (indexy, indexery a tak dále), podle toho, co nastane dřív. Na portálu, vám pomůže sledovat obě, zobrazuje aktuální využití a omezení maximální vedle sebe na stránce Přehled.
 
@@ -197,8 +215,9 @@ Dotazů za sekundu (QPS) je metriku, která získá význačnost během optimali
 
 Úrovně standard mohla doručovat rovnováhu replik oddílů, podpora obsloužit dotaz prostřednictvím další repliky pro načítání vyrovnávání a další oddíly pro paralelní zpracování. Po zřízení služby můžete vyladit výkon.
 
-Zákazníky, kteří očekávají strong trvalejší dotazu svazky od samého počátku zvažte vyšší úrovně, se opírá o výkonnější hardware. Můžete pak proveďte oddílů a replik v režimu offline nebo dokonce přepnout na nižší úroveň služby, pokud tyto svazky dotaz sloučit. Další informace o tom, jak vypočítat propustnost dotazů, najdete v části [Azure Search výkon a optimalizace](search-performance-optimization.md).
+Zákazníci, kteří očekávají svazky silné trvalý dotaz od samého počátku by měli zvážit vyšší **standardní** úrovně se opírá o výkonnější hardware. Můžete pak proveďte oddílů a replik v režimu offline nebo dokonce přepnout na nižší úroveň služby, pokud tyto svazky dotaz sloučit. Další informace o tom, jak vypočítat propustnost dotazů, najdete v části [Azure Search výkon a optimalizace](search-performance-optimization.md).
 
+Úložiště optimalizované úrovně Štíhlá směrem k úlohy velkých objemů dat, podpora více celkový úložiště indexů k dispozici, kde jsou požadavky na latenci dotazů poněkud volný.  Další repliky by stále využít pro načítání vyrovnávání a další oddíly pro paralelní zpracování. Po zřízení služby můžete vyladit výkon.
 
 **Smlouvy o úrovni služeb**
 
@@ -216,7 +235,7 @@ Zákazníky, kteří očekávají strong trvalejší dotazu svazky od samého po
 
 Začněte **Free** vrstvy a vytvoření počátečního indexu pomocí některé podsady z vašich dat lépe pochopit jeho vlastnosti. Struktury dat ve službě Azure Search je obrácenou index, kde je velikost a složitost obrácenou indexu se určují podle obsahu. Mějte na paměti, že vysoce redundantní obsah obvykle za následek menší index než vysoce nestandardní obsah. V důsledku toho je obsah vlastnosti spíše než velikost datové sady, která určuje požadavky na úložiště indexů.
 
-Jakmile budete mít představu počáteční velikost indexu [zřízení vám začne fakturovat služba](search-create-service-portal.md) na jednu z úrovní popisovaných v tomto článku, buď **základní** nebo **standardní** vrstvy. Zmírnit všechny umělých omezení na podmnožiny dat a [opětovné sestavení indexu](search-howto-reindex.md) zahrnout všechna data ve skutečnosti chcete umožnit prohledávání.
+Jakmile budete mít představu počáteční velikost indexu [zřízení vám začne fakturovat služba](search-create-service-portal.md) na jednu z úrovní popisovaných v tomto článku, buď **základní**, **standardní**, nebo **Optimalizované pro úložiště** vrstvy. Zmírnit všechny umělých omezení na velikosti dat a [opětovné sestavení indexu](search-howto-reindex.md) zahrnout všechna data ve skutečnosti chcete umožnit prohledávání.
 
 [Přidělit oddílů a replik](search-capacity-planning.md) podle potřeby můžete získat výkon a škálování, budete potřebovat.
 

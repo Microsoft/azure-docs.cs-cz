@@ -1,6 +1,6 @@
 ---
 title: Příklad PowerShellu – Obnovení databáze SQL Azure ze zálohy | Microsoft Docs
-description: Ukázkový skript Azure Powershellu k obnovení jedné databáze Azure SQL z geograficky redundantní zálohy
+description: Ukázkový skript Azure Powershellu k obnovení jedné služby Azure SQL database k dřívějšímu bodu v čase z automatických záloh
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -11,17 +11,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 3bfefa704fdd819b3841dcc58866c310353bfdc3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/27/2019
+ms.openlocfilehash: f58cc930ace2dc1fc65aa0494fd6c1510ee5ff29
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57883606"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621341"
 ---
-# <a name="use-powershell-to-restore-an-azure-sql-single-database-from-backups"></a>Použití Powershellu k obnovení jedné databáze Azure SQL ze zálohy
+# <a name="use-powershell-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>Použití Powershellu k obnovení jedné služby Azure SQL database k dřívějšímu bodu v čase
 
-Tento ukázkový skript PowerShellu obnoví databázi SQL Azure z geograficky redundantní zálohy, odstraněnou databázi SQL Azure z poslední zálohy a databázi SQL Azure ke konkrétnímu bodu v čase.  
+Tento ukázkový skript Powershellu obnoví databázi Azure SQL k určitému bodu v čase.  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]

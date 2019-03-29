@@ -7,75 +7,51 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: sngun
-ms.openlocfilehash: b620ca76cfea296e504afffd91852308a01575db
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 902303a8f55f4494e0cc6c21b0438e41437c0567
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001963"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620661"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Úrovně konzistence a rozhraní API služby Cosmos DB
 
-Pět modelů konzistence nabízených službou Azure Cosmos DB nativně podporuje rozhraní SQL API. Při použití služby Azure Cosmos DB, rozhraní SQL API je výchozí hodnota. 
+Azure Cosmos DB poskytuje nativní podporu pro přenosový protokol kompatibilní rozhraní API pro oblíbené databáze. Patří mezi ně MongoDB, Apache Cassandra, Gremlin a Azure Table storage. Tyto databáze nenabízejí přesně definovaných modelů konzistence a záruky jištěná smlouva SLA pro úrovně konzistence. Obvykle poskytují pouze podmnožinu pět modelů konzistence nabízených službou Azure Cosmos DB. 
 
-Azure Cosmos DB poskytuje nativní podporu také pro přenosový protokol kompatibilní rozhraní API pro oblíbené databáze. Zahrnout databáze MongoDB, Apache Cassandra, Gremlin a Azure Table storage. Tyto databáze nenabízí přesně definovaných modelů konzistence a záruky jištěná smlouva SLA pro úrovně konzistence. Obvykle poskytují pouze podmnožinu pět modelů konzistence nabízených službou Azure Cosmos DB. Pro rozhraní SQL API, Gremlin API a rozhraní API tabulky se používá výchozí úroveň konzistence nakonfigurovaný na účtu Azure Cosmos. 
+Při použití rozhraní SQL API, Gremlin API a rozhraní API tabulky, se používá výchozí úroveň konzistence nakonfigurovaný na účtu Azure Cosmos. 
 
-V následujících částech se dozvíte mapování mezi konzistence dat požadoval ovladač klienta OSS pro Apache Cassandra, MongoDB a odpovídající úrovně konzistence ve službě Azure Cosmos DB.
+Při použití rozhraní Apache Cassandra API nebo Azure Cosmos DB: API pro MongoDB, získávání aplikací kompletní o úrovních konzistence nabízených databází Apache Cassandra a MongoDB, v uvedeném pořadí, s ještě přesvědčivější konzistence a záruky odolnosti. Tento dokument ukazuje odpovídající úrovně konzistence služby Azure Cosmos DB pro Apache Cassandra a úrovně konzistence MongoDB.
+
 
 ## <a id="cassandra-mapping"></a>Mapování mezi úrovněmi konzistence Apache Cassandra a Azure Cosmos DB
 
-Následující tabulka popisuje různé kombinace konzistence, které můžete s použitím rozhraní Cassandra API a mapování úrovně konzistence ekvivalentní nativní služby Cosmos DB. Všechny kombinace Apache Cassandra zápisu a čtení režimy jsou nativně podporovány službou Cosmos DB. V každé kombinací modelu konzistence čtení a zápisu Apache Cassandra Cosmos DB bude poskytovat záruky konzistence stejné nebo větší než Apache Cassandra. Kromě toho služby Cosmos DB poskytuje záruky větší odolnost než Apache Cassandra i v nejslabší režimu zápisu.
+Na rozdíl od AzureCosmos databáze Apache Cassandra neposkytuje nativní přesně záruky konzistence definované.  Místo toho Apache Cassandra poskytuje úroveň konzistence zápisu a úroveň konzistence čtení, chcete povolit vysokou dostupnost, konzistence a latence kompromisy. Při použití služby Azure Cosmos DB Cassandra API: 
 
-Následující tabulka ukazuje **zápisu mapování konzistence** mezi Azure Cosmos DB a Cassandra:
+* Úroveň konzistence zápisu Apache Cassandra je namapována na výchozí úroveň konzistence nakonfigurovaný na vašem účtu Azure Cosmos. 
 
-| Cassandra | Azure Cosmos DB | Záruka |
-| - | - | - |
-|VŠE|Silné  | Linearizovatelnost |
-| EACH_QUORUM   | Silné    | Linearizovatelnost | 
-| KVORA, SÉRIOVÉHO PORTU |  Silné |    Linearizovatelnost |
-| LOCAL_QUORUM, THREE, TWO, ONE, LOCAL_ONE, ANY | Konzistentní předpona |Global Consistent Prefix |
-| EACH_QUORUM   | Silné    | Linearizovatelnost |
-| KVORA, SÉRIOVÉHO PORTU |  Silné |    Linearizovatelnost |
-| LOCAL_QUORUM, THREE, TWO, ONE, LOCAL_ONE, ANY | Konzistentní předpona | Global Consistent Prefix |
-| KVORA, SÉRIOVÉHO PORTU | Silné   | Linearizovatelnost |
-| LOCAL_QUORUM, THREE, TWO, ONE, LOCAL_ONE, ANY | Konzistentní předpona | Global Consistent Prefix |
-| LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE    | Omezená neaktuálnost | <ul><li>Omezená Neaktuálnost.</li><li>Maximálně K verzí nebo t čas za bránou.</li><li>Přečtěte si nejnovější potvrzená hodnota v oblasti.</li></ul> |
-| ONE, LOCAL_ONE, ANY   | Konzistentní předpona | Konzistentní předpona v jednotlivých oblastech |
+* Azure Cosmos DB dynamicky namapuje úroveň konzistence čtení zadaný ovladač Cassandra klienta na jednu z úrovní konzistence služby Azure Cosmos DB dynamicky konfigurovat na žádost o čtení. 
 
-Následující tabulka ukazuje **mapování konzistence čtení** mezi Azure Cosmos DB a Cassandra:
+Následující tabulka ukazuje, jak nativní úrovně konzistence Cassandra jsou mapované na úrovně konzistence rozhraní Azure Cosmos DB při používání rozhraní Cassandra API:  
 
-| Cassandra | Azure Cosmos DB | Záruka |
-| - | - | - |
-| ALL, QUORUM, SERIAL, LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO, ONE, LOCAL_ONE | Silné  | Linearizovatelnost|
-| ALL, QUORUM, SERIAL, LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO   |Silné |   Linearizovatelnost |
-|LOCAL_ONE, ONE | Konzistentní předpona | Global Consistent Prefix |
-| VŠECHNY KVORA, SÉRIOVÉ   | Silné    | Linearizovatelnost |
-| LOCAL_ONE, ONE, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE |  Konzistentní předpona   | Global Consistent Prefix |
-| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM |    Konzistentní předpona   | Global Consistent Prefix |
-| ALL, QUORUM, SERIAL, LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO   |Silné |   Linearizovatelnost |
-| LOCAL_ONE, ONE    | Konzistentní předpona | Global Consistent Prefix|
-| VŠECHNY KVORA, SERIAL silné Linearizovatelnosti
-LOCAL_ONE, ONE, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE  |Konzistentní předpona  | Global Consistent Prefix |
-|VŠE    |Silné |Linearizovatelnost |
-| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM  |Konzistentní předpona  |Global Consistent Prefix|
-|VŠECHNY KVORA, SERIAL silné Linearizovatelnosti
-LOCAL_ONE, ONE, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE  |Konzistentní předpona  |Global Consistent Prefix |
-|VŠE    |Silné | Linearizovatelnost |
-| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM  | Konzistentní předpona | Global Consistent Prefix |
-| QUORUM, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE |  Omezená neaktuálnost   | <ul><li>Omezená Neaktuálnost.</li><li>Maximálně K verzí nebo t čas za bránou. </li><li>Přečtěte si nejnovější potvrzená hodnota v oblasti.</li></ul>
-| LOCAL_ONE, ONE |Konzistentní předpona | Konzistentní předpona v jednotlivých oblastech |
-| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM  | Konzistentní předpona | Konzistentní předpona v jednotlivých oblastech |
+[ ![Mapování modelu konzistence Cassandra](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png) ](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
 
+## <a id="mongo-mapping"></a>Mapování mezi úrovněmi konzistence MongoDB a Azure Cosmos DB
 
-## <a id="mongo-mapping"></a>Mapování mezi úrovněmi konzistence MongoDB 3.4 a Azure Cosmos DB
+Na rozdíl od služby Azure Cosmos DB neposkytuje nativní MongoDB přesně záruky konzistence definované. Místo toho nativní MongoDB umožňuje uživatelům konfigurovat následující záruky konzistence: žádný problém zápisu, čtení znepokojení a ismaster nebo direktivě - směrovat operace čtení na primární nebo sekundární repliky k dosažení úrovně požadovaného konzistence. 
 
-V následující tabulce jsou uvedeny "načíst obavy" mapování mezi MongoDB 3.4 a výchozí úrovně konzistence ve službě Azure Cosmos DB. V tabulce jsou uvedeny nasazení ve více oblastech a jedné oblasti.
+Při použití rozhraní API služby Azure Cosmos DB pro MongoDB, ovladač MongoDB považuje za oblast zápisu na primární repliku a všechny ostatní oblasti jsou repliky pro čtení. Můžete zvolit, které oblasti přidružené k účtu Azure Cosmos jako primární repliku. 
 
-| **MongoDB 3.4** | **Azure Cosmos DB (více oblastí)** | **Azure Cosmos DB (jedné oblasti)** |
-| - | - | - |
-| Linearizable | Silné | Silné |
-| Většina | Omezená neaktuálnost | Silné |
-| Místní | Konzistentní předpona | Konzistentní předpona |
+Při používání služby Azure Cosmos DB přes rozhraní API pro MongoDB:
+
+* Zápis zájmem je namapována na výchozí úroveň konzistence nakonfigurovaný na vašem účtu Azure Cosmos.
+ 
+* Azure Cosmos DB dynamicky namapuje čtení problém určené ovladače klienta MongoDB na jednu z úrovní konzistence služby Azure Cosmos DB, která je dynamicky nakonfigurovaná na žádost o čtení. 
+
+* Přidání poznámek ke konkrétní oblasti přidružené k účtu Azure Cosmos jako "Hlavní" tím, že oblast jako první zapisovatelný oblasti. 
+
+Následující tabulka ukazuje, jak nativní MongoDB zápisu/čtení otázky jsou mapovány na úrovně konzistence Azure Cosmos, při použití rozhraní API služby Azure Cosmos DB pro MongoDB:
+
+[ ![Mapování modelu konzistence MongoDB](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png) ](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
 
 ## <a name="next-steps"></a>Další postup
 

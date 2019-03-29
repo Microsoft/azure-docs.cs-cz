@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4ebe77d26360776140db8e2a4b0209475d9d6367
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 09b219fe173be9ba2fd515facce9964b5edc67af
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484708"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621311"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Migrace uživatelů
 Při migraci vašeho zprostředkovatele identity Azure Active Directory B2C (Azure AD B2C), budete pravděpodobně potřebovat k migraci uživatelský účet. Tento článek vysvětluje, jak migrovat existující uživatelské účty z libovolného poskytovatele identit do Azure AD B2C. Článek neměl být doporučený, ale místo toho popisuje několik scénářů. Vývojář je zodpovědná za vhodnost obou těchto přístupů.
@@ -257,7 +257,7 @@ Pokud chcete sledovat změnu hesla, použijete tabulku Azure. Když spustíte pr
 ### <a name="41-update-your-application-setting"></a>4.1: Aktualizovat nastavení aplikace
 1. Chcete-li otestovat ukázka rozhraní RESTful API, otevřete `AADB2C.UserMigration.sln` v sadě Visual Studio.
 
-1. V `AADB2C.UserMigration.API` projekt, otevřete *appsettings.json* souboru. Nahraďte konfigurovaných v nastavení [krok 2.2](#step-22-configure-the-application-settings):
+1. V `AADB2C.UserMigration.API` projekt, otevřete *Web.config* souboru. Nahraďte konfigurovaných v nastavení [krok 2.2](#step-22-configure-the-application-settings):
 
     ```json
     {

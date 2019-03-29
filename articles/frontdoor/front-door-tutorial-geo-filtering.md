@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 2553dccaa57e5340bf36bbccdf7826d242716300
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: bdbf0d78b45291e7482c1af3999c8ce3980ef36f
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472629"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578488"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Jak nastavit zásadu geografické filtrování WAF pro vaše branou
 V tomto kurzu se dozvíte, jak pomocí Azure PowerShellu vytvořit ukázkovou zásadu geografického filtrování a přidružit ji k existujícímu hostiteli front-endu služby Front Door. Tato ukázková zásada geografického filtrování bude blokovat požadavky ze všech zemí s výjimkou USA.
@@ -79,7 +79,7 @@ $nonUSBlockRule = New-AzFrontDoorCustomRuleObject `
 ## <a name="add-rules-to-a-policy"></a>Přidání pravidel pro zásadu
 Najít název skupiny prostředků, která obsahuje pomocí profilu branou `Get-AzResourceGroup`. Dále vytvořte `geoPolicy` zásady objekt obsahující `nonUSBlockRule` pomocí [New-AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy) v zadané skupině prostředků, který obsahuje profil branou. Musíte zadat jedinečný název pro zásadu geo. 
 
-Následujícím příkladu používá název skupiny prostředků *myResourceGroupFD1* za předpokladu, že jste vytvořili branou profilována za použití podle pokynů [rychlý start: Vytvoření branou](quickstart-create-front-door.md) článku.
+Následujícím příkladu používá název skupiny prostředků *myResourceGroupFD1* za předpokladu, že jste vytvořili branou profilována za použití podle pokynů [rychlý start: Vytvoření branou](quickstart-create-front-door.md) článku. V následujícím příkladu nahraďte název zásady *geoPolicyAllowUSOnly* s jedinečný název zásady.
 
 ```
 $geoPolicy = New-AzFrontDoorFireWallPolicy `

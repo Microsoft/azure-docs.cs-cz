@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 1f94544a2e7a26ab00432a3564bb752c71254844
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ef313ea631a963aa7893bf15e826e591c9d9cfc3
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484876"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619794"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Nasazení aplikace do služby Azure App Service pomocí souboru ZIP nebo WAR
 
@@ -31,6 +31,7 @@ Toto nasazení souboru ZIP používá stejnou službu Kudu nasazení průběžn�
 - Možnost zapnutí výchozí proces sestavení, která zahrnuje obnovení balíčků.
 - [Vlastní nastavení nasazení](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings), včetně spouštění skriptů nasazení.  
 - Protokoly nasazení. 
+- Maximální velikost souboru 512 MB.
 
 Další informace najdete v tématu [Kudu dokumentaci](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: d9443349ea7ce91a3b8ab01510917bc82ae9b8ad
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 5c25d6703fe631a401994039200539156cc7b4de
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316129"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579457"
 ---
 # <a name="saas-fulfillment-apis-version-1"></a>SaaS splnění rozhraní API verze 1
 
@@ -624,15 +624,13 @@ SaaS webhook se používá pro oznamování změn aktivně ve službě SaaS. Tot
 *Text*
 
 ``` json
-  { 
+  {
     "id": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
     "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
     "subscriptionId":"cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
-    "offerId": "sampleSaaSOffer", // Provided with "Update" action
-    "publisherId": "contoso", 
-    "planId": "silver",     // Provided with "Update" action
-    "action": "Activate", // Activate/Delete/Suspend/Reinstate/Update
-    "timeStamp": "2018-12-01T00:00:00"
+    "action": "Subscribe", // Subscribe/Unsubscribe/ChangePlan
+    "operationRequestSource":"Azure",
+    "timeStamp":"2018-12-01T00:00:00"
   }
 ```
 

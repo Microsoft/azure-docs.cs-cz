@@ -1,5 +1,5 @@
 ---
-title: Začněte používat PIM – Azure | Dokumentace Microsoftu
+title: Začněte používat PIM – Azure Active Directory | Dokumentace Microsoftu
 description: Zjistěte, jak povolit a začít používat Azure AD Privileged Identity Management (PIM) na webu Azure Portal.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e94c9b56ba65e3a7c51c1a85e97f7521377bae
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 00a93b23b5967e8b6b881f5d1fe6adcd89b0f77b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546853"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576737"
 ---
 # <a name="start-using-pim"></a>Zahájení práce s využitím PIM
 
@@ -38,7 +38,7 @@ Další informace najdete v tématu [licenční požadavky pro použití PIM](su
 
 ## <a name="first-person-to-use-pim"></a>První, kdo používat PIM
 
-Pokud jste první, kdo ve vašem adresáři používat PIM, se automaticky přiřazují [správce zabezpečení](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) a [správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) v daném adresáři. Pouze správci privilegovaných rolí můžou spravovat přiřazení rolí uživatelů adresáře Azure AD. Kromě toho můžete spustit [Průvodce zabezpečením](pim-security-wizard.md) , který vás provede počátečním zjišťováním a přiřazováním prostředí.
+Pokud jste první, kdo ve vašem adresáři používat PIM, se automaticky přiřazují [správce zabezpečení](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) a [správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) v daném adresáři. Pouze správci privilegovaných rolí můžou Spravovat přiřazení rolí uživatelů Azure AD. Kromě toho můžete spustit [Průvodce zabezpečením](pim-security-wizard.md) , který vás provede počátečním zjišťováním a přiřazováním prostředí.
 
 ## <a name="enable-pim"></a>Povolení PIM
 
@@ -108,7 +108,7 @@ Po nastavení PIM můžete provádět úkoly správy identity.
 | **Moje žádosti** | Zobrazí vaše žádosti čekající na aktivaci přiřazení oprávněné role. |
 | **Schvalování žádostí** | Zobrazí seznam žádostí o aktivaci oprávněných rolí uživatelů v adresáři, které jsou určené ke schválení. |
 | **Zkontrolovat přístup** | Zobrazí seznam aktivních kontrol přístupu, které jsou přiřazeny k dokončení, ať už kontrolujete přístup sobě nebo někomu jinému. |
-| **Role Azure AD** | Zobrazí se řídicí panel a nastavení správci privilegovaných rolí můžou Spravovat přiřazení rolí adresáře Azure AD. Tento řídicí panel se zobrazuje jen správcům privilegovaných rolí. Ostatní uživatelé mají přístup ke speciálnímu řídicímu panelu s názvem Moje zobrazení. Řídicí panel Moje zobrazení zobrazuje informace pouze o uživateli přistupujícím k řídicím panelu, ne pro celého tenanta. |
+| **Role Azure AD** | Zobrazí se řídicí panel a nastavení správci privilegovaných rolí můžou Spravovat přiřazení rolí Azure AD. Tento řídicí panel se zobrazuje jen správcům privilegovaných rolí. Ostatní uživatelé mají přístup ke speciálnímu řídicímu panelu s názvem Moje zobrazení. Řídicí panel Moje zobrazení zobrazuje informace pouze o uživateli přistupujícím k řídicím panelu, ne pro celého tenanta. |
 | **Prostředky Azure** | Zobrazí se řídicí panel a nastavení správci privilegovaných rolí můžou Spravovat přiřazení rolí prostředků Azure. Tento řídicí panel se zobrazuje jen správcům privilegovaných rolí. Ostatní uživatelé mají přístup ke speciálnímu řídicímu panelu s názvem Moje zobrazení. Řídicí panel Moje zobrazení zobrazuje informace pouze o uživateli přistupujícím k řídicím panelu, ne pro celého tenanta. |
 
 ## <a name="add-a-pim-tile-to-the-dashboard"></a>Přidat dlaždici PIM do řídicího panelu
@@ -133,5 +133,5 @@ Aby bylo snazší otevřete PIM, měli byste přidat PIM dlaždice na řídicí 
 
 ## <a name="next-steps"></a>Další postup
 
-- [Přiřazení role adresáře Azure AD v PIM](pim-how-to-add-role-to-user.md)
+- [Přiřazení role Azure AD v PIM](pim-how-to-add-role-to-user.md)
 - [Vyhledejte prostředky Azure ke správě v PIM](pim-resource-roles-discover-resources.md)

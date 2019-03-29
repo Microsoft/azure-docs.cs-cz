@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d1debbcc8f225a0d4608d67b19e5e00aca580ce1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 51191f3276a9420129f47944b47a182479719d5a
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122008"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621664"
 ---
 # <a name="what-is-azure-backup"></a>Co je Azure Backup?
 
@@ -26,12 +26,16 @@ Služba Azure Backup zálohuje data do cloudu Microsoft Azure. Můžete zálohov
 Azure Backup nabízí tyto klíčové výhody:
 
 - **Zpracování úloh zálohování v místním**: Azure Backup nabízí jednoduché řešení pro zálohování místních prostředků do cloudu. Získejte krátkodobého a dlouhodobého zálohování, aniž by museli nasazovat komplexní místní řešení pro zálohování. 
-- **Zálohování virtuálních počítačů Azure IaaS**: Azure Backup poskytuje zálohy nezávislou a izolovanou pro ochranu proti náhodnému odstranění původní data. Zálohy jsou uložené v trezoru služby Recovery Services s integrovanými spravované bodů obnovení. Konfigurace a škálovatelnosti je jednoduché, jsou optimalizované zálohování a můžete je snadno obnovit podle potřeby.
+- **Zálohování virtuálních počítačů Azure IaaS**: Azure Backup poskytuje zálohy nezávislou a izolovanou pro ochranu proti náhodnému odstranění původní data. Zálohy jsou uložené v trezoru služby Recovery Services s integrovanými spravované bodů obnovení. Konfigurace a rozšiřitelnost jsou jednoduché, jsou optimalizované zálohování a můžete je snadno obnovit podle potřeby.
 - **Jednoduše škálujte** – Azure Backup používá základní výkon a neomezený rozsah cloudu Azure k zajištění vysoké dostupnosti s žádné údržbou nebo monitorováním režijní náklady. 
-- **Získejte neomezený přenos dat.** – Azure Backup neomezuje množství příchozích nebo odchozích dat přenosu, nebo za data přenesená.
+- **Získejte neomezený přenos dat.**: Azure Backup neomezuje množství příchozích nebo odchozích dat přenosu, nebo za data přenesená.
     - Odchozí data označují data přenášená z trezoru služby Recovery Services během operace obnovení.
     - Pokud provedete import velkých objemů dat pomocí služby Azure Import/Export počáteční offline zálohu, je náklady související s příchozími daty.  [Další informace](backup-azure-backup-import-export.md). 
-- **Zabezpečení dat**: Šifrování dat umožňuje bezpečný přenos a ukládání vašich dat ve veřejném cloudu. Šifrovací heslo máte uložené v místním úložišti a do Azure se nikdy nepřenáší ani se tam neukládá. Pokud je nutné obnovit některá data, máte šifrovací heslo (klíč) k dispozici jen vy.
+- **Zabezpečení dat**:
+    - On-premises přenášená data se šifrují v místním počítači pomocí AES256. Data přenášená je chráněn HTTPS mezi úložiště a zálohování. Protokol iSCSI zabezpečuje data přenášená mezi zálohováním a uživatele počítače. Zabezpečené tunelové propojení se používá k ochraně kanál iSCSI.
+    - Pro místní do služby Azure backup data v Azure je šifrovaný v klidovém stavu pomocí přístupového hesla, které poskytnete při nastavování zálohování. Heslo nebo klíč se nikdy nepřenáší ani neukládá v Azure. Pokud je nutné obnovit některá data, máte šifrovací heslo (klíč) k dispozici jen vy.
+    - Pro virtuální počítače Azure, data zašifrovaná pomocí šifrování služby Storage (SSE) na resetovat. Backup automaticky šifruje data před uložením. Azure Storage se dešifruje před načtením.
+    - Backup podporuje také virtuální počítače Azure, které jsou šifrované pomocí služby Azure Disk Encryption (ADE). [Další informace](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups).
 - **Získejte konzistentní zálohování**: Konzistentní zálohování znamená, že bod obnovení obsahuje všechna požadovaná data pro obnovení záložní kopie. Azure Backup poskytuje zálohy konzistentní s aplikací, které zajišťují, že pro obnovení dat se nevyžadují další opravy. Obnovování dat konzistentních s aplikací zkracuje čas obnovení, což vám umožní rychle se vrátit do funkčního stavu.
 - **Zachovat data krátkodobé a dlouhodobé**: Trezory služby Recovery Services můžete použít pro uchovávání dat v krátkodobém a dlouhodobém horizontu. Azure neomezuje dobu, po kterou data můžou zůstat v trezoru služby Recovery Services. Abyste mohli pro dlouho budete chtít. Služba Azure Backup má omezení 9999 bodů obnovení na chráněnou instanci. [Další informace](backup-introduction-to-azure-backup.md#backup-and-retention)o tom, jak tento limit ovlivní vaše potřeby zálohování.
 - **Automatická správa úložiště** – Hybridní prostředí často vyžadují heterogenní úložiště – některá místní a některá cloudová. Azure Backup neznamená žádné náklady na používání místních zařízení úložiště. Azure Backup automaticky přiděluje a spravuje úložiště záloh a používá model plateb jako využití, takže platíte jenom za úložiště, které skutečně využijete. [Další informace](https://azure.microsoft.com/pricing/details/backup) informace o cenách.
@@ -66,7 +70,7 @@ Azure Backup můžete zálohovat místní počítače i virtuální počítače 
 
 **Počítač** | **Zálohování scénář**
 --- | ---
-**Místní zálohu** |  (1) spusťte agenta Azure Backup Microsoft Azure Recovery Services (MARS) na místním počítače Windows Zálohování jednotlivých souborů a stavu systému. <br/><br/>(2) zálohování místních počítačů k zálohování serveru (System Center Data Protection Manager (DPM) nebo Microsoft Azure Backup Server (MABS)) a potom nakonfigurovat záložní server pro zálohování do trezoru služby Azure Backup Recovery Services v Azure.
+**Místní zálohu** |  (1) spusťte agenta Azure Backup Microsoft Azure Recovery Services (MARS) na místním počítače Windows Zálohování jednotlivých souborů a stavu systému. <br/><br/>(2) zálohování místních počítačů k zálohování serveru (System Center Data Protection Manager (DPM) nebo Microsoft Azure Backup Server (MABS)) a potom nakonfigurujte zálohování serveru k zálohování do trezoru služby Azure Backup Recovery Services v Azure.
 **Virtuální počítače Azure** | (1) povolte zálohování pro jednotlivé virtuální počítače Azure. Když povolíte zálohování, Azure Backup nainstaluje rozšíření do agenta virtuálního počítače Azure, na kterém běží na virtuálním počítači. Agent zálohuje celý virtuální počítač.<br/><br/> (2) spusťte agenta MARS na Virtuálním počítači Azure. To je užitečné, pokud chcete zálohování jednotlivých souborů a složek ve virtuálním počítači.<br/><br/> (3) zálohování virtuálního počítače Azure do serveru DPM nebo MABS běžící v Azure. Pak zálohujte server DPM nebo MABS do trezoru zálohování Azure. 
 
 
@@ -78,7 +82,7 @@ Azure Backup můžete zálohovat místní počítače i virtuální počítače 
 Výhody zálohování počítačů a aplikací MABS/DPM úložiště a zálohování aplikace DPM nebo MABS úložiště do trezoru se následujícím způsobem:
 
 - Zálohování MABS/DPM poskytuje s ohledem na aplikace zálohy optimalizovaných pro běžné aplikace, jako je například SQL Server, Exchange a SharePoint, v další soubor/složka/svazek zálohy a zálohy stavu počítač (holý, stav systému).
-- Pro místní počítače není nutné instalovat agenta MARS na každém počítači, který chcete zálohovat. Spuštění agenta ochrany aplikace DPM nebo MABS jednotlivých počítačů a agenta MARS běží na MABS/DPM pouze.
+- Pro místní počítače není nutné instalovat agenta MARS na každém počítači, který chcete zálohovat. Každý počítač běží agent ochrany aplikace DPM nebo MABS a agenta MARS se spustí na MABS/DPM pouze.
 - Máte větší flexibilitu a podrobné možnosti plánování pro zálohování.
 - Můžete spravovat zálohy pro víc počítačů, které shromáždíte do skupiny ochrany na jediné konzoly. To je zvlášť užitečné, když proběhne aplikací přes víc počítačů a chcete zálohovat společně.
 

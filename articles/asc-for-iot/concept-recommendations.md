@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 1e4582d93d1e3380ecdabdb241f27839d4da4565
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: dc37404e45e4efd0697b0f3b19c4927813ab56fa
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541854"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576189"
 ---
 # <a name="security-recommendations"></a>Doporučení zabezpečení
 
@@ -27,12 +27,13 @@ ms.locfileid: "58541854"
 > ASC pro IoT je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Na základě průběžné řešení analýzy, ASC pro IoT poskytuje následující doporučení v případě potřeby vám pomůže zlepšit a chránit vaše zařízení, provozního stavu a celkové prostředí služby IoT Hub. 
+ASC pro IoT kontroluje prostředky Azure a IoT zařízení a poskytuje doporučení ke snížení útoky týkající se zabezpečení. Doporučení zabezpečení jsou napadnutelné a zaměřte se na podporu zákazníků v souladu se na osvědčené postupy zabezpečení.
 
+V tomto článku najdete seznam doporučení, která se dá spouštět na váš IoT Hub a/nebo zařízení IoT.
 
-## <a name="device-recommendations"></a>Doporučení pro zařízení
+## <a name="recommendations-for-iot-devices"></a>Doporučení pro zařízení IoT
 
-Doporučení zařízení poskytují přehledy a návrhy pro zlepšení zabezpečení zařízení a chování. 
+Doporučení zařízení poskytují přehledy a návrhy a zlepšit stav zabezpečení zařízení. 
 
 | Severity | Název                                                      | Zdroj dat | Popis                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -42,9 +43,9 @@ Doporučení zařízení poskytují přehledy a návrhy pro zlepšení zabezpeč
 | Střednědobé používání   | Pravidlo brány firewall na povolující výstupní řetězec nebyl nalezen.    | Agent       | Pravidlo v bráně firewall byla nalezena, která obsahuje povolující vzor pro širokou škálu IP adresy nebo porty.                                                                                   |
 | Střednědobé používání   | Operace systému základní ověření se nezdařilo           | Agent       | Zařízení nevyhovuje [srovnávací testy CIS Linux](https://www.cisecurity.org/cis-benchmarks/)                                                                                                         |
 
-### <a name="operational-recommendation"></a>Provozní doporučení
+### <a name="operational-recommendations-for-iot-devices"></a>Provozní doporučení pro zařízení IoT
 
-Provozní doporučení poskytují přehledy a návrhy na zlepšení konfigurace agenta.
+Provozní doporučení poskytují přehledy a návrhy pro zlepšení zabezpečení konfigurace agenta.
 
 | Severity | Název                                    | Zdroj dat | Popis                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
@@ -53,7 +54,7 @@ Provozní doporučení poskytují přehledy a návrhy na zlepšení konfigurace 
 | Nízká      | Konflikt konfigurace dvojčete zabezpečení    | Agent       | V konfiguraci dvojčete zabezpečení byly zjištěny konflikty.                           |
 
 
-## <a name="iot-hub-recommendations"></a>Doporučení pro službu IoT Hub
+## <a name="recommendations-for-iot-hub"></a>Doporučení pro službu IoT Hub
 
 Doporučení výstrahy poskytují přehledy a návrhy pro akce a zlepšit stav zabezpečení vašeho prostředí.  
 

@@ -1,5 +1,5 @@
 ---
-title: Nasazení Azure AD Privileged Identity Management (PIM) | Dokumentace Microsoftu
+title: Nasazení Privileged Identity Management (PIM) – Azure Active Directory | Dokumentace Microsoftu
 description: Popisuje, jak naplánovat nasazení služby Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05bf125d629ffef01a645dc407c341a984805520
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227027"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578188"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Nasazení Azure AD Privileged Identity Management (PIM)
 
-Tento podrobný návod popisuje, jak naplánovat nasazení služby Azure AD Privileged Identity Management (PIM) ve vaší organizaci.
+Tento podrobný návod popisuje, jak si můžete naplánovat nasazení z Azure Active Directory (Azure AD) Privileged Identity Management (PIM) ve vaší organizaci.
 
 > [!TIP]
 > V tomto dokumentu se zobrazí položky označené jako:
@@ -79,7 +79,7 @@ Další informace najdete v tématu [co je Azure AD Privileged Identity Manageme
 
 ### <a name="roles-that-can-be-managed-by-pim"></a>Role, které je možné spravovat pomocí PIM
 
-**Role Azure AD** – tyto role jsou všechny role adresáře v Azure Active Directory (například globální správce, správce Exchange a správce zabezpečení). Další informace o rolích a jejich funkce v [oprávnění role správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md). Nápovědu k zjištění rolí přiřadit správce najdete v tématu [nejméně privilegované role úlohou](../users-groups-roles/roles-delegate-by-task.md).
+**Role Azure AD** – tyto role jsou všechny v Azure Active Directory (například globální správce, správce Exchange a správce zabezpečení). Další informace o rolích a jejich funkce v [oprávnění role správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md). Nápovědu k zjištění rolí přiřadit správce najdete v tématu [nejméně privilegované role úlohou](../users-groups-roles/roles-delegate-by-task.md).
 
 **Role prostředků Azure** – tyto role jsou spojeny s prostředky Azure, skupinu prostředků, předplatné nebo skupinu pro správu. PIM poskytuje just-in-time přístup k oběma předdefinované role jako vlastník správce přístupu uživatelů a přispěvatelů, stejně jako [vlastní role](../../role-based-access-control/custom-roles.md). Další informace o role prostředků Azure najdete v tématu [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md).
 
@@ -240,7 +240,7 @@ Před implementací řešení PIM je dobrým zvykem koncept nastavení PIM pro k
 
 #### <a name="pim-settings-for-azure-ad-roles"></a>Nastavení PIM pro role Azure AD
 
-| Role | Vyžadování MFA | Oznámení | Lístek incidentu | Vyžadovat schválení | Schvalovatel | Doba trvání aktivace | Trvalého správce |
+| Role | Vyžadování MFA | Oznámení | Lístek incidentu | Vyžadovat schválení | Schvalovatele | Doba trvání aktivace | Trvalého správce |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Globální správce | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Další globální správce | 1 hodina | Účty pro nouzový přístup |
 | Správce Exchange | :heavy_check_mark: | :heavy_check_mark: | : x:. | : x:. | Žádný | 2 Hour | Žádný |
@@ -248,7 +248,7 @@ Před implementací řešení PIM je dobrým zvykem koncept nastavení PIM pro k
 
 #### <a name="pim-settings-for-azure-resource-roles"></a>Nastavení PIM pro role prostředků Azure
 
-| Role | Vyžadování MFA | Oznámení | Vyžadovat schválení | Schvalovatel | Doba trvání aktivace | Správce Active | Aktivní vypršení platnosti | Vypršení platnosti oprávnění |
+| Role | Vyžadování MFA | Oznámení | Vyžadovat schválení | Schvalovatele | Doba trvání aktivace | Správce Active | Aktivní vypršení platnosti | Vypršení platnosti oprávnění |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Vlastník kritické předplatných | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Další vlastníky předplatného | 1 hodina | Žádný | neuvedeno | 3 měsíce |
 | Správce uživatelských přístupů méně kritické předplatných | :heavy_check_mark: | :heavy_check_mark: | : x:. | Žádný | 1 hodina | Žádný | neuvedeno | 3 měsíce |
@@ -263,7 +263,7 @@ Následující tabulka popisuje jednotlivé nastavení.
 | Oznámení | Pokud nastavena na hodnotu true, globálního správce, správce privilegovaných rolí, správce zabezpečení v organizaci dostanou oznámení e-mailem když oprávněný uživatel aktivuje roli.<br/><br/>**Poznámka:** Některé organizace nemají e-mailovou adresu, vázané na svých účtů správce, chcete-li získat tyto e-mailová oznámení, měli byste nastavit alternativní e-mailovou adresu, takže správci budou dostávat tyto e-maily. |
 | Lístek incidentu | Určuje, zda oprávněný uživatel potřebuje k zaznamenání číslo lístku incidentu při aktivaci jejich role. Toto nastavení pomáhá organizacím identifikovat každou aktivaci s interní číslo incidentu ke zmírnění aktivace nežádoucí serverům.<br/><br/> :heavy_check_mark: **Společnost Microsoft doporučuje** výhod čísla incidentů a jejich zapojení PIM s váš interní systém. To je užitečné hlavně pro schvalovatelů, kteří potřebují kontext pro aktivaci. |
 | Vyžadovat schválení | Určuje, zda oprávněný uživatel potřebuje získat schválení aktivaci této role.<br/><br/> :heavy_check_mark: **Společnost Microsoft doporučuje** můžete nastavit schválení pro role s nejvíce oprávnění. Na základě způsobů využití u všech zákazníků PIM, globální správce, Správce uživatelů, správce Exchange, správce zabezpečení a správce hesel je nejběžnější role s instalačním programem schválení. |
-| Schvalovatel | Pokud se vyžaduje k aktivaci oprávněných rolí seznam uživatelů, kteří by měla schválit žádost o schválení. Ve výchozím nastavení nastaví PIM schvalovatel být všichni uživatelé, kteří jsou správce privilegovaných rolí, ať už jsou trvalé nebo oprávněné.<br/><br/>**Poznámka:** Pokud je uživatel i oprávněné pro roli Azure AD a schvalovatele role, nebudou moct schvalovat sami.<br/><br/> :heavy_check_mark: **Společnost Microsoft doporučuje** , abyste zvolili schvalovatele, které chcete být těmi, kdo jsou nejvíc informovanosti ohledně konkrétní roli a jeho časté uživatelům, nikoli jako globální správce. |
+| Schvalovatele | Pokud se vyžaduje k aktivaci oprávněných rolí seznam uživatelů, kteří by měla schválit žádost o schválení. Ve výchozím nastavení nastaví PIM schvalovatel být všichni uživatelé, kteří jsou správce privilegovaných rolí, ať už jsou trvalé nebo oprávněné.<br/><br/>**Poznámka:** Pokud je uživatel i oprávněné pro roli Azure AD a schvalovatele role, nebudou moct schvalovat sami.<br/><br/> :heavy_check_mark: **Společnost Microsoft doporučuje** , abyste zvolili schvalovatele, které chcete být těmi, kdo jsou nejvíc informovanosti ohledně konkrétní roli a jeho časté uživatelům, nikoli jako globální správce. |
 | Doba trvání aktivace | Dlouhá doba, kterou uživatel aktivuje se v roli předtím, než vyprší platnost. |
 | Trvalého správce | Seznam uživatelů, kteří se budou pro roli správce je trvalý (nikdy muset aktivovat).<br/><br/> :heavy_check_mark: **Společnost Microsoft doporučuje** mít žádný stávající správce u všech rolí s výjimkou globální správci. Přečtěte si více o řezu kdo je třeba oprávnění a trvale aktivní části tohoto plánu, která má být. |
 | Správce Active | Správce active pro prostředky Azure, je seznam uživatelů, kteří se už nikdy nemusíte použít roli aktivovat. To se označuje jako správce je trvalý stejně jako v Azure AD role vzhledem k tomu, že můžete nastavit dobu vypršení platnosti pro Pokud uživatel ztratí této role. |
@@ -294,7 +294,7 @@ Teď, když jste identifikovali testovacích uživatelů, pomocí tohoto kroku m
 
 #### <a name="configure-pim-for-azure-ad-roles"></a>Konfigurovat PIM pro role Azure AD
 
-1. [Konfigurace nastavení role adresáře Azure AD](pim-how-to-change-default-settings.md) podle jste naplánovali.
+1. [Konfigurace nastavení role Azure AD](pim-how-to-change-default-settings.md) podle jste naplánovali.
 
 1. Přejděte do **role Azure AD**, klikněte na tlačítko **role**a potom vyberte roli, kterou jste právě nakonfigurovali.
 

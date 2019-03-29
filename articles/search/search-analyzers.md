@@ -4,17 +4,17 @@ description: Přiřazení analyzátorům prohledávatelná textová pole v index
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 03/27/2019
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 7306258b6a7eee66df0961b2b993d0bcc9de94b9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 3e6f0a2b9b935df9b12cf9146ebf05f1b1c84855
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343268"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578756"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analyzátory pro zpracování ve službě Azure Search textu
 
@@ -97,16 +97,18 @@ Pokud se hledání nezdaří vrátit očekávané výsledky, je nejpravděpodobn
 
 [Ukázka analyzátoru hledání](https://alice.unearth.ai/) je třetí strany ukázkovou aplikaci ukazující srovnání vedle sebe standardní analyzátor Lucene, analyzátor Lucene pro angličtinu a procesor anglické přirozeného jazyka od Microsoftu. Index je pevná; obsahuje text z oblíbených scénáře. Pro každý vstupní hledání zadáte, výsledky z každé analyzátoru jsou zobrazeny v sousední podoken, získáte tak představu o způsob, jak každý analyzátor zpracuje do jednoho řetězce. 
 
-## <a name="examples"></a>Příklady
+<a name="examples"></a>
+
+## <a name="rest-examples"></a>Příklady REST
 
 Následující příklady ukazují analyzátor definice pro několik klíčových scénářů.
 
-+ [Příklad vlastního analyzátoru](#Example1)
-+ [Pole, například přiřadit analyzátory](#Example2)
-+ [Kombinování analyzátory pro indexování a vyhledávání](#Example3)
-+ [Příklad analyzátoru jazyka](#Example4)
++ [Příklad vlastního analyzátoru](#Custom-analyzer-example)
++ [Pole, například přiřadit analyzátory](#Per-field-analyzer-assignment-example)
++ [Kombinování analyzátory pro indexování a vyhledávání](#Mixing-analyzers-for-indexing-and-search-operations)
++ [Příklad analyzátoru jazyka](#Language-analyzer-example)
 
-<a name="Example1"></a>
+<a name="Custom-analyzer-example"></a>
 
 ### <a name="custom-analyzer-example"></a>Příklad vlastního analyzátoru
 
@@ -180,7 +182,7 @@ Provede v tomto příkladu:
   }
 ~~~~
 
-<a name="Example2"></a>
+<a name="Per-field-analyzer-assignment-example"></a>
 
 ### <a name="per-field-analyzer-assignment-example"></a>Příklad přiřazení analyzátor na pole
 
@@ -213,7 +215,7 @@ Prvek "analyzátor" přepisuje standardní analyzátor na základě pole pomocí
   }
 ~~~~
 
-<a name="Example3"></a>
+<a name="Mixing-analyzers-for-indexing-and-search-operations"></a>
 
 ### <a name="mixing-analyzers-for-indexing-and-search-operations"></a>Kombinování analyzátory pro operace indexování a vyhledávání
 
@@ -241,7 +243,7 @@ Rozhraní API obsahuje další index atributy pro určení jiné analyzátory pr
   }
 ~~~~
 
-<a name="Example4"></a>
+<a name="Language-analyzer-example"></a>
 
 ### <a name="language-analyzer-example"></a>Příklad analyzátoru jazyka
 
@@ -273,6 +275,69 @@ Pole obsahující řetězce v různých jazycích můžete použít analyzátor 
      ],
   }
 ~~~~
+
+## <a name="c-examples"></a>C#Příklady
+
+Pokud používáte ukázky kódu .NET SDK, můžete přidat tyto příklady použít nebo nakonfigurovat analyzátory.
+
++ [Přiřazení předdefinované analyzátoru](#Assign-a-language-analyzer)
++ [Analyzátor konfigurace](#Define-a-custom-analyzer)
+
+<a name="Assign-a-language-analyzer"></a>
+
+### <a name="assign-a-language-analyzer"></a>Přiřadit analyzátor jazyka
+
+Žádné analyzátor, který se používá jako-je bez konfigurace, je zadána v definici pole. Neexistuje žádný požadavek pro vytváření konstrukce analyzátoru. 
+
+Tento příklad přiřadí pole Popis analyzátory English Microsoft a francouzštinu. Je fragment kódu z větší definici indexu hotelů vytváření pomocí třídy hotelu v souboru hotels.cs [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) vzorku.
+
+Volání [analyzátor](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet), zadání [AnalyzerName třída](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) , která poskytuje všechny analyzátory text podporované ve službě Azure Search.
+
+```csharp
+    public partial class Hotel
+    {
+       . . . 
+
+        [IsSearchable]
+        [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [IsSearchable]
+        [Analyzer(AnalyzerName.AsString.FrLucene)]
+        [JsonProperty("description_fr")]
+        public string DescriptionFr { get; set; }
+
+      . . .
+    }
+```
+<a name="Define-a-custom-analyzer"></a>
+
+### <a name="define-a-custom-analyzer"></a>Definovat vlastní analyzátor
+
+Při přizpůsobení a konfigurace je vyžadováno, je potřeba přidat analyzátoru konstrukce do indexu. Jakmile je definujete, můžete přidat jeho definici pole jak je uvedeno v předchozím příkladu.
+
+Použití [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) k vytvoření objektu. Další příklady najdete v tématu [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs).
+
+```csharp
+{
+   var definition = new Index()
+   {
+         Name = "hotels",
+         Fields = FieldBuilder.BuildForType<Hotel>(),
+         Analyzers = new[]
+            {
+               new CustomAnalyzer()
+               {
+                     Name = "url-analyze",
+                     Tokenizer = TokenizerName.UaxUrlEmail,
+                     TokenFilters = new[] { TokenFilterName.Lowercase }
+               }
+            },
+   };
+
+   serviceClient.Indexes.Create(definition);
+```
 
 ## <a name="next-steps"></a>Další postup
 

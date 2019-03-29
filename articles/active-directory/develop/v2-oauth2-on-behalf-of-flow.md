@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cc9b2b38ae0ba97e5a29d58d1605e5452224e4b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5d933eaf99258a3f3322a915b418b52fad6e459f
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445751"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576926"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory v2.0 a tok OAuth 2.0 On-Behalf-Of
 
@@ -72,8 +72,8 @@ Pokud používáte sdílený tajný klíč, žádosti o token přístupu service
 | Parametr |  | Popis |
 | --- | --- | --- |
 | `grant_type` | Požaduje se | Typ žádosti o token. Pro žádost o pomocí token JWT, hodnota musí být `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Požaduje se | ID aplikace (klient), který [portál pro registraci aplikací](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) nebo do nového [portálu registrace (Preview) aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) má přiřazené vaší aplikaci. |
-| `client_secret` | Požaduje se | Tajný klíč aplikace, že vygenerované pro vaši aplikaci na portálu, který jste použili k registraci vaší aplikace. |
+| `client_id` | Požaduje se | ID aplikace (klient), které [portál Azure – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránka má přiřazené vaší aplikaci. |
+| `client_secret` | Požaduje se | Tajný kód klienta, který jste vygenerovali pro vaši aplikaci na webu Azure Portal – stránka registrace aplikace. |
 | `assertion` | Požaduje se | Hodnota tokenu používaného v požadavku. |
 | `scope` | Požaduje se | Mezerou oddělený seznam oborů pro žádosti o token. Další informace najdete v tématu [obory](v2-permissions-and-consent.md). |
 | `requested_token_use` | Požaduje se | Určuje, jak by měl být požadavek zpracovat. Ve službě OBO flow musí být hodnota nastavena na `on_behalf_of`. |
@@ -104,7 +104,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 | Parametr |  | Popis |
 | --- | --- | --- |
 | `grant_type` | Požaduje se | Typ požadavku na token. Pro žádost o pomocí token JWT, hodnota musí být `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Požaduje se | ID aplikace (klient), který [portálu pro registraci aplikací](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) nebo do nového [portálu registrace (Preview) aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) má přiřazené vaší aplikaci. |
+| `client_id` | Požaduje se |  ID aplikace (klient), které [portál Azure – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránka má přiřazené vaší aplikaci. |
 | `client_assertion_type` | Požaduje se | Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
 | `client_assertion` | Požaduje se | Kontrolní výraz (JSON web token), které potřebujete k vytvoření a podepsání certifikátem zaregistrujete jako přihlašovací údaje pro vaši aplikaci. Informace o postupu registrace vašeho certifikátu a formát kontrolního výrazu, najdete v článku [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md). |
 | `assertion` | Požaduje se | Hodnota tokenu používaného v požadavku. |
@@ -205,7 +205,7 @@ V tuto chvíli osobní systémem účtů Microsoft nepodporuje kombinované souh
 
 #### <a name="pre-authorized-applications"></a>Předběžně autorizované aplikace
 
-Nová funkce služby na portálu preview aplikaci je "předběžně autorizovaných aplikacích". Tímto způsobem můžete určit zdroj, vždy určité aplikace má oprávnění k příjmu určité obory. To je užitečné především k navázání připojení mezi klientem front-endu a back-end zdroj snadnější. Prostředek může deklarovat více předběžně autorizovaných aplikacích – tyto aplikace můžete požádat o tato oprávnění v OBO tok a přijímat je bez poskytnutí souhlasu uživatele.
+Funkce portálu aplikaci je "předběžně autorizovaných aplikacích". Tímto způsobem můžete určit zdroj, vždy určité aplikace má oprávnění k příjmu určité obory. To je užitečné především k navázání připojení mezi klientem front-endu a back-end zdroj snadnější. Prostředek může deklarovat více předběžně autorizovaných aplikacích – tyto aplikace můžete požádat o tato oprávnění v OBO tok a přijímat je bez poskytnutí souhlasu uživatele.
 
 #### <a name="admin-consent"></a>Souhlas správce
 

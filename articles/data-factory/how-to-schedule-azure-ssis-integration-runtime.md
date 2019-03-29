@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 0b84f02d11e278950e4e44874e7b1af9da58f83f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54d7979f9fbe23e9372aa2702b46e42ca64496d2
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092442"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621630"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Jak spustit a zastavit prostředí Azure-SSIS Integration Runtime podle plánu
 Tento článek popisuje, jak naplánovat spuštění a zastavení prostředí Azure-SSIS Integration Runtime (IR) pomocí Azure Data Factory (ADF). Prostředí Azure-SSIS IR je ADF výpočetní prostředky, které jsou vyhrazené pro spouštění balíčků SQL Server Integration Services (SSIS). Spuštění prostředí Azure-SSIS IR s náklady s ním spojená. Proto je obvykle chcete spustit prostředí IR jenom v případě, že budete muset spouštění balíčků služby SSIS v Azure a zastavit prostředí IR, když ho už není nutné. Můžete použít ADF uživatelské rozhraní (UI) / aplikaci nebo prostředí Azure PowerShell potřeba [ručně spustit nebo zastavit prostředí IR](manage-azure-ssis-integration-runtime.md)).
@@ -94,7 +94,7 @@ Pokud vytvoříte třetí aktivační událost, která je naplánované spoušt�
   
     2. Pro **metoda**vyberte **příspěvek**. 
     3. Pro **tělo**, zadejte `{"message":"Start my IR"}`. 
-    4. Pro **ověřování**vyberte **MSI** pomocí spravované identity pro vaše ADF naleznete v části [identiy spravované služby Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) najdete další informace.
+    4. Pro **ověřování**vyberte **MSI** pomocí spravované identity pro vaše ADF naleznete v části [identita spravované služby Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) najdete další informace.
     5. Pro **prostředků**, zadejte `https://management.azure.com/`.
     
        ![Plán ADF webové aktivity SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
@@ -348,7 +348,7 @@ Následující část obsahuje postup pro vytvoření sady runbook Powershellu. 
 
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Vytváření plánů pro sady runbook a operací spustit/zastavit prostředí Azure-SSIS IR
 
-V předchozí části jste vytvořili runbooku Azure Automation, který můžete spustit nebo zastavit prostředí Azure-SSIS IR. V této části vytvoříte dvě plány pro své sadě runbook. Při konfiguraci prvního plánu, zadejte **START** pro **operace**. Podobně při konfiguraci je druhý řádek, zadáte **Zastavit** pro **operace**. Podrobný postup vytváření plánů najdete v tématu [vytvořit plán](../automation/automation-schedules.md#creating-a-schedule) článku.
+V předchozí části jste vytvořili runbooku Azure Automation, který můžete spustit nebo zastavit prostředí Azure-SSIS IR. V této části vytvoříte dvě plány pro své sadě runbook. Při konfiguraci prvního plánu, zadejte **START** pro **operace**. Podobně při konfiguraci je druhý řádek, zadáte **Zastavit** pro **operace**. Podrobný postup vytváření plánů najdete v tématu [vytvořit plán](../automation/shared-resources/schedules.md#creating-a-schedule) článku.
 
 1. V **Runbook** okně **plány**a vyberte **+ přidat plán** na panelu nástrojů. 
 

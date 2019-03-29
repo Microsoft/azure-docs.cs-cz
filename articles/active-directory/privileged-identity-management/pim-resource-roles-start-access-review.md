@@ -1,5 +1,5 @@
 ---
-title: Zahájení kontroly přístupu pro role prostředků Azure v PIM | Dokumentace Microsoftu
+title: Zahájení kontroly přístupu pro role prostředků Azure v PIM – Azure Active Directory | Dokumentace Microsoftu
 description: Zjistěte, jak spustit revizi přístupu pro role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -15,15 +15,15 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f4ebf9ec08915a557f897a743cac1160d7e6823
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 46903967b375d882dc3c7a62cd0b7f8b6059f8b3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173432"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579491"
 ---
 # <a name="start-an-access-review-for-azure-resource-roles-in-pim"></a>Zahájení kontroly přístupu pro role prostředků Azure v PIM
-Přiřazení rolí stát "zastaralých", když uživatelé privilegovaný přístup, které už nepotřebují. Aby se snížilo riziko, který je spojen s přiřazení těchto zastaralých rolí, správci privilegovaných rolí by měl pravidelně zkontrolovat role. Tento dokument popisuje kroky pro zahájení kontroly přístupu v Privileged Identity Management (PIM) pro prostředky Azure.
+Přiřazení rolí stát "zastaralých", když uživatelé privilegovaný přístup, které už nepotřebují. Aby se snížilo riziko, který je spojen s přiřazení těchto zastaralých rolí, správci privilegovaných rolí by měl pravidelně zkontrolovat role. Tento dokument popisuje kroky pro zahájení kontroly přístupu v Azure Active Directory (Azure AD) Privileged Identity Management (PIM).
 
 Na hlavní stránce aplikace PIM přejdete na:
 
@@ -76,4 +76,4 @@ Až skončí období kontroly, můžete jim Připomeňte dokončení jejich kont
 
 - [Dokončení kontroly přístupu pro role prostředků Azure v PIM](pim-resource-roles-complete-access-review.md)
 - [Provedení kontroly přístupu rolí prostředků Azure v nástroji PIM](pim-resource-roles-perform-access-review.md)
-- [Zahájení kontroly přístupu pro role adresáře Azure AD v PIM](pim-how-to-start-security-review.md)
+- [Zahájení kontroly přístupu pro role Azure AD v PIM](pim-how-to-start-security-review.md)

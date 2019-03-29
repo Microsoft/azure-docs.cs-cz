@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/26/2019
 ms.author: tulasim
-ms.openlocfilehash: 0e9e8456bb493ad4591c0f2a22d28bdf342f09e1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8fcc3ea8340a8645a1983eebb4a619904f884a19
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433106"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578624"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Zdroje dat pro nástroj QnA Maker obsahu
 
@@ -32,7 +32,11 @@ Následující tabulka shrnuje typy obsahu a souboru formáty, které podporuje 
 
 ## <a name="data-source-locations"></a>Umístění zdroje dat.
 
-Pouze veřejné adresy URL jsou platné pro všechny datové zdroje. Neodesílejte zdroje dat, které vyžadují ověřování. Stáhněte si soubor z webu ověřený a pak pomocí možnosti nahrávání souborů extrakce otázek a odpovědí.
+Většina umístění zdrojů dat muset poskytnout veřejné adresy URL nebo soubory, které nevyžadují ověřování. 
+
+[Umístění zdroje dat SharePoint](../How-to/add-sharepoint-datasources.md) můžou poskytovat ověřené soubory. Prostředky služby SharePoint musí být soubory, nikoli webové stránky. 
+
+Pokud už máte ověřeného souboru nebo adresy URL, alternativní možnost je ke stažení souboru z ověřených webu do místního počítače, přidejte soubor z vašeho místního počítače do znalostní báze. 
 
 ## <a name="faq-urls"></a>Nejčastější dotazy týkající se adresy URL
 

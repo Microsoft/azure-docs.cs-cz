@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/12/2018
+ms.date: 03/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b3c9f2f8671d5a7aa313a9f49e07230a4f9b6220
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: af67109fb7f55f365cd71714a3eefab2336b636a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109337"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578607"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů služby Automation spustit jako pro Azure
 
@@ -30,8 +30,10 @@ Existují dva typy účtů spustit jako:
   * V příslušném účtu Automation vytvoří prostředek připojení Automation s názvem *AzureRunAsConnection*. Prostředek připojení obsahuje parametry applicationId, tenantId, subscriptionId a certificate thumbprint.
 
 * **Azure Classic účet Spustit jako** – tento účet slouží ke správě prostředků modelu nasazení Classic.
+  * Vytvoří certifikát pro správu v rámci předplatného
   * V příslušném účtu Automation vytvoří prostředek certifikátu Automation s názvem *AzureClassicRunAsCertificate*. Prostředek certifikátu obsahuje privátní klíč certifikátu, který používá certifikát pro správu.
   * V příslušném účtu Automation vytvoří prostředek připojení Automation s názvem *AzureClassicRunAsConnection*. Prostředek propojení obsahuje název a ID předplatného a název prostředku certifikátu.
+  * Musí být spolupracující správce daného předplatného k vytvoření nebo obnovení
   
   > [!NOTE]
   > Předplatná Azure Cloud Solution Provider (CSP pro Azure) podporují pouze model Azure Resource Manageru, services – Azure Resource Manageru nejsou k dispozici v programu. Při použití předplatném CSP získat Azure Classic účtu spustit jako nebyl vytvořen. Stále se vytvoří účtu Azure spustit jako. Další informace o předplatných CSP najdete v tématu [dostupných služeb v předplatných CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
@@ -52,6 +54,10 @@ Vytvořit nebo aktualizovat účet Spustit jako, musí mít specifické oprávn�
 <sup>1</sup> můžou uživatelé bez oprávnění správce ve vašem tenantovi Azure AD [registrovat aplikace AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) Pokud vašeho tenanta Azure AD **uživatelé můžou registrovat aplikace** možnost **uživatelská nastavení**stránky je nastavené na **Ano**. Pokud je nastavení Registrace aplikací nastaveno na **Ne**, uživatel provádějící tuto akci musí být globálním správcem služby Azure AD.
 
 Pokud nejste členem instance Active Directory předplatného před přidané do globální správce nebo spolusprávce role pro předplatné, se přidá jako Host. V takovém případě se zobrazí `You do not have permissions to create…` upozornění na **přidat účet Automation** stránky. Uživatele, kteří byli nejdřív přidaní do role globálního správce nebo spolusprávce, je možné z instance Active Directory předplatného odebrat a potom je znovu přidat – tak se z nich ve službě Active Directory stanou úplní uživatelé. Takovou situaci můžete ověřit v podokně **Azure Active Directory** na webu Azure Portal. Vyberte **Uživatelé a skupiny**, potom **Všichni uživatelé** a po výběru konkrétního uživatele vyberte **Profil**. Hodnota atributu **Typ uživatele** v profilu uživatele by neměla být **Host**.
+
+## <a name="permissions-classic"></a>Oprávnění ke konfiguraci účtů spustit jako pro Classic
+
+Ke konfiguraci nebo obnovit účty spustit jako pro Classic, musíte mít **spolusprávce** role na úrovni předplatného. Další informace o oprávněních Classic najdete v tématu [správci předplatného Azure classic](../role-based-access-control/classic-administrators.md#add-a-co-administrator).
 
 ## <a name="create-a-run-as-account-in-the-portal"></a>Vytvoření účtu spustit jako na portálu
 
@@ -197,10 +203,10 @@ Tento skript PowerShellu zahrnuje podporu následujících konfigurací:
         return
     }
 
-    # To use the new Az modules to create your Run As accounts please uncomment the following lines and ensure you comment out the previous two lines to avoid any issues. To learn about about using Az modules in your Automation Account see https://docs.microsoft.com/azure/automation/az-modules
+    # To use the new Az modules to create your Run As accounts please uncomment the following lines and ensure you comment out the previous 8 lines that import the AzureRM modules to avoid any issues. To learn about about using Az modules in your Automation Account see https://docs.microsoft.com/azure/automation/az-modules
 
     # Import-Module Az.Automation
-    # Enable-AzureRmAlias 
+    # Enable-AzureRmAlias
 
 
     Connect-AzureRmAccount -Environment $EnvironmentName 
@@ -357,7 +363,7 @@ Pokud chcete certifikát obnovit, postupujte takto:
 
     ![Obnovení certifikátu pro účet Spustit jako](media/manage-runas-account/automation-account-renew-runas-certificate.png)
 
-1. Zatímco se certifikát obnovuje, můžete průběh sledovat v nabídce v části **Oznámení**. 
+1. Zatímco se certifikát obnovuje, můžete průběh sledovat v nabídce v části **Oznámení**.
 
 ## <a name="limiting-run-as-account-permissions"></a>Omezení oprávnění účtu spustit jako
 
@@ -394,4 +400,3 @@ Tyto potíže s účtem Spustit jako můžete rychle vyřešit jeho odstranění
 
 * Další informace o instančních objektech najdete v tématu [aplikace a instanční objekty](../active-directory/develop/app-objects-and-service-principals.md).
 * Další informace o certifikátech a službách Azure najdete v tématu [Přehled certifikátů pro Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).
-

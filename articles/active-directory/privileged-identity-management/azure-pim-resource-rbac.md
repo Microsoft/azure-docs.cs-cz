@@ -1,5 +1,5 @@
 ---
-title: Zobrazit historii aktivit a auditu pro role prostředků Azure v PIM | Dokumentace Microsoftu
+title: Zobrazit historii aktivit a auditu pro role prostředků Azure v PIM – Azure Active Directory | Dokumentace Microsoftu
 description: Zobrazení aktivit a auditu historie pro role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.subservice: pim
 ms.date: 01/24/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9afbbad9b956d41252ff9121c99a91669c71aaab
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a6fb97c416d0e34635b8aa4c19fc6b94889f566c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211729"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578131"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>Zobrazit historii aktivit a auditu pro role prostředků Azure v PIM
 
@@ -113,4 +113,4 @@ Můj audit umožňuje zobrazit vaše osobní role aktivity.
 
 - [Přiřazení role prostředků Azure v PIM](pim-resource-roles-assign-roles.md)
 - [Schválit nebo zamítnout žádosti pro role prostředků Azure v PIM](pim-resource-roles-approval-workflow.md)
-- [Zobrazení historie auditů pro role adresáře Azure AD v PIM](pim-how-to-use-audit-log.md)
+- [Zobrazení historie auditů pro role Azure AD v PIM](pim-how-to-use-audit-log.md)

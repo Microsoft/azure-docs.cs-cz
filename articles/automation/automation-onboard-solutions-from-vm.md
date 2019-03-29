@@ -4,17 +4,17 @@ description: Zjistěte, jak k připojení virtuálního počítače Azure pomoc�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 70d9957ae5f0ec43269d371c96e3722e52edb26d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: bf81b862f978d4baab0907dc9002564062ec5228
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57837758"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619718"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Začlenění řešení Update Management, Change Tracking a Inventory z virtuálního počítače Azure
 
@@ -26,7 +26,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="enable-the-solutions"></a>Povolení řešení
 
-Přejděte do existujícího virtuálního počítače. V části **operace**vyberte **Správa aktualizací**, **inventáře**, nebo **řešení Change tracking**. Virtuální počítač může existovat v libovolné oblasti bez ohledu na umístění účtu Automation.
+Přejděte do existujícího virtuálního počítače. V části **operace**vyberte **Správa aktualizací**, **inventáře**, nebo **řešení Change tracking**. Virtuální počítač může existovat v libovolné oblasti bez ohledu na umístění účtu Automation. Po zprovoznění řešení z virtuálního počítače je potřeba mít `Microsoft.OperationalInsights/workspaces/read` oprávnění k určení, zda je virtuální počítač připojit k pracovnímu prostoru. Další informace o další oprávnění, která jsou obecně potřeba, najdete v článku [práva potřebná k připojení počítačů](automation-role-based-access-control.md#onboarding).
 
 Povolte řešení pro virtuální počítač pouze, ujistěte se, že **povolit pro tento virtuální počítač** zaškrtnuto. Chcete-li připojit více počítačů k řešení, vyberte **povolit pro virtuální počítače v tomto předplatném**a pak vyberte **kliknutím vyberte počítače, které chcete povolit**. Další informace, jak připojit více počítačů najednou, najdete v článku [připojení Update Management, Change Tracking a Inventory řešení](automation-onboard-solutions-from-automation-account.md).
 
@@ -85,13 +85,13 @@ Po odebrání těchto řešení provedením následujících kroků se zrušit p
 
 1. Z portálu Azure portal otevřete svůj účet Automation, a na automatizaci účtu vyberte stránku **pracovní prostor propojený** části **související prostředky** na levé straně.
 
-1. Na stránce zrušit propojení pracovního prostoru klikněte na tlačítko **zrušit propojení pracovního prostoru**.
+2. Na stránce zrušit propojení pracovního prostoru klikněte na tlačítko **zrušit propojení pracovního prostoru**.
 
    ![Zrušit propojení pracovního prostoru stránky](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png).
 
    Zobrazí se výzva s dotazem, jestli chcete pokračovat.
 
-1. Zatímco bude Azure Automation se pokusí zrušit propojení účtu pracovního prostoru Log Analytics, můžete sledovat průběh **oznámení** z nabídky.
+3. Zatímco bude Azure Automation se pokusí zrušit propojení účtu pracovního prostoru Log Analytics, můžete sledovat průběh **oznámení** z nabídky.
 
 Pokud jste použili řešení Update Management, Volitelně můžete odebrat následující položky, které už nejsou potřeba po odebrání řešení.
 

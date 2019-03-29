@@ -1,5 +1,5 @@
 ---
-title: Přiřazení role prostředků Azure v PIM | Dokumentace Microsoftu
+title: Přiřazení role prostředků Azure v PIM – Azure Active Directory | Dokumentace Microsoftu
 description: Zjistěte, jak přiřadit role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee09526c2bf1ebf9821e1f84dc99bfc8635b9ee2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a912e1786e005e9a4b6ba2cc22713a172234a489
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086186"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578658"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>Přiřazení role prostředků Azure v PIM
 
-Azure AD PIM můžete spravovat role integrované prostředků Azure, jakož i vlastní role, včetně (ale nikoli výhradně):
+Privileged Identity Management (PIM) ve Azure Active Directory (Azure AD) můžete spravovat role integrované prostředků Azure, jakož i vlastní role, včetně (ale nikoli výhradně):
 
 - Vlastník
 - Správce přístupu uživatelů
@@ -129,4 +129,4 @@ Postupujte podle těchto kroků k aktualizaci nebo odebrání stávající při�
 
 - [Rozšíření nebo obnovení role prostředků Azure v PIM](pim-resource-roles-renew-extend.md)
 - [Konfigurace nastavení role prostředků Azure v PIM](pim-resource-roles-configure-role-settings.md)
-- [Přiřazení role adresáře Azure AD v PIM](pim-how-to-add-role-to-user.md)
+- [Přiřazení role Azure AD v PIM](pim-how-to-add-role-to-user.md)

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: ff3f1e405dc7a1e69c3b1d1d20936ca78b97fcda
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ca54ae11390b388c3158bd220ee5c7829172a5c3
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855091"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620474"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovit databázi Azure SQL pomocí automatizovaných záloh databáze
 
@@ -175,7 +175,7 @@ Obnovení databáze jedné, nebo součástí fondu pomocí rozhraní REST API:
 ### <a name="azure-cli"></a>Azure CLI
 
 - Obnovení databáze jedné, nebo součástí fondu pomocí Azure CLI, najdete v článku [az sql db restore](/cli/azure/sql/db#az-sql-db-restore).
-- Pokud chcete obnovit spravované instance pomocí rozhraní příkazového řádku Azure, najdete v článku [az sql midb obnovení](/cli/azure/sql/db)
+- Pokud chcete obnovit spravované instance pomocí rozhraní příkazového řádku Azure, najdete v článku [az sql midb obnovení](/cli/azure/sql/midb#az-sql-midb-restore)
 
 ## <a name="summary"></a>Souhrn
 

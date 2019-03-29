@@ -1,5 +1,5 @@
 ---
-title: Licenční požadavky pro použití PIM – Azure | Dokumentace Microsoftu
+title: Licenční požadavky pro použití služby Azure Active Directory v PIM – | Dokumentace Microsoftu
 description: Popisuje licenční požadavky na používání Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7b7aa010b3001045566bc55fb440a2171145881
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 40e16209a185623b6e15650f70141edd6394e337
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177243"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576144"
 ---
 # <a name="license-requirements-to-use-pim"></a>Licenční požadavky pro použití PIM
 
@@ -45,7 +45,7 @@ Každý správce nebo uživatel, který komunikuje se službou nebo přijímá n
 - Správci s rolí Azure AD spravují pomocí PIM
 - Správci se spravují pomocí PIM role prostředků Azure
 - Správcům, přiřazena k roli správce privilegovaných rolí
-- Uživatelům přiřadit jako oprávněných rolí adresáře se spravují pomocí PIM
+- Uživatelům přiřadit jako nárok na role Azure AD spravují pomocí PIM
 - Uživatelé moct schvalovat a odmítat žádosti v PIM
 - Uživatelé přiřazení k roli prostředků Azure s just-in-time nebo přímým přístupem (podle času) přiřazení  
 - Uživatelé s kontroly přístupu

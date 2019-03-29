@@ -1,6 +1,6 @@
 ---
-title: Zobrazení historie auditů pro role adresáře Azure AD v PIM | Dokumentace Microsoftu
-description: Zjistěte, jak zobrazit historie auditů pro role adresáře Azure AD v Azure AD Privileged Identity Management (PIM).
+title: Zobrazení historie auditů pro role Azure AD v PIM – Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak zobrazit historie auditů pro role Azure AD v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,15 +14,15 @@ ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b91e2c15e86cdda4daab27892fa7a2b6ed0c0e0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c080173af8ddd31b077bb820ea19d82eb2b29300
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008900"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576135"
 ---
-# <a name="view-audit-history-for-azure-ad-directory-roles-in-pim"></a>Zobrazení historie auditů pro role adresáře Azure AD v PIM
-Pokud chcete zobrazit všechna přiřazení uživatelů a aktivace v daném časovém období pro všechny privilegované role můžete použít historie auditu Privileged Identity Management (PIM). Pokud chcete zobrazit úplnou historii auditu aktivity ve vašem tenantovi, včetně správce, koncový uživatel a aktivitu synchronizace můžete použít [sestavy o přístupech a použití služby Azure Active Directory.](../reports-monitoring/overview-reports.md)
+# <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>Zobrazení historie auditů pro role Azure AD v PIM
+Pokud chcete zobrazit všechna přiřazení uživatelů a aktivace v daném časovém období pro všechny privilegované role můžete použít historie auditu služby Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Pokud chcete zobrazit úplnou historii auditu aktivity ve vašem tenantovi, včetně správce, koncový uživatel a aktivitu synchronizace můžete použít [sestavy o přístupech a použití služby Azure Active Directory.](../reports-monitoring/overview-reports.md)
 
 ## <a name="navigate-to-audit-history"></a>Přejděte do historie auditu
 Z [webu Azure portal](https://portal.azure.com) řídicího panelu, vyberte **Azure AD Privileged Identity Management** aplikace. Odtud přejít do historie auditu kliknutím **spravovat privilegované role** > **historie auditu** na řídicím panelu PIM.

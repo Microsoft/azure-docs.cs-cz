@@ -8,6 +8,8 @@ items:
     href: architecture.md
   - name: Agenti zabezpečení
     href: security-agent-architecture.md
+  - name: Modul zabezpečení hraničních zařízení
+    href: security-edge-architecture.md
   - name: Požadavky služeb
     href: service-prerequisites.md
   - name: Začínáme s ASC for IoT
@@ -23,26 +25,8 @@ items:
   - name: Vytváření vlastních výstrah zabezpečení
     href: quickstart-create-custom-alerts.md
   expanded: true
-- name: Kurzy
-  items:
-  - name: Nasazení agentů zabezpečení
-    items:
-    - name: Nasazení agenta zabezpečení založeného na C# v zařízení s Windows
-      href: tutorial-deploy-windows-cs.md
-    - name: Nasazení agenta zabezpečení založeného na C# v zařízení s Linuxem
-      href: tutorial-deploy-linux-cs.md
-    - name: Nasazení agenta zabezpečení založeného na C v zařízení s Linuxem
-      href: tutorial-deploy-linux-c.md
-  - name: Prozkoumání zařízení
-    href: tutorial-investigate-device.md
-  - name: Odesílání vlastních zpráv zabezpečení
-    href: tutorial-send-security-messages.md
 - name: Koncepty
   items:
-  - name: Kterého agenta mám nasadit?
-    href: select-deploy-agent.md
-  - name: Konfigurace agentů zabezpečení
-    href: concept-agent-configuration.md
   - name: Ověřování agentů zabezpečení
     href: concept-security-agent-authentication-methods.md
   - name: Modul zabezpečení
@@ -51,12 +35,30 @@ items:
     href: concept-security-alerts.md
   - name: Doporučení zabezpečení
     href: concept-recommendations.md
+  - name: Ceny a související náklady
+    href: concept-pricing.md
 - name: Návody
   items:
+  - name: Kterého agenta mám nasadit?
+    items:
+    - name: Výběr agenta pro nasazení
+      href: how-to-deploy-agent.md
+    - name: Nasazení agenta zabezpečení založeného na C# v zařízení s Windows
+      href: how-to-deploy-windows-cs.md
+    - name: Nasazení agenta zabezpečení založeného na C# v zařízení s Linuxem
+      href: how-to-deploy-linux-cs.md
+    - name: Nasazení agenta zabezpečení založeného na C v zařízení s Linuxem
+      href: how-to-deploy-linux-c.md
+  - name: Nasazení modulu zabezpečení hraničních zařízení
+    href: how-to-deploy-edge.md
+  - name: Konfigurace agentů zabezpečení
+    href: how-to-agent-configuration.md
+  - name: Odesílání vlastních zpráv zabezpečení
+    href: how-to-send-security-messages.md
   - name: Přístup k nezpracovaným datům zabezpečení
     href: how-to-security-data-access.md
-  - name: Úprava dvojčete modulu zabezpečení
-    href: how-to-modify-security-module-twin.md
+  - name: Prozkoumání zařízení
+    href: how-to-investigate-device.md
 - name: Zdroje a prostředky
   items:
   - name: Nejčastější dotazy
@@ -67,9 +69,9 @@ items:
     href: http://blogs.msdn.com/b/azuresecurity/
   - name: Regionální dostupnost
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 6789b87deb5c502df3541a10e9a8e4eece21a351
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 17508e05a8de52e12487bf35fd3e063761abcbe2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541314"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575160"

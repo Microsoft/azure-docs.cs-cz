@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: 53f480b8858e2bbe7d4699d8637ecaa5ab0c08a3
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 355d89b1fd7d7cc8c9db58122d51c6ff7dff5f3b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305128"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622582"
 ---
 V Unity, otevřete projekt v `Unity` složky.
 
@@ -25,4 +25,4 @@ Zavřít **nastavení sestavení** okna.
 
 ### <a name="download-and-import-the-arcore-sdk-for-unity"></a>Stáhnout a naimportovat sady SDK ARCore pro Unity
 
-Stáhněte si `unitypackage` soubor [uvolní ARCore SDK pro Unity](https://github.com/google-ar/arcore-unity-sdk/releases/tag/v1.5.0). Zpět v Unity projektu vyberte **prostředky** > **importovat balíček** > **vlastní balíček** a pak vyberte `unitypackage` souboru stáhli. V **Import balíčku Unity** dialogové okno, zkontrolujte, zda jsou vybrány všechny soubory a pak vyberte **Import**.
+Stáhněte si `unitypackage` soubor [uvolní ARCore SDK pro Unity 1.5](https://github.com/google-ar/arcore-unity-sdk/releases/tag/v1.5.0). Zpět v Unity projektu vyberte **prostředky** > **importovat balíček** > **vlastní balíček** a pak vyberte `unitypackage` souboru stáhli. V **Import balíčku Unity** dialogové okno, zkontrolujte, zda jsou vybrány všechny soubory a pak vyberte **Import**.

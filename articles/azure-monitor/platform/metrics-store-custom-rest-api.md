@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: c7ec3ba960929250f2d23d09b9a5ab06e3f6cd38
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: aa842979bf86410e9dab97d6209f336eb6b02bd3
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095411"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621902"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Odeslat vlastní metriky pro prostředek Azure k úložišti Azure Monitor metriky pomocí rozhraní REST API
 
@@ -39,7 +39,7 @@ Dejte aplikaci vytvořenou jako součást kroku 1, monitorování metrik vydavat
 Otevřete příkazový řádek a spusťte následující příkaz:
 
 ```shell
-curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "grant_type=client_credentials" -F "client_id=<insert clientId from earlier step> " -F "client_secret=<insert client secret from earlier step>" -F "resource=https://monitoring.azure.com/"
+curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "grant_type=client_credentials" -F "client_id=<insert clientId from earlier step>" -F "client_secret=<insert client secret from earlier step>" -F "resource=https://monitoring.azure.com/"
 ```
 Uložte přístupový token z odpovědi.
 

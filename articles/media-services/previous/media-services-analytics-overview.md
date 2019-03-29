@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: 0c090499ee6ae2aaaa14af18c3c38db28ecb2f3e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: aac9719f8d74c4b7bc283745ee2b8e01365a81f0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884723"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619998"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Analýzy mediálních služeb na platformě Media Services 
 
@@ -40,8 +40,6 @@ Procesory médií z Media Analytics vytvářejí soubory MP4 nebo soubory JSON. 
 
 ### <a name="indexer"></a>Indexovací modul
 S Azure Media Indexer měli prohledávatelný obsah a generovat stopy titulků. Ve srovnání s předchozí verzí, má Azure Media Indexer 2 Preview language rychleji indexování a širší podporu. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština, portugalské a arabština. Podrobné informace a příklady najdete v tématu [zpracování videí pomocí Azure Media Indexer 2](media-services-process-content-with-indexer2.md).
-### <a name="hyperlapse"></a>Hyperlapse
-Microsoft Hyperlapse kombinuje stabilizaci videa a časové závislosti schopnost vytvářet rychlá, použitelné videa ze svého obsahu dlouhá. Kromě vytvoření časové závislosti videa, můžete vytvořit stabilní videa z roztřesených videí zachycené přes mobilní telefony a videokamer Hyperlapse. Podrobné informace a příklady najdete v tématu [Hyperlapse mediálních souborů pomocí Azure Media Hyperlapse](media-services-hyperlapse-content.md).
 ### <a name="motion-detector"></a>Detektor pohybu
 Detektor pohybu můžete použít k detekci pohybu ve videu s nehybným. To umožňuje zkontrolovat počet falešně pozitivních výsledků v pohybu událostí detekovaných službou bezpečnostních kamer. Podrobné informace a příklady najdete v tématu [pro Azure Media Analytics detekce pohybu](media-services-motion-detection.md).
 ### <a name="face-detector"></a>Detektor tváří
@@ -53,7 +51,7 @@ S Azure Media OCR (optické rozpoznávání znaků) můžete převést textový 
 ### <a name="scalable-face-redaction"></a>Škálovatelné face redactoru
 Azure Media Redactor je procesor multimédií Media Analytics, která nabízí škálovatelné face redactoru v cloudu. Pomocí face redactoru můžete upravovat vaše video k rozostření tváří vybraných jedinců. Můžete chtít použít službu rozmazání tváří v sdělovacích nebo pokud se jedná o veřejný pořádek. Pár minut záběrů, který obsahuje více ploch může trvat hodiny zákona o svobodném přístupu ručně, ale s touto službou rozmazání obličejů trvá jenom pár jednoduchých kroků. Další informace najdete v tématu [zákona o svobodném přístupu tváří pomocí Azure Media Analytics](media-services-face-redaction.md) článku.
 ### <a name="content-moderation"></a>Moderování obsahu
-Azure Content Moderator umožňuje používat moderování s podporou počítače pro svá videa. Můžete například zjistit možné obsahu pro dospělé nebo pikantního obsahu ve videích a zkontrolovat obsah s příznakem vaše týmy lidské moderování. Ručně moderování videa pro nežádoucí obsah je nákladné a časově náročné úlohy. Pomocí této služby a nástroje pro recenze přidružené kombinovat moderování s podporou počítače s funkcemi lidských v the smyčky pro dosažení co nejlepších výsledků efektivně a s nízkými náklady. Další informace najdete v tématu [zpracování videa s využitím Azure Content Moderator](media-services-content-moderation.md) článku.
+Azure Content Moderator umožňuje používat moderování s podporou počítače pro svá videa. Ve videích například můžete chtít detekovat potenciálně nevhodný obsah nebo obsah pro dospělé a označený obsah nechat zkontrolovat týmy lidského moderování. Ručně moderování videa pro nežádoucí obsah je nákladné a časově náročné úlohy. Pomocí této služby a nástroje pro recenze přidružené kombinovat moderování s podporou počítače s funkcemi lidských v the smyčky pro dosažení co nejlepších výsledků efektivně a s nízkými náklady. Další informace najdete v tématu [zpracování videa s využitím Azure Content Moderator](media-services-content-moderation.md) článku.
 
 ## <a name="common-scenarios"></a>Obvyklé scénáře
 Media Analytics může pomoct organizacím a podnikům glean nové poznatky z videa a informace efektivně spravovat velké objemy obsahu videa. Tady je několik scénářů:

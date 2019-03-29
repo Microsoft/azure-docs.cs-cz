@@ -41,6 +41,8 @@ items:
         href: connect-azure-atp.md
       - name: Připojení služby Azure Security Center
         href: connect-azure-security-center.md
+      - name: Připojení brány firewall webových aplikací Microsoftu
+        href: connect-microsoft-waf.md
       - name: Připojení brány Windows Firewall
         href: connect-windows-firewall.md
       - name: Připojení událostí zabezpečení systému Windows
@@ -65,8 +67,6 @@ items:
         href: connect-cisco.md
     - name: Připojení analýzy hrozeb
       href: connect-threat-intelligence.md
-  - name: Uživatelské analýzy
-    href: user-analytics.md
   - name: Vyhledávání
     href: hunting.md
     items:
@@ -86,9 +86,9 @@ items:
     href: https://blogs.msdn.com/b/azuresecurity/
   - name: Regionální dostupnost
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 44a779cd9d4c32288470ebdcde0a206934783abe
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ea4ece58615b35debf083f6d888067ae9e07d809
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399952"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574905"

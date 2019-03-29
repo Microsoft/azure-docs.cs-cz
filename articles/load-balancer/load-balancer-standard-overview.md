@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/11/2019
+ms.date: 03/28/2019
 ms.author: kumud
-ms.openlocfilehash: d914242b6a29e05e5b97ad11a1bde6f894113e43
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: ee0dc1b9879c8a26c7f3e48cc8daf6ae3511b27a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382563"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578522"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Přehled služby Azure Load balancer úrovně Standard
 
-Nástroj Azure Load Balancer umožňuje škálovat svoje aplikace a poskytovat vysokou dostupnost vaší služby. Nástroj pro vyrovnávání zatížení lze použít pro příchozí i odchozí scénáře a poskytuje nízkou latenci a vysokou propustnost a škálování až na úrovni milionů toků pro všechny aplikace TCP a UDP. 
+Azure Load Balancer umožňuje škálovat aplikace a poskytovat vysokou dostupnost služeb. Nástroj pro vyrovnávání zatížení lze použít pro příchozí i odchozí scénáře a poskytuje nízkou latenci a vysokou propustnost a škálování až na úrovni milionů toků pro všechny aplikace TCP a UDP. 
 
 Tento článek se zaměřuje na Load balanceru úrovně Standard.  Obecnější přehled nástroje pro vyrovnávání zatížení Azure, najdete v tématu [Load Balancer – přehled](load-balancer-overview.md) také.
 
@@ -73,6 +73,9 @@ Kromě toho, kdy celý back-endový fond [sondy dolů](load-balancer-custom-prob
 Kontrola [sondy stavu nástroje pro vyrovnávání zatížení](load-balancer-custom-probe-overview.md) podrobnosti.
 
 ### <a name="az"></a>Zóny dostupnosti
+
+>[!IMPORTANT]
+>Kontrola [zóny dostupnosti](../availability-zones/az-overview.md) související témata, včetně žádné informace o konkrétní oblasti.
 
 Load balancer úrovně standard podporuje další možnosti v oblastech, kde zóny dostupnosti jsou k dispozici.  Tyto funkce se přičítají k všechny Load balanceru úrovně Standard poskytuje.  Konfigurace zóny dostupnosti jsou k dispozici pro veřejné a vnitřní Load balanceru úrovně Standard.
 

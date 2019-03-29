@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/27/2019
+ms.date: 03/27/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 485a386210458d57b87aaa0537b1c58a6adab2c7
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: b2549abd3a4f87de99efa9a916e39b99c6fc8747
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58342746"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58616500"
 ---
-1. Virtuální sítě WAN najdete tak, že přejdete na **Všechny služby** a vyhledáte Virtuální sítě WAN. Můžete taky zadat Virtuální sítě WAN do pole hledání v horní části webu Azure Portal. Příslušnou stránku otevřete kliknutím na **Virtuální sítě WAN**.
-2. Kliknutím na **+Přidat** otevřete stránku **Create WAN** (Vytvořit síť WAN).
-3. Na **vytvořit síť WAN** stránce, vyplňte následující pole:
+1. Přejděte na stránku pro virtuální sítě WAN. Přejděte na stránku jedním ze způsobů je předat **všechny služby**a poté vyhledejte virtuální sítě WAN.
+1. Kliknutím na **+Přidat** otevřete stránku **Create WAN** (Vytvořit síť WAN).
+1. Na **vytvořit síť WAN** stránce, vyplňte následující pole:
 
    * **Name** (Název) – vyberte název, který chcete pro síť WAN použít.
    * **Subscription** (Předplatné) – vyberte předplatné, které chcete použít.

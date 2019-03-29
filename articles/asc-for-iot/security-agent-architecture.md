@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 7c8f256cf91a479c45f21b933efdb6a5e0212796
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 7de4307f7eef95a637dc828ac1738bd0ed39c7c7
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541869"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578454"
 ---
 # <a name="security-agent-reference-architecture"></a>Referenční Architektura zabezpečení agenta
 
@@ -32,15 +32,15 @@ ASC pro IoT poskytuje referenční architektury pro agenty zabezpečení, které
 
 Agenti zabezpečení jsou navrženy pro práci v prostředí omezené IoT a jsou vysoce přizpůsobitelné z hlediska hodnoty, které poskytují ve srovnání s prostředky, které se spotřebují.
 
-Agenti zabezpečení podporují tyto funkce řešení IoT:
+Agenti zabezpečení podporují tyto funkce:
 
-- Shromážděte události zabezpečení nezpracovaná z podkladové OS (Linux, Windows). Další informace o kolekcemi dostupný zabezpečení dat najdete v tématu [ASC pro konfiguraci agenta IoT](concept-agent-configuration.md).
+- Shromažďovat události zabezpečení nezpracovaná od základního operačního systému (Linux, Windows). Další informace o kolekcemi dostupný zabezpečení dat najdete v tématu [ASC pro konfiguraci agenta IoT](how-to-agent-configuration.md).
 
 - Agregovat nezpracovaný bezpečnostních událostí do zprávy odeslané do služby IoT hub.
 
 - Ověřování pomocí existující identitu zařízení nebo identitu vyhrazené modulu. Zobrazit [metody ověřování agenta zabezpečení](concept-security-agent-authentication-methods.md) Další informace.
 
-- Konfigurace vzdálené používání **ascforiot** dvojčete modulu. Další informace najdete v tématu [konfigurace ASC pro agenta IoT](concept-agent-configuration.md).
+- Konfigurace vzdálené používání **azureiotsecurity** dvojčete modulu. Další informace najdete v tématu [konfigurace ASC pro agenta IoT](how-to-agent-configuration.md).
 
 ASC pro agenty zabezpečení IoT jsou vyvíjeny jako open source projekty a jsou k dispozici na Githubu: 
 
@@ -62,10 +62,8 @@ V tomto článku jste se seznámili ASC Architektura agenta zabezpečení IoT a 
 
 Pokud chcete pokračovat v seznamování s ASC pro nasazení IoT, použijte v následujících článcích:
 
-
+- Vysvětlení [metody ověřování zabezpečení agenta](concept-security-agent-authentication-methods.md)
+- Vybrat a nasadit [zabezpečení agenta](how-to-deploy-agent.md)
 - Přečtěte si ASC pro IoT [požadované součásti služby](service-prerequisites.md)
 - Zjistěte, jak [povolit ASC pro služby Azure IoT ve službě IoT Hub](quickstart-onboard-iot-hub.md)
-- Rychlý start k použití [konfigurace řešení](quickstart-configure-your-solution.md)
-- Vysvětlení [metody ověřování zabezpečení agenta](concept-security-agent-authentication-methods.md)
-- Vybrat a nasadit [zabezpečení agenta](select-deploy-agent.md)
 - Další informace o službě z [ASC pro IoT – nejčastější dotazy](resources-frequently-asked-questions.md)

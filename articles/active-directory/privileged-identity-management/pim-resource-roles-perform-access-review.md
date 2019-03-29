@@ -1,5 +1,5 @@
 ---
-title: Provádění kontroly přístupu sady Moje role prostředků Azure v PIM | Dokumentace Microsoftu
+title: Provádění kontroly přístupu sady Moje role prostředků Azure v PIM – Azure Active Directory | Dokumentace Microsoftu
 description: Zjistěte, jak k provádění kontroly přístupu z role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -16,15 +16,15 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2a8ef3d0ff602ce4580755db0ada97fcf7cdbbc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dc503e5c11f8e3a00fe9c258ad2a7cad5b6ade7e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208227"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575075"
 ---
 # <a name="perform-an-access-review-of-my-azure-resource-roles-in-pim"></a>Provádění kontroly přístupu sady Moje role prostředků Azure v PIM
-Privileged Identity Management (PIM) pro prostředky Azure zjednodušuje, jak podniky správy privilegovaného přístupu k prostředkům v Azure. 
+Privileged Identity Management (PIM) ve Azure Active Directory (Azure AD) zjednodušuje, jak podniky správy privilegovaného přístupu k prostředkům v Azure. 
 
 Pokud máte přiřazenou roli správce privilegovaných rolí správce ve vaší organizaci může vás vyzve k pravidelně potvrzení pro vaše úloha stále potřebovat danou roli. Může se zobrazit e-mailu, který obsahuje odkaz, nebo můžete přejít přímo na [webu Azure portal](https://portal.azure.com). Postupujte podle kroků v tomto článku provádět svým přezkoumat přiřazených rolí.
 
@@ -54,4 +54,4 @@ Postupujte podle těchto kroků můžete najít a dokončení kontroly přístup
 
 ## <a name="next-steps"></a>Další postup
 
-- [Provedení kontroly přístupu rolí adresáře Azure AD v nástroji PIM](pim-how-to-perform-security-review.md)
+- [Provádění kontroly přístupu sady Moje role Azure AD v PIM](pim-how-to-perform-security-review.md)

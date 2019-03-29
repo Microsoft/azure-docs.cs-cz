@@ -1,5 +1,5 @@
 ---
-title: Řídicí panel prostředků použít k provádění kontroly přístupu v PIM – Azure | Dokumentace Microsoftu
+title: Řídicí panel prostředků použít k provádění kontroly přístupu v PIM – Azure Active Directory | Dokumentace Microsoftu
 description: Popisuje, jak použít řídicí panel prostředků k provádění kontroly přístupu v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89abf15731bd125737e7c18ab45782820a856b38
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 37057e531ea8387fbed84c9b03bbfb9c14d160ea
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012670"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574956"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review-in-pim"></a>Řídicí panel prostředků použít k provádění kontroly přístupu v PIM
 
-Prostředek řídicí panel můžete použít k provádění kontroly přístupu v Privileged Identity Management (PIM) pro prostředky Azure. Správce zobrazit řídicí panel má tři hlavní komponenty:
+Prostředek řídicí panel můžete použít k provádění kontroly přístupu v Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Správce zobrazit řídicí panel má tři hlavní komponenty:
 
 - Grafická reprezentace aktivace rolí prostředků.
 - Dva grafy zobrazující rozdělení přiřazení rolí podle typu přiřazení.
@@ -43,4 +43,4 @@ Pod grafy se zobrazí počet uživatelů a skupin pomocí nové přiřazení rol
 
 ## <a name="next-steps"></a>Další postup
 
-- [Zahájení kontroly přístupu pro role prostředků Azure v PIM](pim-resource-roles-start-access-review.md) 
+- [Zahájení kontroly přístupu pro role prostředků Azure v nástroji PIM](pim-resource-roles-start-access-review.md) 

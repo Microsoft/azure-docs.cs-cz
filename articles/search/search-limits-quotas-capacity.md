@@ -7,24 +7,29 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b97c84a7a5d7732c8c895fd3074734762e5e040c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8a6023c87dd1d68ab76c5c2342cb825e63d2b336
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780401"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620633"
 ---
 # <a name="service-limits-in-azure-search"></a>Omezení služby Azure Search
-Maximální omezuje na úložiště, úlohy a množství indexů, dokumenty, a dalších objektů závisí na tom, zda jste [zřízení Azure Search](search-create-service-portal.md) na **Free**, **základní**, nebo **Standardní** cenové úrovně.
+Maximální omezuje na úložiště, úlohy a množství indexů, dokumenty, a dalších objektů závisí na tom, zda jste [zřízení Azure Search](search-create-service-portal.md) na **Free**, **základní**,  **Standardní**, nebo **optimalizované pro úložiště** cenové úrovně.
 
 + **Bezplatné** je víceklientská služba sdílené, který je součástí vašeho předplatného Azure.
 
 + **Základní** zajišťují vyhrazené výpočetní prostředky pro produkční úlohy v menším měřítku.
 
 + **Standardní** běží na vyhrazených počítačů s další kapacitou úložiště a zpracování na všech úrovních. Standard je k dispozici ve čtyřech úrovních: S1, S2, S3 a S3 HD, High Density.
+
++ **Optimalizováno pro úložiště** běží na vyhrazených počítačů s více celková velikost úložiště, šířku pásma úložiště a paměti, než je **standardní**. Optimalizováno pro úložiště k dispozici ve dvou úrovních: L1 a L2
+
+> [!NOTE]
+> Úrovně optimalizované pro úložiště služby jsou aktuálně k dispozici ve verzi preview za zlevněné ceny pro účely testování a experimentování s cílem shromažďování zpětné vazby. Chcete zjistit koncové ceny oznámíme později při těchto úrovních jsou obecně dostupné. Nedoporučujeme tyto úrovně používají, aplikacích v produkčním prostředí.
 
   S3 High Density (S3 HD, High Density) je navržené pro konkrétní úlohy: [víceklientská](search-modeling-multitenant-saas-applications.md) a velké množství malých indexy (1 000 dokumentů na index, tři tisíc indexů na službu). Tato úroveň neposkytuje [indexer funkce](search-indexer-overview.md). Na S3 HD, High Density musí využívat ingestování přístupu nabízených oznámení pomocí volání rozhraní API k odeslání dat ze zdroje do indexu. 
 
@@ -42,13 +47,13 @@ Maximální omezuje na úložiště, úlohy a množství indexů, dokumenty, a d
 
 ## <a name="index-limits"></a>Omezení indexu
 
-| Prostředek | Free | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD |
-| -------- | ---- | ------------------- | --- | --- | --- | --- |
-| Maximální počet indexů |3 |5 nebo 15 |50 |200 |200 |1 000 na oddíl nebo 3 000 na službu |
-| Maximální počet polí na indexu |1000 |100 |1000 |1000 |1000 |1000 |
-| Maximální [moduly pro návrhy](https://docs.microsoft.com/rest/api/searchservice/suggesters) každý index |1 |1 |1 |1 |1 |1 |
-| Maximální [profily skórování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) každý index |100 |100 |100 |100 |100 |100 |
-| Maximální funkce podle profilů. |8 |8 |8 |8 |8 |8 |
+| Prostředek | Free | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
+| -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
+| Maximální počet indexů |3 |5 nebo 15 |50 |200 |200 |1 000 na oddíl nebo 3 000 na službu |10 |10 |
+| Maximální počet polí na indexu |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
+| Maximální [moduly pro návrhy](https://docs.microsoft.com/rest/api/searchservice/suggesters) každý index |1 |1 |1 |1 |1 |1 |1 |1 |
+| Maximální [profily skórování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) každý index |100 |100 |100 |100 |100 |100 |100 |100 |
+| Maximální funkce podle profilů. |8 |8 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> základní služby vytvořené po pozdní 2017 mají vyšší limit 15 indexy, zdroje dat a indexerů. Services vytvořili dříve k dispozici 5. Úroveň Basic je jenom SKU s nižší maximálně 100 polí v indexu.
 
@@ -98,16 +103,16 @@ Základní služby vytvořené po pozdní 2017 mají vyšší limit 15 indexy, z
 
 Náročná operace, jako je například Analýza obrázků v indexování objektů blob v Azure nebo zpracování přirozeného jazyka v kognitivního vyhledávání mít kratší maximální dobu spuštění, aby ostatní úlohy indexování můžete shromáždit. Pokud úloha indexování nelze dokončit v povoleném čase maximální, ji zkuste spustit podle plánu. Plánovač uchovává informace o stavu indexování. Pokud z nějakého důvodu dojde k plánované úlohy indexování, indexeru můžete pokračovat tam, kde poslední skončila v příštím plánovaném spuštění.
 
-| Prostředek | Bezplatné&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
-| -------- | ----------------- | ----------------- | --- | --- | --- | --- |
-| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |neuvedeno |
-| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |neuvedeno |
-| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |neuvedeno |
-| Maximální indexování zatížení na vyvolání |10 000 dokumentů |Omezeno pouze maximální počet dokumentů |Omezeno pouze maximální počet dokumentů |Omezeno pouze maximální počet dokumentů |Omezeno pouze maximální počet dokumentů |neuvedeno |
-| Maximální doba spuštění <sup>5</sup> | 1 až 3 minut |24 hodin |24 hodin |24 hodin |24 hodin |neuvedeno  |
-| Maximální doba běhu pro dovednosti kognitivního vyhledávání nebo objekt blob indexování s analýzou image <sup>5</sup> | 3 až 10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |neuvedeno  |
-| Indexování objektů blob: blob maximální velikost, MB |16 |16 |128 |256 |256 |neuvedeno  |
-| Indexování objektů blob: maximální počet znaků obsahu extrahují z objektu blob |32,000 |64,000 |4 miliony |4 miliony |4 miliony |neuvedeno |
+| Prostředek | Bezplatné&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
+| -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
+| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |neuvedeno |10 |10 |
+| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |neuvedeno |10 |10 |
+| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |neuvedeno |10 |10 |
+| Maximální indexování zatížení na vyvolání |10 000 dokumentů |Omezeno pouze maximální počet dokumentů |Omezeno pouze maximální počet dokumentů |Omezeno pouze maximální počet dokumentů |Omezeno pouze maximální počet dokumentů |neuvedeno |Bez omezení |Bez omezení |
+| Maximální doba spuštění <sup>5</sup> | 1 až 3 minut |24 hodin |24 hodin |24 hodin |24 hodin |neuvedeno  |24 hodin |24 hodin |
+| Maximální doba běhu pro dovednosti kognitivního vyhledávání nebo objekt blob indexování s analýzou image <sup>5</sup> | 3 až 10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |neuvedeno  |2 hodiny |2 hodiny |
+| Indexování objektů blob: blob maximální velikost, MB |16 |16 |128 |256 |256 |neuvedeno  |256 |256 |
+| Indexování objektů blob: maximální počet znaků obsahu extrahují z objektu blob |32,000 |64,000 |4 miliony |4 miliony |4 miliony |neuvedeno |4 miliony |4 miliony |
 
 <sup>1</sup> bezplatné služby mají maximální doba spuštění indexeru 3 minut pro objekt blob zdroje a pro všechny ostatní zdroje dat 1 minuta.
 
@@ -124,6 +129,8 @@ Náročná operace, jako je například Analýza obrázků v indexování objekt
 Každý zákazník musí být nezávisle na sobě vyvinuté QPS odhady. Velikost indexu a složitosti, dotaz velikost a složitost a objem provozu jsou primární faktory QPS. Neexistuje žádný způsob, jak nabídnout smysluplné odhady při tyto faktory neznámé.
 
 Jsou odhady více předvídatelný při výpočtu na službách, které běží na vyhrazených prostředcích (úrovně Basic a Standard). Chcete-li odhadnout QPS další úzce vzhledem k tomu, že budete mít kontrolu nad více parametrů. Pokyny k odhadu přístup, najdete v části [Azure Search výkon a optimalizace](search-performance-optimization.md).
+
+Pro úrovně optimalizované pro úložiště měli byste očekávat nižší propustnost dotazů a vyšší latenci, než úrovně Standard.  Metodologie pro odhad výkonu dotazů, které budete prostředí je stejný jako úrovně Standard.
 
 ## <a name="data-limits-cognitive-search"></a>Omezení datové (kognitivního vyhledávání)
 

@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: ad005ff879ef5e4c0fb2fb72ce3062a5dd25d99a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: c7587b6cb2b4b30e265657b9d3792c9d4acd4428
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486780"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621545"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura připojení pro spravovanou instanci Azure SQL Database 
 
@@ -107,7 +107,7 @@ Nasazení spravované instance ve vyhrazené podsíti ve virtuální síti. Pods
 
 | Název       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|--------------|--------|-----------------|-----------|------|
-|Správa  |80, 443, 12000|TCP     |Všechny              |Internet   |Povolit |
+|Správa  |80, 443, 12000|TCP     |Všechny              |AzureCloud  |Povolit |
 |mi_subnet   |Všechny           |Všechny     |Všechny              |MI PODSÍTĚ *  |Povolit |
 
 > Ujistěte se, že existuje pouze jedno příchozí pravidlo pro porty 9000 9003, 1438, 1440, 1452 a jeden odchozí pravidlo pro port 80, 443, 12000. Spravovaná Instance zřizování prostřednictvím ARM nasazení může selhat, pokud vstupní a výstupní pravidla jsou nakonfigurované samostatně pro každý porty. 

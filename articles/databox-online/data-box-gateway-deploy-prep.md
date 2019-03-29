@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 03/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 78008357e3ea8fbfe707a7dbead19e3fce83b578
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 34bc4d7cbdbb89cd9ff3f334ca32087c474735b7
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403693"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620083"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Kurz: Příprava na nasazení Azure Data Box brány
 
@@ -101,8 +101,11 @@ Vytvoření prostředku brány pole dat, proveďte následující kroky na webu 
     |Skupina prostředků  |Vyberte existující skupinu nebo vytvořte novou.<br>Další informace o [skupinách prostředků Azure](../azure-resource-manager/resource-group-overview.md).     |
 
 5. Zadejte nebo vyberte následující **Instance podrobnosti**.
-   | Název | Popisný název pro identifikaci prostředků.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |   
-    | Oblast | Pro tuto verzi východní USA, jihovýchodní Asie a západní Evropa jsou k dispozici pro nasazení vašich prostředků. Všechny oblasti státní správy pro Azure Government, jsou uvedeny v [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/) jsou k dispozici. <br> Zvolte umístění co nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit. |
+
+    |Nastavení  |Hodnota  |
+    |---------|---------|
+    |Název   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |   
+    |Oblast     |Pro tuto verzi východní USA, jihovýchodní Asie a západní Evropa jsou k dispozici pro nasazení vašich prostředků. Všechny oblasti státní správy pro Azure Government, jsou uvedeny v [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/) jsou k dispozici. <br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
     
     ![Vytvoření prostředku Data Box Gateway](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     

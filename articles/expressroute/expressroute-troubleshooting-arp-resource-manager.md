@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 01eac27b63f9eaaf62e863cd023201c3eab4b74e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 76e242adb07f4e6176bbdc6c03c75950e3732c2b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432137"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622072"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Získání tabulek protokolu ARP v modelu nasazení Resource Manager
 > [!div class="op_single_selector"]
@@ -59,6 +59,11 @@ Zkontrolujte, že máte následující před další průběhu
 * Rozsahy IP adres používá ke konfiguraci partnerských vztahů (Azure privátní, veřejný Azure a Microsoft). Projděte si příklady přiřazení ip adres v [stránce požadavky směrování ExpressRoute](expressroute-routing.md) k pomůžou pochopit, jak jsou ip adresy mapované na rozhraní na vaší straně a na straně ExpressRoute. Informace o konfiguraci partnerského vztahu můžete získat kontrolou [stránka konfigurace partnerského vztahu ExpressRoute](expressroute-howto-routing-arm.md).
 * Informace z síťovým týmem / připojení k poskytovateli na MAC adresy rozhraní používají se tyto IP adresy.
 * Musí mít nejnovější modul Powershellu pro Azure (verze 1.50 nebo novější).
+
+> [!NOTE]
+> Pokud jsou prázdné portál/níže ve výstupu tabulky ARP vrstvy 3 je poskytované poskytovatelem služby, aktualizujte konfiguraci okruh pomocí tlačítka Aktualizovat na portálu. Tato operace použije správné konfigurace směrování na váš okruh. 
+>
+>
 
 ## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>Získání tabulek ARP pro váš okruh ExpressRoute
 Tato část obsahuje informace o zobrazení tabulek protokolu ARP každý partnerský vztah, pomocí Powershellu. Vy nebo váš poskytovatel připojení musíte nakonfigurovat partnerský vztah před postupujte dále. Každý okruh má dvě cesty (primární i sekundární). Můžete zkontrolovat základě tabulky ARP pro každou cestu nezávisle na sobě.

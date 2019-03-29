@@ -1,6 +1,6 @@
 ---
-title: Vytvoření kontroly přístupu skupinám nebo aplikacím v kontrol přístupu Azure AD | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit kontrolu přístupu členů skupiny nebo přístupu k aplikacím v kontrol přístupu Azure AD.
+title: Vytvoření kontroly přístupu skupiny nebo aplikace – Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit kontrolu přístupu členů skupiny nebo přístupu k aplikacím v kontrol přístupu Azure Active Directory.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -15,14 +15,14 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c17078ea14a254f64a41751f2efffc16e2a1e821
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5e25af938d09a254abd5d28ca3a5eecca2d3f8f1
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847378"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576190"
 ---
-# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupinám nebo aplikacím v kontrol přístupu Azure AD
+# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin nebo kontrol přístupu aplikací ve službě Azure AD
 
 Přístup k skupin a aplikací pro zaměstnance a hosté mění v průběhu času. Chcete-li snížit riziko spojené s přiřazení zastaralé přístupu, mohou správci služby Azure Active Directory (Azure AD) k vytvoření kontroly přístupu pro členy skupiny nebo přístupu k aplikacím. Pokud je potřeba pravidelně kontrolujte přístup, můžete také vytvořit opakované kontroly přístupu. Další informace o těchto scénářích najdete v tématu [spravovat přístup uživatelů](manage-user-access-with-access-reviews.md) a [spravovat přístup hosta](manage-guest-access-with-access-reviews.md).
 
@@ -120,7 +120,7 @@ Pokud jsou některé z revidující hosté, hosté upozorněni prostřednictvím
 
 ## <a name="manage-the-access-review"></a>Správa kontroly přístupu.
 
-Průběh můžete sledovat, jak dokončit revidující své recenze na řídicím panelu Azure AD v **kontroly přístupu** oddílu. Žádné přístupová práva jsou změněny v adresáři, dokud [se kontrola dokončí](complete-access-review.md).
+Průběh můžete sledovat, jak dokončit revidující své recenze na řídicím panelu Azure AD v **kontrol přístupu** oddílu. Žádné přístupová práva jsou změněny v adresáři, dokud [se kontrola dokončí](complete-access-review.md).
 
 Pokud je to jednorázové kontroly, po období kontroly přístupu je nad nebo správce zastavení kontroly přístupu, postupujte podle pokynů v [dokončení kontroly přístupu skupinám nebo aplikacím](complete-access-review.md) chcete zobrazit a použít výsledky.  
 
@@ -130,7 +130,7 @@ Na základě vašeho výběru v nastavení činností po dokončení, automatick
 
 ## <a name="create-reviews-via-apis"></a>Vytvoření kontroly prostřednictvím rozhraní API
 
-Můžete také vytvořit kontrolu přístupu pomocí rozhraní API. K čemu ke správě přístupu zkontroluje skupin a uživatelů aplikace na webu Azure Portal je možné provést pomocí rozhraní Microsoft Graph API. Další informace najdete v tématu [kontrol přístupu Azure AD API reference](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta). Ukázku kódu naleznete v tématu [příklad načítání kontrol přístupu Azure AD prostřednictvím Microsoft Graphu](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
+Můžete také vytvořit kontrolu přístupu pomocí rozhraní API. K čemu ke správě přístupu zkontroluje skupin a uživatelů aplikace na webu Azure Portal je možné provést pomocí rozhraní Microsoft Graph API. Další informace najdete v tématu [kontroly přístupu Azure AD, reference k rozhraní API](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta). Ukázku kódu naleznete v tématu [kontroly příklad načítání přístup služby Azure AD prostřednictvím Microsoft Graphu](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
 
 ## <a name="next-steps"></a>Další postup
 

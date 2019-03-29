@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: f39fee9b59dfec643a640a4e17460ed9199c858f
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 23af0d9e2d7c4033a2457676b29b5e4b2f8c15ea
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58542064"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579440"
 ---
 # <a name="asc-for-iot-security-alerts"></a>ASC pro výstrahy zabezpečení IoT
 
@@ -27,8 +27,15 @@ ms.locfileid: "58542064"
 > ASC pro IoT je aktuálně ve verzi public preview.
 > Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+ASC pro IoT průběžně analyzuje vaše řešení IoT s použitím pokročilých analýz a analýz hrozeb intelligence vás upozorní na škodlivou aktivitu.
+Kromě toho můžete vytvořit vlastní výstrahy na základě vašich znalostí zařízení očekávané chování.
+Výstrahu slouží jako indikátor comprise, by měl být prozkoumat a napravené s cílem zajistit.
 
-## <a name="device-alerts"></a>Upozornění zařízení
+V tomto článku najdete seznam předdefinovaných výstrahy, které se dá spouštět na váš IoT Hub a/nebo zařízení IoT.
+Vedle integrované upozornění ASC pro IoT vám umožní definovat vlastní výstrahy podle očekávané centra a/nebo chování zařízení.
+Další podrobnosti najdete v tématu [vytvářet vlastní výstrahy](quickstart-create-custom-alerts.md).
+
+## <a name="built-in-alerts-for-iot-devices"></a>Předdefinované výstrahy pro zařízení IoT
 
 | Severity | Název                                                   | Zdroj dat | Popis                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |----------|--------------------------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -72,7 +79,7 @@ ms.locfileid: "58542064"
 | Nízká      | Vymazána historie bash                                   | Agent       | Vymazání protokolu historie bash. Nežádoucí osoby můžete skrýt vlastní příkazy z se zobrazí v protokolech                                                                                                                                                                                                                                                                                                                                                   |
 | Nízká      | Neúspěšné útoky hrubou silou                                      | Agent       | Několik neúspěšných pokusů o přihlášení identifikovat. Pokusili a služby se nezdařilo hrubou vynutit útoku bylo provedeno v zařízení.                                                                                                                                                                                                                                                                                                                                                  |
 
-## <a name="iot-hub-alerts"></a>Výstrahy služby IoT Hub
+## <a name="built-in-alerts-for-iot-hub"></a>Předdefinované výstrahy pro službu IoT Hub
 
 | Severity | Název                                                                         | Popis                                                                                                                                                                                                                                                                                                                            |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -88,4 +95,4 @@ ms.locfileid: "58542064"
 
 - [Přehled](overview.md)
 - [Přístup k vašim datům zabezpečení](how-to-security-data-access.md)
-- [Prozkoumat zařízení](tutorial-investigate-device.md)
+- [Prozkoumat zařízení](how-to-investigate-device.md)

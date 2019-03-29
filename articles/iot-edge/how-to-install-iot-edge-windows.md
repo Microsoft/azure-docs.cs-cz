@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: d669842c60fb69820e6d94ad0a9359f6460101fe
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 95e984f6f08af01a2ffd7b9b4e0ec598d73f4d05
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481871"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621069"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Nainstalovat modul runtime Azure IoT Edge ve Windows
 
@@ -26,7 +26,16 @@ Další informace o modulu runtime IoT Edge najdete v tématu [pochopení runtim
 V tomto článku jsou uvedené kroky k instalaci modulu runtime Azure IoT Edge na vaše Windows x64 (AMD nebo Intel) systému. Podpora Windows je aktuálně ve verzi Preview.
 
 > [!NOTE]
-> Použití kontejnerů Linuxu v systémech Windows není produkční doporučené nebo podporované konfigurace pro Azure IoT Edge. To však lze použít pro účely vývoje a testování.
+> Známý problém operační systém Windows zabrání přechodem na Přejít do režimu spánku a hibernace stavy napájení při spouštění moduly IoT Edge (izolovaný režim procesu kontejnery Windows Nano Server). Tento problém má vliv na výdrž baterie zařízení.
+>
+> Jako alternativní řešení, použijte příkaz `Stop-Service iotedge` zastavit všechny spuštěné moduly IoT Edge před použitím tyto stavy napájení. 
+
+<!--
+> [!NOTE]
+> Using Linux containers on Windows systems is not a recommended or supported production configuration for Azure IoT Edge. However, it can be used for development and testing purposes.
+-->
+
+Používat systém Linux kontejner v systémech Windows není produkční doporučené nebo podporované konfigurace pro Azure IoT Edge. To však lze použít pro účely vývoje a testování. 
 
 ## <a name="prerequisites"></a>Požadavky
 

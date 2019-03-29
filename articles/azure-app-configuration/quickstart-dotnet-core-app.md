@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: e00c086e0b91c0f48821143ff118c62afdd76e82
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 7c84a5c39b1a3b4a52505c053fdcfc92030237c3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485165"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575764"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Rychlý start: Vytvoření .NET Core aplikace s konfigurací aplikace
 
@@ -57,14 +57,16 @@ Můžete použít [rozhraní příkazového řádku .NET Core (CLI)](https://doc
 
         dotnet restore
 
-3. Otevřít *Program.cs*a aktualizovat `Main` používat konfiguraci aplikací pomocí volání metody `builder.AddAzureAppConfiguration()` metoda.
+3. Otevřít *Program.cs*a přidejte odkaz na poskytovatele konfigurace aplikace konfigurace .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
 
-    ...
+4. Aktualizace `Main` používat konfiguraci aplikací pomocí volání metody `builder.AddAzureAppConfiguration()` metody.
 
+    ```csharp
     static void Main(string[] args)
     {
         var builder = new ConfigurationBuilder();

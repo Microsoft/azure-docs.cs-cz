@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 7a2c3f8d2eb4dbbcaf1290593115f3a60918a0be
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: cf872766a18c5691f6c094d71a0c29f6bcf736da
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484063"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579032"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Kurz: Použít dynamické konfiguraci aplikace ASP.NET Core
 
@@ -53,10 +53,11 @@ To provedete v tomto rychlém startu, nainstalujete [.NET Core SDK](https://dotn
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(o => o.Connect(settings["ConnectionStrings:AppConfig"])
-                    .Watch("TestApp:Settings:BackgroundColor")
-                    .Watch("TestApp:Settings:FontColor")
-                    .Watch("TestApp:Settings:Message"));
+                config.AddAzureAppConfiguration(options =>
+                    options.Connect(settings["ConnectionStrings:AppConfig"])
+                           .Watch("TestApp:Settings:BackgroundColor")
+                           .Watch("TestApp:Settings:FontColor")
+                           .Watch("TestApp:Settings:Message"));
             })
             .UseStartup<Startup>();
     ```

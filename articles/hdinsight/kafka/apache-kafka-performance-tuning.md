@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: 903cd8921801ffb47dd73f48e507f30aa0b6dccc
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 3f15f45e0543c582d70463fb9ddc7ac569ff57bc
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58373147"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576754"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Optimalizace výkonu pro clustery Apache Kafka HDInsight
 
@@ -66,7 +66,7 @@ Disky úložiště mají omezenou IOPS (vstupně-výstupní operace za sekundu) 
 
 ### <a name="number-of-topics-and-partitions"></a>Počet témat a oddílů
 
-Producenti Kafka zapisovat do témat. Konzumenti Kafka číst z témat. Téma je přidružen k protokolu, který je datová struktura na disku. Kafka přidá záznamy z producentů na konci tématu protokolu. Téma protokol se skládá z mnoha oddílů, které jsou rozdělené do několika souborů. Tyto soubory se zase rozděleny mezi více uzlů v clusteru Kafka. Příjemci číst z témat Kafka v jejich tempo a a můžete si vybrat jejich pozice (posun) v protokolu tématu.
+Producenti Kafka zapisovat do témat. Konzumenti Kafka číst z témat. Téma je přidružen k protokolu, který je datová struktura na disku. Kafka přidá záznamy z producentů na konci tématu protokolu. Téma protokol se skládá z mnoha oddílů, které jsou rozdělené do několika souborů. Tyto soubory se zase rozděleny mezi více uzlů v clusteru Kafka. Spotřebitelé číst z témat Kafka v jejich tempo a můžete si vybrat jejich pozice (posun) v protokolu tématu.
 
 Každý oddíl Kafka je soubor protokolu systému a výrobce vláken může zapisovat do protokolů více současně. Podobně vlákno každý příjemce čte zprávy typu z jednoho oddílu, využívání z několika oddílů je zpracovat, protože i paralelně.
 

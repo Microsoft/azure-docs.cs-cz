@@ -4,14 +4,14 @@ description: Nejčastější dotazy k Azure Migrate adresy
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 03/28/2019
 ms.author: snehaa
-ms.openlocfilehash: 20a3b790310153ac5bda23fb72baf2ae61e1da52
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 366240c273feed559edb6e569640020046cc9471
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003717"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578641"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -108,9 +108,7 @@ Zjišťování na základě agenta možnost je k dispozici nad rámec zjišťov�
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>By existovat ovlivnit výkon prostředí analyzované hostitele ESXi?
 
-V případě třídy [jedním z přístupů doba zjišťování](https://docs.microsoft.com/azure/migrate/concepts-collector), aby se daly shromažďovat data o výkonu, úroveň statistiky na vCenter serveru byste museli být nastavená na 3. Nastavení na této úrovni může shromažďovat velké množství dat, která bude uložena v databázi serveru vCenter pro řešení potíží. Proto to může způsobit problémy s výkonem v systému vCenter Server. Na hostiteli ESXi by mělo pouze nepatrný dopad.
-
-Zavedli jsme průběžné profilace údaje o výkonu (což je ve verzi preview). Průběžné profilací, již není potřeba měnit statistiky systému vCenter Server úroveň se spustit posouzení na základě výkonu. Zařízení kolektoru bude nyní profilu místních počítačů k měření data o výkonu virtuálních počítačů. Toto musí téměř žádný vliv na výkon na hostitelích ESXi, stejně jako v systému vCenter Server.
+S průběžné profilace údaje o výkonu, není nutné změnit statistiky systému vCenter Server úroveň se spustit posouzení na základě výkonu. Zařízení kolektoru bude Profilovat místních počítačů k měření data o výkonu virtuálních počítačů. Toto musí téměř žádný vliv na výkon na hostitelích ESXi, stejně jako v systému vCenter Server.
 
 ### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>Kde se shromážděná data uložená a jak dlouho?
 

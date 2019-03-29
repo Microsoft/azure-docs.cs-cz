@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: ba72f273724bb45418b104b1245648419ababbf0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c6c44525018e2115f1df8ed2d3f15432b95490c6
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903619"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619828"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Diagnostika jednotné transakcí mezi komponentami
 
@@ -32,7 +32,7 @@ Součásti jsou umožňují nezávislé nasazení částí aplikace distribuovat
 * Součástí může být samostatný instrumentačních klíčů Application Insights (i v případě, že předplatná se liší) nebo různé role, generování sestav na jeden Instrumentační klíč Application Insights. Nové prostředí obsahuje podrobnosti pro všechny součásti, bez ohledu na to, jak jsou již byly vytvořeny.
 
 > [!NOTE]
-> * **Chybějící odkazy na související položky?** Jsou všechny související telemetrii [horní](#cross-component-transaction-chart) a [dolní](#all-telemetry-with-this-Operation-Id) oddíly na levé straně. 
+> * **Chybějící odkazy na související položky?** Jsou všechny související telemetrii [horní](#cross-component-transaction-chart) a [dolní](#all-telemetry-with-this-operation-id) oddíly na levé straně. 
 
 ## <a name="transaction-diagnostics-experience"></a>Diagnostika transakcí prostředí
 Toto zobrazení obsahuje čtyři klíčové části: výsledky seznamu, graf transakcí mezi komponentami, časový průběh seznam všechny telemetrické údaje vztahující se k této operaci a v podokně podrobností pro všechny položky vybrané telemetrie na levé straně.

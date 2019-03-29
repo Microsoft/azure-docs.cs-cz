@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/24/2019
 ms.author: artemuwka
 ms.subservice: common
-ms.openlocfilehash: ffc4a0c57681e877250c7be82f5160174178892a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ad3e96af95d952956af02acfd87d6d317bc29ed0
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486015"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574973"
 ---
 # <a name="transfer-data-with-azcopy-v10-preview"></a>Přenos dat pomocí AzCopy v10 (Preview)
 
@@ -175,7 +175,7 @@ Příkaz Synchronizovat Synchronizuje obsah zdrojového adresáře do jiného ad
 
 > [!NOTE] 
 > Použití `--delete-destination` příznak opatrně. Povolit [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) funkce před povolením chování při odstraňování synchronizované abyste zabránili nechtěnému odstranění ve vašem účtu. 
-
+>
 > Když `--delete-destination` je nastavena na hodnotu true, AzCopy odstraní soubory, které neexistují ve zdroji z cílového bez jakékoli výzvy uživateli. Pokud chcete být vyzváni k potvrzení, použít `--delete-destination=prompt`.
 
 K synchronizaci vašeho místního systému souborů do účtu úložiště, použijte následující příkaz:

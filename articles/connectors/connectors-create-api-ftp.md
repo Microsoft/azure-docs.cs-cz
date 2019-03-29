@@ -1,21 +1,21 @@
 ---
-title: Připojte se k serveru FTP – Azure Logic Apps | Dokumentace Microsoftu
+title: Připojte se k serveru FTP – Azure Logic Apps
 description: Vytvářet, monitorovat a spravovat soubory na serveru FTP s Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
-ms.openlocfilehash: 1e649f21758adedb069b38f64f083ccb85df874d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: e5aeaa707c7a839483484c524e982204d6fe055c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913355"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576322"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Vytváření, monitorování a správu protokolu FTP souborů pomocí Azure Logic Apps
 
@@ -28,10 +28,11 @@ S Azure Logic Apps a konektor FTP můžete vytvořit automatizovaných úloh a p
 
 Můžete použít aktivační události, které odpovědi ze serveru FTP a zpřístupnit výstup dalších akcí. Spuštění akcí ve svých aplikacích logiky můžete použít pro správu souborů na vašem serveru FTP. Také můžete mít další akce, které používají výstup z FTP akcí. Například pokud pravidelně získání souborů ze serveru FTP, můžete odeslat e-mailu o těchto souborech a jejich obsah s použitím konektoru Office 365 Outlook nebo konektor Outlook.com. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-> [!NOTE]
-> Konektor FTP podporuje pouze soubory, které jsou 50 MB nebo méně, pokud nechcete použít [zpráva bloků v akcích](../logic-apps/logic-apps-handle-large-messages.md). V současné době nelze použít, bloků pro aktivační události.
->
-> Konektor FTP také podporuje pouze explicitní FTP přes protokol SSL (FTPS) a není kompatibilní s implicitní FTPS. 
+## <a name="limits"></a>Omezení
+
+* FTP akce podporují pouze soubory, které jsou *50 MB nebo méně* Pokud nepoužíváte [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md), které umožňují překročí tento limit. V současné době aktivační události FTP nepodporují dělením dat do bloků.
+
+* Konektor FTP podporuje pouze explicitní FTP přes protokol SSL (FTPS) a není kompatibilní s implicitní FTPS.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -51,7 +52,7 @@ Můžete použít aktivační události, které odpovědi ze serveru FTP a zpř�
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
 
-1. V případě prázdné logic apps do vyhledávacího pole zadejte jako filtr "ftp". V seznamu triggerů vyberte trigger, který chcete. 
+1. V případě prázdné logic apps do vyhledávacího pole zadejte jako filtr "ftp". V seznamu triggerů vyberte trigger, který chcete.
 
    -nebo-
 
@@ -82,7 +83,7 @@ Tato aktivační událost se spustí pracovní postup aplikace logiky Pokud trig
 
 **Příklad organizace**: Tato aktivační událost můžete použít k monitorování složky FTP pro nové soubory, které popisují objednávek zákazníků. Můžete pak použít akci FTP jako **získat obsah souboru**, abyste mohli získat obsah pořadí pro další zpracování a uložení této objednávky do databáze objednávek.
 
-Pokud se požaduje obsah souboru, aktivační události Nezískávat soubory větší než 50 MB. Pokud chcete získat soubory větší než 50 MB, postupujte podle tohoto vzoru: 
+Pokud se požaduje obsah souboru, aktivační události nelze získat soubory větší než 50 MB. Pokud chcete získat soubory větší než 50 MB, postupujte podle tohoto vzoru: 
 
 * Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)**.
 
@@ -121,7 +122,7 @@ Teď, když vaše aplikace logiky má aktivační událost, přidání akce, kte
 
 Tato akce získá obsah ze souboru na FTP server, když se tento soubor se přidá nebo aktualizuje. Takže například můžete přidat aktivační událost z předchozího příkladu a akci, která získá obsah souboru po souboru se přidal nebo upravil. 
 
-Pokud se požaduje obsah souboru, aktivační události Nezískávat soubory větší než 50 MB. Pokud chcete získat soubory větší než 50 MB, postupujte podle tohoto vzoru: 
+Pokud se požaduje obsah souboru, aktivační události nelze získat soubory větší než 50 MB. Pokud chcete získat soubory větší než 50 MB, postupujte podle tohoto vzoru: 
 
 * Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)**.
 
@@ -151,7 +152,7 @@ Tady je příklad, který obsahuje tato akce: **Získat obsah**
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/ftpconnector/).
+Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, zkontrolujte [konektoru referenční stránce](/connectors/ftpconnector/).
 
 ## <a name="get-support"></a>Získat podporu
 

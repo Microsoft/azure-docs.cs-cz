@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 9897fbb3f5efe1f5255992e4894ea22041595263
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: ad4839a1b9e951a2bb206518254826a066330000
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268188"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620855"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Parsovat text data v protokolech Azure Monitor
 Některé protokolu data shromážděná službou Azure Monitor bude obsahovat více kusů informace v jedné vlastnosti. Analýza těchto dat do více vlastností usnadňují použít v dotazech. Běžným příkladem jsou [vlastního protokolu](../../log-analytics/log-analytics-data-sources-custom-logs.md) položku celý protokol s více hodnotami, které shromažďuje do vlastnosti jediné. Vytvoření samostatné vlastnosti pro různé hodnoty, můžete hledat a agregace v každém.
@@ -55,7 +55,7 @@ Výhody této metody patří:
  
 Nevýhody této metody patří:
 
-- Vyžaduje složitější dotazy. To lze zmírnit použitím [funkce pro simulaci tabulku](#Use-function-to-simulate-a-table).
+- Vyžaduje složitější dotazy. To lze zmírnit použitím [funkce pro simulaci tabulku](#use-function-to-simulate-a-table).
 - Musí replikovat analýzy logiky ve více dotazů. Můžete sdílet nějaké logiky prostřednictvím funkce.
 - Můžete vytvořit režie při spouštění velmi rozsáhlých záznam komplexní logiku nastaví (miliard záznamů).
 

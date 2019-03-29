@@ -13,19 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f09d18759478c6c07aa0aea82f8bd1707595aa63
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: ea5a6a70372571daf82e7639fc31c125d69fa44f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499076"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621426"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
 Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích verzí a známých problémů.
 
 > [!NOTE]
-> Žádné nové funkce nebo funkce se neustále přidávají do Media Services v2. <br/>Podívejte se na nejnovější verzi [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
 
 Chceme slyšet od našich zákazníků, takže se můžeme zaměřit na opravu problémů, které se vás týkají. Pokud chcete nahlásit problém nebo položit dotazy, odešlete příspěvek ve [Fórum MSDN Azure Media Services]. 
 
@@ -42,13 +42,12 @@ Chceme slyšet od našich zákazníků, takže se můžeme zaměřit na opravu p
 | Někteří klienti můžou pocházet napříč problém při opakovaném značky v manifestu technologie Smooth Streaming. |Další informace najdete v tématu [v této části](media-services-deliver-content-overview.md#known-issues). |
 | Objekty Media Services .NET SDK nelze serializovat a díky tomu nebudou fungovat s mezipamětí Azure pro Redis. |Pokud se pokusíte k serializaci objektu SDK AssetCollection se přidá do mezipaměti Azure pro Redis, je vyvolána výjimka. |
 
-
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>Historie verzí rozhraní REST API
 Informace o historii verzí rozhraní API REST služby Media Services, najdete v článku [Referenční informace k Azure Media Services REST API].
 
 ## <a name="december-2018"></a>Prosinec 2018
 
-[Media Hyperlapse Preview](media-services-hyperlapse-content.md) funkce služby Azure Media Services brzo skončí. Od 19. prosince 2018, Media Services se už provést změny nebo vylepšení Media Hyperlapse. 29. března 2019 je vyřazený a už nebudou dostupné.
+Funkce Azure Media Services k Media Hyperlapse ve verzi Preview brzo skončí. Od 19. prosince 2018, Media Services se už provést změny nebo vylepšení Media Hyperlapse. 29. března 2019 je vyřazený a už nebudou dostupné.
 
 ## <a name="october-2018"></a>Říjen 2018
 
@@ -260,7 +259,6 @@ Následující nové funkce byly oznámili:
 
 * [Živé kódování pomocí Media Services ve verzi preview](media-services-manage-live-encoder-enabled-channels.md)
 * [Dynamický manifest](media-services-dynamic-manifest-overview.md)
-* [Ve verzi preview procesor médií Azure Media Hyperlapse](https://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)
 
 ## <a id="april_changes_15"></a>Vydání duben 2015
 ### <a name="general-media-services-updates"></a>Aktualizace obecných Media Services

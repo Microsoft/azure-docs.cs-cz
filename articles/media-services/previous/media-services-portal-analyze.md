@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7a303b9d27b3708bd4f59517452fa232cc38c923
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: d3917f65d8be08d6355013393f6c6675ea6c7fc5
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259682"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619437"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Analýza médií s využitím webu Azure Portal 
 > [!NOTE]
@@ -73,11 +73,6 @@ Popisný název, který vám umožní identifikovat úlohu. [To](media-services-
 
 ### <a name="output-file"></a>Výstupní soubor
 Popisný název, který vám umožní identifikovat výstupní obsah. 
-
-## <a name="azure-media-hyperlapse"></a>Azure Media Hyperlapse
-Azure Media Hyperlapse je na sadu Management Pack, která vytvoří smooth vypršelo čas videa z první, kdo nebo akce fotoaparátu obsahu.  Další informace najdete v [tomto](media-services-hyperlapse-content.md) tématu. Tato část obsahuje některé informace o možnostech, které zadáte pro tento bod.
-
-![Analýza videí](./media/media-services-portal-analyze/media-services-portal-analyze004.png)
 
 ### <a name="speed"></a>Rychlost
 Zadejte násobek zrychlení vstupního videa rychlost. Výstup je stabilizovaná a čas vypršelo interpretace vstupu videa.

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: saurse
-ms.openlocfilehash: a9a445208c151a537c35fa7afafa48b19486828f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4bad788156b2068f24484d3b248f2091409752ad
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008153"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621613"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -60,7 +60,7 @@ Tady je postup pro řešení chyb můžete setkat během konfigurace, registraci
 ## <a name="backups-dont-run-according-to-the-schedule"></a>Zálohování nelze spustit podle plánu
 Pokud naplánovaných záloh není aktivují automaticky, zatímco ruční zálohy budou fungovat bez problémů, zkuste následující akce:
 
-- Zkontrolujte, že plán zálohování Windows serveru nejsou v konfliktu se plán zálohování Azure soubory a složky.
+- Ujistěte se, že plán zálohování Windows serveru nejsou v konfliktu se soubory a složky, plán zálohování Azure.
 - Přejděte na **ovládací panely** > **nástroje pro správu** > **Plánovač úloh**. Rozbalte **Microsoft**a vyberte **Online zálohování**. Dvakrát klikněte na panel **Microsoft OnlineBackup**a přejděte na **triggery** kartu. Ujistěte se, že je stav nastaven **povoleno**. Pokud tomu tak není, vyberte **upravit**a vyberte **povoleno** zaškrtávací políčko a klikněte na tlačítko **OK**. Na **Obecné** kartu, přejděte na **možnosti zabezpečení** a ujistěte se, že uživatelský účet vybrané ke spuštění úkolu je buď **systému** nebo **místní Skupina správců** na serveru.
 
 - Podívejte se, jestli je na serveru nainstalovaný PowerShell 3.0 nebo novější. Pokud chcete zkontrolovat verzi prostředí PowerShell, spusťte následující příkaz a ověřte, zda *hlavní* číslo verze je roven nebo větší než 3.

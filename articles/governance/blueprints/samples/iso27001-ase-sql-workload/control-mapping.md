@@ -8,12 +8,12 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d487ce81babc2d1d6a35e3bdb1c13e1a24f8d1ca
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: c062759938652518ac3cafff64973050554ca19d
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58014199"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579695"
 ---
 # <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Mapování ovládacího prvku vzorku podrobného plánu se standardy ISO 27001 Azure podrobné plány.
 
@@ -122,7 +122,7 @@ Principy, kde vašich prostředků Azure může mít optimální kryptografické
 
 ## <a name="a1241-event-logging"></a>Protokolování událostí A.12.4.1
 
-Tento podrobný plán vám pomůže zajistit systémové události jsou protokolovány přiřazením sedm [Azure Policy](../../../policy/overview.md) definice, které auditování protokolu nastavení pro prostředky Azure. Přiřazených zásad se taky Audituje, jestli virtuální počítače nejsou posílá protokoly do pracovního prostoru zadané log analytics.
+Tento podrobný plán vám pomůže zajistit systémové události jsou protokolovány přiřazením sedm [Azure Policy](../../../policy/overview.md) definice, které auditování nastavení protokolu pro prostředky Azure. Přiřazených zásad se taky Audituje, jestli virtuální počítače nejsou posílá protokoly do pracovního prostoru zadané log analytics.
 
 - [Preview]: Nasazení agenta závislostí auditu - obrázku (operačního systému virtuálního počítače) neuvedené v seznamu
 - [Preview]: Auditovat nasazení agenta závislostí v VMSS - obrázku (operačního systému virtuálního počítače) neuvedené v seznamu

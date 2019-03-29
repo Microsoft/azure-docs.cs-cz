@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4c3c936a3d547389de3681b4f82f329c4978742d
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: cf1d36458bab867e35fa23ae702a6f6f45d8dc60
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886617"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620576"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Spuštění runbooku ve službě Azure Automation
 
@@ -39,7 +39,7 @@ Následující obrázek ukazuje podrobný postup krok za krokem v životním cyk
 1. Na webu Azure Portal, vyberte **automatizace** a pak klikněte na název účtu automation.
 2. V nabídce centra vyberte **sady Runbook**.
 3. Na **sady Runbook** stránky, vyberte sadu runbook a klikněte na **Start**.
-4. Pokud má runbook parametry, budete vyzváni k zadání jejich hodnot textové pole pro každý parametr. Další informace o parametrech najdete v tématu [parametry Runbooku](#Runbook-parameters).
+4. Pokud má runbook parametry, budete vyzváni k zadání jejich hodnot textové pole pro každý parametr. Další informace o parametrech najdete v tématu [parametry Runbooku](#runbook-parameters).
 5. Na **úlohy** stránky, můžete zobrazit stav úlohy runbooku.
 
 ## <a name="start-a-runbook-with-powershell"></a>Spuštění runbooku pomocí prostředí PowerShell
@@ -69,7 +69,7 @@ While ($doLoop) {
 Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup –Stream Output
 ```
 
-Pokud runbook vyžaduje parametry, pak je potřeba je zadat jako [zatřiďovací tabulky](https://technet.microsoft.com/library/hh847780.aspx). Klíč zatřiďovací tabulky musí odpovídat názvu parametru a hodnota je hodnota tohoto parametru. Následující příklad ukazuje spuštění runbooku se dvěma řetězcovými parametry s názvy FirstName a LastName, celočíselným parametrem s názvem RepeatCount a logickým parametrem s názvem Show. Další informace o parametrech najdete v tématu [parametry Runbooku](#Runbook-parameters) níže.
+Pokud runbook vyžaduje parametry, pak je potřeba je zadat jako [zatřiďovací tabulky](https://technet.microsoft.com/library/hh847780.aspx). Klíč zatřiďovací tabulky musí odpovídat názvu parametru a hodnota je hodnota tohoto parametru. Následující příklad ukazuje spuštění runbooku se dvěma řetězcovými parametry s názvy FirstName a LastName, celočíselným parametrem s názvem RepeatCount a logickým parametrem s názvem Show. Další informace o parametrech najdete v tématu [parametry Runbooku](#runbook-parameters) níže.
 
 ```azurepowershell-interactive
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}

@@ -11,12 +11,12 @@ ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
 tags: connectors
 ms.date: 10/26/2018
-ms.openlocfilehash: 5d328164ac8ad99db15a12d850327615a9ffd809
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 42e1ef3e311633f9631163bc9d3df212b608ef3a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910280"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578369"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Monitorování, vytvářet a spravovat SFTP soubory pomocí Azure Logic Apps
 
@@ -27,10 +27,18 @@ Automatizace úloh, které monitorování, vytvářet, odesílat a přijímat so
 * Získáte obsah souboru a metadata.
 * Extrahujte archivy do složek.
 
-Ve srovnání s [konektoru SFTP-SSH](../connectors/connectors-sftp-ssh.md), konektor SFTP může číst nebo zapisovat soubory velikost až 50 MB, pokud nechcete použít [zpráva bloků v akcích](../logic-apps/logic-apps-handle-large-messages.md). V současné době nelze použít, bloků pro aktivační události. Pro soubory až 1 GB, velikost, použijte [konektoru SFTP-SSH](../connectors/connectors-sftp-ssh.md). Pro soubory větší než 1 GB, můžete použít SFTP SSH konektor [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md). 
-
 Můžete použít aktivační události, které sledovat události na vašem serveru SFTP a zpřístupnit výstup dalších akcí. Můžete použít akce, které provádění různých úloh na vašem serveru SFTP. Také můžete mít další akce ve vaší aplikaci logiky použít výstup z akcí SFTP. Například pokud pravidelně Načtení souborů ze serveru SFTP, můžete odeslat e-mailová upozornění o těchto souborech a jejich obsah s použitím konektoru Office 365 Outlook nebo konektor Outlook.com.
 Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+
+## <a name="limits"></a>Omezení
+
+* SFTP akce může číst nebo zapisovat soubory, které jsou *50 MB nebo menší* Pokud nepoužíváte [zpráva bloků v akcích](../logic-apps/logic-apps-handle-large-messages.md), které umožňují překročí tento limit. V současné době SFTP triggerů nepodporují dělením dat do bloků.
+
+* Pro soubory *až 1 GB*, použijte [konektoru SFTP-SSH](../connectors/connectors-sftp-ssh.md).
+
+* Pro soubory *větší než 1 GB*, použijte SFTP SSH konektor [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md).
+
+Další rozdíly mezi konektoru SFTP a konektor SFTP-SSH najdete v tématu [porovnání SFTP SSH a SFTP](../connectors/connectors-sftp-ssh.md#comparison) v článku SFTP-SSH.
 
 ## <a name="prerequisites"></a>Požadavky
 

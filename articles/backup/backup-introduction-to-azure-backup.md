@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ca50c7cbbcccadf96641c28e43f7da48421c8f3b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 98acb6c5b83ce31046b50f744492c518cdf77498
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994413"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621647"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Přehled funkcí ve službě Azure Backup
 Azure Backup je služba Azure, kterou můžete využívat k zálohování (ochraně) a obnovování vašich dat v Microsoft Cloudu. Azure Backup nahrazuje současná řešení místního nebo odlehlého zálohování spolehlivým, bezpečným a cenově konkurenceschopným cloudovým řešením. Azure Backup nabízí několik komponent, které můžete stáhnout a nasadit na vhodném počítači, na serveru, nebo v cloudu. Nasazená komponenta nebo agent závisí na tom, co chcete chránit. Všechny komponenty služby Azure Backup (bez ohledu na to, jestli chráníte data v místním nebo cloudovém úložišti) je možné použít k zálohování dat do trezoru služby Recovery Services v Azure. Informace o tom, kterou komponentu použít pro ochranu konkrétních data, aplikací nebo úloh, najdete v [tabulce komponent Azure Backup](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (dále v tomto článku).
@@ -37,7 +37,11 @@ Tradiční řešení zálohování se vyvinula tak, že cloud považují za konc
 
 **Neomezené přenosy dat** – Azure Backup neomezuje množství příchozích ani odchozích dat, která přenesete. V rámci Azure Backup se přenesená data neúčtují. Pokud ale použijete službu importu/exportu v Azure k importu velkého množství dat, účtují se náklady související s příchozími daty. Další informace o těchto nákladech najdete v části [Pracovní postup zálohování offline v Azure Backup](backup-azure-backup-import-export.md). Odchozí data označují data přenášená z trezoru služby Recovery Services během operace obnovení.
 
-**Šifrování dat** – Šifrování dat umožňuje bezpečný přenos a ukládání vašich dat ve veřejném cloudu. Šifrovací heslo máte uložené v místním úložišti a do Azure se nikdy nepřenáší ani se tam neukládá. Pokud je nutné obnovit některá data, máte šifrovací heslo (klíč) k dispozici jen vy.
+**Šifrování dat**:
+- On-premises přenášená data se šifrují v místním počítači pomocí AES256. Data přenášená je chráněn HTTPS mezi úložiště a zálohování. Protokol iSCSI zabezpečuje data přenášená mezi zálohováním a uživatele počítače. Zabezpečené tunelové propojení se používá k ochraně kanál iSCSI.
+- Pro místní do služby Azure backup data v Azure je šifrovaný v klidovém stavu pomocí přístupového hesla, které poskytnete při nastavování zálohování. Heslo nebo klíč se nikdy nepřenáší ani neukládá v Azure. Pokud je nutné obnovit některá data, máte šifrovací heslo (klíč) k dispozici jen vy.
+- Pro virtuální počítače Azure, data zašifrovaná pomocí šifrování služby Storage (SSE) na resetovat. Backup automaticky šifruje data před uložením. Azure Storage se dešifruje před načtením.
+- Backup podporuje také virtuální počítače Azure, které jsou šifrované pomocí služby Azure Disk Encryption (ADE). [Další informace](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups).
 
 **Zálohování konzistentní s aplikací** – Záloha konzistentní s aplikaci znamená, že bod obnovení obsahuje veškerá potřebná data pro obnovení záložní kopie. Azure Backup poskytuje zálohy konzistentní s aplikací, které zajišťují, že pro obnovení dat se nevyžadují další opravy. Obnovování dat konzistentních s aplikací zkracuje čas obnovení, což vám umožní rychle se vrátit do funkčního stavu.
 
@@ -84,9 +88,9 @@ Následující tabulka uvádí komponenty Azure Backup nepodporuje pro Linux.
 **Komponenta** | **Linuxu (schváleného Azure)**
 --- | ---
 Agent Azure Backup (MARS) | Žádný (založené na Windows agent jenom)
-System Center DPM | Záloha s konzistentními soubory virtuálních počítačů hosta s Linuxem v Hyper-V a VMWaru<br/><br/> Obnovení virtuálního počítače pro virtuální počítače hosta s Linuxem v Hyper-V a VMwaru</br></br> Konzistentní zálohování není k dispozici pro virtuální počítače Azure
+System Center DPM | Záloha s konzistentními soubory virtuálních počítačů hosta s Linuxem v Hyper-V a VMWaru<br/><br/> Obnovení virtuálních počítačů Hyper-V a VMWare virtuálních počítačů hosta s Linuxem</br></br> Konzistentní zálohování není k dispozici pro virtuální počítače Azure
 Server Azure Backup | Záloha s konzistentními soubory virtuálních počítačů hosta s Linuxem v Hyper-V a VMWaru<br/><br/> Obnovení virtuálních počítačů Hyper-V a virtuálních počítačů VMWare s Linuxem hosta</br></br> Konzistentní zálohování není k dispozici pro virtuální počítače Azure
-Zálohování virtuálních počítačů Azure IaaS | Konzistentní zálohování pomocí [rozhraní předzálohovacími a pozálohovacími skripty](backup-azure-linux-app-consistent.md)<br/><br/> [Obnovení na úrovni souboru](backup-azure-restore-files-from-vm.md)<br/><br/> [Vytvoření virtuálního počítače z obnoveného disku](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [Vytvoření virtuálního počítače z bodu obnovení](backup-azure-arm-restore-vms.md#create-new-create-a-vm).
+Zálohování virtuálních počítačů Azure IaaS | Konzistentní zálohování pomocí [rozhraní předzálohovacími a pozálohovacími skripty](backup-azure-linux-app-consistent.md)<br/><br/> [Obnovení na úrovni souboru](backup-azure-restore-files-from-vm.md)<br/><br/> [Vytvoření virtuálního počítače z obnoveného disku](backup-azure-arm-restore-vms.md#restore-disks)<br/><br/> [Vytvoření virtuálního počítače z bodu obnovení](backup-azure-arm-restore-vms.md#create-a-vm).
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Použití virtuálních počítačů služby premium storage s Azure Backup
 Azure Backup chrání virtuálních počítačů služby premium storage. Azure premium storage je SSD (SOLID-State drive) – slouží k podpoře můžu intenzivních vstupně-výstupních operací úložiště využívající SSD disky. Služba Premium Storage je zajímavá pro úlohy virtuálních počítačů. Další informace o Premium Storage a jiných typů disku najdete v článku, [vyberte typ disku](../virtual-machines/windows/disks-types.md).

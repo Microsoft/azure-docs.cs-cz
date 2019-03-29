@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: df36c1e8abb96862727c84877e5c24435191cd6a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 554b732791b4a319931de41d03cf16466f00bbf8
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57863198"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576424"
 ---
 # <a name="connect-your-f5-appliance"></a>Připojit zařízení F5
 
@@ -118,6 +118,7 @@ Může trvat upwards of 20 minut, než vaše protokoly spuštění se zobrazí v
 3. Pokud obě tyto příkazy úspěšné výsledky, zkontrolujte Log Analytics, pokud chcete zobrazit, pokud vaše protokoly přicházejí. Všechny události Streamovat z těchto zařízení se zobrazí v nezpracovaném tvaru v Log Analytics v části `CommonSecurityLog ` typu.
 1. Zkontrolujte, jestli jsou chyby, nebo pokud nejsou přicházející v protokolech, najdete `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
 4. Ujistěte se, že velikost výchozí zprávy Syslog je omezená na 2 048 bajtů. (2KB). Pokud jsou příliš dlouhé protokoly, aktualizujte security_events.conf pomocí tohoto příkazu: `message_length_limit 4096`
+6. Chcete-li použít příslušné schéma v Log Analytics pro události F5, vyhledejte **CommonSecurityLog**.
 
 
 

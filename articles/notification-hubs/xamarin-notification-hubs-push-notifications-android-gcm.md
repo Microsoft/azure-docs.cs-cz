@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 1/4/2019
+ms.date: 03/28/2019
 ms.author: jowargo
-ms.openlocfilehash: f7088179f43c69fb9f72eacd6ff3703a926cabe2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 03cfecb2faaacbe1017fb4e7acfa3c475c18a9ab
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886554"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620016"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Kurz: Odesílání nabízených oznámení do aplikace Xamarin.Android pomocí Azure Notification Hubs
 
@@ -28,7 +28,7 @@ ms.locfileid: "57886554"
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace systému Xamarin.Android. Vytvoříte prázdnou aplikaci pro Xamarin.Android, která přijímá nabízená oznámení ze služby Firebase Cloud Messaging (FCM). Centrum oznámení použijete k vysílání nabízených oznámení do všech zařízení, na kterých běží vaše aplikace. Dokončený kód je k dispozici v ukázce [aplikace NotificationHubs][GitHub].
+V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace systému Xamarin.Android. Vytvoříte prázdnou aplikaci pro Xamarin.Android, která přijímá nabízená oznámení ze služby Firebase Cloud Messaging (FCM). Centrum oznámení použijete k vysílání nabízených oznámení do všech zařízení, na kterých běží vaše aplikace. Dokončený kód je k dispozici v [aplikace NotificationHubs](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/Xamarin/GetStartedXamarinAndroid) vzorku.
 
 V tomto kurzu provedete následující kroky:
 
@@ -112,8 +112,15 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
         </intent-filter>
     </receiver>
     ```
+2. Přidejte následující příkazy **před aplikace** elementu. 
 
-2. Shromážděte následující informace pro aplikaci Android a centrum oznámení:
+    ```xml
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    ```
+1. Shromážděte následující informace pro aplikaci Android a centrum oznámení:
 
    * **Připojovací řetězec naslouchání**: Na řídicím panelu [Azure Portal], zvolte **zobrazit připojovací řetězce**. Kopírovat `DefaultListenSharedAccessSignature` připojovací řetězec pro tuto hodnotu.
    * **Název centra**: Název centra z [Azure Portal]. Například *mynotificationhub2*.
@@ -131,13 +138,61 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
 
     ```csharp
     using Android.Util;
+    using Android.Gms.Common;
     ```
-6. Přidejte proměnnou instance do `MainActivity.cs*` , který se použije k zobrazení dialogového okna výstrah při spuštění aplikace:
+6. Přidejte následující vlastnosti do třídy MainActivity. ZNAČKA proměnná se použije k zobrazení dialogového okna výstrah při spuštění aplikace:
 
     ```csharp
     public const string TAG = "MainActivity";
+    internal static readonly string CHANNEL_ID = "my_notification_channel";
     ```
-7. V `MainActivity.cs`, přidejte následující kód, který `OnCreate` po `base.OnCreate(savedInstanceState)`:
+7. Přidejte následující metodu do třídy MainActivity. Zkontroluje, jestli **služby Google Play** jsou k dispozici na zařízení. 
+
+    ```csharp
+    public bool IsPlayServicesAvailable()
+    {
+        int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.Success)
+        {
+            if (GoogleApiAvailability.Instance.IsUserResolvableError(resultCode))
+                Log.Debug(TAG, GoogleApiAvailability.Instance.GetErrorString(resultCode));
+            else
+            {
+                Log.Debug(TAG, "This device is not supported");
+                Finish();
+            }
+            return false;
+        }
+     
+        Log.Debug(TAG, "Google Play Services is available.");
+        return true;
+    }
+    ```
+1. Přidejte následující metodu do třídy MainActivity, který vytvoří kanál oznámení.
+
+    ```csharp
+    private void CreateNotificationChannel()
+    {
+        if (Build.VERSION.SdkInt < BuildVersionCodes.O)
+        {
+            // Notification channels are new in API 26 (and not a part of the
+            // support library). There is no need to create a notification
+            // channel on older versions of Android.
+            return;
+        }
+     
+        var channelName = CHANNEL_ID;
+        var channelDescription = string.Empty;
+        var channel = new NotificationChannel(CHANNEL_ID, channelName, NotificationImportance.Default)
+        {
+            Description = channelDescription
+        };
+     
+        var notificationManager = (NotificationManager)GetSystemService(NotificationService);
+        notificationManager.CreateNotificationChannel(channel);
+    }
+    ```
+1. V `MainActivity.cs`, přidejte následující kód, který `OnCreate` po `base.OnCreate(savedInstanceState)`:
 
     ```csharp
     if (Intent.Extras != null)
@@ -151,6 +206,9 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
             }
         }
     }
+    
+    IsPlayServicesAvailable();
+    CreateNotificationChannel();
     ```
 8. Vytvořte novou třídu, `MyFirebaseIIDService` stejně jako jste vytvořili `Constants` třídy.
 9. Přidejte následující příkazy using do `MyFirebaseIIDService.cs`:
@@ -201,6 +259,9 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     using Android.App;
     using Android.Util;
     using Firebase.Messaging;
+    using Android.OS;
+    using Android.Support.V4.App;
+    using Build = Android.OS.Build;
     ```
 14. Přidejte následující kód nad deklaraci vaší třídy a mít vaše třída dědila z `FirebaseMessagingService`:
 
@@ -236,12 +297,18 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
         intent.AddFlags(ActivityFlags.ClearTop);
         var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
 
-        var notificationBuilder = new Notification.Builder(this)
+        var notificationBuilder = new NotificationCompat.Builder(this)
                     .SetContentTitle("FCM Message")
                     .SetSmallIcon(Resource.Drawable.ic_launcher)
                     .SetContentText(messageBody)
                     .SetAutoCancel(true)
+                    .SetShowWhen(false)
                     .SetContentIntent(pendingIntent);
+
+        if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+        {
+            notificationBuilder.SetChannelId(MainActivity.CHANNEL_ID);
+        }
 
         var notificationManager = NotificationManager.FromContext(this);
 

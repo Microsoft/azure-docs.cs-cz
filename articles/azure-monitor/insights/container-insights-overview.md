@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: f292ad5802af6765ec26df7de1aa271e1214e0e9
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: a31380c8581503a340c55c374afc02c6e1fa290b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983009"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577165"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Azure Monitor pro kontejnery – přehled
 
@@ -31,9 +31,12 @@ Azure Monitor pro kontejnery vám poskytne přehled o výkonu shromažďováním
 Azure Monitor pro kontejnery zahrnuje několik předdefinovaných zobrazení, které ukazují nacházejícím úlohy kontejneru a co ovlivňuje výkon stav monitorovaných clusteru Kubernetes, abyste mohli:  
 
 * Identifikujte AKS kontejnery, které běží na uzlu a jejich průměrné využití procesoru a paměti. Tyto znalosti můžete identifikovat kritické body prostředků.
-* Identifikujte využití procesoru a paměti skupiny kontejnerů a jejich kontejnerů hostované ve službě Azure Container Instances.  * Identifikujte, ve kterém se nachází kontejneru v kontroleru nebo pod. Tyto znalosti můžete zobrazit kontroleru nebo pod na celkový výkon.
+* Identifikujte využití procesoru a paměti skupiny kontejnerů a jejich kontejnerů hostované ve službě Azure Container Instances.  
+* Určete, kde se nachází kontejneru v kontroleru nebo pod. Tyto znalosti můžete zobrazit kontroleru nebo pod na celkový výkon.
 * Zkontrolujte využití prostředků úlohy běžící na hostiteli, které nesouvisí s standardních procesů, které podporují pod.
 * Pochopte chování clusteru ve skupinovém rámečku průměrných a rozděluje zatížení. Tyto znalosti můžete určit, potřeb kapacity a určení maximálního zatížení, který může cluster tolerovat. 
+
+Můžete také nakonfigurovat výstrahy a proaktivně vás upozorní nebo poznamenejte si ho využití procesoru a paměti na uzlech nebo kontejnery překročení prahových hodnot.  
 
 ## <a name="how-do-i-access-this-feature"></a>Jak získám přístup do této funkce?
 Azure Monitor lze použít pro kontejnery dva způsoby, ze služby Azure Monitor nebo přímo z vybraných clusteru AKS. Ze služby Azure Monitor, ke kterým máte nasazené globální perspektivy všechny kontejnery, které jsou monitorovány a které nejsou, umožňuje vyhledávat a filtrovat napříč vaší skupiny prostředků a předplatná a pak přejdete do služby Azure Monitor pro kontejnery z vybraného kontejner.  V opačném případě můžete jednoduše přistupovat funkci přímo z vybraného kontejneru AKS ze stránky s AKS.  

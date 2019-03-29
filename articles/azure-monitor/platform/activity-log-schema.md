@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 63c649f0850c4ffc60ce2087e91f3f69917e4837
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 93e74eb6aefbaeeddf7c4f15d62f4a9ee3d617d4
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868540"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622208"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure schéma událostí protokolu aktivit
 **Protokolu aktivit Azure** je protokol, který nabízí pohled na všechny události na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje schéma událostí podle jednotlivých kategorií data. Schéma dat se liší v závislosti na tom, při čtení dat na portálu, Powershellu, rozhraní příkazového řádku, nebo přímo přes rozhraní REST API a [streamovaná data do úložiště nebo Event Hubs pomocí profilu protokolu](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Následující příklady ukazují schématu jako k dispozici prostřednictvím portálu, Powershellu, rozhraní příkazového řádku a rozhraní REST API. Mapování těchto vlastností [Azure diagnostické protokoly schématu](./diagnostic-logs-schema.md) je k dispozici na konci tohoto článku.
@@ -358,6 +358,7 @@ Tato kategorie obsahuje záznam všech aktivací upozornění v Azure. Je např�
 | correlationId | Identifikátor GUID ve formátu řetězce. |
 | description |Popis statický text oznámení události. |
 | eventDataId |Jedinečný identifikátor události upozornění. |
+| category | Vždy "upozornění" |
 | úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění" a "Informační" |
 | resourceGroupName |Název skupiny prostředků pro ovlivněný prostředek, pokud se jedná upozornění na metriku. Pro ostatní typy výstrah je název skupiny prostředků, které obsahuje výstrahu samotnou. |
 | resourceProviderName |Název poskytovatele prostředků pro ovlivněný prostředek, pokud se jedná upozornění na metriku. Pro ostatní typy výstrah je název poskytovatele prostředků pro výstrahu samotnou. |
@@ -556,6 +557,7 @@ Tato kategorie obsahuje záznam všech výstrah generovaných v Azure Security C
 | description |Statický text popisu události zabezpečení. |
 | eventDataId |Jedinečný identifikátor události zabezpečení. |
 | eventName |Popisný název události zabezpečení. |
+| category | Vždy "zabezpečení" |
 | id |Jedinečný identifikátor události zabezpečení. |
 | úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Varování" nebo "Informační" |
 | resourceGroupName |Název skupiny prostředků pro prostředek. |

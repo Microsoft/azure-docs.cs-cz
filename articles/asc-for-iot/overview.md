@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 9ca55a1c977b887e8d1ea51186068e57627e78f1
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 46107797acad52e3df82d341750c52f99c81d63e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58542019"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578811"
 ---
-# <a name="introducing-asc-for-iot"></a>Představení ASC pro IoT 
+# <a name="introducing-asc-for-iot"></a>Představení ASC pro IoT
 
 > [!IMPORTANT]
 > ASC pro IoT je aktuálně ve verzi public preview.
@@ -45,7 +45,7 @@ Získejte jednotný přehled o zabezpečení ve všech místních i cloudových 
 
 ### <a name="adaptive-threat-prevention"></a>Adaptivní ohrožení ochrany před únikem informací
 
-Průběžně monitorujte zabezpečení počítačů, sítí a služeb Azure, včetně vašeho řešení Azure IoT z hraničních zařízení k aplikacím pomocí ASC pro IoT. Můžete použít ze stovek integrovaných posouzení zabezpečení nebo vytvořit vlastní aplikaci v centrální ASC pro řídicí panel služby IoT Hub. Optimalizace nastavení zabezpečení a vylepšovat vaše skóre zabezpečení s užitečná doporučení mezi virtuální počítače, sítě, aplikace a data. Nově přidané funkce IoT můžete nyní omezíte prostor pro možný útok pro vaše řešení Azure IoT a tyto problémy vyřešit, než bude možné zneužít. 
+Průběžně monitorujte zabezpečení počítačů, sítí a služeb Azure, včetně vašeho řešení Azure IoT z hraničních zařízení k aplikacím pomocí ASC pro IoT. Můžete použít ze stovek integrovaných posouzení zabezpečení nebo vytvořit vlastní aplikaci v centrální ASC pro řídicí panel služby IoT Hub. Optimalizace nastavení zabezpečení a vylepšovat vaše skóre zabezpečení s užitečná doporučení mezi virtuální počítače, sítě, aplikace a data. Nově přidané funkce IoT můžete nyní omezíte prostor pro možný útok pro vaše řešení Azure IoT a tyto problémy vyřešit, než bude možné zneužít.
 
 ### <a name="intelligent-threat-detection-and-response"></a>Inteligentní detekce hrozeb a reakce
 

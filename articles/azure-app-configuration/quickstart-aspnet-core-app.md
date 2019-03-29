@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a721cc2252619923496ee5a3a8ae590a5cda3b04
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 23c74c0b1d4c311cd57a02cbac9498f3acb16992
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487545"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578114"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Rychlý start: Vytvoření aplikace ASP.NET Core s konfigurací aplikace Azure
 
@@ -93,13 +93,15 @@ Přidat [nástroj tajný klíč správce](https://docs.microsoft.com/aspnet/core
 
     Tento tajný kód je přistupováno pomocí rozhraní API konfigurace. Dvojtečka (:) funguje v názvu konfigurace s konfigurací rozhraní API na všech podporovaných platformách. Zobrazit [konfigurace podle prostředí](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
 
-4. Otevřete soubor Program.cs a aktualizujte `CreateWebHostBuilder` používat konfiguraci aplikací pomocí volání metody `config.AddAzureAppConfiguration()` metody.
+4. Otevřít *Program.cs*a přidejte odkaz na poskytovatele konfigurace aplikace konfigurace .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
 
-    ...
+5. Aktualizace `CreateWebHostBuilder` používat konfiguraci aplikací pomocí volání metody `config.AddAzureAppConfiguration()` metody.
 
+    ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((hostingContext, config) =>
@@ -113,7 +115,7 @@ Přidat [nástroj tajný klíč správce](https://docs.microsoft.com/aspnet/core
             .UseStartup<Startup>();
     ```
 
-5. Otevřít v zobrazení Index.cshtml > domácí adresář a nahraďte jeho obsah následujícím kódem:
+6. Otevřít v zobrazení Index.cshtml > domácí adresář a nahraďte jeho obsah následujícím kódem:
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -139,7 +141,7 @@ Přidat [nástroj tajný klíč správce](https://docs.microsoft.com/aspnet/core
     </html>
     ```
 
-6. Otevřít v zobrazení _Layout.cshtml > sdílený adresář a nahraďte jeho obsah následujícím kódem:
+7. Otevřít v zobrazení _Layout.cshtml > sdílený adresář a nahraďte jeho obsah následujícím kódem:
 
     ```html
     <!DOCTYPE html>

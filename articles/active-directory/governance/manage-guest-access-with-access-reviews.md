@@ -1,6 +1,6 @@
 ---
-title: Spravovat přístup hosta pomocí kontrol přístupu Azure AD | Dokumentace Microsoftu
-description: Spravovat uživatele typu Host jako členové skupiny nebo přidružených k aplikaci pomocí Azure Active Directory kontrol přístupu
+title: Spravovat přístup hosta pomocí kontrol přístupu – Azure Active Directory | Dokumentace Microsoftu
+description: Spravovat uživatele typu Host jako členové skupiny nebo přidružených k aplikaci pomocí kontrol přístupu Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bed8a5d20b50fd90922730c958cb1a36933776f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 967fbf460175dee303d26074426a1f90e4353407
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881040"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576492"
 ---
-# <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Spravovat přístup hosta pomocí kontrol přístupu Azure AD
+# <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Správa přístupu hostů pomocí Azure AD kontroly přístupu
 
 
 S Azure Active Directory (Azure AD), můžete snadno povolit spolupráce napříč hranicemi organizace pomocí [funkce Azure AD B2B](../b2b/what-is-b2b.md). Může být uživatelé typu Host z jiných tenantů [pozvat správci](../b2b/add-users-administrator.md) nebo [ostatním uživatelům](../b2b/what-is-b2b.md). Tato funkce platí také pro sociálních identit, jako jsou účty Microsoft.

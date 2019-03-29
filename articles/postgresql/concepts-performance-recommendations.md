@@ -5,19 +5,19 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.openlocfilehash: d8edbc2847c06e95e658a1324f2e85f1758e60be
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 03/28/2018
+ms.openlocfilehash: c5324618eeda90b4ef1a512385fb2f14bf391215
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487936"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620168"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql"></a>Doporučení k výkonu ve službě Azure Database for PostgreSQL
 
 **Platí pro:** Azure Database for PostgreSQL 9.6 a 10
 
-Doporučení k výkonu funkcí Určuje horní indexy, které je možné vytvořit v Azure Database for PostgreSQL server ke zlepšení výkonu. K vytvoření doporučení indexu, tato funkce vezme v úvahu různé vlastnosti databáze, včetně jeho schématu a úloh podle Query Store. Po implementaci jakékoli doporučení výkon, by měl zákazníkům testování výkonu vyhodnotit její dopad těchto změn. 
+Doporučení k výkonu funkce analyzuje vaše databáze pro vytvoření přizpůsobené návrhy pro zlepšení výkonu. K vytvoření doporučení, analýza zjistí různé vlastnosti databáze, včetně schémat. Povolit [Query Store](concepts-query-store.md) na serveru plně využívat funkci doporučení k výkonu. Po implementaci jakékoli výkonu doporučení, měli byste otestovat výkon a vyhodnotit její dopad tyto změny. 
 
 ## <a name="permissions"></a>Oprávnění
 Pro spuštění funkce analýzy za použití funkce Doporučení k výkonu potřebujete oprávnění **vlastníka** nebo **přispěvatele**.
@@ -25,17 +25,28 @@ Pro spuštění funkce analýzy za použití funkce Doporučení k výkonu potř
 ## <a name="performance-recommendations"></a>Doporučení k výkonu
 Funkce [Doporučení k výkonu](concepts-performance-recommendations.md) analyzuje úlohy na serveru, aby identifikoval indexy a případně zlepšil výkon.
 
-Otevřete **Doporučení k výkonu** z části nabídky **Podpora a řešení potíží** na stránce portálu Azure pro váš server PostgreSQL.
+Otevřít **doporučení k výkonu** z **inteligentní výkonu** části řádku nabídek na stránce portálu Azure pro váš server PostgreSQL.
 
-![Úvodní stránka Doporučení k výkonu](./media/concepts-performance-recommendations/performance-recommendations-landing-page.png)
+![Úvodní stránka Doporučení k výkonu](./media/concepts-performance-recommendations/performance-recommendations-page.png)
 
-Vyberte **Analyzovat** a zvolte databázi. Tím se spustí analýza. V závislosti na velikosti pracovní zátěže to může trvat několik minut. Po dokončení analýzy se zobrazí oznámení na portálu.
+Vyberte **analyzovat** a zvolte databázi, která začne analýza. V závislosti na velikosti pracovní zátěže th analýzy může trvat několik minut. Po dokončení analýzy se zobrazí oznámení na portálu. Analýza provádí podrobné zkoumání vaší databáze. Doporučujeme že provádět analýzy obdobích mimo špičku. 
 
-Okno **Doporučení k výkonu** zobrazí seznam doporučení, jestliže byla nějaká nalezena. Doporučení zobrazí informace o příslušné **databázi**, **tabulce**, **sloupci** a **velikosti indexu**.
+**Doporučení** okna se zobrazí seznam doporučení, pokud některá.
 
 ![Nová stránka doporučení výkonu](./media/concepts-performance-recommendations/performance-recommendations-result.png)
 
-Chcete-li implementovat doporučení, zkopírujte text dotazu a spusťte z klienta svého výběru.
+Doporučení se automaticky nepoužijí. Na jednotlivá doporučení použít, zkopírujte text dotazu a spusťte ze svého klienta podle výběru. Nezapomeňte otestovat a monitorování pro vyhodnocení doporučení. 
+
+## <a name="recommendation-types"></a>Doporučení typy
+
+V současné době podporuje dva typy doporučení: *Vytvořit Index* a *Drop Index*.
+
+### <a name="create-index-recommendations"></a>Vytvoření doporučení indexu
+*Vytvořit Index* doporučení navrhnout novou indexy pro urychlení nejčastěji spuštění nebo časově náročné dotazů v úloze. Tento typ doporučení vyžaduje [Query Store](concepts-query-store.md) povolit. Query Store shromažďuje informace o dotazu a poskytuje podrobné dotazů modulu runtime a četnost statistické údaje, které využívá analýzy, aby doporučení.
+
+### <a name="drop-index-recommendations"></a>Vyřadit doporučení indexu
+Kromě zjišťování chybějících indexů, analyzuje – Azure Database for postgresql – výkon stávající indexy. Pokud indexu je zřídka používané nebo redundantní, analyzátor doporučuje zastaví.
+
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o [sledování a ladění ](concepts-monitoring.md) ve službě Azure Database for PostgreSQL.

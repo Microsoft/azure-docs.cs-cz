@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: a1ee95ad847d20159c79af8f080cc7878e114759
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 2d6a5c96bf99439520e26fc905668835944cee29
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444528"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578914"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgradovat na účet úložiště pro obecné účely verze 2
 
@@ -21,7 +21,7 @@ ms.locfileid: "58444528"
 Upgrade na účet úložiště pro obecné účely verze 2 z pro obecné účely v1 a účty úložiště Blob je jednoduché. Můžete upgradovat pomocí webu Azure portal, Powershellu nebo rozhraní příkazového řádku Azure.
 
 > [!IMPORTANT]
-> Upgrade pro obecné účely v1 nebo účet úložiště Blob storage pro obecné účely verze 2 je trvalá a není možné vrátit zpět.
+> Upgrade pro obecné účely v1 nebo účtu služby Blob storage pro obecné účely verze 2 je trvalá a není možné vrátit zpět.
 
 ## <a name="upgrade-using-the-azure-portal"></a>Upgrade s využitím webu Azure portal
 

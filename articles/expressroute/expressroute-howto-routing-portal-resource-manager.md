@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 401827f3fa5eb6d364d0f133d8cd672cf8968031
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6d1ce56ef66d224b89f49a00c2883ebbf22a5745
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103175"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622021"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute
 
@@ -35,7 +35,7 @@ Můžete nakonfigurovat jeden, dva nebo všechny tři partnerské vztahy (soukro
 
 * Před zahájením konfigurace se ujistěte, že jste si přečetli stránku s [předpoklady](expressroute-prerequisites.md), stránku s [požadavky směrování](expressroute-routing.md) a stránku s [pracovními postupy](expressroute-workflows.md).
 * Musí mít aktivní okruh ExpressRoute. Než budete pokračovat, podle pokynů [vytvořte okruh ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) a mějte ho povolený vaším poskytovatelem připojení. Okruh ExpressRoute musí být ve stavu zřízený a povolený pro, abyste mohli spouštět rutiny v následujících částech.
-* Pokud máte v plánu používat sdílený klíč s algoritmem MD5 hash, je potřeba použít na oba konce tunelu a omezit počet znaků, které mají maximálně 25.
+* Pokud máte v plánu používat sdílený klíč s algoritmem MD5 hash, je potřeba použít na oba konce tunelu a omezit počet alfanumerických znaků na maximálně 25. Speciální znaky se nepodporují. 
 
 Tyto pokyny platí jenom pro okruhy vytvořené poskytovateli služeb nabízejícími služby připojení vrstvy 2. Pokud používáte poskytovatele služeb, který nabízí spravované vrstvy 3 služby (obvykle IPVPN, např. MPLS), svého poskytovatele připojení, konfiguruje a spravuje směrování za vás. 
 
