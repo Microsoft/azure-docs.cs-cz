@@ -1,6 +1,6 @@
 ---
-title: Aktivovat Moje role adresáře Azure AD v PIM | Dokumentace Microsoftu
-description: Zjistěte, jak aktivovat role adresáře Azure AD v Azure AD Privileged Identity Management (PIM).
+title: Aktivovat Moje role Azure AD v PIM – Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak aktivovat role Azure AD v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,38 +14,38 @@ ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fc0a22f4300a06b5c827973ffb2436d0b8cfb36
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ca069da1239a505b3e3686998cd29844ed80ba46
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542739"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576807"
 ---
-# <a name="activate-my-azure-ad-directory-roles-in-pim"></a>Aktivovat Moje role adresáře Azure AD v PIM
+# <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivovat Moje role Azure AD v PIM
 
 Privileged Identity Management (PIM) ve Azure Active Directory (Azure AD) zjednodušuje, jak podniky spravovat privilegovaný přístup k prostředkům v Azure AD a dalších online službách Microsoftu jako Office 365 nebo Microsoft Intune.  
 
 Pokud jste se provedly oprávněné pro roli správce, znamená to, že můžete aktivovat tuto roli, když budete potřebovat k provedení privilegovaných akcí. Například pokud někdy budete spravovat funkce Office 365, správci privilegovaných rolí vaší organizace nemusí mít je trvalé globální správce, protože tato role má vliv jiné služby, příliš. Místo toho využívají je vhodné pro role Azure AD, jako je například správce Exchange Online. Můžete požádat o danou roli aktivovat, když potřebujete jeho oprávnění a potom budete mít ovládací prvek správce předem určené časové období.
 
-Tento článek je určený pro správce, kteří muset aktivovat svoje role Azure AD directory v PIM.
+Tento článek je určený pro správce, kteří muset aktivovat svoje role Azure AD v PIM.
 
 ## <a name="activate-a-role"></a>Aktivovat roli
 
-Pokud potřebujete provést pro role adresáře Azure AD, můžete žádost o aktivaci, s použitím **Moje role** možnost navigace v PIM.
+Když budete potřebovat k převzetí role služby Azure AD, můžete žádost o aktivaci, s použitím **Moje role** možnost navigace v PIM.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Otevřít **Azure AD Privileged Identity Management**. Informace o tom, jak přidat dlaždici PIM do řídicího panelu, naleznete v tématu [začít používat PIM](pim-getting-started.md).
 
-1. Klikněte na tlačítko **role adresáře Azure AD**.
+1. Klikněte na tlačítko **role Azure AD**.
 
-1. Klikněte na tlačítko **Moje role** zobrazíte seznam vašich oprávněných rolí adresáře Azure AD.
+1. Klikněte na tlačítko **Moje role** zobrazíte seznam vašich oprávněných rolí Azure AD.
 
-    ![Role adresáře Azure AD – Moje role](./media/pim-how-to-activate-role/directory-roles-my-roles.png)
+    ![Role Azure AD – Moje role](./media/pim-how-to-activate-role/directory-roles-my-roles.png)
 
 1. Vyhledání role, kterou chcete aktivovat.
 
-    ![Role adresáře Azure AD – seznam rolí](./media/pim-how-to-activate-role/directory-roles-my-roles-activate.png)
+    ![Role Azure AD – seznam rolí](./media/pim-how-to-activate-role/directory-roles-my-roles-activate.png)
 
 1. Klikněte na tlačítko **aktivovat** a otevřete tak podokno Podrobnosti o aktivaci Role.
 
@@ -87,11 +87,11 @@ Můžete zobrazit stav vaší žádosti čekající na aktivaci.
 
 1. Otevřete Azure AD Privileged Identity Management.
 
-1. Klikněte na tlačítko **role adresáře Azure AD**.
+1. Klikněte na tlačítko **role Azure AD**.
 
 1. Klikněte na tlačítko **Moje žádosti** chcete zobrazit seznam žádostí.
 
-    ![Role adresáře Azure AD – Moje žádosti](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
+    ![Role Azure AD – Moje žádosti](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
 
 ## <a name="deactivate-a-role"></a>Deaktivace role
 
@@ -101,7 +101,7 @@ Pokud vaše úkoly správce dokončeny včas, můžete také deaktivace role v A
 
 1. Otevřete Azure AD Privileged Identity Management.
 
-1. Klikněte na tlačítko **role adresáře Azure AD**.
+1. Klikněte na tlačítko **role Azure AD**.
 
 1. Klikněte na tlačítko **Moje role**.
 
@@ -115,7 +115,7 @@ Pokud nechcete, aby aktivace role, která vyžaduje schválení, můžete kdykol
 
 1. Otevřete Azure AD Privileged Identity Management.
 
-1. Klikněte na tlačítko **role adresáře Azure AD**.
+1. Klikněte na tlačítko **role Azure AD**.
 
 1. Klikněte na tlačítko **Moje žádosti**.
 

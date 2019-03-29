@@ -1,5 +1,5 @@
 ---
-title: Aktivovat Moje role prostředků Azure v PIM | Dokumentace Microsoftu
+title: Aktivovat Moje role prostředků Azure v PIM – Azure Active Directory | Dokumentace Microsoftu
 description: Zjistěte, jak aktivovat role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b574e538c407040518f3905f8fbd9fa91d5dd067
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 23fcba94a8f29d0f1bc458dd4779e5a2f0c06f38
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002053"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575757"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>Aktivovat Moje role prostředků Azure v PIM
 
-Pomocí Azure AD Privileged Identity Management (PIM), členy oprávněné role prostředků Azure můžete naplánovat aktivace pro budoucí datum a čas. Může také vybrat dobu trvání konkrétní aktivace v rámci maximální (ve Správci nakonfigurované je).
+Pomocí Azure Active Directory (Azure AD) Privileged Identity Management (PIM), členové role vhodné pro prostředky Azure můžete naplánovat aktivace pro budoucí datum a čas. Může také vybrat dobu trvání konkrétní aktivace v rámci maximální (ve Správci nakonfigurované je).
 
 Tento článek je určená pro členy, kteří se chtějí aktivovat svoje role prostředků Azure v PIM.
 
@@ -38,7 +38,7 @@ Když budete potřebovat k převzetí role prostředků Azure, můžete žádost
 
 1. Klikněte na tlačítko **Moje role**.
 
-    ![Role adresáře Azure AD a role prostředků Azure – Moje role](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+    ![Role Azure AD a role prostředků Azure – Moje role](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
 
 1. Klikněte na tlačítko **role prostředků Azure** zobrazíte seznam vaše role oprávněné prostředků Azure.
 
@@ -84,7 +84,7 @@ V případě jakéhokoli zpoždění po aktivaci podle těchto kroků po aktivac
 
 1. Otevřete Azure AD Privileged Identity Management.
 
-1. Klikněte na tlačítko **Moje role** zobrazíte seznam vašich oprávněných rolí adresáře Azure AD a role prostředků Azure.
+1. Klikněte na tlačítko **Moje role** zobrazíte seznam vašich oprávněných rolí Azure AD a role prostředků Azure.
 
 1. Klikněte na tlačítko **role prostředků Azure**.
 
@@ -100,9 +100,9 @@ Můžete zobrazit stav vaší žádosti čekající na aktivaci.
 
 1. Otevřete Azure AD Privileged Identity Management.
 
-1. Klikněte na tlačítko **Moje žádosti** vyžádá seznam role adresáře Azure AD a role prostředků Azure.
+1. Klikněte na tlačítko **Moje žádosti** vyžádá seznam role Azure AD a role prostředků Azure.
 
-    ![Role adresáře Azure AD a role prostředků Azure – Moje žádosti](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
+    ![Role Azure AD a role prostředků Azure – Moje žádosti](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
 
 1. Posuňte doprava, abyste viděli **stav žádosti o** sloupce.
 
@@ -138,4 +138,4 @@ Pokud se zobrazí zpráva, že je uzamčen prostředek Azure při pokusu o aktiv
 ## <a name="next-steps"></a>Další postup
 
 - [Rozšíření nebo obnovení role prostředků Azure v PIM](pim-resource-roles-renew-extend.md)
-- [Aktivovat Moje role adresáře Azure AD v PIM](pim-how-to-activate-role.md)
+- [Aktivovat Moje role Azure AD v PIM](pim-how-to-activate-role.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 1eba32683883e60ae48f4d6fec9c434c27ce55da
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 8940d629d2f4827ee724c813a40394378dde5a4c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541929"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575143"
 ---
 # <a name="asc-for-iot-frequently-asked-questions"></a>Nejčastější dotazy k ASC pro IoT  
 
@@ -77,7 +77,7 @@ Podrobné informace o instalaci a agenta nasazení najdete v Githubu: https://gi
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Co jsou závislosti a požadavky agenta?
 
-ASC pro IoT podporuje celou řadu platforem. Zobrazit [platformy zařízení podporovány](select-deploy-agent.md) ověřit podporu pro vaše konkrétní zařízení. 
+ASC pro IoT podporuje celou řadu platforem. Zobrazit [platformy zařízení podporovány](how-to-deploy-agent.md) ověřit podporu pro vaše konkrétní zařízení. 
 
 ## <a name="which-data-is-collected-by-the-agent"></a>Jaká data se shromažďují pomocí agenta?
 
@@ -97,9 +97,9 @@ Ano. Agent přenášených dat se počítá v rámci svojí kvóty služby IoT H
 
 ## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Co dál? Můžu nainstalujete agenta a nezobrazují žádné aktivity nebo protokoly
 
-1. Zkontrolujte, [typ agenta odpovídá určené platforma operačního systému vašeho zařízení](select-deploy-agent.md)
+1. Zkontrolujte, [typ agenta odpovídá určené platforma operačního systému vašeho zařízení](how-to-deploy-agent.md)
 
-1. Potvrďte [agent běží na zařízení](concept-agent-configuration.md).
+1. Potvrďte [agent běží na zařízení](how-to-agent-configuration.md).
 
 2. Zkontrolujte [služby se úspěšně povolila](quickstart-onboard-iot-hub.md) k **zabezpečení** ve službě IoT Hub. 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 453af401f3b6120345cbe489fbfc323eca464ade
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b4d1830e705e1813c8448787e587d720eaf5ddbd
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092272"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574714"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Připojit zařízení Barracuda 
 
@@ -42,6 +42,7 @@ Barracuda Web Application Firewall můžete integrovat a exportovat protokoly p�
 2. Na portálu Azure Sentinelu, přejděte do pracovního prostoru, na které jste nasadili Azure Sentinelu a vyberte tři tečky (...) na konci řádku a vyberte **upřesňující nastavení**. 
 1. Vyberte **Data** a potom **Syslog**.
 1. Ujistěte se, že existuje a nastavit závažnost a klikněte na zařízení, které jste nastavili v Barracuda **Uložit**.
+6. Chcete-li použít příslušné schéma v Log Analytics pro události Barracuda, vyhledejte **CommonSecurityLog**.
 
 
 ## <a name="validate-connectivity"></a>Ověření připojení

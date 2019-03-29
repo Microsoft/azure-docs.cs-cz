@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/28/2019
+ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 591624e6bab07bfa06799d8e4817622e7a5c280a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 403cbeb0a68e39eab714ceb428fcfaefe8de0ff7
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107640"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576237"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>Monitorování připojení Azure pro kontejnery  
 
@@ -28,14 +28,16 @@ Tento článek popisuje, jak nastavit službu Azure Monitor k monitorování vý
 
 Azure Monitor pro kontejnery může být povoleno na nový, nebo nepodporuje jeden nebo více existujících nasazení AKS pomocí následující metody:
 
-* Azure portal nebo pomocí rozhraní příkazového řádku Azure
+* Z webu Azure portal, prostředí Azure PowerShell nebo pomocí rozhraní příkazového řádku Azure
 * Pomocí [Terraform a AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
+
 
 ## <a name="prerequisites"></a>Požadavky 
 Než začnete, ujistěte se, že máte následující:
 
 - **Pracovní prostor Log Analytics.** Můžete jej vytvořit při povolení monitorování nový cluster AKS, nebo nechte prostředí registrace vytvoření výchozího pracovního prostoru do výchozí skupiny prostředků předplatného clusteru AKS. Pokud jste se rozhodli vytvořit sami, můžete vytvořit pomocí [Azure Resource Manageru](../../azure-monitor/platform/template-workspace-configuration.md), pomocí [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), nebo [webu Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
-- Jste **členem role Přispěvatel Log Analytics** povolit monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../../azure-monitor/platform/manage-access.md).
+- Jste členem **role Přispěvatel Log Analytics** povolit monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../../azure-monitor/platform/manage-access.md).
+- Jste členem **[vlastníka](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-role.mds#owner)** role v prostředku clusteru AKS. 
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -46,19 +48,22 @@ Vaše schopnost sledování výkonu spoléhá na kontejnerizovaných agenta Log 
 Po vydání nové verze agenta, dojde k automatickému upgradu na vaše spravované clustery Kubernetes hostované ve službě Azure Kubernetes Service (AKS). Postupujte podle vydané verze, najdete v článku [oznámení verzi agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod). 
 
 >[!NOTE] 
->Pokud už jste nasadili AKS cluster, povolte monitorování pomocí Azure CLI nebo zadané šablony Azure Resource Manageru, jak je uvedeno dále v tomto článku. Nemůžete použít `kubectl` k upgradu, odstranit, znovu nasadit nebo nasadit agenta. Šablona musí být nasazený ve stejné skupině prostředků jako cluster."
+>Pokud už jste nasadili AKS cluster, povolte monitorování pomocí Azure CLI nebo zadané šablony Azure Resource Manageru, jak je uvedeno dále v tomto článku. Nemůžete použít `kubectl` k upgradu, odstranit, znovu nasadit nebo nasadit agenta. Šablona musí být nasazený ve stejné skupině prostředků jako cluster.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
 ## <a name="enable-monitoring-for-a-new-cluster"></a>Zapněte sledování pro nový cluster
-Během nasazení můžete povolit monitorování na webu Azure Portal, rozhraní příkazového řádku Azure nebo s využitím Terraformu nový cluster AKS.  Postupujte podle kroků v tomto článku rychlý Start [Nasaďte cluster Azure Kubernetes Service (AKS)](../../aks/kubernetes-walkthrough-portal.md) Pokud chcete povolit z portálu. Na **monitorování** stránky, pro **povolit monitorování** možnosti, vyberte **Ano**a potom vyberte existující pracovní prostor Log Analytics nebo vytvořte novou. 
+Během nasazení můžete povolit monitorování na webu Azure Portal, rozhraní příkazového řádku Azure nebo s využitím Terraformu nový cluster AKS.  Pokud chcete povolit z portálu, postupujte podle kroků v tomto článku rychlý Start [Nasaďte cluster Azure Kubernetes Service (AKS)](../../aks/kubernetes-walkthrough-portal.md) a postupujte podle kroků v části **monitorovat stav a protokoly**.  
+
+>[!NOTE]
+>Podle kroků v článku rychlý start k povolení monitorování pro cluster AKS z portálu, budete vyzváni, vyberte existující pracovní prostor Log Analytics nebo vytvořte novou. 
 
 ### <a name="enable-using-azure-cli"></a>Povolení s využitím rozhraní příkazového řádku Azure
 Chcete-li povolit monitorování pomocí Azure CLI vytvořili nový cluster AKS, postupujte podle kroku v části tohoto článku rychlý Start [clusteru AKS vytvořit](../../aks/kubernetes-walkthrough.md#create-aks-cluster).  
 
 >[!NOTE]
->Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.43 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+>Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.59 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 >
 
 ### <a name="enable-using-terraform"></a>Povolení s využitím Terraformu
@@ -79,9 +84,14 @@ Poté, co jste povolili monitorování a úspěšném dokončení všech konfigu
 Po povolení sledování, může trvat přibližně 15 minut, než se zobrazí stav metriky pro cluster. 
 
 ## <a name="enable-monitoring-for-existing-managed-clusters"></a>Zapněte sledování pro existující spravované clustery
-Monitorování clusteru AKS, který je už nasazená buď pomocí rozhraní příkazového řádku Azure na portálu nebo pomocí zadané šablony Azure Resource Manageru pomocí rutiny prostředí PowerShell můžete povolit `New-AzResourceGroupDeployment`. 
+Můžete povolit monitorování clusteru AKS, který je už nasazená pomocí jedné z podporovaných metod:
 
-### <a name="enable-monitoring-using-azure-cli"></a>Povolte monitorování pomocí Azure CLI
+* Azure CLI
+* Terraform
+* [Ze služby Azure Monitor](#enable-from-azure-monitor-in-the-portal) nebo [přímo z clusteru AKS](#enable-directly-from-aks-cluster-in-the-portal) na webu Azure Portal 
+* S [šablony Azure Resource Manageru k dispozici](#enable-using-an-azure-resource-manager-template) pomocí rutiny prostředí Azure PowerShell `New-AzResourceGroupDeployment` nebo pomocí Azure CLI. 
+
+### <a name="enable-using-azure-cli"></a>Povolení s využitím rozhraní příkazového řádku Azure
 Následující krok zapne monitorování clusteru AKS pomocí Azure CLI. V tomto příkladu nemusíte za vytvoření nebo zadejte existující pracovní prostor. Tento příkaz zjednodušuje proces pro vás vytvořením výchozího pracovního prostoru do výchozí skupiny prostředků předplatného cluster AKS, pokud již neexistuje v oblasti.  Vytvoření výchozího pracovního prostoru vypadá podobně jako formát *DefaultWorkspace -\<GUID >-\<oblast >*.  
 
 ```azurecli
@@ -106,7 +116,7 @@ Výstup bude vypadat takto:
 provisioningState       : Succeeded
 ```
 
-### <a name="enable-monitoring-using-terraform"></a>Povolte monitorování pomocí Terraformu
+### <a name="enable-using-terraform"></a>Povolení s využitím Terraformu
 1. Přidat **oms_agent** doplněk profilu k existujícím [azurerm_kubernetes_cluster prostředků](https://www.terraform.io/docs/providers/azurerm/d/kubernetes_cluster.html#addon_profile)
 
    ```
@@ -120,7 +130,7 @@ provisioningState       : Succeeded
 
 2. Přidat [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) následující kroky v dokumentaci k Terraformu.
 
-### <a name="enable-monitoring-from-azure-monitor-in-the-portal"></a>Povolit monitorování na portálu ze služby Azure Monitor 
+### <a name="enable-from-azure-monitor-in-the-portal"></a>Povolit na portálu ze služby Azure Monitor 
 Chcete-li povolit monitorování clusteru AKS na portálu Azure portal ze služby Azure Monitor, postupujte takto:
 
 1. Na webu Azure Portal, vyberte **monitorování**. 
@@ -137,8 +147,8 @@ Chcete-li povolit monitorování clusteru AKS na portálu Azure portal ze služb
  
 Po povolení sledování, může trvat přibližně 15 minut, než se zobrazí stav metriky pro cluster. 
 
-### <a name="enable-monitoring-from-aks-cluster-in-the-portal"></a>Povolit monitorování z clusteru AKS na portálu
-Pokud chcete povolit monitorování vašeho kontejneru AKS na portálu Azure portal, postupujte takto:
+### <a name="enable-directly-from-aks-cluster-in-the-portal"></a>Povolit přímo v clusteru AKS na portálu
+Pokud chcete povolit monitorování přímo z některé z vašich clusterů AKS na portálu Azure portal, postupujte takto:
 
 1. Na webu Azure Portal vyberte **Všechny služby**. 
 2. V seznamu prostředků, začněte psát **kontejnery**.  
@@ -159,24 +169,23 @@ Pokud chcete povolit monitorování vašeho kontejneru AKS na portálu Azure por
  
 Po povolení sledování, může trvat přibližně 15 minut, než lze zobrazit provozní data pro cluster. 
 
-### <a name="enable-monitoring-by-using-an-azure-resource-manager-template"></a>Povolte monitorování pomocí šablony Azure Resource Manageru
+### <a name="enable-using-an-azure-resource-manager-template"></a>Povolit pomocí šablony Azure Resource Manageru
 Tato metoda obsahuje dvě šablony JSON. Jedna šablona určuje konfiguraci povolení monitorování a druhý obsahuje hodnoty parametrů, které nakonfigurujete, zadejte následující informace:
 
 * ID prostředku kontejneru AKS 
 * Skupina prostředků, která je nasazená clusteru.
-* Pracovní prostor Log Analytics a oblasti se má vytvořit v pracovním prostoru. 
 
 >[!NOTE]
 >Šablona musí být nasazený ve stejné skupině prostředků jako cluster.
 >
 
-Pracovní prostor Log Analytics je potřeba vytvořit ručně. Vytvořit pracovní prostor, můžete nastavit ji prostřednictvím [Azure Resource Manageru](../../azure-monitor/platform/template-workspace-configuration.md), pomocí [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), nebo [webu Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
+Pracovní prostor Log Analytics je potřeba vytvořit předtím, než povolíte sledování pomocí Azure Powershellu nebo rozhraní příkazového řádku. Vytvořit pracovní prostor, můžete nastavit ji prostřednictvím [Azure Resource Manageru](../../azure-monitor/platform/template-workspace-configuration.md), pomocí [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), nebo [webu Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
 
 Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, naleznete v tématu:
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.27 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.59 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 #### <a name="create-and-execute-a-template"></a>Vytvoření a provedení šablony
 
@@ -204,13 +213,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
       "metadata": {
          "description": "Azure Monitor Log Analytics Resource ID"
        }
-    },
-    "workspaceRegion": {
-    "type": "string",
-    "metadata": {
-       "description": "Azure Monitor Log Analytics workspace region"
-      }
-     }
+    }
     },
     "resources": [
       {
@@ -230,41 +233,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
          }
        }
       }
-     },
-    {
-        "type": "Microsoft.Resources/deployments",
-        "name": "[Concat('ContainerInsights', '-',  uniqueString(parameters('workspaceResourceId')))]", 
-        "apiVersion": "2017-05-10",
-        "subscriptionId": "[split(parameters('workspaceResourceId'),'/')[2]]",
-        "resourceGroup": "[split(parameters('workspaceResourceId'),'/')[4]]",
-        "properties": {
-            "mode": "Incremental",
-            "template": {
-                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                "contentVersion": "1.0.0.0",
-                "parameters": {},
-                "variables": {},
-                "resources": [
-                    {
-                        "apiVersion": "2015-11-01-preview",
-                        "type": "Microsoft.OperationsManagement/solutions",
-                        "location": "[parameters('workspaceRegion')]",
-                        "name": "[Concat('ContainerInsights', '(', split(parameters('workspaceResourceId'),'/')[8], ')')]",
-                        "properties": {
-                            "workspaceResourceId": "[parameters('workspaceResourceId')]"
-                        },
-                        "plan": {
-                            "name": "[Concat('ContainerInsights', '(', split(parameters('workspaceResourceId'),'/')[8], ')')]",
-                            "product": "[Concat('OMSGallery/', 'ContainerInsights')]",
-                            "promotionCode": "",
-                            "publisher": "Microsoft"
-                        }
-                    }
-                ]
-            },
-            "parameters": {}
-        }
-       }
+     }
      ]
     }
     ```
@@ -285,19 +254,16 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
        },
        "workspaceResourceId": {
          "value": "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>"
-       },
-       "workspaceRegion": {
-         "value": "<workspaceLocation>"
-       }
+       }  
      }
     }
     ```
 
-4. Upravte hodnoty **aksResourceId** a **aksResourceLocation** pomocí hodnot na **Přehled služby AKS** stránky pro AKS cluster. Hodnota pro **workspaceResourceId** je úplné ID prostředku pracovního prostoru Log Analytics, která zahrnuje název pracovního prostoru. Také zadejte umístění pracovního prostoru pro **workspaceRegion**. 
+4. Upravte hodnoty **aksResourceId** a **aksResourceLocation** pomocí hodnot na **Přehled služby AKS** stránky pro AKS cluster. Hodnota pro **workspaceResourceId** je úplné ID prostředku pracovního prostoru Log Analytics, která zahrnuje název pracovního prostoru. 
 5. Uložte soubor jako **existingClusterParam.json** do místní složky.
 6. Jste připraveni k nasazení této šablony. 
 
-   * Do složky obsahující šablonu použijte následující příkazy Powershellu:
+   * Pokud chcete nasadit pomocí Azure Powershellu, použijte následující příkazy do složky, která obsahuje šablonu:
 
        ```powershell
        New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
@@ -308,7 +274,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
        provisioningState       : Succeeded
        ```
 
-   * Chcete-li pomocí Azure CLI, spusťte následující příkaz:
+   * Pokud chcete nasadit pomocí Azure CLI, spusťte následující příkazy:
     
        ```azurecli
        az login

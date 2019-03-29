@@ -1,6 +1,6 @@
 ---
-title: Zvát hosty externí a přiřazení rolí správce Azure AD – Privileged Identity Management | Dokumentace Microsoftu
-description: Zjistěte, jak pozvat uživatele typu Host a přiřazení rolí správce Azure Active Directory v Azure AD Privileged Identity Management.
+title: Zvát hosty a přiřadit role prostředků Azure v PIM – Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak pozvat externím uživatelům typu Host a přiřadit role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 03/13/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68e76a4513d94cceb8e856c94ad6eae2bdab9c46
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 68c5e5e2ed0d3ec767a239439476a98bac73bcb4
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57853252"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576875"
 ---
-# <a name="invite-guest-users-and-assign-azure-resource-access-in-pim"></a>Pozvat uživatele typu Host a přiřazení přístupu k prostředkům Azure v PIM
+# <a name="invite-guest-users-and-assign-azure-resource-roles-in-pim"></a>Pozvat uživatele typu Host a přiřadit role prostředků Azure v PIM
 
 Azure Active Directory (Azure AD) business-to-business (B2B) je sada funkcí v rámci Azure AD, která umožňuje organizacím spolupracovat s externím uživatelům typu Host (hostů) a pomocí libovolného účtu dodavateli. Když zkombinujete B2B s Azure AD Privileged Identity Management (PIM), můžete nadále platí vaše požadavky na dodržování předpisů a zásad správného řízení pro hosty. Například můžete použít tyto funkce PIM pro úlohy Azure identity s hostů:
 
