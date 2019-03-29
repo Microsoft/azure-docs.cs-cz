@@ -1,6 +1,6 @@
 ---
-title: Konfigurace výstrah zabezpečení pro role adresáře Azure AD v PIM | Dokumentace Microsoftu
-description: Zjistěte, jak konfigurovat výstrahy zabezpečení pro role adresáře Azure AD v Azure AD Privileged Identity Management (PIM).
+title: Konfigurace výstrah zabezpečení pro role Azure AD v PIM – Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak konfigurovat výstrahy zabezpečení pro role Azure AD v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,22 +14,22 @@ ms.date: 01/04/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2cb78d048559a011756362b58848c5e91ca40dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1cd391af4e4b4722e433e9bf25f0d584fba2321e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172378"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577225"
 ---
-# <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Konfigurace výstrah zabezpečení pro role adresáře Azure AD v PIM
+# <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>Konfigurace výstrah zabezpečení pro role Azure AD v PIM
 
-Azure AD Privileged Identity Management (PIM) generuje výstrahy, když je aktivita podezřelého nebo nebezpečné ve vašem prostředí. Když se aktivuje upozornění, zobrazí na řídicím panelu PIM. Vyberte výstrahu, pokud chcete zobrazit sestavu obsahující seznam uživatelů nebo rolí, které aktivuje výstrahu.
+Privileged Identity Management (PIM) ve Azure Active Directory (Azure AD) generuje výstrahy, když je aktivita podezřelého nebo nebezpečné ve vašem prostředí. Když se aktivuje upozornění, zobrazí na řídicím panelu PIM. Vyberte výstrahu, pokud chcete zobrazit sestavu obsahující seznam uživatelů nebo rolí, které aktivuje výstrahu.
 
 ![Upozornění zabezpečení PIM – snímek obrazovky](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>Výstrahy zabezpečení
 
-Tato část obsahuje seznam všech výstrah zabezpečení pro role adresáře, jak vyřešit a jak zabránit. Závažnost má následující význam:
+Tato část obsahuje seznam všech výstrah zabezpečení pro role Azure AD, jak vyřešit a jak zabránit. Závažnost má následující význam:
 
 * **Vysoká**: Vyžaduje okamžitý zásah kvůli porušení zásad.
 * **Střední**: Není potřeba reagovat okamžitě, ale signály potenciální porušení zásad.
@@ -130,4 +130,4 @@ Můžete přizpůsobit některé z výstrah zabezpečení ve službě PIM pro pr
 
 ## <a name="next-steps"></a>Další postup
 
-- [Konfigurace nastavení role adresáře Azure AD v PIM](pim-how-to-change-default-settings.md)
+- [Konfigurace nastavení role Azure AD v PIM](pim-how-to-change-default-settings.md)

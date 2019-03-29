@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/08/2018
+ms.date: 03/27/2018
 ms.author: kumud
-ms.openlocfilehash: 2c4503b6ff065e98c49fe3f4e06b63cbeb7d1770
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 6f33be6e418366f57d243f578035b5c87079c99e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652740"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579355"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer úrovně Standard a zóny dostupnosti
 
 Standardní skladová jednotka Azure Load Balancer podporuje [zóny dostupnosti](../availability-zones/az-overview.md) scénáře. Několik nových konceptů jsou k dispozici Load balanceru úrovně Standard, které umožňují vám umožní optimalizovat tak, že zarovnání prostředky se zónami a jejich distribuci napříč zónami dostupnosti ve vašem scénáři začátku do konce.  Kontrola [zóny dostupnosti](../availability-zones/az-overview.md) pokyny, co jsou zóny dostupnosti, ve kterých oblastech se aktuálně podporují zóny dostupnosti a druhý související koncepty a produkty. Zóny dostupnosti v kombinaci s Load balanceru úrovně Standard jsou sady funkce obsáhlém a flexibilní, můžete vytvořit mnoho různých scénářů.  Přečtěte si tento dokument, abyste umět nakonfigurovat [koncepty](#concepts) a základní scénář [pokyny k návrhu](#design).
 
->[!NOTE]
->Kontrola [zóny dostupnosti](https://aka.ms/availabilityzones) další související témata. 
+>[!IMPORTANT]
+>Kontrola [zóny dostupnosti](../availability-zones/az-overview.md) související témata, včetně žádné informace o konkrétní oblasti.
 
 ## <a name="concepts"></a> Koncepce zón dostupnosti u nástroje pro vyrovnávání zatížení
 
@@ -33,7 +33,7 @@ Není žádný přímý vztah mezi prostředky nástroje pro vyrovnávání zat�
 
 Funkce nástroje pro vyrovnávání zatížení prostředků jsou vyjádřeny jako front-end, pravidla, sondu stavu a definice fondu back-endu.
 
-V rámci zóny dostupnosti jsou popsané chování a vlastností prostředku nástroje pro vyrovnávání zatížení jako zónové a zónově redundantní.  Zónově redundantní a zónové popisují zonality vlastnost.  V rámci nástroje pro vyrovnávání zatížení, zónově redundantní vždy znamená, že *všechny zóny* a zónové prostředky služby k zajištění *jedné zóně*.
+V rámci zóny dostupnosti jsou popsané chování a vlastností prostředku nástroje pro vyrovnávání zatížení jako zónové a zónově redundantní.  Zónově redundantní a zónové popisují zonality vlastnost.  V rámci nástroje pro vyrovnávání zatížení, zónově redundantní vždy znamená, že *několika zónami* a zónové prostředky služby k izolování *jedné zóně*.
 
 Veřejné a vnitřní nástroj pro vyrovnávání zatížení podporují zónové a zónově redundantní scénáře a podle potřeby, jak může směrovat provoz mezi zónami (*Vyrovnávání zatížení mezi zónami*).
 
@@ -53,9 +53,12 @@ Pokud používáte několik front-endů, zkontrolujte [několik front-endů pro 
 
 #### <a name="zone-redundant-by-default"></a>Zónově redundantní ve výchozím nastavení
 
+>[!IMPORTANT]
+>Kontrola [zóny dostupnosti](../availability-zones/az-overview.md) související témata, včetně žádné informace o konkrétní oblasti.
+
 V oblasti se zónami dostupnosti se zónově redundantní ve výchozím nastavení front-end Load balanceru úrovně Standard.  IP adresa front-endu jeden přežijí selhání zóny a může být použité k dosažení všech členů fondu back-endu bez ohledu na to, zóna. Cesta k datům hitless neznamená to však reestablishment ani opakování proběhne úspěšně. Schémata redundance DNS se nevyžadují. Front-endu jednu IP adresu obsluhují současně více nezávislých infrastrukturu nasazení v několika zónami dostupnosti.  Zónově redundantní znamená, že všechny příchozí nebo odchozí toky obsluhuje více zón dostupnosti v oblasti současně používat jednu IP adresu.
 
-Jeden nebo více zónách dostupnosti, i když selže na cestu k datům odolává tak dlouho, dokud jedna zóna v oblasti zůstane v dobrém stavu. Zónově redundantní konfigurace je výchozí a nevyžaduje žádné další akce.  Když v oblasti získá možnost podporují zóny dostupnosti, stane stávající front-end zónově redundantní automaticky.
+Jeden nebo více zónách dostupnosti, i když selže na cestu k datům odolává tak dlouho, dokud jedna zóna v oblasti zůstane v dobrém stavu. Zónově redundantní konfigurace je výchozí a nevyžaduje žádné další akce.  
 
 Pomocí následujícího skriptu vytvořte zónově redundantní veřejnou IP adresu pro vaše interní Load balanceru úrovně Standard. Pokud používáte existující šablony Resource Manageru ve vaší konfiguraci, přidejte **sku** části tyto šablony.
 
@@ -96,7 +99,7 @@ Pomocí následujícího skriptu vytvořte zónově redundantních front-endovou
                 ],
 ```
 
-#### <a name="optional-zone-guarantee"></a>Záruka volitelné zóny
+#### <a name="optional-zone-isolation"></a>Izolace volitelné zóny
 
 Můžete zvolit, aby front-endu, zaručeno, že k jedné oblasti, což se označuje jako *zónové front-endu*.  To znamená, že se že všechny příchozí nebo odchozí tok je obsluhuje jednu zónu v oblasti.  Vaše front-endu sdílí pracuje s stavu zóny.  Cesta k datům není ovlivněn selhání v oblastech než ve kterém byla zaručená. Oblastmi front-endů můžete použít ke zveřejnění IP adresa na zónu dostupnosti.  Navíc můžete využívat oblastmi front-endů přímo nebo, když se skládá z veřejné IP adresy front-endu integrovat se službou Vyrovnávání zatížení produktu jako DNS [Traffic Manageru](../traffic-manager/traffic-manager-overview.md) a používat jeden název DNS, který se přeloží klienta více oblastmi IP adres.  To můžete použít ke zveřejnění na zóny s vyrovnáváním zatížení koncových bodech, které jednotlivě sledovat každou zónu.  Pokud chcete kombinovat tyto koncepty (zónově redundantní a zónové pro stejný back-end), přečtěte si [několik front-endů pro Azure Load Balancer](load-balancer-multivip-overview.md).
 
@@ -205,6 +208,9 @@ Vyhýbejte se nežádoucích závislosti mezi zónami, které se nezruší se t�
   - Po návratu zónu, aplikace pochopit, jak bezpečně sloučit?
 
 ### <a name="zonalityguidance"></a> Zónově redundantní a oblastmi
+
+>[!IMPORTANT]
+>Kontrola [zóny dostupnosti](../availability-zones/az-overview.md) související témata, včetně žádné informace o konkrétní oblasti.
 
 Zónově redundantní můžete zadat zónu nezávislá a na stejné možnosti čas odolné jednu IP adresu pro službu.  Pak ji lze omezit složitost.  Zónově redundantní také má mobility napříč zónami a lze jej bezpečně používat na prostředky v každé zóně.  Je také budoucnost v oblastech, které nemají zóny dostupnosti, které můžete omezit změny po oblast získat zóny dostupnosti.  Syntaxe konfigurace zónově redundantní IP adresu nebo front-endu úspěšná v libovolné oblasti, včetně těch, které nemají zóny dostupnosti.
 

@@ -1,6 +1,6 @@
 ---
-title: Dokončení kontroly přístupu skupinám nebo aplikacím v kontrol přístupu Azure AD | Dokumentace Microsoftu
-description: Zjistěte, jak dokončení kontroly přístupu členů skupiny nebo přístupu k aplikacím v kontrol přístupu Azure AD.
+title: Dokončení kontroly přístupu skupiny nebo aplikace – Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak dokončení kontroly přístupu členů skupiny nebo přístupu k aplikacím v kontrol přístupu Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc5dbee47bd6a621b14b39858132ce229663481b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 4265a7e08eab079e55ce91b27142ec3e55b3f3e9
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729606"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579593"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Dokončení kontroly přístupu skupinám nebo aplikacím v kontrol přístupu Azure AD
+# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Dokončení kontroly přístupu skupin nebo kontrol přístupu aplikací ve službě Azure AD
 
 Správci můžou pomocí Azure Active Directory (Azure AD) [vytvořit kontrolu přístupu](create-access-review.md) pro členy skupiny nebo uživatele přiřazené k aplikaci. Azure AD automaticky pošle e-mail s výzvou ke kontrole přístupu revidující. Pokud uživatel e-mail neobdrželi, můžete jim poslat pokyny [kontrolovat přístup skupinám nebo aplikacím](perform-access-review.md). (Všimněte si, že hosté, kteří jsou přiřazeny jako revidující, ale nepřijali pozvánku nebude dostávat e-mailu z kontroly přístupu, jak se musí nejdřív přijmout pozvánku před revizí.) Po období kontroly přístupu nebo zastaví kontrolu přístupu správce, postupujte podle kroků v tomto článku najdete v článku a použít výsledky.
 

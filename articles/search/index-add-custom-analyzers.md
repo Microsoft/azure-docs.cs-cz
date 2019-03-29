@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8eb762e8a18ea5de25413681894f692628493a2f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9a15078c953c1fab40ad521eff079a623c93b9d9
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842851"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577539"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Vlastní analyzátory přidat do indexu Azure Search
 
 A *vlastní analyzátor* je konkrétní typ [analyzátor textu](search-analyzers.md) , který se skládá z kombinace uživatelem definované existující tokenizátor a volitelné filtry. Díky kombinaci tokenizátory a filtry novými způsoby, můžete přizpůsobit text zpracování k dosažení konkrétních výsledků na vyhledávacím webu. Například můžete vytvořit vlastní analyzátor s *char filtr* před textovými vstupy jsou tokenizovaného odeberte značka jazyka HTML.
 
- Můžete definovat více vlastní analyzátory postup obměny kombinací filtry, ale každé pole lze použít pouze jeden analyzátor pro indexování analýzy a jeden pro hledání analýzy. Pro ilustraci vypadá analyzátor zákazníka, naleznete v tématu [vlastní analyzátor příklad](search-analyzers.md#Example1).
+ Můžete definovat více vlastní analyzátory postup obměny kombinací filtry, ale každé pole lze použít pouze jeden analyzátor pro indexování analýzy a jeden pro hledání analýzy. Pro ilustraci vypadá analyzátor zákazníka, naleznete v tématu [vlastní analyzátor příklad](search-analyzers.md#Custom-analyzer-example).
 
 ## <a name="overview"></a>Přehled
 

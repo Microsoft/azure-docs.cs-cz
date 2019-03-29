@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 22ec05660682f000d8bc3b9780732d5adf9b5c24
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 9b0c48b3a3fb3a1b4e4fbe94a368297823a86778
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226704"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579576"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Rychlý start: Vytvoření funkce Azure s konfigurací aplikace
 
@@ -45,13 +45,19 @@ V tomto rychlém startu provedete instalaci [Visual Studio 2017](https://visuals
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojit k úložišti konfigurace aplikace
 
-1. Otevřít *Function1.cs*a přidejte odkaz na poskytovatele konfigurace aplikace konfigurace .NET Core.
+1. Klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky NuGet**. Na **Procházet** kartu, vyhledávání a přidejte následující balíčky NuGet do projektu. Pokud je nemůžete najít, vyberte **zahrnout předběžné verze** zaškrtávací políčko.
+
+    ```
+    Microsoft.Extensions.Configuration.AzureAppConfiguration 1.0.0 preview or later
+    ```
+
+2. Otevřít *Function1.cs*a přidejte odkaz na poskytovatele konfigurace aplikace konfigurace .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-2. Aktualizace `Run` používat konfiguraci aplikací pomocí volání metody `builder.AddAzureAppConfiguration()`.
+3. Aktualizace `Run` používat konfiguraci aplikací pomocí volání metody `builder.AddAzureAppConfiguration()`.
 
     ```csharp
     public static async Task<IActionResult> Run(

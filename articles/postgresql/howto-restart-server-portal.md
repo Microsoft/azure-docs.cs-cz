@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: 83947571ed835c53c6cf8da6e73deb8dceabdd62
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf73120e462b740de5d2245f8a647896ac61f2c8
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58168771"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621818"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-the-azure-portal"></a>Restartovat – Azure Database for PostgreSQL pomocí webu Azure portal
 Toto téma popisuje, jak je možné restartovat serveru Azure Database for PostgreSQL. Budete muset restartovat server z důvodů údržby, což způsobuje krátké výpadky, jak server provádí operaci.
@@ -22,7 +22,7 @@ Restartování serveru se zablokuje, pokud služba je zaneprázdněna. Napříkl
 
 ## <a name="prerequisites"></a>Požadavky
 K dokončení této příručce s postupy, potřebujete:
-- [– Azure Database for PostgreSQL server a databáze](quickstart-create-server-database-portal.md)
+- [– Azure Database for postgresql – server](quickstart-create-server-database-portal.md)
 
 ## <a name="perform-server-restart"></a>Provést restartování serveru
 

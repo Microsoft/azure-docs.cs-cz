@@ -1,5 +1,5 @@
 ---
-title: Pomocí kontrol přístupu Azure AD ke správě uživatelů vyloučit ze zásad podmíněného přístupu | Dokumentace Microsoftu
+title: Pomocí kontrol přístupu ke správě uživatelů vyloučit ze zásad podmíněného přístupu – Azure Active Directory | Dokumentace Microsoftu
 description: Zjistěte, jak pomocí kontrol přístupu Azure Active Directory (Azure AD) můžete spravovat uživatele, které jsou vyloučené ze zásad podmíněného přístupu
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a197a6c27b337d7aa97667dc07b1059e82050549
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7675441316e42c7f0a220abe77bc8c62158ef918
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892710"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577117"
 ---
-# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Kontroly přístupu Azure AD použijte ke správě uživatelů vyloučit ze zásad podmíněného přístupu
+# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Kontroly přístupu pomocí služby Azure AD ke správě uživatelů vyloučit ze zásad podmíněného přístupu
 
 Ideální světě, všemi uživateli proveďte následujícím způsobem přístup zásady zabezpečení přístupu k prostředkům vaší organizace. Někdy existují však obchodních případů, které vyžadují, abyste provedli výjimky. Tento článek popisuje některé příklady, kde může být vyžadováno vyloučení a jak můžete jako správce IT může spravovat tuto úlohu, vyhnout dohledu výjimky zásad a auditoři poskytnout důkaz, že tyto výjimky jsou kontrolovány pravidelně používáte Azure Kontroly přístupu Active Directory (Azure AD).
 
@@ -44,7 +44,7 @@ Dalším příkladem může být, že máte zásady podmíněného přístupu, k
 
 ## <a name="why-are-exclusions-challenging"></a>Vyloučení jsou náročné
 
-Ve službě Azure AD můžete omezit rozsah zásady podmíněného přístupu pro skupinu uživatelů. Můžete také vyloučit některé z těchto uživatelů výběrem role adresáře, jednotlivé uživatele nebo hosté jednotlivých uživatelů. Je dobré si uvědomit, že když jsou nakonfigurované tyto výjimky, záměru zásad se nedá vynutit pro tyto uživatele. Pokud tyto výjimky byly nakonfigurovány jako seznam jednotlivých uživatelů nebo prostřednictvím starší místní skupiny zabezpečení, pak omezí viditelnost tohoto seznamu vyloučení (uživatelé nemusí vědět o jeho existenci) a správce IT kontrolu nad jeho (uživatelé mohou připojit Skupina zabezpečení obejít zásady). Kromě toho mohou uživatelé, kteří kvalifikovaný pro vyloučení v jednom okamžiku už ho potřebovat nebo způsobilé pro něj.
+Ve službě Azure AD můžete omezit rozsah zásady podmíněného přístupu pro skupinu uživatelů. Můžete také vyloučit některé z těchto uživatelů výběrem role, jednotlivé uživatele nebo hosté uživatelů Azure AD. Je dobré si uvědomit, že když jsou nakonfigurované tyto výjimky, záměru zásad se nedá vynutit pro tyto uživatele. Pokud tyto výjimky byly nakonfigurovány jako seznam jednotlivých uživatelů nebo prostřednictvím starší místní skupiny zabezpečení, pak omezí viditelnost tohoto seznamu vyloučení (uživatelé nemusí vědět o jeho existenci) a správce IT kontrolu nad jeho (uživatelé mohou připojit Skupina zabezpečení obejít zásady). Kromě toho mohou uživatelé, kteří kvalifikovaný pro vyloučení v jednom okamžiku už ho potřebovat nebo způsobilé pro něj.
 
 Na začátku vyloučení je krátký seznam uživatelů, kteří obejít zásady. V průběhu času jsou vyloučeny více uživatelů a roste seznamu. V určitém okamžiku je potřeba zkontrolovat seznam a potvrďte, že každý z těchto uživatelů stále vyloučeny. Správa seznamu z technického hlediska, může být poměrně snadné, ale který činím obchodní rozhodnutí a jak můžete se ujistit, že je všechno auditovatelných?
 

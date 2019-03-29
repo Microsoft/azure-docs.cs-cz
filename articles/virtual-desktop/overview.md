@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 4443d71d5c0b84ac7dbc18129338229c40323d2c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: f922f940f6c579c8710dadec29b365e7cf4c7938
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401039"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577182"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co je Windows Virtual Desktop Preview? 
 
@@ -72,7 +72,7 @@ Vaše infrastruktura potřebuje následující akce pro podporu virtuální ploc
   
 Virtuální počítače Azure, které vytvoříte pro virtuální plochy Windows musí být:
 
-* [Standard připojených k doméně](https://docs.microsoft.com/microsoft-desktop-optimization-pack/appv-v4/domain-joined-and-non-domain-joined-clients) nebo [AD připojená k hybridní službě](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtuální počítače nemůže být připojená k AD Azure.
+* [Standard připojených k doméně](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) nebo [AD připojená k hybridní službě](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtuální počítače nemůže být připojená k AD Azure.
 * S některým z následujících podporovaných imagí operačního systému:
   * Windows 10 Enterprise více relací
   * Windows Server 2016

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: service-health
 ms.date: 01/29/2019
 ms.workload: Supportability
-ms.openlocfilehash: c0de42935c1e46fd51e82a58083f85f6cee83ce3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b4062b3f0bc389de4403ac81b56688508f5ea50e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884532"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579559"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health – nejčastější dotazy
 Přečtěte si odpovědi na běžné otázky o Azure Resource Health.
@@ -50,7 +50,7 @@ Ano, pokud prostředek není k dispozici, Resource Health identifikuje původní
 Na portálu se zobrazí uživatelem iniciované akce pomocí modré ikona během plánovaných i neplánovaných událostí jsou uvedeny pomocí červená varovná ikona. Další podrobnosti jsou uvedeny v [přehled Resource Health](Resource-health-overview.md).  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Můžu integrovat s Moje monitorovací nástroje Resource Health?
-Služba Resource health je služba navržená tak, aby vám pomohou diagnostikovat a zmírnit problémy se službami Azure, které ovlivňují vaše prostředky. Při použití rozhraní API stavu prostředku můžete prostřednictvím kódu programu získat stav, doporučujeme že použít metriky pro monitorování prostředků. Po zjištění problému Resource Health vám pomůže určit původní příčinu a provede vás těmito možnostmi akcí k jejich řešení. Navštivte [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) Další informace o použití metrik ke kontrole vašich prostředků.
+Služba Resource health je [ve verzi preview podporu](resource-health-alert-arm-template-guide.md) pro upozornění založená na protokolu aktivit. Použití upozornění protokolu aktivit [skupiny akcí](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/action-groups) uživatelům oznámit, že výstraha byla aktivována. Skupiny akcí podporují různé kanály oznámení, jako je e-mail, SMS, webhook a akce ITSM.
 
 ## <a name="where-do-i-find-resource-health"></a>Kde najdu Resource Health?
 Po přihlášení k webu Azure portal, mají několik možností, dostanete Resource Health:
@@ -67,13 +67,7 @@ Seznam kontrol stavu a typy prostředků, které jsou podporované prostřednict
 Při kontrole stavu prostředku, vpravo pod stavu můžete kliknout na **sestavy nesprávný stav**. Před odesláním do sestavy, máte možnost poskytnout další podrobnosti o proč si myslíte, že aktuální stav je nesprávný.
 
 ## <a name="is-resource-health-available-for-all-azure-regions"></a>Resource Health je k dispozici pro všemi oblastmi Azure? 
-Služba Resource health je k dispozici v ve všech zeměpisných oblastech Azure s výjimkou následujících oblastech:
-- USA (Gov) – Virginia
-- US Gov – Iowa
-- US DoD – východ
-- US DoD – střed
-- Německo – střed
-- Německo – severovýchod
+Služba Resource health je k dispozici ve všech zeměpisných oblastech Azure.
 
 ## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Čím se liší od stav služby Azure nebo řídicí panel stavu služeb Resource Health?
 Služba Resource Health na základě informací poskytnutých je konkrétnější než co poskytuje stav služby Azure nebo řídicí panel stavu služeb.

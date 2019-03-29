@@ -19,29 +19,29 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5a46575f6e8a0b05b65dbf49c70bddb570b514b2
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: a629a022e332eae5c8a58e9ffc0f760f96bc24dd
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497429"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577103"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Přidat moduly pro návrhy na index pro typeahead ve službě Azure Search
 
-A **modulu pro návrhy** je konstrukce v [index Azure Search](search-what-is-an-index.md) , který podporuje prostředí "search jako vám type". Obsahuje seznam polí, pro které chcete povolit typeahead dotazu vstupy. Existují dvě varianty typeahead: *automatické dokončování* dokončení termín nebo frázi při psaní se *návrhy* poskytuje krátký seznam výsledků. 
+A **modulu pro návrhy** je konstrukce v [index Azure Search](search-what-is-an-index.md) , který podporuje prostředí "search jako vám type". Obsahuje seznam polí, pro které chcete povolit typeahead dotazu vstupy. V rámci indexu, stejného modulu pro návrhy podporuje jednu nebo obě tyto dvě varianty typeahead: *automatické dokončování* dokončení termín nebo frázi při psaní se *návrhy* poskytuje krátký seznam výsledků. 
 
-Na této stránce hledání Xbox automatické dokončování ve více položek můžete přejít na nové stránce výsledků hledání pro daný dotaz, že návrhy jsou skutečné výsledky, které se dostanete na stránku pro tuto konkrétní hru. Můžete omezit automatické dokončování pro jednu položku na panelu hledání nebo zadat seznam podobný znázorněno zde. Máte nějaké návrhy můžete zařízení surface libovolnou část dokumentu, která nejlépe popisuje výsledek.
+Následující snímek obrazovky ukazuje obě typeahead funkce. Na této stránce hledání Xbox automatické dokončování ve více položek můžete přejít na nové stránce výsledků hledání pro daný dotaz, že návrhy jsou skutečné výsledky, které se dostanete na stránku pro tuto konkrétní hru. Můžete omezit automatické dokončování pro jednu položku na panelu hledání nebo zadat seznam podobný znázorněno zde. Máte nějaké návrhy můžete zařízení surface libovolnou část dokumentu, která nejlépe popisuje výsledek.
 
 ![Vizuální porovnání automatického dokončování a navrhované dotazy](./media/index-add-suggesters/visual-comparison-suggest-complete.png "vizuální porovnání automatického dokončování a navrhované dotazy")
 
 K implementaci těchto chování ve službě Azure Search, je jako součást index a dotazu. 
 
-+ V indexu přidejte modulu pro návrhy. Portálu, rozhraní REST API nebo .NET SDK můžete použít k vytvoření modulu pro návrhy. 
++ Součást index je modulu pro návrhy. Portálu, rozhraní REST API nebo .NET SDK můžete použít k vytvoření modulu pro návrhy. 
 
-+ V dotazu zadejte návrh nebo sutocomplete akci. 
++ Komponentu dotazu je akce zadaný v požadavku dotazu (akce návrh nebo automatické dokončování). 
 
 > [!Important]
-> Automatické dokončování je aktuálně ve verzi preview dostupná ve verzi preview rozhraní REST API a sady .NET SDK a nejsou podporovány pro aplikace v produkčním prostředí. 
+> Automatické dokončování je aktuálně ve verzi preview dostupná ve verzi preview rozhraní REST API a sady .NET SDK. Není určena pro produkční aplikace. 
 
 Na základě na pole je povolena podpora vyhledávání jako vám type. Pokud chcete prostředí podobné je uvedeno na snímku obrazovky můžete implementovat obě typeahead chování ve stejném řešení hledání. Cíl i požadavky *dokumenty* kolekce konkrétního indexu a odpovědi se vrátí po uživatel má k dispozici alespoň tři vstupní řetězec znaků.
 
@@ -77,7 +77,7 @@ Po vytvoření modulu pro návrhy, přidejte [návrhy API](https://docs.microsof
 
 ### <a name="use-the-net-sdk"></a>Použití sady .NET SDK
 
-V C#, definovat [třídy modulu pro návrhy](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). Modul pro návrhy je kolekce, ale jde převzít jenom jednu položku.
+V C#, definovat [třídy modulu pro návrhy](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). Modulu pro návrhy je kolekce, která může mít pouze jednu položku. Nezapomeňte přidat `using System.Collections.Generic;` tak, že můžete vytvořit seznam objektů. 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)
@@ -137,4 +137,4 @@ Používá izolovaného prostoru služby Azure Search a předem načtené index 
 Doporučujeme, abyste podle následujícího příkladu lze naleznete v tématu Jak formulovali požadavky.
 
 > [!div class="nextstepaction"]
-> [Příklad dotazu Autocompleted (preview)](search-autocomplete-tutorial.md) 
+> [Návrhy a automatické dokončování ve více příkladů](search-autocomplete-tutorial.md) 

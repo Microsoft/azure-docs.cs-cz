@@ -11,18 +11,32 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/30/2018
+ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: abf833cc054bfac0581506f75259e357f0ab1b38
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: db4b468c03d93b073067083f4fae1ec86c70dde8
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985746"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577033"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Řešení potíží s Azure Monitor pro kontejnery
 
 Při konfiguraci monitorování clusteru Azure Kubernetes Service (AKS) pomocí Azure monitoru pro kontejnery může dojít k potížím, brání ve sběru dat nebo hlásí stav. Tento článek podrobně popisuje některé běžné problémy a postup řešení potíží.
+
+## <a name="authorization-error-during-onboarding-or-update-operation"></a>Chyba autorizace během operace registrace nebo aktualizace
+Při povolování monitorování Azure pro kontejnery nebo aktualizaci clusteru pro podporu shromažďování metrik, může zobrazit chyba podobný tomuto - *klienta < identitu uživatele >' s objektem nemá id < uživatele objectId > oprávnění k provedení akce "Microsoft.Authorization/roleAssignments/write" rozsahu*
+
+Během procesu registrace nebo aktualizace udělení **monitorování metrik vydavatele** dojde k pokusu o přiřazení role u prostředku clusteru. Uživatel zahajuje proces povolení monitorování Azure pro kontejnery nebo aktualizaci pro podporu shromažďování metrik musí mít přístup k **Microsoft.Authorization/roleAssignments/write** oprávnění v clusteru AKS prostředek oboru. Pouze členové **vlastníka** a **správce uživatelských přístupů** předdefinované role mají přístup k toto oprávnění. Pokud vaše zásady zabezpečení vyžadují přiřazení oprávnění na podrobné úrovni, doporučujeme, abyste si zobrazit [vlastní role](../../role-based-access-control/custom-roles.md) a přiřadit uživatelům, kteří ji potřebují. 
+
+Tato role můžete udělit také ručně z portálu Azure portal provedením následujících kroků:
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+2. Na webu Azure Portal klikněte v levém horním rohu na **Všechny služby**. V seznamu prostředků zadejte **Kubernetes**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Azure Kubernetes**.
+3. V seznamu clustery Kubernetes vyberte ho ze seznamu.
+2. Z nabídky na levé straně, klikněte na tlačítko **řízení přístupu (IAM)**.
+3. Vyberte **+ přidat** přidat přiřazení role a vyberte **monitorování metrik vydavatele** role a v části **vyberte** zadejte **AKS** do filtrování výsledků na pouze clustery instanční definované v rámci předplatného. Vyberte ze seznamu, který je specifický pro daný cluster.
+4. Vyberte **Uložit** k dokončení přiřazení role. 
 
 ## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>Azure Monitor pro kontejnery je zapnutá, ale žádné informace o nevytvářejících sestavy
 Pokud monitorování Azure pro kontejnery se úspěšně povolena a konfigurována, ale nelze zobrazit informace o stavu nebo žádné výsledky jsou vráceny z dotazů protokolu, Diagnostikujte problém pomocí následujících kroků: 

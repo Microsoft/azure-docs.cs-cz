@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 2baabe6837d25cce5e9f5d9e1071af8417fe5f4d
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: da653842b09c15a5fd42bae0ed45e7b31452b972
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401858"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578743"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Kurz: Správa skupiny aplikací pro Windows Virtual Desktop Preview
 
@@ -28,7 +28,7 @@ Než začnete, [stáhněte a naimportujte modul Powershellu virtuální plochy W
 
 ## <a name="create-a-remoteapp-group"></a>Vytvoření skupiny Vzdálená aplikace RemoteApp
 
-1. Spusťte následující rutinu prostředí PowerShell k vytvoření nové prázdné skupiny Vzdálená aplikace RemoteApp.
+1. Spusťte následující rutinu prostředí PowerShell k vytvoření nové prázdné skupiny aplikací RemoteApp.
 
    ```powershell
    New-RdsAppGroup <tenantname> <hostpoolname> <appgroupname> -ResourceType "RemoteApp"
@@ -45,17 +45,17 @@ Než začnete, [stáhněte a naimportujte modul Powershellu virtuální plochy W
    ```powershell
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
-
-4. Spusťte následující rutinu k publikování nové vzdálené aplikace RemoteApp na skupinu aplikací vytvořili v kroku 1.
+   
+4. Spusťte následující rutinu k instalaci aplikace založené na jeho appalias. appalias viditelná, když spustíte výstup z kroku 3.
 
    ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
+   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>
    ```
 
-5. (Volitelné) Spusťte následující rutinu k instalaci aplikace založená na knihovnách appalias. appalias viditelná, když spustíte výstup z kroku 3.
+5. (Volitelné) Spusťte následující rutinu k publikování nové vzdálené aplikace RemoteApp na skupinu aplikací vytvořili v kroku 1.
 
    ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> <remoteappname> -AppAlias <appalias>
+   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
    ```
 
 6. Pokud chcete ověřit, že aplikace byla publikována, spusťte následující rutinu.
@@ -76,4 +76,4 @@ Než začnete, [stáhněte a naimportujte modul Powershellu virtuální plochy W
 Po vytvoření skupiny vaší aplikace, vytvoření instančních objektů a přiřazovat role uživatelům. Zjistěte, jak to provést, najdete v kurzu pro vytvoření instančních objektů a přiřazení role pomocí prostředí PowerShell.
 
 > [!div class="nextstepaction"]
-> [Vytvoření instančních objektů a přiřazení role pomocí prostředí PowerShell](create-service-principal-role-powershell.md)
+> [Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu](create-service-principal-role-powershell.md)

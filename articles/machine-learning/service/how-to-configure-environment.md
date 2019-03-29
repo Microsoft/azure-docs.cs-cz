@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1d4144a2a6cf41d594ee096d8802ccc5b29009a5
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: c4bdeb4e00a59d6ba2b415801c0689d77ed9a825
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361791"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577556"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -315,7 +315,9 @@ Jakmile je cluster spuštěn, [vytvořit knihovnu](https://docs.databricks.com/u
    1. Na **knihovny** kartu, vyberte možnost **restartovat**.
       
    Zvažte také:
-   + Některé balíčky, jako například `psutil`, může způsobit konflikty Databricks během instalace. Nechcete-li tyto chyby, nainstalovat balíčky zmrazení lib verzí, jako je `pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0`. 
+   + V konfiguraci Automl, při použití Azure Databricks, přidejte následující parametry:
+    1. ```max_concurrent_iterations``` na základě počtu pracovních uzlů v clusteru. 
+    2. ```spark_context=sc``` #databricks/spark výchozí kontext spark. 
    + Nebo, pokud máte starší verzi sady SDK, zrušte zaškrtnutí možnosti z nainstalovaných knihoven clusteru a přesunout do koše. Nainstalujte novou verzi sady SDK a restartujte cluster. Pokud po této dochází k nějakému problému, odpojit a znovu ho připojte svůj cluster.
 
 Pokud byla instalace úspěšná, importované knihovny by měl vypadat jako jednu z těchto:

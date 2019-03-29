@@ -1,6 +1,6 @@
 ---
-title: Konfigurace nastavení role adresáře Azure AD v PIM | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat nastavení role adresáře Azure AD v Azure AD Privileged Identity Management (PIM).
+title: Konfigurace nastavení role Azure AD v PIM – Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak nakonfigurovat nastavení role Azure AD v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,34 +14,34 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 761bb31ca51f29547f594af99f779665a255c0be
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b14cf76ec7b8b905c41792f4dc9a56e97dc0f7ba
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162539"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576858"
 ---
-# <a name="configure-azure-ad-directory-role-settings-in-pim"></a>Konfigurace nastavení role adresáře Azure AD v PIM
+# <a name="configure-azure-ad-role-settings-in-pim"></a>Konfigurace nastavení role Azure AD v PIM
 
-Správce privilegovaných rolí, odkud můžete přizpůsobit Azure AD Privileged Identity Management (PIM) ve své organizaci, včetně změnou prostředí pro uživatele, který je aktivaci přiřazení oprávněné role.
+Správce privilegovaných rolí, odkud můžete přizpůsobit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) ve své organizaci, včetně změnou prostředí pro uživatele, který je aktivaci přiřazení oprávněné role.
 
 ## <a name="open-role-settings"></a>Otevřete nastavení role
 
-Postupujte podle těchto kroků a otevřete nastavení pro role adresáře Azure AD.
+Postupujte podle těchto kroků a otevřete nastavení pro role Azure AD.
 
 1. Otevřít **Azure AD Privileged Identity Management**.
 
-1. Klikněte na tlačítko **role adresáře Azure AD**.
+1. Klikněte na tlačítko **role Azure AD**.
 
 1. Klikněte na tlačítko **nastavení**.
 
-    ![Role adresáře Azure AD – nastavení](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
+    ![Role Azure AD – nastavení](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
 1. Klikněte na tlačítko **role**.
 
 1. Klikněte na roli, jehož nastavení chcete konfigurovat.
 
-    ![Role adresáře Azure AD – nastavení role](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
+    ![Role Azure AD – nastavení role](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
 
     Na stránce nastavení pro každou roli existuje několik nastavení, která můžete konfigurovat. Tato nastavení ovlivní jenom uživatele, kteří jsou **oprávněné** přiřazení, ne **trvalé** přiřazení.
 
@@ -98,13 +98,13 @@ Pokud chcete k aktivaci role vyžadovat schválení, postupujte podle těchto kr
 
 1. Nastavte **vyžadovat schválení** přepnout na **povoleno**. V podokně rozšíří možnosti vybrat schvalovatele.
 
-    ![Role adresáře Azure AD – nastavení – vyžadovat schválení](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
+    ![Role Azure AD – nastavení – vyžadovat schválení](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
     Pokud jste **neměňte** zadejte jakékoli schvalovatelé, výchozí schvalovatelé se správci privilegovaných rolí. Správce privilegovaných rolí by vyžadoval schválení **všechny** žádosti o aktivaci pro tuto roli.
 
 1. Chcete-li zadat schvalovatele, klikněte na tlačítko **vybrat schvalovatele**.
 
-    ![Role adresáře Azure AD – nastavení – vyžadovat schválení](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
+    ![Role Azure AD – nastavení – vyžadovat schválení](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
 1. Vyberte jednoho nebo více schvalovatelů a potom klikněte na tlačítko **vyberte**. Můžete vybrat uživatele nebo skupiny. Doporučuje se aspoň 2 schvalovatele. Schvalování sebe sama není povolený.
 
@@ -117,5 +117,5 @@ Pokud chcete k aktivaci role vyžadovat schválení, postupujte podle těchto kr
 
 ## <a name="next-steps"></a>Další postup
 
-- [Přiřazení role adresáře Azure AD v PIM](pim-how-to-add-role-to-user.md)
-- [Konfigurace výstrah zabezpečení pro role adresáře Azure AD v PIM](pim-how-to-configure-security-alerts.md)
+- [Přiřazení role Azure AD v PIM](pim-how-to-add-role-to-user.md)
+- [Konfigurace výstrah zabezpečení pro role Azure AD v PIM](pim-how-to-configure-security-alerts.md)

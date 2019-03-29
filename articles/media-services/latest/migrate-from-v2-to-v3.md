@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 ms.author: juliako
-ms.openlocfilehash: 61ebebaf61d1cbbc72f3e12b5ff516924cc9b8c7
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b951da73006731b38b265dc3a2f542e670f9fbf6
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317744"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621732"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přechod ze služby Media Services v2 na v3
 
@@ -79,12 +79,14 @@ Pokud máte službu poskytování videí dnes vyvinuté v horní části [starš
 Rozhraní API v3 má následující funkce mezer s ohledem na rozhraní API v2. Zavření mezer je ve vývoji.
 
 * [Kodér úrovně Premium](../previous/media-services-premium-workflow-encoder-formats.md) a starší [media analytics procesorů](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2 ve verzi Preview, Face Redactoru atd.) nejsou přístupné prostřednictvím v3.<br/>Zákazníci, kteří chtějí migrovat z Media Indexer 1 nebo 2 preview můžete okamžitě použít AudioAnalyzer přednastavení v rozhraní API v3.  Toto nové přednastavení obsahuje víc funkcí než starší Media Indexer 1 nebo 2. 
-* Mnohé z pokročilých funkcích sady Media Encoder Standard v rozhraních API v2 aktuálně nejsou k dispozici ve verzi 3, jako například:
+* Mnoho [pokročilé funkce Media Encoder Standard ve verzi v2](../previous/media-services-advanced-encoding-with-mes.md) rozhraní API aktuálně nejsou k dispozici ve verzi 3, jako například:
     * Omezení (pro scénáře na vyžádání a živé)
     * Spojování prostředků
     * Překrytí
     * Oříznutí
     * Prvky, které budou miniatur
+    * Vkládání tiché zvukové stopy po zadání neobsahuje žádný zvuk
+    * Vložení videa sledovat, když vstupní nemá žádné video
 * Živé události s překódování aktuálně nepodporují břidlicová kurzor umístíte dovnitř datového proudu a ad vkládáním značek pro reklamy prostřednictvím volání rozhraní API. 
 
 > [!NOTE]

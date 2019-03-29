@@ -1,6 +1,6 @@
 ---
-title: Zásady správného řízení identit Azure AD | Dokumentace Microsoftu
-description: Zásady správného řízení identit Azure AD umožňuje vyrovnávat potřeby vaší organizace pro zabezpečení a produktivity zaměstnanců se správné procesy a viditelnost.
+title: Zásady správného řízení identit – Azure Active Directory | Dokumentace Microsoftu
+description: Zásady správného řízení identit Azure Active Directory umožňuje vyrovnávat potřeby vaší organizace pro zabezpečení a produktivity zaměstnanců se správné procesy a viditelnost.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 304399905e9dfd37557a342248c829c1f940452b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7872a43d5000ddb1ba581f76358c8001902ab56b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167569"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579712"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co je zásady správného řízení identit Azure AD?
 
@@ -77,7 +77,7 @@ Neplatí žádné z nabízených řešení nebo doporučení pro každý zákazn
 - [Co je kontrola přístupu?](access-reviews-overview.md)
 - [Správa přístupu uživatelů pomocí kontrol přístupu](manage-user-access-with-access-reviews.md)
 - [Správa přístupu hostů pomocí kontrol přístupu](manage-guest-access-with-access-reviews.md)
-- [Zahájení kontroly přístupu role adresáře](../privileged-identity-management/pim-how-to-start-security-review.md)
+- [Zahájení kontroly přístupu Azure AD rolí](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 ### <a name="terms-of-use"></a>Podmínky použití
 

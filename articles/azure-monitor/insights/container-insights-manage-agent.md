@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 6bfcb17d0a81c6e23c4bfa3dd4f4dd8cc3079379
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: c8a5c839d6d662f9d330099f89c97eb83c4fe516
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331466"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577080"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Jak spravovat Azure Monitor pro kontejnery agenta
 Azure Monitor pro kontejnery používá kontejnerizovaných verzi agenta Log Analytics pro Linux. Po počátečním nasazení jsou rutiny nebo volitelné kroky, možná bude nutné provést během životního cyklu. Tento článek uvádí, o tom, jak ručně agenta upgradovat a zakázat kolekci proměnných prostředí od konkrétního kontejneru. 
@@ -29,13 +29,13 @@ Azure Monitor pro kontejnery používá kontejnerizovaných verzi agenta Log Ana
 Pokud agent upgrade selže, tento článek popisuje postup ruční upgrade agenta. Postupujte podle vydané verze, najdete v článku [oznámení verzi agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).   
 
 ### <a name="upgrading-agent-on-monitored-kubernetes-cluster"></a>Upgrade agenta na sledovaných clusteru Kubernetes
-Postup upgradu agenta zahrnuje dva kroky přímo vpřed. Prvním krokem je vypnout monitorování pro kontejnery pomocí Azure CLI s Azure Monitor.  Postupujte podle kroků popsaných v [zakázat monitorování](container-insights-optout.md?toc=%2fazure%2fmonitoring%2ftoc.json#azure-cli) článku. Pomocí Azure CLI umožňuje odebrat agenta z uzlů v clusteru bez dopadu na řešení a odpovídajících dat, která je uložena v pracovním prostoru. 
+Postup upgradu agenta zahrnuje dva kroky přímo vpřed. Prvním krokem je vypnout monitorování pro kontejnery pomocí Azure CLI s Azure Monitor.  Postupujte podle kroků popsaných v [zakázat monitorování](container-insights-optout.md?#azure-cli) článku. Pomocí Azure CLI umožňuje odebrat agenta z uzlů v clusteru bez dopadu na řešení a odpovídajících dat, která je uložena v pracovním prostoru. 
 
 >[!NOTE]
 >Při provádění této aktivity údržby, uzly v clusteru nejsou předávání shromážděných dat a zobrazení výkonu nebudou zobrazovat data mezi časem odebrat agenta a nainstalujte novou verzi. 
 >
 
-Pokud chcete nainstalovat novou verzi agenta, postupujte podle kroků popsaných v [připojení monitorování](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-using-azure-cli) článku pomocí Azure CLI pro ukončení tohoto procesu.  
+Pokud chcete nainstalovat novou verzi agenta, postupujte podle kroků popsaných v [připojení monitorování](container-insights-onboard.md?#enable-using-azure-cli) článku pomocí Azure CLI pro ukončení tohoto procesu.  
 
 Po opětovné povolení monitorování, může trvat přibližně 15 minut, než uvidíte aktualizovaný stav metriky pro cluster. K ověření agenta úspěšně upgradován, spusťte příkaz: `kubectl logs omsagent-484hw --namespace=kube-system`
 

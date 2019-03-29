@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 03/21/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 1d1e0f100a90c28bd7469991dee559abcd88f9a2
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 5829606f3ad226507c49f18dcc8ac4831d573b17
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499460"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578828"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Instalace modulu runtime Azure IoT Edge v Linuxu (x64)
 
@@ -33,9 +33,9 @@ V tomto článku jsou uvedené kroky k instalaci modulu runtime Azure IoT Edge v
 Připravte zařízení IoT Edge instalace modulu runtime.
 
 
-Instalace konfigurace úložiště. Zvolte buď **16.04** nebo **18.04** fragmentu kódu v závislosti na vaší verze Ubuntu.
+Instalace konfigurace úložiště. Zvolte buď **16.04** nebo **18.04** fragmentu kódu v závislosti na vaší verze Ubuntu:
 
-> [!IMPORTANT]
+> [!NOTE]
 > Ujistěte se, že zvolíte fragmentu kódu v rozevíracím seznamu správný kód pro vaši verzi systému Ubuntu.
 
 * Pro **Ubuntu 16.04**:
@@ -48,8 +48,6 @@ Instalace konfigurace úložiště. Zvolte buď **16.04** nebo **18.04** fragmen
    curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > ./microsoft-prod.list
    ```
    
-Instalace konfigurace úložiště. Zvolte buď **16.04** nebo **18.04** fragmentu kódu v závislosti na vaší verze Ubuntu.
-
 Zkopírujte vygenerovaný seznam.
 
    ```bash

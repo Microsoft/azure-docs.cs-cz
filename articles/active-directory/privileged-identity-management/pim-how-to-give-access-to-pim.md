@@ -1,5 +1,5 @@
 ---
-title: Udělení přístupu na jiné správce ke správě PIM – Azure | Dokumentace Microsoftu
+title: Udělení přístupu na jiné správce ke správě PIM – Azure Active Directory | Dokumentace Microsoftu
 description: Zjistěte, jak udělit přístup k jiné správy pro správu Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0d8cb77cda97c3141987fa8b0ea39541ace6db3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 74b938335dbace5a827bcfa43172704dc8b09da2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191729"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579610"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-pim"></a>Udělení přístupu na jiné správce ke správě PIM
 
-Globální správce, který umožňuje Azure AD Privileged Identity Management (PIM) pro organizaci automaticky získat přiřazení rolí a přístupu k PIM. Nikdo jiný získá oprávnění k zápisu ve výchozím nastavení, i když, včetně další globální správce. Jiné globální správci, správci zabezpečení a čtenáři zabezpečení mají přístup jen pro čtení k PIM. K udělení přístupu k PIM, můžete přiřadit na prvního uživatele ostatním uživatelům **správce privilegovaných rolí** role.
+Globální správce, který umožňuje Azure Active Directory (Azure AD) Privileged Identity Management (PIM) pro organizaci automaticky získat přiřazení rolí a přístupu k PIM. Nikdo jiný získá oprávnění k zápisu ve výchozím nastavení, i když, včetně další globální správce. Jiné globální správci, správci zabezpečení a čtenáři zabezpečení mají přístup jen pro čtení k PIM. K udělení přístupu k PIM, můžete přiřadit na prvního uživatele ostatním uživatelům **správce privilegovaných rolí** role.
 
 > [!NOTE]
 > Správa PIM vyžaduje Azure MFA. Protože účty Microsoft nelze zaregistrovat pro Azure MFA, nemůže uživatel, který se přihlásí pomocí účtu Microsoft k PIM.
@@ -36,11 +36,11 @@ Ujistěte se, že jsou vždy alespoň dva uživatelé v roli správce privilegov
 
 1. Otevřít **Azure AD Privileged Identity Management**.
 
-1. Klikněte na tlačítko **role adresáře Azure AD**.
+1. Klikněte na tlačítko **role Azure AD**.
 
 1. Klikněte na tlačítko **role**.
 
-    ![Role adresáře PIM Azure AD - role](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
+    ![Role AD PIM Azure – role](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
 
 1. Klikněte na tlačítko **správce privilegovaných rolí** role a otevřete stránku členy.
 
@@ -74,7 +74,7 @@ Před odebráním uživatele z role správce privilegovaných rolí, vždy ujist
 
 1. Otevřít **Azure AD Privileged Identity Management**.
 
-1. Klikněte na tlačítko **role adresáře Azure AD**.
+1. Klikněte na tlačítko **role Azure AD**.
 
 1. Klikněte na tlačítko **role**.
 
