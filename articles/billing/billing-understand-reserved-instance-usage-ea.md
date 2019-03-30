@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 03/13/2019
 ms.author: banders
-ms.openlocfilehash: 66fd42e5aa110b4c9ef686b1d66429ff7dbaf550
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: daa7f6a116578fa8d1f2b5bf825a6f4cd48f7f64
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57857687"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648295"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>Vysvětlení využití rezervace Azure u prováděcí smlouvy Enterprise
 
@@ -53,7 +53,7 @@ Soubor CSV využití Enterprise si můžete stáhnout z webu Enterprise portal. 
 
 ## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>Využití pro SQL Database a Cosmos DB vyhrazené kapacity rezervace
 
-V dalších částech používat Azure SQL Database jako příklad k popisu sestavu využití. Stejný postup můžete použít také zobrazíte využití služby Azure Cosmos DB. 
+V dalších částech používat Azure SQL Database jako příklad k popisu sestavu využití. Stejný postup můžete použít také zobrazíte využití služby Azure Cosmos DB.
 
 Předpokládejme, že používáte SQL Database Gen 4 oblasti USA – východ a vaší rezervace informace vypadá jako v následující tabulce:
 
@@ -64,7 +64,7 @@ Předpokládejme, že používáte SQL Database Gen 4 oblasti USA – východ a 
 |Produkt| SQL Database Gen 4 (2 jádra)|
 |Oblast | eastus |
 
-### <a name="usage-in-csv-file"></a>Použití v souboru CSV 
+### <a name="usage-in-csv-file"></a>Použití v souboru CSV
 
 Filtrovat podle **Další informace o** a zadejte vaše **ID rezervace**a zvolte požadovaný **kategorie měřiče** – Azure SQL database nebo Azure Cosmos DB. Následující snímek obrazovky ukazuje pole související s rezervace.
 
@@ -81,19 +81,20 @@ Využití Azure rezervace se také zobrazí v části Souhrn využití webu Ente
 1. Se vám neúčtují poplatky za součást hardwaru virtuálního počítače jako se bude vztahovat rezervace. Pro rezervaci SQL Database, se zobrazí čáry s **název služby** jako Azure SQL Database vyhrazené využití kapacity.
 2. V tomto příkladu nemáte zvýhodněné hybridní využití Azure, takže vám budeme účtovat softwaru Windows používá s virtuálním Počítačem.
 
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
+
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+
+
 ## <a name="next-steps"></a>Další postup
 
 Další informace o rezervacích Azure, najdete v následujících článcích:
 
 - [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
 - [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../sql-database/sql-database-reserved-capacity.md) 
+- [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../sql-database/sql-database-reserved-capacity.md)
 - [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
 - [Vysvětlení, jak se sleva za rezervaci použije](billing-understand-vm-reservation-charges.md)
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Náklady na software Windows, které nejsou součástí rezervace](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
-
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

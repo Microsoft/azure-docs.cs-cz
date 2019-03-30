@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2019
+ms.date: 03/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3b9a35cb5a37aa17a2f7803f3e996d51bede81e0
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 2ef5cc702bd5035c958a8feb9b6f5051781cd3cc
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518554"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649790"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu
 
@@ -103,7 +103,12 @@ Vložte kód do prostředí, klikněte pravým tlačítkem uvnitř prostředí a
 
 ## <a name="redeploy-when-deployment-fails"></a>Opětovné nasazení při nasazení se nezdaří
 
-Pokud se nasazení nezdaří, můžete automaticky znovu nasadit starší a úspěšné nasazení z historie nasazení. Pokud chcete nastavit opětovné nasazení, použijte buď `-RollbackToLastDeployment` nebo `-RollBackDeploymentName` parametr v příkazu pro nasazení.
+Tato funkce se také označuje jako *vrácení zpět při chybě*. Pokud se nasazení nezdaří, můžete automaticky znovu nasadit starší a úspěšné nasazení z historie nasazení. Pokud chcete nastavit opětovné nasazení, použijte buď `-RollbackToLastDeployment` nebo `-RollBackDeploymentName` parametr v příkazu pro nasazení. Tato funkce je užitečná, pokud máte k dispozici dostatek známého funkčního stavu pro nasazení infrastruktury a chcete se vrátí zpátky na to. Existuje několik omezení a omezení:
+
+- Opětovné nasazení se spustí, přesně tak, jak byl dříve spuštěn se stejnými parametry. Nelze změnit parametry.
+- Předchozí nasazení se spustí pomocí [úplný režim](./deployment-modes.md#complete-mode). Se odstraní všechny prostředky, které nejsou zahrnuty v předchozím nasazení a konfigurace všech prostředků jsou nastaveny do jejich předchozího stavu. Ujistěte se, že plně chápete [režimy nasazení](./deployment-modes.md).
+- Opětovné nasazení má vliv pouze prostředky, všechny změny dat to nebude mít vliv.
+- Tato funkce je podporována pouze na nasazení skupiny prostředků, ne předplatné úrovně nasazení. Další informace o nasazení na úrovni předplatného najdete v tématu [vytvoření skupiny prostředků a prostředků na úrovni předplatného](./deploy-to-subscription.md).
 
 Tato možnost dala použít, vaše nasazení musí mít jedinečné názvy, tak je možné identifikovat v historii. Pokud nemáte jedinečné názvy, aktuální selhání nasazení může přepsat předchozí úspěšné nasazení v historii. Tuto možnost můžete použít pouze u kořenové úrovně nasazení. Nasazení z vnořené šablony nejsou k dispozici pro nové nasazení.
 

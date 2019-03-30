@@ -1,5 +1,5 @@
 ---
-title: Kurz – sdílení mezi relacemi a zařízeními pomocí prostorových kotev vztahů Azure a Azure Cosmos DB back-endu | Dokumentace Microsoftu
+title: Kurz – sdílené složky Azure prostorových kotev vztahů mezi relacemi a zařízeními pomocí služby Azure Cosmos DB back-endu | Dokumentace Microsoftu
 description: V tomto kurzu se dozvíte, jak sdílet identifikátory prostorových kotvy Azure napříč zařízeními s Androidem a iOS v Unity s back-end služby a služby Azure Cosmos DB.
 author: ramonarguelles
 manager: vicenterivera
@@ -8,19 +8,16 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0e7011b9778221869940b137a2b87239f2d8db9b
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 17e9d19b755c1d3ac455d9fef8406e00de3a376d
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286393"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58628939"
 ---
-# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors-and-an-azure-cosmos-db-back-end"></a>Kurz: Sdílení mezi relacemi a zařízeními pomocí prostorových kotev vztahů Azure a Azure Cosmos DB back-endu
+# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Kurz: Sdílené složky Azure prostorových kotev vztahů mezi relacemi a zařízeními pomocí služby Azure Cosmos DB back-endu
 
-V tomto kurzu se naučíte používat [prostorových kotvy Azure](../overview.md) na:
-
-- Ukotvení vytvářet během jedné relace a najděte během jiná relace, na stejné zařízení nebo na jiný. Například může být druhý relace na jiný den.
-- Vytvoření kotev vztahů, které můžou být umístěné ve více zařízeních na stejném místě a ve stejnou dobu.
+V tomto kurzu se naučíte používat [prostorových kotvy Azure](../overview.md) ukotvení vytvářet během jedné relace a najděte během jiná relace, na stejné zařízení nebo na jiný. Například může být druhý relace na jiný den. Tyto stejné kotev vztahů může také umístěny ve více zařízeních na stejném místě a ve stejnou dobu.
 
 ![Trvalost ilustrující objektu ve formátu GIF](./media/persistence.gif)
 

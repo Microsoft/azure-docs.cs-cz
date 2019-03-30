@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8445ab2c8797226b08519e2f186350a31416f049
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ab98c3be75fb59603be66ee84e0d288de56cdc91
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578403"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648499"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Syntaxe výrazů OData pro filtry a klauzulemi klauzule order by ve službě Azure Search
 
@@ -84,9 +84,11 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
 - `search.in` Funkce testuje, jestli daný řetězec pole je rovna jednomu z daného seznamu hodnot. To lze také v některé nebo všechny porovnat jednu hodnotu pole řetězce kolekce s daný seznam hodnot. Rovnost mezi poli a každá hodnota v seznamu je určena stejným způsobem jako pro malá a velká písmena způsobem `eq` operátor. Proto výraz jako `search.in(myfield, 'a, b, c')` je ekvivalentní `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, s tím rozdílem, že `search.in` předá mnohem lepší výkon. 
 
-  První parametr `search.in` funkce je odkaz na pole řetězce (nebo proměnnou rozsahu přes kolekce pole řetězce v případě, kde `search.in` je použit uvnitř `any` nebo `all` výraz). Druhý parametr je řetězec obsahující seznam hodnot, oddělené mezerami nebo čárkami. Pokud je potřeba použít oddělovače kromě mezery a čárky, protože hodnoty obsahovat tyto znaky, můžete zadat volitelný třetí parametr pro `search.in`. 
-
-  Tento třetí parametr je řetězec, ve kterém každý znak řetězci, nebo podmnožina tento řetězec je považován za oddělovačem při analýze seznamu hodnot ve druhém parametru.
+   První parametr `search.in` funkce je odkaz na pole řetězce (nebo proměnnou rozsahu přes kolekce pole řetězce v případě, kde `search.in` je použit uvnitř `any` nebo `all` výraz). 
+  
+   Druhý parametr je řetězec obsahující seznam hodnot, oddělené mezerami nebo čárkami. 
+  
+   Třetí parametr je řetězec, ve kterém každý znak řetězci, nebo podmnožina tento řetězec je považován za oddělovačem při analýze seznamu hodnot ve druhém parametru. Pokud je potřeba použít oddělovače kromě mezery a čárky, protože hodnoty obsahovat tyto znaky, můžete zadat volitelný třetí parametr pro `search.in`. 
 
   > [!NOTE]   
   > Některé scénáře vyžadují porovnání pole pro velký počet konstantní hodnoty. Implementace oříznutí zabezpečení pomocí filtrů například může vyžadovat porovnání pole ID dokumentu na seznam ID, ke kterým je žádajícího uživatele udělit oprávnění ke čtení. Ve scénářích takto důrazně doporučujeme používat `search.in` funkci místo složitější disjunkce rovnosti výrazů. Například použít `search.in(Id, '123, 456, ...')` místo `Id eq 123 or Id eq 456 or ....`. 
@@ -207,7 +209,7 @@ $filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.
 $filter=description eq null
 ```
 
-Najdete všechny hotels s názvem rovno "Roach motel" nebo "Rozpočtu hotel"). Fráze obsahovat mezery, která je výchozím oddělovačem. Chcete-li určit potlačení oddělovače, uzavřete nový oddělovač v jednoduchých uvozovkách jako součást výrazu filtru:  
+Najdete všechny hotels s názvem rovno "Roach motel" nebo "Rozpočtu hotel"). Fráze obsahovat mezery, která je výchozím oddělovačem. Můžete specicfy alternativní oddělovač v jednoduchých uvozovkách jako třetí parametr řetězce:  
 
 ```
 $filter=search.in(name, 'Roach motel,Budget hotel', ',')
@@ -225,7 +227,7 @@ Nalezení hotelů všechny značky wifi nebo "fondu":
 $filter=tags/any(t: search.in(t, 'wifi, pool'))
 ```
 
-Najdete shodu na více značek, "vyhřívaný ručníků stojany" nebo "fén zahrnuté". Nezapomeňte zadat alternativní oddělovač po nefunkčním oddělovače místo výchozí. 
+Najdete shoda s frází v rámci kolekce, jako je například "vyhřívaný ručníků stojany" nebo "fén zahrnuté" značky. 
 
 ```
 $filter=tags/any(t: search.in(t, 'heated towel racks,hairdryer included', ','))

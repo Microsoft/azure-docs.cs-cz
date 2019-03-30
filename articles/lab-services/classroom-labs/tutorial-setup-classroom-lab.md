@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/07/2019
+ms.date: 03/29/2019
 ms.author: spelluru
-ms.openlocfilehash: 6816c21d30ff5340441d58aff202c271eb1c836a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 00c32d1aaace765a1b46d5b25e82bab6e937d2ed
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090317"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649702"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -32,7 +32,7 @@ V tomto kurzu provedete následující akce:
 > * Odeslání odkazu pro registraci studentům
 
 ## <a name="prerequisites"></a>Požadavky
-Nastavení testovacího prostředí v učebně v účtu testovacího prostředí, musíte mít členem jedné z těchto rolí v rámci účtu testovacího prostředí: Vlastník, Autor testovacího prostředí nebo Přispěvatel. Účet, který jste použili k vytvoření účtu testovacího prostředí je automaticky přidán do role vlastníka.
+Nastavení testovacího prostředí v učebně v účtu testovacího prostředí, musíte být členem jedné z těchto rolí v rámci účtu testovacího prostředí: Vlastník, Autor testovacího prostředí nebo Přispěvatel. Účet, který jste použili k vytvoření účtu testovacího prostředí je automaticky přidán do role vlastníka.
 
 Vlastník testovacího prostředí můžete přidat ostatním uživatelům **Autor testovacího prostředí** role. Vlastník testovacího prostředí, například přidá vysokoškolští do role Tvůrce prostředí. Potom vysokoškolští vytvářet testovací prostředí s virtuálními počítači pro své třídy. Studenti použijte odkaz na registraci, který obdrží z vysokoškolští k zaregistrování do testovacího prostředí. Jakmile jsou registrované, můžou použít virtuální počítače v Tato praktická cvičení udělat třídu práce a práce z domova. Podrobné pokyny pro přidání uživatele do role Tvůrce prostředí najdete v tématu [přidání uživatele do role Tvůrce prostředí](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
 
@@ -48,8 +48,8 @@ Vlastník testovacího prostředí můžete přidat ostatním uživatelům **Aut
 
         ![Vytvoření testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. Na stránce **Select virtual machine specifications** (Výběr specifikací virtuálních počítačů) proveďte následující kroky:
-    1. Vyberte **velikost** virtuálních počítačů vytvořených v testovacím prostředí. 
-    3. Vyberte **image virtuálního počítače**, která se má použít k vytvoření virtuálních počítačů v testovacím prostředí. 
+    1. Vyberte **velikost** virtuálních počítačů vytvořených v testovacím prostředí. V současné době **malé**, **střední**, **velké**, a **GPU** velikosti jsou povoleny.
+    3. Vyberte **image virtuálního počítače**, která se má použít k vytvoření virtuálních počítačů v testovacím prostředí. Pokud vyberete image Linuxu, zobrazí se možnost Povolit připojení ke vzdálené ploše pro něj. Podrobnosti najdete v tématu [povolit připojení ke vzdálené ploše pro Linux](how-to-enable-remote-desktop-linux.md).
     4. Vyberte **Další**.
 
         ![Zadání specifikací virtuálních počítačů](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
@@ -69,16 +69,16 @@ Vlastník testovacího prostředí můžete přidat ostatním uživatelům **Aut
 
     ![Stránka Configure template (Konfigurace šablony) po dokončení konfigurace](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Na **konfigurovat šablony** stránce, proveďte následující kroky: Tyto kroky jsou **volitelné** pro tento kurz.
-   1. Vyberte **Connect** (Připojit) a připojte se k virtuálnímu počítači šablony. 
-   1. Nainstalujte a nakonfigurujte na virtuálním počítači šablony požadovaný software.     
-   1. Zadejte **popis** šablony.
+    1. Vyberte **Connect** (Připojit) a připojte se k virtuálnímu počítači šablony. Pokud je šablona Linux virtuálního počítače, můžete vybrat, jestli se chcete připojit pomocí SSH nebo RDP (Pokud je povolen protokol RDP).
+    2. Nainstalujte a nakonfigurujte na virtuálním počítači šablony požadovaný software.     
+    3. Zadejte **popis** šablony.
 9. Na stránce šablony vyberte **Next** (Další). 
 10. Na stránce **Publish the template** (Publikování šablony) proveďte následující akce. 
-    1. Chcete-li publikovat šablony okamžitě a vyberte **publikovat**.  
+    1. Chcete-li publikovat šablony okamžitě, vyberte **publikovat**.  
 
         > [!WARNING]
         > Publikování nejde vrátit zpět. 
-    2. Pokud chcete publikování provést později, vyberte **Save for later** (Uložit na později). Virtuální počítač šablony můžete publikovat i po dokončení průvodce. Podrobnosti o postupu konfigurace a publikování po dokončení průvodce najdete v části [Publikování šablony](how-to-create-manage-template.md#publish-the-template-vm) v článku [Správa testovacích prostředí v učebnách](how-to-manage-classroom-labs.md).
+    2. Pokud chcete publikování provést později, vyberte **Save for later** (Uložit na později). Po dokončení průvodce můžete publikovat šablony virtuálního počítače. Podrobnosti o tom, jak konfigurace a publikování po dokončení průvodce najdete v tématu [publikovat šablony](how-to-create-manage-template.md#publish-the-template-vm) tématu [Správa testovacích prostředí v učebnách](how-to-manage-classroom-labs.md) článku.
 
         ![Publikování šablony](../media/tutorial-setup-classroom-lab/publish-template.png)
 11. Zobrazí se **průběh publikování** šablony. Tento proces může trvat až hodinu. 
@@ -89,10 +89,10 @@ Vlastník testovacího prostředí můžete přidat ostatním uživatelům **Aut
     ![Publikování šablony – úspěch](../media/tutorial-setup-classroom-lab/publish-success.png)
 1. Zobrazí se **řídicí panel** testovacího prostředí. 
     
-     ![Řídicí panel testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
+    ![Řídicí panel testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
 4. Přepněte **virtuálních počítačů** stránky tak, že vyberete virtuální počítače v nabídce vlevo nebo tak, že vyberete dlaždici virtuálních počítačů. Zkontrolujte, jestli se virtuální počítače, které jsou v **Nepřiřazeno** stavu. Tyto virtuální počítače ještě nejsou přiřazené ke studentům. Měly by být ve stavu **Stopped** (Zastaveno). Na této stránce můžete spustit studentský virtuální počítač, připojit se k němu, zastavit ho a odstranit ho. Virtuální počítače můžete spustit na této stránce nebo jejich spuštění můžete nechat na studentech. 
 
-     ![Virtuální počítače v zastaveném stavu](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
+    ![Virtuální počítače v zastaveném stavu](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
 ## <a name="add-users-to-the-lab"></a>Přidání uživatelů do testovacího prostředí
 
@@ -108,15 +108,20 @@ Vlastník testovacího prostředí můžete přidat ostatním uživatelům **Aut
     ![Seznam uživatelů](../media/how-to-configure-student-usage/users-list-new.png)
 
 
-## <a name="send-registration-link-to-students"></a>Odeslání odkazu pro registraci studentům
+## <a name="send-an-email-with-the-registration-link"></a>Odeslat e-mail s odkazem registraci
 
 1. Přepněte **uživatelé** zobrazit v případě, že již není na stránce. 
-2. Vyberte **odkazu registrace** na panelu nástrojů.
-1. V dialogovém okně **User registration** (Registrace uživatelů) vyberte tlačítko **Copy** (Kopírovat). Odkaz se zkopíruje do schránky.
+2. V seznamu vyberte konkrétní nebo všechny uživatele. Pokud chcete vybrat konkrétní uživatele, vyberte zaškrtávací políčka v prvním sloupci v seznamu. Chcete-li vybrat všechny uživatele, zaškrtněte políčko před název prvního sloupce (**název**) nebo vyberte všechna zaškrtávací políčka pro všechny uživatele v seznamu. Zobrazí se stav **pozvánku stavu** v tomto seznamu.  Na následujícím obrázku, stav pozvánku pro všechny studenty je nastavený na **neodeslaná Pozvánka**. 
 
-    ![Odkaz pro registraci](../media/tutorial-setup-classroom-lab/registration-link.png)
-1. V dialogovém okně **User registration** (Registrace uživatelů) vyberte **Close** (Zavřít). 
-2. Sdílejte odkaz pro registraci se studentem, aby se mohl zaregistrovat do třídy.
+    ![Vyberte studenty](../media/tutorial-setup-classroom-lab/select-students.png)
+1. Vyberte **ikony e-mailu (obálky)** v jednom z řádků (nebo) vyberte **poslat pozvánku** na panelu nástrojů. Můžete také ukazatele myši nad jméno studenta v seznamu se zobrazí ikona e-mailu. 
+
+    ![Poslat odkaz registraci e-mailem](../media/tutorial-setup-classroom-lab/send-email.png)
+4. Na **registraci odeslat odkaz e-mailem** stránce, postupujte podle těchto kroků: 
+    1. Typ **volitelnou zprávu** , který chcete odeslat pro studenty. E-mailu automaticky zahrnuje odkaz na registraci. 
+    2. Na **registraci odeslat odkaz e-mailem** stránce **odeslat**. Zobrazí stav změnit na pozvánku **posílá se Pozvánka** a potom do **Pozvánka se odeslala**. 
+        
+        ![Odeslání pozvánky](../media/tutorial-setup-classroom-lab/invitations-sent.png)
 
 ## <a name="next-steps"></a>Další postup
 V tomto kurzu jste vytvořili testovací prostředí v učebně a nakonfigurovali ho. Pokud chcete získat informace o tom, jak může student přistupovat k virtuálnímu počítači v testovacím prostředí pomocí odkazu pro registraci, přejděte na další kurz:

@@ -1,6 +1,6 @@
 ---
-title: Optimalizace prostředí SQL serveru pomocí služby Azure Log Analytics | Dokumentace Microsoftu
-description: S Azure Log Analytics vám pomůže řešení SQL Health Check posuzuje rizika a stav prostředí v pravidelných intervalech.
+title: Optimalizace prostředí SQL serveru prostřednictvím služby Azure Monitor | Dokumentace Microsoftu
+description: Díky nástroji Azure Monitor vám pomůže řešení SQL Health Check posuzuje rizika a stav prostředí v pravidelných intervalech.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 03/28/2019
 ms.author: magoedte
-ms.openlocfilehash: e8c06f0a3a33133c7b1595db52204d15b03d6aab
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 94b23bc29c3c986e6a0cd74e0805b5d47ce35849
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372467"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629125"
 ---
-# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimalizujete si prostředí SQL s řešením kontroly stavu SQL serveru ve službě Log Analytics
+# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimalizujete si prostředí SQL s řešením kontroly stavu SQL serveru ve službě Azure Monitor
 
 ![Kontrola stavu SQL symbol](./media/sql-assessment/sql-assessment-symbol.png)
 
@@ -40,24 +40,24 @@ Po přidání řešení a posouzení hotové, souhrnné informace pro konkrétn�
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Řešení SQL Health Check vyžaduje podporovanou verzi rozhraní .NET Framework 4 nainstalovaný na každém počítači, který má Microsoft Monitoring Agent (MMA) nainstalovaný.  MMA agent používá System Center 2016 – Operations Manager a Operations Manageru 2012 R2 a služby Log Analytics.  
+* Řešení SQL Health Check vyžaduje podporovanou verzi rozhraní .NET Framework 4 nainstalovaný na každém počítači, který má Microsoft Monitoring Agent (MMA) nainstalovaný.  MMA agent používá System Center 2016 – Operations Manager a Operations Manageru 2012 R2 a Azure Monitor.  
 * Řešení podporuje SQL Server verze 2012, 2014 a 2016.
 * Pracovní prostor Log Analytics můžete přidat řešení SQL Health Check z Azure marketplace na webu Azure Portal.  Pokud chcete řešení nainstalovat, musíte být správce nebo přispěvatele v předplatném Azure.
 
   > [!NOTE]
-  > Po přidání řešení, se přidá soubor AdvisorAssessment.exe na servery s agenty. Konfigurační data je čtení a pak posílají do služby Log Analytics v cloudu pro zpracování. Logika platí pro přijatá data a cloudové službě zaznamenává data.
+  > Po přidání řešení, se přidá soubor AdvisorAssessment.exe na servery s agenty. Konfigurační data je čtení a následně odesílána do Azure monitoru v cloudu pro zpracování. Logika platí pro přijatá data a cloudové službě zaznamenává data.
   >
   >
 
-Provádění kontroly stavu na serverech systému SQL Server, vyžadují agenta a připojení ke službě Log Analytics pomocí jedné z následujících podporovaných metod:
+Provádění kontroly stavu na serverech systému SQL Server, vyžadují agenta a připojení k Azure Monitor pomocí jedné z následujících podporovaných metod:
 
 1. Nainstalujte [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) Pokud server není již monitorovaná System Center 2016 – Operations Manager nebo Operations Manager 2012 R2.
-2. Pokud je monitorovat pomocí nástroje System Center 2016 – Operations Manager nebo Operations Manager 2012 R2 a skupině pro správu není integrovaná se službou Log Analytics, je možné serveru s více adresami pomocí Log Analytics pro shromažďování dat a předat službě a stále sledování Operations Managerem.  
+2. Pokud je monitorovat pomocí nástroje System Center 2016 – Operations Manager nebo Operations Manager 2012 R2 a skupině pro správu není integrovaná s Azure Monitor, je možné serveru s více adresami pomocí Log Analytics pro shromažďování dat a předat službě a i nadále sledování Operations Managerem.  
 3. Jinak, pokud vaší skupině pro správu Operations Manageru je integrovaná se službou, budete muset přidat řadiče domény pro shromažďování dat podle pokynů v části služby [přidat počítače spravované bez agenta](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po povolení řešení ve vašem pracovním prostoru.  
 
-Agent na serveru SQL Server, které sestavy pro skupinu pro správu nástroje Operations Manager shromažďuje data, předává do serveru pro správu přiřazené a pak se odešle přímo ze serveru pro správu služby Log Analytics.  Data není zapsána do databáze nástroje Operations Manager.  
+Agent na serveru SQL Server, které sestavy pro skupinu pro správu nástroje Operations Manager shromažďuje data, předává do serveru pro správu přiřazené a pak se odešle přímo ze serveru pro správu Azure Monitor.  Data není zapsána do databáze nástroje Operations Manager.  
 
-Pokud SQL Server je sledování Operations Managerem, budete muset nakonfigurovat Operations Manageru účet Spustit jako. Zobrazit [účty nástroje Operations Manager spustit jako pro Log Analytics](#operations-manager-run-as-accounts-for-log-analytics) níže pro další informace.
+Pokud SQL Server je sledování Operations Managerem, budete muset nakonfigurovat Operations Manageru účet Spustit jako. Zobrazit [účty nástroje Operations Manager spustit jako pro Azure Monitor](#operations-manager-run-as-accounts-for-log-analytics) níže pro další informace.
 
 ## <a name="sql-health-check-data-collection-details"></a>Kontrola stavu SQL podrobnosti kolekce dat
 Kontrola stavu SQL shromažďuje data z následujících zdrojů pomocí agenta, který jste povolili:
@@ -157,43 +157,37 @@ Ne nutně. Doporučení jsou založeny na znalosti a zkušenosti získané v Mic
 Každé doporučení obsahuje pokyny o tom, proč je důležité. Měli byste použít tento návod k vyhodnocení, jestli implementace doporučení je vhodné, vzhledem k povaze služeb IT a obchodní potřeby vaší organizace.
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Použití kontroly stavu doporučení oblasti zaměření
-Před použitím řešení pro posouzení ve službě Log Analytics, musíte mít nainstalované řešení.  Po instalaci, zobrazí se přehled doporučení pomocí kontroly stavu SQL dlaždice na stránce řešení na webu Azure Portal.
+Před použitím řešení pro posouzení ve službě Azure Monitor, musíte mít nainstalované řešení.  Po dokončení instalace, můžete zobrazit souhrn doporučení pomocí kontroly stavu SQL dlaždici na **přehled** stránky pro monitorování Azure na webu Azure Portal.
 
 Zobrazení posouzení souhrnné dodržování předpisů pro infrastrukturu a pak přejít k podrobnostem doporučení.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Zobrazit doporučení pro oblast zaměření a provedení nápravné akce
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
-2. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
-3. V podokně předplatná Log Analytics vyberte pracovní prostor a pak klikněte na tlačítko **přehled** dlaždici.  
+2. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Monitor**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Monitor**.
+3. V **Insights** části nabídky vyberte **Další**.  
 4. Na **přehled** stránky, klikněte na tlačítko **kontroly stavu SQL** dlaždici.
 5. Na **kontroly stavu** stránky, zkontrolujte souhrnné informace u některého okna oblasti zaměření a klikněte na z nich se má zobrazit doporučení pro tuto oblast zaměření.
 6. Na žádném z oblasti stránek fokus můžete zobrazit prioritizovaných doporučení pro vaše prostředí. Kliknutím na doporučení v části **vliv na objekty** zobrazíte podrobnosti o tom, proč je provedeny doporučení.<br><br> ![Obrázek kontroly stavu SQL doporučení](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
 7. Můžete provést opravné akce navržený v **doporučené akce**. Pokud položka byla určena, zaznamená novější posouzení, které doporučené akce byly provedeny a zvýší vaše skóre dodržování předpisů. Opravené položky se zobrazí jako **předaný objekty**.
 
 ## <a name="ignore-recommendations"></a>Ignorujte doporučení
-Pokud máte doporučení, která má být ignorována, můžete vytvořit textový soubor, který brání doporučení povolí, nebude vaše výsledky posouzení pomocí Log Analytics.
+Pokud máte doporučení, která má být ignorována, můžete vytvořit textový soubor, který zabránit doporučení povolí, nebude vaše výsledky posouzení bude používat Azure Monitor.
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>K identifikaci doporučení, která se bude ignorovat.
-1. Na portálu Azure na stránce pracovního prostoru Log Analytics pro váš vybraný pracovní prostor, klikněte na tlačítko **prohledávání protokolů** dlaždici.
+1. V nabídce Azure Monitor, klikněte na tlačítko **protokoly**.
 2. Následující dotaz tak, aby seznam doporučení, které se nepodařilo použijte pro počítače se ve vašem prostředí.
 
     ```
-    Type=SQLAssessmentRecommendation RecommendationResult=Failed | select Computer, RecommendationId, Recommendation | sort Computer
+    SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-
-    >[!NOTE]
-    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](../../azure-monitor/log-query/log-query-overview.md), pak se změní výše uvedeném dotazu následující.
-    >
-    > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
-
-    Zde je snímek z dotazu prohledávání protokolu:<br><br> ![doporučení se nezdařilo](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
+    Zde je snímek protokolu dotazu:<br><br> ![doporučení se nezdařilo](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
 
 3. Zvolte doporučení, která má být ignorována. V dalším postupu budete používat hodnoty pro ID doporučení.
 
 ### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Vytvoření a použití textového souboru IgnoreRecommendations.txt
 1. Vytvořte soubor s názvem IgnoreRecommendations.txt.
-2. Vložte nebo zadejte ID jednotlivých doporučení pro jednotlivá doporučení, který má Log Analytics ignorovat na samostatném řádku a potom uložte a zavřete soubor.
-3. Uložte soubor v následující složce na každém počítači místo, kam chcete Log Analytics pro ignorování doporučení.
+2. Vložte nebo zadejte ID jednotlivých doporučení pro jednotlivá doporučení, který má Azure Monitor ignorovat na samostatném řádku a potom uložte a zavřete soubor.
+3. Uložte soubor v následující složce na každém počítači místo, kam chcete ignorujte doporučení Azure Monitor.
    * Na počítačích s Microsoft Monitoring Agent (připojené přímo nebo prostřednictvím Operations managera) - *systemdrive % musí být*: \Program Files\Microsoft Monitoring Agent\Agent
    * Na serveru pro správu nástroje Operations Manager - *systemdrive % musí být*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
    * Na serveru pro správu Operations Manageru 2016 - *systemdrive % musí být*: \Program Files\Microsoft System Center 2016\Operations Manager\Server
@@ -203,14 +197,8 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
 2. Do seznamu ignorovaných doporučení můžete použít následující dotazy prohledávání protokolů.
 
     ```
-    Type=SQLAssessmentRecommendation RecommendationResult=Ignored | select Computer, RecommendationId, Recommendation | sort Computer
+    SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-
-    >[!NOTE]
-    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](../../azure-monitor/log-query/log-query-overview.md), pak se změní výše uvedeném dotazu následující.
-    >
-    > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
-
 3. Pokud se později rozhodnete, že chcete zobrazit ignorované doporučení, odeberte všechny soubory IgnoreRecommendations.txt nebo RecommendationIDs můžete odebrat z nich.
 
 ## <a name="sql-health-check-solution-faq"></a>Řešení SQL Health Check – nejčastější dotazy
@@ -263,4 +251,4 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
 * Ano, naleznete v tématu [ignorujte doporučení](#ignore-recommendations) výše uvedené části.
 
 ## <a name="next-steps"></a>Další postup
-* [Hledání protokolů](../../azure-monitor/log-query/log-query-overview.md) informace o analýze podrobných dat o kontrolu stavu SQL a doporučení.
+* [Protokolovat dotazy](../log-query/log-query-overview.md) informace o analýze podrobných dat o kontrolu stavu SQL a doporučení.

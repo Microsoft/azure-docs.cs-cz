@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 9c4576633f98d38da7086711c24def88591ab71f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 64b14f66e05c42581fcce6eb9879fa72d7f0d6f8
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869407"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652072"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Nastavení zotavení po havárii pro virtuální počítače Azure pomocí Azure Powershellu
 
@@ -163,7 +163,7 @@ Remove-Item -Path $Vaultsettingsfile.FilePath
 
 Objekt prostředků infrastruktury v trezoru představuje oblasti Azure. Vytvoření objektu primární fabric představující oblast Azure, do které patří virtuální počítače chráněné v trezoru. V příkladu v tomto článku je chráněný virtuální počítač v oblasti USA – východ.
 
-- Můžete vytvořit objekt pouze jednomu prostředku infrastruktury v jedné oblasti. 
+- Můžete vytvořit objekt pouze jednomu prostředku infrastruktury v jedné oblasti.
 - Pokud jste už dříve povolili replikace Site Recovery pro virtuální počítač na webu Azure Portal, Site Recovery automaticky vytvoří objekt prostředků infrastruktury. Pokud objekt fabric existuje pro oblasti, nebude možné vytvořit nový.
 
 
@@ -588,7 +588,22 @@ Tasks            : {Prerequisite check, Commit}
 Errors           : {}
 ```
 
+## <a name="reprotect-and-failback-to-source-region"></a>Operace opětovného zapnutí ochrany a navrácení služeb po obnovení do zdrojové oblasti
+
 Po selhání až budete připravení přejít zpět na původní oblast, spusťte reverzní replikaci pro chráněné položce replikace pomocí rutiny Update-AzureRmRecoveryServicesAsrProtectionDirection.
+
+```azurepowershell
+#Create Cache storage account for replication logs in the primary region
+$WestUSCacheStorageAccount = New-AzureRmStorageAccount -Name "a2acachestoragewestus" -ResourceGroupName "A2AdemoRG" -Location 'West US' -SkuName Standard_LRS -Kind Storage
+```
+
+```azurepowershell
+#Use the recovery protection container, new cache storage accountin West US and the source region VM resource group
+Update-AzureRmRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure
+-ProtectionContainerMapping $RecoveryProtContainer -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.Id
+```
+
+Po dokončení opětovného nastavování ochrany můžete spustit převzetí služeb při selhání v opačném směru (západní USA oblast východní USA) a navrácení služeb po obnovení do zdrojové oblasti.
 
 ## <a name="next-steps"></a>Další postup
 Zobrazení [Powershellu pro Azure Site Recovery odkaz](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery) se dozvíte, jak lze provádět další úlohy, jako je například vytváření plánů pro zotavení a testování převzetí služeb při selhání plánů obnovení pomocí prostředí PowerShell.

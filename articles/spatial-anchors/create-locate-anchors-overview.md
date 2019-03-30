@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a vyhledejte ukotvení pomocí prostorových kotvy Azure | Dokumentace Microsoftu
+title: Jak vytvořit a vyhledejte ukotvení pomocí prostorových kotvy Azure | Dokumentace Microsoftu
 description: Podrobnější vysvětlení toho, jak vytvořit a vyhledejte ukotvení pomocí Azure prostorových ukotvení.
 author: ramonarguelles
 manager: vicenterivera
@@ -8,36 +8,36 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e51298fff32bc93b730692ea5769b223b04e1787
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 780c3da24d20418919670f09aa064003e3d96b90
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752192"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629662"
 ---
-# <a name="create-and-locate-anchors-using-azure-spatial-anchors"></a>Vytvoření a vyhledejte ukotvení pomocí prostorových kotev vztahů Azure
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>Jak vytvořit a vyhledejte ukotvení pomocí prostorových kotev vztahů Azure
 
 Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými zařízeními.
 
-Má se vyladěných pro práci s vývojové prostředí podle vašeho výběru.
+Podporuje několik různých vývojových prostředích.
 
 ## <a name="next-steps"></a>Další postup
 Další informace, pokračujte výběrem vývojového prostředí:
 
 > [!div class="nextstepaction"]
-> [C#v Unity (pro HoloLens, iOS a Android)](concepts/create-locate-anchors-unity.md)
+> [C#v Unity (pro HoloLens, iOS a Android)](how-tos/create-locate-anchors-unity.md)
 
 > [!div class="nextstepaction"]
-> [Objective-C v iOS](concepts/create-locate-anchors-objc.md)
+> [Objective-C v iOS](how-tos/create-locate-anchors-objc.md)
 
 > [!div class="nextstepaction"]
-> [Kód SWIFT v Iosu](concepts/create-locate-anchors-swift.md)
+> [Kód SWIFT v Iosu](how-tos/create-locate-anchors-swift.md)
 
 > [!div class="nextstepaction"]
-> [Java v Androidu](concepts/create-locate-anchors-java.md)
+> [Java v Androidu](how-tos/create-locate-anchors-java.md)
 
 > [!div class="nextstepaction"]
-> [C + +/ NDK v Androidu](concepts/create-locate-anchors-cpp-ndk.md)
+> [C + +/ NDK v Androidu](how-tos/create-locate-anchors-cpp-ndk.md)
 
 > [!div class="nextstepaction"]
-> [C + +/ WinRT na HoloLens](concepts/create-locate-anchors-cpp-winrt.md)
+> [C + +/ WinRT na HoloLens](how-tos/create-locate-anchors-cpp-winrt.md)

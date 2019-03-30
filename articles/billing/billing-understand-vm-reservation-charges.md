@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: banders
-ms.openlocfilehash: e2ad086e767afc47fe72b52f934cb3bfc7cc146e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c8994041d525186dd55bb4f4475f7e68036454f6
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849801"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649825"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Vysvětlení použití slevy na rezervaci Azure pro virtuální počítače
 
@@ -61,15 +61,15 @@ Při nákupu rezervované Instance virtuálního počítače, pokud vyberete **o
 
 Další informace o rezervacích Azure, najdete v následujících článcích:
 
-- [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
+- [Co jsou rezervace pro Azure?](billing-save-compute-costs-reservations.md)
 - [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../sql-database/sql-database-reserved-capacity.md)
-- [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
+- [Správa rezervací pro Azure](billing-manage-reserved-vm-instance.md)
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Vysvětlení využití rezervace pro předplatná CSP](https://docs.microsoft.com/partner-center/azure-reservations)
 - [Náklady na software Windows, které nejsou součástí rezervace](billing-reserved-instance-windows-software-costs.md)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

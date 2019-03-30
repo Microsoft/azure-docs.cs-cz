@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2424dbf595743eacef16b7d11f208edc9cd09a41
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 592f2ef95935ce1d1f83db6c3327cab9c20015d3
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185447"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652558"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Postup: Zadejte nepovinných deklarací identity do aplikace Azure AD (Public Preview)
 
@@ -50,7 +50,7 @@ Jedním z cílů systému [koncového bodu Azure AD v2.0](active-directory-appmo
 
 ## <a name="standard-optional-claims-set"></a>Sada standardních nepovinných deklarací identity
 
-Sada nepovinných deklarací identity ve výchozím nastavení dostupné pro použití aplikacemi jsou uvedeny níže. Chcete-li přidat vlastní nepovinných deklarací identity pro vaši aplikaci, najdete v článku [rozšíření adresáře](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions)níže. Všimněte si, že při přidání deklarace identity **přístupový token**, tato změna se projeví na přístupové tokeny požadovaný *pro* aplikace (webového rozhraní API), ne ty *podle* aplikace. Tím se zajistí, že bez ohledu na to klientovi přístup k rozhraní API, jsou k dispozici v tokenu přístupu, které používají k ověřování na základě vašeho rozhraní API správná data.
+Sada nepovinných deklarací identity ve výchozím nastavení dostupné pro použití aplikacemi jsou uvedeny níže. Chcete-li přidat vlastní nepovinných deklarací identity pro vaši aplikaci, najdete v článku [rozšíření adresáře](active-directory-optional-claims.md#configuring-custom-claims-via-directory-extensions)níže. Všimněte si, že při přidání deklarace identity **přístupový token**, tato změna se projeví na přístupové tokeny požadovaný *pro* aplikace (webového rozhraní API), ne ty *podle* aplikace. Tím se zajistí, že bez ohledu na to klientovi přístup k rozhraní API, jsou k dispozici v tokenu přístupu, které používají k ověřování na základě vašeho rozhraní API správná data.
 
 > [!NOTE]
 > Většina těchto deklarací mohou být součástí tokeny Jwt pro v1.0 a v2.0 tokeny, ale ne tokeny SAML, s výjimkou uvedeno ve sloupci Typ tokenu. Kromě toho při nepovinných deklarací identity se podporují jenom pro uživatele AAD aktuálně, podpory pro MSA přidáte. Když MSA má nepovinných deklarací identity podporovat na koncový bod v2.0, bude uživatelský typ sloupce označení Pokud deklarace identity je k dispozici pro uživatele služby AAD nebo MSA. 

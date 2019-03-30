@@ -4,7 +4,7 @@ description: Popisuje příkazy Service Fabric CLI sfctl síť protokol balíče
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 81ddcc8c5685a839afabc1e82ecf4246cb813c21
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e7bc8491071946eaa2e322517e5d36d681a49130
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285092"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661067"
 ---
-# <a name="sfctl-mesh-code-package-log"></a>sfctl síť kódu balíčku log
+# <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
 Získáte protokoly pro kontejner balíček zadaný kód pro repliku dané služby.
 
 ## <a name="commands"></a>Příkazy

@@ -4,14 +4,18 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 563c2bd561328561d30acee6910b70d53ef64c6b
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 397a8a9b07b4d7a88d0345399ac4abcc3e738a82
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305278"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58631137"
 ---
 ## <a name="set-up-your-device"></a>Nastavení zařízení
+
+V Unity, otevřete projekt v `Unity` složky.
+
+![Okno Unity](./media/spatial-anchors-unity/unity-window.png)
 
 ### <a name="set-up-an-android-device"></a>Nastavení zařízení s Androidem
 
@@ -31,7 +35,9 @@ V **inspektoru** podokně, zadejte `Sharing Anchors Service url` (z webové apli
 
 Uložte výběrem scény **souboru** > **Uložit**.
 
-## <a name="to-deploy-the-app-to-an-android-device"></a>K nasazení aplikace na zařízení s Androidem
+## <a name="deploy-to-your-device"></a>Nasazení zařízení
+
+### <a name="deploy-to-android-device"></a>Nasazení do zařízení s Androidem
 
 Přihlaste se na zařízení s Androidem a připojte k počítači pomocí kabelu USB.
 
@@ -41,9 +47,9 @@ V části **scény v sestavení**, zaškrtněte políčko vedle položky `AzureS
 
 Ujistěte se, že **Export projektů** nemá značku zaškrtnutí. Vyberte **sestavíte a spustíte**. Budete vyzváni k uložení vaší `.apk` souboru. Můžete vybrat libovolný název.
 
-Postupujte podle pokynů v aplikaci. Můžete vybrat **vytvořit & sdílenou složku ukotvení** nebo **vyhledejte sdílené ukotvení**. První možnost vám umožňuje vytvářet anchor, který může být umístěn později na stejné zařízení nebo na jiný. Druhá možnost, pokud jste již spustili aplikaci, na stejné zařízení nebo na jiný, vám umožní vyhledejte dříve sdílené ukotvení.
+Postupujte podle pokynů v aplikaci. Můžete vybrat **vytvořit & sdílenou složku ukotvení** nebo **vyhledejte sdílené ukotvení**. První scénář umožňuje vytvářet anchor, který může být umístěn později na stejné zařízení nebo na jiný. Druhý scénář, pokud jste již spustili aplikaci, na stejné zařízení nebo na jiný, umožňuje najít dříve sdílené ukotvení. Jakmile vyberete váš scénář, aplikace vás provede s další pokyny kolem jak. Například budete vyzváni k pohyb zařízení ke shromažďování informací o prostředí. Později je budete umístit ukotvení na světě, bude Počkejte, dokud se odešle a tak dále.
 
-## <a name="to-deploy-the-app-to-an-ios-device"></a>K nasazení aplikace do zařízení s iOS
+### <a name="deploy-to-an-ios-device"></a>Nasazení do zařízení se systémem iOS
 
 Otevřít **nastavení sestavení** tak, že vyberete **souboru** > **nastavení sestavení**.
 
@@ -51,6 +57,6 @@ V části **scény v sestavení**, zaškrtněte políčko vedle položky `AzureS
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 
-Postupujte podle pokynů v aplikaci. Můžete vybrat **vytvořit & sdílenou složku ukotvení** nebo **vyhledejte sdílené ukotvení**. První možnost vám umožňuje vytvářet anchor, který může být umístěn později na stejné zařízení nebo na jiný. Druhá možnost, pokud jste již spustili aplikaci, na stejné zařízení nebo na jiný, vám umožní vyhledejte dříve sdílené ukotvení.
+Postupujte podle pokynů v aplikaci. Můžete vybrat **vytvořit & sdílenou složku ukotvení** nebo **vyhledejte sdílené ukotvení**. První scénář umožňuje vytvářet anchor, který může být umístěn později na stejné zařízení nebo na jiný. Druhý scénář, pokud jste již spustili aplikaci, na stejné zařízení nebo na jiný, umožňuje najít dříve sdílené ukotvení. Jakmile vyberete váš scénář, aplikace vás provede s další pokyny kolem jak. Například budete vyzváni k pohyb zařízení ke shromažďování informací o prostředí. Později je budete umístit ukotvení na světě, bude Počkejte, dokud se odešle a tak dále.
 
 V Xcode, zastavte aplikaci tak, že vyberete **Zastavit**.

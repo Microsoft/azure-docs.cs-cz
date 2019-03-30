@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
-ms.openlocfilehash: 0d2edee8f4df6a2328ec99cc4d570687c4342c8a
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 02a97852a8dc659071c3484126b921d6f7106562
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540988"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662366"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise serveru s Azure Files NetApp pro aplikace SAP
 
@@ -58,7 +58,7 @@ ms.locfileid: "58540988"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-Tento článek popisuje, jak nasadit virtuální počítače, konfigurace virtuálních počítačů, instalaci rozhraní clusteru a instalace s vysokou dostupností systému SAP NetWeaver 7.50, pomocí [souborů NetApp Azure](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-introduction/).
+Tento článek popisuje, jak nasadit virtuální počítače, konfigurace virtuálních počítačů, instalaci rozhraní clusteru a instalace s vysokou dostupností systému SAP NetWeaver 7.50, pomocí [NetApp soubory Azure (ve verzi Public Preview)](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-introduction/).
 V ukázkové konfigurace, příkazy pro instalaci atd., ASCS instance je číslo 00, číslo instance Lajících 01, instance primární aplikace (Pa adresy) je 02 a instanci aplikace (AAS) je 03. Se používá QAS ID systému SAP. 
 
 Tento článek vysvětluje, jak dosáhnout vysoké dostupnosti pro SAP NetWeaver aplikace s Azure NetApp Files. V tomto článku se podrobně databázové vrstvě.

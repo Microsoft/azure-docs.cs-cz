@@ -9,17 +9,14 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c0eedc32ee96c94b8b3621afc0ee211ed2ff19f5
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 05de1640fbee7799da0a14bba262ef9724686878
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314871"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650069"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Prozkoumání výstupu funkce Video Indexer vytvořené metodou rozhraní API v2
-
-> [!Note]
-> API Video Indexeru ve verzi 1 se přestalo používat 1. srpna 2018. Teď byste měli používat rozhraní API Video Indexeru ve verzi 2. <br/>Pokyny k vývoji pomocí rozhraní API Video Indexeru ve verzi 2 najdete [tady](https://api-portal.videoindexer.ai/). 
 
 Při volání **získat Index Video** rozhraní API a stav odpovědi je v pořádku, získejte podrobný výstup JSON jako obsah odpovědi. Obsah JSON obsahuje podrobné informace o zadané nové poznatky z videí. Informace zahrnují dimenzí, jako jsou: záznamy o studiu, ocrs, tváří, témat, bloky, atd. Dimenze mít instancí časových rozsahů, které ukazují jednotlivých rozměrů zobrazené ve videu.  
 
@@ -163,7 +160,7 @@ Přehledy jsou sadu dimenzí (například přepisu řádky, tváří, značky, a
 |popisky|[Popisky](#labels) dimenze.|
 |snímky|[Snímky](#shots) dimenze.|
 |značky|[Značky](#brands) dimenze.|
-|audioEffects|[AudioEffects](#audioEffects) dimenze.|
+|audioEffects|[AudioEffects](#audioeffects) dimenze.|
 |mínění|[Zabarvení](#sentiments) dimenze.|
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation) dimenze.|
 |textualContentModeration|[TextualContentModeration](#textualcontentmoderation) dimenze.|
@@ -550,7 +547,7 @@ Firmy a produktů názvy v převodu řeči na text přepisu a/nebo Video optick�
 |SpeakerLongestMonolog|Nejdelší monolog tohoto mluvčího. Pokud má mluvčího silences uvnitř protokolu monolog je zahrnuté. Na začátku a konci protokolu monolog nečinnosti se odstraní.| 
 |SpeakerTalkToListenRatio|Výpočet vychází čas strávený na mluvčího protokolu monolog (bez nečinnosti mezi) rozdělené podle celkové doby trvání videa. Čas se zaokrouhlí na třetí desetinné čárky.|
 
-#### <a name="audioeffects"></a>audioEffects
+#### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
 |Název|Popis|
 |---|---|

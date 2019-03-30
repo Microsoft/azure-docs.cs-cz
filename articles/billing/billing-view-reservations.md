@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2018
 ms.author: banders
-ms.openlocfilehash: a66547ed4bf089bb618dc8b98da7f260b6b5536a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf18d845b7128c8d6f740555f1a0f791767240ae
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904299"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650219"
 ---
-# <a name="view-reservations-for-azure-in-the-azure-portal"></a>Zobrazit rezervace pro Azure na webu Azure Portal
+# <a name="view-azure-reservations-in-the-azure-portal"></a>Zobrazení Azure rezervací na webu Azure Portal
 
-V závislosti na typu předplatného a oprávnění existuje několik způsobů, jak zobrazit rezervace pro prostředky Azure.
+V závislosti na typu předplatného a oprávnění existuje několik způsobů, jak zobrazit rezervace pro Azure.
 
 ## <a name="view-reservations-as-owner-or-reader"></a>Zobrazit rezervace jako vlastník nebo čtenáře
 
@@ -62,15 +62,26 @@ K získání dat pomocí rozhraní API, najdete v článku [poplatky za transakc
 
 Další informace o Azure rezervace, naleznete v následujících článcích:
 
-- [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
+- [Co jsou rezervace pro Azure?](billing-save-compute-costs-reservations.md)
+- [Správa rezervací pro Azure](billing-manage-reserved-vm-instance.md)
+
+Koupit plán služby:
+
 - [Předem služby Cosmos DB vyhrazené kapacity](../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../sql-database/sql-database-reserved-capacity.md)
 - [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
+
+Koupit plán softwaru:
+
+- [Předplatíte Red Hat softwarové plány z Azure rezervací](../virtual-machines/linux/prepay-rhel-software-charges.md)
+- [Předplacení plánů softwaru SUSE z rezervací Azure](../virtual-machines/linux/prepay-suse-software-charges.md)
+
+Vysvětlení využití:
+
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Vysvětlení využití rezervace pro předplatná CSP](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

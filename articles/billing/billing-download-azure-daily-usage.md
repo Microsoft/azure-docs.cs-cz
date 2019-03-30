@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 20404cea2aca984ef35472fa94d37c04eb8080e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 520d3f6a45b44ba2023dee34642f796689f48221
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57872634"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648842"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Zobrazovat a stahovat využití Azure a poplatky za
 
@@ -28,7 +28,7 @@ Pokud jste zákazník EA nebo máte [smlouvy zákazníka se společností Micros
 
 Pouze některé role mají oprávnění k získání informací o využití Azure, jako je účet správce nebo správce podnikové sítě. Další informace o získání přístupu k fakturačním údajům najdete v článku o [správě přístupu k fakturaci Azure pomocí rolí](billing-manage-access.md).
 
-Pokud máte [smlouvy zákazníka se společností Microsoft](#Check-your-access-to-a-Microsoft-Customer-Agreement), musí být fakturační profil vlastník, Přispěvatel, čtenář, nebo správce zobrazíte využití Azure a poplatky fakturovat. Další informace o rolích fakturace pro smlouvy Microsoft zákazníka najdete v tématu [fakturace profilu role a úlohy](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+Pokud máte [smlouvy zákazníka se společností Microsoft](#check-your-access-to-a-microsoft-customer-agreement), musí být fakturační profil vlastník, Přispěvatel, čtenář, nebo správce zobrazíte využití Azure a poplatky fakturovat. Další informace o rolích fakturace pro smlouvy Microsoft zákazníka najdete v tématu [fakturace profilu role a úlohy](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 ## <a name="download-usage-from-the-account-center-csv"></a>Stáhnout využití z centra účtů (CSV)
 

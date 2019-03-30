@@ -4,16 +4,16 @@ description: Naučte se používat zámky prostředků Azure plány jen pro čte
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/13/2018
+ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: e3a05329ea247dbf5baa23ae9b3d32f909c0d1bb
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: f39d59ef7ab3f555637aef69b301a0e77c00fc24
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57858398"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629217"
 ---
 # <a name="protect-new-resources-with-azure-blueprints-resource-locks"></a>Ochrana nové prostředky podle zámky prostředků Azure podrobné plány
 
@@ -40,7 +40,7 @@ Nejprve vytvořte novou definici podrobného plánu.
 
 1. Z **Začínáme** stránky na levé straně, vyberte **vytvořit** tlačítko _vytvořit podrobný plán_.
 
-1. Najít **prázdná ukázka** podrobného plánu ukázka v horní části stránky a vyberte **fungování této ukázky**.
+1. Najít **prázdný podrobný plán** podrobného plánu ukázka v horní části stránky a vyberte **začínat prázdný podrobný plán**.
 
 1. Zadejte _Základy_ vzorku podrobného plánu:
 
@@ -81,7 +81,7 @@ Nejprve vytvořte novou definici podrobného plánu.
        "resources": [{
            "type": "Microsoft.Storage/storageAccounts",
            "name": "[variables('storageAccountName')]",
-           "location": "[resourceGroups('RGtoLock').location]",
+           "location": "[resourceGroup().location]",
            "apiVersion": "2018-07-01",
            "sku": {
                "name": "[parameters('storageAccountType')]"
@@ -182,6 +182,8 @@ Přiřazení vytvořili skupinu prostředků _TestingBPLocks_ a účet úložiš
 
    Přiřazení podrobného plánu, který je vytvořen [zamítnout přiřazení](../../../role-based-access-control/deny-assignments.md) nasazený prostředek skupiny k vynucení _jen pro čtení_ režim zámku podrobného plánu. Někdo s příslušná oprávnění přiřazení odepřít brání na _přiřazení rolí_ kartu z konkrétní akci. Přiřazení odepřít ovlivňuje _všechny objekty zabezpečení_.
 
+   Informace o vyloučení objektu zabezpečení z přiřazení odepřít najdete v tématu [plány uzamčení prostředků](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment).
+
 1. Vyberte přiřazení Odepřít a potom **odepření oprávnění** na levé straně stránky.
 
    Přiřazení odepřít brání všechny operace s **\*** a **akce** konfigurace, ale umožňuje přístup pro čtení vyloučením  **\* /čtení**prostřednictvím **NotActions**.
@@ -223,7 +225,7 @@ Po dokončení tohoto kurzu, odstraňte následující prostředky:
 
 - Další informace o [životním cyklu podrobného plánu](../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../concepts/parameters.md)
-- Zjistěte, jak používat [zamykání prostředků podrobného plánu](../concepts/resource-locking.md)
+- Použití [zamykání prostředků podrobného plánu](../concepts/resource-locking.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](../concepts/sequencing-order.md)
 - Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)
 - Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)

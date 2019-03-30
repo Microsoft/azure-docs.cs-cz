@@ -4,7 +4,7 @@ description: Zjistěte, jak implementovat zálohování a obnovení ve vaší ap
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: amanbha
 ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/29/2018
 ms.author: vturecek
-ms.openlocfilehash: c16e3ed140284422f3b62669fed1f8fb4dd681f8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cb397141c86f40f02d8046838865106e0fb8992c
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57872235"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58659657"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>Reliable Actors implementovat zálohování a obnovení
 

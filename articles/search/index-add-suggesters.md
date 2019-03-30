@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: a629a022e332eae5c8a58e9ffc0f760f96bc24dd
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: a8bc86c2d3511fa04e595b8b2988d9a98bf084b2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577103"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650457"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Přidat moduly pro návrhy na index pro typeahead ve službě Azure Search
 
@@ -77,7 +77,7 @@ Po vytvoření modulu pro návrhy, přidejte [návrhy API](https://docs.microsof
 
 ### <a name="use-the-net-sdk"></a>Použití sady .NET SDK
 
-V C#, definovat [třídy modulu pro návrhy](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). Modulu pro návrhy je kolekce, která může mít pouze jednu položku. Nezapomeňte přidat `using System.Collections.Generic;` tak, že můžete vytvořit seznam objektů. 
+V C#, definovat [objektu modulu pro návrhy](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). `Suggesters` je kolekce, ale jde převzít jenom jednu položku. 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)

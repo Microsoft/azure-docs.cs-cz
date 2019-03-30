@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: c8b32e1d52768ea8450a2256d92d8cdb09f9fe8b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6339b49d0bc9c635457f305dad7b1a075327a1dd
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445632"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650270"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Použití PowerShellu k vytvoření virtuálního počítače Azure se serverem sestav v nativním režimu
 > [!IMPORTANT] 
@@ -130,7 +130,7 @@ Certifikát podepsaný svým držitelem byl vytvořen ve virtuálním počítač
    4. Vyberte **místního počítače** ke správě a potom klikněte na tlačítko **Dokončit**.
    5. Klikněte na tlačítko **Ok** a potom rozbalte **certifikáty – osobní** uzly a pak klikněte na tlačítko **certifikáty**. Certifikát má stejný název jako název DNS virtuálního počítače a končí **cloudapp.net**. Klikněte pravým tlačítkem na název certifikátu a klikněte na tlačítko **kopírování**.
    6. Rozbalte **důvěryhodných kořenových certifikačních autorit** uzel a potom klikněte pravým tlačítkem na **certifikáty** a potom klikněte na tlačítko **vložit**.
-   7. Pokud chcete ověřit, dvakrát klikněte na název certifikátu v části **důvěryhodných kořenových certifikačních autorit** a ověřte, zda zde nejsou žádné chyby a se zobrazí váš certifikát. Pokud chcete použít ke konfiguraci serveru sestav, hodnota certifikáty HTTPS skript dodaný s tímto tématem **kryptografický otisk** se vyžaduje jako parametr tohoto skriptu. **Chcete-li získat hodnotu kryptografického otisku**, proveďte následující kroky. Je taky ukázku prostředí PowerShell k načtení kryptografického otisku v části [použít skript ke konfiguraci serveru sestav a HTTPS](#use-script-to-configure-the-report-server-and-HTTPS).
+   7. Pokud chcete ověřit, dvakrát klikněte na název certifikátu v části **důvěryhodných kořenových certifikačních autorit** a ověřte, zda zde nejsou žádné chyby a se zobrazí váš certifikát. Pokud chcete použít ke konfiguraci serveru sestav, hodnota certifikáty HTTPS skript dodaný s tímto tématem **kryptografický otisk** se vyžaduje jako parametr tohoto skriptu. **Chcete-li získat hodnotu kryptografického otisku**, proveďte následující kroky. Je taky ukázku prostředí PowerShell k načtení kryptografického otisku v části [použít skript ke konfiguraci serveru sestav a HTTPS](#use-script-to-configure-the-report-server-and-https).
       
       1. Dvakrát klikněte na název certifikátu, třeba ssrsnativecloud.cloudapp.net.
       2. Klikněte na kartu **Podrobnosti** .

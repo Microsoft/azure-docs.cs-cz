@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9323db9faff162488f5f56c03ac976aa47bb6f97
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 14e9bd7b87f2941fcc075a6265f2e6c96fe646ea
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339487"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649902"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption pro virtuální počítače IaaS – nejčastější dotazy
 
@@ -125,7 +125,7 @@ Azure Disk Encryption nelze použít na vlastní image Linuxu. Jsou podporovány
 
 ## <a name="can-i-apply-updates-to-a-linux-red-hat-vm-that-uses-the-yum-update"></a>Můžete použít aktualizace pro Red Hat virtuálního počítače s Linuxem, který používá aktualizace yum
 
-Ano, můžete provést aktualizaci nebo opravu virtuálního počítače s Red Hat Linux. Další informace najdete v tématu [použití aktualizací na šifrovaných IaaS Red Hat virtuálního počítače Azure s využitím yumu aktualizace](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/13/applying-updates-to-a-encrypted-azure-iaas-red-hat-vm-using-yum-update/).
+Ano, můžete provést aktualizace yumu na virtuálním počítači s Red Hat Linux.  Další informace najdete v tématu [Linux správy balíčků za bránou firewall](azure-security-disk-encryption-tsg.md#linux-package-management-behind-a-firewall).
 
 ## <a name="what-is-the-recommended-azure-disk-encryption-workflow-for-linux"></a>Co je pracovní postup doporučené Azure disk encryption pro Linux?
 

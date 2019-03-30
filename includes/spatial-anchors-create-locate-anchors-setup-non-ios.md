@@ -1,13 +1,13 @@
 ---
-ms.openlocfilehash: 94483ceaa5dc0343042bbca8b7c3998310dd5018
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: defdb89f2a9cf3ec270b0f728f90ba07b83d707b
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57907650"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632112"
 ---
 ## <a name="set-up-the-session"></a>Nastavení relace
 
-Volání metody Start() povolit relaci ke zpracování dat prostředí.
+Vyvolání `Start()` povolit relaci ke zpracování dat prostředí.
 
 Chcete-li zpracovávají události vyvolané relaci, připojte obslužné rutiny události.

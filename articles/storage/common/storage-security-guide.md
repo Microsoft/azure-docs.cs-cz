@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e0c8d4883bb9183f866450477df972fc66c960c5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 329782a436924355dbdfbb5db260e88795394697
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369739"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650117"
 ---
 # <a name="azure-storage-security-guide"></a>Průvodci zabezpečením Azure Storage
 
@@ -46,7 +46,7 @@ Tady jsou témata popsaná v tomto článku:
 * Pomocí [Storage Analytics](#storage-analytics) auditovat přístup k Azure Storage
 
   Tato část popisuje, jak najít informace do úložiště analýzy protokolů pro požadavek. Vytvoříme podívejte se na skutečné storage analytics data protokolů a informace o tom, jak ověřit, zda se požadavek s klíč účtu úložiště pomocí sdíleného přístupového podpisu, nebo anonymně a určuje, zda bylo úspěšné nebo neúspěšné.
-* [Povolení založené na prohlížeči klientů pomocí CORS](#Cross-Origin-Resource-Sharing-CORS)
+* [Povolení založené na prohlížeči klientů pomocí CORS](#cross-origin-resource-sharing-cors)
 
   Tato část pojednává o povolení prostředků různého původu (CORS) pro sdílení obsahu. Budeme mluvit o přístupu napříč doménami a jak ji zpracovat pomocí možnosti CORS integrovaná do služby Azure Storage.
 

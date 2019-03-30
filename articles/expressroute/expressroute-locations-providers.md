@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2019
+ms.date: 03/28/2019
 ms.author: pareshmu
-ms.openlocfilehash: 7e79cd14bfe74fb75a12fb0c777fe18d52a921ff
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 8a137919bfd3cf330586c3a4d5c9df18916e41e6
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518571"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629791"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -74,7 +74,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Umístění** | **Vlastník umístění partnerského vztahu** | **Poskytovatelé služeb** |
 | --- | --- | --- |
 | **Amsterdam** | Equinix | Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Interxion, KPN, IX Reach, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
-| **Amsterdam2** | Interxion | Interxion |
+| **Amsterdam2** | Interxion | DE-CIX, Interxion |
 | **Atlanta** | Equinix | Equinix, Megaport |
 | **Busan** |LG CNS | LG CNS |
 | **Canberra** | CDC | CDC |
@@ -83,7 +83,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Čennaj** | Tata Communications | Global CloudXchange (GCX), SIFY, Tata Communications |
 | **Čennaj2** | Airtel | Airtel |
 | **Chicago** | Equinix | Aryaka Networks, AT&T NetBond, Cologix, Comcast, Coresite, Equinix, InterCloud, Internet2, Level 3 Communications, Megaport, PacketFabric, PCCW Global Limited, Sprint, Telia Carrier, Verizon, Zayo |
-| **Dallas** | Equinix | Aryaka Networks, AT&T NetBond, Cologix, Equinix, Internet2, Level 3 Communications, Megaport, Neutrona Networks, Telmex Uninet+, Telia Carrier, Verizon, Zayo|
+| **Dallas** | Equinix | Aryaka Networks, AT&T NetBond, Cologix, Equinix, Internet2, Level 3 Communications, Megaport, Neutrona Networks, Telmex Uninet, Telia Carrier, Verizon, Zayo|
 | **Denver** | CoreSite | CoreSite, Megaport, Zayo |
 | **Dublin** | Equinix | Colt, eir, Equinix, Interxion, Megaport |
 | **Hongkong** | Equinix | Aryaka Networks, British Telecom, China Telecom Global, Equinix, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Verizon |
@@ -130,7 +130,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Chicago** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
 | **Dallas** |Equinix, Megaport, Verizon |
 | **New York** |Equinix, CenturyLink Cloud Connect, Verizon |
-| **Phoenix** | CenturyLink Cloud Connect |
+| **Phoenix** | AT&T NetBond, CenturyLink Cloud Connect |
 | **San Antonio** | Megaport |
 | **Silicon Valley** | Equinix, Level 3 Communications, Verizon |
 | **Seattle** | Equinix, Megaport |

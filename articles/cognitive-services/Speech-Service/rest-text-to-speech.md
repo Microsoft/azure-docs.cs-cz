@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: e6913b1de0045f86667fdcea824ee4cc613c4bc3
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 71710cd940aad3a56dae6c19d4d52a5b141b3d80
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497665"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660961"
 ---
 # <a name="text-to-speech-rest-api"></a>Převod textu na řeč REST API
 
@@ -44,14 +44,25 @@ Před použitím tohoto rozhraní API, porozumět:
 
 | Oblast | Koncový bod |
 |--------|----------|
-| Západní USA | https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list  |
-| Západní USA 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA – východ | https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA – východ 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Austrálie – východ | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Brazílie – jih | https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Kanada – střed | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| USA – střed | https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
 | Východní Asie | https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Jihovýchodní Asie | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| USA – východ | https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Východní USA 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Francie – střed | https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Indie – střed | https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Japonsko – východ | https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Korea – střed | https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Středoseverní USA | https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
 | Severní Evropa | https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Středojižní USA | https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Jihovýchodní Asie | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Velká Británie – jih | https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
 | Západní Evropa | https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Západní USA | https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Západní USA 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 

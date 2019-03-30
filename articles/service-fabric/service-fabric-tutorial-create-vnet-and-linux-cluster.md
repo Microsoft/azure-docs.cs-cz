@@ -4,7 +4,7 @@ description: Naučte se nasadit cluster Service Fabric s Linuxem do existující
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/14/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 890f7c207b373781c55e4261a58505d849298d82
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 00d7e510fa43865f1427092f2f20b9847f1afa9b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499144"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661118"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Nasazení clusteru Service Fabric s Linuxem do virtuální sítě Azure
 

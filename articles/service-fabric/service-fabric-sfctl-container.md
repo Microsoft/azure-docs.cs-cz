@@ -4,7 +4,7 @@ description: Popisuje příkazy Service Fabric CLI sfctl kontejneru.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 455b2a70568566bff5b1ea4c185568a1758f7db3
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a5037c535737946a50d8af6fa60d0815120276d9
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274900"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663702"
 ---
 # <a name="sfctl-container"></a>sfctl container
 Spuštění kontejneru související s příkazy v uzlu clusteru.
@@ -28,7 +28,7 @@ Spuštění kontejneru související s příkazy v uzlu clusteru.
 
 |Příkaz|Popis|
 | --- | --- |
-| volání rozhraní api | Vyvolání kontejneru rozhraní API v kontejneru nasadit na uzlu Service Fabricu pro balíček daného kódu. |
+| invoke-api | Vyvolání kontejneru rozhraní API v kontejneru nasadit na uzlu Service Fabricu pro balíček daného kódu. |
 | Protokoly | Získá kontejner protokoly pro kontejner nasadit na uzlu Service Fabricu pro balíček daného kódu. |
 
 ## <a name="sfctl-container-invoke-api"></a>vyvolat kontejner sfctl-api
@@ -46,7 +46,7 @@ Vyvolání kontejneru rozhraní API v kontejneru nasadit na uzlu Service Fabricu
 | --service-manifest-name [povinné] | Název manifestu služby zapsaní v rámci typu aplikace v clusteru Service Fabric. |
 | --container-api-body | Datová část požadavku HTTP pro kontejner REST API. |
 | --container-api-content-type | Typ obsahu pro kontejner REST API, výchozí hodnota je "application/json". |
-| --container rozhraní api protokolu http příkaz | Příkaz HTTP pro kontejner REST API, výchozí hodnota je GET. |
+| --container-api-http-verb | Příkaz HTTP pro kontejner REST API, výchozí hodnota je GET. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty

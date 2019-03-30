@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: spelluru
-ms.openlocfilehash: eaa285318a868d0ccee07d830e1cc1be18f457a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 533770d98b146dea01e91e1249115c4b5c074b3c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181550"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648431"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Vytvoření virtuálních počítačů pomocí šablony Azure Resource Manageru 
 
@@ -30,7 +30,7 @@ Tento článek popisuje více virtuálních počítačů a šablon Resource Mana
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="multi-vm-vs-single-vm-resource-manager-templates"></a>Více virtuálních počítačů a šablon Resource Manageru jednoho virtuálního počítače
-Existují dva způsoby, jak vytvořit virtuální počítače ve službě DevTest Labs pomocí šablony Resource Manageru: zřízení prostředků Microsoft.DevTestLab/labs/virtualmachines nebo zřídit Microsoft.Commpute/virtualmachines prostředků. Každá se používá v různých scénářích a vyžaduje jiný oprávnění.
+Existují dva způsoby, jak vytvořit virtuální počítače ve službě DevTest Labs pomocí šablony Resource Manageru: zřízení prostředků Microsoft.DevTestLab/labs/virtualmachines nebo zřídit Microsoft.Compute/virtualmachines prostředků. Každá se používá v různých scénářích a vyžaduje jiný oprávnění.
 
 - Šablony Resource Manageru, které používají typ prostředku Microsoft.DevTestLab/labs/virtualmachines (jak je deklarovaný ve vlastnosti v šabloně "prostředků") můžete zřizovat virtuální počítače jednotlivých testovacího prostředí. Každý virtuální počítač se pak zobrazí jako jedna položka v seznamu virtuálních počítačů DevTest Labs:
 

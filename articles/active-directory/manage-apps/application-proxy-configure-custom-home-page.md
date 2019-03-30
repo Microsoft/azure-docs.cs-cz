@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8017049218bed5a1b1bd86b68dc4342b4044723
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f0880ad2ab02fad574f5204741b0fa03e4ef0338
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109776"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648059"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Nastavit vlastní domovskou stránku pro aplikace publikované pomocí Proxy aplikací Azure AD
 
@@ -69,9 +69,10 @@ Chcete-li nainstalovat balíček, postupujte takto:
 
 1. Otevřete standardní okno Powershellu a spusťte následující příkaz:
 
-    ```
+    ```powershell
      Install-Module -Name AzureAD
     ```
+
     Pokud příkaz spouštíte jako bez oprávnění správce, použijte `-scope currentuser` možnost.
 2. Během instalace, vybrat **Y** instalace dva balíčky z Nuget.org. Oba balíčky jsou povinné. 
 
@@ -81,20 +82,22 @@ Získání ID objektu aplikace a pak vyhledejte aplikaci podle jeho domovské st
 
 1. Ve stejném okně prostředí PowerShell naimportujte modul Azure AD.
 
-    ```
+    ```powershell
     Import-Module AzureAD
     ```
 
 2. Přihlaste se k modulu Azure AD jako správce tenanta.
 
-    ```
+    ```powershell
     Connect-AzureAD
     ```
+
 3. Najděte aplikaci, na základě jeho adresy URL domovské stránky. Adresa URL na portálu můžete najít tak, že přejdete do **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace**. Tento příklad používá *sharepoint iddemo*.
 
+    ```powershell
+    Get-AzureADApplication | Where-Object { $_.Homepage -like "sharepoint-iddemo" } | Format-List DisplayName, Homepage, ObjectID
     ```
-    Get-AzureADApplication | where { $_.Homepage -like "sharepoint-iddemo" } | fl DisplayName, Homepage, ObjectID
-    ```
+
 4. Měli byste získat výsledek, který je podobný znázorněno zde. Zkopírujte identifikátor GUID ObjectID pro použití v další části.
 
     ```
@@ -109,7 +112,7 @@ Vytvořit adresu URL domovské stránky a aktualizovat vaše aplikace s touto ho
 
 1. Zkontrolujte, jestli máte správné aplikaci a nahraďte *8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4* s ID objektu, který jste zkopírovali v předchozí části.
 
-    ```
+    ```powershell
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4.
     ```
 
@@ -117,23 +120,25 @@ Vytvořit adresu URL domovské stránky a aktualizovat vaše aplikace s touto ho
 
 2. Vytvořte objekt prázdná aplikace pro uložení změn, které chcete provést. Tato proměnná obsahuje hodnoty, které chcete aktualizovat. Nic je vytvořen v tomto kroku.
 
-    ```
+    ```powershell
     $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
     ```
 
 3. Adresa URL domovské stránky nastavena na hodnotu, která chcete. Hodnota musí být cesta subdoménu publikované aplikace. Například, pokud se změní adresa URL domovské stránky z `https://sharepoint-iddemo.msappproxy.net/` k `https://sharepoint-iddemo.msappproxy.net/hybrid/`, uživatelům aplikace přejít přímo na domovské stránce vlastní.
 
-    ```
+    ```powershell
     $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
     ```
+
 4. Provádění aktualizací pomocí identifikátoru GUID (ObjectID), který jste zkopírovali v "krok 1: Najít ID objektu aplikace."
 
-    ```
+    ```powershell
     Set-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4 -Homepage $homepage
     ```
+
 5. Pokud chcete potvrdit, že tato změna byla úspěšná, restartujte aplikaci.
 
-    ```
+    ```powershell
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
     ```
 

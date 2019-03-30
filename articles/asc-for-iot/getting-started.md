@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 1186b362cf8f59f24020ae9afa3526e2e27b1794
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 37815c1f1afe3e4c99e2fe171b21857a2018f709
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575211"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648312"
 ---
 # <a name="get-started-with-azure-security-center-asc-for-iot"></a>Začínáme s Azure Security Center (ASC) pro IoT 
 
@@ -53,7 +53,7 @@ Povolit monitorování zařízení správy identit, zařízení a cloud a cloud 
 
 1. [Povolení ASC pro službu IoT ve službě IoT Hub](quickstart-onboard-iot-hub.md)
 1. Pokud nemá žádná zaregistrovaná zařízení služby IoT Hub [zaregistrovat nová zařízení](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy).
-1. [Vytvoření modulu zabezpečení ascforiot](quickstart-create-security-twin.md) pro vaše zařízení. 
+1. [Vytvoření modulu azureiotsecurity zabezpečení pro svá zařízení](quickstart-create-security-twin.md) pro vaše zařízení. 
 1. Definování běžné chování zařízení a systému prostřednictvím [vlastní upozornění](quickstart-create-custom-alerts.md). 
 1. Proveďte systémové testování ověření stavu zařízení a služeb. 
 1. Prozkoumejte [výstrahy](concept-security-alerts.md), [doporučení](concept-recommendations.md), a [podrobné informace o použití Log Analytics](how-to-security-data-access.md) pomocí služby IoT Hub. 
@@ -69,8 +69,7 @@ Využijte ASC k IoT rozšířené možnosti zabezpečení, jako je například m
 1. Instalace agenta na Azure simulované zařízení se místo instalace na zařízení s skutečné [otočit nahoru nový Azure virtuální počítač (VM)](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) v zóně dostupná. 
 1. [Nasazení ASC pro agenta zabezpečení IoT](how-to-deploy-linux-cs.md) na zařízení IoT nebo nového virtuálního počítače.
 1. Postupujte podle pokynů pro [trigger_events](https://aka.ms/iot-security-github-trigger-events) ke spuštění simulace neškodné útoku.
-1. Ověřte ASC pro výstrahy IoT v reakci na simulované útoku v předchozím kroku. 
-    - Proces ověření pět minut po spuštění skriptu.
+1. Ověřte ASC pro výstrahy IoT v reakci na simulované útoku v předchozím kroku. Proces ověření pět minut po spuštění skriptu.
 1. Prozkoumejte [výstrahy](concept-security-alerts.md), [doporučení](concept-recommendations.md), a [podrobné informace o použití Log Analytics](how-to-security-data-access.md) pomocí služby IoT Hub. 
 
 ## <a name="next-steps"></a>Další postup

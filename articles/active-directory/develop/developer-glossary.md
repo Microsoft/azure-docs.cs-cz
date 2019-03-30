@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 245683ec6c3c2d25f362e035020e162af75e1627
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ec06b25954d25c27cd7606f2f47aa93ef6d54244
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169917"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650389"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Glosář pro vývojáře Azure Active Directory
 
@@ -204,7 +204,7 @@ Klienty Azure AD se během registrace, poskytují funkce Správa identit a pří
 
 ## <a name="token-endpoint"></a>koncový bod tokenu
 
-Jeden z koncových bodů implementované [autorizační server](#authorization-server) podpoře OAuth2 [udělení autorizace](#authorization-grant). V závislosti na oprávnění, můžete použít k získání [přístupový token](#access-token) (a související "obnovit" token) pro [klienta](#client-application), nebo [ID token](#ID-token) při použití s [OpenID Připojit] [ OpenIDConnect] protokolu.
+Jeden z koncových bodů implementované [autorizační server](#authorization-server) podpoře OAuth2 [udělení autorizace](#authorization-grant). V závislosti na oprávnění, můžete použít k získání [přístupový token](#access-token) (a související "obnovit" token) pro [klienta](#client-application), nebo [ID token](#id-token) při použití s [OpenID Připojit] [ OpenIDConnect] protokolu.
 
 ## <a name="user-agent-based-client"></a>Na základě uživatelského agenta klienta
 

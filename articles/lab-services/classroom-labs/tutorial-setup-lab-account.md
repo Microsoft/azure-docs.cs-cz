@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/07/2019
+ms.date: 03/29/2019
 ms.author: spelluru
-ms.openlocfilehash: ec1b75e7bd2defe96948e9830c25488ecd8289da
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 962b69a97b8116b82878a0a82960c9159091a9a7
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336350"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652616"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Kurz: Nastavení účtu testovacího prostředí pomocí Azure Lab Services
 Účet testovacího prostředí v Azure Lab Services slouží jako centrální účet, ve kterém se spravují testovací prostředí vaší organizace. V účtu testovacího prostředí můžete udělit oprávnění vytvářet testovací prostředí dalším uživatelům a nastavit zásady, které budou platit pro všechna testovací prostředí pod účtem testovacího prostředí. V tomto kurzu zjistíte, jak vytvořit účet testovacího prostředí jako správce testovacího prostředí. 

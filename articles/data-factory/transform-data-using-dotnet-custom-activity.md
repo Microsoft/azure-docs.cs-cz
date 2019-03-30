@@ -11,14 +11,15 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 849f944235cf1ab4408aeab336310028d6e754f4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1c02a30800e86c7b32524fb9cdba7dacf3bba9c7
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855865"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652089"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-use-custom-activities.md)
 > * [Aktuální verze](transform-data-using-dotnet-custom-activity.md)
@@ -39,6 +40,7 @@ Viz následující články, pokud jste ještě službu Azure Batch:
 * [Nové AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) rutina pro vytvoření fondu služby Azure Batch.
 
 ## <a name="azure-batch-linked-service"></a>Služba Azure Batch propojené
+
 Následující kód JSON určuje ukázku služby Azure Batch a propojený. Podrobnosti najdete v tématu [výpočetní prostředí podporovaných službou Azure Data Factory](compute-linked-services.md)
 
 ```json
@@ -114,7 +116,7 @@ Následující tabulka popisuje názvy a popisy vlastností, které jsou specifi
 &#42;Vlastnosti `resourceLinkedService` a `folderPath` buď musí být zadány oba, nebo obojí vynechat.
 
 > [!NOTE]
-> Pokud jako referenceObjects ve vlastní aktivitě předáváte propojené služby, je, že osvědčeným postupem zabezpečení služby Azure Key Vault předat povolená propojené služby, (protože neobsahuje žádné zabezpečené řetězce) a načítání přihlašovacích údajů pomocí název tajného kódu přímo z klíče Trezoru z kódu. Příklad můžete nalézt [tady](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) , že odkazy AKV povolené propojené služby, načte přihlašovací údaje ze služby Key Vault a pak přistupuje k úložišti v kódu.  
+> Pokud jako referenceObjects ve vlastní aktivitě předáváte propojené služby, je, že osvědčeným postupem zabezpečení služby Azure Key Vault předat povolená propojené služby, (protože neobsahuje žádné zabezpečené řetězce) a načítání přihlašovacích údajů pomocí název tajného kódu přímo z klíče Trezoru z kódu. Příklad můžete nalézt [tady](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) , že odkazy AKV povolené propojené služby, načte přihlašovací údaje ze služby Key Vault a pak přistupuje k úložišti v kódu.
 
 ## <a name="custom-activity-permissions"></a>Vlastní aktivita oprávnění
 
@@ -147,7 +149,6 @@ Můžete přímo spustit příkaz použití vlastní aktivity. V následujícím
 ## <a name="passing-objects-and-properties"></a>Předávání objektů a vlastností
 
 Tato ukázka předvádí, jak vám pomůže referenceObjects a extendedProperties předat objekty služby Data Factory a uživatelem definované vlastnosti vaší vlastní aplikace.
-
 
 ```json
 {
@@ -191,15 +192,15 @@ Tato ukázka předvádí, jak vám pomůže referenceObjects a extendedPropertie
 
 Při spuštění aktivity referenceObjects a extendedProperties jsou uloženy v následující soubory, které jsou nasazené do stejné složky provádění SampleApp.exe:
 
-- activity.json
+- `activity.json`
 
   Ukládá extendedProperties a vlastnosti vlastní aktivity.
 
-- linkedServices.json
+- `linkedServices.json`
 
   Úložiště pole propojené služby definované ve vlastnosti referenceObjects.
 
-- datasets.json
+- `datasets.json`
 
   Úložiště v vlastnost referenceObjects definovaný pole datové sady.
 
@@ -232,12 +233,13 @@ namespace SampleApp
 
 Můžete začít spuštění kanálu pomocí následujícího příkazu Powershellu:
 
-```.powershell
+```powershell
 $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
 ```
+
 Při spuštění kanálu můžete zkontrolovat výstupu spuštění pomocí následujících příkazů:
 
-```.powershell
+```powershell
 while ($True) {
     $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
@@ -265,7 +267,7 @@ $result.Error -join "`r`n"
 
 **Stdout** a **stderr** vaší vlastní aplikace, které jsou uloženy do **adfjobs** kontejneru v propojená služba Azure Storage, můžete definovat při vytváření propojených Azure Batch Služba s identifikátorem GUID úlohy. Z výstupu spuštění aktivit můžete získat podrobné cestu, jak je znázorněno v následujícím fragmentu kódu:
 
-```shell
+```
 Pipeline ' MyCustomActivity' run finished. Result:
 
 ResourceGroupName : resourcegroupname
@@ -295,11 +297,12 @@ Activity Error section:
 "failureType": ""
 "target": "MyCustomActivity"
 ```
+
 Pokud chcete využívat obsah stdout.txt v podřízené aktivity, můžete získat cestu k souboru stdout.txt ve výrazu "\@activity('MyCustomActivity').output.outputs [0]".
 
-  > [!IMPORTANT]
-  > - Activity.json, linkedServices.json a datasets.json jsou uloženy ve složce modulu runtime úlohy služby Batch. V tomto příkladu activity.json, linkedServices.json a datasets.json jsou uloženy v "https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/" cesta. V případě potřeby, musíte ho PROČISTIT samostatně.
-  > - Pro propojené služby, která používá modul Integration Runtime citlivé informace, jako jsou klíče nebo hesla je jím zašifrovaná modul Integration Runtime k zajištění přihlašovacích údajů zůstávají v zákazník definovaný privátním síťovém prostředí. Při odkazu kód vlastní aplikace tímto způsobem, může být některá citlivá pole chybí. V extendedProperties namísto používání odkaz na propojenou službu, v případě potřeby použijte SecureString.
+> [!IMPORTANT]
+> - Activity.json, linkedServices.json a datasets.json jsou uloženy ve složce modulu runtime úlohy služby Batch. V tomto příkladu activity.json, linkedServices.json a datasets.json jsou uloženy v "https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/" cesta. V případě potřeby, musíte ho PROČISTIT samostatně.
+> - Pro propojené služby, která používá modul Integration Runtime citlivé informace, jako jsou klíče nebo hesla je jím zašifrovaná modul Integration Runtime k zajištění přihlašovacích údajů zůstávají v zákazník definovaný privátním síťovém prostředí. Při odkazu kód vlastní aplikace tímto způsobem, může být některá citlivá pole chybí. V extendedProperties namísto používání odkaz na propojenou službu, v případě potřeby použijte SecureString.
 
 ## <a name="pass-outputs-to-another-activity"></a>Předejte výstup do jiné
 
@@ -311,10 +314,10 @@ Určený jako typ hodnoty vlastností důvěrné *SecureString*, jak je znázorn
 
 ```json
 "extendedProperties": {
-    "connectionString": {
-        "type": "SecureString",
-        "value": "aSampleSecureString"
-    }
+  "connectionString": {
+    "type": "SecureString",
+    "value": "aSampleSecureString"
+  }
 }
 ```
 
@@ -334,7 +337,6 @@ Změny zavedené v Data Factory V2 vlastní aktivitu můžete napsat kód vlastn
 
 Následující tabulka popisuje rozdíly mezi Data Factory V2 vlastní aktivity a Data Factory verze 1 (vlastní) aktivity DotNet:
 
-
 |Rozdíly      | Vlastní aktivity      | verze 1 (vlastní) aktivity DotNet      |
 | ---- | ---- | ---- |
 |Jak je definován vlastní logiku      |Tím, že poskytuje spustitelný soubor      |Implementací knihovny DLL .NET      |
@@ -344,7 +346,6 @@ Následující tabulka popisuje rozdíly mezi Data Factory V2 vlastní aktivity 
 |Předávání informací z aktivity do vlastní logiku      |Prostřednictvím ReferenceObjects (LinkedServices a datové sady) a ExtendedProperties (Vlastnosti)      |Prostřednictvím ExtendedProperties (Vlastnosti), vstupní a výstupní datové sady      |
 |Načtení informací vlastní logiku      |Analyzuje activity.json linkedServices.json a datasets.json uloženy ve stejné složce spustitelného souboru      |Pomocí sady .NET SDK (rámce .NET 4.5.2)      |
 |Protokolování      |Zapisuje přímo do STDOUT      |Implementace protokolovací nástroj v knihovně DLL .NET      |
-
 
 Pokud máte stávající kód technologie .NET, které jsou vytvořené pro verze 1 aktivity DotNet (vlastní), budete muset upravit kód pro práci s aktuální verzí pro vlastní aktivity. Aktualizujte svůj kód pomocí následujících tyto podrobné pokyny:
 
@@ -358,6 +359,7 @@ Pokud máte stávající kód technologie .NET, které jsou vytvořené pro verz
 Úplnou ukázku začátku do konce vzorku knihovny DLL a kanál popisu v Data Factory verze 1 článku [použití vlastních aktivit v kanálu Azure Data Factory](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) může být přepsán ve formátu Data Factory vlastní aktivity najdete v tématu [ Ukázková data Factory pro vlastní aktivity](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample).
 
 ## <a name="auto-scaling-of-azure-batch"></a>Automatické škálování služby Azure Batch
+
 Můžete také vytvořit fond služby Azure Batch s **automatického škálování** funkce. Můžete například vytvořit fond služby azure batch s 0 vyhrazených virtuálních počítačích a se vzorec automatického škálování na základě počtu úkolů čekajících na vyřízení.
 
 Ukázkové vzorce zde dosáhne následující chování: Při počátečním vytvoření fondu začíná 1 virtuální počítač. Metrika $PendingTasks definuje počet úloh ve spuštění + aktivní (ve frontě) stavu. Vzorec najde průměrný počet čekající úlohy za posledních 180 sekund a nastaví TargetDedicated odpovídajícím způsobem. Zajišťuje, že TargetDedicated nikdy nedostane mimo 25 virtuálních počítačů. Tak jako jsou odeslány nové úkoly, fondu automaticky rozšíří a jako dokončení úkolů, budou virtuální počítače zdarma jednu po druhé a automatickým Škálováním zmenšuje těchto virtuálních počítačů. startingNumberOfVMs a maxNumberofVMs lze upravit podle vašich potřeb.

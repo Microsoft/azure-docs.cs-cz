@@ -10,19 +10,19 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: 8f24bab531143cad1974663eb71b173a20b6f51a
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 575b6384d910abac1c0a1184aef4aa72f686538c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287175"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648569"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade služby data warehouse na Gen2
 
 Microsoft pomáhá snížit základní náklady na provozování datového skladu.  Nižší výpočetní úrovně schopná zpracovat vyhovovat i vašim náročným dotazů jsou teď dostupné pro Azure SQL Data Warehouse. Přečtěte si celé oznámení [nižší výpočetní vrstva podpory pro Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Nová nabídka je dostupná v oblastech, které jste si poznamenali v následující tabulce. Pro oblasti jsou podporované je možné upgradovat na Gen2 stávajících datových skladů Gen1 prostřednictvím:
 
 - **Automatický proces upgradu:** Automatické upgrady nezačínají poté, co je služba dostupná v oblasti.  Při spuštění automatických upgradů v konkrétní oblasti, jednotlivé upgradu datového skladu bude probíhat během svůj plán údržby vybraných.
-- [**Samoobslužné upgradujte na Gen2:**](#Self-upgrade-to-Gen2) Můžete řídit, kdy upgradovat tímto způsobem svým upgradovat na Gen2. Pokud vaše oblast ještě není podporovaná, můžete obnovit z bodu obnovení, který je přímo na Gen2 instanci v podporované oblasti.
+- [**Samoobslužné upgradujte na Gen2:**](#self-upgrade-to-gen2) Můžete řídit, kdy upgradovat tímto způsobem svým upgradovat na Gen2. Pokud vaše oblast ještě není podporovaná, můžete obnovit z bodu obnovení, který je přímo na Gen2 instanci v podporované oblasti.
 
 ## <a name="automated-schedule-and-region-availability-table"></a>Plán automatizovaných a tabulka dostupnosti oblast
 

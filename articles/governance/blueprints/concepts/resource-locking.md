@@ -4,17 +4,17 @@ description: Další informace o možnosti uzamčení k ochraně prostředků p�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 03/28/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 799e496fd9dd8a405e5fc356e13cf6c05883e1ae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 16ec3428138361726d69eb9b45943b20129e32ed
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855399"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630723"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení resource zamykání v Azure plány
 
@@ -55,6 +55,51 @@ RBAC [zamítnout přiřazení](../../../role-based-access-control/deny-assignmen
 
 > [!IMPORTANT]
 > Azure Resource Manager ukládá do mezipaměti podrobnosti o přiřazení role po dobu až 30 minut. V důsledku toho odeprete přiřazení Odepřít akce u prostředků podrobného plánu nemusí být hned v plný vliv. Během tohoto časového období je možné odstranit prostředek má být chráněn zámky podrobného plánu.
+
+## <a name="exclude-a-principal-from-a-deny-assignment"></a>Vyloučení objektu zabezpečení z přiřazení Odepřít
+
+V některých scénářích návrh nebo zabezpečení, může být potřeba vyloučit z objektu zabezpečení [zamítnout přiřazení](../../../role-based-access-control/deny-assignments.md) vytvoří přiřazení podrobného plánu. To se provádí v rozhraní REST API tak, že přidáte až o pěti hodnot **excludedPrincipals** obsahuje pole **zámky** vlastnost při [vytváření přiřazení](/rest/api/blueprints/assignments/createorupdate).
+Toto je příklad, který obsahuje tělo požadavku **excludedPrincipals**:
+
+```json
+{
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "location": "eastus",
+  "properties": {
+    "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
+    "blueprintId": "/providers/Microsoft.Management/managementGroups/{mgId}/providers/Microsoft.Blueprint/blueprints/simpleBlueprint",
+    "locks": {
+        "mode": "AllResourcesDoNotDelete",
+        "excludedPrincipals": [
+            "7be2f100-3af5-4c15-bcb7-27ee43784a1f",
+            "38833b56-194d-420b-90ce-cff578296714"
+        ]
+    },
+    "parameters": {
+      "storageAccountType": {
+        "value": "Standard_LRS"
+      },
+      "costCenter": {
+        "value": "Contoso/Online/Shopping/Production"
+      },
+      "owners": {
+        "value": [
+          "johnDoe@contoso.com",
+          "johnsteam@contoso.com"
+        ]
+      }
+    },
+    "resourceGroups": {
+      "storageRG": {
+        "name": "defaultRG",
+        "location": "eastus"
+      }
+    }
+  }
+}
+```
 
 ## <a name="next-steps"></a>Další postup
 

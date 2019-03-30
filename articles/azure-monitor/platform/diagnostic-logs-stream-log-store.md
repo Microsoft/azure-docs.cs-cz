@@ -1,6 +1,6 @@
 ---
-title: Stream diagnostické protokoly Azure do Log Analytics
-description: Naučíte se Streamovat diagnostické protokoly Azure do pracovního prostoru Log Analytics.
+title: Diagnostické protokoly Azure Stream do pracovního prostoru Log Analytics ve službě Azure Monitor
+description: Naučíte se Streamovat diagnostické protokoly Azure do pracovního prostoru Log Analytics ve službě Azure Monitor.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,27 +8,26 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: bd760fca20a602127e7d33913547dcb2c6bc95f6
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 33d8f2e7c65a786d1ecb389574fe186efb6fb705
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351542"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630792"
 ---
-# <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Stream diagnostické protokoly Azure do Log Analytics
+# <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Diagnostické protokoly Azure Stream do pracovního prostoru Log Analytics ve službě Azure Monitor
 
-**[Diagnostické protokoly Azure](diagnostic-logs-overview.md)**  můžete streamování v reálném čase do služby Azure Log Analytics pomocí portálu, rutin prostředí PowerShell nebo rozhraní příkazového řádku Azure.
+**[Diagnostické protokoly Azure](diagnostic-logs-overview.md)**  můžete streamování v reálném čase k pracovnímu prostoru Log Analytics ve službě Azure Monitor pomocí portálu, rutin prostředí PowerShell nebo rozhraní příkazového řádku Azure.
 
-## <a name="what-you-can-do-with-diagnostics-logs-in-log-analytics"></a>Co můžete dělat s diagnostikou protokolů v Log Analytics
+## <a name="what-you-can-do-with-diagnostics-logs-in-a-log-analytics-workspace"></a>Co můžete dělat s diagnostické protokoly v pracovním prostoru Log Analytics
 
-Azure Log Analytics je flexibilní protokolu vyhledávání a analýzy nástroj, který umožňuje získat přehled o Nezpracovaný protokol data vygenerovaná prostředky Azure. Některé funkce patří:
+Azure Monitor nabízí flexibilní protokol dotazování a analýzy nástroj, který umožňuje získat přehled o Nezpracovaný protokol data vygenerovaná prostředky Azure. Některé funkce patří:
 
-* **Prohledávání protokolů** – zápis upřesňujících dotazů nad vašimi daty protokolů, korelovat protokoly z různých zdrojů a dokonce i generovat grafy, které je možné připnout na řídicí panel Azure.
-* **Výstrahy** -rozpoznat, kdy se jeden nebo více událostí odpovídají konkrétním dotazu a informováni pomocí e-mailu nebo webhooku volání.
-* **Řešení** – použijte předem sestavené zobrazení a řídicí panely, které vám poskytnou okamžitý přehled o datech log.
+* **Dotaz protokolu** – zápis upřesňující dotazy přes data protokolu, korelovat protokoly z různých zdrojů a generovat grafy, které je možné připnout na řídicí panel Azure.
+* **Výstrahy** -rozpoznat, kdy se jeden nebo více událostí odpovídají konkrétním dotazu a informováni pomocí volání rozhraní e-mailu nebo webhooku pomocí Azure Monitor výstrah.
 * **Pokročilé analýzy** – použití strojového učení a vzor odpovídající algoritmy s cílem identifikovat možné problémy zjištěné při vaše protokoly.
 
-## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics"></a>Povolení streamování diagnostických protokolů do Log Analytics
+## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics-workspace"></a>Povolení streamování diagnostických protokolů do pracovního prostoru Log Analytics
 
 Streamování diagnostických protokolů prostřednictvím kódu programu, prostřednictvím portálu, nebo pomocí můžete povolit [REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings). V obou případech můžete vytvořit nastavení diagnostiky v které zadáte, pracovnímu prostoru Log Analytics a kategorie protokolů a metrik, které chcete odeslat daném pracovním prostoru. Diagnostika **kategorie protokolu** je typ protokolu, který může poskytnout zdroje.
 
@@ -42,9 +41,8 @@ Pracovní prostor Log Analytics, nemusí být ve stejném předplatném jako pro
 >
 
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>Diagnostické protokoly Stream pomocí portálu
-1. Na portálu přejděte do Azure monitoru a klikněte na **nastavení diagnostiky**
+1. Na portálu přejděte do Azure monitoru a klikněte na **nastavení diagnostiky** v **nastavení** nabídky.
 
-    ![Monitorování bodu služby Azure Monitor](media/diagnostic-logs-stream-log-store/diagnostic-settings-blade.png)
 
 2. Volitelně můžete filtrovat seznam podle skupiny prostředků nebo prostředek typu a potom klikněte na prostředek, pro kterou chcete nastavit nastavení diagnostiky.
 
@@ -97,9 +95,9 @@ Můžete přidat další kategorie pro protokol diagnostiky tak, že přidáte s
 
 `--resource-group` Argument je pouze požadováno pokud `--workspace` není ID objektu.
 
-## <a name="how-do-i-query-the-data-in-log-analytics"></a>Jak dotaz na data v Log Analytics?
+## <a name="how-do-i-query-the-data-from-a-log-analytics-workspace"></a>Jak mám dotazovat data z pracovního prostoru Log Analytics?
 
-V okně hledání v protokolu na portálu nebo Advanced Analytics prostředí jako součást Log Analytics se můžete dotazovat diagnostické protokoly jako součást řešení Správa protokolů ve složce AzureDiagnostics tabulky. Existují také [několik řešení pro prostředky Azure](../../azure-monitor/insights/solutions.md) instalací získat okamžitý přehled o data protokolu odesílají do Log Analytics.
+V okně protokoly na portálu Azure Monitor můžete dotazovat diagnostické protokoly jako součást řešení Správa protokolů ve složce AzureDiagnostics tabulky. Existují také [několik řešení monitorování pro prostředky Azure](../../azure-monitor/insights/solutions.md) instalací získat okamžitý přehled o data protokolu odesílají do služby Azure Monitor.
 
 ### <a name="known-limitation-column-limit-in-azurediagnostics"></a>Známá omezení: omezení počtu sloupců v AzureDiagnostics
 Protože mnoho prostředků odeslat datové typy se odesílají do stejné tabulky (_AzureDiagnostics_), schéma v této tabulce je velmi sadu schémat všech různých datových typů shromažďují. Například pokud jste vytvořili nastavení diagnostiky pro kolekci následující typy dat, všechny odesílají do stejného pracovního prostoru:

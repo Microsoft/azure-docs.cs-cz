@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2c29d9860f1c8fc4f0f6d9f4d84c06e8ade8dee5
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 56b164d9612fd1bef8caf9ae0de679f65595bc39
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286971"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629487"
 ---
 # <a name="quickstart-create-a-hololens-unity-app-that-uses-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace HoloLens Unity, která používá Azure prostorových kotvy
 
@@ -35,7 +35,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 
 - Potřebujete počítač Windows, na kterém <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> nebo novější a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> nebo později jsou nainstalovány. Musí zahrnovat instalaci sady Visual Studio **vývoj pro univerzální platformu Windows** pracovního vytížení. Je také zapotřebí nainstalovat <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a>.
-- Je třeba HoloLens zařízení, na kterém [vývojářský režim](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) povolena. [Windows 10. října 2018 Update](https://docs.microsoft.com/en-us/windows/mixed-reality/release-notes-october-2018) (označované také jako RS5) musí být nainstalován na zařízení. Chcete-li aktualizovat na nejnovější verzi na HoloLens, otevřete **nastavení** aplikaci, přejděte na **aktualizace a zabezpečení**a pak vyberte **vyhledávat aktualizace**.
+- Je třeba HoloLens zařízení, na kterém [vývojářský režim](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) povolena. [Windows 10. října 2018 Update](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (označované také jako RS5) musí být nainstalován na zařízení. Chcete-li aktualizovat na nejnovější verzi na HoloLens, otevřete **nastavení** aplikaci, přejděte na **aktualizace a zabezpečení**a pak vyberte **vyhledávat aktualizace**.
 - V aplikaci, je potřeba povolit **SpatialPerception** funkce. Toto nastavení je v **nastavení sestavení** > **nastavení přehrávače** > **nastavení publikování**  >   **Možnosti**.
 - V aplikaci, je potřeba povolit **podporované virtuální realitu** s **Windows SDK smíšené Reality**. Toto nastavení je v **nastavení sestavení** > **nastavení přehrávače** > **XR nastavení**.
 

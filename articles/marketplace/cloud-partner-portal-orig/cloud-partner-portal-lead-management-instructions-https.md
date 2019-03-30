@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 905ce1eca9996140da5f9d33aa7f9749a4ef7034
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cfcd154b2f44c9e8acf12a9666abc9ce95fb3c26
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894117"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648346"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurace správy potenciálních zákazníků pomocí koncového bodu HTTPS
 
@@ -48,8 +48,8 @@ Koncový bod HTTPS můžete použít ke zpracování Azure Marketplace a AppSour
 
 7. Použijte jednu z následujících kroků konfigurace **požádat o schéma JSON hlavní části**:
 
-   - Kopírovat [schématu JSON](#JSON-schema) na konci tohoto článku do **požádat o schéma JSON hlavní části** textového pole.
-   - Vyberte **K vygenerování schématu použijte ukázkovou datovou část**. V **zadejte nebo vložte ukázkovou datovou část JSON** textového pole, vložte [příklad JSON](#JSON-example). Vyberte **provádí** tvorby schématu.
+   - Kopírovat [schématu JSON](#json-schema) na konci tohoto článku do **požádat o schéma JSON hlavní části** textového pole.
+   - Vyberte **K vygenerování schématu použijte ukázkovou datovou část**. V **zadejte nebo vložte ukázkovou datovou část JSON** textového pole, vložte [příklad JSON](#json-example). Vyberte **provádí** tvorby schématu.
 
    >[!Note]
    >V tomto okamžiku v toku můžete připojit k systému CRM nebo konfigurovat e-mailové oznámení.

@@ -4,7 +4,7 @@ description: Zjistěte, jak nastavit šifrovací certifikát a šifrování tajn
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: 6aba94aa083127c2300481dbc8e30c224a1813a3
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3d324c54d10433520a73f2bd836c26bd79f1b3bb
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109261"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662308"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Nastavit šifrovací certifikát a šifrování tajných kódů v clusterech Windows
 Tento článek popisuje, jak nastavit šifrovací certifikát a jeho použití k šifrování tajných kódů v clusterech Windows. Linuxové clustery, naleznete v tématu [nastavit až šifrovací certifikát a šifrování tajných kódů na clusterech s Linuxem.][secret-management-linux-specific-link]

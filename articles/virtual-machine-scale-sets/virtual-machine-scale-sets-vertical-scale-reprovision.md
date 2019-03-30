@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: c27d92a330d82cb8638a970602f2a8d0ce2e79c2
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d3821f6a2bad56b46bccbcca8830be09ad1e44c7
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579746"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648261"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Nastaví vertikální automatické škálování díky škálování virtuálního počítače
 
@@ -98,6 +98,7 @@ První věc, kterou musíte udělat, je vytvořit účet Azure Automation, kter�
 * [Ověření runbooků pomocí účtu Spustit v Azure jako](../automation/automation-sec-configure-azure-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Import runbooků Azure Automation vertikální škálování do vašeho předplatného
+
 Sady runbook potřebné pro vertikální škálování škálovací sady virtuálních počítačů jsou již publikován v galerii Runbooků Azure Automation. Chcete-li importovat je do vašeho předplatného postupujte podle kroků v tomto článku:
 
 * [Galerie runbooků a modulů pro Azure Automation](../automation/automation-runbook-gallery.md)
@@ -111,6 +112,7 @@ Sady runbook, které potřebují k importu se zobrazí. Vyberte sadu runbook na 
 ![Galerie Runbooků][gallery]
 
 ## <a name="add-a-webhook-to-your-runbook"></a>Přidání webhooku do runbooku
+
 Po importu sady runbook, přidání webhooku do sady runbook, může být aktivované výstrahy ze škálovací sady virtuálních počítačů. Podrobnosti o vytvoření webhooku pro své sadě Runbook jsou popsané v tomto článku:
 
 * [Webhooky Azure Automation](../automation/automation-webhooks.md)
@@ -121,9 +123,10 @@ Po importu sady runbook, přidání webhooku do sady runbook, může být aktivo
 > 
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Přidání výstrahy pro škálovací sadu virtuálních počítačů
+
 Následující skript prostředí PowerShell, který ukazuje, jak přidat upozornění na škálovací sadu virtuálních počítačů nastavena. Přečtěte si následující článek a získat tak název metriky, která se aktivuje upozornění na: [Azure Monitor běžné metriky automatického škálování](../azure-monitor/platform/autoscale-common-metrics.md).
 
-```
+```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
 $actionWebhook = New-AzAlertRuleWebhook -ServiceUri <uri-of-the-webhook>
 $threshold = <value-of-the-threshold>
@@ -160,6 +163,7 @@ Další informace o tom, jak vytvářet výstrahy najdete v následujících čl
 * [Ukázky rychlý start Azure Cross-platform CLI monitorování](../azure-monitor/platform/cli-samples.md)
 
 ## <a name="summary"></a>Souhrn
+
 Tento článek vám ukázal, jednoduché vertikální škálování příklady. Pomocí těchto stavebních bloků – účet služby Automation, sady runbook, webhooky, výstrahy – se můžete připojit bohatou řadu událostí, s vlastní sadu akcí.
 
 [runbooks]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks.png

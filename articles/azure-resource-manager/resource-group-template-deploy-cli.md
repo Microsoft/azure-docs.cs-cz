@@ -10,14 +10,14 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2019
+ms.date: 03/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: f64a76fa6063ebc5681b546b53fe9d6ca7bc5037
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 92476f9ac48c168c3bbe85d4da49b6afe034c117
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400398"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648652"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI
 
@@ -77,7 +77,7 @@ Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zp
 Místo uložení šablony Resource Manageru na místním počítači, můžete chtít uložit je do externího umístění. Šablony můžete uložit úložiště správy zdrojového kódu (např. GitHub). Nebo můžete je ukládat v účtu úložiště Azure pro zajištění sdíleného přístupu ve vaší organizaci.
 
 Chcete-li nasadit externí šablony, použijte **šablona identifikátoru uri** parametru. Použijte identifikátor URI v příkladu nasazení ukázkové šablony z Githubu.
-   
+
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
 az group deployment create \
@@ -102,7 +102,12 @@ az group deployment create --resource-group examplegroup \
 
 ## <a name="redeploy-when-deployment-fails"></a>Opětovné nasazení při nasazení se nezdaří
 
-Pokud se nasazení nezdaří, můžete automaticky znovu nasadit starší a úspěšné nasazení z historie nasazení. Pokud chcete nastavit opětovné nasazení, použijte `--rollback-on-error` parametr v příkazu pro nasazení.
+Tato funkce se také označuje jako *vrácení zpět při chybě*. Pokud se nasazení nezdaří, můžete automaticky znovu nasadit starší a úspěšné nasazení z historie nasazení. Pokud chcete nastavit opětovné nasazení, použijte `--rollback-on-error` parametr v příkazu pro nasazení. Tato funkce je užitečná, pokud máte k dispozici dostatek známého funkčního stavu pro nasazení infrastruktury a chcete se vrátí zpátky na to. Existuje několik omezení a omezení:
+
+- Opětovné nasazení se spustí, přesně tak, jak byl dříve spuštěn se stejnými parametry. Nelze změnit parametry.
+- Předchozí nasazení se spustí pomocí [úplný režim](./deployment-modes.md#complete-mode). Se odstraní všechny prostředky, které nejsou zahrnuty v předchozím nasazení a konfigurace všech prostředků jsou nastaveny do jejich předchozího stavu. Ujistěte se, že plně chápete [režimy nasazení](./deployment-modes.md).
+- Opětovné nasazení má vliv pouze prostředky, všechny změny dat to nebude mít vliv.
+- Tato funkce je podporována pouze na nasazení skupiny prostředků, ne předplatné úrovně nasazení. Další informace o nasazení na úrovni předplatného najdete v tématu [vytvoření skupiny prostředků a prostředků na úrovni předplatného](./deploy-to-subscription.md).
 
 Tato možnost dala použít, vaše nasazení musí mít jedinečné názvy, tak je možné identifikovat v historii. Pokud nemáte jedinečné názvy, aktuální selhání nasazení může přepsat předchozí úspěšné nasazení v historii. Tuto možnost můžete použít pouze u kořenové úrovně nasazení. Nasazení z vnořené šablony nejsou k dispozici pro nové nasazení.
 
@@ -261,9 +266,10 @@ Pokud vaše šablona obsahuje chybu syntaxe, příkaz vrátí chybu s informacem
 ```
 
 ## <a name="next-steps"></a>Další postup
-* V příkladech v tomto článku nasazení prostředků do skupiny prostředků ve vašem výchozím předplatném. Pokud chcete použít jiné předplatné, naleznete v tématu [Správa několika předplatných Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
-* Chcete-li určit způsob zpracování prostředky, které existují ve skupině prostředků, ale nejsou definovány v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manageru](deployment-modes.md).
-* Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [Princip struktury a syntaxe šablon Azure Resource Manageru](resource-group-authoring-templates.md).
-* Tipy pro řešení běžných chyb při nasazení, najdete v části [řešit běžné chyby nasazení v Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
-* Informace o nasazení šablony, která se vyžaduje SAS token najdete v tématu [nasazení privátní šablony s tokenem SAS](resource-manager-cli-sas-token.md).
-* Bezpečně zavést vaše služba pro více než jedné oblasti, naleznete v tématu [Azure Deployment Manager](deployment-manager-overview.md).
+
+- V příkladech v tomto článku nasazení prostředků do skupiny prostředků ve vašem výchozím předplatném. Pokud chcete použít jiné předplatné, naleznete v tématu [Správa několika předplatných Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
+- Chcete-li určit způsob zpracování prostředky, které existují ve skupině prostředků, ale nejsou definovány v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manageru](deployment-modes.md).
+- Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [Princip struktury a syntaxe šablon Azure Resource Manageru](resource-group-authoring-templates.md).
+- Tipy pro řešení běžných chyb při nasazení, najdete v části [řešit běžné chyby nasazení v Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
+- Informace o nasazení šablony, která se vyžaduje SAS token najdete v tématu [nasazení privátní šablony s tokenem SAS](resource-manager-cli-sas-token.md).
+- Bezpečně zavést vaše služba pro více než jedné oblasti, naleznete v tématu [Azure Deployment Manager](deployment-manager-overview.md).

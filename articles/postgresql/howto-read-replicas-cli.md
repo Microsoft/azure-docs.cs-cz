@@ -1,0 +1,95 @@
+---
+title: Spravovat další repliky pro službu Azure Database for PostgreSQL z příkazového řádku Azure
+description: Další informace o správě – Azure Database for PostgreSQL čtení repliky z příkazového řádku Azure.
+author: rachel-msft
+ms.author: raagyema
+ms.service: postgresql
+ms.topic: conceptual
+ms.date: 03/29/2019
+ms.openlocfilehash: 4c8502aad40662766b038205eb19dd3302f601b7
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632100"
+---
+# <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Vytvoření a správa repliky pro čtení z příkazového řádku Azure
+
+V tomto článku se dozvíte, jak vytvářet a spravovat repliky pro čtení ve službě Azure Database for PostgreSQL z příkazového řádku Azure. Další informace o čtení replik, najdete v článku [přehled](concepts-read-replicas.md).
+
+> [!IMPORTANT]
+> Funkce repliky pro čtení je ve verzi public preview.
+
+## <a name="prerequisites"></a>Požadavky
+- [– Azure Database for PostgreSQL server](quickstart-create-server-up-azure-cli.md) na hlavní server.
+
+[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
+
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+
+
+## <a name="prepare-the-master-server"></a>Příprava hlavního serveru
+Tyto kroky musí použije k přípravě na úrovni obecné účely nebo k paměťově optimalizovaným hlavní server.
+
+`azure.replication_support` Parametr musí být nastaven na **REPLIKY** na hlavní server. Při změně této statický parametr je nutné tato změna se projeví restartovat server.
+
+1. Nastavte `azure.replication_support` do REPLIKY.
+
+   ```azurecli-interactive
+   az postgres server configuration set --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support --value REPLICA
+   ```
+
+2. Restartujte na použití změny na server.
+
+   ```azurecli-interactive
+   az postgres server restart --name mydemoserver --resource-group myresourcegroup
+   ```
+
+## <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
+
+`az mysql server replica create` Příkaz vyžaduje následující parametry:
+
+| Nastavení | Příklad hodnoty | Popis  |
+| --- | --- | --- |
+| resource-group | myresourcegroup |  Skupina prostředků, ve kterém se vytvoří serveru repliky.  |
+| jméno | mydemoserver-replica | Název nového serveru repliky, který je vytvořen. |
+| source-server | mydemoserver | Název nebo prostředek ID existující hlavní server pro replikaci z. |
+
+```azurecli-interactive
+az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup
+```
+
+Pokud jste nenastavili `azure.replication_support` parametr **REPLIKY** na obecné účely nebo k paměťově optimalizovaným hlavního serveru a restartujte server, obdržíte chybu. Před vytvořením repliky proveďte tyto dva kroky.
+
+Replika je vytvořen pomocí stejné konfigurace serveru na hlavní server. Po vytvoření repliky několik nastavení lze změnit nezávisle z hlavního serveru: výpočetní generace, virtuální jádra, úložiště a dobu uchování zálohování. Cenovou úroveň můžete změnit také nezávisle na sobě, s výjimkou do nebo z úrovně Basic.
+
+> [!IMPORTANT]
+> Před hlavním serverem služby konfigurace se aktualizuje na nové hodnoty, aktualizujte konfiguraci repliky na stejné nebo vyšší hodnoty. Tato akce zajistí, že replika je dokáže dodat se změnami provedenými na hlavní server.
+
+## <a name="list-replicas"></a>Seznam replik
+Zobrazí se seznam replik hlavního serveru.
+
+```azurecli-interactive
+az postgres server replica stop --server-name mydemoserver --resource-group myresourcegroup 
+```
+
+## <a name="stop-replication-to-a-replica-server"></a>Zastavuje se replikace na serveru repliky
+Je-li zastavit replikace mezi serverem a hlavním serverem repliky pro čtení.
+
+Po zastavení replikace do hlavního serveru a repliky pro čtení nejde vrátit. Čtení replika přestane být samostatný server, který podporuje operace čtení i zápisu. Samostatný server nelze je převést na repliku znovu.
+
+```azurecli-interactive
+az postgres server replica stop --name mydemoserver-replica --resource-group myresourcegroup 
+```
+
+## <a name="delete-a-master-or-replica-server"></a>Odstranění serveru master a repliky
+Postup odstranění serveru hlavním uzlem nebo repliku, použijte stejný příkaz jako samostatné databáze Azure pro PostgreSQL server odstranit. 
+
+Když odstraníte hlavní server, se zastaví replikace na všechny repliky pro čtení. Čtení replik se stanou samostatné servery, které nyní podporují čtení a zápisu.
+
+```azurecli-interactive
+az postgres server delete --name myserver --resource-group myresourcegroup
+```
+
+## <a name="next-steps"></a>Další postup
+Další informace o [čtení replik ve službě Azure Database for PostgreSQL](concepts-read-replicas.md).

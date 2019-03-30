@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat samostatná jednotka nebo v místním
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: c71473e975333d33406d78130ad28f417b9b967e
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: f94a65e469fdb3cee4f02bc5a8f6f5a4a1ea5a16
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853332"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662325"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Nastavení konfigurace pro samostatný cluster Windows
 Tento článek popisuje konfiguraci nastavení samostatného clusteru Azure Service Fabric, který je možné nastavit v *ClusterConfig.json* souboru. Tento soubor použije k zadání informací o uzlech clusteru, konfigurace zabezpečení, jakož i síťové topologie z hlediska chybových nebo upgradovacích doménách.  Po změně nebo přidání nastavení konfigurace, můžete je buď [vytvoření samostatného clusteru](service-fabric-cluster-creation-for-windows-server.md) nebo [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -74,7 +74,7 @@ Cluster Service Fabric musí obsahovat alespoň tři uzly. Do této části mů�
 | **Konfigurace uzlu** | **Popis** |
 | --- | --- |
 | nodeName |Můžete přiřadit libovolný popisný název k uzlu. |
-| IP adresa |Zjistěte IP adresu vašeho uzlu tak, že otevřete okno příkazového řádku a zadáte `ipconfig`. Poznamenejte si IPV4 adresu a přiřadíte ho k proměnné iPAddress. |
+| iPAddress |Zjistěte IP adresu vašeho uzlu tak, že otevřete okno příkazového řádku a zadáte `ipconfig`. Poznamenejte si IPV4 adresu a přiřadíte ho k proměnné iPAddress. |
 | nodeTypeRef |Každý uzel je možné přiřadit typ jiný uzel. [Typy uzlů](#node-types) jsou definovány v následující části. |
 | faultDomain |Domény selhání umožňují správcům clusteru k definování fyzických uzlů, které může selhat z důvodu sdílené fyzické závislosti současně. |
 | upgradeDomain |Upgradovací domény popisují sady uzlů, které se vypnutí pro upgrade na Service Fabric na přibližně ve stejnou dobu. Uzly, na kterých chcete přiřadit které upgradovacích domén, můžete zvolit, protože nejsou omezeny libovolné fyzické požadavky. |

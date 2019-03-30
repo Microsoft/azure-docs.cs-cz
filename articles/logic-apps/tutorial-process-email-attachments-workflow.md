@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.openlocfilehash: aa534ca4fb29237de6377c7225a11f4758f39c55
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 518a9009ad7a3cca13679f9a410fd36dd874261f
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588377"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630772"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Kurz: Automatizovat zpracování e-mailů a jejich přílohy pomocí Azure Logic Apps
 
@@ -144,6 +144,7 @@ Teď pomocí připraveného fragmentu kódu a následujícího postupu vytvořte
    | **Skupina prostředků** | LA-Tutorial-RG | Stejná skupina prostředků Azure, jakou jste používali dříve | 
    | **Plán hostování** | Plán Consumption | Toto nastavení určuje, jak se při běhu aplikace funkcí mají přidělovat a škálovat prostředky, například výpočetní výkon. Podívejte se na [porovnání plánů hostování](../azure-functions/functions-scale.md). | 
    | **Umístění** | Západní USA | Stejná oblast, jakou jste používali dříve | 
+   | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte modul runtime, který podporuje váš oblíbený programovací jazyk funkcí. Zvolte .NET pro C# a F# funkce. |
    | **Storage** | cleantextfunctionstorageacct | Vytvořte pro svou aplikaci funkcí účet úložiště. Použijte při tom jenom malá písmena a číslice. <p>**Poznámka:** Tento účet úložiště obsahuje vaše aplikace function App a liší se od vašeho dříve vytvořený účet úložiště pro přílohy e-mailu. | 
    | **Application Insights** | Vypnuto | Zapne monitorování aplikací pomocí [Application Insights](../azure-monitor/app/app-insights-overview.md). Pro účely tohoto kurzu ale zvolte nastavení **Vypnuto**. | 
    |||| 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: 9057245c108e4a1b9af2549bc87f98258da50535
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6cc5e45ab28a1c83125a37cefb289b1662096eb0
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240163"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648815"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Zjišťování a řešení potíží s odpojí službou Azure IoT Hub
 
@@ -32,7 +32,7 @@ Do protokolu událostí připojení zařízení a chyb, zapněte diagnostiku pro
 1. Vyberte **nastavení diagnostiky**.
 1. Vyberte **zapnout diagnostiku**.
 1. Povolit **připojení** protokoly, které se mají shromažďovat.
-1. Pro jednodušší analýzu, zapněte **odesílat do Log Analytics** ([podívejte se na cenách](https://azure.microsoft.com/pricing/details/log-analytics/)). Podívejte se na příklad v části [řešení chyb připojení](#Resolve-connectivity-errors).
+1. Pro jednodušší analýzu, zapněte **odesílat do Log Analytics** ([podívejte se na cenách](https://azure.microsoft.com/pricing/details/log-analytics/)). Podívejte se na příklad v části [řešení chyb připojení](#resolve-connectivity-errors).
 
    ![Doporučená nastavení][2]
 
@@ -40,15 +40,14 @@ Další informace najdete v tématu [monitorování stavu služby Azure IoT Hub 
 
 ### <a name="set-up-alerts-for-the-connected-devices-count-metric"></a>Nastavení upozornění pro _připojená zařízení_ počet metrik
 
-Zasílání výstrah v případě odpojení zařízení, konfigurace výstrah pro **připojená zařízení** metriku.
+Zasílání výstrah v případě odpojení zařízení, konfigurace výstrah pro **připojené zařízení (preview)** metriku.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte do služby IoT hub.
-1. Vyberte **upozornění (klasická)**.
-1. Vyberte **přidat upozornění metriky (klasické)**.
-1. Vyplňte formulář a vyberte **OK**.
-
-   ![Doporučené upozornění metriky][3]
+1. Vyberte **výstrahy**.
+1. Vyberte **nové pravidlo upozornění**.
+1. Vyberte **přidat podmínku**, pak vyberte "Připojené zařízení (preview)".
+1. Dokončení instalace požadované prahové hodnoty a výstrahy možnosti podle následujících pokynů.
 
 Další informace najdete v tématu [co jsou upozornění v Microsoft Azure classic?](../azure-monitor/platform/alerts-overview.md).
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 5842c5edd0402d61f564ab15e34e8f69c0e718d7
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: daddb859c6bfc6309ef833c6c6c3ea43c70f1889
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213446"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652276"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nelze RDP na virtuálních počítačích Azure, protože služba Klient DHCP je zakázána.
 
@@ -27,7 +27,6 @@ Tento článek popisuje problém, který se po zakázání služby Klient DHCP v
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="symptoms"></a>Příznaky
-
 Nemůžete provádět připojení ke vzdálené ploše virtuálního počítače v Azure protože ve virtuálním počítači je zakázána služba Klient DHCP. Když vrátíte se změnami na snímku obrazovky [Diagnostika spouštění](../troubleshooting/boot-diagnostics.md) na webu Azure Portal, uvidíte, že virtuální počítač se spustí normálně a čeká se přihlašovací údaje na přihlašovací obrazovce. Vzdáleně Zkontrolujte protokoly událostí ve virtuálním počítači s použitím prohlížeče události. Uvidíte, že služba Klient DHCP není spuštěná nebo nepodaří spustit. Následující ukázka protokolu:
 
 **Název protokolu**: Systémový </br>
@@ -98,7 +97,7 @@ Chcete-li tento problém vyřešit, povolte protokol DHCP pomocí sériového po
 1. Připojte se k [konzoly sériového portu](serial-console-windows.md) a otevřete instance prostředí PowerShell.
 2. Stáhněte si nástroj pro monitorování procesu spuštěním následujícího skriptu:
 
-   ```
+   ```powershell
    remove-module psreadline
    $source = "https://download.sysinternals.com/files/ProcessMonitor.zip"
    $destination = "c:\temp\ProcessMonitor.zip"
@@ -167,6 +166,7 @@ Chcete-li tento problém vyřešit, povolte protokol DHCP pomocí sériového po
 3. Pokuste se připojit k virtuálnímu počítači pomocí vzdálené plochy.
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>Služba Klient DHCP selže nebo přestane reagovat
+
 1. Pokud stav služby se zasekla v automatickém **počáteční** nebo **zastavení** stavu, zkuste zastavit službu:
 
         sc stop DHCP
@@ -205,5 +205,3 @@ Chcete-li tento problém vyřešit, povolte protokol DHCP pomocí sériového po
 ## <a name="next-steps"></a>Další postup
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat váš problém vyřešit.
-
-

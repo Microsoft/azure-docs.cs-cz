@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/28/2019
 ms.author: spelluru
-ms.openlocfilehash: eadbaacd4bb860cd09997775b8d77cbcf0ff17f2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 494c285f1c096a84925d9d9a4fb98409960e5230
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181618"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650073"
 ---
 # <a name="configure-usage-settings-and-policies"></a>Konfigurace nastavení použití a zásady
 Tento článek popisuje, jak přidat uživatele do testovacího prostředí, je registrován v testovacím, řídí počet hodin, můžete použít virtuální počítač a další. 
@@ -44,14 +44,20 @@ Odeslat odkaz na registraci pro studenty, použijte jednu z následujících met
 Pokud **omezit přístup** je povolená pro testovací prostředí, pouze uživatelé ze seznamu uživatelů můžete použít odkaz na registraci k zaregistrování do testovacího prostředí. Tato možnost je povolená ve výchozím nastavení. 
 
 ### <a name="send-email-to-users"></a>Odeslání e-mailu uživatelům
+Azure Lab Services umožňuje učitelům na e-mailové pozvánky testovacího prostředí pro všechny nebo vybrané studenty bez nutnosti použít jinou e-mailový klient. Učitelé můžou při najetí myší na jednotlivé studenty v seznamu zobrazovat ikona e-mailu pro každý student nebo vyberte jeden nebo více studentů a používat **poslat pozvánku** na panelu nástrojů. Tato funkce odesílá e-mailu s odkazem na registraci a učitele přidá zprávu (pokud existuje). Po odeslání e-mailové pozvánce, změní se stav pozvánku **Pozvánka se odeslala** tak, aby učitelé můžete udržovat přehled o studentům jste už dostali, odkaz na registraci a data byla odeslána.
+
 1. Přepněte **uživatelé** zobrazit v případě, že již není na stránce. 
-2. V seznamu vyberte konkrétní nebo všechny uživatele. Pokud chcete vybrat konkrétní uživatele, vyberte zaškrtávací políčka v prvním sloupci v seznamu. Chcete-li vybrat všechny uživatele, zaškrtněte políčko před název prvního sloupce (**název**) nebo vyberte všechna zaškrtávací políčka pro všechny uživatele v seznamu.
-3. Vyberte **poslat pozvánku** na panelu nástrojů. Můžete také najeďte myší jméno studenta v seznamu a odeslat na ikonu e-mailu. 
+2. V seznamu vyberte konkrétní nebo všechny uživatele. Pokud chcete vybrat konkrétní uživatele, vyberte zaškrtávací políčka v prvním sloupci v seznamu. Chcete-li vybrat všechny uživatele, zaškrtněte políčko před název prvního sloupce (**název**) nebo vyberte všechna zaškrtávací políčka pro všechny uživatele v seznamu. Zobrazí se stav **pozvánku stavu** v tomto seznamu.  Na následujícím obrázku, stav pozvánku pro všechny studenty je nastavený na **neodeslaná Pozvánka**. 
+
+    ![Vyberte studenty](../media/tutorial-setup-classroom-lab/select-students.png)
+1. Vyberte **ikony e-mailu (obálky)** v jednom z řádků (nebo) vyberte **poslat pozvánku** na panelu nástrojů. Můžete také ukazatele myši nad jméno studenta v seznamu se zobrazí ikona e-mailu. 
 
     ![Poslat odkaz registraci e-mailem](../media/tutorial-setup-classroom-lab/send-email.png)
 4. Na **registraci odeslat odkaz e-mailem** stránce, postupujte podle těchto kroků: 
     1. Typ **volitelnou zprávu** , který chcete odeslat pro studenty. E-mailu automaticky zahrnuje odkaz na registraci. 
-    2. Na **registraci odeslat odkaz e-mailem** stránce **odeslat**. 
+    2. Na **registraci odeslat odkaz e-mailem** stránce **odeslat**. Zobrazí stav změnit na pozvánku **posílá se Pozvánka** a potom do **Pozvánka se odeslala**. 
+        
+        ![Odeslání pozvánky](../media/tutorial-setup-classroom-lab/invitations-sent.png)
 
 ## <a name="get-registration-link"></a>Získejte odkaz pro registraci
 1. Přepněte **uživatelé** zobrazení tak, že vyberete **uživatelé** v nabídce vlevo. 

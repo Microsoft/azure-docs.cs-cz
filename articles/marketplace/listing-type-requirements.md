@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: f88c7b9350d104241524284950865e1f2ca6f559
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: ebe344d9f596f862fe5ffbfef083725e6527d0d3
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729402"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650202"
 ---
 # <a name="requirements-by-listing-type"></a>Požadavky na uvedením typu  
 Obsahu požadavky na technickou a marketingovou se liší podle z prodejních míst, typ nabídky a výpis typu. Projděte si následující specifikace k ověření vaší dodržování předpisů.  
 1. Prezentace požadavky:  
-    *   [AppSource](#storefront-requirements-appSource)  
+    *   [AppSource](#storefront-requirements-appsource)  
     *   [Azure Marketplace](#storefront-requirements-azure-marketplace)  
 2. Typ výpisu a požadavky na typ nabídky:  
     *   Další informace o seznam typy a typy nabídek, navštivte určete typ výpis pro vaše řešení stránky umístěné na [docs.microsoft.com/azure/marketplace/determine-your-listing-type](./determine-your-listing-type.md).  

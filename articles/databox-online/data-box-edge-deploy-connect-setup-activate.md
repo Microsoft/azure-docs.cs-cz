@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/08/2019
+ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 0aaee4b0582f8acb9302c75463c0bc52698acaeb
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ad288067fdd40dbfa84352916e84fa1e3ab9af8e
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403464"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629137"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Kurz: Připojení, nastavení a aktivovat Azure Data Box Edge 
 
@@ -75,7 +75,7 @@ Teď jste na řídicím panelu vašeho zařízení.
     ![Stránka "Název zařízení" místního webového uživatelského rozhraní](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-2.png)
 
 2. (Volitelné) V levém podokně vyberte **nastavení sítě** a pak proveďte konfiguraci nastavení.  
-    Na fyzických zařízení je šest síťových rozhraní. PORT 1 a PORT 2 jsou 1 GB/s síťové rozhraní. PORT 3, PORT 4, PORT 5 a 6 portu jsou všechna síťová rozhraní 25 GB/s, které může sloužit také jako 10 GB/s síťové rozhraní. PORT 1 se automaticky nakonfiguruje jako jen pro správu port a PORT 2 až 6 portu jsou všechny porty data. **Nastavení sítě** stránka je uvedeno dále.
+    Na fyzické zařízení existuje šest síťových rozhraní. PORT 1 a PORT 2 jsou 1 GB/s síťové rozhraní. PORT 3, PORT 4, PORT 5 a 6 portu jsou všechna síťová rozhraní 25 GB/s, které může sloužit také jako 10 GB/s síťové rozhraní. PORT 1 se automaticky nakonfiguruje jako jen pro správu port a PORT 2 až 6 portu jsou všechny porty data. **Nastavení sítě** stránka je uvedeno dále.
     
     ![Stránka "Nastavení sítě" místního webového uživatelského rozhraní](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-3.png)
    
@@ -119,7 +119,14 @@ Teď jste na řídicím panelu vašeho zařízení.
 
         ![Stránka "Nastavení času" místního webového uživatelského rozhraní](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
 
-5. V levém podokně vyberte **nastavení cloudu**a poté aktivovat vaše zařízení do služby Data Box Edge na webu Azure Portal.
+5. (Volitelné) V levém podokně vyberte **nastavení úložiště** ke konfiguraci úložiště odolnost proti chybám na vašem zařízení. Tato funkce je aktuálně ve verzi Preview. Ve výchozím nastavení není odolné úložiště na zařízení a je ztrátu dat, pokud datový disk selže na zařízení. Když povolíte možnost odolné, se mění její konfigurace úložiště na zařízení a zařízení můžete odolat selhání bez ztráty jedním datovým diskem. Konfigurace úložiště jako odolný sníží využitelné kapacity vašeho zařízení.
+
+    > [!IMPORTANT] 
+    > Odolnost proti chybám se dá nakonfigurovat jenom před aktivací zařízení. 
+
+    ![Stránka "Nastavení" místního webového uživatelského rozhraní](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
+
+6. V levém podokně vyberte **nastavení cloudu**a poté aktivovat vaše zařízení do služby Data Box Edge na webu Azure Portal.
     
     1. V **aktivační kód** zadejte aktivační kód, který jste získali v [získat aktivační klíč](data-box-edge-deploy-prep.md#get-the-activation-key) Edge Data Box.
     2. Vyberte **Použít**.

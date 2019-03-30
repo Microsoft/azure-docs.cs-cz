@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 0d23509d4efb0385770811e004bb2599c3866847
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 82aaa573c55748daf62b620cdd82561bae6af492
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313335"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629363"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archivovat diagnostické protokoly Azure
 
@@ -33,7 +33,7 @@ Než začnete, budete muset [vytvořit účet úložiště](../../storage/common
 
 ## <a name="diagnostic-settings"></a>Nastavení diagnostiky
 
-Archivace diagnostických protokolů některou z níže uvedených způsobů je nastavit **nastavení diagnostiky** určitého prostředku. Nastavení diagnostiky pro prostředek definuje kategorie protokolů a metrik data odeslaná do cíle (účet úložiště, obor názvů Event Hubs nebo Log Analytics). Definuje také zásady uchovávání informací (počet dní uchování) pro události z každé kategorie protokolu a data metriky, které jsou uložené v účtu úložiště. Pokud zásady uchovávání informací je nastavena na hodnotu nula, události pro dané kategorie protokolu se ukládají po neomezenou dobu (které je třeba navždy). Zásady uchovávání informací v opačném případě může být libovolný počet dnů mezi 1 a 2147483647. [Další informace o nastavení diagnostiky zde](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings). Zásady uchovávání informací jsou použité za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště. 
+Archivace diagnostických protokolů některou z níže uvedených způsobů je nastavit **nastavení diagnostiky** určitého prostředku. Nastavení diagnostiky pro prostředek definuje kategorie protokolů a metrik data odeslaná do cíle (účet úložiště, obor názvů Event Hubs nebo pracovní prostor Log Analytics). Definuje také zásady uchovávání informací (počet dní uchování) pro události z každé kategorie protokolu a data metriky, které jsou uložené v účtu úložiště. Pokud zásady uchovávání informací je nastavena na hodnotu nula, události pro dané kategorie protokolu se ukládají po neomezenou dobu (které je třeba navždy). Zásady uchovávání informací v opačném případě může být libovolný počet dnů mezi 1 a 2147483647. [Další informace o nastavení diagnostiky zde](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings). Zásady uchovávání informací jsou použité za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště. 
 
 > [!NOTE]
 > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.

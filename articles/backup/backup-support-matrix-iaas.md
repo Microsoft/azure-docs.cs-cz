@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: 4b4901b0323caa8eeda6b49228e65d1f28495164
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: f4034a3462d7221c16464e6a2cee9aad2105a6cd
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518486"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649807"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 Můžete použít [služby Azure Backup](backup-overview.md) pro zálohování místních počítačů a úlohy a Azure virtual machines (VM). Tento článek shrnuje podporu nastavení a omezení při zálohování virtuálních počítačů Azure pomocí Azure Backup.
@@ -129,7 +129,7 @@ Obnovení mezi předplatné/oblasti a zóny. | Nepodporuje se.
 Obnovit do existujícího virtuálního počítače | Použijte možnost nahradit disku.
 Obnovení disku s účtem úložiště, které jsou povolené pro Azure Storage Service Encryption (SSE) | Nepodporuje se.<br/><br/> Obnovte účet, který nemá povolené SSE.
 Obnovení k účtům hybridní úložiště | Nepodporuje se.<br/><br/> Podle typu účtu úložiště, všechny obnovených disků bude premium nebo standard a ne smíšené.
-Obnovení do účtu úložiště s využitím zónově redundantní úložiště (ZRS) | Nepodporuje se.
+Obnovení do účtu úložiště s využitím zónově redundantní úložiště (ZRS) | Podporované (pro virtuální počítač, který se zálohovaná po Jan 2019 a kde [zóna dostupnosti](https://azure.microsoft.com/global-infrastructure/availability-zones/) jsou k dispozici)
 Obnovení virtuálního počítače přímo do skupiny dostupnosti | Za spravované disky můžete obnovit disk a použijte možnost sady dostupnosti v šabloně.<br/><br/> Není podporováno pro nespravované disky. Pro nespravované disky obnovení disku a pak vytvořte virtuální počítač ve skupině dostupnosti.
 Obnovit zálohování nespravované virtuální počítače po upgradu na spravovaných virtuálních počítačů| Podporuje se.<br/><br/> Můžete obnovit disky a pak vytvořit spravovaný virtuální počítač.
 Obnovení virtuálního počítače pro bod obnovení před migrací virtuálního počítače na managed disks | Podporuje se.<br/><br/> Obnovit do nespravované disky (výchozí), převést na spravovaný disk obnovených disků a vytvoření virtuálního počítače se spravovanými disky.
@@ -149,6 +149,7 @@ Zálohování virtuálních počítačů, které jsou nasazené [škálovací sa
 Zálohování virtuálních počítačů, které byly nasazeny [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Vydáno nakladatelstvím Microsoft třetích stran) |  Podporuje se.<br/><br/> Virtuální počítač musí být spuštěný podporovaný operační systém.<br/><br/> Při obnovení souborů na virtuálním počítači, můžete obnovit pouze na kompatibilní operační systém (ne starší nebo novější operační systém).
 Zálohování virtuálních počítačů nasazených z vlastní image (třetích stran) |   Podporuje se.<br/><br/> Virtuální počítač musí být spuštěný podporovaný operační systém.<br/><br/> Při obnovení souborů na virtuálním počítači, můžete obnovit pouze na kompatibilní operační systém (ne starší nebo novější operační systém).
 Zálohování virtuálních počítačů, které se migrují do Azure  | Podporuje se.<br/><br/> Zálohování virtuálního počítače, musí nainstalovat agenta virtuálního počítače na migrovaných počítačů.
+Zálohování virtuálních počítačů konzistence | Nepodporovaný. <br/><br/>Azure Backup nepodporuje konzistence více virtuálních počítačů.
 
 
 
@@ -165,6 +166,7 @@ Disky s akcelerátor zápisu | Nepodporuje se.<br/><br/> Pokud používáte nejn
 Zálohování disků s odstraněním duplicit | Nepodporuje se.
 Přidání disku do chráněného virtuálního počítače | Podporuje se.
 Změna velikosti disku v chráněném virtuálním počítači | Podporuje se.
+Sdílené úložiště| Zálohování virtuálních počítačů pomocí sdíleného svazku clusteru nebo souborového serveru se Škálováním se nedoporučuje. Zapisovače sdíleného svazku clusteru se pravděpodobně nezdaří.
 
 ## <a name="vm-network-support"></a>Podpora sítě virtuálních počítačů
 

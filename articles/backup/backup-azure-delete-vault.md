@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: raynew
-ms.openlocfilehash: 94d66e28f8edbda6c41dcceaf427d7d7d869c90f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 23e98fd7ea3decc478fc359cec457c70b8fc99dc
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620113"
+ms.locfileid: "58652209"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Odstranění trezoru služby Recovery Services
 
@@ -108,7 +108,7 @@ Tento postup poskytuje příklad, který ukazuje, jak odstranit zálohovaná dat
 
 
 3. V **Zastavit zálohování** > **zvolte možnost**vyberte **odstranit zálohovaná Data**.
-4. Zadejte název položky a klikněte na tlačítko **Zastavit zálohování**. 
+4. Zadejte název položky a klikněte na tlačítko **Zastavit zálohování**.
    - Ověří, že chcete položku odstranit.
    - **Zastavit zálohování** tlačítko aktivuje po ověření.
    - Je-li zachovat a neodstraňujte dat, nebude možné odstranit trezor.
@@ -126,7 +126,7 @@ Tento postup poskytuje příklad, který ukazuje, jak odstranit zálohovaná dat
 ### <a name="remove-backup-infrastructure-servers"></a>Odeberte servery infrastruktury zálohování
 
 1. V nabídce řídicího panelu trezoru klikněte na tlačítko **infrastruktura zálohování**.
-2. Klikněte na tlačítko **servery pro správu zálohování** k zobrazení serverů. 
+2. Klikněte na tlačítko **servery pro správu zálohování** k zobrazení serverů.
 
     ![Vyberte svůj trezor otevřete jeho řídicí panel](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
@@ -135,7 +135,7 @@ Tento postup poskytuje příklad, který ukazuje, jak odstranit zálohovaná dat
     ![Vyberte typ zálohy](./media/backup-azure-delete-vault/azure-storage-selected-list.png)
 
 3. . V **Zastavit zálohování** > **zvolte možnost**vyberte **odstranit zálohovaná Data**.
-4. Zadejte název položky a klikněte na tlačítko **Zastavit zálohování**. 
+4. Zadejte název položky a klikněte na tlačítko **Zastavit zálohování**.
    - Ověří, že chcete položku odstranit.
    - **Zastavit zálohování** tlačítko aktivuje po ověření.
    - Je-li zachovat a neodstraňujte dat, nebude možné odstranit trezor.

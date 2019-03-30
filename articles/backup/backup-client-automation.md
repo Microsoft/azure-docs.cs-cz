@@ -8,39 +8,40 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
 ms.author: pvrk
-ms.openlocfilehash: 0a7a16a43b208bf2d14b86cd5cb23544ec03f9a9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5f304a02e73ea5691fdbce2743c2a633d2170949
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877526"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650304"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
+
 V tomto článku se dozvíte, jak pomocí prostředí PowerShell pro nastavení zálohování Azure ve Windows serveru nebo klienta Windows a Správa zálohování a obnovení.
 
 ## <a name="install-azure-powershell"></a>Instalace prostředí Azure PowerShell
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Abyste mohli začít, [nainstalovat nejnovější verzi prostředí PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
+
 Následující kroky vás provedou vytvořením trezor služby Recovery Services. Trezor služby Recovery Services se liší od trezoru služby Backup.
 
 1. Pokud používáte Azure Backup poprvé, je nutné použít **Register-AzResourceProvider** rutiny ve vašem předplatném zaregistrovat poskytovatele služby Azure Recovery.
 
-    ```
-    PS C:\> Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    ```powershell
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 2. Trezor služby Recovery Services je prostředek ARM, proto musíte umístit do skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořte novou. Když vytváříte novou skupinu prostředků, zadejte název a umístění pro skupinu prostředků.  
 
-    ```
-    PS C:\> New-AzResourceGroup –Name "test-rg" –Location "WestUS"
+    ```powershell
+    New-AzResourceGroup –Name "test-rg" –Location "WestUS"
     ```
 3. Použití **New-AzRecoveryServicesVault** rutina pro vytvoření nového trezoru. Ujistěte se, k určení stejného umístění trezoru, protože byl použit pro skupinu prostředků.
 
-    ```
-    PS C:\> New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
+    ```powershell
+    New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 4. Zadejte typ redundance úložiště se použije. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantního úložiště (GRS)](../storage/common/storage-redundancy-grs.md). Následující příklad ukazuje, že možnost - BackupStorageRedundancy pro testVault nastavená na GeoRedundant.
 
@@ -49,18 +50,22 @@ Následující kroky vás provedou vytvořením trezor služby Recovery Services
    >
    >
 
-    ```
-    PS C:\> $vault1 = Get-AzRecoveryServicesVault –Name "testVault"
-    PS C:\> Set-AzRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
+    ```powershell
+    $vault1 = Get-AzRecoveryServicesVault –Name "testVault"
+    Set-AzRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
 ## <a name="view-the-vaults-in-a-subscription"></a>Zobrazit tyto trezory v rámci předplatného
+
 Použití **Get-AzRecoveryServicesVault** zobrazíte seznam všech trezorů v rámci aktuálního předplatného. Tento příkaz můžete použít ke kontrole, zda byl vytvořen nový trezor a zjistit, jaké trezory služby jsou dostupné v rámci předplatného.
 
 Spustit příkaz, **Get-AzRecoveryServicesVault**, a všech trezorů v předplatném jsou uvedeny.
 
+```powershell
+Get-AzRecoveryServicesVault
 ```
-PS C:\> Get-AzRecoveryServicesVault
+
+```Output
 Name              : Contoso-vault
 ID                : /subscriptions/1234
 Type              : Microsoft.RecoveryServices/vaults
@@ -74,11 +79,12 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="installing-the-azure-backup-agent"></a>Instalace agenta Azure Backup
+
 Před instalací agenta Azure Backup, musíte mít instalační program stažený a k dispozici v systému Windows Server. Můžete získat nejnovější verzi instalačního programu z [Microsoft Download Center](https://aka.ms/azurebackup_agent) nebo ze stránky řídicího panelu trezoru služby Recovery Services. Uložte instalační program na snadno dostupném místě jako * C:\Downloads\*.
 
 Můžete také získat downloader pomocí Powershellu:
  
- ```
+ ```powershell
  $MarsAURL = 'Http://Aka.Ms/Azurebackup_Agent'
  $WC = New-Object System.Net.WebClient
  $WC.DownloadFile($MarsAURL,'C:\downloads\MARSAgentInstaller.EXE')
@@ -87,8 +93,8 @@ Můžete také získat downloader pomocí Powershellu:
 
 Pokud chcete nainstalovat agenta, spusťte následující příkaz v konzole Powershellu se zvýšenými oprávněními:
 
-```
-PS C:\> MARSAgentInstaller.exe /q
+```powershell
+MARSAgentInstaller.exe /q
 ```
 
 Tím se nainstaluje agent s výchozími možnostmi. Instalace trvá několik minut na pozadí. Pokud nezadáte */nu* možnost pak bude **Windows Update** otevře se okno na konci instalace žádné aktualizace. Po instalaci agenta se zobrazí v seznamu nainstalovaných programů.
@@ -98,10 +104,11 @@ Chcete-li zobrazit seznam nainstalovaných programů, přejděte na **ovládací
 ![Agent nainstalován](./media/backup-client-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>Možnosti instalace
+
 Pokud chcete zobrazit všechny možnosti, které jsou k dispozici prostřednictvím příkazového řádku, použijte následující příkaz:
 
-```
-PS C:\> MARSAgentInstaller.exe /?
+```powershell
+MARSAgentInstaller.exe /?
 ```
 
 Mezi dostupné možnosti patří:
@@ -120,11 +127,12 @@ Mezi dostupné možnosti patří:
 | /pw |Heslo pro proxy server |- |
 
 ## <a name="registering-windows-server-or-windows-client-machine-to-a-recovery-services-vault"></a>Registrace Windows serveru nebo klientského počítače Windows, do trezoru služby Recovery Services
+
 Po vytvoření trezoru služby Recovery Services, stáhněte si nejnovější verzi agenta a přihlašovací údaje trezoru a uložit do vhodného umístění jako C:\Downloads.
 
-```
-PS C:\> $credspath = "C:\downloads"
-PS C:\> $credsfilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
+```powershell
+$credspath = "C:\downloads"
+$credsfilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
 ```
 
 Ve Windows serveru nebo Windows klientského počítače, spusťte [Start OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) rutiny k registraci počítače v trezoru.
@@ -132,23 +140,25 @@ Tato a další rutiny používané pro zálohování, jsou z modulu MSONLINE, kt
 
 Instalační program agenta se neaktualizuje $Env: PSModulePath proměnné. To znamená, že se nezdaří automatické načtení modulu. Chcete-li tento problém vyřešit máte následující:
 
-```
-PS C:\>  $Env:psmodulepath += ';C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules'
+```powershell
+$Env:psmodulepath += ';C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules'
 ```
 
 Alternativně můžete ručně načíst modul ve skriptu následujícím způsobem:
 
-```
-PS C:\>  Import-Module  'C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup'
+```powershell
+Import-Module  'C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup'
 
 ```
 
 Po načtení Online zálohování rutiny zaregistrujete přihlašovací údaje trezoru:
 
 
+```powershell
+Start-OBRegistration -VaultCredentials $credsfilename.FilePath -Confirm:$false
 ```
 
-PS C:\> Start-OBRegistration -VaultCredentials $credsfilename.FilePath -Confirm:$false
+```Output
 CertThumbprint      :7a2ef2caa2e74b6ed1222a5e89288ddad438df2
 SubscriptionID      : ef4ab577-c2c0-43e4-af80-af49f485f3d1
 ServiceResourceName: testvault
@@ -162,28 +172,41 @@ Machine registration succeeded.
 >
 
 ## <a name="networking-settings"></a>Nastavení sítě
+
 Po připojení k Windows počítače k Internetu přes proxy server se nastavení proxy serveru je také možné poskytnout agenta. V tomto příkladu neexistuje žádný proxy server, takže jsme se explicitně vymazat všechny informace související s proxy serverem.
 
 Využití šířky pásma je možné řídit také s možnostmi ```work hour bandwidth``` a ```non-work hour bandwidth``` pro danou sadu dny v týdnu.
 
 Nastavení proxy serveru a šířky pásma podrobností se provádí pomocí [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) rutiny:
 
+```powershell
+Set-OBMachineSetting -NoProxy
 ```
-PS C:\> Set-OBMachineSetting -NoProxy
-Server properties updated successfully.
 
-PS C:\> Set-OBMachineSetting -NoThrottle
+```Output
+Server properties updated successfully.
+```
+
+```powershell
+Set-OBMachineSetting -NoThrottle
+```
+
+```Output
 Server properties updated successfully.
 ```
 
 ## <a name="encryption-settings"></a>Nastavení šifrování
+
 Chránit jejich důvěrnost dat zašifrovaná data záloh odeslaných do služby Azure Backup. Šifrovací heslo je "password" se dešifrovat data v době obnovení.
 
+```powershell
+ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force | Set-OBMachineSetting
+$PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force 
+$PassCode   = 'AzureR0ckx'
+Set-OBMachineSetting -EncryptionPassPhrase $PassPhrase
 ```
-PS C:\> ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force | Set-OBMachineSetting
-PS C:\> $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force 
-PS C:\> $PassCode   = 'AzureR0ckx'
-PS C:\> Set-OBMachineSetting -EncryptionPassPhrase $PassPhrase
+
+```Output
 Server properties updated successfully
 ```
 
@@ -193,6 +216,7 @@ Server properties updated successfully
 >
 
 ## <a name="back-up-files-and-folders"></a>Zálohování souborů a složek
+
 Všech záloh z Windows serverů a klientů do služby Azure Backup se řídí zásadami. Zásady se skládá ze tří částí:
 
 1. A **plán zálohování** , která určuje, kdy zálohy muset provést a synchronizovat se službou.
@@ -201,13 +225,14 @@ Všech záloh z Windows serverů a klientů do služby Azure Backup se řídí z
 
 V tomto dokumentu protože jsme používáte automatizaci zálohování, budeme předpokládat, že se že nic není nakonfigurovaná. Začneme vytvořením nové zásady zálohování pomocí [New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx) rutiny.
 
-```
-PS C:\> $newpolicy = New-OBPolicy
+```powershell
+$newpolicy = New-OBPolicy
 ```
 
 V tuto chvíli se tato zásada je prázdný a další rutiny je potřeba definovat, co budou položky zahrnuté ani vyloučené, kdy zálohy se budou spouštět, a tam, kde se uloží zálohy.
 
 ### <a name="configuring-the-backup-schedule"></a>Konfigurace plánu zálohování
+
 Plán zálohování, která je vytvořena pomocí je první ze 3 částí zásadu [New-OBSchedule](https://technet.microsoft.com/library/hh770401) rutiny. Plán zálohování definuje, kdy je třeba zálohování provést. Při vytváření plánu je potřeba zadat 2 vstupní parametry:
 
 * **Dny v týdnu** , který se má spustit zálohování. Můžete spustit úlohu zálohování na právě jeden den nebo každý den v týdnu nebo libovolnou kombinaci mezi nimi.
@@ -215,28 +240,34 @@ Plán zálohování, která je vytvořena pomocí je první ze 3 částí zásad
 
 Můžete například nakonfigurovat zásadu zálohování, která běží v 16: 00 každou sobotu a neděli.
 
-```
-PS C:\> $sched = New-OBSchedule -DaysofWeek Saturday, Sunday -TimesofDay 16:00
+```powershell
+$sched = New-OBSchedule -DaysofWeek Saturday, Sunday -TimesofDay 16:00
 ```
 
 Plán zálohování musí být přidružené k zásadám a toho lze dosáhnout pomocí [Set-OBSchedule](https://technet.microsoft.com/library/hh770407) rutiny.
 
+```powershell
+Set-OBSchedule -Policy $newpolicy -Schedule $sched
 ```
-PS C:> Set-OBSchedule -Policy $newpolicy -Schedule $sched
+
+```Output
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName : RetentionPolicy : State : New PolicyState : Valid
 ```
 ### <a name="configuring-a-retention-policy"></a>Konfigurace zásady uchovávání informací
+
 Zásady uchovávání informací Určuje, jak dlouho se uchovají body obnovení vytvořené z úlohy zálohování. Při vytváření nových zásad uchovávání informací pomocí [New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) rutiny, můžete zadat počet dní, které je potřeba pomocí služby Azure Backup uchovávat body obnovení záloh. Následující příklad nastaví zásady uchovávání informací 7 dní.
 
-```
-PS C:\> $retentionpolicy = New-OBRetentionPolicy -RetentionDays 7
+```powershell
+$retentionpolicy = New-OBRetentionPolicy -RetentionDays 7
 ```
 
 Zásady uchovávání informací musí být přidružená k hlavní zásad, pomocí rutiny [Set-OBRetentionPolicy](https://technet.microsoft.com/library/hh770405):
 
+```powershell
+Set-OBRetentionPolicy -Policy $newpolicy -RetentionPolicy $retentionpolicy
 ```
-PS C:\> Set-OBRetentionPolicy -Policy $newpolicy -RetentionPolicy $retentionpolicy
 
+```Output
 BackupSchedule  : 4:00 PM
                   Saturday, Sunday,
                   Every 1 week(s)
@@ -257,6 +288,7 @@ State           : New
 PolicyState     : Valid
 ```
 ### <a name="including-and-excluding-files-to-be-backed-up"></a>Zahrnutí a vyloučení souborů mají být zazálohovány
+
 ```OBFileSpec``` Objekt definuje soubory, které chcete zahrnout a vyloučit zálohy. To je sada pravidel, která obor si chráněné soubory a složky na počítači. Může mít mnoho souborů zahrnutí nebo vyloučení pravidla podle potřeby, a je přidružit k zásadě. Při vytváření nového objektu OBFileSpec, můžete:
 
 * Zadejte soubory a složky, které mají být zahrnuty
@@ -267,13 +299,13 @@ Druhá možnost se dosahuje použitím příznaku - nerekurzivní v příkazu Ne
 
 V následujícím příkladu přidáme zálohování svazku C: a D: a vyloučit OS binárních souborů ve složce Windows a všechny dočasné složky. K tomu vytvoříme dvě pomocí specifikace souboru [New-OBFileSpec](https://technet.microsoft.com/library/hh770408) rutiny – jeden pro zahrnutí a jeden pro vyloučení. Po vytvoření specifikace souborů jsou spojené s použitím zásad [přidat OBFileSpec](https://technet.microsoft.com/library/hh770424) rutiny.
 
+```powershell
+$inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
+$exclusions = New-OBFileSpec -FileSpec @("C:\windows", "C:\temp") -Exclude
+Add-OBFileSpec -Policy $newpolicy -FileSpec $inclusions
 ```
-PS C:\> $inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
 
-PS C:\> $exclusions = New-OBFileSpec -FileSpec @("C:\windows", "C:\temp") -Exclude
-
-PS C:\> Add-OBFileSpec -Policy $newpolicy -FileSpec $inclusions
-
+```Output
 BackupSchedule  : 4:00 PM
                   Saturday, Sunday,
                   Every 1 week(s)
@@ -308,10 +340,13 @@ RetentionPolicy : Retention Days : 7
 
 State           : New
 PolicyState     : Valid
+```
 
+```powershell
+Add-OBFileSpec -Policy $newpolicy -FileSpec $exclusions
+```
 
-PS C:\> Add-OBFileSpec -Policy $newpolicy -FileSpec $exclusions
-
+```Output
 BackupSchedule  : 4:00 PM
                   Saturday, Sunday,
                   Every 1 week(s)
@@ -357,17 +392,24 @@ PolicyState     : Valid
 ```
 
 ### <a name="applying-the-policy"></a>Použití zásady
+
 Objekt zásad teď hotový a má přidružený plán zálohování, zásady uchovávání informací a seznam souborů zahrnutí a vyloučení. Tuto zásadu je možné nyní potvrzeny použijte Azure Backup. Před použitím nově vytvořenou zásadu Ujistěte se, že neexistují žádné existující zásady zálohování přidružené k serveru pomocí [odebrat OBPolicy](https://technet.microsoft.com/library/hh770415) rutiny. Odebrat zásady a zobrazí výzvu k potvrzení. Chcete-li přeskočit použití potvrzení ```-Confirm:$false``` příznak pomocí rutiny.
 
+```powershell
+Get-OBPolicy | Remove-OBPolicy
 ```
-PS C:> Get-OBPolicy | Remove-OBPolicy
+
+```Output
 Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
 Potvrzení objektu zásad se provádí pomocí [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) rutiny. Také to požádá o potvrzení. Chcete-li přeskočit použití potvrzení ```-Confirm:$false``` příznak pomocí rutiny.
 
+```powershell
+Set-OBPolicy -Policy $newpolicy
 ```
-PS C:> Set-OBPolicy -Policy $newpolicy
+
+```Output
 Microsoft Azure Backup Do you want to save this backup policy ? [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s)
 DsList : {DataSource
@@ -411,19 +453,32 @@ State : Existing PolicyState : Valid
 
 Můžete zobrazit podrobnosti o existující zásady zálohování pomocí [Get-OBPolicy](https://technet.microsoft.com/library/hh770406) rutiny. Můžete procházet hierarchii dál používat [Get-OBSchedule](https://technet.microsoft.com/library/hh770423) rutiny pro plán zálohování a [Get-OBRetentionPolicy](https://technet.microsoft.com/library/hh770427) rutiny pro zásady uchovávání informací
 
+```powershell
+Get-OBPolicy | Get-OBSchedule
 ```
-PS C:> Get-OBPolicy | Get-OBSchedule
+
+```Output
 SchedulePolicyName : 71944081-9950-4f7e-841d-32f0a0a1359a
 ScheduleRunDays : {Saturday, Sunday}
 ScheduleRunTimes : {16:00:00}
 State : Existing
+```
 
-PS C:> Get-OBPolicy | Get-OBRetentionPolicy
+```powershell
+Get-OBPolicy | Get-OBRetentionPolicy
+```
+
+```Output
 RetentionDays : 7
 RetentionPolicyName : ca3574ec-8331-46fd-a605-c01743a5265e
 State : Existing
+```
 
-PS C:> Get-OBPolicy | Get-OBFileSpec
+```powershell
+Get-OBPolicy | Get-OBFileSpec
+```
+
+```Output
 FileName : *
 FilePath : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
 FileSpec : D:\
@@ -450,10 +505,14 @@ IsRecursive : True
 ```
 
 ### <a name="performing-an-ad-hoc-backup"></a>Zálohování ad hoc
+
 Po nastavení zásady zálohování k zálohování dojde za plán. Spouští se ad hoc záloha je také možné pomocí [Start OBBackup](https://technet.microsoft.com/library/hh770426) rutiny:
 
+```powershell
+Get-OBPolicy | Start-OBBackup
 ```
-PS C:> Get-OBPolicy | Start-OBBackup
+
+```Output
 Initializing
 Taking snapshot of volumes...
 Preparing storage...
@@ -467,6 +526,7 @@ The backup operation completed successfully.
 ```
 
 ## <a name="restore-data-from-azure-backup"></a>Obnovení dat z Azure Backup
+
 Tato část vás provede kroky pro automatizaci obnovení dat z Azure Backup. To zahrnuje následující kroky:
 
 1. Vyberte zdrojový svazek
@@ -475,11 +535,15 @@ Tato část vás provede kroky pro automatizaci obnovení dat z Azure Backup. To
 4. Aktivační proces obnovení
 
 ### <a name="picking-the-source-volume"></a>Výběr zdrojového svazku
+
 Aby bylo možné obnovit položku z Azure Backup, musíte nejprve identifikovat zdroj položky. Vzhledem k tomu, že jsme při provádění příkazů v rámci systému Windows Server nebo klienta Windows, tento počítač je už identifikoval. Dalším krokem při identifikaci zdroj je identifikovat svazek, který ji obsahuje. Seznam svazků nebo zdrojů zálohovaných z tohoto počítače je možné načíst pomocí provádí [Get-OBRecoverableSource](https://technet.microsoft.com/library/hh770410) rutiny. Tento příkaz vrátí pole všech zdrojů zálohovaných z tohoto serveru/klienta.
 
+```powershell
+$source = Get-OBRecoverableSource
+$source
 ```
-PS C:> $source = Get-OBRecoverableSource
-PS C:> $source
+
+```Output
 FriendlyName : C:\
 RecoverySourceName : C:\
 ServerName : myserver.microsoft.com
@@ -490,10 +554,14 @@ ServerName : myserver.microsoft.com
 ```
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>Výběr bodu zálohy, ze kterého se má obnovit
+
 Načíst seznam body zálohy pomocí provádí [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) rutinu s příslušnými parametry. V našem příkladu jsme vybrali nejnovější bod zálohy pro zdrojový svazek *D:* a použít ho k obnovení k určitému souboru.
 
+```powershell
+$rps = Get-OBRecoverableItem -Source $source[1]
 ```
-PS C:> $rps = Get-OBRecoverableItem -Source $source[1]
+
+```Output
 IsDir : False
 ItemNameFriendly : D:\
 ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
@@ -519,13 +587,17 @@ ItemLastModifiedTime :
 Objekt ```$rps``` je pole body záloh. Prvním prvkem je poslední bod a n-tý prvek je nejstarší bod. Zvolte nejnovější bod, budeme používat ```$rps[0]```.
 
 ### <a name="choosing-an-item-to-restore"></a>Výběr položky obnovení
+
 K identifikaci souborů nebo složku, kterou chcete obnovit, použijte rekurzivní [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) rutiny. Tímto způsobem můžete procházet hierarchii složek výhradně pomocí ```Get-OBRecoverableItem```.
 
 V tomto příkladu, pokud se mají obnovit soubor *finances.xls* jsme můžete odkázat pomocí objektu ```$filesFolders[1]```.
 
+```powershell
+$filesFolders = Get-OBRecoverableItem $rps[0]
+$filesFolders
 ```
-PS C:> $filesFolders = Get-OBRecoverableItem $rps[0]
-PS C:> $filesFolders
+
+```Output
 IsDir : True
 ItemNameFriendly : D:\MyData\
 ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\
@@ -536,9 +608,14 @@ PointInTime : 18-Jun-15 6:41:52 AM
 ServerName : myserver.microsoft.com
 ItemSize :
 ItemLastModifiedTime : 15-Jun-15 8:49:29 AM
+```
 
-PS C:> $filesFolders = Get-OBRecoverableItem $filesFolders[0]
-PS C:> $filesFolders
+```powershell
+$filesFolders = Get-OBRecoverableItem $filesFolders[0]
+$filesFolders
+```
+
+```Output
 IsDir : False
 ItemNameFriendly : D:\MyData\screenshot.oxps
 ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\screenshot.oxps
@@ -564,21 +641,25 @@ ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 
 Můžete také hledat položky provést obnovení pomocí ```Get-OBRecoverableItem``` rutiny. V našem příkladu, k vyhledání *finances.xls* jsme může získat popisovač souboru spuštěním tohoto příkazu:
 
-```
-PS C:\> $item = Get-OBRecoverableItem -RecoveryPoint $rps[0] -Location "D:\MyData" -SearchString "finance*"
+```powershell
+$item = Get-OBRecoverableItem -RecoveryPoint $rps[0] -Location "D:\MyData" -SearchString "finance*"
 ```
 
 ### <a name="triggering-the-restore-process"></a>Spuštění procesu obnovení
+
 Spustit proces obnovení, musíme nejprve zadat možnosti obnovení. To můžete udělat pomocí [New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) rutiny. V tomto příkladu předpokládejme, že chceme obnovit soubory do *C:\temp*. Předpokládejme také, že chceme přeskočit soubory, které jsou už v cílové složce *C:\temp*. Pokud chcete vytvořit tyto možnosti obnovení, použijte následující příkaz:
 
-```
-PS C:\> $recovery_option = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
+```powershell
+$recovery_option = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
 Nyní spustit proces obnovení pomocí [Start OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) v vybraný příkaz ```$item``` z výstupu ```Get-OBRecoverableItem``` rutiny:
 
+```powershell
+Start-OBRecovery -RecoverableItem $item -RecoveryOption $recover_option
 ```
-PS C:\> Start-OBRecovery -RecoverableItem $item -RecoveryOption $recover_option
+
+```Output
 Estimating size of backup items...
 Estimating size of backup items...
 Estimating size of backup items...
@@ -589,10 +670,11 @@ The recovery operation completed successfully.
 
 
 ## <a name="uninstalling-the-azure-backup-agent"></a>Odinstalace agenta Azure Backup
+
 Odinstalace agenta Azure Backup lze provést pomocí následujícího příkazu:
 
-```
-PS C:\> .\MARSAgentInstaller.exe /d /q
+```powershell
+.\MARSAgentInstaller.exe /d /q
 ```
 
 Odinstalace agenta binární soubory z počítače má některé důsledky vzít v úvahu:
@@ -604,13 +686,16 @@ Odinstalace agenta binární soubory z počítače má některé důsledky vzít
 Ale data uložená v Azure zůstane a se závislosti na nastavení zásad uchovávání informací uchovávají vámi. Starší body se automaticky stará navýšení kapacity.
 
 ## <a name="remote-management"></a>Vzdálená správa
+
 Veškerá Správa týkající se agenta Azure Backup, zásady a zdroje dat lze provést vzdáleně přes PowerShell. Musí správně připravily počítač, který bude možné spravovat vzdáleně.
 
 Ve výchozím nastavení je Služba WinRM nakonfigurována pro ruční spuštění. Typ spuštění musí být nastavený na *automatické* a služby měly být spuštěny. Pokud chcete ověřit, zda je spuštěna Služba WinRM, by měla být hodnota vlastnosti stavu *systémem*.
 
+```powershell
+Get-Service WinRM
 ```
-PS C:\> Get-Service WinRM
 
+```Output
 Status   Name               DisplayName
 ------   ----               -----------
 Running  winrm              Windows Remote Management (WS-Manag...
@@ -618,28 +703,34 @@ Running  winrm              Windows Remote Management (WS-Manag...
 
 Prostředí PowerShell by měl být nakonfigurovaný pro vzdálenou komunikaci.
 
+```powershell
+Enable-PSRemoting -force
 ```
-PS C:\> Enable-PSRemoting -force
+
+```Output
 WinRM is already set up to receive requests on this computer.
 WinRM has been updated for remote management.
 WinRM firewall exception enabled.
+```
 
-PS C:\> Set-ExecutionPolicy unrestricted -force
+```powershell
+Set-ExecutionPolicy unrestricted -force
 ```
 
 Tento počítač nyní možné spravovat vzdáleně – od instalace agenta. Například následující skript zkopíruje agenta ke vzdálenému počítači a nainstaluje ho.
 
-```
-PS C:\> $dloc = "\\REMOTESERVER01\c$\Windows\Temp"
-PS C:\> $agent = "\\REMOTESERVER01\c$\Windows\Temp\MARSAgentInstaller.exe"
-PS C:\> $args = "/q"
-PS C:\> Copy-Item "C:\Downloads\MARSAgentInstaller.exe" -Destination $dloc - force
+```powershell
+$dloc = "\\REMOTESERVER01\c$\Windows\Temp"
+$agent = "\\REMOTESERVER01\c$\Windows\Temp\MARSAgentInstaller.exe"
+$args = "/q"
+Copy-Item "C:\Downloads\MARSAgentInstaller.exe" -Destination $dloc - force
 
-PS C:\> $s = New-PSSession -ComputerName REMOTESERVER01
-PS C:\> Invoke-Command -Session $s -Script { param($d, $a) Start-Process -FilePath $d $a -Wait } -ArgumentList $agent $args
+$s = New-PSSession -ComputerName REMOTESERVER01
+Invoke-Command -Session $s -Script { param($d, $a) Start-Process -FilePath $d $a -Wait } -ArgumentList $agent $args
 ```
 
 ## <a name="next-steps"></a>Další postup
+
 Další informace o Azure Backup pro Windows Server nebo klienta najdete v tématu
 
 * [Seznámení s Azure Backup](backup-introduction-to-azure-backup.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: ee7c471cdd76829abc03fa4578d09b8a7303cb38
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d500e26f5701e59dacfd5f09f6eaf88c5ced74e6
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891429"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648516"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Náklady na software, které nejsou součástí Azure Reserved VM Instances
 
@@ -69,15 +69,15 @@ Pokud nemáte Azure Hybrid Use Benefit na vaší rezervované instance virtuáln
 Náklady na každý z těchto měřičů můžete získat pomocí Azure RateCard API. Informace o tom, jak získat sazby pro azure měřičů najdete v tématu [získání informací o cenách a metadat pro prostředky používané v rámci předplatného Azure](https://msdn.microsoft.com/library/azure/mt219004).
 
 ## <a name="next-steps"></a>Další postup
-Další informace o rezervacích Azure, najdete v následujících článcích:
+Další informace o rezervacích pro Azure, najdete v následujících článcích:
 
-- [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
+- [Co jsou rezervace pro Azure?](billing-save-compute-costs-reservations.md)
 - [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
+- [Správa rezervací pro Azure](billing-manage-reserved-vm-instance.md)
 - [Vysvětlení, jak se sleva za rezervaci použije](billing-understand-vm-reservation-charges.md)
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

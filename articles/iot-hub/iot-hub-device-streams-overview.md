@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 024bb29f9d7276021888e949073f6d45aed0a249
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 672b06dda41edb18cbf31352188b0fdd2a155782
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076271"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649628"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub zařízení datové proudy (preview)
 
@@ -101,7 +101,7 @@ Výstup je objekt JSON všechny koncové body, které vaše Centrum zařízení 
 
 ## <a name="whitelist-device-streaming-endpoints"></a>Koncové body streamování povolených zařízení
 
-Jak už bylo zmíněno [starší](#Overview), vaše zařízení vytvoří odchozí připojení ke službě IoT Hub koncový bod streamování během datové proudy zařízení zahájení procesu. Brány firewall na zařízení nebo v jeho síti musíte povolit odchozí připojení k bráně streamování přes port 443 (Všimněte si, že komunikace probíhá přes připojení pomocí protokolu WebSocket, která je zašifrovaná pomocí protokolu TLS).
+Jak už bylo zmíněno [starší](#overview), vaše zařízení vytvoří odchozí připojení ke službě IoT Hub koncový bod streamování během datové proudy zařízení zahájení procesu. Brány firewall na zařízení nebo v jeho síti musíte povolit odchozí připojení k bráně streamování přes port 443 (Všimněte si, že komunikace probíhá přes připojení pomocí protokolu WebSocket, která je zašifrovaná pomocí protokolu TLS).
 
 Název hostitele koncového bodu streamování zařízení můžete najít na portálu Azure IoT Hub na kartě Přehled. ![Alternativní text](./media/iot-hub-device-streams-overview/device-stream-portal.PNG "koncové body služby stream zařízení")
 

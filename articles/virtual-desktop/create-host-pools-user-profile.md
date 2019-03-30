@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: c9c2ca2cc27c5fa757b8ff6846e0a6a8f7087875
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: af4147de06f9fb7c856dfd93dc186f1a6e83ffff
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403710"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58628991"
 ---
-# <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Nastavení sdílené složky profilu uživatele pro fond hostitele
+# <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Nastavení sdílení profilu uživatele pro fond hostitelů
 
 Služba Windows virtuální plochy, ve verzi Preview nabízí FSLogix profilu kontejnery jako řešení doporučené uživatelských profilů. Nedoporučujeme ale používat řešení disku profilu uživatele (UPD) a bude vyřazena v budoucích verzích Windows virtuálního klienta.
 
-V této části zjistíte, jak vytvořit sdílenou složku FSLogix profilu kontejner pro skupinu hostitelů.
+V této části zjistíte, jak vytvořit sdílenou složku FSLogix profilu kontejner pro skupinu hostitelů. Obecná dokumentace týkající se FSLogix, najdete v článku [FSLogix lokality](https://docs.fslogix.com/).
 
 ## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Vytvořit nový virtuální počítač, který bude sloužit jako sdílené složky
 
@@ -48,14 +48,14 @@ Následují obecné pokyny o tom, jak připravit virtuální počítač tak, aby
 6. Vyhledejte skupinu zabezpečení, ke které jste přidali relace hostování virtuálních počítačů a pak ověřte, zda má tuto skupinu **úplné řízení**.
 7. Po přidání skupiny zabezpečení, klikněte pravým tlačítkem na složku, vyberte **vlastnosti**vyberte **sdílení**, zkopírujte dolů **síťová cesta** pro pozdější použití.
 
-Doporučených postupech ohledně oprávnění naleznete na následujícím [FSLogix dokumentaci](https://support.fslogix.com/index.php/forum-main/faqs/84-best-practices#120).
+Další informace o oprávněních najdete v tématu [FSLogix dokumentaci](https://docs.fslogix.com/display/20170529/Requirements%2B-%2BProfile%2BContainers).
 
 ## <a name="configure-the-fslogix-profile-container"></a>Konfigurace kontejneru FSLogix profilu
 
 Ke konfiguraci virtuálních počítačů se softwarem FSLogix, proveďte postup na každý počítač zaregistrovaný do fondu hostitele:
 
 1. [Připojení k virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) s přihlašovacími údaji, které jste zadali při vytváření virtuálního počítače.
-2. Spustit internetový prohlížeč a přejděte na následující [odkaz](https://go.microsoft.com/fwlink/?linkid=2084562) stažení FSLogix agenta. Jako součást verze preview pro veřejnost virtuální plochy Windows získáte licenční klíč k aktivaci FSLogix softwaru. Klíč je LicenseKey.txt soubor zahrnut do souboru .zip FSLogix agenta.
+2. Spustit internetový prohlížeč a přejděte do [tento odkaz](https://go.microsoft.com/fwlink/?linkid=2084562) stažení FSLogix agenta. Jako součást verze preview pro veřejnost virtuální plochy Windows získáte licenční klíč k aktivaci FSLogix softwaru. Klíč je LicenseKey.txt soubor zahrnut do souboru .zip FSLogix agenta.
 3. Nainstalujte agenta FSLogix.
 4. Přejděte do **Program Files** > **FSLogix** > **aplikace** potvrďte instalaci agenta.
 5. Z nabídky start spusťte **RegEdit** jako správce. Přejděte do **počítače\\HKEY_LOCAL_MACHINE\\softwaru\\FSLogix\\profily**

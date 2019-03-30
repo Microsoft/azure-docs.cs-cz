@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
-ms.openlocfilehash: 5606fb2f01a79a517279809d6da21ec865ee8b0d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b693500e785d41b2ad3339e26dd9fd3505891bc0
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110133"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648329"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Přiřadit několik IP adres pro virtuální počítače pomocí Azure CLI
 
@@ -165,7 +165,7 @@ Přidat privátních IP adres do operačního systému virtuálního počítače
 
 ## <a name="add"></a>Přidejte IP adresy virtuálního počítače
 
-Provedením následujících kroků můžete přidat další privátní a veřejné IP adresy pro existující rozhraní sítě Azure. V příkladech stavět [scénář](#Scenario) popsaných v tomto článku.
+Provedením následujících kroků můžete přidat další privátní a veřejné IP adresy pro existující rozhraní sítě Azure. V příkladech stavět [scénář](#scenario) popsaných v tomto článku.
 
 1. Otevřete příkazové okno a proveďte zbývající kroky v této části v rámci jedné relace. Pokud ještě nemáte rozhraní příkazového řádku Azure, instalaci a konfiguraci, proveďte kroky v [instalace Azure CLI](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) článku a přihlaste se k Azure, účet se `az-login` příkazu.
 

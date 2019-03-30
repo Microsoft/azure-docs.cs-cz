@@ -4,17 +4,21 @@ description: Obsahuje informace o upgradech pro zařízení Azure Migrate Collec
 author: musa-57
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 03/29/2019
 ms.author: hamusa
 services: azure-migrate
-ms.openlocfilehash: f9f2ef25a2054d92cdcc3ab33ea9234883e352d6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 7cd44318716200d665ece9ffecc45225bdfb85eb
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484504"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648669"
 ---
 # <a name="collector-appliance-updates"></a>Aktualizace zařízení kolektoru
+
+Tento článek shrnuje informace o upgradu pro zařízení Kolektoru v [Azure Migrate](migrate-overview.md).
+
+Azure Migrate Collector je zjednodušené zařízení, která se používá ke zjišťování v místním prostředí, vCenter, pro účely posouzení před migrací do Azure. [Další informace](concepts-collector.md).
 
 ## <a name="how-to-upgrade-the-appliance"></a>Postup upgradu na zařízení
 
@@ -33,11 +37,19 @@ Kolekce můžete upgradovat na nejnovější verzi bez stáhnout soubor OVA znov
 
 ## <a name="collector-update-release-history"></a>Historie verzí aktualizace kolekce
 
-Tento článek shrnuje informace o upgradu pro zařízení Kolektoru v [Azure Migrate](migrate-overview.md).
-
-Azure Migrate Collector je zjednodušené zařízení, která se používá ke zjišťování v místním prostředí, vCenter, pro účely posouzení před migrací do Azure. [Další informace](concepts-collector.md).
-
 ### <a name="continuous-discovery-upgrade-versions"></a>Průběžná zjišťování: Upgrade verze
+
+#### <a name="version-101014-released-on-03292019"></a>Verze 1.0.10.14 (vydaného 03/29 nebo 2019)
+
+Obsahuje několik vylepšení uživatelského rozhraní.
+
+Hodnota hash hodnoty pro upgrade [balíček 1.0.10.14](https://aka.ms/migrate/col/upgrade_10_14)
+
+**Algoritmus** | **Hodnota hash**
+--- | ---
+MD5 | 846b1eb29ef2806bcf388d10519d78e6
+SHA1 | 6243239fa49c6b3f5305f77e9fd4426a392d33a0
+SHA256 | fb058205c945a83cc4a31842b9377428ff79b08247f3fb8bb4ff30c125aa47ad
 
 #### <a name="version-101012-released-on-03132019"></a>Verze 1.0.10.12 (vydaného 03/13/2019)
 

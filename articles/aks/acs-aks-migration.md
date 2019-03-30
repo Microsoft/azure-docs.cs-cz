@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: e42b0e7bd1bce40b7c58d75cb07f5a3f8afa5836
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 910c96988ec0a8b8aa7b6ac8ce287c4fdc59e177
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385037"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649964"
 ---
 # <a name="migrating-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Migrace ze služby Azure Container Service (ACS) do služby Azure Kubernetes Service (AKS)
 
@@ -91,7 +91,7 @@ Existuje několik faktorů vzít v úvahu, pokud migrujete existující svazky s
 7. Ověření
 8. Přejděte na provoz clusteru AKS
 
-> **Důležité**: Pokud se rozhodnete uvést do stavu nečinnosti zápisy, bude nutné k replikaci dat na nové nasazení, jako nebudete mít k dispozici data, která byla zapsána od snímku disku
+> **Důležité**: Pokud zvolíte ne zápisy uveďte do stavu nečinnosti, bude nutné k replikaci dat na nové nasazení, jako nebudete mít k dispozici data, která byla zapsána od snímku disku
 
 Existují Open source nástroje, které vám může pomoct vytvořit Managed Disks a migrace svazků mezi clustery Kubernetes.
 
@@ -144,7 +144,7 @@ Ujistěte se, veškeré nezbytné úpravy definic YAML. Např.: nahrazení `apps
 
 ### <a name="3-optional-migrate-volumes"></a>3. (Volitelné) Migrace svazků
 
-Migrace svazků z clusteru služby ACS do clusteru AKS. Další podrobnosti najdete v [migrace trvalé svazky](#Migrating-Persistent-Volumes) oddílu.
+Migrace svazků z clusteru služby ACS do clusteru AKS. Další podrobnosti najdete v [migrace trvalé svazky](#migrating-persistent-volumes) oddílu.
 
 ### <a name="4-deploy-applications"></a>4. Nasazení aplikací
 

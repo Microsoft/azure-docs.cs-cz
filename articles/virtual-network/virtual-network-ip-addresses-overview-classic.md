@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 3a295a5c8a202b2f3186e696bb281002090fcad4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112598"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652163"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Typy IP adres a metody přidělení (classic) v Azure
 Přiřazením IP adres k prostředkům Azure umožníte komunikaci s ostatními prostředky Azure, místní sítí a internetem. Existují dva typy IP adres můžete použít v Azure: veřejné a soukromé.
@@ -41,7 +41,7 @@ Veřejná IP adresa je přidružen následující typy prostředků:
 * Application Gateway
 
 ### <a name="allocation-method"></a>Metoda přidělování
-Veřejná IP adresa je třeba přiřadit k prostředku Azure, je *dynamicky* přiděluje z fondu k dispozici veřejnou IP adresu v rámci umístění je prostředek vytvořený. Tato IP adresa se uvolní při zastavení prostředku. S cloudovou službou, to se stane, když všechny instance rolí jsou zastaveny, které se můžete vyhnout použitím *statické* (vyhrazená) IP adresa (naleznete v tématu [Cloud Services](#Cloud-services)).
+Veřejná IP adresa je třeba přiřadit k prostředku Azure, je *dynamicky* přiděluje z fondu k dispozici veřejnou IP adresu v rámci umístění je prostředek vytvořený. Tato IP adresa se uvolní při zastavení prostředku. S cloudovou službou, to se stane, když všechny instance rolí jsou zastaveny, které se můžete vyhnout použitím *statické* (vyhrazená) IP adresa (naleznete v tématu [Cloud Services](#cloud-services)).
 
 > [!NOTE]
 > Seznam rozsahů IP adres, ze kterých jsou přidělené veřejné IP adresy k prostředkům Azure je zveřejněný na webu [rozsahy IP adres Azure Datacenter](https://www.microsoft.com/download/details.aspx?id=41653).

@@ -8,14 +8,15 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4552249e7d7dd79edbe885b3d615f5071aa694ee
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c7a185e1c7f271cdca0c688ce7838f6390594da5
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116095"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650406"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Kurz: Šifrování a dešifrování objektů BLOB ve službě Microsoft Azure Storage pomocí Azure Key Vault
+
 ## <a name="introduction"></a>Úvod
 Tento kurz se zaměřuje na tom, jak provést pomocí šifrování na straně klienta úložiště se službou Azure Key Vault. Provede vás provede postupy šifrování a dešifrování objektů blob v konzolové aplikaci, použití těchto technologií.
 
@@ -26,6 +27,7 @@ Další informace o službě Azure Key Vault najdete v článku [co je Azure Key
 Další informace o šifrování na straně klienta pro službu Azure Storage, najdete v článku [šifrování na straně klienta a služby Azure Key Vault pro Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="prerequisites"></a>Požadavky
+
 K dokončení tohoto kurzu potřebujete:
 
 * Účet služby Azure Storage
@@ -33,6 +35,7 @@ K dokončení tohoto kurzu potřebujete:
 * Azure PowerShell
 
 ## <a name="overview-of-client-side-encryption"></a>Přehled šifrování na straně klienta
+
 Přehled šifrování na straně klienta pro službu Azure Storage najdete v tématu [šifrování na straně klienta a služby Azure Key Vault pro úložiště Microsoft Azure](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 Tady je stručný popis toho, jak funguje šifrování na straně klienta:
@@ -43,6 +46,7 @@ Tady je stručný popis toho, jak funguje šifrování na straně klienta:
 4. Šifrovaná data se pak nahrají do služby Azure Storage.
 
 ## <a name="set-up-your-azure-key-vault"></a>Nastavení služby Azure Key Vault
+
 Chcete-li pokračovat s tímto kurzem, budete muset provést následující kroky, které jsou popsány v tomto kurzu [co je Azure Key Vault?](../../key-vault/key-vault-overview.md):
 
 * Vytvoření trezoru klíčů
@@ -55,11 +59,12 @@ Poznamenejte si ID klienta a ClientSecret, které byly generovány při registra
 Vytvoření oba klíče v trezoru klíčů. Pro zbývající část tohoto kurzu předpokládáme, že jste použili následující názvy: ContosoKeyVault a TestRSAKey1.
 
 ## <a name="create-a-console-application-with-packages-and-appsettings"></a>Vytvoření konzolové aplikace pomocí balíčků a AppSettings
+
 V sadě Visual Studio vytvořte novou konzolovou aplikaci.
 
 Přidání balíčků nuget nezbytné v konzole Správce balíčků.
 
-```
+```powershell
 Install-Package WindowsAzure.Storage
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
@@ -93,6 +98,7 @@ using System.IO;
 ```
 
 ## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>Přidejte metodu k získání tokenu do konzolové aplikace
+
 Následující metoda se používá ve službě Key Vault třídy, které potřebujete k ověření pro přístup k trezoru klíčů.
 
 ```csharp
@@ -112,6 +118,7 @@ private async static Task<string> GetToken(string authority, string resource, st
 ```
 
 ## <a name="access-storage-and-key-vault-in-your-program"></a>Přístup k úložišti a Key Vault ve svém programu
+
 Ve funkci Main přidejte následující kód.
 
 ```csharp
@@ -141,6 +148,7 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 > 
 
 ## <a name="encrypt-blob-and-upload"></a>Šifrování objektů blob a odeslat
+
 Přidejte následující kód k šifrování objektu blob a nahrajte ho do svého účtu úložiště Azure. **ResolveKeyAsync** metodu, která se používá vrátí Instrumentační klíč.
 
 ```csharp
@@ -167,6 +175,7 @@ using (var stream = System.IO.File.OpenRead(@"C:\data\MyFile.txt"))
 > 
 
 ## <a name="decrypt-blob-and-download"></a>Dešifrování objektů blob a stáhnout
+
 Dešifrování je ve skutečnosti když použitím překladač třídy dávat smysl. ID klíč používaný k šifrování je přidružený objekt blob ve svých metadatech, takže neexistuje žádný důvod k načtení klíče a nezapomeňte přidružení mezi klíčem a objektů blob. Stačí Ujistěte se, že klíč zůstane ve službě Key Vault.   
 
 Privátní klíč klíčem RSA zůstává ve službě Key Vault, takže k dešifrování dojde k zašifrovaný klíč z metadat objektu blob, který obsahuje CEK se odešlou do služby Key Vault k dešifrování.
@@ -189,6 +198,7 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 > 
 
 ## <a name="use-key-vault-secrets"></a>Použití tajných kódů služby Key Vault
+
 Způsob, jak pomocí šifrování na straně klienta tajný kód je prostřednictvím třídy SymmetricKey, protože tajného kódu je v podstatě symetrický klíč. Ale jak bylo uvedeno výše, tajný klíč ve službě Key Vault není namapovaná na SymmetricKey přesně. Chcete-li pochopit některé věci:
 
 * Klíč SymmetricKey musí být pevné délky: 128, 192, 256, 384 nebo 512 bitů.
@@ -221,6 +231,7 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 A to je vše. Užijte si ji!
 
 ## <a name="next-steps"></a>Další postup
+
 Další informace o používání služby Microsoft Azure Storage pomocí jazyka C# najdete v tématu [Microsoft Azure Storage Client Library pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
 Další informace o rozhraní REST API objektů Blob najdete v tématu [rozhraní REST API služby Blob](https://msdn.microsoft.com/library/azure/dd135733.aspx).

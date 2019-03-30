@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstarts
 ms.date: 2/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 363589116cc7b936358ce0b16cbaba9a42c66234
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e2b9b3cdcb712fcf6c415f574dc687e80ae9ee3b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078070"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660506"
 ---
 # <a name="set-up-azure-netapp-files-and-create-a-volume"></a>Nastavení služby Azure NetApp Files a vytvoření svazku 
 
@@ -105,9 +105,9 @@ Musíte být součástí programu ve verzi Public Preview a pro přístup k posk
    4. Použijte výchozí hodnotu pro kvótu. 
    5. V rámci virtuální sítě, klikněte na tlačítko **vytvořit nový** vytvořit novou virtuální síť Azure (Vnet).  Potom zadejte následující informace:
        * Zadejte **myvnet1** jako název virtuální sítě.
-       * Zadejte adresní prostor, například 10.7.0.0/16.
+       * Zadejte adresní prostor pro nastavení, například 10.7.0.0/16
        * Zadejte **myANFsubnet** jako název podsítě.
-       * Zadejte rozsah adres podsítě, například 10.7.0.0/24.
+       * Zadejte rozsah adres podsítě, například 10.7.0.0/24. Všimněte si, že vyhrazenou podsíť nejde sdílet s jiným prostředkům.
        * Vyberte **Microsoft.NetApp/volumes** pro delegování podsítě.
        * Klikněte na tlačítko **OK** vytvořte síť Vnet.
    6. V podsíti, vyberte nově vytvořenou virtuální síť (**myvnet1**) jako podsítě delegáta.

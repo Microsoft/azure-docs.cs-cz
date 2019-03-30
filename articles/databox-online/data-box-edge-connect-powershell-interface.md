@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 03/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 9b0e94deda205497cda4ebf383f302c6c3bb896a
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: a3096729b2430adf0fd884fc03e3b051b17f5b51
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403591"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660456"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Správa Azure Data Box hraničního zařízení pomocí Windows Powershellu
 
@@ -43,6 +43,20 @@ Tento článek obsahuje následující postupy:
 ## <a name="upload-certificate"></a>Nahrání certifikátu
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
+
+Můžete také nahrát certifikáty IoT Edge umožňuje zabezpečené připojení mezi zařízení IoT Edge a podřízené zařízení může připojit k němu. Existují tři certifikáty IoT Edge (*.pem* formátu), který je potřeba nainstalovat:
+
+- Certifikát kořenové certifikační Autority nebo vlastník certifikační Autority
+- Certifikát certifikační Autority zařízení
+- Zařízení klíče certifikátu
+
+Následující příklad ukazuje použití této rutiny instalace certifikátů IoT Edge:
+
+```
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username/password"
+```
+
+Další informace o certifikátech naleznete v části [certifikáty Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) nebo [nainstalujte certifikáty na bránu](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
 
 ## <a name="view-device-information"></a>Zobrazení informací o zařízení
  

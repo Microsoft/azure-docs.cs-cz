@@ -4,7 +4,7 @@ description: Tento článek popisuje Fault Analysis Service ve službě Service 
 services: service-fabric
 documentationcenter: .net
 author: anmolah
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: a4ddfc17a81a6816bc797bab4c3b5a8b2fc4334e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3581550779b2387515b4f300d211b4e0a894edc7
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425234"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662349"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Úvod do Fault Analysis Service
 Fault Analysis Service je určená pro testování služeb, které jsou postavené na Microsoft Azure Service Fabric. Fault Analysis Service můžete zahájit smysluplné chyb a spouštějte scénáře dokončení testování vašich aplikací. Tyto chyby a scénáře výkon a ověřit řadu stavy a přechody, která službu budou moct používat v průběhu svého životního cyklu, všechny řízené, bezpečné a konzistentním způsobem.
@@ -46,9 +46,9 @@ Když je zahájeno selhání akce nebo testovací scénář, příkaz je odesíl
 ## <a name="testing-distributed-systems"></a>Testování distribuovaných systémů
 Service Fabric zajišťuje práce pro zápis a správa škálovatelných aplikací distribuovaných výrazně usnadňuje. Fault Analysis Service je testování jednodušší podobně distribuované aplikace. Existují tři hlavní problémy, které je potřeba vyřešit při testování:
 
-1. Simulace a generování chyb, které mohou nastat situace ze skutečného světa: jedním z důležitých aspektů Service Fabric je, že umožňuje distribuované aplikace k zotavení z různých chyb. Pokud chcete otestovat, že aplikace je možné obnovit z těchto chyb, ještě ale zbývá mechanismus pro simulaci/generovat skutečná selhání v řízeném testovacím prostředí.
-1. Generovat korelační selhání: základní selhání v systému, jako je například selhání sítě a selhání v počítači, je snadné je vytvořit samostatně. Generování velký počet scénářů, které může dojít v reálném světě v důsledku interakce jednotlivá selhání je netriviální.
-1. Jednotné rozhraní pro vývoj a nasazení od různých úrovních: existují mnoho selhání vkládání systémů, které můžete dělat různé typy chyb. Prostředí pro všechny z nich ale nízký při přesunu z jedné integrované Vývojářské scénáře ke spuštěnému stejné testy v prostředích s velkými testovacími je může používat pro testování v produkčním prostředí.
+1. Simulace/generování chyb, které mohou nastat v reálné situace: Jedním z důležitých aspektů Service Fabric je, že umožňuje distribuované aplikace k zotavení z chyb při různých. Pokud chcete otestovat, že aplikace je možné obnovit z těchto chyb, ještě ale zbývá mechanismus pro simulaci/generovat skutečná selhání v řízeném testovacím prostředí.
+1. Možnost Generovat korelační selhání: Základní selhání v systému, jako je například selhání sítě a počítač selhání, se snadno vytvářet jednotlivě. Generování velký počet scénářů, které může dojít v reálném světě v důsledku interakce jednotlivá selhání je netriviální.
+1. Jednotné prostředí pro vývoj a nasazení od různých úrovních: Existuje mnoho selhání vkládání systémů, které můžete dělat různé typy chyb. Prostředí pro všechny z nich ale nízký při přesunu z jedné integrované Vývojářské scénáře ke spuštěnému stejné testy v prostředích s velkými testovacími je může používat pro testování v produkčním prostředí.
 
 I když existují mnoho mechanismů k řešení těchto problémů, systém, který dělá totéž s požadované záruky – od jedné integrované vývojářské prostředí, otestovat v produkčních clusterech – chybí. Fault Analysis Service pomáhá vývojářům aplikací soustředit na své obchodní logiky testování. Fault Analysis Service nabízí všechny funkce potřebné pro testování interakce službu pomocí základního distribuovaného systému.
 

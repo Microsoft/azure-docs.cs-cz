@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2019
+ms.date: 03/28/2019
 ms.author: pareshmu
-ms.openlocfilehash: 91b8c660608b3705d518d18cd32675891c8a4c5b
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6049b90e055fb7ecb2e823519ad5530a2c509232
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522277"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629652"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -91,6 +91,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Podporováno |Podporováno |Amsterdam, Dublin, London, Paris, Singapore2, Tokyo |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |Podporováno |Podporováno |Chicago, Silicon Valley, Washington DC |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |Podporováno |Podporováno |Chicago, Denver, Los Angeles, New York, Silicon Valley, Washington DC, Washington DC2 |
+| **DE-CIX** | Podporováno |Podporováno |Amsterdam2|
 | **eir** |Podporováno |Podporováno |Dublin|
 | **Epsilon Global Communications** |Podporováno |Podporováno |Singapur, Singapur2 |
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Podporováno |Podporováno |Amsterdam, Atlanta, Chicago, Dallas, Dublin, Hongkong, Londýn, London2, Los Angeles, Melbourne, Miami, New York, Ósaka, Paříž, Sao Paulo, Seattle, Silicon Valley, Singapur, Sydney, Tokio, Toronto, Washington DC |
@@ -132,7 +133,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Telehouse – KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |Podporováno |Podporováno |Londýn |
 | **Telenor** |Podporováno |Podporováno |Amsterdam, Londýn |
 | **[Telia Carrier](https://teliacarrier.com/our-services/connectivity/cloud-connect.html?title=Cloud%20Connect)** | Podporováno | Podporováno |Amsterdam, Chicago, Dallas, London, Washington DC |
-| **Telmex Uninet**| Již brzy | Již brzy | Dallas+ |
+| **Telmex Uninet**| Podporováno | Podporováno | Dallas |
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Podporováno |Podporováno |Melbourne, Singapur, Sydney |
 | **[Telus](https://www.telus.com)** |Podporováno |Podporováno |Montreal, Toronto |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Podporováno |Podporováno |Kapské město, Johannesburg |
@@ -151,7 +152,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 
 | **Poskytovatel služeb** | **Microsoft Azure** | **Office 365** | **Umístění** |
 | --- | --- | --- | --- |
-| **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Podporováno |Podporováno |Chicago, Washington DC |
+| **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Podporováno |Podporováno |Chicago, Phoenix, Washington DC |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Podporováno |Podporováno |New York, Phoenix |
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Podporováno |Podporováno |Chicago, Dallas, New York, Seattle, Silicon Valley, Washington DC |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Podporováno |Podporováno |Chicago, Silicon Valley, Washington DC |

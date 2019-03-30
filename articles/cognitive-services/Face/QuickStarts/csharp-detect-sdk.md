@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: e9f613b6cd02bd1e85b75db7a3b2c2b4adccce3f
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 57605f9bd1a39435e27a2f2c56c06cf3bfb38605
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372127"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630703"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí sady .NET SDK pro rozpoznávání tváře
 
@@ -32,11 +32,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1. V sadě Visual Studio vytvořte nový **Konzolová aplikace (.NET Framework)** projektu a pojmenujte ho **FaceDetection**. 
 1. Pokud vaše řešení obsahuje i jiné projekty, vyberte tento projekt jako jediný spouštěný projekt.
-1. Získejte požadované balíčky NuGet. Klikněte pravým tlačítkem na projekt v Průzkumníku řešení a vyberte **spravovat balíčky NuGet**. Klikněte na tlačítko **Procházet** kartě a vyberte **zahrnout předběžné verze**; poté vyhledejte a nainstalujte následující balíčky:
+1. Získejte požadované balíčky NuGet. Klikněte pravým tlačítkem na projekt v Průzkumníku řešení a vyberte **spravovat balíčky NuGet**. Klikněte na tlačítko **Procházet** kartě a vyberte **zahrnout předběžné verze**; najít a nainstalovat balíček následující:
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
-    - Microsoft.Rest.ClientRuntime
-    - Microsoft.Rest.ClientRuntime.Azure
-    - Newtonsoft.Json
+1. Ujistěte se, že jste nainstalovali nejnovější verze všech balíčků NuGet pro projekt. Klikněte pravým tlačítkem na projekt v Průzkumníku řešení a vyberte **spravovat balíčky NuGet**. Klikněte na tlačítko **aktualizace** kartu a nainstalujte nejnovější verze všechny balíčky, které se zobrazí.
 
 ## <a name="add-face-detection-code"></a>Přidejte kód pro rozpoznávání tváře detekce
 
@@ -50,21 +48,21 @@ Na začátek souboru *Program.cs* přidejte následující příkazy `using`.
 
 ### <a name="add-essential-fields"></a>Přidat nezbytné pole
 
-Do třídy **Program** přidejte následující pole. Tato data Určuje, jak se připojit ke službě pro rozpoznávání tváře a kde se stáhnout vstupní data. Budete muset aktualizovat `subscriptionKey` pole s hodnotou váš klíč předplatného a může být nutné změnit `faceEndpoint` řetězec tak, aby obsahoval identifikátor správné oblasti. Také budete muset nastavit `localImagePath` a/nebo `remoteImageUrl` hodnoty cest, které odkazují na skutečné soubory obrázků.
+Přidat **Program** třídy u následujících polí. Tato data Určuje, jak se připojit ke službě pro rozpoznávání tváře a kde se stáhnout vstupní data. Budete muset aktualizovat `subscriptionKey` pole s hodnotou váš klíč předplatného a může být nutné změnit `faceEndpoint` řetězec tak, aby obsahoval identifikátor správné oblasti. Také budete muset nastavit `localImagePath` a/nebo `remoteImageUrl` hodnoty cest, které odkazují na skutečné soubory obrázků.
 
 `faceAttributes` Pole je jednoduše pole určitých typů atributů. Určí které informace se mají načíst informace o zjištěných tváří.
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=13-34)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=9-34)]
 
 ### <a name="create-and-use-the-face-client"></a>Vytváření a používání klienta pro rozpoznávání tváře
 
-Dále přidejte následující kód, který **hlavní** metodu **Program** třídy. Tím se nastaví klientských rozhraní API pro rozpoznávání tváře.
+V dalším kroku přidejte **hlavní** metodu **Program** třídy následujícím kódem. Tím se nastaví klientských rozhraní API pro rozpoznávání tváře.
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=38-41)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=36-41)]
 
 Také v **hlavní** metodu, přidejte následující kód pro rozpoznávání tváře klienta nově vytvořené služby používat k rozpoznávání tváří v obrázku vzdálené a místní. Metody zjišťování bude dále definici. 
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=43-49)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=43-50)]
 
 ### <a name="detect-faces"></a>Rozpoznávání tváří
 
@@ -82,9 +80,9 @@ Dále definujte **GetFaceAttributes** metody. Vrátí řetězec s informacemi o 
 
 [!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=103-116)]
 
-Nakonec definujte **DisplayAttributes** metody zapsat data. atribut pro rozpoznávání tváře do výstupu konzoly.
+Nakonec definujte **DisplayAttributes** metody zapsat data. atribut pro rozpoznávání tváře do výstupu konzoly. Potom můžete zavřít třídy a oboru názvů.
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=118-123)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=118-125)]
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 

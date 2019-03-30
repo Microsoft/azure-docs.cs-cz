@@ -10,18 +10,18 @@ ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 8f10812fc77a36bc29c8926bb7f76bceed9d7718
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9cd9adfd9d882f3781f519846ce22767123da36c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857681"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652259"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Podpora jazyka a oblasti pro rozhraní API webové vyhledávání Bingu
 
 Rozhraní API webové vyhledávání Bingu podporuje více než deseti tři zemích nebo oblastech, mnoho s více než jeden jazyk. Zadání země nebo oblasti s dotazem pomáhá zpřesnit výsledky hledání založené na této země nebo oblasti zájmu. Výsledky mohou zahrnovat odkazy na Bingu a těchto odkazů může lokalizace uživatelského rozhraní Bing podle zadanou zemí nebo oblastí nebo jazyk.
 
-Můžete zadat zemi nebo oblast pomocí `cc` parametr dotazu. Pokud je zadána zemi nebo oblast, je nutné zadat jeden nebo více kódů jazyka s [ `Accept-Language` záhlaví](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers). Použití [trhy tabulky](#Markets) seznam jazyků podporovaných v trhy.
+Můžete zadat zemi nebo oblast pomocí `cc` parametr dotazu. Pokud je zadána zemi nebo oblast, je nutné zadat jeden nebo více kódů jazyka s [ `Accept-Language` záhlaví](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers). Použití [trhy tabulky](#markets) seznam jazyků podporovaných v trhy.
 
 Alternativně můžete zadat na trh `mkt` parametr dotazu a kód z **trhy** tabulky. Zadání na trhu současně Určuje zemi nebo oblasti a upřednostňovaný jazyk. Můžete explicitně nastavit jazyk s `setLang` parametr dotazu.
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 087de711fdbc70a4562045f8d774f2c6ae5a0db5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 087b52bd603e8aed6078ab340e84c1f6bd0e8082
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417034"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652191"
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>Vytvoření virtuálního počítače (klasické) s několika síťovými kartami pomocí Powershellu
 
@@ -30,7 +30,7 @@ ms.locfileid: "50417034"
 Můžete vytvořit virtuální počítače (VM) v Azure a připojit několik síťových rozhraní (NIC) ke každé z vašich virtuálních počítačů. Několik síťových adaptérů umožňuje oddělení typů přenosů napříč síťovými kartami. Například jednou síťovou KARTOU může komunikovat s Internetem, zatímco jiné komunikuje jenom s interním prostředkům, které nejsou připojené k Internetu. Schopnost oddělit síťový provoz napříč více síťových rozhraní se vyžaduje pro řadu síťových virtuálních zařízení, jako je doručování aplikací a řešení optimalizace sítě WAN.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak provést tento postup pomocí [modelu nasazení Resource Manager](../virtual-machines/windows/multiple-nics.md).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky:  [Resource Manager a classic](../resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak provést tento postup pomocí [modelu nasazení Resource Manager](../virtual-machines/windows/multiple-nics.md).
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
@@ -52,7 +52,7 @@ Back endové virtuální počítače jsou závislé na vytváření z následuj�
 ### <a name="step-1---start-your-script"></a>Krok 1: Spusťte svůj skript
 Můžete stáhnout úplná skript prostředí PowerShell použít [tady](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1). Postupem uvedeným níže změníte skript fungoval ve vašem prostředí.
 
-1. Změňte hodnoty proměnných níže podle vaší existující skupinu prostředků, které jsou nasazené výše v [požadavky](#Prerequisites).
+1. Změňte hodnoty proměnných níže podle vaší existující skupinu prostředků, které jsou nasazené výše v [požadavky](#prerequisites).
 
     ```powershell
     $location              = "West US"
@@ -199,7 +199,7 @@ Teď, když jste si stáhli a změnit skript na základě vašich potřeb, o ten
 
 ### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>Krok 5: Konfigurace směrování v rámci operačního systému Virtuálního počítače
 
-Azure DHCP přiřadí výchozí bránu první (primární) síťové rozhraní připojené k virtuálnímu počítači. Azure nepřiřazuje výchozí bránu dalším (sekundárním) síťovým rozhraním připojeným k virtuálnímu počítači. Proto ve výchozím nastavení nemůžete komunikovat s prostředky mimo podsíť, ve které sekundární síťové rozhraní je. Sekundární síťová rozhraní, ale komunikovat s prostředky mimo jejich podsíť. Konfigurace směrování pro sekundární síťová rozhraní, naleznete v následujících článcích:
+Azure DHCP přiřadí výchozí bránu první (primární) síťové rozhraní připojené k virtuálnímu počítači. Azure nepřiřazuje výchozí bránu dalším (sekundárním) síťovým rozhraním připojeným k virtuálnímu počítači. Proto ve výchozím nastavení nemůžete komunikovat s prostředky mimo podsíť, ve které sekundární síťové rozhraní je. Sekundární síťová rozhraní však můžou komunikovat s prostředky mimo vlastní podsíť. Konfigurace směrování pro sekundární síťová rozhraní, naleznete v následujících článcích:
 
 - [Konfigurace virtuálního počítače s Windows pro více síťových rozhraní](../virtual-machines/windows/multiple-nics.md#configure-guest-os-for-multiple-nics
 )

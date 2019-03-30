@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 557f331136726110db2a19e20b9d2f5f971ad384
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 362129b4ccd0e46b6ffc682e7232c62c196ef334
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772904"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652125"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Integrace služby Virtual network pro Azure Data Lake Storage Gen1
 
@@ -75,7 +75,7 @@ Mezi dostupné možnosti patří:
 
 - Clustery HDInsight, které byly vytvořeny před podporou integrace Data Lake Storage Gen1 virtuální sítě byla k dispozici je potřeba znovu vytvořit na podporu této nové funkci.
  
-- Pokud vytvoříte nový cluster HDInsight a vyberete účet Data Lake Storage Gen1 s povolenou integrací virtuální sítě, proces selže. Nejprve zakažte pravidlo virtuální sítě. Případně v okně **Brána firewall a virtuální sítě** účtu Data Lake Storage vyberte **Povolit přístup ze všech sítí a služeb**. Vytvořte HDInsight cluster před nakonec znovu ji povolit pravidlo virtuální sítě nebo zrušit výběr **povolit přístup ze všech sítí a služby**. Další informace najdete v části [Výjimky](##Exceptions).
+- Pokud vytvoříte nový cluster HDInsight a vyberete účet Data Lake Storage Gen1 s povolenou integrací virtuální sítě, proces selže. Nejprve zakažte pravidlo virtuální sítě. Případně v okně **Brána firewall a virtuální sítě** účtu Data Lake Storage vyberte **Povolit přístup ze všech sítí a služeb**. Vytvořte HDInsight cluster před nakonec znovu ji povolit pravidlo virtuální sítě nebo zrušit výběr **povolit přístup ze všech sítí a služby**. Další informace najdete v části [Výjimky](#exceptions).
 
 - Integrace služby virtual network data Lake Storage Gen1 nefunguje při využití [spravovaných identit pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
   

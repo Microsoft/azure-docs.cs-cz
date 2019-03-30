@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 3ec3abffc7962051f4cfc02d5369581ca193d70e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5482ea720ea8d21230587dd9216bd006bf4e5a6e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775573"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650644"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Kurz: Přístup k testovacímu prostředí v učebně ve službě Azure Lab Services
 V tomto kurzu se vy, jako student, připojíte k virtuálnímu počítači v testovacím prostředí v učebně. 
@@ -45,8 +45,8 @@ V tomto kurzu provedete následující akce:
 
     ![Připojení k virtuálnímu počítači](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. Proveďte jednu z následujících kroků: 
-    1. Pro **Windows** ukládat virtuální počítače, **RDP** soubor na pevný disk. Otevřete soubor RDP pro připojení k virtuálnímu počítači. Použití **uživatelské jméno** a **heslo** získáte od educator/profesor se přihlaste k počítači. 
-    3. Pro **Linux** virtuální počítače, zkopírujte a uložte připojovací řetězec SSH na **připojit k virtuálnímu počítači** dialogové okno. Použít tento připojovací řetězec z terminálu SSH (například [Putty](https://www.putty.org/)) pro připojení k virtuálnímu počítači. 
+    1. Pro **Windows** ukládat virtuální počítače, **RDP** soubor na pevný disk. Otevřete soubor RDP pro připojení k virtuálnímu počítači. Použití **uživatelské jméno** a **heslo** získáte od educator/profesor pro přihlášení k počítači. 
+    3. Pro **Linux** virtuálních počítačů, můžete použít **SSH** nebo **RDP** (Pokud je povolená) pro připojení k nim. Další informace najdete v tématu [povolit připojení ke vzdálené ploše pro počítače s Linuxem](how-to-enable-remote-desktop-linux.md). 
 
 ## <a name="next-steps"></a>Další postup
 V tomto kurzu jste přistupovali k testovacímu prostředí v učebně pomocí odkazu pro registraci, který jste získali od vyučujícího.

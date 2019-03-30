@@ -10,12 +10,12 @@ ms.date: 03/05/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: b7532dc910fae84733c04d4e16ac93a5cd0f11c8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 642c30c4df233476a8f649f7b5f30d0538b0e83f
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097902"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629856"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba služba do služby Azure Key Vault pomocí rozhraní .NET
 
@@ -101,7 +101,7 @@ Použití rozhraní příkazového řádku Azure pro místní vývoj:
 
 Použití `az account get-access-token` se ověřit přístup.  Pokud obdržíte chybu, ověřte, že krok 1 byla úspěšně dokončena. 
 
-Pokud k výchozímu adresáři není nainstalované rozhraní příkazového řádku Azure, může se zobrazit chyba monitorování, které `AzureServiceTokenProvider` nemůže najít cestu pro rozhraní příkazového řádku Azure.  Použití **AzureCLIPath**proměnnou prostředí k definování instalační složce nástroje rozhraní příkazového řádku Azure. `AzureServiceTokenProvider` Přidá do adresáře určeného v **AzureCLIPath** proměnnou prostředí, aby **cesta** proměnné prostředí, pokud je to nezbytné.
+Pokud k výchozímu adresáři není nainstalované rozhraní příkazového řádku Azure, může se zobrazit chyba monitorování, které `AzureServiceTokenProvider` nemůže najít cestu pro rozhraní příkazového řádku Azure.  Použití **AzureCLIPath** proměnnou prostředí k definování instalační složce nástroje rozhraní příkazového řádku Azure. `AzureServiceTokenProvider` Přidá do adresáře určeného v **AzureCLIPath** proměnnou prostředí, aby **cesta** proměnné prostředí, pokud je to nezbytné.
 
 Pokud jste přihlášení k Azure CLI pomocí více účtů nebo váš účet nemá přístup k několika předplatným, budete muset zadat konkrétní předplatné, které chcete použít.  Uděláte to tak, použijte:
 

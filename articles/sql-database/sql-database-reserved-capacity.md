@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 8066285e90903870937f28a62ef9fe8b2f6be55c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 04a99be40f1a89d834c560bddf3f49c2a73f34b8
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005484"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650253"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Předem za výpočetní prostředky, SQL Database s Azure SQL Database vyhrazené kapacity
 
@@ -70,6 +70,8 @@ Potřebujete-li zrušit databáze SQL vyhrazený rezervaci kapacity, může se j
 
 Pokud potřebujete u své rezervace záložní kapacity SQL Database změnit oblast, typ nasazení, úroveň výkonu nebo období, můžete ji vyměnit za jinou rezervaci stejné nebo vyšší hodnoty. Počáteční datum období nové rezervace se z vyměněné rezervace nepřenáší. 1 nebo 3leté období začne okamžikem vytvoření nové rezervace. Žádost o exchange, přejděte na rezervaci na webu Azure Portal a vyberte **Exchange** vytvořit žádost o podporu.
 
+Další informace o tom, jak exchange nebo náhrady rezervace, naleznete v tématu [výměny rezervaci a vrácení peněz](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+
 ## <a name="vcore-size-flexibility"></a>vCore velikost flexibilitu
 
 vCore velikost flexibilitu umožňuje škálovat nahoru nebo dolů v rámci úroveň výkonu a oblasti, bez ztráty výhody plynoucí záložní kapacitu. SQL Database vyhrazené kapacity také poskytuje flexibilitu dočasně přesunout databáze z horké mezi fondy a izolované databáze v rámci běžných operací (v rámci stejné oblasti a výkonu vrstvy) bez ztráty záložní kapacitu Využijte výhod. Udržováním vyrovnávací paměť zrušením použité ve vaší rezervace můžete efektivně spravovat provozní špičky výkonu bez překročení vašemu rozpočtu.
@@ -92,4 +94,3 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-

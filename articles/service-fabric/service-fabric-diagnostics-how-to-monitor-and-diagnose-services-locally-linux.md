@@ -4,7 +4,7 @@ description: Zjistěte, jak monitorovat a diagnostikovat služby Service Fabric 
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 4eebe937-ab42-4429-93db-f35c26424321
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 144b3f8ae210d515695c2184c2c3193084755746
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f0b850038a29dd0949def97b359b2b7a5ce920bc
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57841017"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58659742"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorování a Diagnostika služeb v nastavení vývojového místního počítače
 

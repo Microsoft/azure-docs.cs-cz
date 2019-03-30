@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
-ms.openlocfilehash: 0f36ab9ab7703dd9677b6c2989eddb91593af79f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b1873b770a6b4280b7098c68ecb75cc1411fe453
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105103"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650560"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Přiřadit několik IP adres pro virtuální počítače pomocí webu Azure portal
 
@@ -36,7 +36,7 @@ Pokud chcete vytvořit virtuální počítač s několika IP adresami nebo stati
 
 ## <a name="add"></a>Přidejte IP adresy virtuálního počítače
 
-Privátní a veřejné IP adresy Azure síťovému rozhraní můžete přidat provedením následujících kroků. Příklady v následujících částech Předpokládejme, že máte již virtuální počítač s tři konfigurace protokolu IP je popsáno v [scénář](#Scenario), ale to není nutné.
+Privátní a veřejné IP adresy Azure síťovému rozhraní můžete přidat provedením následujících kroků. Příklady v následujících částech Předpokládejme, že máte již virtuální počítač s tři konfigurace protokolu IP je popsáno v [scénář](#scenario), ale to není nutné.
 
 ### <a name="coreadd"></a>Základní kroky
 

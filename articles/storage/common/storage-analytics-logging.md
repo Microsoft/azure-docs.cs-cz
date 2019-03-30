@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: a350576742a9bcb899405aae19c032cc9b966975
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 09a5a6d823240b724e6ec88de38df068a58982d9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351317"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652055"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage analytics protokolování
 
@@ -27,7 +27,6 @@ Analýza úložiště protokoluje podrobné informace o úspěšné i neúspěš
 >  Je aktuálně k dispozici pouze pro služby objektů Blob, Queue a Table Storage Analytics protokolování. Však nepodporuje účet premium storage.
 
 ## <a name="requests-logged-in-logging"></a>Žádosti o přihlášení protokolování
-
 ### <a name="logging-authenticated-requests"></a>Protokolování ověření požadavků
 
  Jsou zaznamenány následující typy ověřených požadavků:
@@ -63,13 +62,13 @@ Pokud máte velký objem dat protokolu s více soubory pro každou hodinu, můž
 
 Většina nástrojů procházení úložiště umožňují zobrazit metadata objektů BLOB; Můžete si také přečíst tyto informace pomocí Powershellu nebo prostřednictvím kódu programu. Následující fragment kódu Powershellu je příkladem filtrování seznamu objektů BLOB protokolu podle názvu, jak určit čas a podle metadat k identifikaci pouze tyto protokoly, které obsahují **zápisu** operace.  
 
- ```  
+ ```powershell
  Get-AzureStorageBlob -Container '$logs' |  
- where {  
+ Where-Object {  
      $_.Name -match 'table/2014/05/21/05' -and   
      $_.ICloudBlob.Metadata.LogType -match 'write'  
  } |  
- foreach {  
+ ForEach-Object {  
      "{0}  {1}  {2}  {3}" –f $_.Name,   
      $_.ICloudBlob.Metadata.StartTime,   
      $_.ICloudBlob.Metadata.EndTime,   
@@ -143,24 +142,25 @@ Můžete zadat služby úložiště, které chcete se přihlásit a doba uchová
 
  Následující příkaz zapne protokolování pro čtení, zápis a odstranění žádostí ve službě Queue ve výchozí účet úložiště s uchováváním informací. nastavení bylo o pět dnů:  
 
-```  
+```powershell
 Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
 ```  
 
  Následující příkaz vypne protokolování pro službu tabulky ve výchozí účet úložiště:  
 
-```  
+```powershell
 Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
  Informace o tom, jak nakonfigurovat rutiny Azure Powershellu pro práci s vaším předplatným Azure a jak vybrat výchozí účet úložiště pro použití najdete tady: [Jak nainstalovat a nakonfigurovat Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
 
 ### <a name="enable-storage-logging-programmatically"></a>Povolit úložiště protokolování prostřednictvím kódu programu  
+
  Kromě použití webu Azure portal nebo rutin Azure Powershellu pro řízení protokolování úložiště, můžete také použít jeden z rozhraní API služby Azure Storage. Například pokud používáte jazyk .NET můžete použít klientskou knihovnu pro úložiště.  
 
  Třídy **CloudBlobClient**, **CloudQueueClient**, a **CloudTableClient** všechny metody, jako mají **SetServiceProperties** a **SetServicePropertiesAsync** trvají **ServiceProperties** objektu jako parametr. Můžete použít **ServiceProperties** objektu, který chcete nakonfigurovat protokolování úložiště. Například následující C# fragment kódu ukazuje, jak změnit, co je protokolováno a doby uchování pro protokolování fronty:  
 
-```  
+```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
 var queueClient = storageAccount.CreateCloudQueueClient();  
 var serviceProperties = queueClient.GetServiceProperties();  
@@ -190,7 +190,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
  Následující příklad ukazuje, jak si můžete stáhnout data protokolu pro službu front v hodinách od 09 AM, 10 AM a 11. hodinou RÁNO ve 20. května 2014. **/S** parametr AzCopy k vytvoření struktury místní složky podle data a časy v názvech souborů protokolu; způsobí, že **/V** parametr AzCopy podrobný výstup; způsobí, že **/Y** parametr způsobí, že AzCopy můžete přepsat všechny místní soubory. Nahraďte **< yourstorageaccount\>**  s názvem účtu úložiště a nahraďte **< yourstoragekey\>**  vaším klíčem účtu úložiště.  
 
-```  
+```
 AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs\Storage' '2014/05/20/09' '2014/05/20/10' '2014/05/20/11' /sourceKey:<yourstoragekey> /S /V /Y  
 ```  
 
@@ -201,6 +201,7 @@ AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs
  Když jste si stáhli dat protokolů, zobrazí se položky protokolu v souborech. Tyto soubory protokolu použití formátu odděleného textu tolik protokolu čtení nástroje jsou rozboru, včetně Microsoft Message Analyzer (Další informace najdete v příručce [monitorování, diagnostikování a řešení potíží s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)). Jiné nástroje mají různé funkce pro formátování, filtrování, řazení, hledání obsah souborů protokolu ad. Další informace o protokolování úložiště formát souborů protokolu a obsahu najdete v tématu [formát Log Analytics úložiště](/rest/api/storageservices/storage-analytics-log-format) a [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 
 ## <a name="next-steps"></a>Další postup
+
 * [Formát úložiště analýzy protokolů](/rest/api/storageservices/storage-analytics-log-format)
 * [Analýza úložiště protokoluje operace a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
 * [Metrikách Storage Analytics (classic)](storage-analytics-metrics.md)

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 3f64be35aca985d0374e224cc9c8940502005014
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: f0959ff8b8ea5ce8d5516d25fdf0faf29dbcd994
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578879"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629594"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí Powershellu
 
@@ -184,10 +184,18 @@ Zásady zálohování ochrany je přidružená aspoň jednu zásadu uchováván�
 - [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) rutina vytvoří objekt prostředí PowerShell, který obsahuje informace o zásadách zálohování.
 - Objekty zásad plán a uchovávání se používají jako vstupy do rutiny New-AzRecoveryServicesBackupProtectionPolicy.
 
-Následující příklad ukládá v proměnné plán zásady a zásady uchovávání informací. V příkladu se používá k definici parametrů při vytváření zásad ochrany těchto proměnných *NewPolicy*.
+Ve výchozím nastavení počáteční čas je definován v objektu zásad plán. Chcete-li změnit čas zahájení pro požadované počáteční čas použijte následující příklad. Požadovaný počáteční čas by měl být ve standardu UTC, také. Následujícím příkladu se předpokládá požadovanou počáteční čas je čas UTC 01:00 AM pro denní zálohy.
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
+$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z"
+$UtcTime = $UtcTime.ToUniversalTime()
+$schpol.ScheduleRunTimes[0] = $UtcTime
+```
+
+Následující příklad ukládá v proměnné plán zásady a zásady uchovávání informací. V příkladu se používá k definici parametrů při vytváření zásad ochrany těchto proměnných *NewPolicy*.
+
+```powershell
 $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "AzureVM" -RetentionPolicy $retPol -SchedulePolicy $schPol
 ```

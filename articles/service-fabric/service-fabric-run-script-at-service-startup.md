@@ -3,8 +3,8 @@ title: Spuštění skriptu při spuštění služby Azure Service Fabric | Dokum
 description: Zjistěte, jak nakonfigurovat zásady pro Service Fabric vstupního bodu nastavení služby a spuštění skriptu na doba spuštění služby.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
-ms.author: mfussell
-ms.openlocfilehash: 3ae43f7427996f8be15b22fec4406bbdfe8aa4fe
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: atsenthi
+ms.openlocfilehash: 76be814e0dd4c054fc3a873716dbfe395eeeb2dc
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838438"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660387"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Spuštění skriptu spuštění služby jako místní uživatel nebo systémový účet
 Před spuštění spustitelného souboru služby Service Fabric může být nutné spustit úkony konfigurace nebo nastavení.  Například konfigurace proměnných prostředí. Můžete určit skript běžet před spuštěním spustitelného souboru služby v manifestu služby pro službu. Tím, že nakonfigurujete zásadu RunAs vstupního bodu nastavení služby, že které účet můžete změnit instalačního programu běží pod.  Vstupní bod samostatný instalační program umožňuje spustit vysokými konfigurace na krátkou dobu, tak spustitelný soubor hostitele služby nemusí spouštět s vysokou úrovní oprávnění pro dlouhou dobu.

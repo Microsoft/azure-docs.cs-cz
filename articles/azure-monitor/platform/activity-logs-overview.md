@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: fb3ed970b7f92e1cc06a9d1023e01f5888915e94
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 94465e95dbf5f2eb381c124349bf8fda6622a6c2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088668"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650287"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorování aktivit předplatného s protokolem aktivit Azure
 
@@ -35,7 +35,6 @@ Události můžete načíst z váš protokol aktivit pomocí webu Azure portal, 
 > [!NOTE]
 > [Novější upozornění](../../azure-monitor/platform/alerts-overview.md) nabídnout vylepšené prostředí při vytváření a správa aktivit pravidel upozornění protokolů.  [Další informace](../../azure-monitor/platform/alerts-activity-log.md).
 
-
 ## <a name="categories-in-the-activity-log"></a>Kategorie v protokolu aktivit
 Protokol aktivit obsahuje několik kategorií data. Úplné podrobnosti o schémat z těchto kategorií [najdete v článku](../../azure-monitor/platform/activity-log-schema.md). Mezi ně patří:
 * **Pro správu** – Tato kategorie obsahuje záznam všech vytvoření, aktualizace, odstranění a akce operace provést prostřednictvím Resource Manageru. Typy událostí, zobrazí se v této kategorii příklady "vytvořit virtuální počítač" a "odstranit skupinu zabezpečení sítě" každé akce, které uživatele nebo aplikace pomocí Resource Manageru je modelovaná jako operace na konkrétní typ prostředku. Pokud je typ operace zápisu, Delete nebo akce, záznamy o zahájení a úspěchu nebo selhání této operace se zaznamenávají do administrativní kategorie. Administrativní kategorie také zahrnuje všechny změny na řízení přístupu na základě rolí v rámci předplatného.
@@ -48,9 +47,11 @@ Protokol aktivit obsahuje několik kategorií data. Úplné podrobnosti o schém
 * **Zásady** – Tato kategorie obsahuje záznamy všechny operace vliv akce prováděné zásadami Azure. Příklady typů událostí, které se zobrazí v této kategorii: auditování a odepřít. Každou akci provedenou na základě zásad je modelovaná jako operace pro prostředek.
 
 ## <a name="event-schema-per-category"></a>Schéma událostí podle jednotlivých kategorií
+
 [Najdete v článku o schéma událostí protokolu aktivit podle jednotlivých kategorií.](../../azure-monitor/platform/activity-log-schema.md)
 
 ## <a name="what-you-can-do-with-the-activity-log"></a>Co můžete dělat s protokolu aktivit
+
 Tady jsou některé věci, které vám pomůžou s protokolu činnosti:
 
 ![Protokol aktivit v Azure](./media/activity-logs-overview/Activity_Log_Overview_v3.png)
@@ -58,12 +59,13 @@ Tady jsou některé věci, které vám pomůžou s protokolu činnosti:
 
 * Dotaz a zobrazit je v **webu Azure portal**.
 * [Vytvořte výstrahu pro událost protokolu aktivit.](../../azure-monitor/platform/activity-log-alerts.md)
-* [Stream umožňuje **centra událostí** ](../../azure-monitor/platform/activity-logs-stream-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
-* Analyzovat pomocí Power BI [ **balíček obsahu Power BI**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
+* [Stream umožňuje **centra událostí** ](../../azure-monitor/platform/activity-logs-stream-event-hubs.md) za účelem ingestování datových služby třetích stran nebo vlastních analytics řešení, jako je Power BI.
+* Analýza v Power BI pomocí [ **balíček obsahu Power BI**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
 * [Uložit ho. tím **účtu úložiště** pro archivaci nebo ruční kontrolu](../../azure-monitor/platform/archive-activity-log.md). Můžete určit pomocí uchování (ve dnech) **profilu protokolu**.
 * Zjistit pomocí rutiny Powershellu, rozhraní příkazového řádku nebo rozhraní REST API.
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>Dotaz protokolu aktivit na webu Azure Portal
+
 Na webu Azure portal můžete zobrazit protokol aktivit na několika místech:
 * **Protokolu aktivit** , který se dostanete tak, že protokol aktivit v rámci **všechny služby** v levém navigačním podokně.
 * **Monitorování** se zobrazí ve výchozím nastavení v levém navigačním podokně. Protokol aktivit je jeden oddíl služby Azure Monitor.
@@ -86,6 +88,7 @@ Po definování sady filtrů můžete připnout dotaz na řídicím panelu Azure
 Pro ještě větší výkon, můžete kliknout na **protokoly** ikonu, která zobrazuje data protokolu aktivit v [shromažďovat a analyzovat protokoly aktivit řešení](../../azure-monitor/platform/collect-activity-logs.md). Okno Protokol aktivit nabízí prostředí základní filtr nebo přejděte na protokoly, ale umožňuje funkci protokoly Azure monitoru otáčení, dotazování a vizualizace dat výkonnější způsoby.
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>Exportovat protokol aktivit k profilu protokolu
+
 A **profilu protokolu** řídí, jak exportovat protokol aktivit. Pomocí profilu protokolu, můžete nakonfigurovat:
 
 * Pokud má být odeslána protokolu aktivit (účet úložiště nebo Event Hubs)
@@ -102,13 +105,14 @@ Můžete použít úložiště účtu nebo událostí centra oboru názvů, kter
 >  Nelze aktuálně archivace dat do účtu úložiště, který je za zabezpečené virtuální síti.
 
 > [!WARNING]
-> Formát data protokolu v aktuálním účtu úložiště změnit na řádky JSON na 1. listopadu 2018. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md). 
+> Formát data protokolu v aktuálním účtu úložiště změnit na řádky JSON na 1. listopadu 2018. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md).
 >
-> 
+>
 
 Tato nastavení můžete nakonfigurovat přes možnost "Export" v okně protokolu aktivit na portálu. Se taky dají konfigurovat prostřednictvím kódu programu [pomocí REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931927.aspx), rutin prostředí PowerShell nebo rozhraní příkazového řádku. Předplatné může mít jenom jeden profil protokolu.
 
 ### <a name="configure-log-profiles-using-the-azure-portal"></a>Konfigurovat profily protokolů pomocí webu Azure portal
+
 Můžete streamování protokolu aktivit do centra událostí nebo je uložíte na účet úložiště pomocí možnosti "Export do centra událostí" na webu Azure Portal.
 
 1. Přejděte do **protokolu aktivit** pomocí nabídky na levé straně na portálu.
@@ -117,7 +121,7 @@ Můžete streamování protokolu aktivit do centra událostí nebo je uložíte 
 2. Klikněte na tlačítko **exportovat do centra událostí** tlačítko v horní části okna.
 
     ![Tlačítko pro export na portálu](./media/activity-logs-overview/activity-logs-portal-export-v2.png)
-3. V zobrazeném okně můžete vybrat:  
+3. V zobrazeném okně můžete vybrat:
    * oblasti, pro které chcete exportovat události
    * Účet úložiště, do kterého chcete uložit události
    * počet dní, které chcete uchovávat tyto události v úložišti. Nastavení 0 dnů uchová protokoly navždy.
@@ -132,13 +136,13 @@ Můžete streamování protokolu aktivit do centra událostí nebo je uložíte 
 
 #### <a name="get-existing-log-profile"></a>Získat stávající profilu protokolu
 
-```
+```powershell
 Get-AzLogProfile
 ```
 
 #### <a name="add-a-log-profile"></a>Přidání profilu protokolu
 
-```
+```powershell
 Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
 ```
 
@@ -152,7 +156,8 @@ Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resour
 | Kategorie |Ne |Čárkami oddělený seznam kategorie událostí, které se mají shromažďovat. Možné hodnoty jsou Write, Delete a akce. |
 
 #### <a name="remove-a-log-profile"></a>Odebrání profilu protokolu
-```
+
+```powershell
 Remove-AzLogProfile -name my_log_profile
 ```
 
@@ -185,6 +190,6 @@ az monitor log-profiles delete --name <profile name>
 ```
 
 ## <a name="next-steps"></a>Další kroky
+
 * [Další informace o protokolu aktivit (dříve protokoly auditu)](../../azure-resource-manager/resource-group-audit.md)
 * [Stream protokolů aktivit Azure do služby Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-

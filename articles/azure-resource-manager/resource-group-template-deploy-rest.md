@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2019
+ms.date: 03/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3468f5b625911cd637b22e2c1d35a47fb7d7b0e4
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 15e4a7058dc1e74c726644e86c58381003eee937
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402826"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649748"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API
 
@@ -36,6 +36,7 @@ Nasazení do **předplatné**, použijte [nasazení – vytvořit v oboru předp
 V příkladech v tomto článku se používá nasazení skupiny prostředků. Další informace o nasazení předplatných najdete v tématu [vytvoření skupiny prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
 
 ## <a name="deploy-with-the-rest-api"></a>Nasazení pomocí rozhraní REST API
+
 1. Nastavte [společných parametrů a záhlaví](/rest/api/azure/), včetně ověřování tokenů.
 
 1. Pokud nemáte existující skupinu prostředků, vytvořte skupinu prostředků. Zadejte ID svého předplatného, název nové skupiny prostředků a umístění, které potřebujete pro vaše řešení. Další informace najdete v tématu [vytvořte skupinu prostředků](/rest/api/resources/resourcegroups/createorupdate).
@@ -45,6 +46,7 @@ V příkladech v tomto článku se používá nasazení skupiny prostředků. Da
    ```
 
    Pomocí textu žádosti podobně jako:
+
    ```json
    {
     "location": "West US",
@@ -166,7 +168,7 @@ V příkladech v tomto článku se používá nasazení skupiny prostředků. Da
    }
    ```
 
-5. Získání stavu nasazení šablony. Další informace najdete v tématu [získat informace o nasazování šablon](/rest/api/resources/deployments/get).
+1. Získání stavu nasazení šablony. Další informace najdete v tématu [získat informace o nasazování šablon](/rest/api/resources/deployments/get).
 
    ```HTTP
    GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
@@ -174,7 +176,12 @@ V příkladech v tomto článku se používá nasazení skupiny prostředků. Da
 
 ## <a name="redeploy-when-deployment-fails"></a>Opětovné nasazení při nasazení se nezdaří
 
-Pokud se nasazení nezdaří, můžete automaticky znovu nasadit starší a úspěšné nasazení z historie nasazení. Pokud chcete nastavit opětovné nasazení, použijte `onErrorDeployment` vlastnost v textu požadavku.
+Tato funkce se také označuje jako *vrácení zpět při chybě*. Pokud se nasazení nezdaří, můžete automaticky znovu nasadit starší a úspěšné nasazení z historie nasazení. Pokud chcete nastavit opětovné nasazení, použijte `onErrorDeployment` vlastnost v textu požadavku. Tato funkce je užitečná, pokud máte k dispozici dostatek známého funkčního stavu pro nasazení infrastruktury a chcete se vrátí zpátky na to. Existuje několik omezení a omezení:
+
+- Opětovné nasazení se spustí, přesně tak, jak byl dříve spuštěn se stejnými parametry. Nelze změnit parametry.
+- Předchozí nasazení se spustí pomocí [úplný režim](./deployment-modes.md#complete-mode). Se odstraní všechny prostředky, které nejsou zahrnuty v předchozím nasazení a konfigurace všech prostředků jsou nastaveny do jejich předchozího stavu. Ujistěte se, že plně chápete [režimy nasazení](./deployment-modes.md).
+- Opětovné nasazení má vliv pouze prostředky, všechny změny dat to nebude mít vliv.
+- Tato funkce je podporována pouze na nasazení skupiny prostředků, ne předplatné úrovně nasazení. Další informace o nasazení na úrovni předplatného najdete v tématu [vytvoření skupiny prostředků a prostředků na úrovni předplatného](./deploy-to-subscription.md).
 
 Tato možnost dala použít, vaše nasazení musí mít jedinečné názvy, tak je možné identifikovat v historii. Pokud nemáte jedinečné názvy, aktuální selhání nasazení může přepsat předchozí úspěšné nasazení v historii. Tuto možnost můžete použít pouze u kořenové úrovně nasazení. Nasazení z vnořené šablony nejsou k dispozici pro nové nasazení.
 
@@ -245,9 +252,9 @@ Pokud používáte soubor s parametry k předání hodnot parametru během nasaz
             "reference": {
                "keyVault": {
                   "id": "/subscriptions/{guid}/resourceGroups/{group-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
-               }, 
-               "secretName": "sqlAdminPassword" 
-            }   
+               },
+               "secretName": "sqlAdminPassword"
+            }
         }
    }
 }
@@ -258,9 +265,9 @@ Velikost souboru parametrů nemůže být delší než 64 KB.
 Pokud je potřeba zadat hodnotu citlivé parametru (například hesla), přidejte tuto hodnotu do trezoru klíčů. Načtení služby key vault během nasazení, jak je znázorněno v předchozím příkladu. Další informace najdete v tématu [předání zabezpečených hodnot během nasazení](resource-manager-keyvault-parameter.md). 
 
 ## <a name="next-steps"></a>Další postup
-* Chcete-li určit způsob zpracování prostředky, které existují ve skupině prostředků, ale nejsou definovány v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manageru](deployment-modes.md).
-* Další informace o zpracování asynchronních operací REST, naleznete v tématu [sledování asynchronních operací Azure](resource-manager-async-operations.md).
-* Příklad nasazení prostředků pomocí klientské knihovny .NET najdete v tématu [nasazení prostředků pomocí šablony a knihoven .NET](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Chcete-li definovat parametry v šabloně, přečtěte si téma [vytváření šablon](resource-group-authoring-templates.md#parameters).
-* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).
 
+- Chcete-li určit způsob zpracování prostředky, které existují ve skupině prostředků, ale nejsou definovány v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manageru](deployment-modes.md).
+- Další informace o zpracování asynchronních operací REST, naleznete v tématu [sledování asynchronních operací Azure](resource-manager-async-operations.md).
+- Příklad nasazení prostředků pomocí klientské knihovny .NET najdete v tématu [nasazení prostředků pomocí šablony a knihoven .NET](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Chcete-li definovat parametry v šabloně, přečtěte si téma [vytváření šablon](resource-group-authoring-templates.md#parameters).
+- Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).

@@ -4,7 +4,7 @@ description: Úvod do Service Fabric Cluster Resource Manager.
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: cfab735b-923d-4246-a2a8-220d4f4e0c64
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 75aa960ff060d74d0a579b475e4334402992b3c3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e9b1cc8b66be36a0a77118f4de672c9411433ba5
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903352"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660881"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Úvod do Service Fabric cluster resource Manageru
 Tradičně Správa informačních systémů nebo online služby určené vyhradíte konkrétní fyzické nebo virtuální počítače pro tyto konkrétní služby nebo systémy. Služby byla navržena jako úrovně. By být "web" a "data" nebo "úložiště" vrstvu. Aplikace by měla mít zasílání zpráv úrovně, kde požadavky byly převedeny dovnitř a ven a také sadu počítačů vyhrazený pro ukládání do mezipaměti. Každou vrstvu nebo typu úlohy konkrétního počítače, které jsou vyhrazené pro to měl: databáze je teď několik počítačů dedicated, webové servery v pár. Je-li konkrétní typ zatížení počítače, ve kterém se k spuštění příliš horké, pak jste přidali další počítače pomocí této stejnou konfiguraci na dané úrovni. Ale ne všechny úlohy může tak snadno škálovat – zejména s datovou vrstvou obvykle nahradíte počítače s větší počítače. Snadné. Pokud na počítači se nezdařilo, část celkové aplikace nižší kapacitu spuštěné, dokud se počítač může obnovit. Stále poměrně snadné (Pokud není nutně zábavné).

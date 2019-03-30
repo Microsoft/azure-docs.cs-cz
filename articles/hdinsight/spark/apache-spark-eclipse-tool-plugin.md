@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: 05df154db27dcf1b07506c6bf9c2a681408de61e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 123c05470f8f162095b92c0894716c7b5d2a92b2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58091813"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648767"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Vytváření aplikací Apache Spark pro cluster služby HDInsight pomocí sady Azure Toolkit pro Eclipse
 
@@ -47,7 +47,7 @@ Když otevřete Eclipse, nástroje HDInsight automaticky zjišťuje, zda jste na
 
 ![Automatická instalace modulu plug-in Scala](./media/apache-spark-eclipse-tool-plugin/auto-install-scala.png)
 
-Uživatel může buď [Přihlaste se k předplatnému Azure](#Sign-in-to-your-Azure-subscription), nebo [propojit HDInsight cluster](#Link-a-cluster) pomocí nástroje Ambari uživatelského jména a hesla nebo doméně připojené přihlašovací údaje ke spuštění. 
+Uživatel může buď [Přihlaste se k předplatnému Azure](#sign-in-to-your-azure-subscription), nebo [propojit HDInsight cluster](#link-a-cluster) pomocí nástroje Ambari uživatelského jména a hesla nebo doméně připojené přihlašovací údaje ke spuštění. 
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure.
 1. Spusťte integrované vývojové prostředí Eclipse a otevřete Průzkumníka služby Azure. Na **okno** nabídce vyberte možnost **zobrazit zobrazení**a pak vyberte **jiných**. V dialogovém okně, které se otevře, rozbalte **Azure**vyberte **Průzkumníka služby Azure**a pak vyberte **OK**.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d33ef63f142763d5d29c9cb1931fdd87bae5976e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 607c18a67f7acc13ffe4d5c14131f20a2f94e8d9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891014"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652038"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netop-portal"></a>Kurz: Integrace Azure Active Directory s Netop portálu
 
@@ -128,7 +128,7 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí portálu Netop, prove
 
     b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
 
-    c. Nechte **Namespace** prázdné.
+    c. V **Namespace** textové pole, typ https://secure.netop.com.
 
     d. Vyberte zdroj jako **atribut**.
 
@@ -154,7 +154,7 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí portálu Netop, prove
 
 ### <a name="configure-netop-portal-single-sign-on"></a>Konfigurace portálu Netop jednotného přihlašování
 
-Ke konfiguraci jednotného přihlašování na **Netop portál** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory Netop portálu ](mailto:casemanager@netop.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **Netop portál** straně, budete muset na stažený **kód XML metadat federace** a adresu URL pro přihlášení na webu Azure portal. Postupujte podle pokynů v kroku 3 v dokumentaci k [tady](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf) ke konfiguraci portálu NetOp pro ověřování Azure AD.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
