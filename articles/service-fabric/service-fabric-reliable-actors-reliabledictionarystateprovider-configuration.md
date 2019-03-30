@@ -4,7 +4,7 @@ description: Přečtěte si o Azure Service Fabric actors stavové typu Reliable
 services: Service-Fabric
 documentationcenter: .net
 author: sumukhs
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 79b48ffa-2474-4f1c-a857-3471f9590ded
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 224899e92684d83d33fbd61408e67d4ec11ec0a3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4e39357a765ec85aa64055b1aa422d8d7a01c116
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898733"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669397"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurace Reliable Actors – ReliableDictionaryActorStateProvider
 Výchozí konfigurace pro ReliableDictionaryActorStateProvider můžete upravit změnou souboru settings.xml vygenerované v kořenovém adresáři balíčku sady Visual Studio ve složce Konfigurace pro zadaný objekt actor.
@@ -41,11 +41,11 @@ V manifestu clusteru je jeden soubor XML obsahující nastavení a konfigurace, 
 ### <a name="configuration-names"></a>Názvy konfigurace
 | Název | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
-| WriteBufferMemoryPoolMinimumInKB |Kb |8388608 |Minimální počet Kilobajtů přidělení v režimu jádra pro fond vyrovnávací paměti zápisu protokolovacího nástroje. Tento fond paměti se používá pro ukládání do mezipaměti informace o stavu před zápisu na disk. |
-| WriteBufferMemoryPoolMaximumInKB |Kb |Bez omezení |Maximální velikost, ke kterému protokolovač zápis vyrovnávací paměti fondu paměti můžou růst. |
+| WriteBufferMemoryPoolMinimumInKB |Kilobajtů |8388608 |Minimální počet Kilobajtů přidělení v režimu jádra pro fond vyrovnávací paměti zápisu protokolovacího nástroje. Tento fond paměti se používá pro ukládání do mezipaměti informace o stavu před zápisu na disk. |
+| WriteBufferMemoryPoolMaximumInKB |Kilobajtů |Bez omezení |Maximální velikost, ke kterému protokolovač zápis vyrovnávací paměti fondu paměti můžou růst. |
 | SharedLogId |GUID |"" |Určuje jedinečný identifikátor GUID pro účely identifikace výchozí sdíleného souboru protokolu používá všechny spolehlivé služby na všech uzlech v clusteru, u kterých není SharedLogId v jejich konkrétní konfiguraci služby. Pokud SharedLogId není zadána, musíte zadat také tento SharedLogPath. |
 | SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu použití sdíleného protokol všech spolehlivých služeb ve všech uzlech v clusteru, u kterých není SharedLogPath v jejich konkrétní konfiguraci služby. Nicméně pokud SharedLogPath je, pak SharedLogId musí také uvést. |
-| SharedLogSizeInMB |V megabajtech |8192 |Určuje počet MB místa na disku se staticky přidělit pro sdílené protokolu. Hodnota musí být 2 048 nebo větší. |
+| SharedLogSizeInMB |Megabajtů |8192 |Určuje počet MB místa na disku se staticky přidělit pro sdílené protokolu. Hodnota musí být 2 048 nebo větší. |
 
 ### <a name="sample-cluster-manifest-section"></a>Ukázkový oddíl manifestu clusteru
 ```xml

@@ -4,7 +4,7 @@ description: Popisuje příkazy Service Fabric CLI sfctl síť nasazení.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: b25384d8f3c6e41b6c5cca723d41b79f00b17494
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e6b484dabd77a142961db2d97242896790fa3d8b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285442"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668462"
 ---
-# <a name="sfctl-mesh-deployment"></a>nasazení sítě sfctl
+# <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
 Vytvoření sítě pro Service Fabric prostředků.
 
 ## <a name="commands"></a>Příkazy

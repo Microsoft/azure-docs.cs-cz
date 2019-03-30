@@ -4,7 +4,7 @@ description: Popisuje příkazy Service Fabric CLI sfctl samostatného clusteru.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: ce10e2c24e89140357df3fa6b724a1f89f389a50
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a652439729e538b3ce2545ab3b09284e6645ce9d
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275478"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668513"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 Správa samostatné clustery Service Fabric.
@@ -28,9 +28,9 @@ Správa samostatné clustery Service Fabric.
 
 |Příkaz|Popis|
 | --- | --- |
-| Konfigurace | Získání konfigurace samostatného clusteru Service Fabric. |
-| Konfigurace upgradu | Spuštění upgradu konfiguraci samostatného clusteru Service Fabric. |
-| Stav upgradu | Získáte stav upgradu konfigurace clusteru samostatného clusteru Service Fabric. |
+| config | Získání konfigurace samostatného clusteru Service Fabric. |
+| config-upgrade | Spuštění upgradu konfiguraci samostatného clusteru Service Fabric. |
+| upgrade-status | Získáte stav upgradu konfigurace clusteru samostatného clusteru Service Fabric. |
 
 ## <a name="sfctl-sa-cluster-config"></a>sfctl sa-cluster config
 Získání konfigurace samostatného clusteru Service Fabric.
@@ -66,15 +66,15 @@ Ověření upgradu parametrů zadaných konfigurací a spusťte upgrade konfigur
 | -clusteru config [povinné] | Konfigurace clusteru. |
 | – zásady stavu aplikace | JSON kódovaný slovník párů název typu aplikace a maximální procento před vyvoláním chyby není v pořádku. |
 | --delta poškozené uzly | Maximální povolené procento rozdílových rozkladu stavu během upgradu. Povolené hodnoty jsou hodnoty celé číslo od 0 do 100. |
-| --stavu. Zkontrolujte opakování | Dlouhá doba mezi pokusy o provádění kontroly stavu, pokud aplikace nebo clusteru není v pořádku.  Výchozí\: PT0H0M0S. |
+| --health-check-retry | Dlouhá doba mezi pokusy o provádění kontroly stavu, pokud aplikace nebo clusteru není v pořádku.  Výchozí\: PT0H0M0S. |
 | --stabilní verze stavu zaškrtnutí | Množství času, aplikace nebo clusteru musí zůstane v dobrém stavu před provedením upgradu k další upgradovací doméně.  Výchozí\: PT0H0M0S. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
 | --health-check-wait | Doba čekání po dokončení upgradu domény před zahájením stavu kontroluje procesu.  Výchozí\: PT0H0M0S. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| --poškozené aplikace | Maximální povolené procento žádostí, není v pořádku během upgradu. Povolené hodnoty jsou hodnoty celé číslo od 0 do 100. |
+| --unhealthy-applications | Maximální povolené procento žádostí, není v pořádku během upgradu. Povolené hodnoty jsou hodnoty celé číslo od 0 do 100. |
 | --poškozené uzly | Maximální povolené procento poškozené uzly během upgradu. Povolené hodnoty jsou hodnoty celé číslo od 0 do 100. |
 | --upgrade-domain-delta-unhealthy-nodes | Maximální povolené procento snížení stavu rozdílové upgradovací domény během upgradu. Povolené hodnoty jsou hodnoty celé číslo od 0 do 100. |
 | --upgrade-domain-timeout | Množství času každé domény upgradu musí dokončit před provedením FailureAction.  Výchozí\: PT0H0M0S. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
-| --upgrade vypršení časového limitu | Množství času celkové upgrade musí dokončit před provedením FailureAction.  Výchozí\: PT0H0M0S. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
+| --upgrade-timeout | Množství času celkové upgrade musí dokončit před provedením FailureAction.  Výchozí\: PT0H0M0S. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 

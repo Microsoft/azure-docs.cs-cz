@@ -4,7 +4,7 @@ description: Aplikace automatizace oprav operačního systému v clusteru Servic
 services: service-fabric
 documentationcenter: .net
 author: novino
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 27650605601a24e11d63e56343535c35c8b72f5d
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 5efcc92bc2054dfb66b5fe03ae083c49f924d2ce
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285148"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668190"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Linux ve vašem clusteru Service Fabric
 
@@ -44,10 +44,10 @@ Orchestrace aplikaci patch se skládá z následujících tyto dílčí součás
 - **Služba Koordinátor**: Tato stavová služba je zodpovědná za:
     - Koordinace úloh aktualizace operačního systému v celém clusteru.
     - Ukládání výsledek dokončené operace aktualizace operačního systému.
-- **Služba agenta uzlu**: tuto bezstavovou službu běží na všech uzlech clusteru Service Fabric. Služba je zodpovědná za:
+- **Služba agenta uzlu**: Tuto bezstavovou službu běží na všech uzlech clusteru Service Fabric. Služba je zodpovědná za:
     - Spuštění agenta uzlu démon v Linuxu.
     - Monitorování služby démona.
-- **Démon agenta uzlu**: Služba démona tento Linux běží na vyšší úrovni oprávnění (uživatel root). Naproti tomu službu agenta uzlu a služba Koordinátor běží na nižší úrovni oprávnění. Služba je zodpovědná za provádí následující úlohy aktualizace se na všech uzlech clusteru:
+- **Démon agenta uzlu**: Tato služba démona Linux běží na vyšší úrovni oprávnění (uživatel root). Naproti tomu službu agenta uzlu a služba Koordinátor běží na nižší úrovni oprávnění. Služba je zodpovědná za provádí následující úlohy aktualizace se na všech uzlech clusteru:
     - Zakázat automatické aktualizace operačního systému na uzlu.
     - Stažení a instalace aktualizace operačního systému podle zásad uživatel zadal.
     - Restartování počítače po instalaci aktualizace operačního systému v případě potřeby.
@@ -130,10 +130,10 @@ Chování aplikace orchestraci oprav je možné nakonfigurovat podle svých pot�
 |**Parametr**        |**Typ**                          | **Podrobnosti**|
 |:-|-|-|
 |MaxResultsToCache    |Dlouhé                              | Maximální počet výsledků aktualizace, které by měly být uložené v mezipaměti. <br>Výchozí hodnota je 3000 za předpokladu, že: <br> -Počet uzlů je 20. <br> -Počet aktualizací děje na uzel a měsíc je pět. <br> -Počet výsledků na operace může být 10. <br> – Výsledky po dobu posledních tří měsíců by měla být uložena. |
-|TaskApprovalPolicy   |Výčet <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy označuje zásadu, která má být použit službou koordinátora k instalaci aktualizací na uzlech clusteru Service Fabric.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Aktualizace jsou nainstalované jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizace jsou nainstalované jednu upgradovací doménu najednou. (Na maximum, můžete přejít všechny uzly, které patří do logických sítí pro aktualizace.)
+|TaskApprovalPolicy   |Výčet <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy označuje zásadu, která má být použit službou koordinátora k instalaci aktualizací na uzlech clusteru Service Fabric.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Aktualizace jsou nainstalované jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizace jsou nainstalované jednu upgradovací doménu najednou. (Na maximum, můžete přejít všechny uzly, které patří do logických sítí pro aktualizace.)
 | UpdateOperationTimeOutInMinutes | Int <br>(Výchozí: 180)                   | Určuje časový limit pro libovolnou operaci aktualizace (stáhnout nebo nainstalovat). Pokud se operace nedokončí v rámci zadaného časového limitu, je přerušeno.       |
-| RescheduleCount      | Int <br> (Výchozí: 5).                  | Maximální počet pokusů, operační systém přeplánuje služby aktualizovat v případě, že docházet k chybě operace.          |
-| RescheduleTimeInMinutes  | Int <br>(Výchozí: 30). | Interval, ve kterém služba přeplánuje operační systém aktualizovat v případě, že chyba přetrvává. |
+| RescheduleCount      | Int <br> (Výchozí: 5)                  | Maximální počet pokusů, operační systém přeplánuje služby aktualizovat v případě, že docházet k chybě operace.          |
+| RescheduleTimeInMinutes  | Int <br>(Výchozí: 30) | Interval, ve kterém služba přeplánuje operační systém aktualizovat v případě, že chyba přetrvává. |
 | UpdateFrequency           | Řetězec s hodnotami oddělenými čárkou (výchozí: "Každý týden, Středa 7:00:00")     | Frekvence pro instalaci aktualizace operačního systému v clusteru. Formát a možné hodnoty jsou: <br>– Měsíční, DD, hh: mm:, třeba každý měsíc, 5, 12:22:32. <br> – Každý týden, den, hh: mm:, například týdně, úterý, 12:22:32.  <br> -Denní, hh: mm:, třeba každý den, 12:22:32.  <br> -Žádný označuje této aktualizace by neměla být provedena.  <br><br> Všechny časy jsou ve formátu UTC.|
 | UpdateClassification | Řetězec s hodnotami oddělenými čárkou (výchozí: "securityupdates") | Typ aktualizace, které musí být nainstalován na uzlech clusteru. Přípustné hodnoty jsou securityupdates, všechny. <br> -securityupdates – by instalovat pouze aktualizace zabezpečení <br> z apt - all - by instalace všech dostupných aktualizací.|
 | ApprovedPatches | Řetězec s hodnotami oddělenými čárkou (výchozí: "") | Toto je seznam schválených aktualizací, které musí být nainstalován na uzly clusteru. Čárkami oddělený seznam obsahuje schválených balíčků a volitelně požadovanou cílovou verzi.<br> Příklad: "apt utils = 1.2.10ubuntu1, pythonu3 jwt, apt přenos https < 1.2.194, libsystemd0 > = 229 4ubuntu16" <br> Nainstalovat výše by <br> -apt utils s 1.2.10ubuntu1 verze, pokud je k dispozici v apt-cache. Pokud tuto konkrétní verzi není k dispozici, jde no-op. <br> -pythonu3 jwt upgrade na nejnovější dostupnou verzi. Pokud balíček není k dispozici, jde no-op. <br> – upgrady apt přenos https na nejvyšší verze, která je menší než 1.2.194. Pokud tato verze není k dispozici, jde no-op. <br> – upgrady libsystemd0 nejvyšší verzi, která je větší než nebo rovna 229 4ubuntu16. Pokud tato verze neexistuje, jde no-op.|
@@ -221,9 +221,9 @@ Pole JSON jsou popsány následujícím způsobem:
 
 Pole | Hodnoty | Podrobnosti
 -- | -- | --
-Výsledek | 0 – úspěšné<br> 1 - bylo úspěšně dokončeno s chybami<br> 2 – se nezdařilo<br> 3 - bylo přerušeno<br> 4 - bylo přerušeno s časovým limitem | Určuje výsledek operace (obvykle zahrnující instalace jedné nebo více aktualizací).
+OperationResult | 0 – úspěšné<br> 1 - bylo úspěšně dokončeno s chybami<br> 2 – se nezdařilo<br> 3 - bylo přerušeno<br> 4 - bylo přerušeno s časovým limitem | Určuje výsledek operace (obvykle zahrnující instalace jedné nebo více aktualizací).
 Kód výsledku | Stejný jako výsledek | Toto pole indikuje výsledek operace instalace pro individuální aktualizaci.
-Typ operace | 1 – instalace<br> 0 - hledání a stahování.| Instalace je jediným typem operace OperationType, který by být standardně zobrazena ve výsledcích.
+OperationType | 1 – instalace<br> 0 - hledání a stahování.| Instalace je jediným typem operace OperationType, který by být standardně zobrazena ve výsledcích.
 UpdateClassification | Výchozí hodnota je "securityupdates" | Typ aktualizace, který je nainstalován během operace aktualizace
 UpdateFrequency | Výchozí hodnota je "Každý týden, Středa 7:00:00" | Aktualizujte četnosti nakonfigurovaná pro tuto aktualizaci.
 RebootRequired | true – se vyžaduje restartování<br> false – nebyl požadován restart | Označuje, že restartování se vyžaduje pro dokončení instalace aktualizace.

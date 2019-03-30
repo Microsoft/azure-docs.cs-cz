@@ -4,7 +4,7 @@ description: Úvod do vícenásobného přístupu pro Service Fabric Reliable Ac
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: amanbha
 ms.assetid: be23464a-0eea-4eca-ae5a-2e1b650d365e
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c7a4066a949ad6e66c45dff67f1e80801f2fa4cd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 46682787bac2d60d188384a4078ca2fa1f46ae7a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055256"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669023"
 ---
 # <a name="reliable-actors-reentrancy"></a>Vícenásobný přístup Reliable Actors
 Modul runtime Reliable Actors ve výchozím nastavení, umožňuje vícenásobného přístupu na základě kontextu logické volání. To umožňuje koncepce actorů je naprosto vícenásobné, když jsou v tomtéž řetězu volání kontextu. Například objektu Actor A odešle zprávu do objektu Actor B, který odešle zprávu do objektu Actor C. Při zpracování zprávy Pokud objekt Actor C volání objektu Actor A zpráva je vícenásobné, tak bude možné. Další zprávy, které jsou součástí jiné volání kontextu se zablokuje na objektu Actor A dokud se nedokončí zpracování.

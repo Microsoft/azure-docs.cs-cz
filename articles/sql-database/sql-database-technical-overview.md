@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 29a0d0679adc51cf1493d241273e3b572a7fd57d
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.date: 03/29/2019
+ms.openlocfilehash: e71039c84c79c27a372a378144b21f6f724d08d8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214295"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670831"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co je služba Azure SQL Database?
 
@@ -149,11 +149,14 @@ Ve službě [SQL Database jsou dostupné](sql-database-automatic-tuning.md) dva 
 
 ### <a name="adaptive-query-processing"></a>Adaptivní zpracování dotazů
 
-Do služby SQL Database přidáváme také řadu funkcí pro [adaptivní zpracování dotazů](/sql/relational-databases/performance/adaptive-query-processing), včetně prokládaného spouštění funkcí s více příkazy vracejících tabulky, odezvy přidělení paměti v režimu dávky a adaptivních příkazů join v režimu dávky. Každá z těchto funkcí pro adaptivní zpracování dotazů používá podobné techniky učení a adaptace a pomáhá tak dále řešit problémy s výkonem související s historicky nezvladatelnými problémy s optimalizací dotazů.
+Do služby SQL Database přidáváme také řadu funkcí pro [adaptivní zpracování dotazů](/sql/relational-databases/performance/intelligent-query-processing), včetně prokládaného spouštění funkcí s více příkazy vracejících tabulky, odezvy přidělení paměti v režimu dávky a adaptivních příkazů join v režimu dávky. Každá z těchto funkcí pro adaptivní zpracování dotazů používá podobné techniky učení a adaptace a pomáhá tak dále řešit problémy s výkonem související s historicky nezvladatelnými problémy s optimalizací dotazů.
 
 ## <a name="advanced-security-and-compliance"></a>Pokročilé zabezpečení a dodržování předpisů
 
 SQL Database nabízí řadu [integrovaných funkcí zabezpečení a dodržování předpisů](sql-database-security-overview.md), které vaší aplikaci pomůžou se splněním nejrůznějších požadavků na zabezpečení a dodržování předpisů.
+
+> [!IMPORTANT]
+> Azure SQL Database (všechny možnosti nasazení) a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://azure.microsoft.com/support/trust-center/), kde také najdete nejnovější seznam [certifikátů služby SQL Database v oblasti dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
 
 ### <a name="advance-threat-protection"></a>Advanced Threat Protection
 
@@ -242,7 +245,7 @@ Zákazníci SQL Database bude mít následující práva spojená s programem Az
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Spolupráce s technickým týmem SQL Serveru
 
 - [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): Ptejte se správy databáze
-- [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server): Ptejte se vývoj
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server): Ptejte se vývoj
 - [Fóra na webu MSDN](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Pokládání technických dotazů
 - [Zpětná vazba](https://aka.ms/sqlfeedback): Ohlašování chyb a žádosti o funkce
 - [Reddit](https://www.reddit.com/r/SQLServer/): Diskuze o SQL serveru

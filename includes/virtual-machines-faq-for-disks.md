@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/30/2018
+ms.date: 03/28/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 233834bd040362e27ffadc3d0003a87827012352
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 61f65340c3b683674be195f1d30788494b6855a7
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407981"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58671808"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovaných a nespravovaných prémiové disky
 
@@ -219,7 +219,7 @@ Ano, můžete převzetí služeb při selhání virtuálního počítače se spr
 
 **Je k dispozici žádný dopad migrace na virtuálních počítačích Azure, které jsou chráněné službou Azure Site Recovery prostřednictvím replikace z Azure do Azure?**
 
-Ano. V současné době Azure do Azure ochranu Azure Site Recovery pro virtuální počítače se službou Managed Disks je k dispozici pouze jako služba ve verzi public preview.
+Ano. V současné době je k dispozici jako obecně Dostupnou službou Azure Site Recovery Azure Azure ochrany pro virtuální počítače se spravovanými disky.
 
 **Můžete migrovat virtuální počítače s nespravovanými disky, které se nacházejí v účtech úložiště, které jsou nebo se dříve zašifrována na spravované disky?**
 
@@ -339,7 +339,7 @@ Ano.
 
 **Co jsou největší velikostí disků, podporované službou Azure Backup a Azure Site Recovery?**
 
-Největší velikost disku podporované službou Azure Backup a Azure Site Recovery je 4 TB.
+Největší velikost disku podporované službou Azure Backup a Azure Site Recovery je 4 TB. Podpora větších disků až 32 TB se brzy přidají.
 
 **Co jsou doporučené virtuální počítač o velikosti pro větší velikosti disku (> 4 TB) za SEKUNDU a šířky pásma na disku SSD na úrovni Standard a standardní HDD disky k dosažení optimalizovaná?**
 

@@ -4,7 +4,7 @@ description: Popisuje příkazy Service Fabric CLI sfctl síť sítě.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 8828605241d55ac6f9ce789ccc55c30f2cd36434
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: feec5c4796c025c1707b4eb93bfe34b8d384ef3a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285204"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669176"
 ---
-# <a name="sfctl-mesh-network"></a>sfctl síť sítě
+# <a name="sfctl-mesh-network"></a>sfctl mesh network
 Získání a odstranění síť síťovým prostředkům.
 
 ## <a name="commands"></a>Příkazy
@@ -30,7 +30,7 @@ Získání a odstranění síť síťovým prostředkům.
 | --- | --- |
 | delete | Odstraní prostředek sítě. |
 | list | Uvádí všechny síťové prostředky. |
-| Show | Získá síťový prostředek se zadaným názvem. |
+| zobrazit | Získá síťový prostředek se zadaným názvem. |
 
 ## <a name="sfctl-mesh-network-delete"></a>sfctl síť sítě delete
 Odstraní prostředek sítě.

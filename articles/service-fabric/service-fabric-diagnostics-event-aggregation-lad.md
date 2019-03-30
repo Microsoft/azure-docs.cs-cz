@@ -4,7 +4,7 @@ description: Další informace o agregaci a shromažďování událostí pomocí
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: ca6be2b08c9a38813b2c98eef7e5696bd61fd074
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 212158d9a76fa2e49c60be0b5c52f281497c155b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893029"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669414"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Agregace událostí a kolekce pomocí diagnostiky Azure Linux
 > [!div class="op_single_selector"]

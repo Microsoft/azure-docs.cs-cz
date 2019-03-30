@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: d19dabb4e74e7a108ae769f55cd65ef108019fdc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 03/29/2019
+ms.openlocfilehash: b5417787472b332e38db002067920153d554fdb0
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454737"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668486"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Použití rozšířené zabezpečení dat s virtuálními sítěmi a téměř 100 % kompatibility SQL Database
 
@@ -48,6 +48,9 @@ Managed instance kombinuje nejlepší funkce, které jsou k dispozici v Azure SQ
 |Žádný hardware, nákup a správu <br>Není potřeba Správa režie pro správu základní infrastruktury <br>Rychlé zřizování a škálování služby <br>Automatické použití dílčích oprav a verze upgradu <br>Integrace s dalšími službami PaaS dat |99,99 % smlouva SLA o provozuschopnosti  <br>Součástí [vysoké dostupnosti](sql-database-high-availability.md) <br>Data chráněná [automatické zálohování](sql-database-automated-backups.md) <br>Období zákazník možnost konfigurace uchovávání záloh <br>Uživatelem iniciované [zálohy](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Bod v čase obnovení databáze](sql-database-recovery-using-backups.md#point-in-time-restore) funkce |
 |**Zabezpečení a dodržování předpisů** | **Správa**|
 |Izolované prostředí ([integrace virtuální sítě](sql-database-managed-instance-connectivity-architecture.md), jednoho tenanta služby, vyhrazené výpočetní prostředky a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), jednotné přihlašování – podpora <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD objekty serveru (přihlášení)</a> (**ve verzi public preview**) <br>Dodržuje standardy pro dodržování předpisů stejně jako Azure SQL database <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[Detekce hrozeb](sql-database-managed-instance-threat-detection.md) |Rozhraní API Azure Resource Manageru pro automatizaci služby zřizování a škálování <br>Azure portal funkci pro ruční službu zřizování a škálování <br>Data Migration Service
+
+> [!IMPORTANT]
+> Azure SQL Database (všechny možnosti nasazení) a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://azure.microsoft.com/support/trust-center/), kde také najdete nejnovější seznam [certifikátů služby SQL Database v oblasti dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
 
 V následující tabulce jsou uvedeny klíčové funkce spravované instance:
 

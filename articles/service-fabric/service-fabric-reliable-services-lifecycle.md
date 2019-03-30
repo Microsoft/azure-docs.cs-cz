@@ -4,7 +4,7 @@ description: Další informace o různých životního cyklu události v Service
 services: Service-Fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: vturecek;
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 5a47e288059cb65615a47e2e1c472178090b0818
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: ebc7aec63b34630b606178aa17e2ae7fdd0fc87f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737395"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669602"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Přehled životní cyklus Reliable Services
 > [!div class="op_single_selector"]

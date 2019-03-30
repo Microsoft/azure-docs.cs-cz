@@ -4,7 +4,7 @@ description: Úvod do programovacího modelu Service Fabric Reliable Actors.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 7fdad07f-f2d6-4c74-804d-e0d56131f060
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 363cba145ed4d5bcf138cf3f7130763891c51e8b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5a237e23dffed76e6122e17b59c85d20ca7e1baf
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258057"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668666"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Seznámení se službou Service Fabric Reliable Actors
 Reliable Actors je architektura aplikací Service Fabric na základě [virtuálního objektu Actor](https://research.microsoft.com/en-us/projects/orleans/) vzor. Reliable Actors rozhraní API poskytuje programovací model s jedním vláknem založená na škálovatelnost a spolehlivost záruky poskytované Service Fabric.
@@ -37,7 +37,7 @@ I když objekt actor návrhu může být vhodná přizpůsobit počet problémů
 * Vaše instance objektu actor nebude blokovat volající s neočekávaným zpožděním vydáním vstupně-výstupních operací.
 
 ## <a name="actors-in-service-fabric"></a>V Service Fabric actors
-V Service Fabric actors jsou implementovány v rámci Reliable Actors: na základě objektů actor vzor aplikační rozhraní založené na horní [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md). Každá služba Reliable Actors, který napíšete je ve skutečnosti oddílů, stavovou službu Reliable.
+V Service Fabric actors jsou implementovány v Reliable Actors v rámci: Na základě objektů actor vzor aplikační rozhraní založené na horní [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md). Každá služba Reliable Actors, který napíšete je ve skutečnosti oddílů, stavovou službu Reliable.
 
 Každý objekt actor se definuje jako instance objektu actor typu identické s stejným způsobem jako objekt .NET je instance typu .NET. Například může být typem objektu actor, který implementuje funkce kalkulačku a může být mnoho actors tohoto typu, které jsou distribuovány na různých uzlech v clusteru. Každý takový objekt actor se jednoznačně identifikují pomocí ID objektu actor
 

@@ -4,7 +4,7 @@ description: Přehled funkcí skupiny aplikací v Service Fabric Cluster Resourc
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 4cae2370-77b3-49ce-bf40-030400c4260d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 94ae233f8591c43afa1bb73c3e17964922967d36
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e90dc00a8e042e48d8016e25dda04c15ce9f619
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123024"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670630"
 ---
 # <a name="introduction-to-application-groups"></a>Úvod do skupiny aplikací
 Service Fabric Cluster Resource Manageru obvykle spravuje prostředky clusteru rozložení zátěže (reprezentované prostřednictvím [metriky](service-fabric-cluster-resource-manager-metrics.md)) rovnoměrně v celém clusteru. Service Fabric spravuje kapacity uzlů v clusteru a clusteru jako celek prostřednictvím [kapacity](service-fabric-cluster-resource-manager-cluster-description.md). Metriky a kapacitu fungují velmi vhodné pro mnoho úloh, ale vzorce, které se hojně používají různé instance aplikace Service Fabric v některých případech umožňuje přinést si další požadavky. Například můžete chtít:

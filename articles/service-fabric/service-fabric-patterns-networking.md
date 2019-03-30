@@ -4,7 +4,7 @@ description: Popisuje běžné vzory sítě pro Service Fabric a jak vytvořit c
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: aljo
-ms.openlocfilehash: d54585e0218cc900f981f0c924fe8c5762baeaa2
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: feea57122d805ae065278458f90afbc960221a9d
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500334"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670247"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric sítě vzory
 Cluster Azure Service Fabric můžete integrovat další funkce Azure sítě. V tomto článku ukážeme, jak vytvářet clustery, které používají následující funkce:

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 72cbf71077a8df2b81b366d9f29ae006100da471
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 45ac09b84aca44f6739a0e29994986200424fc5c
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310536"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669329"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby virtuální sítě
 
@@ -84,7 +84,7 @@ Koncové body služby poskytují následující výhody:
 - Koncové body služby se konfigurují v podsíti ve virtuální síti. Koncové body fungují s jakýmkoli typem výpočetních instancí spuštěných v rámci této podsítě.
 - V podsíti můžete nakonfigurovat několik koncových bodů služby pro všechny podporované služby Azure (například Azure Storage nebo Azure SQL Database).
 - Pro Azure SQL Database musí být virtuální sítě ve stejné oblasti jako prostředek služby Azure. Pokud používáte pro Azure Storage účty GRS a RA-GRS, primární účet musí být ve stejné oblasti jako virtuální síť. Pro všechny ostatní služby můžou být prostředky služby Azure zabezpečené ve virtuálních sítích v libovolné oblasti. 
-- Virtuální síť, ve které je koncový bod nakonfigurovaný, může být ve stejném předplatném jako prostředek služby Azure nebo v jiném předplatném. Další informace o oprávněních požadovaných pro nastavení koncových bodů a zabezpečení služeb Azure najdete v části [Zřizování](#Provisioning).
+- Virtuální síť, ve které je koncový bod nakonfigurovaný, může být ve stejném předplatném jako prostředek služby Azure nebo v jiném předplatném. Další informace o oprávněních požadovaných pro nastavení koncových bodů a zabezpečení služeb Azure najdete v části [Zřizování](#provisioning).
 - U podporovaných služeb můžete pomocí koncových bodů služby svázat s virtuálními sítěmi nové nebo existující prostředky.
 
 ### <a name="considerations"></a>Požadavky
@@ -132,7 +132,7 @@ Používání koncových bodů služby je bez dalších poplatků. Používá se
 
 Celkový počet koncových bodů služby ve virtuální síti není nijak omezený.
 
-Pro prostředky služeb Azure (například účet služby Azure Storage) můžou služby vynucovat omezení počtu podsítí použitých k zabezpečení příslušného prostředku. Podrobnosti najdete v dokumentaci k různým službám v části [Další kroky](#next-steps).
+Některé služby Azure, jako je například účty úložiště Azure, může vynucovat omezení počtu podsítí použitých k zabezpečení příslušného prostředku. Podrobnosti najdete v dokumentaci k různým službám v části [Další kroky](#next-steps).
 
 ## <a name="virtual-network-service-endpoint-policies"></a>Zásady koncového bodu služby virtuální sítě 
 

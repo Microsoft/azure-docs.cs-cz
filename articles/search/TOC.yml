@@ -203,6 +203,7 @@ items:
     - name: Příklady (jednoduchá syntaxe)
       href: search-query-simple-examples.md
     - name: Příklady (úplná syntaxe Lucene)
+      href: search-query-lucene-examples.md
   - name: Filtrování a řazení dat
     items:
     - name: Přehled filtrů
@@ -212,7 +213,7 @@ items:
     - name: Přidání fasetové navigace
       href: search-faceted-navigation.md
     - name: Příklady a syntaxe výrazů Filter a OrderBy
-      href: search-query-lucene-examples.md
+      href: query-odata-filter-orderby-syntax.md
   - name: Zpracování výsledků
     items:
     - name: Funkce související se stránkou
@@ -306,9 +307,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: Videa
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: d0e692407a89e01806f425bedb302160ec8c672b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ec82dc9f36f7fb4be24d3d1e833a951f72b48f5a
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576816"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651460"

@@ -4,7 +4,7 @@ description: Tento článek popisuje, Diagnostika a monitorování funkce v modu
 services: service-fabric
 documentationcenter: .net
 author: abhishekram
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: 888f9e04e048e3da4c9809ac4f8570f020030335
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f573db887b3acc2c4a668a8c19c7f8e3cb25019
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855831"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670740"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnostika a sledování výkonu služby Reliable Actors
 Generuje runtime Reliable Actors [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) události a [čítače výkonu](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Tyto poskytují přehled o jak modul runtime pracuje a pomoci při řešení potíží a monitorování výkonu.
@@ -134,7 +134,7 @@ Modul runtime Reliable Actors publikuje následující čítače výkonu souvise
 | Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
 | Objekt actor pro Service Fabric |Průměrný počet milisekund na operaci uložení stavu |Doba v milisekundách, jakou trvalo uložení stavu objektu actor |
-| Objekt actor pro Service Fabric |Průměrný počet milisekund na operaci načtení stavu |Čas potřebný k načtení stavu objektu actor v milisekundách |
+| Objekt actor pro Service Fabric |Průměrný počet milisekund na operaci načtení stavu |Doba v milisekundách, jakou trvalo načtení stavu objektu actor |
 
 ### <a name="events-related-to-actor-replicas"></a>Události související s objektů actor
 Modul runtime Reliable Actors vysílá následující události související s [objektů actor](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
@@ -156,7 +156,7 @@ Modul runtime Reliable Actors publikuje následující čítače výkonu souvise
 
 | Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
-| Objekt actor pro Service Fabric |Průměrná doba metody OnActivateAsync v milisekundách |Čas potřebný k provádění metody OnActivateAsync v milisekundách |
+| Objekt actor pro Service Fabric |Průměrná doba metody OnActivateAsync v milisekundách |Doba v milisekundách, jakou trvalo provádění metody OnActivateAsync |
 
 ### <a name="actor-request-processing-performance-counters"></a>Čítače výkonu zpracování požadavku objektu actor
 Když klient volá metodu přes proxy server objektu actor, výsledkem zprávu požadavku, odeslání přes síť do služby objektu actor. Služba zpracovává zprávy s požadavkem a odešle odpověď zpět klientovi. Modul runtime Reliable Actors publikuje následující čítače výkonu související s zpracování požadavku na objekt actor.

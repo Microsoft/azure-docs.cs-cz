@@ -41,7 +41,7 @@ items:
   - name: Zabezpečené artefakty
     href: resource-manager-tutorial-secure-artifacts.md
   - name: Použití postupů bezpečného nasazení
-    displayName: azure deployment manager
+    displayName: adm
     href: deployment-manager-tutorial.md
   - name: Řešení potíže s nasazováním šablon
     href: resource-manager-tutorial-troubleshoot.md
@@ -63,6 +63,7 @@ items:
   - name: Poskytovatelé a typy prostředků
     href: resource-manager-supported-services.md
   - name: Deployment Manager
+    displayName: adm
     href: deployment-manager-overview.md
   - name: Režimy nasazení
     href: deployment-modes.md
@@ -77,6 +78,7 @@ items:
     - name: Vytvoření šablony
       href: how-to-create-template.md
     - name: Vytvoření prostředků a skupin prostředků v předplatném
+      displayName: subscription level deployment
       href: deploy-to-subscription.md
     - name: Definování závislostí prostředků
       href: resource-group-define-dependencies.md
@@ -95,12 +97,16 @@ items:
   - name: Nasazení šablon
     items:
     - name: Nasazení – portál
+      displayName: deployment
       href: resource-group-template-deploy-portal.md
     - name: Nasazení – rozhraní příkazového řádku
+      displayName: deployment,rollback on error,redeploy
       href: resource-group-template-deploy-cli.md
     - name: Nasazení – PowerShell
+      displayName: deployment,rollback on error,redeploy
       href: resource-group-template-deploy.md
     - name: Nasazení – REST API
+      displayName: deployment,rollback on error,redeploy
       href: resource-group-template-deploy-rest.md
     - name: Zabezpečení šablon s tokenem SAS
       items:
@@ -249,9 +255,9 @@ items:
     href: resource-manager-personal-data.md
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: c84e93cbc0a74ca59a2f25e467780378ee3d1e19
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 90218638e4d4a11c0ab6f3a6a1b6513bc1f7b5e6
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372144"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648618"

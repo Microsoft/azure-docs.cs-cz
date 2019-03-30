@@ -4,7 +4,7 @@ description: Horizontální snížení nebo navýšení kapacity clusteru Servic
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: aeb76f63-7303-4753-9c64-46146340b83d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/12/2019
 ms.author: aljo
-ms.openlocfilehash: 4c3a9f00ed92194c4f81ab44cb9ca86d4a85fea1
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: f201ac1f0ea5a4bc07e8c052e7653194140e8759
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224341"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669363"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Horizontální snížení nebo navýšení kapacity clusteru
 

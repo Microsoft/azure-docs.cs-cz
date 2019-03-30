@@ -4,7 +4,7 @@ description: Zjistěte, jak zabalit existující aplikaci jako Host spustitelné
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: aljo
-ms.openlocfilehash: fa883f819c53f57a8e281069b2a3db1c55efc6c6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: bfac14c598b405a398cad916787aa3312589bfd1
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480531"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669941"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Balení a nasazení existujícího spustitelného souboru do Service Fabric
 Při vytváření balíčku existujícího spustitelného souboru jako [spustitelný soubor typu Host](service-fabric-guest-executables-introduction.md), můžete buď použít šablonu projektu sady Visual Studio nebo [ručně vytvořit balíček aplikace](#manually). Pomocí sady Visual Studio, struktury balíček aplikace a soubory manifestu jsou vytvářeny nová šablona projektu pro vás.

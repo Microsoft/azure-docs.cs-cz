@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 06b2a5211c720d50a2f14e5fa56fa296cb80d41f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: b536c55b0f7c29bc463781d9fda0348ef994c5ce
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519625"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662220"
 ---
 # <a name="what-are-the-speech-services"></a>Co jsou služby Speech?
 
@@ -39,7 +39,7 @@ Tyto funkce tvoří hlasové služby Azure. Další informace o běžných pří
 
 Zjistěte, co je nového v hlasových služeb Azure.
 
-* 2019. března – nový koncový bod pro převod textu na řeč, která vrací úplný seznam dostupných hlasy v konkrétní oblasti je nyní k dispozici. Další informace najdete v tématu [referenční dokumentace rozhraní API pro převod textu na řeč (REST)](rest-text-to-speech.md).
+* 2019. března – nový koncový bod pro převod textu na ŘEČ, která vrací úplný seznam dostupných hlasy v určitých oblastech je k dispozici. Kromě toho nové oblasti jsou nyní podporovány pro převod textu na ŘEČ. Další informace najdete v tématu [referenční dokumentace rozhraní API pro převod textu na řeč (REST)](rest-text-to-speech.md).
 * . Února 2019 – vydali sadou SDK pro řeč 1.3.0 s podporou [Unity (beta verze)](quickstart-csharp-unity.md). Přidání podpory pro `AudioInput` třídu, která vám umožní vybrat zdroji streamování Audio. Úplný seznam vylepšení a známých problémů naleznete v tématu [poznámky k verzi](releasenotes.md).
 * Prosince 2018 – vydání sadou SDK pro řeč 1.2.0 s podporou [Python](quickstart-python.md) a [Node.js](quickstart-js-node.md), stejně jako Ubuntu 18.04 LTS. Další informace najdete v tématu [poznámky k verzi](releasenotes.md).
 

@@ -4,7 +4,7 @@ description: Popisuje příkazy Service Fabric CLI sfctl sítě.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: c7f4a0774c9277606e7c7c550eaa114e2ebbccbd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 4901630509eb60cb1bbe88a46b51277af244c8f8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285176"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670723"
 ---
-# <a name="sfctl-mesh"></a>sfctl sítě
+# <a name="sfctl-mesh"></a>sfctl mesh
 Odstraňte a Správa aplikací Service Fabric mřížky.
 
 ## <a name="subgroups"></a>Podskupiny
 |Podskupina|Popis|
 | --- | --- |
-| [Aplikace](service-fabric-sfctl-mesh-app.md) | Získání a odstranění prostředků aplikace. |
-| [protokol balíčku kódu](service-fabric-sfctl-mesh-code-package-log.md) | Získáte protokoly pro kontejner balíček zadaný kód pro repliku dané služby. |
+| [app](service-fabric-sfctl-mesh-app.md) | Získání a odstranění prostředků aplikace. |
+| [code-package-log](service-fabric-sfctl-mesh-code-package-log.md) | Získáte protokoly pro kontejner balíček zadaný kód pro repliku dané služby. |
 | [Nasazení](service-fabric-sfctl-mesh-deployment.md) | Vytvoření sítě pro Service Fabric prostředků. |
-| [Brány](service-fabric-sfctl-mesh-gateway.md) | Získání a odstranění prostředků brány sítě. |
-| [Sítě](service-fabric-sfctl-mesh-network.md) | Získání a odstranění síť síťovým prostředkům. |
-| [Tajný klíč](service-fabric-sfctl-mesh-secret.md) | Získání a odstranění tajného kódu prostředků sítě. |
+| [gateway](service-fabric-sfctl-mesh-gateway.md) | Získání a odstranění prostředků brány sítě. |
+| [network](service-fabric-sfctl-mesh-network.md) | Získání a odstranění síť síťovým prostředkům. |
+| [secret](service-fabric-sfctl-mesh-secret.md) | Získání a odstranění tajného kódu prostředků sítě. |
 | [secretvalue](service-fabric-sfctl-mesh-secretvalue.md) | Získání a odstraňte prostředky secretvalue sítě. |
 | [Služba](service-fabric-sfctl-mesh-service.md) | Získejte podrobnosti o službě a seznam služeb prostředek aplikace. |
-| [repliku služby](service-fabric-sfctl-mesh-service-replica.md) | Získáte podrobnosti repliky a seznam replik dané služby v prostředek aplikace. |
+| [service-replica](service-fabric-sfctl-mesh-service-replica.md) | Získáte podrobnosti repliky a seznam replik dané služby v prostředek aplikace. |
 | [Svazek](service-fabric-sfctl-mesh-volume.md) | Získání a odstranění objem prostředků. |
 
 

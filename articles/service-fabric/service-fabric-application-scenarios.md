@@ -3,8 +3,8 @@ title: Návrh a scénáře aplikací | Dokumentace Microsoftu
 description: Přehled kategorií cloudových aplikací ve službě Service Fabric. Tento článek popisuje návrhu aplikace, která používá stavové a bezstavové služby.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: 3a8ca6ea-b8e9-4bc3-9e20-262437d2528e
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/02/2017
-ms.author: mfussell
-ms.openlocfilehash: a84d8fead42f8314decc144f01d8de1dac30bbdf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.author: atsenthi
+ms.openlocfilehash: c9b2f9ac131e71b7c6b37ed85568adc0c3978dc2
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199472"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668233"
 ---
 # <a name="service-fabric-application-scenarios"></a>Scénáře aplikací Service Fabric
 Azure Service Fabric nabízí spolehlivé a flexibilní platformu, která umožňuje zápis a spouštění mnoho typů podnikových aplikací a služeb. Tyto aplikace a mikroslužeb může být Bezstavová nebo stavová a jsou vyrovnávání prostředků napříč virtuálními počítači pro maximalizaci efektivity. Jedinečná architektura Service Fabric umožňuje téměř analýzy dat v reálném čase, výpočty v paměti, paralelní transakce a v aplikacích pro zpracování událostí. Je možné snadno škálovat aplikace navýšení nebo snížení kapacity (ve skutečnosti dovnitř nebo ven), v závislosti na tom se měnící požadavky na prostředky.

@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: eff7f88ec6cbf8064df42fa3b22d61bb44baa451
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 5dd77d85e06a821d8dd359174bb5de6bca8b4d61
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339580"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669772"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -316,3 +316,12 @@ configurations:
     build:
       dockerfile: Dockerfile.develop
 ```
+
+## <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Chyby "vnitřní watch se nezdařilo: Podívejte se na ENOSPC" při připojování ladění aplikace v Node.js
+
+### <a name="reason"></a>Důvod
+
+Byla překročena uzlu spuštěn pod aplikaci Node.js se pokoušíte připojit se ladicí program *fs.inotify.max_user_watches* hodnotu. V některých případech [na výchozí hodnotu *fs.inotify.max_user_watches* pravděpodobně příliš malá pro zpracování, ladicí program se připojuje přímo k pod](https://github.com/Azure/AKS/issues/772).
+
+### <a name="try"></a>Vyzkoušení
+Dočasným řešením tohoto problému je zvýšení hodnoty *fs.inotify.max_user_watches* na každém uzlu v clusteru a tento uzel restartovat, aby se změny projevily.
