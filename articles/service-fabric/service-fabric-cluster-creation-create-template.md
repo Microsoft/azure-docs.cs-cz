@@ -4,7 +4,7 @@ description: Zjistěte, jak vytvořit šablonu Resource Manageru pro cluster Ser
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: chackdan
 ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 857f621ee2c6d594f769b642b7cc671c5e7f7a9a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ddfd8ce14ca20c7094fa927aeafc36ae53271499
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482568"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665504"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Vytvoření šablony Resource Manageru clusteru Service Fabric
 

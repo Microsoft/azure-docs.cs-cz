@@ -4,7 +4,7 @@ description: 'Service Fabric nabízí dvě architektury pro vytváření služeb
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: 974b2614-014e-4587-a947-28fcef28b382
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: d791148e6ee023239b0a6bf49c705c2da4eea9a2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d764cbe2df78cb9029a4109caa2998ddded5d6ff
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881868"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665708"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Přehled programovacího modelu Service Fabric
 Service Fabric nabízí několik způsobů, jak zapisovat a spravovat vaše služby. Služby můžete zvolit použití rozhraní API služby Service Fabric plně využít funkce platformy a aplikace rozhraní. Služby mohou být také všechny zkompilovaný spustitelný program napsané v libovolném jazyce nebo kód spuštěný v kontejneru hostovaná v clusteru Service Fabric.

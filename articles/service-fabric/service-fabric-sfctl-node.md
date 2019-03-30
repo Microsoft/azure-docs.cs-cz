@@ -4,7 +4,7 @@ description: Popisuje příkazy Service Fabric CLI sfctl uzlu.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 5ceda83863d892b84ee4dc272345f760116e5e69
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 08ea0081c84ea31b2b71d03679b1b527cf94c075
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278599"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662886"
 ---
 # <a name="sfctl-node"></a>sfctl node
 Spravujte uzly, které tvoří cluster.
@@ -34,11 +34,11 @@ Spravujte uzly, které tvoří cluster.
 | informace | Získá informace o konkrétním uzlu v clusteru Service Fabric. |
 | list | Získá seznam uzlů v clusteru Service Fabric. |
 | načítání | Získá informace o načtení uzlu Service Fabric. |
-| stavu Remove | Service Fabric oznámí, že trvalého stavu na uzlu trvale odstraněn nebo ztráty. |
-| Stav sestavy | Odešle zprávu o stavu na uzlu Service Fabric. |
+| remove-state | Service Fabric oznámí, že trvalého stavu na uzlu trvale odstraněn nebo ztráty. |
+| report-health | Odešle zprávu o stavu na uzlu Service Fabric. |
 | restart | Restartování uzlu clusteru Service Fabric. |
 | Přechod | Spuštění nebo zastavení uzlu clusteru. |
-| Přechod stavu | Získá průběh operace začít používat StartNodeTransition. |
+| transition-status | Získá průběh operace začít používat StartNodeTransition. |
 
 ## <a name="sfctl-node-disable"></a>zakázat uzel sfctl
 Deaktivujte uzel clusteru Service Fabric se zadaným deaktivaci záměr.
@@ -50,7 +50,7 @@ Deaktivujte uzel clusteru Service Fabric se zadaným deaktivaci záměr. Po deak
 |Argument|Popis|
 | --- | --- |
 | --[povinný] název uzlu | Název uzlu. |
-| --deaktivaci záměr | Popisuje záměr nebo důvod deaktivace uzlu. Možné hodnoty jsou následující. |
+| --deactivation-intent | Popisuje záměr nebo důvod deaktivace uzlu. Možné hodnoty jsou následující. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -95,7 +95,7 @@ Získá stav uzlu Service Fabricu. EventsHealthStateFilter použijte k filtrová
 |Argument|Popis|
 | --- | --- |
 | --[povinný] název uzlu | Název uzlu. |
-| --události stavu stavu filtru | Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
+| --events-health-state-filter | Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -140,8 +140,8 @@ Odpověď obsahuje název, stav, ID, stav, dobu provozu a další podrobnosti o 
 |Argument|Popis|
 | --- | --- |
 | --token pro pokračování | Parametr tokenu pokračování slouží k získání další sadu výsledků. Token pro pokračování se neprázdná hodnota je zahrnutý v odpovědi rozhraní API, když výsledky ze systému se nevejdou do odpověď o jedné. Když je tato hodnota předána na další volání rozhraní API, rozhraní API vrátí další sadu výsledků. Pokud neexistují žádné další výsledky, pak pokračovací token neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódování URL. |
-| – maximální počet výsledků | Maximální počet výsledků, které má být vrácena jako součást stránkové dotazy. Tento parametr definuje horní mez počtu výsledky. Výsledky se vrátí, může být nižší než zadané maximální počet výsledků, pokud se nevejdou do zprávy podle omezení velikosti maximální počet zpráv definované v konfiguraci. Pokud tento parametr je nula, nebo není zadán, obsahuje stránkovaného dotazu tolik výsledky nejdříve, který se vejde v návratové zprávě. |
-| --Filtr stavu uzlu | Umožňuje filtrování podle NodeStatus uzly. Vrátí se pouze uzly, které se odpovídající hodnota zadaného filtru. Hodnota filtru může být jedna z následujících akcí.  Výchozí\: výchozí. |
+| --max-results | Maximální počet výsledků, které má být vrácena jako součást stránkové dotazy. Tento parametr definuje horní mez počtu výsledky. Výsledky se vrátí, může být nižší než zadané maximální počet výsledků, pokud se nevejdou do zprávy podle omezení velikosti maximální počet zpráv definované v konfiguraci. Pokud tento parametr je nula, nebo není zadán, obsahuje stránkovaného dotazu tolik výsledky nejdříve, který se vejde v návratové zprávě. |
+| --node-status-filter | Umožňuje filtrování podle NodeStatus uzly. Vrátí se pouze uzly, které se odpovídající hodnota zadaného filtru. Hodnota filtru může být jedna z následujících akcí.  Výchozí\: výchozí. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -216,7 +216,7 @@ Sestavy stav určeného uzlu Service Fabric. Sestava může obsahovat informace 
 | – vypršela platnost odebrat v případě | Hodnota, která označuje, zda sestava se odebere z health store, když jeho platnost vyprší. <br><br> Je-li nastavena hodnota true, sestava se odebere z health store po vypršení její platnosti. Pokud je nastaven na hodnotu false, sestava je považováno za chybu, pokud vypršela platnost. Hodnota této vlastnosti je ve výchozím nastavení hodnotu false. Když klienti pravidelně hlásit, nastavují by měl RemoveWhenExpired false (výchozí). Tímto způsobem je osoby podávající hlášení dochází k problémům (například zablokování) a nemůže oznamovat entity je vyhodnocena v chybě, když vyprší platnost sestava stavu. Označí entitu jako patřící do chybového stavu. |
 | --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Pořadové číslo sestav se používá v úložišti stavů ke zjišťování zastaralých sestavy. Pokud není zadán, je číslo sekvence automaticky generované klientem stavu při přidání sestavy. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| – Hodnota ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
+| --ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -238,7 +238,7 @@ Restartování uzlu clusteru Service Fabric, která je již spuštěna.
 |Argument|Popis|
 | --- | --- |
 | --[povinný] název uzlu | Název uzlu. |
-| --Vytvořit výpis prostředků infrastruktury | Zadejte hodnotu PRAVDA, chcete-li vytvořit výpis procesu uzel fabric. Toto je velká a malá písmena.  Výchozí\: hodnotu False. |
+| --create-fabric-dump | Zadejte hodnotu PRAVDA, chcete-li vytvořit výpis procesu uzel fabric. Toto je velká a malá písmena.  Výchozí\: hodnotu False. |
 | – id instance uzlu | ID instance cílový uzel. Pokud je zadané instance ID uzel se restartuje jenom v případě, že se shoduje s aktuální instancí uzlu. Výchozí hodnotu "0" odpovídají žádné ID instance. Instance ID lze zjistit pomocí dotazu get uzlu.  Výchozí\: 0. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 

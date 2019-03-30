@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 619b9b68a5c4e897642e1f84c25c2822d8291400
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2d65d51ae8148e2e55d57d39e306ded0f75da687
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104484"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652582"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Zásady koncových bodů služby Virtual Network (Preview)
 
@@ -145,7 +145,7 @@ Zásady koncových bodů služby virtuální sítě nabízejí následující v�
 - **Partnerské, propojené nebo vícenásobné virtuální sítě**: Pro filtrování provozu ve virtuálních sítích s navázaným partnerským vztahem, zásad koncových bodů bude použito jednotlivě na tyto virtuální sítě.
 - **Filtrování přenosy z Internetu pomocí síťových zařízení nebo brány Firewall Azure**: Filtrovat provoz služeb Azure se zásadami, prostřednictvím koncových bodů a filtrovat rest z Internetu nebo v Azure provoz přes zařízení nebo brána Firewall služby Azure. 
 - **Filtrování provozu služeb Azure, které jsou nasazené do virtuálních sítí**: Ve verzi preview nejsou podporované zásadami koncových bodů služeb pro služby spravované Azure, které jsou nasazeny do vaší virtuální sítě. 
- Informace o konkrétních službách najdete v části [Omezení](#Limitations).
+ Informace o konkrétních službách najdete v části [Omezení](#limitations).
 - **Filtrování provozu do služby Azure z místního**: Zásady koncového bodu služby platí jenom pro provoz z podsítě přidružené zásady. Pokud chcete povolit přístup k určitým prostředkům služeb Azure z místního prostředí, musíte k filtrování přenosů požít síťová virtuální zařízení nebo brány firewall.
 
 ## <a name="logging-and-troubleshooting"></a>Protokolování a řešení potíží

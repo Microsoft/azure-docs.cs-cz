@@ -1,10 +1,10 @@
 ---
-title: Azure ukázkový skript prostředí PowerShell - aplikaci odebrat z clusteru s podporou | Microsoft Docs
-description: Azure ukázkový skript prostředí PowerShell - odebrat aplikaci z clusteru Service Fabric.
+title: Ukázkový skript Azure Powershellu – odebrat aplikaci z clusteru | Dokumentace Microsoftu
+description: Ukázkový skript Azure Powershellu – odebrat aplikaci z clusteru Service Fabric.
 services: service-fabric
 documentationcenter: ''
-author: rwike77
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -13,20 +13,20 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
-ms.author: ryanwi
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: ea7037fc3655298fc4c03b8d9f988a55e42c9fe9
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: HT
+ms.openlocfilehash: 05edc6bce6744acd14dea2358663c4097922f2ce
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27927858"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667452"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster"></a>Odebrání aplikace z clusteru Service Fabric
 
-Tento ukázkový skript odstraní spuštěné instance aplikace Service Fabric a zrušení registrace typ a verze aplikace z clusteru.  Odstranění instance aplikace na také odstraní všechny spuštěné služby instance přidružené s touto aplikací. Podle potřeby upravte parametry. 
+Tento ukázkový skript odstraní spuštěné instance aplikace Service Fabric a zruší registraci typ a verze aplikace z clusteru.  Odstraněním instance aplikace dojde také k odstranění všech spuštěných instancí služby přidružených dané aplikaci. Podle potřeby upravte parametry. 
 
-V případě potřeby nainstalujte modul Service Fabric prostředí PowerShell s [Service Fabric SDK](../service-fabric-get-started.md). 
+V případě potřeby nainstalujte modul PowerShellu pro Service Fabric se sadou [Service Fabric SDK](../service-fabric-get-started.md). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -34,15 +34,15 @@ V případě potřeby nainstalujte modul Service Fabric prostředí PowerShell s
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) | Odebere spuštěné instance aplikace Service Fabric z clusteru.  |
-| [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Zrušení registrace typu aplikace Service Fabric a verze z clusteru. |
+| [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) | Spuštěné instance aplikace Service Fabric se odebere z clusteru.  |
+| [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Zruší registraci typu aplikace Service Fabric a verzi z clusteru. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Další informace o modulu Service Fabric prostředí PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/service-fabric/?view=azureservicefabricps).
+Další informace o modulu Powershellu pro Service Fabric najdete v tématu [dokumentaci k Azure Powershellu](/powershell/azure/service-fabric/?view=azureservicefabricps).
 
-Další ukázky pro Azure Service Fabric Powershell najdete v [prostředí Azure PowerShell ukázky](../service-fabric-powershell-samples.md).
+Další ukázky PowerShellu pro Azure Service Fabric najdete v [ukázkách Azure PowerShellu](../service-fabric-powershell-samples.md).

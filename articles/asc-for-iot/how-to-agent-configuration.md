@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 3ce6744a3a7d71f358dccb3dc29c470f3a376240
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 8bb9f0bc57e03ae0897e77acaa30ec85a3541646
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580700"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649369"
 ---
 # <a name="tutorial-configure-security-agents"></a>Kurz: Konfigurace agentů zabezpečení
 
@@ -42,7 +42,7 @@ Pro objekt konfigurace dvojčete agenta zabezpečení IoT od ASC se formát obje
 
 Tato konfigurace vám umožní přizpůsobit agenta pro každý scénář vyžaduje. Například automaticky bez některé události nebo udržování spotřeba energie na minimální úroveň jsou možné konfigurací těchto vlastností.  
 
-Použijte pro konfiguraci agenta zabezpečení IoT ASC [schématu](https://github.com/azure/asc-for-iot-schemas/security/module/twin) provádět změny.  
+Použijte pro konfiguraci agenta zabezpečení IoT ASC [schématu](https://aka.ms/iot-security-github-module-schema) provádět změny.  
 
 ## <a name="configuration-objects"></a>Objekty konfigurace 
 
@@ -64,7 +64,7 @@ Agent se nespustí, pokud objekt konfigurace neodpovídá schématu.
 
 ## <a name="configuration-schema-and-validation"></a>Schéma konfigurace a ověření 
 
-Ujistěte se, že k ověření vaší konfigurace agenta před tímto [schématu](https://github.com/Azure/asc-for-iot/schema/security_module_twin). Agent se nespustí, pokud objekt konfigurace neodpovídá schématu.
+Ujistěte se, že k ověření vaší konfigurace agenta před tímto [schématu](https://aka.ms/iot-security-github-module-schema). Agent se nespustí, pokud objekt konfigurace neodpovídá schématu.
 
  
 Pokud je spuštěn agent, objekt konfigurace se změní na není platnou konfiguraci (konfigurace neodpovídá schématu), agent bude ignorovat neplatná konfigurace a budou i nadále používat aktuální konfiguraci. 

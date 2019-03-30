@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3baa4a9b91e76b9072714229b6a46e9fca69bcdd
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: a33525e44b2e294b7ce85c7081864dbef0856588
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331380"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650849"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Připojte se k virtuálnímu počítači SQL serveru v Azure
 
@@ -138,7 +138,7 @@ V následující tabulce jsou uvedeny požadavky pro připojení k SQL serveru b
 |---|---|
 | [Povolit režim ověřování systému SQL Server](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | Ověřování systému SQL Server je potřeba pro připojení k virtuálnímu počítači vzdáleně, pokud jste nakonfigurovali Active Directory ve virtuální síti. |
 | [Vytvořte přihlašovací údaje SQL](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Pokud používáte ověřování SQL, potřebujete přihlašovací jméno SQL pomocí uživatelského jména a hesla, které má také oprávnění k cílové databázi. |
-| [Povolení protokolu TCP/IP](#manualTCP) | SQL Server musí umožňovat připojení přes protokol TCP. |
+| [Povolení protokolu TCP/IP](#manualtcp) | SQL Server musí umožňovat připojení přes protokol TCP. |
 | [Povolit pravidlo brány firewall pro port SQL serveru](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | Brána firewall na virtuálním počítači musí umožňovat příchozí provoz na portu serveru SQL Server (standardně 1433). |
 | [Vytvoření pravidla skupiny zabezpečení sítě pro port TCP 1433](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) | Musíte také povolit virtuálního počítače pro příjem provozu na portu serveru SQL Server (standardně 1433), pokud se chcete připojit přes internet. Připojení místní a virtuální sítě – jen to nevyžadují. Toto je jediný krok vyžadovaný na webu Azure Portal. |
 

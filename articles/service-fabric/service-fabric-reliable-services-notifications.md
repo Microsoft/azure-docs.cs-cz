@@ -4,7 +4,7 @@ description: Rámcové dokumentaci pro oznámení Service Fabric Reliable Servic
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
-manager: timlt
+manager: chackdan
 editor: masnider,vturecek
 ms.assetid: cdc918dd-5e81-49c8-a03d-7ddcd12a9a76
 ms.service: service-fabric
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: a13e5d74390b82888f51cfd225c54e29550354e9
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a3df5f28475b03f1799dc1e245c3a7e904b49cb3
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433510"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662665"
 ---
 # <a name="reliable-services-notifications"></a>Oznámení Reliable Services
-Oznámení umožňují klientům sledovat změny provedené na objekt, který chtějí. Oznámení podporují dva typy objektů: *Reliable State Manager* a *spolehlivého slovníku*.
+Oznámení umožňují klientům sledovat změny provedené na objekt, který chtějí. Dva typy objektů podporují oznámení: *Reliable State Manager* a *spolehlivého slovníku*.
 
 Běžné důvody pro používání oznámení jsou:
 
@@ -46,9 +46,9 @@ Reliable State Manager sleduje aktuální probíhající transakce. Jediná změ
 Reliable State Manager udržuje kolekci jako spolehlivého slovníku a spolehlivá fronta spolehlivých stavů. Reliable State Manager aktivuje oznámení při změně této kolekce: Přidá nebo odebere spolehlivé stavu nebo je znovu vytvořit celou kolekci.
 Kolekce Reliable State Manager znovu sestaví ve třech případech:
 
-* Obnovení: Při spuštění repliky jej obnoví předchozí stav z disku. Na konci obnovení používá **NotifyStateManagerChangedEventArgs** Chcete-li vyvolat událost, která obsahuje sadu obnovené spolehlivé stavy.
-* Úplné kopie: před repliky může připojit k sadě configuration, má má být sestaven. V některých případech to vyžaduje úplnou kopii stavu Reliable State Manager z primární repliky použít nečinná sekundární repliky. Používá Reliable State Manager na sekundární replice **NotifyStateManagerChangedEventArgs** Chcete-li vyvolat událost, která obsahuje sadu spolehlivé stavy, které získaných z primární repliky.
-* Obnovení: Ve scénářích zotavení po havárii repliky je možné obnovit stav ze zálohy prostřednictvím **RestoreAsync**. V takovém případě se používá na primární replice Reliable State Manager **NotifyStateManagerChangedEventArgs** Chcete-li vyvolat událost, která obsahuje sadu spolehlivé stavy, které ji obnovit ze zálohy.
+* Obnovení: Při spuštění repliky obnoví předchozí stav z disku. Na konci obnovení používá **NotifyStateManagerChangedEventArgs** Chcete-li vyvolat událost, která obsahuje sadu obnovené spolehlivé stavy.
+* Úplná kopie: Před repliky může připojit k sadě configuration, má má být sestaven. V některých případech to vyžaduje úplnou kopii stavu Reliable State Manager z primární repliky použít nečinná sekundární repliky. Používá Reliable State Manager na sekundární replice **NotifyStateManagerChangedEventArgs** Chcete-li vyvolat událost, která obsahuje sadu spolehlivé stavy, které získaných z primární repliky.
+* Obnovení: Ve scénářích zotavení po havárii, je možné obnovit stav repliky ze zálohy prostřednictvím **RestoreAsync**. V takovém případě se používá na primární replice Reliable State Manager **NotifyStateManagerChangedEventArgs** Chcete-li vyvolat událost, která obsahuje sadu spolehlivé stavy, které ji obnovit ze zálohy.
 
 Registrace pro oznámení transakce a/nebo oznámení o stavu správce, budete muset zaregistrovat **TransactionChanged** nebo **StateManagerChanged** události v Reliable State Manager. Společné místo, kde můžete zaregistrovat u těchto obslužných rutin událostí je konstruktor třídy stavové služby. Při registraci na konstruktoru nevynechají všechna oznámení, která je způsobena změnou celou dobu životnosti **Telemetryclient**.
 
@@ -109,9 +109,9 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 ## <a name="reliable-dictionary-notifications"></a>Spolehlivého slovníku oznámení
 Spolehlivého slovníku poskytuje oznámení pro následující události:
 
-* Znovu sestavit: Volá se, když **ReliableDictionary** stavu se zotavil z obnovené nebo zkopírovaný místní stavu nebo zálohování.
-* Vymazat: Volá se, když stav **ReliableDictionary** se vymazala prostřednictvím **ClearAsync** metody.
-* Přidat: Volá se, když položka se přidala do **ReliableDictionary**.
+* Znovu sestavit: Voláno, když **ReliableDictionary** stavu se zotavil z obnovené nebo zkopírovaný místní stavu nebo zálohování.
+* Vymazat: Voláno, když stav **ReliableDictionary** se vymazala prostřednictvím **ClearAsync** metody.
+* Přidejte: Volá se, když položka se přidala do **ReliableDictionary**.
 * Aktualizace: Volá se, když položka v **IReliableDictionary** byl aktualizován.
 * Odebrat: Volá se, když položka v **IReliableDictionary** byl odstraněn.
 

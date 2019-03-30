@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 03/13/2019
 ms.author: banders
-ms.openlocfilehash: a3bacdb19dfe16a63cf1f89ef6fb162d08cb4d32
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883776"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652531"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>Vysvětlení využití Azure rezervace pro vaše předplatné s průběžnými platbami
 
@@ -64,7 +64,7 @@ Filtrovat podle **Další informace o** a zadejte vaše **ID rezervace**. Násle
 
 ## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>Využití pro SQL Database a Cosmos DB vyhrazené kapacity rezervace
 
-V dalších částech používat Azure SQL Database jako příklad k popisu sestavu využití. Stejný postup můžete použít také zobrazíte využití služby Azure Cosmos DB. 
+V dalších částech používat Azure SQL Database jako příklad k popisu sestavu využití. Stejný postup můžete použít také zobrazíte využití služby Azure Cosmos DB.
 
 Předpokládejme, že používáte SQL Database Gen 4 oblasti USA – východ a vaší rezervace informace vypadá jako v následující tabulce:
 
@@ -93,6 +93,10 @@ Filtrovat podle **Další informace o** a zadejte vaše **ID rezervace**. Násle
 2. **ConsumptionMeter** je ID měřiče pro prostředek databáze SQL.
 3. **Id měřiče** je měřič rezervace. Náklady na tento měřič je hodnotou 0 USD. Všechny prostředky databáze SQL, které jsou způsobilé pro sleva za rezervaci se zobrazí toto ID měřiče v souboru CSV.
 
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
+
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+
 ## <a name="next-steps"></a>Další postup
 
 Další informace o rezervacích Azure, najdete v následujících článcích:
@@ -104,9 +108,3 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 - [Vysvětlení, jak se sleva za rezervaci použije](billing-understand-vm-reservation-charges.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Náklady na software Windows, které nejsou součástí rezervace](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
-
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
-
-

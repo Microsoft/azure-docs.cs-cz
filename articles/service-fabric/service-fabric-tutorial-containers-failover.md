@@ -4,7 +4,7 @@ description: V tomto kurzu se dozvíte, jak se v aplikaci Azure Service Fabric t
 services: service-fabric
 documentationcenter: ''
 author: suhuruli
-manager: timlt
+manager: chackdan
 editor: suhuruli
 tags: servicefabric
 keywords: Docker, kontejnery, mikroslužby, Service Fabric, Azure
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: f5ac1c53a97fc2a3749582c5f48b967e3ce0c2c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a3edac7638d8b63086482cdecf8d74bde426c35
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104263"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665623"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Kurz: Ukázka převzetí služeb při více a škálování služeb kontejneru pomocí Service Fabric
 

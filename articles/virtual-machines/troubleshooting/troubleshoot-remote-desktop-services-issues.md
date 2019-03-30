@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 8dc3dcbe3a84a0c35c1e3fc6e367c63393bebb70
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c9accf09da240f6d3235edd3c9da1876529d8654
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003139"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650738"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Vzdálená plocha nespouští na Virtuálním počítači Azure
 
@@ -99,15 +99,15 @@ Pokud chcete tento problém vyřešit, použijte konzole sériového portu. Or e
 
     |  Chyba |  Návrh |
     |---|---|
-    |5 - PŘÍSTUP BYL ODEPŘEN |Zobrazit [inicializace je zastavena kvůli chybě přístup odepřen](#termService-service-is-stopped-because-of-an-access-denied-problem). |
-    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |Zobrazit [inicializace služba je zakázána](#termService-service-is-disabled).  |  
-    |1058 - ERROR_SERVICE_DISABLED  |Zobrazit [inicializace služby k chybovým ukončením nebo přestane reagovat](#termService-service-crashes-or-hangs).  |
+    |5 - PŘÍSTUP BYL ODEPŘEN |Zobrazit [inicializace je zastavena kvůli chybě přístup odepřen](#termservice-service-is-stopped-because-of-an-access-denied-problem). |
+    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |Zobrazit [inicializace služba je zakázána](#termservice-service-is-disabled).  |  
+    |1058 - ERROR_SERVICE_DISABLED  |Zobrazit [inicializace služby k chybovým ukončením nebo přestane reagovat](#termservice-service-crashes-or-hangs).  |
     |. 1059 - ERROR_CIRCULAR_DEPENDENCY |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.|
-    |1067 - ERROR_PROCESS_ABORTED  |Zobrazit [inicializace služby k chybovým ukončením nebo přestane reagovat](#termService-service-crashes-or-hangs).  |
+    |1067 - ERROR_PROCESS_ABORTED  |Zobrazit [inicializace služby k chybovým ukončením nebo přestane reagovat](#termservice-service-crashes-or-hangs).  |
     |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.|
-    |1069 - ERROR_SERVICE_LOGON_FAILED  |Zobrazit [inicializace služby selže z důvodu selhání přihlášení](#termService-service-fails-because-of-logon-failure) |
-    |1070 - ERROR_SERVICE_START_HANG   | Zobrazit [inicializace služby k chybovým ukončením nebo přestane reagovat](#termService-service-crashes-or-hangs). |
-    |1077. - ERROR_SERVICE_NEVER_STARTED   | Zobrazit [inicializace služba je zakázána](#termService-service-is-disabled).  |
+    |1069 - ERROR_SERVICE_LOGON_FAILED  |Zobrazit [inicializace služby selže z důvodu selhání přihlášení](#termservice-service-fails-because-of-logon-failure) |
+    |1070 - ERROR_SERVICE_START_HANG   | Zobrazit [inicializace služby k chybovým ukončením nebo přestane reagovat](#termservice-service-crashes-or-hangs). |
+    |1077. - ERROR_SERVICE_NEVER_STARTED   | Zobrazit [inicializace služba je zakázána](#termservice-service-is-disabled).  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému. |
     |1753   |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.   |
     

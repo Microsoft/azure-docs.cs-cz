@@ -4,7 +4,7 @@ description: Zjistěte, jak vyřešit, připojení a komunikace se službami v S
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: msfussell
 ms.assetid: 7d1052ec-2c9f-443d-8b99-b75c97266e6c
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: c4516e86e25bb31b113b495a239c9eae9df8c9f8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 55a0a1a8097ea46c7a3407b5f42824973edcf1a2
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094765"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666116"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Připojení a komunikace se službami v Service Fabric
 V Service Fabric služba někde běží v clusteru Service Fabric, obvykle distribuují na několika virtuálních počítačů. To můžete přesunout z jednoho místa do jiného, vlastník služby, nebo automaticky pomocí Service Fabric. Služby nejsou staticky vázán na konkrétní počítač nebo adresu.

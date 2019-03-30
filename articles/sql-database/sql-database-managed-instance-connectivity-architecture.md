@@ -4,7 +4,7 @@ description: Další informace o Azure SQL Database managed instance komunikace 
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: ''
+ms.custom: fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: c7587b6cb2b4b30e265657b9d3792c9d4acd4428
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: f08b22f24dfde41646f56dc1ecd9777f267620ee
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621545"
+ms.locfileid: "58651308"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura připojení pro spravovanou instanci Azure SQL Database 
 
@@ -110,7 +110,8 @@ Nasazení spravované instance ve vyhrazené podsíti ve virtuální síti. Pods
 |Správa  |80, 443, 12000|TCP     |Všechny              |AzureCloud  |Povolit |
 |mi_subnet   |Všechny           |Všechny     |Všechny              |MI PODSÍTĚ *  |Povolit |
 
-> Ujistěte se, že existuje pouze jedno příchozí pravidlo pro porty 9000 9003, 1438, 1440, 1452 a jeden odchozí pravidlo pro port 80, 443, 12000. Spravovaná Instance zřizování prostřednictvím ARM nasazení může selhat, pokud vstupní a výstupní pravidla jsou nakonfigurované samostatně pro každý porty. 
+> [!IMPORTANT]
+> Zajistěte existovala jenom jedno příchozí pravidlo pro porty 9000 9003, 1438, 1440, 1452 a jeden odchozí pravidlo pro port 80, 443, 12000. Spravovaná Instance zřizování prostřednictvím nasazení ARM se nezdaří, pokud vstupní a výstupní pravidla jsou nakonfigurované samostatně pro každý z portů. Pokud jsou tyto porty v pravidlech samostatné, nasazení selže s kódem chyby `VnetSubnetConflictWithIntendedPolicy`
 
 \* PODSÍŤ MI odkazuje na rozsah IP adres podsítě v 10.x.x.x/y formuláře. Tyto informace můžete najít na webu Azure Portal, v okně Vlastnosti podsítě.
 

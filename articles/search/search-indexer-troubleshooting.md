@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 5ce27f16268c7a640b15fb0e95aed019b186e389
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b527b759eb9c76ab6289e909001c5f7820f34ef4
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307900"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652412"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Řešení běžných potíží indexeru ve službě Azure Search
 
 Indexery můžete spustit do celé řady důvodů, názvy při indexování dat do Azure Search. Hlavní kategorie selhání patří:
 
-* [Připojení ke zdroji dat](#Data-Source-Connection-Errors)
-* [Zpracování dokumentů](#Document-Processing-Errors)
-* [Ingestování dokumentů do indexu](#Index-Errors)
+* [Připojení ke zdroji dat](#data-source-connection-errors)
+* [Zpracování dokumentů](#document-processing-errors)
+* [Ingestování dokumentů do indexu](#index-errors)
 
 ## <a name="data-source-connection-errors"></a>Chyby připojení zdroje dat
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/08/2019
+ms.date: 03/27/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 98eb2574ab427f2d5727d74a077628d3a7f829bc
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 213b227c4ab3f97d9f8787f4e84348e36c43a6e6
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311451"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630512"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Rychlý start: Analýza vzdálené image pomocí REST API pro počítačové zpracování obrazu a Java
 
@@ -57,8 +57,6 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
    1. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
    1. Hodnotu `uriBase` nahraďte adresou URL koncového bodu metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
    1. Volitelně můžete hodnotu `imageToAnalyze` nahradit adresou URL jiného obrázku, který chcete analyzovat.
-1. Uložte a sestavte projekt Java.
-1. Pokud používáte integrované vývojové prostředí, spusťte `Main`. V opačném případě otevřete okno příkazového řádku a potom pomocí příkazu `java` spusťte zkompilovanou třídu. Například, `java Main`.
 
 ```java
 public class Main {
@@ -125,6 +123,25 @@ public class Main {
     }
 }
 ```
+
+## <a name="compile-and-run-the-program"></a>Kompilace a spuštění programu
+
+1. Uložte a sestavte projekt Java.
+1. Pokud používáte integrované vývojové prostředí, spusťte `Main`.
+
+Případně pokud máte spuštěný program z okna příkazového řádku, spusťte následující příkazy. Tyto příkazy předpokládají, že máte knihovny jsou ve složce s názvem `libs` , který je ve stejné složce jako `Main.java`; Pokud ne, budete muset nahradit `libs` cestu ke knihovně.
+
+1. Zkompilujte soubor `Main.java`.
+
+    ```bash
+    javac -cp ".;libs/*" Main.java
+    ```
+
+1. Spusťte program. Program pošle požadavek na vytvoření znalostní báze do rozhraní API služby QnA Maker a pak se bude dotazovat na výsledky každých 30 sekund. Každá odpověď je zobrazeny v okně příkazového řádku.
+
+    ```bash
+    java -cp ".;libs/*" Main
+    ```
 
 ## <a name="examine-the-response"></a>Prozkoumání odpovědi
 

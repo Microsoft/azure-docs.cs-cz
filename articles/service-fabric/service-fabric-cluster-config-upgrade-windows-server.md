@@ -4,7 +4,7 @@ description: Zjistěte, jak upgradovat konfiguraci, na kterém běží samostatn
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 88846845f1f8ffc71fb193e134a18ec38f619141
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: f99c1ebb64bf881bcd42f15e13bb81b96ccfa064
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51855179"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665598"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Upgradovat konfiguraci samostatného clusteru 
 
@@ -73,13 +73,13 @@ Certifikát clusteru se používá k ověřování mezi uzly clusteru. Certifik�
 
 Podporovány jsou čtyři parametry:  
 
-* Jeden certifikát upgrade: způsob upgradu je certifikát (primární) -> certifikát B (primární) -> C certifikát (primární) ->...
+* Jeden certifikát upgradu: Způsob upgradu je certifikát (primární) -> certifikát B (primární) -> C certifikát (primární) ->...
 
-* Double upgradu certifikátu: způsob upgradu je certifikát (primární) -> certifikátu (primární) a B (sekundární) -> certifikát B (primární) -> certifikát B (primární) a jazyka C (sekundární) -> C certifikát (primární) ->...
+* Double upgradu certifikátu: Způsob upgradu je certifikát (primární) -> certifikátu (primární) a B (sekundární) -> certifikát B (primární) -> certifikát B (primární) a jazyka C (sekundární) -> C certifikát (primární) ->...
 
-* Typ upgradu certifikátu: Konfigurace certifikátu na základě CommonName configuration <> – na základě kryptografického otisku certifikátu. Například kryptografický otisk certifikátu (primární) a kryptografický otisk B (sekundární) -> certifikát CommonName C.
+* Upgrade typ certifikátu: Konfigurace certifikátu na základě CommonName configuration <> – na základě kryptografického otisku certifikátu. Například kryptografický otisk certifikátu (primární) a kryptografický otisk B (sekundární) -> certifikát CommonName C.
 
-* Upgrade kryptografický otisk vystavitele certifikátu: způsob upgradu je CN certifikát = A, IssuerThumbprint = IT1 (primární) -> certifikátů CN = A, IssuerThumbprint = IT1 IT2 (primární) -> CN certifikát = A, IssuerThumbprint = IT2 (primární).
+* Upgrade kryptografický otisk vystavitele certifikátu: Způsob upgradu je CN certifikát = A, IssuerThumbprint = IT1 (primární) -> CN certifikát = A, IssuerThumbprint = IT1 IT2 (primární) -> certifikátů CN = A, IssuerThumbprint = IT2 (primární).
 
 
 ## <a name="next-steps"></a>Další postup

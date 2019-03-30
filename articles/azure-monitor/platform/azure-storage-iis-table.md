@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 35befe7122f493998d0d91c2721e6013e057fed3
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: a4e0432260cfb9ee11ed318305fb967d160de835
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540597"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652548"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-azure-monitor"></a>Používání úložiště objektů blob v Azure pro službu IIS a Azure table storage pro události prostřednictvím služby Azure Monitor
 
@@ -54,9 +54,11 @@ Protokoly Azure monitoru ke shromažďování těchto protokolech diagnostiky Az
 Pro virtuální počítače, máte možnost instalace [agenta Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md) k virtuálnímu počítači povolit další statistiky. Kromě schopnost analyzovat protokoly událostí a protokoly služby IIS, můžete provádět další analýzu, včetně sledování změn konfigurace SQL posouzení a posouzení aktualizací.
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>Azure diagnostics na virtuálním počítači povolit protokol událostí a služby IIS protokolu kolekce
+
 Následujícím postupem povolte Azure diagnostics na virtuálním počítači pro shromažďování protokolů služby IIS a protokolu událostí na portálu Microsoft Azure.
 
 ### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Povolení diagnostiky Azure v rámci virtuálního počítače pomocí webu Azure portal
+
 1. Při vytváření virtuálního počítače, nainstalujte agenta virtuálního počítače. Pokud virtuální počítač už existuje, ověřte, že Agent virtuálního počítače je už nainstalovaný.
 
    * Na webu Azure Portal, přejděte k virtuálnímu počítači, vyberte **volitelná konfigurace**, pak **diagnostiky** a nastavte **stav** k **na** .
@@ -72,6 +74,7 @@ Následujícím postupem povolte Azure diagnostics na virtuálním počítači p
    6. Klikněte na **OK**.
 
 ## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>Povolení diagnostiky Azure ve webové roli pro shromažďování protokolů a událostí služby IIS
+
 Odkazovat na [jak k povolení diagnostiky v cloudové službě](../../cloud-services/cloud-services-dotnet-diagnostics.md) obecné pokyny k povolení diagnostiky Azure. Podle následujících pokynů tuto informaci použít a přizpůsobit ho pro použití se službou Log Analytics.
 
 S povolenou diagnostikou Azure:
@@ -80,11 +83,12 @@ S povolenou diagnostikou Azure:
 * Ve výchozím nastavení se nepřenesou protokoly událostí Windows.
 
 ### <a name="to-enable-diagnostics"></a>Povolit diagnostiku
+
 Povolení protokolů událostí Windows, nebo chcete změnit hodnota scheduledTransferPeriod, konfigurování diagnostiky Azure pomocí konfiguračního souboru XML (diagnostics.wadcfg), jak je znázorněno v [krok 4: Vytvořte konfigurační soubor diagnostiky a instalace rozšíření](../../cloud-services/cloud-services-dotnet-diagnostics.md)
 
 Následující příklad konfiguračního souboru shromažďuje protokoly služby IIS a všechny události z protokolů aplikace a systém:
 
-```
+```xml
     <?xml version="1.0" encoding="utf-8" ?>
     <DiagnosticMonitorConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"
           configurationChangePollInterval="PT1M"
@@ -108,7 +112,7 @@ Následující příklad konfiguračního souboru shromažďuje protokoly služb
 
 Ujistěte se, že vaše ConfigurationSettings Určuje účet úložiště, jako v následujícím příkladu:
 
-```
+```xml
     <ConfigurationSettings>
        <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<AccountName>;AccountKey=<AccountKey>"/>
     </ConfigurationSettings>
@@ -119,6 +123,7 @@ Ujistěte se, že vaše ConfigurationSettings Určuje účet úložiště, jako 
 Jakmile aktualizované konfigurace diagnostiky se použije ke cloudové službě a je Diagnostika zapisuje do služby Azure Storage, pak jste připraveni ke konfiguraci pracovního prostoru Log Analytics.
 
 ## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Shromažďování protokolů ze služby Azure Storage pomocí webu Azure portal
+
 Na webu Azure portal můžete použít ke konfiguraci pracovního prostoru Log Analytics ve službě Azure Monitor pro shromažďování protokolů u následujících služeb Azure:
 
 * Clustery Service Fabricu
@@ -161,7 +166,7 @@ Skript používá rutiny pro klasické virtuální počítače.
 
 Projděte si následující ukázkový skript, zkopírujte ho, podle potřeby upravte, uložte vzorku jako soubor skriptu Powershellu a spusťte skript.
 
-```
+```powershell
     #Connect to Azure
     Add-AzureAccount
 
@@ -194,6 +199,7 @@ Projděte si následující ukázkový skript, zkopírujte ho, podle potřeby up
 
 
 ## <a name="next-steps"></a>Další postup
+
 * [Shromažďovat protokoly a metriky pro služby Azure](collect-azure-metrics-logs.md) pro podporované služby Azure.
 * [Povolení řešení](../../azure-monitor/insights/solutions.md) k poskytování přehledů o data.
 * [Pomocí vyhledávacích dotazů](../../azure-monitor/log-query/log-query-overview.md) chcete analyzovat data.

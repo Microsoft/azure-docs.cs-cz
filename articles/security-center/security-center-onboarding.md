@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 19/02/2019
 ms.author: monhaber
-ms.openlocfilehash: d9c9a079198a8ff263c729b8e90c1fc8d0e64cd0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ef6b476e2c85715e86ef4c1cfe1194bb25cade28
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100066"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665487"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Připojení ke službě Azure Security Center úrovně Standard pro zvýšení zabezpečení
 Upgrade na Security Center úrovně Standard využívat správu rozšířené zabezpečení a ochrana před internetovými útoky pro vašimi hybridními cloudovými úlohami.  Můžete zkusit Standard zdarma. Zobrazit Security Center [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/) Další informace.
@@ -33,7 +33,7 @@ Security Center úrovně Standard zahrnuje:
 ## <a name="detecting-unprotected-resources"></a>Zjišťování nechráněných prostředcích     
 Security Center automaticky rozpozná veškerá předplatná a pracovní prostory Azure, které ještě nepřešly na úroveň Security Center Standard. To zahrnuje předplatná Azure využívající úroveň Security Center Free volné a pracovní prostory, které nemají povolené řešení zabezpečení.
 
-Celý předplatného Azure můžete upgradovat na úroveň Standard, která dědí všechny prostředky v rámci předplatného, nebo můžete definovat jedinečná zásada Upgrade skupiny s konkrétní prostředek pouze. Pokud nastavení zásad skupiny prostředků jsou jedinečné, Security Center nebude po upgradu předplatné na úroveň Standard přepsat cenové zásady. Použití standardní úroveň na předplatné se vztahuje na všechny podporované prostředky v předplatném. Použití standardní úroveň s pracovním prostorem se vztahuje na všechny prostředky vytváření sestav do pracovního prostoru.
+Celý předplatného Azure můžete upgradovat na úroveň Standard, která dědí všechny podporované prostředky v rámci předplatného. Použití standardní úroveň s pracovním prostorem se vztahuje na všechny prostředky vytváření sestav do pracovního prostoru.
 
 > [!NOTE]
 > Můžete chtít spravovat náklady a omezit objem dat shromážděných pro řešení podle omezení na konkrétní sadu agentů. [Cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md) vám umožní použít obor s řešení a cílit na podmnožině počítačů v pracovním prostoru.  Pokud používáte cílení na řešení, Security Center obsahuje pracovní prostor tak, že nemusí řešení.

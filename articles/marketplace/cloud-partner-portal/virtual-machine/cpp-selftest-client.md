@@ -14,17 +14,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8dc0a003a12eb0aca28c6a3238e2119dc449d661
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6cfe9b61d9bbb088e827386b2195bba21333937e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309414"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649082"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Vytvoření klienta sami otestovat kód předběžně ověřit image virtuálních počítačů Azure
 
 Použijte tento článek jako vodítko pro vytvoření klienta služby, která využívá rozhraní API samočinný test. Rozhraní API samočinný test můžete předběžně ověřit virtuální počítač (VM) k zajištění, že jsou že splněné požadavky pro publikování na nejnovější Azure Marketplace. Tato služba klienta umožňuje testovat virtuální počítač předtím, než odešlete vaši nabídku Microsoftu k certifikaci.
-
 
 ## <a name="development-and-testing-overview"></a>Vývoj a testování – přehled
 
@@ -41,13 +40,11 @@ Jsou základní kroky pro vytvoření klienta samočinný test:
 
 Po vytvoření klienta, takže ji můžete otestovat proti vašemu virtuálnímu počítači.
 
-
 ### <a name="self-test-client-authorization"></a>Samočinný test ověřování klienta
 
 Následující diagram znázorňuje, jak funguje ověřování pro volání mezi službami pomocí přihlašovacích údajů klienta (sdílený tajný klíč nebo certifikát).
 
 ![Proces autorizace klienta](./media/stclient-dev-process.png)
-
 
 ## <a name="the-self-test-client-api"></a>Klient samočinný test rozhraní API
 
@@ -67,7 +64,6 @@ Request body:    The Request body parameters should use the following JSON forma
                    "PortNo":"22",
                    "CompanyName":"ABCD",
                  }
-
 ```
 
 Následující tabulka popisuje pole rozhraní API.
@@ -83,11 +79,9 @@ Následující tabulka popisuje pole rozhraní API.
 |  PortNo            |  Otevřete číslo portu pro připojení k virtuálnímu počítači. Číslo portu je obvykle `22` pro Linux a `5986` pro Windows.          |
 |  |  |
 
-
 ## <a name="consuming-the-api"></a>Používání rozhraní API
 
 Můžete využívat rozhraní API sami otestovat pomocí prostředí PowerShell nebo nástroj cURL.
-
 
 ### <a name="use-powershell-to-consume-the-api-on-the-linux-os"></a>Použití Powershellu k využívání rozhraní API v operačním systému Linux
 
@@ -112,7 +106,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers; 
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 Následující snímek obrazovky ukazuje příklad pro volání rozhraní API v prostředí PowerShell.
@@ -128,7 +122,7 @@ $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $
   Write-Host "OSVersion: $($testresult.OSVersion)"
   Write-Host "Overall Test Result: $($testresult.TestResult)"
 
-For ($i=0; $i -lt $testresult.Tests.Length; $i++) 
+For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 {
     Write-Host "TestID: $($testresult.Tests[$i].TestID)"
     Write-Host "TestCaseName: $($testresult.Tests[$i].TestCaseName)"
@@ -186,7 +180,7 @@ $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $
   Write-Host "OSVersion: $($testresult.OSVersion)"
   Write-Host "Overall Test Result: $($testresult.TestResult)"
 
-For ($i=0; $i -lt $testresult.Tests.Length; $i++) 
+For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 {
     Write-Host "TestID: $($testresult.Tests[$i].TestID)"
     Write-Host "TestCaseName: $($testresult.Tests[$i].TestCaseName)"
@@ -213,12 +207,12 @@ Pro volání rozhraní API pomocí cURL, postupujte podle těchto kroků:
 2. Je metoda Post a typu obsahu je JSON, jak je znázorněno v následujícím fragmentu kódu.
 
 ```
-CURL POST -H "Content-Type:application/json" 
+CURL POST -H "Content-Type:application/json"
 -H "Authorization: Bearer XXXXXX-Token-XXXXXXXX”
-https://isvapp.azurewebsites.net/selftest-vm 
+https://isvapp.azurewebsites.net/selftest-vm
 -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "User":"XXX", "Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD"}'
-
 ```
+
 Následující obrazovka ukazuje příklad pomocí příkazu curl k volání rozhraní API.
 
 ![Volání rozhraní API pomocí příkazu curl](./media/stclient-consume-api-curl.png)
@@ -242,7 +236,7 @@ Pomocí následujících kroků vyberte tenanta Azure AD, kde chcete vytvořit a
    V následujících krocích budete potřebovat název tenanta (nebo název adresáře) nebo ID tenanta (nebo ID adresáře).
 
    **Pokud chcete získat informace o tenantovi:**
-  
+
    V **Přehled služby Azure Active Directory**, vyhledejte "Properties" a pak vyberte **vlastnosti**. Jako příklad použijeme následující snímek obrazovky:
 
    - **Název** – název tenanta nebo název adresáře
@@ -284,7 +278,7 @@ Následující postup použijte k registraci klientské aplikace.
 14. Klikněte na **Vybrat**.
 15. Vyberte **Done** (Hotovo).
 16. V části **nastavení**vyberte **vlastnosti**.
-17. V části **vlastnosti**, přejděte dolů k položce **víceklientských**. Vyberte **Ano**.  
+17. V části **vlastnosti**, přejděte dolů k položce **víceklientských**. Vyberte **Ano**.
 
     ![Konfigurace víceklientské aplikace](./media/stclient-yes-multitenant.png)
 
@@ -319,6 +313,7 @@ Vytvoření a získání tokenu pomocí rozhraní REST API OAuth, můžete použ
 Method Type : POST
 Base Url: https://login.microsoftonline.com/common/oauth2/token
 ```
+
 Předejte tyto parametry v textu požadavku:
 
 ```
@@ -364,7 +359,7 @@ Následující snímek obrazovky ukazuje příklad pomocí příkazu curl k zís
 
 Auth0 požádat o tokeny pro žádné z autorizovaných aplikacích, proveďte operaci POST do [ https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) koncový bod s datovou částí v následujícím formátu:
 
-```
+```csharp
 string clientId = "Your Application Id";
 string clientSecret = "Your Application Secret";
 string audience = "https://management.core.windows.net";
@@ -387,7 +382,7 @@ var token = JObject.Parse(content)["access_token"];
 
 Auth0 požádat o tokeny pro žádné z autorizovaných aplikacích, proveďte operaci POST do [ https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) koncový bod s datovou částí v následujícím formátu:
 
-```
+```powershell
 $clientId = "Application Id of AD Client APP";
 $clientSecret = "Secret Key of AD Client APP “
 $audience = "https://management.core.windows.net";
@@ -402,14 +397,13 @@ resp = Invoke-WebRequest -Method Post -Uri $authority -Headers $headers -Content
 
 $token = $resp.Content | ConvertFrom-Json
 $token.AccessToken
-
 ```
 
 ## <a name="pass-the-client-app-token-to-the-api"></a>Předat token aplikace klienta pro rozhraní API
 
 Předejte token samočinný test rozhraní API v hlavičce autorizace pomocí následujícího kódu:
 
-```
+```powershell
 $redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
 $accesstoken = ‘place your token here’
 
@@ -426,9 +420,8 @@ $Body =
 
 $result=Invoke-WebRequest -Method Post -Uri $redirectUri -Headers $headers -ContentType 'application/json' -Body $Body
 $result
-echo 'Test Results:'
+Write-Output 'Test Results:'
 $result.Content
-
 ```
 
 ## <a name="test-your-self-test-client"></a>Testování klienta samočinný test
@@ -445,7 +438,7 @@ Následující fragmenty kódu zobrazit výsledky testů ve formátu JSON.
 
 **Výsledky testů pro virtuální počítač s Windows:**
 
-```
+```json
 {
   "SchemaVersion": 1,
   "AppCertificationCategory": "Microsoft Single VM Certification",
@@ -484,7 +477,7 @@ Následující fragmenty kódu zobrazit výsledky testů ve formátu JSON.
 
 **Výsledky testů pro virtuální počítač s Linuxem:**
 
-```
+```json
 {
   "SchemaVersion": 1,
   "AppCertificationCategory": "Microsoft Single VM Certification",

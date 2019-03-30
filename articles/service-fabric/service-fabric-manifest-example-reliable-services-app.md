@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat aplikace a služby manifestu nastaven
 services: service-fabric
 documentationcenter: na
 author: peterpogorski
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 202999ed6521cd3013685742b0dec92ef30fc8bc
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 6c4c8f0ee6aa12c58e02f71b42312cd6872076aa
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499841"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665963"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Příklady manifestu služeb a aplikace Reliable Services
 Následují příklady manifestů aplikace a služby pro aplikaci Service Fabric s front-endového webového rozhraní ASP.NET Core a stavovým back endem. Účelem těchto příkladech je zobrazit nastavení, které jsou k dispozici a jak je používat. Tyto aplikace a služby manifestů jsou založeny na [rychlý úvod k Service Fabric .NET](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) manifesty.

@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/05/2018
+ms.date: 03/28/2018
 ms.author: genli
-ms.openlocfilehash: 9f600dbf27fec036b9a80a5a6fb11c5bc50cc915
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7990a98e0e2d688456db054e3cdfa447e1ed1043
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994180"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630474"
 ---
-# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Poradce při potížích: Problémy s připojením Azure point-to-site
+# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Řešení potíží: Problémy s připojením Azure point-to-site
 
 Tento článek uvádí běžné problémy s připojením point-to-site, které se mohou vyskytnout. Popisuje také možné příčiny a řešení těchto problémů.
 
-## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>Chyba klienta VPN: certifikát nebyl nalezen.
+## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>Chyba klienta VPN: Certifikát se nenašel.
 
 ### <a name="symptom"></a>Příznak
 
@@ -41,7 +41,7 @@ K tomuto problému dochází, pokud chybí klientský certifikát z **Certificat
 
 Chcete-li tento problém vyřešit, postupujte podle těchto kroků:
 
-1. Klikněte na tlačítko Otevřít správce certifikátů: **Start**, typ **spravovat certifikáty počítače**a potom klikněte na tlačítko **spravovat certifikáty počítače** ve výsledcích hledání.
+1. Otevřete Správce certifikátů: Klikněte na tlačítko **Start**, typ **spravovat certifikáty počítače**a potom klikněte na tlačítko **spravovat certifikáty počítače** ve výsledcích hledání.
 
 2. Ujistěte se, že tyto certifikáty jsou ve správném umístění:
 
@@ -58,7 +58,7 @@ Další informace o postupu při instalaci klientského certifikátu naleznete v
 > [!NOTE]
 > Při importu certifikátu klienta nesmí být zvolen **povolit silnou ochranu privátního klíče** možnost.
 
-## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>Chyba klienta VPN: byla přijata zpráva není očekávaná nebo chybně formátovaná
+## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>Chyba klienta VPN: Byla přijata zpráva není očekávaná nebo chybně formátovaná
 
 ### <a name="symptom"></a>Příznak
 
@@ -81,7 +81,7 @@ Chcete-li tento problém vyřešit, postupujte podle těchto kroků:
 1. Odeberte uživatelem definovaná TRASA v podsíti brány. Ujistěte se, že uživatelem definovaná TRASA předává všechny přenosy správně.
 2. Zkontrolujte stav kořenového certifikátu na portálu Azure, zda byl odvolán. Pokud nebude odvolaný, pokusu o odstranění kořenového certifikátu a reupload. Další informace najdete v tématu [vytvářet certifikáty](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts).
 
-## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>Chyba klienta VPN: zpracuje řetěz certifikátů, ale byla ukončena 
+## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>Chyba klienta VPN: Zpracuje řetěz certifikátů, ale byla ukončena 
 
 ### <a name="symptom"></a>Příznak 
 
@@ -101,7 +101,7 @@ Při pokusu o připojení ke službě Azure virtual network pomocí klienta VPN,
 
 2. Pokud certifikáty jsou už v umístění, zkuste odstranit certifikáty a znovu nainstalovat. **Azuregateway -*GUID*. cloudapp.net** certifikát se nachází ve balíček konfigurace klienta VPN, který jste stáhli z portálu Azure portal. Můžete použít soubor archivers extrahujte soubory z balíčku.
 
-## <a name="file-download-error-target-uri-is-not-specified"></a>Chyba stahování souborů: není zadaný cílový identifikátor URI
+## <a name="file-download-error-target-uri-is-not-specified"></a>Chyba při stahování souboru: Není zadaný cílový identifikátor URI
 
 ### <a name="symptom"></a>Příznak
 
@@ -117,7 +117,7 @@ K tomuto problému dochází kvůli typem nesprávné brány.
 
 Musí být typ brány VPN **VPN**, a musí být typ sítě VPN **RouteBased**.
 
-## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>Chyba klienta VPN: vlastních skriptů Azure VPN se nezdařilo 
+## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>Chyba klienta VPN: Azure VPN vlastního skriptu se nezdařilo 
 
 ### <a name="symptom"></a>Příznak
 
@@ -150,7 +150,7 @@ Extrahovat balíček pro konfiguraci klienta VPN a vyhledejte soubor .cer. Pokud
 5. Restartujte počítač. 
 6. Došlo k pokusu o instalaci klienta VPN.
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Azure portal Chyba: nepovedlo se uložit bránu sítě VPN a data nejsou platná
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Chyba Azure portal: Nepovedlo se uložit bránu sítě VPN a data nejsou platná
 
 ### <a name="symptom"></a>Příznak
 
@@ -185,7 +185,7 @@ Ujistěte se, že data v certifikátu neobsahuje neplatné znaky, jako je např�
     e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
     -----END CERTIFICATE-----
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Azure portal Chyba: nepovedlo se uložit bránu VPN gateway a název prostředku je neplatný
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Chyba Azure portal: Nepovedlo se uložit bránu VPN gateway a název prostředku je neplatný
 
 ### <a name="symptom"></a>Příznak
 
@@ -197,7 +197,7 @@ Při pokusu o uložení změny pro bránu sítě VPN na webu Azure Portal, zobra
 
 K tomuto problému dochází, protože název certifikátu obsahuje neplatný znak, například mezera. 
 
-## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Azure portal Chyba: Chyba stahování souboru balíčku sítě VPN 503
+## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Chyba Azure portal: Chyba stahování souboru balíčku sítě VPN 503
 
 ### <a name="symptom"></a>Příznak
 
@@ -209,7 +209,7 @@ Při pokusu o stažení konfiguračního balíčku klienta VPN, zobrazí se nás
 
 Tuto chybu může způsobovat k dočasným potížím sítě. Došlo k pokusu o stažení balíčku pro VPN znovu za pár minut.
 
-## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Upgrade služby Azure VPN Gateway: All, přejděte na klienty lokality není možné se připojit
+## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Upgrade Azure VPN Gateway: Odkazujících na klienty lokality není možné se připojit
 
 ### <a name="cause"></a>Příčina
 
@@ -217,7 +217,7 @@ Pokud je více než 50 procent certifikát prostřednictvím svého životního 
 
 ### <a name="solution"></a>Řešení
 
-Chcete-li tento problém vyřešit, znovu nasaďte bod tak, aby lokality balíček ve všech klientech.
+Chcete-li tento problém vyřešit, znovu si stáhněte a znovu nasadit bod tak, aby lokality balíček ve všech klientech.
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>Příliš mnoho klientů VPN připojený najednou
 
@@ -302,9 +302,9 @@ Tomuto problému může dojít, pokud klient VPN nezíská trasy ze služby Azur
 
 Chcete-li vyřešit tento problém [resetování brány Azure VPN](vpn-gateway-resetgw-classic.md). Pokud chcete mít jistotu, že se používají nové postupy, klienti VPN Point-to-Site musí znova stáhnout po vytvoření partnerského vztahu virtuální sítě se úspěšně nakonfigurovalo.
 
-## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Chyba: "funkce zrušení se nepodařilo zkontrolovat zrušení, protože server ověřování řetězu je offline. (Chyba 0x80092013)"
+## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Chyba: "Funkce zrušení se nepodařilo zkontrolovat zrušení, protože server ověřování řetězu je offline. (Chyba 0x80092013)"
 
-### <a name="causes"></a>Způsobí, že
+### <a name="causes"></a>Příčiny
 Této chybě dochází, pokud klient nemůže získat http://crl3.digicert.com/ssca-sha2-g1.crl a http://crl4.digicert.com/ssca-sha2-g1.crl.  Kontrola odvolání vyžaduje přístup k těmto dvěma lokalitami.  Tento problém nastává obvykle na straně klienta, který má proxy server nakonfigurovaný. V některých prostředích Pokud požadavky nejsou přes proxy server, ji budou odepřeny na hraniční bráně Firewall.
 
 ### <a name="solution"></a>Řešení
@@ -327,7 +327,7 @@ Ujistěte se, jestli je správně nakonfigurovaný server protokolu RADIUS. Dal�
 
 Kdyby byl nainstalován kořenový certifikát. Kořenový certifikát je nainstalovaný v klientovi sady **důvěryhodné certifikáty** ukládat.
 
-## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>Chyba klienta VPN: Připojení ke vzdálené nebyl provést, protože se nezdařil pokus o tunelových propojení VPN. (Chyba 800) 
+## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>Chyba klienta VPN: Vzdálené připojení se provést, protože se nezdařil pokus o tunelových propojení VPN. (Chyba 800) 
 
 ### <a name="cause"></a>Příčina
 
@@ -343,7 +343,7 @@ Aktualizace ovladačů síťové karty:
 4. Pokud Windows nenajde nové ovladače, můžete akci hledání na webu výrobce zařízení a postupujte podle pokynů v.
 5. Restartujte počítač a zkuste připojení znovu.
 
-## <a name="error-file-download-error-target-uri-is-not-specified"></a>Chyba: soubor chybě stahování, který není zadaný cílový identifikátor URI
+## <a name="error-file-download-error-target-uri-is-not-specified"></a>Chyba: "Chyba při stahování souboru cílový identifikátor URI není zadán.
 
 ### <a name="cause"></a>Příčina
 

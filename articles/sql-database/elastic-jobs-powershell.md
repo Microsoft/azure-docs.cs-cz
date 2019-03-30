@@ -12,12 +12,12 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: f90e4281be27f4f30f4fdf0e3eb2932fa4e743ef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb5066185f9301450a68276dd4b2ce2123231b34
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840813"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666780"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Vytvoření agenta elastických úloh pomocí PowerShellu
 
@@ -129,7 +129,7 @@ $Db2
 
 ## <a name="enable-the-elastic-jobs-preview-for-your-subscription"></a>Povolení elastických úloh verze Preview pro předplatné
 
-Pokud chcete používat elastické úlohy, zaregistrujte tuto funkci ve svém předplatném Azure spuštěním následujícího příkazu (v každém předplatném, ve kterém chcete používat elastické úlohy, stačí tento příkaz spustit pouze jednou):
+Použití Elastických úloh, zaregistrujte funkci ve vašem předplatném Azure spuštěním následujícího příkazu. Spusťte tento příkaz pro předplatné, ve kterém chcete zřídit agenta Elastických úloh. Odběry, které obsahují pouze databáze, které jsou cíle úlohy není třeba registrovat.
 
 ```powershell
 Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql

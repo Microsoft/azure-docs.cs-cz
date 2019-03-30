@@ -4,7 +4,7 @@ description: Použít funkci zálohování a obnovení funkce v Service Fabric k
 services: service-fabric
 documentationcenter: .net
 author: aagup
-manager: timlt
+manager: chackdan
 editor: aagup
 ms.assetid: 02DA262A-EEF6-4F90-842E-FFC4A09003E5
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 8a276f26367e66f55b8fc10dbcba2429dc2e5450
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: c80a9ac30e79607d2a255debf73f6542df7c6498
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062687"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666572"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Zálohování na vyžádání v Azure Service Fabric
 
@@ -101,7 +101,7 @@ Požadavky pro zálohování na vyžádání, může být v následujících sta
   FailureError            :
   ```
 - **Úspěch**, **selhání**, nebo **vypršení časového limitu**: Požadovaný zálohování na vyžádání můžete dokončit v některém z následujících stavů:
-  - **Úspěch**: A _úspěch_ zálohování stav znamená, že se úspěšně zálohovány stav oddílu. Poskytuje odpověď _BackupEpoch_ a _BackupLSN_ pro oddíl spolu s čas ve standardu UTC.
+  - **Success**: A _úspěch_ zálohování stav znamená, že se úspěšně zálohovány stav oddílu. Poskytuje odpověď _BackupEpoch_ a _BackupLSN_ pro oddíl spolu s čas ve standardu UTC.
     ```
     BackupState             : Success
     TimeStampUtc            : 2018-11-21T20:00:01Z

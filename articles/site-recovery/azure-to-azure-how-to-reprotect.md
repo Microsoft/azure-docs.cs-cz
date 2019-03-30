@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: b1676f53125694eeff3a39adf51dc854c197d756
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bd65b1479ace1a51087836eb8032f16fd10dc119
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110490"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648898"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Operace opětovného zapnutí ochrany převzetí služeb při selhání virtuálních počítačů Azure do primární oblasti
 
@@ -22,10 +22,6 @@ Pokud jste [převzetí služeb při selhání](site-recovery-failover.md) virtu�
 
 - Znovunastavení ochrany virtuálních počítačů v sekundární oblasti, aby se začaly replikovat do primární oblasti.
 - Po dokončení opětovného nastavování ochrany a replikaci virtuálních počítačů, můžete je převzít služby ze sekundární do primární oblasti.
-
-> [!WARNING]
-> Pokud jste [migrovat](migrate-overview.md#what-do-we-mean-by-migration) počítače z primární do sekundární oblasti, virtuální počítač přesunout do jiné skupiny prostředků nebo odstranění virtuálního počítače Azure, a nemůžete znovunastavení ochrany virtuálního počítače nebo po obnovení navrátit.
-
 
 ## <a name="prerequisites"></a>Požadavky
 1. Převzetí služeb virtuálního počítače z primární do sekundární oblasti musí být potvrzeny.

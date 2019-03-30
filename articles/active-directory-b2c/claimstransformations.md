@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 59524a9a08b16100598b7713cb0507646245d90b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bc6cc7b07d3dce43a666b3e5b0a958b41cdd3131
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445819"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651504"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -38,7 +38,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 | Atribut |Požadováno | Popis |
 | --------- |-------- | ----------- |
 | ID |Ano | Identifikátor, který slouží k jednoznačné identifikaci transformace deklarací identity. Identifikátor je odkazováno z dalších prvky XML v zásadách. |
-| TransformationMethod | Ano | Metoda transformace používané k transformaci deklarací identity. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#Claims-transformations-reference) úplný seznam dostupných hodnot. |
+| TransformationMethod | Ano | Metoda transformace používané k transformaci deklarací identity. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#claims-transformations-reference) úplný seznam dostupných hodnot. |
 
 ## <a name="claimstransformation"></a>ClaimsTransformation
 
@@ -80,7 +80,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 | Atribut |Požadováno | Popis |
 | --------- | ----------- | ----------- |
 | ClaimTypeReferenceId |Ano | Odkaz na typu deklarace identity, již definovaná v části ClaimsSchema v zásadách. |
-| TransformationClaimType |Ano | Typ deklarace identifikátoru tak, aby odkazovaly transformaci. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#Claims-transformations-reference) úplný seznam dostupných hodnot. |
+| TransformationClaimType |Ano | Typ deklarace identifikátoru tak, aby odkazovaly transformaci. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#claims-transformations-reference) úplný seznam dostupných hodnot. |
 
 ### <a name="inputparameters"></a>Vstupní parametry
 
@@ -95,7 +95,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 | Atribut | Požadováno |Popis |
 | --------- | ----------- |----------- |
 | ID | Ano | Identifikátor, který je odkaz na parametr metody transformace deklarací identity. Každá metoda transformace deklarací identity má své vlastní hodnoty. V tabulce transformace deklarací identity pro úplný seznam dostupných hodnot. |
-| DataType | Ano | Typ dat parametr, jako je řetězec, logická hodnota, Int nebo data a času podle výčtu datového typu ve schématu XML vlastní zásady. Tento typ se používá k provedení aritmetické operace správně. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#Claims-transformations-reference) úplný seznam dostupných hodnot. |
+| DataType | Ano | Typ dat parametr, jako je řetězec, logická hodnota, Int nebo data a času podle výčtu datového typu ve schématu XML vlastní zásady. Tento typ se používá k provedení aritmetické operace správně. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#claims-transformations-reference) úplný seznam dostupných hodnot. |
 | Hodnota | Ano | Hodnota, která je předána verbatim transformace. Některé hodnoty libovolného, některé z nich můžete vybrat z metody transformace deklarací identity. |
 
 ### <a name="outputclaims"></a>OutputClaims
@@ -113,7 +113,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 | Atribut |Požadováno | Popis |
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | Ano | Odkaz na typu deklarace identity, již definovaná v části ClaimsSchema v zásadách.
-| TransformationClaimType | Ano | Typ deklarace identifikátoru tak, aby odkazovaly transformaci. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#Claims-transformations-reference) úplný seznam dostupných hodnot. |
+| TransformationClaimType | Ano | Typ deklarace identifikátoru tak, aby odkazovaly transformaci. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#claims-transformations-reference) úplný seznam dostupných hodnot. |
  
 Pokud vstupní a výstupní deklarací stejného typu (string a boolean), můžete použít stejný vstupní deklaraci identity jako výstup deklarace identity. V takovém případě transformace deklarací identity změní vstupní deklaraci identity s hodnotou výstup.
 

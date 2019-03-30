@@ -1,5 +1,5 @@
 ---
-title: Pochopit SUSE plán slevy a využití - rezervace Azure | Dokumentace Microsoftu
+title: Sleva za plán rezervaci SUSE a použití – Azure | Dokumentace Microsoftu
 description: Zjistěte, jak SUSE plán slevy pro softwaru SUSE na virtuálních počítačích.
 services: billing
 documentationcenter: ''
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2018
 ms.author: banders
-ms.openlocfilehash: a9f784d7e7ed21a5a10a2f5e16125d60e7b9667f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04b456cbaeeb4ba285fd874f7b21abffcc714653
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863470"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649252"
 ---
-# <a name="understand-how-the-suse-linux-enterprise-software-plan-discount-is-applied"></a>Vysvětlení, jak se použije slevu plán softwaru SUSE Linux Enterprise
+# <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Vysvětlení použití slevy na plán rezervaci softwaru SUSE Linux Enterprise pro Azure
 
 Po nákupu plánu operačním systémem SUSE Linux se automaticky využije slevy na nasazených SUSE virtuálních počítačů (VM), které odpovídají rezervace. Plán pro SUSE Linux zahrnují náklady na provozování softwaru SUSE na Virtuálním počítači Azure.
 
 Koupit správného plánu operačním systémem SUSE Linux, musíte pochopit, jaké virtuální počítače SUSE spustíte a počet virtuálních procesorů v těchto virtuálních počítačů. Použijte následující části vám pomůže identifikovat ze souboru CSV využití, co chcete koupit.
 
-## <a name="discount-applies-to-different-vm-sizes-with-instance-size-flexibility"></a>Sleva za vztahuje na různé velikosti virtuálních počítačů s flexibilitou velikost instance
+## <a name="discount-applies-to-different-vm-sizes"></a>Sleva za vztahuje na různé velikosti virtuálních počítačů
 
 Jako rezervované instance virtuálních počítačů, SUSE plánování nákupy nabízejí flexibilitu velikost instance. To znamená, že slevy platí i při nasazení virtuálního počítače se počet různých virtuálních procesorů. Sleva se vztahuje na různé velikosti virtuálních počítačů v rámci plánu softwaru.
 
@@ -40,7 +40,7 @@ Například pokud jste koupit plán pro SUSE Linux Enterprise Server pro HPC Pri
 
 Poměr 5 nebo víc virtuálních procesorů je 2.6. Proto rezervace pro SUSE s virtuálním Počítačem s 5 nebo víc virtuálních procesorů se týká pouze část náklady na software, což je přibližně % 77.
 
-## <a name="understand-your-suse-vm-usage-before-buying-a-suse-linux-plan"></a>Vysvětlení využití virtuálního počítače SUSE před zakoupením plán operačním systémem SUSE Linux
+## <a name="understand-suse-vm-usage-before-you-buy"></a>Vysvětlení využití virtuálního počítače SUSE před zakoupením
 
 Následující tabulky popisují softwarové plány, které si můžete koupit rezervaci pro jejich využití měřičů a poměry pro každý.
 
@@ -133,6 +133,6 @@ Další informace o rezervacích, naleznete v následujících článcích:
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

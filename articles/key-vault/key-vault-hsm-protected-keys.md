@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 49bc3c22eecf804e6930899478fe3be189677382
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 71931194c88412467252d16c5333d7a77338378c
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985899"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630615"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Postup generování a přenos chráněných pomocí HSM klíčů pro Azure Key Vault
 
@@ -534,4 +534,4 @@ Pokud bude odesílání úspěšné, zobrazí zobrazí vlastnosti klíče, kter�
 
 ## <a name="next-steps"></a>Další postup
 
-Teď můžete tento klíč chráněný HSM do trezoru klíčů. Další informace najdete v tématu **Pokud chcete použít modul hardwarového zabezpečení (HSM)** tématu [Začínáme se službou Azure Key Vault](key-vault-overview.md) kurzu.
+Teď můžete tento klíč chráněný HSM do trezoru klíčů. Další informace najdete v tématu této cen a funkcí [porovnání](https://azure.microsoft.com/pricing/details/key-vault/).

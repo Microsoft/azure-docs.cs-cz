@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 44a9784e47772c5a2ae1335aa048a4d3b86073eb
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 59dc9f82251e7a406e6fe1339fdb55b4880cd74d
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577098"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649182"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Kurz: Integrace Azure Active Directory s Pega systémy
 
@@ -207,7 +207,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Pega systémy, proveďte n�
 
     a. Kopírovat **identifikace entit** hodnotu a vložte ji do **identifikátor** textového pole v **základní konfiguraci SAML** na webu Azure Portal.
 
-    b.  Kopírovat **Assertion Consumer Service (ACS) umístění** hodnotu a vložte ji do **adresy URL odpovědi** textového pole textbox v **základní konfiguraci SAML** na webu Azure Portal.
+    b. Kopírovat **Assertion Consumer Service (ACS) umístění** hodnotu a vložte ji do **adresy URL odpovědi** textového pole v **základní konfiguraci SAML** na webu Azure Portal.
 
     c. Vyberte **zakázat žádost o podepsání**.
 

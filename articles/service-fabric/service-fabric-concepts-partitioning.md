@@ -3,8 +3,8 @@ title: Dělení služeb Service Fabric | Dokumentace Microsoftu
 description: Popisuje, jak dělit stavové služby Service Fabric. Oddíly umožňují ukládání dat v místních počítačích tak data a výpočetní výkon je možné škálovat společně.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: 3b7248c8-ea92-4964-85e7-6f1291b5cc7b
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
-ms.author: msfussell
-ms.openlocfilehash: 82b95080a9c93d8c02d4129ef93b1a6c9deba7aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: atsenthi
+ms.openlocfilehash: 833d87dab59890b9903ea8eecf2334d7dd1c7436
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852743"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666218"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Dělení Service Fabric reliable services
 Tento článek obsahuje úvod do základních konceptech služby dělení reliable services v Azure Service Fabric. Je také k dispozici na zdrojového kódu v článku [Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).

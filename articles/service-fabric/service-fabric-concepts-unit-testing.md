@@ -3,8 +3,8 @@ title: Testování jednotek stavové služby v Azure Service Fabric | Dokumentac
 description: Seznamte se s koncepty a postupy při testování služeb Stateful Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: charleszipp
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
-ms.author: ryanwi
-ms.openlocfilehash: c2d98316b81b3d908ebbe6147fe40f231e94c142
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.author: atsenthi
+ms.openlocfilehash: ca473b9947a9b0df610a9c3dac66914b06cc9217
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703611"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662563"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Testování jednotek stavové služby v Service Fabric
 
@@ -50,9 +50,9 @@ Kromě toho má více instancí umožňuje testy role pro každou z těchto inst
 #### <a name="mock-the-state-manager"></a>Napodobení správce stavu
 State Manager by měl být považován za vzdálený prostředek a proto imitace. Při vytvoření modelu správce stavu, je třeba některé základní úložiště v paměti pro sledování, co se uloží do Správce stavu tak, aby může číst a ověřit. Jednoduchý způsob, jak toho dosáhnout, je vytvoření mock výskytů jednotlivých typů Reliable Collections. V rámci těchto mocks použijte datový typ, který úzce v souladu s operací provedených v této kolekci. Následují některé typy dat navrhované pro jednotlivé spolehlivé kolekce
 
-- IReliableDictionary < TKey, TValue > -> System.Collections.Concurrent.ConcurrentDictionary < TKey, TValue >
-- IReliableQueue<T> System.Collections.Generic.Queue -><T>
-- IReliableConcurrentQueue<T> System.Collections.Concurrent.ConcurrentQueue -><T>
+- IReliableDictionary<TKey, TValue> -> System.Collections.Concurrent.ConcurrentDictionary<TKey, TValue>
+- IReliableQueue<T> -> System.Collections.Generic.Queue<T>
+- IReliableConcurrentQueue<T> -> System.Collections.Concurrent.ConcurrentQueue<T>
 
 #### <a name="many-state-manager-instances-single-storage"></a>Velký počet instancí správce stavu, jednoho úložiště
 Jak jsme zmínili, State Manager a Reliable Collections mají být považována za vzdálený prostředek. Proto tyto prostředky by měly a bude imitace v rámci testů jednotek. Ale při spuštění více instancí stavové služby bude obtížné udržovat synchronizované každého správce imitaci stavu napříč instancemi jiné stavové služby. Neopravňují stavové služby v clusteru Service Fabric postará udržování správce stavu každou sekundární repliku v souladu s primární replikou. Proto testy by se chová stejně tak, aby se můžete simulovat změny role.

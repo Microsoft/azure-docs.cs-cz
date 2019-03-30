@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 6b82c0d2d4a5e22094bf0a408d6a42f17bb3bea4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 82755f01cc881703eeefb6415b2e8e87e50fba60
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839810"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652378"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Zobrazit a stáhnout fakturu Microsoft Azure
 
@@ -28,7 +28,7 @@ Pro většinu předplatných si můžete stáhnout fakturu z [webu Azure portal]
 
 Pouze určité role mají oprávnění k zobrazení faktur, jako je účet správce nebo správce podnikové sítě. Další informace o získání přístupu k fakturačním údajům najdete v článku o [správě přístupu k fakturaci Azure pomocí rolí](billing-manage-access.md).
 
-Pokud máte [smlouvy zákazníka se společností Microsoft](#Check-your-access-to-a-Microsoft-Customer-Agreement), musí být fakturační profil vlastník, Přispěvatel, čtenář, nebo fakturovat zástupce, který vám vašich fakturách se projeví. Další informace o rolích fakturace pro smlouvy Microsoft zákazníka najdete v tématu [fakturace profilu role a úlohy](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+Pokud máte [smlouvy zákazníka se společností Microsoft](#check-your-access-to-a-microsoft-customer-agreement), musí být fakturační profil vlastník, Přispěvatel, čtenář, nebo fakturovat zástupce, který vám vašich fakturách se projeví. Další informace o rolích fakturace pro smlouvy Microsoft zákazníka najdete v tématu [fakturace profilu role a úlohy](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 ## <a name="download-your-azure-invoices-pdf"></a>Stažení faktury Azure (PDF)
 

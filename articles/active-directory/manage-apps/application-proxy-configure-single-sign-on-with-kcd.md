@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c7744ba4ca37a2a496c75a50f274be9bf431cc5
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 3c2461240b398a2b23bb2b2aedc524277d6b9771
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286580"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652514"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Omezené delegování protokolu Kerberos pro jednotné přihlašování do aplikací pomocí Proxy aplikace
 
@@ -82,7 +82,7 @@ Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateT
 2. Poté, co vaše aplikace se zobrazí v seznamu podnikových aplikací, vyberte ho a klikněte na tlačítko **jednotného přihlašování**.
 3. Nastavit režim jednotného přihlašování **integrované ověřování Windows**.  
 4. Zadejte **vnitřní hlavní název služby aplikace** aplikačního serveru. V tomto příkladu je název SPN pro naše publikované aplikace http/www.contoso.com. Tento hlavní název služby musí být v seznamu služeb, ke kterým může tento konektor předložit delegovaná pověření. 
-5. Zvolte **delegovaná identita přihlášení** pro konektor nekonfigurovali používání jménem uživatele. Další informace najdete v tématu [práce s různé místní a cloudové identity](#Working-with-different-on-premises-and-cloud-identities)
+5. Zvolte **delegovaná identita přihlášení** pro konektor nekonfigurovali používání jménem uživatele. Další informace najdete v tématu [práce s různé místní a cloudové identity](#working-with-different-on-premises-and-cloud-identities)
 
    ![Konfigurace pokročilých aplikace](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 

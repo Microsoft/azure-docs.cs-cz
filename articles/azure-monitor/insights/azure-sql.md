@@ -1,5 +1,5 @@
 ---
-title: Řešení Azure SQL Analytics ve službě Log Analytics | Dokumentace Microsoftu
+title: Řešení Azure SQL Analytics ve službě Azure Monitor | Dokumentace Microsoftu
 description: Řešení Azure SQL Analytics vám usnadní správu vašich databází Azure SQL
 services: log-analytics
 ms.service: log-analytics
@@ -10,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 66ab1fa9779aa378c4153adc0da81b3d172e1320
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c68c278b2a7afa8287845c452e3bec5380cf05c0
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170220"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629964"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -23,7 +23,7 @@ ms.locfileid: "58170220"
 
 Azure SQL Analytics je pokročilé cloudové řešení pro monitorování výkonu databáze, elastické fondy a spravovaných instancí Azure SQL ve velkém měřítku a napříč několika předplatnými prostřednictvím podokně ze skla. Díky monitorování. Shromažďuje a vizualizuje důležité metriky výkonu databáze SQL Azure s integrovanými inteligentními funkcemi pro řešení potíží s výkonem.
 
-Pomocí metrik, která shromáždíte pomocí řešení můžete vytvořit vlastní pravidla monitorování a výstrah. Toto řešení vám umožní identifikovat problémy v každé vrstvě vaším zásobníkem aplikace. Prezentovat data o všech Azure SQL databáze, elastické fondy a databáze spravované instance v jeden pracovní prostor Log Analytics pomocí Azure diagnostických metrik společně se zobrazeními Log Analytics. Log Analytics umožňuje shromažďovat, korelovat a vizualizovat strukturovanými i nestrukturovanými daty.
+Pomocí metrik, která shromáždíte pomocí řešení můžete vytvořit vlastní pravidla monitorování a výstrah. Toto řešení vám umožní identifikovat problémy v každé vrstvě vaším zásobníkem aplikace. Využívá Azure diagnostických metrik společně se zobrazeními Azure Monitor prezentovat data o všech Azure SQL databáze, elastické fondy a databáze ve spravovaných instancí v jeden pracovní prostor Log Analytics. Azure Monitor vám umožní shromažďovat, korelovat a vizualizovat strukturovanými i nestrukturovanými daty.
 
 Praktické přehled o použití řešení Azure SQL Analytics a typické scénáře využití najdete v části vložené video:
 
@@ -32,29 +32,18 @@ Praktické přehled o použití řešení Azure SQL Analytics a typické scéná
 
 ## <a name="connected-sources"></a>Připojené zdroje
 
-Azure SQL Analytics je cloud určený jen pro monitorování řešení podpůrné vysílání datového proudu telemetrická data diagnostiky pro Azure SQL Database: jeden, ve fondu a spravované instanci databáze. Jako řešení nepoužívá agentů pro připojení ke službě Log Analytics, řešení neobsahuje podporují monitorování na SQL Server je hostovaný na místním nebo ve virtuálních počítačích, najdete v následující tabulce kompatibility.
+Azure SQL Analytics je cloud určený jen pro monitorování řešení podpůrné vysílání datového proudu telemetrická data diagnostiky pro Azure SQL Database: jeden, ve fondu a spravované instanci databáze. Jako řešení nepoužívá agentů pro připojení k Azure Monitor, řešení neobsahuje podporují monitorování na SQL Server je hostovaný na místním nebo ve virtuálních počítačích, najdete v následující tabulce kompatibility.
 
 | Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
-| [Diagnostika Azure](../platform/collect-azure-metrics-logs.md) | **Ano** | Azure data metrik a protokolů se odesílají do Log Analytics přímo v Azure. |
-| [Účet služby Azure Storage](../platform/collect-azure-metrics-logs.md) | Ne | Log Analytics nemá číst data z účtu úložiště. |
+| [Diagnostika Azure](../platform/collect-azure-metrics-logs.md) | **Ano** | Azure data metrik a protokolů se posílají protokoly Azure monitoru přímo v Azure. |
+| [Účet služby Azure Storage](../platform/collect-azure-metrics-logs.md) | Ne | Azure Monitor nelze číst data z účtu úložiště. |
 | [Agenti systému Windows](../platform/agent-windows.md) | Ne | Přímí agenti Windows nejsou používány nástrojem řešení. |
 | [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | Ne | Přímí agenti systému Linux nejsou používány nástrojem řešení. |
-| [Skupina pro správu System Center Operations Manager](../platform/om-agents.md) | Ne | Přímé připojení z agenta Operations Manageru k Log Analytics se nepoužívá tímto řešením. |
+| [Skupina pro správu System Center Operations Manager](../platform/om-agents.md) | Ne | Přímé připojení z agenta nástroje Operations Manager do Azure monitoru se nepoužívá tímto řešením. |
 
 ## <a name="configuration"></a>Konfigurace
-
-Provedení následujících kroků přidejte řešení pro Azure SQL Analytics na řídicí panel Azure.
-
-1. Přidat do pracovního prostoru z řešení Azure SQL Analytics [Azure marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview).
-2. Na webu Azure Portal, klikněte na tlačítko **+ vytvořit prostředek**, vyhledejte **Azure SQL Analytics**.  
-    ![Monitorování a správa](./media/azure-sql/monitoring-management.png)
-3. Vyberte **Azure SQL Analytics (Preview)** ze seznamu
-4. V **Azure SQL Analytics (Preview)** oblast, klikněte na tlačítko **vytvořit**.  
-    ![Vytvoření](./media/azure-sql/portal-create.png)
-5. V **vytvořit nové řešení** vytvořit novou oblast, nebo vyberte existující pracovní prostor, který chcete přidat řešení a potom klikněte na **vytvořit**.
-
-    ![Přidat do pracovního prostoru](./media/azure-sql/add-to-workspace.png)
+Použijte postup v [řešení pro monitorování Azure přidat z Galerie řešení](../../azure-monitor/insights/solutions.md) přidat do pracovního prostoru Log Analytics řešení Azure SQL Analytics (Preview).
 
 ### <a name="configure-azure-sql-databases-elastic-pools-and-managed-instances-to-stream-diagnostics-telemetry"></a>Konfigurace databází Azure SQL Database, elastických fondů a spravovaných instancí pro datový proud diagnostickou telemetrii
 
@@ -80,9 +69,9 @@ Chcete-li zobrazit řídicí panel pro monitorování Azure SQL Analytics pro Az
 
 ### <a name="viewing-azure-sql-analytics-data"></a>Zobrazení dat Azure SQL Analytics
 
-Řídicí panel obsahuje přehled všech databází, které jsou monitorovány prostřednictvím různých perspektiv. Pro různých perspektiv pracovat musíte povolit správné metriky nebo protokoly o SQL odesílání do pracovního prostoru Azure Log Analytics.
+Řídicí panel obsahuje přehled všech databází, které jsou monitorovány prostřednictvím různých perspektiv. Pro různých perspektiv pracovat musíte povolit správné metriky nebo protokoly o SQL odesílání do pracovního prostoru Log Analytics.
 
-Všimněte si, že pokud některé metriky nebo protokoly nejsou streamovali do služby Azure Log Analytics, dlaždice v řešení se vyplní informace o sledování.
+Všimněte si, že pokud některé metriky nebo protokoly nejsou streamovali do služby Azure Monitor, dlaždice v řešení se vyplní informace o sledování.
 
 ### <a name="azure-sql-database-and-elastic-pool-view"></a>Azure SQL Database a zobrazení elastického fondu
 
@@ -302,6 +291,6 @@ Při řešení používat, platí spotřeby telemetrická data diagnostiky nad v
 
 ## <a name="next-steps"></a>Další postup
 
-- Použití [prohledávání protokolů](../log-query/log-query-overview.md) v Log Analytics k zobrazení podrobných dat Azure SQL.
+- Použití [protokolu dotazy](../log-query/log-query-overview.md) ve službě Azure Monitor k zobrazení podrobných dat Azure SQL.
 - [Vytvářejte vlastní řídicí panely](../learn/tutorial-logs-dashboards.md) zobrazení dat Azure SQL.
 - [Vytvořit upozornění](../platform/alerts-overview.md) Pokud dojde k určité událostem Azure SQL.

@@ -4,7 +4,7 @@ description: Popisuje příkazy Service Fabric CLI sfctl aplikace.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 0f608dc89d3a9bc8914fc9be142c442246ce13b5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d4fec5d8131d269d3df229360066452c37a92430
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278538"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665538"
 ---
 # <a name="sfctl-application"></a>sfctl application
 Vytvářet, odstraňovat a spravovat aplikace a typy aplikací.
@@ -31,7 +31,7 @@ Vytvářet, odstraňovat a spravovat aplikace a typy aplikací.
 | vytvoření | Vytvoří aplikaci Service Fabric pomocí zadaný popis. |
 | delete | Odstraní stávající aplikace Service Fabric. |
 | nasazení | Získá informace o aplikaci nasazenou na uzlu Service Fabric. |
-| Stav nasazení | Získá informace o stavu aplikace nasazené na uzlu Service Fabric. |
+| deployed-health | Získá informace o stavu aplikace nasazené na uzlu Service Fabric. |
 | nasazení seznamu | Získá seznam aplikací, které jsou nasazené na uzlu Service Fabric. |
 | zdravotnictví | Získá stav aplikace service fabric. |
 | informace | Získá informace o aplikaci Service Fabric. |
@@ -39,14 +39,14 @@ Vytvářet, odstraňovat a spravovat aplikace a typy aplikací.
 | načítání | Získá načíst informace o aplikaci Service Fabric. |
 | Manifest | Získá manifest popisující typ aplikace. |
 | Zřizování | Předpisy nebo registrech typ aplikace Service Fabric s pomocí balíčku .sfpkg v externím úložišti nebo pomocí balíčku aplikace do úložiště imagí clusteru. |
-| Stav sestavy | Odešle zprávu o stavu v aplikaci Service Fabric. |
+| report-health | Odešle zprávu o stavu v aplikaci Service Fabric. |
 | type | Získá seznam typů aplikací v clusteru Service Fabric odpovídající zadanému názvu. |
 | seznam typů | Získá seznam typů aplikací v clusteru Service Fabric. |
 | zrušení zajišťování | Odebere nebo zruší registraci typu aplikace Service Fabric z clusteru. |
 | upgradovat | Začne se upgradovat aplikace v clusteru Service Fabric. |
-| Upgrade resume | Obnoví upgrade aplikace v clusteru Service Fabric. |
-| vrácení upgradu zpět | Spustí se vracení zpět aktuálně probíhající upgrade aplikace v clusteru Service Fabric. |
-| Stav upgradu | Načte podrobnosti pro upgrade na nejnovější provést u této aplikace. |
+| upgrade-resume | Obnoví upgrade aplikace v clusteru Service Fabric. |
+| upgrade-rollback | Spustí se vracení zpět aktuálně probíhající upgrade aplikace v clusteru Service Fabric. |
+| upgrade-status | Načte podrobnosti pro upgrade na nejnovější provést u této aplikace. |
 | nahrání | Zkopírujte balíček aplikace Service Fabric do úložiště imagí. |
 
 ## <a name="sfctl-application-create"></a>Vytvoření aplikace sfctl
@@ -59,7 +59,7 @@ Vytvoří aplikaci Service Fabric pomocí zadaný popis.
 | [povinný] název – aplikace | Název aplikace, včetně "fabric\:' schéma identifikátoru URI. |
 | [povinné] Typ – aplikace | Název typu aplikace nalezena v manifestu aplikace. |
 | [povinné] verze – aplikace | Verze typu aplikace, jak jsou definovány v manifestu aplikace. |
-| – maximální počet uzlů | Maximální počet uzlů, ve kterém se Service Fabric rezervaci kapacity pro tuto aplikaci. Všimněte si, že to neznamená, že služby této aplikace se umístí na všechny tyto uzly. |
+| --max-node-count | Maximální počet uzlů, ve kterém se Service Fabric rezervaci kapacity pro tuto aplikaci. Všimněte si, že to neznamená, že služby této aplikace se umístí na všechny tyto uzly. |
 | --metriky | JSON kódovaný seznam popisů metriky kapacity aplikace. Metriky je definován jako název přidružené sady kapacity pro každý uzel, který aplikace existuje na. |
 | – minimální počet uzlů | Minimální počet uzlů, ve kterém se Service Fabric rezervaci kapacity pro tuto aplikaci. Všimněte si, že to neznamená, že služby této aplikace se umístí na všechny tyto uzly. |
 | --Parametry | JSON kódovaný seznam parametrů aplikace: přepsání použít při vytváření aplikace. |
@@ -109,7 +109,7 @@ Tento dotaz vrátí informace o aplikaci system, pokud je zadané ID aplikace pr
 | --- | --- |
 | – id aplikace [povinné] | Identitu aplikace. Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "fabric\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
 | --[povinný] název uzlu | Název uzlu. |
-| --zahrnují stav stavu | Zahrnují stav entity. Pokud má parametr hodnotu false, nebo není zadaný, je vrácen stav "Neznámý". Při přechodu nastavenou na hodnotu true, dotaz paralelně uzlu a stav systému předtím, než se sloučí výsledky. V důsledku toho dotazu je nákladnější a může trvat delší dobu. |
+| --include-health-state | Zahrnují stav entity. Pokud má parametr hodnotu false, nebo není zadaný, je vrácen stav "Neznámý". Při přechodu nastavenou na hodnotu true, dotaz paralelně uzlu a stav systému předtím, než se sloučí výsledky. V důsledku toho dotazu je nákladnější a může trvat delší dobu. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -133,8 +133,8 @@ Získá informace o stavu aplikace nasazené na uzlu Service Fabric. Pomocí Eve
 | --- | --- |
 | – id aplikace [povinné] | Identitu aplikace. Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "fabric\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
 | --[povinný] název uzlu | Název uzlu. |
-| --Deployed-Service-Packages-Health-State-Filter | Umožňuje filtrování nasazená služba balíček stavu stavu objektů vrácené ve výsledku dotazu Stav nasazení aplikace na základě jejich stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Pouze nasazení služby, které jsou vráceny balíčky, které odpovídají filtru. Všechny nasazené balíčky služeb se používají k vyhodnocení agregovaný stav nasazených aplikací. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 stav balíčky služeb s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
-| --události stavu stavu filtru | Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
+| --deployed-service-packages-health-state-filter | Umožňuje filtrování nasazená služba balíček stavu stavu objektů vrácené ve výsledku dotazu Stav nasazení aplikace na základě jejich stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Pouze nasazení služby, které jsou vráceny balíčky, které odpovídají filtru. Všechny nasazené balíčky služeb se používají k vyhodnocení agregovaný stav nasazených aplikací. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 stav balíčky služeb s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
+| --events-health-state-filter | Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
 | --exclude statistiky stavu | Určuje, zda má být vrácen statistik stavu jako součást výsledků dotazu. Ve výchozím nastavení False. Statistiky ukazují počet podřízených entit ve stavu Ok, upozornění a chyby. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
@@ -159,8 +159,8 @@ Získá seznam aplikací, které jsou nasazené na uzlu Service Fabric. Výsledk
 | --- | --- |
 | --[povinný] název uzlu | Název uzlu. |
 | --token pro pokračování | Parametr tokenu pokračování slouží k získání další sadu výsledků. Token pro pokračování se neprázdná hodnota je zahrnutý v odpovědi rozhraní API, když výsledky ze systému se nevejdou do odpověď o jedné. Když je tato hodnota předána na další volání rozhraní API, rozhraní API vrátí další sadu výsledků. Pokud neexistují žádné další výsledky, pak pokračovací token neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódování URL. |
-| --zahrnují stav stavu | Zahrnují stav entity. Pokud má parametr hodnotu false, nebo není zadaný, je vrácen stav "Neznámý". Při přechodu nastavenou na hodnotu true, dotaz paralelně uzlu a stav systému předtím, než se sloučí výsledky. V důsledku toho dotazu je nákladnější a může trvat delší dobu. |
-| – maximální počet výsledků | Maximální počet výsledků, které má být vrácena jako součást stránkové dotazy. Tento parametr definuje horní mez počtu výsledky. Výsledky se vrátí, může být nižší než zadané maximální počet výsledků, pokud se nevejdou do zprávy podle omezení velikosti maximální počet zpráv definované v konfiguraci. Pokud tento parametr je nula, nebo není zadán, obsahuje stránkovaného dotazu tolik výsledky nejdříve, který se vejde v návratové zprávě. |
+| --include-health-state | Zahrnují stav entity. Pokud má parametr hodnotu false, nebo není zadaný, je vrácen stav "Neznámý". Při přechodu nastavenou na hodnotu true, dotaz paralelně uzlu a stav systému předtím, než se sloučí výsledky. V důsledku toho dotazu je nákladnější a může trvat delší dobu. |
+| --max-results | Maximální počet výsledků, které má být vrácena jako součást stránkové dotazy. Tento parametr definuje horní mez počtu výsledky. Výsledky se vrátí, může být nižší než zadané maximální počet výsledků, pokud se nevejdou do zprávy podle omezení velikosti maximální počet zpráv definované v konfiguraci. Pokud tento parametr je nula, nebo není zadán, obsahuje stránkovaného dotazu tolik výsledky nejdříve, který se vejde v návratové zprávě. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -183,10 +183,10 @@ Vrátí stav stavu aplikace service fabric. Odpověď hlásí stav Ok, chybě ne
 |Argument|Popis|
 | --- | --- |
 | – id aplikace [povinné] | Identitu aplikace. Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "fabric\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
-| – nasazení aplikace – stavu – stav – filtrování | Umožňuje filtrování nasazené aplikace stavu stavu objektů vrácené ve výsledku dotazu stavu aplikace na základě jejich stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se pouze nasazené aplikace, které odpovídají filtru. Všechny nasazené aplikace se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 stav nasazených aplikací s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
-| --události stavu stavu filtru | Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
+| --deployed-applications-health-state-filter | Umožňuje filtrování nasazené aplikace stavu stavu objektů vrácené ve výsledku dotazu stavu aplikace na základě jejich stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se pouze nasazené aplikace, které odpovídají filtru. Všechny nasazené aplikace se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 stav nasazených aplikací s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
+| --events-health-state-filter | Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
 | --exclude statistiky stavu | Určuje, zda má být vrácen statistik stavu jako součást výsledků dotazu. Ve výchozím nastavení False. Statistiky ukazují počet podřízených entit ve stavu Ok, upozornění a chyby. |
-| --služby health stavu filtru | Umožňuje filtrování stavu objektů služby stavu vrácené ve výsledku dotazu stavu služby na základě jejich stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Jsou vráceny pouze služby, které odpovídají filtru. Všechny služby se používá k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 pak stav služeb s hodnotou elementu HealthState OK (2) a upozorněním (4) vrátí se.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
+| --services-health-state-filter | Umožňuje filtrování stavu objektů služby stavu vrácené ve výsledku dotazu stavu služby na základě jejich stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Jsou vráceny pouze služby, které odpovídají filtru. Všechny služby se používá k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 pak stav služeb s hodnotou elementu HealthState OK (2) a upozorněním (4) vrátí se.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -231,11 +231,11 @@ Získá informace o aplikacích, které byly vytvořeny nebo právě probíhá v
 
 |Argument|Popis|
 | --- | --- |
-| – aplikace definice typ filtru | Používají k filtrování podle ApplicationDefinitionKind, což je mechanismus, který se používá k definování aplikace Service Fabric.  <br> – Výchozí – výchozí hodnota, která má stejnou funkci jako výběr "All". Hodnota je 0.  <br> -All - filtr, který odpovídá s libovolnou hodnotou ApplicationDefinitionKind. Hodnota je 65535.  <br> -ServiceFabricApplicationDescription – filtr, který se shoduje s hodnotou ApplicationDefinitionKind ServiceFabricApplicationDescription vstup. Hodnota je 1.  <br> -Compose - filtr, který odpovídá vstupní hodnotou ApplicationDefinitionKind Compose. Hodnota je 2. |
+| --application-definition-kind-filter | Používají k filtrování podle ApplicationDefinitionKind, což je mechanismus, který se používá k definování aplikace Service Fabric.  <br> – Výchozí – výchozí hodnota, která má stejnou funkci jako výběr "All". Hodnota je 0.  <br> -All - filtr, který odpovídá s libovolnou hodnotou ApplicationDefinitionKind. Hodnota je 65535.  <br> -ServiceFabricApplicationDescription – filtr, který se shoduje s hodnotou ApplicationDefinitionKind ServiceFabricApplicationDescription vstup. Hodnota je 1.  <br> -Compose - filtr, který odpovídá vstupní hodnotou ApplicationDefinitionKind Compose. Hodnota je 2. |
 | – Název typu aplikace | Název typu aplikace použít k filtrování aplikace, které chcete dotázat. Tato hodnota by neměla obsahovat verzi typu aplikace. |
 | --token pro pokračování | Parametr tokenu pokračování slouží k získání další sadu výsledků. Token pro pokračování se neprázdná hodnota je zahrnutý v odpovědi rozhraní API, když výsledky ze systému se nevejdou do odpověď o jedné. Když je tato hodnota předána na další volání rozhraní API, rozhraní API vrátí další sadu výsledků. Pokud neexistují žádné další výsledky, pak pokračovací token neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódování URL. |
 | --Parametry výjimek aplikace | Příznak, který určuje, zda parametry aplikace se vyloučí z výsledku. |
-| – maximální počet výsledků | Maximální počet výsledků, které má být vrácena jako součást stránkové dotazy. Tento parametr definuje horní mez počtu výsledky. Výsledky se vrátí, může být nižší než zadané maximální počet výsledků, pokud se nevejdou do zprávy podle omezení velikosti maximální počet zpráv definované v konfiguraci. Pokud tento parametr je nula, nebo není zadán, obsahuje stránkovaného dotazu tolik výsledky nejdříve, který se vejde v návratové zprávě. |
+| --max-results | Maximální počet výsledků, které má být vrácena jako součást stránkové dotazy. Tento parametr definuje horní mez počtu výsledky. Výsledky se vrátí, může být nižší než zadané maximální počet výsledků, pokud se nevejdou do zprávy podle omezení velikosti maximální počet zpráv definované v konfiguraci. Pokud tento parametr je nula, nebo není zadán, obsahuje stránkovaného dotazu tolik výsledky nejdříve, který se vejde v návratové zprávě. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -305,7 +305,7 @@ Zřídí typ aplikace Service Fabric s clusterem. To se dá vytvořit instance n
 | – aplikace package--identifikátor uri pro stažení | Cesta k balíčku aplikace ".sfpkg" odkud balíček aplikace můžete stáhnout pomocí protokolů HTTP nebo HTTPS. <br><br> Externí typ zřizování úložiště pouze. Balíček aplikace mohou být uloženy v externím úložišti, který poskytuje operace GET a stáhněte soubor. Podporované protokoly jsou HTTP a HTTPS, a cesta musí umožňovat přístup pro čtení. |
 | ---Typ sestavení cesta aplikace | Pro zřízení pouze úložiště typu bitové kopie. Relativní cesta k balíčku aplikace v úložišti imagí zadaný během operace předchozího odeslání. |
 | – Název typu aplikace | Externí typ zřizování úložiště pouze. Název typu aplikace představuje název typu aplikace, které jsou součástí manifestu aplikace. |
-| --verzi typu aplikace. | Externí typ zřizování úložiště pouze. Verze typu aplikace představuje verzi jazyka aplikace typ nalezen v manifestu aplikace. |
+| --application-type-version | Externí typ zřizování úložiště pouze. Verze typu aplikace představuje verzi jazyka aplikace typ nalezen v manifestu aplikace. |
 | --externí zřizování | Umístění, kde můžete registrovat nebo zřídit balíčku aplikace. Označuje, že poskytování je pro balíček aplikace, která se předtím nahrála do externího úložiště. Balíček aplikace končí *.sfpkg rozšíření. |
 | --no-wait | Určuje, zda zřizování by měla probíhat asynchronně. <br><br> Pokud je nastavena na hodnotu true, vrátí operace zřízení po přijetí žádosti systém a operace zřízení pokračuje bez jakékoli časový limit. Výchozí hodnota je false. U velkých balíčků aplikací doporučujeme nastavit hodnotu na hodnotu true. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
@@ -338,7 +338,7 @@ Sestavy stavu zadané aplikace Service Fabric. Sestava může obsahovat informac
 | – vypršela platnost odebrat v případě | Hodnota, která označuje, zda sestava se odebere z health store, když jeho platnost vyprší. <br><br> Je-li nastavena hodnota true, sestava se odebere z health store po vypršení její platnosti. Pokud je nastaven na hodnotu false, sestava je považováno za chybu, pokud vypršela platnost. Hodnota této vlastnosti je ve výchozím nastavení hodnotu false. Když klienti pravidelně hlásit, nastavují by měl RemoveWhenExpired false (výchozí). Tímto způsobem je osoby podávající hlášení dochází k problémům (například zablokování) a nemůže oznamovat entity je vyhodnocena v chybě, když vyprší platnost sestava stavu. Označí entitu jako patřící do chybového stavu. |
 | --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Pořadové číslo sestav se používá v úložišti stavů ke zjišťování zastaralých sestavy. Pokud není zadán, je číslo sekvence automaticky generované klientem stavu při přidání sestavy. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| – Hodnota ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
+| --ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -360,10 +360,10 @@ Vrátí informace o typech aplikací, které jsou zřízené nebo se právě zř
 |Argument|Popis|
 | --- | --- |
 | – aplikace type-name [povinné] | Název typu aplikace. |
-| --verzi typu aplikace. | Verze typu aplikace. |
+| --application-type-version | Verze typu aplikace. |
 | --token pro pokračování | Parametr tokenu pokračování slouží k získání další sadu výsledků. Token pro pokračování se neprázdná hodnota je zahrnutý v odpovědi rozhraní API, když výsledky ze systému se nevejdou do odpověď o jedné. Když je tato hodnota předána na další volání rozhraní API, rozhraní API vrátí další sadu výsledků. Pokud neexistují žádné další výsledky, pak pokračovací token neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódování URL. |
 | --Parametry výjimek aplikace | Příznak, který určuje, zda parametry aplikace se vyloučí z výsledku. |
-| – maximální počet výsledků | Maximální počet výsledků, které má být vrácena jako součást stránkové dotazy. Tento parametr definuje horní mez počtu výsledky. Výsledky se vrátí, může být nižší než zadané maximální počet výsledků, pokud se nevejdou do zprávy podle omezení velikosti maximální počet zpráv definované v konfiguraci. Pokud tento parametr je nula, nebo není zadán, obsahuje stránkovaného dotazu tolik výsledky nejdříve, který se vejde v návratové zprávě. |
+| --max-results | Maximální počet výsledků, které má být vrácena jako součást stránkové dotazy. Tento parametr definuje horní mez počtu výsledky. Výsledky se vrátí, může být nižší než zadané maximální počet výsledků, pokud se nevejdou do zprávy podle omezení velikosti maximální počet zpráv definované v konfiguraci. Pokud tento parametr je nula, nebo není zadán, obsahuje stránkovaného dotazu tolik výsledky nejdříve, který se vejde v návratové zprávě. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -385,10 +385,10 @@ Vrátí informace o typech aplikací, které jsou zřízené nebo se právě zř
 
 |Argument|Popis|
 | --- | --- |
-| ---Typ filtr definice aplikace typ | Používají k filtrování podle ApplicationTypeDefinitionKind, což je mechanismus, který se používá k definování typ aplikace Service Fabric.  <br> – Výchozí – výchozí hodnota, která má stejnou funkci jako výběr "All". Hodnota je 0.  <br> -All - filtr, který odpovídá s libovolnou hodnotou ApplicationTypeDefinitionKind. Hodnota je 65535.  <br> -ServiceFabricApplicationPackage – filtr, který se shoduje s hodnotou ApplicationTypeDefinitionKind ServiceFabricApplicationPackage vstup. Hodnota je 1.  <br> -Compose - filtr, který odpovídá vstupní hodnotou ApplicationTypeDefinitionKind Compose. Hodnota je 2. |
+| --application-type-definition-kind-filter | Používají k filtrování podle ApplicationTypeDefinitionKind, což je mechanismus, který se používá k definování typ aplikace Service Fabric.  <br> – Výchozí – výchozí hodnota, která má stejnou funkci jako výběr "All". Hodnota je 0.  <br> -All - filtr, který odpovídá s libovolnou hodnotou ApplicationTypeDefinitionKind. Hodnota je 65535.  <br> -ServiceFabricApplicationPackage – filtr, který se shoduje s hodnotou ApplicationTypeDefinitionKind ServiceFabricApplicationPackage vstup. Hodnota je 1.  <br> -Compose - filtr, který odpovídá vstupní hodnotou ApplicationTypeDefinitionKind Compose. Hodnota je 2. |
 | --token pro pokračování | Parametr tokenu pokračování slouží k získání další sadu výsledků. Token pro pokračování se neprázdná hodnota je zahrnutý v odpovědi rozhraní API, když výsledky ze systému se nevejdou do odpověď o jedné. Když je tato hodnota předána na další volání rozhraní API, rozhraní API vrátí další sadu výsledků. Pokud neexistují žádné další výsledky, pak pokračovací token neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódování URL. |
 | --Parametry výjimek aplikace | Příznak, který určuje, zda parametry aplikace se vyloučí z výsledku. |
-| – maximální počet výsledků | Maximální počet výsledků, které má být vrácena jako součást stránkové dotazy. Tento parametr definuje horní mez počtu výsledky. Výsledky se vrátí, může být nižší než zadané maximální počet výsledků, pokud se nevejdou do zprávy podle omezení velikosti maximální počet zpráv definované v konfiguraci. Pokud tento parametr je nula, nebo není zadán, obsahuje stránkovaného dotazu tolik výsledky nejdříve, který se vejde v návratové zprávě. |
+| --max-results | Maximální počet výsledků, které má být vrácena jako součást stránkové dotazy. Tento parametr definuje horní mez počtu výsledky. Výsledky se vrátí, může být nižší než zadané maximální počet výsledků, pokud se nevejdou do zprávy podle omezení velikosti maximální počet zpráv definované v konfiguraci. Pokud tento parametr je nula, nebo není zadán, obsahuje stránkovaného dotazu tolik výsledky nejdříve, který se vejde v návratové zprávě. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -440,17 +440,17 @@ Parametry upgradu aplikace zadaný ověří a začne se upgradovat aplikace, pok
 | --default-service-health-policy | JSON kódovaný specifikace zásad stavu, ve výchozím nastavení používá k vyhodnocení stavu daného typu služby. |
 | --selhání akce | Akce, který se má provést při upgradu na monitorované pomocí monitorování zjistí monitorování porušení zásad nebo stavu zásad. |
 | --force restartování | Vynuceně restartování procesů během upgradu, i když nedošlo ke změně verze kódu. |
-| – Stav –--časový limit opakování kontroly | Dlouhá doba mezi pokusy o provádění kontroly stavu, pokud aplikace nebo clusteru není v pořádku.  Výchozí\: PT0H10M0S. |
-| --stavu zaškrtnutí stabilní trvání | Množství času, aplikace nebo clusteru musí zůstane v dobrém stavu před provedením upgradu k další upgradovací doméně.  Výchozí\: PT0H2M0S. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
-| – stav –--Čekání na kontrolu | Doba čekání po dokončení upgradu domény před zahájením stavu kontroluje procesu.  Výchozí\: 0. |
+| --health-check-retry-timeout | Dlouhá doba mezi pokusy o provádění kontroly stavu, pokud aplikace nebo clusteru není v pořádku.  Výchozí\: PT0H10M0S. |
+| --health-check-stable-duration | Množství času, aplikace nebo clusteru musí zůstane v dobrém stavu před provedením upgradu k další upgradovací doméně.  Výchozí\: PT0H2M0S. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
+| --health-check-wait-duration | Doba čekání po dokončení upgradu domény před zahájením stavu kontroluje procesu.  Výchozí\: 0. |
 | --max-unhealthy-apps | Maximální povolené procento poškozené nasazené aplikace. Vyjádřené číslem v rozmezí 0 až 100. |
 | --režimu | Režim, který slouží k monitorování stavu během upgradu se zajištěním provozu.  Výchozí\: UnmonitoredAuto. |
-| --repliky sady kontrola-časový limit | Maximální množství času blokování zpracování logických sítí a zabránit ztrátě dostupnosti, když dochází k neočekávaným problémům. Měří v sekundách. |
+| --replica-set-check-timeout | Maximální množství času blokování zpracování logických sítí a zabránit ztrátě dostupnosti, když dochází k neočekávaným problémům. Měří v sekundách. |
 | --service-health-policy | JSON kódovaný mapování zásad stavu typ služby za název typu služby. Mapa je prázdný jako výchozí. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 | --upgrade-domain-timeout | Množství času každé domény upgradu musí dokončit před provedením FailureAction.  Výchozí\: P10675199DT02H48M05.4775807S. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
-| --upgrade vypršení časového limitu | Množství času celkové upgrade musí dokončit před provedením FailureAction.  Výchozí\: P10675199DT02H48M05.4775807S. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
-| --upozornění jako chyby | Určuje, zda jsou upozornění zpracována stejným závažností jako chyby. |
+| --upgrade-timeout | Množství času celkové upgrade musí dokončit před provedením FailureAction.  Výchozí\: P10675199DT02H48M05.4775807S. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
+| --warning-as-error | Určuje, zda jsou upozornění zpracována stejným závažností jako chyby. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -540,7 +540,7 @@ Volitelně můžete zobrazte průběh nahrávání pro každý soubor v balíčk
 | --- | --- |
 | – Cesta [povinné] | Cesta k balíčku místní aplikace. |
 | --imagestore řetězec | Cílové image ukládání pro nahrání balíčku aplikace.  Výchozí\: fabric\:ImageStore. |
-| --show průběh | Zobrazení průběhu nahrávání souboru pro velké balíčky. |
+| --show-progress | Zobrazení průběhu nahrávání souboru pro velké balíčky. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 

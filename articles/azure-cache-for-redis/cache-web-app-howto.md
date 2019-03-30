@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: f0972e840fab3c624616ba8aa70bae74be5b1dc2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 100d2e4cb57f2b2d0278540a0382fb845dbba53c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090470"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649012"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Rychlý start: Vytvoření webové aplikace ASP.NET 
 
@@ -97,7 +97,7 @@ V dalším kroku vytvoříte pro aplikaci mezipaměť.
 
 V této části aktualizujete aplikaci, aby podporovala nové zobrazení, které zobrazí jednoduchý test mezipaměti Azure Redis.
 
-* [Aktualizace souboru web.config o nastavení aplikace pro mezipaměť](#Update-the-webconfig-file-with-an-app-setting-for-the-cache)
+* [Aktualizace souboru web.config o nastavení aplikace pro mezipaměť](#update-the-webconfig-file-with-an-app-setting-for-the-cache)
 * Konfigurace aplikace pro použití klienta StackExchange.Redis
 * Aktualizace souboru HomeController a rozložení
 * Přidání nového zobrazení RedisCache

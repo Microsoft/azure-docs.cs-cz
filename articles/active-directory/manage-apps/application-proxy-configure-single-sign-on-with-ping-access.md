@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4df8f329a135683ea68896605a0a1c6f3ee45984
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 319791c2436395c00dafc744fb6fcb1ff18b0750
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084077"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652327"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Ověřování založené na hlavičkách pro jednotné přihlašování s Proxy aplikací a Pingaccessem
 
@@ -43,7 +43,7 @@ Další informace najdete v článku [Edice služby Azure Active Directory](../f
 
 ## <a name="publish-your-application-in-azure"></a>Publikování aplikace v Azure
 
-Tento článek je určený pro uživatele, kteří jsou poprvé publikování aplikace v tomto scénáři. Provede jak začít pracovat s aplikací a Pingaccessem, kromě publikování kroky. Pokud jste už nakonfigurovali obě služby, ale chcete si můžete znovu projít postup publikování, můžete přeskočit instalaci konektoru a přejděte na [přidání aplikace do Azure AD pomocí Proxy aplikace](#add-your-app-to-Azure-AD-with-Application-Proxy).
+Tento článek je určený pro uživatele, kteří jsou poprvé publikování aplikace v tomto scénáři. Provede jak začít pracovat s aplikací a Pingaccessem, kromě publikování kroky. Pokud jste už nakonfigurovali obě služby, ale chcete si můžete znovu projít postup publikování, můžete přeskočit instalaci konektoru a přejděte na [přidání aplikace do Azure AD pomocí Proxy aplikace](#add-your-app-to-azure-ad-with-application-proxy).
 
 >[!NOTE]
 >Vzhledem k tomu, že tento scénář je partnerství mezi službami Azure AD a PingAccess, některé pokyny existují na webu s Ping Identity.
