@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 12/04/2018
 ms.author: garye
 ms.openlocfilehash: eab91fdc8b620cfa52a5661a3ee324e268c84a0d
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410818"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58671205"
 ---
 >[!Note]
->**Azure Batch AI se vyřazuje.** Podpora pro tuto službu se vyřadí postupně. Funkce Azure Batch AI jsou teď k dispozici jako cílové výpočetní prostředí spravované ve službě Azure Machine Learning. Další informace najdete v tématu [co se děje s Batch AI?](../articles/batch-ai/overview-what-happened-batch-ai.md)
+>**Azure Batch AI se vyřazuje z provozu.** Podpora pro tuto službu se postupně vyřadí. Možnosti Azure Batch AI jsou teď k dispozici jako spravovaný cílový výpočetní objekt ve službě Azure Machine Learning. Další informace najdete v tématu [co se děje s Batch AI?](../articles/batch-ai/overview-what-happened-batch-ai.md)

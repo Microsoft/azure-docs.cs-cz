@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a29da9e87c09ad157babf1e1a391fb967859d73
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 433c2d712ca4867a5ec59f86c333511070b6d507
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210505"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665045"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>Správa nastavení pro dvoustupňové ověřování.
 Tento článek obsahuje odpovědi na otázky o tom, jak aktualizovat nastavení pro dvoustupňové ověření nebo vícefaktorové ověřování. Pokud máte potíže s přihlášením k účtu, podívejte se na [potíže s dvoustupňovým ověřováním](multi-factor-authentication-end-user-troubleshoot.md) pomoc při řešení potíží.
@@ -50,7 +50,7 @@ Pokud kliknete na tento odkaz není vhodná, můžete také získat k **dalšíh
     ![Testovací](./media/multi-factor-authentication-end-user-manage-settings/proofup.png)
 
 ## <a name="i-want-to-change-my-phone-number-or-add-a-secondary-number"></a>Chci změnit své telefonní číslo, nebo přidat sekundární číslo
-Je potřeba nakonfigurovat sekundární ověřovací telefonní číslo.  Protože primárního telefonního čísla a mobilní aplikace jsou pravděpodobně na stejné telefonu, záložní telefonní číslo je jediný způsob, jak vám bude schopen se rychle vrátit ke svému účtu, pokud dojde ke ztrátě nebo odcizení telefonu.
+Je potřeba nakonfigurovat sekundární ověřovací telefonní číslo.  Protože primárního telefonního čísla a mobilní aplikace jsou pravděpodobně na stejné telefonu, záložní telefonní číslo je nejrychlejší způsob, jak vám bude schopen se rychle vrátit ke svému účtu, pokud dojde ke ztrátě nebo odcizení telefonu.
 
 > [!NOTE]
 > Pokud nemáte přístup pro primární telefonní číslo a potřebujete pomoc získávání ke svému účtu, najdete v článku [potíže s dvoustupňovým ověřováním](multi-factor-authentication-end-user-troubleshoot.md) článek o další pomoc.  

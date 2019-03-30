@@ -4,7 +4,7 @@ description: Popisuje, Service Fabric CLI sfctl compose příkazy.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: d71b0c020fb9ceb305b56216d466bacb42ad21e8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 4b5cbb4a24b61de7e64a52ef950deedab3eec263
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278147"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667492"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Vytvářet, odstraňovat a spravovat aplikace Docker Compose.
@@ -33,8 +33,8 @@ Vytvářet, odstraňovat a spravovat aplikace Docker Compose.
 | odebrat | Odstraní existující Service Fabric tvoří nasazení z clusteru. |
 | status | Získá informace o službě Service Fabric nasazení compose. |
 | upgradovat | Spustí se upgrade nasazení compose v clusteru Service Fabric. |
-| vrácení upgradu zpět | Spustí vrácení nasazení compose upgradovat v clusteru Service Fabric. |
-| Stav upgradu | Získá podrobnosti pro upgrade na nejnovější provést na této platformě Service Fabric nasazení compose. |
+| upgrade-rollback | Spustí vrácení nasazení compose upgradovat v clusteru Service Fabric. |
+| upgrade-status | Získá podrobnosti pro upgrade na nejnovější provést na této platformě Service Fabric nasazení compose. |
 
 ## <a name="sfctl-compose-create"></a>sfctl compose vytvořit
 Service Fabric vytvoří nasazení compose.
@@ -70,7 +70,7 @@ Získá stav o nasazení compose, které byly vytvořeny nebo se právě vytvá�
 |Argument|Popis|
 | --- | --- |
 | --token pro pokračování | Parametr tokenu pokračování slouží k získání další sadu výsledků. Token pro pokračování se neprázdná hodnota je zahrnutý v odpovědi rozhraní API, když výsledky ze systému se nevejdou do odpověď o jedné. Když je tato hodnota předána na další volání rozhraní API, rozhraní API vrátí další sadu výsledků. Pokud neexistují žádné další výsledky, pak pokračovací token neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódování URL. |
-| – maximální počet výsledků | Maximální počet výsledků, které má být vrácena jako součást stránkové dotazy. Tento parametr definuje horní mez počtu výsledky. Výsledky se vrátí, může být nižší než zadané maximální počet výsledků, pokud se nevejdou do zprávy podle omezení velikosti maximální počet zpráv definované v konfiguraci. Pokud tento parametr je nula, nebo není zadán, obsahuje stránkovaného dotazu tolik výsledky nejdříve, který se vejde v návratové zprávě. |
+| --max-results | Maximální počet výsledků, které má být vrácena jako součást stránkové dotazy. Tento parametr definuje horní mez počtu výsledky. Výsledky se vrátí, může být nižší než zadané maximální počet výsledků, pokud se nevejdou do zprávy podle omezení velikosti maximální počet zpráv definované v konfiguraci. Pokud tento parametr je nula, nebo není zadán, obsahuje stránkovaného dotazu tolik výsledky nejdříve, který se vejde v návratové zprávě. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -143,19 +143,19 @@ Ověří zadaný parametry upgradu a začne se upgradovat nasazení, pokud jsou 
 | --selhání akce | Možné hodnoty zahrnují\: "Neplatný", "Vrácení zpět", "Ruční". |
 | --force restartování | Procesy se během upgradu vynuceně restartují, i v případě, že nedošlo ke změně verze kódu. <br><br> Upgrade pouze změny konfigurace nebo data. |
 | --has-pass | Vyzve k zadání hesla do registru kontejneru. |
-| --stavu. Zkontrolujte opakování | Dlouhá doba mezi pokusy o provádění kontroly stavu, pokud aplikace nebo clusteru není v pořádku. |
+| --health-check-retry | Dlouhá doba mezi pokusy o provádění kontroly stavu, pokud aplikace nebo clusteru není v pořádku. |
 | --stabilní verze stavu zaškrtnutí | Množství času, aplikace nebo clusteru musí zůstane v dobrém stavu před provedením upgradu k další upgradovací doméně. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
 | --health-check-wait | Doba čekání po dokončení upgradu domény před zahájením stavu kontroluje procesu. |
-| --repliky sady kontrola | Maximální množství času blokování zpracování logických sítí a zabránit ztrátě dostupnosti, když dochází k neočekávaným problémům. <br><br> Když tento časový limit vyprší platnost, zpracování upgradovací doména bude pokračovat bez ohledu na problémy s dostupností ztráty. Časový limit se resetuje na začátku každé upgradovací doméně. Platné hodnoty jsou 0 až 42949672925 (včetně). |
+| --replica-set-check | Maximální množství času blokování zpracování logických sítí a zabránit ztrátě dostupnosti, když dochází k neočekávaným problémům. <br><br> Když tento časový limit vyprší platnost, zpracování upgradovací doména bude pokračovat bez ohledu na problémy s dostupností ztráty. Časový limit se resetuje na začátku každé upgradovací doméně. Platné hodnoty jsou 0 až 42949672925 (včetně). |
 | --svc-type-health-map | JSON kódovaného seznam objektů, které popisují zásady stavu, používá k vyhodnocení stavu různými typy služeb. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| --není v pořádku, aplikace | Maximální povolené procento žádostí, není v pořádku, před ohlášení chyby. <br><br> Například pokud chcete povolit 10 % aplikací v dobrém stavu, tato hodnota by 10. Procento představuje přípustný maximální procento aplikací, které může být není v pořádku, než clusteru se považuje za chybu. Pokud procento respektován, ale existuje alespoň jedna aplikace není v pořádku, stav se vyhodnotí jako upozornění. To se vypočítá jako podíl počtu poškozené aplikace přes celkový počet instancí aplikace v clusteru. |
+| --unhealthy-app | Maximální povolené procento žádostí, není v pořádku, před ohlášení chyby. <br><br> Například pokud chcete povolit 10 % aplikací v dobrém stavu, tato hodnota by 10. Procento představuje přípustný maximální procento aplikací, které může být není v pořádku, než clusteru se považuje za chybu. Pokud procento respektován, ale existuje alespoň jedna aplikace není v pořádku, stav se vyhodnotí jako upozornění. To se vypočítá jako podíl počtu poškozené aplikace přes celkový počet instancí aplikace v clusteru. |
 | --upgrade-domain-timeout | Množství času každé domény upgradu musí dokončit před provedením FailureAction. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
 | --upgrade – typ | Výchozí\: se zajištěním provozu. |
-| --upgrade režimu | Možné hodnoty zahrnují\: "Neplatný", "UnmonitoredAuto", "UnmonitoredManual", "Sledované".  Výchozí\: UnmonitoredAuto. |
-| --upgrade vypršení časového limitu | Množství času celkové upgrade musí dokončit před provedením FailureAction. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
+| --upgrade-mode | Možné hodnoty zahrnují\: "Neplatný", "UnmonitoredAuto", "UnmonitoredManual", "Sledované".  Výchozí\: UnmonitoredAuto. |
+| --upgrade-timeout | Množství času celkové upgrade musí dokončit před provedením FailureAction. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
 | --user | Uživatelské jméno pro připojení k registru kontejneru. |
-| --upozornění jako chyby | Určuje, zda jsou upozornění zpracována stejným závažností jako chyby. |
+| --warning-as-error | Určuje, zda jsou upozornění zpracována stejným závažností jako chyby. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 

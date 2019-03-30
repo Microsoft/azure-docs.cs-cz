@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 4360196a33381d1a9c8316430339b9a80cb0dba3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4700573d3f5319599a6437d092e20d8013d2f7fb
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58016477"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632840"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
@@ -33,4 +33,4 @@ ms.locfileid: "58016477"
 | Runbook | 10 akce sady runbook do skupiny akcí. | Obraťte se na podporu. |
 | SMS | 10 SMS akce v skupiny akcí. Viz také [tady informace](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Obraťte se na podporu. |
 | Hlas | 10 hlasové akce v skupiny akcí. Viz také [tady informace](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Obraťte se na podporu. |
-| Webhook | 10 akce webhooku v skupiny akcí. Další omezení najdete na adrese [informace specifické pro akce](../articles/azure-monitor/platform/action-groups.md#action-specific-information).  | Obraťte se na podporu. |
+| Webhook | 10 akce webhooku v skupiny akcí.  Maximální počet volání webhooku je 1500 za minutu na jedno předplatné. Další omezení najdete na adrese [informace specifické pro akce](../articles/azure-monitor/platform/action-groups.md#action-specific-information).  | Obraťte se na podporu. |

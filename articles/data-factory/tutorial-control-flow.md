@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: shlo
-ms.openlocfilehash: d2f892941f9d37dd3d74afe17d7952b404dc709f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9a03094683a973db16aa949f0610bc7f9914be45
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551632"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649216"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
+
 V tomto kurzu vytvoříte kanál služby Data Factory, který prezentuje některé funkce řízení toku. Tento kanál provádí jednoduché kopírování z kontejneru ve službě Azure Blob Storage do jiného kontejneru ve stejném účtu úložiště. Pokud aktivita kopírování proběhne úspěšně, chcete podrobnosti o úspěšném kopírování (jako je například množství zapsaných dat) poslat v e-mailu informujícím o úspěchu. Pokud aktivita kopírování selže, chcete podrobnosti o neúspěšném kopírování (jako je například chybová zpráva) poslat v e-mailu informujícím o selhání. V rámci tohoto kurzu se dozvíte, jak předávat parametry.
 
 Přehled scénáře: ![Přehled](media/tutorial-control-flow/overview.png)
@@ -56,6 +57,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     John|Doe
     Jane|Doe
     ```
+
 2. Pomocí nástrojů, jako je [Průzkumník služby Azure Storage](https://storageexplorer.com/), vytvořte kontejner **adfv2branch** a odešlete soubor **input.txt** do tohoto kontejneru.
 
 ## <a name="create-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio
@@ -73,7 +75,7 @@ Pomocí sady Visual Studio 2015/2017 vytvořte konzolovou aplikaci C# .NET.
 1. Klikněte na **Nástroje**  ->  **Správce balíčků NuGet**  ->  **Konzola správce balíčků**.
 2. V **Konzola správce balíčků**, spusťte následující příkazy, které se mají balíčky nainstalovat. Odkazovat na [balíček nuget Microsoft.Azure.Management.DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) s podrobnostmi.
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
     Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
@@ -139,6 +141,7 @@ Pomocí sady Visual Studio 2015/2017 vytvořte konzolovou aplikaci C# .NET.
     ```
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
+
 V souboru Program.cs vytvořte funkci CreateOrUpdateDataFactory:
 
 ```csharp
@@ -173,6 +176,7 @@ Factory df = CreateOrUpdateDataFactory(client);
 ```
 
 ## <a name="create-an-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
+
 V souboru Program.cs vytvořte funkci StorageLinkedServiceDefinition:
 
 ```csharp
@@ -188,6 +192,7 @@ static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagemen
     return linkedService;
 }
 ```
+
 Do metody **Main** přidejte následující kód, který vytvoří **propojenou službu Azure Storage**. V tématu věnovaném [vlastnostem propojených služeb Azure Blob](connector-azure-blob-storage.md#linked-service-properties) se o podporovaných vlastnostech dozvíte víc.
 
 ```csharp
@@ -199,6 +204,7 @@ client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLink
 V této části vytvoříte dvě datové sady, jednu pro zdroj a druhou pro jímku. 
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Vytvoření datové sady pro zdrojový objekt blob Azure
+
 Do metody **Main** přidejte následující kód, který vytvoří **datovou sadu objektů blob Azure**. V tématu věnovaném [vlastnostem datových sad objektů blob Azure](connector-azure-blob-storage.md#dataset-properties) se o podporovaných vlastnostech dozvíte víc.
 
 Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada Blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku, a popisuje:
@@ -258,6 +264,7 @@ client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetNa
 ```
 
 ## <a name="create-a-c-class-emailrequest"></a>Vytvoření C# třídy: EmailRequest
+
 V projektu C# vytvořte třídu s názvem **EmailRequest**. Definuje, které vlastnosti kanál posílá v těle požadavku při odesílání e-mailu. V tomto kurzu kanál do e-mailu odešle čtyři vlastnosti:
 
 - **Message**: Text e-mailu. V případě úspěšného kopírování tato vlastnost obsahuje podrobnosti o spuštění (počet zapsaných dat). V případě neúspěšného kopírování tato vlastnost obsahuje podrobnosti o chybě.
@@ -289,10 +296,13 @@ V projektu C# vytvořte třídu s názvem **EmailRequest**. Definuje, které vla
         }
     }
 ```
+
 ## <a name="create-email-workflow-endpoints"></a>Vytvoření koncových bodů pracovního postupu pro e-maily
+
 K aktivaci odesílání e-mailů použijete [Logic Apps](../logic-apps/logic-apps-overview.md) pro definování pracovního postupu. Podrobnosti o vytvoření pracovního postupu Logic Apps najdete v tématu věnovaném [postupu vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
 
 ### <a name="success-email-workflow"></a>Pracovní postup pro e-maily s informací o úspěchu 
+
 Vytvořte pracovní postup aplikace logiky s názvem `CopySuccessEmail`. Jako trigger tohoto pracovního postupu definujte `When an HTTP request is received` a potom přidejte akci `Office 365 Outlook – Send an email`.
 
 ![Pracovní postup pro e-maily s informací o úspěchu](media/tutorial-control-flow/success-email-workflow.png)
@@ -318,6 +328,7 @@ Pro trigger požadavku zadejte do `Request Body JSON Schema` následující JSON
     "type": "object"
 }
 ```
+
 To odpovídá třídě **EmailRequest**, kterou jste vytvořili v předcházející části. 
 
 Váš požadavek by měl v návrháři aplikace logiky vypadat takto:
@@ -336,6 +347,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ```
 
 ## <a name="fail-email-workflow"></a>Pracovní postup pro e-maily s informací o úspěchu 
+
 Naklonujte **CopySuccessEmail** a vytvořte další pracovní postup Logic Apps s názvem **CopyFailEmail**. Schéma `Request Body JSON schema` v triggeru požadavku je stejné. Stačí změnit formát e-mailu, například změnit `Subject` tak, aby to odpovídalo neúspěchu. Zde naleznete příklad:
 
 ![Návrhář aplikace logiky – pracovní postup pro e-maily s informací o neúspěchu](media/tutorial-control-flow/fail-email-workflow.png)
@@ -356,7 +368,9 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 //Fail Request Url
 https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
 ```
+
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
+
 Do metody Main přidejte následující kód, který vytvoří kanál s aktivitou kopírování a vlastností dependsOn. V tomto kurzu kanál obsahuje jednu aktivitu: aktivitu kopírování, která jako zdroj používá datovou sadu Blob jako zdroj a jako jímku používá jinou datovou sadu Blob. Na základě úspěchu nebo neúspěchu aktivity kopírování potom volá různé e-mailové úlohy.
 
 V tomto kanálu použijete následující funkce:
@@ -440,12 +454,15 @@ static PipelineResource PipelineDefinition(DataFactoryManagementClient client)
             return resource;
         }
 ```
+
 Do metody **Main** přidejte následující kód, který vytvoří kanál:
 
 ```
 client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
 ```
+
 ### <a name="parameters"></a>Parametry
+
 První část našeho kanálu definuje parametry. 
 
 - sourceBlobContainer – parametr kanálu využívaný zdrojovou datovou sadou objektů blob
@@ -461,7 +478,9 @@ Parameters = new Dictionary<string, ParameterSpecification>
         { "receiver", new ParameterSpecification { Type = ParameterType.String } }
     },
 ```
+
 ### <a name="web-activity"></a>Aktivita webu
+
 Aktivita webu umožňuje volání libovolného koncového bodu REST. Další informace o této aktivitě najdete v tématu věnovaném [aktivitě webu](control-flow-web-activity.md). Tento kanál používá aktivitu webu pro volání pracovního postupu pro e-maily Logic Apps. Vytvořili jste dvě aktivity webu, jednu, která volá pracovní postup **CopySuccessEmail**, a druhou, která volá **CopyFailWorkFlow**.
 
 ```csharp
@@ -481,6 +500,7 @@ Aktivita webu umožňuje volání libovolného koncového bodu REST. Další inf
             }
         }
 ```
+
 Do vlastnosti Url vložte koncové body adres URL požadavku z pracovního postupu Logic Apps. Ve vlastnosti Body předejte instanci třídy EmailRequest. Obsahuje následující vlastnosti:
 
 - Message – Předání hodnoty `@{activity('CopyBlobtoBlob').output.dataWritten`. Má přístup k vlastnosti předchozí aktivity kopírování a předává hodnotu dataWritten. V případě neúspěchu předejte výstup chyby místo `@{activity('CopyBlobtoBlob').error.message`.
@@ -491,6 +511,7 @@ Do vlastnosti Url vložte koncové body adres URL požadavku z pracovního postu
 Tento kód vytvoří novou závislost aktivit, a to v závislosti na předchozí aktivitě kopírování, která je úspěšná.
 
 ## <a name="create-a-pipeline-run"></a>Vytvoření spuštění kanálu
+
 Do metody **Main** přidejte následující kód, který **aktivuje spuštění kanálu**.
 
 ```csharp
@@ -508,6 +529,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
 ## <a name="main-class"></a>Hlavní třída 
+
 Finální metoda Main by měla vypadat takto. Sestavte a spusťte program pro aktivaci spuštění kanálu!
 
 ```csharp
@@ -539,6 +561,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
 ## <a name="monitor-a-pipeline-run"></a>Monitorování spuštění kanálu
+
 1. Do metody **Main** přidejte následující kód, který nepřetržitě kontroluje stav spuštění kanálu, dokud se kopírování dat nedokončí.
 
     ```csharp
@@ -578,6 +601,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     ```
 
 ## <a name="run-the-code"></a>Spuštění kódu
+
 Sestavte a spusťte aplikaci a potom ověřte spuštění kanálu.
 Konzola vytiskne průběh vytváření datové továrny, propojených služeb, datových sad, kanálu a spuštění kanálu. Potom zkontroluje stav spuštění kanálu. Počkejte, dokud aktivita kopírování nezobrazí údaje o velikosti načtených/zapsaných dat. Potom použijte nástroj, jako je průzkumník služby Azure Storage, a zkontrolujte, že se objekty blob zkopírovaly z inputBlobPath do outputBlobPath, jak jste zadali v proměnných.
 
@@ -734,6 +758,7 @@ Press any key to exit...
 ```
 
 ## <a name="next-steps"></a>Další postup
+
 V tomto kurzu jste provedli následující kroky: 
 
 > [!div class="checklist"]

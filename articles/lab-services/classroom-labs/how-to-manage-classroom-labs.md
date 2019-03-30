@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 4f6d94c7090c2bbb0335d46b60be320b2fc19375
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c6ae28e076d14faa7c2173f3a23d92daad4bd59e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962821"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651119"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Správa testovacích prostředí v učebnách ve službě Azure Lab Services 
 Tento článek popisuje, jak vytvářet a odstraňovat prostředí v učebně. Je také ukazuje, jak zobrazit všechny testovací prostředí v učebnách účtu testovacího prostředí. 
@@ -37,9 +37,9 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
         ![Vytvoření testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. Na stránce **Select virtual machine specifications** (Výběr specifikací virtuálních počítačů) proveďte následující kroky:
-    1. Vyberte **velikost** virtuálních počítačů vytvořených v testovacím prostředí. 
+    1. Vyberte **velikost** virtuálních počítačů vytvořených v testovacím prostředí. V současné době **malé**, **střední**, **velké**, a **GPU** velikosti jsou povoleny.
     2. Vyberte **oblast**, ve které se mají virtuální počítače vytvořit. 
-    3. Vyberte **image virtuálního počítače**, která se má použít k vytvoření virtuálních počítačů v testovacím prostředí. 
+    3. Vyberte **image virtuálního počítače**, která se má použít k vytvoření virtuálních počítačů v testovacím prostředí. Pokud vyberete image Linuxu, zobrazí se možnost Povolit připojení ke vzdálené ploše pro něj. Podrobnosti najdete v tématu [povolit připojení ke vzdálené ploše pro Linux](how-to-enable-remote-desktop-linux.md).
     4. Vyberte **Další**.
 
         ![Zadání specifikací virtuálních počítačů](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
@@ -60,7 +60,7 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
     ![Stránka Configure template (Konfigurace šablony) po dokončení konfigurace](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Následující kroky jsou pro tento kurz volitelné: 
     1. Vyberte **Start** (Spustit) a spusťte virtuální počítač šablony.
-    2. Vyberte **Connect** (Připojit) a připojte se k virtuálnímu počítači šablony. 
+    2. Vyberte **Connect** (Připojit) a připojte se k virtuálnímu počítači šablony. Pokud je šablona Linux virtuálního počítače, můžete vybrat, jestli se chcete připojit pomocí SSH nebo RDP (Pokud je povolen protokol RDP).
     3. Nainstalujte a nakonfigurujte na virtuálním počítači šablony požadovaný software. 
     4. **Zastavte** virtuální počítač.  
     5. Zadejte **popis** šablony.

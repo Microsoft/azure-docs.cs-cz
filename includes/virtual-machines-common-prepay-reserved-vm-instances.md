@@ -4,12 +4,12 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 03/22/2019
-ms.openlocfilehash: f7fbbb421a01b268b784a6d6c875cd959a5d1d42
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 32d5d0d25c843be1cba1916e7679faa930e8e645
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407874"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58671852"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Předplatit si virtuální počítače se službou Azure Reserved VM Instances
 
@@ -107,6 +107,8 @@ Můžete však *exchange* rezervace, pokud chcete provádět změny.
 Pokud potřebujete zrušit svou rezervaci, může se vám účtovat poplatek za předčasné ukončení ve výši 12 %. Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší. Výše vrácených peněz je omezená na 50 000 USD za rok. Výše vrácených peněz, které obdržíte, je zbývající poměrný zůstatek minus poplatek za předčasné ukončení ve výši 12 %. Pokud chcete požádat o zrušení, přejděte na rezervaci v Azure portal a vyberte **náhrada** vytvořit žádost o podporu.
 
 Pokud potřebujete u své rezervace rezervovaných instancí virtuálních počítačů změnit oblast, skupinu velikostí virtuálních počítačů nebo období, můžete ji vyměnit za jinou rezervaci stejné nebo vyšší hodnoty. Počáteční datum období nové rezervace se z vyměněné rezervace nepřenáší. 1 nebo 3 roky termín začíná od když vytvoříte novou rezervaci. Žádost o exchange, přejděte na rezervaci na webu Azure Portal a vyberte **Exchange** vytvořit žádost o podporu.
+
+Další informace o tom, jak exchange nebo náhrady rezervace, naleznete v tématu [výměny rezervaci a vrácení peněz](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 

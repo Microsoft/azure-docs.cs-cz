@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 051aa6b6ca8571fe948fa30e1e4a4320bb564a52
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 7ca7e653cc42323f4313ef955de40416154b4ecf
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593314"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651664"
 ---
 # <a name="split-merge-security-configuration"></a>Konfigurace zabezpečení dělení a slučování
 
@@ -83,17 +83,17 @@ Klientské certifikáty jsou nutné pro ověřování požadavků na službu. Zv
 3. [Aktualizace certifikátu certifikační Autority v konfiguračním souboru služby](#update-ca-certificate-in-service-configuration-file)
 4. [Klientské certifikáty](#issue-client-certificates)
 5. [Vytvoření souborů PFX pro klientské certifikáty](#create-pfx-files-for-client-certificates)
-6. [Import certifikátu klienta](#Import-Client-Certificate)
+6. [Import certifikátu klienta](#import-client-certificate)
 7. [Zkopírujte kryptografické otisky certifikátu klienta](#copy-client-certificate-thumbprints)
 8. [Konfigurace povolených klientů v konfiguračním souboru služby](#configure-allowed-clients-in-the-service-configuration-file)
 
 ### <a name="use-existing-client-certificates"></a>Použít existující klientské certifikáty
 1. [Najít veřejný klíč certifikační Autority](#find-ca-public-key)
-2. [Nahrajte certifikát certifikační Autority do cloudové služby](#Upload-CA-certificate-to-cloud-service)
-3. [Aktualizace certifikátu certifikační Autority v konfiguračním souboru služby](#Update-CA-Certificate-in-Service-Configuration-File)
-4. [Zkopírujte kryptografické otisky certifikátu klienta](#Copy-Client-Certificate-Thumbprints)
+2. [Nahrajte certifikát certifikační Autority do cloudové služby](#upload-ca-certificate-to-cloud-service)
+3. [Aktualizace certifikátu certifikační Autority v konfiguračním souboru služby](#update-ca-certificate-in-service-configuration-file)
+4. [Zkopírujte kryptografické otisky certifikátu klienta](#copy-client-certificate-thumbprints)
 5. [Konfigurace povolených klientů v konfiguračním souboru služby](#configure-allowed-clients-in-the-service-configuration-file)
-6. [Konfigurace kontroly odvolání certifikátu klienta](#Configure-Client-Certificate-Revocation-Check)
+6. [Konfigurace kontroly odvolání certifikátu klienta](#configure-client-certificate-revocation-check)
 
 ## <a name="allowed-ip-addresses"></a>Povolené IP adresy
 Přístup ke koncovým bodům služby je možné omezit na konkrétní rozsahy IP adres.

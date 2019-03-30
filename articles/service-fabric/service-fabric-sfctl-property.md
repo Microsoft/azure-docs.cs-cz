@@ -4,7 +4,7 @@ description: Popisuje příkazy Service Fabric CLI sfctl vlastnost.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 78c04abeea1fdc4771f44d44b973ca0dcd2922ea
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 54cb9f604e9d1b817947990e657390387df6c881
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274985"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664909"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Vlastnosti v Service Fabric názvy Store a dotazu.
@@ -115,7 +115,7 @@ Vytvoří nebo aktualizuje zadanou vlastnost Service Fabric s daným názvem.
 | – id názvu [povinné] | Název Service Fabric, aniž by "fabric\:' schéma identifikátoru URI. |
 | --[povinný] název vlastnosti | Název vlastnosti Service Fabric. |
 | --hodnotu [povinné] | Popisuje vlastnosti Service Fabric. Toto je řetězec formátu JSON. <br><br> Řetězec formátu json má dvě pole, "Druh" data a 'Value' data. Hodnota "Druh" musí být první položky se zobrazí v řetězci JSON a můžou být hodnoty "Binární", "Int64", 'Double', 'Řetězec' nebo 'Guid'. Hodnota by měla možné serializovat-daných typů. Hodnoty "Druh" a "Data" by měl být ve formě řetězce. |
-| – vlastní typ id | Id vlastnosti vlastního typu. Pomocí této vlastnosti, uživatel je možnost Označit typ hodnoty vlastnosti. |
+| --custom-id-type | Id vlastnosti vlastního typu. Pomocí této vlastnosti, uživatel je možnost Označit typ hodnoty vlastnosti. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty

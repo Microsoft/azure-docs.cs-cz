@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: fdc718429991a7bba30739d09882c51f8baf5dc9
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: fd518ad8c5ea13c4eeaa017417332744cecd328e
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336265"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661220"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
 
@@ -47,6 +47,11 @@ Pokud zjistíte `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died 
 ## <a name="fpgas"></a>FPGA
 
 Nebude moct nasazovat modely na FPGA, dokud si vyžádáte a byla schválena pro FPGA kvótu. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvóty: https://aka.ms/aml-real-time-ai
+
+## <a name="automated-machine-learning"></a>Automatizované strojové učení
+
+Tensor Flow automatizované strojového učení v současné době nepodporuje verzi tensor flow 1.13. Instalace to způsobí závislosti balíčků přestane fungovat. Pracujeme na tom to opravit v některé budoucí verzi. 
+
 
 ## <a name="databricks"></a>Databricks
 

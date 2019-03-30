@@ -3,8 +3,8 @@ title: Vytvoření aplikace Azure Service Fabric Reliable Actors v Javě v Linux
 description: Zjistěte, jak za pět minut vytvořit a nasadit aplikaci Service Fabric Reliable Actors v Javě.
 services: service-fabric
 documentationcenter: java
-author: rwike77
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/18/2018
-ms.author: ryanwi
-ms.openlocfilehash: ddde1570534801d394ace23973e4d755a1af7017
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.author: aljo
+ms.openlocfilehash: 37d9c17ff10922aa524fa2fe3eb8abff92c83052
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443199"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664231"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Vytvoření první aplikace Service Fabric Reliable Actors v Javě v Linuxu
 > [!div class="op_single_selector"]

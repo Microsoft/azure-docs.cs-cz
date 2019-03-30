@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 4a4ec51430242cc3e3d6a0b801f2b4be7858ab50
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: d70544866b9e321d98acd3978da145276e036025
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516072"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58671859"
 ---
 <!-- put the ## header in the file that includes this file -->
 
 V této části vytvoření identity zařízení v registru identit ve službě IoT hub. Zařízení lze připojit ke službě IoT Hub, pouze pokud má záznam v registru identit. Další informace najdete v části "Registr identit" [Příručka vývojáře pro IoT Hub](../articles/iot-hub/iot-hub-devguide-identity-registry.md) 
 
-1. V navigační nabídce Centrum IoT, otevřete **zařízení IoT**, pak klikněte na tlačítko **přidat** k registraci nového zařízení ve službě IoT hub.
+1. V navigační nabídce Centrum IoT, otevřete **zařízení IoT**a pak vyberte **přidat** k registraci nového zařízení ve službě IoT hub.
 
     ![Vytvoření identity zařízení na portálu](./media/iot-hub-include-create-device/create-identity-portal.png)
 
-1. Zadejte název nové zařízení, jako třeba **myDeviceId**a klikněte na tlačítko **Uložit**. Tato akce vytvoří novou identitu zařízení služby IoT hub.
+1. Zadejte název nové zařízení, jako třeba **myDeviceId**a vyberte **Uložit**. Tato akce vytvoří novou identitu zařízení služby IoT hub.
 
    ![Přidat nové zařízení](./media/iot-hub-include-create-device/create-a-device.png)
 

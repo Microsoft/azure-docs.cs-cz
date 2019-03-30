@@ -4,7 +4,7 @@ description: Konfigurace certifikátů pro vaši aplikaci pomocí modulu runtime
 services: service-fabric
 documentationcenter: NA
 author: JimacoMS2
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 503b0dffa00c6cba973f4bc51d8e3b2f3a7b8c57
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: c0580b75544a9613bc8caf2faaac11ba1ba6708e
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200407"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667136"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Certifikáty a zabezpečení na clusterech s Linuxem
 

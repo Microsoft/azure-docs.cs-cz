@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 80c35d8417fefa2873cbef9886f56ccfa3920624
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0e0d1cd98f27ef40681e37a55f7021bf102fda21
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409461"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664264"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimalizace nákladů s využitím rezervované kapacity ve službě Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Azure Cosmos DB vyhrazené kapacity je využíván Šetřete peníze optimalizac
 
 Azure Cosmos DB vyhrazené kapacity může výrazně snížit náklady na služby Cosmos DB&mdash;až 65 procent u běžných cen se předem k ničemu zavázat jeden rok nebo tři roky. Záložní kapacitu poskytuje fakturace slevy a neovlivní jejich běhový stav vašich prostředků Azure Cosmos DB.
 
-Azure Cosmos DB vyhrazené kapacity se věnuje zajištěné propustnosti pro vaše prostředky. Nezahrnuje úložiště a sítě poplatky. Poté, co můžete koupit rezervaci, propustnost poplatky, které odpovídají rezervace, které atributy jsou už účtovat platit jako budete přejít sazby. Další informace o rezervacích, najdete v článku [Azure rezervace](../billing/billing-save-compute-costs-reservations.md) článku. 
+Azure Cosmos DB vyhrazené kapacity se věnuje zajištěné propustnosti pro vaše prostředky. Nezahrnuje úložiště a sítě poplatky. Poté, co můžete koupit rezervaci, propustnost poplatky, které odpovídají rezervace, které atributy jsou už účtovat platit jako budete přejít sazby. Další informace o rezervacích, najdete v článku [Azure rezervace](../billing/billing-save-compute-costs-reservations.md) článku.
 
 Můžete si koupit službu Azure Cosmos DB vyhrazené kapacity z [webu Azure portal](https://portal.azure.com). Koupit rezervované kapacity:
 
@@ -48,7 +48,7 @@ Velikost rezervace by měla vycházet z celkové množství propustnost, které 
 
 4. Vyplňte požadovaná pole, jak je popsáno v následující tabulce:
 
-   ![Vyplňte formulář záložní kapacitu](./media/cosmos-db-reserved-capacity/fill_reserved_capacity_form.png) 
+   ![Vyplňte formulář záložní kapacitu](./media/cosmos-db-reserved-capacity/fill_reserved_capacity_form.png)
 
    |Pole  |Popis  |
    |---------|---------|
@@ -61,17 +61,17 @@ Velikost rezervace by měla vycházet z celkové množství propustnost, které 
 
 5. Sleva a cenu za rezervaci v **náklady** oddílu. Tato rezervace ceny platí pro prostředky Azure Cosmos DB s propustností zřízené ve všech oblastech.  
 
-6. Vyberte **Koupit**. Po úspěšné nákupu, získáte na následující stránce: 
+6. Vyberte **Koupit**. Po úspěšné nákupu, získáte na následující stránce:
 
-   ![Vyplňte formulář záložní kapacitu](./media/cosmos-db-reserved-capacity/reserved_capacity_successful.png) 
+   ![Vyplňte formulář záložní kapacitu](./media/cosmos-db-reserved-capacity/reserved_capacity_successful.png)
 
-Po nákupu rezervace se okamžitě použije na nějaké stávající prostředky Azure Cosmos DB, které odpovídají podmínkám použití rezervace. Pokud nemáte k dispozici nějaké stávající prostředky Azure Cosmos DB, rezervace platit, když nasadíte novou instanci služby Cosmos DB, která odpovídá podmínky rezervace. V obou případech se období rezervace začne hned po úspěšném nákupu. 
+Po nákupu rezervace se okamžitě použije na nějaké stávající prostředky Azure Cosmos DB, které odpovídají podmínkám použití rezervace. Pokud nemáte k dispozici nějaké stávající prostředky Azure Cosmos DB, rezervace platit, když nasadíte novou instanci služby Cosmos DB, která odpovídá podmínky rezervace. V obou případech se období rezervace začne hned po úspěšném nákupu.
 
 Když vyprší platnost vaší rezervace, nadále spouštět vaše instance služby Azure Cosmos DB a jsou účtovány za běžné sazby průběžných plateb.
 
 ## <a name="cancellation-and-exchanges"></a>Zrušení a výměny
 
-Pomoc při identifikaci přímo rezervované kapacity najdete v tématu [pochopit, jak sleva za rezervaci se použije ke službě Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md). V případě, že, budete muset zrušit nebo exchange rezervací služby Azure Cosmos DB, kontaktujte prosím tým služby Azure Cosmos DB v `AskCosmosDB@microsoft.com`.
+Pomoc při identifikaci přímo rezervované kapacity najdete v tématu [pochopit, jak sleva za rezervaci se použije ke službě Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md). Pokud budete muset zrušit nebo exchange rezervací služby Azure Cosmos DB, najdete v článku [výměny rezervaci a vrácení peněz](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="next-steps"></a>Další postup
 
@@ -90,4 +90,3 @@ Sleva za rezervaci se automaticky využije na prostředky Azure Cosmos DB, kter�
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-

@@ -4,15 +4,13 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: 9ef71ef67f53a37e5bbd5a672569114c3cd8af4e
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: f66a3653bc85925349dde84551310fd24f4c9336
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305082"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58633024"
 ---
-V Unity, otevřete projekt v `Unity` složky.
-
 Otevřít **nastavení sestavení** tak, že vyberete **souboru** > **nastavení sestavení**.
 
 V **platformy** vyberte **iOS**.

@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: fa1f90cf0236a589d1df96658c672a555195be6b
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: ad9e22668d0f6d994ad0fce7b207b5849dfa27e9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888810"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651236"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Správa DNS záznamů a sad záznamů v DNS Azure pomocí Azure Powershellu
 
@@ -93,7 +93,7 @@ S vidět v podrobnosti o tom, jak vytvořit záznamy "A", následující příkl
 
 V obou případech vám ukážeme, jak vytvořit sadu obsahující jednoho záznamu záznamů. Předchozí příklady "A" záznamů lze upravit k vytvoření sady záznamů jiných typů, který obsahuje více záznamů, se metadata, nebo chcete-li vytvořit prázdné sady záznamů.
 
-Neposkytujeme příklad k vytvoření sady záznamů SOA od SOAs se vytvoří a odstraní s každou zónou DNS a nelze vytvořit ani odstranit samostatně. Ale [SOA lze upravit, jak je znázorněno v příkladu dále](#to-modify-an-SOA-record).
+Neposkytujeme příklad k vytvoření sady záznamů SOA od SOAs se vytvoří a odstraní s každou zónou DNS a nelze vytvořit ani odstranit samostatně. Ale [SOA lze upravit, jak je znázorněno v příkladu dále](#to-modify-an-soa-record).
 
 ### <a name="create-an-aaaa-record-set-with-a-single-record"></a>Vytvoření sady záznamů AAAA s jedním záznamem
 

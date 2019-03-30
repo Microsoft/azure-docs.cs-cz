@@ -4,7 +4,7 @@ description: Zjistěte, jak vytvořit výčet Reliable Actors a jejich metadat.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: amanbha
 ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 300ab4f73fdae0224d2de5e1e1dea6cc6cfa7438
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04e2c32b18e6897d6443fea68587aba9ae294be5
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57864367"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664476"
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>Zobrazení výčtu Service Fabric Reliable Actors
 Služby Reliable Actors umožňuje klientovi výčet metadata o objektů actor, které je hostitelem služby. Protože je služba objektu actor do dělené stavové služby, výčet se provádí na oddíl. Protože každý oddíl může obsahovat mnoho objektů actor, výčet se vrátí jako sadu stránkových výsledků. Na stránkách se odkazuje přes, dokud se číst všechny stránky. Následující příklad ukazuje, jak vytvořit seznam všech aktivních objektů actor v jednom oddílu služby objektu actor:

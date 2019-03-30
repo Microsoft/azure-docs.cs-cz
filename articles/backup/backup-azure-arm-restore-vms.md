@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: geg
-ms.openlocfilehash: 3b32418361b992b91aa96579a0cf1f84d8b9d312
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: b0408aa296dcbff0c73f2c192e24c290d51fec5f
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620406"
+ms.locfileid: "58650712"
 ---
 # <a name="restore-azure-vms"></a>Obnovení virtuálních počítačů Azure
 
@@ -29,8 +29,8 @@ Azure Backup poskytuje několik způsobů, jak obnovit virtuální počítač.
 **Možnost obnovení** | **Podrobnosti**
 --- | ---
 **Vytvoření nového virtuálního počítače** | Rychle vytvoří a získá základní virtuální počítač zprovozněný z bodu obnovení.<br/><br/> Můžete zadat název virtuálního počítače, vyberte skupinu prostředků a virtuální síť (VNet), ve kterém budou umístěny a zadat typ úložiště.
-**Obnovení disku** | Obnovení disku virtuálního počítače, který můžete použít k vytvoření nového virtuálního počítače.<br/><br/> Azure Backup poskytuje šablonu, která vám pomůžou stanovit a vytvoření virtuálního počítače. <br/><br/> Tato možnost zkopíruje virtuální pevné disky do účtu úložiště, které zadáte. Úloha obnovení vytvoří šablonu můžete stáhnout a použít k zadání vlastního nastavení virtuálních počítačů a vytvoření virtuálního počítače.<br/><br/> -Účet úložiště by měl být ve stejném umístění jako trezor. Pokud ho nemáte, vytvořte účet úložiště.<br/><br/> Zobrazí se typ replikace účtu úložiště. Zónově redundantní úložiště (ZRS) se nepodporuje.<br/><br/> Alternativně můžete připojte disk k existujícímu virtuálnímu počítači nebo vytvoření nového virtuálního počítače pomocí Powershellu.<br/><br/> Tato možnost je užitečná, pokud chcete přizpůsobit virtuální počítač, přidejte nastavení konfigurace, které nebyly existuje v době zálohování nebo nastavení, která musí být nakonfigurovaný pomocí šablony nebo prostředí PowerShell.
-**Nahradit stávající** | Můžete obnovit disk a použít k nahrazení disku v existující virtuální počítač.<br/><br/> Musí existovat aktuálního virtuálního počítače. Pokud byl odstraněn tento parametr nelze použít.<br/><br/> Azure Backup pořídí snímek existující virtuální počítač před nahrazením disku. Snímek je uložen v pracovní umístění, které zadáte. Existující disky připojené k virtuálnímu počítači se pak nahradí pomocí bodu obnovení. Snímku je zkopírován do trezoru a zachována v souladu se zásadami uchovávání.<br/><br/> Nahradit existující se podporuje pro nešifrované spravované virtuální počítače. Není podporováno pro nespravované disky, [zobecněný virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource), nebo pro virtuální počítače [vytvořené pomocí vlastních imagí](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/).<br/><br/> Pokud bod obnovení obsahuje víc nebo míň disky než aktuální virtuální počítač, pak počet disků v bodu obnovení bude reflektovat pouze konfiguraci virtuálního počítače.
+**Obnovení disku** | Obnovení disku virtuálního počítače, který můžete použít k vytvoření nového virtuálního počítače.<br/><br/> Azure Backup poskytuje šablonu, která vám pomůžou stanovit a vytvoření virtuálního počítače. <br/><br/> Tato možnost zkopíruje virtuální pevné disky do účtu úložiště, které zadáte. Úloha obnovení vytvoří šablonu můžete stáhnout a použít k zadání vlastního nastavení virtuálních počítačů a vytvoření virtuálního počítače.<br/><br/> Účet úložiště by měl být ve stejném umístění jako trezor. Pokud ho nemáte, vytvořte účet úložiště.<br/><br/> Zobrazí se typ replikace účtu úložiště. Zónově redundantní úložiště (ZRS) se nepodporuje.<br/><br/> Alternativně můžete připojte disk k existujícímu virtuálnímu počítači nebo vytvoření nového virtuálního počítače pomocí Powershellu.<br/><br/> Tato možnost je užitečná, pokud chcete přizpůsobit virtuální počítač, přidejte nastavení konfigurace, které nebyly existuje v době zálohování nebo nastavení, která musí být nakonfigurovaný pomocí šablony nebo prostředí PowerShell.
+**Nahradit stávající** | Můžete obnovit disk a použít k nahrazení disku v existující virtuální počítač.<br/><br/> Musí existovat aktuálního virtuálního počítače. Pokud byl odstraněn tento parametr nelze použít.<br/><br/> Azure Backup pořídí snímek existující virtuální počítač před nahrazením disku. Snímek je uložen v pracovní umístění, které zadáte. Existující disky připojené k virtuálnímu počítači se pak nahradí pomocí bodu obnovení.<br/><br/> Snímku je zkopírován do trezoru a zachována v souladu se zásadami uchovávání. <br/><br/> Nahradit existující se podporuje pro nešifrované spravované virtuální počítače. Není podporováno pro nespravované disky, [zobecněný virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource), nebo pro virtuální počítače [vytvořené pomocí vlastních imagí](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/).<br/><br/> Pokud bod obnovení obsahuje víc nebo míň disky než aktuální virtuální počítač, pak počet disků v bodu obnovení bude reflektovat pouze konfiguraci virtuálního počítače.<br/><br/>
 
 > [!NOTE]
 > Můžete také obnovit určité soubory a složky na Virtuálním počítači Azure. [Další informace](backup-azure-restore-files-from-vm.md).
@@ -58,7 +58,7 @@ Pokud nemáte příslušná oprávnění, můžete si [obnovení disku](#restore
 ## <a name="choose-a-vm-restore-configuration"></a>Vyberte konfiguraci obnovení virtuálního počítače
 
 1. V **obnovit konfiguraci**, vyberte možnost obnovení:
-    - **Vytvořte novou**. Tuto možnost použijte, pokud chcete vytvořit nový virtuální počítač. Můžete vytvořit virtuální počítač s jednoduchým nastavením, nebo obnovení disku a vytvořit vlastní virtuální počítač.
+    - **Vytvořit nový**: Tuto možnost použijte, pokud chcete vytvořit nový virtuální počítač. Můžete vytvořit virtuální počítač s jednoduchým nastavením, nebo obnovení disku a vytvořit vlastní virtuální počítač.
     - **Nahradit stávající**: Tuto možnost použijte, pokud mají být nahrazeny disky na existující virtuální počítač.
 
         ![Obnovení Průvodce konfigurací](./media/backup-azure-arm-restore-vms/restore-configuration.png)
@@ -95,6 +95,8 @@ Mezi [možnosti obnovení](#restore-options), můžete vytvořit disk z bodu obn
     ![Dokončení konfigurace obnovení](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
 4. V **obnovit konfiguraci**vyberte **OK**. V **obnovení**, klikněte na tlačítko **obnovení** pro aktivaci obnovení.
+
+Azure Backup během obnovení virtuálního počítače nepoužívá účet úložiště. Ale v případě klíčových **obnovit disky** a **rychlé obnovení**, účet úložiště se používá pro ukládání šablony.
 
 ### <a name="use-templates-to-customize-a-restored-vm"></a>Použijte šablony k přizpůsobení obnovený virtuální počítač
 
@@ -142,6 +144,7 @@ Existuje mnoho běžných scénářů, ve kterých možná budete muset obnovit 
 **Obnovení úplné obnovení systému** | Hlavní rozdíl mezi virtuálními počítači Azure a místní hypervisory je že je k dispozici v Azure bez konzoly virtuálního počítače. Konzola se vyžaduje pro určité scénáře, jako je obnovení pomocí úplného obnovení (BMR) – typ zálohování. Obnovení virtuálního počítače z trezoru je ale jako úplná náhrada za úplné obnovení systému.
 **Obnovení virtuálních počítačů se speciální konfigurací sítě** | Speciální konfigurací sítě zahrnují virtuální počítače s pomocí externího nebo interního Vyrovnávání zatížení, použití více síťovými KARTAMI nebo více vyhrazených IP adres. Obnovit tyto virtuální počítače pomocí [obnovení možnost disku](#restore-disks). Tato možnost umožňuje zkopírovat virtuální pevné disky do zadaný účet úložiště a pak můžete vytvořit virtuální počítač pomocí [interní](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/) nebo [externí](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/) pro load balancer, [několik síťových karet](../virtual-machines/windows/multiple-nics.md), nebo [více vyhrazené IP adresy](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md), v souladu s vaší konfigurace.
 **Skupina zabezpečení sítě (NSG) na síťovou kartu a podsítě** | Zálohování virtuálních počítačů Azure podporuje informace o zálohování a obnovení NSG na úrovni síťové karty, podsíť a virtuální sítě.
+**Zóna připnuté virtuálních počítačů** | Azure Backup podporuje zálohování a obnovení zóny připojených virtuálních počítačů. [Další informace](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>Sledovat operaci obnovení
 Po aktivaci operace obnovení, služba backup vytvoří úlohu pro sledování. Azure Backup se zobrazí oznámení o úloze v portálu. Pokud se nezobrazí, klikněte na **oznámení** symbol neuvidíte.
@@ -174,7 +177,6 @@ Existuje mnoho věcí, abyste Poznámka: po obnovení virtuálního počítače:
 
 - Pokud jste obnovili virtuální počítač do stejné skupiny prostředků se stejným názvem jako virtuální počítač původně zálohovanou, pokračuje v zálohování na virtuálním počítači po obnovení.
 - Pokud jste obnovili virtuálního počítače do jiné skupiny prostředků nebo se musí zadat jiný název pro obnovený virtuální počítač, musíte nastavit zálohování pro obnovený virtuální počítač.
-
 
 ## <a name="next-steps"></a>Další postup
 

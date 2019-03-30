@@ -4,7 +4,7 @@ description: Popis a obsah Azure Service Fabric samostatného balíčku pro syst
 services: service-fabric
 documentationcenter: .net
 author: maburlik
-manager: timlt
+manager: chackdan
 editor: ''
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: 1a34ad340463faf0cdccdb7fa8b87283de60b4cc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: facdcd162826e6f77ace098391459cba00061c4f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141607"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661611"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Obsah balíčku Service Fabric Standalone pro systém Windows Server
 V [stáhli](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric samostatného balíčku, najdete následující soubory:
@@ -52,7 +52,7 @@ V [stáhli](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric samos
 | ClusterConfig.gMSA.Windows.MultiMachine.json |Soubor ukázky konfigurace clusteru, který obsahuje všechna nastavení pro zabezpečené, více počítačů (nebo virtuálního počítače) clusteru, včetně informací pro každý uzel v zabezpečenému clusteru. Je tento cluster zabezpečený pomocí [skupinových účtů spravované služby](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx). |
 
 ## <a name="cluster-configuration-samples"></a>Ukázky konfigurace clusteru
-Nejnovější verze šablony konfigurace clusteru můžete najít na stránku Githubu: [ukázky konfigurace samostatného clusteru](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
+Nejnovější verze šablony konfigurace clusteru najdete na stránce Githubu: [Ukázky konfigurace samostatného clusteru](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
 
 ## <a name="independent-runtime-package"></a>Nezávislé balíček modulu Runtime
 Nejnovější balíček modulu runtime se nestahuje automaticky při nasazování clusteru z [stáhnout odkaz – modul Runtime Service Fabric – Windows Server](https://go.microsoft.com/fwlink/?linkid=839354).

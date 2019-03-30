@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 15770246f52e87b8fba4a9ec01e1583d194d002b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 67f51b078b8e92592e9593d7d254e6985265eee8
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887047"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651265"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Koncepty, terminologie a entity ve službě Azure Scheduler
 
@@ -143,7 +143,7 @@ V objektu **startTime** můžete zadat čas spuštění a posun časového pásm
 
 ## <a name="action"></a>action
 
-Úloha služby Scheduler spouští primární **akci** podle zadaného plánu. Scheduler podporuje akce HTTP, fronty úložiště, fronty služby Service Bus a tématu služby Service Bus. Pokud primární **akce** selže, může Scheduler spustit sekundární akci [**errorAction**](#errorAction), která chybu zpracuje. Objekt **action** popisuje tyto elementy:
+Úloha služby Scheduler spouští primární **akci** podle zadaného plánu. Scheduler podporuje akce HTTP, fronty úložiště, fronty služby Service Bus a tématu služby Service Bus. Pokud primární **akce** selže, může Scheduler spustit sekundární akci [**errorAction**](#erroraction), která chybu zpracuje. Objekt **action** popisuje tyto elementy:
 
 * Typ služby akce
 * Podrobnosti akce

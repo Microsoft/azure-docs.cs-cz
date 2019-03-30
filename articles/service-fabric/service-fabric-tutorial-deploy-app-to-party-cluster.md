@@ -3,7 +3,7 @@ title: Nasazení aplikace Service Fabric do clusteru v Azure | Microsoft Docs
 description: Zjistěte, jak nasadit aplikaci do clusteru ze sady Visual Studio.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: aljo-microsoft
 manager: msfussell
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/14/2019
-ms.author: ryanwi,mikhegn
+ms.author: aljo,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 2ddc0376e256a977d7d14ea10b610fcd5861e7c8
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 451cfde133955b987b97bc2447724d2e00010892
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100559"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667374"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Kurz: Nasazení aplikace Service Fabric do clusteru v Azure
 

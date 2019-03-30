@@ -4,7 +4,7 @@ description: Úvod do Azure Service Fabric stav monitorování modelu, který po
 services: service-fabric
 documentationcenter: .net
 author: oanapl
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 1d979210-b1eb-4022-be24-799fd9d8e003
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 87081398e844f1e2b085a7e12c2b7aafce330ec9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d0ef9f34d6b657a063e50b0f144197c41905e809
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193760"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667442"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Úvod do monitorování stavu Service Fabric
 Azure Service Fabric představuje stav modelu, který poskytuje bohaté možnosti, flexibilní a rozšiřitelné stav vyhodnocení a vytváření sestav. Model umožňuje téměř v reálném čase, monitorování stavu clusteru a služeb spuštěných v ní. Můžete snadno získat informace o stavu a opravte potenciální problémy před jejich nepostupovala dále a způsobit, že masivní výpadků. V typické modelu služby Odeslat sestavy vycházející ze svých místních zobrazeních a, informace se shromažďují poskytnout celkový cluster úrovně zobrazení.

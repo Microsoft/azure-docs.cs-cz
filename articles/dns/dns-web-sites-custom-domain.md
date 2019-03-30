@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 43df80e060ff698537f7fd65075006e6dfffe6c1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d2cb0ef904935d1736c23aeaf23030da99e41a71
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117145"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665946"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Kurz: Vytvoření záznamů DNS v vlastní domény pro webovou aplikaci 
 
@@ -173,7 +173,7 @@ set-AzWebApp `
 Otevřete prohlížeč a přejděte na `http://www.<your domainname>` a `http://<you domain name>` .
 
 > [!NOTE]
-> Nezapomeňte použít předponu `http://` , jinak se váš prohlížeč může pokusit o automatické doplnění adresy URL!
+> Ujistěte se, že zahrnete `http://` předponu, jinak může váš prohlížeč pokuste se předpovědět adresu URL pro vás!
 
 Pro obě adresy URL by se vám měla zobrazit stejná stránka. Příklad:
 

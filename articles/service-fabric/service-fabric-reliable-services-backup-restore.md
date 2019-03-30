@@ -4,7 +4,7 @@ description: Rámcové dokumentaci pro Service Fabric – zálohování a obnove
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
-manager: timlt
+manager: chackdan
 editor: subramar,zhol
 ms.assetid: 91ea6ca4-cc2a-4155-9823-dcbd0b996349
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: d01d2f18ed35d1752f97f405ae7f7bfb4708ca0d
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: cd40f59cfa7846911c68206c3bc1e85a770b0fcc
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570041"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670117"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Zálohování a obnovení modelu Reliable Services a Reliable Actors
 Azure Service Fabric je platforma vysoké dostupnosti, která replikuje stav napříč několika uzly tento vysokou dostupnost.  Proto i když selže jeden uzel v clusteru služby nadále k dispozici. Tuto redundanci integrované poskytovaný platformou může být dostačující pro některé, v některých případech je vhodné pro službu pro zálohování dat (pro externí úložiště).

@@ -4,7 +4,7 @@ description: Použít pravidelné zálohování a obnovení funkce v Service Fab
 services: service-fabric
 documentationcenter: .net
 author: aagup
-manager: timlt
+manager: chackdan
 editor: aagup
 ms.assetid: 802F55B6-6575-4AE1-8A8E-C9B03512FF88
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 66df926eaaf771fdde4d2eb59772b9d38a87edf0
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: a82004fdd6bbb4eda0842670f210f846f9446384
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313224"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667170"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Obnovení zálohy v Azure Service Fabric
 
@@ -229,7 +229,7 @@ Průběh žádosti o obnovení v následujícím pořadí:
     ```
     
 3. **Úspěch**, **selhání**, nebo **vypršení časového limitu**: V některém z následujících stavů je možné dokončit požadovanou obnovení. Každý stav má následující údaje význam a odpovědi:
-    - **Úspěch**: A _úspěch_ obnovit stav určuje stav znovu získali oddílu. Oddíl sestavy _RestoredEpoch_ a _RestoredLSN_ stavy spolu s čas ve standardu UTC.
+    - **Success**: A _úspěch_ obnovit stav určuje stav znovu získali oddílu. Oddíl sestavy _RestoredEpoch_ a _RestoredLSN_ stavy spolu s čas ve standardu UTC.
 
         ```
         RestoreState  : Success

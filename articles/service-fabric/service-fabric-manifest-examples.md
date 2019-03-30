@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat aplikace a služby manifestu nastaven
 services: service-fabric
 documentationcenter: na
 author: peterpogorski
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 552ff326ed38175f711924873daab4fcc48f0d09
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 85a3066095cfc30da19b06d26f41bdc156f85832
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500385"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664688"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Příklady manifest služby a aplikace Service Fabric
 Tato část obsahuje příklady manifestů aplikace a služby. Tyto příklady nepoužívejte jako zobrazit důležité scénáře, ale zobrazit různá nastavení, které jsou k dispozici a jak je používat. 

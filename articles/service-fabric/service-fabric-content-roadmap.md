@@ -3,8 +3,8 @@ title: Další informace o Azure Service Fabric | Dokumentace Microsoftu
 description: Další informace o klíčových konceptech a hlavní oblasti Azure Service Fabric. Přehled rozšířené Service Fabric a jak vytvářet mikroslužby.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
-ms.author: ryanwi
-ms.openlocfilehash: 8beac9d4a84fdee4e8fa7689d60cb51c20acd671
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.author: atsenthi
+ms.openlocfilehash: adbe101455bc200bc6be439920736b756f08b695
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241829"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667986"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Proto chcete se dozvědět o službě Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má velký plochy, ale a existuje mnoho dalších informací.  Tento článek poskytuje stručný Service Fabric a popisuje základní koncepty programovacích modelů životního cyklu aplikací, testování, clustery a sledování stavu. Čtení [přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) úvod a jak Service Fabric umožňuje vytvářet mikroslužby. Tento článek obsahuje úplný seznam obsahu, ale propojit pro přehled a získávání Začínáme články pro každou oblast Service Fabric. 

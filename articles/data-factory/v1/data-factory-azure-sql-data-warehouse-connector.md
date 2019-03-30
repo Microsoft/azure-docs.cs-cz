@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 905d084b46919ad945cf44f5517b95d5321ee3de
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dfd0443dafbc4fcc221937f248bf6d2f292b528f
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116194"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651747"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -170,7 +170,7 @@ Pomocí **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybas
 * Pokud vaše zdrojová data nejsou v **objektů Blob v Azure nebo Azure Data Lake Store**a formát je kompatibilní s technologií PolyBase, můžete zkopírovat přímo do Azure SQL Data Warehouse pomocí PolyBase. Zobrazit **[přímé kopie při použití technologie PolyBase](#direct-copy-using-polybase)** s podrobnostmi.
 * Pokud zdrojové úložiště dat a formát není podporován původně PolyBase, můžete použít **[připravené kopírování při použití technologie PolyBase](#staged-copy-using-polybase)** místo toho funkci. Také poskytuje vyšší propustnost automaticky převádí data do formátu kompatibilním PolyBase a ukládání dat ve službě Azure Blob storage. Pak načte data do SQL Data Warehouse.
 
-Nastavte `allowPolyBase` vlastnost **true** jak je znázorněno v následujícím příkladu pro službu Azure Data Factory pro kopírování dat do Azure SQL Data Warehouse pomocí PolyBase. Při allowPolyBase nastavíte na hodnotu true, můžete zadat pomocí konkrétní vlastnosti PolyBase `polyBaseSettings` skupiny vlastností. Zobrazit [SqlDWSink](#SqlDWSink) podrobné informace o vlastnosti, které můžete použít s polyBaseSettings.
+Nastavte `allowPolyBase` vlastnost **true** jak je znázorněno v následujícím příkladu pro službu Azure Data Factory pro kopírování dat do Azure SQL Data Warehouse pomocí PolyBase. Při allowPolyBase nastavíte na hodnotu true, můžete zadat pomocí konkrétní vlastnosti PolyBase `polyBaseSettings` skupiny vlastností. Zobrazit [SqlDWSink](#sqldwsink) podrobné informace o vlastnosti, které můžete použít s polyBaseSettings.
 
 ```JSON
 "sink": {

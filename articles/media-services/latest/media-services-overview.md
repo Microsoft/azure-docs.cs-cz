@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/20/2019
+ms.date: 03/29/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 88113fee64251344bd84085caedc9dfccfa10933
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 19e94fc65ddc1719c601397adfe77f8f9445e4fa
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351452"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662121"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Co jsou Azure Media Services v3?
 
@@ -44,19 +44,6 @@ Ve službě Media Services můžete vytvářet různé pracovní postupy pro pr�
 * Používání Azure Media Services spolu s [Azure API služeb Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=ai) přidání titulků a popisků do videa pro širší cílovou skupinu (například osobám s postižením sluchu nebo osoby, které doporučujeme přečíst si společně v jiné Jazyk).
 * Povolení Azure CDN k dosažení velké škálování pro lepší zpracování náhlého vysoké zatížení (například začátek uvedení produktu na trh). 
 
-## <a name="v3-capabilities"></a>Možnosti v3
-
-V3 používá prostor Unified API, který zpřístupňuje funkce pro správu i provoz založené na Azure Resource Manageru. 
-
-V této verzi jsou k dispozici následující funkce:  
-
-* **Transformace** – umožňují definovat jednoduché pracovní úlohy zpracování médií a analýzy. Transformace usnadňují zpracování videosouborů a zvukových souborů. Můžete je opakovaně použít ke zpracování všech souborů v knihovně obsahu – stačí odeslat úlohu k transformaci.
-* **Úlohy** na zpracování videí (zakódování nebo analýzu). Vstupní obsah se dá v úloze specifikovat jako HTTPS, URL, SAS nebo cesta k souboru v úložišti objektů Blob Azure. AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS.
-* **Oznámení** , sledovat průběh úlohy nebo stavy nebo živé události spuštění/zastavení a chybové události. Oznámení jsou integrovaná v oznamovacím systému Azure Event Gridu. V Azure Media Services se můžete snadno přihlásit k událostem z několika prostředků. 
-* **Správa prostředků Azure** šablony lze použít k vytvoření a nasazení transformací, koncové body streamování, živé události a další.
-* **Řízení přístupu na základě rolí** lze nastavit na úrovni prostředků, díky tomu umožňuje uzamknout přístup ke konkrétním prostředkům, jako je transformace, živé události a další.
-* **Klientské sady SDK** v různých jazycích: .NET, .NET Core, Python, Go, Java a Node.js.
-
 ## <a name="naming-conventions"></a>Zásady vytváření názvů
 
 Na názvy prostředků služby Azure Media Services v3 (například prostředky, úlohy, transformace) se vztahují omezení vytváření názvů Azure Resource Manageru. V souladu s Azure Resource Managerem jsou názvy prostředků vždy jedinečné. Jako názvy prostředků tedy můžete použít jakékoli řetězce jedinečného identifikátoru (například identifikátory GUID). 
@@ -76,6 +63,41 @@ Příklady zahrnují
 * nevracení části řetězce dotazu v adrese URL (kvůli odebrání podpisu) z adres URL vstupu HTTP úloh.
 
 Zobrazit [získání obsahu klíče zásad – .NET](get-content-key-policy-dotnet-howto.md) příklad.
+
+
+## <a name="how-can-i-get-started-with-v3"></a>Jak začít s v3? 
+
+Naučte se kódovat a balit obsah, streamování videa na vyžádání, vysílat živě, analyzovat vaše videa pomocí Media Services v3. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak bezpečně doručovat živé video a video na vyžádání nebo zvukový stream, který se škáluje milionům uživatelů.
+
+### <a name="quickstarts"></a>Šablony Rychlý start  
+
+Rychlých startech zobrazit základní 1 den pokyny pro rychlé vyzkoušení služby Media Services ji noví zákazníci.
+
+* [Stream video soubory – .NET](stream-files-dotnet-quickstart.md)
+* [Stream video soubory – rozhraní příkazového řádku](stream-files-cli-quickstart.md)
+* [Stream video soubory – Node.js](stream-files-nodejs-quickstart.md)
+    
+### <a name="tutorials"></a>Kurzy 
+
+Kurzy ukazují postupy založené na scénářích pro některé nejčastější úkoly Media Services.
+
+* [Kódování vzdáleného souboru a streamování videa – REST](stream-files-tutorial-with-rest.md)
+* [Kódování nahraný soubor a streamování videa – .NET](stream-files-tutorial-with-api.md)
+* [Stream živě – .NET](stream-live-tutorial-with-api.md)
+* [Analýza videa – .NET](analyze-videos-tutorial-with-api.md)
+* [Dynamické šifrování AES-128 - .NET](protect-with-aes128.md)
+    
+### <a name="how-to-guides"></a>Návody
+
+Články obsahují ukázky kódu, které ukazují, jak k dokončení úkolu. V této části najdete mnoho příkladů, tady je několik příkladů z nich:
+
+* [Vytvoření účtu – rozhraní příkazového řádku](create-account-cli-how-to.md)
+* [Přístup k rozhraní API – rozhraní příkazového řádku](access-api-cli-how-to.md)
+* [Začněte vyvíjet s využitím sady SDK](developers-guide.md)
+* [Kódování pomocí protokolu HTTPS jako vstup - úlohy .NET](job-input-from-http-how-to.md)  
+* [Monitorování událostí – portál](monitor-events-portal-how-to.md)
+* [Dynamicky šifrovat pomocí několika variant DRM – .NET](protect-with-drm.md) 
+* [Kódování s vlastní transformace s využitím rozhraní příkazového řádku](custom-preset-cli-howto.md)
 
 ## <a name="next-steps"></a>Další postup
 

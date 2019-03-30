@@ -8,17 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: sogup
-ms.openlocfilehash: 21aa01ec8382341de34cca743b9e088598872659
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 1f96c47e993e9b3d123972aba8eefc54b1d5cdfa
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578896"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652667"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Získejte lepší zálohování a obnovení výkonu pomocí funkce Azure Backup rychlé obnovení
 
 > [!NOTE]
-> Na základě zpětné vazby od uživatelů jsme přejmenovali **zásobník záloh virtuálních počítačů V2** k **rychlé obnovení** abyste snížili nejasnosti s funkcemi Azure Stack.
+> Na základě zpětné vazby od uživatelů jsme přejmenovali **zásobník záloh virtuálních počítačů V2** k **rychlé obnovení** abyste snížili nejasnosti s funkcemi Azure Stack.<br/><br/> Všichni uživatelé Azure backup nyní se upgradovaly na **rychlé obnovení**.
 
 Nový model pro rychlé obnovení obsahuje následující vylepšení funkcí:
 
@@ -60,15 +60,25 @@ Přírůstkovými snímky se ukládají v účtu úložiště Virtuálního poč
 >[!NOTE]
 > Je pevně snímku uchování 5 dní pro týdenní zásady.
 
-## <a name="configure-snapshot-retention-using-the-azure-portal"></a>Konfigurace uchovávání snímek pomocí webu Azure portal
+## <a name="configure-snapshot-retention"></a>Konfigurace uchovávání snímku
 
-**Všichni uživatelé Azure backup nyní se upgradovaly na okamžitá obnova**.
+### <a name="using-azure-portal"></a>Pomocí webu Azure Portal
 
 Na webu Azure Portal, zobrazí se pole přidá **zásady zálohování virtuálních počítačů** okně v části **rychlé obnovení** oddílu. Doba uchování snímků z můžete změnit **zásady zálohování virtuálního počítače** okno pro všechny virtuální počítače přidružené k určité zásady zálohování.
 
 ![Funkce Rychlé obnovení](./media/backup-azure-vms/instant-restore-capability.png)
 
-Konfigurace uchovávání snímku pomocí Powershellu, najdete v tématu [tento dokument](backup-azure-vms-automation.md#configuring-instant-restore-snapshot-retention).
+### <a name="using-powershell"></a>Pomocí prostředí PowerShell
+
+>[!NOTE]
+> Z Az PowerShell verze 1.6.0 a vyšší můžete aktualizovat doba uchování snímků okamžitá obnova ve zásady pomocí Powershellu
+
+```powershell
+PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+$bkpPol.SnapshotRetentionInDays=5
+PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+```
+Výchozí uchování snímků pro jednotlivé zásady je nastavena na dvou dnů. Uživatel může změnit hodnotu nejméně 1 a maximálně 5 dní. Pro týdenní zásady uchovávání dat snímku je pevně 5 dní.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

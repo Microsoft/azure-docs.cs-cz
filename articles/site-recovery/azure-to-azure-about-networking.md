@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 3/29/2019
 ms.author: sujayt
-ms.openlocfilehash: 0e28792e49d588bfec8d1f09dec68ead7e9dfa49
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 42db22d39a7c87363cf97f874c85955a09cbe653
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001094"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651539"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O možnostech sítě v replikaci z Azure do Azure
 
@@ -48,10 +48,10 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 
 **Adresa URL** | **Podrobnosti**  
 --- | ---
-*.blob.core.windows.net | Vyžaduje, aby data je možné zapisovat na účet úložiště mezipaměti ve zdrojové oblasti z virtuálního počítače.
+*.blob.core.windows.net | Vyžaduje, aby data je možné zapisovat na účet úložiště mezipaměti ve zdrojové oblasti z virtuálního počítače. Pokud znáte všechny mezipaměti účty úložiště pro virtuální počítače, můžete seznam povolených adresy URL účtu úložiště přizpůsobilo (Ex: cache1.blob.core.windows.net a cache2.blob.core.windows.net) namísto *. blob.core.windows.net
 login.microsoftonline.com | Vyžaduje se pro autorizaci a ověřování k adresám URL služby Site Recovery.
-*.hypervrecoverymanager.windowsazure.com | Vyžaduje, aby mohla probíhat komunikace služby Site Recovery z virtuálního počítače.
-*.servicebus.windows.net | Vyžaduje, aby data monitorování a diagnostiky Site Recovery lze zapsat z virtuálního počítače.
+*.hypervrecoverymanager.windowsazure.com | Vyžaduje, aby mohla probíhat komunikace služby Site Recovery z virtuálního počítače. Pokud váš proxy server brány firewall podporuje IP adresy, můžete použít odpovídající "Site Recovery IP".
+*.servicebus.windows.net | Vyžaduje, aby data monitorování a diagnostiky Site Recovery lze zapsat z virtuálního počítače. Pokud váš proxy server brány firewall podporuje IP adresy, můžete použít odpovídající "Site Recovery monitorování IP".
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>Odchozí připojení pro rozsahy IP adres
 

@@ -4,7 +4,7 @@ description: Popisuje tajných kódů příkazy Service Fabric CLI sfctl sítě.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: e2dc9f815fc578bbe1f01b6b64327ccf23a1aebb
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: acc5862a8794da4fde991025eacfcccf6e16916a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285127"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661203"
 ---
-# <a name="sfctl-mesh-secret"></a>tajný kód sfctl sítě
+# <a name="sfctl-mesh-secret"></a>sfctl mesh secret
 Získání a odstranění tajného kódu prostředků sítě.
 
 ## <a name="commands"></a>Příkazy
@@ -30,7 +30,7 @@ Získání a odstranění tajného kódu prostředků sítě.
 | --- | --- |
 | delete | Odstraní tajných kódů prostředků. |
 | list | Vypíše seznam všech tajných kódů prostředků. |
-| Show | Získá tajný prostředek s daným názvem. |
+| zobrazit | Získá tajný prostředek s daným názvem. |
 
 ## <a name="sfctl-mesh-secret-delete"></a>sfctl síť secret delete
 Odstraní tajných kódů prostředků.

@@ -4,7 +4,7 @@ description: Úvod do vyrovnávání clusteru pomocí Service Fabric Cluster Res
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 030b1465-6616-4c0b-8bc7-24ed47d054c0
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 9a124bd9a52e22c359fb771e4d4c8714bd1dbe2c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 74fe4f7c4c231f80c7555f39f840a85baae310e9
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123228"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662019"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Vyrovnávání vašeho clusteru service fabric
 Service Fabric Cluster Resource Manager podporuje změny dynamického zatížení reakce na přidání nebo odebrání uzlů nebo služby. Také automaticky opraví narušení omezení a proaktivně znovu vytvoří rovnováhu clusteru. Ale jak často pocházejí tyto akce a co je aktivace?

@@ -1,10 +1,10 @@
 ---
-title: Zadejte spolehlivé aktéři poznámky k objektu actor serializace | Microsoft Docs
-description: Popisuje základní požadavky pro definování serializovatelných tříd, které lze použít k definování stavy Service Fabric Reliable Actors a rozhraní
+title: Reliable Actors – poznámky k objektu actor serializaci typu | Dokumentace Microsoftu
+description: Tento článek popisuje základní požadavky pro definování serializovatelné třídy, které lze použít k definování stavů Service Fabric Reliable Actors a rozhraní
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 6e50e4dc-969a-4a1c-b36c-b292d964c7e3
 ms.service: service-fabric
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4539351738d423704961eed6e616bd8ac5d682d1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c8eeeb0ade6ca002adf3211cbf49127be9b76edb
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209048"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667503"
 ---
-# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Poznámky k Service Fabric Reliable Actors zadejte serializace
-Argumenty všech metod, typy výsledků úlohy vrácený jednotlivých metod v objektu actor rozhraní a musí být objekty uložené ve Správci stavu objektu actor [kontraktů dat serializovatelný](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). To platí také pro argumenty metody definované v [objektu actor událostí rozhraní](service-fabric-reliable-actors-events.md). (Metody rozhraní události objektu actor vždy vracet typ void.)
+# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Poznámky k Service Fabric Reliable Actors typ serializace
+Argumenty všechny metody, vrátí typy výsledků úlohy každé metodě v rozhraní objektu actor a musí být objekty uložené v správce stavu objektu actor [kontraktů dat serializovatelný](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). To platí i pro argumenty metody definované v [rozhraní objektu actor](service-fabric-reliable-actors-events.md). (Metody rozhraní objektu actor událostí vždy vracet typ void.)
 
 ## <a name="custom-data-types"></a>Vlastní datové typy
-V tomto příkladu následující rozhraní objektu actor definuje metodu, která vrátí vlastních dat typu s názvem `VoicemailBox`:
+V tomto příkladu následující rozhraní objektu actor definuje metodu, která vrací vlastní datový typ s názvem `VoicemailBox`:
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -41,7 +41,7 @@ public interface VoiceMailBoxActor extends Actor
 }
 ```
 
-Rozhraní je implementováno modulem objektu actor, který používá správce stavu k uložení `VoicemailBox` objektu:
+Rozhraní je implementováno prvek "actor", který používá správce stavu k uložení `VoicemailBox` objektu:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -79,10 +79,10 @@ public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxAc
 
 V tomto příkladu `VoicemailBox` objekt serializován při:
 
-* Objekt se přenášejí mezi instancí objektu actor a volající.
-* Objekt se uloží do Správce stavu, kde je uložit trvale na disk a replikované do dalších uzlů.
+* Objekt se přenášejí mezi instance objektu actor a volající.
+* Objekt se uloží do Správce stavu, ve kterém se jako trvalý disk a replikují do dalších uzlů.
 
-Rozhraní objektu Actor spolehlivé používá kontraktu serializace. Proto vlastní datové objekty a jejich členové musí být opatřena poznámkou **kontraktu** a **DataMember** atributy v uvedeném pořadí.
+Reliable Actors rozhraní používá serializace pomocí kontraktu DataContract. Proto vlastní datové objekty a jejich členy musí být komentována atributem **kontraktu dat DataContract** a **DataMember** atributů.
 
 ```csharp
 [DataContract]
@@ -146,9 +146,9 @@ public class VoicemailBox implements Serializable
 
 
 ## <a name="next-steps"></a>Další postup
-* [Kolekce paměti a životního cyklu objektu actor](service-fabric-reliable-actors-lifecycle.md)
-* [Časovače objektu actor a upomínek](service-fabric-reliable-actors-timers-reminders.md)
+* [Životní cyklus a uvolňování paměti kolekce objektu actor](service-fabric-reliable-actors-lifecycle.md)
+* [Objekt actor časovače a připomenutí](service-fabric-reliable-actors-timers-reminders.md)
 * [Události objektu actor](service-fabric-reliable-actors-events.md)
 * [Vícenásobný přístup objektu actor](service-fabric-reliable-actors-reentrancy.md)
-* [Polymorfismus objektu actor a vzory návrhu objektově orientované](service-fabric-reliable-actors-polymorphism.md)
-* [Objektu actor Diagnostika a sledování výkonu](service-fabric-reliable-actors-diagnostics.md)
+* [Polymorfismus objektu actor a objektově orientované návrhové vzory](service-fabric-reliable-actors-polymorphism.md)
+* [Monitorování výkonu a Diagnostika objektů actor](service-fabric-reliable-actors-diagnostics.md)

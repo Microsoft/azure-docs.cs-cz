@@ -4,7 +4,7 @@ description: Popisuje příkazy Service Fabric CLI sfctl ot. / min.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: a8ac3899b6ae80668c4472f24b508ba6ba7e2644
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 04080d75042bfa8a07533336936165e0abef051b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275298"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664128"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Dotazování a posílání příkazů do service Manageru opravit.
@@ -87,7 +87,7 @@ Toto rozhraní API podporuje platformy Service Fabric; není určena pro použit
 | --- | --- |
 | --prováděcího modulu filtru | Název opravit prováděcího modulu, jehož jste požádali úkoly, měly by být součástí seznamu. |
 | --Filtr stavu | Bitový OR následující hodnoty určující, který úkol stavy by měl být součástí seznam výsledků. <br> 1 – Vytvoření <br>2 - uplatněné  <br>4 – Příprava  <br>8 – schválené  <br>16 – provádění  <br>32 - obnovení  <br>64 - dokončeno |
-| --Filtr id úkolu | Oprava předpona ID úlohy lze porovnat. |
+| --task-id-filter | Oprava předpona ID úlohy lze porovnat. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 

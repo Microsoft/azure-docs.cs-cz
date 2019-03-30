@@ -4,7 +4,7 @@ description: Na všechny virtuální počítače nebo počítače se systémem W
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: 8c344999839b3dcde98536b3d8d196a434f4cde8
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6d5169d8ea4480e95e09228f9eb02bd78fdd0be8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244906"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661323"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Porovnání služeb Azure a samostatné Service Fabric clusterů v systému Windows Server a Linux
 Cluster Service Fabric je síťově propojená sada virtuálních nebo fyzických počítačů, do které se nasazují a spravují mikroslužby. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel clusteru. Clustery je možné škálovat na tisíce uzlů. Pokud přidáte nové uzly do clusteru Service Fabric znovu vytvoří rovnováhu replik oddílů služby a instance napříč zvýšeného počtu uzlů. Celkově zlepšuje výkon aplikací a snižuje kolize pro přístup k paměti. Pokud uzly v clusteru nejsou používány efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu znovu vytvoří rovnováhu replik oddílů a instancí napříč snížený počet uzlů, abyste měli lepší využití hardwaru na každém uzlu.

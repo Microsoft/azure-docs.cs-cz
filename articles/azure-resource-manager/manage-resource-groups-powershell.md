@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 6f416f1de6baca7fe79ea2a5dddfb8f8eb5f5120
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8ae86d8bc7914a7a9c41eee93bb16b2f774993b9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825091"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651780"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Správa skupin prostředků Azure Resource Manageru pomocí prostředí Azure PowerShell
 
@@ -85,6 +85,10 @@ Pokud chcete ověřit nasazení skupiny prostředků, najdete v článku [testov
 ## <a name="deploy-a-resource-group-and-resources"></a>Nasazení skupiny prostředků a prostředků
 
 Můžete vytvořit skupinu prostředků a nasazení prostředků do skupiny s použitím šablony Resource Manageru. Další informace najdete v tématu [vytvořte skupinu prostředků a nasazení prostředků](./deploy-to-subscription.md#create-resource-group-and-deploy-resources).
+
+## <a name="redeploy-when-deployment-fails"></a>Opětovné nasazení při nasazení se nezdaří
+
+Tato funkce se také označuje jako *vrácení zpět při chybě*. Další informace najdete v tématu [opětovné nasazení při selhání nasazení](./resource-group-template-deploy.md#redeploy-when-deployment-fails).
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>Přesunout do jiné skupiny prostředků nebo předplatného
 

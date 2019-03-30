@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 450d47e4c20da1d9d9760ababf58c75eef2814b3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 78f19fcca51bb9c14fd05013834599c3e0f12779
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182366"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662104"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-offline-using-dms"></a>Kurz: Migrace SQL serveru do spravované instance Azure SQL Database pomocí DMS do offline režimu
 
@@ -152,9 +152,9 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
 1. Na **podrobnosti o cíli migrace** obrazovky, zadat podrobnosti připojení pro cíl, který je předem zřízená spravované instance Azure SQL Database do kterého migrujete **AdventureWorks2012**databáze.
 
-    Pokud jste ještě nezřídili spravované instance Azure SQL Database, vyberte **ne** pro odkaz na nápovědu můžete zřídit instanci. Můžete dál pokračujte vytvoření projektu a, když Azure SQL Database managed instance je připravena, vraťte se do tohoto konkrétního projektu k provedení migrace.
+    Pokud jste ještě nezřídili spravované instance Azure SQL Database, vyberte [odkaz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started) můžete zřídit instanci. Můžete dál pokračujte vytvoření projektu a, když Azure SQL Database managed instance je připravena, vraťte se do tohoto konkrétního projektu k provedení migrace.
 
-       ![Select Target](media/tutorial-sql-server-to-managed-instance/dms-target-details2.png)
+     ![Výběr cíle](media/tutorial-sql-server-to-managed-instance/dms-target-details2.png)
 
 2. Vyberte **Uložit**.
 

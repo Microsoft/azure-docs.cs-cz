@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8ec6ffaba8056eacf44d8e1bd911eb1f22daad84
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 522f1f2f24e8c8c3f68a42569d4057a7694754d1
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314836"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651069"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimalizace výkonu díky upgradu SQL Data Warehouse
 
@@ -34,8 +34,8 @@ Tento upgrade se vztahuje na – Compute optimalizované Gen1 úroveň datové s
 ## <a name="before-you-begin"></a>Před zahájením
 
 1. Zkontrolujte, jestli vaše [oblasti](gen2-migration-schedule.md#automated-schedule-and-region-availability-table) se podporuje pro GEN1 GEN2 migrace. Poznamenejte si data automatickou migraci. Aby nedocházelo ke konfliktům s automatizovaným procesem, naplánujte si ruční migraci před datem zahájení automatizovaného procesu.
-2. Pokud jste v oblasti, která zatím není podporovaná, pokračovat ke kontrole vaší oblasti, které mají být přidány nebo [upgrade pomocí obnovení](#Upgrade-from-an-Azure-geographical-region-using-restore-through-the-Azure-portal) v podporované oblasti.
-3. Pokud se vaší oblasti podporuje, [upgrade prostřednictvím webu Azure portal](#Upgrade-in-a-supported-region-using-the-Azure-portal)
+2. Pokud jste v oblasti, která zatím není podporovaná, pokračovat ke kontrole vaší oblasti, které mají být přidány nebo [upgrade pomocí obnovení](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal) v podporované oblasti.
+3. Pokud se vaší oblasti podporuje, [upgrade prostřednictvím webu Azure portal](#upgrade-in-a-supported-region-using-the-azure-portal)
 4. **Vyberte úroveň výkonu navrhované** pro datový sklad na základě vaší aktuální úroveň výkonu na úrovni Gen1 – Compute optimalizované pomocí následující mapování:
 
    | Služba COMPUTE úrovně optimalizované Gen1 | Služba COMPUTE úrovně optimalizované Gen2 |

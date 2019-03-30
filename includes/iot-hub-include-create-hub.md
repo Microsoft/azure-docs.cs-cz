@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e22acc697e837bab91c8b9c32c1fe35f1a7bce1c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: d373bc188a4d93c122cdf2cffbc4323aca16b4a4
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824517"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632910"
 ---
 Tato část popisuje, jak vytvořit centrum IoT pomocí [webu Azure portal](https://portal.azure.com).
 
@@ -23,7 +23,7 @@ Tato část popisuje, jak vytvořit centrum IoT pomocí [webu Azure portal](http
 
 3. Klikněte na tlačítko **služby Iot Hub** ze seznamu na pravé straně. Zobrazí se první obrazovka pro vytvoření služby IoT hub.
 
-   ![Snímek obrazovky znázorňující vytvoření Centrum na webu Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
+   ![Vytvoření centra na webu Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
 
    Vyplňte jednotlivá pole.
 
@@ -39,7 +39,7 @@ Tato část popisuje, jak vytvořit centrum IoT pomocí [webu Azure portal](http
 
 4. Klikněte na tlačítko **Další: Dimenzování a škálování** pokračujte vytvoření služby IoT hub.
 
-   ![Snímek obrazovky zobrazující nastavení velikosti a měřítka novou službu IoT hub pomocí webu Azure portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
+   ![Nastavení velikosti a škálování novou službu IoT hub pomocí webu Azure portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
 
    Na této obrazovce můžete přijmout výchozí hodnoty a stačí kliknout na **revize + vytvořit** v dolní části. 
 
@@ -53,6 +53,6 @@ Tato část popisuje, jak vytvořit centrum IoT pomocí [webu Azure portal](http
 
 5. Klikněte na tlačítko **zkontrolujte + vytvořit** zkontrolujte zvolené volby. Vypadá podobně jako tato obrazovka.
 
-   ![Snímek obrazovky zkontrolování informací pro vytvoření nového centra IoT](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
+   ![Projděte si informace o vytvoření nového centra IoT](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
 
 6. Klikněte na tlačítko **vytvořit** vytvořit novou službu IoT hub. Vytváří se Centrum trvá několik minut.

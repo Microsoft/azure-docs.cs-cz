@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 801e3b20908c3e92693e5e800428773bf5c90539
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: c5fadf5c445310534ab3001371e1b73b1f502f15
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521461"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661782"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení k Azure SQL
 
@@ -39,7 +39,7 @@ Azure SQL Database a SQL Data Warehouse připojení k architektuře a tento čl�
 >
 > Pokud nelze navázat koncový bod připojení služby k serveru Azure SQL a jsou podezření, že se vás tato změna, ověřte prosím, že typ připojení je explicitně nastaveno `Redirect`. Pokud je to tento případ, budete muset otevřít pravidla brány firewall virtuálního počítače a skupiny zabezpečení sítě (NSG) Azure IP adres v oblasti, které patří do Sql [značka služby](../virtual-network/security-overview.md#service-tags) pro porty 11000 12000. Pokud to není pro vás, přepněte server explicitně na `Proxy`.
 > [!NOTE]
-> Toto téma platí pro servery Azure SQL Database, které hostují izolovaných databází a elastických fondů a databází SQL Data Warehouse. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
+> Toto téma platí pro servery Azure SQL Database, které hostují izolované databáze a elastických fondů, databází SQL Data Warehouse, – Azure Database for MySQL, – Azure Database pro MariaDB a – Azure Database for PostgreSQL. Pro zjednodušení se SQL Database používá k odkazování na SQL Database, SQL Data Warehouse, Azure Database for MySQL, Azure Database pro MariaDB a Azure Database for PostgreSQL.
 
 ## <a name="connectivity-architecture"></a>Architektura připojení
 

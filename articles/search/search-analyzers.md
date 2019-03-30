@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 3e6f0a2b9b935df9b12cf9146ebf05f1b1c84855
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: e3738980206277587ca367339d75da4f3faa643a
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578756"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651817"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analyzátory pro zpracování ve službě Azure Search textu
 
@@ -291,7 +291,7 @@ Pokud používáte ukázky kódu .NET SDK, můžete přidat tyto příklady pou�
 
 Tento příklad přiřadí pole Popis analyzátory English Microsoft a francouzštinu. Je fragment kódu z větší definici indexu hotelů vytváření pomocí třídy hotelu v souboru hotels.cs [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) vzorku.
 
-Volání [analyzátor](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet), zadání [AnalyzerName třída](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) , která poskytuje všechny analyzátory text podporované ve službě Azure Search.
+Volání [analyzátor](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet), zadání [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) typ poskytuje text analyzátor nepodporuje ve službě Azure Search.
 
 ```csharp
     public partial class Hotel
@@ -317,7 +317,7 @@ Volání [analyzátor](https://docs.microsoft.com/dotnet/api/microsoft.azure.sea
 
 Při přizpůsobení a konfigurace je vyžadováno, je potřeba přidat analyzátoru konstrukce do indexu. Jakmile je definujete, můžete přidat jeho definici pole jak je uvedeno v předchozím příkladu.
 
-Použití [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) k vytvoření objektu. Další příklady najdete v tématu [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs).
+Vytvoření [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) objektu. Další příklady najdete v tématu [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs).
 
 ```csharp
 {

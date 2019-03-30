@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: victorh
-ms.openlocfilehash: 1f1ee4f69cc1ab656df04ed30cae6f4c3e55bfa7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4864a46b91b4e243ce6a2ae3d9d36df28fe74d8d
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963811"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650967"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Správa DNS záznamů a sad záznamů v DNS Azure pomocí Azure CLI
 
@@ -92,7 +92,7 @@ Parametry použité k zadání dat záznamu se liší podle typu záznamu. Např
 
 V obou případech vám ukážeme, jak vytvořit jeden záznam. Záznam se přidá do existující sady záznamů nebo sady záznamů vytvořena implicitně. Další informace o vytváření sad záznamů a definování záznam parametr explicitně nastavit, najdete v článku [vytvoření sady záznamů DNS](#create-a-dns-record-set).
 
-Neposkytujeme příklad k vytvoření sady záznamů SOA od SOAs se vytvoří a odstraní s každou zónou DNS a nelze vytvořit ani odstranit samostatně. Ale [SOA lze upravit, jak je znázorněno v příkladu dále](#to-modify-an-SOA-record).
+Neposkytujeme příklad k vytvoření sady záznamů SOA od SOAs se vytvoří a odstraní s každou zónou DNS a nelze vytvořit ani odstranit samostatně. Ale [SOA lze upravit, jak je znázorněno v příkladu dále](#to-modify-an-soa-record).
 
 ### <a name="create-an-aaaa-record"></a>Vytvoření záznamů AAAA
 
@@ -117,7 +117,7 @@ az network dns record-set caa add-record --resource-group myresourcegroup --zone
 az network dns record-set cname set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-cname --cname www.contoso.com
 ```
 
-### <a name="create-an-mx-record"></a>Vytvoření záznamů MX
+### <a name="create-an-mx-record"></a>Create an MX record
 
 V tomto příkladu vytvoříme s využitím názvu sady záznamů "\@" záznam MX ve vrcholu zóny (v tomto případě "contoso.com").
 
@@ -147,7 +147,7 @@ Při vytváření [sady záznamů SRV](dns-zones-records.md#srv-records), zadejt
 az network dns record-set srv add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name _sip._tls --priority 10 --weight 5 --port 8080 --target sip.contoso.com
 ```
 
-### <a name="create-a-txt-record"></a>Vytvořit záznam TXT
+### <a name="create-a-txt-record"></a>Create a TXT record
 
 Následující příklad ukazuje, jak vytvořit záznam TXT. Další informace o maximální délku řetězce v záznamů TXT podporovány, naleznete v tématu [záznamů TXT](dns-zones-records.md#txt-records).
 
@@ -207,7 +207,7 @@ az network dns record-set a remove-record --resource-group myresourcegroup --zon
 
 Každá sada záznamů obsahuje [time to live (TTL)](dns-zones-records.md#time-to-live), [metadat](dns-zones-records.md#tags-and-metadata)a záznamy DNS. Následující části popisují, jak upravit každé z těchto vlastností.
 
-### <a name="to-modify-an-a-aaaa-caa-mx-ns-ptr-srv-or-txt-record"></a>Chcete-li upravit záznam A, AAAA, CAA, MX, NS, PTR, SRV a TXT
+### <a name="to-modify-an-a-aaaa-caa-mx-ns-ptr-srv-or-txt-record"></a>To modify an A, AAAA, CAA, MX, NS, PTR, SRV, or TXT record
 
 Pokud chcete upravit existující záznam typu A, AAAA, CAA, MX, NS, PTR, SRV a TXT, by měl nejprve přidat nový záznam a pak odstraňte existující záznam. Podrobné pokyny o tom, jak odstranit a přidání záznamů najdete v dřívějších částech tohoto článku.
 
@@ -220,7 +220,7 @@ az network dns record-set a remove-record --resource-group myresourcegroup --zon
 
 Nelze přidat, odebrat nebo upravit záznamy v automaticky vytvořené sady ve vrcholu zóny záznamů NS (`--Name "@"`, včetně uvozovek nahoře). Pro tuto sadu záznamů jsou povoleny pouze změny záznam upravit nastavení TTL a metadata.
 
-### <a name="to-modify-a-cname-record"></a>K úpravě záznamu CNAME
+### <a name="to-modify-a-cname-record"></a>To modify a CNAME record
 
 Na rozdíl od většina ostatních typů záznamů může obsahovat sadu záznamů CNAME jenom jeden záznam.  Proto je nelze nahradit aktuální hodnotu přidáním nového záznamu a odebrání existujícího záznamu, jako u jiných typů záznamů.
 

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: d667dadeb2e7c9d0005ab8d1a565017973038aaa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 891b2988d04a3cf2f7c6676a837bc1ee199f4d16
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57905150"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651486"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Příručka ke specifikačnímu jazyku neuronových sítí Net # pro Azure Machine Learning Studio
 
@@ -63,9 +63,9 @@ Architektura modely neuronových sítí, které vytvoříte v Azure Machine Lear
 + Definujte zvláštní připojení struktury, jako je například convolutions a váhy sdílení svazků.
 + Zadejte jiný aktivace funkce.
 
-Podrobnosti o syntaxi specifikaci jazyka naleznete v tématu [struktura specifikace](#Structure-specifications).
+Podrobnosti o syntaxi specifikaci jazyka naleznete v tématu [struktura specifikace](#structure-specifications).
 
-Příklady definice neuronových sítí pro některé běžné strojového učení úloh, od simplexně pro komplexní, najdete v článku [příklady](#Examples-of-Net#-usage).
+Příklady definice neuronových sítí pro některé běžné strojového učení úloh, od simplexně pro komplexní, najdete v článku [příklady](#examples-of-net-usage).
 
 ## <a name="general-requirements"></a>Obecné požadavky
 
