@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: f0bac9d50e73ed703905545261e86796ede214e2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2121cd661f5f1c2c14dc32eb2a4cbf717c966c67
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180836"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668953"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -195,7 +195,7 @@ Další informace o požadované porty pro SAP HANA, najdete v kapitole [připoj
 
 > [!IMPORTANT]
 > Nepovolujte TCP časová razítka na virtuálních počítačích Azure umístěných za nástrojem pro vyrovnávání zatížení Azure. Povolení protokolu TCP časová razítka způsobí, že sond stavu selhání. Nastavte parametr **net.ipv4.tcp_timestamps** k **0**. Podrobnosti najdete v tématu [sondy stavu nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
-> Poznámka SAP [2382421](https://launchpad.support.sap.com/#/notes/2382421) aktuálně obsahuje nesouhlasnou příkaz nutnost nastavit net.ipv4.tcp_timestamps na hodnotu 1. Pro virtuální počítače Azure umístěných za nástrojem pro vyrovnávání zatížení Azure, nastavte parametr **net.ipv4.tcp_timestamps** k **0**. 
+> Viz také SAP Poznámka [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
 ## <a name="create-a-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 
@@ -364,14 +364,14 @@ Kroky v této části používají následující předpony:
 
    Pokud používáte SAP HANA 2.0 nebo MDC, vytvoření databáze tenanta pro váš systém SAP NetWeaver. Nahraďte **NW1** s identifikátorem SID systému SAP.
 
-   Přihlaste se jako \<hanasid > správce a spusťte následující příkaz:
+   Spusťte následující příkaz jako < hanasid\>adm:
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]**  Konfigurace systémové replikace na prvním uzlu:
 
-   Přihlaste se jako \<hanasid > adm a zálohování databází:
+   Proveďte zálohu databáze jako < hanasid\>adm:
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -391,7 +391,7 @@ Kroky v této části používají následující předpony:
 
 1. **[2]**  Konfigurace systémové replikace na druhém uzlu:
     
-   Zaregistrujte druhého uzlu do spuštění replikace systému. Přihlaste se jako \<hanasid > správce a spusťte následující příkaz:
+   Zaregistrujte druhého uzlu do spuštění replikace systému. Spuštěním následujícího příkazu jako < hanasid\>adm:
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -407,7 +407,7 @@ Kroky v této části používají následující předpony:
 
 1. **[1]**  Vytvořit požadovaní uživatelé.
 
-   Přihlaste se jako uživatel root a spusťte následující příkaz. Ujistěte se, že k nahrazení řetězců tučné (ID systému HANA **HN1** a číslo instance **03**) s hodnotami instalace SAP HANA:
+   Spusťte následující příkaz jako uživatel root. Ujistěte se, že k nahrazení řetězců tučné (ID systému HANA **HN1** a číslo instance **03**) s hodnotami instalace SAP HANA:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -u system -i <b>03</b> 'CREATE USER <b>hdb</b>hasync PASSWORD "<b>passwd</b>"'
@@ -417,7 +417,7 @@ Kroky v této části používají následující předpony:
 
 1. **[A]**  Vytvořit položka úložiště klíčů.
 
-   Přihlaste se jako uživatel root a spusťte následující příkaz k vytvoření nové položce úložiště klíčů:
+   Jako uživatel root, chcete-li vytvořit novou položku úložiště klíčů, spusťte následující příkaz:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbuserstore SET <b>hdb</b>haloc localhost:3<b>03</b>15 <b>hdb</b>hasync <b>passwd</b>
@@ -425,7 +425,7 @@ Kroky v této části používají následující předpony:
 
 1. **[1]**  Zálohování databáze.
 
-   Přihlaste se jako uživatel root a zálohování databází:
+   Zálohování databází jako kořenový adresář:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -d SYSTEMDB -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
@@ -438,7 +438,7 @@ Kroky v této části používají následující předpony:
 
 1. **[1]**  Konfigurace systémové replikace na prvním uzlu.
 
-   Přihlaste se jako \<hanasid > adm a vytvořit primární lokality:
+   Vytvořte primární lokalitu jako < hanasid\>adm:
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
@@ -446,7 +446,7 @@ Kroky v této části používají následující předpony:
 
 1. **[2]**  Konfigurace systémové replikace na sekundárním uzlu.
 
-   Přihlaste se jako \<hanasid > adm a sekundární lokality registrace:
+   Zaregistrovat jako sekundární lokalitu < hanasid\>adm:
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -709,7 +709,7 @@ POZNÁMKA: Následující testy mají být spuštěn v pořadí a závisí na st
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   Spuštěním následujících příkazů jako \<hanasid > adm na uzlu hn1-db-0:
+   Spuštěním následujících příkazů jako < hanasid\>adm na uzlu hn1-db-0:
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -750,7 +750,7 @@ POZNÁMKA: Následující testy mají být spuštěn v pořadí a závisí na st
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-   Spuštěním následujících příkazů jako \<hanasid > adm na uzlu hn1-db-1:
+   Spuštěním následujících příkazů jako < hanasid\>adm na uzlu hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -791,7 +791,7 @@ POZNÁMKA: Následující testy mají být spuštěn v pořadí a závisí na st
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   Spuštěním následujících příkazů jako \<hanasid > adm na uzlu hn1-db-0:
+   Spuštěním následujících příkazů jako < hanasid\>adm na uzlu hn1-db-0:
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -832,7 +832,7 @@ POZNÁMKA: Následující testy mají být spuštěn v pořadí a závisí na st
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-   Spuštěním následujících příkazů jako \<hanasid > adm na uzlu hn1-db-1:
+   Spuštěním následujících příkazů jako < hanasid\>adm na uzlu hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -975,7 +975,7 @@ POZNÁMKA: Následující testy mají být spuštěn v pořadí a závisí na st
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   Spuštěním následujících příkazů jako \<hanasid > adm na uzlu hn1-db-1:
+   Spuštěním následujících příkazů jako < hanasid\>adm na uzlu hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -1012,7 +1012,7 @@ POZNÁMKA: Následující testy mají být spuštěn v pořadí a závisí na st
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   Spuštěním následujících příkazů jako \<hanasid > adm na uzlu hn1-db-1:
+   Spuštěním následujících příkazů jako < hanasid\>adm na uzlu hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
