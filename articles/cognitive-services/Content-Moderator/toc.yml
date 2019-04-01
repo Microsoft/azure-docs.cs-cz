@@ -28,7 +28,7 @@ items:
     href: ecommerce-retail-catalog-moderation.md
   - name: Moderování obsahu pro Facebook
     href: facebook-post-moderation.md
-  - name: Moderování přepisu a videa
+  - name: Moderování videí a přepisů
     href: video-transcript-moderation-review-tutorial-dotnet.md
 - name: Koncepty
   items:
@@ -38,80 +38,60 @@ items:
     href: text-moderation-api.md
   - name: Moderování videa
     href: video-moderation-human-review.md
-  - name: Úlohy a revize
+  - name: Nástroj pro revize
+    href: Review-Tool-User-Guide/human-in-the-loop.md
+  - name: Revize, pracovní postupy a úlohy
     href: review-api.md
-  - name: Pracovní postupy
-    href: workflow-api.md
 - name: Návody
   items:
-  - name: Použití služeb moderování
+  - name: Moderování obsahu
     items:
-    - name: Rozhraní API pro moderování
+    - name: REST API
       items:
-      - name: S využitím .NET SDK
-        items:
-        - name: Kontrola obsahu videa
-          href: video-moderation-api.md
-        - name: Kontrola obrázků proti vlastním seznamům
-          href: image-lists-quickstart-dotnet.md
-        - name: Kontrola textu proti vlastním termínům
-          href: term-lists-quickstart-dotnet.md
-      - name: S využitím REST API
-        items:
-        - name: Obrázky – konzola API
-          href: try-image-api.md
-        - name: Vlastní obrázky – konzola API
-          href: try-image-list-api.md
-        - name: Text – konzola API
-          href: try-text-api.md
-        - name: Vlastní termíny – konzola API
-          href: try-terms-list-api.md
-  - name: Použití nástroje pro recenze
+      - name: Obrázky – konzola API
+        href: try-image-api.md
+      - name: Vlastní obrázky – konzola API
+        href: try-image-list-api.md
+      - name: Text – konzola API
+        href: try-text-api.md
+      - name: Vlastní termíny – konzola API
+        href: try-terms-list-api.md
+    - name: .NET SDK
+      items:
+      - name: Kontrola obsahu videa
+        href: video-moderation-api.md
+      - name: Kontrola obrázků proti vlastním seznamům
+        href: image-lists-quickstart-dotnet.md
+      - name: Kontrola textu proti vlastním termínům
+        href: term-lists-quickstart-dotnet.md
+  - name: Definice a používání revizí
     items:
-    - name: Recenze rozhraní API
-      items:
-      - name: S využitím .NET SDK
-        items:
-        - name: Úlohy – .NET
-          href: moderation-jobs-quickstart-dotnet.md
-        - name: Revize –.NET
-          href: moderation-reviews-quickstart-dotnet.md
-        - name: Revize videa –.NET
-          href: video-reviews-quickstart-dotnet.md
-        - name: Revize přepisu videa – .NET
-          href: video-transcript-reviews-quickstart-dotnet.md
-      - name: S využitím REST API
-        items:
-        - name: Úlohy – konzola API
-          href: try-review-api-job.md
-        - name: Revize – konzola API
-          href: try-review-api-review.md
-        - name: Pracovní postupy – konzola API
-          href: try-review-api-workflow.md
-    - name: Přehled nástrojů pro revize
-      href: Review-Tool-User-Guide/human-in-the-loop.md
-    - name: Nastavení nástrojů pro revize
-      href: Review-Tool-User-Guide/Configure.md
-    - name: Správa týmu
-      href: Review-Tool-User-Guide/SubTeams.md
-    - name: Použití značek
-      href: Review-Tool-User-Guide/Tags.md
-    - name: Recenze obrázků
+    - name: Nástroj pro revize (prohlížeč)
       href: Review-Tool-User-Guide/Review-Moderated-Images.md
-    - name: Recenze textu
-      href: Review-Tool-User-Guide/Text-Reviews.md
-    - name: Správa přihlašovacích údajů
-      href: Review-Tool-User-Guide/Credentials.md
-    - name: Použití konektorů
-      href: Review-Tool-User-Guide/Connectors.md
-    - name: Použití pracovních postupů
+    - name: REST API
+      href: try-review-api-review.md
+    - name: .NET SDK
+      href: moderation-reviews-quickstart-dotnet.md
+    - name: Revize videa (.NET)
+      href: video-reviews-quickstart-dotnet.md
+    - name: Revize přepisu videa (.NET)
+      href: video-transcript-reviews-quickstart-dotnet.md
+  - name: Definice a používání pracovních postupů
+    items:
+    - name: Nástroj pro revize (prohlížeč)
       href: Review-Tool-User-Guide/Workflows.md
-    - name: Zobrazení řídicího panelu
-      href: Review-Tool-User-Guide/View-Dashboard.md
+    - name: REST API
+      href: try-review-api-workflow.md
+  - name: Definice a používání úloh
+    items:
+    - name: REST API
+      href: try-review-api-job.md
+    - name: .NET SDK
+      href: moderation-jobs-quickstart-dotnet.md
+  - name: Konfigurace nástroje pro recenze
+    href: Review-Tool-User-Guide/Configure.md
   - name: Export nebo odstranění dat účtu
     href: ./export-delete-data.md
-  - name: Seriál webinářů k Azure
-    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
 - name: Referenční informace
   items:
   - name: Rozhraní API Content Moderatoru
@@ -142,6 +122,8 @@ items:
       href: samples-rest.md
     - name: Další ukázky Azure
       href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator
+  - name: Seriál webinářů k Azure
+    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
   - name: Nejčastější dotazy
     href: FAQs.md
   - name: Ceny a omezení
@@ -158,9 +140,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Plány Azure do budoucna
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: cee9e6c585dfa65ccee5c0f4631b5efc81dde760
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8948caa31d1fa464f13295a4dd4c1174b88543f5
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900705"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758148"

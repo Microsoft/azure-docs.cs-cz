@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: fad8ecd0658b2a00f249e8b218bab1dbdaf83187
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6a2d2825e382a6cda8a1fc04fd223e700cf8d284
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578216"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757330"
 documentType: LandingData
-title: Dokumentace ke službě ASC for IoT Preview
+title: Dokumentace ke službě Azure Security Center for IoT Preview
 metadata:
-  title: Dokumentace k ASC for IoT verze Preview – kurzy, rychlá zprovoznění | Microsoft Doc
-  meta.description: ASC for IoT unifies your security management and enables advanced threat protection across your IoT solution.
+  title: Dokumentace ke službě Azure Security Center for IoT Preview – kurzy, rychlá zprovoznění | Microsoft Doc
+  meta.description: Azure Security Center for IoT unifies your security management and enables advanced threat protection across your IoT solution.
   services: ascforiot
   author: mlottner
   manager: barbkess
@@ -20,7 +20,7 @@ metadata:
   ms.date: 03/26/19
   ms.author: barbkess
 abstract:
-  description: ASC for IoT Preview využijte k rozšíření koncepce vašeho stávajícího kybernetického zabezpečení na celé řešení IoT. Získáte skutečně panoramatický přehled zabezpečení všech vašich prostředků souvisejících s Azure. Možnosti rychlého nasazení a kompletní integrace s dvojčaty modulu IoT Hub vám poskytnou širokou škálu možností přizpůsobení a snadnou integraci s vašimi aktuálními nástroji pro správu zařízení. 
+  description: Azure Security Center (ASC) for IoT Preview využijte k rozšíření koncepce vašeho stávajícího kybernetického zabezpečení na celé řešení IoT. Získáte skutečně panoramatický přehled zabezpečení všech vašich prostředků souvisejících s Azure. Možnosti rychlého nasazení a kompletní integrace s dvojčaty modulu IoT Hub vám poskytnou širokou škálu možností přizpůsobení a snadnou integraci s vašimi aktuálními nástroji pro správu zařízení. 
 sections:
 - title: Zprovoznění během 5 minut
   items:

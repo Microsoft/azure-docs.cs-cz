@@ -128,29 +128,64 @@ items:
       href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-java
     - name: Vzdálené monitorování – nejčastější dotazy
       href: iot-accelerators-faq-rm-v2.md
-- name: Propojená továrna
+- name: Průmyslové IoT
   items:
   - name: Přehled
-    href: iot-accelerators-connected-factory-features.md
     items:
-    - name: Architektura
-      href: iot-accelerators-connected-factory-sample-walkthrough.md
+    - name: Co je průmyslové IoT
+      href: overview-iot-industrial.md
+    - name: OPC Twin
+      items:
+      - name: Co je OPC Twin
+        href: overview-opc-twin.md
+      - name: Architektura využívající technologii OPC Twin
+        href: overview-opc-twin-architecture.md
+    - name: OPC Vault
+      items:
+      - name: Co je OPC Vault
+        href: overview-opc-vault.md
+    - name: Propojená továrna
+      items:
+      - name: Přehled propojené továrny
+        href: iot-accelerators-connected-factory-features.md
+      - name: Architektura propojené továrny
+        href: iot-accelerators-connected-factory-sample-walkthrough.md
   - name: Šablony Rychlý start
     items:
     - name: Vyzkoušení řešení propojené továrny
       href: quickstart-connected-factory-deploy.md
   - name: Návody
     items:
-    - name: Použití řídicího panelu
-      href: iot-accelerators-connected-factory-dashboard.md
-    - name: Nasazení brány
-      href: iot-accelerators-connected-factory-gateway-deployment.md
-    - name: Použití vydavatele OPC
-      href: https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md
-    - name: Konfigurace akcelerátoru řešení
-      href: iot-accelerators-connected-factory-configure.md
-    - name: Přizpůsobení akcelerátoru řešení
-      href: iot-accelerators-connected-factory-customize.md
+    - name: Propojená továrna
+      items:
+      - name: Použití řídicího panelu
+        href: iot-accelerators-connected-factory-dashboard.md
+      - name: Nasazení brány
+        href: iot-accelerators-connected-factory-gateway-deployment.md
+      - name: Použití vydavatele OPC
+        href: https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md
+      - name: Konfigurace akcelerátoru řešení
+        href: iot-accelerators-connected-factory-configure.md
+      - name: Přizpůsobení akcelerátoru řešení
+        href: iot-accelerators-connected-factory-customize.md
+    - name: OPC Twin
+      items:
+      - name: Nasazení služeb OPC Twin
+        href: howto-opc-twin-deploy-existing.md
+      - name: Nasazení modulu OPC Twin do IoT Edge
+        href: howto-opc-twin-deploy-modules.md
+      - name: Nasazení jenom závislostí OPC Twin
+        href: howto-opc-twin-deploy-dependencies.md
+    - name: OPC Vault
+      items:
+      - name: Nasazení služby OPC Vault pro existující projekt
+        items:
+        - name: Zabezpečená komunikace klienta OPC a OPC PLC
+          href: howto-opc-vault-deploy-existing-client-plc-communication.md
+        - name: Zabezpečení aplikace serveru uživatelských agentů OPC a klienta uživatelských agentů OPC
+          href: howto-opc-vault-deploy-existing-client-server-communication.md
+      - name: Nasazení služby OPC Vault od nuly
+        href: howto-opc-vault-deploy-scratch.md
   - name: Zdroje a prostředky
     items:
     - name: Úložiště GitHub
@@ -257,9 +292,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: Vzdálené sledování V1
     href: https://docs.microsoft.com/previous-versions/azure/iot-suite/
-ms.openlocfilehash: 5b2067facd27e94735aba63bb1c54c15e1511c64
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 02c728f7acef1bcc1436d87dd0c0d9509db8ec97
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342033"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757202"
