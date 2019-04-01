@@ -4,7 +4,7 @@ description: Popisuje parametry související s upgrade aplikace Service Fabric,
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: a4170ac6-192e-44a8-b93d-7e39c92a347e
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2018
 ms.author: subramar
-ms.openlocfilehash: 73b48525566f9bf0107ba3b029c516ca294ca141
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 9a93c0993ee45e72b11b023982dfbbe8c6528272
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099188"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670613"
 ---
 # <a name="application-upgrade-parameters"></a>Parametry upgradu aplikace
 Tento článek popisuje různé parametry, které se použijí při upgradu aplikace Azure Service Fabric. Parametry upgradu aplikace řídit vypršení časových limitů a kontroly stavu, které se použijí při upgradu a určují zásady, které se musí použít při upgradu se nezdaří. Parametry aplikace použít k upgradu pomocí:
@@ -94,11 +94,12 @@ Upgrady aplikací Service Fabric pomocí rozhraní příkazového řádku Servic
 
 | Parametr | Popis |
 | --- | --- |
-| id aplikace  |ID aplikace, která se upgraduje. <br> To je obvykle celý název aplikaci bez služby ' prostředků infrastruktury: " Schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "~" znak. Například, pokud je název aplikace "fabric: / myapp/app1", identita aplikace by "myapp ~ app1" v 6.0 + a "myapp/app1" v předchozích verzích.|
+| id aplikace  |ID aplikace, která se upgraduje. <br> To je obvykle celý název aplikaci bez služby ' prostředků infrastruktury: " Schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "fabric: / myapp/app1", identita aplikace by "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích.|
 verze aplikace |Typ verze aplikace, aby upgradu cíle.|
 parameters  |Seznam JSON kódovaný parametr aplikace funkci přepsání hodnot a použijí při upgradu aplikace.|
 
 ### <a name="optional-parameters"></a>Volitelné parametry
+
 | Parametr | Popis |
 | --- | --- |
 default-service-health-policy | [JSON](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-servicetypehealthpolicy) kódovaný specifikace zásad stavu, ve výchozím nastavení používá k vyhodnocení stavu daného typu služby. Mapa je ve výchozím nastavení prázdné. |

@@ -1,5 +1,5 @@
 ---
-title: Recenze obrázků s příznakem - Content Moderatoru
+title: Použití obsahu kontroly prostřednictvím nástroje pro recenze – Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak nástroj pro recenze umožňuje lidské moderátory recenze obrázků na webovém portálu.
 services: cognitive-services
@@ -8,39 +8,52 @@ manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: e096e65e3016f33361f772a75ab8f71603970a5f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a482ecf4a0d321525ab7e392695d2c4c0eebeadc
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096601"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758488"
 ---
-# <a name="let-human-reviewers-review-images"></a>Recenzenti mohou lidské recenze obrázků
+# <a name="create-human-reviews"></a>Vytvoření recenze prováděné lidmi
 
-Poté, co jste si zaregistrovali službu pro moderování obsahu a získat klíč předplatného, budete moct vyzkoušet funkce revize bitové kopie.
+V této příručce se dozvíte víc o nastavení [kontroly](../review-api.md#reviews) na webu pro nástroj pro revize. Recenze uložit a zobrazit obsah pro lidské moderátory k vyhodnocení. Moderátoři mohou alter značky použité a použít vlastní vlastní značky podle potřeby. Po dokončení přezkoumání uživatele výsledky se posílají do zadaného zpětného volání koncového bodu a obsah je odebrán z webu.
 
-1. Otevřít [nástroj pro recenze prováděné lidmi](https://contentmoderator.cognitive.microsoft.com/) a přihlaste se. 
-2. Klikněte na kartu Try a nahrávání některých obrázků ke kontrole.
-3. Klikněte na kartu revizi a vyberte bitovou kopii.
+## <a name="prerequisites"></a>Požadavky
 
-   ![Nástroj pro recenze zobrazující se zvýrazněnou možností zkontrolovat Image prohlížeče Chrome](images/review-images-1.png)
+- Přihlaste se nebo si vytvořte účet v Content Moderatoru [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com/) lokality.
 
-   Image se zobrazí všechny popisky, které se týkají nástroje pro recenze. Obrázky nejsou k dispozici pro ostatní recenzenty ve vašem týmu, když kontrolujete je.
+## <a name="image-reviews"></a>Recenze obrázků
 
-4. Přesuňte posuvník "Kontroly zobrazíte" (1) Chcete-li upravit počet obrázků zobrazí na obrazovce. Klikněte na označené neoznačených tlačítko nebo (2) k seřazení imagí odpovídajícím způsobem. Kliknutím na značku (3) Chcete-li ji zapnout nebo vypnout.
+1. Přejděte na [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com/), vyberte **zkuste** kartu a nahrávání některých obrázků ke kontrole.
+1. Po dokončení zpracování nahraných obrázků, přejděte do **revize** kartě a vyberte **Image**.
 
-   ![Prohlížeč Chrome ukazující nástroj pro recenze s označený imagemi k revizi](images/review-images-2.png)
- 
-5. Chcete-li zobrazit více informací o bitovou kopii, klikněte na tři tečky na miniaturu, za nímž následuje **podrobnosti** možnost. Chcete-li přiřadit bitovou kopii dílčího týmu, vyberte **přesunout do** možnost.
- 
-   ![Obrázek se zvýrazněnou možností podrobnosti zobrazení](images/review-images-3.png)
+    ![Nástroj pro recenze zobrazující se zvýrazněnou možností zkontrolovat Image prohlížeče Chrome](images/review-images-1.png)
 
-6. Informace o moderování obrázků na stránce s podrobnostmi o procházení.
+    Image se zobrazí všechny popisky, které se týkají procesu automatické moderování. Obrázky, které jste odeslali pomocí nástroje pro recenze nejsou viditelné pro ostatní recenzenty.
 
-   ![Obrázek s podrobnostmi o moderování uvedené v samostatné podokno](images/review-images-4.png)
- 
-7. Jakmile zkontrolujete a podle potřeby aktualizovat přiřazení značky, klikněte na tlačítko **Další** odeslat revizích.
+1. V případě potřeby přesuňte **kontroly, aby mohla zobrazit** posuvníku (1) Chcete-li upravit počtu imagí, které se zobrazí na obrazovce. Klikněte na **příznakem** nebo **neoznačených** tlačítka (2) k seřazení imagí odpovídajícím způsobem. Klikněte na panel značky (3) pro ho zapnout nebo vypnout.
 
-Po odeslání, budete muset asi pěti sekundách kliknout **předchozí** tlačítko pro návrat na předchozí obrazovku a znovu zkontrolujte bitové kopie. Poté jsou obrázky už ve frontě pro odesílání a **předchozí** tlačítko už není k dispozici.
+    ![Prohlížeč Chrome ukazující nástroj pro recenze s označený imagemi k revizi](images/review-images-2.png)
+
+1. Chcete-li zobrazit další informace o bitovou kopii, klikněte na miniaturu a vyberte tři tečky **podrobnosti**. Image můžete přiřadit dílčího týmu s **přesunout do** možnost (najdete v článku [týmy](./configure.md#manage-team-and-subteams) naleznete další informace o podtýmy).
+
+    ![Obrázek se zvýrazněnou možností podrobnosti zobrazení](images/review-images-3.png)
+
+1. Informace o moderování obrázků na stránce s podrobnostmi o procházení.
+
+    ![Obrázek s podrobnostmi o moderování uvedené v samostatné podokno](images/review-images-4.png)
+
+1. Jakmile zkontrolujete a podle potřeby aktualizovat přiřazení značky, klikněte na tlačítko **Další** odeslat revizích. Po odeslání, budete muset asi pěti sekundách kliknout **předchozí** tlačítko pro návrat na předchozí obrazovku a znovu zkontrolujte bitové kopie. Poté jsou obrázky už ve frontě pro odesílání a **předchozí** tlačítko už není k dispozici.
+
+## <a name="text-reviews"></a>Recenze textu
+
+Text obsahuje přehled funkce podobně jako na obrázku kontroly. Namísto odesílání obsahu, stačí napsat nebo vložte text (až 1 024 znaků). Potom Content Moderator analyzuje text a použije značky (kromě jiných moderování informace, například vulgárních výrazů a osobních údajů). V recenze textu můžete přepnout použité značky nebo použít vlastní značky před odesláním revizi.
+
+![Snímek obrazovky znázorňující nástroj pro revize označený text v okně prohlížeče Chrome](../images/reviewresults_text.png)
+
+## <a name="next-steps"></a>Další postup
+
+V této příručce, jste zjistili, jak nastavit a začít používat kontroly od Content Moderator [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com). V dalším kroku najdete v článku [pokyny k rozhraní REST API](../try-review-api-review.md) nebo [sady .NET SDK průvodce](../moderation-reviews-quickstart-dotnet.md) informace o vytvoření recenze prostřednictvím kódu programu.

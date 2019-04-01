@@ -1,6 +1,6 @@
 ---
-title: ASC pro IoT požadavky ve verzi Preview | Dokumentace Microsoftu
-description: Podrobnosti o vše potřebné pro začátek práce s ASC pro požadavky služby IoT.
+title: Azure Security Center pro IoT požadavky ve verzi Preview | Dokumentace Microsoftu
+description: Podrobnosti o vše potřebné pro začátek práce s Azure Security Center pro požadavky služby IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 0188dace0e666d4abfe31ac1c6c14d63c947c566
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 5293fe6a8d4a8a44a89890af1c259e2b4b2b7827
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574740"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755095"
 ---
-# <a name="asc-for-iot-prerequisites"></a>ASC pro požadavky IoT
+# <a name="azure-security-center-for-iot-prerequisites"></a>Azure Security Center pro požadavky IoT
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tento článek obsahuje vysvětlení různých stavebních bloků ASC IoT služby, co vám umožní začít a základní koncepty pro lepší porozumění tomu služby. 
+Tento článek obsahuje vysvětlení různých stavební kameny nástroje Azure Security Center (ASC) IoT služby, co vám umožní začít a základní koncepty se chcete o službě. 
 
 ## <a name="minimum-requirements"></a>Minimální požadavky
 

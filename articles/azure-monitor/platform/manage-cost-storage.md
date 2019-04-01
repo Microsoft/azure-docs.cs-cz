@@ -11,24 +11,24 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 03/29/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5a8bd836322ae005b426707e0994bfdc19701fd8
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 599b1d3f522a0f287736808cce88163f1ef7f28f
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295670"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755802"
 ---
-# <a name="manage-usage-and-costs-for-log-analytics"></a>Správa nákladů a využití pro Log Analytics
+# <a name="manage-usage-and-costs-for-log-analytics-in-azure-monitor"></a>Správa nákladů a využití pro Log Analytics ve službě Azure Monitor
 
 > [!NOTE]
 > Tento článek popisuje, jak řídit své náklady v Log Analytics tak, že nastavíte dobu uchování dat.  Přečtěte si následující články související informace.
 > - [Analýza využití dat v Log Analytics](manage-cost-storage.md) popisuje, jak analyzovat a upozornění na data využití.
 > - [Monitorování využití a odhadované náklady](usage-estimated-costs.md) popisuje, jak zobrazit využití a odhadované náklady napříč více funkcí pro různé cenové modely pro monitorování Azure. Také popisuje, jak změnit cenový model.
 
-Log Analytics je navržená tak, aby škálování a podporu shromažďování, indexování a ukládání velkých objemů dat za den z libovolného zdroje ve vašem podniku nebo nasazené v Azure.  To může být hlavním důvod pro vaši organizaci, nákladovou efektivnost v konečném důsledku je základní ovladač. Za tímto účelem je důležité pochopit, že náklady na pracovní prostor Log Analytics není jen na základě objemu shromážděných dat, je také závislý na vybraného plánu a jak dlouho jste se rozhodli ukládat data generovaná z připojených zdrojů.  
+Log Analytics ve službě Azure Monitor je navržená tak, aby škálování a podporu shromažďování, indexování a ukládání velkých objemů dat za den z libovolného zdroje ve vašem podniku nebo nasazené v Azure.  To může být hlavním důvod pro vaši organizaci, nákladovou efektivnost v konečném důsledku je základní ovladač. Za tímto účelem je důležité pochopit, že náklady na pracovní prostor Log Analytics není jen na základě objemu shromážděných dat, je také závislý na vybraného plánu a jak dlouho jste se rozhodli ukládat data generovaná z připojených zdrojů.  
 
 V tomto článku jsme zkontrolujte, jak můžete aktivně monitorovat růst objemu a úložiště dat a definování omezení pro řízení těchto související náklady. 
 
@@ -114,8 +114,6 @@ Pokud váš pracovní prostor Log Analytics má přístup ke starší verzi ceno
 
 Pokud chcete přesunout do aktuální cenová úroveň pracovního prostoru, budete muset [změnit cenový model ve službě Azure Monitor monitorování vašeho předplatného](usage-estimated-costs.md#moving-to-the-new-pricing-model) který změní cenovou úroveň všech pracovních prostorů v tomto předplatném.
 
-> [!NOTE]
-> Pokud je váš pracovní prostor propojený s účtem Automation, musíte před tím, než budete moci vybrat cenovou úroveň *Standalone (za GB)*, odstranit všechna řešení **Automation and Control** a zrušit propojení s účtem Automation. V okně pracovního prostoru v části **Obecné** klikněte na **Řešení**. Zobrazí se řešení a můžete je odstranit. Propojení s účtem Automation zrušíte kliknutím na název účtu Automation v okně **Cenová úroveň**.
 
 > [!NOTE]
 > Další informace o [nastavení cenové úrovně přes ARM](template-workspace-configuration.md#create-a-log-analytics-workspace) a jak zajistit, že vaše nasazení ARM bude úspěšné bez ohledu na to, zda předplatné je ve starší verzi nebo nový cenový model. 
