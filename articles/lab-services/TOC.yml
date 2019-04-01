@@ -77,6 +77,12 @@ items:
       href: classroom-labs/how-to-create-schedules.md
     - name: Vytvoření prostředí s více virtuálními počítači v rámci virtuálního počítače podle šablony
       href: classroom-labs/how-to-enable-multi-vm-environment.md
+    - name: Připojení vašich testovacích prostředí k partnerské virtuální síti
+      href: classroom-labs/how-to-connect-peer-virtual-network.md
+    - name: Připojení a využití sdílené galerie imagí
+      href: classroom-labs/how-to-use-shared-image-gallery.md
+    - name: Povolení připojení ke vzdálené ploše pro Linux
+      href: classroom-labs/how-to-enable-remote-desktop-linux.md
   - name: DevTest Labs
     items:
     - name: Určení skupiny prostředků pro virtuální počítače testovacího prostředí
@@ -94,7 +100,7 @@ items:
     - name: Vytvoření objektu pro vytváření imagí
       href: image-factory-create.md
       items:
-      - name: Spuštění objektu pro vytváření imagí z AzureDevOps
+      - name: Spuštění objektu pro vytváření imagí z Azure DevOps
         href: image-factory-set-up-devops-lab.md
       - name: Uložení vlastních imagí a jejich distribuce do několika testovacích prostředí
         href: image-factory-save-distribute-custom-images.md
@@ -265,9 +271,9 @@ items:
       href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
     - name: Nejčastější dotazy
       href: devtest-lab-faq.md
-ms.openlocfilehash: c2e32a28253e0fc38fbfa215599654a3cf751d36
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 4c96945c5e7a0aed52d3148c7dbf084a8d8b9f29
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448866"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651161"

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 903c1153db57f7cb632fc752bb696598902f5aaa
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: abfcece2d71e456a39284ddb4cfa106bce31fb53
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519710"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670213"
 documentType: LandingData
 title: Dokumentace ke službě Azure Media Services
 metadata:
@@ -30,7 +30,7 @@ sections:
     columns: 2
     items:
     - href: /azure/media-services/latest/
-      html: <p>Naučíte se kódovat, streamovat na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v3.</p>
+      html: <p>Kódování,balení, ochrana vašeho obsahu, streamování videa na vyžádání, živé vysílání a analýza videí s využitím Media Services v3</p>
       image:
         src: media/index/AMSIcons-media_servicesV3.svg
       title: Azure Media Services v3
@@ -40,12 +40,17 @@ sections:
         src: media/index/AMSIcons-media_analytics.svg
       title: Video Indexer
     - href: /azure/media-services/previous/
-      html: <p>Do Media Services v2 se nepřidávají žádné nové funkce. Projděte si nejnovější verzi v3 služby Media Services.</p>
+      html: <p>Do Media Services v2 se nepřidávají žádné nové funkce. </p>
       image:
-        src: media/index/AMSIcons-media_servicesV2.svg
+        src: 
       title: Azure Media Services v2 (starší verze)
     - href: /azure/cdn/
-      html: <p>Naučte se využívat CDN k ukládání statických objektů do mezipaměti a ke zrychlení dynamického obsahu, který není možné ukládat do mezipaměti.</p>
+      html: <p>Využívejte CDN k ukládání statických objektů do mezipaměti a ke zrychlení dynamického obsahu, který není možné ukládat do mezipaměti.</p>
       image:
         src: /azure/cdn/media/index/cdn.svg
       title: CDN
+    - href: http://amp.azure.net/libs/amp/latest/docs/index.html
+      html: <p>Využijte možnost přehrávat mediální obsah z Microsoft Azure Media Services na široké škále prohlížečů a zařízení.</p>
+      image:
+        src: 
+      title: Přehrávač médií Azure
