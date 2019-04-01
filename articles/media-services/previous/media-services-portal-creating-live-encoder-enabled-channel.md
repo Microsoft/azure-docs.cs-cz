@@ -1,5 +1,5 @@
 ---
-title: Postup živého streamování využívajícího službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi pomocí webu Azure Portal | Dokumentace Microsoftu
+title: Provádění živého streamování využívajícího službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi pomocí webu Azure portal | Dokumentace Microsoftu
 description: Tento kurz vás provede kroky k vytvoření kanálu, který přijímá datový proud s jednou přenosovou rychlostí a kóduje ho do datového proudu s více přenosovými rychlostmi pomocí webu Azure Portal.
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: 1482569e415971fba98de8a586cc2868cc574198
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: c230787b739b964998202180efaba20ad8233611
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258084"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757799"
 ---
-# <a name="how-to-perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Jak provést živé streamování pomocí služby Media Services k vytvoření datových proudů s více přenosovými rychlostmi pomocí webu Azure portal  
+# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Živé streamování pomocí služby Media Services k vytvoření datových proudů s více přenosovými rychlostmi pomocí webu Azure portal  
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -42,34 +42,26 @@ Následující část představuje obecné kroky, které jsou součástí proces
 > [!NOTE]
 > V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amslived@microsoft.com.
 
-1. Připojte k počítači videokameru. Spusťte a nakonfigurujte místní kodér služby live Encoding, který umí produkovat datový proud s jednou přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo Smooth Streaming. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824).
+1. Připojte k počítači videokameru. <br/>Inspiraci, instalační program, podívejte se na [videa ozubené kolo nastavení jednoduché a přenosné události]( https://link.medium.com/KNTtiN6IeT).
+1. Spusťte a nakonfigurujte místní kodér služby live Encoding, který umí produkovat datový proud s jednou přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo Smooth Streaming. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Také přečtěte si tento blog: [Živé streamování provozu pomocí OBS](https://link.medium.com/ttuwHpaJeT).
 
     Tento krok můžete provést i po vytvoření kanálu.
-2. Vytvořte a spusťte kanál. 
-3. Načtěte adresu URL ingestování kanálu. 
+1. Vytvořte a spusťte kanál. 
+1. Načtěte adresu URL ingestování kanálu. 
 
     Adresu URL ingestování používá kodér po kódování v reálném čase k odesílání datového proudu do kanálu.
-4. Načtěte adresu URL náhledu kanálu. 
+1. Načtěte adresu URL náhledu kanálu. 
 
     Tuto adresu URL můžete použít, když chcete ověřit, jestli kanál správně přijímá proud živého vysílání.
-5. Vytvořte událost nebo program (tím se vytvoří také asset). 
-6. Publikujte událost (tím se vytvoří lokátor OnDemand pro přidružený asset).    
-7. Jakmile budete připraveni začít streamovat a archivovat, spusťte událost.
-8. Volitelně můžete dát kodéru pro kódování v reálném čase signál, aby spustil reklamu. Reklama bude vložena do výstupního proudu.
-9. Kdykoli budete chtít zastavit streamování a archivaci události, zastavte událost.
-10. Odstraňte událost (volitelně můžete odstranit i asset).   
-
-## <a name="in-this-tutorial"></a>V tomto kurzu
-V tomto kurzu budeme Azure Portal používat k provádění následujících úloh: 
-
-1. Vytvoření kanálu, který má povolené kódování v reálném čase.
-2. Získání ingestované adresy URL, která bude dodána kodéru pro kódování v reálném čase. Kodér pro kódování v reálném čase tuto adresu URL použije k ingestování datového proudu do kanálu.
-3. Vytvoření události nebo programu (a assetu)
-4. Publikování assetu a získání adresy URL pro streamování  
-5. Přehrání obsahu
-6. Čištění
+1. Vytvořte událost nebo program (tím se vytvoří také asset). 
+1. Publikujte událost (tím se vytvoří lokátor OnDemand pro přidružený asset).    
+1. Jakmile budete připraveni začít streamovat a archivovat, spusťte událost.
+1. Volitelně můžete dát kodéru pro kódování v reálném čase signál, aby spustil reklamu. Reklama bude vložena do výstupního proudu.
+1. Kdykoli budete chtít zastavit streamování a archivaci události, zastavte událost.
+1. Odstraňte událost (volitelně můžete odstranit i asset).   
 
 ## <a name="prerequisites"></a>Požadavky
+
 K dokončení kurzu potřebujete následující:
 
 * K dokončení tohoto kurzu potřebujete mít účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. 
@@ -78,6 +70,7 @@ K dokončení kurzu potřebujete následující:
 * Webová kamera a kodér, který dokáže odesílat živý datový proud s jednou přenosovou rychlostí.
 
 ## <a name="create-a-channel"></a>Vytvoření kanálu
+
 1. Na webu [Azure Portal](https://portal.azure.com/) vyberte Media Services a klikněte na název účtu Media Services.
 2. Vyberte **Živé streamování**.
 3. Vyberte **Vytvořit vlastní**. Tato možnost vám umožní vytvořit kanál, který má povolené kódování v reálném čase.
@@ -120,9 +113,10 @@ Další informace najdete v článku [Živé streamování využívající služ
 ## <a name="get-ingest-urls"></a>Získání ingestovaných adres URL
 Po vytvoření kanálu můžete získat ingestované adresy URL, které poskytnete kodéru pro kódování v reálném čase. Kodér tyto adresy URL používá ke vkládání živého proudu.
 
-![ingesturls](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
+![ingestované adresy URL](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
 
 ## <a name="create-and-manage-events"></a>Vytvoření a správa událostí
+
 ### <a name="overview"></a>Přehled
 Kanál je přidružený k událostem a programům, které vám umožňují řídit publikování a ukládání segmentů v živém datovém proudu. Kanály spravují události nebo programy. Vztah kanálů a programů se velmi podobná tradičním médiím, kde kanál obsahuje nepřetržitý datový proud obsahu a program je vymezen na určité načasované události v tomto kanálu.
 
@@ -154,7 +148,7 @@ Událost můžete spustit dvěma způsoby:
 
     Zadejte název události, název assetu, archivační okno a možnost šifrování.
 
-    ![createprogram](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
+    ![Vytvoření programu](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
 
     Pokud jste nechali zaškrtnuté políčko **Publikovat událost nyní**, budou vytvořeny ADRESY URL PRO PUBLIKOVÁNÍ události.
 

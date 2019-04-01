@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: ''
 ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 5fe66634d4f95ba84d13a3d355f28afbedf0f7f0
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: a9de15530981e14e664df605cb3274c9e754ef0d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58012647"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755489"
 ---
-# <a name="how-to-encode-with-a-custom-transform-by-using-rest"></a>Kódování s vlastní transformace s využitím REST
+# <a name="how-to-encode-with-a-custom-transform---rest"></a>Kódování s vlastní transformace – REST
 
 Při kódování pomocí Azure Media Services, můžete začít rychle s jedním z doporučených předdefinované předvolby, podle doporučené postupy, jak je ukázáno v [streamování souborů](stream-files-tutorial-with-rest.md#create-a-transform) kurzu. Můžete také vytvořit vlastní přednastavení cílit na konkrétní požadavky scénáře nebo zařízení.
 

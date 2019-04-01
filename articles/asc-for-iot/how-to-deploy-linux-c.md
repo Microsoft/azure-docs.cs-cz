@@ -1,6 +1,6 @@
 ---
-title: Pokyny k instalaci a nasazení agenta pro Linux C z ASC pro IoT agenta ve verzi Preview | Dokumentace Microsoftu
-description: Zjistěte, jak nainstalovat ASC pro agenta IoT na 32bitová i 64bitová verze systému Linux.
+title: Pokyny k instalaci a nasazení agenta pro Linux C služby Azure Security Center pro IoT agenta ve verzi Preview | Dokumentace Microsoftu
+description: Zjistěte, jak Azure Security Center pro IoT agenta nainstalovat na 32bitová verze a 64bitová verze systému Linux.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: mlottner
-ms.openlocfilehash: 2b18a09e5b79e7b3d3ea837e937397ac92491f9f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 147813ae096114b4dfc1a20d2e0a70639aa82445
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619845"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754438"
 ---
-# <a name="deploy-asc-for-iot-c-based-security-agent-for-linux"></a>Nasazení ASC pro zabezpečení na základě IoT C agenta pro Linux
+# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Nasazení Azure Security Center pro zabezpečení na základě IoT C agenta pro Linux
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tato příručka vysvětluje, jak nainstalovat a nasadit ASC pro agenta zabezpečení na základě IoT C v Linuxu.
+Tato příručka vysvětluje, jak nainstalovat a nasadit Azure Security Center (ASC) pro zabezpečení na základě IoT C agenta v Linuxu.
 
 V této příručce se naučíte: 
 > [!div class="checklist"]

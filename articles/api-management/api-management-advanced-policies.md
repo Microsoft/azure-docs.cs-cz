@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 9d3bc50e1578704de029d53c0b1eaa21e74182cf
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 43cbeea554f43e4db7d5440af83a9b414741d2f6
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401915"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756625"
 ---
 # <a name="api-management-advanced-policies"></a>Pokročilé zásady API managementu
 
@@ -253,7 +253,7 @@ Tato zásada na úrovni operace nepředává požadavky na back-end službu.
 
 | Atribut                               | Popis                                                                                                      | Požaduje se | Výchozí     |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| timeout="integer"                       | Interval časového limitu v sekundách, než volání služby back-end se nezdaří. Minimální hodnota je 0 sekund. Maximální hodnoty je 240 sekund.| Ne       | 240 sekund |
+| timeout="integer"                       | Množství času v sekundách čekání na hlavičky HTTP odpovědi má být vrácena službou back-endu před vypršení časového limitu je vyvolána. Minimální hodnota je 0 sekund. Hodnoty větší než 240 sekund nemusí být respektovat jako základní síťovou infrastrukturu můžete vyřadit nečinných připojení po uplynutí této doby. | Ne       | Žádný |
 | postupujte podle přesměrování = "true &#124; false"    | Určuje, zda přesměrování z back-end služby jsou za nímž následuje brány nebo vrátit zpět volajícímu.      | Ne       | false (nepravda)       |
 | buffer-request-body="true &#124; false" | Když nastavenou na "hodnotu true" požadavek do vyrovnávací paměti a znovu použije na [opakujte](api-management-advanced-policies.md#Retry). | Ne       | false (nepravda)       |
 

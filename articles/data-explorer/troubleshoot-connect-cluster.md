@@ -2,18 +2,18 @@
 title: Nepodařilo se připojit ke clusteru v Průzkumníku dat Azure
 description: Tento článek popisuje kroky pro připojení ke clusteru v Průzkumníku Azure.Data řešení potíží.
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 89ae8bd4139623cfafe811b7c82433cfb8400611
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 66d77a11f0f68a2dc48802ed21acca8420012207
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189661"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758562"
 ---
 # <a name="troubleshoot-failure-to-connect-to-a-cluster-in-azure-data-explorer"></a>Řešení potíží: Nepodařilo se připojit ke clusteru v Průzkumníku dat Azure
 

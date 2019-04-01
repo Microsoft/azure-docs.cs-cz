@@ -2,18 +2,18 @@
 title: Škálování clusteru Průzkumník dat Azure tak, aby vyhovovaly měnících se požadavků
 description: Tento článek popisuje kroky pro horizontální navýšení kapacity a škálování v clusteru Azure Průzkumník dat na základě změny poptávky.
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 8d369800bdc9817856eeb7039fe47e5b870735ba
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9b54bf182f23eceb47c392059ff52c04bf0a8aed
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107368"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755071"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Správa clusteru škálování tak, aby vyhovovaly měnících se požadavků
 

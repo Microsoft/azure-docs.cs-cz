@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: cca234340526b732067adac3c6725f8aa5acc47c
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 294695cceaed39a66a57dcd3a165ca276b6801c6
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983371"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757964"
 ---
-#  <a name="agent-health-solution-in-azure"></a>Řešení Agent Health v Azure
-Řešení Agent Health v Azure vám pomůže pochopit, u všech agentů odesílajících sestavy přímo do pracovního prostoru Log Analytics nebo skupinu pro správu System Center Operations Manager připojené k monitorování Azure, které jsou reagovat a odešlete provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
+#  <a name="agent-health-solution-in-azure-monitor"></a>Řešení Agent Health v monitorování Azure
+Řešení Agent Health v Azure vám pomůže pochopit, u všech agentů odesílajících sestavy přímo do pracovního prostoru Log Analytics ve službě Azure Monitor nebo skupinu pro správu System Center Operations Manager připojené k monitorování Azure, které jsou reagovat a odesílá se provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
 
 ## <a name="prerequisites"></a>Požadavky
 Před nasazením tohoto řešení potvrďte, že aktuálně podporujete [agentů Windows](../../log-analytics/log-analytics-windows-agent.md) sestavy do pracovního prostoru Log Analytics nebo odesílajících sestavy do [skupinu pro správu Operations Manageru](../../azure-monitor/platform/om-agents.md) integrované s váš pracovní prostor.
@@ -62,7 +62,7 @@ Kliknutím na dlaždici **Agent Health** otevřete řídicí panel **Agent Healt
 | Distribuce podle typu operačního systému | Rozdělení agentů systému Windows a linuxových agentů ve vašem prostředí.|
 | Distribuce podle verze agenta | Rozdělení různých verzí agentů nainstalovaných ve vašem prostředí a jejich počet.|
 | Distribuce podle kategorie agenta | Rozdělení různých kategorií agentů, kteří odesílají události prezenčního signálu: přímí agenti, agenti nástroje Operations Manager nebo server pro správu nástroje Operations Manager.|
-| Distribuce podle skupiny pro správu | Rozdělení různých skupin pro správu nástroje SCOM ve vašem prostředí.|
+| Distribuce podle skupiny pro správu | Rozdělení různých skupin správy Operations Manageru ve vašem prostředí.|
 | Geografické umístění agentů | Rozdělení různých zemí, ve kterých máte agenty, a celkový počet agentů nainstalovaných v každé zemi.|
 | Počet nainstalovaných bran | Počet serverů, které mají nainstalovanou bránu Log Analytics a seznam těchto serverů.|
 
@@ -117,4 +117,4 @@ V následující tabulce jsou uvedeny ukázky prohledávání protokolu pro záz
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [výstrah ve službě Azure Monitor](../platform/alerts-overview.md) podrobné informace o generování upozornění ze služby Log Analytics. 
+* Další informace o [výstrah ve službě Azure Monitor](../platform/alerts-overview.md) podrobnosti o generování upozornění z dotazů na protokoly. 

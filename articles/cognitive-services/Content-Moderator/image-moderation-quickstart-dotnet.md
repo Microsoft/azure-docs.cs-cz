@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 01/10/2019
+ms.date: 03/20/2019
 ms.author: sajagtap
-ms.openlocfilehash: bd281191deb1a82d4b1b5247a011d9867f0c9bc4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9cc18ce1fde5de354e3da5e384c08ada1927d097
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879288"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757238"
 ---
-# <a name="quickstart-analyze-image-content-for-objectionable-material-in-c"></a>Rychlý start: Analyzovat obsah obrázků pro nežádoucím vC#
+# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Rychlý start: Díky analýze obrázků pro nežádoucí obsah naC#
 
 Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dozvíte se, jak hledat nevhodný obsah nebo obsah pro dospělé, extrahovatelný text a lidské tváře za účelem moderování potenciálně problematického materiálu.
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 039ef05f7c0cbb9809a51efc3deef978e2970cf4
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 1913cf8d5fa367cc97dfac0a1ecfdf1edf06e298
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224562"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758658"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>Rychlý start: Nasazení prvního modulu IoT Edge k Linuxovému zařízení
 
@@ -128,7 +128,7 @@ Během konfigurace modulu runtime zadáte připojovací řetězec zařízení. P
 Pokud používáte Azure IoT Edge na virtuální počítač s Ubuntu, jak je popsáno v rámci požadavků, vaše zařízení už má modul runtime IoT Edge, které jsou nainstalované. Potřebujete nakonfigurovat své zařízení s připojovacím řetězcem zařízení, který jste získali v předchozí části. Můžete to provést vzdáleně bez nutnosti připojení k virtuálnímu počítači. Spusťte následující příkaz a nahraďte **{device_connection_string}** s vlastním řetězcem.
 
    ```azurecli-interactive
-   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
+   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
    ```
 
 Pokud používáte na místním počítači nebo ARM32 zařízení IoT Edge, musíte nainstalovat modul runtime IoT Edge a nezbytný software ve vašem zařízení. Postupujte podle pokynů v [nainstalovat modul runtime Azure IoT Edge v Linuxu (x64)](how-to-install-iot-edge-linux.md) nebo [modul runtime nainstalovat Azure IoT Edge v Linuxu (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md), pak se vrátit na tomto rychlém startu.

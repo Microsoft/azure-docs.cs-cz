@@ -3,17 +3,17 @@ title: 'Rychlý start: Ingestovat data z centra událostí do Průzkumníku dat 
 description: V tomto rychlém startu se dozvíte, jak ingestovat (načíst) data do Azure Data Exploreru z centra událostí.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 02/2/2018
-ms.openlocfilehash: 7b724219750154c5ec1410af64175bc70f5cbd6c
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: fcc4a50cb57e15021a3be1266d660c33501dbe82
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805811"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758682"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Rychlý start: Ingestovat data z centra událostí do Průzkumníku dat Azure
 

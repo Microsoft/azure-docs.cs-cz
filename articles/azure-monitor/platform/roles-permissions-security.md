@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 591b30d0147e427e8a0dbc2d25276bdcd3b54be6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bac57b18ec5474cfe3c27ad1079c5af7e1d2c451
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445479"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756811"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Začínáme s rolemi, oprávnění a zabezpečení prostřednictvím služby Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Mnoho týmů potřebuje pro výhradně regulovat přístup k monitorování data a nastavení. Například pokud jste členy týmu, kteří pracují výhradně na monitorování (techniky podpory, technikům devops) nebo pokud používáte poskytovatel spravované služby, můžete jim udělit přístup k datům monitorování pouze při omezení jejich schopnost vytvářet, upravovat, nebo Odstraňte prostředky. Tento článek ukazuje, jak rychle použít předdefinované role RBAC monitorování na uživatele v Azure nebo vytvářet vlastní vlastní role pro uživatele, který potřebuje monitorování omezená oprávnění. Pak popisuje aspekty zabezpečení pro vaše prostředky související s Azure Monitor a jak můžete omezit přístup k datům, které obsahují.
+Mnoho týmů potřebuje pro výhradně regulovat přístup k monitorování data a nastavení. Například pokud jste členy týmu, kteří pracují výhradně na monitorování (techniky podpory, technikům DevOps) nebo pokud používáte poskytovatel spravované služby, můžete jim udělit přístup k datům monitorování pouze při omezení jejich schopnost vytvářet, upravovat, nebo Odstraňte prostředky. Tento článek ukazuje, jak rychle použít předdefinované role RBAC monitorování na uživatele v Azure nebo vytvářet vlastní vlastní role pro uživatele, který potřebuje monitorování omezená oprávnění. Pak popisuje aspekty zabezpečení pro vaše prostředky související s Azure Monitor a jak můžete omezit přístup k datům, které obsahují.
 
 ## <a name="built-in-monitoring-roles"></a>Předdefinované role monitorování
 Azure Monitor předdefinované role jsou účelem je pomoci omezit přístup k prostředkům v rámci předplatného, ale osoby zodpovědné za monitorování infrastruktury pro získání a konfigurace dat potřebují. Platforma Azure Monitor poskytuje dvě role out-of-the-box: Monitorování Čtenář a Přispěvatel monitorování.
@@ -38,10 +38,10 @@ Lidem přiřadit role Čtenář monitorování můžete zobrazit všechna data m
 * Přístup k datům služby Application Insights a zobrazení dat v AI Analytics.
 * Vyhledávání dat pracovního prostoru Log Analytics, včetně data o využití pro pracovní prostor.
 * Zobrazení skupin pro správu Log Analytics.
-* Načtěte schéma vyhledávání Log Analytics.
-* Vypsat sady intelligence Pack Log Analytics.
-* Načíst a spustit uložené výsledky hledání Log Analytics.
-* Získat konfiguraci úložiště analýzy protokolů.
+* Načtěte schéma vyhledávání v pracovním prostoru Log Analytics.
+* Vypsat sady pro monitorování v pracovním prostoru Log Analytics.
+* Načíst a spustit uložené výsledky hledání v pracovním prostoru Log Analytics.
+* Získat konfiguraci úložiště analýzy protokolů pracovního prostoru.
 
 > [!NOTE]
 > Tato role vám není udělena oprávnění ke čtení k data protokolu, která byla Streamovat do centra událostí nebo uložený v účtu úložiště. [Viz níže](#security-considerations-for-monitoring-data) pro informace o tom, jak nakonfigurovat přístup k těmto prostředkům.
@@ -57,9 +57,9 @@ Uživatelé se přiřadila role Přispěvatel monitorování můžete zobrazit v
 * Nastavení prostřednictvím pravidel upozornění aktivity a [Azure Alerts](../../azure-monitor/platform/alerts-overview.md).
 * Vytvořte webové testy Application Insights a komponenty.
 * Sdílené klíče pracovního prostoru Log Analytics seznamu.
-* Povolí nebo zakáže sad intelligence Pack Log Analytics.
-* Vytvářet a odstraňovat a spouštět uložené výsledky hledání Log Analytics.
-* Vytvořit a odstranit konfiguraci úložiště analýzy protokolů.
+* Povolí nebo zakáže sady pro monitorování v pracovním prostoru Log Analytics.
+* Vytvářet a odstraňovat a spouštět uložená hledání v pracovním prostoru Log Analytics.
+* Vytvořit a odstranit konfiguraci úložiště pracovního prostoru Log Analytics.
 
 \*Uživatel musí být taky samostatně přidělují oprávnění klíče Listkey na cílový prostředek (úložiště účtu nebo událost obor názvů centra) k nastavení profilu protokolu nebo nastavení diagnostiky.
 

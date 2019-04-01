@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: sajagtap
-ms.openlocfilehash: cc8cbc19f416e6e80d2d0fdfb4862536da7f0ce2
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 09fd58fa33873c06ac5dab4970af199bc3030479
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312238"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756531"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Rychlý start: Analýza pro nežádoucím v textový obsahC# 
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Rychlý start: Analýza pro nežádoucím v textový obsahC#
 
 Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dozvíte se, jak provádět filtrování založené na termínech a klasifikaci obsahu textu za účelem moderování potenciálně problematického materiálu.
 
@@ -74,7 +74,7 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 Do metody **Main** přidejte následující kód. Zásadní operací je metoda **ScreenText**. Její parametry určují, které operace moderování obsahu se provedou. V tomto příkladu je metoda nakonfigurovaná tak, aby prováděla následující:
 - Rozpoznávání potenciálně vulgárních výrazů v textu
 - Normalizace textu a automatické opravy překlepů
-- Rozpoznávání identifikovatelných osobních údajů (PII), jako jsou telefonní čísla USA a Velké Británie, e-mailové adresy a poštovní adresy v USA
+- Zjistit osobní údaje, jako je USA a Spojeného království telefonní čísla, e-mailové adresy a poštovní adresy v USA.
 - Klasifikace textu do tří kategorií s využitím modelů založených na strojovém učení
 
 Další informace o tom, co tyto operace dělají, najdete na odkazu v části [Další kroky](#next-steps).

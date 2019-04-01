@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 0d4689e35cd308478ae0c0154761534dd834f146
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 34a967640ec039727e8947e865eeff1f5fef4649
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482330"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758585"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rychlý start: Nasadit kontejnery Windows do Service Fabric
 
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu škálovatelných a spolehlivých mikroslužeb a kontejnerů.
 
-Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento rychlý start ukazuje, jak nasadit předem připravenou image kontejneru Dockeru v aplikaci Service Fabric. Až budete hotovi, budete mít funkční kontejner Windows Server 2016 Nano Serveru a služby IIS. Tento rychlý start popisuje nasazení kontejneru Windows. Pokud chcete nasadit kontejner Linuxu, přečtěte si [tento rychlý start](service-fabric-quickstart-containers-linux.md).
+Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento rychlý start ukazuje, jak nasadit předem připravenou image kontejneru Dockeru v aplikaci Service Fabric. Jakmile budete hotovi, budete mít funkční kontejner Windows Server s jádrem serveru 2016 a služby IIS. Tento rychlý start popisuje nasazení kontejneru Windows. Pokud chcete nasadit kontejner Linuxu, přečtěte si [tento rychlý start](service-fabric-quickstart-containers-linux.md).
 
 ![Výchozí webová stránka služby IIS][iis-default]
 
@@ -54,7 +54,7 @@ Vyberte **Aplikace Service Fabric**, pojmenujte ji MyFirstContainer a klikněte 
 
 Z šablon **Hostované kontejnery a aplikace** vyberte **Kontejner**.
 
-Do pole **Název image** zadejte microsoft/iis:nanoserver, což je [základní image Windows Server Nano Serveru a služby IIS](https://hub.docker.com/r/microsoft/iis/).
+V **název Image**, zadejte "mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016" [základní image Windows serveru jádra serveru a služby IIS](https://hub.docker.com/r/microsoft-windows-servercore-iis).
 
 Nakonfigurujte mapování portů kontejneru na porty hostitele tak, aby se příchozí požadavky na službu na portu 80 mapovaly na port 80 v kontejneru.  Nastavte **Port kontejneru** na 80 a **Port hostitele** také na 80.  
 
@@ -74,14 +74,14 @@ Společnost Microsoft publikuje různé image pro verze IIS sestavené na různ�
     <ContainerHostPolicies CodePackageRef="Code"> 
       <ImageOverrides> 
         ...
-          <Image Name="microsoft/iis:nanoserverDefault" /> 
-          <Image Name= "microsoft/iis:nanoserver" Os="14393" /> 
-          <Image Name="microsoft/iis:windowsservercore-1709" Os="16299" /> 
+          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowservercore-1803" /> 
+          <Image Name= "mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016" Os="14393" /> 
+          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowservercore-1709" Os="16299" /> 
       </ImageOverrides> 
     </ContainerHostPolicies> 
 ```
 
-Manifest služby dále specifikuje jenom jednu image na nanoserver, `microsoft/iis:nanoserver`.
+Manifest služby dále specifikuje jenom jednu image na nanoserver, `mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016`.
 
 Také v *ApplicationManifest.xml* změňte **PasswordEncrypted** k **false**. Účet a heslo je prázdné, pokud veřejné image kontejneru, který je na Docker Hubu, takže jsme vypnout šifrování, protože šifrování heslo necháte prázdné, vygeneruje chybu sestavení.
 

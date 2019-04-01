@@ -8,19 +8,21 @@ services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
-ms.date: 01/22/2019
-ms.openlocfilehash: 046aed64d3551d5c0b6ddae44b925452c01c297a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.date: 03/29/2019
+ms.openlocfilehash: c5fabf37ecc97f8edea437f1628949e45aefde77
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337575"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755707"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Ověřování a přístup k prostředkům pomocí spravované identity v Azure Logic Apps
 
 Přístup k prostředkům v jiných tenantů Azure Active Directory (Azure AD) a ověřit svou identitu i bez přihlášení, můžete použít svou aplikaci logiky [se identita spravované](../active-directory/managed-identities-azure-resources/overview.md) (dříve označované jako identita spravované služby nebo MSI), spíše než přihlašovací údaje nebo tajné kódy. Tato identita pro vás spravuje Platforma Azure a pomáhá zabezpečit svoje přihlašovací údaje, protože není nutné poskytovat nebo otočit tajných kódů. Tento článek popisuje, jak můžete nastavit a používat systém přiřadil spravovanou identitu pro vaši aplikaci logiky. Další informace o spravovaných identit najdete v tématu [co je spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!NOTE]
+> Aplikace logiky pomocí spravované identity pouze konektory, které podporují spravované identity. V současné době podporuje pouze konektor HTTP spravované identity.
+>
 > Můžete je aktuálně mít až 10 pracovních postupů aplikace logiky s systém přiřadil spravovat identity v rámci předplatného Azure.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -148,7 +150,7 @@ Udělit přístup do jiného prostředku Azure pro svou aplikaci logiky, systém
 
 Jakmile nastavíte aplikaci logiky s systém přiřadil se identita spravované a přidělený přístup k prostředku, který chcete použít pro tuto identitu, teď můžete použít tuto identitu pro ověřování. Můžete například použít akce HTTP tak, aby vaše aplikace logiky může odeslat požadavek HTTP nebo volání do tohoto prostředku. 
 
-1. V aplikaci logiky, přidejte **HTTP** akce. 
+1. V aplikaci logiky, přidejte **HTTP** akce.
 
 1. Zadejte potřebné podrobnosti pro tuto akci, jako je například požadavek **metoda** a **URI** umístění prostředků, kterou chcete volat.
 
@@ -158,7 +160,7 @@ Jakmile nastavíte aplikaci logiky s systém přiřadil se identita spravované 
 
    `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version-2016-06-01`
 
-1. V akci HTTP zvolte **zobrazit pokročilé možnosti**. 
+1. V akci HTTP zvolte **zobrazit pokročilé možnosti**.
 
 1. Z **ověřování** seznamu vyberte **Identity spravované**. Po výběru tohoto ověřování **cílovou skupinu** vlastnost se zobrazí s výchozí hodnotou ID prostředku:
 
@@ -176,7 +178,7 @@ Jakmile nastavíte aplikaci logiky s systém přiřadil se identita spravované 
 
 ## <a name="remove-managed-identity"></a>Odebrání spravované identity
 
-Systém přiřadil spravovanou identitu na svou aplikaci logiky zakázat, provedením kroků podobný nastavení identit prostřednictvím webu Azure portal, šablon nasazení Azure Resource Manageru nebo Azure Powershellu. 
+Systém přiřadil spravovanou identitu na svou aplikaci logiky zakázat, provedením kroků podobný nastavení identit prostřednictvím webu Azure portal, šablon nasazení Azure Resource Manageru nebo Azure Powershellu.
 
 Při odstranění aplikace logiky Azure automaticky odstraní vaší aplikace logiky systém přiřadil identitu ze služby Azure AD.
 
@@ -194,7 +196,7 @@ Chcete-li odebrat systém přiřadil spravovanou identitu pro vaši aplikaci log
 
 ### <a name="deployment-template"></a>Nasazení šablony
 
-Pokud jste vytvořili aplikaci logiky, systém přiřadil spravovanou identitu se šablonou nasazení Azure Resource Manageru, nastavte `"identity"` elementu `"type"` vlastnost `"None"`. Tato akce také odstraní ID objektu zabezpečení z Azure AD. 
+Pokud jste vytvořili aplikaci logiky, systém přiřadil spravovanou identitu se šablonou nasazení Azure Resource Manageru, nastavte `"identity"` elementu `"type"` vlastnost `"None"`. Tato akce také odstraní ID objektu zabezpečení z Azure AD.
 
 ```json
 "identity": {

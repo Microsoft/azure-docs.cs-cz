@@ -1,90 +1,86 @@
 ---
-title: Definice a používání pracovních postupů pro moderování obsahu – Content Moderator
+title: Definice a používání obsahu pracovní postupy nástroje pro recenze – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Rozhraní API a Azure Content Moderator návrháře postupu provádění můžete definovat vlastní pracovní postupy a prahových hodnot na základě obsahu zásad.
+description: Azure Content Moderator návrháře postupu provádění můžete definovat vlastní pracovní postupy a prahových hodnot na základě obsahu zásad.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8fe380e3015e5b6929aebcb898eef44d6f6bceda
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 76990fb3b6ed1815ada724f28f8276bac1cf28d4
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213272"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757399"
 ---
-# <a name="define-test-and-use-workflows"></a>Definujte, testování a použití pracovních postupů
+# <a name="define-and-use-moderation-workflows"></a>Definice a používání pracovních postupů pro moderování
 
-Rozhraní API a Azure Content Moderator návrháře postupu provádění můžete definovat vlastní pracovní postupy a prahových hodnot na základě obsahu zásad.
+V této příručce se naučíte nastavit a používat [pracovních postupů](../review-api.md#workflows) na [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com) webu. Pracovní postupy jsou založené na cloudu vlastní filtry, které vám umožní efektivněji zpracovat obsah. Pracovní postupy můžete připojit k různým službám v různých způsobů filtrování obsahu a poté přijmout vhodná opatření. Tato příručka obsahuje pokyny k používání konektoru Content Moderator (která je obsažena ve výchozím nastavení) a filtrovat obsah nastavit recenze prováděné lidmi ve scénáři typické moderování.
 
-Pracovní postupy "připojení" ke Content Moderator API pomocí konektorů. Jiná rozhraní API můžete použít, pokud je k dispozici pro toto rozhraní API konektoru. Tento příklad používá konektor Content Moderator, který je zahrnut ve výchozím nastavení.
+## <a name="create-a-new-workflow"></a>Vytvoření nového pracovního postupu
 
-## <a name="browse-to-the-workflows-section"></a>Přejděte do části pracovní postupy
+Přejděte [nástroj pro kontrolu Content Moderator](https://contentmoderator.cognitive.microsoft.com/) a přihlaste se. Na **nastavení** kartu, vyberte možnost **pracovních postupů**.
 
-Na **nastavení** kartu, vyberte možnost **pracovních postupů**.
+![Nastavení pracovních postupů](images/2-workflows-0.png)
 
-  ![Nastavení pracovních postupů](images/2-workflows-0.png)
+Na další obrazovce vyberte **přidat pracovní postup**.
 
-## <a name="start-a-new-workflow"></a>Spuštění nového pracovního postupu
+![Přidat pracovní postup](images/2-workflows-1.png)
 
-Vyberte **přidat pracovní postup**.
+### <a name="assign-a-name-and-description"></a>Zadejte název a popis
 
-  ![Přidat pracovní postup](images/2-workflows-1.png)
+Název pracovního postupu, zadejte popis a zvolte, zda pracovní postup bude zpracovávat Image nebo text.
 
-## <a name="assign-a-name-and-description"></a>Zadejte název a popis
+![Název pracovního postupu a popis](images/image-workflow-create.PNG)
 
-Název pracovního postupu, zadejte popis a zvolte, zda pracovní postup zpracovává Image nebo text.
+### <a name="define-evaluation-criteria"></a>Definujte kritéria hodnocení
 
-  ![Název pracovního postupu a popis](images/ocr-workflow-step-1.PNG)
+Přejděte na další obrazovce **Pokud** oddílu. V horní rozevírací nabídky vyberte **podmínku**. To vám umožní nakonfigurovat podmínku, na kterém bude pracovní postup provést akci. Pokud chcete použít více podmínek, vyberte **kombinaci** místo. 
 
-## <a name="define-the-evaluation-criteria-condition"></a>Definujte kritéria hodnocení ("podmínky")
+V dalším kroku vyberte konektor. Tento příklad používá **Content Moderator**. V závislosti na konektoru, kterou zvolíte se zobrazí různé možnosti pro výstupní data. Zobrazit [konektory](./configure.md#connectors) části Průvodce nastavení nástroj pro kontrolu se naučíte nastavit jiné konektory.
 
-Na následujícím snímku obrazovky vidíte pole a If-Then-Else výběry, které je třeba definovat pro své pracovní postupy. Zvolte konektor. Tento příklad používá **Content Moderator**. V závislosti na konektoru, kterou zvolíte změňte dostupné možnosti pro výstup.
+![Vyberte konektor pracovního postupu](images/image-workflow-connect-to.PNG)
 
-  ![Definujte podmínku pracovního postupu](images/ocr-workflow-step-2-condition.PNG)
+Zvolte požadovaný výstup používat a nastavit podmínky tak zkontrolovat, že před.
 
-Po zvolení konektoru a jeho výstup, který chcete, vyberte operátor a hodnotu pro podmínku.
+![Definujte podmínku pracovního postupu](images/image-workflow-condition.PNG)
 
-## <a name="define-the-action-to-take"></a>Definovat akce má být provedena
+### <a name="define-the-action"></a>Definovat akci
 
-Vyberte akci, která umožní a podmínky pro splnění. Následující příklad vytvoří revizi bitové kopie, přiřadí značku `a`a to pro podmínky uvedené. Také můžete zkombinovat více podmínek k získání požadovaných výsledků. Volitelně můžete přidáte alternativní cesta (jinak).
+Přejděte **pak** části, kde můžete vybrat akci. Následující příklad vytvoří revizi image a přiřadí značku. Volitelně můžete přidat alternativní cesta (jinak) a také nastavit akci pro tento.
 
-  ![Definovat akce pracovního postupu](images/ocr-workflow-step-3-action.PNG)
+![Definovat akce pracovního postupu](images/image-workflow-action.PNG)
 
-## <a name="save-your-workflow"></a>Uložení pracovního postupu
+### <a name="save-the-workflow"></a>Uložit pracovní postup
 
-Nakonec uložte pracovní postup a poznamenejte si název pracovního postupu. Budete potřebovat název, který chcete spustit úlohu moderování s použitím rozhraní API pro kontrolu.
+Poznamenejte si název pracovního postupu; budete potřebovat název, který má spustit úlohu moderování s rozhraním API pro pracovní postup (viz níže). Nakonec uložte pomocí pracovního postupu **Uložit** tlačítko v horní části stránky.
 
 ## <a name="test-the-workflow"></a>Test pracovního postupu
 
-Teď, když jste definovali vlastní pracovní postup, otestujte ho s ukázkovým obsahem.
+Teď, když jste definovali vlastní pracovní postup, otestujte ho s ukázkovým obsahem. Přejděte na **pracovních postupů** a vyberte odpovídající **spuštění pracovního postupu** tlačítko.
 
-Vyberte odpovídající **spuštění pracovního postupu** tlačítko.
+![Test pracovního postupu](images/image-workflow-execute.PNG)
 
-  ![Test pracovního postupu](images/ocr-workflow-step-6-list.PNG)
+Uložte zkopírované řádky [Ukázkový obrázek](https://moderatorsampleimages.blob.core.windows.net/samples/sample3.png) na váš místní disk. Potom vyberte **zvolte soubory** a odešlete image do pracovního postupu.
 
-### <a name="upload-a-file"></a>Nahrání souboru
+![Žena koupání barvy](images/sample-racy.PNG)
 
-Uložit [Ukázkový obrázek](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png) na váš místní disk. Chcete-li otestovat pracovního postupu, vyberte **zvolte soubory** a nahráním image.
+### <a name="track-progress"></a>Sledování průběhu
 
-  ![Nahrát soubor bitové kopie](images/ocr-workflow-step-7-upload.PNG)
+V automaticky otevíraném okně Další můžete zobrazit průběh pracovního postupu.
 
-### <a name="track-the-workflow"></a>Sledování pracovního postupu
+![Sledujte provádění pracovního postupu](images/image-workflow-job.PNG)
 
-Pracovní postup sledujte, jak se provede.
+### <a name="verify-workflow-action"></a>Ověření akce pracovního postupu
 
-  ![Sledujte provádění pracovního postupu](images/ocr-workflow-step-4-test.PNG)
+Přejděte **Image** kartu **zkontrolujte** a ověřte, zda je přezkoumání nově vytvořenou image.
 
-### <a name="review-any-images-flagged-for-human-moderation"></a>Zkontrolujte všechny Image s příznakem pro lidské moderování
+![Recenze obrázků](images/image-workflow-review.PNG)
 
-Zobrazte image zkontrolovat, přejděte **Image** kartu **zkontrolujte**.
+## <a name="next-steps"></a>Další postup
 
-  ![Recenze obrázků](images/ocr-sample-image-workflow1.PNG)
-
-## <a name="next-steps"></a>Další postup 
-
-Abyste mohli vyvolat pracovní postup z kódu, použijte vlastní pracovní postupy s [ `Job` rozhraní API konzoly rychlého startu](../try-review-api-job.md) a [rychlý start sady .NET SDK](../moderation-jobs-quickstart-dotnet.md).
+V této příručce, jste zjistili, jak nastavit a používat moderování pracovních postupů z Content Moderator [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com). V dalším kroku najdete v článku [pokyny k rozhraní REST API](../try-review-api-workflow.md) se naučíte vytvářet pracovní postupy prostřednictvím kódu programu.

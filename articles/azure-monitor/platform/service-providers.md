@@ -1,6 +1,6 @@
 ---
-title: Log Analytics pro poskytovatele služeb | Dokumentace Microsoftu
-description: Log Analytics může pomoct poskytovatelům spravovaných služeb (MSP) pro velké podniky, nezávislým výrobcům softwaru (ISV) a poskytovatelů hostitelských služeb, spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu.
+title: Pro poskytovatele služeb Azure Monitor | Dokumentace Microsoftu
+description: Azure Monitor může pomoct poskytovatelům spravovaných služeb (MSP) pro velké podniky, nezávislým výrobcům softwaru (ISV) a poskytovatelů hostitelských služeb, spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu.
 services: log-analytics
 documentationcenter: ''
 author: MeirMen
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
-ms.openlocfilehash: 294dd56a7eb62510c30f4fbb0dbeeafc81b790f2
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 97d8d6fac93ebabac8fb319ce2f1ab8719f5f86b
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264764"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756568"
 ---
-# <a name="log-analytics-for-service-providers"></a>Log Analytics pro poskytovatele služeb
-Log Analytics může pomoct, poskytovatelům spravovaných služeb (MSP), pro velké podniky, nezávislí výrobci softwaru (ISV) a poskytovatelů hostitelských služeb spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu. 
+# <a name="azure-monitor-for-service-providers"></a>Azure Monitor pro poskytovatele služeb
+Pracovní prostory log Analytics ve službě Azure Monitor může pomoct, poskytovatelům spravovaných služeb (MSP), pro velké podniky, nezávislí výrobci softwaru (ISV) a poskytovatelů hostitelských služeb spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu. 
 
 Velké podniky řada podobností s poskytovateli služeb, zejména v případě, že na centralizovaný tým IT, který zodpovídá za správu IT pro mnoho různých organizačních jednotek. Pro zjednodušení tento dokument používá termín *poskytovatele služeb* ale stejné funkce je také k dispozici pro podniky a ostatních zákazníků.
 
-Pro partnery a poskytovatelé, kteří jsou součástí nástroje [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) program, Log Analytics je součástí služby Azure, které je k dispozici v [předplatných Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview). 
+Pro partnery a poskytovatelé, kteří jsou součástí nástroje [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) program, Log Analytics ve službě Azure Monitor je součástí služby Azure, které je k dispozici v [předplatných Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview). 
 
 ## <a name="architectures-for-service-providers"></a>Architektury pro poskytovatele služeb
 
@@ -70,11 +70,11 @@ Nevýhody této architektury jsou:
 
 Třetí architektura poměr mezi těmito dvěma možnostmi. Je založen na první distribuovaná architektura, ve kterém jsou místní pro každého zákazníka protokoly, ale pomocí některé mechanismus, chcete-li vytvořit centrální úložiště protokolů. Část protokoly načítána do centrálního umístění pro generování sestav a analýzy. Tuto část může být malý počet datových typů nebo Souhrn aktivity, jako je například denní statistiky.
 
-Existují dvě možnosti, jak implementovat centrální umístění ve službě Log Analytics:
+Existují dvě možnosti, jak implementovat protokoly v centrálním umístění:
 
 1. Centrální pracovního prostoru: Můžete vytvořit pracovní prostor v jeho tenantovi a použít skript, který využívá poskytovatele služeb [rozhraní API pro dotazy](https://dev.loganalytics.io/) s [rozhraní API kolekce dat](../../azure-monitor/platform/data-collector-api.md) k načítání dat z různých pracovních prostorů na tomto místě. Další možností, než skript, je použití [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
-2. Power BI jako centrální umístění: Power BI může fungovat jako centrální umístění, pokud různé pracovní prostory export dat pomocí integraci mezi službou Log Analytics a [Power BI](../../azure-monitor/platform/powerbi.md). 
+2. Power BI jako centrální umístění: Power BI může fungovat jako centrální umístění, pokud různé pracovní prostory export dat pomocí integrace mezi pracovním prostoru Log Analytics a [Power BI](../../azure-monitor/platform/powerbi.md). 
 
 
 ## <a name="next-steps"></a>Další kroky

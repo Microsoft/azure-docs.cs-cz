@@ -1,6 +1,6 @@
 ---
-title: Povolit ASC pro služby ve verzi Preview centra IoT Azure IoT | Dokumentace Microsoftu
-description: Zjistěte, jak povolit ASC pro služby Azure IoT ve službě IoT Hub.
+title: Využijte Azure Security Center pro služby ve verzi Preview centra IoT Azure IoT | Dokumentace Microsoftu
+description: Zjistěte, jak povolit Azure Security Center pro službu IoT ve službě IoT Hub.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: cea7517a99358d41a8ba60a78b4e2bfdbdeaf0e8
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: cb89bb4316b1cd62b3b42a6a0fa05a9fa4513e54
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576220"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754321"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Rychlý start: Povolit službu ve službě IoT Hub
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tento článek obsahuje vysvětlení, jak povolit ASC pro službu IoT ve verzi preview ve službě IoT Hub.  
+Tento článek obsahuje vysvětlení, jak povolit Azure Security Center (ASC) pro službu IoT ve verzi preview ve službě IoT Hub.  
 
 > [!NOTE]
-> ASC pro IoT aktuálně podporuje pouze úroveň standard a vyšší centra IoT hub.
->ASC pro IoT je řešení jednoho rozbočovače. Pokud budete potřebovat více Center, se vyžadují více řešení. 
+> Azure Security Center pro IoT aktuálně podporuje pouze úroveň standard a vyšší centra IoT hub.
+> Azure Security Center pro IoT je řešení jednoho rozbočovače. Pokud budete potřebovat více Center, se vyžadují více řešení. 
 
 ## <a name="prerequisites-for-enabling-the-service"></a>Požadavky pro povolení služby
 

@@ -1,21 +1,21 @@
 ---
-title: 'Rychlý start: Vizualizujte data pomocí jazyka SQL v Power BI'
+title: 'Rychlý start: Vizualizovat data pomocí jazyka SQL v Power BI'
 description: 'V tomto rychlém startu se dozvíte, jak chcete použít jeden z těchto tří možností pro vizualizace dat v Power BI: dotaz SQL proti clusteru služby Průzkumník dat Azure.'
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 4eb6fdd5b5a78f0afb00265ebd957231464a9083
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: f41bd1dcd354d75788569f5c1f24a50c604b5737
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977280"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756345"
 ---
-# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Rychlý start: Vizualizujte data pomocí Průzkumníku dat Azure konektoru pro Power BI
+# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Rychlý start: Vizualizovat data pomocí Průzkumníku dat Azure konektoru pro Power BI
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Power BI je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky v rámci organizace.
 
@@ -51,7 +51,7 @@ Obvykle použijete nativní dotazovací jazyk pomocí Průzkumníku dat Azure, a
 
     **Nastavení** | **Hodnota** | **Popis pole**
     |---|---|---|
-    | Server | *help.kusto.Windows.NET* | Adresa URL clusteru help (bez *https://*). Pro další clustery, adresa URL je ve formě  *\<ClusterName\>.\< Oblast\>. kusto.windows.net*. |
+    | Server | *help.kusto.windows.net* | Adresa URL clusteru help (bez *https://*). Pro další clustery, adresa URL je ve formě  *\<ClusterName\>.\< Oblast\>. kusto.windows.net*. |
     | Databáze | *Ukázky* | Ukázkovou databázi, která je hostovaná v clusteru, ke kterému se připojujete. |
     | Režim připojení dat | *Import* | Určuje, jestli Power BI dokončí import dat nebo připojuje přímo ke zdroji dat. Pomocí tohoto konektoru můžete použít jednu z možností. |
     | Časový limit příkazu | Ponechte prázdné | Jak dlouho dotaz spustí předtím, než vyvolá vypršení časového limitu. |
@@ -67,11 +67,11 @@ Obvykle použijete nativní dotazovací jazyk pomocí Průzkumníku dat Azure, a
 
 1. Pokud ještě nemáte připojení ke clusteru pomoc, přihlaste se. Přihlaste se pomocí účtu Microsoft a pak vyberte **připojit**.
 
-    ![Přihlásit se](media/power-bi-sql-query/sign-in.png)
+    ![Přihlášení](media/power-bi-sql-query/sign-in.png)
 
-1. Na **help.kusto.windows.net: ukázky** obrazovky, vyberte **zatížení**.
+1. Na **help.kusto.windows.net: Ukázky** obrazovky, vyberte **zatížení**.
 
-    ![Načíst data](media/power-bi-sql-query/load-data.png)
+    ![Načtení dat](media/power-bi-sql-query/load-data.png)
 
     Tabulka se otevře v hlavního okna Power BI, v zobrazení sestav, kde můžete vytvořit sestavy založené na ukázková data.
 
@@ -86,4 +86,4 @@ Pokud už nepotřebujete sestavy, kterou jste vytvořili pro účely tohoto rych
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Vizualizujte data pomocí importovaných dotazů v Power BI](power-bi-connector.md)
+> [Rychlé zprovoznění: Vizualizovat data pomocí importovaných dotazů v Power BI](power-bi-connector.md)

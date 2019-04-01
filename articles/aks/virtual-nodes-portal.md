@@ -7,23 +7,25 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: c1e4803698525f0d084fadac14e3952b951ecae6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fd538ce6821b35dc6e3932256090afdf70b4b232
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58164438"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755261"
 ---
-# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Vytvoření a konfigurace clusteru služby Azure Kubernetes služby (AKS) používat virtuální uzly na webu Azure Portal
+# <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Ve verzi Preview – vytvoření a konfigurace clusteru služby Azure Kubernetes služby (AKS) používat virtuální uzly na webu Azure Portal
 
 Rychlé nasazení úloh v clusteru služby Azure Kubernetes Service (AKS), můžete použít virtuální uzly. S virtuální uzly mají rychlé zřízení podů a platíte jenom za sekundu pro jejich spuštění. V případě změny velikosti v nemusíte čekat automatického škálování clusteru Kubernetes nasadit virtuální počítač výpočetních uzlů pro spouštění budou další pody. Tento článek ukazuje, jak vytvořit a konfigurovat prostředky virtuální sítě a clusteru AKS pomocí virtuální uzly povolena.
 
 > [!IMPORTANT]
-> Virtuální uzly pro AKS jsou nyní v **ve verzi preview**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Funkce AKS ve verzi preview jsou samoobslužných služeb a vyjádřit výslovný souhlas. Verze Preview jsou k dispozici pro shromažďování zpětné vazby a chyb z naší komunitě. Však nepodporují technickou podporu Azure. Pokud vytvoříte cluster, nebo přidejte tyto funkce do existujících clusterů, se tento cluster nepodporuje, dokud tato funkce už je ve verzi preview a přechází do všeobecné dostupnosti (GA).
+>
+> Pokud narazíte na problémy s funkcemi ve verzi preview, [otevřete problém v úložišti Githubu AKS] [ aks-github] s názvem funkce ve verzi preview v název chyby.
 
-## <a name="preview-limitations"></a>Omezení verze Preview
+## <a name="regional-availability"></a>Regionální dostupnost
 
-Tato funkce je ve verzi preview a následující oblasti jsou podporovány pro nasazení:
+Tyto oblasti jsou podporovány pro nasazení virtuálního uzlu:
 
 * Austrálie – východ (australiaeast)
 * USA – východ (eastus)
@@ -182,6 +184,8 @@ Virtuální uzly jsou jedna komponenta škálování řešení ve službě AKS. 
 
 - [Použití automatického škálování vodorovné podů Kubernetes][aks-hpa]
 - [Použití automatického škálování clusteru Kubernetes][aks-cluster-autoscaler]
+- [Projděte si ukázku automatického škálování pro virtuální uzly][virtual-node-autoscale]
+- [Další informace o Virtual Kubelet opensourcovou knihovnu][virtual-kubelet-repo]
 
 <!-- LINKS - external -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
@@ -190,6 +194,9 @@ Virtuální uzly jsou jedna komponenta škálování řešení ve službě AKS. 
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
+[aks-github]: https://github.com/azure/aks/issues]
+[virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
+[virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
 
 <!-- LINKS - internal -->
 [aks-network]: ./networking-overview.md
@@ -198,4 +205,3 @@ Virtuální uzly jsou jedna komponenta škálování řešení ve službě AKS. 
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
 [acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret
-

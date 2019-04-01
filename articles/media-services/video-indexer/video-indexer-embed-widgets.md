@@ -7,21 +7,18 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: fd680b00feb8a75dfec952d7211554100fca00d8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7cb02a0793a4c96c98b4932b6046839f004461bc
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075062"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758120"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Vložení widgetů Video Indexer do vašich aplikací
 
 Tento článek ukazuje, jak vložit widgety Video Indexeru do vašich aplikací. Video Indexer podporuje dva typy vkládání widgetů do aplikace: **Kognitivní přehledy** a **Player**. 
-
-> [!NOTE]
-> Počínaje 1. února 2018 se verze 1 **kognitivní přehledy** widgetu se přestanou používat. Vložit adresu URL verze bude ve výchozím nastavení `version=2`.
 
 Od verze 2, widgetu základní adresa URL obsahuje oblast účtu. Například generuje účet v oblasti USA – západ: `https://wus2.videoindexer.ai/embed/insights/...`.
 
@@ -34,7 +31,6 @@ Widget **Cognitive Insights** zahrnuje všechny vizuální přehledy, které se 
 |Název|Definice|Popis|
 |---|---|---|
 |widgets|Řetězce oddělené čárkami|Umožňuje řídit, které přehledy chcete vykreslit. <br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` vykreslí jenom přehledy lidí a značek<br/>Dostupné možnosti: people (lidé), keywords (klíčová slova), annotations (poznámky), brands (značky), sentiments (citová zabarvení), transcript (přepis), search (vyhledávání).<br/>Není podporováno prostřednictvím adresy URL ve version=2<br/><br/>**Poznámka:** **Widgety** param adresa URL není podporováno, pokud **verze = 2** se používá. |
-|version|Verze widgetu **Cognitive Insights**|Abyste získali přehledy toho nejnovější aktualizace widgetů, přidejte `?version=2` dotazů odesílaných na adresu URL vložení. Například `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2`. <br/> Pokud chcete získat starší verzi, stačí `version=2` z adresy URL odebrat.
 
 ### <a name="player-widget"></a>Widget Player
 

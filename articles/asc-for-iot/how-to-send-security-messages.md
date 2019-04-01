@@ -1,6 +1,6 @@
 ---
-title: Odeslání zprávy o zabezpečení ASC pro náhled IoT | Dokumentace Microsoftu
-description: Zjistěte, jak odeslat zabezpečení zpráv pomocí ASC pro IoT.
+title: Odeslání zprávy o zabezpečení Azure Security Center pro IoT ve verzi Preview | Dokumentace Microsoftu
+description: Zjistěte, jak odeslat zabezpečení zprávy pomocí Azure Security Center pro IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: d8eefff5a5ea03237eea60a63b63d70f605f10b3
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 2e8fc3e2cf85fb06d37347870e3b2b9c82f1aa96
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650151"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754779"
 ---
 # <a name="send-security-messages-sdk"></a>Odesílat zprávy o zabezpečení SDK
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tato příručka vysvětluje ASC pro možnosti služby IoT, pokud budete chtít shromažďují a zasílají zprávy o zabezpečení vašeho zařízení bez použití ASC pro agenta IoT a vysvětluje, jak postupovat.  
+Tato příručka vysvětluje Azure Security Center (ASC) pro možnosti služby IoT, pokud budete chtít shromažďují a zasílají zprávy o zabezpečení vašeho zařízení bez použití ASC pro agenta IoT a vysvětluje, jak postupovat.  
 
 V této příručce se naučíte: 
 > [!div class="checklist"]

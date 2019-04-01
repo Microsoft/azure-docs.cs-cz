@@ -1,6 +1,6 @@
 ---
-title: Co je ASC pro náhled IoT | Dokumentace Microsoftu
-description: Další informace o ASC funkce IoT a služby.
+title: Co je Azure Security Center pro náhled IoT | Dokumentace Microsoftu
+description: Další informace o službě Azure Security Center pro funkce IoT a služby.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 46107797acad52e3df82d341750c52f99c81d63e
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 21737017c5087d25e36aec9701d3b4c5ddcb54e8
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578811"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757603"
 ---
-# <a name="introducing-asc-for-iot"></a>Představení ASC pro IoT
+# <a name="introducing-azure-security-center-for-iot"></a>Představujeme Azure Security Center pro IoT
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="secure-your-azure-iot-solution"></a>Zabezpečení řešení Azure IoT 
@@ -35,7 +35,7 @@ Sjednocení správy zabezpečení a povolit analýzu komplexní hrozeb a ochrana
 
 Internet of Things rychle transformuje potýkáme. Díky možnosti objevíte přehledy z vašimi připojenými zařízeními a back endových systémů můžete nyní transformovat tyto přehledy o výkonné aplikace a služby vaší organizaci dosáhnout bezprecedentní úrovně provozní a obchodní výkon. Nicméně, jak miliardy nová zařízení jsou připojená k Internetu a integrovat do našich denní životy a naše produkty; Vaše týmy operace zabezpečení se muset ujistit, dostatečně rychle rozvíjet své strategie zabezpečení pro tyto nové rovin útoku. Stejně jako jakýkoli jiný systém zabezpečení řešení IoT potřebují ochranu v každé fázi implementace. 
 
-ASC pro IoT zjednodušuje hybridní úlohy ochrany, neboť poskytuje jednotný přehled o a ovládací prvek, adaptivní ohrožení ochrany před únikem informací a inteligentní detekce hrozeb a reakce ve úlohy běžící na hraničních zařízeních, místní, v Azure nebo v jiných cloudech. 
+Azure Security Center (ASC) pro IoT zjednodušuje tím, že poskytuje jednotný přehled o a ovládací prvek, adaptivní ohrožení ochrany před únikem informací a inteligentní detekce hrozeb a reakce ve úlohy běžící na hraničních zařízeních, místní, v Azure a v hybridní úlohy ochrany jiných cloudech. 
 
 ![ASC architektury IoT](./media/architecture/asc-for-iot-architecture.png)
 

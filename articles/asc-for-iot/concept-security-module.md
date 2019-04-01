@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení ASC pro dvojčaty modulů IoT zabezpečení ve verzi Preview | Dokumentace Microsoftu
-description: Další informace o konceptu dvojčaty modulů zabezpečení a jak se používají v ASC pro IoT.
+title: Principy dvojčat Azure Security Center pro modul IoT zabezpečení ve verzi Preview | Dokumentace Microsoftu
+description: Další informace o konceptu dvojčaty modulů zabezpečení a jak se používají ve službě Azure Security Center pro IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: d766b17c9d49792d2e8192a952e8e6e559a8acd3
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 56bc93973bd2c080b13b97f1344cc165f742e757
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579372"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758407"
 ---
 # <a name="security-module"></a>Modul zabezpečení
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tento článek vysvětluje, jak ASC for IoT používá dvojčata zařízení a moduly. 
+Tento článek vysvětluje, jak Azure Security Center (ASC) for IoT používá dvojčata zařízení a moduly. 
 
 ## <a name="device-twins"></a>Dvojčata zařízení
 

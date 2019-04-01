@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: eb7f368100269c4e47076bb6b78bafc23e7a6089
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8cd6a68f6593a5b746a19e42e4835deb05e112b6
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845599"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757186"
 ---
 # <a name="streaming-endpoints"></a>Koncové body streamování
 
@@ -33,18 +33,38 @@ Pro všechny další koncové body: `{EndpointName}-{AccountName}-{DatacenterAbb
 
 ## <a name="types"></a>Typy  
 
-Existují dva **koncový bod streamování** typy: **Standardní** a **Premium**. Typ je definovaný počet jednotek škálování (`scaleUnits`) přidělit pro koncový bod streamování. 
+Existují dva typy **koncových bodů streamování**: **Standard** a **Premium**. Typ je definovaný počet jednotek škálování (`scaleUnits`) přidělit pro koncový bod streamování. 
 
-Tabulka popisuje typy:  
+Popis těchto typů najdete v následující tabulce:  
 
 |Type|Jednotky škálování|Popis|
 |--------|--------|--------|  
-|**Koncový bod streamování standard** (doporučeno)|0|**Standardní** typ možnost se doporučuje pro téměř všechny scénáře datových proudů a cílové skupiny. **Standardní** typ automaticky škáluje šířku odchozího pásma. <br/>Pro zákazníky s velmi vysokými požadavky na Media Services nabízejí **Premium** streamování koncových bodů, které je možné horizontálně navyšovat kapacitu pro největší publikum internet. Pokud neočekáváte velké cílové skupiny a souběžné prohlížeče, kontaktujte nás na amsstreaming\@microsoft.com pokyny ohledně toho, jestli budete muset přesunout **Premium** typu. |
-|**Premium Streaming Endpoint**|>0|Koncové body streamování **Premium** jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Přejdete **Premium** typ úpravou `scaleUnits`. `scaleUnits` poskytují vyhrazený odchozího přenosu dat kapacity, který lze dokupovat v jednotkách po 200 MB/s. Při použití **Premium** typ, každá povolená jednotka poskytuje další kapacitu šířky pásma aplikace. |
+|**Koncový bod streamování Standard** (doporučeno)|0|Výchozí hodnota je koncový bod streamování **standardní** typu, ale můžete změnit na typu Premium.<br/> Standardní typ možnost se doporučuje pro téměř všechny scénáře datových proudů a cílové skupiny. Typ **Standard** škáluje šířku odchozího pásma automaticky. Propustnost z tohoto typu koncový bod streamování je až 600 MB/s. Video fragmenty do mezipaměti v CDN, nepoužívejte šířky pásma koncového bodu streamování.<br/>Pro zákazníky s velmi náročnými požadavky služba Media Services nabízí koncové body streamování **Premium**, pomocí kterých je možné horizontálně rozšiřovat kapacitu i pro ty největší cílové skupiny na internetu. Pokud neočekáváte velké cílové skupiny a souběžné prohlížeče, kontaktujte nás na amsstreaming\@microsoft.com pokyny ohledně toho, jestli budete muset přesunout **Premium** typu. |
+|**Koncový bod streamování Premium**|> 0|Koncové body streamování **Premium** jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Přejdete **Premium** typ úpravou `scaleUnits`. `scaleUnits` poskytují vyhrazený odchozího přenosu dat kapacity, který lze dokupovat v jednotkách po 200 MB/s. Při použití typu **Premium** každá povolená jednotka poskytuje aplikaci další kapacitu šířky pásma. |
+ 
+## <a name="comparing-streaming-types"></a>Porovnání typů datových proudů
+
+### <a name="features"></a>Funkce
+
+Funkce|Standard|Premium
+---|---|---
+Zdarma prvních 15 dnů| Ano |Ne
+Propustnost |Až 600 MB/s při Azure CDN se nepoužívá. Škálování s CDN.|200 MB/s za jednotku (SU) pro streaming. Škálování s CDN.
+SLA | 99.9|99,9 (200 MB/s za SU).
+CDN|Azure CDN, třetích stran CDN nebo žádné CDN.|Azure CDN, třetích stran CDN nebo žádné CDN.
+Ceny jsou poměrně přepočítané| Denně|Denně
+Dynamické šifrování|Ano|Ano
+Dynamické balení|Ano|Ano
+Měřítko|Automatické škálování až na cílové propustnosti.|Dodatečné jednotky streamování
+Filtrování/G20/vlastního hostitele IP <sup>1</sup>|Ano|Ano
+Progresivní stahování|Ano|Ano
+Doporučené použití |Doporučuje se pro většinu scénářů streamování.|Profesionální použití.<br/>Pokud se domníváte, že máte potřebám Standard. Kontaktujte nás (amsstreaming@microsoft.com) Pokud budete chtít souběžných cílovou skupinu velikost větší než 50 000 prohlížeče.
+
+<sup>1</sup> pouze použít přímo na koncový bod streamování, pokud síť CDN není povolené pro koncový bod.
 
 ## <a name="working-with-cdn"></a>Práce s CDN
 
-Ve většině případů byste měli mít povolila se síť CDN. Ale pokud jsou předvídání maximální souběžnosti menší než 500 prohlížeče pak, doporučuje se zakázat CDN, protože CDN škáluje se souběžností nejlepší.
+Ve většině případů byste měli mít povolenou síť CDN. Pokud však předpokládáte, že budete mít maximálně 500 souběžných diváků, doporučujeme síť CDN zakázat, protože se nejlépe škáluje s vysokou souběžností.
 
 > [!NOTE]
 > Koncový bod streamování `hostname` a adresu URL streamování zůstala stejná, zda povolit síť CDN.
@@ -70,7 +90,7 @@ Tato část obsahuje podrobnosti o některé vlastnosti Endpoint streamování. 
     Pokud se zobrazí tato chyba, datového centra se nepodporuje. Měli byste se pokusit jiného datového centra.
 - `cdnProfile` – Když `cdnEnabled` je nastavena na hodnotu true, můžete také předat `cdnProfile` hodnoty. `cdnProfile` je název profilu CDN, kde budou vytvářeny koncového bodu CDN. Můžete zadat existující cdnProfile nebo použít nový. Pokud je hodnota NULL a `cdnEnabled` je true, výchozí hodnota používaná "AzureMediaStreamingPlatformCdnProfile". Pokud zadaný `cdnProfile` již existuje, je vytvořen koncový bod je pod ním. Pokud profil, který neexistuje, se vytvoří automaticky nový profil.
 - `cdnProvider` – Když je povolené CDN, můžete také předat `cdnProvider` hodnoty. `cdnProvider` ovládací prvky, které poskytovatel se použije. V současné době jsou podporovány tři hodnoty: "StandardVerizon", "PremiumVerizon" a "StandardAkamai". Pokud se nezadá žádná hodnota a `cdnEnabled` má hodnotu true, "StandardVerizon" se používá (tj. výchozí hodnota).
-- `crossSiteAccessPolicies` – Umožňuje určit zásady přístupu mezi weby pro různé klienty. Další informace najdete v tématu [specifikace souboru zásady mezi doménami](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) a [zpřístupnění služby k dispozici napříč hranicemi domén](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx).
+- `crossSiteAccessPolicies` – Umožňuje určit zásady přístupu mezi weby pro různé klienty. Další informace najdete v tématu [specifikace souboru zásady mezi doménami](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) a [zpřístupnění služby k dispozici napříč hranicemi domén](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx).<br/>Nastavení platí jenom pro technologie Smooth Streaming.
 - `customHostNames` – Umožňuje nakonfigurovat koncový bod streamování tak, aby přijímal přenosy směrované na vlastním názvem hostitele.  Tato vlastnost je platný pro koncové body streamování Premium a Standard a můžete nastavit, když `cdnEnabled`: false.
     
     Služba Media Services musí potvrdit vlastnictví názvu domény. Služba Media Services ověří vlastnictví názvu domény tak, že vyžaduje `CName` záznam obsahující ID účtu Media Services jako součást přidávaného do domény používá. Jako příklad pro "sports.contoso.com", který se použije jako vlastním názvem hostitele pro koncový bod streamování, záznam pro `<accountId>.contoso.com` musí být nakonfigurované tak, aby odkazoval na jeden z názvů hostitelů ověření Media Services. Ověření názvu hostitele se skládá z verifydns. \<zónu dns mediaservices >. 

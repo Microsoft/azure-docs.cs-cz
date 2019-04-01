@@ -1,207 +1,142 @@
 ---
-title: Pracovní postupy pro moderování obsahu z rozhraní API konzoly – Content Moderator
+title: Definování pracovních postupů pro moderování s konzolou rozhraní REST API – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Operace pracovního postupu můžete využít v Azure Content Moderator k vytvoření nebo aktualizaci pracovního postupu nebo získat podrobnosti pracovního postupu pomocí rozhraní API pro kontrolu.
+description: Obsah moderátor revizi rozhraní API služby Azure můžete použít k definování vlastních pracovních postupů a prahových hodnot na základě obsahu zásad.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: article
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 1c18544a0fd135eb546660c442b865bf1249dfe5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e150b1321f2fbd348e737222c752203281503643
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883079"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756584"
 ---
-# <a name="workflows-from-the-api-console"></a>Pracovní postupy z konzoly pro rozhraní API
+# <a name="define-and-use-moderation-workflows-rest"></a>Definice a používání moderování pracovních postupů (REST)
 
-Použití [operace pracovního postupu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) v Azure vytvořit nebo aktualizovat pracovní postup nebo získat podrobnosti pracovního postupu pomocí rozhraní API pro kontrolu Content Moderatoru. Pomocí tohoto rozhraní API můžete definovat jednoduchý, komplexní a vnořené výrazy pro pracovní postupy. Pracovní postupy se zobrazí v nástroj pro recenze pro použití týmem. Pracovní postupy také používají operace úlohy revizi rozhraní API.
+Pracovní postupy jsou založené na cloudu vlastní filtry, které vám umožní efektivněji zpracovat obsah. Pracovní postupy můžete připojit k různým službám v různých způsobů filtrování obsahu a poté přijmout vhodná opatření. Tato příručka ukazuje, jak používat pracovní postup rozhraní REST API, prostřednictvím rozhraní API konzoly, vytváření a používání pracovních postupů. Jakmile porozumíte strukturu rozhraní API, můžete snadno port těchto volání na jakoukoli platformu REST kompatibilní.
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Přejděte [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com/). Pokud jste tak ještě neučinili, přihlaste. 
-2. V nástroji pro kontrolu v rámci **nastavení**, vyberte **pracovních postupů** kartu, jak je znázorněno v nástroj pro recenze [kurzu pracovního postupu](Review-Tool-User-Guide/Workflows.md).
-
-### <a name="browse-to-the-workflows-screen"></a>Přejděte do okna pracovních postupů
-
-Na řídicím panelu Content Moderator vyberte **revize** > **nastavení** > **pracovních postupů**. Zobrazí se výchozí pracovní postup.
-
-  ![Výchozí pracovní postup](images/default-workflow-listed.PNG)
-
-### <a name="get-the-json-definition-of-the-default-workflow"></a>Získat definice JSON pracovního výchozí
-
-Vyberte **upravit** a potom vyberte možnost pro pracovní postup **JSON** kartu. Zobrazí se následující výraz JSON:
-
-    {
-        "Type": "Logic",
-        "If": {
-            "ConnectorName": "moderator",
-            "OutputName": "isAdult",
-            "Operator": "eq",
-            "Value": "true",
-            "Type": "Condition"
-            },
-        "Then": {
-        "Perform": [
-        {
-            "Name": "createreview",
-            "CallbackEndpoint": null,
-            "Tags": []
-        }
-        ],
-        "Type": "Actions"
-        }
-    }
-
-## <a name="get-workflow-details"></a>Získat podrobnosti pracovního postupu
-
-Použití **pracovního postupu - Get** operace zobrazíte podrobnosti o existujícím pracovním postupem výchozí.
-
-Nástroj pro recenze, přejděte na [pověření](Review-Tool-User-Guide/credentials.md#the-review-tool) oddílu.
-
-### <a name="browse-to-the-api-reference"></a>Přejděte na reference k rozhraní API
-
-1. V **pověření** zobrazit, vyberte možnost [reference k rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59). 
-2. Když **pracovního postupu - vytvořit nebo aktualizovat** otevře se stránka, přejděte na [pracovního postupu - Get](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b44b3f9b0711b43c4c58) odkaz.
-
-### <a name="select-your-region"></a>Vyberte oblast
-
-Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu.
-
-  ![Pracovní postup - výběr oblasti Get](images/test-drive-region.png)
-
-  **Pracovního postupu - Get** otevře se konzola rozhraní API.
-
-### <a name="enter-parameters"></a>Zadání parametrů
-
-Zadejte hodnoty pro **týmu**, **workflowname**, a **Ocp-Apim-Subscription-Key** (váš klíč předplatného):
-
-- **Tým**: ID týmu, který jste vytvořili při nastavování vašeho [Zkontrolujte nástroj účet](https://contentmoderator.cognitive.microsoft.com/). 
-- **workflowname**: Název pracovního postupu. Použití `default`.
-- **Ocp-Apim-Subscription-Key**: Na **nastavení** kartu. Další informace najdete v tématu [Přehled](overview.md).
-
-  ![Parametry dotazu a hlavičky](images/workflow-get-default.PNG)
-
-### <a name="submit-your-request"></a>Odeslání žádosti
-  
-Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK`a **obsah odpovědi** pole zobrazuje následující pracovní postup JSON:
-
-    {
-        "Name": "default",
-        "Description": "Default",
-        "Type": "Image",
-        "Expression": {
-        "If": {
-            "ConnectorName": "moderator",
-            "OutputName": "isadult",
-            "Operator": "eq",
-            "Value": "true",
-            "AlternateInput": null,
-            "Type": "Condition"
-            },
-        "Then": {
-            "Perform": [{
-                "Name": "createreview",
-                "Subteam": null,
-                "CallbackEndpoint": null,
-                "Tags": []
-            }],
-            "Type": "Actions"
-            },
-            "Else": null,
-            "Type": "Logic"
-            }
-    }
-
+- Přihlaste se nebo si vytvořte účet v Content Moderatoru [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com/) lokality.
 
 ## <a name="create-a-workflow"></a>Vytvoření pracovního postupu
 
-Nástroj pro recenze, přejděte na [pověření](Review-Tool-User-Guide/credentials.md#the-review-tool) oddílu.
+Pokud chcete vytvořit nebo aktualizovat pracovní postup, přejděte na **[pracovního postupu - vytvořit nebo aktualizovat](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)** rozhraní API odkazovat na stránku a klikněte na tlačítko pro vaše klíčové oblasti (zjistíte ji v adresu URL koncového bodu na **přihlašovacích údajů**  stránku [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com/)). Spustí se rozhraní API konzoly, kde můžete snadno vytvořit a spustit volání rozhraní REST API.
 
-### <a name="browse-to-the-api-reference"></a>Přejděte na reference k rozhraní API
+![Pracovní postup - vytvořit nebo aktualizovat stránku oblasti výběr](images/test-drive-region.png)
 
-V **pověření** zobrazit, vyberte možnost [reference k rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59). **Pracovního postupu - vytvořit nebo aktualizovat** otevře se stránka.
+### <a name="enter-rest-call-parameters"></a>Zadejte parametry volání REST
 
-### <a name="select-your-region"></a>Vyberte oblast
+Zadejte hodnoty pro **týmu**, **workflowname**, a **Ocp-Apim-Subscription-Key**:
 
-Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu.
+- **Tým**: ID týmu, který jste vytvořili při nastavování vašeho [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com/) účtu (součástí **Id** pole na obrazovce nástroje zkontrolujte přihlašovací údaje).
+- **workflowname**: Název nového pracovního postupu pro přidání (nebo existující název, pokud chcete aktualizovat existující pracovní postup).
+- **Ocp-Apim-Subscription-Key**: Content Moderator klíč. Tento nástroj naleznete na **nastavení** karty [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com).
 
-  ![Pracovní postup - vytvořit nebo aktualizovat stránku oblasti výběr](images/test-drive-region.png)
+![Pracovní postup - vytvořit parametry dotazu nebo aktualizace konzoly a hlavičky](images/workflow-console-parameters.PNG)
 
-  **Pracovního postupu - vytvořit nebo aktualizovat** otevře se konzola rozhraní API.
+### <a name="enter-a-workflow-definition"></a>Zadejte definici pracovního postupu
 
-### <a name="enter-parameters"></a>Zadání parametrů
+1. Upravit **text žádosti** pole k zadání požadavku JSON s podrobnostmi o **popis** a **typ** (buď `Image` nebo `Text`).
+2. Pro **výraz**, zkopírujte výchozí pracovní postup výraz JSON. Vaše poslední řetězec JSON by měl vypadat nějak takto:
 
-Zadejte hodnoty pro **týmu**, **workflowname**, a **Ocp-Apim-Subscription-Key** (váš klíč předplatného):
-
-- **Tým**: ID týmu, který jste vytvořili při nastavování vašeho [Zkontrolujte nástroj účet](https://contentmoderator.cognitive.microsoft.com/). 
-- **workflowname**: Název nového pracovního postupu.
-- **Ocp-Apim-Subscription-Key**: Na **nastavení** kartu. Další informace najdete v tématu [Přehled](overview.md).
-
-  ![Pracovní postup - vytvořit parametry dotazu nebo aktualizace konzoly a hlavičky](images/workflow-console-parameters.PNG)
-
-### <a name="enter-the-workflow-definition"></a>Zadejte definici pracovního postupu
-
-1. Upravit **text žádosti** pole k zadání požadavku JSON s podrobnostmi o **popis** a **typ** (Image nebo Text). 
-2. Pro **výraz**, zkopírujte výchozí výraz pracovního postupu v předchozí části, jak je znázorněno zde:
-
+```json
+{
+  "Description":"<A description for the Workflow>",
+  "Type":"Text",
+  "Expression":{
+    "Type":"Logic",
+    "If":{
+      "ConnectorName":"moderator",
+      "OutputName":"isAdult",
+      "Operator":"eq",
+      "Value":"true",
+      "Type":"Condition"
+    },
+    "Then":{
+      "Perform":[
         {
-            "Description": "Default workflow from API console",
-            "Type": "Image",
-            "Expression": 
-                // Copy the default workflow expression from the preceding section
-        }
+          "Name":"createreview",
+          "CallbackEndpoint":null,
+          "Tags":[
 
-    Vaše tělo požadavku bude vypadat jako následující žádosti JSON:
-
-        {
-            "Description": "Default workflow from API console",
-            "Type": "Image",
-            "Expression": {
-                "Type": "Logic",
-                "If": {
-                    "ConnectorName": "moderator",
-                    "OutputName": "isAdult",
-                    "Operator": "eq",
-                    "Value": "true",
-                    "Type": "Condition"
-                    },
-                "Then": {
-                "Perform": [
-                {
-                    "Name": "createreview",
-                    "CallbackEndpoint": null,
-                    "Tags": [ ]
-                }
-                ],
-                "Type": "Actions"
-                }
-            }
+          ]
         }
- 
+      ],
+      "Type":"Actions"
+    }
+  }
+}
+```
+
+> [!NOTE]
+> Jednoduché, komplexní a vnořené výrazy můžete definovat pro své pracovní postupy pomocí tohoto rozhraní API. [Pracovního postupu - vytvořit nebo aktualizovat](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) dokumentace je příkladem složitější logiku.
+
 ### <a name="submit-your-request"></a>Odeslání žádosti
   
 Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK`a **obsah odpovědi** zobrazí `true`.
 
-### <a name="check-out-the-new-workflow"></a>Podívejte se na nový pracovní postup
+### <a name="examine-the-new-workflow"></a>Prozkoumejte nový pracovní postup
 
-Nástroj pro recenze, vyberte **revize** > **nastavení** > **pracovních postupů**. Nový pracovní postup se zobrazí a je připravený k použití.
+V [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com/)vyberte **nastavení** > **pracovních postupů**. Nový pracovní postup by se zobrazit v seznamu.
 
-  ![Nástroj pro revize seznam pracovních postupů](images/workflow-console-new-workflow.PNG)
-  
-### <a name="review-your-new-workflow-details"></a>Projděte si podrobnosti o vašem novém pracovního postupu
+![Nástroj pro revize seznam pracovních postupů](images/workflow-console-new-workflow.PNG)
 
-1. Vyberte **upravit** a potom vyberte možnost pro pracovní postup **návrháře** a **JSON** karty.
+Vyberte **upravit** možnost pro pracovní postup a přejděte **návrháře** kartu. Zde můžete zobrazit reprezentaci intuitivní logiky JSON.
 
-   ![Kartu návrháře pro vybraný pracovní postup](images/workflow-console-new-workflow-designer.PNG)
+![Kartu návrháře pro vybraný pracovní postup](images/workflow-console-new-workflow-designer.PNG)
 
-2. Chcete-li zobrazit JSON pracovního postupu, vyberte **JSON** kartu.
+## <a name="get-workflow-details"></a>Získat podrobnosti pracovního postupu
+
+K načtení podrobností o stávajícím pracovním postupu, přejděte na **[pracovního postupu - Get](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b44b3f9b0711b43c4c58)** rozhraní API odkazovat na stránku a klikněte na tlačítko pro vaši oblast (oblasti, ve kterém je spravována klíč).
+
+![Pracovní postup - výběr oblasti Get](images/test-drive-region.png)
+
+Zadejte parametry volání REST stejně jako v předchozím oddílu. Ujistěte se, že současné době **workflowname** je název existujícího pracovního postupu.
+
+![Parametry dotazu a hlavičky](images/workflow-get-default.PNG)
+
+Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK`a **obsah odpovědi** pole zobrazuje pracovní postup ve formátu JSON, jako je následující:
+
+```json
+{
+  "Name":"default",
+  "Description":"Default",
+  "Type":"Image",
+  "Expression":{
+    "If":{
+      "ConnectorName":"moderator",
+      "OutputName":"isadult",
+      "Operator":"eq",
+      "Value":"true",
+      "AlternateInput":null,
+      "Type":"Condition"
+    },
+    "Then":{
+      "Perform":[
+        {
+          "Name":"createreview",
+          "Subteam":null,
+          "CallbackEndpoint":null,
+          "Tags":[
+
+          ]
+        }
+      ],
+      "Type":"Actions"
+    },
+    "Else":null,
+    "Type":"Logic"
+  }
+}
+```
 
 ## <a name="next-steps"></a>Další postup
 
-* Složitější příklady pracovního postupu najdete v článku [přehledu pracovních postupů](workflow-api.md).
-* Další informace o použití pracovních postupů pomocí [úlohy moderování obsahu](try-review-api-job.md).
+- Další informace o použití pracovních postupů pomocí [úlohy moderování obsahu](try-review-api-job.md).

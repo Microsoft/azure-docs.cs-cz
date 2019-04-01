@@ -29,15 +29,27 @@ items:
   items:
   - name: Účty úložiště
     href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-  - name: Autorizace
-    href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+  - name: Zabezpečení
     items:
-    - name: Ověřování pomocí Azure AD
-      href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Autorizace s využitím sdíleného klíče
-      href: /rest/api/storageservices/authorize-with-shared-key
-    - name: Autorizace s využitím SAS
-      href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: Autorizace
+      href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      items:
+      - name: Ověřování pomocí Azure AD
+        href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: Autorizace s využitím sdíleného klíče
+        href: /rest/api/storageservices/authorize-with-shared-key
+      - name: Autorizace s využitím SAS
+        href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: Příručka zabezpečení
+      href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: Šifrování pro neaktivní uložená data
+      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: Šifrování v klidovém stavu pomocí klíčů zákazníka
+      href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: Rozšířená ochrana před internetovými útoky
+      href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: Povolení zabezpečeného TLS pro klienta Azure Storage
+      href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
   - name: Data redundancy
     href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     items:
@@ -51,18 +63,6 @@ items:
       href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Navrhování aplikací s vysokou dostupností s využitím RA-GRS
       href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-  - name: Zabezpečení
-    items:
-    - name: Příručka zabezpečení
-      href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Šifrování pro neaktivní uložená data
-      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Šifrování v klidovém stavu pomocí klíčů zákazníka
-      href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Rozšířená ochrana před internetovými útoky
-      href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Povolení zabezpečeného TLS pro klienta Azure Storage
-      href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
   - name: Výkon a škálování
     items:
     - name: Škálovatelnost a cíle výkonnosti
@@ -99,36 +99,36 @@ items:
       href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Upgrade účtu úložiště
       href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-  - name: Autorizace přístupu k datům fronty
-    items:
-    - name: Možnosti autorizace pro uživatele
-      items:
-      - name: Portál
-        href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: CLI nebo PowerShell
-        href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Správa přístupových práv pomocí RBAC
-      items:
-      - name: Portál
-        href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: Rozhraní příkazového řádku
-        href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: PowerShell
-        href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Ověřování pomocí Azure AD
-      items:
-      - name: Ověření z aplikace
-        href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: Ověřování pomocí spravovaných identit
-        href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Autorizace s využitím sdíleného klíče
-      items:
-      - name: Konfigurace připojovacích řetězců
-        href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: Použití rozhraní REST API služby Azure Storage
-        href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
   - name: Zabezpečení
     items:
+    - name: Autorizace přístupu k datům fronty
+      items:
+      - name: Možnosti autorizace pro uživatele
+        items:
+        - name: Portál
+          href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: CLI nebo PowerShell
+          href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: Správa přístupových práv pomocí RBAC
+        items:
+        - name: Portál
+          href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Rozhraní příkazového řádku
+          href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: PowerShell
+          href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: Ověřování pomocí Azure AD
+        items:
+        - name: Ověření z aplikace
+          href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Ověřování pomocí spravovaných identit
+          href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: Autorizace s využitím sdíleného klíče
+        items:
+        - name: Konfigurace připojovacích řetězců
+          href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Použití rozhraní REST API služby Azure Storage
+          href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Konfigurace bran firewall a virtuálních sítí
       href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Šifrování na straně klienta
@@ -278,9 +278,9 @@ items:
       href: https://github.com/Azure/azure-storage-ios
   - name: Nabídky pro dodržování předpisů
     href: ../common/storage-compliance-offerings.md
-ms.openlocfilehash: 70fc5b2b14aaad98a1d412a8b5a56763b4652d7d
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 0aaac348743077c15fd1b25416e7509adeee3d56
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446298"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754720"

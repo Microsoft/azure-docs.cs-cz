@@ -2,18 +2,18 @@
 title: Zkontrolujte stav clusteru služby Průzkumník dat Azure
 description: Tento článek popisuje kroky k určení, zda je váš cluster Průzkumník dat Azure v pořádku.
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d07873b34a41ff20b5007a88743f6b150d4d8a3d
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8930c2a7538ca33622de68c9a888349b3301cd98
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212822"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755861"
 ---
 # <a name="check-the-health-of-an-azure-data-explorer-cluster"></a>Zkontrolujte stav clusteru služby Průzkumník dat Azure
 

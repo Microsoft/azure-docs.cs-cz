@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: cfaf0bf20449262fcebb6cefc1b0a499c6190ae8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d1c65b590fd68f68fdaeb110c0fd00e0c5a6649a
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861166"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756472"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Rychlý start: Vyzkoušejte si Content Moderator na webu
 
@@ -69,5 +69,5 @@ Nebo můžete pokračovat s dalšími kroky, abyste mohli začít používat roz
 
 Další informace o použití rozhraní API pro moderování sami ve vaší aplikaci.
 - Implementace moderování obrázků. Použití [rozhraní API konzoly](try-image-api.md) nebo [ C# rychlý Start](image-moderation-quickstart-dotnet.md) prohledávat obrázky a detekovat potenciální obsah pro dospělé nebo pikantního pomocí značek, skóre spolehlivosti a další extrahovat informace.
-- Implementace moderování textu. Použít [rozhraní API konzoly](try-text-api.md) nebo použijte [ C# rychlý Start](text-moderation-quickstart-dotnet.md) kontrolovat textový obsah pro potenciální vulgární výrazy, klasifikace s podporou počítače nežádoucího textu (preview) a identifikovatelné osobní údaje informace o (PII). 
+- Implementace moderování textu. Použít [rozhraní API konzoly](try-text-api.md) nebo použijte [ C# rychlý Start](text-moderation-quickstart-dotnet.md) kontrolovat textový obsah pro potenciální vulgární výrazy, klasifikaci s podporou počítače nežádoucího textu (preview) a osobních údajů.
 - Implementace moderování videa. Postupujte podle [Průvodce postupy moderování videa pro C# ](video-moderation-api.md) kontrolovat videa a detekovat potenciální obsah pro dospělé nebo pikantního. 

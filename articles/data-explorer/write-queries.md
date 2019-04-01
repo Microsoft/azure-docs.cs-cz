@@ -3,17 +3,17 @@ title: Psát dotazy pro Průzkumník dat Azure
 description: V tomto návodu se dozvíte, jak provádět základní a rozšířené dotazy pro Průzkumník dat Azure.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0a2b56164662a13d8254d8956712077e5f8a83a9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8afb829f806ab55a069ded9cb7198f66368e8720
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961516"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758694"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Psát dotazy pro Průzkumník dat Azure
 
@@ -26,7 +26,7 @@ Dotazy můžete spustit v tomto článku v jednom ze dvou způsobů:
 - V Průzkumníku dat Azure *clusteru help* , že jsme nastavili na podporu učení.
     [Přihlaste se ke clusteru](https://dataexplorer.azure.com/clusters/help/databases/samples) pomocí účtu organizace e-mailu, který je členem skupiny Azure Active directory.
 
-- Na vlastní cluster, který obsahuje ukázková data StormEvents. Další informace najdete v tématu [rychlý start: vytvoření clusteru Průzkumník dat Azure a databáze](create-cluster-database-portal.md) a [Ingestování ukázková data do Průzkumníku dat Azure](ingest-sample-data.md).
+- Na vlastní cluster, který obsahuje ukázková data StormEvents. Další informace najdete v tématu [rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze](create-cluster-database-portal.md) a [Ingestování ukázková data do Průzkumníku dat Azure](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
@@ -84,7 +84,7 @@ StormEvents | count
 
 ### <a name="take"></a>Take
 
-[**Využijte**](https://docs.microsoft.com/azure/kusto/query/takeoperator): vrátí až po zadaný počet řádků dat.
+[**Využijte**](https://docs.microsoft.com/azure/kusto/query/takeoperator): Vrátí až do zadaného počtu řádků dat.
 
 Následující dotaz vrátí pět řádků z tabulky StormEvents. Klíčové slovo *limit* je alias pro *trvat.*
 
@@ -99,7 +99,7 @@ StormEvents | take 5
 
 ### <a name="project"></a>Projekt
 
-[**projekt**](https://docs.microsoft.com/azure/kusto/query/projectoperator): vybere podmnožinu sloupců.
+[**project**](https://docs.microsoft.com/azure/kusto/query/projectoperator): Vybere podmnožinu sloupců.
 
 Následující dotaz vrátí konkrétní sadu sloupců.
 
@@ -113,7 +113,7 @@ StormEvents
 
 ### <a name="where"></a>kde
 
-[**kde**](https://docs.microsoft.com/azure/kusto/query/whereoperator): filtruje tabulku na podmnožinu řádků, které splňují predikát.
+[**kde**](https://docs.microsoft.com/azure/kusto/query/whereoperator): Filtruje tabulku na podmnožinu řádků, které splňují predikát.
 
 Následující dotaz vyfiltruje data podle `EventType` a `State`.
 
@@ -128,7 +128,7 @@ StormEvents
 
 ### <a name="sort"></a>Řazení
 
-[**řazení**](https://docs.microsoft.com/azure/kusto/query/sortoperator): řazení řádků ve vstupní tabulce v pořadí podle jednoho nebo více sloupců.
+[**řazení**](https://docs.microsoft.com/azure/kusto/query/sortoperator): Seřaďte řádky vstupní tabulky podle jednoho nebo více sloupců do pořadí.
 
 Následující dotaz seřadí v sestupném pořadí podle data `DamageProperty`.
 
@@ -147,7 +147,7 @@ StormEvents
 
 ### <a name="top"></a>nahoru
 
-[**horní**](https://docs.microsoft.com/azure/kusto/query/topoperator): vrátí první *N* záznamy seřazené podle zadaných sloupců.
+[**horní**](https://docs.microsoft.com/azure/kusto/query/topoperator): Vrátí první *N* záznamy seřazené podle zadaných sloupců.
 
 Následující dotaz vrátí stejné výsledky jako výše jeden menší operátorem.
 
@@ -162,7 +162,7 @@ StormEvents
 
 ### <a name="extend"></a>Rozšíření
 
-[**rozšíření**](https://docs.microsoft.com/azure/kusto/query/extendoperator): výpočetní prostředí odvozené sloupce.
+[**rozšíření**](https://docs.microsoft.com/azure/kusto/query/extendoperator): Výpočetní prostředí odvozené sloupce.
 
 Následující dotaz vytvoří nový sloupec výpočtem hodnoty v každém řádku.
 
@@ -180,7 +180,7 @@ Výrazy můžou obsahovat běžných operátorů (+, -, *, /, %), a celou řadu 
 
 ### <a name="summarize"></a>shrnutí
 
-[**Shrnutí**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator): agreguje skupiny řádků.
+[**Shrnutí**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator): Agreguje skupiny řádků.
 
 Následující dotaz vrátí počet událostí podle `State`.
 
@@ -213,7 +213,7 @@ Výsledek **shrnout** operace obsahuje:
 
 ### <a name="render"></a>Vykreslení
 
-[**vykreslení**](https://docs.microsoft.com/azure/kusto/query/renderoperator): zobrazí výsledky jako grafického výstupu.
+[**vykreslení**](https://docs.microsoft.com/azure/kusto/query/renderoperator): Zobrazí výsledky jako grafického výstupu.
 
 Následující dotaz zobrazí sloupcový graf.
 
@@ -271,7 +271,7 @@ Tato část popisuje některé z vašich nejdůležitějších skalární operá
 
 ### <a name="bin"></a>BIN()
 
-[**BIN()**](https://docs.microsoft.com/azure/kusto/query/binfunction): zaokrouhlí dolů celé číslo hodnoty násobkem velikosti danou přihrádku.
+[**bin()**](https://docs.microsoft.com/azure/kusto/query/binfunction): Zaokrouhlí číslo dolů celé číslo hodnoty násobkem velikosti danou přihrádku.
 
 Následující dotaz vypočítá počet a velikost kbelíku jeden den.
 
@@ -283,9 +283,9 @@ StormEvents
 | summarize event_count = count() by bin(StartTime, 1d)
 ```
 
-### <a name="case"></a>Case()
+### <a name="case"></a>case()
 
-[**Case()**](https://docs.microsoft.com/azure/kusto/query/casefunction): vyhodnotí seznam predikáty a vrátí první výsledek výrazu, jehož predikát uspokojen nebo konečné **else** výrazu. Tento operátor můžete kategorizovat nebo seskupení dat:
+[**case()**](https://docs.microsoft.com/azure/kusto/query/casefunction): Vyhodnotí seznam predikáty a vrátí první výsledek výrazu, jehož predikát uspokojen nebo konečné **else** výrazu. Tento operátor můžete kategorizovat nebo seskupení dat:
 
 Následující dotaz vrátí nový sloupec `deaths_bucket` a seskupí úmrtí podle čísla.
 
@@ -304,7 +304,7 @@ StormEvents
 
 ### <a name="extract"></a>extract()
 
-[**extract()**](https://docs.microsoft.com/azure/kusto/query/extractfunction): získá odpovídající regulární výraz v textovém řetězci.
+[**extract()**](https://docs.microsoft.com/azure/kusto/query/extractfunction): Získá odpovídající regulární výraz v textovém řetězci.
 
 Následující dotaz extrahuje hodnoty konkrétní atribut z trasování.
 
@@ -320,7 +320,7 @@ Tento dotaz používá **nechat** příkazu, který váže názvu (v tomto pří
 
 ### <a name="parsejson"></a>parse_json()
 
-[**parse_json()**](https://docs.microsoft.com/azure/kusto/query/parsejsonfunction): interpretuje řetězec jako hodnotu JSON a vrátí hodnotu jako dynamický. Je lepší než používat **extractjson()** fungovat v případě, že je potřeba extrahovat více než jeden element složené objekt JSON.
+[**parse_json()**](https://docs.microsoft.com/azure/kusto/query/parsejsonfunction): Interpretuje řetězec jako hodnotu JSON a vrátí hodnotu jako dynamický. Je lepší než používat **extractjson()** fungovat v případě, že je potřeba extrahovat více než jeden element složené objekt JSON.
 
 Následující dotaz extrahuje prvky JSON z pole.
 
@@ -358,7 +358,7 @@ MyData
 
 ### <a name="ago"></a>ago()
 
-[**ago()**](https://docs.microsoft.com/azure/kusto/query/agofunction): odečte daný časový interval od aktuální čas UTC.
+[**ago()**](https://docs.microsoft.com/azure/kusto/query/agofunction): Odečte daný časový interval od aktuální čas UTC.
 
 Následující dotaz vrací data za posledních 12 hodin.
 
@@ -374,7 +374,7 @@ print TimeStamp= range(now(-5d), now(), 1h), SomeCounter = range(1,121)
 
 ### <a name="startofweek"></a>startofweek()
 
-[**startofweek()**](https://docs.microsoft.com/azure/kusto/query/startofweekfunction): vrátí začátek týdne obsahující data o posun, pokud je k dispozici
+[**startofweek()**](https://docs.microsoft.com/azure/kusto/query/startofweekfunction): Vrátí začátek týdne obsahující data o posun, pokud je k dispozici
 
 Následující dotaz vrátí začátek týdne s jinou hodnotu posunu.
 
@@ -389,7 +389,7 @@ Tento dotaz používá **rozsah** operátor, který generuje jednosloupcovou tab
 
 ### <a name="between"></a>Between()
 
-[**Between()**](https://docs.microsoft.com/azure/kusto/query/betweenoperator): odpovídá vstup, který se nachází uvnitř včetně rozsahu.
+[**between()**](https://docs.microsoft.com/azure/kusto/query/betweenoperator): Odpovídá vstup, který se nachází uvnitř včetně rozsahu.
 
 Následující dotaz vyfiltruje data v daném časovém období.
 
@@ -417,7 +417,7 @@ Kusto má mnoho tabulkové operátory, z nichž některé jsou popsané v dalš�
 
 ### <a name="parse"></a>Analýzy
 
-[**analyzovat**](https://docs.microsoft.com/azure/kusto/query/parseoperator): řetězcový výraz vyhodnocuje a analyzuje jeho hodnotu do jednoho nebo více počítaných sloupců. Existují tři způsoby, jak analyzovat: jednoduché (výchozí), regex a volný.
+[**analyzovat**](https://docs.microsoft.com/azure/kusto/query/parseoperator): Vyhodnotí výraz řetězce a analyzuje jeho hodnotu do jednoho nebo více počítaných sloupců. Existují tři způsoby, jak analyzovat: jednoduché (výchozí), regex a volný.
 
 Následující dotaz analyzuje trasování a extrahuje příslušné hodnoty, použijte výchozí nastavení jednoduché analýzy. Výraz (označované jako StringConstant) je hodnota regulární řetězec a shoda není strict: Rozšířené sloupce musí odpovídat požadované typy.
 
@@ -510,9 +510,9 @@ Jsme probrali základní agregace, jako je třeba **počet** a **shrnout**výše
 
 ### <a name="top-nested"></a>vnořené nahoru
 
-[**vnořené horní**](https://docs.microsoft.com/azure/kusto/query/topnestedoperator): vytvoří hierarchické výsledky horní, kde každá úroveň je procházení podrobností podle předchozí hodnoty úrovni.
+[**vnořené horní**](https://docs.microsoft.com/azure/kusto/query/topnestedoperator): Vytvoří hierarchické výsledky horní, kde každá úroveň je procházení podrobností podle předchozí hodnoty úrovni.
 
-Tento operátor je užitečné pro scénáře vizualizace řídicího panelu, nebo když je nutné odpovědět na otázku, jako je následující: "najít prvních N hodnot k1 (pomocí některé agregace); pro každý z nich najdete, co jsou hodnoty top-M k2 (s použitím jiného agregace); ..."
+Tento operátor je užitečné pro scénáře vizualizace řídicího panelu, nebo když je potřeba zodpovědět dotaz podobný tomuto: "Najít prvních N hodnot k1 (pomocí některé agregace); pro každý z nich najdete, co jsou hodnoty top-M k2 (s použitím jiného agregace); ..."
 
 Následující dotaz vrátí hierarchickou tabulku s `State` na nejvyšší úrovni, za nímž následuje `Sources`.
 
@@ -525,9 +525,9 @@ top-nested 3 of Source by sum(BeginLat),
 top-nested 1 of EndLocation by sum(BeginLat)
 ```
 
-### <a name="pivot-plugin"></a>modul plug-in Pivot()
+### <a name="pivot-plugin"></a>pivot() plugin
 
-[**modul plug-in Pivot()**](https://docs.microsoft.com/azure/kusto/query/pivotplugin): otočí to zapnutím jedinečné hodnoty od jeden sloupec ve vstupní tabulce do více sloupců v tabulce výstupní tabulky. Operátor, který provádí agregace, ve kterém jsou povinné pro všechny zbývající hodnoty sloupců v konečném výstupu.
+[**pivot() plugin**](https://docs.microsoft.com/azure/kusto/query/pivotplugin): Otočí to zapnutím jedinečné hodnoty od jeden sloupec ve vstupní tabulce do více sloupců v tabulce výstupní tabulky. Operátor, který provádí agregace, ve kterém jsou povinné pro všechny zbývající hodnoty sloupců v konečném výstupu.
 
 Následující dotaz aplikuje filtr a otáčí řádky na sloupce.
 
@@ -541,9 +541,9 @@ StormEvents
 | evaluate pivot(State)
 ```
 
-### <a name="dcount"></a>DCount()
+### <a name="dcount"></a>dcount()
 
-[**DCount()**](https://docs.microsoft.com/azure/kusto/query/dcount-aggfunction): vrací odhadovaný počet jedinečných hodnot výrazu ve skupině. Použití [ **count()** ](https://docs.microsoft.com/azure/kusto/query/countoperator) mají spočítat všechny hodnoty.
+[**dcount()**](https://docs.microsoft.com/azure/kusto/query/dcount-aggfunction): Vrátí odhad počtu jedinečných hodnot výrazu ve skupině. Použití [ **count()** ](https://docs.microsoft.com/azure/kusto/query/countoperator) mají spočítat všechny hodnoty.
 
 Následující dotaz vrátí počet jedinečných `Source` podle `State`.
 
@@ -556,7 +556,7 @@ StormEvents
 
 ### <a name="dcountif"></a>dcountif()
 
-[**dcountif()**](https://docs.microsoft.com/azure/kusto/query/dcountif-aggfunction): vrací odhadovaný počet jedinečných hodnot výrazů pro řádky, pro které predikát vyhodnotí na hodnotu true.
+[**dcountif()**](https://docs.microsoft.com/azure/kusto/query/dcountif-aggfunction): Vrátí odhad počtu jedinečných hodnot výrazů pro řádky, pro které predikát vyhodnotí na hodnotu true.
 
 Následující dotaz vrátí počet různých hodnot položky `Source` kde `DamageProperty < 5000`.
 
@@ -570,7 +570,7 @@ StormEvents
 
 ### <a name="dcounthll"></a>dcount_hll()
 
-[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): počítá **dcount** ve výsledcích HyperLogLog (generovaných [**hll** ](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction)   nebo [**hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
+[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): Vypočítá **dcount** ve výsledcích HyperLogLog (generovaných [**hll**](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) nebo [**hll_merge** ](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
 
 Následující dotaz používá algoritmus HLL ke generování počet.
 
@@ -585,7 +585,7 @@ StormEvents
 
 ### <a name="argmax"></a>arg_max()
 
-[**arg_max()**](https://docs.microsoft.com/azure/kusto/query/arg-max-aggfunction): vyhledává řádek ve skupině, která maximalizuje výrazu a vrátí hodnotu jiný výraz (nebo * obnovíte celý řádek).
+[**arg_max()**](https://docs.microsoft.com/azure/kusto/query/arg-max-aggfunction): Vyhledává řádek ve skupině, která maximalizuje výrazu a vrátí hodnotu jiný výraz (nebo * obnovíte celý řádek).
 
 Následující dotaz vrátí čas poslední záplava sestav v jednotlivých stavech.
 
@@ -600,7 +600,7 @@ StormEvents
 
 ### <a name="makeset"></a>makeset()
 
-[**makeset()**](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction): vrátí dynamická pole (JSON) sadu jedinečných hodnot, které přebírá výraz ve skupině.
+[**makeset()**](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction): Vrátí dynamické pole (JSON) sadu jedinečných hodnot, které přebírá výraz ve skupině.
 
 Následující dotaz vrátí všechny časy při zahlcení byla hlášena každý stav a vytvoří pole ze sady různých hodnot.
 
@@ -615,7 +615,7 @@ StormEvents
 
 ### <a name="mvexpand"></a>mvexpand
 
-[**mvexpand**](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator): rozbalí kolekcí s více hodnotami ze sloupce dynamickým typem tak, aby každá hodnota v kolekci získá samostatný řádek. Všechny ostatní sloupce v rozbaleném řádku jsou duplicitní. Je opakem makelist.
+[**mvexpand**](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator): Rozbalí kolekcí s více hodnotami ze sloupce dynamickým typem tak, aby každá hodnota v kolekci získá samostatný řádek. Všechny ostatní sloupce v rozbaleném řádku jsou duplicitní. Je opakem makelist.
 
 Následující dotaz vygeneruje ukázková data vytvořením sady a poté ho použít k předvedení **mvexpand** možnosti.
 
@@ -632,7 +632,7 @@ FloodDataSet
 
 ### <a name="percentiles"></a>percentiles()
 
-[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): vrací odhadovaný pro zadaný rozbočovač [**nejbližší pořadí percentilu**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) plnění definované výrazem. Přesnost závisí na hustota na percentilu počtu obyvatel v oblasti. Lze použít pouze v kontextu agregace uvnitř [**shrnout**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator).
+[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): Vrátí odhad pro zadaný rozbočovač [**nejbližší pořadí percentilu**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) plnění definované výrazem. Přesnost závisí na hustota na percentilu počtu obyvatel v oblasti. Lze použít pouze v kontextu agregace uvnitř [**shrnout**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator).
 
 Následující dotaz vypočítá percentily doby trvání storm.
 
@@ -665,7 +665,7 @@ Tato část popisuje prvky, které vám umožní vytvářet složitější dotaz
 
 ### <a name="let"></a>let
 
-[**umožní**](https://docs.microsoft.com/azure/kusto/query/letstatement): zlepšuje modularitu a opakované použití. **Nechat** příkaz umožňuje potenciálně velmi složitý výraz přerušení na více částí, každá vázán na název a společně tvoří tyto části. A **nechat** příkaz lze také vytvořit uživatelem definované funkce a zobrazení (výrazy nad tabulek, jejichž výsledky vypadají nová tabulka). Výrazy vázány **nechat** příkaz může být skalární typu tabulky typu nebo uživatelem definované funkce (výrazy lambda).
+[**umožní**](https://docs.microsoft.com/azure/kusto/query/letstatement): Zlepšuje modularitu a opakované použití. **Nechat** příkaz umožňuje potenciálně velmi složitý výraz přerušení na více částí, každá vázán na název a společně tvoří tyto části. A **nechat** příkaz lze také vytvořit uživatelem definované funkce a zobrazení (výrazy nad tabulek, jejichž výsledky vypadají nová tabulka). Výrazy vázány **nechat** příkaz může být skalární typu tabulky typu nebo uživatelem definované funkce (výrazy lambda).
 
 Následující příklad vytvoří proměnné tabulky typu a používá ho v následných výrazu.
 
@@ -685,7 +685,7 @@ LightningStorms
 
 ### <a name="join"></a>join
 
-[**připojení k**](https://docs.microsoft.com/azure/kusto/query/joinoperator): sloučí řádky dvou tabulek a vytvoří novou tabulku porovnáním hodnoty zadané sloupce z každé tabulky. Kusto podporuje celou řadu typů spojení: **fullouter**, **vnitřní**, **innerunique**, **leftanti**, **leftantisemi**, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter**, **rightsemi**.
+[**připojení k**](https://docs.microsoft.com/azure/kusto/query/joinoperator): Sloučí řádky dvou tabulek a vytvoří novou tabulku porovnáním hodnot zadané sloupce z každé tabulky. Kusto podporuje celou řadu typů spojení: **fullouter**, **vnitřní**, **innerunique**, **leftanti**, **leftantisemi **, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter **, **rightsemi**.
 
 Následující příklad připojí pomocí vnitřního spojení dvou tabulek.
 
@@ -715,7 +715,7 @@ X
 
 ### <a name="serialize"></a>Serializace
 
-[**serializace**](https://docs.microsoft.com/azure/kusto/query/serializeoperator): serializuje řádku nastavíte tak, aby je možné použít funkce, které vyžadují serializovaná data, jako je třeba **row_number()**.
+[**serializace**](https://docs.microsoft.com/azure/kusto/query/serializeoperator): Serializuje řádku nastavíte tak, aby je možné použít funkce, které vyžadují serializovaná data, jako je třeba **row_number()**.
 
 Následující dotaz bude úspěšné, protože je serializovaná data.
 
@@ -741,7 +741,7 @@ StormEvents
 
 ### <a name="cross-database-and-cross-cluster-queries"></a>Dotazy napříč databázemi a napříč clusterem
 
-[Dotazy napříč databázemi a napříč clusterem](https://docs.microsoft.com/azure/kusto/query/cross-cluster-or-database-queries): můžete dotazovat databázi na stejném clusteru rekapitulací ho jako `database("MyDatabase").MyTable`. Můžete dotazovat databázi na vzdáleném clusteru tak, že na ni odkazuje jako `cluster("MyCluster").database("MyDatabase").MyTable`.
+[Dotazy napříč databázemi a napříč clusterem](https://docs.microsoft.com/azure/kusto/query/cross-cluster-or-database-queries): Můžete dotazovat databázi na stejném clusteru rekapitulací ho jako `database("MyDatabase").MyTable`. Můžete dotazovat databázi na vzdáleném clusteru tak, že na ni odkazuje jako `cluster("MyCluster").database("MyDatabase").MyTable`.
 
 Následující dotaz je volána z jednoho clusteru a dotazování dat z `MyCluster` clusteru. Ke spuštění tohoto dotazu, použijte vlastní název clusteru a název databáze.
 
@@ -757,7 +757,7 @@ Tato část obsahuje prvky a dotazy, které ukazují, jak snadné je k analýze 
 
 ### <a name="activitycountsmetrics-plugin"></a>modul plug-in activity_counts_metrics
 
-[**modul plug-in activity_counts_metrics**](https://docs.microsoft.com/azure/kusto/query/activity-counts-metrics-plugin): vypočítá metriky užitečné aktivity (celkový počet hodnot, jednoznačného počtu hodnot, jednoznačného počtu hodnot a agregované jednoznačného počtu). Metriky se počítají pro každý časový interval, pak jsou porovnány a agregovat a s všech předchozích časových oken.
+[**activity_counts_metrics plugin**](https://docs.microsoft.com/azure/kusto/query/activity-counts-metrics-plugin): Vypočítá metriky užitečné aktivity (celkový počet hodnot, jednoznačného počtu hodnot, jednoznačného počtu hodnot a agregované jednoznačného počtu). Metriky se počítají pro každý časový interval, pak jsou porovnány a agregovat a s všech předchozích časových oken.
 
 Následující dotaz analyzuje uživatelské přijetí výpočtem denní počty aktivity.
 
@@ -791,7 +791,7 @@ window)
 
 ### <a name="activityengagement-plugin"></a>modul plug-in activity_engagement
 
-[**modul plug-in activity_engagement**](https://docs.microsoft.com/azure/kusto/query/activity-engagement-plugin): vypočítá poměr engagement aktivity na základě ID sloupce přes posuvné okno časové osy. **modul plug-in activity_engagement** lze použít pro výpočet DAU WAU a MAU (denní, týdenní a měsíční aktivních uživatelů).
+[**modul plug-in activity_engagement**](https://docs.microsoft.com/azure/kusto/query/activity-engagement-plugin): Vypočítá poměr engagement aktivity na základě ID sloupce přes posuvné okno časové osy. **modul plug-in activity_engagement** lze použít pro výpočet DAU WAU a MAU (denní, týdenní a měsíční aktivních uživatelů).
 
 Následující dotaz vrátí poměr celkový počet jedinečných uživatelů na základě aplikace každý den ve srovnání s celkový počet jedinečných uživatelů v aplikaci, každý týden, na posouvá sedm dní.
 
@@ -817,7 +817,7 @@ range _day from _start to _end step 1d
 
 ### <a name="activitymetrics-plugin"></a>modul plug-in activity_metrics
 
-[**modul plug-in activity_metrics**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin): vypočítá metriky užitečné aktivity (počet jedinečných hodnot, jednoznačného počtu nových hodnot, míra uchování a četnost změn dat) podle aktuálního období okna oproti předchozí okno období.
+[**modul plug-in activity_metrics**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin): Vypočítá metriky užitečné aktivity (počet jedinečných hodnot, jednoznačného počtu nových hodnot, míra uchování a četnost změn dat) podle aktuálního období okna oproti předchozí okno období.
 
 Následující dotaz vypočítá míru četnosti změn a uchovávání dat pro danou datovou sadu.
 
@@ -842,7 +842,7 @@ range _day from _start to _end step 1d
 
 ### <a name="newactivitymetrics-plugin"></a>modul plug-in new_activity_metrics
 
-[**modul plug-in new_activity_metrics**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): vypočítá metriky užitečné aktivity (počet jedinečných hodnot, jednoznačného počtu nových hodnot, míra uchování a četnost změn dat) pro kohorta noví uživatelé. Je podobný koncept tento modul plug-in [**modulu plug-in activity_metrics**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), ale se zaměřuje na nové uživatele.
+[**modul plug-in new_activity_metrics**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): Vypočítá metriky užitečné aktivity (počet jedinečných hodnot, jednoznačného počtu nových hodnot, míra uchování a četnost změn dat) pro kohorta noví uživatelé. Je podobný koncept tento modul plug-in [**modulu plug-in activity_metrics**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), ale se zaměřuje na nové uživatele.
 
 Následující dotaz vypočítá mírou uchování a četnost změn s oknem týden over týden pro nové kohorta uživatelů (uživatelů, které byly přijaty na první týden).
 
@@ -864,7 +864,7 @@ range Day from _start to _end step 1d
 
 ### <a name="sessioncount-plugin"></a>modul plug-in session_count
 
-[**modul plug-in session_count**](https://docs.microsoft.com/azure/kusto/query/session-count-plugin): vypočítá počet relací na základě ID sloupce nad časovou osu.
+[**modul plug-in session_count**](https://docs.microsoft.com/azure/kusto/query/session-count-plugin): Vypočítá počet relací na základě ID sloupce nad časovou osu.
 
 Následující dotaz vrátí počet relací. Relace se považuje za aktivní, pokud ID uživatele se zobrazí alespoň jednou v časové rozmezí 100 časové úseky, zatímco vzhled back okno relace je 41 časové úseky.
 
@@ -884,7 +884,7 @@ _data
 
 ### <a name="funnelsequence-plugin"></a>modul plug-in funnel_sequence
 
-[**modul plug-in funnel_sequence**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-plugin): vypočítá jednoznačného počtu uživatelů, kteří provedli posloupnost státy; ukazuje distribuci předchozí a další stavy, které vedly k nebo byly dodrženy pořadím.
+[**modul plug-in funnel_sequence**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-plugin): Vypočítá jednoznačného počtu uživatelů, kteří provedli posloupnost státy; Zobrazuje distribuci předchozí a další stavy, které vedly k nebo byly dodrženy pořadím.
 
 Následující dotaz zobrazí událost, která se stane před a za všechny události tornádu 2007.
 
@@ -900,7 +900,7 @@ StormEvents
 
 ### <a name="funnelsequencecompletion-plugin"></a>modul plug-in funnel_sequence_completion
 
-[**modul plug-in funnel_sequence_completion**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin): vypočítá Trychtýř dokončené pořadí kroků v rámci různých časových období.
+[**modul plug-in funnel_sequence_completion**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin): Vypočítá Trychtýř dokončené kroky v rámci různých časových období.
 
 Následující dotaz kontroluje dokončení trychtýřového grafu pořadí: `Hail -> Tornado -> Thunderstorm -> Wind` v "celkové" doby jednu hodinu, čtyři hodiny a jeden den (`[1h, 4h, 1d]`).
 

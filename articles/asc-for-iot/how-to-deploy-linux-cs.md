@@ -1,6 +1,6 @@
 ---
-title: Pokyny k instalaci a nasazení Linuxu C# agenta ASC pro náhled IoT | Dokumentace Microsoftu
-description: Zjistěte, jak nainstalovat ASC pro agenta IoT na 32bitová i 64bitová verze systému Linux.
+title: Pokyny k instalaci a nasazení Linuxu C# agenta služby Azure Security Center pro náhled IoT | Dokumentace Microsoftu
+description: Zjistěte, jak Azure Security Center pro IoT agenta nainstalovat na 32bitová verze a 64bitová verze systému Linux.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: d6b4e6065b0ef198ad583b3760124730e658fe0b
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: be4c663d3a1e99ef67cbbbc2f39b315f1080125c
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619904"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758338"
 ---
-# <a name="deploy-asc-for-iot-c-based-security-agent-for-linux"></a>Nasazení ASC pro IoT C#– na základě zabezpečení agenta pro Linux
+# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Nasazení Azure Security Center pro IoT C#– na základě zabezpečení agenta pro Linux
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tato příručka vysvětluje, jak nainstalovat a nasadit ASC pro IoT C#-agent zabezpečení založeného na Linuxu.
+Tato příručka vysvětluje, jak nainstalovat a nasadit Azure Security Center (ASC) pro IoT C#-agent zabezpečení založeného na Linuxu.
 
 V této příručce se naučíte: 
 > [!div class="checklist"]

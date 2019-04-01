@@ -2,17 +2,17 @@
 title: Použití konceptu s AKS a Azure Container Registry
 description: Použití konceptu s AKS a Azure Container Registry
 services: container-service
-author: iainfoulds
+author: zr-msft
 ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
-ms.author: iainfou
-ms.openlocfilehash: 5169b8856155df5e62b1e85d291ce6c1b54c8a87
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: zarhoads
+ms.openlocfilehash: 462cfd6ec0a6b25f85dda0245dd4f5feed7cb712
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011945"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755663"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Použití konceptu s Azure Kubernetes Service (AKS)
 

@@ -1,5 +1,5 @@
 items:
-- name: Dokumentace ke službě ASC for IoT Preview
+- name: Dokumentace ke službě Azure Security Center (ASC) for IoT Preview
   href: index.yml
 - name: Přehled
   href: overview.md
@@ -69,9 +69,9 @@ items:
     href: http://blogs.msdn.com/b/azuresecurity/
   - name: Regionální dostupnost
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 17508e05a8de52e12487bf35fd3e063761abcbe2
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 1d9d2b51fb1a07081c4ac2f4b115363c74cca6d0
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575160"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754581"

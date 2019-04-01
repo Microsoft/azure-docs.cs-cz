@@ -1,6 +1,6 @@
 ---
-title: Vytvořit vlastní upozornění ASC pro náhled IoT | Dokumentace Microsoftu
-description: Vytvořte a přiřaďte zařízení vlastní výstrahy pro ASC pro IoT.
+title: Vytvoření vlastních výstrah pro Azure Security Center pro IoT ve verzi Preview | Dokumentace Microsoftu
+description: Vytvoření a přiřazení vlastního zařízení výstrah pro Azure Security Center pro IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: fa1825d6f6f6ea5e6c026791aa70dd1b37bdad90
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 40bec01b402d7a597a480a738840cba8f388d88b
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574732"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755144"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Rychlý start: Vytvořit vlastní upozornění
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Použití výstrah a vlastní skupiny zabezpečení, plně využijte informace o zabezpečení začátku do konce a znalostí zařazené do kategorií zařízení k zajištění lepší zabezpečení v řešení IoT. 
@@ -33,7 +33,7 @@ Použití výstrah a vlastní skupiny zabezpečení, plně využijte informace o
 
 Znáte nejlepší zařízení IoT.
 
-Pro zákazníky, kteří plně porozumět jejich zařízení očekávané chování ASC pro IoT umožňuje přeložit tyto znalosti do zásad chování zařízení a upozornění na jakékoli odchylky od očekávaného, běžné chování.
+Pro zákazníky, kteří plně porozumět jejich zařízení očekávané chování Azure Security Center (ASC) pro IoT umožňuje přeložit tyto znalosti do zásad chování zařízení a upozornění na jakékoli odchylky od očekávaného, běžné chování.
 
 ## <a name="security-groups"></a>Skupiny zabezpečení
 

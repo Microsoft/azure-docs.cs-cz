@@ -3,17 +3,17 @@ title: 'Kurz: Ingestovat data diagnostiky a aktivitu protokolu v Průzkumníku d
 description: V tomto kurzu se dozvíte, jak k ingestování dat do Průzkumníku dat Azure bez jeden řádek kódu a dotaz tato data.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 3/14/2019
-ms.openlocfilehash: 422813c1ddb77aa11195d3021484744839c4e3bf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5d6b595b442b645f57454e317e6535645f643598
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994337"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756842"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Kurz: Příjem dat v Průzkumníku dat Azure bez jeden řádek kódu
 

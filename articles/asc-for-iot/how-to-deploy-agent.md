@@ -1,6 +1,6 @@
 ---
-title: Vybrat a nasadit ASC pro IoT agenta ve verzi Preview | Dokumentace Microsoftu
-description: Další informace o tom, jak vybrat a nasadit ASC pro agenty zabezpečení IoT na zařízeních IoT.
+title: Vyberte a nasazení Azure Security Center pro IoT agenta ve verzi Preview | Dokumentace Microsoftu
+description: Další informace o tom, jak vybrat a nasazení Azure Security Center pro agenty zabezpečení IoT na zařízeních IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 208f7cdbc9d610713d73c5af1e02de5faf11474c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d3a7c3b1b08ab4f0fecd854b969ac18bf9a73ccf
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580790"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755291"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Vyberte a nasaďte agenta zabezpečení do zařízení IoT
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-ASC pro IoT poskytuje referenční architektury pro agenty zabezpečení, které monitorování a shromažďování dat ze zařízení IoT.
+Azure Security Center (ASC) pro IoT poskytuje referenční architektury pro agenty zabezpečení, které monitorování a shromažďování dat ze zařízení IoT.
 Zobrazit [zabezpečení agenta referenční architektura](security-agent-architecture.md) Další informace.
 
 Agenti jsou vyvíjeny jako open source projekty a jsou k dispozici mají dvě varianty: <br> [C](https://aka.ms/iot-security-github-c), a [ C# ](https://aka.ms/iot-security-github-cs).

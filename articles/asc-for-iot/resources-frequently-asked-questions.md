@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy k ASC pro náhled IoT | Dokumentace Microsoftu
-description: Najdete odpovědi na nejčastější dotazy ohledně ASC funkce IoT a služby.
+title: Nejčastější dotazy k Azure Security Center pro náhled IoT | Dokumentace Microsoftu
+description: Najdete odpovědi na nejčastější dotazy ohledně Azure Security Center pro funkce IoT a služby.
 services: ASCforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 8940d629d2f4827ee724c813a40394378dde5a4c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: dab30a03ff73664fde4e5377794d3ae00625af93
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575143"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755325"
 ---
-# <a name="asc-for-iot-frequently-asked-questions"></a>Nejčastější dotazy k ASC pro IoT  
+# <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Nejčastější dotazy k Azure Security Center pro IoT  
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tento článek obsahuje seznam nejčastějších dotazů a odpovědí týkajících ASC pro IoT. 
+Tento článek obsahuje seznam nejčastějších dotazů a odpovědí o Azure Security Center (ASC) pro IoT. 
 
 ## <a name="does-azure-provide-support-for-iot-security"></a>Azure poskytuje podporu pro zabezpečení IoT?
 

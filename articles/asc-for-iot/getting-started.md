@@ -1,6 +1,6 @@
 ---
 title: Začněte používat Azure Security Center (ASC) pro verzi Preview IoT | Dokumentace Microsoftu
-description: Začněte porozumět základním pracovním postupem ASC funkce IoT a služby.
+description: Začněte porozumět základní pracovní postup služby Azure Security Center pro funkce IoT a služby.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 37815c1f1afe3e4c99e2fe171b21857a2018f709
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 23b15b92c844af85f2e1279e531c38ac7d517423
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648312"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755132"
 ---
-# <a name="get-started-with-azure-security-center-asc-for-iot"></a>Začínáme s Azure Security Center (ASC) pro IoT 
+# <a name="get-started-with-azure-security-center-for-iot"></a>Začínáme s Azure Security Center pro IoT 
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tento článek obsahuje vysvětlení různých stavební bloky ASC pro služby Azure IoT a vysvětluje, jak začít pracovat s [povolení služby](quickstart-onboard-iot-hub.md). 
+Tento článek obsahuje vysvětlení různých stavební bloky Azure Security Center (ASC) pro služby Azure IoT a vysvětluje, jak začít pracovat s [povolení služby](quickstart-onboard-iot-hub.md). 
 
 ASC pro IoT můžete bez problémů integrovat do služby IoT Hub poskytnout zabezpečení analýzu konfigurace centra IoT, identitu zařízení a Centrum – zařízení komunikačních schémat.
 Rozšířené možnosti zabezpečení poskytuje ASC pro IoT založené na agentovi shromažďování dat zabezpečení z zařízení IoT.

@@ -1,6 +1,6 @@
 ---
-title: Výstrahy v Průvodci zabezpečením ASC pro náhled IoT | Dokumentace Microsoftu
-description: Další informace o výstrahách zabezpečení a doporučenou nápravu pomocí funkce IoT a služby ASC.
+title: Výstrahy v Průvodci zabezpečením Azure Security Center pro náhled IoT | Dokumentace Microsoftu
+description: Další informace o výstrahách zabezpečení a doporučené nápravy pro funkce IoT a služby pomocí Azure Security Center.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 23af0d9e2d7c4033a2457676b29b5e4b2f8c15ea
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 987bfa0da190bd2bd29634b46b5f06ff4dc1cc19
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579440"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755103"
 ---
-# <a name="asc-for-iot-security-alerts"></a>ASC pro výstrahy zabezpečení IoT
+# <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center pro výstrahy zabezpečení IoT
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-ASC pro IoT průběžně analyzuje vaše řešení IoT s použitím pokročilých analýz a analýz hrozeb intelligence vás upozorní na škodlivou aktivitu.
+Azure Security Center (ASC) pro IoT průběžně analyzuje vaše řešení IoT s použitím pokročilých analýz a analýz hrozeb intelligence vás upozorní na škodlivou aktivitu.
 Kromě toho můžete vytvořit vlastní výstrahy na základě vašich znalostí zařízení očekávané chování.
 Výstrahu slouží jako indikátor comprise, by měl být prozkoumat a napravené s cílem zajistit.
 

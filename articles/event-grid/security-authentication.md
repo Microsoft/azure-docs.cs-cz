@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/29/2019
 ms.author: babanisa
-ms.openlocfilehash: 23654dd41714314ab5c9f217d4f805d7b9d62413
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 2d56a7cda88f96a6728dc1c3e4af8e9ad0bf946f
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472802"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755518"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpečení a ověřování 
 
@@ -41,7 +41,9 @@ Pokud používáte jiný typ koncového bodu, jako například aktivační udál
 
    Počínaje verzí 2018-05-01-preview, podporuje Služba Event Grid handshake ruční ověření. Pokud vytváříte odběr událostí pomocí sady SDK nebo nástroj, který používá rozhraní API verze 2018-05-01-preview nebo později, odešle služby Event Grid `validationUrl` vlastnost v datové části události ověření předplatného. Dokončete signalizace najít tuto adresu URL v datech událostí a ručně odeslat požadavek GET. Můžete použít klienta REST nebo ve webovém prohlížeči.
 
-   Zadaná adresa URL je platný po dobu 5 minut. Během této doby je stav zřizování odběr události `AwaitingManualAction`. Pokud neprovedete ruční ověření během 10 minut, Stav zřizování nastavená na `Failed`. Budete muset vytvořit odběr události znovu před zahájením ruční ověření.
+   Zadaná adresa URL je platný po dobu 5 minut. Během této doby je stav zřizování odběr události `AwaitingManualAction`. Pokud neprovedete ruční ověření během 5 minut, Stav zřizování nastavená na `Failed`. Budete muset vytvořit odběr události znovu před zahájením ruční ověření.
+
+    Tento mechanismus ověřování také vyžaduje koncový bod webhooku vrátit stavový kód HTTP 200, tak, aby věděl, že příspěvek pro událost ověření byl přijat předtím, než můžou být přepnuté do režimu ruční ověření. Jinými slovy Pokud koncový bod vrátí 200, ale nevrací zpět odpověď ověřování prostřednictvím kódu programu, režim přešel do režimu ruční ověření. Pokud je GET na adresu URL pro ověření během 5 minut, ověření metody handshake se považuje za úspěšné.
 
 ### <a name="validation-details"></a>Podrobnosti ověřování
 

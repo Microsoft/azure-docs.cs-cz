@@ -2,17 +2,17 @@
 title: Osvědčené postupy pro vývojáře – Pod zabezpečení ve službě Azure Kubernetes služby (AKS)
 description: Další informace pro vývojáře osvědčené postupy pro zabezpečení podů ve službě Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: zr-msft
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: iainfou
-ms.openlocfilehash: c2c8522e796fa43f08bf8ad2d61e70a8205d77b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: zarhoads
+ms.openlocfilehash: 1c2c5cbee91ddaee5f1f6af8ec17c48326f68e84
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183522"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755062"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení pod ve službě Azure Kubernetes Service (AKS)
 

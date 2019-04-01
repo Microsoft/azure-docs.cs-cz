@@ -1,6 +1,6 @@
 ---
-title: Přístup k datům pomocí ASC pro náhled IoT | Dokumentace Microsoftu
-description: Další informace o tom, jak přistupovat k datům upozornění a doporučení zabezpečení při použití ASC pro IoT.
+title: Přístup k datům pomocí Azure Security Center pro náhled IoT | Dokumentace Microsoftu
+description: Další informace o tom, jak přistupovat k datům upozornění a doporučení zabezpečení při použití Azure Security Center pro IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: d81a8973772879f4f4b143701a1f4be3ecad95d9
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 510ee9bdefe87c1fab40e58bb715f2a8cce936b7
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576635"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758522"
 ---
 # <a name="access-your-security-data"></a>Přístup k vašim datům zabezpečení 
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-ASC pro IoT ukládá výstrahy zabezpečení, doporučení a zabezpečení nezpracovaná data (Pokud se rozhodnete ji uložit) ve vašem pracovním prostoru Log Analytics.
+Azure Security Center (ASC) pro službu IoT ukládá výstrahy zabezpečení, doporučení a zabezpečení nezpracovaná data (Pokud se rozhodnete ji uložit) ve vašem pracovním prostoru Log Analytics.
 
 ## <a name="log-analytics"></a>Log Analytics
 

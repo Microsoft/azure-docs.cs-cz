@@ -4,17 +4,17 @@ description: V tomto rychlém startu se dozvíte, jak odesílat data účtu úlo
 services: data-explorer
 author: radennis
 ms.author: radennis
-ms.reviewer: orspod
+ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/30/2019
 Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
-ms.openlocfilehash: 625556986c5034303e83cc23b4ba06b1638115d1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8efe8b95b09fa8b4de16c08345699cee88e11285
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448420"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756437"
 ---
 # <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Rychlý start: Ingestování objekty BLOB do Průzkumníku dat Azure pomocí přihlášení k odběru oznámení služby Event Grid
 

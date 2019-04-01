@@ -1,6 +1,6 @@
 ---
-title: Instalace Windows ASC pro IoT agenta ve verzi Preview | Dokumentace Microsoftu
-description: Další informace o tom, jak nainstalovat agenta IoT na zařízeních s Windows 32bitové nebo 64bitové ASC.
+title: Instalace Windows Azure Security Center pro IoT agenta ve verzi Preview | Dokumentace Microsoftu
+description: Další informace o tom, jak nainstalovat Azure Security Center pro agenta IoT na zařízeních 32bitová nebo 64bitová verze Windows.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 5c3293746fcc52570e708fd4bfab446981d49c24
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 7e3cb1f44711a8eedb248320db8bce5dfd0eaf0c
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621826"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754591"
 ---
-# <a name="deploy-an-asc-for-iot-c-based-security-agent-for-windows"></a>Nasazení ASC pro IoT C#– na základě zabezpečení agenta pro Windows
+# <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Nasazení Azure Security Center pro IoT C#– na základě zabezpečení agenta pro Windows
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tato příručka vysvětluje, jak nainstalovat ASC pro IoT C#– na základě zabezpečení agenta na Windows.
+Tato příručka vysvětluje, jak nainstalovat Azure Security Center (ASC) pro IoT C#– na základě zabezpečení agenta na Windows.
 
 V této příručce se naučíte: 
 > [!div class="checklist"]

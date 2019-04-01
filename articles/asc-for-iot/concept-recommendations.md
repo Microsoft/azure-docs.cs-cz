@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení ASC pro doporučení zabezpečení IoT ve verzi Preview | Dokumentace Microsoftu
-description: Další informace o konceptu doporučení týkající se zabezpečení a jak se používají v ASC pro IoT.
+title: Vysvětlení doporučení zabezpečení IoT ve verzi Preview pro Azure Security Center | Dokumentace Microsoftu
+description: Další informace o konceptu doporučení týkající se zabezpečení a jak se používají ve službě Azure Security Center pro IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: dc37404e45e4efd0697b0f3b19c4927813ab56fa
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 9204bf864ca915baaf6d107ef3586bcd02ed9fef
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576189"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754824"
 ---
 # <a name="security-recommendations"></a>Doporučení zabezpečení
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-ASC pro IoT kontroluje prostředky Azure a IoT zařízení a poskytuje doporučení ke snížení útoky týkající se zabezpečení. Doporučení zabezpečení jsou napadnutelné a zaměřte se na podporu zákazníků v souladu se na osvědčené postupy zabezpečení.
+Azure Security Center (ASC) pro IoT kontroluje prostředky Azure a IoT zařízení a poskytuje doporučení ke snížení útoky týkající se zabezpečení. Doporučení zabezpečení jsou napadnutelné a zaměřte se na podporu zákazníků v souladu se na osvědčené postupy zabezpečení.
 
 V tomto článku najdete seznam doporučení, která se dá spouštět na váš IoT Hub a/nebo zařízení IoT.
 

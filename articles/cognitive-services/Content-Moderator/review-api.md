@@ -1,186 +1,76 @@
 ---
-title: Moderování úloh a kontrol lidských v the smyčky – Content Moderator
+title: Recenze, pracovních postupů a úlohy Principy – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Kombinace moderování s podporou počítače s možnostmi lidských v the smyčky pomocí Azure Content Moderator revize API k získání nejlepších výsledků pro vaši firmu.
+description: Další informace o úlohy, pracovní postupy a revize
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 21d71110853c5f18b0b5f0b51d30110eb45ff54a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c1d4ef640e2ae072dacba7a665b6689e3224c55c
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862696"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756294"
 ---
-# <a name="content-moderation-jobs-and-reviews"></a>Moderování obsahu úloh a kontrol
+# <a name="content-moderation-reviews-workflows-and-jobs"></a>Moderování obsahu kontroly, pracovní postupy a úlohy
 
-Kombinace moderování s podporou počítače s možnostmi lidských v the smyčky pomocí Azure Content Moderator [revizi rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) k dosažení nejlepších výsledků pro vaši firmu.
+Content Moderator kombinuje moderování s podporou počítače s možnostmi lidských v the smyčky se vytvořit proces optimální moderování pro reálné situace. Dělá to pomocí cloudové [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com). V této příručce se dozvíte o klíčových konceptech nástroj pro recenze: revize, pracovní postupy a úlohy.
 
-Rozhraní API pro kontrolu nabízí tyto způsoby zahrnutí jistotu lidské do procesu moderování obsahu:
+## <a name="reviews"></a>Recenze
 
-* `Job` operace se používá ke spuštění jako jeden krok moderování s podporou počítače a vytvoření recenze prováděné lidmi.
-* `Review` operace se používají pro vytvoření recenze prováděné lidmi mimo krok moderování.
-* `Workflow` operace se používají ke správě pracovní postupy automatizující prohledávání pomocí prahové hodnoty pro vytvoření revize.
+Při kontrole, obsah se nahraje do nástroje pro recenze a zobrazí se v části **zkontrolujte** kartu. Z tohoto místa můžete uživatelům změnit značky použité a použít vlastní vlastní značky podle potřeby. Když uživatel odešle přezkoumání, výsledky se posílají do zadaného zpětného volání koncového bodu a obsah je odebrán z webu.
 
-`Job` a `Review` přijmout zpětného volání koncových bodů pro příjem stavu a výsledky operace.
+![Zkontrolujte nástroj webu otevřete v prohlížeči, na kartě Revize](./Review-Tool-user-Guide/images/image-workflow-review.png)
 
-Tento článek se týká `Job` a `Review` operace. Přečtěte si [přehledu pracovních postupů](workflow-api.md) informace o tom, jak vytvořit, upravit a získat definice pracovního postupu.
+Najdete v článku [Průvodce nástroj pro revize](./review-tool-user-guide/review-moderated-images.md) začít vytváření recenzí nebo najdete v článku [pokyny k rozhraní REST API](./try-review-api-review.md) k zjistěte, jak to provést prostřednictvím kódu programu.
 
-## <a name="job-operations"></a>Operace úlohy
+## <a name="workflows"></a>Pracovní postupy
 
-### <a name="start-a-job"></a>Spuštění úlohy
-Použití `Job.Create` operaci pro spuštění moderování a úloha vytvoření recenze prováděné lidmi. Content Moderator prohledává obsah a vyhodnotí určené pracovního postupu. Na základě výsledků pracovních postupů se vytvoří revize nebo přeskočí krok. Odesílá také značky po moderování a po přezkoumání do zpětného volání koncového bodu.
+Pracovní postup je založené na cloudu vlastní filtr pro obsah. Pracovní postupy můžete připojit k různým službám v různých způsobů filtrování obsahu a poté přijmout vhodná opatření. S konektorem Content Moderator můžete pracovní postup automaticky moderování klíčová slova a vytvořit kontroly s obsah odeslaný.
 
-Vstupy uveďte následující informace:
+### <a name="view-workflows"></a>Zobrazení pracovních postupů
 
-- ID revize týmu.
-- Možné Moderovat obsah.
-- Název pracovního postupu. (Výchozí hodnota je "Výchozí" pracovní postup).
-- Zpětné volání rozhraní API bod pro oznámení.
- 
-Následující odpověď zobrazuje identifikátor úlohy, která byla spuštěna. Identifikátor úlohy můžete získat stav úlohy a získat podrobné informace.
+Chcete-li zobrazit stávajících pracovních postupů, přejděte na [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com/) a vyberte **nastavení** > **pracovních postupů**.
 
-    {
-        "JobId": "2018014caceddebfe9446fab29056fd8d31ffe"
-    }
+![Výchozí pracovní postup](images/default-workflow-listed.PNG)
 
-### <a name="get-job-status"></a>Získat stav úlohy
+Pracovní postupy mohou být zcela popsány jako řetězce JSON, které jsou přístupné prostřednictvím kódu programu. Pokud vyberete **upravit** možnost pracovního postupu a pak vyberte **JSON** kartu, uvidíte výraz JSON podobný tomuto:
 
-Použití `Job.Get` operace a identifikátor úlohy pro získání podrobností o spuštěné nebo dokončené úlohy. Operace vrátí hned, zatímco moderování úloha spouští asynchronně. Výsledky jsou vráceny prostřednictvím koncového bodu zpětného volání.
-
-Zadání uveďte následující informace:
-
-- ID revize týmu: Identifikátor úlohy vrácené z předchozí operace
-
-Odpověď obsahuje následující informace:
-
-- Identifikátor revize vytvořili. (Toto ID použít k získání požadovaných výsledků konečnou kontrolu.)
-- Stav úlohy (dokončení nebo probíhající): Moderování přiřazené značky (páry klíč hodnota).
-- Sestava spuštění úlohy.
- 
- 
-        {
-            "Id": "2018014caceddebfe9446fab29056fd8d31ffe",
-            "TeamName": "some team name",
-            "Status": "Complete",
-            "WorkflowId": "OCR",
-            "Type": "Image",
-            "CallBackEndpoint": "",
-            "ReviewId": "201801i28fc0f7cbf424447846e509af853ea54",
-            "ResultMetaData":[
-            {
-            "Key": "hasText",
-            "Value": "True"
-            },
-            {
-            "Key": "ocrText",
-            "Value": "IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n"
-            }
-            ],
-            "JobExecutionReport": [
-            {
-                "Ts": "2018-01-07T00:38:29.3238715",
-                "Msg": "Posted results to the Callbackendpoint: https://requestb.in/vxke1mvx"
-                },
-                {
-                "Ts": "2018-01-07T00:38:29.2928416",
-                "Msg": "Job marked completed and job content has been removed"
-                },
-                {
-                "Ts": "2018-01-07T00:38:29.0856472",
-                "Msg": "Execution Complete"
-                },
-            {
-                "Ts": "2018-01-07T00:38:26.7714671",
-                "Msg": "Successfully got hasText response from Moderator"
-                },
-                {
-                "Ts": "2018-01-07T00:38:26.4181346",
-                "Msg": "Getting hasText from Moderator"
-                },
-                {
-                "Ts": "2018-01-07T00:38:25.5122828",
-                "Msg": "Starting Execution - Try 1"
-                }
-            ]
-        }
- 
-![Kontrola obrázku lidskými moderátory](images/ocr-sample-image.PNG)
-
-## <a name="review-operations"></a>Operace kontroly
-
-### <a name="create-reviews"></a>Vytvoření kontroly
-
-Použití `Review.Create` operaci vytvoření recenze prováděné lidmi. Jinde je střední nebo po pomocí vlastní logiky můžete přiřadit značky moderování.
-
-Zadání této operace patří:
-
-- Obsah musí zkontrolovat.
-- Přiřazené značky (páry klíč-hodnota) ke kontrole lidské moderátory.
-
-Následující odpověď zobrazuje identifikátor revize:
-
-    [
-        "201712i46950138c61a4740b118a43cac33f434",
-    ]
-
-
-### <a name="get-review-status"></a>Získat stav kontroly
-Použití `Review.Get` operace k získání požadovaných výsledků po dokončení recenze moderování obrázků. Dostanete se přes váš koncový bod zpětné volání. 
-
-Operace vrátí dvě sady značek: 
-
-* Značky přiřazené službou moderování
-* Značky po dokončení lidskou kontrolu
-
-Vstupy zahrnují minimálně:
-
-- Zkontrolujte název týmu
-- Zkontrolujte identifikátor vrácený z předchozí operace
-
-Odpověď obsahuje následující informace:
-
-- Stav kontroly
-- Potvrdit lidské kontrolor značky (páry klíč hodnota)
-- Značky (páry klíč hodnota) přidělené službou moderování
-
-Zobrazit obě značky přiřazeny revidujícího (**reviewerResultTags**) a počáteční značky (**metadat**) v odpovědi na následující ukázka:
-
-    {
-        "reviewId": "201712i46950138c61a4740b118a43cac33f434",
-        "subTeam": "public",
-        "status": "Complete",
-        "reviewerResultTags": [
-        {
-            "key": "a",
-            "value": "False"
+```json
+{
+    "Type": "Logic",
+    "If": {
+        "ConnectorName": "moderator",
+        "OutputName": "isAdult",
+        "Operator": "eq",
+        "Value": "true",
+        "Type": "Condition"
         },
-        {
-            "key": "r",
-            "value": "True"
-        },
-        {
-            "key": "sc",
-            "value": "True"
-        }
-        ],
-        "createdBy": "{teamname}",
-        "metadata": [
-        {
-            "key": "sc",
-            "value": "true"
-        }
-        ],
-        "type": "Image",
-        "content": "https://reviewcontentprod.blob.core.windows.net/{teamname}/IMG_201712i46950138c61a4740b118a43cac33f434",
-        "contentId": "0",
-        "callbackEndpoint": "{callbackUrl}"
+    "Then": {
+    "Perform": [
+    {
+        "Name": "createreview",
+        "CallbackEndpoint": null,
+        "Tags": []
     }
+    ],
+    "Type": "Actions"
+    }
+}
+```
+
+Najdete v článku [Průvodce nástroj pro revize](./review-tool-user-guide/workflows.md) začít vytváření a používání pracovních postupů nebo najdete v článku [pokyny k rozhraní REST API](./try-review-api-workflow.md) k zjistěte, jak to provést prostřednictvím kódu programu.
+
+## <a name="jobs"></a>Úlohy
+
+Moderování úlohy slouží jako typ obálky pro funkce moderování obsahu, pracovní postupy a kontroly. Úloha zkontroluje obsah pomocí moderování obrázků Content Moderator API nebo rozhraní API pro moderování textu a pak ověří proti určené pracovního postupu. Na základě výsledků pracovní postup může nebo nemusí vytvořit kontrolu pro obsah v [nástroj pro recenze](./review-tool-user-guide/human-in-the-loop.md). Zatímco recenze a pracovních postupů lze vytvořit a nakonfigurovat jejich příslušných rozhraní API, úloha rozhraní API umožňuje získat podrobnou sestavu o celý proces (která může být odeslána do zadaného zpětného volání koncového bodu).
+
+Zobrazit [pokyny k rozhraní REST API](./try-review-api-job.md) a začněte využívat úlohy.
 
 ## <a name="next-steps"></a>Další postup
 

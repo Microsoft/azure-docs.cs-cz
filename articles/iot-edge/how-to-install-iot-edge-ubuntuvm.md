@@ -7,14 +7,14 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 03/29/2019
 ms.author: gregman
-ms.openlocfilehash: 5b3dcb3abad071cb5d079d6c740cc09e2577a363
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5cb15f45508b60a1b7f8c9049b8779c1b7d31150
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116414"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757928"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Spusťte Azure IoT Edge na virtuálních počítačích se systémem Ubuntu
 
@@ -85,7 +85,7 @@ Na webu Azure Portal, vyhledejte "Azure IoT Edge" a vyberte **Ubuntu Server 16.0
 1. Nastavit připojovací řetězec zařízení (provedením [pomocí Azure CLI zaregistrujte nové zařízení Azure IoT Edge](how-to-register-device-cli.md) příručce s postupy, pokud nejste obeznámeni s tímto procesem):
 
    ```azurecli-interactive
-   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
+   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
    ```
 
 Pokud chcete se SSH do tohoto virtuálního počítače po dokončení instalace, použití publicIpAddress pomocí příkazu: `ssh azureuser@{publicIpAddress}`

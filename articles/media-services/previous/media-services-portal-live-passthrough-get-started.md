@@ -1,5 +1,5 @@
 ---
-title: Živé streamování pomocí místních kodérů na webu Azure Portal | Dokumentace Microsoftu
+title: Živé streamování pomocí místních kodérů pomocí webu Azure portal | Dokumentace Microsoftu
 description: Tento kurz vás provede kroky pro vytvoření Kanálu, který je nakonfigurován pro průchozí doručování.
 services: media-services
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: d86151b436ec3cc5ea3d4b687f5c8692b2ca4efa
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 48906a12cd113ef613151bb802e757f218bce425
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258696"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758507"
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>Provádění živého streamování pomocí místních kodérů na webu Azure Portal
+# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Provést živé streamování pomocí místních kodérů pomocí webu Azure portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -45,29 +45,31 @@ Důrazně doporučujeme přečtení následujících článků:
 * [Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi](media-services-live-streaming-with-onprem-encoders.md)
 
 ## <a id="scenario"></a>Běžný scénář živého streamování
+
 Následující kroky popisují úlohy, které jsou běžně součástí procesu vytváření aplikací pro živé streamování, které používají kanály, nakonfigurované pro průchozí doručování. Tento kurz ukazuje, jak vytvořit a spravovat průchozí kanál a živé události.
 
->[!NOTE]
->Zkontrolujte, že koncový bod streamování, ze kterého chcete streamovat obsah, je ve stavu **Spuštěno**. 
+> [!NOTE]
+> Zkontrolujte, že koncový bod streamování, ze kterého chcete streamovat obsah, je ve stavu **Spuštěno**. 
     
-1. Připojte k počítači videokameru. Spusťte a nakonfigurujte místní kodér pro kódování v reálném čase, který produkuje RTMP s více přenosovými rychlostmi nebo fragmentovaný proud MP4. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824).
+1. Připojte k počítači videokameru. <br/>Inspiraci, instalační program, podívejte se na [videa ozubené kolo nastavení jednoduché a přenosné události]( https://link.medium.com/KNTtiN6IeT).
+1. Spusťte a nakonfigurujte místní kodér pro kódování v reálném čase, který produkuje RTMP s více přenosovými rychlostmi nebo fragmentovaný proud MP4. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824).<br/>Také přečtěte si tento blog: [Živé streamování provozu pomocí OBS](https://link.medium.com/ttuwHpaJeT).
    
     Tento krok můžete provést i po vytvoření kanálu.
-2. Vytvořit a spustit průchozí kanál.
-3. Načtěte adresu URL ingestování kanálu. 
+1. Vytvořit a spustit průchozí kanál.
+1. Načtěte adresu URL ingestování kanálu. 
    
     Adresu URL ingestování používá kodér po kódování v reálném čase k odesílání datového proudu do kanálu.
-4. Načtěte adresu URL náhledu kanálu. 
+1. Načtěte adresu URL náhledu kanálu. 
    
     Tuto adresu URL můžete použít, když chcete ověřit, jestli kanál správně přijímá proud živého vysílání.
-5. Vytvořte živou událost nebo program. 
+1. Vytvořte živou událost nebo program. 
    
     Na portálu Azure se při vytváření živé události vytvoří také asset. 
 
-6. Jakmile budete připraveni začít streamovat a archivovat, spusťte událost nebo program.
-7. Volitelně můžete dát kodéru pro kódování v reálném čase signál, aby spustil reklamu. Reklama bude vložena do výstupního datového proudu.
-8. Kdykoli budete chtít zastavit streamování a archivaci události, zastavte událost nebo program.
-9. Odstraňte událost nebo program (volitelně můžete odstranit i asset).     
+1. Jakmile budete připraveni začít streamovat a archivovat, spusťte událost nebo program.
+1. Volitelně můžete dát kodéru pro kódování v reálném čase signál, aby spustil reklamu. Reklama bude vložena do výstupního datového proudu.
+1. Kdykoli budete chtít zastavit streamování a archivaci události, zastavte událost nebo program.
+1. Odstraňte událost nebo program (volitelně můžete odstranit i asset).     
 
 > [!IMPORTANT]
 > Informace o konceptech a důležité informace, týkající se živého streamování pomocí místních kodérů a průchozích kanálů, najdete v tématu [Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi](media-services-live-streaming-with-onprem-encoders.md).

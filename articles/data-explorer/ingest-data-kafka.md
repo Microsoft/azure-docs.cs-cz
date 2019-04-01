@@ -3,17 +3,17 @@ title: 'Rychlý start: Ingestování dat z Kafka do Průzkumníku dat Azure'
 description: V tomto rychlém startu se dozvíte, jak se přijmout data (načíst) do Průzkumníku dat Azure z platformy Kafka.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/19/2018
-ms.openlocfilehash: b53c26f265cc5d944c8e15ae5bf436e8f71dcc2f
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 5c7d533cbd8a69b8fd9dcc704e7b83b0e476e499
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352729"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756645"
 ---
 # <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>Rychlý start: Ingestování dat z Kafka do Průzkumníku dat Azure
  

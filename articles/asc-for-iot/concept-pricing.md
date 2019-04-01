@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení ASC pro IoT náklady ve verzi Preview | Dokumentace Microsoftu
-description: Další informace o náklady spojené s ASC pro Internet věcí a jak je můžete řídit.
+title: Principy Azure Security Center pro IoT nákladů ve verzi Preview | Dokumentace Microsoftu
+description: Další informace o náklady spojené s Azure Security Center pro Internet věcí a jak je můžete řídit.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: e694bb1a121b172fe67fbde0bd956700a75dfe12
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: e2822b0f2f665220f215b85800081fa2fa7943f9
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580655"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758044"
 ---
-# <a name="pricing-and-associated-costs"></a>Cen a související náklady
+# <a name="pricing-and-associated-costs"></a>Ceny a související náklady
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tento článek vysvětluje ASC pro IoT cenový model, shrnuje všechny související náklady a vysvětluje, jak je spravovat.
+Tento článek vysvětluje Azure Security Center (ASC) pro IoT cenový model, shrnuje všechny související náklady a vysvětluje, jak je spravovat.
 
 ## <a name="pricing"></a>Ceny
 

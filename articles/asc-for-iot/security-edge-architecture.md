@@ -1,6 +1,6 @@
 ---
-title: Principy ASC pro IoT zabezpečení modul IoT Edge | Dokumentace Microsoftu
-description: Vysvětlení architektury a možností ASC pro modul zabezpečení IoT pro IoT Edge.
+title: Vysvětlení služby Azure Security Center pro IoT zabezpečení modul IoT Edge | Dokumentace Microsoftu
+description: Vysvětlení architekturu a funkce služby Azure Security Center pro modul zabezpečení IoT pro IoT Edge.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 68117370e21c7b667bde5447cef510a4e7c77df0
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 11eadc70f6da20fdc9b837dfad45705278dd2d27
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580760"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756700"
 ---
 # <a name="azure-iot-edge-security-module"></a>Modul zabezpečení Azure IoT Edge
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční worklo§1ads. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/) poskytuje výkonné funkce pro správu a provádět obchodní pracovní postupy na hraničních zařízeních.
 Klíčovým faktorem, který přehrává IoT Edge v prostředí IoT umožňují především pro útočníky.
 
-ASC pro modul zabezpečení IoT poskytuje komplexní řešení zabezpečení pro IoT Edge zařízení.
+Azure Security Center (ASC) pro modul zabezpečení IoT poskytuje komplexní řešení zabezpečení pro IoT Edge zařízení.
 ASC pro modul IoT shromažďuje, agreguje a analyzuje data zabezpečení nezpracovaná z operačního systému a systém kontejnerů do užitečná doporučení zabezpečení a upozornění.
 
 Podobně jako ASC pro agenty zabezpečení IoT pro zařízení IoT, ASC pro modul IoT Edge je vysoce přizpůsobitelné prostřednictvím jeho dvojčete modulu.

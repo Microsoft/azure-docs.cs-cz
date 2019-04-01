@@ -1,6 +1,6 @@
 ---
-title: ASC pro Průvodce šetření zařízení IoT ve verzi Preview | Dokumentace Microsoftu
-description: Tento postup průvodce vysvětluje, jak pomocí ASC pro IoT můžete prozkoumat podezřelé zařízení IoT pomocí služby Log Analytics.
+title: Azure Security Center pro Průvodce šetření zařízení IoT ve verzi Preview | Dokumentace Microsoftu
+description: Tento postup průvodce vysvětluje, jak prozkoumat podezřelé zařízení IoT pomocí služby Log Analytics pomocí Azure Security Center pro IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 032315d1b618b9716e23c8433c6ec1bf64b7e77d
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6097954e09d5fd62c45f59b009d974d277bafc57
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580535"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755248"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Prozkoumat podezřelé zařízení IoT
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-ASC pro oznámení služby IoT a důkazy poskytnout jasné údaje, když zařízení IoT je podezření, že účasti v podezřelé aktivity nebo pokud existují označení, že dojde k ohrožení zařízení. 
+Azure Security Center (ASC) pro oznámení služby IoT a důkazy poskytnout jasné údaje, když zařízení IoT je podezření, že účasti v podezřelé aktivity nebo pokud existují označení, že dojde k ohrožení zařízení. 
 
 V této příručce použijte návrhy šetření poskytován, abyste mohli zjistit potenciální rizika pro vaši organizaci, rozhodněte se, jak opravit a Objevte nejlepší způsoby útokům podobně jako v budoucnu.  
 

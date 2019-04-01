@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 32b9a00aa943813bec3c518c3c9dbf0e37a9bc63
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5a05b8f0f9484ea49fbfb0bbe8818aa9cd0d66ee
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445921"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757130"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Připojte zařízení za příjem dat k bráně Azure IoT Edge
 
@@ -43,7 +43,7 @@ Před provedením kroků v tomto článku, byste měli mít dvě zařízení př
     V současné době pouze podřízené zařízení se ověřování pomocí symetrického klíče se můžou připojit prostřednictvím brány IoT Edge. X.509 certifikačních autorit a certifikátů X.509 podepsaných svým držitelem nejsou aktuálně podporované.
     
 > [!NOTE]
-> "Název brány" k vytvoření certifikátů v tento pokyn, musí být stejný název jako používané jako název hostitele v souboru config.yaml IoT Edge a GatewayHostName v připojovacím řetězci podřízené zařízení. "Název brány" musí být možné přeložit na IP adresu pomocí DNS nebo položkou hostitelského souboru. Komunikace založená na protokolu používá (MQTTS:8883 / AMQPS:5671 / HTTPS:433) musí být možné mezi podřízené zařízení a transparant IoT Edge. Pokud brána firewall je někde mezi, musí být otevřený příslušný port.
+> "Název brány" použité v tomto článku musí být stejný název jako použít jako název hostitele v souboru config.yaml IoT Edge. Název brány musí být možné přeložit na IP adresu pomocí DNS nebo položkou hostitelského souboru. Komunikace založená na protokolu používá (MQTTS:8883 / AMQPS:5671 / HTTPS:433) musí být možné mezi podřízené zařízení a transparant IoT Edge. Pokud brána firewall je někde mezi, musí být otevřený příslušný port.
 
 ## <a name="prepare-a-downstream-device"></a>Příprava příjem dat zařízení
 
@@ -197,6 +197,14 @@ Toto je ukázkový příkaz, jaké testy, které všechno, co bylo nastavit spr�
 ```cmd/sh
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
 ```
+
+## <a name="troubleshoot-the-gateway-connection"></a>Řešení potíží s připojením brány
+
+Pokud vaše zařízení typu list má nepřerušované připojení k zařízení brány, zkuste následující kroky pro řešení. 
+
+1. Je název brány připojení připojí řetězec stejný jako název hostitele v souboru config.yaml IoT Edge na zařízení brány?
+2. Název brány je možné přeložit na IP adresu? Intenmittent připojení můžete vyřešit pomocí DNS nebo přidáním položkou hostitelského souboru na zařízení typu list.
+3. Komunikační porty jsou otevřeny v bráně firewall? Komunikace založená na protokolu používá (MQTTS:8883 / AMQPS:5671 / HTTPS:433) musí být možné mezi podřízené zařízení a transparant IoT Edge.
 
 ## <a name="next-steps"></a>Další postup
 

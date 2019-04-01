@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/18/2019
+ms.date: 3/28/2019
 ms.author: monhaber
-ms.openlocfilehash: c7cc5784caf8a83a50536a8edc69ea76ea8589d8
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 66a7171aff7b9bab5f320df1d71e9cab4ce0477d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199830"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758306"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálním počítačům pomocí just-in-time
 
@@ -162,9 +162,13 @@ Na webu Azure Portal při pokusu o připojení k virtuálnímu počítači, zkon
 
   ![řádek JIT](./media/security-center-just-in-time/jit-prompt.png)
 
-- Pokud máte zásadu JIT nakonfigurovaný na virtuálním počítači, můžete kliknout na **žádat o přístup** povolit přístup v souladu se zásadami JIT nastavit pro virtuální počítač.
+- Pokud máte zásadu JIT nakonfigurovaný na virtuálním počítači, můžete kliknout na **žádat o přístup** povolit přístup v souladu se zásadami JIT nastavit pro virtuální počítač. S následujícími parametry výchozí požaduje přístup:
+    - **Zdrojová IP adresa**: "Jakýkoli" (*) (nelze změnit)
+    - **časový rozsah**: 3 hodiny (nelze změnit)
+    - **číslo portu** RDP port 3389 pro Windows / port 22 pro Linux (číslo portu můžete změnit **připojit k virtuálnímu počítači** dialogové okno.)
 
-  ![žádost o přístup JIT](./media/security-center-just-in-time/jit-request-access.png)
+
+  >![žádost o přístup JIT](./media/security-center-just-in-time/jit-request-access.png)
 
 ## <a name="auditing-jit-access-activity"></a>Auditování aktivity přístup JIT
 

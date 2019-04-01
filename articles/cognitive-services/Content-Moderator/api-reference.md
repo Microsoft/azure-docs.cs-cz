@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: a6bd92a675885cb343b07ef981c38571af0a931c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 320638c958799bbf7fea73880fd3e27b6d598d23
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862458"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756061"
 ---
 # <a name="content-moderator-api-reference"></a>Referenční informace k rozhraní API Content Moderatoru
 
@@ -31,7 +31,7 @@ Nastavení pracovního postupu po moderování můžete použít následující 
 | Popis | Referenční informace |
 | -------------------- |-------------|
 | **Rozhraní API pro moderování obrázků**<br /><br />Kontrola imagí a detekovat potenciální obsah pro dospělé nebo pikantního pomocí značky, skóre spolehlivosti a dalších extrahovaných informací. <br /><br />Tyto informace slouží k publikování, zamítnutí nebo zkontrolovat obsah pracovního postupu po moderování. <br /><br />| [Reference k rozhraní API pro moderování obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c "reference k rozhraní API pro moderování obrázků")   |
-| **Rozhraní API pro moderování textu**<br /><br />Prohledejte obsah textu. Podmínky vulgárních výrazů a identifikovatelné osobní údaje (PII) jsou vráceny. <br /><br />Tyto informace slouží k publikování, zamítnutí nebo zkontrolovat obsah pracovního postupu po moderování.<br /><br /> | [Reference k rozhraní API pro moderování textu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f "reference k rozhraní API pro moderování textu")   |
+| **Rozhraní API pro moderování textu**<br /><br />Prohledejte obsah textu. Podmínky vulgárních výrazů a osobních údajů jsou vráceny. <br /><br />Tyto informace slouží k publikování, zamítnutí nebo zkontrolovat obsah pracovního postupu po moderování.<br /><br /> | [Reference k rozhraní API pro moderování textu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f "reference k rozhraní API pro moderování textu")   |
 | **Moderování videa rozhraní API**<br /><br />Kontrola videa a detekovat potenciální obsah pro dospělé nebo pikantního. <br /><br />Tyto informace slouží k publikování, zamítnutí nebo zkontrolovat obsah pracovního postupu po moderování.<br /><br /> | [Přehled rozhraní Video API pro moderování](video-moderation-api.md "přehled rozhraní API pro moderování videa")   |
 | **Seznam rozhraní API pro správu**<br /><br />Vytvářejte a spravujte vlastní vyloučení nebo zahrnutí seznamy obrázků a textu. Pokud je povoleno, **obrázek – odpovídat** a **Text – obrazovky** provést operace přibližné shody obsah odeslaný základě vlastních seznamů. <br /><br />Účinnost můžete přeskočit krok počítače založené na učení moderování.<br /><br /> | [Referenční dokumentace rozhraní API pro správu seznamu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f675 "referenční dokumentace rozhraní API pro správu seznamu")   |
 

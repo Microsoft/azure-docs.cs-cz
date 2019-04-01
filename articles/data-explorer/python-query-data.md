@@ -3,17 +3,17 @@ title: 'Rychlý start: Dotazování dat pomocí knihovny Python Průzkumník dat
 description: V tomto rychlém startu se naučíte dotazovat data z Azure Data Exploreru pomocí Pythonu.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: f3a8dd001f4d1d930c700847f0725e00b7c29ecf
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 60e51ba42bddd97c8663a035a29b2ff4880acd8c
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715105"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758614"
 ---
 # <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>Rychlý start: Dotazování dat pomocí knihovny Python Průzkumník dat Azure
 
@@ -98,4 +98,4 @@ Měli byste vidět prvních deset výsledků z tabulky StormEvents.
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Ingestování dat pomocí knihovny Python Průzkumník dat Azure](python-ingest-data.md)
+> [Rychlé zprovoznění: Ingestování dat pomocí knihovny Python Průzkumník dat Azure](python-ingest-data.md)

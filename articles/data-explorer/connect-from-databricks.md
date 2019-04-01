@@ -3,17 +3,17 @@ title: Připojit do Průzkumníku dat Azure z Azure Databricks s využitím Pyth
 description: Toto téma ukazuje, jak použít knihovnu Pythonu v Azure Databricks pro přístup k datům z Průzkumníku dat Azure pomocí jedné ze dvou metod ověřování.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: 1101a89fd4ddb0e020d0bac237e6119b137fa978
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7e91aa0707b1ae8ac4b9b6ddd9ee7142a04a0f37
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017493"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756932"
 ---
 # <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>Připojit do Průzkumníku dat Azure z Azure Databricks s využitím Pythonu
 

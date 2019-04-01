@@ -3,17 +3,17 @@ title: Připojit do Průzkumníku dat Azure s rozhraním ODBC
 description: V tomto návodu se dozvíte, jak chcete nastavit připojení k rozhraní ODBC do Průzkumníku dat Azure a použít toto připojení k vizualizaci dat s Tableau.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: ad00ad247b047d4acf97eb5d0e96229949181ecf
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 0ec1c2f4fc412ca6c81e179d0ad22f781b896357
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739553"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757631"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>Připojit do Průzkumníku dat Azure s rozhraním ODBC
 
@@ -79,7 +79,7 @@ Nyní jste dokončili konfiguraci rozhraní ODBC, je možné přenést ukázkov�
 
 1. V Desktopu Tableau, v nabídce vlevo vyberte **ostatní databáze (ODBC)**.
 
-    ![Připojení s rozhraním ODBC](media/connect-odbc/connect-odbc.png)
+    ![Připojení přes ODBC](media/connect-odbc/connect-odbc.png)
 
 1. Pro **DSN**, vyberte zdroj dat, který jste vytvořili pro rozhraní ODBC a potom vyberte **Sign In**.
 

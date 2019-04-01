@@ -1,6 +1,6 @@
 ---
-title: Principy ASC pro architekturu řešení IoT ve verzi Preview | Dokumentace Microsoftu
-description: Další informace o toku informací v ASC pro služby Azure IoT.
+title: Principy Azure Security Center pro architekturu řešení IoT ve verzi Preview | Dokumentace Microsoftu
+description: Další informace o toku informací ve službě Azure Security Center pro služby Azure IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: ee81d9543525ba1187fc6c078391559929b9bf96
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d70be919fa829401b4a415db626a3cee0713753b
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541899"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754987"
 ---
-# <a name="asc-for-iot-architecture"></a>ASC architektury IoT
+# <a name="azure-security-center-for-iot-architecture"></a>Azure Security Center pro architektury IoT
 
-Tento článek popisuje architekturu funkčnosti systému služby Azure Security Center pro řešení IoT. 
+Tento článek popisuje architekturu funkčnosti systému Azure Security Center (ASC) pro řešení IoT. 
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview.
+> Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="asc-for-iot-components"></a>ASC pro součásti IoT

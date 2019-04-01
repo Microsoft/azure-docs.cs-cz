@@ -9,12 +9,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8ca6c73d6ccdab3acb4ebb18af9b4aa82683e026
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5a1007f2408b48c96f5eeaf585b94c8caa7ceb45
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864294"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757756"
 ---
 # <a name="learn-text-moderation-concepts"></a>Další koncepty moderování textu
 
@@ -26,7 +26,7 @@ Odpověď služby obsahuje následující informace:
 
 - Vulgárních výrazů: výraz na základě vzorů s předdefinovaného seznamu neslušná podmínky v různých jazycích
 - Klasifikace: klasifikace s podporou počítače do tří kategorií
-- Identifikovatelné osobní údaje (PII)
+- Osobní údaje
 - Automaticky opravila text
 - Původní text
 - Jazyk
@@ -75,7 +75,7 @@ Následující výpis v JSON extract ukazuje příklad výstupu:
 - `Score` je mezi 0 a 1. Čím více bodů vyšší model je predikce kategorii lze použít. Tato funkce závisí na statistických modelů a nikoli ručně kódovaný výsledků. Doporučujeme ve Visual Basicu s vlastní obsah k určení, jak každou kategorii odpovídá vašim požadavkům.
 - `ReviewRecommended` je PRAVDA nebo NEPRAVDA v závislosti na interní skóre prahové hodnoty. Zákazníci by měli zhodnotit, zda chcete použít tuto hodnotu nebo při rozhodování o vlastní prahové hodnoty na základě jejich obsahu zásad.
 
-## <a name="personally-identifiable-information-pii"></a>Identifikovatelné osobní údaje (PII)
+## <a name="personal-data"></a>Osobní údaje
 
 Funkce identifikovatelné osobní údaje zjistí potenciální přítomnost tyto informace:
 

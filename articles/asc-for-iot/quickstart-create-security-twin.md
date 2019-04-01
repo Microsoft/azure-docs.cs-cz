@@ -1,6 +1,6 @@
 ---
-title: Vytvoření dvojčete modulu zabezpečení pro ASC pro náhled IoT | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit ASC pro dvojče zařízení IoT pro použití s ASC pro IoT.
+title: Vytvoření dvojčete modulu zabezpečení pro Azure Security Center pro náhled IoT | Dokumentace Microsoftu
+description: Naučíte se vytvářet Azure Security Center pro dvojče zařízení IoT pro použití s ASC pro IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: cd085333f0ddc8a9d49637a2d7156b34c6e5cc72
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 93b6aa6fe133953025cd504e0486a51c4a3d5e04
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579423"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758364"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Rychlý start: Vytvoření azureiotsecurity dvojčete modulu
 
 > [!IMPORTANT]
-> ASC pro IoT je aktuálně ve verzi public preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Security Center pro IoT je aktuálně ve verzi public preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Tento rychlý start vysvětlení, jak vytvořit jednotlivé _azureiotsecurity_ dvojčaty modulů pro nová zařízení nebo batch vytvořit dvojčaty modulů pro všechna zařízení ve službě IoT Hub.  
 
@@ -32,7 +32,7 @@ Tento rychlý start vysvětlení, jak vytvořit jednotlivé _azureiotsecurity_ d
 
 Dvojčata zařízení pro řešení IoT v Azure, hrát klíčovou roli při správě zařízení a automatizace procesů. 
 
-ASC pro IoT nabízí plnou integraci s vaší stávající IoT platformy pro správu zařízení, můžete ke správě stavu zabezpečení zařízení a ujistěte se také použít existující řízení funkcí zařízení.
+Azure Security Center (ASC) pro IoT nabízí plnou integraci s vaší stávající IoT platformy pro správu zařízení, můžete ke správě stavu zabezpečení zařízení a ujistěte se také použít existující řízení funkcí zařízení.
 ASC integrace IoT je dosaženo zrychlením pomocí služby IoT Hub dvojčete mechanismus.  
 
 Zobrazit [dvojčaty modulů IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) získat další informace o obecná koncepce dvojčaty modulů ve službě Azure IoT Hub. 

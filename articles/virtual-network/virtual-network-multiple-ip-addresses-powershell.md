@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
-ms.openlocfilehash: de2d8bcbf4ca75ad7278ec9fe47a3f55160b7910
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bded6c76aa209a718929c891bd2443f8517ec44a
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082649"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649627"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Přiřadit několik IP adres virtuálních počítačů pomocí Powershellu
 
@@ -196,7 +196,7 @@ Následující kroky popisují, jak vytvořit příklad virtuálního počítač
 
 ## <a name="add"></a>Přidejte IP adresy virtuálního počítače
 
-Privátní a veřejné IP adresy Azure síťovému rozhraní můžete přidat provedením následujících kroků. Příklady v následujících částech Předpokládejme, že máte již virtuální počítač s tři konfigurace protokolu IP je popsáno v [scénář](#Scenario) v tomto článku, ale není nutné, abyste udělali.
+Privátní a veřejné IP adresy Azure síťovému rozhraní můžete přidat provedením následujících kroků. Příklady v následujících částech Předpokládejme, že máte již virtuální počítač s tři konfigurace protokolu IP je popsáno v [scénář](#scenario) v tomto článku, ale není nutné, abyste udělali.
 
 1. Otevřete příkazový řádek Powershellu a dokončete zbývající kroky v této části v rámci jedné relace Powershellu. Pokud ještě nemáte Powershellu nainstalovanou a nakonfigurovanou, dokončete kroky [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) článku.
 2. Změňte název síťového rozhraní, které chcete přidat IP adresu, která a skupinu prostředků a umístění, které se síťové rozhraní existuje v "hodnoty" $Variables následující:

@@ -1,21 +1,21 @@
 ---
-title: 'Rychlý start: Vizualizujte data pomocí dotazu importované do Power BI'
+title: 'Rychlý start: Vizualizovat data pomocí dotazu importované do Power BI'
 description: 'V tomto rychlém startu se dozvíte, jak chcete použít jeden z těchto tří možností pro vizualizace dat v Power BI: import dotaz v Průzkumníku dat Azure.'
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 139b20a2390c7301bd83113c3e98be40846fab22
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 3251ae9f39ea38eac6887df3072257e1e8e88306
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854794"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756113"
 ---
-# <a name="quickstart-visualize-data-using-a-query-imported-into-power-bi"></a>Rychlý start: Vizualizujte data pomocí dotazu importované do Power BI
+# <a name="quickstart-visualize-data-using-a-query-imported-into-power-bi"></a>Rychlý start: Vizualizovat data pomocí dotazu importované do Power BI
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Power BI je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky v rámci organizace.
 
@@ -84,4 +84,4 @@ Pokud už nepotřebujete sestavy, kterou jste vytvořili pro účely tohoto rych
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Vizualizujte data pomocí importovaných dotazů v Power BI](power-bi-sql-query.md)
+> [Rychlé zprovoznění: Vizualizovat data pomocí importovaných dotazů v Power BI](power-bi-sql-query.md)

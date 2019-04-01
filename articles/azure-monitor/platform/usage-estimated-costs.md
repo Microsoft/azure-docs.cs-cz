@@ -9,18 +9,18 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 7911bd398b6760fb4f83382868f040382b86cd1f
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 2e59699b667215d4b09e4d87c1776431631348e8
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480534"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754249"
 ---
-# <a name="monitoring-usage-and-estimated-costs"></a>Monitorování využití a odhadované náklady
+# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Monitorování využití a odhadované náklady ve službě Azure Monitor
 
 > [!NOTE]
 > Tento článek popisuje, jak zobrazit využití a odhadované náklady napříč více monitorovacích funkcí Azure pro různé cenové modely.  Přečtěte si následující články související informace.
-> - [Spravovat náklady pomocí řízení objemu dat a uchovávání dat v Log Analytics](../../azure-monitor/platform/manage-cost-storage.md) popisuje, jak řídit své náklady tak, že změníte vaše data uchovávají.
+> - [Spravovat náklady pomocí řízení objemu dat a uchovávání dat v Log Analytics](manage-cost-storage.md) popisuje, jak řídit své náklady tak, že změníte vaše data uchovávají.
 > - [Analýza využití dat v Log Analytics](../../azure-monitor/platform/data-usage.md) popisuje, jak analyzovat a upozornění na data využití.
 > - [Správa cen a objemů dat ve službě Application Insights](../../azure-monitor/app/pricing.md) popisuje, jak analyzovat využití dat v Application Insights.
 
@@ -184,7 +184,7 @@ Pokud pak znovu spusťte předchozí skript, který má ``-Action listmigrationd
 Pokud máte více předplatných, které chcete migrovat, které jsou hostované ve stejném tenantovi můžete například vytvořit vlastní typ variant použití kusů z následujících skriptů:
 
 ```powershell
-#Query tenant and create an array comprised of all of your tenants subscription ids
+#Query tenant and create an array comprised of all of your tenants subscription IDs
 $TenantId = <Your-tenant-id>
 $Tenant =Get-AzSubscription -TenantId $TenantId
 $Subscriptions = $Tenant.Id
@@ -204,7 +204,7 @@ Invoke-AzResourceAction `
 }
 ```
 
-Skript může být kontrast další tak, že vytvoříte skript, který generuje tří polí. Jedno pole bude obsahovat všechny předplatné id, které mají ```isGrandFatherableSubscription``` nastavena na hodnotu True a optedInDate momentálně nemá hodnotu. Druhé pole žádné předplatné aktuálně na nový cenový model. A třetí pole vyplní pouze ID předplatných ve vašem tenantovi, které nemají nárok na nový cenový model:
+Skript může být kontrast další tak, že vytvoříte skript, který generuje tří polí. Jedno pole bude obsahovat všechny předplatné ID, které mají ```isGrandFatherableSubscription``` nastavena na hodnotu True a optedInDate momentálně nemá hodnotu. Druhé pole žádné předplatné aktuálně na nový cenový model. A třetí pole vyplní pouze ID předplatných ve vašem tenantovi, který se nevztahuje na nový cenový model:
 
 ```powershell
 [System.Collections.ArrayList]$Eligible= @{}

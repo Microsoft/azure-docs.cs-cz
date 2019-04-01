@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 735835d16eb14c3847f36ecb6f46c08c0a8928ef
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 10fe5d90e7a7a59a1b543209a37b998376fdda1e
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339512"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757663"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyka a oblasti pro LUIS
 
@@ -105,10 +105,10 @@ Následující jazykové verze mají vlastní tokenizátor verze:
 |Němčina<br>`de-de`|1.0.1|Tokenizes slova rozdělením na mezery.<br> Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, zůstává jeden token. Proto `krankenwagen` je označen jako jednu entitu. |
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migrace mezi verzemi tokenizátor
+<!--
+Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID. 
 
-Nejprve je změna tokenizátor verze v souboru aplikace, importujte verze. Tato akce změní jak tokenizovaného projevy, ale umožňuje zachovat stejné ID aplikace. 
-
-Tokenizátor JSON pro 1.0.0. Všimněte si, že hodnota vlastnosti pro `tokenizerVersion`. 
+Tokenizer JSON for 1.0.0. Notice the property value for  `tokenizerVersion`. 
 
 ```JSON
 {
@@ -157,7 +157,7 @@ Tokenizátor JSON pro 1.0.0. Všimněte si, že hodnota vlastnosti pro `tokenize
 }
 ```
 
-Tokenizátor JSON pro verzi 1.0.1. Všimněte si, že hodnota vlastnosti pro `tokenizerVersion`. 
+Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersion`. 
 
 ```JSON
 {
@@ -205,5 +205,8 @@ Tokenizátor JSON pro verzi 1.0.1. Všimněte si, že hodnota vlastnosti pro `to
     "settings": []
 }
 ```
+-->
 
-Druhou možností je [importovat soubor jako novou aplikaci](luis-how-to-start-new-app.md#import-an-app-from-file), místo verze. Tato akce znamená, že nová aplikace má ID jiné aplikace, ale používá tokenizátor verze zadaná v souboru. 
+Tokenizace se odehrává na úrovni aplikace. Není dostupná podpora Tokenizace úrovni verze. 
+
+[Importovat soubor jako novou aplikaci](luis-how-to-start-new-app.md#import-an-app-from-file), místo verze. Tato akce znamená, že nová aplikace má ID jiné aplikace, ale používá tokenizátor verze zadaná v souboru. 
