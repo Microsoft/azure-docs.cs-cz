@@ -1,21 +1,21 @@
 ---
-title: Řešení duplicitních dat.
+title: Řešení duplicitních dat
 description: Toto téma se zobrazí různé způsoby, jak řešit duplicitních dat.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: f417ba7d0fcd6f9d6b5bd6cd43cf1730af2ca53c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7a9ccd5139168393019a70aafb9b7b705ca25919
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028191"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756357"
 ---
-# <a name="deal-with-duplicate-data"></a>Řešení duplicitních dat.
+# <a name="deal-with-duplicate-data"></a>Řešení duplicitních dat
 
 Zařízení, odesílání dat do cloudu zachovat data v místní mezipaměti. V závislosti na velikosti dat v místní mezipaměti může ukládat data pro dny nebo dokonce měsíce. Chcete chránit vaše analytické databáze z nefunkční zařízení, která znovu odeslat data uložená v mezipaměti a způsobit, že duplicitních dat. analytické databáze. Toto téma popisuje doporučené postupy pro zpracování duplicitních dat pro tyto druhy scénářů.
 

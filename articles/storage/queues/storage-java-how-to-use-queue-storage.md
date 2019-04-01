@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: queues
-ms.openlocfilehash: 7e422825c6aa66b14f07f1e52bdd828971ad5eb8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7c2fbc168c663cc4dc5981071d40540cfc4797ca
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012357"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648482"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Používání úložiště Queue z Javy
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "58012357"
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="overview"></a>Přehled
-Tato příručka se ukazují, jak provádět běžné scénáře pomocí služby Azure Queue storage. Ukázky jsou napsané v Javě a využívají [sadu SDK služby Azure Storage pro Javu][Azure Storage SDK for Java]. Mezi popsané scénáře patří **vkládání**, **prohlížení**, **získávání**, a **odstranění** fronty zpráv, stejně jako  **vytváření** a **odstranění** fronty. Další informace o frontách najdete v článku [další kroky](#Next-Steps) oddílu.
+Tato příručka se ukazují, jak provádět běžné scénáře pomocí služby Azure Queue storage. Ukázky jsou napsané v Javě a využívají [sadu SDK služby Azure Storage pro Javu][Azure Storage SDK for Java]. Mezi popsané scénáře patří **vkládání**, **prohlížení**, **získávání**, a **odstranění** fronty zpráv, stejně jako  **vytváření** a **odstranění** fronty. Další informace o frontách najdete v článku [další kroky](#next-steps) oddílu.
 
 Poznámka: Sada SDK je k dispozici pro vývojáře používající službu Azure Storage na zařízeních s Androidem. Další informace najdete v tématu [Sada SDK služby Azure Storage pro Android][Azure Storage SDK for Android].
 

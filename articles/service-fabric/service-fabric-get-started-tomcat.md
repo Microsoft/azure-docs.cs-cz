@@ -4,7 +4,7 @@ description: Vytvořte kontejner Linuxu, aby zveřejnit aplikaci spuštěné na 
 services: service-fabric
 documentationcenter: .net
 author: JimacoMS2
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/08/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 3e93e822c5764a23bba124152ef5dfabf2d3f94f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 5ae2ca352c6d3cbe02b659a97fe3147c1a31128f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223865"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664569"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Vytvoření kontejneru Service Fabric v Linuxu spuštěnou serveru Apache Tomcat
 Apache Tomcat je Oblíbené, open source implementace technologií Java Servlet a Java Server. V tomto článku se dozvíte, jak vytvořit kontejner s Apache Tomcat a jednoduchou webovou aplikaci, kontejner nasadí do clusteru Service Fabric s Linuxem a připojit k webové aplikaci.  

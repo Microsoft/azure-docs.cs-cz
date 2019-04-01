@@ -4,15 +4,15 @@ description: Tento článek shrnuje běžné otázky při nastavování zotaven�
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.date: 03/18/2019
+ms.date: 03/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 2c1890570f153de68d187c37dc0a7bca156c2d47
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 66d57677b216130316c6a3ddd9a6cff993540808
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312049"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649879"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Nejčastější dotazy: Replikace z Azure do Azure
 
@@ -34,6 +34,9 @@ Ano, i když je Azure Site Recovery během prvních 31 dní chráněné instance
 3. [Nastavení zotavení po havárii pro virtuální počítače Azure](azure-to-azure-how-to-enable-replication.md)
 4. [Spuštění testovacího převzetí služeb při selhání](azure-to-azure-tutorial-dr-drill.md)
 5. [Převzetí služeb při selhání a navrácení služeb po obnovení do primární oblasti](azure-to-azure-tutorial-failover-failback.md)
+
+### <a name="how-is-capacity-guaranteed-in-target-region-for-azure-vms"></a>Jak je kapacita zaručeno, že v cílové oblasti pro virtuální počítače Azure?
+Azure Site Recovery (ASR) tým pracuje s týmem správy kapacity Azure naplánovat dostatek kapacity infrastruktury, ve snaze zajistit, aby virtuální počítače chráněné službou Azure Site Recovery pro po havárii se obnovení bylo úspěšně nasazeno v oblasti zotavení po havárii vždy, když jsou spuštěny operace převzetí služeb při selhání Azure Site Recovery.
 
 ## <a name="replication"></a>Replikace
 
@@ -79,7 +82,7 @@ Definuje nastavení historie uchovávání bodů obnovení a frekvenci snímků 
 [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings).
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>Co je bod obnovení konzistentní při selhání?
-Bod obnovení konzistentní při selhání představuje data na disku, jako kdyby došlo k chybě virtuální počítač nebo napájecí kabel byl stažen ze serveru v době pořízení snímku. Neměl by zahrnovat cokoli, co byl v paměti při pořízení snímku. 
+Bod obnovení konzistentní při selhání představuje data na disku, jako kdyby došlo k chybě virtuální počítač nebo napájecí kabel byl stažen ze serveru v době pořízení snímku. Neměl by zahrnovat cokoli, co byl v paměti při pořízení snímku.
 
 V současné době většina aplikací můžete obnovit také ze snímků konzistentních při chybě. Bod obnovení konzistentní při selhání je dostatečně obvykle ne databáze operační systémy a aplikace jako souborové servery, servery DHCP a tiskových serverů.
 
@@ -87,9 +90,7 @@ V současné době většina aplikací můžete obnovit také ze snímků konzis
 Site Recovery vytvoří bod obnovení konzistentní při selhání každých 5 minut.
 
 ### <a name="what-is-an-application-consistent-recovery-point"></a>Co je bod obnovení konzistentní? 
-Body obnovení konzistentní vzhledem k aplikaci vytvořené ze snímků konzistentních s aplikací. Body obnovení konzistentní zachycení stejná data jako snímky konzistentní při selhání, a uveďte všechna data v paměti a všechny probíhající transakce. 
-
-Kvůli další obsah snímky konzistentními se nejvíce podílejí a trvat nejdéle provádět. Doporučujeme, abyste body obnovení konzistentní pro databázi operačních systémů a aplikací, jako je SQL Server.
+Body obnovení konzistentní vzhledem k aplikaci vytvořené ze snímků konzistentních s aplikací. Body obnovení konzistentní zachycení stejná data jako snímky konzistentní při selhání, a uveďte všechna data v paměti a všechny probíhající transakce. Kvůli další obsah snímky konzistentními se nejvíce podílejí a trvat nejdéle provádět. Doporučujeme, abyste body obnovení konzistentní pro databázi operačních systémů a aplikací, jako je SQL Server.
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Co je dopad existence body obnovení konzistentní s aplikací na výkon aplikace?
 Vzhledem k tomu, body obnovení konzistentní zachytí všechna data v paměti a v procesu vyžaduje architekturu jako třeba stínové kopie svazku v systému windows pro uvedení aplikace. To, v případě velmi často aktivace může mít dopad na výkon Pokud už je velmi vytížený zatížení. Obvykle doporučuje nepoužívat s nízkou frekvencí pro body obnovení konzistentní vzhledem k aplikaci pro jiné databázové úlohy a to i pro databázové úlohy 1 hodinu je dostatečná. 
@@ -116,8 +117,8 @@ Nejstarší bod obnovení, který vám pomůže je 72 hodin.
 ### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>Co se stane, když mám zásady replikace 24 hodin a problém brání Site Recovery z generování body obnovení po dobu více než 24 hodin? Budou Moje předchozí body obnovení ztraceny?
 Ne, Site Recovery budete mít všechna vaše předchozí body obnovení. V závislosti na interval uchovávání bodů obnovení, 24 hodin. v takovém případě Site Recovery nahrazuje nejstarší bod pouze v případě, že je generování nových bodů. V takovém případě nebudou žádné nový bod obnovení, které jsou generované kvůli problému, staré body zůstane zachován beze změny Jakmile dosáhneme okno uchování.
 
-### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Po povolení replikace na virtuálním počítači, jak změním zásady replikace? 
-Přejděte na **trezor Site Recovery** > **infrastruktura Site Recovery** > **zásady replikace**. Vyberte zásadu, kterou chcete upravit a uložit změny. Všechny změny se uplatní na všechny stávající replikace příliš. 
+### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Po povolení replikace na virtuálním počítači, jak změním zásady replikace?
+Přejděte na **trezor Site Recovery** > **infrastruktura Site Recovery** > **zásady replikace**. Vyberte zásadu, kterou chcete upravit a uložit změny. Všechny změny se uplatní na všechny stávající replikace příliš.
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Všechny body obnovení jsou úplnou kopii virtuálního počítače nebo rozdíl?
 První bod obnovení, který je generován má úplnou kopii. Všechny body obnovení po sobě jdoucích mít rozdílové změny.
@@ -125,7 +126,7 @@ První bod obnovení, který je generován má úplnou kopii. Všechny body obno
 ### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Zvýší náklady na úložiště prodloužení doby uchovávání bodů obnovení?
 Ano. Pokud zvýšíte dobu uchování 24 hodin na 72 hodin, Site Recovery se uloží body obnovení pro další 48 hodin. Další čas budou účtovat poplatky za úložiště. Například pokud bod obnovení jeden má rozdílové změny na 10 GB a cena za GB je 0.16 $ za měsíc, bude účtovat další poplatky $1.6 * 48 za měsíc.
 
-## <a name="multi-vm-consistency"></a>Konzistence vzhledem k více virtuálním počítačům 
+## <a name="multi-vm-consistency"></a>Konzistence vzhledem k více virtuálním počítačům
 
 ### <a name="what-is-multi-vm-consistency"></a>Co je konzistence více virtuálních počítačů?
 Znamená to, a ujistěte se, že je bod obnovení konzistentní vzhledem k aplikacím na všech replikovaných virtuálních počítačů.
@@ -134,7 +135,7 @@ Všechny virtuální počítače budou mít sdílené body obnovení konzistentn
 Projděte si kurz k [povolit konzistenci](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication).
 
 ### <a name="can-i-failover-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Je možné převzetí služeb při selhání jednoho virtuálního počítače v replikační skupině konzistence více virtuálních počítačů?
-Výběrem možnosti "Konzistence více virtuálních počítačů", můžete se s informacemi o tom, že aplikace obsahuje závislost na všechny virtuální počítače v rámci skupiny. Převzetí služeb při selhání na jeden virtuální počítač proto není povolen. 
+Výběrem možnosti "Konzistence více virtuálních počítačů", můžete se s informacemi o tom, že aplikace obsahuje závislost na všechny virtuální počítače v rámci skupiny. Převzetí služeb při selhání na jeden virtuální počítač proto není povolen.
 
 ### <a name="how-many-virtual-machines-can-i-replicate-as-a-part-of-a-multi-vm-consistency-replication-group"></a>Kolik virtuálních počítačů můžete replikovat jako součást skupiny replikace konzistence více virtuálních počítačů?
 Můžete replikovat 16 virtuální počítače do společné replikační skupiny.
@@ -145,9 +146,12 @@ Protože je intenzivní nároky na procesor, povolení konzistence více virtuá
 
 ## <a name="failover"></a>Převzetí služeb při selhání
 
+### <a name="how-is-capacity-guaranteed-in-target-region-for-azure-vms"></a>Jak je kapacita zaručeno, že v cílové oblasti pro virtuální počítače Azure?
+Azure Site Recovery (ASR) tým pracuje s týmem správy kapacity Azure naplánovat dostatek kapacity infrastruktury, ve snaze zajistit, aby virtuální počítače chráněné službou Azure Site Recovery pro po havárii se obnovení bylo úspěšně nasazeno v oblasti zotavení po havárii vždy, když jsou spuštěny operace převzetí služeb při selhání Azure Site Recovery.
+
 ### <a name="is-failover-automatic"></a>Je převzetí služeb při selhání automatické?
 
-Převzetí služeb při selhání není automatické. Spuštění převzetí služeb při selhání jedním kliknutím na portálu, nebo můžete použít [Powershellu](azure-to-azure-powershell.md) k aktivaci převzetí služeb při selhání. 
+Převzetí služeb při selhání není automatické. Spuštění převzetí služeb při selhání jedním kliknutím na portálu, nebo můžete použít [Powershellu](azure-to-azure-powershell.md) k aktivaci převzetí služeb při selhání.
 
 ### <a name="can-i-retain-a-public-ip-address-after-failover"></a>Můžete zachovat veřejné IP adresy po převzetí služeb při selhání?
 
@@ -158,7 +162,8 @@ Ano, můžete zachovat privátní IP adresu. Ve výchozím nastavení když povo
 
 ### <a name="after-failover-the-server-doesnt-have-the-same-ip-address-as-the-source-vm-why-is-it-assigned-a-new-ip-address"></a>Po převzetí služeb při selhání server nemá stejnou IP adresu jako zdrojový virtuální počítač. Proč se ho přiřadit novou IP adresu?
 
-Site Recovery se pokusí zadat IP adresu v okamžiku převzetí služeb při selhání. Pokud jiného virtuálního počítače trvá, které řeší, Site Recovery nastaví další dostupnou IP adresu jako cíl. Úplné vysvětlení způsobu, jakým Site Recovery zpracovává adresování, najdete v článku [nastavit mapování sítě a IP adresování virtuálních sítí](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-network-mapping#set-up-ip-addressing-for-target-vms).
+Site Recovery se pokusí zadat IP adresu v okamžiku převzetí služeb při selhání. Pokud jiného virtuálního počítače trvá, které řeší, Site Recovery nastaví další dostupnou IP adresu jako cíl.
+Úplné vysvětlení způsobu, jakým Site Recovery zpracovává adresování, najdete v článku [nastavit mapování sítě a IP adresování virtuálních sítí](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-network-mapping#set-up-ip-addressing-for-target-vms).
 
 ### <a name="what-are-latest-lowest-rpo-recovery-points"></a>Co jsou **nejnovější verzi (nejnižší cíl bodu obnovení)** body obnovení?
 **Nejnovější verzi (nejnižší cíl bodu obnovení)** možnost nejprve zpracuje všechna data, ke které byl odeslán do služby Site Recovery k vytvoření bodu obnovení pro každý virtuální počítač před přebírání služeb při selhání do něj. Tato možnost poskytuje nejnižší cíl bodu obnovení (RPO), protože virtuální počítač vytvořen po převzetí služeb při selhání se všechna data do Site Recovery replikovala při aktivaci převzetí služeb při selhání.
@@ -173,7 +178,7 @@ Ano. Site Recovery zpracovává všechny čekající data před selháním, prot
 Můžete aktivovat převzetí služeb při selhání po výpadek. Site Recovery nepotřebuje připojení z primární oblasti provést převzetí služeb při selhání.
 
 ### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>Co je RTO převzetí služeb při selhání virtuálního počítače?
-Site Recovery obsahuje [RTO smlouva SLA na úrovni 2 hodiny](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). Ale ve většině případů, Site Recovery převzetí služeb při selhání virtuálních počítačů během několika minut. Můžete vypočítat RTO tak, že přejdete převzetí služeb při selhání úlohy, která ukazuje čas, jakou trvalo a zobrazte si virtuální počítač. Obnovení plánování RTO, přečtěte si níže část. 
+Site Recovery obsahuje [RTO smlouva SLA na úrovni 2 hodiny](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). Ale ve většině případů, Site Recovery převzetí služeb při selhání virtuálních počítačů během několika minut. Můžete vypočítat RTO tak, že přejdete převzetí služeb při selhání úlohy, která ukazuje čas, jakou trvalo a zobrazte si virtuální počítač. Obnovení plánování RTO, přečtěte si níže část.
 
 ## <a name="recovery-plans"></a>Plány obnovení
 
@@ -188,7 +193,7 @@ Plán obnovení ve službě Site Recovery orchestruje převzetí služeb při se
 
 ### <a name="how-is-sequencing-achieved-in-a-recovery-plan"></a>Jak se dosahuje sekvencování v plánu obnovení?
 
-V plánu obnovení můžete vytvořit více skupin, abyste dosáhli sekvencování. Každá skupina převezme služby při selhání v jednom okamžiku. Virtuální počítače, které jsou součástí stejné skupiny selhání přes společně, za nímž následuje jinou skupinu. Zjistěte, jak model aplikace s použitím plánu obnovení, najdete v článku [plány obnovení](recovery-plan-overview.md#model-apps). 
+V plánu obnovení můžete vytvořit více skupin, abyste dosáhli sekvencování. Každá skupina převezme služby při selhání v jednom okamžiku. Virtuální počítače, které jsou součástí stejné skupiny selhání přes společně, za nímž následuje jinou skupinu. Zjistěte, jak model aplikace s použitím plánu obnovení, najdete v článku [plány obnovení](recovery-plan-overview.md#model-apps).
 
 ### <a name="how-can-i-find-the-rto-of-a-recovery-plan"></a>Jak zjistím RTO plánu obnovení?
 Pokud chcete zkontrolovat RTO plán obnovení, proveďte testovací převzetí služeb při selhání pro plán obnovení a přejděte na **úlohy Site Recovery**.
@@ -199,7 +204,7 @@ V následujícím příkladu trvalo úlohu nazvanou SAPTestRecoveryPlan 8 minut 
 ### <a name="can-i-add-automation-runbooks-to-the-recovery-plan"></a>Můžete přidat runbooky služby automation do plánu obnovení?
 Ano, můžete integrovat runbooků Azure Automation do plánu obnovení. [Další informace](site-recovery-runbook-automation.md).
 
-## <a name="reprotection-and-failback"></a>Opětovného nastavování ochrany a navrácení služeb po obnovení 
+## <a name="reprotection-and-failback"></a>Opětovného nastavování ochrany a navrácení služeb po obnovení
 
 ### <a name="after-a-failover-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>Po převzetí služeb při selhání z primární oblasti do oblasti pro zotavení po havárii jsou virtuální počítače v oblasti zotavení po Havárii automaticky chráněná?
 Ne. Pokud jste [převzetí služeb při selhání](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) virtuálních počítačů Azure z jedné oblasti do druhé a spouštění virtuálních počítačů v oblasti zotavení po Havárii v nechráněném stavu. Chcete-li navrácení služeb po obnovení virtuálních počítačů do primární oblasti, budete muset [znovunastavení ochrany](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect) virtuální počítače v sekundární oblasti.
@@ -208,7 +213,7 @@ Ne. Pokud jste [převzetí služeb při selhání](https://docs.microsoft.com/az
 To závisí na situace. Například pokud zdrojové oblasti virtuální počítač existuje, jsou synchronizovány pouze změny mezi zdrojový disk a cílový disk. Site Recovery počítá srovnáním disky rozdíly a pak ji přesune data. Tento proces obvykle trvá několik hodin. Další informace o tom, co se stane během opětovného nastavování ochrany najdete v tématu [zpětné replikace převzetí služeb při selhání virtuálních počítačů Azure do primární oblasti]( https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection).
 
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Kolik času udělá provést navrácení služeb po obnovení?
-Množství času pro navrácení služeb po obnovení po opětovného nastavování ochrany, je obvykle podobný čas potřebný pro převzetí služeb při selhání z primární oblasti do sekundární oblasti. 
+Množství času pro navrácení služeb po obnovení po opětovného nastavování ochrany, je obvykle podobný čas potřebný pro převzetí služeb při selhání z primární oblasti do sekundární oblasti.
 
 ## <a name="capacity"></a>Kapacita
 ### <a name="does-site-recovery-work-with-reserved-instance"></a>Funguje Site Recovery s rezervované Instance?

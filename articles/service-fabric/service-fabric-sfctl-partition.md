@@ -4,7 +4,7 @@ description: Popisuje příkazy Service Fabric CLI sfctl oddílu.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: c2bb1c0147d38b4286e2cdfb2d161eaa0704e393
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f7c9bcc51757100cb1fc957dee12213bc8bf2eec
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271483"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666762"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 Dotazování a správu oddílů pro libovolnou službu.
@@ -28,20 +28,20 @@ Dotazování a správu oddílů pro libovolnou službu.
 
 |Příkaz|Popis|
 | --- | --- |
-| ztráty dat | Toto rozhraní API způsobí ztrátu dat pro zadaný oddíl. |
-| Stav ztráty dat | Získá průběh operace ztráty dat oddílu začít používat rozhraní API StartDataLoss. |
+| data-loss | Toto rozhraní API způsobí ztrátu dat pro zadaný oddíl. |
+| data-loss-status | Získá průběh operace ztráty dat oddílu začít používat rozhraní API StartDataLoss. |
 | zdravotnictví | Získá stav zadaný oddíl Service Fabric. |
 | informace | Získá informace o oddílu Service Fabric. |
 | list | Získá seznam oddílů služby Service Fabric. |
 | načítání | Získá informace o načtení zadaného oddílu Service Fabric. |
 | načíst obnovit | Obnoví aktuální zatížení oddílů Service Fabric. |
 | ztráty kvora | Indukuje ztráty kvora pro daný stavové služby oddíl. |
-| kvorum. ke ztrátě stavu | Získá průběh operace ztrátou kvora v oddílu pomocí rozhraní API StartQuorumLoss spuštěna. |
+| quorum-loss-status | Získá průběh operace ztrátou kvora v oddílu pomocí rozhraní API StartQuorumLoss spuštěna. |
 | Obnovit | Do clusteru Service Fabric označuje, že by měl pokusí o zotavení konkrétního oddílu, který je aktuálně zablokované ve ztrátě kvora. |
 | obnovení – to všechno | Do clusteru Service Fabric označuje, že by měl pokusí o zotavení veškeré služby (včetně systémových služeb), které jsou aktuálně zablokované ve ztrátě kvora. |
-| Stav sestavy | Odešle zprávu o stavu v Service Fabric oddílu. |
+| report-health | Odešle zprávu o stavu v Service Fabric oddílu. |
 | restart | Toto rozhraní API se restartuje, některé nebo všechny replik nebo instancí zadaný oddíl. |
-| restart stavu | Získá průběh operace PartitionRestart začít používat StartPartitionRestart. |
+| restart-status | Získá průběh operace PartitionRestart začít používat StartPartitionRestart. |
 | svc-name | Získá název služby Service Fabric pro oddíl. |
 
 ## <a name="sfctl-partition-data-loss"></a>sfctl oddílu-ztráty dat
@@ -106,9 +106,9 @@ EventsHealthStateFilter použijte k filtrování kolekce událostí stavu hláš
 |Argument|Popis|
 | --- | --- |
 | – id oddílu [povinné] | Identita oddílu. |
-| --události stavu stavu filtru | Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
+| --events-health-state-filter | Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
 | --exclude statistiky stavu | Určuje, zda má být vrácen statistik stavu jako součást výsledků dotazu. Ve výchozím nastavení False. Statistiky ukazují počet podřízených entit ve stavu Ok, upozornění a chyby. |
-| --repliky stavu stavu filtru | Umožňuje filtrování kolekce objektů ReplicaHealthState v oddílu. Nejde získat hodnotu z členů nebo bitové operace u členů HealthStateFilter. Vrátí se pouze repliky, které odpovídají filtru. Všechny repliky se použije k vyhodnocení agregovaný stav v pořádku. Pokud se nezadá, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 pak všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4) vrátí se. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
+| --replicas-health-state-filter | Umožňuje filtrování kolekce objektů ReplicaHealthState v oddílu. Nejde získat hodnotu z členů nebo bitové operace u členů HealthStateFilter. Vrátí se pouze repliky, které odpovídají filtru. Všechny repliky se použije k vyhodnocení agregovaný stav v pořádku. Pokud se nezadá, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 pak všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4) vrátí se. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -321,7 +321,7 @@ Sestavy stav zadaný oddíl Service Fabric. Sestava může obsahovat informace o
 | – vypršela platnost odebrat v případě | Hodnota, která označuje, zda sestava se odebere z health store, když jeho platnost vyprší. <br><br> Je-li nastavena hodnota true, sestava se odebere z health store po vypršení její platnosti. Pokud je nastaven na hodnotu false, sestava je považováno za chybu, pokud vypršela platnost. Hodnota této vlastnosti je ve výchozím nastavení hodnotu false. Když klienti pravidelně hlásit, nastavují by měl RemoveWhenExpired false (výchozí). Tímto způsobem je osoby podávající hlášení dochází k problémům (například zablokování) a nemůže oznamovat entity je vyhodnocena v chybě, když vyprší platnost sestava stavu. Označí entitu jako patřící do chybového stavu. |
 | --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Pořadové číslo sestav se používá v úložišti stavů ke zjišťování zastaralých sestavy. Pokud není zadán, je číslo sekvence automaticky generované klientem stavu při přidání sestavy. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| – Hodnota ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
+| --ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
