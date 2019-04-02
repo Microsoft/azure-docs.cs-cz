@@ -8,12 +8,12 @@ ms.date: 02/12/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ddda2a8bf1fab4e4c48c647237617d8f705f0561
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 79b99532f5fb38123b03d2a39b7c9c6364e9f636
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112083"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802255"
 ---
 # <a name="create-a-custom-policy-definition"></a>Vytvoření vlastní definice zásad
 
@@ -72,7 +72,7 @@ Podívejte se na několika způsoby [šablony Resource Manageru](../../../azure-
 Nejjednodušší způsob, jak najít vlastnosti je podívat se na existující prostředek stejného typu. Prostředky, které jsou už nakonfigurovaná s nastavením, které chcete vynutit poskytují také hodnota pro porovnání.
 Podívejte se na **automatizační skript** stránky (v části **nastavení**) na webu Azure Portal pro tento konkrétní prostředek.
 
-![Automatizační skript stránky](../media/create-custom-policy-definition/automation-script.png)
+![Exportovat stránku šablony na existující prostředek](../media/create-custom-policy-definition/automation-script.png)
 
 Tím pro účet úložiště zobrazí šablonu podobný tomuto příkladu:
 
@@ -118,7 +118,7 @@ Tím pro účet úložiště zobrazí šablonu podobný tomuto příkladu:
 ...
 ```
 
-V části **vlastnosti** je hodnota s názvem **supportsHttpsTrafficOnly** nastavena na **false**. Tato vlastnost pravděpodobně může být vlastnost, která hledáme. Také **typ** prostředku **Microsoft.Storage/storageAccounts.**. Typ umožňuje nám zásadu omezit na jedinou prostředky tohoto typu.
+V části **vlastnosti** je hodnota s názvem **supportsHttpsTrafficOnly** nastavena na **false**. Tato vlastnost pravděpodobně může být vlastnost, která hledáme. Také **typ** prostředku **Microsoft.Storage/storageAccounts**. Typ umožňuje nám zásadu omezit na jedinou prostředky tohoto typu.
 
 #### <a name="create-a-resource-in-the-portal"></a>Vytvořit prostředek na portálu
 

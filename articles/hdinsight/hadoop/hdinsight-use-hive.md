@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.openlocfilehash: 6d667df3062112e0c805e3ba26bc6240022cab8b
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.date: 03/26/2019
+ms.openlocfilehash: 1f0746436fa980b6becfa7a88560734aa07a54e2
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446336"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801925"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL v Azure HDInsight?
 
@@ -37,17 +37,15 @@ HDInsight obsahuje několik typů clusteru, která je vyladěná pro konkrétní
 
 V následující tabulce použijte ke zjištění různých způsobech používání Hive s HDInsight:
 
-| **Tuto metodu použijte** Pokud chcete... | ... **interaktivní** dotazy | ...**batch** zpracování | ...při to **clusteru operačního systému** | ...from to **klientský operační systém** |
+| **Tuto metodu použijte** Pokud chcete... | ... **interaktivní** dotazy | ...**batch** zpracování | ...from to **klientský operační systém** |
 |:--- |:---:|:---:|:--- |:--- |
-| [Nástroje HDInsight pro Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ |Linux | Linux, Unix, Mac OS X a Windows |
-| [Nástroje HDInsight pro Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Linux nebo Windows * |Windows |
-| [Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |Žádné (využívajících prohlížeč) |
-| [Klient beeline](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X a Windows |
-| [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux nebo Windows * |Linux, Unix, Mac OS X a Windows |
-| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux nebo Windows * |Windows |
+| [Nástroje HDInsight pro Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux, Unix, Mac OS X a Windows |
+| [Nástroje HDInsight pro Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
+| [Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Žádné (využívajících prohlížeč) |
+| [Klient beeline](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux, Unix, Mac OS X a Windows |
+| [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, Unix, Mac OS X a Windows |
+| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Windows |
 
-> [!IMPORTANT]
-> \* Linux se používá v HDInsight verze 3.4 výhradně operační systém. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="hiveql-language-reference"></a>Referenční informace k jazyku HiveQL
 
@@ -119,7 +117,6 @@ Hive v HDInsight se dodává už načtené s interní tabulku s názvem `hivesam
 Sloupce do projektu následující příkazy HiveQL `/example/data/sample.log` souboru:
 
 ```hiveql
-set hive.execution.engine=tez;
 DROP TABLE log4jLogs;
 CREATE EXTERNAL TABLE log4jLogs (
     t1 string,
@@ -138,10 +135,6 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 Příkazy HiveQL v předchozím příkladu, proveďte následující akce:
 
-* `set hive.execution.engine=tez;`: Nastavuje prováděcí modul použití Apache Tez. Pomocí Tez můžete poskytnout zvýšení výkonu dotazů. Další informace o Tez najdete v článku [použití rozhraní Apache Tez pro zlepšení výkonu](#usetez) oddílu.
-
-    > [!NOTE]  
-    > Tento příkaz je jenom nutné při použití clusteru HDInsight se systémem Windows. Tez je výchozí prováděcí modul pro HDInsight se systémem Linux.
 
 * `DROP TABLE`: Pokud tabulka již existuje, odstraňte ho.
 
@@ -163,7 +156,6 @@ Příkazy HiveQL v předchozím příkladu, proveďte následující akce:
 Vytvoření **interní** místo externí tabulky, použijte následující HiveQL:
 
 ```hiveql
-set hive.execution.engine=tez;
 CREATE TABLE IF NOT EXISTS errorLogs (
     t1 string,
     t2 string,
@@ -193,16 +185,7 @@ Tyto příkazy provádět následující akce:
 
 ### <a id="usetez"></a>Apache Tez
 
-[Apache Tez](https://tez.apache.org) je architektura, která umožňuje aplikace náročné na data, jako je například Hive mnohem efektivněji spouštět škálovaně. Tez je povoleno standardně pro clustery HDInsight založené na Linuxu.
-
-> [!NOTE]  
-> Tez je aktuálně vypnuto ve výchozím nastavení pro clustery HDInsight se systémem Windows a musí být povolené. Abyste mohli využívat Tez, musí být nastavena následující hodnotu pro dotaz Hive:
->
-> `set hive.execution.engine=tez;`
->
-> Tez je výchozí modul pro clustery HDInsight založené na Linuxu.
-
-[Apache Hive na dokumentech návrhu Tez](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) obsahuje podrobné informace o možnosti implementace a ladění konfigurace.
+[Apache Tez](https://tez.apache.org) je architektura, která umožňuje aplikace náročné na data, jako je například Hive mnohem efektivněji spouštět škálovaně. Ve výchozím nastavení je povoleno tez.  [Apache Hive na dokumentech návrhu Tez](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) obsahuje podrobné informace o možnosti implementace a ladění konfigurace.
 
 ### <a name="low-latency-analytical-processing-llap"></a>Analytické zpracování s nízkou latencí (LLAP)
 

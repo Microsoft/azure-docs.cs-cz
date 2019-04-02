@@ -8,14 +8,14 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 7fea9b0d00d92c63bb4c8bbdadada9e8eb6a05fe
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: f49951d0a2ec738df9946edc7f44820c2cde975f
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202499"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804328"
 ---
-# <a name="deploy-the-azure-blueprints-iso-27001-shared-services-blueprint-sample"></a>Nasazení ukázkové podrobného plánu Azure plány ISO 27001 sdílené služby
+# <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Nasazení ukázkové ISO 27001 Shared Services podrobného plánu
 
 Abyste nasadili ukázkový plán Azure plány ISO 27001 sdílené služby, musí provést následující kroky:
 
