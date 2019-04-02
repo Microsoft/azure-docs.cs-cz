@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: a1e65466bb409007a2f112422f393eee786d7b3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182128"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793753"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Nasazení akcelerátoru řešení vzdáleného monitorování, který se pomocí rozhraní příkazového řádku
 
@@ -62,6 +62,8 @@ Tento oddíl shrnuje hlavní rozdíly mezi základní a standardní nasazení.
 
 ### <a name="basic"></a>Basic
 
+Můžete provést základní nasazení z [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) nebo pomocí rozhraní příkazového řádku.
+
 Nasazení Basic slouží k předvádění řešení. Pokud chcete snížit náklady, všechny mikroslužby se nasazují v jednom virtuálním počítači. Toto nasazení nepoužívá architektura připravené pro produkční prostředí.
 
 Základní nasazení vytvoří tyto služby ve vašem předplatném Azure:
@@ -80,6 +82,8 @@ Základní nasazení vytvoří tyto služby ve vašem předplatném Azure:
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 jednotka              | Úložiště pro analýzu telemetrie podrobné informace o data a umožňují zprávy |
 
 ### <a name="standard"></a>Standard
+
+Můžete provést standardní nasazení jenom pomocí rozhraní příkazového řádku.
 
 Standardní nasazení je nasazení připravené pro produkční prostředí, které vývojář může přizpůsobit a rozšířit. Až budete připraveni k přizpůsobení připravené pro produkční prostředí architektury, navržená pro škálování a rozšiřitelnost, použijte možnost nasazení standard. Aplikace mikroslužeb jsou vytvořené jako kontejnery Dockeru a nasazují pomocí služby Azure Kubernetes Service. Orchestrátor Kubernetes nasadí, škálování a spravuje mikroslužby.
 

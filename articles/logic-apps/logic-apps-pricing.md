@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 03/25/2019
-ms.openlocfilehash: 4e5b63642b5090b50d29d6d3adc49ea683b90faa
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 7e1868dd5ce62c28c9a8aac724862c58a5e0e1da
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437709"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805165"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
 
@@ -38,12 +38,12 @@ Služba Azure Logic Apps měření všechny akce, které běží ve vaší aplik
 
 ## <a name="fixed-pricing-model"></a>Oprava cenový model
 
-Pro nové aplikace logiky, na kterých běží uvnitř [ *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), platíte za integrované akce a konektory úrovně standard pevnou měsíční cenu. ISE poskytuje způsob, jak můžete vytvořit a spouštět aplikace izolované logiky, které mají přístup k prostředkům ve virtuální síti Azure.
+[ *Prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zajišťuje privátní, izolované a vyhrazené pro vytvoření a spuštění aplikace logiky, které mají přístup k prostředkům ve virtuální síti Azure. Pro nové aplikace logiky, na kterých běží uvnitř ISE platíte za integrované akce a konektory úrovně Standard pevnou měsíční cenu. Vaše ISE také zahrnuje jeden konektor free Enterprise, který zahrnuje tolika připojení. Využití dalších podnikových konektorů se účtuje podle cena spotřeby Enterprise. 
+
+Základní jednotka ISE chyba opravena kapacity, takže pokud potřebujete větší propustnost, můžete [přidávat další jednotky škálování](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity), buď při vytváření nebo později.
 
 > [!NOTE]
 > Probíhá ISE [ *ve verzi public preview*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Konkrétní informace o cenách najdete v části [cenami Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps).
-
-Základní jednotka ISE chyba opravena kapacity, takže pokud potřebujete větší propustnost, můžete [přidávat další jednotky škálování](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity), buď při vytváření nebo později. Vaše ISE zahrnuje jeden konektor free Enterprise, který zahrnuje tolika připojení. Využití dalších podnikových konektorů se účtuje podle cena spotřeby Enterprise.
 
 <a name="connectors"></a>
 

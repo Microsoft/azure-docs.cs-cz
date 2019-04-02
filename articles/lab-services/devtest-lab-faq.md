@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 3752e9c227e4db0f583b2f6b21d6c0aa3106d248
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: d8fc929b21bedcb3e7e2bd3f5ed1d6c867bca3c8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337693"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803370"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé nejběžnější otázky o Azure DevTest Labs.
@@ -44,7 +44,7 @@ Aktuálně pracujeme na migraci stávajících blogových příspěvků (s výji
 Jsme se, že se účtování výpadek aktualizací pomocí našich popisovač Twitteru do budoucna. Sledujte nás na Twitteru, chcete-li získat nejnovější informace o výpadcích a známé chyby.
 
 ### <a name="twitter"></a>Twitter 
-Naše popisovač Twitteru: azlabservices
+Naše popisovač Twitteru: [@azlabservices](https://twitter.com/azlabservices)
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Co když můj dotaz zde nenalezl?
 Pokud zde není uveden váš dotaz, dejte nám vědět a pomůžeme vám najít odpověď.
@@ -139,7 +139,9 @@ Máte dvě možnosti, souběžně vytvoření více virtuálních počítačů z
 ## <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Jak můžu přesunout svoje existující virtuální počítače Azure do Moje testovací prostředí DevTest Labs?
 Kopírování existujících virtuálních počítačů k DevTest Labs:
 
-1. Kopírování souboru virtuálního pevného disku existujícího virtuálního počítače pomocí [skript prostředí Windows PowerShell](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyVHDFromVMToLab.ps1).
+1. Zkopírujte soubor virtuálního pevného disku existujícího virtuálního počítače pomocí skriptu prostředí PowerShell:
+   * Správce prostředků: [CopyRmVHDFromVMToLab.ps1](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyRmVHDFromVMToLab.ps1)
+   * Classic: [CopyClassicVHDFromVMToLab.ps1](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyClassicVHDFromVMToLab.ps1)
 2. [Vytvoření vlastní image](devtest-lab-create-template.md) uvnitř testovacího prostředí DevTest Labs.
 3. Vytvoření virtuálního počítače v testovacím prostředí z vlastní image.
 
