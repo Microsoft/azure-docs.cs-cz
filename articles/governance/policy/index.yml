@@ -1,12 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e389eb01faff93c0e45c66cded41e94ac3730715
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: cf5eeff9aa56a2c3366c57ddef47f4020e73c161
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226024"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804645"
 documentType: LandingData
-title: Dokumentace k Azure Policy
+title: Dokumentace ke službě Azure Policy
 metadata:
   title: Dokumentace k Azure Policy – kurzy, reference k rozhraní API
   description: Azure Policy pomáhá zajišťovat správu a prevenci potíží s IT prostřednictvím definic zásad, které vynucují pravidla a efekty pro vaše prostředky. Když použijete Azure Policy, prostředky budou odpovídat vašim firemním standardům a smlouvám o úrovni služeb.

@@ -1,6 +1,6 @@
 ---
 title: Index ukázek podrobných plánů
-description: Index ukázek pro Azure Blueprints
+description: Index ukázek dodržování předpisů a standardního prostředí pro nasazování s využitím služby Azure Blueprints
 services: blueprints
 author: DCtheGeek
 manager: carmonm

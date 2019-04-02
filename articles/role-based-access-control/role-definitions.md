@@ -15,12 +15,12 @@ ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: b7f4ce9508928ccc6ab766e7164c674511bcaa37
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 7855c2bd45ba35ecb0ede5c60268e6446f37ed5a
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342775"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804526"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Pochopení definic rolí pro prostředky Azure
 
@@ -97,11 +97,11 @@ Pro podporu operace s daty, byly přidány nové vlastnosti dat struktuře defin
 - Zapsat úložiště objektů blob v kontejneru
 - Odstranit zprávu ve frontě
 
-Tady je [Čtenář dat objektu Blob služby Storage (Preview)](built-in-roles.md#storage-blob-data-reader-preview) definice role, který zahrnuje operace v obou `Actions` a `DataActions` vlastnosti. Tato role umožňuje číst kontejner objektů blob a také podkladová data objektů blob.
+Tady je [čtecí modul dat pro úložiště objektů Blob](built-in-roles.md#storage-blob-data-reader) definice role, který zahrnuje operace v obou `Actions` a `DataActions` vlastnosti. Tato role umožňuje číst kontejner objektů blob a také podkladová data objektů blob.
 
 ```json
 {
-  "Name": "Storage Blob Data Reader (Preview)",
+  "Name": "Storage Blob Data Reader",
   "Id": "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
   "IsCustom": false,
   "Description": "Allows for read access to Azure Storage blob containers and data",
@@ -125,18 +125,18 @@ Autorizace pro všechna volání rozhraní API operace správy se určují pomoc
 
 ### <a name="data-operations-example"></a>Příklad dat operace
 
-Abyste lépe pochopili, jak fungují operace správy a data, Pojďme se podívat na konkrétní příklad. Alice se přiřadila [vlastníka](built-in-roles.md#owner) role v oboru předplatného. Bob se přiřadila [Přispěvatel dat objektu Blob služby Storage (Preview)](built-in-roles.md#storage-blob-data-contributor-preview) role v rozsahu účtu úložiště. Následující diagram ukazuje tento příklad.
+Abyste lépe pochopili, jak fungují operace správy a data, Pojďme se podívat na konkrétní příklad. Alice se přiřadila [vlastníka](built-in-roles.md#owner) role v oboru předplatného. Bob se přiřadila [Přispěvatel dat objektu Blob úložiště](built-in-roles.md#storage-blob-data-contributor) role v rozsahu účtu úložiště. Následující diagram ukazuje tento příklad.
 
 ![Řízení přístupu na základě rolí se prodloužila, aby podporoval management i operace s daty](./media/role-definitions/rbac-management-data.png)
 
-[Vlastníka](built-in-roles.md#owner) role pro Alici a [Přispěvatel dat objektu Blob služby Storage (Preview)](built-in-roles.md#storage-blob-data-contributor-preview) role pro Roberta mít následující akce:
+[Vlastníka](built-in-roles.md#owner) role pro Alici a [Přispěvatel dat objektu Blob úložiště](built-in-roles.md#storage-blob-data-contributor) role pro Roberta mít následující akce:
 
 Vlastník
 
 &nbsp;&nbsp;&nbsp;&nbsp;Akce<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
 
-Přispěvatel dat objektu blob služby Storage (Preview)
+Přispěvatel dat v objektech blob služby Storage
 
 &nbsp;&nbsp;&nbsp;&nbsp;Akce<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
@@ -149,7 +149,7 @@ Přispěvatel dat objektu blob služby Storage (Preview)
 
 Vzhledem k tomu, že Alice obsahuje zástupný znak (`*`) akci v oboru předplatného, své oprávnění dědí dolů povolit jí provádět veškeré akce správy. Alice může čtení, zápisu a odstranění kontejnerů. Alice však nelze provádět operace s daty bez dalších kroků. Ve výchozím nastavení, například Alice nelze číst objekty BLOB v kontejneru. Ke čtení objektů BLOB, Alice musel načíst přístupových klíčů úložiště a použít pro přístup k objektům BLOB.
 
-Oprávnění Boba jsou omezeny na jenom `Actions` a `DataActions` zadané v poli [Přispěvatel dat objektu Blob služby Storage (Preview)](built-in-roles.md#storage-blob-data-contributor-preview) role. Na základě role, Bob provádět správu a operace s daty. Například Bob čtení, zápis a odstranění kontejnerů ze zadaný účet úložiště a si můžete také čtení, zápisu a odstranění objektů BLOB.
+Oprávnění Boba jsou omezeny na jenom `Actions` a `DataActions` zadané v poli [Přispěvatel dat objektu Blob úložiště](built-in-roles.md#storage-blob-data-contributor) role. Na základě role, Bob provádět správu a operace s daty. Například Bob čtení, zápis a odstranění kontejnerů ze zadaný účet úložiště a si můžete také čtení, zápisu a odstranění objektů BLOB.
 
 Další informace o správě a zabezpečení roviny dat pro úložiště najdete v tématu [Průvodci zabezpečením Azure Storage](../storage/common/storage-security-guide.md).
 
@@ -157,7 +157,7 @@ Další informace o správě a zabezpečení roviny dat pro úložiště najdete
 
 Zobrazení a práce s operace s daty, musí mít správné verze prvků nástrojů nebo sad SDK:
 
-| Nástroj  | Verze  |
+| Tool  | Verze  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 nebo novější |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 nebo novější |

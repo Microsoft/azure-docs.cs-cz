@@ -1,5 +1,5 @@
 ---
-title: Ukázka – Podrobný plán úlohy ISO 27001 App Service Environment/SQL Database – přehled
+title: Ukázka – podrobný plán úlohy ASE/SQL ISO 27001 – přehled
 description: Přehled a architektura ukázky podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database
 services: blueprints
 author: DCtheGeek
@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ---
-# <a name="overview-of-the-azure-blueprints-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Přehled ukázky podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database pro Azure Blueprints
+# <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Přehled ukázky podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database
 
 Ukázka podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database poskytuje další informace k ukázce podrobného plánu [ISO 27001: Sdílené služby](../iso27001-shared/index.md).
 Tento podrobný plán pomáhá zákazníkům nasazovat cloudové architektury, které nabízejí řešení pro scénáře s požadavky na dodržování předpisů nebo akreditaci.
@@ -23,7 +23,7 @@ K dispozici jsou dvě ukázky podrobného plánu ISO 27001, tato ukázka a ukáz
 
 Ukázka podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database nasazuje webové prostředí založené na platformě jako službě. Toto prostředí se dá využít k hostování několika webových aplikací, webových rozhraní API a instancí SQL Database, které dodržují standardy ISO 27001. Tato ukázka podrobného plánu závisí na ukázce podrobného plánu [ISO 27001: Sdílené služby](../iso27001-shared/index.md).
 
-![Návrh ukázky podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
+![Návrh ukázky podrobného plánu úlohy ASE/SQL ISO 27001](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
 
 Toto prostředí je tvořené několika službami Azure, které se využívají k zajištění zabezpečené a plně monitorované infrastruktury úloh na podnikové úrovni, která je založená na standardech ISO 27001. Toto prostředí tvoří:
 

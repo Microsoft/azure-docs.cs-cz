@@ -1,6 +1,6 @@
 ---
-title: Ukázkový – ISO 27001 podrobného plánu – mapování ovládacích prvků
-description: Mapování ovládacího prvku vzorku ISO 27001 se zásadami podrobného plánu.
+title: Mapování ovládacích prvků – plán úloh ISO 27001 ASE/SQL – ukázka
+description: Mapování ovládacího prvku vzorku podrobného plánu úlohy ISO 27001 App Service prostředí/službou SQL Database do Azure Policy a RBAC.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,14 +8,14 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c062759938652518ac3cafff64973050554ca19d
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: fb251d71ca9aa20ed06d0a917394097b36322b3c
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579695"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802707"
 ---
-# <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Mapování ovládacího prvku vzorku podrobného plánu se standardy ISO 27001 Azure podrobné plány.
+# <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Mapování ovládacího prvku vzorku ISO 27001 ASE/SQL úlohy podrobného plánu
 
 Následující článek podrobně popisuje, jak ukázka Azure plány ISO 27001 ASE/SQL Workload podrobného plánu se mapuje na ovládací prvky ISO 27001 se zásadami. Další informace o ovládacích prvcích najdete v tématu [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html).
 

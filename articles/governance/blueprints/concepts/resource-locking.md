@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 16ec3428138361726d69eb9b45943b20129e32ed
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 5409de8aabb52a531551abbc28ae9e873b262eba
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630723"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762425"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení resource zamykání v Azure plány
 
@@ -52,6 +52,8 @@ Při odebrání přiřazení, se odeberou zámky vytvořené podrobné plány. A
 ## <a name="how-blueprint-locks-work"></a>Jak uzamkne podrobný plán práce
 
 RBAC [zamítnout přiřazení](../../../role-based-access-control/deny-assignments.md) Odepřít akce platí pro zdroje artefaktů během přiřazování podrobný plán vybrali přiřazení **jen pro čtení** nebo **neodstraňujte** možnost. Akce odepřít přidává spravovanou identitu přiřazení podrobného plánu a lze odebrat pouze ze zdroje artefaktů ve stejném spravovanou identitu. Tato bezpečnostní opatření vynucuje mechanismus zamykání a zabraňuje odebrání zámku podrobného plánu mimo podrobné plány.
+
+![Zamítnout přiřazení ve skupině prostředků podrobného plánu](../media/resource-locking/blueprint-deny-assignment.png)
 
 > [!IMPORTANT]
 > Azure Resource Manager ukládá do mezipaměti podrobnosti o přiřazení role po dobu až 30 minut. V důsledku toho odeprete přiřazení Odepřít akce u prostředků podrobného plánu nemusí být hned v plný vliv. Během tohoto časového období je možné odstranit prostředek má být chráněn zámky podrobného plánu.

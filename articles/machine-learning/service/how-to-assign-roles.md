@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 2/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b40edf705ba61713f4b695dd55a6a20028936c82
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 56813d9a075e1c327fb5612c50ea72f067ec505d
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993823"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805595"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Spravovat přístup k pracovnímu prostoru Azure Machine Learning
 
@@ -33,7 +33,7 @@ Pracovní prostor služby Azure Machine Learning je prostředek Azure. Stejně j
 | **Vlastník** | Úplný přístup k pracovnímu prostoru, včetně možnosti zobrazit, vytvořit, upravit nebo odstranit, (kde je to možné) prostředky v pracovním prostoru. Kromě toho můžete změnit přiřazení rolí. |
 
 > [!IMPORTANT]
-> Přístup role se dají vymezit na více úrovních v Azure. Například někdo s přístup vlastníka do pracovní skupiny nemůže mít přístup vlastníka do skupiny prostředků, která obsahuje pracovní skupiny. Další informace najdete v tématu [funguje jak RBAC](/azure/role-based-access-control/overview#how-rbac-works).
+> Přístup role se dají vymezit na více úrovních v Azure. Například někdo s vlastníkem přístup k pracovnímu prostoru nemusí mít přístup vlastníka do skupiny prostředků, který obsahuje tento pracovní prostor. Další informace najdete v tématu [funguje jak RBAC](/azure/role-based-access-control/overview#how-rbac-works).
 
 Další informace o konkrétní předdefinované role, naleznete v tématu [předdefinované role pro Azure](/azure/role-based-access-control/built-in-roles).
 

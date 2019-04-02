@@ -18,7 +18,7 @@ Zásady můžete například použít pro skupinu pro správu, která omezuje ob
 
 Můžete vytvořit flexibilní strukturu skupin pro správu a předplatných a uspořádat tak prostředky do hierarchie umožňující využít jednotné zásady a správu přístupu. Následující diagram ukazuje příklad vytvoření hierarchie pro zásady správného řízení s využitím skupin pro správu.
 
-![strom](./media/tree.png)
+![Příklad hierarchického stromu skupin pro správu](./media/tree.png)
 
 Vytvořte hierarchii, abyste mohli použít zásadu, jako je například omezení umístění virtuálních počítačů ve skupině Produkce na oblast USA – západ. Tato zásada se v této skupině pro správu bude dědit do obou předplatných EA a bude se vztahovat na všechny virtuální počítače v rámci těchto předplatných. Tuto zásadu zabezpečení nemůže změnit vlastník prostředku ani předplatného. Výsledkem je vylepšení zásad správného řízení.
 

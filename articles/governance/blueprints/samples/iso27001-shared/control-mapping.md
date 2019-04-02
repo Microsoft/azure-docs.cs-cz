@@ -1,6 +1,6 @@
 ---
-title: Ukázkový – ISO 27001 podrobného plánu – mapování ovládacích prvků
-description: Mapování ovládacího prvku vzorku ISO 27001 se zásadami podrobného plánu.
+title: Ukázka - ISO 27001 Shared Services podrobného plánu – mapování ovládacích prvků
+description: Mapování ovládacího prvku vzorku podrobného plánu ISO 27001 sdílené služby Azure Policy a RBAC.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,14 +8,14 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 34cda2f09392513b0d3f76cc5f77ea0064109410
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 3ce755b62ce2ba0328852b551225ffa828a6c1bf
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576101"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804679"
 ---
-# <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Mapování ovládacího prvku vzorku podrobného plánu se standardy ISO 27001 Azure podrobné plány.
+# <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Mapování ovládacího prvku vzorku ISO 27001 Shared Services podrobného plánu
 
 Následující článek podrobně popisuje, jak Azure plány ISO 27001 Shared Services podrobný plán vzorku mapy k ovládacím prvkům ISO 27001 se zásadami. Další informace o ovládacích prvcích najdete v tématu [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html).
 

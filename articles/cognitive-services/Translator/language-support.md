@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: aed3d08f96265736889deccf51d427a6631e1ea9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 4f5c7696e711db7c128317f7ed17dc051e8fd18a
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241564"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803112"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Podpora jazyka a oblasti pro rozhraní Translator Text API
 
@@ -290,6 +290,7 @@ Tyto jazyky jsou k dispozici pro přizpůsobení do nebo z anglické pomocí [vl
 | Hebrejština      | `he`          |
 | Hindština      | `hi`          |
 | Maďarština      | `hu`          |
+| Islandština | `is` |
 | italština      | `it`          |
 | Japonština      | `ja`          |
 | Korejština      | `ko`          |
@@ -309,6 +310,7 @@ Tyto jazyky jsou k dispozici pro přizpůsobení do nebo z anglické pomocí [vl
 | turečtina      | `tr`          |
 | Ukrajinština      | `uk`          |
 | Vietnamština      | `vi`          |
+| Velština | `cy` |
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Přístup k seznamu na webu Microsoft Translatoru
 
