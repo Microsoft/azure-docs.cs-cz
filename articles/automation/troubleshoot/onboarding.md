@@ -4,16 +4,16 @@ description: Zjistěte, jak řešit potíže s Update Management, Change Trackin
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/25/2019
+ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: ac11b1a2b625d1fc7b62130580d1f188ead21051
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: eaafee304f606ae4d511a6cea1824c26db838635
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342724"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802027"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Řešení chyb při registraci řešení
 
@@ -25,19 +25,23 @@ Pravděpodobně narazíte na chyby při připojování řešení, jako jsou Upda
 
 #### <a name="issue"></a>Problém
 
-Při pokusu o připojení virtuálního počítače do řešení zobrazí následující zpráva:
+Při pokusu o připojení virtuálního počítače do řešení zobrazí jedna z následujících zpráv:
 
-```
+```error
 The solution cannot be enabled due to missing permissions for the virtual machine or deployments
+```
+
+```error
+The solution cannot be enabled on this VM because the permission to read the workspace is missing
 ```
 
 #### <a name="cause"></a>Příčina
 
-Tato chyba je způsobena nesprávnou nebo chybějící oprávnění na virtuálním počítači nebo pro uživatele.
+Tato chyba je způsobena nesprávnou nebo chybějící oprávnění na virtuálním počítači, pracovní prostor, nebo pro uživatele.
 
 #### <a name="resolution"></a>Řešení
 
-Ujistěte se, že máte správná oprávnění k připojení virtuálního počítače. Zkontrolujte [práva potřebná k připojení počítačů](../automation-role-based-access-control.md#onboarding) a připojit řešení znovu.
+Ujistěte se, že máte správná oprávnění k připojení virtuálního počítače. Zkontrolujte [práva potřebná k připojení počítačů](../automation-role-based-access-control.md#onboarding) a připojit řešení znovu. Pokud se zobrazí chyba `The solution cannot be enabled on this VM because the permission to read the workspace is missing`, ujistěte se, že máte `Microsoft.OperationalInsights/workspaces/read` oprávnění, abyste mohli najít, pokud je virtuální počítač připojit k pracovnímu prostoru.
 
 ### <a name="computer-group-query-format-error"></a>Scénář: ComputerGroupQueryFormatError
 
@@ -79,7 +83,7 @@ Zkontrolovat oznámení v pravém horním rohu webu Azure portal nebo přejděte
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Při nasazení řešení, jsou nasazené širokou škálu související prostředky. Jeden z těchto prostředků je rozšíření Microsoft Monitoring Agent nebo Log Analytics agenta pro Linux. Jedná se o rozšíření virtuálního počítače nainstalovat agenta hosta virtuálního počítače, který zodpovídá za komunikaci s nakonfigurovaný pracovní prostor Log Analytics pro účely novější koordinaci stahování binárních souborů a další soubory, které řešení se registrace závisí na po zahájení provádění.
+Při nasazení řešení, jsou nasazené širokou škálu související prostředky. Jeden z těchto prostředků je rozšíření Microsoft Monitoring Agent nebo Log Analytics agenta pro Linux. Jedná se o rozšíření virtuálního počítače nainstalovat agenta hosta virtuálního počítače, který zodpovídá za komunikaci s nakonfigurovaný pracovní prostor Log Analytics pro účely novější koordinaci stahování binárních souborů a další soubory, které řešení budete registrace závisí na po zahájení provádění.
 Je obvykle nejprve zaregistrují agenta MMA nebo Log Analytics pro Linux chyby při instalaci z oznámení v centru oznámení. Kliknutím na toto oznámení obsahuje další informace o toto specifické selhání. Navigace na prostředek skupiny prostředků a potom na element nasazení v ní také poskytuje podrobné informace o selhání nasazení, ke kterým došlo.
 Instalace agenta MMA nebo Log Analytics pro Linux může selhat z různých důvodů a kroky pro řešení těchto chyb lišit v závislosti na problému. Postupujte podle konkrétní postup řešení potíží.
 
@@ -113,9 +117,9 @@ Některé možné příčiny této chyby jsou:
 
 Ujistěte se, že máte správné porty a adresy otevřít pro komunikaci. Seznam portů a adres najdete v tématu [plánování sítě](../automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="transient-environment-issue"></a>Scénář: Instalace se nezdařila z důvodu chyby přechodné prostředí
+### <a name="transient-environment-issue"></a>Scénář: Instalace se nezdařila z důvodu problémů s přechodnou prostředí
 
-Během nasazení, protože jiná instalace nebo akce, které blokuje instalaci se nepovedlo nainstalovat rozšíření Microsoft Monitoring Agent
+Instalace rozšíření Microsoft Monitoring Agent selhala při nasazení z důvodu jiná instalace nebo blokuje instalaci akce
 
 #### <a name="issue"></a>Problém
 
@@ -138,7 +142,7 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 Některé možné příčiny této chyby jsou:
 
 * Probíhá jiná instalace
-* Systém se aktivovalo se restartování během nasazování šablony
+* Systém se aktivuje restartovat během nasazování šablony
 
 #### <a name="resolution"></a>Řešení
 
@@ -150,7 +154,7 @@ Instalace agenta MMA rozšíření nebyla dokončena z důvodu vypršení časov
 
 #### <a name="issue"></a>Problém
 
-Následuje příklad, který může být vrácen chybovou zprávu:
+V následujícím příkladu je chybová zpráva, která mohou být vráceny:
 
 ```error
 Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent, version 1.0.11081.4) with exception Command C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\1.0.11081.4\MMAExtensionInstall.exe of Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent has exited with Exit code: 15614
@@ -158,7 +162,7 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 #### <a name="cause"></a>Příčina
 
-Tato chyba je způsobená virtuálního počítače se v případě velkého zatížení během instalace.
+K této chybě dochází, protože virtuální počítač se v případě velkého zatížení během instalace.
 
 ### <a name="resolution"></a>Řešení
 
@@ -166,7 +170,7 @@ Pokus o instalaci rozšíření agenta MMA, při nižší zatížení virtuáln�
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud nenalezli váš problém nebo nepovedlo se vyřešit vaše potíže, navštíví některý z následujících kanálů pro další podporu:
+Pokud nezobrazila váš problém nebo nelze vyřešit vaše potíže, navštíví některý z následujících kanálů pro další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
 * Spojte se s [@AzureSupport](https://twitter.com/azuresupport). Tento oficiální účet Microsoft Azure pomáhá vylepšovat uživatelské prostředí tím, že propojuje komunitu Azure s vhodnými zdroji: odpověďmi, podporou a odborníky.

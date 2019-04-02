@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 6c182b4f8de96429f52e8c396503f7a89c5347ec
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 835e0153039ecc3bb93fb7aa9b5007c205ec503e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57871777"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793879"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Rychlý start: Vytvoření datové továrny a kanálu s využitím .NET SDK
 
@@ -36,12 +36,15 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
 ### <a name="visual-studio"></a>Visual Studio
+
 Názorný postup v tomto článku využívá Visual Studio 2017. Můžete také použít Visual Studio 2013 nebo 2015.
 
 ### <a name="azure-net-sdk"></a>Azure .NET SDK
+
 Stáhněte sadu [Azure .NET SDK](https://azure.microsoft.com/downloads/) a nainstalujte ji do svého počítače.
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Vytvoření aplikace v Azure Active Directory
+
 Postupujte podle pokynů v jednotlivých částech v [tomto článku](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) a proveďte následující úlohy: 
 
 1. **Vytvořte aplikaci Azure Active Directory**. V Azure Active Directory vytvořte aplikaci reprezentující aplikaci .NET, kterou vytváříte v tomto kurzu. Jako přihlašovací adresu URL můžete poskytnout fiktivní URL, jak ukazuje článek (`https://contoso.org/exampleapp`).
@@ -64,7 +67,7 @@ Pomocí sady Visual Studio 2013/2015/2017 vytvořte konzolovou aplikaci v C# .NE
 1. Klikněte na **Nástroje**  ->  **Správce balíčků NuGet**  ->  **Konzola správce balíčků**.
 2. V **Konzola správce balíčků**, spusťte následující příkazy, které se mají balíčky nainstalovat. Odkazovat na [balíček nuget Microsoft.Azure.Management.DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) s podrobnostmi.
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
     Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
@@ -408,6 +411,7 @@ Press any key to exit...
 ```
 
 ## <a name="verify-the-output"></a>Ověření výstupu
+
 Kanál v kontejneru objektů blob adftutorial automaticky vytvoří výstupní složku. Potom do výstupní složky zkopíruje soubor emp.txt ze vstupní složky. 
 
 1. Na webu Azure Portal na stránce kontejneru **adftutorial** klikněte na **Obnovit**. Zobrazí se výstupní složka. 
@@ -419,6 +423,7 @@ Kanál v kontejneru objektů blob adftutorial automaticky vytvoří výstupní s
     ![Obnovení](media/quickstart-create-data-factory-dot-net/output-file.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
+
 Pokud chcete datovou továrnu odstranit prostřednictvím kódu programu, přidejte do programu následující řádky kódu: 
 
 ```csharp
@@ -427,4 +432,5 @@ Pokud chcete datovou továrnu odstranit prostřednictvím kódu programu, přide
 ```
 
 ## <a name="next-steps"></a>Další postup
+
 Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích. 

@@ -1,6 +1,6 @@
 ---
 title: Přehled Azure Blueprints
-description: Azure Blueprints je služba v Azure, která se používá k vytváření, definování a nasazování artefaktů ve vašem prostředí Azure.
+description: Zjistěte, jak službu plány Azure umožňuje vytvářet, definovat a nasazovat artefakty v prostředí Azure.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,14 +9,14 @@ ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: cf3801381359bb973d126e2ee946cdb51e5aecb7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 29c58abb3a69da0886d512767cbc301621943f07
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823089"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802571"
 ---
-# <a name="what-is-azure-blueprints"></a>Co je Azure Blueprints?
+# <a name="overview-of-the-azure-blueprints-service"></a>Přehled služby Azure podrobné plány
 
 Stejně jako technický nákres či podrobný plán (anglicky „blueprint“) umožňuje technikovi nebo architektovi načrtnout parametry návrhu projektu, služba Azure Blueprints umožňuje cloudovým architektům a centrálním oddělením IT definovat opakovatelnou sadu prostředků Azure, která implementuje a dodržuje standardy, vzory a požadavky organizace. Azure Blueprints vývojářským týmům umožňuje rychle vytvářet nová prostředí s důvěrou, že je vytvářejí v souladu s předpisy organizace, a s využitím sady předdefinovaných komponent – třeba síťových – ke zrychlení vývoje a distribuce.
 

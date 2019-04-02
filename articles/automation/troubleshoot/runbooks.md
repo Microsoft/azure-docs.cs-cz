@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b34a1716d077aeead572c60d0c6b9bcad60a5b1e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 84db71f8dabfb7557b5efbc06e024c43e654b56d
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005433"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805070"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -26,7 +26,7 @@ ms.locfileid: "58005433"
 Při práci s se zobrazí následující chyba `Add-AzureAccount` nebo `Connect-AzureRmAccount` rutiny.
 :
 
-```
+```error
 Unknown_user_type: Unknown User Type
 ```
 
@@ -81,7 +81,7 @@ Pokud chcete zjistit, co je špatně, proveďte následující kroky:
 
 Při práci s se zobrazí následující chyba `Select-AzureSubscription` nebo `Select-AzureRmSubscription` rutiny:
 
-```
+```error
 The subscription named <subscription name> cannot be found.
 ```
 
@@ -119,7 +119,7 @@ Proveďte následující kroky k určení, zda ověření do Azure a přístup k
 
 Při ověřování do Azure pomocí Azure uživatelského jména a hesla, zobrazí se následující chyba:
 
-```
+```error
 Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is required
 ```
 
@@ -139,7 +139,7 @@ Pomocí rutin modelu nasazení Azure classic pomocí certifikátu, najdete v té
 
 Zobrazí následující chybová zpráva při vyvolání childrunbook s `-Wait` přepínače a výstupní datový proud obsahuje a objektu:
 
-```
+```error
 Object reference not set to an instance of an object
 ```
 
@@ -179,7 +179,7 @@ $jobResults | Get-AzureRmAutomationJobOutput | Get-AzureRmAutomationJobOutputRec
 
 Zobrazí se v chyby ve vaší datové proudy úlohy pro sady runbook s následující zprávou:
 
-```
+```error
 Connect-AzureRMAccount : Method 'get_SerializationSettings' in type 
 'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly 
 'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' 
@@ -205,7 +205,7 @@ Rutiny az a AzureRM nelze importovat a použít ve stejné sadě runbook, dalš�
 
 Vaše sada runbook selže s chybou podobně jako v následujícím příkladu:
 
-```
+```error
 Exception: A task was canceled.
 ```
 
@@ -264,7 +264,7 @@ Start-AzureRmAutomationRunbook `
 
 Vaše sada runbook selže s chybou podobně jako v následujícím příkladu:
 
-```
+```error
 The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, function, script file, or operable program.  Check the spelling of the name, or if the path was included verify that the path is correct and try again.
 ```
 
@@ -289,7 +289,7 @@ Je samostatný modul, ujistěte se, že v modulu k importu ve vašem účtu Auto
 
 Vaše sada runbook selže s chybou:
 
-```
+```error
 The job was tried three times but it failed
 ```
 
@@ -323,7 +323,7 @@ Některé z následujících řešení tento problém vyřešit:
 
 Vaše sada runbook selže s chybou:
 
-```
+```error
 Cannot bind parameter <ParameterName>.
 
 Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to type <ParameterType>.
@@ -375,7 +375,7 @@ Pokud se žádná z těchto řešení vyřešit váš problemReview [úlohy prot
 
 Vaše úloha runbooku se nezdaří s chybou:
 
-```
+```error
 The quota for the monthly total job run time has been reached for this subscription
 ```
 
@@ -398,7 +398,7 @@ Pokud chcete využívat víc než 500 minut zpracování za měsíc, budete muse
 
 Vaše úloha runbooku se nezdaří s chybou:
 
-```
+```error
 <cmdlet name>: The term <cmdlet name> is not recognized as the name of a cmdlet, function, script file, or operable program.
 ```
 
@@ -421,7 +421,7 @@ Některé z následujících řešení tento problém vyřešit:
 
 Vaše sada runbook zobrazuje **Zastaveno** stavu po spuštění pro 3 hodiny. Také můžete obdržet chybu:
 
-```
+```error
 The job was evicted and subsequently reached a Stopped state. The job cannot continue running
 ```
 
@@ -469,7 +469,7 @@ Pokud je webhook zakázaný, můžete znovu povolit webhook prostřednictvím we
 
 Při spuštění se zobrazí následující chybová zpráva `Get-AzureRmAutomationJobOutput` rutiny:
 
-```
+```error
 429: The request rate is currently too large. Please try again
 ```
 

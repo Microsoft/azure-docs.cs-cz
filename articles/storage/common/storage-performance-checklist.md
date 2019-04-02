@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: d39c2414aa8299282b3896a9ceb57897fdb25ff1
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b8451a1195ab64d3cd7afda074d786a3209ce785
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446002"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793964"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage
 ## <a name="overview"></a>Přehled
@@ -269,7 +269,7 @@ Rychle nahrát jeden velký objekt blob, měli klientské aplikace nahrávat jeh
 * C++: Použijte metodu blob_request_options::set_parallelism_factor.
 
 #### <a name="subheading22"></a>Rychle nahrává velký počet objektů BLOB
-Pokud chcete rychle nahrát velký počet objektů BLOB, nahrání objektů BLOB paralelně. Toto je rychlejší, než nahrání jednoho objekty BLOB najednou paralelní blokovat nahrávání ve vzhledem k tomu, že se šíří nahrávání napříč několika oddíly na službu storage. Jeden objekt blob podporuje pouze propustnost 60 MB za sekundu (přibližně 480 MB/s). V době psaní účet LRS státech podporuje až 20 GB/s příchozí přenos dat, což je mnohem více než propustnost podporuje jednotlivých objektů blob.  [AzCopy](#subheading18) ve výchozím nastavení provádí nahrávání paralelně a doporučuje se pro tento scénář.  
+Pokud chcete rychle nahrát velký počet objektů BLOB, nahrání objektů BLOB paralelně. Toto je rychlejší, než nahrání jednoho objekty BLOB najednou paralelní blokovat nahrávání ve vzhledem k tomu, že se šíří nahrávání napříč několika oddíly na službu storage. Jeden objekt blob podporuje pouze propustnost 60 MB za sekundu (přibližně 480 MB/s). V době psaní účet LRS státech podporuje až 20 GB/s příchozí, což je mnohem více než propustnost podporuje jednotlivých objektů blob.  [AzCopy](#subheading18) ve výchozím nastavení provádí nahrávání paralelně a doporučuje se pro tento scénář.  
 
 ### <a name="subheading23"></a>Výběr správného typu objektu blob
 Azure Storage podporuje dva typy objektů blob: *stránky* objekty BLOB a *bloku* objekty BLOB. Pro jednotlivé scénáře použití daného zvoleného typu Objekt blob ovlivní výkon a škálovatelnost řešení. Objekty BLOB bloku jsou vhodné, pokud chcete nahrávání velkých objemů dat, efektivně: například může klientská aplikace musí se nahrát fotografie a videa do úložiště objektů blob. Objekty BLOB stránky jsou vhodné v případě musí aplikace provádět náhodné zápisy dat: například virtuální pevné disky Azure jsou uložené jako objekty BLOB stránky.  
@@ -297,9 +297,7 @@ Počínaje verzí služby úložiště 2013-08-15, služby table service podporu
 Další informace najdete v příspěvku [tabulek aplikace Microsoft Azure: Úvod k formátu JSON](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) a [Formát datové části pro operace služby s tabulkou](https://msdn.microsoft.com/library/azure/dn535600.aspx).
 
 #### <a name="subheading26"></a>Nagle vypnuto
-Algoritmus pro Nagle je široce implementováno v sítích TCP/IP jako prostředek ke zlepšení výkonu sítě. To však není optimální za všech okolností (jako jsou vysoce interaktivní prostředí). Pro službu Azure Storage na Nagle algoritmus využívající dlaždice má negativní dopad na výkon požadavků na tabulky a fronty služby a měli byste zakázat Pokud je to možné.  
-
-Další informace najdete v blogovém příspěvku [Nagle pro algoritmus není na malých požadavků není popisný](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx), který vysvětluje, proč jeho Nagle algoritmus špatně komunikuje s požadavky tabulky a fronty a ukazuje, jak zakázat v klientovi aplikace.  
+Algoritmus pro Nagle je široce implementováno v sítích TCP/IP jako prostředek ke zlepšení výkonu sítě. To však není optimální za všech okolností (jako jsou vysoce interaktivní prostředí). Pro službu Azure Storage na Nagle algoritmus využívající dlaždice má negativní dopad na výkon požadavků na tabulky a fronty služby a měli byste zakázat Pokud je to možné.
 
 ### <a name="schema"></a>Schéma
 Jak reprezentaci a dotazování na data je největší jednomu faktoru, který ovlivňuje výkon služby table service. Když každá aplikace, se liší, tato část popisuje některé obecné osvědčené postupy, které se týkají:  
@@ -390,7 +388,7 @@ Zobrazit aktuální cíle škálovatelnosti v [Azure Storage škálovatelnost a 
 Projděte část o konfiguraci tabulky, který popisuje algoritmus Nagle – algoritmus Nagle je obvykle chybná výkonu fronty požadavků, a měli byste zakázat.  
 
 ### <a name="subheading41"></a>Velikost zprávy
-Fronty snížení jako zprávy se zvětší výkon a škálovatelnost. Měli byste umístit pouze informace potřebuje přijímač ve zprávě.  
+Fronty výkon a škálovatelnost snížit jako zvýšení velikosti zprávy. Měli byste umístit pouze informace potřebuje přijímač ve zprávě.  
 
 ### <a name="subheading42"></a>Načtení služby batch
 Můžete načíst až 32 zpráv z fronty v rámci jedné operace. To může snížit počet výměn dat z klientské aplikace, což je užitečné zejména v prostředích, jako jsou například mobilní zařízení, s vysokou latencí.  
@@ -401,7 +399,7 @@ Většina aplikací se dotazovat na zprávy z fronty, která může být jedna z
 Náklady na aktuální informace najdete v tématu [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
 
 ### <a name="subheading44"></a>UpdateMessage
-Můžete použít **UpdateMessage** zvýšit časový limit neviditelnosti nebo aktualizovat informace o stavu zprávy. Když je výkonný, nezapomeňte se každý **UpdateMessage** operace započítává cíle škálovatelnosti. Nicméně to může být mnohem efektivnější přístup než po dokončení každého kroku úlohy, když pracovní postup, který se předá úlohu z jedné fronty na další. Použití **UpdateMessage** operace umožňuje vaší aplikaci uložit stav úlohy pro zprávu a potom pokračovat v práci, namísto znovu pokaždé, když se krok dokončí služby Řízení front zpráv na další krok úlohy.  
+Můžete použít **UpdateMessage** zvýšit časový limit neviditelnosti nebo aktualizovat informace o stavu zprávy. Když je výkonný, nezapomeňte se každý **UpdateMessage** operace započítává cíle škálovatelnosti. Nicméně to může být mnohem efektivnější přístup než po dokončení každého kroku úlohy, když pracovní postup, který se předá úlohu z jedné fronty na další. Použití **UpdateMessage** operace umožňuje vaší aplikaci uložit stav úlohy pro zprávu a potom pokračovat v práci, namísto requeuing zprávy na další krok úlohy pokaždé, když se krok dokončí.  
 
 Další informace najdete v článku [jak: Změna obsahu zpráv zařazených ve frontě](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message).  
 

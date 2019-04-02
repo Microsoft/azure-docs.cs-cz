@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: eb807082443da495cd89e1dd624058c89d3ee65b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 6a0d84a2aaf4b52c7fb0163231574eaea63c18c3
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825482"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58807478"
 ---
 ### <a name="what-is-expressroute-direct"></a>Co je ExpressRoute přímo?
 
@@ -52,6 +52,6 @@ Přímé ExpressRoute poskytuje zákazníkům s přímým přístupem 100 GB/s p
 
 ExpressRoute přímo účtovat dvojice portů na pevnou velikost. Standardní okruhy bude obsažen v žádné další hodiny a mít poplatek mírné doplněk premium. Výchozí přenos dat se bude účtovat na základě na okruh podle zóny umístění partnerského vztahu.
 
-### <a name="when-does-billing-state-for-the-expressroute-direct-port-pairs"></a>Při funguje fakturační stavu pro dvojice portů přímo ExpressRoute?
+### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>Když se fakturační start dvojice portů přímo ExpressRoute pro?
 
 Dvojice portů přímo ExpressRoute se účtují 45 dní do vytvoření prostředku ExpressRoute přímo nebo pokud je povoleno 1 nebo oba odkazy, podle toho, co nastane dřív. Období odkladu 45 dní udělením tak, aby zákazníci provést křížové připojení s poskytovateli společné umístění.

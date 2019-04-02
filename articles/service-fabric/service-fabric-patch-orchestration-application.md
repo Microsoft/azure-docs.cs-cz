@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 477b31e9a821cfa43700eac5f1f61a3d45510cab
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: bce4946b62e3678f7fa8d5f7f6431441cc00b252
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665810"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762833"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Windows ve vašem clusteru Service Fabric
 
@@ -28,6 +28,12 @@ ms.locfileid: "58665810"
 > * [Linux](service-fabric-patch-orchestration-application-linux.md)
 >
 >
+
+
+> 
+> [!IMPORTANT]
+> Aplikace verze 1.2. * odcházející z podpora skončí 30. dubna 2019. Upgradujte prosím na nejnovější verzi.
+
 
 [Azure škálovací sady virtuálních počítačů automatické upgrady operačního systému image](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) je nejvhodnějším postupem pro zachování opravit operačních systémů v Azure a aplikace orchestraci oprav (POA) představuje obálku kolem služby Service Fabric RepairManager systémy která umožňuje konfiguraci na základě plánování opravy operačního systému pro hostované clustery mimo Azure. POA není vyžadován pro hostované clustery mimo Azure, ale plánování opravu instalace upgradu domény, je potřeba opravovat hostitele clusterů Service Fabric bez jakýchkoli prostojů.
 

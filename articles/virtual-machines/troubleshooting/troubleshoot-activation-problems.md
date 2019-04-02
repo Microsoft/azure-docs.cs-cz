@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 0f700b9e24399768977a1fa221322fa4c1c6708d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 18cd5a86cc2f52567c5f320719d1a9f21b377ed4
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095139"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791707"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Poradce při potížích aktivace virtuálního počítače Windows Azure
 
 Pokud máte potíže při aktivaci Windows Azure virtuální počítač (VM), který je vytvořen z vlastní image, můžete k odstranění tohoto problému informací uvedených v tomto dokumentu. 
 
 ## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Principy koncových bodů Azure prostřednictvím služby správy KLÍČŮ pro aktivaci produktu Windows Azure Virtual Machines
+
 Azure používá různé koncové body pro aktivaci prostřednictvím služby správy KLÍČŮ v závislosti na oblasti cloudu, ve které se nachází virtuální počítač. Při použití tohoto průvodce odstraňováním potíží, použijte vhodný koncový bod služby správy KLÍČŮ, které platí pro vaši oblast.
 
 * Veřejných cloudových oblastech Azure: kms.core.windows.net:1688
@@ -40,6 +41,7 @@ Při pokusu o aktivaci virtuálního počítače Windows Azure, se zobrazí chyb
 **Chyba: 0xC004F074, které LicensingService softwaru oznámila, že počítač se nepovedlo aktivovat. Nebylo možné kontaktovat žádný ManagementService klíčů (KMS). Podrobnosti najdete v protokolu událostí aplikací Další informace.**
 
 ## <a name="cause"></a>Příčina
+
 Obecně platí problémů s aktivací virtuálního počítače Azure dojít, pokud virtuální počítač Windows není nakonfigurovaný pomocí příslušný instalační klíč klienta služby správy KLÍČŮ nebo má virtuální počítač Windows problému s připojením ke službě Azure prostřednictvím služby správy KLÍČŮ (kms.core.windows.net, port 1688). 
 
 ## <a name="solution"></a>Řešení
@@ -57,6 +59,7 @@ Tento krok se nevztahují na Windows 2012 nebo Windows 2008 R2. Používá funkc
 
 1. Spustit **slmgr.vbs/dlv** příkazového řádku se zvýšenými oprávněními. Zkontrolujte popis hodnotu ve výstupu a určit, zda byl vytvořen z maloobchodního prodeje (RETAIL channel) nebo svazek (VOLUME_KMSCLIENT) licence média:
   
+
     ```
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
@@ -83,16 +86,20 @@ Tento krok se nevztahují na Windows 2012 nebo Windows 2008 R2. Používá funkc
 
 3. Ujistěte se, že je virtuální počítač nakonfigurovaný tak, aby používal správný server Azure KMS. Chcete-li to provést, spusťte následující příkaz:
   
+
+    ```powershell
+    Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
-    iex "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
-    ```
+
     Výstupem příkazu by mělo být: Název počítače služby správy klíčů na kms.core.windows.net:1688 byl úspěšně nastaven.
 
 4. Ověřte pomocí Pspingu, že máte připojení k serveru služby správy KLÍČŮ. Přejděte do složky, do které jste extrahovali stažený soubor Pstools.zip, a spusťte následující:
   
+
     ```
     \psping.exe kms.core.windows.net:1688
     ```
+
   
    Ujistěte se, že se na předposledním řádku výstupu zobrazí následující: Odeslání = 4, přijaté = 4, bylo ztraceno = 0 (ztráty 0 %).
 
@@ -104,8 +111,8 @@ Dál ověřte, že není nakonfigurovaná brána firewall hosta způsobem, kter�
 
 1. Po ověření úspěšného připojení k kms.core.windows.net, spusťte následující příkaz v tomto řádku se zvýšenými oprávněními prostředí Windows PowerShell. Tento příkaz se několikrát pokusí o aktivaci.
 
-    ```
-    1..12 | % { iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato” ; start-sleep 5 }
+    ```powershell
+    1..12 | ForEach-Object { Invoke-Expression “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato” ; start-sleep 5 }
     ```
 
 Po úspěšné aktivaci se vrátí podobné informace:
@@ -115,16 +122,21 @@ Po úspěšné aktivaci se vrátí podobné informace:
 ## <a name="faq"></a>Nejčastější dotazy 
 
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>Jsem vytvořil Windows serveru 2016 z webu Azure Marketplace. Je potřeba nakonfigurovat klíč služby správy KLÍČŮ pro aktivaci Windows serveru 2016? 
+
  
 Ne. Image na webu Azure Marketplace má příslušné služby správy KLÍČŮ klientský Instalační klíč už nakonfigurovaná. 
 
 ### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>Aktivace Windows funguje stejným způsobem bez ohledu na to pokud virtuální počítač používá Azure hybridní použití výhody (HUB) nebo ne? 
+
  
 Ano. 
  
+
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Co se stane, když vyprší platnost období aktivace Windows? 
+
  
 Po období odkladu vypršelo a ještě není aktivováno Windows, Windows Server 2008 R2 a novějších verzích Windows se zobrazí další oznámení o aktivaci služby Azure. Zůstane černé tapetu plochy a Windows Update budou instalovat zabezpečení a pouze kritické aktualizace, ale ne volitelné aktualizace. V části upozornění v dolní části [licenční podmínky](https://technet.microsoft.com/library/ff793403.aspx) stránky.   
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu.
+
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

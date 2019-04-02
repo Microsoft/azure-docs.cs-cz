@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: df5b6268a2ecd7062969aac9d663ee751eeab130
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: da027e492633ba3e4da912c2c45b2432fd217576
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535200"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802946"
 ---
-# <a name="getting-compliance-data"></a>Získávání dat o dodržování předpisů
+# <a name="get-compliance-data-of-azure-resources"></a>Získat data o dodržování předpisů prostředků Azure
 
 Jednou z největších výhod Azure Policy je insight a ovládací prvky, které nabízí v porovnání s prostředky v rámci předplatného nebo [skupiny pro správu](../../management-groups/overview.md) předplatných. Tento ovládací prvek lze uplatnit v mnoha různými způsoby, jako je například brání prostředky vytváří v nesprávném umístění vynucovat použití značky běžné a jednotné, nebo auditování stávající prostředky pro odpovídající konfigurace a nastavení. Ve všech případech se data vygeneruje zásady, aby vám pomohl pochopit stavu dodržování předpisů vašeho prostředí.
 
@@ -120,27 +120,27 @@ Použije zásady **typ** a **název** polí do definice pro určení, zda je pro
 Procentní hodnoty dodržování předpisů se určí **kompatibilní** prostředky podle _celkový počet prostředků_.
 _Celkový počet prostředků_ je definován jako součet hodnot **kompatibilní**, **nekompatibilní**, a **konfliktní** prostředky. Celkové dodržování předpisů čísla jsou součet různé prostředky, které jsou **kompatibilní** dělený součet všech různých zdrojů. Na následujícím obrázku jsou 20 různých prostředků, které jsou k dispozici a je pouze jedna **nekompatibilní**. Celkové dodržování předpisů prostředkem je 95 % (19 z 20).
 
-![Příklad jednoduché dodržování předpisů](../media/getting-compliance-data/simple-compliance.png)
+![Příklad zásad dodržování předpisů ze stránky dodržování předpisů](../media/getting-compliance-data/simple-compliance.png)
 
 ## <a name="portal"></a>Portál
 
 Na webu Azure portal prezentuje grafické prostředí vizualizace a pochopení stavu dodržování předpisů ve vašem prostředí. Na **zásady** stránky, **přehled** možnost obsahuje podrobnosti o dostupných oborů dodržování zásad a iniciativy. Stav dodržování předpisů a počet na přiřazení obsahuje graf zobrazující dodržování předpisů za posledních sedm dní.
 **Dodržování předpisů** stránka obsahuje řadu tytéž informace (s výjimkou graf), ale poskytnout další filtrování a řazení možnosti.
 
-![Stránky zásad dodržování předpisů](../media/getting-compliance-data/compliance-page.png)
+![Příklad stránky zásad dodržování předpisů](../media/getting-compliance-data/compliance-page.png)
 
 Protože zásady nebo iniciativa lze přiřadit k různým oborům, tabulka obsahuje obor pro každé přiřazení a typ definice, která byla přiřazena. Jsou k dispozici také počet nekompatibilních prostředků a nekompatibilní zásady pro každé přiřazení. Kliknutím na zásady nebo iniciativa v tabulce poskytuje hlubší pohled na dodržování předpisů pro tento konkrétní přiřazení.
 
-![Podrobnosti o zásadách dodržování předpisů](../media/getting-compliance-data/compliance-details.png)
+![Příklad stránky s podrobnostmi zásad dodržování předpisů](../media/getting-compliance-data/compliance-details.png)
 
 Seznam prostředků **dodržování předpisů prostředkem** karta zobrazuje stav vyhodnocení stávající prostředky pro aktuálního přiřazení. Výchozí nastavení na kartě **nekompatibilní**, ale dají se filtrovat.
 Události (připojit, audit, odepření, nasazení) aktivuje požadavek na vytvoření prostředku se zobrazí pod **události** kartu.
 
-![Události zásad dodržování předpisů](../media/getting-compliance-data/compliance-events.png)
+![Příklad událostí dodržování zásad](../media/getting-compliance-data/compliance-events.png)
 
 Klikněte pravým tlačítkem na řadu událostí, které chcete shromažďovat další podrobnosti o a vyberte **zobrazit protokoly aktivit**. Na stránce Protokol aktivit se otevře a je předem vyfiltrované na hledání zobrazující podrobnosti pro přiřazení a události. Protokol aktivit obsahuje další kontext a informace o těchto událostech.
 
-![Protokol aktivit zásad dodržování předpisů](../media/getting-compliance-data/compliance-activitylog.png)
+![Příklad protokolu aktivit zásad dodržování předpisů](../media/getting-compliance-data/compliance-activitylog.png)
 
 ### <a name="understand-non-compliance"></a>Vysvětlení nedodržení předpisů
 
@@ -414,7 +414,7 @@ PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName
 Trent Baker
 ```
 
-## <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
+## <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
 Pokud máte [pracovní prostor Log Analytics](../../../log-analytics/log-analytics-overview.md) s `AzureActivity` z [řešení Activity Log Analytics](../../../azure-monitor/platform/collect-activity-logs.md) vázané na předplatné, můžete také zobrazit výsledky nedodržení předpisů pomocí cyklu hodnocení jednoduchých dotazů Kusto a `AzureActivity` tabulky. S podrobnostmi protokolů Azure Monitor lze nastavit upozornění sledování nedodržení předpisů.
 

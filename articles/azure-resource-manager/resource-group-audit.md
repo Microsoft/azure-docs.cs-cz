@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: e7bcfce4e9d23839c623be3b54e97d931e6454cb
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 8348099d778a9ec65e907bb3d21ae995041b9fb6
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268290"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802283"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Zobrazení protokolů aktivit pro auditování akcí u prostředků
 
@@ -167,7 +167,7 @@ Můžete načíst informace z protokolů aktivit na portálu, Powershellu, rozhr
 
 ## <a name="rest-api"></a>REST API
 
-Operace REST pro práci s protokolu aktivit jsou součástí [rozhraní REST API služby Insights](https://msdn.microsoft.com/library/azure/dn931943.aspx). Pokud chcete načíst události protokolu aktivit, naleznete v tématu [seznamu událostí správy v rámci předplatného](https://msdn.microsoft.com/library/azure/dn931934.aspx).
+Operace REST pro práci s protokolu aktivit jsou součástí [rozhraní REST API služby Insights](/rest/api/monitor/). Pokud chcete načíst události protokolu aktivit, naleznete v tématu [seznamu událostí správy v rámci předplatného](/rest/api/monitor/activitylogs).
 
 ## <a name="next-steps"></a>Další postup
 

@@ -14,17 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 9e4989f61741d317e78a613c8c8fac312d1568c2
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: e393eb92e11dc8dc296f1dc5f1c0036566c285c5
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666949"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792446"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Řešení potíží s upgrady aplikací
+
 Tento článek popisuje některé běžné problémy kolem upgrade aplikace Azure Service Fabric a jejich řešení.
 
 ## <a name="troubleshoot-a-failed-application-upgrade"></a>Řešení potíží s upgrade aplikace, která selhala
+
 Pokud upgrade selže, výstup **Get-ServiceFabricApplicationUpgrade** příkaz obsahuje další informace o ladění chyby.  Následující seznam určuje, jak je možné použít další informace:
 
 1. Určete typ chyby.
@@ -34,6 +36,7 @@ Pokud upgrade selže, výstup **Get-ServiceFabricApplicationUpgrade** příkaz o
 Tyto informace jsou k dispozici, když Service Fabric zjistí selhání bez ohledu na to, zda **FailureAction** je vrátit zpět nebo pozastavit upgradu.
 
 ### <a name="identify-the-failure-type"></a>Identifikujte typ selhání
+
 Ve výstupu příkazu **Get-ServiceFabricApplicationUpgrade**, **FailureTimestampUtc** identifikuje časové razítko (ve standardu UTC), ve kterém bylo zjištěno selhání upgradu pomocí Service Fabric a  **FailureAction** byla aktivována. **FailureReason** identifikuje tři možné základní příčiny selhání:
 
 1. UpgradeDomainTimeout – označuje, že konkrétní upgradovací doména trvalo příliš dlouho pro dokončení a **UpgradeDomainTimeout** vypršela platnost.
@@ -43,11 +46,14 @@ Ve výstupu příkazu **Get-ServiceFabricApplicationUpgrade**, **FailureTimestam
 Tyto položky zobrazit pouze ve výstupu při upgradu se nezdaří a spustí vrácení zpět. Další informace se zobrazí v závislosti na typu selhání.
 
 ### <a name="investigate-upgrade-timeouts"></a>Prozkoumat vypršení časového limitu pro upgrade
+
 Upgrade vypršení časového limitu, selhání jsou nejčastěji způsobeno problémy s dostupností služby. Za tímto odstavcem výstup je typický pro upgrady kde služby replik nebo instancí nemůže spustit v nové verzi kódu. **UpgradeDomainProgressAtFailure** pole zaznamená snímek všechny čekající upgrade práce v době selhání.
 
+```powershell
+Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 ```
-PS D:\temp> Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 
+```Output
 ApplicationName                : fabric:/DemoApp
 ApplicationTypeName            : DemoAppType
 TargetApplicationTypeVersion   : v2
@@ -90,11 +96,14 @@ Aktuální **UpgradeState** je *RollingBackCompleted*, takže původní upgrade 
 Ve výjimečných případech **UpgradeDomainProgressAtFailure** pole může být prázdný, pokud celkový upgrade vyprší časový limit, stejně jako systém dokončení všech prací pro aktuální upgradovací doméně. Pokud k tomu dojde, zkuste zvětšit **UpgradeTimeout** a **UpgradeDomainTimeout** upgradovat hodnoty parametrů a zkuste upgrade zopakovat.
 
 ### <a name="investigate-health-check-failures"></a>Prověřit chyby kontroly stavu
+
 Stav kontroly chyb může aktivovat různé problémy, které může dojít po dokončení všechny uzly v upgradovací doméně upgradu a předání všechny bezpečnostní kontroly. Za tímto odstavcem výstup je typický pro upgrade nezdaří z důvodu kontroly stavu se nezdařilo. **UnhealthyEvaluations** pole zaznamená snímek kontroly stavu, které selhaly během upgradu podle zadaného [zásady stavu](service-fabric-health-introduction.md).
 
+```powershell
+Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 ```
-PS D:\temp> Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 
+```Output
 ApplicationName                         : fabric:/DemoApp
 ApplicationTypeName                     : DemoAppType
 TargetApplicationTypeVersion            : v4
@@ -149,6 +158,7 @@ Zkoumání selhání kontroly stavu jsou nejprve nutné znalosti toho modelu sta
 Upgrade byl pozastaven po selhání tak, že zadáte **FailureAction** ručně prováděné při zahájení upgradu. Tento režim umožňuje nám prozkoumat systému za provozu v chybovém stavu před provedením jakékoli další akce.
 
 ### <a name="recover-from-a-suspended-upgrade"></a>Obnovit z pozastavené upgradu
+
 S vrácení zpět **FailureAction**, neexistuje žádný obnovení potřeba, protože upgrade automaticky vrátí zpět při selhání. Ručního **FailureAction**, máte několik možností obnovení:
 
 1.  aktivační událost vrácení zpět.
@@ -161,9 +171,11 @@ S vrácení zpět **FailureAction**, neexistuje žádný obnovení potřeba, pro
 
 **Update-ServiceFabricApplicationUpgrade** příkaz je možné pokračovat v upgradu monitorovaných pomocí obou bezpečnosti a provádění kontroly stavu.
 
+```powershell
+Update-ServiceFabricApplicationUpgrade fabric:/DemoApp -UpgradeMode Monitored
 ```
-PS D:\temp> Update-ServiceFabricApplicationUpgrade fabric:/DemoApp -UpgradeMode Monitored
 
+```Output
 UpgradeMode                             : Monitored
 ForceRestart                            :
 UpgradeReplicaSetCheckTimeout           :
@@ -179,14 +191,14 @@ MaxPercentUnhealthyReplicasPerPartition :
 MaxPercentUnhealthyServices             :
 MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
-
-PS D:\temp>
 ```
 
 Upgrade bude pokračovat v upgradovací doméně, ve kterém posledního pozastavení a použijte stejný upgrade parametry a zásad stavu jako před. V případě potřeby všechny parametry upgradu a zásady stavu, které jsou uvedené v předchozím výstupu lze změnit v jednom příkazu při pokračuje v upgradu. V tomto příkladu upgradu obnovena v režimu monitorované pomocí monitorování stavu zásadami beze změny a parametry.
 
 ## <a name="further-troubleshooting"></a>Další informace o řešení
+
 ### <a name="service-fabric-is-not-following-the-specified-health-policies"></a>Service Fabric není podle zadaného stavu zásad
+
 Možné příčiny 1:
 
 Service Fabric převádí všechny procenta na aktuální počet entity (například repliky, oddíly a služby) pro vyhodnocování stavu a vždy zaokrouhluje nahoru na celé entity. Například pokud maximální *MaxPercentUnhealthyReplicasPerPartition* je 21 % a jsou pěti replikami, a Service Fabric umožňuje až dvě repliky není v pořádku (to znamená`Math.Ceiling (5*0.21)`). Zásady stavu proto musí být nastaven odpovídajícím způsobem.
@@ -198,12 +210,15 @@ Zásady stavu jsou specifikované jako procenta celkového služby a instance ne
 Nicméně během upgradu, D může se obnoví dobrý stav během C nebude v pořádku. Upgrade bude přesto úspěšné, protože jsou pouze 25 % služby není v pořádku. Však může způsobit neočekávané chyby z důvodu C se neočekávaně není v pořádku, ne D. V takovém případě by měl D nemodelují jako určitého typu různé služby A, B a C. Protože zásady stavu zadávají se na typ služby, prahové hodnoty různých procentních poměrech není v pořádku, lze použít pro různé služby. 
 
 ### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>Můžu neurčil zásady stavu pro upgrade aplikace, ale stále selhání upgradu pro některé nikdy zadané vypršení časových limitů
+
 Když zásady stavu nejsou zadané pro požadavek na upgrade, jsou převzaty z *ApplicationManifest.xml* aktuální verze aplikace. Například se používají aplikace X při upgradu z verze 1.0 na verzi 2.0, zásady stavu aplikace podle verze 1.0. Pokud jiný stav zásad se použije pro upgrade, pak zásady musí být zadaný jako součást upgradu volání rozhraní API aplikace. Zásady, zadaný jako součást volání rozhraní API se vztahují jenom během upgradu. Po dokončení upgradu zásady podle *ApplicationManifest.xml* se používají.
 
 ### <a name="incorrect-time-outs-are-specified"></a>Jsou zadané nesprávné časové limity
+
 Může vás zajímá o co se stane, když jsou nekonzistentně nastavené vypršení časových limitů. Například můžete mít *UpgradeTimeout* to menší než *UpgradeDomainTimeout*. Odpověď se vrátí chybu. Chyby jsou vráceny, pokud *UpgradeDomainTimeout* je menší než součtem *HealthCheckWaitDuration* a *HealthCheckRetryTimeout*, nebo pokud  *UpgradeDomainTimeout* je menší než součtem *HealthCheckWaitDuration* a *HealthCheckStableDuration*.
 
 ### <a name="my-upgrades-are-taking-too-long"></a>Moje upgrady trvá moc dlouho
+
 Doba pro upgrade k dokončení závisí na kontroly stavu a zadat časové limity. Kontroly stavu a časových limitů závisí na jak dlouho trvá kopírování, nasazení a stabilizaci aplikace. Probíhá příliš agresivní s časové limity může znamenat více neúspěšných upgrady, proto doporučujeme konzervativní počínaje delší časové limity.
 
 Tady je rychlý aktualizační interakci časových limitů s upgradem časy:
@@ -215,6 +230,7 @@ Nelze provést upgrade nezdaří, je rychlejší než *HealthCheckWaitDuration* 
 Doba upgradu pro jednu upgradovací doménu je omezená rozhraním *UpgradeDomainTimeout*.  Pokud *HealthCheckRetryTimeout* a *HealthCheckStableDuration* jsou nenulové a stav aplikace udržuje přepínání vpřed a zpět, pak upgrade časem i vypršení časového na *UpgradeDomainTimeout*. *UpgradeDomainTimeout* spustí odpočítávání jednou inovace pro začíná aktuální upgradovací doméně.
 
 ## <a name="next-steps"></a>Další postup
+
 [Upgrade aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md) vás provede upgrade aplikace pomocí sady Visual Studio.
 
 [Upgrade aplikace pomocí Powershellu](service-fabric-application-upgrade-tutorial-powershell.md) vás provede upgrade aplikace pomocí Powershellu.

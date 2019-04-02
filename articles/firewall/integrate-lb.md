@@ -5,18 +5,20 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 1/14/2019
+ms.date: 4/1/2019
 ms.author: victorh
-ms.openlocfilehash: 079790952263ae2ef68abc8e426b0330fef1c53f
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 7ee92a7508918635849caafab4632bbba81ee628
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321768"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805240"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integrace brány Firewall na Azure s Azure Load balancer úrovně Standard
 
-Brána Firewall Azure můžete integrovat do virtuální sítě pomocí Azure Load balancer úrovně Standard (veřejné nebo interní). Potřebujete vědět problém s asymetrickým směrováním, které mohou narušit funkce s scénář nástroje pro vyrovnávání zatížení veřejnou.
+Brána Firewall Azure můžete integrovat do virtuální sítě pomocí Azure Load balancer úrovně Standard (veřejné nebo interní). 
+
+Upřednostňovaný návrh je interní nástroj integrovat Azure brány firewall, je to mnohem jednodušší návrh. Pokud již máte skupinu nasazení, a chcete zachovat v místě, můžete použít nástroj pro vyrovnávání zatížení veřejnou. Potřebujete vědět problém s asymetrickým směrováním, které mohou narušit funkce s scénář nástroje pro vyrovnávání zatížení veřejnou.
 
 Další informace o nástroji Azure Load Balancer, naleznete v tématu [co je Azure Load Balancer?](../load-balancer/load-balancer-overview.md)
 
@@ -34,6 +36,8 @@ Když nasadíte do podsítě brány Firewall Azure, jeden krokem je vytvoření 
 
 Když představovat brány firewall na váš scénář nástroje pro vyrovnávání zatížení, budete chtít internetové přenosy do režimu přes veřejnou IP adresu brány firewall. Odtud bránu firewall platí jeho pravidla brány firewall a NAT pakety na služby Vyrovnávání zatížení veřejnou IP adresu. Je to, kde k problému dochází. Pakety doručení na veřejnou IP adresu brány firewall na, ale vraťte se do brány firewall přes privátní IP adresu (s použitím výchozí trasa).
 K tomuto problému vyhnout, vytvoření trasy další hostitele pro brány firewall na veřejnou IP adresu. Přejděte na veřejnou IP adresu brány firewall se směrují přes Internet. Tím se vyhnete trvá výchozí trasu k privátní IP adresu brány firewall.
+
+![Asymetrické směrování](media/integrate-lb/Firewall-LB-asymmetric.png)
 
 Například následující trasy jsou brány firewall na veřejnou IP adresu 13.86.122.41 a privátní IP adresu 10.3.1.4.
 

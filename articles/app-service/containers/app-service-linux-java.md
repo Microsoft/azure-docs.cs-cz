@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 4ca42e34dcf215fe45d1f25adb9509034c6144d2
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 71632b3846a5dac39d7827c874367bd9802574f8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335840"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803511"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
@@ -154,6 +154,14 @@ Aplikace Spring Boot vývojáři mohou použít [Azure Active Directory Spring B
 ### <a name="configure-tlsssl"></a>Konfigurace TLS/SSL
 
 Postupujte podle pokynů [vytvoření vazby existujícího vlastního certifikátu SSL](/azure/app-service/app-service-web-tutorial-custom-ssl) nahrát stávající certifikát SSL a navázat jej na název domény vaší aplikace. Ve výchozím nastavení vaše aplikace stále umožňuje HTTP připojení – postupujte podle konkrétních kroků v kurzu k vynucení šifrování protokolu SSL a TLS.
+
+### <a name="use-keyvault-references"></a>Odkazy na použití trezoru klíčů
+
+[Azure KeyVault](../../key-vault/key-vault-overview.md) nabízí centralizovanou správu tajných kódů pomocí historie zásad a auditování přístupu. Můžete ukládat tajné klíče (např. hesla nebo připojovací řetězce) v Key Vaultu a přístup k těchto tajných kódů v aplikaci prostřednictvím proměnných prostředí.
+
+Nejprve, postupujte podle pokynů pro [uděluje přístup k vaší aplikaci do služby Key Vault](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault) a [odkazu služby KeyVault pro váš tajný klíč v nastavení aplikace](../app-service-key-vault-references.md#reference-syntax). Můžete ověřit, že odkaz přeloží na tajný kód s tiskem proměnnou prostředí při vzdáleném přístupu k Terminálové službě App Service.
+
+Vložení těchto tajných kódů v konfiguračním souboru Spring nebo Tomcat, použijte syntaxi vkládání proměnné prostředí (`${MY_ENV_VAR}`). Spring konfigurační soubory, najdete v tématu této dokumentace na [externalized konfigurace](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
 
 ## <a name="data-sources"></a>Zdroje dat
 

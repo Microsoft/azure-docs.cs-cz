@@ -8,12 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 87770a12ca7e489b11b2d176903f976fdcc256a0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7488231363b0cbf96e25da28751065012754212e
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551315"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803778"
 ---
 # <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Ukázkový – povolené skladové položky pro účty úložiště a virtuální počítače
 
@@ -29,7 +29,7 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
-[![Nasazení do Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![Nasazení ukázkové zásady do Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 

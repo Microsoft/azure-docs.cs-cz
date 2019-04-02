@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 8ab1f31d61b7a6a1637cd274cc5ac7fc4f5dc2f1
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 1c66b3de9e18cb74c43f20499e4065c7ec7ae5ca
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622157"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801671"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Kurz: Vytvořit tenanta v náhledu virtuální plochy Windows
 
@@ -30,6 +30,8 @@ Zde je, co potřebujete k nastavení tenanta virtuální plochy Windows:
 * [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) tenant ID pro Windows Virtual Desktop users.
 * Účet globálního správce tenanta Azure Active Directory.
    * To platí také pro vytvoření virtuálního klienta Windows tenanta pro své zákazníky organizace Cloud Solution Provider (CSP). Pokud jste v organizaci zprostředkovatele kryptografických služeb, musíte být schopni se přihlásit jako globální správce Azure Active Directory zákazníka.
+   * Účet správce musí pocházet z tenanta Azure Active Directory, ve které se snažíte vytvořit tenanta virtuální plochy Windows. Tento proces nepodporuje Azure Active Directory s B2B účty (Host).
+   * Účet správce musí být pracovní nebo školní účet.
 * ID předplatného Azure
 
 ## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>Oprávnění grant Azure Active Directory na službu Windows Virtual Desktop Preview

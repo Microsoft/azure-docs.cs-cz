@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9f2eae4160dbef164ec70e8fa4d7b3a83706ae96
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 67a6c99253c549f0b8d3b55809b35b81756843eb
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880122"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803489"
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Úroveň kompatibility pro tabulkové modely služby Analysis Services
 
@@ -27,7 +27,11 @@ Služba Azure Analysis Services podporuje tabulkové modely na úrovni kompatibi
 *  Zabezpečení na úrovni objektu pro názvy tabulek a sloupců, kromě dat v nich.
 *  Vylepšená podpora pro nepravidelné hierarchie.
 *  Sledování výkonu a vylepšení.
- 
+
+> [!NOTE]
+> Služba Azure Analysis Services podporuje importované soubory Power BI Desktopu na úrovni kompatibility 1465. Importovat z funkce Power BI Desktopu, která byla vždy funkce ve verzi preview, ale byla zrušena a v březnu 2019 odebrána ze služby. Existující modely na úrovni kompatibility 1465 dál podporovat.  
+
+
 ## <a name="set-compatibility-level"></a>Úroveň kompatibility sady
 
  Při vytváření nového projektu s tabelárním modelem v sadě SSDT, můžete zadat úroveň kompatibility na **Návrhář tabulkových modelů** dialogového okna. 
@@ -47,6 +51,9 @@ Služba Azure Analysis Services podporuje tabulkové modely na úrovni kompatibi
  V aplikaci SSMS klikněte pravým tlačítkem na název serveru > **vlastnosti** > **podporované úrovně kompatibility**.  
   
  Tato vlastnost určuje nejvyšší úroveň kompatibility databáze, která se spustí na serveru (s výjimkou ve verzi preview). Nelze změnit úroveň kompatibility podporované.  
+
+> [!NOTE]
+> V aplikaci SSMS, při připojení k serveru Azure Analysis Services **podporované úrovně kompatibility** vlastnost se zobrazí **1200**. Toto je známý problém a se vyřeší v chystané SSMS aktualizace. Po vyřešení, tato vlastnost se zobrazí nejvyšší úrovně kompatibility podporované.
 
 ## <a name="next-steps"></a>Další postup
 

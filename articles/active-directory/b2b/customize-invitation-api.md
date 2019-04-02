@@ -11,18 +11,19 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 610d81912ac0244f25bc39c41690ab7e7ea8897c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 17b472b647dd27306ca95345e49dfeb3aee60665
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111306"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793374"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory s B2B spolupráce rozhraní API a přizpůsobení
 
 Měli jsme mnoho zákazníků, řekněte nám, že chcete přizpůsobit proces pozvánky způsobem, který je nejvhodnější pro jejich organizace. Pomocí našich rozhraní API můžete provést přesně to. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
 ## <a name="capabilities-of-the-invitation-api"></a>Možnosti e-mailové pozvánce rozhraní API
+
 Rozhraní API nabízí následující funkce:
 
 1. Pozvání externího uživatele s *jakékoli* e-mailovou adresu.
@@ -68,21 +69,25 @@ Rozhraní API nabízí následující funkce:
 
 
 ## <a name="authorization-model"></a>Ověření modelu
+
 Rozhraní API můžete spustit v těchto režimech ověřování:
 
 ### <a name="app--user-mode"></a>Aplikace a uživatelského režimu
+
 V tomto režimu, kdo používá požadavky rozhraní API oprávnění, se vytvoření pozvánky B2B.
 
 ### <a name="app-only-mode"></a>Režim pouze aplikace
+
 V kontextu pouze pro aplikace aplikace musí User.Invite.All oboru této pozvánky proběhla úspěšně.
 
 Další informace naleznete na: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell
+
 Prostředí PowerShell můžete použít k přidání a snadno pozvat externího uživatele organizace. Vytvoření pozvánky pomocí rutiny:
 
-```
+```powershell
 New-AzureADMSInvitation
 ```
 
@@ -102,7 +107,8 @@ Jakmile odešlete pozvání externího uživatele, můžete použít **Get-Azure
 
 Můžete použít **filtr** filtrovat výsledky podle **stav uživatele UserState**. Následující příklad ukazuje, jak filtrovat výsledky a zobrazit pouze uživatele, kteří mají nevyřízená Pozvánka. Příklad také ukazuje, **Format-List** možnost, která umožňuje určit vlastnosti pro zobrazení. 
  
-```
+
+```powershell
 Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Property DisplayName,UserPrincipalName,UserState,UserStateChangedOn
 ```
 
@@ -119,4 +125,3 @@ Podívejte se na odkaz na pozvánku rozhraní API v [ https://developer.microsof
 - [Prvky B2B spolupráce e-mailová pozvánka](invitation-email-elements.md)
 - [Uplatnění pozvání spolupráce B2B](redemption-experience.md)
 - [Přidat uživatele spolupráce B2B bez pozvánky](add-user-without-invite.md)
-

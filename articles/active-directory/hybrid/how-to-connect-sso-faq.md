@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4822de6f6470547b47ecaa3874bed0df4ad20cf6
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 709fb3be37850be37d6378652921ce26f4ff15fe
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309584"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804373"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: Nejčastější dotazy
 
@@ -89,7 +89,7 @@ Proveďte tyto kroky na místním serveru, kde je spuštěn nástroj Azure AD Co
 2. Přejděte do složky `%programfiles%\Microsoft Azure Active Directory Connect`.
 3. Naimportujte modul Powershellu bezproblémové jednotné přihlašování pomocí tohoto příkazu: `Import-Module .\AzureADSSO.psd1`.
 4. Spusťte PowerShell jako správce. V prostředí PowerShell, zavolejte `New-AzureADSSOAuthenticationContext`. Tento příkaz by vám měl dát automaticky otevíraného okna zadejte přihlašovací údaje globálního správce vašeho tenanta.
-5. Volání `Get-AzureADSSOStatus`. Tento příkaz poskytuje seznam doménových struktur AD (pohled na seznamu "Domény") na které tato funkce povolená.
+5. Volání `Get-AzureADSSOStatus | ConvertFrom-Json`. Tento příkaz poskytuje seznam doménových struktur AD (pohled na seznamu "Domény") na které tato funkce povolená.
 
 ### <a name="step-2-update-the-kerberos-decryption-key-on-each-ad-forest-that-it-was-set-it-up-on"></a>Krok 2. Aktualizovat dešifrovací klíč protokolu Kerberos v každé doménové struktuře AD, který ho se ho nastavit na
 
@@ -140,7 +140,7 @@ Pokud jste zakázali bezproblémového jednotného přihlašování pomocí slu�
 2. Přejděte do složky `%programfiles%\Microsoft Azure Active Directory Connect`.
 3. Naimportujte modul Powershellu bezproblémové jednotné přihlašování pomocí tohoto příkazu: `Import-Module .\AzureADSSO.psd1`.
 4. Spusťte PowerShell jako správce. V prostředí PowerShell, zavolejte `New-AzureADSSOAuthenticationContext`. Tento příkaz by vám měl dát automaticky otevíraného okna zadejte přihlašovací údaje globálního správce vašeho tenanta.
-5. Volání `Get-AzureADSSOStatus`. Tento příkaz poskytuje seznam doménových struktur AD (pohled na seznamu "Domény") na které tato funkce povolená.
+5. Volání `Get-AzureADSSOStatus | ConvertFrom-Json`. Tento příkaz poskytuje seznam doménových struktur AD (pohled na seznamu "Domény") na které tato funkce povolená.
 
 ### <a name="step-3-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>Krok 3. Odstraňte ručně `AZUREADSSOACCT` účet počítače v každé doménové struktuře AD, které vidíte uvedený.
 

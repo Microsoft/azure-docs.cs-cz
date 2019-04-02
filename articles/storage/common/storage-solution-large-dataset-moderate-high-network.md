@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: d3326713b0fbae070d04fa0fe7ead712fbcacf84
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 8dd55032c933cdc31b848addfdac991550376dcf
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496889"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805568"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Přenos dat pro rozsáhlé datové sady s střední pro velká šířka pásma sítě
  
@@ -62,7 +62,7 @@ Následující tabulky shrnují rozdíly mezi klíčové funkce pro doporučené
 
 Pokud používáte přenos dat offline, vysvětluje rozdíly mezi klíčové funkce pomocí následující tabulky.
 
-|                                     |    Data Box Disk (preview)    |    Data Box                                      |    Silná pole dat (preview)              |    Import/export                       |
+|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy            |    Import/export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Velikost dat                        |    Až 35 TB                 |    Až 80 TB za zařízení                       |    Až 800 TB na zařízení               |    Proměnná                            |
 |    Typ dat                        |    Azure Blobs                  |    Azure Blobs<br>Soubory Azure                    |    Azure Blobs<br>Soubory Azure            |    Azure Blobs<br>Soubory Azure          |
@@ -83,7 +83,7 @@ Pokud používáte online datové přenosy, použijte v tabulce v části pro ve
 
 ### <a name="high-network-bandwidth"></a>Velká šířka pásma sítě
 
-|                                     |    Nástroje AzCopy <br>Azure PowerShell, <br>Azure CLI             |    Rozhraní REST API, sady SDK služby Azure Storage                   |    Brána pole dat nebo dat pole Edge (preview)           |    Azure Data Factory                                            |
+|                                     |    Nástroje AzCopy <br>Azure PowerShell, <br>Azure CLI             |    Rozhraní REST API, sady SDK služby Azure Storage                   |    Brána pole dat nebo dat pole Edge          |    Azure Data Factory                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
 |    Typ dat                  |    Objekty BLOB Azure, služba soubory Azure, tabulky Azure    |    Objekty BLOB Azure, služba soubory Azure, tabulky Azure    |    Objekty BLOB Azure, služba soubory Azure                           |   Podporuje 70 datové konektory pro úložiště dat a formáty    |
 |    Uspořádání formuláře                |    Nástroje příkazového řádku                        |    Programové rozhraní                    |    Microsoft poskytuje virtuální <br>fyzické zařízení nebo     |    Služby na webu Azure portal                                            |

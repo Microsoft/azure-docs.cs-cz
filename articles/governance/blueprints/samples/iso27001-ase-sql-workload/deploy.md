@@ -1,5 +1,5 @@
 ---
-title: Ukázka - plán úloh ISO 27001 App Service prostředí/službou SQL Database – kroky nasazení
+title: Ukázka - plán úloh ISO 27001 ASE/SQL - kroky nasazení
 description: Nasazení kroky vzorku podrobného plánu úlohy ISO 27001 App Service prostředí/službou SQL Database.
 services: blueprints
 author: DCtheGeek
@@ -8,14 +8,14 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 80c98170fc136c20d8489cec5d145f96e207bc9f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 4ed51ee5f8cbdc50fa65a189d8f468bd7713a74b
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201904"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804152"
 ---
-# <a name="deploy-the-azure-blueprints-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Nasazení ukázkové podrobný plán úloh Azure plány ISO 27001 App Service prostředí/službou SQL Database
+# <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Nasazení ukázkové podrobného plánu úlohy ISO 27001 App Service prostředí/službou SQL Database
 
 Abyste nasadili ukázkový plán úloh Azure plány ISO 27001 App Service prostředí/službou SQL Database, musíte provést následující kroky:
 

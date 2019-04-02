@@ -13,27 +13,31 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0594d99874ea9bb83673013a9a03272edcd8ce0b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0eededcc180d7652fd52c79b85ca3c34f65a22a4
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897669"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791542"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Odstraňovat potíže a řešit problémy skupiny
 
 ## <a name="troubleshooting-group-creation-issues"></a>Řešení potíží s vytvořením skupiny
+
 **Můžu zakázané vytvoření skupiny zabezpečení na webu Azure Portal, ale skupiny stále možné vytvářet přes Powershell** **uživatele můžou na portálech Azure vytvářet skupiny zabezpečení** nastavení v ovládacích prvcích Azure portal, zda je či není bez oprávnění správce. uživatelé můžou vytvářet skupiny zabezpečení v přístupovém panelu nebo na webu Azure portal. Ho neřídí vytvoření skupiny zabezpečení přes Powershell.
 
 Chcete-li zakázat vytvoření skupiny pro uživatele bez oprávnění správce v prostředí Powershell:
 1. Ověřte, že uživatelé bez oprávnění správce můžou vytvářet skupiny:
    
+
+   ```powershell
+   Get-MsolCompanyInformation | Format-List UsersPermissionToCreateGroupsEnabled
    ```
-   PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
-   ```
+
   
 2. Vrátí-li `UsersPermissionToCreateGroupsEnabled : True`, pak uživatelé bez oprávnění správce můžou vytvářet skupiny. Chcete zakázat tuto funkci:
   
+
    ``` 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
    ```

@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/015/2019
+ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91228074e13453ce53c0b4a7606479d45e8a90ac
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 40ed06bef45948068e3845e728d9c1d63ed62e71
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182774"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762799"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Použití Azure k hostování a spuštění scénáře úloh řešení SAP
 
@@ -36,14 +36,16 @@ Hostování scénáře úloh řešení SAP v Azure můžete vytvořit požadavky
 
 ## <a name="latest-changes"></a>Nejnovější změny
 
+Verzi [velké instance Azure HANA řídit prostřednictvím webu Azure portal](hana-li-portal.md)
+
+Verzi [vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise serveru s Azure Files NetApp pro aplikace SAP](high-availability-guide-suse-netapp-files.md)
+
+Vysvětlení **operačního systému Linux parametr net.ipv4.tcp_timestamps** nástroj pro vyrovnávání zatížení nastavení ve spojení s Azure
+
 Verzi [konfigurace úlohy SAP se zónami dostupnosti Azure](sap-ha-availability-zones.md)
 
 Verzi [SAP úlohy plánování a nasazení kontrolního seznamu](sap-deployment-checklist.md)
 
-Další informace týkající se používání a konfiguraci [Azure síťových virtuálních zařízení](https://azure.microsoft.com/solutions/network-appliances/) v cestách důležité komunikace latence systémů SAP v:
-
-- [Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-- [Konfigurace infrastruktury SAP HANA a operace v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 
 
 

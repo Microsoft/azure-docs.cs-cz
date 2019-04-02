@@ -11,25 +11,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: b6071bef4e4bbd9aaca3f587e5dfa584831d082e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d80a58f1886ecc1ca2a735881fc5822f2fc0c53b
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316870"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802486"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD  
- 
+
+> [!NOTE]
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+
 Rozhraní API služby Azure Media Services je rozhraní RESTful API. Slouží k provádění operací s prostředky media pomocí rozhraní REST API nebo pomocí sady SDK klienta k dispozici. Azure Media Services nabízí Media Services Klientská sada SDK pro rozhraní Microsoft .NET. K autorizaci pro přístup k prostředkům služby Media Services a rozhraní API služby Media Services, musíte nejprve být ověřeni. 
 
 Služba Media Services podporuje [Azure Active Directory (Azure AD) – ověřování na základě](../../active-directory/fundamentals/active-directory-whatis.md). Vyžaduje službu Azure Media REST, že uživatel nebo aplikace, která bude rozhraní REST API vyžaduje mít **Přispěvatel** nebo **vlastníka** rolí pro přístup k prostředkům. Další informace najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure portal](../../role-based-access-control/overview.md).  
 
-> [!IMPORTANT]
-> V současné době služba Media Services podporuje model ověřování Azure Access Control service. Ale autorizaci na řízení přístupu se přestanou používat 1. června 2018. Doporučujeme, abyste na model ověřování Azure AD migrovali co nejdříve.
-
 Tento dokument poskytuje přehled o tom, jak získat přístup k rozhraní API služby Media Services pomocí rozhraní API .NET nebo REST.
+
+> [!NOTE]
+> Povolení řízení přístupu se přestala nabízet na 1. června 2018.
 
 ## <a name="access-control"></a>Řízení přístupu
 

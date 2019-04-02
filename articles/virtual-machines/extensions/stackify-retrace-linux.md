@@ -14,16 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: roiyz
-ms.openlocfilehash: e80134729c33741aa3007deb2d93a2de3e3fe697
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: b9c035c1c9088957f59550bf6564cc02bc7972f4
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979713"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792413"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify obsluhy vrátit rozšíření agenta pro Linux
 
 ## <a name="overview"></a>Přehled
+
 Stackify obsluhy poskytuje produkty, které sledují informace o vaší aplikaci, který pomůže najít a opravit problémy rychle. Pro vývojářské týmy vrátit je výkon velmi více prostředí, plně integrovaných aplikací. Kombinuje několik nástrojů, se musí všechny vývojové týmy.
 
 Vrátit se pouze nástroj, který poskytuje všechny tyto možnosti ve všech prostředích na jedné platformě.
@@ -40,6 +41,7 @@ Toto rozšíření nabízí instalační cestu pro agenta pro Linux pro vrátit.
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém 
+
 Agent vrátit dají spustit pro tyto Linuxové distribuce
 
 | Distribuce | Verze |
@@ -50,12 +52,14 @@ Agent vrátit dají spustit pro tyto Linuxové distribuce
 | CentOS | 6.3+, 7.0+ |
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
+
 Rozšíření stackify obsluhy agenta pro Linux vyžaduje, aby cílový virtuální počítač je připojený k Internetu. 
 
 Může být potřeba upravit konfiguraci sítě povolovat připojení k Stackify, přečtěte si téma https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
 
 
 ## <a name="extension-schema"></a>Schéma rozšíření
+
 ---
 
 Následující kód JSON ukazuje schéma pro rozšíření stackify obsluhy vrátit agenta. Rozšíření vyžaduje `environment` a `activationKey`.
@@ -151,7 +155,7 @@ Při vkládání rozšíření JSON v kořenovém adresáři šablony, název pr
 
 Rozšíření vyžaduje `environment` a `activationKey`.
 
-```
+```powershell
 $PublicSettings = @{"environment" = "myEnvironment"}
 $ProtectedSettings = @{"activationKey" = "myActivationKey"}
 

@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/24/2019
+ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: db0bebb49007059cfe3b8b9b416c4a148c3756fc
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 57a97d76a864a644426296cf24401b2210709d39
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287328"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805801"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
@@ -79,8 +79,8 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ADHybridHealthService/addsservices/dimensions/read | Načte podrobnosti domény a servery pro doménovou strukturu. Příklad – stav, aktivní výstrahy, vyřešené výstrahy, vlastnosti, jako je úroveň funkčnosti domény doménové struktury, hlavní server infrastruktury, primárního řadiče domény, hlavního serveru RID atd.  |
 > | Akce | Microsoft.ADHybridHealthService/addsservices/features/userpreference/read | Získá nastavení předvolby uživatele pro doménovou strukturu.<br>Příklad – MetricCounterName jako ldapsuccessfulbinds ntlmauthentications, kerberosauthentications, addsinsightsagentprivatebytes, ldapsearches.<br>Nastavení pro další grafy uživatelského rozhraní. |
 > | Akce | Microsoft.ADHybridHealthService/addsservices/forestsummary/read | Získá doménové struktury souhrnu dané doménové struktury, jako je název doménové struktury, počet domén v rámci této doménové struktuře, počet lokalitami a lokalitami atd. |
-> | Akce | Microsoft.ADHybridHealthService/addsservices/metricmetadata/read | Získá seznam podporovaných metrik pro určitou službu.<br>Pro příklad uzamčení extranetu účet, celkový počet neúspěšných požadavků, nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token atd. pro službu AD FS.<br>Ověřování NTLM za sekundu, úspěšné vazby protokolu LDAP/s, LDAP Bind čas, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ atd. Celkový počet vláken pro ADDomainService.<br>Spuštění profilu latence, navázat připojení TCP, Insights agenta nesdílených bajtů, statistiky exportu do služby Azure AD pro službu ADSync. |
-> | Akce | Microsoft.ADHybridHealthService/addsservices/metrics/groups/read | S ohledem služby, toto rozhraní API získá informace o metrikách.<br>Například toto rozhraní API slouží k získání informací o související s: Extranetu uzamčení účtu, celkový počet neúspěšných požadavků nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>Ověřování NTLM za sekundu, úspěšné vazby protokolu LDAP/s, LDAP Bind čas, aktivní vlákna LDAP, Kerberos ověření za sekundu, atd. Celkový počet vláken ATQ ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
+> | Akce | Microsoft.ADHybridHealthService/addsservices/metricmetadata/read | Získá seznam podporovaných metrik pro určitou službu.<br>Pro příklad uzamčení extranetu účet, celkový počet neúspěšných požadavků, nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu AD FS atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu atd ATQ vlákna celkový počet pro ADDomainService.<br>Spuštění profilu latence, navázat připojení TCP, Insights agenta nesdílených bajtů, statistiky exportu do služby Azure AD pro službu ADSync. |
+> | Akce | Microsoft.ADHybridHealthService/addsservices/metrics/groups/read | S ohledem služby, toto rozhraní API získá informace o metrikách.<br>Například toto rozhraní API slouží k získání informací o související s: Extranetu uzamčení účtu, celkový počet neúspěšných požadavků nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ vlákna celkový atd ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
 > | Akce | Microsoft.ADHybridHealthService/addsservices/premiumcheck/read | Toto rozhraní API získá seznam všech připojili ADDomainServices pro klienta premium. |
 > | Akce | Microsoft.ADHybridHealthService/addsservices/read | Získá podrobnosti o službě pro zadaný název služby. |
 > | Akce | Microsoft.ADHybridHealthService/addsservices/replicationdetails/read | Získá podrobnosti o replikaci pro všechny servery pro zadaný název služby. |
@@ -100,12 +100,10 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ADHybridHealthService/reports/availabledeployments/read | Získá seznam dostupných oblastí, používá DevOps pro podporu incidentů zákazníka. |
 > | Akce | Microsoft.ADHybridHealthService/reports/badpassword/read | Získá seznam chybná zadání hesla pro všechny uživatele v Active Directory Federation Service. |
 > | Akce | Microsoft.ADHybridHealthService/reports/badpassworduseridipfrequency/read | Získá identifikátor URI SAS objektů Blob obsahující stav a konečné výsledek zařazených do fronty úlohu sestavy nově frekvence chybné uživatelské jméno/heslo se pokusí za ID uživatele na IP adresu za den pro daného Tenanta. |
+> | Akce | Microsoft.ADHybridHealthService/reports/blobUris/read | Získá všechny sestavy rizikových IP adres identifikátory URI za posledních 7 dní. |
 > | Akce | Microsoft.ADHybridHealthService/reports/consentedtodevopstenants/read | Získá seznam DevOps schválených tenantů. Obvykle se používá pro zákaznickou podporu. |
+> | Akce | Microsoft.ADHybridHealthService/reports/generateBlobUri/action | Generuje sestavy rizikových IP adres a vrátí identifikátor URI odkazující na ni. |
 > | Akce | Microsoft.ADHybridHealthService/reports/isdevops/read | Získá hodnotu označující, zda je tenant DevOps souhlas nebo ne. |
-> | Akce | Microsoft.ADHybridHealthService/reports/riskyIp/blobUri/action | Generuje sestavy rizikových IP adres a vrátí identifikátor URI odkazující na ni. |
-> | Akce | Microsoft.ADHybridHealthService/reports/riskyIp/blobUris/read | Získá všechny sestavy rizikových IP adres identifikátory URI za posledních 7 dní. |
-> | Akce | Microsoft.ADHybridHealthService/reports/riskyIp/GetAllBlobUri/read | Získá identifikátor uri objektu blob pro stažení sestavy rizikových IP adres, požadované pro určitou službu za posledních 7 dní. |
-> | Akce | Microsoft.ADHybridHealthService/reports/riskyIp/GetBlobUri/read | Získá pouze aktuální sestavu stáhnout požadované rizikových IP adres pro danou službu. |
 > | Akce | Microsoft.ADHybridHealthService/reports/selectdevopstenant/read | Aktualizace userid(objectid) pro tenanta vybrané dev ops. |
 > | Akce | Microsoft.ADHybridHealthService/reports/selecteddeployment/read | Získá vybrané nasazení pro daného tenanta. |
 > | Akce | Microsoft.ADHybridHealthService/reports/tenantassigneddeployment/read | Zadané id tenanta získá umístění úložiště tenanta. |
@@ -118,10 +116,10 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ADHybridHealthService/services/exporterrors/read | Získá chyby exportu pro danou synchronizační služby. |
 > | Akce | Microsoft.ADHybridHealthService/services/exportstatus/read | Získá stav exportu pro určitou službu. |
 > | Akce | Microsoft.ADHybridHealthService/services/feedbacktype/feedback/read | Získá zpětnou vazbu upozornění pro určitou službu a server. |
-> | Akce | Microsoft.ADHybridHealthService/services/metricmetadata/read | Získá seznam podporovaných metrik pro určitou službu.<br>Pro příklad uzamčení extranetu účet, celkový počet neúspěšných požadavků, nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token atd. pro službu AD FS.<br>Ověřování NTLM za sekundu, úspěšné vazby protokolu LDAP/s, LDAP Bind čas, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ atd. Celkový počet vláken pro ADDomainService.<br>Spuštění profilu latence, navázat připojení TCP, Insights agenta nesdílených bajtů, statistiky exportu do služby Azure AD pro službu ADSync. |
-> | Akce | Microsoft.ADHybridHealthService/services/metrics/groups/average/read | Toto rozhraní API s ohledem služby, získá průměr metriky pro určitou službu.<br>Například toto rozhraní API slouží k získání informací o související s: Extranetu uzamčení účtu, celkový počet neúspěšných požadavků nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>Ověřování NTLM za sekundu, úspěšné vazby protokolu LDAP/s, LDAP Bind čas, aktivní vlákna LDAP, Kerberos ověření za sekundu, atd. Celkový počet vláken ATQ ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
-> | Akce | Microsoft.ADHybridHealthService/services/metrics/groups/read | S ohledem služby, toto rozhraní API získá informace o metrikách.<br>Například toto rozhraní API slouží k získání informací o související s: Extranetu uzamčení účtu, celkový počet neúspěšných požadavků nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>Ověřování NTLM za sekundu, úspěšné vazby protokolu LDAP/s, LDAP Bind čas, aktivní vlákna LDAP, Kerberos ověření za sekundu, atd. Celkový počet vláken ATQ ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
-> | Akce | Microsoft.ADHybridHealthService/services/metrics/groups/sum/read | Toto rozhraní API s ohledem služby, získá agregovaná zobrazení pro metriky pro určitou službu.<br>Například toto rozhraní API slouží k získání informací o související s: Extranetu uzamčení účtu, celkový počet neúspěšných požadavků nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>Ověřování NTLM za sekundu, úspěšné vazby protokolu LDAP/s, LDAP Bind čas, aktivní vlákna LDAP, Kerberos ověření za sekundu, atd. Celkový počet vláken ATQ ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
+> | Akce | Microsoft.ADHybridHealthService/services/metricmetadata/read | Získá seznam podporovaných metrik pro určitou službu.<br>Pro příklad uzamčení extranetu účet, celkový počet neúspěšných požadavků, nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu AD FS atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu atd ATQ vlákna celkový počet pro ADDomainService.<br>Spuštění profilu latence, navázat připojení TCP, Insights agenta nesdílených bajtů, statistiky exportu do služby Azure AD pro službu ADSync. |
+> | Akce | Microsoft.ADHybridHealthService/services/metrics/groups/average/read | Toto rozhraní API s ohledem služby, získá průměr metriky pro určitou službu.<br>Například toto rozhraní API slouží k získání informací o související s: Extranetu uzamčení účtu, celkový počet neúspěšných požadavků nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ vlákna celkový atd ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
+> | Akce | Microsoft.ADHybridHealthService/services/metrics/groups/read | S ohledem služby, toto rozhraní API získá informace o metrikách.<br>Například toto rozhraní API slouží k získání informací o související s: Extranetu uzamčení účtu, celkový počet neúspěšných požadavků nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ vlákna celkový atd ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
+> | Akce | Microsoft.ADHybridHealthService/services/metrics/groups/sum/read | Toto rozhraní API s ohledem služby, získá agregovaná zobrazení pro metriky pro určitou službu.<br>Například toto rozhraní API slouží k získání informací o související s: Extranetu uzamčení účtu, celkový počet neúspěšných požadavků nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ vlákna celkový atd ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
 > | Akce | Microsoft.ADHybridHealthService/services/monitoringconfiguration/write | Přidat nebo aktualizovat konfiguraci monitorování pro služby. |
 > | Akce | Microsoft.ADHybridHealthService/services/monitoringconfigurations/read | Získá konfigurace monitorování pro určitou službu. |
 > | Akce | Microsoft.ADHybridHealthService/services/monitoringconfigurations/write | Přidání nebo aktualizace konfigurací monitorování pro služby. |
@@ -134,7 +132,8 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ADHybridHealthService/services/servicemembers/datafreshness/read | Toto rozhraní API pro daný server, získá seznam datových typů, které se nahrávají servery a čas posledního pro každý nahraný. |
 > | Akce | Microsoft.ADHybridHealthService/services/servicemembers/delete | Odstraní instanci serveru ve službě. |
 > | Akce | Microsoft.ADHybridHealthService/services/servicemembers/exportstatus/read | Získá podrobnosti o chybě exportu synchronizace pro určitou službu synchronizace. |
-> | Akce | Microsoft.ADHybridHealthService/services/servicemembers/metrics/groups/read | S ohledem služby, toto rozhraní API získá informace o metrikách.<br>Například toto rozhraní API slouží k získání informací o související s: Extranetu uzamčení účtu, celkový počet neúspěšných požadavků nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>Ověřování NTLM za sekundu, úspěšné vazby protokolu LDAP/s, LDAP Bind čas, aktivní vlákna LDAP, Kerberos ověření za sekundu, atd. Celkový počet vláken ATQ ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
+> | Akce | Microsoft.ADHybridHealthService/services/servicemembers/metrics/groups/read | S ohledem služby, toto rozhraní API získá informace o metrikách.<br>Například toto rozhraní API slouží k získání informací o související s: Extranetu uzamčení účtu, celkový počet neúspěšných požadavků nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ vlákna celkový atd ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
+> | Akce | Microsoft.ADHybridHealthService/services/servicemembers/metrics/read | Získá seznam konektorů a názvy profil spuštění pro danou službu a členské služby. |
 > | Akce | Microsoft.ADHybridHealthService/services/servicemembers/read | Načte instanci serveru ve službě. |
 > | Akce | Microsoft.ADHybridHealthService/services/servicemembers/serviceconfiguration/read | Získá konfiguraci služby pro daného tenanta. |
 > | Akce | Microsoft.ADHybridHealthService/services/tenantwhitelisting/read | Získá stav přidávání na seznam povolených funkcí pro daného tenanta. |
@@ -179,6 +178,9 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.AlertsManagement/alertsSummaryList/read | Získejte přehled výstrah napříč předplatnými |
 > | Akce | Microsoft.AlertsManagement/Operations/read | Přečte Zadaná operace |
 > | Akce | Microsoft.AlertsManagement/register/action | Zaregistruje předplatné pro Microsoft Management výstrahy |
+> | Akce | Microsoft.AlertsManagement/smartDetectorAlertRules/delete | Odstranit pravidlo výstrahy inteligentní detektor v daném předplatném |
+> | Akce | Microsoft.AlertsManagement/smartDetectorAlertRules/read | Získání všech pravidel upozornění inteligentní detektor vstupní filtry |
+> | Akce | Microsoft.AlertsManagement/smartDetectorAlertRules/write | Vytvořit nebo aktualizovat pravidlo upozornění inteligentní detektor v daném předplatném |
 > | Akce | Microsoft.AlertsManagement/smartGroups/changestate/action | Změnit stav inteligentní skupiny |
 > | Akce | Microsoft.AlertsManagement/smartGroups/history/read | Zobrazit historii inteligentní skupiny |
 > | Akce | Microsoft.AlertsManagement/smartGroups/read | Získat všechny inteligentní skupiny pro vstupní filtry |
@@ -555,6 +557,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.AzureActiveDirectory/b2cDirectories/delete | Odstranit prostředek B2C Directory |
 > | Akce | Microsoft.AzureActiveDirectory/b2cDirectories/read | Zobrazit prostředek B2C Directory |
 > | Akce | Microsoft.AzureActiveDirectory/b2cDirectories/write | Vytvořit nebo aktualizovat prostředek B2C Directory |
+> | Akce | Microsoft.AzureActiveDirectory/b2ctenants/read | Vypíše všechny tenanty B2C, kterých je uživatel členem. |
 > | Akce | Microsoft.AzureActiveDirectory/operations/read | Přečte všechny operace rozhraní API dostupné pro poskytovatele prostředků Microsoft.AzureActiveDirectory. |
 > | Akce | Microsoft.AzureActiveDirectory/register/action | Zaregistruje předplatné poskytovatele prostředků Microsoft.AzureActiveDirectory. |
 
@@ -646,6 +649,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Blueprint/blueprintAssignments/assignmentOperations/read | Přečte všechny artefakty podrobného plánu. |
 > | Akce | Microsoft.Blueprint/blueprintAssignments/delete | Odstraní všechny artefakty podrobného plánu. |
 > | Akce | Microsoft.Blueprint/blueprintAssignments/read | Přečte všechny artefakty podrobného plánu. |
+> | Akce | Microsoft.Blueprint/blueprintAssignments/whoisblueprint/action | Získá ID instančního objektu Azure Blueprints. |
 > | Akce | Microsoft.Blueprint/blueprintAssignments/write | Vytvoří nebo aktualizuje všechny artefakty podrobného plánu. |
 > | Akce | Microsoft.Blueprint/blueprints/artifacts/delete | Odstraní všechny artefakty podrobného plánu. |
 > | Akce | Microsoft.Blueprint/blueprints/artifacts/read | Přečte všechny artefakty podrobného plánu. |
@@ -723,6 +727,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Capacity/register/action | Zaregistrovat poskytovatele prostředků kapacity a povolí vytváření prostředků kapacity. |
 > | Akce | Microsoft.Capacity/reservationorders/action | Aktualizovat všechny rezervace |
 > | Akce | Microsoft.Capacity/reservationorders/availablescopes/action | Najít všechny dostupné oboru |
+> | Akce | Microsoft.Capacity/reservationorders/calculaterefund/action | Vypočítá velikost refundaci a ceny nového nákupu a vrátí zásadu chyby. |
 > | Akce | Microsoft.Capacity/reservationorders/delete | Odstranit všechny rezervace |
 > | Akce | Microsoft.Capacity/reservationorders/merge/action | Sloučit všechny rezervace |
 > | Akce | Microsoft.Capacity/reservationorders/read | Číst všechny rezervace |
@@ -1147,7 +1152,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | DataAction | Microsoft.CognitiveServices/accounts/TextAnalytics/entities/action | Rozhraní API vrátí seznam hodnot známé entity a obecné entity s názvem (\"osoba\", \"umístění\", \"organizace\" atd) v dané dokumentu. |
 > | DataAction | Microsoft.CognitiveServices/accounts/TextAnalytics/keyphrases/action | Rozhraní API vrátí seznam řetězců označujících klíčová témata ve vstupním textu. |
 > | DataAction | Microsoft.CognitiveServices/accounts/TextAnalytics/languages/action | Rozhraní API vrátí detekovaný jazyk a číselné hodnocení v rozsahu 0 až 1. Hodnocení blížící se 1 značí 100% jistotu správné identifikace jazyka. Celkem se podporuje 120 jazyků. |
-> | DataAction | Microsoft.CognitiveServices/accounts/TextAnalytics/sentiment/action | Rozhraní API vrátí číselné hodnocení v rozsahu 0 až 1.<br>Hodnocení blížící se 1 značí pozitivní zabarvení, zatímco skóre blížící se 0 značí negativní zabarvení.<br>Skóre 0,5 označuje absenci mínění (třeba příkaz Kontrola objektů). |
+> | DataAction | Microsoft.CognitiveServices/accounts/TextAnalytics/sentiment/action | Rozhraní API vrátí číselné hodnocení v rozsahu 0 až 1.<br>Hodnocení blížící se 1 značí pozitivní zabarvení, zatímco skóre blížící se 0 značí negativní zabarvení.<br>Skóre 0,5 označuje absenci mínění (např.)<br>příkaz Kontrola objektů). |
 > | Akce | Microsoft.CognitiveServices/accounts/usages/read | Získá využití kvóty pro existující prostředek. |
 > | Akce | Microsoft.CognitiveServices/accounts/write | Zapíše účty rozhraní API. |
 > | Akce | Microsoft.CognitiveServices/locations/checkSkuAvailability/action | Přečte dostupná SKU pro předplatné. |
@@ -1224,6 +1229,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Compute/snapshots/endGetAccess/action | Odvolá identifikátor URI SAS snímku |
 > | Akce | Microsoft.Compute/snapshots/read | Získat vlastnosti snímku |
 > | Akce | Microsoft.Compute/snapshots/write | Vytvoří nový snímek nebo aktualizuje stávající. |
+> | Akce | Microsoft.Compute/unregister/action | Zruší registraci předplatného poskytovatele prostředků Microsoft.Compute. |
 > | Akce | Microsoft.Compute/virtualMachines/capture/action | Umožňuje zachytit virtuální počítač zkopírováním virtuálních pevných disků a vygenerováním šablony, kterou je možné použít k vytvoření podobných virtuálních počítačů. |
 > | Akce | Microsoft.Compute/virtualMachines/convertToManagedDisks/action | Převede disky virtuálního počítače založené na objektech blob na spravované disky. |
 > | Akce | Microsoft.Compute/virtualMachines/deallocate/action | Umožňuje vypnout virtuální počítač a uvolnit výpočetní prostředky. |
@@ -1350,6 +1356,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.ContainerRegistry/locations/operationResults/read | Získá výsledek asynchronní operace |
 > | Akce | Microsoft.ContainerRegistry/operations/read | Uvádí všechny dostupné operace REST API služby Azure Container Registry |
 > | Akce | Microsoft.ContainerRegistry/register/action | Zaregistruje předplatné u poskytovatele prostředků registru kontejneru a povolí vytváření registry kontejnerů. |
+> | Akce | Microsoft.ContainerRegistry/registries/artifacts/delete | Odstranění artefaktů v registru kontejneru. |
 > | Akce | Microsoft.ContainerRegistry/registries/builds/cancel/action | Zruší existující sestavení. |
 > | Akce | Microsoft.ContainerRegistry/registries/builds/getLogLink/action | Získá odkaz ke stažení protokolů o sestavení. |
 > | Akce | Microsoft.ContainerRegistry/registries/builds/read | Načte vlastnosti zadaného sestavení nebo vypíše všechna sestavení pro zadaný registr kontejneru. |
@@ -1600,10 +1607,11 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/delete | Odstraní Data Box hraničních zařízení |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/downloadUpdates/action | Stáhnout aktualizace na zařízení |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/extendedInformation/action | Načte doplňkové informace o prostředku. |
-> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/getExtendedInformation/action | ArmApiDesc_action_getExtendedInformation_dataBoxEdgeDevices |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/getExtendedInformation/action | Načte doplňkové informace o prostředku. |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/installUpdates/action | Nainstalovat aktualizace na zařízení |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/jobs/read | Obsahuje seznam nebo získá úlohy |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/networkSettings/read | Obsahuje seznam nebo získá nastavení síťového zařízení |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/operationsStatus/read | Obsahuje seznam nebo získá stav operace |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/delete | Odstraní objednávky |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/read | Obsahuje seznam nebo získá objednávky |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/read | Obsahuje seznam nebo získá objednávky |
@@ -1620,7 +1628,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/delete | Odstraní sdílené složky |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/read | Obsahuje seznam nebo získá sdílené složky |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/read | Obsahuje seznam nebo získá sdílené složky |
-> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/refresh/action | ArmApiDesc_action_refresh_shares |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/refresh/action | Aktualizujte metadata sdílení daty z cloudu. |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/write | Vytvoří nebo aktualizuje sdílené složky |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/delete | Odstraní přihlašovací údaje účtu úložiště |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/read | Obsahuje seznam nebo získá přihlašovací údaje účtu úložiště |
@@ -1704,6 +1712,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.DataFactory/datafactories/tables/write | Vytvoří nebo aktualizuje všechny datové sady. |
 > | Akce | Microsoft.DataFactory/datafactories/write | Vytvoří nebo aktualizuje Data Factory. |
 > | Akce | Microsoft.DataFactory/factories/cancelpipelinerun/action | Zruší spuštění podle ID spuštění kanálu |
+> | Akce | Microsoft.DataFactory/factories/createdataflowdebugsession/action | Vytvoří ladicí relaci datového toku. |
 > | Akce | Microsoft.DataFactory/factories/dataflows/delete | Odstraní datový tok. |
 > | Akce | Microsoft.DataFactory/factories/dataflows/read | Načte datový tok. |
 > | Akce | Microsoft.DataFactory/factories/dataflows/write | Vytvořit nebo aktualizovat tok dat. |
@@ -1711,6 +1720,11 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.DataFactory/factories/datasets/read | Načte všechny datové sady. |
 > | Akce | Microsoft.DataFactory/factories/datasets/write | Vytvoří nebo aktualizuje všechny datové sady. |
 > | Akce | Microsoft.DataFactory/factories/delete | Odstraní Data Factory. |
+> | Akce | Microsoft.DataFactory/factories/deletedataflowdebugsession/action | Odstraní relaci ladění datového toku. |
+> | Akce | Microsoft.DataFactory/factories/getDataPlaneAccess/action | Získá přístup k službě roviny dat ADF. |
+> | Akce | Microsoft.DataFactory/factories/getDataPlaneAccess/read | Čtení přístup k službě roviny dat ADF. |
+> | Akce | Microsoft.DataFactory/factories/getFeatureValue/action | Získáte hodnotu funkce ovládacího prvku expozice pro konkrétní umístění. |
+> | Akce | Microsoft.DataFactory/factories/getFeatureValue/read | Načte hodnotu funkce ovládacího prvku expozice pro konkrétní umístění. |
 > | Akce | Microsoft.DataFactory/factories/getGitHubAccessToken/action | Získá Githubu přístupový token. |
 > | Akce | Microsoft.DataFactory/factories/integrationruntimes/delete | Odstraní všechny prostředí Integration Runtime. |
 > | Akce | Microsoft.DataFactory/factories/integrationruntimes/getconnectioninfo/read | Načte informace o připojení modulu Runtime integrace. |
@@ -1752,6 +1766,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.DataFactory/factories/querytriggerruns/action | Dotazuje spuštění aktivační události. |
 > | Akce | Microsoft.DataFactory/factories/querytriggerruns/read | Přečte výsledek spuštění aktivační události. |
 > | Akce | Microsoft.DataFactory/factories/read | Přečte Data Factory. |
+> | Akce | Microsoft.DataFactory/factories/startdataflowdebugsession/action | Spustí relaci ladění datového toku. |
 > | Akce | Microsoft.DataFactory/factories/triggerruns/read | Přečte spuštění aktivační události. |
 > | Akce | Microsoft.DataFactory/factories/triggers/delete | Odstraní všechny aktivační události. |
 > | Akce | Microsoft.DataFactory/factories/triggers/read | Přečte všechny aktivační události. |
@@ -1761,8 +1776,6 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.DataFactory/factories/triggers/write | Vytvoří nebo aktualizuje všechny aktivační události. |
 > | Akce | Microsoft.DataFactory/factories/write | Vytvořit nebo aktualizovat Data Factory |
 > | Akce | Microsoft.DataFactory/locations/configureFactoryRepo/action | Nakonfiguruje úložiště pro objekt pro vytváření. |
-> | Akce | Microsoft.DataFactory/locations/getDataPlaneAccess/action | Získá přístup k službě roviny dat ADF. |
-> | Akce | Microsoft.DataFactory/locations/getDataPlaneAccess/read | Čtení přístup k službě roviny dat ADF. |
 > | Akce | Microsoft.DataFactory/locations/getFeatureValue/action | Získáte hodnotu funkce ovládacího prvku expozice pro konkrétní umístění. |
 > | Akce | Microsoft.DataFactory/locations/getFeatureValue/read | Načte hodnotu funkce ovládacího prvku expozice pro konkrétní umístění. |
 > | Akce | Microsoft.DataFactory/operations/read | Přečte všechny operace v Factory poskytovatele dat Microsoftu. |
@@ -1842,7 +1855,9 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.DataMigration/locations/operationResults/read | Získání stavu dlouhotrvající operace související s přijatou odpovědí 202 |
 > | Akce | Microsoft.DataMigration/locations/operationStatuses/read | Získání stavu dlouhotrvající operace související s přijatou odpovědí 202 |
 > | Akce | Microsoft.DataMigration/register/action | Zaregistruje předplatné u poskytovatele Azure Database Migration Service |
+> | Akce | Microsoft.DataMigration/services/addWorker/action | Přidá pracovní proces DMS k dostupným pracovním procesům služby |
 > | Akce | Microsoft.DataMigration/services/checkStatus/action | Zkontroluje, jestli je služba nasazená a běží |
+> | Akce | Microsoft.DataMigration/services/configureWorker/action | Konfiguruje pracovní proces DMS na dostupné pracovní procesy služby |
 > | Akce | Microsoft.DataMigration/services/delete | Odstraní prostředek a všechny jeho podřízené objekty |
 > | Akce | Microsoft.DataMigration/services/projects/accessArtifacts/action | Generování adresy URL, kterou jde použít na akci GET nebo PUT s artefakty projektu |
 > | Akce | Microsoft.DataMigration/services/projects/delete | Odstraní prostředek a všechny jeho podřízené objekty |
@@ -1858,6 +1873,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.DataMigration/services/projects/tasks/write | Spuštění úloh Azure Database Migration Service |
 > | Akce | Microsoft.DataMigration/services/projects/write | Spuštění úloh Azure Database Migration Service |
 > | Akce | Microsoft.DataMigration/services/read | Čtení informací o prostředcích |
+> | Akce | Microsoft.DataMigration/services/removeWorker/action | Odebere pracovní proces DMS z dostupných pracovních procesů služby |
 > | Akce | Microsoft.DataMigration/services/slots/delete | Odstraní prostředek a všechny jeho podřízené objekty |
 > | Akce | Microsoft.DataMigration/services/slots/read | Čtení informací o prostředcích |
 > | Akce | Microsoft.DataMigration/services/slots/write | Vytvoření nebo aktualizace prostředků a jejich vlastností |
@@ -2052,7 +2068,6 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.DevSpaces/controllers/delete | Odstranění služby Azure Dev prostory Kontroleru a roviny dat |
 > | Akce | Microsoft.DevSpaces/controllers/listConnectionDetails/action | Seznam připojení podrobnosti pro kontroler serveru Azure Dev mezery infrastrukturou |
 > | Akce | Microsoft.DevSpaces/controllers/read | Vlastnosti čtení Azure Dev prostory Kontroleru |
-> | Akce | Microsoft.DevSpaces/controllers/rotateAuthKey/action | Proveďte otočení klíče ověřování pro kontroler Azure Dev mezery a opětovné nasazení služeb |
 > | Akce | Microsoft.DevSpaces/controllers/write | Vytvoření nebo aktualizace Azure Dev prostory Kontroleru vlastnosti |
 > | Akce | Microsoft.DevSpaces/register/action | Registrace poskytovatele prostředků Microsoft Dev prostory s předplatným |
 
@@ -2242,6 +2257,13 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
+> | Akce | Microsoft.EventGrid/domains/delete | Odstranit doménu |
+> | Akce | Microsoft.EventGrid/domains/listKeys/action | Seznam klíčů pro doménu |
+> | Akce | Microsoft.EventGrid/domains/providers/Microsoft.Insights/metricDefinitions/read | Získá dostupné metriky pro domény |
+> | Akce | Microsoft.EventGrid/domains/read | Přečtěte si k doméně |
+> | Akce | Microsoft.EventGrid/domains/regenerateKey/action | Znovu vygenerovat klíč pro doménu |
+> | Akce | Microsoft.EventGrid/domains/topics/read | Přečtěte si téma domény |
+> | Akce | Microsoft.EventGrid/domains/write | Vytvořit nebo aktualizovat domény |
 > | Akce | Microsoft.EventGrid/eventSubscriptions/delete | Odstranění eventSubscription |
 > | Akce | Microsoft.EventGrid/eventSubscriptions/getFullUrl/action | Získat úplnou adresu url pro odběr události |
 > | Akce | Microsoft.EventGrid/eventSubscriptions/providers/Microsoft.Insights/diagnosticSettings/read | Získá nastavení diagnostiky pro odběry událostí |
@@ -2365,13 +2387,16 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.HDInsight/clusters/applications/write | Vytvořit nebo aktualizovat aplikaci pro HDInsight Cluster |
 > | Akce | Microsoft.HDInsight/clusters/changerdpsetting/action | Změnit nastavení protokolu RDP pro HDInsight Cluster |
 > | Akce | Microsoft.HDInsight/clusters/configurations/action | Aktualizace konfigurace clusteru HDInsight |
+> | Akce | Microsoft.HDInsight/clusters/configurations/action | Získání konfigurace clusterů HDInsight |
 > | Akce | Microsoft.HDInsight/clusters/configurations/read | Získání konfigurace clusterů HDInsight |
 > | Akce | Microsoft.HDInsight/clusters/delete | Odstranění clusteru HDInsight |
+> | Akce | Microsoft.HDInsight/clusters/getGatewaySettings/action | Získat nastavení brány pro HDInsight Cluster |
 > | Akce | Microsoft.HDInsight/clusters/providers/Microsoft.Insights/diagnosticSettings/read | Získá nastavení diagnostiky pro prostředek clusteru HDInsight |
 > | Akce | Microsoft.HDInsight/clusters/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek clusteru HDInsight |
 > | Akce | Microsoft.HDInsight/clusters/providers/Microsoft.Insights/metricDefinitions/read | Získá dostupné metriky pro HDInsight Cluster |
 > | Akce | Microsoft.HDInsight/clusters/read | Získat podrobnosti o clusteru HDInsight |
 > | Akce | Microsoft.HDInsight/clusters/roles/resize/action | Změnit velikost clusteru HDInsight |
+> | Akce | Microsoft.HDInsight/clusters/updateGatewaySettings/action | Aktualizovat nastavení brány pro HDInsight Cluster |
 > | Akce | Microsoft.HDInsight/clusters/write | Vytvořit nebo aktualizovat HDInsight Cluster |
 > | Akce | Microsoft.HDInsight/locations/capabilities/read | Získat možnosti předplatného |
 > | Akce | Microsoft.HDInsight/locations/checkNameAvailability/read | Zkontrolovat dostupnost názvu |
@@ -2643,6 +2668,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Insights/MetricDefinitions/providers/Microsoft.Insights/Read | Číst definice metrik |
 > | Akce | Microsoft.Insights/MetricDefinitions/Read | Číst definice metrik |
 > | Akce | Microsoft.Insights/Metrics/Action | Akce metriky |
+> | Akce | Microsoft.Insights/Metrics/Microsoft.Insights/Read | Čtení metrik |
 > | Akce | Microsoft.Insights/Metrics/providers/Metrics/Read | Čtení metrik |
 > | Akce | Microsoft.Insights/Metrics/Read | Čtení metrik |
 > | DataAction | Microsoft.Insights/Metrics/Write | Zapíše metriky. |
@@ -2716,6 +2742,9 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.KeyVault/vaults/accessPolicies/write | Existující zásady přístupu můžete aktualizovat sloučením nebo nahrazením, případně můžete do trezoru přidat nové zásady přístupu. |
 > | Akce | Microsoft.KeyVault/vaults/delete | Odstranění trezoru klíčů |
 > | Akce | Microsoft.KeyVault/vaults/deploy/action | Umožní přístup k tajným kódům v trezoru klíčů při nasazování prostředků Azure. |
+> | Akce | Microsoft.KeyVault/vaults/eventGridFilters/delete | Oznámí trezoru Microsoft.KeyVault, že se odstraňuje předplatné Event Gridu pro Key Vault. |
+> | Akce | Microsoft.KeyVault/vaults/eventGridFilters/read | Oznámí trezoru Microsoft.KeyVault, že se zobrazuje předplatné Event Gridu pro Key Vault. |
+> | Akce | Microsoft.KeyVault/vaults/eventGridFilters/write | Oznámí trezoru Microsoft.KeyVault, že se vytváří nové předplatné Event Gridu pro Key Vault. |
 > | Akce | Microsoft.KeyVault/vaults/read | Zobrazí vlastnosti trezoru klíčů. |
 > | Akce | Microsoft.KeyVault/vaults/secrets/read | Zobrazí vlastnosti tajného kódu, ale ne jeho hodnotu. |
 > | Akce | Microsoft.KeyVault/vaults/secrets/write | Vytvoří nový tajný kód nebo aktualizuje hodnotu existujícího tajného kódu. |
@@ -2729,6 +2758,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Kusto/Clusters/Activate/action | Cluster se spustí. |
 > | Akce | Microsoft.Kusto/Clusters/CheckNameAvailability/action | Zkontroluje dostupnost názvu clusteru. |
 > | Akce | Microsoft.Kusto/Clusters/Databases/AddPrincipals/action | Přidá objektech zabezpečení databáze. |
+> | Akce | Microsoft.Kusto/Clusters/Databases/CheckNameAvailability/action | Zkontroluje dostupnost názvu pro daného typu. |
 > | Akce | Microsoft.Kusto/Clusters/Databases/DataConnections/delete | Odstraní prostředek připojení data. |
 > | Akce | Microsoft.Kusto/Clusters/Databases/DataConnections/read | Načte datový prostředek připojení. |
 > | Akce | Microsoft.Kusto/Clusters/Databases/DataConnections/write | Zapíše prostředek datového připojení. |
@@ -2780,12 +2810,12 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/write | Přidat nebo změnit prostředí. |
 > | Akce | Microsoft.LabServices/labAccounts/labs/environmentSettings/Publish/action | Předpisy a deprovisions požadované prostředky pro nastavení prostředí založené na aktuální stav nastavení testovacího prostředí nebo prostředí. |
 > | Akce | Microsoft.LabServices/labAccounts/labs/environmentSettings/read | Nastavení prostředí pro čtení. |
+> | Akce | Microsoft.LabServices/labAccounts/labs/environmentSettings/SaveImage/action | Uloží aktuální image šablony pro galerii sdílené v rámci účtu testovacího prostředí |
 > | Akce | Microsoft.LabServices/labAccounts/labs/environmentSettings/schedules/delete | Odstraňte plány. |
 > | Akce | Microsoft.LabServices/labAccounts/labs/environmentSettings/schedules/read | Přečtěte si plány. |
 > | Akce | Microsoft.LabServices/labAccounts/labs/environmentSettings/schedules/write | Přidat nebo změnit plány. |
 > | Akce | Microsoft.LabServices/labAccounts/labs/environmentSettings/Start/action | Spustí šablonu spuštěním všechny prostředky v šabloně. |
 > | Akce | Microsoft.LabServices/labAccounts/labs/environmentSettings/Stop/action | Zastaví šablonu zastavte všechny prostředky v šabloně. |
-> | Akce | Microsoft.LabServices/labAccounts/labs/environmentSettings/Upload/action | Odešle aktuální image šablony pro galerii sdílené v rámci účtu testovacího prostředí |
 > | Akce | Microsoft.LabServices/labAccounts/labs/environmentSettings/write | Přidat nebo upravit nastavení prostředí. |
 > | Akce | Microsoft.LabServices/labAccounts/labs/read | Číst testovací prostředí. |
 > | Akce | Microsoft.LabServices/labAccounts/labs/Register/action | Zaregistrujte se a spravované testovací prostředí. |
@@ -2803,11 +2833,12 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.LabServices/labAccounts/sharedImages/write | Přidat nebo upravit sharedimages. |
 > | Akce | Microsoft.LabServices/labAccounts/write | Přidat nebo upravit účtů testovacího prostředí. |
 > | Akce | Microsoft.LabServices/locations/operations/read | Operace čtení. |
-> | Akce | Microsoft.LabServices/register/action | Zaregistruje předplatné. |
+> | Akce | Microsoft.LabServices/register/action | Zaregistruje předplatné |
 > | Akce | Microsoft.LabServices/users/GetEnvironment/action | Načte podrobnosti virtuálního počítače |
 > | Akce | Microsoft.LabServices/users/GetOperationBatchStatus/action | Načíst stav operace služby batch |
 > | Akce | Microsoft.LabServices/users/GetOperationStatus/action | Umožňuje získat stav dlouhotrvající operace |
 > | Akce | Microsoft.LabServices/users/GetPersonalPreferences/action | Získat osobní preference pro uživatele |
+> | Akce | Microsoft.LabServices/users/ListAllEnvironments/action | Seznam všech prostředí pro uživatele |
 > | Akce | Microsoft.LabServices/users/ListEnvironments/action | Seznam prostředí pro uživatele |
 > | Akce | Microsoft.LabServices/users/ListLabs/action | Seznam testovacích prostředí pro uživatele. |
 > | Akce | Microsoft.LabServices/users/Register/action | Registrace uživatele do spravované testovacího prostředí |
@@ -3232,6 +3263,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Maps/accounts/read | Získáte účet mapy. |
 > | Akce | Microsoft.Maps/accounts/regenerateKey/action | Generovat nový účet Maps primární nebo sekundární klíč |
 > | Akce | Microsoft.Maps/accounts/write | Vytvořit nebo aktualizovat účet Maps. |
+> | Akce | Microsoft.Maps/operations/read | Přečíst operace poskytovatele |
 > | Akce | Microsoft.Maps/register/action | Zaregistrujte poskytovatele |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
@@ -3555,9 +3587,6 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Network/frontDoorWebApplicationFirewallPolicies/delete | Odstraní zásadu brány Firewall webových aplikací |
 > | Akce | Microsoft.Network/frontDoorWebApplicationFirewallPolicies/read | Získá zásadu brány Firewall webových aplikací |
 > | Akce | Microsoft.Network/frontDoorWebApplicationFirewallPolicies/write | Vytvoří nebo aktualizuje zásadu brány Firewall webových aplikací |
-> | Akce | Microsoft.Network/interfaceEndpoints/delete | Odstraní prostředek koncového bodu rozhraní. |
-> | Akce | Microsoft.Network/interfaceEndpoints/read | Získá prostředek koncového bodu rozhraní. |
-> | Akce | Microsoft.Network/interfaceEndpoints/write | Vytvoří nový koncový bod rozhraní nebo aktualizuje existující koncový bod rozhraní. |
 > | Akce | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Spojí pro fond adres back-endu nástroje pro vyrovnávání zatížení. Výstražné. |
 > | Akce | Microsoft.Network/loadBalancers/backendAddressPools/read | Získá definici zatížení adres back-endu nástroje pro vyrovnávání fondu |
 > | Akce | Microsoft.Network/loadBalancers/delete | Odstraní nástroj pro vyrovnávání zatížení |
@@ -3581,6 +3610,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Network/localnetworkgateways/read | Gets LocalNetworkGateway |
 > | Akce | Microsoft.Network/localnetworkgateways/write | Vytvoří nebo aktualizuje existující LocalNetworkGateway |
 > | Akce | Microsoft.Network/locations/availableDelegations/read | Získá dostupné delegace |
+> | Akce | Microsoft.Network/locations/availablePrivateEndpointResources/read | Získá koncový bod dostupný privátní zdroje |
 > | Akce | Microsoft.Network/locations/bareMetalTenants/action | Přidělí nebo ověří holé počítače Tenanta |
 > | Akce | Microsoft.Network/locations/checkAcceleratedNetworkingSupport/action | Podpora kontroly Akcelerovanými síťovými službami |
 > | Akce | Microsoft.Network/locations/checkDnsNameAvailability/read | Kontroluje, jestli název dns je k dispozici v zadaném umístění |
@@ -3662,10 +3692,13 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Network/p2sVpnGateways/getp2svpnconnectionhealth/action | Získá stav připojení P2S Vpn pro P2SVpnGateway |
 > | Akce | Microsoft.Network/p2sVpnGateways/read | Získá P2SVpnGateway. |
 > | Akce | Microsoft.Network/p2sVpnGateways/write | Vloží P2SVpnGateway. |
+> | Akce | Microsoft.Network/privateEndpoints/delete | Odstraní prostředek privátního koncového bodu. |
+> | Akce | Microsoft.Network/privateEndpoints/read | Získá prostředek privátního koncového bodu. |
+> | Akce | Microsoft.Network/privateEndpoints/write | Vytvoří nový privátního koncového bodu nebo aktualizuje existující privátního koncového bodu. |
 > | Akce | Microsoft.Network/privateLinkServices/delete | Odstraní prostředek služby soukromého odkazu. |
-> | Akce | Microsoft.Network/privateLinkServices/interfaceEndpointConnections/delete | Odstraní koncový bod připojení k rozhraní. |
-> | Akce | Microsoft.Network/privateLinkServices/interfaceEndpointConnections/read | Získá definice rozhraní koncového bodu připojení. |
-> | Akce | Microsoft.Network/privateLinkServices/interfaceEndpointConnections/write | Vytvoří nové připojení koncového bodu rozhraní nebo aktualizuje existující koncový bod připojení rozhraní. |
+> | Akce | Microsoft.Network/privateLinkServices/privateEndpointConnections/delete | Odstraní připojení privátního koncového bodu. |
+> | Akce | Microsoft.Network/privateLinkServices/privateEndpointConnections/read | Získá definici privátního koncového bodu připojení. |
+> | Akce | Microsoft.Network/privateLinkServices/privateEndpointConnections/write | Vytvoří nové připojení privátního koncového bodu nebo aktualizuje existující připojení privátního koncového bodu. |
 > | Akce | Microsoft.Network/privateLinkServices/read | Získá prostředek služby soukromého odkazu. |
 > | Akce | Microsoft.Network/privateLinkServices/write | Vytvoří novou službu privátní propojení nebo aktualizuje existující službu soukromého odkazu. |
 > | Akce | Microsoft.Network/publicIPAddresses/delete | Odstraní veřejnou Ip adresu. |
@@ -3743,6 +3776,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Network/virtualnetworkgateways/supportedvpndevices/action | Seznam podporovaných zařízení Vpn |
 > | Akce | Microsoft.Network/virtualNetworkGateways/write | Vytvoří nebo aktualizuje VirtualNetworkGateway |
 > | Akce | Microsoft.Network/virtualNetworks/BastionHosts/action | Získá odkazy Bastion Host ve virtuální síti. |
+> | Akce | Microsoft.Network/virtualNetworks/bastionHosts/default/action | Získá odkazy Bastion Host ve virtuální síti. |
 > | Akce | Microsoft.Network/virtualNetworks/checkIpAddressAvailability/read | Zkontrolujte, jestli je Ip adresa k dispozici v zadané virtuální sítě |
 > | Akce | Microsoft.Network/virtualNetworks/delete | Odstraní virtuální síť |
 > | Akce | Microsoft.Network/virtualNetworks/peer/action | Partnerský vztah virtuální sítě s jinou virtuální sítí |
@@ -3918,6 +3952,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.OperationalInsights/workspaces/notificationSettings/delete | Odstraňte nastavení oznámení daného uživatele pro pracovní prostor. |
 > | Akce | Microsoft.OperationalInsights/workspaces/notificationSettings/read | Získáte nastavení oznámení daného uživatele pro pracovní prostor. |
 > | Akce | Microsoft.OperationalInsights/workspaces/notificationSettings/write | Nastavte nastavení oznámení daného uživatele pro pracovní prostor. |
+> | Akce | microsoft.operationalinsights/workspaces/operations/read | Získá stav operace OperationalInsights pracovního prostoru. |
 > | Akce | Microsoft.OperationalInsights/workspaces/purge/action | Odstranit zadaná data z pracovního prostoru |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/ADAssessmentRecommendation/read | Přečte data z tabulky ADAssessmentRecommendation. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/ADReplicationResult/read | Přečte data z tabulky ADReplicationResult. |
@@ -3996,19 +4031,25 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MADriverInstanceReadiness/read | Přečte data z tabulky MADriverInstanceReadiness. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MADriverReadiness/read | Přečte data z tabulky MADriverReadiness. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeAddin/read | Přečte data z tabulky MAOfficeAddin. |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeAddinEntityHealth/read | Čtení dat z tabulky MAOfficeAddinEntityHealth |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeAddinHealth/read | Přečte data z tabulky MAOfficeAddinHealth. |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeAddinHealthEventNRT/read | Čtení dat z tabulky MAOfficeAddinHealthEventNRT |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeAddinHealthIssues/read | Přečte data z tabulky MAOfficeAddinHealthIssues. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeAddinInstance/read | Přečte data z tabulky MAOfficeAddinInstance. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeAddinInstanceReadiness/read | Přečte data z tabulky MAOfficeAddinInstanceReadiness. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeAddinReadiness/read | Přečte data z tabulky MAOfficeAddinReadiness. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeApp/read | Přečte data z tabulky MAOfficeApp. |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeAppCrashesNRT/read | Čtení dat z tabulky MAOfficeAppCrashesNRT |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeAppHealth/read | Přečte data z tabulky MAOfficeAppHealth. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeAppInstance/read | Přečte data z tabulky MAOfficeAppInstance. |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeAppInstanceHealth/read | Čtení dat z tabulky MAOfficeAppInstanceHealth |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeAppReadiness/read | Přečte data z tabulky MAOfficeAppReadiness. |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeAppSessionsNRT/read | Čtení dat z tabulky MAOfficeAppSessionsNRT |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeBuildInfo/read | Přečte data z tabulky MAOfficeBuildInfo. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeCurrencyAssessment/read | Přečte data z tabulky MAOfficeCurrencyAssessment. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeCurrencyAssessmentDailyCounts/read | Přečte data z tabulky MAOfficeCurrencyAssessmentDailyCounts. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeDeploymentStatus/read | Přečte data z tabulky MAOfficeDeploymentStatus. |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroErrorNRT/read | Čtení dat z tabulky MAOfficeMacroErrorNRT |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroHealth/read | Přečte data z tabulky MAOfficeMacroHealth. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroHealthIssues/read | Přečte data z tabulky MAOfficeMacroHealthIssues. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroIssueInstanceReadiness/read | Přečte data z tabulky MAOfficeMacroIssueInstanceReadiness. |
@@ -4050,6 +4091,8 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.OperationalInsights/workspaces/query/SPAssessmentRecommendation/read | Přečte data z tabulky SPAssessmentRecommendation. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/SQLAssessmentRecommendation/read | Přečte data z tabulky SQLAssessmentRecommendation. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/SQLQueryPerformance/read | Přečte data z tabulky SQLQueryPerformance. |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/SqlThreatProtectionLoginAudits/read | Čtení dat z tabulky SqlThreatProtectionLoginAudits |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/SqlVulnerabilityAssessmentResult/read | Čtení dat z tabulky SqlVulnerabilityAssessmentResult |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/Syslog/read | Přečte data z tabulky Syslog. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/SysmonEvent/read | Přečte data z tabulky SysmonEvent. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read | Přečte data z jakéhokoli vlastního protokolu. |
@@ -4147,21 +4190,23 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.PolicyInsights/remediations/listDeployments/read | Vypíše nasazení vyžadovaná nápravou zásad. |
 > | Akce | Microsoft.PolicyInsights/remediations/read | Získá nápravy zásad. |
 > | Akce | Microsoft.PolicyInsights/remediations/write | Vytvoří nebo aktualizuje nápravy zásad. |
+> | Akce | Microsoft.PolicyInsights/unregister/action | Zruší registraci poskytovatele prostředků Policy Insights. |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
-> | Akce | Microsoft.Portal/consoles/delete | Odebere instanci cloud shell. |
-> | Akce | Microsoft.Portal/consoles/write | Vytvořit nebo aktualizovat instance prostředí cloud. |
+> | Akce | Microsoft.Portal/consoles/delete | Odebere instanci Cloud Shellu. |
+> | Akce | Microsoft.Portal/consoles/read | Přečte instanci Cloud Shellu. |
+> | Akce | Microsoft.Portal/consoles/write | Vytvoří nebo aktualizuje instanci Cloud Shellu. |
 > | Akce | Microsoft.Portal/dashboards/delete | Odebere z předplatného řídicí panel. |
 > | Akce | Microsoft.Portal/dashboards/read | Čte řídicí panely pro předplatné. |
 > | Akce | Microsoft.Portal/dashboards/write | Umožňuje přidat nebo upravit řídicí panely u předplatného. |
 > | Akce | Microsoft.Portal/register/action | Zaregistrovat na portál |
-> | Akce | Microsoft.Portal/usersettings/delete | Odebere uživatelská nastavení cloud shell. |
-> | Akce | Microsoft.Portal/usersettings/read | Přečte cloud shell uživatelská nastavení. |
-> | Akce | Microsoft.Portal/usersettings/write | Vytvořit nebo aktualizovat nastavení hlavního názvu uživatele cloud shell. |
+> | Akce | Microsoft.Portal/usersettings/delete | Odebere uživatelská nastavení Cloud Shellu. |
+> | Akce | Microsoft.Portal/usersettings/read | Přečte uživatelská nastavení Cloud Shellu. |
+> | Akce | Microsoft.Portal/usersettings/write | Vytvoří nebo aktualizuje uživatelská nastavení Cloud Shellu. |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
@@ -4189,6 +4234,8 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp je interní operace, kterou používá služba |
 > | Akce | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp je vnitřní operace, které používá služba |
 > | Akce | Microsoft.RecoveryServices/Locations/backupPreValidateProtection/action |  |
+> | Akce | Microsoft.RecoveryServices/Locations/backupProtectedItem/write | Vytvořit položku chráněnou zálohováním. |
+> | Akce | Microsoft.RecoveryServices/Locations/backupProtectedItems/read | Vrátí seznam všech chráněných položek. |
 > | Akce | Microsoft.RecoveryServices/Locations/backupStatus/action | Kontrola stavu zálohování pro trezory služby Recovery Services |
 > | Akce | Microsoft.RecoveryServices/Locations/backupValidateFeatures/action | Ověření funkcí |
 > | Akce | Microsoft.RecoveryServices/locations/checkNameAvailability/action | Zkontrolovat že dostupnost názvu prostředku je rozhraní API pro zkontrolujte, jestli je k dispozici název prostředku |
@@ -4680,8 +4727,10 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | --- | --- | --- |
 > | Akce | Microsoft.SignalRService/locations/checknameavailability/action | Kontroluje, jestli je název k dispozici pro použití s využitím nové služby SignalR |
 > | Akce | Microsoft.SignalRService/locations/operationresults/signalr/read | Dotaz na stav operace asynchorous |
+> | Akce | Microsoft.SignalRService/locations/operationstatus/operationId/read |  |
 > | Akce | Microsoft.SignalRService/locations/usages/read | Získat využití kvóty pro služby Azure SignalR |
 > | Akce | Microsoft.SignalRService/operationresults/read | Dotaz na stav operace asynchorous |
+> | Akce | Microsoft.SignalRService/operationstatus/read |  |
 > | Akce | Microsoft.SignalRService/register/action | Zaregistrovat poskytovatele prostředků "Microsoft.SignalRService" s předplatným |
 > | Akce | Microsoft.SignalRService/SignalR/delete | Odstranit celou službu SignalR |
 > | Akce | Microsoft.SignalRService/SignalR/listFeatures/read | Seznam přizpůsobených FeatureFlags služby SignalR. Ve výchozím nastavení těch, které jsou vyloučené. |
@@ -4698,17 +4747,22 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
+> | Akce | Microsoft.Solutions/applicationDefinitions/applicationArtifacts/read | Vypíše artefakty aplikace dané definice aplikace. |
 > | Akce | Microsoft.Solutions/applicationDefinitions/delete | Odebere definici aplikace. |
 > | Akce | Microsoft.Solutions/applicationDefinitions/read | Načte seznam definic aplikací. |
 > | Akce | Microsoft.Solutions/applicationDefinitions/write | Přidá nebo upraví definici aplikace. |
+> | Akce | Microsoft.Solutions/applications/applicationArtifacts/read | Vypíše artefakty aplikace. |
 > | Akce | Microsoft.Solutions/applications/delete | Odebere aplikaci. |
 > | Akce | Microsoft.Solutions/applications/read | Načte seznam aplikací. |
+> | Akce | Microsoft.Solutions/applications/refreshPermissions/action | Obnoví oprávnění aplikace. |
+> | Akce | Microsoft.Solutions/applications/updateAccess/action | Aktualizuje přístup aplikace. |
 > | Akce | Microsoft.Solutions/applications/write | Vytvoří aplikaci. |
 > | Akce | Microsoft.Solutions/jitRequests/delete | Odebere požadavek JitRequest. |
 > | Akce | Microsoft.Solutions/jitRequests/read | Načte seznam požadavků JitRequest. |
 > | Akce | Microsoft.Solutions/jitRequests/write | Vytvoří požadavek JitRequest. |
 > | Akce | Microsoft.Solutions/locations/operationStatuses/read | Umožňuje načíst stav operace pro prostředek. |
 > | Akce | Microsoft.Solutions/register/action | Provede registraci do Solutions. |
+> | Akce | Microsoft.Solutions/unregister/action | Zruší registraci z řešení. |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
@@ -4718,7 +4772,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Sql/checkNameAvailability/action | Ověřte, zda server je uvedený název dostupné ke zřizování po celém světě pro daný odběr. |
 > | Akce | Microsoft.Sql/instancePools/delete | Odstraní fond instancí |
 > | Akce | Microsoft.Sql/instancePools/read | Získá fond instancí |
-> | Akce | Microsoft.Sql/instancePools/usages/read | Získá informace o použití fondu instanci. |
+> | Akce | Microsoft.Sql/instancePools/usages/read | Získá informace o využití fondu instance |
 > | Akce | Microsoft.Sql/instancePools/write | Vytvoří nebo aktualizuje fond instancí |
 > | Akce | Microsoft.Sql/locations/auditingSettingsAzureAsyncOperation/read | Načíst výsledek objektu blob rozšířený server operace nastavení zásad auditování |
 > | Akce | Microsoft.Sql/locations/auditingSettingsOperationResults/read | Načíst výsledek objektu blob server operace nastavení zásad auditování |
@@ -4731,6 +4785,8 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Sql/locations/deletedServers/recover/action | Obnovení odstraněné serveru |
 > | Akce | Microsoft.Sql/locations/elasticPoolAzureAsyncOperation/read | Získá azure asynchronní operace pro asynchronní operace elastického fondu |
 > | Akce | Microsoft.Sql/locations/elasticPoolOperationResults/read | Získá výsledek operace elastického fondu. |
+> | Akce | Microsoft.Sql/locations/encryptionProtectorAzureAsyncOperation/read | Získá probíhajících operací na ochrana šifrování dat transparentní šifrování |
+> | Akce | Microsoft.Sql/locations/encryptionProtectorOperationResults/read | Získá probíhajících operací na ochrana šifrování dat transparentní šifrování |
 > | Akce | Microsoft.Sql/locations/extendedAuditingSettingsAzureAsyncOperation/read | Načíst výsledek objektu blob rozšířený server operace nastavení zásad auditování |
 > | Akce | Microsoft.Sql/locations/extendedAuditingSettingsOperationResults/read | Načíst výsledek objektu blob rozšířený server operace nastavení zásad auditování |
 > | Akce | Microsoft.Sql/locations/firewallRulesAzureAsyncOperation/read | Získá stav operace pravidel brány firewall. |
@@ -4740,8 +4796,8 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Sql/locations/instanceFailoverGroups/forceFailoverAllowDataLoss/action | Provede Vynucené převzetí služeb při selhání ve skupině převzetí služeb při selhání pro existující instance. |
 > | Akce | Microsoft.Sql/locations/instanceFailoverGroups/read | Vrátí seznam instancí převzetí služeb při selhání skupiny nebo načte vlastnosti pro skupinu převzetí služeb při selhání zadanou instanci. |
 > | Akce | Microsoft.Sql/locations/instanceFailoverGroups/write | Vytvoří ve skupině převzetí služeb při selhání instancí se zadanými parametry nebo aktualizuje vlastnosti a značky pro skupinu převzetí služeb při selhání určené instance. |
-> | Akce | Microsoft.Sql/locations/instancePoolAzureAsyncOperation/read | Získá stav operace instancí fondu. |
-> | Akce | Microsoft.Sql/locations/instancePoolOperationResults/read | Získá výsledek operace fondu instance. |
+> | Akce | Microsoft.Sql/locations/instancePoolAzureAsyncOperation/read | Získá stav operace instancí fondu |
+> | Akce | Microsoft.Sql/locations/instancePoolOperationResults/read | Získá výsledek operace fondu instance |
 > | Akce | Microsoft.Sql/locations/interfaceEndpointProfileAzureAsyncOperation/read | Vrátí podrobnosti o konkrétní rozhraní koncového bodu Azure asynchronní operace |
 > | Akce | Microsoft.Sql/locations/interfaceEndpointProfileOperationResults/read | Vrátí podrobnosti o operaci zadané rozhraní koncového bodu profilu |
 > | Akce | Microsoft.Sql/locations/jobAgentAzureAsyncOperation/read | Získá stav operace agenta úlohy. |
@@ -4751,9 +4807,15 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete | Odstraní dlouhodobého uchování zálohy |
 > | Akce | Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/read | Seznamy dlouhodobého uchovávání záloh databáze |
 > | Akce | Microsoft.Sql/locations/managedDatabaseRestoreAzureAsyncOperation/completeRestore/action | Dokončení operace obnovení spravované databáze |
+> | Akce | Microsoft.Sql/locations/managedInstanceEncryptionProtectorAzureAsyncOperation/read | Získá probíhajících operací na ochrana šifrování spravované instance data pro transparentní šifrování |
+> | Akce | Microsoft.Sql/locations/managedInstanceEncryptionProtectorOperationResults/read | Získá probíhajících operací na ochrana šifrování spravované instance data pro transparentní šifrování |
+> | Akce | Microsoft.Sql/locations/managedInstanceKeyAzureAsyncOperation/read | Získá probíhajících operací na transparentní šifrování dat spravované instance klíče |
+> | Akce | Microsoft.Sql/locations/managedInstanceKeyOperationResults/read | Získá probíhajících operací na transparentní šifrování dat spravované instance klíče |
 > | Akce | Microsoft.Sql/locations/managedTransparentDataEncryptionAzureAsyncOperation/read | Získá probíhajících operací na spravovanou databázovou transparentní šifrování dat |
 > | Akce | Microsoft.Sql/locations/managedTransparentDataEncryptionOperationResults/read | Získá probíhajících operací na spravovanou databázovou transparentní šifrování dat |
 > | Akce | Microsoft.Sql/locations/read | Získá umístění k dispozici pro daný odběr |
+> | Akce | Microsoft.Sql/locations/serverKeyAzureAsyncOperation/read | Získá probíhající operace nad klíči data transparentní šifrování serveru |
+> | Akce | Microsoft.Sql/locations/serverKeyOperationResults/read | Získá probíhající operace nad klíči data transparentní šifrování serveru |
 > | Akce | Microsoft.Sql/locations/syncAgentOperationResults/read | Načíst výsledek operace prostředků agenta synchronizace |
 > | Akce | Microsoft.Sql/locations/syncDatabaseIds/read | Načtení ID databáze synchronizace pro konkrétní oblast a předplatné |
 > | Akce | Microsoft.Sql/locations/syncGroupOperationResults/read | Načíst výsledek operace synchronizace skupiny prostředků |
@@ -4773,12 +4835,15 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Sql/managedInstances/databases/providers/Microsoft.Insights/logDefinitions/read | Získá dostupné protokoly pro spravovanou instanci databáze |
 > | Akce | Microsoft.Sql/managedInstances/databases/read | Získá existující spravované databáze |
 > | Akce | Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/read | Označení citlivosti seznamu na danou databázi |
+> | Akce | Microsoft.Sql/managedInstances/databases/schemas/read | Získáte schéma spravované databáze. |
+> | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/read | Získat sloupce spravované databáze |
 > | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/delete | Odstranit označení citlivosti daného sloupce |
 > | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/disable/action | Zakázat citlivosti doporučení v daném sloupci |
 > | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/enable/action | Povolte doporučení citlivosti na daný sloupec |
 > | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/read | Získat označení citlivosti daného sloupce |
 > | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/write | Vytvořit nebo aktualizovat označení citlivosti daného sloupce |
-> | Akce | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/read | Načíst podrobnosti o zásadu detekce hrozeb databáze nakonfigurované na dané spravované databáze |
+> | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/read | Získejte pro spravovanou databázovou tabulku |
+> | Akce | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/read | Načíst seznam zásad detekce hrozeb spravované databáze nakonfigurované pro daný server |
 > | Akce | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/write | Změnit databázi zásadu detekce hrozeb u daného spravované databáze |
 > | Akce | Microsoft.Sql/managedInstances/databases/securityEvents/read | Načte události zabezpečení spravované databáze |
 > | Akce | Microsoft.Sql/managedInstances/databases/sensitivityLabels/read | Označení citlivosti seznamu na danou databázi |
@@ -4811,7 +4876,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Sql/managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies/read | Získá zásady uchovávání informací krátkodobém horizontu vynechaných spravované databáze |
 > | Akce | Microsoft.Sql/managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies/write | Aktualizuje zásady uchovávání informací krátkodobém horizontu vynechaných spravované databáze |
 > | Akce | Microsoft.Sql/managedInstances/restorableDroppedDatabases/read | Vrátí že seznam obnovitelné vyřadit spravované databáze. |
-> | Akce | Microsoft.Sql/managedInstances/securityAlertPolicies/read | Načíst podrobnosti o zásadu detekce hrozeb spravovaný server nakonfigurovaný na daném spravovaného serveru |
+> | Akce | Microsoft.Sql/managedInstances/securityAlertPolicies/read | Načíst seznam zásad detekce hrozeb spravovaný server nakonfigurovaný pro daný server |
 > | Akce | Microsoft.Sql/managedInstances/securityAlertPolicies/write | Změnit zásadu detekce hrozeb spravované serverem pro danou spravovaný server |
 > | Akce | Microsoft.Sql/managedInstances/tdeCertificates/action | Transparentní šifrování dat vytvoří nebo aktualizuje certifikát |
 > | Akce | Microsoft.Sql/managedInstances/vulnerabilityAssessments/delete | Odstranit posouzení ohrožení zabezpečení pro dané spravované instance |
@@ -4882,7 +4947,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Sql/servers/databases/maintenanceWindows/write | Nastaví údržby nastavení systému windows pro vybrané databáze. |
 > | Akce | Microsoft.Sql/servers/databases/metricDefinitions/read | Návratové typy metriky, které jsou k dispozici pro databáze |
 > | Akce | Microsoft.Sql/servers/databases/metrics/read | Vrátit metriky pro databáze |
-> | Akce | Microsoft.Sql/servers/databases/move/action | Přejmenovat Azure SQL Database |
+> | Akce | Microsoft.Sql/servers/databases/move/action | Změňte název existující databáze. |
 > | Akce | Microsoft.Sql/servers/databases/operationResults/read | Získá stav operace databáze. |
 > | Akce | Microsoft.Sql/servers/databases/operations/cancel/action | Azure SQL Database Zruší probíhající asynchronní operaci, která ještě není dokončená. |
 > | Akce | Microsoft.Sql/servers/databases/operations/read | Vrátí seznam operací provedených v databázi |
@@ -4906,17 +4971,17 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Sql/servers/databases/restorePoints/delete | Odstraní bod obnovení pro databázi. |
 > | Akce | Microsoft.Sql/servers/databases/restorePoints/read | Vrátí body databáze obnovení. |
 > | Akce | Microsoft.Sql/servers/databases/resume/action | Obnovuje se chod databáze datového skladu Azure SQL |
-> | Akce | Microsoft.Sql/servers/databases/schemas/read | Načíst seznam schémata databáze |
-> | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Načíst seznam sloupců tabulky. |
+> | Akce | Microsoft.Sql/servers/databases/schemas/read | Získáte schéma databáze. |
+> | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Získáte sloupce databáze. |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/delete | Odstranit označení citlivosti daného sloupce |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/disable/action | Zakázat citlivosti doporučení v daném sloupci |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/enable/action | Povolte doporučení citlivosti na daný sloupec |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/read | Získat označení citlivosti daného sloupce |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/write | Vytvořit nebo aktualizovat označení citlivosti daného sloupce |
-> | Akce | Microsoft.Sql/servers/databases/schemas/tables/read | Načíst seznam tabulek databáze |
+> | Akce | Microsoft.Sql/servers/databases/schemas/tables/read | Získejte tabulku databáze. |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/recommendedIndexes/read | Načíst seznam doporučení indexu na databázi |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/recommendedIndexes/write | Použití doporučení indexu |
-> | Akce | Microsoft.Sql/servers/databases/securityAlertPolicies/read | Načíst podrobnosti o zásadu detekce hrozeb databáze nakonfigurované na danou databázi |
+> | Akce | Microsoft.Sql/servers/databases/securityAlertPolicies/read | Načíst seznam zásad detekce hrozeb databáze nakonfigurované pro daný server |
 > | Akce | Microsoft.Sql/servers/databases/securityAlertPolicies/write | Změnit databázi zásadu detekce hrozeb pro danou databázi |
 > | Akce | Microsoft.Sql/servers/databases/securityMetrics/read | Získá kolekci metriky zabezpečení databáze |
 > | Akce | Microsoft.Sql/servers/databases/sensitivityLabels/read | Označení citlivosti seznamu na danou databázi |
@@ -5001,7 +5066,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Sql/servers/importExportOperationResults/read | Získá probíhá operace importu/exportu |
 > | Akce | Microsoft.Sql/servers/interfaceEndpointProfiles/delete | Odstraní zadané rozhraní profil koncového bodu |
 > | Akce | Microsoft.Sql/servers/interfaceEndpointProfiles/read | Vrací vlastnosti pro profil zadaný rozhraní koncového bodu |
-> | Akce | Microsoft.Sql/servers/interfaceEndpointProfiles/write | Vytvoří profil rozhraní koncový bod se zadanými parametry nebo aktualizuje vlastnosti a značky pro koncový bod zadané rozhraní |
+> | Akce | Microsoft.Sql/servers/interfaceEndpointProfiles/write | Vytvoří profil koncového bodu rozhraní se zadanými parametry nebo aktualizuje vlastnosti a značky pro koncový bod zadané rozhraní |
 > | Akce | Microsoft.Sql/servers/jobAgents/delete | Odstraní úlohu agenta služby Azure SQL DB |
 > | Akce | Microsoft.Sql/servers/jobAgents/read | Získá úloha agenta služby Azure SQL DB |
 > | Akce | Microsoft.Sql/servers/jobAgents/write | Vytvoří nebo aktualizuje úlohu agenta služby Azure SQL DB |
@@ -5017,7 +5082,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Sql/servers/replicationLinks/read | Vrátí seznam replikace odkazy nebo načte vlastnosti zadaného replikačních připojení. |
 > | Akce | Microsoft.Sql/servers/restorableDroppedDatabases/read | Získáte seznam databází, které byly zahozeny na daném serveru, které jsou stále v rámci zásady uchovávání informací. |
 > | Akce | Microsoft.Sql/servers/securityAlertPolicies/operationResults/read | Načíst výsledky operace zápisu zásad detekce hrozeb serveru |
-> | Akce | Microsoft.Sql/servers/securityAlertPolicies/read | Načíst podrobnosti o zásadu detekce hrozeb server nakonfigurovaný na daném serveru |
+> | Akce | Microsoft.Sql/servers/securityAlertPolicies/read | Načíst seznam zásad detekce hrozeb server nakonfigurovaný pro daný server |
 > | Akce | Microsoft.Sql/servers/securityAlertPolicies/write | Změna serveru zásadu detekce hrozeb pro daný server |
 > | Akce | Microsoft.Sql/servers/serviceObjectives/read | Načíst seznam cílů na úrovni služby (označované také jako úrovní výkonu) k dispozici na daném serveru |
 > | Akce | Microsoft.Sql/servers/syncAgents/delete | Odstraní existující agenta synchronizace. |
@@ -5053,8 +5118,11 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action | Vrátí výsledek přidávání obsahu objektu blob. |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Vrátí výsledek odstraňování objektu blob. |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteAutomaticSnapshot/action | Vrátí výsledek odstranění automatického snímku. |
+> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action | Vrátí seznam objektů blob v účtu s odpovídajícím filtrem značek. |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Vrátí objekt blob nebo seznam objektů blob. |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/runAsSuperUser/action | Vrátí výsledek příkazu objektu blob. |
+> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read | Vrátí výsledek čtení značek objektu blob. |
+> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write | Vrátí výsledek zápisu značek objektu blob. |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Vrátí výsledek zápisu objektu blob. |
 > | Akce | Microsoft.Storage/storageAccounts/blobServices/containers/clearLegalHold/action | Vymazat blokování kontejneru objektů blob z právních důvodů |
 > | Akce | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Vrátí výsledek odstraňování kontejneru. |
@@ -5073,12 +5141,17 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Storage/storageAccounts/blobServices/read | Vrátí vlastnosti nebo statistiky služby Blob Service. |
 > | Akce | Microsoft.Storage/storageAccounts/blobServices/write | Vrátí výsledek vložení vlastností služby Blob Service. |
 > | Akce | Microsoft.Storage/storageAccounts/delete | Odstraní existující účet úložiště. |
+> | Akce | Microsoft.Storage/storageAccounts/failover/action | Zákazník může v případě problémů s dostupností řídit převzetí služeb při selhání. |
 > | Akce | Microsoft.Storage/storageAccounts/fileServices/fileShare/delete | Umožňuje uživateli odstranit sdílenou složku. |
 > | Akce | Microsoft.Storage/storageAccounts/fileServices/fileShare/read | Umožňuje uživateli číst sdílenou složku. |
 > | Akce | Microsoft.Storage/storageAccounts/fileServices/fileShare/write | Umožňuje uživateli zapisovat do sdílené složky. |
+> | Akce | Microsoft.Storage/storageAccounts/fileServices/read | Načíst vlastnosti souborové služby |
 > | Akce | Microsoft.Storage/storageAccounts/listAccountSas/action | Vrátí token SAS určeného účtu úložiště. |
 > | Akce | Microsoft.Storage/storageAccounts/listkeys/action | Vrátí přístupové klíče pro zadaný účet úložiště. |
 > | Akce | Microsoft.Storage/storageAccounts/listServiceSas/action | Vrátí token SAS služby pro určený účet úložiště. |
+> | Akce | Microsoft.Storage/storageAccounts/managementPolicies/delete | Odstranit zásady správy účtu úložiště |
+> | Akce | Microsoft.Storage/storageAccounts/managementPolicies/read | Získá zásady správy účtu úložiště. |
+> | Akce | Microsoft.Storage/storageAccounts/managementPolicies/write | Vložit zásady správy účtu úložiště |
 > | Akce | Microsoft.Storage/storageAccounts/queueServices/queues/delete | Vrátí výsledek odstranění fronty. |
 > | DataAction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action | Vrátí výsledek přidání zprávy. |
 > | DataAction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Vrátí výsledek odstranění zprávy. |
@@ -5087,12 +5160,14 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | DataAction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | Vrátí výsledek zápisu zprávy. |
 > | Akce | Microsoft.Storage/storageAccounts/queueServices/queues/read | Vrátí frontu nebo seznam front. |
 > | Akce | Microsoft.Storage/storageAccounts/queueServices/queues/write | Vrátí výsledek zápisu fronty. |
+> | Akce | Microsoft.Storage/storageAccounts/queueServices/read | Načíst vlastnosti služby front |
 > | Akce | Microsoft.Storage/storageAccounts/queueServices/read | Vrátí vlastnosti nebo statistiky služby Queue. |
 > | Akce | Microsoft.Storage/storageAccounts/queueServices/write | Vrátí výsledky nastavení vlastností služby Queue. |
 > | Akce | Microsoft.Storage/storageAccounts/read | Vrátí seznam účtů úložišť nebo načte vlastnosti zadaného účtu. |
 > | Akce | Microsoft.Storage/storageAccounts/regeneratekey/action | Obnoví přístupové klíče pro zadaný účet úložiště. |
 > | Akce | Microsoft.Storage/storageAccounts/revokeUserDelegationKeys/action | Odvolá všechny klíče delegování uživatele pro zadaný účet úložiště. |
 > | Akce | Microsoft.Storage/storageAccounts/services/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky účtu úložiště. |
+> | Akce | Microsoft.Storage/storageAccounts/tableServices/read | Načíst vlastnosti služby Table service |
 > | Akce | Microsoft.Storage/storageAccounts/write | Vytvoří účet úložiště se zadanými parametry, aktualizuje vlastnosti a značky nebo přidá vlastní doménu pro zadaný účet úložiště. |
 > | Akce | Microsoft.Storage/usages/read | Vrací limit a aktuální počet použití pro zdroje v zadaném odběru |
 
@@ -5467,6 +5542,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | microsoft.web/hostingenvironments/detectors/read | Získat hostování detektory prostředí. |
 > | Akce | microsoft.web/hostingenvironments/diagnostics/read | Získat hostování prostředí diagnostiky. |
 > | Akce | microsoft.web/hostingenvironments/inboundnetworkdependenciesendpoints/read | Získejte koncové body sítě všechny příchozí závislosti. |
+> | Akce | Microsoft.Web/hostingEnvironments/Join/Action | Spojí služby App Service Environment |
 > | Akce | microsoft.web/hostingenvironments/metricdefinitions/read | Získat hostování prostředí definice metrik. |
 > | Akce | microsoft.web/hostingenvironments/multirolepools/metricdefinitions/read | Získat hostování prostředí definice metrik u fondů. |
 > | Akce | microsoft.web/hostingenvironments/multirolepools/metrics/read | Získat hostování prostředí u fondů metriky. |
@@ -5587,6 +5663,9 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | microsoft.web/sites/diagnostics/workerprocessrecycle/read | Získejte recyklaci pracovního procesu webové diagnostiky aplikace. |
 > | Akce | microsoft.web/sites/domainownershipidentifiers/read | Získejte Web identifikátory vlastnictví domény aplikace. |
 > | Akce | microsoft.web/sites/domainownershipidentifiers/write | Aktualizujte identifikátory vlastnictví webové domény aplikace. |
+> | Akce | microsoft.web/sites/extensions/delete | Odstraňte rozšíření webové aplikace webu. |
+> | Akce | microsoft.web/sites/extensions/read | Získáte rozšíření webové aplikace webu. |
+> | Akce | microsoft.web/sites/extensions/write | Aktualizujte rozšíření webové aplikace webu. |
 > | Akce | microsoft.web/sites/functions/action | Funkce Web Apps. |
 > | Akce | microsoft.web/sites/functions/delete | Odstranění webové aplikace funkcí. |
 > | Akce | microsoft.web/sites/functions/listsecrets/action | Seznam tajných kódů webové aplikace funkcí. |
@@ -5626,6 +5705,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | microsoft.web/sites/migratemysql/action | Migrace MySql webové aplikace. |
 > | Akce | microsoft.web/sites/migratemysql/read | Získejte Web Apps migraci MySql. |
 > | Akce | microsoft.web/sites/networktrace/action | Síťové trasování webové aplikace. |
+> | Akce | microsoft.web/sites/networktraces/operationresults/read | Načte výsledky operace sledování webové aplikace sítě. |
 > | Akce | microsoft.web/sites/newpassword/action | Newpassword webové aplikace. |
 > | Akce | microsoft.web/sites/operationresults/read | Načte výsledky operace webové aplikace. |
 > | Akce | microsoft.web/sites/operations/read | Získání operací webové aplikace. |
@@ -5634,7 +5714,9 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | microsoft.web/sites/premieraddons/read | Získejte doplňky Premier webové aplikace. |
 > | Akce | microsoft.web/sites/premieraddons/write | Update Web Apps Premier Addons. |
 > | Akce | microsoft.web/sites/privateaccess/read | Získejte data týkající se povolení přístupu k soukromé lokality a autorizované virtuálních sítí s přístupem k webu. |
+> | Akce | microsoft.web/sites/processes/modules/read | Získání modulů procesů webové aplikace. |
 > | Akce | microsoft.web/sites/processes/read | Načíst procesy webové aplikace. |
+> | Akce | microsoft.web/sites/processes/threads/read | Získejte vláken procesů webové aplikace. |
 > | Akce | microsoft.web/sites/publiccertificates/delete | Odstranění webové aplikace veřejné certifikáty. |
 > | Akce | microsoft.web/sites/publiccertificates/read | Získejte webové aplikace veřejné certifikáty. |
 > | Akce | microsoft.web/sites/publiccertificates/write | Aktualizace webové aplikace veřejné certifikáty. |
@@ -5726,6 +5808,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | microsoft.web/sites/slots/metrics/read | Získáte metriky sloty webové aplikace. |
 > | Akce | microsoft.web/sites/slots/migratemysql/read | Získejte Web Apps sloty migraci MySql. |
 > | Akce | microsoft.web/sites/slots/networktrace/action | Sloty síťové trasování webové aplikace. |
+> | Akce | microsoft.web/sites/slots/networktraces/operationresults/read | Načte výsledky operace trasování serveru webové aplikace sloty sítě. |
 > | Akce | microsoft.web/sites/slots/newpassword/action | Sloty Newpassword webové aplikace. |
 > | Akce | microsoft.web/sites/slots/operationresults/read | Načte výsledky operace sloty webové aplikace. |
 > | Akce | microsoft.web/sites/slots/operations/read | Získání operací sloty webové aplikace. |

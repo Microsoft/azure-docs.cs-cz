@@ -12,18 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: a1b6fe38087975838d99ca4fe45ee0d0638c56c3
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: a976b7c1f697c09082ca0f7978bb23bb4e467e5d
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58187740"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801675"
 ---
 # <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Přehled a porovnání Azure na vyžádání kodérů médií 
 
 ## <a name="encoding-overview"></a>Kódování – přehled
+
+> [!NOTE]
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+
 Azure Media Services nabízí několik možností pro kódování multimédií v cloudu.
 
 Když začínáte se službou Media Services, je důležité pochopit rozdíl mezi formáty kodeky a soubor.
@@ -31,8 +35,7 @@ Kodeky jsou software, který implementuje algoritmy komprese nebo dekomprese, za
 
 Služba Media Services poskytuje dynamické balení, což vám umožní dodávat váš obsah s adaptivní přenosovou rychlostí kódováním MP4 nebo technologie Smooth Streaming ve formátech streamování podporovaných službou Media Services (MPEG DASH, HLS, technologie Smooth Streaming), aniž byste je museli znovu zabalit do těchto formátů streamování.
 
-> [!NOTE]
-> Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. 
+Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. 
 
 Služba Media Services podporuje následující na vyžádání kodéry, které jsou popsány v tomto článku:
 
@@ -41,8 +44,7 @@ Služba Media Services podporuje následující na vyžádání kodéry, které 
 
 Tento článek poskytuje stručný přehled na vyžádání kodérů médií a obsahuje odkazy na články, které poskytují podrobnější informace. V tématu taky najdete porovnání u kodérů.
 
->[!NOTE]
->Ve výchozím nastavení každý účet Media Services může mít jednu aktivní úlohu kódování najednou. Si můžete rezervovat kódovací jednotky, které vám umožní mít více úloh kódování, které jsou spuštěny souběžně, jeden pro každou kódování, kdy jste si koupili rezervovanou jednotku. Informace najdete v tématu [škálování jednotek pro kódování](media-services-scale-media-processing-overview.md).
+Ve výchozím nastavení každý účet Media Services může mít jednu aktivní úlohu kódování najednou. Si můžete rezervovat kódovací jednotky, které vám umožní mít více úloh kódování, které jsou spuštěny souběžně, jeden pro každou kódování, kdy jste si koupili rezervovanou jednotku. Informace najdete v tématu [škálování jednotek pro kódování](media-services-scale-media-processing-overview.md).
 
 ## <a name="media-encoder-standard"></a>Media Encoder Standard
 ### <a name="how-to-use"></a>Způsob použití

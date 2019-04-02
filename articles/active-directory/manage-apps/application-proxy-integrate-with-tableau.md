@@ -13,12 +13,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e154a53dc32aea0b3fbe093526546b080b02ceff
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c5d80381815524658d91067ee880eba47c394058
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188456"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793573"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Proxy aplikací Azure Active Directory a tableau. představují 
 
@@ -50,7 +50,7 @@ Pro:
 **K publikování aplikace**: 
 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce. 
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako správce aplikací. 
 
 2. Vyberte **Azure Active Directory > podnikové aplikace**. 
 

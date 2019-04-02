@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2018
+ms.date: 04/01/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab71b8d3af573f62e69c02564c237ad433962ff9
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 69417551c1c8d410f75e74a8164c8b8a223ab835
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541226"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805325"
 ---
 # <a name="backup-and-restore"></a>Zálohování a obnovení
 
@@ -58,7 +58,7 @@ SAP HANA v Azure (velké instance) nabízí dvě možnosti zálohování a obnov
 - Při aktivaci snímku /hana/data a /hana/shared (zahrnuje /usr/sap) svazky, technologie snímku zahájí SAP HANA snímku, než se provede snímků úložiště. Tento snímek SAP HANA je bod instalace pro konečné protokolu obnovení po obnovení snímku úložiště. Pro HANA snímek úspěšný budete potřebovat aktivní instance HANA.  Ve scénáři HSR snímek úložiště nepodporuje aktuální sekundárního uzlu, kde HANA snímku nelze provést.
 - Po snímku úložiště byl úspěšně proveden, je odstranit snímek SAP HANA.
 - Zálohy transakčního protokolu často pocházejí a jsou uloženy ve svazku /hana/logbackups nebo v Azure. Můžete aktivovat /hana/logbackups svazek, který obsahuje zálohy transakčního protokolu na pořízení snímku samostatně. V takovém případě není potřeba provést HANA snímku.
-- Pokud musíte obnovit databázi do určitého bodu v čase, žádosti o tuto podporu Microsoft Azure (pro produkční výpadek) nebo SAP HANA na Azure Service Management obnovení do určité úložiště snímku. Příkladem je plánované obnovení systému izolovaného prostoru do původního stavu.
+- Pokud musíte obnovit databázi do určitého bodu v čase, požádat o tuto podporu Microsoft Azure (pro produkční výpadek) nebo SAP HANA v Azure obnovení do určité úložiště snímku. Příkladem je plánované obnovení systému izolovaného prostoru do původního stavu.
 - Snímek SAP HANA, který je součástí úložiště snímku je posunu bod pro aplikování záloh protokolů transakcí, které byly provedeny a uložena po pořízení snímku úložiště.
 - Tyto zálohy protokolu transakcí se přesunete na obnovení databáze zpět do určitého bodu v čase.
 
@@ -167,15 +167,16 @@ MACs hmac-sha1
 
 Pokud chcete povolit přístup k rozhraní storage snímku tenanta velká Instance HANA, potřebujete vytvořit proceduru přihlášení prostřednictvím veřejného klíče. Na první SAP HANA v Azure (velké instance) serveru ve vašem tenantovi vytvořte veřejný klíč, který se má použít pro přístup k infrastruktuře úložiště. Veřejný klíč zajistí, že pro přihlášení k rozhraní úložiště snímku není vyžadováno heslo. Vytvoření veřejného klíče také znamená, že není potřeba udržovat heslo přihlašovacích údajů. V Linuxu na serveru pro velké instance SAP HANA spusťte následující příkaz pro vytvoření veřejného klíče:
 ```
-  ssh-keygen –t dsa –b 1024
+  ssh-keygen -t rsa –b 5120 -C ""
 ```
-Nové umístění **_/root/.ssh/id\_dsa.pub**. Nezadávejte skutečné heslo, jinak budete muset zadat heslo při každém přihlášení. Místo toho vyberte **Enter** dvakrát pro odebrání "heslo" požadavek na přihlášení.
+
+Nové umístění **_/root/.ssh/id\_rsa.pub**. Nezadávejte skutečné heslo, jinak budete muset zadat heslo při každém přihlášení. Místo toho vyberte **Enter** dvakrát pro odebrání "heslo" požadavek na přihlášení.
 
 Ujistěte se, že veřejný klíč byl opraven podle očekávání tím, že změníte složky, které mají **/root/.ssh/** a spouštěním `ls` příkazu. Pokud je k dispozici klíč, můžete ji zkopírovat spuštěním následujícího příkazu:
 
 ![Veřejný klíč se zkopíruje spuštěním tohoto příkazu](./media/hana-overview-high-availability-disaster-recovery/image2-public-key.png)
 
-V tomto okamžiku obraťte se na SAP HANA v Azure Service Management a poskytnout veřejný klíč. Zástupce služby používá k registraci v základní infrastruktuře úložiště, který je pro vašeho tenanta velká Instance HANA ubírat veřejný klíč.
+V tomto okamžiku obraťte se na SAP HANA v Azure a poskytnout veřejný klíč. Zástupce služby používá k registraci v základní infrastruktuře úložiště, který je pro vašeho tenanta velká Instance HANA ubírat veřejný klíč.
 
 ### <a name="step-4-create-an-sap-hana-user-account"></a>Krok 4: Vytvořit uživatelský účet SAP HANA
 
@@ -262,7 +263,7 @@ Při práci se skripty jazyka Perl:
 - **removeTestStorageSnapshot.pl**: Tento skript odstraní snímek testu vytvořený pomocí skriptu **testStorageSnapshotConnection.pl**.
 - **azure\_hana\_dr\_failover.pl**: Tento skript spustí zotavení po Havárii převzetí služeb při selhání do jiné oblasti. Je nutné provést na jednotce velká Instance HANA v oblasti zotavení po Havárii, nebo na jednotku, kterou chcete pro převzetí služeb při selhání. Tento skript zastaví se replikace úložiště z primární strany na stranu sekundární, obnoví nejnovější snímek na svazcích zotavení po Havárii a poskytuje přípojné body pro DR svazky.
 - **Azure\_hana\_testování\_zotavení po havárii\_failover.pl**: Tento skript provádí testovací převzetí služeb při selhání v lokalitě zotavení po Havárii. Na rozdíl od azure_hana_dr_failover.pl skriptu toto spuštění nepřeruší úložiště replikace z primární na sekundární. Místo toho klony svazky replikované úložiště jsou vytvořené na straně zotavení po Havárii a přípojné body naklonované svazků jsou k dispozici. 
-- **HANABackupCustomerDetails.txt**: Tento soubor je upravitelná konfigurační soubor, který budete muset upravit pro přizpůsobení konfigurace SAP HANA. *HANABackupCustomerDetails.txt* soubor je ovládací prvek a konfigurační soubor pro skript, který spouští snímků úložiště. Upravte soubor pro účely a instalační program. Zobrazí **název úložiště zálohování** a **úložiště IP adresu** ze SAP HANA v Azure Service Management při nasazení vaší instance. Nelze změnit pořadí, řazení nebo mezery u všech proměnných v tomto souboru. Pokud tak učiníte, skriptů nebudou pracovat správně. Kromě toho se zobrazí IP adresa uzlu vertikálně navýšit kapacitu nebo hlavní uzel (Pokud horizontální navýšení kapacity) ze SAP HANA v Azure Service Management. Znáte i číslo instance HANA, abyste získali během instalace SAP HANA. Teď budete muset přidat název zálohy do konfiguračního souboru.
+- **HANABackupCustomerDetails.txt**: Tento soubor je upravitelná konfigurační soubor, který budete muset upravit pro přizpůsobení konfigurace SAP HANA. *HANABackupCustomerDetails.txt* soubor je ovládací prvek a konfigurační soubor pro skript, který spouští snímků úložiště. Upravte soubor pro účely a instalační program. Zobrazí **název úložiště zálohování** a **úložiště IP adresu** ze SAP HANA v Azure při nasazení vaší instance. Nelze změnit pořadí, řazení nebo mezery u všech proměnných v tomto souboru. Pokud tak učiníte, skriptů nebudou pracovat správně. Kromě toho se zobrazí IP adresa uzlu vertikálně navýšit kapacitu nebo hlavní uzel (Pokud horizontální navýšení kapacity) ze SAP HANA v Azure. Znáte i číslo instance HANA, abyste získali během instalace SAP HANA. Teď budete muset přidat název zálohy do konfiguračního souboru.
 
 Vertikální nebo horizontální navýšení kapacity nasazení konfigurační soubor by vypadalo podobně jako v následujícím příkladu po zadání názvu serveru jednotky velká Instance HANA a IP adresu serveru. Vyplňte všechna potřebná pole pro každý SAP HANA identifikátor zabezpečení SID chcete zálohovat nebo obnovit.
 
@@ -628,9 +629,9 @@ Pro typ snímku **hana** a **protokoly**, dostanete snímků přímo na svazky v
 
 V případě produkčního dolů lze inicializovat procesem obnovení ze snímku úložiště jako incident zákazníků s podporu Microsoft Azure. Pokud data byla odstraněna v produkční systém, a k obnovení provozní databáze je jediný způsob, jak ho načíst je na vás vysokou naléhavostí.
 
-Obnovení bodu v čase v jiné situaci, může být s nízkou naléhavost a plánované dny předem. Můžete naplánovat toto obnovení se SAP HANA v Azure Service Management namísto vyvolání příznak s vysokou prioritou. Například může být plánujete upgrade softwaru SAP s použitím nového balíčku rozšíření. Pak budete muset obnovit snímek, který představuje stav před upgradem balíček rozšíření.
+Obnovení bodu v čase v jiné situaci, může být s nízkou naléhavost a plánované dny předem. Můžete naplánovat toto obnovení se SAP HANA v Azure místo zvyšování příznak s vysokou prioritou. Například může být plánujete upgrade softwaru SAP s použitím nového balíčku rozšíření. Pak budete muset obnovit snímek, který představuje stav před upgradem balíček rozšíření.
 
-Před odesláním požadavku, je nutné připravit. SAP HANA v Azure Service Management týmu můžete žádost zpracovat a poskytují obnovené svazky. Následně obnovíte databázi HANA podle snímků. 
+Před odesláním požadavku, je nutné připravit. SAP HANA v Azure týmu můžete žádost zpracovat a poskytují obnovené svazky. Následně obnovíte databázi HANA podle snímků. 
 
 Následující ukazuje, jak připravit pro požadavek:
 
@@ -648,9 +649,9 @@ Následující ukazuje, jak připravit pro požadavek:
 
 1. Otevřete žádost o podporu Azure a zahrňte pokyny k obnovení konkrétní snímek.
 
-   - Během obnovení: SAP HANA v Azure Service Management může požádat o jeho účasti na konferenci pro zajištění koordinace, ověřování a potvrzení, že je obnovit snímek správné úložiště. 
+   - Během obnovení: SAP HANA v Azure může požádat o jeho účasti na konferenci pro zajištění koordinace, ověřování a potvrzení, že je obnovit snímek správné úložiště. 
 
-   - Po obnovení: SAP HANA v Azure Service Management vás upozorní, když obnovení snímku úložiště.
+   - Po obnovení: SAP HANA ve službě Azure vás upozorní, když obnovení snímku úložiště.
 
 1. Po dokončení procesu obnovení znovu připojte všechny datové svazky.
 
@@ -752,5 +753,5 @@ HANA snapshot deletion successfully.
 Zobrazí se od této ukázky jak skript záznamy vytvoření snímku HANA. V tomto případě horizontální navýšení kapacity tento proces zahájit na hlavní uzel. Hlavní uzel zahájí synchronní vytváření snímků SAP HANA na všech pracovních uzlů. Potom se pořídí snímek úložiště. Po úspěšném spuštění snímků úložiště HANA snímek odstraní. Odstranění snímku HANA je zahájeno z hlavního uzlu.
 
 
-**Další kroky**
-- Přečtěte si [zásady zotavení po havárii a příprava](hana-concept-preparation.md).
+## <a name="next-steps"></a>Další postup
+- Zobrazit [zásady zotavení po havárii a příprava](hana-concept-preparation.md).

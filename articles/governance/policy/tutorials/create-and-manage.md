@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 32962e6d40103c23a0ec7fd1116aec8820f513bd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ae4be75a4030db9afb02c5696a427b321f9f16b3
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780282"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802605"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Vytváření a správa zásad pro vynucování dodržování předpisů
 
@@ -34,15 +34,15 @@ Prvním krokem při vynucování dodržování předpisů pomocí služby Azure 
 
 1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
 
-   ![Hledání zásad](../media/create-and-manage/search-policy.png)
+   ![Hledání zásad ve všech služeb](../media/create-and-manage/search-policy.png)
 
 1. Na levé straně stránky služby Azure Policy vyberte **Přiřazení**. Přiřazení je zásada, která byla přiřazena, aby proběhla v rámci zadaného oboru.
 
-   ![Výběr přiřazení](../media/create-and-manage/select-assignments.png)
+   ![Vyberte přiřazení na stránce Přehled zásad](../media/create-and-manage/select-assignments.png)
 
 1. V horní části stránky **Zásady – Přiřazení** vyberte **Přiřadit zásadu**.
 
-   ![Přiřazení definice zásady](../media/create-and-manage/select-assign-policy.png)
+   ![Přiřazení definice zásady přiřazení stránce](../media/create-and-manage/select-assign-policy.png)
 
 1. Na stránce **Přiřadit zásadu** vyberte **Obor** tak, že kliknete na tři tečky a vyberete skupinu pro správu nebo předplatné. Volitelně můžete vybrat skupinu prostředků. Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat.  Pak v dolní části stránky **Obor** klikněte na **Vybrat**.
 
@@ -54,7 +54,7 @@ Prvním krokem při vynucování dodržování předpisů pomocí služby Azure 
 
 1. Vyberte zásadu **Vyžadovat SQL Server verze 12.0**. Pokud nemůžete najít to okamžitě, zadejte **vyžaduje systém sql server** do vyhledávacího pole a potom stiskněte klávesu ENTER nebo klikněte na z vyhledávacího pole. Jakmile najdete a vyberete definici zásady, v dolní části stránky **Dostupné definice** klikněte na **Vybrat**.
 
-   ![Vyhledání zásady](../media/create-and-manage/select-available-definition.png)
+   ![Použití vyhledávacího filtru k vyhledání zásady](../media/create-and-manage/select-available-definition.png)
 
 1. Do pole **Název přiřazení** se automaticky vyplní název vybrané zásady, který však můžete změnit. Pro účely tohoto příkladu ponechte název *Vyžadovat SQL Server verze 12.0*. Volitelně můžete přidat také **Popis**. Popis obsahuje podrobnosti o tomto přiřazení zásady.  **Přiřazené podle** se automaticky vyplní podle toho, který je přihlášen. Toto pole je volitelné, takže do něj můžete zadávat vlastní hodnoty.
 
@@ -68,7 +68,7 @@ Teď, když jste přiřadili předdefinovanou definici zásady, můžete se slu�
 
 1. Na levé straně stránky služby Azure Policy v části **Vytváření obsahu** vyberte **Definice**.
 
-   ![Definice v části Vytváření obsahu](../media/create-and-manage/definition-under-authoring.png)
+   ![Stránka definice v rámci skupiny pro tvorbu](../media/create-and-manage/definition-under-authoring.png)
 
 1. V horní části stránky vyberte **+ Definice zásady**. Toto tlačítko otevře **definice zásady** stránky.
 
@@ -158,7 +158,7 @@ Přiložte podobný text žádosti jako v následujícím příkladu:
 
 ## <a name="create-a-policy-definition-with-powershell"></a>Vytvoření definice zásady pomocí PowerShellu
 
-Než budete pokračovat k příkladu Powershellu, ujistěte se, že jste nainstalovali nejnovější verzi Azure Powershellu. Parametry zásady byly přidány ve verzi 3.6.0. Pokud máte starší verzi, uvedené příklady vrátí chybu s informacemi, že parametr nebyl nalezen.
+Než budete pokračovat k příkladu Powershellu, ujistěte se, že jste nainstalovali nejnovější verzi modulu Azure PowerShell Az. 
 
 Definici zásady můžete vytvořit pomocí rutiny `New-AzPolicyDefinition`.
 
@@ -328,11 +328,11 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
 1. Na levé straně stránky služby Azure Policy v části **Vytváření obsahu** vyberte **Definice**.
 
-   ![Výběr definic](../media/create-and-manage/definition-under-authoring.png)
+   ![Vyberte definici z definice stránky](../media/create-and-manage/definition-under-authoring.png)
 
 1. V horní části stránky vyberte **+ Definice iniciativy** a otevřete stránku **Definice iniciativy**.
 
-   ![Definice iniciativy](../media/create-and-manage/initiative-definition.png)
+   ![Stránka revize definice iniciativy](../media/create-and-manage/initiative-definition.png)
 
 1. Pomocí tří teček **Umístění definice** vyberte skupinu pro správu nebo předplatné, kam se definice uloží. Pokud jste na předchozí stránce omezili obor na jednu skupinu pro správu nebo jedno předplatné, **Umístění definice** se vyplní automaticky.
 
@@ -352,11 +352,11 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
    Po výběru definici zásady ze seznamu, přidá se v rámci **zásady a parametry**.
 
-   ![Definice iniciativ](../media/create-and-manage/initiative-definition-2.png)
+   ![Zkontrolujte parametry definice iniciativy](../media/create-and-manage/initiative-definition-2.png)
 
 1. Pokud se přidávají do iniciativy definice zásady obsahuje parametry, jsou uvedené v části název zásady v **zásady a parametry** oblasti. _Hodnotu_ je možné nastavit na možnost Nastavit hodnotu (pevně zakódovaná pro všechna přiřazení této iniciativy) nebo Použít parametr iniciativy (nastaví se při každém přiřazení iniciativy). Pokud je zaškrtnuto políčko "Hodnotu" rozevírací seznam napravo od _hodnoty_ umožňuje zadáním nebo výběrem hodnoty. Pokud vyberete možnost Použít parametr iniciativy, zobrazí se část **Parametry iniciativy**, kde můžete definovat parametr, který se nastaví během přiřazení iniciativy. Povolené hodnoty pro tento parametr iniciativy můžou dále omezit možnosti nastavení během přiřazení iniciativy.
 
-   ![Parametry definice iniciativy](../media/create-and-manage/initiative-definition-3.png)
+   ![Změnit definici iniciativy parametry z povolených hodnot](../media/create-and-manage/initiative-definition-3.png)
 
    > [!NOTE]
    > U některých parametrů `strongType` není možné automaticky určit seznam hodnot. V těchto případech se napravo od řádku parametru zobrazí tři tečky. Po kliknutí na tyto tři tečky se otevře stránka Obor parametru (&lt;název_parametru&gt;). Na této stránce vyberte předplatné, které chcete použít k zadání možností hodnot. Tento obor parametru se používá pouze během vytváření definice iniciativy a nemá žádný vliv na vyhodnocování zásad ani na obor iniciativy po přiřazení.
@@ -369,11 +369,11 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
 1. Vyhledejte definici iniciativy **Zajištění zabezpečení**, kterou jste vytvořili dříve, a klikněte na ni. Vyberte **přiřadit** v horní části stránky a otevře **zajištění zabezpečení: Přiřadit iniciativu** stránky.
 
-   ![Přiřazení definice](../media/create-and-manage/assign-definition.png)
+   ![Přiřazení definice ze stránky definice iniciativy](../media/create-and-manage/assign-definition.png)
 
    Můžete také kliknout pravým tlačítkem na vybraný řádek nebo levým tlačítkem myši na tři tečky na konci řádku kontextové nabídky.  Pak vyberte **Přiřadit**.
 
-   ![Kliknutí pravým tlačítkem na řádek](../media/create-and-manage/select-right-click.png)
+   ![Alternativní možnosti pro iniciativu](../media/create-and-manage/select-right-click.png)
 
 1. Vyplňte **zajištění zabezpečení: Přiřadit iniciativu** stránky zadáním následujících ukázkových údajů. Můžete použít vlastní údaje.
 
@@ -393,11 +393,11 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
 1. Vyhledejte iniciativu **Zajištění zabezpečení**. Bude pravděpodobně stále v _stavu dodržování předpisů_ z **Nezahájeno**. Kliknutím na iniciativu zobrazte úplné podrobnosti o průběhu přiřazení.
 
-   ![Dodržování předpisů – Nezahájeno](../media/create-and-manage/compliance-status-not-started.png)
+   ![Dodržování předpisů iniciativy stránka – vyhodnocení nebylo zahájeno](../media/create-and-manage/compliance-status-not-started.png)
 
 1. Po dokončení přiřazení iniciativy se na stránce Dodržování předpisů aktualizuje _Stav dodržování předpisů_ na **Vyhovuje**.
 
-   ![Dodržování předpisů – Vyhovuje](../media/create-and-manage/compliance-status-compliant.png)
+   ![Dodržování předpisů iniciativy – prostředky stránky předpisy](../media/create-and-manage/compliance-status-compliant.png)
 
 1. Po kliknutím na jakoukoli zásadu na stránce Dodržování předpisů iniciativy se otevře stránka podrobností o dodržování předpisů pro příslušnou zásadu. Tato stránka obsahuje podrobnosti o dodržování předpisů na úrovni prostředku.
 
@@ -426,7 +426,7 @@ V tomto příkladu dělal Trent Svoboda, jeden hlavní virtualizace odborníků 
 
 1. Nastavte **Vyloučení** tak, že kliknete na tři tečky a vyberete skupinu prostředků, kterou chcete vyloučit, v tomto příkladu *SQLServers_Excluded*.
 
-   ![Žádost o vyloučení](../media/create-and-manage/request-exclusion.png)
+   ![Přidat skupinu vyloučené zdrojů pro přiřazení zásady](../media/create-and-manage/request-exclusion.png)
 
    > [!NOTE]
    > V závislosti na zásadě a jejím účinku je možné udělit vyloučení také konkrétním prostředkům v rámci skupiny prostředků v oboru přiřazení. Vzhledem k tomu, že se v tomto kurzu použil účinek **Zamítnutí**, nedávalo by smysl nastavit vyloučení pro konkrétní prostředek, který již existuje.

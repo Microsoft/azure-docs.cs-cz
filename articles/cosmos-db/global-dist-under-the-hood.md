@@ -4,15 +4,15 @@ description: Tento článek obsahuje podrobné technické informace o globální
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/24/2019
+ms.date: 03/31/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: a599be52575ed06cdb3a3713fc2f0915ab2f6c2b
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: 84ce13ae3bb0a4b66b8167e61b720fe6cecbe95c
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407483"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762408"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Distribuce globálních dat pomocí služby Azure Cosmos DB - pod pokličkou
 
@@ -50,17 +50,17 @@ Fyzický oddíl je vyhodnocena jako skupinu samoobslužně spravovaným a dynami
 
 ## <a name="partition-sets"></a>Sad oddílů
 
-Skupina fyzických oddílů, jeden ze všech nakonfigurovaných s oblastí databáze Cosmos, tvoří ke správě stejnou sadu klíčů replikovat napříč všemi oblastmi nakonfigurované. Tato vyšší primitiva koordinaci se nazývá oddílu sady - geograficky distribuované dynamické překrytí z fyzických oddílů, Správa danou sadu klíčů. Když daný fyzický oddíl (repliky sadu) působí v rámci clusteru, sadě oddílů může zahrnovat clustery, datovými centry a geografických oblastí, jak je znázorněno na následujícím obrázku:  
+Skupina fyzických oddílů, jeden ze všech nakonfigurovaných s oblastí databáze Cosmos, tvoří ke správě stejnou sadu klíčů replikovat napříč všemi oblastmi nakonfigurované. Tato vyšší primitiva koordinaci se volá *sady oddílů* -geograficky distribuované dynamické překrytí z fyzických oddílů, Správa danou sadu klíčů. Když daný fyzický oddíl (repliky sadu) působí v rámci clusteru, sadě oddílů může zahrnovat clustery, datovými centry a geografických oblastí, jak je znázorněno na následujícím obrázku:  
 
 ![Sad oddílů](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
 
-Sadu oddílu si lze představit jako rozptýlené "super repliky sadu", který se skládá z několika sady replik, vlastnící stejnou sadu klíčů. Podobně jako sady replik oddílu sadu pro členství je dynamický – kolísá podle operace správy implicitní fyzický oddíl přidání nebo odebrání nových oddílů do a z daného oddílu sady (například při horizontálním navýšením kapacity propustnosti na kontejner, přidat nebo odebrat a oblasti do databáze Cosmos, nebo když dojde k selhání) tím, že máte všech oddílů (z oddílu sadu) spravovat sady oddílů členství v rámci své vlastní sady replik, členství je plně decentralizované a vysoce k dispozici. Během změny konfigurace sady oddílů je zároveň je stanovené topologie překrytí mezi fyzickými oddíly. Topologie se dynamicky určí úrovně konzistence, geografické vzdálenosti a dostupnou šířku pásma sítě mezi zdrojovým a cílové fyzické oddíly.  
+Sadu oddílu si lze představit jako rozptýlené "super repliky sadu", který se skládá z několika sady replik, vlastnící stejnou sadu klíčů. Podobně jako sady replik oddílu sadu pro členství je dynamický – kolísá podle operace správy implicitní fyzický oddíl přidání nebo odebrání nových oddílů do a z daného oddílu sady (například při horizontálním navýšením kapacity propustnosti na kontejner, přidat nebo odebrat a oblasti do databáze Cosmos, nebo když dojde k selhání). Tím, že s všech oddílů (z oddílu sadu), správa sady oddílů členství v rámci své vlastní sady replik, členství je plně decentralizované a s vysokou dostupností. Během změny konfigurace sady oddílů je zároveň je stanovené topologie překrytí mezi fyzickými oddíly. Topologie se dynamicky určí úrovně konzistence, geografické vzdálenosti a dostupnou šířku pásma sítě mezi zdrojovým a cílové fyzické oddíly.  
 
 Služba umožňuje nakonfigurovat databází Cosmos oblasti zápisu na jeden nebo více oblastí zápisu, a v závislosti na výběru, sad oddílů jsou nakonfigurované tak, aby přijímal zápisy v přesně jednoho nebo všech oblastech. Systém využívá protokol dvouúrovňová, vnořené caiq – jednu úroveň pracuje v rámci repliky sady replik oddílu fyzického přijímá zápisy a druhý funguje na úrovni sadě oddílů poskytnout úplné záruky pořadí pro všechny Potvrdit zápisy v rámci sady oddílů. Tato shoda vícevrstvého, vnořeného je velmi důležité pro provádění naše přísné smlouvy SLA pro vysokou dostupnost, stejně jako implementace modelů konzistence, které Cosmos DB nabízí svým zákazníkům.  
 
 ## <a name="conflict-resolution"></a>Řešení konfliktů
 
-Náš návrh šíření aktualizace, odstraňování konfliktů a sledování příčinnou souvislost inspirován z předchozí pracovní [epidemické algoritmy](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) a [Bayou](https://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) systému. I když jádrech nápady mají zůstat naživu a poskytují praktický rámec pro komunikaci služby Cosmos DB návrhu systému, také prošly významné transformace jako jsme použili na systém služby Cosmos DB. To je potřeba, protože předchozí systémy byly navrženy s zásady správného řízení prostředků ani v měřítku, jakou potřebuje Cosmos DB fungovat ani k poskytování možností (například konzistenci omezená neaktuálnost) a přísné a komplexní Smlouvy o úrovni služeb, které poskytuje služby Cosmos DB svým zákazníkům.  
+Náš návrh šíření aktualizace, odstraňování konfliktů a sledování příčinnou souvislost inspirován z předchozí pracovní [epidemické algoritmy](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) a [Bayou](https://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) systému. I když jádrech nápady mají zůstat naživu a poskytují praktický rámec pro komunikaci služby Cosmos DB návrhu systému, také prošly významné transformace jako jsme použili na systém služby Cosmos DB. To bylo nutné, protože předchozí systémy byly navrženy s zásady správného řízení prostředků ani v měřítku, jakou potřebuje Cosmos DB fungovat ani k poskytování možností (například konzistenci omezená neaktuálnost) a přísné a komplexní smlouvy SLA, které poskytuje služby Cosmos DB svým zákazníkům.  
 
 Připomínáme, že sadě oddílů je distribuovaná napříč několika oblastmi a následuje protokol replikace databází Cosmos (více hlavních databází) k replikaci dat mezi fyzickými oddíly obsahující dané sady oddílů. Jednotlivé fyzické oddíly (z oddílu sadu) přijímá zápisu a obvykle slouží čtení na klienty, kteří jsou místní pro tuto oblast. Zápisy přijal fyzický oddíl v rámci oblasti jsou trvale potvrzena a nastavit na vysokou dostupnost v rámci oddílu fyzického předtím, než budou potvrzeny do klienta. Tyto jsou nezávazně zápisy a se rozšíří na jiných fyzických oddílů v rámci sady oddílu pomocí kanál proti entropie. Klienti mohou požadovat nezávazně nebo potvrzené zápisy předáním hlavičku požadavku. Šíření proti entropie (včetně frekvence šíření) je dynamická, založeny na topologii blízkosti sady oddílů, místní fyzické oddíly a konzistence, nakonfigurovaná úroveň. Cosmos DB v rámci oddílu sady, následuje schéma primární potvrzení se dynamicky vybrané arbiter oddílu. Výběr arbiter je dynamický a je nedílnou součástí Rekonfigurace sady oddílů na základě topologie překrytí. Povolujeme zaručeno potvrzené zápisy (včetně více-row/dávce aktualizací). 
 
@@ -68,21 +68,21 @@ Zavádíme kódovaného vektoru hodiny (obsahující ID oblasti a logické hodin
 
 Pro databáze Cosmos nakonfigurované s využitím více oblastí zápisu systém nabízí celou řadu flexibilní automatické konflikt zásad řešení pro vývojáře lze vybírat, včetně: 
 
-- Služby Wins posledního zápisu (LWW), která ve výchozím nastavení, používá vlastnost definovaná systémem časové razítko (která je založená na protokolu synchronizaci času hodin). Cosmos DB můžete také zadat jiné vlastní číselné vlastnosti pro řešení konfliktů.  
-- Definované aplikací vlastní zásada řešení konfliktů (vyjádřeno prostřednictvím procedury slučovací) která je navržena pro odsouhlasení definovaného aplikací sémantiku a je v konfliktu. Tyto postupy získat vyvolána při zjištění konfliktu zápis – zápis pod záštitou databázové transakce na straně serveru. Poskytuje tento systém přesně jednou zaručit k provádění procedury sloučení jako součást závazku protokolu. Si můžete pohrát s je několik ukázek.  
+- **Služby Wins posledního zápisu (LWW)**, který, ve výchozím nastavení, používá vlastnost definovaná systémem časové razítko (která je založená na protokolu synchronizaci času hodin). Cosmos DB můžete také zadat jiné vlastní číselné vlastnosti pro řešení konfliktů.  
+- **Definované aplikací (vlastní) konflikt zásada řešení** (vyjádřeno prostřednictvím procedury sloučení), která je navržená pro odsouhlasení definovaného aplikací sémantiku a je v konfliktu. Tyto postupy získat vyvolána při zjištění konfliktu zápis – zápis pod záštitou databázové transakce na straně serveru. Poskytuje tento systém přesně jednou zaručit k provádění procedury sloučení jako součást závazku protokolu. Existují [několik ukázek řešení konfliktu](how-to-manage-conflicts.md) si můžete pohrát s.  
 
 ## <a name="consistency-models"></a>Modely konzistence
 
-Zda databáze Cosmos nakonfigurovat jeden nebo více oblastí zápisu, můžete vybrat z pěti jasně definované modely konzistence. Nově přidaná podpora pro povolení více oblastí zápisu následují několik důležitých aspektů úrovně konzistence:  
+Zda databáze Cosmos nakonfigurovat jeden nebo více oblastí zápisu, můžete vybrat z pět jasně definované modely konzistence. S využitím více oblastí zápisu tady jsou několik důležitých aspektů úrovně konzistence:  
 
-Jako dříve, konzistenci omezená neaktuálnost zaručuje, že všechny operace čtení se během předpon k nebo t sekund od poslední zápis v libovolné oblasti. Kromě toho čtení pomocí konzistenci omezená neaktuálnost je zaručena monotónní a záruky konzistence předpon. Protokol ochrany proti entropie funguje způsobem míra časově omezený a zajistí, že předpony není accumulate a nebude muset použít protitlak na zápisy. Jako dříve, relace, záruky konzistence monotónní čtení, monotónní zápis čtení vlastních zápisů, zápis čtení způsobem a konzistentní předpona zaručuje po celém světě. Pro databáze nakonfigurované s silnou konzistenci, výhod více zvládnutí (zápisu s nízkou latencí, zápis vysoké dostupnosti) se nevztahují kvůli synchronní replikace napříč oblastmi.
+Konzistenci omezená neaktuálnost zaručuje, že všechny operace čtení se během *K* předpony nebo *T* sekund od poslední zápis v libovolné oblasti. Kromě toho čtení pomocí konzistenci omezená neaktuálnost je zaručena monotónní a konzistentní předpona záruky. Protokol ochrany proti entropie funguje způsobem míra časově omezený a zajistí, že předpony není accumulate a nebude muset použít protitlak na zápisy. Záruky konzistence relace monotónní čtení, monotónní zápis čtení vlastních zápisů, zápis následuje čtení a konzistentní předpona zaručuje po celém světě. Pro databáze nakonfigurované s silnou konzistenci výhody více oblastí zápisu (zápisu s nízkou latencí, zápis vysoké dostupnosti) se nevztahuje, z důvodu synchronní replikace mezi oblastmi.
 
-Sémantika pět modelů konzistence ve službě Cosmos DB jsou popsány [tady](consistency-levels.md) a matematicky zobrazit Díky vysoké úrovně specifikace TLA + [tady](https://github.com/Azure/azure-cosmos-tla).
+Sémantika pět modelů konzistence ve službě Cosmos DB jsou popsány [tady](consistency-levels.md)a matematicky popisují pomocí základní specifikace TLA + [tady](https://github.com/Azure/azure-cosmos-tla).
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o konfigurace globální distribuce pomocí následujících článcích:
 
-* [Konfigurování klientů pro vícenásobné navádění](how-to-manage-database-account.md#configure-clients-for-multi-homing)
 * [Přidat/odebrat oblasti ze svého účtu databáze](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [Jak vytvořit zásadu konflikt vlastní řešení pro účty rozhraní SQL API](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
+* [Konfigurování klientů pro vícenásobné navádění](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Jak vytvořit zásady překladu IP adres vlastní konflikt](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

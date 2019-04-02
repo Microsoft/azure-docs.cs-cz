@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: d4c3ab7e33d3d4bd8d5d5ee15c8264d1d41c858e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ac4351bd2e125c922cb3044c1d06298b3ad6de97
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081062"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805053"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -64,6 +64,7 @@ Použití analýzy provozu pro skupiny zabezpečení sítě v některém z násl
 * USA – střed
 * Západní USA
 * Západní USA 2
+* Francie – střed
 * Západní Evropa
 * Severní Evropa
 * Brazílie – jih
@@ -71,20 +72,26 @@ Použití analýzy provozu pro skupiny zabezpečení sítě v některém z násl
 * Velká Británie – jih
 * Austrálie – východ
 * Austrálie – jihovýchod
+* Východní Asie
 * Jihovýchodní Asie
+* Korea – střed
 * Střed Indie
 * Indie – jih
 * Japonsko – východ 
+* Japonsko – západ
 * USA (Gov) – Virginia
 
 Pracovní prostor Log Analytics, musí existovat v těchto oblastech:
 * Kanada – střed
 * Západní střed USA
+* Západní USA 2
 * USA – východ
+* Francie – střed
 * Západní Evropa
 * Velká Británie – jih
 * Austrálie – jihovýchod
 * Jihovýchodní Asie
+* Korea – střed
 * Střed Indie
 * Japonsko – východ
 * USA (Gov) – Virginia

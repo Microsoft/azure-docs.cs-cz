@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 76bf36f63051f02d6c37261799342f424609f9b2
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: dfdb419a5c06dc50717c0a8a3bdaffb302db52d0
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58442301"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793012"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources"></a>Ověření přístupu k objektům BLOB a fronty pomocí spravované identity pro prostředky Azure
 
@@ -51,7 +51,7 @@ Příklad kódu předpokládá, že máte přístupový token spravovaná identi
 
 V sadě Visual Studio nainstalujte klientské knihovny Azure Storage. Z **nástroje** nabídce vyberte možnost **Správce balíčků Nuget**, pak **Konzola správce balíčků**. Do konzoly zadejte následující příkaz:
 
-```
+```powershell
 Install-Package https://www.nuget.org/packages/WindowsAzure.Storage  
 ```
 

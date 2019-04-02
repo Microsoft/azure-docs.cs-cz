@@ -4,17 +4,17 @@ description: Azure definice zásady mají různé účinky, které určují způ
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6c6fbde8ff803a053f8c34765ce95d3981a57c52
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ae9c9c5ed8b951760ddac3034c617a13ebe35006
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551202"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802636"
 ---
 # <a name="understand-azure-policy-effects"></a>Principy Azure Policy efekty
 
@@ -180,9 +180,10 @@ AuditIfNotExists běží po poskytovatele prostředků byla zpracována žádost
 
 - **Typ** [povinné]
   - Určuje typ souvisejících prostředků tak, aby odpovídaly.
-  - Začne pokusu o načtení prostředku pod **Pokud** stavu prostředků a potom dotazy v rámci stejné skupině prostředků jako **Pokud** podmínka vyhodnocena jako prostředek.
+  - Pokud **details.type** je typ prostředku pod **Pokud** podmínky prostředku, zásady se dotazuje na prostředky tohoto **typ** v rámci oboru vyhodnoceném prostředku. Jinak zásady dotazy v rámci stejné skupině prostředků jako vyhodnoceném prostředku.
 - **Název** (volitelné)
   - Určuje přesný název prostředku tak, aby odpovídaly a způsobí, že zásady pro načtení jedné konkrétní prostředek místo všechny prostředky zadaného typu.
+  - Když se podmínka hodnoty pro **if.field.type** a **then.details.type** shodují, pak **název** stane _požadované_ a musí být `[field('name')]`. Však [auditu](#audit) efekt by měl být místo toho.
 - **Název skupiny prostředků** (volitelné)
   - Umožňuje odpovídající související prostředek, který pochází z jiné skupiny prostředků.
   - Neplatí, pokud **typ** je prostředek, který by se nacházela pod složkou **Pokud** podmínka vyhodnocena jako prostředek.
@@ -253,6 +254,7 @@ Během cyklu vyhodnocení definice zásad s účinností DeployIfNotExists, kter
   - Začne pokusu o načtení prostředku pod **Pokud** stavu prostředků a potom dotazy v rámci stejné skupině prostředků jako **Pokud** podmínka vyhodnocena jako prostředek.
 - **Název** (volitelné)
   - Určuje přesný název prostředku tak, aby odpovídaly a způsobí, že zásady pro načtení jedné konkrétní prostředek místo všechny prostředky zadaného typu.
+  - Když se podmínka hodnoty pro **if.field.type** a **then.details.type** shodují, pak **název** stane _požadované_ a musí být `[field('name')]`.
 - **Název skupiny prostředků** (volitelné)
   - Umožňuje odpovídající související prostředek, který pochází z jiné skupiny prostředků.
   - Neplatí, pokud **typ** je prostředek, který by se nacházela pod složkou **Pokud** podmínka vyhodnocena jako prostředek.

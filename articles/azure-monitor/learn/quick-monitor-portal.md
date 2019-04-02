@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 03/29/2019
+ms.date: 04/01/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 13fce896c4d83f628bdb7e12e696e32e343fb689
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: a43ad92181415593b309b9fafb20f9934a997924
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754943"
+ms.locfileid: "58805342"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Zahájení monitorování webové aplikace v ASP.NET
 
@@ -105,6 +105,11 @@ Další informace najdete v úložišti naší [open source sady JavaScript SDK]
 ## <a name="video"></a>Video
 
 * Externí krok za krokem videu o [konfigurace Application Insights s .NET aplikace od začátku](https://www.youtube.com/watch?v=blnGAVgMAfA).
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+Po dokončení testování, můžete odstranit skupinu prostředků a všechny související prostředky. Chcete proto podle následujících pokynů.
+1. Na webu Azure Portal v nabídce vlevo klikněte na **Skupiny prostředků** a pak na **myResourceGroup**.
+2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte **myResourceGroup** a pak klikněte na **Odstranit**.
 
 ## <a name="next-steps"></a>Další postup
 V tomto rychlém startu jste povolili monitorování pomocí Azure Application Insights vaší aplikace.  Pokud chcete zjistit, jak ji používat k monitorování statistik a detekování potíží ve vaší aplikaci, přejděte k dalším kurzům.

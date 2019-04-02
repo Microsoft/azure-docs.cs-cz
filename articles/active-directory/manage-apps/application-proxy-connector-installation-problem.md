@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 645ba6e8306b063892babe25fde41d8dd3144fee
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 87d828e596c42b786d1c54a7158e1151f374c560
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444278"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793035"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Potíže při instalaci konektoru agenta proxy aplikací
 
@@ -64,13 +64,13 @@ Při instalaci konektoru selže, hlavní příčinou je obvykle jednu z následu
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Ověřte, že správce se používá k instalaci konektoru
 
-**Cíl:** Ověřte, že uživatel, který se snaží nainstalovat konektor je správce se správnými přihlašovacími údaji. V současné době uživatel musí být buď správce aplikace nebo globální správce pro instalace proběhla úspěšně.
+**Cíl:** Ověřte, že uživatel, který se snaží nainstalovat konektor je správce se správnými přihlašovacími údaji. V současné době uživatel musí být aspoň aplikace Správce instalace proběhla úspěšně.
 
 **Chcete-li ověřit, že jsou správné přihlašovací údaje:**
 
 Připojte se k <https://login.microsoftonline.com> a použijte stejné přihlašovací údaje. Ujistěte se, že je přihlášení úspěšné. Role uživatele můžete zkontrolovat tak, že přejdete do **Azure Active Directory**  - &gt; **uživatelů a skupin**  - &gt; **všichni uživatelé**. 
 
-Vyberte uživatelský účet, pak "Role adresáře" v nabídce výsledný. Ověřte, že vybranou roli "aplikace" globální správce"nebo". Pokud nemůžete získat přístup k žádnému stránek podél těchto kroků, nemáte požadované role.
+Vyberte uživatelský účet, pak "Role adresáře" v nabídce výsledný. Ověřte, zda vybranou roli "Správce aplikací". Pokud nemůžete získat přístup k žádnému stránek podél těchto kroků, nemáte požadované role.
 
 ## <a name="next-steps"></a>Další postup
 [Principy konektorů Proxy aplikací Azure AD](application-proxy-connectors.md)

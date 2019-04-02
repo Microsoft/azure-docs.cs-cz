@@ -13,16 +13,30 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: d5c003b2588813f8e8a1dfc2923b9d4c8d8c6cc8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c46e2d4e2aa79d1d62d0361763911660349cfbb0
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820429"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762309"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>SQL Server na virtuálním počítači Azure zpráva k vydání verze
 
 Azure umožňuje nasadit virtuální počítač pomocí image vytvořené systému SQL Server. Tento článek shrnuje nové funkce a vylepšení v posledních verzích [systému SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). V článku jsou uvedeny také důležité aktualizace obsahu, které jsou přímo související s vydáním ale publikovat ve stejném časovém rámci. Vylepšení k jiným službám Azure, najdete v části [aktualizace služeb](https://azure.microsoft.com/updates)
+
+## <a name="march-2019"></a>2019. března
+
+### <a name="service-improvements"></a>Vylepšení služby
+
+| Vylepšení služby | Podrobnosti |
+| --- | --- |
+| **Možnosti podpory pro vlastní image** | Teď si můžete nainstalovat [rozšíření SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) vlastních imagí operačního systému a SQL, který nabízí omezené funkce [flexibilní licencování](virtual-machines-windows-sql-ahb.md). Při registraci vlastní image u poskytovatele prostředků SQL, zadejte typ licence jako "AHUB" jako v opačném případě registrace selže. Možnosti správy prostřednictvím okna konfigurace SQL na webu Azure Portal se nepodporuje pro vlastní Image.   | 
+| **Možnosti podpory pojmenovaná instance** | Teď můžete využít [rozšíření SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) pomocí pojmenované instance, pokud výchozí instanci správně odinstaloval. | 
+| &nbsp; | &nbsp; |
+
+### <a name="documentation-improvements"></a>Dokumentace k vylepšení
+
+Žádný
 
 
 ## <a name="february-2019"></a>. Února 2019
@@ -32,15 +46,9 @@ Azure umožňuje nasadit virtuální počítač pomocí image vytvořené systé
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
 | **Zlepšení portálu** | Nyní je možné změnit licenční model virtuálního počítače serveru SQL z modelu průběžné platby pomocí přineste svůj – používání vlastní licence [webu Azure portal](virtual-machines-windows-sql-ahb.md#with-the-azure-portal-1).|
-|**Zjednodušení nasazení skupinu dostupnosti pomocí Azure CLI virtuálního počítače SQL** | Je teď snadnější než někdy k nasazení skupiny dostupnosti do virtuálního počítače s SQL serverem v Azure. Azure CLI pro virtuální počítač SQL vám umožní vytvořit naslouchacího procesu ILB služby WSFC a AG vše z příkazového řádku a záznamů včas! Další informace najdete v tématu [pomocí příkazového řádku virtuálního počítače SQL Azure ke konfiguraci skupiny dostupnosti Always On pro SQL Server na Virtuálním počítači Azure](virtual-machines-windows-sql-availability-group-cli.md). | 
+|**Zjednodušení nasazení skupinu dostupnosti pomocí Azure CLI virtuálního počítače SQL** | Je teď snadnější než někdy k nasazení skupiny dostupnosti do virtuálního počítače s SQL serverem v Azure. [Azure CLI pro virtuální počítač SQL](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) vám umožní vytvořit naslouchacího procesu ILB služby WSFC a AG vše z příkazového řádku a záznamů včas! Další informace najdete v tématu [pomocí příkazového řádku virtuálního počítače SQL Azure ke konfiguraci skupiny dostupnosti Always On pro SQL Server na Virtuálním počítači Azure](virtual-machines-windows-sql-availability-group-cli.md). | 
 | &nbsp; | &nbsp; |
 
-### <a name="documentation-improvements"></a>Dokumentace k vylepšení
-
-| Dokumentace k vylepšení | Podrobnosti |
-| --- | --- |
-|žádný | |
-| | |
 
 ## <a name="december-2018"></a>Prosinec 2018
 

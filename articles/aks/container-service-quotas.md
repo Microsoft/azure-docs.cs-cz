@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 04/01/2019
 ms.author: iainfou
-ms.openlocfilehash: ef1ecf4419733e908445f9cf4fe47797d430433f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 8feeaf2e8ee99405ed0de8291fc97dc50db6a386
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337447"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805223"
 ---
 # <a name="quotas-and-region-availability-for-azure-kubernetes-service-aks"></a>Kvóty a dostupnost oblastí pro Azure Kubernetes Service (AKS)
 
@@ -41,9 +41,12 @@ Služba Azure Kubernetes Service (AKS) je dostupná v následujících oblastech
 - USA – východ 2
 - Francie – střed
 - Japonsko – východ
+- Korea – střed
+- Jižní Korea – jih
 - Severní Evropa
 - Jihovýchodní Asie
-- Jižní Indie
+- Středojižní USA
+- Indie – jih
 - Spojené království – jih
 - Spojené království – západ
 - Západní Evropa

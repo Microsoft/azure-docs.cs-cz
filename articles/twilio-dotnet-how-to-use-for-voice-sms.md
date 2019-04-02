@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 254128d212dec3e6f51a98dc4435894e08377eb0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3b8b21de9664a969e8b1ce5699034aa9ab41d0f1
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955220"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762884"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Postup použití Twilia pro hlasové hovory a SMS z Azure
 Tato příručka ukazuje, jak k provádění běžných programovacích úloh pomocí služby Twilio API v Azure. Pokryté scénáře zahrnují vytváření telefonních hovorů a posílání zpráv služby krátké zprávy (SMS). Další informace o Twilio a používání hlasové hovory a SMS ve svých aplikacích najdete v tématu [další kroky](#NextSteps) oddílu.
@@ -30,7 +30,7 @@ Twilio je provozování budoucí komunikaci business, umožňuje vývojářům v
 **Twilio pro hlasové hovory** umožňuje vašim aplikacím, ujistěte se, a přijímat telefonní hovory. **Twilio SMS** umožňuje aplikacím odesílat a přijímat zprávy SMS. **Twilio klienta** umožňuje provádět volání VoIP z libovolného telefonu, tabletu nebo prohlížeče a podporuje WebRTC.
 
 ## <a id="Pricing"></a>Ceny Twilio a speciální nabídky
-Zákazníkům Azure poskytujeme [speciální nabídka](https://www.twilio.com/azure): praktického 10 USD kreditu Twilio při upgradu vašeho účtu Twilio. Tento kredit Twilio můžete použít pro jakékoli využití Twilio (10 USD kreditu ekvivalentní k odesílání až 1 000 zpráv SMS nebo přijímání až 1 000 příchozí hlasové minut v závislosti na umístění cílové vaše telefonní číslo a zpráva nebo volání). Uplatnění tento kredit Twilio a začněte s [ahoy.twilio.com/azure](https://ahoy.twilio.com/azure).
+Zákazníkům Azure poskytujeme [speciální nabídka](https://www.twilio.com/azure): praktického 10 USD kreditu Twilio při upgradu vašeho účtu Twilio. Tento kredit Twilio můžete použít pro jakékoli využití Twilio (10 USD kreditu ekvivalentní k odesílání až 1 000 zpráv SMS nebo přijímání až 1 000 příchozí hlasové minut v závislosti na umístění cílové vaše telefonní číslo a zpráva nebo volání). Uplatnění tento kredit Twilio a začněte s [twilio.com/azure](https://twilio.com/azure).
 
 Twilio je služba s průběžnými platbami. Neexistují žádné poplatky za nastavení a můžete kdykoli zavřít svůj účet. Můžete najít další podrobnosti najdete v [ceny Twilio](https://www.twilio.com/voice/pricing).
 
@@ -46,12 +46,12 @@ Následuje seznam příkazů Twilio.  Další informace o ostatních příkazů 
 
 * `<Dial>`: Volající se připojí k jiný telefon.
 * `<Gather>`: Shromažďuje číslice zadané na klávesnici telefonu.
-* `<Hangup>`: Ukončení volání.
+* `<Hangup>`: Ukončí volání.
 * `<Play>`: Přehraje zvukový soubor.
-* `<Pause>`: Bezobslužná čeká na zadaný počet sekund.
+* `<Pause>`: Bezobslužná počká zadaný počet sekund.
 * `<Record>`: Zaznamenává hlasové volajícího a vrátí adresu URL souboru, který obsahuje záznam.
 * `<Redirect>`: Řízení přenosů volání nebo odeslání SMS TwiML na jinou adresu URL.
-* `<Reject>`: Bez fakturace je odmítne příchozí volání na vaše číslo Twilio
+* `<Reject>`: Odmítne příchozí volání na vaše číslo Twilio bez vám fakturace
 * `<Say>`: Převede text na řeč, který je k volání.
 * `<Sms>`: Odešle zprávu SMS.
 
@@ -115,7 +115,7 @@ Ve výchozím nastavení nainstaluje Microsoft Visual Studio 2010 verze 1.2 NuGe
 5. Zadejte do pole Hledat online *twilio*.
 6. Klikněte na tlačítko **nainstalovat** na balíček platformy Twilio.
 
-## <a id="howto_make_call"></a>Postupy: volání odchozí
+## <a id="howto_make_call"></a>Jak: Ujistěte se, odchozí volání
 Následující ukazuje, jak provádět volání pomocí odchozí **CallResource** třídy. Tento kód také používá k vrácení odpovědi Twilio Markup Language (TwiML) poskytované Twilio lokality. Dosaďte svoje hodnoty **k** a **z** telefonní čísla a ujistěte se, abyste ověřili **z** telefonní číslo pro svůj účet Twilio před spuštěním kódu.
 
 ```csharp
@@ -145,7 +145,7 @@ Další informace o parametrech předaná **CallResource.Create** metodu, najdet
 
 Jak už bylo zmíněno, tento kód používá poskytované Twilio webu vrátit TwiML odpovědi. Místo toho můžete použít svůj vlastní web k poskytování TwiML odpovědi. Další informace najdete v tématu [jak: Zadejte TwiML odpovědi z vlastní web](#howto_provide_twiml_responses).
 
-## <a id="howto_send_sms"></a>Postupy: odeslání SMS zprávy
+## <a id="howto_send_sms"></a>Jak: Odeslat zprávu SMS
 Následující snímek obrazovky ukazuje, jak odeslat zprávu SMS pomocí **MessageResource** třídy. **z** poskytuje číslo Twilio pro účty posílat SMS zprávy. **k** číslo musí být ověřený pro váš účet Twilio, před spuštěním kódu.
 
 ```csharp
@@ -172,8 +172,8 @@ catch (TwilioException ex)
 }
 ```
 
-## <a id="howto_provide_twiml_responses"></a>Postupy: poskytování TwiML odezvy z vlastního webu
-Pokud aplikace zahájí volání rozhraní API Twilia – například prostřednictvím **CallResource.Create** metoda - Twilio odešle požadavek na adresu URL, která se má vrátit odpověď TwiML. V příkladu v [postupy: volání odchozí](#howto_make_call) používá adresu URL poskytnutou Twilio [ https://twimlets.com/message ] [ twimlet_message_url] vrátit odpověď.
+## <a id="howto_provide_twiml_responses"></a>Jak: Poskytování TwiML odezvy z vlastního webu
+Pokud aplikace zahájí volání rozhraní API Twilia – například prostřednictvím **CallResource.Create** metoda - Twilio odešle požadavek na adresu URL, která se má vrátit odpověď TwiML. V příkladu v [jak: Ujistěte se, odchozí volání](#howto_make_call) používá adresu URL poskytnutou Twilio [ https://twimlets.com/message ] [ twimlet_message_url] vrátit odpověď.
 
 > [!NOTE]
 > TwiML je určen k použití webových služeb, ale když zobrazíte TwiML v prohlížeči. Klikněte například na [ https://twimlets.com/message ] [ twimlet_message_url] zobrazíte prázdná `<Response>` element; další příklad, klikněte na tlačítko [ https://twimlets.com/message?Message%5B0%5D=Hello%20World ](https://twimlets.com/message?Message%5B0%5D=Hello%20World) zobrazíte `<Response>` element, který obsahuje &lt;Say&gt; elementu.

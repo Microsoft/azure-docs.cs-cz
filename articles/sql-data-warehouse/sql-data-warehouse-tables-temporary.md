@@ -7,21 +7,21 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
+ms.date: 04/01/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: c989e53113557219e13dd730ac43621d3824baac
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 23a62e28700ad5fd733040c43ea0eec225fd286f
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57434755"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793097"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>Dočasné tabulky v SQL Data Warehouse
 Tento článek obsahuje základní pokyny k používání dočasné tabulky a zvýrazní zásady relace úrovni dočasné tabulky. Pomocí informací v tomto článku vám může pomoct modularizaci vašeho kódu, vylepšení opětovné použití a snadnost údržby kódu.
 
 ## <a name="what-are-temporary-tables"></a>Jaké jsou dočasné tabulky?
-Dočasné tabulky jsou užitečné při zpracování dat – zejména při transformaci, kde jsou přechodné mezilehlých výsledků. Ve službě SQL Data Warehouse dočasné tabulky existují na úrovni relace.  Jsou viditelné pouze do relace, ve kterém byly vytvořeny a jsou automaticky zrušeny při odhlášení relace.  Dočasné tabulky nabízejí zvýšení výkonu, protože jejich výsledky se zapisují na místní místo vzdálené úložiště.  Dočasné tabulky jsou ve službě Azure SQL Data Warehouse trochu liší od Azure SQL Database, jak k nim může přistupovat kdekoli uvnitř relace, včetně uvnitř i mimo uloženou proceduru.
+Dočasné tabulky jsou užitečné při zpracování dat – zejména při transformaci, kde jsou přechodné mezilehlých výsledků. Ve službě SQL Data Warehouse dočasné tabulky existují na úrovni relace.  Jsou viditelné pouze do relace, ve kterém byly vytvořeny a jsou automaticky zrušeny při odhlášení relace.  Dočasné tabulky nabízejí zvýšení výkonu, protože jejich výsledky se zapisují na místní místo vzdálené úložiště.
 
 ## <a name="create-a-temporary-table"></a>Vytvořte dočasnou tabulku
 Dočasné tabulky vytvářejí prefixu názvem vaší tabulky `#`.  Příklad:
@@ -215,7 +215,7 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>Omezení dočasné tabulky
-SQL Data Warehouse zavádí několik omezení při implementaci dočasné tabulky.  V současné době pouze relace s vymezeným oborem dočasných tabulek se podporují.  Globální dočasné tabulky nejsou podporovány.  Kromě toho nelze vytvořit zobrazení v dočasných tabulkách.
+SQL Data Warehouse zavádí několik omezení při implementaci dočasné tabulky.  V současné době pouze relace s vymezeným oborem dočasných tabulek se podporují.  Globální dočasné tabulky nejsou podporovány.  Kromě toho nelze vytvořit zobrazení v dočasných tabulkách.  Dočasné tabulky lze vytvořit pouze pomocí distribuci hash nebo kruhové dotazování.  Distribuce replikované dočasné tabulky není podporován. 
 
 ## <a name="next-steps"></a>Další postup
 Další informace o vývoji tabulky, najdete v článku [Přehled tabulek](sql-data-warehouse-tables-overview.md).

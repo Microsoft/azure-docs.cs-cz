@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: d2ecebf47c77baa81193939b64c27348541f7686
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 2768a23c217052a342538b67ec59868e25fd4914
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403404"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793811"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Připojení nástroje Operations Manager k monitorování Azure
 
@@ -41,6 +41,7 @@ Následující diagram znázorňuje připojení mezi servery pro správu a agent
 Pokud zásady zabezpečení IT neumožňují počítačů ve vaší síti pro připojení k Internetu, servery pro správu je nakonfigurovat pro připojení k bráně Log Analytics pro příjem informací o konfiguraci a posílání shromážděných dat v závislosti na řešení povolené. Další informace a postup konfigurace skupiny pro správu nástroje Operations Manager ke komunikaci přes bránu Log Analytics pro monitorování Azure, najdete v článku [připojení počítačů k Azure monitorování pomocí Log Analytics gateway](../../azure-monitor/platform/gateway.md).  
 
 ## <a name="prerequisites"></a>Požadavky 
+
 Než začnete, zkontrolujte následující požadavky.
 
 * Azure Monitor podporuje pouze System Center Operations Manageru 2016 nebo novější, Operations Manager 2012 SP1 UR6 nebo vyšší a Operations Manager 2012 R2 UR2 nebo novější. V nástrojích Operations Manager 2012 SP1 UR7 a Operations Manager 2012 R2 UR3 je přidaná podpora proxy serverů.
@@ -60,6 +61,7 @@ Než začnete, zkontrolujte následující požadavky.
 >Tato aktualizace management pack neplatí pro System Center Operations Manager 1807, což je o verzi aktualizace z verze 1801 a úplné sestavení produktu.   
 
 ### <a name="network"></a>Síť
+
 Informace o seznamu proxy a firewallu informace o konfiguraci vyžadované pro agenta nástroje Operations Manager, servery pro správu a konzole Operations console pro komunikaci se službou Azure Monitor níže. Provoz z jednotlivých komponent je výstupní z vaší sítě do Azure monitoru.   
 
 |Prostředek | Číslo portu| Obejití kontroly protokolu HTTP|  
@@ -87,9 +89,11 @@ Informace o seznamu proxy a firewallu informace o konfiguraci vyžadované pro a
 |docs.loganalytics.io| 80 a 443||  
 
 ### <a name="tls-12-protocol"></a>Protokol TLS 1.2
+
 – Pomáhat zajistit zabezpečení dat při přenosu do Azure monitoru, důrazně doporučujeme, abyste ke konfiguraci agenta a Správa skupiny používat alespoň zabezpečení TLS (Transport Layer) 1.2. Starší verze z protokolu TLS/Secure Sockets Layer (SSL) bylo zjištěno ohrožen a stále aktuálně fungují povolit zpětnou kompatibilitu, ale jsou **ale nedoporučený krok**. Další informace najdete v tématu [odesílání dat pomocí protokolu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Propojení Operations Manageru do Azure monitoru
+
 Provedením následujícího postupu nakonfigurujete skupinu pro správu nástroje Operations Manager na připojení k jednomu z vašich pracovních prostorů Log Analytics.
 
 Při počáteční registraci skupiny pro správu Operations Manageru k pracovnímu prostoru Log Analytics můžete zadat konfiguraci proxy serveru pro skupinu pro správu není k dispozici v konzoli Operations console.  Tato možnost bude dostupná až potom, co bude skupina pro správu ve službě úspěšně zaregistrovaná.  Chcete-li tento problém obejít, budete muset aktualizovat konfiguraci proxy serveru systému pomocí nástroje Netsh v systému konzole Operations console z systémem konfiguraci integrace a všechny servery pro správu ve skupině pro správu.  
@@ -121,6 +125,7 @@ Po dokončení následujících kroků k integraci se službou Azure Monitor, m�
 1. Na **Průvodce registrací v Operations Management Suite: Dokončit** klikněte na **Zavřít**.
 
 ### <a name="add-agent-managed-computers"></a>Přidání počítačů spravovaných agenty
+
 Jakmile nakonfigurujete integraci s pracovního prostoru Log Analytics, pouze vytvoří připojení ke službě, je nebyla shromážděna žádná data z agentů odesílajících sestavy do vaší skupiny pro správu. To se neprovede až po dokončení konfigurace, které konkrétní agentem spravované počítače shromažďovat data protokolu pro monitorování Azure. Objekty počítačů můžete vybrat buď jednotlivě, nebo jako skupinu obsahující objekty počítačů s Windows. Nemůžete vybrat skupinu, která obsahuje instance jiné třídy, jako třeba logické disky nebo databáze SQL.
 
 1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
@@ -131,6 +136,7 @@ Jakmile nakonfigurujete integraci s pracovního prostoru Log Analytics, pouze vy
 Počítače a skupiny, které jsou nakonfigurované na shromažďování dat, si můžete zobrazit z uzlu Spravované počítače pod položkou Operations Management Suite v pracovním prostoru **Správa** v konzole Operations Console. Odsud můžete počítače a skupiny podle potřeby přidávat nebo odebírat.
 
 ### <a name="configure-proxy-settings-in-the-operations-console"></a>Konfigurace nastavení proxy v konzole Operations Console
+
 Pokud je interní proxy server mezi skupinou správy a monitorování Azure, proveďte následující kroky. Tato nastavení jsou centrálně spravovaná ze skupiny pro správu a distribuovaných systémech spravovaných agentem, které jsou zahrnuty v oboru shromažďovat data protokolu pro monitorování Azure.  To je výhodné v případech, kdy určitá řešení obcházejí server pro správu a odesílají data přímo do služby.
 
 1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
@@ -156,6 +162,7 @@ Po vytvoření připojení a nakonfigurujete kterých agentů se shromažďován
 * Agenti a skupiny, které jste vybrali pro shromažďování dat ve skupině pro správu, budou přidáni do **Skupiny monitorovacích serverů služby Microsoft System Center Advisor**.
 
 ## <a name="management-pack-updates"></a>Aktualizace sad Management Pack
+
 Po dokončení konfigurace skupiny pro správu nástroje Operations Manager vytvoří připojení prostřednictvím služby Azure Monitor. Server pro správu se synchronizuje s webovou službou a přijímá aktualizované konfigurační informace ve formě sad Management Pack pro vámi povolená řešení, která se integrují s nástrojem Operations Manager. Nástroj Operations Manager zjišťuje dostupnost aktualizací těchto sad management Pack a automaticky stáhnout a naimportuje je, když jsou k dispozici. Toto chování řídí obzvláště dvě pravidla:
 
 * **Microsoft.SystemCenter.Advisor.MPUpdate** – aktualizuje základní sady management Pack pro monitorování Azure. Ve výchozím nastavení se spouští každých 12 hodin.
@@ -166,6 +173,7 @@ Můžete přepsat tyto dvě pravidla buď zabránit automatické stahování tí
 Chcete-li pokračovat po vaší existující proces řízení změn řízení verzí management pack v provozní skupině pro správu, můžete zakázat pravidla a povolit v určité době, kdy jsou aktualizace povoleny. Pokud máte ve svém prostředí skupiny pro správu určenou pro vývoj nebo kontrolu kvality a ta má připojení k internetu, můžete pro podporu tohoto scénáře u této skupiny nakonfigurovat pracovní prostor Log Analytics. To umožňuje kontrola a vyhodnocení iterativní verzí sad management Pack monitorování Azure před uvolněním v provozní skupině pro správu.
 
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>Převedení skupiny nástroje Operations Manager na nový pracovní prostor Log Analytics
+
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 1. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics** a pak vytvořte pracovní prostor.  
 1. Otevřete konzolu nástroje Operations Manager pomocí účtu, který je členem role Administrators nástroje Operations Manager, a vyberte pracovní prostor **Správa**.
@@ -179,9 +187,11 @@ Chcete-li pokračovat po vaší existující proces řízení změn řízení ve
    > 
 
 ## <a name="validate-operations-manager-integration-with-azure-monitor"></a>Ověření integrace nástroje Operations Manager pomocí Azure monitoru
+
 Existuje několik různých způsobů, jak můžete ověřit, že Azure Monitor k integraci nástroje Operations Manager byla úspěšně dokončena.
 
 ### <a name="to-confirm-integration-from-the-azure-portal"></a>Ověření integrace z portálu Azure Portal
+
 1. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu.
 1. V seznamu pracovních prostorů Log Analytics vyberte příslušný pracovní prostor.  
 1. Vyberte **Upřesňující nastavení**, **Připojené zdroje**a potom **System Center**. 
@@ -190,6 +200,7 @@ Existuje několik různých způsobů, jak můžete ověřit, že Azure Monitor 
    ![oms-settings-connectedsources](./media/om-agents/oms-settings-connectedsources.png)
 
 ### <a name="to-confirm-integration-from-the-operations-console"></a>Ověření integrace z konzoly Operations Console
+
 1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
 1. Vyberte **Sady Management Pack** a do textového pole **Hledat** zadejte **Advisor** nebo **Intelligence**.
 1. V závislosti na řešeních, která jste aktivovali, se ve výsledcích hledání zobrazí odpovídající sada Management Pack.  Pokud jste například povolili řešení Alert Management, bude v seznamu sada Microsoft System Center Advisor Alert Management.
@@ -198,6 +209,7 @@ Existuje několik různých způsobů, jak můžete ověřit, že Azure Monitor 
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
 ## <a name="remove-integration-with-azure-monitor"></a>Odebrat integraci se službou Azure Monitor
+
 Když už integraci mezi vaší skupinou pro správu nástroje Operations Manager a pracovním prostorem Log Analytics nebudete potřebovat, bude třeba ke správnému odebrání připojení a konfigurace ze skupiny provést několik kroků. Následující postup se můžete aktualizovat tak, že odstraníte odkaz na vaši skupinu pro správu pracovního prostoru Log Analytics, odstraňte konektory Azure Monitor a pak odstraňte sady management Pack podporuje integraci se službou.  
 
 Sady Management Pack pro řešení povolíte, které se integrují s nástrojem Operations Manager a sady management Pack, který je potřeba pro podporu integrace s Azure Monitor nelze snadno odstranit ze skupiny pro správu. Je to proto, že některé sady management Pack Azure monitoru mají závislosti na jiných sadách souvisejících management Pack. Pokud chcete odstranit sady Management Pack se závislostmi na jiných sadách, stáhněte si skript pro [odebrání sady Management Pack se závislostmi](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) z webu TechNet Script Center.  
@@ -244,7 +256,7 @@ Pokud chcete odstranit oba konektory (Microsoft.SystemCenter.Advisor.DataConnect
 > 
 > 
 
-```
+```powershell
     param(
     [String] $connectorName,
     [String] $msName="localhost"
@@ -336,6 +348,5 @@ V budoucnu Pokud máte v plánu na opětovné připojení skupiny pro správu k 
 * V nejnovější kumulativní aplikaci použité u vaší skupiny pro správu. V případě verze Operations Manager 2012 jde o zdrojovou složku ` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` a v případě verze 2012 R2 jde o umístění `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
 
 ## <a name="next-steps"></a>Další postup
+
 Přidání funkcí a shromažďování dat, naleznete v tématu [řešení pro monitorování Azure přidat z Galerie řešení](../../azure-monitor/insights/solutions.md).
-
-

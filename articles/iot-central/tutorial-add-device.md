@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 5d9e33e5cf4c8a7d5b8085e1e2ff8f4bde3274b7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8e7eee40bed29117d2873393395a852e4b738533
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770897"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793477"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Kurz: Přidání skutečného zařízení do aplikace Azure IoT Central
 
@@ -50,13 +50,13 @@ Pokud chcete přidat skutečné zařízení do aplikace, použijete šablonu za�
 
    ![Stránka Device Explorer zobrazující připojené klimatizační zařízení](media/tutorial-add-device/explorer.png)
 
-   **Device Explorer** zobrazuje šablonu zařízení **Connected Air Conditioner** a simulované zařízení, které se automaticky vytvořilo při vytváření šablony zařízení tvůrcem.
+   **Device Explorer** ukazuje **připojené Vzduchovod** zařízení šablon a simulovaných zařízení. Při vytváření šablony zařízení IoT Central automaticky vytvoří simulované zařízení.
 
 2. Chcete-li začít připojovat vzduchovod reálné připojených zařízení, vyberte **+**, pak **skutečné**:
 
    ![Zahájení přidávání nového skutečného klimatizačního zařízení](media/tutorial-add-device/newreal.png)
 
-3. Zadejte Id zařízení (by měl být malými písmeny) nebo použijte navrhovaný ID zařízení. Můžete také zadat název nového zařízení a zvolit **Create** (Vytvořit).
+3. Zadejte ID zařízení (by měl být malými písmeny) nebo použijte navrhovaný ID zařízení. Můžete také zadat název nového zařízení a zvolit **Create** (Vytvořit).
 
    ![Přejmenování zařízení](media/tutorial-add-device/rename.png)
 
@@ -68,7 +68,7 @@ Skutečné zařízení se vytvoří ze šablony **Connected Air Conditioner**. N
 
     ![Nastavení zobrazující synchronizaci](media/tutorial-add-device/settingssyncing.png)
 
-2. Na stránce **Properties** (Vlastnosti) nového, skutečného a připojeného klimatizačního zařízení jsou umístění služby i datum poslední údržby upravitelné vlastnosti zařízení. Pole se sériovým číslem a verzí firmwaru budou prázdné, dokud se zařízení nepřipojí k aplikaci. Jedná se o hodnoty jen pro čtení, které se odesílají ze zařízení, a nelze je upravit.
+2. Na **vlastnosti** stránku pro nové, skutečné zařízení, i umístění služby a datum posledního služby jsou upravitelné vlastnosti. Pole se sériovým číslem a verzí firmwaru budou prázdné, dokud se zařízení nepřipojí k aplikaci. Tyto hodnoty jen pro čtení se odesílají ze zařízení a nelze jej upravit.
 
     ![Vlastnosti skutečného zařízení](media/tutorial-add-device/setproperties1.png)
 
@@ -76,11 +76,11 @@ Skutečné zařízení se vytvoří ze šablony **Connected Air Conditioner**. N
 
 ## <a name="generate-connection-string"></a>Generovat připojovací řetězec
 
-Vývojář zařízení musí vložit *připojovací řetězec* pro skutečné zařízení do kódu, který běží na zařízení. Připojovací řetězec umožňuje, aby se zařízení bezpečně připojilo k aplikaci Azure IoT Central. Připojovací řetězec vygenerujete v rámci přípravy klientského kódu Node.js v dalších krocích. Aplikace Node.js představuje skutečnou připojenou klimatizaci. 
+Vývojář zařízení musí vložit *připojovací řetězec* pro skutečné zařízení do kódu, který běží na zařízení. Připojovací řetězec povoluje v zařízení se navázat zabezpečené připojení k vaší aplikaci. Následující kroky ukazují generovat připojovací řetězec a připravte klienta kód Node.js.
 
 ## <a name="prepare-the-client-code"></a>Příprava klientského kódu
 
-Ukázkový kód v tomto článku je napsán v [Node.js](https://nodejs.org/) a zobrazuje dostatečnou část kódu k tomu, abyste mohli provést tyto akce:
+Ukázkový kód v tomto článku je napsán v [Node.js](https://nodejs.org/) a ukazuje dostatek kódu:
 
 * Připojit zařízení k aplikaci Azure IoT Central
 * Odeslat teplotní telemetrii jako připojené klimatizační zařízení
@@ -88,7 +88,7 @@ Ukázkový kód v tomto článku je napsán v [Node.js](https://nodejs.org/) a z
 * Odpovědět operátorovi, který používá nastavení **Set Temperature**
 * Zpracovat příkaz Echo z aplikace Azure IoT Central
 
-Články s postupy, na které najdete odkazy v části [Další kroky](#next-steps), poskytují kompletnější ukázky a předvádí použití ostatních programovacích jazyků. Další informace o tom, jak se zařízení připojují k aplikaci Azure IoT Central, najdete v článku věnovaném [možnostem připojení zařízení](concepts-connectivity.md).
+V článcích uvedených v [další kroky](#next-steps) části zahrnout kompletní ukázky a zobrazení jiných programovacích jazycích. Další informace o tom, jak se zařízení připojují k aplikaci Azure IoT Central, najdete v článku věnovaném [možnostem připojení zařízení](concepts-connectivity.md).
 
 Následující postup popisuje, jak připravit ukázku [Node.js](https://nodejs.org/):
 
@@ -116,7 +116,7 @@ Následující postup popisuje, jak připravit ukázku [Node.js](https://nodejs.
 
    ![Podrobnosti připojení](media/tutorial-add-device/device-connect.png)
 
-1. Vraťte se do prostředí příkazového řádku a spuštěním následujícího příkazu vygenerujte připojovací řetězec:
+1. Vraťte se do prostředí příkazového řádku a generovat připojovací řetězec pomocí provádí:
 
     ```cmd/sh
     dps-keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
@@ -163,7 +163,7 @@ Následující postup popisuje, jak připravit ukázku [Node.js](https://nodejs.
 
 ## <a name="review-client-code"></a>Revize kódu klienta
 
-V předchozí části jste vytvořili kostru projektu Node.js pro aplikaci, která se připojuje k aplikaci Azure IoT Central. V této části přidáte kód, abyste mohli provést tyto akce:
+V předchozí části jste vytvořili kostru projektu Node.js pro aplikaci, která se připojuje k aplikaci Azure IoT Central. Dalším krokem je přidání kódu do:
 
 * Připojit se k aplikaci Azure IoT Central
 * Odeslat telemetrii do aplikace Azure IoT Central
@@ -300,7 +300,8 @@ V předchozí části jste vytvořili kostru projektu Node.js pro aplikaci, kter
 
 ## <a name="configure-client-code"></a>Konfigurace klientského kódu
 
-<!-- Add the connection string to the sample code, build, and run --> Pokud chcete nakonfigurovat klientský kód na připojení k aplikaci Azure IoT Central, musíte přidat připojovací řetězec skutečného zařízení, který jste si poznamenali v předchozí části tohoto kurzu.
+<!-- Add the connection string to the sample code, build, and run -->
+Pokud chcete nakonfigurovat klientský kód na připojení k aplikaci Azure IoT Central, musíte přidat připojovací řetězec skutečného zařízení, který jste si poznamenali dříve v tomto kurzu.
 
 1. V souboru **ConnectedAirConditioner.js** vyhledejte následující řádek kódu:
 
@@ -355,7 +356,7 @@ V tomto kurzu jste se naučili:
 > * Porozumět, jak se klientský kód mapuje k aplikaci
 > * Nakonfigurovat klientský kód pro skutečné zařízení
 
-Nyní, když máte skutečné zařízení připojeno k aplikaci Azure IoT Central, můžete přejít k dalším navrhovaným krokům:
+Teď, když jste se připojili skutečné zařízení do aplikace Azure IoT Central, tady jsou další navrhované kroky:
 
 Jako operátor se naučíte tyto postupy:
 
@@ -365,10 +366,8 @@ Jako operátor se naučíte tyto postupy:
 
 Jako vývojář zařízení se naučíte tyto postupy:
 
-* [Příprava a připojení DevKit](howto-connect-devkit.md)
-* [Příprava a připojení Raspberry Pi](howto-connect-raspberry-pi-python.md)
+* [Příprava a připojení zařízení DevKit (C)](howto-connect-devkit.md)
+* [Příprava a připojte Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
+* [Příprava a připojte Raspberry Pi (C#)](howto-connect-raspberry-pi-csharp.md)
+* [Příprava a připojit zařízení s Windows 10 IoT core (C#)](howto-connect-windowsiotcore.md)
 * [Připojení obecného klienta Node.js k aplikaci Azure IoT Central](howto-connect-nodejs.md)
-* [Přizpůsobení kódu][lnk-nodejs-device-ref]
-
-
-[lnk-nodejs-device-ref]: /javascript/api/azure-iot-device/?view=azure-iot-typescript-latest

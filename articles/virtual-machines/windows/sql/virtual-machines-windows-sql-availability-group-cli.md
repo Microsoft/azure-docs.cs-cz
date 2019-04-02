@@ -14,15 +14,15 @@ ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8af860293fc332437d67ff4db63d7686be7efff0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1c5c5f4c8125f801edc89d47851871d8eb06a2f9
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765267"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762867"
 ---
 # <a name="use-azure-sql-vm-cli-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Pomocí Azure CLI virtuálního počítače SQL ke konfiguraci skupiny dostupnosti Always On pro SQL Server na Virtuálním počítači Azure
-Tento článek popisuje způsob použití [příkazového řádku Azure SQL VM](https://docs.microsoft.com/mt-mt/cli/azure/ext/sqlvm-preview/sqlvm?view=azure-cli-2018-03-01-hybrid) nasadit Windows Failover Cluster (WSFC) a přidejte virtuální počítače SQL serveru do clusteru, jakož i vytvořit interní nástroj pro vyrovnávání zatížení a naslouchacího procesu pro skupiny dostupnosti Always On.  Skutečné nasazení skupiny dostupnosti Always On se stále provádí ručně přes SQL Server Management Studio (SSMS). 
+Tento článek popisuje způsob použití [příkazového řádku Azure SQL VM](/cli/azure/sql/vm?view=azure-cli-latest/) nasadit Windows Failover Cluster (WSFC) a přidejte virtuální počítače SQL serveru do clusteru, jakož i vytvořit interní nástroj pro vyrovnávání zatížení a naslouchacího procesu pro skupiny dostupnosti Always On.  Skutečné nasazení skupiny dostupnosti Always On se stále provádí ručně přes SQL Server Management Studio (SSMS). 
 
 ## <a name="prerequisites"></a>Požadavky
 K automatizaci instalací skupiny dostupnosti Always On pomocí příkazového řádku virtuálního počítače SQL Azure, musí už máte splněné následující požadavky: 
@@ -42,7 +42,7 @@ Následující účet oprávnění je potřeba pro konfiguraci skupiny dostupnos
 Cluster potřebuje účet úložiště tak, aby fungoval jako disk s kopií cloudu. Můžete použít jakýkoli existující účet úložiště, nebo můžete vytvořit nový účet úložiště. Pokud chcete použít existující účet úložiště, přeskočte k další části. 
 
 Následující fragment kódu vytvoří účet úložiště: 
-```cli
+```azurecli
 # Create the storage account
 # example: az storage account create -n 'cloudwitness' -g SQLVM-RG -l 'West US' `
 #  --sku Standard_LRS --kind StorageV2 --access-tier Hot --https-only true
@@ -58,7 +58,7 @@ az storage account create -n <name> -g <resource group name> -l <region ex:eastu
 Rozhraní příkazového řádku Azure SQL VM [skupiny virtuálních počítačů sql az](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) příkaz skupina spravuje metadat služby Windows Failover Cluster (WSFC), který je hostitelem skupiny dostupnosti. Metadata Clusterové zahrnuje doménu AD, clusteru účty, účty úložiště, který se použije jako disk s kopií cloudu a verze systému SQL Server. Použití [vytvořte skupiny virtuálních počítačů sql az](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create) můžete definovat metadata služby WSFC tak, aby při přidání prvního virtuálního počítače SQL serveru, je cluster vytvořen, jak jsou definovány. 
 
 Následující fragment kódu definuje metadat pro cluster:
-```cli
+```azurecli
 # Define the cluster metadata
 # example: az sql vm group create -n Cluster -l 'West US' -g SQLVM-RG `
 #  --image-offer SQL2017-WS2016 --image-sku Enterprise --domain-fqdn domain.com `
@@ -79,7 +79,7 @@ Přidání prvního virtuálního počítače SQL serveru do clusteru vytvoří 
 
 Následující fragment kódu vytvoří cluster a přidá do ní prvního virtuálního počítače SQL serveru: 
 
-```cli
+```azurecli
 # Add SQL Server VMs to cluster
 # example: az sql vm add-to-group -n SQLVM1 -g SQLVM-RG --sqlvm-group Cluster `
 #  -b Str0ngAzur3P@ssword! -p Str0ngAzur3P@ssword! -s Str0ngAzur3P@ssword!
@@ -105,7 +105,7 @@ Always On naslouchací proces skupiny dostupnosti (AG) vyžaduje vnitřní Azure
 
 Následující fragment kódu vytvoří interního nástroje pro vyrovnávání zatížení:
 
-```cli
+```azurecli
 # Create the Internal Load Balancer
 # example: az network lb create --name sqlILB -g SQLVM-RG --sku Standard `
 # --vnet-name SQLVMvNet --subnet default
@@ -118,7 +118,7 @@ az network lb create --name sqlILB -g <resource group name> --sku Standard `
   > Standardní SKU se kvůli kompatibilitě s Load balanceru úrovně Standard by měl mít prostředek veřejné IP pro každý virtuální počítač s SQL serverem. Určit SKU prostředek veřejné IP adresy Virtuálního počítače, přejděte na vaše **skupiny prostředků**vyberte vaše **veřejnou IP adresu** prostředek požadovaný virtuální počítač SQL Server a vyhledejte hodnotu v rámci **SKU**  z **přehled** podokně.  
 
 ## <a name="step-6---create-availability-group-listener"></a>Krok 6: vytvoření naslouchacího procesu skupiny dostupnosti
-Po ruční vytváření skupiny dostupnosti můžete vytvořit naslouchací proces, pomocí [az sql vm-naslouchacího procesu ag](https://docs.microsoft.com/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create). 
+Po ruční vytváření skupiny dostupnosti můžete vytvořit naslouchací proces, pomocí [az sql vm-naslouchacího procesu ag](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create). 
 
 
 - **ID prostředku podsítě** je hodnota `/subnets/<subnetname>` připojenou k prostředku virtuální sítě v ID prostředku. Pokud chcete zjistit ID prostředku podsítě, postupujte takto:
@@ -133,7 +133,7 @@ Po ruční vytváření skupiny dostupnosti můžete vytvořit naslouchací proc
 
 Následující fragment kódu vytvoří naslouchací proces skupiny dostupnosti:
 
-```cli
+```azurecli
 # Create the AG listener
 # example: az sql vm group ag-listener create -n AGListener -g SQLVM-RG `
 #  --ag-name SQLAG --group-name Cluster --ip-address 10.0.0.27 `
@@ -145,70 +145,69 @@ az sql vm group ag-listener create -n <listener name> -g <resource group name> `
   --ag-name <availability group name> --group-name <cluster name> --ip-address <ag listener IP address> `
   --load-balancer <lbname> --probe-port <Load Balancer probe port, default 59999>  `
   --subnet <subnet resource id> `
-  --sqlvms <names of SQL VM’s hosting AG replicas ex: sqlvm1 sqlvm2>
+  --sqlvms <names of SQL VM's hosting AG replicas ex: sqlvm1 sqlvm2>
 ```
-## <a name="modify-number-of-replicas-in-availability-group"></a>Upravit počet replik ve skupině dostupnosti
-Při nasazení skupiny dostupnosti hostovaných v Azure, virtuální počítače s SQL serverem v jako prostředky jsou teď spravované přes poskytovatele prostředků a tím je další úroveň složitosti `virtual machine group`. V důsledku toho při přidávání nebo odstraňování repliky do skupiny dostupnosti, je další krok aktualizace metadat naslouchací proces s informacemi o virtuální počítače SQL serveru. Proto když přidáte další virtuální počítač s SQL serverem repliky do skupiny dostupnosti, musíte taky použít [az sqlvm aglistener přidat sqlvm](/cli/azure/ext/sqlvm-preview/sqlvm/aglistener?view=azure-cli-2018-03-01-hybrid#ext-sqlvm-preview-az-sqlvm-aglistener-add-sqlvm) příkaz pro přidání virtuálního počítače SQL serveru v metadatech naslouchacího procesu. Podobně při odebírání repliky ze skupiny dostupnosti, musíte použít také [az sqlvm skupina dostupnosti posluchače remove-sqlvm](/cli/azure/ext/sqlvm-preview/sqlvm/aglistener?view=azure-cli-2018-03-01-hybrid#ext-sqlvm-preview-az-sqlvm-aglistener-remove-sqlvm) odebrat tento virtuální počítač SQL Server na metadata z naslouchacího procesu. 
 
-### <a name="adding-a-replica"></a>Přidání repliky
+## <a name="modify-number-of-replicas-in-availability-group"></a>Upravit počet replik ve skupině dostupnosti
+Při nasazení skupiny dostupnosti hostovaných v Azure, virtuální počítače s SQL serverem v jako prostředky jsou teď spravované přes poskytovatele prostředků a tím je další úroveň složitosti `virtual machine group`. V důsledku toho při přidávání nebo odstraňování repliky do skupiny dostupnosti, je další krok aktualizace metadat naslouchací proces s informacemi o virtuální počítače SQL serveru. Proto při úpravě počet replik ve skupině dostupnosti, musíte taky použít [aktualizace naslouchacího procesu ag skupiny virtuálních počítačů sql az](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-2018-03-01-hybrid#az-sql-vm-group-ag-listener-update) příkaz k aktualizaci naslouchací proces s metadaty virtuální počítače SQL serveru. 
+
+
+### <a name="add-a-replica"></a>Přidejte repliku
+
 Chcete-li přidat novou repliku do skupiny dostupnosti, postupujte takto:
 
-1. Přidání virtuálního počítače SQL serveru do clusteru: 
+1. Přidání virtuálního počítače SQL serveru do clusteru:
+   ```azurecli
+   # Add SQL Server VM to the Cluster
+   # example: az sql vm add-to-group -n SQLVM3 -g SQLVM-RG --sqlvm-group Cluster `
+   # -b Str0ngAzur3P@ssword! -p Str0ngAzur3P@ssword! -s Str0ngAzur3P@ssword!
 
-    ```cli
-    # Add SQL Server VM to the Cluster
-    # example: az sql vm add-to-group -n SQLVM3 -g SQLVM-RG --sqlvm-group Cluster `
-    #  -b Str0ngAzur3P@ssword! -p Str0ngAzur3P@ssword! -s Str0ngAzur3P@ssword!
-
-    az sql vm add-to-group -n <VM3 Name> -g <Resource Group Name> --sqlvm-group <cluster name> `
-    -b <bootstrap account password> -p <operator account password> -s <service account password>
-    ```
+   az sql vm add-to-group -n <VM3 Name> -g <Resource Group Name> --sqlvm-group <cluster name> `
+   -b <bootstrap account password> -p <operator account password> -s <service account password>
+   ```
 1. Slouží k přidání instance systému SQL Server jako repliky v rámci skupiny dostupnosti SQL Server Management Studio (SSMS).
-1. Přidáte metadata virtuálního počítače s SQL serverem naslouchací proces:
-    ```cli
-    # Add SQL VM metadata to cluster
-    # example: az sqlvm aglistener add-sqlvm  --group-name Cluster`
-    # --name AGListener` --resource-group SQLVM-RG `
-    #--sqlvm-rid /subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Compute/virtualMachines/SQLVM3
-    
-    az sqlvm aglistener add-sqlvm --group-name <Cluster name> `
-    --name <AG Listener name> --resource-group <RG group name> `
-    --sqlvm-rid <SQL VM resource ID>
-    ```
+1. Přidání metadat virtuálního počítače s SQL serverem k naslouchacímu procesu:
+   ```azurecli
+   # Update the listener metadata with the new VM
+   # example: az sql vm group ag-listener update -n AGListener `
+   # -g sqlvm-rg --group-name Cluster --sqlvms sqlvm1 sqlvm2 sqlvm3
 
-### <a name="removing-a-replica"></a>Odstranění repliky
+   az sql vm group ag-listener update -n <Listener> `
+   -g <RG name> --group-name <cluster name> --sqlvms <SQL VMs, along with new SQL VM>
+   ```
+
+### <a name="remove-a-replica"></a>Odstranění repliky
+
 Odstranění repliky ze skupiny dostupnosti, postupujte takto:
 
 1. Odeberte repliky ze skupiny dostupnosti pomocí SQL Server Management Studio (SSMS). 
 1. Odebrání metadat virtuálního počítače s SQL serverem z naslouchací proces:
-    ```cli
-    #Remove SQL VM metadata from listener
-    # example: az sqlvm aglistener remove-sqlvm --group-name Cluster `
-    --name AGListener` --resource-group SQLVM-RG `
-    --sqlvm-rid /subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Compute/virtualMachines/SQLVM3
-    
-    az sqlvm aglistener remove-sqlvm --group-name <Cluster name> `
-    --name <AG Listener name> --resource-group <RG group name> `
-    --sqlvm-rid <SQL VM resource ID>
-    ``` 
-1. Odebrání virtuálního počítače SQL serveru z clusteru metadat:
+   ```azurecli
+   # Update the listener metadata by removing the VM from the SQLVMs list
+   # example: az sql vm group ag-listener update -n AGListener `
+   # -g sqlvm-rg --group-name Cluster --sqlvms sqlvm1 sqlvm2
 
-    ```cli
-    # Remove SQL VM from cluster metadata
-    #example: az sqlvm remove-from-group --name SQLVM3 --resource-group SQLVM-RG
-    
-    az sqlvm remove from group --name <SQL VM name> --resource-group <RG name> 
-    ```
+   az sql vm group ag-listener update -n <Listener> `
+   -g <RG name> --group-name <cluster name> --sqlvms <SQL VMs that remain>
+   ```
+1. Odebrání virtuálního počítače SQL serveru z clusteru:
+   ```azurecli
+   # Remove SQL VM from cluster
+   # example: az sql vm remove-from-group --name SQLVM3 --resource-group SQLVM-RG
+
+   az sql vm remove-from-group --name <SQL VM name> --resource-group <RG name> 
+   ```
 
 ## <a name="remove-availability-group-listener"></a>Odebrání naslouchacího procesu skupiny dostupnosti
 Pokud později potřebujete odebrat naslouchacího procesu skupiny dostupnosti nakonfigurováno pomocí rozhraní příkazového řádku Azure, musíte projít přes poskytovatele prostředků virtuálního počítače s SQL. Protože naslouchací proces je zaregistrované prostřednictvím poskytovatele prostředků virtuálního počítače s SQL, pouhým odstraněním přes SQL Server Management Studio není dostatečná. Je ve skutečnosti je potřeba odstranit prostřednictvím poskytovatele prostředků virtuálního počítače SQL pomocí Azure CLI. To odebere metadata naslouchacího procesu AG od zprostředkovatele prostředků virtuálního počítače s SQL a fyzicky odstraní naslouchací proces skupiny dostupnosti. 
 
 Následující fragment kódu odstraní naslouchacího procesu skupiny dostupnosti SQL, od obou tohoto poskytovatele prostředků SQL a ze skupiny dostupnosti: 
 
-```cli
+```azurecli
 # Remove the AG listener
-# example: az sqlvm aglistener delete --group-name Cluster --name AGListener --resource-group SQLVM-RG
-az sqlvm aglistener delete --group-name <cluster name> --name <listener name > --resource-group <resource group name>
+# example: az sql vm group ag-listener delete --group-name Cluster --name AGListener --resource-group SQLVM-RG
+
+az sql vm group ag-listener delete --group-name <cluster name> --name <listener name > --resource-group <resource group name>
 ```
 
 ## <a name="next-steps"></a>Další postup

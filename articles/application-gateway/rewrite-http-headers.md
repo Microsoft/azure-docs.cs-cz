@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 67603e326583400e8fc250ea6120297e7a94d101
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e89fe10768331f5b4099ce9a9e2204dd72aa0bff
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520917"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793460"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Přepsání hlavičky protokolu HTTP pomocí služby Application Gateway (public preview)
 
@@ -96,7 +96,7 @@ Tato funkce podporuje přepis adres hlavičky pro následující proměnné na s
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | Vrátí seznam šifer podporovaných klientem          |
 | ciphers_used               | Vrátí řetězec šifry použitý pro navázané připojení SSL |
-| client_ip                  | IP adresa klienta, ze kterého application gateway přijal požadavek. Pokud není reverzní proxy server před application gateway a klienta, pak *client_ip* vrátí IP adresa reverzního proxy serveru. Proměnná tjsi je zvlášť užitečné v situacích, kde chcete přepsat záhlaví X-předané-pro nastavení službou Application Gateway, tak, aby záhlaví obsahuje jenom IP adresy bez informace o portech zákazníkům. |
+| client_ip                  | IP adresa klienta, ze kterého application gateway přijal požadavek. Pokud není reverzní proxy server před application gateway a klienta, pak *client_ip* vrátí IP adresa reverzního proxy serveru. Tato proměnná je zvlášť užitečné v situacích, kde chcete přepsat záhlaví X-předané-pro nastavení službou Application Gateway, tak, aby záhlaví obsahuje jenom IP adresy bez informace o portech zákazníkům. |
 | client_port                | port klienta                                                  |
 | client_tcp_rtt             | informace o klientovi připojení TCP. k dispozici v systémech, které podporují možnost soketu TCP_INFO |
 | client_user                | Pokud používáte ověřování pomocí protokolu HTTP, uživatelské jméno zadané pro ověřování |

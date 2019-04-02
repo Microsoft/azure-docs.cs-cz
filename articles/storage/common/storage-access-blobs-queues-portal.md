@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a4426b665c58dd2c0bf7f5b5b41ebfca158e782
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 3a0d10f373b045058c6df242c4d98f78d04c4490
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444721"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801115"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Pomocí webu Azure portal pro přístup k datům objektu blob nebo fronty
 
@@ -47,11 +47,11 @@ Pro přístup k datům objektu blob nebo fronty na webu Azure Portal pomocí sv�
 
 Předdefinované role, které podporují přístup k datům objektu blob nebo fronty patří:
 
-- [Vlastník dat objektů Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner-preview): Pro POSIX řízení přístupu pro Azure Data Lake Storage Gen2 (preview).
-- [Přispěvatel dat objektu Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview): Oprávnění ke čtení/zápis/odstranění pro objekty BLOB.
-- [Čtenář dat objektu Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader-preview): Oprávnění jen pro čtení pro objekty BLOB.
-- [Přispěvatel dat fronty služby Storage](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor-preview): Oprávnění pro čtení/zápis/delete pro fronty.
-- [Čtenář dat fronty služby Storage](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader-preview): Oprávnění jen pro čtení pro fronty.
+- [Vlastník dat objektů Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): Pro POSIX řízení přístupu pro Azure Data Lake Storage Gen2 (preview).
+- [Přispěvatel dat objektu Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Oprávnění ke čtení/zápis/odstranění pro objekty BLOB.
+- [Čtenář dat objektu Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Oprávnění jen pro čtení pro objekty BLOB.
+- [Přispěvatel dat fronty služby Storage](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Oprávnění pro čtení/zápis/delete pro fronty.
+- [Čtenář dat fronty služby Storage](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader): Oprávnění jen pro čtení pro fronty.
     
 Vlastní role může podporovat různé kombinace stejná oprávnění, poskytuje předdefinované role. Další informace o vytváření vlastních rolí RBAC najdete v tématu [vlastní role pro prostředky Azure](../../role-based-access-control/custom-roles.md) a [pochopení definic rolí pro prostředky Azure](../../role-based-access-control/role-definitions.md).
 

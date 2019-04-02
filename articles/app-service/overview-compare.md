@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 05afbd9a621752b8b665c7d2f68cd8cfcc8a1d1a
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: aac2a0b102d50c8d3f0506c2cc1469a838706703
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54322023"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793838"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porovnání služeb App Service, Virtual Machines, Service Fabric a Cloud Services
 
@@ -29,7 +29,7 @@ Azure App Service je nejlepší volbou pro většinu webových aplikací. Nasazo
 
 Service Fabric je dobrou volbou v případě, že vytváříte novou aplikaci nebo přepisujete existující aplikaci pro využití architektury mikroslužeb. Aplikace spouštěné ve sdíleném fondu počítačů můžou začínat jako malé a podle potřeby se rozrůstat a masivně škálovat na stovky nebo tisíce počítačů. Stavové služby usnadňují konzistentní a spolehlivé ukládání stavu aplikace a Service Fabric automaticky spravuje dělení, škálování a dostupnost služeb za vás.  Service Fabric také podporuje webová rozhraní API s Open Web Interface pro .NET (OWIN) a ASP.NET Core.  V porovnání se službou App Service poskytuje Service Fabric také větší kontrolu nad základní infrastrukturou nebo přímý přístup k ní. Ke svým serverům se můžete vzdáleně připojit nebo na nich nakonfigurovat úlohy při spuštění. Služba Cloud Services je podobná Service Fabric, co se týče úrovně kontroly a snadnosti použití, ale už se jedná o starší službu a pro nová nasazení doporučujeme použít Service Fabric.
 
-Pokud máte existující aplikace, které by pro spouštění ve službě App Service nebo v Service Fabric vyžadovaly výrazné změny, můžete migraci do cloudu zjednodušit zvolením služby Virtual Machines. Správná konfigurace, zabezpečení a údržba virtuálních počítačů však v porovnání se službou Azure App Service a Service Fabric vyžaduje mnohem více času a odborných znalostí v oblasti IT. Pokud zvažujete službu Azure Virtual Machines, nezapomeňte vzít v úvahu náročnost průběžné údržby, kterou vyžadují opravy, aktualizace a správa vašeho prostředí virtuálních počítačů. Azure Virtual Machines je služba IaaS (infrastruktura jako služba), zatímco App Service a Service Fabric jsou službami PaaS (platforma jako služba). 
+Pokud máte existující aplikace, které by pro spouštění ve službě App Service nebo v Service Fabric vyžadovaly výrazné změny, můžete migraci do cloudu zjednodušit zvolením služby Virtual Machines. Správná konfigurace, zabezpečení a údržba virtuálních počítačů však v porovnání se službou Azure App Service a Service Fabric vyžaduje mnohem více času a odborných znalostí v oblasti IT. Pokud zvažujete službu Azure Virtual Machines, nezapomeňte vzít v úvahu náročnost průběžné údržby, kterou vyžadují opravy, aktualizace a správa vašeho prostředí virtuálních počítačů. Azure Virtual Machines je služba IaaS (infrastruktura jako služba), zatímco App Service a Service Fabric jsou službami PaaS (platforma jako služba).
 
 ## <a name="features"></a>Porovnání funkcí
 Následující tabulka porovnává možnosti služeb App Service, Cloud Services, Virtual Machines a Service Fabric a pomůže vám správně se rozhodnout. Aktuální informace o smlouvách SLA pro jednotlivé možnosti najdete na stránce [Smlouvy o úrovni služeb Azure](https://azure.microsoft.com/support/legal/sla/).
@@ -78,7 +78,7 @@ Tady je několik běžných scénářů aplikací s doporučeními, jaká možno
 * [Chci hostovat rozhraní REST API nebo webovou službu pro mobilní klienty.](#mobile)
 
 ### <a id="onprem"></a>Potřebuji webový front-end se zpracováním na pozadí a back-end s databází pro provoz obchodních aplikací integrovaných s místními prostředky
-Azure App Service je skvělým řešením pro složité obchodní aplikace. Umožňuje vyvíjet aplikace, které se automaticky škálují na platformě s vyrovnáváním zatížení, jsou zabezpečené pomocí služby Active Directory a připojují se k místním prostředkům. Usnadňuje správu těchto aplikací prostřednictvím špičkového portálu a rozhraní API a díky nástrojům App Insights umožňuje získat přehled o způsobu, jakým zákazníci tyto aplikace používají. Funkce [WebJobs][Webjobs] umožňuje spouštět procesy a úlohy na pozadí jako součást vrstvy webu, zatímco hybridní možnosti připojení a funkce virtuálních sítí usnadňují zpětné připojení k místním prostředkům. Azure App Service poskytuje pro webové aplikace smlouvy SLA s 99,9% dostupností a umožňuje:
+Azure App Service je skvělým řešením pro složité obchodní aplikace. Umožňuje vyvíjet aplikace, které se automaticky škálují na platformě s vyrovnáváním zatížení, jsou zabezpečené pomocí služby Active Directory a připojují se k místním prostředkům. Usnadňuje správu těchto aplikací prostřednictvím špičkového portálu a rozhraní API a díky nástrojům App Insights umožňuje získat přehled o způsobu, jakým zákazníci tyto aplikace používají. [Webjobs] [ Webjobs] funkce vám umožňuje spouštět procesy na pozadí a úkoly jako součást vrstvy webu, zatímco hybridní možnosti připojení a funkce virtuálních sítí usnadňují připojit zpět k místním prostředkům. Azure App Service poskytuje pro webové aplikace smlouvy SLA s 99,9% dostupností a umožňuje:
 
 * Spolehlivý provoz aplikací na cloudové platformě s automatickými opravami.
 * Automatické škálování napříč globální sítí datacenter.
@@ -145,7 +145,7 @@ Pokud se vaše open source architektura podporuje ve službě App Service, pak s
 Pokud se vaše open source architektura ve službě App Service nepodporuje, můžete k jejímu provozu použít některou z dalších možností hostování webů Azure. V případě služby Virtual Machines instalujete a konfigurujete software v imagi počítače, která může být založená na Windows nebo Linuxu.
 
 ### <a id="lob"></a>Mám obchodní aplikaci, která vyžaduje připojení k podnikové síti
-Pokud chcete vytvořit obchodní aplikaci, váš web možná bude vyžadovat přímý přístup ke službám nebo datům v podnikové síti. To je možné v App Service, Service Fabric a službě Virtual Machines pomocí [služby Azure Virtual Network](/azure/virtual-network/). Ve službě App Service můžete použít [funkci integrace virtuální sítě](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/), která umožňuje provoz vašich aplikací Azure, jako kdyby byly ve vaší podnikové síti.
+Pokud chcete vytvořit obchodní aplikaci, váš web možná bude vyžadovat přímý přístup ke službám nebo datům v podnikové síti. To je možné v App Service, Service Fabric a službě Virtual Machines pomocí [služby Azure Virtual Network](/azure/virtual-network/). Ve službě App Service můžete použít [funkci integrace virtuální sítě](/azure/app-service/web-sites-integrate-with-vnet), což umožňuje, aby vaše aplikace Azure a spustit jako by byly v podnikové síti.
 
 ### <a id="mobile"></a>Chci hostovat rozhraní REST API nebo webovou službu pro mobilní klienty
 Webové služby založené na protokolu HTTP umožňují podporovat širokou škálu klientů, včetně mobilních klientů. Rozhraní, jako je webové rozhraní API ASP.NET, se integrují se sadou Visual Studio a usnadňují tak vytváření a využívání služeb REST.  Tyto služby zveřejňuje webový koncový bod, takže je možné pro podporu tohoto scénáře použít jakoukoli techniku hostování webů v Azure. App Service je však skvělou volbou pro hostování rozhraní REST API. App Service umožňuje:
@@ -157,8 +157,6 @@ Webové služby založené na protokolu HTTP umožňují podporovat širokou šk
 
 > [!NOTE]
 > Pokud chcete začít používat Azure App Service před registrací účtu, přejděte na adresu <a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a>, kde si můžete hned a bezplatně vytvořit krátkodobou úvodní aplikaci ve službě Azure App Service. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
-> 
-> 
 
 ## <a id="nextsteps"></a>Další kroky
 Další informace o těchto třech možnostech hostování webů najdete v tématu [Představujeme Azure](../fundamentals-introduction-to-azure.md).

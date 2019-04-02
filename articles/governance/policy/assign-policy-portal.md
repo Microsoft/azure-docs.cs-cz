@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: af14b242ae7578e1f9797895bd18c37231959ac9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 99c9caa167b1615705adc29193bc395b0c9e2a66
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342707"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803982"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources"></a>Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy
 
@@ -31,15 +31,15 @@ V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte *Audit v
 
 1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
 
-   ![Hledání zásad](./media/assign-policy-portal/search-policy.png)
+   ![Hledání zásad ve všech služeb](./media/assign-policy-portal/search-policy.png)
 
 1. Na levé straně stránky služby Azure Policy vyberte **Přiřazení**. Přiřazení je zásada, která byla přiřazena, aby proběhla v rámci zadaného oboru.
 
-   ![Výběr přiřazení](./media/assign-policy-portal/select-assignments.png)
+   ![Vyberte stránku přiřazení na stránce Přehled zásad](./media/assign-policy-portal/select-assignments.png)
 
 1. V horní části stránky **Zásady – Přiřazení** vyberte **Přiřadit zásadu**.
 
-   ![Přiřazení definice zásady](./media/assign-policy-portal/select-assign-policy.png)
+   ![Přiřazení definice zásady přiřazení stránce](./media/assign-policy-portal/select-assign-policy.png)
 
 1. Na stránce **Přiřadit zásadu** vyberte **Obor** tak, že kliknete na tři tečky a vyberete skupinu pro správu nebo předplatné. Volitelně můžete vybrat skupinu prostředků. Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat.  Pak v dolní části stránky **Obor** klikněte na **Vybrat**.
 
@@ -71,7 +71,7 @@ Nyní jste připraveni identifikovat prostředky, které nedodržují předpisy,
 
 Vyberte **dodržování předpisů** v levé části stránky. Vyhledejte **Audit virtuálních počítačů, které nepoužívají spravované disky** přiřazení zásady, které jste vytvořili.
 
-![Dodržování zásad](./media/assign-policy-portal/policy-compliance.png)
+![Podrobnosti o dodržování předpisů na stránce zásady dodržování předpisů](./media/assign-policy-portal/policy-compliance.png)
 
 Pokud existují nějaké stávající prostředky, které nedodržují předpisy tohoto nového přiřazení, zobrazí se pod **nekompatibilní prostředky**.
 
@@ -94,7 +94,7 @@ Odebrat přiřazení vytvořené, postupujte podle těchto kroků:
 
 1. Klikněte pravým tlačítkem na přiřazení zásady **Audit virtuálních počítačů, které nepoužívají spravované disky** a vyberte **Odstranit přiřazení**.
 
-   ![Odstranění přiřazení](./media/assign-policy-portal/delete-assignment.png)
+   ![Odstranit přiřazení ze stránky dodržování předpisů](./media/assign-policy-portal/delete-assignment.png)
 
 ## <a name="next-steps"></a>Další postup
 

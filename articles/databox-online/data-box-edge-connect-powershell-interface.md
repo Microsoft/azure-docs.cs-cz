@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: alkohli
-ms.openlocfilehash: a3096729b2430adf0fd884fc03e3b051b17f5b51
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b4d047f4266d11a5f6b77f33054eb93e31f7090b
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660456"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791571"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Správa Azure Data Box hraničního zařízení pomocí Windows Powershellu
 
@@ -59,6 +59,7 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 Další informace o certifikátech naleznete v části [certifikáty Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) nebo [nainstalujte certifikáty na bránu](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
 
 ## <a name="view-device-information"></a>Zobrazení informací o zařízení
+
  
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
@@ -75,9 +76,10 @@ Pokud výpočetní roli je nakonfigurovaný na vašem zařízení, můžete tak�
 
     Následující příklad ukazuje použití této rutiny:
 
-    ```
+    ```powershell
     Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username/password" -RoleInstanceName "IotRole" -FullLogCollection
     ```
+
     Tady je popis parametrů použitých pro tuto rutinu:
     - `Path`: Zadejte síťovou cestu ke sdílené složce, ve kterém chcete vytvořit balíček protokolu výpočetní prostředky.
     - `Credential`: Zadejte uživatelské jméno a heslo pro sdílené síťové složce.

@@ -15,17 +15,19 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d6e453819ad749972de89658fa695d803d8e222
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 95fc65dd849c564ac88993161ffa4b27017488b4
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898818"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793590"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalace agenta služby Azure AD Connect Health
+
 Tento dokument vás provede procesem instalace a konfigurace agentů služby Azure AD Connect Health. Agenty si můžete stáhnout [tady](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent).
 
 ## <a name="requirements"></a>Požadavky
+
 Následující tabulka představuje seznam požadavků pro používání služby Azure AD Connect Health.
 
 | Požadavek | Popis |
@@ -42,6 +44,7 @@ Následující tabulka představuje seznam požadavků pro používání služby
 |Zákaz FIPS|Agenti Azure AD Connect Health nepodporují FIPS.|
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Odchozí připojení ke koncovým bodům služby Azure
+
  Agent během instalace a za běhu vyžaduje připojení ke koncovým bodům služby Azure AD Connect Health. Pokud odchozího připojení je blokováno pomocí bran firewall, ujistěte se, že ve výchozím nastavení nejsou blokované následující adresy URL. Nezakazujte monitorování zabezpečení nebo kontrola z těchto adres URL, ale mohly, stejně jako ostatní internetový provoz. Umožňují komunikaci s koncovými body služby Azure AD Connect Health. Další informace o [kontrole odchozího připojení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)
 
 | Doménové prostředí | Požadované koncové body služby Azure |
@@ -52,6 +55,7 @@ Následující tabulka představuje seznam požadavků pro používání služby
 
 
 ## <a name="download-and-install-the-azure-ad-connect-health-agent"></a>Stažení a instalace agenta služby Azure AD Connect Health
+
 * Ověřte, že [splňujete požadavky](how-to-connect-health-agent-install.md#requirements) pro službu Azure AD Connect Health.
 * Začínáme s využitím Azure AD Connect Health pro službu AD FS
     * [Stažení agenta Azure AD Connect Health pro službu AD FS](https://go.microsoft.com/fwlink/?LinkID=518973)
@@ -63,6 +67,7 @@ Následující tabulka představuje seznam požadavků pro používání služby
     * [Pokyny k instalaci](#installing-the-azure-ad-connect-health-agent-for-ad-ds)
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>Instalace agenta Azure AD Connect Health pro službu AD FS
+
 > [!NOTE]
 > Server AD FS by měl být jiný než váš synchronizační server. Neinstalujte agenta AD FS na synchronizační server.
 >
@@ -97,6 +102,7 @@ Pokud chcete ověřit úspěšnou instalaci agenta, vyhledejte na serveru násle
 ![Ověření Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
 
 ### <a name="agent-installation-on-windows-server-2008-r2-servers"></a>Instalace agenta na servery se systémem Windows Server 2008 R2
+
 Kroky pro servery se systémem Windows Server 2008 R2:
 
 1. Zkontrolujte, jestli server používá aktualizaci Service Pack 1 nebo novější.
@@ -109,6 +115,7 @@ Kroky pro servery se systémem Windows Server 2008 R2:
 4. Další informace o instalaci Windows PowerShell 4.0 na server se systémem Windows Server 2008 R2 najdete v článku na wikiwebu [tady](https://social.technet.microsoft.com/wiki/contents/articles/20623.step-by-step-upgrading-the-powershell-version-4-on-2008-r2.aspx).
 
 ### <a name="enable-auditing-for-ad-fs"></a>Povolení auditování služby AD FS
+
 > [!NOTE]
 > Tato část se vztahuje pouze na servery služby AD FS. Na proxy serverech webových aplikací tyto kroky provádět nemusíte.
 >
@@ -116,6 +123,7 @@ Kroky pro servery se systémem Windows Server 2008 R2:
 Aby mohla funkce analýzy využití shromažďovat a analyzovat data, potřebuje agent Azure AD Connect Health informace z protokolů auditu služby AD FS. Tyto protokoly nejsou ve výchozím nastavení povolené. Pokud chcete na svých serverech služby AD FS povolit auditování služby AD FS a najít protokoly auditu služby AD FS, postupujte následovně.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2008-r2"></a>Povolení auditování služby AD FS v systému Windows Server 2008 R2
+
 1. Klikněte na **Start**, najeďte myší na **Programy**, potom na **Nástroje pro správu** a potom klikněte na **Místní zásady zabezpečení**.
 2. Přejděte do složky **Security Settings\Local Policies\User Rights Management** a poklikejte na položku **Generovat audity zabezpečení**.
 3. Na kartě **Místní nastavení zabezpečení** zkontrolujte, jestli je tam uvedený účet služby AD FS 2.0. Pokud tam není, klikněte na **Přidat uživatele nebo skupinu** a přidejte ho do seznamu. Potom klikněte na **OK**.
@@ -129,6 +137,7 @@ Aby mohla funkce analýzy využití shromažďovat a analyzovat data, potřebuje
 10. Klikněte na **OK**.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>Povolení auditování služby AD FS v systému Windows Server 2012 R2
+
 1. Otevřením **Správce serveru** na úvodní obrazovce nebo Správce serveru na hlavním panelu na ploše otevřete **Místní zásady zabezpečení** a klikněte na **Nástroje/Místní zásady zabezpečení**.
 2. Přejděte do složky **Security Settings\Local Policies\User Rights Management** a poklikejte na položku **Generovat audity zabezpečení**.
 3. Na kartě **Místní nastavení zabezpečení** zkontrolujte, jestli je tam uvedený účet služby AD FS. Pokud tam není, klikněte na **Přidat uživatele nebo skupinu** a přidejte ho do seznamu. Potom klikněte na **OK**.
@@ -141,6 +150,7 @@ Aby mohla funkce analýzy využití shromažďovat a analyzovat data, potřebuje
 9. Zaškrtněte políčka **Úspěšné audity a Neúspěšné audity** a klikněte na tlačítko **OK**.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>Povolení auditování služby AD FS v systému Windows Server 2016
+
 1. Otevřením **Správce serveru** na úvodní obrazovce nebo Správce serveru na hlavním panelu na ploše otevřete **Místní zásady zabezpečení** a klikněte na **Nástroje/Místní zásady zabezpečení**.
 2. Přejděte do složky **Security Settings\Local Policies\User Rights Management** a poklikejte na položku **Generovat audity zabezpečení**.
 3. Na kartě **Místní nastavení zabezpečení** zkontrolujte, jestli je tam uvedený účet služby AD FS. Pokud tam není, klikněte na **Přidat uživatele nebo skupinu** a přidejte účet služby AD FS do seznamu. Potom klikněte na **OK**.
@@ -157,6 +167,7 @@ Poznámka: Ve výchozím nastavení je povolena úroveň Basic. Další informac
 
 
 #### <a name="to-locate-the-ad-fs-audit-logs"></a>Nalezení protokolů auditu služby AD FS
+
 1. Otevřete **Prohlížeč událostí**.
 2. Přejděte na Protokoly systému Windows a vyberte **Zabezpečení**.
 3. Na pravé straně klikněte na **Filtrovat aktuální protokoly**.
@@ -172,6 +183,7 @@ Poznámka: Ve výchozím nastavení je povolena úroveň Basic. Další informac
 
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-sync"></a>Instalace agenta Azure AD Connect Health pro synchronizaci
+
 Agent Azure AD Connect Health pro synchronizaci se v posledním sestavení Azure AD Connect instaluje automaticky. Pokud chcete používat Azure AD Connect pro synchronizaci, stáhněte si nejnovější verzi Azure AD Connect a nainstalujte ji. Nejnovější verzi můžete stáhnout [tady](https://www.microsoft.com/download/details.aspx?id=47594).
 
 Pokud chcete ověřit úspěšnou instalaci agenta, vyhledejte na serveru následující služby. Pokud jste konfiguraci dokončili, měly by již být spuštěné. V opačném případě jsou zastavené, dokud se konfigurace nedokončí.
@@ -187,6 +199,7 @@ Pokud chcete ověřit úspěšnou instalaci agenta, vyhledejte na serveru násle
 >
 
 ## <a name="manual-azure-ad-connect-health-for-sync-registration"></a>Ruční registrace Azure AD Connect Health pro synchronizaci
+
 Pokud se registrace agenta Azure AD Connect Health pro synchronizaci po úspěšné instalaci Azure AD Connect nepodaří, můžete k ruční registraci agenta použít následující příkaz PowerShellu.
 
 > [!IMPORTANT]
@@ -208,6 +221,7 @@ Příkaz přijímá následující parametry:
 Po zobrazení výzvy k ověření použijte stejný účet globálního správce (například admin@domain.onmicrosoft.com), který jste použili ke konfiguraci Azure AD Connect.
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-ds"></a>Instalace agenta Azure AD Connect Health pro službu AD DS
+
 Pokud chcete spustit instalaci agenta, poklikejte na stažený soubor .exe. Na první obrazovce klikněte na Instalovat.
 
 ![Ověření Azure AD Connect Health](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install1.png)
@@ -236,14 +250,15 @@ Pokud jste konfiguraci dokončili, tyto služby by již měly být spuštěny. V
 ![Ověření Azure AD Connect Health](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install5.png)
 
 ### <a name="quick-agent-installation-in-multiple-servers"></a>Instalace agenta rychlé na více serverech
+
 1. Vytvoření uživatelského účtu ve službě Azure AD s heslem.
 2. Přiřazení **vlastníka** role pro tohoto místního účtu ve službě Azure AD Connect Health přes portál AAD. Postupujte podle kroků [tady](how-to-connect-health-operations.md#manage-access-with-role-based-access-control). Přiřaďte roli na všechny instance služby. 
 3. Stáhněte soubor MSI .exe v místní řadič domény pro instalaci.
 4. Spusťte následující skript k registraci. Nahraďte parametry vytvoření nového uživatelského účtu a jeho heslo. 
 
-```
+```powershell
 AdHealthAddsAgentSetup.exe /quiet
-sleep 30
+Start-Sleep 30
 $userName = "NEWUSER@DOMAIN"
 $secpasswd = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
 $myCreds = New-Object System.Management.Automation.PSCredential ($userName, $secpasswd)
@@ -252,6 +267,7 @@ import-module "C:\Program Files\Azure Ad Connect Health Adds Agent\PowerShell\Ad
 Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential $password
 
 ```
+
 1. Až budete hotoví, můžete odebrat přístup pro místní účet pomocí jednoho nebo více z následujících akcí: 
     * Odebrání přiřazení role pro místní účet pro službu AAD Connect Health
     * Otočte heslo pro místní účet. 
@@ -259,9 +275,10 @@ Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential 
     * Odstranit místní účet AAD  
 
 ## <a name="agent-registration-using-powershell"></a>Registrace agenta pomocí PowerShellu
+
 Po nainstalování odpovídajícího agenta můžete provést krok registrace agenta pomocí následujících příkazů PowerShellu, v závislosti na roli. Otevřete okno PowerShellu a spusťte příslušný příkaz:
 
-```
+```powershell
     Register-AzureADConnectHealthADFSAgent
     Register-AzureADConnectHealthADDSAgent
     Register-AzureADConnectHealthSyncAgent
@@ -273,13 +290,14 @@ Tyto příkazy přijímají jako parametr „Credential“, který určuje, že 
 * Můžete použít jakoukoli identitu služby Azure AD s přístupem k registraci agentů, u které není povolená služba MFA.
 * Ve výchozím nastavení mají přístup k provádění registrace agentů globální správci. Provádění tohoto kroku můžete povolit také dalším méně privilegovaným identitám. Další informace o [Řízení přístupu na základě rolí](how-to-connect-health-operations.md#manage-access-with-role-based-access-control).
 
-```
+```powershell
     $cred = Get-Credential
     Register-AzureADConnectHealthADFSAgent -Credential $cred
 
 ```
 
 ## <a name="configure-azure-ad-connect-health-agents-to-use-http-proxy"></a>Konfigurace agentů Azure AD Connect Health k používání proxy serveru HTTP
+
 Agenty Azure AD Connect Health můžete nakonfigurovat, aby používaly proxy server HTTP.
 
 > [!NOTE]
@@ -290,6 +308,7 @@ Agenty Azure AD Connect Health můžete nakonfigurovat, aby používaly proxy se
 >
 
 ### <a name="change-health-agent-proxy-configuration"></a>Změna konfigurace proxy serveru agenta stavu
+
 Při konfiguraci agenta Azure AD Connect Health k používání proxy serveru HTTP máte následující možnosti.
 
 > [!NOTE]
@@ -299,17 +318,21 @@ Při konfiguraci agenta Azure AD Connect Health k používání proxy serveru HT
 >
 
 #### <a name="import-existing-proxy-settings"></a>Import existujících nastavení proxy serveru
+
 ##### <a name="import-from-internet-explorer"></a>Import z Internet Exploreru
+
 Nastavení proxy serveru HTTP z Internet Exploreru je možné importovat, aby je agenti Azure AD Connect Health mohli používat. Na všech serverech se spuštěným agentem Health spusťte následující příkaz prostředí PowerShell:
 
     Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
 
 ##### <a name="import-from-winhttp"></a>Import ze služby WinHTTP
+
 Nastavení proxy serveru ze služby WinHTTP je možné importovat, aby je agenti Azure AD Connect Health mohli používat. Na všech serverech se spuštěným agentem Health spusťte následující příkaz prostředí PowerShell:
 
     Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
 
 #### <a name="specify-proxy-addresses-manually"></a>Ruční zadání adres proxy serverů
+
 Na všech serverech se spuštěným agentem Health můžete ručně určit proxy server spuštěním následujícího příkazu prostředí PowerShell:
 
     Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
@@ -320,18 +343,21 @@ Příklad: *Set-AzureAdConnectHealthProxySettings - HttpsProxyAddress myproxyser
 * Port můžete vynechat. Pokud tento parametr vynecháte, bude jako výchozí vybrán port 443.
 
 #### <a name="clear-existing-proxy-configuration"></a>Vymazání existující konfigurace proxy serveru
+
 Existující konfiguraci proxy serveru můžete vymazat spuštěním následujícího příkazu:
 
     Set-AzureAdConnectHealthProxySettings -NoProxy
 
 
 ### <a name="read-current-proxy-settings"></a>Čtení aktuálního nastavení proxy serveru
+
 Nastavení aktuálně nakonfigurovaného proxy serveru můžete přečíst spuštěním následujícího příkazu:
 
     Get-AzureAdConnectHealthProxySettings
 
 
 ## <a name="test-connectivity-to-azure-ad-connect-health-service"></a>Test připojení ke službě Azure AD Connect Health
+
 Při provozu může dojít k potížím, které způsobí, že agent Azure AD Connect Health ztratí připojení ke službě Azure AD Connect Health. Patří sem problémy se sítí, problémy s oprávněním a další příčiny.
 
 Pokud agenta nemůže odesílat data do služby Azure AD Connect Health po dobu delší než dvě hodiny, je vyznačené na portálu následující výstraha: "Data služby health Service není aktuální." Ověřit, zda ovlivněný agent Azure AD Connect Health může odesílat data do služby Azure AD Connect Health, můžete spuštěním následujícího příkazu prostředí PowerShell:
@@ -350,6 +376,7 @@ Parametr „role“ v současnosti přijímá následující hodnoty:
 >
 
 ## <a name="related-links"></a>Související odkazy
+
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Operace služby Azure AD Connect Health](how-to-connect-health-operations.md)
 * [Používání služby Azure AD Connect Health se službou AD FS](how-to-connect-health-adfs.md)

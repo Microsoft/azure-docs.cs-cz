@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4e9080cfc863b4253a4eb4d427f21df74bb08874
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: e54c18eb405ffa36260e9980705784130bc0ca4c
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54186732"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802997"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Rychlý start: Vytvoření serveru – portál
 
@@ -46,7 +46,7 @@ Tento rychlý start popisuje, jak pomocí portálu vytvořit prostředek serveru
    * **Nastavení úložiště zálohování**: Volitelné. Pokud už máte [účet úložiště](../storage/common/storage-introduction.md), můžete ho zadat jako výchozí účet úložiště pro zálohování modelové databáze. Později můžete zadat také nastavení [zálohování a obnovení](analysis-services-backup.md).
    * **Vypršení platnosti klíče úložiště**: Volitelné. Zadejte dobu platnosti klíče úložiště.
 
-Vytvoření serveru obvykle trvá necelou minutu. Pokud jste vybrali možnost **Přidat na portál**, přejděte na portál a prohlédněte si nový server. Případně přejděte do části **Všechny služby** > **Analysis Services** a zkontrolujte, jestli je server připravený.
+Vytvoření serveru obvykle trvá necelou minutu. Pokud jste vybrali možnost **Přidat na portál**, přejděte na portál a prohlédněte si nový server. Případně přejděte do části **Všechny služby** > **Analysis Services** a zkontrolujte, jestli je server připravený. Servery podporovat tabulkové modely na úrovni kompatibility 1200 nebo vyšší. Úrovně kompatibility modelu se zadává v sadě SSDT nebo SSMS.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -59,6 +59,6 @@ Pokud už server nepotřebujete, odstraňte ho. Na stránce **Přehled** vašeho
 V tomto rychlém startu jste zjistili, jak vytvořit server v předplatném Azure. Když teď máte server, můžete ho zabezpečit nakonfigurováním (volitelné) brány firewall serveru. Na server také můžete přímo z portálu přidat základní ukázkový datový model. Na ukázkovém modelu se naučíte konfigurovat role modelové databáze a testovat připojení klientů. Ve výuce pokračujte kurzem, ve kterém přidáte ukázkový model.
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)   
+> [Rychlé zprovoznění: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)   
 > [!div class="nextstepaction"]
 > [Kurz: Přidání ukázkový model na server](analysis-services-create-sample-model.md)

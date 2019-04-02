@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a2ec36a99b2940fa662b0d9bd16b06777684db2f
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: c8afa671a323e37a99be8b5a43d0a4823fe1877a
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448058"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58800872"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Řešení potíží s Desired State Configuration (DSC)
 
@@ -28,13 +28,13 @@ Tento článek obsahuje informace o řešení potíží s Desired State Configur
 
 Při pokusu o konfiguraci DSC odstranit z portálu, se zobrazí následující chyba:
 
-```
+```error
 An error occured while deleteing the DSC configuration '<name>'.  Error-details: The arguement configurationName with the value <name> is not valid.  Valid configuration names can contain only letters,  numbers, and underscores.  The name must start with a letter.  The length of the name must be between 1 and 64 characters.
 ```
 
 #### <a name="cause"></a>Příčina
 
-Toto je dočasný problém, která je naplánována vyřešit.
+Tato chyba je dočasný problém, která je naplánována vyřešit.
 
 #### <a name="resolution"></a>Řešení
 
@@ -48,7 +48,7 @@ Toto je dočasný problém, která je naplánována vyřešit.
 
 Uzel má sestava s **neúspěšné** stavu a který obsahuje chybu:
 
-```
+```error
 The attempt to get the action from server https://<url>//accounts/<account-id>/Nodes(AgentId=<agent-id>)/GetDscAction failed because a valid configuration <guid> cannot be found.
 ```
 
@@ -58,11 +58,11 @@ K této chybě obvykle dochází, když uzlu je přiřazen název konfigurace (n
 
 #### <a name="resolution"></a>Řešení
 
-* Ujistěte se, že přiřazujete uzel s "název konfigurace uzlu" a ne "konfigurace název".
+* Ujistěte se, že jste přiřazení uzel s "název konfigurace uzlu" a ne "konfigurace název".
 * Konfigurace uzlu můžete přiřadit k uzlu pomocí webu Azure portal nebo pomocí rutiny Powershellu.
 
-  * Pokud chcete přiřadit konfiguraci uzlu k uzlu pomocí webu Azure portal, otevřete **uzly DSC** stránce, pak vyberte uzel a klikněte na **přiřadit konfiguraci uzlu** tlačítko.  
-  * Chcete-li přiřadit konfiguraci uzlu k uzlu pomocí rutiny Powershellu, použijte **Set-AzureRmAutomationDscNode** rutiny
+  * Chcete-li přiřadit konfiguraci uzlu k uzlu pomocí webu Azure portal, otevřete **uzly DSC** stránce, pak vyberte uzel a klikněte na **přiřadit konfiguraci uzlu** tlačítko.  
+  * Pokud chcete přiřadit konfiguraci uzlu k uzlu pomocí rutiny Powershellu, použijte **Set-AzureRmAutomationDscNode** rutiny
 
 ### <a name="no-mof-files"></a>Scénář: Žádná konfigurace uzlu (soubory MOF) byly vytvořeny při kompilaci konfigurace
 
@@ -70,7 +70,7 @@ K této chybě obvykle dochází, když uzlu je přiřazen název konfigurace (n
 
 Pozastaví úlohu kompilace DSC a došlo k chybě:
 
-```
+```error
 Compilation completed successfully, but no node configuration.mofs were generated.
 ```
 
@@ -91,7 +91,7 @@ Některé z následujících řešení tento problém vyřešit:
 
 Výstupy agenta DSC:
 
-```
+```error
 No instance found with given property values
 ```
 
@@ -101,7 +101,7 @@ Upgradovaly verzi WMF a WMI dojít k poškození.
 
 #### <a name="resolution"></a>Řešení
 
-K vyřešení problému postupujte podle pokynů [DSC – známé problémy a omezení](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc) článku.
+Pokud chcete problém vyřešit, postupujte podle pokynů [DSC – známé problémy a omezení](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc) článku.
 
 ### <a name="issue-using-credential"></a>Scénář: Nelze použít pověření v konfiguraci DSC
 
@@ -109,7 +109,7 @@ K vyřešení problému postupujte podle pokynů [DSC – známé problémy a om
 
 Úlohy kompilace DSC byla pozastavena kvůli chybě:
 
-```
+```error
 System.InvalidOperationException error processing property 'Credential' of type <some resource name>: Converting and storing an encrypted password as plaintext is allowed only if PSDscAllowPlainTextPassword is set to true.
 ```
 
@@ -119,11 +119,11 @@ Přihlašovací údaj jste použili v konfiguraci, ale neposkytli správné **Co
 
 #### <a name="resolution"></a>Řešení
 
-* Ujistěte se, že a zajistěte tak předání správné **ConfigurationData** nastavit **PSDscAllowPlainTextPassword** na hodnotu true pro každou konfiguraci uzlu uvedená v konfiguraci. Další informace najdete v tématu [prostředky v Azure Automation DSC](../automation-dsc-compile.md#assets).
+* Ujistěte se, že a zajistěte tak předání správné **ConfigurationData** nastavit **PSDscAllowPlainTextPassword** na hodnotu true pro každou konfiguraci uzlu, který je uveden v konfiguraci. Další informace najdete v tématu [prostředky v Azure Automation DSC](../automation-dsc-compile.md#assets).
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud nenalezli váš problém nebo nepovedlo se vyřešit vaše potíže, navštíví některý z následujících kanálů pro další podporu:
+Pokud nezobrazila váš problém nebo nelze vyřešit vaše potíže, navštíví některý z následujících kanálů pro další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
 * Spojte se s [@AzureSupport](https://twitter.com/azuresupport). Tento oficiální účet Microsoft Azure pomáhá vylepšovat uživatelské prostředí tím, že propojuje komunitu Azure s vhodnými zdroji: odpověďmi, podporou a odborníky.

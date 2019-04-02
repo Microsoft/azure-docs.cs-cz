@@ -6,19 +6,22 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/26/2019
+ms.date: 03/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6b5ef0f165433e2dd0685aa0e4f64bd04bf5c823
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902242"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762935"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
 Spuštění/zastavení virtuálních počítačů mimo špičku řešení spustí a zastaví virtuální počítače Azure na uživatelské plány, poskytuje přehledy prostřednictvím protokoly Azure monitoru a posílání e-mailů volitelné [skupiny akcí](../azure-monitor/platform/action-groups.md). Azure Resource Manager a klasické virtuální počítače podporuje pro většinu scénářů.
+
+> [!NOTE]
+> Spuštění/zastavení virtuálních počítačů mimo špičku, které řešení je testovaná s moduly Azure, které jsou importovány do vašeho účtu Automation, když nasadíte řešení. Řešení aktuálně nefunguje s novějšími verzemi modulu Azure. To ovlivní pouze účet Automation, který používáte ke spouštění spouštění/zastavování virtuálních počítačů špičku. Můžete stále použít novější verze modulu Azure v jiné účty služby Automation, jak je popsáno v [aktualizace modulů Azure Powershellu ve službě Azure Automation](automation-update-azure-modules.md)
 
 Toto řešení poskytuje možnost automatizace decentralizované s nízkými náklady pro uživatele, kteří chtějí optimalizovat náklady na jejich virtuální počítač. S tímto řešením můžete:
 

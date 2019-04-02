@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 42a70f7ea21a58f40f7786d6c6f1a51093923f83
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 538015f3cd26d451285f1fd66853366f814f3b0a
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838013"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805564"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických plány prostřednictvím parametrů
 
@@ -67,11 +67,11 @@ Hodnota parametru definované v definici plán, podle kterého se volá **static
 
 1. Artefakty do podrobný plán, které mají parametr možnosti Zobrazit **naplněných parametrů X z Y** v **parametry** sloupce. Klikněte na řádek artefaktů můžete upravit parametry artefaktů.
 
-   ![Parametry podrobného plánu](../media/parameters/parameter-column.png)
+   ![Parametry podrobného plánu na definici podrobného plánu](../media/parameters/parameter-column.png)
 
 1. **Upravit artefaktů** stránce se zobrazí hodnota možnosti pro artefakt kliknuli. Každý parametr na artefakt má název, hodnota pole a zaškrtávací políčko. Nastavit pole není zaškrtnuto, aby byl **statický parametr**. V níže uvedeném příkladu, pouze _umístění_ je **statický parametr** je na něm není zaškrtnuto a _název skupiny prostředků_ je zaškrtnuté políčko.
 
-   ![Statické parametry podrobného plánu](../media/parameters/static-parameter.png)
+   ![Statické parametry podrobného plánu na artefakt podrobného plánu](../media/parameters/static-parameter.png)
 
 #### <a name="setting-static-parameters-from-rest-api"></a>Nastavení statické parametry z rozhraní REST API
 
@@ -182,7 +182,7 @@ Je opakem statický parametr **dynamického parametru**. Tento parametr není de
 
 1. Na **přiřazení podrobného plánu** stránky, vyhledejte **artefaktů parametry** oddílu. Každý artefakt s alespoň jedním **dynamického parametru** zobrazí artefaktů a možnosti konfigurace. Zadejte požadované hodnoty pro parametry před přiřazením podrobný plán. V následujícím příkladu _název_ je **dynamického parametru** , který musí být definován k dokončení přiřazení podrobného plánu.
 
-   ![Dynamický parametr podrobného plánu](../media/parameters/dynamic-parameter.png)
+   ![Dynamický parametr podrobného plánu během přiřazení podrobného plánu](../media/parameters/dynamic-parameter.png)
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Nastavení dynamických parametrů z rozhraní REST API
 
@@ -241,8 +241,8 @@ Artefakty pro skupinu prostředků, které jsou definovány pomocí "název šab
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [podrobný plán životního cyklu](lifecycle.md).
-- Zjistěte, jak přizpůsobit [podrobný plán pořadí řazení](sequencing-order.md).
-- Zjistěte, jak se využívání [podrobný plán uzamčení prostředků](resource-locking.md).
-- Zjistěte, jak [aktualizovat existující přiřazení](../how-to/update-existing-assignments.md).
-- Řešení problémů při přiřazení podrobného plánu se [obecné řešení potíží s](../troubleshoot/general.md).
+- Další informace o [životním cyklu podrobného plánu](lifecycle.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](resource-locking.md)
+- Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)
+- Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)

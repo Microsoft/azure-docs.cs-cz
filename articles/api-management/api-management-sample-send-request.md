@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: bfb08cb3bb81917414e4d34afe47964b738980e7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: adb7329249570750002f04fb72465698f869afdc
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970174"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792480"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Použití externích služeb ze služby Azure API Management
 Zásady, které jsou k dispozici ve službě Azure API Management můžete provádět řadu užitečnou práci čistě na základě příchozího požadavku, odchozí odpovědi a informace o základní konfiguraci. Ale nebudou moct komunikovat s externími službami ze služby API Management otevře zásad a mnoho více příležitostí.
@@ -27,7 +27,7 @@ Zásady, které jsou k dispozici ve službě Azure API Management můžete prov�
 Jste předtím viděli, jak pracovat [služby Azure Event Hubs pro protokolování, monitorování a analýze](api-management-log-to-eventhub-sample.md). Tento článek popisuje zásady, které umožňují pracovat s libovolnou externí službu založenou na protokolu HTTP. Tyto zásady je možné spustit vzdálené události nebo pro načtení informací, který se používá k manipulaci s původní žádost a odpověď nějakým způsobem.
 
 ## <a name="send-one-way-request"></a>Send-One-Way-Request
-Případně je nejjednodušší externí interakce stylu ohně a zapomenout požadavku, který umožňuje externí služby upozornit nějaký druh důležité události. Zásada řízení toku `choose` lze použít k detekci jakýkoli druh podmínku, která vás zajímají.  Pokud je podmínka splněna, můžete vytvořit externí pomocí požadavku HTTP [odeslat jeden způsob, jak žádosti](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest) zásad. Může to být požadavek na systému zasílání zpráv, jako je Hipchat nebo Slack nebo e-mailu rozhraní API SendGrid nebo MailChimp, nebo pro incidenty podpory se zásadním něco jako PagerDuty. Všechny tyto systémy zasílání zpráv mají jednoduchá rozhraní API HTTP, který lze vyvolat.
+Případně je nejjednodušší externí interakce stylu ohně a zapomenout požadavku, který umožňuje externí služby upozornit nějaký druh důležité události. Zásada řízení toku `choose` lze použít k detekci jakýkoli druh podmínku, která vás zajímají.  Pokud je podmínka splněna, můžete vytvořit externí pomocí požadavku HTTP [odeslat jeden způsob, jak žádosti](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) zásad. Může to být požadavek na systému zasílání zpráv, jako je Hipchat nebo Slack nebo e-mailu rozhraní API SendGrid nebo MailChimp, nebo pro incidenty podpory se zásadním něco jako PagerDuty. Všechny tyto systémy zasílání zpráv mají jednoduchá rozhraní API HTTP, který lze vyvolat.
 
 ### <a name="alerting-with-slack"></a>Upozorňování s využitím Slack
 Následující příklad ukazuje, jak odeslat zprávu na Slack chatovací místnosti, pokud stavového kódu odpovědi HTTP je větší než nebo rovna hodnotě 500. Chyba 500 rozsah indikuje problém s back-endové rozhraní API, která klientské rozhraní API nelze vyřešit samy. Obvykle vyžaduje určitý druh zásah v části správy rozhraní API.  
@@ -62,7 +62,7 @@ Slack je pojem příchozí webhooků. Při konfiguraci příchozí volané webho
 ![Slack Webhook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
 ### <a name="is-fire-and-forget-good-enough"></a>Je fire spustit a zapomenout dostatečně kvalitní?
-Při použití stylu ohně a zapomenout požadavku se určitých kompromisů. Pokud pro z nějakého důvodu žádost selže, pak není hlášené chyby. V této konkrétní situaci není oprávněné složitost s selhání sekundárního objektu systému a další náklady na čekání na odezvu sestavy. Pro scénáře, kdy je velmi důležité zkontrolovat odpověď, a pak bude [požadavků na odeslání](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) zásad je lepší volbou.
+Při použití stylu ohně a zapomenout požadavku se určitých kompromisů. Pokud pro z nějakého důvodu žádost selže, pak není hlášené chyby. V této konkrétní situaci není oprávněné složitost s selhání sekundárního objektu systému a další náklady na čekání na odezvu sestavy. Pro scénáře, kdy je velmi důležité zkontrolovat odpověď, a pak bude [požadavků na odeslání](/azure/api-management/api-management-advanced-policies#SendRequest) zásad je lepší volbou.
 
 ## <a name="send-request"></a>Požadavek na odeslání
 `send-request` Zásada umožňuje pomocí externí služby a provádět komplexní zpracování funkce vrátí data do API managementu služby, který lze použít pro další zpracování zásad.
@@ -209,7 +209,7 @@ Jakmile tyto informace můžete provádět požadavky všech systémů back-endu
 Tyto požadavky na spouštění v pořadí, což není ideální. 
 
 ### <a name="responding"></a>Reagovat
-K vytvoření složeného odpovědi, můžete použít [vrátit odpověď](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) zásad. `set-body` Element výraz lze použít k vytvoření nového `JObject` se všechny komponenty reprezentace je vložený jako vlastnosti.
+K vytvoření složeného odpovědi, můžete použít [vrátit odpověď](/azure/api-management/api-management-advanced-policies#ReturnResponse) zásad. `set-body` Element výraz lze použít k vytvoření nového `JObject` se všechny komponenty reprezentace je vložený jako vlastnosti.
 
 ```xml
 <return-response response-variable-name="existing response variable">

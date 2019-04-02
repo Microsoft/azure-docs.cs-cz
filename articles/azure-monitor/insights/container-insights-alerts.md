@@ -11,26 +11,28 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.author: magoedte
-ms.openlocfilehash: e6fdb0d57a44578647c1f16dc76c557296f20ddb
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5bb0a727adcfb35b5d840a063b6fdb478d150953
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886759"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804816"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Jak nastavit výstrahy pro problémy s výkonem ve službě Azure Monitor pro kontejnery
 Azure Monitor pro monitorování kontejnerů výkon úloh kontejneru nasadit buď Azure Container Instances nebo spravovat clustery Kubernetes hostované ve službě Azure Kubernetes Service (AKS). 
 
 Tento článek popisuje, jak povolit výstrahy v těchto situacích:
 
-* Při využití procesoru a paměti na uzlech clusteru a překračuje definovanou prahovou hodnotu.
+* Pokud využití procesoru nebo paměti na uzlech clusteru překročí definovanou prahovou hodnotu.
 * Pokud využití procesoru nebo paměti v kontejnery v rámci kontroleru překročí vaše definovanou prahovou hodnotu než limit nastavený na odpovídající prostředek.
+* **Nepřipraveno** vrátí stav uzlu
+* Počet podů fáze **neúspěšné**, **čekající**, **neznámý**, **systémem**, nebo **proběhlo úspěšně.**
 
-Pro upozornění, když je využití procesoru nebo paměti vysoké pro cluster nebo kontroleru, vytvoříte pravidlo upozornění metriky měření, který je založen na protokolu dotazy, které poskytuje. Dotazy porovnat hodnoty datetime až po současnost pomocí operátoru teď a vrátí jednu hodinu. Všechna data uložená službou Azure Monitor pro kontejnery jsou ve formátu UTC.
+Pro upozornění, když využití procesoru nebo paměti, že je využití vysoké na uzlech clusteru, můžete si buď vytvořit upozornění na metriku nebo pravidlo upozornění metriky měření použití protokolu dotazů k dispozici. Zatímco upozornění metrik, mají nižší latenci než upozornění protokolů, upozornění protokolu poskytuje pokročilé dotazování i sofistikovanější než upozornění na metriku. Pro upozornění protokolu dotazy porovnat hodnoty datetime až po současnost pomocí operátoru teď a vrátí jednu hodinu. Všechna data uložená službou Azure Monitor pro kontejnery jsou ve formátu UTC.
 
-Před zahájením, pokud nejste obeznámeni s využitím upozornění ve službě Azure Monitor, přečtěte si téma [přehled výstrah v Microsoft Azure](../platform/alerts-overview.md). Další informace o výstrahách pomocí dotazů protokolu najdete v tématu [upozornění protokolů ve službě Azure Monitor](../platform/alerts-unified-log.md)
+Před zahájením, pokud nejste obeznámeni s využitím upozornění ve službě Azure Monitor, přečtěte si téma [přehled výstrah v Microsoft Azure](../platform/alerts-overview.md). Další informace o výstrahách pomocí dotazů protokolu najdete v tématu [upozornění protokolů ve službě Azure Monitor](../platform/alerts-unified-log.md). Další informace o upozorněních metrik najdete v tématu [upozornění metrik ve službě Azure Monitor](../platform/alerts-metric-overview.md).
 
 ## <a name="resource-utilization-log-search-queries"></a>Vyhledávací dotazy protokolů využití prostředků
 Dotazy v této části jsou k dispozici pro podporu jednotlivých výstrah scénářů. Dotazy jsou požadovány pro krok 7 v části [vytvoření upozornění](#create-alert-rule) níže v části.  
@@ -187,6 +189,72 @@ KubePodInventory
 | project Computer, ContainerName, TimeGenerated, UsagePercent = UsageValue * 100.0 / LimitValue
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
+
+Následující dotaz vrátí všechny uzly a počet stavem **připravené** a **NotReady**.
+
+```kusto
+let endDateTime = now();
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+let clusterName = '<your-cluster-name>';
+KubeNodeInventory
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+| distinct ClusterName, Computer, TimeGenerated
+| summarize ClusterSnapshotCount = count() by bin(TimeGenerated, trendBinSize), ClusterName, Computer
+| join hint.strategy=broadcast kind=inner (
+    KubeNodeInventory
+    | where TimeGenerated < endDateTime
+    | where TimeGenerated >= startDateTime
+    | summarize TotalCount = count(), ReadyCount = sumif(1, Status contains ('Ready'))
+                by ClusterName, Computer,  bin(TimeGenerated, trendBinSize)
+    | extend NotReadyCount = TotalCount - ReadyCount
+) on ClusterName, Computer, TimeGenerated
+| project   TimeGenerated,
+            ClusterName,
+            Computer,
+            ReadyCount = todouble(ReadyCount) / ClusterSnapshotCount,
+            NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
+| order by ClusterName asc, Computer asc, TimeGenerated desc
+```
+Následující dotaz vrátí pod fáze se počítá podle všech fází – **neúspěšné**, **čekající**, **neznámý**, **systémem**, nebo **Úspěšné**.  
+
+```kusto
+let endDateTime = now();
+    let startDateTime = ago(1h);
+    let trendBinSize = 1m;
+    let clusterName = '<your-cluster-name>';
+    KubePodInventory
+    | where TimeGenerated < endDateTime
+    | where TimeGenerated >= startDateTime
+    | where ClusterName == clusterName
+    | distinct ClusterName, TimeGenerated
+    | summarize ClusterSnapshotCount = count() by bin(TimeGenerated, trendBinSize), ClusterName
+    | join hint.strategy=broadcast (
+        KubePodInventory
+        | where TimeGenerated < endDateTime
+        | where TimeGenerated >= startDateTime
+        | distinct ClusterName, Computer, PodUid, TimeGenerated, PodStatus
+        | summarize TotalCount = count(),
+                    PendingCount = sumif(1, PodStatus =~ 'Pending'),
+                    RunningCount = sumif(1, PodStatus =~ 'Running'),
+                    SucceededCount = sumif(1, PodStatus =~ 'Succeeded'),
+                    FailedCount = sumif(1, PodStatus =~ 'Failed')
+                 by ClusterName, bin(TimeGenerated, trendBinSize)
+    ) on ClusterName, TimeGenerated
+    | extend UnknownCount = TotalCount - PendingCount - RunningCount - SucceededCount - FailedCount
+    | project TimeGenerated,
+              TotalCount = todouble(TotalCount) / ClusterSnapshotCount,
+              PendingCount = todouble(PendingCount) / ClusterSnapshotCount,
+              RunningCount = todouble(RunningCount) / ClusterSnapshotCount,
+              SucceededCount = todouble(SucceededCount) / ClusterSnapshotCount,
+              FailedCount = todouble(FailedCount) / ClusterSnapshotCount,
+              UnknownCount = todouble(UnknownCount) / ClusterSnapshotCount
+| summarize AggregatedValue = avg(PendingCount) by bin(TimeGenerated, trendBinSize)
+```
+
+>[!NOTE]
+>Upozornit na určité pod fází, jako **čekající**, **neúspěšné**, nebo **neznámý**, budete muset upravit poslední řádek dotazu. Například k výstraze na *úspěšně* `| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`.  
 
 ## <a name="create-alert-rule"></a>Vytvořit pravidlo upozornění
 Proveďte následující kroky k vytvoření výstrah protokolu ve službě Azure Monitor, pomocí některé z pravidel vyhledávání protokolu jste zadali dříve.  

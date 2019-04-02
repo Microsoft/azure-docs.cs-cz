@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/11/2018
+ms.date: 03/29/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: fe986d24df8dce6a390d21a262056f7ab857070c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: eae9dc6447dd8211a3919c52beaea64274fc0ec5
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886724"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801075"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Zahájení monitorování webové aplikace ASP.NET Core
 
@@ -37,7 +37,7 @@ Pokud webová aplikace ASP.NET Core nemáte, můžete použít naši podrobného
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
@@ -45,9 +45,9 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 Application Insights může shromažďovat telemetrická data ze všech aplikací připojených k internetu bez ohledu na to, jestli jsou spuštěné místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
-1. Vyberte **Vytvořit prostředek** > **Monitorování a správa** > **Application Insights**.
+1. Vyberte **Vytvořit prostředek** > **Vývojářské nástroje** > **Application Insights**.
 
-   ![Přidání prostředku Application Insights](./media/dotnetcore-quick-start/0001-dc.png)
+   ![Přidání prostředku Application Insights](./media/dotnetcore-quick-start/1createresourceappinsight.png)
 
     Zobrazí se konfigurační pole. K vyplnění vstupních polí použijte následující tabulku.
 
@@ -64,32 +64,36 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
 1. Otevřete svůj **projekt** webové aplikace ASP.NET Core v sadě Visual Studio, klikněte pravým tlačítkem na název aplikace v **Průzkumníku řešení** a vyberte **Přidat** > **Telemetrie Application Insights**.
 
-    ![Přidání Telemetrie Application Insights](./media/dotnetcore-quick-start/0001.png)
+    ![Přidání Telemetrie Application Insights](./media/dotnetcore-quick-start/2vsaddappinsights.png)
 
-2. Klikněte na tlačítko **Začít zdarma**, vyberte **Existující prostředek**, který jste vytvořili na webu Azure Portal, a klikněte na **Zaregistrovat**.
+2. Klikněte na tlačítko **Začínáme** tlačítko
 
-3. Vyberte **Ladění** > **Spustit bez ladění** (Ctrl + F5) a spusťte vaši aplikaci.
+3. Vyberte svůj účet a předplatné > vyberte **existující prostředek** jste vytvořili na webu Azure Portal > klikněte na tlačítko **zaregistrovat**.
+
+4. Vyberte **Ladění** > **Spustit bez ladění** (Ctrl + F5) a spusťte vaši aplikaci.
+
+    ![Nabídka Přehled služby Application Insights](./media/dotnetcore-quick-start/3debug.png)
 
 > [!NOTE]
 > Trvá 3–5 minut, než se na portálu začnou zobrazovat data. Pokud používáte testovací aplikaci s nízkým provozem, nezapomínejte, že většina metrik se zachycuje, jenom když jsou nějaké aktivní požadavky nebo operace.
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Zahájení monitorování na webu Azure Portal
 
-1. Teď můžete znovu otevřít stránku **Přehled** služby Application Insights na webu Azure Portal výběrem **Projekt** > **Application Insights** > **Otevřít portál Application Insights** a zobrazit podrobné informace o aktuálně spuštěné aplikaci.
+1. Znovu otevřít Application Insights **přehled** stránky na webu Azure Portal tak, že vyberete **Domů** a v části poslední prostředků vyberte prostředek, který jste vytvořili dříve, chcete-li zobrazit podrobnosti o vaše aktuálně spuštěné aplikace.
 
-   ![Nabídka Přehled služby Application Insights](./media/dotnetcore-quick-start/overview-001.png)
+   ![Nabídka Přehled služby Application Insights](./media/dotnetcore-quick-start/4overview.png)
 
 2. Po kliknutí na **Mapa aplikace** se zobrazí rozložení vztahů závislosti mezi komponentami vaší aplikace. U každé komponenty se zobrazují klíčové ukazatele výkonu, jako je zatížení, výkon, selhání a upozornění.
 
-   ![Mapa aplikace](./media/dotnetcore-quick-start/application-map.png)
+   ![Mapa aplikace](./media/dotnetcore-quick-start/5appmap.png)
 
-3. Klikněte na ikonu **Analýza aplikace** ![Ikona Mapa aplikace](./media/dotnetcore-quick-start/006.png).  Otevře se **Application Insights – Analytics** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
+3. Klikněte na **analýzy aplikací** ikonu ![ikona Mapa aplikace](./media/dotnetcore-quick-start/006.png) **zobrazit v Analytics**. Otevře se **Application Insights – Analytics** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
 
-   ![Graf analýzy uživatelských požadavků za časové období](./media/dotnetcore-quick-start/0007-dc.png)
+   ![Graf analýzy uživatelských požadavků za časové období](./media/dotnetcore-quick-start/6analytics.png)
 
 4. Vraťte se **přehled** stránce a prozkoumejte řídicích panelů klíčového ukazatele výkonu.  Tento řídicí panel poskytuje statistické údaje o stavu vaší aplikace, včetně počtu příchozích požadavků, doby jejich trvání a všech chyb, ke kterým došlo. 
 
-   ![Graf s časovou osou přehledu stavu](./media/dotnetcore-quick-start/overview-graphs.png)
+   ![Graf s časovou osou přehledu stavu](./media/dotnetcore-quick-start/7kpidashboards.png)
 
    Pokud chcete povolit, aby se graf **Doba načtení zobrazení stránky** naplnil **telemetrií na straně klienta**, na každou stránku, kterou chcete sledovat, přidejte následující skript:
 
@@ -113,13 +117,12 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
    </script>
    ```
 
-5. Klikněte na **Prohlížeč** pod záhlavím **Prozkoumat**. Tady najdete metriky související s výkonem stránek vaší aplikace. Můžete kliknout na **Přidat nový graf** a vytvořit další vlastní zobrazení nebo vybrat **Upravit** a upravit existující typy grafů, jejich výšku, paletu barev, seskupení a metriky.
+5. Na levém klikněte na **metriky**. Pomocí Průzkumníka metrik k prozkoumání stavu a využití vašich prostředků. Můžete kliknout na **Přidat nový graf** a vytvořit další vlastní zobrazení nebo vybrat **Upravit** a upravit existující typy grafů, jejich výšku, paletu barev, seskupení a metriky. Například můžete vytvořit graf, který zobrazuje čas načítání stránky prohlížeče průměrné výběrem "Doba načítání stránek prohlížečem" z metrik rozevíracího seznamu a "Avg" z agregace. Další informace o Průzkumníku metrik Azure návštěvě [Začínáme s Průzkumníkem metrik Azure](../../azure-monitor/platform/metrics-getting-started.md).
 
-   ![Graf metrik serveru](./media/dotnetcore-quick-start/009-Black.png)
+     ![Karta metriky: Průměrná prohlížeči stránku zatížení grafu](./media/dotnetcore-quick-start/8metrics.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud chcete pokračovat v práci s dalšími rychlými starty nebo kurzy, nevymazávejte prostředky vytvořené v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujících kroků odstraňte všechny prostředky vytvořené tímto rychlým startem na webu Azure Portal.
+Po dokončení testování, můžete odstranit skupinu prostředků a všechny související prostředky. Chcete proto podle následujících pokynů.
 
 1. Na webu Azure Portal v nabídce vlevo klikněte na **Skupiny prostředků** a pak na **myResourceGroup**.
 2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte **myResourceGroup** a pak klikněte na **Odstranit**.

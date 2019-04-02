@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: fd518ad8c5ea13c4eeaa017417332744cecd328e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d7542909df336555e17aea9b0e680879b25dc17f
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661220"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791741"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
 
@@ -104,8 +104,7 @@ Pokud přejdete přímo na váš pracovní prostor z sdílet odkaz ze sady SDK n
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
-V některých případech může být užitečné, pokud může poskytnout diagnostické informace, pokud s žádostí o pomoc.
-Zde je, kde live soubory protokolu:
+V některých případech může být užitečné, pokud může poskytnout diagnostické informace, pokud s žádostí o pomoc. Některé protokoly naleznete [webu Azure portal](https://portal.azure.com) workpsace a vyberte a přejít k **pracovní prostor > Experiment > spuštění > protokoly**.
 
 ## <a name="resource-quotas"></a>Kvóty prostředků
 

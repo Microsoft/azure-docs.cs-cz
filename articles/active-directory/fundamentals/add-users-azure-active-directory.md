@@ -8,26 +8,26 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 04/01/2019
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8770648a3683c4f612536c9a04921682a01bcd0c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9cda9f976a7680a1338584e4308426683de82a79
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089807"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802113"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Přidání nebo odstranění uživatelů pomocí služby Azure Active Directory
-Přidání nových uživatelů nebo odstranit existující uživatele z vašeho tenanta Azure Active Directory (Azure AD).
+Přidání nových uživatelů nebo odstranit stávající uživatelé z vaší organizace Azure Active Directory (Azure AD).
 
 ## <a name="add-a-new-user"></a>Přidání nového uživatele
 Můžete vytvořit nového uživatele pomocí portálu Azure Active Directory.
 
 ### <a name="to-add-a-new-user"></a>Chcete-li přidat nového uživatele
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce nebo Správce uživatelů adresáře.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako správce uživatelů v organizaci.
 
 2. Vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **nového uživatele**.
 
@@ -39,7 +39,7 @@ Můžete vytvořit nového uživatele pomocí portálu Azure Active Directory.
 
    - **Název (povinné).** První a poslední název nového uživatele. Například Mary Parker.
 
-   - **Uživatelské jméno (povinné).** Uživatelské jméno nového uživatele. Například, mary@contoso.com. 
+   - **Uživatelské jméno (povinné).** Uživatelské jméno nového uživatele. Například, mary@contoso.com.
     
        Součást domény uživatelské jméno musí používat buď počáteční výchozí název domény, <_názevvašídomény_>. onmicrosoft.com, nebo vlastní název domény, třeba contoso.com. Další informace o tom, jak vytvořit vlastního názvu domény najdete v tématu [přidání vlastního názvu domény do Azure Active Directory](add-custom-domain.md).
 
@@ -47,7 +47,7 @@ Můžete vytvořit nového uživatele pomocí portálu Azure Active Directory.
 
    - **Skupiny.** Volitelně můžete přidat uživatele do jednoho nebo více existujících skupin. Později můžete také přidat uživatele do skupin. Další informace o přidávání uživatelů do skupin najdete v tématu [vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md).
 
-   - **Role adresáře.** Volitelně můžete přidat uživatele k roli adresáře. Můžete přiřadit uživatele jako globální správce, nebo do jedné nebo více jiných rolí správce ve službě Azure AD. Další informace o přiřazování rolí najdete v tématu [přiřazení rolí uživatelům](active-directory-users-assign-role-azure-portal.md).
+   - **Role adresáře.** Volitelně můžete přidat uživatele a Azure AD roli správce. Můžete přiřadit uživatele jako globální správce nebo jeden nebo více rolí správce s omezením ve službě Azure AD. Další informace o přiřazování rolí najdete v tématu [přiřazení rolí uživatelům](active-directory-users-assign-role-azure-portal.md).
 
 4. Zkopírujte automaticky vytvořené heslo součástí **heslo** pole. Bude potřeba předat uživateli toto heslo pro počáteční proces přihlašování.
 
@@ -62,7 +62,7 @@ Pokud máte prostředí s Azure Active Directory (cloud) a Windows Server Active
 Můžete odstranit stávajícího uživatele pomocí portálu Azure Active Directory.
 
 ### <a name="to-delete-a-user"></a>K odstranění uživatele
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí uživatelského účtu správce v organizaci.
 
 2. Vyberte **Azure Active Directory**vyberte **uživatelé**a poté vyhledejte a vyberte uživatele, kterou chcete odstranit z vašeho tenanta Azure AD. Například _Mary Parker_.
 
@@ -70,12 +70,13 @@ Můžete odstranit stávajícího uživatele pomocí portálu Azure Active Direc
 
     ![Uživatelé – všichni uživatelé stránce se zvýrazněnou odstranění uživatele](media/add-users-azure-active-directory/delete-user-all-users-blade.png)
 
-    Uživatel se odstraní a už se zobrazí na **uživatelé – všichni uživatelé** stránky. Uživatel můžete zobrazit na **odstraněných uživatelů** stránce dalších 30 dní a dají se obnovit během této doby. Další informace o obnovení uživatele najdete v tématu [jak k obnovení nedávno odstraněného uživatele trvale odeberete](active-directory-users-restore.md).
+    Uživatel se odstraní a už se zobrazí na **uživatelé – všichni uživatelé** stránky. Uživatel můžete zobrazit na **odstraněných uživatelů** stránce dalších 30 dní a dají se obnovit během této doby. Další informace o obnovení uživatele najdete v tématu [jak k obnovení nedávno odstraněného uživatele trvale odeberete](active-directory-users-restore.md). Při odstranění uživatele jsou k dispozici pro ostatní uživatele, který se má používat všechny licence používané uživatele.
 
     >[!Note]
     >Identity a kontaktní údaje nebo informace o úloze pro uživatele, jehož zdrojem autorita je Windows Server Active Directory aktualizovat, musíte použít Windows Server Active Directory. Po dokončení aktualizace, je nutné počkat na další cyklus synchronizace dokončit předtím, než uvidíte změny.
 
 ## <a name="next-steps"></a>Další postup
+
 Po přidání uživatele, můžete provést následující základní procesy:
 
 - [Přidání nebo změně informací profilu](active-directory-users-profile-azure-portal.md)

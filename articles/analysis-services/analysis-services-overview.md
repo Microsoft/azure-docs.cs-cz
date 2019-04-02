@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 02/14/2019
+ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a908b00022351b9a91f9381229c773d063390744
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 340f121f64cb01803401a972038677448849e94f
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444153"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803507"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -144,6 +144,11 @@ Režim DirectQuery* využívá relační databáze back-endu pro ukládání a s
 
 Tabulkové modely ve službě Azure Analysis Services podporují celou řadu zdrojů dat, od jednoduchých textových souborů po velké objemy dat ve službě Azure Data Lake Store. Další informace najdete v tématu [Podporované zdroje dat ve službě Azure Analysis Services](analysis-services-datasource.md).
 
+## <a name="compatibility-level"></a>Úroveň kompatibility
+
+Úroveň kompatibility odkazuje na konkrétní verzi chování v modulu služby Analysis Services. Služba Azure Analysis Services podporuje tabulkové modely na úrovni kompatibility 1200 nebo vyšší. Další informace najdete v tématu [úroveň kompatibility pro tabulkové modely služby Analysis Services](analysis-services-compat-level.md).
+
+
 ## <a name="your-data-is-secure"></a>Vaše data jsou v bezpečí
 
 Služba Azure Analysis Services poskytuje zabezpečení citlivých dat na více úrovních. Služby Azure Analysis Services poskytuje **základní** na úrovni distribuované útoky na dostupnost služeb (DDoS) automaticky povolené v rámci platformy Azure. Další informace najdete v tématu [Azure DDoS Protection standardní přehled](../virtual-network/ddos-protection-overview.md). 
@@ -225,7 +230,7 @@ Služba Azure Analysis Services také podporuje používání [zobrazení dynami
 
 Konkrétní dokumentace pro službu Azure Analysis Services je uvedená zde. K vyhledání článků použijte obsah na levé straně obrazovky prohlížeče. 
 
-Vzhledem k tomu, že tabulkové modely služby Azure Analysis Services jsou skoro stejné jako tabulkové modely ve službě SQL Server Analysis Services, existuje rozsáhlá knihovna sdílených článků s koncepty, postupy, článků pro vývojáře a referenčních článků, které najdete v [dokumentaci ke službě SQL Server Analysis Services](https://docs.microsoft.com/sql/analysis-services/analysis-services). Články v dokumentaci ke službě SQL Server Analysis Services zobrazují také informaci, jestli je možné je použít pro službu Azure Analysis Services. Tuto informaci najdete v banneru PLATÍ PRO pod názvem článku.
+Vzhledem k tomu, že tabulkové modely služby Azure Analysis Services jsou skoro stejné jako tabulkových modelů SQL Server Analysis Services, je rozsáhlou knihovnu sdílené koncepční a procedurální, vývojářské a v článku o příkazech [SQL Server Analysis Services Dokumentace ke službě](https://docs.microsoft.com/sql/analysis-services/analysis-services). Články v dokumentaci ke službě SQL Server Analysis Services zobrazují také informaci, jestli je možné je použít pro službu Azure Analysis Services. Tuto informaci najdete v banneru PLATÍ PRO pod názvem článku.
 
 ![Sdílená dokumentace](./media/analysis-services-overview/aas-overview-applies-to.png)
 

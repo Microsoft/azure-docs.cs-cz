@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 005b0e74084325606a9a07df6b36b9100cad1750
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 50d0d78e9dc0c7f51fcd82dd16eab5a180eae073
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885944"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792463"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Nasazení virtuálního počítače Azure pomocí jazyka C# a šablony Resource Manageru
+
 V tomto článku se dozvíte, jak nasadit šablonu Azure Resource Manageru pomocí jazyka C#. Šablona, kterou vytvoříte nasadí jeden virtuální počítač s Windows serverem v nové virtuální sítě s jedinou podsítí.
 
 Podrobný popis prostředku virtuálního počítače najdete v tématu [virtuální počítače v šabloně Azure Resource Manageru](template-description.md). Další informace o všech prostředcích v šabloně najdete v tématu [názorném průvodci k šablonám Azure Resource Manageru](../../azure-resource-manager/resource-manager-template-walkthrough.md).
@@ -44,7 +45,7 @@ Nejjednodušší způsob, jak nainstalovat knihoven, které je potřeba dokonči
 1. Klikněte na tlačítko **nástroje** > **Správce balíčků Nuget**a potom klikněte na tlačítko **Konzola správce balíčků**.
 2. V konzole zadejte tyto příkazy:
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.Management.Fluent
     Install-Package WindowsAzure.Storage
     ```
@@ -206,15 +207,17 @@ Než bude možné nasadit šablonu, ujistěte se, že máte přístup k [instan�
 3. Uložte soubor azureauth.properties.
 4. Nastavení proměnné prostředí ve Windows s názvem AZURE_AUTH_LOCATION s úplnou cestou k souboru autorizace, který jste vytvořili, například následující příkaz Powershellu můžete použít příkaz:
 
-    ```
+    ```powershell
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
+
     
+
 ## <a name="create-the-management-client"></a>Vytvoření klienta služby správy
 
 1. Otevřete soubor Program.cs pro projekt, který jste vytvořili a pak přidejte tyto pomocí příkazů do stávajících příkazů v horní části souboru:
 
-    ```
+    ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.Fluent;
@@ -226,7 +229,7 @@ Než bude možné nasadit šablonu, ujistěte se, že máte přístup k [instan�
 
 2. K vytvoření klienta služby správy, přidejte tento kód do metody Main:
 
-    ```
+    ```csharp
     var credentials = SdkContext.AzureCredentialsFactory
         .FromFile(Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION"));
 
@@ -241,7 +244,7 @@ Než bude možné nasadit šablonu, ujistěte se, že máte přístup k [instan�
 
 Zadání hodnot pro aplikaci, přidejte kód do metody Main:
 
-```
+```csharp
 var groupName = "myResourceGroup";
 var location = Region.USWest;
 
@@ -256,7 +259,7 @@ Z účtu úložiště v Azure se nasazují šablonu a parametry. V tomto kroku v
 
 Chcete-li vytvořit účet, do metody Main přidejte tento kód:
 
-```
+```csharp
 string storageAccountName = SdkContext.RandomResourceName("st", 10);
 
 Console.WriteLine("Creating storage account...");
@@ -296,7 +299,7 @@ Nasaďte šablonu a parametry z účtu úložiště, který byl vytvořen.
 
 Pokud chcete nasadit šablonu, přidejte tento kód do metody Main:
 
-```
+```csharp
 var templatePath = "https://" + storageAccountName + ".blob.core.windows.net/templates/CreateVMTemplate.json";
 var paramPath = "https://" + storageAccountName + ".blob.core.windows.net/templates/Parameters.json";
 var deployment = azure.Deployments.Define("myDeployment")
@@ -315,7 +318,7 @@ Vzhledem k tomu, že se vám účtovat prostředky používané v Azure, je vžd
 
 Pokud chcete odstranit skupinu prostředků, do metody Main přidejte tento kód:
 
-```
+```csharp
 azure.ResourceGroups.DeleteByName(groupName);
 ```
 
@@ -328,5 +331,6 @@ To by měla trvat asi pět minut, než tuto konzolovou aplikaci pro spuštění 
 2. Než stisknete klávesu **Enter** spuštění odstranění prostředků, může trvat několik minut na ověření vytváření prostředků na webu Azure Portal. Klikněte na stav nasazení můžete zobrazit informace o nasazení.
 
 ## <a name="next-steps"></a>Další postup
+
 * Pokud byly nějaké problémy s nasazením, je dalším krokem by se podívat na [řešit běžné chyby nasazení v Azure pomocí Azure Resource Manageru](../../resource-manager-common-deployment-errors.md).
 * Zjistěte, jak nasadit virtuální počítač a jeho podpůrné prostředky kontrolou [nasazení Azure virtuálního počítače pomocí C#](csharp.md).

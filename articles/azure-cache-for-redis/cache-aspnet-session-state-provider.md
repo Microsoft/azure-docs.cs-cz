@@ -14,24 +14,27 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/01/2017
 ms.author: yegu
-ms.openlocfilehash: 3b10a471aafc4799fde8cb2e42b7c21c8d1eb9c4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 4a51040ecdbf22af03ce1e6edaaa0ff577bbc076
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232062"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793233"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Zprostředkovatel stavu relací ASP.NET pro mezipaměť Azure redis Cache
+
 Mezipaměť Azure pro Redis poskytuje zprostředkovatel stavu relací, které vám umožní ukládat vaše relace stavu v paměti s mezipamětí Azure Redis místo databáze systému SQL Server. Použití ukládání do mezipaměti zprostředkovatel stavu relací, nejprve nakonfigurovat mezipaměť a potom konfiguraci aplikace ASP.NET pro použití ukládání do mezipaměti Azure pro balíček NuGet stavu relace. Redis cache.
 
 Je často nepraktické ve skutečných cloudových aplikací, aby ukládání nějakou formu stav uživatelských relací, ale některé přístupy, vliv na výkon a škálovatelnost více než jiné. Pokud máte k uložení stavu, nejlepším řešením je zachovat malé množství stavu a uloží je v souborech cookie. Pokud to není proveditelné, další nejlepším řešením je používání stavu relace ASP.NET u poskytovatele pro distribuované mezipaměti v paměti. Nejhorší řešení z pohledu škálovatelnosti a výkonu je pro použití jiné databáze zajišťuje zprostředkovatel stavu relací. Toto téma obsahuje informace o použití zprostředkovatel stavu relací ASP.NET pro Azure Cache pro Redis. Informace o dalších možnostech stavu relace najdete v tématu [parametry stavu relace ASP.NET](#aspnet-session-state-options).
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>Uložení stavu relace ASP.NET v mezipaměti
+
 Chcete-li konfigurovat klientskou aplikaci v sadě Visual Studio pomocí ukládání do mezipaměti Azure Redis NuGet stavu relace balíčku, klikněte na tlačítko **Správce balíčků NuGet**, **Konzola správce balíčků** z **nástroje**  nabídky.
 
 V okně `Package Manager Console` spusťte následující příkaz.
     
-```
+
+```powershell
 Install-Package Microsoft.Web.RedisSessionStateProvider
 ```
 
@@ -123,6 +126,7 @@ Jakmile jsou tyto kroky provést, je aplikace nakonfigurována pro účely uklá
 > 
 
 ## <a name="aspnet-session-state-options"></a>Parametry stavu relace ASP.NET
+
 * Zprostředkovatele stavu relace paměti – tohoto zprostředkovatele ukládat stavy relací v paměti. Výhodou používání tohoto poskytovatele je, že je snadné a rychlé. Ale už nebude možné škálovat svoje aplikace, pokud používáte ve zprostředkovateli paměti, protože není distribuován.
 * Zprostředkovatel stavu relací SQL Server – tohoto zprostředkovatele ukládá stav relace v systému Sql Server. Pokud chcete k ukládání stavu relace do odolného úložiště, používání tohoto poskytovatele. Je možné škálovat webové aplikace, ale ve webové aplikaci pomocí Sql serveru pro relaci má dopad na výkon. Můžete použít také s tohoto zprostředkovatele [konfigurace OLTP v paměti](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) jí pomohou zlepšit výkon.
 * Distribuované v paměti zprostředkovatel stavu relací například mezipaměti Azure redis Cache zprostředkovatel stavu relací – tohoto zprostředkovatele nabízí to nejlepší z obou světů. Webové aplikace může mít jednoduché, rychlé a škálovatelné zprostředkovatel stavu relací. Vzhledem k tomu, že tento zprostředkovatel je ukládá stav relace v mezipaměti, musí aplikace vzít v potaz všechny charakteristiky související upozorňovat distribuované v mezipaměti, jako je například přechodných síťových chyb. Osvědčené postupy k používání mezipaměti, naleznete v tématu [ukládání do mezipaměti](../best-practices-caching.md) z Microsoft Patterns a postupy [návrh aplikace cloudu Azure a pokyny k implementaci](https://github.com/mspnp/azure-guidance).
@@ -130,5 +134,5 @@ Jakmile jsou tyto kroky provést, je aplikace nakonfigurována pro účely uklá
 Další informace o stavu relace a doporučené postupy najdete v tématu [osvědčené postupy při vývoji webové (sestavování skutečných cloudových aplikací s Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).
 
 ## <a name="next-steps"></a>Další postup
-Podívejte se [zprostředkovateli výstupní mezipaměti ASP.NET pro Azure Cache pro Redis](cache-aspnet-output-cache-provider.md).
 
+Podívejte se [zprostředkovateli výstupní mezipaměti ASP.NET pro Azure Cache pro Redis](cache-aspnet-output-cache-provider.md).

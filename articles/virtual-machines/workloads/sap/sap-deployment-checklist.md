@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/24/2019
+ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 520d417abe27887fad03257c52521c25602009eb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4ba866ddf79a9970ef3f5c4ff3b7085242a1cdcd
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096006"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802792"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Úloh SAP v Azure kontrolní seznam plánování a nasazení 
 
@@ -77,7 +77,7 @@ V této fázi je naplánovaná migrace úloh SAP do veřejného cloudu Azure. Mi
 5.  Smlouva o podpoře Microsoft Premier – Identifikujte MS účtu správce (TECHNICAL Account Manager). Pro podporu požadavků na SAP, přečtěte si Poznámka SAP support [#2015553](https://launchpad.support.sap.com/#/notes/2015553) 
 6.  Určete počet kvótu jader v různých předplatných a předplatných Azure. [Otevření žádosti o podporu o navýšení kvóty předplatných Azure,](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) podle potřeby 
 7.  Redukce dat a migraci dat naplánujte migraci dat SAP do Azure. Systémů SAP NetWeaver SAP má pokyny o tom, jak zachovat objem velké množství dat, které jsou omezené. SAP publikované [příručku velký](https://help.sap.com/http.svc/rc/2eb2fba8f8b1421c9a37a8d7233da545/7.0/en-US/Data_Management_Guide_Version_70E.PDF) o správě dat v SAP ERP systémy. Však nějaký obsah nevztahuje k systémům NetWeaver a S/4HANA obecně.
-8.  Definujte a rozhodnout postup automatického nasazení. Cílem služby automation za infrastrukturu nasazení v Azure je nasazení deterministické způsobem a deterministické výsledky. Mnozí uživatelé používají Power Shell nebo skripty rozhraní příkazového řádku založené. Existují různé opensourcových technologií, které lze použít k nasazení infrastruktury Azure pro SAP a dokonce i instalaci softwaru SAP. Příklady lze nalézt v githubu:
+8.  Definujte a rozhodnout postup automatického nasazení. Cílem služby automation za infrastrukturu nasazení v Azure je nasazení deterministické způsobem a deterministické výsledky. Mnozí uživatelé používají Power Shell nebo skripty rozhraní příkazového řádku založené. Existují různé opensourcových technologií, které lze použít k nasazení infrastruktury Azure pro SAP a dokonce i instalaci softwaru SAP. Příklady lze nalézt v Githubu:
     1.  [Nasazení automatické SAP v cloudu Azure](https://github.com/Azure/sap-hana)
     2.  [Instalace SAP HANA](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
 9.  Definování regulárního návrh a zkontrolujte pravidelnost mezi vámi jako zákazník, systémoví integrátoři, Microsoft a jiných součástí strany
@@ -88,19 +88,21 @@ V této fázi je naplánovaná migrace úloh SAP do veřejného cloudu Azure. Mi
 Pilotní nasazení můžete spustit před nebo v paralelní k plánování a příprava projektu. Fáze slouží také k testování přístupy a usnadnění návrhu s dobrou ve fázi plánování a příprava. Pilotní fázi můžete roztažen tak, aby skutečné testování konceptů. Doporučuje se nastavit a ověřit úplné HA/DR řešení a také návrh zabezpečení během pilotního nasazení. V některých případech zákazníka škálovatelnost testů také mohou být prováděna v této fázi. Další zákazníků používá jako pilotní fázi nasazení systémů SAP izolovaného prostoru. Takže předpokládáme, identifikovat systému, který chcete migrovat do Azure za účelem spouštění pilotní nasazení.
 
 1. Optimalizujte přenosy dat do Azure. Vysoce závislé na přenos případů zákazníka prostřednictvím [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) z místního byl nejrychlejší, pokud má dostatečnou šířku pásma okruhu Express. S ostatními zákazníky prostřednictvím Internetu naplánujete bude rychlejší
-2. V případě SAP migrace heterogenní platformy, která zahrnuje exportu a importu dat z databáze, otestovat a optimalizovat export a import fází. Pro velké migrace zahrnující systému SQL Server jako cílové platformy, můžete najít doporučení [tady](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/). Můžete provést migraci monitorování/SWPM přístup v případě, že není nutné kombinované vydání upgradu nebo [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) při kombinování migrace se upgrade verze SAP a splnění určitých zdrojová a cílová platforma DBMS kombinace popsáno, například v [možnost migrace databáze (DMO) ze SOUČTU 2.0 SP03](https://launchpad.support.sap.com/#/notes/2631152). 
+2. V případě SAP migrace heterogenní platformy, která zahrnuje exportu a importu dat z databáze, otestovat a optimalizovat export a import fází. Pro velké migrace zahrnující systému SQL Server jako cílové platformy, můžete najít doporučení [tady](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAP-OS-DB-Migration-to-SQL-Server-8211-FAQ-v6-2-April-2017/ba-p/368070). Můžete provést migraci monitorování/SWPM přístup v případě, že není nutné kombinované vydání upgradu nebo [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) při kombinování migrace se upgrade verze SAP a splnění určitých zdrojová a cílová platforma DBMS kombinace popsáno, například v [možnost migrace databáze (DMO) ze SOUČTU 2.0 SP03](https://launchpad.support.sap.com/#/notes/2631152). 
    1.  Exportovat do zdroje, nahrání souboru exportu do Azure a Import výkon.  Maximalizovat překrývají exportu a importu
    2.  Vyhodnocení objemu databáze mezi cíle a cílové platformy, aby bylo zřejmé ve velikosti infrastruktury    
    3.  Ověřte a optimalizujte časování 
 3. Technické ověření 
    1. Typy virtuálních počítačů
       1.  Ověření prostředky na podporu poznámky SAP, SAP HANA hardwaru adresáře a SAP PAM znovu a ujistěte se, že se žádné změny v podporovaných virtuálních počítačích Azure, podporované verze operačního systému pro tyto typy virtuálních počítačů a podporované verze SAP a DBMS
-      2.  Velikost vaší aplikace a infrastrukturu, kterou můžete nasadit v Azure znovu ověřte. V případě přesunutí stávající aplikace, můžete často odvodit nezbytné přístupové body z infrastruktury můžete použít a [SAP srovnávací test webové stránce](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd) a porovnejte je s protokoly SAP čísla uvedená v poznámce podpory SAP [#1928533](https://launchpad.support.sap.com/#/notes/1928533). Také zachovat [v tomto článku](https://blogs.msdn.microsoft.com/saponsqlserver/2018/11/04/saps-ratings-on-azure-vms-where-to-look-and-where-you-can-get-confused/) v paměti
+      2.  Velikost vaší aplikace a infrastrukturu, kterou můžete nasadit v Azure znovu ověřte. V případě přesunutí stávající aplikace, můžete často odvodit nezbytné přístupové body z infrastruktury můžete použít a [SAP srovnávací test webové stránce](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd) a porovnejte je s protokoly SAP čísla uvedená v poznámce podpory SAP [#1928533](https://launchpad.support.sap.com/#/notes/1928533). Také zachovat [v tomto článku](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208) v paměti
       3.  Vyhodnocování a testování velikosti virtuálních počítačů Azure týkajících se propustnosti maximální velikost úložiště a propustnost sítě pro různé typy virtuálních počítačů, kterou jste zvolili ve fázi plánování. Data můžete najít v:
           1.  [Velikosti virtuálních počítačů Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Je důležité vzít v úvahu **maximální počet mezipamětí propustností** k určení velikosti
           2.  [Velikosti virtuálních počítačů s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) je důležité vzít v úvahu **maximální počet mezipamětí propustností** k určení velikosti
    2. Storage
-      1.  Použití Azure Premium Storage pro virtuální počítače databáze
+      1.  Použití [úložiště SSD na úrovni Standard Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd) minimální, virtuální počítače představující vrstvy aplikace SAP a jiných výkonu citlivé nasazení DBMS
+      2.  Vám doporučujeme nepoužívat [disky Azure HDD standardní](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd) obecně
+      2.  Použití [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) pro všechny virtuální počítače DBMS, které jsou vzdáleně citlivé na výkon
       2.  Použití [Azure managed disks](https://azure.microsoft.com/services/managed-disks/)
       3.  Akcelerátor zápisu Azure použijte pro disky protokolu DBMS s M-Series. Mějte na paměti omezení akcelerátor zápisu a využití, jak je uvedeno v [akcelerátorem zápisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)
       4.  Pro různé typy DBMS, zkontrolujte [týkající se obecné SAP DBMS dokumentaci](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) a konkrétní dokumentace DBMS obecného dokumentu odkazuje, vám
@@ -124,6 +126,7 @@ Pilotní nasazení můžete spustit před nebo v paralelní k plánování a př
               4.  Oracle Linux 7.5. Používání jádra RHCKL, musí být 3.10.0-862.13.1.el7 vydání. Použití Oracle UEK jádra verze 5 je povinné
           4.   Testování a vyhodnocení latence sítě mezi aplikační vrstvě SAP virtuálních počítačů a virtuálních počítačů databázového systému podle Poznámka SAP support [#500235](https://launchpad.support.sap.com/#/notes/500235) a podporu Poznámka SAP [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Vyhodnocení výsledků na základě pokynů latence sítě ze Poznámka SAP support [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Latence sítě musí být v rozsahu střední a funkční. Výjimky se vztahují na provoz mezi virtuálními počítači a velké Instance HANA jednotky, jak je uvedeno [zde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)
           5.   Ujistěte se, že jsou nastavené ILB nasazení použít přímou odpověď serveru. Toto nastavení se sníží latence v případech, kde jsou Azure ILBs použít pro konfigurace s vysokou dostupností na vrstvu DBMS
+          6.   Pokud používáte Azure Load Balancer ve spojení s kontrolou operační systémy hosta Linux, aby Linuxový síťové parametr **net.ipv4.tcp_timestamps** je nastavena na **0**. S doporučeními ve starších verzích systému SAP mějte na paměti [#2382421](https://launchpad.support.sap.com/#/notes/2382421). SAP note mezitím se aktualizuje tak, aby odrážely skutečnost, že parametr musí být nastaven na hodnotu 0 pro práci ve spojení s nástroji pro vyrovnávání zatížení Azure.
    4. Vysoká dostupnost a nasazení pro obnovení. 
       1. Pokud nasadíte aplikační vrstvě SAP bez definování konkrétní zóně dostupnosti Azure, ujistěte se, že jsou všechny virtuální počítače spuštěné instance SAP dialogové okno nebo middleware instance na jednom systému SAP v nasazené [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability). 
          1.   V případě nevyžadují vysokou dostupnost pro centrální služby SAP a DBMS, tyto virtuální počítače je možné nasadit do stejné sadě dostupnosti jako aplikační vrstvě SAP

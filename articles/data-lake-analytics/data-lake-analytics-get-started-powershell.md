@@ -9,14 +9,15 @@ ms.reviewer: jasonwhowell
 ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
 ms.topic: conceptual
 ms.date: 05/04/2017
-ms.openlocfilehash: f74ebb4e36f9648b2f78e968877a9ef861888af8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ad0a8ea4d06b5085179d4fd3c162114c00518ce1
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58133437"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792531"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Začínáme s Azure Data Lake Analytics s využitím Azure PowerShellu
+
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Naučíte se, jak pomocí Azure PowerShellu vytvořit účty Azure Data Lake Analytics a následně odeslat a spustit úlohy U-SQL. Další informace o Data Lake Analytics najdete v tématu [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).
@@ -36,13 +37,13 @@ Tento kurz předpokládá, že jste už s používáním Azure Powershellu obez
 
 Přihlášení pomocí názvu předplatného:
 
-```
+```powershell
 Connect-AzAccount -SubscriptionName "ContosoSubscription"
 ```
 
 Místo názvu předplatného můžete také pro přihlášení použít ID předplatného:
 
-```
+```powershell
 Connect-AzAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
@@ -61,7 +62,7 @@ CurrentStorageAccount :
 
 Fragment kódu PowerShellu v tomto kurzu používá následující proměnné k ukládání příslušných informací:
 
-```
+```powershell
 $rg = "<ResourceGroupName>"
 $adls = "<DataLakeStoreAccountName>"
 $adla = "<DataLakeAnalyticsAccountName>"
@@ -70,7 +71,7 @@ $location = "East US 2"
 
 ## <a name="get-information-about-a-data-lake-analytics-account"></a>Získání informací o účtu Data Lake Analytics
 
-```
+```powershell
 Get-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla  
 ```
 
@@ -78,7 +79,7 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla
 
 Vytvořte proměnnou Powershellu, aby uchovala skript U-SQL.
 
-```
+```powershell
 $script = @"
 @a  = 
     SELECT * FROM 
@@ -96,13 +97,13 @@ OUTPUT @a
 
 Odešlete text skriptu pomocí rutiny `Submit-AdlJob` a parametru `-Script`.
 
-```
+```powershell
 $job = Submit-AdlJob -Account $adla -Name "My Job" -Script $script
 ```
 
 Jako alternativu můžete odeslat soubor skriptu pomocí parametru `-ScriptPath`:
 
-```
+```powershell
 $filename = "d:\test.usql"
 $script | out-File $filename
 $job = Submit-AdlJob -Account $adla -Name "My Job" -ScriptPath $filename
@@ -110,23 +111,24 @@ $job = Submit-AdlJob -Account $adla -Name "My Job" -ScriptPath $filename
 
 Získejte stav úlohy pomocí rutiny `Get-AdlJob`. 
 
-```
+```powershell
 $job = Get-AdlJob -Account $adla -JobId $job.JobId
 ```
 
 Místo opakovaného volání rutiny Get-AdlJob, dokud se úloha nedokončí, použijte rutinu `Wait-AdlJob`.
 
-```
+```powershell
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
 Stáhněte výstupní soubor pomocí rutiny `Export-AdlStoreItem`.
 
-```
+```powershell
 Export-AdlStoreItem -Account $adls -Path "/data.csv" -Destination "C:\data.csv"
 ```
 
 ## <a name="see-also"></a>Další informace najdete v tématech
+
 * Pokud chcete použít jiné podporované nástroje a zobrazit stejný kurz, klikněte na selektory karet v horní části stránky.
 * Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
 * Informace týkající se úloh správy najdete v tématu [Správa služby Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md).

@@ -1,19 +1,19 @@
 ---
 title: Práce s účty služby Azure Cosmos DB
 description: Tento článek popisuje, jak vytvořit a používat účty Azure Cosmos DB
-author: dharmas-cosmos
+author: rimman
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.author: dharmas
+ms.date: 03/31/2019
+ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: e40b763aa2a36e3afd85a82b66e393ac78d3afaa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: da55807d4ca803adf63a1dd2dfe3ce3794cdd509
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839572"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762595"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Práce s účtem Azure Cosmos
 
@@ -21,7 +21,7 @@ Azure Cosmos DB je plně spravovanou platformu as-a-service (PaaS). Pokud chcete
 
 Účet Azure Cosmos je základní jednotkou globální distribuci a vysokou dostupnost. Globální distribuce dat a propustnost nad několika oblastmi Azure, můžete přidávat a odebírat oblastí Azure ke svému účtu Azure Cosmos v každém okamžiku. Můžete nakonfigurovat svůj účet Azure Cosmos a mít jeden nebo více oblastí zápisu. Další informace najdete v tématu [postup přidání nebo odebrání oblastí Azure na účtu Azure Cosmos](how-to-manage-database-account.md). Můžete nakonfigurovat [výchozí konzistence](consistency-levels.md) úrovně na účet služby Azure Cosmos. Azure Cosmos DB poskytuje komplexní smlouvy SLA, včetně propustnosti, latenci na úrovni 99. percentilu, konzistence a vysokou dostupnost. Další informace najdete v tématu [smlouvách SLA v Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/).
 
-Bezpečně spravovat přístup ke všem datům v rámci svého účtu Azure Cosmos, můžete použít hlavní klíče spojené s vaším účtem. Na další zabezpečení přístupu ke svým datům můžete nakonfigurovat koncový bod služby virtuální sítě a brány firewall protokolu IP na vašem účtu Azure Cosmos. 
+Pokud chcete zabezpečeně spravovat přístup ke všem datům v rámci svého účtu Azure Cosmos, můžete použít [hlavní klíče](secure-access-to-data.md) spojené s vaším účtem. Další zabezpečit přístup k vašim datům, můžete nakonfigurovat [koncový bod služby virtuální sítě](vnet-service-endpoint.md) a [brány firewall protokolu IP](firewall-support.md) na vašem účtu Azure Cosmos. 
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Prvky v účtu služby Azure Cosmos
 
@@ -33,7 +33,7 @@ V současné době můžete vytvořit maximálně 100 účty služby Azure Cosmo
 
 ## <a name="next-steps"></a>Další postup
 
-Teď můžete přejít k zjistěte, jak spravovat váš účet Azure Cosmos nebo jiných konceptům spojeným s Azure Cosmos DB najdete v článku:
+Další informace o správě vašeho účtu Azure Cosmos a dalších konceptech:
 
 * [Postupy spravovat váš účet Azure Cosmos](how-to-manage-database-account.md)
 * [Globální distribuce](distribute-data-globally.md)

@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 04/01/2019
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 225065e35e40c06d324bee89fa65a765a2727233
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f6ccc2a355b22c2235253b78a1efa3912234027a
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123755"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793454"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Oprávnění a souhlas v koncovém bodu Azure Active Directory v2.0
 
@@ -260,7 +260,7 @@ Další informace o protokolu OAuth 2.0 a jak získat přístupové tokeny, najd
 
 Můžete použít `/.default` nastavit obor na pomoc s migrací aplikací z verze 1.0 koncového bodu na koncový bod verze 2.0. Toto je předdefinovaný obor pro každou aplikaci, která odkazuje na statický seznam oprávnění konfigurovaná v registraci aplikace. A `scope` hodnotu `https://graph.microsoft.com/.default` je funkčně stejný jako koncové body v1.0 `resource=https://graph.microsoft.com` – konkrétně žádá token s obory v Microsoft Graphu, který má aplikaci zaregistrovali na webu Azure Portal.
 
-Obor /.default lze použít v toku OAuth 2.0, ale je obzvláště nutné v [](v2-oauth2-on-behalf-of-flow.md) tok On-Behalf-Of a [údajů klienta, které tok](v2-oauth2-client-creds-grant-flow.md).  
+Obor /.default lze použít v toku OAuth 2.0, ale je obzvláště nutné v [tok On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) a [údajů klienta, které tok](v2-oauth2-client-creds-grant-flow.md).  
 
 > [!NOTE]
 > Klienty nelze kombinovat statické (`/.default`) a dynamické souhlas v jedné žádosti. Proto `scope=https://graph.microsoft.com/.default+mail.read` způsobí chybu z důvodu kombinaci typů oboru.

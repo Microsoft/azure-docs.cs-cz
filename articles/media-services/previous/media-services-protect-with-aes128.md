@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 7ff2e89c116ee74665c0e3a74505476972af5d9c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 8516035705ad9dfb2ff37592f9381c4f905bb67f
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317149"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802826"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Použití dynamického šifrování AES-128 a doručení klíče služby
 > [!div class="op_single_selector"]
@@ -29,23 +29,18 @@ ms.locfileid: "58317149"
 >  
 
 > [!NOTE]
-> Pokud chcete získat nejnovější verzi sady Java SDK a začít s vývojem v jazyce Java, přečtěte si článek [Začínáme s klientskou sadou Java SDK pro Azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use). <br/>
-> Pokud si chcete stáhnout nejnovější sadu PHP SDK pro službu Media Services, najděte si v [úložišti Packagist](https://packagist.org/packages/microsoft/windowsazure#v0.5.7) balíček Microsoft/WindowsAzure verze 0.5.7.  
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
 
-## <a name="overview"></a>Přehled
-> [!NOTE]
-> Informace o tom, jak šifrování obsahu pomocí na Standard AES (Advanced Encryption) k doručení do prohlížeče Safari v systému macOS najdete v tématu [tento příspěvek na blogu](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
-> Přehled o tom, jak Ochrana mediálního obsahu šifrováním AES, naleznete v tématu [toto video](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption).
-> 
-> 
-
- Služba Media Services můžete použít k doručování HTTP Live Streaming (HLS) a technologie Smooth Streaming, šifrují pomocí AES pomocí 128bitového šifrování klíčů. Služba Media Services také poskytuje službu doručení klíče, který poskytuje šifrovací klíče na oprávněné uživatele. Pokud chcete Media Services k šifrování assetu, přidružte šifrovací klíč assetu a také nakonfigurovat zásady autorizace pro klíč. Datový proud je žádost přehrávač, Media Services používá k dynamické šifrování obsahu pomocí šifrování AES se zadaným klíčem. K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. Pokud chcete zjistit, zda je uživatel oprávnění k získání klíče, služba vyhodnocuje zásady autorizace, které jste zadali pro klíč.
+Služba Media Services můžete použít k doručování HTTP Live Streaming (HLS) a technologie Smooth Streaming, šifrují pomocí AES pomocí 128bitového šifrování klíčů. Služba Media Services také poskytuje službu doručení klíče, který poskytuje šifrovací klíče na oprávněné uživatele. Pokud chcete Media Services k šifrování assetu, přidružte šifrovací klíč assetu a také nakonfigurovat zásady autorizace pro klíč. Datový proud je žádost přehrávač, Media Services používá k dynamické šifrování obsahu pomocí šifrování AES se zadaným klíčem. K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. Pokud chcete zjistit, zda je uživatel oprávnění k získání klíče, služba vyhodnocuje zásady autorizace, které jste zadali pro klíč.
 
 Služba Media Services podporuje více způsobů ověřování uživatelů, kteří žádají o klíč. Zásady autorizace pro klíč k obsahu mohou obsahovat jedno nebo více omezení autorizace: buď otevřená omezení, nebo omezení s tokenem. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Služba Media Services podporuje tokeny ve formátu [jednoduchých webových tokenů](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) a [webových tokenů JSON](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT). Další informace najdete v tématu [Konfigurace zásad autorizace klíče k obsahu](media-services-protect-with-aes128.md#configure_key_auth_policy).
 
 Abyste mohli využívat dynamické šifrování, je třeba mít asset, který obsahuje sadu souborů MP4 s více přenosovými rychlostmi nebo zdrojové soubory technologie Smooth Streaming s více přenosovými rychlostmi. Také musíte nakonfigurovat zásady doručení pro asset (popsáno dále v tomto článku). Potom, na základě formátu určeného v adrese URL streamování, server streamování na vyžádání zajistí, aby byl datový proud doručen v protokolu podle vašeho výběru. V důsledku toho musíte uložit a platit jenom pro soubory v jednom úložném formátu. Služba Media Services sestaví a odešle odpovídající odpověď na základě žádosti od klientů.
 
 Tento článek je užitečný pro vývojáře pracující na aplikacích, které doručují média chráněná. Tento článek ukazuje, jak nakonfigurovat službu doručování klíčů pomocí zásad autorizace tak, aby šifrovací klíče můžete dostávat pouze autorizovaní klienti. Také ukazuje, jak používat dynamické šifrování.
+
+Informace o tom, jak šifrování obsahu pomocí na Standard AES (Advanced Encryption) k doručení do prohlížeče Safari v systému macOS najdete v tématu [tento příspěvek na blogu](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+Přehled o tom, jak Ochrana mediálního obsahu šifrováním AES, naleznete v tématu [toto video](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption).
 
 
 ## <a name="aes-128-dynamic-encryption-and-key-delivery-service-workflow"></a>Dynamické šifrování AES-128 a doručení klíče služby pracovního postupu

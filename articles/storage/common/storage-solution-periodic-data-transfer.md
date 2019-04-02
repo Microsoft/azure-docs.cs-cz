@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: ba6d5e20f0d6a004fd85d7e9dc57584547d52ba3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8f106674c1b1ec90477c7c030dc55085fcf10656
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772853"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801977"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Řešení pro přenos periodických dat.
  
@@ -52,7 +52,7 @@ Následující tabulka shrnuje rozdíly mezi klíčové funkce.
 
 ### <a name="continuous-data-ingestion-over-network"></a>Příjem průběžné dat přes síť
 
-| Funkce                                       | Data Box Gateway (preview) | Data Box Edge (preview)  | Azure Data Factory        |
+| Funkce                                       | Data Box Gateway | Data Box Edge   | Azure Data Factory        |
 |----------------------------------|-----------------------------------------|--------------------------|---------------------------|
 | Uspořádání formuláře                                   | Virtuální zařízení             | Fyzické zařízení          | Služby webu Azure Portal, místního agenta                                                            |
 | Hardware                                      | Vaše hypervisoru            | Získáte ho od Microsoftu    | Není k dispozici                                                            |

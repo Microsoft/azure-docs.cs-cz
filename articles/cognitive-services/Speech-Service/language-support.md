@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 3188b5acc00f7f0463ae1154346447bee463e09c
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 0a82c2ba8bdf3d01041aa06f55eaaecab29817b2
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225429"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803098"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Podpora jazyka a oblasti pro hlasové služby
 
@@ -55,7 +55,7 @@ Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky. 
  ru-RU | Ruština (Rusko) | Ano | Ano | Ne
  sv-SE | Švédština (Švédsko) | Ne | Ne | Ne
  zh-CN | Čínština (Mandarínština, zjednodušená čínština) | Ano | Ano | Ne
- zh-HK | Čínština (Mandarínština, tradiční) | Ne | Ano | Ne
+ zh-HK | Čínština (Kantonština, tradiční) | Ne | Ano | Ne
  zh-TW | Čínština (Tchaj-wanská Mandarínština) | Ne | Ano | Ne
  th TH | thajština (Thajsko) | Ne | Ne | Ne
 

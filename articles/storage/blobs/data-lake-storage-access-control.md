@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: a102216a6a2a7dec471678e14f7050cb4ef41d77
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 4ba8977180e33256bfdc6652811495a02a9ef19c
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370104"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802948"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -27,9 +27,9 @@ Při použití přiřazení rolí pro RBAC je efektivní mechanismus pro řízen
 
 Azure Storage nabízí tři předdefinované role RBAC pro úložiště objektů Blob: 
 
-- [Vlastník dat úložiště objektů Blob](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner-preview)
-- [Storage Blob Data Contributor](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview)
-- [Čtenář dat objektu Blob služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader-preview)
+- [Vlastník dat úložiště objektů Blob](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+- [Storage Blob Data Contributor](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- [Čtenář dat objektu Blob služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)
 
 Když uživatel nebo instanční objekt služby, jsou udělena oprávnění RBAC dat prostřednictvím některého z těchto předdefinovaných rolí nebo prostřednictvím vlastní roli, tato oprávnění jsou vyhodnocen jako první při ověření požadavku. Pokud požadovaná operace je oprávnění RBAC přiřazení volajícího autorizace se okamžitě vyřešit a další jsou provedeny kontroly seznamu ACL. Případně, pokud volající nemá RBAC přiřazení nebo operace požadavku se neshoduje s přiřazená oprávnění, pak seznamu ACL se provádí kontroly určit, pokud má volající autorizaci provést požadovanou operaci.
 
@@ -285,7 +285,7 @@ Identifikátor GUID se zobrazí, pokud položka představuje uživatele a tohoto
 
 Při definování seznamů ACL pro instanční objekty, je potřeba použít ID objektu (OID) z *instanční objekt služby* pro registraci aplikace, kterou jste vytvořili. Je důležité si uvědomit, že registrovaných aplikací mají samostatné instančního objektu v konkrétní tenanta Azure AD. Registrovaná aplikace mají OID, který se zobrazuje na webu Azure portal, ale *instanční objekt služby* má jiný identifikátor objektu (různé).
 
-Chcete-li získat identifikátor OID pro instanční objekt této corresonds do registrace aplikace, můžete použít `az ad sp show` příkazu. Zadejte ID aplikace jako parametr. Tady je příklad týkající se získání identifikátor OID pro instanční objekt, který odpovídá registrace aplikace s Id aplikace = 18218b12 1895-43e9-ad80-6e8fc1ea88ce. V Azure CLI, spusťte následující příkaz:
+Chcete-li získat identifikátor OID pro instanční objekt, který odpovídá registrace aplikace, můžete použít `az ad sp show` příkazu. Zadejte ID aplikace jako parametr. Tady je příklad týkající se získání identifikátor OID pro instanční objekt, který odpovídá registrace aplikace s Id aplikace = 18218b12 1895-43e9-ad80-6e8fc1ea88ce. V Azure CLI, spusťte následující příkaz:
 
 `az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 <<OID will be displayed>>`

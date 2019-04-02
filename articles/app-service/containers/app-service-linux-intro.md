@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu;yili
 ms.custom: seodec18
-ms.openlocfilehash: 161b2054d690a2e609085852aa7caf2f02366f69
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 22c4096711bbc1d47ff6684e38ac829d77681a9f
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215655"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793437"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Seznámení se službou Azure App Service v Linuxu
 
@@ -73,7 +73,7 @@ Na webu Azure Portal se zobrazují pouze funkce, které jsou aktuálně funkčn�
 
 Služba App Service v Linuxu se podporuje pouze s plány služby úrovně [Basic, Standard a Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) a neobsahuje úroveň [Free ani Shared](https://azure.microsoft.com/pricing/details/app-service/plans/). Službu Web App for Containers nemůžete vytvořit v plánu služby App Service, který už je hostitelem služby Web Apps mimo Linux.  
 
-Také založené na aktuálním omezením, Nekombinujte aplikace Windows a Linuxu ve stejné skupině prostředků.
+Založené na aktuálním omezením, nejde kombinovat aplikace Windows a Linuxu ve stejné skupině prostředků.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

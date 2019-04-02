@@ -11,14 +11,18 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: e5f428062155ea732dce785955ac76011f3e4678
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b67028562a2c377e1dd99635bdf04cad14782341
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899345"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793131"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Ve službě Machine Learning rozhraní API pro detekci anomálií
+
+> [!NOTE]
+> Tato položka je prochází údržbou. Doporučujeme vám použít [služba API detekce anomálií](https://azure.microsoft.com/en-us/services/cognitive-services/anomaly-detector/) technologii algoritmy Galerie strojového učení v rámci služeb Azure Cognitive Services ke zjištění anomálií z firmy, provozní a metriky IoT.
+
 ## <a name="overview"></a>Přehled
 [Rozhraní API pro detekci anomálií](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) je příkladem vytvořené pomocí Azure Machine Learning, který detekuje anomálie v datech časové řady s číselné hodnoty, které jsou rovnoměrně rozloženy v čase.
 

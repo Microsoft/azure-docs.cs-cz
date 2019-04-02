@@ -1,42 +1,42 @@
 ---
-title: Detekce hrozeb – Azure SQL Database | Dokumentace Microsoftu
-description: Detekce hrozeb detekuje neobvyklé databázové aktivity značící potenciální bezpečnostní hrozby ve službě Azure SQL Database.
+title: Rozšířená ochrana před internetovými útoky – Azure SQL Database | Dokumentace Microsoftu
+description: Rozšířená ochrana před internetovými útoky detekuje neobvyklé databázové aktivity značící potenciální bezpečnostní hrozby ve službě Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: rmatchoro
+author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 5f20fc6ac19e2c9d304f4ab429e485fedaa29f64
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/31/2019
+ms.openlocfilehash: 710a94c919f4262c3f572f28d03c79b77e658287
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001881"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793896"
 ---
-# <a name="azure-sql-database-threat-detection"></a>Detekce hrozeb služby Azure SQL Database
+# <a name="advanced-threat-protection-for-azure-sql-database"></a>Advanced Threat Protection pro Azure SQL Database
 
-Detekce hrozeb [Azure SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.
+Rozšířená ochrana před internetovými útoky pro [Azure SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.
 
-Detekce hrozeb je součástí [rozšířené zabezpečení dat](sql-database-advanced-data-security.md) (reklamy) nabídky, která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Detekce hrozeb je možné získat přístup a spravovat prostřednictvím portálu pro centrální SQL reklamy.
+Je součástí rozšířené ochrany před internetovými útoky [rozšířené zabezpečení dat](sql-database-advanced-data-security.md) (reklamy) nabídky, která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Rozšířená ochrana před internetovými útoky lze přistupovat a spravovat prostřednictvím portálu pro centrální SQL reklamy.
 
 > [!NOTE]
 > Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
 
-## <a name="what-is-threat-detection"></a>Co je detekce hrozeb
+## <a name="what-is-advanced-threat-protection"></a>Co je Advanced Threat Protection
 
-Detekce hrozeb poskytuje novou vrstvu zabezpečení, která zákazníkům umožňuje detekovat a reagovat na potenciální hrozby, jak se objeví díky poskytování upozornění zabezpečení na neobvyklé aktivity. Uživatelé obdrží upozornění při podezřelých databázových aktivitách, potenciálních ohroženích zabezpečení, a útok prostřednictvím injektáže SQL, útoky, a také přístup neobvyklé databázové a dotazy vzory. Detekce hrozeb integruje výstrahy se službou [Azure Security Center](https://azure.microsoft.com/services/security-center/), který obsahuje podrobnosti o podezřelé aktivity a doporučuje akce na tom, jak zkoumat a zmírnit hrozby. Detekce hrozeb usnadňuje řešení potenciálních ohrožení databáze, aniž byste museli být odborníkem na zabezpečení nebo museli spravovat pokročilé systémy monitorování zabezpečení.
+ Rozšířená ochrana před internetovými útoky poskytuje novou vrstvu zabezpečení, která zákazníkům umožňuje detekovat a reagovat na potenciální hrozby, jak se objeví díky poskytování upozornění zabezpečení na neobvyklé aktivity. Uživatelé obdrží upozornění při podezřelých databázových aktivitách, potenciálních ohroženích zabezpečení, a útok prostřednictvím injektáže SQL, útoky, a také přístup neobvyklé databázové a dotazy vzory. Integruje výstrahy se službou Rozšířená ochrana před internetovými útoky [Azure Security Center](https://azure.microsoft.com/services/security-center/), které obsahují podrobnosti o podezřelé aktivitě a doporučení akce k prošetření a zmírnění hrozby. Rozšířená ochrana před internetovými útoky usnadňuje řešení potenciálních ohrožení databáze, aniž byste museli být odborné zabezpečení nebo spravovat pokročilé zabezpečení systémy pro monitorování.
 
 Zajišťuje úplné šetření, se doporučuje povolit [auditování služby SQL Database](sql-database-auditing.md), která zapisuje události auditu databáze protokolu ve vašem účtu úložiště Azure.  
 
-## <a name="threat-detection-alerts"></a>Výstrahy detekce hrozeb
+## <a name="advanced-threat-protection-alerts"></a>Výstrahy Advanced Threat Protection
 
-Detekce hrozeb pro Azure SQL Database detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití a ji můžete spustit následující upozornění:
+Rozšířená ochrana před internetovými útoky pro Azure SQL Database detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití a ji můžete spustit následující upozornění:
 
 - **Zranitelnost vůči útoku prostřednictvím injektáže SQL**: Tato výstraha se aktivuje, pokud aplikace vygeneruje Chybný příkaz SQL v databázi. Tato výstraha může značit možnou zranitelnost vůči útokům prostřednictvím injektáže SQL. Existují dva možné důvody vygenerování chybného příkazu:
 
@@ -65,20 +65,20 @@ Obdržíte e-mailové oznámení po detekci neobvyklých databázových aktivit.
 
    ![Konkrétní výstrahy](./media/sql-database-threat-detection/specific_alert.png)
 
-## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Prozkoumejte výstrahy detekce hrozeb pro vaši databázi na webu Azure Portal
+## <a name="explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal"></a>Prozkoumat upozornění Rozšířená ochrana před internetovými útoky pro databázi na webu Azure Portal
 
-Detekce hrozeb integruje jeho výstrahy se službou [Azure security center](https://azure.microsoft.com/services/security-center/). Živé dlaždice zjišťování do databáze a oknech reklamy SQL na webu Azure Portal sledovat stav aktivní hrozby hrozeb SQL.
+Rozšířená ochrana před internetovými útoky integruje jeho výstrahy se službou [Azure security center](https://azure.microsoft.com/services/security-center/). Živé dlaždice SQL Advanced Threat Protection do databáze a oknech reklamy SQL na webu Azure Portal sledovat stav aktivní hrozby.
 
-Klikněte na tlačítko **výstrahu o detekci hrozeb** spustit Azure Security Center oznámení stránce a získejte přehled o aktivní hrozby SQL na databázi ani na datový sklad zjistí.
+Klikněte na tlačítko **oznámení Advanced Threat Protection** spustit Azure Security Center oznámení stránce a získejte přehled o aktivní hrozby SQL na databázi ani na datový sklad zjistí.
 
-   ![Výstrahy detekce hrozeb](./media/sql-database-threat-detection/threat_detection_alert.png)
+   ![Výstraha rozšířené ochrany před internetovými útoky](./media/sql-database-threat-detection/threat_detection_alert.png)
 
-   ![Alert2 detekce hrozeb](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
+   ![Advanced Threat Protection alert2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [detekce v jedné a ve fondu databází hrozeb](sql-database-threat-detection.md).
-- Další informace o [detekce hrozeb ve spravované instanci](sql-database-managed-instance-threat-detection.md).
+- Další informace o [rozšířené ochrany před internetovými útoky v databáze ve fondu a jeden](sql-database-threat-detection.md).
+- Další informace o [rozšířené ochrany před internetovými útoky ve spravované instanci](sql-database-managed-instance-threat-detection.md).
 - Další informace o [rozšířené zabezpečení dat](sql-database-advanced-data-security.md).
 - Další informace o [auditování služby Azure SQL Database](sql-database-auditing.md)
 - Další informace o [Azure security center](https://docs.microsoft.com/azure/security-center/security-center-intro)

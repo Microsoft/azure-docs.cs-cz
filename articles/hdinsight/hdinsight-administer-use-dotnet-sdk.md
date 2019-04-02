@@ -9,14 +9,15 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: d46b1cb5bb8a0b65a9e1b38d5331977132f7eb40
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 2e57726c3519fbb2660d7dfb4794a885871acc0d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226449"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793908"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí sady .NET SDK
+
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
 Další informace o správě clusterů HDInsight pomocí [HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
@@ -31,7 +32,7 @@ Je nutné, abyste před zahájením tohoto článku měli tyto položky:
 
 Budete potřebovat následující balíčky NuGet:
 
-```
+```powershell
 Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
 Install-Package Microsoft.Azure.Management.ResourceManager -Pre
 Install-Package Microsoft.Azure.Management.HDInsight
@@ -109,9 +110,11 @@ namespace HDInsightManagement
 Při spuštění tohoto programu se zobrazí výzva.  Pokud nechcete zobrazí výzva, přečtěte si téma [vytváření aplikací .NET HDInsight jako neinteraktivní ověřování](hdinsight-create-non-interactive-authentication-dotnet-applications.md).
 
 ## <a name="create-clusters"></a>Vytváření clusterů
+
 Zobrazit [vytvoření linuxových clusterech v HDInsight pomocí sady .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
 
 ## <a name="list-clusters"></a>Výpis clusterů
+
 Clustery a některé vlastnosti jsou uvedeny následující fragment kódu:
 
 ```csharp
@@ -125,6 +128,7 @@ foreach (var name in results.Clusters) {
 ```
 
 ## <a name="delete-clusters"></a>Odstranění clusterů
+
 Pomocí následujícího fragmentu kódu můžete odstranit cluster synchronně nebo asynchronně: 
 
 ```csharp
@@ -133,6 +137,7 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
 ```
 
 ## <a name="scale-clusters"></a>Škálování clusterů
+
 Funkce škálování clusteru umožňuje změnit počet uzlů pracovního procesu se používá cluster, který běží v Azure HDInsight bez nutnosti nového vytváření clusteru.
 
 > [!NOTE]  
@@ -149,11 +154,13 @@ Dopad Změna počtu datových uzlů pro každý typ clusteru podporuje HDInsight
   
     Bezproblémově můžete přidat nebo odebrat uzly do clusteru HBase během jejího běhu. Oblastní servery jsou automaticky rovnoměrně rozdělen do několika minut od dokončení operace škálování. Oblastní servery však můžete také ručně vyvážit změnou přihlášení k hlavnímu uzlu clusteru a spustíte tento příkaz z okna příkazového řádku:
   
+
     ```bash
     >pushd %HBASE_HOME%\bin
     >hbase shell
     >balancer
     ```
+
 * Apache Storm
   
     Bezproblémově můžete přidat nebo odebrat datových uzlů do clusteru Storm během jejího běhu. Ale po úspěšném dokončení operace škálování, budete muset vyrovnat topologie.
@@ -171,6 +178,7 @@ Dopad Změna počtu datových uzlů pro každý typ clusteru podporuje HDInsight
     
     Tady je příklad jak obnovit rovnováhu topologie Storm pomocí příkazu rozhraní příkazového řádku:
     
+
     ```cli
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
     ## the spout "blue-spout" to use 3 executors, and
@@ -186,6 +194,7 @@ _hdiManagementClient.Clusters.ResizeAsync("<Resource Group Name>", "<Cluster Nam
 ```
 
 ## <a name="grantrevoke-access"></a>Udělení nebo odvolání přístupu
+
 Clustery HDInsight mají následující webové služby HTTP (mít všechny tyto služby RESTful koncových bodů):
 
 * ODBC
@@ -224,9 +233,11 @@ _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Clu
 To můžete udělat také pomocí portálu. Zobrazit [spravovat Apache Hadoop clusterů v HDInsight pomocí webu Azure portal](hdinsight-administer-use-portal-linux.md).
 
 ## <a name="update-http-user-credentials"></a>Aktualizace přihlašovacích údajů uživatele HTTP
+
 Je stejným způsobem jako HTTP udělení nebo odvolání přístupu.  Pokud cluster má udělen přístup protokolu HTTP, musí se nejprve odvolat.  A potom jim udělit přístup pomocí nových přihlašovacích údajů uživatele HTTP.
 
 ## <a name="find-the-default-storage-account"></a>Najít výchozí účet úložiště
+
 Následující fragment kódu ukazuje, jak získat výchozí název účtu úložiště a výchozí klíč účtu úložiště pro cluster.
 
 ```csharp
@@ -238,6 +249,7 @@ foreach (var key in results.Configuration.Keys)
 ```
 
 ## <a name="submit-jobs"></a>Odesílání úloh
+
 **Odesílat úlohy MapReduce**
 
 Zobrazit [ukázky spustit MapReduce v HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
@@ -259,9 +271,11 @@ Zobrazit [použití Apache Sqoop s HDInsight](hadoop/apache-hadoop-use-sqoop-dot
 Zobrazit [použití Apache Oozie s Hadoopem k definování a spuštění workflowu v HDInsight](hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Nahrání dat do úložiště objektů Blob v Azure
+
 Viz [Nahrání dat do služby HDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Viz také
+
 * [Referenční dokumentace sady HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [Spravovat clustery systému Apache Hadoop v HDInsight pomocí webu Azure portal](hdinsight-administer-use-portal-linux.md)
 * [Správa HDInsight pomocí rozhraní příkazového řádku][hdinsight-admin-cli]
@@ -283,5 +297,3 @@ Viz [Nahrání dat do služby HDInsight][hdinsight-upload-data].
 [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
 [hdinsight-use-mapreduce]:hadoop/hdinsight-use-mapreduce.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-
-

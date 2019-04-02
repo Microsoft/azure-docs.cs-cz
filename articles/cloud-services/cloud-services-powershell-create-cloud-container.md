@@ -14,14 +14,15 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: fa2f957c862ca94bc102b38b8bb1deb0bc07be8a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 771f93edfee8f7b48fb7d0d2c98419f9427f6338
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226837"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793522"
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>Použít příkaz prostředí Azure PowerShell k vytvoření prázdného kontejneru cloudové služby
+
 Tento článek vysvětluje, jak rychle vytvořit kontejner cloudové služby pomocí rutin prostředí Azure PowerShell. Postupujte podle následujících kroků:
 
 1. Nainstalujte rutiny prostředí Azure PowerShell z [stáhne prostředí Azure PowerShell](https://aka.ms/webpi-azps) stránky.
@@ -34,10 +35,11 @@ Tento článek vysvětluje, jak rychle vytvořit kontejner cloudové služby pom
    >
 4. Použití **New-AzureService** rutina pro vytvoření kontejneru služby prázdný cloudu Azure.
 
-   ```powershell
+   ```
    New-AzureService [-ServiceName] <String> [-AffinityGroup] <String> [[-Label] <String>] [[-Description] <String>] [[-ReverseDnsFqdn] <String>] [<CommonParameters>]
    New-AzureService [-ServiceName] <String> [-Location] <String> [[-Label] <String>] [[-Description] <String>] [[-ReverseDnsFqdn] <String>] [<CommonParameters>]
    ```
+
 5. Postupujte podle tohoto příkladu, který má být vyvolán rutinu:
 
    ```powershell
@@ -46,10 +48,11 @@ Tento článek vysvětluje, jak rychle vytvořit kontejner cloudové služby pom
 
 Další informace o vytváření cloudové služby Azure spusťte:
 
-```
+```powershell
 Get-help New-AzureService
 ```
 
 ### <a name="next-steps"></a>Další postup
+
 * Chcete-li spravovat nasazení cloudové služby, přečtěte si [Get-AzureService](/powershell/module/servicemanagement/azure/Get-AzureService?view=azuresmps-4.0.0), [Remove-AzureService](/powershell/module/servicemanagement/azure/Remove-AzureService?view=azuresmps-4.0.0), a [Set-AzureService](/powershell/module/servicemanagement/azure/set-azureservice?view=azuresmps-4.0.0) příkazy. Můžete také použít k [postup konfigurace služby cloud services](cloud-services-how-to-configure-portal.md) pro další informace.
 * Chcete-li publikovat projekt cloudové služby Azure, přečtěte si **PublishCloudService.ps1** vzorového kódu z [úložiště archivované cloud services](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery).

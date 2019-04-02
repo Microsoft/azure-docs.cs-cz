@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 166ffea9cbeb3f343d70737de9049ee721fa9a98
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b92ce1d5fb0e0b2b043b1bbfcb78dbaf3dde2e23
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448684"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804458"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update managementem
 
@@ -29,7 +29,7 @@ Není k dispozici Poradce při potížích agenta pro agenta Hybrid Worker, chce
 
 Bude pořád zobrazovat následující zpráva na virtuálním počítači 15 minut po připojení:
 
-```
+```error
 The components for the 'Update Management' solution have been enabled, and now this virtual machine is being configured. Please be patient, as this can sometimes take up to 15 minutes.
 ```
 
@@ -55,7 +55,7 @@ Tato chyba může být způsobeno z následujících důvodů:
 
 Při pokusu o vytvoření nasazení aktualizací pro počítače v jiném tenantovi Azure, zobrazí se následující chyba:
 
-```
+```error
 The client has permission to perform action 'Microsoft.Compute/virtualMachines/write' on scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Automation/automationAccounts/automationAccountName/softwareUpdateConfigurations/updateDeploymentName', however the current tenant '00000000-0000-0000-0000-000000000000' is not authorized to access linked subscription '00000000-0000-0000-0000-000000000000'.
 ```
 
@@ -104,7 +104,7 @@ Následující část se zaměřuje určité chybové zprávy a možné řešen�
 
 Zobrazí se následující chybová zpráva:
 
-```
+```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
 ```
 
@@ -122,15 +122,15 @@ Proveďte vyčištění starých artefaktů na počítači pomocí [odstranění
 
 Zobrazí jednu z následujících chybových zpráv:
 
-```
+```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: The underlying connection was closed: An unexpected error occurred on a receive. ---> System.ComponentModel.Win32Exception: The client and server can't communicate, because they do not possess a common algorithm
 ```
 
-```
+```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception Newtonsoft.Json.JsonReaderException: Error parsing positive infinity value.
 ```
 
-```
+```error
 The certificate presented by the service <wsid>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.
 ```
 
@@ -148,7 +148,7 @@ Zkontrolujte sítě a ujistěte se, že jsou povolené příslušné porty a adr
 
 Zobrazí jednu z následujících chybových zpráv:
 
-```
+```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception AgentService.HybridRegistration. PowerShell.Certificates.CertificateCreationException: Failed to create a self-signed certificate. ---> System.UnauthorizedAccessException: Access is denied.
 ```
 
@@ -203,7 +203,7 @@ Funkce Hybrid Worker Linuxu není v pořádku.
 
 Vytvořte kopii v následujícím souboru protokolu a uchovat pro účely odstraňování potíží:
 
-```
+```bash
 /var/opt/microsoft/omsagent/run/automationworker/worker.log
 ```
 
@@ -229,7 +229,7 @@ V některých případech může aktualizace balíčků může narušovat Update
 
 Pokud nemůžete vyřešit problém s opravami, vytvořte kopii v následujícím souboru protokolu a zachovat jeho **před** dalšího nasazení aktualizace spustí pro účely odstraňování potíží:
 
-```
+```bash
 /var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
 ```
 

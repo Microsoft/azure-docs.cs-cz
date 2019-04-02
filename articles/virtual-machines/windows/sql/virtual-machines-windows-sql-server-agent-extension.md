@@ -16,19 +16,19 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fceca61c5a867fd4142660429bfb83fb7e0322f4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 71878d5d033f0005d2c8c36d9f59799e125a19dd
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767121"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762697"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>Automatizace úloh správy ve službě Azure Virtual Machines pomocí rozšíření agenta SQL serveru (Resource Manager)
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-sql-server-agent-extension.md)
 > * [Classic](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)
 
-Rozšíření SQL Server IaaS agenta (SqlIaasExtension) běží na virtuálních počítačích Azure k automatizaci úloh správy. Tento článek obsahuje přehled služby podporuje rozšíření, stejně jako pokyny pro instalaci, stavu a odebrání.
+Rozšíření agenta SQL Server IaaS (SqlIaasExtension) běží na virtuálních počítačích Azure za účelem automatizace úloh správy. Tento článek obsahuje přehled služby podporuje rozšíření, stejně jako pokyny pro instalaci, stavu a odebrání.
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -70,17 +70,31 @@ Požadavky pro použití rozšíření agenta SQL Server IaaS na vašem virtuál
 > V tuto chvíli [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md) není podporována pro FCI Server SQL v Azure. Doporučujeme odinstalovat rozšíření z virtuálních počítačů, které jsou součástí FCI. Funkce podporované rozšíření nejsou k dispozici pro virtuální počítače s SQL, po daný agent nebude odinstalován.
 
 ## <a name="installation"></a>Instalace
-Rozšíření agenta SQL Server IaaS je automaticky nainstalován při zřizování Image Galerie virtuálních počítačů SQL serveru. Pokud je potřeba ručně znovu nainstalujte rozšíření na jednom z těchto virtuálních počítačů SQL serveru, použijte následující příkaz Powershellu:
+Rozšíření agenta SQL Server IaaS je automaticky nainstalován při zřizování Image Galerie virtuálních počítačů SQL serveru. Rozšíření SQL IaaS nabízí možnosti správy pro jednu instanci na virtuálním počítači SQL serveru. Dojde-li výchozí instanci, pak bude rozšíření fungovat s výchozí instance a nebude podporovat, správu ostatních instancí. Pokud není žádná výchozí instance, ale pouze jednu pojmenovanou instanci, bude ho spravovat pojmenovanou instanci. Pokud není žádná výchozí instance a existuje víc instancí s názvem, se nezdaří rozšíření k instalaci. 
+
+
+
+Pokud je potřeba ručně znovu nainstalujte rozšíření na jednom z těchto virtuálních počítačů SQL serveru, použijte následující příkaz Powershellu:
 
 ```powershell
 Set-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension" -Version "2.0" -Location "East US 2"
 ```
 
-> [!IMPORTANT]
+> [!WARNING]
 > Pokud rozšíření ještě není nainstalovaná, instalaci rozšíření restartuje službu systému SQL Server. Aktualizuje se rozšíření SQL IaaS však nerestartuje služby SQL Server. 
 
 > [!NOTE]
-> Rozšíření agenta SQL Server IaaS je podporována pouze na [Image virtuálního počítače s SQL serverem z Galerie](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (s průběžnými platbami nebo přeneste svůj – používání vlastní licence). Pokud ručně instalovat SQL Server na virtuálním počítači pouze pro operační systém Windows Server nebo nasadit vlastní VHD virtuálního počítače SQL serveru není podporována. V těchto případech je možné nainstalovat a spravovat rozšíření ručně pomocí Powershellu, ale nelze získat nastavení konfigurace SQL serveru na webu Azure Portal. Důrazně však doporučujeme místo toho nainstalovat image virtuálního počítače s SQL serverem z galerie a pak ji přizpůsobit.
+> I když je možné nainstalovat rozšíření agenta SQL Server IaaS vlastní Image SQL serveru, funkce jsou aktuálně omezené na [Změna typu licence](virtual-machines-windows-sql-ahb.md). Další funkce, které poskytuje rozšíření SQL IaaS budou fungovat jenom na [Image virtuálního počítače s SQL serverem z Galerie](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (s průběžnými platbami nebo přeneste svůj – používání vlastní licence).
+
+### <a name="use-a-single-named-instance"></a>Pomocí jediné pojmenovaná instance
+Rozšíření SQL IaaS bude fungovat s pojmenovanou instanci na bitovou kopii systému SQL Server, pokud výchozí instance je správně odinstalovat a přeinstalovat rozšíření IaaS.
+
+Pokud chcete použít pojmenovanou instanci systému SQL Server, postupujte takto:
+   1. Nasazení virtuálního počítače s SQL serverem z marketplace. 
+   1. Odinstalovat rozšíření IaaS v rámci [webu Azure portal](https://portal.azure.com).
+   1. Odinstalujte systém SQL Server zcela v rámci virtuálního počítače SQL serveru.
+   1. Nainstalujte SQL Server pomocí pojmenované instance na virtuálním počítači SQL serveru. 
+   1. Instalace rozšíření IaaS z webu Azure portal.  
 
 ## <a name="status"></a>Status
 Chcete-li zobrazit stav agenta na webu Azure Portal je jeden způsob, jak ověřit, že rozšíření je nainstalované. Vyberte **všechna nastavení** v okně virtuálního počítače a potom kliknout na **rozšíření**. Měli byste vidět **SqlIaasExtension** uvedená rozšíření.
@@ -98,7 +112,7 @@ Předchozí příkaz potvrdí, agent je nainstalovaný a poskytuje obecné infor
     $sqlext.AutoBackupSettings
 
 ## <a name="removal"></a>Odebrání
-Na webu Azure Portal můžete odinstalovat rozšíření po kliknutí na tři tečky **rozšíření** okno vlastností virtuálního počítače. Potom klikněte na **Odstranit**.
+Na webu Azure Portal, můžete po kliknutí na tři tečky na odinstalovat rozšíření **rozšíření** okno vlastností virtuálního počítače. Potom klikněte na **Odstranit**.
 
 ![Odinstalace rozšíření agenta SQL Server IaaS na webu Azure portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)
 

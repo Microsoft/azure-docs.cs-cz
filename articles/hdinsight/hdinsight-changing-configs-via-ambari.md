@@ -1,19 +1,19 @@
 ---
 title: Optimalizace konfigurace clusteru s Apache Ambari – Azure HDInsight
 description: Konfigurace a Optimalizace clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari.
-author: ashishthaps
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/09/2018
-ms.author: ashish
-ms.openlocfilehash: 14b634e610fb0da71c5f0d742a250b18cea70dc7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/26/2019
+ms.author: hrasheed
+ms.openlocfilehash: f0db36fa380d0d1bb7f2b581c4bf8fa1abfaadaf
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722919"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805376"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Použití Apache Ambari optimalizovat konfigurace clusterů HDInsight
 
@@ -51,7 +51,7 @@ Chcete-li změnit velikost haldy NameNode Java:
 
     ![Upravit velikost haldy NameNode Java](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
 
-1. Velikost haldy NameNode Java se změní na 2 GB od 1 GB.
+1. Velikost haldy NameNode Java se změní na 1 GB z 2 GB.
 
     ![Upravit velikost haldy NameNode Java](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
@@ -176,9 +176,9 @@ Mapa úlohy vytvoření dočasné soubory, které jsou používány úlohy reduk
 
 K dispozici kompresní typy jsou:
 
-| Formát | Nástroj | algoritmus | Přípona souboru | Rozdělitelné? |
+| Formát | Tool | algoritmus | Přípona souboru | Rozdělitelné? |
 | -- | -- | -- | -- | -- |
-| GZIP | GZIP | DEFLATE | .gz | Ne |
+| Gzip | Gzip | DEFLATE | .gz | Ne |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | Ano |
 | LZO | Lzop | LZO | .lzo | Ano, pokud indexovat |
 | Tenhle | neuvedeno | Tenhle | Tenhle | Ne |
@@ -295,7 +295,7 @@ Další doporučení pro optimalizaci prováděcí modul Hive:
 
 1. Najít, zrušte komentář a změňte hodnotu vlastnosti, kterou chcete upravit.
 
-1. Vyberte **Uložit** v horní pravé části okna uložte novou hodnotu. Některé vlastnosti může vyžadovat restartování služby.
+1. Vyberte **Uložit** v pravé horní části okna uložte novou hodnotu. Některé vlastnosti může vyžadovat restartování služby.
 
     ![Upřesňující vlastnosti pig](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
@@ -365,7 +365,7 @@ Počet reduktorů se počítá na základě parametru `pig.exec.reducers.bytes.p
 
 [Apache HBase](https://hbase.apache.org/) konfigurace se liší od **HBase Configs** kartu. Následující části popisují některé důležité konfigurační nastavení, které ovlivňují výkon HBase.
 
-### <a name="set-hbaseheapsize"></a>Nastavte HBASE_HEAPSIZE
+### <a name="set-hbaseheapsize"></a>Set HBASE_HEAPSIZE
 
 Velikost haldy HBase určuje maximální velikost haldy pro použití v megabajtech podle *oblasti* a *hlavní* servery. Výchozí hodnota je 1 000 MB. To by měly být vyladěné pro zatížení clusteru.
 

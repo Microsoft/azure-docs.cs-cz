@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 13ea4acb5a3b5b3e7ac6d53013193fddbfcbf9b7
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6d92273298c0448d7377acab6f3b8ea1cc1ed908
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759407"
+ms.locfileid: "58762918"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Architektura virtuální sítě Azure HDInsight
 
@@ -31,8 +31,6 @@ Clustery Azure HDInsight mají různé typy virtuálních počítačů nebo uzly
 | Oblast uzlu | Pro typ clusteru HBase uzlu oblasti (také označované jako datový uzel) běží oblastním serveru. Oblastní servery poskytovat a spravovat část data spravovaná přes HBase. Uzly oblasti lze přidat nebo odebrat z clusteru škálovat výpočetní funkce a spravujte náklady.|
 | Uzel nimbus | Pro typ clusteru Storm uzel Nimbus poskytuje funkce podobné hlavní uzel. Uzel Nimbus přiřazuje úlohy jiným uzlům v clusteru prostřednictvím nástroje Zookeeper, který koordinuje spuštěné topologie Storm. |
 | Dohledové uzly | Pro typ clusteru Storm spustí dohledové uzly podle uzel Nimbus provádět požadované zpracování pokynů. |
-
-* = Apache Hadoop, Apache Hive, Apache Kafka, Apache Spark, Apache HBase a typy clusteru R serveru
 
 ## <a name="basic-virtual-network-resources"></a>Prostředky základní virtuální sítě
 

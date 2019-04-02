@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: celested
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee35fbfff676e8618a4e5ae02086193c503f482
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bb193119186c2cf9e758f8c74f99f18c5fb389b8
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170818"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792514"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Vytvořit skript bezobslužné instalace pro Azure AD Application Proxy connector
 
@@ -34,7 +34,7 @@ Tato možnost je užitečná, když chcete:
 * Integrace konektoru instalační a registrační jako součást jiného procesu.
 * Vytvořte standardní serverovou bitovou kopii, která obsahuje službu bits konektoru, ale není registrovaná.
 
-Pro [konektor Proxy aplikací](application-proxy-connectors.md) fungovat, musí být registrována pomocí adresáře Azure AD pomocí globální správce a hesla. Obvykle se tyto informace zadat během instalace konektoru v místním dialogovém, ale můžete použít PowerShell k automatizaci tohoto procesu místo.
+Pro [konektor Proxy aplikací](application-proxy-connectors.md) pracovat, musí být registrována pomocí adresáře Azure AD pomocí aplikace správce a heslo. Obvykle se tyto informace zadat během instalace konektoru v místním dialogovém, ale můžete použít PowerShell k automatizaci tohoto procesu místo.
 
 Existují dva kroky pro bezobslužnou instalaci. Nejdřív nainstalujte konektor. Za druhé registrace konektoru v Azure AD. 
 

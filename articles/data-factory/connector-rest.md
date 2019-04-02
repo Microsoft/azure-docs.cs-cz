@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 01d00b33a4575f17cffb7ba878372367046271a1
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ee47f464c59bd9deed98671f19cfcc6d2c3c1b39
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578420"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762476"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu REST s využitím Azure Data Factory
 
@@ -55,7 +55,7 @@ Pro ZBÝVAJÍCÍ propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | **Typ** musí být vlastnost nastavena na **HttpServer**. | Ano |
+| type | **Typ** musí být vlastnost nastavena na **RestService**. | Ano |
 | url | Základní adresa URL služby REST. | Ano |
 | enableServerCertificateValidation | Určuje, zda při připojování ke koncovému bodu ověření certifikátu SSL na straně serveru. | Ne<br /> (výchozí hodnota je **true**) |
 | authenticationType. | Typ ověřování používaný pro připojení ke službě REST. Povolené hodnoty jsou **anonymní**, **základní**, **AadServicePrincipal** a **ManagedServiceIdentity**. Odkazovat odpovídající části níže na více vlastností a příkladů | Ano |

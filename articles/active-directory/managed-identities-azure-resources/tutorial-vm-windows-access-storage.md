@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/12/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dacf58760d353eea3c552a9113589259148f3558
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 1bb1370b2d828aaddae61c32a663bd032b18e7b1
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447925"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801879"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Storage
 
@@ -76,7 +76,7 @@ Spravovanou identitu přiřazenou systémem na virtuálním počítači můžete
 1. Přejděte zpět k nově vytvořenému účtu úložiště.
 2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)**.
 3. Klikněte na tlačítko **+ přidat přiřazení role** nad stránky a přidat nové přiřazení role pro váš virtuální počítač.
-4. V části **Role** vyberte v rozevírací nabídce **Čtenář dat objektu blob služby Storage (Preview)**.
+4. V části **Role**, z rozevíracího seznamu vyberte **čtecí modul dat pro úložiště objektů Blob**.
 5. V dalším rozevíracím seznamu **Přiřadit přístup k** vyberte **Virtuální počítač**.
 6. Potom se ujistěte, že v rozevíracím seznamu **Předplatné** je správné předplatné, a nastavte **Skupinu prostředků** na **Všechny skupiny prostředků**.
 7. V části **Vybrat** zvolte svůj virtuální počítač a klikněte na **Uložit**.

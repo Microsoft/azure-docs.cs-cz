@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 04/01/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b98cc0141954a079b848bd9639b081499819b8ce
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d69bd931f2f8c72fd1e6fc79c16662ea367617d6
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876999"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802010"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Obnovení nebo odeberte nedávno odstraněného uživatele pomocí služby Azure Active Directory
 Po odstranění uživatele účet zůstane v pozastaveném stavu po dobu 30 dnů. Během tohoto časového období 30 dnů uživatelský účet můžete obnovit, spolu se všemi vlastnostmi. Po uplynutí 30 dnů okno uživatele je automaticky a chcete trvale odstranit.
@@ -43,7 +43,7 @@ Musí mít jeden z následujících rolí pro obnovení a trvale odstranit uživ
 Zobrazí se všichni uživatelé, které byly odstraněny před méně než 30 dny. Tito uživatelé můžou obnovit.
 
 ### <a name="to-view-your-restorable-users"></a>Chcete-li zobrazit obnovitelné uživatele
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí účtu globálního správce organizace.
 
 2. Vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **odstraněných uživatelů**.
 
@@ -52,7 +52,11 @@ Zobrazí se všichni uživatelé, které byly odstraněny před méně než 30 d
     ![Uživatelé – stránka odstraněné uživatele s uživateli, které je možné obnovit](media/active-directory-users-restore/users-deleted-users-view-restorable.png)
 
 ## <a name="restore-a-recently-deleted-user"></a>Obnovení nedávno odstraněného uživatele
-Uživatelský účet je pozastaven, se zachovají všechny informace o souvisejících adresáře. Při obnovení uživatele se obnoví také tyto informace adresáře.
+
+Při odstranění uživatelského účtu z organizace. účet je v pozastaveném stavu a všechny související organizace informace je zachováno. Při obnovení uživatele se také obnoví informace o této organizaci.
+
+> [!Note]
+> Po obnovení uživatele se licence, které byly přiřazeny uživateli v okamžiku odstranění také obnoví i v případě, že nejsou k dispozici pro tyto licence žádné licence. Pokud pak spotřebovávají více, než jste zakoupili více licencí, vaše organizace může být dočasně nesplňuje požadavky pro využití licencí.
 
 ### <a name="to-restore-a-user"></a>Chcete-li obnovit uživatele
 1. Na **uživatelé – uživatelé se odstranili** stránky, vyhledejte a vyberte jednu z dostupných uživatelů. Například _Mary Parker_.
@@ -62,7 +66,7 @@ Uživatelský účet je pozastaven, se zachovají všechny informace o souvisej�
     ![Uživatelé – stránka odstraněných uživatelů se zvýrazněnou možností obnovení uživatele](media/active-directory-users-restore/users-deleted-users-restore-user.png)
 
 ## <a name="permanently-delete-a-user"></a>Trvale odstranit uživatele
-Bez čekání na 30 dnů pro automatické odstranění můžete trvale odstranit uživatele z adresáře. Trvale odstraněného uživatele nelze obnovit, jiný správce, ani zákaznickou podporu Microsoftu.
+Bez čekání na 30 dnů pro automatické odstranění můžete trvale odstranit uživatele z vaší organizace. Trvale odstraněného uživatele nelze obnovit, jiný správce, ani zákaznickou podporu Microsoftu.
 
 >[!Note]
 >Pokud je trvale odstranit uživatele omylem, budete mít k vytvoření nového uživatele a všechny předchozí informace zadat ručně. Další informace o vytvoření nového uživatele najdete v tématu [přidání nebo odstranění uživatelů](add-users-azure-active-directory.md).
@@ -84,6 +88,6 @@ Poté, co jste obnovit nebo odstranit uživatele, můžete provést následujíc
 
 - [Přidání nebo změně informací profilu](active-directory-users-profile-azure-portal.md)
 
-- [Přidání uživatelů typu host z jiného adresáře](../b2b/what-is-b2b.md) 
+- [Přidat uživatele typu Host z jiné organizace](../b2b/what-is-b2b.md)
 
-Další informace o dalších úlohách správy k dispozici uživatele [dokumentace ke službě Azure Active Directory uživatele management](../users-groups-roles/index.yml).
+Další informace o dalších úlohách správy k dispozici uživatele [Správa dokumentace pro uživatele Azure AD](../users-groups-roles/index.yml).

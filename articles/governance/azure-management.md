@@ -7,14 +7,14 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: c38d19b8528399ae09d92e48ed7dfc17c18938b7
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: f94cec7919edc6cf6ebb6618d38b8591feb1278b
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338066"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804135"
 ---
-# <a name="management-in-azure"></a>Správa v Azure
+# <a name="overview-of-management-services-in-azure"></a>Přehled správy služeb v Azure
 
 Zásady správného řízení v Azure je jeden z aspektů správy Azure. Tento článek popisuje různé oblasti správy pro nasazení a údržbu vašich prostředků v Azure.
 
@@ -22,7 +22,7 @@ Termín správa označuje úlohy a procesy nezbytné pro udržování obchodníc
 
 Následující diagram ukazuje různé oblasti správy, které jsou nutné k údržbě libovolné aplikace nebo prostředku. Tyto různé oblasti lze považovat za životní cyklus. Každou oblast, kterou je potřeba průběžné postupně během životnosti prostředku. Tento prostředek životní cyklus začíná počáteční nasazení prostřednictvím nepřetržitý provoz a nakonec po vyřazení.
 
-![Správa oborů](../monitoring/media/management-overview/management-capabilities.png)
+![Obory správy ve službě Azure](../monitoring/media/management-overview/management-capabilities.png)
 
 Žádná samostatná služba Azure nesplňuje kompletně požadavky konkrétní oblasti správy. Místo toho každá se provádí několik služeb společně. Některé služby, jako jsou Application Insights, poskytují cílené funkce monitorování pro webové aplikace. Jiné, jako jsou protokoly Azure monitoru, ukládat data správy pro jiné služby. Tato funkce umožňuje analyzovat data různých typů shromážděná různými službami.
 

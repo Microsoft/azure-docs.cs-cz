@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: a6505232066d7a2e63c3e9508cb16cb9a31f8e35
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6922d49affdde86728b41ef1d3d0c6a2da5c323e
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776661"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805087"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Přenos dat pro rozsáhlé datové sady s nízkým nebo žádné šířky pásma sítě
  
@@ -45,7 +45,7 @@ Možnosti dostupné v tomto scénáři jsou zařízení pro zařízení Azure Da
 
 Následující tabulka shrnuje rozdíly mezi klíčové funkce.
 
-|                                     |    Data Box Disk (preview)    |    Data Box                                      |    Silná pole dat (preview)              |    Import/export                       |
+|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    Import/export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Velikost dat                        |    Až 35 TB                 |    Až 80 TB za zařízení                       |    Až 800 TB na zařízení               |    Proměnná                            |
 |    Typ dat                        |    Azure Blobs                  |    Azure Blobs<br>Soubory Azure                    |    Azure Blobs<br>Soubory Azure            |    Azure Blobs<br>Soubory Azure          |

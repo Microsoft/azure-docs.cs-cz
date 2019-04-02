@@ -12,16 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5f33249496c9a4fc8a094e64f15c8d95da69194b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8e8b493881662483e66dd835d1cc68a471b18454
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294871"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803293"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services telemetrie  
+
+
+> [!NOTE]
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
 
 Azure Media Services (AMS) umožňuje získat přístup k data telemetrie/metriky pro jeho služeb. Aktuální verze AMS umožňuje shromažďovat telemetrická data pro živé **kanál**, **StreamingEndpoint**a live **archivu** entity. 
 

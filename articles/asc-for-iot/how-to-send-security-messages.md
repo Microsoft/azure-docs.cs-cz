@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 2e8fc3e2cf85fb06d37347870e3b2b9c82f1aa96
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: be17c5bb4d09e0868af0c6fd9b31f7653b614735
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754779"
+ms.locfileid: "58762765"
 ---
 # <a name="send-security-messages-sdk"></a>Odesílat zprávy o zabezpečení SDK
 
@@ -88,7 +88,7 @@ Po nastavení jako zabezpečení zpráv a odeslat, tato zpráva se zpracuje ASC 
 
 ## <a name="send-security-messages"></a>Odesílat zprávy o zabezpečení 
 
-Odesílat zprávy o zabezpečení bez agenta IoT, použije ASC pomocí [Azure IoT C# sada SDK zařízení](https://github.com/Azure/azure-iot-sdk-csharp) nebo [zařízení Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c).
+Odesílat zprávy o zabezpečení bez agenta IoT, použije ASC pomocí [Azure IoT C# sada SDK zařízení](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) nebo [zařízení Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview).
 
 K odesílání dat zařízení ze všech zařízení pro účely zpracování ASC pro IoT, použijte jednu z následujících rozhraní API k označení zprávy pro správné směrování k ASC pro IoT zpracování kanálu. Zpráv odeslaných tímto způsobem bude zpracována a zobrazí jako přehledy o zabezpečení v rámci ASC pro IoT i služby IoT Hub nebo v rámci Azure Security Center. 
 

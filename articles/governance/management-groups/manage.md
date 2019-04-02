@@ -1,17 +1,17 @@
 ---
-title: Jak změnit, odstranit nebo Správa skupin pro správu v Azure – Azure zásad správného řízení
+title: Jak změnit, odstranit nebo Správa skupin pro správu – zásady správného řízení Azure
 description: Zjistěte, jak zobrazit, udržovat, aktualizovat a odstraňovat vaše hierarchie skupin správy.
 author: rthorn17
 ms.service: azure-resource-manager
 ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 801a37496b36be1f98408c46807f5b10db2b0282
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: f9e9bf51d50863f2e37a2f579c2db0edcfeca634
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622055"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801760"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa vašich prostředků pomocí skupin pro správu
 
@@ -37,11 +37,11 @@ Název skupiny pro správu můžete změnit pomocí portálu, Powershellu nebo r
 
 1. Vyberte **přejmenovat skupinu** možnosti v horní části stránky.
 
-   ![Možnost Přejmenovat skupinu](./media/detail_action_small.png)
+   ![Přejmenovat skupinu možnost na stránce skupiny správy](./media/detail_action_small.png)
 
 1. Po otevření nabídky, zadejte nový název, který chcete zobrazit.
 
-   ![Podokno přejmenovat skupinu](./media/rename_context.png)
+   ![Podokno přejmenovat skupinu a přejmenovat skupinu pro správu](./media/rename_context.png)
 
 1. Vyberte **Uložit**.
 
@@ -223,7 +223,7 @@ Chcete-li zjistit, jaká oprávnění máte na webu Azure Portal, vyberte správ
 
 1. Vyberte předplatné, v seznamu správné ID.
 
-   ![Podřízená položka](./media/add_context_sub.png)
+   ![Dostupná předplatná pro přidání do skupiny pro správu](./media/add_context_sub.png)
 
 1. Vyberte možnost "Uložit".
 
@@ -237,13 +237,13 @@ Chcete-li zjistit, jaká oprávnění máte na webu Azure Portal, vyberte správ
 
 1. Vyberte tři tečky na konci řádku pro předplatné v seznamu, který chcete přesunout.
 
-   ![Možnost přesunutí](./media/move_small.png)
+   ![Možnost přesunout na skupinu pro správu](./media/move_small.png)
 
 1. Vyberte **přesunout**.
 
 1. V nabídce, která se otevře, vyberte **nadřazená skupina pro správu**.
 
-   ![Přesunout podokno](./media/move_small_context.png)
+   ![Přesunout podokně nadřazenou skupinu změnit](./media/move_small_context.png)
 
 1. Vyberte **Uložit**.
 
@@ -294,7 +294,7 @@ Při přesunutí nadřazená skupina pro správu hierarchie v této skupině se 
    - Nový výběr se vytvoří nová skupina pro správu.
    - Výběr existujícího zobrazíte rozevírací seznam všech skupin pro správu, které můžete přesunout do této skupiny pro správu.  
 
-   ![Přesunutí](./media/add_context_MG.png)
+   ![Přesunout skupinu pro správu do nové nebo stávající skupiny](./media/add_context_MG.png)
 
 1. Vyberte **Uložit**.
 
@@ -318,7 +318,7 @@ az account management-group update --name 'Contoso' --parent-id '/providers/Micr
 
 Skupiny pro správu se podporují v rámci [protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md). Všechny události, ke kterým dochází ve skupině pro správu ve stejném centrální umístění jako ostatní prostředky Azure se můžete dotazovat.  Pro konkrétní skupinu pro správu si můžete si zobrazit všechny změny přiřazení zásad nebo přiřazení rolí.
 
-![Protokoly aktivit se skupinami pro správu](media/al-mg.png)
+![Protokoly aktivit se skupiny pro správu](media/al-mg.png)
 
 Pokud se chcete na skupiny pro správu dotazovat mimo Azure Portal, cílový obor pro skupiny pro správu vypadá takto: **"/providers/Microsoft.Management/managementGroups/{yourMgID}"**.
 

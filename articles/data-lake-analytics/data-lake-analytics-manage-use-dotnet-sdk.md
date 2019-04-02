@@ -9,14 +9,15 @@ ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 3827c9e0b3e51a7a179a7db7fac0152d799a63f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a10af73d754596e9b5bb34b2974d7f1647d06f8
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835811"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793284"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Správa Azure Data Lake Analytics aplikace .NET
+
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí aplikace napsané pomocí sady Azure .NET SDK. 
@@ -39,7 +40,7 @@ Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje 
 
 Tyto balíčky pomocí příkazového řádku NuGet můžete nainstalovat pomocí následujících příkazů:
 
-```
+```powershell
 Install-Package -Id Microsoft.Rest.ClientRuntime.Azure.Authentication  -Version 2.3.1
 Install-Package -Id Microsoft.Azure.Management.DataLake.Analytics  -Version 3.0.0
 Install-Package -Id Microsoft.Azure.Management.DataLake.Store  -Version 2.2.0
@@ -49,7 +50,7 @@ Install-Package -Id Microsoft.Azure.Graph.RBAC -Version 3.4.0-preview
 
 ## <a name="common-variables"></a>Společné proměnné
 
-``` csharp
+```csharp
 string subid = "<Subscription ID>"; // Subscription ID (a GUID)
 string tenantid = "<Tenant ID>"; // AAD tenant ID or domain. For example, "contoso.onmicrosoft.com"
 string rg == "<value>"; // Resource  group name
@@ -130,6 +131,7 @@ Pokud jste jednu ještě nevytvořili, musí mít skupiny prostředků Azure k v
 var resourceGroup = new ResourceGroup { Location = location };
 resourceManagementClient.ResourceGroups.CreateOrUpdate(groupName, rg);
 ```
+
 Další informace najdete v tématu skupin prostředků Azure a Data Lake Analytics.
 
 ### <a name="create-a-data-lake-store-account"></a>Vytvoření účtu Data Lake Store
@@ -260,6 +262,7 @@ if (adls_accounts != null)
 ```
 
 ### <a name="upload-and-download-folders-and-files"></a>Nahrávání a stahování složek a souborů
+
 Objekt správy klienta systému Data Lake Store souborů slouží k nahrávání a stahování jednotlivých souborů a složek z Azure do místního počítače pomocí následujících metod:
 
 - UploadFolder
@@ -293,6 +296,7 @@ using (var memstream = new MemoryStream())
 ```
 
 ### <a name="verify-azure-storage-account-paths"></a>Ověření cesty k účtu Azure Storage
+
 Následující kód zkontroluje, zda účet služby Azure Storage (storageAccntName) existuje v účtu Data Lake Analytics (analyticsAccountName), a Pokud kontejner (containerName) existuje v účtu Azure Storage.
 
 ``` csharp
@@ -303,9 +307,11 @@ bool containerExists = adlaClient.Account.StorageContainerExists(rg, adla, stora
 ```
 
 ## <a name="manage-catalog-and-jobs"></a>Správa katalogů a úloh
+
 Objekt DataLakeAnalyticsCatalogManagementClient poskytuje metody pro správu SQL database k dispozici pro každý účet Azure Data Lake Analytics. DataLakeAnalyticsJobManagementClient poskytuje metody pro odeslání a Správa úloh spusťte v databázi se skripty U-SQL.
 
 ### <a name="list-databases-and-schemas"></a>Seznam databází a schémata
+
 Mezi několik věcí, které můžete zobrazit seznam nejčastěji používané jsou databází a jejich schématu. Následující kód získá kolekce databází a potom vytvoří výčet schéma pro každou databázi.
 
 ``` csharp
@@ -323,9 +329,10 @@ foreach (var db in databases)
 ```
 
 ### <a name="list-table-columns"></a>Seznam sloupců tabulky
+
 Následující kód ukazuje, jak získat přístup k databázi pomocí katalogu Data Lake Analytics správy klienta do sloupce do zadané tabulky.
 
-``` csharp
+```csharp
 var tbl = adlaCatalogClient.Catalog.GetTable(adla, "master", "dbo", "MyTableName");
 IEnumerable<USqlTableColumn> columns = tbl.ColumnList;
 
@@ -336,7 +343,9 @@ foreach (USqlTableColumn utc in columns)
 ```
 
 ### <a name="submit-a-u-sql-job"></a>Odeslání úlohy U-SQL
+
 Následující kód ukazuje, jak odeslat úlohu pomocí klienta správy úlohy Data Lake Analytics.
+
 ``` csharp
 string scriptPath = "/Samples/Scripts/SearchResults_Wikipedia_Script.txt";
 Stream scriptStrm = adlsFileSystemClient.FileSystem.Open(_adlsAccountName, scriptPath);
@@ -355,9 +364,10 @@ Console.WriteLine($"Job {jobName} submitted.");
 ```
 
 ### <a name="list-failed-jobs"></a>Seznam neúspěšných úloh
+
 Následující kód uvádí informace o úlohách, které se nezdařilo.
 
-``` csharp
+```csharp
 var odq = new ODataQuery<JobInformation> { Filter = "result eq 'Failed'" };
 var jobs = adlaJobClient.Job.List(adla, odq);
 foreach (var j in jobs)
@@ -367,6 +377,7 @@ foreach (var j in jobs)
 ```
 
 ### <a name="list-pipelines"></a>Vypsat seznam kanálů
+
 Následující kód uvádí informace o každé kanálu úlohy odeslané k účtu.
 
 ``` csharp
@@ -378,6 +389,7 @@ foreach (var p in pipelines)
 ```
 
 ### <a name="list-recurrences"></a>Seznam opakování
+
 Následující kód uvádí informace o každé opakování úlohy odeslané k účtu.
 
 ``` csharp
@@ -404,9 +416,11 @@ Console.WriteLine( userinfo.ObjectId )
 ```
 
 ## <a name="manage-compute-policies"></a>Správa zásad compute
+
 Objekt DataLakeAnalyticsAccountManagementClient poskytuje metody pro správu zásad compute pro účet Data Lake Analytics.
 
 ### <a name="list-compute-policies"></a>Seznam zásad compute
+
 Následující kód načte seznam zásad výpočetní prostředky pro účet Data Lake Analytics.
 
 ``` csharp
@@ -418,6 +432,7 @@ foreach (var p in policies)
 ```
 
 ### <a name="create-a-new-compute-policy"></a>Vytvořit novou zásadu výpočetní prostředky
+
 Následující kód vytvoří novou zásadu výpočetní prostředky pro účet Data Lake Analytics, nastavení maximální počet jednotek au dostupná pro zadaného uživatele na 50 a Priorita minimální úlohy na 250.
 
 ``` csharp
@@ -427,6 +442,7 @@ adlaAccountClient.ComputePolicies.CreateOrUpdate(rg, adla, "GaryMcDaniel", newPo
 ```
 
 ## <a name="next-steps"></a>Další postup
+
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Správa Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md)
 * [Monitorování úloh Azure Data Lake Analytics a odstraňování potíží pomocí webu Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

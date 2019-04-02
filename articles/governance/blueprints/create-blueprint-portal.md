@@ -1,6 +1,6 @@
 ---
 title: Vytvořit podrobný plán na portálu
-description: Plány Azure slouží k vytváření, definování a je možné nasazovat artefakty na webu Azure Portal.
+description: Plány Azure slouží k vytváření, definování a je možné nasazovat artefakty na webu Azure portal.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fdf87bff026dee4969b3995b37c31de3ead7714b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0b27514dfa34963901fb94be37d8fe330a3c65ce
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004915"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804390"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definování a přiřazení podrobného plánu Azure na portálu
 
@@ -40,7 +40,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    - Alternativně klepněte na **vytvořit** ze stránky **Začínáme** a přejděte přímo k vytváření podrobného plánu.
 
-   ![Vytvořit podrobný plán](./media/create-blueprint-portal/create-blueprint-button.png)
+   ![Vytvořit podrobný plán ze stránky definice podrobného plánu](./media/create-blueprint-portal/create-blueprint-button.png)
 
 1. Zadejte **název podrobného plánu** jako je například "MyBlueprint" (písmena a čísla – až 48 znaků, ale žádné mezery ani speciální znaky) pro podrobný plán, ale nechejte **podrobný plán popis** zatím prázdné. V **umístění definice** pole, klikněte na tlačítko se třemi tečkami na pravé straně, vyberte [skupiny pro správu](../management-groups/overview.md) nebo předplatného, ve které chcete uložit podrobný plán a klikněte na tlačítko **vyberte**.
 
@@ -48,7 +48,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
 1. Přidání přiřazení role v předplatném: Levým tlačítkem myši na **+ přidání artefaktu...**  řádek pod **předplatné** a na pravé straně v prohlížeči se otevře okno "Přidání artefaktu". Vyberte "Přiřazení Role" pro _Typ artefaktu_. V části _Role_, vyberte "Přispěvatel" a nechte _přidat uživatele, aplikace nebo skupina_ pole zaškrtávací políčko označující **dynamického parametru**. Klikněte na tlačítko **přidat** k přidání tohoto artefaktu do podrobného plánu.
 
-   ![Artefakt - přiřazení role](./media/create-blueprint-portal/add-role-assignment.png)
+   ![Artefakt podrobného plánu – přiřazení Role](./media/create-blueprint-portal/add-role-assignment.png)
 
    > [!NOTE]
    > Většina _artefaktů_ podporuje parametry. Parametr přiřazený hodnotě během vytváření plánu je **statický parametr**. Pokud je tento parametr přiřazený během přiřazení podrobného plánu, je to **dynamický parametr**. Další informace najdete v [parametry podrobného plánu](./concepts/parameters.md).
@@ -113,11 +113,11 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
    }
    ```
 
-   ![Šablona Artefakt Resource Manager](./media/create-blueprint-portal/add-resource-manager-template.png)
+   ![Artefakt podrobného plánu – šablona Resource Manageru](./media/create-blueprint-portal/add-resource-manager-template.png)
 
 1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že každý artefakt má '_x_ z _y_ obsazených parametrů' ve sloupci _Parametry_. **Dynamické parametry** se nastavují při každém přiřazení podrobného plánu.
 
-   ![Dokončený podrobný plán](./media/create-blueprint-portal/completed-blueprint.png)
+   ![Definice podrobného plánu dokončené](./media/create-blueprint-portal/completed-blueprint.png)
 
 1. Teď, když byly přidány všechny plánované artefakty, klikněte na tlačítko **uložit koncept** v dolní části stránky.
 
@@ -135,11 +135,11 @@ V části [Vytvoření podrobného plánu](#create-a-blueprint) se pro novou sku
 
 1. Přidání přiřazení role v rámci skupiny prostředků: Levým tlačítkem myši na **+ přidání artefaktu...**  řádek přímo pod **ResourceGroup** položka. Vyberte "Přiřazení Role" pro _Typ artefaktu_. V části _Role_, vyberte "Vlastník" a zrušte zaškrtnutí u _přidat uživatele, aplikace nebo skupina_ pole a vyhledejte a vyberte uživatele, aplikace nebo skupinu přidat. Tento artefakt používá **statický parametr**, který je v každém přiřazení tohoto podrobného plánu nastavený stejně. Klikněte na tlačítko **přidat** k přidání tohoto artefaktu do podrobného plánu.
 
-   ![Artefakt - přiřazení role #2](./media/create-blueprint-portal/add-role-assignment-2.png)
+   ![Artefakt podrobného plánu - 2 přiřazení Role](./media/create-blueprint-portal/add-role-assignment-2.png)
 
 1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že se zobrazí nově přidaná role přiřazení **naplněných parametrů 1: 1** to znamená, že se jedná **statický parametr**.
 
-   ![Dokončený podrobného plánu #2](./media/create-blueprint-portal/completed-blueprint-2.png)
+   ![Definice podrobného plánu dokončené #2](./media/create-blueprint-portal/completed-blueprint-2.png)
 
 1. Klikněte na tlačítko **uložit koncept** teď, když se aktualizoval.
 
@@ -224,7 +224,7 @@ Teď, když se podrobný plán přiřadil k předplatnému, ověřte průběh ap
 
 1. V seznamu plány, klikněte pravým tlačítkem na ten, který jste dříve přiřadili a vyberte **zobrazit podrobnosti o přiřazení**.
 
-   ![Zobrazení podrobností přiřazení](./media/create-blueprint-portal/view-assignment-details.png)
+   ![Zobrazit podrobnosti o přiřazení ze stránky přiřazené podrobné plány.](./media/create-blueprint-portal/view-assignment-details.png)
 
 1. Na **podrobný plán přiřazení** stránce, ověřte, že všechny artefakty se úspěšně nasadilo a že nebyly žádné chyby během nasazení. Pokud došlo k nějakým chybám, přečtěte si téma [řešení potíží s podrobným plánem](./troubleshoot/general.md), kde najdete postup, jak určit, co se nepovedlo.
 
@@ -249,9 +249,9 @@ Pokud už přiřazení podrobného plánu nepotřebujete, odeberte ho z předpla
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [podrobný plán životního cyklu](./concepts/lifecycle.md).
-- Vysvětlení použití [statické a dynamické parametry](./concepts/parameters.md).
-- Zjistěte, jak přizpůsobit [podrobný plán pořadí řazení](./concepts/sequencing-order.md).
-- Zjistěte, jak se využívání [podrobný plán uzamčení prostředků](./concepts/resource-locking.md).
-- Zjistěte, jak [aktualizovat existující přiřazení](./how-to/update-existing-assignments.md).
-- Řešení problémů při přiřazení podrobného plánu se [obecné řešení potíží s](./troubleshoot/general.md).
+- Další informace o [životním cyklu podrobného plánu](./concepts/lifecycle.md)
+- Principy použití [statických a dynamických parametrů](./concepts/parameters.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](./concepts/sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](./concepts/resource-locking.md)
+- Další informace o [aktualizaci existujících přiřazení](./how-to/update-existing-assignments.md)
+- Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](./troubleshoot/general.md)

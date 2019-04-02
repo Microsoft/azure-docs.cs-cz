@@ -5,24 +5,24 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 6664c3d5fde487b7add7c38dc602915d19adb767
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: f04fa5f43844080638c70c44410d233fbe6ad325
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361978"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805461"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Referenční příručka jazyka SQL pro službu Azure Cosmos DB 
 
-Azure Cosmos DB podporuje dotazování dokumentů pomocí známých SQL (Structured Query Language), jako je gramatika přes hierarchické dokumenty JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů. Tento článek poskytuje dokumentaci pro syntaxi jazyka dotazů SQL, který je kompatibilní s účty SQL API. Postup ukázky dotazů SQL, najdete v části [dotazy SQL ve službě Cosmos DB](how-to-sql-query.md).  
+Azure Cosmos DB podporuje dotazování dokumentů pomocí známých SQL (Structured Query Language), jako je gramatika přes hierarchické dokumenty JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů. Tento článek poskytuje dokumentaci pro syntaxi dotazů jazyka SQL, používaných pro účty rozhraní SQL API. Postup ukázky dotazů SQL, najdete v části [Příklady dotazů SQL ve službě Cosmos DB](how-to-sql-query.md).  
   
-Přejděte [Query Playground](https://www.documentdb.com/sql/demo) kde zkuste Cosmos DB a spouštět dotazy SQL proti naší datové sadě.  
+Přejděte [Query Playground](https://www.documentdb.com/sql/demo), kde můžete akci Cosmos DB a spouštět dotazy SQL proti ukázkovou datovou sadou.  
   
 ## <a name="select-query"></a>Zpracování dotazu SELECT  
-Každý dotaz se skládá z klauzule SELECT a volitelné a klauzulí WHERE za standardy ANSI SQL. Pro každý dotaz, obvykle je vypočten zdroji v klauzuli FROM. Filtr v klauzuli WHERE je pak použije ve zdroji se načíst podmnožinu dokumentů JSON. Nakonec se používá klauzuli SELECT do projektu požadované hodnoty JSON v seznamu select. Konvence pro příkazy SELECT popisující jsou uvedených v části konvence syntaxe. Příklady najdete v tématu [Příklady zpracování dotazu SELECT](how-to-sql-query.md#SelectClause)
+Každý dotaz se skládá z klauzule SELECT a volitelné a klauzulí WHERE za standardy ANSI SQL. Obvykle pro každý dotaz je vypočten zdroji v klauzuli FROM a potom použití filtru v klauzuli WHERE ve zdroji se načíst podmnožinu dokumentů JSON. Nakonec se používá klauzuli SELECT do projektu požadované hodnoty JSON v seznamu select. Příklady najdete v tématu [Příklady zpracování dotazu SELECT](how-to-sql-query.md#SelectClause)
   
 **Syntaxe**  
   
@@ -2342,7 +2342,7 @@ StringToArray(<expr>)
   
 - `expr`  
   
-   Je libovolný platný výraz pole JSON. Všimněte si, že řetězcové hodnoty musí být napsané v uvozovkách platný. Podrobnosti o formátu JSON najdete v tématu [json.org](https://json.org/)
+   Je libovolný platný skalární výraz, který má být vyhodnocen jako výraz pole JSON. Všimněte si, že vnořené řetězcové hodnoty musí být napsané v uvozovkách platný. Podrobnosti o formátu JSON najdete v tématu [json.org](https://json.org/)
   
   **Návratové typy**  
   
@@ -2352,26 +2352,57 @@ StringToArray(<expr>)
   
   Následující příklad ukazuje, jak se chová StringToArray do různých typů. 
   
-```  
+ Následují příklady s platným vstupem.
+
+```
 SELECT 
-StringToArray('[]'), 
-StringToArray("[1,2,3]"),
-StringToArray("[\"str\",2,3]"),
-IS_ARRAY(StringToArray("[['5','6','7'],['8'],['9']]")), 
-IS_ARRAY(StringToArray('[["5","6","7"],["8"],["9"]]')),
-StringToArray('[1,2,3, "[4,5,6]",[7,8]]'),
-StringToArray("[1,2,3, '[4,5,6]',[7,8]]"),
-StringToArray(false), 
-StringToArray(undefined),
-StringToArray(NaN), 
-StringToArray("[")
-```  
-  
- Tady je sada výsledků.  
-  
-```  
-[{"$1": [], "$2": [1,2,3], "$3": ["str",2,3], "$4": false, "$5": true, "$6": [1,2,3,"[4,5,6]",[7,8]]}]
-```  
+    StringToArray('[]') AS a1, 
+    StringToArray("[1,2,3]") AS a2,
+    StringToArray("[\"str\",2,3]") AS a3,
+    StringToArray('[["5","6","7"],["8"],["9"]]') AS a4,
+    StringToArray('[1,2,3, "[4,5,6]",[7,8]]') AS a5
+```
+
+ Tady je sada výsledků.
+
+```
+[{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
+```
+
+ Následuje příklad neplatný vstup. 
+   
+ Jednoduchých uvozovek a být v rámci pole nejsou platný kód JSON.
+I když jsou platné v rámci dotazu, se nebude analyzovat na platné pole. Buď musí být uvozena řetězců v rámci pole řetězce "[\"\"]" nebo okolních uvozovek musí být jeden "[" "]".
+
+```
+SELECT
+    StringToArray("['5','6','7']")
+```
+
+ Tady je sada výsledků.
+
+```
+[{}]
+```
+
+ Následují příklady neplatný vstup.
+   
+ Výraz předaný bude možné analyzovat jako pole JSON. Následující není vyhodnocen na typ pole a tak vrátit nedefinovaný.
+   
+```
+SELECT
+    StringToArray("["),
+    StringToArray("1"),
+    StringToArray(NaN),
+    StringToArray(false),
+    StringToArray(undefined)
+```
+
+ Tady je sada výsledků.
+
+```
+[{}]
+```
 
 ####  <a name="bk_stringtoboolean"></a> StringToBoolean  
  Vrátí výraz přeložit na logickou hodnotu. Pokud výraz nelze přeložit, vrátí nedefinovaný.  
@@ -2386,7 +2417,7 @@ StringToBoolean(<expr>)
   
 - `expr`  
   
-   Je libovolný platný výraz.  
+   Je libovolný platný skalární výraz, který má být vyhodnocen jako logický výraz.  
   
   **Návratové typy**  
   
@@ -2395,25 +2426,55 @@ StringToBoolean(<expr>)
   **Příklady**  
   
   Následující příklad ukazuje, jak se chová StringToBoolean do různých typů. 
-  
+ 
+ Následují příklady s platným vstupem.
+
+ Prázdný znak je povolen pouze před nebo za "true"/ "false".
+
 ```  
 SELECT 
-StringToBoolean("true"), 
-StringToBoolean("    false"),
-IS_BOOL(StringToBoolean("false")), 
-StringToBoolean("null"),
-StringToBoolean(undefined),
-StringToBoolean(NaN), 
-StringToBoolean(false), 
-StringToBoolean(true), 
-StringToBoolean("TRUE"),
-StringToBoolean("False")
+    StringToBoolean("true") AS b1, 
+    StringToBoolean("    false") AS b2,
+    StringToBoolean("false    ") AS b3
 ```  
   
  Tady je sada výsledků.  
   
 ```  
-[{"$1": true, "$2": false, "$3": true}]
+[{"b1": true, "b2": false, "b3": false}]
+```  
+
+ Následují příklady s neplatný vstup.
+ 
+ Logické hodnoty jsou malá a velká písmena a musí být zapsaný s všechna malá písmena, to znamená "true" a "false".
+
+```  
+SELECT 
+    StringToBoolean("TRUE"),
+    StringToBoolean("False")
+```  
+
+ Tady je sada výsledků.  
+  
+```  
+[{}]
+``` 
+
+ Výraz předaný bude možné analyzovat jako logický výraz; tyto vstupy není vyhodnocen na typu Boolean a vrátit tak nedefinovaný.
+
+ ```  
+SELECT 
+    StringToBoolean("null"),
+    StringToBoolean(undefined),
+    StringToBoolean(NaN), 
+    StringToBoolean(false), 
+    StringToBoolean(true)
+```  
+
+ Tady je sada výsledků.  
+  
+```  
+[{}]
 ```  
 
 ####  <a name="bk_stringtonull"></a> StringToNull  
@@ -2429,7 +2490,7 @@ StringToNull(<expr>)
   
 - `expr`  
   
-   Je libovolný platný výraz.  
+   Je libovolný platný skalární výraz, který má být vyhodnocen jako výraz hodnotu null.
   
   **Návratové typy**  
   
@@ -2438,24 +2499,54 @@ StringToNull(<expr>)
   **Příklady**  
   
   Následující příklad ukazuje, jak se chová StringToNull do různých typů. 
-  
+
+ Následují příklady s platným vstupem.
+ 
+ Prázdný znak je povolen pouze před nebo po "null".
+
 ```  
 SELECT 
-StringToNull("null"), 
-StringToNull("  null "),
-IS_NULL(StringToNull("null")), 
-StringToNull("true"), 
-StringToNull(false), 
-StringToNull(undefined),
-StringToNull(NaN), 
-StringToNull("NULL"),
-StringToNull("Null")
+    StringToNull("null") AS n1, 
+    StringToNull("  null ") AS n2,
+    IS_NULL(StringToNull("null   ")) AS n3
 ```  
   
  Tady je sada výsledků.  
   
 ```  
-[{"$1": null, "$2": null, "$3": true}]
+[{"n1": null, "n2": null, "n3": true}]
+```  
+
+ Následují příklady s neplatný vstup.
+
+ Hodnota null je velká a malá písmena a musí být zapsaný s všechna malá písmena, například "null".
+
+```  
+SELECT    
+    StringToNull("NULL"),
+    StringToNull("Null")
+```  
+  
+ Tady je sada výsledků.  
+  
+```  
+[{}]
+```  
+
+ Výraz předaný bude možné analyzovat jako výrazu hodnotu null; Zadejte hodnotu null a vrátit tak nedefinované nevyhodnocují tyto vstupy.
+
+```  
+SELECT    
+    StringToNull("true"), 
+    StringToNull(false), 
+    StringToNull(undefined),
+    StringToNull(NaN) 
+```  
+  
+ Tady je sada výsledků.  
+  
+```  
+[{}]
 ```  
 
 ####  <a name="bk_stringtonumber"></a> StringToNumber  
@@ -2471,7 +2562,7 @@ StringToNumber(<expr>)
   
 - `expr`  
   
-   Je libovolný platný výraz JSON číslo. Čísla ve formátu JSON musí být celé číslo nebo plovoucí desetinnou čárkou. Podrobnosti o formátu JSON najdete v tématu [json.org](https://json.org/)  
+   Je libovolný platný skalární výraz, který má být vyhodnocen jako výraz JSON číslo. Čísla ve formátu JSON musí být celé číslo nebo plovoucí desetinnou čárkou. Podrobnosti o formátu JSON najdete v tématu [json.org](https://json.org/)  
   
   **Návratové typy**  
   
@@ -2480,27 +2571,52 @@ StringToNumber(<expr>)
   **Příklady**  
   
   Následující příklad ukazuje, jak se chová StringToNumber do různých typů. 
-  
+
+ Prázdný znak je povolen pouze před nebo po číslo.
+ 
 ```  
 SELECT 
-StringToNumber("1.000000"), 
-StringToNumber("3.14"),
-IS_NUMBER(StringToNumber("   60   ")), 
-StringToNumber("0xF"),
-StringToNumber("-1.79769e+308"),
-IS_STRING(StringToNumber("2")),
-StringToNumber(undefined),
-StringToNumber("99     54"), 
-StringToNumber("false"), 
-StringToNumber(false),
-StringToNumber(" "),
-StringToNumber(NaN)
+    StringToNumber("1.000000") AS num1, 
+    StringToNumber("3.14") AS num2,
+    StringToNumber("   60   ") AS num3, 
+    StringToNumber("-1.79769e+308") AS num4
 ```  
   
  Tady je sada výsledků.  
   
 ```  
-{{"$1": 1, "$2": 3.14, "$3": true, "$5": -1.79769e+308, "$6": false}}
+{{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
+```  
+
+ Ve formátu JSON musí být platné číslo být celé číslo nebo plovoucí číslo bodu.
+ 
+```  
+SELECT   
+    StringToNumber("0xF")
+```  
+  
+ Tady je sada výsledků.  
+  
+```  
+{{}}
+```  
+
+ Výraz předaný bude možné analyzovat jako číslo výrazu; Zadejte číslo a vrátit tak nedefinované nevyhodnocují tyto vstupy. 
+
+```  
+SELECT 
+    StringToNumber("99     54"),   
+    StringToNumber(undefined),
+    StringToNumber("false"),
+    StringToNumber(false),
+    StringToNumber(" "),
+    StringToNumber(NaN)
+```  
+  
+ Tady je sada výsledků.  
+  
+```  
+{{}}
 ```  
 
 ####  <a name="bk_stringtoobject"></a> StringToObject  
@@ -2516,7 +2632,7 @@ StringToObject(<expr>)
   
 - `expr`  
   
-   Je libovolný platný výraz objektu JSON. Všimněte si, že řetězcové hodnoty musí být napsané v uvozovkách platný. Podrobnosti o formátu JSON najdete v tématu [json.org](https://json.org/)  
+   Je libovolný platný skalární výraz, který má být vyhodnocen jako výraz objektu JSON. Všimněte si, že vnořené řetězcové hodnoty musí být napsané v uvozovkách platný. Podrobnosti o formátu JSON najdete v tématu [json.org](https://json.org/)  
   
   **Návratové typy**  
   
@@ -2526,26 +2642,73 @@ StringToObject(<expr>)
   
   Následující příklad ukazuje, jak se chová StringToObject do různých typů. 
   
-```  
+ Následují příklady s platným vstupem.
+ 
+``` 
 SELECT 
-StringToObject("{}"), 
-StringToObject('{"a":[1,2,3]}'),
-StringToObject("{'a':[1,2,3]}"),
-StringToObject("{a:[1,2,3]}"),
-IS_OBJECT(StringToObject('{"obj":[{"b":[5,6,7]},{"c":8},{"d":9}]}')), 
-IS_OBJECT(StringToObject("{\"obj\":[{\"b\":[5,6,7]},{\"c\":8},{\"d\":9}]}")), 
-IS_OBJECT(StringToObject("{'obj':[{'b':[5,6,7]},{'c':8},{'d':9}]}")), 
-StringToObject(false), 
-StringToObject(undefined),
-StringToObject(NaN), 
-StringToObject("{")
+    StringToObject("{}") AS obj1, 
+    StringToObject('{"A":[1,2,3]}') AS obj2,
+    StringToObject('{"B":[{"b1":[5,6,7]},{"b2":8},{"b3":9}]}') AS obj3, 
+    StringToObject("{\"C\":[{\"c1\":[5,6,7]},{\"c2\":8},{\"c3\":9}]}") AS obj4
+``` 
+
+ Tady je sada výsledků.
+
+```
+[{"obj1": {}, 
+  "obj2": {"A": [1,2,3]}, 
+  "obj3": {"B":[{"b1":[5,6,7]},{"b2":8},{"b3":9}]},
+  "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
+```
+ 
+ Následují příklady s neplatný vstup.
+I když jsou platné v rámci dotazu, se nebude analyzovat na platné objekty. Řetězce v rámci řetězce objektu musí buď být uvozeny řídicími znaky "{\"\":\"str\"}" nebo okolních uvozovek musí být jeden ' {"a": "str"} ".
+
+ Jednoduché uvozovky kolem názvy vlastností nejsou platný kód JSON.
+
+``` 
+SELECT 
+    StringToObject("{'a':[1,2,3]}")
+```
+
+ Tady je sada výsledků.
+
 ```  
-  
- Tady je sada výsledků.  
-  
+[{}]
 ```  
-[{"$1": {}, "$2": {"a": [1,2,3]}, "$5": true, "$6": true, "$7": false}]
+
+ Názvy vlastností bez okolních uvozovek nejsou platný kód JSON.
+
+``` 
+SELECT 
+    StringToObject("{a:[1,2,3]}")
+```
+
+ Tady je sada výsledků.
+
 ```  
+[{}]
+``` 
+
+ Následují příklady s neplatný vstup.
+ 
+ Výraz předaný bude možné analyzovat jako objekt JSON; tyto vstupy není vyhodnocen na typ objektu a tak vrátit nedefinovaný.
+ 
+``` 
+SELECT 
+    StringToObject("}"),
+    StringToObject("{"),
+    StringToObject("1"),
+    StringToObject(NaN), 
+    StringToObject(false), 
+    StringToObject(undefined)
+``` 
+ 
+ Tady je sada výsledků.
+
+```
+[{}]
+```
 
 ####  <a name="bk_substring"></a> DÍLČÍ ŘETĚZEC  
  Vrátí část řetězcového výrazu počínaje pozice s nulovým základem zadaný znak a pokračuje na určenou délku nebo na konci řetězce.  

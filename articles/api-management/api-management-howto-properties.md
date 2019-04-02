@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: f7c52b7ab8aaad917eb03455800df6d8ba4cbc88
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082700"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791622"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak používat s názvem hodnoty v zásadách Azure API Management
 Zásady služby API Management jsou vynikající funkcí systému, který chcete změnit chování rozhraní API prostřednictvím konfigurace webu Azure Portal. Zásady představují kolekci příkazů, které se postupně provádí na základě požadavku nebo odezvy z rozhraní API. Příkazy zásad lze sestavit pomocí literálu textové hodnoty. výrazy zásad a s názvem hodnoty. 
@@ -34,7 +34,7 @@ Každá instance služby API Management má vlastnosti kolekce párů klíč/hod
 
 ![Pojmenované hodnoty](./media/api-management-howto-properties/named-values.png)
 
-Hodnoty vlastností můžou obsahovat řetězcových literálů a [výrazy zásad](https://msdn.microsoft.com/library/azure/dn910913.aspx). Například hodnota `ExpressionProperty` je výraz zásad, která vrací řetězec obsahující aktuální datum a čas. Vlastnost `ContosoHeaderValue` je označen jako tajný klíč, takže jeho hodnota se nezobrazí.
+Hodnoty vlastností můžou obsahovat řetězcových literálů a [výrazy zásad](/azure/api-management/api-management-policy-expressions). Například hodnota `ExpressionProperty` je výraz zásad, která vrací řetězec obsahující aktuální datum a čas. Vlastnost `ContosoHeaderValue` je označen jako tajný klíč, takže jeho hodnota se nezobrazí.
 
 | Název | Hodnota | Tajný kód | Značky |
 | --- | --- | --- | --- |
@@ -55,7 +55,7 @@ Hodnoty vlastností můžou obsahovat řetězcových literálů a [výrazy zása
 
 Jakmile se vytvoří vlastnost, můžete ho upravit kliknutím na vlastnost. Pokud změníte název vlastnosti, všechny zásady, které odkazují na tuto vlastnost se automaticky aktualizují na použití nového názvu.
 
-Informace o úpravě vlastností pomocí rozhraní REST API najdete v tématu [upravit vlastnost pomocí rozhraní REST API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Patch).
+Informace o úpravě vlastností pomocí rozhraní REST API najdete v tématu [upravit vlastnost pomocí rozhraní REST API](/rest/api/apimanagement/property?Patch).
 
 ## <a name="to-delete-a-property"></a>Chcete-li odstranit vlastnost
 
@@ -66,7 +66,7 @@ Chcete-li odstranit vlastnost, klikněte na tlačítko **odstranit** vedle vlast
 > 
 > 
 
-Informace o odstranění vlastnosti pomocí rozhraní REST API najdete v tématu [odstranit vlastnost pomocí rozhraní REST API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete).
+Informace o odstranění vlastnosti pomocí rozhraní REST API najdete v tématu [odstranit vlastnost pomocí rozhraní REST API](/rest/api/apimanagement/property?Delete).
 
 ## <a name="to-search-and-filter-named-values"></a>K vyhledávání a filtrování hodnot s názvem
 
@@ -111,8 +111,8 @@ Zatímco hodnoty vlastností mohou obsahovat výrazy zásad, hodnoty vlastností
 ## <a name="next-steps"></a>Další postup
 * Další informace o práci se zásadami
   * [Zásady ve službě API Management](api-management-howto-policies.md)
-  * [referenční příručce o zásadách](https://msdn.microsoft.com/library/azure/dn894081.aspx)
-  * [Výrazy zásad](https://msdn.microsoft.com/library/azure/dn910913.aspx)
+  * [referenční příručce o zásadách](/azure/api-management/api-management-policies)
+  * [Výrazy zásad](/azure/api-management/api-management-policy-expressions)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png

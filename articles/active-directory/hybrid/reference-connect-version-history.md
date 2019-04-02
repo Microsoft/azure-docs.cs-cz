@@ -16,12 +16,12 @@ ms.date: 03/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ae5b58fb87aaa94e081f9cb60d063c70e5d0359
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 26f3fe9c2483dda3b9350c110b2e8adf60dcd21e
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540954"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803149"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -39,17 +39,17 @@ Požadovaná oprávnění | Oprávnění potřebná k aktualizaci použít, najd
 Stáhnout | [Stažení služby Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
->Ne všechny verze služby Azure AD Connect bude k dispozici pro automatický upgrade. Stav verze označí, zda verze je k dispozici pro automatický upgrade nebo si můžete stáhnout pouze. Pokud byl povolen automatický upgrade na serveru služby Azure AD Connect pak tento server se automaticky upgradovat na nejnovější verzi služby Azure AD Connect, která je vydána pro automatický upgrade. Všimněte si, že všechny konfigurace služby Azure AD Connect jsou způsobilé pro upgradování automaticky. Postupujte podle tohoto odkazu Další informace o tom [automatický upgrade](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
+>Vydání nové verze služby Azure AD Connect je proces, který vyžaduje několik řízení kvality krok, abyste zajistili funkčnost operace služby, a při procházení tohoto procesu bude aktualizovat číslo verze nové vydané verze, jakož i stavu vydaných verzí tak, aby odrážely nejnovější stav.
+Když přejdeme na tomto procesu, číslo verze vydání se nezobrazí s "X" počet umístění podverzi, stejně jako v "1.3.X.0" – to znamená, že zpráva k vydání verze v tomto dokumentu jsou platné pro všechny verze počínaje "1.3.". Poté, co jsme udrželi procesu vydávání verzí číslo vydané verze se aktualizují na nedávno vydané verze a verze stav se zaktualizuje na "Vydáno pro stahování a automatický upgrade".
+Ne všechny verze služby Azure AD Connect bude k dispozici pro automatický upgrade. Stav verze označí, zda verze je k dispozici pro automatický upgrade nebo si můžete stáhnout pouze. Pokud byl povolen automatický upgrade na serveru služby Azure AD Connect pak tento server se automaticky upgradovat na nejnovější verzi služby Azure AD Connect, která je vydána pro automatický upgrade. Všimněte si, že všechny konfigurace služby Azure AD Connect jsou způsobilé pro upgradování automaticky. Postupujte podle tohoto odkazu Další informace o tom [automatický upgrade](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
-## <a name="13100"></a>1.3.10.0 
+## <a name="13x0"></a>1.3.X.0 
 
 ### <a name="release-status"></a>Stav verze 
 
-3/25/2019: Ještě není 
+3/25/2019: Čekající na vyřízení
  
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení 
-
-
 
 - Přidání podpory pro aktualizace domény 
 - Veřejné složky pošty Exchange funkce bude všeobecně dostupná 

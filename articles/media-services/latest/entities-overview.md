@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 03/30/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9a02030cb2b785b027bb78bad5ef636dff9dd8f3
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6bf0efd6994315d56e7b1b2447ffed9154cf5ee5
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758537"
+ms.locfileid: "58804866"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Vývoj s využitím Media Services v3 rozhraní API
 
@@ -42,6 +42,30 @@ Příklady zahrnují:
 * nevrací řetězec dotazu součástí adresy URL (Chcete-li odebrat podpis) z adres URL vstup úloh HTTP.
 
 Zobrazit [získání obsahu klíče zásad – .NET](get-content-key-policy-dotnet-howto.md) příklad.
+
+## <a name="long-running-operations"></a>Dlouho běžící operace
+
+Operace označené `x-ms-long-running-operation` ve službě Azure Media Services [swagger soubory](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) se dlouho běžící operace. 
+
+Podrobnosti o tom, jak sledovat asynchronních operací v Azure najdete v tématu [asynchronních operací](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation)
+
+Služba Media Services má následující dlouho běžící operace:
+
+* Vytvoření Livestream
+* Aktualizace Livestream
+* Odstranit Livestream
+* Spustit Livestream
+* Zastavit Livestream
+* Resetovat Livestream
+* Vytvoření LiveOutput
+* Odstranit LiveOutput
+* Vytvoření StreamingEndpoint
+* Aktualizace StreamingEndpoint
+* Odstranit StreamingEndpoint
+* Spustit StreamingEndpoint
+* Zastavit StreamingEndpoint
+* Škálování StreamingEndpoint
+
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrování, řazení, stránkování entit Media Services
 

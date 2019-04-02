@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: d2651bc47f262a45a05217585eb00cbc721c01a1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58165773"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802673"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Správa prostředků a související entity pomocí služby Media Services .NET SDK
 > [!div class="op_single_selector"]
@@ -28,10 +28,12 @@ ms.locfileid: "58165773"
 > 
 > 
 
+> [!NOTE]
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+
 Toto téma ukazuje, jak spravovat entity Azure Media Services s .NET.
 
->[!NOTE]
-> Od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní. Spolu s ním se odstraní přidružené záznamy úkolů, a to i v případě, že celkový počet záznamů je nižší než maximální kvóta. Například na 1. dubna 2017 se libovolný záznam úlohy ve vašem účtu, který je starší než 31. prosince 2016, se automaticky odstraní. Pokud potřebujete informace o úlohách/úkolech archivovat, můžete použít kód popsaný v tomto tématu.
+Od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní. Spolu s ním se odstraní přidružené záznamy úkolů, a to i v případě, že celkový počet záznamů je nižší než maximální kvóta. Například na 1. dubna 2017 se libovolný záznam úlohy ve vašem účtu, který je starší než 31. prosince 2016, se automaticky odstraní. Pokud potřebujete informace o úlohách/úkolech archivovat, můžete použít kód popsaný v tomto tématu.
 
 ## <a name="prerequisites"></a>Požadavky
 

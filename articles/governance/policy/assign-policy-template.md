@@ -1,5 +1,5 @@
 ---
-title: Vytvoření přiřazení zásady pro nekompatibilní prostředky pomocí šablony Resource Manageru
+title: Vytvoření přiřazení zásady pomocí šablony Resource Manageru
 description: Tento článek vás provede kroky k vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí šablony Resource Manageru.
 services: azure-policy
 author: DCtheGeek
@@ -8,12 +8,12 @@ ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 6ff76a66eba42fd87e88846f9ec2378bd63893f2
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: 354d5aa250449b87345cef17778befddc761fa19
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58008611"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802503"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí šablony Resource Manageru
 
@@ -31,14 +31,14 @@ V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte předdef
 Existuje několik metod pro vytváření přiřazení zásad. V tomto rychlém startu použijete [šablonu pro rychlý Start](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
 Tady je kopie šablony:
 
-[!code-json[policy-assingment](~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json)]
+[!code-json[policy-assignment](~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json)]
 
 > [!NOTE]
 > Služba Azure zásad je zdarma.  Další informace najdete v tématu [přehled Azure Policy](./overview.md).
 
 1. Vyberte pro přihlášení k webu Azure portal a otevřete šablonu na následujícím obrázku:
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json"><img src="./media/assign-policy-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+   [![Nasazení šablony zásad do Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
 1. Vyberte nebo zadejte následující hodnoty:
 
@@ -48,7 +48,7 @@ Tady je kopie šablony:
    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte název a potom vyberte **OK**. Na snímku obrazovky je název skupiny prostředků *mypolicyquickstart<Date in MMDD>rg*. |
    | Umístění | Vyberte oblast. Například **USA (střed)**. |
    | Název přiřazení zásady | Zadejte název přiřazení zásady. Pokud chcete, můžete použít zobrazení definic zásad. Například **Audit virtuálních počítačů, které nepoužívají spravované disky**. |
-   | Název rg | Zadejte název skupiny prostředků, ve které chcete přiřadit zásadu. V tomto rychlém startu použijte výchozí hodnotu **[resourceGroup () .name]**. **[resourceGroup()](/azure/azure-resource-manager/resource-group-template-functions-resource#resourcegroup)**  je funkce šablony, která načte skupinu prostředků. |
+   | Název rg | Zadejte název skupiny prostředků, ve které chcete přiřadit zásadu. V tomto rychlém startu použijte výchozí hodnotu **[resourceGroup () .name]**. **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)**  je funkce šablony, která načte skupinu prostředků. |
    | ID definice zásady | Zadejte **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**. |
    | Souhlasím s podmínkami a ujednáními uvedenými nahoře | (Vybrat) |
 
@@ -65,7 +65,7 @@ Některé další prostředky:
 
 Vyberte **dodržování předpisů** v levé části stránky. Vyhledejte **Audit virtuálních počítačů, které nepoužívají spravované disky** přiřazení zásady, které jste vytvořili.
 
-![Dodržování zásad](./media/assign-policy-template/policy-compliance.png)
+![Stránka s přehledem zásad dodržování předpisů](./media/assign-policy-template/policy-compliance.png)
 
 Pokud existují nějaké stávající prostředky, které nedodržují předpisy tohoto nového přiřazení, zobrazí se pod **nekompatibilní prostředky**.
 
@@ -79,7 +79,7 @@ Odebrat přiřazení vytvořené, postupujte podle těchto kroků:
 
 1. Klikněte pravým tlačítkem myši **Audit virtuálních počítačů, které nepoužívají spravované disky** přiřazení zásady a vyberte **odstranit přiřazení**.
 
-   ![Odstranění přiřazení](./media/assign-policy-template/delete-assignment.png)
+   ![Odstranit přiřazení stránce Přehled na dodržování předpisů](./media/assign-policy-template/delete-assignment.png)
 
 ## <a name="next-steps"></a>Další postup
 

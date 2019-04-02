@@ -1,6 +1,6 @@
 ---
 title: Přehled služby Azure Resource Graph
-description: Azure Resource Graph je služba v Azure, která umožňuje komplexní dotazování na prostředky v potřebném měřítku.
+description: Zjistěte, jak služba Graph prostředků Azure umožňuje složitých dotazů na prostředky v potřebném měřítku.
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,14 +8,14 @@ ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: b5062dd4edf43fbb348a6de57f534096a8c922de
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 15cfdc87fafa25e9f37c63c8159289b25a547817
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193564"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802318"
 ---
-# <a name="what-is-azure-resource-graph"></a>Co je Azure Resource Graph
+# <a name="overview-of-the-azure-resource-graph-service"></a>Přehled služby Azure Graph prostředků
 
 Azure Resource Graph je služba v Azure, která je navržená k rozšíření správy Azure Resource tím, že poskytuje efektivní a výkonné zkoumání zdrojů s možností dotazu ve velkém měřítku ve všech předplatných a skupin pro správu, abyste mohli efektivně ovládat vaše prostředí. Tyto dotazy poskytují následující funkce:
 

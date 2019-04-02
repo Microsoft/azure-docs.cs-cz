@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 99b54a5fe5c28eb66a61fad61d23b94f0955f126
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9c0c8adca9d99c00e32127e02a3d68ff668a235e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728564"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793301"
 ---
 # <a name="azure-api-management-faqs"></a>Nejčastější dotazy k Azure API Management
 Získejte odpovědi na běžné dotazy, vzory a osvědčené postupy pro službu Azure API Management.
@@ -32,9 +32,9 @@ Získejte odpovědi na běžné dotazy, vzory a osvědčené postupy pro službu
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 * [Co to znamená, je-je funkce ve verzi preview?](#what-does-it-mean-when-a-feature-is-in-preview)
 * [Jak můžu zabezpečit připojení mezi bránou služby API Management a back-endovými službami?](#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)
-* [Jak můžu zkopírovat Moje instance služby API Management do nové instance?](#how-do-i-copy-my-api-management-service-instance-to-a-new-instance)
+* [Jak můžu zkopírovat instanci služby API Management do nové instance?](#how-do-i-copy-my-api-management-service-instance-to-a-new-instance)
 * [Můžete spravovat své instance služby API Management prostřednictvím kódu programu?](#can-i-manage-my-api-management-instance-programmatically)
-* [Jak přidat uživatele do skupiny Administrators?](#how-do-i-add-a-user-to-the-administrators-group)
+* [Jak přidám uživatele do skupiny správců?](#how-do-i-add-a-user-to-the-administrators-group)
 * [Proč se zásadami, které chcete přidat k dispozici v editoru zásad?](#why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor)
 * [Jak můžu nastavit více prostředí v jediné rozhraní API?](#how-do-i-set-up-multiple-environments-in-a-single-api)
 * [Můžete použít protokol SOAP službou API Management?](#can-i-use-soap-with-api-management)
@@ -42,12 +42,12 @@ Získejte odpovědi na běžné dotazy, vzory a osvědčené postupy pro službu
 * Můžete nakonfigurovat serveru ověřování OAuth 2.0 se zabezpečení služby AD FS?
 * [V nasazení do několika geografických umístěních jaké metody směrování používá rozhraní API Management?](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
 * [Můžete použít šablony Azure Resource Manageru k vytvoření instance služby API Management?](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
-* [Můžete použít certifikát podepsaný svým držitelem SSL pro back-end?](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)
+* [Můžu pro back-end použít certifikát SSL podepsaný svým držitelem?](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)
 * [Proč se při klonování úložiště GIT získat chybu ověřování?](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [Služba API Management funguje s Azure ExpressRoute?](#does-api-management-work-with-azure-expressroute)
 * [Proč jsme vyžaduje vyhrazenou podsíť ve stylu virtuálním sítím Resource Manageru, když API Management se nasadí do nich?](#why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them)
 * [Jaká je velikost podsítě minimální potřebné při nasazování API Management do virtuální sítě?](#what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet)
-* [Můžu přesunout služby API Management z jednoho předplatného do druhého?](#can-i-move-an-api-management-service-from-one-subscription-to-another)
+* [Můžu přesunout službu API Management z jednoho předplatného do jiného?](#can-i-move-an-api-management-service-from-one-subscription-to-another)
 * [Existují omezení nebo známé problémy s importem Moje rozhraní API?](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
 
 ### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>Jak můžu pokládat ve službě Microsoft Azure API Management team dotaz?
@@ -72,13 +72,13 @@ Máte několik možností, jak zabezpečit připojení mezi bránou rozhraní AP
 Máte několik možností, pokud chcete zkopírovat do nové instance instance služby API Management. Můžete:
 
 * Pomocí zálohování a obnovení funkce ve službě API Management. Další informace najdete v tématu [implementovat zotavení po havárii pomocí služby zálohování a obnovení ve službě Azure API Management](api-management-howto-disaster-recovery-backup-restore.md).
-* Vytvořit vlastní zálohu a obnovení funkce pomocí [REST API služby API Management](https://msdn.microsoft.com/library/azure/dn776326.aspx). K uložení a obnovení entity z instance služby, který chcete použijte rozhraní REST API.
+* Vytvořit vlastní zálohu a obnovení funkce pomocí [REST API služby API Management](/rest/api/apimanagement/). K uložení a obnovení entity z instance služby, který chcete použijte rozhraní REST API.
 * Stáhnout konfiguraci služby pomocí Git a pak ho nahrajte do nové instance. Další informace najdete v tématu [k uložení a konfigurace konfigurace služby API Management s použitím Gitu](api-management-configuration-repository-git.md).
 
 ### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Můžete spravovat své instance služby API Management prostřednictvím kódu programu?
 Ano, API Management prostřednictvím kódu programu spravovat pomocí:
 
-* [Rozhraní REST API služby API Management](https://msdn.microsoft.com/library/azure/dn776326.aspx).
+* [Rozhraní REST API služby API Management](/rest/api/apimanagement/).
 * [Knihovna správy ApiManagement služby Microsoft Azure SDK](https://aka.ms/apimsdk).
 * [Nasazení služby](https://docs.microsoft.com/powershell/module/wds) a [Správa služeb](https://docs.microsoft.com/powershell/azure/servicemanagement/overview) rutin prostředí PowerShell.
 
@@ -97,7 +97,7 @@ Teď nově přidané Přispěvatel můžete použít Azure PowerShell [rutiny](h
 4. Použijte adresu URL pro přístup k portálu pro správu.
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Proč se zásadami, které chcete přidat k dispozici v editoru zásad?
-Pokud se zásadami, které chcete přidat aktivní nebo stínované v editoru zásad, ujistěte se, že jste ve správném oboru zásady. Každý prohlášení o zásadách je určen pro použití v určité obory a části zásad. Zkontrolujte zásady oddíly a obory pro zásady, najdete v tématu Zásady využití [zásady služby API Management](https://msdn.microsoft.com/library/azure/dn894080.aspx).
+Pokud se zásadami, které chcete přidat aktivní nebo stínované v editoru zásad, ujistěte se, že jste ve správném oboru zásady. Každý prohlášení o zásadách je určen pro použití v určité obory a části zásad. Zkontrolujte zásady oddíly a obory pro zásady, najdete v tématu Zásady využití [zásady služby API Management](/azure/api-management/api-management-policies).
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Jak můžu nastavit více prostředí v jediné rozhraní API?
 K nastavení více prostředí, například testovací prostředí a produkční prostředí, v jediné rozhraní API, máte dvě možnosti. Můžete:
@@ -142,7 +142,7 @@ New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -
 ```
 
 #### <a name="direct-api-update-method"></a>Přímé metody aktualizace rozhraní API ####
-1. Vytvoření [back-endu](https://msdn.microsoft.com/library/azure/dn935030.aspx) entity pomocí služby API Management.       
+1. Vytvoření [back-endu](/rest/api/apimanagement/) entity pomocí služby API Management.     
 2. Nastavte **skipCertificateChainValidation** vlastnost **true**.     
 3. Pokud už nechcete povolit certifikáty podepsané svým držitelem, odstraňte entity back-end, nebo nastavte **skipCertificateChainValidation** vlastnost **false**.
 

@@ -7,20 +7,22 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/08/2019
+ms.date: 03/25/2019
 ms.author: dobett
-ms.openlocfilehash: befef76e19640683ba3219374702a049bdecb43b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58184168"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792497"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Rychlý start: Zkuste cloudové řešení vzdáleného monitorování
 
 V tomto rychlém startu se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování Azure IoT. V tomto cloudovém řešení použijete stránku **Řídicí panel** k vizualizaci simulovaných zařízení na mapě a stránku **Údržba** k reakci na upozornění na tlak ze simulovaného chladícího zařízení. Tento akcelerátor řešení můžete využít jako výchozí bod pro vlastní implementaci nebo jako učební nástroj.
 
 V počátečním nasazení se akcelerátor řešení nakonfiguruje pro společnost Contoso. Jako operátor ve společnosti Contoso spravujete výběr různých typů zařízení, například chladiče, nasazených v různých fyzických prostředích. Chladící zařízení do akcelerátoru řešení vzdáleného monitorování odesílá telemetrická data o teplotě, vlhkosti a tlaku.
+
+V tomto rychlém startu se nasadí **základní** verzi akcelerátor řešení pro testovací a demonstrační účely, který minimalizuje náklady. Další informace o různých verzí, můžete nasadit, najdete v části [základní a standardní nasazení](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments).
 
 K dokončení tohoto rychlého startu potřebujete aktivní předplatné Azure.
 
@@ -36,9 +38,7 @@ Klikněte na tlačítko **vzdálené monitorování** dlaždici. Na **vzdálené
 
 ![Výběr vzdáleného monitorování](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
-Na stránce **Vytvořit řešení vzdáleného monitorování** vyberte **Základní** nasazení. Pokud akcelerátor řešení nasazujete kvůli tomu, abyste zjistili, jak funguje, nebo spustili ukázku, zvolte možnost **Základní**, abyste minimalizovali náklady.
-
-Jako jazyk zvolte **.NET**. Implementace Java a .NET obsahují stejné funkce.
+Zvolte  **C# Mikroslužeb** jako **možnosti nasazení**. Java a C# implementace přístup ke stejným funkcím.
 
 Zadejte jedinečný **Název řešení** pro váš akcelerátor řešení vzdáleného monitorování. Pro účely tohoto rychlého startu voláme náš **contoso-rm**.
 
@@ -111,7 +111,7 @@ Pokud chcete pracovat na chladiči, posuňte se dolů do části **Související
 
 Na panelu **Úlohy** vyberte **Spustit metodu** a pak metodu **EmergencyValveRelease**. Přidejte název úlohy **ChillerPressureRelease** a klikněte na **Použít**. Tato nastavení pro vás vytvoří úlohu, která se okamžitě spustí.
 
-Pokud chcete zobrazit stav úlohy, vraťte se na stránku **Údržba** a prohlédněte si seznam úloh v zobrazení **Úlohy**. Možná budete muset několik sekund počkat, než se zobrazí spuštění úlohy za účelem uvolnění tlaku ventilu na chladiči:
+Pokud chcete zobrazit stav úlohy, vraťte se na stránku **Údržba** a prohlédněte si seznam úloh v zobrazení **Úlohy**. Budete muset počkat několik sekund, než uvidíte, že spuštění úlohy:
 
 [![Stav úlohy v zobrazení Úlohy](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-expanded.png#lightbox)
 

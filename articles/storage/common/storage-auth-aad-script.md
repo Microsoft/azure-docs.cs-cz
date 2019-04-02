@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d1fdafaaecd448fd09fc40cf5f6173ce600ac4f9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a0972beff48e07b6ce8afdcec10581300f59ed41
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483201"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803574"
 ---
 # <a name="use-an-azure-ad-identity-to-access-blob-and-queue-data-with-cli-or-powershell"></a>Identity Azure AD pro přístup k datům objektu blob a fronty pomocí Powershellu nebo rozhraní příkazového řádku
 
@@ -61,7 +61,7 @@ Následující příklad ukazuje, jak vytvořit kontejner ve nový účet úlož
         --encryption-services blob
     ```
     
-1. Než vytvoříte kontejner, přiřaďte [Přispěvatel dat objektu Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) role na vás. I když jste vlastník účtu, potřebují explicitní oprávnění k provedení operace s daty proti účtu úložiště. Další informace o přiřazení role RBAC najdete v tématu [udělit přístup k Azure data objektů blob a fronty pomocí RBAC na webu Azure Portal](storage-auth-aad-rbac.md).
+1. Než vytvoříte kontejner, přiřaďte [Přispěvatel dat objektu Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) role na vás. I když jste vlastník účtu, potřebují explicitní oprávnění k provedení operace s daty proti účtu úložiště. Další informace o přiřazení role RBAC najdete v tématu [udělit přístup k Azure data objektů blob a fronty pomocí RBAC na webu Azure Portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > Přiřazení rolí pro RBAC může trvat několik minut na dokončení propagace.
@@ -114,7 +114,7 @@ Následující příklad ukazuje, jak vytvořit kontejner ve nový účet úlož
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. Než vytvoříte kontejner, přiřaďte [Přispěvatel dat objektu Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) role na vás. I když jste vlastník účtu, potřebují explicitní oprávnění k provedení operace s daty proti účtu úložiště. Další informace o přiřazení role RBAC najdete v tématu [udělit přístup k Azure data objektů blob a fronty pomocí RBAC na webu Azure Portal](storage-auth-aad-rbac.md).
+1. Než vytvoříte kontejner, přiřaďte [Přispěvatel dat objektu Blob úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) role na vás. I když jste vlastník účtu, potřebují explicitní oprávnění k provedení operace s daty proti účtu úložiště. Další informace o přiřazení role RBAC najdete v tématu [udělit přístup k Azure data objektů blob a fronty pomocí RBAC na webu Azure Portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > Přiřazení rolí pro RBAC může trvat několik minut na dokončení propagace.

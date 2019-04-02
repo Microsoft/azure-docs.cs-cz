@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 8e887409c35619261544b92395301ce06a033e8b
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: a89df98224634c08c84cb059eb58e64e3c7febf7
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992732"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801260"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupin pro správu pro organizaci poskytující prostředky a správu
 
@@ -37,14 +37,14 @@ Skupina pro správu můžete vytvořit pomocí portálu, Powershellu nebo rozhra
 
 1. Na hlavní stránce vyberte **skupiny pro správu nové**.
 
-   ![Hlavní skupiny](./media/main.png)
+   ![Stránka pro práci se skupinami pro správu](./media/main.png)
 
 1. Vyplňte pole ID skupiny správy.
 
    - **ID skupiny pro správu** je jedinečný identifikátor adresáře, který se používá k odeslání příkazů na tuto skupinu pro správu. Tento identifikátor není po vytvoření upravit, protože se používá v rámci systému Azure k identifikaci této skupiny.
    - Pole zobrazovaného názvu je název, který se zobrazí na portálu Azure portal. Samostatné zobrazované jméno je volitelné pole při vytváření rozhraní pro správu skupin a můžete kdykoli změnit.  
 
-   ![Vytvořit](./media/create_context_menu.png)  
+   ![Podokno možnosti pro vytvoření nové skupiny pro správu](./media/create_context_menu.png)  
 
 1. Vyberte **Uložit**.
 

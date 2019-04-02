@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 319791c2436395c00dafc744fb6fcb1ff18b0750
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: f236c6a78edeb04a69685bf27c99997ed470f498
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652327"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791519"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Ověřování založené na hlavičkách pro jednotné přihlašování s Proxy aplikací a Pingaccessem
 
@@ -54,7 +54,7 @@ Pokud už máte Proxy aplikací byl povolen a mají nainstalovaný konektor, mů
 
 Konektor Proxy aplikací je služba Windows Server, který směruje provoz z vzdálení zaměstnanci do publikované aplikace. Podrobnější pokyny k instalaci najdete v článku [povolení Proxy aplikace na webu Azure Portal](application-proxy-add-on-premises-application.md).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako správce aplikací.
 2. Vyberte **Azure Active Directory** > **proxy aplikací**.
 3. Vyberte **stáhnout konektor** spustit stažení konektoru Proxy aplikací. Postupujte podle pokynů k instalaci.
 
@@ -69,7 +69,7 @@ Existují dvě akce, které musíte provést na webu Azure Portal. Je třeba nej
 
 Postupujte podle těchto kroků a publikujte svou aplikaci. Pro podrobnější návod k kroky 1-8, viz [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-add-on-premises-application.md).
 
-1. Pokud jste v poslední části, přihlaste se k [webu Azure portal](https://portal.azure.com) jako globální správce.
+1. Pokud jste v poslední části, přihlaste se k [webu Azure portal](https://portal.azure.com) jako správce aplikací.
 2. Vyberte **Azure Active Directory** > **podnikové aplikace**.
 3. Vyberte **přidat** v horní části okna.
 4. Vyberte **On-premises application**.
@@ -153,7 +153,7 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 }
 ```
 V tomto příkladu [webu Azure portal](https://portal.azure.com) aktualizovat *acceptedMappedClaims* pole:
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako správce aplikací.
 2. Vyberte **Azure Active Directory** > **registrace aplikací**.
 3. Vyberte svou aplikaci > **Manifest**.
 4. Vyberte **upravit**, vyhledejte *acceptedMappedClaims* pole a změňte hodnotu na **true**.

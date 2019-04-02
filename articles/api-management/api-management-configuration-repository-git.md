@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 36b60b3784739a884b887a29f3dd53c61c44cd6f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: adf4d8d5cfcef2dde8193ce1b7f2805a44e2d93d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57851342"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793267"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložit a konfigurace konfigurace služby API Management pomocí Gitu
 
@@ -57,7 +57,7 @@ Pokud chcete zobrazit a konfigurovat nastavení konfigurace Git, můžete klikno
 >
 >
 
-Informace o povolení nebo zakázání přístupu Git pomocí rozhraní REST API najdete v tématu [povolit nebo zakázat Git přístup pomocí rozhraní REST API](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit).
+Informace o povolení nebo zakázání přístupu Git pomocí rozhraní REST API najdete v tématu [povolit nebo zakázat Git přístup pomocí rozhraní REST API](/rest/api/apimanagement/tenantaccess?EnableGit).
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>Chcete-li uložit konfiguraci služby do úložiště Git
 
@@ -69,7 +69,7 @@ Po chvíli se uložit konfiguraci a stavu konfigurace příslušného úložišt
 
 Po uložení konfigurace do úložiště můžete klonovat.
 
-Informace o provedení této operace pomocí rozhraní REST API najdete v tématu [potvrzení konfigurace snímku pomocí rozhraní REST API](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot).
+Informace o provedení této operace pomocí rozhraní REST API najdete v tématu [potvrzení konfigurace snímku pomocí rozhraní REST API](/rest/api/apimanagement/tenantaccess?CommitSnapshot).
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>Naklonujte úložiště do svého místního počítače
 
@@ -266,7 +266,7 @@ Informace o jiných způsobech ke správě vaší instance služby najdete tady:
   * [Referenční informace k rutinám PowerShellu pro nasazení služeb](https://docs.microsoft.com/powershell/module/wds)
   * [Reference k rutinám Powershellu pro správu služeb](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
 * Správa vaší instance služby pomocí rozhraní REST API
-  * [Reference k REST API služby API Management](https://msdn.microsoft.com/library/azure/dn776326.aspx)
+  * [Reference k REST API služby API Management](/rest/api/apimanagement/)
 
 
 [api-management-enable-git]: ./media/api-management-configuration-repository-git/api-management-enable-git.png

@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 0ede6c0c55e2f953e0d109d2d371313759ed4d06
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 2ed29f50278afe5bf7cd3daabe088cee55caae06
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965151"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793939"
 ---
 # <a name="what-is-api-management"></a>Co je služba API Management?
 
@@ -59,7 +59,7 @@ Systém se skládá z následujících součástí:
   * Vytvořit účet a přihlásit se k odběru za účelem získání klíčů rozhraní API.
   * Přistupovat k analýzám jejich využití.
 
-Další informace najdete v bílé knize [Cloudová služba API Management: využití síly rozhraní API](https://j.mp/ms-apim-whitepaper) (formát PDF). Tato bílá kniha s úvodními informacemi o službě API Management vytvořená společností CITO Research obsahuje: 
+Další informace najdete v tématu [Cloud-based API Management: Využití Power of APIs](https://j.mp/ms-apim-whitepaper) PDF dokument White Paper. Tato bílá kniha s úvodními informacemi o službě API Management vytvořená společností CITO Research obsahuje: 
  
  * Běžné požadavky a problémy rozhraní API
  * Oddělení rozhraní API a představení průčelí
@@ -101,7 +101,7 @@ Další informace najdete v článcích o [vytváření a zvaní vývojářů][H
 ## <a name="policies"></a> Zásady
 Zásady jsou vynikající funkcí služby API Management, která webu Azure Portal umožňuje měnit chování rozhraní API prostřednictvím konfigurace. Zásady představují kolekci příkazů, které se postupně provádí na základě požadavku nebo odezvy z rozhraní API. Mezi oblíbené příkazy patří převod formátu XML do formátu JSON a omezení četnosti volání, kterým omezíte počet příchozích volání od vývojáře. K dispozici je i mnoho dalších zásad.
 
-Výrazy zásad můžete použít jako hodnoty atributů nebo textové hodnoty v libovolných zásadách API Management (pokud zásady neurčí jinak). Některé zásady, například [řízení toku](https://msdn.microsoft.com/library/azure/dn894085.aspx#choose) a [nastavená proměnná](https://msdn.microsoft.com/library/azure/dn894085.aspx#set-variable), jsou založené na výrazech zásad. Další informace najdete v článcích [Pokročilé zásady](https://msdn.microsoft.com/library/azure/dn894085.aspx#AdvancedPolicies) a [Výrazy zásad](https://msdn.microsoft.com/library/azure/dn910913.aspx).
+Výrazy zásad můžete použít jako hodnoty atributů nebo textové hodnoty v libovolných zásadách API Management (pokud zásady neurčí jinak). Některé zásady, například [řízení toku](/azure/api-management/api-management-advanced-policies#choose) a [nastavená proměnná](/azure/api-management/api-management-advanced-policies#set-variable), jsou založené na výrazech zásad. Další informace najdete v článcích [Pokročilé zásady](/azure/api-management/api-management-advanced-policies#AdvancedPolicies) a [Výrazy zásad](/azure/api-management/api-management-policy-expressions).
 
 
 Úplný seznam zásad služby API Management najdete v [referenční příručce o zásadách][Policy reference]. Další informace o používání a konfiguraci zásad najdete v článku [Zásady služby API Management][API Management policies]. Kurz týkající se vytváření produktu se zásadami kvót a omezování četnosti najdete v článku [Vytvoření a konfigurace pokročilých nastavení produktu][How create and configure advanced product settings].

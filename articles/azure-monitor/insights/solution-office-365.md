@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 6a13988af7a46ff6fafe352e850ee238cda79c08
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da9e322f74433df7066ec574db7a49123f96d76b
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996708"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58794015"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -34,6 +34,7 @@ ms.locfileid: "57996708"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
+
 Je nutné provést následující před toto řešení je nainstalovaná a nakonfigurovaná.
 
 - Organizace předplatné služeb Office 365.
@@ -42,12 +43,16 @@ Je nutné provést následující před toto řešení je nainstalovaná a nakon
  
 
 ## <a name="management-packs"></a>Sady Management Pack
+
 Toto řešení není možné nainstalovat všechny sady management Pack v [připojené skupiny pro správu](../platform/om-agents.md).
   
+
 ## <a name="install-and-configure"></a>Instalace a konfigurace
+
 Začněte přidáním [řešení Office 365 ke svému předplatnému](solutions.md#install-a-monitoring-solution). Až ho přidáte, je nutné provést kroky konfigurace v této části pro získání přístupu k předplatnému Office 365.
 
 ### <a name="required-information"></a>Požadované informace
+
 Před zahájením tohoto postupu, shromážděte následující informace.
 
 Z pracovního prostoru Log Analytics:
@@ -64,6 +69,7 @@ Z vašeho předplatného Office 365:
 - Tajný kód klienta: Zašifrovaný řetězec potřebné pro ověřování.
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Vytvoření aplikace Office 365 ve službě Azure Active Directory
+
 Prvním krokem je vytvoření aplikace v Azure Active Directory, řešení pro správu bude používat pro přístup k řešení pro Office 365.
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com/).
@@ -111,11 +117,12 @@ Prvním krokem je vytvoření aplikace v Azure Active Directory, řešení pro s
     ![Klíče](media/solution-office-365/keys.png)
 
 ### <a name="add-admin-consent"></a>Přidat souhlas správce
+
 Pokud chcete povolit účet správce poprvé, je nutné zadat souhlas správce pro aplikaci. Můžete to provést pomocí skriptu prostředí PowerShell. 
 
 1. Uložte následující skript jako *office365_consent.ps1*.
 
-    ```
+    ```powershell
     param (
         [Parameter(Mandatory=$True)][string]$WorkspaceName,     
         [Parameter(Mandatory=$True)][string]$ResourceGroupName,
@@ -161,9 +168,11 @@ Pokud chcete povolit účet správce poprvé, je nutné zadat souhlas správce p
     ```
 
 2. Pomocí následujícího příkazu spusťte skript. Zobrazí se výzva k zadání přihlašovacích údajů dvakrát. Nejprve zadejte přihlašovací údaje pro váš pracovní prostor Log Analytics a pak přihlašovací údaje globálního správce pro Office 365 tenanta.
+
     ```
     .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
     ```
+
     Příklad:
 
     ```
@@ -175,11 +184,12 @@ Pokud chcete povolit účet správce poprvé, je nutné zadat souhlas správce p
     ![Souhlas správce](media/solution-office-365/admin-consent.png)
 
 ### <a name="subscribe-to-log-analytics-workspace"></a>Přihlaste se k pracovnímu prostoru Log Analytics odběru
+
 Posledním krokem je přihlášení k odběru aplikace do pracovního prostoru Log Analytics. Můžete také provést pomocí skriptu prostředí PowerShell.
 
 1. Uložte následující skript jako *office365_subscription.ps1*.
 
-    ```
+    ```powershell
     param (
         [Parameter(Mandatory=$True)][string]$WorkspaceName,
         [Parameter(Mandatory=$True)][string]$ResourceGroupName,
@@ -342,12 +352,14 @@ Posledním krokem je přihlášení k odběru aplikace do pracovního prostoru L
     ```
 
 2. Spusťte skript následujícím příkazem:
+
     ```
     .\office365_subscription.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeUsername <OfficeUsername> -OfficeTennantID <Tenant ID> -OfficeClientId <Client ID> -OfficeClientSecret <Client secret>
     ```
+
     Příklad:
 
-    ```
+    ```powershell
     .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
     ```
 
@@ -355,7 +367,7 @@ Posledním krokem je přihlášení k odběru aplikace do pracovního prostoru L
 
 Pokud vaše aplikace je již naslouchá na tento pracovní prostor, nebo pokud tohoto tenanta je přihlášen s jiným pracovním prostorem, může se zobrazit následující chyba.
 
-```
+```Output
 Invoke-WebRequest : {"Message":"An error has occurred."}
 At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
 + $officeresponse = Invoke-WebRequest @Officeparams
@@ -366,7 +378,7 @@ At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
 
 Pokud nejsou zadány neplatné hodnoty parametrů, může se zobrazit následující chyba.
 
-```
+```Output
 Select-AzSubscription : Please provide a valid tenant or a valid subscription.
 At line:12 char:18
 + ... cription = (Select-AzSubscription -SubscriptionId $($Subscriptio ...
@@ -377,11 +389,12 @@ At line:12 char:18
 ```
 
 ## <a name="uninstall"></a>Odinstalace
+
 Můžete odebrat pomocí procesu v řešení pro správu Office 365 [odebrat řešení pro správu](solutions.md#remove-a-monitoring-solution). To shromažďovaných dat z Office 365 do služby Azure Monitor ale nezastaví. Pomocí následujícího postupu zrušit odběr služeb Office 365 a shromažďování dat ukončit.
 
 1. Uložte následující skript jako *office365_unsubscribe.ps1*.
 
-    ```
+    ```powershell
     param (
         [Parameter(Mandatory=$True)][string]$WorkspaceName,
         [Parameter(Mandatory=$True)][string]$ResourceGroupName,
@@ -472,15 +485,18 @@ Můžete odebrat pomocí procesu v řešení pro správu Office 365 [odebrat ře
 
     Příklad:
 
-    ```
+    ```powershell
     .\office365_unsubscribe.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx'
     ```
 
 ## <a name="data-collection"></a>Shromažďování dat
+
 ### <a name="supported-agents"></a>Podporovaní agenti
+
 Řešení Office 365 nenačítá data z libovolného [agentů Log Analytics](../platform/agent-data-sources.md).  Načte data přímo z Office 365.
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
+
 Může trvat několik hodin se zpočátku shromážděná data. Jakmile začne shromažďování, odešle Office 365 [oznámení webhooku](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) s podrobná data do Azure monitoru pokaždé, když je vytvořen záznam. Tento záznam je k dispozici ve službě Azure Monitor během pár minut od jejich obdržení.
 
 ## <a name="using-the-solution"></a>Použití řešení
@@ -511,6 +527,7 @@ Klikněte na **Office 365** otevřete dlaždici **Office 365** řídicího panel
 Mají všechny záznamy vytvořené v pracovním prostoru Log Analytics ve službě Azure Monitor řešení pro Office 365 **typ** z **OfficeActivity**.  **OfficeWorkload** vlastnost určuje, jaké služby Office 365 záznam označuje – Exchange, AzureActiveDirectory, SharePoint nebo OneDrive.  **Detailů** vlastnost určuje typ operace.  Vlastnosti pro každý typ operace se bude lišit a jsou uvedeny v následujících tabulkách.
 
 ### <a name="common-properties"></a>Společné vlastnosti
+
 Následující vlastnosti jsou společné pro všechny záznamy Office 365.
 
 | Vlastnost | Popis |
@@ -528,6 +545,7 @@ Následující vlastnosti jsou společné pro všechny záznamy Office 365.
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory base
+
 Následující vlastnosti jsou společné pro všechny záznamy v Azure Active Directory.
 
 | Vlastnost | Popis |
@@ -539,6 +557,7 @@ Následující vlastnosti jsou společné pro všechny záznamy v Azure Active D
 
 
 ### <a name="azure-active-directory-account-logon"></a>Azure přihlašovací účet služby Active Directory
+
 Tyto záznamy se vytvoří, když se pokusí přihlásit uživatele služby Active Directory.
 
 | Vlastnost | Popis |
@@ -552,6 +571,7 @@ Tyto záznamy se vytvoří, když se pokusí přihlásit uživatele služby Acti
 
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
+
 Tyto záznamy jsou vytvořeny při změnu nebo přidání objektů služby Azure Active Directory.
 
 | Vlastnost | Popis |
@@ -569,6 +589,7 @@ Tyto záznamy jsou vytvořeny při změnu nebo přidání objektů služby Azure
 
 
 ### <a name="data-center-security"></a>Zabezpečení datového centra
+
 Tyto záznamy jsou vytvořeny z dat auditu zabezpečení dat ve službě System Center.  
 
 | Vlastnost | Popis |
@@ -584,6 +605,7 @@ Tyto záznamy jsou vytvořeny z dat auditu zabezpečení dat ve službě System 
 
 
 ### <a name="exchange-admin"></a>Správce Exchange
+
 Tyto záznamy se vytvoří, když dojde ke změně konfigurace systému Exchange.
 
 | Vlastnost | Popis |
@@ -598,6 +620,7 @@ Tyto záznamy se vytvoří, když dojde ke změně konfigurace systému Exchange
 
 
 ### <a name="exchange-mailbox"></a>Poštovní schránky serveru Exchange
+
 Tyto záznamy jsou vytvořeny při poštovní schránky systému Exchange se provedly změny nebo doplnění.
 
 | Vlastnost | Popis |
@@ -620,6 +643,7 @@ Tyto záznamy jsou vytvořeny při poštovní schránky systému Exchange se pro
 
 
 ### <a name="exchange-mailbox-audit"></a>Auditování poštovní schránky systému Exchange
+
 Tyto záznamy jsou vytvořeny při vytvoření položky auditu poštovních schránek.
 
 | Vlastnost | Popis |
@@ -634,6 +658,7 @@ Tyto záznamy jsou vytvořeny při vytvoření položky auditu poštovních schr
 
 
 ### <a name="exchange-mailbox-audit-group"></a>Skupina auditu poštovních schránek systému Exchange
+
 Tyto záznamy jsou vytvořeny při skupiny Exchange se provedly změny nebo doplnění.
 
 | Vlastnost | Popis |
@@ -652,6 +677,7 @@ Tyto záznamy jsou vytvořeny při skupiny Exchange se provedly změny nebo dopl
 
 
 ### <a name="sharepoint-base"></a>Základní služby SharePoint
+
 Tyto vlastnosti jsou společné pro všechny záznamy služby SharePoint.
 
 | Vlastnost | Popis |
@@ -668,6 +694,7 @@ Tyto vlastnosti jsou společné pro všechny záznamy služby SharePoint.
 
 
 ### <a name="sharepoint-schema"></a>SharePoint Schema
+
 Tyto záznamy se vytvoří, když se změny konfigurace provedly do Sharepointu.
 
 | Vlastnost | Popis |
@@ -680,6 +707,7 @@ Tyto záznamy se vytvoří, když se změny konfigurace provedly do Sharepointu.
 
 
 ### <a name="sharepoint-file-operations"></a>Operace se soubory služby SharePoint
+
 Tyto záznamy jsou vytvořeny v reakci na operace se soubory ve službě SharePoint.
 
 | Vlastnost | Popis |
@@ -700,6 +728,7 @@ Tyto záznamy jsou vytvořeny v reakci na operace se soubory ve službě SharePo
 
 
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
+
 V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy aktualizace shromážděné tímto řešením.
 
 | Dotaz | Popis |
@@ -713,6 +742,7 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 
 ## <a name="next-steps"></a>Další postup
+
 * Použití [protokolu dotazů ve službě Azure Monitor](../log-query/log-query-overview.md) k zobrazení podrobných údajů o aktualizaci.
 * [Vytvářejte vlastní řídicí panely](../learn/tutorial-logs-dashboards.md) zobrazíte váš oblíbený vyhledávací dotazy Office 365.
 * [Vytvořit upozornění](../platform/alerts-overview.md) proaktivně upozornit důležité aktivit Office 365.  

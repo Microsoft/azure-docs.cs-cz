@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 028b36cc442ccef8af4aa401846cbacdaaab35bf
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 14f84b5380a1c106114cdab425de7f69f4e19825
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428478"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793556"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak protokolování událostí ve službě Azure Event Hubs ve službě Azure API Management
 Vysoce škálovatelná služba Azure Event Hubs slouží ke zpracování příchozích dat. Dokáže přijímat miliony událostí za sekundu a umožňuje zpracovávat a analyzovat masivní objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Služba Event Hubs slouží jako "předních dveří" pro kanál událostí, a jakmile jsou data shromážděna do centra událostí, je možné transformovat a uložit pomocí libovolného zprostředkovatele datové analýzy v reálném čase nebo adaptérů dávkování/úložišť. Event Hubs oddělí vytvoření proudu událostí od spotřeby těchto události, aby spotřebitelé událostí mohli k událostem přistupovat podle svého vlastního plánu.
@@ -40,7 +40,7 @@ Pokud chcete vytvořit protokolovací nástroj, ujistěte se, požadavek HTTP PU
 `https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2017-03-01`
 
 * Nahraďte `{your service}` s názvem vaší instance služby API Management.
-* Nahraďte `{new logger name}` s požadovaný název pro nový protokolovací nástroj. Při konfiguraci se odkazovat tento název [protokolu eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) zásad
+* Nahraďte `{new logger name}` s požadovaný název pro nový protokolovací nástroj. Při konfiguraci se odkazovat tento název [protokolu eventhub](/azure/api-management/api-management-advanced-policies#log-to-eventhub) zásad
 
 Přidejte následující hlavičky požadavku:
 

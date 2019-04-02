@@ -8,12 +8,12 @@ ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: dba8d9413229a0fa236b082e2e11dbd1a9fe5a5f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1121bdb379265ef592a26a8a31a90d402e529cc8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314122"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802741"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
@@ -46,7 +46,7 @@ Chcete-li zobrazit podrobnosti o dodržování předpisů, postupujte podle těc
 
 1. **Podrobnosti o dodržování předpisů** podokně se zobrazí informace z nejnovější vyhodnocení prostředku do aktuálního přiřazení zásad. V tomto příkladu pole **Microsoft.Sql/servers/version** bude zjištěna _12.0_ při definici zásad, byl očekáván _14.0_. Pokud prostředek je jako nevyhovující z několika důvodů, každý je uvedený v tomto podokně.
 
-   ![Podokno Podrobnosti dodržování předpisů](../media/determine-non-compliance/compliance-details-pane.png)
+   ![Podokno Podrobnosti dodržování předpisů a důvody pro nedodržení předpisů](../media/determine-non-compliance/compliance-details-pane.png)
 
    Pro **auditIfNotExists** nebo **deployIfNotExists** údaje obsahují definice zásad **details.type** vlastnost a všechny volitelné vlastnosti. Seznam najdete v tématu [auditIfNotExists vlastnosti](../concepts/effects.md#auditifnotexists-properties) a [deployIfNotExists vlastnosti](../concepts/effects.md#deployifnotexists-properties). **Naposledy vyhodnoceno prostředků** souvisejících prostředků z je **podrobnosti** část definice.
 
@@ -94,16 +94,16 @@ Následující matice mapuje každé možné _důvod_ na příslušný [podmínk
 |Aktuální hodnota musí existovat. |Existuje |
 |Aktuální hodnota musí být v cílové hodnotě. |v nebo **není** notIn |
 |Aktuální hodnota musí být jako cílová hodnota. |například nebo **není** notLike |
-|Aktuální hodnota musí rozlišovat malá a velká písmena cílovou hodnotu. |odpovídat nebo **není** notMatch |
-|Aktuální hodnota musí být malá a velká písmena cílovou hodnotu. |matchInsensitively nebo **není** notMatchInsensitively |
+|Aktuální hodnota musí s rozlišováním velikosti písmen odpovídat cílové hodnotě. |odpovídat nebo **není** notMatch |
+|Aktuální hodnota musí bez rozlišování velikosti písmen odpovídat cílové hodnotě. |matchInsensitively nebo **není** notMatchInsensitively |
 |Aktuální hodnota nesmí jako klíč obsahovat cílovou hodnotu. |notContainsKey nebo **není** containsKey|
 |Aktuální hodnota nesmí obsahovat cílovou hodnotu. |notContains nebo **není** obsahuje |
 |Aktuální hodnota nesmí být shodná s cílovou hodnotou. |notEquals nebo **není** rovná se |
 |Aktuální hodnota nesmí existovat. |**není** existuje  |
 |Aktuální hodnota nesmí být v cílové hodnotě. |notIn nebo **není** v |
 |Aktuální hodnota nesmí být jako cílová hodnota. |notLike nebo **není** jako |
-|Aktuální hodnota musí není velká a malá písmena rozlišovat cílovou hodnotu. |notMatch nebo **není** odpovídat |
-|Aktuální hodnota musí být cílová hodnota není malá a velká písmena. |notMatchInsensitively nebo **není** matchInsensitively |
+|Aktuální hodnota nesmí s rozlišováním velikosti písmen odpovídat cílové hodnotě. |notMatch nebo **není** odpovídat |
+|Aktuální hodnota nesmí bez rozlišování velikosti písmen odpovídat cílové hodnotě. |notMatchInsensitively nebo **není** matchInsensitively |
 |Žádné související prostředky neodpovídají podrobnostem účinku v definici zásad. |Prostředek typu definovaného v **then.details.type** a související na prostředek definovaný v **Pokud** část tohoto pravidla zásady neexistuje. |
 
 ## <a name="change-history-preview"></a>Historie změn (Preview)
@@ -118,11 +118,11 @@ Jako součást nového **ve verzi public preview**, posledních 14 dní změny n
 
 1. Vyberte **historii změn (preview)** kartě **dodržování předpisů prostředkem** stránky. Seznam zjistila změny, pokud jsou zobrazeny všechny existují.
 
-   ![Historie změn zásad – karta](../media/determine-non-compliance/change-history-tab.png)
+   ![Karta historie změn zásad na stránce dodržování předpisů prostředkem](../media/determine-non-compliance/change-history-tab.png)
 
 1. Vyberte jednu z nalezenými změnami. _Visual diff_ pro prostředek se zobrazí na **historii změn** stránky.
 
-   ![Historie změn zásad - Visual Diff](../media/determine-non-compliance/change-history-visual-diff.png)
+   ![Historie změn zásad na stránce historie změn Visual rozdíl.](../media/determine-non-compliance/change-history-visual-diff.png)
 
 _Visual diff_ formě identifikovat změny prostředku. Byly zjištěny změny nemusí souviset s aktuální stav dodržování předpisů prostředku.
 

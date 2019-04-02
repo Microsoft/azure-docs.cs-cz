@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 0cf83180647c142c9db2a1229674de96fec6a6bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c2ed053479b11bada4cfc0ec808ad148f024dee6
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087529"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803222"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrace služby Azure Active Directory s Azure Kubernetes Service
 
@@ -149,7 +149,15 @@ Nejprve [az aks get-credentials] [ az-aks-get-credentials] příkazů `--admin` 
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-V dalším kroku použijte následující manifest k vytvoření ClusterRoleBinding pro účet služby Azure AD. V tomto příkladu poskytuje úplný přístup k účtu na všechny obory názvů clusteru. Vytvoření souboru, například *rbac-aad-user.yaml*a vložte následující obsah. Jedním z vašeho tenanta Azure AD, aktualizujte uživatelské jméno:
+V dalším kroku použijte následující manifest k vytvoření ClusterRoleBinding pro účet služby Azure AD. V tomto příkladu poskytuje úplný přístup k účtu na všechny obory názvů clusteru. 
+
+Získejte *objectId* požadovaného uživatele účtu pomocí [az ad uživateli zobrazit] [ az-ad-user-show] příkazu. Zadejte hlavní název uživatele (UPN) požadovaný účet:
+
+```azurecli-interactive
+az ad user show --upn-or-object-id user@contoso.com --query objectId -o tsv
+```
+
+Vytvoření souboru, například *rbac-aad-user.yaml*a vložte následující obsah. Aktualizujte uživatelské jméno s ID objektu uživatelského účtu z Azure AD, kterou jste získali v předchozím kroku:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -163,7 +171,7 @@ roleRef:
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: User
-  name: "user@contoso.com"
+  name: "947026ec-9463-4193-c08d-4c516e1f9f52"
 ```
 
 Použít pomocí vazby [použití kubectl] [ kubectl-apply] příkaz, jak je znázorněno v následujícím příkladu:
@@ -242,3 +250,4 @@ Další informace o zabezpečení clusterů Kubernetes pomocí RBAC s [pomocí R
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
 [open-id-connect]:../active-directory/develop/v1-protocols-openid-connect-code.md
+[az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show

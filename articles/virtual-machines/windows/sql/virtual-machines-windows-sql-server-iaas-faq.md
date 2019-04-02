@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 6f064bb875786fc50073ab4216bc1c52ace294bf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0688235d928584df223a3a6a6ca2821282e4cb92
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113261"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762680"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Nejčastější dotazy ke službě SQL Server běžící na virtuálních počítačích Windows v Azure
 
@@ -139,12 +139,7 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
 1. **Můžete použít pojmenovanou instanci systému SQL Server s příponou IaaS**?
    
-   Ano, pokud pojmenované instance je jedinou instanci systému SQL Server, a pokud bylo odinstalováno původní výchozí instanci. Pokud chcete použít pojmenovanou instanci, postupujte takto:
-    1. Nasazení virtuálního počítače s SQL serverem z marketplace. 
-    1. Odinstalujte rozšíření IaaS.
-    1. Úplně odinstalujte systém SQL Server.
-    1. Nainstalujte SQL Server pomocí pojmenované instance. 
-    1. Instalace rozšíření IaaS. 
+   Ano, pokud pojmenovaná instance je jedinou instanci systému SQL Server, a pokud byl původní výchozí instanci [odinstalováno](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md#installation). Pokud není žádná výchozí instance a existuje víc instancí s názvem na jeden virtuální počítač SQL serveru, rozšíření IaaS se nepodaří nainstalovat. 
 
 1. **Můžu z virtuálního počítače SQL zcela odebrat SQL Server?**
 
@@ -176,6 +171,10 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 1. **Jak nainstalovat nástroje SQL Data na mém virtuálním počítači Azure?**
 
     Stáhněte a nainstalujte nástroje SQL Data z [Microsoft SQL Server Data Tools – Business Intelligence pro Visual Studio 2013](https://www.microsoft.com/en-us/download/details.aspx?id=42313).
+
+1. **Se distribuované transakce MSDTC nepodporuje na virtuální počítače s SQL serverem?**
+   
+    Ano. Místní služby DTC je podporována pro SQL Server 2016 SP2 a vyšší. Aplikace musí provést však test při použití skupin dostupnosti AlwaysOn, jako transakce vydávaných za pochodu při selhání se nezdaří a je nutné zopakovat. Clusterové služby DTC je k dispozici od verze Windows serveru 2019. 
 
 ## <a name="resources"></a>Zdroje a prostředky
 

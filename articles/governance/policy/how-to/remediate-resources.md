@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: f0c05ddbc53d08334aded48ccb3a3ece547b4143
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e86553e789fc9879ea4a6326b08d893fe24c8ac8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816554"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802554"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Opravit nekompatibilní prostředky službou Azure Policy
 
@@ -139,11 +139,11 @@ Chcete-li vytvořit **úloha opravy**, postupujte podle těchto kroků:
 
 1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
 
-   ![Hledání zásad](../media/remediate-resources/search-policy.png)
+   ![Hledání zásad ve všech služeb](../media/remediate-resources/search-policy.png)
 
 1. Vyberte **nápravy** na levé straně na stránku služby Azure Policy.
 
-   ![Vyberte možnost nápravy](../media/remediate-resources/select-remediation.png)
+   ![Vyberte na stránce zásady nápravy](../media/remediate-resources/select-remediation.png)
 
 1. Všechny **deployIfNotExists** přiřazení zásad s nekompatibilní prostředky jsou k dispozici na **zásady k nápravě** kartu a data tabulky. Klikněte na příslušnou zásadu s prostředky, které jsou nekompatibilní. **Nová úloha opravy** otevře se stránka.
 
@@ -152,11 +152,11 @@ Chcete-li vytvořit **úloha opravy**, postupujte podle těchto kroků:
 
 1. Na **nová úloha opravy** stránce, filtrovat prostředky pomocí řešení **oboru** tři tečky a vyberte podřízené prostředky z kde přiřazené zásady (včetně na jednotlivé prostředky objekty). Kromě toho pomocí **umístění** rozevíracího seznamu a dále filtrovat prostředky. Pouze prostředky uvedené v tabulce bude opraven.
 
-   ![Napravit – výběr zdroje](../media/remediate-resources/select-resources.png)
+   ![Napravit – vybrat prostředky, které chcete opravit](../media/remediate-resources/select-resources.png)
 
 1. Začátek nápravy úlohy po prostředků se vyfiltrovaly kliknutím **napravit**. Otevře se stránka zásad dodržování předpisů pro **nápravy úlohy** kartu k zobrazení stavu průběh úlohy.
 
-   ![Napravit – průběh úloh](../media/remediate-resources/task-progress.png)
+   ![Napravit – průběh úkolů nápravy](../media/remediate-resources/task-progress.png)
 
 1. Klikněte na **úloha opravy** ze stránky zásad dodržování předpisů se získat podrobnosti o průběhu. Filtrování používá pro úlohy se zobrazí spolu s seznam prostředků je opravit.
 

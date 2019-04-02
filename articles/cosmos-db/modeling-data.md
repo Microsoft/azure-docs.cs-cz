@@ -8,40 +8,37 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: andrl
 ms.custom: seodec18
-ms.openlocfilehash: f122d60a4f4df011a0adbe7806e70ae173222641
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 5f117d51378f895755b4f5a27fe892d85e12074a
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295092"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762578"
 ---
-# <a name="modeling-document-data-for-nosql-databases"></a>Modelování dat dokumentů databází NoSQL
+# <a name="data-modeling-in-azure-cosmos-db"></a>Modelování dat v Azure Cosmos DB
 
-Zatímco databáze bez schémat, jako je Azure Cosmos DB, nastavte ji velice snadné využití změny do datového modelu by měl stále strávíte některé čas přemýšlení o svých datech.
+Zatímco databáze bez schémat, jako je Azure Cosmos DB, aby velice snadné ukládat a dotazovat nestrukturovaných a částečně strukturovaných dat, můžete strávit některé čas přemýšlení o datovém modelu k plnému využití služeb z hlediska výkonu a škálovatelnosti a nejnižší náklady.
 
-Jak probíhá data k uložení? Jak se vaše aplikace bude k načtení a dotazování dat? Je silná jen pro čtení nebo zápis?
+Jak probíhá data k uložení? Jak se vaše aplikace bude k načtení a dotazování dat? Je to vaše aplikace náročné na čtení nebo zápisu náročná na výkon?
 
 Po přečtení tohoto článku, budou moci odpovědět na následující otázky:
 
-* Jak byste uvažovat o dokument v databázi dokumentů?
 * Co je modelování dat a proč by měli starat?
-* Jak se liší do relační databáze modelování dat v databázi dokumentů?
+* Jak se liší do relační databáze modelování dat ve službě Azure Cosmos DB?
 * Jak můžu express relací mezi daty nerelační databáze?
 * Při vkládání dat a když je propojení s daty?
 
 ## <a name="embedding-data"></a>Vkládání dat
 
-Při spuštění modelování dat v úložišti dokumentu, jako jsou služby Azure Cosmos DB, pokuste se považovat za entity **samostatná dokumenty** reprezentovány ve formátu JSON.
+Když spustíte modelování dat ve službě Azure Cosmos DB pokusí považovat za entity **samostatné položky** reprezentovaná jako dokumenty JSON.
 
-Předtím, než se budeme věnovat příliš mnohem víc, dejte nám zpět provést několik kroků a mít podívat, jak něco v relační databázi, předmět, řada z vás se již znáte může model jsme. Následující příklad ukazuje, jak osoba můžou být uložená v relační databázi.
+Pro porovnání nejprve podíváme jak jsme modelovat data ve službě relační databáze. Následující příklad ukazuje, jak osoba můžou být uložená v relační databázi.
 
 ![Model relační databáze](./media/sql-api-modeling-data/relational-data-model.png)
 
-Při práci s relačními databázemi, jsme jsme se museli celé roky normalizovat normalizovat, normalizovat.
+Při práci s relačními databázemi, je strategie normalizovat všechna vaše data. Normalizaci dat obvykle zahrnuje pořizování entity, jako je osoba a jeho rozdělení na samostatné součásti. V předchozím příkladu osoba může mít více záznamů podrobnosti o kontaktu, jakož i více záznamů adresu. Kontaktní údaje mohou být dále člení další extrahováním společné pole, jako jsou typu. Totéž platí i pro adresu, každý záznam může být typu *Domů* nebo *obchodní*.
 
-Normalizaci dat obvykle zahrnuje pořizování entity, jako je osoba a jeho rozdělení na samostatných částí dat. V předchozím příkladu osoba může mít více záznamů podrobnosti o kontaktu, jakož i více záznamů adresu. Můžeme dokonce přejděte o krok dál a rozebere kontaktní údaje další extrahováním běžné pole, jako jsou typu. Stejnou adresu, každý záznam tady má typ jako *Domů* nebo *obchodní*.
-
-Která bude obsahovat místní normalizace dat se **Vyhněte se ukládání redundantních dat** na každý záznam a místo toho odkazovat na data. V tomto příkladu číst osoba, s jejich kontaktní údaje a adresy, budete muset použít spojení jak efektivně agregovat data v době běhu.
+Která bude obsahovat místní normalizace dat se **Vyhněte se ukládání redundantních dat** na každý záznam a místo toho odkazovat na data. V tomto příkladu číst osoba, s jejich kontaktní údaje a adresy budete muset použít spojení efektivně compose zpět (nebo denormalizovat) dat v době běhu.
 
     SELECT p.FirstName, p.LastName, a.City, cd.Detail
     FROM Person p
@@ -51,7 +48,7 @@ Která bude obsahovat místní normalizace dat se **Vyhněte se ukládání redu
 
 Aktualizace jedné osobě s jejich kontaktní údaje a adresy vyžaduje operací zápisu napříč mnoha jednotlivé tabulky.
 
-Nyní Pojďme se podívat, jak jsme by model stejná data jako samostatný entity v databázi dokumentů.
+Nyní Pojďme se podívat, jak jsme by model stejná data jako samostatný entity ve službě Azure Cosmos DB.
 
     {
         "id": "1",
@@ -72,10 +69,10 @@ Nyní Pojďme se podívat, jak jsme by model stejná data jako samostatný entit
         ]
     }
 
-Pomocí výše uvedených přístup teď máme **Nenormalizovaná** osoby záznamu, kde jsme **vložený** všechny informace týkající se tomuto uživateli, jako je například své kontaktní údaje a adresy, do jednoho formátu JSON dokument.
+Použití přístup nad budeme mít **Nenormalizovaná** osoby nahrávat, podle **vkládání** všechny informace související s tuto osobu, jako je například své kontaktní údaje a adresy, na *jeden JSON* dokumentu.
 Navíc protože jsme nejsou omezeny na pevné schéma máme flexibilitu k provádění akcí, jako byste měli zcela kontaktní údaje z různých tvarů.
 
-Načítání kompletní osoba záznam z databáze je teď jediný přečíst operace pro jednu kolekci nebo pro jednotlivý dokument. Aktualizace záznamu osoby s jejich kontaktní údaje a adresy, je také operace zápisu jednoho pro jednotlivý dokument.
+Načítání kompletní osoba záznam z databáze je nyní **operace čtení jedním** proti jednoho kontejneru a pro jednu položku. Aktualizace záznamu osoby s jejich kontaktní údaje a adresy, je také **jedna operace zápisu** proti jednu položku.
 
 Podle denormalizing dat, vaše aplikace může potřebovat vydat menšího počtu dotazů a aktualizace dokončete běžných operací.
 
@@ -86,15 +83,15 @@ Vložená data se obvykle používá při modely:
 * Existují **obsažené** vztahů mezi entitami.
 * Existují **jeden několik** vztahů mezi entitami.
 * Je vložená data, která **mění jen zřídka**.
-* Je vložen nebude růst dat **neomezeně**.
-* Je vložená data, která je **integrální** s daty v dokumentu.
+* Je vložená data, která nebude zvětšovat **neomezeně**.
+* Je vložená data, která je **dotazovat často společně**.
 
 > [!NOTE]
 > Obvykle Nenormalizovaná data modely poskytují lepší **čtení** výkonu.
 
 ### <a name="when-not-to-embed"></a>Kdy nepoužívat pro vložení
 
-Pravidlo v databázi dokumentů je všechno, co denormalizovat a všechna data pro vložení do jednoho dokumentu, to může vést k určité situace, které by se jim vyhnout.
+Když pravidlo ve službě Azure Cosmos DB je všechno, co denormalizovat a všechna data pro vložení do jedné položky, to může vést k určité situace, které by se jim vyhnout.
 
 Využijte tento fragment kódu JSON.
 
@@ -114,13 +111,13 @@ Využijte tento fragment kódu JSON.
         ]
     }
 
-To může být to, co entita příspěvek s vložené komentáře může vypadat třeba jsme modelování byly typické blogu nebo systému CMS. Problém s v tomto příkladu je, že je pole komentáře **bez vazby**, což znamená, že neexistuje žádné omezení (praktické) počet komentářů může mít libovolný jeden příspěvek. Ten se stane problém, jak může výrazně zvýší velikost dokumentu.
+To může být to, co entita příspěvek s vložené komentáře může vypadat třeba jsme modelování byly typické blogu nebo systému CMS. Problém s v tomto příkladu je, že je pole komentáře **bez vazby**, což znamená, že neexistuje žádné omezení (praktické) počet komentářů může mít libovolný jeden příspěvek. To může stát problémem, jak může zvětšit velikost položky nekonečně velká.
 
-Možnost přenášet data přes přenosové stejně jako čtení a aktualizace dokumentů ve velkém měřítku, roste velikost dokumentu bude mít vliv.
+Možnost přenášet data přes přenosové stejně jako čtení a aktualizaci položky ve velkém měřítku, roste velikost položky budou mít vliv.
 
-V takovém případě by bylo lepší vzít v úvahu následující modelu.
+V takovém případě by bylo lepší vzít v úvahu následující datového modelu.
 
-    Post document:
+    Post item:
     {
         "id": "1",
         "name": "What's new in the coolest Cloud",
@@ -132,7 +129,7 @@ V takovém případě by bylo lepší vzít v úvahu následující modelu.
         ]
     }
 
-    Comment documents:
+    Comment items:
     {
         "postId": "1"
         "comments": [
@@ -151,9 +148,9 @@ V takovém případě by bylo lepší vzít v úvahu následující modelu.
         ]
     }
 
-Tento model má tři nejnovější komentáře vložený v příspěvku samostatně, což je pole s pevnou vázán tento čas. Další poznámky jsou seskupená do v dávkách po 100 komentáře a uložená v samostatných dokumentech. Velikost dávky byla vybrána jako 100 protože fiktivní aplikaci mu umožní načíst 100 komentáře v čase.  
+Tento model má tři nejnovější komentáře vložený v příspěvku kontejneru, což je pole s pevnou sadu atributů. Další poznámky jsou seskupená do v dávkách po 100 komentáře a uložené jako samostatné položky. Velikost dávky byla vybrána jako 100 protože fiktivní aplikaci mu umožní načíst 100 komentáře v čase.  
 
-Dalším užitečným, kde vkládání dat není vhodné při vložených dat se často používá v dokumentech a bude často měnit.
+Dalším užitečným, kde vkládání dat není vhodné při vložených dat se často používá napříč položky a bude často měnit.
 
 Využijte tento fragment kódu JSON.
 

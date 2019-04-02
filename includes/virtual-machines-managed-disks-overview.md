@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 287ae3b8122dd2a1e43c31055ac0ea5b04dddb07
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: dfd91caf67592b349bd16bab673a3e45397ad282
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190631"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58807503"
 ---
 ## <a name="benefits-of-managed-disks"></a>Výhody spravovaných disků
 
@@ -43,7 +43,7 @@ Můžete použít [řízení přístupu Azure na základě rolí (RBAC)](../arti
 
 ### <a name="data-disks"></a>Datové disky
 
-Datový disk je spravovaný disk, který je připojen k virtuálnímu počítači k ukládání dat aplikací nebo data, která je potřeba nechat. Datové disky jsou registrovány jako disky SCSI a jsou označeny písmeno, kterou zvolíte. Každý datový disk má maximální kapacitu 4 095 gibibajtech (GiB). Velikost virtuálního počítače určuje, kolik datových disků můžete připojit a typ úložiště můžete použít k hostování disky.
+Datový disk je spravovaný disk, který je připojen k virtuálnímu počítači k ukládání dat aplikací nebo data, která je potřeba nechat. Datové disky jsou registrovány jako disky SCSI a jsou označeny písmeno, kterou zvolíte. Každý datový disk má maximální kapacitu 32 767 gibibajtech (GiB). Velikost virtuálního počítače určuje, kolik datových disků můžete připojit a typ úložiště můžete použít k hostování disky.
 
 ### <a name="os-disks"></a>Disky s operačním systémem
 
@@ -53,7 +53,7 @@ Tento disk má maximální kapacitu 2 048 GB.
 
 ### <a name="temporary-disk"></a>Dočasný disk
 
-Každý virtuální počítač obsahuje dočasný disk, který není spravovaný disk. Dočasný disk obsahuje krátkodobé úložiště pro aplikace a procesy a je určené k ukládání pouze data, jako jsou stránkovací nebo odkládací soubory. Data na dočasném disku mohou být ztracena během [události údržby](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) události nebo když jste [opětovné nasazení virtuálního počítače](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Při úspěšném standardní restartování virtuálního počítače bude uchovávat data na dočasné jednotce. 
+Každý virtuální počítač obsahuje dočasný disk, který není spravovaný disk. Dočasný disk obsahuje krátkodobé úložiště pro aplikace a procesy a je určené k ukládání pouze data, jako jsou stránkovací nebo odkládací soubory. Data na dočasném disku mohou být ztracena během [události údržby](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) události nebo když jste [opětovné nasazení virtuálního počítače](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Při úspěšném standardní restartování virtuálního počítače bude uchovávat data na dočasné jednotce.
 
 ## <a name="managed-disk-snapshots"></a>Snímky spravovaného disku
 
@@ -71,7 +71,7 @@ Spravované disky podporují také vytváření spravovanou vlastní image. Imag
 Informace o vytváření bitové kopie naleznete v následujících článcích:
 
 * [Jak zachytit spravované image zobecněného virtuálního počítače v Azure](../articles/virtual-machines/windows/capture-image-resource.md)
-* [Generalizace a zachytit virtuální počítač s Linuxem pomocí Azure CLI](../articles/virtual-machines/linux/capture-image.md)
+* [Jak generalizovat a zachytit linuxový virtuální počítač s využitím Azure CLI](../articles/virtual-machines/linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>Imagí a snímky
 
