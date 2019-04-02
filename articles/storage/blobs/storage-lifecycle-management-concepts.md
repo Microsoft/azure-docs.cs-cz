@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/20/2019
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: df38fd30c1bfba4993e9992783a130262a703370
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: e6f4f1feb5c1c78e78ff5d71b08a0e8a40537d13
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579508"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803243"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů Blob v Azure
 
@@ -42,7 +42,7 @@ Funkce správy životního cyklu je k dispozici ve všech veřejných oblastech 
 
 ## <a name="add-or-remove-a-policy"></a>Přidání nebo odebrání zásady 
 
-Můžete přidat, upravit nebo odebrat zásadu pomocí webu Azure portal, [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases), rozhraní příkazového řádku Azure, rozhraní REST API nebo klientském nástroji. Tento článek popisuje, jak ke správě zásad pomocí portálu a metod prostředí PowerShell.  
+Můžete přidat, upravit nebo odebrat zásadu pomocí webu Azure portal, [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases), rozhraní příkazového řádku Azure [rozhraní REST API](https://docs.microsoft.com/en-us/rest/api/storagerp/managementpolicies), nebo klientský nástroj. Tento článek popisuje, jak ke správě zásad pomocí portálu a metod prostředí PowerShell.  
 
 > [!NOTE]
 > Pokud jsou povolená pravidla brány firewall pro váš účet úložiště může být zablokován požadavky správy životního cyklu. Tyto požadavky můžete odblokovat zadáním výjimky. Další informace najdete v části výjimky v [Konfigurace bran firewall a virtuální sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).

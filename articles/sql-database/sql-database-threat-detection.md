@@ -12,18 +12,18 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 4e853b9edbd000d8b61b5e05f3ae65c07258d73f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 60839fa06d8436d3d2202d1d97735c42c5768e9e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002152"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793752"
 ---
 # <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>Detekce hrozeb Azure SQL Database pro jeden, nebo součástí fondu
 
-[Detekce hrozeb](sql-database-threat-detection-overview.md) pro databáze ve fondu a jeden detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití. Detekce hrozeb můžete identifikovat **útok prostřednictvím injektáže SQL potenciální**, **přístup z neobvyklého umístění nebo datového centra**, **přístup z neznámého objektu zabezpečení nebo potenciálně škodlivé aplikace**, a **hrubou silou přihlašovací údaje SQL** – další podrobnosti najdete v [výstrahy detekce hrozeb](sql-database-threat-detection-overview.md#threat-detection-alerts).
+[Detekce hrozeb](sql-database-threat-detection-overview.md) pro databáze ve fondu a jeden detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití. Detekce hrozeb můžete identifikovat **útok prostřednictvím injektáže SQL potenciální**, **přístup z neobvyklého umístění nebo datového centra**, **přístup z neznámého objektu zabezpečení nebo potenciálně škodlivé aplikace**, a **hrubou silou přihlašovací údaje SQL** – další podrobnosti najdete v [výstrahy detekce hrozeb](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
 
-Budete dostávat oznámení o zjištěných hrozbách prostřednictvím [e-mailová oznámení](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) nebo [webu Azure portal](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal)
+Budete dostávat oznámení o zjištěných hrozbách prostřednictvím [e-mailová oznámení](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) nebo [webu Azure portal](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal)
 
 [Detekce hrozeb](sql-database-threat-detection-overview.md) je součástí [rozšířené zabezpečení dat](sql-database-advanced-data-security.md) (reklamy) nabídky, která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Detekce hrozeb je možné získat přístup a spravovat prostřednictvím portálu pro centrální SQL reklamy. Balíček s pokročilými datovými zabezpečení účtuje se 15$ za měsíc v rámci logického serveru, se prvních 30 dnů zdarma.
 

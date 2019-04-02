@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: cdaaf5323543377d9c2b603ad7377d088710cde8
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: c52a1942bda9881f8f782a227c81feaa4813722d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447738"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793625"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Sledování vašich rozhraní API pomocí Azure API Management, Event Hubs a Moesif
 [Služby API Management](api-management-key-concepts.md) poskytuje mnoho funkcí pro zvýšení zpracování požadavků HTTP odeslané do vašeho rozhraní API protokolu HTTP. Je však přechodné existenci požadavky a odpovědi. Požadavku a prochází přes službu API Management k rozhraní API back-endu. Vaše rozhraní API zpracuje požadavek a odpověď prochází zpět do rozhraní API příjemců. Služba API Management zajišťuje několik důležitých statistik o rozhraní API pro zobrazení v řídicím panelu portálu Azure, ale dalších fázích můžete využít, že podrobnosti jsou pryč.
@@ -47,7 +47,7 @@ Centrum událostí přijme data událostí jako jednoduchým řetězcem. Obsah t
 
 Alternativní možnost bylo použít `application/http` typ média, jak je popsáno ve specifikaci protokolu HTTP [RFC 7230](https://tools.ietf.org/html/rfc7230). Tento typ média používá naprosto stejný formát, který se používá k přenosu ve skutečnosti odesílání zprávy protokolu HTTP, ale celá zpráva může být v těle další požadavek HTTP put. V našem případě stačí budeme používat text jako naše zprávy k odeslání do Event Hubs. Pohodlné, je analyzátor, který existuje v [Microsoft ASP.NET Web API 2.2 klienta](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) knihovny, které můžete tento formát analyzovat a převádět je do nativního `HttpRequestMessage` a `HttpResponseMessage` objekty.
 
-Aby bylo možné vytvořit tuto zprávu, musíme využít výhod jazyka C# založeny [výrazy zásad](https://msdn.microsoft.com/library/azure/dn910913.aspx) ve službě Azure API Management. Tady je zásada, která odešle zprávu požadavku HTTP do služby Azure Event Hubs.
+Aby bylo možné vytvořit tuto zprávu, musíme využít výhod jazyka C# založeny [výrazy zásad](/azure/api-management/api-management-policy-expressions) ve službě Azure API Management. Tady je zásada, která odešle zprávu požadavku HTTP do služby Azure Event Hubs.
 
 ```xml
 <log-to-eventhub logger-id="conferencelogger" partition-id="0">
@@ -315,4 +315,4 @@ Služba Azure API Management poskytuje ideálním místem pro zachycení provozu
 * Další informace o integraci API Management a služby Event Hubs
   * [Jak protokolování událostí ve službě Azure Event Hubs ve službě Azure API Management](api-management-howto-log-event-hubs.md)
   * [Odkaz na entitu protokolovací nástroj](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
-  * [Referenční příručce o zásadách protokolu do centra událostí](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
+  * [Referenční příručce o zásadách protokolu do centra událostí](/azure/api-management/api-management-advanced-policies#log-to-eventhub)

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9408134fa020a143a1b32d5b3600f6e19de7008e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 3d20316903efde516ec99b0a548449297bdf1419
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663637"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805104"
 documentType: LandingData
 title: Dokumentace ke službě Azure Media Services v3
 metadata:
@@ -27,10 +27,10 @@ sections:
   items:
   - type: list
     style: cards
-    className: cardsD
+    className: cardImageOuter
     items:
     - title: Informace o konceptech
-      html: <p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">Nahrávání do cloudu a úložiště</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">Kódování</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">Analýzy mediálních služeb</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">Balení</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">Ochrana</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">Živé streamování</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">Klienti přehrávače</a></p>
+      html: <p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">Nahrávání do cloudu a úložiště</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">Kódování</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events">Monitorování</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">Analýzy mediálních služeb</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">Balení</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">Ochrana</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">Živé streamování</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">Klienti přehrávače</a></p>
     - title: Vývoj s rozhraní API v3
       html: <p><a href="https://docs.microsoft.com/azure/media-services/latest/developers-guide">Zahájení vývoje s využitím sad SDK</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">Vývoj s využitím REST</a></p>
 - title: Zprovoznění během 5 minut

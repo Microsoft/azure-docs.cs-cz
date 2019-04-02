@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 68a5bdef17077d1815b6d85e121d9bb26c2280bf
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 6d794fb14b7f581c9e9b92dc581de97e0a236630
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484250"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793743"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Začínáme s úlohy elastické databáze
 
@@ -116,8 +116,10 @@ Zde by obvykle vytvoříme mapy horizontálních oddílů cílit pomocí **New-A
     $ErrorActionPreference = "Continue"
    }
    ```
+
 ## <a name="create-a-t-sql-script-for-execution-across-databases"></a>Vytvoření skriptu T-SQL pro provádění napříč databázemi
-   ```
+
+   ```powershell
     $scriptName = "NewTable"
     $scriptCommandText = "
     IF NOT EXISTS (SELECT name FROM sys.tables WHERE name = 'Test')
@@ -137,7 +139,7 @@ Zde by obvykle vytvoříme mapy horizontálních oddílů cílit pomocí **New-A
 
 ## <a name="create-the-job-to-execute-a-script-across-the-custom-group-of-databases"></a>Vytvoření úlohy pro spuštění skriptu ve vlastní skupinu databází
 
-   ```
+   ```powershell
     $jobName = "create on server dbs"
     $scriptName = "NewTable"
     $customCollectionName = "dbs_in_server"
@@ -148,50 +150,53 @@ Zde by obvykle vytvoříme mapy horizontálních oddílů cílit pomocí **New-A
    ```
 
 ## <a name="execute-the-job"></a>Provádění úlohy
+
 Následující příkaz powershellu je možné provádět existující úlohy:
 
 Aktualizujte tak, aby odrážely název požadované úlohy, který jste spustili následující proměnnou:
 
-   ```
+   ```powershell
     $jobName = "create on server dbs"
     $jobExecution = Start-AzureSqlJobExecution -JobName $jobName
     Write-Output $jobExecution
    ```
 
 ## <a name="retrieve-the-state-of-a-single-job-execution"></a>Načíst stav spuštění jedné úlohy
+
 Použijte stejný **Get-AzureSqlJobExecution** rutinu s **metoda IncludeChildren** parametr zobrazit stav podřízených se prováděné úlohy, konkrétně určitý stav pro každé spuštění úlohy každou databázi cílem pro úlohu.
 
-   ```
+   ```powershell
     $jobExecutionId = "{Job Execution Id}"
     $jobExecutions = Get-AzureSqlJobExecution -JobExecutionId $jobExecutionId -IncludeChildren
     Write-Output $jobExecutions
    ```
 
 ## <a name="view-the-state-across-multiple-job-executions"></a>Zobrazit stav napříč několika se prováděné úlohy
+
 **Get-AzureSqlJobExecution** rutina má více volitelné parametry, které lze použít k zobrazení více spuštění úlohy, filtrovaný pomocí zadaných parametrů. Následující příklad ukazuje některé možné způsoby, jak použít Get-AzureSqlJobExecution:
 
 Načtěte všechny aktivní úlohy nejvyšší úrovně spuštění:
 
-   ```
+   ```powershell
     Get-AzureSqlJobExecution
    ```
 
 Načtěte všechny nejvyšší úrovně se prováděné úlohy, včetně spuštění neaktivní úlohy:
 
-   ```
+   ```powershell
     Get-AzureSqlJobExecution -IncludeInactive
    ```
 
 Načtěte všechny podřízené se prováděné úlohy ID zadaná úloha spuštění, včetně spuštění neaktivní úlohy:
 
-   ```
+   ```powershell
     $parentJobExecutionId = "{Job Execution Id}"
     Get-AzureSqlJobExecution -AzureSqlJobExecution -JobExecutionId $parentJobExecutionId -IncludeInactive -IncludeChildren
    ```
 
 Načíst všechny prováděné úlohy vytvořené podle určeného plánu na úlohu kombinaci, včetně neaktivní úlohy:
 
-   ```
+   ```powershell
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
     Get-AzureSqlJobExecution -JobName $jobName -ScheduleName $scheduleName -IncludeInactive
@@ -199,7 +204,7 @@ Načíst všechny prováděné úlohy vytvořené podle určeného plánu na úl
 
 Načtěte všechny úlohy, které cílí na mapě určený horizontální oddíl, včetně neaktivní úlohy:
 
-   ```
+   ```powershell
     $shardMapServerName = "{Shard Map Server Name}"
     $shardMapDatabaseName = "{Shard Map Database Name}"
     $shardMapName = "{Shard Map Name}"
@@ -209,7 +214,7 @@ Načtěte všechny úlohy, které cílí na mapě určený horizontální oddíl
 
 Načtěte všechny úlohy, které cílí na vlastní kolekce, včetně neaktivní úlohy:
 
-   ```
+   ```powershell
     $customCollectionName = "{Custom Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
@@ -217,7 +222,7 @@ Načtěte všechny úlohy, které cílí na vlastní kolekce, včetně neaktivn�
 
 Získání seznamu úkolů prováděné úlohy v rámci konkrétní úlohy spuštění:
 
-   ```
+   ```powershell
     $jobExecutionId = "{Job Execution Id}"
     $jobTaskExecutions = Get-AzureSqlJobTaskExecution -JobExecutionId $jobExecutionId
     Write-Output $jobTaskExecutions
@@ -226,16 +231,18 @@ Získání seznamu úkolů prováděné úlohy v rámci konkrétní úlohy spuš
 Načtěte podrobnosti provádění úlohy úlohy:
 
 Následující skript prostředí PowerShell slouží k zobrazení podrobností o provádění úloh úkolu, který je zvláště užitečné při ladění selhání spuštění.
-   ```
+
+   ```powershell
     $jobTaskExecutionId = "{Job Task Execution Id}"
     $jobTaskExecution = Get-AzureSqlJobTaskExecution -JobTaskExecutionId $jobTaskExecutionId
     Write-Output $jobTaskExecution
    ```
 
 ## <a name="retrieve-failures-within-job-task-executions"></a>Načíst selhání v rámci úlohy prováděné úlohy
+
 Objekt JobTaskExecution obsahuje vlastnosti pro životní cyklus úloh společně s vlastností zprávy. Pokud provádění úloh úkolu se nezdařilo, životní cyklus vlastnost nastavená na *neúspěšné* a vlastnost Message je nastavená na výslednou zprávu o výjimce a svůj zásobník. Pokud úloha nebyla úspěšná, je důležité k zobrazení podrobností úlohy, které se nezdařila pro danou úlohu.
 
-   ```
+   ```powershell
     $jobExecutionId = "{Job Execution Id}"
     $jobTaskExecutions = Get-AzureSqlJobTaskExecution -JobExecutionId $jobExecutionId
     Foreach($jobTaskExecution in $jobTaskExecutions)
@@ -248,14 +255,16 @@ Objekt JobTaskExecution obsahuje vlastnosti pro životní cyklus úloh společn�
    ```
 
 ## <a name="waiting-for-a-job-execution-to-complete"></a>Čekání na spuštění úlohy k dokončení
+
 Následující skript prostředí PowerShell slouží k čekání na dokončení úkolu úlohy:
 
-   ```
+   ```powershell
     $jobExecutionId = "{Job Execution Id}"
     Wait-AzureSqlJobExecution -JobExecutionId $jobExecutionId
    ```
 
 ## <a name="create-a-custom-execution-policy"></a>Vytvořit zásadu vlastní spuštění
+
 Úlohy elastic Database podporuje vytváření vlastní spuštění zásady, které lze použít při spuštění úlohy.
 
 Zásady spouštění aktuálně umožňují definovat:
@@ -278,7 +287,7 @@ Výchozí zásadu spouštění používá následující hodnoty:
 
 Vytvoření zásady požadovaného spouštění:
 
-   ```
+   ```powershell
     $executionPolicyName = "{Execution Policy Name}"
     $initialRetryInterval = New-TimeSpan -Seconds 10
     $jobTimeout = New-TimeSpan -Minutes 30
@@ -290,9 +299,10 @@ Vytvoření zásady požadovaného spouštění:
    ```
 
 ### <a name="update-a-custom-execution-policy"></a>Aktualizovat zásady vlastní spuštění
+
 Aktualizujte zásady spouštění požadované aktualizace:
 
-   ```
+   ```powershell
     $executionPolicyName = "{Execution Policy Name}"
     $initialRetryInterval = New-TimeSpan -Seconds 15
     $jobTimeout = New-TimeSpan -Minutes 30
@@ -329,38 +339,41 @@ Místo toho Stop-AzureSqlJobExecution je nutné volat se zrušit spuštění akt
 
 K aktivaci úlohy odstranění, použijte **odebrat AzureSqlJob** rutiny a nastavit **JobName** parametru.
 
-   ```
+   ```powershell
     $jobName = "{Job Name}"
     Remove-AzureSqlJob -JobName $jobName
    ```
 
 ## <a name="create-a-custom-database-target"></a>Vytvořte vlastní databázi cíl
+
 Vlastní databázi cíle lze definovat v úlohy elastické databáze, které se dají použít pro spuštění přímo nebo zahrnutí v rámci skupiny vlastní databázi. Protože **elastické fondy** přímo, ale neumožňují přes rozhraní API prostředí PowerShell, můžete jednoduše vytvořit vlastní databázi cíle a cílové kolekce vlastní databázi, která zahrnuje všechny databáze ve fondu.
 
 Nastavte následující proměnné tak, aby odrážely informace o požadované databáze:
 
-   ```
+   ```powershell
     $databaseName = "{Database Name}"
     $databaseServerName = "{Server Name}"
     New-AzureSqlJobDatabaseTarget -DatabaseName $databaseName -ServerName $databaseServerName
    ```
 
 ## <a name="create-a-custom-database-collection-target"></a>Vytvořte vlastní databázi kolekce cíl
+
 Cílové kolekce vlastní databázi lze definovat za účelem povolení spuštění napříč několika cíly definovaných databázových. Po vytvoření databáze skupiny, dá se přidružit k vlastní kolekce cílové databáze.
 
 Nastavte následující proměnné tak, aby odrážely konfiguraci cílů požadované vlastní kolekce:
 
-   ```
+   ```powershell
     $customCollectionName = "{Custom Database Collection Name}"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
    ```
 
 ### <a name="add-databases-to-a-custom-database-collection-target"></a>Přidání databáze do cílové kolekce vlastní databáze
+
 Cíle databáze můžou být spojené s vlastní databázi kolekce cíle můžete vytvořit skupinu databází. Pokaždé, když se vytvoří úloha, která se zaměřuje cílové kolekce vlastní databázi, je rozbalen do cílové databáze přidružený ke skupině v době spuštění.
 
 Přidáte požadovanou databázi do konkrétního vlastní kolekce:
 
-   ```
+   ```powershell
     $serverName = "{Database Server Name}"
     $databaseName = "{Database Name}"
     $customCollectionName = "{Custom Database Collection Name}"
@@ -368,9 +381,10 @@ Přidáte požadovanou databázi do konkrétního vlastní kolekce:
    ```
 
 #### <a name="review-the-databases-within-a-custom-database-collection-target"></a>Zkontrolujte databází v rámci cílové kolekce vlastní databáze
+
 Použití **Get-AzureSqlJobTarget** rutina pro načtení podřízené databáze v cílové kolekci vlastní databázi.
 
-   ```
+   ```powershell
     $customCollectionName = "{Custom Database Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $childTargets = Get-AzureSqlJobTarget -ParentTargetId $target.TargetId
@@ -378,9 +392,10 @@ Použití **Get-AzureSqlJobTarget** rutina pro načtení podřízené databáze 
    ```
 
 ### <a name="create-a-job-to-execute-a-script-across-a-custom-database-collection-target"></a>Vytvoření úlohy pro spuštění skriptu v cílové kolekci vlastní databáze
+
 Použití **New-AzureSqlJob** rutina pro vytvoření úlohy pro skupinu databází určené cílové kolekce vlastní databázi. Úlohy elastic Database rozšíří úlohy na několika podřízené úlohy, které každý odpovídající databázi přidružené k cílové kolekce vlastní databázi a ujistěte se, že je skript spuštěn na každou databázi. Znovu je důležité, že skripty jsou idempotentní chcete být odolní vůči opakování.
 
-   ```
+   ```powershell
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
     $customCollectionName = "{Custom Collection Name}"
@@ -391,6 +406,7 @@ Použití **New-AzureSqlJob** rutina pro vytvoření úlohy pro skupinu databáz
    ```
 
 ## <a name="data-collection-across-databases"></a>Shromažďování dat napříč databázemi
+
 **Úlohy elastic Database** podporuje provádění dotazu napříč skupinou databází a odesílá výsledky do tabulky zadané databáze. Zobrazení výsledků dotazu z každé databáze ve skutečnosti může být dotazována v tabulce. To poskytuje asynchronní mechanismus při spuštění dotazu v rozsáhlé skupině databází. Případy selhání, jako je jedna z databází není dočasně k dispozici jsou automaticky zpracovány prostřednictvím opakovaných pokusů.
 
 Zadané cílové tabulky se automaticky vytvoří, pokud ještě neexistuje, odpovídající schématu sady výsledků vrácené. Pokud provádění skriptu vrátí více sad výsledků dotazu, odešle úlohy elastické databáze pouze první z nich do zadané cílové tabulky.
@@ -399,7 +415,7 @@ Následující skript prostředí PowerShell můžete použít ke spuštění sk
 
 Nastavte následující tak, aby odrážely požadované skriptu, přihlašovací údaje a cíl spuštění:
 
-   ```
+   ```powershell
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
     $executionCredentialName = "{Execution Credential Name}"
@@ -413,7 +429,8 @@ Nastavte následující tak, aby odrážely požadované skriptu, přihlašovac�
    ```
 
 ### <a name="create-and-start-a-job-for-data-collection-scenarios"></a>Vytvoření a spuštění úlohy pro scénáře shromažďování dat
-   ```
+
+   ```powershell
     $job = New-AzureSqlJob -JobName $jobName -CredentialName $executionCredentialName -ContentName $scriptName -ResultSetDestinationServerName $destinationServerName -ResultSetDestinationDatabaseName $destinationDatabaseName -ResultSetDestinationSchemaName $destinationSchemaName -ResultSetDestinationTableName $destinationTableName -ResultSetDestinationCredentialName $destinationCredentialName -TargetId $target.TargetId
     Write-Output $job
     $jobExecution = Start-AzureSqlJobExecution -JobName $jobName
@@ -421,10 +438,12 @@ Nastavte následující tak, aby odrážely požadované skriptu, přihlašovac�
    ```
 
 ## <a name="create-a-schedule-for-job-execution-using-a-job-trigger"></a>Vytvořit plán pro provádění úloh pomocí úloh triggeru
+
 Následující příkaz powershellu je možné vytvořit opakované plán. Tento skript používá intervalem jedna minuta, ale také podporuje parametry - DayInterval, - HourInterval, - MonthInterval a - WeekInterval AzureSqlJobSchedule nový. Je možné vytvořit plány, které jsou spouštěny pouze jednou za předávání - jednorázové.
 
 Vytvoření nového plánu:
-   ```
+
+   ```powershell
     $scheduleName = "Every one minute"
     $minuteInterval = 1
     $startTime = (Get-Date).ToUniversalTime()
@@ -433,11 +452,12 @@ Vytvoření nového plánu:
    ```
 
 ### <a name="create-a-job-trigger-to-have-a-job-executed-on-a-time-schedule"></a>Vytvoření aktivační události úlohy má úloha spustit podle časového plánu
+
 Aktivační události úlohy je možné definovat tak mít úlohu provést podle časového plánu. Následující skript prostředí PowerShell slouží k vytvoření aktivační události úlohy.
 
 Nastavte následující proměnné tak, aby odpovídaly požadované úlohy a plán:
 
-   ```
+   ```powershell
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
     $jobTrigger = New-AzureSqlJobTrigger -ScheduleName $scheduleName -JobName $jobName
@@ -445,16 +465,18 @@ Nastavte následující proměnné tak, aby odpovídaly požadované úlohy a pl
    ```
 
 ### <a name="remove-a-scheduled-association-to-stop-job-from-executing-on-schedule"></a>Odebrání přidružení naplánované o zastavení úlohy spuštění podle plánu
+
 Přestat opakované úlohy spuštění pomocí aktivační události úlohy, je možné odebrat aktivační událost úlohy.
 Odebrání aktivační procedury úlohy zastavení úlohy z podle plánu pomocí provádí **odebrat AzureSqlJobTrigger** rutiny.
 
-   ```
+   ```powershell
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
     Remove-AzureSqlJobTrigger -ScheduleName $scheduleName -JobName $jobName
    ```
 
 ## <a name="import-elastic-database-query-results-to-excel"></a>Importovat výsledky dotazu elastické databáze do Excelu
+
  Můžete importovat z výsledků dotazu do Excelového souboru.
 
 1. Spuštění Excelu 2013.
@@ -471,9 +493,11 @@ Odebrání aktivační procedury úlohy zastavení úlohy z podle plánu pomocí
 Všechny řádky z **zákazníkům** tabulky, uložené v různých horizontálních oddílech naplnit do Excelového souboru.
 
 ## <a name="next-steps"></a>Další postup
+
 Teď můžete použít funkce dat v Excelu. Použijte připojovací řetězec s názvem serveru, název databáze a přihlašovací údaje pro připojení k databázi elastický dotaz integrace nástroje pro BI a data. Ujistěte se, že systém SQL Server je podporovaný jako zdroj dat pro nástroj. Odkazovat na dotaz na elastic database a externí tabulky, stejně jako jakékoli jiné databáze systému SQL Server a tabulek systému SQL Server, které by se připojit s nástrojem.
 
 ### <a name="cost"></a>Náklady
+
 Neexistuje žádné další poplatky za využívání funkce dotazu elastické databáze. V tuto chvíli tato funkce je dostupná jenom na úrovně Premium a pro důležité obchodní informace databáze a elastické fondy jako koncový bod, ale žádné vrstvy služby může být horizontální oddíly.
 
 Informace o cenách najdete v části [podrobnosti o cenách na SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
