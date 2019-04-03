@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9dada3c6f0718db41a24368aca594bbd3215fec5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 06ee97cff08804093d3ee77ee11eca1b4e84bb0f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994869"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885957"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definování a přiřazení podrobného plánu Azure Blueprint pomocí REST API
 
@@ -40,10 +40,10 @@ Specifikace služby Blueprints najdete v tématu věnovaném [rozhraní REST API
 
 Pokud nemáte nástroj na volání REST API, můžete k zadání těchto pokynů použít PowerShell. V následujícím příkladu je ukázková hlavička pro ověřování pomocí Azure. Vygenerujte ověřovací hlavičku, která je někdy označovaná jako **nosný token**, a zadejte identifikátor URI v REST API pro připojení s libovolnými parametry nebo **text žádosti**:
 
-```powershell-interactive
-# Login first with Connect-AzureRmAccount if not using Cloud Shell
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if not using Cloud Shell
 
-$azContext = Get-AzureRmContext
+$azContext = Get-AzContext
 $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
 $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
 $token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
@@ -69,7 +69,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 Každý identifikátor URI v REST API používá proměnné, které je potřeba nahradit vašimi vlastními hodnotami:
 
 - `{YourMG}` -Nahraďte ID skupiny pro správu
-- Proměnnou `{subscriptionId}` nahraďte ID předplatného.
+- `{subscriptionId}` -Nahraďte ID vašeho předplatného
 
 > [!NOTE]
 > Podrobné plány. mohou také vytvořit na úrovni předplatného. Příklad najdete v tématu [vytvořit podrobný plán na předplatné příklad](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
@@ -336,7 +336,7 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
 
 - `{tenantId}` -Nahraďte ID vašeho tenanta
 - `{YourMG}` -Nahraďte ID skupiny pro správu
-- Proměnnou `{subscriptionId}` nahraďte ID předplatného.
+- `{subscriptionId}` -Nahraďte ID vašeho předplatného
 
 1. Poskytněte instančnímu objektu Azure Blueprint roli **Owner** (Vlastník) cílového předplatného. AppId je statických (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), ale ID instančního objektu služby se liší podle klienta. K vyžádání podrobností týkajících se tenanta použijte následující REST API. Používá [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) s jinou autorizací.
 

@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/23/2017
 ms.author: sngun
-ms.openlocfilehash: 2830772dd69ac94c2b8373936665b9445f9f5f10
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 24426a4249934af1d85f43552617cda7c1d7e172
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431194"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883883"
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Sestavení webové aplikace Python Flask využívající službu Azure Cosmos DB
 
@@ -417,7 +417,7 @@ Když teď máte hotovou aplikaci, která správně funguje místně se službou
     ![Výsledky publikování aplikací Bottle, Flask a Django ve službě App Service](./media/sql-api-python-application/python-published-app-services.png)
 
     > [!Tip] 
-    > Pokud se webová stránka nezobrazí nebo se stále zobrazuje zpráva „The page cannot be displayed because an internal server error has occurred“ (Stránku není možné zobrazit, protože došlo k interní chybě serveru), otevřete v Kudo soubor web.config, do části system.webServer přidejte ` <httpErrors errorMode="Detailed"></httpErrors>` a pak stránku aktualizujte. Díky tomu se v prohlížeči zobrazí podrobný chybový výstup. 
+    > Pokud se webová stránka nezobrazí nebo se stále zobrazuje zpráva „The page cannot be displayed because an internal server error has occurred“ (Stránku není možné zobrazit, protože došlo k interní chybě serveru), otevřete v Kudo soubor web.config, do části system.webServer přidejte `<httpErrors errorMode="Detailed"></httpErrors>` a pak stránku aktualizujte. Díky tomu se v prohlížeči zobrazí podrobný chybový výstup. 
 
 ## <a name="troubleshooting"></a>Řešení potíží
 Pokud je toto první aplikace Python, kterou jste spustili na svém počítači, ujistěte se, že vaše proměnná PATH obsahuje následující složky (nebo ekvivalentní umístění instalací):

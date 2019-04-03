@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: c344e8c2d0ad62b394792201ab52bb37413012f8
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 40e2baaeaae933e8ff6a88eff2e2d86f645ad37b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259903"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881031"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy ohledně různých rozhraní API ve službě Azure Cosmos DB
 
@@ -201,7 +201,7 @@ Ano. [Emulátor služby Azure Cosmos DB](local-emulator.md) poskytuje vysokou v�
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Proč se dlouho s plovoucí desetinnou čárkou hodnoty v dokumentu zaokrouhleno, pokud je zobrazován z Průzkumníku dat na portálu.
 
-Toto je omezení jazyka JavaScript. JavaScript používá dvojité přesnosti s plovoucí desetinnou čárkou formátování čísel podle IEEE 754 a bezpečně ho může obsahovat čísla mezi-(253 - 1) a 253-1 (například 9007199254740991) pouze.
+Toto je omezení jazyka JavaScript. JavaScript používá dvojité přesnosti s plovoucí desetinnou čárkou formátování čísel podle IEEE 754 a bezpečně ho může obsahovat čísla mezi-(2<sup>53</sup> -1) a 2<sup>53</sup>-1 (například 9007199254740991) pouze.
 
 ### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>Pokud jsou povolené oprávnění v hierarchii objektů?
 
@@ -292,7 +292,7 @@ Jestliže má některý z těchto rozdílů problém pro váš projekt, obraťte
 
 Váš názor můžete sdílet v některém z následujících způsobů:
 
-* [Hlas uživatelů](https://feedback.azure.com/forums/263030-azure-cosmos-db)
+* [User voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Přetečení zásobníku je nejvhodnější pro otázek týkajících se programování. Ujistěte se, že váš dotaz je [tematické](https://stackoverflow.com/help/on-topic) a [zadejte co nejvíce podrobností jako možné, že na otázku, zrušte zaškrtnutí a zodpovědět](https://stackoverflow.com/help/how-to-ask).
 

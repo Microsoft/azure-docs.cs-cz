@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2b1d75b4b32ebfffbddfaddf45b0c08fb1132995
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d4e9e26f2c6764cc179826266891d861514e23f6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58168549"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882204"
 ---
 # <a name="microsoft-azure-documentation"></a>Dokumentace k Microsoft Azure
 
@@ -12,7 +12,7 @@ Vítá vás opensourcová [dokumentace](https://docs.microsoft.com/azure) pro [M
 
 ## <a name="getting-started"></a>Začínáme
 
-Přispívání v rámci opensourcu neznamená jenom poskytovat aktualizace, ale také dát vědět v případě potíží. Další informace najdete v tématu s [pokyny pro přispívání](.github/CONTRIBUTING.md).
+Přispívání v rámci opensourcu neznamená jenom poskytovat aktualizace, ale také dát vědět v případě potíží. Další informace najdete v tématu s [pokyny pro přispívání](CONTRIBUTING.md).
 
 ### <a name="prerequisites"></a>Požadavky
 

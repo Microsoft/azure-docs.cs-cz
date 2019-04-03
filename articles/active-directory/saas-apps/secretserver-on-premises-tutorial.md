@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e18c58aafd4aa56a27f5e4a97c9dcc9dcd0fdbd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9167a5ed72e6fec2ca03cc97d1d41dd6cd4aaba6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199778"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885838"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>Kurz: Integrace Azure Active Directory pomocí tajného klíče serveru (místní)
 
@@ -111,7 +111,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     a. V **identifikátor** textového pole zadejte uživatele zvolena hodnota jako například: `https://secretserveronpremises.azure`
 
-    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<SecretServerURL>/SAML/AssertionConsumerService.aspx `
+    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<SecretServerURL>/SAML/AssertionConsumerService.aspx`
 
     > [!NOTE]
     > ID Entity je znázorněno výše je jenom jako příklad a můžete libovolně vybrat jedinečnou hodnotu, který identifikuje vaši instanci tajný klíč serveru ve službě Azure AD. Je nutné odeslat toto ID Entity [tým podpory tajný klíč serveru (místní) klienta](https://thycotic.force.com/support/s/) a jejich konfigurace na své straně. Další informace, přečtěte si prosím [v tomto článku](https://thycotic.force.com/support/s/article/Configuring-SAML-in-Secret-Server).
@@ -216,10 +216,10 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 Po kliknutí na dlaždici tajný klíč serveru (v místním prostředí) na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci tajný klíč serveru (místní).
 Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

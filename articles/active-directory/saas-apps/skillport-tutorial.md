@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0facd15d8bc0701448707f48b5a1e93fe3ac592c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 936ad2e49aaf449144296dd941a3fbc42719fe4f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200719"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879025"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Kurz: Integrace Azure Active Directory s Skillport
 
@@ -127,7 +127,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
    
     c. V **adresy URL odpovědi** textového pole zadejte adresu URL:
     
-      Datové centrum Evropa: ` https://adfs.skillport.eu/adfs/ls/`
+      Datové centrum Evropa: `https://adfs.skillport.eu/adfs/ls/`
     
       Datacentra v USA: `https://sso.skillport.com/sp/ACS.saml2`
  
@@ -216,7 +216,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k příst
 ## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 5f23435a43d139ecb9f20e5036124f175b1830c9
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 70721b8bfbecaf554a9502b9ec3417fc8e561b3f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225361"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885940"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI
 
@@ -48,7 +48,7 @@ Tento podrobný plán má sloužit jako základ pro zákazníky, chcete-li uprav
 
 -   **Diagram architektury.** Diagram znázorňuje referenční architektura používá pro podrobný plán a v příkladu scénáři použití.
 
--   [Rozšíření IaaS](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) toto řešení ukazuje, jak migrovat jako místní řešení založená na jazyce SQL do Azure a provádět stanici privilegovaný přístup k bezpečné správě cloudových služeb a řešení. 
+-   [Rozšíření IaaS](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) toto řešení ukazuje, jak migrovat místní řešení založená na jazyce SQL do Azure a provádět stanici privilegovaný přístup k bezpečné správě cloudových služeb a řešení. 
 
 ## <a name="solution-components"></a>Součásti řešení
 
@@ -150,19 +150,19 @@ Podrobný plán zahrnuje velké sady anonymizované zdravotnickými záznamy na 
 
 **Správce serveru – Alex**
 
-*E-mailu: Alex\_SiteAdmin*
+*E-mail: Alex\_SiteAdmin*
 
 Alex úloha je vyhodnotit technologie, které může snížit režie správy v místní síti a snížit náklady na správu. Alex byla vyhodnocení Azure nějakou dobu, ale má za ke konfiguraci služby, které jsou potřebné pro splnění požadavků na dodržování předpisů HiTrust, ukládat Data o pacientech v cloudu. Alex vybrali Azure AI stavu nasazení připravené pro dodržování předpisů stav řešení, které se zákazníky a vyřešené požadavky, které splňují požadavky zákazníků HiTrust.
 
 **Mezi odborníky přes data--Debra**
 
-*E-mailu: Debra\_DataScientist*
+*E-mail: Debra\_DataScientist*
 
 Debra má na starosti používání a vytváření modelů, které analyzují zdravotnickými záznamy poskytnout přehled o péče o pacienty. Debra používá k vytvoření své modely SQL a statistický programovací jazyk R.
 
 **Analytické databáze--Danny**
 
-*E-mailu: Danny\_DBAnalyst*
+*E-mail: Danny\_DBAnalyst*
 
 Danny je hlavním kontaktem pro všechno, co týkající se Microsoft SQL Server, který ukládá všechna data o pacientech Contosoclinic. Danny je zkušeného správce systému SQL Server, který byl nedávno seznámit se s Azure SQL Database.
 
@@ -173,13 +173,13 @@ Caroline předpovědí z řešení délka pobytu (LOS) používá k určení, po
 
 **Care Úsekový manažer – Chris**
 
-*E-mailu: Chris\_CareLineManager*
+*E-mail: Chris\_CareLineManager*
 
 Jako jednotlivec přímo zodpovědného za správu přijetí pacienta a propouštění na Contosoclinic, Chris používá předpovědí vygenerovaných tímto řešením LOS ujistit, že jsou k dispozici péče o pacienty při pobytu v odpovídající zaměstnanci zařízení.
 
 **Auditor – Han**
 
-*E-mailu: Han\_Auditor*
+*E-mail: Hanu\_Auditor*
 
 Hanu je certifikované auditora, který má prostředí auditování pro ISO, SOC a HiTrust. Hanu byl přijat ke kontrole Contosoclinc vaší sítě. Hanu můžete zkontrolovat matice zákazníka odpovědnost řešení opatřeného zajistit, že podrobného plánu a LOS řešení můžete použít k ukládají, zpracovávají a zobrazení důvěrných osobních údajů.
 
@@ -358,7 +358,7 @@ K dosažení úložiště dat, společné schéma rozhraní API implementované 
 ### <a name="application-insights"></a>Application Insights
 - [Application Insights](/azure/application-insights/app-insights-overview) je rozšiřitelná služba správu výkonu aplikací (APM) pro webové vývojáře ve více platformách. Slouží k monitorování živé webové aplikace. Detekuje anomálie výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití.
 
-### <a name="azure-alerts"></a>Upozornění Azure
+### <a name="azure-alerts"></a>Azure Alerts
 - [Výstrahy](/azure/azure-monitor/platform/alerts-metric) nabízejí způsob sledování služeb Azure a umožňují konfigurovat podmínky nad daty. Výstrahy také poskytují oznámení, když výstražný stav odpovídá data monitorování.
 
 ### <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor

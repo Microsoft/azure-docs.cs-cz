@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 5635e0f669cec64bdbbf947099f980066a4aebc1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f79614e4b1ec660d2ec5c8aee40924908cf8f5c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121413"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884121"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Kurz: Vytvoření znalostní báze knowledge base a zodpovědět dotazy přes portál QnA Maker
 
@@ -66,7 +66,7 @@ Tento kurz vyžaduje existující [službu QnA Maker](../How-To/set-up-qnamaker-
     |Název nastavení|Hodnota nastavení|Účel|
     |--|--|--|
     |zprostředkovatele identity|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |Obsah nejčastějších dotazů na této adrese URL je formátovaný jako otázka, za níž následuje odpověď. Služba QnA Maker může tento formát interpretovat a extrahovat otázky a přidružené odpovědi.|
-    |File |_v tomto kurzu se nepoužívá_|Toto nastavení slouží k nahrávání souborů pro otázky a odpovědi. |
+    |File |_nepoužívá se v tomto kurzu_|Toto nastavení slouží k nahrávání souborů pro otázky a odpovědi. |
     |Chit-chat personality (Charakter konverzace)|The friend (Přítel)|Díky tomuto nastavení budou časté otázky a odpovědi popisné a neformální. Tyto otázky a odpovědi můžete později upravit. |
 
     ![Proces vytváření znalostní báze – krok 4](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
@@ -105,7 +105,7 @@ Po publikování znalostní báze se zobrazí koncový bod.
 
     ![Příkaz cURL](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
 
-1. Zkopírujte text na kartě **Curl** a spusťte ho na příkazovém řádku nebo v terminálu s podporou cURL. Hodnota autorizační hlavičky obsahuje text `Endpoint ` (s koncovou mezerou) následovaný klíčem.
+1. Zkopírujte text na kartě **Curl** a spusťte ho na příkazovém řádku nebo v terminálu s podporou cURL. Hodnota autorizační hlavičky obsahuje text `Endpoint` (s koncovou mezerou) následovaný klíčem.
 
 1. Nahraďte `<Your question>` za `How large can my KB be?` (Jak velká může být moje znalostní báze?). Tato otázka se podobá otázce `How large a knowledge base can I create?` (Jak velkou znalostní bázi můžu vytvořit?), ale není úplně stejná. Služba QnA Maker s využitím zpracování přirozeného jazyka určí, že se jedná o stejné otázky.     
 

@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f236c6a78edeb04a69685bf27c99997ed470f498
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 8eef15098eed8959655ae2904bf41a8c3dffc9f4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58791519"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882781"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Ověřování založené na hlavičkách pro jednotné přihlašování s Proxy aplikací a Pingaccessem
 
@@ -163,7 +163,7 @@ V tomto příkladu [webu Azure portal](https://portal.azure.com) aktualizovat *a
 >[!NOTE]
 >Pokud chcete použít vlastní deklarace identity, musí mít také vlastní zásady definované a přiřazené k aplikaci.  Tato zásada by měl obsahovat všechny požadované vlastní atributy.
 >
->Definice zásady a přiřazení to provést prostřednictvím Powershellu, Azure AD Graph Exploreru nebo MS Graphu.  Pokud se to v prostředí PowerShell, budete muset nejdřív použít `New-AzureADPolicy `a přiřaďte ho k aplikaci pomocí `Set-AzureADServicePrincipalPolicy`.  Další informace najdete v článku [dokumentace ke službě Azure AD Policy](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+>Definice zásady a přiřazení to provést prostřednictvím Powershellu, Azure AD Graph Exploreru nebo MS Graphu.  Pokud se to v prostředí PowerShell, budete muset nejdřív použít `New-AzureADPolicy` a přiřaďte ho k aplikaci pomocí `Set-AzureADServicePrincipalPolicy`.  Další informace najdete v článku [dokumentace ke službě Azure AD Policy](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
 ### <a name="optional---use-a-custom-claim"></a>Nepovinné – použití vlastní deklarace identity
 Chcete-li aplikaci pomocí vlastní deklarace identity a zahrnutí dalších polí, ujistěte se, že máte také [vytvoření vlastní deklarace identity mapování zásad a přiřazené k aplikaci](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 04/02/2019
 ms.author: tulasim
-ms.openlocfilehash: b948835b1a15eee391c6902d18229ec4926b66ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 218103f2c75ec1016a997c259767ccd011191fab
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095207"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879604"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>Kurz: Vytváření QnA robotů s využitím Azure Bot Service v3
 
@@ -104,6 +104,12 @@ Na webu Azure Portal, vyberte **testování ve Web Chat** otestovat robota.
 ![Nástroj QnA Maker robota](../media/qnamaker-tutorials-create-bot/qna-bot-web-chat-response.PNG)
 
 Váš robot QnA odpovědi ze znalostní báze.
+
+## <a name="related-to-qna-maker-bots"></a>Související s roboty QnA Maker
+
+* Robot nápovědy nástroje QnA Maker, používaná na portálu QnA Maker je k dispozici jako [bot ukázka](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot).
+    ![Červené robot je ikona bot nápovědy nástroje QnA Maker](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
+* [Zdravotní péče robotů](https://docs.microsoft.com/HealthBot/qna_model_howto) použijte nástroj QnA Maker jako jeden z jejich [jazykových modelů](https://docs.microsoft.com/HealthBot/qna_model_howto).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

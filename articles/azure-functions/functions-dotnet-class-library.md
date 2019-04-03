@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
 ms.openlocfilehash: 55b4cf6e621bc1e5bd3d8ba4718e5714ea652c27
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
+ms.lasthandoff: 04/03/2019
 ms.locfileid: "58111476"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Funkce jazyka C# pro vývojáře referenční informace k Azure
@@ -29,7 +29,7 @@ Služba Azure Functions podporuje C# a C# skript programovacích jazyků. Pokud 
 Tento článek předpokládá, že jste již přečíst následující články:
 
 * [Příručka pro vývojáře Azure Functions](functions-reference.md)
-* [Azure Functions Visual Studio 2017 Tools](functions-develop-vs.md)
+* [Azure Functions nástroje Visual Studio 2017](functions-develop-vs.md)
 
 ## <a name="functions-class-library-project"></a>Projekt knihovny tříd – funkce
 
@@ -158,7 +158,7 @@ Vygenerovaný *function.json* obsahuje soubor `configurationSource` vlastnost, k
 
 Stejného balíčku se používá pro verzi 1.x a 2.x modul runtime služby Functions. Cílová architektura, která je, co rozlišuje 1.x projekt z projektu 2.x. Tady jsou v příslušných částech *.csproj* soubory zobrazují různé cílové platformy a stejný `Sdk` balíčku:
 
-**Funkce 1.x**
+**Functions 1.x**
 
 ```xml
 <PropertyGroup>
@@ -169,7 +169,7 @@ Stejného balíčku se používá pro verzi 1.x a 2.x modul runtime služby Func
 </ItemGroup>
 ```
 
-**Funkce 2.x**
+**Functions 2.x**
 
 ```xml
 <PropertyGroup>

@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: cc0f452cf9dc27354124437acc8d9a7c99fa80f4
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 577a047fb88208d7e14e8ba06a1b9e7e87c5ef91
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065184"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884226"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Rychlý start: Vytvoření prvního automatizovaného pracovního postupu pomocí Azure Logic Apps – Azure portal
 
@@ -114,7 +114,7 @@ Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts),
       Prozatím ignorujte seznam **Přidat dynamický obsah**, který se zobrazí. 
       Tento seznam se zobrazí po kliknutí do některých textových polí a zobrazí všechny dostupné parametry z předchozího kroku, které můžete do svého pracovního postupu zahrnout jako vstupy. 
 
-   2. Do pole **Předmět** zadejte tento text s mezerou na konci: ```New RSS item: ```
+   2. Do pole **Předmět** zadejte tento text s mezerou na konci: ```New RSS item:```
 
       ![Zadání předmětu e-mailu](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
  

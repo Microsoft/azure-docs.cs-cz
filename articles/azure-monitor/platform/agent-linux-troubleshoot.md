@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 1c9d5b214d0c79f84372ba679db1cbd4a7ad9858
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: b79f8a44f0fc38dd7e5f9ae7e3ac1fe6e9f6b7b8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372586"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884172"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží pomocí agenta Log Analytics pro Linux 
 
@@ -36,7 +36,7 @@ Pokud žádný z těchto kroků pro vás nejvhodnější, jsou také k dispozici
 
  File | Cesta
  ---- | -----
- Agenta log Analytics pro soubor protokolu systému Linux | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log `
+ Agenta log Analytics pro soubor protokolu systému Linux | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
  Soubor protokolu log Analytics agenta konfigurace | `/var/opt/microsoft/omsconfig/omsconfig.log`
 
  Doporučujeme použít nástroj pro shromažďování protokolů k načtení důležité protokoly pro řešení potíží nebo před odesláním problém na Githubu. Můžete si přečíst informace o nástroji a jak ji spustit [tady](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md).

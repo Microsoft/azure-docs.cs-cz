@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: 8a8c8c7abf5b6f0f2a870f6983c7e855db1e0192
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: ebc6388f1ebc7546ffda07095ead50797bde4e8b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231810"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884682"
 ---
 # <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>Kontrola provozu podle plánu pomocí Azure Logic Apps
 
@@ -74,11 +74,12 @@ Dál přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
 
 ## <a name="add-scheduler-trigger"></a>Přidání triggeru do Scheduleru
 
-1. V návrháři zadejte do vyhledávacího pole „opakování“. Vyberte tento trigger: **Plán – Opakování**
+1. V návrháři zadejte do vyhledávacího pole „opakování“. Vyberte tento trigger: **Plán – opakování**
 
    ![Nalezení a přidání triggeru Plán – Opakování](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
 
-2. Ve tvaru **Opakování** vyberte tlačítko **tři tečky** (**...** ) a zvolte **Přejmenovat**. Přejmenujte trigger s tímto popisem: ```Check travel time every weekday morning```
+2. Ve tvaru **Opakování** vyberte tlačítko **tři tečky** (**...** ) a zvolte **Přejmenovat**. Přejmenujte trigger s použitím tohoto popisu:
+```Check travel time every weekday morning```
 
    ![Přejmenování triggeru](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
@@ -93,7 +94,7 @@ Dál přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
    | **Interval** | 1 | Počet intervalů, po které se má čekat mezi kontrolami | 
    | **Frekvence** | Týden | Jednotka času pro opakování | 
    | **Časové pásmo** | Žádný | Platí jenom v případě, že zadáte čas spuštění. Vhodné při zadání jiného časového pásma, než je místní. | 
-   | **Čas spuštění** | Žádný | Odloží opakování na určité datum a čas. Další informace najdete v tématu [Plánování pravidelně spouštěných úloh a pracovních postupů](../connectors/connectors-native-recurrence.md). | 
+   | **Počáteční čas** | Žádný | Odloží opakování na určité datum a čas. Další informace najdete v tématu [Plánování pravidelně spouštěných úloh a pracovních postupů](../connectors/connectors-native-recurrence.md). | 
    | **V tyto dny** | Pondělí, úterý, středa, čtvrtek, pátek | Dostupné, pouze pokud je **Frekvence** nastavená na Týden. | 
    | **V těchto hodinách** | 7,8,9 | Dostupné, pouze pokud je **Frekvence** nastavená na Týden nebo Den. Vyberte hodiny, kdy se v průběhu dne spustí toto opakování. Tento příklad se spustí v celou 7., 8. a 9. hodinu. | 
    | **V těchto minutách** | 0,15,30,45 | Dostupné, pouze pokud je **Frekvence** nastavená na Týden nebo Den. Vyberte minuty, kdy se v průběhu dne spustí toto opakování. Tento příklad se spouští každých 15 minut od nulté celé hodiny. | 
@@ -117,7 +118,7 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
 1. V Návrháři pro Logic Apps pod daným triggerem zvolte **+ Nový krok** > **Přidat akci**.
 
-2. Vyhledejte „mapy“ a vyberte tuto akci: **Mapy Bing – Získat trasu**
+2. Vyhledejte "mapy" a vyberte tuto akci: **Mapy Bing – získat trasu**
 
 3. Pokud nemáte připojení k Mapám Bing, budete vyzváni k jeho vytvoření. Zadejte podrobnosti připojení a zvolte **Vytvořit**.
 
@@ -129,7 +130,8 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
    | **Klíč rozhraní API** | <*klíč-služby-Mapy-Bing*> | Zadejte klíč Map Bing, který jste dříve dostali. Pokud nemáte k dispozici klíč služby Mapy Bing, přečtěte si, <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">jak získat klíč</a>. | 
    | | | |  
 
-4. Přejmenujte akci s tímto popisem: ```Get route and travel time with traffic```
+4. Přejmenujte akci s tímto popisem:
+```Get route and travel time with traffic```
 
 5. Zadejte podrobnosti akce **Získat trasu**, například podle tohoto obrázku a popisu:
 
@@ -138,13 +140,13 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
    | Nastavení | Hodnota | Popis |
    | ------- | ----- | ----------- |
    | **Bod na trase 1** | <*start*> | Počátek vaší cesty | 
-   | **Bod na trase 2** | <*cíl*> | Cíl vaší trasy | 
-   | **Vyloučit** | Žádný | Všechny položky, kterým je třeba se na trase vyhnout, jako je například dálnice, mýtné atd. | 
-   | **Optimalizovat** | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte tento parametr: timeWithTraffic | 
-   | **Jednotka vzdálenosti** | <*vaše-volba*> | Jednotka vzdálenosti použitá pro trasu. V tomto článku se používá tato jednotka: míle  | 
-   | **Způsob cestování** | Autem | Způsob cestování pro danou trasu. Vyberte tento způsob: Autem | 
+   | **Waypoint 2** | <*cíl*> | Cíl vaší trasy | 
+   | **Avoid** | Žádný | Všechny položky, kterým je třeba se na trase vyhnout, jako je například dálnice, mýtné atd. | 
+   | **Optimalizace** | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte tento parametr: timeWithTraffic | 
+   | **Jednotka vzdálenosti** | <*vaše-volba*> | Jednotka vzdálenosti použitá pro trasu. V tomto článku se používá tato jednotka: "Míli"  | 
+   | **Způsob cestování** | Autem | Způsob cestování pro danou trasu. Vyberte tento režim: "Řízení" | 
    | **Datum a čas přejezdu** | Žádný | Platí pouze při přejezdech | 
-   | **Typ datum a čas**  | Žádný | Platí pouze při přejezdech | 
+   | **Typ datum a čas** | Žádný | Platí pouze při přejezdech | 
    |||| 
 
    Další informace o těchto parametrech najdete v tématu [Výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx).
@@ -161,18 +163,19 @@ Ve výchozím nastavení vrátí předchozí akce **Získat trasu** aktuální �
 
 1. V rámci akce **Získat trasu** zvolte **+ Nový krok** > **Přidat akci**.
 
-2. Vyhledejte „proměnné“ a vyberte tuto akci: **Proměnné – Inicializovat proměnnou**.
+2. Vyhledejte "proměnné" a vyberte tuto akci: **Proměnné – inicializovat proměnnou**
 
    ![Vybrání akce Proměnné – Inicializovat proměnnou](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-initialize-variable-action.png)
 
-3. Přejmenujte tuto akci s tímto popisem: ```Create variable to store travel time```
+3. Přejmenujte tuto akci s použitím tohoto popisu:
+```Create variable to store travel time```
 
 4. Zadejte podrobnosti pro danou proměnnou tohoto popisu:
 
    | Nastavení | Hodnota | Popis | 
    | ------- | ----- | ----------- | 
    | **Název** | dobacesty | Název proměnné | 
-   | **Typ** | Integer | Datový typ proměnné | 
+   | **Type** | Integer | Datový typ proměnné | 
    | **Hodnota** | Výraz, který převede aktuální dobu trvání cesty ze sekund na minuty (viz postup pod touto tabulkou) | Počáteční hodnota proměnné | 
    |||| 
 
@@ -256,13 +259,14 @@ Nyní přidáte akci, která odešle e-mail, pokud doba trvání cesty překroč
 
    Logic Apps vytvoří připojení k e-mailovému účtu.
 
-4. Přejmenujte akci s tímto popisem: ```Send email with travel time```
+4. Přejmenujte akci s tímto popisem:
+```Send email with travel time```
 
 5. Do pole **Komu** zadejte e-mailovou adresu příjemce. Pro účely testování použijte svou vlastní e-mailovou adresu.
 
 6. V poli **Předmět** zadejte předmět e-mailu a zahrňte proměnnou **dobacesty**.
 
-   1. Zadejte text ```Current travel time (minutes): ``` s koncovou mezerou. 
+   1. Zadejte text ```Current travel time (minutes):``` s koncovou mezerou. 
    
    2. Ze seznamu parametrů nebo dynamického obsahu vyberte v části **Proměnné** **dobacesty**. 
    
@@ -272,7 +276,7 @@ Nyní přidáte akci, která odešle e-mail, pokud doba trvání cesty překroč
 
 7. Do pole **Text** zadejte obsah e-mailu. 
 
-   1. Zadejte text ```Add extra travel time (minutes): ``` s koncovou mezerou. 
+   1. Zadejte text ```Add extra travel time (minutes):``` s koncovou mezerou. 
    
    2. V případě potřeby zvětšete okno prohlížeče, dokud se nezobrazí seznam dynamického obsahu. 
    V seznamu dynamického obsahu vyberte **Výraz**.
@@ -333,7 +337,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků, která obsahuje va
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili aplikaci logiky, která kontroluje dopravní situaci podle zadaného plánu (pracovní dny ráno) a provádí akci (zasílá e-mail), pokud doba trvání cesty překročí určený limit. Dále se naučíte sestavit aplikaci logiky, která odesílá na seznam adresátů žádosti o schválení s využitím integrace služeb Azure, služeb Microsoft a dalších aplikací SaaS.
 

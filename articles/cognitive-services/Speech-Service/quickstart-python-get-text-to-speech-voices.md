@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 16c8444bdf91caf9da6f9625485090d09058ba52
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 66bda68b1313a7c172e273671bc3a03503d08e0d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522818"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876576"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>Rychlý start: Získání seznamu převod textu na řeč hlasy pomocí Pythonu
 
@@ -82,7 +82,7 @@ def get_token(self):
 
 Tady budete vytvářet žádosti a uložit seznam vrácených hlasy. Nejprve je nutné nastavit `base_url` a `path`. Tento příklad předpokládá, že používáte koncový bod západní USA. Pokud váš prostředek je registrován v jiné oblasti, ujistěte se, že aktualizujete `base_url`. Další informace najdete v tématu [hlasových služeb regiony](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
-V dalším kroku přidejte požadované hlavičky pro dané žádosti. A konečně provede požadavek do služby. Pokud je žádost úspěšná a se vrátí stavový kód 200 kódu, odpověď řeči je zapsána do souboru časovým razítkem.
+V dalším kroku přidejte požadované hlavičky pro dané žádosti. A konečně provede požadavek do služby. Pokud je žádost úspěšná a vrátí stavový kód 200 kód, odpověď zapsána do souboru.
 
 Zkopírujte tento kód do `GetVoices` třídy:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: f04fa5f43844080638c70c44410d233fbe6ad325
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 9625cb75bcae60f7f6eb2bae61e73066520037fc
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805461"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878253"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Referenční příručka jazyka SQL pro službu Azure Cosmos DB 
 
@@ -162,11 +162,11 @@ FROM <from_specification>
   
   -  Pokud má výraz hodnotu `<container_expression>`, pak %{Property_Name/ pak %{Property_Name/ se použije jako alias. Pokud má výraz hodnotu container_name, bude container_name použít jako alias.  
   
-- STEJNĚ JAKO `input_alias`  
+- AS `input_alias`  
   
   Určuje, že `input_alias` je sada hodnot vrácených základní výraz kontejneru.  
  
-- `input_alias` INDIE  
+- `input_alias` IN  
   
   Určuje, že `input_alias` by měly představovat sadu hodnot získala iterace přes všechny prvky pole každé pole vrácené výrazem základní kontejneru. Libovolnou hodnotu vrácenou základní výraz kontejneru, který není pole se ignoruje.  
   
@@ -304,7 +304,7 @@ Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source
   > [!NOTE]
   > Výsledkem byl smíšený produkt mezi `<from_source2>` a `<from_source3>` protože obě jsou omezená na stejný `<from_source1>`.  Výsledkem byl 4 (2 x 2) řazené kolekce členů s hodnotou A 0 řazené kolekce členů s hodnotou B (1 x 0) a 2 (2 × 1) řazené kolekce členů s hodnotou C.  
   
-**Viz také**  
+**Další informace najdete v tématech**  
   
  [Klauzule SELECT](#bk_select_query)  
   
@@ -477,11 +477,11 @@ ORDER BY <sort_specification>
 |**bitové operace**|Operátor očekává, že nahráním jako 32bitové celé číslo se znaménkem číslo nebo čísla. Výstup je také 32bitové celé číslo se znaménkem číslo.<br /><br /> Libovolná hodnota celé číslo se zaokrouhlí. Kladná hodnota se zaokrouhlí směrem dolů, záporné hodnoty zaokrouhluje nahoru.<br /><br /> Libovolnou hodnotu, která je mimo rozsah 32bitové celé číslo se převedou provedením poslední 32 bity jeho dvojkový doplněk zápisu.<br /><br /> Pokud kterýkoli ze vstupních **nedefinované** nebo jiného typu než číslo, bude výsledkem **nedefinované**.<br /><br /> **Poznámka:** Výše uvedené chování je kompatibilní s chováním bitový operátor jazyka JavaScript.|  
 |**Logické**|Operátor očekává, že nahráním bude Boolean(s). Výstup je také logickou hodnotu.<br />Pokud kterýkoli ze vstupních **nedefinované** nebo jiného typu než logickou hodnotu, bude výsledkem **nedefinované**.|  
 |**Porovnání**|Operátor očekává, že nahráním být stejného typu a nesmí být definován. Výstup je logická hodnota.<br /><br /> Pokud kterýkoli ze vstupních **nedefinované** nebo vstupy mají rozdílné typy a výsledkem je **nedefinované**.<br /><br /> Zobrazit **řazení hodnot pro porovnání** tabulky pro hodnotu řazení podrobnosti.|  
-|**řetězec**|Operátor očekává, že nahráním být řetězce. Výstup je také řetězec.<br />Pokud kterýkoli ze vstupních **nedefinované** nebo jiného typu než řetězce a výsledkem je **nedefinované**.|  
+|**string**|Operátor očekává, že nahráním být řetězce. Výstup je také řetězec.<br />Pokud kterýkoli ze vstupních **nedefinované** nebo jiného typu než řetězce a výsledkem je **nedefinované**.|  
   
  **Jednočlenné operátory:**  
   
-|**Název**|**– Operátor**|**Podrobnosti**|  
+|**Název**|**Operátor**|**Podrobnosti**|  
 |-|-|-|  
 |**Aritmetické operace**|+<br /><br /> -|Vrátí číselnou hodnotu.<br /><br /> Bitová negace. Vrátí negovat číselnou hodnotu.|  
 |**bitové operace**|~|Doplněk těch, které jsou. Vrátí zbytek číselnou hodnotu.|  
@@ -489,31 +489,31 @@ ORDER BY <sort_specification>
   
  **Binární operátory:**  
   
-|**Název**|**– Operátor**|**Podrobnosti**|  
+|**Název**|**Operátor**|**Podrobnosti**|  
 |-|-|-|  
 |**Aritmetické operace**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|Přidání.<br /><br /> Odčítání.<br /><br /> Násobení.<br /><br /> Dělení.<br /><br /> Modulace.|  
 |**bitové operace**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|Bitový operátor OR.<br /><br /> Bitový AND.<br /><br /> Bitový operátor XOR.<br /><br /> Operátor posunu vlevo.<br /><br /> Posunutí doprava.<br /><br /> Výplň nulové posunutí doprava.|  
-|**Logické**|**A**<br /><br /> **OR**|Logické spojení. Vrátí **true** Pokud jsou oba argumenty **true**, vrátí **false** jinak.<br /><br /> Logická disjunkce. Vrátí **true** Jestliže mají všechny argumenty **true**, vrátí **false** jinak.|  
+|**Logické**|**A**<br /><br /> **NEBO**|Logické spojení. Vrátí **true** Pokud jsou oba argumenty **true**, vrátí **false** jinak.<br /><br /> Logická disjunkce. Vrátí **true** Jestliže mají všechny argumenty **true**, vrátí **false** jinak.|  
 |**Porovnání**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Rovná se. Vrátí **true** Pokud argumenty jsou stejné, vrátí **false** jinak.<br /><br /> Není rovno. Vrátí **true** Pokud argumenty nejsou stejné, vrátí **false** jinak.<br /><br /> Větší než. Vrátí **true** Pokud je první argument větší než druhá, vrátí **false** jinak.<br /><br /> Větší než nebo rovna hodnotě. Vrátí **true** Pokud první argument je větší než nebo rovna hodnotě pro druhou kolekci, vrátí **false** jinak.<br /><br /> Menší než. Vrátí **true** Pokud je první argument menší než druhý jeden návratový **false** jinak.<br /><br /> Menší než nebo rovno. Vrátí **true** Pokud první argument menší než ten druhý, vrátí **false** jinak.<br /><br /> Sloučení. Vrátí druhý argument, pokud je první argument **nedefinované** hodnotu.|  
-|**řetězec**|**&#124;&#124;**|Zřetězení. Vrátí zřetězení těchto oba argumenty.|  
+|**String**|**&#124;&#124;**|Zřetězení. Vrátí zřetězení těchto oba argumenty.|  
   
  **Ternární operátory:**  
 
-|**Název**|**– Operátor**|**Podrobnosti**| 
+|**Název**|**Operátor**|**Podrobnosti**| 
 |-|-|-|  
 |Ternární operátor|?|Vrátí druhý argument, pokud je vyhodnocen jako první argument **true**; v opačném případě vrátí třetí argument.|  
 
   
  **Řazení porovnávaných hodnot**  
   
-|**Typ**|**Hodnoty pořadí**|  
+|**Type**|**Hodnoty pořadí**|  
 |-|-|  
-|**Nedefinovaný**|Není porovnatelný.|  
-|**Hodnotu Null**|Jedna hodnota: **null**|  
+|**Nedefinováno**|Není porovnatelný.|  
+|**Null**|Jedna hodnota: **null**|  
 |**Číslo**|Přirozené reálné číslo.<br /><br /> Záporná hodnota nekonečno je menší než jakoukoli jinou číselnou hodnotu.<br /><br /> Kladná hodnota nekonečno je větší než jakoukoli jinou číselnou hodnotu. **NaN** hodnota není porovnatelný. Výsledkem porovnání s **NaN** způsobí **nedefinované** hodnotu.|  
-|**řetězec**|Lexicographical pořadí.|  
+|**String**|Lexicographical pořadí.|  
 |**Pole**|Žádné řazení, ale spravedlivé.|  
-|**objekt**|Žádné řazení, ale spravedlivé.|  
+|**Objekt**|Žádné řazení, ale spravedlivé.|  
   
  **Poznámky**  
   
@@ -534,15 +534,15 @@ ORDER BY <sort_specification>
   
  **Podporované skalárních datových typů:**  
   
-|**Typ**|**Hodnoty pořadí**|  
+|**Type**|**Hodnoty pořadí**|  
 |-|-|  
-|**Nedefinovaný**|Jedna hodnota: **nedefinované**|  
-|**Hodnotu Null**|Jedna hodnota: **null**|  
-|**Datový typ Boolean**|Hodnoty: **false**, **true**.|  
+|**Nedefinováno**|Jedna hodnota: **nedefinované**|  
+|**Null**|Jedna hodnota: **null**|  
+|**Logická hodnota**|Hodnoty: **false**, **true**.|  
 |**Číslo**|Číslo dvojité přesnosti s plovoucí desetinnou čárkou, standardní IEEE 754.|  
-|**řetězec**|Posloupnost nula nebo více znaků Unicode. Řetězce musí být uzavřen v jednoduchých nebo dvojitých uvozovkách.|  
+|**String**|Posloupnost nula nebo více znaků Unicode. Řetězce musí být uzavřen v jednoduchých nebo dvojitých uvozovkách.|  
 |**Pole**|Posloupnost nula nebo více prvků. Každý prvek může být hodnota libovolného skalární datového typu, s výjimkou typu Undefined.|  
-|**objekt**|Neuspořádanou sadu párů název/hodnota nula nebo více. Název je řetězec znaků Unicode, hodnota může být libovolného skalární datového typu, s výjimkou **Nedefinováno**.|  
+|**Objekt**|Neuspořádanou sadu párů název/hodnota nula nebo více. Název je řetězec znaků Unicode, hodnota může být libovolného skalární datového typu, s výjimkou **Nedefinováno**.|  
   
  **Syntaxe**  
   
@@ -658,7 +658,7 @@ ORDER BY <sort_specification>
   
      Následující tabulka popisuje konvence pro popis syntaxe v následujícím odkazu SQL.  
   
-    |**Konvence**|**Používá pro**|  
+    |**Konvence**|**Použití**|  
     |-|-|    
     |VELKÁ PÍSMENA|Klíčová slova velká a malá písmena.|  
     |Malá|Malá a velká písmena slov.|  
@@ -689,13 +689,13 @@ ORDER BY <sort_specification>
   
 ||||  
 |-|-|-|  
-|[ABS](#bk_abs)|[ACOS](#bk_acos)|[ASIN](#bk_asin)|  
-|[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[HORNÍ MEZ](#bk_ceiling)|  
+|[ABS](#bk_abs)|[FUNKCE ACOS](#bk_acos)|[ASIN](#bk_asin)|  
+|[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[CEILING](#bk_ceiling)|  
 |[COS](#bk_cos)|[COT](#bk_cot)|[STUPŇŮ](#bk_degrees)|  
-|[EXP](#bk_exp)|[DOLNÍ MEZ](#bk_floor)|[LOG](#bk_log)|  
-|[LOG10](#bk_log10)|[PI](#bk_pi)|[NAPÁJENÍ](#bk_power)|  
+|[EXP](#bk_exp)|[FLOOR](#bk_floor)|[PROTOKOL](#bk_log)|  
+|[LOG10](#bk_log10)|[PI](#bk_pi)|[POWER](#bk_power)|  
 |[RADIANS](#bk_radians)|[ZAOKROUHLIT](#bk_round)|[SIN](#bk_sin)|  
-|[SQRT](#bk_sqrt)|[ČTVEREC](#bk_square)|[SIGN](#bk_sign)|  
+|[SQRT](#bk_sqrt)|[SQUARE](#bk_square)|[SIGN](#bk_sign)|  
 |[TAN](#bk_tan)|[TRUNC –](#bk_trunc)||  
   
 ####  <a name="bk_abs"></a> ABS  
@@ -1520,7 +1520,7 @@ SELECT TRUNC(2.4), TRUNC(2.6), TRUNC(2.5), TRUNC(-2.4), TRUNC(-2.6)
   
 ||||  
 |-|-|-|  
-|[IS_ARRAY –](#bk_is_array)|[IS_BOOL](#bk_is_bool)|[IS_DEFINED](#bk_is_defined)|  
+|[IS_ARRAY](#bk_is_array)|[IS_BOOL](#bk_is_bool)|[IS_DEFINED](#bk_is_defined)|  
 |[IS_NULL](#bk_is_null)|[IS_NUMBER](#bk_is_number)|[IS_OBJECT –](#bk_is_object)|  
 |[IS_PRIMITIVE](#bk_is_primitive)|[IS_STRING](#bk_is_string)||  
   
@@ -1843,13 +1843,13 @@ SELECT
 ||||  
 |-|-|-|  
 |[CONCAT](#bk_concat)|[OBSAHUJE](#bk_contains)|[ENDSWITH](#bk_endswith)|  
-|[INDEX_OF](#bk_index_of)|[LEFT](#bk_left)|[DÉLKA](#bk_length)|  
-|[NIŽŠÍ](#bk_lower)|[LTRIM](#bk_ltrim)|[NAHRADIT](#bk_replace)|  
-|[REPLIKACE](#bk_replicate)|[REVERSE](#bk_reverse)|[RIGHT](#bk_right)|  
+|[INDEX_OF](#bk_index_of)|[DOLEVA](#bk_left)|[DÉLKA](#bk_length)|  
+|[LOWER](#bk_lower)|[LTRIM](#bk_ltrim)|[NAHRADIT](#bk_replace)|  
+|[REPLIKACE](#bk_replicate)|[REVERSE](#bk_reverse)|[DOPRAVA](#bk_right)|  
 |[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[StringToArray](#bk_stringtoarray)|
 |[StringToBoolean](#bk_stringtoboolean)|[StringToNull](#bk_stringtonull)|[StringToNumber](#bk_stringtonumber)|
-|[StringToObject](#bk_stringtoobject)|[DÍLČÍ ŘETĚZEC](#bk_substring)|[ToString](#bk_tostring)|
-|[UVOLNĚNÍ DOČASNÉ PAMĚTI](#bk_trim)|[HORNÍ](#bk_upper)||
+|[StringToObject](#bk_stringtoobject)|[SUBSTRING](#bk_substring)|[ToString](#bk_tostring)|
+|[UVOLNĚNÍ DOČASNÉ PAMĚTI](#bk_trim)|[UPPER](#bk_upper)||
   
 ####  <a name="bk_concat"></a> CONCAT  
  Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcových hodnot.  
@@ -2372,7 +2372,7 @@ SELECT
  Následuje příklad neplatný vstup. 
    
  Jednoduchých uvozovek a být v rámci pole nejsou platný kód JSON.
-I když jsou platné v rámci dotazu, se nebude analyzovat na platné pole. Buď musí být uvozena řetězců v rámci pole řetězce "[\"\"]" nebo okolních uvozovek musí být jeden "[" "]".
+I když jsou platné v rámci dotazu, se nebude analyzovat na platné pole. Buď musí být uvozena řetězců v rámci pole řetězce "[\\"\\"]" nebo okolních uvozovek musí být jeden "[" "]".
 
 ```
 SELECT
@@ -2662,7 +2662,7 @@ SELECT
 ```
  
  Následují příklady s neplatný vstup.
-I když jsou platné v rámci dotazu, se nebude analyzovat na platné objekty. Řetězce v rámci řetězce objektu musí buď být uvozeny řídicími znaky "{\"\":\"str\"}" nebo okolních uvozovek musí být jeden ' {"a": "str"} ".
+I když jsou platné v rámci dotazu, se nebude analyzovat na platné objekty. Řetězce v rámci řetězce objektu musí buď být uvozeny řídicími znaky "{\\"\\":\\" str\\"}" nebo okolních uvozovek musí být jeden ' {"a": "str"} ".
 
  Jednoduché uvozovky kolem názvy vlastností nejsou platný kód JSON.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 822c4631c08da27ef7b92af2df5e5e0d04f063b0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f2ad46e7738582f82edcef6b54ac8234901c887d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013898"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885328"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Příklady dotazů SQL pro službu Azure Cosmos DB
 
@@ -94,7 +94,7 @@ Teď si vyzkoušíme několik dotazů na tato data pochopit některé z klíčov
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -124,7 +124,7 @@ Teď si vyzkoušíme několik dotazů na tato data pochopit některé z klíčov
     WHERE f.address.city = f.address.state
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -145,7 +145,7 @@ Teď si vyzkoušíme několik dotazů na tato data pochopit některé z klíčov
     ORDER BY f.address.city ASC
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -178,7 +178,7 @@ Následující příklad ukazuje typické zpracování dotazu SELECT.
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -202,7 +202,7 @@ V následujícím příkladu jsme se projekci dvě vnořené vlastnosti `f.addre
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -221,7 +221,7 @@ Projekce také podporuje výrazy JSON, jak je znázorněno v následujícím př
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -244,7 +244,7 @@ Podívejme se na roli `$1` tady. `SELECT` Klauzule potřebuje k vytvoření obje
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -280,7 +280,7 @@ Zdroj může být také omezené na menší podmnožinu. Například k vytvořen
     FROM Families.children
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -322,7 +322,7 @@ Při výše uvedeném příkladu používá pole jako zdroj, objekt může také
     FROM Families.address.state
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -345,7 +345,7 @@ Následující dotaz požaduje položek, které obsahují vlastnost name, jehož
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -403,15 +403,15 @@ Kromě binární soubor a unární operátory jsou také povoleny odkazy na vlas
 
 V následující tabulce jsou uvedeny výsledek porovnání rovnosti v rozhraní SQL API mezi jakékoli dva typy JSON.
 
-| **OP** | **Nedefinovaný** | **Hodnotu Null** | **Datový typ Boolean** | **Číslo** | **řetězec** | **objekt** | **Pole** |
+| **OP** | **Nedefinováno** | **Null** | **Logická hodnota** | **Číslo** | **String** | **Objekt** | **Pole** |
 |---|---|---|---|---|---|---|---|
-| **Nedefinovaný** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno |
-| **Hodnotu Null** | Nedefinováno | **Ok** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno |
-| **Datový typ Boolean** | Nedefinováno | Nedefinováno | **Ok** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno |
-| **Číslo** | Nedefinováno | Nedefinováno | Nedefinováno | **Ok** | Nedefinováno | Nedefinováno | Nedefinováno |
-| **řetězec** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **Ok** | Nedefinováno | Nedefinováno |
-| **objekt** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **Ok** | Nedefinováno |
-| **Pole** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **Ok** |
+| **Nedefinováno** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno |
+| **Null** | Nedefinováno | **OK** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno |
+| **Logická hodnota** | Nedefinováno | Nedefinováno | **OK** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno |
+| **Číslo** | Nedefinováno | Nedefinováno | Nedefinováno | **OK** | Nedefinováno | Nedefinováno | Nedefinováno |
+| **String** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **OK** | Nedefinováno | Nedefinováno |
+| **Objekt** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **OK** | Nedefinováno |
+| **Pole** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **OK** |
 
 Pro ostatní operátory porovnání, jako například >, > =,! =, <, a < =, následující pravidla platí:
 
@@ -538,7 +538,7 @@ V případě, že dotaz má dvě vlastnosti se stejným názvem, aliasy musíte 
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -562,7 +562,7 @@ Kromě odkazy na vlastnosti klauzuli SELECT podporuje také skalární výrazy, 
     SELECT "Hello World"
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -578,7 +578,7 @@ Zde je složitější příklad, který používá skalární výraz.
     SELECT ((2 + 11 % 7)-2)/3
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -595,7 +595,7 @@ V následujícím příkladu výsledkem skalární výraz, který je logická ho
     FROM Families f
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -619,7 +619,7 @@ Další klíčovou funkcí rozhraní SQL API je vytvoření pole nebo objektu. V
     FROM Families f
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -648,7 +648,7 @@ Další klíčovou funkcí rozhraní SQL API je vytvoření pole nebo objektu. V
     SELECT VALUE "Hello World"
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -665,7 +665,7 @@ Následující dotaz vrátí hodnotu JSON bez `"address"` popisek ve výsledcíc
     FROM Families f
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -691,7 +691,7 @@ Následující příklad rozšiřuje ukazují, jak vrátit primitivní hodnoty J
     FROM Families f
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -711,7 +711,7 @@ Speciální operátor (*) je podporován pro projektové položky jako-je. Při 
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -744,7 +744,7 @@ HORNÍ – klíčové slovo je možné omezit počet hodnot z dotazu. Při horn�
     FROM Families f
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -779,7 +779,7 @@ Můžete také provádět agregace v `SELECT` klauzuli. Agregační funkce prov�
     FROM Families f
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -796,7 +796,7 @@ Můžete také vrátit skalární hodnotu agregace pomocí `VALUE` – klíčov�
     FROM Families f
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [ 2 ]
@@ -812,7 +812,7 @@ Můžete také provést agregace v kombinaci s filtry. Například následujíc�
     WHERE f.address.state = "WA"
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [ 1 ]
@@ -850,7 +850,7 @@ Tady je příklad dotaz, který načte skupin v pořadí podle názvu rezidenčn
     ORDER BY f.address.city
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -875,7 +875,7 @@ A tady je dotaz, který načte skupin v pořadí datum vytvoření, který je ul
     ORDER BY f.creationDate DESC
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -903,7 +903,7 @@ Novou konstrukci bylo přidáno prostřednictvím operace **v** – klíčové s
     FROM Families.children
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -941,7 +941,7 @@ Nyní Pojďme se podívat na jiný dotaz, který provádí iteraci podřízené 
     FROM c IN Families.children
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -976,7 +976,7 @@ To dále slouží k filtrování na každou položku pole, jak je znázorněno v
     WHERE c.grade = 8
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -993,7 +993,7 @@ Můžete také provést agregaci přes výsledek pole iterace. Například násl
     FROM child IN Families.children
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -1019,7 +1019,7 @@ Následující příklady ukazují, jak funguje klauzule JOIN. V následujícím
     JOIN f.NonExistent
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -1036,7 +1036,7 @@ V následujícím příkladu je spojení mezi kořenové položky a `children` s
     JOIN f.children
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -1059,7 +1059,7 @@ Následující příklad ukazuje konvenčnější spojení:
     JOIN c IN f.children
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -1098,7 +1098,7 @@ Nástroj skutečné spojení je formulář řazených kolekcí členů z mezi pr
     JOIN p IN c.pets
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -1156,7 +1156,7 @@ V následujícím příkladu je další filtr na `pet`, která nezahrnuje všech
     WHERE p.givenName = "Shadow"
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -1212,7 +1212,7 @@ Tento systém souborů UDF jsme teď můžete použít v dotazu v projekci. UDF 
     FROM Families
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -1235,7 +1235,7 @@ UDF můžete použít také uvnitř filtr, jak je znázorněno v následujícím
     WHERE udf.REGEX_MATCH(Families.address.city, ".*eattle")
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -1279,7 +1279,7 @@ Tady je příklad, která zpracovává UDF.
     FROM Families f
 ```
 
-**Results**
+**Výsledky**
 
 ```json
      [
@@ -1397,7 +1397,7 @@ Například nyní můžete spustit dotazy jak je znázorněno v následujícím 
     SELECT VALUE ABS(-4)
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [4]
@@ -1409,7 +1409,7 @@ Hlavní rozdíl mezi funkcemi služby Cosmos DB ve srovnání s ANSI SQL je, že
 
 Funkce pro kontrolu typů umožňují zkontrolujte typ výrazu v rámci dotazů SQL. Funkce pro kontrolu typů umožňuje určit typ vlastnosti v rámci položky v reálném čase, kdy je neznámý nebo proměnné. Tady je tabulka znázorňující podporované předdefinovaný typ kontroly funkce.
 
-| **Použití** | **Popis** |
+| **Využití** | **Popis** |
 |-----------|------------|
 | [Is_array – (výraz)](sql-api-query-reference.md#bk_is_array) | Vrátí logickou hodnotu označující, zda je typ hodnoty pole. |
 | [IS_BOOL (výraz)](sql-api-query-reference.md#bk_is_bool) | Vrátí logickou hodnotu označující, pokud je typ hodnoty logická hodnota. |
@@ -1428,7 +1428,7 @@ Použití těchto funkcí, teď můžete spustit dotazy jak je znázorněno v n�
     SELECT VALUE IS_NUMBER(-4)
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [true]
@@ -1455,7 +1455,7 @@ Následující skalární funkce provádění operací na vstupní hodnotu řet�
 | [VELKÁ (str_expr)](sql-api-query-reference.md#bk_upper) | Vrátí řetězcový výraz po převedení data znaků na malá písmena na velká písmena. |
 | [NAHRAĎTE (str_expr, str_expr str_expr.)](sql-api-query-reference.md#bk_replace) | Nahradí všechny výskyty zadaná řetězcová hodnota s jinou hodnotou řetězce. |
 | [REPLIKACE (str_expr, num_expr)](https://docs.microsoft.com/azure/cosmos-db/sql-api-sql-query-reference#bk_replicate) | Opakuje hodnotu řetězce zadaného počtu opakování. |
-| [REVERZNÍ (str_expr)](sql-api-query-reference.md#bk_reverse) | Vrátí hodnotu řetězce obráceném pořadí. |
+| [REVERSE (str_expr)](sql-api-query-reference.md#bk_reverse) | Vrátí hodnotu řetězce obráceném pořadí. |
 
 Použití těchto funkcí, můžete nyní spouštět dotazy takto. Například se můžete vrátit název rodiny na velká písmena následujícím způsobem:
 
@@ -1466,7 +1466,7 @@ Použití těchto funkcí, můžete nyní spouštět dotazy takto. Například s
     FROM Families
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [
@@ -1484,7 +1484,7 @@ Nebo zřetězení řetězců jako v tomto příkladu:
     FROM Families
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -1507,7 +1507,7 @@ Funkce řetězce lze použít také v klauzuli WHERE pro filtrování výsledků
     WHERE STARTSWITH(Families.id, "Wakefield")
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -1537,7 +1537,7 @@ Pole funkcí lze použít k manipulaci s poli ve formátu JSON. Tady je příkla
     WHERE ARRAY_CONTAINS(Families.parents, { givenName: "Robin", familyName: "Wakefield" })
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -1555,7 +1555,7 @@ Můžete zadat částečná fragment pro porovnání prvků v poli. Následujíc
     WHERE ARRAY_CONTAINS(Families.parents, { givenName: "Robin" }, true)
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -1572,7 +1572,7 @@ Tady je další příklad, který používá ARRAY_LENGTH zobrazíte počet pod�
     FROM Families 
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -1607,7 +1607,7 @@ Prostorové funkce lze použít k provádění dotazů blízkosti prostorová da
     WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -1989,7 +1989,7 @@ Základní interakce s těmito prostředky je model pomocí příkazů HTTP GET,
 
 Následující příklady ukazují příspěvek pro dotaz rozhraní SQL API provedená oproti kontejner obsahující dvě ukázkové položky, že jsme si zatím. Dotaz obsahuje jednoduchý filtr na název vlastnosti JSON. Všimněte si, `x-ms-documentdb-isquery` a Content-Type: `application/query+json` hlavičky k označení, že operace je dotaz.
 
-**Požadavek**
+**Žádost**
 ```
     POST https://<REST URI>/docs HTTP/1.1
     ...
@@ -2004,7 +2004,7 @@ Následující příklady ukazují příspěvek pro dotaz rozhraní SQL API prov
     }
 ```
 
-**Results**
+**Výsledky**
 
 ```
     HTTP/1.1 200 Ok
@@ -2058,7 +2058,7 @@ Následující příklady ukazují příspěvek pro dotaz rozhraní SQL API prov
 
 Druhý příklad ukazuje komplexnější dotaz, který vrátí více výsledků z spojení.
 
-**Požadavek**
+**Žádost**
 ```
     POST https://<REST URI>/docs HTTP/1.1
     ...
@@ -2078,7 +2078,7 @@ Druhý příklad ukazuje komplexnější dotaz, který vrátí více výsledků 
     }
 ```
 
-**Results**
+**Výsledky**
 
 ```
     HTTP/1.1 200 Ok
@@ -2208,7 +2208,7 @@ Další příklad ukazuje spojení vyjádřen prostřednictvím operátor Select
 
 .NET client automaticky Iteruje přes všechny stránky výsledků dotazu v blocích foreach, jak je znázorněno výše. Možnosti dotazu představíme v části rozhraní REST API jsou dostupné v pomocí sady .NET SDK `FeedOptions` a `FeedResponse` třídy v metodě CreateDocumentQuery. Počet stránek se dá řídit pomocí `MaxItemCount` nastavení.
 
-Můžete také explicitně kontrolovat stránkování tak, že vytvoříte `IDocumentQueryable` pomocí `IQueryable` objekt, potom načtením` ResponseContinuationToken` hodnoty a jejich předávání zpátky jako `RequestContinuationToken` v `FeedOptions`. `EnableScanInQuery` je možné nastavit pro povolení vyhledávání, když dotaz nemůže být podporována nakonfigurované zásady indexování. Pro dělené kontejnerů, můžete použít `PartitionKey` do jednoho oddílu (i když Azure Cosmos DB můžete automaticky extrahovat to z textu dotazu), spusťte dotaz a `EnableCrossPartitionQuery` ke spouštění dotazů, které může být nutné spustit proti více oddílů.
+Můžete také explicitně kontrolovat stránkování tak, že vytvoříte `IDocumentQueryable` pomocí `IQueryable` objekt, potom načtením `ResponseContinuationToken` hodnoty a jejich předávání zpátky jako `RequestContinuationToken` v `FeedOptions`. `EnableScanInQuery` je možné nastavit pro povolení vyhledávání, když dotaz nemůže být podporována nakonfigurované zásady indexování. Pro dělené kontejnerů, můžete použít `PartitionKey` do jednoho oddílu (i když Azure Cosmos DB můžete automaticky extrahovat to z textu dotazu), spusťte dotaz a `EnableCrossPartitionQuery` ke spouštění dotazů, které může být nutné spustit proti více oddílů.
 
 Odkazovat na [ukázek Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet) pro další ukázky obsahující dotazy.
 

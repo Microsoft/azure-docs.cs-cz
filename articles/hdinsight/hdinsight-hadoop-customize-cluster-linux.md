@@ -1,33 +1,24 @@
 ---
-title: Přizpůsobení clusterů HDInsight pomocí skriptových akcí Azure
+title: Přizpůsobení clusterů Azure HDInsight pomocí skriptových akcí
 description: Přidáte vlastní komponenty na clusterech HDInsight založených na Linuxu pomocí skriptových akcí. Akce skriptů jsou skripty Bash, které slouží k přizpůsobení konfigurace clusteru nebo přidat další služby a nástroje, jako jsou Hue, Solr nebo R.
-services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: hrasheed
-ms.openlocfilehash: 80c2d25fa24acff92a462f0289259792f217fbfd
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.date: 04/02/2019
+ms.openlocfilehash: fe0fec082ace997a3bd66ca7c7575ce8dce3be1a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361689"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885566"
 ---
-# <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu
+# <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí skriptových akcí
 
 Azure HDInsight poskytuje konfigurace metodu nazvanou **akcí skriptů** , který vyvolá vlastní skripty pro přizpůsobení clusteru. Tyto skripty se používají k instalaci dalších komponent a změnit nastavení konfigurace. Akce se skripty můžete použít během nebo po vytvoření clusteru.
 
-> [!IMPORTANT]  
-> Možnost používat akcí skriptů v clusteru již běžícímu dostupná jenom pro clustery HDInsight založené na Linuxu.
->
-> Linux je pouze operační systém používaný v HDInsight verze 3.4 a vyšší. Další informace najdete v tématu [HDInsight Windows vyřazení](hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
 Akce se skripty můžete také publikovat na webu Azure Marketplace jako aplikace HDInsight. Další informace o aplikace HDInsight, naleznete v tématu [publikovat aplikace HDInsight na Azure Marketplace](hdinsight-apps-publish-applications.md).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -225,7 +216,9 @@ Získejte další informace o tom, jak nasadit šablonu:
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Použití akce skriptu při vytváření clusteru pomocí Azure Powershellu
 
-V této části použijete [přidat AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) rutiny vyvolání skriptů přizpůsobení clusteru. Než začnete, ujistěte se, že instalace a konfigurace Azure Powershellu. Informace o konfiguraci pracovní stanice ke spouštění rutin prostředí HDInsight PowerShell najdete v tématu [Přehled prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+V této části použijete [přidat AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) rutiny vyvolání skriptů přizpůsobení clusteru. Než začnete, ujistěte se, že instalace a konfigurace Azure Powershellu. Pokud chcete použít tyto příkazy Powershellu, musíte [AZ modulu](https://docs.microsoft.com/powershell/azure/overview).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Tento skript ukazuje, jak použít akci skriptu při vytváření clusteru pomocí prostředí PowerShell:
 
@@ -277,7 +270,7 @@ Přejděte [webu Azure portal](https://portal.azure.com):
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>Použít akci skriptu pro spuštěný cluster z prostředí Azure PowerShell
 
-Než začnete, ujistěte se, že instalace a konfigurace Azure Powershellu. Informace o konfiguraci pracovní stanice ke spouštění rutin prostředí HDInsight PowerShell najdete v tématu [Přehled prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+Pokud chcete použít tyto příkazy Powershellu, musíte [AZ modulu](https://docs.microsoft.com/powershell/azure/overview).
 
 Následující příklad ukazuje, jak použít akci skriptu spuštěného clusteru:
 

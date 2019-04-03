@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: ece6c7048100a8204bfc067d9d57854b1d83c9b6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: eac6a27c3bcf64462a9f3d9a57da6df736f30c78
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58074909"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883271"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Řešení VMware Monitoring (zastaralé) ve službě Azure Monitor
 
@@ -189,13 +189,13 @@ Může existovat několik důvodů:
   1. Pokud chcete potvrdit, přihlaste se k hostiteli ESXi pomocí ssh a spusťte následující příkaz: `nc -z ipaddressofVM 1514`
 
       Pokud neproběhne úspěšně, nastavení vSphere v pokročilé konfiguraci se pravděpodobně není to správně. Zobrazit [Konfigurovat shromažďování syslogu](#configure-syslog-collection) informace o tom, jak vytvořit hostitele ESXi pro předávání protokolu syslog.
-  1. Pokud je úspěšné připojení k portu syslog, ale stále nevidíte žádná data, pak znovu načtěte syslog na hostiteli ESXi pomocí ssh a spusťte následující příkaz: ` esxcli system syslog reload`
+  1. Pokud je úspěšné připojení k portu syslog, ale stále nevidíte žádná data, pak znovu načtěte syslog na hostiteli ESXi pomocí ssh a spusťte následující příkaz: `esxcli system syslog reload`
 * Virtuální počítač pomocí agenta Log Analytics není nastavena správně. Abyste to mohli otestovat, proveďte následující kroky:
 
   1. Log Analytics naslouchá na portu 1514. Pokud chcete ověřit, že je otevřený, spusťte následující příkaz: `netstat -a | grep 1514`
   1. Měli byste vidět port `1514/tcp` otevřete. Pokud ho nevidíte, zkontrolujte, že je správně nainstalované omsagent. Pokud se nezobrazí údaje o portech, není syslog port otevřít na virtuálním počítači.
 
-     a. Ověřte, že je spuštěný pomocí agenta Log Analytics `ps -ef | grep oms`. Pokud není spuštěná, proces spusťte pomocí příkazu ` sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Ověřte, že je spuštěný pomocí agenta Log Analytics `ps -ef | grep oms`. Pokud není spuštěná, proces spusťte pomocí příkazu `sudo /opt/microsoft/omsagent/bin/service_control start`
 
      b. Otevřete soubor `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf`.
 

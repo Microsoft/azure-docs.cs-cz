@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5643b7c80307cea36f60bcc116c82ea7b31171f9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 04a1741bbe4e60567a22445c5674ec03b232640c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096567"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883668"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Vytvoření virtuálního pevného disku kompatibilního s Azure
 
 Tento článek podrobně popisuje kroky potřebné k vytvoření virtuálního pevného disku (VHD) pro nabídky virtuálních počítačů (VM) na webu Azure Marketplace.  Zahrnuje také osvědčené postupy pro různé funkce, jako je například pomocí protokol RDP (Remote Desktop), výběr velikosti virtuálního počítače, instalace nejnovějších aktualizací Windows a zobecňuje se image virtuálního pevného disku.  V dalších částech zaměřuje na systému windows virtuální pevné disky; Další informace o vytváření virtuálních pevných disků založených na Linuxu najdete v tématu [Linux v distribucích schválených pro Azure](../../../virtual-machines/linux/endorsed-distros.md). 
 
 > [!WARNING]
-> Důrazně doporučujeme, abyste postupovali podle pokynů v tomto tématu můžete použít Azure k vytvoření virtuálního počítače obsahující předem nakonfigurované, potvrzená operační systém.  Pokud to není kompatibilní s řešením, je možné k vytvoření a konfigurace virtuálního počítače s místní použití schválené operačního systému.  Potom můžete nakonfigurovat a připravený k nahrání, jak je popsáno v [Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+> Důrazně doporučujeme, abyste postupovali podle pokynů v tomto tématu můžete použít Azure k vytvoření virtuálního počítače obsahující předem nakonfigurované, potvrzená operační systém.  Pokud to není kompatibilní s řešením, je možné vytvořit a nakonfigurovat místní virtuální počítač pomocí schválených operačního systému.  Potom můžete nakonfigurovat a připravený k nahrání, jak je popsáno v [Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
 
 
 ## <a name="select-an-approved-base"></a>Vyberte schválené základní

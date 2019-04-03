@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 9b80222acfc1104c184fc9cfb4711c16e7bb8dd2
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a8e51534fec3dacb577ef9b79bb42c48557dc15b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312983"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884937"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Získejte odpovědi na dotaz zadaný ze znalostní báze s Javou
 
@@ -70,7 +70,7 @@ Následující kód odešle požadavek HTTPS API nástroje QnA Maker odeslat dot
 
 [!code-java[Add a POST request to send question to knowledge base](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=44-72 "Add a POST request to send question to knowledge base")]
 
-`Authorization` Hodnotu hlavičky obsahuje řetězec `EndpointKey `. 
+`Authorization` Hodnotu hlavičky obsahuje řetězec `EndpointKey`. 
 
 Další informace o [požadavek](../how-to/metadata-generateanswer-usage.md#generateanswer-request) a [odpovědi](../how-to/metadata-generateanswer-usage.md#generateanswer-response).
 
@@ -98,4 +98,4 @@ Sestavit a spustit program z příkazového řádku. Automaticky se odešle pož
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Reference k rozhraní REST API služby QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [Reference k REST API služby QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

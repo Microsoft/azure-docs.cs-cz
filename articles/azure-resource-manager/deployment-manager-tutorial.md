@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/29/2019
+ms.date: 04/02/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 161eb302dfa1eb002a49afcd08da1a2795bc81ed
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: a0730073a8d17e063ee3f1364d5914200259c10f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649420"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880045"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Kurz: Pomocí Správce nasazení Azure pomocí šablon Resource Manageru (privátní verze preview)
 
@@ -57,7 +57,7 @@ K dokončení tohoto článku potřebujete:
 * Rutiny Deployment Manageru. K instalaci těchto předběžných verzí rutin potřebujete nejnovější verzi modulu PowerShellGet. Pokud chcete získat nejnovější verzi, přečtěte si článek [Instalace modulu PowerShellGet](/powershell/gallery/installing-psget). Jakmile nainstalujete PowerShellGet, zavřete okno PowerShellu. Otevřete okno Powershellu new se zvýšenými oprávněními a zadejte následující příkaz:
 
     ```powershell
-    Install-Module -Name Az.DeploymentManager -AllowPrerelease -AllowClobber -Force
+    Install-Module -Name Az.DeploymentManager
     ```
 
 * [Průzkumníka služby Microsoft Azure Storage](https://azure.microsoft.com/features/storage-explorer/). Průzkumník služby Azure Storage se nevyžaduje, ale usnadní vám práci.
@@ -67,8 +67,8 @@ K dokončení tohoto článku potřebujete:
 Šablona topologie služby popisuje prostředky Azure, ze kterých se skládá vaše služba, a kam se mají nasadit. Definice topologie služby má následující hierarchii:
 
 * Topologie služby
-    * Služby
-        * Jednotky služeb
+  * Služby
+    * Jednotky služeb
 
 Následující diagram znázorňuje topologii služby použitou v tomto kurzu:
 
@@ -83,12 +83,12 @@ V umístěních USA – západ a USA – východ jsou přidělené dvě služby.
 
 Kořenový adresář obsahuje dvě složky:
 
-- **ADMTemplates:** obsahuje šablony Deployment Manageru, mezi které patří:
-    - CreateADMServiceTopology.json
-    - CreateADMServiceTopology.Parameters.json
-    - CreateADMRollout.json
-    - CreateADMRollout.Parameters.json
-- **ArtifactStore:** obsahuje artefakty šablony i binární artefakty. Viz [Příprava artefaktů](#prepare-the-artifacts).
+* **ADMTemplates:** obsahuje šablony Deployment Manageru, mezi které patří:
+  * CreateADMServiceTopology.json
+  * CreateADMServiceTopology.Parameters.json
+  * CreateADMRollout.json
+  * CreateADMRollout.Parameters.json
+* **ArtifactStore:** obsahuje artefakty šablony i binární artefakty. Viz [Příprava artefaktů](#prepare-the-artifacts).
 
 Všimněte si, že existují dvě sady šablon.  Jedna sada představuje šablony Deployment Manageru, které se používají k nasazení topologie služby a uvedení. Druhá sada se volá z jednotek služeb za účelem vytváření webových služeb a účtů úložiště.
 
@@ -98,8 +98,8 @@ Stažená složka ArtifactStore obsahuje dvě složky:
 
 ![Kurz Azure Deployment Manageru – diagram zdroje artefaktů](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-artifact-source-diagram.png)
 
-- Složka **templates**: obsahuje artefakty šablony. Složky **1.0.0.0** a **1.0.0.1** představují dvě verze binárních artefaktů. Obě verze obsahují složku pro obě služby (ServiceEUS a ServiceWUS). Každá služba obsahuje pár souborů šablony a parametrů pro vytvoření účtu úložiště a další pár pro vytvoření webové aplikace. Šablona webové aplikace volá komprimovaný balíček, který obsahuje soubory webové aplikace. Komprimovaný soubor je binární artefakt uložený ve složce binaries.
-- Složka **binaries**: obsahuje binární artefakty. Složky **1.0.0.0** a **1.0.0.1** představují dvě verze binárních artefaktů. Obě verze obsahují jeden soubor ZIP pro vytvoření webové aplikace v umístění USA – západ a druhý soubor ZIP pro vytvoření webové aplikace v umístění USA – východ.
+* Složka **templates**: obsahuje artefakty šablony. Složky **1.0.0.0** a **1.0.0.1** představují dvě verze binárních artefaktů. Obě verze obsahují složku pro obě služby (ServiceEUS a ServiceWUS). Každá služba obsahuje pár souborů šablony a parametrů pro vytvoření účtu úložiště a další pár pro vytvoření webové aplikace. Šablona webové aplikace volá komprimovaný balíček, který obsahuje soubory webové aplikace. Komprimovaný soubor je binární artefakt uložený ve složce binaries.
+* Složka **binaries**: obsahuje binární artefakty. Složky **1.0.0.0** a **1.0.0.1** představují dvě verze binárních artefaktů. Obě verze obsahují jeden soubor ZIP pro vytvoření webové aplikace v umístění USA – západ a druhý soubor ZIP pro vytvoření webové aplikace v umístění USA – východ.
 
 Tyto dvě verze (1.0.0.0 a 1.0.0.1) jsou určené k [nasazení revize](#deploy-the-revision). Přestože artefakty šablony i binární artefakty mají dvě verze, mezi těmito dvěma verzemi se liší pouze binární artefakty. Binární artefakty se v praxi aktualizují častěji než artefakty šablony.
 
@@ -127,6 +127,7 @@ Tyto dvě verze (1.0.0.0 a 1.0.0.1) jsou určené k [nasazení revize](#deploy-t
       </body>
     </html>
     ```
+
     V kódu HTML se zobrazí umístění a informace o verzi. Binární soubor ve složce 1.0.0.1 ukazuje „Version 1.0.0.1“ (Verze 1.0.0.1). Po nasazení služby můžete na tyto stránky přejít.
 5. Prohlédněte si i ostatní soubory artefaktů. Pomůže vám to lépe porozumět scénáři.
 
@@ -160,9 +161,9 @@ Je potřeba vytvořit spravovanou identitu přiřazenou uživatelem a nakonfigur
 
     ![Kurz Azure Deployment Manageru – řízení přístupu spravované identity přiřazené uživatelem](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-access-control.png)
 
-    - **Role:** Udělte dostatečná oprávnění k dokončení nasazení artefaktů (webové aplikace a účty úložiště). Pro účely tohoto kurzu vyberte roli **Přispěvatel**. V praxi byste měli oprávnění omezit na minimum.
-    - **Přiřazený přístup:** Vyberte **Spravovaná identita přiřazená uživatelem**.
-    - Vyberte spravovanou identitu přiřazenou uživatelem, kterou jste vytvořili v dřívější části kurzu.
+    * **Role:** Udělte dostatečná oprávnění k dokončení nasazení artefaktů (webové aplikace a účty úložiště). Pro účely tohoto kurzu vyberte roli **Přispěvatel**. V praxi byste měli oprávnění omezit na minimum.
+    * **Přiřazený přístup:** Vyberte **Spravovaná identita přiřazená uživatelem**.
+    * Vyberte spravovanou identitu přiřazenou uživatelem, kterou jste vytvořili v dřívější části kurzu.
 6. Vyberte **Uložit**.
 
 ## <a name="create-the-service-topology-template"></a>Vytvoření šablony topologie služby
@@ -175,11 +176,11 @@ Otevřete soubor **\ADMTemplates\CreateADMServiceTopology.json**.
 
 ![Kurz Azure Deployment Manageru – parametry šablony topologie](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-topology-template-parameters.png)
 
-- **namePrefix**: Tato předpona slouží k vytvoření názvy pro prostředky nástroje Deployment Manager. Pokud například použijete předponu „jdoe“, název topologie služby bude **jdoe**ServiceTopology.  Názvy prostředků se definují v sekci proměnných této šablony.
-- **azureResourcelocation**: Pro zjednodušení tento kurz, všechny prostředky sdílet toto umístění, pokud není určeno jinak. V současné době je možné prostředky Azure Deployment Manageru vytvářet pouze v oblastech **USA – střed** nebo **USA – východ 2**.
-- **artifactSourceSASLocation**: Identifikátor URI SAS pro kontejner objektů Blob ukládat soubory pro šablonu a parametry jednotek služby pro nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
-- **templateArtifactRoot**: Posunutí cesty z kontejneru objektů Blob, kde jsou uložené šablony a parametrů. Výchozí hodnota je **templates/1.0.0.0**. Tuto hodnotu neměňte, pokud nechcete změnit strukturu složek, jak je popsáno v části [Příprava artefaktů](#prepare-the-artifacts). V tomto kurzu se používají relativní cesty.  Úplná cesta se vytvoří zřetězením hodnot **artifactSourceSASLocation**, **templateArtifactRoot** a **templateArtifactSourceRelativePath** (nebo **parametersArtifactSourceRelativePath**).
-- **targetSubscriptionID**: ID předplatného, ke kterému Správce nasazení prostředků se chystáte nasadit a účtuje. Pro účely tohoto kurzu použijte vlastní ID předplatného.
+* **namePrefix**: Tato předpona slouží k vytvoření názvy pro prostředky nástroje Deployment Manager. Pokud například použijete předponu „jdoe“, název topologie služby bude **jdoe**ServiceTopology.  Názvy prostředků se definují v sekci proměnných této šablony.
+* **azureResourcelocation**: Pro zjednodušení tento kurz, všechny prostředky sdílet toto umístění, pokud není určeno jinak. V současné době je možné prostředky Azure Deployment Manageru vytvářet pouze v oblastech **USA – střed** nebo **USA – východ 2**.
+* **artifactSourceSASLocation**: Identifikátor URI SAS pro kontejner objektů Blob ukládat soubory pro šablonu a parametry jednotek služby pro nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
+* **templateArtifactRoot**: Posunutí cesty z kontejneru objektů Blob, kde jsou uložené šablony a parametrů. Výchozí hodnota je **templates/1.0.0.0**. Tuto hodnotu neměňte, pokud nechcete změnit strukturu složek, jak je popsáno v části [Příprava artefaktů](#prepare-the-artifacts). V tomto kurzu se používají relativní cesty.  Úplná cesta se vytvoří zřetězením hodnot **artifactSourceSASLocation**, **templateArtifactRoot** a **templateArtifactSourceRelativePath** (nebo **parametersArtifactSourceRelativePath**).
+* **targetSubscriptionID**: ID předplatného, ke kterému Správce nasazení prostředků se chystáte nasadit a účtuje. Pro účely tohoto kurzu použijte vlastní ID předplatného.
 
 ### <a name="the-variables"></a>Proměnné
 
@@ -201,9 +202,9 @@ Následující snímek obrazovky ukazuje pouze několik částí definice topolo
 
 ![Kurz Azure Deployment Manageru – prostředky šablony topologie – topologie služby](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-topology-template-resources-service-topology.png)
 
-- **artifactSourceId** slouží k přidružení prostředku zdroje artefaktů k prostředku topologie služby.
-- **dependsOn**: Všechny prostředky topologie služby závisí na prostředek zdroje artefaktu.
-- **artifacts** odkazuje na artefakty šablony.  Používají se zde relativní cesty. Úplná cesta se vytvoří zřetězením hodnot artifactSourceSASLocation (definovaná ve zdroji artefaktů), artifactRoot (definovaná ve zdroji artefaktů) a templateArtifactSourceRelativePath (nebo parametersArtifactSourceRelativePath).
+* **artifactSourceId** slouží k přidružení prostředku zdroje artefaktů k prostředku topologie služby.
+* **dependsOn**: Všechny prostředky topologie služby závisí na prostředek zdroje artefaktu.
+* **artifacts** odkazuje na artefakty šablony.  Používají se zde relativní cesty. Úplná cesta se vytvoří zřetězením hodnot artifactSourceSASLocation (definovaná ve zdroji artefaktů), artifactRoot (definovaná ve zdroji artefaktů) a templateArtifactSourceRelativePath (nebo parametersArtifactSourceRelativePath).
 
 ### <a name="topology-parameters-file"></a>Soubor parametrů topologie
 
@@ -212,11 +213,11 @@ Vytvoříte soubor parametrů, který se použije pro šablonu topologie.
 1. Ve Visual Studio Code nebo libovolném textovém editoru otevřete soubor **\ADMTemplates\CreateADMServiceTopology.Parameters**.
 2. Vyplňte hodnoty parametrů:
 
-    - **namePrefix**: Zadejte řetězec s 4 až 5 znaků. Tato předpona slouží k vytváření jedinečných názvů prostředků Azure.
-    - **azureResourceLocation**: Pokud nejste obeznámeni s umístění Azure, použijte **centralus** v tomto kurzu.
-    - **artifactSourceSASLocation**: Zadejte identifikátor URI SAS do kořenového adresáře (kontejner objektů Blob) ukládat soubory pro šablonu a parametry jednotek služby pro nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
-    - **templateArtifactRoot**: Pokud změníte strukturu složek artefakty, použijte **templates/1.0.0.0** v tomto kurzu.
-    - **targetScriptionID**: Zadejte ID svého předplatného Azure.
+    * **namePrefix**: Zadejte řetězec s 4 až 5 znaků. Tato předpona slouží k vytváření jedinečných názvů prostředků Azure.
+    * **azureResourceLocation**: Pokud nejste obeznámeni s umístění Azure, použijte **centralus** v tomto kurzu.
+    * **artifactSourceSASLocation**: Zadejte identifikátor URI SAS do kořenového adresáře (kontejner objektů Blob) ukládat soubory pro šablonu a parametry jednotek služby pro nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
+    * **templateArtifactRoot**: Pokud změníte strukturu složek artefakty, použijte **templates/1.0.0.0** v tomto kurzu.
+    * **targetScriptionID**: Zadejte ID svého předplatného Azure.
 
 > [!IMPORTANT]
 > Šablona topologie a šablona uvedení sdílí několik společných parametrů. Tyto parametry musí mít stejné hodnoty. Těmito parametry jsou: **namePrefix**, **azureResourceLocation** a **artifactSourceSASLocation** (v tomto kurzu oba zdroje artefaktů sdílí stejný účet úložiště).
@@ -231,11 +232,11 @@ Otevřete soubor **\ADMTemplates\CreateADMRollout.json**.
 
 ![Kurz Azure Deployment Manageru – parametry šablony uvedení](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-parameters.png)
 
-- **namePrefix**: Tato předpona slouží k vytvoření názvy pro prostředky nástroje Deployment Manager. Pokud například použijete předponu „jdoe“, název uvedení bude **jdoe**Rollout.  Názvy se definují v sekci proměnných této šablony.
-- **azureResourcelocation**: Pro zjednodušení tento kurz, všechny prostředky Deployment Manager sdílet toto umístění, pokud není určeno jinak. V současné době je možné prostředky Azure Deployment Manageru vytvářet pouze v oblastech **USA – střed** nebo **USA – východ 2**.
-- **artifactSourceSASLocation**: Identifikátor URI SAS do kořenového adresáře (kontejner objektů Blob) ukládat soubory pro šablonu a parametry jednotek služby pro nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
-- **binaryArtifactRoot**:  Výchozí hodnota je **binaries/1.0.0.0**. Tuto hodnotu neměňte, pokud nechcete změnit strukturu složek, jak je popsáno v části [Příprava artefaktů](#prepare-the-artifacts). V tomto kurzu se používají relativní cesty.  Úplná cesta se vytvoří zřetězením hodnot **artifactSourceSASLocation**, **binaryArtifactRoot** a **deployPackageUri** zadaných v souboru CreateWebApplicationParameters.json.  Viz [Příprava artefaktů](#prepare-the-artifacts).
-- **managedIdentityID**: Uživatel přiřazenou spravovaná identita, která provede akce nasazení. Viz [Vytvoření spravované identity přiřazené uživatelem](#create-the-user-assigned-managed-identity).
+* **namePrefix**: Tato předpona slouží k vytvoření názvy pro prostředky nástroje Deployment Manager. Pokud například použijete předponu „jdoe“, název uvedení bude **jdoe**Rollout.  Názvy se definují v sekci proměnných této šablony.
+* **azureResourcelocation**: Pro zjednodušení tento kurz, všechny prostředky Deployment Manager sdílet toto umístění, pokud není určeno jinak. V současné době je možné prostředky Azure Deployment Manageru vytvářet pouze v oblastech **USA – střed** nebo **USA – východ 2**.
+* **artifactSourceSASLocation**: Identifikátor URI SAS do kořenového adresáře (kontejner objektů Blob) ukládat soubory pro šablonu a parametry jednotek služby pro nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
+* **binaryArtifactRoot**:  Výchozí hodnota je **binaries/1.0.0.0**. Tuto hodnotu neměňte, pokud nechcete změnit strukturu složek, jak je popsáno v části [Příprava artefaktů](#prepare-the-artifacts). V tomto kurzu se používají relativní cesty.  Úplná cesta se vytvoří zřetězením hodnot **artifactSourceSASLocation**, **binaryArtifactRoot** a **deployPackageUri** zadaných v souboru CreateWebApplicationParameters.json.  Viz [Příprava artefaktů](#prepare-the-artifacts).
+* **managedIdentityID**: Uživatel přiřazenou spravovaná identita, která provede akce nasazení. Viz [Vytvoření spravované identity přiřazené uživatelem](#create-the-user-assigned-managed-identity).
 
 ### <a name="the-variables"></a>Proměnné
 
@@ -259,12 +260,12 @@ Následující snímek obrazovky ukazuje pouze několik částí definice uveden
 
 ![Kurz Azure Deployment Manageru – prostředky šablony uvedení – uvedení](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-resources-rollout.png)
 
-- **dependsOn**: Uvedení prostředků závisí na prostředků zdroje artefaktu a všechny kroky uvedené.
-- **artifactSourceId:** Slouží k přidružení prostředku zdroje artefaktů k prostředku uvedení.
-- **targetServiceTopologyId:** Slouží k přidružení prostředku topologie služby k prostředku uvedení.
-- **deploymentTargetId**: Je ID prostředku služby jednotka prostředků topologie služby.
-- **preDeploymentSteps** a **postDeploymentSteps** obsahují kroky uvedení. V šabloně se volá krok čekání.
-- **dependsOnStepGroups:** Konfigurace závislostí mezi skupinami kroků.
+* **dependsOn**: Uvedení prostředků závisí na prostředků zdroje artefaktu a všechny kroky uvedené.
+* **artifactSourceId:** Slouží k přidružení prostředku zdroje artefaktů k prostředku uvedení.
+* **targetServiceTopologyId:** Slouží k přidružení prostředku topologie služby k prostředku uvedení.
+* **deploymentTargetId**: Je ID prostředku služby jednotka prostředků topologie služby.
+* **preDeploymentSteps** a **postDeploymentSteps** obsahují kroky uvedení. V šabloně se volá krok čekání.
+* **dependsOnStepGroups:** Konfigurace závislostí mezi skupinami kroků.
 
 ### <a name="rollout-parameters-file"></a>Soubor parametrů uvedení
 
@@ -273,11 +274,11 @@ Vytvoříte soubor parametrů, který se použije pro šablonu uvedení.
 1. Ve Visual Studio Code nebo libovolném textovém editoru otevřete soubor **\ADMTemplates\CreateADMRollout.Parameters**.
 2. Vyplňte hodnoty parametrů:
 
-    - **namePrefix**: Zadejte řetězec s 4 až 5 znaků. Tato předpona slouží k vytváření jedinečných názvů prostředků Azure.
-    - **azureResourceLocation**: V současné době je možné prostředky Azure Deployment Manageru vytvářet pouze v oblastech **USA – střed** nebo **USA – východ 2**.
-    - **artifactSourceSASLocation**: Zadejte identifikátor URI SAS do kořenového adresáře (kontejner objektů Blob) ukládat soubory pro šablonu a parametry jednotek služby pro nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
-    - **binaryArtifactRoot**: Pokud změníte strukturu složek artefakty, použijte **binaries/1.0.0.0** v tomto kurzu.
-    - **managedIdentityID**: Zadejte spravované uživatelsky přiřazené identity. Viz [Vytvoření spravované identity přiřazené uživatelem](#create-the-user-assigned-managed-identity). Syntaxe je:
+    * **namePrefix**: Zadejte řetězec s 4 až 5 znaků. Tato předpona slouží k vytváření jedinečných názvů prostředků Azure.
+    * **azureResourceLocation**: V současné době je možné prostředky Azure Deployment Manageru vytvářet pouze v oblastech **USA – střed** nebo **USA – východ 2**.
+    * **artifactSourceSASLocation**: Zadejte identifikátor URI SAS do kořenového adresáře (kontejner objektů Blob) ukládat soubory pro šablonu a parametry jednotek služby pro nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
+    * **binaryArtifactRoot**: Pokud změníte strukturu složek artefakty, použijte **binaries/1.0.0.0** v tomto kurzu.
+    * **managedIdentityID**: Zadejte spravované uživatelsky přiřazené identity. Viz [Vytvoření spravované identity přiřazené uživatelem](#create-the-user-assigned-managed-identity). Syntaxe je:
 
         ```
         "/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userassignedidentities/<ManagedIdentityName>"
@@ -296,16 +297,19 @@ K nasazení šablon je možné použít Azure PowerShell.
     $resourceGroupName = "<Enter a Resource Group Name>"
     $location = "Central US"  
     $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
-    
+
     # Create a resource group
     New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-    
+
     # Create the service topology
     New-AzResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
         -TemplateFile "$filePath\ADMTemplates\CreateADMServiceTopology.json" `
         -TemplateParameterFile "$filePath\ADMTemplates\CreateADMServiceTopology.Parameters.json"
     ```
+
+    > [!NOTE]
+    > `New-AzResourceGroupDeployment` je asynchronní volání. Úspěch zprávy pouze znamená, že nasazení se úspěšně spustila. Pokud chcete ověřit nasazení, najdete v článku kroky 2 a 4 tohoto postupu.
 
 2. Pomocí webu Azure Portal ověřte úspěšné vytvoření topologie služby a prostředků:
 
@@ -337,28 +341,28 @@ K nasazení šablon je možné použít Azure PowerShell.
     Před spuštěním této rutiny je potřeba nainstalovat rutiny PowerShellu pro Deployment Manager. Viz požadavky. -Verbose přepínač je možné zobrazit celý výstup.
 
     V následující ukázce se zobrazuje stav Running (Spuštěno):
-    
+
     ```
-    VERBOSE: 
-    
+    VERBOSE:
+
     Status: Succeeded
     ArtifactSourceId: /subscriptions/<AzureSubscriptionID>/resourceGroups/adm0925rg/providers/Microsoft.DeploymentManager/artifactSources/adm0925ArtifactSourceRollout
     BuildVersion: 1.0.0.0
-    
+
     Operation Info:
         Retry Attempt: 0
         Skip Succeeded: False
         Start Time: 03/05/2019 15:26:13
         End Time: 03/05/2019 15:31:26
         Total Duration: 00:05:12
-    
+
     Service: adm0925ServiceEUS
         TargetLocation: EastUS
         TargetSubscriptionId: <AzureSubscriptionID>
-    
+
         ServiceUnit: adm0925ServiceEUSStorage
             TargetResourceGroup: adm0925ServiceEUSrg
-    
+
             Step: Deploy
                 Status: Succeeded
                 StepGroup: stepGroup3
@@ -369,7 +373,7 @@ K nasazení šablon je možné použít Azure PowerShell.
                     End Time: 03/05/2019 15:27:41
                     Total Duration: 00:01:08
                 Resource Operations:
-    
+
                     Resource Operation 1:
                     Name: txq6iwnyq5xle
                     Type: Microsoft.Storage/storageAccounts
@@ -418,10 +422,10 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
 2. Pomocí pole **Filtrovat podle názvu** můžete vyfiltrovat skupiny prostředků vytvořené v tomto kurzu. Měly by být 3 až 4:
 
-    - **&lt;namePrefix>rg:** Obsahuje prostředky Deployment Manageru.
-    - **&lt;namePrefix>ServiceWUSrg:** Obsahuje prostředky definované službou ServiceWUS.
-    - **&lt;namePrefix>ServiceEUSrg:** Obsahuje prostředky definované službou ServiceEUS.
-    - Skupina prostředků pro spravovanou identitu přiřazenou uživatelem.
+    * **&lt;namePrefix>rg:** Obsahuje prostředky Deployment Manageru.
+    * **&lt;namePrefix>ServiceWUSrg:** Obsahuje prostředky definované službou ServiceWUS.
+    * **&lt;namePrefix>ServiceEUSrg:** Obsahuje prostředky definované službou ServiceEUS.
+    * Skupina prostředků pro spravovanou identitu přiřazenou uživatelem.
 3. Vyberte název skupiny prostředků.  
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 5. Zopakujte poslední dva kroky a odstraňte ostatní skupiny prostředků vytvořené v rámci tohoto kurzu.

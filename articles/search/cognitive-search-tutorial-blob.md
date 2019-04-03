@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c888c134054f50bc8ab17d17524a4f89d5081dfc
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: f60b9002f939cbf4c3a0ecfb78b358598713ea1c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259614"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881615"
 ---
 # <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>Kurz: Volání rozhraní API služeb Cognitive Services v Azure Search indexování kanálu (Preview)
 
@@ -129,9 +129,6 @@ Vzhledem k tomu, že je to váš první požadavek, podívejte se na portál Azu
   ![Dlaždice Zdroje dat na portálu](./media/cognitive-search-tutorial-blob/data-source-tile.png "Dlaždice Zdroje dat na portálu")
 
 Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v koncovém bodu by mělo být `api-version=2017-11-11-Preview`, v hlavičce za `Content-Type` by mělo být `api-key` a jeho hodnota musí být pro vyhledávací službu platná. Hlavičku budete moct znovu používat i v dalších krocích tohoto kurzu.
-
-> [!TIP]
-> Teď než se pustíte do velké množství práce, je vhodná doba k ověření, že vyhledávací služba je spuštěná v jednom z podporovaných umístění poskytuje funkce ve verzi preview: Střední část jihu USA a západní Evropa.
 
 ## <a name="create-a-skillset"></a>Vytvoření sady dovedností
 
@@ -554,4 +551,4 @@ Nejrychlejší způsob, jak po kurzu vše vyčistit, je odstranit skupinu prost�
 Pokud si chcete kanál přizpůsobit nebo rozšířit, můžete použít vlastní dovednosti. Když si vytvoříte vlastní dovednost, kterou pak přidáte do sady dovedností, budete moct používat analýzu textu a obrazu, kterou si sami napíšete. 
 
 > [!div class="nextstepaction"]
-> [Příklad: vytvoření vlastní dovednosti](cognitive-search-create-custom-skill-example.md)
+> [Příklad: vytvoření vlastních dovedností](cognitive-search-create-custom-skill-example.md)
