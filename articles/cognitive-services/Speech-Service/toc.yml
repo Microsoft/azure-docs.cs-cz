@@ -73,6 +73,8 @@ items:
     items:
     - name: Seznam podporovaných hlasů podle oblasti
       items:
+      - name: Node.js
+        href: quickstart-nodejs-get-text-to-speech-voices.md
       - name: Python
         href: quickstart-python-get-text-to-speech-voices.md
     - name: Převod textu na řeč
@@ -232,9 +234,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: Ochrana osobních údajů a soubory cookie
     href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: 7483e342495f862f582b8eba847b4a47bfda3774
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 8849764c9368f93443c99742d0e0de089c444539
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517874"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886773"

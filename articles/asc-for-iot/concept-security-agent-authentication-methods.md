@@ -1,25 +1,25 @@
 ---
 title: Metody ověřování pro Azure Security Center pro náhled IoT | Dokumentace Microsoftu
 description: Další informace o různé metody ověřování k dispozici při použití Azure Security Center pro služby Azure IoT.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 10b38f20-b755-48cc-8a88-69828c17a108
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: ec87c2b65728d8ac29daa90de36271e24cd85c0e
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d1f9d77d1f87e8d201e2cb034401bb3cae14f41b
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758382"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862909"
 ---
 # <a name="security-agent-authentication-methods"></a>Metody ověřování zabezpečení agenta 
 
@@ -63,7 +63,7 @@ Tyto argumenty jsou popsány v následující tabulce.
 
 |Parametr|Popis|Možnosti|
 |---------|---------------|---------------|
-|**Identita**|Režim ověřování| **Modul** nebo **zařízení**|
+|**identity**|Režim ověřování| **Modul** nebo **zařízení**|
 |**type**|Typ ověřování|**SymmetricKey** nebo **SelfSignedCertificate**|
 |**filePath**|Absolutní úplnou cestu k souboru, který obsahuje certifikát nebo symetrický klíč| |
 |**gatewayHostname**|Plně kvalifikovaný název domény služby IoT Hub|Příklad: ContosoIotHub.azure-devices.net|
@@ -114,4 +114,4 @@ Upravit _LocalConfiguration.json_ s následujícími parametry:
 ## <a name="see-also"></a>Další informace najdete v tématech
 - [Přehled zabezpečení agentů](security-agent-architecture.md)
 - [Nasazení agenta pro zabezpečení](how-to-deploy-agent.md)
-- [Přístup k datům raw zabezpečení](how-to-security-data-access.md)
+- [Přístup k nezpracovaným datům zabezpečení](how-to-security-data-access.md)

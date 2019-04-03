@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b2ca3d42fd5facb226fd3ddea8c48decaafade85
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 839f77df88314c95df1056b60c3612de27421ca0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009503"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886127"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, plánování a implementace SAP NetWeaver
 
@@ -177,7 +177,7 @@ ms.locfileid: "58009503"
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
-[msdn-set-azurermvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
+[msdn-set-Azvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
 
 [planning-guide]:planning-guide.md  
 [planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff
@@ -234,7 +234,7 @@ ms.locfileid: "58009503"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-az-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -257,7 +257,7 @@ ms.locfileid: "58009503"
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-azure-resource-manager-architecture]:../../../resource-manager-deployment-model.md
-[virtual-machines-azurerm-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
+[virtual-machines-Az-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md
 [virtual-machines-deploy-rmtemplates-powershell]:../../virtual-machines-windows-ps-manage.md
@@ -317,6 +317,8 @@ ms.locfileid: "58009503"
 Microsoft Azure umožňuje společnostem získat výpočetních a úložných kapacit minimální pracovat bez zdlouhavé zajišťování cykly. Služba Azure virtuální počítač umožňuje společnostem nasazení klasického aplikací, jako je SAP NetWeaver na základě aplikací do Azure a rozšířit jejich spolehlivost a dostupnost bez nutnosti další prostředky k dispozici místně. Služby virtuálního počítače Azure podporuje také připojení mezi místními sítěmi, které umožňuje společnostem aktivně integrace virtuálních počítačů Azure do místních domén, jejich privátních Cloudů a jejich prostředí systému SAP.
 Tento dokument white paper popisuje základní informace o virtuálním počítači Microsoft Azure a poskytuje návod, jak aspekty plánování a implementace pro instalacím systému SAP NetWeaver v Azure a jako takové musí být dokument k načtení před zahájením skutečné nasazení SAP NetWeaver v Azure.
 Dokument doplňuje dokumentaci k instalaci SAP a SAP poznámky, které představují primární zdroje pro instalaci a nasazení softwaru SAP v dané platformy.
+
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="summary"></a>Souhrn
 Cloud Computing je často používaný termín, který získává čím dál větší význam v rámci oboru IT, od malých firem až po velké a nadnárodní společnosti.
@@ -689,8 +691,8 @@ Obrázek nahoře ukazuje, že dva odběry služeb Azure máte IP adresu podrozsa
 Point-to-site VPN vyžaduje každý klientský počítač připojit pomocí vlastní sítě VPN do Azure. Pro scénáře SAP uvažujeme, připojení point-to-site není praktické. Proto žádné další odkazy jsou uvedeny pro připojení k síti VPN point-to-site.
 
 Další informace najdete tady
-* [Konfigurace připojení typu Point-to-Site k virtuální síti pomocí webu Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
-* [Konfigurace připojení typu Point-to-Site k virtuální síti pomocí PowerShellu](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
+* [Konfigurace připojení typu Point-to-Site k virtuální síti přes Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
+* [Konfigurace připojení Point-to-Site k virtuální síti pomocí prostředí PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 
 #### <a name="multi-site-vpn"></a>VPN Multi-Site
 
@@ -720,7 +722,8 @@ Expressroute umožňuje více předplatných Azure prostřednictvím jednoho okr
 #### <a name="forced-tunneling-in-case-of-cross-premises"></a>Vynucené tunelování v případě mezi různými místy
 Pro virtuální počítače připojení k místním doménám prostřednictvím site-to-site, point-to-site nebo ExpressRoute budete muset Ujistěte se, že jsou získávání pro všechny uživatele v těchto virtuálních počítačů a nasadili nastavení internetového proxy serveru. Ve výchozím nastavení se software na tyto virtuální počítače nebo uživatele, kteří používají prohlížeč pro přístup k Internetu nedařilo přes proxy server společnosti, ale by připojit přímo prostřednictvím Azure k Internetu. Ale i nastavení serveru proxy není 100 % řešení ke směrování provozu přes proxy server společnosti, protože jde o odpovědnosti softwaru a služeb ke kontrole pro proxy server. Pokud software spuštěný na virtuálním počítači, který teď nebo správce provádí úpravy nastavení, provoz do Internetu mohou být zkrácen znovu přímo prostřednictvím Azure k Internetu.
 
-Pokud se chcete vyhnout takové přímé připojení k Internetu, můžete nakonfigurovat vynucené tunelování s připojením site-to-site mezi místními a Azure. Podrobný popis funkce vynuceného tunelování se publikuje sem <https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
+Pokud se chcete vyhnout takové přímé připojení k Internetu, můžete nakonfigurovat vynucené tunelování s připojením site-to-site mezi místními a Azure. Podrobný popis funkce vynuceného tunelování se publikuje sem
+<https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
 
 Ve zákazníkům inzeruje výchozí trasu prostřednictvím relací vytvoření partnerského vztahu protokolu BGP ExpressRoute je povolené vynucené tunelování s ExpressRoute.
 
@@ -751,7 +754,8 @@ Jako hrubý rozhodovací strom se rozhodnout, zda systém SAP zapadá do služby
 
 **Krok 1**: Nejdůležitější informace je začít s protokoly SAP požadavkem pro daný systém SAP. Požadavky na protokoly SAP muset být rozdělen do částí DBMS a části aplikace SAP i v případě, že systém SAP je už nasazená místně v konfiguraci vrstvy 2. Stávajících systémů můžete určit nebo odhadují podle existující srovnávací testy SAP přístupové body, které často souvisí hardware používá. Výsledky najdete tady: <https://sap.com/about/benchmark.html>.
 Pro nově nasazené systémy SAP by měl prošli velikosti cvičení, které by měl určit požadavky na protokoly SAP systému.
-Viz také tento blog a přiložený dokument k určení velikosti SAP v Azure: <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+Viz také tento blog a přiložený dokument k určení velikosti SAP v Azure:
+<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
 **Krok 2**: Pro existující systémy objem vstupně-výstupní operace a vstupně-výstupních operací za sekundu na server databázového systému by se mělo měřit. Pro nově plánované systémy cvičení nastavení velikosti pro nový systém také měl dát hrubý nápady požadavků na vstupně-výstupních operací na straně DBMS. Pokud nejste jisti, časem budete muset provést testování konceptu.
 
@@ -801,10 +805,12 @@ Podrobnější pokyny k instalaci, aktualizaci a konfigurace Azure Powershellu r
 
 Zkušenosti zatím bylo, prostředí PowerShell (PS) je určitě výkonnější nástroje pro nasazení virtuálních počítačů a vytvořit vlastní kroky v nasazení virtuálních počítačů. Všem zákazníkům běžící instance SAP v Azure používají rutiny PS doplnit úlohy správy, proveďte na webu Azure Portal nebo dokonce i pomocí rutiny PS výhradně pro správu jejich nasazení v Azure. Protože rutiny týkající se Azure sdílejí stejné zásady vytváření názvů jako více než 2000 rutiny související s Windows, je snadný úkol pro správce Windows využívat tyto rutiny.
 
-Podívejte se na příklad tady: <https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
+Podívejte se na příklad tady:
+<https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 [comment]: <> (MShermannd TODO popisují při testování nového příkazu rozhraní příkazového řádku )
-Nasazení rozšíření Azure Monitoring for SAP (viz kapitola [řešení pro monitorování Azure pro SAP] [ planning-guide-9.1] v tomto dokumentu) je možné pouze prostřednictvím Powershellu nebo rozhraní příkazového řádku. Proto je nutné vytvořit a nakonfigurovat prostředí PowerShell nebo rozhraní příkazového řádku pro nasazování nebo správu systém SAP NetWeaver v Azure.  
+Nasazení rozšíření Azure Monitoring for SAP (viz kapitola [řešení pro monitorování Azure pro SAP] [ planning-guide-9.1] v tomto dokumentu) je možné pouze prostřednictvím Powershellu nebo rozhraní příkazového řádku. Proto je nutné vytvořit a nakonfigurovat prostředí PowerShell nebo rozhraní příkazového řádku pro nasazování nebo správu systém SAP NetWeaver v Azure.
+  
 
 Jak Azure poskytuje další funkce, nové rutiny PS se chystáte přidat, který vyžaduje aktualizace rutin. Proto je vhodné kontrolovat web Azure, stáhněte si alespoň jednou měsíc <https://azure.microsoft.com/downloads/> pro novou verzi rutin. Nová verze se nainstaluje na starší verzi.
 
@@ -946,15 +952,15 @@ Virtuální počítač nemusí být zobecněn a se dají nahrát, do stavu a obr
 ##### <a name="uploading-a-vhd-and-making-it-an-azure-disk"></a>Nahrání virtuálního pevného disku a jeho Disk s Azure
 V tomto případě chceme nahrání virtuálního pevného disku, s nebo bez operačního systému a připojit k virtuálnímu počítači jako datového disku nebo ho použít jako disk s operačním systémem. Toto je vícefázový proces
 
-**Powershell**
+**PowerShell**
 
-* Přihlaste se k předplatnému pomocí *Connect-AzureRmAccount*
-* Nastavení předplatného kontext s *Set-AzureRmContext* a parametr ID předplatného nebo SubscriptionName - naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>
-* Nahrání virtuálního pevného disku s *Add-AzureRmVhd* do účtu služby Azure Storage – naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>
-* (Volitelné) Vytvoření spravovaného disku z virtuálního pevného disku s *New-AzureRmDisk* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermdisk>
-* Nastavte disk s operačním systémem novou konfiguraci virtuálního počítače na virtuální pevný disk nebo spravovaný Disk s *Set-AzureRmVMOSDisk* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk>
-* Vytvořit nový virtuální počítač z konfigurace virtuálního počítače s *New-AzureRmVM* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm>
-* Přidání datového disku k novému virtuálnímu počítači přes *Add-AzureRmVMDataDisk* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvmdatadisk>
+* Přihlaste se k předplatnému pomocí *Connect AzAccount*
+* Nastavení předplatného kontext s *Set-AzContext* a parametr ID předplatného nebo SubscriptionName - naleznete v tématu <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
+* Nahrání virtuálního pevného disku s *přidat AzVhd* do účtu služby Azure Storage – naleznete v tématu <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
+* (Volitelné) Vytvoření spravovaného disku z virtuálního pevného disku s *New-AzDisk* -naleznete v tématu <https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk>
+* Nastavte disk s operačním systémem novou konfiguraci virtuálního počítače na virtuální pevný disk nebo spravovaný Disk s *Set-AzVMOSDisk* -naleznete v tématu <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
+* Vytvořit nový virtuální počítač z konfigurace virtuálního počítače s *rutiny New-AzVM* -naleznete v tématu <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
+* Přidání datového disku k novému virtuálnímu počítači přes *přidat AzVMDataDisk* -naleznete v tématu <https://docs.microsoft.com/powershell/module/az.compute/add-Azvmdatadisk>
 
 **Azure CLI**
 
@@ -975,14 +981,14 @@ V tomto případě chceme nahrání virtuálního pevného disku, s nebo bez ope
 K nahrání virtuálního pevného disku nebo existujícího virtuálního počítače z místní sítě, aby bylo možné ho použít jako image virtuálního počítače Azure virtuální počítač nebo virtuální pevný disk musí splňovat požadavky uvedené v kapitole [přípravy pro nasazení virtuálního počítače pomocí bitové kopie zákaznického pro SAP] [ planning-guide-5.2.2] tohoto dokumentu.
 
 * Použití *sysprep* na Windows nebo *waagent-zrušení zřízení* v Linuxu generalizace virtuálního počítače – viz [technické informace o nástroji Sysprep](https://technet.microsoft.com/library/cc766049.aspx) pro Windows nebo [zachycení Virtuální počítač Linux použít jako šablonu Resource Manageru] [ capture-image-linux-step-2-create-vm-image] pro Linux
-* Přihlaste se k předplatnému pomocí *Connect-AzureRmAccount*
-* Nastavení předplatného kontext s *Set-AzureRmContext* a parametr ID předplatného nebo SubscriptionName - naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>
-* Nahrání virtuálního pevného disku s *Add-AzureRmVhd* do účtu služby Azure Storage – naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>
-* (Volitelné) Vytvoření Image spravovaného disku z virtuálního pevného disku s *New-AzureRmImage* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermimage>
+* Přihlaste se k předplatnému pomocí *Connect AzAccount*
+* Nastavení předplatného kontext s *Set-AzContext* a parametr ID předplatného nebo SubscriptionName - naleznete v tématu <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
+* Nahrání virtuálního pevného disku s *přidat AzVhd* do účtu služby Azure Storage – naleznete v tématu <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
+* (Volitelné) Vytvoření Image spravovaného disku z virtuálního pevného disku s *New-AzImage* -naleznete v tématu <https://docs.microsoft.com/powershell/module/az.compute/new-Azimage>
 * Nastavit novou konfiguraci virtuálního počítače na disku operačního systému
-  * Virtuální pevný disk pomocí *Set-AzureRmVMOSDisk - SourceImageUri - CreateOption fromImage* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk>
-  * Spravované Image disku *Set-AzureRmVMSourceImage* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmsourceimage>
-* Vytvořit nový virtuální počítač z konfigurace virtuálního počítače s *New-AzureRmVM* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm>
+  * Virtuální pevný disk pomocí *Set AzVMOSDisk - SourceImageUri - CreateOption fromImage* -naleznete v tématu <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
+  * Spravované Image disku *Set-AzVMSourceImage* -naleznete v tématu <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmsourceimage>
+* Vytvořit nový virtuální počítač z konfigurace virtuálního počítače s *rutiny New-AzVM* -naleznete v tématu <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
 
 **Azure CLI**
 
@@ -1011,27 +1017,27 @@ Během doby stahování nemůže být aktivních virtuálních pevných disků n
   Nejdřív je potřeba získat přístup k podkladové blob spravovaného disku. Pak můžete zkopírovat základní objekt blob na nový účet úložiště a stáhnout objekt blob z tohoto účtu úložiště.
 
   ```powershell
-  $access = Grant-AzureRmDiskAccess -ResourceGroupName <resource group> -DiskName <disk name> -Access Read -DurationInSecond 3600
-  $key = (Get-AzureRmStorageAccountKey -ResourceGroupName <resource group> -Name <storage account name>)[0].Value
-  $destContext = (New-AzureStorageContext -StorageAccountName <storage account name -StorageAccountKey $key)
-  Start-AzureStorageBlobCopy -AbsoluteUri $access.AccessSAS -DestContainer <container name> -DestBlob <blob name> -DestContext $destContext
+  $access = Grant-AzDiskAccess -ResourceGroupName <resource group> -DiskName <disk name> -Access Read -DurationInSecond 3600
+  $key = (Get-AzStorageAccountKey -ResourceGroupName <resource group> -Name <storage account name>)[0].Value
+  $destContext = (New-AzStorageContext -StorageAccountName <storage account name -StorageAccountKey $key)
+  Start-AzStorageBlobCopy -AbsoluteUri $access.AccessSAS -DestContainer <container name> -DestBlob <blob name> -DestContext $destContext
   # Wait for blob copy to finish
-  Get-AzureStorageBlobCopyState -Container <container name> -Blob <blob name> -Context $destContext
-  Save-AzureRmVhd -SourceUri <blob in new storage account> -LocalFilePath <local file path> -StorageKey $key
+  Get-AzStorageBlobCopyState -Container <container name> -Blob <blob name> -Context $destContext
+  Save-AzVhd -SourceUri <blob in new storage account> -LocalFilePath <local file path> -StorageKey $key
   # Wait for download to finish
-  Revoke-AzureRmDiskAccess -ResourceGroupName <resource group> -DiskName <disk name>
+  Revoke-AzDiskAccess -ResourceGroupName <resource group> -DiskName <disk name>
   ```
 
 * Stažení virtuálního pevného disku  
-  Po zastavení systému SAP a virtuální počítač je vypnutý, můžete použít rutinu Powershellu Save-AzureRmVhd na cíli v místním stáhnout virtuální pevný disk disky zpátky do místního prostředí. Aby bylo možné provést, budete potřebovat adresu URL virtuálního pevného disku, které můžete vyhledat v funkcí "storage část" na webu Azure portal (třeba přejděte do účtu úložiště a kontejner úložiště, kde byl vytvořen virtuální pevný disk) a je potřeba vědět, kam zkopírovat virtuální pevný disk.
+  Po zastavení systému SAP a virtuální počítač je vypnutý, můžete použít rutinu Powershellu AzVhd uložit na cíli v místním stáhnout virtuální pevný disk disky zpátky do místního prostředí. Aby bylo možné provést, budete potřebovat adresu URL virtuálního pevného disku, které můžete vyhledat v funkcí "storage část" na webu Azure portal (třeba přejděte do účtu úložiště a kontejner úložiště, kde byl vytvořen virtuální pevný disk) a je potřeba vědět, kam zkopírovat virtuální pevný disk.
 
   Pak můžete využít příkaz tak, že definujete parametr SourceUri jako adresu URL virtuálního pevného disku ke stažení a LocalFilePath jako fyzické umístění virtuálního pevného disku (včetně názvu). Tento příkaz může vypadat třeba:
 
   ```powerhell
-  Save-AzureRmVhd -ResourceGroupName <resource group name of storage account> -SourceUri http://<storage account name>.blob.core.windows.net/<container name>/sapidedata.vhd -LocalFilePath E:\Azure_downloads\sapidesdata.vhd
+  Save-AzVhd -ResourceGroupName <resource group name of storage account> -SourceUri http://<storage account name>.blob.core.windows.net/<container name>/sapidedata.vhd -LocalFilePath E:\Azure_downloads\sapidesdata.vhd
   ```
 
-  Další podrobnosti o rutina Save-AzureRmVhd tady <https://docs.microsoft.com/powershell/module/azurerm.compute/save-azurermvhd>.
+  Podrobné informace uložit AzVhd rutiny tady <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd>.
 
 #### <a name="azure-cli"></a>Azure CLI
 * Stahování spravovaného disku  
@@ -1067,11 +1073,11 @@ Datové disky můžou být také Managed Disks. V takovém případě spravovan�
 
 ##### <a name="powershell"></a>PowerShell
 
-Rutiny prostředí Azure PowerShell můžete použít ke kopírování virtuálního pevného disku, jak je znázorněno v [v tomto článku][storage-powershell-guide-full-copy-vhd]. K vytvoření nového spravovaného disku, pomocí New-AzureRmDiskConfig a New-AzureRmDisk, jak je znázorněno v následujícím příkladu.
+Rutiny prostředí Azure PowerShell můžete použít ke kopírování virtuálního pevného disku, jak je znázorněno v [v tomto článku][storage-powershell-guide-full-copy-vhd]. K vytvoření nového spravovaného disku použijte nový AzDiskConfig a New-AzDisk jak je znázorněno v následujícím příkladu.
 
 ```powershell
-$config = New-AzureRmDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" -Location <location>
-New-AzureRmDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk $config
+$config = New-AzDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" -Location <location>
+New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk $config
 ```
 
 ##### <a name="azure-cli"></a>Azure CLI
@@ -1097,26 +1103,26 @@ Kopírování samotného virtuálního pevného disku v rámci účtu úložišt
 
 ```powershell
 # attach a vhd to a vm
-$vm = Get-AzureRmVM -ResourceGroupName <resource group name> -Name <vm name>
-$vm = Add-AzureRmVMDataDisk -VM $vm -Name newdatadisk -VhdUri <path to vhd> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption attach
-$vm | Update-AzureRmVM
+$vm = Get-AzVM -ResourceGroupName <resource group name> -Name <vm name>
+$vm = Add-AzVMDataDisk -VM $vm -Name newdatadisk -VhdUri <path to vhd> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption attach
+$vm | Update-AzVM
 
 # attach a managed disk to a vm
-$vm = Get-AzureRmVM -ResourceGroupName <resource group name> -Name <vm name>
-$vm = Add-AzureRmVMDataDisk -VM $vm -Name newdatadisk -ManagedDiskId <managed disk id> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption attach
-$vm | Update-AzureRmVM
+$vm = Get-AzVM -ResourceGroupName <resource group name> -Name <vm name>
+$vm = Add-AzVMDataDisk -VM $vm -Name newdatadisk -ManagedDiskId <managed disk id> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption attach
+$vm | Update-AzVM
 
 # attach a copy of the vhd to a vm
-$vm = Get-AzureRmVM -ResourceGroupName <resource group name> -Name <vm name>
-$vm = Add-AzureRmVMDataDisk -VM $vm -Name <disk name> -VhdUri <new path of vhd> -SourceImageUri <path to image vhd> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption fromImage
-$vm | Update-AzureRmVM
+$vm = Get-AzVM -ResourceGroupName <resource group name> -Name <vm name>
+$vm = Add-AzVMDataDisk -VM $vm -Name <disk name> -VhdUri <new path of vhd> -SourceImageUri <path to image vhd> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption fromImage
+$vm | Update-AzVM
 
 # attach a copy of the managed disk to a vm
-$vm = Get-AzureRmVM -ResourceGroupName <resource group name> -Name <vm name>
-$diskConfig = New-AzureRmDiskConfig -Location $vm.Location -CreateOption Copy -SourceUri <source managed disk id>
-$disk = New-AzureRmDisk -DiskName <disk name> -Disk $diskConfig -ResourceGroupName <resource group name>
-$vm = Add-AzureRmVMDataDisk -VM $vm -Caching <caching option> -Lun <lun, for example 0> -CreateOption attach -ManagedDiskId $disk.Id
-$vm | Update-AzureRmVM
+$vm = Get-AzVM -ResourceGroupName <resource group name> -Name <vm name>
+$diskConfig = New-AzDiskConfig -Location $vm.Location -CreateOption Copy -SourceUri <source managed disk id>
+$disk = New-AzDisk -DiskName <disk name> -Disk $diskConfig -ResourceGroupName <resource group name>
+$vm = Add-AzVMDataDisk -VM $vm -Caching <caching option> -Lun <lun, for example 0> -CreateOption attach -ManagedDiskId $disk.Id
+$vm | Update-AzVM
 ```
 ##### <a name="azure-cli"></a>Azure CLI
 
@@ -1144,18 +1150,18 @@ Můžete také zkopírovat virtuální pevné disky mezi předplatnými. Další
 
 Základní tok logiky rutiny PS vypadá takto:
 
-* Vytvořte kontext účtu úložiště pro **zdroj** účtu úložiště pomocí *New-AzureStorageContext* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext>
-* Vytvořte kontext účtu úložiště pro **cílové** účtu úložiště pomocí *New-AzureStorageContext* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext>
+* Vytvořte kontext účtu úložiště pro **zdroj** účtu úložiště pomocí *New-AzStorageContext* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext>
+* Vytvořte kontext účtu úložiště pro **cílové** účtu úložiště pomocí *New-AzStorageContext* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext>
 * Začít kopírovat s
 
 ```powershell
-Start-AzureStorageBlobCopy -SrcBlob <source blob name> -SrcContainer <source container name> -SrcContext <variable containing context of source storage account> -DestBlob <target blob name> -DestContainer <target container name> -DestContext <variable containing context of target storage account>
+Start-AzStorageBlobCopy -SrcBlob <source blob name> -SrcContainer <source container name> -SrcContext <variable containing context of source storage account> -DestBlob <target blob name> -DestContainer <target container name> -DestContext <variable containing context of target storage account>
 ```
 
 * Zkontrolujte stav kopírování ve smyčce s
 
 ```powershell
-Get-AzureStorageBlobCopyState -Blob <target blob name> -Container <target container name> -Context <variable containing context of target storage account>
+Get-AzStorageBlobCopyState -Blob <target blob name> -Container <target container name> -Context <variable containing context of target storage account>
 ```
 
 * K virtuálnímu počítači připojte nový virtuální pevný disk, jak je popsáno výše.
@@ -1257,7 +1263,7 @@ Během nasazení nového virtuálního počítače můžete rozhodnout, jestli c
 
 Dále musíte rozhodnout, jestli chcete vytvořit nový a prázdný disk nebo jestli chcete vybrat stávající disk, který byl dříve odeslán a by měl být připojen k virtuálnímu počítači teď.
 
-**DŮLEŽITÉ**: Můžete **neměňte** chcete používat ukládání do mezipaměti hostitele s Azure Storage úrovně Standard. Preference mezipaměti hostitele by měl ponechte výchozí hodnotu NONE. S Azure Storage úrovně Premium byste měli povolit ukládání do mezipaměti pro čtení je-li vlastnost vstupně-výstupních operací je většinou pro čtení, stejně jako typický vstupně-výstupní operace proti datové soubory databáze. V případě soubor protokolu transakcí databáze se doporučuje neexistující ukládání do mezipaměti.
+**DŮLEŽITÉ:** Můžete **neměňte** chcete používat ukládání do mezipaměti hostitele s Azure Storage úrovně Standard. Preference mezipaměti hostitele by měl ponechte výchozí hodnotu NONE. S Azure Storage úrovně Premium byste měli povolit ukládání do mezipaměti pro čtení je-li vlastnost vstupně-výstupních operací je většinou pro čtení, stejně jako typický vstupně-výstupní operace proti datové soubory databáze. V případě soubor protokolu transakcí databáze se doporučuje neexistující ukládání do mezipaměti.
 
 - - -
 > ![Windows][Logo_Windows] Windows
@@ -1326,7 +1332,8 @@ Zobrazit architektury rozdíl mezi modelu classic a ARM, jak je popsáno v [v to
 
 #### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Konfigurace připojení k systému SAP a SAP grafickým uživatelským rozhraním přes internet
 
-Podrobnosti najdete v článku, který popisuje podrobnosti k tomuto tématu: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
+Podrobnosti najdete v článku, který popisuje podrobnosti k tomuto tématu:
+<https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
 
 #### <a name="changing-firewall-settings-within-vm"></a>Změna nastavení brány Firewall na virtuálním počítači
 
@@ -1372,7 +1379,7 @@ jak je uvedeno v [nastavení zabezpečení pro Server zpráv SAP](https://help.s
 
 ![Systémy jeden virtuální počítač SAP ukázka se stejnými názvy virtuálních počítačů, izolovaný v Azure Cloud Services][planning-guide-figure-1700]
 
-V tomto scénáři jsme implementujete scénář systému typické školení/ukázka kde scénář kompletní školení/ukázka je součástí jednoho virtuálního počítače. Předpokládáme, že nasazení se provádí prostřednictvím image šablony virtuálních počítačů. Také předpokládáme této více tyto ukázky a školení virtuální počítače vyžadují k nasazení s virtuálními počítači, který má stejný název. Systémy celý školení nemají připojení k vaší místní prostředky a jsou opak k hybridního nasazení.
+V tomto scénáři jsme implementujete scénář systému typické školení/ukázka kde scénář kompletní školení/ukázka je součástí jednoho virtuálního počítače. Předpokládáme, že nasazení se provádí prostřednictvím image šablony virtuálních počítačů. Také předpokládáme této více tyto ukázky a školení virtuální počítače vyžadují k nasazení s virtuálními počítači, který má stejný název. Systémy celý školení nemají připojení k vaší místním výpočetním prostředkům a jsou opak pro hybridní nasazení.
 
 Předpokladem je, že jste vytvořili Image virtuálního počítače, jak je popsáno v některé části kapitoly [Příprava virtuálních počítačů s řešením SAP pro Azure] [ planning-guide-5.2] v tomto dokumentu.
 
@@ -1384,39 +1391,39 @@ Posloupnost událostí k implementaci scénáře vypadá takto:
 
 ```powershell
 $rgName = "SAPERPDemo1"
-New-AzureRmResourceGroup -Name $rgName -Location "North Europe"
+New-AzResourceGroup -Name $rgName -Location "North Europe"
 ```
 * Vytvořit nový účet úložiště, pokud nechcete používat službu Managed Disks
 
 ```powershell
 $suffix = Get-Random -Minimum 100000 -Maximum 999999
-$account = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name "saperpdemo$suffix" -SkuName Standard_LRS -Kind "Storage" -Location "North Europe"
+$account = New-AzStorageAccount -ResourceGroupName $rgName -Name "saperpdemo$suffix" -SkuName Standard_LRS -Kind "Storage" -Location "North Europe"
 ```
 
 * Vytvořte novou virtuální síť pro každou školení/ukázku na šířku umožňující použití stejného názvu hostitele a IP adres. Virtuální síť je chráněný skupinou zabezpečení sítě, která umožňuje pouze provoz na portu 3389 pro povolení přístupu ke vzdálené ploše a port 22 pro SSH.
 
 ```powershell
 # Create a new Virtual Network
-$rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name SAPERPDemoNSGRDP -Protocol * -SourcePortRange * -DestinationPortRange 3389 -Access Allow -Direction Inbound -SourceAddressPrefix * -DestinationAddressPrefix * -Priority 100
-$sshRule = New-AzureRmNetworkSecurityRuleConfig -Name SAPERPDemoNSGSSH -Protocol * -SourcePortRange * -DestinationPortRange 22 -Access Allow -Direction Inbound -SourceAddressPrefix * -DestinationAddressPrefix * -Priority 101
-$nsg = New-AzureRmNetworkSecurityGroup -Name SAPERPDemoNSG -ResourceGroupName $rgName -Location  "North Europe" -SecurityRules $rdpRule,$sshRule
+$rdpRule = New-AzNetworkSecurityRuleConfig -Name SAPERPDemoNSGRDP -Protocol * -SourcePortRange * -DestinationPortRange 3389 -Access Allow -Direction Inbound -SourceAddressPrefix * -DestinationAddressPrefix * -Priority 100
+$sshRule = New-AzNetworkSecurityRuleConfig -Name SAPERPDemoNSGSSH -Protocol * -SourcePortRange * -DestinationPortRange 22 -Access Allow -Direction Inbound -SourceAddressPrefix * -DestinationAddressPrefix * -Priority 101
+$nsg = New-AzNetworkSecurityGroup -Name SAPERPDemoNSG -ResourceGroupName $rgName -Location  "North Europe" -SecurityRules $rdpRule,$sshRule
 
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name Subnet1 -AddressPrefix  10.0.1.0/24 -NetworkSecurityGroup $nsg
-$vnet = New-AzureRmVirtualNetwork -Name SAPERPDemoVNet -ResourceGroupName $rgName -Location "North Europe"  -AddressPrefix 10.0.1.0/24 -Subnet $subnetConfig
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name Subnet1 -AddressPrefix  10.0.1.0/24 -NetworkSecurityGroup $nsg
+$vnet = New-AzVirtualNetwork -Name SAPERPDemoVNet -ResourceGroupName $rgName -Location "North Europe"  -AddressPrefix 10.0.1.0/24 -Subnet $subnetConfig
 ```
 
 * Vytvoření nové veřejné IP adresy, který slouží pro přístup k virtuálnímu počítači z Internetu
 
 ```powershell
 # Create a public IP address with a DNS name
-$pip = New-AzureRmPublicIpAddress -Name SAPERPDemoPIP -ResourceGroupName $rgName -Location "North Europe" -DomainNameLabel $rgName.ToLower() -AllocationMethod Dynamic
+$pip = New-AzPublicIpAddress -Name SAPERPDemoPIP -ResourceGroupName $rgName -Location "North Europe" -DomainNameLabel $rgName.ToLower() -AllocationMethod Dynamic
 ```
 
 * Vytvořit nové síťové rozhraní virtuálního počítače
 
 ```powershell
 # Create a new Network Interface
-$nic = New-AzureRmNetworkInterface -Name SAPERPDemoNIC -ResourceGroupName $rgName -Location "North Europe" -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
+$nic = New-AzNetworkInterface -Name SAPERPDemoNIC -ResourceGroupName $rgName -Location "North Europe" -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
 ```
 
 * Vytvoří virtuální počítač. V tomto scénáři bude mít každý virtuální počítač se stejným názvem. Identifikátor SID SAP instancí SAP NetWeaver v těchto virtuálních počítačů budou stejné i. V rámci skupiny prostředků Azure musí být jedinečný název virtuálního počítače, ale v různých skupinách prostředků Azure můžete spouštět virtuální počítače se stejným názvem. Výchozí účet "Administrator" Windows nebo "root" pro Linux nejsou platné. Nové uživatelské jméno správce proto musí být definován společně heslem. Velikost virtuálního počítače taky musí být definován.
@@ -1426,20 +1433,20 @@ $nic = New-AzureRmNetworkInterface -Name SAPERPDemoNIC -ResourceGroupName $rgNam
 # Create a new virtual machine with an official image from the Azure Marketplace
 #####
 $cred=Get-Credential -Message "Type the name and password of the local administrator account."
-$vmconfig = New-AzureRmVMConfig -VMName SAPERPDemo -VMSize Standard_D11
+$vmconfig = New-AzVMConfig -VMName SAPERPDemo -VMSize Standard_D11
 
 # select image
-$vmconfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2012-R2-Datacenter" -Version "latest"
-$vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Windows -ComputerName "SAPERPDemo" -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-# $vmconfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName "SUSE" -Offer "SLES-SAP" -Skus "12-SP1" -Version "latest"
-# $vmconfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName "RedHat" -Offer "RHEL" -Skus "7.2" -Version "latest"
-# $vmconfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName "Oracle" -Offer "Oracle-Linux" -Skus "7.2" -Version "latest"
-# $vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Linux -ComputerName "SAPERPDemo" -Credential $cred
+$vmconfig = Set-AzVMSourceImage -VM $vmconfig -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2012-R2-Datacenter" -Version "latest"
+$vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Windows -ComputerName "SAPERPDemo" -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
+# $vmconfig = Set-AzVMSourceImage -VM $vmconfig -PublisherName "SUSE" -Offer "SLES-SAP" -Skus "12-SP1" -Version "latest"
+# $vmconfig = Set-AzVMSourceImage -VM $vmconfig -PublisherName "RedHat" -Offer "RHEL" -Skus "7.2" -Version "latest"
+# $vmconfig = Set-AzVMSourceImage -VM $vmconfig -PublisherName "Oracle" -Offer "Oracle-Linux" -Skus "7.2" -Version "latest"
+# $vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Linux -ComputerName "SAPERPDemo" -Credential $cred
 
-$vmconfig = Add-AzureRmVMNetworkInterface -VM $vmconfig -Id $nic.Id
+$vmconfig = Add-AzVMNetworkInterface -VM $vmconfig -Id $nic.Id
 
-$vmconfig = Set-AzureRmVMBootDiagnostics -Disable -VM $vmconfig
-$vm = New-AzureRmVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmconfig
+$vmconfig = Set-AzVMBootDiagnostics -Disable -VM $vmconfig
+$vm = New-AzVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmconfig
 ```
 
 ```powershell
@@ -1447,20 +1454,20 @@ $vm = New-AzureRmVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmc
 # Create a new virtual machine with a VHD that contains the private image that you want to use
 #####
 $cred=Get-Credential -Message "Type the name and password of the local administrator account."
-$vmconfig = New-AzureRmVMConfig -VMName SAPERPDemo -VMSize Standard_D11
+$vmconfig = New-AzVMConfig -VMName SAPERPDemo -VMSize Standard_D11
 
-$vmconfig = Add-AzureRmVMNetworkInterface -VM $vmconfig -Id $nic.Id
+$vmconfig = Add-AzVMNetworkInterface -VM $vmconfig -Id $nic.Id
 
 $diskName="osfromimage"
 $osDiskUri=$account.PrimaryEndpoints.Blob.ToString() + "vhds/" + $diskName  + ".vhd"
 
-$vmconfig = Set-AzureRmVMOSDisk -VM $vmconfig -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri <path to VHD that contains the OS image> -Windows
-$vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Windows -ComputerName "SAPERPDemo" -Credential $cred
-#$vmconfig = Set-AzureRmVMOSDisk -VM $vmconfig -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri <path to VHD that contains the OS image> -Linux
-#$vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Linux -ComputerName "SAPERPDemo" -Credential $cred
+$vmconfig = Set-AzVMOSDisk -VM $vmconfig -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri <path to VHD that contains the OS image> -Windows
+$vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Windows -ComputerName "SAPERPDemo" -Credential $cred
+#$vmconfig = Set-AzVMOSDisk -VM $vmconfig -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri <path to VHD that contains the OS image> -Linux
+#$vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Linux -ComputerName "SAPERPDemo" -Credential $cred
 
-$vmconfig = Set-AzureRmVMBootDiagnostics -Disable -VM $vmconfig
-$vm = New-AzureRmVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmconfig
+$vmconfig = Set-AzVMBootDiagnostics -Disable -VM $vmconfig
+$vm = New-AzVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmconfig
 ```
 
 ```powershell
@@ -1468,29 +1475,29 @@ $vm = New-AzureRmVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmc
 # Create a new virtual machine with a Managed Disk Image
 #####
 $cred=Get-Credential -Message "Type the name and password of the local administrator account."
-$vmconfig = New-AzureRmVMConfig -VMName SAPERPDemo -VMSize Standard_D11
+$vmconfig = New-AzVMConfig -VMName SAPERPDemo -VMSize Standard_D11
 
-$vmconfig = Add-AzureRmVMNetworkInterface -VM $vmconfig -Id $nic.Id
+$vmconfig = Add-AzVMNetworkInterface -VM $vmconfig -Id $nic.Id
 
-$vmconfig = Set-AzureRmVMSourceImage -VM $vmconfig -Id <Id of Managed Disk Image>
-$vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Windows -ComputerName "SAPERPDemo" -Credential $cred
-#$vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Linux -ComputerName "SAPERPDemo" -Credential $cred
+$vmconfig = Set-AzVMSourceImage -VM $vmconfig -Id <Id of Managed Disk Image>
+$vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Windows -ComputerName "SAPERPDemo" -Credential $cred
+#$vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Linux -ComputerName "SAPERPDemo" -Credential $cred
 
-$vmconfig = Set-AzureRmVMBootDiagnostics -Disable -VM $vmconfig
-$vm = New-AzureRmVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmconfig
+$vmconfig = Set-AzVMBootDiagnostics -Disable -VM $vmconfig
+$vm = New-AzVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmconfig
 ```
 
 * Volitelně můžete přidat další disky a nezbytné obsah obnovit. Všechny názvy objektů blob (adresy URL do objektů BLOB) musí být jedinečný v rámci Azure.
 
 ```powershell
 # Optional: Attach additional VHD data disks
-$vm = Get-AzureRmVM -ResourceGroupName $rgName -Name SAPERPDemo
+$vm = Get-AzVM -ResourceGroupName $rgName -Name SAPERPDemo
 $dataDiskUri = $account.PrimaryEndpoints.Blob.ToString() + "vhds/datadisk.vhd"
-Add-AzureRmVMDataDisk -VM $vm -Name datadisk -VhdUri $dataDiskUri -DiskSizeInGB 1023 -CreateOption empty | Update-AzureRmVM
+Add-AzVMDataDisk -VM $vm -Name datadisk -VhdUri $dataDiskUri -DiskSizeInGB 1023 -CreateOption empty | Update-AzVM
 
 # Optional: Attach additional Managed Disks
-$vm = Get-AzureRmVM -ResourceGroupName $rgName -Name SAPERPDemo
-Add-AzureRmVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption empty -Lun 0 | Update-AzureRmVM
+$vm = Get-AzVM -ResourceGroupName $rgName -Name SAPERPDemo
+Add-AzVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption empty -Lun 0 | Update-AzVM
 ```
 
 ##### <a name="cli"></a>Rozhraní příkazového řádku
@@ -2020,10 +2027,12 @@ Ale v průběhu poslední rok center vyvinutá partnery společné umístění d
 Závisí na zvolené (úrovně 2 nebo 3 vrstvy) existuje konfiguraci SAP může být potřeba zálohovat. Obsah samotných virtuálních počítačů a vytvořit zálohu databáze. Zálohy DBMS související se očekává, že provádí pomocí metody databáze. Podrobný popis různých databázích, najdete v [DBMS průvodce][dbms-guide]. Na druhé straně SAP data lze zálohovat offline způsobem (včetně obsahu databáze také) jak je popsáno v této části nebo online jak je popsáno v další části.
 
 Zálohování offline by vyžadovaly v podstatě vypnutí virtuálního počítače na webu Azure portal a zkopírovat základní disk virtuálního počítače a všechny připojené disky na virtuálním počítači. To by zachovat bodu v čase image virtuálního počítače a jeho přidružený disk. Se doporučuje zkopírovat zálohy do jiného účtu úložiště Azure. Proto postup najdete v kapitole [kopírování disků mezi účty Azure Storage] [ planning-guide-5.4.2] tohoto dokumentu se vztahují.
-Kromě vypnutí počítače pomocí webu Azure portal, jeden to také udělat prostřednictvím Powershellu nebo CLI podle postupu popsaného tady: <https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
+Kromě vypnutí počítače pomocí webu Azure portal, jeden to také udělat prostřednictvím Powershellu nebo CLI podle postupu popsaného tady:
+<https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
 
 Obnovit tento stav by obsahovat odstranění základní virtuální počítač, stejně jako původní disky základní virtuální počítač a připojené disky uložené disky kopírování zpátky do původní skupiny prostředků nebo účtu úložiště za spravované disky a pak znovu nasadit v systému.
-Tento článek ukazuje příklad, jak skriptu tento proces v prostředí Powershell: <http://www.westerndevs.com/azure-snapshots/>
+Tento článek ukazuje příklad, jak skriptu tento proces v prostředí Powershell:
+<http://www.westerndevs.com/azure-snapshots/>
 
 Zkontrolujte prosím, že k instalaci nové licence SAP od obnovení zálohování virtuálních počítačů, jak je popsáno výše se vytvoří nový klíč hardwaru.
 
@@ -2047,7 +2056,8 @@ Ostatní virtuální počítače v rámci systému SAP můžete zálohovat pomoc
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Neexistuje žádný ekvivalent k Windows stínové kopie svazku v systému Linux. Proto pouze konzistentní zálohování jsou zálohy je to možné, ale není konzistentní s aplikací. Zálohování SAP DBMS by mělo být provedeno pomocí funkce DBMS. Systém souborů, které zahrnují data související s SAP můžete uložit, například pomocí cíl jak je popsáno zde: <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
+> Neexistuje žádný ekvivalent k Windows stínové kopie svazku v systému Linux. Proto pouze konzistentní zálohování jsou zálohy je to možné, ale není konzistentní s aplikací. Zálohování SAP DBMS by mělo být provedeno pomocí funkce DBMS. Systém souborů, které zahrnují data související s SAP můžete uložit, například pomocí cíl jak je popsáno zde:
+> <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
 >
 

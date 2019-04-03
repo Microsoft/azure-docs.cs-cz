@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 09ccc938f6b09b9f0d5c5849770fe8b49b4b0e55
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 34f207b3c82ada0cb20152bb71ae900f5de132cb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541179"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878311"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Řešení potíží s replikací virtuálních počítačů Azure do Azure
 
@@ -27,7 +27,7 @@ Tento článek popisuje běžné problémy ve službě Azure Site Recovery při 
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Problémy s kvótou prostředků Azure (kód chyby: 150097)
 Předplatné musí být povolené k vytvoření virtuálních počítačů Azure v cílové oblasti, kterou plánujete používat jako vaší oblasti pro zotavení po havárii. Vaše předplatné navíc by měl mít dostatečná kvóta k vytvoření virtuálních počítačů z určité velikosti. Ve výchozím nastavení služba Site Recovery vybere pro cílový virtuální počítač stejné velikosti jako zdrojový virtuální počítač. Pokud není k dispozici odpovídající velikost, se automaticky vybere nejbližší možnou velikost. Pokud neexistuje žádný odpovídající velikost, která podporuje konfiguraci zdrojového počítače, zobrazí se tato chybová zpráva:
 
-**Kód chyby:** | **Možné příčiny** | **Doporučení**
+**Kód chyby** | **Možné příčiny** | **Doporučení**
 --- | --- | ---
 150097<br></br>**Zpráva**: Pro virtuální počítač VmName nebylo možné povolit replikaci. | – K vytvoření virtuálních počítačů v cílové oblasti umístění možná není povoleno ID předplatného.</br></br>– ID předplatného může být vypnutá nebo nemá dostatečnou kvótu pro vytvoření určité velikosti virtuálních počítačů v cílové oblasti umístění.</br></br>-Vhodná Cílová velikost virtuálního počítače, který odpovídá zdroji počet síťové karty virtuálního počítače (2) nebyl nalezen pro ID předplatného v umístění cílové oblasti.| Kontakt [podporu fakturace Azure](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) umožňující vytváření virtuálních počítačů pro velikosti virtuálních počítačů v cílové umístění pro vaše předplatné. Po jeho povolení, zkuste neúspěšnou operaci.
 
@@ -40,7 +40,7 @@ Pokud cílová lokalita obsahuje omezení kapacity, zakažte replikaci a povolte
 
 Pokud všechny nejnovějších důvěryhodných kořenových certifikátů nejsou k dispozici na virtuálním počítači, vaše úloha "povolit replikaci" může selhat. Bez certifikátu ověřování a autorizaci volání služby Site Recovery z virtuálního počítače selže. Zobrazí se chybová zpráva pro neúspěšnou úlohu Site Recovery "povolit replikaci":
 
-**Kód chyby:** | **Možná příčina** | **Recommendations** (Doporučení)
+**Kód chyby** | **Možná příčina** | **Doporučení**
 --- | --- | ---
 151066<br></br>**Zpráva**: Nepovedlo se nakonfigurovat službu Site Recovery. | Požadované důvěryhodné kořenové certifikáty se používají pro autorizaci a ověřování nejsou na počítači. | -Pro virtuální počítač s operačním systémem Windows Ujistěte se, že jsou důvěryhodných kořenových certifikátů na počítači. Informace najdete v tématu [konfigurovat Důvěryhodné kořeny a zakázané certifikáty](https://technet.microsoft.com/library/dn265983.aspx).<br></br>-Pro virtuální počítač s operačním systémem Linux postupujte podle pokynů pro důvěryhodné kořenové certifikáty publikovaných distributorem verze operačního systému Linux.
 
@@ -157,7 +157,7 @@ U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy
 ### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Úkol 1: Nepovedlo se zaregistrovat virtuální počítač Azure s využitím Site Recovery (151195) </br>
 - **Možná příčina** </br>
   - Nelze navázat připojení ke koncovým bodům obnovení lokality kvůli chybě rozlišení DNS.
-  - To je často viděli při opětovné ochrany když budete mít převzetí služeb při selhání virtuálního počítače, ale DNS server není dostupný z oblasti pro zotavení po Havárii.
+  - Častěji k tomu dochází při opětovném nastavování ochrany po převzetí služeb při selhání virtuálního počítače, kdy server DNS není dostupný z oblasti pro zotavení po havárii.
 
 - **Řešení**
    - Pokud používáte vlastní DNS, ujistěte se, že DNS server přístupný z oblasti pro zotavení po havárii. Ke kontrole, pokud máte vlastní DNS, přejděte do virtuálního počítače > síť pro obnovení po havárii > servery DNS. Zkuste se na serveru DNS z virtuálního počítače. Pokud není k dispozici a pak si všechno přístupné selhání serveru DNS nebo vytvoření čáry lokality mezi sítí zotavení po Havárii a DNS.
@@ -185,7 +185,7 @@ U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy
   - Azure Site Recovery vyžaduje přístup k [rozsahy IP služby Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) v závislosti na oblasti. Ujistěte se, že požadované rozsahy ip adres jsou přístupné z virtuálního počítače.
 
 
-### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>Úkol 4: Pokud síťový provoz prochází skrz místní proxy server (151072) se nezdařila replikace A2A
+### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>Úkol 4: Pokud síťový provoz prochází skrz místní proxy server (151072) se nezdařila replikace A2A
 - **Možná příčina** </br>
   - Nastavení vlastní proxy server jsou neplatné a agenta služby Mobility Azure Site Recovery bez automatického rozpoznávání nastavení proxy serveru z Internet Exploreru
 
@@ -193,11 +193,11 @@ U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy
 - **Řešení**
   1. Agent služby mobility zjišťuje nastavení proxy serveru z aplikace Internet Explorer ve Windows a /etc/environment v Linuxu.
   2. Pokud chcete nastavit proxy server pouze pro služby Mobility Azure Site Recovery, můžete zadat podrobnosti o serveru proxy v ProxyInfo.conf umístění:</br>
-     - ``/usr/local/InMage/config/`` na ***Linux***
-     - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` na ***Windows***
+     - ``/usr/local/InMage/config/`` on ***Linux***
+     - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` on ***Windows***
   3. ProxyInfo.conf by měl mít nastavení proxy serveru v následujícím formátu INI.</br>
                 *proxy [Server]*</br>
-                *Adresa =http://1.2.3.4*</br>
+                *Address=http://1.2.3.4*</br>
                 *Port = 567*</br>
   4. Agenta služby Mobility Azure Site Recovery podporuje pouze ***neověřené proxy servery***.
 
@@ -209,7 +209,7 @@ Na seznam povolených [požadované adresy URL](azure-to-azure-about-networking.
 
 Nový disk připojen k virtuálnímu počítači musí být inicializován.
 
-**Kód chyby:** | **Možné příčiny** | **Recommendations** (Doporučení)
+**Kód chyby** | **Možné příčiny** | **Doporučení**
 --- | --- | ---
 150039<br></br>**Zpráva**: Azure datovým diskem (DiskName) (DiskURI) s logickou jednotkou (LUN) (LUNValue) nebyl namapován na odpovídající disk ohlášený z virtuálního počítače, který má stejnou hodnotu LUN. | -Nový datový disk byl připojen k virtuálnímu počítači, ale nebyl inicializován.</br></br>-Datový disk ve virtuálním počítači nehlásí správně hodnotu logické jednotky, ve kterém byl připojen k virtuálnímu počítači.| Zajistěte, aby se inicializují datové disky a pak zkuste operaci zopakovat.</br></br>Ve Windows: [Připojení a inicializovat nový disk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).</br></br>Pro Linux: [Inicializovat nový datový disk v systému Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 
@@ -282,7 +282,7 @@ Pokud chcete povolit replikaci na virtuálním počítači, by měla být stav z
 
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM +/ Chyba služby Stínová kopie svazku (kód chyby: 151025)
 
-**Kód chyby:** | **Možné příčiny** | **Recommendations** (Doporučení)
+**Kód chyby** | **Možné příčiny** | **Doporučení**
 --- | --- | ---
 151025<br></br>**Zpráva**: Rozšíření služby Site recovery se nepodařilo nainstalovat | -Služba "aplikace modelu COM + systému" zakázána.</br></br>-Služba Stínová kopie svazku je zakázaná.| Nastavte služby "aplikace modelu COM + systému" a Stínová kopie svazku na automatický nebo ruční režim spouštění.
 
@@ -294,7 +294,7 @@ Můžete otevřít konzolu "Služby" a zajistit "Aplikace COM + systému" a Stí
 ## <a name="unsupported-managed-disk-size-error-code-150172"></a>Nepodporovaná spravovat velikost disku (kód chyby: 150172)
 
 
-**Kód chyby:** | **Možné příčiny** | **Recommendations** (Doporučení)
+**Kód chyby** | **Možné příčiny** | **Doporučení**
 --- | --- | ---
 150172<br></br>**Zpráva**: Nebylo možné povolit ochranu pro virtuální počítač je na něm (DiskName) s velikostí (DiskSize), která je menší než minimální podporovaná velikost 1024 MB. | – Disk je menší než podporovaná velikost 1 024 MB| Zajistěte, aby velikost disku spadají do rozsahu podporovaných velikostí a zkuste operaci zopakovat. 
 

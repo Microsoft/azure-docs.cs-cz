@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: 1059dec80dcca80380b58aa8057162679496adc6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0f87645537576f49ee04b823341acf8853798f88
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467369"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882221"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Přenos dat pomocí AzCopy v Linuxu
 
@@ -102,7 +102,7 @@ azcopy \
     --source-key <key> 
 ```
 
-Pokud složka `/mnt/myfiles` buď neexistuje, AzCopy ho vytvoří a stáhne `abc.txt ` do nové složky. 
+Pokud složka `/mnt/myfiles` buď neexistuje, AzCopy ho vytvoří a stáhne `abc.txt` do nové složky. 
 
 ### <a name="download-single-blob-from-secondary-region"></a>Stáhněte si jeden objekt blob ze sekundární oblasti
 
@@ -704,8 +704,8 @@ Další informace o službě Azure Storage a AzCopy najdete v následujících z
 
 ### <a name="azure-storage-documentation"></a>Dokumentace k Azure Storage:
 * [Seznámení se službou Azure Storage](../storage-introduction.md)
-* [Vytvoření účtu úložiště](../storage-create-storage-account.md)
-* [Správa objektů blob pomocí Průzkumníka služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
+* [vytvořit účet úložiště](../storage-create-storage-account.md)
+* [Správa objektů blob pomocí Storage Exploreru](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
 * [Použití Azure CLI s Azure Storage](../storage-azure-cli.md)
 * [Používání úložiště Blob z jazyka C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Používání úložiště Blob z Javy](../blobs/storage-java-how-to-use-blob-storage.md)

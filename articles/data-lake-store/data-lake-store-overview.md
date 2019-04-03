@@ -3,19 +3,19 @@ title: Přehled služby Azure Data Lake Storage Gen1 | Dokumentace Microsoftu
 description: Pochopit, jaké Gen1 úložiště Data Lake je (dříve označované jako Azure Data Lake Store) a hodnota, kterou nabízí oproti jiným úložištím dat
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: b733a0bec20c7abae5df41acd74284bdf75bca2c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: twooley
+ms.openlocfilehash: 438eab091fac103b66f0789beca0098b87ee44cd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124129"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885651"
 ---
 # <a name="overview-of-azure-data-lake-storage-gen1"></a>Přehled služby Azure Data Lake Storage Gen1
 
@@ -45,7 +45,7 @@ Data Lake Storage Gen1 poskytuje neomezené úložiště a je vhodná pro uklád
 ### <a name="performance-tuned-for-big-data-analytics"></a>Optimalizace výkonu pro analýzu velkých objemů dat
 Data Lake Storage Gen1 je sestavena pro spouštění rozsáhlých analytických systémů, které vyžadují mimořádně velkou propustnost pro dotazy a analýzu velkých objemů dat. Úložiště Data Lake rozděluje části souborů do několika jednotlivých serverů úložiště. Tím se zvyšuje propustnost čtení při paralelním čtení souboru pro provádění analýz dat.
 
-### <a name="enterprise-ready-highly-available-and-secure"></a>Připraveno pro podniky: Vysoká dostupnost a zabezpečení
+### <a name="enterprise-ready-highly-available-and-secure"></a>Připraveno pro podniky: Vysoce dostupnou a zabezpečenou
 Data Lake Storage Gen1 poskytuje standardní dostupnost a spolehlivost. Vaše datové prostředky se ukládají odolným způsobem díky vytváření redundantních kopií, které chrání před neočekávaným selháním. Podniky můžete v rámci svých řešení použít Gen1 úložiště Data Lake jako důležitou součást svojí stávající datové platformy.
 
 Data Lake Storage Gen1 také poskytuje zabezpečení na podnikové úrovni pro uložená data. Další informace najdete v tématu [zabezpečení dat v Azure Data Lake Storage Gen1](#DataLakeStoreSecurity).

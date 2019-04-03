@@ -13,10 +13,10 @@ ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
 ms.openlocfilehash: 01fce9813299465767bdaed7f3c2939813cfab87
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: MT
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
+ms.lasthandoff: 04/03/2019
 ms.locfileid: "56339479"
 ---
 # <a name="azure-functions-developers-guide"></a>Příručka pro vývojáře Azure Functions
@@ -48,9 +48,9 @@ Soubor function.json definuje aktivační události této funkce, vazby a dalš�
 
 | Vlastnost | Hodnoty a typy | Komentáře |
 | --- | --- | --- |
-| `type` |řetězec |Typ vazby. Například, `queueTrigger`. |
+| `type` |string |Typ vazby. Například, `queueTrigger`. |
 | `direction` |"in" "out" |Označuje, zda vazba pro příjem dat do funkce nebo odesílání dat z funkce. |
-| `name` |řetězec |Název, který se používá k vázaným datům ve funkci. Pro jazyk C# Toto je název argumentu; pro jazyk JavaScript je klíč v seznamu klíč/hodnota. |
+| `name` |string |Název, který se používá k vázaným datům ve funkci. Pro jazyk C# Toto je název argumentu; pro jazyk JavaScript je klíč v seznamu klíč/hodnota. |
 
 ## <a name="function-app"></a>Function App
 Aplikace function app poskytuje kontext spuštění v Azure, ve kterém funkce spuštěné. Aplikace function app se skládá z jedné nebo více jednotlivých funkcí, které jsou spravované, nasazovat a škálovat společně. Všechny funkce v aplikaci function app sdílejí stejné cenový plán, průběžného nasazování a verze modulu runtime. Aplikace function app můžete představit jako způsob, jak uspořádat a kolektivně spravovat vaše funkce. 
@@ -88,7 +88,7 @@ Kód pro službu Azure Functions je typu open source a uložená v úložištíc
 * [Hostitele služby Azure Functions](https://github.com/Azure/azure-functions-host/)
 * [Portál Azure Functions](https://github.com/azure/azure-functions-ux)
 * [Šablony Azure Functions](https://github.com/azure/azure-functions-templates)
-* [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/)
+* [Sada Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/)
 * [Rozšíření Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk-extensions/)
 
 ## <a name="bindings"></a>Vazby
@@ -105,7 +105,7 @@ Máte problémy s chyby pocházející z vazby? Zkontrolujte [kódy chyb vazeb A
 Další informace najdete v následujících materiálech:
 
 * [Azure Functions aktivačními událostmi a vazbami](functions-triggers-bindings.md)
-* [Místní psaní kódu a testování funkcí Azure Functions](./functions-develop-local.md)
-* [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
+* [Kódování a testování Azure Functions místně](./functions-develop-local.md)
+* [Osvědčené postupy pro Azure Functions](functions-best-practices.md)
 * [Funkce jazyka C# pro vývojáře referenční informace k Azure](functions-reference-csharp.md)
 * [Referenční informace pro vývojáře Azure Functions NodeJS](functions-reference-node.md)

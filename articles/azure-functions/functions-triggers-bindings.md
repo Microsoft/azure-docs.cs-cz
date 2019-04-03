@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 3865f748a9ca2fe09660d6454542d64f73a8e3c1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: MT
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
+ms.lasthandoff: 04/03/2019
 ms.locfileid: "56736953"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Aktivace Azure Functions a vazby koncepty
@@ -33,10 +33,10 @@ Vezměte v úvahu následující příklady je implementace různých funkcí.
 
 | Příklad scénáře | Trigger | Vstupní vazby | Výstupní vazby |
 |-------------|---------|---------------|----------------|
-| Po přijetí nové zprávy fronty okno, které spustí funkci k zápisu do jiné fronty. | fronty<sup>*</sup> | *Žádné* | fronty<sup>*</sup> |
+| Po přijetí nové zprávy fronty okno, které spustí funkci k zápisu do jiné fronty. | fronty<sup>*</sup> | *Žádný* | fronty<sup>*</sup> |
 |Naplánovaná úloha načítá obsah objektu Blob úložiště a vytvoří nový dokument služby Cosmos DB. | Časovač | Blob Storage | Databáze Cosmos |
 |Event Grid se používá k načtení obrázku z úložiště objektů Blob a dokumentu ze služby Cosmos DB k odesílání e-mailu. | Event Grid | Úložiště objektů BLOB a Cosmos DB | SendGrid |
-| Webhook, který využívá Microsoft Graphu k aktualizaci Excelový list. | HTTP | *Žádné* | Microsoft Graph |
+| Webhook, který využívá Microsoft Graphu k aktualizaci Excelový list. | HTTP | *Žádný* | Microsoft Graph |
 
 <sup>\*</sup> Představuje různé fronty
 
@@ -90,7 +90,7 @@ Informace o tom, které jsou ve verzi preview vazby, nebo jsou schválené pro p
 - [Postup při registraci vazbového výrazu](./functions-bindings-register.md)
 - Testování:
   - [Strategie pro testování kódu ve službě Azure Functions](functions-test-a-function.md)
-  - [Ruční spuštění jiné funkci aktivovanou protokolem HTTP](functions-manually-run-non-http.md)
+  - [Ruční spuštění funkce neaktivované protokolem HTTP](functions-manually-run-non-http.md)
 - [Zpracování chyb vazeb](./functions-bindings-errors.md)
 
 ## <a name="next-steps"></a>Další postup

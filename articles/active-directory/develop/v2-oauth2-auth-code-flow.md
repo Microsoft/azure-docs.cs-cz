@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 698dc61d42adb398376161480cf4d32180846c48
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 0350db37e13101d315937840fdcf3d9900e214d5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577590"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880261"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoly v2.0 - tok autorizačního kódu OAuth 2.0
 
@@ -181,7 +181,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 |---------------|------------------------------|
 | `access_token`  | Požadovaný přístupový token. Aplikace můžete používat tento token k ověření k zabezpečeným prostředkům, jako je například webové rozhraní API.  |
 | `token_type`    | Určuje hodnotu pro typ tokenu. Nosiče je jediným typem, který podporuje Azure AD |
-|` expires_in`    | Jak dlouho je přístupový token platný (v sekundách). |
+| `expires_in`    | Jak dlouho je přístupový token platný (v sekundách). |
 | `scope`         | Obory, které je platný pro access_token. |
 | `refresh_token` | Aktualizace tokenu OAuth 2.0. Aplikace můžete používat tento token získat dodatečné přístupové tokeny, až vyprší platnost aktuálního tokenu přístupu. Refresh_tokens jsou dlouhodobé a slouží k přístupu k prostředkům uchovávat po dlouhou dobu. Další podrobnosti o aktualizaci tokenu přístupu, najdete [níže v části](#refresh-the-access-token). <br> **Poznámka:** Pouze zadaný if `offline_access` byl vyžádán oboru. |
 | `id_token`      | JSON Web Token (JWT). Aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. Další informace o id_tokens, najdete v článku [ `id_token reference` ](id-tokens.md). <br> **Poznámka:** Pouze zadaný if `openid` byl vyžádán oboru. |

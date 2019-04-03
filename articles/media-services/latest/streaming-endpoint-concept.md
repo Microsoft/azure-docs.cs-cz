@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/30/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8cd6a68f6593a5b746a19e42e4835deb05e112b6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 2e715e5280794172451a333624a954340a1a60fe
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757186"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881014"
 ---
 # <a name="streaming-endpoints"></a>Koncové body streamování
 
@@ -24,6 +24,8 @@ V Microsoft Azure Media Services (AMS) [koncové body streamování](https://doc
 
 > [!NOTE]
 > Pokud chcete spustit streamování videa, musíte spustit **koncový bod streamování** ze kterého chcete Streamovat videa. 
+>  
+> Nebudete dostávat faktury, pokud je váš koncový bod streamování ve spuštěném stavu.
 
 ## <a name="naming-convention"></a>Zásady vytváření názvů
 
@@ -62,24 +64,11 @@ Doporučené použití |Doporučuje se pro většinu scénářů streamování.|
 
 <sup>1</sup> pouze použít přímo na koncový bod streamování, pokud síť CDN není povolené pro koncový bod.
 
-## <a name="working-with-cdn"></a>Práce s CDN
-
-Ve většině případů byste měli mít povolenou síť CDN. Pokud však předpokládáte, že budete mít maximálně 500 souběžných diváků, doporučujeme síť CDN zakázat, protože se nejlépe škáluje s vysokou souběžností.
-
-> [!NOTE]
-> Koncový bod streamování `hostname` a adresu URL streamování zůstala stejná, zda povolit síť CDN.
-
-### <a name="detailed-explanation-of-how-caching-works"></a>Podrobné vysvětlení funguje jak ukládání do mezipaměti
-
-Neexistuje žádná hodnota s konkrétní šířkou pásma při přidávání CDN, protože koncový bod streamování povolená šířku pásma, který je nezbytný pro síť CDN se liší. Mnoho závisí na typu obsahu, jak oblíbená je, přenosových rychlostí a protokoly. CDN je pouze ukládání do mezipaměti co jsou požadovány. To znamená, že oblíbeného obsahu bude obsluhovat přímo CDN – tak dlouho, dokud se uloží do mezipaměti videa fragment. Živý obsah je pravděpodobně ukládat do mezipaměti, protože obvykle mají mnoho diváci přesně stejnou věc. Vzhledem k tomu, že můžete mít nějaký obsah, který je Oblíbené a některé, které není, může být trochu trickier obsahu na vyžádání. Pokud máte milionů videa prostředků, pokud žádná z nich jsou oblíbené (pouze 1 nebo 2 prohlížeče v týdnu) ale máte tisíce lidí všechny různé videích CDN stane mnohem méně účinné. S touto mezipamětí výpadky, zvýšit zatížení na koncový bod streamování.
- 
-Také je potřeba zvážit funguje jak adaptivního streamování. Každé jednotlivé fragment videa se uloží do mezipaměti, protože se jedná o vlastní entity. Například pokud okamžiku, kdy je sledována určité videa, osoba přeskočí kolem sledování jenom pár sekund tu a tam pouze videa fragmenty, které jsou přidružené k co osoby sledovali vysílání televizní získat uložené v mezipaměti v CDN. Pomocí adaptivního streamování mají obvykle různých přenosových rychlostí 5 až 7 videa. Pokud jedna osoba sleduje jeden s přenosovou rychlostí a jinou osobu sleduje různé přenosové rychlosti, pak jejich jsou každý v mezipaměti samostatně v CDN. I v případě, že dva lidé sledují stejné přenosové rychlosti může být datové proudy přes různé protokoly. Každý protokol (HLS, MPEG-DASH, Smooth Streaming) je samostatně do mezipaměti. Takže každý s přenosovou rychlostí a protokolu jsou uložené v mezipaměti samostatně a pouze video fragmenty, které byly požadovány jsou uložené v mezipaměti.
- 
 ## <a name="properties"></a>Vlastnosti 
 
 Tato část obsahuje podrobnosti o některé vlastnosti Endpoint streamování. Příklady toho, jak vytvořit nový koncový bod streamování a popisy všech vlastností, najdete v článku [koncový bod streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints/create). 
 
-- `accessControl` -Použít ke konfiguraci následujících nastavení zabezpečení pro tento koncový bod streamování: Akamai podpis záhlaví ověřovací klíče a IP adresy, které jsou povolené pro připojení k tomuto koncovému bodu.<br />Tuto vlastnost můžete nastavit při `cdnEnabled` je nastavena na hodnotu false.
+- `accessControl` -Použít ke konfiguraci následujících nastavení zabezpečení pro tento koncový bod streamování: Akamai podpis záhlaví ověřovací klíče a IP adresy, které jsou povolené pro připojení k tomuto koncovému bodu.<br />Tuto vlastnost lze nastavit pouze při `cdnEnabled` je nastavena na hodnotu false.
 - `cdnEnabled` -Určuje, zda je integrace Azure CDN pro tento koncový bod streamování povolená (zakázané ve výchozím nastavení). Pokud nastavíte `cdnEnabled` na hodnotu true, následující konfigurace zakázán: `customHostNames` a `accessControl`.
   
     Ne všechna datová centra nepodporují integraci s Azure CDN. Pokud chcete zkontrolovat, jestli vaše datové centrum má k dispozici integrace Azure CDN, postupujte takto:
@@ -128,7 +117,39 @@ Tato část obsahuje podrobnosti o některé vlastnosti Endpoint streamování. 
     - Zastavování - přechází do stavu Zastaveno
     - Probíhá odstranění - odstranění
     
-- `scaleUnits ` -Poskytují vyhrazený odchozího přenosu dat kapacity, který lze dokupovat v jednotkách po 200 MB/s. Pokud potřebujete přesunout **Premium** zadejte, upravte `scaleUnits`.
+- `scaleUnits` -Poskytují vyhrazený odchozího přenosu dat kapacity, který lze dokupovat v jednotkách po 200 MB/s. Pokud potřebujete přesunout **Premium** zadejte, upravte `scaleUnits`.
+
+## <a name="working-with-cdn"></a>Práce s CDN
+
+Ve většině případů byste měli mít povolenou síť CDN. Pokud však předpokládáte, že budete mít maximálně 500 souběžných diváků, doporučujeme síť CDN zakázat, protože se nejlépe škáluje s vysokou souběžností.
+
+### <a name="considerations"></a>Požadavky
+
+* Koncový bod streamování `hostname` a adresu URL streamování zůstala stejná, zda povolit síť CDN.
+* Pokud chcete mít možnost otestovat váš obsah s nebo bez něj CDN, můžete vytvořit jiný koncový bod streamování, který se povolila se síť CDN.
+
+### <a name="detailed-explanation-of-how-caching-works"></a>Podrobné vysvětlení funguje jak ukládání do mezipaměti
+
+Neexistuje žádná hodnota s konkrétní šířkou pásma při přidávání CDN, protože koncový bod streamování povolená šířku pásma, který je nezbytný pro síť CDN se liší. Mnoho závisí na typu obsahu, jak oblíbená je, přenosových rychlostí a protokoly. CDN je pouze ukládání do mezipaměti co jsou požadovány. To znamená, že oblíbeného obsahu bude obsluhovat přímo CDN – tak dlouho, dokud se uloží do mezipaměti videa fragment. Živý obsah je pravděpodobně ukládat do mezipaměti, protože obvykle mají mnoho diváci přesně stejnou věc. Vzhledem k tomu, že můžete mít nějaký obsah, který je Oblíbené a některé, které není, může být trochu trickier obsahu na vyžádání. Pokud máte milionů videa prostředků, pokud žádná z nich jsou oblíbené (pouze 1 nebo 2 prohlížeče v týdnu) ale máte tisíce lidí všechny různé videích CDN stane mnohem méně účinné. S touto mezipamětí výpadky, zvýšit zatížení na koncový bod streamování.
+ 
+Také je potřeba zvážit funguje jak adaptivního streamování. Každé jednotlivé fragment videa se uloží do mezipaměti, protože se jedná o vlastní entity. Například pokud okamžiku, kdy je sledována určité videa, osoba přeskočí kolem sledování jenom pár sekund tu a tam pouze videa fragmenty, které jsou přidružené k co osoby sledovali vysílání televizní získat uložené v mezipaměti v CDN. Pomocí adaptivního streamování mají obvykle různých přenosových rychlostí 5 až 7 videa. Pokud jedna osoba sleduje jeden s přenosovou rychlostí a jinou osobu sleduje různé přenosové rychlosti, pak jejich jsou každý v mezipaměti samostatně v CDN. I v případě, že dva lidé sledují stejné přenosové rychlosti může být datové proudy přes různé protokoly. Každý protokol (HLS, MPEG-DASH, Smooth Streaming) je samostatně do mezipaměti. Takže každý s přenosovou rychlostí a protokolu jsou uložené v mezipaměti samostatně a pouze video fragmenty, které byly požadovány jsou uložené v mezipaměti.
+
+### <a name="enable-azure-cdn-integration"></a>Povolení integrace Azure CDN
+
+Koncový bod zřizován s CDN není povolena po definované čekat na Media Services předtím, než aktualizace DNS slouží k mapování na koncový bod streamování pro koncový bod CDN.
+
+Pokud budete později chtít zakázat nebo povolit CDN, koncový bod streamování musí být v **zastavena** stavu. Může to trvat až dvě hodiny, aby povoleno integrace Azure CDN a změn jako aktivní ve všech POP v síti CDN. Však můžete spustit koncový bod streamování a datový proud bez přerušení z koncového bodu streamování a po dokončení integrace datový proud doručen z CDN. Během zřizování období bude mít koncový bod streamování **od** stavu a můžete všimnout snížení výkonu.
+
+Když se koncový bod streamování Standard, je nakonfigurované ve výchozím nastavení se Verizon úrovně Standard. Můžete nastavit úrovně Premium Verizonu nebo Standard Akamai poskytovatele služeb pomocí rozhraní REST API. 
+
+Zavedené integraci CDN je povolena ve všech datových center Azure s výjimkou Číny a federální vlády oblastech.
+
+> [!IMPORTANT]
+> Integrace Azure Media Services s Azure CDN se implementuje na **Azure CDN od Verizonu** koncové body streamování standard. Koncové body streamování Premium lze konfigurovat pomocí všechny **Azure CDN cenové úrovně a poskytovatelé**. Další informace o funkcích Azure CDN, najdete v článku [přehled sítě CDN](../../cdn/cdn-overview.md).
+
+### <a name="determine-if-dns-change-has-been-made"></a>Určit, pokud byla provedena změna DNS
+
+Pokud byla provedena změna DNS na koncový bod streamování (provoz směřuje na Azure CDN) můžete určit pomocí https://www.digwebinterface.com. Pokud výsledky obsahuje názvy domény azureedge.net ve výsledcích, provoz je nyní který ukazatel ukazuje CDN.
 
 ## <a name="next-steps"></a>Další postup
 

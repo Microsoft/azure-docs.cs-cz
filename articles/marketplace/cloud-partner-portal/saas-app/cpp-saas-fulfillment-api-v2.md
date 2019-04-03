@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 81213d1f7cfeb7ea10cdadfb124047ecb76aa7d4
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 6d18adfaec965d858bdcb1f74ebcea89f57eea39
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352081"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878022"
 ---
 # <a name="saas-fulfillment-api"></a>Splnění SaaS API
 
@@ -351,7 +351,7 @@ Vnitřní chyba serveru
 |  x-ms-correlationid  | Jedinečnou hodnotu řetězce pro operaci na straně klienta. To koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
 |  Autorizace     |  JSON web token (JWT) nosný token |
 
-*Žádost:*
+*Požadavek:*
 
 ```json
 {
@@ -648,7 +648,7 @@ Umožňuje sledovat stav aktivovaných asynchronní operace (přihlásit k odbě
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Typ obsahu      |  ` application/json`   |
+|  Typ obsahu      |  `application/json`   |
 |  x-ms-requestid    |   Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
 |  x-ms-correlationid |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
 |  Autorizace     | JSON web token (JWT) nosný token.  |

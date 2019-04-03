@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: c199adb9ee1d9e5fbc879441da7395efa16f0d40
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e70920e806b3d9838d693ff1fc74a3e9371319d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094656"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883906"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Kurz integrace protokolů Azure: Zpracování událostí služby Azure Key Vault pomocí Event Hubs
 
@@ -92,10 +92,10 @@ Před dokončením kroků v tomto článku, budete potřebovat následující:
     - ```$subscriptionName = 'Visual Studio Ultimate with MSDN'``` (Název vašeho odběru může lišit. Zobrazí se jako součást výstupního předchozím příkazem.)
     - ```$location = 'West US'``` (Tato proměnná se používá k předání umístění, kde by měl být vytvořen prostředky. Můžete změnit tuto proměnnou na libovolné místo podle vašeho výběru.)
     - ```$random = Get-Random```
-    - ``` $name = 'azlogtest' + $random``` (Název může obsahovat cokoli, ale měl by obsahovat pouze malá písmena a číslice.)
-    - ``` $storageName = $name``` (Tato proměnná se používá pro název účtu úložiště.)
-    - ```$rgname = $name ``` (Tato proměnná se používá pro název skupiny prostředků.)
-    - ``` $eventHubNameSpaceName = $name``` (To je název oboru názvů centra událostí).
+    - ```$name = 'azlogtest' + $random``` (Název může obsahovat cokoli, ale měl by obsahovat pouze malá písmena a číslice.)
+    - ```$storageName = $name``` (Tato proměnná se používá pro název účtu úložiště.)
+    - ```$rgname = $name``` (Tato proměnná se používá pro název skupiny prostředků.)
+    - ```$eventHubNameSpaceName = $name``` (To je název oboru názvů centra událostí).
 1. Určete předplatné, můžete pracovat s:
     
     ```Select-AzSubscription -SubscriptionName $subscriptionName```
@@ -114,7 +114,7 @@ Před dokončením kroků v tomto článku, budete potřebovat následující:
     ```$eventHubNameSpace = New-AzEventHubNamespace -ResourceGroupName $rgname -NamespaceName $eventHubnamespaceName -Location $location```
 1. Získejte ID pravidla, která se použije u poskytovatele insights:
     
-    ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey' ```
+    ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey'```
 1. Získání všech umístěních Azure je to možné a přidejte název proměnné, která lze použít v pozdějším kroku:
     
     a. ```$locationObjects = Get-AzLocation```    
@@ -128,7 +128,7 @@ Před dokončením kroků v tomto článku, budete potřebovat následující:
     Další informace o profilu protokolů Azure najdete v části [přehled protokolu aktivit Azure](../azure-monitor/platform/activity-logs-overview.md).
 
 > [!NOTE]
-> Při pokusu o vytvoření profilu protokolu, může se zobrazit chybová zpráva. Potom můžete zkontrolovat v dokumentaci pro Get-AzLogProfile a Remove-AzLogProfile. Pokud spustíte Get AzLogProfile, se zobrazí informace o profilu protokolu. Můžete odstranit stávající profilu protokolu zadáním ```Remove-AzLogProfile -name 'Log Profile Name' ``` příkazu.
+> Při pokusu o vytvoření profilu protokolu, může se zobrazit chybová zpráva. Potom můžete zkontrolovat v dokumentaci pro Get-AzLogProfile a Remove-AzLogProfile. Pokud spustíte Get AzLogProfile, se zobrazí informace o profilu protokolu. Můžete odstranit stávající profilu protokolu zadáním ```Remove-AzLogProfile -name 'Log Profile Name'``` příkazu.
 >
 >![Chyba profilu Resource Manageru](./media/security-azure-log-integration-keyvault-eventhub/rm-profile-error.png)
 
@@ -136,11 +136,11 @@ Před dokončením kroků v tomto článku, budete potřebovat následující:
 
 1. Vytvoření služby key vault:
 
-   ```$kv = New-AzKeyVault -VaultName $name -ResourceGroupName $rgname -Location $location ```
+   ```$kv = New-AzKeyVault -VaultName $name -ResourceGroupName $rgname -Location $location```
 
 1. Konfigurace protokolování pro key vault:
 
-   ```Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -ServiceBusRuleId $sbruleid -Enabled $true ```
+   ```Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -ServiceBusRuleId $sbruleid -Enabled $true```
 
 ## <a name="generate-log-activity"></a>Vygenerování protokolu aktivit
 
@@ -157,7 +157,8 @@ Požadavky nutné k odeslání do služby Key Vault k vygenerování protokolu a
    ```Get-AzStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
 1. Nastavení a čtení tajného klíče ke generování dalších protokolů položky:
     
-   a. ```Set-AzKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b. ```(Get-AzKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
+   a. ```Set-AzKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)```
+   b. ```(Get-AzKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
 
    ![Vrátí tajného kódu](./media/security-azure-log-integration-keyvault-eventhub/keyvaultsecret.png)
 
@@ -169,7 +170,7 @@ Teď, když jste nakonfigurovali všechny požadované prvky mít protokolován�
 1. ```$storage = Get-AzStorageAccount -ResourceGroupName $rgname -Name $storagename```
 1. ```$eventHubKey = Get-AzEventHubNamespaceKey -ResourceGroupName $rgname -NamespaceName $eventHubNamespace.name -AuthorizationRuleName RootManageSharedAccessKey```
 1. ```$storagekeys = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storagename```
-1. ``` $storagekey = $storagekeys[0].Value```
+1. ```$storagekey = $storagekeys[0].Value```
 
 Spusťte příkaz AzLog pro každé Centrum událostí:
 
