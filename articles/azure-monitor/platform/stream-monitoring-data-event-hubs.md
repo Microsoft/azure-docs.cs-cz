@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 549ec74514ff03e06ff25893d3fa865f179470e9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ab439eb77113c53ab046256dd8d448a18b63f887
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870682"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850064"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream
 
@@ -70,10 +70,10 @@ K odesílání dat z protokolu aktivit Azure do Event Hubs oboru názvů, může
 ## <a name="azure-resource-metrics-and-diagnostics-logs"></a>Diagnostika a metriky protokolů prostředků Azure
 
 Prostředky Azure generují data monitorování dva typy:
-1. [Protokolů diagnostiky prostředků](./../../azure-monitor/platform/diagnostic-logs-overview.md)
-2. [Metriky](../../azure-monitor/platform/data-collection.md)
+1. [Protokolů diagnostiky prostředků](diagnostic-logs-overview.md)
+2. [Metriky](data-platform.md)
 
-Oba typy dat se posílají do centra událostí pomocí nastavení diagnostiky prostředku. [Tento návod](./../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) nastavit nastavení diagnostiky prostředků u určitého prostředku. Nastaví nastavení diagnostiky prostředků u jednotlivých prostředků, ze kterého chcete shromažďovat protokoly.
+Oba typy dat se posílají do centra událostí pomocí nastavení diagnostiky prostředku. [Tento návod](diagnostic-logs-stream-event-hubs.md) nastavit nastavení diagnostiky prostředků u určitého prostředku. Nastaví nastavení diagnostiky prostředků u jednotlivých prostředků, ze kterého chcete shromažďovat protokoly.
 
 > [!TIP]
 > Azure Policy můžete použít k zajištění, že každý prostředek v rámci určitého oboru vždy nastavit pomocí nastavení diagnostiky [pomocí DeployIfNotExists efekt v pravidlu zásad](../../governance/policy/concepts/definition-structure.md#policy-rule).

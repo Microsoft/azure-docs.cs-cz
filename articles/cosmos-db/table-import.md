@@ -1,6 +1,6 @@
 ---
 title: Migrace existujících dat na účet Table API ve službě Azure Cosmos DB
-description: Zjistěte, jak migrovat nebo importovat místní nebo Cloudová data do účtu Azure Table API ve službě Azure Cosmos DB.
+description: Zjistěte, jak migrovat nebo importovat místních nebo cloudových dat do účtu Azure Table API ve službě Azure Cosmos DB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e709aa25a8fa0a8ff6c94bf2e813151e5ecbae65
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a0d2927024dff78021d433b965bb6c0149236ddd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58006240"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876813"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrace dat do účtu rozhraní Table API služby Azure Cosmos DB
 
@@ -43,7 +43,7 @@ Pokud chcete provést migraci tabulkových dat, proveďte následující úlohy:
 
    ```bash
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
-```
+   ```
 
 Možnosti příkazu jsou:
 
@@ -74,9 +74,9 @@ Pokud chcete načíst připojovací řetězec zdroje při importování z účtu
 
 ![Snímek obrazovky s možnostmi zdroje HBase](./media/table-import/cosmos-connection-string.png)
 
-[Ukázkový příkaz pro Azure Table Storage](#azure-table-storage)
+[Ukázkový příkaz Azure Table Storage](#azure-table-storage)
 
-[Ukázkový příkaz pro rozhraní Table API služby Azure Cosmos DB (Preview)](#table-api-preview)
+[Ukázkový příkaz Azure Cosmos DB Table API (preview)](#table-api-preview)
 
 ### <a name="command-line-target-settings"></a>Nastavení cíle na příkazovém řádku
 
@@ -147,4 +147,4 @@ V tomto kurzu jste se naučili:
 Teď můžete pokračovat k dalšímu kurzu, kde zjistíte, jak dotazovat data pomocí rozhraní Table API služby Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
->[Jak dotazovat data?](../cosmos-db/tutorial-query-table.md)
+>[Jak provádět dotazy na data?](../cosmos-db/tutorial-query-table.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 4332b2b014e9720525e33654d4c5abe56cdd617d
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6e60fdaa83bc05cbe5f95d63b564162e8b9e76ef
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577216"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882882"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>Kurz: Integrace Azure Active Directory s ProMaster (podle Inlogik)
 
@@ -129,7 +129,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s ProMaster (podle Inlogik), 
 
     | |
     | - |-|
-    | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs `|
+    | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs`|
     | `https://<CUSTOMDOMAIN>/SAMLBASE/saml/acs`|
     | |
 

@@ -10,12 +10,12 @@ ms.reviewer: plarsen, LADocs
 ms.topic: article
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: c46fd1791751ebf912670875f9c8e18e8b0c5c40
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 7785d1788e8d5e9b432a8189345f293ebf05ef7c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311301"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878396"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>IBM DB2 prostředky spravovat pomocí Azure Logic Apps
 
@@ -88,7 +88,7 @@ Chcete-li nastavit připojení, zadejte podrobnosti připojení po zobrazení v�
 | **Připojit přes místní bránu** | Ne | Platí pouze pro místní připojení. |
 | **Název připojení** | Ano | Název připojení, například "MyLogicApp DB2 – připojení" |
 | **Server** | Ano | Číslo portu adresa nebo alias identit pro váš server DB2, například "myDB2server.cloudapp.net:50000" <p><p>**Poznámka:** Tato hodnota je řetězec, který představuje adresu protokolu TCP/IP nebo alias, buď ve formátu IPv4 nebo IPv6, za nímž následuje dvojtečka a číslo portu TCP/IP. |
-| **Database** | Ano | Název pro vaši databázi <p><p>**Poznámka:** Tato hodnota je řetězec, který představuje architektury DRDA název pro relační databáze (RDBNAM): <p>-DB2 z/OS přijímá řetězec 16 bajtů, kde databáze se označuje jako "IBM DB2 z/OS" umístění. <br>-DB2 pro i přijímá jako řetězec 18 bajtů, kde je v databázi označované jako "IBM DB2 pro můžu" relační databáze. <br>-DB2 LUW přijímá řetězec 8 bajtů. |
+| **Databáze** | Ano | Název pro vaši databázi <p><p>**Poznámka:** Tato hodnota je řetězec, který představuje architektury DRDA název pro relační databáze (RDBNAM): <p>-DB2 z/OS přijímá řetězec 16 bajtů, kde databáze se označuje jako "IBM DB2 z/OS" umístění. <br>-DB2 pro i přijímá jako řetězec 18 bajtů, kde je v databázi označované jako "IBM DB2 pro můžu" relační databáze. <br>-DB2 LUW přijímá řetězec 8 bajtů. |
 | **Uživatelské jméno** | Ano | Vaše uživatelské jméno pro databázi <p><p>**Poznámka:** Tato hodnota je řetězec, jehož délka je založen na konkrétní databázi: <p><p>-DB2 z/OS přijímá řetězec 8 bajtů. <br>-DB2 pro i přijímá řetězec 10 bajtů. <br>-DB2 pro Linux nebo UNIX přijímá řetězec 8 bajtů. <br>-DB2 pro Windows přijímá řetězec 30 bajtů. |
 | **Heslo** | Ano | Heslo pro databázi |
 ||||
@@ -108,11 +108,11 @@ Před vytvořením připojení, musíte již mít vaše místní bránu dat nain
 | **Připojit přes místní bránu** | Ano | Platí, pokud chcete, aby připojení k místním a zobrazí místní vlastnosti připojení. |
 | **Název připojení** | Ano | Název připojení, například "MyLogicApp DB2 – připojení" | 
 | **Server** | Ano | Číslo portu adresa nebo alias identit pro váš server DB2, například "myDB2server:50000" <p><p>**Poznámka:** Tato hodnota je řetězec, který představuje adresu protokolu TCP/IP nebo alias, buď ve formátu IPv4 nebo IPv6, za nímž následuje dvojtečka a číslo portu TCP/IP. |
-| **Database** | Ano | Název pro vaši databázi <p><p>**Poznámka:** Tato hodnota je řetězec, který představuje architektury DRDA název pro relační databáze (RDBNAM): <p>-DB2 z/OS přijímá řetězec 16 bajtů, kde databáze se označuje jako "IBM DB2 z/OS" umístění. <br>-DB2 pro i přijímá jako řetězec 18 bajtů, kde je v databázi označované jako "IBM DB2 pro můžu" relační databáze. <br>-DB2 LUW přijímá řetězec 8 bajtů. |
-| **Ověřování** | Ano | Typ ověřování pro připojení, například "Basic" <p><p>**Poznámka:** Vyberte tuto hodnotu ze seznamu, který zahrnuje Basic nebo Windows (Kerberos). |
+| **Databáze** | Ano | Název pro vaši databázi <p><p>**Poznámka:** Tato hodnota je řetězec, který představuje architektury DRDA název pro relační databáze (RDBNAM): <p>-DB2 z/OS přijímá řetězec 16 bajtů, kde databáze se označuje jako "IBM DB2 z/OS" umístění. <br>-DB2 pro i přijímá jako řetězec 18 bajtů, kde je v databázi označované jako "IBM DB2 pro můžu" relační databáze. <br>-DB2 LUW přijímá řetězec 8 bajtů. |
+| **Authentication** | Ano | Typ ověřování pro připojení, například "Basic" <p><p>**Poznámka:** Vyberte tuto hodnotu ze seznamu, který zahrnuje Basic nebo Windows (Kerberos). |
 | **Uživatelské jméno** | Ano | Vaše uživatelské jméno pro databázi <p><p>**Poznámka:** Tato hodnota je řetězec, jehož délka je založen na konkrétní databázi: <p><p>-DB2 z/OS přijímá řetězec 8 bajtů. <br>-DB2 pro i přijímá řetězec 10 bajtů. <br>-DB2 pro Linux nebo UNIX přijímá řetězec 8 bajtů. <br>-DB2 pro Windows přijímá řetězec 30 bajtů. |
 | **Heslo** | Ano | Heslo pro databázi |
-| **Brána** | Ano | Název pro nainstalované místní brána dat <p><p>**Poznámka:** Vyberte tuto hodnotu ze seznamu, který zahrnuje všechny nainstalované data Gateway v rámci vašeho předplatného Azure a skupinu prostředků. |
+| **brána** | Ano | Název pro nainstalované místní brána dat <p><p>**Poznámka:** Vyberte tuto hodnotu ze seznamu, který zahrnuje všechny nainstalované data Gateway v rámci vašeho předplatného Azure a skupinu prostředků. |
 ||||
 
 Příklad:

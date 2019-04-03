@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8fc952af011231a9cc12f96e3db9ebb088c237a2
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8f444cebac6ee60fbe65399e3f9c8e05eb033843
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413324"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878209"
 ---
 # <a name="about-point-to-site-vpn"></a>Informace o VPN typu Point-to-Site
 
@@ -22,7 +22,7 @@ Připojení brány VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečen
 
 Point-to-site VPN můžete použít jednu z následujících protokolů:
 
-* OpenVPN, SSL/TLS na základě protokol VPN. Řešení typu VPN protokolu SSL umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP 443, který používá protokol SSL. OpenVPN je možné se připojit z Android, iOS (verze 11.0 a vyšší), zařízení se systémy Linux a Mac (OSX verze 10.13 a vyšší).
+* OpenVPN, SSL/TLS na základě protokol VPN. Řešení typu VPN protokolu SSL umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP 443, který používá protokol SSL. OpenVPN je možné se připojit z Android, iOS (verze 11.0 a vyšší), zařízení s Windows, Linux a Mac (OSX verze 10.13 a vyšší).
 
 * Zabezpečte SSTP Socket Tunneling Protocol (), speciální protokol VPN založený na protokolu SSL. Řešení typu VPN protokolu SSL umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP 443, který používá protokol SSL. SSTP je podporována pouze na zařízeních s Windows. Azure podporuje všechny verze Windows, které mají SSTP (Windows 7 a novější).
 

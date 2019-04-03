@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 1bf65883ecf23f726aefd2cd889a2bcb08e9b6a6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 012eacb172acfdeb0b82343c484c664a3f75310e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457645"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876698"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Optimalizujte náklady více oblastí ve službě Azure Cosmos DB
 
 Můžete přidávat a odebírat oblastí k vašemu účtu Azure Cosmos v každém okamžiku. V každé oblasti spojené s vaším účtem je vyhrazená propustnost, které nakonfigurujete pro různé databáze Azure Cosmos a kontejnery. Pokud zřízená propustnost za hodinu, který je součtem RU/s, které jsou nakonfigurované ve všech databázích a kontejnerů pro váš účet Azure Cosmos je `T` a počtu oblastí Azure spojené s vaším účtem databáze je `N`, pak součet zřízená propustnost účtu Cosmos pro příslušné hodiny je rovna hodnotě:
 
-1. ` T x N RU/s` Pokud váš účet Azure Cosmos je nakonfigurovaný s oblastí zápisu jednoho. 
+1. `T x N RU/s` Pokud váš účet Azure Cosmos je nakonfigurovaný s oblastí zápisu jednoho. 
 
 1. `T x (N+1) RU/s` Pokud váš účet Azure Cosmos je nakonfigurována pomocí všech oblastech dokáže zpracovávat zápisy. 
 
@@ -25,13 +25,13 @@ Zřízená propustnost s oblastí zápisu jednoho náklady 0.008 $za hodinu za 1
 
 ## <a name="costs-for-multiple-write-regions"></a>Náklady pro více oblastí zápisu
 
-V systému s několika hlavními databázemi, net ru k dispozici pro zápis operace zvýšení `N` vyprší where `N` je počtem oblastí zápisu. Na rozdíl od jedné oblasti zápisu každé oblasti se teď může zapisovat a by měly podporovat řešení konfliktů. Zvýšil se objem úlohy pro zápis. Z pohledu, provádět plánování nákladů` M` RU/s za zápisy po celém světě, budete muset zřídit M `RUs` na úrovni kontejneru nebo databáze. Poté můžete přidat jakýkoli počet oblastí, jak chcete vytvořit a použít je pro zápis k provádění `M` RU za zápisy po celém světě. 
+V systému s několika hlavními databázemi, net ru k dispozici pro zápis operace zvýšení `N` vyprší where `N` je počtem oblastí zápisu. Na rozdíl od jedné oblasti zápisu každé oblasti se teď může zapisovat a by měly podporovat řešení konfliktů. Zvýšil se objem úlohy pro zápis. Z pohledu, provádět plánování nákladů `M` RU/s za zápisy po celém světě, budete muset zřídit M `RUs` na úrovni kontejneru nebo databáze. Poté můžete přidat jakýkoli počet oblastí, jak chcete vytvořit a použít je pro zápis k provádění `M` RU za zápisy po celém světě. 
 
 ### <a name="example"></a>Příklad:
 
 Vezměte v úvahu, že máte kontejner v oblasti západní USA zřízený s propustností 10 tisíc RU/s a 1 TB dat ukládá tento měsíc. Předpokládejme, že přidáte tři oblasti: východní USA, Severní Evropa a východní Asie, každá má stejné úložiště a propustnost a chcete mít možnost zapisovat do kontejnerů ve všech oblastech, čtyři z globálně distribuovaných aplikací. Celkový měsíční vyúčtování (za předpokladu, že nabídka 31 dní) za měsíc je následujícím způsobem:
 
-|**Položka**|**Využití (měsíčně)**|**Frekvence**|**Měsíční náklady**|
+|**Položka**|**Využití (měsíčně)**|**Sazba**|**Měsíční náklady**|
 |----|----|----|----|
 |Faktura za propustnost za kontejner v oblasti západní USA (více oblastí zápisu) |10 tisíc RU/s * 24 * 31 |0,016 $ za 100 RU/s za hodinu |$1,190.40 |
 |Faktura za propustnost za 3 Další oblasti: východní USA, Severní Evropa a východní Asie (více oblastí zápisu) |(3 + 1) * 10 tisíc RU/s * 24 * 31 |0,016 $ za 100 RU/s za hodinu |$4,761.60 |

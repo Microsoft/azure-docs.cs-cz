@@ -1,6 +1,6 @@
 ---
 title: Nasazení SQL serveru Azure Virtual Machines DBMS pro úlohy SAP | Dokumentace Microsoftu
-description: Nasazení SQL serveru Azure Virtual Machines DBMS pro úlohy SAP
+description: Nasazení DBMS v počítačích Azure Virtual Machines s SQL Serverem pro úlohy SAP
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aac7ca7aa67143f89d9247da879a6fad2cfbb7b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0c12c75bd5c357613d55e04aed67c0cc901135e6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992498"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881082"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Nasazení SQL serveru Azure Virtual Machines DBMS pro SAP NetWeaver
 
@@ -235,7 +235,6 @@ ms.locfileid: "57992498"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -525,13 +524,13 @@ Existuje několik zákazníci, kteří používají SQL Server [transparentní �
 ### <a name="applying-sql-server-tde"></a>Použití systému SQL Server transparentní šifrování dat
 V případech, kde provádíte heterogenní migraci z jiného systému DBMS, běží v místním Windows/SQL Server provozovaný v Azure měli byste vytvořit prázdnou cílovou databázi v systému SQL Server předem. Jako další krok by použít funkce transparentní šifrování dat SQL serveru. Přestože stále běží vaše produkční systém místní. Z důvodů, proč chcete provést v tomto pořadí je, že proces šifrování prázdná databáze může chvíli trvat poměrně. Import procesy SAP by potom importovat data do šifrovaného databázového během fáze výpadek. Nároky na import do šifrovaného databázového má způsobem nižší vliv času než šifrování databáze po fázi exportu v seznamu fází doby. Negativní dojde, pokud při pokusu o použití transparentní šifrování dat s SAP úlohu spuštěnou na databázi. Doporučení je proto zpracuje nasazení transparentní šifrování dat jako aktivita, kterou je potřeba provést bez úloh SAP v konkrétní databázi.
 
-V případech, kde můžete přesunout databáze SQL serveru SAP z místního do Azure doporučujeme, na které infrastruktury můžete získat šifrování použít nejrychlejší testování. To mít na paměti tyto skutečnosti:
+V případech, kde můžete přesunout databáze SQL serveru SAP v místním do Azure doporučujeme, na které infrastruktury můžete získat šifrování použít nejrychlejší testování. To mít na paměti tyto skutečnosti:
 
 - Nejde definovat, kolik vlákna umožňují použít šifrování dat v databázi. Počet vláken je majorly závisí na počtu diskové svazky, které jsou rozloženy na soubory protokolu a data systému SQL Server. Znamená to zřetelný svazky (písmena jednotek), další vlákna budou zapojení paralelně provádět šifrování. Taková konfigurace trochu rozporu s starší návrh konfigurace disku na vytváření jednu nebo menší počet prostory úložiště pro soubory databáze serveru SQL Server na virtuálních počítačích Azure. Konfigurace s malý počet svazků by mohlo dojít k malý počet vláken v šifrování. Jedno vlákno šifrování je pro čtení rozsahů o velikosti 64KB, šifruje je a pak zapsat záznam do souboru protokolu transakcí, o tom, že se rozsah zašifroval. V důsledku zatížení transakční protokol je střední.
-- Ve starších verzích systému SQL Server komprese záloh nedosáhli efektivitu už při šifrování databáze SQL serveru. Toto chování může vyvíjet na problém. Pokud váš plán proběhlo k šifrování vašeho serveru SQL Server database místní a potom zkopírujte zálohy do Azure za účelem obnovení databáze v Azure. Komprese záloh systému SQL Server se obvykle dosahuje kompresního poměru faktoru 4.
+- Ve starších verzích systému SQL Server komprese záloh nedosáhli efektivitu už při šifrování databáze SQL serveru. Toto chování může vyvíjet na problém. Pokud váš plán proběhlo k šifrování vašeho serveru SQL Server místní databáze a potom zkopírujte zálohy do Azure za účelem obnovení databáze v Azure. Komprese záloh systému SQL Server se obvykle dosahuje kompresního poměru faktoru 4.
 - SQL Server s SQL serverem 2016 zavádí nové funkce, které umožňuje komprese šifrovaným databázím a efektivním způsobem. Zobrazit [tento blogy](https://blogs.msdn.microsoft.com/sqlcat/2016/06/20/sqlsweet16-episode-1-backup-compression-for-tde-enabled-databases/) některé podrobnosti.
  
-Považuje šifrování TDE bez na malé úlohy SAP pouze aplikace, měli byste otestovat ve vaší konkrétní konfiguraci na to, zda je lepší použít transparentní šifrování dat na vašich SAP databáze v místním nebo k tomu v Azure. V Azure jistě máte větší flexibilitu z hlediska over-pass-the zřizování infrastruktury a zmenšit infrastruktury po transparentní šifrování dat je teď.
+Považuje šifrování TDE bez na malé úlohy SAP pouze aplikace, měli byste otestovat ve vaší konkrétní konfiguraci na to, zda je lepší použít transparentní šifrování dat pro SAP databázi na místní nebo v Azure. V Azure jistě máte větší flexibilitu z hlediska over-pass-the zřizování infrastruktury a zmenšit infrastruktury po transparentní šifrování dat je teď.
 
 ### <a name="using-azure-key-vault"></a>Použití Azure Key Vault
 Azure nabízí službu [služby Key Vault](https://azure.microsoft.com/services/key-vault/) pro ukládání šifrovacích klíčů. SQL Server na druhé straně nabízejí konektor využívat jako úložiště pro certifikáty transparentní šifrování dat služby Azure Key Vault.

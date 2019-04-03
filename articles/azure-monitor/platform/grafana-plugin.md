@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: 64a7a52d39fcac87bdc49b9d36e80d453557bc5b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6ea8f4e591399e23b103871da115dbb937227ca9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002275"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850686"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorování služeb Azure v Grafana
 Teď můžete monitorovat služby a aplikace z Azure [Grafana](https://grafana.com/) pomocí [zdroje dat monitorování Azure plugin](https://grafana.com/plugins/grafana-azure-monitor-datasource). Modul plug-in shromažďuje data o výkonu aplikace shromážděná službou Azure Monitor, včetně různé protokoly a metriky. Tato data pak můžete zobrazit na řídicím panelu Grafana.
@@ -47,7 +47,7 @@ Nastavit místní server Grafana [stáhněte a nainstalujte v místním prostře
 
 7. Získejte veřejnou IP adresu serveru Grafana - přejděte zpět do seznamu prostředků a vyberte **veřejnou IP adresu**.
 
-## <a name="log-in-to-grafana"></a>Přihlaste se do Grafany
+## <a name="sign-in-to-grafana"></a>Přihlaste se do Grafany
 
 1. Pomocí IP adresy serveru, otevřete přihlašovací stránku na *http://\<IP adresu\>: 3000* nebo  *\<DNSName >\:3000* v prohlížeči. Zatímco 3000 je výchozím portem, mějte na paměti, že je možná zvolen jiný port během instalace. Měli byste vidět přihlašovací stránku pro server Grafana, kterou jste vytvořili.
 
@@ -167,5 +167,5 @@ Pokud jste instalační program Grafana prostředí v Azure se účtují, když 
 2. Na stránce skupiny prostředků, klikněte na tlačítko **odstranit**, typ **Grafana** textového pole a pak klikněte na **odstranit**.
 
 ## <a name="next-steps"></a>Další postup
-* [Přehled metrik Azure monitoru](../../azure-monitor/platform/data-collection.md)
+* [Přehled metrik Azure monitoru](data-platform.md)
 

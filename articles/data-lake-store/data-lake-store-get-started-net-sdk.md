@@ -1,23 +1,23 @@
 ---
-title: 'Sady .NET SDK: Operace správy účtů v Azure Data Lake Storage Gen1 | Dokumentace Microsoftu'
+title: '.NET SDK: Operace správy účtů v Azure Data Lake Storage Gen1 | Dokumentace Microsoftu'
 description: Použití Azure Data Lake Storage Gen1 .NET SDK k provádění operací správy účtů v Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ea57d5a9-2929-4473-9d30-08227912aba7
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 2ed9f534c0eb27601243428f8e4b9d95db5d16b0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: twooley
+ms.openlocfilehash: 8ab051d49e7ed67e642ef656dfb382ed07763ed2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123908"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879705"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operace správy účtů v Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -146,4 +146,4 @@ Následující fragment kódu odstraní účet Data Lake Storage Gen1, kterou js
 * [Data Lake Storage Gen1 .NET SDK – referenční informace](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>Další postup
-* [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Zabezpečení dat v Data Lake Storage Gen1](data-lake-store-secure-data.md)

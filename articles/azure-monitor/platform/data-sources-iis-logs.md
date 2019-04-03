@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 94bdc0670fb63b1b4c306a5af3357f437784338c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 402cd4723791c0bc33db22c8857d1b785862f596
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007928"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850608"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Shromažďování protokolů IIS ve službě Azure Monitor
-Internetové informační služby (IIS) ukládá aktivity uživatelů v souborech protokolů, které můžete shromážděná službou Azure Monitor a uložená jako [můžete vytvářet protokoly dat](data-collection.md).
+Internetové informační služby (IIS) ukládá aktivity uživatelů v souborech protokolů, které můžete shromážděná službou Azure Monitor a uložená jako [můžete vytvářet protokoly dat](data-platform.md).
 
 ![Protokoly IIS](media/data-sources-iis-logs/overview.png)
 

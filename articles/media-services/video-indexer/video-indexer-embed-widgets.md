@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: 7cb02a0793a4c96c98b4932b6046839f004461bc
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d775fff16380ebe08159123aa9e6084055a5be8d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758120"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877563"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Vložení widgetů Video Indexer do vašich aplikací
 
@@ -92,7 +92,7 @@ Pokud se rozhodnete implementovat vlastní kód přehrávače a provést integra
 
 Tato část ukazuje, jak dosáhnout interakce mezi dvěma widgety Video Indexeru tak, že když uživatel klikne na ovládací prvek přehledu ve vaší aplikaci, přehrávač přejde na příslušnou pozici videa.
 
-`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script> `
+`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>`
 
 1. Zkopírujte kód pro vložení widgetu **Player**.
 2. Zkopírujte kód pro vložení widgetu **Cognitive Insights**.

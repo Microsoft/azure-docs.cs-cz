@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
 ms.date: 03/29/2019
-ms.openlocfilehash: b5417787472b332e38db002067920153d554fdb0
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5c9e11572bc142637066214e1a807a80ce711c48
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668486"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877682"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Použití rozšířené zabezpečení dat s virtuálními sítěmi a téměř 100 % kompatibility SQL Database
 
@@ -149,7 +149,7 @@ Azure SQL Database poskytuje sadu rozšířené funkce zabezpečení, které je 
 - [Zabezpečení na úrovní řádků](/sql/relational-databases/security/row-level-security) umožňuje řídit přístup k řádkům v databázové tabulce na základě charakteristiky uživatele spouštějícího dotaz (například podle skupiny členství nebo kontext spuštění). Zabezpečení na úrovni řádku (RLS) zjednodušuje návrh a psaní kódu zabezpečení v aplikaci. RLS umožňuje implementovat omezení přístupu k datovým řádkům. Například pro zajištění, že pracovníci mají přístup pouze řádky dat, které se vztahují k jejich oddělení, nebo pro omezení přístupu k datům jenom na relevantní data.
 - [Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) šifruje spravovanou instanci datových souborů, označované jako šifruje neaktivní uložená data. Transparentní šifrování dat provádí v reálném čase vstupně-výstupní operace šifrování a dešifrování souborů protokolu a data. Šifrování používá databázi šifrovací klíč (DEK), která je uložena v spouštěcí záznam databáze dostupnosti během obnovení. Můžete chránit všechny vaše databáze spravované instance pomocí transparentního šifrování dat. Transparentní šifrování dat je SQL Server prověřené technologie šifrování v klidovém stavu, který se vyžaduje řada standardů dodržování předpisů pro ochranu před krádeží úložného média.
 
-Azure Database Migration Service (DMS) nebo nativní obnovení se podporuje migrace šifrované databázi do managed instance. Pokud máte v plánu migrovat šifrované databázi pomocí nativní obnovení, se migrace stávajícího transparentní šifrování dat certifikátu ze serveru SQL Server v místním nebo SQL Server na virtuálním počítači do spravované instance o požadovaný krok. Další informace o možnostech migrace najdete v tématu [migrace instance SQL serveru do spravované instance](sql-database-managed-instance-migrate.md).
+Azure Database Migration Service (DMS) nebo nativní obnovení se podporuje migrace šifrované databázi do managed instance. Pokud máte v plánu migrovat šifrované databázi pomocí nativní obnovení, se migrace stávající TDE certifikát z místního SQL serveru nebo SQL Server na virtuálním počítači do spravované instance o požadovaný krok. Další informace o možnostech migrace najdete v tématu [migrace instance SQL serveru do spravované instance](sql-database-managed-instance-migrate.md).
 
 ## <a name="azure-active-directory-integration"></a>Integrace Azure Active Directory
 
@@ -231,7 +231,7 @@ V následující tabulce jsou uvedeny několik vlastností, které jsou přístu
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Tato hodnota je stejné jako u databáze SQL.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Tato hodnota je stejné jako u databáze SQL.|
 |`SERVERPROPERTY('EngineEdition')`|8|Tato hodnota jednoznačně identifikuje managed instance.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Název DNS úplná instance v následujícím formátu:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, kde `<instanceName>` je poskytnutá výhradně zákazník, zatímco `<dnsPrefix>` je automaticky generované část názvu zaručující globální jedinečnost názvu DNS ("wcus17662feb9ce98", například)|Example: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`,  `SERVERPROPERTY ('ServerName')`|Název DNS úplná instance v následujícím formátu:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, kde `<instanceName>` je poskytnutá výhradně zákazník, zatímco `<dnsPrefix>` je automaticky generované část názvu zaručující globální jedinečnost názvu DNS ("wcus17662feb9ce98", například)|Example: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Další postup
 

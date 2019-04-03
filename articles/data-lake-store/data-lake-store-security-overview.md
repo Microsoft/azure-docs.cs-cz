@@ -3,21 +3,21 @@ title: Přehled zabezpečení v Azure Data Lake Storage Gen1 | Dokumentace Micro
 description: Vysvětlení, jak Azure Data Lake Storage Gen1 je bezpečnější úložišti velkých objemů dat
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ebd5b2ac-c5cc-46d4-9cfd-1a1ee70024c2
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: nitinme
-ms.openlocfilehash: a310851819f70d138a4980b1ab61891fb0b2c311
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.author: twooley
+ms.openlocfilehash: 63e538ab43eaf4a34226b0084cf55334e2cc782b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959608"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883291"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Zabezpečení v Azure Data Lake Storage Gen1
 Řada podniků se využívat analýzy velkých objemů dat pro obchodní přehledy, aby to pomohl ostatním inteligentní rozhodování. Organizace může mít složité a regulované prostředí s rostoucí počet odlišných uživatelů. Je důležité pro podnik, abyste měli jistotu, že životně důležitá podniková data uložená bezpečněji, se správnou úroveň přístupu k jednotlivým uživatelům. Azure Data Lake Storage Gen1 slouží k vám pomohou splnit tyto požadavky na zabezpečení. V tomto článku najdete další informace o možnostech zabezpečení služby Data Lake Storage Gen1, včetně:
@@ -112,5 +112,5 @@ Pokud chcete zobrazit nové funkce v Data Lake Storage Gen1, pošlete nám svůj
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Přehled služby Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Začínáme s Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
-* [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Zabezpečení dat v Data Lake Storage Gen1](data-lake-store-secure-data.md)
 

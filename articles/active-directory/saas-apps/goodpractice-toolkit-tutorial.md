@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8453c93b4e48a076d8efbe1d438d15d8131fc9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f9b847fd424e14eba492018887dbc28c44100f61
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57864401"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885345"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-goodpractice-toolkit"></a>Kurz: Integrace se sadou nástrojů GoodPractice Azure Active Directory
 
@@ -105,7 +105,7 @@ Ke konfiguraci Azure AD jednotného přihlašování se sadou nástrojů GoodPra
 
     ![GoodPractice sada domény a adresy URL jednotného přihlašování – informace](common/sp-intiated.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId> `.
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId>`.
 
     > [!Note]
     > Hodnota přihlašovací adresa URL není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory GoodPractice Toolkit klienta](mailto:support@goodpractice.com) má být získána hodnota.
@@ -193,7 +193,7 @@ Po kliknutí na dlaždici GoodPractice Toolkit na přístupovém panelu, můžet
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

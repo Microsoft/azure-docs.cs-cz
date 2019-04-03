@@ -1,26 +1,25 @@
 ---
-title: Správa aplikací logiky pomocí sady Visual Studio – Azure Logic Apps | Dokumentace Microsoftu
+title: Správa aplikací logiky pomocí sady Visual Studio – Azure Logic Apps
 description: Správa aplikací logiky a další prostředky Azure pomocí Průzkumníka cloudu Visual Studio
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
-ms.date: 03/15/2018
-ms.openlocfilehash: f3a9a1cb7a5829c7c824f9aa61d5f4976a533f4a
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.date: 04/02/2019
+ms.openlocfilehash: 9654caca5fd4b1f79544ea7303a5d3fff72d22f8
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519727"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862739"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Správa aplikací logiky pomocí sady Visual Studio
 
-Přestože je možné vytvořit, upravit, spravovat a nasazovat aplikace logiky v <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, můžete také použít Visual Studio, pokud chcete přidávat aplikace logiky do správy zdrojového kódu, publikovat různé verze a vytvářet [prostředků Azure Správce](../azure-resource-manager/resource-group-overview.md) šablony pro různá prostředí nasazení. Pomocí Průzkumníka cloudu Visual Studio můžete najít a spravovat vaše aplikace logiky společně s další prostředky Azure. Například můžete otevřít, stáhnout, upravit, spustit a zobrazit historii spuštění, zakázat a povolit logic apps, které jsou už nasazené na webu Azure Portal. Pokud teprve začínáte pracovat se službou Azure Logic Apps v sadě Visual Studio, přečtěte si [postup vytvoření aplikace logiky pomocí sady Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+Přestože je možné vytvořit, upravit, spravovat a nasazovat aplikace logiky v <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, pokud chcete přidat aplikace logiky do správy zdrojového kódu, publikovat různé verze a vytvářet můžete také použít Visual Studio [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) šablony pro různá prostředí nasazení. Pomocí Průzkumníka cloudu Visual Studio můžete najít a spravovat vaše aplikace logiky společně s další prostředky Azure. Například můžete otevřít, stáhnout, upravit, spustit a zobrazit historii spuštění, zakázat a povolit logic apps, které jsou už nasazené na webu Azure Portal. Pokud teprve začínáte pracovat se službou Azure Logic Apps v sadě Visual Studio, přečtěte si [postup vytvoření aplikace logiky pomocí sady Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 > [!IMPORTANT]
 > Nasazení nebo publikování aplikace logiky v sadě Visual Studio přepíše verzi této aplikace na webu Azure Portal. Takže pokud provedete změny na portálu Azure portal, které chcete zachovat, ujistěte se, že jste [aktualizovat aplikace logiky v sadě Visual Studio](#refresh) z portálu Azure portal před dalším nasazení nebo publikování ze sady Visual Studio.
@@ -33,22 +32,32 @@ Přestože je možné vytvořit, upravit, spravovat a nasazovat aplikace logiky 
 
 * Pokud je ještě nemáte, stáhněte a nainstalujte tyto nástroje: 
 
-  * <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio 2017 nebo Visual Studio 2015 – edice Community nebo vyšší</a>. 
+  * <a href="https://aka.ms/download-visual-studio" target="_blank">Edice sady Visual Studio. 2019 2017 nebo 2015 – Community nebo vyšší</a>. 
   V tomto kurzu se používá sada Visual Studio Community 2017, která je zdarma.
 
-  * <a href="https://azure.microsoft.com/downloads/" target="_blank">Azure SDK (2.9.1 nebo novější)</a> a <a href="https://github.com/Azure/azure-powershell#installation" target="_blank">Azure PowerShell</a>
+    > [!IMPORTANT]
+    > Když instalujete Visual Studio 2019 nebo 2017, ujistěte se, že jste vybrali **vývoj pro Azure** pracovního vytížení.
+    > Další informace najdete v tématu [spravovat prostředky přidružené k účtům Azure v Průzkumníku cloudu sady Visual Studio](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view).
+    >
+    > V aplikaci Visual Studio 2019 Průzkumníka cloudu můžete otevřít návrhář aplikace logiky na webu Azure Portal, ale dosud neotevřel vloženého návrháře aplikace logiky.
 
-  * <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551" target="_blank">Azure Logic Apps Tools pro Visual Studio 2017</a> nebo <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio" target="_blank">verze pro Visual Studio 2015</a> 
-  
+    Instalace Průzkumníka cloudu sady Visual Studio 2015, [stáhněte si Průzkumníka cloudu z webu Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
+    Další informace najdete v tématu [spravovat prostředky přidružené k účtům Azure v Průzkumníku cloudu Visual Studio (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
+
+  * <a href="https://azure.microsoft.com/downloads/" target="_blank">Azure SDK (2.9.1 nebo novější)</a> 
+
+  * <a href="https://github.com/Azure/azure-powershell#installation" target="_blank">Azure PowerShell</a>
+
+  * Azure Logic Apps Tools pro verzi sady Visual Studio, které chcete:
+
+    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019" target="_blank">Visual Studio 2019</a>
+    
+    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2017" target="_blank">Visual Studio 2017</a>
+    
+    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015" target="_blank">Visual Studio 2015</a>
+
     Azure Logic Apps Tools můžete stáhnout a nainstalovat přímo z Visual Studio Marketplace nebo si můžete přečíst, <a href="https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions" target="_blank">jak toto rozšíření nainstalovat v rámci sady Visual Studio</a>. 
     Po dokončení instalace nezapomeňte sadu Visual Studio restartovat.
-
-* Cloud Explorer for Visual Studio 2017 nebo Visual Studio 2015
-
-  * Pro Visual Studio 2017, spusťte instalační program sady Visual Studio a nainstalovat **úlohy Azure**. Další informace najdete v tématu [spravovat prostředky přidružené k vaší Azure accuonts v Průzkumníku cloudu sady Visual Studio](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2017).
-
-  * Pro sadu Visual Studio 2015 [stáhněte si Průzkumníka cloudu z webu Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
-  Další informace najdete v tématu [spravovat prostředky přidružené k účtům Azure v Průzkumníku cloudu Visual Studio (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
 
 * Přístup k webu při používání vloženého návrháře pro Logic Apps
 
@@ -184,8 +193,9 @@ Odstranění aplikace logiky na webu Azure Portal, v Průzkumníku cloudu otevř
 
 Při otevření projektu aplikace logiky v návrháři pro Logic Apps, nemusí mít možnost pro výběr vašeho předplatného Azure. Místo toho svou aplikaci logiky se otevře s předplatným Azure, který není ten, který chcete použít. K tomuto chování dochází po otevření souboru .json aplikace logiky, Visual Studio ukládá do mezipaměti první vybrané předplatné pro budoucí použití. Chcete-li tento problém vyřešit, zkuste použijte jeden z těchto kroků:
 
-* Přejmenujte soubor .json aplikace logiky. Mezipaměť předplatného závisí na názvu souboru. 
-* Chcete-li odebrat dříve vybraná předplatná pro *všechny* odstranění aplikace logiky ve vašem řešení *skryté* .vs složky v adresáři vašeho řešení. Toto umístění ukládá informace o vašem předplatném. 
+* Přejmenujte soubor .json aplikace logiky. Mezipaměť předplatného závisí na názvu souboru.
+
+* Chcete-li odebrat dříve vybraná předplatná pro *všechny* aplikací logiky ve vašem řešení, odstraňte složku nastavení služby skryté sady Visual Studio (.vs) v adresáři vašeho řešení. Toto umístění ukládá informace o vašem předplatném.
 
 ## <a name="next-steps"></a>Další postup
 

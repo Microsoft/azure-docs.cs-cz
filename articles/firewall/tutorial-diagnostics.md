@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 2befbf66733430e6077f5e5ff3044c30a77b7e5c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 10837730bea17f98083f456ec4c9fb0d7567af57
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958970"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877257"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Kurz: Monitorujte metriky a protokoly brány Firewall Azure
 
@@ -41,7 +41,7 @@ Před zahájením tohoto kurzu si v tématu o [protokolech a metrikách brány F
 Než se data v protokolech po dokončení tohoto procesu zapnutí protokolování diagnostiky zobrazí, může to trvat několik minut. Pokud nic nevidíte, zkuste to znovu po několika minutách.
 
 1. Na webu Azure Portal otevřete skupinu prostředků brány firewall a klikněte na bránu firewall.
-2. V části **Monitorování** klikněte na **Diagnostické protokoly**.
+2. V části **monitorování**, klikněte na tlačítko **nastavení diagnostiky**.
 
    Pro bránu Azure Firewall jsou k dispozici dva protokoly pro konkrétní služby:
 
@@ -57,9 +57,9 @@ Než se data v protokolech po dokončení tohoto procesu zapnutí protokolován�
 9. Na stránce **Pracovní prostor Log Analytics** zadejte pro **Pracovní prostor Log Analytics** nový název **firewall-oms**.
 10. Vyberte předplatné, použijte existující skupinu prostředků brány firewall (**Test-FW-RG**), jako umístění vyberte **USA – východ** a u cenové úrovně zvolte **Free**.
 11. Klikněte na **OK**.
-   ![Spuštění procesu konfigurace][1] Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.  
+   ![Spouští se proces konfigurace][1] pracovních prostorů OMS jsou dnes označovány jako pracovní prostory Log Analytics.  
 12. V části **Protokol** začněte shromažďovat protokoly pravidel aplikace a sítě kliknutím na **AzureFirewallApplicationRule** a **AzureFirewallNetworkRule**.
-   ![Uložení nastavení diagnostiky][2]
+   ![Uložit nastavení diagnostiky][2]
 13. Klikněte na **Uložit**.
 
 ## <a name="enable-logging-with-powershell"></a>Povolení protokolování prostřednictvím PowerShellu

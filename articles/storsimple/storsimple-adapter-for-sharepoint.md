@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
-ms.openlocfilehash: 2e1b231a5cf13d2655ff66c7e48752729c580f48
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a2f8e75578e396085e7d80f43c1180e158967061
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232863"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885583"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Nainstalovat a nakonfigurovat StorSimple Adapter pro SharePoint
 ## <a name="overview"></a>Přehled
@@ -208,7 +208,7 @@ Následující postupy popisují, jak přesunout objekty BLOB zpět do obsahový
 > Budete muset přesunout objekty BLOB zpět do databáze obsahu před odinstalováním softwaru adaptér.
 
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 Shromážděte následující informace předtím, než přesun dat zpět do databáze SQL serveru obsahu a zahájit proces odebrání adaptéru:
 
 * Názvy všech databází, u kterých je povolená RBS
@@ -226,9 +226,9 @@ Před odinstalováním StorSimple Adapter pro SharePoint softwaru, musí všechn
 4. Na **nakonfigurovat adaptér StorSimple** stránky, klikněte na tlačítko **zakázat** tlačítko pod každou z databáze obsahu, které chcete odebrat z externího úložiště objektů BLOB. 
 5. Odstranit objekty ze Sharepointu a potom je odešlete znovu.
 
-Alternativně můžete použít Microsoft` RBS Migrate()` rutiny Powershellu, které jsou součástí služby SharePoint. Další informace najdete v tématu [migrovat do nebo z něj RBS](https://technet.microsoft.com/library/ff628255.aspx).
+Alternativně můžete použít Microsoft `RBS Migrate()` rutiny Powershellu, které jsou součástí služby SharePoint. Další informace najdete v tématu [migrovat do nebo z něj RBS](https://technet.microsoft.com/library/ff628255.aspx).
 
-Po přesunutí objekty BLOB zpět do databáze obsahu, přejděte k dalšímu kroku: [odinstalace adaptéru](#uninstall-the-adapter).
+Po přesunutí objekty BLOB zpět do databáze obsahu, přejděte k dalšímu kroku: [Odinstalace adaptéru](#uninstall-the-adapter).
 
 ### <a name="uninstall-the-adapter"></a>Odinstalace adaptéru
 Po přesunutí objekty BLOB zpět do databáze serveru SQL Server obsahu, použijte jednu z následujících možností odinstalace StorSimple Adapter pro SharePoint.

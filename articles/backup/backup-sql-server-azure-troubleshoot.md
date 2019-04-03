@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: e5565e257e511203043c84e499712cc6a0a78c3f
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d8cbae679552cce8df29410ad8a477801abd4ff1
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286008"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847455"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Řešení potíží s zálohování SQL serveru v Azure
 
@@ -98,12 +98,18 @@ Při obnovení úlohy se zobrazí následující kódy chyb.
 |---|---|---|
 | Obnovení se nezdařilo, protože databáze se nepovedlo převést do režimu offline. | Během operace obnovení, cílová databáze je potřeba uvést do offline režimu. Azure Backup není schopen poskytnout tato data do offline režimu. | Použijte další podrobnosti v nabídce Azure portal chyba zúžit hlavní příčiny. Další informace najdete v tématu [dokumentace ke službě SQL](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
 
-
 ###  <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
 | Nejde najít server certifikát s kryptografickým otiskem na cíli. | Hlavní databáze v cílové instanci nemá platný šifrovací kryptografického otisku. | Importujte platný kryptografický otisk používá v instanci zdroje v cílové instanci. |
+
+### <a name="usererrorrestorenotpossiblebecauselogbackupcontainsbulkloggedchanges"></a>UserErrorRestoreNotPossibleBecauseLogBackupContainsBulkLoggedChanges
+
+| Chybová zpráva | Možné příčiny | Doporučená akce |
+|---|---|---|
+| Záloha protokolu pro obnovení obsahuje hromadně protokolované změny. Nelze použít k zastavení v libovolný bod v čase podle pokynů SQL. | Pokud je databáze v režimu hromadně protokolovaný obnovení, data mezi hromadně protokolované transakce a další protokolu transakcí nelze obnovit. | Zvolte prosím jiný bod v čase pro obnovení. [Další informace](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
+
 
 ## <a name="registration-failures"></a>Selhání registrace
 

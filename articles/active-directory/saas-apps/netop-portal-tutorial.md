@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 607c18a67f7acc13ffe4d5c14131f20a2f94e8d9
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 17c5e568bbdbdd9aa07db0ee10438cb7d05bd56c
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652038"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849231"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netop-portal"></a>Kurz: Integrace Azure Active Directory s Netop portálu
 
@@ -128,7 +128,7 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí portálu Netop, prove
 
     b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
 
-    c. V **Namespace** textové pole, typ https://secure.netop.com.
+    c. V **Namespace** textové pole, typ https:\//secure.netop.com.
 
     d. Vyberte zdroj jako **atribut**.
 

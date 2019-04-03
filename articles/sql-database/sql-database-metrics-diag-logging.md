@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: bb45062697b113b676f85381f0653c14ac8c0c67
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 785948c78b2b8205c4bebe2d68b62f6de7254d94
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621226"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863130"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
@@ -69,10 +69,15 @@ Můžete nastavit databází Azure SQL a instance databáze shromažďovat násl
 | [DatabaseWaitStatistics](#database-wait-statistics-dataset): Obsahuje informace o tom, kolik času stráví databáze čeká čekání různých typů. | Ano | Ne |
 | [Vypršení časových limitů](#time-outs-dataset): Obsahuje informace o vypršení časového limitu pro v databázi. | Ano | Ne |
 | [Bloky](#blockings-dataset): Obsahuje informace o blokování události v databázi. | Ano | Ne |
+| [Zablokování](#deadlocks-dataset): Obsahuje informace o událostech zablokování v databázi. | Ano | Ne |
+| [AutomaticTuning](#automatic-tuning-dataset): Obsahuje informace o doporučení automatického ladění na databázi. | Ano | Ne |
 | [SQLInsights](#intelligent-insights-dataset): Obsahuje užitečné přehledy o výkonu. Další informace najdete v tématu [Intelligent Insights](sql-database-intelligent-insights.md). | Ano | Ano |
 
 > [!IMPORTANT]
 > Elastické fondy a spravované instance mají svůj vlastní samostatný diagnostickou telemetrii z databází, které obsahují. To je důležité si uvědomit telemetrická data diagnostiky je nakonfigurované samostatně pro každý z těchto prostředků, jak je uvedeno níže.
+
+> [!NOTE]
+> Protokoly auditu zabezpečení a SQLSecurityAuditEvents není možné z databáze nastavení diagnostiky. Pokud chcete povolit streamování protokolů auditu, naleznete v tématu [nastavení auditování databáze](sql-database-auditing.md#subheading-2), a [auditování protokoly v protokolech Azure Monitor a Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
 
 ## <a name="azure-portal"></a>portál Azure
 
@@ -136,7 +141,7 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro jeden, neb
 1. Tento postup opakujte pro každou databázi, kterou chcete monitorovat.
 
 > [!NOTE]
-> Protokoly auditu zabezpečení není možné z databáze nastavení diagnostiky. Pokud chcete povolit streamování protokolů auditu, naleznete v tématu [nastavení auditování databáze](sql-database-auditing.md#subheading-2), a [auditování protokoly v protokolech Azure Monitor a Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+> Protokoly auditu zabezpečení a SQLSecurityAuditEvents není možné z databáze nastavení diagnostiky. Pokud chcete povolit streamování protokolů auditu, naleznete v tématu [nastavení auditování databáze](sql-database-auditing.md#subheading-2), a [auditování protokoly v protokolech Azure Monitor a Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
 > [!TIP]
 > Tento postup opakujte pro každý Azure SQL Database, kterou chcete monitorovat.
 
@@ -350,7 +355,7 @@ Metriky a diagnostické protokoly SQL Database můžete Streamovat do služby Ev
 Po streamuje vybraná data do služby Event Hubs, jste zase o krok blíž k povolení pokročilých scénářích monitorování. Služba Event Hubs slouží jako branou pro kanál události. Po shromáždění dat do centra událostí můžete transformovat a uložit pomocí poskytovatele analýz v reálném čase nebo adaptérů úložiště. Event Hubs oddělí vytvoření proudu událostí od spotřeby těchto události. Tímto způsobem dostanete příjemci událostí události podle svého vlastního plánu. Další informace o Event Hubs najdete v tématu:
 
 - [Co jsou Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
-- [Začínáme s Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+- [Začínáme se službou Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
 Streamovaná metriky můžete použít ve službě Event Hubs do:
 
@@ -434,7 +439,7 @@ V následujících tabulkách jsou uvedeny podrobnosti telemetrie dostupné pro 
 |Type|Vždy: AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: ResourceUsageStats |
-|Prostředek|Název zdroje |
+|Prostředek|Název prostředku |
 |ResourceType|Název typu prostředku. Vždy: MANAGEDINSTANCES |
 |SubscriptionId|GUID předplatného pro databázi |
 |ResourceGroup|Název skupiny prostředků pro databázi |
@@ -460,7 +465,7 @@ V následujících tabulkách jsou uvedeny podrobnosti telemetrie dostupné pro 
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: QueryStoreRuntimeStatistics |
 |OperationName|Název operace Vždy: QueryStoreRuntimeStatisticsEvent |
-|Prostředek|Název zdroje |
+|Prostředek|Název prostředku |
 |ResourceType|Název typu prostředku. Vždy: SERVERY PRO/DATABÁZE |
 |SubscriptionId|GUID předplatného pro databázi |
 |ResourceGroup|Název skupiny prostředků pro databázi |
@@ -511,7 +516,7 @@ Další informace o [Query Store runtime statistická data](https://docs.microso
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: QueryStoreWaitStatistics |
 |OperationName|Název operace Vždy: QueryStoreWaitStatisticsEvent |
-|Prostředek|Název zdroje |
+|Prostředek|Název prostředku |
 |ResourceType|Název typu prostředku. Vždy: SERVERY PRO/DATABÁZE |
 |SubscriptionId|GUID předplatného pro databázi |
 |ResourceGroup|Název skupiny prostředků pro databázi |
@@ -549,7 +554,7 @@ Další informace o [Query Store počkejte statistická data](https://docs.micro
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQ |
 |Kategorie|Název kategorie. Vždy: Chyby |
 |OperationName|Název operace Vždy: ErrorEvent |
-|Prostředek|Název zdroje |
+|Prostředek|Název prostředku |
 |ResourceType|Název typu prostředku. Vždy: SERVERY PRO/DATABÁZE |
 |SubscriptionId|GUID předplatného pro databázi |
 |ResourceGroup|Název skupiny prostředků pro databázi |
@@ -578,7 +583,7 @@ Další informace o [chybových zpráv systému SQL Server](https://msdn.microso
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: DatabaseWaitStatistics |
 |OperationName|Název operace Vždy: DatabaseWaitStatisticsEvent |
-|Prostředek|Název zdroje |
+|Prostředek|Název prostředku |
 |ResourceType|Název typu prostředku. Vždy: SERVERY PRO/DATABÁZE |
 |SubscriptionId|GUID předplatného pro databázi |
 |ResourceGroup|Název skupiny prostředků pro databázi |
@@ -607,7 +612,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: Časové limity |
 |OperationName|Název operace Vždy: TimeoutEvent |
-|Prostředek|Název zdroje |
+|Prostředek|Název prostředku |
 |ResourceType|Název typu prostředku. Vždy: SERVERY PRO/DATABÁZE |
 |SubscriptionId|GUID předplatného pro databázi |
 |ResourceGroup|Název skupiny prostředků pro databázi |
@@ -630,7 +635,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: bloky |
 |OperationName|Název operace Vždy: BlockEvent |
-|Prostředek|Název zdroje |
+|Prostředek|Název prostředku |
 |ResourceType|Název typu prostředku. Vždy: SERVERY PRO/DATABÁZE |
 |SubscriptionId|GUID předplatného pro databázi |
 |ResourceGroup|Název skupiny prostředků pro databázi |
@@ -654,7 +659,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: Zablokování |
 |OperationName|Název operace Vždy: DeadlockEvent |
-|Prostředek|Název zdroje |
+|Prostředek|Název prostředku |
 |ResourceType|Název typu prostředku. Vždy: SERVERY PRO/DATABÁZE |
 |SubscriptionId|GUID předplatného pro databázi |
 |ResourceGroup|Název skupiny prostředků pro databázi |
@@ -674,7 +679,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |Type|Vždy: AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: AutomaticTuning |
-|Prostředek|Název zdroje |
+|Prostředek|Název prostředku |
 |ResourceType|Název typu prostředku. Vždy: SERVERY PRO/DATABÁZE |
 |SubscriptionId|GUID předplatného pro databázi |
 |ResourceGroup|Název skupiny prostředků pro databázi |
@@ -707,7 +712,7 @@ Zjistěte, jak povolit protokolování a pochopit, metriky a protokolování kat
 
 Další informace o službě Event Hubs, přečtěte si:
 
-- [Co je Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
-- [Začínáme s Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+- [Co je služba Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
+- [Začínáme se službou Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
 Další informace o službě Azure Storage najdete v tématu [stahování metriky a diagnostické protokoly z úložiště](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).

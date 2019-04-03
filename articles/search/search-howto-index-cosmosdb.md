@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: dceabc799e187f3af56588d5a9008e5cdca517c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 019945c48342238a1caa7611bdff6d06fd1e2bd9
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864452"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883390"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Jak indexovat Cosmos DB pomocí indexeru Azure Search
 
@@ -25,7 +25,7 @@ Vzhledem k tomu, že terminologie může být matoucí, je vhodné poznamenat, k
 
 Můžete použít [portál](#cosmos-indexer-portal), rozhraní REST API nebo .NET SDK k indexování obsahu Cosmos. Indexer Cosmos DB ve službě Azure Search Procházet [položky Azure Cosmos](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) přistupovat prostřednictvím těchto protokolů:
 
-* [ROZHRANÍ SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
+* [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
 * [Rozhraní MongoDB API](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) (podpora Azure Search pro toto rozhraní API je ve verzi public preview)  
 
 > [!Note]
@@ -61,7 +61,7 @@ V **zdroj dat** stránku, musí být zdroj **Cosmos DB**, s následujícími spe
 
 + **Název** je název objektu zdroje dat. Po vytvoření můžete u jiných úloh.
 
-+ **Účet služby cosmos DB** by měl být primární nebo sekundární připojovací řetězec ze služby Cosmos DB, pomocí `AccountEdpointPoint` a `AccountKey`. Účet určuje, zda data je typovaná jako rozhraní SQL API nebo rozhraní Mongodb API
++ **Účet služby cosmos DB** by měl být primární nebo sekundární připojovací řetězec ze služby Cosmos DB, pomocí `AccountEndpoint` a `AccountKey`. Účet určuje, zda data je typovaná jako rozhraní SQL API nebo rozhraní Mongodb API
 
 + **Databáze** je existující databázi z účtu. 
 
@@ -171,10 +171,10 @@ Text žádosti obsahuje definici zdroje dat, která by měla obsahovat následuj
 
 | Pole   | Popis |
 |---------|-------------|
-| **Jméno** | Povinná hodnota. Vyberte libovolný název a představují data zdrojový objekt. |
+| **jméno** | Povinná hodnota. Vyberte libovolný název a představují data zdrojový objekt. |
 |**type**| Povinná hodnota. Musí být `documentdb`. |
-|**Přihlašovací údaje** | Povinná hodnota. Musí být připojovací řetězec služby Cosmos DB.<br/>Pro kolekce SQL připojovací řetězce jsou v tomto formátu: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>Kolekce MongoDB, přidejte **ApiKind = MongoDb** na připojovací řetězec:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Vyhněte se čísla portů v adresu url koncového bodu. Pokud je číslo portu, nepůjde Azure Search k indexování databáze Azure Cosmos DB.|
-| **container** | obsahuje následující prvky: <br/>**Název**: Povinná hodnota. Zadejte ID kolekce databáze, který se má indexovat.<br/>**dotaz**: Volitelné. Můžete zadat dotaz, který libovolný dokument JSON sloučit do ploché schéma, které Azure Search můžete indexovat.<br/>Dotazy nejsou podporovány pro kolekce MongoDB. |
+|**přihlašovací údaje** | Povinná hodnota. Musí být připojovací řetězec služby Cosmos DB.<br/>Pro kolekce SQL připojovací řetězce jsou v tomto formátu: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>Kolekce MongoDB, přidejte **ApiKind = MongoDb** na připojovací řetězec:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Vyhněte se čísla portů v adresu url koncového bodu. Pokud je číslo portu, nepůjde Azure Search k indexování databáze Azure Cosmos DB.|
+| **kontejner** | obsahuje následující prvky: <br/>**Název**: Povinná hodnota. Zadejte ID kolekce databáze, který se má indexovat.<br/>**dotaz**: Volitelné. Můžete zadat dotaz, který libovolný dokument JSON sloučit do ploché schéma, které Azure Search můžete indexovat.<br/>Dotazy nejsou podporovány pro kolekce MongoDB. |
 | **dataChangeDetectionPolicy** | Doporučené. Zobrazit [indexování dokumentů změnit](#DataChangeDetectionPolicy) oddílu.|
 |**dataDeletionDetectionPolicy** | Volitelné. Zobrazit [indexování dokumentů odstranit](#DataDeletionDetectionPolicy) oddílu.|
 

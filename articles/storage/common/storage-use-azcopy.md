@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: d28ea2972b8b73921bb078d8570afe9a6dffce8f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6ae3ec566c05d2460747439d61c87c995a90b19c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461765"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881728"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Přenos dat pomocí AzCopy ve Windows
 AzCopy je nástroj příkazového řádku určený pro kopírování dat do a z Microsoft Azure Blob, File a Table storage, pomocí jednoduchých příkazů, které jsou navržené pro zajištění optimálního výkonu. Data můžete kopírovat mezi systémem souborů a účtem úložiště nebo mezi účty úložiště.  
@@ -57,7 +57,7 @@ Podívejme se na několik způsobů, jak stahovat objekty BLOB pomocí AzCopy.
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:"abc.txt"
 ```
 
-Všimněte si, že pokud složka `C:\myfolder` buď neexistuje, vytvoří AzCopy ho a stažení `abc.txt ` do nové složky.
+Všimněte si, že pokud složka `C:\myfolder` buď neexistuje, vytvoří AzCopy ho a stažení `abc.txt` do nové složky.
 
 ### <a name="download-a-single-blob-from-the-secondary-region"></a>Stáhněte si jeden objekt blob ze sekundární oblasti
 

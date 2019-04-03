@@ -9,20 +9,20 @@ ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: 5d10d4d603312b3c75760a5d7c17a9028ddecea8
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 59a52b2aeb83732a608f1fcf5bc4de907d25dfd1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401211"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885022"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Rozšíření skriptů U-SQL s kódem R ve službě Azure Data Lake Analytics
 
 Následující příklad ukazuje základní kroky pro nasazování kódu R:
 * Použití `REFERENCE ASSEMBLY` příkaz umožňující rozšíření R skript U-SQL.
-* Použití` REDUCE` operace rozdělit vstupní data na klíč.
+* Použití `REDUCE` operace rozdělit vstupní data na klíč.
 * Rozšíření U-SQL R zahrnují integrované redukční funkci (`Extension.R.Reducer`), který spouští kód R na každý vrchol přiřazené redukční funkci. 
-* Využití vyhrazených s názvem datových rámců volá `inputFromUSQL` a `outputToUSQL `k předávání dat mezi U-SQL a R. vstupní a výstupní datový rámec názvy identifikátorů jsou pevné (to znamená, uživatelů není možné změnit názvy těchto předdefinovaných vstupu a výstupu datového rámce identifikátory).
+* Využití vyhrazených s názvem datových rámců volá `inputFromUSQL` a `outputToUSQL` k předávání dat mezi U-SQL a R. vstupní a výstupní datový rámec názvy identifikátorů jsou pevné (to znamená, uživatelů není možné změnit názvy těchto předdefinovaných vstupu a výstupu datového rámce identifikátory).
 
 ## <a name="embedding-r-code-in-the-u-sql-script"></a>Vložení kódu R do skriptu U-SQL
 
@@ -207,6 +207,6 @@ Nejdřív vytvořit vlastní modul R a zip ji a pak nahrajte soubor ZIP vlastní
     OUTPUT @RScriptOutput TO @OutputFileModelSummary USING Outputters.Tsv();
 
 ## <a name="next-steps"></a>Další kroky
-* [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
+* [Přehled Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 * [Pomocí funkcí okna U-SQL pro úlohy Azure Data Lake Analytics](data-lake-analytics-use-window-functions.md)

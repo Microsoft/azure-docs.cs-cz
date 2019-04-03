@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 899068141a936aa5257501e733c6600185f22b8e
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 1a596462eb42231a356ddc4fa67b6468b63cd97c
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522158"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849304"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -69,6 +69,7 @@ Nepoužívejte následující názvy databází:
   * Na konci/úvodní mezery
   * Na konci '!'
   * Zavřít hranatá závorka "]"
+  * Databáze s názvem začínajícím "F:\.
 
 Máme aliasů pro Azure table nepodporované znaky, ale doporučujeme vám, že se jim vyhnout. [Další informace](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
 

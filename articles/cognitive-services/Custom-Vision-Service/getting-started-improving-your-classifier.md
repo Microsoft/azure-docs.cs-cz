@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 13c0346324ae8e3cf3485985a9014f9999230630
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 35f83832b0ceb7507b39095e9cc974d82a480c69
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351435"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883069"
 ---
 # <a name="how-to-improve-your-classifier"></a>K vylepšení klasifikátoru
 
@@ -72,6 +72,15 @@ Chcete-li tento problém, zahrnují celou řadu imagí k zajištění, že můž
 * __Styl:__ Zadejte bitové kopie různé styly stejné třídy (například různé typy prvků stejného výsledku). Pokud máte objektů výrazně různých stylů (například Mickey myši vs. reálné myši), doporučujeme však, že je označit jako samostatné třídy pro lepší reprezentaci jejich různé prvky.
 
     ![Obrázek ukázky styl](./media/getting-started-improving-your-classifier/style.png)
+
+## <a name="negative-images"></a>Záporná imagí
+
+V určitém okamžiku v projektu, budete muset přidat _záporné ukázky_ pro usnadnění přesnější klasifikátoru. Záporná ukázky jsou ty, které neodpovídají žádné další značky. Při nahrávání tyto Image použít speciální **negativní** popisek k nim.
+
+> [!NOTE]
+> Custom Vision Service podporuje zpracování některých automatické negativní obrázku. Například pokud zodpovídají za tvorbu hroznového vs. banánů třídění a odešlou obrázek bot pro predikci, třídění by měla stanovení skóre této bitové kopie jako blízko 0 % hroznového a banánů.
+> 
+> Na druhé straně v případech, kdy negativní bitové kopie jsou jen varianta Image použité v školení, je pravděpodobné, že model bude klasifikovat negativní bitové kopie jako třída s popiskem obarvené skvělé. Například pokud máte oranžová vs. grapefruity třídění a kanálu v obraze clementine, ho může skóre clementine jako oranžová protože mnoho funkcí clementine se podobají těm oranges. Pokud negativní obrázky jsou této povaha, doporučujeme, abyste vytvořili nejmíň jeden další značky (například **jiných**) a označovat pomocí popisků negativní obrázky s touto značkou při školení, které umožňují lepší rozlišovat mezi tyto třídy modelu .
 
 ## <a name="use-prediction-images-for-further-training"></a>Použití imagí předpovědi pro další školení
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 791b224f141dc0baa5babc401c35d6860a213df5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: bc27abf7dd21c4996cfd8cea0c2a478cb6dfb4fc
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875030"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879365"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Kurz: Integrace Azure Active Directory s Slack
 
@@ -247,7 +247,7 @@ Cílem této části je vytvořte uživatele Britta Simon v Slack. Slack podporu
 > Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Slack](https://slack.com/help/contact).
 
 > [!NOTE]
-> Azure AD Connect je nástroj pro synchronizaci, které můžete synchronizovat místní Active Directory identity do služby Azure AD a pak tyto synchronizovaných uživatelů můžete také použít aplikace, jak ostatní uživatelé v cloudu.
+> Azure AD Connect je nástroj pro synchronizaci, která lze synchronizovat v místním prostředí Active Directory identity do služby Azure AD a pak tyto synchronizovaných uživatelů můžete také použít aplikace, jak ostatní uživatelé v cloudu.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
@@ -259,7 +259,7 @@ Když kliknete na Slack dlaždici na přístupovém panelu, které by měl být 
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12cbd9bebf001eb902147175c89b5d7ce49e8449
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 108ead982529d2ac6549cceffd9d2177ab6456bf
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487222"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863168"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Řešení potíží Azure AD ochrana heslem
 
@@ -44,7 +44,13 @@ Hlavním příznakem tento problém je 30018 události v protokolu událostí sp
 
 ## <a name="the-proxy-service-can-receive-calls-from-dc-agents-in-the-domain-but-is-unable-to-communicate-with-azure"></a>Proxy služby můžou přijímat volání z agentů řadiče domény v doméně, ale nemůže komunikovat s Azure
 
-Zkontrolujte připojení ke koncovým bodům uvedené v má počítač serveru proxy [požadavky na nasazení](howto-password-ban-bad-on-premises-deploy.md).
+1. Zkontrolujte připojení ke koncovým bodům uvedené v má počítač serveru proxy [požadavky na nasazení](howto-password-ban-bad-on-premises-deploy.md).
+
+1. Ujistěte se, že doménová struktura a všechny proxy serverů zaregistrováni pro stejného tenanta služby Azure.
+
+   Můžete to ověřit spuštěním `Get-AzureADPasswordProtectionProxy` a `Get-AzureADPasswordProtectionDCAgent` rutin prostředí PowerShell, porovnejte `AzureTenant` vrácena vlastnost každé položky. Pro správné fungování těchto musí být stejné v doménové struktuře, ve všech agentů DC a proxy servery.
+
+   Pokud existuje neshoda podmínku registraci tenanta Azure, to lze opravit spuštěním `Register-AzureADPasswordProtectionProxy` a/nebo `Register-AzureADPasswordProtectionForest` rutin prostředí PowerShell podle potřeby, nezapomeňte použít přihlašovací údaje ze stejného tenanta služby Azure pro všechny registrace.
 
 ## <a name="the-dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files-and-other-state"></a>Agent řadiče domény se nemůže šifrovat nebo dešifrovat soubory zásad hesel a dalších stavu
 

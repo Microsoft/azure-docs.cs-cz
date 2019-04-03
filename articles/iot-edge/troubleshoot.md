@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 92294700ac9a491bfdbfa3b3d3f781eb18d5339e
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 83595bf045de412954c176028babc4f94fcb21e1
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437097"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847545"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -346,7 +346,10 @@ Zařízení má problémy se spuštěním moduly, které jsou definovány v nasa
 IoT Edge ve výchozím nastavení spustí moduly ve vlastní síti izolovaného kontejneru. Zařízení může mít potíže s překladem názvů DNS v rámci této privátní sítě.
 
 ### <a name="resolution"></a>Řešení
-Určení serveru DNS pro vaše prostředí v nastavení modulu kontejneru. Vytvořte soubor s názvem `daemon.json` určení serveru DNS pro použití. Příklad:
+
+**Option 1: Nastavení serveru DNS v kontejneru modulu**
+
+Určení serveru DNS pro vaše prostředí v nastavení modulu container, které bude platit pro všechny moduly kontejneru tím, že modul. Vytvořte soubor s názvem `daemon.json` určení serveru DNS pro použití. Příklad:
 
 ```
 {
@@ -371,6 +374,22 @@ Pokud umístění již obsahuje `daemon.json` přidejte **dns** klíče k němu 
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
 | Windows (Powershellu pro správce) | `Restart-Service iotedge-moby -Force` |
+
+**Option 2: Nastavení serveru DNS v nasazení IoT Edge na modul**
+
+Můžete nastavit server DNS pro každý modul *CreateOptions field* v nasazení IoT Edge. Příklad:
+
+```
+"createOptions": {
+  "HostConfig": {
+    "Dns": [
+      "x.x.x.x"
+    ]
+  }
+}
+```
+
+Nezapomeňte nastavit pro *edgeAgent* a *edgeHub* i moduly. 
 
 ## <a name="next-steps"></a>Další postup
 Myslíte si, že jste v platformě IoT Edge našli chybu? [Odešlete problém](https://github.com/Azure/iotedge/issues) tak, aby Pokračujeme ke zlepšení. 

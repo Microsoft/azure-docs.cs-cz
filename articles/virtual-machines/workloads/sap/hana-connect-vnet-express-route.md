@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 071db2d9aeda2373c85ae62c47bbef175dcb7678
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: cb14d0784ecb87c85b02952880e9eb5744d205a2
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483399"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850665"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>Připojení virtuální sítě pro velké instance HANA
 
@@ -27,6 +27,8 @@ Po vytvoření virtuální sítě Azure, můžete připojit tuto síť k SAP HAN
 
 > [!NOTE] 
 > Tento krok může trvat až 30 minut. Nová brána je vytvořené v rámci určené předplatného Azure a poté připojen k zadané virtuální síti Azure.
+
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 Pokud již existuje brána, zkontrolujte, zda je bránu ExpressRoute nebo ne. V opačném případě odstraňte bránu a znovu jej vytvořte jako bránu ExpressRoute. Pokud bránu ExpressRoute se už navázalo, naleznete v následující části tohoto článku, "Propojení virtuálních sítí." 
 
@@ -47,15 +49,15 @@ $myGWPIPName = "VNet01GWPIP"
 $myGWSku = "HighPerformance" # Supported values for HANA large instances are: HighPerformance or UltraPerformance
 
 # These Commands create the Public IP and ExpressRoute Gateway
-$vnet = Get-AzureRmVirtualNetwork -Name $myVNetName -ResourceGroupName $myGroupName
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
-New-AzureRmPublicIpAddress -Name $myGWPIPName -ResourceGroupName $myGroupName `
+$vnet = Get-AzVirtualNetwork -Name $myVNetName -ResourceGroupName $myGroupName
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
+New-AzPublicIpAddress -Name $myGWPIPName -ResourceGroupName $myGroupName `
 -Location $myAzureRegion -AllocationMethod Dynamic
-$gwpip = Get-AzureRmPublicIpAddress -Name $myGWPIPName -ResourceGroupName $myGroupName
-$gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $myGWConfig -SubnetId $subnet.Id `
+$gwpip = Get-AzPublicIpAddress -Name $myGWPIPName -ResourceGroupName $myGroupName
+$gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name $myGWConfig -SubnetId $subnet.Id `
 -PublicIpAddressId $gwpip.Id
 
-New-AzureRmVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName -Location $myAzureRegion `
+New-AzVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName -Location $myAzureRegion `
 -IpConfigurations $gwipconfig -GatewayType ExpressRoute `
 -GatewaySku $myGWSku -VpnType PolicyBased -EnableBgp $true
 ```
@@ -85,9 +87,9 @@ $myGWLocation = "East US"
 $myConnectionName = "VNet01GWConnection"
 
 # Create a new connection between the ER Circuit and your Gateway using the Authorization
-$gw = Get-AzureRmVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName
+$gw = Get-AzVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName
     
-New-AzureRmVirtualNetworkGatewayConnection -Name $myConnectionName `
+New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 -ResourceGroupName $myGroupName -Location $myGWLocation -VirtualNetworkGateway1 $gw `
 -PeerId $PeerID -ConnectionType ExpressRoute -AuthorizationKey $AuthGUID
 ```

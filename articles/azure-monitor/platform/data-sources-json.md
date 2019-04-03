@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 4d87f21b6312cad1a40e23f3a3b22fa8cc406186
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 101719668fee155e84b7a767647a662ca845f0f2
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530021"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848975"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Shromažďovat vlastní zdroje dat JSON pomocí agenta Log Analytics pro Linux ve službě Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-Vlastní zdroje dat JSON dají shromažďovat do [Azure Monitor](data-collection.md) pomocí agenta Log Analytics pro Linux.  Tyto vlastní zdroje dat mohou být jednoduché skripty, které vrací JSON, jako [curl](https://curl.haxx.se/) nebo jeden z [FluentD na více než 300 moduly plug-in](https://www.fluentd.org/plugins/all). Tento článek popisuje konfigurace požadované pro tuto kolekci data.
+Vlastní zdroje dat JSON dají shromažďovat do [Azure Monitor](data-platform.md) pomocí agenta Log Analytics pro Linux.  Tyto vlastní zdroje dat mohou být jednoduché skripty, které vrací JSON, jako [curl](https://curl.haxx.se/) nebo jeden z [FluentD na více než 300 moduly plug-in](https://www.fluentd.org/plugins/all). Tento článek popisuje konfigurace požadované pro tuto kolekci data.
 
 
 > [!NOTE]

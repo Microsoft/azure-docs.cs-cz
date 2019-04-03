@@ -3,21 +3,21 @@ title: Zabezpečení dat uložených v Azure Data Lake Storage Gen1 | Dokumentac
 description: Další informace o zabezpečení dat v Azure Data Lake Storage Gen1 pomocí skupiny a seznamy řízení přístupu
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ca35e65f-3986-4f1b-bf93-9af6066bb716
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: nitinme
-ms.openlocfilehash: 15ef1e1b96a0da24714b4ddbda6b24f1f6f33ae0
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.author: twooley
+ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296732"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885668"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Zabezpečení dat uložených v Azure Data Lake Storage Gen1
 Zabezpečení dat v Azure Data Lake Storage Gen1 je přístup založený na třech krocích.  Jak na základě rolí přístup ovládacího prvku (RBAC) a seznamy řízení přístupu (ACL) musí být nastavena na plně povolit přístup k datům pro uživatele a skupiny zabezpečení.
@@ -152,7 +152,7 @@ Při odebrání skupiny zabezpečení seznamů ACL systému souborů Data Lake S
 * [Kopírování dat z Azure Storage BLOB do Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [Použití Azure Data Lake Analytics s Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Použití Azure HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [Začínáme se službou Data Lake Storage Gen1 pomocí Powershellu](data-lake-store-get-started-powershell.md)
+* [Začínáme se službou Data Lake Storage Gen1 s využitím PowerShellu](data-lake-store-get-started-powershell.md)
 * [Začínáme se službou Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Zobrazení protokolů diagnostiky pro Data Lake Storage Gen1](data-lake-store-diagnostic-logs.md)
 

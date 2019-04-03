@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fc326c1ba529bc394a5ce5a059e3fe91baa7a9a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c2a2c1c415d0862b2631fa749241a9ae07df3b98
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124063"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880147"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení pomocí SCIM 2.0 protokol dodržování předpisů služby zřizování uživatelů služby Azure AD
 
@@ -82,13 +82,13 @@ Ano. Pokud už používáte tato instance aplikace pro jednotné přihlašován�
 
 10. Spusťte následující příkaz k vytvoření nové úlohy zřizování, který má nejnovější opravy služby.
 
-    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
-    `{   templateId: "scim"   } `
+ `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
+ `{   templateId: "scim"   }`
    
 11. Ve výsledcích poslední krok zkopírujte úplný řetězec "ID", který začíná "scim". Znovu použijte v případě potřeby vaše staré mapování atributů spuštěním příkazu nahrazujte [nové-– id úlohy] s novou úlohu s ID jste zkopírovali a zadat, které ve formátu JSON výstup z kroku 7 # jako datovou část požadavku.
 
-    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
-    `{   <your-schema-json-here>   }`
+ `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema`
+ `{   <your-schema-json-here>   }`
 
 12. Vraťte se do první okno webového prohlížeče a vyberte **zřizování** kartu pro vaši aplikaci.
 13. Zkontrolujte konfiguraci a spusťte úlohy zřizování. 

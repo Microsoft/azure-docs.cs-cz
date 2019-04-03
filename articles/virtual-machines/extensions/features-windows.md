@@ -16,18 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c07f01acb95523171f0297f7e2fd531713f1facf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ce13f053c2adee6a9a347a4162b60cc6d6b40eda
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550152"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849768"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření virtuálních počítačů a funkce pro Windows
 
 Rozšíření virtuálních počítačů (VM) Azure jsou malých aplikací, které poskytují konfiguraci a automatizaci úloh po nasazení na virtuálních počítačích Azure. Například, pokud virtuální počítač vyžaduje instalace softwaru, antivirové ochrany, nebo spusťte skript uvnitř této můžete použít rozšíření virtuálního počítače. Rozšíření virtuálního počítače Azure je možné spustit pomocí rozhraní příkazového řádku Azure, Powershellu, šablon Azure Resource Manageru a webu Azure portal. Rozšíření můžete dodávat s nasazením nového virtuálního počítače nebo spouštět všechny stávající systém.
 
 Tento článek obsahuje přehled rozšíření virtuálních počítačů, požadavků na používání rozšíření virtuálního počítače Azure, a pokyny o tom, jak zjišťovat, spravovat a odebrání rozšíření virtuálních počítačů. Tento článek obsahuje obecné informace, protože mnoho rozšíření virtuálního počítače jsou k dispozici, každý s potenciálně jedinečnou konfiguraci. Podrobnosti o konkrétní rozšíření najdete v jednotlivých dokumentech specifických pro jednotlivá rozšíření.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="use-cases-and-samples"></a>Případy použití a ukázky
 
@@ -94,27 +96,27 @@ Následující metody můžete použít ke spuštění rozšíření existujíc�
 Pro spouštění jednotlivých rozšíření existovat několik příkazů Powershellu. Chcete-li zobrazit seznam, použijte [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) a filtrujte *rozšíření*:
 
 ```powershell
-Get-Command Set-Az*Extension* -Module AzureRM.Compute
+Get-Command Set-Az*Extension* -Module Az.Compute
 ```
 
 Získáte výstup podobný následujícímu:
 
 ```powershell
-CommandType     Name                                               Version    Source
------------     ----                                               -------    ------
-Cmdlet          Set-AzVMAccessExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMADDomainExtension                     4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMAEMExtension                          4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMBackupExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMBginfoExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMChefExtension                         4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMCustomScriptExtension                 4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMDiagnosticsExtension                  4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMDiskEncryptionExtension               4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMDscExtension                          4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMExtension                             4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMSqlServerExtension                    4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVmssDiskEncryptionExtension             4.5.0      AzureRM.Compute
+CommandType     Name                                          Version    Source
+-----------     ----                                          -------    ------
+Cmdlet          Set-AzVMAccessExtension                       4.5.0      Az.Compute
+Cmdlet          Set-AzVMADDomainExtension                     4.5.0      Az.Compute
+Cmdlet          Set-AzVMAEMExtension                          4.5.0      Az.Compute
+Cmdlet          Set-AzVMBackupExtension                       4.5.0      Az.Compute
+Cmdlet          Set-AzVMBginfoExtension                       4.5.0      Az.Compute
+Cmdlet          Set-AzVMChefExtension                         4.5.0      Az.Compute
+Cmdlet          Set-AzVMCustomScriptExtension                 4.5.0      Az.Compute
+Cmdlet          Set-AzVMDiagnosticsExtension                  4.5.0      Az.Compute
+Cmdlet          Set-AzVMDiskEncryptionExtension               4.5.0      Az.Compute
+Cmdlet          Set-AzVMDscExtension                          4.5.0      Az.Compute
+Cmdlet          Set-AzVMExtension                             4.5.0      Az.Compute
+Cmdlet          Set-AzVMSqlServerExtension                    4.5.0      Az.Compute
+Cmdlet          Set-AzVmssDiskEncryptionExtension             4.5.0      Az.Compute
 ```
 
 Následující příklad používá rozšíření vlastních skriptů stáhněte si skript z úložiště GitHub do cílového virtuálního počítače a pak spusťte skript. Další informace o rozšíření vlastních skriptů, najdete v části [přehled rozšíření vlastních skriptů](custom-script-windows.md).

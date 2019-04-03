@@ -1,6 +1,6 @@
 ---
-title: Služba Azure branou – metrik a protokolování | Dokumentace Microsoftu
-description: Tento článek vám pomůže pochopit různé požadované metriky a přístup k protokolům, které podporuje služba Azure branou
+title: Monitorování metrik a protokolů ve službě Azure branou | Dokumentace Microsoftu
+description: Tento článek popisuje různé požadované metriky a přístup k protokolům, které podporuje služba Azure branou
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,30 +11,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 3097f4a1716718df5d67769e234562a234623cfe
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: 98aabf5330589bf80f1653bb2882c015a4bc133c
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407024"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862101"
 ---
-# <a name="monitoring-metrics-and-logs-for-front-door"></a>Monitorování metrik a protokolů branou
+# <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Monitorování metrik a protokolů ve službě Azure branou
 
 S použitím branou služby Azure, můžete monitorovat prostředky následujícími způsoby:
 
-* [Metriky](#metrics): Služba Application Gateway nyní má hlavní sedm metriky, chcete-li zobrazit čítače výkonu.
-* [Protokoly](#diagnostic-logging): Protokoly umožňují výkonu, přístupu a další data k ukládání nebo spotřebované prostředků pro účely monitorování.
+- **Metriky**. Služba Application Gateway nyní má hlavní sedm metriky, chcete-li zobrazit čítače výkonu.
+- **Protokoly**. Diagnostické protokoly aktivity a umožní výkonu, přístupu a další data k ukládání nebo spotřebované prostředků pro účely monitorování.
 
-## <a name="metrics"></a>Metriky
+### <a name="metrics"></a>Metriky
 
-Metriky jsou funkce pro určité prostředky Azure, kde můžete zobrazit čítače výkonu na portálu. Pro přední dveře jsou dostupné následující metriky:
+Metriky jsou funkce pro určité prostředky Azure, které umožňují zobrazit čítače výkonu na portálu. Tady jsou k dispozici branou metriky:
 
 | Metrika | Metriky zobrazovaný název | Jednotka | Dimenze | Popis |
 | --- | --- | --- | --- | --- |
 | RequestCount | Počet požadavků | Počet | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet požadavků klientů obsluhuje branou.  |
 | RequestSize | Velikost požadavku | B | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet bajtů odeslaných na požadavky klientů na branou. |
 | ResponseSize | Velikost odpovědi | B | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet bajtů odeslaných jako odpovědi z přední dveře do klientů. |
-| TotalLatency | Celková latence | Milisekund | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Čas se počítají na základě když žádost klienta byla přijata branou až do posledního bajtu odpovědi z přední dveře potvrzeny klienta. |
+| TotalLatency | Celková latence | Milisekund | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Čas se počítají na základě požadavku klienta přijatých branou až do posledního bajtu odpovědi z přední dveře potvrzeny klienta. |
 | BackendRequestCount | Počet požadavků back-endu | Počet | HttpStatus</br>HttpStatusGroup</br>Back-end | Počet požadavků odeslaných z přední dveře k back-endů. |
 | BackendRequestLatency | Odezva back-endu požadavku | Milisekund | Back-end | Čas se počítají na základě když žádost byla odeslána branou back-endu dokud branou poslední bajt odpovědi přijaté z back-endu. |
 | BackendHealthPercentage | Procento stav back-endu | Procento | Back-end</br>BackendPool | Procento úspěšných stavů testy z přední dveře k back-endů. |
@@ -42,35 +42,36 @@ Metriky jsou funkce pro určité prostředky Azure, kde můžete zobrazit číta
 
 ## <a name="activity-log"></a>Protokoly aktivit
 
-Protokoly aktivit poskytují přehled o operacích provedených ve vašich branou. Pomocí protokolů aktivit můžete určit "co, kdo a kdy" veškerých operací (PUT, POST, DELETE) provedených ve vašich branou zápisu.
+Protokoly aktivit poskytují informace o operacích v branou služby. Co, také určují, kdo a kdy se pro všechny operace (put, post nebo delete) provedených ve branou služby zápisu.
 
-> [!NOTE]
-> Protokoly aktivit nezahrnují operace čtení (GET) ani operace prováděné na webu Azure Portal nebo pomocí původních rozhraní API pro správu.
+>[!NOTE]
+>Protokoly aktivit nezahrnují operace čtení (get). Zahrnují taky, že není operace, které můžete provést pomocí webu Azure portal nebo původní rozhraní API pro správu.
 
-Můžete získat přístup k protokolům aktivit ve vaší branou nebo získat přístup ze všech vašich prostředků Azure ve službě Azure Monitor. 
-
-Zobrazení protokolů aktivit:
+Protokoly aktivit přístupu ve vaší službě branou nebo všechny protokoly za prostředky Azure ve službě Azure Monitor. Zobrazení protokolů aktivit:
 
 1. Vyberte instanci branou.
-2. Klikněte na **Protokol aktivit**.
+2. Vyberte **protokolu aktivit**.
 
     ![Protokol aktivit](./media/front-door-diagnostics/activity-log.png)
 
-3. Vyberte požadovaný obor filtrování a klikněte na **Použít**.
+3. Zvolte některou filtrování a pak vyberte **použít**.
 
 ## <a name="diagnostic-logging"></a>Diagnostické protokoly
-Diagnostické protokoly poskytují spoustu informací o operacích a chybách, které jsou důležité pro audit i pro účely odstraňování potíží. Diagnostické protokoly se liší od protokolů aktivit. Protokoly aktivit poskytují přehled o operacích provedených ve vašich prostředcích Azure. Diagnostické protokoly poskytují přehled o operacích, které provedly vaše prostředky. Další informace o [diagnostické protokoly Azure monitoru](../azure-monitor/platform/diagnostic-logs-overview.md). 
+Diagnostické protokoly poskytují spoustu informací o operacích a chybách, které jsou důležité pro auditování a odstraňování potíží. Diagnostické protokoly se liší od protokolů aktivit.
 
-Konfigurace diagnostických protokolů pro vaše vstupní brána:
+Protokoly aktivit poskytují přehled o operacích na prostředky Azure. Diagnostické protokoly poskytují přehled o operacích, které provedly vaše prostředky. Další informace najdete v tématu [diagnostické protokoly Azure monitoru](../azure-monitor/platform/diagnostic-logs-overview.md).
 
-1. Vyberte instanci služby APIM.
-2. Klikněte na **Nastavení diagnostiky**.
+![Diagnostické protokoly](./media/front-door-diagnostics/diagnostic-log.png)
 
-    ![Diagnostické protokoly](./media/front-door-diagnostics/diagnostic-log.png)
+Konfigurace diagnostických protokolů pro vaši službu branou:
 
-3. Klikněte na **Zapnout diagnostiku**. Archivace diagnostických protokolů společně s metrikami na účet úložiště, Streamovat do centra událostí nebo odeslat protokoly Azure monitoru. 
+1. Vyberte službu Azure API Management.
 
-Služba Azure branou v současné době poskytuje diagnostické protokoly (dávkované po hodinách) o jednotlivých API žádosti, kde má každá položka následující schéma:
+2. Zvolte **nastavení diagnostiky**.
+
+3. Vyberte **zapnout diagnostiku**. Archivace diagnostických protokolů společně s metrikami na účet úložiště, Streamovat do centra událostí nebo odeslat protokoly Azure monitoru.
+
+Branou služby v současné době poskytuje diagnostické protokoly (dávkované po hodinách). Diagnostické protokoly poskytují jednotlivých požadavků rozhraní API, kde má každá položka následující schéma:
 
 | Vlastnost  | Popis |
 | ------------- | ------------- |
@@ -91,5 +92,5 @@ Služba Azure branou v současné době poskytuje diagnostické protokoly (dávk
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).
-- Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).
+- [Vytvoření profilu branou](quickstart-create-front-door.md)
+- [Jak funguje branou](front-door-routing-architecture.md)

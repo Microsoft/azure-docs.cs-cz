@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: 522f1f2f24e8c8c3f68a42569d4057a7694754d1
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: a8bd260db7a141ce845ce7fb5b7e10f642907b82
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651069"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851091"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimalizace výkonu díky upgradu SQL Data Warehouse
 
@@ -205,7 +205,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 4. Vyberte buď **body obnovení automaticky** nebo **uživatelem definované body obnovení**.
 
-    ![Automatické body obnovení](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
+    ![Body obnovení automaticky](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
 
 5. Pro body obnovení uživatelsky definovaná **vyberte bod obnovení** nebo **vytvořit nový bod obnovení uživatelem definované**. Vyberte zeměpisnou oblast podporovaném serveru Gen2. 
 
@@ -215,7 +215,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Chcete-li obnovit databázi, použijte [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) rutiny.
+Chcete-li obnovit databázi, použijte [obnovení AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) rutiny.
 
 > [!NOTE]
 > Můžete provést geografické obnovení na Gen2! Uděláte to tak, zadejte Gen2 ServiceObjectiveName (třeba DW1000**c**) jako volitelný parametr.
@@ -228,15 +228,15 @@ Chcete-li obnovit databázi, použijte [Restore-AzureRmSqlDatabase](/powershell/
 6. Ověřte stav databázi geograficky obnovit.
 
 ```Powershell
-Connect-AzureRmAccount
-Get-AzureRmSubscription
-Select-AzureRmSubscription -SubscriptionName "<Subscription_name>"
+Connect-AzAccount
+Get-AzSubscription
+Select-AzSubscription -SubscriptionName "<Subscription_name>"
 
 # Get the database you want to recover
-$GeoBackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>"
+$GeoBackup = Get-AzSqlDatabaseGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>"
 
 # Recover database
-$GeoRestoredDatabase = Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourTargetServer>" -TargetDatabaseName "<NewDatabaseName>" –ResourceId $GeoBackup.ResourceID -ServiceObjectiveName "<YourTargetServiceLevel>" -RequestedServiceObjectiveName "DW300c"
+$GeoRestoredDatabase = Restore-AzSqlDatabase –FromGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourTargetServer>" -TargetDatabaseName "<NewDatabaseName>" –ResourceId $GeoBackup.ResourceID -ServiceObjectiveName "<YourTargetServiceLevel>" -RequestedServiceObjectiveName "DW300c"
 
 # Verify that the geo-restored database is online
 $GeoRestoredDatabase.status

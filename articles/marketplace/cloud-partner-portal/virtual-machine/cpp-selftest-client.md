@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6cfe9b61d9bbb088e827386b2195bba21333937e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ae01b0fb088035240e670c16d4d457d8abda1bfa
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649082"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848928"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Vytvoření klienta sami otestovat kód předběžně ověřit image virtuálních počítačů Azure
 
@@ -51,7 +51,7 @@ Následující diagram znázorňuje, jak funguje ověřování pro volání mezi
 Rozhraní API samočinný test obsahuje jeden koncový bod, který podporuje pouze metody POST.  Má následující strukturu.
 
 ```
-Uri:             https:\//isvapp.azurewebsites.net/selftest-vm
+Uri:             https://isvapp.azurewebsites.net/selftest-vm
 Method:          Post
 Request Header:  Content-Type: “application/json”
 Authorization:   “Bearer xxxx-xxxx-xxxx-xxxxx”
@@ -357,7 +357,7 @@ Následující snímek obrazovky ukazuje příklad pomocí příkazu curl k zís
 
 ### <a name="to-create-and-get-a-token-using-c35"></a>Vytvoření a získání tokenu pomocí jazyka C&#35;
 
-Auth0 požádat o tokeny pro žádné z autorizovaných aplikacích, proveďte operaci POST do [ https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) koncový bod s datovou částí v následujícím formátu:
+Auth0 požádat o tokeny pro žádné z autorizovaných aplikacích, proveďte operaci POST do https:\//soamtenant.auth0.com/oauth/token koncový bod s datovou částí v následujícím formátu:
 
 ```csharp
 string clientId = "Your Application Id";
@@ -380,7 +380,7 @@ var token = JObject.Parse(content)["access_token"];
 
 ### <a name="to-create-and-get-a-token-using-powershell"></a>Vytvoření a získání tokenu pomocí Powershellu
 
-Auth0 požádat o tokeny pro žádné z autorizovaných aplikacích, proveďte operaci POST do [ https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) koncový bod s datovou částí v následujícím formátu:
+Auth0 požádat o tokeny pro žádné z autorizovaných aplikacích, proveďte operaci POST do https:\//soamtenant.auth0.com/oauth/token koncový bod s datovou částí v následujícím formátu:
 
 ```powershell
 $clientId = "Application Id of AD Client APP";

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: c7923282396481dcfd6aa19b75d110fa03e50931
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: e51c56f54a4e30b5e9094388ed92aa0a62ba0840
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439821"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879144"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Vytvořte objekt pro vytváření vlastní image ve službě Azure DevTest Labs
 V tomto článku se dozvíte, jak vytvořit objekt pro vytváření vlastní image pomocí dostupných v ukázkových skriptech [úložiště Git](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory).
@@ -27,7 +27,7 @@ Objekt pro vytváření bitové kopie je konfigurace jako kódu řešení, kter�
 
 Významné akcelerátoru zobrazíte developer desktop do připraveného stavu ve službě DevTest Labs je použití vlastní Image. Z vlastních imagí nevýhod je, že je něco navíc udržovat v testovacím prostředí. Například časem vypršení platnosti zkušební verze produktů (nebo) se nepoužijí nově vydané aktualizace zabezpečení, která vynutí nám pravidelně aktualizují vlastní image. Pomocí objektu pro vytváření bitové kopie máte definici image vráceny se změnami do zdrojového kódu a mít automatizovaný proces pro vytvoření vlastní Image na základě definice.
 
-Toto řešení umožňuje rychlost vytváření virtuálních počítačů z vlastních imagí a nemusíte průběžnou údržbu další náklady. S tímto řešením můžete automaticky vytvořit vlastní Image, distribuovat na další DevTest Labs a vyřazení staré Image. V následujícím videu se dozvíte o objekt pro vytváření bitové kopie a jak je implementováno s DevTest Labs.  Všechny skripty Azure Powershellu jsou volně k dispozici a je umístěn zde: [ http://aka.ms/dtlimagefactory ](http://aka.ms/dtlimagefactory).
+Toto řešení umožňuje rychlost vytváření virtuálních počítačů z vlastních imagí a nemusíte průběžnou údržbu další náklady. S tímto řešením můžete automaticky vytvořit vlastní Image, distribuovat na další DevTest Labs a vyřazení staré Image. V následujícím videu se dozvíte o objekt pro vytváření bitové kopie a jak je implementováno s DevTest Labs.  Všechny skripty Azure Powershellu jsou volně k dispozici a je umístěn zde: [ https://aka.ms/dtlimagefactory ](https://aka.ms/dtlimagefactory).
 
 <br/>
 

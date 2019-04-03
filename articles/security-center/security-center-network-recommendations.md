@@ -3,7 +3,7 @@ title: Ochrana vašich síťových prostředků v Azure Security Center | Dokume
 description: Tato dokument řeší doporučení ve službě Azure Security Center, které vám pomůžou chránit prostředky Azure, sítě a zůstaňte souladu se zásadami zabezpečení.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 55318f40918833688e0c516924642c781141438c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 04/02/2019
+ms.author: monhaber
+ms.openlocfilehash: cca1962e5146300cc376fab4bcb1bf0876acec6c
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117999"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863147"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Chraňte své prostředky sítě v Azure Security Center
 Azure Security Center průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol k posílení zabezpečení a ochraně vašich prostředků.
@@ -30,10 +30,9 @@ Tento článek se zabývá doporučení, které se vztahují k prostředkům Azu
 > **Sítě** stránka umožňuje podrobné informace o stavu vašich prostředků Azure z hlediska sítě. Mapování sítě a adaptivní ovládací prvky sítě jsou k dispozici pro Azure Security Center úrovně standard pouze. [Pokud používáte úroveň free, můžete kliknutím na tlačítko **zobrazit starší verze síť** a získejte doporučení k síti prostředků](#legacy-networking).
 >
 
-**Sítě** stránka poskytuje přehled částí hluboké můžete věnovat, chcete-li získat další informace o stavu vašich prostředků sítě:
+**Sítě** okno obsahuje základní informace o části Podrobné můžete věnovat, chcete-li získat další informace o stavu vašich prostředků sítě:
 
 - Mapování sítě (jenom u vrstvy Azure Security Center úrovně Standard)
-- Skupina NSG posílení zabezpečení (již brzy. Zaregistrovat verzi preview)
 - Doporučení pro zabezpečení sítě.
 - Starší verze **sítě** blade (předchozí okno sítě) 
  
@@ -50,6 +49,7 @@ Chcete-li spustit nástroj Mapa sítě:
 Zobrazí se výchozí zobrazení mapy topologie:
 - Odběry, které jste vybrali v Azure. Na mapě podporuje několik předplatných.
 - Virtuální počítače, podsítí a virtuálních sítí správce prostředků typu prostředku (Azure Classic prostředky nejsou podporovány)
+- Partnerské virtuální sítě
 - Jenom prostředky, které mají [sítě doporučení](security-center-recommendations.md) se střední nebo vysokou závažností  
 - Internetové různé prostředky
 - Mapa je optimalizovaná pro odběry, které jste vybrali v Azure. Pokud změníte svůj výběr, je na mapě přepočítat a znovu optimalizované na základě nového nastavení.  
@@ -98,7 +98,7 @@ Například může zjistíte, že by mohla komunikovat dva počítače, které j
 
 Přejdete na prostředek:
 1. Když vyberete konkrétní prostředek na mapě, v pravém podokně otevře a poskytuje obecné informace o zdroji, řešení připojená zabezpečení, pokud existuje a doporučení týkající se zdroje. Je stejný typ chování pro každý typ prostředku, který jste vybrali. 
-2. Klikněte na tlačítko **provoz** zobrazíte seznam možných odchozí a příchozí přenosy na prostředek – toto je úplný seznam, který může komunikovat s prostředku a který může komunikovat a které protokoly a porty.
+2. Klikněte na tlačítko **provoz** zobrazíte seznam možných odchozí a příchozí přenosy na prostředek – toto je úplný seznam, který může komunikovat s prostředku a který může komunikovat a které protokoly a porty. Například při výběru se zobrazí virtuální počítač, všechny virtuální počítače, může komunikovat s, a pokud jste vybrali podsíť, jsou uvedeny všechny podsítě, které mohou komunikovat s.
 
 **Tato data se odvíjí analýzy skupin zabezpečení sítě, stejně jako pokročilé algoritmy strojového učení, které analyzují víc pravidel, které vám pomohou pochopit jejich crossovers a interakce.** 
 
@@ -143,7 +143,7 @@ Virtuální síť|5|Povolit před útoky DDoS standard protection|Aplikace s ve�
 ## <a name="see-also"></a>Další informace najdete v tématech
 Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
 
-* [Ochrana virtuálních počítačů pomocí Azure Security Center](security-center-virtual-machine-recommendations.md)
+* [Ochrana virtuálních počítačů ve službě Azure Security Center](security-center-virtual-machine-recommendations.md)
 * [Ochrana aplikací pomocí Azure Security Center](security-center-application-recommendations.md)
 * [Ochrana služby Azure SQL ve službě Azure Security Center](security-center-sql-service-recommendations.md)
 

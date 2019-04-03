@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 10/29/2018
+ms.date: 04/02/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 860a059f57578965045ff8e7f404c3b072df03a1
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 6cb7296ea4acfbf90d94b8f94a644b8a382b033b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293817"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877359"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Spolupráce Azure Active Directory s B2B nejčastější dotazy
 
@@ -48,7 +48,7 @@ Tato funkce je plánovaná pro budoucí verze, tak, která pak můžete vybrat k
 Organizace chtít přidat uživatele spolupráce B2B, zřizování aplikací podle potřeby a potom odeslat pozvánky. Pozvání spolupráce B2B rozhraní API můžete použít k přizpůsobení pracovního postupu registrace.
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Můžete mi zviditelnit uživatele typu Host do globálního seznamu adres Exchange?
-Ano. Hostované objekty nejsou viditelné v seznamu globálního adresáře vaší organizace ve výchozím nastavení, ale můžete použít Azure Active Directory PowerShell je Pokud chcete zviditelnit. Zobrazit **můžete udělám hostů objekty viditelné v globálním?** v [přístup hosta v Office 365 Groups](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ).
+Ano. Hostované objekty nejsou viditelné ve vaší organizaci seznamu globálního adresáře (GAL) ve výchozím nastavení, ale můžete použít Azure Active Directory PowerShell je Pokud chcete zviditelnit. Zobrazit [můžete udělám hostů objekty viditelné v globálním?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#can-i-make-guest-objects-visible-in-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Můžete vytvořit uživatele typu Host správce s omezeními?
 Jistě. Další informace najdete v tématu [přidání uživatele typu Host do role](add-guest-to-role.md).

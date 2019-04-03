@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: d73a43aedde9a88e009ddca1f0363dbcd92e1379
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080450"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882408"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Spustit akce na základě stavu skupiny pomocí oborů v Azure Logic Apps
 
@@ -80,9 +80,9 @@ Můžete kdykoli uložit aplikaci logiky, tak často uložte svou práci.
       | Nastavení | Hodnota | Popis |
       | ------- | ----- | ----------- |
       | **Bod na trase 1** | <*start*> | Zadejte počátek vaší cesty. | 
-      | **Bod na trase 2** | <*ukončení*> | Zadejte cíl vaší trasy. | 
-      | **Vyloučit** | Žádný | Zadejte položky, které chcete se na trase vyhnout, jako je například dálnice, mýtné a tak dále. Možné hodnoty najdete v části [výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
-      | **Optimalizovat** | timeWithTraffic | Vyberte parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba aktuální informace o provozu a tak dále. Tento příklad používá tuto hodnotu: "timeWithTraffic" | 
+      | **Waypoint 2** | <*ukončení*> | Zadejte cíl vaší trasy. | 
+      | **Avoid** | Žádný | Zadejte položky, které chcete se na trase vyhnout, jako je například dálnice, mýtné a tak dále. Možné hodnoty najdete v části [výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **Optimalizace** | timeWithTraffic | Vyberte parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba aktuální informace o provozu a tak dále. Tento příklad používá tuto hodnotu: "timeWithTraffic" | 
       | **Jednotka vzdálenosti** | <*vaše-volba*> | Zadejte jednotka vzdálenosti použitá k výpočtu vaší trasy. Tento příklad používá tuto hodnotu: "Míli" | 
       | **Způsob cestování** | Autem | Zadejte režim dopravy pro danou trasu. Tento příklad používá tuto hodnotu "Řidičského" | 
       | **Datum a čas přejezdu** | Žádný | Platí pro pouze v režimu přenosu. | 
@@ -119,7 +119,7 @@ Můžete kdykoli uložit aplikaci logiky, tak často uložte svou práci.
 
    1. V **tělo** zadejte tento text s koncovou mezerou: 
 
-      ```Travel time: ```
+      ```Travel time:```
 
       Zatímco ukazatel myši se zobrazí v **tělo** pole, seznamu dynamického obsahu zůstane otevřený tak, že vyberete všechny parametry, které jsou v tuto chvíli k dispozici.
 
@@ -146,11 +146,13 @@ Můžete kdykoli uložit aplikaci logiky, tak často uložte svou práci.
 
    1. Jakmile budete hotovi, zvolte **OK**.
 
+   <!-- markdownlint-disable MD038 -->
    1. Po výraz se přeloží, přidejte tento text s přední místa: ``` minutes```
   
        Vaše **tělo** pole bude vypadat jako v tomto příkladu:
 
        ![Dokončení pole "Body"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+   <!-- markdownlint-enable MD038 -->
 
 1. Uložte svou aplikaci logiky.
 

@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: brandwe
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53efe44f17f174073ea5ed39f94c9dc8078a9779
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9d986ccbf92192c1fb7375e9db1fb398ed86a829
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206765"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879960"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro iOS
 
@@ -47,7 +47,7 @@ Pokud chcete sestavit úplnou funkční aplikaci, budete k tomu potřebovat:
 Než začnete, musíte splnit následující požadavky:
 
 * Stáhnout si [kostru aplikace](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip) nebo [úplnou ukázku](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip).
-* Tenanta služby Azure AD, ve kterém můžete vytvářet uživatele a zaregistrovat aplikaci. Pokud ještě tenanta nemáte, [zjistěte, jak ho získat](quickstart-create-new-tenant.md).
+* Musíte mít tenanta služby Azure AD, ve kterém můžete vytvářet uživatele a zaregistrovat aplikaci. Pokud ještě tenanta nemáte, [zjistěte, jak ho získat](quickstart-create-new-tenant.md).
 
 > [!TIP]
 > Vyzkoušejte [portál pro vývojáře](https://identity.microsoft.com/Docs/iOS) a zprovozněte Azure AD během pár minut. Portál pro vývojáře vás provede procesem registrace aplikace a integrace Azure AD do kódu. Jakmile skončíte, budete mít jednoduchou aplikaci, která může ověřovat uživatele v tenantovi, a back-end, který může přijímat tokeny a provádět ověření.
@@ -112,13 +112,13 @@ Když už máte v Azure AD aplikaci, můžete nainstalovat knihovnu ADAL a zapsa
 
 1. V projektu QuickStart otevřete soubor `settings.plist`.
 1. Nahraďte hodnoty prvků v této části stejnými hodnotami, jako jste zadali na webu Azure Portal. Váš kód bude na tyto hodnoty odkazovat vždy, když bude používat knihovnu ADAL.
-    * `tenant` je doména tenanta Azure AD – například contoso.onmicrosoft.com.
-    * `clientId` je ID klienta vaší aplikace, které jste zkopírovali z webu Azure Portal.
-    * `redirectUri` je adresa URL pro přesměrování, kterou jste na webu Azure Portal zaregistrovali.
+    * `tenant` je doména tenanta Azure AD, například contoso.onmicrosoft.com.
+    * `clientId` je ID klienta aplikace, které jste zkopírovali z portálu.
+    * `redirectUri` je adresa URL pro přesměrování, které jste zaregistrovali na portálu.
 
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>Krok 4: Použití knihovny ADAL k získání tokenů z Azure AD
 
-Základním principem knihovny ADAL je, že kdykoli aplikace potřebuje přístupový token, jednoduše zavolá příkaz CompletionBlock `+(void) getToken : ` a ADAL provede zbytek.
+Základním principem knihovny ADAL je, že kdykoli aplikace potřebuje přístupový token, jednoduše zavolá příkaz CompletionBlock `+(void) getToken :` a ADAL provede zbytek.
 
 1. V projektu `QuickStart` otevřete `GraphAPICaller.m` a v horní části vyhledejte komentář `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` (ÚKOL: Příkaz getToken pro generické toky webového rozhraní API vrátí token bez dalších poskytnutých parametrů).
 
@@ -259,5 +259,5 @@ Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) k dispozici na
 
 Můžete teď přejít na další scénáře. Jako další doporučujeme vyzkoušet tyto:
 
-* [Zabezpečení webového rozhraní API Node.js pomocí Azure AD](quickstart-v1-nodejs-webapi.md)
+* [Zabezpečení webové aplikace Node.JS API ve službě Azure AD](quickstart-v1-nodejs-webapi.md)
 * Zjistit, [jak na iOS pomocí knihovny ADAL povolit jednotné přihlašování napříč aplikacemi](howto-v1-enable-sso-ios.md).  

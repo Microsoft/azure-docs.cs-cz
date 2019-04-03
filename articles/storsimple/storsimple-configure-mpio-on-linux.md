@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d1188b40021fbb221bc19af6d4a5397f7ba8f800
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bc1e8a5abc85af95448570497177030f17649d87
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439868"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877580"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurace funkce MPIO na hostiteli StorSimple se systémem CentOS
 Tento článek vysvětluje kroky nutné ke konfiguraci cest vstupně-výstupních operací (MPIO) na serveru hostitele Centos 6.6. Hostitelský server je připojený ke svému zařízení Microsoft Azure StorSimple pro zajištění vysoké dostupnosti prostřednictvím iniciátory iSCSI. Popisuje podrobně automatické zjišťování zařízení více cest a specifické nastavení pouze pro svazky zařízení StorSimple.
@@ -35,15 +35,15 @@ Funkce více cest umožňuje konfigurovat více vstupně-výstupních cest mezi 
 
 Účelem paměťovým má dvě fáze:
 
-* **Vysoká dostupnost**: poskytuje alternativní cestu, pokud selže některý z cesty vstupně-výstupních operací (například kabel, přepínač, síťové rozhraní nebo řadič) prvků.
-* **Vyrovnávání zatížení**: v závislosti na konfiguraci vašeho zařízení úložiště, můžete zvýšit výkon zjišťování zatížení vstupně-výstupních cest a dynamicky opětovné vyvážení těchto zatížení.
+* **Vysoká dostupnost**: Pokud selže některý z cesty vstupně-výstupních operací (například kabel, přepínač, síťové rozhraní nebo řadič) prvků poskytuje alternativní cesty.
+* **Vyrovnávání zatížení**: V závislosti na konfiguraci vašeho zařízení úložiště ho můžete zvýšit výkon pomocí detekce zatížení vstupně-výstupních cest a dynamicky opětovné vyvážení těchto zatížení.
 
 ### <a name="about-multipathing-components"></a>O komponentách více cest
 Více cest v Linuxu se skládá z komponenty jádra a uživatelskou komponenty, jako v následující tabulce.
 
-* **Jádra**: hlavní součást se *zařízení Mapovač* , který přesměrovává vstupně-výstupní operace a podporuje pro cesty a cesty skupiny převzetí služeb při selhání.
+* **Jádra**: Hlavní součást se *zařízení Mapovač* , který přesměrovává vstupně-výstupní operace a podporuje pro cesty a cesty skupiny převzetí služeb při selhání.
 
-* **Uživatelskou**: Jedná se o *multipath nástroje* , které spravují multipathed zařízení tím, že funkce multipath modul Mapovač zařízení, jak postupovat. Nástroje obsahovat:
+* **User-space**: Jedná se o *multipath nástroje* , které spravují multipathed zařízení tím, že funkce multipath modul Mapovač zařízení, jak postupovat. Nástroje obsahovat:
    
    * **Funkce Multipath**: seznamy a nakonfiguruje multipathed zařízení.
    * **Multipathd**: proces démon, který provede multipath a monitoruje cesty.
@@ -56,11 +56,11 @@ Konfigurační soubor `/etc/multipath.conf` díky řadě funkcí více cest uži
 
 Multipath.conf má pět částí:
 
-- **Výchozí nastavení na úrovni systému** *(výchozí nastavení)*: je možné přepsat výchozí nastavení na úrovni systému.
-- **Zařízení na seznamu zakázaných adres** *(černý list)*: můžete zadat seznam zařízení, která by neměla být řízena Mapovač zařízení.
-- **Seznam zakázaných výjimky** *(blacklist_exceptions)*: Chcete zjistit, konkrétní zařízení jsou považovány za funkce multipath zařízení i v případě, že uvedené v blacklist.
-- **Nastavení konkrétní řadič úložiště** *(zařízení)*: můžete zadat nastavení konfigurace, které se použijí na zařízení, která mají dodavatele a informace o produktu.
-- **Nastavení konkrétního zařízení** *(multipaths)*: v této části můžete použít k vyladění nastavení konfigurace pro jednotlivé logické jednotky.
+- **Výchozí nastavení na úrovni systému** *(výchozí nastavení)*: Můžete přepsat výchozí nastavení na úrovni systému.
+- **Zařízení na seznamu zakázaných adres** *(černý list)*: Můžete zadat seznam zařízení, která by neměla být řízena Mapovač zařízení.
+- **Seznam zakázaných výjimky** *(blacklist_exceptions)*: Můžete určit konkrétní zařízení jsou považovány za funkce multipath zařízení i v případě, že uvedené v blacklist.
+- **Nastavení konkrétní řadič úložiště** *(zařízení)*: Můžete zadat nastavení konfigurace, které se použijí na zařízení, která mají dodavatele a informace o produktu.
+- **Nastavení konkrétního zařízení** *(multipaths)*: V této části můžete použít k vyladění nastavení konfigurace pro jednotlivé logické jednotky.
 
 ## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>Konfigurace více cest na StorSimple připojené k hostiteli s Linuxem
 Zařízení StorSimple připojené k hostiteli se systémem Linux můžete nakonfigurovat pro vysokou dostupnost a vyrovnávání zatížení. Například pokud má dvě rozhraní připojené k síti SAN hostiteli s Linuxem a má dvě rozhraní připojené k síti SAN, tak, aby tato rozhraní jsou ve stejné podsíti, pak bude 4 cesty k dispozici. Nicméně pokud každé rozhraní DATA na zařízení a hostitele rozhraní jsou v jiné podsíti protokolu IP (a ne směrovatelné), pak pouze 2 cesty nebudou k dispozici. Můžete nakonfigurovat více cest automaticky zjistit všechny dostupné cesty, vyberte algoritmus Vyrovnávání zatížení pro tyto cesty, použít konkrétní konfiguraci nastavení pro svazky jen pro StorSimple a potom povolit a ověřit více cest.
@@ -183,7 +183,7 @@ Konfiguraci uvedené výš předá 4 samostatné cesty mezi zařízením a hosti
 ## <a name="configuration-steps"></a>Postup konfigurace
 Kroky konfigurace pro více cest zahrnují konfiguraci k dispozici cesty pro automatické zjišťování, určení algoritmu Vyrovnávání zatížení chcete použít, povolení více cest a nakonec ověření konfigurace. Každý z těchto kroků je podrobně popsány v následujících částech.
 
-### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>Krok 1: Konfigurace cest pro automatické zjišťování
+### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>Krok 1: Konfigurace více cest pro automatické zjišťování
 Zařízení nepodporuje multipath lze automaticky zjistit a nakonfigurovaná.
 
 1. Inicializovat `/etc/multipath.conf` souboru. Zadejte:
@@ -210,7 +210,7 @@ Zařízení nepodporuje multipath lze automaticky zjistit a nakonfigurovaná.
         path_grouping_policy multibus
         }
 
-### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Krok 2: Konfigurace cest pro svazky zařízení StorSimple
+### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Krok 2: Konfigurace více cest pro svazky zařízení StorSimple
 Ve výchozím nastavení všechna zařízení jsou černá uvedené v souboru multipath.conf a bude možné obejít. Je potřeba vytvořit blacklist výjimky, které umožňují více cest svazků ze zařízení StorSimple.
 
 1. Upravit `/etc/mulitpath.conf` souboru. Zadejte:
@@ -229,7 +229,7 @@ Ve výchozím nastavení všechna zařízení jsou černá uvedené v souboru mu
             }
            }
 
-### <a name="step-3-configure-round-robin-multipathing"></a>Krok 3: Konfigurace kruhové dotazování více cest
+### <a name="step-3-configure-round-robin-multipathing"></a>Krok 3: Konfigurace více cest kruhové dotazování
 Tento algoritmus Vyrovnávání zatížení používá všechny dostupné multipaths k aktivnímu řadiči způsobem vyvážené, kruhové dotazování.
 
 1. Upravit `/etc/multipath.conf` souboru. Zadejte:
@@ -259,7 +259,7 @@ Tento algoritmus Vyrovnávání zatížení používá všechny dostupné multip
         [root@centosSS ~]# service multipathd start
         Starting multipathd daemon:  [OK]
 
-### <a name="step-5-verify-multipathing"></a>Krok 5: Ověření více cest
+### <a name="step-5-verify-multipathing"></a>Krok 5: Ověření cest
 1. Nejprve se ujistěte, že iSCSI se naváže spojení s zařízení StorSimple následujícím způsobem:
    
    a. Zjišťování zařízení StorSimple. Zadejte:
@@ -298,7 +298,7 @@ Tento algoritmus Vyrovnávání zatížení používá všechny dostupné multip
 
     Pokud se zobrazí pouze jednoho hostitele rozhraní a tady dvě cesty, je potřeba povolit rozhraní na hostiteli pro iSCSI. Můžete postupovat podle [podrobné pokyny v dokumentaci k systému Linux](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html).
 
-1. Svazek je přístupný na CentOS server ze zařízení StorSimple. Další informace najdete v tématu [krok 6: vytvoření svazku](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) prostřednictvím webu Azure portal v zařízení StorSimple.
+1. Svazek je přístupný na CentOS server ze zařízení StorSimple. Další informace najdete v tématu [krok 6: Vytvoření svazku](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) prostřednictvím webu Azure portal v zařízení StorSimple.
 
 1. Ověření cesty k dispozici. Zadejte:
 
@@ -351,7 +351,7 @@ Také by bylo vhodné kontroluje se, že ve skutečnosti vidíte některé disky
 
 * Znovu prohledejte sběrnice SCSI, použijte následující příkaz:
   
-    `$ rescan-scsi-bus.sh `(součástí balíčku sg3_utils)
+    `$ rescan-scsi-bus.sh` (součástí balíčku sg3_utils)
 * Zadejte následující příkazy:
   
     `$ dmesg | grep sd*`
@@ -420,7 +420,7 @@ A. Pokud chcete ověřit, jestli vaše zařízení je na seznamu povolených, po
 Další informace najdete v části [použít řešení potíží s interaktivního příkazu pro více cest](http://www.centos.org/docs/5/html/5.1/DM_Multipath/multipath_config_confirm.html).
 
 ## <a name="list-of-useful-commands"></a>Seznam užitečné příkazy
-| Typ | Příkaz | Popis |
+| Type | Příkaz | Popis |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |Spuštění služby iSCSI |
 | &nbsp; |`service iscsid stop` |Zastavit službu iSCSI |

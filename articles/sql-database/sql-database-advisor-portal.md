@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 023395126a587992c1b5648bd9b8a993d9fa9ced
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d80581aae56fc9d65d6f24d21f2c582cb74b3f2d
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564234"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863198"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Vyhledání a použití doporučení k výkonu
 
@@ -78,6 +78,7 @@ Můžete zkontrolovat a přijmout doporučení jeden po druhém.
 Vybrané doporučení se používají v databázi.
 
 ### <a name="removing-recommendations-from-the-list"></a>Doporučení se odebírá ze seznamu
+
 Pokud váš seznam doporučení, která obsahuje položky, které chcete odebrat ze seznamu, můžete zrušit doporučení:
 
 1. V seznamu vyberte doporučení **doporučení** zobrazíte podrobnosti.
@@ -110,18 +111,21 @@ Můžete nastavit Azure SQL Database automaticky implementace doporučení. Dopo
 
 Jakmile vyberete požadovanou konfiguraci, klikněte na tlačítko použít.
 
-### <a name="manually-run-the-recommended-t-sql-script"></a>Ruční spuštění doporučené skriptu T-SQL
+### <a name="manually-apply-recommendations-through-t-sql"></a>Ruční použití doporučení prostřednictvím T-SQL.
+
 Vyberte jakékoli doporučení a pak klikněte na tlačítko **zobrazit skript**. Tento skript spusťte proti databázi pro ruční použití doporučení.
 
-*Indexy, které jsou spouštěny ručně nejsou monitorované a ověřené pro dopad na výkon pomocí služby* proto vám doporučujeme monitorovat tyto indexy po vytvoření ověřit jejich poskytnout zvýšení výkonu a upravit nebo odstranit v případě potřeby. Podrobnosti o vytváření indexů najdete v tématu [vytvoření indexu (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
+*Indexy, které jsou spouštěny ručně nejsou monitorované a ověřené pro dopad na výkon pomocí služby* proto vám doporučujeme monitorovat tyto indexy po vytvoření ověřit jejich poskytnout zvýšení výkonu a upravit nebo odstranit v případě potřeby. Podrobnosti o vytváření indexů najdete v tématu [vytvoření indexu (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx). Kromě toho ručního použití doporučení zůstane aktivní a je uvedené v seznamu doporučení pro 24 nebo 48 hodin. předtím, než systém automaticky stáhne je. Pokud chcete odebrat doporučení dříve, můžete je ručně zahodit.
 
 ### <a name="canceling-recommendations"></a>Ruší se doporučení
+
 Doporučení, která jsou v **čekající**, **ověřování**, nebo **úspěch** stav může být zrušen. Doporučení se stavem **zpracování** nelze zrušit.
 
 1. Výběru doporučení v **ladění historie** oblasti, otevřete **podrobnosti** stránky.
 2. Klikněte na tlačítko **zrušit** přerušit proces zavádění doporučení.
 
 ## <a name="monitoring-operations"></a>Operace sledování
+
 Použití doporučení nemusí dojít okamžitě. Portál poskytuje podrobné informace o stavu doporučení. Toto jsou možné stavy, které v můžou být indexu:
 
 | Status | Popis |
@@ -162,7 +166,7 @@ Monitorujte svá doporučení a pokračuje v používání jejich vylepšit výk
 * Zobrazit [informace o výkonu dotazů](sql-database-query-performance.md) Další informace o zobrazení dopad na výkon vaše hlavní dotazy.
 
 ## <a name="additional-resources"></a>Další materiály
-* [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
+* [Úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx)
 * [VYTVOŘENÍ INDEXU](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Řízení přístupu na základě rolí](../role-based-access-control/overview.md)
+* [Řízení přístupu na základě role](../role-based-access-control/overview.md)
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 122234e164735270d5566dbaa5d3e8b2d49c141a
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 8ba9f4df36f753a1caf619ad90015fa073a00de3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793998"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883373"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Kurz: Integrace Azure Active Directory s místní SharePoint
 
@@ -263,7 +263,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
     ![Udělit oprávnění](./media/sharepoint-on-premises-tutorial/grantpermission.png)
 
     > [!NOTE]
-    > Zkontrolujte v části oznámení k určení, pokud byla úspěšně udělena oprávnění.  Pokud nejsou, AzureCP nebude fungovat správně a nebude možné nakonfigurovat místním sharepointem Azure skupiny zabezpečení Active Directory.
+    > Zkontrolujte v části oznámení k určení, pokud byla úspěšně udělena oprávnění.  Pokud nejsou, AzureCP nebude fungovat správně a nebude možné nakonfigurovat místní SharePoint s použitím Azure Active Directory skupin zabezpečení.
 
 10. Konfigurace AzureCP na farmě služby SharePoint v místním nebo poskytovatele řešení alternativní vlastní deklarace identity.  V tomto příkladu používáme AzureCP.
 
@@ -369,6 +369,6 @@ Po kliknutí na dlaždici SharePoint v místním na přístupovém panelu, vám 
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

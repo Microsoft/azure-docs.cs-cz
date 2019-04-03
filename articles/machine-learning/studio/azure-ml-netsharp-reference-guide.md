@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 891b2988d04a3cf2f7c6676a837bc1ee199f4d16
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651486"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886093"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Příručka ke specifikačnímu jazyku neuronových sítí Net # pro Azure Machine Learning Studio
 
@@ -450,11 +450,12 @@ output Digit [10] from Hid3 all;
 + Klíčové slovo `convolve` označuje, že vrstvy s názvem `Conv1` a `Conv2` jsou konvoluční vrstvy. Každá z těchto vrstev deklarace je následovaný seznamem atributů konvoluce.
 + Net obsahuje třetí skryté vrstvě `Hid3`, což je plně připojení k druhé skryté vrstvě `Conv2`.
 + Vrstva výstup `Digit`, je připojený jenom k třetí skryté vrstvě `Hid3`. Klíčové slovo `all` označuje, že výstupní vrstvě plně připojení k `Hid3`.
-+ Arita konvoluce je třetí: délka řazené kolekce členů `InputShape`, `KernelShape`, `Stride, and `sdílení ".
++ Arita konvoluce je třetí: délka řazené kolekce členů `InputShape`, `KernelShape`, `Stride`, a `Sharing`.
 + Počet váhy za jádra je `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. Or `26 * 50 = 1300`.
 + Uzly v každé skryté vrstvě můžete vypočítat následujícím způsobem:
 
-    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5` `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
+    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5`
+    `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
     `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
 + Celkový počet uzlů můžete vypočítat pomocí toho deklarované dimenzionalitu vrstvy, [50, 5, 5], následujícím způsobem: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`

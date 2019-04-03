@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 86d50092ccffd5ab958df5d54ea49cd56d815e2e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 479e6d222c9fc7d007252bab12e807ec337ea9e6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082156"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880776"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Ochrana služby Azure SQL a dat ve službě Azure Security Center
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol.  Doporučení platí pro typy prostředků Azure: virtuální počítače (VM), sítě, SQL a datům a aplikacím.
@@ -64,15 +64,13 @@ Pokud chcete povolit auditování, vyberte **Zapnuto** pod možností **Auditov�
 |Data lake store|5|Povolit diagnostické protokoly v Azure Data Lake Store|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
 |SQL|30|Napravit ohrožení zabezpečení v databázích SQL|Posouzení ohrožení zabezpečení SQL vyhledá vaší databáze na ohrožení zabezpečení a zpřístupňuje všechny odchylky od osvědčených postupů, jako jsou chybné konfigurace, nadměrná oprávnění a nechráněné citlivá data. Řešení zjištěná ohrožení zabezpečení může výrazně zlepšit vaše zásadní roli zabezpečení databáze.|
 |SQL|20|Zřídit správce Azure AD pro server SQL|Zřízení správce Azure AD pro SQL server povolit ověřování Azure AD. Ověřování Azure AD umožňuje správu oprávnění zjednodušené a centralizované identity management uživatelů databáze a dalším službám společnosti Microsoft.|
-|Účet úložiště|15|Zakázat neomezený síťový přístup pro účet úložiště|Audit neomezený přístup k síti v nastavení brány firewall na účtu úložiště. Místo toho nakonfigurujte pravidla sítě, abyste účtu úložiště můžou přistupovat jenom aplikace z povolených sítí. Povolit připojení z konkrétní Internetu nebo místní klienty, můžete udělit přístup k provoz z konkrétní služby Azure virtual networks a rozsahy adres veřejné internetové IP.|
-|Účet úložiště|1|Migrovat účty úložiště na nové prostředky AzureRM|Použití nové verze 2 Azure Resource Manageru, pro vaše účty úložiště kvůli vylepšení zabezpečení: silnější access control (RBAC), lepší auditování, nasazení založené na Resource Manageru a zásad správného řízení, přístup ke spravovaným identitám přístup k trezoru klíčů pro tajné kódy, ověřování Azure AD na základě a podpora značek a skupiny prostředků pro snadnější správu zabezpečení.|
-
-
+|Účet úložiště|15|Zakázat neomezený síťový přístup pro účet úložiště|Audit neomezený přístup k síti v nastavení brány firewall na účtu úložiště. Místo toho nakonfigurujte pravidla sítě, abyste účtu úložiště můžou přistupovat jenom aplikace z povolených sítí. Povolit připojení z konkrétní Internet nebo klienty na místě, můžete udělit přístup k provoz z konkrétní služby Azure virtual networks a rozsahy adres veřejné internetové IP.|
+|Účet úložiště|1|Migrace účtů úložiště na modelu prostředků Azure Resource Manageru|Použití nové verze 2 Azure Resource Manageru pro vaše účty úložiště kvůli vylepšení zabezpečení: silnější access control (RBAC), lepší auditování, nasazení založené na Resource Manageru a zásad správného řízení, přístup ke spravovaným identitám přístup k trezoru klíčů pro tajné kódy a Azure AD na základě ověřování a podpora značek a skupiny prostředků pro snadnější správu zabezpečení.|
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
 
-* [Ochrana virtuálních počítačů pomocí Azure Security Center](security-center-virtual-machine-recommendations.md)
+* [Ochrana virtuálních počítačů ve službě Azure Security Center](security-center-virtual-machine-recommendations.md)
 * [Ochrana aplikací pomocí Azure Security Center](security-center-application-recommendations.md)
 * [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)
 

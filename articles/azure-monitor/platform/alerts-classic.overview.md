@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/29/2018
 ms.author: robb
-ms.openlocfilehash: 3b6ddd99d7b198cdc5274b2944a723e68864bd4f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d91e12de075ee6efebe39fd5ab582d4998046f9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993041"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847854"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co jsou upozornění v Microsoft Azure classic?
 
@@ -88,14 +88,14 @@ Webhooky umožňuje automatizaci a nápravu, například pomocí:
 ## <a name="next-steps"></a>Další postup
 Získání informací o pravidla upozornění a nakonfigurovaly pomocí:
 
-* Další informace o [metriky](../../azure-monitor/platform/data-collection.md)
+* Další informace o [metriky](data-platform.md)
 * Konfigurace [klasických upozornění na metriku pomocí webu Azure portal](alerts-classic-portal.md)
 * Konfigurace [classic PowerShell upozornění metriky](alerts-classic-portal.md)
 * Konfigurace [klasické rozhraní příkazového řádku upozornění metriky (CLI)](alerts-classic-portal.md)
 * Konfigurace [klasické metriky upozornění monitorování rozhraní REST API Azure](https://msdn.microsoft.com/library/azure/dn931945.aspx)
-* Další informace o [protokolu aktivit](../../azure-monitor/platform/activity-logs-overview.md)
-* Konfigurace [upozornění protokolu aktivit prostřednictvím webu Azure portal](../../azure-monitor/platform/activity-log-alerts.md)
+* Další informace o [protokolu aktivit](activity-logs-overview.md)
+* Konfigurace [upozornění protokolu aktivit prostřednictvím webu Azure portal](activity-log-alerts.md)
 * Konfigurace [upozornění protokolu aktivit prostřednictvím Resource Manageru](alerts-activity-log.md)
-* Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](../../azure-monitor/platform/activity-log-alerts-webhook.md)
-* Další informace o [skupiny akcí](../../azure-monitor/platform/action-groups.md)
-* Konfigurace [novější upozornění](../../azure-monitor/platform/alerts-metric.md)
+* Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](activity-log-alerts-webhook.md)
+* Další informace o [skupiny akcí](action-groups.md)
+* Konfigurace [novější upozornění](alerts-metric.md)

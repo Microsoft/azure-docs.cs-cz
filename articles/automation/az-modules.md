@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c3f46e40dfaf0d1ba2ab393b593cdd479c48c45d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: a076c924d57aadfae477a5df0d128aad8e67af60
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585058"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862722"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Podpora modulu az ve službě Azure Automation
 
@@ -69,7 +69,7 @@ Jeden ze způsobů, jak testovat vaše sady runbook před úpravy sady runbook a
 
 ## <a name="after-migration-details"></a>Po migraci podrobnosti
 
-Po dokončení migrace nezačínají sady runbook pomocí `AzureRM` moduly v účtu už. Doporučuje se také nemusíte importovat nebo aktualizovat `AzureRM` moduly na tento účet. Od tohoto okamžiku vezměte v úvahu tento účet migrován a `Az`a pracovat s `Az` pouze moduly. Nový účet Automation je vytvoření existující `AzureRM` zůstanou nainstalovány modulů a runbooků pro tento kurz bude pořád možné čtení zleva doprava `AzureRM` rutiny. Tyto sady runbook by neměl být spustili.
+Po dokončení migrace nezačínají sady runbook pomocí `AzureRM` moduly v účtu už. Doporučuje se také nemusíte importovat nebo aktualizovat `AzureRM` moduly na tento účet. Od tohoto okamžiku vezměte v úvahu tento účet migrován a `Az`a pracovat s `Az` pouze moduly. Nový účet Automation je vytvoření existující `AzureRM` zůstanou nainstalovány modulů a runbooků pro tento kurz bude pořád možné čtení zleva doprava `AzureRM` rutiny. Tyto sady runbook se nemůže spouštět.
 
 ## <a name="next-steps"></a>Další postup
 

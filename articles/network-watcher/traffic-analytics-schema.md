@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: 922e01c26a2cfe24c8b8a32bb8037d9b3b3384c6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 246c5256f56fd0b891d4e7d642c421b1e340fc6d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109116"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879331"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregace schéma a data a analýzy provozu
 
@@ -120,7 +120,7 @@ Tady je polí na schéma a jejich místo
 1. ExternalPublic - některou z IP adres patří do virtuální sítě Azure IP adresa je veřejná IP adresa, která není v Azure, nebude hlášena jako škodlivou v ASC informační kanály, které využívá analýzy provozu pro zpracování interval mezi " FlowIntervalStartTime_t"a"FlowIntervalEndTime_t". 
 1. MaliciousFlow - některou z IP adres patří do virtuální sítě azure IP adresa je veřejná IP adresa, která není v Azure a hlásí jako škodlivou v ASC informační kanály, které využívá analýzy provozu pro zpracování interval mezi" FlowIntervalStartTime_t"a"FlowIntervalEndTime_t". 
 1. UnknownPrivate - některou z IP adres patří do virtuální sítě Azure a dalších IP adres patří do rozsah privátních IP adres, jak jsou definovány v dokumentu RFC 1918 nemohly být namapovány analýzu provozu pro vlastní web nebo Azure Virtual Network zákazníka.
-1. Neznámé – nelze mapovat buď IP adres v toků s topologií zákazníků v Azure stejně jako místní (lokalita).
+1. Neznámé – nelze mapovat buď IP adresy toky s topologií zákazníků v Azure i místní (lokalita).
 
 ### <a name="next-steps"></a>Další kroky
 Pokud chcete získat odpovědi na nejčastější dotazy, naleznete v tématu [nejčastější dotazy k analýze provozu](traffic-analytics-faq.md) podrobnosti o funkcích najdete v tématu [dokumentace k analýze provozu](traffic-analytics.md)

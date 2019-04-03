@@ -1,5 +1,5 @@
 ---
-title: Použití šablony k vytvoření pracovního prostoru
+title: Pomocí šablony Azure Resource Manageru k vytvoření pracovního prostoru
 titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak vytvořit nový pracovní prostor služby Azure Machine Learning pomocí šablony Azure Resource Manageru.
 services: machine-learning
@@ -8,17 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 02/11/2019
-ms.openlocfilehash: 2b5ee1b5079f22985b03aaafac30c11a10a3c8f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/02/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: 7349998325e56d5ebb78de5ca30c0127f09102aa
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57850073"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883186"
 ---
-# <a name="create-an-azure-machine-learning-service-workspace-by-using-a-template"></a>Vytvořit pracovní prostor služby Azure Machine Learning pomocí šablony
+# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Vytvořit pracovní prostor pro službu Azure Machine Learning pomocí šablony Azure Resource Manageru
 
-V tomto článku se dozvíte několik způsobů, jak vytvořit pracovní prostor služby Azure Machine Learning pomocí šablon Azure Resource Manageru. 
+V tomto článku se dozvíte několik způsobů, jak vytvořit pracovní prostor služby Azure Machine Learning pomocí šablon Azure Resource Manageru. Šablony Resource Manageru umožňuje snadno vytvářet prostředky jako jediné koordinované operace. Šablona je dokument JSON s definicí prostředků, které jsou potřebné pro nasazení. Kromě toho může určovat parametrů nasazení. Parametry se používají při použití šablona zadávat vstupní hodnoty.
 
 Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manageru](../../azure-resource-manager/resource-group-template-deploy.md).
 
@@ -30,9 +31,7 @@ Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure R
 
 ## <a name="resource-manager-template"></a>Šablona Resource Manageru
 
-Šablony Resource Manageru umožňuje snadno vytvářet prostředky jako jediné koordinované operace. Šablona je dokument JSON s definicí prostředků, které jsou potřebné pro nasazení. Kromě toho může určovat parametrů nasazení. Parametry se používají při použití šablona zadávat vstupní hodnoty.
-
-Následující šablony lze použít k vytvoření pracovního prostoru služby Azure Machine Learning service a související prostředky Azure:
+Následující šablony Resource Manageru je možné vytvořit pracovní prostor služby Azure Machine Learning service a související prostředky Azure:
 
 ```json
 {
@@ -193,7 +192,7 @@ Další informace o šablonách najdete v následujících článcích:
 1. Vyberte __Uložit__ použít šablonu. Zadejte následující informace a souhlas s uvedené podmínky a ujednání:
 
    * Předplatné: Vyberte předplatné Azure má použít pro tyto prostředky.
-   * Skupina zdrojů: Vyberte nebo vytvořte skupinu prostředků k obsáhnutí služeb.
+   * Skupina prostředků: Vyberte nebo vytvořte skupinu prostředků k obsáhnutí služeb.
    * Název pracovního prostoru: Název, který se má použít pro pracovní prostor Azure Machine Learning, která bude vytvořena. Název pracovního prostoru musí být dlouhý 3 až 33 znaků. Může obsahovat jenom alfanumerické znaky a "-".
    * Umístění: Vyberte umístění, kde se prostředky vytvoří.
 

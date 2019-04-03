@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 77cbc73c6c6aef40c482b0cfe456dcbd4b7e85d0
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: c9254c8dd629230a549dd95aba9afbd932746007
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58435308"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886450"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
 
@@ -26,7 +26,7 @@ Microsoft Azure Media Services umožňuje doručovat mnoho média zdrojového fo
 
 [Koncové body streamování](streaming-endpoint-concept.md) je služba dynamického balení ve službě Media Services používá k doručování multimediálního obsahu pro klientské přehrávače. Dynamické balení je funkce, která se dodává ve všech standardních **koncové body streamování** (Standard nebo Premium). 
 
-Abyste mohli využívat **dynamické balení**, musíte mít **Asset** sadu souborů MP4 a datových proudů konfigurační soubory potřebné pro dynamické balení Media Services. Jeden způsob, jak získat soubory se má zakódovat váš soubor mezzanine (zdrojový) pomocí služby Media Services. Chcete-li videa v zakódovanému Assetu dostupných klientů pro přehrávání, budete muset vytvořit **Lokátor streamování** a vytvoření adresy URL pro streamování. Potom podle formátu určeného v manifestu streamování klienta (HLS, DASH nebo Smooth), můžete datový proud obdrželi v protokolu, kterou jste zvolili.
+Abyste mohli využívat **dynamické balení**, musíte mít **Asset** sadu souborů MP4 a datových proudů konfigurační soubory potřebné pro dynamické balení Media Services. Jedním ze způsobů, jak tyto soubory získat, je zakódovat vaše soubory mezzanine (zdrojové soubory) pomocí Media Services. Chcete-li videa v zakódovanému Assetu dostupných klientů pro přehrávání, budete muset vytvořit **Lokátor streamování** a vytvoření adresy URL pro streamování. Potom podle formátu určeného v manifestu streamování klienta (HLS, DASH nebo Smooth), můžete datový proud obdrželi v protokolu, kterou jste zvolili.
 
 Díky tomu pak stačí uložit (a platit) soubory pouze v jednom úložném formátu a služba Media Services bude sestavovat a dodávat vhodný formát streamování v reakci na požadavky klientů. 
 
@@ -196,7 +196,7 @@ Tady je příklad manifestu technologie Smooth Streaming:
 Dynamické filtrování se používá k řízení počet stop, formáty, přenosových rychlostí a prezentace časových oken, které se pošlou hráči. Další informace najdete v tématu [filtrů a dynamických manifestů](filters-dynamic-manifest-overview.md).
 
 > [!NOTE]
-> V současné době nelze použít na webu Azure portal ke správě prostředků v3. Použití [rozhraní REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref), nebo jeden z podporovaných [sady SDK](developers-guide.md).
+> Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](developers-guide.md).
 
 ## <a name="next-steps"></a>Další postup
 

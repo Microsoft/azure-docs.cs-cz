@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17b99b7b03898ad72b4d9c7cc2ba9154855475ef
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 49234472481e30cf74efa3e72ac0e4f31466fada
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488282"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884886"
 ---
-# <a name="what-is-the-azure-ad-connect-admin-agent"></a>Co je připojení správce agenta služby Azure AD? 
+# <a name="what-is-the-azure-ad-connect-admin-agent"></a>Co je agent pro správu Azure AD Connectu? 
 Připojení správy agenta služby Azure AD je novou součástí služby Azure Active Directory Connect, který je nainstalován na serveru služby Azure Active Directory Connect. Používá se k shromažďovat konkrétní údaje z prostředí služby Active Directory, která pomáhá při řešení problémů při otevření případu podpory pracovník odborné pomoci společnosti Microsoft.
 
 Při instalaci, kde se zobrazí Microsoft podporu čeká agenta Azure AD Connect správu pro konkrétní požadavky pro data ze služby Azure Active Directory, získá požadovaná data z prostředí synchronizace a odesílá je do služby Azure Active Directory zpětnou analýzou.
@@ -39,7 +39,7 @@ Pracovníka podpory společnosti Microsoft nelze změnit všechna data ve vašem
 
 ## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>Co když nechci pracovníka podpory společnosti Microsoft pro přístup k Moje data? 
  
-Pokud nechcete, aby volání služby Microsoftu přístup k datům pro volání podpory mohou znamenat při otevření podpory na portálu: 
+Pokud nechcete, aby služba Microsoftu přístup k datům pro volání podpory tuto funkci můžete vypnout tak, že upravíte konfigurační soubor služby, jak je popsáno níže: 
 
   1.    Otevřít **C:\Program Files\Microsoft Azure AD Connect správu Agent\AzureADConnectAdministrationAgentService.exe.config** v poznámkovém bloku.
   2.    Zakázat **UserDataEnabled** nastavení, jak je znázorněno níže. Pokud **UserDataEnabled** nastavení existuje a je nastavena na hodnotu true, pak nastavte na hodnotu false. Pokud toto nastavení neexistuje, obnovte nastavení, jak je znázorněno níže.    

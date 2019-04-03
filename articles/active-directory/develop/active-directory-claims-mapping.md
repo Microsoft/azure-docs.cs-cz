@@ -9,16 +9,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 03/28/2019
 ms.author: celested
-ms.reviewer: paulgarn, hirsin, jeedes
+ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af00c311b406a0bae285a00f0d537ce9bae3aa7e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e492586f0c70d4cd3013ef8f466afd6bb2bb65ac
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102098"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884073"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postup: Přizpůsobení deklarací identity v tokenech pro konkrétní aplikaci v tenantovi (Preview), protože ho
 
@@ -52,142 +52,142 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 
 ### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>Tabulka 1: JSON Web Token (JWT) s omezením pomocí specifikátoru sady deklarací.
 
-|Typ deklarace identity (název)|
+| Typ deklarace identity (název) |
 | ----- |
-|_claim_names|
-|_claim_sources|
-|access_token|
-|account_type|
-|acr|
-|objekt actor|
-|actortoken|
-|aio|
-|altsecid|
-|AMR|
-|app_chain|
-|app_displayname|
-|app_res|
-|appctx|
-|appctxsender|
-|ID aplikace|
-|appidacr|
-|assertion|
-|at_hash|
-|aud|
-|auth_data|
-|auth_time|
-|authorization_code|
-|azp|
-|azpacr|
-|c_hash|
-|ca_enf|
-|cc|
-|cert_token_use|
-|client_id|
-|cloud_graph_host_name|
-|cloud_instance_name|
-|možností cnf|
-|kód|
-|ovládací prvky|
-|credential_keys|
-|žádosti o podepsání certifikátu|
-|csr_type|
-|ID zařízení|
-|dns_names|
-|domain_dns_name|
-|domain_netbios_name|
-|e_exp|
-|e-mail|
-|endpoint|
-|enfpolids|
-|exp|
-|expires_on|
-|grant_type|
-|graf|
-|group_sids|
-|skupiny|
-|hasgroups|
-|hash_alg|
-|home_oid|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/expired`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier`|
-|IAT|
-|identityprovider|
-|idp|
-|in_corp|
-|instance|
-|IPADDR|
-|isbrowserhostedapp|
-|iss|
-|jwk|
-|key_id|
-|key_type|
-|mam_compliance_url|
-|mam_enrollment_url|
-|mam_terms_of_use_url|
-|mdm_compliance_url|
-|mdm_enrollment_url|
-|mdm_terms_of_use_url|
-|nameid|
-|nbf|
-|netbios_name|
-|Hodnota Nonce|
-|identifikátor objektu|
-|on_prem_id|
-|onprem_sam_account_name|
-|onprem_sid|
-|openid2_id|
-|heslo|
-|platf|
-|polids|
-|pop_jwk|
-|preferred_username|
-|previous_refresh_token|
-|primary_sid|
-|identifikátor PUID|
-|pwd_exp|
-|pwd_url|
-|redirect_uri|
-|refresh_token|
-|refreshtoken|
-|request_nonce|
-|prostředek|
-|role|
-|role|
-|scope|
-|scp|
-|identifikátor SID|
-|podpis|
-|signin_state|
-|src1|
-|src2|
-|Sub|
-|tbid|
-|tenant_display_name|
-|tenant_region_scope|
-|thumbnail_photo|
-|TID.|
-|tokenAutologonEnabled|
-|trustedfordelegation|
-|unique_name|
-|upn|
-|user_setting_sync_url|
-|uživatelské jméno|
-|uti|
-|verze|
-|verified_primary_email|
-|verified_secondary_email|
-|wids|
-|win_ver|
+| _claim_names |
+| _claim_sources |
+| access_token |
+| account_type |
+| acr |
+| objekt actor |
+| actortoken |
+| aio |
+| altsecid |
+| AMR |
+| app_chain |
+| app_displayname |
+| app_res |
+| appctx |
+| appctxsender |
+| ID aplikace |
+| appidacr |
+| assertion |
+| at_hash |
+| aud |
+| auth_data |
+| auth_time |
+| authorization_code |
+| azp |
+| azpacr |
+| c_hash |
+| ca_enf |
+| cc |
+| cert_token_use |
+| client_id |
+| cloud_graph_host_name |
+| cloud_instance_name |
+| možností cnf |
+| kód |
+| ovládací prvky |
+| credential_keys |
+| žádosti o podepsání certifikátu |
+| csr_type |
+| ID zařízení |
+| dns_names |
+| domain_dns_name |
+| domain_netbios_name |
+| e_exp |
+| e-mail |
+| endpoint |
+| enfpolids |
+| exp |
+| expires_on |
+| grant_type |
+| graf |
+| group_sids |
+| skupiny |
+| hasgroups |
+| hash_alg |
+| home_oid |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant` |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod` |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration` |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/expired` |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
+| IAT |
+| identityprovider |
+| idp |
+| in_corp |
+| instance |
+| IPADDR |
+| isbrowserhostedapp |
+| iss |
+| jwk |
+| key_id |
+| key_type |
+| mam_compliance_url |
+| mam_enrollment_url |
+| mam_terms_of_use_url |
+| mdm_compliance_url |
+| mdm_enrollment_url |
+| mdm_terms_of_use_url |
+| nameid |
+| nbf |
+| netbios_name |
+| Hodnota Nonce |
+| identifikátor objektu |
+| on_prem_id |
+| onprem_sam_account_name |
+| onprem_sid |
+| openid2_id |
+| heslo |
+| platf |
+| polids |
+| pop_jwk |
+| preferred_username |
+| previous_refresh_token |
+| primary_sid |
+| identifikátor PUID |
+| pwd_exp |
+| pwd_url |
+| redirect_uri |
+| refresh_token |
+| refreshtoken |
+| request_nonce |
+| prostředek |
+| role |
+| role |
+| scope |
+| scp |
+| identifikátor SID |
+| podpis |
+| signin_state |
+| src1 |
+| src2 |
+| Sub |
+| tbid |
+| tenant_display_name |
+| tenant_region_scope |
+| thumbnail_photo |
+| TID. |
+| tokenAutologonEnabled |
+| trustedfordelegation |
+| unique_name |
+| upn |
+| user_setting_sync_url |
+| uživatelské jméno |
+| uti |
+| verze |
+| verified_primary_email |
+| verified_secondary_email |
+| wids |
+| win_ver |
 
 ### <a name="table-2-saml-restricted-claim-set"></a>Tabulka 2: SAML s omezením pomocí specifikátoru sady deklarací.
 
-|Typ deklarace identity (URI)|
+| Typ deklarace identity (URI) |
 | ----- |
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/expired`|
@@ -196,7 +196,7 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 |`http://schemas.microsoft.com/identity/claims/identityprovider`|
 |`http://schemas.microsoft.com/identity/claims/objectidentifier`|
 |`http://schemas.microsoft.com/identity/claims/puid`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier [MR1] `|
+|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier [MR1]`|
 |`http://schemas.microsoft.com/identity/claims/tenantid`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod`|
@@ -246,7 +246,7 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 
 **Datový typ:** Logická hodnota (True nebo False)
 
-**Shrnutí:** Tato vlastnost určuje, zda sady základní deklarací je součástí tokeny vliv těchto zásad. 
+**Shrnutí:** Tato vlastnost určuje, zda sady základní deklarací je součástí tokeny vliv těchto zásad.
 
 - Pokud je nastavený na hodnotu True, všechny deklarace identity v sadě základní deklarace identity jsou zaznamenávány do tokenů tyto zásady ovlivní. 
 - Není-li nastaven na hodnotu False, deklarací identity v sadě základní deklarace identity v tokenech, pokud jsou jednotlivě přidají ve vlastnosti deklarace identity schématu stejné zásady.
@@ -284,51 +284,51 @@ ID element identifikuje, která vlastnost na zdroj obsahuje hodnotu pro deklarac
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabulka 3: Platné hodnoty ID jeden zdroj
 
-|Zdroj|ID|Popis|
+| Zdroj | ID | Popis |
 |-----|-----|-----|
-|Uživatel|Příjmení|Název rodiny|
-|Uživatel|givenName|jméno|
-|Uživatel|DisplayName|Zobrazovaný název|
-|Uživatel|ID objektu|ObjectID|
-|Uživatel|mail|E-mailová adresa|
-|Uživatel|userprincipalname|Hlavní název uživatele|
-|Uživatel|Oddělení|Oddělení|
-|Uživatel|onpremisessamaccountname|Na místní název účtu Sam|
-|Uživatel|netbiosname|Název rozhraní NetBios|
-|Uživatel|název_domény_DNS|Dns Domain Name|
-|Uživatel|onpremisesecurityidentifier|on-premises identifikátor zabezpečení|
-|Uživatel|Firma|Název organizace|
-|Uživatel|streetaddress|Ulice|
-|Uživatel|PSČ|Poštovní směrovací číslo|
-|Uživatel|preferredlanguange|Upřednostňovaný jazyk|
-|Uživatel|onpremisesuserprincipalname|místní hlavní název uživatele|
-|Uživatel|mailnickname|Přezdívka pro poštu|
-|Uživatel|extensionattribute1|Atributů rozšíření 1|
-|Uživatel|extensionattribute2|Atribut rozšíření 2|
-|Uživatel|extensionattribute3|Atribut rozšíření 3|
-|Uživatel|extensionattribute4|Atribut rozšíření 4|
-|Uživatel|extensionattribute5|Atribut rozšíření 5|
-|Uživatel|extensionattribute6|Atribut rozšíření 6|
-|Uživatel|extensionattribute7|Atribut rozšíření 7|
-|Uživatel|extensionattribute8|Atribut rozšíření 8|
-|Uživatel|extensionattribute9|Atribut rozšíření 9|
-|Uživatel|extensionattribute10|Atribut rozšíření 10|
-|Uživatel|extensionattribute11|Atribut rozšíření 11|
-|Uživatel|extensionattribute12|Atribut rozšíření 12|
-|Uživatel|extensionattribute13|Atribut rozšíření 13|
-|Uživatel|extensionattribute14|Atribut rozšíření 14|
-|Uživatel|extensionattribute15|Atribut rozšíření 15|
-|Uživatel|othermail|Další e-mailu|
-|Uživatel|Země|Země|
-|Uživatel|city|Město|
-|Uživatel|state|Stav|
-|Uživatel|pracovní funkce|Funkce|
-|Uživatel|EmployeeID|ID zaměstnance|
-|Uživatel|facsimiletelephonenumber|Faxem telefonní číslo|
-|aplikace, prostředků, cílovou skupinu|DisplayName|Zobrazovaný název|
-|aplikace, prostředků, cílovou skupinu|námitky|ObjectID|
-|aplikace, prostředků, cílovou skupinu|tags|Značka objektu služby|
-|Společnost|tenantcountry|Zemi tenanta|
+| Uživatel | Příjmení | Název rodiny |
+| Uživatel | givenName | jméno |
+| Uživatel | DisplayName | Zobrazovaný název |
+| Uživatel | ID objektu | ObjectID |
+| Uživatel | mail | E-mailová adresa |
+| Uživatel | userprincipalname | Hlavní název uživatele |
+| Uživatel | Oddělení|Oddělení|
+| Uživatel | onpremisessamaccountname | Místní název účtu SAM |
+| Uživatel | netbiosname| Název rozhraní NetBios |
+| Uživatel | název_domény_DNS | Název domény DNS |
+| Uživatel | onpremisesecurityidentifier | on-premises identifikátor zabezpečení |
+| Uživatel | Firma| Název organizace |
+| Uživatel | streetaddress | Ulice |
+| Uživatel | PSČ | Poštovní směrovací číslo |
+| Uživatel | preferredlanguange | Upřednostňovaný jazyk |
+| Uživatel | onpremisesuserprincipalname | místní hlavní název uživatele |
+| Uživatel | mailnickname | Přezdívka pro poštu |
+| Uživatel | extensionattribute1 | Atributů rozšíření 1 |
+| Uživatel | extensionattribute2 | Atribut rozšíření 2 |
+| Uživatel | extensionattribute3 | Atribut rozšíření 3 |
+| Uživatel | extensionattribute4 | Atribut rozšíření 4 |
+| Uživatel | extensionattribute5 | Atribut rozšíření 5 |
+| Uživatel | extensionattribute6 | Atribut rozšíření 6 |
+| Uživatel | extensionattribute7 | Atribut rozšíření 7 |
+| Uživatel | extensionattribute8 | Atribut rozšíření 8 |
+| Uživatel | extensionattribute9 | Atribut rozšíření 9 |
+| Uživatel | extensionattribute10 | Atribut rozšíření 10 |
+| Uživatel | extensionattribute11 | Atribut rozšíření 11 |
+| Uživatel | extensionattribute12 | Atribut rozšíření 12 |
+| Uživatel | extensionattribute13 | Atribut rozšíření 13 |
+| Uživatel | extensionattribute14 | Atribut rozšíření 14 |
+| Uživatel | extensionattribute15 | Atribut rozšíření 15 |
+| Uživatel | othermail | Další e-mailu |
+| Uživatel | Země | Země |
+| Uživatel | city | Město |
+| Uživatel | state | Stav |
+| Uživatel | pracovní funkce | Funkce |
+| Uživatel | EmployeeID | ID zaměstnance |
+| Uživatel | facsimiletelephonenumber | Faxem telefonní číslo |
+| aplikace, prostředků, cílovou skupinu | DisplayName | Zobrazovaný název |
+| aplikace, prostředků, cílovou skupinu | námitky | ObjectID |
+| aplikace, prostředků, cílovou skupinu | tags | Značka objektu služby |
+| Společnost | tenantcountry | Zemi tenanta |
 
 **TransformationID:** TransformationID element musí být zadaná jenom v případě, že Source element nastavená na "transformace".
 
@@ -386,32 +386,32 @@ Podle zvolené metodě, je očekáván sadu vstupů a výstupů. Definovat vstup
 
 |Zdroj|ID|Popis|
 |-----|-----|-----|
-|Uživatel|mail|E-mailová adresa|
-|Uživatel|userprincipalname|Hlavní název uživatele|
-|Uživatel|onpremisessamaccountname|Na místní název účtu Sam|
-|Uživatel|EmployeeID|ID zaměstnance|
-|Uživatel|extensionattribute1|Atributů rozšíření 1|
-|Uživatel|extensionattribute2|Atribut rozšíření 2|
-|Uživatel|extensionattribute3|Atribut rozšíření 3|
-|Uživatel|extensionattribute4|Atribut rozšíření 4|
-|Uživatel|extensionattribute5|Atribut rozšíření 5|
-|Uživatel|extensionattribute6|Atribut rozšíření 6|
-|Uživatel|extensionattribute7|Atribut rozšíření 7|
-|Uživatel|extensionattribute8|Atribut rozšíření 8|
-|Uživatel|extensionattribute9|Atribut rozšíření 9|
-|Uživatel|extensionattribute10|Atribut rozšíření 10|
-|Uživatel|extensionattribute11|Atribut rozšíření 11|
-|Uživatel|extensionattribute12|Atribut rozšíření 12|
-|Uživatel|extensionattribute13|Atribut rozšíření 13|
-|Uživatel|extensionattribute14|Atribut rozšíření 14|
-|Uživatel|extensionattribute15|Atribut rozšíření 15|
+| Uživatel | mail|E-mailová adresa|
+| Uživatel | userprincipalname|Hlavní název uživatele|
+| Uživatel | onpremisessamaccountname|Na místní název účtu Sam|
+| Uživatel | EmployeeID|ID zaměstnance|
+| Uživatel | extensionattribute1 | Atributů rozšíření 1 |
+| Uživatel | extensionattribute2 | Atribut rozšíření 2 |
+| Uživatel | extensionattribute3 | Atribut rozšíření 3 |
+| Uživatel | extensionattribute4 | Atribut rozšíření 4 |
+| Uživatel | extensionattribute5 | Atribut rozšíření 5 |
+| Uživatel | extensionattribute6 | Atribut rozšíření 6 |
+| Uživatel | extensionattribute7 | Atribut rozšíření 7 |
+| Uživatel | extensionattribute8 | Atribut rozšíření 8 |
+| Uživatel | extensionattribute9 | Atribut rozšíření 9 |
+| Uživatel | extensionattribute10 | Atribut rozšíření 10 |
+| Uživatel | extensionattribute11 | Atribut rozšíření 11 |
+| Uživatel | extensionattribute12 | Atribut rozšíření 12 |
+| Uživatel | extensionattribute13 | Atribut rozšíření 13 |
+| Uživatel | extensionattribute14 | Atribut rozšíření 14 |
+| Uživatel | extensionattribute15 | Atribut rozšíření 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>Tabulka 6: Transformace metod povolených pro SAML NameID
 
-|TransformationMethod|Omezení|
+| TransformationMethod | Omezení |
 | ----- | ----- |
-|ExtractMailPrefix|Žádný|
-|Spojit|Přípona je připojen musí být ověřené domény prostředků tenanta.|
+| ExtractMailPrefix | Žádný |
+| Spojit | Přípona je připojen musí být ověřené domény prostředků tenanta. |
 
 ### <a name="custom-signing-key"></a>Vlastní podpisový klíč
 
@@ -437,19 +437,19 @@ Abyste mohli začít, proveďte následující kroky:
 
 1. Stáhněte si nejnovější [modulu Azure AD PowerShell verze public preview](https://www.powershellgallery.com/packages/AzureADPreview).
 1. Spuštěním příkazu Connect pro přihlášení k účtu správce Azure AD. Spusťte tento příkaz pokaždé, když spustíte novou relaci.
-    
-     ``` powershell
-    Connect-AzureAD -Confirm
-    
-    ```
+
+   ``` powershell
+   Connect-AzureAD -Confirm
+   ```
 1. Pokud chcete zobrazit všechny zásady, které byly vytvořeny ve vaší organizaci, spusťte následující příkaz. Doporučujeme vám, spusťte tento příkaz po většinu operací v následujících scénářích, chcete-li zkontrolovat, že vaše zásady se vytvářejí podle očekávání.
-   
-    ``` powershell
-        Get-AzureADPolicy
-    
-    ```
-   #### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>Příklad: Vytvoření a přiřazení zásad chcete vynechat, nechte základní deklarace identity z tokenů vydaných pro objekt služby.
-   V tomto příkladu vytvoříte zásadu, která odebere základní sady deklarací z tokenů vydaných pro objekty zabezpečení propojenou službu.
+
+   ``` powershell
+   Get-AzureADPolicy
+   ```
+
+#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>Příklad: Vytvoření a přiřazení zásad chcete vynechat, nechte základní deklarace identity z tokenů vydaných pro instančního objektu
+
+V tomto příkladu vytvoříte zásadu, která odebere základní sady deklarací z tokenů vydaných pro objekty zabezpečení propojenou službu.
 
 1. Vytvoření deklarace mapování zásad. Tato zásada, ke konkrétnímu instanční objekty, odebere základní nastavení z tokenů deklarace identity.
    1. Chcete-li vytvořit zásadu, spusťte tento příkaz: 
@@ -462,7 +462,7 @@ Abyste mohli začít, proveďte následující kroky:
       ``` powershell
       Get-AzureADPolicy
       ```
-1. Přiřaďte zásady instančního objektu služby. Také je potřeba získat ID objektu vaší služby instančního objektu. 
+1. Přiřaďte zásady instančního objektu služby. Také je potřeba získat ID objektu vaší služby instančního objektu.
    1. Pokud chcete zobrazit všechna firemní instanční objekty, se můžete dotazovat Microsoft Graphu. Nebo v Azure AD Graph Explorer přihlaste ke svému účtu Azure AD.
    2. Až budete mít ObjectId instančního objektu služby, spusťte následující příkaz:  
      
@@ -475,7 +475,7 @@ Abyste mohli začít, proveďte následující kroky:
 V tomto příkladu vytvoříte zásadu, která přidá EmployeeID a TenantCountry do tokenů vydaných pro objekty zabezpečení propojenou službu. EmployeeID je vygenerován jako typ deklarace identity názvu v tokeny SAML a tokeny Jwt. TenantCountry je vygenerován jako typ deklarace země v tokeny SAML a tokeny Jwt. V tomto příkladu jsme nadále zahrnují základní deklarace identity v tokenech.
 
 1. Vytvoření deklarace mapování zásad. Tyto zásady, propojená na konkrétní instanční objekty, přidá deklarace identity EmployeeID a TenantCountry na tokeny.
-   1. Chcete-li vytvořit zásadu, spusťte tento příkaz:  
+   1. Chcete-li vytvořit zásadu, spusťte následující příkaz:  
      
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
@@ -499,10 +499,10 @@ V tomto příkladu vytvoříte zásadu, která přidá EmployeeID a TenantCountr
 V tomto příkladu vytvoříte zásadu, která generuje vlastní deklarace identity "JoinedData" do tokeny Jwt vystaveno pro objekty zabezpečení propojenou službu. Tato deklarace identity obsahuje hodnotu vytvořený spojením data uložená v atributu extensionattribute1 v objektu user s ".sandbox". V tomto příkladu vylučujeme základní deklarace identity v tokenech.
 
 1. Vytvoření deklarace mapování zásad. Tyto zásady, propojená na konkrétní instanční objekty, přidá deklarace identity EmployeeID a TenantCountry na tokeny.
-   1. Chcete-li vytvořit zásadu, spusťte tento příkaz: 
+   1. Chcete-li vytvořit zásadu, spusťte následující příkaz:
      
       ``` powershell
-      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy" 
+      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy"
       ```
     
    2. Chcete zobrazit nové zásady a získat zásady ObjectId, spusťte následující příkaz: 
@@ -517,3 +517,7 @@ V tomto příkladu vytvoříte zásadu, která generuje vlastní deklarace ident
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
+
+## <a name="see-also"></a>Další informace najdete v tématech
+
+Informace o přizpůsobení deklarací identity vystavených v tokenu SAML na webu Azure portal najdete v tématu [jak: Přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](active-directory-saml-claims-customization.md)

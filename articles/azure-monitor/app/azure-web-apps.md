@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 7386f6bd92143cf3fb7b37725900425f99371cd0
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 9d121146924eb153227e35d608a3c6c33aae31a1
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804988"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862603"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Sledování výkonu služby Azure App Service
 
@@ -99,7 +99,7 @@ Monitorování na straně klienta, je vyjádřit výslovný souhlas pro technolo
 * Vyberte **nastavení** > ** ** aplikace nastavení ***
    * V části Nastavení aplikace přidejte novou **název nastavení aplikace** a **hodnotu**:
 
-     Jméno: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Název: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Hodnota: `true`
 
@@ -137,7 +137,7 @@ Chcete-li povolit shromažďování telemetrie s Application Insights, třeba na
 |Název nastavení aplikace |  Definice | Hodnota |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | Hlavní rozšíření, které řídí monitorování modulu runtime. | `~2` |
-|XDT_MicrosoftApplicationInsights_Mode |  Ve výchozím režimu pouze základní funkce jsou povolené s cílem zajistit optimální výkon. | `default` nebo `recommended`. |
+|XDT_MicrosoftApplicationInsights_Mode |  Ve výchozím režimu pouze základní funkce jsou povolené s cílem zajistit optimální výkon. | `default` or `recommended`. |
 |InstrumentationEngine_EXTENSION_VERSION | Řídí, jestli modul přepisování binární `InstrumentationEngine` zapne. Toto nastavení má vliv na výkon a má vliv na čas úplné spuštění nebo spuštění. | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | Určuje, zda text tabulky SQL a Azure budou zachyceny spolu s volání závislostí. Upozornění ohledně výkonu: Toto nastavení vyžaduje `InstrumentationEngine`. | `~1` |
 
@@ -322,7 +322,7 @@ Tady je náš podrobný Průvodce odstraňováním potíží pro rozšíření/a
 > Aplikací Java a Node.js jsou podporovány pouze v Azure App Service prostřednictvím ručního SDK na základě instrumentace a proto se nedá použít následující postup u těchto scénářů.
 
 1. Zkontrolujte, zda je aplikace monitorována prostřednictvím `ApplicationInsightsAgent`.
-    * Zkontrolujte, že "ApplicationInsightsAgent_EXTENSION_AGENT aplikace nastavená na hodnotu"~ 2".
+    * Zkontrolujte, že `ApplicationInsightsAgent_EXTENSION_VERSION` nastavení aplikace, které je nastavena na hodnotu "~ 2".
 2. Ujistěte se, že aplikace splňuje požadavky, které se mají monitorovat.
     * Přejděte na `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
@@ -353,10 +353,10 @@ Následující tabulka obsahuje podrobnější vysvětlení významu těchto hod
 Nejnovější informace o agent/rozšíření Application Insights, podívejte se [poznámky k verzi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md).
 
 ## <a name="next-steps"></a>Další postup
-
-* [Spusťte profiler v živé aplikaci](../../azure-monitor/app/profiler.md).
+* [Spusťte profiler v živé aplikaci](../app/profiler.md).
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) – monitorujte službu Azure Functions pomocí Application Insights.
-* [Povolte odesílání diagnostiky Azure](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md) do Application Insights.
-* [Monitorujte metriky stavu služby](../../azure-monitor/platform/data-collection.md), abyste zajistili dostupnost služby a její schopnost dobře reagovat.
-* [Přijímejte oznámení o výstrahách](../../azure-monitor/platform/alerts-overview.md) vždy, když nastanou provozní události nebo když metriky překročí prahovou hodnotu.
-* [Nastavte testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md) tak, aby se aktivovaly výstrahy, pokud je webový server mimo provoz.
+* [Povolte odesílání diagnostiky Azure](../platform/diagnostics-extension-to-application-insights.md) do Application Insights.
+* [Monitorujte metriky stavu služby](../platform/data-platform.md), abyste zajistili dostupnost služby a její schopnost dobře reagovat.
+* [Přijímejte oznámení o výstrahách](../platform/alerts-overview.md) vždy, když nastanou provozní události nebo když metriky překročí prahovou hodnotu.
+* Použitím [Application Insights pro aplikace JavaScript a webové stránky](javascript.md) získávejte telemetrické údaje klienta z prohlížečů, které webovou stránky navštíví.
+* [Nastavte testy dostupnosti webu](monitor-web-app-availability.md) tak, aby se aktivovaly výstrahy, pokud je webový server mimo provoz.

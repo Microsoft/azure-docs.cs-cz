@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/21/2019
-ms.openlocfilehash: e55c898cdbb45dc7ff3466c61e968e3ae52be0cb
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: f417aef1fd1cc48a37399ff7a157a0e658bbbb02
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521002"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879280"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Vytvořit pracovní prostor služby Azure Machine Learning
 
@@ -37,11 +37,11 @@ Při vytváření pracovního prostoru jsou přidány následující prostředky
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
 >[!Note]
->Stejně jako u jiných služeb Azure, jsou spojeny s Machine learningem určitá omezení a kvóty. [Další informace o kvótách a postupu, jak požádat o zvýšení.](how-to-manage-quotas.md)
+>Stejně jako u jiných služeb Azure, jsou spojeny s Machine learningem určitá omezení a kvóty. [Další informace o kvótách a tom, jak požádat o další.](how-to-manage-quotas.md)
 
 
 ## <a name="prerequisites"></a>Požadavky
-Chcete-li vytvořit pracovní prostor, budete potřebovat předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
+Chcete-li vytvořit pracovní prostor, budete potřebovat předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
 ## <a name="portal"></a> Azure portal
 
@@ -139,7 +139,7 @@ Vytvoření pracovního prostoru v poznámkovém bloku Jupyter pomocí sady Pyth
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=import)]
 
-1. Najít hodnotu `<azure-subscription-id>` parametr [seznam předplatných na webu Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Použijte libovolné předplatné, ve kterém máte roli vlastníka nebo přispěvatele.
+1. Najít hodnotu `<azure-subscription-id>` parametr [seznam předplatných na webu Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Použijte libovolné předplatné, ve kterém máte roli vlastníka nebo přispěvatele. Další informace o rolích najdete v tématu [spravovat přístup k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md) článku.
 
    ```python
    from azureml.core import Workspace

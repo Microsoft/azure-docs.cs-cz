@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 04/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6c340d6b410a289f8beca156f85472cb729b786a
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: de58f960842e0a4f8e9b964774ce62b3e2772113
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56427815"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863167"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení s účtem LinkedIn pomocí Azure Active Directory B2C
 
@@ -41,3 +41,6 @@ Použít účet LinkedIn jako [zprostředkovatele identity](active-directory-b2c
 7. Vyberte **nastavit tohoto zprostředkovatele identity** a zadejte Id klienta, který jste si poznamenali dříve, jako **ID klienta** a zadejte tajný kód klienta, který jste si poznamenali jako **tajný kód klienta**aplikace účet LinkedIn, který jste vytvořili dříve.
 8. Klikněte na tlačítko **OK** a potom klikněte na tlačítko **vytvořit** uložte konfiguraci účtu LinkedIn.
 
+## <a name="migration-from-v10-to-v20"></a>Migrace z verze 1.0 do verze 2.0
+
+Nedávno LinkedIn [aktualizovat své rozhraní API z verze 1.0 k v2.0](https://engineering.linkedin.com/blog/2018/12/developer-program-updates). Jako součást migrace pouze je schopen získat celé jméno uživatele, LinkedIn během přihlašování Azure AD B2C Pokud se e-mailovou adresu, atributy, které jsou shromažďovány během registrace, uživatel musí ručně zadat e-mailovou adresu a ověřte ho.

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 48a0400a471e06f65c1d548b7c1c419a1cb198bd
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 8d6323c73e5313a29b7b0df09ebdd24a190879f5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58284574"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876424"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se databáze SQL serveru, na kterých běží zálohování virtuálních počítačů Azure
 
@@ -42,7 +42,7 @@ Automatické opravy jako funkce ve výchozím nastavení; zapnutá pro všechny 
 Ano. Můžete omezit rychlost, jakou zásadu zálohování, která spouští k minimalizaci vlivu na instanci systému SQL Server. Chcete-li změnit nastavení:
 1. V instanci SQL serveru v *C:\Program Files\Azure úlohy Backup\bin* složky, vytvořit *ExtensionSettingsOverrides.json* souboru.
 2. V *ExtensionSettingsOverrides.json* změňte **DefaultBackupTasksThreshold** nastavení na nižší hodnotu (například 5). <br>
-  ` {"DefaultBackupTasksThreshold": 5}`
+  `{"DefaultBackupTasksThreshold": 5}`
 
 3. Uložte změny a zavřete soubor.
 4. Na instanci serveru SQL Server otevřete **Správce úloh**. Restartujte **AzureWLBackupCoordinatorSvc** služby.

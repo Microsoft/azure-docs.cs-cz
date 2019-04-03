@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d8fd6a0422ee26610f58f872cba4487d4e01e6b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: cac685cc3f5a19e9da134df87076299e3f38fe11
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403625"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880963"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Kurz: Integrace Azure Active Directory s daty přes aplikaci Periscope
 
@@ -109,7 +109,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s daty přes aplikaci Perisco
     | |
     |--|
     | `https://app.periscopedata.com/` |
-    | ` https://app.periscopedata.com/app/<SITENAME>` |
+    | `https://app.periscopedata.com/app/<SITENAME>` |
 
     b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://app.periscopedata.com/<SITENAME>/sso`
 

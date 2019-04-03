@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 4ae8ae43d8c245270b64611bed0ac4930aa0ecc3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6d03c219025c8cd39214bd8ab6807125709f9742
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763415"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849671"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Zdroje dat ve službě Azure Monitor
-Tento článek popisuje zdroje dat shromážděných službou Azure Monitor k monitorování stavu a výkonu svých prostředků a aplikace běžící na ně. Tyto prostředky může být v Azure, v jiném cloudu nebo lokálně.  Zobrazit [Data shromážděná službou Azure Monitor](data-collection.md) podrobnosti o tom, jak tato data uložená a jak ji zobrazit.
+Tento článek popisuje zdroje dat shromážděných službou Azure Monitor k monitorování stavu a výkonu svých prostředků a aplikace běžící na ně. Tyto prostředky může být v Azure, v jiném cloudu nebo lokálně.  Zobrazit [Data shromážděná službou Azure Monitor](data-platform.md) podrobnosti o tom, jak tato data uložená a jak ji zobrazit.
 
 Sledování dat v Azure pochází z různých zdrojů, které mohou být uspořádány do vrstev, nejvyšší úrovně se vaše aplikace a operačních systémů a nižší úrovně, které jsou součástí platformy Azure. To je znázorněno v následujícím diagramu s každou vrstvou podrobně popsány v následujících částech.
 
@@ -59,7 +59,7 @@ Metriky a prostředků úrovně diagnostické protokoly poskytují informace o _
 
 
 ### <a name="metrics"></a>Metriky
-Většina služeb Azure vygeneruje [platformy metriky](data-collection.md#metrics) , které reflektují jejich výkon a operace. Konkrétní [metriky se liší pro jednotlivé typy prostředků](metrics-supported.md).  Jsou přístupné z metrik analýzy a je možné zkopírovat do protokolů pro analýzu trendů a dalších pomocí Log Analytics.
+Většina služeb Azure vygeneruje [platformy metriky](data-platform-metrics.md) , které reflektují jejich výkon a operace. Konkrétní [metriky se liší pro jednotlivé typy prostředků](metrics-supported.md).  Jsou přístupné z metrik analýzy a je možné zkopírovat do protokolů pro analýzu trendů a dalších pomocí Log Analytics.
 
 
 ### <a name="resource-diagnostic-logs"></a>Protokolů diagnostiky prostředků
@@ -116,4 +116,4 @@ Azure Monitor může shromažďovat data protokolu z jakéhokoli klienta REST po
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [typy monitorování dat shromážděných službou Azure Monitor](data-collection.md) a jak zobrazit a analyzovat tato data.
+- Další informace o [typy monitorování dat shromážděných službou Azure Monitor](data-platform.md) a jak zobrazit a analyzovat tato data.

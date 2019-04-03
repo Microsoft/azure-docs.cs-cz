@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 7032fabd022b55bc8946a48568bbd799d4a0a5e9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 4fa2553622d5ef2d08ec148b6a70aab6de257407
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731374"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848360"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Jak graf výkonu pomocí Azure monitoru pro virtuální počítače (preview)
 Azure Monitor pro virtuální počítače obsahuje sadu grafy výkonu, které se zaměřují provádění několika klíčových ukazatelů výkonu (KPI), které vám pomohou určit, jak dobře virtuálního počítače. Grafy zobrazit využití prostředků za časové období, abyste mohli identifikovat kritické body, anomálie, nebo přepněte do pohledu výpis každý počítač, chcete-li zobrazit využití prostředků na základě metriky vybrané. I když existují mnoho prvků vzít v úvahu při práci s výkonem, související s Azure Monitor pro monitorování virtuálních počítačů, klíče operačního systému ukazatele výkonu procesoru, paměti, síťového adaptéru a využití disku. Výkon doplňuje funkci monitorování stavu a pomáhá vystavit problémy, které označují selhání součásti systému je to možné, podpora ladění a optimalizace pro dosažení efektivity nebo podporují plánování kapacity.  
@@ -111,7 +111,7 @@ Metriky výkonu, které jsou povolené v rámci služby Azure Monitor pro virtu�
 
 Může však pouze shromažďujeme a ukládáme podmnožinu metriky výkonu, které budete potřebovat v pracovním prostoru Log Analytics. Pokud vaše strategie monitorování vyžaduje analýzy nebo výstrahy, které zahrnují další metriky výkonu aby bylo možné vyhodnotit efektivně kapacitu nebo stav virtuálního počítače, nebo pokud potřebujete možnost zadat vlastní výstrahy kritéria nebo logiky, můžete si konfigurace [shromažďování těchto čítačů výkonu](../platform/data-sources-performance-counters.md) v Log Analytics a definovat [upozornění protokolů](../platform/alerts-log.md). Log Analytics umožňuje provádět komplexní analýzy s jinými datovými typy a poskytovat delší dobu uchování pro podporu analýzy trendů metrik na druhé straně, jsou jednoduché a schopný zajistit podporu téměř v reálném čase scénáře. Jsou shromážděné [agenta diagnostiky Azure](../../virtual-machines/windows/monitor.md) a uložené v úložišti Azure Monitor metriky, umožňují vytvářet výstrahy s nižší latencí a s nižšími náklady.
 
-Projděte si přehled [shromažďování metrik a protokolů pomocí Azure monitoru](../platform/data-collection.md) abyste ještě lépe pochopili základní rozdíly a další důležité informace před konfigurací kolekce tyto další metriky a pravidla upozornění.  
+Projděte si přehled [shromažďování metrik a protokolů pomocí Azure monitoru](../platform/data-platform.md) abyste ještě lépe pochopili základní rozdíly a další důležité informace před konfigurací kolekce tyto další metriky a pravidla upozornění.  
 
 ## <a name="next-steps"></a>Další postup
 Zjistěte, jak použít funkci stavu, najdete v článku [zobrazení monitorování Azure pro virtuální počítače stavu](vminsights-health.md), nebo chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md). 

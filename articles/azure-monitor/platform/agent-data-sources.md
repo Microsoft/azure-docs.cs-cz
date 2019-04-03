@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: e4550dde533044260c120b17c4f72758f90e8bff
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d7d4aa89c4dcf2ac9cc0c393e0481cae1f3aeaf2
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102093"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847003"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Agent zdroje dat ve službě Azure Monitor
-Data, která shromažďuje agenty Azure Monitor je definována zdroje dat, které nakonfigurujete.  Data z agentů se ukládá jako [můžete vytvářet protokoly dat](data-collection.md) sadu záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s jednotlivými typu s vlastní sadu vlastností.
+Data, která shromažďuje agenty Azure Monitor je definována zdroje dat, které nakonfigurujete.  Data z agentů se ukládá jako [můžete vytvářet protokoly dat](data-platform-logs.md) sadu záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s jednotlivými typu s vlastní sadu vlastností.
 
 ![Shromažďování dat protokolu](media/agent-data-sources/overview.png)
 

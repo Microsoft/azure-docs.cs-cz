@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e826c7a3fc12e819fd6f145d42b7381087d5970c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c7e78f89883e5cfc3fc8b9088c3ac0b3166682c7
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000237"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878175"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Import dat do úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 
@@ -54,7 +54,7 @@ Proveďte následující kroky pro přípravu disků.
     `cd C:\WaImportExportV1`
 5.  Pokud chcete získat klíče Bitlockeru na jednotce, spusťte následující příkaz:
     
-    ` manage-bde -protectors -get <DriveLetter>: `
+    `manage-bde -protectors -get <DriveLetter>:`
 6.  Příprava na disk, spusťte následující příkaz. **V závislosti na velikosti dat může to trvat několik hodin na dny.** 
 
     ```
@@ -70,7 +70,7 @@ Proveďte následující kroky pro přípravu disků.
     |/ID:     |ID relace. Pro každou instanci tohoto příkazu použijte jedinečné relace číslo.      |
     |/Sk:     |Klíč účtu úložiště Azure.         |
     |/t:     |Písmeno jednotky disku k odeslání. Třeba jednotka `D`.         |
-    |/bk:     |Klíč nástroje BitLocker pro jednotku. Jeho číselné heslo z výstupu ` manage-bde -protectors -get D: `      |
+    |/bk:     |Klíč nástroje BitLocker pro jednotku. Jeho číselné heslo z výstupu `manage-bde -protectors -get D:`      |
     |/srcdir:     |Písmeno jednotky disku budou zaslány, za nímž následuje `:\`. Například, `D:\`.         |
     |/dstdir:     |Název cílový kontejner ve službě Azure Storage.         |
     |/skipwrite:     |Abyste byli připraveni je možnost, která určuje, že neexistuje žádná nová data muset zkopírovat a existující data na disku.          |

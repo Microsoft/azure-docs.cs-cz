@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/5/2018
+ms.date: 04/02/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 017c8c2f060f969f2e7f8d387dcbafa2dac426d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7b7adcc85b9274af45ddab653e875377e959e40c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842941"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876322"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Kurz: Vytvoření přidružení ExpressRoute pomocí Azure virtuální sítě WAN (Preview)
 
@@ -45,10 +45,9 @@ V tomto kurzu se naučíte:
 
 Než budete moci nakonfigurovat virtuální síť WAN, je nejdříve potřeba zaregistrovat vaše předplatné pro verzi Preview. Jinak nebude možné na portálu se službou Virtual WAN pracovat. Při registraci odeslat e-mailu **azurevirtualwan\@microsoft.com** svým ID předplatného. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením.
 
-**Požadavky pro verzi Preview:**
+**Důležité informace o verzi Preview:**
 
-* Dostupnost v oblastech: Západní střed USA
-* V zemích, které podporují [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported), musí být povolený okruh ExpressRoute
+Okruh ExpressRoute, musí být povolená v zemi, která podporuje [ExpressRoute globální dosah](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported).
 
 ## <a name="vnet"></a>1. Vytvoření virtuální sítě
 
@@ -70,16 +69,16 @@ V prohlížeči přejděte na [Azure Portal (Preview)](https://aka.ms/azurevirtu
 
 ## <a name="hub"></a>4. Vyhledání a přidružení okruhu k rozbočovači
 
-1. Vyberte svou virtuální síť WAN a v části **Architektura virtuální sítě WAN** vyberte **Okruhy ExpressRoute**.
-1. Pokud je okruh ExpressRoute ve stejném předplatném jako vaše virtuální síť WAN, klikněte na **Vybrat okruh ExpressRoute** a vyberte okruh ExpressRoute z vašeho předplatného. 
+1. Vyberte vaše vWAN a v části **virtuální sítě WAN architektura**vyberte **okruhy ExpressRoute**.
+1. Pokud je ve stejném předplatném jako vaše vWAN okruh ExpressRoute, klikněte na tlačítko **okruh ExpressRoute vyberte** z vašich předplatných. 
 1. Pomocí rozevírací seznam, vyberte přes ExpressRoute chcete přidružit k rozbočovači.
 1. Pokud není okruhem ExpressRoute v rámci stejného předplatného nebo vám byl poskytnut [autorizační klíč a peer ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)vyberte **najít okruhu uplatňuje autorizačního klíče**
 1. Zadejte následující podrobnosti:
 1. **Autorizační klíč** – Autorizační klíč vygenerovaný vlastníkem okruhu, jak je popsáno výše.
 1. **Identifikátor URI partnerského okruhu** – Identifikátor URI okruhu poskytnutý vlastníkem okruhu, který je jedinečným identifikátorem okruhu.
 1. **Váha směrování** - [váha směrování](../expressroute/expressroute-optimize-routing.md) umožňuje raději určité cesty ke složkám na stejném centru jsou připojeni víc okruhů z různých umístění partnerského vztahu
-1. Klikněte na **Vyhledat okruh**, a pokud se najde nějaký okruh, vyberte ho.
-1. V rozevíracím seznamu vyberte 1 nebo více rozbočovačů a klikněte na **Uložit**.
+1. Klikněte na tlačítko **najít okruh** a vyberte okruh, pokud se nenašel.
+1. Vyberte 1 nebo více rozbočovače z rozevíracího seznamu a klikněte na tlačítko **Uložit**.
 
 ## <a name="vnet"></a>5. Připojení virtuální sítě k rozbočovači
 

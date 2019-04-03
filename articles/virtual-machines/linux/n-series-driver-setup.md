@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb597edc676fbb7b63c6a07849551cc21f69b354
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7c80b821d6bd0263473ba0178eea148f7a2d5773
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58015011"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879042"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU na virtuálních počítačích řady N-series s Linuxem
 
@@ -187,9 +187,9 @@ Instalace ovladačů NVIDIA GRID na NV nebo virtuálních počítačích řady N
 
    sudo apt-get dist-upgrade -y
 
-   sudo apt-get install build-essential ubuntu-desktop -y
-   ```
-3. Zakážete Nouveau ovladač jádra, která není kompatibilní s ovladač NVIDIA. (Použijte pouze ovladač NVIDIA na NV nebo NVv2 virtuální počítače.) Chcete-li to provést, vytvořte soubor v `/etc/modprobe.d `s názvem `nouveau.conf` s následujícím obsahem:
+  sudo apt-get install build-essential ubuntu-desktop -y
+  ```
+3. Zakážete Nouveau ovladač jádra, která není kompatibilní s ovladač NVIDIA. (Použijte pouze ovladač NVIDIA na NV nebo NVv2 virtuální počítače.) Chcete-li to provést, vytvořte soubor v `/etc/modprobe.d` s názvem `nouveau.conf` s následujícím obsahem:
 
    ```
    blacklist nouveau
@@ -244,7 +244,7 @@ Instalace ovladačů NVIDIA GRID na NV nebo virtuálních počítačích řady N
    sudo yum install dkms
    ```
 
-2. Zakážete Nouveau ovladač jádra, která není kompatibilní s ovladač NVIDIA. (Použijte pouze ovladač NVIDIA na NV nebo NV2 virtuální počítače.) Chcete-li to provést, vytvořte soubor v `/etc/modprobe.d `s názvem `nouveau.conf` s následujícím obsahem:
+2. Zakážete Nouveau ovladač jádra, která není kompatibilní s ovladač NVIDIA. (Použijte pouze ovladač NVIDIA na NV nebo NV2 virtuální počítače.) Chcete-li to provést, vytvořte soubor v `/etc/modprobe.d` s názvem `nouveau.conf` s následujícím obsahem:
 
    ```
    blacklist nouveau

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: 966518f17392e6158089cb5b6df96f41674fed41
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0641a097761530285c2dd9aa176ddd8c2c159001
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996145"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878736"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Přenos dat pomocí knihovna pro přesun dat úložiště Microsoft Azure
 
@@ -49,7 +49,7 @@ Tento dokument ukazuje, jak vytvořit konzolovou aplikaci .NET Core, který bě�
 3. Otevřete tento adresář v aplikaci Visual Studio Code. Tento krok lze rychle provést prostřednictvím příkazového řádku zadáním `code .` ve Windows.
 4. Nainstalujte [rozšíření jazyka C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) z webu Visual Studio Code Marketplace. Restartujte Visual Studio Code.
 5. V tomto okamžiku byste měli vidět dvě výzvy. Jedna je pro přidání "požadované prostředky pro sestavení a ladění." Klikněte na tlačítko "Ano". Další výzva je určena pro obnovení nevyřešené závislosti. Klikněte na tlačítko "obnovit".
-6. Upravit `launch.json` pod `.vscode` používat externím terminálu jako konzola. Toto nastavení by měl čtení jako ` "console": "externalTerminal"`
+6. Upravit `launch.json` pod `.vscode` používat externím terminálu jako konzola. Toto nastavení by měl čtení jako `"console": "externalTerminal"`
 7. Visual Studio Code umožňuje ladit aplikace .NET Core. Spuštění `F5` ke spuštění vaší aplikace a ověřte, zda je funkční vašeho nastavení. Měli byste vidět "Hello World!" Tisk do konzoly.
 
 ## <a name="add-data-movement-library-to-your-project"></a>Přidání knihovna pro přesun dat do projektu

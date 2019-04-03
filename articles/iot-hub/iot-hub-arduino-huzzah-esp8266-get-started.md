@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 65f9b392f3ae57c1eaad7454434b4870954f36f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 82e31c498c6148454a5790a6eb4b82e3a2300a92
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085095"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847069"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Sada Adafruit Feather HUZZAH ESP8266 připojit ke službě Azure IoT Hub v cloudu
 
@@ -168,10 +168,10 @@ Ukázkové aplikace jsou hostované na Githubu. Naklonujte ukázkové úložišt
 
 9. V **uživatelská nastavení** okna, zkopírujte a vložte následující na konci souboru
 
-   ```
+   ```json
    "arduino.additionalUrls": "http://arduino.esp8266.com/stable/package_esp8266com_index.json"
    ```
-   
+
    ![Adresa URL balíčku Arduino konfigurace v nástroji VS Code](media/iot-hub-arduino-huzzah-esp8266-get-started/12_vscode-package-url.png)
 
 10. Soubor uložte a zavřete **uživatelská nastavení** kartu.
@@ -213,7 +213,7 @@ Ukázkové aplikace můžete simulovat teploty a vlhkosti dat v případě, že 
    ```c
    define SIMULATED_DATA true
    ```
-   
+
    ![Nakonfigurovat ukázkovou aplikaci pro použití s Simulovaná data](media/iot-hub-arduino-huzzah-esp8266-get-started/15_vscode-configure-app-use-simulated-data.png)
 
 3. Uložte soubor.
@@ -251,8 +251,14 @@ Pokud se zobrazí následující výstup v okně sériového portu monitorován�
 
 ![Finální výstup v rozhraním Arduino IDE](media/iot-hub-arduino-huzzah-esp8266-get-started/16_arduino-ide-final-output.png)
 
+## <a name="read-the-messages-received-by-your-hub"></a>Přečtěte si zprávy přijaté službou rozbočovače
+
+Jedním ze způsobů monitorování zprávy přijaté službou IoT hub ze zařízení s je použití nástroje Azure IoT pro Visual Studio Code. Další informace najdete v tématu [pomocí Azure IoT, nástrojů pro Visual Studio Code k odesílání a příjem zpráv mezi zařízením a centrem IoT](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+
+Další způsoby, jak zpracovat data odeslaná tímto zařízením pokračujte v další části.
+
 ## <a name="next-steps"></a>Další postup
 
-Úspěšně jste Feather HUZZAH ESP8266 připojené ke službě IoT hub a data zachycená senzor odeslané do služby IoT hub. 
+Úspěšně jste Feather HUZZAH ESP8266 připojené ke službě IoT hub a data zachycená senzor odeslané do služby IoT hub.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

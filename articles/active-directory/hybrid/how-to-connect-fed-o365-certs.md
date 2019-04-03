@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fae036a0860ddb5ee2776f7ed4734492741907f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177717"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883441"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Obnovení federačních certifikátů pro Office 365 a Azure Active Directory
 ## <a name="overview"></a>Přehled
@@ -118,7 +118,7 @@ Zkontrolujte následující pro potvrzení, že certifikát je automaticky aktua
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-kde `(your_FS_name) `nahradí název federační služby hostitele, vaše organizace používá, třeba fs.contoso.com.  Pokud máte možnost ověřit oba z těchto nastavení úspěšně, není nutné dělat nic dalšího.  
+kde `(your_FS_name)` nahradí název federační služby hostitele, vaše organizace používá, třeba fs.contoso.com.  Pokud máte možnost ověřit oba z těchto nastavení úspěšně, není nutné dělat nic dalšího.  
 
 Příklad: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 ## Obnovit ručně podpisový certifikát tokenu <a name="manualrenew"></a>

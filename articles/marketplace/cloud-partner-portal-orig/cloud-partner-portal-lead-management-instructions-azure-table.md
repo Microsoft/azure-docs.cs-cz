@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 31a800e851eb8a2f533cc8170856b16cd43c21cf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2a8ae3ab71b258d92d9761cc813b168717e44d82
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57850713"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878005"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Průběžná správa pokyny, jak tabulek v Azure
 
@@ -34,7 +34,7 @@ Tento článek popisuje, jak nakonfigurovat tabulku Azure pro ukládání potenc
 
     ![Postup vytvoření účtu služby Azure storage](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragecreate.png)
 
-4.  Zkopírujte připojovací řetězec účtu úložiště pro klíč a vložte ho do **připojovací řetězec účtu úložiště** na portál partnerů cloudu. Je například stingu připojení `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net `
+4.  Zkopírujte připojovací řetězec účtu úložiště pro klíč a vložte ho do **připojovací řetězec účtu úložiště** na portál partnerů cloudu. Je například stingu připojení `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net`
     
     ![Klíč úložiště Azure](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
 

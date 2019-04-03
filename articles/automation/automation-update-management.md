@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2019
+ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 42a7ae0e6ca5239aa83d20655817973e8f185d02
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 1af2117b1d12c98182434705181462fd7c9bebf4
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805393"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862943"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -52,9 +52,9 @@ Pro počítač s Linuxem se kontrola dodržování předpisů ve výchozím nast
 > [!NOTE]
 > Správně sestavy ve službě správy aktualizací vyžaduje určitých adres URL a portů, aby byla povolená. Další informace o těchto požadavcích najdete v tématu [sítě plánování pro hybridní pracovní procesy](automation-hybrid-runbook-worker.md#network-planning).
 
-Na počítače, které vyžadují aktualizace softwaru, můžete tyto aktualizace nasadit a nainstalovat tak, že vytvoříte plánované nasazení. Aktualizace klasifikované jako *volitelné* nejsou zahrnuté do oboru nasazení pro počítače s Windows. Pouze požadované aktualizace jsou součástí rozsahu nasazení. 
+Na počítače, které vyžadují aktualizace softwaru, můžete tyto aktualizace nasadit a nainstalovat tak, že vytvoříte plánované nasazení. Aktualizace klasifikované jako *volitelné* nejsou zahrnuté do oboru nasazení pro počítače s Windows. Pouze požadované aktualizace jsou součástí rozsahu nasazení.
 
-Plánované nasazení definuje, které cílové počítače obdrží použitelné aktualizace, buď tak, že počítače explicitně zadáte, nebo tak, že vyberete [skupinu počítačů](../azure-monitor/platform/computer-groups.md) , který je založen na prohledávání protokolů konkrétní sady počítačů. Zadáte také plán pro schválení a nastavení určitou dobu, během které se můžou aktualizace instalovat.
+Plánované nasazení definuje, které cílové počítače obdrží použitelné aktualizace, buď tak, že počítače explicitně zadáte, nebo tak, že vyberete [skupinu počítačů](../azure-monitor/platform/computer-groups.md) , který je založen na prohledávání protokolů konkrétní sady počítačů. Zadáte také plán pro schválení a nastavení určitou dobu, během které se můžou aktualizace instalovat. Tuto dobu se nazývá časové období údržby. Deset minut časového období údržby je vyhrazený pro restartování počítače, pokud je potřeba restartovat počítač a vyberete možnost odpovídající restartování. Pokud opravy trvá déle, než se očekávalo a je menší než deset minut časového období údržby, nedojde k restartování.
 
 Aktualizace se instalují podle runbooků ve službě Azure Automation. Nelze zobrazit tyto sady runbook a runbook nevyžadují žádnou konfiguraci. Při vytvoření nasazení aktualizace nasazení aktualizace vytvoří plán, který se spustí hlavní runbook aktualizace v zadanou dobu pro zahrnuté počítače. Hlavní runbook spouští podřízený runbook na každém agentovi k instalaci požadovaných aktualizací.
 

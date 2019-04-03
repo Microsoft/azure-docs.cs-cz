@@ -2,21 +2,21 @@
 title: 'PowerShell: Cluster Azure HDInsight s Azure Data Lake Storage Gen1 jako doplňkové úložiště | Dokumentace Microsoftu'
 services: data-lake-store,hdinsight
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 164ada5a-222e-4be2-bd32-e51dbe993bc0
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 4187557ef9a38f55465547f83d7bc4c3bcad9ba7
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.author: twooley
+ms.openlocfilehash: f78ad8d58bb1bc760a31b792b44a4a39ed25e1f3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236925"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880096"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Pomocí prostředí Azure PowerShell k vytvoření clusteru služby HDInsight s Azure Data Lake Storage Gen1 (jako další úložiště)
 
@@ -24,7 +24,7 @@ ms.locfileid: "56236925"
 > * [Pomocí portálu](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Použití prostředí PowerShell (pro výchozí úložiště)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [Použití prostředí PowerShell (pro další úložiště)](data-lake-store-hdinsight-hadoop-use-powershell.md)
-> * [Pomocí Resource Manageru](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+> * [Použití Správce prostředků](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 >
 >
 

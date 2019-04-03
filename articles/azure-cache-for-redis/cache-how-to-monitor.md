@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: f41c14f664df8db809ad4c29c57d37c1124a0ff3
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 32d0fb2ba17d322c0a273ebaf0a21d2b3ca0668f
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818540"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849572"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Jak monitorovat Azure mezipaměti Redis
 Mezipaměť Azure pro použití Redis [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) poskytnout několik možností, jak pro monitorování vaší instance mezipaměti. Můžete zobrazit metriky, připnout grafy metrik na úvodní panel, přizpůsobení datum a čas, množství grafy monitorování, přidání a odebrání grafy metrik a nastavit upozornění při splnění určitých podmínek. Tyto nástroje umožňují monitorování stavu vaší mezipaměti Azure pro instance Redis a snadněji tak můžete spravovat ukládání do mezipaměti aplikace.
@@ -61,7 +61,7 @@ Další informace o práci s metrikami použití Azure monitoru, naleznete v té
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>Exportovat metriky mezipaměti
-Ve výchozím nastavení, metriky mezipaměti ve službě Azure Monitor jsou [uchovávají po dobu 30 dní](../azure-monitor/platform/data-collection.md#metrics) a pak odstranit. Chcete-li zachovat metriky mezipaměti po dobu delší než 30 dní, můžete [určit účet úložiště](../azure-monitor/platform/archive-diagnostic-logs.md) a zadejte **uchování (dny)** zásady pro metriky mezipaměti. 
+Ve výchozím nastavení, metriky mezipaměti ve službě Azure Monitor jsou [uchovávají po dobu 30 dní](../azure-monitor/platform/data-platform-metrics.md) a pak odstranit. Chcete-li zachovat metriky mezipaměti po dobu delší než 30 dní, můžete [určit účet úložiště](../azure-monitor/platform/archive-diagnostic-logs.md) a zadejte **uchování (dny)** zásady pro metriky mezipaměti. 
 
 Jak nakonfigurovat účet úložiště pro metriky mezipaměti:
 

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: 7942b4eb5788357a807911d3eb89d1054a92c3eb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f3ee9b7aa595ae07bb97a8513bc0b751e94d7cc9
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449355"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883934"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Odeslat data protokolu pro monitorování Azure pomocí rozhraní API kolekce dat HTTP (public preview)
 V tomto článku se dozvíte, jak používat rozhraní API kolekce dat HTTP k odeslání dat protokolů do Azure monitoru z klienta REST API.  Popisuje jak formátovat data shromážděná z vašich skriptů nebo aplikací, zahrnout do požadavku a jste tento požadavek na autorizaci pomocí Azure monitoru.  Příklady jsou k dispozici pro prostředí PowerShell, C# a Python.
@@ -166,6 +166,11 @@ Ale pokud jste provedli poté toto další odeslání, Azure Monitor byste vytvo
 Pokud potom odeslali následující položku předtím, než byl vytvořen typ záznamu, monitorování Azure by u tři vlastnosti, vytvořit záznam **úspěch**, **boolean_s**, a **string_s**. Na tuto položku se všechny počáteční hodnoty naformátovaná jako řetězec:
 
 ![Ukázka záznamu 4](media/data-collector-api/record-04.png)
+
+## <a name="reserved-properties"></a>Rezervované vlastnosti
+Následující vlastnosti jsou vyhrazené a nesmí být použita v vlastní typ záznamu. Pokud vaše datová část obsahuje některé z těchto názvů vlastností, dojde k chybě.
+
+- tenant
 
 ## <a name="data-limits"></a>Omezení dat
 Existují některá omezení kolem data vystavená pro rozhraní API pro shromažďování dat monitorování Azure.

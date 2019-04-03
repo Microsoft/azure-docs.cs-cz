@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 823eebeddb64c15ef20d103f2f9290c800753f1a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0f8aafce4c4feeed742504db84664e4dfd472ca6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404752"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884138"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Doprovodné materiály k omezování služby Azure Key Vault
 
@@ -34,7 +34,7 @@ Pokud budete mít obchodní případ pro vyšší omezení limity, kontaktujte n
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Omezení vaší aplikace v reakci na omezení služby
 
-Následují **osvědčené postupy** pro omezení vaší aplikace:
+Následují **osvědčené postupy** , měli byste po omezené služby:
 - Snížit počet operací na požadavek.
 - Snižte frekvenci požadavků.
 - Vyhněte se okamžité opakování. 
@@ -115,7 +115,7 @@ Kód, který implementuje exponenciální regresí je uveden níže.
 ```
 
 
-Pomocí tohoto kódu v klientovi C\# aplikace (jiného webového rozhraní API klienta mikroslužeb, aplikaci ASP.NET MVC nebo dokonce C\# aplikace Xamarin) je jednoduché. Následující příklad ukazuje, jak pomocí třídy HttpClient.
+Pomocí tohoto kódu v klientovi C\# aplikací je jednoduché. Následující příklad ukazuje, jak pomocí třídy HttpClient.
 
 ```csharp
 public async Task<Cart> GetCartItems(int page)

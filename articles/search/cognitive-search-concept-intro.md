@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 03/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3c2567564e015ef19adf9f8c776e1f377a9cdf30
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 187e40716bc55f71623ef758722eb58d27651d4d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58133055"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882483"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co je "kognitivního vyhledávání" ve službě Azure Search?
 
@@ -38,7 +38,7 @@ Přirozený jazyk a zpracování obrázků se použije během fáze příjem dat
 
 ## <a name="components-of-cognitive-search"></a>Součástí kognitivního vyhledávání
 
-Kognitivní vyhledávání je funkce ve verzi preview [Azure Search](search-what-is-azure-search.md)podporovaná v [tyto oblasti](#where-do-i-start). 
+Kognitivní vyhledávání je funkce ve verzi preview [Azure Search](search-what-is-azure-search.md).
 
 Kanál kognitivní vyhledávání je založena na [Azure Search *indexery* ](search-indexer-overview.md) , procházení zdroje dat a index začátku do konce zátěži. Dovednosti je teď připojený ke indexery, zachycení a rozšíření dokumentů podle zkušenostech definujete. Až indexovat, dostanete obsahu prostřednictvím vyhledávacích přes všechny [dotazování typy podporované službou Azure Search](search-query-overview.md).  Pokud jste ještě na indexery, tato část vás provede kroky.
 
@@ -136,5 +136,5 @@ Další informace o konkrétní dotazy nebo problémy, najdete v části [tipy p
 ## <a name="next-steps"></a>Další postup
 
 + [Dokumentace ke kognitivnímu vyhledávání](cognitive-search-resources-documentation.md)
-+ [Rychlé zprovoznění: Vyzkoušení kognitivního vyhledávání v portálu návodu](cognitive-search-quickstart-blob.md)
++ [Rychlý start: Vyzkoušení kognitivního vyhledávání v portálu návodu](cognitive-search-quickstart-blob.md)
 + [Kurz: Další rozhraní API pro kognitivní vyhledávání](cognitive-search-tutorial-blob.md)

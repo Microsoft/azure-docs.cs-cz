@@ -1,7 +1,7 @@
 ---
-title: Modely monitorování pomocí Application Insights
+title: Nastavení Azure Application Insights pro monitorování modelů ML
 titleSuffix: Azure Machine Learning service
-description: Použití Application Insights a monitorujte webové služby nasazené prostřednictvím služby Azure Machine Learning
+description: Sledování webové služby nasazené pomocí služby Azure Machine Learning pomocí Azure Application Insights
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 1/07/2019
-ms.custom: seodec18
-ms.openlocfilehash: 32dc55927f614a91c390a417595b7a00c16e9386
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/02/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: 2e481a388d8cbd6baf66b95c74449396b2e70f7d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847945"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885487"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Monitorování vašich modelů Azure Machine Learning s využitím Application Insights
 
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak nastavit Azure Application Insights pro vaši 
 * Model trénovaného strojového učení nasadit do Azure Kubernetes Service (AKS) nebo Azure Container Instance (ACI). Pokud ho nemáte, přečtěte si článek [Train model klasifikace obrázků](tutorial-train-models-with-aml.md) kurzu.
 
 
-## <a name="enable-and-disable-from-the-sdk"></a>Povolení a zákaz ze sady SDK
+## <a name="use-sdk-to-configure"></a>Použití sady SDK ke konfiguraci 
 
 ### <a name="update-a-deployed-service"></a>Aktualizace nasazené službě
 1. Identifikaci služby ve vašem pracovním prostoru. Hodnota pro `ws` je název vašeho pracovního prostoru.
@@ -77,7 +77,7 @@ Pokud chcete zakázat Application Insights, použijte následující kód:
 <service_name>.update(enable_app_insights=False)
 ```
     
-## <a name="enable-and-disable-in-the-portal"></a>Povolit nebo zakázat na portálu
+## <a name="use-portal-to-configure"></a>Použití portálu ke konfiguraci
 
 Můžete povolit nebo zakázat Application Insights na webu Azure Portal.
 
@@ -85,15 +85,15 @@ Můžete povolit nebo zakázat Application Insights na webu Azure Portal.
 
 1. Na **nasazení** kartu, vyberte službu, ve které chcete povolit Application Insights.
 
-   [![Seznam služeb na kartě nasazení](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [![Lna kartě nasazení služeb ist] Zobrazí(media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
 3. Vyberte **Upravit**.
 
-   [![Tlačítko Upravit](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![Etlačítko Upravit](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 4. V **Upřesnit nastavení**, vyberte **diagnostiku AppInsights povolit** zaškrtávací políčko.
 
-   [![Zaškrtnuté zaškrtávací políčko pro povolení diagnostiky](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [![Svybrané zaškrtávací políčko pro povolení diagnostiky](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. Vyberte **aktualizace** v dolní části obrazovky, aby se změny projevily. 
 
@@ -101,11 +101,11 @@ Můžete povolit nebo zakázat Application Insights na webu Azure Portal.
 1. V [webu Azure portal](https://portal.azure.com), otevřete pracovní prostor.
 1. Vyberte **nasazení**, vyberte službu a vyberte **upravit**.
 
-   [![Použijte tlačítko pro úpravy](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![Utlačítko Upravit se](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. V **Upřesnit nastavení**, zrušte zaškrtnutí políčka **diagnostiku AppInsights povolit** zaškrtávací políčko. 
 
-   [![Nezaškrtnuté zaškrtávací políčko pro povolení diagnostiky](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [![Cleared zaškrtávací políčko pro povolení diagnostiky](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. Vyberte **aktualizace** v dolní části obrazovky, aby se změny projevily. 
  
@@ -119,12 +119,12 @@ Chcete-li zobrazit ho:
 
 1. Vyberte **přehled** kartu pro zobrazení základní sadu metriky pro vaši službu.
 
-   [![Přehled](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
+   [![OPřehled migrace](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
 3. Do vaší vlastní trasování, že vyberete **Analytics**.
 4. V části schématu vyberte **trasy**. Potom vyberte **spustit** ke spuštění dotazu. Data by se měla objevit ve formátu tabulky a měli namapovat na vlastní volání v souboru bodování. 
 
-   [![Vlastní trasy](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
+   [![Cvlastní trasy](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
 Další informace o tom, jak pomocí Application Insights najdete v tématu [co je Application Insights?](../../azure-monitor/app/app-insights-overview.md).
     
@@ -138,6 +138,4 @@ Další informace o tom, jak pomocí Application Insights najdete v tématu [co 
 ## <a name="next-steps"></a>Další postup
 Může také shromažďovat data o vašich modelů v produkčním prostředí. Přečtěte si článek [shromažďování dat modelů v produkčním prostředí](how-to-enable-data-collection.md). 
 
-
-## <a name="other-references"></a>Další odkazy
-* [Azure Monitor pro kontejnery](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)
+Také číst [monitorování Azure pro kontejnery](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json).

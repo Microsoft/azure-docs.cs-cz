@@ -14,14 +14,14 @@ ms.workload: infrastructure
 ms.date: 01/31/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8cfcf9c2f008abb571347e32f2be190dc51901e3
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 252c84bce2b70f6931593fe9410abe6cc146b5bb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563826"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880691"
 ---
-# <a name="onboarding-requirements"></a>Požadavky na připojení
+# <a name="onboarding-requirements"></a>Požadavky na onboarding
 
 Tento seznam sestaví požadavky pro spuštění SAP HANA v Azure (větší instance).
 
@@ -62,7 +62,7 @@ Matice kompatibility operačního systému a verze firmwaru a ovladače HLI, naj
 > Typ II jednotek pouze SLES 12 SP2 operačního systému verze se v tuto chvíli nepodporuje. 
 
 
-**Database**
+**Databáze**
 
 - Licence a software instalační komponenty pro SAP HANA (platformy nebo enterprise edition).
 
@@ -83,5 +83,5 @@ Matice kompatibility operačního systému a verze firmwaru a ovladače HLI, naj
 - Očekává se, že jste je zákazníkem v systému SAP a mají podporu kontraktu s řešením SAP.
 - Zejména pro implementace třídy typu II SKU velké Instance HANA konzultujte s řešením SAP verze SAP HANA a konečný výsledek konfigurace na velkých a velkých vertikálně navýšit kapacitu hardwaru.
 
-**Další kroky**
+**Další postup**
 - Přečtěte si [architektura SAP HANA (velké instance) v Azure](hana-architecture.md)

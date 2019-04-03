@@ -12,17 +12,14 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: eb8499ef6c0f872a0761f7be606e058387947b2b
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: da93c60b52edf509900adf89fb688a0596d9763b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319876"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877801"
 ---
-# <a name="create-your-first-azure-function-with-java-and-intellij-preview"></a>Vytvoření první funkce Azure pomocí Javy a IntelliJ (preview)
-
-> [!NOTE]
-> Java pro službu Azure Functions je aktuálně ve verzi Preview.
+# <a name="create-your-first-azure-function-with-java-and-intellij"></a>Vytvoření první funkce Azure pomocí Javy a IntelliJ
 
 V tomto článku se dozvíte:
 - Jak vytvořit [bez serveru](https://azure.microsoft.com/overview/serverless-computing/) projekt Functions s IntelliJ IDEA a Apache Maven
@@ -55,7 +52,7 @@ K vývoji funkce pomocí Javy a IntelliJ, nainstalujte následující software:
 1. V **přidat Archetype** okna, vyplňte následující pole:
     - _GroupId_: com.microsoft.azure
     - _ArtifactId_: azure-functions-archetype
-    - _Verze_: použijte nejnovější verzi z [centrální úložiště](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    - _Verze_: Používat nejnovější verzi z [centrální úložiště](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![vytvořte projekt Maven z archetype v IntelliJ IDEA](media/functions-create-first-java-intellij/functions-create-intellij.png)  
 1. Vyberte **OK**a pak vyberte **Další**.
 1. Zadejte podrobnosti o pro aktuální projekt a vyberte **Dokončit**.

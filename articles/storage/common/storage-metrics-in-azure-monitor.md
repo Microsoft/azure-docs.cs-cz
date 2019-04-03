@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: a5ebd50b3a5fe3b611bae28db98979eee40f9490
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4be52fbc6d9fb01ac3cd3c0954042c35b45bbf23
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899022"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884359"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metriky Azure Storage na platformě Azure Monitor
 
@@ -284,9 +284,9 @@ Následující příklad ukazuje, jak načíst data metriky na metriky, podpora 
 
 ID prostředku je jedinečný identifikátor prostředku v Azure. Při použití rozhraní REST API pro monitorování Azure ke čtení definic metrik nebo hodnoty, je nutné použít ID prostředku pro prostředek, na kterém chcete pracovat. ID šablony prostředků následující formát:
 
-`
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-`
+```
 
 Storage poskytuje metriky na úrovni účtu úložiště a úroveň služeb s Azure Monitor. Například můžete načíst metriky pro pouze úložiště objektů Blob. Každá úroveň má svou vlastní ID prostředku, který slouží k načtení metriky pro právě tuto úroveň.
 
@@ -294,34 +294,38 @@ Storage poskytuje metriky na úrovni účtu úložiště a úroveň služeb s Az
 
 Následuje ukázka formátu pro určení ID prostředku účtu úložiště.
 
-`
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}
-`
+```
 
 ### <a name="resource-id-for-the-storage-services"></a>ID prostředku pro služby storage
 
 Následuje ukázka formátu pro určení ID prostředku pro každou ze služeb úložiště.
 
-* ID prostředku služby objektů BLOB `
+* ID prostředku služby objektů BLOB
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
-`
-* ID prostředku služby Table `
+```
+* ID prostředku služby Table
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
-`
-* ID prostředku služby Queue `
+```
+* ID prostředku služby Queue
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
-`
-* ID prostředku služby souborů `
+```
+* ID prostředku služby souborů
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
-`
+```
 
 ### <a name="resource-id-in-azure-monitor-rest-api"></a>ID prostředku ve službě Azure Monitor, rozhraní REST API
 
 Následuje vzor použitý při volání REST API služby Azure Monitor.
 
-`
+```
 GET {resourceId}/providers/microsoft.insights/metrics?{parameters}
-`
+```
 
 ## <a name="capacity-metrics"></a>Kapacitní metriky
 Hodnoty metrik kapacity se posílají do Azure monitoru každou hodinu. Hodnoty se aktualizují každý den. Agregační interval definuje časový interval, pro které jsou uvedeny hodnoty metrik. Podporovaný agregační interval pro všechny metriky kapacity je jedna hodina (PT1H).

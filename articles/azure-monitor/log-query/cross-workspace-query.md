@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: magoedte
-ms.openlocfilehash: d69ddcd44fd947f3d1dc61ac960e7b55258c163e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b0d12021be5a5dca348ea3ffa3f0b853725812da
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872008"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882238"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Provádění dotazů protokolů napříč prostředky ve službě Azure Monitor  
 
@@ -50,7 +50,7 @@ Identifikace pracovní prostor může být jedním z několika způsobů:
 
 * Úplný název - je "úplný název" pracovního prostoru, skládá z názvu předplatného, skupiny prostředků a název komponenty v tomto formátu: *subscriptionName/skupina prostředků/název komponenty*. 
 
-    `workspace('contoso/contosoretail/contosoretail-it').Update | count `
+    `workspace('contoso/contosoretail/contosoretail-it').Update | count`
 
     >[!NOTE]
     >Vzhledem k tomu, že názvy předplatného Azure nejsou jedinečné, tento identifikátor může být nejednoznačný. 

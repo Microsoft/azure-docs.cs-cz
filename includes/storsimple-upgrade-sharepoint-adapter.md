@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 1ebbce89c7a977dd9620bd8be67da647c107eadc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b2dec95e0258933b50d4437f1cb317639b62883d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889623"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886994"
 ---
 ### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>Aktualizace SharePoint 2010 pro službu SharePoint 2013 a potom nainstalujte adaptér StorSomple pro SharePoint
 > [!IMPORTANT]
@@ -29,7 +29,7 @@ ms.locfileid: "55889623"
 > Měli byste naplánovat tento upgrade během plánované údržby dojít z následujících důvodů:
 > 
 > * Dříve externalized obsah nebude k dispozici, až bude znovu nainstalován adaptér.
-> * Žádný obsah nahrány na web po odinstalování předchozí verze StorSimple Adapter pro SharePoint, ale před instalací nové verze, se uloží v databázi obsahu. Je potřeba přesunout obsah do zařízení StorSimple, po instalaci nového adaptéru. Můžete použít Microsoft` RBS Migrate()` rutiny Powershellu, které jsou součástí služby SharePoint k přenosu obsahu. Další informace najdete v tématu [migrovat do nebo z něj RBS](https://technet.microsoft.com/library/ff628255.aspx). 
+> * Žádný obsah nahrány na web po odinstalování předchozí verze StorSimple Adapter pro SharePoint, ale před instalací nové verze, se uloží v databázi obsahu. Je potřeba přesunout obsah do zařízení StorSimple, po instalaci nového adaptéru. Můžete použít Microsoft `RBS Migrate()` rutiny Powershellu, které jsou součástí služby SharePoint k přenosu obsahu. Další informace najdete v tématu [migrovat do nebo z něj RBS](https://technet.microsoft.com/library/ff628255.aspx). 
 > 
 > 
 

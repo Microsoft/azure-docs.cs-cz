@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7a61d8c1b9ec15327836f7d31e9e299c57cb21
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316333"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886076"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvořit strategie správy řízení odolné přístupu v Azure Active Directory
 
@@ -131,9 +131,9 @@ Zásady pohotovostní podmíněného přístupu je **zakázali zásadu** , kter�
   
 Toto standardní pojmenování pro pohotovostní zásady budou následujícím způsobem: 
 
-`
+```
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
-`
+```
 
 V následujícím příkladu: **Příklad A – řešení nepředvídaných událostí certifikační Autority zásad obnovit přístup k životně důležitého aplikace pro spolupráci**, je typické podnikové řešení nepředvídaných událostí. V tomto scénáři organizaci obvykle vyžadují vícefaktorové ověřování pro veškerý přístup pro Exchange Online a SharePoint Online a narušení v tomto případě je, že má poskytovatel MFA pro zákazníka výpadku (ať už s Azure MFA v místním poskytovatele MFA nebo vícefaktorové ověřování třetích stran). Tato zásada omezuje takového výpadku tím, že konkrétní cíloví uživatelé přístup k těmto aplikacím z důvěryhodných zařízení Windows pouze v případě, že jejich přístupu k aplikaci z důvěryhodných podnikové síti. Také se vyloučí nouzový účtů a správců core z těchto omezení. Cíloví uživatelé pak získávat přístup k Exchangi Online a SharePoint Online, zatímco jiné nebudou mít uživatelé dál přístup k aplikacím z důvodu výpadek. V tomto příkladu bude vyžadovat umístění v síti s názvem **CorpNetwork** a skupinu zabezpečení **ContingencyAccess** s cílových uživatelů s názvem skupiny **CoreAdmins** s Správci jádra a skupina s názvem **EmergencyAccess** s účty pro nouzový přístup. Pohotovostní vyžaduje čtyři zásady a zajistit tak požadovaný přístup. 
 
@@ -261,12 +261,12 @@ Pokud vaše organizace používá starší verzi zásad MFA na uživatele, můž
 
 ## <a name="learn-more"></a>Další informace
 
-* [Dokumentace ke službě Azure AD Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
+* [Dokumentace k ověřování Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [Spravovat účty pro správu nouzovou přístup ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 * [Konfigurace pojmenovaných umístění ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
   * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [Jak nakonfigurovat zařízení Azure Active Directory připojená k hybridní](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-* [Průvodce nasazením Windows Hello pro firmy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
+* [Windows Hello pro firmy Průvodce nasazením](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Heslo – doprovodné materiály týmem Microsoft Research.](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Jaké jsou podmínky podmíněného přístupu Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
 * [Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

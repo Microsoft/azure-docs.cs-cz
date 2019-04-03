@@ -1,25 +1,25 @@
 ---
 title: Azure Security Center pro Průvodce šetření zařízení IoT ve verzi Preview | Dokumentace Microsoftu
 description: Tento postup průvodce vysvětluje, jak prozkoumat podezřelé zařízení IoT pomocí služby Log Analytics pomocí Azure Security Center pro IoT.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: b18b48ae-b445-48f8-9ac0-365d6e065b64
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 6097954e09d5fd62c45f59b009d974d277bafc57
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 56378e94bf448da4c3047c30be3ae25887f113b5
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755248"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862620"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Prozkoumat podezřelé zařízení IoT
 

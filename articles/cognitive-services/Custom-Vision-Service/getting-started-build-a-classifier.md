@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: f2cd8f5074f815e84caaedb01335406657f29088
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf8a36145ebf5d5dabf8c539d4f245e1d4b209f0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088005"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886433"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Sestavení klasifikátoru s Custom Vision
 
@@ -32,7 +32,7 @@ Pokud chcete používat službu Custom Vision Service, budete muset vytvořit vl
 
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
-Ve webovém prohlížeči přejděte [Custom Vision webové stránky](https://customvision.ai) a vyberte __přihlášení__. Přihlaste se pomocí stejného účtu, který jste použili pro přihlášení na webu Azure Portal.
+Ve webovém prohlížeči přejděte [Custom Vision webové stránky](https://customvision.ai) a vyberte __přihlášení__. Přihlaste se pomocí stejného účtu, který jste použili pro přihlášení na webu Azure portal.
 
 ![Obrázek přihlašovací stránky](./media/browser-home.png)
 
@@ -43,8 +43,8 @@ Ve webovém prohlížeči přejděte [Custom Vision webové stránky](https://cu
 
 1. Zadejte název a popis pro projekt. Vyberte skupinu prostředků. Pokud je váš účet přihlášeného přidružené k účtu Azure, se zobrazí rozevírací seznam skupina prostředků, všechny vaše skupiny prostředků Azure, která obsahují vlastní prostředek služby pro zpracování obrazu. 
 
-> [!NOTE]
-> Pokud je k dispozici žádná skupina prostředků, zkontrolujte, že jste přihlášení [customvision.ai](https://customvision.ai) pod stejným účtem, jako jste použili k přihlášení do [webu Azure Portal](https://portal.azure.com/). Také Zkontrolujte prosím, že vyberete stejné "Directory" portálu Custom Vision jako adresář na webu Azure Portal, kde se nachází vaše vize vlastní prostředky. V obou lokalitách můžete vybrat adresáře v rozevírací nabídce účtu v pravém horním rohu obrazovky. 
+   > [!NOTE]
+   > Pokud je k dispozici žádná skupina prostředků, zkontrolujte, že jste přihlášení [customvision.ai](https://customvision.ai) pod stejným účtem, jako jste použili k přihlášení do [webu Azure portal](https://portal.azure.com/). Také Zkontrolujte prosím, že vyberete stejné "Directory" portálu Custom Vision jako adresář na webu Azure Portal, kde se nachází vaše vize vlastní prostředky. V obou lokalitách můžete vybrat adresáře v rozevírací nabídce účtu v pravém horním rohu obrazovky. 
 
 1. Vyberte __klasifikace__ pod __typy projektů__. Potom v části __typy klasifikace__, zvolte buď **Multilabel** nebo **Multiclass**, v závislosti na vašemu případu použití. Multilabel klasifikace se použije libovolný počet značek pro bitovou kopii (nula nebo více), zatímco klasifikace víc tříd seřadí bitové kopie do jedné kategorie (každý obrázek, které uvedete budou seřazeny do nejpravděpodobnější značky). Bude možné později změnit typ klasifikace, pokud chcete.
 
@@ -53,10 +53,10 @@ Ve webovém prohlížeči přejděte [Custom Vision webové stránky](https://cu
     |Domain (Doména)|Účel|
     |---|---|
     |__Obecné__| Optimalizovaná pro širokou škálu obrázek úlohy klasifikace. Pokud žádný z jiných domén není vhodné nebo si nejste jistí, ve které doméně zvolit, vyberte doménu, Obecné. |
-    |__Potravin__|Optimalizované pro fotografie si pochutnává, při které byste měli v nabídka restaurace. Pokud chcete klasifikovat fotografie jednotlivá ovoce nebo zeleniny, použijte potravin domény.|
+    |__Potravinářství__|Optimalizované pro fotografie si pochutnává, při které byste měli v nabídka restaurace. Pokud chcete klasifikovat fotografie jednotlivá ovoce nebo zeleniny, použijte potravin domény.|
     |__Zajímavá__|Optimalizovaná pro rozpoznatelných památek, přirozené a umělé. Tato doména funguje nejlépe, když je památek jasně viditelný v fotografie. Tato doména funguje i v případě, že památek mírně nelze blokovat uživatelé před tímto prvkem.|
-    |__Maloobchodního prodeje__|Optimalizovaná pro bitové kopie, které se nacházejí v nákupní katalogu nebo nákupního webu. Pokud chcete vysokou přesnost klasifikace mezi šatů pants a košile, použijte tuto doménu.|
-    |__Pro dospělé__|Optimalizované a lépe tak definovat obsah pro dospělé a obsahu jiných dospělá osoba. Například pokud chcete blokovat obrázky ve koupání barvy, tuto doménu vám umožní vytvářet vlastní třídění to udělat.|
+    |__Maloobchod__|Optimalizovaná pro bitové kopie, které se nacházejí v nákupní katalogu nebo nákupního webu. Pokud chcete vysokou přesnost klasifikace mezi šatů pants a košile, použijte tuto doménu.|
+    |__Adult__|Optimalizované a lépe tak definovat obsah pro dospělé a obsahu jiných dospělá osoba. Například pokud chcete blokovat obrázky ve koupání barvy, tuto doménu vám umožní vytvářet vlastní třídění to udělat.|
     |__Kompaktní domén__| Optimalizovaná pro omezení v reálném čase klasifikace na mobilních zařízeních. Modely generované balíky compact domény je možné exportovat do spouštět místně.|
     
 1. Nakonec vyberte __vytvořit projekt__.
@@ -96,12 +96,7 @@ V této části se nahrát a ručně označit Image ke trénování třídění.
 
     ![Indikátor průběhu vám ukáže všechny úlohy dokončeny.](./media/getting-started-build-a-classifier/add-images04.png)
 
-K nahrání jinou sadu bitových kopií, vraťte se na začátku této části a opakujte kroky. V určitém okamžiku v projektu, budete muset přidat _záporné ukázky_ pro usnadnění přesnější klasifikátoru. Záporná ukázky jsou ty, které neodpovídají žádné další značky. Při nahrávání tyto Image použít speciální **negativní** popisek k nim.
-
-> [!NOTE]
-> Custom Vision Service podporuje zpracování některých automatické negativní obrázku. Například pokud zodpovídají za tvorbu hroznového vs. banánů třídění a odešlou obrázek bot pro predikci, třídění by měla stanovení skóre této bitové kopie jako blízko 0 % hroznového a banánů.
-> 
-> Na druhé straně v případech, kdy negativní bitové kopie jsou jen varianta Image použité v školení, je pravděpodobné, že model bude klasifikovat negativní bitové kopie jako třída s popiskem obarvené skvělé. Například pokud máte oranžová vs. grapefruity třídění a kanálu v obraze clementine, ho může skóre clementine jako oranžová protože mnoho funkcí clementine se podobají těm oranges. Pokud negativní obrázky jsou této povaha, doporučujeme, abyste vytvořili nejmíň jeden další značky (například **jiných**) a označovat pomocí popisků negativní obrázky s touto značkou při školení, které umožňují lepší rozlišovat mezi tyto třídy modelu .
+K nahrání jinou sadu bitových kopií, vraťte se na začátku této části a opakujte kroky.
 
 ## <a name="train-the-classifier"></a>Trénování klasifikátoru
 
@@ -138,5 +133,5 @@ V levém podokně můžete také najdou **odstranit** tlačítko, které vám um
 
 V této příručce jste zjistili, jak vytvořit a trénování modelu klasifikace obrázků na webu Custom Vision. V dalším kroku získáte další informace o iterativní proces zlepšit váš model.
 
-[Testování a přetrénování modelu](test-your-model.md)
+[Testování a přeučování modelu](test-your-model.md)
 

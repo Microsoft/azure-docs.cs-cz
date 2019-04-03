@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 7fb4c68d10478a7c8af62262b3fa4633eaac9d2b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 69df9eff85d96c9cc6ca7fa1d3aabd2c54fae416
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660404"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884716"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Nasazení několika hostujících spustitelných souborů
 Tento článek ukazuje, jak balení a nasazení několika hostujících spustitelných souborů do Azure Service Fabric. Vytváření a nasazování jednoho balíčku Service Fabric najdete v návodu k [nasazení spustitelný soubor typu Host do Service Fabric](service-fabric-deploy-existing-app.md).
@@ -33,7 +33,7 @@ Visual Studio můžete použít k vytvoření balíčku aplikace, která obsahuj
 * [Ukázka dvě hosta spustitelných souborů (C# a Node.js) komunikaci přes službu pojmenování pomocí rozhraní REST](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>Ručně balíček více aplikace spustitelná hostem
-Případně můžete ručně zabalit spustitelný soubor typu Host. Pro ruční balení, tento článek používá nástroj balíčku Service Fabric, který je k dispozici na [ http://aka.ms/servicefabricpacktool ](https://aka.ms/servicefabricpacktool).
+Případně můžete ručně zabalit spustitelný soubor typu Host. Pro ruční balení, tento článek používá nástroj balíčku Service Fabric, který je k dispozici na [ https://aka.ms/servicefabricpacktool ](https://aka.ms/servicefabricpacktool).
 
 ### <a name="packaging-the-nodejs-application"></a>Balení aplikace Node.js
 Tento článek předpokládá, že Node.js není nainstalována na uzlech v clusteru Service Fabric. V důsledku toho budete muset přidat Node.exe do kořenového adresáře aplikace uzlu před balení. Struktura adresářů aplikace Node.js (pomocí webovou architekturu Express a modul šablonovacím) by měla vypadat podobně jako následující:

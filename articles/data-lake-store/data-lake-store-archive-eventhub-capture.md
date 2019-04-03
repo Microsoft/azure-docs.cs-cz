@@ -3,20 +3,20 @@ title: Zachytávání dat ze služby Event Hubs do Azure Data Lake Storage Gen1 
 description: Použití Azure Data Lake Storage Gen1 k zaznamenání dat ze služby Event Hubs
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: a921a717445df93c83518c89970050e63a51ddf3
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: twooley
+ms.openlocfilehash: bb67c1769510710b368bef4dc0b501f939b3427e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345194"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884498"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Použití Azure Data Lake Storage Gen1 k zaznamenání dat ze služby Event Hubs
 
@@ -123,5 +123,5 @@ Jakmile jsou data v Data Lake Storage Gen1, můžete spustit analytických úloh
   
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Zabezpečení dat v Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Kopírování dat z Azure Storage BLOB do Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)

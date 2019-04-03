@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 599b1d3f522a0f287736808cce88163f1ef7f28f
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: a2f90c52823664df5fdc71c55220cc660c2f68e3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755802"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878141"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics-in-azure-monitor"></a>Správa nákladů a využití pro Log Analytics ve službě Azure Monitor
 
@@ -122,7 +122,7 @@ Pokud chcete přesunout do aktuální cenová úroveň pracovního prostoru, bud
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Řešení potíží způsobujících Log Analytics je už shromažďování dat
 Pokud jsou na starší verzi cenové úrovně Free a odeslali více než 500 MB dat za den, zastaví shromažďování dat pro zbytek dne. Dosažení denního limitu je běžným důvodem Log Analytics se zastaví shromažďování dat, nebo se zdá být chybějící data.  Log Analytics, vytváří událost typu operace při shromažďování dat spustí a zastaví. Spuštěním následujícího dotazu ve službě search zkontrolujte, jestli jsou dosažení denního limitu a chybějící data: 
 
-`Operation | where OperationCategory == 'Data Collection Status' `
+`Operation | where OperationCategory == 'Data Collection Status'`
 
 Když se zastaví shromažďování dat, je upozornění stav OperationStatus. Při shromažďování dat začne, stav OperationStatus je proběhlo úspěšně. Následující tabulka popisuje důvody, které zastaví shromažďování dat a navrhovanou akci pokračování shromažďování dat:  
 
@@ -186,9 +186,11 @@ Můžete přejít na trendy v datech najdete konkrétní datové typy, napříkl
 
 Chcete-li zobrazit **velikost** účtovaných událostí může ingestovat počítače, použijte `_BilledSize` vlastnost ([vlastnosti protokolu standard #_billedsize.md](learn more)) poskytující velikost v bajtech:
 
-`union withsource = tt * 
+```
+union withsource = tt * 
 | where _IsBillable == true 
-| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last
+```
 
 `_IsBillable` Vlastnost určuje, zda přijatých dat budou účtovat poplatky ([protokolu. standard properties.md #_isbillable](Learn more).)
 
@@ -205,26 +207,32 @@ Pokud chcete zobrazit počet účtovaných událostí může ingestovat počíta
 
 Pokud chcete vidět, že počet účtovaných datové typy jsou odesílání dat k určitému počítači, použijte:
 
-`union withsource = tt *
+```
+union withsource = tt *
 | where Computer == "computer name"
 | where _IsBillable == true 
-| summarize count() by tt | sort by count_ nulls last `
+| summarize count() by tt | sort by count_ nulls last
+```
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Objem dat podle prostředků Azure, skupinu prostředků nebo předplatného
 
 Pro data z uzlů hostovaných v Azure můžete získat **velikost** účtovaných událostí přijatých __na jeden počítač__, použijte `_ResourceId` vlastnost, která poskytuje úplnou cestu k prostředku ([ log – standardní – properties.md #_resourceid](learn more)):
 
-`union withsource = tt * 
+```
+union withsource = tt * 
 | where _IsBillable == true 
-| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last `
+| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
+```
 
 Pro data z uzlů hostovaných v Azure můžete získat **velikost** účtovaných událostí přijatých __jedno předplatné Azure__, analyzovat `_ResourceId` vlastnost jako:
 
-`union withsource = tt * 
+```
+union withsource = tt * 
 | where _IsBillable == true 
 | parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
     resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
-| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last `
+| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
+```
 
 Změna `subscriptionId` k `resourceGroup` zobrazí fakturovatelné ingestovaný datový svazek podle Azure resouurce skupiny. 
 
@@ -295,7 +303,8 @@ Pokud chcete zobrazit počet různých uzlů, které zabezpečení, můžete dot
 
 Pokud chcete zobrazit počet různých uzlů, které služby Automation, použijte dotaz:
 
-` ConfigurationData 
+```
+ ConfigurationData 
  | where (ConfigDataType == "WindowsServices" or ConfigDataType == "Software" or ConfigDataType =="Daemons") 
  | extend lowComputer = tolower(Computer) | summarize by lowComputer 
  | join (
@@ -303,7 +312,8 @@ Pokud chcete zobrazit počet různých uzlů, které služby Automation, použij
        | where SCAgentChannel == "Direct"
        | extend lowComputer = tolower(Computer) | summarize by lowComputer, ComputerEnvironment
  ) on lowComputer
- | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc`
+ | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc
+```
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Vytvoření upozornění při větším než očekávaném shromažďování dat
 
@@ -330,7 +340,7 @@ Při vytváření upozornění pro první dotaz (více než 100 GB dat během 24
 - **Definujte podmínku upozornění** – Jako cíl prostředku zadejte svůj pracovní prostor Log Analytics.
 - **Kritéria upozornění** – Zadejte následující:
    - **Název signálu** – Vyberte **Vlastní prohledávání protokolu**.
-   - **Vyhledávací dotaz** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`.
+   - **Vyhledávací dotaz** do `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
    - **Logika upozornění** je **Založená na** *počtu výsledků* a **Podmínka** je *Větší než* **Prahová hodnota** *0*.
    - **Časové období** na *1440* minut a **Frekvenci upozornění** na každých *60* minut, protože se data o využití aktualizují pouze jednou za hodinu.
 - **Definujte podrobnosti upozornění** – Zadejte následující:
@@ -344,7 +354,7 @@ Při vytváření upozornění pro druhý dotaz (předpověď, že během 24 hod
 - **Definujte podmínku upozornění** – Jako cíl prostředku zadejte svůj pracovní prostor Log Analytics.
 - **Kritéria upozornění** – Zadejte následující:
    - **Název signálu** – Vyberte **Vlastní prohledávání protokolu**.
-   - **Vyhledávací dotaz** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`.
+   - **Vyhledávací dotaz** do `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
    - **Logika upozornění** je **Založená na** *počtu výsledků* a **Podmínka** je *Větší než* **Prahová hodnota** *0*.
    - **Časové období** na *180* minut a **Frekvenci upozornění** na každých *60* minut, protože se data o využití aktualizují pouze jednou za hodinu.
 - **Definujte podrobnosti upozornění** – Zadejte následující:

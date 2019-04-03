@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: sogup
-ms.openlocfilehash: ef46c37fec3e5438aeb4f9309201d45365a96fdc
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 9f233af316bd6022b93a7208bf3fae37e913e6af
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402061"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885260"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy: zálohování virtuálních počítačů Azure
 
@@ -68,7 +68,7 @@ Ano. Zálohování se spustí, když se vypne počítač. Bod obnovení se ozna�
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Můžete zrušit úlohu zálohování probíhá?
 Ano. Můžete je zrušit úlohu zálohování v **pořizuje se snímek** stavu. Úlohu nelze zrušit, pokud probíhá přenos dat ze snímku.
 
-### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie--azurebackuprggeonumber-will-my-backups-continue-to-work"></a>Můžu povolený zámek na skupiny prostředků vytvořené pomocí služby Azure Backup (např.) ` AzureBackupRG_<geo>_<number>`), budou Moje zálohy stále fungovat?
+### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>Můžu povolený zámek na skupiny prostředků vytvořené pomocí služby Azure Backup (např.) `AzureBackupRG_<geo>_<number>`), budou Moje zálohy stále fungovat?
 Pokud skupina prostředků vytvoří ve službě Azure Backup Service uzamknete, zálohování se začnou nezdaří, protože je maximální limit 18 bodů obnovení.
 
 Uživatel musí odebrat zámek proti a zrušte zaškrtnutí kolekci bodů obnovení z této skupiny prostředků, aby budoucích zálohování bylo úspěšné, [postupujte podle těchto kroků](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) odebrat kolekci bodů obnovení.
@@ -88,7 +88,7 @@ Na disku povoleno WA nelze vytvářet snímky. Služba Azure Backup však může
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Mám virtuálního počítače s disky zápisu akcelerátorů (WA) a nainstalovat SAP HANA. Jak můžu zálohovat?
 Azure Backup nejde zálohovat disk WA povolené, ale můžete vyloučit ze zálohy. Zálohování však nebude poskytovat konzistence databáze, protože na disku povoleno WA informace se nezálohuje. Pokud chcete disk s operačním systémem, zálohování a zálohování disků, které nejsou povolené WA, můžete zálohování disků s touto konfigurací.
 
-Máme verzi private preview pro zálohování SAP HANA spuštěnou s plánovaný bod obnovení do 15 minut. Je součástí podobným způsobem jako záloha databáze SQL a používá rozhraní backInt pro řešení třetích stran s certifikací SAP Hana. Pokud vás zajímá, pošlete nám e-mail na ` AskAzureBackupTeam@microsoft.com ` s předmětem **zaregistrovat k privátní verzi preview pro zálohování SAP HANA ve virtuálních počítačích Azure**.
+Máme verzi private preview pro zálohování SAP HANA spuštěnou s plánovaný bod obnovení do 15 minut. Je součástí podobným způsobem jako záloha databáze SQL a používá rozhraní backInt pro řešení třetích stran s certifikací SAP Hana. Pokud vás zajímá, pošlete nám e-mail na `AskAzureBackupTeam@microsoft.com` s předmětem **zaregistrovat k privátní verzi preview pro zálohování SAP HANA ve virtuálních počítačích Azure**.
 
 
 ## <a name="restore"></a>Obnovení

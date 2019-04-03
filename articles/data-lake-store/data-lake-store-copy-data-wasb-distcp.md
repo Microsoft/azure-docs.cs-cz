@@ -3,21 +3,21 @@ title: Kopírování dat do a z WASB do Azure Data Lake Storage Gen1 pomocí Dis
 description: Pomocí Distcp nástroje pro kopírování dat do a z úložiště objektů BLOB Azure do Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ae2e9506-69dd-4b95-8759-4dadca37ea70
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 5c3f393278d3d51dd3a53cd19335cd242c15c6d8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: twooley
+ms.openlocfilehash: fbefe233ce0d2477982faf0a9f38a73062e0c7a1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58168703"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884461"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>Použití Distcp ke kopírování dat mezi objekty BLOB Azure Storage a Azure Data Lake Storage Gen1
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ HDInsight cluster se dodává s Distcp nástroj, který slouží ke kopírován�
 
 Protože DistCp na nejnižší členitost je jeden soubor, nastavení maximálního počtu souběžných kopie je nejdůležitější parametr k optimalizaci proti Gen1 úložiště Data Lake. Počet souběžných kopií řídí nastavování počet mapovačů (am ") parametr příkazového řádku. Tento parametr určuje maximální počet mapovačů, které se používají ke kopírování dat. Výchozí hodnota je 20.
 
-**Příklad**
+**Příklad:**
 
     hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg adl://<data_lake_storage_gen1_account>.azuredatalakestore.net:443/myfolder -m 100
 
@@ -82,7 +82,7 @@ Tady je několik rad, kterými se můžete řídit.
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
-**Příklad**
+**Příklad:**
 
 Předpokládejme, že máte 4 D14v2s uzly v clusteru a pokoušíte se převést 10 TB dat z 10 různými složkami. Všechny složky obsahuje různé množství dat a velikostí souboru v rámci každé složky se liší.
 
@@ -112,6 +112,6 @@ Když je velká velikost datové sady, chcete-li přesunout (například > 1 TB)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Kopírování dat z Azure Storage BLOB do Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
-* [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Zabezpečení dat v Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Použití Azure Data Lake Analytics s Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Použití Azure HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

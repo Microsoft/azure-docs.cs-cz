@@ -1,22 +1,22 @@
 ---
-title: 'Ověřování služba služba: rozhraní REST API s Azure Data Lake Storage Gen1 pomocí Azure Active Directory | Dokumentace Microsoftu'
+title: 'Ověřování služba služba: Rozhraní REST API s Azure Data Lake Storage Gen1 pomocí Azure Active Directory | Dokumentace Microsoftu'
 description: Zjistěte, jak dokončit ověřování služba služba s Azure Data Lake Storage Gen1 pomocí Azure Active Directory pomocí rozhraní REST API
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: dd282091d41538b7e3dc08eb0b3d82539fa0bb4f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.author: twooley
+ms.openlocfilehash: c48f7d7608b2b70f4ae41e2af5792cff72bb0dd2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295593"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885719"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Ověřování služba služba s Azure Data Lake Storage Gen1 pomocí rozhraní REST API
 > [!div class="op_single_selector"]

@@ -13,47 +13,61 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2018
+ms.date: 04/03/2019
 ms.author: celested
-ms.reviewer: luleon, jeedes
+ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ce02bd35d9cd4afd881ec276fabb0720b61c09
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c6fe74852824c10d24729f785e5e33a17b793161
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444034"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878566"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postup: Přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
-Azure Active Directory (Azure AD) ještě dnes podporuje jednotné přihlašování na se většina podnikových aplikací, včetně obě aplikace předem integrované v galerii aplikací Azure AD, jakož i vlastních aplikací. Při ověření uživatele k aplikaci prostřednictvím služby Azure AD pomocí protokolu SAML 2.0, Azure AD odešle token do aplikace (přes HTTP POST). A potom aplikaci ověří a použije token k přihlášení uživatele místo vás vyzve k zadání uživatelského jména a hesla. Tyto tokeny SAML obsahují informace o uživateli, známé jako "deklarace".
+Azure Active Directory (Azure AD) v současné době podporuje jednotné přihlašování (SSO) s Většina podnikových aplikací, včetně obě aplikace předem integrované v galerii aplikací Azure AD, jakož i vlastních aplikací. Při ověření uživatele k aplikaci prostřednictvím služby Azure AD pomocí protokolu SAML 2.0, Azure AD odešle token do aplikace (přes HTTP POST). A potom aplikaci ověří a použije token k přihlášení uživatele místo vás vyzve k zadání uživatelského jména a hesla. Tyto tokeny SAML obsahují informace o uživateli říká *deklarace identity*.
 
 A *deklarace identity* informace, které stavy zprostředkovatelů identity o uživateli uvnitř tokenu vydaného pro tohoto uživatele. V [tokenu SAML](https://en.wikipedia.org/wiki/SAML_2.0), tato data je obvykle součástí příkaz Attribute SAML. Jedinečné ID uživatele je obvykle reprezentována zkratka jako identifikátor názvu předmětu SAML.
 
-Ve výchozím nastavení Azure AD vydá SAML token pro vaše aplikace, která obsahuje deklarace identity NameIdentifier s hodnotou uživatelské jméno (hlavní název uživatele také označované LLAP) ve službě Azure AD. Tuto hodnotu můžete jednoznačné identifikaci uživatele. SAML token obsahuje také další deklarace identity, který obsahuje uživatele e-mailová adresa, jméno a příjmení.
+Ve výchozím nastavení, Azure AD vydá SAML token pro vaše aplikace, která obsahuje `NameIdentifier` deklarace identity s hodnotou uživatelské jméno (také označované jako hlavní název uživatele) v Azure AD, která může jednoznačné identifikaci uživatele. SAML token obsahuje také další deklarace identity, který obsahuje uživatele e-mailová adresa, jméno a příjmení.
 
-K zobrazení nebo úpravám deklarací identity vystavených v tokenu SAML pro aplikaci, otevřete aplikaci na webu Azure portal. Vyberte **zobrazit a upravit všechny ostatní atributy uživatele** zaškrtávací políčko ve **atributy uživatele** části aplikace.
+K zobrazení nebo úpravám deklarací identity vystavených v tokenu SAML pro aplikaci, otevřete aplikaci na webu Azure portal. Otevřete **atributy uživatele a deklarace identity** oddílu.
 
-![Části atributy uživatele][1]
+![Části atributy uživatele a deklarace identity](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
 
 Existují dva možné důvody, proč může být potřeba upravit deklarací identity vystavených v tokenu SAML:
+
+* Aplikace vyžaduje `NameIdentifier` nebo NameID za něco jiného než uživatelské jméno (nebo hlavní název uživatele) uložené ve službě Azure AD.
 * Aplikace se zapsala do vyžadují jinou sadu deklarací identity identifikátory URI nebo hodnoty deklarací identity.
-* Aplikace byla nasazena způsobem, který vyžaduje deklarace identity NameIdentifier na něco jiného než uživatelské jméno (také označované LLAP hlavní uživatelské jméno) uložené ve službě Azure AD.
 
-Můžete upravit některou výchozí hodnoty deklarací identity. Vyberte řádek pro deklarace identity v tabulce atributy tokenu SAML. Tím se otevře **Upravit atribut** část a pak můžete upravit název deklarace identity, hodnotu a přidružený k deklaraci oboru názvů.
+## <a name="editing-nameid"></a>Úpravy NameID
 
-![Upravit atribut uživatele][2]
+Chcete-li upravit NameID (hodnota identifikátoru název):
 
-Můžete také odebrat deklarace (jiné než NameIdentifier) pomocí místní nabídky, které se otevře po kliknutí na **...**  ikonu. Můžete také přidat nové deklarace pomocí **přidat atribut** tlačítko.
+1. Otevřít **název hodnota identifikátoru** stránky.
+1. Vyberte atribut nebo transformace, kterou chcete použít pro atribut. Volitelně můžete zadat požadovaný formát má deklarace identity NameID mít.
 
-![Upravit atribut uživatele][3]
+   ![Upravit hodnotu NameID (identifikátor názvu)](./media/active-directory-saml-claims-customization/saml-sso-manage-user-claims.png)
 
-## <a name="editing-the-nameidentifier-claim"></a>Úprava deklarace identity NameIdentifier
+### <a name="nameid-format"></a>Formát ID názvu položky
 
-K vyřešení problému, kde byla aplikace nasazené pomocí jiné uživatelské jméno, vyberte na **identifikátor uživatele** rozevírací seznam **atributy uživatele** části. Tato akce obsahuje dialogové okno s několik možností:
+Pokud si požadavek SAML obsahuje element NameIDPolicy s konkrétním formátu, Azure AD dodrží formátu v požadavku.
 
-![Upravit atribut uživatele][4]
+Pokud si požadavek SAML neobsahuje prvek pro NameIDPolicy, pak Azure AD budou vydávat NameID ve formátu, který zadáte. Pokud je zadán žádný format Azure AD použije výchozí formát zdroje přidružený k vybraný zdroj deklarací identity.
+
+Z **zvolte název identifikátoru formátu** rozevírací seznam, můžete vybrat jednu z následujících možností.
+
+| Formát ID názvu položky | Popis |
+|---------------|-------------|
+| **Výchozí** | Azure AD použije výchozí formát zdroje. |
+| **Trvalé** | Azure AD použije trvalá jako formát ID názvu položky. |
+| **EmailAddress** | Azure AD použije EmailAddress jako formát ID názvu položky. |
+| **Neurčeno** | Azure AD použije formátu NameID Neurčeno. |
+| **Přechodná** | Azure AD použije přechodná jako formát ID názvu položky. |
+
+Další informace o atributu NameIDPolicy najdete v tématu [protokol jednotné přihlašování SAML](single-sign-on-saml-protocol.md).
 
 ### <a name="attributes"></a>Atributy
 
@@ -62,102 +76,61 @@ Vyberte požadovaný zdroj `NameIdentifier` (nebo NameID) deklarace identity. M�
 | Název | Popis |
 |------|-------------|
 | Email | E-mailovou adresu uživatele |
-| userprincipalName | Hlavní název daného uživatele (UPN) |
+| userprincipalName | Hlavní název uživatele (UPN) uživatele |
 | onpremisessamaccount | Název účtu SAM, která je synchronizovaná z místní služby Azure AD |
 | ID objektu | ID objektu uživatele ve službě Azure AD |
 | EmployeeID | EmployeeID uživatele |
 | Rozšíření adresáře | Rozšíření adresáře [synchronizované z místní služby Active Directory pomocí Azure AD Connect Sync](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | Atributů rozšíření 1 – 15 | Místní atributy rozšíření používané k rozšíření schématu služby Azure AD |
 
-### <a name="transformations"></a>Transformace
+Další informace najdete v tématu [tabulka 3: Platné hodnoty ID jeden zdroj](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
 
-Můžete také použít funkce speciální deklarace identity transformace.
+### <a name="special-claims---transformations"></a>Speciální – deklarace identity transformace
+
+Můžete také použít funkce transformace deklarací identity.
 
 | Funkce | Popis |
 |----------|-------------|
-| **ExtractMailPrefix()** | Odebere příponu domény od e-mailovou adresu, název účtu SAM nebo hlavní název uživatele. To vyextrahuje jenom první část uživatelské jméno se předává (například "joe_smith" namísto joe_smith@contoso.com). |
-| **join()** | Připojí se atribut s ověřenou doménu. Pokud je hodnota identifikátoru vybraného uživatele domény, bude extrahovat uživatelské jméno pro připojení vybrané ověřenou doménu. Například, pokud vyberete e-mailu (joe_smith@contoso.com) jako hodnotu identifikátoru uživatele a vyberte contoso.onmicrosoft.com jako ověřenou doménu, výsledkem bude joe_smith@contoso.onmicrosoft.com. |
+| **ExtractMailPrefix()** | Odebere příponu domény od e-mailovou adresu nebo hlavní název uživatele. To vyextrahuje jenom první část uživatelské jméno se předává (například "joe_smith" namísto joe_smith@contoso.com). |
+| **Join()** | Připojí se atribut s ověřenou doménu. Pokud je hodnota identifikátoru vybraného uživatele domény, bude extrahovat uživatelské jméno pro připojení vybrané ověřenou doménu. Například, pokud vyberete e-mailu (joe_smith@contoso.com) jako hodnotu identifikátoru uživatele a vyberte contoso.onmicrosoft.com jako ověřenou doménu, výsledkem bude joe_smith@contoso.onmicrosoft.com. |
 | **ToLower()** | Znaky v datech vybraného atributu převede na malá písmena. |
 | **ToUpper()** | Znaky v datech vybraného atributu převede na velká písmena. |
 
-## <a name="adding-claims"></a>Přidání deklarace identity
+## <a name="adding-application-specific-claims"></a>Přidání deklarace identity specifické pro aplikaci
 
-Při přidání deklarace identity, můžete zadat název (který se nemusí nezbytně se řídí vzorem identifikátoru URI podle specifikace SAML). Nastavte hodnotu na jakýkoli atribut uživatele, který je uložen v adresáři nebo použijte konstantní hodnotu jako statické položky pro všechny uživatele ve vaší organizaci.
+Přidání deklarace identity specifické pro aplikaci:
 
-![Přidat atribut uživatele][7]
+1. V **atributy uživatele a deklarace identity**vyberte **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** stránky.
+1. Zadejte **název** deklarací identity. Hodnota nemusí nezbytně se řídí vzorem identifikátoru URI, podle specifikace SAML. Pokud potřebujete vzor identifikátoru URI, můžete umístit, který **Namespace** pole.
+1. Vyberte **zdroj** kam načíst jeho hodnotu deklarace identity. Můžete vybrat atribut uživatele z rozevíracího seznamu atributu zdroje nebo před generování jako deklaraci použít transformace na atribut uživatele.
 
-Například budete muset odeslat oddělení, které uživatel patří do jejich organizaci jako deklarace identity (například prodej). Zadejte název deklarace podle očekávání tím, aplikace a pak vyberte **user.department** jako hodnotu.
+### <a name="application-specific-claims---transformations"></a>Deklarace identity specifické pro aplikaci - transformace
 
-> [!NOTE]
-> Pokud pro daného uživatele neexistuje převáděná hodnota uložena pro vybraný atribut, není právě tento deklarací identity vystavených v tokenu.
+Můžete také použít funkce transformace deklarací identity.
 
-> [!TIP]
-> **User.onpremisesecurityidentifier** a **user.onpremisesamaccountname** jsou podporovány pouze při synchronizaci dat uživatele z místní služby Active Directory pomocí [Azure AD Připojení nástroje](../hybrid/whatis-hybrid-identity.md).
+| Funkce | Popis |
+|----------|-------------|
+| **ExtractMailPrefix()** | Odebere příponu domény od e-mailovou adresu nebo hlavní název uživatele. To vyextrahuje jenom první část uživatelské jméno se předává (například "joe_smith" namísto joe_smith@contoso.com). |
+| **Join()** | Vytvoří novou hodnotu díky připojení ke službě dva atributy. Volitelně můžete použít oddělovač mezi dva atributy. |
+| **ToLower()** | Znaky v datech vybraného atributu převede na malá písmena. |
+| **ToUpper()** | Znaky v datech vybraného atributu převede na velká písmena. |
+| **Metoda contains()** | Atribut nebo – konstanta výstupy, pokud vstup odpovídá zadané hodnotě. Pokud není nalezena žádná shoda, v opačném případě můžete zadat jiný výstupní.<br/>Pokud chcete generovat deklarace identity, kde hodnota je e-mailovou adresu uživatele, pokud obsahuje doménu, například "@contoso.com", jinak chcete výstup hlavní název uživatele. K tomuto účelu by nakonfigurujte následující hodnoty:<br/>*Parametr 1(input)*: user.email<br/>*Hodnota*: "@contoso.com"<br/>Parametr 2 (výstup): user.email<br/>Parametr 3 (Pokud není nalezena žádná shoda výstup): user.userprincipalname |
+| **EndWith()** | Atribut nebo – konstanta výstupy, pokud vstupní končí zadanou hodnotou. Pokud není nalezena žádná shoda, v opačném případě můžete zadat jiný výstupní.<br/>Pokud chcete generovat deklarace identity, kde hodnota je employeeid uživatele, pokud employeeid končí "000", jinak je třeba do výstupu atributu rozšíření. K tomuto účelu by nakonfigurujte následující hodnoty:<br/>*Parametr 1(input)*: user.employeeid<br/>*Hodnota*: "000"<br/>Parametr 2 (výstup): user.employeeid<br/>Parametr 3 (Pokud není nalezena žádná shoda výstup): user.extensionattribute1 |
+| **StartWith()** | Atribut nebo – konstanta výstupy, pokud vstup začíná zadanou hodnotou. Pokud není nalezena žádná shoda, v opačném případě můžete zadat jiný výstupní.<br/>Pokud chcete generovat deklarace identity, kde hodnota je employeeid uživatele, pokud státu začíná "USA", jinak je třeba do výstupu atributu rozšíření. K tomuto účelu by nakonfigurujte následující hodnoty:<br/>*Parametr 1(input)*: user.country<br/>*Hodnota*: "USA"<br/>Parametr 2 (výstup): user.employeeid<br/>Parametr 3 (Pokud není nalezena žádná shoda výstup): user.extensionattribute1 |
+| **Extract() - po odpovídající** | Vrátí podřetězec po odpovídá zadané hodnotě.<br/>Například pokud vstupní hodnota je "Finance_BSimon", odpovídající hodnota je "Finance_", je výstupní deklarace identity "BSimon". |
+| **Extract() - před odpovídající** | Vrátí podřetězec, dokud nebude odpovídat zadanou hodnotu.<br/>Například pokud vstupní hodnota je "BSimon_US", odpovídající hodnota je "_US", je výstupní deklarace identity "BSimon". |
+| **Extract() - mezi odpovídajícími si** | Vrátí podřetězec, dokud nebude odpovídat zadanou hodnotu.<br/>Například pokud vstupní hodnota je "Finance_BSimon_US", "Finance_" je první odpovídající hodnotu, druhá odpovídající hodnota je "_US" a pak výstup deklarace identity je "BSimon". |
+| **ExtractAlpha() - Prefix** | Vrátí část reprezentující abecedním předpona řetězce.<br/>Například pokud vstupní hodnota je "BSimon_123", pak vrátí "BSimon". |
+| **ExtractAlpha() - Suffix** | Vrátí část reprezentující abecedním přípona řetězce.<br/>Například pokud vstupní hodnota je "123_Simon", pak vrátí "BSimon". |
+| **ExtractNumeric() - Prefix** | Vrátí část reprezentující číselné předpona řetězce.<br/>Například pokud vstupní hodnota je "123_BSimon", pak vrátí "123". |
+| **ExtractNumeric() - Suffix** | Vrátí část reprezentující číselná přípona řetězce.<br/>Například pokud vstupní hodnota je "BSimon_123", pak vrátí "123". |
+| **IfEmpty()** | Atribut nebo konstanta výstupy, pokud vstup má hodnotu null nebo prázdný.<br/>Například, pokud chcete výstup atribut uložené v extensionattribute Pokud employeeid pro daného uživatele je prázdný. K tomuto účelu by nakonfigurujte následující hodnoty:<br/>Parametr 1(input): user.employeeid<br/>Parametr 2 (výstup): user.extensionattribute1<br/>Parametr 3 (Pokud není nalezena žádná shoda výstup): user.employeeid |
+| **IfNotEmpty()** | Atribut nebo – konstanta výstupy, pokud vstup není null nebo prázdný.<br/>Například, pokud chcete výstup atribut uložené v extensionattribute Pokud employeeid pro daného uživatele není prázdný. K tomuto účelu by nakonfigurujte následující hodnoty:<br/>Parametr 1(input): user.employeeid<br/>Parametr 2 (výstup): user.extensionattribute1 |
 
-## <a name="restricted-claims"></a>Deklarace identity s omezeným přístupem
-
-Existují některé deklarace identity s omezeným přístupem v SAML. Pokud chcete přidat tyto deklarace, Azure AD nebude odesílat tyto deklarace identity. Sada deklarací identity SAML s omezením pomocí specifikátoru jsou následující:
-
-    | Typ deklarace identity (URI) |
-    | ------------------- |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/expired |
-    | http://schemas.microsoft.com/identity/claims/accesstoken |
-    | http://schemas.microsoft.com/identity/claims/openid2_id |
-    | http://schemas.microsoft.com/identity/claims/identityprovider |
-    | http://schemas.microsoft.com/identity/claims/objectidentifier |
-    | http://schemas.microsoft.com/identity/claims/puid |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier[MR1] |
-    | http://schemas.microsoft.com/identity/claims/tenantid |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod |
-    | http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/groups |
-    | http://schemas.microsoft.com/claims/groups.link |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/role |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/wids |
-    | http://schemas.microsoft.com/2014/09/devicecontext/claims/iscompliant |
-    | http://schemas.microsoft.com/2014/02/devicecontext/claims/isknown |
-    | http://schemas.microsoft.com/2012/01/devicecontext/claims/ismanaged |
-    | http://schemas.microsoft.com/2014/03/psso |
-    | http://schemas.microsoft.com/claims/authnmethodsreferences |
-    | http://schemas.xmlsoap.org/ws/2009/09/identity/claims/actor |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/samlissuername |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/confirmationkey |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/primarygroupsid |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/authorizationdecision |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/authentication |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarygroupsid |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarysid |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/denyonlysid |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlywindowsdevicegroup |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdeviceclaim |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdevicegroup |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsfqbnversion |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowssubauthority |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsuserclaim |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/x500distinguishedname |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/ispersistent |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/privatepersonalidentifier |
-    | http://schemas.microsoft.com/identity/claims/scope |
+Pokud potřebujete další transformací, pošlete svůj námět do [fóru pro zpětnou vazbu ve službě Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599) pod *aplikaci SaaS* kategorie.
 
 ## <a name="next-steps"></a>Další postup
 
 * [Správa aplikací v Azure AD](../manage-apps/what-is-application-management.md)
 * [Konfigurace jednotného přihlašování pro aplikace, které nejsou v galerii aplikací Azure AD](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Řešení potíží s založené na SAML jednotného přihlašování](howto-v1-debug-saml-sso-issues.md)
-
-<!--Image references-->
-[1]: ./media/active-directory-saml-claims-customization/user-attribute-section.png
-[2]: ./media/active-directory-saml-claims-customization/edit-claim-name-value.png
-[3]: ./media/active-directory-saml-claims-customization/delete-claim.png
-[4]: ./media/active-directory-saml-claims-customization/user-identifier.png
-[5]: ./media/active-directory-saml-claims-customization/extractemailprefix-function.png
-[6]: ./media/active-directory-saml-claims-customization/join-function.png
-[7]: ./media/active-directory-saml-claims-customization/add-attribute.png

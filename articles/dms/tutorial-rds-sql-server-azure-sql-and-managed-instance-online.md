@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 5b91e3082dba2ac8ea19606f4269e65a0f537ce1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/03/2019
+ms.openlocfilehash: 4990b5f42291856c3695b4bf0eb6ec4084e9214e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183131"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886399"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Kurz: Migrace vzdálené plochy SQL serveru do Azure SQL Database nebo spravované instance Azure SQL Database online pomocí DMS
 Azure Database Migration Service můžete použít k migraci databází z instance SQL serveru vzdálené plochy k [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) nebo [Azure SQL Database managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) s minimálními výpadky. V tomto kurzu, migrujete **Adventureworks2012** obnovit databáze na SQL serveru vzdálené plochy instanci systému SQL Server 2012 (nebo novější) do Azure SQL Database nebo Azure SQL Database managed instance s využitím Azure Database Migration Služba.
@@ -61,7 +61,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     >
     > Tato konfigurace je nezbytná, protože Azure Database Migration Service nemá připojení k Internetu. 
  
-- Ujistěte se, že pravidla skupiny zabezpečení sítě VNET není blokovat následující komunikační porty 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu pomocí skupiny zabezpečení virtuální sítě Azure najdete v článku [Filtrování provozu sítě s použitím skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- Ujistěte se, že pravidla skupiny zabezpečení sítě VNET nedošlo k blokování následující porty příchozí komunikace k Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu pomocí skupiny zabezpečení virtuální sítě Azure najdete v článku [Filtrování provozu sítě s použitím skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Otevřete bránu Windows Firewall a povolte službě Azure Database Migration Service přístup ke zdrojovému SQL Serveru, který ve výchozím nastavení probíhá přes port TCP 1433.
 - Vytvořte pro server služby Azure SQL Database [pravidlo brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) na úrovni serveru, které službě Azure Database Migration Service povolí přístup k cílovým databázím. Zadejte rozsah podsítí virtuální sítě použité pro službu Azure Database Migration Service.
@@ -237,7 +237,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
     | ------------- | ------------- |
     | **Maximální počet tabulek, načtení paralelně** | Určuje počet tabulek, které DMS spustí paralelně během migrace. Výchozí hodnota je 5, ale může být nastavena na optimální hodnotu podle potřeb konkrétního migrace založené na všechny migrace POC. |
     | **Když je oříznutá. zdrojová tabulka** | Určuje, zda DMS zkrátí cílová tabulka během migrace. Toto nastavení může být užitečné, pokud jeden nebo více tabulek se zkrátí jako součást procesu migrace. |
-    | **Konfigurace nastavení pro velké objekty (LOB) dat.** | Určuje, zda DMS migruje neomezená data LOB nebo omezení obchodní data migrovat do určité velikosti.  Když platí omezení obchodní data migrována, žádná obchodní data nad rámec tohoto limitu je oříznutá. Pro migraci produkčního prostředí, doporučujeme vybrat **Povolit neomezené velikosti LOB** se tak ztrátě dat. Při zadávání Povolit neomezené velikosti LOB, vyberte **zadat migraci obchodní data v jeden blok při LOB velikost je menší než (KB)** zaškrtávací políčko ke zlepšení výkonu. |
+    | **Konfigurovat nastavení pro data velkých objektů (LOB)** | Určuje, zda DMS migruje neomezená data LOB nebo omezení obchodní data migrovat do určité velikosti.  Když platí omezení obchodní data migrována, žádná obchodní data nad rámec tohoto limitu je oříznutá. Pro migraci produkčního prostředí, doporučujeme vybrat **Povolit neomezené velikosti LOB** se tak ztrátě dat. Při zadávání Povolit neomezené velikosti LOB, vyberte **zadat migraci obchodní data v jeden blok při LOB velikost je menší než (KB)** zaškrtávací políčko ke zlepšení výkonu. |
     
     ![Nastavení pokročilých online migrace](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-advanced-online-migration-settings.png)
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 420c81f6206c777efc303924d81763f5984aba4c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0981f4d5d9d5fcb243fc7ead6f4b529c096935d0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993393"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885872"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – nejčastější dotazy
 Tento článek obsahuje odpovědi na běžné dotazy týkající se služby Azure Backup.
@@ -40,7 +40,7 @@ Ne. Trezor služby Recovery Services můžete pouze změnit možnosti úložišt
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Můžete provést položku úrovně obnovení (ILR) virtuálních počítačů zálohovat do trezoru služby Recovery Services?
 - Pro virtuální počítače Azure zálohovat pomocí zálohování virtuálních počítačů Azure se podporuje ILR. Další informace najdete v tématu [článku](backup-azure-restore-files-from-vm.md)
-- Obnovení se nepodporuje pro body obnovení online místní virtuální počítače Azure backup Server nebo System Center DPM zálohovat.
+- ILR není podporovaná pro body obnovení online z místních virtuálních počítačů zálohovat pomocí Azure backup Server nebo System Center DPM.
 
 
 ## <a name="azure-backup-agent"></a>Agent Azure Backup
@@ -93,7 +93,7 @@ Ano.
 ### <a name="what-operating-systems-are-supported-for-backup"></a>Jaké operační systémy jsou podporovány pro zálohování?
 Azure Backup podporuje tyto operační systémy pro zálohování souborů a složek a aplikace, které jsou chráněné službou Azure Backup serveru a aplikace DPM.
 
-**OS** | **SKU** | **Podrobnosti**
+**Operační systém** | **Skladová jednotka (SKU)** | **Podrobnosti**
 --- | --- | ---
 Pracovní stanice | |
 Windows 10 64-bit | Enterprise, Pro, Home | Počítače by měly běžet nejnovější aktualizace Service Pack a aktualizace.

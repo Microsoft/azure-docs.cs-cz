@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f622be53297a9d091a62a1239f022bbd4fb71347
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 3f1dbd4b6635d615cc7bed4cf5cc38234ec0c3f1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311760"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885991"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurovat nastavení ověřování Azure Multi-Factor Authentication
 
@@ -34,10 +34,10 @@ Některá z těchto nastavení se vztahují na MFA Server, Azure MFA nebo obojí
 | ------- | ----------- |
 | Uzamčení účtu | Dočasně uzamčení účtů ve službě ověřování službou Multi-Factor Authentication Pokud příliš mnoho odepřen pokusy o ověření za sebou. Tato funkce platí jenom pro uživatele, kteří zadal PIN kód pro ověření. (MFA Server) |
 | [Blokování a odblokování uživatelů](#block-and-unblock-users) | Používá k blokování konkrétní uživatele na serveru MFA (místní) nebudou moct přijímat žádosti o ověření službou Multi-Factor Authentication. Jakékoli pokusy o ověření pro blokovaného uživatele budou automaticky odepírány. Uživatelé zůstat blokované 90 dnů od doby, které jsou blokovány. |
-| [Upozornění na podvod](#fraud-alert) | Konfigurovat nastavení související s uživateli možnost nahlásit podvodné ověření požadavků z MFA serveru. |
+| [Výstraha podvodů](#fraud-alert) | Konfigurovat nastavení související s uživateli možnost nahlásit podvodné ověření požadavků |
 | Oznámení | Povolte oznámení událostí z MFA serveru. |
 | [Tokeny OATH](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Použít ke správě tokeny OATH pro uživatele v cloudových prostředích Azure MFA. |
-| [Nastavení telefonních hovorů.](#phone-call-settings) | Konfigurovat nastavení související s telefonních hovorů a greetings cloudových a místních prostředích. |
+| [Nastavení telefonních hovorů](#phone-call-settings) | Konfigurovat nastavení související s telefonních hovorů a greetings cloudových a místních prostředích. |
 | Poskytovatelé | Tím se zobrazí všechny existující zprostředkovatelé ověřování můžou přiřadit k vašemu účtu. Noví zprostředkovatelé ověřování, nemusí být vytvořena od 1. září 2018 |
 
 ## <a name="manage-mfa-server"></a>Spravovat MFA Server
@@ -57,7 +57,7 @@ Generování sestav k dispozici zde je specifická pro Server MFA (místní). Az
 
 ## <a name="block-and-unblock-users"></a>Blokování a odblokování uživatelů
 
-Použití _blokovat nebo odblokovat uživatele_ funkci, která uživatelům zabránit v přijetí žádosti o ověření. Jakékoli pokusy o ověření pro blokovaného uživatele budou automaticky odepírány. Uživatelé zůstat blokované 90 dnů od doby, které jsou blokovány. Tato funkce je specifická pro Server MFA (místní).
+Použití _blokovat nebo odblokovat uživatele_ funkci, která uživatelům zabránit v přijetí žádosti o ověření. Jakékoli pokusy o ověření pro blokovaného uživatele budou automaticky odepírány. Uživatelé zůstat blokované 90 dnů od doby, které jsou blokovány.
 
 ### <a name="block-a-user"></a>Zablokovat uživatele
 
@@ -77,7 +77,7 @@ Použití _blokovat nebo odblokovat uživatele_ funkci, která uživatelům zabr
 
 ## <a name="fraud-alert"></a>Výstraha podvodů
 
-Konfigurace _upozornění na podvod_ funkci tak, aby vaši uživatelé můžete nahlásit podvodné pokusy o přístup ke svým prostředkům. Uživatelé mohou zasílat podvod pokusy pomocí mobilní aplikace nebo prostřednictvím svého telefonu. Tato funkce je specifická pro Server MFA (místní).
+Konfigurace _upozornění na podvod_ funkci tak, aby vaši uživatelé můžete nahlásit podvodné pokusy o přístup ke svým prostředkům. Uživatelé mohou zasílat podvod pokusy pomocí mobilní aplikace nebo prostřednictvím svého telefonu.
 
 ### <a name="turn-on-fraud-alerts"></a>Zapněte upozornění na podvod
 

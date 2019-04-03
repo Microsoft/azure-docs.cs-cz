@@ -1,21 +1,21 @@
 ---
-title: Nastavení přihlášení s účtem LinkedIn v Azure Active Directory B2C pomocí vlastních zásad | Dokumentace Microsoftu
-description: Nastavení přihlášení pomocí účtu Google v Azure Active Directory B2C pomocí vlastních zásad.
+title: Nastavení přihlášení s účtem LinkedIn pomocí vlastních zásad – Azure Active Directory B2C | Dokumentace Microsoftu
+description: Nastavení přihlášení s účtem LinkedIn v Azure Active Directory B2C pomocí vlastních zásad.
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 04/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7700ef24deb82afcb2093c8fd27bcbe7f6f6420c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5dad12596dde13cfa7e0c2031d58f605061b0e20
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190339"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862790"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlášení s účtem LinkedIn pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -42,7 +42,7 @@ Použití LinkedIn jako zprostředkovatele identity v Azure AD B2C, je potřeba 
 7. Zadejte vaše **e-mailová adresa** adresu a **Telefon do zaměstnání** číslo.
 8. V dolní části stránky, přečtěte si a přijměte podmínky použití a pak vyberte **odeslat**.
 9. Vyberte **ověřování**a potom si poznamenejte **ID klienta** a **tajný kód klienta** hodnoty pro pozdější použití.
-10. V **oprávnění adresy URL pro přesměrování**, zadejte `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp`. Nahraďte `your-tenant-name` s názvem vašeho tenanta. Budete muset použít jenom malá písmena. Pokud zadáte název vašeho klienta i v případě, že klient je definována s velká písmena v Azure AD B2C. 
+10. V **oprávnění adresy URL pro přesměrování**, zadejte `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp`. Nahraďte `your-tenant` s názvem vašeho tenanta. Budete muset použít jenom malá písmena. Pokud zadáte název vašeho klienta i v případě, že klient je definována s velká písmena v Azure AD B2C. 
 11. Vyberte **aktualizace**.
 12. Vyberte **nastavení**, změnit **stav aplikace** k **Live**a pak vyberte **aktualizace**.
 
@@ -53,7 +53,7 @@ Potřebujete ukládat tajný kód klienta, který jste si dříve poznamenali ve
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
 3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
-4. Na stránce s přehledem, vyberte **architekturu rozhraní identit - PREVIEW**.
+4. Na stránce s přehledem, vyberte **architekturu rozhraní identit**.
 5. Vyberte **klíče zásad** a pak vyberte **přidat**.
 6. Pro **možnosti**, zvolte `Manual`.
 7. Zadejte **název** klíče zásad. Například, `LinkedInSecret`. Předpona, která `B2C_1A_` je automaticky přidán do názvu klíče.
@@ -83,12 +83,10 @@ Pokud chcete uživatelům umožní přihlásit se účtem LinkedIn, musíte defi
             <Item Key="ProviderName">linkedin</Item>
             <Item Key="authorization_endpoint">https://www.linkedin.com/oauth/v2/authorization</Item>
             <Item Key="AccessTokenEndpoint">https://www.linkedin.com/oauth/v2/accessToken</Item>
-            <Item Key="ClaimsEndpoint">https://api.linkedin.com/v1/people/~:(id,first-name,last-name,email-address,headline)</Item>
-            <Item Key="ClaimsEndpointAccessTokenName">oauth2_access_token</Item>
-            <Item Key="ClaimsEndpointFormatName">format</Item>
-            <Item Key="ClaimsEndpointFormat">json</Item>
-            <Item Key="scope">r_emailaddress r_basicprofile</Item>
-            <Item Key="HttpBinding">POST</Item>
+            <Item Key="ClaimsEndpoint">https://api.linkedin.com/v2/me</Item>
+            <Item Key="external_user_identity_claim_id">id</Item>
+            <Item Key="BearerTokenTransmissionMethod">AuthorizationHeader</Item>
+            <Item Key="ResolveJsonPathsInJsonTokens">true</Item>
             <Item Key="UsePolicyInRedirectUri">0</Item>
             <Item Key="client_id">Your LinkedIn application client ID</Item>
           </Metadata>
@@ -99,12 +97,12 @@ Pokud chcete uživatelům umožní přihlásit se účtem LinkedIn, musíte defi
             <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="id" />
             <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
             <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
-            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="emailAddress" />
-            <!--<OutputClaim ClaimTypeReferenceId="jobTitle" PartnerClaimType="headline" />-->
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="linkedin.com" />
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
           </OutputClaims>
           <OutputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="ExtractGivenNameFromLinkedInResponse" />
+            <OutputClaimsTransformation ReferenceId="ExtractSurNameFromLinkedInResponse" />
             <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
             <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
             <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
@@ -119,6 +117,47 @@ Pokud chcete uživatelům umožní přihlásit se účtem LinkedIn, musíte defi
 4. Nahraďte hodnotu **client_id** s ID klienta, který jste si předtím poznamenali.
 5. Uložte soubor.
 
+### <a name="add-the-claims-transformations"></a>Přidat transformace deklarací identity
+
+Vyžaduje technického profilu LinkedIn **ExtractGivenNameFromLinkedInResponse** a **ExtractSurNameFromLinkedInResponse** deklarace identity transformace mají být přidány do seznamu ClaimsTransformations. Pokud nemáte k dispozici **ClaimsTransformations** element definovaný v souboru, přidejte na nadřazené elementy XML, jak je znázorněno níže. Transformace deklarací, který je také potřeba definice nového typu deklarace identity s názvem **nullStringClaim**. 
+
+**BuildingBlocks** element by měly být přidány do horní části souboru. Zobrazit *TrustframeworkBase.xml* jako příklad.
+
+```XML
+<BuildingBlocks>
+  <ClaimsSchema>
+    <!-- Claim type needed for LinkedIn claims transformations -->
+    <ClaimType Id="nullStringClaim">
+      <DisplayName>nullClaim</DisplayName>
+      <DataType>string</DataType>
+      <AdminHelpText>A policy claim to store output values from ClaimsTransformations that aren't useful. This claim should not be used in TechnicalProfiles.</AdminHelpText>
+      <UserHelpText>A policy claim to store output values from ClaimsTransformations that aren't useful. This claim should not be used in TechnicalProfiles.</UserHelpText>
+    </ClaimType>
+  </ClaimsSchema>
+
+  <ClaimsTransformations>
+    <!-- Claim transformations needed for LinkedIn technical profile -->
+    <ClaimsTransformation Id="ExtractGivenNameFromLinkedInResponse" TransformationMethod="GetSingleItemFromJson">
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="inputJson" />
+      </InputClaims>
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="nullStringClaim" TransformationClaimType="key" />
+        <OutputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="value" />
+      </OutputClaims>
+    </ClaimsTransformation>
+    <ClaimsTransformation Id="ExtractSurNameFromLinkedInResponse" TransformationMethod="GetSingleItemFromJson">
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="surname" TransformationClaimType="inputJson" />
+      </InputClaims>
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="nullStringClaim" TransformationClaimType="key" />
+        <OutputClaim ClaimTypeReferenceId="surname" TransformationClaimType="value" />
+      </OutputClaims>
+    </ClaimsTransformation>
+  </ClaimsTransformations>
+</BuildingBlocks>
+```
 ### <a name="upload-the-extension-file-for-verification"></a>Nahrát soubor rozšíření pro ověřování
 
 Nyní jste nakonfigurovali zásady tak, aby Azure AD B2C ví, jak komunikovat s vaším účtem LinkedIn. Zkuste nahrát soubor rozšíření zásady jenom k potvrzení, že všechny problémy nemusí zatím.
@@ -181,7 +220,179 @@ Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, kt
 
 1. Vytvořte kopii *SignUpOrSignIn.xml* ve svém pracovním adresáři a přejmenujte jej. Například přejmenujte ho na *SignUpSignInLinkedIn.xml*.
 2. Otevřete nový soubor a aktualizujte hodnotu **PolicyId** atributu **TrustFrameworkPolicy** s jedinečnou hodnotu. Například, `SignUpSignInLinkedIn`.
-3. Aktualizujte hodnotu **PublicPolicyUri** s identifikátorem URI pro zásady. Například`http://contoso.com/B2C_1A_signup_signin_linkedin`
+3. Aktualizujte hodnotu **PublicPolicyUri** s identifikátorem URI pro zásady. Například:`http://contoso.com/B2C_1A_signup_signin_linkedin`
 4. Aktualizujte hodnotu **ReferenceId** atribut **DefaultUserJourney** tak, aby odpovídaly ID nové cesty uživatele, který jste vytvořili (SignUpSignLinkedIn).
 5. Uložte provedené změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
 6. Ujistěte se, že je vybraná aplikaci Azure AD B2C, kterou jste vytvořili v **vyberte aplikaci** pole a pak ho otestujte kliknutím **spustit nyní**.
+
+
+## <a name="register-the-claims-provider"></a>Registrace zprostředkovatele deklarací identity
+
+V tuto chvíli je nastavený zprostředkovatele identity, ale není k dispozici v některém z obrazovky registrace nebo přihlášení. Chcete-li k dispozici, vytvoření duplicitní cesty existující uživatele šablony a upravte ho tak, aby má také LinkedIn zprostředkovatele identity.
+
+1. Otevřít *TrustFrameworkBase.xml* soubor z starter pack.
+2. Vyhledejte a zkopírujte celý obsah **UserJourney** element, který zahrnuje `Id="SignUpOrSignIn"`.
+3. Otevřít *TrustFrameworkExtensions.xml* a najít **Userjourney** elementu. Pokud element neexistuje, přidejte jeden.
+4. Vložte celý obsah **UserJourney** element, který jste zkopírovali jako podřízený objekt **Userjourney** elementu.
+5. Přejmenujte ID cesty uživatele. Například, `SignUpSignInLinkedIn`.
+
+### <a name="display-the-button"></a>Zobrazit tlačítko
+
+**ClaimsProviderSelection** element je obdobou k tlačítku na obrazovce registrace nebo přihlášení zprostředkovatele identity. Pokud chcete přidat **ClaimsProviderSelection** – element pro účet LinkedIn, nové tlačítko se zobrazí při uživatel umístil na stránce.
+
+1. Najít **OrchestrationStep** element, který zahrnuje `Order="1"` v cestě uživatele, který jste vytvořili.
+2. V části **ClaimsProviderSelects**, přidejte následující prvek. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `LinkedInExchange`:
+
+    ```XML
+    <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
+    ```
+
+### <a name="link-the-button-to-an-action"></a>Tlačítko s odkazem na akci
+
+Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Akce v tomto případě je pro Azure AD B2C ke komunikaci s účtem LinkedIn k získání tokenu.
+
+1. Najít **OrchestrationStep** , který obsahuje `Order="2"` v cestě uživatele.
+2. Přidejte následující **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro element **Id** , který jste použili pro **TargetClaimsExchangeId**:
+
+    ```XML
+    <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
+    ```
+    
+    Aktualizujte hodnotu **TechnicalProfileReferenceId** k **Id** technického profilu, který jste vytvořili dříve. Například, `LinkedIn-OAUTH`.
+
+3. Uložit *TrustFrameworkExtensions.xml* souboru a nahrajte ji znovu pro ověření.
+
+## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
+
+Probíhá komunikace s Azure AD B2c prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. Tato část obsahuje seznam volitelné kroky, které můžete použít k vytvoření aplikace testů, pokud jste tak již neučinili.
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
+4. Vyberte **aplikací**a pak vyberte **přidat**.
+5. Zadejte název aplikace, například *testapp1*.
+6. Pro **webová aplikace / webové rozhraní API**vyberte `Yes`a pak zadejte `https://jwt.ms` pro **adresy URL odpovědi**.
+7. Klikněte na možnost **Vytvořit**.
+
+## <a name="update-and-test-the-relying-party-file"></a>Aktualizace a předávající strany soubor testu
+
+Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, který jste vytvořili.
+
+1. Vytvořte kopii *SignUpOrSignIn.xml* ve svém pracovním adresáři a přejmenujte jej. Například přejmenujte ho na *SignUpSignInLinkedIn.xml*.
+2. Otevřete nový soubor a aktualizujte hodnotu **PolicyId** atributu **TrustFrameworkPolicy** s jedinečnou hodnotu. Například, `SignUpSignInLinkedIn`.
+3. Aktualizujte hodnotu **PublicPolicyUri** s identifikátorem URI pro zásady. Například:`http://contoso.com/B2C_1A_signup_signin_linkedin`
+4. Aktualizujte hodnotu **ReferenceId** atribut **DefaultUserJourney** tak, aby odpovídaly ID nové cesty uživatele, který jste vytvořili (SignUpSignLinkedIn).
+5. Uložte provedené změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
+6. Ujistěte se, že je vybraná aplikaci Azure AD B2C, kterou jste vytvořili v **vyberte aplikaci** pole a pak ho otestujte kliknutím **spustit nyní**.
+
+
+## <a name="migration-from-v10-to-v20"></a>Migrace z verze 1.0 do verze 2.0
+
+Nedávno LinkedIn [aktualizovat své rozhraní API z verze 1.0 k v2.0](https://engineering.linkedin.com/blog/2018/12/developer-program-updates). Pokud chcete migrovat existující konfiguraci pro novou konfiguraci, použijte informace v následujících částech aktualizovat elementy v technickém profilu.
+
+### <a name="replace-items-in-the-metadata"></a>Nahraďte položky v metadatech
+
+V existujícím **metadat** elementu **technický profil**, aktualizujte následující **položky** elementy ze:
+
+```XML
+<Item Key="ClaimsEndpoint">https://api.linkedin.com/v1/people/~:(id,first-name,last-name,email-address,headline)</Item>
+<Item Key="scope">r_emailaddress r_basicprofile</Item>
+```
+
+Pro:
+
+```XML
+<Item Key="ClaimsEndpoint">https://api.linkedin.com/v2/me</Item>
+<Item Key="scope">r_emailaddress r_liteprofile</Item>
+```
+
+### <a name="add-items-to-the-metadata"></a>Přidat položky metadat
+
+V **metadat** z **technický profil**, přidejte následující **položky** prvky:
+
+```XML
+<Item Key="external_user_identity_claim_id">id</Item>
+<Item Key="BearerTokenTransmissionMethod">AuthorizationHeader</Item>
+<Item Key="ResolveJsonPathsInJsonTokens">true</Item>
+```
+
+### <a name="update-the-outputclaims"></a>Aktualizace OutputClaims
+
+V existujícím **OutputClaims** z **technický profil**, aktualizujte následující **OutputClaim** elementy ze:
+
+```XML
+<OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
+<OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
+```
+
+Pro:
+
+```XML
+<OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName.localized" />
+<OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName.localized" />
+```
+
+### <a name="add-new-outputclaimstransformation-elements"></a>Přidat nové prvky OutputClaimsTransformation
+
+V **OutputClaimsTransformations** z **technický profil**, přidejte následující **OutputClaimsTransformation** prvky:
+
+```XML
+<OutputClaimsTransformation ReferenceId="ExtractGivenNameFromLinkedInResponse" />
+<OutputClaimsTransformation ReferenceId="ExtractSurNameFromLinkedInResponse" />
+```
+
+### <a name="define-the-new-claims-transformations-and-claim-type"></a>Definovat nové transformace deklarací identity a typ deklarace identity
+
+V posledním kroku přidáte nové transformace deklarací identity, které je potřeba definovat. Pokud chcete definovat transformace deklarací identity, je přidat do seznamu **ClaimsTransformations**. Pokud nemáte k dispozici **ClaimsTransformations** element definovaný v souboru, přidejte na nadřazené elementy XML, jak je znázorněno níže. Transformace deklarací, který je také potřeba definice nového typu deklarace identity s názvem **nullStringClaim**. 
+
+**BuildingBlocks** element by měly být přidány do horní části souboru. Zobrazit *TrustframeworkBase.xml* jako příklad.
+
+```XML
+<BuildingBlocks>
+  <ClaimsSchema>
+    <!-- Claim type needed for LinkedIn claims transformations -->
+    <ClaimType Id="nullStringClaim">
+      <DisplayName>nullClaim</DisplayName>
+      <DataType>string</DataType>
+      <AdminHelpText>A policy claim to store unuseful output values from ClaimsTransformations. This claim should not be used in a TechnicalProfiles.</AdminHelpText>
+      <UserHelpText>A policy claim to store unuseful output values from ClaimsTransformations. This claim should not be used in a TechnicalProfiles.</UserHelpText>
+    </ClaimType>
+  </ClaimsSchema>
+
+  <ClaimsTransformations>
+    <!-- Claim transformations needed for LinkedIn technical profile -->
+    <ClaimsTransformation Id="ExtractGivenNameFromLinkedInResponse" TransformationMethod="GetSingleItemFromJson">
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="inputJson" />
+      </InputClaims>
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="nullStringClaim" TransformationClaimType="key" />
+        <OutputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="value" />
+      </OutputClaims>
+    </ClaimsTransformation>
+    <ClaimsTransformation Id="ExtractSurNameFromLinkedInResponse" TransformationMethod="GetSingleItemFromJson">
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="surname" TransformationClaimType="inputJson" />
+      </InputClaims>
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="nullStringClaim" TransformationClaimType="key" />
+        <OutputClaim ClaimTypeReferenceId="surname" TransformationClaimType="value" />
+      </OutputClaims>
+    </ClaimsTransformation>
+  </ClaimsTransformations>
+</BuildingBlocks>
+```
+
+### <a name="obtain-an-email-address"></a>Získání e-mailovou adresu
+
+Jako součást LinkedIn migrace z verze 1.0 do verze 2.0 další volání k jinému rozhraní API je potřeba získat e-mailovou adresu. Pokud potřebujete získat při registraci e-mailovou adresu, postupujte takto:
+
+1. Máte Azure AD B2C, vytvořit federaci s Linkedinem, aby mohl uživatel přihlásit. Pokud k tomu dojde, je přístupový token z Linkedinu odesílat Azure AD B2C.
+2. Uložte přístupový token Linkedinu do deklarace identity. [Postupujte podle pokynů tady](idp-pass-through-custom.md).
+3. Voláním funkce Azure a předat funkci přístupového tokenu shromážděných v předchozím kroku. [Přečtěte si pokyny v tomto poli](active-directory-b2c-rest-api-step-custom.md)
+    1. Funkce Azure Functions by měla trvat přístupový token a volání rozhraní API pro LinkedIn (`https://api.linkedin.com/v2/emailAddress?q=members&projection=(elements*(handle~))`).
+    2. Funkce Azure Functions přijímá odpovědi a analyzuje e-mailovou adresu.
+    3. E-mailovou adresu se vrátí zpět do zásady.
+4. E-mailová adresa je uložen v deklaraci e-mailu a cesty uživatele bude pokračovat na.
+
+Získání e-mailovou adresu z Linkedinu během registrace je volitelný. Pokud zvolíte Ne, k získání e-mailu, je potřeba ručně zadejte e-mailovou adresu a ověřte ho uživatel.

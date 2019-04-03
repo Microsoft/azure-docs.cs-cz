@@ -3,20 +3,20 @@ title: 'Ověřování služba služba: Python s Azure Data Lake Storage Gen1 pom
 description: Zjistěte, jak dokončit ověřování služba služba s Azure Data Lake Storage Gen1 pomocí Azure Active Directory pomocí Pythonu
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 4cad09877a3fc4f586db2d92ce97a64b6efe295e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: 84b7fac10374c1c8f23d17ad775d522b4cb261e8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537146"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877750"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Ověřování služba služba s Azure Data Lake Storage Gen1 pomocí Pythonu
 > [!div class="op_single_selector"]

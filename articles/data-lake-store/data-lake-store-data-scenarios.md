@@ -3,19 +3,19 @@ title: Data scénáře zahrnující Gen1 úložiště Data Lake | Dokumentace Mi
 description: Pochopit různé scénáře a nástroje, pomocí kterých můžete ingestuje, zpracování, stahování a vizualizovat v Data Lake Storage Gen1 (dříve označované jako Azure Data Lake Store)
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: 64c7985508ed7f03b32340cbb2c78de61242f7e1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: twooley
+ms.openlocfilehash: 0b16154edbda4bedfd4e9b680ba4311e7a235212
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984275"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878753"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Použití Azure Data Lake Storage Gen1 pro potřeby velkého objemu dat
 
@@ -72,7 +72,7 @@ Pro nahrávání dat protokolů webového serveru a také pro nahrávání jiné
 Většina typy clusterů HDInsight (Hadoop, HBase, Storm) podporují Gen1 úložiště Data Lake jako úložiště dat úložiště. Clustery HDInsight přistupovat k datům z objektů BLOB Azure Storage (WASB). Pro zajištění lepšího výkonu můžete zkopírovat data z WASB do účtu Data Lake Storage Gen1 přidružené ke clusteru. Ke zkopírování dat můžete použít následující nástroje.
 
 * [Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)
-* [AdlCopy služby](data-lake-store-copy-data-azure-storage-blob.md)
+* [AdlCopy Service](data-lake-store-copy-data-azure-storage-blob.md)
 * [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)
 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>Data uložená v místním nebo IaaS Hadoop clusterů

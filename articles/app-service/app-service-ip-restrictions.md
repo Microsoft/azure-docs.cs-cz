@@ -1,6 +1,6 @@
 ---
 title: Omezení klienta IP adresy – Azure App Service | Dokumentace Microsoftu
-description: Jak použít omezení IP adres pomocí služby Azure App Service
+description: Použití omezení přístupu pomocí služby Azure App Service
 author: ccompy
 manager: stefsch
 editor: ''
@@ -15,56 +15,60 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 337d71c84ace7f44c2668cf2344d9083c4a85bee
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 805de614246028bc75268e83991fa7831b990325
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651058"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882323"
 ---
-# <a name="azure-app-service-static-ip-restrictions"></a>Omezení statickou IP adresu služby Azure App Service #
+# <a name="azure-app-service-static-access-restrictions"></a>Omezení statických přístupu službě Azure App Service #
 
-Omezení IP adres umožňují definovat prioritu seřazený povolit nebo zamítnout seznam IP adres, které můžou přistupovat k vaší aplikace. Seznam povolených tříd může obsahovat adresy IPv4 a IPv6. Pokud je jeden nebo více položek, je pak implicitní Zamítnout vše, která existuje na konci seznamu. 
+Omezení přístupu vám umožňují definovat prioritu seřazený povolit nebo zamítnout seznam IP adres, které můžou přistupovat k vaší aplikace. Seznam povolených tříd může obsahovat adresy IPv4 a IPv6. Pokud je jeden nebo více položek, je pak implicitní Zamítnout vše, která existuje na konci seznamu.
 
-Funkce omezení podle IP funguje se všemi úlohami, které zahrnují; hostované služby App Service webové aplikace, aplikace API, Linuxové aplikace, aplikace kontejneru Linuxu a funkce. 
+Možnost omezení přístupu funguje se všemi úlohami, které zahrnují; hostované služby App Service webové aplikace, aplikace API, Linuxové aplikace, aplikace kontejneru Linuxu a funkce.
 
-Po odeslání žádosti do vaší aplikace z IP adres je porovnán seznamu omezení IP adres. Pokud adresa nemá povolený přístup na základě pravidel v seznamu, odpoví odpovědí služby s [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) stavový kód.
+Po odeslání žádosti do vaší aplikace z IP adres je porovnán seznamu omezení přístupu. Pokud adresa nemá povolený přístup na základě pravidel v seznamu, odpoví odpovědí služby s [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) stavový kód.
 
-Funkce omezení podle IP je implementována v role front-endu služby App Service, které jsou upstream hostitelů pracovního procesu, ve kterém běží váš kód. Omezení IP adres se proto prakticky seznamy ACL sítě.  
+Omezení přístupu funkce je implementována v role front-endu služby App Service, které jsou upstream hostitelů pracovního procesu, ve kterém běží váš kód. Omezení přístupu se proto prakticky seznamy ACL sítě.  
 
-![Omezení podle IP toku](media/app-service-ip-restrictions/ip-restrictions-flow.png)
+![Postup pro omezení přístupu](media/app-service-ip-restrictions/ip-restrictions-flow.png)
 
-Funkce omezení podle IP na portálu dobu, byl vrstvu nad ipSecurity schopností ve službě IIS. Aktuální funkce omezení IP adres se liší. IpSecurity lze přesto nakonfigurovat v souboru web.config aplikace ale front-endu na základě omezení IP adres pravidla budou použita, než všechny přenosy přicházejí služby IIS.
+Možnost omezení přístupu na portálu dobu, byl vrstvu nad ipSecurity schopností ve službě IIS. Aktuální omezení přístupu funkce se liší. IpSecurity lze přesto nakonfigurovat v souboru web.config aplikace ale front-endu na základě pravidel omezení přístupu se použijí před všechny přenosy přicházejí služby IIS.
 
-## <a name="adding-and-editing-ip-restriction-rules-in-the-portal"></a>Přidávání a úprava pravidel omezení IP adres na portálu ##
+## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>Přidání a úpravu pravidel omezení přístupu na portálu ##
 
-Pro přidání pravidla pro omezení IP do vaší aplikace, použijte nabídku otevřete **sítě**>**omezení IP adres** a klikněte na **nakonfigurovat omezení IP adres**
+Přidat pravidlo pro omezení přístupu k vaší aplikaci, použijte nabídku otevřete **sítě**>**omezení přístupu** a klikněte na **konfigurovat omezení přístupu**
 
 ![Možnosti sítě služby App Service](media/app-service-ip-restrictions/ip-restrictions.png)  
 
-V uživatelském rozhraní omezení IP najdete seznam pravidel omezení IP definované pro vaši aplikaci.
+V uživatelském rozhraní omezení přístupu najdete seznam pravidel pro omezení přístupu definované pro vaši aplikaci.
 
-![seznam omezení IP adres](media/app-service-ip-restrictions/ip-restrictions-browse.png)
+![omezení přístupu seznamu](media/app-service-ip-restrictions/ip-restrictions-browse.png)
 
 Pokud vaše pravidla byly nakonfigurovány jako tento obrázek, vaše aplikace bude přijímat pouze provoz z 131.107.159.0/24 a by odepřen z libovolné IP adresy.
 
-Můžete kliknout na **[+] přidat** přidáte nové pravidlo omezení IP. Jakmile přidáte pravidlo, se projeví okamžitě. Pravidla se vynucují v pořadí podle priority od nejnižší číslo a směrem nahoru. Je implicitní Zamítnout vše, co je v platnosti, po přidání jednoho pravidla. 
+Můžete kliknout na **[+] přidat** přidáte nové pravidlo omezení přístupu. Jakmile přidáte pravidlo, se projeví okamžitě. Pravidla se vynucují v pořadí podle priority od nejnižší číslo a směrem nahoru. Je implicitní Zamítnout vše, co je v platnosti, po přidání jednoho pravidla.
 
-![Přidání pravidla pro omezení IP](media/app-service-ip-restrictions/ip-restrictions-add.png)
+![Přidání pravidla pro omezení přístupu](media/app-service-ip-restrictions/ip-restrictions-add.png)
 
 IP adresa notation musí zadat v notaci CIDR pro adresy IPv4 a IPv6. Chcete-li určit přesné adresy, můžete použít něco jako 1.2.3.4/32 kde první čtyři oktety představují vaše IP adresa a maska je /32. Je zápis IPv4 CIDR pro všechny adresy 0.0.0.0/0. Další informace o notaci CIDR, si můžete přečíst [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).  
 
-Kliknutím na libovolný řádek, který chcete upravit stávající pravidlo omezení IP. Úpravy platí, okamžitě včetně změn v pořadí priority.
+Kliknutím na libovolný řádek, který chcete upravit stávající pravidlo omezení přístupu. Úpravy platí, okamžitě včetně změn v pořadí priority.
 
-![Upravit pravidlo omezení IP](media/app-service-ip-restrictions/ip-restrictions-edit.png)
+![Upravit pravidlo pro omezení přístupu](media/app-service-ip-restrictions/ip-restrictions-edit.png)
 
-Pokud chcete odstranit pravidlo, klikněte na tlačítko **...**  na pravidlo a pak klikněte na tlačítko **odebrat**. 
+Pokud chcete odstranit pravidlo, klikněte na tlačítko **...**  na pravidlo a pak klikněte na tlačítko **odebrat**.
 
-![Odstranit pravidlo omezení adresy IP](media/app-service-ip-restrictions/ip-restrictions-delete.png)
+![Odstranit pravidlo přístupu k omezení](media/app-service-ip-restrictions/ip-restrictions-delete.png)
 
-## <a name="programmatic-manipulation-of-ip-restriction-rules"></a>Programovou manipulaci se pravidel omezení IP ##
+Můžete taky omezit přístup k nasazení na další kartě. K přidání/úprava/odstranění každé pravidlo, postupujte podle stejného kroku, jak je uvedeno výše.
 
-Aktuálně neexistuje žádná prostředí PowerShell nebo rozhraní příkazového řádku pro nové možnosti omezení IP adres, ale hodnoty můžete nastavit ručně pomocí operace PUT v konfiguraci aplikace ve službě Správce prostředků. Například můžete použít resources.azure.com a upravit blok ipSecurityRestrictions přidat požadované JSON. 
+![omezení přístupu seznamu](media/app-service-ip-restrictions/ip-restrictions-scm-browse.png)
+
+## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Programovou manipulaci se pravidla pro omezení přístupu ##
+
+Aktuálně neexistuje žádná prostředí PowerShell nebo rozhraní příkazového řádku pro nové možnosti omezení přístupu, ale hodnoty můžete nastavit ručně pomocí operace PUT v konfiguraci aplikace ve službě Správce prostředků. Například můžete použít resources.azure.com a upravit blok ipSecurityRestrictions přidat požadované JSON.
 
 Umístění těchto informací v Resource Manageru je:
 

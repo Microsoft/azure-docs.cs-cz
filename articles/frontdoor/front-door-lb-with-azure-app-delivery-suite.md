@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: a89043f814bc97aeb081789e92d9e4488712a465
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3d5c0ac068a6644f3499da6c3b642a4a04408370
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439022"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879655"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Vyrovnávání zatížení s využitím sady pro doručování aplikací Azure
 
@@ -26,7 +26,7 @@ Microsoft Azure poskytuje několik globální a místní služby pro správu, ja
 ![Sada doručování aplikací ][1]
  
 Tyto služby jsou rozdělená do dvou kategorií:
-1. **Globální služby Vyrovnávání zatížení** , jako je Traffic Manageru a branou distribuovat provoz od koncových uživatelů ve vaší místní back-EndY, napříč cloudy nebo dokonce i vaše hybridní místní služby. Vyrovnávání zatížení globálního směruje provoz na nejbližší back-endu služby a reaguje na změny v spolehlivosti služeb nebo výkonu zajistit nepřetržité a maximální výkon pro vaše uživatele. 
+1. **Globální služby Vyrovnávání zatížení** jako Traffic Manageru a branou distribuovat provoz od koncových uživatelů ve vaší místní back-EndY, napříč cloudy nebo dokonce i vaše hybridní místních služeb. Vyrovnávání zatížení globálního směruje provoz na nejbližší back-endu služby a reaguje na změny v spolehlivosti služeb nebo výkonu zajistit nepřetržité a maximální výkon pro vaše uživatele. 
 2. **Regionálních služeb pro vyrovnávání zatížení** , jako je Load balanceru úrovně Standard nebo služby Application Gateway poskytuje možnost distribuovat provoz v rámci virtuálních sítí (VNETs) ve virtuálních počítačích (VM) nebo koncové body služby oblastmi v rámci oblasti.
 
 Kombinování globální a místní služby ve vaší aplikaci poskytuje začátku do konce spolehlivým, výkonným a zabezpečený způsob, jak směrovat provoz do a z vašich uživatelů k IaaS, PaaS a místních služeb. V další části jsme popisují každou z těchto služeb.
@@ -59,7 +59,7 @@ Při výběru nástroj pro vyrovnávání zatížení globálního mezi Traffic 
 | Traffic Manager | Azure Front Door Service |
 | --------------- | ------------------------ |
 |**Libovolný protokol:** Vzhledem k tomu, že Traffic Manager funguje ve vrstvě DNS, můžete směrovat jakýkoli typ síťového provozu; HTTP, TCP, UDP, atd. | **Akcelerace HTTP:** Přenosy s branou jsou směrovány přes proxy server v síti Edge z Microsoftu pro.  Z tohoto důvodu žádosti protokolu HTTP (S), najdete v článku latenci a propustnost vylepšení snížení latence pro vyjednávání protokolu SSL a používání aktivní připojení z AFD do vaší aplikace.|
-|**Místní směrování:** Směrování ve vrstvě DNS, provoz se směruje vždy bodu z bodu.  Směrování od firemní pobočka do vašeho místního datového centra, může trvat přímé cestu. dokonce i ve vaší síti pomocí Traffic Manageru. | **Nezávislého škálování:** Protože branou funguje s žádostí HTTP, požadavky na různých cest URL může být směrované na různé back-end / místní služby fondy (mikroslužeb) na základě pravidel a stavu jednotlivých aplikací mikroslužeb.|
+|**V místním směrování:** Směrování ve vrstvě DNS, provoz se směruje vždy bodu z bodu.  Směrování od firemní pobočka do vašeho místního datového centra, může trvat přímé cestu. dokonce i ve vaší síti pomocí Traffic Manageru. | **Nezávislého škálování:** Protože branou funguje s žádostí HTTP, požadavky na různých cest URL může být směrované na různé back-end / místní služby fondy (mikroslužeb) na základě pravidel a stavu jednotlivých aplikací mikroslužeb.|
 |**Fakturace formát:** Účtování podle DNS škáluje s uživateli a služby s více uživateli, plateaus ke snížení nákladů na vyšší využití. |**Vložené zabezpečení:** Přední dveře povoluje pravidla, jako je například omezení rychlosti a seznamu ACL IP-ing vám neumožňuje chránit váš back-end před přenosy přicházejí vaší aplikace. 
 
 </br>Z důvodu výkonu, požadavky na provoz a výhody zabezpečení pro úlohy HTTP s branou doporučujeme, abyste zákazníci využívat branou pro své úlohy HTTP.    Traffic Manager a branou umožňuje paralelní sloužit veškerý provoz pro vaši aplikaci. 

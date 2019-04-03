@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 4f5c7696e711db7c128317f7ed17dc051e8fd18a
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: d98922937781fd169d34881fa67a6b5746d06df7
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803112"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882460"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Podpora jazyka a oblasti pro rozhraní Translator Text API
 
@@ -108,25 +108,25 @@ Metoda Transliterate podporuje následující jazyky. V "do a z" "<> –" označ
 
 | Jazyk    | Kód jazyka | Skript | Do/z | Skript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| arabština | `ar` | Arabština `Arab` | <--> | Latinská `Latn` |
-|Bengálština  | `bn` | Bengálština `Beng` | <--> | Latinská `Latn` |
-| Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština `Hans`| <--> | Latinská `Latn` |
-| Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština `Hans`| <--> | Tradiční čínština `Hant`|
+| arabština | `ar` | arabština `Arab` | <--> | Latinská `Latn` |
+|Bengálština  | `bn` | bengálština `Beng` | <--> | Latinská `Latn` |
+| Čínština (zjednodušená) | `zh-Hans` | čínština (zjednodušená) `Hans`| <--> | Latinská `Latn` |
+| Čínština (zjednodušená) | `zh-Hans` | čínština (zjednodušená) `Hans`| <--> | Tradiční čínština `Hant`|
 | Čínština (tradiční) | `zh-Hant` | Tradiční čínština `Hant`| <--> | Latinská `Latn` |
-| Čínština (tradiční) | `zh-Hant` | Tradiční čínština `Hant`| <--> | Zjednodušená čínština `Hans` |
-| Gudžarátština | `gu`  | Gujarati `Gujr` | --> | Latinská `Latn` |
+| Čínština (tradiční) | `zh-Hant` | Tradiční čínština `Hant`| <--> | čínština (zjednodušená) `Hans` |
+| Gudžarátština | `gu`  | Gudžarátština `Gujr` | --> | Latinská `Latn` |
 | Hebrejština | `he` | Hebrejština `Hebr` | <--> | Latinská `Latn` |
 | Hindština | `hi` | Devanágarí `Deva` | <--> | Latinská `Latn` |
 | Japonština | `ja` | Japonština `Jpan` | <--> | Latinská `Latn` |
-| Kannadština | `kn` | Kannada `Knda` | --> | Latinská `Latn` |
-| Malajálamština | `ml` | Malajalámština `Mlym` | --> | Latinská `Latn` |
+| Kannadština | `kn` | Kannadština `Knda` | --> | Latinská `Latn` |
+| Malajálamština | `ml` | Malajálamština `Mlym` | --> | Latinská `Latn` |
 | Maráthština | `mr` | Devanágarí `Deva` | --> | Latinská `Latn` |
-| urijština | `or` | Oriya `Orya` | <--> | Latinská `Latn` |
+| urijština | `or` | urijština `Orya` | <--> | Latinská `Latn` |
 | Paňdžábština | `pa` | Gurmukhi `Guru`  | <--> | Latinská `Latn`  |
-| Srbština (cyrilice) | `sr-Cyrl` | Cyrillic `Cyrl`  | --> | Latinská `Latn` |
-| Srbština (latinka) | `sr-Latn` | Latinská `Latn` | --> | Cyrillic `Cyrl`|
+| Srbština (cyrilice) | `sr-Cyrl` | Cyrilice `Cyrl`  | --> | Latinská `Latn` |
+| Srbština (latinka) | `sr-Latn` | Latinská `Latn` | --> | Cyrilice `Cyrl`|
 | Tamilština | `ta` | Tamilština `Taml` | --> | Latinská `Latn` |
-| Telugština | `te` | Telugu `Telu` | --> | Latinská `Latn` |
+| Telugština | `te` | Telugština `Telu` | --> | Latinská `Latn` |
 | Thajština | `th` | Thajština `Thai` | <--> | Latinská `Latn` |
 
 ## <a name="dictionary"></a>Slovník
@@ -268,7 +268,7 @@ Můžete načíst seznam podporovaných jazyků pro rozhraní Translator Text AP
 
 ## <a name="customization"></a>Přizpůsobení
 
-Tyto jazyky jsou k dispozici pro přizpůsobení do nebo z anglické pomocí [vlastní Translator](http://aka.ms/CustomTranslator).
+Tyto jazyky jsou k dispozici pro přizpůsobení do nebo z anglické pomocí [vlastní Translator](https://aka.ms/CustomTranslator).
 
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|

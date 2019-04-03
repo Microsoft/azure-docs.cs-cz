@@ -14,40 +14,41 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16794dfdcdc6ed9c2effe412237d2681fca4f394
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 3ffd783ec41b1b0c4a11ee426648c1e36fbbbf75
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803285"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883696"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Data služby Health service není aktuální výstrahy
 
 ## <a name="overview"></a>Přehled
-Agenty na místní počítače, které Azure AD Connect Health monitoruje pravidelně odesílá data do služby Azure AD Connect Health. Pokud služba nepřijímá data z agenta, bude zastaralé informace uvedené na portálu. Abyste měli na očích problém, se vyvolat službu **data služby Health service není aktuální** upozornění. To se vygeneruje, když služba neobdržel data dokončené v posledních dvou hodin.  
 
-* **Upozornění** výstraha o stavu je vyvoláno, pokud služba Health Service obdržela pouze **částečné** datové typy odeslaných ze serveru za posledních dvou hodin. Stav upozornění neaktivuje e-mailová oznámení nakonfigurované příjemcům. 
-* **Chyba** stav upozornění je vyvoláno, pokud služba Health Service nedostal žádné typy dat ze serveru v posledních dvou hodin. Chyba stavu aktivuje upozornění e-mailová oznámení nakonfigurované příjemcům.
+Agents na vhodnost místních počítačů, které Azure AD Connect Health monitoruje pravidelně nahrávat data do službu Azure AD Connect Health. Pokud služba nepřijímá data z agenta, bude zastaralé informace, které se zobrazí na portálu. Abyste měli na očích problém, se vyvolat službu **data služby Health service není aktuální** upozornění. Tato výstraha se vygeneruje, když služba neobdržel kompletní data za poslední dvě hodiny.  
 
-Služba načte data z agentů, které běží na místní počítače. Následující tabulka uvádí v závislosti na typu služby agentů, které běží na počítači, co dělají a také datové typy, které jsou vygenerovány pomocí služby. V některých případech existuje několik služeb, které jsou součástí procesu, tak buď z nich může být nadměrné spotřeby. 
+- **Upozornění** výstraha o stavu je vyvoláno, pokud služba Health Service obdržela pouze **částečné** datové typy odeslaných ze serveru za posledních dvou hodin. Stav upozornění neaktivuje e-mailová oznámení nakonfigurované příjemcům. 
+- **Chyba** stav upozornění je vyvoláno, pokud služba Health Service nedostal žádné typy dat ze serveru za poslední dvě hodiny. Chyba stavu aktivuje upozornění e-mailová oznámení nakonfigurované příjemcům.
+
+Služba načte data z agentů, které běží na místních počítačích, v závislosti na typu služby. V následující tabulce jsou uvedeny agenty, které běží na počítači, co dělají a datové typy, které generuje služba. V některých případech se několik služeb, které využívá řada v procesu, tak některé z nich může být nadměrné spotřeby. 
 
 ## <a name="understanding-the-alert"></a>Principy upozornění
-V okně podrobností o výstraze označuje čas, když výstraha se vyvolá a naposledy zjištěno. Výstraha je vygenerována nebo jejich opakované-evaluated procesem na pozadí, který se spouští každé dvě hodiny. V následujícím příkladu se počáteční upozornění vygenerovalo v 03/10 v 9:59:00. Stále existují i na 03/12 10:00:00 po upozornění byla vyhodnocena jako znovu.
-V okně také podrobnosti o čas, kdy byl naposled přijal určitého typu dat služba Health Service. 
+
+**Podrobnosti výstrahy** okno při výstrahy došlo k chybě a byl naposledy zjištěno. Proces na pozadí, který spouští každé dvě hodiny generuje a znovu vyhodnotí upozornění. V následujícím příkladu, počáteční došlo k výstraze na 03/10 v 9:59:00. Výstraha se pořád byly na 03/12 v 10:00 po upozornění byla vyhodnocena jako znovu. V okně také podrobnosti o čas, služba Health Service naposled přijal konkrétní datový typ. 
  
  ![Podrobnosti výstrahy služby Azure AD Connect Health](./media/how-to-connect-health-data-freshness/data-freshness-details.png)
  
-Níže je mapa typů služeb a odpovídající typ požadovaná data.
+Následující tabulka mapuje na odpovídající typy požadované datové typy služeb:
 
 | Typ služby | Agent (název služby Windows) | Účel | Datový typ vygeneruje  |
 | --- | --- | --- | --- |  
-| Azure AD Connect (Sync) | Služba analýz synchronizace služby Azure AD Connect Health | Shromažďování konkrétních informací AAD Connect (konektory, synchronizační pravidla atd.) | AadSyncService-SynchronizationRules <br />  AadSyncService konektory <br /> AadSyncService-GlobalConfigurations  <br />  AadSyncService-RunProfileResults <br /> AadSyncService-ServiceConfigurations <br /> AadSyncService-ServiceStatus   |
-|  | Služba monitorování synchronizace služby Azure AD Connect Health | Shromáždit soubory (službou AAD Connect konkrétní) čítače výkonu, trasování ETW | Čítač výkonu |
-| AD DS | Služba analýz AD DS pro Azure AD Connect Health | Provádět syntetické testy, shromažďovat informace o topologii, replikační Metadata |  - Adds-TopologyInfo-Json <br /> Běžné-TestData-Json (vytvoří výsledky testů)   | 
-|  | Služba monitorování AD DS pro Azure AD Connect Health | Shromáždit soubory čítače, trasování událostí pro Windows trasování výkonu (specifické pro AD DS) | – Čítač výkonu  <br /> Běžné-TestData-Json (odešle výsledky testů)  |
+| Azure AD Connect (Sync) | Služba analýz synchronizace služby Azure AD Connect Health | Shromažďovat informace specifické pro službu AAD Connect (konektory, synchronizační pravidla, atd.) | AadSyncService-SynchronizationRules <br />  AadSyncService konektory <br /> AadSyncService-GlobalConfigurations  <br />  AadSyncService-RunProfileResults <br /> AadSyncService-ServiceConfigurations <br /> AadSyncService-ServiceStatus   |
+|  | Služba monitorování synchronizace služby Azure AD Connect Health | Shromáždit čítače výkonu specifické pro službu AAD Connect, trasování ETW, soubory | Počítadlo výkonu |
+| AD DS | Služba analýz AD DS pro Azure AD Connect Health | Provádět syntetické testy, shromažďovat informace o topologii, replikační metadata |  - Adds-TopologyInfo-Json <br /> Běžné-TestData-Json (vytvoří výsledky testů)   | 
+|  | Služba monitorování AD DS pro Azure AD Connect Health | Shromáždit čítače výkonu specifické pro AD DS, trasování ETW, soubory | – Čítač výkonu  <br /> Běžné-TestData-Json (odešle výsledky testů)  |
 | AD FS | Diagnostické služby AD FS pro Azure AD Connect Health | Provádět syntetické testy | TestResult (vytvoří výsledky testů) | 
 | | Služba analýz AD FS pro Azure AD Connect Health  | Shromažďovat metriky využití služby AD FS | Adfs-UsageMetrics |
-| | Služba monitorování AD FS pro Azure AD Connect Health | Shromáždit soubory čítače, trasování událostí pro Windows trasování výkonu (specifické pro služby AD FS) | TestResult (odešle výsledky testů) |
+| | Služba monitorování AD FS pro Azure AD Connect Health | Shromáždit čítače výkonu specifické pro služby AD FS, trasování ETW, soubory | TestResult (odešle výsledky testů) |
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží 
 

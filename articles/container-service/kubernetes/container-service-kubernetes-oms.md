@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 0d9f13003a9b81085fda9635fc8b07566a1c0c66
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d7370fc14a5ede23744e04ac9d35140f2368e21f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107521"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877393"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(NEPOUŽÍVANÉ) Monitorování clusteru služby Azure Container Service pomocí služby Log Analytics
 
@@ -100,7 +100,7 @@ K ochraně ID pracovního prostoru Log Analytics a klíč slouží jako součás
   #> sudo bash ./secret-gen.sh
   ```
 
-  - Vytvořte pod tajných kódů spuštěním následujícího: ``` kubectl create -f omsagentsecret.yaml ```
+  - Vytvořte pod tajných kódů spuštěním následujícího: ```kubectl create -f omsagentsecret.yaml```
 
   - Pokud chcete zkontrolovat, spusťte následující příkaz:
 
@@ -123,7 +123,7 @@ K ochraně ID pracovního prostoru Log Analytics a klíč slouží jako součás
   KEY:    88 bytes
   ```
 
-  - Vytvoření vašeho omsagent démon sady spuštěním ``` kubectl create -f omsagent-ds-secrets.yaml ```
+  - Vytvoření vašeho omsagent démon sady spuštěním ```kubectl create -f omsagent-ds-secrets.yaml```
 
 ### <a name="conclusion"></a>Závěr
 A to je vše! Po několika minutách měli vidět dat odesílaných do řídicího panelu Log Analytics.

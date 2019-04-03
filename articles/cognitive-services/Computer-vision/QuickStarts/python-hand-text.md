@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 78dfb6a78bff8aaf4fe3cc316a6614c3c4af65d2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: aa2c29a5b2becad75bae0f9ca9f88ab25a35d17f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433531"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883254"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-python-in-computer-vision"></a>Rychlý start: Extrahujte rukou psaný text pomocí rozhraní REST API a Python v počítačové zpracování obrazu
 
@@ -75,8 +75,7 @@ vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0
 text_recognition_url = vision_base_url + "read/core/asyncBatchAnalyze"
 
 # Set image_url to the URL of an image that you want to analyze.
-image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/" + \
-    "Cursive_Writing_on_Notebook_paper.jpg/800px-Cursive_Writing_on_Notebook_paper.jpg"
+image_url = "https://upload.wikimedia.org/wikipedia/commons/d/dd/Cursive_Writing_on_Notebook_paper.jpg"
 
 headers = {'Ocp-Apim-Subscription-Key': subscription_key}
 # Note: The request parameter changed for APIv2.
@@ -100,17 +99,18 @@ while (poll):
     response_final = requests.get(
         response.headers["Operation-Location"], headers=headers)
     analysis = response_final.json()
+    print(analysis)
     time.sleep(1)
-    if ("recognitionResult" in analysis):
+    if ("recognitionResults" in analysis):
         poll= False 
     if ("status" in analysis and analysis['status'] == 'Failed'):
         poll= False
 
 polygons=[]
-if ("recognitionResult" in analysis):
+if ("recognitionResults" in analysis):
     # Extract the recognized text, with bounding boxes.
     polygons = [(line["boundingBox"], line["text"])
-        for line in analysis["recognitionResult"]["lines"]]
+        for line in analysis["recognitionResults"][0]["lines"]]
 
 # Display the image and overlay it with the extracted text.
 plt.figure(figsize=(15, 15))
@@ -123,7 +123,6 @@ for polygon in polygons:
     patch    = Polygon(vertices, closed=True, fill=False, linewidth=2, color='y')
     ax.axes.add_patch(patch)
     plt.text(vertices[0][0], vertices[0][1], text, fontsize=20, va="top")
-_ = plt.axis("off")
 ```
 
 ## <a name="examine-the-response"></a>Prozkoumání odpovědi
@@ -411,4 +410,4 @@ _ = plt.axis("off")
 Prozkoumejte aplikaci v Pythonu používající počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytváření chytře oříznutých miniatur, zjišťování, kategorizaci, označení a popis vizuálních prvků, včetně obličejů, v obrázku. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Kurz k rozhraní API pro počítačové zpracování obrazu a Pythonu](../Tutorials/PythonTutorial.md)
+> [Kurz k rozhraní API Pythonu počítače pro zpracování obrazu](../Tutorials/PythonTutorial.md)

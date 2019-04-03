@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
-ms.openlocfilehash: 17a52cf17c62c930dc3922ded48d659f56016688
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 40f0705cfa7f0e9bb45d300a629adebd0cc5be47
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370495"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883663"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Řešení potíží s rozšíření virtuálního počítače Log Analytics ve službě Azure Monitor
 Tento článek poskytuje nápovědu řešení potíží s chybami setkat s rozšířením Log Analytics VM pro virtuální počítače Windows a Linuxu spuštěné na Microsoft Azure a navrhne řešení k jejich řešení.
@@ -53,7 +53,7 @@ Pokud *agenta Microsoft Monitoring Agent* není instalace rozšíření virtuál
 3. Projděte si soubory protokolů rozšíření Microsoft Monitoring Agent virtuálního počítače v `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`
 4. Ujistěte se, že virtuální počítač může spouštět skripty prostředí PowerShell
 5. Ujistěte se, že oprávnění C:\Windows\temp nebyly změněny.
-6. Zobrazení stavu agenta Microsoft Monitoring Agent pomocí následujícího příkazu v okně PowerShell se zvýšenými oprávněními na virtuálním počítači `  (New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
+6. Zobrazení stavu agenta Microsoft Monitoring Agent pomocí následujícího příkazu v okně PowerShell se zvýšenými oprávněními na virtuálním počítači `(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
 7. Projděte si soubory protokolů instalace agenta Microsoft Monitoring Agent v `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
 
 Další informace najdete v tématu [řešení potíží s rozšířeními Windows](../../virtual-machines/extensions/oms-windows.md).

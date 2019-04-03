@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 7511b85384c2c64c823d93df4369b0fea3e64b51
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 5d168264cbc392e1ba426707429f47dea70d1ea8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226211"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882051"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Kurz: Zabezpečení spravované instance Azure SQL Database pomocí Azure AD objekty serveru (přihlášení)
 
@@ -56,7 +56,7 @@ Pro absolvování tohoto kurzu, nezapomeňte, že jsou splněné následující 
 
 ## <a name="limiting-access-to-your-managed-instance"></a>Omezení přístupu k vaší spravované instance
 
-Spravovaná instance je přístupný pouze prostřednictvím privátní IP adresu. Neexistují žádné koncové body služby, které jsou k dispozici pro připojení k managed instance z mimo síť spravovanou instanci. Mnohem jako izolované prostředí v místním systému SQL Server, aplikacím nebo uživatelům potřebují přístup k síti spravované instance (VNet) předtím, než je možné navázat připojení. Další informace najdete v tématu v následujícím článku [připojení aplikace k managed instance](sql-database-managed-instance-connect-app.md).
+Spravovaná instance je přístupný pouze prostřednictvím privátní IP adresu. Neexistují žádné koncové body služby, které jsou k dispozici pro připojení k managed instance z mimo síť spravovanou instanci. Stejně jako izolované systému SQL Server v místním prostředí, aplikacím nebo uživatelům potřebovat přístup k síti spravované instance (VNet) před připojení lze navázat. Další informace najdete v tématu v následujícím článku [připojení aplikace k managed instance](sql-database-managed-instance-connect-app.md).
 
 > [!NOTE] 
 > Protože spravované instance je přístupný pouze uvnitř jeho virtuální síti, [pravidel brány firewall SQL Database](sql-database-firewall-configure.md) nebudou použity. Managed instance má svůj vlastní [integrované firewall](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
@@ -65,8 +65,8 @@ Spravovaná instance je přístupný pouze prostřednictvím privátní IP adres
 
 První server instanční objekt Azure AD (přihlášení) musejí být vytvořeny standardní účet systému SQL Server (jiné než azure AD), který je `sysadmin`. Naleznete v následujících článcích pro příklady připojení pro spravovanou instanci:
 
-- [Rychlé zprovoznění: Konfigurace virtuálního počítače Azure se připojit k managed instance](sql-database-managed-instance-configure-vm.md)
-- [Rychlé zprovoznění: Konfigurace připojení typu point-to-site z místní do spravované instance](sql-database-managed-instance-configure-p2s.md)
+- [Rychlý start: Konfigurace virtuálního počítače Azure se připojit k managed instance](sql-database-managed-instance-configure-vm.md)
+- [Rychlý start: Konfigurace připojení typu point-to-site z místní do spravované instance](sql-database-managed-instance-configure-p2s.md)
 
 > [!IMPORTANT]
 > Správce služby Azure AD používané k nastavení spravovanou instanci nelze použít k vytvoření Azure AD objekt zabezpečení serveru (přihlášení) v rámci spravované instance. Je nutné vytvořit první Azure AD objekt zabezpečení serveru (přihlášení) pomocí účtu systému SQL Server, který je `sysadmin`. Jedná se o dočasné omezení, která bude odebrána po zavedení všeobecné dostupnosti budou objekty serveru Azure AD (přihlášení) Pokud se pokusíte vytvořit přihlášení pomocí účtu správce Azure AD se zobrazí následující chyba: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
@@ -172,7 +172,7 @@ Jakmile se objekt zabezpečení serveru Azure AD (přihlášení) byla vytvořen
 
     Tento příklad vytvoří přihlášení pro uživatele Azure AD bob@aadsqlmi.net, jehož aadsqlmi.net domény je Federovaná pomocí služby Azure AD aadsqlmi.onmicrosoft.com.
 
-    Spuštěním následujícího příkazu T-SQL. Federované Azure AD účty jsou spravované instance nahrazení pro místní Windows přihlášení a uživatelů.
+    Spuštěním následujícího příkazu T-SQL. Federované Azure AD účty jsou spravované instance nahrazení pro Windows v místním přihlašovacích údajů a uživatelů.
 
     ```sql
     USE master
@@ -445,7 +445,7 @@ Přečtěte si následující [managed instance funkce zabezpečení funkce](sql
 - [Funkce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
 - [Detekce hrozeb](sql-database-managed-instance-threat-detection.md) 
 - [Dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking)
-- [Zabezpečení na úrovní řádků](/sql/relational-databases/security/row-level-security) 
+- [Zabezpečení na úrovni řádku](/sql/relational-databases/security/row-level-security) 
 - [Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="managed-instance-capabilities"></a>Možnosti spravované instance

@@ -4,7 +4,7 @@ description: Připojení k Azure Data Lake Storage Gen1 z virtuálních sítí A
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: esung22
-manager: jhubbard
+manager: mtillman
 editor: cgronlun
 ms.assetid: 683fcfdc-cf93-46c3-b2d2-5cb79f5e9ea5
 ms.service: data-lake-store
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: a2367eff3095df82662f7b56571ecdbd966609fd
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c8d028a981d7811ed2c864db5750afc83ab93b2b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284008"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878056"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Přístup k Azure Data Lake Storage Gen1 z virtuálních počítačů v rámci virtuální síť Azure
 Azure Data Lake Storage Gen1 je služba PaaS, která běží na veřejné internetové IP adresy. Libovolný server, který se může připojit k veřejnému Internetu obvykle může připojit k Azure Data Lake Storage Gen1 a koncových bodů. Ve výchozím nastavení všechny virtuální počítače, které jsou ve virtuálních sítích Azure přístup k Internetu a proto přístup k Azure Data Lake Storage Gen1. Nicméně je možné nakonfigurovat virtuální počítače ve virtuální síti nemáte přístup k Internetu. Pro tyto virtuální počítače přístup k Azure Data Lake Storage Gen1 omezen také. Blokování veřejný přístup k Internetu pro virtuální počítače ve virtuálních sítích Azure lze provést pomocí kteréhokoli z následujících postupů:

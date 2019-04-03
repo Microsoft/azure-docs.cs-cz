@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: bce4946b62e3678f7fa8d5f7f6431441cc00b252
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 6c0aa42cc22d22431d7d0270aca52e089046cb01
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762833"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847734"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Windows ve vašem clusteru Service Fabric
 
@@ -325,7 +325,7 @@ Pokud váš cluster může tolerovat možnost, při použití dílčích oprav c
 
 Otázka: **Kolik času udělá proveďte opravu uzel?**
 
-A. Opravy chyb uzlu může trvat minuty (třeba: [Aktualizací definic Windows Defenderu](https://www.microsoft.com/wdsi/definitions)) hodin (například: [Windows kumulativní aktualizace](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). Čas potřebný k opravě uzel závisí hlavně na 
+A. Opravy chyb uzlu může trvat minuty (třeba: [Aktualizací definic Windows Defenderu](https://www.microsoft.com/en-us/wdsi/definitions)) hodin (například: [Windows kumulativní aktualizace](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). Čas potřebný k opravě uzel závisí hlavně na 
  - Velikost aktualizace
  - Počet aktualizací, které se mají použít v interval oprav
  - Čas potřebný k instalaci aktualizací, restartovat uzel (v případě potřeby) a dokončete postup instalace po restartování.

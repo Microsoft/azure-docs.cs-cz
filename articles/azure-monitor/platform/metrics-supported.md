@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 89f5294d6ac01a6fa377e8d0763e77f8034ab44a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 55258dc0c99a918a6314be8317f19c03576a95f5
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449553"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851191"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky ve službě Azure Monitor
 
@@ -1608,7 +1608,6 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |MemoryPercentage|Procento paměti|Procento|Průměr|Procento paměti|Instance|
 
 ## <a name="next-steps"></a>Další postup
-
-* [Přečtěte si informace o metriky ve službě Azure Monitor](../../azure-monitor/platform/data-collection.md)
-* [Vytváření upozornění na metriky](../../azure-monitor/platform/alerts-overview.md)
-* [Export metrik úložiště, Centrum událostí a Log Analytics](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Přečtěte si informace o metriky ve službě Azure Monitor](data-platform.md)
+* [Vytváření upozornění na metriky](alerts-overview.md)
+* [Export metrik úložiště, Centrum událostí a Log Analytics](diagnostic-logs-overview.md)

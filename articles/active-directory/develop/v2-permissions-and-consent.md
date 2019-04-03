@@ -16,14 +16,14 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, jmprieur
-ms.custom: aaddev
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6ccc2a355b22c2235253b78a1efa3912234027a
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: c0614a6bc588a26a23dc9d3795e532a303a472e3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793454"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881643"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Oprávnění a souhlas v koncovém bodu Azure Active Directory v2.0
 
@@ -82,7 +82,7 @@ Implementace verze 2.0, OpenID Connect obsahuje několik jasně definované obor
 
 ### <a name="openid"></a>openid
 
-Pokud aplikace provádí přihlášení s použitím [OpenID Connect](active-directory-v2-protocols.md), musíte požádat o `openid` oboru. `openid` Oboru se zobrazí na stránce pracovní účet souhlasu jako "Přihlášení" oprávnění a na stránce osobní souhlasu účet Microsoft jako oprávnění "Zobrazit svůj profil a připojit se k aplikacím a službám, které používají váš účet Microsoft". Aplikace s tímto oprávněním může přijímat jedinečný identifikátor pro uživatele v podobě `sub` deklarací identity. Poskytuje aplikaci přístup ke koncovému bodu informací o uživateli. `openid` Obor je možné na koncový bod tokenu v2.0 získat tokeny typu ID, které je možné použít k zabezpečení volání HTTP mezi různými součástmi aplikace.
+Pokud aplikace provádí přihlášení s použitím [OpenID Connect](active-directory-v2-protocols.md), musíte požádat o `openid` oboru. `openid` Oboru se zobrazí na stránce pracovní účet souhlasu jako "Přihlášení" oprávnění a na stránce osobní souhlasu účet Microsoft jako oprávnění "Zobrazit svůj profil a připojit se k aplikacím a službám, které používají váš účet Microsoft". Aplikace s tímto oprávněním může přijímat jedinečný identifikátor pro uživatele v podobě `sub` deklarací identity. Poskytuje aplikaci přístup ke koncovému bodu informací o uživateli. `openid` Obor je možné na koncový bod tokenu v2.0 získat tokeny typu ID, které je možné použít aplikaci pro ověřování.
 
 ### <a name="email"></a>e-mail
 

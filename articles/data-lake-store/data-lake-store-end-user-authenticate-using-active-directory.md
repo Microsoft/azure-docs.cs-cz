@@ -3,20 +3,20 @@ title: 'Ověřování koncového uživatele: Azure Data Lake Storage Gen1 služb
 description: Zjistěte, jak dokončit ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 6f7b812f32eda0c671b1ad1101b13a1290df0482
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: twooley
+ms.openlocfilehash: c0fe63e395ee08cb65e9bbbadc4ce1f03032ce95
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954768"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880079"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ Vaše aplikace může zadat přihlašovací údaje uživatele přímo do služby
 * Nastavte delegovaná oprávnění.
 
 
-## <a name="step-1-create-an-active-directory-native-application"></a>Krok 1: Vytvořte nativní aplikaci služby Active Directory
+## <a name="step-1-create-an-active-directory-native-application"></a>Krok 1: Vytvořit nativní aplikaci služby Active Directory
 
 Vytvoření a konfigurace nativní aplikaci Azure AD pro ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Azure Active Directory. Pokyny najdete v tématu [vytvořit aplikaci Azure AD](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -95,7 +95,7 @@ Pokud chcete načíst identifikátor URI pro přesměrování, proveďte násled
 3. Zkopírujte hodnotu zobrazenou.
 
 
-## <a name="step-3-set-permissions"></a>Krok 3: Nastavení oprávnění
+## <a name="step-3-set-permissions"></a>Krok 3: Nastavit oprávnění
 
 1. Na webu Azure Portal, vyberte **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**a potom vyberte a klikněte na nativní aplikaci Azure AD, kterou jste vytvořili.
 

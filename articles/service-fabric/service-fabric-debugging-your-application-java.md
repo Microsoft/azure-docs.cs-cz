@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 8f0470b10589ecbbc9e2c98e8d3445435e7f8ed4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 2f00636da2b29e7815569a683fdf51c6a4e3b0e0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668819"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880286"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Ladění aplikace Service Fabric v Javě pomocí Eclipse
 > [!div class="op_single_selector"]
@@ -29,12 +29,12 @@ ms.locfileid: "58668819"
 
 1. Spusťte místní vývojový cluster podle pokynů v [nastavení vývojového prostředí Service Fabric](service-fabric-get-started-linux.md).
 
-2. Aktualizujte entryPoint.sh služby, kterou chcete ladit, tak, aby proces Javy spouštěl s parametry vzdáleného ladění. Tento soubor se nachází v následujícím umístění: ``ApplicationName\ServiceNamePkg\Code\entrypoint.sh``. V tomto příkladu je pro ladění nastavený port 8001.
+2. Aktualizujte entryPoint.sh služby, kterou chcete ladit, tak, aby proces Javy spouštěl s parametry vzdáleného ladění. Tento soubor se nachází v následujícím umístění: `ApplicationName\ServiceNamePkg\Code\entrypoint.sh`. V tomto příkladu je pro ladění nastavený port 8001.
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
     ```
-3. Aktualizujte Manifest aplikace tak, že počet instancí nebo replik pro službu, která je právě laděna nastavíte na hodnotu 1. Toto nastavení zabrání konfliktům na portu, který slouží k ladění. Například pro bezstavové služby nastavte ``InstanceCount="1"`` a pro stavové služby nastavte cílovou a minimální velikost sady replik na 1 následujícím způsobem: `` TargetReplicaSetSize="1" MinReplicaSetSize="1"``.
+3. Aktualizujte Manifest aplikace tak, že počet instancí nebo replik pro službu, která je právě laděna nastavíte na hodnotu 1. Toto nastavení zabrání konfliktům na portu, který slouží k ladění. Například pro bezstavové služby nastavte `InstanceCount="1"` a pro stavové služby nastavte cílovou a minimální velikost sady replik na 1 následujícím způsobem: `TargetReplicaSetSize="1" MinReplicaSetSize="1"`.
 
 4. Nasazení aplikace.
 
@@ -46,7 +46,7 @@ ms.locfileid: "58668819"
    ```
 6.  Nastavte zarážky na požadovanou body a ladění aplikace.
 
-Pokud dochází k chybám. aplikace, můžete také povolit coredumps. Spustit ``ulimit -c`` v prostředí a pokud vrátí hodnotu 0, a pak coredumps nejsou povolené. Pokud chcete povolit neomezené coredumps, spusťte následující příkaz: ``ulimit -c unlimited``. Můžete také ověřit stav pomocí příkazu ``ulimit -a``.  Pokud chcete aktualizovat cestu generování coredump, spusťte ``echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern``. 
+Pokud dochází k chybám. aplikace, můžete také povolit coredumps. Spustit `ulimit -c` v prostředí a pokud vrátí hodnotu 0, a pak coredumps nejsou povolené. Pokud chcete povolit neomezené coredumps, spusťte následující příkaz: `ulimit -c unlimited`. Můžete také ověřit stav pomocí příkazu `ulimit -a`.  Pokud chcete aktualizovat cestu generování coredump, spusťte `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`. 
 
 ### <a name="next-steps"></a>Další postup
 

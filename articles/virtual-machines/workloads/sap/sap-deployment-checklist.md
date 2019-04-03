@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ba866ddf79a9970ef3f5c4ff3b7085242a1cdcd
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: fef2d42282291bb0ea6afeea03e60234d3d47a4d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802792"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878719"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Úloh SAP v Azure kontrolní seznam plánování a nasazení 
 
@@ -59,7 +59,7 @@ V této fázi je naplánovaná migrace úloh SAP do veřejného cloudu Azure. Mi
         1.  Definujte na základě RTO a RPO vysokou dostupnost a obnovení architektura vyžaduje, aby vypadala jako
         2.  Pro zajištění vysoké dostupnosti v rámci stejné zóny zkontrolujte požadované DBMS se nabízí v Azure. Většina DBMS nabízejí synchronních metod synchronní aktivní pohotovostní režim, který doporučujeme pro produkční systémy. Také kontrola systému SAP související dokumentaci pro různé databáze počínaje [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) a související dokumenty
             1.  Pomocí služby clusteru převzetí služeb při selhání Windows se sdíleným diskem konfigurací pro vrstvu DBMS, jako je například pro SQL Server [tady](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017) je **není** podporována. Místo toho řešení, jako je:
-                1.  [Technologie AlwaysOn systému SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
+                1.  [SQL Server AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
                 2.  [Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
                 3.  [Systémové replikace HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         3.  Pro zotavení po havárii v různých oblastech Azure zkontrolujte, jaké možnosti jsou nabízeny od různých dodavatelů DBMS. Většina z nich podporuje asynchronní replikaci nebo přesouvání protokolu
@@ -159,7 +159,7 @@ Pilotní nasazení můžete spustit před nebo v paralelní k plánování a př
 6. Testování výkonnosti
    1.  V systému SAP na základě SAP trasování a měření porovnejte nejvyšší 10 online sestavy do aktuální implementace, kde je to možné 
    2.  V SAP na základě SAP trasování a měření porovnejte prvních 10 dávkových úloh aktuální implementace, kde je to možné 
-   3.  V SAPU na základě SAP trasování a měření porovnejte přenosy dat prostřednictvím rozhraní do systému SAP. Zaměřte se na rozhraních, kdy víte, teď bude přenos mezi různými umístěními jako z místního Azure 
+   3.  V SAPU na základě SAP trasování a měření porovnejte přenosy dat prostřednictvím rozhraní do systému SAP. Zaměřte se na rozhraních, kdy víte, teď bude přenos mezi různými umístěními, jako v místním do Azure 
 
 
 ## <a name="non-production-phase"></a>Li se o Neprodukční fáze 

@@ -1,6 +1,6 @@
 ---
 title: Nasazení SAP ASE Azure Virtual Machines DBMS pro úlohy SAP | Dokumentace Microsoftu
-description: Nasazení SAP ASE Azure Virtual Machines DBMS pro úlohy SAP
+description: Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 07/1/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7cc908695a2d7263339003e5419f82da9cc313ab
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 3f50f013020c704ddc294a59f8c6c5dac24bbd5a
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317761"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850946"
 ---
-# <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení SAP ASE Azure Virtual Machines DBMS pro úlohy SAP
+# <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -235,7 +235,6 @@ ms.locfileid: "58317761"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md

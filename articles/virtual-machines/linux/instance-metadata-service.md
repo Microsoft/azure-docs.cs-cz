@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/15/2019
+ms.date: 03/28/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 7c5e979f399a487d29138b57d1fc4ee2c77622ff
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: c3e2102b5794fb3770b1c77e241320fa7d2222c7
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445486"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850784"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata service
 
@@ -219,7 +219,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018
     "resourceGroupName": "myrg",
     "sku": "5-6",
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "",
+    "tags": "Department:IT;Environment:Prod;Role:WorkerRole",
     "version": "7.1.1902271506",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
@@ -296,7 +296,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
     "resourceGroupName": "myrg",
     "sku": "5-6",
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "",
+    "tags": "Department:IT;Environment:Test;Role:WebRole",
     "version": "7.1.1902271506",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
@@ -514,12 +514,33 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnviro
 AZUREPUBLICCLOUD
 ```
 
+### <a name="getting-the-tags-for-the-vm"></a>Získání značek pro daný virtuální počítač
+
+Možná jste přiřadili značky k vašim virtuálním počítačům Azure logicky tak uspořádat je do taxonomie. Značky přiřazené k virtuálnímu počítači můžete načíst pomocí níže uvedenou žádost.
+
+**Požadavek**
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
+```
+
+**Odpověď**
+
+```text
+Department:IT;Environment:Test;Role:WebRole
+```
+
+> [!NOTE]
+> Značky jsou oddělené středníkem. Pokud analyzátor značek získat prostřednictvím kódu programu, nesmí obsahovat názvy značek a hodnoty středníky v pořadí pro analyzátor, který má fungovat správně.
+
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>Ověření spuštění virtuálního počítače v Azure
 
  Dodavatelé Marketplace chcete zajistit, že jejich software je licencován spustit jenom v Azure. Pokud někdo zkopíruje virtuální pevný disk na místní, pak by měly mít způsob, jak zjistit, která. Voláním služba Instance Metadata Marketplace dodavatelů můžete získat podepsaná data, která zaručuje odpovědi pouze z Azure.
- **Požadavek**
+
  > [!NOTE]
 > Vyžaduje jq k instalaci.
+
+ **Požadavek**
 
  ```bash
   # Get the signature

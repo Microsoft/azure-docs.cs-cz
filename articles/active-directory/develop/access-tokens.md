@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: celested
 ms.reviewer: hirsin
-ms.custom: aaddev
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e960e06cc51cc4540a8360cefe90ce68fc7e1f17
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 17c9ef471ca1536f928ca5ae2fe4f55e8e2b3424
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009916"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878413"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory přístupové tokeny
 
@@ -107,7 +107,7 @@ Deklarace identity jsou k dispozici pouze v případě, že existuje hodnota do 
 | `oid` | Řetězec identifikátoru GUID | Neměnné identifikátor objektu v platformě Microsoft identity, v tomto případě uživatelský účet. To lze použít také k provedení kontroly autorizace bezpečně a jako klíč v tabulkách databáze. Toto ID jednoznačně identifikuje uživatele v aplikacích – dva různé aplikace přihlášení stejného uživatele se zobrazí v stejnou hodnotu `oid` deklarací identity. Proto `oid` se dá použít při vytváření dotazů k online službám Microsoftu, jako je například Microsoft Graphu. Vrátí toto ID jako Microsoft Graph `id` vlastnost pro daný uživatelský účet. Protože `oid` umožňuje více aplikací ke koordinaci uživatelů, `profile` oboru se vyžaduje aby bylo možné dostávat tato deklarace identity. Všimněte si, že pokud jeden uživatel existuje v několika tenantech, uživatel bude obsahovat jiný objekt ID v jednotlivých tenantů – jsou považovány za různé účty, i když se uživatel přihlašuje každý účet pomocí stejných přihlašovacích údajů. |
 | `rh` | Neprůhledný řetězec | Interní deklaraci identity Azure používá k odhlášením tokeny. Prostředky, neměli byste používat tato deklarace identity. |
 | `scp` | Řetězec, mezerou oddělený seznam oborů | Sada oborů vystaven vaší aplikací, pro kterou má klientská aplikace požadované (a přijaté) vyjádřit souhlas. Vaše aplikace by měl ověřit, že tyto obory platný ty, které jsou vystavené vaší aplikace a rozhodnutí o autorizaci na základě hodnoty příslušných oborech. Zahrnuto pouze z důvodu [tokeny uživatele](#user-and-application-tokens). |
-| `roles` | Řetězec, mezerou oddělený seznam oprávnění | Sada oprávnění vystavené aplikaci žádající aplikací má přiděleno oprávnění k volání. Používá se během [přihlašovacích údajů klienta](v1-oauth2-client-creds-grant-flow.md) tok namísto uživatele obory a platí jenom v [tokenů aplikace](#user-and-application-tokens). |
+| `roles` | Pole řetězců, seznam oprávnění | Sada oprávnění vystavené aplikaci žádající aplikací má přiděleno oprávnění k volání. Pro [tokenů aplikace](#user-and-application-tokens), používá se během [přihlašovacích údajů klienta](v1-oauth2-client-creds-grant-flow.md) toku místo obory uživatele.  Pro [tokeny uživatele](#user-and-application-tokens) to se vyplní rolí uživatele bylo přiřazeno k cílové aplikace. |
 | `sub` | Řetězec identifikátoru GUID | Objekt zabezpečení, o tom, které token vyhodnocuje informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze přiřadit nebo znovu použít. Můžete použít k provedení kontroly autorizace bezpečně, třeba když se používá token pro přístup k prostředku a můžete použít jako klíč v tabulkách databáze. Protože předmět je vždy k dispozici v tokenech, problémy s Azure AD, doporučujeme použít tuto hodnotu v systému pro obecné účely autorizace. Předmět je však identifikátor pairwise – je jedinečné ID konkrétní aplikace. Proto pokud jeden uživatel zaregistruje do dvou různých aplikací s využitím dva identifikátory ID jiného klienta, na aplikace, které se zobrazí dvě různé hodnoty pro deklarace identity subjektu. To může nebo nemusí být požadovaných v závislosti na požadavcích vaší architektury a ochrana osobních údajů. |
 | `tid` | Řetězec identifikátoru GUID | Představuje jejímž je uživatel z tenanta Azure AD. Pro pracovní a školní účty je identifikátor GUID ID neměnné tenanta organizace, které tento uživatel patří do. Pro osobní účty, je hodnota `9188040d-6c67-4c5b-b112-36a304b66dad`. `profile` Oboru se vyžaduje aby bylo možné dostávat tato deklarace identity. |
 | `unique_name` | String | Pouze k dispozici v tokenech v1.0. Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota nemusí být jedinečný v rámci tenanta a by měla sloužit pouze pro účely zobrazení. |

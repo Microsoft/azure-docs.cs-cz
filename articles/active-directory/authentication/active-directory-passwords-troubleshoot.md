@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81519a9452bf578c2640b547b2102b8e162e2878
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 8f4f13a8b03f3ddba91fb4c4b69f550e1e88a491
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369781"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885073"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Řešení potíží s resetováním hesla pomocí samoobslužné služby
 
@@ -75,7 +75,7 @@ Dochází k potížím s Azure Active Directory (Azure AD) samoobslužné reseto
 | Uživateli se zobrazí chyby při ověření svého telefonního čísla. | Tato chyba nastane, pokud zadané telefonní číslo se neshoduje s telefonního čísla na soubor. Ujistěte se, že uživatel zadá celé telefonní číslo, včetně kód oblasti a země, při pokusu o použití metody založené na telefonu pro resetování hesla. |
 | Dojde k chybě zpracování žádosti. | Příčinou může být mnoho problémů, ale obecně tato chyba je způsobená výpadku služeb nebo o problém s konfigurací. Pokud se zobrazí tato chyba, a to má vliv na vaši firmu, kontaktujte podporu Microsoftu o další pomoc. |
 | Porušení zásad místní | Heslo nesplňuje zásady hesel místní služby Active Directory. |
-| Heslo nesplňuje zásady pro přibližné | Heslo, které bylo použito se zobrazí v seznamu zakázaných hesel a nelze použít. |
+| Heslo nesplňuje zásady pro přibližné | Heslo, které bylo použito se zobrazí v [zakázané seznam hesel](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad#how-are-passwords-evaluated) a nelze jej použít. |
 
 ## <a name="troubleshoot-password-writeback"></a>Řešení potíží s zpětný zápis hesla
 
@@ -285,14 +285,14 @@ K usnadnění správně, můžeme požádat, zadejte co nejvíce podrobností ne
 
 Následující články poskytují další informace o resetování hesla přes Azure AD:
 
-* [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
+* [Jak lze dokončit úspěšné zavedení samoobslužného resetování HESLA?](howto-sspr-deployment.md)
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
-* [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
+* [Registrace pro samoobslužné resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
 * [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
-* [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
+* [Jaké metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
-* [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
+* [Co je zpětný zápis hesla a proč je postaral o něm?](howto-sspr-writeback.md)
 * [Jak hlásit aktivitu v SSPR?](howto-sspr-reporting.md)
-* [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
-* [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)
+* [Co jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
+* [Mám dotaz, který není zodpovězená jinde](active-directory-passwords-faq.md)

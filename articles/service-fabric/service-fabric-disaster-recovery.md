@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 0804095a9e12e91d6b0fa88b626b006b78bdf3a5
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 7153a6ed4a91e59eea936f1e17d827a40bb99371
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670808"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883237"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Zotavení po havárii v Azure Service Fabric
 Důležitou součástí zajištění vysoké dostupnosti zajišťuje, že služby přežijí všechny různé druhy chyb. To je obzvláště důležité pro chyby, které neplánované a mimo vaši kontrolu. Tento článek popisuje některé běžné režimy selhání, které může být jiného problému ovlivňujícího není-li modelovat a spravovány správně. Je také zaměří na omezení rizik a akcí Pokud přesto došlo k havárii. Cílem je omezit nebo eliminovat riziko výpadkům nebo ztrátě, které se objeví chyby, plánované nebo jinak, mohlo dojít.
@@ -69,7 +69,7 @@ Například Řekněme, že selhání zdroj napájení způsobí, že rack počí
 
 Upgradovací domény jsou užitečné pro modelování oblasti, kde se to software upgradovat ve stejnou dobu. Z tohoto důvodu definování upgradu domény také často hranice, ve kterém je software odstavit během plánovaného upgradu. Upgrade aplikace Service Fabric a služby postupujte podle stejného modelu. Další informace o upgradu, upgradovacích domén a stavu modelu Service Fabric, která pomáhá zabránit nežádoucí změny v vliv na vaši službu a clusteru se zajištěním provozu najdete v těchto dokumentech:
 
- - [Application Upgrade](service-fabric-application-upgrade.md)
+ - [Upgrade aplikace](service-fabric-application-upgrade.md)
  - [Kurz upgradu aplikace](service-fabric-application-upgrade-tutorial.md)
  - [Service Fabric stavu modelu](service-fabric-health-introduction.md)
 
@@ -98,7 +98,7 @@ Pro stavové služby situace závisí na Určuje, zda má službu trvalý stav n
 2. Určení, zda je trvalé ztrátě kvora, nebo ne
    - Ve většině případů, jsou přechodné chyby. Procesy, které se restartují, uzly se restartují, virtuální počítače jsou relaunched, opravy rozdělení sítě. V některých případech ale jsou trvalé selhání. 
      - Pro bez trvalé služby stavu, selhání kvorum, nebo více replik výsledků _okamžitě_ ve ztrátě kvora trvalé. Když Service Fabric zjistí stavové služby dočasné ztrátě kvora, okamžitě pokračuje ke kroku 3 () ztrátě dat deklarací. Budete k datům ztráty dává smysl, protože Service Fabric ví, že neexistuje žádný bod v čekání repliky k téhle akci vrátit, protože i v případě, že byla obnovena by byla prázdná.
-     - Pro stavové trvalé služby způsobí selhání kvorum, nebo více replik Service Fabric spusťte čekání replik přejděte zpět a obnovit kvora. Výsledkem je výpadku služeb pro všechny _zapíše_ ovlivněné oddíl (nebo "sady replik") služby. Ale čtení může být stále možné s záruky konzistence nižší. Výchozí dobu, kterou Service Fabric počká kvora pro obnovení je nekonečné, protože budete pokračovat, je (potenciální) před událostí ztráty a má jiná rizika. Přepsání výchozího `QuorumLossWaitDuration` hodnotu je možné, ale nedoporučuje. Místo toho v současné době veškeré úsilí je třeba obnovit dolů repliky. To vyžaduje přináší uzly, které jsou vypnuté zálohování a zajištění, že se znovu připojte jednotky, kde uloženy místní trvalý stav. Je-li ztráty kvora selhání procesu, Service Fabric automaticky pokusí znovu vytvořit procesy a restartujte repliky v nich obsažené. Když se to nepovede, Service Fabric oznámí chyby stavu. Pokud tyto lze vyřešit repliky obvykle vraťte se zpátky. V některých případech však repliky nelze uvést do zpět. Například jednotky může všechny selhaly nebo počítače fyzicky zničení nějakým způsobem. V těchto případech se teď máme událostí ztráty trvalé kvora. Předat ukončení čekání dolů repliky k téhle akci vrátit služba Service Fabric, Správce clusteru musíte určit, které oddíly, jejichž služby se to týká a volání `Repair-ServiceFabricPartition -PartitionId` nebo ` System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` rozhraní API.  Toto rozhraní API umožňuje zadat ID oddílu, který se má přesunout mimo QuorumLoss a do potenciální dataloss.
+     - Pro stavové trvalé služby způsobí selhání kvorum, nebo více replik Service Fabric spusťte čekání replik přejděte zpět a obnovit kvora. Výsledkem je výpadku služeb pro všechny _zapíše_ ovlivněné oddíl (nebo "sady replik") služby. Ale čtení může být stále možné s záruky konzistence nižší. Výchozí dobu, kterou Service Fabric počká kvora pro obnovení je nekonečné, protože budete pokračovat, je (potenciální) před událostí ztráty a má jiná rizika. Přepsání výchozího `QuorumLossWaitDuration` hodnotu je možné, ale nedoporučuje. Místo toho v současné době veškeré úsilí je třeba obnovit dolů repliky. To vyžaduje přináší uzly, které jsou vypnuté zálohování a zajištění, že se znovu připojte jednotky, kde uloženy místní trvalý stav. Je-li ztráty kvora selhání procesu, Service Fabric automaticky pokusí znovu vytvořit procesy a restartujte repliky v nich obsažené. Když se to nepovede, Service Fabric oznámí chyby stavu. Pokud tyto lze vyřešit repliky obvykle vraťte se zpátky. V některých případech však repliky nelze uvést do zpět. Například jednotky může všechny selhaly nebo počítače fyzicky zničení nějakým způsobem. V těchto případech se teď máme událostí ztráty trvalé kvora. Předat ukončení čekání dolů repliky k téhle akci vrátit služba Service Fabric, Správce clusteru musíte určit, které oddíly, jejichž služby se to týká a volání `Repair-ServiceFabricPartition -PartitionId` nebo `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` rozhraní API.  Toto rozhraní API umožňuje zadat ID oddílu, který se má přesunout mimo QuorumLoss a do potenciální dataloss.
 
    > [!NOTE]
    > Je _nikdy_ bezpečné používat toto rozhraní API jiných než způsobem cílené na konkrétní oddíly. 

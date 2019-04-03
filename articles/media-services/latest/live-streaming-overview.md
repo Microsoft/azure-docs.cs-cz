@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: b8725dfcb2a337750c6e2a78ba7571114b8e3cd3
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: ab8d4fb9b46573d58fd93fc5121a4fc1918cc69d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407179"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879382"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
@@ -31,7 +31,7 @@ Azure Media Services umožňuje doručovat živé události do vašich zákazní
 Tento článek obsahuje přehled a pokyny k živé streamování pomocí služby Media Services a odkazy na další související články.
 
 > [!NOTE]
-> V současné době nelze použít na webu Azure portal ke správě prostředků v3. Použití [rozhraní REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref), nebo jeden z podporovaných [sady SDK](developers-guide.md).
+> Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](developers-guide.md).
 
 ## <a name="dynamic-packaging"></a>Dynamické balení
 
@@ -53,20 +53,20 @@ Dynamické filtrování se používá k řízení počet stop, formáty, přenos
 
 ![Předávací](./media/live-streaming/pass-through.svg)
 
-Při použití předávací **živá událost**, můžete spoléhat na vaše místní kodér služby live Encoding pro vygenerování více datový proud videa s přenosovou rychlostí a odeslat, že jako příspěvek kanálu pro živá událost (pomocí protokolu RTMP nebo fragmentovaný soubor MP4). Živá událost se potom provede prostřednictvím příchozí datové proudy videa bez dalšího zpracování. Takové vytvoření předávací živé události je optimalizovaná pro dlouho běžící události v reálném čase nebo 24 × 365 lineární živé streamování. 
+Při použití předávané **živé události** se spoléháte na váš místní kodér pro kódování v reálném čase, že vygeneruje stream videa s několika přenosovými rychlostmi a odešle ho jako informační kanál příspěvku do živé události (pomocí protokolu RTMP nebo fragmentovaného MP4). Živá událost potom přenese příchozí streamy videa bez dalšího zpracování. Takové vytvoření předávací živé události je optimalizovaná pro dlouho běžící události v reálném čase nebo 24 × 365 lineární živé streamování. 
 
 ### <a name="live-encoding"></a>Kódování v reálném čase  
 
 ![živé kódování](./media/live-streaming/live-encoding.svg)
 
-Pokud používáte živé kódování pomocí Media Services, nakonfigurujete by vaše místní kodér služby live Encoding odesílat videa s jednou přenosovou rychlostí jako příspěvek informačního kanálu živá událost (pomocí protokolu RTMP nebo fragmentovaný soubor Mp4). Živá událost kóduje této příchozí s jednou přenosovou rychlostí na datový proud stream [více přenosovými rychlostmi datový proud videa](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), zpřístupní pro doručení pro přehrávání zařízení prostřednictvím protokolů, jako jsou MPEG-DASH, HLS a Smooth Streaming. 
+Při použití kódování v reálném čase pomocí Media Services nakonfigurujte místní kodér pro kódování v reálném čase tak, aby jako informační kanál příspěvku do živé události odesílal video s jednou přenosovou rychlostí (pomocí protokolu RTMP nebo fragmentovaného MP4). Živá událost tento příchozí stream s jednou přenosovou rychlostí zakóduje do [streamu videa s několika přenosovými rychlostmi](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) a zpřístupní ho k doručení na zařízení pro přehrávání přes protokoly, jako jsou MPEG-DASH, HLS a Smooth Streaming. 
 
 ## <a name="live-streaming-workflow"></a>Pracovní postup živého streamování
 
 Živé streamování pracovního postupu v Media Services v3 informace o tom, je nutné nejdříve si přečtěte a koncepce následující: 
 
 - [Koncové body streamování](streaming-endpoint-concept.md)
-- [Události v reálném čase a živé výstupy](live-events-outputs-concept.md)
+- [Živé události a výstupy](live-events-outputs-concept.md)
 - [Lokátory streamování](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Obecné kroky
@@ -85,7 +85,7 @@ Pokud používáte živé kódování pomocí Media Services, nakonfigurujete by
 
 ## <a name="other-important-articles"></a>Další důležité články
 
-- [Doporučené kodéry](recommended-on-premises-live-encoders.md)
+- [Doporučené kodéry pro kódování v reálném čase](recommended-on-premises-live-encoders.md)
 - [Použití cloudového DVR](live-event-cloud-dvr.md)
 - [Porovnání funkcí živého typy událostí](live-event-types-comparison.md)
 - [Stavy a fakturace](live-event-states-billing.md)

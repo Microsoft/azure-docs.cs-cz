@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 9267360394568f0f9259a3c818b21f4e585fd958
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7e80455a2b83c034bea2fbdf774e5a175aed51a4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543725"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885736"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Mapování Tvůrce výrazů toku dat
 
@@ -51,7 +51,7 @@ Přidání komentářů do vaší výrazů pomocí jeden řádek a víceřádkov
 
 ## <a name="regular-expressions"></a>Regulární výrazy
 
-Jazyk výrazů toku dat objekt pro vytváření dat Azure [úplnou referenční dokumentaci](https://aka.ms/dataflowexpressions), umožňuje funkce, které zahrnují syntaxi regulárního výrazu. Při použití funkce regulárního výrazu, Tvůrce výrazů pokusí interpretovat zpětné lomítko (\) jako řídicí znak sekvence. Při použití zpětná lomítka v regulárním výrazu, uzavřete celý regulární výraz v taktech ` ` nebo použijte dvojité zpětné lomítko.
+Jazyk výrazů toku dat objekt pro vytváření dat Azure [úplnou referenční dokumentaci](https://aka.ms/dataflowexpressions), umožňuje funkce, které zahrnují syntaxi regulárního výrazu. Při použití funkce regulárního výrazu, Tvůrce výrazů pokusí interpretovat zpětné lomítko (\\) jako znak sekvence escape. Při použití zpětná lomítka v regulárním výrazu, uzavřete celý regulární výraz v taktech (\`) nebo použijte dvojité zpětné lomítko.
 
 Příklad použití značky
 

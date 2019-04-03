@@ -3,23 +3,23 @@ title: Začínáme s Azure Data Lake Storage Gen1 pomocí Powershellu | Dokument
 description: Pomocí prostředí Azure PowerShell k vytvoření účtu Azure Data Lake Storage Gen1 a provádění základních operací
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: 54d6dec6b61e4042b12cba833f4adf5d1321d1f1
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.author: twooley
+ms.openlocfilehash: 6635b572d11339307083b8aa2aaaba69dc731101
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237779"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885855"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Powershellu
 > [!div class="op_single_selector"]
-> * [Azure Portal](data-lake-store-get-started-portal.md)
+> * [Portál](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
@@ -123,6 +123,6 @@ Po zobrazení výzvy zadejte **Y**, a účet tak odstraňte.
 ## <a name="next-steps"></a>Další postup
 * [Průvodce laděním výkonu pro použití Powershellu s Azure Data Lake Storage Gen1](data-lake-store-performance-tuning-powershell.md)
 * [Použití Azure Data Lake Storage Gen1 pro potřeby velkého objemu dat](data-lake-store-data-scenarios.md) 
-* [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Zabezpečení dat v Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Použití Azure Data Lake Analytics s Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Použití Azure HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

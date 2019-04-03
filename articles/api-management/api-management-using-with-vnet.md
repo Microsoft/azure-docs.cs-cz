@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: a8566e41934b5d78d8be60b385ea4148e1cb60c3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 78efcefa7df99dfa3386dcdf19aafa47d7b9fab1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087036"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884499"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -146,7 +146,7 @@ Když jsou instance služby API Management je hostované ve virtuální síti, s
 
 + **Portál Azure Diagnostics**: Povolení toku diagnostické protokoly z webu Azure portal, při použití rozšíření pro správu rozhraní API z uvnitř virtuální sítě, odchozí přístup k `dc.services.visualstudio.com` na portu 443 je povinný. To pomáhá s řešením problémů, na které může setkat při použití rozšíření.
 
-+ **Vynucené tunelování provozu do brány Firewall v místním prostředí pomocí Express Route nebo síťové virtuální zařízení**: Běžnou konfigurací zákazníků je definovat vlastní výchozí trasa (0.0.0.0/0), která vynutí pro veškeré přenosy ze služby API Management delegované podsítě ke službě flow prostřednictvím brány firewall na místní nebo síťové virtuální zařízení. Tento tok provozu vždy přeruší připojení k službě Azure API Management, protože odchozí provoz je blokované v místním nebo NAT by nerozpoznatelný sadu adresy, které přestane fungovat v různých koncových bodů Azure. Řešení je potřeba udělat několik věcí:
++ **Vynucené tunelování provozu do brány Firewall v místním prostředí pomocí Express Route nebo síťové virtuální zařízení**: Běžnou konfigurací zákazníků je definovat vlastní výchozí trasa (0.0.0.0/0), která vynutí pro veškeré přenosy ze služby API Management delegované podsítě do flow na stránkách místní bráně firewall nebo do síťového virtuálního zařízení. Tento tok provozu vždy přeruší připojení k službě Azure API Management, protože odchozí provoz je blokované v místním nebo NAT by nerozpoznatelný sadu adresy, které přestane fungovat v různých koncových bodů Azure. Řešení je potřeba udělat několik věcí:
 
   * Povolení koncových bodů služby v podsíti, ve které nasazení služby API Management. [Koncové body služby] [ ServiceEndpoints] musí být povolené pro Azure Sql, Azure Storage, Azure EventHub a služby Azure Service Bus. Povolují se koncové body přímo ze služby API Management umožňuje delegovanou podsítě na tyto služby je, aby používaly páteřní síti Microsoft Azure poskytují optimální směrování provozu služeb. Pokud použijete koncové body služby pomocí vynuceného tunelového propojení Api Management, tunelové propojení výše uvedených služeb Azure, který provoz se nebude nuceně. API Management, které provoz závislostí služby je nucen tunelovat a nesmí se ztratit nebo služba API Management nebude správně fungovat.
     

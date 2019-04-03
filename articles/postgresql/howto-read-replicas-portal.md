@@ -5,46 +5,46 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.openlocfilehash: 24a37775298d6c6b40ec49f34158fcb77f26a379
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/01/2019
+ms.openlocfilehash: bf1fb1c1343173949ecb6348284cb537282b277b
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113210"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846963"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>Vytvořit a spravovat repliky pro čtení z webu Azure portal
 
 V tomto článku se dozvíte, jak vytvořit a spravovat repliky pro čtení ve službě Azure Database for PostgreSQL na webu Azure Portal. Další informace o čtení replik, najdete v článku [přehled](concepts-read-replicas.md).
 
-> [!IMPORTANT]
-> Funkce repliky pro čtení je ve verzi public preview.
 
 ## <a name="prerequisites"></a>Požadavky
 [– Azure Database for PostgreSQL server](quickstart-create-server-database-portal.md) na hlavní server.
 
 ## <a name="prepare-the-master-server"></a>Příprava hlavního serveru
-Tyto kroky musí použije k přípravě na úrovni obecné účely nebo k paměťově optimalizovaným hlavní server.
-
-`azure.replication_support` Parametr musí být nastaven na **REPLIKY** na hlavní server. Pokud tento parametr změníte, je nutné tato změna se projeví restartovat server.
+Tyto kroky musí použije k přípravě na úrovni obecné účely nebo k paměťově optimalizovaným hlavní server. Hlavní server připravený pro replikaci tak, že nastavíte parametr azure.replication_support. Při změně parametru replikace, je nutné tato změna se projeví restartovat server. Na webu Azure Portal, jsou tyto dva kroky zapouzdřena objektem na jediné tlačítko **povolit podporu replikace**.
 
 1. Na webu Azure Portal vyberte existující server Azure Database for PostgreSQL pro použití jako hlavní.
 
-2. V nabídce vlevo vyberte **parametry serveru**.
+2. Na bočním panelu serveru v části **nastavení**vyberte **replikace**.
 
-3. Hledat `azure.replication_support` parametru.
+3. Vyberte **povolit podporu replikace**. 
 
-   ![Vyhledejte parametr azure.replication_support](./media/howto-read-replicas-portal/azure-replication-parameter.png)
+   ![Povolit podporu replikace](./media/howto-read-replicas-portal/enable-replication-support.png)
 
-4. Nastavte `azure.replication_support` pro parametr **REPLIKY**. Vyberte **Uložit** chcete zachovat změny.
+4. Potvrďte, že chcete povolit podporu replikace. Tato operace restartuje hlavního serveru. 
 
-   ![Nastavte parametr na REPLIKU a uložte provedené změny](./media/howto-read-replicas-portal/save-parameter-replica.png)
+   ![Potvrďte podporu povolení replikace](./media/howto-read-replicas-portal/confirm-enable-replication.png)
+   
+5. Zobrazí se dvě oznámení portálu Azure portal a po dokončení operace. Existuje jedno oznámení pro aktualizace parametrů serveru. Existuje další oznámení o restartování serveru, který následuje ihned.
 
-5. Po uložení změn se zobrazí oznámení:
+   ![Oznámení o úspěchu – povolit](./media/howto-read-replicas-portal/success-notifications-enable.png)
 
-   ![Uložit oznámení](./media/howto-read-replicas-portal/parameter-save-notification.png)
+6. Aktualizace stránky Azure portal k aktualizaci nástrojů replikace. Nyní můžete vytvořit další repliky pro tento server.
 
-6. Restartujte server změny. Zjistěte, jak restartování serveru, najdete v článku [restartování serveru Azure Database for PostgreSQL](howto-restart-server-portal.md).
+   ![Aktualizace nástrojů](./media/howto-read-replicas-portal/updated-toolbar.png)
+   
+Povolení replikace podpory se o jednorázovou operaci jeden hlavní server. A **zakázat podporu replikace** tlačítko je k dispozici pro vaše pohodlí. Nedoporučujeme zakazuje podporu replikace, pokud si nejste jisti, že se nikdy vytvoření repliky na tomto hlavního serveru. Nelze zakázat podporu replikace, pokud hlavní server má existující repliky.
 
 
 ## <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
@@ -52,9 +52,7 @@ Vytvoření repliky pro čtení, postupujte podle těchto kroků:
 
 1. Vyberte existující server Azure Database for PostgreSQL pro použití jako hlavní server. 
 
-2. V nabídce server v části **nastavení**vyberte **replikace**.
-
-   Pokud jste nenastavili `azure.replication_support` parametr **REPLIKY** na obecné účely nebo k paměťově optimalizovaným hlavního serveru a restartujte server, dostanete oznámení. Před vytvořením repliky proveďte tyto kroky.
+2. Na bočním panelu serveru v části **nastavení**vyberte **replikace**.
 
 3. Vyberte **přidání repliky**.
 

@@ -1,25 +1,25 @@
 ---
 title: Pokyny k instalaci a nasazení agenta pro Linux C služby Azure Security Center pro IoT agenta ve verzi Preview | Dokumentace Microsoftu
 description: Zjistěte, jak Azure Security Center pro IoT agenta nainstalovat na 32bitová verze a 64bitová verze systému Linux.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 3ccf2aec-106a-4d2c-8079-5f3e8f2afdcb
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: mlottner
-ms.openlocfilehash: 147813ae096114b4dfc1a20d2e0a70639aa82445
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 0089fd1af6576f9bcdebe4b7f270a573205dea82
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754438"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861934"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Nasazení Azure Security Center pro zabezpečení na základě IoT C agenta pro Linux
 

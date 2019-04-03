@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50ab4d3c9134e94b60c4dd3eeb5603f450b036c3
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: c8c3395345093ae9a3d35deb27a08f12d331c9f3
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58794032"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861900"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Azure AD ochrana heslem v místním – nejčastější dotazy
 
@@ -117,6 +117,8 @@ Režim auditování je podporována pouze v místním prostředí služby Active
 ## <a name="additional-content"></a>Další obsah
 
 Na následujících odkazech nejsou součástí základní dokumentace ke službě ochrana hesel Azure AD, ale může být užitečné zdroje dalších informací o funkci.
+
+[Ochrana hesel Azure AD je teď obecně dostupná!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
 [E-mailu Průvodce ochrany Phishing – část 15: Implementace služby ochrany hesel služby Microsoft Azure AD (v místním příliš!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
 

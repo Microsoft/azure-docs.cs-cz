@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 95811459ff51b71153fb5ceef804a64c8b6a9be6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a4cf3a9c19497057d7799be3bec78ad0de97e71a
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816624"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851050"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojení ke službě Azure Cosmos DB pomocí nástroje pro analýzu BI pomocí ovladače ODBC
 
@@ -97,7 +97,7 @@ Existují dva typy metod vzorkování, které můžete použít: **kolekce mapov
 
 1. Až dokončíte definici schématu, klikněte na **souboru** | **Uložit**, přejděte do adresáře, chcete-li uložit schéma a pak klikněte na tlačítko **Uložit**.
 
-    Pokud chcete v budoucnu toto schéma používají, pomocí názvu DSN, otevřete okno Azure Cosmos DB ODBC – ovladače DSN nastavení (prostřednictvím Správce zdrojů dat ODBC), klikněte na tlačítko Upřesnit možnosti a potom v dialogovém okně soubor schématu přejděte na uložené schématu. Ukládání souboru schématu do existující DSN upraví připojení DSN do oboru k datům a struktura definovaná pomocí schématu.
+1. Chcete-li použít tohle schéma pomocí názvu DSN, otevřete **okna Azure Cosmos DB ODBC – ovladače DSN nastavení** (prostřednictvím Správce zdrojů dat ODBC), klikněte na tlačítko **rozšířené možnosti**a potom v **soubor schématu** , přejděte na uložené schématu. Ukládání souboru schématu do existující DSN upraví připojení DSN do oboru k datům a struktura definovaná pomocí schématu.
 
 ## <a id="table-mapping"></a>Krok 4: Vytvořte definici schématu pomocí oddělovače tabulky mapování – metoda
 

@@ -16,24 +16,24 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a7c6bea1c45cfe704bcff9ad2d4e47a30a9780cb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 210043eaaf09fb601fe01c33cc1a53c9146bf859
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439617"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848256"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Automatizované opravy pro SQL Server v Azure Virtual Machines (Resource Manager)
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-sql-automated-patching.md)
 > * [Classic](../sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)
 
-Automatizované opravy vytváří časového období údržby pro virtuální počítač Azure s SQL serverem. Automatické aktualizace lze nainstalovat pouze během tohoto časového období údržby. Pro SQL Server toto omezení zajišťuje, aktualizace systému a jakékoli přidružené požadavky na restarty vyskytovat na nejlepší možné době pro databázi. 
+Automatizované opravy vytváří časového období údržby pro virtuální počítač Azure s SQL serverem. Automatizované aktualizace je možné nainstalovat pouze během tohoto časového období údržby. V případě SQL Serveru toto omezení zajišťuje, že aktualizace systému a případná restartování proběhnou v době, která je pro databázi nejvhodnější. 
 
 > [!IMPORTANT]
-> Pouze aktualizace Windows označené **důležité** jsou nainstalovány. Další aktualizace SQL serveru, jako je kumulativní aktualizace, musí ručně doinstalovat. 
+> Nainstalují se pouze aktualizace Windows označené jako **Důležité**. Ostatní aktualizace SQL Serveru, jako jsou kumulativní aktualizace, je potřeba nainstalovat ručně. 
 
-Automatizované opravy závisí [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md).
+Automatizované opravy závisí na [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete použít, automatické opravy, vezměte v úvahu následující požadavky:
@@ -105,11 +105,11 @@ Chcete-li povolit automatické opravy poprvé, Azure nakonfiguruje agenta SQL Se
 ## <a name="configuration-with-powershell"></a>Konfigurace pomocí Powershellu
 Po zřízení virtuálního počítače s SQL, pomocí prostředí PowerShell můžete nakonfigurovat automatizované opravy.
 
-V následujícím příkladu prostředí PowerShell slouží ke konfiguraci automatické opravy na existujícím virtuálním počítači SQL serveru. **AzureRM.Compute\New AzVMSqlServerAutoPatchingConfig** příkaz nakonfiguruje nové časové období údržby pro automatické aktualizace.
+V následujícím příkladu prostředí PowerShell slouží ke konfiguraci automatické opravy na existujícím virtuálním počítači SQL serveru. **New-AzVMSqlServerAutoPatchingConfig** příkaz nakonfiguruje nové časové období údržby pro automatické aktualizace.
 
     $vmname = "vmname"
     $resourcegroupname = "resourcegroupname"
-    $aps = AzureRM.Compute\New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
+    $aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
 
     Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
 
@@ -127,7 +127,7 @@ Podle tohoto příkladu, následující tabulka popisuje praktický na cílovém
 
 To může trvat několik minut, instalaci a konfiguraci agenta SQL Server IaaS.
 
-Chcete-li zakázat automatické opravy, spusťte stejný skript bez **-povolit** parametr **AzureRM.Compute\New AzVMSqlServerAutoPatchingConfig**. Chybí **-povolit** parametr signály příkazu zakažte funkci.
+Chcete-li zakázat automatické opravy, spusťte stejný skript bez **-povolit** parametr **New-AzVMSqlServerAutoPatchingConfig**. Chybí **-povolit** parametr signály příkazu zakažte funkci.
 
 ## <a name="next-steps"></a>Další postup
 Informace o dalších úlohách dostupných automation najdete v tématu [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md).

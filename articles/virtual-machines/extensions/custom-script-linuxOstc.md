@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: 8638b788762a56813c622c0abffe2a8eae3c70c2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fe3803b7dc75ab13831a5e42d4b1a96f5aa894e5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437101"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882425"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Virtuální počítače s Linuxem pomocí Azure Custom Script rozšíření verze 1
 
@@ -296,8 +296,7 @@ Některé body, které mějte na paměti:
 
 1. Povolit je při spuštění příkazu.
 1. Stahování se týká stahování balíčku rozšíření CustomScript z Azure, není skript soubory určené v fileUris.
-1. Určení souboru protokolu je výpisu, můžete také zobrazit.`/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log
-`
+1. Můžete také zobrazit určení zapisuje si do souboru protokolu `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
 
 Dalším krokem je přejít kontrolu souboru protokolu, to je formát:
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 795abcadb1cee7599665f7bc3b8e0d3e08a3da05
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: cc2c125df2e3455b0e90919dbca92fe497a4b1b7
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369067"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884342"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminuje chybná hesla ve vaší organizaci
 
@@ -100,14 +100,17 @@ Po normalizace stane se toto heslo "contosoblankf9!". Proces vyhledávání shod
 [contoso] + [prázdné] + [f] + [9] + [!] = 5 body toto heslo je minimálně 5 body, je přijmout.
 
    > [!IMPORTANT]
-   > Mějte prosím na paměti, že algoritmus zakázaných hesel spolu s globálního seznamu můžete a změnit kdykoli v Azure na základě analýzy průběžné zabezpečení a výzkumu. Pro službu agenta místní řadič domény aktualizované algoritmy se projeví po softwaru agenta řadiče domény se znovu nainstaluje.
+   > Mějte prosím na paměti, že algoritmus zakázaných hesel spolu s globálního seznamu můžete a změnit kdykoli v Azure na základě analýzy průběžné zabezpečení a výzkumu. Pro službu agenta řadiče domény s místními aktualizované algoritmy se projeví po softwaru agenta řadiče domény se znovu nainstaluje.
 
 ## <a name="license-requirements"></a>Licenční požadavky
 
 |   | Ochrana hesel Azure AD pomocí seznamu globální zakázaných hesel | Ochrana hesel Azure AD pomocí seznamu vlastních zakázaných hesel|
 | --- | --- | --- |
-| Uživatelů pouze cloudu | Azure AD Free | Azure AD Basic |
+| Uživatelů pouze cloudu | Azure AD Free | Azure AD Premium P1 nebo P2 |
 | Uživatelé, které jsou synchronizované z místní Windows Server Active Directory | Azure AD Premium P1 nebo P2 | Azure AD Premium P1 nebo P2 |
+
+> [!NOTE]
+> Místní Windows Server Active Directory, kteří nejsou synchronizovány do Azure Active Directory také využít výhody ochrany hesla Azure AD podle stávajících licencí pro synchronizovaní uživatelé.
 
 Další licenční informace, včetně nákladů, můžete najít na [cenami služby Azure Active Directory web](https://azure.microsoft.com/pricing/details/active-directory/).
 

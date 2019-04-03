@@ -1,25 +1,25 @@
 ---
 title: Co je Azure Security Center pro náhled IoT | Dokumentace Microsoftu
 description: Další informace o službě Azure Security Center pro funkce IoT a služby.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 21737017c5087d25e36aec9701d3b4c5ddcb54e8
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 49decb2d67c8ff16f9912fea8e8ece1a3bd9feb5
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757603"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863028"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Představujeme Azure Security Center pro IoT
 
@@ -56,7 +56,7 @@ Získejte výhodu nad vyvíjejícími se kybernetickými útoky pomocí pokroči
 V tomto přehledu jste se dozvěděli o funkcích a službách ASC pro IoT. Další informace o ASC pro IoT architekturu, požadavky a zjistěte, jak začít, najdete v následujících článcích:
 
 - [Architektura](architecture.md)
-- [Požadavky na služby](service-prerequisites.md)
+- [Požadavky služeb](service-prerequisites.md)
 - [Začínáme](getting-started.md)
 - [Definice řešení](quickstart-configure-your-solution.md)
 - [ASC pro IoT – nejčastější dotazy](resources-frequently-asked-questions.md)

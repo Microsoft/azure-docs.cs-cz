@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f1eba2da1404f5b47d137b3c4f7b4cb9ceab43ea
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 64a688df3b6ed8602bb440d72e7f061c5f5893d1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438049"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885600"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Syntaxe dotazů Lucene ve službě Azure Search
 Můžete psát dotazy ve službě Azure Search založený na získáte bohaté [analyzátor dotazů Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) syntaxe pro formuláře specializovaném dotazovacím: zástupný znak, vyhledávání přibližných shod, vyhledávání blízkých výrazů regulární výrazy je pár příkladů. Velká část syntaxe analyzátor dotazů Lucene [Internet implementované ve službě Azure Search](search-lucene-query-architecture.md), s výjimkou produktů *rozsahu vyhledávání* které jsou vytvořeny ve službě Azure Search prostřednictvím `$filter` výrazy. 
@@ -85,7 +85,7 @@ V příkladu výše je tilda (~), ale stejný princip platí pro každý operát
 
  Ujistěte se prosím, že všechny nebezpečné a vyhrazené znaky jsou kódovány v adrese URL. Například "#" je nebezpečný znak, protože identifikátor fragement/ukotvení v adrese URL. Znak, který musí být kódovány za účelem `%23` Pokud se používá v adrese URL. "&" a "=" jsou příkladem vyhrazené znaky oddělení parametrů a zadejte hodnoty ve službě Azure Search. Podrobnosti najdete na [RFC1738: Uniform Resource Locator (URL)](https://www.ietf.org/rfc/rfc1738.txt) další podrobnosti.
 
- Jsou problematické znaky ``" ` < > # % { } | \ ^ ~ [ ] ``. Vyhrazené znaky jsou `; / ? : @ = + &`.
+ Jsou problematické znaky ``" ` < > # % { } | \ ^ ~ [ ]``. Vyhrazené znaky jsou `; / ? : @ = + &`.
 
 ### <a name="precedence-operators-grouping-and-field-grouping"></a>Priorita operátorů: seskupování a seskupení pole  
  Závorky slouží k vytvoření poddotazy, včetně operátorů v rámci kulatých závorek příkazu. Například `motel+(wifi||luxury)` Vyhledá dokumenty, které obsahují výraz "motel" a "Wi-Fi" nebo "luxusní" (nebo obojí).

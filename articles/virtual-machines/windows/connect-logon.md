@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 07a8195969df7ad7afd2bfe2e9124b07144d48cb
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 136b9141ccccfedf8d37fa0832b0673495d82417
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58284778"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846548"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Jak se připojit a přihlaste se k virtuálnímu počítači Azure s Windows
 Pomocí tlačítka **Připojit** na webu Azure Portal spustíte z počítače s Windows relaci Vzdálené plochy (protokol RDP). Nejdřív připojit k virtuálnímu počítači a pak přihlásit.
@@ -56,7 +56,9 @@ Pro připojení k virtuálnímu počítači s Windows z Macu, budete muset nains
 
 ## <a name="connect-to-the-virtual-machine-using-powershell"></a>Připojení k virtuálnímu počítači pomocí Powershellu
 
-Pokud používáte prostředí PowerShell a instalace modulu AzureRM může připojit pomocí `Get-AzRemoteDesktopFile` rutiny, jak je znázorněno níže.
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Pokud používáte prostředí PowerShell a mají nainstalovaný modul Azure PowerShell může připojit pomocí `Get-AzRemoteDesktopFile` rutiny, jak je znázorněno níže.
 
 V tomto příkladu se okamžitě spustí připojení RDP, který vás provede podobné výzvy jako výše.
 

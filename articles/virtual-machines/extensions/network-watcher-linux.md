@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 35cd773c2a30549dde10a73b2fbe6db1a0c8b34a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5ed5e791cd6e611218769650115c78afd1869f67
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989375"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879008"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Síť rozšíření virtuálních počítačů sledovacích procesů agenta pro Linux
 
@@ -38,12 +38,12 @@ Network Watcher Agent rozšíření lze nakonfigurovat pro následující distri
 
 | Distribuce | Verze |
 |---|---|
-| Ubuntu | 12 + |
+| Ubuntu | 12+ |
 | Debian | 7 a 8 |
 | Red Hat | 6 a 7 |
 | Oracle Linux | 6.8 + a 7 |
 | SUSE Linux Enterprise Server | 11 a 12 |
-| Přestupné OpenSUSE | 42.3 + |
+| Přestupné OpenSUSE | 42.3+ |
 | CentOS | 6.5 + a 7 |
 | CoreOS | 899.17.0+ |
 
@@ -118,9 +118,9 @@ azure vm extension get myVM1
 ```
 Rozšíření provádění výstup je zaznamenán soubory nalezené v následujícím adresáři:
 
-`
+```
 /var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
-`
+```
 
 Následující příklad ukazuje stav nasazení NetworkWatcherAgentLinux rozšíření pro virtuální počítače nasazené prostřednictvím Resource Manageru pomocí rozhraní příkazového řádku Azure:
 

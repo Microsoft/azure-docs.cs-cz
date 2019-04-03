@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81e31a6e5fd1260ec844cc36f28a64e44334ebec
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 2b88ac9a728606581c3364ac536b6c3fc2691024
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482762"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848759"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure Virtual Machines vysoká dostupnost pro SAP NetWeaver
 
@@ -456,14 +456,14 @@ Pro produkční systémy SAP, nasaďte virtuální počítače Azure s [připoje
 3. Pokud chcete získat seznam všech podsítí síť Azure, spusťte tento příkaz Powershellu:
 
    ```powershell
-   (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
+   (Get-AzVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
    ```
 
    **ID** pole zobrazí **SUBNETID**.
 4. Chcete-li získat seznam všech **SUBNETID** hodnoty, spusťte tento příkaz Powershellu:
 
    ```powershell
-   (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
+   (Get-AzVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
    ```
 
    **SUBNETID** vypadá přibližně takto:

@@ -9,16 +9,16 @@ ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74a7316ea00f5c38d6a2b1a98d81affeeffcd5e9
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 0506cc086cbc0c9ea30e199fd0bf18da3b8af545
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517993"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863079"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek obsahuje informace, které potřebujete k synchronizaci hesel uživatelů mezi místní instancí Active Directory a instanci cloudové služby Azure Active Directory (Azure AD).
@@ -46,7 +46,7 @@ Uživatel musí zadat své podnikové přihlašovací údaje podruhé k ověřen
 ### <a name="detailed-description-of-how-password-hash-synchronization-works"></a>Podrobný popis toho, jak funguje synchronizace hodnot hash hesel
 Následující část popisuje, podrobné, jak funguje synchronizace hodnot hash hesel mezi službami Active Directory a Azure AD.
 
-![Podrobné heslo toku](./media/how-to-connect-password-hash-synchronization/arch3a.png)
+![Podrobné heslo toku](./media/how-to-connect-password-hash-synchronization/arch3b.png)
 
 
 1. Každé dvě minuty, agent synchronizace hodnot hash hesel na žádosti serveru AD Connect uložených hodnot hash hesel (atributu unicodePwd) z řadiče domény.  Tento požadavek je pomocí standardu [MS DRSR](https://msdn.microsoft.com/library/cc228086.aspx) replikace protokol použitý k synchronizaci dat mezi řadiče domény. Účet služby musí mít replikace změn adresáře a replikovat všechny změny adresáře AD oprávněním (ve výchozím nastavení na instalaci) k získání hodnoty hash hesla.
@@ -142,5 +142,5 @@ Pokud máte problémy se synchronizace hodnot hash hesel, přečtěte si téma [
 
 ## <a name="next-steps"></a>Další postup
 * [Synchronizace Azure AD Connect: Přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
-* [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
+* [Integrace místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
 * [Získejte podrobný postup nasazení plánu pro migrace ze služby AD FS na synchronizaci hodnot Hash hesel](https://aka.ms/authenticationDeploymentPlan)

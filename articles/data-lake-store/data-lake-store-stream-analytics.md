@@ -3,21 +3,21 @@ title: Stream dat ze služby Stream Analytics do Azure Data Lake Storage Gen1 | 
 description: Pomocí Azure Stream Analytics streamování dat do Azure Data Lake Storage Gen1
 services: data-lake-store,stream-analytics
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: edb58e0b-311f-44b0-a499-04d7e6c07a90
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: nitinme
-ms.openlocfilehash: 1b18bd5aae398d2ec942120af5d96943636c346c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: twooley
+ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101107"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877546"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Stream data z Azure Storage Blob do služby Azure Data Lake Storage Gen1 pomocí Azure Stream Analytics
 V tomto článku se dozvíte, jak pomocí Azure Data Lake Storage Gen1 jako výstup pro úlohu Azure Stream Analytics. Tento článek ukazuje jednoduchý scénář, který čte data z Azure Storage blob (vstup) a zapisuje data do Data Lake Storage Gen1 (výstup).

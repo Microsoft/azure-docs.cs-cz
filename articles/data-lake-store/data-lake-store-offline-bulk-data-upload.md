@@ -3,21 +3,21 @@ title: Nahrávání velkých objemů dat do Azure Data Lake Storage Gen1 pomocí
 description: Použijte nástroj AdlCopy ke kopírování dat z Azure Storage BLOB do Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 45321f6a-179f-4ee4-b8aa-efa7745b8eb6
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 98cad0873c4ba687948dc404abc19655319bdc36
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.author: twooley
+ms.openlocfilehash: 4a8126d658f227d9eed372cd51cf06f8f12c99f9
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232263"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885516"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>Pomocí služby Azure Import/Export pro offline kopírování dat do Azure Data Lake Storage Gen1
 V tomto článku se dozvíte víc o kopírování obrovských sad dat (> 200 GB) do Azure Data Lake Storage Gen1 pomocí offline kopírování metod, jako je třeba [služba Azure Import/Export](../storage/common/storage-import-export-service.md). Soubor použitý jako příklad v tomto článku je konkrétně 339,420,860,416 bajtů nebo přibližně 319 GB na disku. Pojmenujme tuto 319GB.tsv souboru.
@@ -211,6 +211,6 @@ Join-AzDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importedda
 ```
 
 ## <a name="next-steps"></a>Další postup
-* [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Zabezpečení dat v Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Použití Azure Data Lake Analytics s Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Použití Azure HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

@@ -1,19 +1,19 @@
 ---
-title: Vlastní příkazy ke správě dat uložených v Azure Cosmos DB přes rozhraní API pro MongoDB
-description: Tento článek popisuje, jak používat vlastní příkazy ke správě dat uložených v Azure Cosmos DB přes rozhraní API pro MongoDB.
+title: Příkazy rozšíření MongoDB ke správě dat uložených v Azure Cosmos DB přes rozhraní API pro MongoDB
+description: Tento článek popisuje, jak spravovat data uložená v Azure Cosmos DB přes rozhraní API pro MongoDB pomocí příkazů rozšíření MongoDB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: 238ba2722fef52d4607a7832113c03c097ef90b3
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: aef77f121f20d867c8ec5e764d8c9639c961713d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58806817"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876884"
 ---
-# <a name="use-custom-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Použít vlastní příkazy ke správě dat uložených v Azure Cosmos DB přes rozhraní API pro MongoDB 
+# <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Spravovat data uložená v Azure Cosmos DB přes rozhraní API pro MongoDB pomocí příkazů rozšíření MongoDB 
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Může komunikovat s rozhraním API pro Azure Cosmos DB pro MongoDB pomocí některého z oblasti open source [ovladače klienta MongoDB](https://docs.mongodb.org/ecosystem/drivers). Azure Cosmos DB API pro MongoDB umožňuje použití existujících ovladačů klienta dodržováním [přenosový protokol MongoDB](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
@@ -21,7 +21,7 @@ Pomocí rozhraní Azure Cosmos DB API pro MongoDB můžete využívat výhody sl
 
 ## <a name="mongodb-protocol-support"></a>Podpora protokolů pro MongoDB
 
-Ve výchozím nastavení, rozhraní API Azure Cosmos DB pro MongoDB, je kompatibilní s databází MongoDB server verze 3.2, další podrobnosti najdete v tématu [podporovány funkcí a syntaxe](mongodb-feature-support.md). Funkce nebo operátory dotazu přidá MongoDB verze 3.4 jsou aktuálně k dispozici jako verze preview v Azure Cosmos DB API pro MongoDB. Následující vlastní příkazy podporu určitých funkcí služby Azure Cosmos DB při provádění operací CRUD s daty uloženými v Azure Cosmos DB přes rozhraní API pro MongoDB:
+Ve výchozím nastavení, rozhraní API Azure Cosmos DB pro MongoDB, je kompatibilní s databází MongoDB server verze 3.2, další podrobnosti najdete v tématu [podporovány funkcí a syntaxe](mongodb-feature-support.md). Funkce nebo operátory dotazu přidá MongoDB verze 3.4 jsou aktuálně k dispozici jako verze preview v Azure Cosmos DB API pro MongoDB. Následující příkazy rozšíření podporu určitých funkcí služby Azure Cosmos DB při provádění operací CRUD s daty uloženými v Azure Cosmos DB přes rozhraní API pro MongoDB:
 
 * [Vytvoření databáze](#create-database)
 * [Aktualizace databáze](#update-database)
@@ -32,7 +32,7 @@ Ve výchozím nastavení, rozhraní API Azure Cosmos DB pro MongoDB, je kompatib
 
 ## <a id="create-database"></a> Vytvoření databáze
 
-Příkaz create database vlastní vytvoří novou databázi MongoDB. Název databáze se používá v kontextu databáze, proti kterému spuštění příkazu. Formát příkazu CreateDatabase vypadá takto:
+Příkaz create database rozšíření vytvoří novou databázi MongoDB. Název databáze se používá v kontextu databáze, proti kterému spuštění příkazu. Formát příkazu CreateDatabase vypadá takto:
 
 ```
 {
@@ -43,7 +43,7 @@ Příkaz create database vlastní vytvoří novou databázi MongoDB. Název data
 
 Následující tabulka popisuje parametry v rámci příkazu:
 
-|**Pole**|**Typ** |**Popis** |
+|**Pole**|**Type** |**Popis** |
 |---------|---------|---------|
 | customAction   |  string  |   Název vlastního příkazu musí být "CreateDatabase".      |
 | offerThroughput | int  | Zřízená propustnost, kterou jste nastavili v databázi. Tento parametr je volitelný. |
@@ -74,7 +74,7 @@ db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 
 ## <a id="update-database"></a> Aktualizace databáze
 
-Vlastní příkaz aktualizace databáze aktualizuje vlastnosti přidružené k zadané databázi. V současné době lze aktualizovat pouze vlastnost "offerThroughput".
+Příkaz update databáze rozšíření aktualizuje vlastnosti přidružené k zadané databázi. V současné době lze aktualizovat pouze vlastnost "offerThroughput".
 
 ```
 {
@@ -85,7 +85,7 @@ Vlastní příkaz aktualizace databáze aktualizuje vlastnosti přidružené k z
 
 Následující tabulka popisuje parametry v rámci příkazu:
 
-|**Pole**|**Typ** |**Popis** |
+|**Pole**|**Type** |**Popis** |
 |---------|---------|---------|
 | customAction    |    string     |   Název vlastní příkaz. Musí být "UpdateDatabase".      |
 |  offerThroughput   |  int       |     Nové zřízená propustnost, kterou chcete nastavit v databázi.    |
@@ -107,7 +107,7 @@ db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 
 ## <a id="get-database"></a> Získat databázi
 
-Vlastní příkaz get databáze vrátí objekt databáze. Název databáze se používá v kontextu databáze, proti kterému spuštění příkazu.
+Příkaz get databáze rozšíření vrátí objekt databáze. Název databáze se používá v kontextu databáze, proti kterému spuštění příkazu.
 
 ```
 {
@@ -118,7 +118,7 @@ Vlastní příkaz get databáze vrátí objekt databáze. Název databáze se po
 Následující tabulka popisuje parametry v rámci příkazu:
 
 
-|**Pole**|**Typ** |**Popis** |
+|**Pole**|**Type** |**Popis** |
 |---------|---------|---------|
 |  customAction   |   string      |   Název vlastní příkaz. Musí být "GetDatabase"|
         
@@ -126,7 +126,7 @@ Následující tabulka popisuje parametry v rámci příkazu:
 
 Pokud příkaz proběhne úspěšně, odpověď obsahuje dokument s následující pole:
 
-|**Pole**|**Typ** |**Popis** |
+|**Pole**|**Type** |**Popis** |
 |---------|---------|---------|
 |  `ok`   |   `int`     |   Stav odpovědi. 1 == úspěch. 0 == selhání.      |
 | `database`    |    `string`        |   Název databáze.      |
@@ -147,7 +147,7 @@ db.runCommand({customAction: "GetDatabase"});
 
 ## <a id="create-collection"></a> Vytvoření kolekce
 
-Vytvořit kolekci vlastní příkaz vytvoří novou kolekci MongoDB. Název databáze se používá v kontextu databáze, proti kterému spuštění příkazu. Formát příkazu CreateCollection vypadá takto:
+Příkaz create kolekce rozšíření vytvoří novou kolekci MongoDB. Název databáze se používá v kontextu databáze, proti kterému spuštění příkazu. Formát příkazu CreateCollection vypadá takto:
 
 ```
 {
@@ -160,7 +160,7 @@ Vytvořit kolekci vlastní příkaz vytvoří novou kolekci MongoDB. Název data
 
 Následující tabulka popisuje parametry v rámci příkazu:
 
-|**Pole**|**Typ** |**Popis** |
+|**Pole**|**Type** |**Popis** |
 |---------|---------|---------|
 | customAction    | string | Název vlastní příkaz. Musí být "CreateDatabase"     |
 | kolekce      | string | Název kolekce                                   |
@@ -193,7 +193,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 ## <a id="update-collection"></a> Aktualizace kolekce
 
-Příkaz pro vlastní shromažďování aktualizace aktualizuje vlastnosti přidružené k zadané kolekci.
+Příkaz update kolekce rozšíření aktualizuje vlastnosti přidružené k zadané kolekci.
 
 ```
 {
@@ -205,7 +205,7 @@ Příkaz pro vlastní shromažďování aktualizace aktualizuje vlastnosti přid
 
 Následující tabulka popisuje parametry v rámci příkazu:
 
-|**Pole**|**Typ** |**Popis** |
+|**Pole**|**Type** |**Popis** |
 |---------|---------|---------|
 |  customAction   |   string      |   Název vlastní příkaz. Musí být "UpdateCollection".      |
 |  kolekce   |   string      |   Název kolekce.       |
@@ -240,7 +240,7 @@ Vlastní příkaz get kolekce vrátí objekt kolekce.
 Následující tabulka popisuje parametry v rámci příkazu:
 
 
-|**Pole**|**Typ** |**Popis** |
+|**Pole**|**Type** |**Popis** |
 |---------|---------|---------|
 | customAction    |   string      |   Název vlastní příkaz. Musí být "GetCollection".      |
 | kolekce    |    string     |    Název kolekce.     |
@@ -250,7 +250,7 @@ Následující tabulka popisuje parametry v rámci příkazu:
 Pokud příkaz proběhne úspěšně, odpověď obsahuje dokument s následující pole
 
 
-|**Pole**|**Typ** |**Popis** |
+|**Pole**|**Type** |**Popis** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   Stav odpovědi. 1 == úspěch. 0 == selhání.      |
 | `database`    |    `string`     |   Název databáze.      |
@@ -275,7 +275,7 @@ db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 
 Pokud není zadán, obsahuje vlastní odpovědi dokument s následující pole:
 
-|**Pole**|**Typ** |**Popis** |
+|**Pole**|**Type** |**Popis** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   Stav odpovědi. 1 == úspěch. 0 == selhání.      |
 | `code`    |   `int`      |   Pouze vrátí, když příkaz se nezdařil (to znamená ok == 0). Obsahuje kód chyby: MongoDB. Toto je parametr volitelný odpovědi.      |

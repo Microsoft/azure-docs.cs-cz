@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9a1bb630c14ef504cb60a6847643a60f1cc90a1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 60ce66b079942944176540826c7f3e7a91b070d2
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368643"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861858"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Historie verze agenta Azure AD ochrana heslem
 
@@ -26,6 +26,9 @@ Datum vydání: 3/22/2019
 
 * Opravte chyby menší překlep v protokolu událostí zprávy
 * Smlouvu EULA aktualizace na finální verzi všeobecné dostupnosti
+
+> [!NOTE]
+> Sestavení 1.2.125.0 je obecně dostupná sestavení. Děkujeme, že jste znovu pro všechny uživatele v produktu poskytuje zpětnou vazbu!
 
 ## <a name="121160"></a>1.2.116.0
 

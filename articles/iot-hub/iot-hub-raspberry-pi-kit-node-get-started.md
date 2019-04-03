@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: ebdc90dc35f891ea1811ce81c5bdc1b937c58a5c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0db28fb8016176bdd66e5406a6f1c0a18cc5c3e8
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529239"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847591"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Připojte Raspberry Pi pro službu Azure IoT Hub (Node.js)
 
@@ -24,7 +24,6 @@ ms.locfileid: "57529239"
 V tomto kurzu začnete pomocí seznámení se základy práce s Raspberry Pi, na kterém běží Raspbian. Pak se naučíte bez problémů propojit si zařízení do cloudu s využitím [Azure IoT Hub](about-iot-hub.md). Ukázky Windows 10 IoT Core najdete [Windows Dev Center](https://www.windowsondevices.com/).
 
 Sadu ještě nemáte? Zkuste [online simulátor Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md). Nebo zakoupit sadu nových [tady](https://azure.microsoft.com/develop/iot/starter-kits).
-
 
 ## <a name="what-you-do"></a>Co můžete dělat
 
@@ -87,7 +86,7 @@ Příprava pro instalaci bitové kopie Raspbian karty microSD.
 
    > [!WARNING]
    > Použijte prosím nad odkaz ke stažení `raspbian-2017-07-5` zip image. Nejnovější verzi Image Raspbian má několik známých problémů v uzlu její Pi, což by mohlo způsobit selhání v dalších krocích.
- 
+
    b. Extrahujte Raspbian image do složky v počítači.
 
 2. Instalace na kartě microSD Raspbian.
@@ -160,26 +159,26 @@ Zapněte pí pomocí USB kabelu micro a napájení. Pomocí kabelu Ethernet Pi p
 ### <a name="clone-sample-application-and-install-the-prerequisite-packages"></a>Naklonujte ukázkovou aplikaci a nainstalujte požadované balíčky
 
 1. Připojení k Raspberry Pi s jedním z následujících klientů SSH z hostitelského počítače:
-   
+
    **Uživatelé Windows**
   
    a. Stáhněte a nainstalujte [PuTTY](https://www.putty.org/) pro Windows. 
 
    b. Zkopírujte IP adresu části Pi do názvu hostitele (nebo IP adresu) a vyberte jako typ připojení SSH.
-   
+
    ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
-   
+
    **Mac a uživatelé Ubuntu**
-   
+
    Pomocí integrovaného klienta SSH v systému Ubuntu nebo macOS. Možná budete muset spustit `ssh pi@<ip address of pi>` připojit Pi přes protokol SSH.
 
    > [!NOTE] 
    > Výchozí uživatelské jméno `pi` a heslo je `raspberry`.
 
 2. Nainstalujte Node.js a NPM na vaše číslo pí.
-   
+
    Nejprve zkontrolujte verzi Node.js. 
-   
+
    ```bash
    node -v
    ```
@@ -203,6 +202,7 @@ Zapněte pí pomocí USB kabelu micro a napájení. Pomocí kabelu Ethernet Pi p
    cd iot-hub-node-raspberrypi-client-app
    sudo npm install
    ```
+
    > [!NOTE] 
    >Může trvat několik minut na dokončení tohoto procesu instalace v závislosti na připojení k síti.
 
@@ -238,8 +238,14 @@ Měli byste vidět následující výstup, který zobrazuje data ze senzorů a z
 
 ![Výstup – data ze senzorů odeslané do služby IoT hub z Raspberry Pi](./media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
 
+## <a name="read-the-messages-received-by-your-hub"></a>Přečtěte si zprávy přijaté službou rozbočovače
+
+Jedním ze způsobů monitorování zprávy přijaté službou IoT hub ze zařízení s je použití nástroje Azure IoT pro Visual Studio Code. Další informace najdete v tématu [pomocí Azure IoT, nástrojů pro Visual Studio Code k odesílání a příjem zpráv mezi zařízením a centrem IoT](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+
+Další způsoby, jak zpracovat data odeslaná tímto zařízením pokračujte v další části.
+
 ## <a name="next-steps"></a>Další postup
 
-Jste spustili ukázkovou aplikaci shromažďovat data ze senzorů a odesílat je do služby IoT hub. Zprávy, které služba IoT hub nebo odesílání zpráv do Raspberry Pi odeslal Raspberry Pi najdete v tématu [pomocí Azure IoT, nástrojů pro Visual Studio Code k odesílání a příjem zpráv mezi zařízením a centrem IoT](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+Jste spustili ukázkovou aplikaci shromažďovat data ze senzorů a odesílat je do služby IoT hub.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

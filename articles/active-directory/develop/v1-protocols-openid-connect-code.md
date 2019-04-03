@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 281e1109964ac64853b8b82525579b7ff4de0d2f
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 1e39f271eaf0eccd0b3f3439492205e0d3398358
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406401"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851183"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autorizace přístupu k webovým aplikacím pomocí OpenID Connect a službou Azure Active Directory
 
@@ -95,7 +95,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | response_type |povinné |Musí zahrnovat `id_token` pro přihlášení OpenID Connect. Může také zahrnovat další response_types, jako například `code` nebo `token`. |
 | scope | Doporučené | Specifikace OpenID Connect vyžaduje obor `openid`, který se přeloží na "Přihlášení" oprávnění v souhlasu uživatelského rozhraní. Tato a další obory OIDC se ignorují v koncových bodech v1.0, ale stále je to osvědčený postup pro klienty vyhovuje standardům. |
 | Hodnota Nonce |povinné |Hodnota zahrnutý v požadavku, vygenerované aplikaci, která je zahrnutá ve výsledné `id_token` jako deklarace identity. Aplikace pak můžete ověřit tuto hodnotu a zmírnění útoků opětovného přehrání tokenu. Hodnota je obvykle náhodného, jedinečný řetězec nebo identifikátor GUID, který slouží k určení původu žádosti. |
-| redirect_uri | Doporučené |Redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Musí odpovídat přesně jeden z redirect_uris, které jste zaregistrovali na portálu, s tím rozdílem, musí být kódování url. Pokud chybí, pošle uživatelského agenta zpět na přesměrování, na které registrovaný kód URIs pro aplikace, náhodně. |
+| redirect_uri | Doporučené |Redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Musí odpovídat přesně jeden z redirect_uris, které jste zaregistrovali na portálu, s tím rozdílem, musí být kódování url. Pokud chybí, pošle uživatelského agenta zpět na přesměrování, na které registrovaný kód URIs pro aplikace, náhodně. Maximální délka je 255 bajtů |
 | response_mode |nepovinné |Určuje metodu, která se má použít k odeslání výsledný authorization_code zpět do aplikace. Podporované hodnoty jsou `form_post` pro *HTTP post formuláře* a `fragment` pro *fragment adresy URL*. Pro webové aplikace, doporučujeme používat `response_mode=form_post` k zajištění nejvyšší zabezpečení přenosu tokeny do vaší aplikace. Ve výchozím nastavení všech toků, včetně tokentu id_token `fragment`.|
 | state |Doporučené |Hodnota v požadavku, který je vrácený v odpovědi tokenu. Může být řetězec jakéhokoli obsahu, který chcete. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
 | řádek |nepovinné |Určuje typ interakce s uživatelem, který je požadován. V současné době pouze platné hodnoty jsou "přihlášení", "žádný" a "souhlas". `prompt=login` donutí uživatele k zadání přihlašovacích údajů tohoto požadavku negace jednotného přihlašování. `prompt=none` je opakem – zajišťuje, že uživatel se nezobrazí se žádné interaktivní výzvu jakýmkoli způsobem. Pokud žádost nejde dokončit tiše prostřednictvím jednotného přihlašování, koncový bod vrátí chybu. `prompt=consent` aktivační události OAuth souhlas dialogové okno po přihlášení uživatele, s výzvou uživateli udělit oprávnění k aplikaci. |

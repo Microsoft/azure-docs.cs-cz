@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 03/19/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 031abcb9133663f39375560a06b0770c89eafb27
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: acea42f7f4ab986e9828000ab7cfc9e302ed92a3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259563"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885447"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Pokyny k návrhu pro použití replikované tabulky ve službě Azure SQL Data Warehouse
 Tento článek obsahuje doporučení pro navrhování replikované tabulky ve schématu SQL Data Warehouse. Ke zlepšení výkonu dotazů zmenšením složitost přesunu a dotazování dat pomocí těchto doporučení.
@@ -95,8 +95,8 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 Replikované tabulky. nevyžaduje žádné přesunu dat pro spojení, protože celá tabulka je již k dispozici na jednotlivých výpočetních uzlech. Pokud tabulky dimenzí distribuované kruhové dotazování, spojení zkopíruje tabulky dimenzí v plné výši na každém výpočetním uzlu. Plán dotazu pro přesun dat, obsahuje operaci volat BroadcastMoveOperation. Tento typ operace přesunu dat zpomalí výkon dotazů a vyloučit pomocí replikované tabulky. Chcete-li zobrazit kroky plán dotazu, použijte [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) zobrazení katalogu systému. 
 
-Například v následující dotaz proti schématu AdventureWorks ` FactInternetSales` je tabulka hash distribuován. `DimDate` a `DimSalesTerritory` menší tabulky dimenze. Tento dotaz vrátí celkový prodej v Severní Americe fiskálního roku 2004:
- 
+Například v následující dotaz proti schématu AdventureWorks `FactInternetSales` je tabulka hash distribuován. `DimDate` a `DimSalesTerritory` menší tabulky dimenze. Tento dotaz vrátí celkový prodej v Severní Americe fiskálního roku 2004:
+
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)
 FROM dbo.FactInternetSales s

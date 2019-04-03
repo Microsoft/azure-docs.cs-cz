@@ -1,5 +1,5 @@
 ---
-title: Jak pomocí protokolu AMQP 1.0 rozhraní Java API služby Service Bus | Dokumentace Microsoftu
+title: Použití AMQP 1.0 s rozhraním API Java JMS služby Service Bus | Dokumentace Microsoftu
 description: Jak používat službu zpráva Java (JMS) pomocí služby Azure Service Bus a rozšířené řízení front zpráv protokolu (AMQP) 1.0.
 services: service-bus-messaging
 documentationcenter: java
@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 2cba3744180a257638aca202d44fa433a5e1a2bc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a7e4282a176794fe885049173ba56ce2461cd6fa
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453401"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885549"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak Java Message Service (JMS) rozhraní API pomocí služby Service Bus a protokolu AMQP 1.0
 Rozšířené řízení front zpráv protokolu (AMQP) 1.0 je efektivní a spolehlivý přenosový protokol zasílání zpráv, který vám pomůže vytvářet aplikace napříč platformami, robustní zasílání zpráv.
@@ -381,7 +381,7 @@ Tato příručka vám ukázal, jak používat funkce Service Bus pro zprostředk
 Služba Service Bus protokolu AMQP 1.0 můžete použít také z jiných jazyků, včetně .NET, C, Python a PHP. Komponenty sestavené pomocí těchto různých jazyků můžete spolehlivě výměnu zpráv a s plnou věrností pomocí protokolu AMQP 1.0 podporují ve službě Service Bus.
 
 ## <a name="next-steps"></a>Další postup
-* [Podpora AMQP 1.0 ve službě Azure Service Bus](service-bus-amqp-overview.md)
+* [Podpora AMQP 1.0 v Azure Service Bus](service-bus-amqp-overview.md)
 * [Jak rozhraní .NET API služby Service Bus pomocí protokolu AMQP 1.0](service-bus-dotnet-advanced-message-queuing.md)
 * [Service Bus AMQP 1.0 – Příručka vývojáře](service-bus-amqp-dotnet.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)

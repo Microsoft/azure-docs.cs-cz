@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5233f9421b02be9b34bb481252f749e153942573
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 5de6ba8ab64797da24039718ca7f2c0b88d1d33d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312015"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881337"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrace serverů s Windows Serverem 2008 do Azure
 
@@ -34,7 +34,7 @@ V části Omezení a známé problémy najdete několik omezení a alternativní
 ## <a name="supported-operating-systems-and-environments"></a>Podporované operační systémy a prostředí
 
 
-|Operační systém  | Místní prostředí  |
+|Operační systém  | V místním prostředí  |
 |---------|---------|
 |Windows Server 2008 SP2 – 32bitová a 64bitová verze(IA-32 a x86-64)</br>– Standard</br>– Enterprise</br>– Datacenter   |     Virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery    |
 |Windows Server 2008 R2 SP1 – 64bitová verze</br>– Standard</br>– Enterprise</br>– Datacenter     |     Virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery|
@@ -52,7 +52,7 @@ Pokud chcete migrovat virtuální počítače Hyper-V s Windows Serverem 2008 ne
 
 Ve zbývající části tohoto kurzu se dozvíte, jak migrovat místní virtuální počítače VMware a fyzické servery s Windows Serverem 2008 nebo 2008 R2.
 > [!TIP]
-> Hledáte bez agentů způsob, jak migrovat virtuální počítače VMware do Azure? [Kliknutím sem](https://aka.ms/migrateVMs-signup)
+> Hledáte bez agentů způsob, jak migrovat virtuální počítače VMware do Azure? [Klikněte sem](https://aka.ms/migrateVMs-signup)
 
 
 ## <a name="limitations-and-known-issues"></a>Omezení a známé problémy

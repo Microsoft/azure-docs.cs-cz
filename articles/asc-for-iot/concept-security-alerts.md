@@ -1,25 +1,25 @@
 ---
 title: Výstrahy v Průvodci zabezpečením Azure Security Center pro náhled IoT | Dokumentace Microsoftu
 description: Další informace o výstrahách zabezpečení a doporučené nápravy pro funkce IoT a služby pomocí Azure Security Center.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: a5c25cba-59a4-488b-abbe-c37ff9b151f9
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 987bfa0da190bd2bd29634b46b5f06ff4dc1cc19
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f3ae69cb6c8e2a60488b4f1ff3df1bb8ab0c04ea
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755103"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861974"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center pro výstrahy zabezpečení IoT
 
@@ -95,4 +95,4 @@ Další podrobnosti najdete v tématu [vytvářet vlastní výstrahy](quickstart
 
 - [Přehled](overview.md)
 - [Přístup k vašim datům zabezpečení](how-to-security-data-access.md)
-- [Prozkoumat zařízení](how-to-investigate-device.md)
+- [Prozkoumání zařízení](how-to-investigate-device.md)

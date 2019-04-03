@@ -3,24 +3,24 @@ title: Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure portal | Do
 description: Pomocí webu Azure portal vytvořit účet Azure Data Lake Storage Gen1 a provádění základních operací v účtu Data Lake Storage Gen1.
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: a99d8a265cdc72b6bd1dd45ab670f514d828f808
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: twooley
+ms.openlocfilehash: e021d8c056028c03ac71d2a27c9128272f374da6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005697"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883577"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure portal
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](data-lake-store-get-started-portal.md)
+> * [Portál](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
@@ -124,7 +124,7 @@ Pokud chcete odstranit účet Data Lake Storage Gen1 z Data Lake Storage Gen1 ok
 
 ## <a name="next-steps"></a>Další postup
 * [Použití Azure Data Lake Storage Gen1 pro potřeby velkého objemu dat](data-lake-store-data-scenarios.md) 
-* [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Zabezpečení dat v Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Použití Azure Data Lake Analytics s Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Použití Azure HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 

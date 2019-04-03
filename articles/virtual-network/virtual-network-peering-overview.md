@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: e32bc2f4697b5ac32993a5da66e5c38cb7add03f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 3488e8501b0b9bea83bfcce5085d42b6476d3ed2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200578"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880419"
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
@@ -92,7 +92,7 @@ Informace o oprávněních požadovaných k vytvoření partnerského vztahu vir
 
 Za příchozí a výchozí přenos využívající partnerské propojení virtuálních sítí se účtuje nominální poplatek. Další informace o cenách partnerských vztahů virtuálních sítí a globálních partnerských vztahů virtuálních sítí najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Průchod bránou je vlastnost partnerského uzlu, která umožňuje, aby virtuální síť využila bránu VPN v partnerské virtuální síti pro připojení mezi více umístěními nebo virtuálními sítěmi. Datové přenosy procházející v takové situaci vzdálenou bránou podléhají [poplatkům za bránu VPN](https://azure.microsoft.com/pricing/details/vpn-gateway/), ale ne [poplatkům za partnerský vztah virtuální sítě](https://azure.microsoft.com/pricing/details/virtual-network). Například pokud má virtuální síť VNetA bránu VPN pro připojení k místní síti a virtuální síť VNetB je v partnerském vztahu k virtuální síti VNetA s nakonfigurovanými příslušnými vlastnostmi, datové přenosy ze sítě VNetB do místní sítě se účtují jenom podle ceníku výchozích přenosů na bránu VPN. V této situaci se neúčtují poplatky za partnerský vztah virtuálních sítí. Zjistěte, jak [nakonfigurovat průchod bránou VPN pro partnerský vztah virtuální sítě](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Průchod bránou je vlastnost partnerského uzlu, která umožňuje, aby virtuální síť využila bránu VPN v partnerské virtuální síti pro připojení mezi více umístěními nebo virtuálními sítěmi. Datové přenosy procházející v takové situaci vzdálenou bránou podléhají [poplatkům za bránu VPN](https://azure.microsoft.com/pricing/details/vpn-gateway/), ale ne [poplatkům za partnerský vztah virtuální sítě](https://azure.microsoft.com/pricing/details/virtual-network). Například pokud virtuální síť má bránu sítě VPN pro připojení k místním a VNetB je v partnerském vztahu pro virtuální síť s příslušné vlastnosti nakonfigurovat, provoz z VNetB k místnímu je účtovat jenom poplatky za výchozí přenos dat za ceny služby VPN gateway. V této situaci se neúčtují poplatky za partnerský vztah virtuálních sítí. Zjistěte, jak [nakonfigurovat průchod bránou VPN pro partnerský vztah virtuální sítě](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="next-steps"></a>Další postup
 
@@ -101,9 +101,9 @@ Průchod bránou je vlastnost partnerského uzlu, která umožňuje, aby virtuá
     |Model nasazení Azure             | Předplatné  |
     |---------                          |---------|
     |Obě Resource Manager              |[Stejné](tutorial-connect-virtual-networks-portal.md)|
-    |                                   |[Různé](create-peering-different-subscriptions.md)|
+    |                                   |[Odlišné](create-peering-different-subscriptions.md)|
     |Jedna Resource Manager, druhá Classic  |[Stejné](create-peering-different-deployment-models.md)|
-    |                                   |[Různé](create-peering-different-deployment-models-subscriptions.md)|
+    |                                   |[Odlišné](create-peering-different-deployment-models-subscriptions.md)|
 
 * Zjistěte, jak vytvořit [hvězdicovou síťovou topologii](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Prostudujte si všechna [nastavení partnerského vztahu virtuálních sítí a jejich změny](virtual-network-manage-peering.md).

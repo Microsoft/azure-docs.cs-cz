@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: 2d296281f6865030bcdfec33d8c69cc313a358a5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c93bca14d9385eaf9f79f69d76e9e704796da7a9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011902"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850890"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení virtuálních počítačů pro SAP NetWeaver v Azure
 
@@ -178,7 +178,7 @@ ms.locfileid: "58011902"
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
-[msdn-set-azurermvmaemextension]:https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmaemextension
+[msdn-set-Azvmaemextension]:https://docs.microsoft.com/powershell/module/az.compute/set-azvmaemextension
 
 [planning-guide]:planning-guide.md (Azure Virtual Machines, plánování a implementace SAP)
 [planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff (Prostředky)
@@ -234,7 +234,6 @@ ms.locfileid: "58011902"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd (Síťových služeb Microsoft Azure)
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f (Úložiště: Microsoft Azure Storage a datové disky)
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/network-overview.md
@@ -262,7 +261,7 @@ ms.locfileid: "58011902"
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-azure-resource-manager-architecture]:../../../resource-manager-deployment-model.md
-[virtual-machines-azurerm-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
+[virtual-machines-Az-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md (Nasazení a správa virtuálních počítačů pomocí šablon Azure Resource Manageru a Azure CLI)
 [virtual-machines-deploy-rmtemplates-powershell]:../../virtual-machines-windows-ps-manage.md (Správa virtuálních počítačů pomocí Azure Resource Manageru a Powershellu)
@@ -318,6 +317,8 @@ Azure Virtual Machines je řešení pro organizace, které potřebují výpočet
 V tomto článku se budeme zabývat kroky k nasazení aplikací SAP na virtuálních počítačích (VM) v Azure, včetně možnosti alternativní nasazení a řešení potíží. Tento článek vychází z informací v [Azure Virtual Machines plánování a implementace SAP Netweaveru][planning-guide]. Také doplňuje dokumentaci k instalaci SAP a SAP poznámky, které jsou primární zdroje pro instalaci a nasazení softwaru SAP.
 
 ## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 Nastavení virtuálního počítače Azure pro nasazení softwaru SAP zahrnuje více kroků a prostředky. Než začnete, ujistěte se, že splňujete požadavky pro instalaci softwaru SAP na virtuálních počítačích v Azure.
 
@@ -786,7 +787,7 @@ Tato část obsahuje podrobný postup k provádění konkrétních úkolů v pro
 
 Pokud chcete zkontrolovat verzi rutin Azure Powershellu, které jsou nainstalovány v počítači, spusťte tento příkaz Powershellu:
 ```powershell
-(Get-Module AzureRm.Compute).Version
+(Get-Module Az.Compute).Version
 ```
 Výsledek vypadá takto:
 
@@ -937,22 +938,22 @@ Chcete-li nainstalovat rozšířené monitorování rozšíření Azure pro SAP 
 
 1. Ujistěte se, že jste nainstalovali nejnovější verzi rutin Azure Powershellu. Další informace najdete v tématu [rutin nasazení prostředí Azure PowerShell][deployment-guide-4.1].  
 1. Spusťte následující rutinu Azure PowerShellu.
-    Seznam dostupných prostředí, spusťte `commandlet Get-AzureRmEnvironment`. Pokud chcete použít globální Azure, je vaše prostředí **AzureCloud**. Azure v Číně, vyberte **AzureChinaCloud**.
+    Seznam dostupných prostředí, spusťte `commandlet Get-AzEnvironment`. Pokud chcete použít globální Azure, je vaše prostředí **AzureCloud**. Azure v Číně, vyberte **AzureChinaCloud**.
 
     ```powershell
-    $env = Get-AzureRmEnvironment -Name <name of the environment>
-    Connect-AzureRmAccount -Environment $env
-    Set-AzureRmContext -SubscriptionName <subscription name>
+    $env = Get-AzEnvironment -Name <name of the environment>
+    Connect-AzAccount -Environment $env
+    Set-AzContext -SubscriptionName <subscription name>
 
-    Set-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+    Set-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
     ```
 
 Po zadání data vašeho účtu a identifikaci virtuálních počítačů Azure, skript nasadí požadované rozšíření a umožňuje požadované funkce. To může trvat několik minut.
-Další informace o `Set-AzureRmVMAEMExtension`, naleznete v tématu [Set-AzureRmVMAEMExtension][msdn-set-azurermvmaemextension].
+Další informace o `Set-AzVMAEMExtension`, naleznete v tématu [Set-AzVMAEMExtension][msdn-set-Azvmaemextension].
 
-![Úspěšné provedení specifické pro SAP Azure rutiny Set-AzureRmVMAEMExtension][deployment-guide-figure-900]
+![Úspěšné provedení specifické pro SAP Azure rutiny Set-AzVMAEMExtension][deployment-guide-figure-900]
 
-`Set-AzureRmVMAEMExtension` Konfigurace dělá všechny kroky ke konfiguraci monitorování pro SAP hostitele.
+`Set-AzVMAEMExtension` Konfigurace dělá všechny kroky ke konfiguraci monitorování pro SAP hostitele.
 
 Výstup skriptu obsahuje následující informace:
 
@@ -1129,15 +1130,15 @@ Pokud některý z těchto kontrol selhání a podrobné informace o tom, jak zno
 
 ### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Kontroly stavu pro konfiguraci Azure monitorování infrastruktury
 
-Když některé z monitorování data se doručí správně, je určeno test popsaný v [kontroly připravenosti pro Azure Enhanced Monitoring for SAP][deployment-guide-5.1], spusťte `Test-AzureRmVMAEMExtension` rutiny ke kontrole, jestli Monitorování infrastruktury a rozšíření monitorování pro SAP Azure, které jsou nakonfigurované správně.
+Když některé z monitorování data se doručí správně, je určeno test popsaný v [kontroly připravenosti pro Azure Enhanced Monitoring for SAP][deployment-guide-5.1], spusťte `Test-AzVMAEMExtension` rutiny ke kontrole, jestli Monitorování infrastruktury a rozšíření monitorování pro SAP Azure, které jsou nakonfigurované správně.
 
 1. Ujistěte se, že jste nainstalovali nejnovější verzi rutin Azure Powershellu, jak je popsáno v [rutin nasazení prostředí Azure PowerShell][deployment-guide-4.1].
-1. Spusťte následující rutinu Azure PowerShellu. Seznam dostupných prostředí, spusťte rutinu `Get-AzureRmEnvironment`. Chcete-li použít globální Azure, vyberte **AzureCloud** prostředí. Azure v Číně, vyberte **AzureChinaCloud**.
+1. Spusťte následující rutinu Azure PowerShellu. Seznam dostupných prostředí, spusťte rutinu `Get-AzEnvironment`. Chcete-li použít globální Azure, vyberte **AzureCloud** prostředí. Azure v Číně, vyberte **AzureChinaCloud**.
    ```powershell
-   $env = Get-AzureRmEnvironment -Name <name of the environment>
-   Connect-AzureRmAccount -Environment $env
-   Set-AzureRmContext -SubscriptionName <subscription name>
-   Test-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+   $env = Get-AzEnvironment -Name <name of the environment>
+   Connect-AzAccount -Environment $env
+   Set-AzContext -SubscriptionName <subscription name>
+   Test-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
    ```
 
 1. Zadejte data vašeho účtu a identifikaci virtuálních počítačů Azure.
@@ -1168,7 +1169,7 @@ V instalačním adresáři C:\\balíčky\\moduly plug-in\\Microsoft.AzureCAT.Azu
 
 ###### <a name="solution"></a>Řešení
 
-Rozšíření není nainstalována. Určení, zda se jedná problém s proxy (jak je popsáno dříve). Vám může být nutné restartovat počítač nebo znovu spustit `Set-AzureRmVMAEMExtension` konfigurační skript.
+Rozšíření není nainstalována. Určení, zda se jedná problém s proxy (jak je popsáno dříve). Vám může být nutné restartovat počítač nebo znovu spustit `Set-AzVMAEMExtension` konfigurační skript.
 
 ##### <a name="service-for-azure-enhanced-monitoring-does-not-exist"></a>Služba pro Azure Enhanced Monitoring neexistuje
 
@@ -1201,7 +1202,7 @@ Konfigurace je nesprávná. Restartujte rozšíření monitorování pro virtuá
 
 Služba Windows AzureEnhancedMonitoring shromažďuje metriky výkonu v Azure. Služba načte data z různých zdrojů. Některé konfigurační data se shromažďují místně a některé metriky výkonu se načítají z Azure Diagnostics. Vaše přihlášení na úrovni předplatného úložiště jsou použity čítače úložiště.
 
-Pokud tento poradce potíže s použitím Poznámka SAP [1999351] nebude tento problém vyřešit, spusťte znovu `Set-AzureRmVMAEMExtension` konfigurační skript. Budete muset počkejte hodinu, protože storage analytics nebo diagnostiky čítačů nemusí vytvořit, ihned po jsou povoleny. Pokud se problém nevyřeší, otevřete zprávu SAP Zákaznická podpora na komponentu BC OP NT AZR pro Windows nebo BC-OP – LNX-AZR pro virtuální počítač s Linuxem.
+Pokud tento poradce potíže s použitím Poznámka SAP [1999351] nebude tento problém vyřešit, spusťte znovu `Set-AzVMAEMExtension` konfigurační skript. Budete muset počkejte hodinu, protože storage analytics nebo diagnostiky čítačů nemusí vytvořit, ihned po jsou povoleny. Pokud se problém nevyřeší, otevřete zprávu SAP Zákaznická podpora na komponentu BC OP NT AZR pro Windows nebo BC-OP – LNX-AZR pro virtuální počítač s Linuxem.
 
 #### <a name="linuxlogolinux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Čítače výkonu Azure nezobrazí vůbec
 
@@ -1215,13 +1216,13 @@ Adresář \\var\\lib\\waagent\\ nemá podadresář pro rozšíření Azure Enhan
 
 ###### <a name="solution"></a>Řešení
 
-Rozšíření není nainstalována. Určení, zda se jedná problém s proxy (jak je popsáno dříve). Možná budete muset restartovat počítač a/nebo znovu spustit `Set-AzureRmVMAEMExtension` konfigurační skript.
+Rozšíření není nainstalována. Určení, zda se jedná problém s proxy (jak je popsáno dříve). Možná budete muset restartovat počítač a/nebo znovu spustit `Set-AzVMAEMExtension` konfigurační skript.
 
-##### <a name="the-execution-of-set-azurermvmaemextension-and-test-azurermvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Provedení příkazu Set-AzureRmVMAEMExtension a Test-AzureRmVMAEMExtension zobrazit varovné zprávy s oznámením, že se nepodporují Standard Managed Disks
+##### <a name="the-execution-of-set-azvmaemextension-and-test-azvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Provedení příkazu Set-AzVMAEMExtension a Test-AzVMAEMExtension zobrazit varovné zprávy s oznámením, že se nepodporují Standard Managed Disks
 
 ###### <a name="issue"></a>Problém
 
-Když jsou uvedeny provádění Set-AzureRmVMAEMExtension a Test-AzureRmVMAEMExtension zpráv, jako jsou tyto:
+Při provádění sady AzVMAEMExtension nebo testovací AzVMAEMExtension zprávy obdobné se zobrazují:
 
 <pre><code>
 WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
@@ -1242,4 +1243,4 @@ Metriky výkonu v Azure byly shromážděny sadou démona, která načte data z 
 
 Nejúplnější a nejaktuálnější seznam známých problémů, viz poznámka SAP [1999351], který obsahuje další informace o odstraňování potíží pro rozšířené monitorování Azure pro SAP.
 
-Pokud tento poradce potíže s použitím Poznámka SAP [1999351] neobsahuje problém vyřešit, spusťte znovu `Set-AzureRmVMAEMExtension` konfigurační skript, jak je popsáno v [konfigurovat rozšířené monitorování rozšíření Azure pro SAP] [deployment-guide-4.5]. Budete muset počkat na hodinu, protože storage analytics nebo diagnostiky čítačů nemusí být vytvářeny ihned poté, co jsou povoleny. Pokud se problém nevyřeší, otevřete zprávu SAP Zákaznická podpora na komponentu BC OP NT AZR pro Windows nebo BC-OP – LNX-AZR pro virtuální počítač s Linuxem.
+Pokud tento poradce potíže s použitím Poznámka SAP [1999351] neobsahuje problém vyřešit, spusťte znovu `Set-AzVMAEMExtension` konfigurační skript, jak je popsáno v [konfigurovat rozšířené monitorování rozšíření Azure pro SAP] [deployment-guide-4.5]. Budete muset počkat na hodinu, protože storage analytics nebo diagnostiky čítačů nemusí být vytvářeny ihned poté, co jsou povoleny. Pokud se problém nevyřeší, otevřete zprávu SAP Zákaznická podpora na komponentu BC OP NT AZR pro Windows nebo BC-OP – LNX-AZR pro virtuální počítač s Linuxem.

@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: brahmnes
-ms.openlocfilehash: 4041bee71a41cee06243d53de128bcceecda5618
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: ac937ddb1bcaed6813a0de4d631f820eff01e26f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58001827"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877733"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Povolit Snapshot Debugger pro aplikace .NET v Azure Service Fabric, cloudové služby a virtuální počítače
 
-Pokud technologie ASP.NET nebo ASP.NET core běhu aplikace ve službě Azure App Service, lze použít také podle následujících pokynů. Pokud vaše aplikace vyžaduje přizpůsobenému konfiguračnímu Snapshot Debugger, důrazně doporučujeme k [povolit prostřednictvím stránky portálu služby Application Insights Snapshot Debugger](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json). Pokud je aplikace spuštěná v Azure Service Fabric, cloudové služby, virtuální počítače nebo místní počítače, postupujte podle následujících pokynů by měla sloužit. 
+Pokud technologie ASP.NET nebo ASP.NET core běhu aplikace ve službě Azure App Service, lze použít také podle následujících pokynů. Pokud vaše aplikace vyžaduje přizpůsobenému konfiguračnímu Snapshot Debugger, důrazně doporučujeme k [povolit prostřednictvím stránky portálu služby Application Insights Snapshot Debugger](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json). Pokud vaše aplikace běží v Azure Service Fabric, cloudové služby, virtuální počítače, nebo místní počítače, postupujte podle následujících pokynů by měla sloužit. 
     
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>Konfigurace shromažďování snímků pro aplikace ASP.NET
 

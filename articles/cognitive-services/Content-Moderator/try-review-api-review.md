@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: beadbfc09526f738ba90252787b5b0910a2f7163
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 254269ccedc92b9dfc164cc4665a8a8513682773
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755367"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882004"
 ---
 # <a name="create-human-reviews-rest"></a>Vytvoření recenze prováděné lidmi (REST)
 
@@ -149,7 +149,7 @@ Zadejte parametry volání REST stejně jako v předchozím oddílu. V tomto kro
 
 ![Projděte si – vytvoření konzoly získat výsledky](images/test-drive-review-3.PNG)
   
-Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK`a **obsah odpovědi** pole zobrazí projděte podrobnosti ve formátu JSON, jako je následující:
+Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK`a **obsah odpovědi** zobrazí podrobnosti o kontrole ve formátu JSON, jako je následující:
 
 ```json
 {  

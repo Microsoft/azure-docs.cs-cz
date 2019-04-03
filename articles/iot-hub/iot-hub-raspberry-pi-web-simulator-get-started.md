@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 0167665684bc4fc8b29dce70c53033dcbb007555
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3f8fbf571efafe22d7d0c5ccfd71dded381ba6fb
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113779"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847219"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Připojte se ke službě Azure IoT Hub (Node.js) online simulátor Raspberry Pi
 
@@ -96,6 +96,11 @@ Existují tři oblasti v webový simulátor.
 
 Zobrazí se následující výstup, který zobrazuje data ze senzorů a zprávy, které se odesílají do služby IoT hub ![výstup – data ze senzorů odeslané do služby IoT hub z Raspberry Pi](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
 
+## <a name="read-the-messages-received-by-your-hub"></a>Přečtěte si zprávy přijaté službou rozbočovače
+
+Jedním ze způsobů monitorování zprávy přijaté službou IoT hub ze simulovaných zařízení je použití nástroje Azure IoT pro Visual Studio Code. Další informace najdete v tématu [pomocí Azure IoT, nástrojů pro Visual Studio Code k odesílání a příjem zpráv mezi zařízením a centrem IoT](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+
+Další způsoby, jak zpracovat data odeslaná tímto zařízením pokračujte v další části.
 
 ## <a name="next-steps"></a>Další postup
 

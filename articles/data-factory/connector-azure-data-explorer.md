@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: orspod
-ms.openlocfilehash: 4e2448b3043c194bda884963975d85536c329baf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6138fadd060051c1b4264cd844ca2a4b8c28116a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531636"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880028"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopírování dat do nebo z Průzkumníku dat Azure pomocí Azure Data Factory
 
@@ -66,7 +66,7 @@ Průzkumník dat Azure, propojené služby jsou podporovány následující vlas
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** musí být vlastnost nastavena na **AzureDataExplorer** | Ano |
-| endpoint | Adresa URL koncového bodu clusteru Průzkumník dat Azure, ve formátu jako `https://<clusterName>.<regionName>.kusto.windows.net `. | Ano |
+| endpoint | Adresa URL koncového bodu clusteru Průzkumník dat Azure, ve formátu jako `https://<clusterName>.<regionName>.kusto.windows.net`. | Ano |
 | databáze | Název databáze. | Ano |
 | tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. To je, co je obvykle říká "**ID úřadu**" v [Kusto připojovací řetězec](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Načtení ukázáním pomocí myši v pravém horním rohu webu Azure portal. | Ano |
 | servicePrincipalId | Zadejte ID klienta vaší aplikace. To je, co je obvykle říká "**ID klienta aplikace AAD**" v [Kusto připojovací řetězec](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Ano |

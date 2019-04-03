@@ -3,20 +3,20 @@ title: 'Ověřování služba služba: Azure Data Lake Storage Gen1 službou Azu
 description: Zjistěte, jak dokončit ověřování služba služba pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 2ec5d469ba0708288881be3d905b492aa8aa4da6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: twooley
+ms.openlocfilehash: a7fdcf396f586a65efa17e489d002f1c8847a193
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956606"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884988"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování služba služba pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Tento článek pojednává o tom, jak vytvořit **webovou aplikaci Azure AD pro 
 ## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="step-1-create-an-active-directory-web-application"></a>Krok 1: Vytvoření webové aplikace služby Active Directory
+## <a name="step-1-create-an-active-directory-web-application"></a>Krok 1: Vytvořit webovou aplikaci služby Active Directory
 
 Vytvoření a konfigurace webové aplikace Azure AD pro ověřování služba služba s Azure Data Lake Storage Gen1 pomocí Azure Active Directory. Pokyny najdete v tématu [vytvořit aplikaci Azure AD](../active-directory/develop/howto-create-service-principal-portal.md).
 

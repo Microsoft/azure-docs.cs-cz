@@ -1,5 +1,5 @@
 ---
-title: Nasazení modelů jako webové služby
+title: Jak a kde nasadit modely
 titleSuffix: Azure Machine Learning service
 description: 'Zjistěte, jak a kde k nasazení vašich modelů služby Azure Machine Learning, včetně: Azure Container Instances, Azure Kubernetes Service, Azure IoT Edge a Field-programmable gate Array.'
 services: machine-learning
@@ -9,20 +9,22 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 12/07/2018
-ms.custom: seodec18
-ms.openlocfilehash: ea2986ea2b2f561288773a7d187101f90f3e9fa9
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.date: 04/02/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: 1528b5e92e1952bf85799afd71bd5dac16aedcf4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622123"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878294"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
-Sady SDK Azure Machine Learning poskytuje několik způsobů, jak můžete nasadit trénovaného modelu. V tomto dokumentu zjistěte, jak model nasadit jako webovou službu v cloudu Azure nebo do zařízení IoT Edge.
+V tomto dokumentu zjistěte, jak model nasadit jako webovou službu v cloudu Azure nebo do zařízení IoT Edge. 
 
-Můžete nasadit modely do následující cílových výpočetních prostředí:
+## <a name="compute-targets-for-deployment"></a>Cílových výpočetních prostředí pro nasazení
+
+Pomocí sady SDK Azure Machine Learning trénovaný model nasadit do následujících umístění:
 
 | Cílové výpočetní prostředí | Typ nasazení | Popis |
 | ----- | ----- | ----- |
@@ -31,6 +33,8 @@ Můžete nasadit modely do následující cílových výpočetních prostředí:
 | [Azure Container Instances (ACI)](#aci) | Testování | Je vhodný pro vývoj a testování. **Není vhodný pro úlohy v produkčním prostředí.** |
 | [Azure IoT Edge](#iotedge) | (Preview) Modul IoT | Nasaďte modely na zařízeních IoT. Odvozování se stane v zařízení. |
 | [Pole programmable gate array (FPGA)](#fpga) | (Preview) Webová služba | Mimořádně nízkou latenci pro odvozování v reálném čase. |
+
+## <a name="deployment-workflow"></a>Pracovní postup nasazení
 
 Proces nasazení modelu se podobá všech cílových výpočetních prostředí:
 
@@ -46,7 +50,7 @@ Následující video ukazuje nasazení do služby Azure Container Instances:
 
 Další informace o konceptech pracovního postupu nasazení, najdete v části [spravovat, nasazovat a monitorovat modely pomocí služby Azure Machine Learning](concept-model-management-and-deployment.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites-for-deployment"></a>Požadavky na nasazení
 
 [!INCLUDE [aml-prereq](../../../includes/aml-prereq.md)]
 
@@ -585,7 +589,7 @@ Registraci zařízení ve službě Azure IoT Hub a pak nainstalujte modul runtim
 
 Další metody registrace zařízení jsou následující:
 
-* [Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)
+* [portál Azure](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)
 * [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-cli)
 * [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-vscode)
 

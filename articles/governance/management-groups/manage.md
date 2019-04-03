@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: f9e9bf51d50863f2e37a2f579c2db0edcfeca634
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f75686d19a468983a6b0ce68eb4a456e00c90eeb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58801760"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881037"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa vašich prostředků pomocí skupin pro správu
 
@@ -330,7 +330,7 @@ Při odkazování na skupiny pro správu z akce jiný poskytovatel prostředků,
 
 Příkladem použití této cesty je při přiřazování přiřazení nové role pro skupinu pro správu v prostředí PowerShell
 
-```powershell-interactive
+```azurepowershell-interactive
 New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
 ```
 
@@ -344,8 +344,8 @@ GET https://management.azure.com/providers/Microsoft.Management/managementgroups
 
 Další informace o řešeních pro správu najdete v následujících tématech:
 
-- [Vytváření skupin pro správu pro organizaci prostředků Azure](create.md)
-- [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](manage.md)
-- [Kontrola skupin pro správu v modulu Prostředky Azure PowerShellu](/powershell/module/az.resources#resources)
-- [Kontrola skupin pro správu v rozhraní REST API](/rest/api/resources/managementgroups)
-- [Kontrola skupin pro správu v Azure CLI](/cli/azure/account/management-group)
+- [Vytvoření skupin pro správu k uspořádání prostředků Azure](create.md)
+- [Jak změnit, odstranit nebo Správa skupin pro správu](manage.md)
+- [Zkontrolujte skupiny pro správu v modulu Azure PowerShell prostředky](/powershell/module/az.resources#resources)
+- [Zkontrolujte skupiny pro správu v rozhraní REST API](/rest/api/resources/managementgroups)
+- [Zkontrolujte skupiny pro správu v Azure CLI](/cli/azure/account/management-group)

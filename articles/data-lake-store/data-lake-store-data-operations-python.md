@@ -3,20 +3,20 @@ title: 'Python: Operace systému souborů v Azure Data Lake Storage Gen1 | Dokum
 description: Zjistěte, jak pomocí sady Python SDK pracovat systémem souborů Data Lake Storage Gen1.
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: ed28c502bb407c65b388704c177fca13cecc38d6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: 57efc718a51398b577a0078ba829d2f6209cab54
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548622"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880742"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Operace systému souborů v Azure Data Lake Storage Gen1 pomocí Pythonu
 > [!div class="op_single_selector"]

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e6623e18fa319066f121dced551dcada133ebd5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 9cd9f6112cbca78b323e0a14818b06f891a3f673
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479525"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862883"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Vynucení ochrany hesla Azure AD pro Windows Server Active Directory
 
@@ -83,16 +83,6 @@ Ochrana hesel Azure AD není modul aplikace v reálném čase zásad. Může exi
 Nasazení služby Azure AD ochrana heslem v doménové struktuře služby Active Directory vyžaduje registraci této doménové struktury s Azure AD. Azure AD musí být zaregistrovaný také každou službu proxy, která je nasazena. Tyto registrace doménové struktury a proxy serveru jsou spojeny s konkrétním tenanta Azure AD, který je identifikován implicitně pomocí přihlašovacích údajů, které se používají během registrace.
 
 Doménové struktury služby Active Directory a všechny nasazené proxy služby v rámci doménové struktury musí být zaregistrovaná pomocí stejného tenanta. Není možné mít doménové struktury služby Active Directory nebo všechny služby serveru proxy v tom, že klienti doménové struktury registruje na různých služeb Azure AD. Správně konfigurováno nasazení mezi příznaky patří nemožnost stáhnout zásady pro hesla.
-
-## <a name="license-requirements"></a>Licenční požadavky
-
-Výhody seznamu zakázaných hesel globální platí pro všechny uživatele služby Azure AD.
-
-Vlastní seznam zakázaných hesel vyžaduje licence Azure AD Basic.
-
-Ochrana hesel Azure AD pro Windows Server Active Directory vyžaduje licence Azure AD Premium.
-
-Další informace o licencích naleznete v tématu [cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="download"></a>Ke stažení
 

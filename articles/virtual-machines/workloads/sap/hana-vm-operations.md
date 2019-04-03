@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74b1ed79e04bcca05dcb5308b844622e4dd413ce
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 6f60fdced25fdc594c28972f555bb28a9c629f21
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410294"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878651"
 ---
-# <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operací v Azure
+# <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operace v Azure
 Tento dokument obsahuje pokyny pro konfiguraci infrastruktury Azure a operační systémy SAP HANA, které jsou nasazené na nativních virtuálních počítačích Azure (VM). Dokument obsahuje také informace o konfiguraci pro SAP HANA Škálováním pro skladovou Položku virtuálního počítače M128s. Tento dokument není určena k nahrazení standardní dokumentaci k SAPU, který obsahuje následující obsah:
 
 - [Příručka věnovaná SAP](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/330e5550b09d4f0f8b6cceb14a64cd22.html)
@@ -206,7 +206,7 @@ Při instalaci virtuálních počítačů pro spuštění SAP HANA, třeba virtu
 >
 >
 
-Ale pro nasazení, které jsou enduring, budete muset vytvořit virtuální datové centrum síťové architektury v Azure. Tato architektura se doporučuje oddělení brány virtuální sítě Azure, která se připojuje k místním do samostatné virtuální sítě Azure. Tento samostatný virtuální sítě by měl hostovat veškerý provoz, které se zasílají buď místní nebo k Internetu. Tento přístup umožňuje nasadit software pro auditování a protokolování provoz, který zadá virtuální datové centrum Azure v tento samostatný virtuální síti centra. Je proto nutné jednu virtuální síť, který je hostitelem veškerý software a konfigurace, které se týkají in - a odchozí provoz do nasazení vašeho řešení Azure.
+Ale pro nasazení, které jsou enduring, budete muset vytvořit virtuální datové centrum síťové architektury v Azure. Tato architektura se doporučuje oddělení brány virtuální sítě Azure, která se připojuje k místnímu do samostatné virtuální sítě Azure. Tento samostatný virtuální sítě by měl hostovat veškerý provoz, které se zasílají do místního nebo k Internetu. Tento přístup umožňuje nasadit software pro auditování a protokolování provoz, který zadá virtuální datové centrum Azure v tento samostatný virtuální síti centra. Je proto nutné jednu virtuální síť, který je hostitelem veškerý software a konfigurace, které se týkají in - a odchozí provoz do nasazení vašeho řešení Azure.
 
 Články [virtuální datové centrum Azure: Z hlediska sítě](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) a [virtuální datové centrum Azure a rovina podnikového řízení](https://docs.microsoft.com/azure/architecture/vdc/) poskytují další informace o virtuální datové centrum a související návrh virtuální sítě Azure.
 

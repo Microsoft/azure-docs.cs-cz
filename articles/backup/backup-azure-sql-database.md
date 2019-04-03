@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4eaaff859811e4d97cbd4f73231d702285792064
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d99a3d23959cfdd9bd068fbde3a882eb1bc9b4ae
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285441"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847303"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -55,7 +55,7 @@ Než začnete, ověřte následující:
 
 - Zálohování serveru SQL Server lze nastavit na webu Azure Portal nebo **Powershellu**. Nepodporujeme rozhraní příkazového řádku.
 - Virtuální počítač s SQL serverem vyžaduje připojení k Internetu pro přístup k veřejným IP adresám Azure.
-- SQL Server Always on **instance clusteru převzetí služeb při selhání (instancích Fci)** nejsou podporovány.
+- SQL Server **Instance clusteru převzetí služeb při selhání (FCI)** a SQL serveru Always on Instance clusteru převzetí služeb při selhání se nepodporují.
 - Operace zálohování a obnovení pro zrcadlení databáze a snímky databáze nejsou podporovány.
 - Pomocí více než jeden záložní řešení pro zálohování vaší samostatný systém SQL Server nebo instance SQL Always on skupina dostupnosti může vést k selhání zálohování; Nepoužívejte přiměřených.
 - Dva uzly ve skupině dostupnosti samostatně pomocí stejného nebo jiného řešení zálohování, může také vést k selhání zálohování. Azure Backup můžete zjišťovat a chránit všechny uzly, které jsou ve stejné oblasti jako trezor. Pokud váš SQL Server vždy na skupině dostupnosti zahrnuje víc oblastí Azure, nastavení zálohování z oblasti, která má primárního uzlu. Azure Backup můžete zjišťovat a chránit všechny databáze ve skupině dostupnosti podle vašich potřeb zálohování.  

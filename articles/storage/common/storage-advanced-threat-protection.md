@@ -5,15 +5,15 @@ services: storage
 author: rmatchoro
 ms.service: storage
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/02/2019
 ms.author: monhaber
 ms.manager: shaik
-ms.openlocfilehash: b2e51b11e2d79d7f35d6b24df4ba5492ecf9a5c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 48fdf277f47b1e4abc8e3d7f7222d5b99a248b55
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58133225"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850715"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection pro Azure Storage
 
@@ -51,6 +51,24 @@ Když se přihlásíte k odběru na úrovni Standard ve službě Azure Security 
 
 Použití šablony Azure Resource Manageru k nasazení účtu služby Azure Storage s Advanced Threat Protection povolená.
 Další informace najdete v tématu [účet úložiště se Rozšířená ochrana před internetovými útoky](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
+
+### <a name="using-azure-policy"></a>Pomocí zásad Azure
+
+Pomocí služby Azure Policy se povolit rozšířenou ochranu před internetovými útoky v účtech úložiště v rámci konkrétní předplatné nebo skupinu prostředků.
+
+1. Něco Azure **zásady – definice** stránky.
+
+1. Hledat **nasazení rozšířené ochrany před internetovými útoky na účty úložiště** zásad.
+
+     ![Hledání zásad](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
+  
+1. Vyberte skupinu Azure předplatné nebo prostředek.
+
+    ![Vyberte předplatné nebo skupinu](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
+
+1. Přiřazení zásad.
+
+    ![Stránka definice zásad](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
 ### <a name="using-rest-api"></a>Pomocí rozhraní REST API
 Příkazy rozhraní Rest API k vytvoření, aktualizaci nebo získat nastavení rozšířené ochrany před internetovými útoky pro konkrétnímu účtu úložiště.
