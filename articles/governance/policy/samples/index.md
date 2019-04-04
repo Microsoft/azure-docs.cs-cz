@@ -1,6 +1,6 @@
 ---
 title: Index ukázek zásad
-description: 'Index ukázek pro Azure Policy Mezi dostupné kategorie patří pojmenování, značky, Key Vault, sítě, úložiště a další.'
+description: Index ukázek pro Azure Policy Mezi dostupné kategorie patří pojmenování, značky, Key Vault, sítě, úložiště a další.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,6 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 03/19/2019
 ms.author: dacoulte
+ms.openlocfilehash: 14b61ffe96c6a75f6addf40ee411cd42b2532c55
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189729"
 ---
 # <a name="azure-policy-samples"></a>Ukázky Azure Policy
 

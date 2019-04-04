@@ -1,7 +1,7 @@
 ---
 layout: LandingPage
-title: 'Uživatelská nápověda pro ověřování, aplikace a správu zařízení – Azure Active Directory | Microsoft Docs'
-description: 'Uživatelská nápověda je určená uživatelům, kteří potřebují pomoc s nastavením a použitím bezpečnostních údajů, dvoustupňového ověření, samoobslužného resetování hesla, správou zařízení, aplikací Microsoft Authenticator a portálem Moje aplikace.'
+title: Uživatelská nápověda pro ověřování, aplikace a správu zařízení – Azure Active Directory | Microsoft Docs
+description: Uživatelská nápověda je určená uživatelům, kteří potřebují pomoc s nastavením a použitím bezpečnostních údajů, dvoustupňového ověření, samoobslužného resetování hesla, správou zařízení, aplikací Microsoft Authenticator a portálem Moje aplikace.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -11,8 +11,13 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6e73e089f0753f49233c75a5e55513ebaf7bf9c9
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338101"
 ---
-
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Uživatelská nápověda pro ověřování, aplikace a správu zařízení
 
 Tento obsah jsme vytvořili, abychom vám pomohli s nastavením a použitím bezpečnostních údajů, dvoustupňovým ověřením, získáním informací o postupu při resetování hesla, nastavením a připojením zařízení Azure Active Directory a nastavením a použitím aplikace Microsoft Authenticator a portálu Moje aplikace.

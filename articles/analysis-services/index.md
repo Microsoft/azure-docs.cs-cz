@@ -1,6 +1,6 @@
 ---
-title: 'Dokumentace ke službě Azure Analysis Services – kurzy, reference k rozhraní API'
-description: 'Naučte se nastavit modelování dat pomocí Analysis Services v cloudu. Dokumentace ukazuje, jak vytvořit podnikové řešení BI pomocí tabelárních dat.'
+title: Dokumentace ke službě Azure Analysis Services – kurzy, reference k rozhraní API
+description: Naučte se nastavit modelování dat pomocí Analysis Services v cloudu. Dokumentace ukazuje, jak vytvořit podnikové řešení BI pomocí tabelárních dat.
 services: analysis-services
 author: minewiskan
 ms.author: owend
@@ -8,6 +8,12 @@ layout: LandingPage
 ms.service: azure-analysis-services
 ms.topic: landing-page
 ms.date: 02/14/2018
+ms.openlocfilehash: ec3c45961ac92a505ee565373474ce3dc2fbabcc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106963"
 ---
 # <a name="analysis-services-documentation"></a>Dokumentace ke službě Analysis Services
 

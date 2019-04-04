@@ -1,8 +1,8 @@
 ---
 layout: HubPage
 hide_bc: false
-title: 'Dokumentace k internetu věcí Azure – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
-description: 'Internet věcí (IoT) Azure je kolekce cloudových služeb spravovaných Microsoftem, která připojuje, monitoruje a řídí miliardy prostředků IoT. Jednodušeji řečeno se řešení IoT skládá z jednoho nebo více zařízení IoT a jedné nebo více back-endových služeb spuštěných v cloudu, které mezi sebou komunikují.'
+title: Dokumentace k internetu věcí Azure – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+description: Internet věcí (IoT) Azure je kolekce cloudových služeb spravovaných Microsoftem, která připojuje, monitoruje a řídí miliardy prostředků IoT. Jednodušeji řečeno se řešení IoT skládá z jednoho nebo více zařízení IoT a jedné nebo více back-endových služeb spuštěných v cloudu, které mezi sebou komunikují.
 services: azure-iot
 author: dsk-2015
 manager: philmea
@@ -10,8 +10,13 @@ ms.service: azure-iot
 ms.topic: landing-page
 ms.date: 02/12/2019
 ms.author: dkshir
+ms.openlocfilehash: d19b6fff3bf2b43ecb692bd8d8e33a202e969570
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57343768"
 ---
-
 <div id="main" class="v2">
     <div class="container">
         <h1>Dokumentace k řešení internetu věcí Azure</h1>

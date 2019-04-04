@@ -1,6 +1,6 @@
 ---
 title: Dokumentace ke službě Azure Data Box
-description: 'Řada Azure Data Box nabízí produkty s různou úložnou kapacitou, které pomáhají rychle, spolehlivě a bez velkých nákladů odesílat do Azure terabajty dat. Microsoft urychluje zabezpečený přenos dat dodávkou vlastnických úložných zařízení, která umožňují přenos dat offline nebo přes síť.'
+description: Řada Azure Data Box nabízí produkty s různou úložnou kapacitou, které pomáhají rychle, spolehlivě a bez velkých nákladů odesílat do Azure terabajty dat. Microsoft urychluje zabezpečený přenos dat dodávkou vlastnických úložných zařízení, která umožňují přenos dat offline nebo přes síť.
 services: databox
 author: alkohli
 manager: twooley
@@ -11,6 +11,12 @@ ms.devlang: na
 ms.topic: hub-page
 ms.date: 09/24/2018
 ms.author: alkohli
+ms.openlocfilehash: c0c5ea8dc069d24d01313bb68c0afb7c7aac1a33
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417696"
 ---
 <div id="main" class="v2">
 <h1>Azure Data Box</h1>

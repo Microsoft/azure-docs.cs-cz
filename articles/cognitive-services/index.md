@@ -1,7 +1,7 @@
 ---
 layout: HubPage
 title: Dokumentace ke službě Azure Cognitive Services
-description: 'Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní algoritmy, které jim umožní vidět a slyšet vaše uživatele, mluvit s nimi a porozumět jejich požadavkům a interpretovat je prostřednictvím přirozených způsobů komunikace. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak tato rozhraní API používat.'
+description: Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní algoritmy, které jim umožní vidět a slyšet vaše uživatele, mluvit s nimi a porozumět jejich požadavkům a interpretovat je prostřednictvím přirozených způsobů komunikace. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak tato rozhraní API používat.
 services: cognitive-services
 author: nitinme
 manager: nitinme
@@ -9,8 +9,13 @@ ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 02/21/2019
 ms.topic: hub-page
+ms.openlocfilehash: 621cf49284ac1080bf18619f80f14c8a21c2f761
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472918"
 ---
-
 <div id="main" class="v2">
 <h1>Dokumentace ke službě Azure Cognitive Services</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní algoritmy, které umožní vidět a slyšet vaše zákazníky, mluvit s nimi a porozumět jejich požadavkům prostřednictvím přirozených způsobů komunikace. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.</p>

@@ -1,19 +1,24 @@
 ---
 layout: LandingPage
 title: Dokumentace ke správě nákladů a fakturaci Azure | Microsoft Docs
-description: 'Zjistěte, jak můžete porozumět fakturaci Azure, spravovat a monitorovat využití a náklady a spravovat vaše účty a předplatná.'
+description: Zjistěte, jak můžete porozumět fakturaci Azure, spravovat a monitorovat využití a náklady a spravovat vaše účty a předplatná.
 services: billing
 author: cwatson-cat
 manager: dougeby
-ms.assetid: null
+ms.assetid: ''
 ms.service: billing
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 02/19/2019
 ms.author: banders
+ms.openlocfilehash: e150525b6f5fd1814f13595fbd4ea7e3bccde4fc
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446711"
 ---
-
 # <a name="azure-billing-and-cost-management-documentation"></a>Dokumentace ke správě nákladů a fakturaci Azure
 
 Seznamte se s principy fakturace Azure a naučte se monitorovat využití a náklady a spravovat vaše účty a předplatná.
