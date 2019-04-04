@@ -16,12 +16,12 @@ ms.date: 02/14/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 2f51ab51cc352c5f3d95ac1a35a1cbf918899753
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9bf261918bdbdf3ee06ad28a037d5bb8a3631a20
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768395"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487630"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Stažení položek z marketplace z Azure do služby Azure Stack
 
@@ -101,14 +101,14 @@ Existují dvě části pro tento scénář:
 
 3. Pokud máte více předplatných, spuštěním následujícího příkazu vyberte předplatné, kterou jste použili k registraci:  
 
-   ```PowerShell  
+   ```powershell  
    Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    $AzureContext = Get-AzureRmContext
    ```
 
 4. Stažení nejnovější verze nástroje syndikace marketplace pomocí následujícího skriptu:  
 
-   ```PowerShell
+   ```powershell
    # Download the tools archive.
    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
    invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/master.zip `
@@ -126,7 +126,7 @@ Existují dvě části pro tento scénář:
 
 5. Importujte modul syndikace a pak spusťte nástroj spuštěním následujících příkazů. Nahraďte `Destination folder path` s umístěním pro uložení souborů můžete stáhnout z webu Azure Marketplace.   
 
-   ```PowerShell  
+   ```powershell  
    Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
 
    Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes" 
@@ -164,7 +164,7 @@ Existují dvě části pro tento scénář:
 
 3. Importujte modul syndikace a pak spusťte nástroj syndikace marketplace spuštěním následujícího skriptu:
 
-   ```PowerShell
+   ```powershell
    $credential = Get-Credential -Message "Enter the azure stack operator credential:"
    Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -AzsCredential $credential
    ```
@@ -206,7 +206,7 @@ Existují dvě části pro tento scénář:
 
    Jako alternativu k tento skript můžete použít [postup popsaný v tomto článku](azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal) import. Image virtuálního pevného disku pomocí webu Azure portal.
 
-   ```PowerShell  
+   ```powershell  
    Add-AzsPlatformimage `
     -publisher "MicrosoftWindowsServer" `
     -offer "WindowsServer" `
@@ -229,7 +229,7 @@ Existují dvě části pro tento scénář:
 
 
 4.  Použití Powershellu k publikování položky marketplace do služby Azure Stack pomocí **přidat AzsGalleryItem** rutiny. Příklad:  
-    ```PowerShell  
+    ```powershell  
     Add-AzsGalleryItem `
      -GalleryItemUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg" `
      –Verbose
@@ -239,7 +239,7 @@ Existují dvě části pro tento scénář:
 
 Verze Azure Stack Powershellu 1.3.0 nyní můžete přidat rozšíření virtuálního počítače. Příklad:
 
-```PowerShell
+```powershell
 Add-AzsVMExtension -Publisher "Microsoft" -Type "MicroExtension" -Version "0.1.0" -ComputeRole "IaaS" -SourceBlob "https://github.com/Microsoft/PowerShell-DSC-for-Linux/archive/v1.1.1-294.zip" -SupportMultipleExtensions -VmOsType "Linux"
 ```
 

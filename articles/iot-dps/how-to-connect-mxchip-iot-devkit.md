@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: a7131a66e9d722265282ac98b67b52db8de086e2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 80e4895e0b276e701a6d7f10d8fc67649db0f188
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551889"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904487"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Použití Azure IoT Hub Device Provisioning Service automatického zřizování k registraci ve službě IoT Hub MXChip IoT DevKit
 
@@ -30,7 +30,7 @@ Tento článek popisuje, jak používat Azure IoT Hub Device Provisioning Servic
 
 K dokončení kroků v tomto kurzu, proveďte následující úlohy:
 
-* Příprava vašich DevKit podle postupu v [připojení IoT DevKit AZ3166 se do služby Azure IoT Hub v cloudu](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
+* Konfigurace vašeho DevKit Wi-Fi a příprava vývojového prostředí pomocí následujících kroků v [připojení IoT DevKit AZ3166 se do služby Azure IoT Hub v cloudu](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
 * Upgrade na nejnovější firmware (1.3.0 nebo novější) se [DevKit aktualizace firmwaru](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) kurzu.
 * Vytvořit a propojit službu IoT Hub s instancí služby Device Provisioning pomocí následujících kroků v [nastavit IoT Hub Device Provisioning pomocí webu Azure portal](/azure/iot-dps/quick-setup-auto-provision).
 
@@ -108,7 +108,7 @@ V zařízení kód, je třeba zadat [Device provisioning koncový bod](/azure/io
 ## <a name="create-a-device-enrollment-entry"></a>Vytvoření položky registrace zařízení
 
 1. Na webu Azure Portal, otevřete svou službu zřizování zařízení, přejděte do části registrace spravovat a klikněte na **přidat jednotlivou registraci**.
-  ![Přidání jednotlivé registrace](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
+  ![Přidat jednotlivou registraci](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
 
 1. Klikněte na ikonu souboru vedle **soubor .pem nebo .cer primárního certifikátu** k nahrání `.pem` soubor generovaný.
   ![Nahrát .pem](media/how-to-connect-mxchip-iot-devkit/upload-pem.png)

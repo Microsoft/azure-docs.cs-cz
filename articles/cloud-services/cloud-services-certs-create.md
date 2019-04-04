@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: b2e87b2855ac1d76fe2ad544c17c33bfa14f635a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4ca26c7b8fbfebbce8cfcb9915a7db12e5ad2352
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812374"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918667"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Přehled certifikátů pro Azure Cloud Services
 Certifikáty se používají v Azure pro cloudové služby ([služby certifikátů](#what-are-service-certificates)) a pro ověřování pomocí rozhraní API pro správu ([certifikáty pro správu](#what-are-management-certificates)). Toto téma obsahuje obecný přehled o oba typy certifikátů, jak k [vytvořit](#create) a jejich nasazení do Azure.
@@ -69,7 +69,7 @@ Můžete použít jakýkoli nástroj k vytvoření certifikátu podepsaného sv�
 Existují dva snadných způsobů, jak vytvořit certifikát na Windows, se `makecert.exe` nástroj nebo službu IIS.
 
 ### <a name="makecertexe"></a>Makecert.exe
-Tento nástroj je zastaralý a už jsou zde uvedeny. Další informace najdete v tématu [článku na webu MSDN](https://msdn.microsoft.com/library/windows/desktop/aa386968).
+Tento nástroj je zastaralý a už jsou zde uvedeny. Další informace najdete v tématu [článku na webu MSDN](/windows/desktop/SecCrypto/makecert).
 
 ### <a name="powershell"></a>PowerShell
 ```powershell

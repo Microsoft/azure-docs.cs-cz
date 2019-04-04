@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a1ecc4de9475e735cd17286826c1d8cea05904ab
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 12b464d9b6bd09acb9c93ab1de0ba178f28a778a
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089348"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894897"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migrace uživatelů se sociálními identitami
 Při plánování migrace vašeho zprostředkovatele identity do Azure AD B2C, budete také muset migrace uživatelů se sociálními identitami. Tento článek vysvětluje, jak provést migraci existujících účtů sociálních identit, jako například: Facebook, LinkedIn, Microsoft nebo Google účty Azure AD B2C. Tento článek se týká také federované identity, ale jsou méně běžné tyto migrace.
@@ -63,7 +63,7 @@ V následujícím seznamu jsou uvedeny vlastnosti, které jsou potřeba při vyt
 * **userIdentities** – jeden nebo více záznamů identity uživatele, které určují sociálního účtu typu a jedinečný uživatelský identifikátor zprostředkovatele identity v sociálních sítích.
 * [volitelné] **otherMails** – účtu na sociální síti, e-mailové adresy uživatele 
 
-Další informace naleznete v tématu: [Odkaz na rozhraní Graph API](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
+Další informace naleznete v tématu: [Odkaz na rozhraní Graph API](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
 
 ## <a name="migrate-social-account-only"></a>Migrace účtu na sociální síti (jenom)
 K vytvoření účtu na sociální síti pouze bez přihlašovacích údajů místního účtu. Odešlete požadavek POST protokolu HTTPS pro rozhraní Graph API. Text požadavku obsahuje vlastnosti tohoto uživatelského účtu na sociální síti vytvořit. Minimálně je nutné zadat požadované vlastnosti. 

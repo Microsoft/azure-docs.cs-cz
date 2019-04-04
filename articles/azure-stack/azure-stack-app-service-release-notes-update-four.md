@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 5108d4f65208f12875ad592e2e9222f8e1fdb130
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: c8900e639e6baba29067c50d4ac754d4dbda2dd6
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991077"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449228"
 ---
 # <a name="app-service-on-azure-stack-update-4-release-notes"></a>App Service v Azure stacku zpráva k vydání verze update 4
 
@@ -64,6 +64,8 @@ Azure App Service v Azure stacku Update 4 zahrnuje následující vylepšení a 
 - Přidání podpory pro verzi rozhraní API služby App Service 2018-02-01
 
 - Aktualizace **aplikace služeb pro klienty, Admin, portály funkce a nástroje Kudu**. Konzistentní s verzí sady SDK portálu Azure Stack.
+
+- Aktualizace **modul runtime služby Azure Functions** k **v1.0.11959**.
 
 - Aktualizace základní službu, ke zlepšení spolehlivosti a chybových zpráv umožňuje snazší Diagnostika běžných problémů.
 

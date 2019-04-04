@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: ae3a2788a0d5451736433a6338a71eda3d0ad9ca
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 2fd3416824189007bfdbe55d30907d9cb56f87ca
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984354"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895118"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Porozumění projevy vhodné pro aplikace LUIS
 
@@ -72,7 +72,7 @@ V každé iteraci modelu nepřidávejte velké množství projevy. Přidání pr
 
 Služba LUIS sestavení efektivní modely s projevy, které jsou vybrány pečlivě autorem modelů služby LUIS. Přidání příliš mnoho projevy není cenné, protože zavádí nejasnostem.  
 
-Je lepší začít s několika projevy, pak [zkontrolujte koncový bod projevy](luis-how-to-review-endoint-utt.md) správné záměru extrakci předpovědi a entity.
+Je lepší začít s několika projevy, pak [zkontrolujte koncový bod projevy](luis-how-to-review-endpoint-utterances.md) správné záměru extrakci předpovědi a entity.
 
 ## <a name="punctuation-marks"></a>Interpunkční znaménka
 
@@ -88,11 +88,11 @@ Pokud chcete ignorovat slova nebo interpunkčním znaménkem v příkladu uttera
 
 ## <a name="testing-utterances"></a>Testování projevy 
 
-Vývojáři by měla začínat testování jejich LUIS aplikace skutečný provozu odesláním projevy do [koncový bod předpovědi](luis-how-to-azure-subscription.md) adresy URL. Tyto projevy, které se používají ke zlepšení výkonu záměry a entity, které [zkontrolujte projevy](luis-how-to-review-endoint-utt.md). Testy odeslané s webem služby LUIS testování podokně neodešlou prostřednictvím koncového bodu a proto se nepodílejí na aktivní učení. 
+Vývojáři by měla začínat testování jejich LUIS aplikace skutečný provozu odesláním projevy do [koncový bod předpovědi](luis-how-to-azure-subscription.md) adresy URL. Tyto projevy, které se používají ke zlepšení výkonu záměry a entity, které [zkontrolujte projevy](luis-how-to-review-endpoint-utterances.md). Testy odeslané s webem služby LUIS testování podokně neodešlou prostřednictvím koncového bodu a proto se nepodílejí na aktivní učení. 
 
 ## <a name="review-utterances"></a>Zkontrolujte projevy
 
-Po modelu trénovaného publikované a přijímající [koncový bod](luis-glossary.md#endpoint) dotazy, [zkontrolujte projevy](luis-how-to-review-endoint-utt.md) navrhovaná službou LUIS. Služba LUIS vybere koncový bod projevy, které mají nízké skóre, které se záměrem nebo entity. 
+Po modelu trénovaného publikované a přijímající [koncový bod](luis-glossary.md#endpoint) dotazy, [zkontrolujte projevy](luis-how-to-review-endpoint-utterances.md) navrhovaná službou LUIS. Služba LUIS vybere koncový bod projevy, které mají nízké skóre, které se záměrem nebo entity. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 

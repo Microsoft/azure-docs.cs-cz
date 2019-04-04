@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: bf5143c3c0c75bc37f6981c6d995339e41baa4c4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f872c61ad0597d2307cd244668fdfc258f7a45cb
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112096"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895681"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure správu identit a řízení přístupu osvědčené postupy zabezpečení
 
@@ -116,7 +116,7 @@ Níže jsou uvedeny možnosti a výhody pro povolení dvoustupňové ověřován
 **Možnost 1**: [Povolení služby Multi-Factor Authentication tak, že změníte stav uživatele](../active-directory/authentication/howto-mfa-userstates.md).   
 **Výhoda**: Toto je tradiční metody pro vyžadování dvoustupňového ověření. Funguje s oběma [ověřování Azure Multi-Factor Authentication v cloudu a Azure Multi-Factor Authentication Server](../active-directory/authentication/concept-mfa-whichversion.md). Pomocí této metody vyžaduje, aby uživatelé provést dvoustupňové ověřování pokaždé, když se přihlásí a přepisuje zásady podmíněného přístupu.
 
-**Možnost 2**: [Povolení služby Multi-Factor Authentication se zásadami podmíněného přístupu](../active-directory/authentication/howto-mfa-getstarted.md#enable-multi-factor-authentication-with-conditional-access).   
+**Možnost 2**: [Povolení služby Multi-Factor Authentication se zásadami podmíněného přístupu](../active-directory/authentication/howto-mfa-getstarted.md).
 **Výhoda**: Tato možnost umožňuje výzvu k zadání dvoustupňové ověření za určitých podmínek pomocí [podmíněného přístupu](../active-directory/active-directory-conditional-access-azure-portal.md). Přihlášení uživatele z různých míst, nedůvěryhodné zařízení nebo aplikace, které považujete za rizikové může být konkrétní podmínky. Definování zvláštní podmínky, kdy potřebujete dvoustupňové ověřování, lze předcházet konstanty s výzvou pro uživatele, které je možné rozluštit nepříjemnou uživatelské prostředí.
 
 Toto je nejflexibilnější způsob, jak povolit dvoustupňové ověřování pro vaše uživatele. Povolení zásad podmíněného přístupu se dá použít jenom pro ověřování Azure Multi-Factor Authentication v cloudu a je Prémiová funkce služby Azure AD. Můžete najít další informace o této metodě v [nasazení cloudového ověřování Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md).

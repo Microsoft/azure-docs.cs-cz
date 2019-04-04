@@ -1,6 +1,6 @@
 ---
-title: Osvědčené postupy z hlediska výkonu pro SQL Server na virtuálních počítačích Azure Stack
-description: Poskytuje osvědčené postupy pro optimalizaci výkonu SQL serveru v Microsoft Azure Stack Virtual Machines.
+title: Použijte osvědčené postupy SQL serveru a ke zvýšení výkonu ve virtuálních počítačích Azure Stack | Dokumentace Microsoftu
+description: Tento článek obsahuje osvědčené postupy SQL serveru vám pomůže zvýšit výkon a optimalizace serveru SQL Server na virtuálních počítačích Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 04/02/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7981df6aa1e08688bdbe3b18629450b996f7609e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 03a354a7d670033fa86ebbb094710a836b6219c4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123398"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879060"
 ---
-# <a name="optimize-sql-server-performance"></a>Optimalizace výkonu SQL serveru
+# <a name="sql-server-best-practices-to-optimize-performance-in-azure-stack"></a>Osvědčené postupy SQL serveru za účelem optimalizace výkonu ve službě Azure Stack
 
-Tento článek obsahuje pokyny pro optimalizaci výkonu systému SQL Server na virtuálních počítačích Microsoft Azure Stack. Při spuštění systému SQL Server na virtuálních počítačích Azure Stack, použijte stejnou databázi optimalizace výkonu možnosti pro SQL Server server v místním prostředí. Výkon relační databáze do cloudu Azure Stack je závislá na mnoha faktorech. Mezi faktory patří řady velikostí virtuálních počítačů a konfigurace datových disků.
+Tento článek obsahuje osvědčené postupy SQL serveru pro optimalizaci systému SQL Server a zlepšení výkonu ve virtuálních počítačích Microsoft Azure Stack. Při spuštění systému SQL Server na virtuálních počítačích Azure Stack, použijte stejnou databázi optimalizace výkonu možnosti pro SQL Server server v místním prostředí. Výkon relační databáze do cloudu Azure Stack je závislá na mnoha faktorech. Mezi faktory patří řady velikostí virtuálních počítačů a konfigurace datových disků.
 
 Při vytváření imagí SQL serveru, [zvažte zřízení virtuálních počítačů na portálu Azure Stack](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Stáhněte si rozšíření SQL IaaS z Marketplace správy portálu pro správu Azure Stack a stáhněte si podle vašeho výběru virtuální pevné disky SQL virtuálního počítače (VHD). Patří mezi ně SQL2014SP2 SQL2016SP1 a SQL2017.
 
@@ -37,7 +37,8 @@ Začínáme *nejlepší* výkonu pro SQL Server na virtuálních počítačích 
 > [!NOTE]  
 > Průvodce výkonem pro SQL Server na virtuálních počítačích Azure, najdete v tématu [v tomto článku](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="checklist-for-sql-server-best-practices"></a>Kontrolní seznam pro osvědčené postupy pro SQL server
+
 Následující kontrolní seznam je pro zajištění optimálního výkonu systému SQL Server na virtuálních počítačích Azure Stack:
 
 
@@ -112,7 +113,7 @@ Doporučujeme ukládat databázi TempDB na datový disk, protože každý datov�
 
        Například následující příkaz Powershellu vytvoří nový fond úložiště s velikostí prokládání nastavena na 64 KB a počet sloupců na 2:
 
-       ```PowerShell  
+       ```powershell  
        $PoolCount = Get-PhysicalDisk -CanPool $True
        $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
 

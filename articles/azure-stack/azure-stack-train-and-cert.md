@@ -8,13 +8,13 @@ ms.service: azure-stack
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: mabrigg
-ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: d4f7ec8f4b6960650b98d8f2d2f051c0873c9754
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 3/20/2019
+ms.openlocfilehash: d15a981e0f43c686a5b6f60387dab6aa6f4b8096
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242497"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540325"
 ---
 # <a name="azure-stack-training-and-certification"></a>Azure Stack školení a certifikace
 
@@ -24,9 +24,18 @@ Následující možnosti školení a certifikace jsou k dispozici vám pomůžou
 
 ## <a name="training"></a>Školení
 
-- [Kurz 20537A: Konfigurace a provozování hybridní Cloud s Microsoft Azure Stack](https://www.microsoft.com/en-us/learning/course.aspx?cid=20537)
-- [edX: Online školení pro Azure Stack](https://aka.ms/AzureStackMOOC)
-- [Úloha role a postupy výuky](https://azure.microsoft.com/training/learning-paths/)
+- Microsoft oficiálních kurzů na vyžádání
+   - [ODX20537: Konfigurace a provozování hybridní Cloud s Microsoft Azure Stack (180 dnů)](https://www.microsoft.com/en-us/learning/course.aspx?cid=ODX20537)
+   - [OD20537: Konfigurace a provozování hybridní Cloud s Microsoft Azure Stack (90 dnů)](https://www.microsoft.com/en-us/learning/course.aspx?cid=OD20537)
+
+- Školení IT společnosti Microsoft
+   - [Kurz 20537A: Konfigurace a provozování hybridní Cloud s Microsoft Azure Stack](https://aka.ms/azsmoc)
+
+- Otevřít edx
+   - [edX: Konfigurace a provozování Microsoft Azure Stack online kurz](https://aka.ms/AzureStackMOOC)
+   
+- Postupy výuky Microsoft
+   - [Úloha role a postupy výuky](https://azure.microsoft.com/training/learning-paths/)
 
 ## <a name="certification"></a>Certifikace
 

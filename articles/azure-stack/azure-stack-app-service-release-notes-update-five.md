@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: ''
-ms.openlocfilehash: 0a0eb9586e78442947138831dd774298906aaf9c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 851673de4a711f5eb64228233ea7703ef86bfa7b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993080"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500198"
 ---
 # <a name="app-service-on-azure-stack-update-5-release-notes"></a>App Service v Azure stacku zpráva k vydání verze update 5
 
@@ -59,11 +59,14 @@ Azure App Service v Azure stacku aktualizaci 5 zahrnuje následující vylepšen
 
 - Aktualizace **aplikace služeb pro klienty, Admin, portály funkce a nástroje Kudu**. Konzistentní s verzí sady SDK portálu Azure Stack.
 
+- Aktualizace **modul runtime služby Azure Functions** k **v1.0.12205**.
+
 - Aktualizace **Kudu nástroje** kvůli řešení problémů s stylů a funkce pro zákazníky, kteří provozní **odpojení** Azure Stack. 
 
 - Aktualizace základní službu, ke zlepšení spolehlivosti a chybových zpráv umožňuje snazší Diagnostika běžných problémů.
 
 - **Aktualizace následujících aplikační architektury a nástroje**:
+  - Přidání ASP.NET Core 2.1.6 a 2.2.0
   - Přidání NodeJS 10.14.1
   - Přidání NPM 6.4.1
   - Aktualizované Kudu pro 79.20129.3767

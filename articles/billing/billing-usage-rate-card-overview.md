@@ -16,12 +16,12 @@ ms.workload: billing
 ms.date: 5/10/2018
 ms.author: erikre
 ms.custom: seodec18
-ms.openlocfilehash: cd1688cd9d3d19242800b04e7e29c8875879cffc
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 99772579fd28b0880d497abb038fb25fd2a6139e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351555"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918208"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Pomocí Azure API pro fakturaci prostřednictvím kódu programu získáte přehled o využívání služeb Azure
 Pomocí Azure API pro fakturaci. data o využití a prostředků o přijetí změn do nástroje pro vaše preferované datové analýzy. Rozhraní API využití a ceníku prostředků Azure vám pomohou přesně odhadnout a spravovat vaše náklady. Rozhraní API se implementují jako poskytovatele prostředků a součástí rodiny API pomocí Azure Resource Manageru.  
@@ -36,7 +36,7 @@ Jednou [vyjádřit výslovný souhlas se kompletní](billing-manage-access.md#op
 > Tato funkce je v první verzi preview a může být v souladu s změny zpětně kompatibilní. V současné době není k dispozici pro některé nabídky předplatného (EA, CSP, AIO nepodporuje) a Azure Germany.
 
 ## <a name="azure-resource-usage-api-preview"></a>Využití prostředků Azure, rozhraní API (Preview)
-Použití Azure [rozhraní API využití prostředků](https://msdn.microsoft.com/library/azure/mt219003) k přesunu dat Odhadované využití Azure. Toto rozhraní API zahrnuje:
+Použití Azure [rozhraní API využití prostředků](/previous-versions/azure/reference/mt219003(v=azure.100)) k přesunu dat Odhadované využití Azure. Toto rozhraní API zahrnuje:
 
 * **Řízení přístupu Azure na základě rolí** – Konfigurace zásady přístupu na [webu Azure portal](https://portal.azure.com) nebo prostřednictvím [rutin prostředí Azure PowerShell](/powershell/azure/overview) k určení, které uživatele nebo aplikace můžete získat přístup k data o využití předplatného. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář fakturace, čtenář, vlastník nebo Přispěvatel získat přístup k datům využití pro konkrétní předplatné Azure.
 * **Hodinové nebo denní agregace** – volající můžete určit, zda chtějí svá data využití Azure každou hodinu intervalů nebo denních intervalů. Výchozí hodnota je denně.
@@ -45,7 +45,7 @@ Použití Azure [rozhraní API využití prostředků](https://msdn.microsoft.co
 * **Využití pro typy jinou nabídku** – data o využití je k dispozici pro typy nabídek jako průběžné platby MSDN, peněžního závazku, peněžní kredit ve výši a EA, s výjimkou [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-invoice#retrieve-usage-data-for-a-specific-subscription).
 
 ## <a name="azure-resource-ratecard-api-preview"></a>Prostředek Azure RateCard API (Preview)
-Použití [Azure Resource RateCard API](https://msdn.microsoft.com/library/azure/mt219005) zobrazíte seznam dostupných prostředků Azure a odhadovaných informace o cenách pro všechny. Toto rozhraní API zahrnuje:
+Použití [Azure Resource RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)) zobrazíte seznam dostupných prostředků Azure a odhadovaných informace o cenách pro všechny. Toto rozhraní API zahrnuje:
 
 * **Řízení přístupu Azure na základě rolí** – konfigurace zásad přístupu na [webu Azure portal](https://portal.azure.com) nebo prostřednictvím [rutin prostředí Azure PowerShell](/powershell/azure/overview) k určení, které uživatele nebo aplikace můžete získat přístup k RateCard data. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář, vlastník nebo Přispěvatel získat přístup k datům využití ke konkrétnímu předplatnému Azure.
 * **Podpora pro průběžné platby, MSDN, peněžního závazku a nabídek peněžních kreditů (EA a [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card) nepodporuje)** -toto rozhraní API poskytuje informace sazeb Azure úrovně nabídky.  Volající toto rozhraní API musíte předat informace o nabídce zobrazíte podrobnosti o prostředku a kurzy. Aktuálně nám poskytnout sazby EA, protože nabídky EA upravili sazby za registraci.

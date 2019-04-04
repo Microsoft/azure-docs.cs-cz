@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 03bafcdbf6890573d1d2855e2b47520d0111fe13
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 67fba7a921868d0e5720216208cff7c298c926f6
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996770"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895009"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikace ve službě Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
@@ -35,7 +35,7 @@ Naučíte se:
 * Postup zobrazení protokolů webového serveru, včetně podrobných chybových zpráv a trasování neúspěšných žádostí.
 * Postup odesílání diagnostických protokolů do služby Azure Storage account a zobrazit je.
 
-Pokud máte Visual Studio Ultimate, můžete také použít [IntelliTrace](https://msdn.microsoft.com/library/vstudio/dd264915.aspx) pro ladění. IntelliTrace nejsou uvedeny v tomto kurzu.
+Pokud máte Visual Studio Ultimate, můžete také použít [IntelliTrace](/visualstudio/debugger/intellitrace) pro ladění. IntelliTrace nejsou uvedeny v tomto kurzu.
 
 ## <a name="prerequisites"></a>Požadavky
 Tento kurz pracuje s vývojové prostředí, webový projekt a aplikace služby app Service, které jste nastavili v [vytvoření aplikace ASP.NET ve službě Azure App Service](app-service-web-get-started-dotnet-framework.md). U oddílů, WebJobs, budete potřebovat aplikaci, kterou vytvoříte v [Začínáme se sadou Azure WebJobs SDK][GetStartedWJ].
@@ -252,13 +252,13 @@ Pokud vaše funkce [napsal protokoly](https://github.com/Azure/azure-webjobs-sdk
 ```
 * Pokud zjistíte, že ladicí program nebude Krokovat s vnořením kód, který chcete ladit, budete možná muset změnit nastavení pouze můj kód.  Další informace najdete v tématu [určit, jestli se má ladit jenom uživatelský kód, pomocí funkce pouze můj kód v sadě Visual Studio](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
 * Časovač spustí na serveru, když povolíte funkci vzdáleného ladění, a po 48 hodinách se tato funkce automaticky vypne. Tento limit 48 hodin se provádí z důvodů zabezpečení a výkonu. Můžete snadno zapnout funkci zpět jako tolikrát, kolikrát chcete. Doporučujeme, abyste v něm zakázán, když se aktivně ladění.
-* Můžete ručně připojit ladicí program k libovolnému procesu, nejen app proces (w3wp.exe). Další informace o tom, jak použít režim ladění v sadě Visual Studio najdete v tématu [ladění v sadě Visual Studio](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
+* Můžete ručně připojit ladicí program k libovolnému procesu, nejen app proces (w3wp.exe). Další informace o tom, jak použít režim ladění v sadě Visual Studio najdete v tématu [ladění v sadě Visual Studio](/visualstudio/debugger/debugging-in-visual-studio).
 
 ## <a name="logsoverview"></a>Přehled diagnostických protokolů
 Aplikace ASP.NET, která běží v aplikaci služby App Service můžete vytvořit následující typy protokolů:
 
 * **Protokoly trasování aplikací**<br/>
-  Aplikace vytvoří těchto protokolů voláním metod [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx) třídy.
+  Aplikace vytvoří těchto protokolů voláním metod [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) třídy.
 * **Protokoly webového serveru**<br/>
   Webový server vytvoří položku protokolu pro každý požadavek HTTP do aplikace.
 * **Podrobné chybové zprávy protokoly**<br/>
@@ -633,7 +633,7 @@ Nápovědu k řešení problémů s konkrétní dotaz otevřete vlákno ve jednu
 * [StackOverflow.com](https://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Ladění v sadě Visual Studio
-Další informace o tom, jak použít režim ladění v sadě Visual Studio najdete v tématu [ladění v sadě Visual Studio](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) a [tipy k ladění pomocí Visual Studio 2010](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
+Další informace o tom, jak použít režim ladění v sadě Visual Studio najdete v tématu [ladění v sadě Visual Studio](/visualstudio/debugger/debugging-in-visual-studio) a [tipy k ladění pomocí Visual Studio 2010](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
 
 ### <a name="remote-debugging-in-azure"></a>Vzdálené ladění v Azure
 Další informace o vzdáleném ladění aplikací služby App Service a WebJobs naleznete na následujících odkazech:
@@ -650,14 +650,14 @@ Na Internetu nejsou k dispozici žádné důkladné a aktuální přehled trasov
 
 * [Monitorování a Telemetrie (vytváření skutečných cloudových aplikací s Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
   Elektronická kniha kapitoly s doporučeními pro trasování v Azure cloudové aplikace.
-* [Trasování rozhraní ASP.NET](https://msdn.microsoft.com/library/ms972204.aspx)<br/>
+* [Trasování rozhraní ASP.NET](/previous-versions/dotnet/articles/ms972204(v=msdn.10))<br/>
   Starý, ale stále vhodným místem k zadání základní informace o subjektu.
-* [Naslouchací procesy trasování](https://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
-  Informace o naslouchacích procesů trasování, ale nebude zmiňovat [WebPageTraceListener](https://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx).
-* [Návod: Integrace ASP.NET trasování pomocí trasování System.Diagnostics](https://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
+* [Naslouchací procesy trasování](/dotnet/framework/debug-trace-profile/trace-listeners)<br/>
+  Informace o naslouchacích procesů trasování, ale nebude zmiňovat [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener).
+* [Průvodce: Integrace ASP.NET trasování pomocí trasování System.Diagnostics](/previous-versions/b0ectfxd(v=vs.140))<br/>
   Tento článek je také starý, ale zahrnuje některé další informace, které úvodní článek nepopisuje.
 * [Trasování v zobrazení syntaxe Razor rozhraní ASP.NET MVC](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
-  Kromě trasování v zobrazení syntaxe Razor příspěvek také vysvětluje, jak vytvořit filtr chyba protokolovat všechny neošetřené výjimky v aplikaci MVC. Informace o tom, jak protokolovat všechny neošetřené výjimky v aplikaci webových formulářů, podívejte se na příklad Global.asax v [kompletní příklad pro obslužné rutiny chyb](https://msdn.microsoft.com/library/bb397417.aspx) na webové stránce MSDN. V MVC nebo webového formuláře Pokud chcete protokolovat určité výjimky, ale nechat výchozí rozhraní zpracování se projeví, můžete zachytit a znovu vyvolat jako v následujícím příkladu:
+  Kromě trasování v zobrazení syntaxe Razor příspěvek také vysvětluje, jak vytvořit filtr chyba protokolovat všechny neošetřené výjimky v aplikaci MVC. Informace o tom, jak protokolovat všechny neošetřené výjimky v aplikaci webových formulářů, podívejte se na příklad Global.asax v [kompletní příklad pro obslužné rutiny chyb](/previous-versions/bb397417(v=vs.140)) na webové stránce MSDN. V MVC nebo webového formuláře Pokud chcete protokolovat určité výjimky, ale nechat výchozí rozhraní zpracování se projeví, můžete zachytit a znovu vyvolat jako v následujícím příkladu:
 
 ``` c#
 try

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: efe85e017d883ca82414fe5ff10b5c2932366e48
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c0b1b415db9d8a530a495e09805ad9788c1edfbe
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101121"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904215"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Konfigurace přístupu z virtuální sítě (VNet)
 
@@ -27,6 +27,8 @@ Můžete nakonfigurovat účtům Azure Cosmos DB, pokud chcete povolit přístup
 > Další informace najdete v tématu podle kroků uvedených v [migrace z pravidla brány firewall protokolu IP na seznam řízení přístupu virtuální sítě](#migrate-from-firewall-to-vnet) části tohoto článku. 
 
 Následující části popisují, jak nakonfigurovat koncový bod služby virtuální sítě pro účet služby Azure Cosmos DB.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a id="configure-using-portal"></a>Konfigurace koncového bodu služby pomocí webu Azure portal
 
@@ -90,7 +92,7 @@ Aby bylo zajištěno, že máte přístup k metrikám služby Azure Cosmos DB z 
 
 Konfigurace koncového bodu služby do účtu služby Azure Cosmos DB pomocí Azure Powershellu, použijte následující kroky:  
 
-1. Nainstalujte [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) a [přihlášení](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  
+1. Nainstalujte [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) a [přihlášení](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  
 
 1. Povolte koncový bod služby pro existující podsítě virtuální sítě.  
 
@@ -100,18 +102,18 @@ Konfigurace koncového bodu služby do účtu služby Azure Cosmos DB pomocí Az
    $sname = "<Subnet name>"
    $subnetPrefix = "<Subnet address range>"
 
-   Get-AzureRmVirtualNetwork `
+   Get-AzVirtualNetwork `
     -ResourceGroupName $rgname `
-    -Name $vnName | Set-AzureRmVirtualNetworkSubnetConfig `
+    -Name $vnName | Set-AzVirtualNetworkSubnetConfig `
     -Name $sname  `
     -AddressPrefix $subnetPrefix `
-    -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzureRmVirtualNetwork
+    -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzVirtualNetwork
    ```
 
 1. Získáte informace o virtuální síti.
 
    ```powershell
-   $vnProp = Get-AzureRmVirtualNetwork `
+   $vnProp = Get-AzVirtualNetwork `
      -Name $vnName `
      -ResourceGroupName $rgName
    ```
@@ -122,7 +124,7 @@ Konfigurace koncového bodu služby do účtu služby Azure Cosmos DB pomocí Az
    $apiVersion = "2015-04-08"
    $acctName = "<Azure Cosmos DB account name>"
 
-   $cosmosDBConfiguration = Get-AzureRmResource `
+   $cosmosDBConfiguration = Get-AzResource `
      -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `
@@ -162,7 +164,7 @@ Konfigurace koncového bodu služby do účtu služby Azure Cosmos DB pomocí Az
       isVirtualNetworkFilterEnabled = $True;
    }
 
-   Set-AzureRmResource `
+   Set-AzResource `
      -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `
@@ -173,7 +175,7 @@ Konfigurace koncového bodu služby do účtu služby Azure Cosmos DB pomocí Az
 1. Spusťte následující příkaz k ověření, že váš účet Azure Cosmos DB se aktualizuje se koncový bod služby virtuální sítě, který jste nakonfigurovali v předchozím kroku:
 
    ```powershell
-   $UpdatedcosmosDBConfiguration = Get-AzureRmResource `
+   $UpdatedcosmosDBConfiguration = Get-AzResource `
      -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `
@@ -225,7 +227,7 @@ Po zapnutí koncový bod služby pro účet služby Azure Cosmos DB pro určitou
    $apiVersion = "2015-04-08"
    $acctName = "<Azure Cosmos DB account name>"
 
-   $cosmosDBConfiguration = Get-AzureRmResource `
+   $cosmosDBConfiguration = Get-AzResource `
      -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `
@@ -268,7 +270,7 @@ Po zapnutí koncový bod služby pro účet služby Azure Cosmos DB pro určitou
       isVirtualNetworkFilterEnabled = $True;
    }
 
-   Set-AzureRmResource `
+   Set-AzResource `
       -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
       -ApiVersion $apiVersion `
       -ResourceGroupName $rgName `
@@ -288,12 +290,12 @@ Po zapnutí koncový bod služby pro účet služby Azure Cosmos DB pro určitou
     $sname = "<Subnet name>"
     $subnetPrefix = "<Subnet address range>"
 
-    Get-AzureRmVirtualNetwork `
+    Get-AzVirtualNetwork `
        -ResourceGroupName $rgname `
-       -Name $vnName | Set-AzureRmVirtualNetworkSubnetConfig `
+       -Name $vnName | Set-AzVirtualNetworkSubnetConfig `
        -Name $sname `
        -AddressPrefix $subnetPrefix `
-       -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzureRmVirtualNetwork
+       -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzVirtualNetwork
     ```
 
 1. Odeberte pravidlo brány firewall protokolu IP pro podsíť.

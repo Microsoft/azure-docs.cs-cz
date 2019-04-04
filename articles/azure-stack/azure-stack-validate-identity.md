@@ -16,12 +16,12 @@ ms.date: 03/23/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 3dfb87e5f6c231831cd9c007b19ad001e1fce326
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: b6a859f1104be8650b95ac789f3da606fb1b70f6
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403183"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486678"
 ---
 # <a name="validate-azure-identity"></a>Ověření identit Azure
 
@@ -85,7 +85,7 @@ Vyžadují se následující požadavky:
 
 4. Po spuštění nástroje, prohlédněte si výstup. Potvrďte, že stav je **OK** pro požadavky na instalaci. Úspěšné ověření se zobrazí jako na následujícím obrázku:
 
-   ```shell
+   ```powershell
    Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
    Starting Azure Identity Validation
 
@@ -119,7 +119,7 @@ Následující příklady poskytují pokyny o běžných chyb při ověřování
 
 ### <a name="expired-or-temporary-password"></a>Vypršela platnost, nebo dočasné heslo
 
-```shell
+```powershell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -145,9 +145,9 @@ Login-AzureRMAccount
 
 Případně, přihlaste se k [webu Azure portal](https://portal.azure.com) jako vlastník účtu a uživatel bude muset změnit heslo.
 
-### <a name="unknown-user-type"></a>Typ Neznámý uživatel
-
-```shell
+### <a name="unknown-user-type"></a>Typ Neznámý uživatel 
+ 
+```powershell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -173,7 +173,7 @@ Login-AzureRmAccount –EnvironmentName AzureChinaCloud
 
 ### <a name="account-is-not-an-administrator"></a>Účet nemá oprávnění správce
 
-```shell
+```powershell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -197,6 +197,6 @@ Azure Stack vyžaduje, aby název domény je název primární doménu.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Ověření registrace služby Azure](azure-stack-validate-registration.md)  
+[Ověření registrace v Azure](azure-stack-validate-registration.md)  
 [Podívejte se na sestavu připravenosti](azure-stack-validation-report.md)  
 [Důležité informace o integraci Azure Stack obecné](azure-stack-datacenter-integration.md)  

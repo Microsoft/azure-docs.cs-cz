@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/26/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 10/12/2018
-ms.openlocfilehash: 0de021f4666da805eab8faba527f7c5322c39e9d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9d495087a0b3db5bba3b00fa9d0d40c91e5e9244
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763448"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497853"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Přehled plánů, nabídek, kvót a předplatných
 
@@ -47,11 +47,14 @@ Po vytvoření nabídky, uživatelé mohou přihlásit k mu umožní přístup k
 
 ## <a name="plans"></a>Plány
 
-Plány představují seskupení jedné nebo více služeb. Jako operátory Azure stacku můžete [vytváření plánů](azure-stack-create-plan.md) nabízí svým uživatelům. Uživatelé pak předplatit nabídek, aby mohli používat plány a služby, které patří mezi ně. Při vytváření plánů, ujistěte se, že pro nastavení svoje kvóty, definujte základní plány a zvážit volitelné doplňkové plány.
+Plány představují seskupení jedné nebo více služeb. Jako operátory Azure stacku můžete [vytváření plánů](azure-stack-create-plan.md) nabízí svým uživatelům. Vaši uživatelé se pak můžou přihlásit k odběru nabídek, aby mohli používat plány a služby, které k nim patří. Při vytváření plánů, ujistěte se, že pro nastavení svoje kvóty, definujte základní plány a zvážit volitelné doplňkové plány.
 
 ### <a name="quotas"></a>Kvóty
 
 Vám pomůžou spravovat kapacitu cloudu, můžete použít předem nakonfigurované *kvóty*, nebo vytvořit novou kvótu pro každou službu v plánu. Kvóty definovat omezení horní prostředků, které můžete zřizovat nebo využívat předplatného uživatele. Například může kvótu umožňují uživateli vytvořit až pět virtuálních počítačů (VM).
+
+> [!IMPORTANT]
+> Může trvat až dvě hodiny pro nové kvóty bude k dispozici na portálu user portal nebo předtím, než se vynucuje změněné kvóty.
 
 Můžete konfigurovat kvóty podle oblasti. Plán, který poskytuje výpočetních služeb pro oblast A může mít například kvótu dva virtuální počítače.
 

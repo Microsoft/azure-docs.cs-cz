@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s Kubernetes nasazení do služby Azure Stack | Dokumentace Microsoftu
-description: Informace o řešení potíží s Kubernetes nasazení do služby Azure Stack.
+title: Řešení potíží s nasazení Kubernetes ve službě Azure Stack | Dokumentace Microsoftu
+description: Informace o řešení potíží s nasazení Kubernetes ve službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,30 +11,30 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.author: mabrigg
-ms.date: 03/20/2019
+ms.date: 04/02/2019
 ms.reviewer: waltero
 ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: 9af4b7a622bfb47d44c3da0edcece8c9528b08c4
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 2a9eccfa109292b7d142092f69f4a664b0ff8f20
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361536"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878124"
 ---
-# <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Řešení potíží s Kubernetes nasazení do služby Azure Stack
+# <a name="troubleshoot-kubernetes-deployment-to-azure-stack"></a>Řešení potíží s nasazení Kubernetes pro Azure Stack
 
-*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
+*Týká se Azure Stack integrované systémy a Azure Stack Development Kit*
 
 > [!Note]  
 > Kubernetes ve službě Azure Stack je ve verzi preview. Azure Stack odpojené scénář není aktuálně podporován ve verzi preview.
 
 Následující článek vypadá na odstraňování potíží u clusteru Kubernetes. Můžete zkontrolovat výstrahu pro nasazení a zkontrolovat stav nasazení podle prvků vyžadovaných pro nasazení. Může být potřeba shromažďovat protokoly nasazení ze služby Azure Stack nebo virtuálních počítačů s Linuxem, které hostují Kubernetes. Potřebujete také pracovat se správcem vaší služby Azure Stack a protokoly načíst z koncového bodu správy.
 
-## <a name="overview-of-deployment"></a>Přehled nasazení
+## <a name="overview-of-kubernetes-deployment"></a>Přehled nasazení Kubernetes
 
 Předtím, než se pustíte do odstraňování clusteru, můžete chtít zkontrolovat proces nasazení clusteru Kubernetes se službou Azure Stack. Nasazení používá šablonu Azure Resource Manageru řešení k vytvoření virtuálních počítačů a nainstaluje modul ACS pro váš cluster.
 
-### <a name="deployment-workflow"></a>Pracovní postup nasazení
+### <a name="kubernetes-deployment-workflow"></a>Pracovní postup nasazení Kubernetes
 
 Následující diagram znázorňuje obecný postup nasazení clusteru.
 
@@ -85,7 +85,7 @@ Následující diagram znázorňuje obecný postup nasazení clusteru.
 
 Shromažďování protokolů na virtuálních počítačích, které podporují vašemu clusteru Kubernetes. Můžete také zkontrolovat protokol nasazení. Možná budete muset obraťte se na správce služby Azure Stack k ověření verze služby Azure Stack, které potřebujete k používání a získat protokoly z Azure Stack, která se vztahují na vaše nasazení.
 
-1. Zkontrolujte [stav nasazení](#review-deployment-status) a [tyto protokoly načíst](#get-logs-from-a-vm) z hlavního uzlu v clusteru Kubernetes.
+1. Zkontrolujte [stav nasazení](#review-deployment-status) a tyto protokoly načíst z hlavního uzlu v clusteru Kubernetes.
 2. Ujistěte se, že používáte nejnovější verzi služby Azure Stack. Pokud si nejste jistí, kterou verzi používáte, obraťte se na svého správce služby Azure Stack.
 3.  Projděte si soubory vytvoření virtuálního počítače. Může mít vyskytly následující problémy:  
     - Veřejný klíč může být neplatný. Projděte si klíč, který jste vytvořili.  

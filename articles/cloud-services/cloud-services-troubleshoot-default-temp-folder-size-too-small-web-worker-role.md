@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 4757b20e1a3d9830c2d52a5fbc85fd935b27fb62
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7862e4d5c4dd603dacf5784df6c4194392ebc351
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245031"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918191"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Výchozí velikost složky TEMP je příliš malá v roli cloudové služby web/worker
 Výchozí dočasný adresář role pracovního procesu nebo webové služby cloud má maximální velikost 100 MB, což může dojít v určitém okamžiku. Tento článek popisuje, jak se vyhnout nedostatku místa pro dočasný adresář.
@@ -33,8 +33,8 @@ Standardní Windows proměnné prostředí TEMP a TMP jsou k dispozici pro kód,
 ## <a name="suggestion-to-fix-the-problem"></a>Návrh na tento problém vyřešit
 Implementujte jedno z následujících alternativy:
 
-* Konfigurace prostředků místního úložiště a k němu přístup přímo namísto použití TEMP a TMP. Chcete-li přistupovat k prostředku úložiště Místní kód, který běží v rámci vaší aplikace, zavolejte [RoleEnvironment.GetLocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) metody.
-* Konfiguraci prostředku Místní úložiště a přejděte adresáře TEMP a TMP tak, aby odkazoval na cestu prostředku Místní úložiště. Tato změna by měl provádět v rámci [RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) metody.
+* Konfigurace prostředků místního úložiště a k němu přístup přímo namísto použití TEMP a TMP. Chcete-li přistupovat k prostředku úložiště Místní kód, který běží v rámci vaší aplikace, zavolejte [RoleEnvironment.GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) metody.
+* Konfiguraci prostředku Místní úložiště a přejděte adresáře TEMP a TMP tak, aby odkazoval na cestu prostředku Místní úložiště. Tato změna by měl provádět v rámci [RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) metody.
 
 Následující příklad kódu ukazuje, jak upravit cílového adresáře TEMP a TMP z v rámci metody operace OnStart:
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: efe50533a03551a673583265e107263d79cff90a
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 6e37466145af58a52a86a08a2a873e406c99b9e5
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418682"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895541"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy entit a jejich účely v LUIS
 
@@ -94,9 +94,9 @@ Po extrahování entity entity data můžete vyjádřena jako jedna jednotka inf
 |Smíšený||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Entita, ve kterém je obtížné určit koncové entity.|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Předem připravené**](#prebuilt-entity)|Extrahovat různé druhy dat je už vytrénovaný.|
 |||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Regulární výraz**](#regular-expression-entity)|Používá regulární výraz pro porovnání textu.|
-|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Jednoduché**](#simple-entity)|Obsahuje jeden koncept v slova nebo fráze.|
+|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Jednoduchý**](#simple-entity)|Obsahuje jeden koncept v slova nebo fráze.|
 
-Pouze entity se naučili počítače potřeba označené v příkladu projevy pro každý záměr. Počítače zjištěné entity fungují lépe, když testován prostřednictvím [koncový bod dotazy](luis-concept-test.md#endpoint-testing) a [recenzování projevy koncový bod](luis-how-to-review-endoint-utt.md). 
+Pouze entity se naučili počítače potřeba označené v příkladu projevy pro každý záměr. Počítače zjištěné entity fungují lépe, když testován prostřednictvím [koncový bod dotazy](luis-concept-test.md#endpoint-testing) a [recenzování projevy koncový bod](luis-how-to-review-endpoint-utterances.md). 
 
 Pattern.Any entity musí být označeny [vzor](luis-how-to-model-intent-pattern.md) Příklady šablon, ne příklady záměru uživatele. 
 
@@ -170,7 +170,7 @@ Entita je vhodná podle při:
 [Kurz](luis-tutorial-pattern.md)<br>
 [Příklad odpovědi JSON pro entitu](luis-concept-data-extraction.md#patternany-entity-data)
 
-**Příklad**  
+**Příklad:**  
 Klientská aplikace, která hledá zadaný pro knihy podle názvu, extrahuje pattern.any úplný název. Šablona utterance pomocí pattern.any je toto vyhledávání v adresáři `Was {BookTitle} written by an American this year[?]`. 
 
 Každý řádek v následující tabulce, má dvě verze utterance. Začátek utterance je jak LUIS se zpočátku zobrazí utterance, kde není jasné, s názvem adresáře začíná a končí. Dolní utterance je, jak služba LUIS, že název knihy při vzor se používají pro extrakci. 

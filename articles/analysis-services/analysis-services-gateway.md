@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3f87a4c520327f1a13a48c70502b6737c0aa9b3a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f13dd1282a6384a0acca4c6936fe7900a051795f
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630967"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58896019"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s místní bránou dat
 Místní brána dat zajišťuje zabezpečený přenos dat mezi místním zdrojům dat a vaše servery Azure Analysis Services v cloudu. Kromě práce s více servery služby Azure Analysis Services ve stejné oblasti, nejnovější verzi brány také funguje s Azure Logic Apps, Power BI, Powerapps a Microsoft Flow. Více služeb ve stejném předplatném a stejné oblasti můžete přidružit jednu bránu. 
 
 Získání první nastavení brány je složené ze čtyř částí procesu:
 
-- **Stáhněte si a spusťte instalační program** – tento krok nainstaluje služba brány na počítači ve vaší organizaci. Také přihlásit k Azure pomocí účtu ve vaší [tenanta](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) Azure AD. Azure B2B účty (Host) nejsou podporovány.
+- **Stáhněte si a spusťte instalační program** – tento krok nainstaluje služba brány na počítači ve vaší organizaci. Také přihlásit k Azure pomocí účtu ve vaší [tenanta](/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant) Azure AD. Azure B2B účty (Host) nejsou podporovány.
 
 - **Mohli bránu registrovat** – v tomto kroku, zadejte název a obnovení klíče pro bránu a vyberte oblast, bránu zaregistrovali na cloudové službě brány. Váš prostředek brány mohou být registrovány v libovolné oblasti, ale doporučujeme, aby že měla být ve stejné oblasti jako váš Server Analysis Services. 
 
@@ -63,8 +63,8 @@ Následují plně kvalifikované názvy domény používá brána.
 
 | Názvy domén | Odchozí porty | Popis |
 | --- | --- | --- |
-| *. powerbi.com |80 |Pro stažení instalačního programu se používá HTTP. |
-| *. powerbi.com |443 |HTTPS |
+| *.powerbi.com |80 |Pro stažení instalačního programu se používá HTTP. |
+| *.powerbi.com |443 |HTTPS |
 | *.analysis.windows.net |443 |HTTPS |
 | *.login.windows.net |443 |HTTPS |
 | *.servicebus.windows.net |5671-5672 |Pokročilé řízení front zpráv (AMQP) protokolu |

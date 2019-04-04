@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: a82035bfbed109d6521131d8c730bef04030c94f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 92fc8e9edfc745ae89c2b4d44e193566292d4f08
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093537"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918871"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Poznámky k verzi pro služby Azure BizTalk Services
 
@@ -30,7 +30,7 @@ ms.locfileid: "58093537"
 Poznámky k verzi pro služby Microsoft Azure BizTalk Services obsahují známé problémy v této verzi.
 
 ## <a name="whats-new-in-the-november-update-of-biztalk-services"></a>Co je nového v aktualizaci z listopadu BizTalk Services
-* Šifrování v klidovém stavu lze povolit v portálu BizTalk Services. Zobrazit [povolit šifrování v klidovém stavu portálu BizTalk Services](https://msdn.microsoft.com/library/azure/dn874052.aspx).
+* Šifrování v klidovém stavu lze povolit v portálu BizTalk Services. Zobrazit [povolit šifrování v klidovém stavu portálu BizTalk Services](/previous-versions/azure/dn874052(v=azure.100)).
 
 ## <a name="update-history"></a>Historie aktualizace
 ### <a name="october-update"></a>Říjen aktualizace
@@ -39,14 +39,14 @@ Poznámky k verzi pro služby Microsoft Azure BizTalk Services obsahují známé
   * **Scénář**: Jste zaregistrovali nasazení služby BizTalk pomocí účtu organizace v Azure Active Directory (například user@fabrikam.com nebo user@contoso.com). V tomto scénáři můžete spravovat pouze uživatelé Azure Active Directory v rámci stejné organizace služby BizTalk pomocí portálu BizTalk Services. Nelze použít účet Microsoft.  
 * Při vytváření služby BizTalk, budete automaticky zaregistrováni v portálu BizTalk Services.
   * **Scénář**: Přihlášení k Azure, vytvořte službu BizTalk a pak vyberte **spravovat** velmi poprvé. Při otevření portálu BizTalk Services, služba BizTalk automaticky zaregistruje a je připravená pro vaše nasazení.  
-    Zobrazit [registrace a aktualizace nasazení služby BizTalk na BizTalk Services – portál](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
+    Zobrazit [registrace a aktualizace nasazení služby BizTalk na BizTalk Services – portál](/previous-versions/azure/hh689837(v=azure.100)).  
 
 ### <a name="august-14-update"></a>14. srpna aktualizace
-* V portálu BizTalk Services jsou teď oddělení smlouvy a most oddělení – obchodní partner smluv a přemostění. Teď vytvoříte smluv a přemostění samostatně a za běhu mosty řešení smlouvy na základě hodnot v zpráv EDI. Naleznete v tématu [vytvoření smluv ve službě Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689908.aspx), [vytvořit most EDI pomocí portálu BizTalk Services](https://msdn.microsoft.com/library/azure/dn793986.aspx), [vytvořit most AS2 pomocí portálu BizTalk Services](https://msdn.microsoft.com/library/azure/dn793993.aspx)a [ Jak vyřešit mosty smlouvy za běhu?](https://msdn.microsoft.com/library/azure/dn794001.aspx)  
+* V portálu BizTalk Services jsou teď oddělení smlouvy a most oddělení – obchodní partner smluv a přemostění. Teď vytvoříte smluv a přemostění samostatně a za běhu mosty řešení smlouvy na základě hodnot v zpráv EDI. Naleznete v tématu [vytvoření smluv ve službě Azure BizTalk Services](/previous-versions/azure/hh689908(v=azure.100)), [vytvořit most EDI pomocí portálu BizTalk Services](/previous-versions/azure/dn793986(v=azure.100)), [vytvořit most AS2 pomocí portálu BizTalk Services](/previous-versions/azure/dn793993(v=azure.100))a [ Jak vyřešit mosty smlouvy za běhu?](/previous-versions/azure/dn794001(v=azure.100))  
 * Možnost vytvoření šablony pro smlouvy je přerušeno.  
-* Straně odesílání smlouvy teď můžete zadat jiné oddělovače skupin pro každé schéma. Tato konfigurace je zadaný v nastavení protokolu pro dohody straně odeslání. Další informace najdete v tématu [vytvořit příslušný X12 smlouvy o utajení, služby Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx) a [vytvořili ve službě Azure BizTalk Services smlouvu EDIFACT](https://msdn.microsoft.com/library/azure/dn606267.aspx). Dvě nové entity, které jsou také přidány do rozhraní API TPM OM ke stejnému účelu. Zobrazit [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) a [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx).  
-* Standardní XSD konstrukcím, včetně odvozené typy jsou nyní podporovány. Zobrazit [použijte standardní XSD vytvoří v mapách](https://msdn.microsoft.com/library/azure/dn793987.aspx) a [použijte odvozené typy v mapování scénářů a příklady](https://msdn.microsoft.com/library/azure/dn793997.aspx).  
-* AS2 podporuje nový algoritmus MIC pro podepisování zpráv a nových šifrovacích algoritmů. Zobrazit [vytvořili ve službě Azure BizTalk Services smlouvu AS2](https://msdn.microsoft.com/library/azure/hh689890.aspx).  
+* Straně odesílání smlouvy teď můžete zadat jiné oddělovače skupin pro každé schéma. Tato konfigurace je zadaný v nastavení protokolu pro dohody straně odeslání. Další informace najdete v tématu [vytvořit příslušný X12 smlouvy o utajení, služby Azure BizTalk Services](/previous-versions/azure/hh689847(v=azure.100)) a [vytvořili ve službě Azure BizTalk Services smlouvu EDIFACT](/previous-versions/azure/dn606267(v=azure.100)). Dvě nové entity, které jsou také přidány do rozhraní API TPM OM ke stejnému účelu. Zobrazit [X12DelimiterOverrides](/previous-versions/azure/dn798749(v=azure.100)) a [EDIFACTDelimiterOverride](/previous-versions/azure/dn798748(v=azure.100)).  
+* Standardní XSD konstrukcím, včetně odvozené typy jsou nyní podporovány. Zobrazit [použijte standardní XSD vytvoří v mapách](/previous-versions/azure/dn793987(v=azure.100)) a [použijte odvozené typy v mapování scénářů a příklady](/previous-versions/azure/).  
+* AS2 podporuje nový algoritmus MIC pro podepisování zpráv a nových šifrovacích algoritmů. Zobrazit [vytvořili ve službě Azure BizTalk Services smlouvu AS2](/previous-versions/azure/hh689890(v=azure.100)).  
 
 ## <a name="known-issues"></a>Známé problémy
 
@@ -85,7 +85,7 @@ Pokud jsou prázdné znaky nad rámec segmentu IEA, disassembler považován za 
 
 ### <a name="tracking-in-biztalk-services-portal"></a>Sledování portálu BizTalk Services
 Sledování události mají zachytávat až po zpracování zprávy EDI a jakákoli korelace. Pokud zpráva neprojde mimo fázi protokolu, se zobrazí jako úspěšně dokončený sledování. V této situaci, přečtěte si část protokolu v části **podrobnosti** sloupec v **sledování** pro podrobnosti o chybě.
-X12 příjem a odesílání nastavení ([vytvořit příslušný X12 smlouvy o utajení, služby Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx)) poskytují informace o fázi protokolu.  
+X12 příjem a odesílání nastavení ([vytvořit příslušný X12 smlouvy o utajení, služby Azure BizTalk Services](/previous-versions/azure/hh689847(v=azure.100))) poskytují informace o fázi protokolu.  
 
 ### <a name="update-agreement"></a>Aktualizace smlouvy
 Portálu BizTalk Services umožňuje změnit kvalifikátor identitu, pokud je nakonfigurovaná smlouvu. To může způsobit nekonzistentní vlastnosti. Například je pomocí ZZ:1234567 a ZZ:7654321 kvalifikátor smlouvu. V nastavení profilu portálu BizTalk Services můžete změnit ZZ:1234567 bude 01:ChangedValue. Otevřete smlouvu a zobrazí se místo ZZ:1234567 01:ChangedValue.
@@ -109,7 +109,8 @@ Představte si třeba situaci v následujícím pořadí:
 * Zavřete soubor .bcs (když zavřete kartu v sadě Visual Studio) bez uložení změn.  
 * Z Průzkumníku řešení otevřete soubor .bcs znovu.  
   Můžete si všimnout, že zatímco přidružené .bridgeconfig soubor má název, který jste zadali, názvu entity na návrhové ploše je stále starý název. Pokud se pokusíte spustit nástroj konfigurace mostu dvojitým kliknutím na součást most, zobrazí se následující chyba:  
-  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist` Aby se zabránilo spouštění v tomto scénáři, zkontrolujte, zda že po přejmenování entity v projektu služby BizTalk se uložit změny.  
+  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist`
+  Aby se zabránilo spouštění v tomto scénáři, zkontrolujte, zda že po přejmenování entity v projektu služby BizTalk se uložit změny.  
   
 ### <a name="biztalk-service-project-builds-successfully-even-if-an-artifact-has-been-excluded-from-a-visual-studio-project"></a>Služba BizTalk projekt vytvoří úspěšně i v případě, že artefakt byl vyloučen z projektu sady Visual Studio
 Představte si třeba situaci, kde můžete přidávat artefakt (například soubor XSD) do projektu služby BizTalk, do konfigurace mostu zahrnout tento artefakt (například tak, že zadáte jeho jako typu požadavku zprávy) a vyloučit ho z projektu sady Visual Studio. V takovém případě se sestavení projektu nebude dát všechny chyby jako odstraněné artefakt je k dispozici na disku na stejné umístění, ve kterém je zahrnutý v projektu sady Visual Studio.
@@ -224,5 +225,5 @@ Tato možnost není k dispozici jako součást této edici systému Microsoft Az
 V tomto dokumentu termín "kanály" a "edice" zaměňují. I v podstatě stejný význam, který je nasazený na BizTalk Services jednotka zpracování zprávy.  
 
 ### <a name="concepts"></a>Koncepty
-[BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
+[BizTalk Services](/previous-versions/azure/hh689864(v=azure.100))   
 

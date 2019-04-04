@@ -1,6 +1,6 @@
 ---
-title: Přidání a odebrání image virtuálního počítače do služby Azure Stack | Dokumentace Microsoftu
-description: Přidání nebo odebrání vaše organizace vlastní virtuální počítač Linux nebo Windows image pro klienty použít.
+title: Přidání image virtuálního počítače do Azure stacku | Dokumentace Microsoftu
+description: Přidat image virtuálního počítače nebo odebrat obrázek, který se vaše organizace vlastní Windows nebo image virtuálního počítače s Linuxem pro klienty použít.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 04/02/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: ccf3beaacd15ad7d3e9177614bb62b0050bd8d5c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9e20abfde8a4524b00e60651bbe71135d357a237
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109151"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881456"
 ---
-# <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Zpřístupnit image virtuálního počítače ve službě Azure Stack
+# <a name="add-a-vm-image-to-offer-in-azure-stack"></a>Přidání image virtuálního počítače ve službě Azure Stack nabízí
 
-*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
+*Týká se Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Ve službě Azure Stack můžete zpřístupnit imagí virtuálních počítačů pro vaše uživatele. Tyto Image je možné pomocí šablon Azure Resource Manageru. Také je můžete přidat jako položky Marketplace do uživatelského rozhraní služby Azure Marketplace. Použijte formulář image globální Azure Marketplace nebo vlastní image. Image můžete přidat pomocí portálu nebo prostředí Windows PowerShell.
+Ve službě Azure Stack můžete přidat image virtuálního počítače (VM) na webu marketplace zpřístupnit uživatelům. Image virtuálních počítačů můžete přidat pomocí šablon Azure Resource Manageru pro službu Azure Stack. Image virtuálních počítačů do uživatelského rozhraní služby Azure Marketplace můžete také přidat jako položky Marketplace. Použijte image na Azure markeplace globální nebo vlastní image virtuálního počítače. Můžete přidat image virtuálního počítače pomocí portálu pro správu nebo prostředí Windows PowerShell.
 
 ## <a name="add-a-vm-image-through-the-portal"></a>Přidání image virtuálního počítače pomocí portálu
 
@@ -83,7 +83,7 @@ Image musí být možné odkazovat identifikátor URI úložiště objektů blob
 
 3. Otevřete prostředí PowerShell s řádku se zvýšenými oprávněními a spusťte:
 
-   ```PowerShell  
+   ```powershell
     Add-AzsPlatformimage -publisher "<publisher>" `
       -offer "<offer>" `
       -sku "<sku>" `
@@ -93,16 +93,16 @@ Image musí být možné odkazovat identifikátor URI úložiště objektů blob
    ```
 
    **Přidat AzsPlatformimage** rutiny určuje hodnoty slouží k odkazování image virtuálního počítače pomocí šablony Azure Resource Manageru. Mezi hodnoty patří:
-   - **publisher**  
+   - **vydavatele**  
      Příklad: `Canonical`  
      Segment názvu publisher z image virtuálního počítače, který uživatelé používají při jejich nasazení bitové kopie. Příkladem je **Microsoft**. V tomto poli nezahrnují mezera nebo speciální znaky.  
    - **nabídka**  
      Příklad: `UbuntuServer`  
      Segment název nabídky image virtuálního počítače, který uživatelé použít, když nasadí image virtuálního počítače. Příkladem je **WindowsServer**. V tomto poli nezahrnují mezera nebo speciální znaky.  
-   - **sku**  
+   - **SKU**  
      Příklad: `14.04.3-LTS`  
      Název segmentu skladovou Položku Image virtuálního počítače, který uživatelé použít, když nasadí image virtuálního počítače. Příkladem je **Datacenter2016**. V tomto poli nezahrnují mezera nebo speciální znaky.  
-   - **Verze**  
+   - **version**  
      Příklad: `1.0.0`  
      Verze Image virtuálního počítače, který uživatelé použít, když nasadí image virtuálního počítače. Tato verze je ve formátu  *\#.\#. \#*. Příkladem je **1.0.0**. V tomto poli nezahrnují mezera nebo speciální znaky.  
    - **osType**  
@@ -118,7 +118,7 @@ Image musí být možné odkazovat identifikátor URI úložiště objektů blob
  
 1. [Instalace Powershellu pro Azure Stack](azure-stack-powershell-install.md).
 
-   ```PowerShell  
+   ```powershell
     # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
     Add-AzureRMEnvironment `
       -Name "AzureStackAdmin" `
@@ -139,7 +139,7 @@ Image musí být možné odkazovat identifikátor URI úložiště objektů blob
 
 2. Pokud používáte **Active Directory Federation Services**, použijte následující rutinu:
 
-   ```PowerShell
+   ```powershell
    # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
    $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
@@ -158,7 +158,7 @@ Image musí být možné odkazovat identifikátor URI úložiště objektů blob
 
 5. Příprava image operačního systému Windows nebo Linuxem ve formátu virtuálního pevného disku (VHDX není), odešlete image do účtu úložiště a získejte identifikátor URI, kde je možné načíst image virtuálního počítače pomocí Powershellu.  
 
-   ```PowerShell  
+   ```powershell
     Add-AzureRmAccount `
       -EnvironmentName "AzureStackAdmin" `
       -TenantId $TenantID
@@ -166,14 +166,14 @@ Image musí být možné odkazovat identifikátor URI úložiště objektů blob
 
 6. (Volitelně) Můžete nahrát celou řadu datových disků jako součást image virtuálního počítače. Vytvoření vaší datové disky pomocí rutiny New-DataDiskObject. Otevřete PowerShell řádku se zvýšenými oprávněními a spusťte:
 
-   ```PowerShell  
+   ```powershell
     New-DataDiskObject -Lun 2 `
     -Uri "https://storageaccount.blob.core.windows.net/vhds/Datadisk.vhd"
    ```
 
 7. Otevřete prostředí PowerShell s řádku se zvýšenými oprávněními a spusťte:
 
-   ```PowerShell  
+   ```powershell
     Add-AzsPlatformimage -publisher "<publisher>" -offer "<offer>" -sku "<sku>" -version "<#.#.#>” -OSType "<ostype>" -OSUri "<osuri>"
    ```
 
@@ -189,7 +189,7 @@ Pokud už nepotřebujete image virtuálního počítače, který jste nahráli, 
 
 3. Otevřete prostředí PowerShell s řádku se zvýšenými oprávněními a spusťte:
 
-   ```PowerShell  
+   ```powershell  
    Remove-AzsPlatformImage `
     -publisher "<publisher>" `
     -offer "<offer>" `
@@ -197,16 +197,16 @@ Pokud už nepotřebujete image virtuálního počítače, který jste nahráli, 
     -version "<version>" `
    ```
    **Odebrat AzsPlatformImage** rutiny určuje hodnoty slouží k odkazování image virtuálního počítače pomocí šablony Azure Resource Manageru. Mezi hodnoty patří:
-   - **publisher**  
+   - **vydavatele**  
      Příklad: `Canonical`  
      Segment názvu publisher z image virtuálního počítače, který uživatelé používají při jejich nasazení bitové kopie. Příkladem je **Microsoft**. V tomto poli nezahrnují mezera nebo speciální znaky.  
    - **nabídka**  
      Příklad: `UbuntuServer`  
      Segment název nabídky image virtuálního počítače, který uživatelé použít, když nasadí image virtuálního počítače. Příkladem je **WindowsServer**. V tomto poli nezahrnují mezera nebo speciální znaky.  
-   - **sku**  
+   - **SKU**  
      Příklad: `14.04.3-LTS`  
      Název segmentu skladovou Položku Image virtuálního počítače, který uživatelé použít, když nasadí image virtuálního počítače. Příkladem je **Datacenter2016**. V tomto poli nezahrnují mezera nebo speciální znaky.  
-   - **Verze**  
+   - **version**  
      Příklad: `1.0.0`  
      Verze Image virtuálního počítače, který uživatelé použít, když nasadí image virtuálního počítače. Tato verze je ve formátu  *\#.\#. \#*. Příkladem je **1.0.0**. V tomto poli nezahrnují mezera nebo speciální znaky.  
     

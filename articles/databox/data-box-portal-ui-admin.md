@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 6b6d0d1a7e14035f7a1b7998ec4b3e68761539f5
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5d1c3e4bb1c4b3545c8f051432016348112f16b0
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158104"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903642"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Pomocí webu Azure portal ke správě vašeho disku Data Box
 
@@ -25,7 +25,7 @@ Data Box Disk je možné spravovat prostřednictvím webu Azure Portal. Tento č
 
 Může se stát, že po zadání objednávky budete muset tuto objednávku z různých důvodů zrušit. Objednávku je možné zrušit do té doby, než začne příprava disku. Jakmile jsou disky připravené a objednávka je zpracovaná, už se nedá zrušit. 
 
-Pokud chcete zrušit objednávku, proveďte následující kroky.
+Když chcete zrušit objednávku, postupujte následovně.
 
 1.  Přejděte na **Přehled > Zrušit**. 
 
@@ -55,7 +55,7 @@ Pokud chcete naklonovat objednávku, proveďte následující kroky.
 
 Během pár minut se vytvoří klon, portál se aktualizuje a zobrazí se na něm nová objednávka.
 
-[![Klonování objednávky 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
+[![Cjedinou pořadí 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
 
 ## <a name="delete-order"></a>Odstranění objednávky
 

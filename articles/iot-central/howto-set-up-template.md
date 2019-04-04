@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1306b97ce7fcf2cd429be31bc99d022de53805d6
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 602c7385b252daa7db22bd47f43afec3ad072263
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259852"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904198"
 ---
 # <a name="set-up-a-device-template-new-ui-design"></a>Nastavit šablonu zařízení (návrh nové uživatelské rozhraní)
 
@@ -281,3 +281,5 @@ Teď, když jsme zjistili, jak nastavit šablonu zařízení v aplikaci Azure Io
 
 > [!div class="nextstepaction"]
 > [Vytvoření nové šablony verze zařízení](howto-version-devicetemplate.md)
+> [připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central](howto-connect-devkit.md)
+> [připojení obecného klienta aplikace do Azure IoT Central aplikace (Node.js)](howto-connect-nodejs.md)

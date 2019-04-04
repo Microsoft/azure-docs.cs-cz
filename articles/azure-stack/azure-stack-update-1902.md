@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2019
+ms.date: 04/03/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: fbf9f4aa79af32cf0e73f4e383130c565de16f53
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.lastreviewed: 04/03/2019
+ms.openlocfilehash: 5971692b3e6447bc790b2e34cf84eae66979f7f5
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372365"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862076"
 ---
 # <a name="azure-stack-1902-update"></a>Aktualizace služby Azure Stack 1902
 
-*Platí pro: Integrované systémy Azure Stack*
+*Týká se Integrované systémy pro službu Azure Stack*
 
 Tento článek popisuje obsah balíčku 1902 aktualizace. Obsahuje vylepšení, opravy a nové funkce pro tuto verzi sady Azure Stack. Tento článek také popisuje známé problémy v této verzi a obsahuje odkaz ke stažení aktualizace. Známé problémy jsou rozděleny do problémy přímo souvisí s proces aktualizace a problémy se sestavením (po instalaci).
 
@@ -57,12 +57,12 @@ Azure Stack opravy hotfix platí pouze pro integrované systémy Azure Stack; Ne
 ## <a name="prerequisites"></a>Požadavky
 
 > [!IMPORTANT]
-> - Nainstalujte [nejnovější opravy hotfix Azure Stack](#azure-stack-hotfixes) pro 1901 (pokud existuje) před aktualizací na 1902.
+> 1902 můžete nainstalovat buď přímo z [1.1901.0.95 nebo 1.1901.0.99](azure-stack-update-1901.md#build-reference) vydání bez první instalace všech oprav hotfix 1901. Ale pokud jste nainstalovali starší **1901.2.103** oprav hotfix, musíte nainstalovat novější [1901.3.105 opravu hotfix](https://support.microsoft.com/help/4495662) 1902 předtím, než budete pokračovat.
 
 - Před instalací této aktualizace, spusťte [testovací AzureStack](azure-stack-diagnostic-test.md) s následujícími parametry do ověřte stav služby Azure Stack a vyřešte všechny provozní problémy zjištěné, včetně všech upozornění a chyby. Také aktivní výstrahy můžete zkontrolovat a vyřešit všechny, které vyžadují nějakou akci:
 
-    ```PowerShell
-    Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
+    ```powershell
+    Test-AzureStack -Include AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
 - Azure Stack je spravovaná službou System Center Operations Manager (SCOM), nezapomeňte aktualizovat [sady Management Pack pro Microsoft Azure Stack](https://www.microsoft.com/download/details.aspx?id=55184) verzi 1.0.3.11 před použitím 1902.
@@ -77,6 +77,9 @@ Azure Stack opravy hotfix platí pouze pro integrované systémy Azure Stack; Ne
 
 - Sestavení 1902 zavádí nové uživatelské rozhraní na portálu Správce služby Azure Stack pro vytváření plánů, nabídek, kvót a doplňkové plány. Další informace, včetně snímků obrazovky najdete v části [vytváření plánů, nabídek a kvót](azure-stack-create-plan.md).
 
+<!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
+- Vylepšení spolehlivosti rozšiřování kapacity při přidání uzlu při přechodu stavu škálovací jednotku z "Úložiště Expanding" do stavu spuštění.
+
 <!--
 1426197 3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout    PNU
 1399240 3322580: [PNU] Optimize the DSC resource execution on the Host  PNU
@@ -84,23 +87,21 @@ Azure Stack opravy hotfix platí pouze pro integrované systémy Azure Stack; Ne
 1398818 3685138, 3734779: ECE exception logging, VirtualMachine ConfigurePending should take node name from execution context   PNU
 1381018 [1902] 3610787 - Infra VM creation should fail if the ClusterGroup already exists   PNU
 -->
-- Ke zlepšení balíček integrity a zabezpečení a snadnější správu za účelem ingestování datových offline, změnil Microsoft formátu balíček aktualizací ze souborů .exe a .bin soubor .zip. Nový formát přidá další spolehlivost dekomprimace procesu, který v některých případech může způsobit přípravy aktualizace zpomalí. Stejný formát balíčku platí také pro aktualizace balíčků z vašeho OEM dodavatele.
-
-- Ke zlepšení prostředí Azure Stack operátor při spuštění **Test AzureStack**, operátory teď můžete jednoduše použít `Test-AzureStack -Group UpdateReadiness` namísto předání dalších parametrů deset po `include` příkazu. Příklad:
+- Ke zlepšení balíček integrity a zabezpečení, jakož i snadnější správu za účelem ingestování datových offline, Microsoft změnil formátu balíčku aktualizace ze souborů .exe a Bin na soubor .zip. Nový formát přidá další spolehlivost dekomprimace procesu, který v některých případech může způsobit přípravy aktualizace zpomalí. Stejný formát balíčku platí také pro aktualizace balíčků z vašeho OEM dodavatele.
+- Při spuštění testu AzureStack, vylepšit celkovou funkčnost operátor Azure stacku, operátory teď můžete jednoduše použít, "Test-AzureStack-UpdateReadiness skupiny" na rozdíl od předání dalších parametrů deset po příkazu zahrnout.
 
   ```powershell
-  Test-AzureStack -Group UpdateReadiness  
-  ```
-
-- Ke zlepšení celkové spolehlivosti a dostupnosti základní infrastruktury služby během procesu aktualizace, aktualizace nativního zprostředkovatele prostředků jako součást akční plán aktualizace bude zjišťovat a podle potřeby vyvolat automatické nápravy globální. Pracovní postupy nápravy globální "opravy" patří:
-
-  - Zkontrolujte infrastrukturu virtuálních počítačů, které jsou v neoptimálních stavu a zkusit opravit podle potřeby.
-  - Zkontrolujte problémy se službou SQL jako součást plánu ovládacího prvku a zkusit opravit podle potřeby.
-  - Zkontrolujte stav služby nástroje pro vyrovnávání zatížení softwaru (SLB) jako součást sady řadiči sítě (NC) a zkusit opravit, podle potřeby.
-  - Zkontrolujte stav služby Network síťovým Adaptérem a pokuste se ji opravit, podle potřeby.
-  - Zkontrolujte stav nouze obnovení konzoly služby (ERCS) služby prostředků infrastruktury uzly a opravit, podle potřeby.
-  - Zkontrolujte stav uzly XRP service fabric a opravit, podle potřeby.
-  - Kontrola stavu prostředků infrastruktury uzly služby konzistentní úložiště Azure (ACS) a opravit, podle potřeby.
+    Test-AzureStack -Group UpdateReadiness  
+  ```  
+  
+- Pokud chcete zlepšit celkovou spolehlivost a dostupnost základní služby infrastruktury během procesu aktualizace, nativního zprostředkovatele prostředků aktualizace jako součást plánu aktualizace akce rozpozná a vyvolat automatické nápravy globální podle potřeby. Pracovní postupy nápravy globální "opravy" patří:
+    - Kontrola pro infrastrukturu virtuálních počítačů, které jsou v neoptimálních stavu a zkusit opravit podle potřeby 
+    - Zkontrolovat problémy se službou SQL jako součást plánu ovládacího prvku a zkusit opravit podle potřeby
+    - Zkontrolujte stav služby nástroje pro vyrovnávání zatížení softwaru (SLB) jako součást sady řadiči sítě (NC) a zkusit opravit podle potřeby
+    - Zkontrolujte stav služby Network síťovým Adaptérem a pokusí se ji opravit, podle potřeby
+    - Zkontrolujte stav nouze obnovení konzoly služby (ERCS) služby prostředků infrastruktury uzly a opravit, podle potřeby
+    - Zkontrolujte stav uzly XRP service fabric a opravit, podle potřeby
+    - Kontrola stavu prostředků infrastruktury uzly služby konzistentní úložiště Azure (ACS) a opravit, podle potřeby
 
 <!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
 - Vylepšení spolehlivosti rozšiřování kapacity při přidání uzlu při přechodu stavu škálovací jednotku z "Úložiště Expanding" do stavu spuštění.    
@@ -115,13 +116,13 @@ Azure Stack opravy hotfix platí pouze pro integrované systémy Azure Stack; Ne
 - Vylepšení Azure stack zlepšit výkon a spolehlivost shromažďování protokolů diagnostické nástroje. Dodatečné protokolování pro sítě a služby identit. 
 
 <!-- 1384958    Adding a Test-AzureStack group for Secret Rotation  Diagnostics -->
-- Vylepšení spolehlivosti **testovací AzureStack** pro test připravenosti tajných kódů otočení.
+- Vylepšení spolehlivosti Test AzureStack otočení tajného kódu podle připravenosti na test.
 
 <!-- 1404751    3617292: Graph: Remove dependency on ADWS.  Identity -->
-- Vylepšení pro zvýšení spolehlivosti AD Graph při komunikaci s prostředí služby Active Directory zákazníka.
+- Vylepšení pro zvýšení spolehlivosti AD Graph při komunikaci s prostředí služby Active Directory zákazníka
 
 <!-- 1391444    [ISE] Telemetry for Hardware Inventory - Fill gap for hardware inventory info   System info -->
-- Vylepšení hardware inventory kolekce v **Get-AzureStackStampInformation**.
+- Vylepšení kolekce inventáře hardwaru v Get AzureStackStampInformation.
 
 - Abychom vylepšili spolehlivost operací spuštěných v infrastruktuře ERCS, zvyšuje paměť pro každou instanci ERCS z 8 GB až 12 GB. Při instalaci Azure Stack integrované systémy výsledkem je 12 GB zvýšení celkové.
 
@@ -219,19 +220,6 @@ Toto jsou známé problémy této verze sestavení po instalaci.
    - Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Pokud chcete chybu vyřešit, postupujte podle kroků v [v tomto článku](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
 
 - Virtuální počítač s Ubuntu 18.04 vytvořené pomocí SSH autorizace povolená neumožňuje použití klíčů SSH pro přihlášení. Jako alternativní řešení použít přístup k virtuálním počítačům pro Linuxové rozšíření k implementaci klíče SSH po zřízení, nebo ověřování pomocí hesla.
-
-- Pokud nemáte hardwaru životního cyklu hostitelů (HLH): Před sestavením 1902, museli jste nastavit zásady skupiny **počítače Konfigurace počítače\Nastavení systému Windows\Místní Policies\Security Options** k **Odeslat LM NTLM – použijte NTLMv2 relace zabezpečení, pokud vyjedná**. Od sestavení 1902 musí necháváme ji jak **není definována** nebo ji nastavte na **pouze odpovědi odeslat NTLMv2** (což je výchozí hodnota). V opačném případě nejde vytvořit vzdálené relace prostředí PowerShell a taky bude docházet **přístup byl odepřen** Chyba:
-
-   ```shell
-   PS C:\Users\Administrator> $session = New-PSSession -ComputerName x.x.x.x -ConfigurationName PrivilegedEndpoint  -Credential $cred
-   New-PSSession : [x.x.x.x] Connecting to remote server x.x.x.x failed with the following error message : Access is denied. For more information, see the 
-   about_Remote_Troubleshooting Help topic.
-   At line:1 char:12
-   + $session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
-   +            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      + CategoryInfo          : OpenError: (System.Manageme....RemoteRunspace:RemoteRunspace) [New-PSSession], PSRemotingTransportException
-      + FullyQualifiedErrorId : AccessDenied,PSSessionOpenFailed
-   ```
 
 ### <a name="networking"></a>Sítě  
 

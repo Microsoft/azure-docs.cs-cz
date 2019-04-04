@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: ad9e22668d0f6d994ad0fce7b207b5849dfa27e9
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 199843be72df473ae501eaf6bd47dce41b079c94
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651236"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906102"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Správa DNS záznamů a sad záznamů v DNS Azure pomocí Azure Powershellu
 
@@ -33,9 +33,9 @@ V tomto článku se dozvíte, jak spravovat záznamy DNS pro zónu DNS pomocí A
 
 V příkladech v tomto článku předpokládá, že jste již [nainstalovaný Azure PowerShell, přihlásili jste se a vytvořili jste zónu DNS](dns-operations-dnszones.md).
 
-## <a name="introduction"></a>Úvod
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="introduction"></a>Úvod
 
 Před vytvářením záznamů DNS v DNS Azure je nejprve nutné pochopit, jak DNS Azure organizuje záznamy DNS v sadách záznamů DNS.
 
@@ -398,4 +398,4 @@ Další informace o [zón a záznamů v Azure DNS](dns-zones-records.md).
 <br>
 Zjistěte, jak [ochrana záznamů a zón](dns-protect-zones-recordsets.md) při použití Azure DNS.
 <br>
-Zkontrolujte [referenční dokumentace k Azure DNS Powershellu](/powershell/module/azurerm.dns).
+Zkontrolujte [referenční dokumentace k Azure DNS Powershellu](/powershell/module/az.dns).

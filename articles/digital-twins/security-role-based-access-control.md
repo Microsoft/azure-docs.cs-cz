@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: lyrana
-ms.openlocfilehash: 2d437f3fd96c38bebac52d6bb9dacf2c01b20a3c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: bfc73a71a0ccda5c135e6a740d6f63bd37522a9b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443677"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904266"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Řízení přístupu podle role v Azure digitální dvojče
 
@@ -67,7 +67,7 @@ Definice role je soubor oprávnění a další atributy, které tvoří roli. De
 V následujících referenční dokumentaci článcích:
 
 - Jak [dotazu nebo ID objektu uživatele](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0).
-- Jak [získání ID objektu pro objekt zabezpečení služby](https://docs.microsoft.com/powershell/module/azurerm.resources/get-azurermadserviceprincipal).
+- Jak [získání ID objektu pro objekt zabezpečení služby](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal).
 - Jak [načíst ID objektu pro tenanta služby Azure AD](../active-directory/develop/quickstart-create-new-tenant.md).
 
 ## <a name="role-assignments"></a>Přiřazení rolí

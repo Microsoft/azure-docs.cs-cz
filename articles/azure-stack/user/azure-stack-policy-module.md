@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 03/26/2019
 ms.author: sethm
-ms.lastreviewed: 11/29/2018
-ms.openlocfilehash: 2e1b7257e7ffc4460d86018a6318e33f95e01700
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 03/26/2019
+ms.openlocfilehash: 9fade97bbe783cf156f5b73523bc0834a34df926
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246260"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487443"
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Správa Azure policy použití modulu zásad Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Modul zásad Azure Stack umožňuje konfigurovat předplatné Azure s stejné správy verzí a dostupnost služeb jako Azure Stack. Modul používá [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition) rutina pro vytvoření zásady služby Azure, který omezuje typy prostředků a služeb dostupných v předplatném. Pak vytvoříte přiřazení zásady v rámci příslušeného oboru s použitím [New-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment) rutiny. Po konfiguraci zásad, můžete použít své předplatné Azure pro vývoj aplikací určená pro Azure Stack.
+Modul zásad Azure Stack umožňuje konfigurovat předplatné Azure s stejné správy verzí a dostupnost služeb jako Azure Stack. Modul používá [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition) rutina prostředí PowerShell pro vytvoření zásady služby Azure, který omezuje typy prostředků a služeb dostupných v předplatném. Pak vytvoříte přiřazení zásady v rámci příslušeného oboru s použitím [New-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment) rutiny. Po konfiguraci zásad, můžete použít své předplatné Azure pro vývoj aplikací určená pro Azure Stack.
 
 ## <a name="install-the-module"></a>Instalace modulu
 
@@ -35,31 +35,31 @@ Modul zásad Azure Stack umožňuje konfigurovat předplatné Azure s stejné sp
 3. [Konfigurace Powershellu pro použití s Azure Stackem](azure-stack-powershell-configure-user.md).
 4. Importujte modul AzureStack.Policy.psm1:
 
-    ```PowerShell
-    Import-Module .\Policy\AzureStack.Policy.psm1
-    ```
+
+   ```powershell
+   Import-Module .\Policy\AzureStack.Policy.psm1
+   ```
 
 ## <a name="apply-policy-to-azure-subscription"></a>Použití zásad k předplatnému Azure
 
-Použít výchozí zásady služby Azure Stack ve vašem předplatném Azure můžete použít následující příkaz. Před spuštěním tohoto příkazu nahraďte `Azure Subscription Name` s názvem vašeho předplatného Azure.
+Použít výchozí zásady služby Azure Stack ve vašem předplatném Azure můžete použít následující příkaz. Před spuštěním tohoto příkazu nahraďte `Azure subscription name` s názvem vašeho předplatného Azure:
 
-```PowerShell
+```powershell
 Add-AzureRmAccount
-$s = Select-AzureRmSubscription -SubscriptionName "Azure Subscription Name"
+$s = Select-AzureRmSubscription -SubscriptionName "Azure subscription name"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
 $subscriptionID = $s.Subscription.SubscriptionId
 New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /subscriptions/$subscriptionID
-
 ```
 
 ## <a name="apply-policy-to-a-resource-group"></a>Použít zásady skupiny prostředků
 
-Můžete chtít použít zásady, které jsou přesnější. Například můžete mít další prostředky spuštěné ve stejném předplatném. Použití zásad pro konkrétní skupině prostředků, které umožňuje testování aplikací pro Azure Stack pomocí prostředků Azure můžete omezit rozsah. Před spuštěním následujícího příkazu, nahraďte `Azure Subscription Name` s názvem vašeho předplatného Azure.
+Můžete chtít použít zásady, které jsou přesnější. Například můžete mít další prostředky spuštěné ve stejném předplatném. Použití zásad pro konkrétní skupině prostředků, které umožňuje provádět testování aplikací pro Azure Stack pomocí prostředků Azure můžete omezit rozsah. Před spuštěním následujícího příkazu, nahraďte `Azure subscription name` s názvem vašeho předplatného Azure:
 
-```PowerShell
+```powershell
 Add-AzureRmAccount
 $rgName = 'myRG01'
-$s = Select-AzureRmSubscription -SubscriptionName "Azure Subscription Name"
+$s = Select-AzureRmSubscription -SubscriptionName "Azure subscription name"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
 $subscriptionID = $s.Subscription.SubscriptionId
 New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /subscriptions/$subscriptionID/resourceGroups/$rgName
@@ -67,7 +67,7 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 
 ## <a name="policy-in-action"></a>Zásady v akci
 
-Po nasazení Azure policy, obdržíte chybu při pokusu o nasazení prostředku, který je zakázané zásadami.
+Po nasazení Azure policy, obdržíte chybu při pokusu o nasazení prostředku, který je zakázána zásadami:
 
 ![Výsledek nasazení prostředků se nezdařilo z důvodu omezení zásad](./media/azure-stack-policy-module/image1.png)
 

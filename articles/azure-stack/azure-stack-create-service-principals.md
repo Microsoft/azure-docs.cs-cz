@@ -13,12 +13,12 @@ ms.workload: na
 ms.date: 12/18/2018
 ms.author: sethm
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 3c36bca12a16a796a964c4447b47265eecd756be
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0f5a4dc76830740d69547a01ce40b5e10cf4a74b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809244"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499404"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Poskytnutí přístupu aplikací do Azure Stack
 
@@ -89,11 +89,11 @@ Vytvoření instančního objektu služby se službou AD FS můžete použít je
 | Type | Akce |
 | --- | --- |
 | Certifikát služby AD FS | [Vytvoření](azure-stack-create-service-principals.md#create-a-service-principal-using-a-certificate) |
-| Certifikát služby AD FS | [Aktualizace](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-AD-FS) |
-| Certifikát služby AD FS | [odebrat](azure-stack-create-service-principals.md#remove-a-service-principal-for-AD-FS) |
+| Certifikát služby AD FS | [Aktualizace](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-ad-fs) |
+| Certifikát služby AD FS | [odebrat](azure-stack-create-service-principals.md#remove-a-service-principal-for-ad-fs) |
 | Tajný klíč klienta služby FS AD | [Vytvoření](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
 | Tajný klíč klienta služby FS AD | [Aktualizace](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
-| Tajný klíč klienta služby FS AD | [odebrat](azure-stack-create-service-principals.md##remove-a-service-principal-for-AD-FS) |
+| Tajný klíč klienta služby FS AD | [odebrat](azure-stack-create-service-principals.md#remove-a-service-principal-for-ad-fs) |
 
 ### <a name="create-a-service-principal-using-a-certificate"></a>Vytvoření instančního objektu pomocí certifikátu
 
@@ -124,7 +124,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 1. Otevřete relaci Windows Powershellu se zvýšenými oprávněními a spusťte následující rutiny:
 
-   ```PowerShell  
+   ```powershell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
     $Creds = Get-Credential
 
@@ -173,7 +173,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
    > [!Note]  
    > Pro účely ověření certifikátu podepsaného svým držitelem můžete vytvořit pomocí následujícím příkladu:
 
-   ```PowerShell  
+   ```powershell  
    $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
    ```
 
@@ -254,7 +254,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 1. Otevřete relaci Windows Powershellu se zvýšenými oprávněními a spusťte následující rutiny:
 
-     ```PowerShell  
+     ```powershell  
       # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
      $Creds = Get-Credential
 
@@ -272,7 +272,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 2. Po spuštění rutiny prostředí zobrazí požadované podrobnosti, které chcete použít hlavní název služby. Ujistěte se, že uložíte tajný klíč klienta.
 
-     ```PowerShell  
+     ```powershell  
      ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
      ClientId              : 8e0ffd12-26c8-4178-a74b-f26bd28db601
      Thumbprint            : 
@@ -304,7 +304,7 @@ V příkladu se používá **ResetClientSecret** parametr, který okamžitě zm�
 
 1. Otevřete relaci Windows Powershellu se zvýšenými oprávněními a spusťte následující rutiny:
 
-     ```PowerShell  
+     ```powershell  
           # Creating a PSSession to the ERCS PrivilegedEndpoint
           $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
@@ -318,7 +318,7 @@ V příkladu se používá **ResetClientSecret** parametr, který okamžitě zm�
 
 2. Po dokončení automatizace, zobrazí nově vygenerovaný tajného klíče pro ověření hlavního názvu služby. Ujistěte se, že ukládáte nový tajný kód klienta.
 
-     ```PowerShell  
+     ```powershell  
           ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2120
           ClientId              :  
           Thumbprint            : 

@@ -1,6 +1,6 @@
 ---
-title: Nasazení Kubernetes pro Azure Stack | Dokumentace Microsoftu
-description: Informace o nasazení Kubernetes pro Azure Stack.
+title: Nasazení Kubernetes pro kontejnery služby Azure Stack | Dokumentace Microsoftu
+description: Informace o nasazení Kubernetes pomocí služby Azure Stack pomocí kontejnerů.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,19 +15,19 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 6b00f63fac0110a8964270b9cbcad5330ac44645
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 77275ec274a9c76918874007cfe564eea09e6de5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986239"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877189"
 ---
-# <a name="deploy-kubernetes-to-azure-stack"></a>Nasazení Kubernetes pro Azure Stack
+# <a name="deploy-kubernetes-to-use-containers-with-azure-stack"></a>Nasazení Kubernetes pomocí služby Azure Stack pomocí kontejnerů
 
-*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
+*Týká se Azure Stack integrované systémy a Azure Stack Development Kit*
 
 > [!Note]  
-> Kubernetes ve službě Azure Stack je ve verzi preview. Azure Stack odpojené scénář není aktuálně podporován ve verzi preview.
+> Kubernetes ve službě Azure Stack je ve verzi preview. Odpojené scénář Azure Stack není aktuálně podporován ve verzi preview.
 
 Můžete postupovat podle kroků v tomto článku pro nasazení a nastavit prostředky pro Kubernetes v rámci jediné koordinované operace. Kroky pomocí šablony Azure Resource Manageru řešení. Budete potřebovat získat požadované informace o instalaci Azure Stack, generovat šablony a pak nasadit do cloudu. Šablony služby Azure Stack nepoužívá stejnou spravované služby AKS nabízí na global Azure.
 
@@ -43,7 +43,7 @@ Můžete použít Kubernetes:
 
 Můžete pouze účtovat výpočetní využití vyžadované uzly podpora clusteru. Další informace najdete v tématu [využití a fakturace ve službě Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-billing-and-chargeback).
 
-## <a name="deploy-kubernetes"></a>Nasazení Kubernetes
+## <a name="deploy-kubernetes-to-use-containers"></a>Nasazení Kubernetes pro kontejnery
 
 Kroky k nasazení clusteru Kubernetes ve službě Azure Stack, bude záviset na vaši službu identity management. Ověřte řešení správy identit používané pro vaši instalaci služby Azure Stack. Obraťte se na správce služby Azure Stack k ověření služby identity management.
 

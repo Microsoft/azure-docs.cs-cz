@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 56f7b5e3b303ce68868f15528d1ec200919b52aa
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 13f500b32bb85bdc0f84b812ef4ef9188a257771
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001554"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916304"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Přizpůsobení životního cyklu webové role nebo role pracovního procesu v .NET
-Když vytvoříte roli pracovního procesu, můžete rozšířit [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) třídy, které poskytuje metody pro vás k přepsání, které vám umožní reagovat na události životního cyklu. V případě webových rolí Tato třída je volitelné, takže je nutné použít pro reakci na události životního cyklu.
+Když vytvoříte roli pracovního procesu, můžete rozšířit [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) třídy, které poskytuje metody pro vás k přepsání, které vám umožní reagovat na události životního cyklu. V případě webových rolí Tato třída je volitelné, takže je nutné použít pro reakci na události životního cyklu.
 
 ## <a name="extend-the-roleentrypoint-class"></a>Rozšíření třídy RoleEntryPoint
-[RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) třída obsahuje metody, které jsou volány aplikací Azure při jeho **spustí**, **spustí**, nebo **zastaví** webové nebo pracovní role. Volitelně můžete přepsat tyto metody pro správu role inicializace, sekvence vypnutí rolí nebo vlákno provádění role. 
+[RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) třída obsahuje metody, které jsou volány aplikací Azure při jeho **spustí**, **spustí**, nebo **zastaví** webové nebo pracovní role. Volitelně můžete přepsat tyto metody pro správu role inicializace, sekvence vypnutí rolí nebo vlákno provádění role. 
 
 Při rozšiřování **RoleEntryPoint**, je třeba si uvědomit následující chování metody:
 
-* [OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) a [OnStop](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx) metody vrací logickou hodnotu, takže je možné vrátit **false** z těchto metod.
+* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) a [OnStop](/previous-versions/azure/reference/ee772844(v=azure.100)) metody vrací logickou hodnotu, takže je možné vrátit **false** z těchto metod.
   
    Pokud váš kód vrátí **false**, ukončí proces role, bez nutnosti spuštění jakékoli sekvence vypnutí můžete mít na místě. Obecně byste se měli vyhnout vrácení **false** z **OnStart** metody.
 * Některé nezachycená výjimka v rámci přetížení **RoleEntryPoint** metoda považuje za neošetřenou výjimku.
   
-   Pokud dojde k výjimce v rámci jedné z metod životního cyklu, bude vyvolána Azure [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) událostí a proces je ukončen. Poté, co vaše role bylo převedeno do režimu offline, se restartuje v Azure. Když dojde k neošetřené výjimce [zastavení](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.stopping.aspx) není vyvolána událost a **OnStop** metoda není volána.
+   Pokud dojde k výjimce v rámci jedné z metod životního cyklu, bude vyvolána Azure [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) událostí a proces je ukončen. Poté, co vaše role bylo převedeno do režimu offline, se restartuje v Azure. Když dojde k neošetřené výjimce [zastavení](/previous-versions/azure/reference/ee758136(v=azure.100)) není vyvolána událost a **OnStop** metoda není volána.
 
-Pokud vaše role se nespustí nebo se recykluje mezi inicializace, zaneprázdněný a zastavení stavy, může váš kód došlo k neošetřené výjimce v jednom z události životního cyklu pokaždé, když role restartuje. V takovém případě použijte [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) událost, abyste zjistili příčinu výjimkou a odpovídajícím způsobem zpracovat. Vaše role může být také vrácení z [spustit](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metodu, která způsobí restartování role. Další informace o stavy nasazení najdete v tématu [běžné problémy který příčina role recyklovat](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
+Pokud vaše role se nespustí nebo se recykluje mezi inicializace, zaneprázdněný a zastavení stavy, může váš kód došlo k neošetřené výjimce v jednom z události životního cyklu pokaždé, když role restartuje. V takovém případě použijte [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) událost, abyste zjistili příčinu výjimkou a odpovídajícím způsobem zpracovat. Vaše role může být také vrácení z [spustit](/previous-versions/azure/reference/ee772746(v=azure.100)) metodu, která způsobí restartování role. Další informace o stavy nasazení najdete v tématu [běžné problémy který příčina role recyklovat](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
 > [!NOTE]
 > Pokud používáte **nástroje Azure pro Microsoft Visual Studio** vyvíjet aplikace, šablony projektů role automaticky rozšíří **RoleEntryPoint** třídy, v  *WebRole.cs* a *WorkerRole.cs* soubory.

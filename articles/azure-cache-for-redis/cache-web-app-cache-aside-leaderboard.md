@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 138bc0350e4eecac4639125dc3ae508ddbbd7d72
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9cfb320f0623f5a93527a4dc0e8d82096980cc2c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234862"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893737"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Kurz: Vytvoření žebříčkové s doplňováním mezipaměti technologie ASP.NET
 
@@ -79,7 +79,7 @@ Další informace o tomto balíčku najdete na stránce NuGet pro [EntityFramewo
     using System.Data.Entity.SqlServer;
     ```
 
-1. Nahraďte definici třídy `Team` za následující fragment kódu, který obsahuje kromě aktualizované definice třídy `Team` i některé další pomocné třídy Entity Frameworku. Tento kurz používá přístup Code First se sadou technologií Entity Framework. Díky tomu může sada technologií Entity Framework vytvořit databázi z vašeho kódu. Další informace o přístupu Code First k Entity Frameworku, který používáme v tomto kurzu, najdete v tématu [Code First pro novou databázi](https://msdn.microsoft.com/data/jj193542).
+1. Nahraďte definici třídy `Team` za následující fragment kódu, který obsahuje kromě aktualizované definice třídy `Team` i některé další pomocné třídy Entity Frameworku. Tento kurz používá přístup Code First se sadou technologií Entity Framework. Díky tomu může sada technologií Entity Framework vytvořit databázi z vašeho kódu. Další informace o přístupu Code First k Entity Frameworku, který používáme v tomto kurzu, najdete v tématu [Code First pro novou databázi](/ef/ef6/modeling/code-first/workflows/new-database).
 
     ```csharp
     public class Team
@@ -688,8 +688,8 @@ V této části zřídíte novou databázi SQL Azure pro aplikaci, která se bud
 
     | Zástupný symbol | Navrhovaná hodnota |
     | --- | --- |
-    | *{vaše_uživatelské jméno}* | Pro server databáze, který jste právě vytvořili, použijte **přihlašovací údaje správce serveru**. |
-    | *{vaše_heslo}* | Pro server databáze, který jste právě vytvořili, použijte heslo. |
+    | *{your_username}* | Pro server databáze, který jste právě vytvořili, použijte **přihlašovací údaje správce serveru**. |
+    | *{your_password}* | Pro server databáze, který jste právě vytvořili, použijte heslo. |
 
     Když uživatelské jméno a heslo přidáte jako nastavení aplikace, nezahrnou se do vašeho kódu. Tento přístup vám pomůže přihlašovací údaje ochránit.
 

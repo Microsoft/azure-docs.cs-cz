@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 30ebccd6bee26900ac01f7f4d17993e24c9db745
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3318e52b29723eaa08d8c3a4fba18e278e6cfe9c
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779245"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487749"
 ---
 # <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>Vytvoření virtuálního počítače pomocí zabezpečeného hesla uložená ve službě Azure Stack Key Vault
 
@@ -53,7 +53,7 @@ Následující kroky popisují proces nutný k vytvoření virtuálního počít
 
 Tento skript vytvoří trezor klíčů a uloží heslo ve službě key vault jako tajný kód. Použití `-EnabledForDeployment` parametr při vytváření trezoru klíčů. Tento parametr zajišťuje, že služby key vault může odkazovat ze šablon Azure Resource Manageru.
 
-```PowerShell
+```powershell
 
 $vaultName = "contosovault"
 $resourceGroup = "contosovaultrg"
@@ -118,7 +118,7 @@ Aktualizace souboru azuredeploy.parameters.json se identifikátor URI trezoru kl
 
 Nyní nasaďte šablonu pomocí následujícího skriptu prostředí PowerShell:
 
-```PowerShell  
+```powershell  
 New-AzureRmResourceGroupDeployment `
   -Name KVPwdDeployment `
   -ResourceGroupName $resourceGroup `

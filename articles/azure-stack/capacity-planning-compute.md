@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 04/03/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.lastreviewed: 09/18/2018
-ms.custom: mvc
-ms.openlocfilehash: 4ab04fc69d29d9bb5386261f6453b2f47bfd66bc
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.lastreviewed: 04/03/2019
+ms.custom: ''
+ms.openlocfilehash: 437e55b1a2907418fe47f418245431fa1c882b80
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446320"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915676"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Plánování kapacity výpočetních s Azure Stack
 [Velikosti virtuálních počítačů, které jsou podporované ve službě Azure Stack](./user/azure-stack-vm-sizes.md) jsou podmnožinou, které jsou podporovány v Azure. Azure má omezení prostředků podél mnoho vektorů, aby overconsumption prostředků (server místní a úrovni služeb). Bez uložení některá omezení na prostředky spotřebované klienty, sníží tenanta prostředí při jiných tenantů overconsume prostředky. Pro sítě odchozího přenosu dat z virtuálního počítače existují omezení šířky pásma na místě ve službě Azure Stack, odpovídající omezení Azure. Pro prostředky úložiště limity vstupně-výstupních operací úložiště je implementovaná v Azure stacku, aby se zabránilo základní overconsumption prostředků tenantů pro přístup k úložišti.  
@@ -45,7 +45,7 @@ Následující výpočet výsledkem celkovou a dostupnou paměť, která lze pou
 
   Paměť k dispozici pro umístění virtuálního počítače = celková paměť serveru – odolnost proti chybám rezervy – paměti používané spuštěných virtuálních počítačů – zatížení infrastruktury Azure Stack <sup>1</sup>
 
-  Odolnost proti chybám rezervy = H + R * (N-1) + V * (N-2)
+  Odolnost proti chybám rezervy = H + R * ((N-1) * H) + V * (N-2)
 
 > Kde:
 > - H = velikost paměti na jeden server
@@ -53,7 +53,7 @@ Následující výpočet výsledkem celkovou a dostupnou paměť, která lze pou
 > - R = rezerva operačního systému pro režijní náklady na operační systém<sup>2</sup>
 > - V = největší virtuální počítač v jednotce škálování
 
-  <sup>1</sup> infrastruktura azure stacku režie = 208 GB
+  <sup>1</sup> infrastruktura azure stacku režie = 230 GB
 
   <sup>2</sup> rezerva operačního systému pro režii = 15 % paměti uzlu. Hodnotu rezervy operačního systému je odhad a budou lišit v závislosti na kapacita fyzické paměti serveru a režijní náklady na obecné operačního systému.
 

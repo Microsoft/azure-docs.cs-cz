@@ -11,12 +11,12 @@ ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 47cc7d9f09b7fb22cf99ad010f1dc75e6388c314
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 23cc0f03c41801de944eb9938d4cd15896d1745e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731919"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482177"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Příprava pro rozšíření hostitele pro Azure Stack
 
@@ -47,13 +47,13 @@ Nástroj prerequisite Checker Azure Stack připravenosti poskytuje možnost vytv
 1. Otevřete prostředí PowerShell s oprávněními na hostiteli životního cyklu hardwaru nebo pracovní stanici správy služby Azure Stack.
 2. Spuštěním následující rutiny můžete nainstalovat nástroj prerequisite Checker připravenosti Azure Stack.
 
-    ```PowerShell  
+    ```powershell  
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
 3. Spusťte následující skript k vytvoření požadované složce struktury:
 
-    ```PowerShell  
+    ```powershell  
     New-Item C:\Certificates -ItemType Directory
 
     $directories = 'ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal', 'Admin extension host', 'Public extension host'
@@ -69,7 +69,7 @@ Nástroj prerequisite Checker Azure Stack připravenosti poskytuje možnost vytv
 4. Stávající certifikáty, které používáte ve službě Azure Stack, umístěte do příslušné adresáře. Například umístit **ARM správce** v certifikátu `Arm Admin` složky. A potom se spojí nově vytvořené hostování certifikáty `Admin extension host` a `Public extension host` adresáře.
 5. Spusťte následující rutinu spuštění kontroly certifikátu:
 
-    ```PowerShell  
+    ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
     Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
@@ -86,7 +86,7 @@ Použijte počítač, který lze připojit ke koncovému bodu Azure Stack privil
 2. Otevřete prostředí PowerShell ISE a provést další bloky skriptu
 3. Importujte certifikát pro správu, který je hostitelem koncového bodu.
 
-    ```PowerShell  
+    ```powershell  
 
     $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 
@@ -104,7 +104,7 @@ Použijte počítač, který lze připojit ke koncovému bodu Azure Stack privil
     }
     ```
 4. Importujte certifikát pro koncový bod služby hostingu.
-    ```PowerShell  
+    ```powershell  
     $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 
     $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -142,7 +142,7 @@ V článku [integrace datových center Azure Stack – publikování koncových 
 
 Existují dvě nové koncové body, které jsou potřebné k publikování přes bránu firewall. Přidělené IP adresy z fondu veřejných virtuálních IP adres se dá načíst pomocí následujícího kódu, který se musí spouštět z Azure Stack [prostředí na privilegovaný koncový bod](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
 
-```PowerShell
+```powershell
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
 $PEPCreds = Get-Credential
@@ -173,7 +173,7 @@ Remove-PSSession -Session $PEPSession
 
 #### <a name="sample-output"></a>Ukázkový výstup
 
-```PowerShell
+```powershell
 Can access AZS DNS
 The IP for the Admin Extension Host is: *.adminhosting.\<region>.\<fqdn> - is: xxx.xxx.xxx.xxx
 The Record to be added in the DNS zone: Type A, Name: *.adminhosting.\<region>.\<fqdn>, Value: xxx.xxx.xxx.xxx

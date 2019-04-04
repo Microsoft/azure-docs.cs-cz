@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8ebf9826f156245381ce3503dc64275bca571cc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a182b9ec0fb945b4c2ffddd7a977df8ad9a8d250
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890777"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895964"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
@@ -23,15 +23,17 @@ Azure Video Indexer je cloudová aplikace sestavená s využitím služeb Azure 
 ## <a name="video-insights"></a>Nové poznatky z videí
 
 - **Rozpoznávání tváře**: Zjistí a skupiny tváří povolí, nebude ve videu.
-- **Identifikace celebrit**: Video Indexer automaticky identifikuje přes 1 millión celebrit – například vedoucí pracovníci world, actors a actresses, sportovců z celého světa, výzkumní pracovníci, obchodní a technické vedoucí po celém světě. Data o těchto celebritách najdete taky na různých známých webech, třeba IMDB nebo v encyklopedii Wikipedia.
+- **Identifikace celebrit**: Video Indexer automaticky identifikuje přes 1 millión celebrit – například world lídrů, actors, actresses, sportovců z celého světa, výzkumní pracovníci, obchodní a technické představitelů Microsoftu na celém světě. Data o těchto celebritách najdete taky na různých známých webech, třeba IMDB nebo v encyklopedii Wikipedia.
 - **Identifikace tváře založené na účtu**: Video Indexer trénovat modelu pro zadaný účet. Pak rozezná tváří na videu na základě trénovaného modelu. Další informace najdete v tématu [přizpůsobení modelu osoby z webu Video Indexer](customize-person-model-with-website.md) a [přizpůsobení modelu osoba s Video Indexer API](customize-person-model-with-api.md).
 - **Miniatura extrakce pro plošky** ("co nejlepší pro rozpoznávání tváře"): Automaticky identifikuje nejvhodnější zachycené tváří v každé skupině tváří (podle kvality, velikost a umístění čelní) a rozbalte ho jako prostředek obrázku.
 - **Rozpoznávání textu Visual** (OCR): Extrahuje text, který se zobrazí vizuální ve videu.
 - **Vizuální moderování obsahu**: Zjistí pro dospělé nebo pikantního vizuály.
 - **Popisky identifikace**: Určuje vizuální objekty a zobrazené akce.
-- **Snímek detekce**: Určuje, když se změní scény ve videu.
+- **Segmentace scény**: Určuje změnu scény ve videu podle vizuální prvky. Znázorňuje scény jedna událost a skládá se v řadě po sobě jdoucích snímků, které jsou sémanticky související. 
+- **Snímek detekce**: Určuje změny snímek v videa podle vizuální prvky. Snímku je řada snímků z fotoaparátu/kamery stejný obrázek pohybu. Další informace najdete v tématu [scény, snímky a klíčové snímky](scenes-shots-keyframes.md).
 - **Černé rámců**: Identifikuje černého rámce uvedené ve videu.
 - **Extrakce klíčových snímků**: Stabilní klíčové snímky rozpozná ve videu.
+- **Kredity se zajištěním provozu**: identifikaci začátku a konci postupné kredity na konci televizní pořady a videa.
 
 ## <a name="audio-insights"></a>Zvukový insights
 
@@ -69,9 +71,8 @@ K registraci této služby můžete využít existující účet služeb AAD, Li
 Dál najdete několik scénářů, ve kterých se Video Indexer může hodit
 
 - Hledání – Přehledy extrahované z videa se dají využít k vylepšení vyhledávání v knihovně videí. Například indexování mluveného slova a tváří umožňuje ve videu vyhledávat okamžiky, kdy konkrétní osoba říká určitá slova nebo kdy jsou dva lidé vidět pohromadě. Hledání založené na takovýchto přehledech z videí je užitečné pro zpravodajské agentury, vzdělávací instituce, provozovatele vysílání, vlastníky zábavního obsahu, podnikové obchodní aplikace a obecně pro libovolné obory využívající knihovnu videí, ve kterých musí uživatelé vyhledávat.
-
+- Vytváření obsahu – insights extrahovat z videí a pomáhají efektivně vytvářet obsahu, jako je například přípojných, sociálních médií obsah zprávy atd. z existujícího obsahu v archivní úrovni organizace 
 - Finanční zhodnocení – Video Indexer umožňuje zvýšit hodnotu videí. Například obory, které závisejí na výnosech z reklam (například sdělovací prostředky, sociální média atd.), mohou využít extrahované přehledy jako další signály pro reklamní server a poskytovat díky nim relevantnější reklamy (reklama na sportovní obuv je relevantnější během fotbalového utkání než při plaveckých soutěžích).
-
 - Zapojení uživatelů – Video Insights se dá využít k lepšímu zapojení uživatelů díky možnosti předkládání relevantních videookamžiků. Jako příklad si představte vzdělávací video, které prvních 30 minut vysvětluje kulové plochy a dalších 30 minut pyramidy. Studentovi, který si čte o pyramidách, by víc pomohlo, kdyby se video nastavilo tak, aby se spustilo od značky 30 minut.
 
 ## <a name="next-steps"></a>Další postup
@@ -80,4 +81,4 @@ Jste připraveni začít pracovat s Video Indexerem. Další informace najdete v
 
 - [Začínáme s webem Video Indexer](video-indexer-get-started.md)
 - [Zpracování obsahu pomocí rozhraní REST API služby Video Indexer](video-indexer-use-apis.md)
-- [Vložení vizuálních widgetů do vaší aplikace](video-indexer-embed-widgets.md)
+- [Vložení widgetů visual ve vaší aplikaci](video-indexer-embed-widgets.md)

@@ -15,12 +15,12 @@ ms.date: 02/08/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 4e623c6a2423d2e61334932d0c40f05e548d3c38
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7e631281405b173405f28c134432e870c757b3da
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109861"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648398"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Instalace Powershellu pro Azure Stack
 
@@ -46,7 +46,6 @@ Před zahájením práce s Azure Stack a prostředí PowerShell, musíte mít sp
 
 - **Galerie prostředí PowerShell přístup** potřebují přístup k [Galerie prostředí PowerShell](https://www.powershellgallery.com). Galerie je centrální úložiště pro PowerShell obsah. **PowerShellGet** modul obsahuje rutiny pro zjišťování, instalaci, aktualizaci a publikováním artefaktů Powershellu, jako jsou moduly, prostředky DSC, funkce rolí a skripty z Galerie prostředí PowerShell a další privátní úložiště. Pokud používáte prostředí PowerShell v odpojeném scénáři, musí načíst prostředky z počítače s připojením k Internetu a uložit je do umístění přístupné pro odpojené počítače.
 
-
 ## <a name="2-validate-the-powershell-gallery-accessibility"></a>2. Ověření přístupnosti Galerie prostředí PowerShell
 
 Ověřte, jestli PSGallery se zaregistruje jako úložiště.
@@ -56,7 +55,7 @@ Ověřte, jestli PSGallery se zaregistruje jako úložiště.
 
 Otevřete řádku Powershellu se zvýšenými oprávněními a spusťte následující rutiny:
 
-```PowerShell
+```powershell
 Import-Module -Name PowerShellGet -ErrorAction Stop
 Import-Module -Name PackageManagement -ErrorAction Stop
 Get-PSRepository -Name "PSGallery"
@@ -64,7 +63,7 @@ Get-PSRepository -Name "PSGallery"
 
 Pokud úložiště není zaregistrovaný, otevřete relaci Powershellu se zvýšenými oprávněními a spusťte následující příkaz:
 
-```PowerShell
+```powershell
 Register-PsRepository -Default
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 ```
@@ -75,17 +74,18 @@ Než začnete instalovat na požadovanou verzi, ujistěte se, že odinstalovat v
 
 1. Chcete-li odinstalovat existující moduly AzureRM Powershellu, zavřete všechny aktivní relace prostředí PowerShell a spusťte následující rutiny:
 
-    ```PowerShell
+    ```powershell
     Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force -Verbose
     Get-Module -Name Azure* -ListAvailable | Uninstall-Module -Force -Verbose
     ```
+
     Pokud dojde k chybě, jako "modul je již používán., zavřete prosím relace Powershellu, které používají moduly a znovu spusťte skript výše.
 
 2. Odstranit všechny složky, které začínají `Azure` nebo `Azs.` z `C:\Program Files\WindowsPowerShell\Modules` a `C:\Users\{yourusername}\Documents\WindowsPowerShell\Modules` složek. Odstranění těchto složek odebere všechny existující moduly Powershellu.
 
 ## <a name="4-connected-install-powershell-for-azure-stack-with-internet-connectivity"></a>4. Připojeno: Instalace Powershellu pro Azure Stack s připojením k Internetu
 
-Vyžaduje Azure Stack **2018-03-01hybridní** profilu verze rozhraní API pro Azure Stack verze 1808 nebo novější. Profil, který je k dispozici nainstalováním **AzureRM.Bootstrapper** modulu. Kromě toho moduly AzureRM také byste měli nainstalovat moduly Powershellu pro Azure Stack specifické. Profilu verze rozhraní API a moduly Azure Stack Powershellu budete potřebovat, bude záviset na verzi služby Azure Stack se systémem.
+Vyžaduje Azure Stack **2018-03-01hybridní** profilu verze rozhraní API pro Azure Stack verze 1808 nebo novější. Profil, který je k dispozici nainstalováním **AzureRM.BootStrapper** modulu. Kromě toho moduly AzureRM také byste měli nainstalovat moduly Powershellu pro Azure Stack specifické. Profilu verze rozhraní API a moduly Azure Stack Powershellu budete potřebovat, bude záviset na verzi služby Azure Stack se systémem.
 
 Instalace má tři kroky:
 
@@ -99,20 +99,22 @@ Spusťte následující skript prostředí PowerShell k instalaci těchto modul�
 
 - Azure Stack 1901 nebo novější:
 
-    ```PowerShell
+    ```powershell
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
+
     Install-Module AzureRM -RequiredVersion 2.4.0
-    Install-Module -Name AzureStack -RequiredVersion 1.7.0
+    Install-Module -Name AzureStack -RequiredVersion 1.7.1
     ```
 
     > [!Note]  
-    > Verze modulu Azure Stack 1.7.0 je vydání se zásadními změnami. Migrace ze služby Azure Stack 1.6.0 najdete [Průvodce migrací](https://aka.ms/azspshmigration170).
-    > Verze 2.4.0 modulu AzureRm se dodává s zásadní změny pro rutinu Remove-AzureRmStorageAccount. Tato rutina očekává, že - Force prameter pro účet úložiště bez potvrzení se odebírá.
+    > Verze modulu Azure Stack 1.7.1 je vydání se zásadními změnami. Migrace ze služby Azure Stack 1.6.0 najdete [Průvodce migrací](https://aka.ms/azspshmigration171).
+    > Verze 2.4.0 modulu AzureRm se dodává s zásadní změny pro rutinu Remove-AzureRmStorageAccount. Tato rutina očekává, že – platnost parametr pro odebrání účtu úložiště bez potvrzení.
+
 - Azure Stack 1811:
 
-    ```PowerShell
-    # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet
-    Install-Module -Name AzureRm.BootStrapper
+    ```powershell
+    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
+    Install-Module -Name AzureRM.BootStrapper
 
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
     Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
@@ -122,9 +124,9 @@ Spusťte následující skript prostředí PowerShell k instalaci těchto modul�
 
 - Azure Stack 1810 nebo starším systémem:
 
-    ```PowerShell
-    # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet
-    Install-Module -Name AzureRm.BootStrapper
+    ```powershell
+    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
+    Install-Module -Name AzureRM.BootStrapper
 
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
     Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
@@ -139,7 +141,7 @@ Spusťte následující skript prostředí PowerShell k instalaci těchto modul�
 
 Chcete-li využít funkce další úložiště (jak je uvedeno v části připojení), stahování a nainstalujte následující balíčky.
 
-```PowerShell
+```powershell
 # Install the Azure.Storage module version 4.5.0
 Install-Module -Name Azure.Storage -RequiredVersion 4.5.0 -Force -AllowClobber
 
@@ -158,7 +160,7 @@ Import-Module -Name AzureRM.Storage -RequiredVersion 5.0.4
 
 Potvrďte instalaci spuštěním následujícího příkazu:
 
-```PowerShell
+```powershell
 Get-Module -Name "Azure*" -ListAvailable
 Get-Module -Name "Azs*" -ListAvailable
 ```
@@ -178,27 +180,25 @@ Instalace je třeba provést čtyři kroky:
 3. Přenos balíčků prostředí PowerShell na odpojené pracovní stanice
 4. Potvrzení instalace prostředí PowerShell
 
-
 ### <a name="install-azure-stack-powershell"></a>Instalace Azure Stack PowerShellu
 
 - Azure Stack 1901 nebo novější.
 
-    ```PowerShell
+    ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
     Import-Module -Name PackageManagement -ErrorAction Stop
 
     $Path = "<Path that is used to save the packages>"
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.4.0
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.7.0
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.7.1
     ```
 
     > [!Note]  
-    > Verze modulu Azure Stack 1.7.0 je zásadní změnu. Migrace z AzureStack 1.6.0 najdete [Průvodce migrací](https://github.com/Azure/azure-powershell/tree/AzureRM/documentation/migration-guides/Stack).
-
+    > Verze modulu Azure Stack 1.7.1 je zásadní změnu. Migrace z AzureStack 1.6.0 najdete [Průvodce migrací](https://github.com/Azure/azure-powershell/tree/AzureRM/documentation/migration-guides/Stack).
 
   - Azure Stack 1811 nebo starší.
 
-    ```PowerShell
+    ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
     Import-Module -Name PackageManagement -ErrorAction Stop
 
@@ -209,7 +209,7 @@ Instalace je třeba provést čtyři kroky:
 
   - Azure Stack 1809 nebo starší.
 
-    ```PowerShell
+    ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
     Import-Module -Name PackageManagement -ErrorAction Stop
 
@@ -219,8 +219,8 @@ Instalace je třeba provést čtyři kroky:
     ```
 
     > [!NOTE]
-    > Na počítače bez připojení k Internetu doporučujeme provádí následující rutina pro zakázání shromažďování data telemetrie. Snížení výkonu aplikace cmldets může dojít bez zakázání shromažďování data telemetrie. To platí jenom pro počítače bez připojení k Internetu
-    > ```PowerShell
+    > Na počítače bez připojení k Internetu doporučujeme provádí následující rutina pro zakázání shromažďování data telemetrie. Snížení výkonu z rutin může dojít bez zakázání shromažďování data telemetrie. To platí jenom pro počítače bez připojení k Internetu
+    > ```powershell
     > Disable-AzureRmDataCollection
     > ```
 
@@ -228,7 +228,7 @@ Instalace je třeba provést čtyři kroky:
 
 Chcete-li využít funkce další úložiště (jak je uvedeno v části připojení), stahování a nainstalujte následující balíčky.
 
-```PowerShell
+```powershell
 $Path = "<Path that is used to save the packages>"
 Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Azure.Storage -Path $Path -Force -RequiredVersion 4.5.0
 Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRm.Storage -Path $Path -Force -RequiredVersion 5.0.4
@@ -242,7 +242,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
 3. Nyní zaregistrovat toto umístění jako výchozí úložiště a nainstalujte moduly AzureRM a AzureStack z tohoto úložiště:
 
-   ```PowerShell
+   ```powershell
    #requires -Version 5
    #requires -RunAsAdministrator
    #requires -Module PowerShellGet
@@ -262,7 +262,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
 Potvrďte instalaci spuštěním následujícího příkazu:
 
-```PowerShell
+```powershell
 Get-Module -Name "Azure*" -ListAvailable
 Get-Module -Name "Azs*" -ListAvailable
 ```
@@ -274,7 +274,7 @@ Ve scénářích, které vyžadují přístup k Internetu proxy server je nutné
 1. Otevřete řádku Powershellu se zvýšenými oprávněními.
 2. Spusťte následující příkazy:
 
-   ```PowerShell
+   ```powershell
    #To use Windows credentials for proxy authentication
    [System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials
 
@@ -284,7 +284,7 @@ Ve scénářích, které vyžadují přístup k Internetu proxy server je nutné
 
 ## <a name="next-steps"></a>Další postup
 
- - [Stáhněte si nástroje pro Azure Stack z Githubu](azure-stack-powershell-download.md)
- - [Konfigurace prostředí PowerShell uživatele Azure stacku](user/azure-stack-powershell-configure-user.md)
- - [Konfigurace prostředí PowerShell pro operátory Azure stacku](azure-stack-powershell-configure-admin.md)
- - [Správa profilů verzí API ve službě Azure Stack](user/azure-stack-version-profiles.md)
+- [Stáhněte si nástroje pro Azure Stack z Githubu](azure-stack-powershell-download.md)
+- [Konfigurace prostředí PowerShell uživatele Azure stacku](user/azure-stack-powershell-configure-user.md)
+- [Konfigurace prostředí PowerShell pro operátory Azure stacku](azure-stack-powershell-configure-admin.md)
+- [Správa profilů verzí rozhraní API ve službě Azure Stack](user/azure-stack-version-profiles.md)

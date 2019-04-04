@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 81401d95b9c40f16a6e593d61b79f5c2d647c0c5
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 38d8bdfcba48d2080b434ebec192b41f3663ae6a
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518826"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895203"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Použití sady Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 
@@ -130,7 +130,7 @@ static void Main()
 
 Ve verzi 3. *x*, limitu připojení výchozí hodnota je nekonečná připojení. Pokud z nějakého důvodu potřebujete tento limit změnit, můžete použít [ `MaxConnectionsPerServer` ](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) vlastnost [ `WinHttpHandler` ](/dotnet/api/system.net.http.winhttphandler) třídy.
 
-Ve verzi 2. *x*, řídí počet souběžných připojení k hostiteli s použitím [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) rozhraní API. Ve verzi 2. *x*, měli byste zvýšit tuto hodnotu z výchozí hodnoty 2 před spuštěním hostitele WebJobs.
+Ve verzi 2. *x*, řídí počet souběžných připojení k hostiteli s použitím [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) rozhraní API. Ve verzi 2. *x*, měli byste zvýšit tuto hodnotu z výchozí hodnoty 2 před spuštěním hostitele WebJobs.
 
 Všechny odchozí požadavky HTTP, které jste provedli z funkce s použitím `HttpClient` procházet skrz `ServicePointManager`. Po dosažení hodnotu nastavenou v `DefaultConnectionLimit`, `ServicePointManager` spustí zařazení do fronty žádostí před jejich odesláním. Předpokládejme, že vaše `DefaultConnectionLimit` je nastavena na 2 a váš kód je 1 000 požadavků HTTP. Zpočátku je povoleno pouze dvě požadavků prostřednictvím do operačního systému. Další 998 se zařadí do fronty. dokud je volného místa pro ně. To znamená, že vaše `HttpClient` může být vypršení časového limitu, protože zdá se, že jste provedli požadavek, ale žádost byla odeslána nikdy operačního systému na cílový server. Může se zobrazit chování, které vypadá, že nepodporuje dávat smysl: místní `HttpClient` trvá dokončení požadavku, 10 sekund, ale vaše služba vrací každého požadavku v 200 ms. 
 
@@ -811,7 +811,7 @@ Informace o tom, jak kód asynchronních funkcí najdete v tématu [dokumentaci 
 
 Informace o tom, jak zpracovávat tokeny zrušení, najdete v dokumentaci ke službě Azure Functions na [tokeny zrušení a řádné vypnutí](../azure-functions/functions-dotnet-class-library.md#cancellation-tokens).
 
-## <a name="multiple-instances"></a>Více instancí
+## <a name="multiple-instances"></a>Několik instancí
 
 Pokud vaše webová aplikace běží na více instancí, nepřetržitá webová úloha běží na jednotlivých instancích naslouchání pro aktivační události a volání funkcí. Různé vazby aktivační události jsou navrženy pro sdílet práci efektivně spolupracovat napříč instancemi, tak, aby horizontální navýšení kapacity na více instancí umožňuje zpracovávat větší zatížení.
 

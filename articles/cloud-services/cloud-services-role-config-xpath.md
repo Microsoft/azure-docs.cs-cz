@@ -14,78 +14,78 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 2db63be6c6997840f7409a3ca79f1845f30e4ceb
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 53a262af421dd986e6b70af173a6e8b3f7c06f64
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008055"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918429"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Zpřístupnit nastavení konfigurace role jako proměnnou prostředí, jejichž výraz XPath
 V pracovního procesu cloud service nebo definiční soubor služby webové role mohou vystavit hodnoty konfigurace modulu runtime jako proměnné prostředí. Následující výraz XPath hodnoty jsou podporovány (které odpovídají hodnotám rozhraní API).
 
-Tyto hodnoty XPath jsou také k dispozici prostřednictvím [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) knihovny. 
+Tyto hodnoty XPath jsou také k dispozici prostřednictvím [Microsoft.WindowsAzure.ServiceRuntime](/previous-versions/azure/reference/ee773173(v=azure.100)) knihovny. 
 
 ## <a name="app-running-in-emulator"></a>Aplikace spuštěné v emulátoru
 Označuje, že je aplikace spuštěna v emulátoru.
 
-| Typ | Příklad: |
+| Type | Příklad: |
 | --- | --- |
-| Výraz XPath |výraz XPath = "/RoleEnvironment/Deployment/@emulated" |
+| Výraz XPath |xpath="/RoleEnvironment/Deployment/@emulated" |
 | Kód |var x = RoleEnvironment.IsEmulated; |
 
 ## <a name="deployment-id"></a>ID nasazení
 Načte identifikátor ID nasazení pro instanci.
 
-| Typ | Příklad: |
+| Type | Příklad: |
 | --- | --- |
-| Výraz XPath |výraz XPath = "/RoleEnvironment/Deployment/@id" |
+| Výraz XPath |xpath="/RoleEnvironment/Deployment/@id" |
 | Kód |var deploymentId = RoleEnvironment.DeploymentId; |
 
 ## <a name="role-id"></a>ID role
 Načte aktuální ID role pro instanci.
 
-| Typ | Příklad: |
+| Type | Příklad: |
 | --- | --- |
-| Výraz XPath |výraz XPath = "/RoleEnvironment/CurrentInstance/@id" |
+| Výraz XPath |xpath="/RoleEnvironment/CurrentInstance/@id" |
 | Kód |var id = RoleEnvironment.CurrentRoleInstance.Id; |
 
 ## <a name="update-domain"></a>Aktualizace domény
 Načte aktualizační doména instance.
 
-| Typ | Příklad: |
+| Type | Příklad: |
 | --- | --- |
-| Výraz XPath |výraz XPath = "/RoleEnvironment/CurrentInstance/@updateDomain" |
+| Výraz XPath |xpath="/RoleEnvironment/CurrentInstance/@updateDomain" |
 | Kód |var ud = RoleEnvironment.CurrentRoleInstance.UpdateDomain; |
 
 ## <a name="fault-domain"></a>Chybná doména
 Načte doménu selhání instance.
 
-| Typ | Příklad: |
+| Type | Příklad: |
 | --- | --- |
-| Výraz XPath |výraz XPath = "/RoleEnvironment/CurrentInstance/@faultDomain" |
+| Výraz XPath |xpath="/RoleEnvironment/CurrentInstance/@faultDomain" |
 | Kód |var fd = RoleEnvironment.CurrentRoleInstance.FaultDomain; |
 
 ## <a name="role-name"></a>Název role
 Načte název instance role.
 
-| Typ | Příklad: |
+| Type | Příklad: |
 | --- | --- |
-| Výraz XPath |výraz XPath = "/RoleEnvironment/CurrentInstance/@roleName" |
+| Výraz XPath |xpath="/RoleEnvironment/CurrentInstance/@roleName" |
 | Kód |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
 
 ## <a name="config-setting"></a>Nastavení konfigurace
 Načte hodnotu zadaného nastavení.
 
-| Typ | Příklad: |
+| Type | Příklad: |
 | --- | --- |
-| Výraz XPath |výraz XPath = "/ RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting [@name= 'Setting1']/@value" |
+| Výraz XPath |xpath="/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name='Setting1']/@value" |
 | Kód |var nastavení = RoleEnvironment.GetConfigurationSettingValue("Setting1"); |
 
 ## <a name="local-storage-path"></a>Cesta k místnímu úložišti
 Načte cestu místního úložiště pro instanci.
 
-| Typ | Příklad: |
+| Type | Příklad: |
 | --- | --- |
 | Výraz XPath |výraz XPath = "/ RoleEnvironment/CurrentInstance/LocalResources/LocalResource [@name= 'LocalStore1']/@path" |
 | Kód |var localResourcePath = RoleEnvironment.GetLocalResource("LocalStore1"). RootPath; |
@@ -93,7 +93,7 @@ Načte cestu místního úložiště pro instanci.
 ## <a name="local-storage-size"></a>Velikost místního úložiště
 Získá velikost místního úložiště pro instanci.
 
-| Typ | Příklad: |
+| Type | Příklad: |
 | --- | --- |
 | Výraz XPath |výraz XPath = "/ RoleEnvironment/CurrentInstance/LocalResources/LocalResource [@name= 'LocalStore1']/@sizeInMB" |
 | Kód |var localResourceSizeInMB = RoleEnvironment.GetLocalResource("LocalStore1"). MaximumSizeInMegabytes; |
@@ -101,7 +101,7 @@ Získá velikost místního úložiště pro instanci.
 ## <a name="endpoint-protocol"></a>Protokol koncového bodu
 Načte protokol koncového bodu pro instanci.
 
-| Typ | Příklad: |
+| Type | Příklad: |
 | --- | --- |
 | Výraz XPath |výraz XPath = "/ RoleEnvironment/CurrentInstance/koncové body nebo koncový bod [@name= 'koncovém bodě 1']/@protocol" |
 | Kód |var ochranu = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. Protokol; |
@@ -109,7 +109,7 @@ Načte protokol koncového bodu pro instanci.
 ## <a name="endpoint-ip"></a>Koncový bod IP
 Získá zadaný koncový bod IP adresu.
 
-| Typ | Příklad: |
+| Type | Příklad: |
 | --- | --- |
 | Výraz XPath |výraz XPath = "/ RoleEnvironment/CurrentInstance/koncové body nebo koncový bod [@name= 'koncovém bodě 1']/@address" |
 | Kód |var adresa = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. IPEndpoint.Address |
@@ -117,7 +117,7 @@ Získá zadaný koncový bod IP adresu.
 ## <a name="endpoint-port"></a>Port koncového bodu
 Načte port koncového bodu pro instanci.
 
-| Typ | Příklad: |
+| Type | Příklad: |
 | --- | --- |
 | Výraz XPath |výraz XPath = "/ RoleEnvironment/CurrentInstance/koncové body nebo koncový bod [@name= 'koncovém bodě 1']/@port" |
 | Kód |var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. IPEndpoint.Port; |

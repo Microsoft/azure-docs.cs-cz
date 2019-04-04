@@ -3,7 +3,7 @@ title: Vytvoření a nahrání VHD Red Hat Enterprise Linux pro použití ve slu
 description: Zjistěte, jak vytvořit a nahrát Azure virtuálního pevného disku (VHD), který obsahuje operační systém Red Hat Linux.
 services: azure-stack
 documentationcenter: ''
-author: JeffGoldner
+author: mattbriggs
 manager: BradleyB
 editor: ''
 tags: ''
@@ -13,15 +13,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
-ms.author: jeffgo
+ms.date: 03/28/2019
+ms.author: mabrigg
+ms.reviewer: jeffgo
 ms.lastreviewed: 08/15/2018
-ms.openlocfilehash: ad0419cee3fc5c838d6d81adf9040432b9feaf07
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e287a6f436b51f55d9a5aa59dbbe2a195015c292
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242225"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883109"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Příprava virtuálního počítače založeného na Red Hat pro Azure Stack
 
@@ -100,6 +101,13 @@ V této části se předpokládá, že už máte soubor ISO z webu Red Hat a nai
 
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
+
+1. Zastavit a odinstalovat cloud-init:
+
+    ```bash
+    systemctl stop cloud-init
+    yum remove cloud-init
     ```
 
 1. Ujistěte se, že je nainstalován a nakonfigurován na spuštění při spuštění, což je obvykle výchozí SSH server. Upravit `/etc/ssh/sshd_config` zahrnout následující řádek:
@@ -246,15 +254,17 @@ V této části se předpokládá, že už máte soubor ISO z webu Red Hat a nai
     dracut -f -v
     ```
 
-1. Odinstalace cloud-init:
+1. Zastavit a odinstalovat cloud-init:
 
     ```bash
+    systemctl stop cloud-init
     yum remove cloud-init
     ```
 
 1. Zajistěte, aby SSH server je nainstalován a nakonfigurován na spuštění při spuštění:
 
     ```bash
+    systemctl stop cloud-init
     systemctl enable sshd
     ```
 
@@ -265,22 +275,55 @@ V této části se předpokládá, že už máte soubor ISO z webu Red Hat a nai
     ClientAliveInterval 180
     ```
 
-1. Balíček WALinuxAgent `WALinuxAgent-<version>`, byly nahrány do funkce úložiště Red Hat. Povolte funkce úložiště spuštěním následujícího příkazu:
+1. Při vytváření vlastního virtuálního pevného disku pro službu Azure Stack, mějte na paměti, která verze WALinuxAgent mezi 2.2.20 a 2.2.35.1 (obou exkluzivní) nebudou fungovat v prostředích Azure Stack, se systémem sestavení před 1903. Chcete-li tento problém vyřešit, použijte rychlou záplatu 1901/1902 nebo postupujte v druhé polovině tuto část pokyny. 
+
+Pokud používáte Azure Stack sestavení 1903 (nebo vyšší) nebo nainstalována oprava hotfix 1901/1902, stáhněte si balíček WALinuxAgent z úložiště Redhat funkce takto:
+    
+   Balíček WALinuxAgent `WALinuxAgent-<version>`, byly nahrány do funkce úložiště Red Hat. Povolte funkce úložiště spuštěním následujícího příkazu:
 
     ```bash
     subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-1. Instalace agenta Azure Linux spuštěním následujícího příkazu:
+   Instalace agenta Azure Linux spuštěním následujícího příkazu:
 
     ```bash
     yum install WALinuxAgent
     ```
 
-    Povolte službu waagent:
+   Povolte službu waagent:
 
     ```bash
     systemctl enable waagent.service
+    ```
+    
+    
+Pokud jsou spuštěné Azure Stack sestavení před 1903 a nenainstalovali 1901/1902 oprav hotfix, postupujte podle těchto pokynů můžete stáhnout WALinuxAgent:
+    
+   a.   Stáhněte si setuptools
+    ```bash
+    wget https://pypi.python.org/packages/source/s/setuptools/setuptools-7.0.tar.gz --no-check-certificate
+    tar xzf setuptools-7.0.tar.gz
+    cd setuptools-7.0
+    ```
+   b. Stáhněte a rozbalte nejnovější verzi agenta z našich githubu. Toto je příklad, ve kterém se nám stáhnout "2.2.36" verzi z úložiště github.
+    ```bash
+    wget https://github.com/Azure/WALinuxAgent/archive/v2.2.36.zip
+    unzip v2.2.36.zip
+    cd WALinuxAgent-2.2.36
+    ```
+    c. Install setup.py
+    ```bash
+    sudo python setup.py install
+    ```
+    d. Restart waagent
+    ```bash
+    sudo systemctl restart waagent
+    ```
+    e. Test if the agent version matches the one your downloaded. For this example, it should be 2.2.36.
+    
+    ```bash
+    waagent -version
     ```
 
 1. Nevytvářejte odkládacího prostoru na disku s operačním systémem.
@@ -420,6 +463,13 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
 
     ```bash
     dracut -f -v
+    ```
+
+1. Zastavit a odinstalovat cloud-init:
+
+    ```bash
+    systemctl stop cloud-init
+    yum remove cloud-init
     ```
 
 1. Zajistěte, aby SSH server je nainstalován a nakonfigurován na spuštění při spuštění. Toto nastavení je obvykle výchozí. Upravit `/etc/ssh/sshd_config` zahrnout následující řádek:
@@ -581,6 +631,10 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
     Install latest repo update
     yum update -y
 
+    Stop and Uninstall cloud-init
+    systemctl stop cloud-init
+    yum remove cloud-init
+    
     Enable extras repo
     subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -657,15 +711,15 @@ Chcete-li tento problém vyřešit, přidejte do initramfs moduly Hyper-V a jej�
 
 Upravit `/etc/dracut.conf`a přidejte následující obsah:
 
-    ```sh
-    add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
-    ```
+```sh
+add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+```
 
 Znovu sestavte initramfs:
 
-    ```bash
-    dracut -f -v
-    ```
+```bash
+dracut -f -v
+```
 
 Další informace najdete v tématu [znovu sestavit initramfs](https://access.redhat.com/solutions/1958).
 

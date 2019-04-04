@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: d5a38d19541e59e0e2815362c0181a8e317a5d0f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: b7883de410a1fd281a154a792dd45132c08f0c03
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203468"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890910"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Pomocí knihovny Microsoft Authentication Library (MSAL) k získání tokenu pro rozhraní Microsoft Graph API
 
@@ -215,7 +215,7 @@ Volání `acquireToken` metoda výsledky v okně prohlížeče výzvy k přihlá
 
 Nakonec `acquireTokenSilent` selže – například uživatel odhlásil nebo došlo ke změně hesla na jiném zařízení. Knihovna MSAL zjistí, že problém lze vyřešit tak, že vyžaduje interaktivní akci, vyvolá-li `MSALErrorCode.interactionRequired` výjimky. Vaše aplikace dokáže zpracovat tuto výjimku dvěma způsoby:
 
-1. Volání proti `acquireToken` okamžitě, jehož výsledkem výzvy k přihlášení. Tento model se obvykle používá v online aplikace tam, kde není žádný offline obsah v aplikaci k dispozici pro uživatele. Tento instalační program s průvodcem vygenerovaná ukázková aplikace používá tento vzor: můžete pozorování v akci první čas spuštění aplikace. Vzhledem k tomu, že žádný uživatel nikdy nepoužil aplikace, `applicationContext.allAccounts().first` bude obsahovat hodnotu null a ` MSALErrorCode.interactionRequired ` , bude vyvolána výjimka. Kód v ukázce pak zpracovává výjimku při volání `acquireToken` výsledkem výzvy k přihlášení.
+1. Volání proti `acquireToken` okamžitě, jehož výsledkem výzvy k přihlášení. Tento model se obvykle používá v online aplikace tam, kde není žádný offline obsah v aplikaci k dispozici pro uživatele. Tento instalační program s průvodcem vygenerovaná ukázková aplikace používá tento vzor: můžete pozorování v akci první čas spuštění aplikace. Vzhledem k tomu, že žádný uživatel nikdy nepoužil aplikace, `applicationContext.allAccounts().first` bude obsahovat hodnotu null a `MSALErrorCode.interactionRequired` , bude vyvolána výjimka. Kód v ukázce pak zpracovává výjimku při volání `acquireToken` výsledkem výzvy k přihlášení.
 
 2. Aplikace lze také nastavit vizuální označení pro uživatele, který interaktivnímu přihlášení je nutné, takže uživatel může vybrat správný čas pro přihlášení, nebo aplikace může pokus zopakovat, `acquireTokenSilent` později. To se obvykle používá, když uživatel může používat další funkce aplikace bez narušení – například je offline obsah k dispozici v aplikaci. V takovém případě se uživatel může rozhodnout při chtějí přihlášení pro přístup k chráněnému prostředku nebo aktualizujte zastaralé informace, nebo aplikace se můžete rozhodnout používat opakovat `acquireTokenSilent` obnovení po síti po se dočasně není k dispozici.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: yegu
-ms.openlocfilehash: ddeaec9adc28fa5037a0fc01363e3ad6b78ceeef
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 65e8553969aa92848b1c4496724a7b7754b5d659
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234352"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895592"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Přečtěte si odpovědi na běžné dotazy, vzory a osvědčené postupy pro Azure Cache pro Redis.
@@ -80,7 +80,7 @@ Nejčastější dotazy v této části se věnují běžné monitorování a dot
 * [Proč se můj klient odpojen z mezipaměti?](#why-was-my-client-disconnected-from-the-cache)
 
 ## <a name="prior-cache-offering-faqs"></a>Nejčastější dotazy k předchozí z variant mezipaměti
-* [Kterou z variant mezipaměti Azure je pro mě nejlepší?](#which-azure-cache-offering-is-right-for-me)
+* [Kterou z variant Mezipaměti Azure si mám vybrat?](#which-azure-cache-offering-is-right-for-me)
 
 ### <a name="what-is-azure-cache-for-redis"></a>Co je Azure mezipaměti Redis?
 Pro Redis Azure Cache je založená na oblíbené open source softwaru [Redis](https://redis.io/). Poskytuje přístup k zabezpečené vyhrazené mezipaměti Azure pro Redis spravované microsoftem a přístupná z libovolné aplikace v Azure. Podrobnější přehled najdete [mezipaměti Azure Redis](https://azure.microsoft.com/services/cache/) stránky produktu na Azure.com.
@@ -192,7 +192,7 @@ StackExchange.Redis má hodně možností. Tato část pojednává o některých
 
 Obvykle jsou výchozí hodnoty klienta dostatečná. Můžete podrobně upravit možnosti na základě vašich úloh.
 
-* **Počet opakování**
+* **Opakování**
   * Obecné pokyny pro ConnectRetry a ConnectTimeout je rychle vygenerovala chybu a zkuste to znovu. Tento návod vychází z vašich úloh a kolik času na průměr přebírá pro svého klienta do příkaz Redis a přijetí odpovědi.
   * Umožňuje automaticky znovu připojila, namísto kontroluje se stav připojení a opětovné připojení sami StackExchange.Redis. **Vyhněte se použití vlastnosti ConnectionMultiplexer.IsConnected**.
   * Snowballing – někdy může narazíte na problém, kde je to zkoušet dál a opakované pokusy rozrůst a nikdy obnoví. Pokud dojde k snowballing, měli byste zvážit, pomocí algoritmu opakování exponenciálního omezení rychlosti, jak je popsáno v [obecné pokyny k opakovaným](../best-practices-retry-general.md) publikoval(a) skupina Microsoft Patterns a postupy.
@@ -392,7 +392,7 @@ Jak nakonfigurovat toto nastavení:
   > Hodnota zadaná v tento prvek konfigurace je *na jádro* nastavení. Například pokud máte 4jádrový počítač a chcete nastavení minIOThreads být 200 za běhu, použijete `<processModel minIoThreads="50"/>`.
   >
 
-* Mimo technologii ASP.NET a Azure WebSites global.asax, použijte [ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API.
+* Mimo technologii ASP.NET a Azure WebSites global.asax, použijte [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) API.
 
   > [!NOTE]
   > Hodnotu zadanou pomocí tohoto rozhraní API je globální nastavení, by to ovlivnilo celé doméně AppDomain. Pokud máte 4jádrový počítač a chcete nastavit minWorkerThreads a minIOThreads až 50 jeden procesor a jsou za běhu, můžete využít ThreadPool.SetMinThreads (200, 200).
@@ -402,9 +402,9 @@ Jak nakonfigurovat toto nastavení:
 ### <a name="enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis"></a>Povolit uvolňování paměti serveru získat větší propustnost na straně klienta při používání StackExchange.Redis
 Povolování uvolňování paměti serveru může optimalizovat klienta a zajišťuje lepší výkon a propustnost při použití StackExchange.Redis. Další informace o uvolňování paměti serveru a jak se dá povolit najdete v následujících článcích:
 
-* [Chcete-li povolit uvolňování paměti serveru](https://msdn.microsoft.com/library/ms229357.aspx)
-* [Základy kolekce paměti](https://msdn.microsoft.com/library/ee787088.aspx)
-* [Uvolňování paměti a výkonu](https://msdn.microsoft.com/library/ee851764.aspx)
+* [Chcete-li povolit uvolňování paměti serveru](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
+* [Základy kolekce paměti](/dotnet/standard/garbage-collection/fundamentals)
+* [Uvolňování paměti a výkonu](/dotnet/standard/garbage-collection/performance)
 
 
 ### <a name="performance-considerations-around-connections"></a>Důležité informace o výkonu po připojení
@@ -469,11 +469,11 @@ Další informace o zahájení práce s mezipamětí Azure pro Redis najdete v t
 ### <a name="managed-cache-service"></a>Služba Managed Cache service
 [Managed Cache service skončil 30. listopadu 2016.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-Chcete-li zobrazit Archivovaná dokumentace, naleznete v tématu [archivované spravovaná mezipaměť dokumentace ke službě](https://msdn.microsoft.com/library/azure/dn386094.aspx).
+Chcete-li zobrazit Archivovaná dokumentace, naleznete v tématu [archivované spravovaná mezipaměť dokumentace ke službě](/previous-versions/azure/azure-services/dn386094(v=azure.100)).
 
 ### <a name="in-role-cache"></a>Mezipaměť hostovaná v instanci role
 [Mezipaměť in-Role skončil 30. listopadu 2016.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-Chcete-li zobrazit Archivovaná dokumentace, naleznete v tématu [Archivovaná dokumentace k mezipaměti In-Role](https://msdn.microsoft.com/library/azure/dn386103.aspx).
+Chcete-li zobrazit Archivovaná dokumentace, naleznete v tématu [Archivovaná dokumentace k mezipaměti In-Role](/previous-versions/azure/azure-services/dn386103(v=azure.100)).
 
 ["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx

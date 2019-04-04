@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: 1d0506179f9f0044f9f05edd3395d2677310c2d0
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 4f0800dfd264059e1dc8aac32a54f216f777647f
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337101"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905711"
 ---
 # <a name="azure-dns-faq"></a>Nejčastější dotazy k Azure DNS
 
@@ -80,7 +80,7 @@ Funkce DNSSEC jsou sledovány v nevyřízených položkách Azure DNS. Použití
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS podporuje přenosy zóny (AXFR a IXFR)?
 
-Ne. Azure DNS v současné době nepodporuje přenosy zóny. Zóny DNS můžou být [importovat do Azure DNS pomocí rozhraní příkazového řádku Azure](dns-import-export.md). Záznamy DNS jsou spravované prostřednictvím [portálu pro správu Azure DNS](dns-operations-recordsets-portal.md), [rozhraní REST API](https://docs.microsoft.com/powershell/module/azurerm.dns), [SDK](dns-sdk.md), [rutin prostředí PowerShell](dns-operations-recordsets.md), nebo [ Nástroj příkazového řádku](dns-operations-recordsets-cli.md).
+Ne. Azure DNS v současné době nepodporuje přenosy zóny. Zóny DNS můžou být [importovat do Azure DNS pomocí rozhraní příkazového řádku Azure](dns-import-export.md). Záznamy DNS jsou spravované prostřednictvím [portálu pro správu Azure DNS](dns-operations-recordsets-portal.md), [rozhraní REST API](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [rutin prostředí PowerShell](dns-operations-recordsets.md), nebo [ Nástroj příkazového řádku](dns-operations-recordsets-cli.md).
 
 Funkce přenosu zóny jsou sledovány v nevyřízených položkách Azure DNS. Použití webu zpětné vazby k [zaregistrovat vaše podpora pro tuto funkci](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c).
 
@@ -149,7 +149,7 @@ Ano. Azure DNS podporuje společné hostování domény s jinými službami DNS.
 
 Nastavit společné hostování, upravte záznamy NS pro doménu tak, aby odkazoval na názvové servery z obou poskytovatelů. Název serveru (NS) zaznamenává ovládací prvek poskytovatelů, kteří obdrží dotazy DNS pro doménu. Můžete upravit tyto záznamy NS v Azure DNS, v rámci zprostředkovatele a v nadřazené zóně. Nadřazené zóny se obvykle konfiguruje prostřednictvím registrátora názvu domény. Další informace o delegování DNS najdete v tématu [delegování DNS domény](dns-domain-delegation.md).
 
-Také se ujistěte, jestli jsou synchronizované mezi oběma poskytovatelů DNS záznamy DNS pro doménu. Azure DNS v současné době nepodporuje přenosy zóny DNS. Záznamy DNS musí být synchronizovány s použitím buď [portálu pro správu Azure DNS](dns-operations-recordsets-portal.md), [rozhraní REST API](https://docs.microsoft.com/powershell/module/azurerm.dns), [SDK](dns-sdk.md), [rutin prostředí PowerShell](dns-operations-recordsets.md), nebo [Nástroj rozhraní příkazového řádku](dns-operations-recordsets-cli.md).
+Také se ujistěte, jestli jsou synchronizované mezi oběma poskytovatelů DNS záznamy DNS pro doménu. Azure DNS v současné době nepodporuje přenosy zóny DNS. Záznamy DNS musí být synchronizovány s použitím buď [portálu pro správu Azure DNS](dns-operations-recordsets-portal.md), [rozhraní REST API](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [rutin prostředí PowerShell](dns-operations-recordsets.md), nebo [Nástroj rozhraní příkazového řádku](dns-operations-recordsets-cli.md).
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Je nutné Delegovat doménu na všechny čtyři názvové servery Azure DNS?
 

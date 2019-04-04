@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bc8fae8f1278babd8c4c7402d86700ad78e3cb9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bfd488828d9c96461cb371b35bb0a0cb24fff373
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897414"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891935"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Klientské knihovny pro připojení ke službě Azure Analysis Services
 
@@ -25,7 +25,7 @@ Klientské knihovny jsou nezbytné pro klientské aplikace a nástroje pro přip
 |---------|---------|
 |[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.11.19    |
 |[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.11.19      |
-|[SADA AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.15.0.0    |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.15.0.0    |
 |[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    15.15.0.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>Sada AMO a ADOMD (balíčky NuGet)
@@ -34,7 +34,7 @@ Analysis Services Management Objects (AMO) a ADOMD klientské knihovny jsou k di
 
 |Balíček  | Verze produktu  | 
 |---------|---------|
-|[SADA AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.15.0.0     |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.15.0.0     |
 |[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.15.0.0      |
 
 Sestavení balíčků NuGet AssemblyVersion podle sémantické správy verzí: HLAVNÍ. PODVERZE. OPRAVA. Odkazy na NuGet načíst očekávaná verze i v případě, že je k dispozici různé verze v mezipaměti GAC (vyplývající z instalace MSI). Oprava se zvýší, pro každou vydanou verzí. Synchronizace jsou zachovány AMO a ADOMD verze.
@@ -66,7 +66,7 @@ Klientské knihovny pro připojení klientů se liší od zprostředkovatele dat
 
  Rozhraní ADOMD.NET je klientská knihovna spravovaných dat používá pro dotazování na data služby Analysis Services. Má nainstalovat a používat nástroje a klientské aplikace. 
   
- Při připojování k databázi, jsou podobné vlastnosti připojovacího řetězce pro všechny tři knihovny. Téměř všechny připojovací řetězec pro rozhraní ADOMD.NET definujete pomocí [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](https://msdn.microsoft.com/library/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring.aspx) funguje i pro AMO a Analysis Services OLE DB poskytovatele (MSOLAP). Další informace najdete v tématu [vlastnosti připojovacího řetězce &#40;služby Analysis Services&#41;](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services).  
+ Při připojování k databázi, jsou podobné vlastnosti připojovacího řetězce pro všechny tři knihovny. Téměř všechny připojovací řetězec pro rozhraní ADOMD.NET definujete pomocí [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) funguje i pro AMO a Analysis Services OLE DB poskytovatele (MSOLAP). Další informace najdete v tématu [vlastnosti připojovacího řetězce &#40;služby Analysis Services&#41;](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services).  
 
   
 ##  <a name="bkmk_LibUpdate"></a> Jak určit verzi knihovny klienta   

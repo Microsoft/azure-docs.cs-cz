@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: bc7a49aa143400387afcd59d5b9307d82a028486
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf3a3ca1f751ce9eed5ee5c5397c1d9c864a1dd6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098657"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903671"
 ---
 # <a name="post-deployment-tasks"></a>Úlohy po nasazení
 
@@ -184,7 +184,7 @@ V konzole nástroje OpenShift, uvidíte teď dvě možnosti pro ověřování: h
 Existují tři způsoby, jak přidat agenta Log Analytics do OpenShift.
 - Instalace agenta Log Analytics pro Linux přímo na každém uzlu Openshiftu
 - Povolení rozšíření virtuálního počítače Azure Monitor na každém uzlu Openshiftu
-- Instalace agenta Log Analytics jako OpenShift démon sadu
+- Instalace agenta Log Analytics jako démon OpenShift-set
 
 Úplné pokyny se nachází tady: https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift.
 

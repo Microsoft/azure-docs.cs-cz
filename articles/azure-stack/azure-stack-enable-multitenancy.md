@@ -15,12 +15,12 @@ ms.date: 03/04/2019
 ms.author: patricka
 ms.reviewer: bryanr
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 16d915ff6ce0f787febbdc4be4d41e1c2e714d7f
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 78370dba4c54df5636e6d17d23ce7cc9d7671c15
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336661"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487698"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Víceklientská architektura v Azure stacku
 
@@ -42,7 +42,7 @@ Existuje několik požadavků pro účet předtím, než nakonfigurujete více t
  - Ujistěte se, že jste [nainstalované](azure-stack-powershell-install.md) a [nakonfigurované](azure-stack-powershell-configure-admin.md) prostředí PowerShell pro Azure Stack.
  - [Stáhnout nástroje Azure Stack](azure-stack-powershell-download.md)a importovat moduly připojit a Identity:
 
-    ```PowerShell  
+    ```powershell  
     Import-Module .\Connect\AzureStack.Connect.psm1
     Import-Module .\Identity\AzureStack.Identity.psm1
     ```
@@ -55,7 +55,7 @@ Připojení ke službě Azure Stack konfigurací Azure Resource Manageru a akcep
 
 Správce služeb contoso.onmicrosoft.com spouští následující příkazy.
 
-```PowerShell  
+```powershell  
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
 $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
 
@@ -86,7 +86,7 @@ Jakmile správce Azure Stack / – operátor povolila Fabrikam adresář, který
 
 Jan správcem adresáře aplikace Fabrikam spouští následující příkazy v directory fabrikam.onmicrosoft.com hosta.
 
-```PowerShell
+```powershell
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
 $tenantARMEndpoint = "https://management.local.azurestack.external"
     

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: 323de505bc1bfa9747f372033392a9fd6e08462c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898852"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895779"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace v Node.js v Azure App Service Windows
 
@@ -98,7 +98,7 @@ Výchozí hodnota je false. Pokud je povoleno, vaši aplikaci uzlu můžete při
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
-Výchozí hodnota je 0, což znamená, že tato funkce je zakázaná. Pokud nastavíte na hodnotu větší než 0, modulu iisnode bude stránka na všech jeho podřízených procesů každých "idlePageOutTimePeriod" v milisekundách. Zobrazit [dokumentaci](https://msdn.microsoft.com/library/windows/desktop/ms682606.aspx) pochopit, co si znamená, že stránka. Toto nastavení je užitečné pro aplikace, které využívají vysoké množství paměti a chcete stránce limitu paměti na disk čas od času pro uvolnění paměti RAM.
+Výchozí hodnota je 0, což znamená, že tato funkce je zakázaná. Pokud nastavíte na hodnotu větší než 0, modulu iisnode bude stránka na všech jeho podřízených procesů každých "idlePageOutTimePeriod" v milisekundách. Zobrazit [dokumentaci](/windows/desktop/api/psapi/nf-psapi-emptyworkingset) pochopit, co si znamená, že stránka. Toto nastavení je užitečné pro aplikace, které využívají vysoké množství paměti a chcete stránce limitu paměti na disk čas od času pro uvolnění paměti RAM.
 
 > [!WARNING]
 > Buďte opatrní při povolování následující nastavení konfigurace v aplikacích v produkčním prostředí. Doporučení nebudete je moci povolit na aktivní produkční aplikace.
@@ -285,4 +285,4 @@ Další informace o aplikacích node.js ve službě Azure App Service na násled
 * [Používání modulů Node.js s aplikacemi Azure](../nodejs-use-node-modules-azure-apps.md)
 * [Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Středisko pro vývojáře Node.js](../nodejs-use-node-modules-azure-apps.md)
-* [Seznámení se supertajnou konzolou pro ladění modulu Kudu](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)
+* [Seznámení se super tajnou konzolou pro ladění modulu Kudu](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

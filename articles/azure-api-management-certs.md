@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 3b6f1a004e4fb69bc08d5163734021bcb2aed9a2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 014a26c2500959502eeb1c50d3f311584c1ad84e
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765794"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895680"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Nahrát certifikát pro správu služby Azure
 Certifikáty pro správu umožňují ověření pomocí modelu nasazení classic poskytovaný platformou Azure. Mnoho programech a nástrojích (např. Visual Studio nebo pomocí sady SDK Azure) použijte tyto certifikáty k automatizaci konfigurace a nasazení různých služeb Azure. 
@@ -56,4 +56,4 @@ Jakmile budete mít vytvořený certifikát správy, (soubor .cer s pouze veřej
     ![Nastavení](./media/azure-api-management-certs/certificate_details.png)
 
 ## <a name="next-steps"></a>Další postup
-Teď, když máte certifikát pro správu spojené s předplatným, můžete (po instalaci odpovídajícího certifikátu místně) programově připojit k [modelu nasazení classic rozhraní REST API](https://msdn.microsoft.com/library/azure/mt420159.aspx) a automatizovat různé prostředky Azure, které jsou spojeny s tímto předplatným.
+Teď, když máte certifikát pro správu spojené s předplatným, můžete (po instalaci odpovídajícího certifikátu místně) programově připojit k [modelu nasazení classic rozhraní REST API](/azure/#pivot=sdkstools) a automatizovat různé prostředky Azure, které jsou spojeny s tímto předplatným.

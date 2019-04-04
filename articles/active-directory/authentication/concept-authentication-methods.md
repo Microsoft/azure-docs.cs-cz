@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e21f7a67b11caf0180959de68d698f0ff4a1af1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a7a2866952d5e66e24770b81e69039d733fdd2a1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371855"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894589"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
-Azure AD samoobslužné resetování hesla (SSPR) a Vícefaktorové ověřování (MFA) požádat o další informace, známé jako metody ověřování nebo bezpečnostních údajů, abychom potvrdili, že jste koho se, že jsou při použití související funkce.
+Jako správce výběr metod ověřování pro Azure Multi-Factor Authentication a hesla pomocí samoobslužné služby resetování se doporučuje vyžadovat od uživatelů registraci několika metod ověřování. Pokud metoda ověřování není k dispozici pro uživatele, můžete se k ověření pomocí jiné metody.
 
-Správci můžou určit v zásadách, které metody ověřování jsou k dispozici pro uživatele samoobslužné resetování HESLA a vícefaktorové ověřování. Některé metody ověřování, nemusí být k dispozici ke všem funkcím.
+Správci můžou určit v zásadách, které metody ověřování jsou k dispozici pro uživatele samoobslužné resetování HESLA a vícefaktorové ověřování. Některé metody ověřování, nemusí být k dispozici ke všem funkcím. Další informace o konfiguraci zásad najdete v článcích [jak úspěšné zavedení samoobslužného resetování hesla](howto-sspr-deployment.md) a [plánování ověřování Azure Multi-Factor Authentication založené na cloudu](howto-mfa-getstarted.md)
 
 Společnost Microsoft důrazně doporučuje správcům umožňuje uživatelům vybrat více než minimální požadovaný počet metod ověřování v případě, že nemají přístup k jednomu.
 

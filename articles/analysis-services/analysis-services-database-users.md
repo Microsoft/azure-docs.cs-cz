@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d7ba922d66bf97dbd8173b0d5466a7e55a41f6b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993195"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891680"
 ---
 # <a name="manage-database-roles-and-users"></a>Spravovat databázové role a uživatele
 
@@ -26,7 +26,7 @@ Oprávnění role patří:
 *  **Proces** – uživateli můžete připojit k a provádění operací procesu v databázi a analýza dat z databáze modelu.
 *  **Čtení** – uživatelé můžou pomocí klientské aplikace k připojení a analýza dat z databáze modelu.
 
-Při vytváření projektu s tabelárním modelem, vytvářet role a přidat uživatele nebo skupiny do těchto rolí pomocí Správce rolí v SSDT. Po nasazení na server pomocí aplikace SSMS, [rutiny Powershellu služby analýzy](https://msdn.microsoft.com/library/hh758425.aspx), nebo [tabulkový Model skriptování jazyk](https://msdn.microsoft.com/library/mt614797.aspx) TMSL () přidat nebo odebrat role a členy.
+Při vytváření projektu s tabelárním modelem, vytvářet role a přidat uživatele nebo skupiny do těchto rolí pomocí Správce rolí v SSDT. Po nasazení na server pomocí aplikace SSMS, [rutiny Powershellu služby analýzy](/sql/analysis-services/powershell/analysis-services-powershell-reference), nebo [tabulkový Model skriptování jazyk](https://msdn.microsoft.com/library/mt614797.aspx) TMSL () přidat nebo odebrat role a členy.
 
 > [!NOTE]
 > Skupiny zabezpečení musí mít `MailEnabled` nastavenou na `True`.
@@ -45,7 +45,7 @@ Při vytváření projektu s tabelárním modelem, vytvářet role a přidat už
   
     |Oprávnění|Popis|  
     |----------------|-----------------|  
-    |**Žádné**|Členy nelze upravit schéma modelu a nelze zadávat dotazy na data.|  
+    |**Žádný**|Členy nelze upravit schéma modelu a nelze zadávat dotazy na data.|  
     |**Čtení**|Členy můžete zadávat dotazy na data (podle filtry řádků), ale nelze změnit schéma modelu.|  
     |**Číst a zpracovat**|Členové můžou dotazy na data (na základě filtrů na úrovni řádků) a spusťte proces a proces všechny operace, ale nelze změnit schéma modelu.|  
     |**Proces**|Členy můžete spustit proces a proces všechny operace. Nelze změnit schéma modelu a nelze zadávat dotazy na data.|  
@@ -120,13 +120,13 @@ V této ukázce B2B externího uživatele a skupiny se přidají do role analyti
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>Chcete-li přidat role a uživatele pomocí Powershellu
 
-[SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) modul obsahuje rutiny pro správu databáze specifické pro úlohy a pro obecné účely rutinu Invoke-ASCmd, který přijímá dotazu tabulkový Model skriptování jazyk TMSL () nebo skript. Pro správu databázových rolí a uživatelů se používají následující rutiny.
+[SqlServer](/sql/analysis-services/powershell/analysis-services-powershell-reference) modul obsahuje rutiny pro správu databáze specifické pro úlohy a pro obecné účely rutinu Invoke-ASCmd, který přijímá dotazu tabulkový Model skriptování jazyk TMSL () nebo skript. Pro správu databázových rolí a uživatelů se používají následující rutiny.
   
 |Rutina|Popis|
 |------------|-----------------| 
-|[Add-RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|Přidáte člena do role databáze.| 
-|[Remove-RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|Odebrání člena z role databáze.|   
-|[Invoke-ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|Spusťte skript TMSL.|
+|[Add-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Přidáte člena do role databáze.| 
+|[Remove-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Odebrání člena z role databáze.|   
+|[Vyvolání ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Spusťte skript TMSL.|
 
 ## <a name="row-filters"></a>Filtry řádků  
 

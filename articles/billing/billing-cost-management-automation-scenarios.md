@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: 8b42361e7b94bf017dde4eaec882f9fed4d42ed6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d2b0f2d3fad318ac0152d92fe92614d8dadda1e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861991"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918514"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Scénáře automatizace pro správu nákladů a fakturace
 
@@ -80,9 +80,9 @@ Všechny následující rozhraní API, pokud není uvedeno jinak můžete použ�
 
 -   [Rozhraní API s podrobnostmi o využití](https://docs.microsoft.com/rest/api/consumption/usagedetails): Získejte informace o využití a poplatků pro všechny prostředky Azure od Microsoftu. Informace jsou ve formě záznamů podrobnosti o využití, které jsou aktuálně, protože ho jednou za měřiče za den. Tyto informace slouží k přidání s náklady přes všechny prostředky nebo prozkoumat náklady nebo použití na konkrétní prostředky.
 
--   [RateCard API](https://msdn.microsoft.com/library/azure/mt219005.aspx): Získáte měřiče sazby, pokud jste zákazník Web Direct. Pak můžete vrácené informace s informacemi o využití prostředků pro ruční výpočet očekávané vyúčtování. 
+-   [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)): Získáte měřiče sazby, pokud jste zákazník Web Direct. Pak můžete vrácené informace s informacemi o využití prostředků pro ruční výpočet očekávané vyúčtování. 
 
--   [Využití rozhraní API bez hodnocení](https://msdn.microsoft.com/library/azure/mt219003.aspx): Získáte informace o použití nezpracovaných před všechny měření/účtování Azure.
+-   [Využití rozhraní API bez hodnocení](/previous-versions/azure/reference/mt219003(v=azure.100)): Získáte informace o použití nezpracovaných před všechny měření/účtování Azure.
 
 ### <a name="billing"></a>Fakturace
 -   [Fakturační období API](https://docs.microsoft.com/rest/api/billing/billingperiods): Určení fakturačního období pro analýzu, spolu s identifikátory faktury za toto období. Faktury ID můžete použít s rozhraním API faktury.
@@ -121,7 +121,7 @@ Tato rozhraní API nabízejí fundamentálně odlišný způsob dat:
    - Změny pro použití předplacené peněžní závazky
    - Změny, aby se zohlednily využití nesrovnalosti zjištěny nástrojem Azure
 
-- [Využití rozhraní API](https://msdn.microsoft.com/library/Mt219003.aspx) informacemi nezpracovaná využití Azure před odesláním náklady měření systému v Azure. Tato data možná není jakákoli korelace se využití nebo proplacení velikostí, který zobrazuje po Azure účtovat měřicího systému.
+- [Využití rozhraní API](/previous-versions/azure/reference/mt219003(v=azure.100)) informacemi nezpracovaná využití Azure před odesláním náklady měření systému v Azure. Tato data možná není jakákoli korelace se využití nebo proplacení velikostí, který zobrazuje po Azure účtovat měřicího systému.
 
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Jaký je rozdíl mezi faktury rozhraní API a rozhraní API podrobnosti o využití?
 Tato rozhraní API poskytují různé zobrazení stejná data:
@@ -135,7 +135,7 @@ Tato rozhraní API nabízejí podobné sad dat ale mají různé skupiny uživat
 
 - [Cena list API](https://docs.microsoft.com/rest/api/consumption/pricesheet) poskytuje vlastní ceny, který nebyl vyjednán pro zákazníky s Enterprise.
 
-- [RateCard API](https://msdn.microsoft.com/library/mt219005.aspx) poskytuje veřejná ceny, které se vztahuje na Web Direct zákazníky.
+- [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)) poskytuje veřejná ceny, které se vztahuje na Web Direct zákazníky.
 
 ## <a name="next-steps"></a>Další postup
 

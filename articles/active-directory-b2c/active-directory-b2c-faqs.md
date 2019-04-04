@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 89ad91316da027e399891a7e1b348e66c1d3a4f5
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 7a30aecc3cc2259072ea33ae018c371a1f05741a
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499892"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893380"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy 
 Tato stránka odpovědi na nejčastější dotazy týkající se Azure Active Directory (Azure AD) B2C. Kontrolovat novinky.
@@ -80,7 +80,7 @@ V současné době neexistuje žádný způsob, jak změnit "z:" na e-mailu.
 Azure AD Graph API můžete použít k zápisu vašeho nástroje pro migraci. Najdete v článku [uživatelská příručka migrace](active-directory-b2c-user-migration.md) podrobnosti.
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Jaký tok uživatele heslo se používá pro místní účty v Azure AD B2C?
-Tok uživatele Azure AD B2C heslo pro místní účty je na základě zásad pro službu Azure AD. V Azure AD B2C registrovat a zaregistrujte se nebo přihlašovací jméno a heslo toky uživatelů pro resetování použít síly hesla "silné" a není vypršení platnosti hesla. Přečtěte si [zásady hesel služby Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) další podrobnosti. Informace o uzamčení účtu a hesla najdete v tématu [spravuje hrozby k prostředkům a datům v Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
+Tok uživatele Azure AD B2C heslo pro místní účty je na základě zásad pro službu Azure AD. V Azure AD B2C registrovat a zaregistrujte se nebo přihlašovací jméno a heslo toky uživatelů pro resetování použít síly hesla "silné" a není vypršení platnosti hesla. Přečtěte si [zásady hesel služby Azure AD](/previous-versions/azure/jj943764(v=azure.100)) další podrobnosti. Informace o uzamčení účtu a hesla najdete v tématu [spravuje hrozby k prostředkům a datům v Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Můžete použít Azure AD Connect k migraci identit zákazníků, které jsou uložené na můj místní služby Active Directory k Azure AD B2C?
 Ne, Azure AD Connect není navržena pro práci s Azure AD B2C. Zvažte použití [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) pro migraci uživatele.  Najdete v článku [uživatelská příručka migrace](active-directory-b2c-user-migration.md) podrobnosti.

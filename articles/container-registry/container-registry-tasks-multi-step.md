@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: b2b6da1739aa97f69f5744905564f638309a587f
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: ac0e4e9019a35d3fdb35c0b7af9cb1289f4bceeb
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854318"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895443"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Spuštění několika kroky sestavení, testování a opravu úkoly v úlohách služby ACR
 
@@ -32,8 +32,6 @@ Můžete například spustit úlohu s kroky, které automatizují podle následu
 
 Všechny kroky se provádějí v rámci Azure, snižování zátěže práce, kterou výpočetní prostředky Azure a tím vás zbaví správu infrastruktury. Kromě vašeho registru kontejneru Azure platíte jenom za ty prostředky, které používáte. Informace o cenách najdete v tématu **sestavení kontejneru** tématu [ceny Azure Container Registry][pricing].
 
-> [!IMPORTANT]
-> Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
 ## <a name="common-task-scenarios"></a>Běžné scénáře úloh
 
@@ -49,14 +47,14 @@ Vícekrokové úlohy umožňují scénáře, jako jsou následující:
 
 Vícekrokové úlohy v úlohách služby ACR je definován jako série kroků v rámci souboru YAML. Jednotlivé kroky můžete určit závislosti na úspěšném dokončení jedné nebo více předchozích kroků. K dispozici jsou následující typy úloh kroku:
 
-* [`build`](container-registry-tasks-reference-yaml.md#build): Sestavení využívá známou jednu nebo víc imagí kontejneru `docker build` syntaxe v řadě nebo paralelně.
-* [`push`](container-registry-tasks-reference-yaml.md#push): Nabízených oznámení vytvořená Image do registru kontejneru. Podporují se privátních registrů, jako je Azure Container Registry, jako je veřejného Docker Hubu.
+* [`build`](container-registry-tasks-reference-yaml.md#build): Sestavování imagí kontejneru pro jeden nebo více využívá známou `docker build` syntaxe v řadě nebo paralelně.
+* [`push`](container-registry-tasks-reference-yaml.md#push): Sestavené Image nahrajete do registru kontejneru. Podporují se privátních registrů, jako je Azure Container Registry, jako je veřejného Docker Hubu.
 * [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Spuštění kontejneru, tak, že bude správně fungovat jako funkce v rámci kontextu spuštěná úloha. Můžete předat parametry do tohoto kontejneru `[ENTRYPOINT]`a zadejte vlastnosti, jako je env, odpojení a další známé `docker run` parametry. `cmd` Typ kroku umožňuje jednotek a funkční testování s spuštění souběžných kontejneru.
 
 Následující fragmenty kódu ukazují, jak kombinací těchto typů úkolů krok. Vícekrokové úlohy může být stejně jednoduché jako vytváření jedné image ze souboru Dockerfile a nahráním do vašeho registru, pomocí souboru YAML podobně jako:
 
-```yaml
-version: 1.0-preview-1
+```yml
+version: v1.0.0
 steps:
   - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
@@ -64,8 +62,8 @@ steps:
 
 Nebo složitější, jako je například tuto fiktivní vícekrokového definice, která zahrnuje kroky pro sestavení, testování, balíček helm a helm nasazení (registr kontejnerů a Helm konfigurace úložiště není vidět):
 
-```yaml
-version: 1.0-preview-1
+```yml
+version: v1.0.0
 steps:
   - id: build-web
     build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
@@ -150,14 +148,6 @@ Run ID: yd14 was successful after 19s
 ```
 
 Další informace o automatizované buildy při aktualizaci Git commit nebo základní image, najdete v článku [. automatizace sestavování imagí](container-registry-tutorial-build-task.md) a [základní image aktualizace sestavení](container-registry-tutorial-base-image-update.md) kurzech.
-
-## <a name="preview-feedback"></a>Zpětnou vazbu ve verzi Preview
-
-I když jsou funkce vícekrokových úkolů ACR úloh ve verzi preview, Zveme vás k poskytnutí zpětné vazby. Několik kanálech zpětné vazby jsou k dispozici:
-
-* [Problémy s](https://aka.ms/acr/issues) – zobrazení existujících chyb a problémů a protokolovat nové značky
-* [UserVoice](https://aka.ms/acr/uservoice) -hlasovat pro existující funkce požadavky nebo vytvořte nové požadavky
-* [Popisují](https://aka.ms/acr/feedback) -zapojit do diskusí Azure Container Registry s komunitou Stack Overflow
 
 ## <a name="next-steps"></a>Další postup
 

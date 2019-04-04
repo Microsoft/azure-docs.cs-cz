@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b9f153aa2da32fac2bf2e64f9fc4cd469acb0b89
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a5d89051ef479cf9d87ca8f921e05c6d0be12b8c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007490"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892173"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Kurz: Při aktualizaci základní image do služby Azure container registry. automatizace sestavování imagí kontejneru 
 
@@ -45,9 +45,9 @@ Tento kurz předpokládá, že jste už dokončili kroky v prvních dvou kurzech
 
 Než budete pokračovat, dokončete (pokud jste to už neudělali) první dva kurzy:
 
-[Sestavení imagí kontejnerů v cloudu pomocí Azure Container Registry Tasks](container-registry-tutorial-quick-task.md)
+[Sestavování imagí kontejneru v cloudu pomocí služby Azure Container Registry úlohy](container-registry-tutorial-quick-task.md)
 
-[Automatizace sestavení imagí kontejnerů pomocí Azure Container Registry Tasks](container-registry-tutorial-build-task.md)
+[Automatizace sestavování imagí kontejneru s úlohami registru kontejneru Azure](container-registry-tutorial-build-task.md)
 
 ### <a name="configure-the-environment"></a>Konfigurace prostředí
 
@@ -79,7 +79,7 @@ Tento kurz vás provede scénářem aktualizace základní image. [Vzorový kód
 
 V následujících částech vytvoříte úlohu, aktualizujete hodnotu `NODE_VERSION` v souboru Dockerfile základní image a potom použijete ACR Tasks k sestavení základní image. Když úloha ACR odešle do registru novou základní image, automaticky aktivuje sestavení image aplikace. Volitelně můžete spustit image kontejneru aplikace místně, abyste se mohli podívat na různé řetězce verze v sestavených imagích.
 
-Úloha služby ACR v tomto kurzu se vytvoří a předá jedním kontejnerem image zadanou v souboru Dockerfile. Můžete také spouštět úlohy ACR [vícekrokových úkolů](container-registry-tasks-multi-step.md) (aktuálně ve verzi preview), použití YAML souboru k definování kroky sestavení, vkládat a volitelně test několik kontejnerů.
+Úloha služby ACR v tomto kurzu se vytvoří a předá jedním kontejnerem image zadanou v souboru Dockerfile. Můžete také spouštět úlohy služby ACR [vícekrokových úkolů](container-registry-tasks-multi-step.md), definujte postup pro sestavení pomocí souboru YAML, push a volitelně test několik kontejnerů.
 
 ## <a name="build-the-base-image"></a>Sestavit základní image
 

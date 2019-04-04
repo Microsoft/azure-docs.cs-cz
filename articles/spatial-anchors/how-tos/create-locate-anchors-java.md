@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 04a11f32fa532a9c799fcf530612bd7084ff91d3
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 163edd544a2d93e380b8906df3e0055711321c95
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632130"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918854"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-java"></a>Jak vytvořit a vyhledejte ukotvení pomocí Azure prostorových ukotvení v jazyce Java
 
@@ -343,7 +343,7 @@ Další informace o [AnchorLocatedListener](https://docs.microsoft.com/java/api/
                 // This anchor has already been reported and is being tracked
                 break;
             case NotLocatedAnchorDoesNotExist:
-                // The anchor was deleted or never exited in the first place
+                // The anchor was deleted or never existed in the first place
                 // Drop it, or show UI to ask user to anchor the content anew
                 break;
             case NotLocated:

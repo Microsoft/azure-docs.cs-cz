@@ -14,12 +14,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: 0ebd17eca363d7fc02daeb851bb24b8d1d307efc
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: bd5e5a3b6fa72698f04969219b1db3cdb0bde3a5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339597"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486695"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Připojení k Azure pomocí Azure ExpressRoute Azure Stack
 
@@ -232,7 +232,7 @@ Tímto směrovačem je virtuální počítač (AzS-BGPNAT01) Windows serveru spu
 1. Přihlaste se k Azure Stack hostitelském počítači pomocí účtu správce.
 1. Zkopírujte a upravte následující skript prostředí PowerShell. Nahraďte `your administrator password` se heslo správce a pak spusťte skript v se zvýšenými oprávněními ISE Powershellu. Tento skript vrátí vaše **adresu externího BGPNAT**.
 
-   ```PowerShell
+   ```powershell
    cd \AzureStack-Tools-master\connect
    Import-Module .\AzureStack.Connect.psm1
    $Password = ConvertTo-SecureString "your administrator password" `
@@ -250,7 +250,7 @@ Tímto směrovačem je virtuální počítač (AzS-BGPNAT01) Windows serveru spu
 
    Spusťte následující skript z se zvýšenými oprávněními prostředí PowerShell ISE:
 
-   ```PowerShell
+   ```powershell
    $ExtBgpNat = 'External BGPNAT address'
    $IntBgpNat = 'Internal IP address'
 
@@ -599,7 +599,7 @@ Proveďte následující testy:
 
 Ve výchozím nastavení Windows Server 2016 nepovoluje příchozí pakety ICMP přes bránu firewall. Pro každý virtuální počítač, který používáte pro testy musíte také povolit příchozí ICMP pakety. Chcete-li vytvořit pravidlo brány firewall pro protokol ICMP, spusťte následující rutinu v okně PowerShell se zvýšenými oprávněními:
 
-```PowerShell
+```powershell
 # Create ICMP firewall rule.
 New-NetFirewallRule `
   –DisplayName “Allow ICMPv4-In” `

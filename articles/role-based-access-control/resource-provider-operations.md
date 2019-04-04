@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 57a97d76a864a644426296cf24401b2210709d39
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 5ddae616f81052e005210310e2d28b1bc10512ab
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805801"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906204"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
@@ -2833,7 +2833,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.LabServices/labAccounts/sharedImages/write | Přidat nebo upravit sharedimages. |
 > | Akce | Microsoft.LabServices/labAccounts/write | Přidat nebo upravit účtů testovacího prostředí. |
 > | Akce | Microsoft.LabServices/locations/operations/read | Operace čtení. |
-> | Akce | Microsoft.LabServices/register/action | Zaregistruje předplatné |
+> | Akce | Microsoft.LabServices/register/action | Zaregistruje předplatné. |
 > | Akce | Microsoft.LabServices/users/GetEnvironment/action | Načte podrobnosti virtuálního počítače |
 > | Akce | Microsoft.LabServices/users/GetOperationBatchStatus/action | Načíst stav operace služby batch |
 > | Akce | Microsoft.LabServices/users/GetOperationStatus/action | Umožňuje získat stav dlouhotrvající operace |

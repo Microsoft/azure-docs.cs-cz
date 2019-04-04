@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/22/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 6cddb513249b424ef0df2ed2d1b5609de17c0744
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a5fe2d9b295a72b8e2e3adb7e5cffd5a98c03070
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894032"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487511"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Správa aktualizací v přehledu služby Azure Stack
 
@@ -29,7 +29,7 @@ Balíčky aktualizací Microsoftu pro Azure Stack integrované systémy obvykle 
 
 Každá verze aktualizace softwaru Microsoftu se dodává v sadě jako jednu aktualizaci balíčku. Jako operátory Azure stacku můžete importovat, instalace a sledování průběhu instalace těchto balíčků z portálu správce aktualizací. 
 
-Dodavatele hardwaru, výrobce OEM (OEM) bude také vydávat aktualizace, jako je například aktualizace ovladače a firmware. Zatímco tyto aktualizace jsou dodávány jako samostatné balíčky podle dodavatele hardwaru, OEM, se importují, nainstalují a spravovat stejným způsobem balíčky aktualizací od Microsoftu, importovat, nainstalovat a spravovat balíčky aktualizací.
+Dodavatele hardwaru, výrobce OEM (OEM) bude také vydávat aktualizace, jako je například aktualizace ovladače a firmware. Přestože tyto aktualizace poskytuje váš dodavatel hardwaru OEM jako samostatné balíčky, jejich import, instalace a správa probíhá stejně jako v případě balíčků aktualizací od Microsoftu.
 
 Aby váš systém v rámci podpory, je nutné zachovat aktualizovat na úroveň konkrétní verzi služby Azure Stack. Ujistěte se, abyste se seznámili [Azure Stack zásady obsluhy](azure-stack-servicing-policy.md).
 
@@ -48,7 +48,7 @@ Důrazně doporučujeme, upozornění uživatelů na jakékoli operace údržby 
 
 - Před instalací této aktualizace, spusťte [testovací AzureStack](azure-stack-diagnostic-test.md) s následujícími parametry do ověřte stav služby Azure Stack a vyřešte všechny provozní problémy zjištěné, včetně všech upozornění a chyby. Také aktivní výstrahy můžete zkontrolovat a vyřešit všechny, které vyžadují nějakou akci.  
 
-  ```PowerShell
+  ```powershell
   Test-AzureStack -Group UpdateReadiness
   ``` 
 
@@ -71,7 +71,7 @@ Aktualizace dlaždice zobrazí aktuální verzi služby Azure Stack. Chcete aktu
 
 ## <a name="next-steps"></a>Další postup
 
-- [Údržba zásad služby Azure Stack](azure-stack-servicing-policy.md) 
+- [Zásady údržby služby Azure Stack](azure-stack-servicing-policy.md) 
 - [Správa oblastí ve službě Azure Stack](azure-stack-region-management.md)     
 
 

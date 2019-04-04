@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 40e91b4ba7ee62976b49975769bd1d1e656525f2
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: b3660901c86dd644369e6d1913e825cbd5ea316b
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54328864"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918463"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Správa cloudové služby Azure pomocí Azure Automation
 Tato příručka vás seznámí s služby Azure Automation a jak ji můžete použít k zjednodušení správy cloudových službách Azure.
@@ -32,7 +32,7 @@ Azure Automation poskytuje s vysoce spolehlivé a vysoce dostupného prováděc�
 Snižte operační režii a uvolnit tak IT / pracovníci DevOps a zaměřte se na práci, která vytváří obchodní hodnota přesunutím úkoly správy cloudu ke spuštění automaticky službou Azure Automation.
 
 ## <a name="how-can-azure-automation-help-manage-azure-cloud-services"></a>Jak Azure Automation pomáhá spravovat cloudové služby Azure?
-Cloudové služby Azure můžete spravovat ve službě Azure Automation prostřednictvím rutin prostředí PowerShell, které jsou k dispozici v [prostředí Azure PowerShell nástroje](https://msdn.microsoft.com/library/azure/jj156055.aspx). Tak, aby bylo možné provádět všechny vaše úkoly správy cloudových služeb v rámci služby Azure Automation obsahuje tyto cloudové služby rutinách prostředí PowerShell dostupných hned po spuštění. Můžete také spárovat tyto rutiny ve službě Azure Automation s rutinami pro dalšími službami Azure, automatizují komplexní úlohy napříč službami Azure a systémech 3. stran.
+Cloudové služby Azure můžete spravovat ve službě Azure Automation prostřednictvím rutin prostředí PowerShell, které jsou k dispozici v [prostředí Azure PowerShell nástroje](/powershell/). Tak, aby bylo možné provádět všechny vaše úkoly správy cloudových služeb v rámci služby Azure Automation obsahuje tyto cloudové služby rutinách prostředí PowerShell dostupných hned po spuštění. Můžete také spárovat tyto rutiny ve službě Azure Automation s rutinami pro dalšími službami Azure, automatizují komplexní úlohy napříč službami Azure a systémech 3. stran.
 
 Mezi příklad použití Azure Automation pro správu Azure Cloud Services patří:
 

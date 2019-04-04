@@ -16,12 +16,12 @@ ms.date: 03/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 58be7b6dc9eeeadd69fe82f1dc03d959aa94f9c8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb2c01052b8dc5fe346196a64e3fcbf7d1b69c2b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088430"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485746"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service ve službě Azure Stack
 
@@ -61,7 +61,7 @@ Spustit *Get-AzureStackRootCert.ps1* skriptu ze složky, které jste extrahovali
 
 Při spuštění následujícího příkazu Powershellu, budete mít k poskytnutí privileged koncového bodu a přihlašovací údaje pro AzureStack\CloudAdmin.
 
-```PowerShell
+```powershell
     Get-AzureStackRootCert.ps1
 ```
 
@@ -353,7 +353,7 @@ Postupujte následovně:
 13. Vyberte **nastavení**.
 14. Vyberte **požadovaná oprávnění** > **udělit oprávnění** > **Ano**.
 
-```PowerShell
+```powershell
     Create-AADIdentityApp.ps1
 ```
 
@@ -389,7 +389,7 @@ Postupujte následovně:
 5. V **přihlašovacích údajů** okno, zadejte účet správce cloudu služby AD FS a heslo. Vyberte **OK**.
 6. Zadejte cestu k souboru certifikátu a certifikát heslo pro [certifikát vytvořený dříve](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started). Certifikát vytvořený pro tento krok ve výchozím nastavení je **sso.appservice.local.azurestack.external.pfx**.
 
-```PowerShell
+```powershell
     Create-ADFSIdentityApp.ps1
 ```
 

@@ -15,12 +15,12 @@ ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: dc146c6e8877a99570aab25d198ba365abbe7c86
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4dc4c9d4d936bbcf626884c5c90e16f640f268a0
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078172"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487766"
 ---
 # <a name="azure-stack-registration"></a>Registrace Azure Stack
 Instalaci sady Azure Stack Development Kit (ASDK) můžete zaregistrovat pomocí Azure pro stažení položek z marketplace z Azure a jak nastavit obchodní data hlášení zpět společnosti Microsoft. Chcete-li podporovat všechny funkce služby Azure Stack, včetně syndikace marketplace je nutná registrace. Umožňuje otestovat důležité funkce služby Azure Stack, jako jsou syndikace marketplace a generování sestav o využívání, je nutná registrace. Po dokončení registrace Azure Stack, využití se oznamuje službě Azure commerce. Zobrazí se v rámci předplatného, které jste použili k registraci. Však uživatelé ASDK neúčtují se za jakékoliv využití, které vykazují.
@@ -32,7 +32,7 @@ Před použitím těchto pokynů k registraci ASDK ve službě Azure, ujistěte 
 
 Kromě toho režim jazyka PowerShell nastavené na **FullLanguageMode** v počítači používá k registraci ASDK v Azure. Pokud chcete ověřit, že aktuální režim jazyka nastaven na úplné, otevřete okno Powershellu se zvýšenými oprávněními a spusťte následující příkazy Powershellu:
 
-```PowerShell  
+```powershell  
 $ExecutionContext.SessionState.LanguageMode
 ```
 
@@ -50,7 +50,7 @@ Postupujte podle těchto kroků k registraci ASDK ve službě Azure.
 
 2. Spusťte následující příkazy Powershellu registraci ASDK instalace v Azure. Musíte se přihlásit do Azure fakturační ID předplatného a místní instalace ASDK. Pokud nemáte Azure fakturační ID předplatného, ale můžete [vytvořit bezplatný účet Azure zde](https://azure.microsoft.com/free/?b=17.06). Registrace Azure Stack se neúčtují žádné poplatky na vaše předplatné Azure.<br><br>Nastavit jedinečný název pro registraci při spuštění **Set-AzsRegistration** rutiny. **RegistrationName** parametr má výchozí hodnotu **AzureStackRegistration**. Nicméně pokud použijete stejný název ve více než jednu instanci služby Azure Stack, skript se nezdaří.
 
-    ```PowerShell  
+    ```powershell  
     # Add the Azure cloud subscription environment name. 
     # Supported environment names are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
     Add-AzureRmAccount -EnvironmentName "<environment name>"
@@ -89,7 +89,7 @@ Pokud při registraci služby Azure Stack v odpojeném prostředí (bez připoje
 ### <a name="get-a-registration-token-from-the-azure-stack-environment"></a>Získání tokenu registrace z prostředí Azure Stack
 V hostitelském počítači ASDK spusťte PowerShell jako správce a přejděte **registrace** složky v **AzureStack-Tools-master** adresář vytvořený při stažení nástroje Azure Stack. Pomocí následujících příkazů prostředí PowerShell k importu **RegisterWithAzure.psm1** modul a poté **Get-AzsRegistrationToken** rutiny pro získání tokenu registrace:  
 
-   ```PowerShell  
+   ```powershell  
    # Import the registration module that was downloaded with the GitHub tools
    Import-Module C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1
 
@@ -110,7 +110,7 @@ Uložte tento registrační token pro použití na počítače připojené k Int
 ### <a name="connect-to-azure-and-register"></a>Připojení k Azure a registrace
 Na Internetu připojený počítač, použijte následující příkazy prostředí PowerShell k importu **RegisterWithAzure.psm1** modul a poté **Register-AzsEnvironment** rutiny k registraci ve službě Azure s využitím a jedinečným registračním název registračního tokenu, který jste právě vytvořili:  
 
-  ```PowerShell  
+  ```powershell  
   # Add the Azure cloud subscription environment name. 
   # Supported environment names are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
   Add-AzureRmAccount -EnvironmentName "<environment name>"
@@ -134,7 +134,7 @@ Na Internetu připojený počítač, použijte následující příkazy prostře
 
 Alternativně můžete použít **Get-Content** rutiny pro odkazování na soubor, který obsahuje registrační token:
 
-  ```PowerShell  
+  ```powershell  
   # Add the Azure cloud subscription environment name. 
   # Supported environment names are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
   Add-AzureRmAccount -EnvironmentName "<environment name>"

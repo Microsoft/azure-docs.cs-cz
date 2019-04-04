@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: d7859572b090913db13fe9bb7f3ed67619fe5521
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: cc9e2e09da572dc4260dcc0e20a8a1846ae17320
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456342"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894145"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Průběžná integrace služby Azure DevOps pomocí projekty nasazení skupiny prostředků Azure
 K nasazení šablony Azure, můžete provádět úlohy v různých fázích: Kopírovat sestavení, testování, do Azure (tzv. "Přípravného") a nasaďte šablonu. Existují dva různé způsoby nasazování šablon ke službám Azure DevOps. Obě metody poskytují stejné výsledky, proto zvolte ten, který nejlépe vyhovuje požadavkům vašeho pracovního postupu.
@@ -37,7 +37,7 @@ Bez ohledu na scénář Pokud mají všechny artefakty, které jsou potřebné p
 * Binární soubory aplikace
 
 ### <a name="nested-templates-and-configuration-scripts"></a>Vnořené šablony a skripty konfigurace
-Při použití šablony, které poskytuje Visual Studio (nebo sestavené pomocí sady Visual Studio fragmenty), skript prostředí PowerShell fáze nejen artefakty, také parametrizuje identifikátor URI pro prostředky pro jiné nasazení. Skript potom zkopíruje artefakty do zabezpečeného kontejneru v Azure, vytvoří SaS token pro tento kontejner a pak předá tyto informace k nasazení šablony. Zobrazit [vytvoření šablony nasazení](https://msdn.microsoft.com/library/azure/dn790564.aspx) Další informace o vnořených šablonách.  Při použití úkolů ve službě Azure DevOps Services, musíte vybrat příslušné úlohy pro nasazení šablony a v případě potřeby předat hodnoty parametrů z pracovní kroku k nasazení šablony.
+Při použití šablony, které poskytuje Visual Studio (nebo sestavené pomocí sady Visual Studio fragmenty), skript prostředí PowerShell fáze nejen artefakty, také parametrizuje identifikátor URI pro prostředky pro jiné nasazení. Skript potom zkopíruje artefakty do zabezpečeného kontejneru v Azure, vytvoří SaS token pro tento kontejner a pak předá tyto informace k nasazení šablony. Zobrazit [vytvoření šablony nasazení](/previous-versions/azure/reference/dn790564(v=azure.100)) Další informace o vnořených šablonách.  Při použití úkolů ve službě Azure DevOps Services, musíte vybrat příslušné úlohy pro nasazení šablony a v případě potřeby předat hodnoty parametrů z pracovní kroku k nasazení šablony.
 
 ## <a name="set-up-continuous-deployment-in-azure-pipelines"></a>Nastavení průběžného nasazování v kanálech Azure
 Volání skriptu prostředí PowerShell v kanálech Azure, budete muset aktualizovat vašeho kanálu sestavení. Stručně řečeno postup je: 

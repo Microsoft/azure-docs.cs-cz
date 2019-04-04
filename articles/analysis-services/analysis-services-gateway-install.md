@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bd4c024e14e70b5937d85e9917340d25f552096d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 629a97048ceba4ac02e3aa1dd59310980e5a0c95
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110864"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894162"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalace a konfigurace místní brány dat
 
@@ -40,7 +40,7 @@ Při jeden nebo více serverů služby Azure Analysis Services ve stejné oblast
 * Bránu nainstalujte na počítač, který zůstane na a ne přechází do režimu spánku.
 * Bránu neinstalujte na počítač bezdrátově připojené k vaší síti. Výkon můžete snížila.
 * Při instalaci brány, uživatelský účet, který jste přihlášení k počítači pomocí musí mít protokolu jako oprávnění služby. Po dokončení instalace službu On-premises data gateway používá účet NT SERVICE\PBIEgwService přihlásit jako službu. Jiný účet lze zadat během instalace nebo služby, po dokončení instalace. Nastavení zásad skupiny zkontrolujte, zda povolit, že účet, který jste přihlášení se při instalaci a účet služby, kterou zvolíte mají protokolu na jako oprávnění služby.
-* Přihlášení k Azure pomocí účtu ve službě Azure AD pro stejné [tenanta](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) jako předplatné při registraci brány v. Azure B2B účty (Host) nejsou podporována při instalaci a registraci brány.
+* Přihlášení k Azure pomocí účtu ve službě Azure AD pro stejné [tenanta](/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant) jako předplatné při registraci brány v. Azure B2B účty (Host) nejsou podporována při instalaci a registraci brány.
 * Pokud jsou zdroje dat ve službě Azure Virtual Network (VNet), je nutné nakonfigurovat [AlwaysUseGateway](analysis-services-vnet-gateway.md) vlastnost serveru.
 * (Sjednocené) brány je zde popsáno, není podporována v oblastech Azure Germany. Místo toho použijte **vyhrazená místní brána pro Azure Analysis Services**, nainstalované ze svého serveru **rychlý Start** na portálu. 
 

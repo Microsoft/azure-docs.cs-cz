@@ -8,18 +8,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 43947413f061ec8b366392b676e848ebf5e6484e
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 994ccf292a4215624d4222fe13ca9ac25c863368
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570109"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895862"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Ověření Stream Analytics pro Azure Data Lake Storage Gen1 pomocí spravované identity (Preview)
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Ověření Stream Analytics pro Azure Data Lake Storage Gen1 pomocí spravované identity
 
 Azure Stream Analytics podporuje spravovanou identitu ověřování pomocí Azure Data Lake Storage (ADLS) Gen1 výstup. Identita je spravovaná aplikace v Azure Active Directory, který představuje dané úlohy Stream Analytics a slouží k ověřování na cílový prostředek. Spravované identity eliminovat omezení metody ověřování založené na uživatelích, jako by bylo nutné donutit z důvodu změny hesla nebo uživatel token platnosti, ke kterým dochází vždy po 90 dnech. Kromě toho spravované identity usnadňující automatizaci nasazení úlohy Stream Analytics, která výstup do Azure Data Lake Storage Gen1.
-
-Přejděte [osm nových funkcí ve službě Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/) příspěvek na blogu k registraci pro tuto verzi preview a přečtěte si více o nových funkcích.
 
 Tento článek popisuje tři způsoby, jak povolit spravovanou identitu pro úlohy Azure Stream Analytics, jejichž výstupem jsou do Azure Data Lake Storage Gen1 prostřednictvím webu Azure portal, nasazení šablony Azure Resource Manageru a Azure Stream Analytics tools for Visual Studio.
 
@@ -27,11 +25,11 @@ Tento článek popisuje tři způsoby, jak povolit spravovanou identitu pro úlo
 
 ## <a name="azure-portal"></a>portál Azure
 
-1. Začněte tím, že vytvoříte novou úlohu Stream Analytics nebo tak, že otevřete existující projekt na webu Azure portal. V panelu nabídky na levé straně obrazovky vyberte **spravovaná identita (preview)** umístěna ve složce **konfigurovat**.
+1. Začněte tím, že vytvoříte novou úlohu Stream Analytics nebo tak, že otevřete existující projekt na webu Azure portal. V panelu nabídky na levé straně obrazovky vyberte **Identity spravované** umístěna ve složce **konfigurovat**.
 
-   ![Konfigurace spravovaných identit Stream Analytics ve verzi preview](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
+   ![Konfigurace Stream Analytics, spravované identity](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. Vyberte **použijte systém přiřadil Identity spravované (verze preview)** z okna, která se zobrazí na pravé straně. Klikněte na tlačítko **Uložit** instančnímu objektu služby pro identifikaci úlohy Stream Analytics v Azure Active Directory. Azure bude spravovat životní cyklus nově vytvořený identity. Při odstranění úlohy Stream Analytics přidružený identity (to znamená, instanční objekt) Azure automaticky odstraní.
+2. Vyberte **použijte systém přiřadil Identity spravované** z okna, která se zobrazí na pravé straně. Klikněte na tlačítko **Uložit** instančnímu objektu služby pro identifikaci úlohy Stream Analytics v Azure Active Directory. Azure bude spravovat životní cyklus nově vytvořený identity. Při odstranění úlohy Stream Analytics přidružený identity (to znamená, instanční objekt) Azure automaticky odstraní.
 
    Při uložení konfigurace ID objektu (OID) objektu služby, které je uvedené jako ID objektu zabezpečení, jak je znázorněno níže:
 
@@ -39,7 +37,7 @@ Tento článek popisuje tři způsoby, jak povolit spravovanou identitu pro úlo
  
    Instanční objekt služby má stejný název jako úloha Stream Analytics. Například, pokud je název vaší úlohy **MyASAJob**, název se vytvořil objekt služby je také **MyASAJob**.
 
-3. V okně výstupu vlastnosti výstupní jímky ADLS Gen1, klikněte na rozevírací seznam a vyberte režim ověřování **spravovaná identita (preview)**.
+3. V okně výstupu vlastnosti výstupní jímky ADLS Gen1, klikněte na rozevírací seznam a vyberte režim ověřování ** Identity spravované **.
 
 4. Vyplňte zbývající vlastnosti nástroje. Další informace o vytváření výstup ADLS najdete v tématu [vytvořit výstupní Data lake Store pomocí stream analytics](../data-lake-store/data-lake-store-stream-analytics.md). Až budete hotovi, klikněte na tlačítko **Uložit**.
 
@@ -164,7 +162,7 @@ Tento článek popisuje tři způsoby, jak povolit spravovanou identitu pro úlo
 
    **PrincipalId** je ID objektu instančního objektu a je uvedené na portálu obrazovka po vytvoření instančního objektu. Pokud jste vytvořili úlohu pomocí nasazení šablony Resource Manageru, ID objektu je uvedeno ve vlastnosti identita třídy odpověď úlohy.
 
-   **Příklad**
+   **Příklad:**
 
    ```powershell
    PS > Set-AzDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType

@@ -15,12 +15,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 64a31e0c8a36b7ea8b60f65caefba9ba15b91777
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 520319fb21dce3cf4f3cc1b36c52657cf9eb24e7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258730"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903994"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Integrace externí řešení pro monitorování pomocí služby Azure Stack
 
@@ -81,13 +81,13 @@ Soubor modulu plug-in "Azurestack_plugin.py" konfigurace s následujícími para
 
 | Parametr | Popis | Příklad: |
 |---------|---------|---------|
-| *arm_endpoint* | Koncový bod Azure Resource Manager (správce) |https:\//adminmanagement.local.azurestack.external |
-| *api_endpoint* | Koncový bod Azure Resource Manager (správce)  | https:\//adminmanagement.local.azurestack.external |
+| *arm_endpoint* | Koncový bod Azure Resource Manager (správce) | https://adminmanagement.local.azurestack.external |
+| *api_endpoint* | Koncový bod Azure Resource Manager (správce)  | https://adminmanagement.local.azurestack.external |
 | *Tenant_id* | ID správce předplatného | Načíst prostřednictvím portálu správce nebo prostředí PowerShell |
-| *User_name* | Uživatelské jméno předplatné – operátor | operator@myazuredirectory.onmicrosoft.com |
+| *Uživatelské_jméno* | Uživatelské jméno předplatné – operátor | operator@myazuredirectory.onmicrosoft.com |
 | *User_password* | Hesla předplatného – operátor | méheslo |
 | *Client_id* | Klient | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417* |
-| *region* |  Název oblasti Azure Stack | místní |
+| *oblast* |  Název oblasti Azure Stack | místní |
 |  |  |
 
 * Powershellu identifikátor GUID, který je k dispozici je univerzální. Můžete ho použít pro každé nasazení.
@@ -96,35 +96,36 @@ Soubor modulu plug-in "Azurestack_plugin.py" konfigurace s následujícími para
 
 Pokud nepoužíváte nástroj Operations Manager, Nagios nebo řešení Nagios, můžete použít PowerShell umožňuje širokou škálu řešení pro integraci s Azure Stackem monitorování.
 
-1. Jak pomocí prostředí PowerShell, ujistěte se, že máte [PowerShell nainstalovaný a nakonfigurovaný](azure-stack-powershell-configure-quickstart.md) pro operátor prostředí Azure Stack. Instalace Powershellu v místním počítači, se kterým dosáhnete koncový bod Resource Manager (správce) (protokol https:\//adminmanagement. [ Oblast]. [External_FQDN]).
+1. Jak pomocí prostředí PowerShell, ujistěte se, že máte [PowerShell nainstalovaný a nakonfigurovaný](azure-stack-powershell-configure-quickstart.md) pro operátor prostředí Azure Stack. Instalace prostředí PowerShell na místní počítač, který můžete dosáhnout koncového bodu Resource Manager (správce) (https://adminmanagement. [ Oblast]. [External_FQDN]).
 
 2. Spusťte následující příkazy pro připojení k prostředí Azure Stack jako operátory Azure stacku:
 
-   ```PowerShell  
-    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https:\//adminmanagement.[Region].[External_FQDN]
+   ```powershell
+   Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN]
 
    Add-AzureRmAccount -EnvironmentName "AzureStackAdmin"
    ```
 
 3. Použití příkazů jako jsou následující příklady pro práci s výstrahami:
-   ```PowerShell
+   ```powershell
     #Retrieve all alerts
-    Get-AzsAlert
+    $Alerts = Get-AzsAlert
+    $Alerts
 
     #Filter for active alerts
-    $Active=Get-AzsAlert | Where {$_.State -eq "active"}
+    $Active = $Alerts | Where-Object { $_.State -eq "active" }
     $Active
 
     #Close alert
     Close-AzsAlert -AlertID "ID"
 
     #Retrieve resource provider health
-    Get-AzsRPHealth
+    $RPHealth = Get-AzsRPHealth
+    $RPHealth
 
     #Retrieve infrastructure role instance health
-    $FRPID=Get-AzsRPHealth|Where-Object {$_.DisplayName -eq "Capacity"}
+    $FRPID = $RPHealth | Where-Object { $_.DisplayName -eq "Capacity" }
     Get-AzsRegistrationHealth -ServiceRegistrationId $FRPID.RegistrationId
-
     ```
 
 ## <a name="learn-more"></a>Další informace

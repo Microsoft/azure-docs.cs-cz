@@ -12,22 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 03/27/2019
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: 3d9376ba5945c97d18f6cf68c242d5217beee679
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 848b2a0c912a00a2185d7e4b7b8d8446bc1f6aca
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58349701"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497172"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy kvót ve službě Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-[Kvóty](azure-stack-plan-offer-quota-overview.md#plans) definování omezení prostředků, které můžete zřizovat nebo využívat předplatného uživatele. Například může kvótu umožňují uživateli vytvořit až pět virtuálních počítačů. Každý prostředek může mít svůj vlastní typy kvót.
+[Kvóty](azure-stack-plan-offer-quota-overview.md#plans) definování omezení prostředků, které můžete zřizovat nebo využívat předplatného uživatele. Kvóta například může uživateli umožnit vytvoření až pěti virtuálních počítačů. Každý prostředek může mít své vlastní typy kvót.
+
+> [!IMPORTANT]
+> Může trvat až dvě hodiny pro nové kvóty bude k dispozici na portálu user portal nebo předtím, než se vynucuje změněné kvóty.
 
 ## <a name="compute-quota-types"></a>COMPUTE typy kvót
 
@@ -41,9 +44,9 @@ ms.locfileid: "58349701"
 | Maximální kapacita spravovaný disk úrovně premium (v GB) | 2 048 | Maximální kapacita premium spravované disky, které lze vytvořit v tomto umístění. |
 
 > [!NOTE]  
-> Je oddělená od spravovaných disková kvóta maximální kapacita nespravovaný disk (objekty BLOB stránky), mělo by být nastavené v rámci kvóty úložiště.
+> Maximální kapacita nespravovaný disk (objekty BLOB stránky) je oddělená od spravovaných disková kvóta. Tuto hodnotu lze nastavit **kvót úložiště**.
 
-## <a name="storage-quota-types"></a>Typy kvót úložiště 
+## <a name="storage-quota-types"></a>Typy kvót úložiště
 
 | **Položka** | **Výchozí hodnota** | **Popis** |
 | --- | --- | --- |
@@ -51,13 +54,13 @@ ms.locfileid: "58349701"
 | Celkový počet účtů úložiště |20 |Maximální počet účtů úložiště, které předplatné můžete vytvořit v tomto umístění. |
 
 > [!NOTE]  
-> Může trvat až dvě hodiny, než bude vynucovat kvóty úložiště. Maximální kapacita spravovaného disku je oddělená od kvóta celkový úložiště, musí být nastaveno v kvóty výpočtů.
+> Maximální kapacita spravované disky je oddělené od kvóta celkový úložiště. Tuto hodnotu lze nastavit **Compute kvóty**.
 
 ## <a name="network-quota-types"></a>Typy kvót sítě
 
 | **Položka** | **Výchozí hodnota** | **Popis** |
 | --- | --- | --- |
-| Maximální veřejné IP adresy |50 |Maximální počet veřejných IP adres, které předplatné může vytvořit v tomto umístění. |
+| Maximální veřejné IP adresy |50 |Maximální počet veřejných IP adres, které předplatné můžete vytvořit v tomto umístění. |
 | Maximální virtuální sítě |50 |Maximální počet virtuálních sítí, které předplatné můžete vytvořit v tomto umístění. |
 | Maximální virtuální síťové brány |1 |Maximální počet brány virtuální sítě (VPN Gateway), které předplatného můžete vytvořit v tomto umístění. |
 | Maximální síťová připojení |2 |Maximální počet síťových připojení (point-to-point nebo site-to-site), které předplatné můžete vytvořit přes všechny brány virtuální sítě v tomto umístění. |

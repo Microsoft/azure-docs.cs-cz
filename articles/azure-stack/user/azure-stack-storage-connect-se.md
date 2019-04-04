@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 1c59f092957704c44b5cda012aa7c471fdaa3275
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.lastreviewed: 03/14/2019
+ms.openlocfilehash: 314304e75ce0f2586f41b71a889fa0185501b845
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763363"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622004"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Připojení Průzkumníka služby storage k předplatnému Azure Stack nebo účet úložiště
 
@@ -49,25 +49,27 @@ Exportovat a importovat pro ASDK certifikátu služby Azure Stack. Pro integrova
 
 1. Otevřít `mmc.exe` na hostitelském počítači Azure Stack nebo místním počítači pomocí připojení VPN ke službě Azure Stack. 
 
-2. V **souboru**vyberte **Přidat/odebrat modul Snap-in**a pak přidejte **certifikáty** ke správě **Můj uživatelský účet**.
+2. V **souboru**vyberte **Přidat/odebrat modul Snap-in**. Vyberte **certifikáty** v modulu snap in k dispozici. 
 
-3.  V části **Console Root\Certificated (Local Computer) \Trusted Root Certification Authorities\Certificates**. Najít **AzureStackSelfSignedRootCert**.
+3. Vyberte **účet počítače**a pak vyberte **Další**. Vyberte **místního počítače**a pak vyberte **Dokončit**.
+
+4.  V části **Console Root\Certificated (Local Computer) \Trusted Root Certification Authorities\Certificates**. Najít **AzureStackSelfSignedRootCert**.
 
     ![Načtení kořenového certifikátu služby Azure Stack pomocí mmc.exe](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
 
-4. Klikněte pravým tlačítkem na certifikát, vyberte **všechny úkoly** > **exportovat**a pak postupujte podle pokynů a vyexportujte certifikát s **kódování Base-64 X.509 (. CER)**.
+5. Klikněte pravým tlačítkem na certifikát, vyberte **všechny úkoly** > **exportovat**a pak postupujte podle pokynů a vyexportujte certifikát s **kódování Base-64 X.509 (. CER)**.
 
     Vyexportovaný certifikát se použije v dalším kroku.
 
-5. Otevřete storage explorer, a pokud se zobrazí **připojit ke službě Azure Storage** dialogovém okně ho zrušit.
+6. Otevřete storage explorer, a pokud se zobrazí **připojit ke službě Azure Storage** dialogovém okně ho zrušit.
 
-6. Na **upravit** nabídky, přejděte k **certifikáty SSL**a pak vyberte **importovat certifikáty**. Pomocí dialogového okna pro výběr souborů najděte a otevřete certifikát, který jste exportovali v předchozím kroku.
+7. Na **upravit** nabídky, přejděte k **certifikáty SSL**a pak vyberte **importovat certifikáty**. Pomocí dialogového okna pro výběr souborů najděte a otevřete certifikát, který jste exportovali v předchozím kroku.
 
     Po importu certifikátu, budete vyzváni k restartování storage Exploreru.
 
     ![Importujte certifikát do Průzkumníka služby storage](./media/azure-stack-storage-connect-se/import-azure-stack-cert-storage-explorer.png)
 
-7. Po restartování storage Exploreru vyberte **upravit** nabídky a zkontrolujte, jestli **Target Azure Stack** zaškrtnuto. Pokud tomu tak není, vyberte **Target Azure Stack**a restartujte storage explorer, aby tato změna projevila. Tato konfigurace je nutná pro kompatibilitu s vaším prostředím Azure Stack.
+8. Po restartování storage Exploreru vyberte **upravit** nabídky a zkontrolujte, jestli **cílové rozhraní API služby Azure Stack** zaškrtnuto. Pokud tomu tak není, vyberte **Target Azure Stack**a restartujte storage explorer, aby tato změna projevila. Tato konfigurace je nutná pro kompatibilitu s vaším prostředím Azure Stack.
 
     ![Kontrola, že položka Target Azure Stack je vybraná](./media/azure-stack-storage-connect-se/target-azure-stack.png)
 
@@ -82,7 +84,7 @@ Pomocí následujících kroků pro připojení storage Exploreru k předplatné
 
     ![Přidání účtu Azure Stack](./media/azure-stack-storage-connect-se/add-azure-stack-account.png)
 
-3. V okně připojení k Azure Storage dialogovém okně v části **prostředí Azure**vyberte **Azure** nebo **Azure China**, která závisí na účtu Azure Stack, který se používá, vyberte **Přihlášení** se přihlásit pomocí účtu Azure Stack, který je přidružený alespoň k jednomu aktivnímu předplatnému Azure Stack.
+3. V okně připojení k Azure Storage dialogovém okně v části **prostředí Azure**vyberte **Azure**, **Azure China**, **Azure Germany**,  **Azure pro státní správu USA**, nebo **přidat nové prostředí**, která závisí na účtu Azure Stack, který je používán. Vyberte **přihlášení** se přihlásit pomocí účtu Azure Stack, který je přidružený alespoň k jednomu aktivnímu předplatnému Azure Stack.
 
     ![Připojení k úložišti Azure](./media/azure-stack-storage-connect-se/azure-stack-connect-to-storage.png)
 

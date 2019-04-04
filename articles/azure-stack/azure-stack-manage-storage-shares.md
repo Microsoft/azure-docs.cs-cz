@@ -1,6 +1,6 @@
 ---
 title: Správa kapacity úložiště ve službě Azure Stack | Dokumentace Microsoftu
-description: Monitorovat a spravovat adresní prostor úložiště k dispozici pro službu Azure Stack.
+description: Monitorování a Správa služby Azure Stack kapacitu a dostupnost úložiště prostor úložiště pro službu Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 03/29/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 617696c842ab90fc36c68e74831ffd1d79d14bc4
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.lastreviewed: 03/19/2019
+ms.openlocfilehash: e5188a7f7a1ce889c8f4340f100cfe767ff2dff8
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225701"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629401"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Správa kapacity úložiště pro službu Azure Stack 
 
@@ -53,7 +53,6 @@ Sdílené složky ve svazcích uchovávání dat tenanta. Data tenanta zahrnuje 
 
 Když sdílenou složku není dostatek volného místa a akce, které [uvolnit](#reclaim-capacity) místa nejsou úspěšné, nebo k dispozici, operátor cloudu Azure Stack můžete migrovat kontejnery objektů blob z jedné sdílené složky do jiné.
 
-- Další informace o kontejnerům a objektům BLOB najdete v tématu [úložiště objektů Blob](azure-stack-key-features.md#blob-storage) v klíč funkcích a konceptech v Azure stacku.
 - Informace o tom, jak tenanta uživatelé pracují s úložištěm objektů blob ve službě Azure Stack najdete v tématu [služby Azure Stack úložiště](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).
 
 
@@ -142,14 +141,14 @@ Migrace konsoliduje všechny kontejnery blob na novou sdílenou složku.
 1. Potvrďte, že máte [prostředí Azure PowerShell nainstalovaný a nakonfigurovaný](https://azure.microsoft.com/documentation/articles/powershell-install-configure/). Další informace najdete v tématu [Použití Azure PowerShellu s Azure Resource Managerem](https://go.microsoft.com/fwlink/?LinkId=394767).
 2. Prozkoumejte kontejneru pochopit, jaká data jsou ve sdílené složce, kterou chcete použít k migraci. Chcete-li určit nejlepší kandidát kontejnery pro migraci na svazku, použijte **Get-AzsStorageContainer** rutiny:
 
-   ```PowerShell  
+   ```powershell  
    $farm_name = (Get-AzsStorageFarm)[0].name
    $shares = Get-AzsStorageShare -FarmName $farm_name
    $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -FarmName $farm_name
    ```
    Pak zkontrolujte $containers:
 
-   ```PowerShell
+   ```powershell
    $containers
    ```
 
@@ -157,14 +156,14 @@ Migrace konsoliduje všechny kontejnery blob na novou sdílenou složku.
 
 3. Určení nejlepší cílové složky pro uložení kontejneru, který migrujete:
 
-   ```PowerShell
+   ```powershell
    $destinationshares = Get-AzsStorageShare -SourceShareName
    $shares[0].ShareName -Intent ContainerMigration
    ```
 
    Pak zkontrolujte $destinationshares:
 
-   ```PowerShell 
+   ```powershell 
    $destinationshares
    ```
 
@@ -172,20 +171,20 @@ Migrace konsoliduje všechny kontejnery blob na novou sdílenou složku.
 
 4. Zahájení migrace pro kontejner. Migrace je asynchronní. Pokud před dokončením migrace první spuštění migrace dalších kontejnerů, sledovat stav každého pomocí ID úlohy.
 
-   ```PowerShell
+   ```powershell
    $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
    ```
 
    Pak zkontrolujte $jobId. V následujícím příkladu nahraďte *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* s ID úlohy, které chcete prověřit:
 
-   ```PowerShell
+   ```powershell
    $jobId
    d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
    ```
 
 5. ID úlohy můžete zkontrolovat stav úlohy migrace. Po dokončení migrace kontejneru **MigrationStatus** je nastavena na **Complete**.
 
-   ```PowerShell 
+   ```powershell 
    Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
    ```
 
@@ -193,7 +192,7 @@ Migrace konsoliduje všechny kontejnery blob na novou sdílenou složku.
 
 6. Zrušit úlohu migrace probíhá. Zrušit migraci, které úlohy jsou zpracovávány asynchronně. Zrušení můžete sledovat pomocí $jobid:
 
-   ```PowerShell
+   ```powershell
    Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
    ```
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: a73559e233f647d5bf0812a5acdf5e19f05b0858
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d2daae2a3317d3b48748262d87ab8d7f7e13f2b0
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255417"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918412"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Řešení potíží s rolí cloudové služby, které nejde spustit
 Tady jsou některé běžné problémy a řešení souvisejících s Azure Cloud Services role, které nejde spustit.
@@ -75,8 +75,8 @@ Vzdálená plocha můžete použít pro přístup k roli a vzdáleně zobrazit p
 Přejděte na web nyní vrátí více explicitní chybové zprávy:
 
 * Chyba serveru v aplikaci '/'.
-* Popis: Během provádění aktuálního webového požadavku došlo k neošetřené výjimce. Přečtěte si prosím trasování zásobníku pro další informace o chybě a o jejím původu v kódu.
-* Podrobnosti výjimky: System.IO.FIleNotFoundException: Nelze načíst soubor nebo sestavení "Microsoft.WindowsAzure.StorageClient, verze 1.1.0.0, Culture = neutral, PublicKeyToken = = 31bf856ad364e35" nebo některá z jeho závislostí. Systém nemůže najít zadaný soubor.
+* Popis: Při provádění aktuálního webového požadavku došlo k neošetřené výjimce. Přečtěte si prosím trasování zásobníku pro další informace o chybě a o jejím původu v kódu.
+* Podrobnosti o výjimce: System.IO.FIleNotFoundException: Nelze načíst soubor nebo sestavení "Microsoft.WindowsAzure.StorageClient, verze 1.1.0.0, Culture = neutral, PublicKeyToken = = 31bf856ad364e35' nebo některou z jeho závislostí. Systém nemůže najít zadaný soubor.
 
 Příklad:
 
@@ -96,7 +96,7 @@ Nejlepších výsledků dosáhnete při použití této metody diagnostiky by m�
 7. Když se role spustila, zobrazí se podrobné informace o chybě v aplikaci Internet Explorer. Můžete také použít standardní řešení potíží s nástroji Windows při další diagnostice problému.
 
 ## <a name="diagnose-issues-by-using-intellitrace"></a>Diagnostikujte problémy pomocí IntelliTrace
-Pro pracovníka a webovými rolemi, které používají rozhraní .NET Framework 4, můžete použít [IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx), která je k dispozici v sadě Microsoft Visual Studio Enterprise.
+Pro pracovníka a webovými rolemi, které používají rozhraní .NET Framework 4, můžete použít [IntelliTrace](/visualstudio/debugger/intellitrace), která je k dispozici v sadě Microsoft Visual Studio Enterprise.
 
 Postupujte podle těchto kroků nasadíte služby pomocí nástroje IntelliTrace povoleno:
 

@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 3ac55ef4159ab97c909fc5dfc084889bc58a7b7c
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: d09adbfa7cb2782d710ef3116cbd7bc68ee247b7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58846670"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903315"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Doporučení k výkonu pro SQL Database
 
@@ -88,7 +88,7 @@ Po použití tohoto doporučení, povolí vynucené Parametrizace během několi
 
 ## <a name="custom-applications"></a>Vlastní aplikace
 
-Vývojáři můžou vezměte v úvahu vývoj vlastních aplikací pomocí doporučení k výkonu pro službu Azure SQL Database. Všechna doporučení uvedená na portálu za databázi přistupuje prostřednictvím [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Sql/Get-AzSqlDatabaseRecommendedAction) rozhraní API.
+Vývojáři můžou vezměte v úvahu vývoj vlastních aplikací pomocí doporučení k výkonu pro službu Azure SQL Database. Všechna doporučení uvedená na portálu za databázi přistupuje prostřednictvím [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) rozhraní API.
 
 ## <a name="next-steps"></a>Další postup
 Monitorujte svá doporučení a pokračuje v používání jejich vylepšit výkon. Databázové úlohy jsou dynamická a neustále. SQL Database Advisor bude nadále monitorovat a poskytovat doporučení, které mohou potenciálně tak vylepšit výkon vaší databáze. 

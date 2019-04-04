@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 4adc6ef6e7dd445eea3fd567072a995e3ac07dda
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8b521ebe869210b66ac3b3efeebda873f7c0e50b
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539628"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918157"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Povolit komunikaci pro instance rolí v azure
 Role cloudové služby komunikují prostřednictvím interní a externí připojení. Externí připojení, se nazývají **vstupní koncové body** při interní připojení se nazývají **koncovým bodům s interním**. Toto téma popisuje postup úpravy [služby definice](cloud-services-model-and-package.md#csdef) k vytvoření koncových bodů.
 
 ## <a name="input-endpoint"></a>Vstupní koncový bod
-Vstupní koncový bod se používá, když chcete vystavit port na vnější. Zadejte typ protokolu a portu koncového bodu, který se použije pro externí a interní porty koncového bodu. Pokud chcete, můžete zadat jiný interní port koncového bodu se [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) atribut.
+Vstupní koncový bod se používá, když chcete vystavit port na vnější. Zadejte typ protokolu a portu koncového bodu, který se použije pro externí a interní porty koncového bodu. Pokud chcete, můžete zadat jiný interní port koncového bodu se [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#InputEndpoint) atribut.
 
 Vstupní koncový bod pomocí těchto protokolů: **http, https, tcp, udp**.
 
@@ -96,7 +96,7 @@ Při práci s worker a webových rolí je jeden menší rozdíl s koncovými bod
 > 
 > 
 
-Můžete použít [instance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) vlastnost pro načtení instance rolí. Nejprve pomocí [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) vrátí odkaz na aktuální instanci role, a potom pomocí [Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) vlastnost vrátí odkaz na tuto roli, samotného.
+Můžete použít [instance](/previous-versions/azure/reference/ee741904(v=azure.100)) vlastnost pro načtení instance rolí. Nejprve pomocí [CurrentRoleInstance](/previous-versions/azure/reference/ee741907(v=azure.100)) vrátí odkaz na aktuální instanci role, a potom pomocí [Role](/previous-versions/azure/reference/ee741918(v=azure.100)) vlastnost vrátí odkaz na tuto roli, samotného.
 
 Při připojení k instanci role prostřednictvím kódu programu pomocí sady .NET SDK je relativně jednoduché je získat přístup k informacím koncový bod. Například po už jste připojili k určité role prostředí, můžete získat port určitý koncový bod s tímto kódem:
 
@@ -111,7 +111,7 @@ int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].
 > 
 > 
 
-Pokud chcete zjistit číslo portu pro vnitřní koncový bod v instanci role, můžete použít [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) vlastnost vrátí objekt slovníku obsahující názvy koncových bodů a jejich odpovídající IP adresy a porty. [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) vlastnost vrací IP adresu a port pro zadaný koncový bod. **PublicIPEndpoint** vlastnost vrací port pro koncový bod s vyrovnáváním zatížení. Část IP adresy **PublicIPEndpoint** vlastnost se nepoužívá.
+Pokud chcete zjistit číslo portu pro vnitřní koncový bod v instanci role, můžete použít [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) vlastnost vrátí objekt slovníku obsahující názvy koncových bodů a jejich odpovídající IP adresy a porty. [IPEndpoint](/previous-versions/azure/reference/ee741919(v=azure.100)) vlastnost vrací IP adresu a port pro zadaný koncový bod. **PublicIPEndpoint** vlastnost vrací port pro koncový bod s vyrovnáváním zatížení. Část IP adresy **PublicIPEndpoint** vlastnost se nepoužívá.
 
 Tady je příklad, který iteruje v instancích rolí.
 
@@ -368,7 +368,7 @@ Umožňuje pouze síťového provozu z **WebRole1** k **WorkerRole1**, **WebRole
 </ServiceDefinition>
 ```
 
-Najdete odkaz na schéma XML pro elementy využité nad [tady](https://msdn.microsoft.com/library/azure/gg557551.aspx).
+Najdete odkaz na schéma XML pro elementy využité nad [tady](/previous-versions/azure/reference/gg557551(v=azure.100)).
 
 ## <a name="next-steps"></a>Další postup
 Další informace o cloudové službě [modelu](cloud-services-model-and-package.md).

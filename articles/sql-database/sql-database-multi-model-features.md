@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: f3bb6fa93a96adcd2c1995b6874aa0b36b2ce320
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4351017cc1848e29cca038f82fd96548ae3492e0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884519"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892462"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Více modelů možnosti služby Azure SQL Database
 
@@ -29,7 +29,7 @@ Azure SQL Database je navržen pro práci s relačními model, který poskytuje 
 Měli byste zvážit použití více modelů možnosti služby Azure SQL Database v následujících případech:
 - Máte nějaké informace nebo struktury, které jsou lépe vyhovovaly pro modely NoSQL a vy nechcete použít samostatné databáze NoSQL.
 - Většina vašich dat je vhodné pro relační model a budete muset model některé části svoje data stylově NoSQL.
-- Budete chtít využívat bohaté možnosti jazyka Transact-SQL k dotazování a analýze relační a dat NoSQL a integraci s celou řadu nástrojů a jejich, můžete použít jazyk SQL.
+- Budete chtít využívat bohaté možnosti jazyka Transact-SQL k dotazování a analýze relační a dat NoSQL a integraci s celou řadu nástrojů a aplikací, které můžete použít jazyk SQL.
 - Chcete použít databázové funkce, jako [v začleňování paměťových technologií](sql-database-in-memory.md) zvýšit výkon vašeho analytického nebo zpracování vašich strucutres data NoSQL použijte [transakční replikace](sql-database-managed-instance-transactional-replication.md) nebo [replik pro čtení připravených](sql-database-read-scale-out.md) k vytvoření kopie vašich dat na jiném místě a snižování zátěže některé analytické úlohy z primární databáze.
 
 ## <a name="overview"></a>Přehled
@@ -122,7 +122,7 @@ Modely dokumentů, je možné použít místo relačních modelů v některých 
 - Je potřeba zjednodušit datového modelu zrušit normalizace podřízené tabulky nebo hodnota Entity objektu vzory.
 - Budete muset načíst nebo exportovat data uložená ve formátu XML bez některé další nástroj, který analyzuje data.
 
-## <a name="key-value-pairs"></a>Páry klíč hodnota
+## <a name="key-value-pairs"></a>Páry klíč-hodnota
 
 Azure SQL Database nemáte speciálních typů nebo struktury, které podporují páry klíč hodnota, protože klíč hodnota struktury můžou být vyjádřeny nativně jako standardní relačních tabulkách:
 

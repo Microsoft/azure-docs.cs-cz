@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 05327c05594d38caf5e3d54f8a13eaaaac3588ec
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f5ffd1a9d0e7ff515b0819bb678bf0263f53e0d2
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097436"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918769"
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>Vytvoření služby BizTalk Services pomocí webu Azure Portal
 
@@ -68,15 +68,15 @@ Identita služby Access Control Service je sada přihlašovacích údajů, kter�
 > 
 > 
 
-V článku [Správa oboru názvů služby ACS](https://msdn.microsoft.com/library/azure/hh674478.aspx) najdete některé pokyny a doporučení.
+V článku [Správa oboru názvů služby ACS](/previous-versions/azure/azure-services/hh674478(v=azure.100)) najdete některé pokyny a doporučení.
 
 ## <a name="requirements-explained"></a>Vysvětlení požadavků
 Tyto požadavky se netýkají edice Free.
 
 <table border="1">
 <tr bgcolor="FAF9F9">
-        <td><strong>Co potřebujete?</strong></td>
-        <td><strong>Proč to potřebujete?</strong></td>
+        <td><strong>Co potřebujete</strong></td>
+        <td><strong>Proč to potřebujete</strong></td>
 </tr>
 <tr>
 <td>Předplatné Azure</td>
@@ -93,8 +93,8 @@ Tyto požadavky se netýkají edice Free.
 <br/><br/>
 Když vytváříte službu BizTalk, můžete použít existující server SQL Azure nebo službu Azure SQL Database nebo můžete automaticky vytvořit nový server nebo databázi.
 <br/><br/>
-Škálování služby SQL Database se konfiguruje automaticky. Pro službu BizTalk většinou stačí výchozí škálování. Změna škálování má vliv na ceny. Další informace najdete v tématu <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=234930">o účtech a cenách služby Azure SQL Database</a>
-.<br/><br/>
+Škálování služby SQL Database se konfiguruje automaticky. Pro službu BizTalk většinou stačí výchozí škálování. Změna škálování má vliv na ceny. Zobrazit <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=234930"> účtech a cenách ve službě Azure SQL Database</a>
+<br/><br/>
 <strong>Poznámky</strong>
 <br/>
 <ul>
@@ -168,10 +168,10 @@ Hybridní připojení slouží k připojení webu Azure nebo mobilní služby Az
 Teď, když služba BizTalk vytvořená, seznamte se s různými [BizTalk Services: Karty řídicí panel, sledování a škálování](biztalk-dashboard-monitor-scale-tabs.md). Služba BizTalk je připravená pro vaše aplikace. Pokud chcete začít vytvářet aplikace, přejděte na článek [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [BizTalk Services: Tabulka edic](biztalk-editions-feature-chart.md)<br/>
+* [BizTalk Services: Graf edicí](biztalk-editions-feature-chart.md)<br/>
 * [BizTalk Services: Tabulka stavů](biztalk-service-state-chart.md)<br/>
 * [BizTalk Services: Zálohování a obnovení](biztalk-backup-restore.md)<br/>
-* [BizTalk Services: Omezení šířky pásma](biztalk-throttling-thresholds.md)<br/>
+* [BizTalk Services: Throttling](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk Services: Název vystavitele a klíč vystavitele](biztalk-issuer-name-issuer-key.md)<br/>
 * [Jak začít používat sadu SDK Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 * [Hybridní připojení](integration-hybrid-connection-overview.md)

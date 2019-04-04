@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 079fe74ec11570b26cbba93e4aba26d7359bef20
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 30d578f130985548c431dea8b68ee291325b5c99
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402367"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893211"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
 
@@ -23,7 +23,7 @@ Funkce v aplikaci function app sdílení prostředků. Mezi tyto sdílené prost
 
 Počet dostupných připojení je omezený částečně proto, že aplikace function app se spouští v [prostředí izolovaného prostoru](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedním z omezení, izolovaný prostor ukládá váš kód je [limit počtu připojení (aktuálně v 600 aktivní připojení a 1 200 celkový počet připojení)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) jednu instanci. Při dosažení tohoto limitu, modul runtime služby functions vytvoří protokol s následující zprávou: `Host thresholds exceeded: Connections`.
 
-Toto omezení se na jednu instanci.  Když [měřítka řadiče přidána instance aplikace funkce](functions-scale.md#how-the-consumption-plan-works) pro zpracování více požadavků, každá instance má limit nezávislé připojení. To znamená neomezený globální připojení, a máte mnohem víc než 600 aktivní připojení ve všech aktivních instancích.
+Toto omezení se na jednu instanci.  Když [měřítka řadiče přidána instance aplikace funkce](functions-scale.md#how-the-consumption-and-premium-plans-work) pro zpracování více požadavků, každá instance má limit nezávislé připojení. To znamená neomezený globální připojení, a máte mnohem víc než 600 aktivní připojení ve všech aktivních instancích.
 
 ## <a name="static-clients"></a>Statické klienty
 

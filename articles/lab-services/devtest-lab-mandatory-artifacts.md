@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: spelluru
-ms.openlocfilehash: a739b958ad60e39c38e81ce887edf68349340bb0
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 090236ec3647c7c3e38eb862780a615f854e952b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285698"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905796"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Zadejte povinné artefakty testovacího prostředí ve službě Azure DevTest Labs
 Jako vlastník testovacího prostředí můžete zadat povinné artefakty, které se použijí na každém počítači v labu vytvoří. Představte si situaci, kde má každý počítač ve vaší laboratoři k připojení k vaší podnikové síti. Jednotliví uživatelé testovacího prostředí by v takovém případě muset přidat artefakt připojení k doméně při vytváření virtuálního počítače, abyste měli jistotu, že jejich počítač připojený k podnikové doméně. Jinými slovy uživatelé testovacího prostředí v podstatě musel znovu vytvořit počítač v případě, že zapomenete platí povinné artefakty na svém počítači. Jako vlastník testovacího prostředí provedete artefaktů připojení k doméně jako povinné artefaktů ve vaší laboratoři. Tento krok zajistí, že každý počítač připojený k podnikové síti a ukládá čas a úsilí pro uživatelům testovacího prostředí.
@@ -27,7 +27,7 @@ Další povinná artefakty může zahrnovat běžné nástroje, který použív�
  
 Jako povinné ty jsou podporovány pouze artefakty, které mají žádné parametry. Vaše uživatele testovacího prostředí není nutné k zadání dalších parametrů během vytváření prostředí a vytvoří tak jednoduchý proces vytvoření virtuálního počítače. 
 
-## <a name="specify-mandatory-artifacts"></a>Zadejte povinné artefaktů
+## <a name="specify-mandatory-artifacts"></a>Určení povinných artefaktů
 Povinné artefakty pro počítače s Windows a Linuxem můžete vybrat samostatně. Můžete také změnit pořadí těchto artefaktů v závislosti na pořadí, ve kterém chcete je použít. 
 
 1. Na domovské stránce vašeho testovacího prostředí, vyberte **konfigurace a zásad** pod **nastavení**. 

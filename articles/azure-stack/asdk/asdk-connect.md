@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: knithinc
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 42b67ae9b715670f1a0c6e0fed004487a52817d3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 31025582516198bdfe9da9312bae33852986a423
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206461"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884852"
 ---
 # <a name="connect-to-the-asdk"></a>Připojte se k ASDK
 
@@ -69,7 +69,7 @@ Před nastavením připojení VPN k ASDK, zajistěte, že splňujete následují
 
 Chcete-li vytvořit připojení VPN k ASDK, otevřete PowerShell jako správce na místním počítači založené na Windows. Potom spusťte následující skript (aktualizace IP adresy a hesla hodnoty pro vaše prostředí):
 
-```PowerShell
+```powershell
 # Change directories to the default Azure Stack tools directory
 cd C:\AzureStack-Tools-master
 
@@ -109,9 +109,9 @@ Pokud je instalace úspěšná, **azurestack** se zobrazí v seznamu připojení
 
   Připojte se k instanci služby Azure Stack pomocí jedné z následujících metod:  
 
-  * Použití `Connect-AzsVpn ` příkaz:
+  * Použití `Connect-AzsVpn` příkaz:
       
-    ```PowerShell
+    ```powershell
     Connect-AzsVpn `
       -Password $Password
     ```

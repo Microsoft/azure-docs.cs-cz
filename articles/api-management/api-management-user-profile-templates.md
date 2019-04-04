@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 77b704e9359e582664bad8e08e9389cfac8eaca7
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 9d74cd3bd466578c61f8f12bf9b6e862c046e9bc
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121392"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903756"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Šablony profilů uživatelů ve službě Azure API Management
 Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu pro vývojáře pomocí sady šablon, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a do editoru podle vašeho výběru, jako například [DotLiquid pro profesionální návrháře využívající](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), nebo umístění zadaná sada [prostředky řetězce, které](api-management-template-resources.md#strings), [glyfů prostředky](api-management-template-resources.md#glyphs), a [stránce ovládací prvky](api-management-page-controls.md), máte velkou flexibilitu konfigurovat obsahu stránek podle svých potřeb, pomocí těchto šablon.  
@@ -106,17 +106,17 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|Jméno|řetězec|Křestní jméno aktuálního uživatele.|  
-|Příjmení|řetězec|Příjmení aktuálního uživatele.|  
-|Firma|řetězec|Název společnosti aktuálního uživatele.|  
-|addresserEmail|řetězec|E-mailová adresa aktuálního uživatele.|  
-|developersUsageStatisticsLinkk|řetězec|Relativní adresa URL k zobrazení analýzy pro aktuálního uživatele.|  
-|předplatná|Kolekce [předplatné](api-management-template-data-model-reference.md#Subscription) entity.|Předplatná pro aktuálního uživatele.|  
-|aplikace|Kolekce [aplikace](api-management-template-data-model-reference.md#Application) entity.|Aplikace aktuálního uživatele.|  
-|changePasswordUrl|řetězec|Relativní adresa URL aktuální uživatel heslo změnit.|  
-|changeNameOrEmailUrl|řetězec|Relativní adresa URL změnit jméno a e-mailu pro aktuálního uživatele.|  
-|canChangePassword|Boolean|Určuje, zda aktuální uživatel může změnit své heslo.|  
-|isSystemUser|Boolean|Určuje, zda má aktuální uživatel je členem jedné z předdefinovaných [skupiny](api-management-key-concepts.md#groups).|  
+|`firstName`|string|Křestní jméno aktuálního uživatele.|  
+|`lastName`|string|Příjmení aktuálního uživatele.|  
+|`companyName`|string|Název společnosti aktuálního uživatele.|  
+|`addresserEmail`|string|E-mailová adresa aktuálního uživatele.|  
+|`developersUsageStatisticsLink`|string|Relativní adresa URL k zobrazení analýzy pro aktuálního uživatele.|  
+|`subscriptions`|Kolekce [předplatné](api-management-template-data-model-reference.md#Subscription) entity.|Předplatná pro aktuálního uživatele.|  
+|`applications`|Kolekce [aplikace](api-management-template-data-model-reference.md#Application) entity.|Aplikace aktuálního uživatele.|  
+|`changePasswordUrl`|string|Relativní adresa URL aktuální uživatel heslo změnit.|  
+|`changeNameOrEmailUrl`|string|Relativní adresa URL změnit jméno a e-mailu pro aktuálního uživatele.|  
+|`canChangePassword`|Boolean|Určuje, zda aktuální uživatel může změnit své heslo.|  
+|`isSystemUser`|Boolean|Určuje, zda má aktuální uživatel je členem jedné z předdefinovaných [skupiny](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -327,17 +327,17 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|Jméno|řetězec|Křestní jméno aktuálního uživatele.|  
-|Příjmení|řetězec|Příjmení aktuálního uživatele.|  
-|Firma|řetězec|Název společnosti aktuálního uživatele.|  
-|addresserEmail|řetězec|E-mailová adresa aktuálního uživatele.|  
-|developersUsageStatisticsLinkk|řetězec|Relativní adresa URL k zobrazení analýzy pro aktuálního uživatele.|  
-|předplatná|Kolekce [předplatné](api-management-template-data-model-reference.md#Subscription) entity.|Předplatná pro aktuálního uživatele.|  
-|aplikace|Kolekce [aplikace](api-management-template-data-model-reference.md#Application) entity.|Aplikace aktuálního uživatele.|  
-|changePasswordUrl|řetězec|Relativní adresa URL aktuální uživatel heslo změnit.|  
-|changeNameOrEmailUrl|řetězec|Relativní adresa URL změnit jméno a e-mailu pro aktuálního uživatele.|  
-|canChangePassword|Boolean|Určuje, zda aktuální uživatel může změnit své heslo.|  
-|isSystemUser|Boolean|Určuje, zda má aktuální uživatel je členem jedné z předdefinovaných [skupiny](api-management-key-concepts.md#groups).|  
+|`firstName`|string|Křestní jméno aktuálního uživatele.|  
+|`lastName`|string|Příjmení aktuálního uživatele.|  
+|`companyName`|string|Název společnosti aktuálního uživatele.|  
+|`addresserEmail`|string|E-mailová adresa aktuálního uživatele.|  
+|`developersUsageStatisticsLink`|string|Relativní adresa URL k zobrazení analýzy pro aktuálního uživatele.|  
+|`subscriptions`|Kolekce [předplatné](api-management-template-data-model-reference.md#Subscription) entity.|Předplatná pro aktuálního uživatele.|  
+|`applications`|Kolekce [aplikace](api-management-template-data-model-reference.md#Application) entity.|Aplikace aktuálního uživatele.|  
+|`changePasswordUrl`|string|Relativní adresa URL aktuální uživatel heslo změnit.|  
+|`changeNameOrEmailUrl`|string|Relativní adresa URL změnit jméno a e-mailu pro aktuálního uživatele.|  
+|`canChangePassword`|Boolean|Určuje, zda aktuální uživatel může změnit své heslo.|  
+|`isSystemUser`|Boolean|Určuje, zda má aktuální uživatel je členem jedné z předdefinovaných [skupiny](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -481,7 +481,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
 ### <a name="controls"></a>Ovládací prvky  
  Tato šablona může používat následující [stránce ovládací prvky](api-management-page-controls.md).  
   
--   [aplikace akcí](api-management-page-controls.md#app-actions)  
+-   [app-actions](api-management-page-controls.md#app-actions)  
   
 ### <a name="data-model"></a>Datový model  
   
@@ -490,17 +490,17 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|Jméno|řetězec|Křestní jméno aktuálního uživatele.|  
-|Příjmení|řetězec|Příjmení aktuálního uživatele.|  
-|Firma|řetězec|Název společnosti aktuálního uživatele.|  
-|addresserEmail|řetězec|E-mailová adresa aktuálního uživatele.|  
-|developersUsageStatisticsLinkk|řetězec|Relativní adresa URL k zobrazení analýzy pro aktuálního uživatele.|  
-|předplatná|Kolekce [předplatné](api-management-template-data-model-reference.md#Subscription) entity.|Předplatná pro aktuálního uživatele.|  
-|aplikace|Kolekce [aplikace](api-management-template-data-model-reference.md#Application) entity.|Aplikace aktuálního uživatele.|  
-|changePasswordUrl|řetězec|Relativní adresa URL aktuální uživatel heslo změnit.|  
-|changeNameOrEmailUrl|řetězec|Relativní adresa URL změnit jméno a e-mailu pro aktuálního uživatele.|  
-|canChangePassword|Boolean|Určuje, zda aktuální uživatel může změnit své heslo.|  
-|isSystemUser|Boolean|Určuje, zda má aktuální uživatel je členem jedné z předdefinovaných [skupiny](api-management-key-concepts.md#groups).|  
+|`firstName`|string|Křestní jméno aktuálního uživatele.|  
+|`lastName`|string|Příjmení aktuálního uživatele.|  
+|`companyName`|string|Název společnosti aktuálního uživatele.|  
+|`addresserEmail`|string|E-mailová adresa aktuálního uživatele.|  
+|`developersUsageStatisticsLink`|string|Relativní adresa URL k zobrazení analýzy pro aktuálního uživatele.|  
+|`subscriptions`|Kolekce [předplatné](api-management-template-data-model-reference.md#Subscription) entity.|Předplatná pro aktuálního uživatele.|  
+|`applications`|Kolekce [aplikace](api-management-template-data-model-reference.md#Application) entity.|Aplikace aktuálního uživatele.|  
+|`changePasswordUrl`|string|Relativní adresa URL aktuální uživatel heslo změnit.|  
+|`changeNameOrEmailUrl`|string|Relativní adresa URL změnit jméno a e-mailu pro aktuálního uživatele.|  
+|`canChangePassword`|Boolean|Určuje, zda aktuální uživatel může změnit své heslo.|  
+|`isSystemUser`|Boolean|Určuje, zda má aktuální uživatel je členem jedné z předdefinovaných [skupiny](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   

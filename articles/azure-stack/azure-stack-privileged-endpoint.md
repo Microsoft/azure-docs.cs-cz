@@ -15,18 +15,18 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 9eb2e8ddde13783eabf3d82173e6a2fa75ec2b06
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ef75b161bcdb9e1b9658612b783dff46d1fa2502
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082666"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484334"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Pomocí privilegovaných koncového bodu ve službě Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Jako operátory Azure stacku by měl použít správce portálu, Powershellu nebo rozhraní API Azure Resource Manageru pro nejvíce každodenní úlohy správy. Však pro některé méně běžných operací, budete muset použít *privilegovaných koncový bod* (období). OBDOBÍ je předem nakonfigurované vzdálené konzoly Powershellu, poskytující s právě dostatečnou funkcemi, které vám pomohou provést požadované úlohy. Koncový bod používá [Powershellu JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/jea/overview) vystavit pouze omezenou sadu rutin. K přístupu období a vyvolání omezenou sadu rutin, se používá účet s nízkým oprávněním. Jsou vyžadovány žádné účty správce. Za účelem zvýšení zabezpečení není povoleno skriptování.
+Jako operátor služby Azure Stack byste pro většinu každodenních úloh správy měli používat portál pro správu, PowerShell nebo rozhraní API Azure Resource Manageru. Však pro některé méně běžných operací, budete muset použít *privilegovaných koncový bod* (období). OBDOBÍ je předem nakonfigurované vzdálené konzoly Powershellu, poskytující s právě dostatečnou funkcemi, které vám pomohou provést požadované úlohy. Koncový bod používá [Powershellu JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/jea/overview) vystavit pouze omezenou sadu rutin. K přístupu období a vyvolání omezenou sadu rutin, se používá účet s nízkým oprávněním. Jsou vyžadovány žádné účty správce. Za účelem zvýšení zabezpečení není povoleno skriptování.
 
 OBDOBÍ můžete použít k provádění následujících úloh:
 
@@ -53,7 +53,7 @@ Před zahájením tohoto postupu pro integrovaný systém, ujistěte se, že obd
 
     - Na integrovaný systém spusťte následující příkaz z relace prostředí Windows PowerShell se zvýšenými oprávněními pro přidání období jako důvěryhodného hostitele, na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo Privileged Access pracovní stanice.
 
-      ```PowerShell
+      ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
     - Pokud spouštíte ASDK, přihlaste se k hostiteli development kit.
@@ -61,7 +61,7 @@ Před zahájením tohoto postupu pro integrovaný systém, ujistěte se, že obd
 2. Na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo Privileged Access pracovní stanice otevřete relaci Windows Powershellu. Spusťte následující příkazy k vytvoření vzdálené relace na virtuálním počítači, který je hostitelem období:
  
    - Na integrovaný systém:
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        Enter-PSSession -ComputerName <IP_address_of_ERCS> `
@@ -70,7 +70,7 @@ Před zahájením tohoto postupu pro integrovaný systém, ujistěte se, že obd
      `ComputerName` Parametr může být IP adresa nebo název DNS některého z virtuálních počítačů, jejichž hostitelem období. 
    - Pokud spouštíte ASDK:
      
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        Enter-PSSession -ComputerName azs-ercs01 `
@@ -113,7 +113,7 @@ Jak je uvedeno výše, je období [PowerShell JEA](https://docs.microsoft.com/po
 
 Ano například zobrazíte seznam parametrů pro danou rutinu spustíte následující příkaz:
 
-```PowerShell
+```powershell
     Get-Command <cmdlet_name> -Syntax
 ```
 
@@ -125,7 +125,7 @@ Chcete-li importovat období relaci na místním počítači, proveďte následu
 
     -Na integrovaný systém spusťte následující příkaz z relace prostředí Windows PowerShell se zvýšenými oprávněními pro přidání období jako důvěryhodného hostitele, na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo Privileged Access pracovní stanice.
 
-      ```PowerShell
+      ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
     - Pokud spouštíte ASDK, přihlaste se k hostiteli development kit.
@@ -133,7 +133,7 @@ Chcete-li importovat období relaci na místním počítači, proveďte následu
 2. Na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo Privileged Access pracovní stanice otevřete relaci Windows Powershellu. Spusťte následující příkazy k vytvoření vzdálené relace na virtuálním počítači, který je hostitelem období:
  
    - Na integrovaný systém:
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
@@ -142,7 +142,7 @@ Chcete-li importovat období relaci na místním počítači, proveďte následu
      `ComputerName` Parametr může být IP adresa nebo název DNS některého z virtuálních počítačů, jejichž hostitelem období. 
    - Pokud spouštíte ASDK:
      
-     ```PowerShell
+     ```powershell
       $cred = Get-Credential
 
       $session = New-PSSession -ComputerName azs-ercs01 `
@@ -154,7 +154,7 @@ Chcete-li importovat období relaci na místním počítači, proveďte následu
      - **Heslo**: Zadejte stejné heslo, které jste zadali během instalace pro účet správce domény AzureStackAdmin.
 
 3. Importovat relace období do místního počítače
-    ```PowerShell 
+    ```powershell 
         Import-PSSession $session
     ```
 4. Nyní jste – používají dokončování pomocí tabulátoru a provádět obvyklým skriptování v místní relaci Powershellu s funkcemi a rutiny období, bez snižuje stav zabezpečení služby Azure Stack. Užijte si ji!

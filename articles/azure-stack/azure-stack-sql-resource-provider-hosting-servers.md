@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/26/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: 1cef0010464671982109b8dc4bc94e6925eaf825
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1b9c7f00c8ec8408547620111634470d455334c8
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210522"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499229"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků SQL
 
@@ -186,14 +186,19 @@ Skladové položky nelze přiřadit konkrétní uživatelé nebo skupiny.
 
 SKU může trvat až hodinu, uvidí na portálu. Uživatelé nemůžou vytvářet databáze, dokud SKU je zcela vytvořen.
 
-Chcete-li upravit skladovou jednotku, přejděte na **všechny služby** > **adaptéru pro SQL** > **SKU**. Vyberte SKU, které chcete změnit, proveďte potřebné změny a klikněte na tlačítko **Uložit** uložte změny. Pokud chcete odstranit skladovou Položku, který už je nepotřebujete, přejděte na **všechny služby** > **adaptéru pro SQL** > **SKU**. Klikněte pravým tlačítkem na název skladové položky a vyberte **odstranit** ho odstranit.
+Chcete-li upravit skladovou jednotku, přejděte na **všechny služby** > **adaptéru pro SQL** > **SKU**. Vyberte SKU, které chcete změnit, proveďte potřebné změny a klikněte na tlačítko **Uložit** uložte změny. 
 
-> [!TIP]
-> Můžete upravit nebo odstranit kvóty poskytovatele prostředků SQL ve stejném umístění.
+Pokud chcete odstranit skladovou Položku, který už je nepotřebujete, přejděte na **všechny služby** > **adaptéru pro SQL** > **SKU**. Klikněte pravým tlačítkem na název skladové položky a vyberte **odstranit** ho odstranit.
+
+> [!IMPORTANT]
+> To může trvat až hodinu nové SKU bude k dispozici na portálu user portal.
 
 ## <a name="make-sql-databases-available-to-users"></a>Databáze SQL zpřístupnit uživatelům
 
 Vytvořte plány a nabídky, aby databáze SQL k dispozici pro uživatele. Přidat **Microsoft.SqlAdapter** služby v plánu a vytvořit novou kvótu.
+
+> [!IMPORTANT]
+> Může trvat až dvě hodiny pro nové kvóty bude k dispozici na portálu user portal nebo předtím, než se vynucuje změněné kvóty.
 
 ## <a name="next-steps"></a>Další postup
 

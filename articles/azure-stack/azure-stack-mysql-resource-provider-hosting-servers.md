@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/26/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 68e8bfa16c56b8c864ac99cdf6c19243bc7e881c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8cffcc938a247a2b08ff53b128560e1ab5e1653a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101869"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499773"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků MySQL
 
@@ -90,16 +90,19 @@ Jako osvědčený postup musí všechny hostitelské servery v SKU mají stejné
 
 Skladové položky nelze přiřadit konkrétní uživatelé nebo skupiny.
 
-SKU může trvat až hodinu, uvidí na portálu. Uživatelé nemůžou vytvářet databáze, dokud SKU je zcela vytvořen.
+Chcete-li upravit skladovou jednotku, přejděte na **všechny služby** > **MySQL adaptér** > **SKU**. Vyberte SKU, které chcete změnit, proveďte potřebné změny a klikněte na tlačítko **Uložit** uložte změny. 
 
-Chcete-li upravit skladovou jednotku, přejděte na **všechny služby** > **MySQL adaptér** > **SKU**. Vyberte SKU, které chcete změnit, proveďte potřebné změny a klikněte na tlačítko **Uložit** uložte změny. Pokud chcete odstranit skladovou Položku, který už je nepotřebujete, přejděte na **všechny služby** > **MySQL adaptér** > **skladové položky**. Klikněte pravým tlačítkem na název skladové položky a vyberte **odstranit** ho odstranit.
+Pokud chcete odstranit skladovou Položku, který už je nepotřebujete, přejděte na **všechny služby** > **MySQL adaptér** > **skladové položky**. Klikněte pravým tlačítkem na název skladové položky a vyberte **odstranit** ho odstranit.
 
-> [!TIP]
-> Můžete upravit nebo odstranit kvóty poskytovatele prostředků MySQL ve stejném umístění.
+> [!IMPORTANT]
+> To může trvat až hodinu nové SKU bude k dispozici na portálu user portal.
 
 ## <a name="make-mysql-database-servers-available-to-your-users"></a>Servery MySQL database zpřístupnit uživatelům
 
 Vytvořte plány a nabídky pro databázové servery MySQL zpřístupnit uživatelům. Přidat službu Microsoft.MySqlAdapter plánu a vytvořit novou kvótu. MySQL nepovoluje omezení velikosti databáze.
+
+> [!IMPORTANT]
+> Může trvat až dvě hodiny pro nové kvóty bude k dispozici na portálu user portal nebo předtím, než se vynucuje změněné kvóty.
 
 ## <a name="next-steps"></a>Další postup
 

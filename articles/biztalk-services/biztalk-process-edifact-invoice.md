@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.openlocfilehash: 5eb9740bdd0543556265f54a1a37b632f79ac861
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7093be36e34785d4153c257d411128efe463dee1
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550118"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918956"
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>Kurz: Zpracování faktur EDIFACT pomocí Azure BizTalk Services
 
@@ -55,9 +55,9 @@ Společnost Contoso využívá k dosažení této podnikový scénář, funkce p
 K dokončení tohoto scénáře, můžeme používat fronty Service Bus fakturu odešlete ze společnosti Contoso Northwind nebo přijetí potvrzení z databáze Northwind. Tyto fronty je možné vytvářet pomocí klientské aplikace, která je k dispozici ke stažení a je součástí ukázkového balíčku, který je k dispozici v rámci tohoto kurzu.  
 
 ## <a name="prerequisites"></a>Požadavky
-* Musíte mít obor názvů služby Service Bus. Pokyny k vytvoření oboru názvů, naleznete v tématu [How To: Vytvořte nebo upravte Namespace služby Service Bus služby](https://msdn.microsoft.com/library/azure/hh674478.aspx). Předpokládejme, že už máte obor názvů Service Bus, které jsou zřízené, volá **edifactbts**.
+* Musíte mít obor názvů služby Service Bus. Pokyny k vytvoření oboru názvů, naleznete v tématu [How To: Vytvořte nebo upravte Namespace služby Service Bus služby](/previous-versions/azure/azure-services/hh674478(v=azure.100)). Předpokládejme, že už máte obor názvů Service Bus, které jsou zřízené, volá **edifactbts**.
 * Musíte mít předplatné služby BizTalk Services. Pro účely tohoto kurzu Předpokládejme, máte předplatné služby BizTalk Services, volá **contosowabs**.
-* Zaregistrujte své předplatné služby BizTalk Services na portálu BizTalk Services. Pokyny najdete v tématu [registrace nasazení služby BizTalk na portálu BizTalk Services](https://msdn.microsoft.com/library/hh689837.aspx)
+* Zaregistrujte své předplatné služby BizTalk Services na portálu BizTalk Services. Pokyny najdete v tématu [registrace nasazení služby BizTalk na portálu BizTalk Services](/previous-versions/azure/hh689837(v=azure.100))
 * Musíte mít nainstalovanou sadu Visual Studio.
 * Je nutné nainstalovat sadu SDK pro BizTalk Services. Můžete stáhnout sady SDK z [https://go.microsoft.com/fwlink/?LinkId=235057](https://go.microsoft.com/fwlink/?LinkId=235057)  
 
