@@ -3,7 +3,7 @@ title: Zarovnání Word – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Získat aplikace word zarovnání informace z rozhraní Translator Text API.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
 ms.custom: seodec18
-ms.openlocfilehash: bdb52e48b6a962c5b38e837f1e2bc0064539951e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: cc795d6b164a97351ec8806c6b7c8bed0c0c1266
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734587"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916899"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>Jak získat informace o zarovnání aplikace word
 

@@ -107,7 +107,7 @@ items:
       href: stream-analytics-high-frequency-trading.md
     - name: Zpracování streamovaných dat IoT
       href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
-    - name: Pravidla na základě prahových hodnot
+    - name: Pravidla založená na prahových hodnotách
       href: stream-analytics-threshold-based-rules.md
     - name: Zpracování událostí Kafka
       href: ../event-hubs/event-hubs-kafka-stream-analytics.md
@@ -423,7 +423,7 @@ items:
   - name: Plány Azure do budoucna
     href: https://azure.microsoft.com/roadmap/
   - name: Blog
-    href: https://blogs.msdn.com/b/streamanalytics/
+    href: https://azure.microsoft.com/blog/tag/azure-stream-analytics/
   - name: Fórum pro názory
     href: https://feedback.azure.com/forums/270577-azure-stream-analytics
   - name: Fórum
@@ -442,9 +442,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: Dokument white paper – Zpracování událostí v reálném čase
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 83e5f3f9edd1fb58c0b79566c4bb764e7b430bcd
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 0066db1ee56ada20527e468e689dde84a823f284
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803642"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849521"

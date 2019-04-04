@@ -149,6 +149,8 @@ items:
         href: devtest-lab-import-vm.md
       - name: Spuštění nebo zastavení virtuálního počítače s použitím PowerShellu nebo CLI
         href: use-command-line-start-stop-virtual-machines.md
+      - name: Spuštění virtuálních počítačů s použitím runbooků Automation
+        href: start-machines-use-automation-runbooks.md
     - name: Použití prostředí v testovacím prostředí
       items:
       - name: Vytvoření prostředí
@@ -157,6 +159,10 @@ items:
         href: devtest-lab-configure-use-public-environments.md
       - name: Vytvoření prostředí s clusterem Service Fabric
         href: create-environment-service-fabric-cluster.md
+      - name: Připojení prostřední k virtuální síti testovacího prostředí
+        href: connect-environment-lab-virtual-network.md
+      - name: Integrace prostředí do kanálu CI/CD Azure DevOps
+        href: integrate-environments-devops-pipeline.md
     - name: Zabezpečený přístup k testovacím prostředím
       items:
       - name: Přidání uživatelů a vlastníků testovacího prostředí
@@ -242,7 +248,7 @@ items:
     - name: Rozhraní příkazového řádku
       href: /cli/azure/lab
     - name: PowerShell
-      href: /powershell/module/azurerm.devtestlabs/#devtest_labs
+      href: /powershell/module/az.devtestlabs
     - name: REST API
       href: https://docs.microsoft.com/rest/api/dtl/
     - name: Šablona Resource Manageru
@@ -271,9 +277,9 @@ items:
       href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
     - name: Nejčastější dotazy
       href: devtest-lab-faq.md
-ms.openlocfilehash: 4c96945c5e7a0aed52d3148c7dbf084a8d8b9f29
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: bee44d9ce7378bd48960c47ed9be9c7f53e23110
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651161"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886671"

@@ -57,8 +57,6 @@ items:
     href: custom-vision-onnx-windows-ml.md
   - name: Spuštění modelu TensorFlow v Pythonu
     href: export-model-python.md
-  - name: Sestavení modelu s využitím REST API
-    href: rest-api-tutorial.md
   - name: Export nebo odstranění dat účtu
     href: ./export-delete-data.md
   - name: Přesun projektu omezené zkušební verze do Azure
@@ -99,9 +97,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
   - name: Poznámky k verzi
     href: release-notes.md
-ms.openlocfilehash: 5d4b5657077b92f444482aca371db0aed4ba7a75
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: b8c74c7f14e8f2b5f96004121d276f207a041dbd
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472782"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893546"

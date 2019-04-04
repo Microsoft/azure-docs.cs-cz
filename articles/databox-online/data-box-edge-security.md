@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 04/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 43de22f7e56178559df4fc45980d064962580d2b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: de737f20147e8208dd18388eedcac11583c8cb97
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403387"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891799"
 ---
 # <a name="data-box-edge-security-and-data-protection"></a>Data Box Edge zabezpečení a ochranu dat
 
@@ -35,6 +35,7 @@ Služba Data Box Edge/Data pole brány je služba pro správu hostované v Micro
 
 - Přístup ke službě Data Box Edge/Data pole brány vyžaduje vaše organizace má smlouvu Enterprise (EA) nebo v rámci předplatného Cloud Solution Provider (CSP). Další informace najdete v části [zaregistrovat předplatné Azure](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)!
 - Vzhledem k tomu, že vaše služba management je hostovaná v Azure, je chráněn funkce zabezpečení Azure. Další informace o funkcích zabezpečení poskytovaných v prostředí Microsoft Azure najdete v [Centru zabezpečení Microsoft Azure](https://azure.microsoft.com/support/trust-center/security/).
+- Operace správy sady SDK, šifrovací klíč je k dispozici pro vaše hraniční zařízení Data Box / brána dat pole prostředků v rámci **vlastnosti zařízení**. Šifrovací klíč můžete zobrazit pouze v případě, že máte oprávnění pro rozhraní Graph API prostředku.
 
 ## <a name="data-box-edge-device-protection"></a>Ochrana dat pole hraniční zařízení
 
@@ -44,7 +45,8 @@ Data Box hraniční zařízení je místní zařízení, která pomáhá transfo
 - Je chráněn za všech okolností heslo zařízení.
 - Je zařízení uzamknuté. Zařízení chráněném heslem s omezeným přístupem uživatele pro systém BIOS jsou BMC a systému BIOS.
 - Má povolené zabezpečené spouštění.
-- Spuštění Windows Defenderu Device Guard. Device Guard umožňuje spouštět jenom důvěryhodné aplikace, které definujete v zásadách integrity kódu. 
+- Spuštění Windows Defenderu Device Guard. Device Guard umožňuje spouštět jenom důvěryhodné aplikace, které definujete v zásadách integrity kódu.
+- Má klíč uvnitř titulní, který slouží k uzamčení zařízení. Můžeme doporučit, po dokončení konfigurace zařízení, otevřete obálek. Vyhledejte klíč a pak uzamčení obálek zabránit neoprávněný přístup k datové disky, které jsou umístěné ve zařízení.
 
 ### <a name="protect-the-device-via-activation-key"></a>Ochrana zařízení pomocí aktivační kód
 

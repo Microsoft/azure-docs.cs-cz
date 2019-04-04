@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: 990aad4df05a9cc765baa965da2293d51a19e705
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: a7271aa3faf438b42319f8c2c297c6e39baab92e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851770"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904147"
 ---
 # <a name="logs-in-azure-monitor"></a>Protokoly v Azure Monitoru
 
@@ -46,7 +46,7 @@ Následující tabulka uvádí různé způsoby protokoly můžete použít ve s
 | Analýza | Použití [Log Analytics](../log-query/get-started-portal.md) na webu Azure Portal k zápisu [protokolu dotazy](../log-query/log-query-overview.md) a interaktivní analýzy dat protokolu pomocí výkonný stroj analýzy Průzkumník dat.<br>Použití [konzola Application Insights analytics](../app/analytics.md) na webu Azure Portal k vytváření dotazů protokolu a interaktivně analyzuje data protokolů ze služby Application Insights. |
 | Vizualizace | Připnout výsledky dotazu se vykresluje jako tabulky nebo grafy [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).<br>Vytvoření [sešitu](../app/usage-workbooks.md) zkombinovat s více sadami dat v interaktivní sestavy. <br>Export výsledků dotazu na [Power BI](powerbi.md) a použít různé vizualizace a sdílet s uživateli mimo Azure.<br>Export výsledků dotazu na [Grafana](grafana-plugin.md) využít jeho mnoha a zkombinovat s jinými zdroji dat.|
 | Výstrahy | Konfigurace [pravidel upozornění protokolů](alerts-log.md) , který odešle oznámení, nebo má [automatizované akce](action-groups.md) při výsledky dotazu splňují konkrétní výsledek.<br>Konfigurace [metriky pravidlo upozornění](alerts-metric-logs.md) na některé protokoly dat protokolu extrahovat jako metriky. |
-| Načíst | Přístup k protokolu výsledků dotazu z příkazového řádku pomocí [rozhraní příkazového řádku Azure](/azure/ext/log-analytics/monitor/log-analytics).<br>Přístup k protokolu výsledků dotazu z příkazového řádku pomocí [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1).<br>Přístup k protokolu výsledků dotazu z vlastní aplikaci pomocí [rozhraní REST API](https://dev.loganalytics.io/). |
+| Načíst | Přístup k protokolu výsledků dotazu z příkazového řádku pomocí [rozhraní příkazového řádku Azure](/azure/ext/log-analytics/monitor/log-analytics).<br>Přístup k protokolu výsledků dotazu z příkazového řádku pomocí [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Přístup k protokolu výsledků dotazu z vlastní aplikaci pomocí [rozhraní REST API](https://dev.loganalytics.io/). |
 | Export | Vytvořit pracovní postup k načtení dat protokolu a zkopírujte ho do externího umístění pomocí [Logic Apps](~/articles/logic-apps/index.yml). |
 
 

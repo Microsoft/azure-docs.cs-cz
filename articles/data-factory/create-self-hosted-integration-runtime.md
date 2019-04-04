@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 37e3dbb5f69d7319e0b56a5d209e0487e0562e00
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6ab5ee923cc439901149a26d7af4b57f9933ee19
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838795"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905881"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -53,7 +53,7 @@ Tady je podrobný datový tok pro přehled kroků pro kopírování s místní p
 ![Podrobný přehled](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
 1. Vývojáři dat místní prostředí integration runtime v rámci služby Azure data factory vytvoří pomocí rutiny prostředí PowerShell. Na webu Azure portal v současné době nepodporuje tuto funkci.
-2. Vývojáři dat vytvoří propojené služby pro do místního úložiště dat tak, že zadáte instancí modulu runtime integrace v místním prostředí, který se má používat pro připojení k úložišti dat. Jako součást nastavení propojené služby vývojář dat používá aplikace Správce přihlašovacích údajů (aktuálně není podporováno) pro nastavení typů ověřování a přihlašovací údaje. Aplikace Správce přihlašovacích údajů komunikuje s úložišti dat k testování připojení a místní prostředí integration runtime k uložení přihlašovacích údajů.
+2. Vývojáři dat vytvoří propojené služby pro do místního úložiště dat tak, že zadáte instancí modulu runtime integrace v místním prostředí, který se má používat pro připojení k úložišti dat.
 3. Uzel v místním prostředí integration runtime šifruje přihlašovací údaje s použitím Windows Data Protection Application Programming rozhraní (DPAPI) a uloží pověření místně. Více uzlů se nastavují pro vysokou dostupnost, přihlašovací údaje jsou další synchronizaci na jiných uzlech. Každý uzel šifruje přihlašovací údaje pomocí rozhraní DPAPI a ukládá je místně. Synchronizace přihlašovacích údajů je transparentní pro vývojáře, data a zařizuje služba v místním prostředí IR.    
 4. Služba Data Factory komunikuje s modulem runtime integrace v místním prostředí pro plánování a Správa úloh prostřednictvím *řídicí kanál* , který používá sdílené fronty Azure Service Bus. Pokud úlohu aktivity musí být spuštěn, Data Factory zařadí do fronty požadavek spolu s žádné přihlašovací údaje (v případě přihlašovací údaje nejsou již uloženy v místním prostředí integration runtime). Místní prostředí integration runtime zahajuje úlohy po dotazování fronty.
 5. Místní prostředí integration runtime kopíruje data z místního úložiště do cloudového úložiště, nebo naopak v závislosti na konfiguraci aktivitu kopírování v datovém kanálu. Pro tento krok místní prostředí integration runtime přímo komunikuje s služeb cloudového úložiště, jako je úložiště objektů Blob v Azure přes zabezpečený kanál (HTTPS).
@@ -329,7 +329,7 @@ Pokud narazíte na chyby podobné následující dotazy, je pravděpodobně v d�
     ```
 
 ### <a name="enabling-remote-access-from-an-intranet"></a>Povolení vzdáleného přístupu z intranetu  
-Pokud používáte PowerShell nebo v aplikaci správce přihlašovacích údajů pro šifrování přihlašovacích údajů z jiného počítače (v síti), než kde je nainstalován modul runtime integrace v místním prostředí, můžete povolit **vzdálený přístup z intranetu**možnost. Při spuštění PowerShell nebo aplikace Správce přihlašovacích údajů k šifrování přihlašovacích údajů na stejném počítači, kde je nainstalován modul runtime integrace v místním prostředí, nelze povolit **vzdálený přístup z intranetu**.
+Pokud použijete PowerShell k šifrování přihlašovacích údajů z jiného počítače (v síti), než kde je nainstalován modul runtime integrace v místním prostředí, můžete povolit **vzdálený přístup z intranetu** možnost. Při spuštění prostředí PowerShell pro šifrování přihlašovacích údajů ve stejném počítači, kde je nainstalován modul runtime integrace v místním prostředí, nelze povolit **vzdálený přístup z intranetu**.
 
 Měli byste povolit **vzdálený přístup z intranetu** předtím, než přidáte další uzel pro vysokou dostupnost a škálovatelnost.  
 
@@ -339,9 +339,7 @@ Pokud používáte bránu firewall jiného dodavatele, můžete ručně otevřet
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
-```
-> [!NOTE]
-> Aplikace Správce přihlašovacích údajů ještě není k dispozici pro šifrování přihlašovacích údajů v Azure Data Factory V2.  
+``` 
 
 Pokud zvolíte ne pro otevření portu 8060 na počítači s modulem runtime integrace v místním prostředí, použijte mechanismy než aplikace nastavení přihlašovacích údajů nakonfigurovat přihlašovací údaje úložiště dat. Například můžete použít **New-AzDataFactoryV2LinkedServiceEncryptCredential** rutiny Powershellu.
 

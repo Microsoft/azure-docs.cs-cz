@@ -16,16 +16,16 @@ ms.date: 01/09/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 4b9b91c17a9199c7890d17a2b721ce0803e6bd6c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: ae5a824fbd96a9a76eb18811a46bfc17afa15073
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243330"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879348"
 ---
 # <a name="sql-resource-provider-11330-release-notes"></a>Poznámky k verzi 1.1.33.0 poskytovatele prostředků SQL
 
-*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
+*Týká se Azure Stack integrované systémy a Azure Stack Development Kit*
 
 Tyto poznámky k verzi popisují vylepšení a známých problémech ve verzi poskytovatele prostředků 1.1.33.0 SQL.
 
@@ -50,7 +50,8 @@ Tato verze poskytovatele prostředků Azure Stack SQL zahrnuje následující vy
 
 - **Předchozí nasazení zprostředkovatele (1.1.30.0) prostředků SQL může selhat, pokud není povolený protokol TLS 1.2**. Aktualizovat poskytovatele prostředků SQL 1.1.33.0 k povolení protokolu TLS 1.2, při nasazení poskytovatele prostředků, aktualizuje se zprostředkovatel prostředků nebo otočení tajných kódů. 
 
-- **Tajný otočení poskytovatele prostředků SQL selže**. Oprava potíží, což vede k následujícím kódem chyby při obměně tajných kódů: ` New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
+- **Tajný otočení poskytovatele prostředků SQL selže**. Oprava potíží, což vede k následujícím kódem chyby při obměně tajných kódů:
+`New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
 
 ## <a name="known-issues"></a>Známé problémy 
 

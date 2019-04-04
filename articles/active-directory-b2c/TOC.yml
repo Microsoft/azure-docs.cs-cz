@@ -292,6 +292,8 @@ items:
     items:
     - name: Ukázky kódů
       href: https://azure.microsoft.com/resources/samples/?service=active-directory-b2c
+    - name: Definice souborů cookie
+      href: cookie-definitions.md
     - name: Rezidence dat a dostupnost oblastí
       href: active-directory-b2c-reference-tenant-type.md
     - name: Povolení fakturace
@@ -324,9 +326,9 @@ items:
     href: active-directory-b2c-support.md
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 81e58beb53ec818555f47c24fb21dcecf553878b
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: cebc59a7d10ce669fd8187687b80f291a07d1c06
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418794"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886569"

@@ -16,16 +16,16 @@ ms.date: 01/09/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 7f44e8c2c4587ecfdb3bd5eb4304789674da96f3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e0101aebadcaef71f35c72b54f9126e69cff0f61
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252000"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882831"
 ---
 # <a name="mysql-resource-provider-11330--release-notes"></a>Poznámky k verzi poskytovatele 1.1.33.0 prostředků MySQL
 
-*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
+*Týká se Azure Stack integrované systémy a Azure Stack Development Kit*
 
 Tyto poznámky k verzi popisují vylepšení a známé problémy v MySQL verze zprostředkovatele prostředků 1.1.33.0.
 
@@ -50,7 +50,8 @@ Tato verze poskytovatele prostředků Azure Stack MySQL zahrnuje následující 
 
 - **Předchozí nasazení zprostředkovatele (1.1.30.0) prostředků MySQL může selhat, pokud není povolený protokol TLS 1.2**. Aktualizovat poskytovatele prostředků MySQL 1.1.33.0 k povolení protokolu TLS 1.2, při nasazení poskytovatele prostředků, aktualizuje se zprostředkovatel prostředků nebo otočení tajných kódů. 
 
-- **Selhání tajných kódů otočení poskytovatele prostředků MySQL**. Oprava potíží, což vede k následujícím kódem chyby při obměně tajných kódů: ` New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
+- **Selhání tajných kódů otočení poskytovatele prostředků MySQL**. Oprava potíží, což vede k následujícím kódem chyby při obměně tajných kódů:
+`New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
 
 ## <a name="known-issues"></a>Známé problémy 
 
