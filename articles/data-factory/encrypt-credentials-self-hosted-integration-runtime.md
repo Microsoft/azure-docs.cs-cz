@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 65518e7515f9e233b12ae5406819c91e8e3f2a77
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8e705a4430f6ccee847dc7d41ef80456a6dc4ea5
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453163"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903790"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Šifrovat přihlašovací údaje pro místní úložiště dat ve službě Azure Data Factory
 Můžete šifrovat a uložení přihlašovacích údajů pro svá úložiště dat s místními (propojené služby s citlivými informacemi) na počítači s místní prostředí integration runtime. 
@@ -51,7 +51,7 @@ Nahraďte `<servername>`, `<databasename>`, `<username>`, a `<password>` s hodno
 ```
 
 ## <a name="encrypt-credentials"></a>Šifrovat přihlašovací údaje
-K šifrování citlivých dat z datové části JSON v prostředí v místním prostředí integration runtime v místním, spusťte **New-AzDataFactoryV2LinkedServiceEncryptedCredential**a předat jí datovou část JSON. Tato rutina se zajistí, že přihlašovací údaje jsou šifrované pomocí rozhraní DPAPI a uložené na místně uzel modulu runtime integrace v místním prostředí. Výstupní datovou část je možné přesměrovat do jiného souboru JSON (v tomto případě "encryptedLinkedService.json"), který obsahuje zašifrované přihlašovací údaje.
+K šifrování citlivých dat z datové části JSON v prostředí v místním prostředí integration runtime v místním, spusťte **New-AzDataFactoryV2LinkedServiceEncryptedCredential**a předat jí datovou část JSON. Tato rutina se zajistí, že přihlašovací údaje jsou šifrované pomocí rozhraní DPAPI a uložené na místně uzel modulu runtime integrace v místním prostředí. Výstupní datovou část, obsahující šifrované odkaz na přihlašovací údaje, které je možné přesměrovat do jiného souboru JSON (v tomto případě "encryptedLinkedService.json").
 
 ```powershell
 New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "SqlServerLinkedService" -DefinitionFile ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json

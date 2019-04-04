@@ -7,16 +7,18 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 80ed88bbc901d2cbcd6bc8104e55de73549744f8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 01c351ad08399c0b42e831e325b3f818741d1d83
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477824"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904368"
 ---
 # <a name="manage-azure-cosmos-resources-using-powershell"></a>Správa prostředků Azure Cosmos pomocí Powershellu
 
 Následující průvodci popisuje příkazy, které automatizují správu účtů databáze Azure Cosmos DB pomocí Azure Powershellu. Zahrnuje také příkazy pro správu klíčů účtu a priority převzetí služeb při selhání v [účty databáze ve více oblastech][distribute-data-globally]. Aktualizace vašeho účtu databáze můžete upravit zásady konzistence a přidat/odebrat oblasti. Pro různé platformy správy účtu služby Azure Cosmos DB, můžete použít buď [rozhraní příkazového řádku Azure](cli-samples.md), [rozhraní REST API poskytovatele prostředků][rp-rest-api], nebo [webu Azure portal ](create-sql-api-dotnet.md#create-account).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -35,7 +37,7 @@ Tento příkaz umožňuje vytvoření účtu databáze Azure Cosmos DB. Konfigur
     $iprangefilter = "<ip-range-filter>"
     $consistencyPolicy = @{"defaultConsistencyLevel"="<default-consistency-level>"; "maxIntervalInSeconds"="<max-interval>"; "maxStalenessPrefix"="<max-staleness-prefix>"}
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
-    New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name>  -Location "<resource-group-location>" -Name <database-account-name> -Properties $CosmosDBProperties
+    New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name>  -Location "<resource-group-location>" -Name <database-account-name> -Properties $CosmosDBProperties
     
 * `<write-region-location>` Název umístění oblasti databázový účet pro zápis. Toto umístění musí mít hodnotu priority převzetí služeb při selhání z 0. Musí obsahovat přesně jednu oblast zápisu a databázový účet.
 * `<read-region-location>` Název umístění oblasti čtení účtu databáze. Toto umístění musí mít hodnotu priority převzetí služeb při selhání větší než 0. Může existovat více oblastí čtení za databázový účet.
@@ -53,7 +55,7 @@ Příklad:
     $iprangefilter = ""
     $consistencyPolicy = @{"defaultConsistencyLevel"="BoundedStaleness"; "maxIntervalInSeconds"=5; "maxStalenessPrefix"=100}
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
-    New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -Properties $CosmosDBProperties
+    New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -Properties $CosmosDBProperties
 
 ### <a name="notes"></a>Poznámky
 * V předchozím příkladu vytvoří databázový účet se dvěma oblastmi. Je také možné vytvořit účet databáze s využitím jedné oblasti (která je určena jako oblast zápisu a mít hodnotu priority převzetí služeb při selhání 0) nebo více než dvou oblastech. Další informace najdete v tématu [účty databáze ve více oblastech][distribute-data-globally].
@@ -70,7 +72,7 @@ Tento příkaz umožňuje aktualizovat vlastnosti svého účtu databáze Azure 
     $iprangefilter = "<ip-range-filter>"
     $consistencyPolicy = @{"defaultConsistencyLevel"="<default-consistency-level>"; "maxIntervalInSeconds"="<max-interval>"; "maxStalenessPrefix"="<max-staleness-prefix>"}
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
-    Set-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name> -Name <database-account-name> -Properties $CosmosDBProperties
+    Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name> -Name <database-account-name> -Properties $CosmosDBProperties
     
 * `<write-region-location>` Název umístění oblasti databázový účet pro zápis. Toto umístění musí mít hodnotu priority převzetí služeb při selhání z 0. Musí obsahovat přesně jednu oblast zápisu a databázový účet.
 * `<read-region-location>` Název umístění oblasti čtení účtu databáze. Toto umístění musí mít hodnotu priority převzetí služeb při selhání větší než 0. Může existovat více oblastí čtení za databázový účet.
@@ -88,33 +90,33 @@ Příklad:
     $iprangefilter = ""
     $consistencyPolicy = @{"defaultConsistencyLevel"="BoundedStaleness"; "maxIntervalInSeconds"=5; "maxStalenessPrefix"=100}
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
-    Set-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Properties $CosmosDBProperties
+    Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Properties $CosmosDBProperties
 
 ## <a id="delete-documentdb-account-powershell"></a> Odstranit účet databáze Azure Cosmos DB
 
 Tento příkaz umožňuje odstranit účet databáze Azure Cosmos DB.
 
-    Remove-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
+    Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
     
 * `<resource-group-name>` Název [skupiny prostředků Azure] [ azure-resource-groups] , ke které patří nový účet databáze Azure Cosmos DB k.
 * `<database-account-name>` Název účtu databáze Azure Cosmos DB má být odstraněn.
 
 Příklad:
 
-    Remove-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
+    Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
 
 ## <a id="get-documentdb-properties-powershell"></a> Získání vlastností účtu databáze Azure Cosmos DB
 
 Tento příkaz umožňuje získat vlastnosti existujícího účtu databáze Azure Cosmos DB.
 
-    Get-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
+    Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
 
 * `<resource-group-name>` Název [skupiny prostředků Azure] [ azure-resource-groups] , ke které patří nový účet databáze Azure Cosmos DB k.
 * `<database-account-name>` Název účtu databáze Azure Cosmos DB.
 
 Příklad:
 
-    Get-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
+    Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
 
 ## <a id="update-tags-powershell"></a> Aktualizace značky k účtu databáze Azure Cosmos DB
 
@@ -126,39 +128,39 @@ Následující příklad popisuje, jak nastavit [značek prostředků Azure] [ a
 Příklad:
 
     $tags = @{"dept" = "Finance"; environment = "Production"}
-    Set-AzureRmResource -ResourceType "Microsoft.DocumentDB/databaseAccounts"  -ResourceGroupName "rg-test" -Name "docdb-test" -Tags $tags
+    Set-AzResource -ResourceType "Microsoft.DocumentDB/databaseAccounts"  -ResourceGroupName "rg-test" -Name "docdb-test" -Tags $tags
 
 ## <a id="list-account-keys-powershell"></a> Vypsat klíče účtu
 
 Při vytváření účtu služby Azure Cosmos DB, generuje tato služba dva hlavní přístupové klíče, které se dá použít pro ověření při přístupu k účtu Azure Cosmos DB. Poskytnutím dvou přístupových klíčů služby Azure Cosmos DB umožňuje znovu vygenerovat klíče bez přerušení ke svému účtu Azure Cosmos DB. Klíče jen pro čtení pro ověřování jen pro čtení operace jsou také k dispozici. (Primární i sekundární) existují dva klíče pro čtení i zápis (primární i sekundární) a dva klíče jen pro čtení.
 
-    $keys = Invoke-AzureRmResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
+    $keys = Invoke-AzResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
 
 * `<resource-group-name>` Název [skupiny prostředků Azure] [ azure-resource-groups] , ke které patří nový účet databáze Azure Cosmos DB k.
 * `<database-account-name>` Název účtu databáze Azure Cosmos DB.
 
 Příklad:
 
-    $keys = Invoke-AzureRmResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
+    $keys = Invoke-AzResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
 
 ## <a id="list-connection-strings-powershell"></a> Seznam připojovacích řetězců
 
 Pro účty MongoDB můžete načíst připojovací řetězec pro připojení aplikace MongoDB k účtu databáze pomocí následujícího příkazu.
 
-    $keys = Invoke-AzureRmResourceAction -Action listConnectionStrings -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
+    $keys = Invoke-AzResourceAction -Action listConnectionStrings -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
 
 * `<resource-group-name>` Název [skupiny prostředků Azure] [ azure-resource-groups] , ke které patří nový účet databáze Azure Cosmos DB k.
 * `<database-account-name>` Název účtu databáze Azure Cosmos DB.
 
 Příklad:
 
-    $keys = Invoke-AzureRmResourceAction -Action listConnectionStrings -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
+    $keys = Invoke-AzResourceAction -Action listConnectionStrings -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
 
 ## <a id="regenerate-account-key-powershell"></a> Znovu vygenerovat klíč účtu
 
 Měli byste změnit přístupové klíče ke svému účtu Azure Cosmos DB pravidelně, aby lépe zabezpečit vaše připojení. Dva přístupové klíče jsou přiřazeny vám umožní spravovat připojení k účtu Azure Cosmos DB používat jeden přístupový klíč, zatímco znovu vygenerujete druhý přístupový klíč.
 
-    Invoke-AzureRmResourceAction -Action regenerateKey -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>" -Parameters @{"keyKind"="<key-kind>"}
+    Invoke-AzResourceAction -Action regenerateKey -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>" -Parameters @{"keyKind"="<key-kind>"}
 
 * `<resource-group-name>` Název [skupiny prostředků Azure] [ azure-resource-groups] , ke které patří nový účet databáze Azure Cosmos DB k.
 * `<database-account-name>` Název účtu databáze Azure Cosmos DB.
@@ -166,14 +168,14 @@ Měli byste změnit přístupové klíče ke svému účtu Azure Cosmos DB pravi
 
 Příklad:
 
-    Invoke-AzureRmResourceAction -Action regenerateKey -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Parameters @{"keyKind"="Primary"}
+    Invoke-AzResourceAction -Action regenerateKey -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Parameters @{"keyKind"="Primary"}
 
 ## <a id="modify-failover-priority-powershell"></a> Změna Priority převzetí služeb při selhání k účtu databáze Azure Cosmos DB
 
 Pro účty databáze ve více oblastech můžete změnit prioritu převzetí služeb při selhání různé oblasti, ve kterých existuje účet databáze Azure Cosmos DB v. Další informace o převzetí služeb při selhání ve vašem účtu databáze Azure Cosmos DB najdete v tématu [globální distribuce dat pomocí služby Azure Cosmos DB][distribute-data-globally].
 
     $failoverPolicies = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0},@{"locationName"="<read-region-location>"; "failoverPriority"=1})
-    Invoke-AzureRmResourceAction -Action failoverPriorityChange -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>" -Parameters @{"failoverPolicies"=$failoverPolicies}
+    Invoke-AzResourceAction -Action failoverPriorityChange -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>" -Parameters @{"failoverPolicies"=$failoverPolicies}
 
 * `<write-region-location>` Název umístění oblasti databázový účet pro zápis. Toto umístění musí mít hodnotu priority převzetí služeb při selhání z 0. Musí obsahovat přesně jednu oblast zápisu a databázový účet.
 * `<read-region-location>` Název umístění oblasti čtení účtu databáze. Toto umístění musí mít hodnotu priority převzetí služeb při selhání větší než 0. Může existovat více oblastí čtení za databázový účet.
@@ -183,7 +185,7 @@ Pro účty databáze ve více oblastech můžete změnit prioritu převzetí slu
 Příklad:
 
     $failoverPolicies = @(@{"locationName"="East US"; "failoverPriority"=0},@{"locationName"="West US"; "failoverPriority"=1})
-    Invoke-AzureRmResourceAction -Action failoverPriorityChange -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Parameters @{"failoverPolicies"=$failoverPolicies}
+    Invoke-AzResourceAction -Action failoverPriorityChange -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Parameters @{"failoverPolicies"=$failoverPolicies}
 
 ## <a name="next-steps"></a>Další postup
 

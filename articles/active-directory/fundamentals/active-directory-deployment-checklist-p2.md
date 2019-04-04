@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8046721244b31539dc79eba3f2ba11d34c2df256
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6e9ee0d6fab96c84eee8a520d01d97faddab49f2
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170359"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904181"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Příručka nasazení funkce Azure Active Directory
 
@@ -47,7 +47,7 @@ V této fázi správci povolit standardních hodnot zabezpečení funkce pro vyt
 | [Použít platformou pro správu rolí, kde je to možné](../users-groups-roles/directory-assign-admin-roles.md) | Poskytují pouze přístup, které potřebují vaši správci do oblastí, které potřebují přístup k. Ne všichni správci musí být globální správce. | Azure AD Free |
 | [Aktivaci Privileged Identity Management pro sledování využití role správce](../privileged-identity-management/pim-getting-started.md) | Povolte Privileged Identity Management ke spuštění, sledování využití pro správu role. | Azure AD Premium P2 |
 | [Zavedení samoobslužného resetování hesla](../authentication/howto-sspr-deployment.md) | Omezit volání na helpdesk, k resetování hesla tím, že zaměstnanci k resetování hesla pomocí zásad můžete jako ovládací prvek správce. | Azure AD Basic |
-| [Vytvořit seznam zakázaných hesel konkrétní vlastní organizaci](../authentication/howto-password-ban-bad-configure.md) | Zabraňte uživatelům ve vytváření hesel, které zahrnují obecná slova nebo fráze z vaší organizace nebo oblasti. | Azure AD Basic |
+| [Vytvoření seznamu zakázaných hesel konkrétní vlastní organizaci](../authentication/howto-password-ban-bad-configure.md) | Zabraňte uživatelům ve vytváření hesel, které zahrnují obecná slova nebo fráze z vaší organizace nebo oblasti. | Azure AD Basic |
 | [Povolit místní integrace s ochranou hesla Azure AD](../authentication/concept-password-ban-bad-on-premises.md) | Rozšířit seznam zakázaných hesel do místního adresáře, aby hesla sady místních jsou také v souladu s globální a specifickým pro tenanta zakázané seznamy heslo. | Azure AD Premium P1 |
 | [Povolit pokyny heslo společnosti Microsoft](https://www.microsoft.com/research/publication/password-guidance/) | Zastavení vyžadující uživatelům změnit si heslo podle nastaveného plánu, zakažte požadavky na složitost a vaši uživatelé jsou více apt k pamatovat si hesla a zajistěte jejich něco, co je bezpečné. | Azure AD Free |
 | [Zakažte obnovení periodické hesla pro cloudové uživatelské účty](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Resetování hesla pravidelné upozorněte své uživatele, zvýšit jejich stávající hesla. Postupujte podle pokynů v dokumentu pokyny hesla od Microsoftu a zrcadlí vaše místní zásady pro uživatele jenom pro cloud. | Azure AD Free |

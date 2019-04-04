@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e5be81efcd655f1f0361d8c00d978a81c3e6caa5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e54fe17e80382348bcf463624043f7922a29d1c1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443415"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892751"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Odolné funkce vzory a technických konceptech (Azure Functions)
 
@@ -415,7 +415,7 @@ Z důvodu chování opakování dispečer trvalý Framework úloh můžete oček
 
 Rozšíření Durable Functions používá front, tabulek a objektů BLOB ve službě Azure Storage k zachování spuštění historie stavu a aktivační události spuštění funkce. Můžete použít výchozí účet úložiště pro aplikaci function app, nebo můžete nakonfigurovat samostatný účet úložiště. Samostatný účet na základě limitů propustnosti úložiště může být vhodné. Kód produktu orchestrator, který napíšete nepracuje s entitami v těchto účtech úložiště. Trvalý rozhraní úloha spravuje entity přímo jako podrobnost implementace.
 
-Funkce nástroje Orchestrator naplánovat funkce aktivity a zobrazí jejich odpovědi prostřednictvím vnitřní fronty zpráv. Při spuštění aplikace function app v plánu consumption Azure Functions, [řadič škálování Azure Functions](../functions-scale.md#how-the-consumption-plan-works) monitoruje tyto fronty. Podle potřeby se přidají nové výpočetních instancí. Horizontální navýšení kapacity na několik virtuálních počítačů, může být spuštění funkce orchestrátoru na jeden virtuální počítač, při funkce aktivity, které volání funkcí nástroje orchestrator může spustit na několika různých virtuálních počítačů. Další informace o chování škálování Durable Functions najdete v tématu [výkon a škálování](durable-functions-perf-and-scale.md).
+Funkce nástroje Orchestrator naplánovat funkce aktivity a zobrazí jejich odpovědi prostřednictvím vnitřní fronty zpráv. Při spuštění aplikace function app v plánu consumption Azure Functions, [řadič škálování Azure Functions](../functions-scale.md#how-the-consumption-and-premium-plans-work) monitoruje tyto fronty. Podle potřeby se přidají nové výpočetních instancí. Horizontální navýšení kapacity na několik virtuálních počítačů, může být spuštění funkce orchestrátoru na jeden virtuální počítač, při funkce aktivity, které volání funkcí nástroje orchestrator může spustit na několika různých virtuálních počítačů. Další informace o chování škálování Durable Functions najdete v tématu [výkon a škálování](durable-functions-perf-and-scale.md).
 
 Historie provádění pro účty orchestrator je uložen v úložišti tabulek. Pokaždé, když se instance rehydrates na konkrétní virtuální počítač, orchestrátoru načte historii jejího spouštění ze služby table storage, takže ho můžete znovu sestavit stavu místní. Je vhodné aspekt máte k dispozici v úložišti tabulek v historii, které můžete použít nástroje, jako je [Průzkumníka služby Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md) zobrazíte historii vašich Orchestrace.
 

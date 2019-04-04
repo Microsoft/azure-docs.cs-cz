@@ -1,31 +1,31 @@
 ---
 title: Azure Functions hostování a škálování | Dokumentace Microsoftu
-description: Zjistěte, jak si vybrat mezi plán Azure Functions Consumption a plán služby App Service.
+description: Zjistěte, jak si vybrat mezi plán Azure Functions Consumption a plán Premium.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-keywords: Azure funkce, funkce, plán consumption, plán služby app service, zpracování událostí, webhooky, dynamické výpočty, architektura bez serveru
+keywords: Azure funkce, funkce, plán consumption, plán premium, zpracování událostí, webhooky, dynamické výpočty, architektura bez serveru
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 02/28/2019
+ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17df4415166c71f49c6b2534289b2c1f79cb6174
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f09fded38e384126a8dfdbe567ce4a3ebd5b1af4
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117247"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893584"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
 
-Azure Functions funguje ve dvou různých režimech: Plán consumption a plán služby App Service. Plán Consumption automaticky přiděluje výpočetní výkon, pokud váš kód běží. Vaše aplikace je škálovat na více systémů v případě potřeby pro zpracování zátěže a kapacitu vertikálně snížit, když kód není spuštěný. Nemusíte platit za nečinných virtuálních počítačů nebo záložní kapacita předem.
+Služba Azure Functions pracuje ve dvou různých plánů: Plán consumption a plán Premium (public preview). Plán Consumption automaticky přidá výpočetní výkon, když váš kód běží. Vaše aplikace je škálovat na více systémů v případě potřeby pro zpracování zátěže a kapacitu vertikálně snížit, když kód přestane fungovat. Nemusíte platit za nečinných virtuálních počítačů nebo záložní kapacita předem.  Plán Premium také automaticky škálovat a přidat další výpočetní výkon, když váš kód běží.  Plán Premium zahrnuje další funkce jako premium výpočetních instancí, je schopnost uchovat teplý instance po neomezenou dobu a připojení k virtuální síti.  Pokud máte existující plán služby App Service, můžete také spustit vaše aplikace function App v nich.
 
 > [!NOTE]  
-> Plán spotřeby pro Linux je [nyní ve verzi Public Preview](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/).
+> Obě [plán Premium](https://azure.microsoft.com/blog/uncompromised-serverless-scale-for-enterprise-workloads-with-the-azure-functions-premium-plan/preview/) a [plánu Consumption pro Linux](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/) jsou aktuálně ve verzi preview.
 
 Pokud nejste obeznámeni s využitím Azure Functions, přečtěte si článek [přehled Azure Functions](functions-overview.md).
 
@@ -33,11 +33,10 @@ Když vytvoříte aplikaci function app, výběr plánu hostování pro funkce v
 
 * Jak hostovat instance při horizontálním škálování.
 * Prostředky, které jsou k dispozici pro každého hostitele.
+* Instance funkce, jako jsou připojení k virtuální síti.
 
-> [!IMPORTANT]
-> Je nutné vybrat typ hostování plán při vytváření aplikace function app. Později ho nelze změnit.
-
-V plánu služby App Service můžete škálovat mezi vrstvami k přidělování různých množství prostředků. Azure Functions v plánu Consumption automaticky zpracovává všechny přidělení prostředků. 
+> [!NOTE]
+> Můžete přepínat mezi plány Consumption a Premium změnou vlastnosti plánu prostředek aplikace funkce.
 
 ## <a name="consumption-plan"></a>Plán Consumption
 
@@ -50,25 +49,46 @@ Plán Consumption je výchozí plán hostování a nabízí následující výho
 * Platí, pouze když vaše funkce běží.
 * Automatické horizontální navýšení kapacity, i během období vysoké zatížení.
 
-## <a name="app-service-plan"></a>Plán služby App Service
+## <a name="premium-plan-public-preview"></a>Plán Premium (public preview)
 
-V vyhrazený plán služby App Service spusťte vaše aplikace function App na vyhrazených virtuálních počítačích na Basic, Standard, Premium a izolované SKU, která je stejná jako ostatní aplikace služby App Service. Vyhrazené virtuální počítače se přidělují aplikaci function App, což znamená, že hostitel funkce může být [nepřetržitý provoz](#always-on). Plány služby App Service podporují Linux.
+Pokud používáte plán Premium, instance hostitele Azure Functions rychle přidat nebo odebrat na základě počtu příchozích událostí stejně jako plánu consumption.  Plán Premium, ale také nabízí:
 
-Vezměte v úvahu plán služby App Service v těchto případech:
+* Vždy vyzkoušeli instancí, aby všechny studený start.
+* Připojení k virtuální síti.
+* Doba trvání neomezený počet spuštění.
+* Velikosti instancí úrovně Premium (jedno jádro, dvě jádra a čtyři jádra instance).
+* Cenové možnosti předvídatelné.
+* Aplikace s vysokou hustotou přidělení pro plány s více aplikací funkcí.
 
-* Máte stávající, nedostatečně využité virtuální počítače, které jsou již spuštěny jiné instance služby App Service.
+Informace o tom, jak můžete nastavit tyto možnosti najdete v [prémiové služby Azure Functions](functions-premium-plan.md).
+
+Místo fakturace za spuštění a využitá paměť fakturace vychází z počtu sekundy jader a GB-sekundy použít v rámci potřebné a rezervované instance.  Nejméně jedna instance je potřeba se záložním vůbec stát, tady je pevný měsíční poplatek za každý plán, který je aktivní (bez ohledu na počet spuštění).
+
+Vezměte v úvahu prémiové služby Azure Functions v následujících případech:
 * Vaše aplikace function App spouštět nepřetržitě téměř průběžně. Plán služby App Service v takovém případě může být cenově výhodnější.
 * Budete potřebovat další možnosti procesoru nebo paměti, než je zadán v plánu Consumption.
 * Váš kód je potřeba spustit déle, než [maximální doba spuštění povolené](#timeout) v plánu Consumption.
 * Vyžadujete funkce, které jsou dostupné jenom pro plán služby App Service, jako třeba podporu pro App Service Environment, virtuální sítě nebo VPN připojení a větší velikosti virtuálních počítačů.
+
+> [!NOTE]
+> Plán premium, ve verzi preview v současnosti podporuje funkce spuštěné v .NET, uzel nebo Java přes infrastrukturu Windows.
+
+Při spuštění funkce jazyka JavaScript na plán Premium, měli byste zvolit instanci, která má menší počet virtuálních procesorů. Další informace najdete v tématu [zvolte plány Premium jednojádrový](functions-reference-node.md#considerations-for-javascript-functions).  
+
+## <a name="app-service-plan"></a>Plán služby App Service
+
+Vaše aplikace function App můžete spustit také na stejné vyhrazených virtuálních počítačů jako ostatní aplikace služby App Service (Basic, Standard, Premium a izolované skladové položky). Plány služby App Service podporují Linux.
+
+Vezměte v úvahu plán služby App Service v těchto případech:
+
+* Máte stávající, nedostatečně využité virtuální počítače, které jsou již spuštěny jiné instance služby App Service.
 * Chcete spustit aplikaci function app v Linuxu nebo chcete poskytnout vlastní image, ve kterém se spustí vaše funkce.
 
-Virtuální počítač ze počet spuštění, čas spuštění a paměť použitá odděluje obě části. V důsledku toho nebude platit víc než náklady na instance virtuálních počítačů, kterou přidělíte. Podrobnosti o tom, jak funguje plán služby App Service najdete v tématu [podrobný přehled plánů služby Azure App Service](../app-service/overview-hosting-plans.md). 
+Platíte stejné aplikace function App v plán služby App Service stejně jako pro ostatní prostředky App Service, jako jsou webové aplikace. Podrobnosti o tom, jak funguje plán služby App Service najdete v tématu [podrobný přehled plánů služby Azure App Service](../app-service/overview-hosting-plans.md). 
 
 S plánem služby App Service můžete ručně škálovat přidáváním dalších instancí virtuálních počítačů, nebo můžete povolit automatické škálování. Další informace najdete v tématu [ruční nebo automatické škálování počtu instancí](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Také můžete škálovat výběrem jiný plán služby App Service. Další informace najdete v tématu [vertikální navýšení kapacity aplikace v Azure](../app-service/web-sites-scale.md). 
 
-Při spuštění funkce jazyka JavaScript na plán služby App Service, měli byste zvolit plán, který má menší počet virtuálních procesorů. Další informace najdete v tématu [zvolte plány služby App Service jednojádrový](functions-reference-node.md#choose-single-vcpu-app-service-plans).  
-
+Při spuštění funkce jazyka JavaScript na plán služby App Service, měli byste zvolit plán, který má menší počet virtuálních procesorů. Další informace najdete v tématu [zvolte plány služby App Service jednojádrový](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
 ### <a name="always-on"></a> Always On
@@ -90,26 +110,26 @@ appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Pokud je výstup tohoto příkazu `dynamic`, aplikace function app je v plánu Consumption. Všechny ostatní hodnoty znamenat úrovně plánu služby App Service.
+Pokud je výstup tohoto příkazu `dynamic`, aplikace function app je v plánu Consumption. Pokud je výstup tohoto příkazu `ElasticPremium`, aplikace function app je v plánu Premium.  Všechny ostatní hodnoty znamenat úrovně plánu služby App Service.
 
 I s povolenou funkci Always On, se řídí časový limit spuštění pro jednotlivé funkce `functionTimeout` nastavení [host.json](functions-host-json.md#functiontimeout) souboru projektu.
 
 ## <a name="storage-account-requirements"></a>Požadavky na účet úložiště
 
-V plánu Consumption a plán služby App Service aplikace function app vyžaduje obecný účet úložiště Azure, které podporuje Azure Blob, fronty, soubory a Table storage. Je to proto, že funkce spoléhá na Azure Storage pro operace, jako jsou Správa triggerů a protokolování provádění funkcí, ale některé účty úložiště nepodporují fronty a tabulky. Tyto účty, jako je například účty úložiště pouze objektů blob (včetně storage úrovně premium) a účty úložiště pro obecné účely s replikací zónově redundantní úložiště, jsou filtrované na více instancí ze stávajících **účtu úložiště** vybrané možnosti při vytváření aplikace funkcí.
+Libovolný plán aplikace function app vyžaduje obecný účet úložiště Azure, které podporuje Azure Blob, fronty, soubory a Table storage. Je to proto, že funkce využívají služby Azure Storage pro operace, jako jsou Správa triggerů a protokolování provádění funkcí, ale některé účty úložiště nepodporují fronty a tabulky. Tyto účty, jako je například účty úložiště pouze objektů blob (včetně storage úrovně premium) a účty úložiště pro obecné účely s replikací zónově redundantní úložiště, jsou filtrované na více instancí ze stávajících **účtu úložiště** vybrané možnosti při vytváření aplikace funkcí.
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
 Další informace o typech účtů úložiště najdete v tématu [seznámení se službami Azure Storage](../storage/common/storage-introduction.md#azure-storage-services).
 
-## <a name="how-the-consumption-plan-works"></a>Jak funguje plán Consumption
+## <a name="how-the-consumption-and-premium-plans-work"></a>Jak fungují plány consumption a premium
 
-V plánu Consumption měřítka řadiče automaticky škáluje tak, že přidáte další instance funkce hostitele, na základě počtu událostí, které její funkce se spouštějí na prostředky procesoru a paměti. Každá instance hostitele funkce je omezená na 1,5 GB paměti.  Instance hostitele je aplikace function app, to znamená všechny funkce v rámci prostředek funkce aplikace sdílení v rámci instance a škálování služby ve stejnou dobu. Aplikace Function App, které sdílejí stejného plánu Consumption se škálovat nezávisle.  
+Ve spotřebě a plánech sazeb premium měřítka řadiče automaticky škáluje tak, že přidáte další instance funkce hostitele, na základě počtu událostí, které její funkce se spouštějí na prostředky procesoru a paměti. Každá instance hostitele funkce v plánu consumption je omezena na 1,5 GB paměti a 1 procesoru.  Instance hostitele je celé aplikace function app, to znamená všechny funkce v rámci prostředek funkce aplikace sdílení v rámci instance a škálování služby ve stejnou dobu. Aplikace Function App, které sdílejí stejného plánu consumption se škálovat nezávisle.  V plánu premium velikost vašeho plánu určí dostatek paměti a procesoru u všech aplikací v tomto plánu na příslušné instanci.  
 
-Pokud použijete plán hostování Consumption, soubory kódu funkce jsou uložené na sdílených složek Azure v účtu úložiště hlavní funkce. Když odstraníte hlavní účet úložiště z aplikace function app, soubory kódu funkce se odstraní a nejde obnovit.
+Soubory kódu funkce jsou uložené na sdílených složek Azure v účtu úložiště hlavní funkce. Když odstraníte hlavní účet úložiště z aplikace function app, soubory kódu funkce se odstraní a nejde obnovit.
 
 > [!NOTE]
-> Pokud používáte aktivační událost objektů blob v plánu Consumption, může být až 10 minut zpoždění při zpracování nové objekty BLOB. Toto zpoždění nastane, pokud aplikace function app náramků RFID nečinnosti. Po spuštění aplikace function app, objekty BLOB jsou zpracovány okamžitě. Pokud chcete vyhnout tomuto zpoždění dochází úplné spuštění, použijte plán služby App Service s **Always On** povolena, nebo použít trigger služby Event Grid. Další informace najdete v tématu [článku odkaz vazby aktivační událost objektů blob](functions-bindings-storage-blob.md#trigger).
+> Pokud používáte aktivační událost objektů blob v plánu Consumption, může být až 10 minut zpoždění při zpracování nové objekty BLOB. Toto zpoždění nastane, pokud aplikace function app náramků RFID nečinnosti. Po spuštění aplikace function app, objekty BLOB jsou zpracovány okamžitě. Pokud chcete vyhnout tomuto zpoždění dochází úplné spuštění, použijte plán Premium, nebo [trigger služby Event Grid](functions-bindings-event-grid.md). Další informace najdete v tématu [článku odkaz vazby aktivační událost objektů blob](functions-bindings-storage-blob.md#trigger).
 
 ### <a name="runtime-scaling"></a>Škálování prostředí runtime
 
@@ -141,5 +161,7 @@ Fakturace pro plán Consumption je podrobně popsaný na [stránce s cenami za A
 
 * **Spotřeba prostředků v gigabajtsekundách (GB-s)**. Vypočítat jako kombinace velikost paměti a dobu spuštění pro všechny funkce v rámci aplikace function app. 
 * **Spuštění**. Počítají při každém spuštění funkce v reakci na aktivační procedura událostí.
+
+Můžete najít užitečné dotazy a informace o tom, jak vysvětlení faktury za spotřebu [na nejčastější dotazy týkající se fakturace](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ).
 
 [Stránce s cenami za Azure Functions]: https://azure.microsoft.com/pricing/details/functions

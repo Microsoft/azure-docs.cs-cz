@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 2f5a82fac18ab34bfa9d6b46f553227ed44a994a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ff4dd571911719e4f2ec27952785432960a56d42
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008089"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917219"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Postup aktualizace cloudové služby
 
@@ -28,7 +28,7 @@ Aktualizace cloudové služby, včetně jeho role a hostovaný operační systé
 ## <a name="update-an-azure-service"></a>Aktualizace služby Azure
 Azure organizuje vaše instance rolí do logických seskupení volá upgradovací domény (UD). Upgradovací domény (UD) jsou logické sady instancí role, které se aktualizují jako skupinu.  Aktualizace Azure a cloudových služeb jeden UD současně, což umožňuje instance v jiných aktualizačními doménami nadále obsluhuje provoz.
 
-Výchozí počet domén upgradu je 5. Je-li zadat jiný počet upgradovacích domén, včetně upgradeDomainCount atributu v souboru definice služby (.csdef). Další informace o atributu upgradeDomainCount najdete v tématu [WebRole schéma](https://msdn.microsoft.com/library/azure/gg557553.aspx) nebo [WorkerRole schéma](https://msdn.microsoft.com/library/azure/gg557552.aspx).
+Výchozí počet domén upgradu je 5. Je-li zadat jiný počet upgradovacích domén, včetně upgradeDomainCount atributu v souboru definice služby (.csdef). Další informace o atributu upgradeDomainCount najdete v tématu [WebRole schéma](/previous-versions/azure/reference/gg557553(v=azure.100)) nebo [WorkerRole schéma](/previous-versions/azure/reference/gg557552(v=azure.100)).
 
 Při provádění v místě aktualizace jeden nebo více rolí ve službě Azure aktualizuje sadu instancí role podle upgradovací domény, ke kterému patří. Aktualizace Azure, které všechny instance v dané doméně upgradu – zastavení, aktualizuje, uvede zpět online – pak přesune na další doménu. Zastavením pouze instance spuštěné v aktuální upgradovací doméně Azure zajišťuje, že aktualizace dochází s nejmenší dopad na spuštěnou službu. Další informace najdete v tématu [jak pokračuje aktualizace](#howanupgradeproceeds) dále v tomto článku.
 
@@ -82,7 +82,7 @@ Během aktualizace se nepodporují následující položky:
 * Změnit počet domén upgradu.
 * Zmenšit velikost místních prostředků.
 
-Pokud provádíte jiné aktualizace definice vaší služby, jako je například zmenšit velikost místního prostředku, je nutné provést aktualizaci prohození virtuálních IP adres. Další informace najdete v tématu [Prohodit nasazení](https://msdn.microsoft.com/library/azure/ee460814.aspx).
+Pokud provádíte jiné aktualizace definice vaší služby, jako je například zmenšit velikost místního prostředku, je nutné provést aktualizaci prohození virtuálních IP adres. Další informace najdete v tématu [Prohodit nasazení](/previous-versions/azure/reference/ee460814(v=azure.100)).
 
 <a name="howanupgradeproceeds"></a>
 
@@ -121,7 +121,7 @@ Chcete-li minimalizovat prostoje při upgradu služby jednou instancí, nasazen�
 <a name="RollbackofanUpdate"></a>
 
 ## <a name="rollback-of-an-update"></a>Vrácení zpět aktualizace
-Azure poskytuje flexibilitu při správě služby během aktualizace umožňují zahájit další operace v rámci služby, po přijetí žádosti počáteční aktualizace podle kontroler prostředků infrastruktury Azure. Vrácení zpět lze provést pouze v případě aktualizace (Změna konfigurace) nebo upgrade **probíhá** stavu na nasazení. Aktualizaci nebo upgradu se považuje za probíhá, dokud existuje alespoň jedna instance služby, která ještě neaktualizoval na novou verzi. K otestování, jestli smí vrácení zpět, zkontrolujte hodnotu příznaku RollbackAllowed, vrácený [získat nasazení](https://msdn.microsoft.com/library/azure/ee460804.aspx) a [získat vlastnosti cloudové služby](https://msdn.microsoft.com/library/azure/ee460806.aspx) operace, je nastavena na hodnotu true.
+Azure poskytuje flexibilitu při správě služby během aktualizace umožňují zahájit další operace v rámci služby, po přijetí žádosti počáteční aktualizace podle kontroler prostředků infrastruktury Azure. Vrácení zpět lze provést pouze v případě aktualizace (Změna konfigurace) nebo upgrade **probíhá** stavu na nasazení. Aktualizaci nebo upgradu se považuje za probíhá, dokud existuje alespoň jedna instance služby, která ještě neaktualizoval na novou verzi. K otestování, jestli smí vrácení zpět, zkontrolujte hodnotu příznaku RollbackAllowed, vrácený [získat nasazení](/previous-versions/azure/reference/ee460804(v=azure.100)) a [získat vlastnosti cloudové služby](/previous-versions/azure/reference/ee460806(v=azure.100)) operace, je nastavena na hodnotu true.
 
 > [!NOTE]
 > Je vhodné volat vrácení zpět **místní** aktualizovat nebo upgradovat, protože upgrady prohození virtuálních IP adres zahrnují nahrazení celého jednu běžící instanci služby s jiným.
@@ -135,13 +135,13 @@ Vrátit zpět změny v průběhu aktualizace má následující důsledky při n
 
 Tato funkce poskytuje následující funkce:
 
-* [Vrácení zpět aktualizace nebo upgradu](https://msdn.microsoft.com/library/azure/hh403977.aspx) operace, které je možné vyvolat v aktualizaci konfigurace (aktivuje voláním [změna konfigurace nasazení](https://msdn.microsoft.com/library/azure/ee460809.aspx)) nebo upgradu (aktivuje voláním [ Upgrade nasazení](https://msdn.microsoft.com/library/azure/ee460793.aspx)), dokud je alespoň jednou instancí služby, které ještě neaktualizoval na novou verzi.
-* Element uzamčené a RollbackAllowed elementu, které jsou následně vráceny jako součást text odpovědi o [získat nasazení](https://msdn.microsoft.com/library/azure/ee460804.aspx) a [získat vlastnosti cloudové služby](https://msdn.microsoft.com/library/azure/ee460806.aspx) operace:
+* [Vrácení zpět aktualizace nebo upgradu](/previous-versions/azure/reference/hh403977(v=azure.100)) operace, které je možné vyvolat v aktualizaci konfigurace (aktivuje voláním [změna konfigurace nasazení](/previous-versions/azure/reference/ee460809(v=azure.100))) nebo upgradu (aktivuje voláním [ Upgrade nasazení](/previous-versions/azure/reference/ee460793(v=azure.100))), dokud je alespoň jednou instancí služby, které ještě neaktualizoval na novou verzi.
+* Element uzamčené a RollbackAllowed elementu, které jsou následně vráceny jako součást text odpovědi o [získat nasazení](/previous-versions/azure/reference/ee460804(v=azure.100)) a [získat vlastnosti cloudové služby](/previous-versions/azure/reference/ee460806(v=azure.100)) operace:
 
   1. Element uzamčené umožňuje rozpoznat, kdy mutující operace může být vyvolána v zadaném nasazení.
-  2. RollbackAllowed element slouží ke zjištění, kdy [vrácení zpět aktualizace nebo upgradu](https://msdn.microsoft.com/library/azure/hh403977.aspx) operace lze volat pro konkrétní nasazení.
+  2. RollbackAllowed element slouží ke zjištění, kdy [vrácení zpět aktualizace nebo upgradu](/previous-versions/azure/reference/hh403977(v=azure.100)) operace lze volat pro konkrétní nasazení.
 
-  Aby bylo možné provést vrácení zpět, není nutné uzamčeno a RollbackAllowed elementy. Stačí potvrdit, že RollbackAllowed nastavený na hodnotu true. Tyto prvky jsou vráceny pouze, pokud tyto metody jsou vyvolány pomocí hlavičky požadavku nastavte na "x-ms-version: 2011-10-01" nebo novější. Další informace o hlavičkách správy verzí, naleznete v tématu [Správa verzí služby správy](https://msdn.microsoft.com/library/azure/gg592580.aspx).
+  Aby bylo možné provést vrácení zpět, není nutné uzamčeno a RollbackAllowed elementy. Stačí potvrdit, že RollbackAllowed nastavený na hodnotu true. Tyto prvky jsou vráceny pouze, pokud tyto metody jsou vyvolány pomocí hlavičky požadavku nastavte na "x-ms-version: 2011-10-01 "nebo novější. Další informace o hlavičkách správy verzí, naleznete v tématu [Správa verzí služby správy](/previous-versions/azure/gg592580(v=azure.100)).
 
 Existují určité situace, kdy vrácení zpět aktualizace nebo upgrade se nepodporuje, ty jsou následující:
 
@@ -149,9 +149,9 @@ Existují určité situace, kdy vrácení zpět aktualizace nebo upgrade se nepo
 * Omezení kvóty – Pokud aktualizace byl vertikálního snižování kapacity operace, kterou jste už může mít dostatečná kvóta výpočetních prostředků k dokončení operace vrácení zpět. Každé předplatné Azure má kvótu, která určuje maximální počet jader, které mohou být spotřebovány všechny hostované služby, které patří k tomuto předplatnému. Je-li provést vrácení dané aktualizace vložili předplatné přes kvótu pak, která nepovolí vrácení zpět.
 * Konflikt časování - li počáteční aktualizace byla dokončena, vrácení zpět není možný.
 
-Je například při vrácení zpět aktualizace může být užitečné, pokud používáte [nasazení upgradu](https://msdn.microsoft.com/library/azure/ee460793.aspx) operace v režimu ručního řídit rychlost, jakou hlavní místní upgrade na Azure hostovaná služba nasazení.
+Je například při vrácení zpět aktualizace může být užitečné, pokud používáte [nasazení upgradu](/previous-versions/azure/reference/ee460793(v=azure.100)) operace v režimu ručního řídit rychlost, jakou hlavní místní upgrade na Azure hostovaná služba nasazení.
 
-Během zavádění upgradu zavoláte [nasazení upgradu](https://msdn.microsoft.com/library/azure/ee460793.aspx) v režimu ručního a začít procházet upgradovacích domén. Pokud v určitém okamžiku, jak můžete monitorovat upgrade, jste si některé instance rolí v první upgradovacích domén, které můžete zkontrolovat staly reagovat, můžete volat [vrácení zpět aktualizace nebo upgradu](https://msdn.microsoft.com/library/azure/hh403977.aspx) operaci s nasazením, zůstane zůstanou instance, které nebyly dosud nebyly upgradovány a vrácení zpět instance, které upgradovali na předchozí balíček služby a konfiguraci.
+Během zavádění upgradu zavoláte [nasazení upgradu](/previous-versions/azure/reference/ee460793(v=azure.100)) v režimu ručního a začít procházet upgradovacích domén. Pokud v určitém okamžiku, jak můžete monitorovat upgrade, jste si některé instance rolí v první upgradovacích domén, které můžete zkontrolovat staly reagovat, můžete volat [vrácení zpět aktualizace nebo upgradu](/previous-versions/azure/reference/hh403977(v=azure.100)) operaci s nasazením, zůstane zůstanou instance, které nebyly dosud nebyly upgradovány a vrácení zpět instance, které upgradovali na předchozí balíček služby a konfiguraci.
 
 <a name="multiplemutatingoperations"></a>
 
@@ -162,11 +162,11 @@ Po počáteční požadavek na aktualizaci nebo upgradu služby obdržel kontrol
 
 Inicializace druhou operaci aktualizace, zatímco probíhá první aktualizací provede podobný operaci vrácení zpět. Pokud je druhý aktualizace v automatickém režimu, první upgradovací doména se upgradují okamžitě, by mohl vést k instancím z více upgradovacích doménách budou offline stejného bodu v čase.
 
-Mutující operace jsou následující: [změna konfigurace nasazení](https://msdn.microsoft.com/library/azure/ee460809.aspx), [nasazení upgradu](https://msdn.microsoft.com/library/azure/ee460793.aspx), [stav nasazení aktualizace](https://msdn.microsoft.com/library/azure/ee460808.aspx), [odstranit nasazení ](https://msdn.microsoft.com/library/azure/ee460815.aspx), a [vrácení zpět aktualizace nebo upgradu](https://msdn.microsoft.com/library/azure/hh403977.aspx).
+Mutující operace jsou následující: [Změna konfigurace nasazení](/previous-versions/azure/reference/ee460809(v=azure.100)), [Upgrade nasazení](/previous-versions/azure/reference/ee460793(v=azure.100)), [aktualizace stavu nasazení](/previous-versions/azure/reference/ee460808(v=azure.100)), [odstranit nasazení](/previous-versions/azure/reference/ee460815(v=azure.100)), a [vrácení zpět Aktualizace nebo upgradu](/previous-versions/azure/reference/hh403977(v=azure.100)).
 
-Dvě operace [získat nasazení](https://msdn.microsoft.com/library/azure/ee460804.aspx) a [získat vlastnosti cloudové služby](https://msdn.microsoft.com/library/azure/ee460806.aspx), vrátí uzamčené příznak, který můžete prověřit, abyste zjistili, jestli mutující operaci lze vyvolat u dané nasazení.
+Dvě operace [získat nasazení](/previous-versions/azure/reference/ee460804(v=azure.100)) a [získat vlastnosti cloudové služby](/previous-versions/azure/reference/ee460806(v=azure.100)), vrátí uzamčené příznak, který můžete prověřit, abyste zjistili, jestli mutující operaci lze vyvolat u dané nasazení.
 
-Volání verzi tyto metody, která vrátí příznak uzamknout, je nutné nastavit hlavičku požadavku na "x-ms-version: 2011-10-01" nebo pozdější. Další informace o hlavičkách správy verzí, naleznete v tématu [Správa verzí služby správy](https://msdn.microsoft.com/library/azure/gg592580.aspx).
+Volání verzi tyto metody, která vrátí příznak uzamknout, je nutné nastavit hlavičku požadavku na "x-ms-version: 2011-10-01 "nebo pozdější. Další informace o hlavičkách správy verzí, naleznete v tématu [Správa verzí služby správy](/previous-versions/azure/gg592580(v=azure.100)).
 
 <a name="distributiondfroles"></a>
 
@@ -189,4 +189,4 @@ Následující diagram znázorňuje, jak službu než obsahuje dvě role jsou di
 ## <a name="next-steps"></a>Další postup
 [Jak spravovat Cloud Services](cloud-services-how-to-manage-portal.md)  
 [Jak monitorovat Cloud Services](cloud-services-how-to-monitor.md)  
-[Jak konfigurovat Cloud Services](cloud-services-how-to-configure-portal.md)  
+[Postup konfigurace služby Cloud Services](cloud-services-how-to-configure-portal.md)  

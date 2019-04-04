@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: a747e5064ff0ef99fb43c545c29c2a34535445d0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 516df2f6177303987fc0354dde647c1fc26820ef
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540143"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918276"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Správa Azure CDN ve službě Azure Media Services zásady ukládání do mezipaměti
 Azure Media Services nabízí adaptivní streamování a progresivní stahování založený na HTTP. Streamování na základě protokolu HTTP je vysoce škálovatelná výhody ukládání do mezipaměti v proxy serveru a vrstvy CDN, stejně jako ukládání do mezipaměti na straně klienta. Koncové body streamování poskytuje obecné funkce streamování a také konfigurace mezipaměti hlaviček protokolu HTTP. Koncové body streamování nastaví HTTP Cache-Control: maximální stáří a záhlaví Expires. Můžete získat další informace o mezipaměti hlavičky protokolu HTTP z [adrese W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
@@ -39,7 +39,7 @@ Azure Media Services nabízí [integrované CDN](https://azure.microsoft.com/upd
 Azure portal nebo rozhraní API služeb Azure Media Services můžete použít ke konfiguraci hodnoty hlavičky mezipaměti.
 
 1. Konfigurace hlaviček mezipaměti pomocí webu Azure portal, najdete v tématu [jak spravovat koncové body streamování](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) oddíl konfigurace koncového bodu streamování.
-2. Rozhraní REST API služby Azure Media Services [StreamingEndpoint](https://msdn.microsoft.com/library/azure/dn783468.aspx#StreamingEndpointCacheControl).
+2. Rozhraní REST API služby Azure Media Services [StreamingEndpoint](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl).
 3. Azure Media Services .NET SDK, [StreamingEndpointCacheControl Properties](https://go.microsoft.com/fwlink/?LinkId=615302).
 
 ## <a name="cache-configuration-precedence-order"></a>Pořadí priority konfigurace mezipaměti

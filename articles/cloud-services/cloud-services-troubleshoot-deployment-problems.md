@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 348321592fc32f7dd77447c7217c7142f7ad9bd4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cc2a0177525013736445db5fd1befa478dc9b9b8
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226936"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916848"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Řešení problémů s nasazením cloudové služby
 Když nasazujete balíček aplikace cloudové služby do Azure, můžete získat informace o nasazení z **vlastnosti** podokně webu Azure Portal. Podrobné informace v tomto podokně můžete použít k vyřešení problémů s cloudovou službou a zadání těchto informací k podpoře Azure při otevírání novou žádost o podporu.
@@ -52,7 +52,7 @@ Služba opravy probíhá automaticky, když Azure zjistí problém uzly a instan
 Role se taky recyklaci přibližně jednou za měsíc během hostitelským operačním systémem a aktualizací hostovaného operačního systému.  
 Další informace naleznete v příspěvku blogu [Role Instance se restartuje kvůli upgrady operačního systému](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)
 
-## <a name="problem-i-cannot-do-a-vip-swap-and-receive-an-error"></a>Problém: nelze provést prohození virtuálních IP adres a zobrazí chyba
+## <a name="problem-i-cannot-do-a-vip-swap-and-receive-an-error"></a>Problém: Nelze provést prohození virtuálních IP adres a zobrazí chyba
 Prohození virtuálních IP adres není povolená, pokud probíhá nasazení aktualizace. Aktualizace nasazení může dojít automaticky po:
 
 * Nový operační systém hosta je k dispozici a jsou nakonfigurované pro automatické aktualizace.
@@ -74,7 +74,7 @@ Další informace o způsobu řešení tohoto problému naleznete v příspěvku
 1. Na webu Azure Portal klikněte na instanci role.
 2. V **vlastnosti** podokně webu Azure portal, vezměte v úvahu následující podmínky, které mají problém vyřešit:
    * Pokud se nedávno zastavil instanci role (můžete zkontrolovat hodnotu **přerušit počítání**), může být aktualizace nasazení. Počkejte, pokud se role instance obnoví fungování sama o sobě.
-   * Pokud je role instance **zaneprázdněn**, zkontrolujte kód vaší aplikace a zjistěte, jestli [StatusCheck](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.statuscheck) událost zpracovává. Můžete potřebovat k přidání nebo oprava kódu, který zpracovává tuto událost.
+   * Pokud je role instance **zaneprázdněn**, zkontrolujte kód vaší aplikace a zjistěte, jestli [StatusCheck](/previous-versions/azure/reference/ee758135(v=azure.100)) událost zpracovává. Můžete potřebovat k přidání nebo oprava kódu, který zpracovává tuto událost.
    * Projděte si diagnostických dat a řešení potíží se scénáři v blogovém příspěvku [Azure PaaS Compute diagnostická Data](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
 
 > [!WARNING]

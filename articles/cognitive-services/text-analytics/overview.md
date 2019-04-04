@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 03/01/2019
 ms.author: aahi
-ms.openlocfilehash: f79700d3b57623693bf1d0d62dd9ab171df464fb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 59763b1146986b9920b87152101fd1dcdb00fece
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882503"
+ms.locfileid: "58904759"
 ---
 # <a name="what-is-text-analytics-api"></a>Co je API pro analýzu textu?
 
@@ -77,7 +77,7 @@ Všechny koncové body rozhraní API pro analýzu textu přijímají data v podo
 | Maximální velikost celého požadavku | 1 MB |
 | Maximální počet dokumentů v požadavku | 1 000 dokumentů |
 
-Omezení četnosti je 100 volání za 1 000 a druhé volání za minutu. Upozorňujeme, že můžete odeslat velké množství dokumentů v jednom volání (až 1 000 dokumentů).
+Omezení četnosti je 100 požadavků na druhý a 1 000 požadavků za minutu. Můžete odeslat velké množství dokumentů v jednom volání (až 1 000 dokumentů).
 
 ## <a name="unicode-encoding"></a>Kódování Unicode
 

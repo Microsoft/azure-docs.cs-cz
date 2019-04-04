@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e8473ece2ed08798836dc66067e1ce042924f469
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: df12639aaafaf3df7ae2b755d635d4fba83d846e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431251"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905083"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Jak spustit Durable Functions jako WebJobs
 
@@ -33,7 +33,7 @@ Tento článek předpokládá, že jste obeznámení se základy sady WebJobs SD
 
 * [Začínáme se sadou WebJobs SDK](../../app-service/webjobs-sdk-get-started.md)
 * [Vytvoření první funkce pomocí sady Visual Studio](../functions-create-your-first-function-visual-studio.md)
-* [Durable Functions](durable-functions-sequence.md)
+* [Odolná služba Functions](durable-functions-sequence.md)
 
 K dokončení kroků v tomto článku:
 
@@ -132,7 +132,7 @@ Odolná služba Functions v kontextu WebJobs se liší trochu z Durable Function
 Sada WebJobs SDK nepodporuje následující funkce Azure Functions:
 
 * [FunctionName atribut](#functionname-attribute)
-* [HTTP trigger](#http-trigger)
+* [Trigger HTTP](#http-trigger)
 * [Odolné funkce protokolu HTTP rozhraní API pro správu](#http-management-api)
 
 ### <a name="functionname-attribute"></a>FunctionName atribut
@@ -218,50 +218,60 @@ Tato část obsahuje základní informace o tom, jak spustit [ukázkový projekt
 
 ## <a name="webjobs-sdk-3x"></a>WebJobs SDK 3.x
 
-Tento článek vysvětluje, jak k vývoji projektu 2.x sady SDK pro WebJobs. Pokud vytváříte projekt 3.x sada WebJobs SDK, tato část vám pomůže pochopit rozdíly.
+Tento článek vysvětluje, jak k vývoji projektu 2.x sady SDK pro WebJobs. Pokud vytváříte [sada WebJobs SDK 3.x](../../app-service/webjobs-sdk-get-started.md) projektu, tato část vám pomůže pochopit rozdíly.
 
 Hlavní změny zavedené je použití .NET Core namísto rozhraní .NET Framework. Vytvoření projektu 3.x sada WebJobs SDK, pokyny jsou stejné, s následujícími výjimkami:
 
-1. Vytvoření konzolové aplikace .NET Core. V sadě Visual Studio **nový projekt** dialogu **.NET Core** > **Konzolová aplikace (.NET Core)**. Soubor projektu určuje, že `TargetFramework` je `netcoreapp2.0`.
+1. Vytvoření konzolové aplikace .NET Core. V sadě Visual Studio **nový projekt** dialogu **.NET Core** > **Konzolová aplikace (.NET Core)**. Soubor projektu určuje, že `TargetFramework` je `netcoreapp2.x`.
 
-1. Zvolte tuto předprodejní verzi sady SDK pro WebJobs 3.x následujících balíčků:
+1. Vyberte verzi sady SDK pro WebJobs 3.x následujících balíčků:
 
     * `Microsoft.Azure.WebJobs.Extensions`
+    * `Microsoft.Azure.WebJobs.Extensions.Storage`
     * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-1. Získejte připojovací řetězec úložiště a Instrumentační klíč Application Insights z *appsettings.json* soubor pomocí konfigurace architektury .NET Core. Změnit `Main` kódu metody k tomu. Tady je příklad:
+1. Nastavte připojovací řetězec úložiště a klíč instrumentace Application Insights do *appsettings.json* soubor pomocí konfigurace architektury .NET Core. Tady je příklad:
+
+    ```json
+        {
+            "AzureWebJobsStorage": "<replace with storage connection string>",
+            "APPINSIGHTS_INSTRUMENTATIONKEY": "<replace with Application Insights instrumentation key>"
+        }
+    ```
+
+1. Změnit `Main` kódu metody k tomu. Tady je příklad:
 
    ```cs
    static void Main(string[] args)
    {
-       var builder = new ConfigurationBuilder()
-           .SetBasePath(Directory.GetCurrentDirectory())
-           .AddJsonFile("appsettings.json");
+        var hostBuilder = new HostBuilder()
+            .ConfigureWebJobs(config =>
+            {
+                config.AddAzureStorageCoreServices();
+                config.AddAzureStorage();
+                config.AddTimers();
+                config.AddDurableTask(options =>
+                {
+                    options.HubName = "MyTaskHub";
+                    options.AzureStorageConnectionStringName = "AzureWebJobsStorage";
+                });
+            })
+            .ConfigureLogging((context, logging) =>
+            {
+                logging.AddConsole();
+                logging.AddApplicationInsights(config =>
+                {
+                    config.InstrumentationKey = context.Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"];
+                });
+            })
+            .UseConsoleLifetime();
 
-       var appSettingsConfig = builder.Build();
+        var host = hostBuilder.Build();
 
-       using (var loggerFactory = new LoggerFactory())
-       {
-           var config = new JobHostConfiguration();
-
-           config.DashboardConnectionString = "";
-           config.StorageConnectionString =
-               appSettingsConfig.GetConnectionString("AzureWebJobsStorage");
-           var instrumentationKey =
-               appSettingsConfig["APPINSIGHTS_INSTRUMENTATIONKEY"];
-
-           config.LoggerFactory = loggerFactory
-               .AddApplicationInsights(instrumentationKey, null)
-               .AddConsole();
-
-           config.UseTimers();
-           config.UseDurableTask(new DurableTaskExtension
-           {
-               HubName = "MyTaskHub",
-           });
-           var host = new JobHost(config);
-           host.RunAndBlock();
-       }
+        using (host)
+        {
+            host.Run();
+        }
    }
    ```
 

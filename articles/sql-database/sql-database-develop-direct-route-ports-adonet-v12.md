@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 11/07/2018
-ms.openlocfilehash: 96b6b4866b17e15f544a10124d07e651d747b58b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 04/03/2019
+ms.openlocfilehash: ddb115370c62371e769ef98e0031f7e0379bafbf
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306438"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916168"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty nad 1433 pro ADO.NET 4.5
 
@@ -43,11 +43,11 @@ Sekvence je následujícím způsobem:
 
 1. ADO.NET 4.5 (nebo novější) zahájí stručný interakci s Azure cloud a přijímá dynamicky identifikované nastavení portu.
 
-   * Číslo portu dynamicky identifikované je v rozsahu 11000 11999 nebo 14000 14999.
+   * Číslo portu dynamicky identifikované je v rozsahu 11000 11999.
 2. ADO.NET pak připojí k databázi SQL server přímo, s žádné middleware mezi.
 3. Dotazy se odesílají přímo do databáze a výsledky se vrátí přímo do klienta.
 
-Ujistěte se, že port, který rozsahů 11000 11999 a 14000 14999 na svém počítači Klient služby Azure zůstává k dispozici pro technologii ADO.NET 4.5 klienta interakce s databází SQL.
+Ujistěte se, že port, který rozsahů 11000 11999 na svém počítači Klient služby Azure zůstává k dispozici pro technologii ADO.NET 4.5 klienta interakce s databází SQL.
 
 * Porty v rozsahu musí být zejména bez dalších odchozí blokování.
 * Na svém virtuálním počítači Azure **brány Windows Firewall s pokročilým zabezpečením** řídí nastavení portu.
@@ -82,8 +82,8 @@ Tato část vysvětluje zástupných názvů, které odkazují na verze produktu
 * Připojení ke službě Azure SQL Database V12 prostřednictvím přesměrování https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
 * [Seznam verzí protokolu TDS.](http://www.freetds.org/userguide/tdshistory.htm)
-* [Přehled vývoje SQL Database](sql-database-develop-overview.md)
+* [Přehled vývoje v SQL Database](sql-database-develop-overview.md)
 * [Brána firewall služby Azure SQL Database](sql-database-firewall-configure.md)
-* [Postup: Konfigurace nastavení brány firewall pro službu SQL Database](sql-database-configure-firewall-settings.md)
+* [Postup: Konfigurace nastavení brány firewall pro SQL Database](sql-database-configure-firewall-settings.md)
 
 

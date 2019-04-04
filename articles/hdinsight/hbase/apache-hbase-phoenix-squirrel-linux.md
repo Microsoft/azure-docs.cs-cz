@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6dee4ac7cb863a08e9046b16189e7f4a7b04b810
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 38f86bd19c85440fbad0e7fd56a3dd9ba836c7b8
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201666"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903298"
 ---
 # <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>Použití Apache Phoenixu s clustery založené na Linuxu Apache HBase v HDInsight
 Další informace o použití [Apache Phoenix](https://phoenix.apache.org/) v Azure HDInsight a jak používat SQLLine. Další informace o Phoenix, naleznete v tématu [Apache Phoenix za 15 minut nebo i rychleji](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). Gramatika Phoenix, naleznete v tématu [Apache Phoenix gramatiky](https://phoenix.apache.org/language/index.html).
@@ -47,7 +47,7 @@ Když se připojíte ke clusteru služby HBase, budete muset připojit k jednomu
 
 2. V SSH použijte následující příkazy ke spuštění SQLLine:
 
-        cd /usr/hdp/current/phoenix/bin
+        cd /usr/hdp/current/phoenix-client/bin
         ./sqlline.py <ZOOKEEPER SERVER FQDN>:2181:/hbase-unsecure
 3. K vytvoření tabulky HBase a vložit nějaká data, spusťte následující příkazy:
 

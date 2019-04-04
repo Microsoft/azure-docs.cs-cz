@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 36815010c3e8fccc2ec24ce344071d0836da219b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 442551424fea353aa7eddef6e7eba6e934f95691
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097453"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905847"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
 
 Pomocí sady Visual Studio můžete vytvořit projekt, který nasadí vaši infrastrukturu a kód do Azure. Můžete například definovat webového hostitele, webový server a databázi pro vaši aplikaci a nasadit tuto infrastrukturu spolu s kódem. Visual Studio poskytuje řadu různých předem připravených šablon pro běžné scénáře nasazení. V tomto článku nasadíte webovou aplikaci a SQL Database.  
 
 Tento článek popisuje, jak používat [Visual Studio 2017 s nainstalovanými sadami funkcí pro vývoj v Azure a sadami funkcí ASP.NET](/dotnet/azure/dotnet-tools). Pokud používáte Visual Studio 2015 Update 2 a Microsoft Azure SDK pro .NET 2.9, nebo Visual Studio 2013 a Azure SDK 2.9, prostředí je z velké části stejné.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-azure-resource-group-project"></a>Vytvoření projektu skupiny prostředků Azure
 
@@ -143,12 +145,12 @@ Teď můžete svůj projekt nasadit. Když nasadíte projekt skupiny prostředk�
     **databaseName** určuje název databáze, kterou chcete vytvořit. 
    
     ![Dialogové okno Upravit parametry](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/provide-parameters.png)
-5. Stisknutím tlačítka **Nasadit** nasadíte projekt do Azure. Otevře se powershellová konzola mimo instanci sady Visual Studio. Po zobrazení výzvy zadejte v powershellové konzole heslo správce SQL Serveru. **Konzola PowerShellu může být skrytá za jinými položkami nebo minimalizovaná na hlavním panelu.** Najděte ji, vyberte ji a zadejte heslo.
+5. Stisknutím tlačítka **Nasadit** nasadíte projekt do Azure. Otevře se powershellová konzola mimo instanci sady Visual Studio. Po zobrazení výzvy zadejte v powershellové konzole heslo správce SQL Serveru. **Konzole PowerShellu může být skrytá za jinými položkami nebo minimalizovaná na hlavním panelu.** Najděte ji, vyberte ji a zadejte heslo.
    
    > [!NOTE]
    > Sada Visual Studio vás může požádat o instalaci rutin Azure PowerShell. Pokud k tomu budete vyzváni, nainstalujte je. Je třeba moduly Azure Powershellu k úspěšnému nasazení skupin prostředků. Skript Powershellu v projektu nefunguje s novými [modul Azure PowerShell Az](/powershell/azure/new-azureps-module-az). 
    >
-   > Další informace najdete v tématu [nainstalovat a nakonfigurovat moduly Azure Powershellu](/powershell/azure/azurerm/install-azurerm-ps).
+   > Další informace najdete v tématu [nainstalovat a nakonfigurovat moduly Azure Powershellu](/powershell/azure/install-Az-ps).
    > 
    > 
 6. Nasazení může zabrat několik minut. V oknech **Výstup** se zobrazí stav nasazení. Po dokončení nasazení vám poslední zpráva oznámí úspěšné nasazení. Bude vypadat zhruba následovně:

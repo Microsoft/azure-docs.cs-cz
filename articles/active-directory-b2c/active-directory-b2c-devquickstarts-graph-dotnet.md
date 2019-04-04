@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a516f99af05ba3f3bb7ab98d3def123a488e0d9d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0f380aa9f2efc1ae9636b7704f7eb75004bb71f9
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075897"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895050"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Použití Graph API v Azure AD
 
 >[!NOTE]
-> Je nutné použít [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview?f=255&MSPPError=-2147217396) ke správě uživatelů v adresáři Azure AD B2C. Tím se liší od rozhraní Microsoft Graph API. Další informace najdete [tady](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
+> Je nutné použít [Azure AD Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-operations-overview) ke správě uživatelů v adresáři Azure AD B2C. Tím se liší od rozhraní Microsoft Graph API. Další informace najdete [tady](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
 
 Azure Active Directory (Azure AD) B2C tenanti jsou často na velmi velké. To znamená, že mnoho běžných úloh správy klientů je třeba provést prostřednictvím kódu programu. Primární příklad je Správa uživatelů. Můžete potřebovat k migraci existujícího úložiště uživatele do tenanta B2C. Můžete hostovat registrace uživatele na vlastní stránce a vytvořte uživatelské účty ve vašem adresáři Azure AD B2C na pozadí. Tyto druhy úkonů vyžadují možnost vytvářet, číst, aktualizovat a odstraňovat uživatelské účty. Můžete provádět tyto úlohy s využitím Azure AD Graph API.
 
@@ -239,7 +239,7 @@ Content-Length: 338
 }
 ```
 
-Většina těchto vlastností v této žádosti je potřeba vytvořit spotřebitelské uživatele. Další informace, klikněte na tlačítko [tady](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser). Všimněte si, že `//` komentáře k dipozici ukázky. Nezahrnujte je do aktuálního požadavku.
+Většina těchto vlastností v této žádosti je potřeba vytvořit spotřebitelské uživatele. Další informace, klikněte na tlačítko [tady](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser). Všimněte si, že `//` komentáře k dipozici ukázky. Nezahrnujte je do aktuálního požadavku.
 
 Chcete-li zobrazit žádost, spusťte jeden z následujících příkazů:
 
@@ -248,7 +248,7 @@ B2C Create-User ..\..\..\usertemplate-email.json
 B2C Create-User ..\..\..\usertemplate-username.json
 ```
 
-`Create-User` Příkaz má soubor .json, který jako vstupní parametr. Tato položka obsahuje reprezentaci JSON objektu user. Existují dva ukázkové soubory .json ve vzorovém kódu: `usertemplate-email.json` a `usertemplate-username.json`. Můžete upravit tyto soubory tak, aby odpovídala vašim potřebám. Kromě výše uvedených požadovaných polí jsou zahrnuty několik volitelných polí, které můžete použít v těchto souborech. Podrobnosti o volitelná pole najdete v [odkaz na entitu Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity).
+`Create-User` Příkaz má soubor .json, který jako vstupní parametr. Tato položka obsahuje reprezentaci JSON objektu user. Existují dva ukázkové soubory .json ve vzorovém kódu: `usertemplate-email.json` a `usertemplate-username.json`. Můžete upravit tyto soubory tak, aby odpovídala vašim potřebám. Kromě výše uvedených požadovaných polí jsou zahrnuty několik volitelných polí, které můžete použít v těchto souborech. Podrobnosti o volitelná pole najdete v [odkaz na entitu Azure AD Graph API](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity).
 
 Můžete vidět, jak je požadavek POST vytvořený v `B2CGraphClient.SendGraphPostRequest(...)`.
 
@@ -257,7 +257,7 @@ Můžete vidět, jak je požadavek POST vytvořený v `B2CGraphClient.SendGraphP
 * Obsahuje objekt uživatele ve formátu JSON v textu požadavku.
 
 > [!NOTE]
-> Pokud má nižší síly hesla, než jsou účty, které chcete provést migraci z existující úložiště uživatele [sílu silné heslo, které vynucuje Azure AD B2C](https://msdn.microsoft.com/library/azure/jj943764.aspx), požadavek na silné heslo pomocí můžete zakázat `DisableStrongPassword` Hodnota v `passwordPolicies` vlastnost. Například můžete upravit požadavek na vytvoření uživatele jste zadali výše pro následujícím způsobem: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
+> Pokud má nižší síly hesla, než jsou účty, které chcete provést migraci z existující úložiště uživatele [sílu silné heslo, které vynucuje Azure AD B2C](/previous-versions/azure/jj943764(v=azure.100)), požadavek na silné heslo pomocí můžete zakázat `DisableStrongPassword` Hodnota v `passwordPolicies` vlastnost. Například můžete upravit požadavek na vytvoření uživatele jste zadali výše pro následujícím způsobem: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
 > 
 > 
 
@@ -317,7 +317,7 @@ B2C Delete-User <object-id-of-user>
 
 Zkontrolujte `B2CGraphClient.SendGraphDeleteRequest(...)` metoda podrobnosti o tom, jak odeslat tuto žádost.
 
-Můžete provádět mnoho dalších akcí s Azure AD Graph API kromě správy uživatelů. [Referenční informace k Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) poskytuje podrobnosti pro každou akci, společně s požadavky na ukázky.
+Můžete provádět mnoho dalších akcí s Azure AD Graph API kromě správy uživatelů. [Referenční informace k Azure AD Graph API](/previous-versions/azure/ad/graph/api/api-catalog) poskytuje podrobnosti pro každou akci, společně s požadavky na ukázky.
 
 ## <a name="use-custom-attributes"></a>Použití vlastních atributů
 Většina uživatelů aplikací je nutné uložit nějaký typ informace o vlastních uživatelském profilu. To lze provést jedním ze způsobů je definování vlastního atributu ve vašem tenantovi B2C. Tento atribut lze považovat pak stejným způsobem zpracovávat jiné vlastnosti v objektu user. Můžete aktualizovat atribut, odstraňte atribut, dotazovat pomocí atributu, atribut odeslat jako deklarace identity v tokeny přihlášení a další.

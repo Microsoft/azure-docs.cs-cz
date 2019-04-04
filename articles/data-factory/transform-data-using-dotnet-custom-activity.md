@@ -11,12 +11,12 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 1c02a30800e86c7b32524fb9cdba7dacf3bba9c7
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652089"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904572"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 
@@ -356,7 +356,7 @@ Pokud máte stávající kód technologie .NET, které jsou vytvořené pro verz
   - Balíček Microsoft.Azure.Management.DataFactories NuGet se už nevyžaduje.
   - Kompilaci kódu, ukládání spustitelného souboru a jeho závislosti do služby Azure Storage a definování cestu `folderPath` vlastnost.
 
-Úplnou ukázku začátku do konce vzorku knihovny DLL a kanál popisu v Data Factory verze 1 článku [použití vlastních aktivit v kanálu Azure Data Factory](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) může být přepsán ve formátu Data Factory vlastní aktivity najdete v tématu [ Ukázková data Factory pro vlastní aktivity](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample).
+Úplnou ukázku začátku do konce vzorku knihovny DLL a kanál popisu v Data Factory verze 1 článku [použití vlastních aktivit v kanálu Azure Data Factory](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) může být přepsán ve formátu Data Factory vlastní aktivity najdete v tématu [ Ukázková data Factory pro vlastní aktivity](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample).
 
 ## <a name="auto-scaling-of-azure-batch"></a>Automatické škálování služby Azure Batch
 
@@ -382,10 +382,10 @@ Pokud fond používá výchozí [autoScaleEvaluationInterval](https://msdn.micro
 Viz následující články, které vysvětlují, jak transformovat data dalšími způsoby:
 
 * [Aktivita U-SQL](transform-data-using-data-lake-analytics.md)
-* [Aktivita hivu](transform-data-using-hadoop-hive.md)
-* [Aktivita pig](transform-data-using-hadoop-pig.md)
+* [Aktivita Hivu](transform-data-using-hadoop-hive.md)
+* [Aktivita Pig](transform-data-using-hadoop-pig.md)
 * [Aktivita MapReduce](transform-data-using-hadoop-map-reduce.md)
 * [Aktivita streamování Hadoop](transform-data-using-hadoop-streaming.md)
 * [Aktivita Spark](transform-data-using-spark.md)
 * [Aktivita provedení dávky služby Learning počítače](transform-data-using-machine-learning.md)
-* [Aktivita uložená procedura](transform-data-using-stored-procedure.md)
+* [Aktivita uložené procedury](transform-data-using-stored-procedure.md)

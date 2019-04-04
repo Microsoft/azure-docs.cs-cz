@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 785948c78b2b8205c4bebe2d68b62f6de7254d94
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 3004f073100b45de25655fc6dee6a96c90612c46
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58863130"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905199"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
@@ -64,14 +64,14 @@ Můžete nastavit databází Azure SQL a instance databáze shromažďovat násl
 | :------------------- | ----- | ----- |
 | [Všechny metriky](#all-metrics): Obsahuje procento využití DTU/procesoru, omezení jednotek DTU a procesoru, fyzických čtení dat procento, protokolu zapisovat procento, úspěšné/neúspěšné/blokovaná bránou připojení brány firewall, relace procento, procento pracovních procesů, úložiště, procento úložiště a XTP úložiště. | Ano | Ne |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): Obsahuje informace o dotazu běhové statistiky, jako je například využití procesoru a statistiky doba trvání dotazu. | Ano | Ano |
-| [QueryStoreWaitStatistics](#query-store-wait-statistics): Obsahuje informace o statistiky čekání dotazu (co vaše dotazy čekat) jako jsou procesor, protokol a UZAMČENÍ. | Ano | Ano |
-| [Chyby](#errors-dataset): Obsahuje informace o chybách SQL v databázi. | Ano | Ano |
-| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Obsahuje informace o tom, kolik času stráví databáze čeká čekání různých typů. | Ano | Ne |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics): Obsahuje informace o statistiky čekání dotazu (co vaše dotazy čekalo se), jsou procesor, LOG a UZAMČENÍ. | Ano | Ano |
+| [Chyby](#errors-dataset): Obsahuje informace o chybách SQL na databázi. | Ano | Ano |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Obsahuje informace o tom, kolik času databázi strávený čeká čekání různých typů. | Ano | Ne |
 | [Vypršení časových limitů](#time-outs-dataset): Obsahuje informace o vypršení časového limitu pro v databázi. | Ano | Ne |
 | [Bloky](#blockings-dataset): Obsahuje informace o blokování události v databázi. | Ano | Ne |
 | [Zablokování](#deadlocks-dataset): Obsahuje informace o událostech zablokování v databázi. | Ano | Ne |
-| [AutomaticTuning](#automatic-tuning-dataset): Obsahuje informace o doporučení automatického ladění na databázi. | Ano | Ne |
-| [SQLInsights](#intelligent-insights-dataset): Obsahuje užitečné přehledy o výkonu. Další informace najdete v tématu [Intelligent Insights](sql-database-intelligent-insights.md). | Ano | Ano |
+| [AutomaticTuning](#automatic-tuning-dataset): Obsahuje informace o doporučení automatického ladění pro databázi. | Ano | Ne |
+| [SQLInsights](#intelligent-insights-dataset): Obsahuje užitečné přehledy o výkonu pro databázi. Další informace najdete v tématu [Intelligent Insights](sql-database-intelligent-insights.md). | Ano | Ano |
 
 > [!IMPORTANT]
 > Elastické fondy a spravované instance mají svůj vlastní samostatný diagnostickou telemetrii z databází, které obsahují. To je důležité si uvědomit telemetrická data diagnostiky je nakonfigurované samostatně pro každý z těchto prostředků, jak je uvedeno níže.

@@ -1,6 +1,6 @@
 ---
-title: Přidání zpoždění v aplikace logiky | Microsoft Docs
-description: Přehled zpoždění a zpoždění – dokud akcí a jejich použití s aplikací Azure logiku.
+title: Přidání zpoždění v logic apps | Dokumentace Microsoftu
+description: Přehled zpoždění a zpoždění – až do akce a jak pomocí Azure logic app.
 services: ''
 documentationcenter: ''
 author: jeffhollan
@@ -15,63 +15,65 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 6cde5b8ba8d770a07199816286b666e952394de1
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 15e581454b60319ab734f2fa5faf0d90e0a7c8bf
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27963668"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893720"
 ---
 # <a name="get-started-with-the-delay-and-delay-until-actions"></a>Začínáme s zpoždění a zpoždění – dokud akce
-Pomocí zpoždění a "zpoždění – dokud" akce, můžete dokončit scénáře pracovního postupu.
+S použitím zpoždění a "zpoždění – dokud" akce, můžete dokončovat scénáře pracovního postupu.
 
 Můžete například provést následující věci:
 
-* Počkejte na jeden den v týdnu pro odeslání e-mailu aktualizace stavu.
-* Pracovní postup počkat, až budou volání protokolu HTTP má čas na dokončení obnovení a načítání výsledek.
+* Počkejte, dokud jeden den v týdnu pro odeslání e-mailu aktualizace stavu.
+* Zpoždění pracovní postup, dokud volání protokolu HTTP má čas dokončení a obnovení a načítání výsledku.
 
-Chcete-li začít používat zpoždění akce v aplikaci logiky, přečtěte si téma [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Abyste mohli začít používat zpoždění akce v aplikaci logiky, najdete v článku [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="use-the-delay-actions"></a>Pomocí akcí zpoždění
-Akce je operace, která se provádí v pracovním postupu, který je definován v aplikaci logiky. [Další informace o akcích](connectors-overview.md).
+## <a name="use-the-delay-actions"></a>Použijte zpoždění akce
 
-Tady je v sekvenci příklad použití kroku zpoždění v aplikaci logiky:
+Akce je operace, která provádí pracovní postup, který je definován v aplikaci logiky. 
+[Další informace o akcích](../connectors/apis-list.md).
 
-1. Po přidání aktivační událost, klikněte na tlačítko **nový krok** a přidejte akci.
-2. Vyhledejte **zpoždění** se zprovoznit akce zpoždění. V tomto příkladu jsme vyberte **zpoždění**.
+Tady je příklad pořadí použití kroku zpoždění v aplikaci logiky:
+
+1. Po přidání aktivační události, klikněte na tlačítko **nový krok** přidání akce.
+2. Vyhledejte **zpoždění** zobrazíte zpoždění akce. V tomto příkladu vybereme **zpoždění**.
    
     ![Zpoždění akce](./media/connectors-native-delay/using-action-1.png)
-3. Dokončete všechny vlastnosti Akce konfigurace zpoždění.
+3. Dokončete všechny akce vlastností konfigurace zpoždění.
    
-    ![Konfigurace zpoždění](./media/connectors-native-delay/using-action-2.png)
+    ![Zpoždění config](./media/connectors-native-delay/using-action-2.png)
 4. Klikněte na tlačítko **Uložit** k publikování a aktivovat aplikaci logiky.
 
 ## <a name="action-details"></a>Detaily akce
-Aktivační událost opakování má následující vlastnosti, které lze konfigurovat.
+Trigger opakování má následující vlastnosti, které lze nastavit.
 
 ### <a name="delay-action"></a>Zpoždění akce
-Tato akce zpozdí spuštění pro určitý časový interval.
+Tato akce zpoždění spuštění pro určitý časový interval.
 A * znamená, že je povinné pole.
 
 | Zobrazované jméno | Název vlastnosti | Popis |
 | --- | --- | --- |
-| Počet * |počet |Počet jednotek doba zpoždění před |
-| Jednotka * |jednotka |Jednotka času: `Second`, `Minute`, `Hour`, nebo`Day` |
+| Počet * |count |Počet časových jednotek zpoždění |
+| Jednotka * |jednotka |Jednotka času: `Second`, `Minute`, `Hour`, nebo `Day` |
 
 <br>
 
-### <a name="delay-until-action"></a>Zpoždění – dokud akce
-Tato akce zpozdí spustit až do zadaného data a času.
+### <a name="delay-until-action"></a>Delay – dokud akce
+Tato akce zpoždění spuštění až do zadaného data a času.
 A * znamená, že je povinné pole.
 
 | Zobrazované jméno | Název vlastnosti | Popis |
 | --- | --- | --- |
-| Rok * |časové razítko |Roku zpoždění až (GMT) |
-| Měsíc * |časové razítko |V měsíci pro zpoždění až (GMT) |
-| Den * |časové razítko |Den zpoždění až (GMT) |
+| Rok * |časové razítko |Období od začátku roku zpoždění do (GMT) |
+| Měsíc * |časové razítko |Měsíc na zpoždění do (GMT) |
+| Den * |časové razítko |Během dne zpoždění do (GMT) |
 
 <br>
 
 ## <a name="next-steps"></a>Další postup
-Teď vyzkoušet platformu a [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ostatní konektory k dispozici v aplikace logiky můžete prozkoumat pohledem na našem [rozhraní API seznamu](apis-list.md).
+Nyní, vyzkoušejte si platformu a [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Další dostupné konektory v logic apps můžete prozkoumat podle našich [rozhraní API seznamu](apis-list.md).
 

@@ -8,20 +8,20 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: geetha
-ms.openlocfilehash: 4ecf8b0808b1eea3af8997caecfdd942f1ff7418
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: d85f8f1ca4617a1bedb783b5f13e5b28c433403d
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793648"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904538"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Obnovení služby Key Vault klíč a tajný klíč pro šifrované virtuální počítače pomocí služby Azure Backup
 
 Tento článek pojednává o pomocí zálohování virtuálních počítačů Azure k provedení obnovení šifrovaných virtuálních počítačů Azure, pokud klíč a tajný klíč neexistují v trezoru klíčů. Tyto kroky je možné také pokud chcete udržovat samostatnou kopii klíč (šifrovací klíč klíče) a tajný klíč (šifrovací klíč nástroje BitLocker) pro obnovený virtuální počítač.
 
-## <a name="prerequisites"></a>Požadavky
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="prerequisites"></a>Požadavky
 
 * **Zálohování šifrovaných virtuálních počítačů** – šifrované virtuální počítače Azure byly zálohovány pomocí služby Azure Backup. Přečtěte si článek [Správa zálohování a obnovení virtuálních počítačů Azure pomocí Powershellu](backup-azure-vms-automation.md) podrobnosti o tom, jak zálohovat šifrované virtuální počítače Azure.
 * **Konfigurace služby Azure Key Vault** – Ujistěte se, do které klíče a tajné klíče je nutné obnovit služby key vault už existuje. Přečtěte si článek [Začínáme s Azure Key Vault](../key-vault/key-vault-get-started.md) podrobné informace o správě služby key vault.
@@ -33,8 +33,6 @@ Tento článek pojednává o pomocí zálohování virtuálních počítačů Az
 > Jakmile pro šifrovaný virtuální počítač se obnovila disku, ujistěte se, že:
 > * $details se vyplní podrobnosti úlohy obnovení disku, jak je uvedeno v [Powershellu kroky obnovení disků části](backup-azure-vms-automation.md#restore-an-azure-vm)
 > * Virtuální počítač by měl být vytvořen z obnovených disků pouze **po obnovení klíče a tajného klíče do trezoru klíčů**.
->
->
 
 Dotaz na vlastnosti obnoveného disku pro podrobnosti o úloze.
 
@@ -54,7 +52,7 @@ Get-AzStorageBlobContent -Blob $encryptedBlobName -Container $containerName -Des
 $encryptionObject = Get-Content -Path $destination_path  | ConvertFrom-Json
 ```
 
-## <a name="restore-key"></a>Obnovit klíč
+## <a name="restore-key"></a>Obnovení klíče
 
 Po vygenerování souboru JSON v cílové cestě uvedené výše vygenerovat soubor blob klíče z JSON a kanál na obnovení klíče rutiny vložte klíč (KEK) zpět ve službě key vault.
 
@@ -110,7 +108,7 @@ Pokud jste zálohovali šifrovaných virtuálních počítačů pomocí Azure Ba
 
 Přístup uvedených výše by fungovalo pro všechny body obnovení. Platné pro body obnovení starší než 11. července 2017 pro virtuální počítače jsou šifrované pomocí klíče BEK a KEK by však starším přístupem získání klíče a tajné informace z bodu obnovení. Po dokončení pro šifrované virtuální počítač pomocí úlohy obnovení disku [kroky PowerShell](backup-azure-vms-automation.md#restore-an-azure-vm), ujistěte se, že se načtou $rp platnou hodnotu.
 
-### <a name="restore-key"></a>Obnovit klíč
+### <a name="restore-key"></a>Obnovení klíče
 
 Pomocí následujících rutin pro získání klíčů (KEK) informace z bodu obnovení a kanál na obnovení klíče rutiny pro její umístění zpět do služby key vault.
 
@@ -134,7 +132,7 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 > [!NOTE]
 > * Hodnota pro $secretname je možné získat odkaz na výstup $rp1. KeyAndSecretDetails.SecretUrl a pomocí textu po tajných klíčů / například výstup tajný kód je adresa URL https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 a název tajného kódu je B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
 > * Hodnota značky DiskEncryptionKeyFileName je stejná jako název tajného kódu.
-> * Hodnota pro DiskEncryptionKeyEncryptionKeyURL lze získat z trezoru klíčů po obnovení zpět klíče a pomocí [Get-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) rutiny
+> * Hodnota pro DiskEncryptionKeyEncryptionKeyURL lze získat z trezoru klíčů po obnovení zpět klíče a pomocí [Get-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/get-azurekeyvaultkey) rutiny
 >
 >
 

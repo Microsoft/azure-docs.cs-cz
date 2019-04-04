@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 5eec77084e104f7bd541405e2ef18e5a178e869c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: fbc9e0f8e7dfda86b5c53e28aa3aa3b733bb9600
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877784"
+ms.locfileid: "58905745"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Řešení pro monitorování kontejnerů ve službě Azure Monitor
 
@@ -192,7 +192,7 @@ Existují tři způsoby, jak přidat agenta Log Analytics do Red Hat OpenShift s
 
 * [Instalace agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) přímo na každém uzlu Openshiftu  
 * [Povolení rozšíření Log Analytics pro virtuální počítač](../../azure-monitor/learn/quick-collect-azurevm.md) na každém uzlu OpenShift v Azure  
-* Instalace agenta Log Analytics jako OpenShift démon sadu  
+* Instalace agenta Log Analytics jako démon OpenShift-set  
 
 V této části probereme kroky potřebné k instalaci agenta Log Analytics jako démon OpenShift-set.  
 

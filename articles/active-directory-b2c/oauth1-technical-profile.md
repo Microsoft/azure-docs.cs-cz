@@ -1,6 +1,6 @@
 ---
-title: Definování profilu technické OAuth1 vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Technický profil OAuth1 definování vlastních zásad v Azure Active Directory B2C.
+title: Technický profil OAuth1 definování ve vlastních zásadách v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Technický profil OAuth1 definování ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 08fb0baf85b09b4804c83617dbae9ae9c69f0224
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 86de73394d96d1122abce44504d2b0fd99a01841
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162731"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915778"
 ---
-# <a name="define-a-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil OAuth1 definování ve vlastních zásadách pro Azure Active Directory B2C
+# <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil OAuth1 definování ve vlastních zásadách pro Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -85,7 +85,7 @@ Technický profil také vrátí hodnotu deklarace identity, které nejsou vráce
 | --------- | -------- | ----------- |
 | client_secret | Ano | Tajný kód klienta aplikace zprostředkovatele identity.   | 
 
-## <a name="redirect-uri"></a>Přesměrovat identifikátor URI
+## <a name="redirect-uri"></a>Identifikátor URI pro přesměrování
 
 Při konfiguraci adresy URL pro přesměrování vašeho zprostředkovatele identity, zadejte `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. Nezapomeňte nahradit **tenanta** názvem vašeho tenanta (například contosob2c.onmicrosoft.com) a **policyId** s identifikátorem zásady (například b2c_1a_policy). Identifikátor URI pro přesměrování musí být v všechna písmena malá. Měli byste přidat UR přesměrování pro všechny zásady, které používají přihlášení zprostředkovatele identity. 
 

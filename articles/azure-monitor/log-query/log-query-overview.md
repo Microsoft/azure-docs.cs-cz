@@ -7,12 +7,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: bwren
-ms.openlocfilehash: 6ed3a98282221d5ac148e88b6646bfaa4da768be
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: dcac701f3c1b6d64a7017c31679c019b91103ba2
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446435"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904725"
 ---
 # <a name="analyze-log-data-in-azure-monitor"></a>Analyzuje data protokolů ve službě Azure Monitor
 
@@ -20,20 +20,15 @@ Protokol data shromážděná službou Azure Monitor se ukládají v pracovním 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="log-queries"></a>Dotazy na protokoly
 
 Vyžadujete protokol dotaz pro načtení všechna data protokolů ze služby Azure Monitor.  Ať už se [analýza dat na portálu](portals.md), [konfigurace pravidla upozornění](../platform/alerts-metric.md) upozornit určitou podmínku, nebo při načítání dat pomocí [rozhraní API služby Azure Monitor protokoly](https://dev.loganalytics.io/) , se pomocí dotazu určit data, která chcete.  Tento článek popisuje použití dotazů na protokoly ve službě Azure Monitor a poskytuje koncepty, které je třeba porozumět před vytvořením jedné.
 
-
-
 ## <a name="where-log-queries-are-used"></a>Použití dotazů na protokoly
 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 Různé způsoby, že budete používat dotazy ve službě Azure Monitor, patří:
-
 
 - **Portál.** Můžete provádět interaktivní analýzu dat protokolu v [webu Azure portal](portals.md).  To umožňuje upravit dotaz a analyzujte výsledky v různých formátech a vizualizace.  
 - **Pravidla upozornění.** [Pravidla výstrah](../platform/alerts-overview.md) proaktivně identifikovat problémy z dat ve vašem pracovním prostoru.  Každé pravidlo výstrahy je založen na prohledávání protokolu, který se spouští automaticky v pravidelných intervalech.  Výsledky jsou kontrolovány k určení Pokud by měla být vytvořena výstraha.
@@ -41,7 +36,7 @@ Různé způsoby, že budete používat dotazy ve službě Azure Monitor, patř�
 - **Zobrazení.**  Možnost tvorby vizualizací dat mají být zahrnuty v řídicích panelech uživatele s [Návrhář zobrazení](../platform/view-designer.md).  Protokol dotazů, které poskytují data používá [dlaždice](../platform/view-designer-tiles.md) a [části vizualizace](../platform/view-designer-parts.md) v každém zobrazení.  
 
 - **Export.**  Když importujete data protokolů ze služby Azure Monitor do aplikace Excel nebo [Power BI](../platform/powerbi.md), vytvořte dotaz protokolu pro definování dat k exportu.
-- **PowerShell.** Skript prostředí PowerShell můžete spustit z příkazového řádku nebo runbooku Azure Automation, který používá [Get-AzOperationalInsightsSearchResults](/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults) načíst data protokolů ze služby Azure Monitor.  Tato rutina vyžaduje dotazu určit data, která mají načíst.
+- **Prostředí PowerShell.** Skript prostředí PowerShell můžete spustit z příkazového řádku nebo runbooku Azure Automation, který používá [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresults) načíst data protokolů ze služby Azure Monitor.  Tato rutina vyžaduje dotazu určit data, která mají načíst.
 - **Rozhraní API protokoly Azure monitoru.**  [Rozhraní API služby Azure Monitor protokoly](../platform/alerts-overview.md) umožňuje jakéhokoli klienta REST API k načtení dat protokolu z pracovního prostoru.  Žádosti rozhraní API obsahuje dotaz, který je spuštěn proti Azure Monitor k určení dat k načtení.
 
 ![Prohledávání protokolů](media/log-query-overview/queries-overview.png)

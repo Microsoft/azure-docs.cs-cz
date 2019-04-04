@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: fc873f68be3e7aad67980ec2e8ee0b2e473777ec
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ff3e95a603b8f9a188c7839578cd12287935de90
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537897"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918531"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Efektivně vytvářet dotazy do seznamu prostředků služby Batch
 
@@ -89,7 +89,7 @@ Vyberte řetězec omezuje hodnoty vlastností, které pro každou položku jsou 
 * V tomto příkladu rozbalte položku řetězec Určuje, zda má být vrácen statistické informace pro každou položku v seznamu: `stats`.
 
 > [!NOTE]
-> Při vytváření jakýkoli z typů řetězec tři dotazu (filtrování, vyberte a rozbalte), musíte zajistit, že názvy vlastností a případ odpovídat jejich protějšky element rozhraní REST API. Například při práci s .NET [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask) třídy, je nutné zadat **stavu** místo **stavu**, i když je vlastnost .NET [ CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state). Najdete v následujících tabulkách pro mapování vlastností mezi .NET a rozhraní REST API.
+> Při vytváření jakýkoli z typů řetězec tři dotazu (filtrování, vyberte a rozbalte), musíte zajistit, že názvy vlastností a případ odpovídat jejich protějšky element rozhraní REST API. Například při práci s .NET [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask#microsoft_azure_batch_cloudtask) třídy, je nutné zadat **stavu** místo **stavu**, i když je vlastnost .NET [ CloudTask.State](/dotnet/api/microsoft.azure.batch.cloudtask#microsoft_azure_batch_cloudtask.state). Najdete v následujících tabulkách pro mapování vlastností mezi .NET a rozhraní REST API.
 > 
 > 
 
@@ -106,11 +106,11 @@ Vyberte řetězec omezuje hodnoty vlastností, které pro každou položku jsou 
 ## <a name="efficient-querying-in-batch-net"></a>Efektivní dotazování v Batch .NET
 V rámci [Batch .NET] [ api_net] rozhraní API, [ODATADetailLevel] [ odata] třída se používá pro poskytnutí filtr, vyberte a rozbalte řetězce do seznamu operace. ODataDetailLevel třída má tři vlastnosti veřejného řetězce, které lze zadaný v konstruktoru, nebo nastavit přímo na objekt. Pak předáte ODataDetailLevel objektu jako parametr do různých seznam operací, jako [ListPools][net_list_pools], [ListJobs][net_list_jobs], a [ListTasks][net_list_tasks].
 
-* [ODATADetailLevel][odata].[ FilterClause][odata_filter]: Omezte počet položek, které jsou vráceny.
+* [ODATADetailLevel][odata].[FilterClause][odata_filter]: Omezte počet položek, které jsou vráceny.
 * [ODATADetailLevel][odata].[ SelectClause][odata_select]: Zadejte každou položku jsou vráceny hodnot vlastností.
 * [ODATADetailLevel][odata].[ ExpandClause][odata_expand]: Načíst data pro všechny položky v jednom volání rozhraní API namísto samostatné volání pro každou položku.
 
-Následující fragment kódu používá rozhraní Batch .NET API pro efektivní dotazy pro statistiku konkrétní sadu fondů služby Batch. V tomto scénáři má uživatel Batch testovacích i produkčních fondy. Test fondu identifikátorů mají předponu "test" a produkční fondu identifikátorů mají předponu "produkční". V tomto fragmentu kódu *myBatchClient* je správně inicializována instancí [BatchClient](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient) třídy.
+Následující fragment kódu používá rozhraní Batch .NET API pro efektivní dotazy pro statistiku konkrétní sadu fondů služby Batch. V tomto scénáři má uživatel Batch testovacích i produkčních fondy. Test fondu identifikátorů mají předponu "test" a produkční fondu identifikátorů mají předponu "produkční". V tomto fragmentu kódu *myBatchClient* je správně inicializována instancí [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient#microsoft_azure_batch_batchclient) třídy.
 
 ```csharp
 // First we need an ODATADetailLevel instance on which to set the filter, select,
@@ -139,7 +139,7 @@ List<CloudPool> testPools =
 ```
 
 > [!TIP]
-> Instance [ODATADetailLevel] [ odata] , který je nakonfigurovaný s vybranými a klauzule Expand může také být předán odpovídající metody Get, například [PoolOperations.GetPool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.getpool.aspx), Chcete-li omezit množství dat, která je vrácena.
+> Instance [ODATADetailLevel] [ odata] , který je nakonfigurovaný s vybranými a klauzule Expand může také být předán odpovídající metody Get, například [PoolOperations.GetPool](/dotnet/api/microsoft.azure.batch.pooloperations#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__), Chcete-li omezit množství dat, která je vrácena.
 > 
 > 
 
@@ -179,7 +179,7 @@ Názvy vlastností ve filtru, vyberte a rozbalte řetězce *musí* odráží jej
 ## <a name="example-construct-a-filter-string"></a>Příklad: vytvoření řetězce filtru
 Při sestavování řetězec filtru pro [ODATADetailLevel.FilterClause][odata_filter], najdete v tabulce výše v části "Mapování pro filtr řetězce" stránku dokumentace najít rozhraní REST API, která odpovídá operace list, který chcete provést. V první tabulce více řádků na této stránce najdete filterable vlastností a jejich podporovaných operátorů. Pokud chcete načíst všechny úlohy, jejichž ukončovací kód procesu je nenulovou hodnotu, například tento řádek na [seznamu úkoly spojené s úlohou] [ rest_list_tasks] Určuje řetězec příslušné vlastnosti a operátory povolená:
 
-| Vlastnost | Přípustné operace | Typ |
+| Vlastnost | Přípustné operace | Type |
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
@@ -190,7 +190,7 @@ Proto by byl řetězec filtru pro výpis všech úloh s nenulový ukončovací k
 ## <a name="example-construct-a-select-string"></a>Příklad: sestavit vyberte řetězec
 K sestavení kompletních [ODATADetailLevel.SelectClause][odata_select], najdete v tabulce výše v části "Mapování pro řetězce, vyberte možnost" a přejděte na stránku rozhraní REST API, který odpovídá typu entity, která se při vytváření seznamu. V první tabulce více řádků na této stránce najdete volitelných vlastností a jejich podporovaných operátorů. Pokud chcete načíst ID a příkazový řádek pro každý úkol v seznamu, například najdete tyto řádky v tabulce vztahuje na [získat informace o úkolu][rest_get_task]:
 
-| Vlastnost | Typ | Poznámky |
+| Vlastnost | Type | Poznámky |
 |:--- |:--- |:--- |
 | `id` |`String` |`The ID of the task.` |
 | `commandLine` |`String` |`The command line of the task.` |
@@ -246,7 +246,7 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 [Maximalizujte využití prostředků výpočetní služby Azure Batch s souběžné úlohy uzlu](batch-parallel-node-tasks.md) jiného článku souvisí s výkonu aplikace Batch. Některé typy úloh může přinést spuštění paralelní úlohy na větší – menší – počet výpočetních uzlů, ale. Podívejte se [ukázkový scénář](batch-parallel-node-tasks.md#example-scenario) v článku o v takové situaci.
 
 
-[api_net]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet
+[api_net]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
 [api_rest]: https://docs.microsoft.com/rest/api/batchservice/
 [batch_metrics]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchMetrics

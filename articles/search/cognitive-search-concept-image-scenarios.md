@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 9e4b9d8cf3300f977824f95aeb14a614d8897abd
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: f1491d6b87816dfc70e94e01653567bda101d045
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430263"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916967"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Postupy zpracování a extrahování informací z obrázků ve scénářích kognitivního vyhledávání
 
@@ -34,7 +34,7 @@ Normalizace image se nedá vypnout. Dovednosti, které iterují v imagí očeká
 
 | Parametr konfigurace | Popis |
 |--------------------|-------------|
-| imageAction   | Nastavte na "none", pokud žádná akce by měla být provedeny, když došlo k vložené obrázky nebo soubory obrázků. <br/>Nastavte na "generateNormalizedImages" generovat pole normalizované imagí jako součást analýzy dokumentu.<br/>Nastavte na "generateNormalizedImagePerPage" generovat pole normalizované imagí pro dokumenty PDF ve zdroji dat, kde jednotlivé stránky je vykresleno do jedné výstupní image.  Funkce je stejná jako "generateNormalizedImages" pro typy souborů – soubor PDF.<br/>U možnosti, které není "none", budou přístupné imagí v *normalized_images* pole. <br/>Výchozí hodnota je "none". Tato konfigurace je pouze relevantní do objektu blob zdroje dat, když "dataToExtract" je nastavena na "contentAndMetadata." |
+| imageAction   | Nastavte na "none", pokud žádná akce by měla být provedeny, když došlo k vložené obrázky nebo soubory obrázků. <br/>Nastavte na "generateNormalizedImages" generovat pole normalizované imagí jako součást analýzy dokumentu.<br/>Nastavte na "generateNormalizedImagePerPage" generovat pole normalizované imagí pro dokumenty PDF ve zdroji dat, kde jednotlivé stránky je vykresleno do jedné výstupní image.  Funkce je stejná jako "generateNormalizedImages" pro typy souborů – soubor PDF.<br/>U možnosti, které není "none", budou přístupné imagí v *normalized_images* pole. <br/>Výchozí hodnota je "none". Tato konfigurace je pouze relevantní do objektu blob zdroje dat, když "dataToExtract" je nastavena na "contentAndMetadata." <br/>Maximálně 1000 Image se budou extrahovat z daného dokumentu. Pokud existuje více než 1 000 obrázků v dokumentu, se budou extrahovat prvních 1000 a vygeneruje se upozornění. |
 |  normalizedImageMaxWidth | Maximální šířku (v pixelech) normalizované obrázky generované. Výchozí hodnota je 2000.|
 |  normalizedImageMaxHeight | Maximální výšku (v pixelech) normalizované obrázky generované. Výchozí hodnota je 2000.|
 

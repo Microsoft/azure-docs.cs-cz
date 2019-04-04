@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: aaa7db14f3afe8eec000e14c7f5a9db032b87fe0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 03fb286bd24bb12f3a1e508627a2de156e185568
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765930"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892428"
 ---
 # <a name="create-a-xamarinios-app"></a>Vytvoření aplikace Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -33,8 +33,8 @@ Dokončení tohoto kurzu se předpokládá ve všech dalších kurzech k použí
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si zaregistrovat zkušební verzi Azure a získat až 10 bezplatných mobilních aplikací, které můžete používat i po skončení zkušebního období. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* Visual Studio s Xamarinem. Pokyny najdete v tématu o [nastavení a instalaci pro Visual Studio a Xamarin](https://msdn.microsoft.com/library/mt613162.aspx).
-* Počítač Mac s nainstalovaným Xcode verze 7.0 nebo novějším a Xamarin Studio Community. Přečtěte si témata o [nastavení a instalaci nástrojů Visual Studio a Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) a o [nastavení, instalaci a ověření pro uživatele počítačů Mac](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN).
+* Visual Studio s Xamarinem. Pokyny najdete v tématu o [nastavení a instalaci pro Visual Studio a Xamarin](/visualstudio/cross-platform/setup-and-install).
+* Počítač Mac s nainstalovaným Xcode verze 7.0 nebo novějším a Xamarin Studio Community. Přečtěte si témata o [nastavení a instalaci nástrojů Visual Studio a Xamarin](/visualstudio/cross-platform/setup-and-install) a o [nastavení, instalaci a ověření pro uživatele počítačů Mac](/visualstudio/cross-platform/setup-install-and-verifications-for-mac-users) (MSDN).
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Vytvoření back-endu mobilní aplikace Azure
 Podle těchto pokynů vytvořte back-end mobilní aplikace:
@@ -71,7 +71,7 @@ Podle následujících kroků nakonfigurujte serverový projekt tak, aby použí
 >
 
 ## <a name="next-steps"></a>Další postup
-* [Přidání offline synchronizace do aplikace](app-service-mobile-xamarin-ios-get-started-offline-data.md)
+* [Přidání Offline synchronizace do aplikace](app-service-mobile-xamarin-ios-get-started-offline-data.md)
 * [Přidání ověřování do aplikace](app-service-mobile-xamarin-ios-get-started-users.md)
 * [Přidání nabízených oznámení do aplikace Xamarin.Android](app-service-mobile-xamarin-ios-get-started-push.md)
 * [Jak používat spravovaného klienta pro Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)
@@ -88,4 +88,4 @@ Podle následujících kroků nakonfigurujte serverový projekt tak, aby použí
 [10]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-quickstart-startup-ios.png
 
 <!-- URLs. -->
-[Azure Portal]: https://portal.azure.com/
+[portál Azure]: https://portal.azure.com/

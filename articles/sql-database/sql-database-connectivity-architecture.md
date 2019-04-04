@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: c5fadf5c445310534ab3001371e1b73b1f502f15
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 04/03/2019
+ms.openlocfilehash: 619893ad42664f8d37fff5e61b8560f6c6d83e23
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661782"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918599"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení k Azure SQL
 
@@ -37,7 +37,7 @@ Azure SQL Database a SQL Data Warehouse připojení k architektuře a tento čl�
 > - Aplikace se připojí k existující server zřídka, naše telemetrie nebyla zaznamenat informace o těchto aplikací
 > - Automatické nasazení logic vytvoří server služby SQL Database za předpokladu, že je výchozí chování pro koncový bod připojení služby `Proxy`
 >
-> Pokud nelze navázat koncový bod připojení služby k serveru Azure SQL a jsou podezření, že se vás tato změna, ověřte prosím, že typ připojení je explicitně nastaveno `Redirect`. Pokud je to tento případ, budete muset otevřít pravidla brány firewall virtuálního počítače a skupiny zabezpečení sítě (NSG) Azure IP adres v oblasti, které patří do Sql [značka služby](../virtual-network/security-overview.md#service-tags) pro porty 11000 12000. Pokud to není pro vás, přepněte server explicitně na `Proxy`.
+> Pokud nelze navázat koncový bod připojení služby k serveru Azure SQL a jsou podezření, že se vás tato změna, ověřte prosím, že typ připojení je explicitně nastaveno `Redirect`. Pokud je to tento případ, budete muset otevřít pravidla brány firewall virtuálního počítače a skupiny zabezpečení sítě (NSG) Azure IP adres v oblasti, které patří do Sql [značka služby](../virtual-network/security-overview.md#service-tags) pro porty 11000 11999. Pokud to není pro vás, přepněte server explicitně na `Proxy`.
 > [!NOTE]
 > Toto téma platí pro servery Azure SQL Database, které hostují izolované databáze a elastických fondů, databází SQL Data Warehouse, – Azure Database for MySQL, – Azure Database pro MariaDB a – Azure Database for PostgreSQL. Pro zjednodušení se SQL Database používá k odkazování na SQL Database, SQL Data Warehouse, Azure Database for MySQL, Azure Database pro MariaDB a Azure Database for PostgreSQL.
 
@@ -57,7 +57,7 @@ Následující kroky popisují, jak navázat připojení ke službě Azure SQL d
 
 Azure SQL Database podporuje tři následující možnosti pro nastavení zásad připojení databáze SQL serveru:
 
-- **Přesměrování (doporučeno):** Klienti připojení přímo k uzlu, který je hostitelem databáze. Pokud chcete povolit připojení, klienti musí umožňovat odchozí pravidla brány firewall na všech IP adres Azure v oblasti pomocí skupin zabezpečení sítě (NSG) s [značky služeb](../virtual-network/security-overview.md#service-tags)) pro porty 11000 12000, ne jenom IP brány Azure SQL Database adresy na portu 1433. Vzhledem k tomu, že pakety přejít přímo k databázi, mají latenci a propustnost vyšší výkon.
+- **Přesměrování (doporučeno):** Klienti připojení přímo k uzlu, který je hostitelem databáze. Pokud chcete povolit připojení, klienti musí umožňovat odchozí pravidla brány firewall na všech IP adres Azure v oblasti pomocí skupin zabezpečení sítě (NSG) s [značky služeb](../virtual-network/security-overview.md#service-tags)) pro porty 11000 11999, ne jenom IP brány Azure SQL Database adresy na portu 1433. Vzhledem k tomu, že pakety přejít přímo k databázi, mají latenci a propustnost vyšší výkon.
 - **Proxy server:** V tomto režimu se všechna připojení jsou směrovány přes proxy server prostřednictvím bran Azure SQL Database. Pokud chcete povolit připojení, klient musí mít odchozí pravidla brány firewall, které umožňují jenom brána Azure SQL Database IP adresy (obvykle dvě IP adresy v jedné oblasti). Výběr v tomto režimu může vést k vyšší latence a propustnosti nižší, v závislosti na povaze zatížení. Důrazně doporučujeme `Redirect` zásady připojení přes `Proxy` zásady připojení pro nejnižší latenci a propustnost nejvyšší.
 - **Výchozí hodnota:** To platí zásady připojení ve všech serverech po vytvoření není-li explicitně změnit zásady připojení buď `Proxy` nebo `Redirect`. Platné zásady závisí na tom, jestli se připojení pocházejí z v rámci Azure (`Redirect`) nebo mimo systém Azure (`Proxy`).
 

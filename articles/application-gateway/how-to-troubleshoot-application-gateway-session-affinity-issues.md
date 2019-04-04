@@ -7,16 +7,19 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: bcfb50a2d7d5221abaa15a5b286163cf63b7a875
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 0c1c466149b4992d99e18cfb1fd5d8416834df35
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446678"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904521"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Řešení potíží s spřažením relace Azure Application Gateway
 
 Zjistěte, jak k diagnostikování a vyřešení spřažením relace pomocí Azure Application Gateway.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Přehled
 
@@ -50,7 +53,7 @@ Spřažením relace může někdy dojít k "Na základě souboru Cookie spřaže
 
 Můžete také zkontrolovat hodnoty "**CookieBasedAffinity**" je nastavena na *povoleno*v části "**backendHttpSettingsCollection**" pomocí jedné z následujících metod:
 
-- Run [Get-AzureRmApplicationGatewayBackendHttpSettings](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermapplicationgatewaybackendhttpsettings) in PowerShell
+- Run [Get-AzApplicationGatewayBackendHttpSettings](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsettings) in PowerShell
 - Prohlédněte si soubor JSON s použitím šablony Azure Resource Manageru
 
 ```

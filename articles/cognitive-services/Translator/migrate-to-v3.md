@@ -3,19 +3,19 @@ title: Migrace na V3 – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak migrovat z V2 na V3 Translator Text API.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 1857cd7c4fe6102f94487dbb2cc5ad5c43c18f99
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d3ffdcb79a56bf2f9f4a6eb192293bbc6bab7dab
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101172"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916712"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 na V3 migrace
 
@@ -45,12 +45,12 @@ Následující seznam metod V2 a V3 identifikuje rozhraní API, která poskytne 
 |:----------- |:-------------|
 | `Translate`     | [Translate](reference/v3-0-translate.md)          |
 | `TranslateArray`      | [Translate](reference/v3-0-translate.md)        |
-| `GetLanguageNames`      | [Jazyky](reference/v3-0-languages.md)         |
-| `GetLanguagesForTranslate`     | [Jazyky](reference/v3-0-languages.md)       |
+| `GetLanguageNames`      | [Languages](reference/v3-0-languages.md)         |
+| `GetLanguagesForTranslate`     | [Languages](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| `Detect`     | [Zjištění](reference/v3-0-detect.md)         |
-| `DetectArray`     | [Zjištění](reference/v3-0-detect.md)         |
+| `Detect`     | [Detect](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Detect](reference/v3-0-detect.md)         |
 | `AddTranslation`     | Funkce se už nepodporuje.       |
 | `AddTranslationArray`    | Funkce se už nepodporuje.          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
@@ -142,7 +142,7 @@ Pokud používáte api.cognitive.microsofttranslator.com koncový bod používá
 
 * [Zásady ochrany osobních údajů společnosti Microsoft](https://privacy.microsoft.com/privacystatement)
 * [Právní informace týkající se Microsoft Azure](https://azure.microsoft.com/support/legal)
-* [Podmínky online služeb](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [Online Services Terms](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>Další postup
 

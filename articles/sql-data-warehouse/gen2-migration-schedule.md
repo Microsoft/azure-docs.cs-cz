@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: 575b6384d910abac1c0a1184aef4aa72f686538c
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ed3029f2e336c03de616bc00733f1b9c104ddb86
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648569"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917885"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade služby data warehouse na Gen2
 
@@ -32,38 +32,38 @@ Následující tabulka shrnuje podle oblastí, při nižší Gen2 výpočetní v
 
 | **Oblast** | **K dispozici nižší Gen2** | **Zahájit automatické upgrady** |
 |:--- |:--- |:--- |
-| Austrálie – východ |K dispozici. |1. května 2019 |
-| Austrálie – jihovýchod |2. dubna 2019 |1. června 2019 |
+| Austrálie – východ |K dispozici. |1. června 2019 |
+| Austrálie – jihovýchod |2. dubna 2019 |1. května 2019 |
 | Brazílie – jih |15. května 2019 |\* |
-| Kanada – střed |K dispozici. |1. května 2019 |
+| Kanada – střed |K dispozici. |1. června 2019 |
 | Kanada – východ |\* |\* |
-| USA – střed |K dispozici. |1. května 2019 |
+| USA – střed |K dispozici. |1. června 2019 |
 | Čína – východ |\* |\* |
 | Čína – východ 2 |\* |\* |
 | Čína – sever |\* |\* |
 | Čína – sever 2 |\* |\* |
-| Východní Asie |K dispozici. |1. května 2019 |
-| USA – východ |K dispozici. |1. května 2019 |
-| Východní USA 2 |K dispozici. |1. května. 2019 |
+| Východní Asie |K dispozici. |1. června 2019 |
+| USA – východ |K dispozici. |1. června 2019 |
+| Východní USA 2 |K dispozici. |1. června. 2019 |
 | Francie – střed |\* |\* |
 | Německo – střed |\* |\* |
 | Německo – středozápad |1. září 2019|2. ledna 2020 |
-| Indie – střed |K dispozici. |1. května 2019 |
+| Indie – střed |K dispozici. |1. června 2019 |
 | Indie – jih |2. dubna 2019 |1. června 2019 |
-| Japonsko – východ |K dispozici. |1. května 2019 |
-| Japonsko – západ |K dispozici. |1. června 2019 |
-| Korea – střed |2. dubna 2019 |1. května 2019 |
-| Jižní Korea – jih |2. dubna 2019 |1. června 2019 |
-| Středoseverní USA |2. dubna 2019 |1. června 2019 |
-| Severní Evropa |K dispozici. |1. května 2019 |
-| Středojižní USA |K dispozici. |1. května 2019 |
-| Jihovýchodní Asie |K dispozici. |1. května 2019 |
-| Velká Británie – jih |2. dubna 2019 |1. května 2019 |
+| Japonsko – východ |K dispozici. |1. června 2019 |
+| Japonsko – západ |K dispozici. |1. května 2019 |
+| Korea – střed |2. dubna 2019 |1. června 2019 |
+| Jižní Korea – jih |2. dubna 2019 |1. května 2019 |
+| Středoseverní USA |2. dubna 2019 |1. května 2019 |
+| Severní Evropa |K dispozici. |1. června 2019 |
+| Středojižní USA |K dispozici. |1. června 2019 |
+| Jihovýchodní Asie |K dispozici. |1. června 2019 |
+| Velká Británie – jih |2. dubna 2019 |1. června 2019 |
 | Spojené království – západ |\*|\* |
 | Západní střed USA |2. září 2019 |2. ledna 2020|
-| Západní Evropa |K dispozici. |1. května 2019 |
+| Západní Evropa |K dispozici. |1. června 2019 |
 | Západní USA |2. dubna 2019 |1. června 2019 |
-| Západní USA 2 |K dispozici. |1. května 2019 |
+| Západní USA 2 |K dispozici. |1. června 2019 |
 
 ## <a name="automatic-upgrade-process"></a>Proces automatického upgradu
 

@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: e7243c1f0c0bc26b2e77a060b5def6e204835235
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b275a86f8fd35c43865fd920d1bfc9994a796a9c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553475"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919189"
 ---
 >[!NOTE]
 >Pro prostředky, které nejsou pevné otevřete lístek podpory a požádejte o zvýšení kvóty. Nevytvářejte další účty Azure Media Services ve snaze zajistit vyšší limity.
@@ -39,7 +39,7 @@ ms.locfileid: "57553475"
 
 Od 1. dubna 2017 libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní automaticky odstraní, spolu s jeho související záznamy. Automatické odstranění dojde i v případě, že celkový počet záznamů je nižší než maximální kvóta. Chcete-li tyto informace archivovat, úloh a úkolů, použít kód popsaný v [Správa prostředků pomocí sady Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md).
 
-<sup>3</sup>když provedete žádost o seznam úloh entity, maximálně 1 000 úloh se vrátí na žádost. Mějte přehled o všechny odeslané úlohy, horní nebo přeskočit dotazy, jak je popsáno v [možností dotazu systému OData](https://msdn.microsoft.com/library/gg309461.aspx).
+<sup>3</sup>když provedete žádost o seznam úloh entity, maximálně 1 000 úloh se vrátí na žádost. Mějte přehled o všechny odeslané úlohy, horní nebo přeskočit dotazy, jak je popsáno v [možností dotazu systému OData](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)).
 
 <sup>4</sup>lokátory nejsou určené pro správu řízení přístupu na uživatele. Chcete-li poskytnout různá přístupová práva pro jednotlivé uživatele, použijte řešení digital rights management (DRM). Další informace najdete v tématu [chránit obsah pomocí služby Azure Media Services](../articles/media-services/previous/media-services-content-protection-overview.md).
 

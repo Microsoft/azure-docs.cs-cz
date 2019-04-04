@@ -3,19 +3,19 @@ title: Collaborative Translation Framework (CTF) generování sestav – Transla
 titlesuffix: Azure Cognitive Services
 description: Jak použít vytváření sestav Collaborative Translation Framework (CTF).
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: a2f8a9c5ceaac6209391df17f4ec08027991382b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da321aa2a4db441fa5bb51e4986d00889cb7482d
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123415"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917392"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Jak použít vytváření sestav CTF (Collaborative Translation Framework)
 

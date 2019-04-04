@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 901c844ecbfbbe68163c70b12cc061eae0f75d5a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ed5df09d492bbf6123e76f73717a1738a23a066c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860469"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893703"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Kurz: Sestavování a nasazování imagí kontejnerů v cloudu pomocí služby Azure Container Registry úlohy
 
@@ -30,7 +30,7 @@ V tomto kurzu, který je první částí série, se naučíte:
 > * Sestavit image kontejneru v Azure
 > * Nasazení kontejneru do služby Azure Container Instances
 
-V následujících kurzech se naučíte použít ACR Tasks k automatizovanému sestavení imagu kontejneru při potvrzení kódu a aktualizaci základní image. Můžete také spouštět úlohy ACR [vícekrokových úkolů](container-registry-tasks-multi-step.md) (aktuálně ve verzi preview), použití YAML souboru k definování kroky sestavení, vkládat a volitelně test několik kontejnerů.
+V následujících kurzech se naučíte použít ACR Tasks k automatizovanému sestavení imagu kontejneru při potvrzení kódu a aktualizaci základní image. Můžete také spouštět úlohy služby ACR [vícekrokových úkolů](container-registry-tasks-multi-step.md), definujte postup pro sestavení pomocí souboru YAML, push a volitelně test několik kontejnerů.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -312,7 +312,7 @@ az ad sp delete --id http://$ACR_NAME-pull
 Teď, když jste pomocí rychlé úlohy otestovali vnitřní smyčku, můžete nakonfigurovat **úlohu sestavení**, která aktivuje sestavení imagí kontejnerů při potvrzení zdrojového kódu do úložiště Git:
 
 > [!div class="nextstepaction"]
-> [Aktivace automatických sestavení pomocí úloh](container-registry-tutorial-build-task.md)
+> [Automatická aktivační události sestavení s úkoly](container-registry-tutorial-build-task.md)
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip

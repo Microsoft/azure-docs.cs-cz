@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/6/2018
 ms.author: trinadhk
-ms.openlocfilehash: f5695da01752d701e1b688700580982f2d2e6154
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: acf71ae6f37ab6ea32d9cdd0ac06f297b00fba2e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827410"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918565"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Dotazy týkající se agenta Azure Backup
 Tento článek obsahuje odpovědi na běžné dotazy, které vám pomůžou rychle porozumět komponentám agenta Azure Backup. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -116,10 +116,10 @@ Složka mezipaměti ani virtuální pevný disk s metadaty nemají atributy vyž
 Když server přejmenujete, všechna stávající nastavená zálohování se zastaví. Zaregistrujte nový název serveru k trezoru služby Backup. Když zaregistrujete nový název trezoru, první zálohování bude provedeno jako *úplné*. Pokud potřebujete obnovit data zálohovaná do trezoru se starým názvem serveru, použijte možnost [**Jiný server**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) v průvodci **Obnova dat**.
 
 ### <a name="what-is-the-maximum-file-path-length-that-can-be-specified-in-backup-policy-using-azure-backup-agent-br"></a>Jaká je maximální délka cesty k souboru, kterou lze zadat v zásadě služby Backup pomocí agenta Azure Backup? <br/>
-Agent Azure Backup se spoléhá na systém souborů NTFS. [Specifikace délky cesty k souboru je omezená rozhraním API systému Windows](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths). Pokud mají soubory, které chcete chránit, délku cesty k souboru větší než povoluje rozhraní API systému Windows, zálohujte nadřazenou složku nebo diskovou jednotku.  
+Agent Azure Backup se spoléhá na systém souborů NTFS. [Specifikace délky cesty k souboru je omezená rozhraním API systému Windows](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths). Pokud mají soubory, které chcete chránit, délku cesty k souboru větší než povoluje rozhraní API systému Windows, zálohujte nadřazenou složku nebo diskovou jednotku.  
 
 ### <a name="what-characters-are-allowed-in-file-path-of-azure-backup-policy-using-azure-backup-agent-br"></a>Jaké znaky jsou povolené v cestě k souboru zásady Azure Backup pomocí agenta Azure Backup? <br>
- Agent Azure Backup se spoléhá na systém souborů NTFS. Pro specifikaci souboru povoluje [znaky podporované systémem souborů NTFS](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions). 
+ Agent Azure Backup se spoléhá na systém souborů NTFS. Pro specifikaci souboru povoluje [znaky podporované systémem souborů NTFS](/windows/desktop/FileIO/naming-a-file#naming_conventions). 
  
 ### <a name="i-receive-the-warning-azure-backups-have-not-been-configured-for-this-server-even-though-i-configured-a-backup-policy-br"></a>Zobrazuje se upozornění „Služba Azure Backup nebyla pro tento server nakonfigurovaná“ i přesto, že jsem nakonfiguroval zásadu zálohování. <br/>
 Toto upozornění se zobrazí v případě, že se nastavení plánu zálohování uložené na místním serveru neshodují s nastaveními uloženými v trezoru záloh. Pokud došlo k obnovení serveru nebo nastavení do známého stavu, může dojít ke ztrátě synchronizace plánů zálohování. Pokud se zobrazí toto upozornění, [překonfigurujte zásadu zálohování](backup-azure-manage-windows-server.md) a poté **spusťte Zálohovat nyní**, aby došlo k opětovné synchronizaci místního serveru s Azure. 

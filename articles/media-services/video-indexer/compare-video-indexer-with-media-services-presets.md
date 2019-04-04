@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: b4c74a67c66b12e3a7333f3e679e7c61a750cf7e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 041e76ccecb4dd0fe9c060681609dfb92c03ec5a
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002387"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893142"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Porovnání služeb Azure Media Services v3 přednastavení a Video Indexer 
 
 Tento článek porovnává možnosti **rozhraní Video Indexer API** a **rozhraní API služby Media Services v3**. 
 
-V současné době je k překrytí mezi součástmi, které nabízí [Video Indexer API v2](https://api-portal.videoindexer.ai/) a [rozhraní API služby Media Services v3](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json). Následující tabulka nabízí aktuální obecných zásad pro pochopení rozdíly a podobnosti. 
+V současné době je k překrytí mezi součástmi, které nabízí [rozhraní Video Indexer API](https://api-portal.videoindexer.ai/) a [rozhraní API služby Media Services v3](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json). Následující tabulka nabízí aktuální obecných zásad pro pochopení rozdíly a podobnosti. 
 
 ## <a name="compare"></a>Porovnání
 
@@ -39,6 +39,6 @@ V současné době je k překrytí mezi součástmi, které nabízí [Video Inde
 
 ## <a name="next-steps"></a>Další postup
 
-[Přehled Video Indexeru](video-indexer-overview.md)
+[Video Indexer s přehledem](video-indexer-overview.md)
 
 [Přehled služby Media Services v3](../latest/media-services-overview.md)

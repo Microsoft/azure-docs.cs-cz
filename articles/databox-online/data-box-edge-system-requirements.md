@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 720f4433c1e7b0d271e5729236f439c92a84687e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a67cbd3bfca478a45e12adeb0bf119b891866718
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884648"
+ms.locfileid: "58905235"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Požadavky na systém Azure Data Box Edge
 
@@ -80,15 +80,23 @@ Doporučujeme nastavit pravidla brány firewall pro odchozí provoz, založené 
 
 ### <a name="url-patterns-for-compute-feature"></a>Vzory adres URL pro výpočetní funkce
 
-| Vzor adresy URL                      | Komponenta nebo funkce                     |   |
-|----------------------------------|---------------------------------------------|---|
-| `https://mcr.microsoft.com`<br></br>https://\*.cdn.mscr.io | Microsoft registru kontejneru (povinné)               |   |
-| https://\*.azurecr.io                     | Registry kontejnerů osobní a třetí strany (volitelné) |   |
-| https://\*.azure-devices.net              | Přístup k službě IoT Hub (povinné)                             |   |
+| Vzor adresy URL                      | Komponenta nebo funkce                     |   
+|----------------------------------|---------------------------------------------|
+| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft registru kontejneru (povinné)               |
+| https://\*.azurecr.io                     | Registry kontejnerů osobní a třetí strany (volitelné) | 
+| https://\*.azure-devices.net              | Přístup k službě IoT Hub (povinné)                             | 
 
-### <a name="url-patterns-for-azure-government"></a>Vzory adres URL pro Azure Government
+### <a name="url-patterns-for-gateway-for-azure-government"></a>Vzory adres URL pro bránu pro Azure Government
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
+
+### <a name="url-patterns-for-compute-for-azure-government"></a>Vzory adres URL pro službu compute pro Azure Government
+
+| Vzor adresy URL                      | Komponenta nebo funkce                     |  
+|----------------------------------|---------------------------------------------|
+| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft registru kontejneru (povinné)               |
+| https://\*.azure-devices.us              | Přístup k službě IoT Hub (povinné)           |
+| https://\*.azurecr.us                    | Registry kontejnerů osobní a třetí strany (volitelné) | 
 
 ## <a name="internet-bandwidth"></a>Šířka pásma sítě Internet
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7bf7e341a83727e21e9225c384829c05b7230579
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5d6ec0197699f603c79f414e015cdebcde6b9f60
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095989"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905609"
 ---
 # <a name="azure-application-skus-tab"></a>Karta skladové jednotky Azure aplikace
 
@@ -135,7 +135,7 @@ Pro spravované aplikace musíte nakonfigurovat ověřování a nastavení zása
 
 #### <a name="authorization"></a>Autorizace
 
-Přidáte Azure Active Directory identifikátor uživatele, skupinu nebo aplikaci, ke kterému chcete udělit oprávnění pro spravovanou skupinu prostředků. Oprávnění, jemuž byl poskytnut se vyznačuje ID definice role Je možné vlastníkem, přispěvatelem nebo jakoukoli vlastní roli.
+Přidáte Azure Active Directory identifikátor uživatele, skupinu nebo aplikaci, ke kterému chcete udělit oprávnění pro spravovanou skupinu prostředků. Oprávnění, jemuž byl poskytnut se vyznačuje ID definice role To může být vlastníkem, přispěvatelem nebo jakoukoli vlastní roli.
 
 #### <a name="policy-settings"></a>Nastavení zásad
 

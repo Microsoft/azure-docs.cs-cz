@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: f9bf23094f47f5c200f7a02f81a8e185f469c580
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516956"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893448"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -22,7 +22,7 @@ Při nahrávání videí pomocí služby Video Indexer API, máte následující
 
 * Nahrání videa na server z adresy URL (upřednostňovaná možnost)
 * Odešlete soubor videa jako bajtové pole v textu požadavku
-* Použijte existující prostředek služby Azure Media Services tím, že poskytuje [id assetu](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (podporováno pouze placené účty).
+* Použijte existující prostředek služby Azure Media Services tím, že poskytuje [ID assetu](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (podporováno pouze placené účty).
 
 Tento článek ukazuje, jak používat API [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) (Nahrát video) k nahrání videí na server a jejich indexování na základě adresy URL. Vzorový kód v článku obsahuje okomentovaný kód, který ukazuje, jak nahrát pole bajtů. <br/>Článek se také zabývá některými parametry, které můžete v API nastavit, abyste proces a výstup API změnili.
 
@@ -85,9 +85,9 @@ Adresa URL, která se používá k upozornění zákazníků (pomocí požadavku
 
 Tento parametr použijte, pokud nezpracované nebo externí záznamy obsahují šum na pozadí. Tento parametr se používá ke konfiguraci indexovacího procesu. Můžete určit tyto hodnoty:
 
-- `Default` – indexovat a extrahovat přehledy s využitím zvuku i videa
-- `AudioOnly` – indexovat a extrahovat přehledy s využitím jenom zvuku (video se ignoruje)
-- `DefaultWithNoiseReduction` – indexovat a extrahovat přehledy ze zvuku i videa při použití algoritmů snížení šumu na zvukový datový proud
+- `Default` – Index a extrahovat přehledy s využitím audio a video
+- `AudioOnly` – Index a extrahovat přehledy s využitím zvuku pouze (ignoruje video)
+- `DefaultWithNoiseReduction` – Index a extrakce poznatků z zvuku a videa, při použití algoritmů snížení šumu na zvukový datový proud
 
 Cena závisí na vybrané možnosti indexování.  
 
@@ -175,7 +175,7 @@ public async Task Sample()
     var uploadRequestResult = await client.PostAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos?{queryParams}", content);
     var uploadResult = await uploadRequestResult.Content.ReadAsStringAsync();
 
-    // get the video id from the upload result
+    // get the video ID from the upload result
     string videoId = JsonConvert.DeserializeObject<dynamic>(uploadResult)["id"];
     Debug.WriteLine("Uploaded");
     Debug.WriteLine("Video ID:");
@@ -290,4 +290,4 @@ Operace Upload může vrátit kódy stavu uvedené v následující tabulce.
 
 ## <a name="next-steps"></a>Další postup
 
-[Prozkoumejte výstup Azure Video Indexeru vytvořený pomocí rozhraní API v2](video-indexer-output-json-v2.md)
+[Prozkoumání výstupu funkce Video Indexer pro Azure vytvořené metodou rozhraní API](video-indexer-output-json-v2.md)

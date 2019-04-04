@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/24/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f062596e2be93065b3c076787c2f5b3dfcedf9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: af30568d3ab35b35d2a0e0bef00921debb1ea451
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110116"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917800"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Rychlý start: Přidání aplikace do svého tenanta Azure Active Directory
 
@@ -42,76 +42,67 @@ K testování postupů v tomto kurzu doporučujeme použít neprodukční prost�
 
 Přidání aplikace z galerie do tenanta Azure AD:
 
-1. Na webu [Azure Portal](https://portal.azure.com) klikněte na levém navigačním panelu na **Azure Active Directory**.
+1. V [webu Azure portal](https://portal.azure.com), v levém navigačním panelu vyberte **Azure Active Directory**.
 
-2. V okně **Azure Active Directory** klikněte na **Podnikové aplikace**.
+2. V **Azure Active Directory** vyberte **podnikové aplikace**.
 
     ![Otevřené podnikové aplikace](media/add-application-portal/open-enterprise-apps.png)
 
-3. Otevře se okno **Všechny aplikace**, ve kterém se zobrazí náhodný vzorek aplikací ve vašem tenantovi Azure AD.
-
-    ![Okno Všechny aplikace](media/add-application-portal/applications-blade.png)
-
-
-4. V horní části okna **Všechny aplikace** klikněte na **Nová aplikace**.
+3. **Všechny aplikace** se otevře podokno zobrazíte náhodného vzorku aplikací ve vašem tenantovi Azure AD. Vyberte **novou aplikaci** v horní části **všechny aplikace** podokně.
 
     ![Nová aplikace](media/add-application-portal/new-application.png)
 
-5. Pokud chcete zobrazit seznam aplikací v galerii, je nejjednodušší použít **Kategorie**, protože ikony v části **Vybrané aplikace** představují náhodný vzorek aplikací v galerii.
+4. V **kategorie** podokně, zobrazí se ikony v rámci **vybrané aplikace** oblast, která jsou náhodného vzorku Galerie aplikací.  Pokud chcete zobrazit další aplikace, můžete vybrat **zobrazit více**. Ale nedoporučujeme hledání tímto způsobem, protože existují nepřeberným množstvím aplikací v galerii.
 
     ![Hledání podle názvu nebo kategorie](media/add-application-portal/categories.png)
 
-    Další aplikace můžete zobrazit kliknutím na **Zobrazit více**. Hledání tímto způsobem nedoporučujeme, protože galerie obsahuje tisíce aplikací.
-
-6. Pokud chcete vyhledat aplikaci, v části **Přidat z galerie** zadejte název aplikace, kterou chcete přidat. Ve výsledcích vyberte aplikaci a klikněte na **Přidat**. Následující příklad ukazuje **přidat aplikaci** formulář, který se zobrazí po hledání webu github.com.
+5. K vyhledání aplikace, v části **přidat z Galerie**, zadejte název aplikace, které chcete přidat. Vyberte aplikaci z výsledků a vyberte **přidat**. Následující příklad ukazuje **přidat aplikaci** formulář, který se zobrazí po hledání webu github.com.
 
     ![Přidání aplikace](media/add-application-portal/add-an-application.png)
 
 6. Ve formuláři pro konkrétní aplikaci můžete změnit informace o vlastnostech. Například můžete upravit název aplikace, aby odpovídal potřebám vaší organizace. V tomto příkladu se používá název **GitHub-test**.
 
-8. Jakmile budete se změnami vlastností hotovi, klikněte na **Přidat**.
+7. Po dokončení změn vlastností, vyberte **přidat**.
 
-9. Zobrazí se stránka Začínáme s možnostmi konfigurace aplikace pro vaši organizaci.
+8. Zobrazí se stránka Začínáme s možnostmi konfigurace aplikace pro vaši organizaci.
 
-    ![Nabídka Začínáme](media/add-application-portal/get-started.png)
-
-Dokončili jste přidání vaší aplikace. Můžete si udělat pauzu. V následujících částech se dozvíte, jak změnit logo a upravit další vlastnosti aplikace.
+Dokončení přidání aplikace. Můžete si udělat pauzu. V následujících částech se dozvíte, jak změnit logo a upravit další vlastnosti aplikace.
 
 ## <a name="find-your-azure-ad-tenant-application"></a>Vyhledání aplikace tenanta Azure AD
 
-Předpokládejme, že jste se museli vzdálit a teď se vracíte dokončit konfiguraci aplikace. První věc, kterou je potřeba udělat, je najít aplikaci.
+Předpokládejme, že jste se museli vzdálit a teď se vracíte dokončit konfiguraci aplikace. Prvním krokem je najít aplikace.
 
-1. Na webu **[Azure Portal](https://portal.azure.com)** klikněte na levém navigačním panelu na **Azure Active Directory**.
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu vyberte **Azure Active Directory**.
 
-2. V okně Azure Active Directory klikněte na **Podnikové aplikace**.
+2. V **Azure Active Directory** vyberte **podnikové aplikace**.
 
-3. V rozevírací nabídce **Typ aplikace** vyberte **Všechny aplikace** a klikněte na **Použít**. Další informace o možnostech zobrazení najdete v tématu [Zobrazení aplikací tenanta](view-applications-portal.md).
+3. Z **typ aplikace** rozevírací nabídky vyberte **všechny aplikace**a pak vyberte **použít**. Další informace o možnostech zobrazení najdete v tématu [Zobrazení aplikací tenanta](view-applications-portal.md).
 
-4. Zobrazí se seznam všech aplikací ve vašem tenantovi Azure AD. Tento seznam představuje náhodný vzorek. Pokud chcete zobrazit další aplikace, jednou nebo vícekrát klikněte na **Zobrazit více**.
+4. Zobrazí se seznam všech aplikací ve vašem tenantovi Azure AD. Tento seznam představuje náhodný vzorek. Pokud chcete zobrazit další aplikace, vyberte **zobrazit více** jednou nebo vícekrát.
 
-5. Pokud chcete rychle vyhledat aplikaci ve svém tenantovi, zadejte název aplikace do vyhledávacího pole a klikněte na **Použít**. V tomto příkladu se vyhledá dříve přidaná aplikace GitHub-test.
+5. K rychlému vyhledání aplikace ve vašem tenantovi, do vyhledávacího pole zadejte název aplikace a vyberte **použít**. Tento příklad vyhledá Githubu a testování aplikací, přidali dříve.
 
     ![Vyhledání aplikace](media/add-application-portal/find-application.png)
 
 
 ## <a name="configure-user-sign-in-properties"></a>Konfigurace vlastností přihlašování uživatelů
 
-Teď, když jste našli aplikaci, ji můžete otevřít a nakonfigurovat její vlastnosti.
+Teď, když jste nalezené aplikace, můžete ji otevřete a nakonfigurujte vlastnosti aplikace.
 
-Úprava vlastností aplikace
+Postup úpravy vlastností aplikace:
 
-1. Kliknutím na aplikaci ji otevřete.
-2. Kliknutím na **Vlastnosti** otevřete okno vlastností umožňující úpravy.
+1. Vyberte aplikaci, otevřete ho.
+2. Vyberte **vlastnosti** a otevřete tak podokno vlastností pro úpravy.
 
-    ![Okno Upravit vlastnosti](media/add-application-portal/edit-properties.png)
+    ![Upravit vlastnosti podokno](media/add-application-portal/edit-properties.png)
 
-3. Seznamte se s možnostmi přihlašování. Kombinací možností **Mohou se uživatelé přihlásit?**, **Je přiřazení uživatelů povinné?** a **Uvidí ji uživatelé?** se určuje, jestli se můžou přihlásit uživatelé přiřazení nebo nepřiřazení k aplikaci. Tyto možnosti také určují, jestli se uživateli zobrazí aplikace na přístupovém panelu.
+3. Seznamte se s možnostmi přihlašování. Možnosti určují, jak můžete uživatelé, kteří jsou přiřazeny nebo Nepřiřazení k aplikaci přihlásit do aplikace. A možnosti, také určují, pokud uživatel můžete zobrazit aplikace na přístupovém panelu.
 
     - Možnost **Mohou se uživatelé přihlásit?** určuje, jestli se můžou přihlásit uživatelé přiřazení k aplikaci.
-    - Možnost **Je přiřazení uživatelů povinné?** určuje, jestli se můžou přihlásit uživatelé nepřiřazení k aplikaci.
+    - **Přiřazení uživatelů povinné** Určuje, jestli uživatelé, kteří nemají přiřazenou aplikaci mohou přihlásit.
     - Možnost **Uvidí ji uživatelé?** určuje, jestli se uživatelům přiřazeným k aplikaci zobrazí aplikace na přístupovém panelu a ve spouštěči O365.
 
-4. Následující tabulky vám pomůžou zvolit možnosti, které jsou pro vaše potřeby nejvhodnější.
+4. Pomocí následující tabulky vám pomůžou vybrat nejlepší možnosti pro vaše potřeby.
 
    - Chování pro **přiřazené** uživatele:
 
@@ -148,10 +139,10 @@ Teď, když jste našli aplikaci, ji můžete otevřít a nakonfigurovat její v
 Použití vlastního loga:
 
 1. Vytvořte logo o rozměrech 215 × 215 pixelů a uložte ho ve formátu PNG.
-2. Vzhledem k tomu, že jste už aplikaci našli, klikněte na ni.
-2. V levém okně klikněte na **Vlastnosti**.
+2. Protože jste již nenachází vaší aplikace, vyberte aplikaci.
+2. V levém podokně vyberte **vlastnosti**.
 4. Nahrajte logo.
-5. Jakmile budete hotovi, klikněte na **Uložit**.
+5. Jakmile budete hotovi, vyberte **Uložit**.
 
     ![Změna loga](media/add-application-portal/change-logo.png)
 

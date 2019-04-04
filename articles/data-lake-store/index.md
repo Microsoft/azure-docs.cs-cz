@@ -1,16 +1,22 @@
 ---
-title: 'Dokumentace ke službě Azure Data Lake Storage Gen1 – kurzy, reference k rozhraní API | Microsoft Docs'
-description: 'Naučte se nastavovat a spravovat úložiště Data Lake ve velkém měřítku, které je kompatibilní s Hadoopem, a přistupovat k němu pro účely analýzy dat libovolné velikosti, typu a rychlosti příjmu.'
+title: Dokumentace ke službě Azure Data Lake Storage Gen1 – kurzy, reference k rozhraní API | Microsoft Docs
+description: Naučte se nastavovat a spravovat úložiště Data Lake ve velkém měřítku, které je kompatibilní s Hadoopem, a přistupovat k němu pro účely analýzy dat libovolné velikosti, typu a rychlosti příjmu.
 services: data-lake-store
 author: twooley
 manager: twooley
 layout: LandingPage
-ms.assetid: null
+ms.assetid: ''
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
+ms.openlocfilehash: 24d6f41e2415d9a8a6113135bf11c98b1e19f1f7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904657"
 ---
 # <a name="azure-data-lake-storage-gen1-documentation"></a>Dokumentace ke službě Azure Data Lake Storage Gen1
 
@@ -175,7 +181,7 @@ Naučte se používat Azure Data Lake Storage Gen1 (dříve označované jako Az
                 <div class="card">
                     <div class="cardText">
                         <h3>Příkazový řádek</h3>
-                        <p><a href="/powershell/module/azurerm.datalakestore/">PowerShell</a></p>
+                        <p><a href="/powershell/module/az.datalakestore/">PowerShell</a></p>
                         <p><a href="/cli/azure/dls">Azure CLI</a></p>
                     </div>
                 </div>

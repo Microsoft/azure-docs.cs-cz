@@ -8,18 +8,16 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: richrund
-ms.openlocfilehash: f37c8290defa5e7c9baa3b705393aba376936fd8
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 5c348adea0847929b37d1b61f024859b1d634fe7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539373"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903399"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Správa pracovního prostoru Log Analytics ve službě Azure Monitor, pomocí Powershellu
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Můžete použít [rutiny Powershellu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) k provádění různých funkcí na pracovní prostor Log Analytics ve službě Azure Monitor z příkazového řádku nebo v rámci skriptu.  Příklady úloh, které můžete provést pomocí prostředí PowerShell:
+Můžete použít [rutiny Powershellu Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) k provádění různých funkcí na pracovní prostor Log Analytics ve službě Azure Monitor z příkazového řádku nebo v rámci skriptu.  Příklady úloh, které můžete provést pomocí prostředí PowerShell:
 
 * Vytvoření pracovního prostoru
 * Přidat nebo odebrat řešení
@@ -33,10 +31,12 @@ Můžete použít [rutiny Powershellu Log Analytics](https://docs.microsoft.com/
 * Přidat agenta log analytics na virtuálním počítači Azure
 * Nakonfigurujte log analytics a index data shromážděná pomocí diagnostiky Azure
 
-Tento článek obsahuje dva příklady, které znázorňují některé z funkcí, které můžete provádět z prostředí PowerShell.  Můžete se podívat do [Reference k rutinám Powershellu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) pro jiné funkce.
+Tento článek obsahuje dva příklady, které znázorňují některé z funkcí, které můžete provádět z prostředí PowerShell.  Můžete se podívat do [Reference k rutinám Powershellu Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) pro jiné funkce.
 
 > [!NOTE]
 > Log Analytics se dříve nazývala Operational Insights, což je důvod, proč je název používaný v rutinách.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 Tyto příklady práce s verze 1.0.0 nebo novějším modulu Az.OperationalInsights.
@@ -272,5 +272,5 @@ Můžete také použít předchozí skript shromažďování protokolů z účt�
 
 
 ## <a name="next-steps"></a>Další postup
-* [Zkontrolujte rutiny Powershellu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) Další informace o použití prostředí PowerShell pro konfiguraci služby Log Analytics.
+* [Zkontrolujte rutiny Powershellu Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) Další informace o použití prostředí PowerShell pro konfiguraci služby Log Analytics.
 

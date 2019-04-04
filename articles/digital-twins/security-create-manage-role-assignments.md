@@ -9,16 +9,19 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: lyrana
 ms.custom: seodec18
-ms.openlocfilehash: 725f95797de0a4d4e6240be4d42cf8a196d94889
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 72155799971760e9ddc93746dceafb1ea554d88b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118587"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905303"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Vytvořit a spravovat přiřazení rolí v Azure digitální dvojče
 
 Azure digitální dvojče používá řízení přístupu na základě rolí ([RBAC](./security-role-based-access-control.md)) ke správě přístupu k prostředkům.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="role-assignments-overview"></a>Přehled přiřazení role
 
@@ -38,11 +41,11 @@ Následující tabulka popisuje každý atribut:
 
 | Atribut | Název | Požaduje se | Typ | Popis |
 | --- | --- | --- | --- | --- |
-| RoleId | Identifikátor definice role | Ano | Řetězec | Jedinečné ID přiřazení požadované role. Najdete definice rolí a jejich identifikátoru dotazování rozhraní API systému nebo kontrola následující tabulka. |
-| ID objektu | Identifikátor objektu | Ano | Řetězec | ID služby Azure Active Directory, ID instančního objektu služby nebo název domény. Co nebo které je přiřazeno přiřazení role. Přiřazení role musí být naformátovaná podle jeho přidruženého typu. Pro `DomainName` objectIdType, objectId musí začínat `“@”` znak. |
-| objectIdType | Typ identifikátoru objektu | Ano | Řetězec | Druh použít identifikátor objektu. Zobrazit **podporované ObjectIdTypes** níže. |
-| path | Místo cesty | Ano | Řetězec | Cesta úplný přístup k `Space` objektu. Příklad: `/{Guid}/{Guid}`. Pokud identifikátor potřebuje přiřazení role pro celý graf, zadejte `"/"`. Tento znak určuje kořenový adresář, ale jeho použití se nedoporučuje. Vždy použijte Princip nejnižších oprávnění. |
-| ID Tenanta | Identifikátor tenanta | Různé | Řetězec | Ve většině případů ID tenanta služby Azure Active Directory. Zakázáno pro `DeviceId` a `TenantId` ObjectIdTypes. Vyžaduje se pro `UserId` a `ServicePrincipalId` ObjectIdTypes. Volitelné pro DomainName ObjectIdType. |
+| RoleId | Identifikátor definice role | Ano | String | Jedinečné ID přiřazení požadované role. Najdete definice rolí a jejich identifikátoru dotazování rozhraní API systému nebo kontrola následující tabulka. |
+| ID objektu | Identifikátor objektu | Ano | String | ID služby Azure Active Directory, ID instančního objektu služby nebo název domény. Co nebo které je přiřazeno přiřazení role. Přiřazení role musí být naformátovaná podle jeho přidruženého typu. Pro `DomainName` objectIdType, objectId musí začínat `“@”` znak. |
+| objectIdType | Typ identifikátoru objektu | Ano | String | Druh použít identifikátor objektu. Zobrazit **podporované ObjectIdTypes** níže. |
+| path | Místo cesty | Ano | String | Cesta úplný přístup k `Space` objektu. Příklad: `/{Guid}/{Guid}`. Pokud identifikátor potřebuje přiřazení role pro celý graf, zadejte `"/"`. Tento znak určuje kořenový adresář, ale jeho použití se nedoporučuje. Vždy použijte Princip nejnižších oprávnění. |
+| ID Tenanta | Identifikátor tenanta | Různé | String | Ve většině případů ID tenanta služby Azure Active Directory. Zakázáno pro `DeviceId` a `TenantId` ObjectIdTypes. Vyžaduje se pro `UserId` a `ServicePrincipalId` ObjectIdTypes. Volitelné pro DomainName ObjectIdType. |
 
 ### <a name="supported-role-definition-identifiers"></a>Identifikátory definice role podporovaná
 
@@ -83,8 +86,8 @@ Vaše ID aplikace je součástí v Azure Active Directory. Další informace o k
 Jakmile máte ID aplikace, spusťte následující příkazy Powershellu:
 
 ```shell
-Login-AzureRmAccount
-Get-AzureRmADServicePrincipal -ApplicationId  <ApplicationId>
+Login-AzAccount
+Get-AzADServicePrincipal -ApplicationId  <ApplicationId>
 ```
 
 Uživatel s **správce** rolí potom můžete přiřadit role správce místa uživatele tím, že ověřeného požadavku HTTP POST na adresu URL:
@@ -160,12 +163,12 @@ Pokud chcete zkontrolovat konkrétní roli přiřazení, ujistěte se, ověřen�
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
-| **Hodnota parametru** | **Požadováno** |  **Typ** |  **Popis** |
+| **Hodnota parametru** | **Požaduje se** |  **Typ** |  **Popis** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True | Řetězec |   ObjectId pro objectIdType ID uživatele. |
-| YOUR_PATH | True | Řetězec |   Vybrané cesty ke kontrole přístupu. |
-| YOUR_ACCESS_TYPE |  True | Řetězec |   Typ přístupu ke kontrole. |
-| YOUR_RESOURCE_TYPE | True | Řetězec |  Prostředek, který chcete zkontrolovat. |
+| YOUR_USER_ID |  True | String |   ObjectId pro objectIdType ID uživatele. |
+| YOUR_PATH | True | String |   Vybrané cesty ke kontrole přístupu. |
+| YOUR_ACCESS_TYPE |  True | String |   Typ přístupu ke kontrole. |
+| YOUR_RESOURCE_TYPE | True | String |  Prostředek, který chcete zkontrolovat. |
 
 Vrátí logickou hodnotu úspěšného požadavku `true` nebo `false` označující, zda typ přístupu se přiřadila uživateli pro danou cestu a prostředků.
 

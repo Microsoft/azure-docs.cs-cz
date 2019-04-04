@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e00eb5756d34c7ca8cecc741b4832c583a6ed087
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e7dccc4a396d4cf8af1062057c4c3ce6efe978ed
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439013"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918021"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Assety připojení v Azure Automation.
 
 Asset připojení Automation obsahuje informace potřebné pro připojení k externí službě nebo aplikaci z runbooku nebo konfigurace DSC. To může zahrnovat informace požadované pro ověřování, jako je uživatelské jméno a heslo spolu s informacemi o připojení, jako je například adresa URL nebo portu. Hodnota připojení se zachovat všechny vlastnosti pro připojení ke konkrétní aplikaci v jeden prostředek na rozdíl od vytváření několika proměnných. Uživatel může upravovat hodnoty pro připojení na jednom místě a název připojení můžete předat do runbooku nebo konfigurace DSC v jeden parametr. Vlastnosti připojení jsou přístupné z runbooku nebo konfigurace DSC se **Get-AutomationConnection** aktivity. 
 
-Když vytvoříte připojení, je nutné zadat *typ připojení*. Typ připojení je šablonu, která definuje sadu vlastností. Připojení se definuje hodnoty pro jednotlivé vlastnosti definované v jeho typ připojení. Typy připojení jsou přidány do služby Azure Automation v integračních modulech nebo vytvářené pomocí [rozhraní API služby Azure Automation](https://msdn.microsoft.com/library/azure/mt163818.aspx) Pokud modulu integrace obsahuje typ připojení a importovat do účtu Automation. V opačném případě je potřeba vytvořit soubor metadat pro určení typu připojení služby Automation.  Další informace ohledně této najdete v tématu [moduly integrace](automation-integration-modules.md).  
+Když vytvoříte připojení, je nutné zadat *typ připojení*. Typ připojení je šablonu, která definuje sadu vlastností. Připojení se definuje hodnoty pro jednotlivé vlastnosti definované v jeho typ připojení. Typy připojení jsou přidány do služby Azure Automation v integračních modulech nebo vytvářené pomocí [rozhraní API služby Azure Automation](/previous-versions/azure/reference/mt163818(v=azure.100)) Pokud modulu integrace obsahuje typ připojení a importovat do účtu Automation. V opačném případě je potřeba vytvořit soubor metadat pro určení typu připojení služby Automation.  Další informace ohledně této najdete v tématu [moduly integrace](automation-integration-modules.md).  
 
 >[!NOTE]
 >Zabezpečené prostředky ve službě Azure Automation zahrnovat přihlašovací údaje, certifikátů, připojení a zašifrované proměnné. Tyto prostředky jsou zašifrované a uložené ve službě Azure Automation jednotlivých účtů automation pomocí jedinečný klíč, který je generován. Tento klíč je uložen v systému spravované služby Key Vault. Před uložením o zabezpečený prostředek, je klíč načíst ze služby Key Vault a použije k zašifrování assetu. Tento proces se spravuje přes Azure Automation.

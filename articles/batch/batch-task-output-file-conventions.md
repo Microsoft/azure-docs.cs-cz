@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 69a3032ee96accdbafb32c96f4e9f3c89a0b3458
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d30a5ca0910c5ceebb38dec7b4cdbffd9b3cf27e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539492"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916780"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Uchování úloh a dat do služby Azure Storage pomocí knihovny File Conventions služby Batch pro .NET
 
@@ -110,7 +110,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskOutput, "frame_full_res.jpg
 await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg");
 ```
 
-`kind` Parametr [TaskOutputStorage](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx).[ SaveAsync](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx) metoda kategorizuje trvalé soubory. Existují čtyři předdefinované [TaskOutputKind] [ net_taskoutputkind] typy: `TaskOutput`, `TaskPreview`, `TaskLog`, a `TaskIntermediate.` můžete také definovat vlastní kategorie výstupu.
+`kind` Parametr [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage).[ SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) metoda kategorizuje trvalé soubory. Existují čtyři předdefinované [TaskOutputKind] [ net_taskoutputkind] typy: `TaskOutput`, `TaskPreview`, `TaskLog`, a `TaskIntermediate.` můžete také definovat vlastní kategorie výstupu.
 
 Tyto typy výstupu bylo možné určit typ výstupy do seznamu při později dotazování služby Batch pro trvalé výstupy dané úlohy. Jinými slovy zobrazením výstupy pro úkol můžete filtrovat seznam na jednom z formátů výstupu. Například "uvést *ve verzi preview* výstup pro úlohu *109*." Další informace o zobrazení a načítání výstupů se zobrazí ve výstupu načíst později v tomto článku.
 

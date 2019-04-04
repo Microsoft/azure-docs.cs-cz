@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 8c1e463378cc2c1ba3fdc0bcf91f800f634cc5f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 66ee211856bb451caad7af02103aa306d76e8f97
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077118"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916270"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>Řešení potíží s koncovými body Azure CDN, které vrátí stavový kód 404
 V tomto článku můžete řešení problémů s koncovými body Azure Content Delivery Network (CDN), které vracejí 404 kódy stavu odpovědi HTTP.
@@ -76,7 +76,7 @@ Zkontrolujte vaše **HTTP** a **portů HTTPS**. Ve většině případů 80 a 44
 Nicméně, Předpokládejme, že adresa URL pro zdrojový soubor, který jste dříve, je http:\//www.contoso.com:8080/file.txt. Poznámka: *: 8080* část na konci segmentu názvu hostitele. Že číslo dostane pokyn, aby port 8080 slouží k připojení na webový server www\.contoso.com, proto je potřeba zadat *8080* v **HTTP port** pole. Je důležité si uvědomit, že tato nastavení portu ovlivňují jenom jaké port použitý koncovým bodem k načtení informací ze zdroje.
 
 > [!NOTE]
-> **Azure CDN Standard od Akamai** koncových bodů nejsou povoleny plný rozsah portů TCP pro zdroje.  Seznam nepovolených portů původu najdete v tématu [Povolené porty původu Azure CDN společnosti Akamai](https://msdn.microsoft.com/library/mt757337.aspx).  
+> **Azure CDN Standard od Akamai** koncových bodů nejsou povoleny plný rozsah portů TCP pro zdroje.  Seznam nepovolených portů původu najdete v tématu [Povolené porty původu Azure CDN společnosti Akamai](/previous-versions/azure/mt757337(v=azure.100)).  
 > 
 > 
 

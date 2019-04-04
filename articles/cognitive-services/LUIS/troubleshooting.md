@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: aed7d4fedd4781eac8c127744e5fe93fb054b99d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 672c9d43007f954d870f8195bcad63d9cee69523
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369713"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894453"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – nejčastější dotazy (FAQ)
 
@@ -64,7 +64,7 @@ Cortana, které předem sestavených aplikací byla vyřazena jako zastaralá v 
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Jak se převést vlastnictví aplikace LUIS?
 Aplikace LUIS přenést do jiného předplatného Azure, aplikace LUIS exportujte a importujte ho pomocí nového účtu. Aktualizujte ID aplikace LUIS v klientské aplikaci, která je volá. Nová aplikace může vrátit mírně odlišné LUIS skóre z původní aplikace.
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>V utterance příklad namísto Moje vlastní entity se označí předem připravených entit. Jak to můžu vyřešit? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>V utterance příklad namísto Moje vlastní entity se označí předem připravených entit. Jak to mohu napravit? 
 
 Zobrazit [řešení potíží s předem vytvořenými entitami](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
 
@@ -88,7 +88,7 @@ Zobrazit [prostředky služby Azure Active Directory](luis-how-to-collaborate.md
 
 Neočekávaný dotaz predikované výsledky jsou založeny na stav publikovaného modelu. Chcete-li model, je může potřebovat změnit model, trénování a publikujte ho znovu. 
 
-Oprava modelu začíná [aktivně učit](luis-how-to-review-endoint-utt.md).
+Oprava modelu začíná [aktivně učit](luis-how-to-review-endpoint-utterances.md).
 
 Můžete odebrat Nedeterministický školení aktualizací [aplikace verze nastavení rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) aby bylo možné používat všechny trénovací data.
 
@@ -296,9 +296,9 @@ Následující funkce byly vydány na konferenci Build 2018:
 Další vytváření [trasy rozhraní API](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/authoring-routes.md) byly zahrnuty.
 
 Videa:
-* [Azure Friday At Build 2018: Cognitive Services – Language (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
+* [Azure Friday na 2018 sestavení: Cognitive Services – Language (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
 * [Build 2018 AI Show - co je nového službou Language Understanding](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
-* [Seminář na konferenci Build 2018 – Inteligence robotů, možnosti využití řeči a osvědčené postupy NLU](https://channel9.msdn.com/events/Build/2018/BRK3208)
+* [Build 2018 relace – inteligence robotů, možnosti zpracování řeči a NLU osvědčené postupy](https://channel9.msdn.com/events/Build/2018/BRK3208)
 * [Build 2018 - aktualizace LUIS](https://channel9.msdn.com/events/Build/2018/THR3118/player)
 
 Projekty:

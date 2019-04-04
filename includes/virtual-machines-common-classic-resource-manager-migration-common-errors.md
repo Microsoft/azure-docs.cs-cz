@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 2a1bf160926bc2f90e326d773bf6a3e7fdc37103
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 845bd7a6ad690288585418a42e5706fdbebbf143
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505717"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890896"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>Běžné chyby při migraci z modelu Classic na Azure Resource Manager
 Tento článek obsahuje katalog nejběžnějších chyb a omezení rizik při migraci prostředků IaaS z modelu nasazení Azure Classic do zásobníku Azure Resource Manageru.
@@ -34,7 +34,7 @@ Tento článek obsahuje katalog nejběžnějších chyb a omezení rizik při mi
 | Nasazení {název_nasazení} v hostované službě {název_hostované_služby} obsahuje virtuální počítač {název_virtuálního_počítače} s datovým diskem {název_datového_disku}, u kterého fyzická velikost jeho objektu blob {velikost_objektu_blob_VHD_pro_datový_disk} bajtů neodpovídá logické velikosti datového disku virtuálního počítače, která je {velikost_datového_disku_zadaná_v_rozhraní_API_virtuálního_počítače} bajtů. Migrace bude pokračovat bez určení velikosti datového disku pro virtuální počítač Azure Resource Manageru. | K této chybě dochází v případě, že jste změnili velikost objektu blob VHD, aniž byste aktualizovali velikost v modelu rozhraní API virtuálního počítače. Podrobné kroky pro zmírnění rizika jsou uvedené [níže](#vm-with-data-disk-whose-physical-blob-size-bytes-does-not-match-the-vm-data-disk-logical-size-bytes).|
 | Došlo k výjimce úložiště při ověřování datového disku {název_datového_disku} s odkazem na médium {identifikátor_URI_datového_disku} pro virtuální počítač {název_virtuálního_počítače} v cloudové službě {název_cloudové_služby}. Ujistěte se, že je pro tento virtuální počítač dostupný odkaz na médium VHD. | K této chybě může dojít, pokud byly disky virtuálního počítače odstraněny, nebo pokud už nejsou dostupné. Ujistěte se, že disky pro virtuální počítač existují.|
 | Virtuální počítač {název_virtuálního_počítače} v hostované službě {název_hostované_služby} obsahuje disk s odkazem na médium {identifikátor_URI_VHD} s názvem objektu blob {název_objektu_blob_VHD}, který se v Azure Resource Manageru nepodporuje. | K této chybě dochází, když název objektu blob obsahuje znak „/“, který se aktuálně v poskytovateli výpočetních prostředků nepodporuje. |
-| Migrace se pro nasazení {název_nasazení} v hostované službě {název_hostované_služby} nepovoluje, protože není v místním oboru. Naleznete v protokolu http:\//aka.ms/regionalscope o přesunutí tohoto nasazení do místního oboru. | V roce 2014 byl pro Azure oznámen přesun síťových prostředků z oboru na úrovni serveru do místního oboru. Zobrazit [ http://aka.ms/regionalscope ](http://aka.ms/regionalscope) další podrobnosti. K této chybě dochází v případě, že u migrovaného nasazení neproběhla operace aktualizace, která by ho automaticky přesunula do místního oboru. Nejlepším alternativním řešením je přidat do virtuálního počítače koncový bod nebo datový disk a potom opakovat migraci. <br> Viz [Postup nastavení koncových bodů na klasickém virtuálním počítači s Windows v Azure](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint) nebo [Připojení datového disku k virtuálnímu počítači s Windows vytvořenému pomocí modelu nasazení Classic](../articles/virtual-machines/windows/classic/attach-disk.md).|
+| Migrace se pro nasazení {název_nasazení} v hostované službě {název_hostované_služby} nepovoluje, protože není v místním oboru. Naleznete v protokolu https:\//aka.ms/regionalscope o přesunutí tohoto nasazení do místního oboru. | V roce 2014 byl pro Azure oznámen přesun síťových prostředků z oboru na úrovni serveru do místního oboru. Zobrazit [ https://aka.ms/regionalscope ](https://aka.ms/regionalscope) další podrobnosti. K této chybě dochází v případě, že u migrovaného nasazení neproběhla operace aktualizace, která by ho automaticky přesunula do místního oboru. Nejlepším alternativním řešením je přidat do virtuálního počítače koncový bod nebo datový disk a potom opakovat migraci. <br> Viz [Postup nastavení koncových bodů na klasickém virtuálním počítači s Windows v Azure](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint) nebo [Připojení datového disku k virtuálnímu počítači s Windows vytvořenému pomocí modelu nasazení Classic](../articles/virtual-machines/windows/classic/attach-disk.md).|
 | Migrace se u virtuální sítě {název virtuální sítě} nepodporuje, protože obsahuje nasazení PaaS jiného typu než brány. | K této chybě dochází v případě, že máte nasazení PaaS jiného typu než brány, jako je například služba Application Gateway nebo rozhraní API správy služeb, které jsou připojené k virtuální síti.|
 
 

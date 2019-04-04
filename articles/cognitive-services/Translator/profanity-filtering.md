@@ -3,19 +3,19 @@ title: Filtrování vulgárních výrazů – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Použijte vulgárních výrazů v rozhraní Translator Text API filtrování.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: ab54f34dbdbda5af94c6ebc2bc8c1818ebf3d601
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: bd7a05f2f597d1882293387e5aac8e4d7367d051
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729878"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916627"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>Přidat vulgárních výrazů filtrování s rozhraním Translator Text API
 

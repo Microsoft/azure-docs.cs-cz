@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: b7788cc6854b477e8aab9e9df82ed2b54a3bdfe2
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: ca9b08cdccd43a093ca8b5001d3e30be0e5258b5
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884563"
+ms.locfileid: "58894674"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -81,7 +81,7 @@ Jakmile bude kontejner ve [hostitelský počítač](#the-host-computer), použij
 1. [Spuštění kontejneru](##run-the-container-with-docker-run), s požadovanými _vstupní připojení_ a fakturaci. nastavení. Další [příklady](luis-container-configuration.md#example-docker-run-commands) z `docker run` příkazu jsou k dispozici. 
 1. [Dotazování na koncový bod kontejneru předpovědi](#query-the-containers-prediction-endpoint). 
 1. Jakmile budete hotovi s kontejnerem, [importovat protokoly koncového bodu](#import-the-endpoint-logs-for-active-learning) z výstupu připojit na portálu služby LUIS a [Zastavit](#stop-the-container) kontejneru.
-1. Použití služby LUIS portálu [aktivně učit](luis-how-to-review-endoint-utt.md) na **zkontrolujte koncový bod projevy** stránku ke zlepšení aplikace.
+1. Použití služby LUIS portálu [aktivně učit](luis-how-to-review-endpoint-utterances.md) na **zkontrolujte koncový bod projevy** stránku ke zlepšení aplikace.
 
 Aplikace spuštěné v kontejneru se nedá změnit. V pořadí změnu aplikace v kontejneru, je třeba změnit aplikace pomocí služby LUIS [LUIS](https://www.luis.ai) portálu nebo pomocí LUIS [rozhraní API pro vytváření](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f). Potom trénování a/nebo publikovat, pak stáhněte nový balíček a znovu spusťte kontejner.
 
@@ -268,7 +268,7 @@ Konfigurovat parametry dotazu jak a co je vrácená v odpovědi na dotaz:
 |`timezoneOffset`|číslo|TimezoneOffset umožňuje [změnit časové pásmo](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) používané datetimeV2 předem připravených entit.|
 |`verbose`|Boolean|Vrátí všechny příkazy a jejich výsledky, pokud je nastavena na hodnotu true. Výchozí hodnota je false, která vrací pouze hlavní záměr.|
 |`staging`|Boolean|Vrátí dotaz z pracovní prostředí výsledky, pokud je nastavena na hodnotu true. |
-|`log`|Boolean|Zaznamenává dotazy, které je možné použít později pro [aktivně učit](luis-how-to-review-endoint-utt.md). Výchozí hodnota je true.|
+|`log`|Boolean|Zaznamenává dotazy, které je možné použít později pro [aktivně učit](luis-how-to-review-endpoint-utterances.md). Výchozí hodnota je true.|
 
 ### <a name="query-published-app"></a>Dotaz publikované aplikace
 

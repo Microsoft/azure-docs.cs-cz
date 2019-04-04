@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: juliako
-ms.openlocfilehash: 55828ea2235e42920a5179846d81711b1ada5dc2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: affa6f9a808543401b7d57812c7d2bef4324a83c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763669"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894202"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření připojení k Azure účet služby Video Indexer
 
@@ -60,7 +60,7 @@ Vyhledejte **Microsoft.Media** a **Microsoft.EventGrid**. Pokud není ve stavu "
 
 1. Přejděte na web [Video Indexer](https://www.videoindexer.ai/) a přihlaste se.
 
-2. Klikněte na **připojit se k Azure** tlačítka:
+2. Klikněte na **vytvořit nový účet** tlačítka:
 
     ![Připojení k Azure](./media/create-account/connect-to-azure.png)
 
@@ -90,9 +90,7 @@ Vyhledejte **Microsoft.Media** a **Microsoft.EventGrid**. Pokud není ve stavu "
 
     ![nový účet](./media/create-account/new-account.png)
 
-7. Přejděte do svého nového účtu služby:
-
-    ![Účet služby video Indexer](./media/create-account/vi-account.png)
+7. Přejděte do svého nového účtu
 
 ## <a name="connect-to-azure-manually-advanced-option"></a>Připojení k Azure ručně (Upřesnit možnosti)
 
@@ -140,11 +138,11 @@ V dialogovém okně zadejte následující informace:
 
 |Nastavení|Popis|
 |---|---|
-|Oblast účtu video Indexer|Název oblasti účtu Video Indexer. Pro lepší výkon a nižší náklady důrazně doporučujeme zadat název oblasti, kde se nachází na prostředek služby Azure Media Services a účet služby Azure Storage. |
+|Oblast účtu Video Indexeru|Název oblasti účtu Video Indexer. Pro lepší výkon a nižší náklady důrazně doporučujeme zadat název oblasti, kde se nachází na prostředek služby Azure Media Services a účet služby Azure Storage. |
 |Tenant Azure Active Directory (AAD)|Název tenanta Azure AD, například "contoso.onmicrosoft.com". Informace o tenantovi můžete získat z webu Azure portal. Umístěte ukazatel myši nad název přihlášeného uživatele v pravém horním rohu. Vyhledání názvu napravo od **domény**.|
 |ID předplatného|Předplatné Azure, ve kterém by měl vytvoří toto připojení. ID předplatného můžete získat z webu Azure portal. Klikněte na **všechny služby** v levém panelu a vyhledejte "předplatné". Vyberte **předplatná** a pak vyberte požadovaného ID z seznam vašich předplatných.|
 |Název skupiny prostředků Azure Media Services|Název pro skupinu prostředků, ve které jste vytvořili účet Media Services.|
-|Název mediální služby prostředků|Název účtu Azure Media Services, kterou jste vytvořili v předchozí části.|
+|Název prostředku mediální služby|Název účtu Azure Media Services, kterou jste vytvořili v předchozí části.|
 |ID aplikace|Azure AD ID aplikace (s oprávněními pro zadaný účet Media Services), který jste vytvořili v předchozí části.|
 |Klíč aplikace|Klíč aplikace Azure AD, kterou jste vytvořili v předchozí části. |
 

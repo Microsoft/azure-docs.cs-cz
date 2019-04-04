@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7542909df336555e17aea9b0e680879b25dc17f
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: db0eccb542cb4253e6e891fa9fa51e60fb7951a1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58791741"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892734"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
 
@@ -50,7 +50,7 @@ Nebude moct nasazovat modely na FPGA, dokud si vyžádáte a byla schválena pro
 
 ## <a name="automated-machine-learning"></a>Automatizované strojové učení
 
-Tensor Flow automatizované strojového učení v současné době nepodporuje verzi tensor flow 1.13. Instalace to způsobí závislosti balíčků přestane fungovat. Pracujeme na tom to opravit v některé budoucí verzi. 
+Tensor Flow automatizované strojového učení v současné době nepodporuje verzi tensor flow 1.13. Instalace této verze způsobí závislosti balíčků přestane fungovat. Pracujeme na řešení tohoto problému v budoucí verzi. 
 
 
 ## <a name="databricks"></a>Databricks
@@ -96,7 +96,7 @@ Pokud tato chyba zobrazí při použití automatického strojového učení:
 
 1. Odpojit a znovu připojte clusteru v poznámkovém bloku. 
 
-Pokud to problém nevyřeší, zkuste restartovat clusteru.
+Pokud tyto kroky není problém vyřešit, zkuste restartovat clusteru.
 
 ## <a name="azure-portal"></a>portál Azure
 
@@ -104,7 +104,7 @@ Pokud přejdete přímo na váš pracovní prostor z sdílet odkaz ze sady SDK n
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
-V některých případech může být užitečné, pokud může poskytnout diagnostické informace, pokud s žádostí o pomoc. Některé protokoly naleznete [webu Azure portal](https://portal.azure.com) workpsace a vyberte a přejít k **pracovní prostor > Experiment > spuštění > protokoly**.
+V některých případech může být užitečné, pokud může poskytnout diagnostické informace, pokud s žádostí o pomoc. Některé protokoly naleznete [webu Azure portal](https://portal.azure.com) a přejděte do pracovního prostoru a vyberte **pracovní prostor > Experiment > spuštění > protokoly**.
 
 ## <a name="resource-quotas"></a>Kvóty prostředků
 
@@ -123,7 +123,3 @@ Pokud provádíte operaci správy na cílové výpočetní prostředí ze vzdál
 ```
 
 Například můžete dojde k chybě při pokusu vytvořit nebo připojit cílové výpočetní prostředí z kanálu služby ML, které je odeslána pro vzdálené spuštění.
-
-## <a name="get-more-support"></a>Získat další podporu.
-
-Můžete odesílat žádosti o podporu a získat pomoc od technické podpory, fóra a další. [Víc se uč...](support-for-aml-services.md)

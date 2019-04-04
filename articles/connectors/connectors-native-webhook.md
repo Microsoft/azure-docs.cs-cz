@@ -11,12 +11,12 @@ ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.topic: article
 tags: connectors
 ms.date: 07/21/2016
-ms.openlocfilehash: c0985df445ae34795d5287144d4664755cc006da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c3047000843e054e71ec1a80313118a25e7c4905
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182111"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895575"
 ---
 # <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Vytvořit pracovní postupy založené na události nebo akce pomocí webhooků a Azure Logic Apps
 
@@ -29,7 +29,7 @@ Další informace o [jak vytvořit vlastní rozhraní API, které podporují web
 
 ## <a name="use-the-webhook-trigger"></a>Pomocí aktivační události webhooku
 
-A [ *aktivační událost* ](connectors-overview.md) je událost, která spustí pracovní postup aplikace logiky. Trigger webhooku je založený na událostech, které nejsou závislé na dotazování pro nové položky. Při uložení aplikace logiky s triggerem webhook nebo při změně svou aplikaci logiky ze zakázaného na povolený trigger webhooku *přihlásí* zadaná služba nebo koncový bod tak, že zaregistrujete *adresuURLzpětnéhovolání* s tímto služba nebo koncový bod. Aktivační události potom použije tuto adresu URL pro spuštění aplikace logiky podle potřeby. Podobně jako [triggeru požadavku](connectors-native-reqres.md), aktivuje aplikace logiky se okamžitě, když se stane Očekávaná událost. Aktivační událost *ruší registraci* -li odebrat aktivační událost a uložení aplikace logiky, nebo při změně svou aplikaci logiky z povoleno na zakázáno.
+A [ *aktivační událost* ](../connectors/apis-list.md) je událost, která spustí pracovní postup aplikace logiky. Trigger webhooku je založený na událostech, které nejsou závislé na dotazování pro nové položky. Při uložení aplikace logiky s triggerem webhook nebo při změně svou aplikaci logiky ze zakázaného na povolený trigger webhooku *přihlásí* zadaná služba nebo koncový bod tak, že zaregistrujete *adresuURLzpětnéhovolání* s tímto služba nebo koncový bod. Aktivační události potom použije tuto adresu URL pro spuštění aplikace logiky podle potřeby. Podobně jako [triggeru požadavku](connectors-native-reqres.md), aktivuje aplikace logiky se okamžitě, když se stane Očekávaná událost. Aktivační událost *ruší registraci* -li odebrat aktivační událost a uložení aplikace logiky, nebo při změně svou aplikaci logiky z povoleno na zakázáno.
 
 Tady je příklad, který ukazuje, jak nastavit aktivační událost HTTP v návrháři aplikace logiky. V krocích se předpokládá, že jste již nasadili nebo mají přístup k rozhraní API, která následuje [odběru webhooku a odhlášení odběru model ve službě logic apps](../logic-apps/logic-apps-create-api-app.md#webhook-triggers). 
 
@@ -48,7 +48,7 @@ Tady je příklad, který ukazuje, jak nastavit aktivační událost HTTP v náv
 
 ## <a name="use-the-webhook-action"></a>Pomocí akce webhooku
 
-[ *Akce* ](connectors-overview.md) je operace, která je definována a spustit v pracovním postupu vaší aplikace logiky. Při spuštění akce webhooku, tato akce aplikace logiky *přihlásí* zadaná služba nebo koncový bod tak, že zaregistrujete *adresu URL zpětného volání* s tímto služba nebo koncový bod. Akce webhooku potom počká, dokud, servisní volání adresy URL před obnoví aplikace logiky spuštěná. Aplikace logiky odhlásí služba nebo koncový bod v těchto případech: 
+[ *Akce* ](../connectors/apis-list.md) je operace, která je definována a spustit v pracovním postupu vaší aplikace logiky. Při spuštění akce webhooku, tato akce aplikace logiky *přihlásí* zadaná služba nebo koncový bod tak, že zaregistrujete *adresu URL zpětného volání* s tímto služba nebo koncový bod. Akce webhooku potom počká, dokud, servisní volání adresy URL před obnoví aplikace logiky spuštěná. Aplikace logiky odhlásí služba nebo koncový bod v těchto případech: 
 
 * Po úspěšném dokončení akce webhooku
 * Pokud se při čekání na odpověď zruší běh aplikace logiky
@@ -93,7 +93,7 @@ Tady jsou další podrobnosti o aktivační události a akce podporuje tento web
 Odběru adresu URL zpětného volání pro službu, která může volat adresu URL, která se aktivuje aplikace logiky podle potřeby.
 * Znamená, že požadované pole.
 
-| Zobrazovaný název | Property Name | Popis |
+| Zobrazovaný název | Název vlastnosti | Popis |
 | --- | --- | --- |
 | Přihlášení odběru metoda * |method |Metoda HTTP pro žádosti o předplatné |
 | Přihlášení odběru URI * |identifikátor uri |Identifikátor URI HTTP pro žádosti o předplatné |
@@ -110,11 +110,11 @@ Odběru adresu URL zpětného volání pro službu, která může volat adresu U
 
 Požadavek Webhooku
 
-| Property Name | Typ dat | Popis |
+| Název vlastnosti | Typ dat | Popis |
 | --- | --- | --- |
 | Hlavičky |objekt |Hlavičky požadavku Webhooku |
 | Tělo |objekt |Objekt požadavku Webhooku |
-| Stavový kód |int |Stavový kód žádosti o Webhooku |
+| Kód stavu |int |Stavový kód žádosti o Webhooku |
 
 ## <a name="webhook-actions"></a>Akce Webhooku
 
@@ -129,7 +129,7 @@ Požadavek Webhooku
 Adresa URL zpětného volání službě, která může volat adresu URL obnovit podle potřeby kroku pracovního postupu odběru.
 * Znamená, že požadované pole.
 
-| Zobrazovaný název | Property Name | Popis |
+| Zobrazovaný název | Název vlastnosti | Popis |
 | --- | --- | --- |
 | Přihlášení odběru metoda * |method |Metoda HTTP pro žádosti o předplatné |
 | Přihlášení odběru URI * |identifikátor uri |Identifikátor URI HTTP pro žádosti o předplatné |
@@ -146,11 +146,11 @@ Adresa URL zpětného volání službě, která může volat adresu URL obnovit 
 
 Požadavek Webhooku
 
-| Property Name | Typ dat | Popis |
+| Název vlastnosti | Typ dat | Popis |
 | --- | --- | --- |
 | Hlavičky |objekt |Hlavičky požadavku Webhooku |
 | Tělo |objekt |Objekt požadavku Webhooku |
-| Stavový kód |int |Stavový kód žádosti o Webhooku |
+| Kód stavu |int |Stavový kód žádosti o Webhooku |
 
 ## <a name="next-steps"></a>Další postup
 

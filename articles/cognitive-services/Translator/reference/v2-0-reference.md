@@ -3,19 +3,19 @@ title: Translator Text API V2.0
 titleSuffix: Azure Cognitive Services
 description: Referenční dokumentace pro verze 2.0 Translator Text API.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: 4f08b728198d6ee508cbd8267c593abc59e4cb37
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b65182cac91f6ed3dc653d6d9e77f80e99346bb7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075249"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918004"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
 

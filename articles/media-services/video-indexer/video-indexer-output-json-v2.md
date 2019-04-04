@@ -9,16 +9,16 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 05de1640fbee7799da0a14bba262ef9724686878
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 552c3fa81a213d0be32c5498cde5a50fb44291d0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650069"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892571"
 ---
-# <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Prozkoumání výstupu funkce Video Indexer vytvořené metodou rozhraní API v2
+# <a name="examine-the-video-indexer-output-produced-by-api"></a>Prozkoumání výstupu funkce Video Indexer API vytvořené metodou
 
-Při volání **získat Index Video** rozhraní API a stav odpovědi je v pořádku, získejte podrobný výstup JSON jako obsah odpovědi. Obsah JSON obsahuje podrobné informace o zadané nové poznatky z videí. Informace zahrnují dimenzí, jako jsou: záznamy o studiu, ocrs, tváří, témat, bloky, atd. Dimenze mít instancí časových rozsahů, které ukazují jednotlivých rozměrů zobrazené ve videu.  
+Při volání **získat Index Video** rozhraní API a stav odpovědi je v pořádku, získejte podrobný výstup JSON jako obsah odpovědi. Obsah JSON obsahuje podrobné informace o zadané nové poznatky z videí. Informace zahrnují dimenzí, jako jsou: záznamy o studiu, OCRs, čelí, témat, bloky, atd. Dimenze mít instancí časových rozsahů, které ukazují jednotlivých rozměrů zobrazené ve videu.  
 
 Souhrnný přehled videa můžete také vizuálně zkoumat stisknutím kombinace kláves **Přehrát** tlačítko na video [Video Indexer](https://www.videoindexer.ai/) webu. Další informace najdete v tématu [prohlížení a úpravy nové poznatky z videí](video-indexer-view-edit.md).
 
@@ -83,7 +83,7 @@ Tato část uvádí přehled informací.
 |tváří|Může obsahovat nula nebo více ploch. Další informace najdete v tématu [tváří](#faces).|
 |klíčová slova|Může obsahovat nula nebo více klíčových slov. Další informace najdete v tématu [klíčová slova](#keywords).|
 |mínění|Může obsahovat nula nebo více mínění. Další informace najdete v tématu [zabarvení](#sentiments).|
-|audioEffects| Může obsahovat nula nebo více audioEffects. Další informace najdete v tématu [audioEffects](#audioeffects).|
+|audioEffects| Může obsahovat nula nebo více audioEffects. Další informace najdete v tématu [audioEffects](#audioEffects).|
 |popisky| Může obsahovat nula nebo více štítků. Další informace najdete v tématu [popisky](#labels).|
 |značky| Může obsahovat nula nebo více značek. Další informace najdete v tématu [značky](#brands).|
 |statistiky | Další informace najdete v tématu [statistiky](#statistics).|
@@ -153,14 +153,14 @@ Přehledy jsou sadu dimenzí (například přepisu řádky, tváří, značky, a
 |sourceLanguage|Zdrojový jazyk videa (za předpokladu, že jeden hlavní jazyk). Ve formuláři [BCP-47](https://tools.ietf.org/html/bcp47) řetězec.|
 |language|Jazyk insights (přeloženého ze zdrojového jazyka). Ve formuláři [BCP-47](https://tools.ietf.org/html/bcp47) řetězec.|
 |přepis|[Přepisu](#transcript) dimenze.|
-|optické rozpoznávání znaků|[Ocr](#ocr) dimenze.|
+|optické rozpoznávání znaků|[OCR](#ocr) dimenze.|
 |klíčová slova|[Klíčová slova](#keywords) dimenze.|
 |bloky|Může obsahovat jednu nebo více [bloky](#blocks)|
 |tváří|[Tváří](#faces) dimenze.|
 |popisky|[Popisky](#labels) dimenze.|
 |snímky|[Snímky](#shots) dimenze.|
 |značky|[Značky](#brands) dimenze.|
-|audioEffects|[AudioEffects](#audioeffects) dimenze.|
+|audioEffects|[AudioEffects](#audioEffects) dimenze.|
 |mínění|[Zabarvení](#sentiments) dimenze.|
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation) dimenze.|
 |textualContentModeration|[TextualContentModeration](#textualcontentmoderation) dimenze.|
@@ -419,61 +419,85 @@ Příklad:
   ] 
 ```
 
+#### <a name="scenes"></a>scén
+
+|Název|Popis|
+|---|---|
+|id|ID scény.|
+|instance|Seznam časových rozsahů tento scény (scény můžete mít jenom 1 instance).|
+
+```json
+"scenes":[  
+    {  
+      "id":0,
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
+      ]
+    },
+    {  
+      "id":1,
+      "instances":[  
+          {  
+            "start":"0:00:06.34",
+            "end":"0:00:47.047",
+            "duration":"0:00:40.707"
+          }
+      ]
+    },
+
+]
+```
+
 #### <a name="shots"></a>snímky
 
 |Název|Popis|
 |---|---|
 |id|Snímek ID.|
-|keyFrames|Seznam klíčových snímků v rámci snímku (každý má ID a seznam instancí časových rozsahů). Instance klíčové snímky mají thumbnailId pole s Miniatura na klíčový snímek ID.|
-|instance|Seznam časových rozsahů tento snímek (snímky mají jenom 1 instance).|
+|keyFrames|Seznam klíčových snímků v rámci snímku (každý má ID a seznam instancí časových rozsahů). Každá instance klíčový snímek má thumbnailId pole, které obsahuje miniaturu na klíčový snímek ID.|
+|instance|Seznam časových rozsahů tento snímek (snímku může mít pouze 1 instance).|
 
 ```json
-"Shots": [
-    {
-      "id": 0,
-      "keyFrames": [
-        {
-          "id": 0,
-          "instances": [
-            {
-                "thumbnailId": "00000000-0000-0000-0000-000000000000",
-              "start": "00: 00: 00.1670000",
-              "end": "00: 00: 00.2000000"
-            }
-          ]
-        }
+"shots":[  
+    {  
+      "id":0,
+      "keyFrames":[  
+          {  
+            "id":0,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:00.209",
+                  "end":"0:00:00.251",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          },
+          {  
+            "id":1,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:04.755",
+                  "end":"0:00:04.797",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          }
       ],
-      "instances": [
-        {
-            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
-          "start": "00: 00: 00.2000000",
-          "end": "00: 00: 05.0330000"
-        }
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
       ]
     },
-    {
-      "id": 1,
-      "keyFrames": [
-        {
-          "id": 1,
-          "instances": [
-            {
-                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
-              "start": "00: 00: 05.2670000",
-              "end": "00: 00: 05.3000000"
-            }
-          ]
-        }
-      ],
-      "instances": [
-        {
-      "thumbnailId": "00000000-0000-0000-0000-000000000000",
-          "start": "00: 00: 05.2670000",
-          "end": "00: 00: 10.3000000"
-        }
-      ]
-    }
-  ]
+
+]
 ```
 
 #### <a name="brands"></a>značky

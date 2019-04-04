@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: ergreenl
-ms.openlocfilehash: 963ee7e952e566952a80903a739b093dbd9f0c21
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 48831767f72dd1b978fad5b0a9a8f2c7a11ec89d
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184185"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893108"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services – Průvodce odstraňováním potíží
 Tento článek obsahuje pokyny k odstranění potíží pro problémy, na které můžete narazit při nastavení a Správa služby Azure Active Directory (AD) Domain Services.
@@ -32,15 +32,15 @@ Můžete si vyberte kroků pro řešení problémů, které odpovídají chybov�
 
 | **Chybová zpráva** | **Řešení** |
 | --- |:--- |
-| *Název contoso100.com se už v síti používá. Zadejte název, který se nepoužívá.* |[Konflikt názvu domény ve virtuální síti](active-directory-ds-troubleshooting.md#domain-name-conflict) |
-| *Domain Services nelze povolit v tomto tenantovi Azure AD. Služba nemá dostatečná oprávnění pro aplikaci s názvem Azure AD Domain Services Sync. Odstraňte aplikace s názvem Azure AD Domain Services Sync a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.* |[Domain Services nemá dostatečná oprávnění k aplikaci Azure AD Domain Services Sync](active-directory-ds-troubleshooting.md#inadequate-permissions) |
+| *Název contoso100.com se už používá v této síti. Zadejte název, který se nepoužívá.* |[Konflikt názvu domény ve virtuální síti](active-directory-ds-troubleshooting.md#domain-name-conflict) |
+| *Domain Services nelze povolit v tomto tenantovi Azure AD. Služba nemá dostatečná oprávnění pro aplikaci s názvem Azure AD Domain Services Sync. Odstraňte aplikaci s názvem "Azure AD Domain Services Sync" a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.* |[Domain Services nemá dostatečná oprávnění k aplikaci Azure AD Domain Services Sync](active-directory-ds-troubleshooting.md#inadequate-permissions) |
 | *Domain Services nelze povolit v tomto tenantovi Azure AD. Aplikace Domain Services ve vašem tenantovi Azure AD nemá požadovaná oprávnění k povolení Domain Services. Odstraňte aplikaci s identifikátorem aplikace d87dcbc6-a371-462e-88e3-28ad15ec4e64 a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.* |[Aplikace Domain Services není správně nakonfigurována ve vašem tenantovi](active-directory-ds-troubleshooting.md#invalid-configuration) |
 | *Domain Services nelze povolit v tomto tenantovi Azure AD. Aplikace Microsoft Azure AD je ve vašem tenantovi Azure AD zakázaná. Povolte aplikaci s identifikátorem aplikace 00000002-0000-0000-c000-000000000000 a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.* |[Aplikace Microsoft Graphu je zakázaná ve vašem tenantovi Azure AD](active-directory-ds-troubleshooting.md#microsoft-graph-disabled) |
 
 ### <a name="domain-name-conflict"></a>Konflikt názvů domény
 **Chybová zpráva:**
 
-*Název contoso100.com se už v síti používá. Zadejte název, který se nepoužívá.*
+*Název contoso100.com se už používá v této síti. Zadejte název, který se nepoužívá.*
 
 **Náprava:**
 
@@ -51,7 +51,7 @@ To je způsobeno konflikty názvů pro název domény v této virtuální síti.
 ### <a name="inadequate-permissions"></a>Nedostatečná oprávnění
 **Chybová zpráva:**
 
-*Domain Services nelze povolit v tomto tenantovi Azure AD. Služba nemá dostatečná oprávnění pro aplikaci s názvem Azure AD Domain Services Sync. Odstraňte aplikace s názvem Azure AD Domain Services Sync a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.*
+*Domain Services nelze povolit v tomto tenantovi Azure AD. Služba nemá dostatečná oprávnění pro aplikaci s názvem Azure AD Domain Services Sync. Odstraňte aplikaci s názvem "Azure AD Domain Services Sync" a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.*
 
 **Náprava:**
 
@@ -157,7 +157,7 @@ Azure AD vás chrání před náhodným odstraněním objektů uživatelů. Kdy�
 
 Uživatelský účet zůstane v zakázaném stavu ve vaší spravované doméně, i když znovu vytvoříte uživatelský účet se stejným hlavním názvem uživatele v adresáři služby Azure AD. Chcete-li odebrat uživatelský účet z vaší spravované domény, nuceně odstranit z vašeho tenanta Azure AD.
 
-Odebrat uživatelský účet plně z vaší spravované domény, trvale odstraňte uživatele z vašeho tenanta Azure AD. Použití `Remove-MsolUser` rutiny prostředí PowerShell s `-RemoveFromRecycleBin` možnosti, jak je popsáno v tomto [článku na webu MSDN](https://msdn.microsoft.com/library/azure/dn194132.aspx).
+Odebrat uživatelský účet plně z vaší spravované domény, trvale odstraňte uživatele z vašeho tenanta Azure AD. Použití `Remove-MsolUser` rutiny prostředí PowerShell s `-RemoveFromRecycleBin` možnosti, jak je popsáno v tomto [článku na webu MSDN](/previous-versions/azure/dn194132(v=azure.100)).
 
 
 ## <a name="contact-us"></a>Kontaktujte nás

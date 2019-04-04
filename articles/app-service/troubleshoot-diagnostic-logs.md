@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 023d12764e3dcfcf2f5471cb431528a14fbc1fed
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 37455c278d665d05636ec120ca91b76153e53d16
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339631"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894914"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky aplikací ve službě Azure App Service
 ## <a name="overview"></a>Přehled
@@ -36,10 +36,10 @@ Můžete povolit nebo zakázat následující typy protokolů:
 
 * **Podrobné protokolování chyb** – podrobné informace pro všechny požadavky, které má za následek stavový kód HTTP 400 nebo vyšší. Může obsahovat informace, které vám pomůže určit, proč server vrátil kód chyby. Ten, který je vygenerován soubor HTML pro každou chybu v systému souborů aplikace a až 50 chyb (soubory) jsou zachovány. Když počet souborů HTML, které překračují 50, se automaticky odstraní nejstarší soubory 26.
 * **Se nezdařilo, trasování požadavku** – podrobné informace o neúspěšných požadavcích, včetně trasování součásti služby IIS používá ke zpracování požadavku a doba trvání v jednotlivých komponentách. To je užitečné, pokud chcete zlepšit výkon webu a izolovat konkrétní chyba protokolu HTTP. Jedna složka se vygeneruje pro každou chybu v systému souborů aplikace. Zásady uchovávání souborů jsou stejné jako podrobné protokolování nad chyb.
-* **Web, protokolování na Server** – informace o transakce HTTP pomocí [rozšířený formát protokolu W3C souboru](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Je užitečné při určování celkové lokality metriky, jako je počet požadavků zpracovaných nebo kolik žádostí se z konkrétní IP adresu.
+* **Web, protokolování na Server** – informace o transakce HTTP pomocí [rozšířený formát protokolu W3C souboru](/windows/desktop/Http/w3c-logging). Je užitečné při určování celkové lokality metriky, jako je počet požadavků zpracovaných nebo kolik žádostí se z konkrétní IP adresu.
 
 ### <a name="application-diagnostics"></a>Diagnostika aplikace
-Konzole Application diagnostics můžete zachytit informace vytvořené webové aplikace. Můžete použít aplikace ASP.NET [System.Diagnostics.Trace](https://msdn.microsoft.com/library/36hhw2t6.aspx) třídy k protokolování informací do protokolu diagnostiky aplikace. Příklad:
+Konzole Application diagnostics můžete zachytit informace vytvořené webové aplikace. Můžete použít aplikace ASP.NET [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) třídy k protokolování informací do protokolu diagnostiky aplikace. Příklad:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
@@ -57,11 +57,11 @@ Když povolíte **konzole application diagnostics**, také zvolte **úroveň**. 
 
 | Úroveň| Kategorie součástí protokolu |
 |-|-|
-|**Disabled** (Zakázáno) | Žádný |
+|**Zakázáno** | Žádný |
 |**Chyba** | Chyby, kritické |
 |**Upozornění** | Upozornění, chyby, kritické|
-|**Informace o** | Informace, upozornění, chyby, kritické|
-|**Verbose** | Trasování, ladění, informace, upozornění, chyby, kritické (všechny kategorie) |
+|**Informace** | Informace, upozornění, chyby, kritické|
+|**Podrobnosti** | Trasování, ladění, informace, upozornění, chyby, kritické (všechny kategorie) |
 |-|-|
 
 Pro **protokolování aplikací**, můžete zapnout možnost souboru systému dočasně pro účely ladění. Tato volba vypne automaticky za 12 hodin. Můžete také zapnout možnost úložiště objektů blob kontejner objektů blob, do kterého se zapisují protokoly.
@@ -101,7 +101,7 @@ Struktura adresářů, které protokoly se ukládají v vypadá takto:
 * **Protokoly aplikací** -/LogFiles/aplikace /. Tato složka obsahuje jeden nebo více textové soubory obsahující informace o vytvářené protokolování aplikací.
 * **Trasování požadavku se nezdařilo** – / LogFiles/W3SVC ### /. Tato složka obsahuje soubor XSL a jeden nebo více souborů XML. Ujistěte se stáhnout soubor XSL do stejného adresáře jako soubory XML, protože soubor XSL poskytuje funkce pro formátování a filtrování obsahu souborů XML v aplikaci Internet Explorer.
 * **Podrobné protokoly chyb** -/LogFiles/DetailedErrors /. Tato složka obsahuje jeden nebo více souborů HTM, které poskytují podrobné informace, které se vyskytly chyby protokolu HTTP.
-* **Web Server Logs** - /LogFiles/http/RawLogs. Tato složka obsahuje jeden nebo více textových souborů ve formátu pomocí [rozšířený formát protokolu W3C souboru](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
+* **Web Server Logs** - /LogFiles/http/RawLogs. Tato složka obsahuje jeden nebo více textových souborů ve formátu pomocí [rozšířený formát protokolu W3C souboru](/windows/desktop/Http/w3c-logging).
 * **Protokoly nasazení** – / LogFiles/Git. Tato složka obsahuje protokoly generované interní nasazení procesu používaného ve službě Azure App Service, jakož i protokoly pro nasazení Git. Můžete také najít protokoly nasazení v rámci D:\home\site\deployments.
 
 ### <a name="ftp"></a>FTP
@@ -192,7 +192,7 @@ Při přihlašování do úložiště objektů blob, data se ukládají ve form�
 | Datum |Datum a čas, kdy došlo k události |
 | Úroveň |Úroveň události (například Chyba, upozornění, informace) |
 | ApplicationName |Název aplikace |
-| ID instance |Instance aplikace, která na došlo k události |
+| InstanceId |Instance aplikace, která na došlo k události |
 | EventTickCount |Datum a čas, kdy došlo k události, formát značky (větší přesnost) |
 | ID události |ID události této události<p><p>Výchozí hodnota je 0, pokud zadaný žádný |
 | Identifikátor PID |ID procesu |
@@ -222,7 +222,7 @@ Trasování chybných požadavků jsou uloženy v souborech XML s názvem **fr #
 Podrobnější protokoly chyb jsou dokumentů HTML, které poskytují podrobnější informace o chyby protokolu HTTP, ke kterým došlo. Protože jsou jednoduše dokumentů HTML, bylo možné zobrazit pomocí webového prohlížeče.
 
 ### <a name="web-server-logs"></a>Protokoly webového serveru
-Protokoly webového serveru jsou formátovány pomocí [rozšířený formát protokolu W3C souboru](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Tyto informace lze číst pomocí textového editoru nebo analyzovat pomocí nástrojů, jako [analyzátoru protokolů](https://go.microsoft.com/fwlink/?LinkId=246619).
+Protokoly webového serveru jsou formátovány pomocí [rozšířený formát protokolu W3C souboru](/windows/desktop/Http/w3c-logging). Tyto informace lze číst pomocí textového editoru nebo analyzovat pomocí nástrojů, jako [analyzátoru protokolů](https://go.microsoft.com/fwlink/?LinkId=246619).
 
 > [!NOTE]
 > Protokoly vytvořené službou Azure App Service, nepodporují **s-computername**, **s-ip**, nebo **cs-version** pole.

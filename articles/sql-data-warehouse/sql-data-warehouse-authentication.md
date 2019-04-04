@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
-ms.date: 04/12/2018
+ms.date: 04/02/2019
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: ab439566da38a537534fc10e70058ab57005ce22
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a3bed9df5b62ce7f2f3df7046357dc4f2458575c
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183794"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917902"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Ověřování pro Azure SQL Data Warehouse
 Zjistěte, jak provést ověření do služby Azure SQL Data Warehouse pomocí ověřování Azure Active Directory (AAD) nebo SQL Server.
@@ -56,7 +56,7 @@ Azure Active Directory k výhodám patří:
 * Eliminuje ukládat tím, že integrované ověřování Windows a další formy ověřování podporovaných službou Azure Active Directory.
 * Uživatelé databáze k ověření identity na úrovni databáze s omezením použití.
 * Podporuje ověřování založené na tokenech pro aplikace, připojení k SQL Data Warehouse.
-* Podporuje Vícefaktorové ověřování pomocí univerzálního ověřování Active Directory pro SQL Server Management Studio. Popis ověřování službou Multi-Factor Authentication, naleznete v tématu [podpora nástroje SSMS pro ověřování Azure AD MFA s SQL Database a SQL Data Warehouse](../sql-database/sql-database-ssms-mfa-authentication.md).
+* Podporuje ověřování službou Multi-Factor Authentication pomocí univerzálního ověřování Active Directory pro různé nástroje, včetně [SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md) a [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json).
 
 > [!NOTE]
 > Azure Active Directory je pořád relativně nové a má určitá omezení. Ujistěte se, že Azure Active Directory je vhodné pro vaše prostředí, najdete v článku [funkcí Azure AD a omezení][Azure AD features and limitations], konkrétně další aspekty.

@@ -11,18 +11,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/25/2019
 ms.author: victorh
-ms.openlocfilehash: c5f1cb992f27a8d3f97967ff6b885b3296be8710
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 1284ddec4cd9cea3ea53c20d437550405dd614d9
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448438"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905864"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Vytvoření služby application gateway s firewallem webových aplikací, pomocí webu Azure portal
 
 > [!div class="op_single_selector"]
 >
-> - [Azure Portal](application-gateway-web-application-firewall-portal.md)
+> - [portál Azure](application-gateway-web-application-firewall-portal.md)
 > - [PowerShell](tutorial-restrict-web-traffic-powershell.md)
 > - [Azure CLI](tutorial-restrict-web-traffic-cli.md)
 >
@@ -129,7 +129,7 @@ V tomto příkladu jsme se instalace služby IIS na virtuální počítače pouz
 2. Spuštěním následujícího příkazu nainstalujte službu IIS na virtuální počítač: 
 
    ```azurepowershell-interactive
-   Set-AzureRmVMExtension `
+   Set-AzVMExtension `
      -ResourceGroupName myResourceGroupAG `
      -ExtensionName IIS `
      -VMName myVM `
@@ -140,7 +140,7 @@ V tomto příkladu jsme se instalace služby IIS na virtuální počítače pouz
      -Location EastUS
    ```
 
-3. Vytvoření druhého virtuálního počítače a instalace služby IIS pomocí kroků, které jste dříve dokončili. Použití *myVM2* pro název virtuálního počítače a **VMName** nastavení **Set-AzureRmVMExtension** rutiny.
+3. Vytvoření druhého virtuálního počítače a instalace služby IIS pomocí kroků, které jste dříve dokončili. Použití *myVM2* pro název virtuálního počítače a **VMName** nastavení **Set-AzVMExtension** rutiny.
 
 ### <a name="add-backend-servers-to-backend-pool"></a>Přidání serverů back-endu do back-endový fond
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ergreenl
-ms.openlocfilehash: 5cfcbba58b4e4416a2f1a56adcbe21eeacb15a85
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fbd876ad46342dec7e2e73b92d3aafbd37cc205b
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152150"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892292"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Jak určit, pokud Azure AD Domain Services bude vyhovovat vašemu případu použití
 S Azure AD Domain Services můžete nasadit úlohy ve službách infrastruktury Azure, aniž byste museli starat o údržbu infrastruktury identity v Azure. Této spravované služby se liší od typické nasazení systému Windows Server Active Directory, která můžete nasadit a spravovat sami. Služba je snadné nasazení a poskytuje automatizované stavu sledování a náprava. Neustále vyvíjíme službu s přidanou podporou pro běžné scénáře nasazení.
@@ -38,7 +38,7 @@ Následující tabulka vám pomůže rozhodnout mezi pomocí Azure AD Domain Ser
 | --- |:---:|:---:|
 | [**Spravované služby**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
 | [**Zabezpečení nasazení**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |Správce musí k zabezpečení nasazení. |
-| [**DNS server**](active-directory-ds-comparison.md#dns-server) |**&#x2713;**(spravovaná služba) |**&#x2713;** |
+| [**Server DNS**](active-directory-ds-comparison.md#dns-server) |**&#x2713;**(spravovaná služba) |**&#x2713;** |
 | [**Oprávnění správce domény nebo Enterprise**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
 | [**Připojení k doméně**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
 | [**Ověřování v doméně pomocí protokolů NTLM a Kerberos**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
@@ -49,7 +49,7 @@ Následující tabulka vám pomůže rozhodnout mezi pomocí Azure AD Domain Ser
 | [**Přečtěte si LDAP**](active-directory-ds-comparison.md#ldap-read) |**&#x2713;** |**&#x2713;** |
 | [**Protokol Secure LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&#x2713;** |**&#x2713;** |
 | [**Zápis LDAP**](active-directory-ds-comparison.md#ldap-write) |**&#x2715;** |**&#x2713;** |
-| [**Zásady skupiny**](active-directory-ds-comparison.md#group-policy) |**&#x2713;** |**&#x2713;** |
+| [**Zásada skupiny**](active-directory-ds-comparison.md#group-policy) |**&#x2713;** |**&#x2713;** |
 | [**Geograficky distribuované nasazení**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&#x2715;** |**&#x2713;** |
 
 #### <a name="managed-service"></a>Spravované služby
@@ -58,7 +58,7 @@ Domény Azure AD Domain Services spravuje Microsoft. Není nutné se starat o op
 #### <a name="secure-deployments"></a>Zabezpečení nasazení
 Spravovaná doména je bezpečně uzamčené podle doporučení zabezpečení od Microsoftu pro nasazení AD. Tato doporučení vyplývají z produktového týmu AD desítky let praxe s technickými a podporuje AD nasazení. Sestavili nasazení musíte provést kroky nasazení specifické pro uzamčení dolů a zabezpečení vašeho nasazení.
 
-#### <a name="dns-server"></a>DNS server
+#### <a name="dns-server"></a>Server DNS
 An Azure AD Domain Services managed domain includes managed DNS services. Členové skupiny "Správci AAD DC" můžete spravovat DNS ve spravované doméně. Členové této skupiny jsou uvedeny úplná oprávnění pro správu DNS pro spravovanou doménu. Správa služby DNS je možné provádět pomocí "DNS konzoly pro správu' obsažené v balíčku vzdálenou správu serveru (RSAT).
 [Další informace](active-directory-ds-admin-guide-administer-dns.md)
 
@@ -115,9 +115,9 @@ Může mít použití nasazené tam, kde potřebujete některé možnosti nabíz
 >
 >
 
-Jsme publikovali [pokyny pro nasazení systému Windows Server Active Directory na Azure Virtual Machines](https://msdn.microsoft.com/library/azure/jj156090.aspx) abychom usnadnili rozběhněte zcela instalace.
+Jsme publikovali [pokyny pro nasazení systému Windows Server Active Directory na Azure Virtual Machines](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) abychom usnadnili rozběhněte zcela instalace.
 
 ## <a name="related-content"></a>Související obsah
 * [Funkce – Azure AD Domain Services](active-directory-ds-features.md)
 * [Scénáře nasazení: Azure AD Domain Services](active-directory-ds-scenarios.md)
-* [Pokyny pro nasazení systému Windows Server Active Directory na virtuálních počítačích Azure](https://msdn.microsoft.com/library/azure/jj156090.aspx)
+* [Pokyny pro nasazení systému Windows Server Active Directory na virtuálních počítačích Azure](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)

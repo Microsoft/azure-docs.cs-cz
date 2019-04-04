@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 763ff0d5f619d2808fb06c05d5b266160b3a7069
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5aa637938433eb1f906f0a4d81038cec0d6c6dcc
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868561"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893006"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Kurz: Pokud jste se zavázali zdrojový kód. automatizace sestavování imagí kontejneru v cloudu
 
@@ -52,7 +52,7 @@ ACR Tasks v současné době podporuje následující triggery:
 * Vložení do úložiště Git
 * Aktualizace základní image
 
-Úloha služby ACR v tomto kurzu se vytvoří a předá jedním kontejnerem image zadanou v souboru Dockerfile. Můžete také spouštět úlohy ACR [vícekrokových úkolů](container-registry-tasks-multi-step.md) (aktuálně ve verzi preview), použití YAML souboru k definování kroky sestavení, vkládat a volitelně test několik kontejnerů.
+Úloha služby ACR v tomto kurzu se vytvoří a předá jedním kontejnerem image zadanou v souboru Dockerfile. Můžete také spouštět úlohy služby ACR [vícekrokových úkolů](container-registry-tasks-multi-step.md), definujte postup pro sestavení pomocí souboru YAML, push a volitelně test několik kontejnerů.
 
 ## <a name="create-a-build-task"></a>Vytvoření úlohy sestavení
 
@@ -319,7 +319,7 @@ da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59
 V tomto kurzu jste zjistili, jak pomocí úlohy automaticky aktivovat sestavení image kontejneru v Azure při potvrzení zdrojového kódu do úložiště Git. Přejděte k dalšímu kurzu, ve kterém se naučíte vytvářet úlohy, které aktivují sestavení při aktualizaci základní image kontejneru.
 
 > [!div class="nextstepaction"]
-> [Automatizace sestavení při aktualizaci základní image](container-registry-tutorial-base-image-update.md)
+> [Automatizace sestavení na aktualizací základních imagí](container-registry-tutorial-base-image-update.md)
 
 <!-- LINKS - External -->
 [sample-repo]: https://github.com/Azure-Samples/acr-build-helloworld-node

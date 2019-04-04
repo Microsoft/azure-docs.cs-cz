@@ -1,21 +1,18 @@
 ---
-title: Nastavit Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 v Azure | Dokumentace Microsoftu
-description: Spusťte aplikaci BankDemo Micro fokus v Azure a naučte se používat Micro fokus Enterprise Server a podnikový vývojář.
-services: virtual-machines-linux
-documentationcenter: ''
-author: njray
-manager: edprice
-editor: edprice
-tags: ''
-keywords: ''
-ms.openlocfilehash: 733649c2b7f27ec5e80cb77adba708a158fb2c22
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+title: Nastavit Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 ve službě Azure Virtual Machines
+description: Spusťte aplikaci BankDemo Micro fokus na Azure Virtual Machines (VMs) se naučíte, jak používat Micro fokus Enterprise Server a podnikový vývojář.
+author: sread
+ms.date: 04/02/2019
+ms.topic: article
+ms.service: multiple
+ms.openlocfilehash: be94cf0367f93f14249239fce5e09c8635a01136
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099463"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892479"
 ---
-# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-in-azure"></a>Nastavit Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 v Azure
+# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Nastavit Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 v Azure
 
 Při nastavování Micro fokus Enterprise Server 4.0 a 4.0 Developer Enterprise v Azure můžete otestovat nasazení úloh IBM z/OS. Tento článek ukazuje, jak nastavit CICS BankDemo, ukázkovou aplikaci, která je součástí Enterprise Developer.
 
@@ -23,7 +20,7 @@ CICs jsou zahrnovaného systém řízení informací o zákaznících, transakce
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Virtuální počítač s [podnikový vývojář](set-up-micro-focus-on-azure.md). Uvědomte si, že podnikový vývojář má úplnou instanci Enterprise serveru na něm pro účely vývoje a testování. Toto je instance serveru Enterprise pro tuto ukázku.
+- Virtuální počítač s [podnikový vývojář](set-up-micro-focus-azure.md). Uvědomte si, že podnikový vývojář má úplnou instanci Enterprise serveru na něm pro účely vývoje a testování. Toto je instance serveru Enterprise pro tuto ukázku.
 
 - [Edice systému SQL Server 2017 Express](https://www.microsoft.com/sql-server/sql-server-editions-express). Stáhněte a nainstalujte na virtuální počítač Enterprise Developer. Enterprise Server vyžaduje databázi pro správu CICS oblastí a BankDemo aplikace také používá databázi systému SQL Server s názvem BANKDEMO. V této ukázce se předpokládá, že používáte systém SQL Server Express pro databázi i databázi. Při instalaci, vyberte základní instalaci.
 
@@ -269,9 +266,10 @@ Poslední věcí, kterou musíte udělat, je nakonfigurovat 3270 relaci pomocí 
 
 Blahopřejeme! Je teď spuštěná CICS aplikace v Azure pomocí Micro fokus Enterprise Server.
 
-## <a name="learn-more"></a>Další informace
+## <a name="next-steps"></a>Další postup
 
+- [Spuštění serveru organizace v kontejnerech Docker v Azure](run-enterprise-server-container.md)
 - [Migrace mainframů – portál](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
-- [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
+- [Virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 - [Řešení potíží](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
-- [Uvedení mainframových migrace do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)
+- [Demystifikace migrace mainframů do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

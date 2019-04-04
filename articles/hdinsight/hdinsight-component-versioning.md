@@ -2,20 +2,19 @@
 title: Apache Hadoop komponenty a verze – Azure HDInsight
 description: Informace o Apache Hadoop komponenty a verze v HDInsight a úrovně služeb, která je k dispozici v této cloudové distribuce datovou platformou Hortonworks.
 keywords: verzích systému hadoop, ekosystém součásti platformy hadoop, součásti platformy hadoop, jak zkontrolovat verze systému hadoop
-services: hdinsight
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 03/26/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1783bf51c33a1dec84572b76149771a9723fe209
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 1c8977090fe0ea0dfd5822c7bb448d313de7cf14
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519642"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917919"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Co je Apache Hadoop komponenty a verze, které jsou k dispozici s HDInsight?
 

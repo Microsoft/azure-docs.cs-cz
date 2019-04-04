@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 3d9c2a694562977c2a012d9faa9c282c6b8fff9d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 76f8fed8d185598d62eef5a412fda2c3fd1317bd
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099827"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893975"
 ---
 # <a name="data-extraction-from-intents-and-entities"></a>Extrakce dat z záměry a entity
 Služba LUIS umožňuje získat informace z projevy přirozeného jazyka uživatele. Informace je extrahován tak, že jej lze použít program, aplikace nebo chatovací robot k akci. V následující částech se dozvíte, jaká data jsou vrácena z záměry a entity s příklady JSON.
@@ -432,13 +432,13 @@ Získávání názvů z utterance je obtížné, protože název může být té
 [PersonName](luis-reference-prebuilt-person.md) a [GeographyV2](luis-reference-prebuilt-geographyV2.md) entity jsou dostupné v některých [jazykových verzí jazyka](luis-reference-prebuilt-entities.md). 
 
 ### <a name="names-of-people"></a>Jména osob
-Název lidí může mít některé mírné formátu v závislosti na jazyk a jazykovou verzi. Použít hierarchická entity s jména a příjmení jako podřízené položky nebo jednoduché entity s rolemi křestní jméno a příjmení. Ujistěte se, že poskytnout příklady, které používají název první a poslední v různých částech utterance, v různých délek projevy a projevy přes všechny záměry včetně žádný záměru. [Kontrola](luis-how-to-review-endoint-utt.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
+Název lidí může mít některé mírné formátu v závislosti na jazyk a jazykovou verzi. Použít hierarchická entity s jména a příjmení jako podřízené položky nebo jednoduché entity s rolemi křestní jméno a příjmení. Ujistěte se, že poskytnout příklady, které používají název první a poslední v různých částech utterance, v různých délek projevy a projevy přes všechny záměry včetně žádný záměru. [Kontrola](luis-how-to-review-endpoint-utterances.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
 
 ### <a name="names-of-places"></a>Názvy míst
-Názvy umístění nastavují a známé jako je například města, okresy, státy, provincie a zemí. Pokud vaše aplikace používá know sadu umístěních, zvažte seznam entit. Pokud chcete najít že všechny umístit názvy, vytvořit jednoduchou entitu a poskytují řadu příkladů. Přidáte frázi seznam místních jmen posílit jaké místo názvů vypadají ve vaší aplikaci. [Kontrola](luis-how-to-review-endoint-utt.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
+Názvy umístění nastavují a známé jako je například města, okresy, státy, provincie a zemí. Pokud vaše aplikace používá know sadu umístěních, zvažte seznam entit. Pokud chcete najít že všechny umístit názvy, vytvořit jednoduchou entitu a poskytují řadu příkladů. Přidáte frázi seznam místních jmen posílit jaké místo názvů vypadají ve vaší aplikaci. [Kontrola](luis-how-to-review-endpoint-utterances.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
 
 ### <a name="new-and-emerging-names"></a>Nové a chystané názvy
-Některé aplikace musí být schopna najít nové a chystané názvy, například produkty nebo společnosti. Tyto typy názvů je automatizování nejobtížnějších typu extrakce. Začít s jednoduchou entitu a přidat seznam frázi. [Kontrola](luis-how-to-review-endoint-utt.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
+Některé aplikace musí být schopna najít nové a chystané názvy, například produkty nebo společnosti. Tyto typy názvů je automatizování nejobtížnějších typu extrakce. Začít s jednoduchou entitu a přidat seznam frázi. [Kontrola](luis-how-to-review-endpoint-utterances.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
 
 ## <a name="pattern-roles-data"></a>Vzor role dat
 Role jsou kontextové rozdíly entit.

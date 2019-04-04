@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 04/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 345c97a19f789bb3d850df000824d4c23989a81f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4b56aeb4fb0c902d3c824c58d2ac589c5f1fb01b
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086815"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894761"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: Rychlý start
 
@@ -93,7 +93,10 @@ Postupujte podle těchto pokynů a ověřte, že jste povolili bezproblémového
 ![Azure portal: Podokno Azure AD Connect](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> Bezproblémové jednotné přihlašování vytvoří účet počítače `AZUREADSSOACC` (která představuje Azure AD) ve vaší místní služby Active Directory (AD) v každé doménové struktuře AD. Tento účet počítače je potřeba pro funkci pracovat. Pokud používáte architekturu Pass-the-Hash a krádeže přihlašovacích údajů omezení rizik ve vašem místním prostředí, ujistěte se, že `AZUREADSSOACC` účet počítače nemá ukládaly do karantény kontejneru. Abyste provedli odpovídající změny k vytvoření účtu počítače v kontejneru počítače. Poté, co bezproblémového jednotného přihlašování se úspěšně zapnulo Průvodce Azure AD Connect, přesunout `AZUREADSSOACC` počítačový účet k organizační jednotce (OU) ve které jsou jiné účty počítačů spravovaná zajistit, že se omylem neodstraní.
+> Bezproblémové jednotné přihlašování vytvoří účet počítače `AZUREADSSOACC` ve vaší místní služby Active Directory (AD) v každé doménové struktuře AD. `AZUREADSSOACC` Účet počítače musí být silného chráněn z bezpečnostních důvodů. Pouze Domain Admins by měl mít možnost Spravovat účet počítače. Ujistěte se, že delegování protokolu Kerberos v tomto počítači zakázaná. Store účet počítače v organizační jednotce (OU) jsou-li před náhodným odstraněním.
+
+>[!NOTE]
+> Pokud používáte architekturu Pass-the-Hash a krádeže přihlašovacích údajů omezení rizik ve vašem místním prostředí, abyste provedli odpovídající změny zajistit, aby `AZUREADSSOACC` účet počítače nemá ukládaly do karantény kontejneru. 
 
 ## <a name="step-3-roll-out-the-feature"></a>Krok 3: Zavedení funkce
 

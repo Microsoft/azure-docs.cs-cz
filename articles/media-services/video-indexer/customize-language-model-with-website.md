@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: be0b930c99bb14c34e395efce494e8d7372719b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7b81b53c03104023823bef75beb4ac6077feede7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998136"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918684"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Upravit jazykový model s webem Video Indexer
 
@@ -116,6 +116,34 @@ Pokud chcete odstranit jazykový model z vašeho účtu, klikněte na tlačítko
 Otevře se nové okno oznamující, že odstranění nevratná. Klikněte na tlačítko **odstranit** možnost v novém okně.
 
 Tato akce odebere jazykového modelu zcela z vašeho účtu. Jakéhokoli videa, která se používala odstraněné jazykový model budete mít stejný index, dokud znovu Indexujte videa. Pokud znovu Indexujte videa, můžete přiřadit nového jazykového modelu na video. V opačném případě Video Indexer pomocí jeho výchozí model znovu Indexujte videa. 
+
+## <a name="customize-language-models-by-correcting-transcripts"></a>Přizpůsobení jazykových modelů opravou záznamy o studiu
+
+Video Indexer podporuje automatické přizpůsobení jazykových modelů na základě uživatelů skutečné opravy provádět přepisů z jejich videí.
+
+1. Chcete-li opravy řádné záznamy o studiu, otevřete video, které chcete upravit z videí účtu. Vyberte **časová osa** kartu.
+
+    ![Přizpůsobení jazykového modelu](./media/customize-language-model/timeline.png)
+1. Klikněte na ikonu tužky a upravte přepisu vaše určené k transkripci. 
+
+    ![Přizpůsobení jazykového modelu](./media/customize-language-model/edits.png)
+
+    Video Indexer zachycuje všechny řádky, které řeší vámi přepis videa a automaticky přidá do textového souboru s názvem "od úpravy přepisu". Tyto úpravy jsou použity znovu konkrétní jazykový model, který byl použit k indexování toto video. 
+    
+    Pokud jste nezadali jazykový model názvy při indexování toto video, pak všechny úpravy pro toto video se uloží do výchozí jazykový model, který volá úpravy účtu v rámci zjištěný jazyk videa. 
+    
+    V případě, že víc úpravy se provedly na stejném řádku, pouze poslední verzi řádku opravený se použije pro aktualizuje se jazykový model.  
+    
+    > [!NOTE]
+    > Pouze textové opravy se používají pro vlastní nastavení. To znamená, že opravy, které nezahrnují vlastních slov (například interpunkční znaménka nebo mezery) nejsou zahrnuty. 
+    
+1. Zobrazí se opravy přepisu zobrazit na kartě jazyk stránky přizpůsobení modelu obsahu.
+
+    ![Přizpůsobení jazykového modelu](./media/customize-language-model/customize.png)
+
+   Podívejte se na soubor "od úpravy přepisu" pro jednotlivé jazykové modely, klikněte na tlačítko na něj a otevřete ho. 
+
+    ![Z úprav přepisů](./media/customize-language-model/from-transcript-edits.png)
 
 ## <a name="next-steps"></a>Další postup
 

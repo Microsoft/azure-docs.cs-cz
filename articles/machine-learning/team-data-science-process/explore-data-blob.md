@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d921d0907d7481b842fd98db2c0d7cb5f402f24f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3c399491f0a2048fe924e9ed9600dd5ce3899ca2
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835973"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903722"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat ve službě Azure blob storage pomocí knihovny pandas
 
@@ -36,7 +36,7 @@ K prozkoumání a manipulaci s datovou sadu, ho musíte nejprve stáhnout na zdr
 1. Stahování dat z Azure blob s následující vzorový kód Pythonu pomocí služby blob service. Nahraďte konkrétní hodnoty proměnné v následujícím kódu:
 
 ```python
-from azure.storage.blob import BlobService
+from azure.storage.blob import BlockBlobService
 import tables
 
 STORAGEACCOUNTNAME= <storage_account_name>
@@ -47,7 +47,7 @@ BLOBNAME= <blob_name>
 
 #download from blob
 t1=time.time()
-blob_service=BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
+blob_service=BlockBlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
 blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
 t2=time.time()
 print(("It takes %s seconds to download "+blobname) % (t2 - t1))

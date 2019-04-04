@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 4e609bf6d96fa9cc3f2dc179157ecd27178608f9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 672c62c440708f8e949d67d545bee2179c6066b2
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57860348"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894931"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Přístup k Azure Cosmos DB z virtuálních sítí (VNet)
 
@@ -54,6 +54,9 @@ Pravidla skupiny zabezpečení sítě umožňují omezit připojení do a z pods
 
 ### <a name="are-service-endpoints-available-for-all-vnets"></a>Jsou k dispozici koncové body služby pro všechny virtuální sítě?
 Ne, virtuální sítě pouze Azure Resource Manageru můžete mít povolený koncový bod služby. Klasické virtuální sítě nepodporují koncových bodů služby.
+
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Můžete mi "Přijímat připojení z v rámci veřejných datových centrech Azure" když je povolen přístup koncových bodů služby pro službu Azure Cosmos DB?  
+To je potřeba, pouze když chcete svůj účet služby Azure Cosmos DB ke kterým přistupují jiné Azure od služby jako Azure Data factory, Azure Search nebo některý službu, která je nasazena v dané oblasti Azure.
 
 
 ## <a name="next-steps"></a>Další postup

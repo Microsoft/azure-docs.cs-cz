@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: e02a09bdc8bd80b93f7fa33632c32a75c1d705bd
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.lastreviewed: 03/27/2019
+ms.openlocfilehash: 00eb4fc3eb0b2e7120208e6318bf35fc2cc6f188
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226857"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649403"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizace služby Azure Stack 1901
 
@@ -56,18 +56,20 @@ Azure Stack opravy hotfix platí pouze pro integrované systémy Azure Stack; Ne
 
 ### <a name="azure-stack-hotfixes"></a>Azure Stack opravy hotfix
 
+Pokud už máte 1901 a jste dosud nenainstalovali žádné opravy hotfix, ale můžete [nainstalovat 1902 přímo](azure-stack-update-1902.md), aniž byste nejdřív nainstalovat opravu hotfix 1901.
+
 - **1809**: [KB 4481548 – oprava hotfix Azure Stack 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**: K dispozici žádná aktuální hotfix.
-- **1901**: [KB 4481548 – oprava hotfix Azure Stack 1.1901.2.103](https://support.microsoft.com/help/4494720)
+- **1901**: [KB 4495662 – oprava hotfix Azure Stack 1.1901.3.105](https://support.microsoft.com/help/4495662)
 
 ## <a name="prerequisites"></a>Požadavky
 
 > [!IMPORTANT]
-> - Nainstalujte [nejnovější opravy hotfix Azure Stack](#azure-stack-hotfixes) pro 1811 (pokud existuje) před aktualizací na 1901.
+> Nainstalujte [nejnovější opravy hotfix Azure Stack](#azure-stack-hotfixes) pro 1811 (pokud existuje) před aktualizací na 1901. Pokud už máte 1901 a ještě nemáte nainstalované všechny opravy hotfix, můžete nainstalovat 1902 přímo, bez první instalace opravy hotfix 1901.
 
 - Před instalací této aktualizace, spusťte [testovací AzureStack](azure-stack-diagnostic-test.md) s následujícími parametry do ověřte stav služby Azure Stack a vyřešte všechny provozní problémy zjištěné, včetně všech upozornění a chyby. Také aktivní výstrahy můžete zkontrolovat a vyřešit všechny, které vyžadují nějakou akci:
 
-    ```PowerShell
+    ```powershell
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
@@ -93,7 +95,7 @@ Tato aktualizace zahrnuje následující nové funkce a vylepšení pro službu 
    * **AzureRm.Insights**  
          Kumulativní modul AzureRm teď zahrnuje podporu ještě publikovanou verzi 5.1.5 **verze api-version 2018-01-01** pro metriky, typy prostředků definice metrik.
 
-- **AzureStack 1.7.0** to k zásadní změně verze. Podrobnosti o zásadních změnách najdete v tématu https://aka.ms/azspshmigration170.
+- **AzureStack 1.7.1** to k zásadní změně verze. Podrobnosti o zásadních změnách najdete v tématu https://aka.ms/azspshmigration171.
    * **Azs.Backup.Admin modulu**  
          Zásadní změna: Zálohování se mění na režim šifrování založené na certifikátu. Podpora symetrických klíčů je zastaralá.  
    * **Azs.Fabric.Admin modulu**  
@@ -117,9 +119,6 @@ Referenční informace pro aktualizovaný modulů najdete v tématu [referenčn�
 
 - <!-- 3235634 – IS, ASDK -->
   Opravili jsme problém, ve které nasazení virtuální počítače s velikostí, který obsahuje **v2** přípony; například **Standard_A2_v2**, se vyžaduje zadání přípony jako **Standard_A2_v2** () malá písmena v). I s globální Azure, můžete nyní použít **Standard_A2_V2** (velká písmena V).
-
-<!-- 2869209 – IS, ASDK --> 
-- Opravili jsme problém při použití [rutiny Add-AzsPlatformImage](/powershell/module/azs.compute.admin/add-azsplatformimage), ve kterém jste museli používat **- OsUri** parametr jako identifikátor URI, kde je odeslána na disk účtu úložiště. Nyní můžete také použít místní cesta k disku.
 
 <!--  2795678 – IS, ASDK --> 
 - Opravili jsme problém, který generoval upozornění, když jste použili portál k vytvoření virtuálních počítačů (VM) o velikosti virtuálních počítačů úrovně premium (DS, Ds_v2, služby FS, FSv2). Virtuální počítač byl vytvořen v účtu úložiště úrovně standard. I když to neovlivnila funkčně vstupně-výstupních operací nebo fakturace, chyba byla opravena upozornění.

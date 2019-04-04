@@ -12,21 +12,21 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 30a16c2a8b82ff4b32b95b14937166b94aba06b5
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: f94d731fd7b9a9fa85ae42d22949c7ca4024aabe
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726953"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904351"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Povolení automatického ladění monitorování dotazů a zlepšit výkon úloh
 
 Azure SQL Database je automaticky spravovanou datovou službu, která neustále monitoruje dotazy a identifikuje akce, které můžete provést pro zvýšení výkonu vašich úloh. Můžete zkontrolovat doporučení a ručně aplikovat nebo nechat službu Azure SQL Database automaticky použít nápravná opatření – to se označuje jako **režim automatické optimalizace**.
 
-Automatické ladění je možné povolit na serveru nebo na úrovni databáze pomocí [webu Azure portal](sql-database-automatic-tuning-enable.md#azure-portal), [rozhraní REST API](sql-database-automatic-tuning-enable.md#rest-api) volání a [T-SQL](sql-database-automatic-tuning-enable.md#t-sql) příkazy.
+Automatické ladění je možné povolit na serveru nebo na úrovni databáze pomocí [webu Azure portal](sql-database-automatic-tuning-enable.md#azure-portal), [rozhraní REST API](sql-database-automatic-tuning-enable.md#rest-api) volání a [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) příkazy.
 
 > [!NOTE]
-> Pro Managed Instance je možné nakonfigurovat pomocí podporované možnosti FORCE_LAST_GOOD_PLAN [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) pouze. Portál na základě konfigurace a možnosti ladění automatických indexů popsaných v tomto článku se nevztahují na Managed Instance.
+> Pro Managed Instance je možné nakonfigurovat pomocí podporované možnosti FORCE_LAST_GOOD_PLAN [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management) pouze. Portál na základě konfigurace a možnosti ladění automatických indexů popsaných v tomto článku se nevztahují na Managed Instance.
 
 > [!NOTE]
 > Konfigurace možnosti automatického ladění pomocí šablony ARM (Azure Resource Manageru) není v tuto chvíli nepodporuje.

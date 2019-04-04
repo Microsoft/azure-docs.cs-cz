@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 55b4cf6e621bc1e5bd3d8ba4718e5714ea652c27
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: HT
+ms.openlocfilehash: 71ba1266c3a6a1f063f1af4ab37a5f29752c62f0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58111476"
+ms.locfileid: "58896155"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Funkce jazyka C# pro vývojáře referenční informace k Azure
 
@@ -131,7 +131,7 @@ public static class BindingExpressionsExample
 
 Vytvoří proces sestavení *function.json* souboru ve složce funkci ve složce sestavení. Jak je uvedeno výše, tento soubor není určena k přímo upravovat. Nelze změnit konfiguraci vazby nebo zakázat funkci úpravou tohoto souboru. 
 
-Účelem tohoto souboru je poskytnout informace o škálování řadiče na použití pro [rozhodnutí o škálování na plán consumption](functions-scale.md#how-the-consumption-plan-works). Z tohoto důvodu má soubor jenom informace o aktivační události, není vstupní nebo výstupní vazbu.
+Účelem tohoto souboru je poskytnout informace o škálování řadiče na použití pro [rozhodnutí o škálování na plán consumption](functions-scale.md#how-the-consumption-and-premium-plans-work). Z tohoto důvodu má soubor jenom informace o aktivační události, není vstupní nebo výstupní vazbu.
 
 Vygenerovaný *function.json* obsahuje soubor `configurationSource` vlastnost, která říká modul runtime pro použití .NET atributy u vazeb, spíše než *function.json* konfigurace. Tady je příklad:
 
@@ -274,7 +274,7 @@ Nemůžete použít `out` parametry v asynchronních funkcí. Výstupní vazby, 
 
 ## <a name="cancellation-tokens"></a>Tokeny zrušení
 
-Funkce může přijmout [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) parametr, který umožňuje operačnímu systému upozornit funkce se chystá ukončit váš kód. Toto oznámení můžete použít k Ujistěte se, že funkce nebude dojde k neočekávanému ukončení tak, aby data ponechá v nekonzistentním stavu.
+Funkce může přijmout [CancellationToken](/dotnet/api/system.threading.cancellationtoken) parametr, který umožňuje operačnímu systému upozornit funkce se chystá ukončit váš kód. Toto oznámení můžete použít k Ujistěte se, že funkce nebude dojde k neočekávanému ukončení tak, aby data ponechá v nekonzistentním stavu.
 
 Následující příklad ukazuje, jak vyhledat brzké ukončení funkce.
 
@@ -369,7 +369,7 @@ public static class IBinderExample
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definuje [úložiště objektů blob](functions-bindings-storage-blob.md) vstupní nebo výstupní vazby, a [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) je typ vazby podporované výstup.
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definuje [úložiště objektů blob](functions-bindings-storage-blob.md) vstupní nebo výstupní vazby, a [TextWriter](/dotnet/api/system.io.textwriter) je typ vazby podporované výstup.
 
 ### <a name="multiple-attribute-example"></a>Příklad více atributů
 

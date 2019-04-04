@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: damaerte
-ms.openlocfilehash: 7e2ead6d5fc13b0d7517258d75148d50a3f1bc62
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: fe04c5450ecd2c21affa5cbb89c627bc30cf7b6f
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246351"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903450"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkce a nástroje pro Azure Cloud Shell
 
@@ -82,5 +82,5 @@ Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nás
 ## <a name="next-steps"></a>Další postup
 [Bash v Cloud Shellu Quickstart](quickstart.md) <br>
 [Prostředí PowerShell ve službě Cloud Shell Quickstart](quickstart-powershell.md) <br>
-[Další informace o Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
+[Další informace o rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/) <br>
 [Další informace o Azure Powershellu](https://docs.microsoft.com/powershell/azure/) <br>

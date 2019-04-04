@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 5b4f9715e47483fa64840c521620bec79f3041cd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1fc9883e0ea35c384c3bfc83e76b8eded48cbcba
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106402"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905065"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Rychlý start pro PowerShell ve službě Azure Cloud Shell
 
@@ -267,7 +267,7 @@ K ověření serverů a virtuálních počítačů pomocí protokolu SSH, genero
 
 ### <a name="using-ssh"></a>Pomocí protokolu SSH
 
-Postupujte podle pokynů [tady](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) vytvořit nové konfigurace virtuálního počítače pomocí rutin AzureRM.
+Postupujte podle pokynů [tady](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) vytvořit nové konfigurace virtuálního počítače pomocí rutin prostředí Azure PowerShell.
 Před voláním do `New-AzVM` aktivovat nasazení, přidejte veřejný klíč SSH do konfigurace virtuálního počítače.
 Nově vytvořený virtuální počítač bude obsahovat veřejný klíč `~\.ssh\authorized_keys` umístění, a tím umožnit bez přihlašovacích údajů relaci SSH k virtuálnímu počítači.
 
@@ -292,7 +292,7 @@ ssh azureuser@MyVM.Domain.Com
 
 V části `Azure` jednotku, zadejte `Get-AzCommand` získat kontextové příkazy Azure.
 
-Alternativně můžete kdykoli použít `Get-Command *azurerm* -Module AzureRM.*` a zjistěte, k dispozici příkazy Azure.
+Alternativně můžete kdykoli použít `Get-Command *az* -Module Az.*` a zjistěte, k dispozici příkazy Azure.
 
 ## <a name="install-custom-modules"></a>Instalace vlastních modulů
 

@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 4/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: c64bf11a5e0d95e2896bb717d4069f9b0d7ea721
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569990"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892224"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na hraničních zařízeních IoT
  
@@ -44,12 +44,14 @@ Azure Stream Analytics používá k nasazení hraniční úlohy na zařízení s
 
 ### <a name="installation-instructions"></a>Pokyny k instalaci
 Hlavní kroky jsou popsány v následující tabulce. Další podrobnosti jsou popsány v následujících částech.
+
 |      |Krok   | Poznámky   |
 | ---   | ---   |  ---      |
 | 1   | **Vytvoření kontejneru úložiště**   | Kontejnery úložiště se používají k uložení vaší definice úlohy, ve kterém jsou dostupné v zařízení IoT. <br>  Můžete znovu použít jakékoli existující kontejner úložiště.     |
 | 2   | **Vytvoření hraniční úlohy Azure Stream Analytics**   |  Vytvořit novou úlohu, vyberte **hrany** jako **hostitelské prostředí**. <br> Tyto úlohy jsou vytvořili spravovaných z cloudu a spustit na zařízeních IoT Edge.     |
 | 3   | **Nastavení prostředí IoT Edge na vaše zařízení**   | Pokyny, jak [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) nebo [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).          |
 | 4   | **Nasazení Azure Stream Analytics na vaše zařízení IoT Edge**   |  Definice úlohy Azure Stream Analytics se exportují do kontejneru úložiště vytvořili dříve.       |
+
 Můžete postupovat podle [Tento podrobný kurz](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) k nasazení vaší první úlohu Azure Stream Analytics na hraničních zařízeních IoT. V následujícím videu by vám pomůže porozumět procesu ke spuštění úlohy Stream Analytics na hraničním zařízením IoT:  
 
 
@@ -142,7 +144,7 @@ Tento příklad definuje následující trasy:
 
 ## <a name="technical-information"></a>Technické informace
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>Aktuální omezení pro úlohy IoT Edge ve srovnání s cloudové úlohy
-Cílem je, aby parity mezi úlohy IoT Edge a cloudu. Většina funkcí jazyka SQL dotazu již jsou podporovány.
+Cílem je, aby parity mezi úlohy IoT Edge a cloudu. Podporují se většina funkcí jazyka dotazů SQL, povolení pro stejnou logiku cloudu i hraničních zařízeních IoT.
 Ale tyto funkce zatím nepodporuje hraniční úlohy:
 * Uživatelem definované funkce (UDF) v jazyce JavaScript. Jsou k dispozici v systému souborů UDF [ C# pro úlohy IoT Edge](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (preview).
 * Uživatelem definované agregace (UDA).
@@ -150,14 +152,6 @@ Ale tyto funkce zatím nepodporuje hraniční úlohy:
 * Použití více než 14 agregací v jediném kroku.
 * Formát AVRO pro vstup/výstup. V současné době jsou podporovány pouze CSV a JSON.
 * Následující operátory SQL:
-    * Geoprostorové operátory:
-        * CreatePoint
-        * CreatePolygon
-        * CreateLineString
-        * ST_DISTANCE
-        * ST_WITHIN
-        * ST_OVERLAPS
-        * ST_INTERSECTS
     * ODDÍL
     * GetMetadataPropertyValue
 

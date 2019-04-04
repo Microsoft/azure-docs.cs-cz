@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 03/28/2019
 ms.author: diberry
-ms.openlocfilehash: 0acb844b8b10ff210985dfcd8c96f15da6669356
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 72c4f23f47e0a2c6d9a96dbbe36716bc3ab665f1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337472"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891425"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Vytvoření nové aplikace LUIS na portálu služby LUIS
 Existuje několik způsobů, jak vytvořit aplikaci LUIS. Můžete vytvořit aplikaci LUIS v [LUIS](https://www.luis.ai) portálu, nebo prostřednictvím LUIS vytváření [rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
@@ -66,6 +66,17 @@ Vytvořit novou aplikaci s rozhraním API pro vytváření obsahu v několika zp
 Možné chyby jsou: 
 
 * Aplikace s tímto názvem už existuje. Opětovné importování aplikace a nastavení **volitelný název** na nový název. 
+
+## <a name="export-app"></a>Exportovat aplikaci
+
+1. Na **Moje aplikace** stránce **novou aplikaci Import**.
+1. V **novou aplikaci Import** dialogového okna, vyberte soubor JSON, který definuje aplikaci LUIS.
+
+## <a name="delete-app"></a>Odstranit aplikaci
+
+1. Na **Moje aplikace** vyberte tři tečky (...) na konci řádku aplikace.
+1. Vyberte **odstranit** z nabídky.
+1. Vyberte **Ok** v potvrzovacím okně.
 
 ## <a name="next-steps"></a>Další postup
 

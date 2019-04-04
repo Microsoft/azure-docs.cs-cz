@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2018
 ms.author: banders
-ms.openlocfilehash: 04b456cbaeeb4ba285fd874f7b21abffcc714653
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 4305db991a8129b0ae4205300051391df893c52c
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649252"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917783"
 ---
 # <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Vysvětlení použití slevy na plán rezervaci softwaru SUSE Linux Enterprise pro Azure
 
@@ -126,10 +126,10 @@ Azure portal marketplace názvy:
 
 Další informace o rezervacích, naleznete v následujících článcích:
 
-- [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
+- [Co jsou rezervace Azure?](billing-save-compute-costs-reservations.md)
 - [Předplatíte plány softwaru SUSE s Azure rezervace](../virtual-machines/linux/prepay-suse-software-charges.md)
-- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
+- [Předplatit si virtuální počítače se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Správa Azure rezervace](billing-manage-reserved-vm-instance.md)
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
 

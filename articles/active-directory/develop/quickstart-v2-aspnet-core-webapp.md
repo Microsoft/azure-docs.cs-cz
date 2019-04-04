@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/03/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fed62dfc3f7e7dc974fb709261e363f26ce97c51
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 0fa2e38a680e8590a89131717136a7960c1d3680
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200986"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903586"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 
@@ -40,7 +40,7 @@ V tomto rychlém startu se dozvíte, jak webové aplikace ASP.NET Core můžete 
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Registrace a automaticky konfigurovat svoji aplikaci a pak si stáhnout ukázku kódu
 >
-> 1. Přejděte [portál Azure – registrace aplikací (Preview)](https://aka.ms/aspnetcore2-1-aad-quickstart-v2).
+> 1. Přejděte [portál Azure – registrace aplikací](https://aka.ms/aspnetcore2-1-aad-quickstart-v2).
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 > 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 >
@@ -51,7 +51,8 @@ V tomto rychlém startu se dozvíte, jak webové aplikace ASP.NET Core můžete 
 >
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-> 1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací (Preview)** > **Nová registrace**.
+> 1. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky.
+> 1. Vyberte **registrace nové**.
 > 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 >    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `AspNetCore-Quickstart`.
 >    - V **adresy URL odpovědi**, přidejte `https://localhost:44321/`a vyberte **zaregistrovat**.
@@ -65,20 +66,20 @@ V tomto rychlém startu se dozvíte, jak webové aplikace ASP.NET Core můžete 
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace na webu Azure Portal
 > Pro ukázkový kód pro tento rychlý start pro práci, budete muset přidat adresy URL odpovědí jako `https://localhost:44321/` a `https://localhost:44321/signin-oidc`, přidejte odhlašovací adresa URL jako `https://localhost:44321/signout-oidc`a požádat o tokeny typu ID chcete vystavit koncový bod autorizace.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Udělat změnu za mě]()
+> > [Provedení této změny pro mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurované](media/quickstart-v2-aspnet-webapp/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
+> > ![Už nakonfigurovali](media/quickstart-v2-aspnet-webapp/green-check.png) vaše aplikace je nakonfigurovaná s těmito atributy.
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>Krok 2: Stáhněte si svůj projekt ASP.NET Core
 
-- [Stáhněte si řešení Visual Studio 2017.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+- [Stáhněte si řešení sady Visual Studio 2017](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
 
 1. Extrahujte soubor zip do místní složky v kořenové složce – například **C:\Azure-Samples**
 1. Pokud používáte Visual Studio 2017, otevřete řešení v sadě Visual Studio (volitelné).
-1. Upravit **appsettings.json** souboru. Najít `ClientId` a nahraďte `Enter_the_Application_Id_here` s **ID aplikace (klient)** hodnotu aplikace, které jste právě zaregistrovali. 
+1. Upravit **appsettings.json** souboru. Najít `ClientId` a aktualizujte hodnotu `ClientId` s **ID aplikace (klient)** hodnotu aplikace, které jste právě zaregistrovali. 
 
     ```json
     "ClientId": "Enter_the_Application_Id_here"
@@ -90,8 +91,8 @@ V tomto rychlém startu se dozvíte, jak webové aplikace ASP.NET Core můžete 
 > - `Enter_the_Application_Id_here` -je **ID aplikace (klient)** pro aplikace, které jste zaregistrovali na webu Azure Portal. Můžete najít **ID aplikace (klient)** aplikace **přehled** stránky.
 > - `Enter_the_Tenant_Info_Here` -je jedním z následujících možností:
 >   - Pokud vaše aplikace podporuje **účty v tomto adresáři organizace jenom**, nahradí tato hodnota se **ID Tenanta** nebo **název Tenanta** (například) contoso.microsoft.com)
->   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
->   - Pokud vaše aplikace podporuje režim **Všichni uživatelé účtu Microsoft**, nahraďte tuto hodnotu za `common`.
+>   - Pokud vaše aplikace podporuje **účty v libovolném adresáři organizace**, nahradí tato hodnota se `organizations`
+>   - Pokud vaše aplikace podporuje **uživatele účtu Microsoft všechny**, nahradí tato hodnota se `common`
 >
 > > [!TIP]
 > > Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.

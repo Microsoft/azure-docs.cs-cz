@@ -1,6 +1,6 @@
 ---
-title: Definování profilu technické OAuth2 vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Technický profil OAuth2 definování vlastních zásad v Azure Active Directory B2C.
+title: Technický profil OAuth2 definování ve vlastních zásadách v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Technický profil OAuth2 definování ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 86682525ae5246f9335e64e7dd3a812eaaf3c273
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fde556c60f823f4bd287ca5672503158c7292f51
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157716"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918922"
 ---
-# <a name="define-a-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil OAuth2 definování ve vlastních zásadách pro Azure Active Directory B2C
+# <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil OAuth2 definování ve vlastních zásadách pro Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 

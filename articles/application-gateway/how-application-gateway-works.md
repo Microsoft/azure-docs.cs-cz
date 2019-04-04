@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: ef07def377b74fb74d57372f471efcf48fcf7aa2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bbaf651233d4cebad3f45e5cf3823bcaf6ce38b6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881091"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905779"
 ---
 # <a name="how-application-gateway-works"></a>Jak funguje služba Application Gateway
 
@@ -36,7 +36,7 @@ Po back-end serveru Aplikační brána otevře novou relaci protokolu TCP s back
 
 Interní aplikační brány má pouze privátní IP adresu. Název DNS pro interní aplikační brány je interně přeložit na jeho privátní IP adresu. Proto interní služby load balancer můžete pouze směrovat požadavky od klientů s přístupem k virtuální síti pro službu Application Gateway.
 
-Všimněte si, že internetové i interní aplikační brány směrovat požadavky do back-end serverů pomocí privátních IP adres, pokud váš prostředek back-endový fond obsahuje privátní IP adresy, konfigurace síťové karty virtuálního počítače nebo interně přeložitelnou adresu a pokud vaše back-endový fond je veřejný koncový bod, služba Application Gateway používá veřejnou IP adresu jeho front-endu k dosažení serveru. Pokud jste nezřídili veřejné IP adresy front-endu, jeden je přiřazen pro odchozí připojení k externí síti.
+Pokud back-endový fond obsahuje interně přeložitelný plně kvalifikovaný název domény nebo privátní IP adresu, služba Application Gateway přesměruje požadavek na back-end serveru pomocí jeho privátní IP adresy instance. Pokud back-endový fond obsahuje externí koncový bod nebo externě přeložitelný plně kvalifikovaný název domény, služba Application Gateway přesměruje požadavek na back-end serveru pomocí jeho veřejné IP adresy front-endu. Překlad názvů DNS je založena na privátní zóny DNS nebo vlastního serveru DNS, pokud nakonfigurované nebo trvá, než výchozí, které poskytuje Azure DNS. Pokud jste nezřídili veřejné IP adresy front-endu, jeden je přiřazen pro odchozí připojení k externí síti.
 
 ### <a name="modifications-to-the-request"></a>Úpravy na požadavek
 

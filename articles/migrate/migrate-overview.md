@@ -4,15 +4,15 @@ description: Obsahuje přehled služby Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 03/11/2019
+ms.date: 04/03/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7f0b3a0f63b87928938e5c0e9d39cc49c0fc791d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f1d127405046400e2a92ffc5ab695d287e297bd
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999967"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894965"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -37,7 +37,7 @@ Azure Migrate vám pomůže s následujícími úlohami:
 - Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
 -  Projekt Azure Migrate můžete vytvořit pouze v následujících zeměpisných oblastech. Ale to vás neomezuje vaše schopnost vytvořit posouzení pro jiné cílové umístění Azure.
 
-    **Zeměpisné oblasti** | **Umístění úložiště**
+    **Geografie** | **Umístění úložiště**
     --- | ---
     Azure Government | USA (Gov) – Virginia
     Asie | Jihovýchodní Asie a jihovýchodní Asie
@@ -62,7 +62,7 @@ Nastavení posouzení si můžete přizpůsobit podle vašich potřeb. Souhrn vl
 **Cílové umístění** | Umístění Azure, do kterého chcete migrovat.<br/><br/>Azure Migrate aktuálně podporuje 33 oblastech jako cílové umístění migrace. [Seznam oblastí najdete tady](https://azure.microsoft.com/global-infrastructure/services/). Ve výchozím nastavení cílové oblasti nastavená oblast východní USA.
 **Typ úložiště** | Typ spravované disky, které chcete přidělit pro všechny virtuální počítače, které jsou součástí posouzení. Pokud je kritérium určení velikosti *jako v místním nastavení velikosti* cílový typ disku můžete zadat buď jako disky premium (výchozí), standardní disky SSD nebo standardní HDD disky. Pro *určení velikosti na základě výkonu*, spolu s výše uvedených možností, máte také možnost vybrat automatického, která zajistí, že na disku, doporučení velikosti provádí automaticky podle data o výkonu virtuálních počítačů. Například, pokud chcete dosáhnout [jednu instanci virtuálního počítače SLA 99,9 %](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/), můžete chtít zadat typ úložiště jako spravované disky úrovně Premium, které zajistí, že všechny disky v posouzení se doporučují jako spravované disky úrovně Premium. Poznámka: Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
 **Rezervované instance** |  Můžete zadat, jestli v Azure máte [rezervované instance](https://azure.microsoft.com/pricing/reserved-vm-instances/). Azure Migrate odhadne náklady odpovídajícím způsobem.
-**Kritérium určení velikosti** | Nastavení velikosti může být založen na **historie výkonu** z místních virtuálních počítačů (výchozí), nebo **jako místní**, bez zohlednění historie výkonu.
+**Kritérium velikosti** | Nastavení velikosti může být založen na **historie výkonu** z místních virtuálních počítačů (výchozí), nebo **jako místní**, bez zohlednění historie výkonu.
 **Historie výkonu** | Azure Migrate ve výchozím nastavení vyhodnocuje výkon místních počítačů s využitím historie výkonu za poslední den a hodnoty 95. percentilu.
 **Faktor komfortu** | Azure Migrate při posuzování počítá s rezervou (faktor komfortu). Tato rezerva se použije nad rámec dat o využití počítače pro virtuální počítače (procesor, paměť, disk a síť). Důvodem použití faktoru komfortu jsou problémy, jako jsou sezónní využití, krátká historie výkonu a pravděpodobný růst budoucího využití.<br/><br/> Například z virtuálního počítače s 10 jádry a 20% využitím je normálně ve výsledku virtuální počítač se 2 jádry. S faktorem komfortu 2,0× je však výsledkem virtuální počítač se 4 jádry. Výchozí nastavení komfortu je 1,3×.
 **Řada virtuálních počítačů** | Řada virtuálních počítačů, která se použije k odhadu velikostí. Pokud máte například produkční prostředí, které se nechystáte migrovat na virtuální počítače řady A-Series v Azure, můžete vyloučit řadu A-Series ze seznamu nebo řad. Určení velikosti se provádí pouze na základě vybraných řad.   
@@ -103,6 +103,12 @@ Po posouzení místních počítačů můžete provést migraci pomocí několik
 
 - **Azure Site Recovery**: Azure Site Recovery můžete migrovat do Azure. Provedete to tak, že si nejprve [připravíte potřebné komponenty Azure](../site-recovery/tutorial-prepare-azure.md), včetně účtu úložiště a virtuální sítě. V místním prostředí si [připravíte prostředí VMware](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md). Jakmile bude vše připravené, nastavíte a povolíte replikaci do Azure a provedete migraci virtuálních počítačů. [Další informace](../site-recovery/vmware-azure-tutorial.md).
 - **Azure Database Migration**: Pokud na místních počítačích běží databáze, jako je například SQL Server, MySQL nebo Oracle, můžete použít [Azure Database Migration Service](../dms/dms-overview.md) k migraci do Azure.
+
+## <a name="want-to-learn-more-from-community-experts"></a>Chcete se dozvědět víc od komunity odborníků?
+Přejděte [fóra Azure Migrate MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureMigrate&filter=alltypes&sort=lastpostdesc) nebo [Stack Overflow](https://stackoverflow.com/search?q=azure+migrate)
+
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.  
+Pokud máte otázky nebo potřebujete pomoc, vytvořte [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Pokud vaše žádost o podporu vyžaduje podrobné technické pokyny, navštivte prosím [plánů podpory Azure](https://azure.microsoft.com/support/plans/)     
 
 
 ## <a name="next-steps"></a>Další postup

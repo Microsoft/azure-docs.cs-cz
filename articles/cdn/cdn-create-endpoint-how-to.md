@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: a3fd85d1dbcba769f47e537e0231f63110752492
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ba25bef75bc21eea2b0c3a57599a3b9ddd3164e0
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093676"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916814"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Vytvoření koncového bodu Azure CDN
-Tento článek popisuje všechna nastavení pro vytvoření [Azure Content Delivery Network (CDN)](cdn-overview.md) koncový bod v existující profil CDN. Po vytvoření profilu a koncového bodu, můžete začít doručovat obsah svým zákazníkům. Rychlý start k vytvoření profilu a koncového bodu, najdete v části [rychlý start: vytvoření koncového bodu a profilu Azure CDN](cdn-create-new-endpoint.md).
+Tento článek popisuje všechna nastavení pro vytvoření [Azure Content Delivery Network (CDN)](cdn-overview.md) koncový bod v existující profil CDN. Po vytvoření profilu a koncového bodu, můžete začít doručovat obsah svým zákazníkům. Rychlý start k vytvoření profilu a koncového bodu, najdete v části [rychlý start: Vytvoření koncového bodu a profilu Azure CDN](cdn-create-new-endpoint.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Než budete moct vytvořit koncový bod CDN, musíte mít vytvořený alespoň jeden profil CDN, což může obsahovat jeden nebo více koncových bodů CDN. K uspořádání koncových bodů CDN podle internetové domény, webové aplikace nebo jiných kritérií můžete použít několik profilů. Protože ceny CDN se uplatní na úrovni profilu CDN, musíte vytvořit víc profilů CDN, pokud chcete použít kombinaci cenových úrovní Azure CDN. Vytvoření profilu CDN, najdete v tématu [vytvoření nového profilu CDN](cdn-create-new-endpoint.md#create-a-new-cdn-profile).
@@ -67,7 +67,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
    > [!NOTE]
    > **Port původu** hodnota určuje jenom port použitý koncovým bodem k načtení informací ze zdrojového serveru. Koncový bod jako takový je dostupný jenom koncovým klientům na výchozích portech HTTP a HTTPS (80 a 443), a to bez ohledu na nastavení **Počáteční port**.  
    > 
-   > Koncové body v profilech **Azure CDN od Akamai** pro počáteční porty neumožňují použití plného rozsahu portů. Seznam nepovolených portů původu najdete v tématu [Povolené porty původu Azure CDN společnosti Akamai](https://msdn.microsoft.com/library/mt757337.aspx).  
+   > Koncové body v profilech **Azure CDN od Akamai** pro počáteční porty neumožňují použití plného rozsahu portů. Seznam nepovolených portů původu najdete v tématu [Povolené porty původu Azure CDN společnosti Akamai](/previous-versions/azure/mt757337(v=azure.100)).  
    > 
    > Podpora protokolu HTTPS pro vlastní domény Azure CDN nepodporuje **Azure CDN od Akamai** produktů. Další informace najdete v tématu [Konfigurace HTTPS pro vlastní doménu Azure CDN](cdn-custom-ssl.md).
     
@@ -79,14 +79,14 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
 
     - **Azure CDN Standard od Verizonu** a **Azure CDN Premium od Verizonu** profily:
        - [**Obecné doručování webu**](cdn-optimization-overview.md#general-web-delivery)
-       - [**Akcelerace dynamického webu**](cdn-optimization-overview.md#dynamic-site-acceleration)
+       - [**Akcelerace dynamických webů**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
     - **Azure CDN Standard od Akamai** profily:
        - [**Obecné doručování webu**](cdn-optimization-overview.md#general-web-delivery)
        - [**Streamování obecných médií**](cdn-optimization-overview.md#general-media-streaming)
-       - [**Streamování videa na vyžádání média**](cdn-optimization-overview.md#video-on-demand-media-streaming)
+       - [**Streamování médií videa na vyžádání**](cdn-optimization-overview.md#video-on-demand-media-streaming)
        - [**Stahování velkých souborů**](cdn-optimization-overview.md#large-file-download)
-       - [**Akcelerace dynamického webu**](cdn-optimization-overview.md#dynamic-site-acceleration)
+       - [**Akcelerace dynamických webů**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
 10. Pokud chcete vytvořit nový koncový bod, vyberte **Přidat**.
    

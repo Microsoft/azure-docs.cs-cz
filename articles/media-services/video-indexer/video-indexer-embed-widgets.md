@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 03/30/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: d775fff16380ebe08159123aa9e6084055a5be8d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 73ceb0a92b97e90b1fdb0c5562d623505e86b870
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877563"
+ms.locfileid: "58891579"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Vložení widgetů Video Indexer do vašich aplikací
 
@@ -30,7 +30,7 @@ Widget **Cognitive Insights** zahrnuje všechny vizuální přehledy, které se 
 
 |Název|Definice|Popis|
 |---|---|---|
-|widgets|Řetězce oddělené čárkami|Umožňuje řídit, které přehledy chcete vykreslit. <br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` vykreslí jenom přehledy lidí a značek<br/>Dostupné možnosti: people (lidé), keywords (klíčová slova), annotations (poznámky), brands (značky), sentiments (citová zabarvení), transcript (přepis), search (vyhledávání).<br/>Není podporováno prostřednictvím adresy URL ve version=2<br/><br/>**Poznámka:** **Widgety** param adresa URL není podporováno, pokud **verze = 2** se používá. |
+|widgets|Řetězce oddělené čárkami|Umožňuje řídit, které přehledy chcete vykreslit. <br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` vykreslí jenom přehledy lidí a značek<br/>Dostupné možnosti: people (lidé), keywords (klíčová slova), annotations (poznámky), brands (značky), sentiments (citová zabarvení), transcript (přepis), search (vyhledávání).<br/>Není podporováno prostřednictvím adresy URL ve version=2<br/><br/>**Poznámka:** Param pomůcky adresa URL není podporováno ve verzi 2. |
 
 ### <a name="player-widget"></a>Widget Player
 
@@ -254,4 +254,4 @@ Auto play – ve výchozím nastavení začne přehrávač přehrávat video. M�
 
 Informace o tom, jak zobrazit a upravit přehledy Video Indexeru, najdete v [tomto](video-indexer-view-edit.md) článku.
 
-Podívejte se také na [CodePen Video Indexeru](https://codepen.io/videoindexer/pen/eGxebZ).
+Podívejte se také, [Video indexer CodePen](https://codepen.io/videoindexer/pen/eGxebZ).

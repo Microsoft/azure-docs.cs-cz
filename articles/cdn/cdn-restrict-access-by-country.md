@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
-ms.openlocfilehash: 471a7e3704f10674c8a1d9bdf26df5f0aaf8519b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f6efec64b4e6659b822b76e0fd7f9cc71a164094
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093302"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917749"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Omezit přístup k obsahu Azure CDN podle země
 
@@ -54,9 +54,9 @@ Například všechny následující filtry cesta adresáře jsou platné:
 
 Z **akce** seznamu vyberte **povolit** nebo **bloku**: 
 
-- **Povolit**: pouze ze zadaného zemí mohou uživatelé přístup k prostředkům vyžádané rekurzivní cesta.
+- **Povolit**: Přístup k prostředkům vyžádaný z cesty rekurzivní mohou pouze uživatelé z zadanou zemí.
 
-- **Blok**: uživatelé z zadanou zemí mají odepřený přístup k prostředkům vyžádané rekurzivní cesta. Pokud pro toto umístění nebyly nakonfigurovány žádné jiné země možnosti filtrování, pak všichni ostatní uživatelé budou mít přístup povolený.
+- **Blok**: Uživatelé ze zemí zadané mají odepřený přístup k prostředkům vyžádané rekurzivní cesta. Pokud pro toto umístění nebyly nakonfigurovány žádné jiné země možnosti filtrování, pak všichni ostatní uživatelé budou mít přístup povolený.
 
 Například geografické filtrování pravidla pro blokování cestu */fotografie/Štrasburku/* filtry pro následující soubory:     
 *http://<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
@@ -110,5 +110,5 @@ V tabulce země filtrování pravidla vyberte ikonu Odstranit vedle pravidlo ods
 
 * Na stejné relativní cesty lze použít pouze jedno pravidlo. To znamená nelze vytvořit více filtrů země, které odkazují na stejné relativní cesty. Ale protože země filtry je rekurzivní, složka může mít více filtrů země. Jinými slovy podsložka dříve konfigurované složky je možné přiřadit filtr jiné zemi.
 
-* Funkce geografického filtrování používá k definování zemí, ze kterých se žádost o povolená nebo zablokovaná pro zabezpečený adresář kódy zemí. Přestože společností Akamai a Verizon profily podporují většinu stejné kódy zemí, existuje několik rozdílů. Další informace najdete v tématu [kódy zemí Azure CDN](https://msdn.microsoft.com/library/mt761717.aspx). 
+* Funkce geografického filtrování používá k definování zemí, ze kterých se žádost o povolená nebo zablokovaná pro zabezpečený adresář kódy zemí. Přestože společností Akamai a Verizon profily podporují většinu stejné kódy zemí, existuje několik rozdílů. Další informace najdete v tématu [kódy zemí Azure CDN](/previous-versions/azure/mt761717(v=azure.100)). 
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 340f121f64cb01803401a972038677448849e94f
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 8eccc79969ce1a474fe0b22f2c250f8e31281550
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803507"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893125"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -198,7 +198,7 @@ Pokud se o službě Azure Security chcete dozvědět víc, podívejte se na [Mic
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Vyvíjejte a nasazujte modely pomocí bezplatného rozšíření [SQL Server Data Tools (SSDT) pro Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). Rozšíření SSDT zahrnuje šablony projektů Analysis Services, které vám pomůžou s rychlým zprovozněním. Rozšíření SSDT teď pro tabulkové modely 1400 zahrnuje moderní funkci Získání dat pro dotazování a mashup zdrojů dat. Pokud už znáte funkci Získání dat v aplikacích Power BI Desktop a Excel 2016, tak už víte, jak snadné je vytvářet vysoce přizpůsobené dotazy na zdroj dat. 
+Vyvíjejte a nasazujte modely pomocí bezplatného rozšíření [SQL Server Data Tools (SSDT) pro Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt). Rozšíření SSDT zahrnuje šablony projektů Analysis Services, které vám pomůžou s rychlým zprovozněním. Rozšíření SSDT teď pro tabulkové modely 1400 zahrnuje moderní funkci Získání dat pro dotazování a mashup zdrojů dat. Pokud už znáte funkci Získání dat v aplikacích Power BI Desktop a Excel 2016, tak už víte, jak snadné je vytvářet vysoce přizpůsobené dotazy na zdroj dat. 
 
 Pokud používáte sadu Visual Studio 2017, projekty služby Microsoft Analysis Services jsou k dispozici jako bezplatný instalovatelný balíček VSIX. [Můžete si je stáhnout z webu Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
 
@@ -212,7 +212,7 @@ Spravujte servery a modelové databáze pomocí aplikace [SQL Server Management 
 
 ### <a name="object-model-and-scripting"></a>Objektový model a skriptování
 
-Tabulkové modely nabízejí rychlý vývoj a jsou vysoce přizpůsobitelné. Tabulkové modely zahrnují [tabulkový objektový model](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM) pro popis objektů modelu. Tabulkový objektový model (TOM) je přístupný ve formátu JSON prostřednictvím [jazyka TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) a jazyka DDL AMO v oboru názvů [Microsoft.AnalysisServices.Tabular](https://msdn.microsoft.com/library/microsoft.analysisservices.tabular.aspx). 
+Tabulkové modely nabízejí rychlý vývoj a jsou vysoce přizpůsobitelné. Tabulkové modely zahrnují [tabulkový objektový model](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM) pro popis objektů modelu. Tabulkový objektový model (TOM) je přístupný ve formátu JSON prostřednictvím [jazyka TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) a jazyka DDL AMO v oboru názvů [Microsoft.AnalysisServices.Tabular](/dotnet/api/microsoft.analysisservices.tabular). 
 
 ## <a name="supports-the-latest-client-tools"></a>Podporuje nejnovější nástroje klienta
 
@@ -255,10 +255,10 @@ Služba Analysis Services má velmi aktivní komunitu uživatelů. Připojte se 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Registrace bezplatné zkušební verze Azure](https://azure.microsoft.com/offers/ms-azr-0044p/)   
+> [Zaregistrujte si bezplatnou zkušební verzi Azure](https://azure.microsoft.com/offers/ms-azr-0044p/)   
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Vytvoření serveru – portál](analysis-services-create-server.md)   
+> [Rychlý start: Vytvoření serveru – portál](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Vytvoření serveru – PowerShell](analysis-services-create-powershell.md)  
+> [Rychlý start: Vytvoření serveru – PowerShell](analysis-services-create-powershell.md)  

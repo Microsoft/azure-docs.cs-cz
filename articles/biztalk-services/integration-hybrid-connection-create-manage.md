@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 584b9d67808e75222d832f045e5d3f93fbb326ae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d659262195fef0cc6871bac409dd5914b70f401
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105086"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916106"
 ---
 # <a name="create-and-manage-hybrid-connections"></a>Vytvoření a správa hybridních připojení
 
@@ -50,7 +50,7 @@ Toto téma obsahuje seznam těchto kroků.
 > 
 
 ## <a name="CreateHybridConnection"></a>Vytvoření hybridního připojení
-Hybridní připojení se dá vytvořit v [Azure App Service Hybrid Connections](../app-service/app-service-hybrid-connections.md) **nebo** pomocí [rozhraní REST API BizTalk Services](https://msdn.microsoft.com/library/azure/dn232347.aspx). 
+Hybridní připojení se dá vytvořit v [Azure App Service Hybrid Connections](../app-service/app-service-hybrid-connections.md) **nebo** pomocí [rozhraní REST API BizTalk Services](/previous-versions/azure/reference/dn232347(v=azure.100)). 
 
 <!-- **To create Hybrid Connections using Web Apps**, see [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md). You can also install the Hybrid Connection Manager (HCM) from your web app, which is the preferred method.  -->
 
@@ -118,8 +118,8 @@ Po zkopírování můžete změnit zásady Editor zásad skupiny.
 [Přehled hybridních připojení](integration-hybrid-connection-overview.md)
 
 ## <a name="see-also"></a>Viz také
-[Rozhraní REST API pro správu služby BizTalk Services v Microsoft Azure](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
-[BizTalk Services: Tabulka edic](biztalk-editions-feature-chart.md)  
+[Rozhraní REST API pro správu služby BizTalk Services v Microsoft Azure](/previous-versions/azure/reference/dn232347(v=azure.100))  
+[BizTalk Services: Graf edicí](biztalk-editions-feature-chart.md)  
 [Vytvoření služby BizTalk](biztalk-provision-services.md)  
 [BizTalk Services: Karty řídicí panel, sledování a škálování](biztalk-dashboard-monitor-scale-tabs.md)
 

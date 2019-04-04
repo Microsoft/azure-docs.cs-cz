@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: raynew
-ms.openlocfilehash: 4ce4cdbaf49fb743a14c7a5285ed29b9ad49faf5
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: f0540ff1fc1844c133e238267770b971992f61e6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652650"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904997"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matice podpory pro replikaci virtuálních počítačů Azure z jedné oblasti do jiného
 
@@ -24,7 +24,7 @@ Tento článek shrnuje podporované konfigurace a komponent, pokud nasazení zot
 
 **Nasazení** |  **Podpora**
 --- | ---
-**Azure Portal** | Podporuje se.
+**portál Azure** | Podporuje se.
 **PowerShell** | Podporuje se. [Další informace](azure-to-azure-powershell.md)
 **REST API** | Podporuje se.
 **Rozhraní příkazového řádku** | Aktuálně se nepodporuje.
@@ -45,7 +45,7 @@ Tento článek shrnuje podporované konfigurace a komponent, pokud nasazení zot
 Můžete replikovat a obnovovat virtuální počítače mezi všechny dvou oblastí ve stejné zeměpisné clusteru. Geografické clustery jsou definovány dodržujte při tom suverenita a data latence.
 
 
-**Geografické clusteru** | **Oblasti Azure**
+**Geografické clusteru** | **Oblast Azure**
 -- | --
 Americké | Kanada – východ, Kanada – Jih, střed USA (střed), střed USA – Západ, USA – východ, USA – východ 2, USA – Západ, USA – západ 2, střed USA, USA (střed) – sever
 Evropa | Velká Británie – Západ, Velká Británie – Jih, Severní Evropa, západní Evropa, Francie – střed, Francie – jih
@@ -107,18 +107,21 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra Ubuntu pro Azure virtual machines
 
-**Vydání verze** | **Verze služby mobility** | **Verze jádra** |
+**Vydat** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 14.04 LTS | 9.23 | 3.13.0-24-Generic k 3.13.0-165-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-142-generic,<br/>4.15.0-1023-Azure k 4.15.0-1037-azure |
 14.04 LTS | 9.22 | 3.13.0-24-Generic k 3.13.0-164-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-140-generic,<br/>4.15.0-1023-Azure k 4.15.0-1036-azure |
 14.04 LTS | 9.21 | 3.13.0-24-Generic k 3.13.0-163-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-140-generic,<br/>4.15.0-1023-Azure k 4.15.0-1035-azure |
 14.04 LTS | 9.20 | 3.13.0-24-Generic k 3.13.0-161-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-138-generic,<br/>4.15.0-1023-Azure k 4.15.0-1030-azure |
-
-||| 16.04 LTS | 9.23 | 4.4.0-21-Generic k 4.4.0-142-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-45-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1037-azure| 16.04 LTS | 9.22 | 4.4.0-21-Generic k 4.4.0-140-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-43-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1036-azure| 16.04 LTS | 9.21 | 4.4.0-21-Generic k 4.4.0-140-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-42-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1035-azure| 16.04 LTS | 9,20 | 4.4.0-21-Generic k 4.4.0-138-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-38-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1030-azure|
+|||
+16.04 LTS | 9.23 | 4.4.0-21-Generic k 4.4.0-142-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-45-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1037-azure|
+16.04 LTS | 9.22 | 4.4.0-21-Generic k 4.4.0-140-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-43-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1036-azure|
+16.04 LTS | 9.21 | 4.4.0-21-Generic k 4.4.0-140-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-42-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1035-azure|
+16.04 LTS | 9.20 | 4.4.0-21-Generic k 4.4.0-138-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-38-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1030-azure|
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra Debian pro Azure virtual machines
 
-**Vydání verze** | **Verze služby mobility** | **Verze jádra** |
+**Vydat** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 Debian 7 | 9.19,9.20,9.21,9.22,9.23 | 3.2.0-4-amd64 k 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
@@ -127,7 +130,7 @@ Debian 8 | 9.19 | 3.16.0-4-amd64 k 3.16.0-6-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra operačního systému SUSE Linux Enterprise Server 12 pro virtuální počítače Azure
 
-**Vydání verze** | **Verze služby mobility** | **Verze jádra** |
+**Vydat** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.23 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.79-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.22 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.72-default |
@@ -155,6 +158,7 @@ Publikované Image z Galerie Azure – Microsoft | Podporováno | Podporováno, 
 Image Galerie Azure - publikované třetích stran | Podporováno | Podporováno, pokud virtuální počítač běží na podporovaném operačním systému.
 Vlastní Image - publikované třetích stran | Podporováno | Podporováno, pokud virtuální počítač běží na podporovaném operačním systému.
 Migrovat virtuální počítače pomocí služby Site Recovery | Podporováno | Pokud virtuální počítač VMware nebo fyzický počítač byl migrován do Azure pomocí Site Recovery, musíte odinstalovat starší verze služby Mobility na počítači a restartujte ho před replikací do jiné oblasti Azure.
+Zásady RBAC | Nepodporuje se | Zásady řízení (RBAC) na virtuální počítače se nereplikují do převzetí služeb při selhání virtuálních počítačů v cílové oblasti přístup na základě rolí.
 
 ## <a name="replicated-machines---disk-actions"></a>Replikované počítače - disk akce
 
@@ -213,7 +217,7 @@ Následující tabulka shrnuje omezení Site Recovery.
 - Existují dvě omezení ke zvážení na disk, četnost změn dat a za data virtuálního počítače změny.
 - Například pokud používáme disk úrovně Premium P20, jak je popsáno v následující tabulce, Site Recovery dokáže zpracovat 5 MB provozu na disk, se na maximálně pět těmito disky na virtuální počítač, z důvodu omezení 25 MB/s celková četnost změn na virtuální počítač.
 
-**Cílové úložiště** | **Průměrná zdrojový disk vstupně-výstupních operací** |**Průměrná četnost změn dat zdrojového disku** | **Celková denní četnost změn dat zdrojového disku**
+**Cílové úložiště** | **Průměrná zdrojový disk vstupně-výstupních operací** |**Četnost změn dat průměrné zdrojového disku** | **Denní četnost změn dat celkový zdrojového disku**
 ---|---|---|---
 Storage úrovně Standard | 8 kB | 2 MB/s | 168 GB na disk
 Disk úrovně Premium P10 nebo P15 | 8 kB  | 2 MB/s | 168 GB na disk

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: ee64b4cbfd024c91b226736bc8cac0b9b33f964e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170390"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918548"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Používání Azure CDN pomocí SAS
 
@@ -89,7 +89,8 @@ Tato možnost je dostupná jenom pro **Azure CDN Premium od Verizonu** profily. 
    ![Přepisování adres URL CDN pravidlo – vlevo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
    ![pravidlo přepisování adres URL CDN – vpravo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
-2. Po aktivaci nové pravidlo, všem uživatelům přístup k souborům v zadaném kontejneru na koncový bod CDN bez ohledu na to, jestli používá SAS token v adrese URL. Tady má tento formát: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
+2. Po aktivaci nové pravidlo, všem uživatelům přístup k souborům v zadaném kontejneru na koncový bod CDN bez ohledu na to, jestli používá SAS token v adrese URL. Tady má tento formát:
+   `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    Příklad:   
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
@@ -137,7 +138,7 @@ Protože SAS parametry nejsou viditelné pro Azure CDN, Azure CDN nelze změnit 
 | --- | --- |
 | Start | Čas, který Azure CDN získáte přístup k souboru objektu blob. Z důvodu hodin zkreslit (dorazí signál hodiny v různou dobu pro různé součásti), zvolte čas o 15 minut dřívější, pokud chcete asset bude okamžitě k dispozici. |
 | Konec | Doba, po jejímž uplynutí Azure CDN už mít přístup k souboru objektu blob. Dříve soubory uložené do mezipaměti ve službě Azure CDN, jsou stále přístupné. Pokud chcete řídit dobu vypršení platnosti souboru, nastavte čas odpovídající vypršení platnosti tokenu zabezpečení Azure CDN nebo odstranit i asset. |
-| Povolené IP adresy | Volitelné. Pokud používáte **Azure CDN od Verizonu**, tento parametr lze nastavit na rozsahy definované v [Azure CDN od Verizonu rozšíření rozsahy IP adres serveru Edge](https://msdn.microsoft.com/library/mt757330.aspx). Pokud používáte **Azure CDN od Akamai**, nelze nastavit parametr rozsahy IP, protože nejsou statické IP adresy.|
+| Povolené IP adresy | Volitelné. Pokud používáte **Azure CDN od Verizonu**, tento parametr lze nastavit na rozsahy definované v [Azure CDN od Verizonu rozšíření rozsahy IP adres serveru Edge](/azure/cdn/cdn-pop-list-api). Pokud používáte **Azure CDN od Akamai**, nelze nastavit parametr rozsahy IP, protože nejsou statické IP adresy.|
 | Povolené protokoly | Protokol povolen pro žádost vytvořenou s podpisem SAS účtu. Nastavení protokolu HTTPS se doporučuje.|
 
 ## <a name="next-steps"></a>Další postup

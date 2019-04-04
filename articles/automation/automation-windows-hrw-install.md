@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d0a32f45326eb307bc31d10f4efb842d811a38c3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7c6d8fbe54d89fc587c8841b8983d7fdcba29b7d
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842494"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916457"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Windows Hybrid Runbook Worker
 
@@ -134,9 +134,9 @@ Chcete-li zobrazit podrobné informace o instalaci, použijte **-Verbose** přep
 
 Sady Runbook můžete použít některou z aktivit a rutiny, které jsou definovány v modulech, které jsou nainstalovány ve vašem prostředí Azure Automation. Tyto moduly nejsou automaticky nasazují do místních počítačů, takže je nutné nainstalovat ručně. Výjimkou je modul Azure, která je ve výchozím nastavení nainstalované a poskytuje přístup k rutiny pro všechny služby Azure a aktivity pro Azure Automation.
 
-Protože primárním účelem funkce Hybrid Runbook Worker je můžou spravovat místní prostředky, budete pravděpodobně muset nainstalovat moduly, které podporují tyto prostředky. Informace o instalaci moduly Windows Powershellu najdete v tématu [instalaci modulů](https://msdn.microsoft.com/library/dd878350.aspx). 
+Protože primárním účelem funkce Hybrid Runbook Worker je můžou spravovat místní prostředky, budete pravděpodobně muset nainstalovat moduly, které podporují tyto prostředky. Informace o instalaci moduly Windows Powershellu najdete v tématu [instalaci modulů](/powershell/developer/windows-powershell). 
 
-Moduly, které jsou nainstalované musí být v umístění odkazuje **PSModulePath** proměnnou prostředí tak, aby je automaticky importovat procesu hybrid worker. Další informace najdete v tématu [úpravy Instalační_cesta PSModulePath](https://msdn.microsoft.com/library/dd878326%28v=vs.85%29.aspx).
+Moduly, které jsou nainstalované musí být v umístění odkazuje **PSModulePath** proměnnou prostředí tak, aby je automaticky importovat procesu hybrid worker. Další informace najdete v tématu [úpravy Instalační_cesta PSModulePath](/powershell/developer/windows-powershell).
 
 ## <a name="next-steps"></a>Další postup
 

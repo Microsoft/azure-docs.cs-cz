@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/05/2019
+ms.date: 04/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 677fec21b7491398da5e4958441e5405e0c10e0e
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 5fdee4edce0301a5a4524725879f599b0a2e3532
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745669"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916688"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Známé problémy s monitorováním Azure pro virtuální počítače (preview)
 
@@ -31,7 +31,6 @@ Následující seznam uvádí známé problémy v aktuální verzi funkce stavu:
 - Pokud virtuální počítač Azure je odebrání nebo odstranění, zobrazí se v zobrazení seznamu virtuálních počítačů pro nějakou dobu. Kromě toho kliknutím na stav virtuálního počítače odstraněny nebo odstraněné otevře **stav diagnostiky** zobrazení a poté zahájí smyčku načítání. Výběrem názvu odstraněného virtuálního počítače se otevře podokno se zpráva, že virtuální počítač se odstranil.
 - Změny konfigurace, jako je aktualizace prahové hodnoty, trvat až 30 minut i v případě, že na portálu nebo rozhraní API sledování pracovní vytížení může je aktualizovat okamžitě. 
 - Diagnostika stavu aktualizace docházet rychleji než ostatní zobrazení. Tyto informace můžou být zpožděné při přepínání mezi nimi. 
-- Vypínání virtuálních počítačů některé stavu kritérií, která aktualizuje *kritické* a ostatním uživatelům *v pořádku*. Zobrazí se jako čistý stav virtuálního počítače *kritické*.
 - Název stránku s výpisem stavu kritéria pro jedno zobrazení virtuálního počítače pro virtuální počítače s Linuxem, má celá doména název virtuálního počítače namísto uživatelem definovaný název virtuálního počítače. 
 - Poté, co zakážete monitorování virtuálního počítače pomocí jedné z podporovaných metod a zkuste ho znovu nasadíte, měli byste nasadit do stejného pracovního prostoru. Pokud zvolíte jiný pracovní prostor a pokuste se zobrazit stav pro tento virtuální počítač, může zobrazovat nekonzistentní chování.
 - Zobrazí celkové využití výkonu procesoru stavu kritéria pro Windows prahovou hodnotu *není rovno* **4**, tj. využití procesoru je větší než 95 % a délka fronty v systému je větší než 15. Toto kritérium stavu se nedá konfigurovat v této verzi preview.  

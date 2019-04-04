@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: ergreenl
-ms.openlocfilehash: 7210610f8a082c34f8e87ef715b8252c2821bc83
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8beba4f66cf24a937eec77e4bfdee2057b417269
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187092"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892802"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Domény služby Azure Active Directory (AD) pro Azure Cloud Solution Provider (CSP)
 Tento článek vysvětluje, jak můžete pomocí služby Azure AD Domain Services v rámci předplatného Azure CSP.
@@ -41,7 +41,7 @@ Další informace najdete v tématu [základní informace o Azure CSP](https://d
 ## <a name="benefits-of-using-azure-ad-domain-services-in-an-azure-csp-subscription"></a>Výhody používání služby Azure AD Domain Services v rámci předplatného Azure CSP
 Azure AD Domain Services poskytuje kompatibilní služby systému Windows Server AD do Azure, jako jsou LDAP, ověřování protokolu Kerberos nebo NTLM, připojení k doméně, zásady skupiny a DNS. Během desetiletí mnohé aplikace sestavené tak, aby odpovídaly AD pomocí těchto možností. Mnoho nezávislí výrobci softwaru (ISV) mají sestavíte a nasadíte aplikace v místě jejich zákazníků. Tyto aplikace jsou obtížné pro podporu od, která často vyžaduje přístup do různých prostředí, ve kterých jsou tyto aplikace nasadit. S předplatnými Azure CSP budete mít jednodušší alternativu se Škálováním a flexibilitě Azure.
 
-Azure AD Domain Services nyní podporuje předplatných Azure CSP. Teď můžete nasadit aplikace v rámci předplatného Azure CSP vázané na adresář Azure AD vašeho zákazníka. V důsledku toho vaši zaměstnanci (pracovníci podpory oddělení) můžete spravovat spravovat a služby virtuálních počítačů, na kterých je vaše aplikace nasazena pomocí firemních přihlašovacích údajů vaší organizace. Kromě toho můžete zřídit spravované domény služby Azure AD Domain Services pro adresář Azure AD vašeho zákazníka. Aplikace je připojená k spravované doméně vašeho zákazníka. Proto funkce v rámci vaší aplikace, které závisí na protokolu Kerberos nebo NTLM, LDAP, nebo [System.DirectoryServices API](https://msdn.microsoft.com/library/system.directoryservices) pracovní bezproblémově proti adresáři vašeho zákazníka. Vaše koncové zákazníky bývá ve využívání vaší aplikace jako služby, aniž byste museli starat o údržbu infrastruktury, které je aplikace nasazená na.
+Azure AD Domain Services nyní podporuje předplatných Azure CSP. Teď můžete nasadit aplikace v rámci předplatného Azure CSP vázané na adresář Azure AD vašeho zákazníka. V důsledku toho vaši zaměstnanci (pracovníci podpory oddělení) můžete spravovat spravovat a služby virtuálních počítačů, na kterých je vaše aplikace nasazena pomocí firemních přihlašovacích údajů vaší organizace. Kromě toho můžete zřídit spravované domény služby Azure AD Domain Services pro adresář Azure AD vašeho zákazníka. Aplikace je připojená k spravované doméně vašeho zákazníka. Proto funkce v rámci vaší aplikace, které závisí na protokolu Kerberos nebo NTLM, LDAP, nebo [System.DirectoryServices API](/dotnet/api/system.directoryservices) pracovní bezproblémově proti adresáři vašeho zákazníka. Vaše koncové zákazníky bývá ve využívání vaší aplikace jako služby, aniž byste museli starat o údržbu infrastruktury, které je aplikace nasazená na.
 
 Všechny fakturace pro prostředky Azure, které skutečně využijete v tomto předplatném, včetně služby Azure AD Domain Services, jsou zpoplatněné nad rámec zpět vám. Zachovat plnou kontrolu nad vztah se zákazníkem při rozhodování o prodeje, fakturace, technické podpory atd. Flexibilní platformu Azure CSP, malý tým agenty služby mnoho těmito zákazníky, kteří mají instancí aplikace nasazena.
 

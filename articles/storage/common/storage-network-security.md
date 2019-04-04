@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c475fc4d958044413ae7566c027c0e796f1d699a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 27ba1a1b5fbc0c7533da3634ec8a435468704c33
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486389"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906085"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 
@@ -241,7 +241,7 @@ Každý účet úložiště podporuje až 100 IP sítě pravidla, která mohou b
 
 Pokud chcete udělit přístup z vaší místní sítě k vašemu účtu úložiště s pravidlem síť IP, je nutné určit internetové IP adresy používané ve vaší síti. Požádejte o pomoc svého správce sítě.
 
-Můžete použít [ExpressRoute](/azure/expressroute/expressroute-introduction) k připojení sítě k síti Azure. Každý okruh tady, se nakonfigurují dvě veřejné IP adresy. Lze nalézt v Microsoft Edge a použít [veřejné partnerské vztahy Azure](/azure/expressroute/expressroute-circuit-peerings) pro připojení k Microsoft Services jako je Azure Storage. Umožňující navázat komunikaci s Azure Storage, vytvořte pravidla sítě protokolu IP pro veřejné IP adresy vaší obvody. Najít váš okruh ExpressRoute veřejné IP adresy [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) prostřednictvím webu Azure portal.
+Pokud používáte [ExpressRoute](/azure/expressroute/expressroute-introduction) z místního pro veřejný partnerský vztah a partnerský vztah Microsoftu, budete muset identifikovat překladu adres IP adresy, které se používají. Ve veřejných partnerských vztazích každý okruh ExpressRoute automaticky využívá dvě IP adresy pro překlad adres (NAT), které se používají k provozu služeb Azure při vstupu do páteřní sítě Microsoft Azure. IP adresy pro překlad adres (NAT) používané v partnerských vztazích s Microsoftem poskytuje zákazník nebo poskytovatel služby. Pokud chcete povolit přístup k prostředkům služby, musíte tyto veřejné IP adresy povolit v nastavení IP adresy brány firewall prostředku. Pokud chcete zjistit IP adresy veřejného partnerského okruhu ExpressRoute, [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal. Další informace o [překladu adres (NAT) pro veřejné partnerské vztahy a partnerské vztahy s Microsoftem v ExpressRoute.](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering)
 
 ### <a name="managing-ip-network-rules"></a>Správa pravidel sítě IP
 

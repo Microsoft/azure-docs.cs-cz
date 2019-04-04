@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
-ms.openlocfilehash: 4755eeda6a254389f0e0fbceec602fef718a9c45
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100168"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905533"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurace aplikační brány s koncovým bodem interní služby load balancer (ILB)
 
@@ -25,9 +25,12 @@ V tomto článku se dozvíte, jak:
 - Vytvořte konfiguraci IP adresy privátní front-endu pro službu Application Gateway
 - Vytvoření služby application gateway s privátní front-endovou konfiguraci protokolu IP
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com>.
+Přihlaste se k webu Azure portal na <https://portal.azure.com>
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
@@ -67,7 +70,7 @@ Back-endového fondu se používá k směrovat požadavky do back-end serverů, 
 3. Zadejte pro virtuální počítač tyto hodnoty:
    - *myVM1* – název virtuálního počítače.
    - *azureuser* – uživatelské jméno správce.
-   - *Azure123456!* – heslo.
+   - *Azure123456!* jako heslo.
    - Vyberte **Použít existující** a pak vyberte *myResourceGroupAG*.
 4. Klikněte na **OK**.
 5. Vyberte **DS1_V2** pro velikost virtuálního počítače a klikněte na tlačítko **vyberte**.
@@ -82,7 +85,7 @@ Back-endového fondu se používá k směrovat požadavky do back-end serverů, 
 2. Spuštěním následujícího příkazu nainstalujte službu IIS na virtuální počítač:
 
    ```azurepowershell
-   Set-AzureRmVMExtension `
+   Set-AzVMExtension `
    
      -ResourceGroupName myResourceGroupAG `
    
@@ -100,7 +103,7 @@ Back-endového fondu se používá k směrovat požadavky do back-end serverů, 
 
 
 
-3. Create a second virtual machine and install IIS using the steps that you just finished. Enter myVM2 for its name and for VMName in Set-AzureRmVMExtension.
+3. Create a second virtual machine and install IIS using the steps that you just finished. Enter myVM2 for its name and for VMName in Set-AzVMExtension.
 
 ### Add backend servers to backend pool
 

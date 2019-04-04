@@ -15,12 +15,12 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: ca58059716ebebfaf663412b37014ae4f534d0e3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf831c6f8faad1892291794bc43dc13e6a17eba1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081504"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484844"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Přidat Kubernetes na webu Marketplace služby Azure Stack
 
@@ -78,7 +78,7 @@ Pokud používáte Active Directory Federated Services (AD FS) pro vaši službu
 
     - Otevřete prostředí PowerShell s řádku se zvýšenými oprávněními. Spusťte následující skript s parametry, aktualizovat, aby vaše hodnoty:
 
-        ```PowerShell  
+        ```powershell  
         # Creates a new self signed certificate 
         $passwordString = "<password>"
         $certlocation = "<local certificate path>.pfx"
@@ -106,7 +106,7 @@ Pokud používáte Active Directory Federated Services (AD FS) pro vaši službu
 
 2.  Poznamenejte si nové ID certifikátu, zobrazí v relaci Powershellu, `1C2ED76081405F14747DC3B5F76BB1D83227D824`. ID se použije při vytváření instančního objektu.
 
-    ```PowerShell  
+    ```powershell  
     VERBOSE: Generated new certificate 'CN=<certificate name>' (1C2ED76081405F14747DC3B5F76BB1D83227D824).
     ```
 
@@ -126,7 +126,7 @@ Pokud používáte Active Directory Federated Services (AD FS) pro vaši službu
 
     - Spusťte následující skript s parametry, aktualizovat, aby vaše hodnoty:
 
-        ```PowerShell  
+        ```powershell  
         #Create service principal using the certificate
         $privilegedendpoint="<ERCS IP>"
         $applicationName="<application name>"
@@ -259,7 +259,7 @@ Odebrat položku Kubernetes:
 
 2. Aktuální položka clusteru Kubernetes najdete v galerii.
 
-    ```PowerShell  
+    ```powershell  
     Get-AzsGalleryItem | Select Name
     ```
     
@@ -267,7 +267,7 @@ Odebrat položku Kubernetes:
 
 4. Použijte následující rutiny Powershellu pro odebrání položky:
 
-    ```PowerShell  
+    ```powershell  
     $Itemname="Microsoft.AzureStackKubernetesCluster.0.3.0"
 
     Remove-AzsGalleryItem -Name $Itemname

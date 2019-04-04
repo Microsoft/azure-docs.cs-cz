@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 034beeaaebb86786106f7884fc147ff15167538e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ad3b5a1d684c500eff3d20832d7aa290a13849b9
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480715"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918633"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -278,6 +278,8 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Východní Asie           | Jihovýchodní Asie     |
 | USA – východ             | Západní USA            |
 | Východ USA 2           | USA – střed         |
+| Korea – střed       | Jižní Korea – jih        |
+| Jižní Korea – jih         | Korea – střed      |
 | Severní Evropa        | Západní Evropa        |
 | Středoseverní USA    | Středojižní USA   |
 | Indie – jih         | Střed Indie      |
@@ -293,6 +295,6 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 ## <a name="next-steps"></a>Další postup
 * [Zvažte nastavení brány firewall a proxy](storage-sync-files-firewall-and-proxy.md)
 * [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
-* [Nasazení služby soubory Azure](storage-files-deployment-guide.md)
-* [Nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md)
-* [Monitorování Azure File Sync](storage-sync-files-monitoring.md)
+* [Nasazení služby Soubory Azure](storage-files-deployment-guide.md)
+* [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)
+* [Sledování služby Synchronizace souborů Azure](storage-sync-files-monitoring.md)

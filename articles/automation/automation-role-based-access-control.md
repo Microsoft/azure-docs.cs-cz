@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b929182ce1c89e7508aeae91a95b5c9b0d599774
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621375"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918786"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Řízení přístupu na základě role ve službě Azure Automation
 
@@ -317,7 +317,7 @@ Můžete odebrat přístupová oprávnění pro uživatele nespravuje účet Aut
 
 Přístup na základě role se dají konfigurovat i na účtu Automation pomocí následujících [rutin prostředí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
-[Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx) vypíše všechny role RBAC, které jsou k dispozici v Azure Active Directory. Tento příkaz můžete použít spolu s vlastností **Název** k vypsání všech akcí, které může konkrétní role provádět.
+[Get-AzureRmRoleDefinition](/previous-versions/azure/mt603792(v=azure.100)) vypíše všechny role RBAC, které jsou k dispozici v Azure Active Directory. Tento příkaz můžete použít spolu s vlastností **Název** k vypsání všech akcí, které může konkrétní role provádět.
 
 ```azurepowershell-interactive
 Get-AzureRmRoleDefinition -Name 'Automation Operator'
@@ -336,7 +336,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt619413.aspx) uvádí přiřazení role Azure AD RBAC v zadaném oboru. Pokud nezadáte žádné parametry, tento příkaz vrátí všechna přiřazení rolí v rámci předplatného. K vypsání přiřazení přístupu konkrétního uživatele nebo skupin, kterých je uživatel členem, použijte parametr **ExpandPrincipalGroups**.
+[Get-AzureRmRoleAssignment](/previous-versions/azure/mt619413(v=azure.100)) uvádí přiřazení role Azure AD RBAC v zadaném oboru. Pokud nezadáte žádné parametry, tento příkaz vrátí všechna přiřazení rolí v rámci předplatného. K vypsání přiřazení přístupu konkrétního uživatele nebo skupin, kterých je uživatel členem, použijte parametr **ExpandPrincipalGroups**.
     **Příklad:** Seznam všech uživatelů a jejich rolí v rámci účtu automation použijte následující příkaz.
 
 ```azurepowershell-interactive
@@ -357,7 +357,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-[Nový-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603580.aspx) přiřazení přístupu k uživatelům, skupinám a aplikacím na konkrétní rozsah.
+[Nový-AzureRmRoleAssignment](/previous-versions/azure/mt603580(v=azure.100)) přiřazení přístupu k uživatelům, skupinám a aplikacím na konkrétní rozsah.
     **Příklad:** Přiřazení role "Operátor služby Automation" pro uživatele v rozsahu účtu Automation použijte následující příkaz.
 
 ```azurepowershell-interactive
@@ -378,7 +378,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-Použití [Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603781.aspx) k odebrání přístupu konkrétního uživatele, skupinu nebo aplikaci v určitém rozsahu.
+Použití [Remove-AzureRmRoleAssignment](/previous-versions/azure/mt603781(v=azure.100)) k odebrání přístupu konkrétního uživatele, skupinu nebo aplikaci v určitém rozsahu.
     **Příklad:** Použijte následující příkaz k odebrání uživatele z role "Operátor služby Automation" v rozsahu účtu Automation.
 
 ```azurepowershell-interactive

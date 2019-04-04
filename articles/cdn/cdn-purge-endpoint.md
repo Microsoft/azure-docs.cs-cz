@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: magattus
-ms.openlocfilehash: a3777533fc967e1974b99375496dd3777fa9fb3a
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 76e7817be81a97c8d1a0b9ca2fea8378c3c733e1
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093846"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916475"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Vyprázdnění koncového bodu Azure CDN
 ## <a name="overview"></a>Přehled
@@ -52,12 +52,12 @@ Tento kurz vás provede vyprázdnění prostředků z koncového bodu všech hra
    > 
    > 
 4. Vyberte prostředky, které chcete vyprázdnit z hraničních uzlů.  Pokud chcete vymazat všechny prostředky, klikněte na tlačítko **vyprázdnit vše** zaškrtávací políčko.  V opačném případě zadejte cestu k každý prostředek, který chcete vyprázdnit v **cesta** textového pole. Následující formáty jsou podporovány v cestě.
-    1. **Vyprázdnění jedné adresy URL**: vymazání jednotlivý prostředek tak, že zadáte úplnou adresu URL s nebo bez přípony souboru, například`/pictures/strasbourg.png`; `/pictures/strasbourg`
-    2. **Zástupné vyprázdnění**: hvězdičky (\*) může sloužit jako zástupný znak. Vyprázdnit všechny složky, podsložky a soubory v koncovém bodě s `/*` v cestě nebo vymazat všechny podsložky a soubory v rámci konkrétní složky tak, že zadáte složce následovaný `/*`, například`/pictures/*`.  Všimněte si, že zástupné vyprázdnění se momentálně nepodporuje Azure CDN od Akamai. 
-    3. **Kořenové domény vyprázdnění**: vyprázdnit kořenový koncový bod s "/" v cestě.
+    1. **Vyprázdnění jedné adresy URL**: Odstranit jednotlivý prostředek tak, že zadáte úplnou adresu URL s nebo bez přípony souboru, například`/pictures/strasbourg.png`; `/pictures/strasbourg`
+    2. **Zástupné vyprázdnění**: Hvězdička (\*) může sloužit jako zástupný znak. Vyprázdnit všechny složky, podsložky a soubory v koncovém bodě s `/*` v cestě nebo vymazat všechny podsložky a soubory v rámci konkrétní složky tak, že zadáte složce následovaný `/*`, například`/pictures/*`.  Všimněte si, že zástupné vyprázdnění se momentálně nepodporuje Azure CDN od Akamai. 
+    3. **Kořenové domény vyprázdnění**: Vyprázdnit kořenový koncový bod s "/" v cestě.
    
    > [!TIP]
-   > Cesty pro vyprázdnění se musí zadat a musí být relativní adresa URL, který se vejde následující [regulárního výrazu](https://msdn.microsoft.com/library/az24scfc.aspx). **Odstraní se všechny** a **zástupné vyprázdnění** nepodporuje **Azure CDN od Akamai** aktuálně.
+   > Cesty pro vyprázdnění se musí zadat a musí být relativní adresa URL, který se vejde následující [regulárního výrazu](/dotnet/standard/base-types/regular-expression-language-quick-reference). **Odstraní se všechny** a **zástupné vyprázdnění** nepodporuje **Azure CDN od Akamai** aktuálně.
    > > Vyprázdnění jedné adresy URL `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
    > > Řetězec dotazu `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
    > > Zástupné vyprázdnění `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";`. 
@@ -75,5 +75,5 @@ Tento kurz vás provede vyprázdnění prostředků z koncového bodu všech hra
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Předběžné načtení prostředků v koncovém bodu Azure CDN](cdn-preload-endpoint.md)
-* [Reference rozhraní REST API služby CDN Azure – mazání nebo předběžné načtení koncový bod](https://msdn.microsoft.com/library/mt634451.aspx)
+* [Reference rozhraní REST API služby CDN Azure – mazání nebo předběžné načtení koncový bod](/rest/api/cdn/endpoints)
 

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: d627c3c4419affa0d71cdb23df945c96d9fd7585
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: bd4285a2d0f882b8c766563f2304031f1f6e2898
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652429"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904793"
 ---
 # <a name="glossary"></a>Glosář
 
@@ -233,13 +233,13 @@ Další informace naleznete v referenční dokumentaci: [LargePersonGroup – vy
 
 #### <a name="persistedface"></a>PersistedFace
 
-PersistedFace je datová struktura v rozhraní API pro rozpoznávání tváře. PersistedFace se dodává s PersistedFace ID, jakož i další atributy, například název a dat uživatele.
+PersistedFace je datová struktura v rozhraní API pro rozpoznávání tváře. PersistedFace dodává se [PersistedFace ID](#persisted-face-id), stejně jako další atributy, například název a dat uživatele.
 
 Další informace naleznete v referenční dokumentaci: [LargeFaceList – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [FaceList – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [osoba LargePersonGroup – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42), [jeden objekt PersonGroup uživatele – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
 
-#### <a name="person-id"></a>ID osoby
+#### <a name="persisted-face-id"></a>Trvalé Face ID
 
-ID osoby se vygeneruje při [PersistedFace](#persistedface) byla úspěšně vytvořena. Řetězec se vytvoří pro reprezentaci této tvář [API pro rozpoznávání tváře](#face-api).
+Trvalé Face ID je generována při [PersistedFace](#persistedface) byla úspěšně vytvořena. Řetězec se vytvoří pro reprezentaci této tvář [API pro rozpoznávání tváře](#face-api).
 
 Další informace naleznete v referenční dokumentaci: [LargeFaceList – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [FaceList – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [osoba LargePersonGroup – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42), [jeden objekt PersonGroup uživatele – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
 

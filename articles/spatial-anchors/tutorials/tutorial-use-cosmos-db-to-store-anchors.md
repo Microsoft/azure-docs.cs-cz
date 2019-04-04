@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 17e9d19b755c1d3ac455d9fef8406e00de3a376d
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: d955654eee1d02994f303b6270b156eb9a61c29b
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58628939"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915250"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Kurz: Sdílené složky Azure prostorových kotev vztahů mezi relacemi a zařízeními pomocí služby Azure Cosmos DB back-endu
 
@@ -70,7 +70,7 @@ Vyhledejte `StorageConnectionString` vlastnost a být stejný jako hodnotu nasta
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste použili službu Azure Cosmos DB sdílet identifikátory ukotvení napříč zařízeními. Další informace o knihovně prostorových kotvy Azure, i nadále naší příručce o tom, jak vytvořit a vyhledejte ukotvení.
+V tomto kurzu jste použili službu Azure Cosmos DB sdílet identifikátory ukotvení napříč zařízeními. Další informace o tom, jak používat Azure prostorových kotvy vztahů v nové aplikace pro Android, pokračujte k dalšímu kurzu.
 
 > [!div class="nextstepaction"]
-> [Vytvoření a vyhledejte ukotvení pomocí prostorových kotev vztahů Azure](../create-locate-anchors-overview.md)
+> [Spuštění nové aplikace pro Android](./tutorial-new-android-app.md)

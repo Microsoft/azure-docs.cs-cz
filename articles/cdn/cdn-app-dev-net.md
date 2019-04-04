@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5379586355ece98af6295236d6cbd09cb31c742b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 838c76e6a383b61ff465f3ed7506af34c8cd01d4
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38454460"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916610"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Začínáme s vývojem pro Azure CDN
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "38454460"
 > 
 > 
 
-Můžete použít [ke knihovně CDN Azure pro .NET](https://msdn.microsoft.com/library/mt657769.aspx) automatizovat vytváření a správa koncových bodů a profilů CDN.  Tento kurz vás provede vytvořením jednoduchou konzolovou aplikaci .NET, který ukazuje několik dostupných operací.  V tomto kurzu není určená k podrobnému popisu, všechny aspekty knihovně CDN Azure pro .NET.
+Můžete použít [ke knihovně CDN Azure pro .NET](/dotnet/api/overview/azure/cdn) automatizovat vytváření a správa koncových bodů a profilů CDN.  Tento kurz vás provede vytvořením jednoduchou konzolovou aplikaci .NET, který ukazuje několik dostupných operací.  V tomto kurzu není určená k podrobnému popisu, všechny aspekty knihovně CDN Azure pro .NET.
 
 Visual Studio 2015 k dokončení tohoto kurzu potřebujete.  [Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) je volně k dispozici ke stažení.
 
@@ -338,7 +338,7 @@ Pak můžeme potvrdit pokynů ke spuštění zbytku programu.
 ## <a name="next-steps"></a>Další kroky
 Dokončený projekt z tohoto návodu, zobrazíte [Stáhněte ukázku](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c).
 
-Chcete-li vyhledat další dokumentaci v Azure CDN Management Library pro .NET, podívejte se [odkaz na webové stránce MSDN](https://msdn.microsoft.com/library/mt657769.aspx).
+Chcete-li vyhledat další dokumentaci v Azure CDN Management Library pro .NET, podívejte se [odkaz na webové stránce MSDN](/dotnet/api/overview/azure/cdn).
 
 Správa prostředků CDN pomocí [Powershellu](cdn-manage-powershell.md).
 

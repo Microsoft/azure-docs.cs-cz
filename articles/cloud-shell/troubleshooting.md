@@ -14,16 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: ad389cfaa92ad487fad8b7ecb6feac40324572f0
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: eb7deacc068661ca9a4f473ee2d36b7d4464c81c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100563"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905507"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Řešení potíží s & omezení Azure Cloud Shell
 
 Známá řešení pro řešení potíží ve službě Azure Cloud Shell patří:
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-troubleshooting"></a>Obecné řešení potíží
 
@@ -74,7 +76,7 @@ Známá řešení pro řešení potíží ve službě Azure Cloud Shell patří:
 > Virtuální počítače Azure musí mít veřejnou směřující IP adresu.
 
 - **Podrobnosti o**: Z důvodu výchozí nastavení brány Windows Firewall pro WinRM může uživatel zobrazit následující chybová zpráva: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **Řešení:**  Spustit `Enable-AzureRmVMPSRemoting` povolit všechny aspekty vzdálené komunikace Powershellu na cílovém počítači.
+- **Řešení:**  Spustit `Enable-AzVMPSRemoting` povolit všechny aspekty vzdálené komunikace Powershellu na cílovém počítači.
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` výsledek v Azure disk se neaktualizuje
 

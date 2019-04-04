@@ -3,19 +3,19 @@ title: Odkaz na Translator Text API verze 3.0
 titlesuffix: Azure Cognitive Services
 description: Referenční dokumentace pro verze Translator Text API 3.0.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 0260ecbf23e0240b836f6d6004959a9604085fc1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 4a5bed67252c3b87233c8d2e677e3c620adb8a17
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194958"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918803"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 

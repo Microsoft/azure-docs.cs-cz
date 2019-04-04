@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 017461d5b73bb48ce61678fbbd795026cef60bc1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ba69a5aaffb39c26731ffd209587a8c8223b032a
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536843"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915353"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Povolíte diagnostiku Azure ve službě Azure Cloud Services
 Zobrazit [Přehled diagnostiky Azure](../azure-diagnostics.md) Další informace o Azure Diagnostics.
@@ -191,7 +191,7 @@ V sadě Visual Studio **Průzkumníka serveru**, přejděte na účet úložišt
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>Schéma konfiguračního souboru
-Konfigurační soubor diagnostiky definuje hodnoty, které se používají k inicializaci konfigurace diagnostiky nastavení při spuštění agenta diagnostiky. Zobrazit [nejnovější odkaz na schéma](https://msdn.microsoft.com/library/azure/mt634524.aspx) platné hodnoty a příklady.
+Konfigurační soubor diagnostiky definuje hodnoty, které se používají k inicializaci konfigurace diagnostiky nastavení při spuštění agenta diagnostiky. Zobrazit [nejnovější odkaz na schéma](/azure/azure-monitor/platform/diagnostics-extension-schema) platné hodnoty a příklady.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 Pokud máte potíže, přečtěte si téma [řešení potíží s Azure Diagnostics](../azure-diagnostics-troubleshooting.md) nápovědu pro běžné problémy.

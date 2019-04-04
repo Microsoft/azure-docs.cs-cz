@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 01d84914682d40b97c3d480a753c8b966cf61acc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: dccc967e7899d8cc9c4bde6829d6fc44f9cba4e0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553407"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890906"
 ---
 Následující tabulka popisuje výchozí omezení pro službu Azure Storage. *Příchozího přenosu dat* limit odkazuje na všechna data z požadavků, které se odesílají na účet úložiště. *Odchozího přenosu dat* limit odkazuje na všechna data z odpovědi, které byly přijaty z účtu úložiště.
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Počet účtů úložiště na oblast a předplatné, které zahrnuje účty, Standard a Premium | 250 |
+| Počet účtů úložiště na oblast a předplatné, včetně účtů standard a premium | 250 |
 | Maximální kapacita účtu | 2 PB pro USA a Evropě, 500 TB pro všechny ostatní oblasti, která zahrnuje Spojeném království |
 | Maximální počet kontejnerů objektů blob, objekty BLOB, sdílené složky, tabulky, fronty, entity nebo zpráv za účet úložiště | Bez omezení |
 | Maximální frekvence požadavků<sup>1</sup> jeden účet úložiště | 20 000 požadavků za sekundu |

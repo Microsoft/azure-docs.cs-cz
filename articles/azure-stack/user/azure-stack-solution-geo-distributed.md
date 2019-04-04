@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 3df5bd177dfd88e74a8dbc72dd1966a18a61d0f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2c2b0d022c81dffe5e98932c22b9707eb10b7e63
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860580"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481718"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření řešení geograficky distribuované aplikace s využitím Azure a Azure Stack
 
@@ -472,7 +472,7 @@ Exportujte sloučený certifikát SSL s privátním klíčem vygenerovaný certi
 
 Soubor privátního klíče se vytvoří pomocí OpenSSL. Exportujte certifikát do formátu PFX, spusťte následující příkaz a nahraďte zástupné symboly *< private-key-file >* a *< sloučit certificate-file >* s cestami k privátní klíče a sloučení soubor certifikátu.
 
-```PowerShell
+```powershell
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>
 ```
 

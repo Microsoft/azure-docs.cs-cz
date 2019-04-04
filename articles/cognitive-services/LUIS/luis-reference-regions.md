@@ -9,45 +9,76 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 01444cec798763bc4e44bcabe0d7ebb640e537a8
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 20ea2eb632a6d685351178691cc3d0f58a567902
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436332"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891408"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Vytváření a publikování oblasti a přidružené klíče
 
-Tři oblasti pro vytváření obsahu a jejich portály podporují mnoho publikování oblastech. Oblast, ve kterém můžete publikovat aplikaci LUIS odpovídá oblast nebo umístění, ve kterém zadáte na webu Azure Portal, při vytváření klíče koncového bodu Azure LUIS. Pokud jste [publikování aplikace](./luis-how-to-publish-app.md), LUIS automaticky generuje adresu URL koncového bodu pro oblast spojené s klíči. K publikování aplikace LUIS do více než jedné oblasti, budete potřebovat alespoň jeden klíč v jedné oblasti. 
+Odpovídající portály LUIS podporuje tři zdrojové oblasti. K publikování aplikace LUIS do více než jedné oblasti, budete potřebovat alespoň jeden klíč v jedné oblasti. 
 
 <a name="luis-website"></a>
 
 ## <a name="luis-authoring-regions"></a>Služba LUIS vytváření oblastí
-Existují tři websites LUIS, podle oblasti. Musí se vytvářet a publikovat ve stejné oblasti. 
+Existují tři portály pro vytváření LUIS, podle oblasti. Musí se vytvářet a publikovat ve stejné oblasti. 
 
-|LUIS|Globální oblast|Pro vytváření oblasti v Azure|
+|LUIS|Oblast pro tvorbu|Název oblasti Azure|
 |--|--|--|
 |[www.LUIS.ai][www.luis.ai]|USA<br>není Evropa<br>není Austrálie| `westus`|
 |[AU.LUIS.ai][au.luis.ai]|Austrálie| `australiaeast`|
 |[EU.LUIS.ai][eu.luis.ai]|Evropa|`westeurope`|
 
-Můžete použít pro vytváření oblasti pro interakci s nasazené služby LUIS v jiné oblasti Azure pro publikování.  
-
 Pro vytváření oblasti mají [spárované oblasti převzetí služeb při selhání](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
-## <a name="regions-and-azure-resources"></a>Oblasti a prostředků Azure
-Publikování aplikace do všech oblastí, které jsou spojené s prostředky služby LUIS přidat na portálu služby LUIS. Například aplikace vytvořená v [www.luis.ai][www.luis.ai], pokud vytvoříte prostředek LUIS v **westus** a přidejte ho do aplikace jako prostředek, publikování aplikace v dané oblasti. 
+<a name="regions-and-azure-resources"></a>
+
+## <a name="publishing-regions-and-azure-resources"></a>Publikování oblasti a prostředků Azure
+Publikování aplikace do všech oblastí, které jsou spojené s prostředky služby LUIS přidat na portálu služby LUIS. Například aplikace vytvořená v [www.luis.ai][www.luis.ai], pokud vytvoříte prostředek LUIS nebo služby Cognitive Services v **westus** a [ho přidat do aplikace jako prostředek ](luis-how-to-azure-subscription.md), publikování aplikace v dané oblasti. 
 
 ## <a name="public-apps"></a>Veřejné aplikace
 Aplikace z veřejného app je publikována ve všech oblastech, tak, aby uživatel s klíčem služby LUIS prostředků na základě oblasti můžete přistupovat k aplikaci v oblasti podle toho, která souvisí s jejich klíč prostředku.
 
-## <a name="publishing-regions"></a>Publikování oblastí
+<a name="publishing-regions"></a>
+
+## <a name="publishing-regions-are-tied-to-authoring-regions"></a>Publikování oblastech jsou vázané na vytváření oblastí
+
+Pro vytváření oblasti aplikace lze publikovat pouze na odpovídající publikovat oblasti. Pokud vaše aplikace je aktuálně v nesprávné oblasti pro vytváření, export aplikace a importujte ho do správné zdrojové oblasti pro publikování oblast. 
 
 LUIS aplikací vytvořených v https://www.luis.ai lze publikovat na všechny koncové body s výjimkou [Evropské](#publishing-to-europe) a [australské](#publishing-to-australia) oblastech. 
 
-Pro vytváření oblasti aplikace lze publikovat pouze na odpovídající publikovat oblasti. Pokud vaše aplikace je aktuálně v nesprávné oblasti pro vytváření, export aplikace a importujte ho do správné zdrojové oblasti pro publikování oblast. 
+## <a name="publishing-to-europe"></a>Publikování v Evropě
+
+Chcete-li publikovat do všech evropských oblastech, vytvoříte LUIS aplikace na https://eu.luis.ai pouze. Při pokusu publikovat kdekoli jinde pomocí klíče v oblasti Evropa, LUIS se zobrazí zpráva s upozorněním. Místo toho použijte https://eu.luis.ai. Služba LUIS aplikací vytvořených v [ https://eu.luis.ai ] [ eu.luis.ai] neproběhne Automatická migrace do jiných oblastí. Exportovat a importovat aplikaci LUIS k její migraci.
+
+## <a name="europe-publishing-regions"></a>Publikování oblastí v Evropě
+
+ Globální oblast | Vytváření rozhraní API oblasti a vytváření webu| Publikování a dotazování na oblast<br>`API region name`   |  Formát adresy URL koncového bodu   |
+|-----|------|------|------|
+| [Evropa](#publishing-to-europe)| `westeurope`<br>[EU.LUIS.ai][eu.luis.ai]| Francie – střed<br>`francecentral`     | https://francecentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
+| [Evropa](#publishing-to-europe)| `westeurope`<br>[EU.LUIS.ai][eu.luis.ai]| Severní Evropa<br>`northeurope`     | https://northeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
+| [Evropa](#publishing-to-europe) | `westeurope`<br>[EU.LUIS.ai][eu.luis.ai]| Západní Evropa<br>`westeurope`    |  https://westeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
+| [Evropa](#publishing-to-europe) | `westeurope`<br>[EU.LUIS.ai][eu.luis.ai]| Velká Británie – jih<br>`uksouth`    |  https://uksouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+
+## <a name="publishing-to-australia"></a>Publikování do Austrálie
+
+Chcete-li publikovat do různých oblastí, vytvoříte LUIS aplikace na https://au.luis.ai pouze. Při pokusu publikovat kdekoli jinde pomocí klíče v oblasti Austrálie, LUIS se zobrazí zpráva s upozorněním. Místo toho použijte https://au.luis.ai. Služba LUIS aplikací vytvořených v [ https://au.luis.ai ] [ au.luis.ai] neproběhne Automatická migrace do jiných oblastí. Exportovat a importovat aplikaci LUIS k její migraci.
+
+## <a name="australia-publishing-regions"></a>Publikování oblastech Austrálie
+
+ Globální oblast | Vytváření rozhraní API oblasti a vytváření webu| Publikování a dotazování na oblast<br>`API region name`   |  Formát adresy URL koncového bodu   |
+|-----|------|------|------|
+| [Austrálie](#publishing-to-australia) | `australiaeast`<br>[AU.LUIS.ai][au.luis.ai]| Austrálie – východ<br>`australiaeast`     |  https://australiaeast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+
+## <a name="publishing-to-other-regions"></a>Publikování do jiných oblastí
+
+Chcete-li publikovat do jiných oblastí, vytvoříte LUIS aplikace na [ https://www.luis.ai ](https://www.luis.ai) pouze. 
+
+## <a name="other-publishing-regions"></a>Ostatní oblasti publikování
 
  Globální oblast | Vytváření rozhraní API oblasti a vytváření webu| Publikování a dotazování na oblast<br>`API region name`   |  Formát adresy URL koncového bodu   |
 |-----|------|------|------|
@@ -57,11 +88,6 @@ Pro vytváření oblasti aplikace lze publikovat pouze na odpovídající publik
 | Asie | `westus`<br>[www.LUIS.ai][www.luis.ai]| Japonsko – západ<br>`japanwest`     |   https://japanwest.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Asie | `westus`<br>[www.LUIS.ai][www.luis.ai]| Korea – střed<br>`koreacentral`     |   https://koreacentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Asie | `westus`<br>[www.LUIS.ai][www.luis.ai]| Jihovýchodní Asie<br>`southeastasia`     |   https://southeastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| *[Austrálie](#publishing-to-australia) | `australiaeast`<br>[AU.LUIS.ai][au.luis.ai]| Austrálie – východ<br>`australiaeast`     |  https://australiaeast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| *[Evropa](#publishing-to-europe)| `westeurope`<br>[EU.LUIS.ai][eu.luis.ai]| Francie – střed<br>`francecentral`     | https://francecentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
-| *[Evropa](#publishing-to-europe)| `westeurope`<br>[EU.LUIS.ai][eu.luis.ai]| Severní Evropa<br>`northeurope`     | https://northeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
-| *[Evropa](#publishing-to-europe) | `westeurope`<br>[EU.LUIS.ai][eu.luis.ai]| Západní Evropa<br>`westeurope`    |  https://westeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
-| *[Evropa](#publishing-to-europe) | `westeurope`<br>[EU.LUIS.ai][eu.luis.ai]| Velká Británie – jih<br>`uksouth`    |  https://uksouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
 | Severní Amerika |`westus`<br>[www.LUIS.ai][www.luis.ai] | Kanada – střed<br>`canadacentral`     |   https://canadacentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Severní Amerika |`westus`<br>[www.LUIS.ai][www.luis.ai] | USA – střed<br>`centralus`     |   https://centralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Severní Amerika |`westus`<br>[www.LUIS.ai][www.luis.ai] | USA – východ<br>`eastus`      |  https://eastus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
@@ -73,20 +99,9 @@ Pro vytváření oblasti aplikace lze publikovat pouze na odpovídající publik
 | Severní Amerika |`westus`<br>[www.LUIS.ai][www.luis.ai] | Západní USA 2<br>`westus2`    |  https://westus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY  |
 | Jižní Amerika | `westus`<br>[www.LUIS.ai][www.luis.ai] | Brazílie – jih<br>`brazilsouth`    |  https://brazilsouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 
-
-
-
-## <a name="publishing-to-europe"></a>Publikování v Evropě
-
-Chcete-li publikovat do všech evropských oblastech, vytvoříte LUIS aplikace na https://eu.luis.ai pouze. Při pokusu publikovat kdekoli jinde pomocí klíče v oblasti Evropa, LUIS se zobrazí zpráva s upozorněním. Místo toho použijte https://eu.luis.ai. Služba LUIS aplikací vytvořených v [ https://eu.luis.ai ] [ eu.luis.ai] neproběhne Automatická migrace do jiných oblastí. Exportovat a importovat aplikaci LUIS k její migraci.
-
-## <a name="publishing-to-australia"></a>Publikování do Austrálie
-
-Chcete-li publikovat do různých oblastí, vytvoříte LUIS aplikace na https://au.luis.ai pouze. Při pokusu publikovat kdekoli jinde pomocí klíče v oblasti Austrálie, LUIS se zobrazí zpráva s upozorněním. Místo toho použijte https://au.luis.ai. Služba LUIS aplikací vytvořených v [ https://au.luis.ai ] [ au.luis.ai] neproběhne Automatická migrace do jiných oblastí. Exportovat a importovat aplikaci LUIS k její migraci.
-
 ## <a name="endpoints"></a>Koncové body
 
-Služba LUIS má v současné době 2 koncové body: jeden pro vytváření obsahu a jeden pro analýzu textu.
+Služba LUIS má v současné době 2 koncové body: jeden pro vytváření obsahu a jeden pro předpověď analýzy dotazů.
 
 |Účel|zprostředkovatele identity|
 |--|--|
@@ -104,6 +119,8 @@ Následující tabulka popisuje parametry, které jsou označeny složených zá
 ## <a name="failover-regions"></a>Převzetí služeb při selhání oblasti
 
 Každá oblast má k převzetí služeb při selhání do sekundární oblasti. Evropa selže v rámci Evropy a Austrálie převezme služby při selhání v Austrálii.
+
+Pro vytváření oblasti mají [spárované oblasti převzetí služeb při selhání](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 ## <a name="next-steps"></a>Další postup
 

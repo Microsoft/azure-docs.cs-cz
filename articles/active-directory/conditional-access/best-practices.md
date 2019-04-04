@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d0e20e9c8e248b446b7b938ae4180ffb546d823
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: d30fe326ef677ca4543534d57dd306ed2a660300
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517590"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895558"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
@@ -46,11 +46,11 @@ Když vytvoříte novou zásadu, nejsou žádní uživatelé, skupiny, aplikace 
 Aby vaše zásady fungují, je nutné nakonfigurovat:
 
 
-|Co           | Jak                                  | Proč|
-|:--            | :--                                  | :-- |
-|**Cloudové aplikace** |Vyberte jednu nebo víc aplikací.  | Cílem zásad podmíněného přístupu je vám umožňují řídit jak Autorizovaní uživatelé můžou používat cloudové aplikace.|
+| Co           | Jak                                  | Proč |
+| :--            | :--                                  | :-- |
+| **Cloudové aplikace** |Vyberte jednu nebo víc aplikací.  | Cílem zásad podmíněného přístupu je vám umožňují řídit jak Autorizovaní uživatelé můžou používat cloudové aplikace.|
 | **Uživatelé a skupiny** | Vyberte alespoň jeden uživatel nebo skupina, která má oprávnění pro přístup k vybrané cloudové aplikace. | Zásady podmíněného přístupu, který nemá žádné uživatelé a skupiny přiřazení, je neaktivní. |
-| **Řízení přístupu** | Vyberte aspoň jedno přístupu ovládací prvek. | Jestli vaše podmínky splněny, procesor zásad je potřeba vědět, co dělat.|
+| **Ovládací prvky přístupu** | Vyberte aspoň jedno přístupu ovládací prvek. | Jestli vaše podmínky splněny, procesor zásad je potřeba vědět, co dělat. |
 
 
 
@@ -111,6 +111,13 @@ Pro každé přihlášení Azure Active Directory vyhodnotí všechny zásady a 
 
 Ano, pomocí protokolu Exchange ActiveSync v zásadách podmíněného přístupu.
 
+### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Jak byste měli nakonfigurovat podmíněný přístup aplikací Office 365?
+
+Vzhledem k tomu, že jsou propojeny aplikací Office 365, doporučujeme, abyste přiřazení běžně používané aplikace společně při vytváření zásad.
+
+Běžné propojené aplikace obsahují Microsoft Flow, aplikace Microsoft Planner, Microsoft Teams, Office 365 Exchange Online, Office 365 SharePoint Online a Office 365 na Yammeru.
+
+Je důležité pro zásady, které vyžadují interakcí s uživateli, jako je ověřování službou Multi-Factor Authentication, když ke kontrole přístupu slouží na začátku relace nebo úkolu. Pokud to neuděláte, uživatelé nebudou moct provádět některé úlohy v rámci aplikace. Například pokud budete vyžadovat vícefaktorové ověřování na nespravovaných zařízeních přístup k Sharepointu, ale ne k e-mailu, uživatelé, kteří pracují v e-mailu nebudete moci připojit soubory služby SharePoint na zprávu. Další informace najdete v článku, [co jsou závislosti služby v Azure Active Directory podmíněného přístupu?](service-dependencies.md).
 
 
 

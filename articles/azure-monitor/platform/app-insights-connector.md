@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 4e91e193b3980901e7778a8826989e729517a29a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: aa1bb62e762925dcb5a0ee37b71602094e768137
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481752"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905694"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Řešení Application Insights Connector správy (zastaralé)
 
@@ -41,6 +41,9 @@ Při použití řešení můžete:
 - Korelujte data infrastruktury se data aplikací
 - Vizualizace dat aplikace pomocí perspektiv v prohledávání protokolu
 - Otáčení z dat Log Analytics do vaší aplikace Application Insights na webu Azure Portal
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="connected-sources"></a>Připojené zdroje
 
@@ -280,25 +283,25 @@ $Subscription_workspace = "Workspace Subscription Name"
 $ResourceGroup_workspace = "Workspace ResourceGroup"
 $Workspace = "Workspace Name"
 
-Connect-AzureRmAccount
-Set-AzureRmContext -SubscriptionId $Subscription_app
-$AIApp = Get-AzureRmApplicationInsights -ResourceGroupName $ResourceGroup_app -Name $Application 
-Set-AzureRmContext -SubscriptionId $Subscription_workspace
-Remove-AzureRmOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
+Connect-AzAccount
+Set-AzContext -SubscriptionId $Subscription_app
+$AIApp = Get-AzApplicationInsights -ResourceGroupName $ResourceGroup_app -Name $Application 
+Set-AzContext -SubscriptionId $Subscription_workspace
+Remove-AzOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
 ```
 
 Můžete načíst seznam aplikací s použitím následujícího skriptu Powershellu, která volá volání rozhraní REST API. 
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 $Tenant = "TenantId"
 $Subscription_workspace = "Workspace Subscription Name"
 $ResourceGroup_workspace = "Workspace ResourceGroup"
 $Workspace = "Workspace Name"
 $AccessToken = "AAD Authentication Token" 
 
-Set-AzureRmContext -SubscriptionId $Subscription_workspace
-$LAWorkspace = Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName $ResourceGroup_workspace -Name $Workspace
+Set-AzContext -SubscriptionId $Subscription_workspace
+$LAWorkspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName $ResourceGroup_workspace -Name $Workspace
 
 $Headers = @{
     "Authorization" = "Bearer $($AccessToken)"

@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/06/2019
-ms.openlocfilehash: 028c69294d693202b626044cb903dc3124b5d7b7
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 6e818da29b7ee0d17ebe4f8e523648146973fa63
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58863215"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905354"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatické ladění ve službě Azure SQL Database
 
@@ -70,9 +70,9 @@ Možnosti automatického ladění ve službě Azure SQL Database k dispozici jso
 | :----------------------------- | ----- | ----- |
 | **Vytvoření indexu** -identifikuje indexy, které může zlepšit výkon vaší úlohy, vytvoří indexy a automaticky ověřuje, že se zvýšil výkon dotazů. | Ano | Ne | 
 | **DROP INDEX** -redundantní a duplicitní indexy identifikuje každý den, s výjimkou jedinečných indexů a indexy, které nebyly použity po dlouhou dobu (> 90 dnů). Mějte prosím na paměti, že v tuto chvíli možnost není kompatibilní s aplikací s použitím pomocné parametry přepnutí a index oddílu. | Ano | Ne |
-| **VYNUCENÍ POSLEDNÍHO dobrého plánu** – identifikuje SQL dotazy v plánu spuštění, která je nižší než předchozí dobrým plánem a dotazy s posledního známého dobrého plánu místo nižším plánu. | Ano | Ano |
+| **VYNUCENÍ POSLEDNÍHO dobrého plánu** (Automatická oprava plánů) - identifikuje SQL dotazy v plánu spuštění, která je nižší než předchozí dobrým plánem a dotazy s posledního známého dobrého plánu místo nižším plánu. | Ano | Ano |
 
-Automatické ladění identifikuje **CREATE INDEX**, **DROP INDEX**, a **platnost poslední dobré plánování** doporučení, která můžete optimalizovat výkon své databáze a zobrazí je v [Webu azure portal](sql-database-advisor-portal.md)a zpřístupňuje je prostřednictvím [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) a [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). 
+Automatické ladění identifikuje **CREATE INDEX**, **DROP INDEX**, a **platnost poslední dobré plánování** doporučení, která můžete optimalizovat výkon své databáze a zobrazí je v [Webu azure portal](sql-database-advisor-portal.md)a zpřístupňuje je prostřednictvím [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) a [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). Další informace o VYNUCENÍ POSLEDNÍHO dobrého plánu a konfigurace možnosti automatického ladění prostřednictvím T-SQL, najdete v článku [automatické ladění představuje automatická oprava plánů](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/).
 
 Můžete buď ručně provést doporučení pro vyladění pomocí portálu nebo můžete nechat automatické ladění autonomně platí doporučení pro vyladění za vás. Výhody umožněte systému autonomně platí doporučení pro vyladění pro vás je, že se automaticky ověřuje existuje existuje kladné zisk na výkon úloh, a pokud neexistuje žádné významné výkonnostní zlepšení zjistila, bude automaticky vrátit zpět doporučení pro ladění. Mějte prosím na paměti, že v případě dotazy ovlivněné doporučení, které nejsou provedeny často pro optimalizaci, ověření fáze může trvat až 72 hodin záměrné.
 

@@ -13,19 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 055daebb28131268e517845a47d4c39aba90f201
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6f27aeb65cb9077011e662c165ca26202546db26
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57871207"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905728"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Vytvořit pracovní prostor Log Analytics pomocí Azure Powershellu
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. V tomto rychlém startu se dozvíte, jak použít modul Azure PowerShell k nasazení pracovního prostoru Log Analytics ve službě Azure Monitor. Pracovní prostor Log Analytics je jedinečný prostředí pro data protokolů Azure Monitor. Každý pracovní prostor má své vlastní úložiště dat a konfigurace a konfigurace zdroje dat a řešení pro ukládání dat v konkrétním pracovním prostoru. Budete potřebovat pracovní prostor Log Analytics, pokud máte v úmyslu na shromažďování dat z těchto zdrojů:
-
 
 * Prostředky ve vašem předplatném Azure  
 * Místní služba System Center Operations Manager monitorovat počítače  
@@ -40,9 +37,11 @@ U jiných zdrojů, jako jsou virtuální počítače Azure a Windows nebo virtu�
 
 Pokud ještě nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) předtím, než začnete.
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, tento kurz vyžaduje Azure PowerShell modulu AzureRM verze 5.7.0 nebo Az modulu verze 1.0.0 nebo novějším. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, tento kurz vyžaduje modul Azure PowerShell Az. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 Vytvoření pracovního prostoru s [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). Následující příklad vytvoří pracovní prostor s názvem *TestWorkspace* ve skupině prostředků *Lab* v *eastus* pomocí šablony Resource Manageru z vašeho místního umístění počítač. Šablona JSON je nakonfigurován pouze s výzvou k zadání názvu pracovního prostoru a určí výchozí hodnotu pro parametry, které se pravděpodobně použije jako standardní konfigurace ve vašem prostředí. 

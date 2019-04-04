@@ -3,19 +3,19 @@ title: Translator Text API jazyků – metoda
 titlesuffix: Azure Cognitive Services
 description: Použijte metodu Translator Text API jazyků.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 45baf915ffbc2723d3ed5b4c4dcd96b583a12802
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1713a05590f389a6de70d72e8d62237c7521d808
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122399"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915760"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
@@ -247,7 +247,7 @@ Seznam podporovaných jazyků se často mění. Pokud chcete šetřit šířku p
 Tady jsou možné stavové kódy HTTP, které vrátí žádost o. 
 
 <table width="100%">
-  <th width="20%">Stavový kód</th>
+  <th width="20%">Kód stavu</th>
   <th>Popis</th>
   <tr>
     <td>200</td>
@@ -281,7 +281,7 @@ Pokud dojde k chybě, vrátí požadavek také chybová odpověď JSON. Kód chy
 
 Následující příklad ukazuje, jak načíst jazyky podporované pro překlad textu.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>Curl](#tab/curl)
 
 ```
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"

@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: de61443da41f1015b2890e9052f38e25d3bed86a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551964"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893383"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Koncové body REST s HTTP + Swagger pro volání konektoru v Azure Logic Apps
 
@@ -28,7 +28,7 @@ Informace o vytváření aplikací logiky s využitím konektorů najdete v tém
 
 HTTP + Swagger aktivovat a akce, které fungují stejně jako [akce HTTP](connectors-native-http.md) zveřejněním strukturu rozhraní API a vytvořené jako výstupy z poskytovat lepší prostředí v návrháři aplikace logiky, ale [Swagger metadata](https://swagger.io). Můžete také použít HTTP + Swagger konektor jako trigger. Pokud chcete implementovat cyklického dotazování aktivační událost, mají tvar dotazování, který je popsaný v [vytvoření vlastních rozhraní API volat jiné rozhraní API, služby a systémy z aplikací logiky](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
 
-Další informace o [triggery aplikace logiky a akce](connectors-overview.md).
+Další informace o [triggery aplikace logiky a akce](../connectors/apis-list.md).
 
 Tady je příklad toho, jak pomocí HTTP + Swagger operace jako akci v pracovním postupu v aplikaci logiky.
 
@@ -72,14 +72,14 @@ Tady je postup pro vytvoření, konfiguraci a ukládat dokumenty Swagger ve slu�
 Toto jsou podrobnosti pro aktivační události a akce, která tento HTTP + Swagger konektor podporuje.
 
 ## <a name="http--swagger-triggers"></a>HTTP + Swagger aktivační události
-Trigger je událost, která umožňuje spustit pracovní postup, který je definován v aplikaci logiky. [Další informace o aktivačních událostech.](connectors-overview.md) HTTP + Swagger konektor má jeden trigger.
+Trigger je událost, která umožňuje spustit pracovní postup, který je definován v aplikaci logiky. HTTP + Swagger konektor má jeden trigger. [Další informace o aktivačních událostech](../connectors/apis-list.md).
 
 | Trigger | Popis |
 | --- | --- |
 | HTTP + Swagger |Volání HTTP a vrátí obsah odpovědi |
 
 ## <a name="http--swagger-actions"></a>HTTP + Swagger akce
-Akce je operace, která provádí pracovní postup, který je definován v aplikaci logiky. [Další informace o akcích.](connectors-overview.md) HTTP + Swagger konektor má jednu akci je to možné.
+Akce je operace, která provádí pracovní postup, který je definován v aplikaci logiky. HTTP + Swagger konektor má jednu akci je to možné. [Další informace o akcích](../connectors/apis-list.md).
 
 | Akce | Popis |
 | --- | --- |
@@ -104,11 +104,11 @@ Hvězdička (*) znamená, že požadované pole.
 
 Odpověď protokolu HTTP
 
-| Property Name | Typ dat | Popis |
+| Název vlastnosti | Typ dat | Popis |
 | --- | --- | --- |
 | Hlavičky |objekt |Hlavičky odpovědi |
 | Tělo |objekt |Objekt odpovědi |
-| Stavový kód |int |Stavový kód HTTP |
+| Kód stavu |int |Stavový kód HTTP |
 
 ### <a name="http-responses"></a>Odpovědi protokolu HTTP
 Při volání různé akce, může se zobrazit některé odpovědi. Následuje tabulka, která bude uvádět odpovídající odpovědí a popisy.
@@ -123,7 +123,6 @@ Při volání různé akce, může se zobrazit některé odpovědi. Následuje t
 | 404 |Nenalezené |
 | 500 |Vnitřní chyba serveru Došlo k neznámé chybě. |
 
-- - -
 ## <a name="next-steps"></a>Další postup
 
 * [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)

@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: aa62db0948ffa036b37736477b872d694d14836b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a2eff2ca2e72ad263e3e23d0827e7603bca3fdcb
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762589"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917472"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
 
 ## <a name="overview"></a>Přehled
-Tento kurz ukazuje, jak lze vytvářet vícevrstvé aplikace .NET s front-endem ASP.NET MVC a jak je nasadit do [cloudové služby Azure](cloud-services-choose-me.md). Aplikace používá [službu Azure SQL Database](https://msdn.microsoft.com/library/azure/ee336279), [službu Azure Blob service](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) a [službu front Azure](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). [Projekt sady Visual Studio můžete stáhnout](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) z galerie kódů MSDN.
+Tento kurz ukazuje, jak lze vytvářet vícevrstvé aplikace .NET s front-endem ASP.NET MVC a jak je nasadit do [cloudové služby Azure](cloud-services-choose-me.md). Aplikace používá [službu Azure SQL Database](/previous-versions/azure/ee336279(v=azure.100)), [službu Azure Blob service](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) a [službu front Azure](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). [Projekt sady Visual Studio můžete stáhnout](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) z galerie kódů MSDN.
 
 V kurzu se dozvíte, jak sestavit a spustit aplikaci místně, jak ji nasadit do Azure a spustit v cloudu a jak ji sestavit od nuly. Pokud chcete, můžete začít tím, že ji sestavíte od nuly, potom ji otestujete a nakonec provedete kroky nasazení.
 
@@ -81,7 +81,7 @@ Když uživatel odešle obrázek, front-end spuštěný ve webové roli obrázek
 6. Pokud používáte Visual Studio 2015 nebo vyšší, změňte připojovací řetězec serveru SQL v aplikačním souboru *Web.config* projektu ContosoAdsWeb a v souboru *ServiceConfiguration.Local.cscfg* projektu ContosoAdsCloudService. V každém případě změňte „(localdb) \v11.0“ na „\MSSQLLocalDB (localdb)“.
 7. Stiskněte klávesy CTRL+F5 a spusťte aplikaci.
 
-    Když spouštíte projekt cloudové služby místně, Visual Studio automaticky vyvolá *emulátor služby Výpočty* Azure a *emulátor úložiště* Azure. Emulátor služby Výpočty využívá prostředky počítače k simulaci prostředí webové role a role pracovního procesu. Emulátor úložiště používá databázi serveru [SQL Server Express LocalDB](https://msdn.microsoft.com/library/hh510202.aspx) k simulaci cloudového úložiště Azure.
+    Když spouštíte projekt cloudové služby místně, Visual Studio automaticky vyvolá *emulátor služby Výpočty* Azure a *emulátor úložiště* Azure. Emulátor služby Výpočty využívá prostředky počítače k simulaci prostředí webové role a role pracovního procesu. Emulátor úložiště používá databázi serveru [SQL Server Express LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb) k simulaci cloudového úložiště Azure.
 
     Při prvním spuštění projektu cloudové služby může spuštění emulátorů trvat zhruba minutu. Když je spuštění emulátorů dokončené, výchozí prohlížeč otevře domovskou stránku aplikace.
 
@@ -178,7 +178,7 @@ V reálné aplikaci byste obvykle vytvořili samostatné účty pro data aplikac
 
     Když jsou cloudové služby a účet úložiště v různých datacentrech (různých oblastech), zvýší se latence a bude vám účtována šířka pásma mimo datové centrum. Šířka pásma v rámci datového centra je zdarma.
 
-    Skupina vztahů Azure nabízí mechanismus pro minimalizaci vzdálenosti mezi prostředky v datovém centru (můžete tak omezit latenci). V tomto kurzu skupinu vztahů nepoužíváme. Další informace naleznete v článku o [vytváření skupiny vztahů v Azure](https://msdn.microsoft.com/library/azure/gg715317.aspx).
+    Skupina vztahů Azure nabízí mechanismus pro minimalizaci vzdálenosti mezi prostředky v datovém centru (můžete tak omezit latenci). V tomto kurzu skupinu vztahů nepoužíváme. Další informace naleznete v článku o [vytváření skupiny vztahů v Azure](/previous-versions/azure/reference/gg715317(v=azure.100)).
 7. Klikněte na možnost **Vytvořit**.
 
     ![Nový účet úložiště](./media/cloud-services-dotnet-get-started/newstorage.png)
@@ -549,7 +549,7 @@ queueClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSec
 imagesQueue = queueClient.GetQueueReference("images");
 ```
 
-Většinu kódu kontroleru je typická pro práci s datovým modelem Entity Framework za použití třídy DbContext. Výjimkou je metoda HttpPost `Create`, která soubor odešle a uloží ho do úložiště objektů blob. Vazač modelu poskytuje metodě objekt [HttpPostedFileBase](https://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx).
+Většinu kódu kontroleru je typická pro práci s datovým modelem Entity Framework za použití třídy DbContext. Výjimkou je metoda HttpPost `Create`, která soubor odešle a uloží ho do úložiště objektů blob. Vazač modelu poskytuje metodě objekt [HttpPostedFileBase](/dotnet/api/system.web.httppostedfilebase).
 
 ```csharp
 [HttpPost]
@@ -703,7 +703,7 @@ Po každé iteraci smyčky, kdy nebyla nalezena žádná zpráva fronty, se prog
 
 Obsah zprávy fronty občas způsobí chybu při zpracování. Takové zprávě se říká *nezpracovatelná zpráva* a pokud jste právě zaprotokolovali chybu a restartovali smyčku, můžete se pokoušet o zpracování této zprávy do nekonečna.  Zachycující blok proto zahrnuje podmínku, která kontroluje, jak často se aplikace pokusila aktuální zprávu zpracovat a pokud to bylo víc než pětkrát, odstraní zprávu z fronty.
 
-`ProcessQueueMessage` se volá při nalezení zpráv fronty.
+`ProcessQueueMessage` je volána při nalezení zpráv fronty.
 
 ```csharp
 private void ProcessQueueMessage(CloudQueueMessage msg)
@@ -776,6 +776,6 @@ Video úvod do osvědčených postupů a vzorů služby Azure Storage najdete v 
 Další informace najdete v následujících materiálech:
 
 * [Azure Cloud Services část 1: Úvod](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
-* [Jak spravovat Cloud Services](cloud-services-how-to-manage-portal.md)
+* [Správa cloudových služeb Cloud Services](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Jak vybrat poskytovatele cloudových služeb](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 6ff7b018cea8bedd93d3c9aef3b3250ecf5251b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 75d6fb063a6cb5336a4d9945bf6a79a65ed25d40
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123721"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918888"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Zabezpečení prostředků Azure CDN pomocí ověření tokenu
 
@@ -33,7 +33,7 @@ Ověřování pomocí tokenu je mechanismus, který umožňuje zabránit obsluhu
 
 Ověřování pomocí tokenu ověřuje, že žádosti jsou generovány jako důvěryhodný vyžadováním požadavky tak, aby obsahovala hodnotu tokenu, že kódování obsahuje informace o žadateli. Pouze v případě, že kódovaného informace splňuje požadavky; se obsah obsluhuje pro žadatele v opačném případě požadavků byl odepřen. Požadavky můžete nastavit pomocí jednoho nebo více z následujících parametrů:
 
-- Země: Povolit nebo odepřít požadavky, které pocházejí ze zemí podle jejich [směrové číslo země](https://msdn.microsoft.com/library/mt761717.aspx).
+- Země: Povolit nebo odepřít požadavky, které pocházejí ze zemí podle jejich [směrové číslo země](/previous-versions/azure/mt761717(v=azure.100)).
 - Adresa URL: Povolit pouze požadavky, které odpovídají zadaného prostředku nebo cesta.
 - Hostitel: Povolit nebo odmítnout požadavky, které používají zadaní hostitelé v hlavičce požadavku.
 - Odkazující server: Povolí nebo zakáže žádost ze zadaného odkazující server.
@@ -120,7 +120,7 @@ Následující diagram popisuje, jak Azure CDN ověří požadavek klienta při 
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Umožňuje pouze požadavky, které pocházejí z jedné nebo více zadanou zemí. Požadavky, které pocházejí z jiných zemí byl odepřen. Použití dvou písmen [směrové číslo země ISO 3166](https://msdn.microsoft.com/library/mt761717.aspx) pro jednotlivé země a oddělit každou z nich čárkou; nepřidávejte mezerou. Například pokud chcete povolit přístup ze Spojených států a (Francie), zadejte `US,FR`.</td>
+      >    <td>Umožňuje pouze požadavky, které pocházejí z jedné nebo více zadanou zemí. Požadavky, které pocházejí z jiných zemí byl odepřen. Použití dvou písmen [směrové číslo země ISO 3166](/previous-versions/azure/mt761717(v=azure.100)) pro jednotlivé země a oddělit každou z nich čárkou; nepřidávejte mezerou. Například pokud chcete povolit přístup ze Spojených států a (Francie), zadejte `US,FR`.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 

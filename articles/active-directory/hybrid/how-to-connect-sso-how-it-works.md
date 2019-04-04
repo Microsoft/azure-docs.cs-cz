@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 04/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5217f21449efeb2086770f040fb781765ea819eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 813ab2a349ba843e9f41675234e395470bef9740
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58083933"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58896121"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory bezproblémové jednotné přihlašování: Podrobné technické informace
 
@@ -39,15 +39,12 @@ Tato část obsahuje tři části:
 
 Bezproblémového jednotného přihlašování se aktivuje pomocí služby Azure AD Connect, jak je znázorněno [tady](how-to-connect-sso-quick-start.md). Při povolení funkce, dojde k následujícím krokům:
 
-- Účet počítače s názvem `AZUREADSSOACC` (která představuje Azure AD) se vytvoří v místní službě Active Directory (AD) v každé doménové struktuře AD.
-- Účet počítače Kerberos dešifrovací klíč je bezpečně sdílet s Azure AD. Pokud existuje více doménových struktur AD, každý z nich bude mít svůj vlastní protokol Kerberos dešifrovací klíč.
-- Kromě toho jsou vytvořeny dva Kerberos hlavních názvů služby (SPN) představující dvě adresy URL, které se používají při přihlášení k Azure AD.
-
->[!NOTE]
-> Hlavní názvy služby protokolu Kerberos a účet počítače se vytvoří v každé doménové struktuře AD synchronizovat s Azure AD (pomocí služby Azure AD Connect) a pro uživatele, jehož chcete bezproblémového jednotného přihlašování. Přesunout `AZUREADSSOACC` počítačový účet k organizaci jednotky (OU) ukládat další účty počítačů zajistit, že je spravovat stejným způsobem a se neodstraní.
+- Účtu počítače (`AZUREADSSOACC`) se vytvoří ve vaší místní služby Active Directory (AD) v každé doménové struktuře AD, kterou synchronizovat do služby Azure AD (pomocí služby Azure AD Connect).
+- Kromě toho se vytvoří řada Kerberos hlavních názvů služby (SPN) používané během procesu přihlášení Azure AD.
+- Účet počítače Kerberos dešifrovací klíč je bezpečně sdílet s Azure AD. Pokud existuje více doménových struktur AD, každý účet počítače bude mít svůj vlastní jedinečný dešifrovací klíč protokolu Kerberos.
 
 >[!IMPORTANT]
->Důrazně doporučujeme vám [nespotřebujete dešifrovací klíče Kerberos](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) z `AZUREADSSOACC` účet počítače nejméně každých 30 dnů.
+> `AZUREADSSOACC` Účet počítače musí být silného chráněn z bezpečnostních důvodů. Pouze Domain Admins by měl mít možnost Spravovat účet počítače. Ujistěte se, že delegování protokolu Kerberos v tomto počítači zakázaná. Store účet počítače v organizační jednotce (OU) jsou-li před náhodným odstraněním. Dešifrovací klíč protokolu Kerberos na účet počítače by měly také považovat za citlivé. Důrazně doporučujeme vám [nespotřebujete dešifrovací klíče Kerberos](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) z `AZUREADSSOACC` účet počítače nejméně každých 30 dnů.
 
 Po dokončení instalace bezproblémové jednotné přihlašování funguje stejně jako jakékoli jiné přihlášení, která používá integrované ověřování Windows (IWA).
 

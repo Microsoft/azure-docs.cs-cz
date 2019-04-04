@@ -3,16 +3,17 @@ title: Služba Azure Container Registry – role a oprávnění
 description: Pomocí řízení přístupu Azure na základě rolí (RBAC) a správu identit a přístupu (IAM) poskytují jemně odstupňovaná oprávnění k prostředkům ve službě Azure container registry.
 services: container-registry
 author: dlepow
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 03/20/2019
 ms.author: danlep
-ms.openlocfilehash: 0148894bb013dc9f8cce595f14919f87d6292df8
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: b6e26bfa476c5c13e6e478f40c39978af61d83e7
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593620"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894264"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry role a oprávnění
 
@@ -23,8 +24,9 @@ Služba Azure Container Registry podporuje sadu role služby Azure, které posky
 | Vlastník | X | X | X | X | X | X |  |  
 | Přispěvatel | X | X | X |  X | X | X |  |  
 | Čtenář | X |  |  | X |  |  |  |
-| AcrPush |  |  | X | X | X |  |  |  
+| AcrPush |  |  | X | X | |  |  |  
 | AcrPull |  |  |  | X |  |  |  |  
+| AcrDelete |  |  |  |  | X |  |  |
 | AcrImageSigner |  |  |  |  |  |  | X |
 
 ## <a name="differentiate-users-and-services"></a>Rozlišení uživatelů a služeb
@@ -61,7 +63,7 @@ Schopnost `docker pull` jiných-umístí do karantény image, nebo o přijetí z
 
 ## <a name="delete-image-data"></a>Odstranit data bitové kopie
 
-Schopnost [odstranit Image kontejneru nebo úložišť](container-registry-delete.md).
+Schopnost [odstranit Image kontejneru](container-registry-delete.md), nebo odstranění jiných [podporované artefakty](container-registry-image-formats.md) například helmu z registru.
 
 ## <a name="change-policies"></a>Změna zásad
 

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: c7bfa8351a2599ff8616364a093cd6154e90830c
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 88a66cae00bcd1256f6c3ad76a04d1333d1db9db
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58850872"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917086"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Živé streamování pomocí služby Media Services k vytvoření datových proudů s více přenosovými rychlostmi pomocí webu Azure portal  
 > [!div class="op_single_selector"]
-> * [Azure Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
+> * [Portál](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 > * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
@@ -42,6 +42,8 @@ Následující část představuje obecné kroky, které jsou součástí proces
 > V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amslived@microsoft.com.
 
 1. Připojte k počítači videokameru. <br/>Inspiraci, instalační program, podívejte se na [videa ozubené kolo nastavení jednoduché a přenosné události]( https://link.medium.com/KNTtiN6IeT).
+
+    Pokud nemáte přístup k fotoaparátu, nástroje, jako [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) je možné generovat živého kanálu z videosouboru.
 1. Spusťte a nakonfigurujte místní kodér služby live Encoding, který umí produkovat datový proud s jednou přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo Smooth Streaming. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Také přečtěte si tento blog: [Živé streamování provozu pomocí OBS](https://link.medium.com/ttuwHpaJeT).
 
     Tento krok můžete provést i po vytvoření kanálu.

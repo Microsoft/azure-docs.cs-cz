@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 19f41256866b42962be36bbb97f5f6d3c06d7fed
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6d8ad71894444b3759e506c50244b592ac1f8aac
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976547"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904708"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Spuštění postupu zotavení po havárii do Azure 
 
@@ -42,7 +42,7 @@ Tento postup popisuje, jak spustit testovací převzetí služeb při selhání 
     - Site Recovery pokusy o vytvoření testovací virtuální počítače v podsíti se stejným názvem a stejné IP adresy, který je součástí **výpočty a síť** nastavení virtuálního počítače.
     - Pokud podsíť se stejným názvem není k dispozici ve službě Azure virtual network pro testovací převzetí služeb při selhání, pak test vytvoření virtuálního počítače v první podsíť podle abecedy.
     - Pokud stejnou IP adresu není k dispozici v podsíti, virtuálnímu počítači obdrží jinou dostupnou IP adresu v podsíti. [Další informace](#create-a-network-for-test-failover).
-4. Pokud jste už převzetí služeb při selhání do Azure a je povolené šifrování dat, v **šifrovací klíč**, vyberte certifikát, který byl vydán po povolení šifrování během instalace zprostředkovatele. Můžete tento krok ignorovat šifrování není povoleno.
+4. Pokud jste už převzetí služeb při selhání do Azure a je povolené šifrování dat, v **šifrovací klíč**, vyberte certifikát, který byl vydán po povolení šifrování během instalace zprostředkovatele. Pokud není povolené šifrování, můžete tento krok ignorovat.
 5. Sledovat průběh převzetí služeb při selhání **úlohy** kartu. Byste měli vidět testovací počítač repliky na portálu Azure portal.
 6. K zahájení připojení RDP k virtuálnímu počítači Azure, budete muset [přidejte veřejnou IP adresu](https://aka.ms/addpublicip) na rozhraní sítě převzetí virtuálního počítače.
 7. Pokud všechno funguje podle očekávání, klikněte na tlačítko **vyčištění testovacího převzetí služeb při selhání**. Tím se odstraní virtuální počítače, které byly vytvořené během testovacího převzetí služeb při selhání.
@@ -68,7 +68,7 @@ V následujících scénářích vyžaduje převzetí služeb při selhání vel
 * Virtuální počítač Hyper-V ochranu, protože fyzické servery
 * Virtuální počítač VMware, kde nejsou následující ovladače ovladače spuštění:
     * storvsc
-    * VMBus
+    * vmbus
     * storflt
     * Intelide
     * ATAPI

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b52e7c0de2d834c793bb30fa35bd53b45aaebe5d
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 08ae74bcd9ee0a7cf5e0fb6d38758b1429c39145
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848859"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916338"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Průzkumník metrik Azure monitoru
 
@@ -76,11 +76,33 @@ Nastavte filtry pro grafy, které ukazují metriky s dimenzemi. Pokud metrika "P
 
 5. Kroky 1 až 4 aplikovat více filtrů stejného grafy můžete opakovat.
 
+## <a name="multiple-metrics-and-charts"></a>Více metriky a grafy
+
+Můžete také vytvořit grafy, které se zobrazit několik metrik nebo zobrazit grafy několika metrik najednou. Tato funkce umožňuje:
+
+- korelovat související metriky zobrazíte jak jednu hodnotu do stejného grafu se vztahuje na jiný
+- Zobrazte metriky s různými jednotkami měření v blízkosti
+- vizuálně agregovat a porovnat metriky z různých zdrojů
+
+Například pokud máte 5 účty úložiště a chcete zjistit, kolik celkové místo je zpracován mezi nimi, můžete vytvořit (skládaný) plošný graf, který ukazuje jednotlivé a součet všech hodnot v konkrétní body v čase.
+
+### <a name="multiple-metrics-on-a-chart"></a>Několik metrik v grafu
+
+Nejprve je potřeba [vytvořit nový graf](#create-a-new-chart). Klikněte na tlačítko **přidat metriku** a pomocí stejného postupu přidat další metriku na stejném grafu.
+
+### <a name="multiple-charts"></a>Několik grafů
+
+Klikněte na tlačítko **přidat graf** a vytvoření jiného grafu s jinou metriku.
+
+### <a name="order-or-delete-multiple-charts"></a>Pořadí nebo odstranit několik grafů
+
+Pořadí nebo odstranit několik grafů, klikněte na symbol tří teček ( **...**  ) symbol, který má otevřete nabídku graf a zvolte příslušnou položku **nahoru**, **přesunout dolů**, nebo **odstranit**.
+
 ## <a name="apply-splitting-to-a-chart"></a>Použít rozdělení na graf
 
-Můžete rozdělit metriku dimenze k vizualizaci různých segmentů metriky porovnání proti sobě navzájem a identifikovat odlehlé segmenty dimenze. 
+Můžete rozdělit metriku dimenze k vizualizaci různých segmentů metriky porovnání proti sobě navzájem a identifikovat odlehlé segmenty dimenze.
 
-### <a name="to-apply-splitting"></a>Použít rozdělení
+### <a name="apply-splitting"></a>Použít rozdělení
 
 1. Klikněte na **použít rozdělení** nad grafem.
  

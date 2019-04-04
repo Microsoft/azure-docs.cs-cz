@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2025d0b4f7ea40d0a0dd90220e8ed4e1f3d1ccd2
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: d1c5f906fef495f7ef1dde5df38a84629a6d6c61
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632197"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915947"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Jak vytvořit a vyhledejte ukotvení pomocí Azure prostorových ukotvení v Unity
 
@@ -302,7 +302,7 @@ Další informace o [AnchorLocatedDelegate](https://docs.microsoft.com/dotnet/ap
                 // This anchor has already been reported and is being tracked
                 break;
             case LocateAnchorStatus.NotLocatedAnchorDoesNotExist:
-                // The anchor was deleted or never exited in the first place
+                // The anchor was deleted or never existed in the first place
                 // Drop it, or show UI to ask user to anchor the content anew
                 break;
             case LocateAnchorStatus.NotLocated:

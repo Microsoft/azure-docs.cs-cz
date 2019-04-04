@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: ec3952f2bb0b4180f5c72d948d1835a903152f0d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181822"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916647"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Běžné úlohy po spuštění cloudové služby
 Tento článek obsahuje několik příkladů běžných úloh po spuštění, které můžete provádět v cloudové službě. Úlohy po spuštění můžete použít k provádění operací před zahájením roli. Operace, které můžete chtít provést zahrnout instalaci součásti, registrace komponent COM, nastavení klíče registru nebo spouští se dlouho běžící proces. 
@@ -31,7 +31,7 @@ Zobrazit [v tomto článku](cloud-services-startup-tasks.md) pochopit, jak fungu
 > 
 
 ## <a name="define-environment-variables-before-a-role-starts"></a>Definování proměnné prostředí před spuštěním role
-Pokud potřebujete proměnné prostředí definované pro specifické úlohy, použijte [prostředí] element v rámci [Úkol] elementu.
+Pokud potřebujete proměnné prostředí definované pro specifické úlohy, použijte [prostředí] element v rámci [úloh] elementu.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -68,12 +68,12 @@ Existuje však několik věcí, které dávejte pozor na použití *AppCmd.exe* 
 
 Je vhodné zkontrolovat **errorlevel** po volání *AppCmd.exe*, což je snadné dělat, když zabalte volání do *AppCmd.exe* s *.cmd* souboru. Pokud zjišťování známého **errorlevel** odpovědi, můžete ji ignorovat, nebo předávání zpátky.
 
-Errorlevel vrácený *AppCmd.exe* jsou uvedené v souboru winerror.h, můžete zobrazit také na [MSDN](https://msdn.microsoft.com/library/windows/desktop/ms681382.aspx).
+Errorlevel vrácený *AppCmd.exe* jsou uvedené v souboru winerror.h, můžete zobrazit také na [MSDN](/windows/desktop/Debug/system-error-codes--0-499-).
 
 ### <a name="example-of-managing-the-error-level"></a>Příklad správy úroveň chyby
 V tomto příkladu přidá pro formát JSON do části komprese a komprese položku *Web.config* souboru, zpracování chyb a protokolování.
 
-V příslušných oddílech [ServiceDefinition.csdef] souboru se tady zobrazí, mezi které patří nastavení [kontextu executionContext](https://msdn.microsoft.com/library/azure/gg557552.aspx#Task) atribut `elevated` poskytnout *AppCmd.exe* dostatečná oprávnění ke změně nastavení *Web.config* souboru:
+V příslušných oddílech [ServiceDefinition.csdef] souboru se tady zobrazí, mezi které patří nastavení [kontextu executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#Task) atribut `elevated` poskytnout *AppCmd.exe* dostatečná oprávnění ke změně nastavení *Web.config* souboru:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -131,7 +131,7 @@ Druhá brána firewall řídí připojení mezi virtuálním počítačem a proc
 
 Azure vytvoří pravidla brány firewall pro procesy spuštěné v rámci své role. Například při spuštění služby nebo programu Azure automaticky vytvoří pravidla nezbytné firewallu povolující tuto službu ke komunikaci s Internetem. Nicméně pokud vytvoříte službu, která se spustí proces mimo vaše role (jako je služba COM + nebo naplánované úlohy Windows), musíte ručně vytvořit pravidlo brány firewall umožňující přístup k této službě. Pomocí úlohy po spuštění můžete vytvořit tato pravidla brány firewall.
 
-Úlohy po spuštění, který vytvoří pravidlo brány firewall musí mít [kontextu executionContext][úkol] z **se zvýšenými oprávněními**. Následující úloha spuštění pro přidání [ServiceDefinition.csdef] souboru.
+Úlohy po spuštění, který vytvoří pravidlo brány firewall musí mít [kontextu executionContext][úloh] z **se zvýšenými oprávněními**. Následující úloha spuštění pro přidání [ServiceDefinition.csdef] souboru.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -293,7 +293,7 @@ REM   Exit the batch file with ERRORLEVEL 0.
 EXIT /b 0
 ```
 
-Místní úložiště složky můžete přistupovat ze sady Azure SDK pomocí [GetLocalResource](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) metody.
+Místní úložiště složky můžete přistupovat ze sady Azure SDK pomocí [GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) metody.
 
 ```csharp
 string localStoragePath = Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.GetLocalResource("StartupLocalStorage").RootPath;
@@ -306,7 +306,7 @@ Vaše úloha po spuštění kroků různých při provozu v cloudu, když je v e
 
 Tato schopnost provádět různé akce na emulátor služby výpočty a cloudy, které lze provést tak, že vytvoříte proměnnou prostředí v [ServiceDefinition.csdef] souboru. Tato proměnná prostředí pro hodnotu potom otestovat ve vaší úloze po spuštění.
 
-Chcete-li vytvořit proměnnou prostředí, přidejte [Proměnná]/[RoleInstanceValue] elementu a vytvořit hodnotu XPath `/RoleEnvironment/Deployment/@emulated`. Hodnota **ComputeEmulatorRunning %** proměnná prostředí je `true` při spuštění na emulátoru služby compute, a `false` při spouštění v cloudu.
+Chcete-li vytvořit proměnnou prostředí, přidejte [proměnnou]/[RoleInstanceValue] elementu a vytvořit hodnotu XPath `/RoleEnvironment/Deployment/@emulated`. Hodnota **ComputeEmulatorRunning %** proměnná prostředí je `true` při spuštění na emulátoru služby compute, a `false` při spouštění v cloudu.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -472,12 +472,12 @@ Ukázkový výstup v **StartupLog.txt** souboru:
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Nastavte kontextu executionContext odpovídajícím způsobem pro úlohy po spuštění
 Nastavte oprávnění pro úlohy po spuštění. Někdy úlohy po spuštění musí spustit se zvýšenými oprávněními, i v případě, že role běží s normálními oprávněními.
 
-[Kontextu executionContext][úkol] atribut nastaví oprávnění na úrovni úlohy po spuštění. Pomocí `executionContext="limited"` znamená, že úloha po spuštění bude mít stejnou úroveň oprávnění roli. Pomocí `executionContext="elevated"` znamená, že úloha po spuštění má oprávnění správce, která umožní úloze po spuštění k provedení úlohy správce bez oprávnění správce pro vaši roli.
+[Kontextu executionContext][úloh] atribut nastaví oprávnění na úrovni úlohy po spuštění. Pomocí `executionContext="limited"` znamená, že úloha po spuštění bude mít stejnou úroveň oprávnění roli. Pomocí `executionContext="elevated"` znamená, že úloha po spuštění má oprávnění správce, která umožní úloze po spuštění k provedení úlohy správce bez oprávnění správce pro vaši roli.
 
 Úlohy po spuštění, který vyžaduje zvýšená oprávnění příklad je úloha po spuštění, který používá **AppCmd.exe** můžete nakonfigurovat službu IIS. **AppCmd.exe** vyžaduje `executionContext="elevated"`.
 
 ### <a name="use-the-appropriate-tasktype"></a>Použít příslušné taskType
-[TaskType][úkol] atribut určuje způsob, jakým úloha po spuštění je proveden. Existují tři hodnoty: **jednoduché**, **pozadí**, a **popředí**. Úlohy na pozadí a popředí se spouští asynchronně, a potom synchronně spuštění jednoduché úlohy postupně po jednom.
+[TaskType][úloh] atribut určuje způsob, jakým úloha po spuštění je proveden. Existují tři hodnoty: **jednoduché**, **pozadí**, a **popředí**. Úlohy na pozadí a popředí se spouští asynchronně, a potom synchronně spuštění jednoduché úlohy postupně po jednom.
 
 S **jednoduché** úlohy po spuštění, můžete nastavit pořadí, ve kterém je spuštěný úkoly podle pořadí, ve kterém jsou uvedeny úkoly v souboru ServiceDefinition.csdef. Pokud **jednoduché** skončí úkol nenulový ukončovací kód a potom postup zastaví spuštění a role se nespustí.
 

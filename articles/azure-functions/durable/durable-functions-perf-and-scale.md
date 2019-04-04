@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 3c9227a34c1b7208210b84b5b7d64ecdc8654a83
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: e6ae4cc527ae0828f530ab7f3904d2b3c64c910b
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286376"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895745"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Výkon a škálování v Durable Functions (Azure Functions)
 
@@ -56,7 +56,7 @@ Rozšíření trvalý úlohy implementuje exponenciální regresní algoritmu n�
 Dotazování Maximální zpoždění se dají konfigurovat přes `maxQueuePollingInterval` vlastnost [host.json souboru](../functions-host-json.md#durabletask). Nastavíte tuto možnost na hodnotu vyšší může vést k vyšší latence zpracování zprávy. Vyšší latence se očekává až po období nečinnosti. Vyšší náklady na úložiště z důvodu transakce větší úložiště by mohlo způsobit nastavíte tuto možnost na nižší hodnotu.
 
 > [!NOTE]
-> Při spuštění v plány Azure Functions Consumption a Premium [kontroler škálování Azure Functions](../functions-scale.md#how-the-consumption-plan-works) bude dotazovat každých 10 sekund Každá fronta ovládacího prvku a pracovní položky. Tato další cyklického dotazování je potřeba určit, kdy chcete aktivovat instancí funkce aplikací a rozhodnutí o škálování. V době psaní tohoto intervalu 10 druhá je konstantní a nedá se konfigurovat.
+> Při spuštění v plány Azure Functions Consumption a Premium [kontroler škálování Azure Functions](../functions-scale.md#how-the-consumption-and-premium-plans-work) bude dotazovat každých 10 sekund Každá fronta ovládacího prvku a pracovní položky. Tato další cyklického dotazování je potřeba určit, kdy chcete aktivovat instancí funkce aplikací a rozhodnutí o škálování. V době psaní tohoto intervalu 10 druhá je konstantní a nedá se konfigurovat.
 
 ## <a name="storage-account-selection"></a>Výběr účtu úložiště
 
@@ -244,4 +244,4 @@ Pokud nevidíte očekáváte, že čísla propustnost a procesoru a využití pa
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření první odolné funkce v jazyce C#](durable-functions-create-first-csharp.md)
+> [Vytvoření první funkce trvalý vC#](durable-functions-create-first-csharp.md)

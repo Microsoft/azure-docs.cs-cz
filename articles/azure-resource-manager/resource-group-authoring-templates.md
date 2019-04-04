@@ -12,18 +12,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5c8ec54df0d578c6d12524a4128b9cc54e6464a0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f79518b26752d581d6360a3b770e8a5cba293fd7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781897"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904929"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Princip struktury a syntaxe šablon Azure Resource Manageru
 
 Tento článek popisuje strukturu šablony Azure Resource Manageru. Představuje různé části šablony a vlastnosti, které jsou k dispozici v těchto oddílech. Šablona se skládá z JSON a z výrazů, které můžete použít k vytvoření hodnot pro vaše nasazení.
 
 Tento článek je určený pro uživatele, kteří mají některé znalosti s šablonami Resource Manageru. Poskytuje podrobné informace o struktuře a syntaxe šablony. Pokud chcete, úvod do vytváření šablony, přečtěte si téma [vytvoření první šablony Azure Resource Manageru](resource-manager-create-first-template.md).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="template-format"></a>Formát šablon
 
@@ -49,8 +52,8 @@ Ve své nejjednodušší struktury šablony obsahuje následující prvky:
 | apiProfile |Ne | Verze rozhraní API, která slouží jako kolekce verze rozhraní API pro typy prostředků. Tuto hodnotu použijte, abyste ho nemuseli znovu k určení verze rozhraní API pro každý prostředek v šabloně. Když zadáte profilu verze rozhraní API a nezadávejte verze rozhraní API pro typ prostředku, používá Resource Manageru verze rozhraní API pro příslušný typ prostředku, který je definován v profilu.<br><br>Vlastnost profilu rozhraní API je zvláště užitečné při nasazování šablony do různých prostředí, jako je Azure Stack a globální Azure. Ujistěte se, že vaše šablona automaticky používá verze, které jsou podporovány v obou prostředích pomocí profilu verze rozhraní API. Seznam aktuální profilu verze rozhraní API a prostředků verze rozhraní API, které jsou definovány v profilu najdete v tématu [profil API](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Další informace najdete v tématu [sledování verzí pomocí profilů rozhraní API](templates-cloud-consistency.md#track-versions-using-api-profiles). |
 | [parameters](#parameters) |Ne |Hodnoty, které jsou k dispozici při spuštění nasazení přizpůsobení nasazení prostředků. |
 | [Proměnné](#variables) |Ne |Hodnoty, které se používají jako fragmentů JSON v šabloně pro zjednodušení výrazy jazyka šablony. |
-| [Funkce](#functions) |Ne |Uživatelem definované funkce, které jsou k dispozici v rámci šablony. |
-| [Prostředky](#resources) |Ano |Typy prostředků, které jsou nasazené nebo aktualizovat skupinu prostředků nebo předplatného. |
+| [functions](#functions) |Ne |Uživatelem definované funkce, které jsou k dispozici v rámci šablony. |
+| [prostředky](#resources) |Ano |Typy prostředků, které jsou nasazené nebo aktualizovat skupinu prostředků nebo předplatného. |
 | [výstupy](#outputs) |Ne |Hodnoty, které se vrátí po nasazení. |
 
 Každý prvek má vlastnosti, které můžete nastavit. Tento článek popisuje části šablony podrobněji.
@@ -506,7 +509,7 @@ Můžete definovat prostředky s následující strukturou:
 | SKU | Ne | Některé prostředky povolit hodnoty, které definují skladová položka pro nasazení. Můžete například zadat typ redundance účtu úložiště. |
 | Typ | Ne | Některé prostředky povolit hodnotu, která definuje typ prostředku, který nasadíte. Můžete například zadat typ služby Cosmos DB k vytvoření. |
 | plán | Ne | Některé prostředky povolit hodnoty, které definují plán pro nasazení. Můžete například zadat image marketplace pro virtuální počítač. | 
-| zdroje |Ne |Podřízené prostředky, které jsou závislé na prostředku definuje. Zadejte pouze typy prostředků, které jsou povoleny ve schématu nadřazený prostředek. Plně kvalifikovaný typ podřízený prostředek obsahuje nadřazený typ prostředku, jako například **Microsoft.Web/sites/extensions**. Závislost na nadřazený prostředek není zahrnuta. Je nutné explicitně definovat dané závislosti. |
+| prostředky |Ne |Podřízené prostředky, které jsou závislé na prostředku definuje. Zadejte pouze typy prostředků, které jsou povoleny ve schématu nadřazený prostředek. Plně kvalifikovaný typ podřízený prostředek obsahuje nadřazený typ prostředku, jako například **Microsoft.Web/sites/extensions**. Závislost na nadřazený prostředek není zahrnuta. Je nutné explicitně definovat dané závislosti. |
 
 ### <a name="condition"></a>Podmínka
 
@@ -784,7 +787,7 @@ Nelze použít `reference` funkce v části výstupů [vnořené šablony](resou
 |---------|---------|
 |[Zkopírujte proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Vytvoří proměnné komplexní a vrací tyto hodnoty. Nenasadí žádné prostředky. |
 |[Veřejná IP adresa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Vytvoří veřejnou IP adresu a vypíše ID prostředku. |
-|[Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Obsahuje odkazy na předchozí šablonu postupem. Při vytváření nástroje pro vyrovnávání zatížení, používá ID prostředku ve výstupu. |
+|[Nástroj pro vyrovnávání zatížení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Obsahuje odkazy na předchozí šablonu postupem. Při vytváření nástroje pro vyrovnávání zatížení, používá ID prostředku ve výstupu. |
 
 
 <a id="comments" />

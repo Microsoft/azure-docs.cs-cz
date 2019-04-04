@@ -10,15 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: d055b6775c9c788ecbb3a868055fa2402a537a83
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 6b80e73dec7d0e03823a8aa2867ee91bfb68f560
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231168"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893633"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Technický průvodce do šablony řešení Cortana Intelligence pro energie prognózy poptávky
-## <a name="overview"></a>**Přehled**
+## **<a name="overview"></a>Přehled**
 Šablony řešení jsou určeny ke zrychlení procesu vytváření ukázku E2E nad Cortana Intelligence Suite. Se nasadila šablona předpisy předplatného pro nezbytné součásti Cortana Intelligence a vytváření vztahů mezi. Je také nasazení nasazuje datový kanál s ukázkovými daty generováno z aplikace data simulace. Stáhnout simulátor dat z uvedeného odkazu a nainstalujte na svém místním počítači, souboru readme.txt pokyny k používání simulátoru. Data vygenerovaná ze simulátoru hydráty datového kanálu a spuštění generování predikcí strojového učení, které lze následně vizualizovat na řídicím panelu Power BI.
 
 Šablona řešení najdete [zde](https://gallery.cortanaintelligence.com/SolutionTemplate/Demand-Forecasting-for-Energy-1)
@@ -27,13 +27,13 @@ Proces nasazení provede několik kroků pro nastavení přihlašovacích údaj�
 
 Cílem tohoto dokumentu je vysvětlit referenční architekturu a různých komponent, které jsou zřízené v rámci vašeho předplatného jako součást Tato šablona řešení. Dokument také mluví o tom, jak ukázková data, nahraďte reálná data vlastní, bude moci zobrazit přehledy/predikcí od vás získané data. Kromě toho dokument hovoří o tom, části šablony řešení, které by bylo potřeba změnit, pokud chcete přizpůsobit řešení s vlastními daty. Pokyny, jak vytvořit řídicí panel Power BI pro tuto šablonu řešení jsou k dispozici na konci.
 
-## <a name="details"></a>**Podrobnosti**
+## **<a name="details"></a>Podrobnosti**
 ![](media/cortana-analytics-technical-guide-demand-forecast/ca-topologies-energy-forecasting.png)
 
 ### <a name="architecture-explained"></a>Vysvětlení architektury
 Po nasazení řešení různé služby Azure v sadě Cortana Analytics Suite aktivují se (to znamená, Centrum událostí, Stream Analytics, HDInsight, Data Factory, Machine Learning, *atd*). Diagram architektury ukazuje na vysoké úrovni, jak Prognózování poptávky po energii šablona řešení je vytvořit od začátku do konce. Po kliknutí na diagram šablony řešení vytvořené s nasazením řešení můžete prozkoumat tyto služby. Následující části popisují jednotlivé komponenty.
 
-## <a name="data-source-and-ingestion"></a>**Zdroj dat a přijímání**
+## **<a name="data-source-and-ingestion"></a>Zdroj dat a přijímání**
 ### <a name="synthetic-data-source"></a>Zdroj dat syntetického
 Pro tuto šablonu je použitý zdroj dat generovaných desktopová aplikace, stáhněte a spusťte místně po úspěšném nasazení. Pokyny ke stažení a instalace této aplikace na panelu Vlastnosti, když vyberete první uzel s názvem simulátor dat prognózy energie v diagramu šablonu řešení pro vás. Tato aplikace se předají [Azure Event Hubs](#azure-event-hub) služba s datové body nebo události, které se používají ve zbytku toku řešení.
 
@@ -42,7 +42,7 @@ Generování aplikace události naplní Azure Event Hubs pouze tehdy, když je s
 ### <a name="azure-event-hub"></a>Centrum událostí Azure
 [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) je služba příjemce vstup syntetické zdroj dat je popsáno.
 
-## <a name="data-preparation-and-analysis"></a>**Příprava dat a analýza**
+## **<a name="data-preparation-and-analysis"></a>Příprava dat a analýza**
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) služby slouží k poskytování téměř v reálném čase analýzy vstupního datového proudu z [Azure Event Hubs](#azure-event-hub) služby a publikovat výsledky do [Power BI](https://powerbi.microsoft.com)řídicího panelu a také archivuje všechny nezpracované příchozí události do [služby Azure Storage](https://azure.microsoft.com/services/storage/) service pro pozdější zpracování [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) služby.
 
@@ -52,15 +52,15 @@ Služba Azure HDInsight se používá ke spouštění [Hive](https://blogs.msdn.
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) service (orchestrovaná službou Azure Data Factory) k Prognózování hladiny v budoucí spotřebu energie v konkrétní oblasti na základě přijatých vstupů.
 
-## <a name="data-publishing"></a>**Publikování dat**
+## **<a name="data-publishing"></a>Publikování dat**
 ### <a name="azure-sql-database-service"></a>Služba Azure SQL Database
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) služby se používá k ukládání (spravované službou Azure Data Factory) předpovědí přijaté službou Azure Machine Learning, která se využívá v [Power BI](https://powerbi.microsoft.com) řídicího panelu.
 
-## <a name="data-consumption"></a>**Využití dat**
+## **<a name="data-consumption"></a>Využití dat**
 ### <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com) služby se používá k zobrazení řídicího panelu, který obsahuje agregace poskytované [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) služby, jakož i vyžádání prognózy výsledky uložené v [Azure SQL Databáze](https://azure.microsoft.com/services/sql-database/) , které byly vytvořeny pomocí [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) služby. Pokyny, jak vytvořit řídicí panel Power BI pro tuto šablonu řešení najdete v následující části.
 
-## <a name="how-to-bring-in-your-own-data"></a>**Jak umožňuje přinést si vlastní data**
+## **<a name="how-to-bring-in-your-own-data"></a>Jak umožňuje přinést si vlastní data**
 Tato část popisuje, jak přineste si vlastní data do Azure a oblasti, které by vyžadovaly změny dat, než převedete do této architektury.
 
 Není pravděpodobné, že všechny datové sady, vy přivedete odpovídají datové sady použité pro tuto šablonu řešení. Vysvětlení dat a požadavky jsou zásadní v tom, jak změnit tato šablona fungovala s vlastními daty. Pokud jsou nové službě Azure Machine Learning, můžete získat Úvod k němu pomocí příkladu v [vytvoření prvního experimentu](machine-learning/studio/create-experiment.md).
@@ -106,40 +106,40 @@ Pět kanály tento objekt pro vytváření obsahovat [Hive](https://blogs.msdn.c
 
 Podobně jako [Azure Stream Analytics](#azure-stream-analytics-1) dotazy, [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skripty mají implicitní znalosti o příchozích formát dat, tyto dotazy by bylo potřeba změnit na základě formátu data a [konstruování](machine-learning/team-data-science-process/create-features.md) požadavky.
 
-#### <a name="aggregatedemanddatato1hrpipeline"></a>*AggregateDemandDataTo1HrPipeline*
-To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu – [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) pomocí aktivity [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , který běží [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript data o poptávce agregační datovým proudem v každých 10 sekund v úrovni transformovny každou hodinu oblasti úroveň a vložit [služby Azure Storage](https://azure.microsoft.com/services/storage/) prostřednictvím úlohy Azure Stream Analytics.
+#### *<a name="aggregatedemanddatato1hrpipeline"></a>AggregateDemandDataTo1HrPipeline*
+To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu – [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) pomocí aktivity [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) , který běží [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript data o poptávce agregační datovým proudem v každých 10 sekund v úrovni transformovny každou hodinu oblasti úroveň a vložit [služby Azure Storage](https://azure.microsoft.com/services/storage/) prostřednictvím úlohy Azure Stream Analytics.
 
 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptu pro tento úkol dělení je ***AggregateDemandRegion1Hr.hql***
 
-#### <a name="loadhistorydemanddatapipeline"></a>*LoadHistoryDemandDataPipeline*
+#### *<a name="loadhistorydemanddatapipeline"></a>LoadHistoryDemandDataPipeline*
 To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje dvě aktivity:
 
-* [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) pomocí aktivity [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , která spouští skript Hive k agregaci hodinové data o poptávce historie transformovny úrovni každou hodinu úrovni oblasti a put ve službě Azure Storage během Azure Stream Analýza úloh
-* [Kopírování](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivity, který přesouvá agregovaná data z Azure Storage blob do Azure SQL Database, které bylo zřízené jako součást instalace šablony řešení.
+* [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) pomocí aktivity [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) , která spouští skript Hive k agregaci hodinové data o poptávce historie transformovny úrovni každou hodinu úrovni oblasti a put ve službě Azure Storage během Azure Stream Analýza úloh
+* [Kopírování](/previous-versions/azure/dn835035(v=azure.100)) aktivity, který přesouvá agregovaná data z Azure Storage blob do Azure SQL Database, které bylo zřízené jako součást instalace šablony řešení.
 
 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptu pro tento úkol je ***AggregateDemandHistoryRegion.hql***.
 
-#### <a name="mlscoringregionxpipeline"></a>*MLScoringRegionXPipeline*
+#### *<a name="mlscoringregionxpipeline"></a>MLScoringRegionXPipeline*
 Tyto [kanály](data-factory/concepts-pipelines-activities.md) obsahovat několik aktivit a jejichž konečný výsledek je Vyhodnocená předpovědí z experimentu Azure Machine Learning spojené s touto šablonou řešení. Jsou téměř shodné s tím rozdílem, každý z nich pouze zpracovává jiné oblasti, které se provádí různé RegionID předaný kanálu ADF a skript hive pro každou oblast.  
 Aktivity obsažené v tomto kanálu jsou:
 
-* [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) pomocí aktivity [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , která spouští skript Hive k provádění agregací a konstruování nezbytné pro Azure Machine Learning experimentu. Skriptů Hive pro tuto úlohu jsou příslušné ***PrepareMLInputRegionX.hql***.
-* [Kopírování](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivity, který přesouvá výsledky z [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) aktivitu pro jeden objekt blob Azure Storage, který může být přístupný [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) aktivity.
-* [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) aktivitu, která volá experiment Azure Machine Learning, což vede k výsledky se umístit do jednoho objektu blob Azure Storage.
+* [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) pomocí aktivity [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) , která spouští skript Hive k provádění agregací a konstruování nezbytné pro Azure Machine Learning experimentu. Skriptů Hive pro tuto úlohu jsou příslušné ***PrepareMLInputRegionX.hql***.
+* [Kopírování](/previous-versions/azure/dn835035(v=azure.100)) aktivity, který přesouvá výsledky z [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) aktivitu pro jeden objekt blob Azure Storage, který může být přístupný [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) aktivity.
+* [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) aktivitu, která volá experiment Azure Machine Learning, což vede k výsledky se umístit do jednoho objektu blob Azure Storage.
 
-#### <a name="copyscoredresultregionxpipeline"></a>*CopyScoredResultRegionXPipeline*
-To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu – [kopírování](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivity, který přesouvá výsledky experimentu služby Azure Machine Learning z příslušné ***MLScoringRegionXPipeline***do Azure SQL Database, které bylo zřízené jako součást instalace šablony řešení.
+#### *<a name="copyscoredresultregionxpipeline"></a>CopyScoredResultRegionXPipeline*
+To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu – [kopírování](/previous-versions/azure/dn835035(v=azure.100)) aktivity, který přesouvá výsledky experimentu služby Azure Machine Learning z příslušné ***MLScoringRegionXPipeline***do Azure SQL Database, které bylo zřízené jako součást instalace šablony řešení.
 
-#### <a name="copyaggdemandpipeline"></a>*CopyAggDemandPipeline*
-To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu – [kopírování](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivitu, která se provádí přesun dat agregované probíhající vyžádání z ***LoadHistoryDemandDataPipeline*** do Azure SQL Databáze, které bylo zřízené jako součást instalace šablony řešení.
+#### *<a name="copyaggdemandpipeline"></a>CopyAggDemandPipeline*
+To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu – [kopírování](/previous-versions/azure/dn835035(v=azure.100)) aktivitu, která se provádí přesun dat agregované probíhající vyžádání z ***LoadHistoryDemandDataPipeline*** do Azure SQL Databáze, které bylo zřízené jako součást instalace šablony řešení.
 
-#### <a name="copyregiondatapipeline-copysubstationdatapipeline-copytopologydatapipeline"></a>*CopyTopologyDataPipeline CopyRegionDataPipeline CopySubstationDataPipeline,*
-To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu – [kopírování](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivitu, která se provádí přesun dat odkaz na oblast/transformovny/Topologygeo, které se nahrají do služby Azure Storage blob jako součást šablony řešení instalace do Azure SQL Database, které bylo zřízené jako součást instalace šablony řešení.
+#### *<a name="copyregiondatapipeline-copysubstationdatapipeline-copytopologydatapipeline"></a>CopyTopologyDataPipeline CopyRegionDataPipeline CopySubstationDataPipeline,*
+To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu – [kopírování](/previous-versions/azure/dn835035(v=azure.100)) aktivitu, která se provádí přesun dat odkaz na oblast/transformovny/Topologygeo, které se nahrají do služby Azure Storage blob jako součást šablony řešení instalace do Azure SQL Database, které bylo zřízené jako součást instalace šablony řešení.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentovat použité pro tuto šablonu řešení poskytuje předpověď poptávky oblasti. Experiment je specifická pro datové sady spotřebované a proto vyžaduje změny nebo specifické pro data, která je uvedena v nahrazení.
 
-## <a name="monitor-progress"></a>**Sledování průběhu**
+## **<a name="monitor-progress"></a>Sledování průběhu**
 Po spuštění generátor dat kanálu začne získat HYDRATOVANÝ a různých komponent řešení start aktivace do akce následující příkazy vydané službou Data Factory. Existují dva způsoby, jak můžete monitorovat kanál.
 
 1. Zkontrolujte data z úložiště objektů Blob v Azure.
@@ -154,7 +154,7 @@ Po spuštění generátor dat kanálu začne získat HYDRATOVANÝ a různých ko
 
     Můžete nastavit řídicí panel Power BI kritickou cestu k monitorování nezpracované příchozí data. Postupujte podle pokynů v části "Řídicí panel Power BI".
 
-## <a name="power-bi-dashboard"></a>**Řídicí panel Power BI**
+## **<a name="power-bi-dashboard"></a>Řídicí panel Power BI**
 ### <a name="overview"></a>Přehled
 Tato část popisuje, jak nastavit řídicí panel Power BI pro vizualizace dat v reálném čase ze služby Azure stream analytics (horká cesta), stejně jako prognózy výsledky z aplikace Azure machine learning (studená cesta).
 
@@ -224,14 +224,14 @@ V trase datového kanálu základní cílem je získat prognózu poptávky každ
    * Rozbalte **naplánovat aktualizaci** oddílu. Zapněte "zachovávat aktuálnost dat".
    * Naplánujte aktualizaci na základě vašich potřeb. Další informace najdete v tématu [aktualizace dat v Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/).
 
-## <a name="how-to-delete-your-solution"></a>**Jak odstranit řešení**
+## **<a name="how-to-delete-your-solution"></a>Jak odstranit řešení**
 Ujistěte se zastavit generátor dat, když aktivně nepoužíváte řešení jako provoz generátoru dat s sebou nese náklady vyšší náklady. Pokud ji nepoužíváte, odstraňte řešení. Odstraňuje se řešení odstraní všechny součásti, které jsou zřízené ve vašem předplatném při nasazení řešení. Odstranit řešení kliknutím na název vašeho řešení na levém panelu šablony řešení a klikněte na odstranit.
 
-## <a name="cost-estimation-tools"></a>**Nástroje pro odhad nákladů**
+## **<a name="cost-estimation-tools"></a>Nástroje pro odhad nákladů**
 Následující dva nástroje jsou k dispozici vám pomůže lépe pochopit celkové náklady, které jsou součástí běží Prognózování poptávky po energii šablonu řešení ve vašem předplatném:
 
 * [Microsoft Azure Cost Estimator Tool (online)](https://azure.microsoft.com/pricing/calculator/)
 * [Microsoft Azure Cost Estimator nástroj (desktop)](https://www.microsoft.com/download/details.aspx?id=43376)
 
-## <a name="acknowledgements"></a>**Potvrzení**
+## **<a name="acknowledgements"></a>Potvrzení**
 Tento článek je autorem je mezi odborníky přes data Yijing Svoboda a softwarový inženýr Qiu Min v Microsoftu.

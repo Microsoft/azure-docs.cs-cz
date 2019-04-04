@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cf1d36458bab867e35fa23ae702a6f6f45d8dc60
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: b065b611c923c4a28dc79c390ffb56ed97b316fd
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620576"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918446"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Spuštění runbooku ve službě Azure Automation
 
@@ -22,10 +22,10 @@ Následující tabulka vám pomůže určit metodu pro spuštění sady runbook 
 
 | **Metoda** | **Vlastnosti** |
 | --- | --- |
-| [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>Nejjednodušší způsob s interaktivní uživatelské rozhraní.<br> <li>Zadejte hodnoty parametrů jednoduchého formuláře.<br> <li>Jednoduše sledujte stav úlohy.<br> <li>Přístup k ověření pomocí Azure v. |
+| [portál Azure](#start-a-runbook-with-the-azure-portal) |<li>Nejjednodušší způsob s interaktivní uživatelské rozhraní.<br> <li>Zadejte hodnoty parametrů jednoduchého formuláře.<br> <li>Jednoduše sledujte stav úlohy.<br> <li>Přístup k ověření pomocí Azure v. |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Volání z příkazového řádku pomocí rutin prostředí Windows PowerShell.<br> <li>Mohou být součástí automatizované řešení s více kroky.<br> <li>Žádost se ověřuje pomocí certifikátů nebo OAuth uživatele nebo instančního objektu instančního objektu.<br> <li>Zadejte hodnoty parametrů jednoduché i složité.<br> <li>Sledovat stav úlohy.<br> <li>Klient potřebné k podpoře rutin prostředí PowerShell. |
 | [Azure Automation API](/rest/api/automation/) |<li>Nejflexibilnější, ale také většina komplexní.<br> <li>Volání z žádný vlastní kód, který umí vytvářet požadavky HTTP.<br> <li>Žádost o ověření pomocí certifikátu nebo Oauth uživatele nebo instančního objektu instančního objektu.<br> <li>Zadejte hodnoty parametrů jednoduché i složité. *Pokud voláte runbooku v Pythonu pomocí rozhraní API, se musí serializovat datovou část JSON.*<br> <li>Sledovat stav úlohy. |
-| [Webhooks](automation-webhooks.md) |<li>Spuštění runbooku z jednoho požadavku HTTP.<br> <li>Ověření pomocí tokenu zabezpečení v adrese URL.<br> <li>Klienta nejde přepsat hodnoty parametrů zadali při vytváření webhooku. Sada Runbook může definovat jeden parametr, který je naplněn podrobnosti požadavku HTTP.<br> <li>Žádná možnost sledovat stav úlohy prostřednictvím adresy URL webhooku. |
+| [Webhooky](automation-webhooks.md) |<li>Spuštění runbooku z jednoho požadavku HTTP.<br> <li>Ověření pomocí tokenu zabezpečení v adrese URL.<br> <li>Klienta nejde přepsat hodnoty parametrů zadali při vytváření webhooku. Sada Runbook může definovat jeden parametr, který je naplněn podrobnosti požadavku HTTP.<br> <li>Žádná možnost sledovat stav úlohy prostřednictvím adresy URL webhooku. |
 | [Reagovat na upozornění Azure](../log-analytics/log-analytics-alerts.md) |<li>Spusťte sadu runbook v reakci na upozornění Azure.<br> <li>Konfigurace webhooku pro sadu runbook a odkaz na upozornění.<br> <li>Ověření pomocí tokenu zabezpečení v adrese URL. |
 | [Plán](automation-schedules.md) |<li>Automaticky spusťte runbook na hodinové, denní, týdenní nebo měsíční plán.<br> <li>Manipulace s plánu prostřednictvím webu Azure portal, rutin prostředí PowerShell nebo rozhraní API služby Azure.<br> <li>Zadejte hodnoty parametrů pro použití s plánem. |
 | [Z jiného Runbooku](automation-child-runbooks.md) |<li>Pomocí sady runbook jako aktivita v jiné sady runbook.<br> <li>Užitečné pro funkce, které používá více sad runbook.<br> <li>Zadejte hodnoty parametrů pro podřízené sady runbook a výstup použít v nadřazené sady runbook. |
@@ -84,7 +84,7 @@ Webové služby Azure Automation nabízí zvláštní funkce pro parametry pomoc
 
 ### <a name="named-values"></a>Pojmenované hodnoty
 
-Pokud je parametr datového typu [object], pak můžete pomocí následujícího formátu JSON do něj poslat seznam pojmenovaných hodnot: *{Name1: "Hodnota1", Name2: "Hodnota2", nazev3: 'Hodnota3'}*. Jednoduché typy musejí být tyto hodnoty. Runbook obdrží parametr jako [PSCustomObject](https://msdn.microsoft.com/library/system.management.automation.pscustomobject%28v=vs.85%29.aspx) s vlastnostmi, které odpovídají každé pojmenované hodnotě.
+Pokud je parametr datového typu [object], pak můžete pomocí následujícího formátu JSON do něj poslat seznam pojmenovaných hodnot: *{Name1: "Hodnota1", Name2: "Hodnota2", nazev3: 'Hodnota3'}*. Jednoduché typy musejí být tyto hodnoty. Runbook obdrží parametr jako [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) s vlastnostmi, které odpovídají každé pojmenované hodnotě.
 
 Vezměte v úvahu následující testovací runbook, který přijme parametr s názvem uživatele.
 

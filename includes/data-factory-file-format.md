@@ -4,21 +4,21 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 9b3261679b64e054bb8f750ad99983661a5b6035
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 89d5483347f93cd3b57a02ced19b1e8b099a5ab0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56212988"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919188"
 ---
 ## <a name="specifying-formats"></a>Zadávání formátů
 Azure Data Factory podporuje následující typy formátů:
 
-* [Formát Text](#specifying-textformat)
+* [Formát textu](#specifying-textformat)
 * [Formát JSON](#specifying-jsonformat)
 * [Formát Avro](#specifying-avroformat)
 * [Formát ORC](#specifying-orcformat)
-* [Formát Parquet](#specifying-parquetformat)
+* [Formát parquet](#specifying-parquetformat)
 
 ### <a name="specifying-textformat"></a>Zadávání formátu TextFormat
 Pokud chcete analyzovat textové soubory nebo zapisovat data v textovém formátu, nastavte vlastnost `format` `type` na hodnotu **TextFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu TextFormat](#textformat-example).
@@ -30,7 +30,7 @@ Pokud chcete analyzovat textové soubory nebo zapisovat data v textovém formát
 | escapeChar |Speciální znak, který slouží k potlačení oddělovače sloupců v obsahu vstupního souboru. <br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud používáte čárku (', ') jako oddělovač sloupců ale chcete znak čárky v textu (Příklad: "Hello, world"), můžete definovat jako řídicí znak "$" a použijte řetězec "Hello$, world" ve zdroji. |Ne |
 | quoteChar |Znak, který slouží k uvození textového řetězce. Oddělovače sloupců a řádků uvnitř znaků uvozovek budou považované za součást hodnoty příslušného řetězce. Tato vlastnost se vztahuje na vstupní i výstupní datové sady.<br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud jako oddělovač sloupců používáte čárku (,), ale chcete znak čárky použít v textu (příklad: <Hello, world>), můžete jako znak uvozovek definovat " (dvojité uvozovky) a použít ve zdroji řetězec "Hello$, world". |Ne |
 | nullValue |Jeden nebo několik znaků, které se používají jako reprezentace hodnoty Null. |Jeden nebo několik znaků. **Výchozí** hodnoty jsou **\N a NULL** pro čtení a **\N** pro zápis. |Ne |
-| encodingName |Zadejte název kódování. |Platný název kódování. Další informace najdete v tématu [Vlastnost Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Příklad: windows-1250 nebo shift_jis. **Výchozí** hodnota je **UTF-8**. |Ne |
+| encodingName |Zadejte název kódování. |Platný název kódování. Další informace najdete v tématu [Vlastnost Encoding.EncodingName](/dotnet/api/system.text.encoding). Příklad: windows-1250 nebo shift_jis. **Výchozí** hodnota je **UTF-8**. |Ne |
 | firstRowAsHeader |Určuje, jestli se má první řádek považovat za záhlaví. U vstupní datové sady Data Factory načítá první řádek jako záhlaví. U výstupní datové sady Data Factory zapisuje první řádek jako záhlaví. <br/><br/>Vzorové scénáře najdete v tématu [Scénáře použití `firstRowAsHeader` a `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |True<br/>**False (výchozí)** |Ne |
 | skipLineCount |Určuje počet řádků, které se při čtení dat ze vstupních souborů mají přeskočit. Pokud je zadaný parametr skipLineCount i firstRowAsHeader, nejdřív se přeskočí příslušný počet řádků a potom se ze vstupního souboru načtou informace záhlaví. <br/><br/>Vzorové scénáře najdete v tématu [Scénáře použití `firstRowAsHeader` a `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Integer |Ne |
 | treatEmptyAsNull |Určuje, jestli se při čtení dat ze vstupního souboru má prázdný řetězec nebo řetězec s hodnotou null považovat za hodnotu null. |**True (výchozí)**<br/>False |Ne |
@@ -78,7 +78,7 @@ Pokud chcete analyzovat soubory JSON nebo zapisovat data ve formátu JSON, nasta
 | filePattern |Určete vzor dat uložených v jednotlivých souborech JSON. Povolené hodnoty jsou **setOfObjects** a **arrayOfObjects**. **Výchozí hodnota** je **setOfObjects**. Podrobné informace o těchto vzorech najdete v tématu [Vzory souborů JSON](#json-file-patterns). |Ne |
 | jsonNodeReference | Pokud chcete iterovat a extrahovat data z objektů uvnitř pole se stejným vzorem, zadejte pro toto pole cestu JSON. Tato vlastnost se podporuje jenom pro kopírování dat ze souborů JSON. | Ne |
 | jsonPathDefinition | Zadejte výraz cesty JSON pro každé mapování sloupců s vlastním názvem sloupce (s počátečním malým písmenem). Tato vlastnost se podporuje jenom pro kopírování dat ze souborů JSON. Můžete extrahovat data z objektu nebo pole. <br/><br/> U polí v kořenovém objektu začtěte s kořenem $, u polí uvnitř pole vybraného pomocí vlastnosti `jsonNodeReference` začněte elementem pole. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example). | Ne |
-| encodingName |Zadejte název kódování. Seznam platných názvů kódování najdete v tématu: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) vlastnost. Příklad: windows-1250 nebo shift_jis. **Výchozí** hodnota je: **UTF-8**. |Ne |
+| encodingName |Zadejte název kódování. Seznam platných názvů kódování najdete v tématu: [Encoding.EncodingName](/dotnet/api/system.text.encoding) vlastnost. Příklad: windows-1250 nebo shift_jis. **Výchozí** hodnota je: **UTF-8**. |Ne |
 | nestingSeparator |Znak, který se používá k oddělení úrovní vnoření. Výchozí hodnota je tečka (.). |Ne |
 
 #### <a name="json-file-patterns"></a>Vzory souborů JSON
@@ -178,7 +178,7 @@ Aktivita kopírování může analyzovat tyto vzory souborů JSON:
 
 Dál najdete dva typy ukázek kopírování dat z souborů JSON a obecné poznámky:
 
-**Ukázka 1: Extrakce dat z objektu a pole**
+**Příklad 1: extrahování dat z objektu a pole**
 
 V této ukázce očekáváte, že jeden kořenový objekt JSON se mapuje na jeden záznam v tabulkovém výsledku. Pokud máte soubor JSON s následujícím obsahem:  
 
@@ -213,8 +213,8 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 
 Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
-- Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Najdete v článku určení definice struktury pro obdélníkové datové sady část pro další podrobnosti.
-- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. Chcete-li kopírovat data z pole, můžete použít **pole [x] .vlastnost** extrahovat hodnotu dané vlastnosti z x-tého objektu, nebo můžete použít **pole [*] .vlastnost** k nalezení hodnoty z libovolného objektu, který obsahuje Vlastnost.
+- `structure` oddíl definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Najdete v článku určení definice struktury pro obdélníkové datové sady část pro další podrobnosti.
+- `jsonPathDefinition` Určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data z. Chcete-li kopírovat data z pole, můžete použít **pole [x] .vlastnost** extrahovat hodnotu dané vlastnosti z x-tého objektu, nebo můžete použít **pole [*] .vlastnost** k nalezení hodnoty z libovolného objektu, který obsahuje Vlastnost.
 
 ```json
 "properties": {
@@ -251,7 +251,7 @@ Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsob
 }
 ```
 
-**Ukázka 2: Křížové použití více objektů se stejným vzorkem z pole**
+**Příklad 2: křížové použití více objektů se stejným vzorkem z pole**
 
 V této ukázce očekáváte, že transformujete jeden kořenový objekt JSON do několika záznamů v tabulkovém výsledku. Pokud máte soubor JSON s následujícím obsahem:  
 
@@ -286,9 +286,9 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 
 Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
-- Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Najdete v článku určení definice struktury pro obdélníkové datové sady část pro další podrobnosti.
-- `jsonNodeReference` určuje, že se budou iterovat a extrahovat data z objektů se stejným vzorem v rámci **pole** orderlines.
-- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. V tomto příkladu jsou položky ordernumber, orderdate a city v kořenovém objektu s cestou JSON, která začíná řetězcem „$.“. Oproti tomu order_pd a order_price jsou definované pomocí cesty odvozené z elementu pole bez řetězce „$.“.
+- `structure` oddíl definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Najdete v článku určení definice struktury pro obdélníkové datové sady část pro další podrobnosti.
+- `jsonNodeReference` Označuje, iterovat a extrahovat data z objektů se stejným vzorem v rámci **pole** orderlines.
+- `jsonPathDefinition` Určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data z. V tomto příkladu jsou položky ordernumber, orderdate a city v kořenovém objektu s cestou JSON, která začíná řetězcem „$.“. Oproti tomu order_pd a order_price jsou definované pomocí cesty odvozené z elementu pole bez řetězce „$.“.
 
 ```json
 "properties": {

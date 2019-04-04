@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: diberry
-ms.openlocfilehash: d7547ecf387e070efe788ba5f8582076388f422a
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 9a6f9d54c52f36b8f709eacaf25d3fea31dbe516
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984199"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895811"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Osvědčené postupy pro vytváření aplikace language understanding pomocí služeb Cognitive Services
 Proces tvorby aplikace používejte k sestavení aplikace LUIS. 
@@ -122,12 +122,12 @@ Další informace najdete tady:
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Využijte funkci navrhnout pro aktivní učení
 
-Použití [aktivně učit](luis-how-to-review-endoint-utt.md)společnosti **zkontrolujte koncový bod projevy** v pravidelných intervalech, nepřidávat další příklad projevy na záměry. Protože aplikace neustále přijímá projevy koncový bod, je tento seznam rozrůstá a změna.
+Použití [aktivně učit](luis-how-to-review-endpoint-utterances.md)společnosti **zkontrolujte koncový bod projevy** v pravidelných intervalech, nepřidávat další příklad projevy na záměry. Protože aplikace neustále přijímá projevy koncový bod, je tento seznam rozrůstá a změna.
 
 Další informace najdete tady:
 * Koncept: [Koncepty pro povolení aktivně učit kontrolou projevy koncového bodu](luis-concept-review-endpoint-utterances.md)
 * Kurz: [Kurz: Oprava jisti predikcí kontrolou projevy koncového bodu](luis-tutorial-review-endpoint-utterances.md)
-* Postupy: [Kontrola projevy koncový bod portálu služby LUIS](luis-how-to-review-endoint-utt.md)
+* Postupy: [Kontrola projevy koncový bod portálu služby LUIS](luis-how-to-review-endpoint-utterances.md)
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Monitorování výkonu vaší aplikace
 

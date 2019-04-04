@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3e217e0e3367c6e1200567f589749fec9e626da8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5f9cd5edfb360da507320306314e67ac61503132
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817452"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916831"
 ---
 # <a name="managing-azure-automation-data"></a>Správa dat Azure Automation
 Tento článek obsahuje více témat pro správu prostředí Azure Automation.
@@ -45,17 +45,17 @@ Nicméně pokud je potřeba data uchovávat po delší dobu, můžete dál runbo
 Když odstraníte účet automation v Microsoft Azure, jsou odstraněny všechny objekty v účtu včetně runbooky, moduly, konfigurace, nastavení, úlohy a prostředky. Objekty nelze obnovit, po odstranění účtu.  Před odstraněním zálohovat obsah vašeho účtu automation můžete použít následující informace. 
 
 ### <a name="runbooks"></a>Runbooky
-Vaše sady runbook můžete exportovat do souborů skriptu pomocí portálu Azure nebo [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) rutiny v prostředí Windows PowerShell.  Tyto soubory skriptu můžete importovat do jiného účtu automation, jak je popsáno v [vytvoření nebo import Runbooku](https://msdn.microsoft.com/library/dn643637.aspx).
+Vaše sady runbook můžete exportovat do souborů skriptu pomocí portálu Azure nebo [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) rutiny v prostředí Windows PowerShell.  Tyto soubory skriptu můžete importovat do jiného účtu automation, jak je popsáno v [vytvoření nebo import Runbooku](/previous-versions/azure/dn643637(v=azure.100)).
 
 ### <a name="integration-modules"></a>Integrační moduly
 Integrační moduly nelze exportovat ze služby Azure Automation.  Ujistěte se, že jsou k dispozici mimo účet automation.
 
 ### <a name="assets"></a>Prostředky
-Nejde exportovat [prostředky](https://msdn.microsoft.com/library/dn939988.aspx) ze služby Azure Automation.  Pomocí webu Azure portal, musíte zaznamenat podrobnosti proměnné, přihlašovací údaje, certifikátů, připojení a plány.  Potom musíte ručně vytvořit všechny prostředky, které jsou používány sady runbook, který importujete do jiné služby automation.
+Nejde exportovat [prostředky](/previous-versions/azure/dn939988(v=azure.100)) ze služby Azure Automation.  Pomocí webu Azure portal, musíte zaznamenat podrobnosti proměnné, přihlašovací údaje, certifikátů, připojení a plány.  Potom musíte ručně vytvořit všechny prostředky, které jsou používány sady runbook, který importujete do jiné služby automation.
 
 Můžete použít [rutiny Azure](https://docs.microsoft.com/powershell/module/azurerm.automation#automation) načíst podrobnosti o nešifrované prostředky a buď je uložit pro pozdější použití nebo vytvoření ekvivalentní prostředky v jiném účtu automation.
 
-Nelze načíst hodnotu zašifrovaných proměnných nebo pole pro heslo přihlašovacích údajů pomocí rutin.  Pokud si nejste jisti, tyto hodnoty, pak je můžete vyvolat z runbooku pomocí [Get-AutomationVariable](https://msdn.microsoft.com/library/dn940012.aspx) a [Get-AutomationPSCredential](https://msdn.microsoft.com/library/dn940015.aspx) aktivity.
+Nelze načíst hodnotu zašifrovaných proměnných nebo pole pro heslo přihlašovacích údajů pomocí rutin.  Pokud si nejste jisti, tyto hodnoty, pak je můžete vyvolat z runbooku pomocí [Get-AutomationVariable](/previous-versions/azure/dn940012(v=azure.100)) a [Get-AutomationPSCredential](/previous-versions/azure/dn940015(v=azure.100)) aktivity.
 
 Certifikáty nelze exportovat ze služby Azure Automation.  Ujistěte se, že všechny certifikáty jsou k dispozici mimo Azure.
 

@@ -12,12 +12,12 @@ ms.date: 03/12/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29f2de6eb0171e5e1c792e8860a56f014dad501f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: fd494ffe6bc48495c882ed84062503bdc00ae9f4
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314820"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917834"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidat místní aplikace pro vzdálený přístup prostřednictvím Proxy aplikací v Azure Active Directory
 
@@ -49,7 +49,7 @@ Pro zajištění vysoké dostupnosti v produkčním prostředí doporučujeme m�
 
 1. Fyzicky najděte server konektoru blízko aplikačních serverů za účelem optimalizace výkonu mezi konektoru a aplikací. Další informace najdete v tématu [aspekty topologie sítě](application-proxy-network-topology.md).
 
-2. Server konektoru a webové servery aplikace by měly patřit do stejné domény služby Active Directory. Servery ve stejné doméně, je požadavek pro jednotné přihlašování (SSO) pomocí integrovaného ověřování Windows (IWA) a Kerberos omezené delegování (KCD). Pokud jsou server konektoru a serverů webových aplikací v různých doménách služby Active Directory, budete muset použít pro jednotné přihlašování založené na prostředcích delegování. Další informace najdete v tématu [KCD pro jednotné přihlašování s Proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md).
+2. Server konektoru a webové servery aplikace by měly patřit do stejné domény služby Active Directory nebo span důvěryhodné domény. Mají servery ve stejné doméně nebo důvěřující domény představuje požadavek pro jednotné přihlašování (SSO) pomocí integrovaného ověřování Windows (IWA) a Kerberos omezené delegování (KCD). Pokud jsou server konektoru a serverů webových aplikací v různých doménách služby Active Directory, budete muset použít pro jednotné přihlašování založené na prostředcích delegování. Další informace najdete v tématu [KCD pro jednotné přihlašování s Proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md).
 
 #### <a name="software-requirements"></a>Požadavky na software
 
@@ -176,16 +176,16 @@ Teď, když jste připravit vaše prostředí a nainstalujete konektor, jste př
     | **Interní adresa URL** | Adresa URL pro přístup k aplikaci uvnitř vaší privátní sítě. Můžete zadat konkrétní cestu na beck-endovém serveru, kterou chcete publikovat, zatímco zbytek serveru publikovaný nebude. Tímto způsobem můžete publikovat různé stránky na stejném serveru jako různé aplikace a použít každý z nich vlastní název a pravidla přístupu.<br><br>Pokud publikujete cestu, ujistěte se, že zahrnuje všechny nezbytné obrázky, skripty a šablony stylů pro vaši aplikaci. Například, pokud je vaše aplikace v protokolu https:\//yourapp/aplikace a použití Image nachází v protokolu https:\//yourapp/médium a pak by měli zveřejnit informace protokolu https:\//yourapp/ jako cestu. Toto interní adresa URL nemusí být na úvodní stránku, kterou uživatelé uvidí. Další informace najdete v tématu [nastavit vlastní domovskou stránku pro publikované aplikace](application-proxy-configure-custom-home-page.md). |
     | **Externí adresa URL** | Adresa pro uživatele pro přístup k aplikaci mimo vaši síť. Pokud už nechcete používat výchozí doménu Proxy aplikací, přečtěte si informace o [vlastních domén v Azure AD Application Proxy](application-proxy-configure-custom-domain.md).|
     | **Předběžné ověření** | Jak Proxy aplikace ověřuje uživatele, než jim poskytne přístup k aplikaci.<br><br>**Azure Active Directory** – Proxy aplikace přesměruje uživatele na stránku přihlášení Azure AD, která ověří jejich oprávnění k adresáři a aplikaci. Doporučujeme tuto možnost jako výchozí, takže můžete využít výhod funkcí zabezpečení Azure AD, jako je podmíněný přístup a ověřování službou Multi-Factor Authentication. **Azure Active Directory** je vyžadován pro monitorování aplikací pomocí Microsoft Cloud Application Security.<br><br>**Průchod** – uživatelé nemají k ověřování na základě Azure Active Directory pro přístup k aplikaci. Stále můžete nastavit požadavky na ověřování na back-endu. |
-    | **Skupina konektorů.** | Konektory zpracování vzdálený přístup do vaší aplikace a skupiny konektorů můžete uspořádat konektory a aplikace podle oblasti, sítě nebo účel. Pokud nemáte žádné skupiny konektorů nemáte ještě vytvořený, vaše aplikace se přiřadí **výchozí**.<br><br>Pokud vaše aplikace používá objekty Websocket pro připojení, všechny konektory ve skupině musí být ve verzi 1.5.612.0 nebo novější.|
+    | **Skupina konektorů** | Konektory zpracování vzdálený přístup do vaší aplikace a skupiny konektorů můžete uspořádat konektory a aplikace podle oblasti, sítě nebo účel. Pokud nemáte žádné skupiny konektorů nemáte ještě vytvořený, vaše aplikace se přiřadí **výchozí**.<br><br>Pokud vaše aplikace používá objekty Websocket pro připojení, všechny konektory ve skupině musí být ve verzi 1.5.612.0 nebo novější.|
 
 5. V případě potřeby nakonfigurujte **další nastavení**. Pro většinu aplikací byste měli mít tato nastavení na jejich výchozí stavy. 
 
     | Pole | Popis |
     | :---- | :---------- |
-    | **Časový limit pro back-endu aplikace** | Nastavte tuto hodnotu na **dlouhé** pouze v případě, že vaše aplikace se ověřili a připojili. |
-    | **Použít soubor Cookie jenom pro protokol HTTP** | Nastavte tuto hodnotu na **Ano** Pokud chcete, aby Proxy aplikací služby soubory cookie, zahrňte příznak HTTPOnly v hlavičce odpovědi protokolu HTTP. Pokud pomocí služby Vzdálená plocha, nastavte tuto hodnotu na **ne**.|
-    | **Použití zabezpečeného souboru Cookie**| Nastavte tuto hodnotu na **Ano** k přenosu přes zabezpečený kanál například požadavek HTTPS šifrované soubory cookie.
-    | **Použít trvalého souboru Cookie**| Ponechte tuto hodnotu nastavit na **ne**. Toto nastavení by měla sloužit pouze pro aplikace, které nelze sdílení souborů cookie mezi procesy. Další informace o nastavení souborů cookie najdete v části [nastavení souborů Cookie pro přístup k místním aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)
+    | **Časový limit aplikace pro back-end** | Nastavte tuto hodnotu na **dlouhé** pouze v případě, že vaše aplikace se ověřili a připojili. |
+    | **Používat soubory cookie HTTP-Only** | Nastavte tuto hodnotu na **Ano** Pokud chcete, aby Proxy aplikací služby soubory cookie, zahrňte příznak HTTPOnly v hlavičce odpovědi protokolu HTTP. Pokud pomocí služby Vzdálená plocha, nastavte tuto hodnotu na **ne**.|
+    | **Použít zabezpečený soubor cookie**| Nastavte tuto hodnotu na **Ano** k přenosu přes zabezpečený kanál například požadavek HTTPS šifrované soubory cookie.
+    | **Použít trvalý soubor cookie**| Ponechte tuto hodnotu nastavit na **ne**. Toto nastavení by měla sloužit pouze pro aplikace, které nelze sdílení souborů cookie mezi procesy. Další informace o nastavení souborů cookie najdete v části [nastavení souborů Cookie pro přístup k místním aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)
     | **Překládat adresy URL v hlavičkách** | Ponechte tuto hodnotu jako **Ano** Pokud vaše aplikace vyžaduje hlavičku původního hostitele v žádosti o ověření. |
     | **Překládat adresy URL v těle žádosti** | Ponechte tuto hodnotu jako **ne** Pokud nemáte pevně zakódované HTML odkazy na další místní aplikace a nebude se používat vlastní domény. Další informace najdete v tématu [propojit překlad textů pomocí Proxy aplikací](application-proxy-configure-hard-coded-link-translation.md).<br><br>Nastavte tuto hodnotu na **Ano** Pokud máte v plánu pro monitorování této aplikace s Microsoft Cloud App Security (MCAS). Další informace najdete v tématu [konfigurace aplikací v reálném čase přístup k monitorování pomocí Microsoft Cloud App Security a Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md) |
    

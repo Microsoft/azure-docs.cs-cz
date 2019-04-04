@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: e58a62761284e0671c0083d41f5dde4c13b32fe2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 35c30ec97d4c033a687204b926d2f686c52be069
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108252"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916016"
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk Services: Odstraňování potíží pomocí protokolů operací
 
@@ -31,8 +31,8 @@ ms.locfileid: "58108252"
 Protokoly operací je funkce, služby pro správu, která vám umožní zobrazit historické protokoly operací provedených na služby Azure, včetně BizTalk Services. To umožňuje zobrazit historická data týkající se operací správy v rámci předplatného služby BizTalk až 180 dní zpětně.
 
 > [!NOTE]
-> Tato funkce zachytí pouze protokoly pro operace správy ve službě BizTalk Services, jako je například při spuštění služby, vztahuje aktivní, a tak dále. Tyto operace jsou sledovány [REST API služby BizTalk Service](https://msdn.microsoft.com/library/azure/dn232347.aspx). Úplný seznam operací, které jsou sledovány v rámci služby správy, naleznete v tématu [operace sledované pomocí Azure Management Services](#bizops).<br/><br/>
-> Není to zachycení v protokolech aktivit související se modul runtime služby BizTalk (například zpráva zpracována přemostění a tak dále). Chcete-li zobrazit tyto protokoly, použijte zobrazení sledování z portálu BizTalk Services. Další informace najdete v tématu [sledování zpráv](https://msdn.microsoft.com/library/azure/hh949805.aspx).
+> Tato funkce zachytí pouze protokoly pro operace správy ve službě BizTalk Services, jako je například při spuštění služby, vztahuje aktivní, a tak dále. Tyto operace jsou sledovány [REST API služby BizTalk Service](/previous-versions/azure/reference/dn232347(v=azure.100)). Úplný seznam operací, které jsou sledovány v rámci služby správy, naleznete v tématu [operace sledované pomocí Azure Management Services](#bizops).<br/><br/>
+> Není to zachycení v protokolech aktivit související se modul runtime služby BizTalk (například zpráva zpracována přemostění a tak dále). Chcete-li zobrazit tyto protokoly, použijte zobrazení sledování z portálu BizTalk Services. Další informace najdete v tématu [sledování zpráv](/previous-versions/azure/hh949805(v=azure.100)).
 > 
 > 
 
@@ -70,7 +70,7 @@ V následující tabulce jsou uvedeny operace, které jsou sledovány v rámci s
 * [BizTalk Services: Zřizování](https://go.microsoft.com/fwlink/p/?LinkID=302280)
 * [BizTalk Services: Tabulka stavů zřízení](https://go.microsoft.com/fwlink/p/?LinkID=329870)
 * [BizTalk Services: Karty řídicí panel, sledování a škálování](https://go.microsoft.com/fwlink/p/?LinkID=302281)
-* [BizTalk Services: Omezení šířky pásma](https://go.microsoft.com/fwlink/p/?LinkID=302282)
+* [BizTalk Services: Throttling](https://go.microsoft.com/fwlink/p/?LinkID=302282)
 * [BizTalk Services: Název vystavitele a klíč vystavitele](https://go.microsoft.com/fwlink/p/?LinkID=303941)
 * [Jak začít používat sadu SDK Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 

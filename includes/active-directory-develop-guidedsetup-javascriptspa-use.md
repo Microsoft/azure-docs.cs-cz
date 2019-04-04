@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 0f4f890afd8c698bec8dbd76e8bb8dca710f4d6c
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: e228c49d4ad8e691e59f76a9b6fb9013f7b1bb3a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203306"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890899"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Přihlásit uživatele pomocí knihovny Microsoft Authentication Library (MSAL)
 
@@ -140,7 +140,7 @@ Volání *acquireTokenPopup(scope)* výsledky v automaticky otevíraném okně (
 
 #### <a name="getting-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
-` acquireTokenSilent` Obsluhovala token pořízení a obnovení bez nutnosti zásahu uživatele. Po `loginPopup` (nebo `loginRedirect`) provádí poprvé, `acquireTokenSilent` je metoda běžně používá k získání tokenů použít pro přístup k chráněným prostředkům pro pozdější volání – jako volání na vyžádání nebo tokeny obnovení probíhají bezobslužně.
+`acquireTokenSilent` Obsluhovala token pořízení a obnovení bez nutnosti zásahu uživatele. Po `loginPopup` (nebo `loginRedirect`) provádí poprvé, `acquireTokenSilent` je metoda běžně používá k získání tokenů použít pro přístup k chráněným prostředkům pro pozdější volání – jako volání na vyžádání nebo tokeny obnovení probíhají bezobslužně.
 `acquireTokenSilent` nemusí v některých případech – třeba hesla vypršela. Vaše aplikace dokáže zpracovat tuto výjimku dvěma způsoby:
 
 1. Volání `acquireTokenPopup` okamžitě, jehož výsledkem výzvy k přihlášení. Tento model se běžně používá v online aplikace tam, kde není žádná neověřená obsah v aplikaci k dispozici pro uživatele. Ukázka vygeneroval tento instalační program s asistencí používá tento model.

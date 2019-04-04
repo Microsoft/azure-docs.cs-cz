@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 6dc3fb97c912aa9ac66e3d40a8a0318a6938905c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ee86b9aa2d920668cf036f3e8f8634e9289e8913
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230287"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916865"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk Services: Zálohování a obnovení
 
@@ -43,13 +43,13 @@ Služba Azure BizTalk Services obsahuje funkce zálohování a obnovení.
 * Pokud batch má aktivní zprávy, zpracování dávky **před** zrovna zálohovat. Při vytváření zálohy (jako potřebné ani do plánovaných), se nikdy neukládají zprávy v dávkách. 
   
     **Pokud je záloha aktivní zpráv v dávce, tyto zprávy nejsou zálohovány a proto budou ztraceny.**
-* Volitelné: Portálu BizTalk Services, zastavte všechny operace správy.
+* Volitelné: Na portálu BizTalk Services zastavte všechny operace správy.
 
 ## <a name="create-a-backup"></a>Vytvoření zálohy
-Zálohu můžete provést kdykoli a zcela řídí vám. Chcete-li vytvořit zálohu, použijte [rozhraní REST API pro správu služby BizTalk Services v Azure](https://msdn.microsoft.com/library/azure/dn232347.aspx).
+Zálohu můžete provést kdykoli a zcela řídí vám. Chcete-li vytvořit zálohu, použijte [rozhraní REST API pro správu služby BizTalk Services v Azure](/previous-versions/azure/reference/dn232347(v=azure.100)).
 
 ## <a name="restore"></a>Obnovení
-Chcete-li obnovit zálohu, použijte [rozhraní REST API pro správu služby BizTalk Services v Azure](https://msdn.microsoft.com/library/azure/dn232347.aspx).
+Chcete-li obnovit zálohu, použijte [rozhraní REST API pro správu služby BizTalk Services v Azure](/previous-versions/azure/reference/dn232347(v=azure.100)).
 
 ### <a name="postrestore"></a>Po obnovení zálohy
 Služba BizTalk je vždy obnoví **pozastaveno** stavu. V tomto stavu můžete provést změny konfigurace předtím, než je funkční, včetně nové prostředí:
@@ -126,23 +126,23 @@ Po vytvoření zálohy se zálohují následující položky:
 <td>Sledování databáze</td> 
 <td>Při vytvoření služby BizTalk jsou zadat podrobnosti sledování databáze, včetně Azure SQL Database Server a název databáze pro sledování. Sledování databáze není automaticky zálohována.
 <br/><br/>
-<strong>Důležité upozornění</strong><br/>
+<strong>Důležité</strong><br/>
 Pokud se odstraní databázi sledování a potřeby databáze obnovena, musí existovat předchozí zálohy. Pokud zálohu neexistuje, nejsou databázi sledování a její data obnovit. V takovém případě vytvořte novou databázi sledování se stejným názvem databáze. Doporučuje se geografická replikace.</td>
 </tr> 
 </table>
 
 ## <a name="next"></a>Další
-Vytvoření služby Azure BizTalk Services, přejděte na [BizTalk Services: zřízení](https://go.microsoft.com/fwlink/p/?LinkID=302280). Pokud chcete začít vytvářet aplikace, přejděte na článek [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197).
+Vytvoření služby Azure BizTalk Services, přejděte na [BizTalk Services: Zřizování](https://go.microsoft.com/fwlink/p/?LinkID=302280). Pokud chcete začít vytvářet aplikace, přejděte na článek [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197).
 
 ## <a name="see-also"></a>Viz také
 * [Zálohování služby BizTalk](https://go.microsoft.com/fwlink/p/?LinkID=325584)
 * [Obnovení ze zálohy služby BizTalk](https://go.microsoft.com/fwlink/p/?LinkID=325582)
 * [BizTalk Services: Developer, Basic, Standard a Premium tabulka edic](https://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [BizTalk Services: zřízení](https://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk Services: Zřizování](https://go.microsoft.com/fwlink/p/?LinkID=302280)
 * [BizTalk Services: Tabulka stavů zřízení](https://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [BizTalk Services: Karty Řídicí panel, Sledování a Škálování](https://go.microsoft.com/fwlink/p/?LinkID=302281)
-* [BizTalk Services: Omezování](https://go.microsoft.com/fwlink/p/?LinkID=302282)
-* [BizTalk Services: Název a klíč vystavitele](https://go.microsoft.com/fwlink/p/?LinkID=303941)
+* [BizTalk Services: Karty řídicí panel, sledování a škálování](https://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [BizTalk Services: Throttling](https://go.microsoft.com/fwlink/p/?LinkID=302282)
+* [BizTalk Services: Název vystavitele a klíč vystavitele](https://go.microsoft.com/fwlink/p/?LinkID=303941)
 * [Jak začít používat sadu SDK Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [BackupStatus]: ./media/biztalk-backup-restore/status-last-backup.png

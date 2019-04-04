@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/17/2018
+ms.date: 04/03/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9f328e47a49a5c6c53c21baa880c38578c657a33
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 27102cd6b8e98b0f8b2b4940b92d4e4c4580a9cd
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733736"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904062"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Migrace aplikace ASP.NET do služby Azure App Service pomocí kontejneru Windows (verze Preview)
 
@@ -31,7 +31,7 @@ ms.locfileid: "55733736"
 
 Pro absolvování tohoto kurzu potřebujete:
 
-- <a href="https://hub.docker.com/" target="_blank">Zaregistrovat si účet Centra Dockeru</a>
+- <a href="https://hub.docker.com/" target="_blank">Zaregistrujte si účet Docker Hubu</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Nainstalovat Docker for Windows</a>.
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Přepnout Docker na spouštění kontejnerů Windows</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Nainstalovat Visual Studio 2017</a> se sadami funkcí **Vývoj pro ASP.NET a web** a **Vývoj pro Azure**. Pokud už máte sadu Visual Studio 2017 nainstalovanou:
@@ -80,7 +80,7 @@ V Průzkumníku řešení otevřete soubor **Dockerfile**.
 Musíte použít [podporovanou nadřazenou image](app-service-web-get-started-windows-container.md#use-a-different-parent-image). Nadřazenou image změníte tak, že řádek `FROM` nahradíte následujícím kódem:
 
 ```Dockerfile
-FROM microsoft/aspnet:4.7.1
+FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
 ```
 
 Na konec souboru přidejte následující řádek a pak tento soubor uložte:
@@ -119,9 +119,9 @@ Nakonfigurujte nový registr kontejneru podle navržených hodnot v následujíc
 
 | Nastavení  | Navrhovaná hodnota | Další informace |
 | ----------------- | ------------ | ----|
-|**Předpona DNS**| Ponechejte vygenerovaný název registru nebo ho změňte na jiný jedinečný název. |  |
+|**DNS Prefix**| Ponechejte vygenerovaný název registru nebo ho změňte na jiný jedinečný název. |  |
 |**Skupina prostředků**| Klikněte na **Nový**, zadejte **myResourceGroup** a klikněte na **OK**. |  |
-|**SKU**| Basic | [Cenové úrovně](https://azure.microsoft.com/pricing/details/container-registry/)|
+|**Skladová jednotka (SKU)**| Basic | [Cenové úrovně](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Umístění registru**| Západní Evropa | |
 
 ![Konfigurace Azure Container Registry](./media/app-service-web-tutorial-windows-containers-custom-fonts/configure-registry.png)
@@ -144,7 +144,7 @@ V rozhraní pro vytváření nakonfigurujte nastavení podle následující tabu
 | ----------------- | ------------ | ----|
 |**Název aplikace**| Zadejte jedinečný název. | Adresa URL webové aplikace je `http://<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší aplikace. |
 |**Skupina prostředků**| Vyberte **Použít existující** a zadejte **myResourceGroup**. |  |
-|**OS**| Windows (Preview) | |
+|**Operační systém**| Windows (Preview) | |
 
 ### <a name="configure-app-service-plan"></a>Konfigurace plánu služby App Service
 

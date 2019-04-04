@@ -13,16 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 403cbeb0a68e39eab714ceb428fcfaefe8de0ff7
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: f41198761604a16e5d8a983f8bf2200b32c06fb9
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576237"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906017"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>Monitorování připojení Azure pro kontejnery  
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Tento článek popisuje, jak nastavit službu Azure Monitor k monitorování výkonu úlohy, které se nasazují do prostředí Kubernetes a hostitelem pro kontejnery [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
 
@@ -31,6 +29,7 @@ Azure Monitor pro kontejnery může být povoleno na nový, nebo nepodporuje jed
 * Z webu Azure portal, prostředí Azure PowerShell nebo pomocí rozhraní příkazového řádku Azure
 * Pomocí [Terraform a AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky 
 Než začnete, ujistěte se, že máte následující:

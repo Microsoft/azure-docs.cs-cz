@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 1a192f5cbd0fb5a4dcb911f40753efcbd996a418
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: b104f2578938997ff12778d65f08cca226d9a445
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793828"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892326"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co je Azure Data Box Disk?
 
@@ -42,7 +42,7 @@ Disky jsou šifrované pomocí nástroje Microsoft BitLocker Drive Encryption a 
 A. Pokud máte 40 TB dat (nebo méně), které chcete přenést do Azure, je pro vás použití disků Data Box Disk výhodné.
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>Otázka: Jaká je cena disků Data Box Disk?
-A. Další informace o cenách disků Data Box [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
+A. Další informace o cenách disků Data Box [stránce s cenami](https://azure.microsoft.com/pricing/details/databox/disk/).
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>Otázka: Jak lze disky Data Box Disk získat? 
 A.  Disky Azure Data Box, přihlaste se do portálu Azure portal a vytvoření objednávky zařízení Data Box pro disky. Zadejte svoje kontaktní údaje a podrobnosti o oznámení. Po provedení objednávky vám budou disky dodány podle dostupnosti do 10 dnů.
@@ -129,8 +129,8 @@ A. Sada nástrojů dostupná s datovým diskem pole obsahuje tři nástroje:
  - **Nástroj pro kopírování rozdělení disku pole data**: Tento nástroj použijte, pokud používáte několik disků a mají velkou datovou sadu, kterou je potřeba rozdělit a zkopírovali na všech discích. Tento nástroj je momentálně dostupná pro Windows. Tento nástroj není podporován se spravovanými disky. Tento nástroj také ověří jako zkopíruje data, proto můžete přeskočit krok ověření při používání tohoto nástroje.
 
 Sada nástrojů je k dispozici pro Windows i Linux. Si můžete stáhnout na sadu nástrojů:
-- [Stáhnout sadu nástrojů Data Box Disk pro Windows](https://aka.ms/databoxdisktoolswin) 
-- [Stáhnout sadu nástrojů Data Box Disk pro Linux](https://aka.ms/databoxdisktoolslinux)
+- [Stáhněte si sadu nástrojů disku Data Box pro Windows](https://aka.ms/databoxdisktoolswin) 
+- [Stáhnout sadu nástrojů disku Data Box pro Linux](https://aka.ms/databoxdisktoolslinux)
  
   ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Otázka: Můžete použít Data Box Disk k přenosu dat do služby soubory Azure a pak používat data pomocí služby Azure File Sync? 
   A. Služba soubory Azure jsou podporovány s datovými diskem, pole, ale nebude fungovat s Azure File Sync. Metadata nezachovají, pokud se používají data souborů pomocí služby Azure File Sync.

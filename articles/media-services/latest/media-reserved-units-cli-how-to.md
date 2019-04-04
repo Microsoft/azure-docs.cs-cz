@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 3f0d3c5748afaac2544232fc1ff84316d9eb7347
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 0dcfa4e7cd792f61d1620a57330f87c5c86e6c9f
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351061"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915681"
 ---
 # <a name="scaling-media-processing"></a>Škálování zpracování médií
 
-Azure Media Services umožňuje škálování zpracování médií ve svém účtu tím, že spravuje rezervované jednotky médií (použité položky). Použité položky určit rychlost, pomocí kterého se zpracování vašich úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2**, nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**. 
+Služba Azure Media Services umožňuje škálovat zpracování médií ve vašem účtu správou rezervovaných jednotek médií (MRU). Použité položky určit rychlost, pomocí kterého se zpracování vašich úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2**, nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**. 
 
 Kromě určení typu rezervované jednotky, můžete zadat účet zřídit s rezervovaných jednotek. Počet zřízených rezervovaných jednotek určuje počet úloh médií, které je možné v daném účtu zpracovávat současně. Například pokud má váš účet pak pět média úlohy poběží současně po dobu pěti rezervovaných jednotek, jako jsou úkoly ke zpracování. Ve zbývajících úkolech počká ve frontě a bude získat, vyberou se pro zpracování postupně, kdy spuštěná úloha dokončí. Pokud účet nemá žádné rezervované jednotky zřízené, pak úlohy neexistoval, použije postupně. V takovém případě dobu čekání mezi dokončení úkolů a další nazve spuštění bude záviset na dostupnost prostředků v systému.
 
@@ -45,9 +45,9 @@ V následující tabulce umožňuje rozhodování při výběru mezi různými r
 Zbytek tohoto článku ukazuje, jak používat [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) škálování použité položky.
 
 > [!NOTE]
-> Pro analýzu zvuku a videa analytických úloh, které jsou aktivovány Media Services v3 nebo Video Indexer důrazně doporučujeme pro účet zřídit s 10 použité položky S3. Pokud potřebujete více než 10 použité položky S3, otevřete lístek podpory pomocí [webu Azure portal](https://portal.azure.com/).
+> Pro úlohy analýzy zvuku a analýzy videa, které jsou aktivované službou Media Services v3 nebo Video Indexerem, důrazně doporučujeme zřídit váš účet s 10 rezervovanými jednotkami S3. Pokud potřebujete více než 10 použité položky S3, otevřete lístek podpory pomocí [webu Azure portal](https://portal.azure.com/).
 >
-> V současné době nelze použít na webu Azure portal ke správě jiných prostředků v3. Použití [rozhraní REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref), nebo jeden z podporovaných [sady SDK](developers-guide.md).
+> V současné době nelze použít na webu Azure portal ke správě jiných prostředků v3. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](developers-guide.md).
 
 ## <a name="prerequisites"></a>Požadavky 
 
@@ -67,7 +67,7 @@ az account set mru -n amsaccount -g amsResourceGroup --count 10 --type S3
 
 ## <a name="billing"></a>Fakturace
 
-Budou se vám účtovat na číslo, typu a množství času, které jsou zřízené použité položky ve vašem účtu. Poplatky za zda spuštěním jakékoli úlohy. Podrobné vysvětlení najdete v tématu v části Nejčastější dotazy [ceny služby Media Services](https://azure.microsoft.com/pricing/details/media-services/) stránky.   
+Budou se vám účtovat na počet minut, po které se zřizují rezervovaných jednotek médií ve vašem účtu. K tomu dochází nezávisle na, jestli jsou všechny úlohy spuštěné v účtu. Podrobné vysvětlení najdete v tématu v části Nejčastější dotazy [ceny služby Media Services](https://azure.microsoft.com/pricing/details/media-services/) stránky.   
 
 ## <a name="next-step"></a>Další krok
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 52ec7c83b4070a4c38963b3ab12f58f923fa889d
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 53608654392d7efb73b6dadac14f01a94bb035a7
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562620"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893516"
 ---
 # <a name="social-accounts-claims-transformations"></a>Transformace deklarací identity účtů na sociálních sítích
 
@@ -38,13 +38,13 @@ Tento článek obsahuje příklady použití transformace deklarací identity ú
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-Vytvoří reprezentaci JSON alternativeSecurityId vlastnosti uživatele, který lze použít ve volání do služby Azure Active Directory. Další informace najdete v tématu [AlternativeSecurityId od schématu](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#AlternativeSecurityIdType).
+Vytvoří reprezentaci JSON alternativeSecurityId vlastnosti uživatele, který lze použít ve volání do služby Azure Active Directory. Další informace najdete v tématu [AlternativeSecurityId od schématu](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#AlternativeSecurityIdType).
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | key | řetězec | Typ ClaimType určující jedinečný uživatelský identifikátor používá zprostředkovatel identity v sociálních sítích. |
-| InputClaim | identityProvider | řetězec | Typ ClaimType, který určuje název zprostředkovatele identity účtu na sociální síti, jako je například facebook.com. |
-| outputClaim | alternativeSecurityId | řetězec | Typ ClaimType, který je vytvořen po zavolání ClaimsTransformation. Obsahuje informace o identitě uživatele účtu na sociální síti. **Vystavitele** je hodnota `identityProvider` deklarací identity. **IssuerUserId** je hodnota `key` deklarace identity ve formátu base64. |
+| InputClaim | key | string | Typ ClaimType určující jedinečný uživatelský identifikátor používá zprostředkovatel identity v sociálních sítích. |
+| InputClaim | identityProvider | string | Typ ClaimType, který určuje název zprostředkovatele identity účtu na sociální síti, jako je například facebook.com. |
+| outputClaim | alternativeSecurityId | string | Typ ClaimType, který je vytvořen po zavolání ClaimsTransformation. Obsahuje informace o identitě uživatele účtu na sociální síti. **Vystavitele** je hodnota `identityProvider` deklarací identity. **IssuerUserId** je hodnota `key` deklarace identity ve formátu base64. |
 
 Použijte Tato transformace ke generování deklarací identity `alternativeSecurityId` typu deklarace identity. Používá se všechny identity v sociálních sítích zprostředkovatele technické profily, jako například `Facebook-OAUTH`. ID uživatele účtu na sociální síti a název zprostředkovatele identit obdrží následující transformace deklarací identity. Výstup této technickém profilu je řetězec formátu JSON, který lze použít v adresáři služby Azure AD.
 
@@ -74,7 +74,7 @@ Přidá `AlternativeSecurityId` do `alternativeSecurityIdCollection` deklarací 
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | Položka | řetězec | Přidat do výstupu deklarace typu deklarace identity. |
+| InputClaim | Položka | string | Přidat do výstupu deklarace typu deklarace identity. |
 | InputClaim | kolekce | alternativeSecurityIdCollection | ClaimTypes, které jsou používány transformace deklarací identity, pokud je k dispozici v zásadách. Pokud je zadán, přidá transformace deklarací identity `item` na konec kolekce. |
 | outputClaim | kolekce | alternativeSecurityIdCollection | ClaimTypes vytvořený po zavolání této ClaimsTransformation. Nová kolekce, která obsahuje položky ze vstupu `collection` a `item`. |
 
@@ -138,7 +138,7 @@ Odebere **AlternativeSecurityId** ze **alternativeSecurityIdCollection** deklara
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | identityProvider | řetězec | Typ ClaimType, který obsahuje název zprostředkovatele identit, která má být odebrán z kolekce. |
+| InputClaim | identityProvider | string | Typ ClaimType, který obsahuje název zprostředkovatele identit, která má být odebrán z kolekce. |
 | InputClaim | kolekce | alternativeSecurityIdCollection | ClaimTypes, které používají deklarace identity transformace. Transformace deklarací identity identityProvider odebere z kolekce. |
 | outputClaim | kolekce | alternativeSecurityIdCollection | ClaimTypes vytvořený po zavolání této ClaimsTransformation. Nová kolekce, po identityProvider odebrán z kolekce. |
 

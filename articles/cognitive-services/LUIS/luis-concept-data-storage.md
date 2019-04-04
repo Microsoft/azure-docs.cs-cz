@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 03/28/2019
 ms.author: diberry
-ms.openlocfilehash: 05a2bd5334fe2836a96bd9437121252fe6ef6eff
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a1093c2a6303b453a17a52058303913de5ecfa8d
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882314"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893193"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Úložiště dat a odebírání ve službě Cognitive Services Language Understanding (LUIS)
 Služba LUIS ukládá data šifrovaná v úložišti Azure dat. odpovídající oblast učená klíčem. Tato data jsou ukládána po dobu 30 dnů. 
@@ -24,13 +24,33 @@ Služba LUIS ukládá data šifrovaná v úložišti Azure dat. odpovídající 
 ## <a name="export-and-delete-app"></a>Exportovat a odstranit aplikaci
 Uživatelé mají plnou kontrolu nad [export](luis-how-to-start-new-app.md#export-app) a [odstranění](luis-how-to-start-new-app.md#delete-app) aplikace. 
 
-## <a name="utterances-in-an-intent"></a>Projevy v záměru
+## <a name="utterances"></a>Projevy
+
+Projevy mohou být uloženy ve dvou různých místech. 
+
+* Během **procesu vytváření**, jsou vytvořeny a uloženy v záměr projevů. Jsou požadovány pro úspěšné aplikace LUIS projevy v záměry. Po publikování aplikace a přijímá dotazy na koncovém bodu, řetězci dotazu požadavku koncového bodu, `log=false`, určuje, zda je uložena utterance koncového bodu. Koncový bod je uložen, stane se takový součástí projevy active learning součástí **sestavení** části portálu v **zkontrolujte koncový bod projevy** části. 
+* Když jste **zkontrolujte projevy koncový bod**a přidat utterance záměru, utterance je již uloženy jako součást koncového bodu projevy musí zkontrolovat. Přidá se do záměry aplikace. 
+
+<a name="utterances-in-an-intent"></a>
+
+### <a name="delete-example-utterances-from-an-intent"></a>Odstranit příklad projevy ze záměru
 Odstranit projevy příklad používá pro školení [LUIS](luis-reference-regions.md). Pokud odstraníte utterance příklad z vaší aplikace LUIS, se odebere z webové služby LUIS a není k dispozici pro export.
 
-## <a name="utterances-in-review"></a>Projevy v revizi
-Projevy můžete odstranit ze seznamu uživatelů projevy, které navrhuje LUIS v  **[kontrolní koncový bod projevy stránku](luis-how-to-review-endoint-utt.md)**. Odstraňuje se z tohoto seznamu projevy brání jejich navržena, ale nedojde k jejich odstranění z protokolů.
+<a name="utterances-in-review"></a>
 
-## <a name="accounts"></a>Účty
+### <a name="delete-utterances-in-review-from-active-learning"></a>Odstranit projevy reviduje z aktivní učení
+
+Projevy můžete odstranit ze seznamu uživatelů projevy, které navrhuje LUIS v  **[kontrolní koncový bod projevy stránku](luis-how-to-review-endpoint-utterances.md)**. Odstraňuje se z tohoto seznamu projevy brání jejich navržena, ale nedojde k jejich odstranění z protokolů.
+
+Pokud nechcete, aby se aktivně učit projevy, můžete si [zakázat aktivně učit](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Zakázání aktivně učit také zakáže protokolování.
+
+### <a name="disable-logging-utterances"></a>Zakázat protokolování projevy
+[Zakázání aktivně učit](luis-how-to-review-endpoint-utterances.md#disable-active-learning) se zakáže protokolování.
+
+
+<a name="accounts"></a>
+
+## <a name="delete-an-account"></a>Odstranit účet
 Pokud odstraníte účet, se odstraní všechny aplikace, spolu s jejich příklad projevy a protokoly. Data se uchovávají po dobu 60 dní, než účet a data se trvale odstraní.
 
 Odstraňuje se účet je k dispozici **nastavení** stránky. Vyberte název svého účtu v pravém horním navigačním panelu zobrazíte **nastavení** stránky.

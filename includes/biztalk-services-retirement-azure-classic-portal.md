@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/09/2017
 ms.author: mandia
 ms.custom: include file
-ms.openlocfilehash: 52ec553efe877ebae3f4fa3f00df17e2791fa374
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: cfa3df3a64d19b69fbdbdcc8f78bb447bf2e61d5
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38945575"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919430"
 ---
 > [!IMPORTANT]
-> Služba BizTalk Services na webu Azure Portal je zastaralá. Pokud chcete spravovat instance MABS, přečtěte si téma věnované [rozhraní REST API pro správu BizTalk Services v Azure](https://msdn.microsoft.com/library/azure/dn232347.aspx).
+> Služba BizTalk Services na webu Azure Portal je zastaralá. Pokud chcete spravovat instance MABS, přečtěte si téma věnované [rozhraní REST API pro správu BizTalk Services v Azure](/previous-versions/azure/reference/dn232347(v=azure.100)).

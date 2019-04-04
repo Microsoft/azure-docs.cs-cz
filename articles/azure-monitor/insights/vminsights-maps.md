@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 0bf7c335f552fee103118e57239bcd872e880edb
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 34e6ce7f3b38dfd583aa557d2f1d7340ea444da9
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984845"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916729"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Pro virtuální počítače (preview) mapy pochopit součásti aplikace pomocí Azure monitoru
 Zobrazení komponenty zjištěnou aplikaci virtuálních počítačích s Windows a Linuxem v Azure, prostředí můžete pozorovat dvě možnosti, jak pomocí Azure monitoru pro virtuální počítače z virtuálního počítače přímo nebo přes skupiny virtuálních počítačů ze služby Azure Monitor. 
@@ -43,7 +43,7 @@ Na pravé straně podokna, klikněte na **události protokolu** ikonu pro přepn
 
 ![Seznam protokolu hledání v podokně vlastností](./media/vminsights-maps/properties-pane-logs-01.png)
 
-Zavřít *protokoly** a vrátit se **vlastnosti** podokně a vyberte **výstrahy** zobrazovat výstrahy, které výstrahy generují pro virtuální počítač z kritérií stavu. Mapa se integruje s Azure Alerts zobrazíte aktivovaná upozornění pro vybraný server ve vybraném časovém rozsahu. Na serveru zobrazuje ikonu, pokud je aktuální výstrahy a podokno počítače výstrah obsahuje výstrahy. 
+Zavřít **protokoly** a vrátit se **vlastnosti** podokně a vyberte **výstrahy** zobrazovat výstrahy, které výstrahy generují pro virtuální počítač z kritérií stavu. Mapa se integruje s Azure Alerts zobrazíte aktivovaná upozornění pro vybraný server ve vybraném časovém rozsahu. Na serveru zobrazuje ikonu, pokud je aktuální výstrahy a podokno počítače výstrah obsahuje výstrahy. 
 
 ![Výstrahy počítače v podokně vlastností](./media/vminsights-maps/properties-pane-alerts-01.png)
 

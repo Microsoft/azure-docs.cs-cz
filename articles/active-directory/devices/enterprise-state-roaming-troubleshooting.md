@@ -19,16 +19,18 @@ ms.author: joflore
 ms.reviewer: tanning
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 728a67513bd66b6c39d1f366789172ee2963f6cc
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: cce60769ffae399062a50e1b2c28c1cd6e49a47e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517466"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904249"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s Enterprise State Roaming nastavení v Azure Active Directory
 
 Toto téma obsahuje informace o tom, jak řešení potíží a diagnostiku problémů s Enterprise State Roaming a poskytuje seznam známých problémů.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>Přípravné kroky pro řešení potíží 
 
@@ -162,7 +164,7 @@ Pokud je uživatel na zařízení připojeno k Azure AD, který se má upgradova
 Uživatel bude muset odebrat a znovu se připojit zařízení ke cloudu. Chcete-li to provést, přihlaste se jako místní správce a připojilo tak, že přejdete do **nastavení** > **systému** > **o** a vybrání možnosti "spravovat nebo odpojit se od práce nebo do školy ". Vyčistit zařízení znovu v níže uvedených souborů a potom připojení ke službě Azure AD **nastavení** > **systému** > **o** a výběrem možnosti "připojit k práci nebo Školní". Pokračujte v připojení k pracovišti ke službě Azure Active Directory a dokončete tok.
 
 V kroku vyčištění, čištění následující soubory:
-- Settings.dat v `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
+- Settings.dat in `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
 - Všechny soubory ve složce `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
 
 ---

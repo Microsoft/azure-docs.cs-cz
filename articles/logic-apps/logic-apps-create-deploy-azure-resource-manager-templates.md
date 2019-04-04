@@ -1,6 +1,6 @@
 ---
-title: Vytváření aplikací logiky pomocí šablony Azure Resource Manager – Azure Logic Apps | Dokumentace Microsoftu
-description: Vytvoření a nasazení pracovních postupů aplikace logiky pomocí šablony Azure Resource Manageru v Azure Logic Apps
+title: Nasazení aplikací logiky pomocí šablony Azure Resource Manager – Azure Logic Apps
+description: Nasazení aplikací logiky pomocí šablony Azure Resource Manageru
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,124 +10,116 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.openlocfilehash: 8ad70c5d22ca73258fa9e6501d03d5409a4e45d8
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 7543859a916de97d471db2894887e640db51dfc2
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652480"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893414"
 ---
-# <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Vytvoření a nasazení aplikací logiky s využitím šablon Azure Resource Manageru
+# <a name="deploy-logic-apps-with-azure-resource-manager-templates"></a>Nasazení aplikací logiky s využitím šablon Azure Resource Manageru
 
-Služba Azure Logic Apps poskytuje šablony Azure Resource Manageru, které můžete použít nejen k vytváření aplikací logiky pro automatizaci pracovních postupů, ale také k definování prostředky a parametry, které se používají pro nasazení.
-Můžete použít tuto šablonu pro vaše vlastní obchodní scénáře nebo šablonu přizpůsobit, aby splňovaly vaše požadavky. Další informace o [šablony Resource Manageru pro logic apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) a [strukturu šablony Azure Resource Manageru a syntaxe](../azure-resource-manager/resource-group-authoring-templates.md). Syntaxi JSON a vlastnostech najdete v tématu [typy prostředků Microsoft.Logic](/azure/templates/microsoft.logic/allversions).
+Jakmile vytvoříte šablonu Azure Resource Manageru pro nasazení aplikace logiky, můžete nasadit šablonu v těchto způsobů:
 
-## <a name="define-the-logic-app"></a>Definice aplikace logiky
-Tento příklad definice aplikace logiky spouští jednou za hodinu a odešle příkaz ping umístění zadaném v `testUri` parametru.
-Šablona používá hodnoty parametrů pro název aplikace logiky (```logicAppName```) a umístění na příkaz ping pro testování (```testUri```). Další informace o [definování tyto parametry v šabloně](#define-parameters).
-Šablona se nastaví také umístění pro aplikaci logiky do stejného umístění jako skupina prostředků Azure.
+* [portál Azure](#portal)
+* [Azure PowerShell](#powershell)
+* [Azure CLI](#cli)
+* [REST API Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [Kanály Azure DevOps Azure](#azure-pipelines)
 
-```json
-{
-   "type": "Microsoft.Logic/workflows",
-   "apiVersion": "2016-06-01",
-   "name": "[parameters('logicAppName')]",
-   "location": "[resourceGroup().location]",
-   "tags": {
-      "displayName": "LogicApp"
-   },
-   "properties": {
-      "definition": {
-         "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
-         "contentVersion": "1.0.0.0",
-         "parameters": {
-            "testURI": {
-               "type": "string",
-               "defaultValue": "[parameters('testUri')]"
-            }
-         },
-         "triggers": {
-            "Recurrence": {
-               "type": "Recurrence",
-               "recurrence": {
-                  "frequency": "Hour",
-                  "interval": 1
-               }
-            }
-         },
-         "actions": {
-            "Http": {
-              "type": "Http",
-              "inputs": {
-                  "method": "GET",
-                  "uri": "@parameters('testUri')"
-              },
-              "runAfter": {}
-           }
-         },
-         "outputs": {}
-      },
-      "parameters": {}
-   }
-}
-```
+<a name="portal"></a>
 
-<a name="define-parameters"></a>
+## <a name="deploy-through-azure-portal"></a>Nasadit pomocí webu Azure portal
 
-### <a name="define-parameters"></a>Definovat parametry
+Šablony aplikace logiky můžete automaticky nasadit do Azure, můžete použít následující **nasadit do Azure** tlačítko, které jste přihlášení k webu Azure portal a vás vyzve k zadání informací o vaší aplikaci logiky. Šablony aplikace logiky nebo parametry lze potom proveďte potřebné změny.
 
-[!INCLUDE [app-service-logic-deploy-parameters](../../includes/app-service-logic-deploy-parameters.md)]
+[![Deploy do Azure](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
-Tady jsou popisy parametrů v šabloně:
-
-| Parametr | Popis | Příklad definice JSON |
-| --------- | ----------- | ----------------------- |
-| `logicAppName` | Definuje název aplikace logiky se tato šablona vytvoří. | "logicAppName": {"type": "string", "metadat": {"Popis": "myExampleLogicAppName"}} |
-| `testUri` | Definuje umístění na příkaz ping pro testování. | "testUri": {"type": "string", "Výchozí": "https://azure.microsoft.com/status/feed/"} |
-||||
-
-Další informace o [rozhraní REST API pro definici pracovního postupu aplikace logiky a vlastnosti](https://docs.microsoft.com/rest/api/logic/workflows) a [vytváření definic aplikací logiky pomocí kódu JSON](logic-apps-author-definitions.md).
-
-## <a name="deploy-logic-apps-automatically"></a>Automatické nasazení aplikací logiky
-
-Chcete-li vytvořit a automaticky nasazovat aplikace logiky do Azure, zvolte **nasadit do Azure** tady:
-
-[![Nasazení do Azure](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
-
-Tato akce přihlášení k webu Azure portal, kde zadejte podrobnosti aplikace logiky a provést změny na šablonu nebo parametry.
-Například na webu Azure portal vás vyzve k zadání tyto podrobnosti:
+Například jste se výzva k zadání těchto informací po přihlášení k webu Azure portal:
 
 * Název předplatného Azure
 * Skupinu prostředků, kterou chcete použít
 * Umístění aplikace logiky
-* Název aplikace logiky
+* Název vaší aplikace logiky
 * Test identifikátoru URI
 * Přijetí zadané podmínky a ujednání
 
-## <a name="deploy-logic-apps-with-commands"></a>Nasazení aplikací logiky s příkazy
+Další informace najdete v tématu [nasazení prostředků pomocí šablon Azure Resource Manageru a webu Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
-[!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
+## <a name="authorize-oauth-connections"></a>Autorizovat připojení OAuth
 
-### <a name="powershell"></a>PowerShell
+Po nasazení aplikace logiky funguje začátku do konce se platné parametry. Však musí i nadále autorizovat připojení OAuth pro generování platným přístupovým tokenem. Pro automatizované nasazení můžete použít skript, který se vyjádří souhlas každé připojení OAuth, jako je například to [ukázkový skript v projektu Githubu LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth). Můžete také povolit připojení OAuth na webu Azure portal nebo v sadě Visual Studio tak, že otevřete aplikaci logiky v návrháři pro Logic Apps.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+<a name="powershell"></a>
+
+## <a name="deploy-with-azure-powershell"></a>Nasazení pomocí Azure PowerShellu
+
+K nasazení na konkrétní *skupiny prostředků Azure*, použijte tento příkaz:
 
 ```powershell
-New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -ResourceGroupName ExampleDeployGroup
+New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json 
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+Pokud chcete nasadit na konkrétní předplatné Azure, použijte tento příkaz:
+
+```powershell
+New-AzDeployment -Location <location> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json 
+```
+
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
+* [`New-AzResourceGroupDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)
+* [`New-AzDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azdeployment)
+
+<a name="cli"></a>
+
+## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
+
+K nasazení na konkrétní *skupiny prostředků Azure*, použijte tento příkaz:
 
 ```azurecli
-azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -g ExampleDeployGroup
+az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
 ```
+
+Pokud chcete nasadit na konkrétní předplatné Azure, použijte tento příkaz:
+
+```azurecli
+az deployment create --location <location> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
+```
+
+Další informace najdete v těchto tématech: 
+
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 
+* [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
+* [`az deployment create`](https://docs.microsoft.com/cli/azure/deployment?view=azure-cli-latest#az-deployment-create)
+
+<a name="azure-pipelines"></a>
+
+## <a name="deploy-with-azure-devops"></a>Nasazení s využitím Azure DevOps
+
+K nasazení šablony aplikace logiky a spravovat prostředí, týmy obvykle používají nástroj, jako [kanály Azure](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines) v [Azure DevOps](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops-services). Kanály Azure poskytuje [úkol nasazení skupiny prostředků Azure](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2) , že můžete přidat do jakékoli sestavení nebo kanál verze.
+Pro povolení k nasazení a vytvořit kanál pro vydávání verzí, budete potřebovat Azure Active Directory (AD) [instanční objekt služby](../active-directory/develop/app-objects-and-service-principals.md). Další informace o [pomocí instančních objektů Azure kanály](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure). 
+
+Tady je obecný postup vysoké úrovně pro používání Azure kanály:
+
+1. V kanálech Azure vytvořte prázdný kanálu.
+
+1. Zvolte prostředky, které potřebujete pro kanál, jako jsou šablony aplikace logiky a soubory parametrů šablony, které vygenerujete ručně nebo jako součást procesu sestavení.
+
+1. Pro úlohu agenta, najděte a přidejte **nasazení skupiny prostředků Azure** úloh.
+
+   ![Přidání úkolu "Nasazení skupiny prostředků Azure"](./media/logic-apps-create-deploy-template/add-azure-resource-group-deployment-task.png)
+
+1. Nakonfigurovat [instanční objekt služby](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure). 
+
+1. Přidáte odkazy na šablony aplikace logiky a soubory parametrů šablony.
+
+1. Pokračujte v sestavení kroky v procesu vydávání verzí u jiných prostředí, automatizovaných testů nebo schvalovatelů podle potřeby.
 
 ## <a name="get-support"></a>Získat podporu
 
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
+Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Monitorování Logic Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+> [Monitorování aplikací logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md)

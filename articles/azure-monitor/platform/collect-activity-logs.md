@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 2fd74262d9c1b4a751df5d836f98bf89d31dbdc2
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 48fb09b73a6169da392443f5fbf4f005e9640c3e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540427"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905983"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics ve službě Azure Monitor
 
@@ -31,7 +31,7 @@ Použití protokolu aktivit, můžete určit *co*, *kdo*, a *při* veškerých o
 Když se připojíte protokolů aktivit Azure do pracovního prostoru Log Analytics, můžete:
 
 - Analýza protokolů aktivit se předdefinované zobrazení
-- Analýza a hledání a protokolů aktivit z více předplatných Azure
+- Analýza a hledat protokoly aktivit z více předplatných Azure
 - Protokoly aktivit déle než 90 dní<sup>1</sup>
 - Protokoly aktivit je možné korelovat s jiné službě Azure data platformy a aplikace
 - Zobrazit provozní aktivity agregované podle stavu

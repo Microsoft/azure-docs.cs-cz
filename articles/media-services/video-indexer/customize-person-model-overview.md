@@ -7,21 +7,26 @@ author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 03/19/2019
 ms.author: anzaman
-ms.openlocfilehash: 073cff22f17f496c2ff85cfbf716751dfea1e03e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: b491120639421d85d2fbb1a0efb2b6dd09ec1d4c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285022"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893890"
 ---
 # <a name="customize-a-person-model-in-video-indexer"></a>Přizpůsobení modelu osoby v Video Indexer
 
+Video Indexer umožňuje rozpoznávání celebrit videí. Funkce rozpoznávání celebrit pokrývá přibližně jednoho milionu tváří, které jsou založené na zdroji dat běžně požadovaných například IMDB Wikipedia a horní vlivné osoby LinkedIn. Detekována i tváří, které nejsou rozpoznány modulem Video Indexer, ale jsou ponechána bez názvu. Zákazníky můžete vytvářet vlastní modely osoby a povolit Video Indexer k rozpoznávání tváří, které nejsou rozpoznány ve výchozím nastavení. Zákazníci mohou vytvářet tyto osoby modely tak, že spárujete s soubory obrázků pro rozpoznávání tváře osoby jméno osoby.  
 
-Video Indexer podporuje rozpoznávání tváří a rozpoznávání celebrit v případě video obsahu. Funkce rozpoznávání celebrit pokrývá přibližně 1 000 000 tváří založené na zdroji dat běžně požadovaných například IMDB Wikipedia a horní vlivné osoby LinkedIn. Zjištění tváří, které nejsou rozpoznány aplikací funkce rozpoznávání celebrit; Nicméně jsou ponechána bez názvu. Po nahrání videa do modulu Video Indexer a získat výsledky zpět, můžete přejít zpět a pojmenujte tváří, které nebyly rozpoznány. Jakmile je označování plochy s názvem pro rozpoznávání tváře a název nechejte se přidat do vašeho účtu osoba modelu. Video Indexer pak zjistit tento tvář budoucí videa a posledních videa.
+Pokud váš účet určeného pro různé případy použití, vám může přinést nebudou moct vytvořit několik modelů osoba na jeden účet. Pokud se obsah ve vašem účtu na rozděleny na různé kanály, můžete chtít vytvořit samostatné osoba model pro každý kanál. 
 
-Video Indexer webu nebo rozhraní API můžete použít k úpravě tváří, které byly zjištěny v videa ve vašem účtu, jak je popsáno v následujících tématech:
+> [!NOTE]
+> Každá osoba model podporuje až 1 milión lidí a každý účet může obsahovat maximálně 50 modelů osoby. 
 
-- [Přizpůsobení modelu osoba s použitím rozhraní API](customize-person-model-with-api.md)
-- [Přizpůsobení modelu osoba na webu](customize-person-model-with-website.md)
+Po vytvoření modelu, můžete zadáním ID modelu konkrétní osobě modelu při nahrávání/indexování nebo Reindexace videa. Školení nové tváře video, aktualizuje konkrétní vlastního modelu, který byl přidružený videa. 
+
+Pokud nepotřebujete podpora více modelů osoby, nepřiřazujte osoba ID modelu videa při nahrávání/indexování nebo přeindexování. V takovém případě Video Indexer použije výchozí model osoba ve vašem účtu. 
+
+Video Indexer webu můžete použít k úpravě tváří, které byly zjištěny ve videu a ke správě více vlastních modelů osoba ve vašem účtu, jak je popsáno v [přizpůsobit osoba model s použitím webu](customize-person-model-with-website.md) tématu. Můžete také použít rozhraní API, jak je popsáno v [přizpůsobit osoba model s použitím rozhraní API](customize-person-model-with-api.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 6470a358fd3127c93e2e2248b42f79690f4e8b55
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 9b905a81751ce5f4de4a4efbb9ff4c328269fe34
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449352"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904844"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Kurz – moduly hardwarového zabezpečení nasazení do existující virtuální sítě pomocí Powershellu
 
@@ -34,6 +34,9 @@ Typická, vysokou dostupnost, architektura nasazení ve více oblastech může v
 ![Nasazení s více oblastmi](media/tutorial-deploy-hsm-powershell/high-availability.png)
 
 Tento kurz se zaměřuje na pár moduly hardwarového zabezpečení a vyžaduje bránu ExpressRoute (viz výše 1 podsítě) je integrované do existující virtuální síť (viz výše 1 virtuální síť).  Všechny ostatní prostředky jsou standardní prostředky Azure. Stejný postup integrace lze použít pro moduly hardwarového zabezpečení v podsíti 4 na virtuální síť 3 výše.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -56,13 +59,13 @@ Zřizování moduly hardwarového zabezpečení a integraci do existující virt
 Jak je uvedeno výše, žádné zřizovací aktivita vyžaduje, aby služba Dedicated modulu hardwarového zabezpečení je registrována pro vaše předplatné. Pro ověření, spusťte následující příkaz Powershellu v portálu Azure cloud shell. 
 
 ```powershell
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
+Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
 ```
 
 Následující příkaz ověří síťové funkce potřebné pro službu vyhrazené modulu hardwarového zabezpečení.
 
 ```powershell
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
+Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
 ```
 
 Oba příkazy by měl vrátit ve stavu "Registrováno" (jak je vidět níže) předtím, než budete pokračovat, některé.  Pokud potřebujete k registraci pro tuto službu, obraťte se na obchodního zástupce společnosti Microsoft.
@@ -130,20 +133,20 @@ Jakmile soubory odešlete, jste připraveni k vytváření prostředků.
 Před vytvořením nového modulu hardwarového zabezpečení jsou prostředky, které existují některé požadovaného prostředky, by měl zajistit na místě. Musí mít virtuální síť s rozsahy adres podsítě pro výpočty, moduly hardwarového zabezpečení a brány. Následující příkazy slouží jako příklad co byste vytvořit virtuální síť.
 
 ```powershell
-$compute = New-AzureRmVirtualNetworkSubnetConfig `
+$compute = New-AzVirtualNetworkSubnetConfig `
   -Name compute `
   -AddressPrefix 10.2.0.0/24
 ```
 
 ```powershell
-$delegation = New-AzureRmDelegation `
+$delegation = New-AzDelegation `
   -Name "myDelegation" `
   -ServiceName "Microsoft.HardwareSecurityModules/dedicatedHSMs"
 
 ```
 
 ```powershell
-$hsmsubnet = New-AzureRmVirtualNetworkSubnetConfig ` 
+$hsmsubnet = New-AzVirtualNetworkSubnetConfig ` 
   -Name hsmsubnet ` 
   -AddressPrefix 10.2.1.0/24 ` 
   -Delegation $delegation 
@@ -152,7 +155,7 @@ $hsmsubnet = New-AzureRmVirtualNetworkSubnetConfig `
 
 ```powershell
 
-$gwsubnet= New-AzureRmVirtualNetworkSubnetConfig `
+$gwsubnet= New-AzVirtualNetworkSubnetConfig `
   -Name GatewaySubnet `
   -AddressPrefix 10.2.255.0/26
 
@@ -160,7 +163,7 @@ $gwsubnet= New-AzureRmVirtualNetworkSubnetConfig `
 
 ```powershell
 
-New-AzureRmVirtualNetwork `
+New-AzVirtualNetwork `
   -Name myHSM-vnet `
   -ResourceGroupName myRG `
   -Location westus `
@@ -176,7 +179,7 @@ Jakmile jsou všechny požadavky na místě, spusťte následující příkaz pr
 
 ```powershell
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName myRG `
+New-AzResourceGroupDeployment -ResourceGroupName myRG `
      -TemplateFile .\Deploy-2HSM-toVNET-Template.json `
      -TemplateParameterFile .\Deploy-2HSM-toVNET-Params.json `
      -Name HSMdeploy -Verbose
@@ -195,10 +198,10 @@ Pokud chcete ověřit zařízení se zřizují a naleznete v tématu atributy za
 
 ```powershell
 
-$subid = (Get-AzureRmContext).Subscription.Id
+$subid = (Get-AzContext).Subscription.Id
 $resourceGroupName = "myRG"
 $resourceName = "HSM1"  
-Get-AzureRmResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
+Get-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
 
 ```
 
@@ -218,7 +221,7 @@ Po přihlášení k virtuálního počítače s Linuxem se můžete přihlásit 
 
 ```powershell
 
-(Get-AzureRmResource -ResourceGroupName myRG -Name HSMdeploy -ExpandProperties).Properties.networkProfile.networkInterfaces.privateIpAddress
+(Get-AzResource -ResourceGroupName myRG -Name HSMdeploy -ExpandProperties).Properties.networkProfile.networkInterfaces.privateIpAddress
 
 ```
 Až budete mít adresu IP, spusťte následující příkaz:
@@ -262,10 +265,10 @@ Pokud budete hotovi s prostředky v této skupině prostředků, můžete ho ode
 
 ```powershell
 
-$subid = (Get-AzureRmContext).Subscription.Id
+$subid = (Get-AzContext).Subscription.Id
 $resourceGroupName = "myRG" 
 $resourceName = "HSMdeploy"  
-Remove-AzureRmResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName 
+Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName 
 
 ```
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 3a88c29739faca33794ce10de895c0439f007532
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 51d168474fd593dd537a25c0434e240a426c2cbf
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294225"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918344"
 ---
 # <a name="scaling-media-processing-overview"></a>Přehled škálování zpracování médií 
 Tato stránka poskytuje přehled toho, jak a proč ke škálování zpracování médií. 
@@ -48,7 +48,7 @@ V následující tabulce umožňuje rozhodování při výběru mezi různými r
 
 ## <a name="billing"></a>Fakturace
 
-Budou se vám účtovat skutečné minuty využití rezervovaných jednotek médií. Podrobné vysvětlení najdete v tématu v části Nejčastější dotazy [ceny služby Media Services](https://azure.microsoft.com/pricing/details/media-services/) stránky.   
+Budou se vám účtovat na počet minut, po které se zřizují rezervovaných jednotek médií ve vašem účtu. K tomu dochází nezávisle na, jestli jsou všechny úlohy spuštěné v účtu. Podrobné vysvětlení najdete v tématu v části Nejčastější dotazy [ceny služby Media Services](https://azure.microsoft.com/pricing/details/media-services/) stránky.   
 
 ## <a name="quotas-and-limitations"></a>Kvóty a omezení
 Informace o omezení a kvóty a tom, jak vytvořit lístek podpory najdete v tématu [kvóty a omezení](media-services-quotas-and-limitations.md).
@@ -58,7 +58,7 @@ Zajištění škálování úloh zpracování médií s jedním z těchto techno
 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)
-> * [Azure Portal](media-services-portal-scale-media-processing.md)
+> * [Portál](media-services-portal-scale-media-processing.md)
 > * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)

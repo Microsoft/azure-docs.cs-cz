@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 2479db2abcb578eb380655346582392770606b39
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0f6ee8729cbed9cb8baf3668f7b1a332bc5eddc1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552176"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892819"
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>Začínáme s komponentami žádostí a odpovědí
 Součástí požadavků a odpovědí v aplikaci logiky můžete v reálném čase reagovat na události.
@@ -34,7 +34,8 @@ Můžete například provést následující věci:
 Abyste mohli začít používat akce odezvy a odpovědi v aplikaci logiky, najdete v článku [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-http-request-trigger"></a>Pomocí aktivační událost požadavek HTTP
-Trigger je událost, která umožňuje spustit pracovní postup, který je definován v aplikaci logiky. [Další informace o aktivačních událostech](connectors-overview.md).
+Trigger je událost, která umožňuje spustit pracovní postup, který je definován v aplikaci logiky. 
+[Další informace o aktivačních událostech](../connectors/apis-list.md).
 
 Tady je příklad posloupnosti o tom, jak nastavit požadavek HTTP v návrháři aplikace logiky.
 

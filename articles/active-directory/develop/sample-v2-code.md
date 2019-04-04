@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b518235efa4cd236afd8f79cb70cf30696931fdb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f1aca8eb16e9474f8ec834178748c27682372f7b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086764"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905388"
 ---
 # <a name="azure-active-directory-code-samples-v20-endpoint"></a>Ukázky kódu Azure Active Directory (koncový bod v2.0)
 
@@ -74,7 +74,7 @@ Následující ukázky ukazují veřejné klientské aplikace (desktop a mobiln�
 
 Klientská aplikace | Platforma | Tok/udělení | Volání Microsoft Graphu | Volání webového rozhraní API ASP.NET Core 2.0
 ------------------ | -------- |  ----------| ---------- | -------------------------
-Plochy (WPF)      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | Interaktivní | [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+Plochy (WPF)      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | Interaktivní | [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi)
 Plocha (konzola)   | ![.NET / C# (Desktop)](media/sample-v2-code/logo_NET.png) | Integrované ověřování systému Windows |[dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2)
 Plocha (konzola)   | ![.NET / C# (Desktop)](media/sample-v2-code/logo_NETcore.png) | Uživatelské jméno/heslo |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)
 Mobilní zařízení (UPW)   | ![.NET/C# (UWP)](media/sample-v2-code/logo_windows.png) | Interaktivní |[dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |
@@ -97,15 +97,15 @@ Následující příklad ukazuje veřejné klientské aplikace běžící na za�
 
 Klientská aplikace | Platforma | Tok/udělení | Volání Microsoft Graphu
 ------------------ | -------- |  ----------| ----------
-Plocha (konzola)   | ![.NET / C# (Desktop)](media/sample-v2-code/logo_NETcore.png) | Tok kódu zařízení |[dotnetcore-devicecodeflow-v2](https://github.com/azure-samples/active-directory-dotnetcore-devicecodeflow-v2)
+Plocha (konzola)   | ![.NET / C# (Desktop)](media/sample-v2-code/logo_NETcore.png) | Tok kódu při zařízení |[dotnetcore-devicecodeflow-v2](https://github.com/azure-samples/active-directory-dotnetcore-devicecodeflow-v2)
 
 ## <a name="web-apis"></a>Webová rozhraní API
 
-Následující příklad ukazuje způsob ochrany webového rozhraní API s koncovým bodem v2.0 Azure AD. V aplikaci WPF se provede toto rozhraní API, ale mohou být volány žádné aplikace.
+Následující příklad ukazuje způsob ochrany webového rozhraní API s koncovým bodem v2.0 Azure AD. V aplikaci WPF se provede toto rozhraní API, ale mohou být volány žádné aplikace. Webové rozhraní API také volání Microsoft Graphu.
 
 Platforma | Ukázka
  -------- | -------------------
-![.NET/C#](media/sample-v2-code/logo_NET.png) | WebAPI (služba) z [dotnet-native-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+![.NET/C#](media/sample-v2-code/logo_NET.png) | WebAPI (služba) z [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)
 
 ## <a name="other-microsoft-graph-samples"></a>Další ukázky Microsoft Graphu
 

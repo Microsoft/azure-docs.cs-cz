@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 1a51e9b636e15f178de072af8372404af1dc47e2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 6fe8cccf60e60ada34e3b7847964958cf6e03c4a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187990"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904742"
 ---
 # <a name="how-to-view-container-logs-real-time-with-azure-monitor-for-containers-preview"></a>Postup zobrazení kontejneru protokoly reálném čase pomocí Azure monitoru pro kontejnery (preview)
-Tuto funkci, která je aktuálně ve verzi preview, poskytuje v reálném čase přehled o vaše protokoly kontejneru Azure Kubernetes Service (AKS) (stdout/stderr) bez nutnosti spuštění příkazů kubectl. Když vyberete tuto možnost, nové podokno se zobrazí pod tabulkou dat výkonu kontejnery na **kontejnery** zobrazení.  Zobrazuje se v live protokolování vygenerované modulem kontejneru pro další pomoc při řešení problémů v reálném čase.  
+Tuto funkci, která je aktuálně ve verzi preview, poskytuje v reálném čase přehled o vaše protokoly kontejneru Azure Kubernetes Service (AKS) (stdout/stderr) bez nutnosti spuštění příkazů kubectl. Když vyberete tuto možnost, nové podokno se zobrazí pod tabulkou dat výkonu kontejnery na **kontejnery** zobrazení.  Zobrazuje se v live protokolování vygenerované modulem kontejneru pro další pomoc při řešení problémů v reálném čase. **Přispěvatel** přístup k prostředku clusteru se vyžaduje pro tuto funkci používat.
 
 Živé protokoly podporuje tři různé metody řídit přístup k protokolům:
 

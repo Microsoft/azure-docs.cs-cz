@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/30/2019
+ms.date: 04/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6bf0efd6994315d56e7b1b2447ffed9154cf5ee5
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: a5ab0b25a2a2db764854982b1a6801ce4f857dda
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804866"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891952"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Vývoj s využitím Media Services v3 rozhraní API
 
@@ -47,7 +47,7 @@ Zobrazit [získání obsahu klíče zásad – .NET](get-content-key-policy-dotn
 
 Operace označené `x-ms-long-running-operation` ve službě Azure Media Services [swagger soubory](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) se dlouho běžící operace. 
 
-Podrobnosti o tom, jak sledovat asynchronních operací v Azure najdete v tématu [asynchronních operací](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation)
+Podrobnosti o tom, jak sledovat asynchronních operací v Azure najdete v tématu [asynchronních operací v](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
 
 Služba Media Services má následující dlouho běžící operace:
 
@@ -65,7 +65,6 @@ Služba Media Services má následující dlouho běžící operace:
 * Spustit StreamingEndpoint
 * Zastavit StreamingEndpoint
 * Škálování StreamingEndpoint
-
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrování, řazení, stránkování entit Media Services
 
@@ -356,4 +355,4 @@ Následující tabulka ukazuje, jak tyto možnosti mohou být použity u [transf
 
 ## <a name="next-steps"></a>Další postup
 
-[Streamování souboru](stream-files-dotnet-quickstart.md)
+[Stream souboru](stream-files-dotnet-quickstart.md)

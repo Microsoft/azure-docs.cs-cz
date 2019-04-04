@@ -12,18 +12,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: c60983dbbe72515fd8f0f4860e169ce1ba69ed45
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 84f2d82ba6103382d7f9ff850bb6f1930ebbeb9b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407081"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904589"
 ---
 # <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Nasadit více než jednu instanci zdroje nebo vlastnosti v šablonách Azure Resource Manageru
 
 Tento článek popisuje, jak k iteraci v šabloně Azure Resource Manageru k vytvoření více instancí prostředku. Pokud je potřeba určit, jestli je prostředek nasazený vůbec, přečtěte si téma [podmínky](resource-group-authoring-templates.md#condition).
 
 Podívejte se kurz [kurz: vytvoření více instancí prostředků pomocí šablon Resource Manageru](./resource-manager-tutorial-create-multiple-instances.md).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="resource-iteration"></a>Iterace prostředků
 
@@ -56,7 +59,7 @@ Prostředek pro vytvoření několikrát má následující formát:
 }
 ```
 
-Všimněte si, že název každého prostředku obsahuje `copyIndex()` funkce, která vrací aktuální iteraci ve smyčce. `copyIndex()` je založen na nule. To, v následujícím příkladu:
+Všimněte si, že název každého prostředku obsahuje `copyIndex()` funkce, která vrací aktuální iteraci ve smyčce. `copyIndex()` je založený na nule. To, v následujícím příkladu:
 
 ```json
 "name": "[concat('storage', copyIndex())]",

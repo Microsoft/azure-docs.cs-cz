@@ -1,7 +1,7 @@
 ---
 title: V1 na v2 migrace rozhraní API
 titleSuffix: Azure Cognitive Services
-description: Koncový bod verze 1 a vytváření rozhraní API pro rozpoznávání tomu jsou zastaralé. Tento průvodce vám pochopit, jak migrovat na koncový bod verze 2 a rozhraní API pro vytváření.
+description: Koncový bod verze 1 a vytváření rozhraní API pro rozpoznávání jazyka jsou zastaralé. Tento průvodce vám pochopit, jak migrovat na koncový bod verze 2 a rozhraní API pro vytváření.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 7496142b1c762ce0a7afa96a1a94dd3026351cc9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9eb73db6f641d3a5f5bb82901bd12ea291eada58
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087920"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894077"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Rozhraní API v1 na v2 Průvodce migrací pro aplikace LUIS
 Verze 1 [koncový bod](https://aka.ms/v1-endpoint-api-docs) a [vytváření](https://aka.ms/v1-authoring-api-docs) jsou zastaralé rozhraní API. Tento průvodce vám pochopit, jak migrovat na verzi 2 [koncový bod](https://aka.ms/luis-endpoint-apis) a [vytváření](https://aka.ms/luis-authoring-apis) rozhraní API. 
@@ -134,7 +134,7 @@ Několik rozhraní API, které vracejí LUIS metadata mají nové názvy.
 
 
 ## <a name="sample-renamed-to-suggest"></a>"Ukázkový" přejmenovat "navrhnout"
-LUIS navrhuje projevy ze stávajících [koncový bod projevy](luis-how-to-review-endoint-utt.md) modelu, který může vylepšit. V předchozí verzi, to nazýval **ukázka**. V nové verzi, se změní název ze vzorku **navrhnout**. Tento postup se nazývá **[zkontrolujte koncový bod projevy](luis-how-to-review-endoint-utt.md)** LUIS webu.
+LUIS navrhuje projevy ze stávajících [koncový bod projevy](luis-how-to-review-endpoint-utterances.md) modelu, který může vylepšit. V předchozí verzi, to nazýval **ukázka**. V nové verzi, se změní název ze vzorku **navrhnout**. Tento postup se nazývá **[zkontrolujte koncový bod projevy](luis-how-to-review-endpoint-utterances.md)** LUIS webu.
 
 | version | trasa |
 |--|--|

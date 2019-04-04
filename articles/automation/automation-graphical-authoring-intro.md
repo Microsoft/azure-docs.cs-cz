@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d637436721ff464f58e41069bb00746fcd82410
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ae732ab5c73dbec4a2aef6521b9edb490079112e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427232"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918140"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafické vytváření obsahu v Azure Automation.
 
@@ -48,7 +48,7 @@ Ovládacím prvku knihovna je, kde můžete vybrat [aktivity](#activities) přid
 |:--- |:--- |
 | Rutiny |Zahrnuje všechny rutiny, které lze použít ve své sadě runbook. Rutiny jsou uspořádané podle modulu. Všechny moduly nainstalované ve vašem účtu automation jsou k dispozici. |
 | Runbooky |Obsahuje sady runbook ve vašem účtu automation. Tyto sady runbook lze přidat na plátno a použít jako podřízené sady runbook. Zobrazují se jenom runbooky stejného typu jako sady runbook, který právě upravujete core; pro grafický jsou uvedeny pouze pomocí prostředí PowerShell runbooky sady runbook, zatímco pro grafický Powershellový pracovní postup sady runbook jsou uvedeny pouze pomocí prostředí PowerShell pracovního postupu-sady runbook. |
-| Prostředky |Zahrnuje [prostředky služby automation](https://msdn.microsoft.com/library/dn939988.aspx) ve vašem účtu automation, který je možné v sadě runbook. Když přidáte prostředek k sadě runbook, přidá aktivitu pracovního postupu, který získá vybraný prostředek. V případě proměnných assetů můžete vybrat, jestli se má přidat aktivitu získat proměnnou nebo nastavit proměnnou. |
+| Prostředky |Zahrnuje [prostředky služby automation](/previous-versions/azure/dn939988(v=azure.100)) ve vašem účtu automation, který je možné v sadě runbook. Když přidáte prostředek k sadě runbook, přidá aktivitu pracovního postupu, který získá vybraný prostředek. V případě proměnných assetů můžete vybrat, jestli se má přidat aktivitu získat proměnnou nebo nastavit proměnnou. |
 | Řízení sady Runbook |Obsahuje ovládací prvek aktivity sady runbook, které lze použít v aktuální sadě runbook. A *spojení* přijímá více vstupů a počká, dokud nebudou všechny dokončila před pokračováním pracovní postup. A *kód* aktivita spustí jeden nebo více řádků kódu Powershellu nebo pracovním postupu Powershellu v závislosti na typu grafický runbook. Tuto aktivitu lze použít pro vlastní kód nebo pro funkce, které je obtížné dosáhnout s ostatními aktivitami. |
 
 ### <a name="configuration-control"></a>Řízení konfigurace
@@ -249,7 +249,7 @@ Následující příklad je součástí sady runbook, který se spustí sadu vir
 
 Cyklus je, když aktivita odkazy cíl, zpět jeho zdrojová aktivita nebo jiné aktivity, který nakonec odkazuje zpět na svůj zdroj. Cykly není aktuálně povoleno ve vytváření grafického obsahu. Pokud vaše sada runbook obsahuje cyklus, uloží správně, ale při spuštění se zobrazí chyba.
 
-![Cyklus](media/automation-graphical-authoring-intro/runbook-cycle.png)
+![Cyklické](media/automation-graphical-authoring-intro/runbook-cycle.png)
 
 ### <a name="sharing-data-between-activities"></a>Sdílení dat mezi aktivitami
 
@@ -326,7 +326,7 @@ Každý vstupní parametr je definován vlastností v následující tabulce:
 |:--- |:--- |
 | Název |Jedinečný název parametru. To může obsahovat jenom alfanumerické znaky a nesmí obsahovat mezery. |
 | Popis |Volitelný popis pro vstupní parametr. |
-| Typ |Datový typ, očekávání pro hodnotu parametru. Na webu Azure portal poskytuje vhodný ovládací prvek pro datový typ pro každý parametr při zobrazení výzvy ke vstupu. |
+| Type |Datový typ, očekávání pro hodnotu parametru. Na webu Azure portal poskytuje vhodný ovládací prvek pro datový typ pro každý parametr při zobrazení výzvy ke vstupu. |
 | Povinné |Určuje, zda je nutné zadat hodnotu pro parametr. Sadu runbook nelze spustit, pokud nezadáte hodnotu pro každý povinný parametr, který nemá výchozí hodnotu definovanou. |
 | Výchozí hodnota |Určuje, jaká hodnota se používá pro parametr, pokud není zadáno. To může být buď Null, nebo konkrétní hodnotu. |
 

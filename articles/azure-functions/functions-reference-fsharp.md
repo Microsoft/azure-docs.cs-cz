@@ -12,12 +12,12 @@ ms.devlang: fsharp
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: e7e4e898142d6f9d1a93e91c1f1476ff81fc7d3c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 981ffce34c56f4becee2ed0c72da72baa220e395
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734655"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894351"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Služba Azure Functions F# referenční informace pro vývojáře
 
@@ -115,7 +115,7 @@ let Run(req: HttpRequestMessage) =
 ```
 
 ## <a name="cancellation-token"></a>Token zrušení
-Pokud vaše funkce elegantně zpracovat vypnutí, můžete jí přiřadit [ `CancellationToken` ](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) argument. To je možné kombinovat s `async`, například:
+Pokud vaše funkce elegantně zpracovat vypnutí, můžete jí přiřadit [ `CancellationToken` ](/dotnet/api/system.threading.cancellationtoken) argument. To je možné kombinovat s `async`, například:
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)
@@ -166,7 +166,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 
 Následující sestavení jsou automaticky přidány pomocí Azure Functions, který je hostitelem prostředí:
 
-* `mscorlib`,
+* `mscorlib`, 
 * `System`
 * `System.Core`
 * `System.Xml`
@@ -294,7 +294,7 @@ Poskytuje cesty `#load` směrnice jsou relativní k umístění vašeho `.fsx` s
 Další informace najdete v následujících materiálech:
 
 * [F#Průvodce](/dotnet/articles/fsharp/index)
-* [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
+* [Osvědčené postupy pro Azure Functions](functions-best-practices.md)
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)
 * [Azure Functions aktivačními událostmi a vazbami](functions-triggers-bindings.md)
 * [Testování Azure Functions](functions-test-a-function.md)

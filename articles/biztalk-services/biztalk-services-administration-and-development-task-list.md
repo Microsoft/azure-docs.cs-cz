@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: baee8c8e931a18c1d72b52c6141c29cba98f9c53
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6b8e0fea73dc24f7e680482be1f06fba6d702804
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096397"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916236"
 ---
 # <a name="administration-and-development-task-list-in-biztalk-services"></a>Správu a vývoj seznamu úkolů ve službě BizTalk Services
 
@@ -32,31 +32,31 @@ Při práci s Microsoft Azure BizTalk Services, je několik místní a cloudové
 
 | Krok | Kdo zodpovídá | Úkol | Související odkazy |
 | --- | --- | --- | --- |
-| 1. |Správce |Vytvořit odběr služby Microsoft Azure pomocí účtu Microsoft nebo účtu organizace |[Azure Portal](https://portal.azure.com) |
-| 2. |Správce |Vytvořit nebo zřídit službu BizTalk. |[Vytvoření služby BizTalk](https://msdn.microsoft.com/library/azure/dn232347.aspx) |
-| 3. |Správce |Registrovat vy nebo vaše společnost nasazení služby BizTalk Services |[Registrace a aktualizace nasazení služby BizTalk na portálu BizTalk Services](https://msdn.microsoft.com/library/azure/hh689837.aspx) |
+| 1. |Správce |Vytvořit odběr služby Microsoft Azure pomocí účtu Microsoft nebo účtu organizace |[portál Azure](https://portal.azure.com) |
+| 2. |Správce |Vytvořit nebo zřídit službu BizTalk. |[Vytvoření služby BizTalk](/previous-versions/azure/reference/dn232347(v=azure.100)) |
+| 3. |Správce |Registrovat vy nebo vaše společnost nasazení služby BizTalk Services |[Registrace a aktualizace nasazení služby BizTalk na portálu BizTalk Services](/previous-versions/azure/hh689837(v=azure.100)) |
 | 4. |Správce |Platí v případě, že aplikace používá služba BizTalk Adapter Service k připojení k systému – obchodní (LOB) v místním nebo používá fronty nebo tématu cíl.  Vytvoření Namespace Azure Service Bus. Zadejte tento obor názvů, název vystavitele služby Service Bus a hodnoty klíče vystavitele služby Service Bus pro vývojáře. |[Postup: Vytvořte nebo upravte Namespace služby Service Bus služby](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md) a [hodnoty získat název vystavitele a klíč vystavitele](biztalk-issuer-name-issuer-key.md) |
-| 5. |Developer |Instalace sady SDK a vytvořte projekt služby BizTalk v sadě Visual Studio. |[Nainstalujte sadu SDK Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689760.aspx) a [vytvořit bohaté možnosti zasílání zpráv koncových bodů v Azure](https://msdn.microsoft.com/library/azure/hh689766.aspx) |
-| 6. |Developer |Nasazení vaší služby BizTalk projekt tak, aby vaše služba BizTalk hostované v Azure. |[Nasazení a aktualizaci projektu BizTalk Services](https://msdn.microsoft.com/library/azure/hh689881.aspx) |
-| 7. |Správce |Platí v případě, že používáte EDI.  Můžete přidat partnery a dohody vytvořit na portálu Microsoft Azure BizTalk Services. Když vytvoříte smlouvu, můžete přidat most a/nebo transformace, které jsou vytvořené pro vývojáře k nastavení smlouvy. |[Konfigurace EDI, AS2 a EDIFACT v portálu BizTalk Services](https://msdn.microsoft.com/library/azure/hh689853.aspx) |
-| 8. |Správce |Pomocí [REST](https://msdn.microsoft.com/library/azure/dn232347.aspx), monitorování stavu vaší služby BizTalk, včetně metrik výkonu. |[BizTalk Services: Karty řídicí panel, sledování a škálování](https://go.microsoft.com/fwlink/p/?LinkID=302281) |
-| 9. |Správce |Pomocí portálu Microsoft Azure BizTalk Services, spravujte artefakty, které používají služby BizTalk Services a sledování zpráv jako jsou zpracovány soubory most. |[Použití portálu BizTalk Services](https://msdn.microsoft.com/library/azure/dn874043.aspx) |
-| 10. |Správce |Vytvoření plánu zálohování k zálohování služby BizTalk. |[Kontinuita podnikových procesů a zotavení po havárii ve službě BizTalk Services](https://msdn.microsoft.com/library/azure/dn509557.aspx) |
+| 5. |Developer |Instalace sady SDK a vytvořte projekt služby BizTalk v sadě Visual Studio. |[Nainstalujte sadu SDK Azure BizTalk Services](/previous-versions/azure/hh689760(v=azure.100)) a [vytvořit bohaté možnosti zasílání zpráv koncových bodů v Azure](/previous-versions/azure/hh689766(v=azure.100)) |
+| 6. |Developer |Nasazení vaší služby BizTalk projekt tak, aby vaše služba BizTalk hostované v Azure. |[Nasazení a aktualizaci projektu BizTalk Services](/previous-versions/azure/hh689881(v=azure.100)) |
+| 7. |Správce |Platí v případě, že používáte EDI.  Můžete přidat partnery a dohody vytvořit na portálu Microsoft Azure BizTalk Services. Když vytvoříte smlouvu, můžete přidat most a/nebo transformace, které jsou vytvořené pro vývojáře k nastavení smlouvy. |[Konfigurace EDI, AS2 a EDIFACT v portálu BizTalk Services](/previous-versions/azure/hh689853(v=azure.100)) |
+| 8. |Správce |Pomocí [REST](/previous-versions/azure/reference/dn232347(v=azure.100)), monitorování stavu vaší služby BizTalk, včetně metrik výkonu. |[BizTalk Services: Karty řídicí panel, sledování a škálování](https://go.microsoft.com/fwlink/p/?LinkID=302281) |
+| 9. |Správce |Pomocí portálu Microsoft Azure BizTalk Services, spravujte artefakty, které používají služby BizTalk Services a sledování zpráv jako jsou zpracovány soubory most. |[Použití portálu BizTalk Services](/previous-versions/azure/dn874043(v=azure.100)) |
+| 10. |Správce |Vytvoření plánu zálohování k zálohování služby BizTalk. |[Kontinuita podnikových procesů a zotavení po havárii ve službě BizTalk Services](/previous-versions/azure/dn509557(v=azure.100)) |
 
 ## <a name="next-steps"></a>Další kroky
-[Kurzy a ukázky](https://msdn.microsoft.com/library/azure/hh689895.aspx)
+[Kurzy a ukázky](/previous-versions/azure/hh689895(v=azure.100))
 
-[Vytvoření projektu v sadě Visual Studio](https://msdn.microsoft.com/library/azure/hh689811.aspx)
+[Vytvoření projektu v sadě Visual Studio](/previous-versions/azure/hh689811(v=azure.100))
 
-[Nainstalujte sadu SDK Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689760.aspx)
+[Nainstalujte sadu SDK Azure BizTalk Services](/previous-versions/azure/hh689760(v=azure.100))
 
 ## <a name="concepts"></a>Koncepty
-[Vytvoření projektu v sadě Visual Studio](https://msdn.microsoft.com/library/azure/hh689811.aspx)  
-[EDI, AS2 a EDIFACT zasílání zpráv (B2b)](https://msdn.microsoft.com/library/azure/hh689898.aspx)  
+[Vytvoření projektu v sadě Visual Studio](/previous-versions/azure/hh689811(v=azure.100))  
+[EDI, AS2 a EDIFACT zasílání zpráv (B2b)](/previous-versions/azure/hh689898(v=azure.100))  
 
 ## <a name="other-resources"></a>Další prostředky
-[Přidat zdroj, cíl a most koncových bodů pro zasílání zpráv](https://msdn.microsoft.com/library/azure/hh689877.aspx)  
-[Další informace a k vytvoření mapy zpráv a transformace](https://msdn.microsoft.com/library/azure/hh689905.aspx)  
-[Pomocí služby adaptér BizTalk (BAS)](https://msdn.microsoft.com/library/azure/hh689889.aspx)  
+[Přidat zdroj, cíl a most koncových bodů pro zasílání zpráv](/previous-versions/azure/hh689877(v=azure.100))  
+[Další informace a k vytvoření mapy zpráv a transformace](/previous-versions/azure/hh689905(v=azure.100))  
+[Pomocí služby adaptér BizTalk (BAS)](/previous-versions/azure/hh689889(v=azure.100))  
 [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=303664)
 

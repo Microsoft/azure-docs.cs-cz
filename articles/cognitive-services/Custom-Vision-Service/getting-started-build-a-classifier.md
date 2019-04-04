@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: cf8a36145ebf5d5dabf8c539d4f245e1d4b209f0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 78ee24280600d336d394819d33762d8cf6278858
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886433"
+ms.locfileid: "58891476"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Sestavení klasifikátoru s Custom Vision
 
@@ -125,9 +125,7 @@ Interpretace prediktivních volání s prahovou hodnotou vysoká pravděpodobnos
 
 ## <a name="manage-training-iterations"></a>Správa iterací školení
 
-Pokaždé, když je klasifikátor trénovat, vytvoříte nový _iterace_ s vlastní metriky výkonu aktualizované. V levém podokně můžete zobrazit všechny iterace **výkonu** kartu. Když některou vyberete, máte možnost díky tomu _výchozí iterace_ kliknutím **nastavit jako výchozí** tlačítko v horní části. _Výchozí iterace_ je model, který se použije ve výchozím nastavení při dotazování pomocí rozhraní API pro předpověď (z aplikace, například). Pokud aktualizaci odmítnete _výchozí iterace_, můžete pokračovat k natrénování modelu, aniž by to ovlivnilo aktuální chování vaší aplikace, pak Jakmile budete spokojeni s lepší modelu, můžete aktualizovat výchozí nastavení.
-
-V levém podokně můžete také najdou **odstranit** tlačítko, které vám umožní odstranit iteraci, pokud je zastaralý. Když odstraníte iterace, odstraňte všechny Image, jednoznačně spojených s ním.
+Pokaždé, když je klasifikátor trénovat, vytvoříte nový _iterace_ s vlastní metriky výkonu aktualizované. V levém podokně můžete zobrazit všechny iterace **výkonu** kartu. V levém podokně můžete také najdou **odstranit** tlačítko, které vám umožní odstranit iteraci, pokud je zastaralý. Když odstraníte iterace, odstraňte všechny Image, jednoznačně spojených s ním.
 
 ## <a name="next-steps"></a>Další postup
 

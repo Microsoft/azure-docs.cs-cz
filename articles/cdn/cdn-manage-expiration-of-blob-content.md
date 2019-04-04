@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: 1b2009b54c7f436667c316b7ca002314bc966a1b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f7fc11af8cd2574271b26f7dec62072692685672
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531925"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916797"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Správa platnosti objektů Blob v Azure storage v Azure CDN
 > [!div class="op_single_selector"]
@@ -114,7 +114,7 @@ $blob.ICloudBlob.SetProperties()
 >
 
 ## <a name="setting-cache-control-headers-by-using-net"></a>Nastavení hlavičky Cache-Control s použitím rozhraní .NET
-Chcete-li určit objekt blob `Cache-Control` záhlaví pomocí kódu .NET, použijte [Klientská knihovna Azure Storage pro .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) nastavit [CloudBlob.Properties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) vlastnost.
+Chcete-li určit objekt blob `Cache-Control` záhlaví pomocí kódu .NET, použijte [Klientská knihovna Azure Storage pro .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) nastavit [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol#Microsoft_WindowsAzure_Storage_Blob_BlobProperties_CacheControl) vlastnost.
 
 Příklad:
 
@@ -163,18 +163,18 @@ Chcete-li aktualizovat *CacheControl* vlastností objektu blob pomocí Průzkumn
 ![Vlastnosti služby Azure Storage Exploreru](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Rozhraní příkazového řádku Azure
-S [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) (CLI), můžete spravovat prostředků Azure blob Storage z příkazového řádku. Chcete-li nastavit hlavičku cache-control, při nahrání objektu blob pomocí Azure CLI, nastavte *cacheControl* vlastnost s použitím `-p` přepnout. Následující příklad ukazuje, jak nastavit interval TTL, ZÍSKÁ na jednu hodinu (3 600 sekund):
+S [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure) (CLI), můžete spravovat prostředků Azure blob Storage z příkazového řádku. Chcete-li nastavit hlavičku cache-control, při nahrání objektu blob pomocí Azure CLI, nastavte *cacheControl* vlastnost s použitím `-p` přepnout. Následující příklad ukazuje, jak nastavit interval TTL, ZÍSKÁ na jednu hodinu (3 600 sekund):
   
 ```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\<blob name> <container name> <blob name>
 ```
 
 ### <a name="azure-storage-services-rest-api"></a>Rozhraní REST API služby Azure storage
-Můžete použít [rozhraní REST API služby Azure storage](https://msdn.microsoft.com/library/azure/dd179355.aspx) explicitně nastavit *x-ms-blob-cache-control* vlastnost s použitím následujících operací na vyžádání:
+Můžete použít [rozhraní REST API služby Azure storage](/rest/api/storageservices/) explicitně nastavit *x-ms-blob-cache-control* vlastnost s použitím následujících operací na vyžádání:
   
-   - [Vložení objektu Blob](https://msdn.microsoft.com/library/azure/dd179451.aspx)
-   - [Vložit blokovaných webů.](https://msdn.microsoft.com/library/azure/dd179467.aspx)
-   - [Nastavit vlastnosti objektu Blob](https://msdn.microsoft.com/library/azure/ee691966.aspx)
+   - [Put Blob](/rest/api/storageservices/Put-Blob)
+   - [Vložit blokovaných webů.](/rest/api/storageservices/Put-Block-List)
+   - [Nastavit vlastnosti objektu Blob](/rest/api/storageservices/Set-Blob-Properties)
 
 ## <a name="testing-the-cache-control-header"></a>Testování hlavičku Cache-Control
 Můžete snadno ověřit nastavení TTL objektů BLOB. V prohlížeči [vývojářské nástroje](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), test, který obsahuje objekt blob `Cache-Control` hlavičky odpovědi. Můžete také použít nástroje jako [Wget](https://www.gnu.org/software/wget/), [Postman](https://www.getpostman.com/), nebo [Fiddler](https://www.telerik.com/fiddler) a prověří hlavičky odpovědi.

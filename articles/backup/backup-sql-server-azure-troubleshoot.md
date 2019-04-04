@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: d8cbae679552cce8df29410ad8a477801abd4ff1
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: db204c0e881200f667484daf4348c336f94a0ce7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847455"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916678"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Řešení potíží s zálohování SQL serveru v Azure
 
@@ -67,7 +67,7 @@ V následujících tabulkách jsou uspořádané podle čísla chyby.
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Azure Backup se nemůže připojit k instanci serveru SQL. | Azure Backup se nemůže připojit k instanci serveru SQL. | Použijte další podrobnosti v nabídce Azure portal chyba zúžit hlavní příčiny. Odkazovat na [SQL odstraňování potíží se zálohováním](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) oprava chyby.<br/><ul><li>Pokud výchozí nastavení SQL nepovolují vzdálená připojení, změňte nastavení. Najdete následujících odkazech pro změnu nastavení.<ul><li>[https://msdn.microsoft.com/library/bb326495.aspx](https://msdn.microsoft.com/library/bb326495.aspx)</li><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Pokud dojde k problémům přihlášení, podívejte se na následujících odkazech to opravit:<ul><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
+| Azure Backup se nemůže připojit k instanci serveru SQL. | Azure Backup se nemůže připojit k instanci serveru SQL. | Použijte další podrobnosti v nabídce Azure portal chyba zúžit hlavní příčiny. Odkazovat na [SQL odstraňování potíží se zálohováním](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) oprava chyby.<br/><ul><li>Pokud výchozí nastavení SQL nepovolují vzdálená připojení, změňte nastavení. Naleznete v následujících článcích pro informace o změně nastavení.<ul><li>[MSSQLSERVER_-1](/previous-versions/sql/sql-server-2016/bb326495(v=sql.130))</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Pokud dojde k problémům přihlášení, podívejte se na následujících odkazech to opravit:<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
 
 ### <a name="usererrorparentfullbackupmissing"></a>UserErrorParentFullBackupMissing
 
@@ -169,7 +169,8 @@ Tyto příznaky mohou vzniknout z důvodu nejméně jeden z následujících dů
   * Virtuální počítač byl vypnut delší dobu kvůli které konfiguraci rozšíření na něm vypršela
   * Odstranění virtuálního počítače a další virtuální počítač vytvořila se stejným názvem a ve stejné skupině prostředků jako odstraněného virtuálního počítače
   * Jeden z uzlů AG nedostali kompletní konfiguraci zálohování, k tomu může dojít buď v době registrace skupiny dostupnosti v úložišti nebo když přidá nový uzel  <br>
-    Ve výše uvedených scénářích se doporučuje spustit znovu zaregistrovat operace na virtuálním počítači. Tato možnost dostupná jenom přes PowerShell a brzy bude k dispozici na webu Azure Portal i.
+   
+Ve výše uvedených scénářích se doporučuje spustit znovu zaregistrovat operace na virtuálním počítači. Tato možnost dostupná jenom přes PowerShell a brzy bude k dispozici na webu Azure Portal i.
 
 
 ## <a name="next-steps"></a>Další postup

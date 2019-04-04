@@ -15,18 +15,21 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c316176094f6d9b8b45b812acaad04ad37f4bce2
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 8ae6c9d5238f2853a12c20edfd3dba6d3f529b2c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449123"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905813"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Řešení potíží s doménou a problémy s certifikátem protokolu SSL ve službě Azure App Service
 
 Tento článek uvádí běžné problémy, které se můžete setkat při konfiguraci domény nebo certifikát SSL pro svoje webové aplikace ve službě Azure App Service. Také popisuje možné příčiny a řešení těchto problémů.
 
 Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="certificate-problems"></a>Problémy s certifikátem
 
@@ -314,7 +317,7 @@ Ano. Při přístupu k okně vlastní domény a SSL na webu Azure Portal, uvidí
 
 **Je možné převést domény z jednoho předplatného do jiného předplatného?**
 
-Domény můžete přesunout na jiné předplatné nebo prostředek skupiny pomocí [Move-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Move-AzureRmResource) rutiny Powershellu.
+Domény můžete přesunout na jiné předplatné nebo prostředek skupiny pomocí [přesunout AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) rutiny Powershellu.
 
 **Jak můžete spravovat své vlastní domény, když nemám aktuálně aplikaci služby Azure App Service?**
 

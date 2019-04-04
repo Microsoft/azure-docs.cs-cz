@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: f2fc187518070bf199a3959889afd1ede4ef5b77
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 89b48175d7707458cd92916f6b26e298163a7416
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660710"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915914"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>Automatizace operačního systému a rozhraní framework opravy chyb s úlohami služby ACR
 
@@ -27,7 +27,7 @@ Vytváření a testování imagí kontejnerů s ACR úkoly čtyři způsoby:
 * [Rychlých úloh](#quick-task): Vytváření a nasdílení změn kontejneru obrázků na vyžádání, v Azure, bez nutnosti místní instalace modul Docker. Myslíte `docker build`, `docker push` v cloudu. Sestavení z místního zdrojového kódu nebo úložiště Git.
 * [Sestavení na zdrojový kód potvrzení](#automatic-build-on-source-code-commit): Automaticky aktivujte sestavení image kontejneru, když je kód potvrzen do úložiště Git.
 * [Sestavení na aktualizací základních imagí](#automate-os-and-framework-patching): Aktivujte sestavení image kontejneru, když byl aktualizován této bitové kopie základní image.
-* [Vícekrokové úlohy](#multi-step-tasks-preview) (preview): Definujte vícekrokových úkolů, které sestavování imagí, spouštění kontejnerů jako příkazy a nahrávání imagí do registru. Tato funkce ve verzi preview služby ACR úloh podporuje spouštění úlohy na vyžádání a paralelní bitové kopie sestavení, testování a operací push.
+* [Vícekrokové úlohy](#multi-step-tasks): Definujte vícekrokových úkolů, které sestavování imagí, spouštění kontejnerů jako příkazy a nahrávání imagí do registru. Tato funkce z provedení úlohy na vyžádání podporuje ACR úkoly a paralelní bitové kopie sestavení, testování a operací push.
 
 ## <a name="quick-task"></a>Rychlých úloh
 
@@ -36,6 +36,8 @@ Začátek správy životního cyklu kontejneru je ve skutečnosti cyklu vývoje 
 Předtím, než potvrdíte svůj první řádek kódu, ACR úlohy [rychlých úloh](container-registry-tutorial-quick-task.md) funkce může poskytnout sestavení integrované vývojové prostředí přesměrováním svou image kontejneru do Azure. S rychlé úkoly můžete ověřit vaše automatizované definice sestavení a zachycení potenciálních problémů před potvrzením kódu.
 
 Pomocí známé `docker build` formátu, [az acr sestavení] [ az-acr-build] příkaz v rozhraní příkazového řádku Azure má *kontextu* (sadu souborů pro sestavení), odešle ACR úlohy a ve výchozím nastavení, Posune sestavenou image po dokončení jeho registru.
+
+Úvodní informace najdete v tématu rychlý start k [sestavení a spuštění image kontejneru](container-registry-quickstart-task-cli.md) ve službě Azure Container Registry.  
 
 Následující tabulka ukazuje několik příkladů kontextu podporovaná umístění pro úlohy ACR:
 
@@ -76,9 +78,9 @@ Další informace o operačním systému a rozhraní framework opravy chyb ve t�
 > [!NOTE]
 > Základní image aktualizuje aktivační události sestavení pouze v případě imagí základní a aplikace jsou umístěny ve stejné Azure container registry i základní třídy se nachází ve veřejném úložišti Docker Hubu.
 
-## <a name="multi-step-tasks-preview"></a>Úlohy s více kroky (Preview)
+## <a name="multi-step-tasks"></a>Vícekrokové úlohy
 
-Vícekrokových úkolů, funkce ve verzi preview služby ACR úloh obsahuje definice založené na krok úlohy a provádění pro sestavování, testování a opravy chyb imagí kontejnerů v cloudu. Kroky úlohy definují jednotlivá sestavení image kontejneru a operací nabízených oznámení. Mohou také definovat spuštění jednoho nebo více kontejnerů, u každého kroku pomocí kontejneru jako prostředí pro spuštění.
+Vícekrokové úlohy poskytují definice založené na krok úlohy a spuštění sestavení, testování a opravami imagí kontejnerů v cloudu. Kroky úlohy definují jednotlivá sestavení image kontejneru a operací nabízených oznámení. Mohou také definovat spuštění jednoho nebo více kontejnerů, u každého kroku pomocí kontejneru jako prostředí pro spuštění.
 
 Můžete například vytvořit vícekrokové úlohy, která automatizuje následující:
 
@@ -93,15 +95,12 @@ Vícekrokové úlohy umožňují rozdělit sestavování, spouštění a testov�
 
 Další informace o vícekrokových úkolů v [spuštění několika kroky sestavení, testování a opravu úkoly v úlohách ACR](container-registry-tasks-multi-step.md).
 
-> [!IMPORTANT]
-> Možnost vícekrokových úkolů ACR úloh je v současnosti ve verzi preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce můžou změnit před obecné dostupnosti (GA)
-
 ## <a name="next-steps"></a>Další postup
 
 Až budete připraveni k automatizaci operačního systému a rozhraní framework opravy chyb ve vytváření imagí kontejnerů v cloudu, přečtěte si část třídílné série kurzů ACR úlohy.
 
 > [!div class="nextstepaction"]
-> [Sestavení imagí kontejnerů v cloudu pomocí Azure Container Registry Tasks](container-registry-tutorial-quick-task.md)
+> [Sestavování imagí kontejneru v cloudu pomocí služby Azure Container Registry úlohy](container-registry-tutorial-quick-task.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

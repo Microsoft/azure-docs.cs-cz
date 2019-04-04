@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: sogup
-ms.openlocfilehash: 1f96c47e993e9b3d123972aba8eefc54b1d5cdfa
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 56c75840ca3114af40a2c843e2107f850bbff51a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652667"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905966"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Získejte lepší zálohování a obnovení výkonu pomocí funkce Azure Backup rychlé obnovení
 
@@ -28,6 +28,7 @@ Nový model pro rychlé obnovení obsahuje následující vylepšení funkcí:
 * Podporuje disky SSD na úrovni Standard spolu s standardní HDD disky a disky Premium SSD.
 *   Možnost používat nespravovaného virtuálního počítače na původní účty úložiště (na disk), při obnovování. Tato schopnost existuje i v případě, že virtuální počítač obsahuje disky, které jsou distribuovány mezi různými účty úložiště. Urychluje operace obnovení pro celou řadu konfigurací virtuálních počítačů.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-new-in-this-feature"></a>Co je nového v této funkci
 
@@ -74,9 +75,9 @@ Na webu Azure Portal, zobrazí se pole přidá **zásady zálohování virtuáln
 > Z Az PowerShell verze 1.6.0 a vyšší můžete aktualizovat doba uchování snímků okamžitá obnova ve zásady pomocí Powershellu
 
 ```powershell
-PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+PS C:\> $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 $bkpPol.SnapshotRetentionInDays=5
-PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 Výchozí uchování snímků pro jednotlivé zásady je nastavena na dvou dnů. Uživatel může změnit hodnotu nejméně 1 a maximálně 5 dní. Pro týdenní zásady uchovávání dat snímku je pevně 5 dní.
 

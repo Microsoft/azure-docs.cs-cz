@@ -3,19 +3,15 @@ title: Vytvoření brány Application Gateway s přesměrováním na základě c
 description: Informace o tom, jak pomocí Azure PowerShellu vytvořit bránu Application Gateway s provozem přesměrovaným na základě cesty adresy URL
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 11/13/2018
+ms.date: 4/3/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 23541543daaf1a354da370178f82b222acfebe72
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: febe02ac7fe4dfcb4140a8e5796c4c9fa86f6de3
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58876629"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918378"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Vytvoření brány Application Gateway s přesměrováním na základě cesty adresy URL pomocí Azure PowerShellu
 
@@ -502,7 +498,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Otestování základní adresy URL v aplikační bráně](./media/tutorial-url-redirect-powershell/application-gateway-iistest.png)
 
-Změňte adresu URL na http://&lt;ip-adresa&gt;:8080/video/test.htm, kde za &lt;ip-adresa&gt; dosadíte svoji IP adresu, a mělo by se vám zobrazit něco takového:
+Změňte adresu URL na http://&lt;ip-adresa&gt;:8080/images/test.htm, kde za &lt;ip-adresa&gt; dosadíte svoji IP adresu, a mělo by se vám zobrazit něco takového:
 
 ![Testování adresy URL pro obrázky v bráně Application Gateway](./media/tutorial-url-redirect-powershell/application-gateway-iistest-images.png)
 

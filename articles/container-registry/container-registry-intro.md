@@ -5,15 +5,15 @@ services: container-registry
 author: stevelas
 ms.service: container-registry
 ms.topic: overview
-ms.date: 09/25/2018
+ms.date: 03/29/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: befac6f1429d5099f68f0c2ba0a90bb1217f8b6f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 39f643bd66e2a96b0b9b93989d2941a9c30ea7fc
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530258"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894009"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Seznámení se soukromými registry kontejnerů Dockeru v Azure
 
@@ -42,9 +42,9 @@ Konfigurace úloh ACR automaticky znovu sestavit Image aplikací při jejich zá
 
 * **Úložiště** – registr obsahuje jedno nebo více úložišť, které ukládají skupiny imagí kontejnerů. Azure Container Registry podporuje víceúrovňové obory názvů úložiště. S víceúrovňovými obory názvů můžete seskupovat kolekce imagí souvisejících s konkrétní aplikací nebo kolekcí aplikací pro konkrétní vývojové nebo provozní týmy. Příklad:
 
-  * `myregistry.azurecr.io/aspnetcore:1.0.1` představuje image pro celý podnik.
-  * `myregistry.azurecr.io/warrantydept/dotnet-build` představuje image sloužící k vytváření aplikací .NET, která je sdílená v rámci záručního oddělení.
-  * `myregistry.azurecr.io/warrantydept/customersubmissions/web` představuje webovou image seskupenou v zákaznické aplikaci pro odesílání a vlastněnou záručním oddělením.
+  * `myregistry.azurecr.io/aspnetcore:1.0.1` představuje image pro celý podnik
+  * `myregistry.azurecr.io/warrantydept/dotnet-build` představuje image sloužící k vytváření aplikací .NET, sdílet v rámci záručního oddělení.
+  * `myregistry.azurecr.io/warrantydept/customersubmissions/web` představuje webovou image seskupenou v zákaznické aplikaci pro odesílání, vlastní záručním oddělením.
 
 * **Obrázek** -uložen v úložišti, každé image je jen pro čtení snímek kontejneru kompatibilní s Dockerem. Registry kontejnerů Azure mohou zahrnovat image systémů Windows i Linux. Názvy imagí pro všechna nasazení kontejnerů určujete vy. Pomocí standardních [příkazů Dockeru](https://docs.docker.com/engine/reference/commandline/) můžete nahrávat image do úložiště nebo si z úložiště image stáhnout. Kromě imagí kontejnerů Azure Container Registry ukládá [týkající se obsahu formáty](container-registry-image-formats.md) například [grafy Helm](container-registry-helm-repos.md), která slouží k nasazení aplikací do Kubernetes.
 
@@ -54,10 +54,10 @@ Konfigurace úloh ACR automaticky znovu sestavit Image aplikací při jejich zá
 
 [Úlohy Azure Container Registry](container-registry-tasks-overview.md) (úlohy ACR) je sada funkcí ve službě Azure Container Registry, která poskytuje zjednodušená a efektivní sestavení imagí kontejnerů Dockeru v Azure. Úlohy ACR umožňuje pomocí přesměrování operací `docker build` do Azure rozšířit váš vývoj do cloudu. Můžete nakonfigurovat úlohy sestavení tak, aby se kanál oprav operačního systému a architektury kontejneru automatizoval a aby se image po potvrzení kódu vaším týmem ve správě zdrojového kódu automaticky sestavovaly.
 
-[U vícekrokových úloh](container-registry-tasks-overview.md#multi-step-tasks-preview) funkce Preview úloh ACR poskytuje definice úloh na základě kroků a spuštění pro sestavování, testování a opravy chyb imagí kontejnerů v cloudu. Kroky úlohy definují jednotlivá sestavení image kontejneru a operací nabízených oznámení. Mohou také definovat spuštění jednoho nebo více kontejnerů, u každého kroku pomocí kontejneru jako prostředí pro spuštění.
+[Vícekrokové úlohy](container-registry-tasks-overview.md#multi-step-tasks) zadejte definici úlohy založené na krok a provádění pro sestavování, testování a opravy chyb imagí kontejnerů v cloudu. Kroky úlohy definují jednotlivá sestavení image kontejneru a operací nabízených oznámení. Mohou také definovat spuštění jednoho nebo více kontejnerů, u každého kroku pomocí kontejneru jako prostředí pro spuštění.
 
 ## <a name="next-steps"></a>Další postup
 
 * [Vytvoření registru kontejnerů pomocí webu Azure Portal](container-registry-get-started-portal.md)
 * [Vytvoření registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md)
-* [Automatizace oprav operačního systému a architektury pomocí úloh ACR](container-registry-tasks-overview.md)
+* [Automatizace operačního systému a rozhraní framework opravy chyb s úlohami služby ACR](container-registry-tasks-overview.md)

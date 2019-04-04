@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: d8456595e244237a0fd92fae82a43a878ad41080
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 51c6a58567b35c9b8486d8634b0bed1af7218994
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857664"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893618"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Otestujte aplikaci LUIS na portálu služby LUIS
 <a name="train-your-app"></a>
@@ -132,5 +132,5 @@ V části Testování služby batch [koncepty](luis-concept-batch-test.md) a zji
 
 Pokud testování označuje, že aplikace LUIS nedokáže rozpoznat správný záměry a entity, můžete pracovat zvyšte přesnost aplikace LUIS označování další projevy nebo přidáním funkcí. 
 
-* [Popisek navrhované projevy služba luis](luis-how-to-review-endoint-utt.md) 
+* [Popisek navrhované projevy služba luis](luis-how-to-review-endpoint-utterances.md) 
 * [Použití funkcí pro zvýšení výkonu aplikace LUIS](luis-how-to-add-features.md) 

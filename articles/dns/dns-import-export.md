@@ -2,25 +2,18 @@
 title: Importovat a exportovat soubor zóny domény do DNS Azure pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
 description: Zjistěte, jak importovat a exportovat soubor zóny DNS do Azure DNS pomocí rozhraní příkazového řádku Azure
 services: dns
-documentationcenter: na
 author: vhorne
-manager: timlt
-ms.assetid: f5797782-3005-4663-a488-ac0089809010
 ms.service: dns
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/30/2018
+ms.date: 4/3/2019
 ms.author: victorh
-ms.openlocfilehash: d41ad3232fef57d1008f1e15d5d7d5ee1e106e9b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 25445415141372e1f231549c5b8f8575a89363c6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312643"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905405"
 ---
-# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Import a export souboru zóny DNS pomocí Azure CLI 
+# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Import a export souboru zóny DNS pomocí Azure CLI
 
 Tento článek vás provede pro import a export zón DNS pro Azure DNS pomocí Azure CLI.
 
@@ -32,7 +25,6 @@ Azure DNS podporuje import a export zón s použitím rozhraní příkazového �
 
 Azure CLI je nástroj příkazového řádku napříč platformami pro správu služeb Azure. Je dostupná pro platformy Windows, Mac a Linux z [stránky pro stažení Azure](https://azure.microsoft.com/downloads/). Podporu pro různé platformy je důležité pro import a export zón, protože serverový software nejběžnější název [SVÁZAT](https://www.isc.org/downloads/bind/), obvykle běží na systému Linux.
 
-
 ## <a name="obtain-your-existing-dns-zone-file"></a>Získat existující soubor zóny DNS
 
 Před importem souboru zóny DNS v Azure DNS, budete muset získat kopii souboru zóny. Zdroj tohoto souboru závisí na aktuálně hostuje zóny DNS.
@@ -40,14 +32,6 @@ Před importem souboru zóny DNS v Azure DNS, budete muset získat kopii souboru
 * Pokud zónu DNS je hostitelem partnerské služby (například registrátora domény, vyhrazené poskytovatele hostingu DNS nebo alternativní cloud poskytovatele), tato služba by měla poskytnout možnost stažení souboru zóny DNS.
 * Pokud zónu DNS je hostovaný ve službě Windows DNS, je výchozí složku pro soubory zóny **%systemroot%\system32\dns**. Úplná cesta k souboru každé zóny také ukazuje na **Obecné** kartu konzolu DNS.
 * Pokud zónu DNS je hostitelem pomocí vazby, je umístění souboru zóny pro každou zónu zadané v konfiguračním souboru vazby **named.conf**.
-
-> [!NOTE]
-> Zóna soubory stahované z GoDaddy mají mírně nestandardní formát. Je potřeba to napravit, před importem těchto zón do Azure DNS.
->
-> Názvy DNS v RDATA všechny záznamy DNS jsou určené jako plně kvalifikované názvy, ale nemají ukončující "." To znamená, že jsou interpretovány jiných systémů DNS jako relativní názvy. Je potřeba upravit soubor zóny pro ukončení připojení "." názvy před importem do Azure DNS.
->
-> Například by měla být změněna záznam CNAME "v doméně contoso.com CNAME www 3600" k "www 3600 v doméně contoso.com CNAME."
-> (s ukončující ".").
 
 ## <a name="import-a-dns-zone-file-into-azure-dns"></a>Import souboru zóny DNS do Azure DNS
 
@@ -88,7 +72,6 @@ Hodnoty:
 * `<zone file name>` je cesta a název souboru zóny k importu.
 
 Pokud zóna s tímto názvem neexistuje ve skupině prostředků, vytvoří se pro vás. Pokud už existuje zóna, importované sady záznamů jsou sloučeny s existující sady záznamů. 
-
 
 ### <a name="step-1-import-a-zone-file"></a>Krok 1. Importovat soubor zóny
 
@@ -191,3 +174,9 @@ Chcete-li exportovat existující zónu Azure DNS **contoso.com** ve skupině pr
 ```
 az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
 ```
+
+## <a name="next-steps"></a>Další postup
+
+* Zjistěte, jak [spravovat sady záznamů a záznamy](dns-getstarted-create-recordset-cli.md) ve vaší zóně DNS.
+
+* Zjistěte, jak [delegování domény do Azure DNS](dns-domain-delegation.md).
