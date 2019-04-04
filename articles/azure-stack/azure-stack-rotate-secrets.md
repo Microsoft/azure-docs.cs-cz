@@ -15,12 +15,12 @@ ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 09988009712f9312eb97d5c32dc8991ec5b2f1f9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 54bc6bc105dab2831df6e48a64a6f766582a3fb9
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251346"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917556"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Otočit tajné kódy ve službě Azure Stack
 
@@ -102,7 +102,7 @@ Spuštění tajných kódů otočení pomocí následujícího postupu se opravi
     > [!Note] 
     > Pro verze pre-1811 není potřeba otočit tajných kódů přidat certifikáty rozšíření hostitele. Postupujte podle pokynů v článku [Příprava hostitele rozšíření pro službu Azure Stack](azure-stack-extension-host-prepare.md) přidání rozšíření hostitele certifikátů.
 
-2. Operátory všimnout výstrahy otevírají a zavírají automaticky během otáčení tajných kódů služby Azure Stack.  Toto chování je očekávané a upozornění můžete ignorovat.  Operátory lze ověřit platnost těchto upozornění spuštěním **testovací AzureStack**.  Pro operátory pomocí nástroje SCOM k monitorování systémy Azure Stack, uvedení v režimu údržby systému zabrání dosažení jejich systémům ITSM tato upozornění ale bude nadále výstrahu, pokud je systém Azure Stack se nestane nedostupnou.
+2. Během obměny tajných klíčů služby Azure Stack si operátoři můžou všimnout otevírání a automatického zavírání upozornění.  Toto chování je očekávané a upozornění můžete ignorovat.  Operátory lze ověřit platnost těchto upozornění spuštěním **testovací AzureStack**.  Pro operátory pomocí nástroje SCOM k monitorování systémy Azure Stack, uvedení v režimu údržby systému zabrání dosažení jejich systémům ITSM tato upozornění ale bude nadále výstrahu, pokud je systém Azure Stack se nestane nedostupnou.
 
 3. Upozorněte uživatele na jakékoli operace údržby. Naplánujte běžné časová období údržby, co je to možné, během pracovní doby. Operace údržby může ovlivnit uživatelské úlohy a operací na portálu.
 
@@ -122,7 +122,7 @@ Spuštění tajných kódů otočení pomocí následujícího postupu se opravi
 > **.\Certificates\AAD** nebo ***.\Certificates\ADFS*** v závislosti na váš zprostředkovatel Identity sloužící pro službu Azure Stack
 >
 > Je naprosto, který končí vaše struktura složky **AAD** nebo **služby AD FS** složky a všech podadresářích jsou v rámci této struktury; v opačném případě **Start-SecretRotation**se vytvoří s:
-> ```PowerShell
+> ```powershell
 > Cannot bind argument to parameter 'Path' because it is null.
 > + CategoryInfo          : InvalidData: (:) [Test-Certificate], ParameterBindingValidationException
 > + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Test-Certificate
@@ -147,7 +147,7 @@ Obměna externích tajných klíčů:
 1. V rámci nově vytvořené **\Certificates\\\<IdentityProvider >** adresář vytvořený v kroky prováděné před zpracováním, umístěte do struktury adresářů podle novou sadu nahrazení externí certifikáty Formát uvedené v oddílu povinné certifikáty [požadavky na certifikát Azure Stack PKI](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates).
 
     Příklad strukturu složek pro zprostředkovatele Identity AAD:
-    ```PowerShell
+    ```powershell
         <ShareName>
         │   │
         │   ├───Certificates
@@ -209,7 +209,7 @@ Obměna externích tajných klíčů:
     > [!Note]
     > Pokud selže tajných kódů otočení, postupujte podle pokynů v chybové zprávě a znovu spusťte **Start SecretRotation** s **– opětovné spuštění** parametr.
 
-    ```PowerShell
+    ```powershell
     Start-SecretRotation -ReRun
     ```
     Obraťte se na podporu Pokud dochází k opakované otočení tajných kódů chyb.
@@ -220,7 +220,7 @@ Obměna externích tajných klíčů:
 
 Následující příklad PowerShell ukazuje, rutiny a parametry k otočení tajných klíčů.
 
-```PowerShell
+```powershell
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
 $PEPCreds = Get-Credential
@@ -256,7 +256,7 @@ Po úspěšném dokončení otočení tajného kódu se zobrazí konzola **celko
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and rerun **Start-SecretRotation** with the  **–Internal** and **-ReRun** parameters.  
 
-```PowerShell
+```powershell
 Start-SecretRotation -Internal -ReRun
 ```
 
@@ -270,25 +270,25 @@ Otočí tajných kódů systému Azure Stack. Provést pouze proti koncovému bo
 
 #### <a name="for-external-secret-rotation"></a>Pro externí otočení tajného kódu
 
-```PowerShell
+```powershell
 Start-SecretRotation [-PfxFilesPath <string>] [-PathAccessCredential <PSCredential>] [-CertificatePassword <SecureString>]  
 ```
 
 #### <a name="for-internal-secret-rotation"></a>Pro interní otočení tajného kódu
 
-```PowerShell
+```powershell
 Start-SecretRotation [-Internal]  
 ```
 
 #### <a name="for-external-secret-rotation-rerun"></a>Pro externí tajných kódů otočení znovu spustit
 
-```PowerShell
+```powershell
 Start-SecretRotation [-ReRun]
 ```
 
 #### <a name="for-internal-secret-rotation-rerun"></a>Pro interní tajných kódů otočení znovu spustit
 
-```PowerShell
+```powershell
 Start-SecretRotation [-ReRun] [-Internal]
 ```
 
@@ -300,9 +300,9 @@ Start-SecretRotation [-ReRun] [-Internal]
 
 | Parametr | Type | Požaduje se | Umístění | Výchozí | Popis |
 | -- | -- | -- | -- | -- | -- |
-| PfxFilesPath | Řetězec  | False  | s názvem  | Žádný  | Cesta sdílení souborů na **\Certificates** síťové adresáře, který obsahuje všechny externí certifikáty koncový bod. Povinné pouze v případě otáčení externích tajných klíčů. Adresář end musí být **\Certificates**. |
+| PfxFilesPath | String  | False  | s názvem  | Žádný  | Cesta sdílení souborů na **\Certificates** síťové adresáře, který obsahuje všechny externí certifikáty koncový bod. Povinné pouze v případě otáčení externích tajných klíčů. Adresář end musí být **\Certificates**. |
 | CertificatePassword | SecureString | False  | s názvem  | Žádný  | Heslo pro všechny certifikáty v PfXFilesPath – k dispozici. Požadovaná hodnota, pokud PfxFilesPath víceklientského externích tajných klíčů se otočí. |
-| Interní | Řetězec | False | s názvem | Žádný | Interní příznak musí použít, kdykoli operátory Azure stacku chce otočit interní infrastruktury tajných kódů. |
+| Interní | String | False | s názvem | Žádný | Interní příznak musí použít, kdykoli operátory Azure stacku chce otočit interní infrastruktury tajných kódů. |
 | PathAccessCredential | PSCredential | False  | s názvem  | Žádný  | Přihlašovací údaje prostředí PowerShell pro sdílení souborů systému **\Certificates** síťové adresáře, který obsahuje všechny externí certifikáty koncový bod. Povinné pouze v případě otáčení externích tajných klíčů.  |
 | Opětovné spuštění | SwitchParameter | False  | s názvem  | Žádný  | Opětovné spuštění se musí použít kdykoli otočení tajného kódu je opakování po neúspěšném pokusu. |
 
@@ -312,7 +312,7 @@ Start-SecretRotation [-ReRun] [-Internal]
 
 To je potřeba použít prostřednictvím služby Azure Stack [prostředí na privilegovaný koncový bod](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
 
-```PowerShell
+```powershell
 PS C:\> Start-SecretRotation -Internal
 ```
 
@@ -320,7 +320,7 @@ Tento příkaz otočí všechny tajné klíče infrastruktury vystavený k inter
 
 #### <a name="rotate-only-external-infrastructure-secrets"></a>Otočit pouze tajných kódů externí infrastruktury  
 
-```PowerShell
+```powershell
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
 $PEPCreds = Get-Credential
@@ -346,7 +346,7 @@ Tento příkaz otočí certifikáty protokolu TLS pro koncové body služby Azur
 >
 > **Z *1811 +* nelze otočit i interní a externí certifikáty nic dalšího.**
 
-```PowerShell
+```powershell
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
 $PEPCreds = Get-Credential
@@ -369,11 +369,11 @@ Tento příkaz otočí všechny tajné klíče infrastruktury vystavený k inter
 
 Řadič pro správu základní desky (BMC) monitoruje fyzickému stavu vašich serverů. Požadavky a pokyny, aktualizuje se uživatelské jméno a heslo pro správu základní desky se liší v závislosti na dodavatele hardwaru, výrobce OEM (OEM). Měli byste aktualizovat hesla pro Azure Stack součásti v pravidelných intervalech.
 
-1. Aktualizujte správu základní desky na fyzických serverech služby Azure Stack podle pokynů vaší výrobce OEM. Název uživatelského účtu a heslo pro každou BMC ve vašem prostředí musí být stejné.
+1. Aktualizujte správu základní desky na fyzických serverech služby Azure Stack podle pokynů vaší výrobce OEM. Uživatelské jméno a heslo pro každou BMC ve vašem prostředí musí být stejné. Všimněte si, že uživatelská jména BMC nesmí překročit 16 znaků.
 2. Otevřete koncový bod privilegovaných ve službě Azure Stack relacích. Pokyny najdete v tématu [pomocí privilegovaných koncového bodu ve službě Azure Stack](azure-stack-privileged-endpoint.md).
 3. Po Powershellu řádek byl změněn na **[adresa IP nebo virtuální počítač ERCS name]: PS >** nebo **[azs-ercs01]: PS >**, v závislosti na prostředí, spusťte `Set-BmcCredential` spuštěním `Invoke-Command`. Vaše proměnná privilegovaných koncový bod relace předáte jako parametr. Příklad:
 
-    ```PowerShell
+    ```powershell
     # Interactive Version
     $PEPIp = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
     $PEPCreds = Get-Credential "<Domain>\CloudAdmin" -Message "PEP Credentials"
@@ -391,7 +391,7 @@ Tento příkaz otočí všechny tajné klíče infrastruktury vystavený k inter
 
     Statické verze prostředí PowerShell můžete použít také s hesla jako řádky kódu:
 
-    ```PowerShell
+    ```powershell
     # Static Version
     $PEPIp = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
     $PEPUser = "<Privileged Endpoint user for example Domain\CloudAdmin>"

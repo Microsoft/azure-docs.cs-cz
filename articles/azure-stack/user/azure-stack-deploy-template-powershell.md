@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7af06347dd1ca5a3e7e27e5db4849b5540b106b9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d71df99096e58b3ac7adc920b91891b9a50cd6f7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250006"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58479577"
 ---
 # <a name="deploy-a-template-to-azure-stack-using-powershell"></a>Nasazení šablony do služby Azure Stack pomocí Powershellu
 
@@ -40,7 +40,7 @@ Tento příklad používá **AzureRM** rutiny Powershellu a šablony uložené n
 2. Otevřete příkazový řádek se zvýšenými oprávněními prostředí PowerShell.
 3. Nahraďte `username` a `password` v následujícím skriptu se uživatelské jméno a heslo a pak spusťte skript:
 
-    ```PowerShell
+    ```powershell
     # Set deployment variables
     $myNum = "001" # Modify this per deployment
     $RGName = "myRG$myNum"

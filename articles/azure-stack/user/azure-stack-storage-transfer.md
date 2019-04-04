@@ -14,16 +14,16 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 4e92f2aeec21ccef5a6a553b17e099d54de7266a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4385e982b2a1da52ae55acf50c601108863c452a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774333"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905949"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Použití nástrojů pro přenos dat pro úložiště Azure Stack
 
-*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
+*Týká se Azure Stack integrované systémy a Azure Stack Development Kit*
 
 Microsoft Azure Stack nabízí sadu služeb úložišť pro disky, objekty BLOB, tabulky, fronty a funkce pro správu účtu. Pokud chcete spravovat nebo přesun dat do nebo z úložiště služby Azure Stack, můžete použít sadu nástrojů pro Azure storage. Tento článek obsahuje přehled dostupných nástrojů.
 
@@ -71,7 +71,7 @@ Existují dvě verze nástroje azcopy: AzCopy ve Windows a AzCopy v Linuxu.
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>Příklady příkazů AzCopy pro přenos dat
 
-Následující příklady jsou některé typické scénáře pro kopírování dat do a z objektů BLOB služby Azure Stack. Další informace najdete v tématu [AzCopy ve Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) a [AzCopy v Linuxu](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux).
+Následující příklady jsou některé typické scénáře pro kopírování dat do a z objektů BLOB služby Azure Stack. Další informace najdete v tématu [AzCopy ve Windows](../../storage/common/storage-use-azcopy.md) a [AzCopy v Linuxu](../../storage/common/storage-use-azcopy-linux.md).
 
 ### <a name="download-all-blobs-to-a-local-disk"></a>Všechny objekty BLOB můžete stáhnout na místní disk
 
@@ -156,7 +156,7 @@ Tento příklad předpokládá, že jste úspěšně [nainstalované prostředí
    > [!NOTE]
    > Tento skript má ke spuštění v kořenovém adresáři pro **AzureStack_Tools**.
 
-```PowerShell  
+```powershell  
 # begin
 
 $ARMEvnName = "AzureStackUser" # set AzureStackUser as your Azure Stack environment name
@@ -264,7 +264,7 @@ Před spuštěním tohoto skriptu, ujistěte se, že můžete úspěšně připo
 2. Aktualizujte tento skript proměnné tak, aby odrážely nastavení konfigurace.
 3. Po aktualizaci nezbytné proměnné, uložte skript a ukončete editor. Další kroky předpokládají, že pojmenujete skriptu **my_storage_sample.sh**.
 4. Označí skript jako spustitelný soubor, v případě potřeby: `chmod +x my_storage_sample.sh`
-5. Spusťte skript. Například v prostředí Bash: `./my_storage_sample.sh`
+5. Spusťte skript. Příklad v prostředí Bash: `./my_storage_sample.sh`
 
 ```azurecli
 #!/bin/bash

@@ -15,12 +15,12 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 76af6d6585d52eee99548f69c92bd414068fa28d
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 4e9df0d413b964b4a14cf9ca48db8b7956b441f9
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259206"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482585"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Přístup k řídicímu panelu Kubernetes v Azure stacku 
 
@@ -106,7 +106,7 @@ Adresu URL řídicího panelu můžete načíst z hlavního uzlu v clusteru.
 
 3. Poznamenejte si umístění souborů. Aktualizujte skript pomocí umístění a pak otevřete prostředí PowerShell s řádku se zvýšenými oprávněními. Spusťte skript aktualizace:  
 
-    ```PowerShell   
+    ```powershell   
     Import-Certificate -Filepath "ca.crt" -CertStoreLocation cert:\LocalMachine\Root 
     $pfxpwd = Get-Credential -UserName 'Enter password below' -Message 'Enter password below' 
     Import-PfxCertificate -Filepath "client.pfx" -CertStoreLocation cert:\CurrentUser\My -Password $pfxpwd.Password 

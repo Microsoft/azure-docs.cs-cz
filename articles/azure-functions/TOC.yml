@@ -69,6 +69,8 @@ items:
   - name: Porovnání verze 1.x a 2.x
     displayName: migrate, migration
     href: functions-versions.md
+  - name: Plán Premium
+    href: functions-premium-plan.md
   - name: Škálování a hostování
     href: functions-scale.md
   - name: Triggery a vazby
@@ -107,6 +109,8 @@ items:
     href: functions-best-practices.md
   - name: Proxy servery služby Functions
     href: functions-proxies.md
+  - name: Možnosti sítí
+    href: functions-networking-options.md
   - name: IP adresy
     href: ip-addresses.md
   - name: Místní funkce
@@ -267,6 +271,8 @@ items:
       href: functions-host-json.md
     - name: Functions 1.x
       href: functions-host-json-v1.md
+  - name: Nejčastější dotazy k sítím
+    href: functions-networking-faq.md
   - name: Reference k OpenAPI
     href: functions-api-definition.md
 - name: Zdroje a prostředky
@@ -295,9 +301,9 @@ items:
     href: https://github.com/Azure/Azure-Functions/
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: 929a483ecdf9e8345c99c036b57631b2b1110b03
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 92eed4424d952edef4b2dc203c535f1ab26ed28c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403523"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894572"

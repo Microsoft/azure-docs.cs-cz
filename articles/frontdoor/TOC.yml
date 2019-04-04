@@ -23,8 +23,8 @@ items:
     href: front-door-quickstart-template-samples.md
 - name: Koncepty
   items:
-  - name: Zabezpečení aplikační vrstvy
-    href: front-door-application-security.md
+  - name: WAF
+    href: waf-overview.md
   - name: Back-endy a back-endové fondy
     href: front-door-backend-pool.md
   - name: Ukládání do mezipaměti s využitím služby Front Door
@@ -58,7 +58,11 @@ items:
     - name: Povolené certifikační autority
       href: front-door-troubleshoot-allowed-ca.md
 - name: Nejčastější dotazy
-  href: front-door-faq.md
+  items:
+  - name: Nejčastější dotazy ke službě Front Door
+    href: front-door-faq.md
+  - name: Nejčastější dotazy k WAF
+    href: waf-faq.md
 - name: Referenční informace
   items:
   - name: Azure CLI
@@ -77,9 +81,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=frontdoor
-ms.openlocfilehash: 98a5d50b8dc8195a0943379c2570711d01db268a
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 20afe50b6b17acb0f155769e95c5ec66c19c8fba
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58850103"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906238"

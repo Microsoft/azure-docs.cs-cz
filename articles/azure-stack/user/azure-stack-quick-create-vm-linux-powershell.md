@@ -15,12 +15,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: e6afea414ed632dead97a4b9adc7c623e48bd7ef
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5e93a8fbcd603e5c52141a2a883bd7371ee50221
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766695"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445367"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem serveru pomocí prostředí PowerShell ve službě Azure Stack
 
@@ -384,7 +384,7 @@ New-AzureRmVM `
 
 ## <a name="connect-to-the-virtual-machine"></a>Připojení k virtuálnímu počítači
 
-Po nasazení virtuálního počítače, nakonfigurujte připojení SSH pro virtuální počítač. Použijte příkaz [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?view=azurermps-4.3.1), který vrátí veřejnou IP adresu virtuálního počítače.
+Po nasazení virtuálního počítače, nakonfigurujte připojení SSH pro virtuální počítač. Použijte příkaz [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress), který vrátí veřejnou IP adresu virtuálního počítače.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
@@ -420,7 +420,7 @@ NGINX nainstalovaný a port 80 otevřený ve vašem virtuálním počítači mů
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Vyčistěte prostředky, které už nepotřebujete. Můžete použít [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup?view=azurermps-4.3.1) příkazu odeberte tyto prostředky. Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující příkaz:
+Vyčistěte prostředky, které už nepotřebujete. Můžete použít [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) příkazu odeberte tyto prostředky. Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující příkaz:
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup

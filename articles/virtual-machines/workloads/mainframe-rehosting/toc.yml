@@ -7,16 +7,28 @@ items:
       href: overview.md
     - name: Úlohy
       href: partner-workloads.md
+  - name: Koncepty
+    items:
+    - name: Compute
+      href: concepts/mainframe-compute-azure.md
+    - name: Úložiště
+      href: concepts/mainframe-storage-azure.md
   - name: Micro Focus
     items:
     - name: Začínáme
       href: microfocus/get-started.md
-    - name: Instalace Micro Focus Enterprise Serveru
-      href: microfocus/set-up-micro-focus-on-azure.md
-    - name: Ukázka
+    - name: Instalace Enterprise Serveru
+      href: microfocus/set-up-micro-focus-azure.md
+    - name: Spuštění CICS BankDemo
       href: microfocus/demo.md
+    - name: Enterprise Server v kontejnerech
+      href: microfocus/run-enterprise-server-container.md
   - name: TmaxSoft OpenFrame
-    href: https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/
+    items:
+    - name: Začínáme
+      href: tmaxsoft/get-started.md
+    - name: Instalace OpenFrame
+      href: tmaxsoft/install-openframe-azure.md
   - name: IBM
     items:
     - name: Začínáme
@@ -29,9 +41,15 @@ items:
       href: /azure/virtual-machines/linux/ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
     - name: Nasazení IBM DB2 pureScale
       href: /azure/virtual-machines/linux/deploy-ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
-ms.openlocfilehash: e89b8301a325ab25d78598cfd3e58e6ac74198a6
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+  - name: Zdroje a prostředky
+    items:
+    - name: Dokumenty white paper
+      href: mainframe-white-papers.md
+    - name: Plány Azure do budoucna
+      href: https://azure.microsoft.com/updates/
+ms.openlocfilehash: c0cec35997d398045f9c34904c8ee07755724572
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342543"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895220"

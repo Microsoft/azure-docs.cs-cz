@@ -4,21 +4,21 @@ items:
 - name: Přehled
   items:
   - name: Co je Azure Stack?
-    href: azure-stack-poc.md
-  - name: Klíčové funkce a koncepty
-    href: azure-stack-key-features.md
+    href: azure-stack-overview.md
+  - name: Porovnání ekosystému Azure
+    href: compare-azure-azure-stack.md
   - name: Poznámky k verzi
     items:
     - name: Nejnovější aktualizace
       href: azure-stack-servicing-policy.md
+    - name: aktualizace 1903
+      href: azure-stack-update-1903.md
     - name: aktualizace 1902
       href: azure-stack-update-1902.md
     - name: aktualizace 1901
       href: azure-stack-update-1901.md
     - name: aktualizace 1811
       href: azure-stack-update-1811.md
-    - name: aktualizace 1809
-      href: azure-stack-update-1809.md
 - name: Šablony Rychlý start
   items:
   - name: Použití portálu pro správu
@@ -115,12 +115,12 @@ items:
         href: azure-stack-integrate-security.md
       - name: Auditování zařízení
         href: azure-stack-integrate-physical-device-auditing.md
-  - name: Základy správy
-    href: azure-stack-manage-basics.md
 - name: Návody
   items:
   - name: Správa služby Azure Stack
     items:
+    - name: Základy správy
+      href: azure-stack-manage-basics.md
     - name: Konfigurace shromažďování telemetrie
       href: azure-stack-telemetry.md
     - name: Registrace Azure Stack
@@ -233,6 +233,8 @@ items:
       href: azure-stack-redhat-create-upload-vhd.md
     - name: Nabízejí clusteru Kubernetes
       href: azure-stack-solution-template-kubernetes-cluster-add.md
+    - name: Vytvořit připojení VPN typu site-to-site
+      href: azure-stack-create-vpn-connection-one-node.md
   - name: Nabídka služeb
     href: azure-stack-offer-services-overview.md
   - name: Nabídka SQL jako PaaS
@@ -403,9 +405,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: f2ea6b4ae7ff49d3263805460a30e5d407f7c0e6
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: a0c5682428d740bd109411333f13849c0e74d88e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338356"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906306"

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 03/20/2018
-ms.openlocfilehash: 99b4134f8f2d6ed2f521a7f488c33e06c0f436bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d75467da01f0672bb735e01cbd6d7634cdf843e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58165824"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445249"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>App Service v Azure stacku update 1 poznámky
 
@@ -56,6 +56,8 @@ Azure App Service v Azure Stack Update 1 zahrnuje následující vylepšení a o
 - **Nasazení v existující virtuální síť** -mohou nyní zákazníci nasadit služby App Service ve službě Azure Stack v rámci existující virtuální sítě. Nasazení v existující virtuální síť umožňuje zákazníkům připojit se k serveru SQL Server a souborový Server, přes privátní porty vyžadované pro služby Azure App Service. Během nasazování, Zákazníci si můžou vybrat k nasazení v existující virtuální síť, ale [podsítě pro použití službou App Service, musíte vytvořit](azure-stack-app-service-before-you-get-started.md#virtual-network) před jejich nasazením.
 
 - Aktualizace **aplikace služeb pro klienty, Admin, portály funkce a nástroje Kudu**. Konzistentní s verzí sady SDK portálu Azure Stack.
+
+- Aktualizace **modul runtime služby Azure Functions** k **v1.0.11388**.
 
 - **Aktualizace následujících aplikační architektury a nástroje**:
     - Přidání **.NET Core 2.0** podpory

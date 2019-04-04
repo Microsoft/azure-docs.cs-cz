@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 09b8556a83dec286ce8d67fa5fd6d27e027325bf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: cfea454b20b010148eba063ec724e55134944ac3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769212"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482925"
 ---
 # <a name="deploy-the-local-agent"></a>Nasazení místního agenta
 
@@ -57,7 +57,7 @@ Zkontrolujte, že váš počítač splňuje následující kritéria:
 1. V řádku se zvýšenými oprávněními na počítači, který použijete ke spuštění testů otevřete prostředí Windows PowerShell.
 2. Spuštěním následujícího příkazu stáhněte místní agent:
 
-    ```PowerShell
+    ```powershell
     Invoke-WebRequest -Uri "https://storage.azurestackvalidation.com/packages/Microsoft.VaaSOnPrem.TaskEngineHost.latest.nupkg" -outfile "OnPremAgent.zip"
     Expand-Archive -Path ".\OnPremAgent.zip" -DestinationPath VaaSOnPremAgent -Force
     Set-Location VaaSOnPremAgent\lib\net46
@@ -65,7 +65,7 @@ Zkontrolujte, že váš počítač splňuje následující kritéria:
 
 3. Spuštěním následujícího příkazu nainstalujte místního agenta závislosti:
 
-    ```PowerShell
+    ```powershell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
     Import-Module .\VaaSPreReqs.psm1 -Force
     Install-VaaSPrerequisites -AadTenantId $AadTenantId `
@@ -113,14 +113,15 @@ Testy spouštět vzdálené operace. Počítač, který spouští testy musí m�
 
 2. Spusťte následující příkaz:
 
-    ```PowerShell
+    ```powershell
     .\Microsoft.VaaSOnPrem.TaskEngineHost.exe -u <VaaSUserId> -t <VaaSTenantId>
     ```
 
       **Parametry**  
+
     | Parametr | Popis |
     | --- | --- |
-    | VaaSUserId | ID uživatele použít k přihlášení k portálu VaaS (například UserName@Contoso.com) |
+    | VaaSUserId | ID uživatele použít k přihlášení k portálu VaaS (například uživatelské jméno\@Contoso.com) |
     | VaaSTenantId | ID tenanta Azure AD pro účet Azure zaregistrován ověření jako služba. |
 
     > [!Note]  

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 05/18/2018
-ms.openlocfilehash: d57b06a33421a94c4f849a1c1fd7cd6f1f4248dd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 98d084794accb99e0fecac85f7de861ec35bc15e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848894"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446032"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service v Azure stacku zpráva k vydání verze update 2
 
@@ -52,6 +52,8 @@ Odkazovat [před zahájením práce dokumentaci](azure-stack-app-service-before-
 Azure App Service v Azure stacku Update 2 zahrnuje následující vylepšení a opravy:
 
 - Aktualizace **aplikace služeb pro klienty, Admin, portály funkce a nástroje Kudu**. Konzistentní s verzí sady SDK portálu Azure Stack.
+
+- Aktualizace **modul runtime služby Azure Functions** k **v1.0.11612**.
 
 - Aktualizace základní službu, ke zlepšení spolehlivosti a chybových zpráv umožňuje snazší Diagnostika běžných problémů.
 
