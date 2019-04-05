@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 6e1a9b2fd34d915716225c6a1bda6e0371a510a9
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 67eb01ad596393c9095d72670e61b8c09776c588
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438831"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049230"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatická aktualizace služby Mobility v replikaci z Azure do Azure
 
@@ -21,6 +21,9 @@ Azure Site Recovery používá měsíční vydávání verzí opravte všechny p
 
 Jak je uvedeno v [architektury pro zotavení po havárii Azure do Azure](azure-to-azure-architecture.md), služba Mobility je nainstalovaná na všech virtuálních počítačích Azure (VM) u kterých je povolená replikace při replikaci virtuálních počítačů z jedné oblasti Azure do jiné. Pokud používáte automatické aktualizace, každé nové verzi aktualizace rozšíření služby Mobility.
  
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="how-automatic-updates-work"></a>Pracovní funkce Automatické aktualizace
 
 Když použijete Site Recovery provádět správu aktualizací, nasadí globální sady runbook (používané službami Azure) přes účet automation, který je vytvořen ve stejném předplatném jako trezor. Každý trezor používá jeden účet služby automation. Sada runbook kontroluje u každého virtuálního počítače v trezoru pro aktivní automatické aktualizace a provede upgrade rozšíření služby Mobility, pokud je dostupná novější verze.
@@ -342,7 +345,7 @@ $JobsFailedToStart = 0
 $JobsTimedOut = 0
 $Header = @{}
 
-$AzureRMProfile = Get-Module -ListAvailable -Name AzureRM.Profile | Select Name, Version, Path
+$AzureRMProfile = Get-Module -ListAvailable -Name Az.Accounts | Select Name, Version, Path
 $AzureRmProfileModulePath = Split-Path -Parent $AzureRMProfile.Path
 Add-Type -Path (Join-Path $AzureRmProfileModulePath "Microsoft.IdentityModel.Clients.ActiveDirectory.dll")
 

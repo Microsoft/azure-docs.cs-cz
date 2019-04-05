@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 34a967640ec039727e8947e865eeff1f5fef4649
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: afeaccd798204ab0973be87ea36c275e1d633403
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758585"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051542"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rychlý start: Nasadit kontejnery Windows do Service Fabric
 
@@ -36,6 +36,9 @@ V tomto rychlém startu se naučíte:
 * Konfigurace komunikace
 * Sestavení a zabalení aplikace Service Fabric
 * Nasazení aplikace typu kontejner do Azure
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -95,7 +98,7 @@ Následující ukázkový skript vytvoří clusteru Service Fabric pěti uzly za
 
 V případě potřeby nainstalujte Azure PowerShell podle pokynů v [příručce k Azure Powershellu](/powershell/azure/overview).
 
-Před spuštěním následujícího skriptu v prostředí PowerShell spustit `Connect-AzureRmAccount` vytvořit připojení k Azure.
+Před spuštěním následujícího skriptu v prostředí PowerShell spustit `Connect-AzAccount` vytvořit připojení k Azure.
 
 Zkopírujte následující skript do schránky a otevřete **Windows PowerShell ISE**.  Umožňuje vložte obsah do prázdné okno Untitled1.ps1. Potom zadejte hodnoty pro proměnné ve skriptu: `subscriptionId`, `certpwd`, `certfolder`, `adminuser`, `adminpwd`atd.  Adresáře, zadejte pro `certfolder` musí existovat před spuštěním skriptu.
 

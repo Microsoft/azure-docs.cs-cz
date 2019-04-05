@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: troubleshooting
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: a6d5d7b3ab83c8e405c6866562b4095434b9acff
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 20b8dbcae36555baf3913ab160575a631e204dd9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539016"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049417"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Nejčastější dotazy (FAQ) k rozhraní API Bingu pro vyhledávání obrázků
 
@@ -25,11 +25,11 @@ Najděte odpovědi na nejčastější dotazy o konceptech, kód a scénáře tý
 
 Následující hlavičky mohou nastat v odpovědi rozhraní API Bingu pro vyhledávání obrázků.
 
-|||
-|-|-|
-|`X-MSEdge-ClientID`|Jedinečné ID, které Bing přiřazeno uživateli|
-|`BingAPIs-Market`|Na trhu, který byl použit ke splnění žádosti|
-|`BingAPIs-TraceId`|Záznam protokolu na serveru rozhraní API Bingu pro tuto žádost (podpora)|
+| `Attribute`         | `Description` |
+| ------------------- | ------------- |
+| `X-MSEdge-ClientID` |Jedinečné ID, které Bing přiřazeno uživateli |
+| `BingAPIs-Market`   |Na trhu, který byl použit ke splnění žádosti |
+| `BingAPIs-TraceId`  |Záznam protokolu na serveru rozhraní API Bingu pro tuto žádost (podpora) |
 
 To je zvláště důležité pro zachování ID klienta a vrátit ho s dalšími požadavky. Když toto provedete, bude hledání využívat dřívější kontext v pořadí výsledky hledání a také poskytovat konzistentní uživatelské prostředí.
 

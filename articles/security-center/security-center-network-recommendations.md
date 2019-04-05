@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/02/2019
+ms.date: 04/05/2019
 ms.author: monhaber
-ms.openlocfilehash: cca1962e5146300cc376fab4bcb1bf0876acec6c
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 3d9658a6b7501714a6aad0e8eaa30ce587284bfe
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58863147"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046197"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Chraňte své prostředky sítě v Azure Security Center
 Azure Security Center průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol k posílení zabezpečení a ochraně vašich prostředků.
@@ -30,9 +30,10 @@ Tento článek se zabývá doporučení, které se vztahují k prostředkům Azu
 > **Sítě** stránka umožňuje podrobné informace o stavu vašich prostředků Azure z hlediska sítě. Mapování sítě a adaptivní ovládací prvky sítě jsou k dispozici pro Azure Security Center úrovně standard pouze. [Pokud používáte úroveň free, můžete kliknutím na tlačítko **zobrazit starší verze síť** a získejte doporučení k síti prostředků](#legacy-networking).
 >
 
-**Sítě** okno obsahuje základní informace o části Podrobné můžete věnovat, chcete-li získat další informace o stavu vašich prostředků sítě:
+**Sítě** stránka poskytuje přehled částí hluboké můžete věnovat, chcete-li získat další informace o stavu vašich prostředků sítě:
 
 - Mapování sítě (jenom u vrstvy Azure Security Center úrovně Standard)
+- Adaptivní posilování zabezpečení sítě
 - Doporučení pro zabezpečení sítě.
 - Starší verze **sítě** blade (předchozí okno sítě) 
  

@@ -5,24 +5,22 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: b22d98c079a87943d3078fbe41e76074543c260a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7f63293900e116fd3175b0ea6d704993a2dcf591
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002620"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051389"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Připojení účtu Google Cloud Platform
 
 Můžete připojit váš existující účet Google Cloud Platform do Cloudyn. Po propojení účtu do Cloudyn, nákladů a využití dat je k dispozici v sestavách Cloudyn. Tento článek pomůže vám pomůže nakonfigurovat a připojte si účet Google s Cloudyn.
 
-> [!NOTE]
-> Google byl změněn účet zabezpečení, což zabrání z zavedeno mezi Cloudyn a Google nová připojení. Cloudyn pokračuje ve shromažďování dat Google pro uživatele, kteří už mají Cloudyn připojené ke Googlu. Ale nemůže přidat nové účty Google do Cloudyn aktuálně. Cloudyn tým nebude vědět, kdy bude pokračovat, podpora pro přidávání nových účtů Google do Cloudyn. Po návratu podporu Odebereme tuto poznámku.
 
 ## <a name="collect-project-information"></a>Shromažďovat informace o projektu
 

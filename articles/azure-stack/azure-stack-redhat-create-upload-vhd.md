@@ -13,16 +13,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 04/03/2019
 ms.author: mabrigg
 ms.reviewer: jeffgo
 ms.lastreviewed: 08/15/2018
-ms.openlocfilehash: e287a6f436b51f55d9a5aa59dbbe2a195015c292
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 728839accbce80ece6795e098d5d2855320fab06
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883109"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006678"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Příprava virtuálního počítače založeného na Red Hat pro Azure Stack
 
@@ -264,7 +264,6 @@ V této části se předpokládá, že už máte soubor ISO z webu Red Hat a nai
 1. Zajistěte, aby SSH server je nainstalován a nakonfigurován na spuštění při spuštění:
 
     ```bash
-    systemctl stop cloud-init
     systemctl enable sshd
     ```
 
@@ -277,7 +276,7 @@ V této části se předpokládá, že už máte soubor ISO z webu Red Hat a nai
 
 1. Při vytváření vlastního virtuálního pevného disku pro službu Azure Stack, mějte na paměti, která verze WALinuxAgent mezi 2.2.20 a 2.2.35.1 (obou exkluzivní) nebudou fungovat v prostředích Azure Stack, se systémem sestavení před 1903. Chcete-li tento problém vyřešit, použijte rychlou záplatu 1901/1902 nebo postupujte v druhé polovině tuto část pokyny. 
 
-Pokud používáte Azure Stack sestavení 1903 (nebo vyšší) nebo nainstalována oprava hotfix 1901/1902, stáhněte si balíček WALinuxAgent z úložiště Redhat funkce takto:
+    Pokud používáte Azure Stack sestavení 1903 (nebo vyšší) nebo nainstalována oprava hotfix 1901/1902, stáhněte si balíček WALinuxAgent z úložiště Redhat funkce takto:
     
    Balíček WALinuxAgent `WALinuxAgent-<version>`, byly nahrány do funkce úložiště Red Hat. Povolte funkce úložiště spuštěním následujícího příkazu:
 
@@ -298,7 +297,7 @@ Pokud používáte Azure Stack sestavení 1903 (nebo vyšší) nebo nainstalová
     ```
     
     
-Pokud jsou spuštěné Azure Stack sestavení před 1903 a nenainstalovali 1901/1902 oprav hotfix, postupujte podle těchto pokynů můžete stáhnout WALinuxAgent:
+    Pokud jsou spuštěné Azure Stack sestavení před 1903 a nenainstalovali 1901/1902 oprav hotfix, postupujte podle těchto pokynů můžete stáhnout WALinuxAgent:
     
    a.   Stáhněte si setuptools
     ```bash
@@ -312,15 +311,15 @@ Pokud jsou spuštěné Azure Stack sestavení před 1903 a nenainstalovali 1901/
     unzip v2.2.36.zip
     cd WALinuxAgent-2.2.36
     ```
-    c. Install setup.py
+    c. Nainstalujte setup.py
     ```bash
     sudo python setup.py install
     ```
-    d. Restart waagent
+    d. Restartujte waagent
     ```bash
     sudo systemctl restart waagent
     ```
-    e. Test if the agent version matches the one your downloaded. For this example, it should be 2.2.36.
+    e. Test, pokud je verze agenta odpovídá vaší stažené. V tomto příkladu by mělo být 2.2.36.
     
     ```bash
     waagent -version

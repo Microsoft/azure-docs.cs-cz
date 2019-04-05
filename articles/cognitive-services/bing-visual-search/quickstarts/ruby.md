@@ -8,18 +8,18 @@ manager: rosh
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/27/2019
+ms.date: 4/02/2019
 ms.author: rosh
-ms.openlocfilehash: 6b7685f837cabf7ec659311c54f8c168981e4777
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8c350b5c2d945ed48566f549ab85844fc14625dc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544712"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049282"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Rychlý start: Získejte přehledy obrázků pomocí API REST pro vizuální vyhledávání Bingu a Ruby
 
-Tento rychlý start využívá Ruby programovací jazyk pro volání pro vizuální vyhledávání Bingu a zobrazit výsledky. Požadavek Post odešle obrázek do koncového bodu rozhraní API. Výsledky zahrnují adresy URL a popisné informace o imagích podobný nahraný obrázek.
+Tento rychlý start využívá Ruby programovací jazyk pro volání pro vizuální vyhledávání Bingu a zobrazit výsledky. Požadavek POST odešle obrázek do koncového bodu rozhraní API. Výsledky zahrnují adresy URL a popisné informace o imagích podobný nahraný obrázek.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,7 +32,7 @@ Pokud chcete spustit v tomto rychlém startu:
 
 ## <a name="project-and-required-modules"></a>Projekt a požadované moduly.
 
-Vytvoření nového projektu Ruby v prostředí IDE nebo editoru. Import `net/http`, `uri` , a `json` pro zpracování textu JSON výsledků. `base64` Knihovna se používá ke kódování řetězce názvu souboru. 
+Vytvoření nového projektu Ruby v prostředí IDE nebo editoru. Import `net/http`, `uri` , a `json` pro zpracování textu JSON výsledků. `base64` Knihovna se používá ke kódování řetězce názvu souboru: 
 
 ```
 require 'net/https'
@@ -44,7 +44,7 @@ require 'base64'
 
 ## <a name="define-variables"></a>Definování proměnných
 
-Následující kód přiřadí proměnné vyžaduje. Potvrďte správnost koncový bod a nahraďte `accessKey` hodnotu s klíči předplatného ze svého účtu Azure.  `batchNumber` Je identifikátor guid požadované pro počáteční a koncové hranice odeslaná data.  `fileName` Proměnné identifikuje soubor bitové kopie příspěvek.  `if` Blokovat testy pro klíč platné předplatné.
+Následující kód přiřadí proměnné vyžaduje. Potvrďte správnost koncový bod a nahraďte `accessKey` hodnotu s klíči předplatného ze svého účtu Azure.  `batchNumber` Je identifikátor GUID požadované pro počáteční a koncové hranice ODESLANÁ data.  `fileName` Proměnné identifikuje soubor bitové kopie příspěvek.  `if` Blokovat testy pro klíč platné předplatné.
 
 ```
 accessKey = "ACCESS-KEY"
@@ -61,9 +61,9 @@ end
 
 ```
 
-## <a name="form-data-for-post-request"></a>Data formuláře pro požadavek Post
+## <a name="form-data-for-post-request"></a>Data formuláře pro požadavek POST
 
-Data bitové kopie na příspěvek není uzavřen v úvodní a koncové hranice.  Tyto funkce nastaví hranice.
+Data bitové kopie na příspěvek není uzavřen v úvodní a koncové hranice. Tyto funkce nastaví hranice:
 
 ```
 def BuildFormDataStart(batNum, fileName)
@@ -74,10 +74,9 @@ end
 def BuildFormDataEnd(batNum)
     return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
 end
-
 ```
 
-Vytvořte další identifikátor URI koncového bodu a pole tak, aby obsahovala text příspěvku.  Načtení start hranic do pole pomocí předchozí funkce. Čtení souboru obrázku do pole. Pak si můžete přečíst end hranic k poli. 
+V dalším kroku vytvořte identifikátor URI koncového bodu a pole tak, aby obsahovala text příspěvku.  Načtení start hranic do pole pomocí předchozí funkce. Čtení souboru obrázku do pole. Pak si můžete přečíst end hranic do pole:
 
 ```
 uri = URI(uri + path)
@@ -91,12 +90,11 @@ post_body << BuildFormDataStart(batchNumber, fileName)
 post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 
 post_body << BuildFormDataEnd(batchNumber)
-
 ```
 
 ## <a name="create-the-http-request"></a>Vytvoření požadavku HTTP
 
-Nastavte `Ocp-Apim-Subscription-Key` záhlaví.  Vytvořte požadavek.  Pak přiřaďte záhlaví a typu obsahu.  Připojte se k textu Post jste předtím vytvořili na požadavek.
+Nastavte `Ocp-Apim-Subscription-Key` záhlaví.  Vytvořte požadavek. Pak přiřaďte záhlaví a typu obsahu. Připojte se k textu POST jste předtím vytvořili na žádost:
 
 ```
 header = {'Ocp-Apim-Subscription-Key': accessKey}
@@ -110,7 +108,7 @@ request.body = post_body.join
 
 ## <a name="request-and-response"></a>Žádost a odpověď
 
-Ruby odešle žádost a získá odpověď s následující řádek kódu.
+Ruby odešle žádost a získá odpověď s následující řádek kódu:
 
 ```
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -121,7 +119,7 @@ end
 
 ## <a name="print-the-results"></a>Tisk výsledků
 
-Tisk hlavičky odpovědi. Potom použijte knihovnu JSON k formátování výstupu.
+Tisk hlavičky odpovědi a použít knihovnu JSON k formátování výstupu:
 
 ```
 puts "\nRelevant Headers:\n\n"
@@ -138,7 +136,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ## <a name="results"></a>Výsledky
 
-Následující kód JSON je segment výstupu.
+Následující kód JSON je segment výstupu:
 
 ```
 Relevant Headers:
@@ -287,4 +285,4 @@ JSON Response:
 
 > [!div class="nextstepaction"]
 > [Přehled pro vizuální vyhledávání Bingu](../overview.md)
-> [sestavit webovou aplikaci vlastní vyhledávání](../tutorial-bing-visual-search-single-page-app.md)
+> [jednostránkovou webovou aplikaci pro vizuální vyhledávání sestavení](../tutorial-bing-visual-search-single-page-app.md)

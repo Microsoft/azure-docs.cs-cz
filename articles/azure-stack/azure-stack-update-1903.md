@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 04/05/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 2a2e289423eda53d610b2346193f6ee8a30b9c48
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.lastreviewed: 04/05/2019
+ms.openlocfilehash: a62c4dced78ef75588ef0fcc90e56bd6969c15a9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917681"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048805"
 ---
 # <a name="azure-stack-1903-update"></a>Aktualizace služby Azure Stack 1903
 
@@ -64,6 +64,12 @@ Azure Stack opravy hotfix platí pouze pro integrované systémy Azure Stack; Ne
 
 - Vylepšení pro zjišťování a náprava podmínek místa místu na disku.
 
+### <a name="secret-management"></a>Správa tajných kódů
+
+- Azure Stack teď podporuje otočení kořenového certifikátu používá certifikáty pro rotaci externích tajných kódů. Další informace najdete [najdete v článku](azure-stack-rotate-secrets.md).
+
+- 1903 obsahuje vylepšení výkonu pro rotaci tajných kódů, které zkrátit dobu, která je potřebná k provedení interní otočení tajného kódu.
+
 ## <a name="prerequisites"></a>Požadavky
 
 > [!IMPORTANT]
@@ -91,7 +97,7 @@ Azure Stack opravy hotfix platí pouze pro integrované systémy Azure Stack; Ne
 
 - Při spuštění [testovací AzureStack](azure-stack-diagnostic-test.md), zobrazí se zpráva s upozorněním z řadič správy základní desky (BMC). Toto upozornění můžete ignorovat.
 
-- <!-- 2468613 - IS --> Při instalaci této aktualizace, může se zobrazit upozornění s názvem `Error – Template for FaultType UserAccounts.New is missing.` tato upozornění můžete klidně ignorovat. Výstrahy automaticky zavře po dokončení instalace této aktualizace.
+- <!-- 2468613 - IS --> Při instalaci této aktualizace, může se zobrazit upozornění s názvem **chyba – šablona pro typ FaultType UserAccounts.New chybí.** Tyto výstrahy můžete bezpečně ignorovat. Výstrahy automaticky zavře po dokončení instalace této aktualizace.
 
 ## <a name="post-update-steps"></a>Postup po aktualizaci
 
@@ -151,9 +157,9 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 
 - Virtuální počítač s Ubuntu 18.04 vytvořené pomocí SSH autorizace povolená neumožňuje použití klíčů SSH pro přihlášení. Jako alternativní řešení použít přístup k virtuálním počítačům pro Linuxové rozšíření k implementaci klíče SSH po zřízení, nebo ověřování pomocí hesla.
 
-- Pokud nemáte hardwaru životního cyklu hostitelů (HLH): Před sestavením 1902, museli jste nastavit zásady skupiny *počítače Konfigurace počítače\Nastavení systému Windows\Místní Policies\Security Options* k **Odeslat LM NTLM – použijte NTLMv2 relace zabezpečení, pokud vyjedná**. Od sestavení 1902 musí necháváme ji jak **není definována** nebo ji nastavte na **pouze odpovědi odeslat NTLMv2** (což je výchozí hodnota). V opačném případě nebude schopný vytvořit vzdálené relace prostředí PowerShell a dostanete *přístup byl odepřen* Chyba:
+- Pokud nemáte hardwaru životního cyklu hostitelů (HLH): před sestavením 1902, museli jste nastavit zásady skupiny **počítače Konfigurace počítače\Nastavení systému Windows\Místní Policies\Security Options** k **Odeslat LM NTLM – Použijte NTLMv2 relace zabezpečení, pokud vyjedná**. Od sestavení 1902 musí necháváme ji jak **není definována** nebo ji nastavte na **pouze odpovědi odeslat NTLMv2** (což je výchozí hodnota). V opačném případě nebude schopný vytvořit vzdálené relace prostředí PowerShell a zobrazí se **přístup byl odepřen** Chyba:
 
-   ```PowerShell
+   ```shell
    PS C:\Users\Administrator> $session = New-PSSession -ComputerName x.x.x.x -ConfigurationName PrivilegedEndpoint  -Credential $cred
    New-PSSession : [x.x.x.x] Connecting to remote server x.x.x.x failed with the following error message : Access is denied. For more information, see the 
    about_Remote_Troubleshooting Help topic.
@@ -169,7 +175,7 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 <!-- 3239127 - IS, ASDK -->
 - Na portálu Azure Stack při změně statickou IP adresu pro konfiguraci IP, která je vázána na síťový adaptér připojený k instanci virtuálního počítače, zobrazí se zpráva s oznámením 
 
-    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`.
+    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`
 
     Můžete bezpečně ignorovat této zprávy. IP adresa se změní i v případě neprovede restartování instance virtuálního počítače.
 
@@ -193,7 +199,6 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 
 <!-- 2352906 - IS ASDK --> 
 - Před vytvořením první funkce Azure v rámci předplatného, zaregistrujte poskytovatele prostředků úložiště.
-
 
 <!-- ### Usage -->
 

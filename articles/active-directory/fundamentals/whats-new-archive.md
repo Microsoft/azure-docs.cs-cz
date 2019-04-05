@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50b49ce05eb3309f5b21761dc55ab17a1a18f7cc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f6fe7b2cefdd29f0497bbc18e969a77ac295ba42
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670927"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051950"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv co je nového? ve službě Azure Active Directory
 
@@ -466,7 +466,7 @@ Další informace o ochraně hesel služby Azure AD najdete v tématu [eliminuje
 
 Během vytváření vašich podmínek použití (ToU) se také vytvoří novou šablonu zásad podmíněného přístupu pro "všechny hostů" a "všechny aplikace". Tato nová šablona zásad platí nově vytvořený podmínek použití, usnadňuje vytváření a vynucování procesů pro hosty.
 
-Další informace najdete v tématu [Azure Active Directory Terms of použít funkci](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+Další informace najdete v tématu [Azure Active Directory Terms of použít funkci](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
 
@@ -478,7 +478,7 @@ Další informace najdete v tématu [Azure Active Directory Terms of použít fu
 
 Při vytváření vašich podmínek použití (ToU) se vytvoří také novou šablonu zásad podmíněného přístupu "vlastní". Tato nová šablona zásad vám umožní vytvořit podmínky použití a pak okamžitě přejít na okno pro vytvoření zásady podmíněného přístupu, aniž by bylo potřeba ručně přejít na portálu.
 
-Další informace najdete v tématu [Azure Active Directory Terms of použít funkci](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+Další informace najdete v tématu [Azure Active Directory Terms of použít funkci](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
 
@@ -727,7 +727,7 @@ Při konfiguraci aplikace založené na SAML jednotného přihlašování, budet
 Další informace naleznete v tématu:
 
 - [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)
-- [Ladění založené na SAML jednotného přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+- [Jak ladit jednotné přihlašování k aplikacím v Azure Active Directory založené na SAML](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
 
 ---
  
@@ -739,7 +739,7 @@ Další informace naleznete v tématu:
  
 Správci teď můžete vybrat dané podmínky použití a zobrazení všech uživatelů, které mají souhlasil se podmínky použití a co datu a času byla provedena.
 
-Další informace najdete v tématu [funkcí Azure AD podmínky použití](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+Další informace najdete v tématu [funkcí Azure AD podmínky použití](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
  
@@ -782,7 +782,7 @@ Další informace najdete v tématu [Konfigurace jednotného přihlašování k 
 
 Azure AD Terms of Use přešli z verze public preview na všeobecně dostupná.
 
-Další informace najdete v tématu [funkcí Azure AD podmínky použití](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+Další informace najdete v tématu [funkcí Azure AD podmínky použití](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
 
@@ -1215,7 +1215,7 @@ Azure AD Connect je preferovaný nástroj pro synchronizaci dat mezi službami A
 
 Tato verze má následující aktualizace a změny:
 
-**Opravené problémy**
+**Oprava potíží**
 
 - Opravte časové okno na úlohy na pozadí pro filtrování oddílů stránku při přechodu na další stránku.
 
@@ -1394,7 +1394,7 @@ Další informace naleznete v tématu:
 
 ---
 
-## <a name="december-2017"></a>. Prosince 2017
+## <a name="december-2017"></a>Prosinec 2017
 
 ### <a name="terms-of-use-in-the-access-panel"></a>Podmínky použití na přístupovém panelu
 
@@ -1414,7 +1414,7 @@ Postupujte následovně:
 
 4. Nyní můžete přečíst podmínky použití přijmout. 
 
-Další informace najdete v tématu [podmínky služby Azure AD použít funkci (preview)](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+Další informace najdete v tématu [podmínky služby Azure AD použít funkci (preview)](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
  
 ---
  
@@ -1454,7 +1454,7 @@ Možnost pro správce vyžaduje, aby jejich uživatelé rozbalili podmínky pou�
 
 Vyberte buď **na** nebo **vypnout** požadujete, aby uživatelé rozbalili podmínky použití. **Na** nastavení vyžaduje, aby uživatelé zobrazit podmínky použití před přijetím.
 
-Další informace najdete v tématu [podmínky služby Azure AD použít funkci (preview)](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+Další informace najdete v tématu [podmínky služby Azure AD použít funkci (preview)](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
  
 ---
 
@@ -1665,7 +1665,7 @@ Nyní můžete zahrnout (nebo vyloučit) macOS jako podmínku platformy zaříze
 
 Další informace naleznete v tématu:
 
-- [Vytvoření zásady dodržování předpisů pro zařízení s macOS pomocí Intune](https://aka.ms/macoscompliancepolicy)
+- [Vytvoření zásady dodržování předpisů zařízením pro zařízení s macOS v Intune](https://aka.ms/macoscompliancepolicy)
 - [Podmíněný přístup ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
  
 ---
@@ -1807,7 +1807,7 @@ Podmínky použití služby Azure AD můžete použít v následujících scén�
 - Konkrétní podmínky použití založené na atributech uživatelů (například lékařů vs. sestry) nebo domácích a mezinárodních zaměstnanců, provádí dynamické skupiny
 - Konkrétní podmínky použití pro přístup k vysoce účinné obchodní aplikace, jako je Salesforce
 
-Další informace najdete v tématu [podmínek použití služby Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+Další informace najdete v tématu [podmínek použití služby Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
 

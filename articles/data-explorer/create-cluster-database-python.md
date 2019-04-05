@@ -1,24 +1,23 @@
 ---
 title: 'Rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze s použitím jazyka Python'
-description: Zjistěte, jak vytvořit cluster Průzkumník dat Azure a databáze služby s použitím jazyka Python
-services: data-explorer
+description: Zjistěte, jak vytvořit cluster Průzkumník dat Azure a databáze služby s použitím jazyka Python.
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: 24e482d223fec2c1f95d7cc964f62eac81c5de05
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 408b34db16f0d6d22340f0483b90ce5d72ffa613
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472575"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045197"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Vytvoření clusteru Průzkumník dat Azure a databáze s použitím jazyka Python
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](create-cluster-database-portal.md)
+> * [Portál](create-cluster-database-portal.md)
 > * [Rozhraní příkazového řádku](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
@@ -130,4 +129,4 @@ Teď máte cluster a databázi.
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Ingestování dat pomocí knihovny Python Průzkumník dat Azure](python-ingest-data.md)
+> [Rychlý start: Ingestování dat pomocí knihovny Python Průzkumník dat Azure](python-ingest-data.md)

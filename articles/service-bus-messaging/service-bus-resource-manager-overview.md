@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 4fa9026405789a6a90bbb9213cc54346aa8374c8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 196b00f1268eada20d0e35473dc6eb43c9e48df6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57845398"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045265"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Vytvořit prostředky služby Service Bus pomocí šablon Azure Resource Manageru
 
@@ -29,14 +29,14 @@ Tento článek popisuje, jak vytvořit a nasadit prostředky služby Service Bus
 
 > [!NOTE]
 > V příkladech v tomto článku ukazují, jak pomocí Azure Resource Manageru k vytvoření oboru názvů Service Bus a entity pro zasílání zpráv (fronty). Další příklady šablon, přejděte [Galerie šablon rychlý start Azure] [ Azure Quickstart Templates gallery] a vyhledejte **služby Service Bus**.
->
->
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="service-bus-resource-manager-templates"></a>Šablony správce prostředků služby Service Bus
 
 Tyto šablony služby Service Bus Azure Resource Manageru jsou k dispozici ke stažení a nasazení. Klikněte na podrobnosti o každé z nich, s odkazy na šablony na Githubu prostřednictvím následujících odkazů:
 
-* [Vytvoření oboru názvů služby Service Bus](service-bus-resource-manager-namespace.md)
+* [Vytvoření oboru názvů Service Bus](service-bus-resource-manager-namespace.md)
 * [Vytvoření oboru názvů služby Service Bus s frontou](service-bus-resource-manager-namespace-queue.md)
 * [Vytvoření oboru názvů služby Service Bus s tématem a předplatným](service-bus-resource-manager-namespace-topic.md)
 * [Vytvoření oboru názvů služby Service Bus s fronty a autorizační pravidla](service-bus-resource-manager-namespace-auth-rule.md)
@@ -164,27 +164,27 @@ Další informace najdete v tématu [parametry](../azure-resource-manager/resour
 Z příkazového řádku Powershellu spusťte následující příkaz:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Zobrazí se výzva k přihlášení k účtu Azure. Po přihlášení, spusťte následující příkaz, chcete-li zobrazit dostupná předplatná:
 
 ```powershell
-Get-AzureRMSubscription
+Get-AzSubscription
 ```
 
 Tento příkaz vrátí seznam hodnot dostupná předplatná Azure. Spuštěním následujícího příkazu vyberte předplatné pro aktuální relaci. Nahraďte `<YourSubscriptionId>` s identifikátorem GUID předplatného Azure, kterou chcete použít:
 
 ```powershell
-Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
+Set-AzContext -SubscriptionID <YourSubscriptionId>
 ```
 
 ### <a name="set-the-resource-group"></a>Nastavit skupinu prostředků
 
-Pokud nemáte existující prostředek skupiny, vytvořte novou skupinu prostředků s **New-AzureRmResourceGroup** příkazu. Zadejte název skupiny prostředků a umístění, které chcete použít. Příklad:
+Pokud nemáte existující prostředek skupiny, vytvořte novou skupinu prostředků s **New-AzResourceGroup** příkazu. Zadejte název skupiny prostředků a umístění, které chcete použít. Příklad:
 
 ```powershell
-New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
+New-AzResourceGroup -Name MyDemoRG -Location "West US"
 ```
 
 V případě úspěchu, zobrazí se souhrn novou skupinu prostředků.
@@ -199,38 +199,38 @@ ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 
 ### <a name="test-the-deployment"></a>Otestování nasazení
 
-Ověřit nasazení spuštěním `Test-AzureRmResourceGroupDeployment` rutiny. Při testování nasazení, zadejte parametry stejným způsobem jako při spuštění nasazení.
+Ověřit nasazení spuštěním `Test-AzResourceGroupDeployment` rutiny. Při testování nasazení, zadejte parametry stejným způsobem jako při spuštění nasazení.
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
+Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 ### <a name="create-the-deployment"></a>Vytvoření nasazení
 
-Pokud chcete vytvořit nové nasazení, spusťte `New-AzureRmResourceGroupDeployment` rutiny a zadejte potřebné parametry po zobrazení výzvy. Parametry jsou název pro nasazení, název vaší skupiny prostředků a cesta nebo adresa URL k souboru šablony. Pokud **režimu** parametr není zadán, výchozí hodnota **přírůstkové** se používá. Další informace najdete v tématu [přírůstkové a úplné nasazení](../azure-resource-manager/deployment-modes.md).
+Pokud chcete vytvořit nové nasazení, spusťte `New-AzResourceGroupDeployment` rutiny a zadejte potřebné parametry po zobrazení výzvy. Parametry jsou název pro nasazení, název vaší skupiny prostředků a cesta nebo adresa URL k souboru šablony. Pokud **režimu** parametr není zadán, výchozí hodnota **přírůstkové** se používá. Další informace najdete v tématu [přírůstkové a úplné nasazení](../azure-resource-manager/deployment-modes.md).
 
 Následující příkaz vás vyzve k zadání tři parametry v okně Powershellu:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 Chcete-li místo toho zadejte soubor parametrů, použijte následující příkaz:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
 Můžete také použít vložených parametrů při spuštění rutiny nasazení. Příkaz vypadá takto:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
 Ke spuštění [kompletní](../azure-resource-manager/deployment-modes.md) nasazení, nastavte **režimu** parametr **Complete**:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
+New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 ### <a name="verify-the-deployment"></a>Ověření nasazení

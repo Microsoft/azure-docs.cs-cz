@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 77519c57c9a603ae0eff46d248ff15432d0404fa
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a2f55a65d88b499384fc961c3d6a479bac804ba8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485386"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051525"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Analyzovat zabezpečení vašich virtuálních počítačů se zobrazením skupin zabezpečení pomocí rozhraní REST API
 
@@ -29,6 +29,9 @@ ms.locfileid: "58485386"
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 Zobrazení skupin zabezpečení vrátí pravidla zabezpečení sítě nakonfigurovaná a efektivní, které se použijí k virtuálnímu počítači. Tato možnost je užitečná k auditování a diagnostice skupiny zabezpečení sítě a pravidel, které jsou nakonfigurované na virtuálním počítači k zajištění provozu se správně povolený nebo zakázaný. V tomto článku ukážeme, jak načíst pravidla zabezpečení efektivní a použité k virtuálnímu počítači pomocí rozhraní REST API
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Před zahájením
 
@@ -50,7 +53,7 @@ armclient login
 
 Následující kód, spusťte následující skript, který vrátí virtuální machineThe potřebuje proměnné:
 
-- **subscriptionId** – id předplatného můžete získat také pomocí **Get-AzureRMSubscription** rutiny.
+- **subscriptionId** – id předplatného můžete získat také pomocí **Get-AzSubscription** rutiny.
 - **Název skupiny prostředků** – název skupiny prostředků obsahující virtuální počítače.
 
 ```powershell

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 5e6a7cbc070d81de33fac07a89dabf2b469bd355
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 19a7d6052091f8889a88c61793186b7bf7d9d869
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449992"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047009"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>Přidání artefaktu do virtuálního počítače
 Při vytváření virtuálního počítače, můžete přidat existující artefakty k němu. Tyto artefakty mohou být buď z [veřejného úložiště DevTest Labs Git](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) nebo z úložiště Git. Tento článek ukazuje, jak přidat artefakty na webu Azure Portal a pomocí Azure Powershellu. 
@@ -27,6 +27,8 @@ Při vytváření virtuálního počítače, můžete přidat existující artef
 Azure DevTest Labs *artefakty* vám umožní zadat *akce* prováděných při zřízení virtuálního počítače, jako je například spouštění skriptů Windows Powershellu, příkazů Bash a instalace softwaru. Artefakt *parametry* umožňují přizpůsobit artefakt pro váš konkrétní scénář.
 
 Další informace o tom, jak při vytváření vlastních artefaktů, najdete v článku: [Při vytváření vlastních artefaktů](devtest-lab-artifact-author.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal 
 1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
@@ -63,11 +65,10 @@ Následující kroky ukazují, jak zobrazit nebo upravit parametry artefaktu:
 1. Vyberte **OK** zavřete **vybrané artefakty** podokně.
 
 ## <a name="use-powershell"></a>Použití prostředí PowerShell
-Následující skript se týká zadaného artefaktů zadaný virtuální počítač. [Invoke-AzureRmResourceAction](/powershell/module/azurerm.resources/invoke-azurermresourceaction?view=azurermps-6.13.0) příkaz je ten, který provádí operace.  
+Následující skript se týká zadaného artefaktů zadaný virtuální počítač. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) příkaz je ten, který provádí operace.  
 
 ```powershell
-#Requires -Version 3.0
-#Requires -Module AzureRM.Resources
+#Requires -Module Az.Resources
 
 param
 (
@@ -86,14 +87,14 @@ param
 )
 
 # Set the appropriate subscription
-Set-AzureRmContext -SubscriptionId $SubscriptionId | Out-Null
+Set-AzContext -SubscriptionId $SubscriptionId | Out-Null
  
 # Get the lab resource group name
-$resourceGroupName = (Find-AzureRmResource -ResourceType 'Microsoft.DevTestLab/labs' | Where-Object { $_.Name -eq $DevTestLabName}).ResourceGroupName
+$resourceGroupName = (Find-AzResource -ResourceType 'Microsoft.DevTestLab/labs' | Where-Object { $_.Name -eq $DevTestLabName}).ResourceGroupName
 if ($resourceGroupName -eq $null) { throw "Unable to find lab $DevTestLabName in subscription $SubscriptionId." }
 
 # Get the internal repo name
-$repository = Get-AzureRmResource -ResourceGroupName $resourceGroupName `
+$repository = Get-AzResource -ResourceGroupName $resourceGroupName `
                     -ResourceType 'Microsoft.DevTestLab/labs/artifactsources' `
                     -ResourceName $DevTestLabName `
                     -ApiVersion 2016-05-15 `
@@ -103,7 +104,7 @@ $repository = Get-AzureRmResource -ResourceGroupName $resourceGroupName `
 if ($repository -eq $null) { "Unable to find repository $RepositoryName in lab $DevTestLabName." }
 
 # Get the internal artifact name
-$template = Get-AzureRmResource -ResourceGroupName $resourceGroupName `
+$template = Get-AzResource -ResourceGroupName $resourceGroupName `
                 -ResourceType "Microsoft.DevTestLab/labs/artifactSources/artifacts" `
                 -ResourceName "$DevTestLabName/$($repository.Name)" `
                 -ApiVersion 2016-05-15 `
@@ -116,7 +117,7 @@ if ($template -eq $null) { throw "Unable to find template $ArtifactName in lab $
 $FullVMId = "/subscriptions/$SubscriptionId/resourceGroups/$resourceGroupName`
                 /providers/Microsoft.DevTestLab/labs/$DevTestLabName/virtualmachines/$virtualMachineName"
 
-$virtualMachine = Get-AzureRmResource -ResourceId $FullVMId
+$virtualMachine = Get-AzResource -ResourceId $FullVMId
 
 # Generate the artifact id
 $FullArtifactId = "/subscriptions/$SubscriptionId/resourceGroups/$resourceGroupName`
@@ -150,7 +151,7 @@ artifacts = @(
 # Check the VM
 if ($virtualMachine -ne $null) {
    # Apply the artifact by name to the virtual machine
-   $status = Invoke-AzureRmResourceAction -Parameters $prop -ResourceId $virtualMachine.ResourceId -Action "applyArtifacts" -ApiVersion 2016-05-15 -Force
+   $status = Invoke-AzResourceAction -Parameters $prop -ResourceId $virtualMachine.ResourceId -Action "applyArtifacts" -ApiVersion 2016-05-15 -Force
    if ($status.Status -eq 'Succeeded') {
       Write-Output "##[section] Successfully applied artifact: $ArtifactName to $VirtualMachineName"
    } else {
@@ -168,4 +169,4 @@ Na artefakty naleznete v následujících článcích:
 - [Zadejte povinné artefakty testovacího prostředí.](devtest-lab-mandatory-artifacts.md)
 - [Přidání vlastních artefaktů](devtest-lab-artifact-author.md)
 - [Přidání úložiště artefaktů do testovacího prostředí](devtest-lab-artifact-author.md)
-- [Diagnostikování selhání artefaktů](devtest-lab-troubleshoot-artifact-failure.md)
+- [Diagnostika selhání artefaktů](devtest-lab-troubleshoot-artifact-failure.md)

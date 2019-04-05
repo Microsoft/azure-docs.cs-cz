@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: genli
-ms.openlocfilehash: 6f539cb905c0ed401816c7f223918a1416f95d6c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: f01dfe78d5d5e322258b0ee98cec314f9afe33c0
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312270"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050641"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Řešení potíží s sníženém výkonu Azure Traffic Manageru
 
@@ -42,7 +42,7 @@ Pokud se Traffic Manager zobrazuje **neaktivní** stav, pak oba koncové body mo
 Řešení potíží s selhání testu, je nutné nástroj, který zobrazuje návratový kód stavu HTTP z adresy URL testu. Nejsou k dispozici mnoho nástrojů, které můžete zobrazit nezpracovaná odpověď HTTP.
 
 * [Fiddler](https://www.telerik.com/fiddler)
-* [curl](https://curl.haxx.se/)
+* [Curl](https://curl.haxx.se/)
 * [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
 Navíc můžete použít na síťové kartě ladicí nástroje F12 v aplikaci Internet Explorer k zobrazení odpovědi protokolu HTTP.
@@ -92,4 +92,4 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [Rutiny Azure Traffic Manageru][1]
 
-[1]: https://docs.microsoft.com/powershell/module/azurerm.trafficmanager
+[1]: https://docs.microsoft.com/powershell/module/az.trafficmanager

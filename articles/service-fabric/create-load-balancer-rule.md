@@ -14,18 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: aljo
-ms.openlocfilehash: 526e70fe8548b23f08a2c85e8a59bdc2c25199b4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d95d2802398a61b948ff6c59fb3eab0e1ddddbc5
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660922"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051661"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otevřete porty pro cluster Service Fabric
 
 Nástroje pro vyrovnávání zatížení, který je nasazený pomocí clusteru Azure Service Fabric směruje provoz do vaší aplikace spuštěný v uzlu. Pokud změníte vaše aplikace bude moct používat jiný port, musí zveřejnit tento port (nebo směrovat jiný port) ve službě Azure Load Balancer.
 
 Po nasazení clusteru Service Fabric do Azure pro vás byl automaticky vytvořen nástroj pro vyrovnávání zatížení. Pokud nemáte nástroj pro vyrovnávání zatížení, přečtěte si téma [konfigurace nástroje pro vyrovnávání zatížení přístupem k Internetu](../load-balancer/load-balancer-get-started-internet-portal.md).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="configure-service-fabric"></a>Konfigurace service fabric
 
@@ -82,14 +85,14 @@ PowerShell je o něco složitější než rozhraní příkazového řádku Azure
 >[!NOTE]
 >Pokud je potřeba určit název nástroje pro vyrovnávání zatížení, použijte tento příkaz rychle získat seznam všech nástrojů pro vyrovnávání zatížení a přidružený prostředek skupiny.
 >
->`Get-AzureRmLoadBalancer | Select Name, ResourceGroupName`
+>`Get-AzLoadBalancer | Select Name, ResourceGroupName`
 
 ```powershell
 # Get the load balancer
-$lb = Get-AzureRmLoadBalancer -Name LB-svcfab3 -ResourceGroupName svcfab_cli
+$lb = Get-AzLoadBalancer -Name LB-svcfab3 -ResourceGroupName svcfab_cli
 
 # Create the rule based on information from the load balancer.
-$lbrule = New-AzureRmLoadBalancerRuleConfig -Name my-app-rule7 -Protocol Tcp -FrontendPort 39990 -BackendPort 40009 `
+$lbrule = New-AzLoadBalancerRuleConfig -Name my-app-rule7 -Protocol Tcp -FrontendPort 39990 -BackendPort 40009 `
                                             -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
                                             -BackendAddressPool  $lb.BackendAddressPools[0] `
                                             -Probe $lb.Probes[0]
@@ -98,14 +101,14 @@ $lbrule = New-AzureRmLoadBalancerRuleConfig -Name my-app-rule7 -Protocol Tcp -Fr
 $lb.LoadBalancingRules.Add($lbrule)
 
 # Update the load balancer on Azure
-$lb | Set-AzureRmLoadBalancer
+$lb | Set-AzLoadBalancer
 ```
 
-Ohledně `New-AzureRmLoadBalancerRuleConfig` příkazu `-FrontendPort` představuje port, který poskytuje nástroje pro vyrovnávání zatížení pro externí připojení, a `-BackendPort` představuje aplikace service fabric naslouchá na portu.
+Ohledně `New-AzLoadBalancerRuleConfig` příkazu `-FrontendPort` představuje port, který poskytuje nástroje pro vyrovnávání zatížení pro externí připojení, a `-BackendPort` představuje aplikace service fabric naslouchá na portu.
 
 >[!NOTE]
 >Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí prostředí PowerShell najdete v tématu [vytvoření nástroje pro vyrovnávání zatížení pomocí prostředí PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [sítě v Service Fabric](service-fabric-patterns-networking.md).
+Další informace o [sítě v Service Fabric](service-fabric-patterns-networking.md).rvice fabric vzory networking.md).

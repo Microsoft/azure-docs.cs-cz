@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: ea73c16687d393cd1e61c4aee83fbf74cc4ae9a7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 903f2700ad127c9bcc69e69ee125ba62fccf52e0
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108116"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051627"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Přeučování a nasadit model strojového učení
 
@@ -28,6 +28,8 @@ Vytvoříte provedením následujících kroků přeučování a nasazení novou
 1. Nasazení **přetrénování webové služby**
 1. Natrénovat nový model pomocí vaší **přetrénování webové služby**
 1. Aktualizovat stávající **prediktivní experiment** použít nový model
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="deploy-the-retraining-web-service"></a>Nasazení retraining webové služby
 
@@ -130,15 +132,15 @@ Uložit *BaseLocation*, *RelativeLocation*, a *SasBlobToken* z výsledků výstu
 
 ### <a name="sign-in-to-azure-resource-manager"></a>Přihlaste se k Azure Resource Manageru
 
-Nejprve se přihlaste ke svému účtu Azure z prostředí PowerShell pomocí [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) rutiny.
+Nejprve se přihlaste ke svému účtu Azure z prostředí PowerShell pomocí [připojit AzAccount](/powershell/module/az.profile/connect-azaccount) rutiny.
 
 ### <a name="get-the-web-service-definition-object"></a>Získejte objekt definice webové služby
 
-Potom získejte objekt definice webové služby pomocí volání [Get-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/get-azurermmlwebservice) rutiny.
+Potom získejte objekt definice webové služby pomocí volání [Get-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) rutiny.
 
-    $wsd = Get-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+    $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-K určení názvu skupiny prostředků existující webové služby, spusťte rutinu Get-AzureRmMlWebService bez parametrů pro zobrazení webových služeb v rámci vašeho předplatného. Vyhledejte webovou službu a podívejte se na jeho ID webové služby. Název skupiny prostředků je čtvrtý prvek v poli ID bezprostředně po *resourceGroups* elementu. V následujícím příkladu je název skupiny prostředků výchozí. MachineLearning SouthCentralUS.
+K určení názvu skupiny prostředků existující webové služby, spusťte rutinu Get-AzMlWebService bez parametrů pro zobrazení webových služeb v rámci vašeho předplatného. Vyhledejte webovou službu a podívejte se na jeho ID webové služby. Název skupiny prostředků je čtvrtý prvek v poli ID bezprostředně po *resourceGroups* elementu. V následujícím příkladu je název skupiny prostředků výchozí. MachineLearning SouthCentralUS.
 
     Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
     Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
@@ -153,9 +155,9 @@ Můžete také určit název skupiny prostředků existující webové služby, 
 
 ### <a name="export-the-web-service-definition-object-as-json"></a>Export objektu definice webové služby jako JSON.
 
-Pokud chcete upravit definici trénovaného modelu, použití nově trénovaného modelu, musíte nejprve použít [Export AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice) rutiny a jejich export do souboru ve formátu JSON.
+Pokud chcete upravit definici trénovaného modelu, použití nově trénovaného modelu, musíte nejprve použít [Export AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) rutiny a jejich export do souboru ve formátu JSON.
 
-    Export-AzureRmMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
+    Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
 
 ### <a name="update-the-reference-to-the-ilearner-blob"></a>Aktualizovat odkaz na objekt blob ilearner
 
@@ -176,15 +178,15 @@ V prostředky, vyhledejte [trénovaný model], aktualizujte *identifikátor uri*
 
 ### <a name="import-the-json-into-a-web-service-definition-object"></a>Import kódu JSON do objektu definice webové služby
 
-Použít [Import AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/import-azurermmlwebservice) rutiny pro převod upravený soubor JSON zpět do objektu definice webové služby, který vám pomůže aktualizovat predicative experimentu.
+Použít [Import AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) rutiny pro převod upravený soubor JSON zpět do objektu definice webové služby, který vám pomůže aktualizovat predicative experimentu.
 
-    $wsd = Import-AzureRmMlWebService -InputFile "C:\temp\mlservice_export.json"
+    $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 ### <a name="update-the-web-service"></a>Aktualizovat webovou službu
 
-Nakonec použijte [aktualizace AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/update-azurermmlwebservice) rutina pro aktualizaci prediktivní experiment.
+Nakonec použijte [aktualizace AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) rutina pro aktualizaci prediktivní experiment.
 
-    Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+    Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,19 +1,18 @@
 ---
 title: Ingestování ukázková data do Průzkumníku dat Azure
 description: Další informace o tom, jak ingestování (načíst) týkající se počasí s ukázková data do Průzkumníku dat Azure.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 2ebbe3434f032b38c33ec7b82e445532836f78c9
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: e80322cda671e2145cf3e65aa1457f1fa1827737
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758478"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050616"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>Ingestování ukázková data do Průzkumníku dat Azure
 
@@ -24,7 +23,7 @@ Tento článek ukazuje, jak ingestování (načíst) ukázková data do databáz
 
 ## <a name="prerequisites"></a>Požadavky
 
-[Testovací cluster a databázi](create-cluster-database-portal.md)
+[Testovací cluster a databáze](create-cluster-database-portal.md)
 
 ## <a name="ingest-data"></a>Ingestace dat
 
@@ -58,7 +57,7 @@ Ukázková datová sada **StormEvents** obsahuje data týkající se počasí od
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)
+> [Rychlý start: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)
 
 > [!div class="nextstepaction"]
 > [Zápis dotazů](write-queries.md)

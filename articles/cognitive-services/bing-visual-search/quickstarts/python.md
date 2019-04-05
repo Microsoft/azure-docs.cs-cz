@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 5/16/2018
+ms.date: 4/02/2019
 ms.author: scottwhi
-ms.openlocfilehash: 873da64592c2c2e925d8731d4b1154db95bed31d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7ec37b4c3bdeb924b3e35dbcb5d07a478611f631
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863223"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047122"
 ---
-# <a name="quickstart-your-first-bing-visual-search-query-in-python"></a>Rychlý start: Svůj první dotaz v jazyce Python pro vizuální vyhledávání Bingu
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Rychlý start: Získejte přehledy obrázků pomocí API REST pro vizuální vyhledávání Bingu a Pythonu
 
-V tomto rychlém startu můžete provést první volání do rozhraní API vizuální vyhledávání Bingu a zobrazení výsledků hledání. Tato jednoduchá aplikace JavaScript odešle obrázek do rozhraní API a zobrazí informace vrácené o něm. Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
+V tomto rychlém startu můžete provést první volání rozhraní API vizuální vyhledávání Bingu a prohlédněte si výsledky. Tuto aplikaci v Pythonu odešle obrázek do rozhraní API a zobrazí informace, které vrátí. I když je tato aplikace napsané v Pythonu, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
 
-Při nahrávání místní image, data formuláře POST musí obsahovat hlavičku Content-Disposition. Její parametr `name` musí být nastavený na "image" a parametr `filename` může být nastavený na libovolný řetězec. Obsah formuláře je binární soubor obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
+Při nahrávání místní image musíte zahrnout data formuláře `Content-Disposition` záhlaví. Je nutné nastavit jeho `name` parametr "image" kde můžete nastavit `filename` parametr libovolný řetězec. Obsah ve formátu zahrnout binární data bitové kopie. Maximální velikost, kterou můžete nahrát je 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -36,18 +36,17 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 * [Python 3.x](https://www.python.org/)
 
-
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="initialize-the-application"></a>Inicializace aplikace
 
-1. Vytvořte nový soubor Pythonu ve vašich oblíbených prostředím IDE nebo editorem a přidejte následující příkaz importu.
+1. Vytvořte nový soubor Pythonu ve vašich oblíbených prostředím IDE nebo editorem a přidejte následující `import` – příkaz:
 
     ```python
     import requests, json
     ```
 
-2. Vytváření proměnných pro váš klíč předplatného, koncový bod a cestu k obrázku, který se nahrávání.
+2. Vytváření proměnných pro váš klíč předplatného, koncový bod a cesta k image, kterou jste nahrávání:
 
     ```python
 
@@ -56,13 +55,13 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     imagePath = 'your-image-path'
     ```
 
-3. Vytvořte objekt slovníku k ukládání informací hlavičky vašich požadavků. Váš klíč předplatného svázat řetězec `Ocp-Apim-Subscription-Key`, jak je znázorněno níže.
+3. Vytvořte objekt slovníku k ukládání informací hlavičky vaši žádost. Váš klíč předplatného svázat řetězec `Ocp-Apim-Subscription-Key`, jak je znázorněno níže:
 
     ```python
     HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
     ```
 
-4. Vytvořte jiný slovník obsahující bitové kopie, která bude odeslána při odeslání požadavku a otevřít. 
+4. Vytvořte jiný slovník obsahující bitové kopie, což je otevřít a odeslána při odeslání požadavku:
 
     ```python
     file = {'image' : ('myfile', open(imagePath, 'rb'))}
@@ -70,7 +69,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="parse-the-json-response"></a>Analyzovat odpověď JSON
 
-1. Vytvořit metodu nazvanou `print_json()` využít v odpovědi rozhraní API a tisk ve formátu JSON.
+1. Vytvořit metodu nazvanou `print_json()` využít v odpovědi rozhraní API a tisk ve formátu JSON:
 
     ```python
     def print_json(obj):
@@ -80,7 +79,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="send-the-request"></a>Odeslání požadavku
 
-1. Použití `requests.post()` odeslat požadavek na rozhraní API vizuální vyhledávání Bingu. Zahrňte řetězec pro koncový bod, záhlaví a informace o souboru. Tisk `response.json()` s `print_json()`
+1. Použití `requests.post()` odeslat požadavek na rozhraní API vizuální vyhledávání Bingu. Zahrňte řetězec pro koncový bod, záhlaví a informace o souboru. Tisk `response.json()` s `print_json()`:
 
     ```python
     try:
@@ -95,4 +94,4 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Sestavení webové aplikace s vlastní vyhledávání](../tutorial-bing-visual-search-single-page-app.md)
+> [Vytvořit pro vizuální vyhledávání jednostránkovou webovou aplikaci](../tutorial-bing-visual-search-single-page-app.md)

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 78ca1d7ceb9086e0d589f904b24b967d36b079a0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 1ee6edbf49bbcd2014afcf29ed3b737168a3b5bc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895609"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046066"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Váš Model pomocí prediktivního rozhraní API
 
@@ -45,7 +45,7 @@ Po publikování modelu, můžete načíst požadované informace tak, že vyber
 ![Na kartě výkonu se zobrazí s červenou obdélník hodnota předpovědi URL souboru obrázku a hodnotu klíče předpovědi.](./media/use-prediction-api/prediction-api-info.png)
 
 > [!TIP]
-> Vaše __předpovědi klíč__ najdete také v [webu Azure Portal](https://portal.azure.com) stránky pro vlastní prostředek Azure pro zpracování obrazu spojené s projektem, v části __klíče__ okno.
+> Vaše __předpovědi klíč__ najdete také v [webu Azure portal](https://portal.azure.com) stránky pro vlastní prostředek Azure pro zpracování obrazu spojené s projektem, v části __klíče__ okno.
 
 V této příručce, použijte místní image, takže zkopírujte adresu URL v části **Pokud máte soubor obrázku** do dočasného umístění. Zkopírujte odpovídající __předpovědi klíč__ hodnotu.
 

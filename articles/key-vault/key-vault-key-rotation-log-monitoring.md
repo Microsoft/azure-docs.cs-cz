@@ -13,18 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 68fd33dc3e9def11f72b7aec14f83f86b8bb74d0
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: fb3300a45f905eb57fcc4880269e4a9bed9dac0c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749699"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045981"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Nastavení služby Azure Key Vault s obměny klíčů a auditování
 
 ## <a name="introduction"></a>Úvod
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Jakmile máte trezor klíčů, chcete začít, používat k ukládání klíčů a tajných kódů. Vaše aplikace, které už nepotřebujete k uchování vašich klíčů nebo tajných klíčů, ale můžou o ně požádat z trezoru podle potřeby. Služby key vault umožňuje aktualizovat klíče a tajné kódy bez ovlivnění chování aplikace, což otevře širokou škálu možností pro správu tajných kódů a klíče.
 
@@ -39,6 +37,8 @@ Tento článek vás provede:
 
 > [!NOTE]
 > Tento článek není podrobně vysvětluje počátečním nastavení trezoru klíčů. Tyto informace v tématu [co je Azure Key Vault?](key-vault-overview.md). Multiplatformní rozhraní příkazového řádku najdete v tématu [Správa služby Key Vault pomocí rozhraní příkazového řádku Azure](key-vault-manage-with-cli2.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="set-up-key-vault"></a>Nastavení služby Key Vault
 
@@ -166,6 +166,9 @@ Při spuštění aplikace by měla nyní být ověřování v Azure Active Direc
 
 ## <a name="key-rotation-using-azure-automation"></a>Obměna klíčů pomocí Azure Automation
 
+> [!IMPORTANT]
+> Runbooky služby automatizace Azure stále vyžadují použití `AzureRM` modulu.
+
 Nyní jste připraveni nastavit otočení strategii pro hodnoty, které se ukládají jako tajné klíče služby Key Vault. Tajné kódy lze otočit několika způsoby:
 
 - Jako součást ruční proces
@@ -210,7 +213,7 @@ try
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
     "Logging in to Azure..."
-    Connect-AzAccount `
+    Connect-AzureRmAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -235,12 +238,12 @@ $VaultName = <keyVaultName>
 $SecretName = <keyVaultSecretName>
 
 #Key name. For example key1 or key2 for the storage account
-New-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
-$SAKeys = Get-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
+New-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
+$SAKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
 
 $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 
-$secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
+$secret = Set-AzureRmKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
 Podokna editoru vyberte **testovací podokno** k otestování vašeho skriptu. Po spuštění skriptu bez chyb, můžete vybrat **publikovat**, a pak může použít plán pro runbook v podokně Konfigurace sady runbook.

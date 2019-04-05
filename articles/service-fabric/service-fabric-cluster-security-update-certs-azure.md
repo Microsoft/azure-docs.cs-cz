@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 534335b15d61d1e411ec2e7fb96123eb4701878e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0038de621a02a2edf3198686e1f2fc88fb917d9c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315264"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050233"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidat nebo odebrat certifikáty pro cluster Service Fabric v Azure
 Doporučujeme seznámit se s jak Service Fabric používá certifikáty X.509 a znáte [scénáře zabezpečení clusteru](service-fabric-cluster-security.md). Musíte porozumět tomu, jaký certifikát clusteru je a k čemu slouží, než budete pokračovat dál.
@@ -33,6 +33,9 @@ Service fabric umožňuje zadat dva certifikáty clusteru, primární a sekundá
 > 
 > 
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>Přidání sekundárního certifikátu clusteru pomocí portálu
 Nelze přidat sekundárního certifikátu clusteru na webu Azure portal, pomocí Azure powershellu. Proces je popsaný dále v tomto dokumentu.
 
@@ -45,7 +48,7 @@ Pokud máte v úmyslu odebrat certifikát, který je označen jako primární, p
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Přidání sekundárního certifikátu přes Powershell Resource Manageru
 > [!TIP]
-> To je teď vyšší a jednodušší způsob přidání sekundárního certifikátu pomocí [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) rutiny. Není nutné postupujte podle zbývajících kroků v této části.  Navíc není nutné původně použili k vytvoření a nasazení clusteru při použití šablony [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) rutiny.
+> To je teď vyšší a jednodušší způsob přidání sekundárního certifikátu pomocí [přidat AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) rutiny. Není nutné postupujte podle zbývajících kroků v této části.  Navíc není nutné původně použili k vytvoření a nasazení clusteru při použití šablony [přidat AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) rutiny.
 
 Tyto kroky předpokládají se seznámíte s tím, jak funguje Resource Manageru a nasadili alespoň jeden cluster Service Fabric pomocí šablony Resource Manageru a jste šablonu, kterou jste použili k nastavení clusteru po ruce. Taky se předpokládá, že jste obeznámeni pomocí formátu JSON.
 
@@ -195,19 +198,19 @@ Upravit parametr šablony Resource Manageru souboru, přidejte dva nové paramet
 - Přihlaste se ke svému účtu Azure a vybrat konkrétní předplatné azure. Toto je důležitý krok pro ty, kteří mají přístup k více než jedno předplatné azure.
 
 ```powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionId <Subscription ID> 
+Connect-AzAccount
+Select-AzSubscription -SubscriptionId <Subscription ID> 
 
 ```
 
 Otestujte šablonu před jeho nasazení. Použijte stejnou skupinu prostředků, který váš cluster je aktuálně nasazený do.
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
+Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 
 ```
 
-Nasazení šablony do vaší skupiny prostředků. Použijte stejnou skupinu prostředků, který váš cluster je aktuálně nasazený do. Spusťte příkaz New-AzureRmResourceGroupDeployment. Není potřeba určení režimu, protože výchozí hodnota je **přírůstkové**.
+Nasazení šablony do vaší skupiny prostředků. Použijte stejnou skupinu prostředků, který váš cluster je aktuálně nasazený do. Spusťte příkaz New-AzResourceGroupDeployment. Není potřeba určení režimu, protože výchozí hodnota je **přírůstkové**.
 
 > [!NOTE]
 > Pokud nastavíte režim na dokončeno, můžete neúmyslně odstranit prostředky, které nejsou v šabloně. Proto nepoužívejte ho v tomto scénáři.
@@ -215,7 +218,7 @@ Nasazení šablony do vaší skupiny prostředků. Použijte stejnou skupinu pro
 > 
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 ```
 
 Zde je příklad vyplněné stejné prostředí PowerShell.
@@ -225,7 +228,7 @@ $ResourceGroup2 = "chackosecure5"
 $TemplateFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure_Step2.json"
 $TemplateParmFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure.parameters_Step2.json"
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResourceGroup2
+New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResourceGroup2
 
 ```
 

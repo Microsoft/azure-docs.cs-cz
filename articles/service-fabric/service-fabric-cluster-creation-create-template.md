@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: ddfd8ce14ca20c7094fa927aeafc36ae53271499
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 2fdea1f088dd6eabdf7d72342c837d976133a1bc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665504"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046172"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Vytvoření šablony Resource Manageru clusteru Service Fabric
 
@@ -28,6 +28,9 @@ ms.locfileid: "58665504"
 Konfigurace zabezpečení clusteru při jeho nejprve nastavte není možné později změnit. Před nastavením clusteru, přečtěte si [scénáře zabezpečení clusteru Service Fabric][service-fabric-cluster-security]. V Azure Service Fabric používá x509 certifikátů k zabezpečení vašeho clusteru a její koncové body, ověřování klientů a šifrování dat. Azure Active Directory je také vhodné k zabezpečení přístupu ke koncovým bodům správy. Azure AD klienti a uživatelé musí být vytvořen před vytvořením clusteru.  Další informace najdete v článku [nastavení Azure AD pro ověřování klientů](service-fabric-cluster-creation-setup-aad.md).
 
 Než nasadíte cluster pro produkční prostředí ke spuštění úlohy v produkčním prostředí, ujistěte se, abyste si nejdřív přečetli [připravenosti produkční kontrolní seznam](service-fabric-production-readiness-checklist.md).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-the-resource-manager-template"></a>Vytvoření šablony Resource Manageru
 Šablony Resource Manageru ukázky jsou k dispozici v [ukázky na Githubu v Azure](https://github.com/Azure-Samples/service-fabric-cluster-templates). Tyto šablony lze použít jako výchozí bod pro šablony clusteru.
@@ -242,13 +245,13 @@ Moduly RM nemají možnost vygenerovat konfiguraci Azure AD pro vás, tak pokud 
 Pro testování soubor parametrů šablony Resource Manageru pomocí následujícího příkazu Powershellu:
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
+Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
 V případě narazíte na problémy a získat zprávy jako nesrozumitelné, pak použijte "-Debug" jako možnost.
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
+Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
 ```
 
 Následující diagram znázorňuje, které je váš trezor klíčů a konfigurace služby Azure AD umístit do šablony Resource Manageru.

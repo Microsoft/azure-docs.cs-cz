@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: aljo
-ms.openlocfilehash: feea57122d805ae065278458f90afbc960221a9d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d5aa09f3ff899766e6eb6d1784e4417f7b48eac0
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670247"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049893"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric sítě vzory
 Cluster Azure Service Fabric můžete integrovat další funkce Azure sítě. V tomto článku ukážeme, jak vytvářet clustery, které používají následující funkce:
@@ -34,6 +34,9 @@ Service Fabric funguje ve škálovací sadě standardní virtuální počítač.
 Service Fabric se liší od jiných síťových funkcí v jeden aspekt. [Webu Azure portal](https://portal.azure.com) interně používá poskytovatele prostředků Service Fabric pro volání do clusteru a získat informace o uzlech a aplikace. Poskytovatel prostředků Service Fabric vyžaduje veřejně přístupné příchozí přístup k portu brány protokolu HTTP (port 19080, ve výchozím nastavení) na koncový bod správy. [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) používá koncový bod správy ke správě clusteru. Tento port dotaz na informace o clusteru, poskytovatel prostředků Service Fabric také používá k zobrazení na webu Azure Portal. 
 
 Pokud port 19080 není přístupný z poskytovatele prostředků Service Fabric, jako jsou zprávy *uzly nebyl nalezen* se zobrazí na portálu a seznamu uzlů a aplikace se zobrazí prázdné. Pokud chcete zobrazit váš cluster na webu Azure Portal, nástroj pro vyrovnávání zatížení musí vystavit veřejná IP adresa a skupiny zabezpečení sítě musí umožňovat příchozí provoz na portu 19080. Pokud nastavení těchto požadavků nesplňuje, na webu Azure portal nezobrazuje stav clusteru.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="templates"></a>Šablony
 
@@ -51,7 +54,7 @@ V následujícím příkladu Začneme s existující virtuální síť s názvem
 Statickou veřejnou IP adresu obecně je zdroj vyhrazený, která se spravují odděleně od virtuálního počítače nebo virtuální počítače, který je přiřazen. Se zřizují ve skupině vyhrazených síťových prostředků (na rozdíl od v prostředku clusteru Service Fabric seskupení samotné). Vytvoření statické veřejné IP adresy s názvem staticIP1 ve stejném ExistingRG skupině prostředků, na webu Azure Portal nebo pomocí prostředí PowerShell:
 
 ```powershell
-PS C:\Users\user> New-AzureRmPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
+PS C:\Users\user> New-AzPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
 
 Name                     : staticIP1
 ResourceGroupName        : ExistingRG
@@ -166,8 +169,8 @@ V příkladech v tomto článku používáme template.json Service Fabric. Stáh
 6. Nasazení šablony:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkingexistingvnet -Location westus
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
+    New-AzResourceGroup -Name sfnetworkingexistingvnet -Location westus
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
     ```
 
     Po nasazení, virtuální sítě by měl obsahovat novou škálovací sadu virtuálních počítačů. Typ uzlu sady škálování virtuálního počítače by se zobrazit existující virtuální síť a podsíť. Také můžete použít protokol RDP (Remote Desktop) pro přístup k virtuálnímu počítači, který už je ve virtuální síti, a na příkaz ping novou škálovací nastavte virtuální počítače:
@@ -276,13 +279,13 @@ Další příklad naleznete v tématu [, který není specifický pro Service Fa
 8. Nasazení šablony:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkingstaticip -Location westus
+    New-AzResourceGroup -Name sfnetworkingstaticip -Location westus
 
-    $staticip = Get-AzureRmPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG
+    $staticip = Get-AzPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG
 
     $staticip
 
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
     ```
 
 Po nasazení uvidíte, že nástroj pro vyrovnávání zatížení je vázán na statickou veřejnou IP adresu z jiné skupiny prostředků. Koncový bod připojení klienta Service Fabric a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) koncového bodu pro plně kvalifikovaný název DNS statickou IP adresu.
@@ -378,9 +381,9 @@ Tento scénář nahradí externím vyrovnáváním zatížení v šabloně Servi
 7. Nasazení šablony:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkinginternallb -Location westus
+    New-AzResourceGroup -Name sfnetworkinginternallb -Location westus
 
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
     ```
 
 Po nasazení se používá nástroj pro vyrovnávání zatížení 10.0.0.250 statické privátní IP adresu. Pokud máte jiného počítače ve stejné virtuální síti, můžete přejít k interní [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) koncového bodu. Všimněte si, že se připojuje k jednomu z uzlů za nástrojem pro vyrovnávání zatížení.
@@ -595,9 +598,15 @@ V clusteru dvě typ uzlu jeden typ uzlu je v externím vyrovnáváním zatížen
 7. Nasazení šablony:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkinginternalexternallb -Location westus
+    New-AzResourceGroup -Name sfnetworkinginternalexternallb -Location westus
 
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
+    ```
+
+Po nasazení zobrazí se dvě služby Vyrovnávání zatížení ve skupině prostředků. Pokud přejdete nástroje pro vyrovnávání zatížení, můžete zobrazit veřejné IP adresy a správa koncových bodů (porty 19000 a 19080) přiřazenou veřejnou IP adresu. Můžete zobrazit také statické interní IP adresu a aplikace koncový bod (port 80) přiřazená interní služby load balancer. Oba nástroje pro vyrovnávání zatížení používat stejný fond back-end škálovací sady virtuálního počítače.
+
+## <a name="next-steps"></a>Další postup
+[Vytvoření clusteru](service-fabric-cluster-creation-via-arm.md) ternalLB.json
     ```
 
 Po nasazení zobrazí se dvě služby Vyrovnávání zatížení ve skupině prostředků. Pokud přejdete nástroje pro vyrovnávání zatížení, můžete zobrazit veřejné IP adresy a správa koncových bodů (porty 19000 a 19080) přiřazenou veřejnou IP adresu. Můžete zobrazit také statické interní IP adresu a aplikace koncový bod (port 80) přiřazená interní služby load balancer. Oba nástroje pro vyrovnávání zatížení používat stejný fond back-end škálovací sady virtuálního počítače.

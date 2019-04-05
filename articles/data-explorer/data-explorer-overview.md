@@ -1,19 +1,18 @@
 ---
 title: Co je Azure Data Explorer?
 description: Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: e3a669c547b33e5f13da43bc3ce851a2f24783f5
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 02b239922f481240341225ea68d8d0ee7492c48b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755989"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044170"
 ---
 # <a name="what-is-azure-data-explorer"></a>Co je Azure Data Explorer?
 
@@ -45,11 +44,11 @@ Následující diagram znázorňuje různé aspekty práce s Azure Data Explorer
 
 Práce v Azure Data Explorer obecně probíhá podle tohoto modelu:
 
-1. **Vytvoření databáze:** Vytvoření *clusteru* a pak vytvořte jeden nebo více *databází* v tomto clusteru. [Rychlé zprovoznění: Vytvoření clusteru Průzkumník dat Azure a databáze](create-cluster-database-portal.md)
+1. **Vytvoření databáze:** Vytvoření *clusteru* a pak vytvořte jeden nebo více *databází* v tomto clusteru. [Rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze](create-cluster-database-portal.md)
 
-1. **Ingestování dat:** Načtení dat do tabulky databáze tak, aby u ní můžete spouštět dotazy. [Rychlé zprovoznění: Ingestovat data z centra událostí do Průzkumníku dat Azure](ingest-data-event-hub.md)
+1. **Ingestování dat:** Načtení dat do tabulky databáze tak, aby u ní můžete spouštět dotazy. [Rychlý start: Ingestovat data z centra událostí do Průzkumníku dat Azure](ingest-data-event-hub.md)
 
-1. **Dotaz na databázi:** Pomocí naší webové aplikaci spustit, zkontrolujte a sdílet dotazy a výsledky. Je dostupná na webu Azure Portal a jako samostatná aplikace. Kromě toho můžete posílat dotazy prostřednictvím kódu programu (s použitím sad SDK) nebo do koncového bodu rozhraní REST API. [Rychlé zprovoznění: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)
+1. **Dotaz na databázi:** Pomocí naší webové aplikaci spustit, zkontrolujte a sdílet dotazy a výsledky. Je dostupná na webu Azure Portal a jako samostatná aplikace. Kromě toho můžete posílat dotazy prostřednictvím kódu programu (s použitím sad SDK) nebo do koncového bodu rozhraní REST API. [Rychlý start: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)
 
 ## <a name="query-experience"></a>Práce s dotazy
 
@@ -67,12 +66,12 @@ Budeme rádi, když nám napíšete svůj názor na službu Azure Data Explorer 
   - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-data-explorer)
   - [Technická komunita Microsoftu](https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto)
   - [MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto)
-- [Posílání návrhů na vylepšení produktu prostřednictvím služby User Voice](https://aka.ms/AzureDataExplorer.UserVoice)
+- [Posílat návrhy na vylepšení produktu v User Voice](https://aka.ms/AzureDataExplorer.UserVoice)
 
 ## <a name="next-steps"></a>Další postup
 
-[Rychlé zprovoznění: Vytvoření clusteru Průzkumník dat Azure a databáze](create-cluster-database-portal.md)
+[Rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze](create-cluster-database-portal.md)
 
-[Rychlé zprovoznění: Ingestovat data z centra událostí do Průzkumníku dat Azure](ingest-data-event-hub.md)
+[Rychlý start: Ingestovat data z centra událostí do Průzkumníku dat Azure](ingest-data-event-hub.md)
 
-[Rychlé zprovoznění: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)
+[Rychlý start: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)

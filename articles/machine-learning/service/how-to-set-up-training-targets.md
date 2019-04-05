@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec509fc8957d20f95123e9f0f645c3e9b6e832f2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d75deaca7ce052d40274f1f57a8f6603a3ecdfd2
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122365"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046151"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu
 
@@ -38,7 +38,7 @@ V tomto článku se dozvíte, jak používat různé cílových výpočetních p
 Služba Azure Machine Learning nabízí různé podporu napříč různými výpočetními cíli. Životní cyklus vývoje typické modelu začíná dev/experimentování na malé množství dat ve službě. V této fázi doporučujeme používat místní prostředí. Například místního počítače nebo virtuálního počítače založené na cloudu. Vertikálně navýšit kapacitu trénování na větších datových sad, nebo proveďte distribuované trénování, doporučujeme vytvořit jeden nebo více node cluster tohoto pravidla automatického škálování provedou pokaždé, když odešlete spuštění pomocí Azure Machine Learning Compute. Můžete také připojit své vlastní výpočetní prostředek, ačkoli podpory pro různé scénáře se může lišit jako podrobnosti jsou dole:
 
 
-|Cílové školení výpočetní prostředí| Akcelerace GPU | Automatizované<br/> hyperparametrů | Automatizované</br> Strojové učení | Kanály Azure Machine Learning |
+|Cílové školení výpočetní prostředí| Akcelerace GPU | Automaticky<br/> hyperparametrů | Automaticky</br> Strojové učení | Kanály Azure Machine Learning |
 |----|:----:|:----:|:----:|:----:|
 |[Místní počítač](#local)| Možná | &nbsp; | ✓ | &nbsp; |
 |[Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
@@ -118,7 +118,10 @@ Výpočetní prostředí Azure Machine Learning můžete vytvořit na vyžádán
 
 #### <a name="run-based-creation"></a>Tvorby založené na spuštění
 
-Můžete vytvořit Azure Machine Learning Compute jako cílové výpočetní prostředí za běhu. Výpočetní prostředky se automaticky vytvoří pro spuštění. Škálování clusteru až počet **max_nodes** , který zadáte v běhu konfiguraci. Výpočetní je automaticky odstraněn, až instance doběhne.
+Můžete vytvořit Azure Machine Learning Compute jako cílové výpočetní prostředí za běhu. Výpočetní prostředky se automaticky vytvoří pro spuštění. Výpočetní je automaticky odstraněn, až instance doběhne. 
+
+> [!NOTE]
+> Chcete-li určit maximální počet uzlů používat, byste obvykle nastaveno `node_count` počtu uzlů. Aktuálně nejsou k dispozici (04/04/2019) chybu, která to brání v práci. Jako alternativní řešení použít `amlcompute._cluster_max_node_count` vlastnost konfigurace spuštění. Například, `run_config.amlcompute._cluster_max_node_count = 5`.
 
 > [!IMPORTANT]
 > Zřízení spustit výpočetní prostředky Azure Machine Learning je aktuálně ve verzi Preview. Nepoužívejte tvorby založené na spuštění, pokud používáte automatické hyperparametrů nebo automatizované strojového učení. Pokud chcete použít hyperparametrů nebo automatizované strojového učení, vytvořte [trvalé výpočetní](#persistent) cílové místo toho.
@@ -415,8 +418,8 @@ Nebo můžete:
 ## <a name="notebook-examples"></a>Příklady poznámkového bloku
 
 Tyto poznámkové bloky příklady trénování s využitím různých cílových výpočetních prostředí najdete:
-* [postupy-k-použití azureml a školení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [kurzy/img – klasifikace – část 1 – training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+* [how-to-use-azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: ac4351bd2e125c922cb3044c1d06298b3ad6de97
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f00c816f34978ee2f14f16ee9882860750d0e658
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805053"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051882"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -28,6 +28,9 @@ Analýza provozu je cloudové řešení, která poskytuje přehled o aktivitě u
 - Identifikovat ohrožení zabezpečení a zabezpečte svoji síť, informace, jako je otevření portů, když se aplikace pokoušejí přístup k Internetu a připojení k podvodné sítě virtuálních počítačů (VM).
 - Pochopit vzory v toku provozu mezi oblastmi Azure a Internetem pro optimalizaci vašeho nasazení sítě pro výkon a kapacitu.
 - Odhalte chybné konfigurace sítě, což vede k selhání připojení ve vaší síti.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="why-traffic-analytics"></a>Proč traffic analytics?
 
@@ -133,7 +136,7 @@ Analýza provozu, musíte mít existující network watcheru nebo [povolit netwo
 Než budete moct použít analýzu provozu, je nutné znovu zaregistrovat poskytovatele prostředků sítě. Klikněte na tlačítko **vyzkoušet** do následujícího okna kódu a otevřete Azure Cloud Shell. Cloud Shell automaticky zaznamenává je do ke svému předplatnému Azure. Jakmile službě Cloud Shell se otevře, zadejte následující příkaz pro opětovné zaregistrování poskytovatel síťových prostředků:
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Network"
+Register-AzResourceProvider -ProviderNamespace "Microsoft.Network"
 ```
 
 ### <a name="select-a-network-security-group"></a>Vyberte skupinu zabezpečení sítě
@@ -153,13 +156,13 @@ Než povolíte nastavení protokolu toku, je nutné dokončit následující úk
 Zaregistrujte poskytovatele Azure Insights, když je ještě není zaregistrované pro vaše předplatné:
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Insights
+Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
 Pokud ještě nemáte účet Azure Storage k ukládání toku NSG přihlásí, musíte vytvořit účet úložiště. Pomocí následujícího příkazu můžete vytvořit účet úložiště. Před spuštěním příkazu, nahraďte `<replace-with-your-unique-storage-account-name>` s názvem, který je jedinečný ve všech umístěních Azure, mezi 3 až 24 znaků a používat pouze číslice a malá písmena. V případě potřeby můžete také změnit název skupiny prostředků.
 
 ```azurepowershell-interactive
-New-AzureRmStorageAccount `
+New-AzStorageAccount `
   -Location westcentralus `
   -Name <replace-with-your-unique-storage-account-name> `
   -ResourceGroupName myResourceGroup `
@@ -182,7 +185,7 @@ Vyberte následující možnosti, jak je znázorněno na obrázku:
 
 Opakujte předchozí kroky pro žádné jiné skupiny zabezpečení sítě pro které chcete povolit analýzu provozu pro. Data z protokolů toku se odesílají do pracovního prostoru, zajistěte proto, že místní zákony a předpisy ve vaší zemi povolit ukládání dat v oblasti, ve kterém existuje pracovní prostor.
 
-Můžete taky nakonfigurovat pomocí analýzy provozu [Set-AzureRmNetworkWatcherConfigFlowLog](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) rutiny prostředí PowerShell v modul AzureRm PowerShell verze 6.2.1 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` nainstalovanou verzi zjistíte. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+Můžete taky nakonfigurovat pomocí analýzy provozu [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) rutiny prostředí PowerShell v prostředí Azure PowerShell. Spustit `Get-Module -ListAvailable Az` nainstalovanou verzi zjistíte. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 ## <a name="view-traffic-analytics"></a>Zobrazení analýzy provozu
 

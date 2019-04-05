@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 04/05/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/03/2019
-ms.openlocfilehash: 5971692b3e6447bc790b2e34cf84eae66979f7f5
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.lastreviewed: 04/05/2019
+ms.openlocfilehash: befb5370dce5b9b7617370f0b14d471dfeb35437
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862076"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051678"
 ---
 # <a name="azure-stack-1902-update"></a>Aktualizace služby Azure Stack 1902
 
@@ -64,6 +64,8 @@ Azure Stack opravy hotfix platí pouze pro integrované systémy Azure Stack; Ne
     ```powershell
     Test-AzureStack -Include AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
+
+  Pokud `AzsControlPlane` parametru je součástí, kdy **Test AzureStack** je spuštění, zobrazí se následující chyby v **testovací AzureStack** výstup: **SELHÁNÍ Azure Stack ovládací prvek roviny Websites Souhrn**. Této konkrétní chyby můžete bezpečně ignorovat.
 
 - Azure Stack je spravovaná službou System Center Operations Manager (SCOM), nezapomeňte aktualizovat [sady Management Pack pro Microsoft Azure Stack](https://www.microsoft.com/download/details.aspx?id=55184) verzi 1.0.3.11 před použitím 1902.
 

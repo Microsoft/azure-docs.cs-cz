@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/18/2019
 ms.author: raynew
-ms.openlocfilehash: 018368d28dd34787046ae655a98527aede28603f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 231533f9609a4cf8cc11bedf88aafdfd37d1cb7e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313364"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050114"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: Časté otázky (FAQ)
 Tento článek shrnuje nejčastější dotazy týkající se Azure Site Recovery. 
@@ -38,7 +38,7 @@ U hostitelských serverů Hyper-V se vaše potřeby odvíjí od scénáře nasaz
 
 * [Replikace virtuálních počítačů Hyper-V (bez VMM) do Azure](site-recovery-hyper-v-site-to-azure.md)
 * [Replikace virtuálních počítačů Hyper-V (s VMM) do Azure](site-recovery-vmm-to-azure.md)
-* [Replikace virtuálních počítačů Hyper-V do sekundárního datového centra](site-recovery-vmm-to-vmm.md)
+* [Replikace virtuálních počítačů Hyper-V do sekundárního datacentra](site-recovery-vmm-to-vmm.md)
 * Pokud provádíte replikaci do sekundárního datacentra, přečtěte si informace o [podporovaných hostovaných operačních systémech pro virtuální počítače Hyper-V](https://technet.microsoft.com/library/mt126277.aspx).
 * Pokud replikujete do Azure, Site Recovery podporuje všechny hostované operační systémy, které jsou [nepodporuje v Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).
 
@@ -153,7 +153,7 @@ Služba Azure je pro odolnost navržena. Site Recovery je navržen pro převzet�
 Ze sekundární lokality můžete aktivovat neplánované převzetí služeb při selhání. Site Recovery k provedení převzetí služeb při selhání nepotřebuje připojení z primární lokality.
 
 ### <a name="is-failover-automatic"></a>Je převzetí služeb při selhání automatické?
-Převzetí služeb při selhání není automatické. Zahájení převzetí služeb při selhání s jedním kliknutím na portálu, nebo můžete použít [Powershellu pro Site Recovery](/powershell/module/azurerm.siterecovery) k aktivaci převzetí služeb při selhání. Navrácení služeb po obnovení je jednoduché akce na portálu Site Recovery.
+Převzetí služeb při selhání není automatické. Zahájení převzetí služeb při selhání s jedním kliknutím na portálu, nebo můžete použít [Powershellu pro Site Recovery](/powershell/module/az.recoveryservices) k aktivaci převzetí služeb při selhání. Navrácení služeb po obnovení je jednoduché akce na portálu Site Recovery.
 
 Můžete automatizovat můžou pomocí místního Orchestratoru nebo Operations Manageru detekovat selhání virtuálního počítače a potom aktivovat převzetí služeb při selhání pomocí sady SDK.
 

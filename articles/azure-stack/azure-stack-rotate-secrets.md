@@ -15,12 +15,12 @@ ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 54bc6bc105dab2831df6e48a64a6f766582a3fb9
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 55bb83015cee6476a10424f32b51eb9eb29db0da
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917556"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050250"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Otočit tajné kódy ve službě Azure Stack
 
@@ -63,13 +63,13 @@ Azure Stack podporuje v následujících kontextů tajných kódů otočení s e
 
 |Nainstalovaný certifikát certifikační Autority|Otočit na certifikační Autority.|Podporováno|Podporované verze Azure Stack|
 |-----|-----|-----|-----|
-|Z podepsaného svým držitelem|Do firemní sítě|Nepodporuje se||
+|Z podepsaného svým držitelem|Do firemní sítě|Podporováno|1903 & později|
 |Z podepsaného svým držitelem|Pro podepsaný svým držitelem|Nepodporuje se||
 |Z podepsaného svým držitelem|Na veřejnou<sup>*</sup>|Podporováno|1803 & později|
-|Z organizace|Do firemní sítě|Podporované tak dlouho, dokud zákazníci využívat stejné podnikové certifikační Autority, jak použít při nasazení|1803 & později|
+|Z organizace|Do firemní sítě|Podporuje se. Z 1803 1903: podporované tak dlouho, dokud zákazníci využívat stejné podnikové certifikační Autority, jak použít při nasazení|1803 & později|
 |Z organizace|Pro podepsaný svým držitelem|Nepodporuje se||
 |Z organizace|Na veřejnou<sup>*</sup>|Podporováno|1803 & později|
-|Z veřejné<sup>*</sup>|Do firemní sítě|Nepodporuje se|1803 & později|
+|Z veřejné<sup>*</sup>|Do firemní sítě|Podporováno|1903 & později|
 |Z veřejné<sup>*</sup>|Pro podepsaný svým držitelem|Nepodporuje se||
 |Z veřejné<sup>*</sup>|Na veřejnou<sup>*</sup>|Podporováno|1803 & později|
 

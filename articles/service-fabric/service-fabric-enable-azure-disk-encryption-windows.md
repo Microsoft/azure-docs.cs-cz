@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/22/2019
 ms.author: aljo
-ms.openlocfilehash: a620563be9ffe18ae0f7fa4a78df83ea5b35a5d2
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 2e9c41409c1f528947e3bef281e9a3c34da39e9b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488193"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050438"
 ---
 # <a name="enable-disk-encryption-for-service-fabric-windows-cluster-nodes"></a>Povolit Disk encryption pro uzly clusteru service fabric Windows 
 > [!div class="op_single_selector"]
@@ -35,33 +35,34 @@ Průvodce zahrnuje následující postupy:
 * Požadavky na postup následovat před povolením šifrování disku ve škálovací sadě virtuálních počítačů Service Fabric Windows Cluster.
 * Postup bude následovat povolit šifrování disku ve škálovací virtuálních počítačů Service Fabric Windows Cluster nastavit.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 * **Samoregistračního** – Pokud chcete použít, vyžaduje samoregistračního virtuálního počítače škálovací sady disk encryption ve verzi preview
 * Vaše předplatné můžete registrovat proveďte následující kroky: 
 ```powershell
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
+Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 * Počkejte přibližně 10 minut, dokud stav jako "Registrováno". Stav můžete zkontrolovat spuštěním následujícího příkazu: 
 ```powershell
-Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 * **Služba Azure Key Vault** – vytvoření trezor klíčů ve stejném předplatném a oblasti jako škálovací nastavit a nastavit zásady přístupu "EnabledForDiskEncryption" v trezoru klíčů pomocí jeho PS rutiny. Můžete také nastavit zásady, pomocí uživatelského rozhraní služby KeyVault na webu Azure Portal: 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
 ```
-* Nainstalujte nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest) , který obsahuje nové příkazy šifrování.
-* Nainstalujte nejnovější verzi [sadu SDK Azure z prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases) release. Tady jsou škálovací sady virtuálních počítačů ADE rutiny umožňující ([nastavit](/powershell/module/azurerm.compute/set-azurermvmssdiskencryptionextension?view=azurermps-4.4.1)) šifrování, načtení ([získat](/powershell/module/azurerm.compute/get-azurermvmssvmdiskencryption?view=azurermps-4.4.1)) stav šifrování a odebrat ([zakázat](/powershell/module/azurerm.compute/disable-azurermvmssdiskencryption?view=azurermps-4.4.1)) šifrování ve škálovací sadě instance.
+* Nainstalujte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) , který obsahuje nové příkazy šifrování.
+* Nainstalujte nejnovější verzi [sadu SDK Azure z prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases) release. Tady jsou škálovací sady virtuálních počítačů ADE rutiny umožňující ([nastavit](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) šifrování, načtení ([získat](/powershell/module/az.compute/get-azvmssvmdiskencryption)) stav šifrování a odebrat ([zakázat](/powershell/module/az.compute/disable-azvmssdiskencryption)) šifrování ve škálovací sadě instance.
 
 | Příkaz | Verze |  Zdroj  |
 | ------------- |-------------| ------------|
-| Get-AzureRmVmssDiskEncryptionStatus   | 3.4.0 nebo novější | AzureRM.Compute |
-| Get-AzureRmVmssVMDiskEncryptionStatus   | 3.4.0 nebo novější | AzureRM.Compute |
-| Disable-AzureRmVmssDiskEncryption   | 3.4.0 nebo novější | AzureRM.Compute |
-| Get-AzureRmVmssDiskEncryption   | 3.4.0 nebo novější | AzureRM.Compute |
-| Get-AzureRmVmssVMDiskEncryption   | 3.4.0 nebo novější | AzureRM.Compute |
-| Set-AzureRmVmssDiskEncryptionExtension   | 3.4.0 nebo novější | AzureRM.Compute |
+| Get-AzVmssDiskEncryptionStatus   | 1.0.0 nebo novějším | Az.Compute |
+| Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 nebo novějším | Az.Compute |
+| Disable-AzVmssDiskEncryption   | 1.0.0 nebo novějším | Az.Compute |
+| Get-AzVmssDiskEncryption   | 1.0.0 nebo novějším | Az.Compute |
+| Get-AzVmssVMDiskEncryption   | 1.0.0 nebo novějším | Az.Compute |
+| Set-AzVmssDiskEncryptionExtension   | 1.0.0 nebo novějším | Az.Compute |
 
 
 ## <a name="supported-scenarios-for-disk-encryption"></a>Podporované scénáře pro šifrování disku
@@ -77,8 +78,8 @@ Použijte následující příkazy k vytvoření clusteru a povolení šifrován
 ### <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
 
 ```powershell
-Login-AzureRmAccount
-Set-AzureRmContext -SubscriptionId <guid>
+Login-AzAccount
+Set-AzContext -SubscriptionId <guid>
 
 ```
 
@@ -119,7 +120,7 @@ $parameterFilePath="c:\templates\templateparam.json"
 $templateFilePath="c:\templates\template.json"
 
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 
 ```
 
@@ -153,11 +154,11 @@ Postupujte podle kroků a která vám pomůže [nasazení aplikace do clusteru](
 $VmssName = "nt1vm"
 $vaultName = "mykeyvault"
 $resourceGroupName = "mycluster"
-$KeyVault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName
+$KeyVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName
 $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri
 $KeyVaultResourceId = $KeyVault.ResourceId
 
-Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType All
+Set-AzVmssDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType All
 
 ```
 
@@ -176,9 +177,9 @@ Kromě toho můžete uživatele přihlásit k virtuálnímu počítači ve šká
 
 $VmssName = "nt1vm"
 $resourceGroupName = "mycluster"
-Get-AzureRmVmssDiskEncryption -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName
+Get-AzVmssDiskEncryption -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName
 
-Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName -InstanceId "0"
+Get-AzVmssVMDiskEncryption -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName -InstanceId "0"
 
 ```
 
@@ -196,7 +197,7 @@ Zakázat šifrování disku se vztahuje na celý virtuální počítač škálov
 
 $VmssName = "nt1vm"
 $resourceGroupName = "mycluster"
-Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssName
+Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssName
 
 ```
 

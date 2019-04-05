@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f2334497c6329ee335c529e1490a2f966f51dff
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: fc09c8d8e284fc81a26097a7c1a58732539029c6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891714"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051118"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -74,7 +74,7 @@ Zásady podmíněného přístupu můžete přiřadit následující cloudové a
 - Online Skype pro firmy
 - Virtuální privátní síť (VPN)
 - Visual Studio App Center
-- Ochrana ATP v programu Windows Defender
+- Windows Defender ATP
 
 ### <a name="other-applications"></a>Další aplikace
 
@@ -120,8 +120,8 @@ Toto nastavení funguje u všech prohlížečů. Tím se uspokojí zásady pro z
 | Windows 10             | Internet Explorer, Microsoft Edge, Chrome     |
 | Windows 8 nebo 8.1        | Internet Explorer, Chrome                     |
 | Windows 7              | Internet Explorer, Chrome                     |
-| iOS                    | Safari, Intune Managed Browser                |
-| Android                | Chrome, Intune Managed Browser                |
+| iOS                    | Safari, Microsoft Edge, Intune Managed Browser |
+| Android                | Chrome, Microsoft Edge, Intune Managed Browser |
 | telefon se systémem Windows          | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Chrome                                        |

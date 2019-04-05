@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 2/15/2019
 ms.author: victorh
-ms.openlocfilehash: 21309060b7b4a93d798c444bd96bc21c62693a54
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533999"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051814"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Ukázky log analytics v Azure brány Firewall
 
@@ -40,7 +40,7 @@ A dat sítě pravidlo protokolu:
 
 ![Data protokolu pravidla sítě]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Protokoly brány Firewall Azure následující AzureDiagnostics data s kategorií jako **AzureFirewallApplicationRule** nebo **AzureFirewallApplicationRule**. Data obsahující podrobnosti o je uloženo v poli msg_s. Použití [analyzovat](https://docs.microsoft.com/azure/kusto/query/parseoperator) operátor jsme z pole msg_s extrahovat různých zajímavé vlastnosti. Níže uvedené dotazy extrahovat informace o obou kategoriích.
+Protokoly brány Firewall Azure následující AzureDiagnostics data s kategorií jako **AzureFirewallApplicationRule** nebo **AzureFirewallNetworkRule**. Data obsahující podrobnosti o je uloženo v poli msg_s. Použití [analyzovat](https://docs.microsoft.com/azure/kusto/query/parseoperator) operátor jsme z pole msg_s extrahovat různých zajímavé vlastnosti. Níže uvedené dotazy extrahovat informace o obou kategoriích.
 
 ## <a name="application-rules-log-data-query"></a>Dotaz na data protokolu pravidla aplikace
 

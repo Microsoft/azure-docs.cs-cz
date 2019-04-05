@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6924d4eca52bfab8c90e7787bb8849b47df064db
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e323a8d71bbffd1d29ad793dff7b5b4a072b6979
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112258"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046118"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurace připojení typu VNet-to-VNet (classic)
 
@@ -29,16 +29,18 @@ ms.locfileid: "58112258"
 Tento článek vám pomůže vytvořit připojení brány VPN mezi virtuálními sítěmi. Virtuální sítě se můžou nacházet ve stejné oblasti nebo v různých oblastech a můžou patřit do stejného předplatného nebo do různých předplatných. Postup v tomto článku se vztahuje k modelu nasazení classic a webu Azure portal. Tuto konfiguraci můžete vytvořit také pomocí jiného nástroje nasazení nebo pro jiný model nasazení, a to výběrem jiné možnosti z následujícího seznamu:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [portál Azure](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
-> * [Azure Portal (Classic)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-> * [Propojení různých modelů nasazení – Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [Azure portal (classic)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
+> * [Propojení různých modelů nasazení – Azure portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [Propojení různých modelů nasazení – PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 >
 >
 
 ![Diagram připojení k virtuální síti se virtuální síť](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="about-vnet-to-vnet-connections"></a>Informace o propojeních VNet-to-VNet
 
@@ -52,7 +54,7 @@ Virtuální sítě, ke kterým se připojujete, může být v různých předpla
 
 Virtuální sítě může být vhodné propojit z následujících důvodů:
 
-* **Geografická redundance napříč oblastmi a geografická přítomnost**
+* **Geografická redundance a geografická přítomnost mezi oblastmi**
 
   * Můžete nastavit vlastní geografickou replikaci nebo synchronizaci se zabezpečeným připojením bez procházení koncovými body připojenými k internetu.
   * Azure Load Balancer a Microsoft nebo třetích stran technologie clusteringu můžete nastavit úlohy s vysokou dostupností s geografickou redundancí nad několika oblastmi Azure. Jedním z důležitých příkladů je nastavení technologie SQL Always On se skupinami dostupnosti nad několika oblastmi Azure.
@@ -76,7 +78,7 @@ Je důležité určit rozsahy, které budete používat ke konfiguraci virtuáln
 
 Následující tabulka ukazuje příklad toho, jak definovat virtuální sítě. Používejte jako vodítko pouze oblasti. Zapište si oblastí pro vaše virtuální sítě. Tyto informace budete potřebovat pro pozdější kroky.
 
-**Příklad**
+**Příklad:**
 
 | Virtual Network | Adresní prostor | Oblast | Se připojí k místní síťové lokality |
 |:--- |:--- |:--- |:--- |
@@ -219,19 +221,19 @@ V následujících krocích se připojit ke svému účtu Azure a stáhnout a zo
 2. Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
    ```powershell
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 
    Zkontrolujte předplatná pro příslušný účet.
 
    ```powershell
-   Get-AzureRmSubscription
+   Get-AzSubscription
    ```
 
    Máte-li více předplatných, vyberte předplatné, které chcete použít.
 
    ```powershell
-   Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
 
    V dalším kroku použijte následující rutinu k vašemu předplatnému Azure přidat do prostředí PowerShell pro model nasazení classic.

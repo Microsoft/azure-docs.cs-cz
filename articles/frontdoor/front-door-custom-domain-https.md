@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: b3ec0616a7f022a104a20589f3281262b2717e35
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b99132cceb8981a93a8f1c10ccc488d5806f7254
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014113"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050973"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu branou
 
@@ -40,6 +40,9 @@ V tomto kurzu se naučíte:
 > - Použít vlastní certifikát, tj. vlastní certifikát SSL
 > - Ověření domény
 > - Zákaz protokolu HTTPS pro vlastní doménu
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -86,11 +89,11 @@ K povolení funkce HTTPS můžete použít vlastní certifikát. Tento proces se
 
 Prostřednictvím PowerShellu zaregistrujte instanční objekt pro službu Azure Front Door Service jako aplikaci v Azure Active Directory.
 
-1. V případě potřeby nainstalujte [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0) v PowerShellu na místním počítači.
+1. V případě potřeby nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps) v PowerShellu na místním počítači.
 
 2. V PowerShellu spusťte následující příkaz:
 
-     `New-AzureRmADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
+     `New-AzADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
 #### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>Udělení přístupu k trezoru účtů službě Azure Front Door Service
  
@@ -254,7 +257,7 @@ Následující tabulka ukazuje průběh operace, která proběhne při zákazu H
     
     Certifikát SAN využívá stejné standardy šifrování a zabezpečení jako vyhrazený certifikát. Všechny vystavené certifikáty SSL k vylepšení zabezpečení serveru využívají šifrování SHA-256.
 
-5. *Potřebuji záznam CAA (Certificate Authority Authorization) pro svého poskytovatele DNS?*
+5. *Potřebuji záznam Certificate Authority Authorization se svého poskytovatele DNS?*
 
     Ne, záznam CAA (Certificate Authority Authorization) se v současné době nevyžaduje. Pokud ho však máte, musí jako platnou certifikační autoritu zahrnovat DigiCert.
 

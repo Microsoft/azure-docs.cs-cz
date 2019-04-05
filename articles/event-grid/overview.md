@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 01/06/2019
+ms.date: 04/04/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 1fa9eaa5f4ba399622e0b8889ab722e4a4e130a0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 7f501bf8496d1293a45c15908d4f2b21b6ed01d2
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770472"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045401"
 ---
 # <a name="what-is-azure-event-grid"></a>Co je Azure Event Grid?
 
@@ -114,13 +114,13 @@ Azure Event Grid využívá model plateb za události, takže platíte jenom za 
 
 ## <a name="next-steps"></a>Další postup
 
-* [Směrování událostí objektů blob úložiště](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
+* [Směrování událostí služby Storage Blob](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
   Pomocí služby Event Grid můžete reagovat na události objektů blob úložiště.
-* [Vytváření vlastních událostí a přihlášení k jejich odběru](custom-event-quickstart.md)  
+* [Vytvoření a přihlášení k odběru událostí vlastního](custom-event-quickstart.md)  
   Pusťte se rovnou do práce a pomocí rychlého startu pro Azure Event Grid začněte odesílat vlastní události do libovolného koncového bodu.
-* [Použití Logic Apps jako obslužné rutiny událostí](monitor-virtual-machine-changes-event-grid-logic-app.md)  
+* [Jako obslužné rutiny události pomocí Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md)  
   Kurz týkající se sestavení aplikace pomocí Logic Apps, která bude reagovat na události sdílené službou Event Grid.
 * [Streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md)  
   Kurz, ve kterém se služba Azure Functions používá ke streamování dat ze služby Event Hubs do SQL Data Warehouse.
-* [Referenční informace k rozhraní REST API služby Event Grid](/rest/api/eventgrid)  
+* [Referenční informace k rozhraní REST API služby tabulky Event](/rest/api/eventgrid)  
   Obsahuje referenční obsah pro správu odběry událostí, směrování a filtrování.

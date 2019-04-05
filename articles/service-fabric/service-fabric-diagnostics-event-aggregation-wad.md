@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: f886de9160b52b8a4e3ee8beaf2e22022a097666
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d49104c1d1402969917de63e22bd41e7489a08c7
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662784"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046287"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace událostí a kolekce pomocí Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -31,6 +31,9 @@ ms.locfileid: "58662784"
 Když používáte cluster Azure Service Fabric, je vhodné pro shromažďování protokolů ze všech uzlů v centrálním umístění. S protokoly v centrálním umístění vám pomáhají analyzovat a řešit problémy ve vašem clusteru nebo problémy v aplikace a služby běžící v tomto clusteru.
 
 Jeden způsob, jak nahrát a shromažďovat protokoly je použít rozšíření Windows Azure Diagnostics (WAD), nahraje protokoly do služby Azure Storage, který má také možnost odeslat protokoly do služby Azure Application Insights nebo Center událostí. Externí proces lze také použít ke čtení události ze služby storage a umístit je do o produkt poskytovaný analýzy platformy, jako [protokoly Azure monitoru](../log-analytics/log-analytics-service-fabric.md) nebo jiné řešení analýzy protokolů.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 Tyto nástroje se používají v tomto článku:
@@ -71,7 +74,7 @@ K vytvoření clusteru pomocí Resource Manageru, musíte přidat konfiguraci di
 
 Pokud chcete zobrazit nastavení diagnostiky v šabloně Resource Manageru, otevřete soubor azuredeploy.json a vyhledejte **IaaSDiagnostics**. Pokud chcete vytvořit cluster pomocí této šablony, vyberte **nasadit do Azure** tlačítko, které jsou k dispozici na na předchozí odkaz.
 
-Alternativně můžete stáhnout ukázku Resource Manageru, provádět změny a vytvořit cluster s upravenou šablonu pomocí `New-AzureRmResourceGroupDeployment` příkazu v okně Azure PowerShell. Viz následující kód pro parametry, které je předáno příkazu. Podrobné informace o tom, jak nasadit skupinu prostředků pomocí Powershellu najdete v článku [nasazení skupiny prostředků pomocí šablony Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md).
+Alternativně můžete stáhnout ukázku Resource Manageru, provádět změny a vytvořit cluster s upravenou šablonu pomocí `New-AzResourceGroupDeployment` příkazu v okně Azure PowerShell. Viz následující kód pro parametry, které je předáno příkazu. Podrobné informace o tom, jak nasadit skupinu prostředků pomocí Powershellu najdete v článku [nasazení skupiny prostředků pomocí šablony Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md).
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>Přidat diagnostické rozšíření do existujícího clusteru
 Pokud máte existující cluster, který nemá diagnostiky nasazený, můžete přidat nebo aktualizovat prostřednictvím šablona clusteru. Upravte šablonu Resource Manageru, který se používá k vytvoření stávajícího clusteru nebo stáhněte šablonu z portálu, jak je popsáno výše. Upravte soubor template.json provedením následujících úloh:
@@ -269,7 +272,7 @@ Povolit **základní provozní kanál** Naše doporučení pro komplexní protok
 
 Aktualizovat diagnostiku, která shromažďování protokolů z nových kanálů EventSource, které představují novou aplikaci, že jste o nasazení, provádět stejné kroky, jak je uvedeno výše pro nastavení diagnostiky pro existující cluster.
 
-Aktualizovat `EtwEventSourceProviderConfiguration` oddílu v souboru template.json mohli přidat záznamy pro nové kanály EventSource před použít danou konfiguraci aktualizovat pomocí `New-AzureRmResourceGroupDeployment` příkaz prostředí PowerShell. Název zdroje událostí je definován jako část kódu v souboru ServiceEventSource.cs generovaný sady Visual Studio.
+Aktualizovat `EtwEventSourceProviderConfiguration` oddílu v souboru template.json mohli přidat záznamy pro nové kanály EventSource před použít danou konfiguraci aktualizovat pomocí `New-AzResourceGroupDeployment` příkaz prostředí PowerShell. Název zdroje událostí je definován jako část kódu v souboru ServiceEventSource.cs generovaný sady Visual Studio.
 
 Například pokud váš zdroj událostí název mé Eventsource, přidejte následující kód do tabulky s názvem MyDestinationTableName umístit události z mé Eventsource.
 
@@ -346,5 +349,7 @@ Po nakonfigurování Azure diagnostics správně, zobrazí se data v tabulkách 
 >Aktuálně neexistuje žádný způsob, jak filtrovat nebo mazání událostí, které se odesílají do tabulky. Pokud implementujete není procesu odebrání události z tabulky, bude růst v tabulce. V současné době je příkladem data výmazu dat služby spuštěné [sledovacích ukázka](https://github.com/Azure-Samples/service-fabric-watchdog-service), a je doporučeno, že napíšete nějakou, pokud není dobrý důvod pro ukládání protokolů nad rámec 30 nebo 90 den časový rámec.
 
 * [Zjistěte, jak shromáždit čítače výkonu nebo protokoly pomocí diagnostického rozšíření](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Události analýzy a vizualizace pomocí Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [Události analýzy a vizualizace s protokoly Azure monitoru](service-fabric-diagnostics-event-analysis-oms.md)
 * [Události analýzy a vizualizace pomocí Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Události analýzy a vizualizace s protokoly Azure monitoru](service-fabric-diagnostics-event-analysis-oms.md)

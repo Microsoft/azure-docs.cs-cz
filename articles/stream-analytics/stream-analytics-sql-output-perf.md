@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: d259fd5fc8c60837c6b6110eb751360227d70836
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: d685b06b95af42f07449cc84e70220dd1a4afa9f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338424"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051780"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Výstup Azure Stream Analytics ke službě Azure SQL Database
 
@@ -29,7 +29,7 @@ Tady jsou některé konfigurace v rámci jednotlivých služeb, který může po
 - **Dědit dělení** – tento SQL výstupní konfigurační možnost umožňuje dědění schéma rozdělení oddílů z předchozího kroku dotazu nebo vstupní. Tuto funkci povolíte, zápis do tabulky na disku a má [plně paralelní](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) topologie pro vaši úlohu očekávat lepší propustnost. Tato dělení již automaticky stane pro mnoho dalších [výstupy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks). Zamykání tabulek (TABLOCK) se vypne taky pro Hromadná vložení vytvořené pomocí této možnosti.
 
 > [!NOTE] 
-> Po víc než 8 vstupní oddíly se dědění vstup schéma vytváření oddílů nemusí být vhodnou volbou. Tuto horní mez bylo zjištěno u tabulky se sloupcem jedinou identitu a clusterovaného indexu. Na základě schématu a volba indexů, vaše připomínky se můžou lišit.
+> Po víc než 8 vstupní oddíly se dědění vstup schéma vytváření oddílů nemusí být vhodnou volbou. Tuto horní mez bylo zjištěno u tabulky se sloupcem jedinou identitu a clusterovaného indexu. V takovém případě zvažte použití [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8 v dotazu, s ohledem na počet modulů pro zápis výstupu. Na základě schématu a volba indexů, vaše připomínky se můžou lišit.
 
 - **Velikost dávky** -konfiguraci výstupu SQL můžete zadat maximální velikost dávky v závislosti na povaze vašich cílové tabulky/úloh výstup Azure Stream Analytics SQL. Velikost dávky je maximální počet záznamů, které se odešle s každou hromadné vložení transakce. Clusterované indexy columnstore, batch velikostí kolem [100 tisíc](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) povolit další paralelizace, minimální protokolování a zamykání optimalizace. V tabulkách s použitím disku 10 tis. (výchozí) nebo nižší může být taky ideální pro vaše řešení, větší velikosti dávky můžou aktivovat uzamknout eskalace během operace hromadného vložení.
 

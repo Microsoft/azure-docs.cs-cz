@@ -7,15 +7,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/03/2017
-ms.author: robin.shahan
-ms.openlocfilehash: 5ef34fb039d35ff714e249a6ac107e6ec615093e
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.author: robinsh
+ms.openlocfilehash: 274b77644326cbf73696aae77b48afcbc63aa4c2
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010986"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049968"
 ---
-# <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Správa identit zařízení služby IoT Hub hromadné
+# <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Import a export identity zařízení služby IoT Hub hromadné
 
 Každý IoT hub obsahuje registr identit, které lze použít k vytváření prostředků na zařízení ve službě. Registr identit také umožňuje řídit přístup ke koncovým bodům přístupem k zařízení. Tento článek popisuje, jak importovat a exportovat identit zařízení hromadné do a z registr identit.
 
@@ -255,13 +255,13 @@ Použít nepovinný **režimem importu** vlastnost v datech serializace import p
 
 | importMode | Popis |
 | --- | --- |
-| **createOrUpdate** |Pokud zařízení se zadanou neexistuje **id**, je nově zaregistrovaný. <br/>Pokud už zařízení existuje, dojde k přepsání zadaná vstupní data bez ohledem na stávající informace o **ETag** hodnotu. <br> Uživatel můžete volitelně zadat dvojčete dat spolu s daty o zařízení. Etag dvojčete-li zadán, jsou zpracovávána nezávisle na sobě ze značky etag zařízení. Pokud došlo k neshodě s existující dvojčete etag, chyba zapsána do souboru protokolu. |
-| **vytvoření** |Pokud zařízení se zadanou neexistuje **id**, je nově zaregistrovaný. <br/>Pokud zařízení už existuje, chyba zapsána do souboru protokolu. <br> Uživatel můžete volitelně zadat dvojčete dat spolu s daty o zařízení. Etag dvojčete-li zadán, jsou zpracovávána nezávisle na sobě ze značky etag zařízení. Pokud došlo k neshodě s existující dvojčete etag, chyba zapsána do souboru protokolu. |
-| **update** |Pokud zařízení už se zadaným **id**, přepíše stávající informace o zadané vstupní data bez ohledem na **ETag** hodnotu. <br/>Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. |
-| **updateIfMatchETag** |Pokud zařízení už se zadaným **id**, přepíše stávající informace o zadaný vstupní data pouze v případě, že dojde **ETag** odpovídat. <br/>Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. <br/>Pokud dojde **ETag** neshoda, zápisu chyby do souboru protokolu. |
-| **createOrUpdateIfMatchETag** |Pokud zařízení se zadanou neexistuje **id**, je nově zaregistrovaný. <br/>Pokud už zařízení existuje, stávající informace o je přepsána zadaný vstupní data pouze v případě, že dojde **ETag** odpovídat. <br/>Pokud dojde **ETag** neshoda, zápisu chyby do souboru protokolu. <br> Uživatel můžete volitelně zadat dvojčete dat spolu s daty o zařízení. Etag dvojčete-li zadán, jsou zpracovávána nezávisle na sobě ze značky etag zařízení. Pokud došlo k neshodě s existující dvojčete etag, chyba zapsána do souboru protokolu. |
-| **odstranění** |Pokud zařízení už se zadaným **id**, odstraní se bez ohledem na **ETag** hodnotu. <br/>Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. |
-| **deleteIfMatchETag** |Pokud zařízení už se zadaným **id**, odstraní se pouze v případě, že je **ETag** shodovat. Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. <br/>Pokud dojde neshodě ETag, zápisu chyby do souboru protokolu. |
+| **createOrUpdate** |Pokud zařízení se zadanou neexistuje **ID**, je nově zaregistrovaný. <br/>Pokud už zařízení existuje, dojde k přepsání zadaná vstupní data bez ohledem na stávající informace o **ETag** hodnotu. <br> Uživatel můžete volitelně zadat dvojčete dat spolu s daty o zařízení. Etag dvojčete-li zadán, jsou zpracovávána nezávisle na sobě ze značky etag zařízení. Pokud došlo k neshodě s existující dvojčete etag, chyba zapsána do souboru protokolu. |
+| **vytvoření** |Pokud zařízení se zadanou neexistuje **ID**, je nově zaregistrovaný. <br/>Pokud zařízení už existuje, chyba zapsána do souboru protokolu. <br> Uživatel můžete volitelně zadat dvojčete dat spolu s daty o zařízení. Etag dvojčete-li zadán, jsou zpracovávána nezávisle na sobě ze značky etag zařízení. Pokud došlo k neshodě s existující dvojčete etag, chyba zapsána do souboru protokolu. |
+| **update** |Pokud zařízení už se zadaným **ID**, přepíše stávající informace o zadané vstupní data bez ohledem na **ETag** hodnotu. <br/>Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. |
+| **updateIfMatchETag** |Pokud zařízení už se zadaným **ID**, přepíše stávající informace o zadaný vstupní data pouze v případě, že dojde **ETag** odpovídat. <br/>Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. <br/>Pokud dojde **ETag** neshoda, zápisu chyby do souboru protokolu. |
+| **createOrUpdateIfMatchETag** |Pokud zařízení se zadanou neexistuje **ID**, je nově zaregistrovaný. <br/>Pokud už zařízení existuje, stávající informace o je přepsána zadaný vstupní data pouze v případě, že dojde **ETag** odpovídat. <br/>Pokud dojde **ETag** neshoda, zápisu chyby do souboru protokolu. <br> Uživatel můžete volitelně zadat dvojčete dat spolu s daty o zařízení. Etag dvojčete-li zadán, jsou zpracovávána nezávisle na sobě ze značky etag zařízení. Pokud došlo k neshodě s existující dvojčete etag, chyba zapsána do souboru protokolu. |
+| **delete** |Pokud zařízení už se zadaným **ID**, odstraní se bez ohledem na **ETag** hodnotu. <br/>Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. |
+| **deleteIfMatchETag** |Pokud zařízení už se zadaným **ID**, odstraní se pouze v případě, že je **ETag** shodovat. Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. <br/>Pokud dojde neshodě ETag, zápisu chyby do souboru protokolu. |
 
 > [!NOTE]
 > Pokud data serializace explicitně nedefinuje **režimem importu** příznak pro zařízení, použije se výchozí **createOrUpdate** během operace importu.

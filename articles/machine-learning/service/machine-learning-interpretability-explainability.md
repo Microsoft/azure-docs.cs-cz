@@ -1,5 +1,5 @@
 ---
-title: Model interpretability
+title: Interpretovatelnost modelů
 titleSuffix: Azure Machine Learning service
 description: Další informace o použití sady SDK Azure Machine Learning Interpretability vysvětlit, proč váš model vytváří předpovědi. Můžete použít při trénování a odvozování pochopit, jak váš model vytváří předpovědi.
 services: machine-learning
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
-ms.date: 03/27/2019
-ms.openlocfilehash: 1cd5f48e8e0e74dfa04465993246e5d68840a783
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.date: 04/04/2019
+ms.openlocfilehash: f72923b80751f16ece128ced209679bbc325226c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58919722"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051797"
 ---
 # <a name="azure-machine-learning-interpretability-sdk"></a>Azure Machine Learning Interpretability SDK
 
-Zjistěte, jak vysvětlit, proč váš model dorazí předpovědi je. Azure Machine Learning Interpretability SDK umožňuje popisují váš model, což je důležité z následujících důvodů:
+V tomto článku se dozvíte postupy vysvětlují, proč váš model provedené předpovědi ho pomocí sady Azure Machine Learning Interpretability SDK. Schopnost popisují váš model je důležitá z následujících důvodů:
 
 * Zákazníci a zúčastněnými stranami chtít vědět, **v případě, že důvěřujete předpovědi modelu díky**.
 * Jako odborník přes data, potřebujete pochopit **jak provádět dotazy modelu, který má získat přehledy**. Musíte také nástroje a informovaně se rozhodovat na **jak vylepšit svůj model**.
@@ -27,16 +27,10 @@ Zjistěte, jak vysvětlit, proč váš model dorazí předpovědi je. Azure Mach
 
 Je důležité ve dvou fázích strojového učení vývojový cyklus Machine learning interpretability: **školení** čas a **odvozování** čas:
 
-* Během **školení**: Návrháři model a nástroje pro vyhodnocení vyžadují interpretability nástroje, které popisují výstup z modelu zúčastněným stranám, k vytvoření vztahu důvěryhodnosti. Interpretability nástroje také umožňují ladění modelu:
-
-    * Odpovídá jeho chování cíle a úkoly?
-    * Je to tendenční?
-
+* Během **školení**: Návrháři model a nástroje pro vyhodnocení vyžadují interpretability nástroje, které popisují výstup z modelu zúčastněným stranám, k vytvoření vztahu důvěryhodnosti. Potřebují také přehled o modelu tak, aby můžete ladit modelu a rozhodování na, jestli odpovídá chování svých cílů. Nakonec je třeba Ujistěte se, že není tendenční modelu.
 * Během **odvozování**: Předpovědi musí být explainable uživatelé, kteří používají model. Například, proč modelu odepřít úvěru hypoteční nebo předpovídat, že investice portfolia s sebou nese vyšší riziko?
 
-Azure Machine Learning Interpretability SDK zahrnuje technologie vyvinutá společností Microsoft a ověřené knihovny třetích stran (například okno a LIMETKOVĚ). Poskytuje společné rozhraní API v rámci integrovaného knihovny a integruje do služby Azure Machine Learning. 
-
-Pomocí této sady SDK, mohou vysvětlovat modelů strojového učení **globálně na všechny data**, nebo **místně na konkrétní datový bod** pomocí technologií stavu techniky snadným ovládáním a škálovatelným způsobem.
+Azure Machine Learning Interpretability SDK zahrnuje technologie vyvinutá společností Microsoft a ověřené knihovny třetích stran (například okno a LIMETKOVĚ). Sada SDK vytvoří společné rozhraní API přes integrované knihovny a integraci služby Azure Machine Learning. Pomocí této sady SDK, mohou vysvětlovat modelů strojového učení **globálně na všechny data**, nebo **místně na konkrétní datový bod** pomocí technologií stavu techniky snadným ovládáním a škálovatelným způsobem.
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
@@ -48,11 +42,7 @@ Azure Machine Learning Interpretability vrátí sadu informace jak modelu díky 
 
 * Globální/místní funkce relativní důležitost
 * Globální/místní funkce a predikcí vztah
-* Interaktivní vizualizace:
-
-    * Predikce
-    * Funkce a predikcí vztahů
-    * Funkce relativní význam hodnoty globální i lokální
+* Interaktivní vizualizace zobrazující predikcí, funkce a predikcí vztah a relativní funkce význam hodnoty globální i lokální
 
 ## <a name="architecture"></a>Architektura
 
@@ -114,11 +104,7 @@ Vysvětlení funkce přijímají jako vstup modely a kanály. Pokud model je k d
 
 ### <a name="local-and-remote-compute-target"></a>Místní a vzdálené cílové výpočetní prostředí
 
-Machine Learning Interpretability SDK je navržená pro práci s oběma cílových výpočetních prostředí místní a vzdálené. 
-
-* Pokud spuštění **místně**, sada SDK nebude kontaktovat služby Azure.
-
-* Pokud spuštění **vzdáleně**, zaznamenaných informací o daném spuštění v historii služby spusťte Azure Machine Learning. Jakmile tyto informace se zaznamená, sestavy a vizualizace z vysvětlení se snadno k dispozici na portálu Azure Machine Learning Workspace analýza uživatelů.
+Machine Learning Interpretability SDK je navržená pro práci s oběma cílových výpočetních prostředí místní a vzdálené. Je-li spustit místně, sada SDK funkce nebude obraťte se na služby Azure. Můžete spustit vysvětlení vzdáleně v Azure Machine Learning Compute a informace o vysvětlení přihlásit spuštění služby historie Azure Machine Learning. Jakmile tyto informace se zaznamená, sestavy a vizualizace z vysvětlení se snadno k dispozici na portálu Azure Machine Learning Workspace analýza uživatelů.
 
 ## <a name="train-and-explain-locally"></a>Trénování a popisují místně
 
@@ -138,9 +124,7 @@ Machine Learning Interpretability SDK je navržená pro práci s oběma cílový
     model = clf.fit(x_train, y_train)
     ```
 
-2. Volání vysvětlení. Při vytváření instance objektu vysvětlení, předejte modelu a trénovací data. Volitelně můžete předat funkce, které vás zajímají. Pokud pomocí klasifikace, předejte výstup názvy tříd.
-
-    Následující příklad ukazuje, jak vytvořit objekt vysvětlení pomocí [TabularExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.tabularexplainer?view=azure-ml-py), [MimicExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic.mimicexplainer?view=azure-ml-py), a `LimeExplainer` místně. `TabularExplainer` volání jedné z tři explainers pod (`TreeExplainer`, `DeepExplainer`, nebo `KernelExplainer`) a je automaticky vybere nejvhodnější z nich pro případy použití. Můžete však všechny její tři základní explainers volat přímo.
+2. Volání vysvětlení: K zahájení vysvětlení objektu, je nutné předat modelu, trénovací data, funkce zájmu (volitelné) a názvy tříd výstup (Pokud klasifikaci) k vysvětlení. Tady je postup pro vytvoření instance objektu vysvětlení pomocí [TabularExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.tabularexplainer?view=azure-ml-py), [MimicExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic.mimicexplainer?view=azure-ml-py), a `LimeExplainer` místně. `TabularExplainer` volání jedné z tři explainers pod (`TreeExplainer`, `DeepExplainer`, nebo `KernelExplainer`) a je automaticky vybere nejvhodnější z nich pro případy použití. Můžete však všechny její tři základní explainers volat přímo.
 
     ```python
     from azureml.explain.model.tabular_explainer import TabularExplainer
@@ -213,7 +197,7 @@ Zatímco trénovat na různých cílových výpočetních prostředí podporovan
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-2. K odeslání školení spustit, použijte kroky v [nastavení cílových výpočetních prostředí k tréninku modelu](how-to-set-up-training-targets.md#amlcompute) článku. Pomocí kroků můžete vytvořit cíl Azure Machine Learning Compute a pak odeslat běh školení.
+2. Postupujte podle pokynů [nastavení cílových výpočetních prostředí k tréninku modelu](how-to-set-up-training-targets.md#amlcompute) Další informace o nastavení Azure Machine Learning Compute jako vaše cílové výpočetní prostředí a odeslat spuštění školení.
 
 3. Stáhněte si vysvětlení ve vaší místní aplikace Jupyter notebook. 
 

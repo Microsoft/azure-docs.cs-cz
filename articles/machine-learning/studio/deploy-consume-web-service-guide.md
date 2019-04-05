@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 592bf638cf0be26182dfdb28ac5a0c8345a7a250
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ad58b914c22c112a83c18a7c0377b567424e4efd
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116703"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046015"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio webové služby: Nasazení a využití
 
@@ -36,7 +36,7 @@ Následující odkazy obsahují obecné informace o tom, jak nasadit nové webov
 * Úplný návod o tom, jak vytvořit a nasadit webovou službu, začněte s [kurz 1: Předpovědět úvěrové riziko](tutorial-part1-credit-risk.md).
 * Konkrétní příklady, které nasazení webové služby naleznete v tématu:
 
-  * [Tutoriál 3: Úvěrové riziko model nasazení](tutorial-part3-credit-risk-deploy.md)
+  * [Kurz 3: Úvěrové riziko model nasazení](tutorial-part3-credit-risk-deploy.md)
   * [Jak nasadit webovou službu do více oblastí](/azure/machine-learning/studio/publish-a-machine-learning-web-service#multi-region)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>U poskytovatele prostředků služby webového rozhraní API (rozhraní API Azure Resource Manager)
@@ -49,7 +49,7 @@ Poskytovatel prostředků Azure Machine Learning Studio webové služby umožňu
 
 Poskytovatel prostředků Azure Machine Learning Studio webové služby umožňuje nasazení a Správa webových služeb pomocí rutin prostředí PowerShell.
 
-Pokud chcete použít rutiny, musíte nejdřív se přihlásit ke svému účtu Azure z prostředí PowerShell pomocí [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) rutiny. Pokud nejste obeznámeni s jak volat příkazy Powershellu, které jsou založené na Resource Manageru, najdete v [pomocí Azure Powershellu s Azure Resource Managerem](../../azure-resource-manager/manage-resources-powershell.md).
+Pokud chcete použít rutiny, musíte nejdřív se přihlásit ke svému účtu Azure z prostředí PowerShell pomocí [připojit AzAccount](/powershell/module/az.profile/connect-azaccount) rutiny. Pokud nejste obeznámeni s jak volat příkazy Powershellu, které jsou založené na Resource Manageru, najdete v [pomocí Azure Powershellu s Azure Resource Managerem](../../azure-resource-manager/manage-resources-powershell.md).
 
 Chcete-li exportovat prediktivní experiment, použijte [ukázkový kód](https://github.com/ritwik20/AzureML-WebServices). Po vytvoření souboru .exe z kódu, můžete zadat:
 
@@ -78,7 +78,7 @@ Tady je příklad:
 
 Naleznete v následujících článcích a ukázkový kód pro další podrobnosti:
 
-* [Azure Machine Learning Studio rutiny](https://docs.microsoft.com/powershell/module/azurerm.machinelearning) odkaz na webu MSDN
+* [Azure Machine Learning Studio rutiny](https://docs.microsoft.com/powershell/module/az.machinelearning) odkaz na webu MSDN
 * Ukázka [návod](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) na Githubu
 
 ## <a name="consume-the-web-services"></a>Využívání webových služeb
@@ -89,7 +89,7 @@ Můžete testovat webové služby z portálu Azure Machine Learning Web Services
 
 * [Nasazení nové webové služby](publish-a-machine-learning-web-service.md)
 * [Nasazení webové služby Azure Machine Learning](publish-a-machine-learning-web-service.md)
-* [Tutoriál 3: Úvěrové riziko model nasazení](tutorial-part3-credit-risk-deploy.md)
+* [Kurz 3: Úvěrové riziko model nasazení](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Z aplikace Excel
 

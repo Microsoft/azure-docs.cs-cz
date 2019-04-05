@@ -14,28 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
 ms.author: aljo
-ms.openlocfilehash: 2bde95b744ac136e8ba5c0517e0f749a6dce8a1e
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 193a24aebff8f7de60752e53bbc1b18dd5c54f33
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805269"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051752"
 ---
 # <a name="remove-a-service-fabric-node-type"></a>Odebrat typ uzlu Service Fabric
 Tento článek popisuje, jak škálování clusteru Azure Service Fabric odebráním existujícího typu uzlu z clusteru. Cluster Service Fabric je síťově propojená sada virtuálních nebo fyzických počítačů, do které se nasazují a spravují mikroslužby. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Škálovací sady virtuálních počítačů jsou výpočetním prostředkem Azure, který použijete k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definován v clusteru Azure je [nastavit jako samostatné škálovací sada](service-fabric-cluster-nodetypes.md). Každý typ uzlu je pak spravovat samostatně. Po vytvoření clusteru Service Fabric, můžete horizontálně škálovat cluster odebráním typu uzlu (škálovací sady virtuálních počítačů) a všechny jeho uzly.  Je možné škálovat cluster v okamžiku, i když spouštění úloh v clusteru.  Škálování clusteru, vaše aplikace automaticky škálovat směrem také.
 
-Použití [Remove-azurermservicefabricnodetype:](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnodetype) k odebrání typu uzlu Service Fabric.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Jsou tři operace, ke kterým dochází při Remove-azurermservicefabricnodetype: volání:
+Použití [odebrat AzServiceFabricNodeType](https://docs.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricnodetype) k odebrání typu uzlu Service Fabric.
+
+Jsou tři operace, ke kterým dochází při volání AzServiceFabricNodeType odebrat:
 1.  Odstranění virtuálního počítače škálovací sadě za nástrojem typ uzlu.
 2.  Typ uzlu je odebrat z clusteru.
 3.  Pro každý uzel v rámci uzlu typu celého stavu pro tento uzel odebrat ze systému. Pokud na tomto uzlu služby, potom služby jsou nejprve přesunout do jiného uzlu. Pokud správce clusteru nelze najít uzel repliky nebo službu, tato operace je zpožděné/zablokováno.
 
 > [!WARNING]
-> Pomocí Remove-azurermservicefabricnodetype: Odebere typ uzlu z clusteru pro produkční prostředí se nedoporučuje používat často. Odstraní prostředek sady škálování virtuálního počítače za typ uzlu je nebezpečný příkaz. 
+> Použití AzServiceFabricNodeType odebrat k odebrání typu uzlu z clusteru pro produkční prostředí se nedoporučuje používat často. Odstraní prostředek sady škálování virtuálního počítače za typ uzlu je nebezpečný příkaz. 
 
 ## <a name="durability-characteristics"></a>Vlastnosti odolnosti
-Při použití Remove-azurermservicefabricnodetype: bezpečnosti prioritu před rychlostí. Typ uzlu musí být stříbrné nebo zlaté úrovně [úroveň odolnosti](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster), protože:
+Při použití odebrat AzServiceFabricNodeType bezpečný přístup z více prioritu před rychlostí. Typ uzlu musí být stříbrné nebo zlaté úrovně [úroveň odolnosti](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster), protože:
 - Bronzová vám neposkytují žádné záruky týkající se ukládání informací o stavu.
 - Stříbrné a zlaté odolnosti zachytávat všechny změny do škálovací sady.
 - Zlatá také umožňuje kontrolu nad Azure aktualizuje pod škálovací sady.
@@ -48,14 +50,14 @@ Při odebírání typ uzlu, který je Bronzová, všechny uzly v typu uzlu ihned
 
 ## <a name="recommended-node-type-removal-process"></a>Doporučené procesu odebrání typu uzlu
 
-Pokud chcete odebrat typ uzlu, spusťte [Remove-azurermservicefabricnodetype:](/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnodetype) rutiny.  Rutina trvá delší dobu.  Potom spusťte [odebrat ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) na každém uzlu, které mají být odstraněny.
+Pokud chcete odebrat typ uzlu, spusťte [odebrat AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) rutiny.  Rutina trvá delší dobu.  Potom spusťte [odebrat ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) na každém uzlu, které mají být odstraněny.
 
 ```powershell
 $groupname = "mynodetype"
 $nodetype = "nt2vm"
 $clustername = "mytestcluster"
 
-Remove-AzureRmServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
+Remove-AzServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
 
 Connect-ServiceFabricCluster -ConnectionEndpoint mytestcluster.eastus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `

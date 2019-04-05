@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: be0c1611856a1fa68d20696c32b5fadcd8572004
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793607"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049468"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Řízení přístupu na základě rolí pro StorSimple
 
 Tento článek obsahuje stručný popis použití řízení přístupu v Azure Role-Based (RBAC) pro zařízení StorSimple. RBAC poskytuje propracovanou správu přístupu pro Azure. Použijte pro udělení, že ideální úroveň přístupu ke službě StorSimple uživatelů vykonávat svoji práci místo všem neomezený přístup. Další informace o základní správu přístupu v Azure najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure portal](../role-based-access-control/overview.md).
 
 Tento článek se týká do zařízení řady StorSimple 8000 Update 3.0 nebo později na webu Azure portal.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="rbac-roles-for-storsimple"></a>Role RBAC pro StorSimple
 
@@ -46,14 +48,14 @@ V následujícím příkladu Začneme s předdefinovanou roli **čtečky** , kte
 
 2. Přihlásí se k Azure.
 
-    `Connect-AzureRmAccount`
+    `Connect-AzAccount`
 
 3. Role Čtenář exportujte jako šablonu JSON ve vašem počítači.
 
     ```powershell
-    Get-AzureRMRoleDefinition -Name "Reader"
+    Get-AzRoleDefinition -Name "Reader"
 
-    Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
+    Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
 4. Otevřete soubor JSON v sadě Visual Studio. Uvidíte, že typické role RBAC se skládá ze tří hlavních částí **akce**, **NotActions**, a **AssignableScopes**.
@@ -62,7 +64,7 @@ V následujícím příkladu Začneme s předdefinovanou roli **čtečky** , kte
 
     Chcete-li zobrazit všechny poskytovatele prostředků k dispozici a registrovaný ve vašem předplatném pomocí Powershellu.
 
-    `Get-AzureRMResourceProvider`
+    `Get-AzResourceProvider`
 
     Můžete také vyhledat všechny dostupné rutiny prostředí PowerShell můžete spravovat poskytovatele prostředků.
 
@@ -102,7 +104,7 @@ V následujícím příkladu Začneme s předdefinovanou roli **čtečky** , kte
 
 6. Importujte vlastní roli RBAC zpět do prostředí.
 
-    `New-AzureRMRoleDefinition -InputFile "C:\ssrbaccustom.json"`
+    `New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"`
 
 
 Tato role by se měla objevit v seznamu rolí v **řízení přístupu** okno.
@@ -114,7 +116,7 @@ Další informace najdete v části [vlastní role](../role-based-access-control
 ### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>Ukázkový výstup pro vytvoření vlastní role pomocí prostředí PowerShell
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 ```Output
@@ -127,7 +129,7 @@ CurrentStorageAccount :
 ```
 
 ```powershell
-Get-AzureRMRoleDefinition -Name "Reader"
+Get-AzRoleDefinition -Name "Reader"
 ```
 
 ```Output
@@ -141,8 +143,8 @@ AssignableScopes : {/}
 ```
 
 ```powershell
-Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
-New-AzureRMRoleDefinition -InputFile "C:\ssrbaccustom.json"
+Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
+New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"
 ```
 
 ```Output

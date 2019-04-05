@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 0372f34d5e58361d460465a9ddf4b6eed79a49f0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474815"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049134"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Kurz: Rozšíření souborových serverů Windows s využitím Synchronizace souborů Azure
 
@@ -28,6 +28,8 @@ Tento článek ukazuje základní kroky pro rozšíření kapacity úložiště 
 > * Vytvoření koncového bodu serveru
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
@@ -181,7 +183,7 @@ V dalším kroku v systému Windows Server 2016 Datacenter virtuální počíta�
 1. Spusťte následující příkaz:
 
    ```powershell
-   Install-Module -Name AzureRm
+   Install-Module -Name Az
    ```
 
    > [!NOTE]
@@ -200,7 +202,7 @@ V dalším kroku v systému Windows Server 2016 Datacenter virtuální počíta�
 
 1. Odpověď **Ano** nebo **Ano všem** pokračujte v instalaci.
 
-Modul `AzureRM` je kumulativní modul pro rutiny Azure PowerShellu. Jeho instalace stáhne všechny dostupné moduly Azure Resource Manageru a zpřístupní jejich rutiny k použití.
+Modul `Az` je kumulativní modul pro rutiny Azure PowerShellu. Jeho instalace stáhne všechny dostupné moduly Azure Resource Manageru a zpřístupní jejich rutiny k použití.
 
 V tomto okamžiku jste nastavili prostředí pro tento kurz. Jste připraveni nasadit službu synchronizace úložiště.
 
@@ -263,7 +265,7 @@ Uživatelské rozhraní serveru registrace otvírat automaticky po instalaci age
    | | |
    | ----- | ----- |
    | Hodnota | Popis |
-   | **Předplatné Azure** | Předplatné, které obsahuje službu synchronizace úložiště pro účely tohoto kurzu. |
+   | **předplatné Azure** | Předplatné, které obsahuje službu synchronizace úložiště pro účely tohoto kurzu. |
    | **Skupina prostředků** | Skupina prostředků, která obsahuje službu synchronizace úložiště. Použití _afsresgroup101918_ pro účely tohoto kurzu. |
    | **Služba synchronizace úložiště** | Název služby synchronizace úložiště. Použití _afssyncservice02_ pro účely tohoto kurzu. |
 
@@ -308,7 +310,7 @@ Koncový bod serveru představuje určitého umístění na registrovaném serve
    | **Zaregistrovaný server** | Název serveru, který jste vytvořili. Použití *afsvm101918* pro účely tohoto kurzu. |
    | **Cesta** | Cesta Windows serveru na jednotku, kterou jste vytvořili. Použití *f:\filestosync* v tomto kurzu. |
    | **Vrstvení cloudu** | Pro účely tohoto kurzu nechte tuto možnost zakázanou. |
-   | **Volné místo svazku** | Pro účely tohoto kurzu ponechte tuto hodnotu prázdnou. |
+   | **Volné místo na svazku** | Pro účely tohoto kurzu ponechte tuto hodnotu prázdnou. |
 
 1. Vyberte **Vytvořit**.
 
@@ -325,4 +327,4 @@ Vaše soubory se teď synchronizují mezi sdílenou složkou Azure a Windows Ser
 V tomto kurzu jste zjistili, základní kroky pro rozšíření kapacity úložiště Windows serveru pomocí Azure File Sync. Podrobnější pohled na plánování nasazení služby Azure File Sync naleznete v tématu:
 
 > [!div class="nextstepaction"]
-> [Plánování nasazení Synchronizace souborů Azure](./storage-sync-files-planning.md)
+> [Plán nasazení Azure File Sync](./storage-sync-files-planning.md)

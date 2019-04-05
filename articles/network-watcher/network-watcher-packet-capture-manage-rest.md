@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 49a703164b302443d8b50ba950cf23b8601cb599
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 614c3e1831680fff50058cd5192449f8e6e28179
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480698"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049792"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Správa zachytávání paketů pomocí služby Azure Network Watcher pomocí rozhraní Azure REST API
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
+> - [portál Azure](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Rozhraní Azure REST API](network-watcher-packet-capture-manage-rest.md)
@@ -39,6 +39,9 @@ Tento článek vás provede jiné úlohy, které jsou aktuálně k dispozici pro
 - [**Spustit zachytávání paketů**](#start-packet-capture)
 - [**Zastavit zachytávání paketů**](#stop-packet-capture)
 - [**Odstranit zachycení paketů**](#delete-packet-capture)
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Před zahájením
 
@@ -60,7 +63,7 @@ Spusťte následující skript, který vrátí virtuální počítač. Tyto info
 
 Následující kód potřebuje proměnné:
 
-- **subscriptionId** – id předplatného můžete získat také pomocí **Get-AzureRMSubscription** rutiny.
+- **subscriptionId** – id předplatného můžete získat také pomocí **Get-AzSubscription** rutiny.
 - **Název skupiny prostředků** – název skupiny prostředků obsahující virtuální počítače.
 
 ```powershell

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: cc9e2e09da572dc4260dcc0e20a8a1846ae17320
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: a2a730e2c3ca466a2705f053d7db0db12d7941da
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894145"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047313"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Průběžná integrace služby Azure DevOps pomocí projekty nasazení skupiny prostředků Azure
 K nasazení šablony Azure, můžete provádět úlohy v různých fázích: Kopírovat sestavení, testování, do Azure (tzv. "Přípravného") a nasaďte šablonu. Existují dva různé způsoby nasazování šablon ke službám Azure DevOps. Obě metody poskytují stejné výsledky, proto zvolte ten, který nejlépe vyhovuje požadavkům vašeho pracovního postupu.
@@ -28,6 +28,8 @@ K nasazení šablony Azure, můžete provádět úlohy v různých fázích: Kop
 2. Přidání že více služeb Azure DevOps kroky sestavení, každý z nich provedení úlohy fázi.
 
 Tento článek ukazuje obě možnosti. První možnost nabízí výhodu v podobě pomocí stejného skriptu vývojářům v sadě Visual Studio a poskytnutí konzistence v průběhu životního cyklu. Druhou možností je vhodnou alternativou integrované skriptu. Oba postupy předpokládají, že již máte Visual Studio projekt nasazení zapsány do služby Azure DevOps.
+
+[!INCLUDE [updated-for-az](../includes/updated-for-az.md)]
 
 ## <a name="copy-artifacts-to-azure"></a>Zkopírování artefaktů do Azure
 Bez ohledu na scénář Pokud mají všechny artefakty, které jsou potřebné pro nasazení šablony, musíte poskytnout přístup k Azure Resource Manageru k nim. Tyto artefakty mohou zahrnovat například soubory:
@@ -87,7 +89,7 @@ Následující postup vás provede kroky potřebnými ke konfiguraci průběžn�
       
       U skriptů prostředí PowerShell použijte:
       
-      `Get-AzureRmSubscription`
+      `Get-AzSubscription`
       
       Pokud používáte Azure CLI, použijte:
       

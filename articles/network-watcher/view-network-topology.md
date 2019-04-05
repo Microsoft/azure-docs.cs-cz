@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: eb98fc2da95f1aa2b7294d09ec2a3145bdb5c789
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a9cddf3f8091115f7cd39999e8c52d87ead4af07
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112734"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044324"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Zobrazení topologie služby Azure virtual network
 
 V tomto článku se dozvíte, jak k zobrazení prostředků ve virtuální síti Microsoft Azure a vztahy mezi prostředky. Například virtuální síť obsahuje podsítě. Podsítě obsahují prostředky, jako jsou Azure Virtual Machines (VM). Virtuální počítače mají jednu nebo víc síťových rozhraní. Každá podsíť může mít skupina zabezpečení sítě a směrovací tabulky přidružené k němu. Schopnosti topologie produktu Azure Network Watcher umožňuje zobrazit všechny prostředky ve virtuální síti prostředky přidružené k prostředkům ve virtuální síti a vztahy mezi prostředky.
 
 Můžete použít [webu Azure portal](#azure-portal), [rozhraní příkazového řádku Azure](#azure-cli), nebo [Powershellu](#powershell) Chcete-li zobrazit topologii.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name = "azure-portal"></a>Zobrazení topologie – Azure portal
 
@@ -85,38 +87,38 @@ Vámi používaný účet musí mít potřebná [oprávnění](required-rbac-per
 
 Spusťte příkazy v následujících kroků:
 - Ve službě Azure Cloud Shell, tak, že vyberete **vyzkoušet** nahoře napravo od libovolného příkazu. Azure Cloud Shell je bezplatné interaktivní prostředí, který má běžné nástroje Azure, včetně a nakonfigurovány pro použití s vaším účtem.
-- Spuštění Powershellu z vašeho počítače. Při spuštění PowerShell z počítače, kroky v tomto článku vyžadují verzi 5.7.0 nebo novějším modulu AzureRm. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+- Spuštění Powershellu z vašeho počítače. Při spuštění PowerShell z počítače, tento článek vyžaduje prostředí Azure PowerShell `Az` modulu. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 Vámi používaný účet musí mít potřebná [oprávnění](required-rbac-permissions.md).
 
-1. Pokud už máte sledovací proces sítě ve stejné oblasti jako virtuální síť, kterou chcete vytvořit topologie pro, přejděte ke kroku 3. Vytvořte skupinu prostředků obsahuje sledovací proces sítě s [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup). Následující příklad vytvoří skupinu prostředků *eastus* oblasti:
+1. Pokud už máte sledovací proces sítě ve stejné oblasti jako virtuální síť, kterou chcete vytvořit topologie pro, přejděte ke kroku 3. Vytvořte skupinu prostředků obsahuje sledovací proces sítě s [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). Následující příklad vytvoří skupinu prostředků *eastus* oblasti:
 
     ```azurepowershell-interactive
-    New-AzureRmResourceGroup -Name NetworkWatcherRG -Location EastUS
+    New-AzResourceGroup -Name NetworkWatcherRG -Location EastUS
     ```
 
-2. Vytvořit network watcher se [New-AzureRmNetworkWatcher](/powershell/module/azurerm.network/new-azurermnetworkwatcher). Následující příklad vytvoří v oblasti eastus network watcher:
+2. Vytvořit network watcher se [New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher). Následující příklad vytvoří v oblasti eastus network watcher:
 
     ```azurepowershell-interactive
-    New-AzureRmNetworkWatcher `
+    New-AzNetworkWatcher `
       -Name NetworkWatcher_eastus `
       -ResourceGroupName NetworkWatcherRG
     ```
 
-3. Načtení instance Network Watcheru s [Get-AzureRmNetworkWatcher](/powershell/module/azurerm.network/get-azurermnetworkwatcher). Následující příklad načte network watcheru v oblasti USA – východ:
+3. Načtení instance Network Watcheru s [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher). Následující příklad načte network watcheru v oblasti USA – východ:
 
     ```azurepowershell-interactive
-    $nw = Get-AzurermResource `
+    $nw = Get-AzResource `
       | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "EastUS" }
-    $networkWatcher = Get-AzureRmNetworkWatcher `
+    $networkWatcher = Get-AzNetworkWatcher `
       -Name $nw.Name `
       -ResourceGroupName $nw.ResourceGroupName
     ```
 
-4. Načíst topologie s [Get-AzureRmNetworkWatcherTopology](/powershell/module/azurerm.network/get-azurermnetworkwatchertopology). Následující příklad načte topologie pro virtuální síť ve skupině prostředků s názvem *MyResourceGroup*:
+4. Načíst topologie s [Get-AzNetworkWatcherTopology](/powershell/module/az.network/get-aznetworkwatchertopology). Následující příklad načte topologie pro virtuální síť ve skupině prostředků s názvem *MyResourceGroup*:
 
     ```azurepowershell-interactive
-    Get-AzureRmNetworkWatcherTopology `
+    Get-AzNetworkWatcherTopology `
       -NetworkWatcher $networkWatcher `
       -TargetResourceGroupName MyResourceGroup
     ```

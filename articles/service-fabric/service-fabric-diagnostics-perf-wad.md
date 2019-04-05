@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: ec66a4fdffcff2d2ff7c11c969900c8b12dda755
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669691"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049451"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Monitorování výkonu pomocí rozšíření Windows Azure Diagnostics
 
@@ -27,6 +27,9 @@ Tento dokument popisuje kroky potřebné k nastavení shromažďování čítač
 
  > [!NOTE]
 > Rozšíření WAD musí být nasazené na clusteru pro tyto kroky při práci za vás. Pokud není nastavený, přejděte na [agregace událostí a kolekce pomocí Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).  
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="collect-performance-counters-via-the-wadcfg"></a>Shromažďování čítačů výkonu prostřednictvím WadCfg
 
@@ -192,10 +195,10 @@ Tady je příklad konfigurace s čítačem pro *celkový čas procesoru* (množs
  >[!NOTE]
  >I když můžete použít `*` určit skupiny čítačů výkonu, které jsou pojmenovány podobně, odesílání všechny čítače prostřednictvím jímky (do Application Insights) vyžaduje, že jsou jednotlivě deklarovány. 
 
-1. Po přidání odpovídající čítače, které je potřeba shromáždit, budete muset upgradovat váš prostředek clusteru tak, aby tyto změny se projeví v spuštěný cluster. Uložte upravený `template.json` a otevřete prostředí PowerShell. Upgradem clusteru pomocí `New-AzureRmResourceGroupDeployment`. Volání vyžaduje název skupiny prostředků, soubor aktualizovanou šablonu a soubor parametrů a vyzve správce prostředků na prostředky, které jste provedli odpovídající změny. Po přihlášení k účtu a jsou ve správné předplatné, použijte následující příkaz ke spuštění upgradu:
+1. Po přidání odpovídající čítače, které je potřeba shromáždit, budete muset upgradovat váš prostředek clusteru tak, aby tyto změny se projeví v spuštěný cluster. Uložte upravený `template.json` a otevřete prostředí PowerShell. Upgradem clusteru pomocí `New-AzResourceGroupDeployment`. Volání vyžaduje název skupiny prostředků, soubor aktualizovanou šablonu a soubor parametrů a vyzve správce prostředků na prostředky, které jste provedli odpovídající změny. Po přihlášení k účtu a jsou ve správné předplatné, použijte následující příkaz ke spuštění upgradu:
 
     ```sh
-    New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
+    New-AzResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
 1. Po dokončení upgradu zavádět (přijímá mezi 15 až 45 minut v závislosti na tom, zda je prvním nasazení a velikost vaší skupiny prostředků), WAD by měl být shromažďování čítačů výkonu a jejich odesílání do tabulky s názvem WADPerformanceCountersTable v účtu úložiště spojené s vaším clusterem. Zobrazit čítače výkonu ve službě Application Insights pomocí [přidání jímky AI do šablony Resource Manageru](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
@@ -203,4 +206,4 @@ Tady je příklad konfigurace s čítačem pro *celkový čas procesoru* (množs
 ## <a name="next-steps"></a>Další postup
 * Shromažďování dalších čítačů výkonu pro váš cluster. Zobrazit [metriky výkonu](service-fabric-diagnostics-event-generation-perf.md) seznam čítačů, na které se mají shromažďovat.
 * [Použití monitorováním a diagnostikou pomocí šablony Azure Resource Manageru a virtuální počítač Windows](../virtual-machines/windows/extensions-diagnostics-template.md) provádět další úpravy vaše `WadCfg`, včetně dalších účtů úložiště k odesílání diagnostických dat konfigurace.
-* Přejděte [WadCfg Tvůrce](https://azure.github.io/azure-diagnostics-tools/config-builder/) k vytvoření šablony ze začátku a ujistěte se, že je vaše syntaxe správná.
+* Přejděte [WadCfg Tvůrce](https://azure.github.io/azure-diagnostics-tools/config-builder/) k vytvoření šablony ze začátku a ujistěte se, že je vaše syntaxe správná. () https://azure.github.io/azure-diagnostics-tools/config-builder/) k vytvoření šablony ze začátku a ujistěte se, že je vaše syntaxe správná.

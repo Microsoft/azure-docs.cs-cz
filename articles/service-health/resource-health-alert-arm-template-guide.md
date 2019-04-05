@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: de5419bbfa5a364cb570651fd4d57d7560e4aafd
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: afa89fc90552c7ccba1fcea0945ee223d0096be4
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663430"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047513"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurace výstrahy týkající se stavu prostředků pomocí šablon Resource Manageru
 
@@ -22,30 +22,32 @@ Azure Resource Health zachovat informována o aktuální a Historický stav svý
 > [!NOTE]
 > Výstrahy týkající se stavu prostředků jsou aktuálně ve verzi preview.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
 Postupujte podle pokynů na této stránce, budete muset předem zařídit pár věcí:
 
-1. Je potřeba nainstalovat [modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) (`AzureRm`)
+1. Je potřeba nainstalovat [modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 2. Je potřeba [vytvořit nebo znovu použít skupiny akcí](../azure-monitor/platform/action-groups.md) nakonfigurovaný tak, aby upozornění
 
 ## <a name="instructions"></a>Pokyny
 1. Pomocí Powershellu, připojte se k Azure pomocí svého účtu a vyberte předplatné, které chcete pracovat s
 
-        Login-AzureRmAccount
-        Select-AzureRmSubscription -Subscription <subscriptionId>
+        Login-AzAccount
+        Select-AzSubscription -Subscription <subscriptionId>
 
-    > Můžete použít `Get-AzureRmSubscription` seznam předplatných, budete mít přístup k.
+    > Můžete použít `Get-AzSubscription` seznam předplatných, budete mít přístup k.
 
 2. Najít a uložit úplné ID Azure Resource Manageru pro vaši skupinu akcí
 
-        (Get-AzureRmActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+        (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
 3. Vytvoříte a uložíte šablonu Resource Manageru pro výstrahy týkající se stavu prostředků jako `resourcehealthalert.json` ([viz podrobnosti níže](#resource-manager-template-for-resource-health-alerts))
 
 4. Vytvořte nové nasazení Azure Resource Manageru pomocí této šablony.
 
-        New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+        New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
 
 5. Budete vyzváni k zadání názvu upozornění a jste si zkopírovali dříve ID prostředku skupiny akcí:
 

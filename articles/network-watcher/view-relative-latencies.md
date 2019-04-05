@@ -16,29 +16,32 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 0b6baec08470754c04aaa0bea2a3e6defe7fd91f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 895e29d9855372e418ad5ebf2a3949dc01ddb8de
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58117849"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050488"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Zobrazení relativní latence do oblastí Azure z konkrétních míst
 
 V tomto kurzu se naučíte používat Azure [Network Watcher](network-watcher-monitoring-overview.md) služby vám pomohou rozhodnout, jaké oblasti Azure k nasazení aplikace nebo služby, založené na demografických uživatelů. Kromě toho můžete použít k vyhodnocení poskytovatelů služeb připojení k Azure.  
         
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="create-a-network-watcher"></a>Vytvořit network watcher
 
 Pokud už máte sledovací proces sítě v Azure alespoň jeden [oblasti](https://azure.microsoft.com/regions), můžete přeskočit úkolů v této části. Vytvořte skupinu prostředků pro sledovací proces sítě. V tomto příkladu se vytvoří skupina prostředků v oblasti východní USA, ale můžete vytvořit skupinu prostředků v libovolné oblasti Azure.
 
 ```powershell
-New-AzureRmResourceGroup -Name NetworkWatcherRG -Location eastus
+New-AzResourceGroup -Name NetworkWatcherRG -Location eastus
 ```
 
 Vytvořte network watcher. Musí mít sledovací proces sítě vytvořené v nejméně jedné oblasti Azure. V tomto příkladu se vytvoří network watcheru v oblasti Azure USA – východ.
 
 ```powershell
-New-AzureRmNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG -Location eastus
+New-AzNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG -Location eastus
 ```
 
 ## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>Porovnat relativní síťovou latenci z určitého umístění na jedné oblasti Azure
@@ -46,7 +49,7 @@ New-AzureRmNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName Network
 Služba poskytovatele vyhodnotit nebo řešení potíží s uživateli, jako je "webu bylo pomalé v sítích," ohlášení problému z určitého umístění na základě oblasti azure, ve kterém je nasazená služba. Například následující příkaz vrátí průměrnou latenci poskytovatele relativní služby Internet mezi státu Washington ve Spojených státech amerických a v oblasti západní USA 2 platformě Azure mezi 13 15. prosince 2017:
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityReport `
+Get-AzNetworkWatcherReachabilityReport `
   -NetworkWatcherName NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG `
   -Location "West US 2" `
@@ -109,7 +112,7 @@ Ve výstupu vráceného, hodnotu pro **skóre** je relativní latence mezi oblas
 Pokud místo určení relativní latence mezi na určité místo a konkrétní oblasti Azure pomocí `-Location`, kdybyste chtěli určení relativní latence pro všemi oblastmi Azure z určitého fyzického umístění, můžete to udělat příliš. Například následující příkaz vám pomůže vyhodnotit jaké oblasti azure do nasazení služby v, pokud jsou vaši primární uživatelé tak uživatelům umístěným ve státě Washington:
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityReport `
+Get-AzNetworkWatcherReachabilityReport `
   -NetworkWatcherName NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG `
   -Provider "Comcast Cable Communications, LLC - ASN 7922" `
@@ -127,7 +130,7 @@ Get-AzureRmNetworkWatcherReachabilityReport `
 Data jsou k dispozici pro konkrétní poskytovatelů internetových služeb, země, státy a města. Chcete-li zobrazit seznam všech dostupných poskytovatelů internetových služeb, země, státy a města, které můžete zobrazit data, zadejte následující příkaz:
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
+Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
 Data dostupná jenom pro země, státy a města vrácené předchozím příkazem. Předchozí příkaz, musíte zadat existující sledovací proces sítě. V příkladu zadaný *NetworkWatcher_eastus* sledovací proces sítě ve skupině prostředků s názvem *NetworkWatcherRG*, ale můžete zadat všechny existující sledovací proces sítě. Pokud nemáte existující sledovací proces sítě, vytvořte ho dokončení úkolů v [vytvořit network watcher](#create-a-network-watcher). 
@@ -135,7 +138,7 @@ Data dostupná jenom pro země, státy a města vrácené předchozím příkaze
 Po spuštění předchozího příkazu, můžete filtruje výstup vrácený zadáním platné hodnoty pro **země**, **stavu**, a **Město**, v případě potřeby.  Například chcete-li zobrazit seznam poskytovatelů služeb Internetu v Seattlu ve Washingtonu, k dispozici ve Spojených státech amerických, zadejte následující příkaz:
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityProvidersList `
+Get-AzNetworkWatcherReachabilityProvidersList `
   -NetworkWatcherName NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG `
   -City Seattle `

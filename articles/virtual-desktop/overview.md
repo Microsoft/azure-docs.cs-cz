@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: f922f940f6c579c8710dadec29b365e7cf4c7938
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6385838064c408ccfa23dacbd5785f8e82f3cc8b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577182"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049426"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co je Windows Virtual Desktop Preview? 
 
@@ -54,12 +54,12 @@ Můžete také přiřadit a připojení uživatelů k virtuálním klientům:
 
 Existuje několik věcí, které je potřeba nastavit virtuální plochy Windows a úspěšně připojit vaše uživatele pro své stolní počítače Windows a aplikací.
 
-Nejprve ověřte, že máte příslušné licence pro uživatele na základě plochy a aplikace, které máte v úmyslu nasadit:
+Nejprve zkontrolujte, zda máte [odpovídající licence](https://azure.microsoft.com/pricing/details/virtual-desktop/) pro vaše uživatele, založené na stolní počítače a aplikace, máte v úmyslu nasadit:
 
 |Operační systém|Požadovaná licence|
 |---|---|
-|Více Windows 10 Enterprise nebo Windows 10 single relaci|Microsoft E3, E5, A3, A5, Business<br>Windows E3, E5, A3, A5|
-|Windows 7|Microsoft E3, E5, A3, A5, Business<br>Windows E3, E5, A3, A5|
+|Více Windows 10 Enterprise nebo Windows 10 single relaci|Microsoft 365 E3, E5, A3, A5, Business, F1<br>Windows E3, E5, A3, A5|
+|Windows 7|Microsoft 365 E3, E5, A3, A5, Business, F1<br>Windows E3, E5, A3, A5|
 |Windows Server 2012 R2, 2016, 2019|Licence VP licence pro klientský přístup (CAL) s programem Software Assurance|
 
 Vaše infrastruktura potřebuje následující akce pro podporu virtuální plochy Windows:

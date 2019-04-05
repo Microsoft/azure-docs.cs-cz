@@ -3,17 +3,17 @@ title: Brána protokolu Azure IoT | Dokumentace Microsoftu
 description: Jak používat službu Azure IoT gateway protokol rozšířit možnosti a podporu protokolu chcete zařízením povolit, pro připojení k centru pomocí protokolů nejsou podporovány ve službě IoT Hub nativně služby IoT Hub.
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.openlocfilehash: 91d61ffecc0e5345d02db88af73aee4586f7099e
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: ecce53420a92713ad2dcfcc7e0fed9fc226b1d52
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009847"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046423"
 ---
 # <a name="support-additional-protocols-for-iot-hub"></a>Podpora dalších protokolů pro službu IoT Hub
 Azure IoT Hub nativně podporuje komunikaci přes protokoly MQTT, AMQP a protokolu HTTPS. V některých případech zařízení nebo bran v terénu nebudou moct použít jednu z těchto standardních protokolů a vyžadují úpravu protokolu. V takovém případě můžete použít vlastní bránu. Vlastní brána umožňuje přizpůsobení a protokol pro koncové body IoT Hubu pomocí přemostění provoz do a ze služby IoT Hub. Můžete použít [brány protokolu Azure IoT](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) jako vlastní bránu k povolení protokolu přizpůsobení pro službu IoT Hub.

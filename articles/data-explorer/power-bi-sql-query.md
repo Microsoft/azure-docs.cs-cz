@@ -1,19 +1,18 @@
 ---
-title: 'Rychlý start: Vizualizovat data pomocí jazyka SQL v Power BI'
+title: 'Rychlý start: Vizualizace dat v Průzkumníku dat Azure pomocí jazyka SQL v Power BI'
 description: 'V tomto rychlém startu se dozvíte, jak chcete použít jeden z těchto tří možností pro vizualizace dat v Power BI: dotaz SQL proti clusteru služby Průzkumník dat Azure.'
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: f41bd1dcd354d75788569f5c1f24a50c604b5737
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 4a3a688adaae8fe66c336617cdd0a4807f16ec68
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756345"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045503"
 ---
 # <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Rychlý start: Vizualizovat data pomocí Průzkumníku dat Azure konektoru pro Power BI
 
@@ -86,4 +85,4 @@ Pokud už nepotřebujete sestavy, kterou jste vytvořili pro účely tohoto rych
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Vizualizovat data pomocí importovaných dotazů v Power BI](power-bi-connector.md)
+> [Rychlý start: Vizualizovat data pomocí importovaných dotazů v Power BI](power-bi-connector.md)

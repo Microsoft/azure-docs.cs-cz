@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: 0bce0d407246ceab05c3951dc976884dd6f15b08
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: c251cc851b34f708a2150d3b0444f235d2bc50d6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200186"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045300"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager metrik a výstrah
 
@@ -58,7 +58,7 @@ Tuto metriku můžete zobrazit buď jako agregovaná hodnota představující st
 
 *Obrázek 4: Rozdělené zobrazení metrik stav koncového bodu*
 
-Můžete využívat tyto metriky prostřednictvím [služby Azure Monitor](../azure-monitor/platform/metrics-supported.md)na portálu, [rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/monitor), a [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights), nebo prostřednictvím části metriky z prostředí portálu Traffic Manageru.
+Můžete využívat tyto metriky prostřednictvím [služby Azure Monitor](../azure-monitor/platform/metrics-supported.md)na portálu, [rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/monitor), a [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights), nebo prostřednictvím části metriky z prostředí portálu Traffic Manageru.
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>Upozornění na metriky Traffic Manageru
 Kromě zpracování a zobrazení metrik z Traffic Manageru, Azure Monitor umožňuje nakonfigurovat a přijímat výstrahy přidružené k těmto metrikám. Můžete zvolit co podmínky nutné splnit v tyto metriky pro upozornění na výskyt, jak často je potřeba monitorovat tyto podmínky a jak výstrahy poslat vám. Další informace najdete v tématu [upozornění služby Azure Monitor dokumentaci](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).

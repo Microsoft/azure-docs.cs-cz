@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: f5c4f8d2c9cec4372ef5de70485d45ab33e022de
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 323e5d63b5f8566d570dfd47323fcf12f7c6b28b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099392"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051576"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostika místního připojení prostřednictvím bran VPN
 
 Brána VPN Gateway Azure umožňuje vytvářet hybridní řešení, které potřebu pro zabezpečené připojení mezi vaší místní sítí a virtuální sítí Azure. Vaše požadavky jsou jedinečné, proto je možnost místního zařízení VPN. Azure v současné době podporuje [několik zařízení VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) , které jsou neustále ověření ve spolupráci s dodavateli zařízení. Před konfigurací vaše místní zařízení VPN zkontrolujte nastavení konfigurace pro konkrétní zařízení. Podobně, Azure VPN Gateway má nakonfigurovanou sadu [nepodporuje parametry protokolu IPsec](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) , který slouží k navázání připojení. Současné době neexistuje žádný způsob, jak zadat nebo vybrat konkrétní kombinaci parametry protokolu IPsec ze služby Azure VPN Gateway. Pro vytvoření úspěšného připojení mezi místními a Azure, místní nastavení zařízení VPN musí být v souladu s parametry protokolu IPsec stanovené službou Azure VPN Gateway. Pokud jsou nastavení správná, tady je ke ztrátě připojení a až do této chvíle při řešení těchto problémů není triviální a obvykle trvalo hodiny a identifikovat a opravit tento problém.
 
 Pomocí služby Azure Network Watcher řešení potíží s funkcí, máte možnost diagnostikovat problémy s vaší brány a připojení a během několika minut mít dostatek informací, které se informovaně rozhodnout, jestli k nápravě problému.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>Scénář
 
@@ -57,7 +60,7 @@ Je těžké k řešení těchto problémů a hlavní příčiny jsou často nein
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>Řešení potíží s využitím Azure Network Watcher
 
-K diagnostice připojení, připojte se k Azure Powershellu a zahájit `Start-AzureRmNetworkWatcherResourceTroubleshooting` rutiny. Můžete najít podrobnosti o použití této rutiny v [Poradce při potížích s brány virtuální sítě a připojení – prostředí PowerShell](network-watcher-troubleshoot-manage-powershell.md). Tato rutina může trvat až několik minut na dokončení.
+K diagnostice připojení, připojte se k Azure Powershellu a zahájit `Start-AzNetworkWatcherResourceTroubleshooting` rutiny. Můžete najít podrobnosti o použití této rutiny v [Poradce při potížích s brány virtuální sítě a připojení – prostředí PowerShell](network-watcher-troubleshoot-manage-powershell.md). Tato rutina může trvat až několik minut na dokončení.
 
 Po dokončení rutiny můžete přejít na umístění úložiště, zadaná v rutině získat podrobné informace o problému a protokoly. Azure Network Watcher vytvoří složku zip, který obsahuje následující soubory protokolu:
 
@@ -107,7 +110,7 @@ Další běžné chybné konfigurace je určení nesprávné sdílené klíče. 
 | Authentication | Neshoda předsdílený klíč. | Ano|
 | PeerReachability | Brána partnera není dostupná. | Ano|
 | IkePolicyMismatch | Partner brány má IKE zásady, které nejsou podporovány službou Azure. | Ano|
-| Chyba WfpParse | Došlo k chybě při analýze protokolu Ochrana souborů systému Windows. |Ano|
+| WfpParse Error | Došlo k chybě při analýze protokolu Ochrana souborů systému Windows. |Ano|
 
 ## <a name="next-steps"></a>Další postup
 

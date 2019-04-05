@@ -1,19 +1,18 @@
 ---
-title: 'Rychlý start: Vizualizovat data pomocí dotazu importované do Power BI'
+title: 'Rychlý start: Vizualizace dat v Průzkumníku dat Azure pomocí importovaných dotazů v Power BI '
 description: 'V tomto rychlém startu se dozvíte, jak chcete použít jeden z těchto tří možností pro vizualizace dat v Power BI: import dotaz v Průzkumníku dat Azure.'
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 3251ae9f39ea38eac6887df3072257e1e8e88306
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d14de1f25cc432cb2a9fed2149bd0870aa3ce16a
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756113"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050576"
 ---
 # <a name="quickstart-visualize-data-using-a-query-imported-into-power-bi"></a>Rychlý start: Vizualizovat data pomocí dotazu importované do Power BI
 
@@ -84,4 +83,4 @@ Pokud už nepotřebujete sestavy, kterou jste vytvořili pro účely tohoto rych
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Vizualizovat data pomocí importovaných dotazů v Power BI](power-bi-sql-query.md)
+> [Rychlý start: Vizualizovat data pomocí importovaných dotazů v Power BI](power-bi-sql-query.md)

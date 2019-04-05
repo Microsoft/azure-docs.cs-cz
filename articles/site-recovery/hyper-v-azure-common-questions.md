@@ -8,17 +8,16 @@ ms.service: site-recovery
 ms.date: 03/18/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 4888d019065e557cb49574e2268515323b3fd005
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 8a7694f3a94f9bda7dc905fabbd7adf0e4b7d0f5
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310699"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047173"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Časté otázky – Hyper-V do Azure zotavení po havárii
 
 Tento článek obsahuje odpovědi na běžné dotazy, které můžeme vidět při replikaci místních virtuálních počítačů Hyper-V do Azure. 
-
 
 ## <a name="general"></a>Obecné
 
@@ -188,7 +187,7 @@ Po převzetí služeb při selhání můžete přístup k virtuálním počíta�
 Služba Azure je pro odolnost navržena. Site Recovery je navržena pro převzetí služeb při selhání do sekundárního datacentra Azure, v souladu s smlouvy SLA pro Azure. Pokud dojde k převzetí služeb při selhání, zajišťujeme, že metadata a trezory zůstávají ve stejné geografické oblasti, kterou jste zvolili pro svůj trezor.
 
 ### <a name="is-failover-automatic"></a>Je převzetí služeb při selhání automatické?
-[Převzetí služeb při selhání](site-recovery-failover.md) neprobíhá automaticky. Zahájení převzetí služeb při selhání s jedním kliknutím na portálu, nebo můžete použít [Powershellu](/powershell/module/azurerm.siterecovery) k aktivaci převzetí služeb při selhání.
+[Převzetí služeb při selhání](site-recovery-failover.md) neprobíhá automaticky. Zahájení převzetí služeb při selhání s jedním kliknutím na portálu, nebo můžete použít [Powershellu](/powershell/module/az.siterecovery) k aktivaci převzetí služeb při selhání.
 
 ### <a name="how-do-i-fail-back"></a>Jak můžu navrácení služeb po obnovení?
 

@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 64a1693907dbf144aa34f5c35ae925af74d2cb34
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 65948b1de3a972687e738b011acf3542073db277
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803203"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046975"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu – nejčastější dotazy
 
 Tento článek shromažďuje na jednom místě řadu nejčastější dotazy o analýze provozu ve službě Azure Network Watcher.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-are-the-prerequisites-to-use-traffic-analytics"></a>Jaké jsou požadavky na použití analýzy provozu?
 
@@ -51,11 +54,11 @@ Váš účet musí splňovat jeden z následujících akcí k povolení analýzy
         
 Kontrola role přiřazené uživateli pro předplatné:
 
-1. Přihlaste se k Azure s použitím **Login-AzureRmAccount**. 
+1. Přihlaste se k Azure s použitím **přihlášení AzAccount**. 
 
-2. Vyberte požadované předplatné s použitím **Select-AzureRmSubscription**. 
+2. Vyberte požadované předplatné s použitím **vyberte AzSubscription**. 
 
-3. K zobrazení seznamu všech rolí, které jsou přiřazeny k zadané uživatele, použijte **Get-AzureRmRoleAssignment - SignInName [e-mail uživatele] - IncludeClassicAdministrators**. 
+3. K zobrazení seznamu všech rolí, které jsou přiřazeny k zadané uživatele, použijte **Get AzRoleAssignment - SignInName [e-mail uživatele] - IncludeClassicAdministrators**. 
 
 Pokud nevidíte žádný výstup, obraťte se na příslušného předplatného správce získat přístup ke spuštění příkazů. Další podrobnosti najdete v tématu [spravovat řízení přístupu podle role pomocí prostředí Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
@@ -139,8 +142,8 @@ Pokud potíže potrvají, kontaktujte prosím podporu.
 Tok protokolování fungovalo správně, musí mít zaregistrovaný poskytovatel Microsoft.Insights. Pokud si nejste jisti, zda je pro vaše předplatné zaregistrovaný poskytovatel Microsoft.Insights, nahraďte *xxxxx-xxxxx-xxxxxx-xxxx* v následující příkaz a spusťte následující příkazy z prostředí PowerShell:
 
 ```powershell-interactive
-**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Konfiguroval jsem řešení. Proč mi nezobrazují nic na řídicím panelu?
@@ -170,7 +173,7 @@ Informace o zdroji se zobrazuje na řídicím panelu; Nicméně jsou k dispozici
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>Můžete nakonfigurovat analýzu provozu pomocí Powershellu nebo šablony Azure Resource Manageru nebo klienta?
 
-Analýza provozu můžete nakonfigurovat pomocí Windows Powershellu z verze 6.2.1 a vyšší. Konfigurace protokolování toků a analýzu provozu pro konkrétní skupiny zabezpečení sítě pomocí rutiny Set, naleznete v tématu [Set-AzureRmNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog). Protokolování toků a stav analýzy provozu pro konkrétní skupiny zabezpečení sítě, získáte [Get-AzureRmNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcherflowlogstatus).
+Analýza provozu můžete nakonfigurovat pomocí Windows Powershellu z verze 6.2.1 a vyšší. Konfigurace protokolování toků a analýzu provozu pro konkrétní skupiny zabezpečení sítě pomocí rutiny Set, naleznete v tématu [Set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog). Protokolování toků a stav analýzy provozu pro konkrétní skupiny zabezpečení sítě, získáte [Get-AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus).
 
 V současné době nelze použít šablonu Azure Resource Manageru nakonfigurovat analýzu provozu.
 

@@ -3,17 +3,17 @@ title: Vysvětlení nahrávání souborů Azure IoT Hub | Dokumentace Microsoftu
 description: Příručka pro vývojáře – použijte funkci odesílání souborů služby IoT Hub ke správě nahrávání souborů ze zařízení do kontejneru objektů blob v Azure storage.
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: 7678c50cbda0ea112c737e8230586081efe61081
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 217d348eacab30b90e06fe805d9cdb0cf32349ac
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008555"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050726"
 ---
 # <a name="upload-files-with-iot-hub"></a>Nahrávání souborů pomocí služby IoT Hub
 

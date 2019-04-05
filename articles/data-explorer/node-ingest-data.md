@@ -1,19 +1,18 @@
 ---
 title: 'Rychlý start: Ingestování dat pomocí knihovny Azure uzlu Průzkumníka dat'
 description: V tomto rychlém startu se dozvíte, jak ingestovat (načíst) data do Azure Data Exploreru pomocí Node.js.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/25/2018
-ms.openlocfilehash: 0a23c171d99d46eb29dd589867ce70ca2739ff29
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d530ed3710a3406e5cd8115d615e91d5056a5f8c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756442"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047649"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>Rychlý start: Ingestování dat pomocí knihovny Azure uzlu Průzkumníka dat
 
@@ -25,7 +24,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure]
 
 Kromě předplatného Azure budete k dokončení tohoto rychlého startu potřebovat:
 
-* [Testovací cluster a databázi](create-cluster-database-portal.md)
+* [Testovací cluster a databáze](create-cluster-database-portal.md)
 
 * [Node.js](https://nodejs.org/en/download/) nainstalované na počítači pro vývoj
 

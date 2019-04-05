@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 9b7df83b710bac0b37ac28c432f63a47ddda21d1
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 51c45fdb0c96e84d3f37f485279aa805361f3818
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439829"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051202"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Pomocí nástrojů příkazového řádku spouštět a zastavovat virtuální počítače Azure DevTest Labs
 V tomto článku se dozvíte, jak pomocí Azure Powershellu nebo Azure CLI spuštěním a zastavením virtuálních počítačů v testovacím prostředí ve službě Azure DevTest Labs. Můžete vytvořit skripty Powershellu/CLI k automatizaci těchto operací. 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Přehled
 Azure DevTest Labs je způsob, jak vytvářet rychlá, snadná a Štíhlá vývojová a testovací prostředí. Umožňuje vám spravovat náklady, rychle zřizovat virtuální počítače a minimalizovat ztráty.  Nejsou integrované funkce na webu Azure Portal, které vám umožní nakonfigurovat virtuální počítače v testovacím prostředí pro automatické spuštění a zastavení v určitých časech. 
@@ -32,7 +34,7 @@ Ale v některých případech můžete chtít automatizovat spouštění a zasta
 - Použijte jako úloha v pracovním postupu CI/CD na začátku toku, používejte virtuální počítače podle počítače sestavení, testovací počítače ani infrastrukturu a poté zastavte virtuální počítače po dokončení procesu. Příklad tohoto by objekt pro vytváření vlastní image s Azure DevTest Labs.  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-Následující skript prostředí PowerShell spustí virtuální počítač v testovacím prostředí. [Vyvolání AzureRmResourceAction](/powershell/module/azurerm.resources/invoke-azurermresourceaction?view=azurermps-6.13.0) se zaměřuje především pro tento skript. **ResourceId** parametr je plně kvalifikované ID prostředku pro virtuální počítač v testovacím prostředí. **Akce** parametr je tam, kde **Start** nebo **Zastavit** možnosti se nastavují v závislosti na tom, co je potřeba.
+Následující skript prostředí PowerShell spustí virtuální počítač v testovacím prostředí. [Vyvolání AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azurermps-6.13.0) se zaměřuje především pro tento skript. **ResourceId** parametr je plně kvalifikované ID prostředku pro virtuální počítač v testovacím prostředí. **Akce** parametr je tam, kde **Start** nebo **Zastavit** možnosti se nastavují v závislosti na tom, co je potřeba.
 
 ```powershell
 # The id of the subscription
@@ -48,17 +50,17 @@ $vMToStart = "vmname"
 $vmAction = "Start"
 
 # Select the Azure subscription
-Select-AzureRMSubscription -SubscriptionId $subscriptionId
+Select-AzSubscription -SubscriptionId $subscriptionId
 
 # Get the lab information
 if ($(Get-Module -Name AzureRM).Version.Major -eq 6) {
-    $devTestLab = Get-AzureRmResource -ResourceType 'Microsoft.DevTestLab/labs' -Name $devTestLabName
+    $devTestLab = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -Name $devTestLabName
 } else {
-    $devTestLab = Find-AzureRmResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceNameEquals $devTestLabName
+    $devTestLab = Find-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceNameEquals $devTestLabName
 }
 
 # Start the VM and return a succeeded or failed status
-$returnStatus = Invoke-AzureRmResourceAction `
+$returnStatus = Invoke-AzResourceAction `
                     -ResourceId "$($devTestLab.ResourceId)/virtualmachines/$vMToStart" `
                     -Action $vmAction `
                     -Force

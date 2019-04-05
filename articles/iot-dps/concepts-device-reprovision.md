@@ -3,29 +3,29 @@ title: Koncepty zařízení pro neukončil pro Azure IoT Hub Device Provisioning
 description: Popisuje zařízení neukončil koncepty pro Azure IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/14/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: f52e2a1095c329aabf44a846a644cc05548d4df3
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+manager: philmea
+ms.openlocfilehash: fa8cb29f145c7658227f93d08a990c98563a0cfc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712275"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050845"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>Koncepty neukončil zařízení centra IoT
 
 Během životního cyklu řešení IoT se běžně přesouvat zařízení mezi IoT huby. Důvody pro tento krok může zahrnovat následující scénáře:
 
-* **Informace o zeměpisné poloze / GeoLatency**: jak zařízení přesune mezi umístěními, zlepší se latence sítě tím, že zařízení migrovat do blíže služby IoT hub.
+* **Informace o zeměpisné poloze / GeoLatency**: Při přesunu zařízení mezi umístěními, zlepší se latence sítě tím, že zařízení migrovat do blíže služby IoT hub.
 
-* **Víceklientská architektura**: zařízení může používat ve stejném řešení IoT a přiřadit k novým zákazníkům nebo Web zákazníka. Tento nový zákazník může údržba používání různých služby IoT hub.
+* **Víceklientská architektura**: Zařízení může používat ve stejném řešení IoT a přiřadit k novým zákazníkům nebo Web zákazníka. Tento nový zákazník může údržba používání různých služby IoT hub.
 
-* **Změna řešení**: zařízení může přesunout do nové nebo aktualizované řešení IoT. Této změně přiřazení může vyžadovat, aby zařízení ke komunikaci s nového centra IoT, která je připojena k jiné komponenty back-end.
+* **Změna řešení**: Zařízení může přesunout do nové nebo aktualizované řešení IoT. Této změně přiřazení může vyžadovat, aby zařízení ke komunikaci s nového centra IoT, která je připojena k jiné komponenty back-end.
 
-* **Karantény**: podobné změny řešení. Zařízení, které nepracuje správně, dojde k ohrožení bezpečnosti nebo zastaralý může být přeřazen do služby IoT hub, která se dá jenom aktualizovat a získat zpět v dodržování předpisů. Když zařízení pracuje správně, je potom migrovat zpět na jeho hlavní centra.
+* **Karantény**: Podobně jako řešení změnit. Zařízení, které nepracuje správně, dojde k ohrožení bezpečnosti nebo zastaralý může být přeřazen do služby IoT hub, která se dá jenom aktualizovat a získat zpět v dodržování předpisů. Když zařízení pracuje správně, je potom migrovat zpět na jeho hlavní centra.
 
 Neukončil podpory v rámci služby Device Provisioning adresy těchto potřeb. Zařízení lze automaticky přiřadit nový na základě reprovisioning zásad, který je nakonfigurovaný na položku registrace zařízení služby IoT hub.
 
@@ -61,7 +61,7 @@ V závislosti na scénáři zařízení obvykle odešle požadavek na instanci s
 
     ![Zřizování s Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
-* **Nikdy znovu zřídit**: zařízení je nikdy přiřazena k jinému rozbočovači. Tato zásada je k dispozici pro správu zpětné kompatibility.
+* **Nikdy znovu zřídit**: Zařízení je nikdy přiřazena k jinému rozbočovači. Tato zásada je k dispozici pro správu zpětné kompatibility.
 
 ### <a name="managing-backwards-compatibility"></a>Správa zpětné kompatibility
 
@@ -81,7 +81,7 @@ Následující vývojový diagram umožňuje zobrazit, když je k dispozici chov
 
 Verze rozhraní API před dostupnost nativní podporu neukončil ve službě Device Provisioning v následující tabulce:
 
-| REST API | SDK PRO JAZYK C | Python SDK |  Node SDK | Java SDK | .NET SDK |
+| REST API | C SDK | Python SDK |  Node SDK | Java SDK | .NET SDK |
 | -------- | ----- | ---------- | --------- | -------- | -------- |
 | [2018-04-01 a starší](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 a starší](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 a starší](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 nebo starší](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 nebo starší](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 nebo dřívější](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/19/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 40e372b779d06656b111ad3d7de435b99c401dc3
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 05a30bee8e6eb0db2e06d6d5a3a7af0d0759fb4c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669499"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049394"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Kurz: Škálování clusteru Service Fabric v Azure
 
@@ -41,12 +41,15 @@ V této sérii kurzů se naučíte:
 > * [Upgrade modulu runtime clusteru](service-fabric-tutorial-upgrade-cluster.md)
 > * [Odstranění clusteru](service-fabric-tutorial-delete-cluster.md)
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Nainstalujte si [modul Azure PowerShell verze 4.1 nebo novější ](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) nebo [Azure CLI](/cli/azure/install-azure-cli).
+* Nainstalujte [prostředí Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli).
 * Vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure
 
 ## <a name="important-considerations-and-guidelines"></a>Důležité informace a pokyny
@@ -98,7 +101,7 @@ Pokud se Škálováním v odebrání uzlů z uzlu typu bronzová [úroveň odoln
 Uložte všechny změny *template.json* a *parameters.json* soubory.  Pokud chcete nasadit aktualizovanou šablonu, spusťte následující příkaz:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
 Nebo následující příkaz rozhraní příkazového řádku Azure:
 ```azure-cli
@@ -804,7 +807,7 @@ V *parameters.json* přidejte následující nové parametry a hodnoty:
 Uložte všechny změny *template.json* a *parameters.json* soubory.  Pokud chcete nasadit aktualizovanou šablonu, spusťte následující příkaz:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
 Nebo následující příkaz rozhraní příkazového řádku Azure:
 ```azure-cli
@@ -815,16 +818,16 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 Po vytvoření clusteru Service Fabric, můžete horizontálně škálovat cluster odebráním typu uzlu (škálovací sady virtuálních počítačů) a všechny jeho uzly. Je možné škálovat cluster v okamžiku, i když spouštění úloh v clusteru. Škálování clusteru, vaše aplikace automaticky škálovat směrem také.
 
 > [!WARNING]
-> Pomocí Remove-azurermservicefabricnodetype: Odebere typ uzlu z clusteru pro produkční prostředí se nedoporučuje používat často. Odstraní prostředek sady škálování virtuálního počítače za typ uzlu je nebezpečný příkaz. 
+> Použití AzServiceFabricNodeType odebrat k odebrání typu uzlu z clusteru pro produkční prostředí se nedoporučuje používat často. Odstraní prostředek sady škálování virtuálního počítače za typ uzlu je nebezpečný příkaz. 
 
-Pokud chcete odebrat typ uzlu, spusťte [Remove-azurermservicefabricnodetype:](/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnodetype) rutiny.  Typ uzlu musí být stříbrné nebo zlaté úrovně [úroveň odolnosti] [ durability] rutina umožňuje odstranit škálovací sadu přidružený k typu uzlu a nějakou dobu trvá.  Spusťte [odebrat ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) rutiny na každém uzlu k odebrání, které odstraní stav uzlu a odebere uzly z clusteru. Pokud v uzlech služby, potom služby jsou nejprve přesunout do jiného uzlu. Pokud správce clusteru nelze najít uzel repliky nebo službu, tato operace je zpožděné/zablokováno.
+Pokud chcete odebrat typ uzlu, spusťte [odebrat AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) rutiny.  Typ uzlu musí být stříbrné nebo zlaté úrovně [úroveň odolnosti] [ durability] rutina umožňuje odstranit škálovací sadu přidružený k typu uzlu a nějakou dobu trvá.  Spusťte [odebrat ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) rutiny na každém uzlu k odebrání, které odstraní stav uzlu a odebere uzly z clusteru. Pokud v uzlech služby, potom služby jsou nejprve přesunout do jiného uzlu. Pokud správce clusteru nelze najít uzel repliky nebo službu, tato operace je zpožděné/zablokováno.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"
 $nodetype = "nt4vm"
 $clustername = "mysfcluster123"
 
-Remove-AzureRmServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
+Remove-AzServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
 
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.eastus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `
@@ -861,7 +864,7 @@ Skladovou Položku virtuálního počítače pro všechny typy třemi uzly je na
 Uložte všechny změny *template.json* a *parameters.json* soubory.  Pokud chcete nasadit aktualizovanou šablonu, spusťte následující příkaz:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
 Nebo následující příkaz rozhraní příkazového řádku Azure:
 ```azure-cli
@@ -874,6 +877,18 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Přidání a odebrání uzlů (horizontální navýšení kapacity a horizontální snížení kapacity)
+> * Přidat nebo odebrat typy uzlů (horizontální navýšení kapacity a horizontální snížení kapacity)
+> * Zvýšení uzel zdroje (vertikální navýšení)
+
+Dále se v následujícím kurzu dozvíte, jak upgradovat modul runtime clusteru.
+> [!div class="nextstepaction"]
+> [Upgrade modulu runtime clusteru](service-fabric-tutorial-upgrade-cluster.md)
+
+[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
+[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
+škálování ND))
 > * Přidat nebo odebrat typy uzlů (horizontální navýšení kapacity a horizontální snížení kapacity)
 > * Zvýšení uzel zdroje (vertikální navýšení)
 
