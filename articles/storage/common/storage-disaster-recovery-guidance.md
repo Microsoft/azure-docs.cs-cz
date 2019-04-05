@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f0963e7f558de7b591576a49a74750d6697d7127
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 87499c1b71e243fe976e436b525e0150689d3aa1
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486040"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051185"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Po havárii pro obnovení a úložiště účtu převzetí služeb při selhání (preview) ve službě Azure Storage
 
@@ -22,6 +22,9 @@ Cílem Microsoftu je zasloužit ujistit, že služby Azure jsou vždy k dispozic
 Azure Storage podporuje účet převzetí služeb při selhání (preview) pro účty geograficky redundantní úložiště. Pomocí účtu převzetí služeb při selhání můžete zahájit procesu převzetí služeb při selhání pro váš účet úložiště, pokud primární koncový bod nebude dostupný. Aktualizuje převzetí služeb při selhání sekundární koncový bod pro stát primární koncový bod vašeho účtu úložiště. Po dokončení převzetí služeb klientům můžete začít psát na novou primární koncový bod.
 
 Tento článek popisuje koncepty a proces se účtu převzetí služeb při selhání a popisuje, jak můžete připravit obnovení s minimální množství dopad pro zákazníka v účtu úložiště. Další spuštění účet převzetí služeb při selhání webu Azure portal nebo Powershellu najdete v tématu [zahájit účtu převzetí služeb při selhání (preview)](storage-initiate-account-failover.md).
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="choose-the-right-redundancy-option"></a>Zvolte možnost správné redundance
 
@@ -122,14 +125,14 @@ Verzi preview je určeno pouze pro nevýrobní prostředí. Produkční smlouvy 
 Chcete-li zaregistrovat verzi preview, spusťte následující příkazy v prostředí PowerShell. Ujistěte se, zda jste zástupný symbol v závorkách nahraďte vlastním ID předplatného:
 
 ```powershell
-Connect-AzureRmAccount -SubscriptionId <subscription-id>
-Register-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
+Connect-AzAccount -SubscriptionId <subscription-id>
+Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 To může trvat 1 – 2 dnů, která získala schválení pro verzi preview. K ověření, že vaše registrace byla schválena, spusťte následující příkaz:
 
 ```powershell
-Get-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
+Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 ### <a name="additional-considerations"></a>Další aspekty 
@@ -177,5 +180,5 @@ V extrémních případech kde oblast je ztraceno v důsledku významné po hav�
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Zahájit účtu převzetí služeb při selhání (preview)](storage-initiate-account-failover.md)
-* [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md)
+* [Navrhování aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md)
 * [Kurz: Sestavení aplikace s vysokou dostupností s úložištěm objektů Blob](../blobs/storage-create-geo-redundant-storage.md) 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f582ef8cca3c36bad40f14026aea1ad422b6106f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fd8eecbd20446bfde8d3a7467e2982398c3b8c19
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668560"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044959"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Zahájení převzetí služeb účtu storage (preview)
 
@@ -23,6 +23,8 @@ Tento článek ukazuje, jak inicializovat účtu převzetí služeb při selhán
 
 > [!WARNING]
 > Převzetí služeb při selhání účet obvykle způsobí ztrátu některých dat. Při nepochopení účtu převzetí služeb při selhání a připravit na ztrátu dat, zkontrolujte [procesu převzetí služeb při selhání účet](storage-disaster-recovery-guidance.md#understand-the-account-failover-process).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,7 +37,7 @@ Na vašem účtu úložiště, abyste mohli provádět účtu převzetí služeb
 
 Při zahájení převzetí služeb při selhání účtu pro vašeho účtu úložiště, se aktualizují záznamy DNS pro sekundární koncový bod tak, aby sekundární koncový bod primární koncový bod. Ujistěte se, že pochopit potenciální dopad do vašeho účtu úložiště, před spuštěním převzetí služeb.
 
-K odhadu rozsahu pravděpodobnost úniku před spuštěním převzetí služeb, zkontrolujte **čas poslední synchronizace** pomocí vlastnosti `Get-AzureRmStorageAccount` rutiny Powershellu a zahrnout `-IncludeGeoReplicationStats` parametr. Zkontrolujte `GeoReplicationStats` vlastnost pro váš účet. 
+K odhadu rozsahu pravděpodobnost úniku před spuštěním převzetí služeb, zkontrolujte **čas poslední synchronizace** pomocí vlastnosti `Get-AzStorageAccount` rutiny Powershellu a zahrnout `-IncludeGeoReplicationStats` parametr. Zkontrolujte `GeoReplicationStats` vlastnost pro váš účet. 
 
 Po převzetí služeb při selhání typ účtu úložiště automaticky převést na místně redundantní úložiště (LRS) v nové primární oblasti. Geograficky redundantní úložiště (GRS) nebo geograficky redundantní úložiště jen pro čtení (RA-GRS) pro účet můžete znovu povolit. Všimněte si, že převod z LRS na GRS nebo RA-GRS s sebou nese náklady další poplatky. Další informace najdete v tématu [podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/). 
 
@@ -105,5 +107,5 @@ az storage account failover \ --name accountName
 ## <a name="next-steps"></a>Další postup
 
 - [Po havárii pro obnovení a účet převzetí služeb při selhání (preview) ve službě Azure Storage](storage-disaster-recovery-guidance.md)
-- [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md)
+- [Navrhování aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md)
 - [Kurz: Sestavení aplikace s vysokou dostupností s úložištěm objektů Blob](../blobs/storage-create-geo-redundant-storage.md) 

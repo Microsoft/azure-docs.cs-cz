@@ -7,16 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 441b58e60bf8dfd5f164ac24d746b9791158ade2
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 69b8e1c533747d1bade69949911ea43f299f49e9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58420110"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59043804"
 ---
 # <a name="manage-mobility-agent-on-protected-machines"></a>Správa agenta mobility na chráněné počítače
 
 Můžete nastavit agenta mobility na serveru při použití Azure Site Recovery pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure. Mobility agent koordinuje komunikaci mezi chráněného počítače, konfigurační server/horizontální navýšení kapacity procesového serveru a spravuje replikaci dat. Tento článek shrnuje běžné úlohy správy agenta mobility po nasazení.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="update-mobility-service-from-azure-portal"></a>Aktualizace služby mobility z webu Azure portal
 
@@ -37,7 +40,7 @@ Můžete nastavit agenta mobility na serveru při použití Azure Site Recovery 
 Pomocí následujícího skriptu pro upgrade služby mobility na serveru pomocí rutiny power shell
 
 ```azurepowershell
-Update-AzureRmRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
+Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
 
 ## <a name="update-account-used-for-push-installation-of-mobility-service"></a>Aktualizovat účet použitý pro nabízenou instalaci služby Mobility

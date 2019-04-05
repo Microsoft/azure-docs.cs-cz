@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: cdd5c7592ebbc092c8e7be01a0fdd16e9c78aeaf
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d704c32ee7417c6460ad6cc880e451adddfa61de
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240792"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048210"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy k Azure Data Factory
 Tento článek obsahuje odpovědi na nejčastější dotazy ohledně služby Azure Data Factory.  
@@ -25,77 +25,81 @@ Tento článek obsahuje odpovědi na nejčastější dotazy ohledně služby Azu
 ## <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory? 
 Objekt pro vytváření dat je plně spravovaná, cloudových dat integrační služba, která automatizuje přesouvání a transformaci dat. Podobně jako objekt pro vytváření, na kterém běží zařízení pro transformaci suroviny na hotové výroby Azure Data Factory orchestruje stávající služby, které sbírají nezpracovaná data a transformují je na informace připravené k použití. 
 
-Pomocí služby Azure Data Factory můžete vytvářet pracovní postupy řízené daty pro přesun dat mezi místním prostředím a cloudem datových úložišť. Můžete zpracovávat a transformovat data pomocí výpočetních služeb, jako je například Azure HDInsight, Azure Data Lake Analytics a SQL Server Integration Services (SSIS) modulu integration runtime. 
+Pomocí služby Azure Data Factory můžete vytvářet pracovní postupy řízené daty pro přesun dat mezi místním prostředím a cloudem datových úložišť. Můžete zpracovávat a transformovat data pomocí výpočetních služeb, jako je například Azure HDInsight, Azure Data Lake Analytics a modulu runtime integrace SQL Server Integration Services (SSIS). 
 
-Pomocí služby Data Factory můžete spustit zpracování dat na základě Azure cloudové službě nebo ve vlastní v místním prostředí výpočetní prostředí, například služby SSIS, SQL Server nebo Oracle. Jakmile vytvoříte kanál, který provede akci, kterou potřebujete, můžete ji naplánovat ke spuštění pravidelně (například hodinové, denní nebo týdenní), plánování okno čas nebo aktivační událost kanálu z výskytu události. Další informace najdete v tématu [Úvod do Azure Data Factory](introduction.md).
+Pomocí služby Data Factory můžete spustit zpracování dat na základě Azure cloudové službě nebo ve vlastní v místním prostředí výpočetní prostředí, například služby SSIS, SQL Server nebo Oracle. Po vytvoření kanálu, který provádí akce, které potřebujete, můžete naplánovat pravidelné spouštění časový interval (hodinový, denní nebo týdenní, například), plánování, nebo aktivace kanálu, který z výskytu události. Další informace najdete v tématu [Úvod do Azure Data Factory](introduction.md).
 
 ### <a name="control-flows-and-scale"></a>Toků řízení a škálování 
-K podpoře různorodých integračních toků a vzorů moderního datového skladu, Data Factory umožňuje modelování kanál flexibilní dat, obsahující úplné řízení toku programovací modely podmíněného spuštění, včetně větvení v datových kanálech a explicitně předejte parametry v těchto tocích a mezi. Tok řízení také zahrnuje transformace dat pomocí aktivity odeslání do externí provádění modulů a možnosti toku dat, včetně přesouvání dat ve velkém měřítku pomocí aktivity kopírování.
+K podpoře různorodých integračních toků a vzorů v moderních datových skladech, umožňuje objektu pro vytváření dat kanál flexibilní datová modelování. To zahrnuje úplné řízení toku programovací modely, které zahrnují podmíněného spuštění, větvení v datových kanálech a schopnost explicitně předávat parametry v těchto tocích a mezi. Tok řízení také zahrnuje transformace dat pomocí aktivity odeslání do externí provádění modulů a možnosti toku dat, včetně přesouvání dat ve velkém měřítku pomocí aktivity kopírování.
 
 Data Factory poskytuje svobodu modelovat jakýkoli styl toku, který je potřebný pro integraci dat a který může odesílat na vyžádání nebo opakovaně podle plánu. Mezi běžné toky, které tento model umožňuje jsou:   
 
 - Toků řízení:
-    - Řetězec aktivit v sekvenci v rámci kanálu.
-    - Větev aktivity v rámci kanálu.
-    - Parametry
-        - Definování parametrů na úrovni kanálu a předejte argumenty při volání kanálu na vyžádání nebo pomocí aktivační události.
+    - Aktivity můžete zřetězit v pořadí, v rámci kanálu.
+    - Je možné větvit aktivity v rámci kanálu.
+    - Parametry:
+        - Parametry se dají definovat na úrovni kanálu a argumenty je možné předat při volání kanálu na vyžádání nebo pomocí aktivační události.
         - Aktivity mohou využívat argumenty předávané do kanálu.
-    - Předávání vlastního stavu
-        - Výstupy aktivity včetně stavu může používat následující aktivita v kanálu.
-    - Kontejnery smyček
-        - For-each 
+    - Předávání vlastního stavu:
+        - Výstupy aktivity včetně stavu, mohou být spotřebovány následující aktivita v kanálu.
+    - Kontejnery smyček:
+        - Aktivita foreach provádí iterace nad zadanou kolekcí v aktivity ve smyčce. 
 - Toky založené na aktivačních:
     - Kanály se můžou spouštět na vyžádání nebo podle času plánovače.
 - Toky rozdílů:
-    - Použití parametrů a definovat vaše horní mez pro rozdílové kopírování při přesouvání tabulek dimenzí nebo referenčních tabulek z relačního úložiště, ať už místní nebo v cloudu, k načtení dat do jezera. 
+    - Parametry můžete použít k definování vašich horní mez pro rozdílové kopírování při přesouvání tabulek dimenzí nebo referenčních tabulek z relačního úložiště, ať už místní nebo v cloudu, k načtení dat do jezera. 
 
 Další informace najdete v tématu [kurzu: Řízení toků](tutorial-control-flow.md).
 
-### <a name="transform-your-data-at-scale-with-code-free-pipelines"></a>Transformujte svá data ve velkém měřítku s bezplatnou kanály kódu
+### <a name="data-transformed-at-scale-with-code-free-pipelines"></a>Ve velkém měřítku bez použití kódu kanály transformovaných dat
 Nové prostředí využívající prohlížeč nástroje obsahuje bez použití kódu kanálu pro vytváření a nasazování moderních, interaktivních webových prostředí s.
 
-Pro vývojáře vizuálních dat a datoví architekti je ADF webové uživatelské rozhraní bez kódu návrhové prostředí, který budete používat a vytvořit tak kanály. Je plně integrována s Git služby Visual Studio Online a zajišťuje integraci pro CI/CD a iterativního vývoje s možností ladění.
+Pro vývojáře vizuálních dat a datoví architekti webové uživatelské rozhraní služby Data Factory je bez použití kódu návrhové prostředí, který budete používat a vytvořit tak kanály. Je plně integrována s Git služby Visual Studio Online a zajišťuje integraci pro CI/CD a iterativní vývoj aplikací pomocí možnosti ladění.
 
-### <a name="rich-cross-platform-sdks-for-advanced-users"></a>Bohaté různé sady SDK platformy pro pokročilé uživatele
-Pokud jste pokročilý uživatel a hledáte programové rozhraní, ADF V2 poskytuje bohatou sadu SDK, které můžete využít k vytváření, správy, monitorování kanálů pomocí vašeho oblíbeného integrovaného vývojového prostředí
-1.  Python SDK
-2.  Rozhraní příkazového řádku PowerShellu
-3.  C# SDK uživatelům také můžete využít zdokumentovaných rozhraní REST API pro rozhraní s ADF V2
+### <a name="rich-cross-platform-sdks-for-advanced-users"></a>Bohaté multiplatformní sady SDK pro pokročilé uživatele
+Data Factory verze 2 nabízí bohatou sadu SDK, které můžete použít k vytváření, správě a monitorování kanálů pomocí vašeho oblíbeného prostředí IDE, včetně:
+* Python SDK
+* PowerShell CLI
+* C# SDK
 
-### <a name="iterative-development-and-debugging-using-visual-tools"></a>Iterativní vývoj a ladění pomocí visual tools
-Azure Data Factory (ADF) visual tools umožňují provést iterativní vývoj a ladění. Můžete vytvořit kanály a testovacích běhů pomocí funkce ladění na plátně kanálu, aniž byste museli napsat jediný řádek kódu. V okně výstupu plátna kanálu můžete zobrazit výsledky testovacích běhů. Po úspěšném vašeho testovacího běhu, můžete do kanálu přidat další aktivity a pokračovat v ladění iteračním způsobem. Můžete také zrušit testovacích běhů, jakmile jsou v průběhu. Není nutné publikovat provedené změny do služby data factory před kliknutím na tlačítko ladění. To je užitečné ve scénářích, kde chcete, abyste měli jistotu, že novou práci dodatky nebo změny podle očekávání, než budete aktualizovat pracovní postupy objekt pro vytváření dat v vývoj, testování, nebo produkční prostředí. 
+Uživatele můžete také zdokumentovaných rozhraní REST API pro rozhraní s Data Factory V2.
 
-### <a name="deploy-ssis-packages-to-azure"></a>Nasazení balíčků služby SSIS do Azure 
+### <a name="iterative-development-and-debugging-by-using-visual-tools"></a>Iterativní vývoj a ladění pomocí visual tools
+Azure Data Factory visual tools umožňují iterativní vývoj a ladění. Můžete vytvořit kanály a testovacích běhů pomocí **ladění** schopností na plátně kanálu, aniž byste museli napsat jediný řádek kódu. Můžete zobrazit výsledky testovacích běhů v **výstup** okno plátně kanálu. Po úspěšném provedení testovacího běhu, můžete přidat více aktivit do kanálu a pokračovat v ladění iteračním způsobem. Můžete také zrušit testovacích běhů, jakmile jsou v průběhu. 
+
+Není nutné publikovat provedené změny do služby data factory před výběrem **ladění**. To je užitečné ve scénářích, kde chcete, abyste měli jistotu, že nový dodatky nebo změny budou fungovat podle očekávání, než aktualizujete pracovní postupy objekt pro vytváření dat v vývojové, testovací nebo produkční prostředí. 
+
+### <a name="ability-to-deploy-ssis-packages-to-azure"></a>Schopnost nasadit balíčky SSIS do Azure 
 Pokud chcete přesunout úlohy služby SSIS, můžete vytvořit datovou továrnu a zřízení prostředí Azure-SSIS integration runtime. Prostředí Azure-SSIS integration runtime je plně spravovaný cluster virtuálních počítačů Azure (uzlů) vyhrazených ke spouštění balíčků služby SSIS v cloudu. Podrobné pokyny najdete v tématu [balíčků služby SSIS nasazovat do Azure](tutorial-create-azure-ssis-runtime-portal.md) kurzu. 
  
 ### <a name="sdks"></a>Sady SDK
-Pokud jste pokročilý uživatel a hledáte programové rozhraní, ADF poskytuje pestrou nabídku sad SDK, která vám pomůže vytvářet, spravovat nebo monitorování kanálů pomocí vašeho oblíbeného integrovaného vývojového prostředí. Podpora jazyků zahrnuje .NET, PowerShell, Python a REST.
+Pokud jste pokročilý uživatel a hledáte programové rozhraní, služby Data Factory poskytuje pestrou nabídku sad SDK, který můžete použít k vytváření, správě nebo monitorování kanálů pomocí vašeho oblíbeného integrovaného vývojového prostředí. Podpora jazyků zahrnuje .NET, PowerShell, Python a REST.
 
 ### <a name="monitoring"></a>Monitorování
-Můžete monitorovat vaší datové továrny pomocí prostředí PowerShell, sady SDK nebo Visual Tools sledování v uživatelském rozhraní prohlížeče. Můžete monitorovat a spravovat na vyžádání, na základě aktivační události a hodiny vlastní toky řízené účinný a efektivní způsobem. Zrušit existující úlohy, viz chyby na první pohled, k podrobnostem a získat podrobné chybové zprávy a ladit problémy z podokně ze skla bez kontextu přepínání nebo přejdete vpřed a zpět mezi obrazovkami. 
+Můžete monitorovat vaší datové továrny pomocí prostředí PowerShell, sady SDK nebo Visual Tools sledování v uživatelském rozhraní prohlížeče. Můžete monitorovat a spravovat vlastní toky na vyžádání, na základě aktivační události a hodiny řízené účinný a efektivní způsobem. Zrušit existující úlohy, viz chyby na první pohled, k podrobnostem a získat podrobné chybové zprávy a laděním problémů s vše z jednoho podokně ze skla. Díky bez kontextu přepínání nebo přejdete vpřed a zpět mezi obrazovkami. 
 
-### <a name="new-features-for-ssis-in-adf"></a>Nové funkce pro službu SSIS ve službě ADF
-Od původní verze Public Preview v 2017 Data Factory přináší následující funkce pro službu SSIS:
+### <a name="new-features-for-ssis-in-data-factory"></a>Nové funkce pro službu SSIS ve službě Data Factory
+Protože se počáteční veřejná verze preview verze 2017, Data Factory přináší následující funkce pro službu SSIS:
 
--   Podpora pro tři další konfigurace/varianty z Azure SQL Database (databáze) do hostitele katalogu služby SSIS (SSISDB) projektů/balíčků:
--   Azure SQL Database s koncovými body služby virtuální sítě
--   Spravované Instance (IU)
+-   Podpora pro tři další konfigurace/varianty služby Azure SQL Database pro hostování databáze služby SSIS (SSISDB) projektů/balíčků:
+-   SQL Database s koncovými body služby virtuální sítě
+-   Spravovaná instance
 -   Elastický fond
--   Podpora pro Azure Resource Manageru Virtual Network (VNet) nad klasickou virtuální síť, která se nepoužívají v budoucnu – díky tomu můžete vložit/spojení vašeho prostředí Azure-SSIS Integration Runtime (IR) k virtuální síti, který je nakonfigurovaný pro službu Azure SQL DB pomocí koncových bodů služby virtuální sítě nebo MI / místní přístup k datům, naleznete v tématu: https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network 
--   Podpora pro ověřování Azure Active Directory (AAD) nad rámec ověřování SQL pro připojení k vaší databáze SSISDB – díky tomu můžete použít ověřování AAD pomocí vaší ADF spravované identity pro prostředky Azure
--   Podpora pro přenesení svoji vlastní licenci systému SQL Server v místním získat značné úspory z možnosti Azure Hybrid Benefit (AHB)
--   Podporu pro Enterprise Edition z Azure-SSIS IR, která vám umožní používat pokročilé/prémiové funkce, vlastní nastavení, chcete-li nainstalovat další součásti nebo rozšíření a 3. stran ekosystému, naleznete v tématu: https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/ 
--   Hlubší integrace služby SSIS ve službě ADF, která umožňuje vyvolání nebo triggeru prvotřídní spuštění balíčku služby SSIS aktivit v kanálech ADF a naplánují je prostřednictvím aplikace SSMS, naleznete v tématu: https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/ 
+-   Podpora pro virtuální síť Azure Resource Manageru nad klasickou virtuální síť k přestanou používat v budoucnosti, které umožňuje vložit/spojení vašeho prostředí Azure-SSIS integration runtime k virtuální síti nakonfigurované pro službu SQL Database s službu virtual network přístup k datům koncové body/MI/místní. Další informace najdete v tématu taky [připojit k prostředí Azure-SSIS integration runtime k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md).
+-   Podpora pro ověřování Azure Active Directory (Azure AD) a ověřování SQL pro připojení do databáze SSISDB, umožňuje ověřování Azure AD s vaší identity spravované služby Data Factory pro prostředky Azure
+-   Podpora pro přenesení svoji vlastní licenci systému SQL Server v místním získat značné úspory z možnosti programu zvýhodněné hybridní využití Azure
+-   Podporu pro Enterprise Edition prostředí Azure-SSIS integration runtime, která vám umožní používat pokročilé/prémiové funkce, na vlastní instalační program rozhraní nainstalovat další součásti nebo rozšíření a ekosystém partnerů. Další informace najdete v tématu taky [Enterprise Edition, vlastní nastavení a 3. stran rozšíření pro službu SSIS ve službě ADF](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/). 
+-   Hlubší integrace služby SSIS v datové továrně, který umožňuje vyvolání nebo triggeru prvotřídní spuštění balíčku služby SSIS aktivit v kanálech Data Factory a naplánují je prostřednictvím aplikace SSMS. Další informace najdete v tématu taky [Modernize a Rozšiřte své pracovní postupy ETL/ELT pomocí služby SSIS aktivit v kanálech ADF](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/).
 
 
-## <a name="what-is-integration-runtime"></a>Co je IR?
-Prostředí IR je výpočetní infrastruktura, která se službou Azure Data Factory používá k zajištění následujících funkcí integrace dat v různých síťových prostředích:
+## <a name="what-is-the-integration-runtime"></a>Co je IR?
+Prostředí IR je výpočetní infrastruktura, která Azure Data Factory používá k zajištění následujících funkcí integrace dat v různých síťových prostředích:
 
-- **Přesun dat**: V případě přesunu dat prostředí IR přesouvá data mezi zdrojovým a cílovým úložištěm dat a přitom poskytuje podporu integrovaných konektorů, převodu formátů, mapování sloupců a výkonného a škálovatelného přenosu dat.
-- **Odeslání aktivity**: V případě transformace umožňuje prostředí IR nativní spouštění balíčků SSIS.
-- **Spouštění balíčků služby SSIS**: Nativně spustí balíčků služby SSIS v prostředí spravované výpočetní prostředky Azure. Prostředí IR podporuje také volání a monitorování aktivit transformace spuštěných v různých výpočetních službách, jako je Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server a další.
+- **Přesun dat**: V případě přesunu dat prostředí IR přesouvá data mezi zdrojovým a cílovým úložištěm dat a přitom poskytuje podporu integrovaných konektorů, převodu formátu, mapování sloupců a výkonného a škálovatelného přenosu dat.
+- **Odeslání aktivity**: V případě transformace prostředí integration runtime poskytuje schopnost nativní spouštění balíčků služby SSIS.
+- **Spouštění balíčků služby SSIS**: Prostředí integration runtime nativně spustí balíčků služby SSIS v prostředí spravované výpočetní prostředky Azure. Prostředí IR podporuje také odesílání a monitorování aktivit transformace spuštěných v různých výpočetních službách, jako je například Azure HDInsight, Azure Machine Learning, SQL Database a SQL Server.
 
-Pro přesun a transformaci dat podle potřeby můžete nasadit jednu nebo více instancí modulu integration runtime. Prostředí Integration runtime můžete spustit ve veřejné síti Azure nebo v privátní síti (místní, virtuální sítě Azure nebo Amazon Web Services virtuálním privátním cloudu [VPC]). 
+Pro přesun a transformaci dat podle potřeby můžete nasadit jednu nebo více instancí modulu runtime integrace. Prostředí integration runtime můžete spustit ve veřejné síti Azure nebo v privátní síti (místní, virtuální sítě Azure nebo Amazon Web Services virtuálním privátním cloudu [VPC]). 
 
 Další informace najdete v tématu [Prostředí Integration Runtime v Azure Data Factory](concepts-integration-runtime.md).
 
@@ -108,14 +112,14 @@ Předplatné Azure může obsahovat jednu nebo více instancí služby Azure Dat
 ### <a name="pipelines"></a>Kanály
 Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které provádějí určitou jednotku práce. Aktivity v kanálu společně provádí úlohy. Kanál může například obsahovat skupinu aktivit, které ingestují data z objektu blob Azure a pak spustit dotaz Hive v clusteru služby HDInsight pro rozdělení dat. Výhodou je, že vám pomůže kanálu spravovat aktivity jako sadu, a ne by bylo potřeba spravovat jednotlivé aktivity jednotlivě. Můžete společně řetězit aktivity v kanálu pro jejich probíhaly postupně, nebo můžete provozovat nezávisle na sobě paralelně.
 
-### <a name="activity"></a>Aktivita
-Aktivity představují krok zpracování v rámci kanálu. Například můžete použít *kopírování* aktivitu ke kopírování dat z jednoho úložiště dat do jiného. Podobně můžete použít aktivitu Hivu, která spustí dotaz Hivu na clusteru Azure HDInsight, aby transformoval a analyzoval vaše data. Data Factory podporuje tři typy aktivit: aktivity přesunu dat, aktivity transformace dat a aktivity řízení.
+### <a name="activities"></a>Aktivity
+Aktivity představují krok zpracování v rámci kanálu. Například můžete použít aktivitu kopírování ke kopírování dat z jednoho úložiště dat do jiného. Podobně můžete použít aktivitu Hivu, která spustí dotaz Hivu na clusteru Azure HDInsight, aby transformoval a analyzoval vaše data. Data Factory podporuje tři typy aktivit: aktivity přesunu dat, aktivity transformace dat a aktivity řízení.
 
 ### <a name="datasets"></a>Datové sady
 Datové sady představují datové struktury v rámci úložišť dat, které jednoduše odkazují na data, která chcete ve svých aktivitách použít jako vstupy nebo výstupy. 
 
 ### <a name="linked-services"></a>Propojené služby
-Propojené služby jsou velmi podobné připojovacím řetězcům, které definují informace o připojení, které služba Data Factory potřebuje pro připojení k externím prostředkům. Můžete ho chápat takto: propojená služba definuje připojení ke zdroji dat, a reprezentuje strukturu dat datové sady. Například propojenou službu Azure Storage Určuje připojovací řetězec pro připojení k účtu Azure Storage. A datovou sadu Azure Blob Určuje kontejner objektů blob a složku obsahující data.
+Propojené služby jsou velmi podobné připojovacím řetězcům, které definují informace o připojení, které služba Data Factory potřebuje pro připojení k externím prostředkům. Můžete ho chápat takto: Propojená služba definuje připojení ke zdroji dat a datová sada reprezentuje strukturu těchto dat. Například propojenou službu Azure Storage Určuje připojovací řetězec pro připojení k účtu Azure Storage. A datová sada služby Azure blob Určuje kontejner objektů blob a složku obsahující data.
 
 Propojené služby mají dva účely ve službě Data Factory:
 
@@ -131,12 +135,12 @@ Spuštění kanálu je instance provádění kanálu. Obvykle vytvoříte instan
 ### <a name="parameters"></a>Parametry
 Parametry jsou páry klíč hodnota v konfiguraci jen pro čtení. Definovat parametry v kanálu a předejte argumenty definovaných parametrů během provádění z kontextu spuštění. Vytvoření kontextu spuštění pomocí aktivační události nebo z kanálu, který můžete spustit ručně. Aktivity v rámci kanálu využívají hodnoty parametrů.
 
-Datové sady je parametr silného typu a entita, která můžete opakovaně používat nebo odkazovat. Aktivita může odkazovat na datové sady a ho může využívat vlastnosti definované v definici datové sady.
+Datová sada je parametr silného typu a entita, která můžete opakovaně používat nebo odkazovat. Aktivita může odkazovat na datové sady a ho může využívat vlastnosti definované v definici datové sady.
 
 Propojená služba je také parametr silného typu, který obsahuje informace o připojení k úložišti dat nebo výpočetnímu prostředí. Také je entita, která můžete opakovaně používat nebo odkazovat.
 
 ### <a name="control-flows"></a>Řízení toků
-Řízení toků orchestraci aktivit kanálu, které zahrnují řetězení aktivit v sekvenci, větvení, parametry, které můžete definovat na úrovni kanálu a argumenty předávané při volání kanálu na vyžádání nebo pomocí aktivační události. Ovládací prvek toky také předávání vlastního stavu a kontejnery (tedy iterátory for-each) smyček.
+Řízení toků orchestraci aktivit kanálu, které zahrnují řetězení aktivit v sekvenci, větvení, parametry, které můžete definovat na úrovni kanálu a argumenty předávané při volání kanálu na vyžádání nebo pomocí aktivační události. Řízení toků zahrnovat také předávání vlastního stavu a kontejnery smyček (tedy iterátory foreach).
 
 
 Další informace o konceptech služby Data Factory najdete v následujících článcích:
@@ -158,10 +162,10 @@ Nejnovější informace o službě Azure Data Factory najdete na následujícíc
 ## <a name="technical-deep-dive"></a>Podrobné technické informace 
 
 ### <a name="how-can-i-schedule-a-pipeline"></a>Jak lze naplánovat kanál? 
-Aktivační událost plánovače nebo aktivační událost okna čas můžete použít k naplánování kanálu. Trigger použije hodinového plánu kalendáře a použít ji k plánování kanálů, pravidelně nebo s použitím na základě kalendáře opakující se vzory (například každý týden v pondělí v 18: 00 a čtvrtek ve 21: 00). Další informace najdete v tématu [Spouštění kanálů a aktivační události](concepts-pipeline-execution-triggers.md).
+Aktivační událost plánovače nebo aktivační událost okna čas můžete použít k naplánování kanálu. Trigger použije hodinového plánu kalendář, který kanály můžete plánovat pravidelné nebo na základě kalendáře opakující se vzory, třeba na (pondělí na 18:00:00) a čtvrtek ve 21:00:00. Další informace najdete v tématu [Spouštění kanálů a aktivační události](concepts-pipeline-execution-triggers.md).
 
 ### <a name="can-i-pass-parameters-to-a-pipeline-run"></a>Můžete předat parametry pro spuštění kanálu
-Ano, parametry jsou koncept první třídy, nejvyšší úrovně ve službě ADF. Můžete definovat parametry na úrovni kanálu a předejte argumenty při spuštění kanálu spouštěly na vyžádání nebo pomocí aktivační události.  
+Ano, parametry jsou koncept první třídy, nejvyšší úrovně ve službě Data Factory. Můžete definovat parametry na úrovni kanálu a předejte argumenty při spuštění kanálu spouštěly na vyžádání nebo pomocí aktivační události.  
 
 ### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>Můžete definovat výchozí hodnoty pro parametry kanálu? 
 Ano. Výchozí hodnoty pro parametry můžete definovat v kanálech. 
@@ -177,33 +181,35 @@ Můžete použít `@coalesce` vytvořit ve výrazech řádně zpracování hodno
 
 ## <a name="mapping-data-flows"></a>Mapování datových toků
 
-### <a name="which-adf-version-do-i-use-to-create-data-flows"></a>Kterou verzi ADF se dá použít k vytváření toků dat?
-K vytváření toků dat použijte verzi ADF V2
+### <a name="which-data-factory-version-do-i-use-to-create-data-flows"></a>Kterou verzi Data Factory pomocí můžete vytvářet toky dat?
+Pomocí Data Factory V2 verze můžete vytvářet toky data.
   
-### <a name="i-was-a-previous-private-preview-customer-using-data-flows-and-i-used-the-adf-v2-wdata-flows-preview-version"></a>Používal jsem službu předchozí verzi private preview pomocí toky dat a použití verze ADF V2 w nebo datové toky ve verzi preview
-Tato verze je zastaralá. Používat ADF V2 pro datové toky
+### <a name="i-was-a-previous-private-preview-customer-who-used-data-flows-and-i-used-the-data-factory-v2-preview-version-for-data-flows"></a>Jsem byl předchozí verzi private preview zákazníky, kteří používají datové toky a můžu použít verzi Data Factory V2 ve verzi preview pro datové toky.
+Tato verze je zastaralá. Pomocí Data Factory verze 2 pro datové toky.
   
-### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-data-flows"></a>Co se změnilo z verze private preview k omezené veřejné verzi preview v tocích dat?
-Už máte zpřístupnit vlastní clustery Databricks. Vytvoření clusteru a vše bude spravovat ADF. Datové sady objektů BLOB a ADLS datové sady jsou rozděleny do Text oddělený a Parquet datové sady. ADLS & Store objektů Blob můžete stále použít k ukládání těchto souborů. Použijte odpovídající propojené služby pro tyto moduly úložiště.
+### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-regard-to-data-flows"></a>Co se změnilo z verze private preview k omezené veřejné verzi preview ve vztahu toků dat?
+Už máte zpřístupnit vlastní clustery Azure Databricks. Vytvoření clusteru a vše bude spravovat služby Data Factory. Datové sady objektů BLOB a Azure Data Lake Storage Gen2 datové sady jsou rozdělené na text s oddělovači a Apache Parquet datové sady. Stále můžete Data Lake Storage Gen2 a Blob storage k ukládání těchto souborů. Použijte odpovídající propojené služby pro tyto moduly úložiště.
 
-### <a name="can-i-migrate-my-private-preview-factories-to-adf-v2"></a>Můžete migrovat Moje továrny ve verzi private preview pro ADF V2?
+### <a name="can-i-migrate-my-private-preview-factories-to-data-factory-v2"></a>Můžete migrovat Moje továrny ve verzi private preview pro Data Factory V2?
 
-[Ano, postupujte podle zde uvedených pokynů](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration)
+Ano. [Postupujte podle pokynů](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration).
 
-### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-do-you-need"></a>Potřebuji pomoc s řešením potíží Moje logiky toku dat, co potřebujete?
+### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>Potřebuji pomoc s řešením potíží Moje data toku logiku. Jaké informace je nutné poskytnout pomoc?
 
-Když společnost Microsoft poskytuje pomoc nebo řešení potíží s toky dat, zadejte do "DSL kód plánu". Postupujte přitom takto:
+Když společnost Microsoft poskytuje pomoc nebo řešení potíží s toky dat, zadejte prosím plán kódu DSL. Postupujte přitom takto:
 
-* Z Návrháře toku dat v pravém horním rohu klikněte na tlačítko "Kód". Tato akce zobrazí upravitelný kód JSON pro datový tok.
-* V zobrazení kódu klikněte na "Plán" v pravém horním rohu. Přepnout plánu se přepne z JSON na jen pro čtení formátovaného DSL skript plánu.
-* Zkopírujte a vložte tento skript nebo uložte ho do textového souboru.
+1. V Návrháři toku dat vyberte **kód** v pravém horním rohu. Tato akce zobrazí upravitelný kód JSON pro datový tok.
+2. Zobrazení kódu vyberte **plánování** v pravém horním rohu. Tento přepínač se přepne z JSON na jen pro čtení formátovaného DSL skript plánu.
+3. Zkopírujte a vložte tento skript nebo uložte ho do textového souboru.
 
-### <a name="how-do-i-access-data-using-the-other-80-dataset-types-in-adf"></a>Jak můžu přistupovat k datům pomocí jiných typů 80 datové sady ve službě ADF?
+### <a name="how-do-i-access-data-by-using-the-other-80-dataset-types-in-data-factory"></a>Přístup dat s použitím jiných typů 80 datové sady ve službě Data Factory
 
-Tok dat aktuálně umožňuje službě Azure SQL DB, Azure SQL data Warehouse, textových souborů s oddělovačem z objektu Blob nebo ADLS a soubory Parquet z objektu Blob nebo ADLS nativně zdroje a jímky. Použije aktivitu kopírování k připravit data z některého z jiných konektorů a následné provádění aktivitu toku dat pro transformaci dat po je připravené. Například váš kanál se nejprve zkopírovat do objektu Blob a pak aktivitu toku dat používá datovou sadu ve zdroji transformovat tato data.
+Funkce mapování toku dat aktuálně umožňuje že Azure SQL Database, Azure SQL Data Warehouse, oddělených textových souborů z Azure Blob storage nebo Azure Data Lake Storage Gen2 a soubory Parquet z úložiště objektů Blob nebo Data Lake Storage Gen2 nativně pro zdroje a jímky. 
+
+Použije aktivitu kopírování k připravit data z některého z jiných konektorů a následné provádění aktivitu toku dat pro transformaci dat po je připravené. Například váš kanál se nejprve zkopírovat do úložiště objektů Blob, a pak aktivitu toku dat použije datovou sadu ve zdroji transformovat tato data.
 
 ## <a name="next-steps"></a>Další postup
 Podrobné pokyny pro vytváření dat najdete v následujících kurzech:
 
-- [Rychlé zprovoznění: Vytvoření datové továrny](quickstart-create-data-factory-dot-net.md)
+- [Rychlý start: Vytvoření datové továrny](quickstart-create-data-factory-dot-net.md)
 - [Kurz: Kopírování dat v cloudu](tutorial-copy-data-dot-net.md)
