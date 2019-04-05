@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: da11d4977cc998c9fccb3628a44e45db95c7d977
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 9b1dee8ea43d01825449cb6010fbfa62e4715cff
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759440"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047258"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Nasazení do existujícího projektu Dvojčete OPC
 
@@ -30,10 +30,7 @@ Základní modul je identita nadřízeného. Správce spravuje dvojčete koncov�
 
 ## <a name="prerequisites"></a>Požadavky
 
-> [!NOTE]
-> Poznámka: Splatnosti závislost na modulu AzureRM se nasazení aktuálně se podporuje jenom na Windows.
-
-Ujistěte se, že máte prostředí PowerShell a [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-1.1.0) nainstalovaná rozšíření.   Pokud jste neprovedli ještě, naklonujte úložiště GitHub.  Otevřete příkazový řádek nebo terminálu a spusťte:
+Ujistěte se, že máte prostředí PowerShell a [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) nainstalovaná rozšíření.   Pokud jste neprovedli ještě, naklonujte úložiště GitHub.  Otevřete příkazový řádek nebo terminálu a spusťte:
 
 ```bash
 git clone --recursive https://github.com/Azure/azure-iiot-components 

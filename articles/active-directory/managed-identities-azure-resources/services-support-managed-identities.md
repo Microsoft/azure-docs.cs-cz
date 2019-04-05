@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5592ee7f3c4b5f55785100ceff09659aa437cb6
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d524f5f58e7381dd89f36c5d2821e6911ed9ec15
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578573"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045453"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity pro prostředky Azure
 
@@ -37,7 +37,7 @@ Následující služby Azure podporují spravované identity pro prostředky Azu
 
 Najdete v následujícím seznamu ke konfiguraci spravované identity pro virtuální počítače Azure (v oblastech dostupné):
 
-- [Azure Portal](qs-configure-portal-windows-vm.md)
+- [portál Azure](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
 - [Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md)
@@ -52,7 +52,7 @@ Najdete v následujícím seznamu ke konfiguraci spravované identity pro virtu�
 
 Najdete v následujícím seznamu ke konfiguraci spravované identity pro Škálovací sady virtuálních počítačů Azure (v oblastech dostupné):
 
-- [Azure Portal](qs-configure-portal-windows-vm.md)
+- [portál Azure](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
 - [Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md)
@@ -67,7 +67,7 @@ Najdete v následujícím seznamu ke konfiguraci spravované identity pro Škál
 
 Najdete v následujícím seznamu ke konfiguraci spravovaných identit pro službu Azure App Service (v oblastech dostupné):
 
-- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [portál Azure](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
@@ -93,7 +93,7 @@ Typ identity spravované |Obecně dostupné<br>Globálními oblastmi Azure | Azu
 
 Najdete v následujícím seznamu ke konfiguraci spravovaných identit pro službu Azure Functions (v oblastech dostupné):
 
-- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [portál Azure](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
@@ -107,7 +107,7 @@ Typ identity spravované | Obecně dostupné<br>Globálními oblastmi Azure | Az
 
 Najdete v následujícím seznamu ke konfiguraci spravované identity Azure Logic Apps (v oblastech dostupné):
 
-- [Azure Portal](/azure/logic-apps/create-managed-service-identity#azure-portal)
+- [portál Azure](/azure/logic-apps/create-managed-service-identity#azure-portal)
 - [Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
@@ -119,7 +119,7 @@ Typ identity spravované | Obecně dostupné<br>Globálními oblastmi Azure | Az
 
 Najdete v následujícím seznamu ke konfiguraci spravovaných identit pro Azure Data Factory verze 2 (v oblastech dostupné):
 
-- [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
+- [portál Azure](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
 - [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - [Sada SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
@@ -177,7 +177,7 @@ Najdete v následujícím seznamu můžete nakonfigurovat přístup k Azure Reso
 | Azure Germany |  `https://vault.microsoftazure.de` | K dispozici. |
 | Azure China 21Vianet | `https://vault.azure.cn` | K dispozici. |
 
-## <a name="azure-data-lake"></a>Azure Data Lake 
+### <a name="azure-data-lake"></a>Azure Data Lake 
 
 | Cloud | ID prostředku | Status |
 |--------|------------|--------|
@@ -186,7 +186,7 @@ Najdete v následujícím seznamu můžete nakonfigurovat přístup k Azure Reso
 | Azure Germany |   | Není k dispozici |
 | Azure China 21Vianet |  | Není k dispozici |
 
-## <a name="azure-sql"></a>Azure SQL 
+### <a name="azure-sql"></a>Azure SQL 
 
 | Cloud | ID prostředku | Status |
 |--------|------------|--------|
@@ -195,7 +195,7 @@ Najdete v následujícím seznamu můžete nakonfigurovat přístup k Azure Reso
 | Azure Germany | `https://database.cloudapi.de/` | K dispozici. |
 | Azure China 21Vianet | `https://database.chinacloudapi.cn/` | K dispozici. |
 
-## <a name="azure-event-hubs"></a>Azure Event Hubs
+### <a name="azure-event-hubs"></a>Azure Event Hubs
 
 | Cloud | ID prostředku | Status |
 |--------|------------|--------|
@@ -204,7 +204,7 @@ Najdete v následujícím seznamu můžete nakonfigurovat přístup k Azure Reso
 | Azure Germany |   | Není k dispozici |
 | Azure China 21Vianet |  | Není k dispozici |
 
-## <a name="azure-service-bus"></a>Azure Service Bus
+### <a name="azure-service-bus"></a>Azure Service Bus
 
 | Cloud | ID prostředku | Status |
 |--------|------------|--------|
@@ -213,7 +213,7 @@ Najdete v následujícím seznamu můžete nakonfigurovat přístup k Azure Reso
 | Azure Germany |   | Není k dispozici |
 | Azure China 21Vianet |  | Není k dispozici |
 
-## <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Storage
 
 | Cloud | ID prostředku | Status |
 |--------|------------|--------|

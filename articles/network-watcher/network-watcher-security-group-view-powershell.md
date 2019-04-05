@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 9cc06e97730ac846e8aa42c2cee77dfe17be99bb
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: b22dd2dcf575362b96d150ef98148076f4ec631f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089642"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047581"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>Analyzovat zabezpečení vašich virtuálních počítačů se zobrazením skupin zabezpečení pomocí Powershellu
 
@@ -30,9 +30,12 @@ ms.locfileid: "39089642"
 
 Zobrazení skupin zabezpečení vrátí pravidla zabezpečení sítě nakonfigurovaná a efektivní, které se použijí k virtuálnímu počítači. Tato možnost je užitečná k auditování a diagnostice skupiny zabezpečení sítě a pravidel, které jsou nakonfigurované na virtuálním počítači k zajištění provozu se správně povolený nebo zakázaný. V tomto článku ukážeme, jak načíst pravidla nakonfigurovaná a efektivní zabezpečení k virtuálnímu počítači pomocí Powershellu
 
-## <a name="before-you-begin"></a>Než začnete
 
-V tomto scénáři můžete spustit `Get-AzureRmNetworkWatcherSecurityGroupView` rutina pro načtení informací o pravidlo zabezpečení.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="before-you-begin"></a>Před zahájením
+
+V tomto scénáři můžete spustit `Get-AzNetworkWatcherSecurityGroupView` rutina pro načtení informací o pravidlo zabezpečení.
 
 Tento scénář předpokládá, že už jste udělali kroky v [vytvořit Network Watcher](network-watcher-create.md) vytvořit Network Watcher.
 
@@ -42,19 +45,19 @@ Scénáře popsané v tomto článku načte pravidla nakonfigurovaná a efektivn
 
 ## <a name="retrieve-network-watcher"></a>Načíst Network Watcher
 
-Prvním krokem je načtení instance Network Watcheru. Tato proměnná je předána `Get-AzureRmNetworkWatcherSecurityGroupView` rutiny.
+Prvním krokem je načtení instance Network Watcheru. Tato proměnná je předána `Get-AzNetworkWatcherSecurityGroupView` rutiny.
 
 ```powershell
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
+$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 ```
 
 ## <a name="get-a-vm"></a>Získání virtuálního počítače
 
-Virtuální počítač se vyžaduje pro spuštění `Get-AzureRmNetworkWatcherSecurityGroupView` rutiny proti. Následující příklad načte objekt virtuálního počítače.
+Virtuální počítač se vyžaduje pro spuštění `Get-AzNetworkWatcherSecurityGroupView` rutiny proti. Následující příklad načte objekt virtuálního počítače.
 
 ```powershell
-$VM = Get-AzurermVM -ResourceGroupName testrg -Name testvm1
+$VM = Get-AzVM -ResourceGroupName testrg -Name testvm1
 ```
 
 ## <a name="retrieve-security-group-view"></a>Načtení zobrazení skupin zabezpečení
@@ -62,7 +65,7 @@ $VM = Get-AzurermVM -ResourceGroupName testrg -Name testvm1
 Dalším krokem je načtení výsledný objekt zobrazení skupiny zabezpečení.
 
 ```powershell
-$secgroup = Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
+$secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
 ```
 
 ## <a name="viewing-the-results"></a>Zobrazení výsledků

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: da027e492633ba3e4da912c2c45b2432fd217576
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: c3ef6ff73366ae3017e1126de16153195576a1a8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802946"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048705"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získat data o dodržování předpisů prostředků Azure
 
@@ -30,7 +30,7 @@ Před zobrazením metody k vytvoření sestavy dodržování předpisů, Podíve
 > [!WARNING]
 > Pokud hlásí stav dodržování předpisů jako **Neregistrovaný**, ověřte, že **Microsoft.policyinsights do** zaregistrovaný poskytovatel prostředků a že uživatel má odpovídající přístup na základě rolí (ovládací prvek Oprávnění RBAC), jak je popsáno v [RBAC ve službě Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
 
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="evaluation-triggers"></a>Vyhodnocení aktivační události
 
@@ -57,7 +57,7 @@ Volání rozhraní REST API můžete spustit skenování hodnocení pro předpla
 Každý identifikátor URI v REST API používá proměnné, které je potřeba nahradit vašimi vlastními hodnotami:
 
 - `{YourRG}` -Nahraďte názvem vaší skupiny prostředků
-- Proměnnou `{subscriptionId}` nahraďte ID předplatného.
+- `{subscriptionId}` -Nahraďte ID vašeho předplatného
 
 Kontrola podporuje vyhodnocení prostředků v rámci předplatného nebo skupiny prostředků. Spustit kontrolu oborem pomocí rozhraní REST API **příspěvek** příkazu následující identifikátor URI struktury:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/18/2019
 ms.author: borisb
-ms.openlocfilehash: d42349de4324428103ccca3ef270ceb9109ca0c7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fb3c0e46324a22bdd95bf7d93c28e69c195927e8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011658"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045418"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Image Red Hat Enterprise Linux v Azure
 Tento článek popisuje dostupných imagí Red Hat Enterprise Linux (RHEL) na webu Azure Marketplace spolu s zásady po jejich názvy a uchování.
@@ -65,7 +65,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:lat
 ### <a name="current-naming-convention"></a>Aktuální zásady vytváření názvů
 Všechny aktuálně publikovaných imagí RHEL použít model průběžných plateb a jsou připojené k [Red Hat Update Infrastructure (RHUI) v Azure](https://aka.ms/rhui-update). Z důvodu omezení RHUI byla přijata novým zásadám vytváření názvů pro Image RHEL 7 řady. V tuto chvíli nebylo změněno řady systému RHEL 6 pojmenování.
 
-Omezení je ve skutečnosti, že bez – selektivní `yum update` spustí pro virtuální počítač připojený k RHUI, verze RHEL se aktualizuje na nejnovější verzi aktuální řady. Další informace najdete v tématu [tento odkaz](https://aka.ms/rhui-udate). Výsledkem může nejasnosti při zřízené image RHEL 7.2 RHEL 7.6 se stane po aktualizaci. Stále můžete zřídit ze starší image podle pokynů ve výše uvedených příkladech tak, že explicitně zadáte na požadovanou verzi. Pokud požadovaná verze není zadán při zřizování nové image RHEL 7, se zřídí nejnovější image.
+Omezení je ve skutečnosti, že bez – selektivní `yum update` spustí pro virtuální počítač připojený k RHUI, verze RHEL se aktualizuje na nejnovější verzi aktuální řady. Další informace najdete v tématu [tento odkaz](https://aka.ms/rhui-update). Výsledkem může nejasnosti při zřízené image RHEL 7.2 RHEL 7.6 se stane po aktualizaci. Stále můžete zřídit ze starší image podle pokynů ve výše uvedených příkladech tak, že explicitně zadáte na požadovanou verzi. Pokud požadovaná verze není zadán při zřizování nové image RHEL 7, se zřídí nejnovější image.
 
 >[!NOTE]
 > RHEL for SAP sadu bitových kopií zůstane pevné verzi RHEL. V důsledku toho jejich zásady vytváření názvů obsahuje konkrétní verzi ve skladové Položce.

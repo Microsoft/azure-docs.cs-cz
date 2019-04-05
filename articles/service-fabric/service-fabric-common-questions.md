@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 3dd2518c23f2cd323d7c3b2b46465e4144c1ba1a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f75236c826584d742fe3163a2fdac29c4030bf66
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665317"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045794"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy k Service Fabric
 
 Existuje mnoho nejčastější dotazy o co můžete dělat Service Fabric a jak by měla sloužit. Tento dokument popisuje tyto běžné otázky a odpovědi.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="cluster-setup-and-management"></a>Nastavení clusteru a správy
 
@@ -133,7 +136,7 @@ Ne. Virtuální počítače s nízkou prioritou se nepodporují.
 Tady jsou prostředky pro vaše aplikace za účelem získání přihlašovacích údajů pro ověření v trezoru klíčů:
 
 A. Během úlohy sestavení a zabalení aplikace můžete vyžádat certifikát do vaší aplikace SF data balíčku a použijte ji k ověření do trezoru klíčů.
-B. Pro škálovací sady virtuálních počítačů hostitele MSI povolené, vám umožní vytvářet jednoduché SetupEntryPoint prostředí PowerShell pro vaši aplikaci SF získat [přístupový token z koncového bodu MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)a potom [načíst tajné kódy z trezoru klíčů](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret)
+B. Pro škálovací sady virtuálních počítačů hostitele MSI povolené, vám umožní vytvářet jednoduché SetupEntryPoint prostředí PowerShell pro vaši aplikaci SF získat [přístupový token z koncového bodu MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)a potom [načíst tajné kódy z trezoru klíčů](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzureKeyVaultSecret)
 
 ## <a name="application-design"></a>Návrh aplikace
 
@@ -189,4 +192,4 @@ Postupujte podle [Service Fabric blogu](https://blogs.msdn.microsoft.com/azurese
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [základní koncepty Service Fabric](service-fabric-technical-overview.md) a [osvědčené postupy](service-fabric-best-practices-overview.md)
+Další informace o [základní koncepty Service Fabric](service-fabric-technical-overview.md) a [osvědčené postupy](service-fabric-best-practices-overview.md) ice concepts](service-fabric-technical-overview.md) prostředků infrastruktury a [osvědčené postupy](service-fabric-best-practices-overview.md)

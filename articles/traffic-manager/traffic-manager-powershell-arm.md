@@ -11,16 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 2b480df0100690a7a5064044d435a34845516fa6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2ce2e2b35d731c3edfed931d158b420e66ed5620
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442099"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045743"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Použití Powershellu ke správě Traffic Manageru
 
 Azure Resource Manager je upřednostňovaný správy rozhraní pro služby v Azure. Profilů Azure Traffic Manageru můžete spravovat pomocí nástroje a rozhraní API založená na Azure Resource Manageru.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="resource-model"></a>Model prostředků
 
@@ -36,7 +38,7 @@ Každý profil služby Traffic Manager je reprezentován prostředek typu "Traff
 
 Tyto pokyny použijte prostředí Azure PowerShell. V následujícím článku vysvětluje, jak nainstalovat a nakonfigurovat Azure PowerShell.
 
-* [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview)
+* [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview)
 
 V příkladech v tomto článku se předpokládá, že máte existující skupinu prostředků. Můžete vytvořit skupinu prostředků pomocí následujícího příkazu:
 
@@ -253,10 +255,10 @@ Tyto změny, můžete provést načítání/aktualizace/nastavení koncového bo
 
 ### <a name="example-1-enabling-and-disabling-a-traffic-manager-profile"></a>Příklad 1: Povolení a zakázání profilu služby Traffic Manager
 
-Chcete-li povolit profilu Traffic Manageru, použijte `Enable-AzureRmTrafficManagerProfile`. Profil, který se dá nastavit pomocí objektu profilu. Objekt profilu je možné předat pomocí kanálu nebo pomocí "-TrafficManagerProfile" parametr. V tomto příkladu zadáme profil podle názvu skupiny profilu a prostředků.
+Chcete-li povolit profilu Traffic Manageru, použijte `Enable-AzTrafficManagerProfile`. Profil, který se dá nastavit pomocí objektu profilu. Objekt profilu je možné předat pomocí kanálu nebo pomocí "-TrafficManagerProfile" parametr. V tomto příkladu zadáme profil podle názvu skupiny profilu a prostředků.
 
 ```powershell
-Enable-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
+Enable-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 ```
 
 Chcete-li zakázat profil služby Traffic Manager:
@@ -269,13 +271,13 @@ Rutina Disable-AzTrafficManagerProfile zobrazí výzvu k potvrzení. Tuto výzvu
 
 ### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>Příklad 2: Povolení a zakázání koncových bodů Traffic Manageru
 
-Chcete-li povolit koncový bod služby Traffic Manager, použijte `Enable-AzureRmTrafficManagerEndpoint`. Existují dva způsoby, jak zadat koncový bod
+Chcete-li povolit koncový bod služby Traffic Manager, použijte `Enable-AzTrafficManagerEndpoint`. Existují dva způsoby, jak zadat koncový bod
 
 1. Pomocí objektu TrafficManagerEndpoint předány prostřednictvím kanálu nebo "-TrafficManagerEndpoint" parametr
 2. Pomocí názvu koncového bodu, typ koncového bodu, název profilu a název skupiny prostředků:
 
 ```powershell
-Enable-AzureRmTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
+Enable-AzTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
 ```
 
 Podobně chcete-li zakázat koncový bod služby Traffic Manager:
@@ -323,4 +325,4 @@ Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remove-AzT
 
 [Monitorování Traffic Manageru](traffic-manager-monitoring.md)
 
-[Důležité informace o výkonu nástroje Traffic Manager](traffic-manager-performance-considerations.md)
+[Důležité informace o výkonu Traffic Manageru](traffic-manager-performance-considerations.md)

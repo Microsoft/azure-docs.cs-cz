@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: f5ce1fa46206588a1c84388b8d543051f97919a3
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b5d035308c50525449edf47131c4a6a8c62b750b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449173"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045520"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>Odstranění trezoru služby Site Recovery
 
 Odstranění trezoru služby Azure Site Recovery můžete zabránit závislosti. Akce, které je potřeba se liší v závislosti na scénáři Site Recovery. Chcete-li odstranit trezor použít ve službě Azure Backup, přečtěte si téma [odstranění trezoru služby Backup v Azure](../backup/backup-azure-delete-vault.md).
 
-
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="delete-a-site-recovery-vault"></a>Odstranit trezor Site Recovery 
 Pokud chcete trezor odstranit, postupujte podle doporučené kroky pro váš scénář.
@@ -65,12 +65,12 @@ Pokud chcete trezor odstranit, postupujte podle doporučené kroky pro váš sc�
 
 Chcete-li odstranit trezor Site Recovery, i když nejsou chráněné položky, použijte tyto příkazy:
 
-    Connect-AzureRmAccount
+    Connect-AzAccount
 
-    Select-AzureRmSubscription -SubscriptionName "XXXXX"
+    Select-AzSubscription -SubscriptionName "XXXXX"
 
-    $vault = Get-AzureRmRecoveryServicesVault -Name "vaultname"
+    $vault = Get-AzRecoveryServicesVault -Name "vaultname"
 
-    Remove-AzureRmRecoveryServicesVault -Vault $vault
+    Remove-AzRecoveryServicesVault -Vault $vault
 
-Další informace o [Get-AzureRMRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/get-azurermrecoveryservicesvault), a [Remove-AzureRMRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/remove-azurermrecoveryservicesvault).
+Další informace o [Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault), a [odebrat AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault).

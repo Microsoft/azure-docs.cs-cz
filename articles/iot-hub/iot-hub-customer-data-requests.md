@@ -3,17 +3,17 @@ title: Zákaznická data žádosti o funkce
 description: Souhrnné informace o zákaznická data žádosti o funkce
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: e9cc16d659e220dbe72cc2b2e22f71a817b36de2
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 1519637eddf909040131a1efac5738fc7cc8e565
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011309"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048364"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Souhrnné informace o zákaznická data žádosti o funkce
 

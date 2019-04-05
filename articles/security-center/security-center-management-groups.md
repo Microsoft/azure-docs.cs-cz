@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3282afb87672ba25294e65ea1474a9e06df03362
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e26dc37c5c4f85e3db634bd961bf9308e418a03
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871058"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045760"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Získejte potřebný Přehled celého tenanta pro Azure Security Center
 Tento článek vám pomůže začít pracovat způsobem několik akcí, které Maximalizace výhod, které poskytuje Azure Security Center. Provedení těchto akcí umožňuje získat přehled o ve všech předplatných Azure, které jsou propojeny do svého tenanta Azure Active Directory a efektivně spravovat stavu zabezpečení vaší organizace ve velkém měřítku pomocí zásad zabezpečení napříč více předplatná aggregative způsobem.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="management-groups"></a>Skupiny pro správu
 Skupiny pro správu Azure umožňují efektivně spravovat přístup, zásady a vytváření sestav o skupinách předplatných, jakož i provádět akce na skupinu root management efektivně spravovat celý portfolia Azure. Každý tenant Azure AD se přiřadí skupinu správy nejvyšší úrovně s názvem kořenové skupině pro správu. Tato kořenová skupina pro správu je integrovaná do hierarchie tak, aby pod ní spadaly všechny skupiny pro správu a všechna předplatná. Tato skupina umožňuje globální zásady a přiřazení RBAC uplatňovat na úrovni adresáře. 
@@ -188,7 +191,7 @@ Odběry můžete přidat do skupiny pro správu, který jste vytvořili. Tyto kr
 V tomto článku jste zjistili, jak získat přehled celého tenanta pro Azure Security Center. Další informace o službě Security Center najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
-> [Monitorování stavu zabezpečení pomocí Azure Security Center](security-center-monitoring.md)
+> [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md)
 
 > [!div class="nextstepaction"]
 > [Správa a reakce na výstrahy zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md)

@@ -3,17 +3,17 @@ title: Vytvoření centra IoT Azure pomocí šablony (PowerShell) | Dokumentace 
 description: Jak používat šablony Azure Resource Manageru k vytvoření IoT Hubu pomocí Powershellu.
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: c9a72bc435517241cf705660a669e9fb57ae2a1a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fcc9af9e614b0a1b7977ba18f3147fddab8b7b7d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103107"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045045"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Vytvoření IoT hubu pomocí šablony Azure Resource Manageru (PowerShell)
 

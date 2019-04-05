@@ -1,19 +1,18 @@
 ---
-title: Spravovat oprávnění k databázi Průzkumníka dat služby Azure
+title: Spravovat oprávnění k databázi v Průzkumníku dat Azure
 description: Tento článek popisuje řízení přístupu na základě rolí pro databáze a tabulky v Průzkumníku dat Azure.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 3f5f174f5f5e8aa122ab9c280cc812dd64b0b425
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 36e1bb77be1e825e42f0e5d25457214a8b5f882d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756478"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045659"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Spravovat oprávnění k databázi Průzkumníka dat služby Azure
 

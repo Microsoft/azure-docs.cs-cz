@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 01efbd928630b491419f6231007590c4f0fb0b22
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 267b2c375ef9672c8e5bd7cb8280b4dd40dbcd0d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888481"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045539"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Správa zachytávání paketů pomocí služby Azure Network Watcher pomocí Powershellu
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
+> - [portál Azure](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Rozhraní Azure REST API](network-watcher-packet-capture-manage-rest.md)
@@ -37,6 +37,9 @@ Tento článek vás provede jiné úlohy, které jsou aktuálně k dispozici pro
 - [**Zastavit zachytávání paketů**](#stop-a-packet-capture)
 - [**Odstranit zachycení paketů**](#delete-a-packet-capture)
 - [**Stáhněte si zachytávání paketů**](#download-a-packet-capture)
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Před zahájením
 
@@ -54,33 +57,33 @@ Tento článek předpokládá, že máte následující prostředky:
 ### <a name="step-1"></a>Krok 1
 
 ```powershell
-$VM = Get-AzureRmVM -ResourceGroupName testrg -Name VM1
+$VM = Get-AzVM -ResourceGroupName testrg -Name VM1
 ```
 
 ### <a name="step-2"></a>Krok 2
 
-Následující příklad načte rozšíření informací potřebných ke spuštění `Set-AzureRmVMExtension` rutiny. Tato rutina nainstaluje agenta zachytávání paketů na virtuálním počítači hosta.
+Následující příklad načte rozšíření informací potřebných ke spuštění `Set-AzVMExtension` rutiny. Tato rutina nainstaluje agenta zachytávání paketů na virtuálním počítači hosta.
 
 > [!NOTE]
-> `Set-AzureRmVMExtension` Rutiny může trvat několik minut.
+> `Set-AzVMExtension` Rutiny může trvat několik minut.
 
 Pro virtuální počítače s Windows:
 
 ```powershell
-$AzureNetworkWatcherExtension = Get-AzureRmVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentWindows -Version 1.4.585.2
+$AzureNetworkWatcherExtension = Get-AzVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentWindows -Version 1.4.585.2
 $ExtensionName = "AzureNetworkWatcherExtension"
-Set-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
+Set-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
 ```
 
 Pro virtuální počítače s Linuxem:
 
 ```powershell
-$AzureNetworkWatcherExtension = Get-AzureRmVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentLinux -Version 1.4.13.0
+$AzureNetworkWatcherExtension = Get-AzVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentLinux -Version 1.4.13.0
 $ExtensionName = "AzureNetworkWatcherExtension"
-Set-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
+Set-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
 ```
 
-V následujícím příkladu se po spuštění úspěšné odpovědi `Set-AzureRmVMExtension` rutiny.
+V následujícím příkladu se po spuštění úspěšné odpovědi `Set-AzVMExtension` rutiny.
 
 ```
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -90,13 +93,13 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ### <a name="step-3"></a>Krok 3
 
-Chcete-li zajistit, že je agent nainstalovaný, spusťte `Get-AzureRmVMExtension` rutiny a předejte mu název virtuálního počítače a název rozšíření.
+Chcete-li zajistit, že je agent nainstalovaný, spusťte `Get-AzVMExtension` rutiny a předejte mu název virtuálního počítače a název rozšíření.
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
+Get-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-Následující příklad je příkladem odpověď od spuštění `Get-AzureRmVMExtension`
+Následující příklad je příkladem odpověď od spuštění `Get-AzVMExtension`
 
 ```
 ResourceGroupName       : testrg
@@ -124,11 +127,11 @@ Po dokončení předchozích kroků je nainstalován agent zachytávání paket�
 
 ### <a name="step-1"></a>Krok 1
 
-Dalším krokem je načtení instance Network Watcheru. Tato proměnná je předána `New-AzureRmNetworkWatcherPacketCapture` rutiny v kroku 4.
+Dalším krokem je načtení instance Network Watcheru. Tato proměnná je předána `New-AzNetworkWatcherPacketCapture` rutiny v kroku 4.
 
 ```powershell
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName  
+$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
+$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName  
 ```
 
 ### <a name="step-2"></a>Krok 2
@@ -136,7 +139,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 Načtěte účet úložiště. Tento účet úložiště se používá k uložení souboru zachytávání paketů.
 
 ```powershell
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName testrg -Name testrgsa123
+$storageAccount = Get-AzStorageAccount -ResourceGroupName testrg -Name testrgsa123
 ```
 
 ### <a name="step-3"></a>Krok 3
@@ -144,8 +147,8 @@ $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName testrg -Name test
 Filtry je možné omezit data, která se ukládá pomocí zachytávání paketů. Následující příklad nastaví dva filtry.  Jeden filtr shromažďuje odchozí provoz TCP jenom z IP adresy místní 10.0.0.3 do cílové porty 20, 80 a 443.  Druhý filtr shromažďuje pouze provoz UDP.
 
 ```powershell
-$filter1 = New-AzureRmPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
-$filter2 = New-AzureRmPacketCaptureFilterConfig -Protocol UDP
+$filter1 = New-AzPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
+$filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP
 ```
 
 > [!NOTE]
@@ -153,13 +156,13 @@ $filter2 = New-AzureRmPacketCaptureFilterConfig -Protocol UDP
 
 ### <a name="step-4"></a>Krok 4
 
-Spustit `New-AzureRmNetworkWatcherPacketCapture` ke spuštění procesu zachycení paketu předáním požadované hodnoty načíst v předchozích krocích.
+Spustit `New-AzNetworkWatcherPacketCapture` ke spuštění procesu zachycení paketu předáním požadované hodnoty načíst v předchozích krocích.
 ```powershell
 
-New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
+New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
 ```
 
-V následujícím příkladu je očekávaný výstup spuštění `New-AzureRmNetworkWatcherPacketCapture` rutiny.
+V následujícím příkladu je očekávaný výstup spuštění `New-AzNetworkWatcherPacketCapture` rutiny.
 
 ```
 Name                    : PacketCaptureTest
@@ -199,13 +202,13 @@ Filters                 : [
 
 ## <a name="get-a-packet-capture"></a>Získat zachytávání paketů
 
-Spuštění `Get-AzureRmNetworkWatcherPacketCapture` rutiny, načítá stav aktuálně spuštěné nebo dokončené zachytávání paketů.
+Spuštění `Get-AzNetworkWatcherPacketCapture` rutiny, načítá stav aktuálně spuštěné nebo dokončené zachytávání paketů.
 
 ```powershell
-Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
+Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
-V následujícím příkladu je výstup `Get-AzureRmNetworkWatcherPacketCapture` rutiny. V následujícím příkladu se po dokončení operace zachycení se. Hodnota PacketCaptureStatus zastavena s Důvoduzastavení TimeExceeded. Tato hodnota ukazuje, že zachytávání paketů byla úspěšná a jeho spuštění.
+V následujícím příkladu je výstup `Get-AzNetworkWatcherPacketCapture` rutiny. V následujícím příkladu se po dokončení operace zachycení se. Hodnota PacketCaptureStatus zastavena s Důvoduzastavení TimeExceeded. Tato hodnota ukazuje, že zachytávání paketů byla úspěšná a jeho spuštění.
 ```
 Name                    : PacketCaptureTest
 Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatcher
@@ -246,10 +249,10 @@ PacketCaptureError      : []
 
 ## <a name="stop-a-packet-capture"></a>Zastavit zachytávání paketů
 
-Spuštěním `Stop-AzureRmNetworkWatcherPacketCapture` rutiny, pokud relace zachytávání se v průběhu je zastavená.
+Spuštěním `Stop-AzNetworkWatcherPacketCapture` rutiny, pokud relace zachytávání se v průběhu je zastavená.
 
 ```powershell
-Stop-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
+Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
 > [!NOTE]
@@ -258,7 +261,7 @@ Stop-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketC
 ## <a name="delete-a-packet-capture"></a>Odstranit zachycení paketů
 
 ```powershell
-Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
+Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
 > [!NOTE]

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 71e71b417f12b58fc03c581826c0e5c2412e684b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c7bfd36bb4e36b10487edbbaa40421f067c9ed3e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876642"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048754"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Použití zachytávání paketů pro Proaktivní monitorování sítě pomocí výstrah a Azure Functions
 
@@ -33,9 +33,12 @@ Pomocí Network Watcher, upozorňování a funkce z v rámci ekosystému Azure m
 
 ![Scénář][scenario]
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
-* Nejnovější verzi [prostředí Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+* Nejnovější verzi [prostředí Azure PowerShell](/powershell/azure/install-Az-ps).
 * Stávající instance Network Watcheru. Pokud ho ještě nemáte, [vytvoření instance služby Network Watcher](network-watcher-create.md).
 * Existující virtuální počítač ve stejné oblasti jako sledovací proces sítě se [rozšíření Windows](../virtual-machines/windows/extensions-nwa.md) nebo [rozšíření virtuálního počítače Linux](../virtual-machines/linux/extensions-nwa.md).
 
@@ -74,10 +77,10 @@ Prvním krokem je vytvoření funkce Azure ke zpracování upozornění a vytvo�
 
     |**Nastavení** | **Hodnota** | **Podrobnosti** |
     |---|---|---|
-    |**Název aplikace**|PacketCaptureExample|Název aplikace function app.|
+    |**App name (Název aplikace)**|PacketCaptureExample|Název aplikace function app.|
     |**Předplatné**|[Vaše předplatné] Předplatné, pro který chcete vytvořit aplikaci function app.||
     |**Skupina prostředků**|PacketCaptureRG|Skupinu prostředků k obsáhnutí aplikace function app.|
-    |**Plán hostování**|Plán Consumption| Typ plánu vaše aplikace používá funkce. Možnosti jsou spotřeby nebo plán služby App Service. |
+    |**Plán Hosting**|Plán Consumption| Typ plánu vaše aplikace používá funkce. Možnosti jsou spotřeby nebo plán služby App Service. |
     |**Umístění**|USA – střed| Oblast, ve kterém chcete vytvořit aplikaci function app.|
     |**Účet úložiště**|{automaticky generované}| Účet úložiště, Azure Functions potřebuje pro úložiště pro obecné účely.|
 
@@ -88,7 +91,7 @@ Prvním krokem je vytvoření funkce Azure ke zpracování upozornění a vytvo�
     |**Nastavení** | **Hodnota** | **Podrobnosti** |
     |---|---|---|
     |**Scénář**|Experimentální|Typ scénáře|
-    |**Pojmenujte svoji funkci**|AlertPacketCapturePowerShell|Název funkce|
+    |**Pojmenování funkce**|AlertPacketCapturePowerShell|Název funkce|
     |**Úroveň autorizace**|Funkce|Úroveň autorizace pro funkci|
 
 ![Příklad funkce][functions1]
@@ -105,16 +108,16 @@ Pokud chcete používat rutiny Powershellu sledovací proces sítě, nahrajte do
 1. Na místním počítači s nejnovější moduly Azure Powershellu, které jsou nainstalovány spusťte následující příkaz Powershellu:
 
     ```powershell
-    (Get-Module AzureRM.Network).Path
+    (Get-Module Az.Network).Path
     ```
 
     V tomto příkladu obsahuje místní cestu modulů Azure Powershellu. Tyto složky se používají v pozdějším kroku. Moduly, které se používají v tomto scénáři jsou:
 
-   * AzureRM.Network
+   * Az.Network
 
-   * AzureRM.Profile
+   * Az.Accounts
 
-   * AzureRM.Resources
+   * Az.Resources
 
      ![Složky prostředí PowerShell][functions5]
 
@@ -128,17 +131,17 @@ Pokud chcete používat rutiny Powershellu sledovací proces sítě, nahrajte do
 
     ![Složky a podsložky][functions3]
 
-    * AzureRM.Network
+    * Az.Network
 
-    * AzureRM.Profile
+    * Az.Accounts
 
-    * AzureRM.Resources
+    * Az.Resources
 
-1. Klikněte pravým tlačítkem myši **AzureRM.Network** podsložky a pak vyberte **nahrát soubory**. 
+1. Klikněte pravým tlačítkem myši **Az.Network** podsložky a pak vyberte **nahrát soubory**. 
 
-6. Přejdete na moduly Azure. Místní **AzureRM.Network** složky, vyberte všechny soubory ve složce. Pak vyberte **OK**. 
+6. Přejdete na moduly Azure. Místní **Az.Network** složky, vyberte všechny soubory ve složce. Pak vyberte **OK**. 
 
-7. Opakujte tyto kroky pro **AzureRM.Profile** a **azurerm.resources zavedla**.
+7. Opakujte tyto kroky pro **Az.Accounts** a **Az.Resources**.
 
     ![Nahrání souborů][functions6]
 
@@ -196,10 +199,10 @@ ID klienta je ID aplikace pro aplikaci v Azure Active Directory.
 1. Pokud ještě nemáte aplikaci pro použití, spusťte následující příklad k vytvoření aplikace.
 
     ```powershell
-    $app = New-AzureRmADApplication -DisplayName "ExampleAutomationAccount_MF" -HomePage "https://exampleapp.com" -IdentifierUris "https://exampleapp1.com/ExampleFunctionsAccount" -Password "<same password as defined earlier>"
-    New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
+    $app = New-AzADApplication -DisplayName "ExampleAutomationAccount_MF" -HomePage "https://exampleapp.com" -IdentifierUris "https://exampleapp1.com/ExampleFunctionsAccount" -Password "<same password as defined earlier>"
+    New-AzADServicePrincipal -ApplicationId $app.ApplicationId
     Start-Sleep 15
-    New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $app.ApplicationId
+    New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $app.ApplicationId
     ```
 
    > [!NOTE]
@@ -218,7 +221,7 @@ ID klienta je ID aplikace pro aplikaci v Azure Active Directory.
 Získejte ID tenanta spuštěním následující ukázku prostředí PowerShell:
 
 ```powershell
-(Get-AzureRmSubscription -SubscriptionName "<subscriptionName>").TenantId
+(Get-AzSubscription -SubscriptionName "<subscriptionName>").TenantId
 ```
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
@@ -266,9 +269,9 @@ V následujícím příkladu je kódu Powershellu, který lze použít ve funkci
 
 ```powershell
             #Import Azure PowerShell modules required to make calls to Network Watcher
-            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Profile\AzureRM.Profile.psd1" -Global
-            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Network\AzureRM.Network.psd1" -Global
-            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Resources\AzureRM.Resources.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\Az.Accounts\Az.Accounts.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\Az.Network\Az.Network.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\Az.Resources\Az.Resources.psd1" -Global
 
             #Process alert request body
             $requestBody = Get-Content $req -Raw | ConvertFrom-Json
@@ -290,7 +293,7 @@ V následujícím příkladu je kódu Powershellu, který lze použít ve funkci
             #Authentication
             $secpassword = $pw | ConvertTo-SecureString -Key (Get-Content $keypath)
             $credential = New-Object System.Management.Automation.PSCredential ($clientid, $secpassword)
-            Connect-AzureRmAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
+            Connect-AzAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
 
 
             #Get the VM that fired the alert
@@ -302,22 +305,22 @@ V následujícím příkladu je kódu Powershellu, který lze použít ve funkci
                 Write-Output ("Resource Type:  {0}" -f $requestBody.context.resourceType)
 
                 #Get the Network Watcher in the VM's region
-                $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
-                $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+                $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
+                $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 
                 #Get existing packetCaptures
-                $packetCaptures = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher
+                $packetCaptures = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher
 
                 #Remove existing packet capture created by the function (if it exists)
                 $packetCaptures | %{if($_.Name -eq $packetCaptureName)
                 { 
-                    Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName $packetCaptureName
+                    Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName $packetCaptureName
                 }}
 
                 #Initiate packet capture on the VM that fired the alert
-                if ((Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher).Count -lt $packetCaptureLimit){
+                if ((Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher).Count -lt $packetCaptureLimit){
                     echo "Initiating Packet Capture"
-                    New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $requestBody.context.resourceId -PacketCaptureName $packetCaptureName -StorageAccountId $storageaccountid -TimeLimitInSeconds $packetCaptureDuration
+                    New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $requestBody.context.resourceId -PacketCaptureName $packetCaptureName -StorageAccountId $storageaccountid -TimeLimitInSeconds $packetCaptureDuration
                     Out-File -Encoding Ascii -FilePath $res -inputObject "Packet Capture created on ${requestBody.context.resourceID}"
                 }
             } 

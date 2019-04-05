@@ -14,19 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: ea10e83e8a5963c1ea0073179c15b1c2f3230805
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 601a3f273a8da9100d24dfdbd13bd598b0e48884
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615194"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051559"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Vytvoření instance Azure Network Watcher
 
 Network Watcher je místní služba, která umožňuje monitorovat a diagnostikovat podmínky na úrovni síťového scénáře v aplikaci, do a z Azure. Scénář úrovně monitorování, můžete diagnostikovat problémy na úrovni pohledu koncové síťové. Pro diagnostiku sítě a vizualizačních nástrojů, které jsou k dispozici pomocí služby Network Watcher pomáhají porozumět, diagnostice a získání přehledu o vaší síti v Azure. Network Watcher je povolená díky vytváření prostředek Network Watcher. Tento prostředek umožňuje využít možnosti Network Watcher.
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="network-watcher-is-automatically-enabled"></a>Network Watcher se automaticky povolí.
-Při vytváření nebo aktualizaci virtuální sítě ve vašem předplatném, Network Watcher se automaticky povolí v oblasti virtuální sítě. Neexistuje žádný vliv na prostředky nebo související poplatky za automaticky povoluje se Network Watcher.
+Při vytváření nebo aktualizaci virtuální sítě ve vašem předplatném, Network Watcher se automaticky povolí v oblasti virtuální sítě. Na vaše prostředky to nemá žádný dopad a za automatické povolení služby Network Watcher se neúčtuje žádný poplatek.
 
 #### <a name="opt-out-of-network-watcher-automatic-enablement"></a>Odhlásit z automatického povolení Network Watcher
 Pokud chcete vyjádřit výslovný nesouhlas povolení automatické Network Watcher, provedete to spuštěním následujících příkazů:
@@ -35,8 +38,8 @@ Pokud chcete vyjádřit výslovný nesouhlas povolení automatické Network Watc
 > Vyjádří svůj nesouhlas povolení automatické Network Watcher změna je trvalá. Jakmile je odhlásit vás nelze vyjádřit výslovný souhlas bez [kontaktovat podporu](https://azure.microsoft.com/support/options/)
 
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature -FeatureName DisableNetworkWatcherAutocreation -ProviderNamespace Microsoft.Network
-Register-AzureRMResourceProvider -ProviderNamespace Microsoft.Network
+Register-AzProviderFeature -FeatureName DisableNetworkWatcherAutocreation -ProviderNamespace Microsoft.Network
+Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
 ```azurecli-interactive
@@ -63,7 +66,7 @@ Pokud chcete upravit název instance Network Watcheru a skupinu prostředků je 
 K vytvoření instance služby Network Watcher, spusťte v následujícím příkladu:
 
 ```powershell
-New-AzureRmNetworkWatcher -Name "NetworkWatcher_westcentralus" -ResourceGroupName "NetworkWatcherRG" -Location "West Central US"
+New-AzNetworkWatcher -Name "NetworkWatcher_westcentralus" -ResourceGroupName "NetworkWatcherRG" -Location "West Central US"
 ```
 
 ## <a name="create-a-network-watcher-with-the-azure-cli"></a>Pomocí Azure CLI vytvořit Network Watcher
@@ -106,9 +109,9 @@ Teď, když máte instanci služby Network Watcher, další informace o funkcíc
 
 * [Topologie](network-watcher-topology-overview.md)
 * [Zachytávání paketů](network-watcher-packet-capture-overview.md)
-* [Ověření IP toku](network-watcher-ip-flow-verify-overview.md)
+* [Ověření toku protokolu IP](network-watcher-ip-flow-verify-overview.md)
 * [Další směrování](network-watcher-next-hop-overview.md)
-* [Zobrazení skupin zabezpečení](network-watcher-security-group-view-overview.md)
+* [Zobrazení skupiny zabezpečení](network-watcher-security-group-view-overview.md)
 * [Protokolování toků NSG](network-watcher-nsg-flow-logging-overview.md)
 * [Řešení potíží virtuální síťová brána](network-watcher-troubleshoot-overview.md)
 

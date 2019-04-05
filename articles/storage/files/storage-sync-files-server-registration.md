@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 954cbe66bfc4a0cebf7692a90aeee637ffcb6ca3
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 0f18467bfefdb27f2cb9c2c3f56942f679673c16
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485051"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048433"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Správa registrovaných serverů pomocí služby Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to pomocí transformace serverů Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
@@ -103,8 +103,8 @@ Můžete také provést registraci serveru přes PowerShell. Toto je jediným po
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
-Login-AzureRmStorageSync -SubscriptionID "<your-subscription-id>" -TenantID "<your-tenant-id>"
-Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - ResourceGroupName "<your-resource-group-name>" - StorageSyncService "<your-storage-sync-service-name>"
+Login-AzStorageSync -SubscriptionID "<your-subscription-id>" -TenantID "<your-tenant-id>"
+Register-AzStorageSyncServer -SubscriptionId "<your-subscription-id>" - ResourceGroupName "<your-resource-group-name>" - StorageSyncService "<your-storage-sync-service-name>"
 ```
 
 ### <a name="unregister-the-server-with-storage-sync-service"></a>Zrušení registrace serveru se služba synchronizace úložiště
@@ -142,10 +142,10 @@ Login-AzStorageSync -SubscriptionId $accountInfo.Context.Subscription.Id -Tenant
 
 $StorageSyncService = "<your-storage-sync-service>"
 
-Get-AzureRmStorageSyncGroup -StorageSyncServiceName $StorageSyncService | ForEach-Object { 
+Get-AzStorageSyncGroup -StorageSyncServiceName $StorageSyncService | ForEach-Object { 
     $SyncGroup = $_; 
-    Get-AzureRmStorageSyncServerEndpoint -StorageSyncServiceName $StorageSyncService -SyncGroupName $SyncGroup.Name | Where-Object { $_.DisplayName -eq $env:ComputerName } | ForEach-Object { 
-        Remove-AzureRmStorageSyncServerEndpoint -StorageSyncServiceName $StorageSyncService -SyncGroupName $SyncGroup.Name -ServerEndpointName $_.Name 
+    Get-AzStorageSyncServerEndpoint -StorageSyncServiceName $StorageSyncService -SyncGroupName $SyncGroup.Name | Where-Object { $_.DisplayName -eq $env:ComputerName } | ForEach-Object { 
+        Remove-AzStorageSyncServerEndpoint -StorageSyncServiceName $StorageSyncService -SyncGroupName $SyncGroup.Name -ServerEndpointName $_.Name 
     } 
 }
 ```
@@ -193,7 +193,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 Když Azure File Sync je hostovaný na virtuálním počítači spuštěná ve virtualizačním hostiteli systému Windows Server, můžete regulovat úložiště využití vstupně-výstupní operace kvality služby úložiště (kvalita služby úložiště). Zásada QoS pro úložiště můžete nastavit jako maximální počet (nebo omezení, třeba jak se bude vynucovat omezení StorageSyncNetwork výše) nebo jako minimální (nebo rezervace). Nastavení minimální místo maximální umožňuje Azure File Sync prudce zvýšit výkon rychlejší využívat šířku pásma úložiště k dispozici, pokud ho nepoužívají jiné úlohy. Další informace najdete v tématu [kvality služby úložiště](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-- [Plánování nasazení služby Azure File Sync](storage-sync-files-planning.md)
-- [Nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md)
-- [Monitorování Azure File Sync](storage-sync-files-monitoring.md)
-- [Řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md)
+- [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)
+- [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)
+- [Sledování služby Synchronizace souborů Azure](storage-sync-files-monitoring.md)
+- [Řešení problémů se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)

@@ -14,14 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: f5eefd1d3fa26738729d98e60d8a56cd8d33d86c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 11ff7066019654ce2771bce242f3431d10da44ae
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084874"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051933"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatizované řešení zotavení po havárii pomocí Azure Site Recovery pro sdílené složky hostované na StorSimple
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="overview"></a>Přehled
 Microsoft Azure StorSimple je hybridní cloudové řešení úložiště, který adresuje složitosti nestrukturovaných dat, běžně spojené s využitím sdílených složek. StorSimple využívá cloudové úložiště jako rozšíření místního řešení a automaticky úrovně dat napříč úložiště v místním a cloudovým úložištěm. Integrovaná ochrana dat s místní a cloudové snímky, eliminuje potřebu rozrůstající infrastruktury úložiště.
 
@@ -167,7 +170,7 @@ V Azure Site Recovery k automatizaci procesu převzetí služeb při selhání s
    
 1. V účtu automation, klikněte na tlačítko **proměnné** &gt; **přidat proměnnou** a přidejte následující proměnné. Můžete se k šifrování tyto prostředky. Tyto proměnné jsou konkrétní plán obnovení. Pokud v plánu služby recovery, které vytvoříte v dalším kroku název je testovací plány, proměnných by měl být StorSimRegKey testovací plány, testovací plán – AzureSubscriptionName a tak dále.
 
-   - **BaseUrl**: Adresa url správce prostředků cloudu Azure. Získáte rutinou **Get-AzureRmEnvironment | Název Select-Object, ResourceManagerUrl** rutiny.
+   - **BaseUrl**: Adresa url správce prostředků cloudu Azure. Získáte rutinou **Get AzEnvironment | Název Select-Object, ResourceManagerUrl** rutiny.
    - *RecoveryPlanName***-ResourceGroupName**: Skupina Resource Manageru, který se má prostředek StorSimple.
    - *RecoveryPlanName***-ManagerName**: StorSimple prostředek, který má zařízení StorSimple.
    - * RecoveryPlanName ***- DeviceName**: Zařízení StorSimple, který má být převzetí služeb při selhání.

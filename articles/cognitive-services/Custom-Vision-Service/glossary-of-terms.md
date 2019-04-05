@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 3530dbfe15f6dbdf481df70de6d03979750aa38e
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 3a34af77a2806ceb56e939e2b153f2e68bba61cd
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352098"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048932"
 ---
 # <a name="glossary-of-terms-for-custom-vision-service"></a>Slovník pojmů pro službu Custom Vision Service
 
@@ -32,7 +32,6 @@ Když vytvoříte projekt, vyberte "domény" pro tento projekt. Doména optimali
 - **Doména potravin.** Optimalizovaná pro si pochutnává, které byste měli v nabídka restaurace. Nebyl optimalizován pro jednotlivá ovoce nebo zeleniny uznání. Pokud chcete klasifikovat fotografie jednotlivá ovoce nebo zeleniny, použijte obecné domény pro tento účel.
 - **Památek domény.** Optimalizovaná pro rozpoznatelných památek, přirozené a umělé. Tato doména funguje nejlépe, když památek je jasně viditelný v fotografie, i v případě, že památek mírně brání skupinu osob představující před tímto prvkem.
 - **Doména maloobchodního prodeje.** Optimalizovaná pro klasifikaci obrázků v nákupní katalogu nebo nákupního webu. Pokud chcete vysokou přesnost při klasifikaci šatů, pants, košile atd., pak použijte domény maloobchodního prodeje.
-- **Domény pro dospělé.** Optimalizované a lépe tak definovat mezi obsah pro dospělé a obsahu jiných dospělá osoba. Například pokud chcete blokovat obrázky ve koupání barvy, tuto doménu vám umožní vytvářet vlastní třídění to udělat.
 - **Obecné domény.** Vhodná pro širokou škálu obrázek úlohy klasifikace.
 
 Modely generovaných **compact domén** je možné exportovat pomocí funkce exportu iterace. Jsou optimalizované pro omezení v reálném čase klasifikace na mobilních zařízeních. Třídění vytvořených pomocí compact domény může být méně přesné standardní domény s velkou trénovací data. Výměnou za to je, že jsou dostatečně malá, má být spuštěn místně v téměř reálném čase. 

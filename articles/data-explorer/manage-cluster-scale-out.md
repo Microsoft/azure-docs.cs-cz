@@ -1,19 +1,18 @@
 ---
-title: Škálování clusteru Průzkumník dat Azure tak, aby vyhovovaly měnících se požadavků
+title: Horizontální navýšení kapacity clusteru služby Průzkumník dat Azure tak, aby vyhovovaly měnících se požadavků
 description: Tento článek popisuje kroky pro horizontální navýšení kapacity a škálování v clusteru Azure Průzkumník dat na základě změny poptávky.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-services: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 9b54bf182f23eceb47c392059ff52c04bf0a8aed
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: ab4ced6695e6066098dd5ff7348528deedfc0e1b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755071"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044230"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Správa clusteru škálování tak, aby vyhovovaly měnících se požadavků
 
@@ -46,7 +45,7 @@ Následující obrázek znázorňuje tok následujících několika krocích. Da
     | **Časová agregace** | Vyberte kritéria agregaci, jako je například **průměrné**. |
     | **Název metriky** | Vyberte metriku, chcete, aby operace škálování na základě na, například **využití mezipaměti**. |
     | **Statistika agregačního intervalu** | Výběr mezi **průměrné**, **minimální**, **maximální**, a **součet**. |
-    | **– Operátor** | Vyberte příslušnou možnost, například **větší než nebo rovna hodnotě**. |
+    | **Operátor** | Vyberte příslušnou možnost, například **větší než nebo rovna hodnotě**. |
     | **Prahová hodnota** | Zvolte příslušnou hodnotu. Pro využití mezipaměti, třeba 80 procent je dobrým výchozím bodem. |
     | **Doba trvání (v minutách)** | Zvolte odpovídající množství času pro systém vás pod rouškou zpět při výpočtu metrik. Začněte s výchozí hodnotu 10 minut. |
     |  |  |
@@ -66,8 +65,8 @@ Následující obrázek znázorňuje tok následujících několika krocích. Da
 
     | Nastavení | Popis a hodnotu |
     | --- | --- |
-    | **Minimum** | Počet instancí, které váš cluster nebude škálování níže, bez ohledu na využití. |
-    | **Maximální počet** | Počet instancí, které váš cluster nebude škálování nad, bez ohledu na využití. |
+    | **Minimální** | Počet instancí, které váš cluster nebude škálování níže, bez ohledu na využití. |
+    | **Maximum** | Počet instancí, které váš cluster nebude škálování nad, bez ohledu na využití. |
     | **Výchozí** | Výchozí počet instancí. Toto nastavení se používá, pokud dochází k problémům s čtení metrik prostředku. |
     |  |  |
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 2bf323b34c5a5301094bdecdc9fa705fe9077320
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 315bad5c4ffc3d5e8909c86cb8de703e9cb941b0
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482126"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048839"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -40,6 +40,9 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 > [!Note]  
 > Vždy doporučujeme získat nejnovější aktualizaci KB pro vaši verzi systému Windows.
 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Požadavky 
 * **Název účtu úložiště**: Připojení sdílené složky Azure, potřebujete název účtu úložiště.
 
@@ -47,13 +50,13 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 
 * **Zkontrolujte, jestli je port 445 otevřený**: Protokol SMB vyžaduje port TCP 445 být otevřená. připojení se nezdaří, pokud je port 445 blokovaný. Ke kontrole, jestli vaše brána firewall neblokuje port 445, můžete použít rutinu `Test-NetConnection`. Informace o [různé způsoby, jak řešení blokované portu 445 zde](https://docs.microsoft.com/en-us/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
 
-    Následující kód PowerShellu předpokládá, že máte nainstalovaný modul AzureRM PowerShell. Další informace najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resource-group-name>` odpovídajícími názvy pro váš účet úložiště.
+    Následující příkaz Powershellu kód předpokládá, že máte modul Azure PowerShell nainstalovali, naleznete v tématu [instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) Další informace. Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resource-group-name>` odpovídajícími názvy pro váš účet úložiště.
 
     ```powershell
     $resourceGroupName = "<your-resource-group-name>"
     $storageAccountName = "<your-storage-account-name>"
 
-    # This command requires you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
+    # This command requires you to be logged into your Azure account, run Login-AzAccount if you haven't
     # already logged in.
     $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
 
@@ -222,7 +225,7 @@ Výběrem možnosti **Otevřít** můžete otevřít konkrétní snímek.
 
 #### <a name="restore-from-a-previous-version"></a>Obnovení z předchozí verze
 Výběrem možnosti **Obnovit** můžete rekurzivně zkopírovat obsah celého adresáře v době vytvoření snímku sdílené složky do původního umístění.
- ![Tlačítko Obnovit ve zprávě upozornění](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
+ ![Obnovit tlačítko v upozornění](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>Zabezpečení Windows a Windows Serveru
 Aby bylo možné připojit sdílenou složku Azure ve Windows, musí být přístupný port 445. Řada organizací port 445 blokuje kvůli bezpečnostním rizikům spojeným s protokolem SMB 1. Protokol SMB 1, označovaný také jako CIFS (Common Internet File System), je starší verze protokolu systému souborů, který je součástí Windows a Windows Serveru. Protokol SMB 1 je zastaralý, neefektivní a hlavně nezabezpečený protokol. Dobrou zprávou je, že služba Soubory Azure nepodporuje protokol SMB 1 a všechny podporované verze Windows a Windows Serveru umožňují odebrání nebo zakázání protokolu SMB 1. Vždy [důrazně doporučujeme](https://aka.ms/stopusingsmb1) ve Windows odebrat nebo zakázat klienta a server SMB 1 před použitím sdílených složek Azure v produkčním prostředí.
@@ -295,10 +298,10 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Par
 Po vytvoření tohoto klíče registru musíte server restartovat, aby se protokol SMB 1 zakázal.
 
 ### <a name="smb-resources"></a>Zdroje informací k protokolu SMB
-- [Ukončení používání protokolu SMB 1](https://blogs.technet.microsoft.com/filecab/2016/09/16/stop-using-smb1/)
-- [Informační středisko k produktu SMB 1](https://blogs.technet.microsoft.com/filecab/2017/06/01/smb1-product-clearinghouse/)
-- [Zjišťování protokolu SMB 1 v prostředí pomocí DSCEA](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/)
-- [Zakázání protokolu SMB 1 prostřednictvím Zásad skupiny](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/)
+- [Přestat používat SMB 1](https://blogs.technet.microsoft.com/filecab/2016/09/16/stop-using-smb1/)
+- [SMB Clearinghouse produktů: 1](https://blogs.technet.microsoft.com/filecab/2017/06/01/smb1-product-clearinghouse/)
+- [Zjišťování ve vašem prostředí s DSCEA SMB 1](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/)
+- [Vypnutí funkce SMB 1 prostřednictvím zásad skupiny](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/)
 
 ## <a name="next-steps"></a>Další postup
 Další informace o službě Soubory Azure najdete na těchto odkazech:

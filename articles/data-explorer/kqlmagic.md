@@ -1,21 +1,20 @@
 ---
-title: Analýza dat pomocí poznámkového bloku Jupyter a Kqlmagic
-description: V tomto tématu ukazují, jak analyzovat data pomocí poznámkového bloku Jupyter a KQLmagic
-services: data-explorer
+title: Analýza dat v Průzkumníku dat Azure pomocí poznámkového bloku Jupyter
+description: Toto téma ukazuje, jak analyzovat data v Průzkumníku dat Azure pomocí poznámkového bloku Jupyter a Kqlmagic rozšíření.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 0e7d6148297dd4208374d9900e10564ac4052c67
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 896a5d13279c15f0035f214da3d5a7d7e6f1861f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756213"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045050"
 ---
-# <a name="analyze-data-using-jupyter-notebook-and-kql-magic"></a>Analýza dat pomocí poznámkového bloku Jupyter a KQL magic
+# <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Analýza dat v Průzkumníku dat Azure pomocí Poznámkový blok Jupyter a Kqlmagic rozšíření
 
 Poznámkový blok Jupyter je open source webová aplikace, která umožňuje vytvářet a sdílet dokumenty, které obsahují živého kódu, rovnice, vizualizace a vyprávěného textu. Použití zahrnuje čištění dat a transformace, číselné simulace, statistické modelování, vizualizace dat a strojové učení.
 [Poznámkový blok Jupyter](https://jupyter.org/) podporuje magic funkce, které rozšiřují možnosti jádra díky podpoře dalších příkazů. KQL magic je příkaz, který rozšiřuje možnosti jádra Python do poznámkového bloku Jupyter, abyste mohli spustit dotazy v jazyce Kusto nativně. Můžete snadno kombinovat Python a Kusto dotazovací jazyk pro dotazování a vizualizace dat s využitím bohaté integrovaná knihovna Plot.ly `render` příkazy. Zdroje dat pro spouštění dotazů nejsou podporovány. Tyto zdroje dat patří Průzkumník dat Azure, zkoumání rychlá a vysoce škálovatelnými datové služby pro protokol a telemetrická data, jakož i protokoly Azure monitoru a Application Insights. KQL magic funguje taky s příponou poznámkových bloků Azure Jupyter Lab a Visual Studio Code Jupyter.

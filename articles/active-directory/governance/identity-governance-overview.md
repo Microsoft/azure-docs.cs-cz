@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7872a43d5000ddb1ba581f76358c8001902ab56b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: e4e2f564de254c2aea779b30286183d0a4e17db6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579712"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045480"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co je zásady správného řízení identit Azure AD?
 
@@ -56,7 +56,7 @@ Obvykle IT delegáti přístup pracovníci s rozhodovací pravomocí rozhodnutí
 
 Organizace můžete automatizovat proces životního cyklu přístup díky technologiím, jako například [dynamické skupiny](../users-groups-roles/groups-dynamic-membership.md), svázaných s zřizování uživatelů pro [aplikace SaaS](../saas-apps/tutorial-list.md) nebo [integrovat se službou SCIMaplikace](../manage-apps/use-scim-to-provision-users-and-groups.md).  Organizace taky řídit, které [uživatele typu Host mají přístup k místním aplikacím](../b2b/hybrid-cloud-to-on-premises.md).  Tyto přístup k oprávnění může pak být pravidelně přezkoumávány pomocí opakovaného [kontroly přístupu Azure AD](access-reviews-overview.md).
 
-Když se uživatel pokusí získat přístup k aplikacím, vynucuje Azure AD [podmíněného přístupu](/azure/active-directory/conditional-access/) zásady. Zásady podmíněného přístupu může obsahovat třeba zobrazování [podmínky použití](active-directory-tou.md) a [zajistit, že uživatel souhlasil s těmito podmínkami](../conditional-access/require-tou.md) před nebudete mít přístup k aplikaci.
+Když se uživatel pokusí získat přístup k aplikacím, vynucuje Azure AD [podmíněného přístupu](/azure/active-directory/conditional-access/) zásady. Zásady podmíněného přístupu může obsahovat třeba zobrazování [podmínky použití](../conditional-access/terms-of-use.md) a [zajistit, že uživatel souhlasil s těmito podmínkami](../conditional-access/require-tou.md) před nebudete mít přístup k aplikaci.
 
 ## <a name="privileged-access-lifecycle"></a>Životní cyklus privilegovaného přístupu
 
@@ -76,13 +76,13 @@ Neplatí žádné z nabízených řešení nebo doporučení pro každý zákazn
 
 - [Co je kontrola přístupu?](access-reviews-overview.md)
 - [Správa přístupu uživatelů pomocí kontrol přístupu](manage-user-access-with-access-reviews.md)
-- [Správa přístupu hostů pomocí kontrol přístupu](manage-guest-access-with-access-reviews.md)
+- [Spravovat přístup hosta pomocí kontrol přístupu](manage-guest-access-with-access-reviews.md)
 - [Zahájení kontroly přístupu Azure AD rolí](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 ### <a name="terms-of-use"></a>Podmínky použití
 
-- [Co můžu dělat s podmínkami použití?](active-directory-tou.md)
+- [Co můžu dělat s podmínkami použití?](../conditional-access/terms-of-use.md)
 
 ### <a name="privileged-identity-management"></a>Privileged Identity Management
 
-- [Co je Azure AD PIM](../privileged-identity-management/pim-configure.md)
+- [Co je Azure AD PIM?](../privileged-identity-management/pim-configure.md)

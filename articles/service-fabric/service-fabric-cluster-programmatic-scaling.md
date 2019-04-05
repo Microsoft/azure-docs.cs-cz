@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: ff02f79321823e42c25897e9de30dfbb6fac46b0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 552c9820cca4380c00e1bf435fdb3d068c0690fb
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949606"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047935"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Škálování clusteru Service Fabric prostřednictvím kódu programu 
 
 Clustery Service Fabric běžící v Azure jsou postavené na škálovací sady virtuálních počítačů.  [Škálování clusterů](./service-fabric-cluster-scale-up-down.md) popisuje, jak clustery Service Fabric je možné škálovat ručně nebo pomocí pravidel automatického škálování. Tento článek popisuje, jak spravovat přihlašovací údaje a škálovat cluster v nebo navýšení kapacity pomocí fluent Azure compute SDK, která je pokročilejších scénářích. Přehled najdete v článku [programové metody koordinovat operace škálování Azure](service-fabric-cluster-scaling.md#programmatic-scaling). 
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>Správa přihlašovacích údajů
 Problémy může vyvolávat zápisu služby pro zpracování škálování je, že služba musí mít přístup k prostředků škálovací sady virtuálních počítačů bez interaktivní přihlášení. Přístup ke clusteru Service Fabric je jednoduché, pokud škálování služby upravuje své vlastní aplikace Service Fabric, ale přihlašovací údaje jsou potřeba pro přístup ke škálovací sadě. K přihlášení, můžete použít [instanční objekt služby](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) vytvořené pomocí [rozhraní příkazového řádku Azure](https://github.com/azure/azure-cli).
@@ -65,7 +68,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Velikost virtuálního počítače škálovací sady je možné případně také spravovat pomocí rutin prostředí PowerShell. [`Get-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) můžete načíst objekt virtuálního počítače škálovací sady. Aktuální kapacita bude k dispozici prostřednictvím `.sku.capacity` vlastnost. Po změně kapacitu na požadovanou hodnotu, virtuálního počítače škálovací sady v Azure se dají aktualizovat [ `Update-AzureRmVmss` ](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) příkazu.
+Velikost virtuálního počítače škálovací sady je možné případně také spravovat pomocí rutin prostředí PowerShell. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) můžete načíst objekt virtuálního počítače škálovací sady. Aktuální kapacita bude k dispozici prostřednictvím `.sku.capacity` vlastnost. Po změně kapacitu na požadovanou hodnotu, virtuálního počítače škálovací sady v Azure se dají aktualizovat [ `Update-AzVmss` ](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) příkazu.
 
 Jako při přidávání uzlu ručně, přidání škálovací sady instance by měl být vše, co potřebujete ke spuštění nový uzel Service Fabric, protože škálovací sada šablony zahrnuje rozšíření automaticky připojí k nové instance do clusteru Service Fabric. 
 

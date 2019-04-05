@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 85dd3cca081d492bfeefa3e8ea0d143c9c37af8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c2821890408e38d0d2be730da10b7926d77697d4
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007944"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048295"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Důležité informace o výkonu nástroje Traffic Manager
 
@@ -82,5 +82,5 @@ Nástroje na tyto weby míru DNS latenci a zobrazení přeložit IP adresy pro k
 
 [Operace v Traffic Manageru (referenční informace k rozhraní API REST)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Rutiny Azure Traffic Manageru](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager)
+[Rutiny Azure Traffic Manageru](https://docs.microsoft.com/powershell/module/az.trafficmanager)
 

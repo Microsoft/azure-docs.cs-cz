@@ -10,16 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: 83ae58e4a86d3bc2ffb2197f48d2c641790e8524
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 91413aa461261824782717ae4edacc2757ad5405
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648278"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048720"
 ---
 # <a name="deploy-azure-machine-learning-studio-workspace-using-azure-resource-manager"></a>Nasazení aplikace Azure Machine Learning Studio prostoru pomocí Azure Resource Manageru
 
 Pomocí Azure Resource Manageru šablony nasazení šetří čas vyznačuje mimořádně škálovatelný způsob, jak nasadit vzájemně propojených součástí ověřování a mechanismus opakování. Nastavit pracovní prostory Azure Machine Learning Studio, například musíte nejprve nakonfigurovat účet úložiště Azure a pak nasaďte váš pracovní prostor. Představte si to ručně pro stovky pracovní prostory. Jednodušší alternativu je použití šablony Azure Resource Manageru k nasazení pracovnímu prostoru Studio a všechny jeho závislosti. Tento článek vás provede krok za krokem tohoto procesu. Skvělý přehled Azure Resource Manageru najdete v tématu [přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="step-by-step-create-a-machine-learning-workspace"></a>Podrobný postup: vytvořit pracovní prostor Machine Learning
 Jsme se vytvořit skupinu prostředků Azure a pak nasaďte nový účet úložiště Azure a nový Azure Studio pracovní prostor Machine Learning pomocí šablony Resource Manageru. Po dokončení nasazení můžeme se vytiskne důležité informace o pracovních prostorech, které byly vytvořeny (primární klíč, ID pracovního prostoru a adresu URL do pracovního prostoru).
@@ -83,7 +85,7 @@ Tuto šablonu uložte jako soubor mlworkspace.json pod c:\temp\.
 
 ```powershell
 # Install the Azure Resource Manager modules from the PowerShell Gallery (press “A”)
-Install-Module AzureRM -Scope CurrentUser
+Install-Module Az -Scope CurrentUser
 
 # Install the Azure Service Management modules from the PowerShell Gallery (press “A”)
 Install-Module Azure -Scope CurrentUser
@@ -95,7 +97,7 @@ Install-Module Azure -Scope CurrentUser
 
 ```powershell
 # Authenticate (enter your credentials in the pop-up window)
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 Tento krok je potřeba opakovat pro každou relaci. Po ověření, má být zobrazena informace o vašem předplatném.
 
@@ -106,7 +108,7 @@ Když teď máme přístup k Azure, můžeme vytvořit skupinu prostředků.
 * Vytvoření skupiny prostředků
 
 ```powershell
-$rg = New-AzureRmResourceGroup -Name "uniquenamerequired523" -Location "South Central US"
+$rg = New-AzResourceGroup -Name "uniquenamerequired523" -Location "South Central US"
 $rg
 ```
 
@@ -119,7 +121,7 @@ Název skupiny prostředků pomocí šablony slouží ke generování názvu ú�
 
 ```powershell
 # Create a Resource Group, TemplateFile is the location of the JSON template.
-$rgd = New-AzureRmResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworkspace.json" -ResourceGroupName $rg.ResourceGroupName
+$rgd = New-AzResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworkspace.json" -ResourceGroupName $rg.ResourceGroupName
 ```
 
 Po dokončení nasazení je jednoduché pro přístup k vlastnostem pracovního prostoru, který jste nasadili. Například můžete přistupovat primární klíč tokenu.
@@ -129,11 +131,11 @@ Po dokončení nasazení je jednoduché pro přístup k vlastnostem pracovního 
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
-Dalším způsobem, jak získat tokeny existující pracovní prostor je použití příkazu Invoke-AzureRmResourceAction. Například můžete vytvořit seznam primární a sekundární tokeny všechny pracovní prostory.
+Dalším způsobem, jak získat tokeny existující pracovní prostor je použití příkazu Invoke-AzResourceAction. Například můžete vytvořit seznam primární a sekundární tokeny všechny pracovní prostory.
 
 ```powershell
 # List the primary and secondary tokens of all workspaces
-Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEach-Object { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
+Get-AzResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEach-Object { Invoke-AzResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
 ```
 Po zřízení pracovního prostoru můžete automatizovat řadu úloh Azure Machine Learning Studio pomocí [modul PowerShell pro Azure Machine Learning Studio](https://aka.ms/amlps).
 
