@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c0d659d983e62cd2a85c0d6768c54e5a1d9e9217
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
-ms.translationtype: HT
+ms.openlocfilehash: f3ebbfb1b9894b2bf1ca41ac46970e138d107f7b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005793"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265079"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Jak změnit licenční model virtuálního počítače s SQL serverem v Azure
 Tento článek popisuje, jak změnit licenční model pro virtuální počítače s SQL serverem v Azure pomocí nového poskytovatele prostředků SQL VM - **Microsoft.SqlVirtualMachine**. Existují dva licenční modely pro virtuální počítač (VM), který je hostitelem SQL serveru – s průběžnými platbami a používání vlastní licence (BYOL). A teď se pomocí Powershellu nebo rozhraní příkazového řádku Azure, můžete upravit který licenční model virtuálního počítače s SQL Server používá. 
@@ -42,7 +42,8 @@ Přepínání mezi těmito dvěma modely licence s sebou nese náklady **bez vý
 
  - Možnost převést licenční model je aktuálně k dispozici pouze v případě, že začnete s imagí virtuálního počítače s SQL Serverem s průběžnými platbami. Pokud začnete s imagí s použitím vlastní licence z portálu, nebudete moct tuto image převést na průběžné platby.
   - V současné době Změna licenčního modelu je podporována pouze pro virtuální počítače nasazené pomocí modelu Resource Manager. Virtuální počítače nasazené pomocí klasického modelu, nejsou podporovány. 
-   - Aktuálně Změna licenčního modelu je povolena pouze pro veřejné cloudové zařízení.
+   - V současné době Změna licenčního modelu je povolena pouze pro veřejné cloudové zařízení.
+   - V současné době tato procedura je podporována pouze na virtuálních počítačích, které mají jednu síťovou kartu (síťové rozhraní). Na virtuálních počítačích, které mají více než jedním síťovým rozhraním, byste měli nejprve odebrat jedné síťové karty (pomocí webu Azure portal) před dalším pokusem postup. V opačném případě bude narazíte na chybu podobnou této: "Virtuální počítač"\<vmname\>' má více než jedním síťovým rozhraním spojené. " I když je možné přidat síťové rozhraní zpět k virtuálnímu počítači po změně licencování, se operace provádí prostřednictvím okno konfigurace SQL, jako jsou automatické opravy a zálohování, nelze nadále považovat podporována.
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -13,19 +13,19 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f09fded38e384126a8dfdbe567ce4a3ebd5b1af4
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 459758142c94ddfd244df1427dd5632186efc0de
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893584"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266919"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
 
 Služba Azure Functions pracuje ve dvou různých plánů: Plán consumption a plán Premium (public preview). Plán Consumption automaticky přidá výpočetní výkon, když váš kód běží. Vaše aplikace je škálovat na více systémů v případě potřeby pro zpracování zátěže a kapacitu vertikálně snížit, když kód přestane fungovat. Nemusíte platit za nečinných virtuálních počítačů nebo záložní kapacita předem.  Plán Premium také automaticky škálovat a přidat další výpočetní výkon, když váš kód běží.  Plán Premium zahrnuje další funkce jako premium výpočetních instancí, je schopnost uchovat teplý instance po neomezenou dobu a připojení k virtuální síti.  Pokud máte existující plán služby App Service, můžete také spustit vaše aplikace function App v nich.
 
 > [!NOTE]  
-> Obě [plán Premium](https://azure.microsoft.com/blog/uncompromised-serverless-scale-for-enterprise-workloads-with-the-azure-functions-premium-plan/preview/) a [plánu Consumption pro Linux](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/) jsou aktuálně ve verzi preview.
+> Obě [plán Premium](https://aka.ms/functions-premiumplan) a [plánu Consumption pro Linux](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/) jsou aktuálně ve verzi preview.
 
 Pokud nejste obeznámeni s využitím Azure Functions, přečtěte si článek [přehled Azure Functions](functions-overview.md).
 

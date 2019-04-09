@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 33011a419c8c966fc59b769106aaff428b2a0709
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 624ad22b1c63498e8ce936472cfc884910bc6f84
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057672"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276945"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Aktivace Azure Disk Encryption pro virtuální počítače s Linuxem v režimu IaaS 
 
@@ -226,8 +226,7 @@ Použití [Set-AzVmssDiskEncryptionExtension](/powershell/module/az.compute/set-
 Šifrování nebo dešifrování Linux virtuálního počítače škálovací sady, pomocí šablon Azure Resource Manageru a následující pokyny:
 
 - [Povoluje šifrování na škálovací sadu virtuálních počítačů s Linuxem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
-- [Nasazení virtuálního počítače škálovací sady virtuálních počítačů s Linuxem pomocí jumpbox a povoluje šifrování na škálovací sadu virtuálních počítačů s Linuxem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
-- [Zakažte šifrování u škálovací sady virtuálních počítačů s Linuxem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+- [Zakažte šifrování u škálovací sady virtuálních počítačů pro Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
      1. Klikněte na **Deploy to Azure** (Nasadit do Azure).
      2. Vyplňte požadovaná pole pak svůj souhlas s podmínkami a ujednáními.

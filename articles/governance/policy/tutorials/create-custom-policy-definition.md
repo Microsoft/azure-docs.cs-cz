@@ -1,19 +1,18 @@
 ---
 title: Vytvoření vlastní definice zásad
 description: Vytvoření vlastní definice zásady Azure Policy pro vynucení vlastních obchodních pravidel.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/12/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 79b99532f5fb38123b03d2a39b7c9c6364e9f636
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: bf3582036a28603c3b6ef33a2af28cb61926d91f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802255"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267748"
 ---
 # <a name="create-a-custom-policy-definition"></a>Vytvoření vlastní definice zásad
 
@@ -118,7 +117,7 @@ Tím pro účet úložiště zobrazí šablonu podobný tomuto příkladu:
 ...
 ```
 
-V části **vlastnosti** je hodnota s názvem **supportsHttpsTrafficOnly** nastavena na **false**. Tato vlastnost pravděpodobně může být vlastnost, která hledáme. Také **typ** prostředku **Microsoft.Storage/storageAccounts**. Typ umožňuje nám zásadu omezit na jedinou prostředky tohoto typu.
+V části **vlastnosti** je hodnota s názvem **supportsHttpsTrafficOnly** nastavena na **false**. Tato vlastnost pravděpodobně může být vlastnost, která hledáme. Také **typ** prostředku **Microsoft.Storage/storageAccounts.**. Typ umožňuje nám zásadu omezit na jedinou prostředky tohoto typu.
 
 #### <a name="create-a-resource-in-the-portal"></a>Vytvořit prostředek na portálu
 

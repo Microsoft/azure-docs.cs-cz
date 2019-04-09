@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c20ae6acaf600cdde6e168c6db96deb7a28e9fa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1527a326ca0107df33857284774252b327b7d8bc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112700"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273256"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 a protokolu OpenID Connect
 
@@ -57,26 +57,28 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 | `common` |Uživatele pomocí osobního účtu Microsoft a pracovní nebo školní účet ze služby Azure Active Directory (Azure AD) můžete přihlásit k aplikaci. |
 | `organizations` |Pouze uživatelé s pracovní nebo školní účty z Azure AD můžete přihlásit k aplikaci. |
 | `consumers` |Jenom uživatelé s osobním účtem Microsoft můžete přihlásit k aplikaci. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` |Jenom uživatelé s pracovní či školní účty z konkrétní služby Azure AD tenanta můžete přihlásit k aplikaci. Lze použít buď popisný název tenanta Azure AD nebo identifikátor GUID vašeho tenanta. |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` | Jenom uživatelé s pracovní či školní účty z konkrétní služby Azure AD tenanta můžete přihlásit k aplikaci. Lze použít buď popisný název tenanta Azure AD nebo identifikátor GUID vašeho tenanta. Můžete také použít tenanta příjemce `9188040d-6c67-4c5b-b112-36a304b66dad`, místo `consumers` tenanta.  |
 
 Metadata jsou jednoduché dokumentu JavaScript Object Notation (JSON). Prohlédněte si následující fragment kódu pro příklad. Jsou podrobně popsány v tomto fragmentu kódu obsah [OpenID Connect specifikace](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2).
 
 ```
 {
-  "authorization_endpoint": "https:\/\/login.microsoftonline.com\/common\/oauth2\/v2.0\/authorize",
-  "token_endpoint": "https:\/\/login.microsoftonline.com\/common\/oauth2\/v2.0\/token",
+  "authorization_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/authorize",
+  "token_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/token",
   "token_endpoint_auth_methods_supported": [
     "client_secret_post",
     "private_key_jwt"
   ],
-  "jwks_uri": "https:\/\/login.microsoftonline.com\/common\/discovery\/v2.0\/keys",
+  "jwks_uri": "https:\/\/login.microsoftonline.com\/{tenant}\/discovery\/v2.0\/keys",
 
   ...
 
 }
 ```
+Pokud vaše aplikace má vlastní podpisové klíče v důsledku použití [mapování deklarací](active-directory-claims-mapping.md) funkci, musíte připojit `appid` obsahující ID aplikace, pokud chcete získat parametr dotazu `jwks_uri` odkazující na vaši aplikaci prvku podpisový klíč informace. Příklad: `https://login.microsoftonline.com/{tenant}/.well-known/v2.0/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` obsahuje `jwks_uri` z `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
 
-Obvykle použijete tento dokument metadat konfigurace OpenID Connect knihovny nebo sady SDK; knihovny by metadata pomocí provádí svou práci. Pokud nechcete použít knihovnu před sestavením OpenID Connect, můžete však postupujte podle kroků ve zbývající části tohoto článku provést přihlášení ve webové aplikaci pomocí koncového bodu v2.0.
+
+Obvykle použijete tento dokument metadat konfigurace OpenID Connect knihovny nebo sady SDK; knihovny by metadata pomocí provádí svou práci. Pokud nechcete použít knihovnu předem sestavených OpenID Connect, můžete však postupujte podle kroků ve zbývající části tohoto článku provést přihlášení ve webové aplikaci pomocí koncového bodu v2.0.
 
 ## <a name="send-the-sign-in-request"></a>Odeslat žádost o přihlášení
 
@@ -87,7 +89,7 @@ Pokud vaše webová aplikace potřebuje k ověření uživatele, můžete nasmě
 * Musí zahrnovat požadavek `nonce` parametru.
 
 > [!IMPORTANT]
-> Aby bylo možné úspěšně požádat o token ID registrace aplikace v [portál pro registraci](https://apps.dev.microsoft.com) musí mít **[implicitní grant](v2-oauth2-implicit-grant-flow.md)** pro webového klienta povolena. Pokud není povolen, `unsupported_response` se vrátí Chyba: "Pro vstupní parametr 'typ odpovědi' zadaná hodnota není povolena pro tohoto klienta. Očekávaná hodnota je "kód" "
+> Aby bylo možné úspěšně požádat o ID token z /authorization koncového bodu registrace aplikace v [portál pro registraci](https://portal.azure.com) musí mít implicitního udělení id_tokens povolena na kartě ověřování (které nastaví `oauth2AllowIdTokenImplicitFlow`příznak v [manifest aplikace](reference-app-manifest.md) k `true`). Pokud není povolen, `unsupported_response` se vrátí Chyba: "Pro vstupní parametr 'typ odpovědi' zadaná hodnota není povolena pro tohoto klienta. Očekávaná hodnota je "kód" "
 
 Příklad:
 
@@ -113,14 +115,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | tenant |Požaduje se |Můžete použít `{tenant}` hodnota v cestě požadavku řídit, kdo může přihlásit k aplikaci. Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátorů klienta. Další informace najdete v tématu [protokol Základy](active-directory-v2-protocols.md#endpoints). |
 | client_id |Požaduje se |ID aplikace, které [portál pro registraci aplikací](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) přiřazené vaší aplikaci. |
 | response_type |Požaduje se |Musí zahrnovat `id_token` pro přihlášení OpenID Connect. Může taky obsahovat další `response_type` hodnoty, jako například `code`. |
-| redirect_uri |Doporučené |Identifikátor URI přesměrování vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Se musí přesně odpovídat jednu registraci na portálu pro identifikátory URI přesměrování s tím rozdílem, že ho musí mít kódování URL. |
+| redirect_uri |Doporučené |Identifikátor URI přesměrování vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Se musí přesně odpovídat jednu registraci na portálu pro identifikátory URI přesměrování s tím rozdílem, že ho musí mít kódování URL. Pokud není k dispozici, koncový bod bude jeden registrovaný redirect_uri vyskladnění náhodně na uživatele poslat na zpět. |
 | scope |Požaduje se |Seznam oborů oddělených mezerami. Pro OpenID Connect, musí zahrnovat obor `openid`, který se přeloží na "Přihlášení" oprávnění v souhlasu uživatelského rozhraní. V této žádosti pro vyžádání souhlasu může taky obsahovat další obory. |
 | Hodnota Nonce |Požaduje se |Hodnota zahrnutý v požadavku, vygenerované aplikaci, ve kterém se zahrnou výsledná hodnota id_token jako deklarace identity. Aplikace můžete ověřit tuto hodnotu a zmírnění útoků opětovného přehrání tokenu. Hodnota je obvykle náhodnou jedinečného řetězce, který můžete použít k identifikaci původcem požadavku. |
 | response_mode |Doporučené |Určuje metodu, která se má použít k odeslání výsledný autorizační kód zpět do aplikace. Může být `form_post` nebo `fragment`. Pro webové aplikace, doporučujeme používat `response_mode=form_post`, aby bylo zajištěno nejbezpečnější přenos tokeny do vaší aplikace. |
 | state |Doporučené |Hodnota v požadavku, která se také vrátit v odpovědi tokenu. Může být řetězec s žádný obsah, který chcete. Náhodně generované jedinečná hodnota se obvykle používá k [útokům padělání žádosti více webů](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které uživatel byl v. |
 | řádek |Nepovinné |Určuje typ interakce s uživatelem, který je požadován. V tuto chvíli pouze platné hodnoty jsou `login`, `none`, a `consent`. `prompt=login` Deklarace identity donutí uživatele k zadání přihlašovacích údajů tohoto požadavku, které negují jednotného přihlašování. `prompt=none` Deklarace identity je opak. Tato deklarace identity se zajistí, že uživatel se nezobrazí se žádné interaktivní výzvu jakýmkoli způsobem. Pokud žádost nejde dokončit tiše prostřednictvím jednotného přihlašování, koncový bod verze 2.0 vrátí chybu. `prompt=consent` Deklarace identity se aktivuje dialogové okno souhlasu OAuth po přihlášení uživatele. Dialogové okno požádá uživatele a udělit oprávnění k aplikaci. |
 | login_hint |Nepovinné |Tento parametr můžete předběžně vyplnit pole uživatelské jméno a e-mailová adresa stránky přihlášení pro uživatele, pokud víte, uživatelské jméno předem. Aplikace často, použijte tento parametr během opětovné ověření po již extrahování uživatelské jméno ze starší přihlášení s použitím `preferred_username` deklarací identity. |
-| domain_hint |Nepovinné |Tato hodnota může být `consumers` nebo `organizations`. Pokud zahrnutý, přeskočí proces zjišťování na základě e-mailu, který uživatel prochází na v2.0 přihlašovací stránce, o něco jednodušší uživatelské prostředí. Často aplikace použijte tento parametr během opětovné ověření extrahováním `tid` deklarací z tokenu ID. Pokud `tid` deklarace identity, je hodnota `9188040d-6c67-4c5b-b112-36a304b66dad` (Account Microsoft tenanta příjemce), použijte `domain_hint=consumers`. Jinak použijte `domain_hint=organizations`. |
+| domain_hint |Nepovinné | Sféra uživatele v adresáři federované.  To přeskočí proces zjišťování na základě e-mailu, který uživatel prochází na v2.0 přihlašovací stránce, o něco jednodušší uživatelské prostředí. U klientů, které jsou federované pomocí v místním adresáři, jako jsou služby AD FS často výsledkem bezproblémové přihlašování z důvodu existující relaci přihlášení. |
 
 V tomto okamžiku bude uživatel vyzván k zadání přihlašovacích údajů a bylo možné ověření dokončit. Koncový bod v2.0 ověřuje, že uživatel vyjádřil souhlas se oprávnění uvedená v `scope` parametr dotazu. Pokud uživatele. nevyjádřil souhlas některý z těchto oprávnění, koncový bod verze 2.0 zobrazí výzvu k požadovaná oprávnění vyjádřit souhlas. Další informace o [víceklientské aplikace, oprávnění a souhlas](v2-permissions-and-consent.md).
 
@@ -179,7 +181,6 @@ Následující tabulka popisuje chybové kódy, které mohou být vráceny v `er
 Pouhého získání tokentu id_token není dostatečná k ověření uživatele. je nutné ověřit podpis požadavku id_token a ověřte, deklarace identity v tokenu podle požadavků vaší aplikace. Koncový bod verze 2.0 používá [webové tokeny JSON (Jwt)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii využívající veřejného klíče pro podepisování tokenů a ověřte, že jsou platné.
 
 Můžete také ověřit `id_token` v klientovi kód, ale běžnou praxí je odeslat `id_token` back-end server a provést ověření existuje. Jakmile ověříte podpisu požadavku id_token, existují několik deklarací identity, které budete muset ověřit. Najdete v článku [ `id_token` odkaz](id-tokens.md) Další informace, včetně [ověřování tokenů](id-tokens.md#validating-an-id_token) a [důležité informace o podpisový klíč výměny](active-directory-signing-key-rollover.md). Doporučujeme, abyste využívající knihovnu k analýze a ověřování tokenů: k dispozici aspoň jeden k dispozici pro většinu jazyky a platformy.
-<!--TODO: Improve the information on this-->
 
 Také můžete chtít ověřit další deklarace identity v závislosti na vašem scénáři. Některé běžné ověření patří:
 

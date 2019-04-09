@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d30fe326ef677ca4543534d57dd306ed2a660300
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: eafc379a65fda1ed64c6afee1427e704558b1ee6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895558"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261518"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
@@ -138,6 +138,7 @@ Ve vašem prostředí měli byste se vyhnout následující konfigurace:
 
 - **Vyžadovat připojení k doméně** – tento blok zásad přístupu má také potenciál k blokování přístupu pro všechny uživatele ve vaší organizaci, pokud ještě nemáte zařízení připojených k doméně.
 
+- **Vyžadovat zásady ochrany aplikací** – tento blok zásad přístupu má také potenciál k blokování přístupu pro všechny uživatele ve vaší organizaci, pokud nemáte k dispozici zásady Intune. Pokud jste správce bez klientskou aplikaci, která má zásady ochrany aplikací Intune, zablokuje vás tyto zásady z návrat do portály, jako jsou Intune a Azure.
 
 **Pro všechny uživatele, všechny cloudové aplikace, všechny platformy zařízení:**
 

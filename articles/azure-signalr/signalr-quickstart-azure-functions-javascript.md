@@ -7,12 +7,12 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: c66323a430e86053627577b40f66b3f4be11c74f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0ca73ed314b254f9f73833bb2c4311f03f62508f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535610"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264195"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Rychlý start: Vytvoření chatovací místnosti s Azure Functions a služby SignalR pomocí jazyka JavaScript
 
@@ -50,7 +50,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
     ![Vytvoření služby SignalR Service](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. V editoru kódu otevřete složku *chat/src/javascript* v klonovaném úložišti.
+1. V editoru kódu, otevřete *src/chat/javascript* složky naklonované úložiště.
 
 1. Přejmenujte soubor *local.settings.sample.json* na *local.settings.json*.
 
@@ -61,7 +61,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
     - **negotiate** – používá vstupní vazbu *SignalRConnectionInfo* ke generování a vracení informací o platném připojení.
     - **messages** – přijímá zprávy chatu v textu požadavku a používá výstupní vazbu *SignalR* k vysílání zpráv všem připojeným klientským aplikacím.
 
-1. V terminálu zkontrolujte, že jste ve složce *chat/src/javascript*. Pomocí nástrojů Azure Functions Core Tools nainstalujte rozšíření, která jsou potřebná ke spuštění aplikace.
+1. V terminálu se ujistit, že jste *src/chat/javascript* složky. Pomocí nástrojů Azure Functions Core Tools nainstalujte rozšíření, která jsou potřebná ke spuštění aplikace.
 
     ```bash
     func extensions install
@@ -84,4 +84,4 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 V tomto rychlém startu vytvořené a spustili aplikaci v reálném čase bez serveru v nástroji VS Code. Dále můžete získat více informací o postupu nasazení Azure Functions přes VS Code.
 
 > [!div class="nextstepaction"]
-> [Nasazení Azure Functions přes VS Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started)
+> [Nasazení služby Azure Functions s VS Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started)

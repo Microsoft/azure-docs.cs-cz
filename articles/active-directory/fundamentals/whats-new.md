@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cd3286d51154c9c1dd53a2f87dd8a97999d064a
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: e5d85d1f211a4cc0307cca6d631a4bf286d3e576
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046695"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271811"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
@@ -39,7 +39,39 @@ Tato stránka se aktualizuje každý měsíc, takže návštěvě pravidelně. P
 
 ---
 
+## <a name="april-2019"></a>2019. dubna
+
+### <a name="increased-security-using-the-app-protection-based-conditional-access-policy-in-azure-ad-public-preview"></a>Zvýšení zabezpečení pomocí zásady podmíněného přístupu na základě ochrany aplikací ve službě Azure AD (Public preview)
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Podmíněný přístup  
+**Funkce produktu:** Zabezpečení a ochrana identity
+
+Podmíněný přístup založený na ochranu aplikace je teď dostupná s použitím **vyžadují ochranu aplikací** zásad. Tato nová zásada pomáhá zvýšit zabezpečení vaší organizace na ochranu:
+
+- Uživatelé získají přístup k aplikacím bez licence služby Microsoft Intune.
+
+- Uživatelům se nepovedlo se získat zásady ochrany aplikací Microsoft Intune.
+
+- Uživatelé získají přístup k aplikacím bez nakonfigurované zásady ochrany aplikací Microsoft Intune.
+
+Další informace najdete v tématu [vyžadování zásad ochrany aplikací pro přístup k aplikaci cloud s podmíněným přístupem](https://docs.microsoft.com/azure/active-directory/conditional-access/app-protection-based-conditional-access).
+
+---
+
 ## <a name="march-2019"></a>2019. března
+
+### <a name="new-support-for-azure-ad-single-sign-on-and-conditional-access-in-microsoft-edge-public-preview"></a>Nová podpora pro Azure AD jednotného přihlašování a podmíněný přístup v Microsoft Edge (Public preview)
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Podmíněný přístup  
+**Funkce produktu:** Zabezpečení a ochrana identity
+
+Rozšířili jsme naši podporu služby Azure AD pro Microsoft Edge, včetně poskytnutí novou podporu pro jednotné přihlašování a podmíněný přístup Azure AD. Pokud jste dříve používali Microsoft Intune Managed Browser, teď můžete Microsoft Edge místo toho.
+
+Další informace o vytváření a správu zařízení a aplikací pomocí podmíněného přístupu najdete v tématu [vyžadují spravovaná zařízení pro přístup k aplikaci cloud s podmíněným přístupem](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/require-managed-devices) a [vyžaduje schválené klientské aplikace pro cloud přístup k aplikaci s podmíněným přístupem](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/app-based-conditional-access). Další informace o tom, jak Správa přístupu k Microsoft Edge pomocí zásad Microsoft Intune najdete v tématu [Správa přístupu k Internetu pomocí prohlížeče chráněné zásad Microsoft Intune](https://docs.microsoft.com/en-us/intune/app-configuration-managed-browser).
+
+---
 
 ### <a name="identity-experience-framework-and-custom-policy-support-in-azure-active-directory-b2c-is-now-available-ga"></a>Rozhraní prostředí pro identity a vlastních zásad pro podporu v Azure Active Directory B2C je nyní dostupná (GA)
 

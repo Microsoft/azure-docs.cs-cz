@@ -16,12 +16,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/30/2019
-ms.openlocfilehash: 51ab999880dd3bfd453b0e6c2d20d8d6f9a0e093
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d6d3cb99a55ae5eb8276391f22675a88e8b3d072
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660115"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276435"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Požadavky na certifikáty infrastruktury veřejných klíčů Azure Stack
 
@@ -38,7 +38,7 @@ Azure Stack je síť infrastruktury veřejného pomocí zvenku přístupný veř
 Následující seznam popisuje požadavky na certifikáty, které jsou nutné k nasazení Azure Stack: 
 - Certifikáty musí být vydány interní certifikační autority nebo veřejné certifikační autority. Pokud se používá z veřejné certifikační autority, musí být součástí image základního operačního systému v rámci aplikace Microsoft důvěryhodné kořenové autoritě. Úplný seznam najdete: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
 - Infrastruktury Azure stacku musí mít přístup k síti do publikované v certifikátu umístění seznamu odvolaných certifikátů (CRL) certifikační autority. Tento seznam odvolaných certifikátů musí být koncový bod http
-- Při obměně certifikátů, certifikáty musí být že buď vydávány stejné interní certifikační autorita používaná k podepisování certifikátů, které jsou k dispozici v nasazení nebo jakékoli veřejné certifikační autority výše
+- Při obměně certifikáty v sestavení pre-1903, certifikáty musí být že buď vydávány stejné interní certifikační autorita používaná k podepisování certifikátů, které jsou k dispozici v nasazení nebo jakékoli veřejné certifikační autority výše. Pro certifikáty 1903 & novější nebude již moci iniciovat žádné organizace nebo veřejné certifikační autority.
 - Použití certifikátů podepsaných svým držitelem nejsou podporovány.
 - Pro nasazení a otočení můžete buď použít jeden certifikát pokrývající všechny obory názvů v pole název subjektu a alternativní název předmětu (SAN) certifikátu, nebo můžete použít jednotlivé certifikáty pro každý obor názvů níže, která službě Azure Stack služby, které máte v plánu využít vyžadují. Oba přístupy vyžadují pomocí zástupných znaků pro koncové body, ve kterém jsou povinné, například **KeyVault** a **KeyVaultInternal**. 
 - Tento certifikát PFX šifrování by měl být 3DES. 

@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 03/17/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 187e40716bc55f71623ef758722eb58d27651d4d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: c421d99f1071c7a38cfe315cc3054136f81598e0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882483"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265964"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co je "kognitivního vyhledávání" ve službě Azure Search?
 
@@ -99,6 +99,8 @@ Indexy jsou generovány z schématu indexu, který definuje pole, atributy, a ji
 + [Rychlý start (portál)](cognitive-search-quickstart-blob.md)
 + [Kurzu práce (požadavků HTTP)](cognitive-search-tutorial-blob.md)
 + [Příklad vlastních dovedností (C#)](cognitive-search-create-custom-skill-example.md)
+
+Jsme bezplatnou službu pro účely výuky doporučujeme, ale mějte na paměti, že číslo bezplatné transakce je omezený na 20 dokumenty za den. Spustit kurz i rychlý start v jednom dni, použijte menší sadu souborů (10 dokumenty) tak, aby lze zobrazit v obou cvičení.
 
 **Krok 3: Projděte si rozhraní API (REST jenom)**
 

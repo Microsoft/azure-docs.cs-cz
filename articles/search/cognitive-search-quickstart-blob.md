@@ -1,26 +1,26 @@
 ---
-title: Vytvoření kanálu kognitivního vyhledávání na webu Azure portal – Azure Search s využitím AI indexování
-description: Ukázka dovedností extrakce dat a zpracování přirozeného jazyka a obrázku na portálu Azure Portal s ukázkovými daty
+title: 'Rychlý start: Sestavení indexu s podporou AI na webu Azure portal – Azure Search'
+description: Extrakce dat, přirozeného jazyka a dovednosti na portálu Azure Search indexování pro zpracování obrázků pomocí webu Azure portal a ukázková data.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 03/17/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f00df841f81ea5c7aa1fd53309b00487602e5143
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 161d3ff3e00f7e9e979527533f6b8ac365c41490
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200619"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265011"
 ---
-# <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rychlý start: Vytvoření kanálu kognitivního vyhledávání využitím dovedností a ukázkových dat
+# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-and-sample-data"></a>Rychlý start: Vytvořit kanál indexování AI pomocí kognitivní dovednosti a ukázkových dat
 
-Cognitive Search (Preview) přidává dovednosti extrakce dat, zpracování přirozeného jazyka (NLP) a zpracování obrazu do kanálu pro indexaci služby Azure Search, díky čemuž je možné v neprohledávatelném a nestrukturovaném obsahu snadněji vyhledávat. 
+Služba Azure Search se integruje s [služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), přidávání obsahu extrakce, zpracování přirozeného jazyka (NLP) a dovednosti zpracování obrázků na kanál indexování Azure Search, vytváření obsahu unsearchable nebo nestrukturovaných informace prohledávatelné. 
 
-Kognitivní vyhledávání kanálu integruje [prostředků služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) – například [OCR](cognitive-search-skill-ocr.md), [rozpoznávání jazyka](cognitive-search-skill-language-detection.md), [rozpoznávání entit](cognitive-search-skill-entity-recognition.md)– do indexovacím procesem. Algoritmy AI služeb Cognitive Services se používají k vyhledání vzorců, funkce a vlastnosti ve zdrojových datech, vrátí struktury a textový obsah, který lze použít v fulltextové vyhledávání řešení založená na Azure Search.
+Mnoho prostředků služeb Cognitive Services – například [OCR](cognitive-search-skill-ocr.md), [rozpoznávání jazyka](cognitive-search-skill-language-detection.md), [rozpoznávání entit](cognitive-search-skill-entity-recognition.md) pár – je možné připojit k indexovacím procesem. Algoritmy AI služeb Cognitive Services se používají k vyhledání vzorců, funkce a vlastnosti ve zdrojových datech, vrátí struktury a textový obsah, který lze použít v fulltextové vyhledávání řešení založená na Azure Search.
 
 V tomto rychlém startu vytvořte svůj první kanál v rozšíření [webu Azure portal](https://portal.azure.com) před napsat jediný řádek kódu:
 
@@ -30,63 +30,28 @@ V tomto rychlém startu vytvořte svůj první kanál v rozšíření [webu Azur
 > * Spustíte průvodce (dovednost entity zjistí lidi, lokality a organizace).
 > * Použití [ **Průzkumníka služby Search** ](search-explorer.md) dotazy na data bohatších možností
 
-## <a name="supported-regions"></a> Podporované oblasti
+V tomto rychlém startu běží na bezplatné služby, ale počet transakcí zdarma je omezený na 20 dokumenty za den. Pokud chcete spustit v tomto rychlém startu více než jednou v jednom dni, použijte menší soubor nastavit tak, aby se vejde do více spuštění.
 
-AI obohacené indexování pomocí služeb Cognitive Services je dostupná v všech oblastech Azure Search.
+> [!NOTE]
+> Jak rozbalit obor zvýšením počtu zpracování, přidáním více dokumentů nebo přidání další algoritmy AI, musíte připojit fakturovatelné prostředku služeb Cognitive Services. Poplatky se účtují při volání rozhraní API ve službě Cognitive Services a extrakci image jako součást fáze hádání dokumentu ve službě Azure Search. Neúčtují žádné poplatky pro extrakci textu z dokumentů.
+>
+> Provádění předdefinované dovednosti, se účtuje za stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny extrakce bitové kopie se účtuje za ceny verze preview, jak je popsáno na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Další [informace](cognitive-search-attach-cognitive-services.md)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-> [!NOTE]
-> Od 21. prosince 2018 se budou moct přidružit dovednosti Azure Search prostředku služeb Cognitive Services. To vám umožní spouštění poplatků za využití jeho dovedností. K tomuto datu také začneme pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů se bude dál nabízet bez dalších poplatků.
->
-> Provádění předdefinované dovednosti budou účtovat stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny za extrakce Image se bude účtovat ceny verze preview a je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Další [informace](cognitive-search-attach-cognitive-services.md)
-
 ## <a name="prerequisites"></a>Požadavky
 
-Článek [Co je kognitivní hledání?](cognitive-search-concept-intro.md) nabízí základní informace o architektuře a součástech rozšiřování. 
+[Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start.
 
-V tomto scénáři se používají výhradně služby Azure. Během přípravy se vytvářejí potřebné služby.
+[Služby cognitive Services](https://azure.microsoft.com/services/cognitive-services/) poskytuje AI. Tento rychlý Start obsahuje kroky pro přidání těchto prostředků v řádku, při určování kanálu. Není nutné předem nastavení účtů.
 
-+ [Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) poskytuje zdroj dat
-+ [Služby cognitive Services](https://azure.microsoft.com/services/cognitive-services/) poskytuje AI (tyto prostředky v řádku, můžete vytvořit při zadávání kanál)
-+ [Služba Azure Search](https://azure.microsoft.com/services/search/) poskytuje bohatších možností kanál indexování a bohaté volnou formou možnosti vyhledávání textu pro použití ve vlastních aplikací
-
-### <a name="set-up-azure-search"></a>Nastavení služby Azure Search
-
-Nejdříve se do služby Azure Search přihlaste. 
-
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí svého účtu Azure.
-
-1. Klikněte na **Vytvořit prostředek**, vyhledejte Azure Search a klikněte na **Vytvořit**. Pokud službu Search nastavujete poprvé a potřebujete ještě pomoc, přečtěte si informace v článku [Vytvoření služby Azure Search na portálu](search-create-service-portal.md).
-
-   ![Portál řídicího panelu](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Vytvoření služby Azure Search na portálu")
-
-1. Pro skupinu prostředků vytvořte novou skupinu prostředků obsahující všechny prostředky, které vytvoříte v tomto rychlém startu. To usnadní čištění prostředků, až rychlý start dokončíte.
-
-1. Pro umístění, zvolte jednu z [podporované oblasti](#supported-regions) pro kognitivního vyhledávání.
-
-1. V části Cenová úroveň můžete pro účely kurzů a rychlých startů vytvořit bezplatnou (**Free**) službu. Pokud chcete důkladněji zkoumat svá vlastní data, vytvořte si [placenou službu](https://azure.microsoft.com/pricing/details/search/), např. **Basic** nebo **Standard**. 
-
-   Bezplatná služba je omezená na 3 indexy, 16 MB maximální velikosti objektu blob a 2 minuty indexování, což pro úplné využití funkcí kognitivního hledání nestačí. Pokud se chcete podívat na limity pro jednotlivé úrovně, najdete je v článku o [limitech služeb](search-limits-quotas-capacity.md).
-
-   ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service2.png "Stránka definice služby na portálu")
-
-   > [!NOTE]
-   > Cognitive Search je ve veřejné verzi Preview. Spouštění sad dovedností je v tuto chvíli k dispozici na všech úrovních, včetně bezplatné. Bude moct provádět omezené obohacení bez přiřazení placené prostředku služeb Cognitive Services. Další [informace](cognitive-search-attach-cognitive-services.md)
-
-1. Pokud chcete mít k informacím o službě rychlý přístup, připněte si službu na řídicí panel.
-
-   ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service3.png "Stránka definice služby na portálu")
+Služby Azure se vyžaduje zadání vstupů na kanál indexování. Můžete použít libovolný zdroj dat nepodporuje [indexerů Azure Search](search-indexer-overview.md) s výjimkou Azure Table Storage, což není podporováno pro indexování AI. Tento rychlý start využívá [úložiště objektů Blob v Azure](https://azure.microsoft.com/services/storage/blobs/) jako kontejner pro zdroj dat souborů. 
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Nastavení služby Azure Blob a načtení ukázkových dat
 
-Kanál pro rozšiřování načítá data ze zdrojů dat Azure podporovaných [indexery služby Azure Search](search-indexer-overview.md). Mějte prosím na paměti, že Azure Table Storage se nepodporuje pro kognitivního vyhledávání. Při tomto cvičení použijeme službu Blob Storage, na které ukážeme několik typů obsahu.
-
 1. [Stáhněte si ukázková data](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) sestávající z malé sady souborů různých typů. 
 
-1. Zaregistrovat do Azure Blob storage, vytvořte účet úložiště, otevřete stránek služby objektů Blob a vytvořit kontejner. 
-
-1. V kontejneru, nastavte úroveň pro veřejný přístup **kontejner (anonymní přístup pro čtení kontejnerům a objektům BLOB)**. Další informace najdete v tématu [části "Vytvoření kontejneru"](../storage/blobs/storage-unstructured-search.md#create-a-container) v *prohledávání nestrukturovaných dat* kurzu.
+1. [Zaregistrovat do Azure Blob storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal), vytvořit účet úložiště, otevřete stránky služby objektů Blob a vytvořte kontejner.  Vytvořte účet úložiště ve stejné oblasti jako Azure Search.
 
 1. V kontejneru, který jste vytvořili, klikněte na tlačítko **nahrát** k nahrání ukázkových souborů, které jste si stáhli v předchozím kroku.
 

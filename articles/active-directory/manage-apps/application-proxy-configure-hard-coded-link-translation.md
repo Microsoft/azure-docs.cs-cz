@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c010a7bcd2d811b31d9c2d05e81cce5dc85c2ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2949559542759cadf90d329bc50b352998b3eb7e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118591"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262546"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrovat odkazy pevně zakódované k aplikacím publikovaným pomocí Proxy aplikací Azure AD
 
@@ -81,6 +81,31 @@ Existují dva běžné typy interní odkazů v místním aplikacím:
 
 - **Relativní odkazy interní** , že bod ke sdíleným prostředkům ve struktuře místního souboru jako `/claims/claims.html`. Tyto odkazy mělo automaticky fungovat v aplikacích, které jsou publikované prostřednictvím Proxy aplikací a pokračovat v práci s nebo bez překladu odkazu. 
 - **Vnitřní propojení pevně zakódované** do dalších místních aplikací, jako je `http://expenses` nebo publikované soubory jako `http://expenses/logo.jpg`. Překlad odkazů funguje na odkazech interní pevně zakódované a změní, je tak, aby odkazoval na externí adresy URL, které je třeba projít vzdálení uživatelé.
+
+Úplný seznam značek kód HTML, Proxy aplikací podporuje překlad odkazu pro zahrnutí:
+* a
+* audio
+* základ
+* Tlačítko
+* div
+* Pro vložení
+* Formulář
+* Rámce
+* hlavní
+* html
+* element IFrame
+* obrázek
+* vstup
+* odkaz
+* položku nabídky
+* meta
+* objekt
+* script
+* source
+* Sledování
+* video
+
+Kromě toho v rámci šablon stylů CSS atribut URL je také přeložit.
 
 ### <a name="how-do-apps-link-to-each-other"></a>Jak se navzájem propojují aplikace?
 

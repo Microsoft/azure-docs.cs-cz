@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: e6e20db39be8a6e60833bf5c4f9b6a34a9ead461
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 22a95ce506a7f906604cc65d08a04b7f761bb4c2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013033"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273579"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytvoření a Správa rozpočtů Azure
 
@@ -63,7 +63,9 @@ Klikněte na tlačítko **Add** (Přidat).
 
 ![Cost Management rozpočty uvedené na webu Azure Portal](./media/tutorial-acm-create-budgets/budgets01.png)
 
-V **vytvořit rozpočtu** okno, zadejte název rozpočtu a částka rozpočtu. Zvolte buď měsíčně, čtvrtletně, nebo roční dobu trvání období. V dalším kroku vyberte koncové datum. Rozpočty vyžadují aspoň jednu cenu prahové hodnoty (% rozpočtu) a odpovídající e-mailovou adresu. Může volitelně zahrnovat až pět prahové hodnoty a pět e-mailových adres v jedné rozpočtu. Pokud je dodržena prahová hodnota rozpočtu, e-mailová oznámení dostávají obvykle za méně než osm hodin. Další informace o oznámeních najdete v tématu [použití nákladů výstrahy](cost-mgt-alerts-monitor-usage-spending.md).
+V **vytvořit rozpočtu** okno, zadejte název rozpočtu a částka rozpočtu. Pak zvolte buď měsíčně, čtvrtletně, nebo roční dobu trvání období<sup>1</sup>. V dalším kroku vyberte koncové datum. Rozpočty vyžadují aspoň jednu cenu prahové hodnoty (% rozpočtu) a odpovídající e-mailovou adresu. Může volitelně zahrnovat až pět prahové hodnoty a pět e-mailových adres v jedné rozpočtu. Pokud je dodržena prahová hodnota rozpočtu, e-mailová oznámení dostávají obvykle za méně než osm hodin. Další informace o oznámeních najdete v tématu [použití nákladů výstrahy](cost-mgt-alerts-monitor-usage-spending.md).
+
+<sup>1</sup> Pokud patříte mezi zákazníky s průběžnými platbami, MSDN nebo Visual Studio nemusí být správně zarovnané fakturačního období předplatného vaší faktury ke kalendářnímu měsíci. Pro předplatné a skupiny prostředků, které spadají do tohoto kontejneru můžete vytvořit rozpočtu, který je v souladu faktury nebo kalendářních měsících. Pokud chcete vytvořit rozpočtu zarovnána na fakturu, vyberte interval resetování fakturační měsíc, fakturace čtvrtletí nebo roku fakturace v okamžiku vytvoření. Chcete-li vytvořit rozpočtu zarovnán ke kalendářnímu měsíci, vyberte interval resetování měsíčně, čtvrtletně nebo ročně v okamžiku vytvoření.
 
 Tady je příklad vytvoření měsíční rozpočet pro $4500. Když je dosaženo 90 % z rozpočtu získá vygenerována výstraha e-mailu.
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/18/2019
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 92ce35e88cc73c16e3d3670e07ff8b996192b825
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f856aeae74ea285cd6a0326fd225e454a1cbe43
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109810"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265827"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Principy Cloudyn sestav správy nákladů
 
@@ -29,7 +29,7 @@ Tady se můžete podívat na příklad sestavy Cost Over Time. Většina sestav 
 
 Jednotlivé očíslované oblasti v předchozím obrázku je podrobně popsaný v následující informace:
 
-1. **Rozsah kalendářních dat**
+1. **Rozsah data**
 
     Seznam rozsah kalendářních dat slouží k určení časového intervalu sestavy pomocí vlastní nebo přednastavený kontext.
 2. **Uložený filtr**
@@ -85,7 +85,7 @@ Jednotlivé očíslované oblasti v předchozím obrázku je podrobně popsaný 
        - Jednorázový poplatek
        - Podpora
        - Poplatky za využití
-     - **Zákazníka**
+     - **Zákazník**
        - Vyberte konkrétního zákazníka, více zákazníků, nebo všechny zákazníky.
      - **Název účtu**
        - Název účtu nebo předplatného. V Azure je název předplatného Azure.
@@ -116,9 +116,9 @@ Jednotlivé očíslované oblasti v předchozím obrázku je podrobně popsaný 
        - Místo
      - **Poplatek za typ**
        - Vyberte typ poplatku záporné nebo kladné nebo obojí.
-     - **Tenantů**
+     - **Architektura tenantů**
        - Určuje, zda počítač běží jako vyhrazený počítač.
-     - **Typ využití**
+     - **Typ použití**
        - Typ využití může být jednorázové poplatky nebo opakované poplatky.
 
 5. **Filtry**
@@ -154,7 +154,7 @@ Jednotlivé očíslované oblasti v předchozím obrázku je podrobně popsaný 
 
     Použití přidělení pravidel k použití nebo zakázat přidělování nákladů náklady přepočítání. Můžete povolit nebo zakázat přepočet přidělení nákladů pro fakturačních údajů. Přepočítání se vztahuje na vybraných kategorií v sestavě. Umožňuje vám posoudit dopad přepočet přidělení nákladů na nezpracovaných datech fakturace.
 
-10. **Nezařazeno do kategorie**
+10. **Nezařazeno do kategorií**
 
     Nezařazeno můžete zahrnout nebo vyloučit Nezařazeno do kategorie nákladů v sestavě.
 
@@ -176,7 +176,7 @@ Jednotlivé očíslované oblasti v předchozím obrázku je podrobně popsaný 
 
     Pomocí akcí můžete uložit, exportujte nebo plánování sestavy.
 
-15. **Zásady**
+15. **Zásada**
 
     I když nejsou na obrázku, některé sestavy zahrnují zásadu výpočtu odhadovaných nákladů. V těchto sestavách **konsolidované** zásad můžete vidět doporučení pro všechny účty a předplatná v rámci aktuální entity, jako je například Microsoft registrace nebo plátce AWS. **Samostatné** zásady vidět doporučení pro jednoho účtu nebo předplatného, jakoby žádná předplatná neexistují. Zásady, kterou jste vybrali, se liší optimalizace strategie, které vaše organizace používá. Projekce nákladů jsou založeny na posledních 30 dní používání.
 

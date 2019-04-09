@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 03/29/2019
-ms.openlocfilehash: 5c9e11572bc142637066214e1a807a80ce711c48
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.date: 04/08/2019
+ms.openlocfilehash: f1e86e4556931c00d317a618eeaf35ac988a2879
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877682"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266235"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Použití rozšířené zabezpečení dat s virtuálními sítěmi a téměř 100 % kompatibility SQL Database
 
@@ -50,7 +50,7 @@ Managed instance kombinuje nejlepší funkce, které jsou k dispozici v Azure SQ
 |Izolované prostředí ([integrace virtuální sítě](sql-database-managed-instance-connectivity-architecture.md), jednoho tenanta služby, vyhrazené výpočetní prostředky a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), jednotné přihlašování – podpora <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD objekty serveru (přihlášení)</a> (**ve verzi public preview**) <br>Dodržuje standardy pro dodržování předpisů stejně jako Azure SQL database <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[Detekce hrozeb](sql-database-managed-instance-threat-detection.md) |Rozhraní API Azure Resource Manageru pro automatizaci služby zřizování a škálování <br>Azure portal funkci pro ruční službu zřizování a škálování <br>Data Migration Service
 
 > [!IMPORTANT]
-> Azure SQL Database (všechny možnosti nasazení) a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://azure.microsoft.com/support/trust-center/), kde také najdete nejnovější seznam [certifikátů služby SQL Database v oblasti dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
+> Azure SQL Database (všechny možnosti nasazení) a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v tématu [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) místo, kde najdete nejnovější seznam certifikací dodržování předpisů SQL Database.
 
 V následující tabulce jsou uvedeny klíčové funkce spravované instance:
 

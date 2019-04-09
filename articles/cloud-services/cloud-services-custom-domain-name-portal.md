@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 814ae0e79ac24d5b645c4bf107287ab1b8326ff4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2255004ae8cd92473b5fe71b44cccb79021a8bf7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121617"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267136"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurace vlastního názvu domény pro cloudovou službu Azure
 Při vytváření cloudové služby, Azure ho přiřadí na subdoménu **cloudapp.net**. Například pokud vaši Cloudovou službu se s názvem "contoso", uživatelé budou moct získat přístup k vaší aplikaci na adrese URL jako http://contoso.cloudapp.net. Azure také přiřadí virtuální IP adresu.
@@ -64,11 +64,11 @@ Vytvořte záznam CNAME, musí přidáte nový záznam v tabulce DNS pro vaši v
 
 1. Použijte jednu z těchto metod najít **. cloudapp.net** název domény, které jsou přiřazeny ke cloudové službě.
 
-   * Přihlaste se k [Azure Portal], vyberte cloudovou službu, podívejte se na **Essentials** části a pak vyhledejte **adresa URL webu** položka.
+   * Přihlaste se k [webu Azure portal], vyberte cloudovou službu, podívejte se na **přehled** části a pak vyhledejte **adresa URL webu** položka.
 
        ![rychlý přehled část zobrazuje adresu URL webu][csurl]
 
-       **OR**
+       **NEBO**
    * Instalace a konfigurace [prostředí Azure Powershell](/powershell/azure/overview)a potom použijte následující příkaz:
 
        ```powershell
@@ -97,11 +97,11 @@ Chcete-li vytvořit záznam A, je nutné nejprve vyhledat virtuální IP adresu 
 
 1. Použijte jednu z následujících metod k získání IP adresy cloudové služby.
 
-   * Přihlaste se k [Azure Portal], vyberte cloudovou službu, podívejte se na **Essentials** části a pak vyhledejte **veřejné IP adresy** položka.
+   * Přihlaste se k [webu Azure portal], vyberte cloudovou službu, podívejte se na **přehled** části a pak vyhledejte **veřejné IP adresy** položka.
 
        ![rychlý přehled části zobrazující virtuální IP adresy][vip]
 
-       **OR**
+       **NEBO**
    * Instalace a konfigurace [prostředí Azure Powershell](/powershell/azure/overview)a potom použijte následující příkaz:
 
        ```powershell
@@ -141,6 +141,6 @@ Tento příklad ukazuje vytvoření záznamu A pro kořenovou doménu. Pokud chc
 [Expose Your Data on a Custom Domain]: #access-data
 [VIP swaps]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 [Create a CNAME record that associates the subdomain with the storage account]: #create-cname
-[Azure Portal]: https://portal.azure.com
+[portál Azure]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png

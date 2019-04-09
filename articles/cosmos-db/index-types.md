@@ -1,25 +1,25 @@
 ---
 title: Typy indexu ve službě Azure Cosmos DB
 description: Přehled typů indexu ve službě Azure Cosmos DB
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 3/13/2019
-ms.author: mjbrown
-ms.openlocfilehash: 56c0fcb24ac5d255c6a36bcffd327df76f459963
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/08/2019
+ms.author: rimman
+ms.openlocfilehash: 5e7ee7c0bdfd0cff6be182e6d087cc264910e440
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57990557"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271556"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Typy indexu ve službě Azure Cosmos DB
 
-Existuje několik možností kde konfigurujete zásady indexování pro cestu. Můžete zadat jednu nebo víc definic indexování pro každou cestu:
+Když konfigurujete zásady indexování pro cestu existuje několik možností. Můžete zadat jednu nebo víc definic indexování pro každou cestu:
 
 - **Datový typ:** Řetězec, číslo, bod, mnohoúhelník nebo LineString (může obsahovat jenom jeden záznam za datový typ na cestu).
 
-- **Typ indexu:** Rozsah (rovnosti, oblast nebo ORDER BY dotazy), nebo Spatial (prostorový dotazy).
+- **Typ indexu:** Rozsah (pro rovnosti, oblast nebo ORDER BY dotazy), nebo Spatial (pro prostorových dotazů).
 
 - **Přesnost:** Pro index na rozsah Maximální přesnost hodnotu -1, což je také výchozí.
 
@@ -27,7 +27,7 @@ Existuje několik možností kde konfigurujete zásady indexování pro cestu. M
 
 Azure Cosmos DB podporuje index rozsahu pro každou cestu, která je možné nakonfigurovat pro datové typy řetězec nebo číslo, nebo obojí.
 
-- **Index rozsahu** podporuje dotazy na rovnost efektivní, spojení dotazů, dotazy na rozsah (pomocí >, <>, =, < =,! =) a dotazy klauzule ORDER BY. Dotazy klauzule ORDER By ve výchozím nastavení také vyžadovat maximální index přesnosti (-1). Datový typ může být řetězec nebo číslo.
+- **Index rozsahu** podporuje dotazy na rovnost efektivní, spojení dotazů, dotazy na rozsah (pomocí >, <>, =, < =,! =) a dotazy klauzule ORDER BY. Klauzule ORDER BY dotazů ve výchozím nastavení, také vyžadovat maximální index přesnosti (-1). Datový typ může být řetězec nebo číslo.
 
 - **Prostorový index** podporuje efektivní spatial (v rámci a vzdálenost) dotazy. Datový typ může být bodu mnohoúhelníku či LineString. Azure Cosmos DB podporuje také typ prostorového indexu pro každou cestu, která se dá nastavit pro datové typy, které bod mnohoúhelníku či LineString. Hodnota v zadané cestě musí být platný fragment GeoJSON jako {"type": "Point", "coordinates": [0.0, 10.0]}. Azure Cosmos DB podporuje automatické indexování bodu mnohoúhelníku a LineString datových typů.
 
@@ -42,18 +42,18 @@ Tady jsou příklady dotazů, které v rozsahu a prostorové indexy lze použít
 
 - Pokud není žádný index rozsahu žádné přesnosti, který signalizuje, že kontrola může být potřeba poskytovat dotazu, v takovém případě ve výchozím nastavení, pro dotazy v rozsahu operátory, jako je vrácena chyba > =.
 
-- Dotazy na rozsah můžete provést bez index na rozsah s použitím "x-ms-documentdb-enable kontroly" záhlaví v rozhraní REST API nebo žádost o možnost "EnableScanInQuery" s použitím sady .NET SDK. Pokud nejsou žádné filtry v dotazu, že služby Azure Cosmos DB pomocí indexu můžete filtrovat proti, je vrácena žádná chyba.
+- Dotazy na rozsah můžete provést bez index na rozsah s použitím **x-ms-documentdb-enable kontroly** záhlaví v rozhraní REST API nebo **EnableScanInQuery** vyžádat možnost pomocí sady .NET SDK. Pokud nejsou žádné filtry v dotazu, že služby Azure Cosmos DB pomocí indexu můžete filtrovat proti, je vrácena žádná chyba.
 
-- Ve výchozím nastavení je vrácena chyba pro prostorových dotazů není k dispozici prostorový index nebo jinými filtry, které může obsloužit z indexu. Tyto dotazy můžete pomocí x-ms-documentdb-enable kontroly nebo EnableScanInQuery možné provést, protože kontroly.
+- Ve výchozím nastavení je vrácena chyba pro prostorových dotazů není k dispozici prostorový index nebo jinými filtry, které může obsloužit z indexu. Takové dotazy je možné provést v prohledávání pomocí **x-ms-documentdb-enable kontroly** nebo **EnableScanInQuery**.
 
 ## <a name="index-precision"></a>Index přesnost
 
 > [!NOTE]
-> Kontejnery služby Azure Cosmos podporuje nové rozložení index, který se už nevyžaduje vlastního indexového přesností než value(-1) maximální přesnost. Pomocí této metody vždy jsou cesty indexované Maximální přesnost. Pokud zadáte hodnotu přesnost na zásady indexování, žádosti CRUD kontejnerům, bude tiše ignorovat hodnota přesnosti a odpověď z kontejneru obsahuje pouze value(-1) maximální přesnost.  Všechny nové kontejnery Cosmos použít nové rozložení index ve výchozím nastavení.
+> Kontejnery služby Azure Cosmos podporuje nové rozložení index, který se už nevyžaduje vlastního indexového přesností než maximální přesnost hodnoty (-1). Pomocí této metody vždy jsou cesty indexované Maximální přesnost. Pokud zadáte hodnotu přesnost na zásady indexování, žádosti CRUD kontejnerům, bude tiše ignorovat hodnota přesnosti a odpověď z kontejneru obsahuje pouze hodnotu Maximální přesnost (-1).  Všechny nové kontejnery Cosmos použít nové rozložení indexu, ve výchozím nastavení.
 
-- Aby kompromis mezi nároky na úložiště indexů a výkon dotazů, můžete použít index přesnost. Pro čísla doporučujeme použít výchozí konfiguraci přesnost-1 (maximální). Protože jsou čísla 8 bajtů ve formátu JSON, jde o ekvivalent konfigurace 8 bajtů. Výběrem hodnoty nižší přesnost, jako je například 1 až 7, prostředky, které hodnoty v rámci některé oblasti mapují na stejný index položky. Proto můžete snížit index úložného prostoru, ale provádění dotazů může být nutné zpracovat více položek. V důsledku toho využívá další propustnost/RU.
+- Aby kompromis mezi nároky na úložiště indexů a výkon dotazů můžete index přesnosti. Pro čísla doporučujeme použít výchozí konfiguraci přesnost-1 (maximum). Protože jsou čísla 8 bajtů ve formátu JSON, jde o ekvivalent konfigurace 8 bajtů. Výběrem hodnoty nižší přesnost, jako je například 1 až 7, prostředky, které hodnoty v rámci některé oblasti mapují na stejný index položky. Proto můžete snížit index prostor úložiště, ale provádění dotazů může být nutné zpracovat více položek. V důsledku toho využívá další propustnost/RU.
 
-- Index přesnosti má více praktické využití s oblastmi řetězec. Protože řetězce může být jakékoli libovolné délky, volba přesnosti indexu může ovlivnit výkon dotazů na rozsah řetězec. Velikost indexu úložného prostoru, který je potřeba také může ovlivnit. Řetězec rozsah indexů lze nastavit s přesností na index mezi 1 a 100 nebo -1 (maximální). Pokud chcete provést klauzule ORDER BY dotazy na vlastnosti řetězce, je nutné zadat s přesností na -1 pro odpovídající cesty.
+- Index přesnosti má více praktické využití s oblastmi řetězec. Protože řetězce může být jakékoli libovolné délky, volba přesnosti indexu může ovlivnit výkon dotazů na rozsah řetězec. Také může ovlivnit množství index úložný prostor, který je požadován. Řetězec rozsah indexů lze nastavit s přesností na index mezi 1 a 100 nebo -1 (maximální). Pokud chcete provést klauzule ORDER BY dotazy na vlastnosti řetězce, je nutné zadat s přesností na -1 pro odpovídající cesty.
 
 - Prostorové indexy vždy používat výchozí přesnost index pro všechny typy (Point, LineString a mnohoúhelníku). Nelze přepsat výchozí přesnost index pro prostorové indexy.
 
@@ -65,5 +65,5 @@ Další informace o indexování ve službě Azure Cosmos DB, najdete v následu
 
 - [Přehled indexování](index-overview.md)
 - [Zásady indexování](indexing-policies.md)
-- [Index cesty](index-paths.md)
+- [Cesty indexů](index-paths.md)
 

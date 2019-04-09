@@ -6,16 +6,16 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 2d141a330b6b6c5fc102dd70ae1d6b3b01283d19
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 67526eddd19c5869aa54432f963d9b80396f878d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444867"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270978"
 ---
-# <a name="set-up-disaster-recovery-for-sql-server"></a>Nastavení zotavení po havárii pro SQL Server 
+# <a name="set-up-disaster-recovery-for-sql-server"></a>Nastavení zotavení po havárii pro SQL Server
 
 Tento článek popisuje, jak chránit SQL Server back-endu aplikace pomocí kombinace kontinuity SQL serveru a technologie (BCDR) pro obnovení po havárii, a [Azure Site Recovery](site-recovery-overview.md).
 
@@ -30,7 +30,7 @@ Mnoho úloh SQL serveru použít jako základ a dá se integrovat s aplikací, j
 * **SQL Server Failover Clustering instance (vždy pro FCI)**: Dva nebo více uzlů se systémem SQL Server instance se sdílenými disky jsou konfigurované v clusteru převzetí služeb při selhání Windows. Pokud uzel je vypnutý, clusteru můžete předat serveru SQL Server do jiné instance. Toto nastavení se obvykle používá pro implementaci vysoké dostupnosti v primární lokalitě. Toto nasazení nebude chránit proti selhání nebo kvůli výpadku ve vrstvě sdíleného úložiště. Sdílený disk je možné implementovat pomocí iSCSI, fiber channel nebo sdílený soubor vhdx.
 * **SQL skupin dostupnosti Always On**: Dva nebo více uzlů jsou nastavené ve sdílené nic cluster s databází serveru SQL Server nakonfigurován ve skupině dostupnosti s synchronní replikace a automatické převzetí služeb při selhání.
 
- V tomto článku využívají následující nativní SQL po havárii obnovení technologie pro obnovení databází do vzdálené lokality:
+  V tomto článku využívají následující nativní SQL po havárii obnovení technologie pro obnovení databází do vzdálené lokality:
 
 * SQL skupin dostupnosti Always On, zajištění zotavení po havárii pro SQL Server 2012 nebo 2014 Enterprise.
 * SQL zrcadlení databáze v režimu vysoké zabezpečení pro SQL Server Standard edition (libovolná verze) nebo SQL Server 2008 R2.
@@ -45,7 +45,7 @@ Site Recovery může chránit SQL Server, jak je uvedené v tabulce.
 **Hyper-V** | Ano | Ano
 **VMware** | Ano | Ano
 **Fyzický server** | Ano | Ano
-**Azure**|Není k dispozici| Ano
+**Azure** |Není k dispozici| Ano
 
 ### <a name="supported-sql-server-versions"></a>Podporované verze systému SQL Server
 Tyto verze systému SQL Server jsou podporovány pro podporované scénáře:
@@ -61,7 +61,7 @@ Site Recovery je možné integrovat s nativní technologiemi BCDR SQL serveru, k
 
 **Funkce** | **Podrobnosti** | **SQL Server** |
 --- | --- | ---
-**Skupiny dostupnosti Always On** | Více samostatných instancí systému SQL Server běží v clusteru převzetí služeb při selhání, který má více uzlů.<br/><br/>Databáze je možné seskupit do skupiny převzetí služeb při selhání, které je možné zkopírovat (zrcadlení) v instancích systému SQL Server tak, že je potřeba žádné sdílené úložiště.<br/><br/>Poskytuje zotavení po havárii mezi primární lokalitou a jeden nebo více sekundárních lokalit. Dva uzly lze nastavit ve sdílené nic cluster s databází serveru SQL Server nakonfigurován ve skupině dostupnosti s synchronní replikace a automatické převzetí služeb při selhání. | SQL Server 2016, SQL Server 2014 & SQL Server 2012 Enterprise edition
+**Skupina dostupnosti Always On** | Více samostatných instancí systému SQL Server běží v clusteru převzetí služeb při selhání, který má více uzlů.<br/><br/>Databáze je možné seskupit do skupiny převzetí služeb při selhání, které je možné zkopírovat (zrcadlení) v instancích systému SQL Server tak, že je potřeba žádné sdílené úložiště.<br/><br/>Poskytuje zotavení po havárii mezi primární lokalitou a jeden nebo více sekundárních lokalit. Dva uzly lze nastavit ve sdílené nic cluster s databází serveru SQL Server nakonfigurován ve skupině dostupnosti s synchronní replikace a automatické převzetí služeb při selhání. | SQL Server 2016, SQL Server 2014 & SQL Server 2012 Enterprise edition
 **Převzetí služeb clusteringu (vždy na FCI)** | SQL Server využívá Windows převzetí služeb při selhání clusteringu pro vysokou dostupnost úloh v místním SQL serveru.<br/><br/>Uzly, které běží instance systému SQL Server se sdílenými disky jsou konfigurované v clusteru převzetí služeb při selhání. Pokud instance je mimo provoz clusteru převezme služby při selhání do jiné.<br/><br/>Cluster nebude chránit proti selhání a méně výpadků ve sdíleném úložišti. Je možné implementovat pomocí iSCSI, Fibre channel, sdílený disk, nebo sdílené soubory Vhdx. | SQL Server Enterprise editions<br/><br/>SQL Server Standard edition (omezeno na pouze dva uzly)
 **Zrcadlení (vysokou bezpečnost režim)** | Chrání izolovanou databázi na jednu sekundární kopii. K dispozici v obou vysokou bezpečnost (synchronní) a vysoký výkon (asynchronní) replikace režimy. Nevyžaduje, aby cluster převzetí služeb při selhání. | SQL Server 2008 R2<br/><br/>SQL Server Enterprise všechny edice
 **Standalone SQL Server** | SQL Server a databáze jsou hostované na jeden server (fyzický nebo virtuální). Hostitele clusterů se používá pro zajištění vysoké dostupnosti, pokud je virtuální server. Bez vysoké dostupnosti úrovni hosta. | Edice Enterprise nebo Standard
@@ -73,11 +73,11 @@ Tato tabulka shrnuje našimi doporučeními k integraci technologiemi BCDR SQL s
 | **Verze** | **Edice** | **Nasazení** | **Místního v místním prostředí** | **V místním prostředí do Azure** |
 | --- | --- | --- | --- | --- |
 | SQL Server 2014, 2016 a 2012 |Enterprise |Instance clusteru převzetí služeb při selhání |Skupiny dostupnosti AlwaysOn |Skupiny dostupnosti AlwaysOn |
-|| Enterprise |Skupiny dostupnosti AlwaysOn pro vysokou dostupnost |Skupiny dostupnosti AlwaysOn |Skupiny dostupnosti AlwaysOn | |
-|| Standard |Instance clusteru převzetí služeb při selhání (FCI) |Replikace služby Site Recovery s místní zrcadlový svazek |Replikace služby Site Recovery s místní zrcadlový svazek | |
-|| Enterprise nebo Standard |Standalone |Replikace služby Site Recovery |Replikace služby Site Recovery | |
+|| Enterprise |Skupiny dostupnosti AlwaysOn pro vysokou dostupnost |Skupiny dostupnosti AlwaysOn |Skupiny dostupnosti AlwaysOn |
+|| Standard |Instance clusteru převzetí služeb při selhání (FCI) |Replikace služby Site Recovery s místní zrcadlový svazek |Replikace služby Site Recovery s místní zrcadlový svazek |
+|| Enterprise nebo Standard |Standalone |Replikace služby Site Recovery |Replikace služby Site Recovery |
 | SQL Server 2008 R2 or 2008 |Enterprise nebo Standard |Instance clusteru převzetí služeb při selhání (FCI) |Replikace služby Site Recovery s místní zrcadlový svazek |Replikace služby Site Recovery s místní zrcadlový svazek |
-|| Enterprise nebo Standard |Standalone |Replikace služby Site Recovery |Replikace služby Site Recovery | |
+|| Enterprise nebo Standard |Standalone |Replikace služby Site Recovery |Replikace služby Site Recovery |
 | SQL Server (libovolná verze) |Enterprise nebo Standard |Instance clusteru převzetí služeb při selhání – DTC aplikace |Replikace služby Site Recovery |Nepodporuje se |
 
 ## <a name="deployment-prerequisites"></a>Požadavky nasazení
@@ -101,7 +101,7 @@ Zde je, co je potřeba udělat:
 
 1. Import skriptů do účtu Azure Automation. Tato položka obsahuje skripty pro převzetí služeb při selhání skupiny dostupnosti SQL v [virtuální počítač Resource Manageru](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) a [klasický virtuální počítač](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1).
 
-    [![Nasazení do Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    [![Deploy do Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 
 1. Přidáte Azure Site Recovery-SQL-FailoverAG jako akce před první skupiny plánu obnovení.

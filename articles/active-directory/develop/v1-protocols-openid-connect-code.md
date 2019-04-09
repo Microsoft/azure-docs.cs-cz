@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e39f271eaf0eccd0b3f3439492205e0d3398358
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 06639f943542e322e79e137e31be7b8954566a0f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851183"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261985"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autorizace přístupu k webovým aplikacím pomocí OpenID Connect a službou Azure Active Directory
 
@@ -47,12 +47,12 @@ Dokument metadat, který obsahuje požadované informace o aplikaci provést př
 ```
 https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
 ```
-Metadata jsou jednoduché dokumentu JavaScript Object Notation (JSON). Prohlédněte si následující fragment kódu pro příklad. Jsou podrobně popsány v tomto fragmentu kódu obsah [OpenID Connect specifikace](https://openid.net). Mějte na paměti tohoto tenanta poskytují spíše než `common` v místě {klient} výše způsobí specifickým pro tenanta identifikátory URI v vrátil objekt ve formátu JSON.
+Metadata jsou jednoduché dokumentu JavaScript Object Notation (JSON). Prohlédněte si následující fragment kódu pro příklad. Jsou podrobně popsány v tomto fragmentu kódu obsah [OpenID Connect specifikace](https://openid.net). Mějte na paměti, poskytování a ID tenanta spíše než `common` v místě {klient} výše způsobí specifickým pro tenanta identifikátory URI v vrátil objekt ve formátu JSON.
 
 ```
 {
-    "authorization_endpoint": "https://login.microsoftonline.com/common/oauth2/authorize",
-    "token_endpoint": "https://login.microsoftonline.com/common/oauth2/token",
+    "authorization_endpoint": "https://login.microsoftonline.com/{tenant}/oauth2/authorize",
+    "token_endpoint": "https://login.microsoftonline.com/{tenant}/oauth2/token",
     "token_endpoint_auth_methods_supported":
     [
         "client_secret_post",
@@ -64,6 +64,8 @@ Metadata jsou jednoduché dokumentu JavaScript Object Notation (JSON). Prohlédn
     ...
 }
 ```
+
+Pokud vaše aplikace má vlastní podpisové klíče v důsledku použití [mapování deklarací](active-directory-claims-mapping.md) funkci, musíte připojit `appid` obsahující ID aplikace, pokud chcete získat parametr dotazu `jwks_uri` odkazující na vaši aplikaci prvku podpisový klíč informace. Příklad: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` obsahuje `jwks_uri` z `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
 
 ## <a name="send-the-sign-in-request"></a>Odeslat žádost o přihlášení
 
@@ -91,7 +93,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parametr |  | Popis |
 | --- | --- | --- |
 | tenant |povinné |`{tenant}` Hodnota v cestě požadavku je možné řídit, kdo se můžete přihlásit do aplikace. Povolené hodnoty jsou identifikátory klientů, třeba `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` tokeny nezávislé na tenanta |
-| client_id |povinné |Id aplikace přiřazené vaší aplikaci, když je zaregistrován ve službě Azure AD. To můžete najít na webu Azure Portal. Klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, zvolte aplikaci a vyhledejte číslo Id aplikace na stránce aplikace. |
+| client_id |povinné |ID aplikace přiřazené vaší aplikaci, když je zaregistrován ve službě Azure AD. To můžete najít na webu Azure Portal. Klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, zvolte aplikaci a vyhledejte číslo ID aplikace na stránce aplikace. |
 | response_type |povinné |Musí zahrnovat `id_token` pro přihlášení OpenID Connect. Může také zahrnovat další response_types, jako například `code` nebo `token`. |
 | scope | Doporučené | Specifikace OpenID Connect vyžaduje obor `openid`, který se přeloží na "Přihlášení" oprávnění v souhlasu uživatelského rozhraní. Tato a další obory OIDC se ignorují v koncových bodech v1.0, ale stále je to osvědčený postup pro klienty vyhovuje standardům. |
 | Hodnota Nonce |povinné |Hodnota zahrnutý v požadavku, vygenerované aplikaci, která je zahrnutá ve výsledné `id_token` jako deklarace identity. Aplikace pak můžete ověřit tuto hodnotu a zmírnění útoků opětovného přehrání tokenu. Hodnota je obvykle náhodného, jedinečný řetězec nebo identifikátor GUID, který slouží k určení původu žádosti. |
@@ -185,7 +187,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 Pokud má uživatel přesměrovat `end_session_endpoint`, Azure AD vymaže relace uživatele z prohlížeče. Však uživatel stále být přihlášeni k ostatním aplikacím, které používají Azure AD pro ověřování. Pokud chcete povolit tyto aplikace se zároveň Odhlásit uživatele, Azure AD odešle požadavek HTTP GET na zaregistrovanou `LogoutUrl` všech aplikací, které uživatel je aktuálně přihlášený k. Aplikace musí odpovědět na tuto žádost zrušíte všechny relace, který identifikuje uživatele a vrácení `200` odpovědi. Pokud chcete podporu jednotného přihlašování, odhlašování ve vaší aplikaci, je nutné implementovat takové `LogoutUrl` v kódu vaší aplikace. Můžete nastavit `LogoutUrl` z portálu Azure portal:
 
-1. Přejděte [webu Azure Portal](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. Kliknutím na váš účet v pravém horním rohu stránky zvolte služby Active Directory.
 3. V levém navigačním panelu zvolte **Azure Active Directory**, klikněte na tlačítko **registrace aplikací** a vyberte svou aplikaci.
 4. Klikněte na **nastavení**, pak **vlastnosti** a najít **odhlašovací adresa URL** textového pole. 
@@ -200,7 +202,7 @@ Získání přístupových tokenů, budete muset upravit žádost o přihlášen
 // Line breaks for legibility only
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/authorize?
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application Id
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application ID
 &response_type=id_token+code
 &redirect_uri=http%3A%2F%2Flocalhost%3a12345          // Your registered Redirect Uri, url encoded
 &response_mode=form_post                              // `form_post' or 'fragment'

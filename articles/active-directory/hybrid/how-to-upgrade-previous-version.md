@@ -12,19 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 07/18/2018
+ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa21b1054fa6860a8acc5d6971f75e1d74c889f7
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193751"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267034"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi
 Toto téma popisuje různé metody, které můžete použít k upgradu na nejnovější verzi vaší instalace služby Azure Active Directory (Azure AD) Connect. Doporučujeme ponechat si aktuální s verzemi služby Azure AD Connect. Také postupujte podle kroků v [Postupná migrace](#swing-migration) části Pokud provedete významné změny konfigurace.
+
+>[!NOTE]
+> Aktuálně podporuje se upgrade z libovolné verze služby Azure AD Connect na aktuální verzi. Nepodporují se místní upgrady DirSync nebo ADSync a postupné migraci je povinný.  Pokud chcete provést upgrade z nástroje DirSync, přečtěte si téma [Upgrade ze synchronizačního nástroje služby Azure AD (DirSync)](how-to-dirsync-upgrade-get-started.md) nebo [Postupná migrace](#swing-migration) oddílu.  </br>V praxi zákazníci s velmi staré verze setkat s problémy souvisejícími přímo do Azure AD Connect. Servery, které byly v produkčním prostředí několik let, obvykle mají několik použitých k nim a všechny z nich můžou být zahrnuté.  Zákazníci, kteří se neupgradovali v 12 až 18 měsíců obecně platí, zvažte swing upgrade místo toho, je to možnost nejrestriktivnější a minimální rizikové.
 
 Pokud chcete provést upgrade z nástroje DirSync, přečtěte si téma [Upgrade ze synchronizačního nástroje služby Azure AD (DirSync)](how-to-dirsync-upgrade-get-started.md) místo.
 

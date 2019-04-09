@@ -13,27 +13,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/27/2019
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dda84d30124eca1526f227ffec134f48451c9cb0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00a967d61a5f81fc871488ea48df9cb4cf18c269
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102563"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268598"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Kurz: Nakonfigurujte centrální Cerner pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je zobrazit kroky, které je třeba provést v centrální Cerner a Azure AD automaticky zřizovat a rušit zřízení uživatelských účtů ze služby Azure AD do seznamu uživatelů v centrální Cerner. 
-
+Cílem tohoto kurzu je zobrazit kroky, které je třeba provést v centrální Cerner a Azure AD automaticky zřizovat a rušit zřízení uživatelských účtů ze služby Azure AD do seznamu uživatelů v centrální Cerner.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu se předpokládá, že máte následující položky:
 
-*   Tenanta Azure Active Directory.
-*   Centrální Cerner tenanta 
+* Tenanta Azure Active Directory.
+* Centrální Cerner tenanta
 
 > [!NOTE]
 > Azure Active Directory se integruje s centrální Cerner pomocí [SCIM](http://www.simplecloud.info/) protokolu.
@@ -48,12 +47,11 @@ Před konfigurací a povolení služby zřizování, byste měli rozhodnout, jak
 
 ### <a name="important-tips-for-assigning-users-to-cerner-central"></a>Důležité tipy pro přiřazování uživatelů k Cerner – střed
 
-*   Dále je doporučeno jednoho uživatele Azure AD pro centrální Cerner přidělí k otestování konfigurace zřizování. Další uživatele a/nebo skupiny může být přiřazen později.
+* Dále je doporučeno jednoho uživatele Azure AD pro centrální Cerner přidělí k otestování konfigurace zřizování. Další uživatele a/nebo skupiny může být přiřazen později.
 
 * Po dokončení pro jednoho uživatele počátečního testování Cerner centrální doporučuje přiřazení celý seznam uživatelů určená pro přístup k žádným řešením Cerner (nejen Cerner centrální) být zřízená soupisky Cerner od uživatele.  Jiná řešení Cerner využít tento seznam uživatelů v seznamu uživatelů.
 
-*   Při přiřazení uživatele k centrální Cerner, je nutné vybrat **uživatele** v dialogovém okně přiřazení role. Uživatelé s rolí "Výchozí přístup" jsou vyloučeny z zřizování.
-
+* Při přiřazení uživatele k centrální Cerner, je nutné vybrat **uživatele** v dialogovém okně přiřazení role. Uživatelé s rolí "Výchozí přístup" jsou vyloučeny z zřizování.
 
 ## <a name="configuring-user-provisioning-to-cerner-central"></a>Konfigurace zřizování uživatelů pro centrální Cerner
 
@@ -62,9 +60,7 @@ Tato část vás provede připojením služby Azure AD pro centrální Cerner so
 > [!TIP]
 > Můžete také pro centrální Cerner povoleno založené na SAML jednotného přihlašování, postupujte podle pokynů uvedených v [webu Azure portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce se vzájemně doplňují. Další informace najdete v tématu [Cerner centrální jednotné přihlašování – kurz](cernercentral-tutorial.md).
 
-
 ### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>Postup konfigurace automatického zřizování uživatelských účtů do centrální Cerner ve službě Azure AD:
-
 
 Pro zřízení uživatelských účtů do centrální Cerner, budete muset Cerner žádat Cerner centrální systémový účet a vygenerování tokenu nosiče OAuth, Azure AD můžete použít k připojení ke koncovému bodu SCIM Cerner společnosti. Doporučuje se také, že integrace provést v prostředí izolovaného prostoru Cerner, před nasazením do produkčního prostředí.
 
@@ -106,9 +102,9 @@ Pro zřízení uživatelských účtů do centrální Cerner, budete muset Cerne
 
    * V **adresy URL Tenanta** pole, zadejte adresu URL ve formátu níže, nahraďte ID sféry jste získali v kroku #4 "– seznam členů-sféry – ID uživatele".
 
-> Izolovaného prostoru: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
-> 
-> Produkční: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > Izolovaného prostoru: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > 
+    > Produkční: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * V **tajný klíč tokenu** pole, zadejte tokenu nosiče OAuth, který jste vygenerovali v kroku #3 a klikněte na tlačítko **Test připojení**.
 
@@ -116,13 +112,13 @@ Pro zřízení uživatelských účtů do centrální Cerner, budete muset Cerne
 
 1. Zadejte e-mailovou adresu osoby nebo skupiny, která má obdržet oznámení zřizování chyby v **e-mailové oznámení** pole a zaškrtněte políčko níže.
 
-1. Klikněte na **Uložit**. 
+1. Klikněte na **Uložit**.
 
 1. V **mapování atributů** , projděte si atributy uživatelů a skupin ze služby Azure AD synchronizovány se službou Cerner střed. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty a skupiny v centrální Cerner pro operace update. Vyberte tlačítko Uložit potvrďte změny.
 
 1. Služba pro centrální Cerner zřizování Azure AD povolit, změňte **stavu zřizování** k **na** v **nastavení** oddílu
 
-1. Klikněte na **Uložit**. 
+1. Klikněte na **Uložit**.
 
 Tím se spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k centrální Cerner v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokoly aktivit, které popisují všechny akce provedené v aplikaci Centrální Cerner zřizovací služba.
 
@@ -133,7 +129,8 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 * [Centrální Cerner: Publikování dat identit pomocí Azure AD](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [Kurz: Konfigurace Cerner centrální pro jednotné přihlašování s Azure Active Directory](cernercentral-tutorial.md)
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další postup
+
 * [Zjistěte, jak kontrolovat protokoly a získat sestavy o zřizování aktivity](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
